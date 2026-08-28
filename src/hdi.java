@@ -1,25 +1,51 @@
-public interface hdi {
-   default void b() {
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
+
+public abstract class hdi {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
+
+   public void a() {
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
    }
 
-   default void a() {
+   public void a(hdc $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
+      }
+
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
+      }
    }
 
-   default void a(ggf $$0) {
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
 
-   default void a(double $$0, double $$1) {
+   public boolean c() {
+      return this.c >= 10;
    }
 
-   default void a(gbm $$0, eyu $$1) {
+   public void d() {
+      this.d = false;
    }
 
-   default void a(gbm $$0, jf $$1, dus $$2, float $$3) {
+   protected int e() {
+      return this.c;
    }
 
-   default void c() {
-   }
+   public abstract void f();
 
-   default void a(cvs $$0) {
-   }
+   public abstract void b(hdc var1);
 }

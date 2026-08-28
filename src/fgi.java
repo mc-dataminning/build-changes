@@ -1,233 +1,357 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.UUID;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fgi extends hdp {
-   static final Logger a = LogUtils.getLogger();
-   private static final xe b = xe.c("mco.configure.world.players.title");
-   static final xe c = xe.c("mco.question");
-   private static final int B = 8;
-   final foc C = new foc(this);
-   private final ffx D;
-   final fep E;
+public class fgi extends hee {
+   private static final alh a = alh.b("realm_status/expired");
+   private static final alh b = alh.b("realm_status/expires_soon");
+   private static final alh c = alh.b("realm_status/open");
+   private static final alh B = alh.b("realm_status/closed");
+   private static final Logger C = LogUtils.getLogger();
+   private static final xh D = xh.c("mco.configure.worlds.title");
+   private static final xh E = xh.c("mco.configure.world.title");
+   private static final xh F = xh.c("mco.selectServer.expired");
+   private static final xh G = xh.c("mco.selectServer.expires.soon");
+   private static final xh H = xh.c("mco.selectServer.expires.day");
+   private static final xh I = xh.c("mco.selectServer.open");
+   private static final xh J = xh.c("mco.selectServer.closed");
+   private static final int K = 80;
+   private static final int L = 5;
    @Nullable
-   private fgi.b F;
-   boolean G;
+   private xh M;
+   private final fee N;
+   @Nullable
+   private ffa O;
+   private final long P;
+   private int Q;
+   private int R;
+   private fkz S;
+   private fkz T;
+   private fkz U;
+   private fkz V;
+   private fkz W;
+   private fkz X;
+   private fkz Y;
+   private boolean Z;
+   private final List<fga> aa = Lists.newArrayList();
 
-   public fgi(ffx $$0, fep $$1) {
-      super(b);
-      this.D = $$0;
-      this.E = $$1;
+   public fgi(fee $$0, long $$1) {
+      super(E);
+      this.N = $$0;
+      this.P = $$1;
    }
 
    @Override
    public void aS_() {
-      this.C.a(b, this.p);
-      this.F = this.C.c(new fgi.b());
-      this.D();
-      fog $$0 = this.C.b(fog.e().a(8));
-      $$0.a(fko.a(xe.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fgc(this.D, this, this.E))).a());
-      $$0.a(fko.a(xd.k, $$0x -> this.d()).a());
-      this.C.a($$1 -> {
-         fkm var10000 = this.c($$1);
+      if (this.O == null) {
+         this.a(this.P);
+      }
+
+      this.Q = this.n / 2 - 187;
+      this.R = this.n / 2 + 190;
+      this.S = this.c(fkz.a(xh.c("mco.configure.world.buttons.players"), $$0x -> this.m.a(new fgt(this, this.O))).a(this.a(0, 3), g(0), 100, 20).a());
+      this.T = this.c(fkz.a(xh.c("mco.configure.world.buttons.settings"), $$0x -> this.m.a(new fgz(this, this.O.g()))).a(this.a(1, 3), g(0), 100, 20).a());
+      this.U = this.c(
+         fkz.a(xh.c("mco.configure.world.buttons.subscription"), $$0x -> this.m.a(new fhb(this, this.O.g(), this.N))).a(this.a(2, 3), g(0), 100, 20).a()
+      );
+      this.aa.clear();
+
+      for (int $$0 = 1; $$0 < 5; $$0++) {
+         this.aa.add(this.a($$0));
+      }
+
+      this.Y = this.c(
+         fkz.a(xh.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.m.a(new fgy(xh.c("mco.template.title.minigame"), this::a, ffa.d.b)))
+            .a(this.b(0), g(13) - 5, 100, 20)
+            .a()
+      );
+      this.V = this.c(
+         fkz.a(xh.c("mco.configure.world.buttons.options"), $$0x -> this.m.a(new fha(this, this.O.i.get(this.O.n).d(), this.O.m, this.O.n)))
+            .a(this.b(0), g(13) - 5, 90, 20)
+            .a()
+      );
+      this.W = this.c(fkz.a(xh.c("mco.configure.world.backup"), $$0x -> this.m.a(new fgf(this, this.O.g(), this.O.n))).a(this.b(1), g(13) - 5, 90, 20).a());
+      this.X = this.c(
+         fkz.a(xh.c("mco.configure.world.buttons.resetworld"), $$0x -> this.m.a(fgw.a(this, this.O.g(), () -> this.m.execute(() -> this.m.a(this.g())))))
+            .a(this.b(2), g(13) - 5, 90, 20)
+            .a()
+      );
+      this.c(fkz.a(xg.k, $$0x -> this.d()).a(this.R - 80 + 8, g(13) - 5, 70, 20).a());
+      this.W.j = true;
+      if (this.O == null) {
+         this.J();
+         this.G();
+         this.S.j = false;
+         this.T.j = false;
+         this.U.j = false;
+      } else {
+         this.D();
+         if (this.F()) {
+            this.G();
+         } else {
+            this.J();
+         }
+      }
+   }
+
+   private fga a(int $$0) {
+      int $$1 = this.h($$0);
+      int $$2 = g(5) + 5;
+      fga $$3 = new fga($$1, $$2, 80, 80, $$0, $$1x -> {
+         fga.b $$2x = ((fga)$$1x).a();
+         if ($$2x != null) {
+            switch ($$2x.c) {
+               case a:
+                  break;
+               case c:
+                  this.a(this.O);
+                  break;
+               case b:
+                  if ($$2x.b) {
+                     this.E();
+                  } else if ($$2x.a) {
+                     this.b($$0, this.O);
+                  } else {
+                     this.a($$0, this.O);
+                  }
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown action " + $$2x.c);
+            }
+         }
       });
-      this.c();
+      if (this.O != null) {
+         $$3.a(this.O);
+      }
+
+      return this.c($$3);
+   }
+
+   private int b(int $$0) {
+      return this.Q + $$0 * 95;
+   }
+
+   private int a(int $$0, int $$1) {
+      return this.n / 2 - ($$1 * 105 - 5) / 2 + $$0 * 105;
    }
 
    @Override
-   protected void c() {
-      this.C.a();
-      if (this.F != null) {
-         this.F.a(this.n, this.C);
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.M = null;
+      $$0.a(this.p, D, this.n / 2, g(4), -1);
+      if (this.O == null) {
+         $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      } else {
+         String $$4 = this.O.b();
+         int $$5 = this.p.b($$4);
+         int $$6 = this.O.e == ffa.c.a ? -6250336 : 8388479;
+         int $$7 = this.p.a(this.l);
+         $$0.a(this.p, this.l, this.n / 2, 12, -1);
+         $$0.a(this.p, $$4, this.n / 2, 24, $$6);
+         int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.n / 2 + $$5 / 2 + $$7 / 2 + 10);
+         this.b($$0, $$8, 7, $$1, $$2);
+         if (this.F()) {
+            String $$9 = this.O.c();
+            if ($$9 != null) {
+               $$0.a(this.p, xh.a("mco.configure.world.minigame", $$9), this.Q + 80 + 20 + 10, g(13), -1, false);
+            }
+         }
       }
    }
 
-   void D() {
-      if (this.F != null) {
-         this.F.aJ_().clear();
-
-         for (fel $$0 : this.E.h) {
-            this.F.aJ_().add(new fgi.a($$0));
-         }
-      }
+   private int h(int $$0) {
+      return this.Q + ($$0 - 1) * 98;
    }
 
    @Override
    public void d() {
-      this.E();
+      this.m.a(this.N);
+      if (this.Z) {
+         this.N.h();
+      }
+   }
+
+   private void a(long $$0) {
+      new Thread(() -> {
+         fej $$1 = fej.a();
+
+         try {
+            ffa $$2 = $$1.a($$0);
+            this.m.execute(() -> {
+               this.O = $$2;
+               this.D();
+               if (this.F()) {
+                  this.b(this.Y);
+               } else {
+                  this.b(this.V);
+                  this.b(this.W);
+                  this.b(this.X);
+               }
+
+               for (fga $$1x : this.aa) {
+                  $$1x.a($$2);
+               }
+            });
+         } catch (ffu var5) {
+            C.error("Couldn't get own world", var5);
+            this.m.execute(() -> this.m.a(new fgm(var5, this.N)));
+         }
+      }).start();
+   }
+
+   private void D() {
+      this.S.j = !this.O.j;
+      this.T.j = !this.O.j;
+      this.U.j = true;
+      this.Y.j = !this.O.j;
+      this.V.j = !this.O.j;
+      this.X.j = !this.O.j;
+   }
+
+   private void a(ffa $$0) {
+      if (this.O.e == ffa.c.b) {
+         fee.a($$0, this);
+      } else {
+         this.b(true);
+      }
    }
 
    private void E() {
-      if (this.G) {
-         this.m.a(this.D.g());
-      } else {
-         this.m.a(this.D);
-      }
+      fgy $$0 = new fgy(xh.c("mco.template.title.minigame"), this::a, ffa.d.b);
+      $$0.a(xh.c("mco.minigame.world.info.line1"), xh.c("mco.minigame.world.info.line2"));
+      this.m.a($$0);
    }
 
-   class a extends fku.a<fgi.a> {
-      private static final xe b = xe.c("mco.configure.world.invites.normal.tooltip");
-      private static final xe c = xe.c("mco.configure.world.invites.ops.tooltip");
-      private static final xe d = xe.c("mco.configure.world.invites.remove.tooltip");
-      private static final ale e = ale.b("player_list/make_operator");
-      private static final ale f = ale.b("player_list/remove_operator");
-      private static final ale g = ale.b("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final fel j;
-      private final fko k;
-      private final fko l;
-      private final fko m;
+   private void a(int $$0, ffa $$1) {
+      this.m.a(fgu.a(this, xh.c("mco.configure.world.slot.switch.question.line1"), $$2 -> {
+         this.f();
+         this.m.a(new fgo(this.N, new fig($$1.a, $$0, () -> this.m.execute(() -> this.m.a(this.g())))));
+      }));
+   }
 
-      public a(final fel $$0) {
-         this.j = $$0;
-         int $$1 = fgi.this.E.h.indexOf(this.j);
-         this.l = flt.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fgi.this.p.a(b))
-            .a($$1x -> xd.a(xe.a("mco.invited.player.narration", $$0.a()), (xe)$$1x.get(), xe.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = flt.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fgi.this.p.a(c))
-            .a($$1x -> xd.a(xe.a("mco.invited.player.narration", $$0.a()), (xe)$$1x.get(), xe.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = flt.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fgi.this.p.a(d))
-            .a($$1x -> xd.a(xe.a("mco.invited.player.narration", $$0.a()), (xe)$$1x.get()))
-            .a();
-         this.c();
-      }
+   private void b(int $$0, ffa $$1) {
+      this.m.a(fgu.a(this, xh.c("mco.configure.world.slot.switch.question.line1"), $$2 -> {
+         this.f();
+         fgw $$3 = fgw.a(this, $$0, $$1, () -> this.m.execute(() -> this.m.a(this.g())));
+         this.m.a($$3);
+      }));
+   }
 
-      private void a(int $$0) {
-         fdy $$1 = fdy.a();
-         UUID $$2 = fgi.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fgi.this.E.a, $$2));
-         } catch (ffj var5) {
-            fgi.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void b(int $$0) {
-         fdy $$1 = fdy.a();
-         UUID $$2 = fgi.this.E.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fgi.this.E.a, $$2));
-         } catch (ffj var5) {
-            fgi.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fgi.this.E.h.size()) {
-            fel $$1 = fgi.this.E.h.get($$0);
-            ffy $$2 = new ffy($$2x -> {
-               if ($$2x) {
-                  fdy $$3 = fdy.a();
-
-                  try {
-                     $$3.a(fgi.this.E.a, $$1.b());
-                  } catch (ffj var6) {
-                     fgi.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fgi.this.E.h.remove($$0);
-                  fgi.this.D();
+   private void b(fkm $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.O.j) {
+         this.a($$0, $$1, $$2, $$3, $$4, a, () -> F);
+      } else if (this.O.e == ffa.c.a) {
+         this.a($$0, $$1, $$2, $$3, $$4, B, () -> J);
+      } else if (this.O.e == ffa.c.b) {
+         if (this.O.l < 7) {
+            this.a($$0, $$1, $$2, $$3, $$4, b, () -> {
+               if (this.O.l <= 0) {
+                  return G;
+               } else {
+                  return (xh)(this.O.l == 1 ? H : xh.a("mco.selectServer.expires.days", this.O.l));
                }
-
-               fgi.this.G = true;
-               fgi.this.m.a(fgi.this);
-            }, fgi.c, xe.a("mco.configure.world.uninvite.player", $$1.a()));
-            fgi.this.m.a($$2);
-         }
-      }
-
-      private void a(feh $$0) {
-         for (fel $$1 : fgi.this.E.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private fko d() {
-         return this.l.k ? this.l : this.m;
-      }
-
-      @Override
-      public List<? extends fml> aJ_() {
-         return ImmutableList.of(this.d(), this.k);
-      }
-
-      @Override
-      public List<? extends foj> b() {
-         return ImmutableList.of(this.d(), this.k);
-      }
-
-      @Override
-      public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
+            });
          } else {
-            $$10 = -1;
+            this.a($$0, $$1, $$2, $$3, $$4, c, () -> I);
          }
-
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fhd.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.a(fgi.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10, false);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.y();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.d().y() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
       }
    }
 
-   class b extends fku<fgi.a> {
-      private static final int m = 36;
+   private void a(fkm $$0, int $$1, int $$2, int $$3, int $$4, alh $$5, Supplier<xh> $$6) {
+      $$0.a(gig::B, $$5, $$1, $$2, 10, 28);
+      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
+         this.d($$6.get());
+      }
+   }
 
-      public b() {
-         super(fip.Q(), fgi.this.n, fgi.this.C.d(), fgi.this.C.c(), 36);
-         this.a(true, (int)(9.0F * 1.5F));
+   private boolean F() {
+      return this.O != null && this.O.i();
+   }
+
+   private void G() {
+      this.a(this.V);
+      this.a(this.W);
+      this.a(this.X);
+   }
+
+   private void a(fkz $$0) {
+      $$0.k = false;
+   }
+
+   private void b(fkz $$0) {
+      $$0.k = true;
+   }
+
+   private void J() {
+      this.a(this.Y);
+   }
+
+   public void a(fff $$0) {
+      fff $$1 = this.O.i.get(this.O.n);
+      $$0.j = $$1.j;
+      $$0.k = $$1.k;
+      fej $$2 = fej.a();
+
+      try {
+         $$2.a(this.O.a, this.O.n, $$0);
+         this.O.i.put(this.O.n, $$0);
+      } catch (ffu var5) {
+         C.error("Couldn't save slot settings", var5);
+         this.m.a(new fgm(var5, this));
+         return;
       }
 
-      @Override
-      protected void a(fkb $$0, int $$1, int $$2) {
-         String $$3 = fgi.this.E.h != null ? Integer.toString(fgi.this.E.h.size()) : "0";
-         xe $$4 = xe.a("mco.configure.world.invited.number", $$3).a(n.t);
-         $$0.a(fgi.this.p, $$4, $$1 + this.b() / 2 - fgi.this.p.a($$4) / 2, $$2, -1, false);
+      this.m.a(this);
+   }
+
+   public void a(String $$0, String $$1) {
+      String $$2 = bag.h($$1) ? null : $$1;
+      fej $$3 = fej.a();
+
+      try {
+         $$3.b(this.O.a, $$0, $$2);
+         this.O.a($$0);
+         this.O.b($$2);
+         this.f();
+      } catch (ffu var6) {
+         C.error("Couldn't save settings", var6);
+         this.m.a(new fgm(var6, this));
+         return;
       }
 
-      @Override
-      public int a() {
-         return this.l() * this.d + this.f;
-      }
+      this.m.a(this);
+   }
 
-      @Override
-      public int b() {
-         return 300;
+   public void b(boolean $$0) {
+      fgi $$1 = this.g();
+      this.m.a(new fgo($$1, new fhz(this.O, $$1, $$0, this.m)));
+   }
+
+   public void b() {
+      fgi $$0 = this.g();
+      this.m.a(new fgo($$0, new fht(this.O, $$0)));
+   }
+
+   public void f() {
+      this.Z = true;
+   }
+
+   private void a(@Nullable ffp $$0) {
+      if ($$0 != null && ffp.a.b == $$0.i) {
+         this.f();
+         this.m.a(new fgo(this.N, new fif(this.O.a, $$0, this.g())));
+      } else {
+         this.m.a(this);
       }
+   }
+
+   public fgi g() {
+      fgi $$0 = new fgi(this.N, this.P);
+      $$0.Z = this.Z;
+      return $$0;
    }
 }

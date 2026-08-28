@@ -1,63 +1,59 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public abstract class cn implements dx<dbt> {
-   private final List<bq> a;
-
-   protected cn(List<bq> $$0) {
-      this.a = $$0;
+public class cn extends dx<cn.a> {
+   @Override
+   public Codec<cn.a> a() {
+      return cn.a.a;
    }
 
-   public static <T extends cn> Codec<T> a(Function<List<bq>, T> $$0) {
-      return bq.a.listOf().xmap($$0, cn::b);
+   public void a(arn $$0, cvx $$1, int $$2) {
+      this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   protected List<bq> b() {
-      return this.a;
-   }
+   public static record a(Optional<bg> b, Optional<ct> c, di.d d, di.d e) implements dx.a {
+      public static final Codec<cn.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bv.b.optionalFieldOf("player").forGetter(cn.a::a),
+                  ct.a.optionalFieldOf("item").forGetter(cn.a::b),
+                  di.d.d.optionalFieldOf("durability", di.d.c).forGetter(cn.a::c),
+                  di.d.d.optionalFieldOf("delta", di.d.c).forGetter(cn.a::d)
+               )
+               .apply($$0, cn.a::new)
+      );
 
-   public boolean a(cvs $$0, dbt $$1) {
-      for (bq $$2 : this.a) {
-         if (!$$2.a($$1)) {
+      public static ao<cn.a> a(Optional<ct> $$0, di.d $$1) {
+         return a(Optional.empty(), $$0, $$1);
+      }
+
+      public static ao<cn.a> a(Optional<bg> $$0, Optional<ct> $$1, di.d $$2) {
+         return an.u.a(new cn.a($$0, $$1, $$2, di.d.c));
+      }
+
+      public boolean a(cvx $$0, int $$1) {
+         if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
+         } else {
+            return !this.d.d($$0.p() - $$1) ? false : this.e.d($$0.o() - $$1);
          }
       }
 
-      return true;
-   }
-
-   public static cn.a a(List<bq> $$0) {
-      return new cn.a($$0);
-   }
-
-   public static cn.b b(List<bq> $$0) {
-      return new cn.b($$0);
-   }
-
-   public static class a extends cn {
-      public static final Codec<cn.a> a = a(cn.a::new);
-
-      protected a(List<bq> $$0) {
-         super($$0);
-      }
-
       @Override
-      public kr<dbt> a() {
-         return ks.k;
-      }
-   }
-
-   public static class b extends cn {
-      public static final Codec<cn.b> a = a(cn.b::new);
-
-      protected b(List<bq> $$0) {
-         super($$0);
+      public Optional<bg> a() {
+         return this.b;
       }
 
-      @Override
-      public kr<dbt> a() {
-         return ks.D;
+      public Optional<ct> b() {
+         return this.c;
+      }
+
+      public di.d c() {
+         return this.d;
+      }
+
+      public di.d d() {
+         return this.e;
       }
    }
 }

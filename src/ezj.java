@@ -1,85 +1,46 @@
 import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleLists;
+import java.util.Arrays;
 
-public class ezj implements ezi {
-   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
-   private final double[] b;
-   private final int[] c;
-   private final int[] d;
-   private final int e;
+public class ezj extends fab {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
 
-   public ezj(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
-      double $$4 = Double.NaN;
-      int $$5 = $$0.size();
-      int $$6 = $$1.size();
-      int $$7 = $$5 + $$6;
-      this.b = new double[$$7];
-      this.c = new int[$$7];
-      this.d = new int[$$7];
-      boolean $$8 = !$$2;
-      boolean $$9 = !$$3;
-      int $$10 = 0;
-      int $$11 = 0;
-      int $$12 = 0;
+   protected ezj(ezq $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
+   }
 
-      while (true) {
-         boolean $$13 = $$11 >= $$5;
-         boolean $$14 = $$12 >= $$6;
-         if ($$13 && $$14) {
-            this.e = Math.max(1, $$10);
-            return;
-         }
-
-         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
-         if ($$15) {
-            $$11++;
-            if ($$8 && ($$12 == 0 || $$14)) {
-               continue;
-            }
-         } else {
-            $$12++;
-            if ($$9 && ($$11 == 0 || $$13)) {
-               continue;
-            }
-         }
-
-         int $$16 = $$11 - 1;
-         int $$17 = $$12 - 1;
-         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
-         if (!($$4 >= $$18 - 1.0E-7)) {
-            this.c[$$10] = $$16;
-            this.d[$$10] = $$17;
-            this.b[$$10] = $$18;
-            $$10++;
-            $$4 = $$18;
-         } else {
-            this.c[$$10 - 1] = $$16;
-            this.d[$$10 - 1] = $$17;
-         }
+   ezj(ezq $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
       }
    }
 
    @Override
-   public boolean a(ezi.a $$0) {
-      int $$1 = this.e - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
-            return false;
-         }
+   public DoubleList a(jl.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
       }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.e;
-   }
-
-   @Override
-   public DoubleList a() {
-      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
    }
 }

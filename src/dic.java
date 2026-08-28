@@ -1,114 +1,83 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dic extends dge {
-   public static final MapCodec<dic> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lv.e.q().fieldOf("candle").forGetter($$0x -> $$0x.k), t()).apply($$0, dic::new)
-   );
-   public static final dvj d = dge.b;
-   protected static final float e = 1.0F;
-   protected static final ezq f = dhm.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
-   protected static final ezq g = dhm.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
-   protected static final ezq h = ezn.a(f, g);
-   private static final Map<dib, dic> i = Maps.newHashMap();
-   private static final Iterable<eyw> j = ImmutableList.of(new eyw(0.5, 1.0, 0.5));
-   private final dib k;
+public class dic extends dhk {
+   public static final MapCodec<dic> a = b(dic::new);
+   public static final dvu[] b = new dvu[]{dvt.k, dvt.l, dvt.m};
+   protected static final fab c = ezy.a(dhy.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dhy.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
 
    @Override
    public MapCodec<dic> a() {
+      return a;
+   }
+
+   public dic(dvc.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b[0], Boolean.valueOf(false)).b(b[1], Boolean.valueOf(false)).b(b[2], Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected doe a_(dvd $$0) {
+      return doe.c;
+   }
+
+   @Override
+   public dsg a(jg $$0, dvd $$1) {
+      return new dsj($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsg> dsh<T> a(dev $$0, dvd $$1, dsi<T> $$2) {
+      return $$0.C ? null : a($$2, dsi.l, dsj::a);
+   }
+
+   @Override
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
       return c;
    }
 
-   protected dic(dhm $$0, dur.d $$1) {
-      super($$1);
-      this.l(this.F.b().b(d, Boolean.valueOf(false)));
-      if ($$0 instanceof dib $$2) {
-         i.put($$2, this);
-         this.k = $$2;
-      } else {
-         throw new IllegalArgumentException("Expected block to be of " + dib.class + " was " + $$0.getClass());
-      }
-   }
-
    @Override
-   protected Iterable<eyw> b(dus $$0) {
-      return j;
-   }
-
-   @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return h;
-   }
-
-   @Override
-   protected brs a(cvs $$0, dus $$1, dej $$2, jf $$3, cnx $$4, brr $$5, eys $$6) {
-      if ($$0.a(cvw.ot) || $$0.a(cvw.tY)) {
-         return brs.e;
-      } else if (a($$6) && $$0.f() && $$1.c(d)) {
-         a($$4, $$1, $$2, $$3);
-         return brs.a;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-   }
-
-   @Override
-   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
-      brs $$5 = dhy.a($$1, $$2, dho.eg.n(), $$3);
-      if ($$5.a()) {
-         c($$0, $$1, $$2);
+   protected bry a(dvd $$0, dev $$1, jg $$2, coh $$3, ezd $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dsj $$5) {
+         $$3.a($$5);
+         $$3.a(awu.aa);
       }
 
-      return $$5;
-   }
-
-   private static boolean a(eys $$0) {
-      return $$0.g().e - (double)$$0.b().v() > 0.5;
+      return bry.a;
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(d);
+   public void a(dvd $$0, dev $$1, jg $$2, azr $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(lq.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
    @Override
-   public cvs a(dem $$0, jf $$1, dus $$2) {
-      return new cvs(dho.eg);
+   protected void a(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
+      bru.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      return $$1 == jk.a && !$$0.a($$3, $$4) ? dho.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      return $$1.a_($$2.e()).e();
-   }
-
-   @Override
-   protected int a(dus $$0, dej $$1, jf $$2) {
-      return dhy.d;
-   }
-
-   @Override
-   protected boolean c_(dus $$0) {
+   protected boolean c_(dvd $$0) {
       return true;
    }
 
    @Override
-   protected boolean a(dus $$0, eri $$1) {
+   protected int a(dvd $$0, dev $$1, jg $$2) {
+      return crj.a($$1.c_($$2));
+   }
+
+   @Override
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(b[0], b[1], b[2]);
+   }
+
+   @Override
+   protected boolean a(dvd $$0, ert $$1) {
       return false;
-   }
-
-   public static dus a(dib $$0) {
-      return i.get($$0).n();
-   }
-
-   public static boolean h(dus $$0) {
-      return $$0.a(awv.bl, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

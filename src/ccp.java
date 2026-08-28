@@ -1,44 +1,47 @@
-import java.util.EnumSet;
+public class ccp extends cbt {
+   private final ciq a;
+   private int b;
 
-public class ccp extends cbk {
-   private final bvj a;
-
-   public ccp(bvj $$0) {
+   public ccp(ciq $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cbk.a.c, cbk.a.a));
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.go();
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.a.q()) {
-         return false;
-      } else if (this.a.bl()) {
-         return false;
-      } else if (!this.a.aH()) {
-         return false;
-      } else {
-         bun $$0 = this.a.S_();
-         if ($$0 == null) {
-            return true;
-         } else {
-            return this.a.g((btr)$$0) < 144.0 && $$0.en() != null ? false : this.a.go();
-         }
-      }
+      this.a($$0);
    }
 
    @Override
    public void d() {
-      this.a.P().o();
-      this.a.y(true);
+      this.a.hc();
+      this.h();
+   }
+
+   private void h() {
+      awj $$0 = this.a.hb();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
    }
 
    @Override
-   public void e() {
-      this.a.y(false);
+   public boolean c() {
+      return false;
+   }
+
+   @Override
+   public boolean b() {
+      this.b++;
+      if (this.b > 0 && this.a.ea().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fk() && this.a.ea().a(10) == 0;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(ciq $$0) {
+      this.b = -$$0.hg();
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
    }
 }

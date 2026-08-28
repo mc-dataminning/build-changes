@@ -1,49 +1,68 @@
-public class fwr extends fxo<gta> {
-   private final gaq a;
-   private final gaq b;
-   private final gaq c;
-   private final gaq d;
-   private final gaq e;
-   private final gaq f;
-   private final gaq g;
+public class fwr<S extends gus> extends fym<S> {
+   private static final String x = "left_sleeve";
+   private static final String y = "right_sleeve";
+   private static final String z = "left_pants";
+   private static final String A = "right_pants";
+   public final gbb a = this.s.b("left_sleeve");
+   public final gbb b = this.r.b("right_sleeve");
+   public final gbb c = this.u.b("left_pants");
+   public final gbb d = this.t.b("right_pants");
+   public final gbb e = this.q.b("jacket");
+   public final gbb f = this.o.b("right_ear");
+   public final gbb g = this.o.b("left_ear");
 
-   public fwr(gaq $$0) {
-      super($$0, ghv::e);
-      this.b = $$0.b("body");
-      this.a = $$0.b("head");
-      this.c = this.b.b("right_wing");
-      this.e = this.c.b("right_wing_tip");
-      this.d = this.b.b("left_wing");
-      this.f = this.d.b("left_wing_tip");
-      this.g = this.b.b("feet");
+   public fwr(gbb $$0) {
+      super($$0, gig::i);
    }
 
-   public static gaw a() {
-      gay $$0 = new gay();
-      gba $$1 = $$0.a();
-      gba $$2 = $$1.a("body", gav.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), gas.a(0.0F, 17.0F, 0.0F));
-      gba $$3 = $$1.a("head", gav.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), gas.a(0.0F, 17.0F, 0.0F));
-      $$3.a("right_ear", gav.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), gas.a(-1.5F, -2.0F, 0.0F));
-      $$3.a("left_ear", gav.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), gas.a(1.1F, -3.0F, 0.0F));
-      gba $$4 = $$2.a("right_wing", gav.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gas.a(-1.5F, 0.0F, 0.0F));
-      $$4.a("right_wing_tip", gav.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gas.a(-2.0F, 0.0F, 0.0F));
-      gba $$5 = $$2.a("left_wing", gav.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gas.a(1.5F, 0.0F, 0.0F));
-      $$5.a("left_wing_tip", gav.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gas.a(2.0F, 0.0F, 0.0F));
-      $$2.a("feet", gav.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), gas.a(0.0F, 5.0F, 0.0F));
-      return gaw.a($$0, 32, 32);
+   public static gbj a(gbf $$0) {
+      gbj $$1 = fze.a($$0, false);
+      gbl $$2 = $$1.a();
+      $$2.a("body", gbg.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gbd.a);
+      gbl $$3 = a($$0, $$1);
+      $$3.a("hat");
+      return $$1;
    }
 
-   public void a(gta $$0) {
+   public static gbl a(gbf $$0, gbj $$1) {
+      gbl $$2 = $$1.a();
+      gbl $$3 = $$2.a(
+         "head",
+         gbg.c()
+            .a(0, 0)
+            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
+            .a(31, 1)
+            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
+            .a(2, 4)
+            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
+            .a(2, 0)
+            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
+         gbd.a
+      );
+      $$3.a("left_ear", gbg.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gbd.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
+      $$3.a("right_ear", gbg.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gbd.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
+      return $$3;
+   }
+
+   @Override
+   public void a(S $$0) {
       super.a($$0);
-      if ($$0.a) {
-         this.a($$0.U);
-      }
-
-      this.a($$0.b, fji.b, $$0.p, 1.0F);
-      this.a($$0.c, fji.a, $$0.p, 1.0F);
+      float $$1 = $$0.X;
+      float $$2 = $$0.Y;
+      float $$3 = (float) (Math.PI / 6);
+      float $$4 = $$0.p * 0.1F + $$1 * 0.5F;
+      float $$5 = 0.08F + $$2 * 0.4F;
+      this.g.g = (float) (-Math.PI / 6) - azj.b($$4 * 1.2F) * $$5;
+      this.f.g = (float) (Math.PI / 6) + azj.b($$4) * $$5;
    }
 
-   private void a(float $$0) {
-      this.a.f = $$0 * (float) (Math.PI / 180.0);
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

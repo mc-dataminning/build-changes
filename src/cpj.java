@@ -1,45 +1,77 @@
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public abstract class cpj extends cpb {
+   private static final float b = 12.25F;
 
-public class cpj extends cph {
-   private static final dec g = new dfb(true, false, Optional.of(1.22F), lv.e.a(awv.cz).map(Function.identity()));
-   private static final float h = 1.2F;
-   private static final float i = azf.l(3.5F);
-   private int j = 5;
-
-   public cpj(bty<? extends cph> $$0, dej $$1) {
+   protected cpj(bug<? extends cpj> $$0, dev $$1) {
       super($$0, $$1);
    }
 
-   public cpj(cnx $$0, dej $$1, double $$2, double $$3, double $$4) {
-      super(bty.bn, $$1, $$0, $$2, $$3, $$4);
-   }
-
-   public cpj(dej $$0, double $$1, double $$2, double $$3, eyw $$4) {
-      super(bty.bn, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.j > 0) {
-         this.j--;
-      }
-   }
-
-   @Override
-   public boolean a(cos $$0, @Nullable btr $$1, @Nullable btr $$2, boolean $$3) {
-      return this.j > 0 ? false : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(eyw $$0) {
-      this.dS().a(this, null, g, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dej.a.e, lo.A, lo.z, awg.Cw);
+   protected cpj(bug<? extends cpj> $$0, double $$1, double $$2, double $$3, dev $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
    public boolean a(double $$0) {
-      return this.ag < 2 && $$0 < (double)i ? false : super.a($$0);
+      if (this.ag < 2 && $$0 < 12.25) {
+         return false;
+      } else {
+         double $$1 = this.cS().a() * 4.0;
+         if (Double.isNaN($$1)) {
+            $$1 = 4.0;
+         }
+
+         $$1 *= 64.0;
+         return $$0 < $$1 * $$1;
+      }
+   }
+
+   @Override
+   public boolean o(boolean $$0) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      ezf $$0 = cpd.a(this, this::b);
+      ezh $$1;
+      if ($$0.d() != ezf.a.a) {
+         $$1 = $$0.g();
+      } else {
+         $$1 = this.dv().e(this.dA());
+      }
+
+      this.b($$1);
+      this.G();
+      this.aK();
+      super.l();
+      if ($$0.d() != ezf.a.a && this.bM()) {
+         this.b($$0);
+      }
+
+      this.o();
+      this.bg();
+   }
+
+   private void o() {
+      ezh $$0 = this.dA();
+      ezh $$1 = this.dv();
+      float $$4;
+      if (this.bk()) {
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            float $$3 = 0.25F;
+            this.dX().a(lq.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+         }
+
+         $$4 = 0.8F;
+      } else {
+         $$4 = 0.99F;
+      }
+
+      this.h($$0.c((double)$$4));
+   }
+
+   @Override
+   protected double be() {
+      return 0.03;
    }
 }

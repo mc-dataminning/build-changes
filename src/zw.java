@@ -1,29 +1,20 @@
-public class zw implements zl<zr> {
-   public static final zc<wb, zw> a = zl.a(zw::a, zw::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
+import java.util.HashMap;
+import java.util.Map;
 
-   public zw(int $$0) {
-      this.b = $$0;
-   }
-
-   private zw(wb $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(wb $$0) {
-      $$0.q(this.b);
-   }
+public record zw(Map<String, String> b) implements zo<zu> {
+   private static final int c = 128;
+   private static final int d = 4096;
+   private static final int e = 32;
+   private static final zf<ByteBuf, Map<String, String>> f = zd.a(HashMap::new, zd.b(128), zd.b(4096), 32);
+   public static final zf<ByteBuf, zw> a = zf.a(f, zw::b, zw::new);
 
    @Override
-   public zn<zw> a() {
-      return aad.e;
+   public zq<zw> a() {
+      return aag.b;
    }
 
-   public void a(zr $$0) {
+   public void a(zu $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

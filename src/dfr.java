@@ -1,70 +1,25 @@
-public abstract class dfr {
-   public static final ald<dfk> a = a("the_void");
-   public static final ald<dfk> b = a("plains");
-   public static final ald<dfk> c = a("sunflower_plains");
-   public static final ald<dfk> d = a("snowy_plains");
-   public static final ald<dfk> e = a("ice_spikes");
-   public static final ald<dfk> f = a("desert");
-   public static final ald<dfk> g = a("swamp");
-   public static final ald<dfk> h = a("mangrove_swamp");
-   public static final ald<dfk> i = a("forest");
-   public static final ald<dfk> j = a("flower_forest");
-   public static final ald<dfk> k = a("birch_forest");
-   public static final ald<dfk> l = a("dark_forest");
-   public static final ald<dfk> m = a("old_growth_birch_forest");
-   public static final ald<dfk> n = a("old_growth_pine_taiga");
-   public static final ald<dfk> o = a("old_growth_spruce_taiga");
-   public static final ald<dfk> p = a("taiga");
-   public static final ald<dfk> q = a("snowy_taiga");
-   public static final ald<dfk> r = a("savanna");
-   public static final ald<dfk> s = a("savanna_plateau");
-   public static final ald<dfk> t = a("windswept_hills");
-   public static final ald<dfk> u = a("windswept_gravelly_hills");
-   public static final ald<dfk> v = a("windswept_forest");
-   public static final ald<dfk> w = a("windswept_savanna");
-   public static final ald<dfk> x = a("jungle");
-   public static final ald<dfk> y = a("sparse_jungle");
-   public static final ald<dfk> z = a("bamboo_jungle");
-   public static final ald<dfk> A = a("badlands");
-   public static final ald<dfk> B = a("eroded_badlands");
-   public static final ald<dfk> C = a("wooded_badlands");
-   public static final ald<dfk> D = a("meadow");
-   public static final ald<dfk> E = a("cherry_grove");
-   public static final ald<dfk> F = a("grove");
-   public static final ald<dfk> G = a("snowy_slopes");
-   public static final ald<dfk> H = a("frozen_peaks");
-   public static final ald<dfk> I = a("jagged_peaks");
-   public static final ald<dfk> J = a("stony_peaks");
-   public static final ald<dfk> K = a("river");
-   public static final ald<dfk> L = a("frozen_river");
-   public static final ald<dfk> M = a("beach");
-   public static final ald<dfk> N = a("snowy_beach");
-   public static final ald<dfk> O = a("stony_shore");
-   public static final ald<dfk> P = a("warm_ocean");
-   public static final ald<dfk> Q = a("lukewarm_ocean");
-   public static final ald<dfk> R = a("deep_lukewarm_ocean");
-   public static final ald<dfk> S = a("ocean");
-   public static final ald<dfk> T = a("deep_ocean");
-   public static final ald<dfk> U = a("cold_ocean");
-   public static final ald<dfk> V = a("deep_cold_ocean");
-   public static final ald<dfk> W = a("frozen_ocean");
-   public static final ald<dfk> X = a("deep_frozen_ocean");
-   public static final ald<dfk> Y = a("mushroom_fields");
-   public static final ald<dfk> Z = a("dripstone_caves");
-   public static final ald<dfk> aa = a("lush_caves");
-   public static final ald<dfk> ab = a("deep_dark");
-   public static final ald<dfk> ac = a("nether_wastes");
-   public static final ald<dfk> ad = a("warped_forest");
-   public static final ald<dfk> ae = a("crimson_forest");
-   public static final ald<dfk> af = a("soul_sand_valley");
-   public static final ald<dfk> ag = a("basalt_deltas");
-   public static final ald<dfk> ah = a("the_end");
-   public static final ald<dfk> ai = a("end_highlands");
-   public static final ald<dfk> aj = a("end_midlands");
-   public static final ald<dfk> ak = a("small_end_islands");
-   public static final ald<dfk> al = a("end_barrens");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static ald<dfk> a(String $$0) {
-      return ald.a(lw.aH, ale.b($$0));
+public record dfr(dei d, cra e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dfr> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dei.b.lenientOptionalFieldOf("DataPacks", dei.a).forGetter(dfr::a), crc.g.lenientOptionalFieldOf("enabled_features", crc.i).forGetter(dfr::b)
+            )
+            .apply($$0, dfr::new)
+   );
+   public static final dfr c = new dfr(dei.a, crc.i);
+
+   public dfr a(cra $$0) {
+      return new dfr(this.d, this.e.c($$0));
+   }
+
+   public dei a() {
+      return this.d;
+   }
+
+   public cra b() {
+      return this.e;
    }
 }

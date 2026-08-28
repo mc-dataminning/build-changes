@@ -1,61 +1,65 @@
-import java.net.URI;
+public class fpz extends fqs {
+   private static final xh a = xh.c("gui.toMenu");
+   private static final xh b = xh.c("gui.toTitle");
+   private static final xh c = xh.c("gui.report_to_server");
+   private static final xh d = xh.c("gui.open_report_dir");
+   private final fqs s;
+   private final wd u;
+   private final xh v;
+   private final fos w = fos.d();
 
-public class fpz extends fqh {
-   private static final xe a = xe.c("symlink_warning.title.world").a(n.r);
-   private static final xe b = xe.a("symlink_warning.message.world", xe.a(ayb.p));
-   private static final xe c = xe.c("symlink_warning.title.pack").a(n.r);
-   private static final xe d = xe.a("symlink_warning.message.pack", xe.a(ayb.p));
-   private final xe s;
-   private final URI u;
-   private final Runnable v;
-   private final fob w = new fob().b(10);
+   public fpz(fqs $$0, xh $$1, xh $$2) {
+      this($$0, $$1, new wd($$2));
+   }
 
-   public fpz(xe $$0, xe $$1, URI $$2, Runnable $$3) {
-      super($$0);
-      this.s = $$1;
+   public fpz(fqs $$0, xh $$1, xh $$2, xh $$3) {
+      this($$0, $$1, new wd($$2), $$3);
+   }
+
+   public fpz(fqs $$0, xh $$1, wd $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fpz(fqs $$0, xh $$1, wd $$2, xh $$3) {
+      super($$1);
+      this.s = $$0;
       this.u = $$2;
       this.v = $$3;
    }
 
-   public static fqh a(Runnable $$0) {
-      return new fpz(a, b, ayb.p, $$0);
-   }
-
-   public static fqh b(Runnable $$0) {
-      return new fpz(c, d, ayb.p, $$0);
-   }
-
    @Override
    protected void aS_() {
-      super.aS_();
-      this.w.c().b();
-      fob.b $$0 = this.w.d(1);
-      $$0.a(new flv(this.l, this.p));
-      $$0.a(new fli(this.s, this.p).d(this.n - 50).b(true));
-      int $$1 = 120;
-      fob $$2 = new fob().a(5);
-      fob.b $$3 = $$2.d(3);
-      $$3.a(fko.a(xd.n, $$0x -> ad.m().a(this.u)).b(120, 20).a());
-      $$3.a(fko.a(xd.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
-      $$3.a(fko.a(xd.k, $$0x -> this.d()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
+      this.w.c().b().a(10);
+      this.w.a(new fmg(this.l, this.p));
+      this.w.a(new flt(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(fkz.a(c, fpp.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(fkz.a(d, $$1x -> ad.m().a($$0.getParent())).a(200).a()));
+      fkz $$0;
+      if (this.m.F()) {
+         $$0 = fkz.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
+      } else {
+         $$0 = fkz.a(b, $$0x -> this.m.a(new fqu())).a(200).a();
+      }
+
+      this.w.a($$0);
+      this.w.a();
       this.w.a(this::c);
+      this.c();
    }
 
    @Override
    protected void c() {
-      this.w.a();
-      foa.a(this.w, this.H());
+      fol.a(this.w, this.H());
    }
 
    @Override
-   public xe i() {
-      return xd.a(super.i(), this.s);
+   public xh i() {
+      return xg.a(this.l, this.u.a());
    }
 
    @Override
-   public void d() {
-      this.v.run();
+   public boolean aI_() {
+      return false;
    }
 }

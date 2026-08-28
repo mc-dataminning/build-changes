@@ -1,40 +1,27 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ffo implements Iterable<fep> {
-   private final fip a;
-   private final Set<fep> b = new HashSet<>();
-   private List<fep> c = List.of();
+public class ffo extends ffn {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public ffo(fip $$0) {
-      this.a = $$0;
-   }
+   public static ffo a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      ffo $$3 = new ffo();
 
-   public void a(List<fep> $$0) {
-      List<fep> $$1 = new ArrayList<>($$0);
-      $$1.sort(new fep.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+      try {
+         $$3.a = fhk.b("downloadLink", $$2, "");
+         $$3.b = fhk.b("resourcePackUrl", $$2, "");
+         $$3.c = fhk.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
 
-      this.c = $$1;
-   }
-
-   public void a(fep $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<fep> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+      return $$3;
    }
 }

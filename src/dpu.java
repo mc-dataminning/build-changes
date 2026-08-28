@@ -1,91 +1,112 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dpu extends dhm {
-   public static final MapCodec<dpu> a = b(dpu::new);
-   private static final dvs b = dvi.aT;
-   private static final int c = 20;
-   private static final int d = 8;
+public class dpu extends dih implements dib {
+   public static final MapCodec<dpu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alg.a(ly.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
+               alg.a(ly.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
+               alg.a(ly.K).fieldOf("seed").forGetter($$0x -> $$0x.h),
+               t()
+            )
+            .apply($$0, dpu::new)
+   );
+   public static final int b = 7;
+   public static final dwd c = dvt.av;
+   protected static final float d = 1.0F;
+   protected static final fab[] e = new fab[]{
+      dhy.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      dhy.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      dhy.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      dhy.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      dhy.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      dhy.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      dhy.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      dhy.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final alg<dhy> f;
+   private final alg<dhy> g;
+   private final alg<cvt> h;
 
    @Override
    public MapCodec<dpu> a() {
       return a;
    }
 
-   public dpu(dur.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
+   protected dpu(alg<dhy> $$0, alg<dhy> $$1, alg<cvt> $$2, dvc.d $$3) {
+      super($$3);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dej $$0, dus $$1, eys $$2, cor $$3) {
-      int $$4 = a((dek)$$0, $$1, $$2, (btr)$$3);
-      if ($$3.s() instanceof ark $$6) {
-         $$6.a(awq.aE);
-         an.M.a($$6, $$3, $$2.g(), $$4);
-      }
-   }
-
-   private static int a(dek $$0, dus $$1, eys $$2, btr $$3) {
-      int $$4 = a($$2, $$2.g());
-      int $$5 = $$3 instanceof coe ? 20 : 8;
-      if (!$$0.R().a($$2.b(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.b(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(eys $$0, eyw $$1) {
-      jk $$2 = $$0.c();
-      double $$3 = Math.abs(azf.e($$1.d) - 0.5);
-      double $$4 = Math.abs(azf.e($$1.e) - 0.5);
-      double $$5 = Math.abs(azf.e($$1.f) - 0.5);
-      jk.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == jk.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == jk.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, azf.c(15.0 * azf.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(dek $$0, dus $$1, int $$2, jf $$3, int $$4) {
-      $$0.a($$3, $$1.b(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return e[$$0.c(c)];
    }
 
    @Override
-   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 3);
+   protected boolean b(dvd $$0, dea $$1, jg $$2) {
+      return $$0.a(dia.cC);
+   }
+
+   @Override
+   protected void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = djt.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(c);
+            if ($$5 < 7) {
+               $$0 = $$0.b(c, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
+            } else {
+               jl $$6 = jl.c.a.a($$3);
+               jg $$7 = $$2.a($$6);
+               dvd $$8 = $$1.a_($$7.e());
+               if ($$1.a_($$7).l() && ($$8.a(dia.cC) || $$8.a(awz.ag))) {
+                  kc<dhy> $$9 = $$1.H_().e(ly.f);
+                  Optional<dhy> $$10 = $$9.f(this.f);
+                  Optional<dhy> $$11 = $$9.f(this.g);
+                  if ($$10.isPresent() && $$11.isPresent()) {
+                     $$1.b($$7, $$10.get().m());
+                     $$1.b($$2, $$11.get().m().b(dlt.aF, $$6));
+                  }
+               }
+            }
+         }
       }
    }
 
    @Override
-   protected int a(dus $$0, ddo $$1, jf $$2, jk $$3) {
-      return $$0.c(b);
+   public cvx a(dey $$0, jg $$1, dvd $$2) {
+      return new cvx((deu)DataFixUtils.orElse($$0.H_().e(ly.K).f(this.h), this));
    }
 
    @Override
-   protected boolean f_(dus $$0) {
+   public boolean b(dey $$0, jg $$1, dvd $$2) {
+      return $$2.c(c) != 7;
+   }
+
+   @Override
+   public boolean a(dev $$0, azr $$1, jg $$2, dvd $$3) {
       return true;
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(b);
+   public void a(arm $$0, azr $$1, jg $$2, dvd $$3) {
+      int $$4 = Math.min(7, $$3.c(c) + azj.a($$0.A, 2, 5));
+      dvd $$5 = $$3.b(c, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.A);
+      }
    }
 
    @Override
-   protected void b(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
-      if (!$$1.x_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.R().a($$2, this)) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 18);
-         }
-      }
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(c);
    }
 }

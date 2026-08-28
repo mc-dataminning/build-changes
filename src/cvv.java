@@ -1,39 +1,37 @@
-public class cvv {
-   public static brs a(dej $$0, cnx $$1, brr $$2) {
-      $$1.c($$2);
-      return brs.c;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
+
+public enum cvv implements baf {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
+
+   public static final Codec<cvv> j = baf.a(cvv::values);
+   public static final IntFunction<cvv> k = aya.a(cvv::a, values(), aya.a.a);
+   private final byte l;
+   private final String m;
+
+   private cvv(final int $$0, final String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
-   public static cvs a(cvs $$0, cnx $$1, cvs $$2, boolean $$3) {
-      boolean $$4 = $$1.fR();
-      if ($$3 && $$4) {
-         if (!$$1.gd().i($$2)) {
-            $$1.gd().f($$2);
-         }
-
-         return $$0;
-      } else {
-         $$0.a(1, $$1);
-         if ($$0.f()) {
-            return $$2;
-         } else {
-            if (!$$1.gd().f($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
-      }
+   @Override
+   public String c() {
+      return this.m;
    }
 
-   public static cvs a(cvs $$0, cnx $$1, cvs $$2) {
-      return a($$0, $$1, $$2, true);
+   public byte a() {
+      return this.l;
    }
 
-   public static void a(ckh $$0, Iterable<cvs> $$1) {
-      dej $$2 = $$0.dS();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new ckh($$2, $$0.dx(), $$0.dz(), $$0.dD(), $$2x)));
-      }
+   public boolean b() {
+      return this == d || this == e;
    }
 }

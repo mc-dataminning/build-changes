@@ -1,65 +1,105 @@
-public class cpp {
-   public static final cpp a = a("core");
-   public static final cpp b = a("idle");
-   public static final cpp c = a("work");
-   public static final cpp d = a("play");
-   public static final cpp e = a("rest");
-   public static final cpp f = a("meet");
-   public static final cpp g = a("panic");
-   public static final cpp h = a("raid");
-   public static final cpp i = a("pre_raid");
-   public static final cpp j = a("hide");
-   public static final cpp k = a("fight");
-   public static final cpp l = a("celebrate");
-   public static final cpp m = a("admire_item");
-   public static final cpp n = a("avoid");
-   public static final cpp o = a("ride");
-   public static final cpp p = a("play_dead");
-   public static final cpp q = a("long_jump");
-   public static final cpp r = a("ram");
-   public static final cpp s = a("tongue");
-   public static final cpp t = a("swim");
-   public static final cpp u = a("lay_spawn");
-   public static final cpp v = a("sniff");
-   public static final cpp w = a("investigate");
-   public static final cpp x = a("roar");
-   public static final cpp y = a("emerge");
-   public static final cpp z = a("dig");
-   private final String A;
-   private final int B;
+public class cpp extends coq {
+   private static final akk<Boolean> e = ako.a(cpp.class, akm.k);
 
-   private cpp(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+   public cpp(bug<? extends cpp> $$0, dev $$1) {
+      super($$0, $$1);
    }
 
-   public String a() {
-      return this.A;
-   }
-
-   private static cpp a(String $$0) {
-      return kb.a(lv.C, $$0, new cpp($$0));
+   public cpp(dev $$0, buv $$1, ezh $$2) {
+      super(bug.br, $$1, $$2, $$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         cpp $$1 = (cpp)$$0;
-         return this.A.equals($$1.A);
-      } else {
-         return false;
+   protected float t() {
+      return this.w() ? 0.73F : super.t();
+   }
+
+   @Override
+   public boolean bZ() {
+      return false;
+   }
+
+   @Override
+   public float a(den $$0, dea $$1, jg $$2, dvd $$3, ere $$4, float $$5) {
+      return this.w() && ckd.c($$3) ? Math.min(0.8F, $$5) : $$5;
+   }
+
+   @Override
+   protected void a(eze $$0) {
+      super.a($$0);
+      if (this.dX() instanceof arm $$1) {
+         btz var8 = $$0.a();
+         boolean $$7;
+         if (this.s() instanceof buv $$5) {
+            bsp $$6 = this.dY().a(this, $$5);
+            $$7 = var8.a($$6, 8.0F);
+            if ($$7) {
+               if (var8.bM()) {
+                  dbo.a($$1, var8, $$6);
+               } else {
+                  $$5.c(5.0F);
+               }
+            }
+         } else {
+            $$7 = var8.a(this.dY().q(), 5.0F);
+         }
+
+         if ($$7 && var8 instanceof buv $$9) {
+            int $$10 = 0;
+            if (this.dX().am() == brv.c) {
+               $$10 = 10;
+            } else if (this.dX().am() == brv.d) {
+               $$10 = 40;
+            }
+
+            if ($$10 > 0) {
+               $$9.b(new bte(btg.t, 20 * $$10, 1), this.F());
+            }
+         }
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.B;
+   protected void a(ezf $$0) {
+      super.a($$0);
+      if (!this.dX().C) {
+         this.dX().a(this, this.dC(), this.dE(), this.dI(), 1.0F, false, dev.a.c);
+         this.au();
+      }
    }
 
    @Override
-   public String toString() {
-      return this.a();
+   public boolean a(bsp $$0, float $$1) {
+      return false;
+   }
+
+   @Override
+   protected void a(ako.a $$0) {
+      $$0.a(e, false);
+   }
+
+   public boolean w() {
+      return this.am.a(e);
+   }
+
+   public void a(boolean $$0) {
+      this.am.a(e, $$0);
+   }
+
+   @Override
+   protected boolean o() {
+      return false;
+   }
+
+   @Override
+   public void b(uj $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.w());
+   }
+
+   @Override
+   public void a(uj $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

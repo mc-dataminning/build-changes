@@ -1,79 +1,144 @@
+import com.google.common.collect.Multimap;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bwa<E extends buv> extends bwf<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private final float g;
-   private final Function<buv, axl<bsl>> h;
+public class bwa {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<jp<bvy>, bvz> b = new Object2ObjectOpenHashMap();
+   private final Set<bvz> c = new ObjectOpenHashSet();
+   private final Set<bvz> d = new ObjectOpenHashSet();
+   private final bwc e;
 
-   public bwa(float $$0) {
-      this($$0, $$0x -> awx.F);
+   public bwa(bwc $$0) {
+      this.e = $$0;
    }
 
-   public bwa(float $$0, Function<buv, axl<bsl>> $$1) {
-      super(Map.of(cdq.Z, cdr.c, cdq.x, cdr.c), 100, 120);
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   protected boolean a(arj $$0, E $$1) {
-      return $$1.dY().c(cdq.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.dY().a(cdq.Z);
-   }
-
-   protected boolean a(arj $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(arj $$0, E $$1, long $$2) {
-      $$1.dY().a(cdq.Z, true);
-      $$1.dY().b(cdq.m);
-   }
-
-   protected void c(arj $$0, E $$1, long $$2) {
-      bvo<?> $$3 = $$1.dY();
-      $$3.b(cdq.Z);
-   }
-
-   protected void d(arj $$0, E $$1, long $$2) {
-      if ($$1.P().m()) {
-         eyw $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dY().a(cdq.m, new cdt($$3, this.g, 0));
-         }
+   private void a(bvz $$0) {
+      this.d.add($$0);
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
       }
+   }
+
+   public Set<bvz> a() {
+      return this.c;
+   }
+
+   public Set<bvz> b() {
+      return this.d;
+   }
+
+   public Collection<bvz> c() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
    @Nullable
-   private eyw a(E $$0, arj $$1) {
-      if ($$0.bV()) {
-         Optional<eyw> $$2 = this.a((ddo)$$1, $$0).map(eyw::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return cfk.a($$0, 5, 4);
+   public bvz a(jp<bvy> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
    }
 
-   private Optional<jf> a(ddo $$0, btr $$1) {
-      jf $$2 = $$1.ds();
-      if (!$$0.a_($$2).g($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<jf> $$3;
-         if (azf.f($$1.dn()) == 2) {
-            $$3 = $$1x -> jf.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(axb.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(axb.a);
-         }
+   public boolean b(jp<bvy> $$0) {
+      return this.b.get($$0) != null || this.e.c($$0);
+   }
 
-         return jf.a($$2, 5, 1, $$3);
+   public boolean a(jp<bvy> $$0, alh $$1) {
+      bvz $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
+   }
+
+   public double c(jp<bvy> $$0) {
+      bvz $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.g() : this.e.a($$0);
+   }
+
+   public double d(jp<bvy> $$0) {
+      bvz $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.e.b($$0);
+   }
+
+   public double b(jp<bvy> $$0, alh $$1) {
+      bvz $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.e.a($$0, $$1);
+   }
+
+   public void a(Multimap<jp<bvy>, bwb> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bvz $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.c($$1.b());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jp<bvy>, bwb> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bvz $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.c($$1x.b()));
+         }
+      });
+   }
+
+   public void a(bwa $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bvz $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public void b(bwa $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bvz $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
+   }
+
+   public void c(bwa $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bvz $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.d());
+         }
+      });
+   }
+
+   public up d() {
+      up $$0 = new up();
+
+      for (bvz $$1 : this.b.values()) {
+         $$0.add($$1.h());
+      }
+
+      return $$0;
+   }
+
+   public void a(up $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         uj $$2 = $$0.a($$1);
+         String $$3 = $$2.l("id");
+         alh $$4 = alh.c($$3);
+         if ($$4 != null) {
+            ad.a(lx.s.c($$4), $$1x -> {
+               bvz $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
       }
    }
 }

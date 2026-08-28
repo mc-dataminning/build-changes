@@ -1,36 +1,20 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record dbw<T>(dbr a, dbr b, T c, Optional<eww> d) {
-   public static <S> Codec<dbw<S>> a(Codec<S> $$0, ewf $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  dbr.d.fieldOf("enchanted").forGetter(dbw::a),
-                  dbr.d.fieldOf("affected").forGetter(dbw::b),
-                  $$0.fieldOf("effect").forGetter(dbw::c),
-                  dbk.a($$1).optionalFieldOf("requirements").forGetter(dbw::d)
-               )
-               .apply($$2, dbw::new)
-      );
+public record dbw(dbt c) implements dcf {
+   public static final MapCodec<dbw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbt.b.fieldOf("value").forGetter(dbw::b)).apply($$0, dbw::new));
+
+   @Override
+   public float a(int $$0, azr $$1, float $$2) {
+      return $$2 + this.c.a($$0);
    }
 
-   public static <S> Codec<dbw<S>> b(Codec<S> $$0, ewf $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group(
-                  dbr.d
-                     .validate($$0xx -> $$0xx != dbr.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
-                     .fieldOf("enchanted")
-                     .forGetter(dbw::a),
-                  $$0.fieldOf("effect").forGetter(dbw::c),
-                  dbk.a($$1).optionalFieldOf("requirements").forGetter(dbw::d)
-               )
-               .apply($$2, ($$0xx, $$1xx, $$2x) -> new dbw<>($$0xx, dbr.c, $$1xx, $$2x))
-      );
+   @Override
+   public MapCodec<dbw> a() {
+      return a;
    }
 
-   public boolean a(etl $$0) {
-      return this.d.isEmpty() ? true : this.d.get().test($$0);
+   public dbt b() {
+      return this.c;
    }
 }

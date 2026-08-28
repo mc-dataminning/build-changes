@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface gxo extends AutoCloseable {
+   void a(int var1, int var2);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gxo {
+   @Override
+   void close();
 }

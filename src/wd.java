@@ -1,19 +1,9 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.net.URI;
+import java.nio.file.Path;
+import java.util.Optional;
 
-public class wd extends ChannelInboundHandlerAdapter {
-   private final vr a;
-
-   public wd(vr $$0) {
-      this.a = $$0;
-   }
-
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      if ($$1 instanceof ByteBuf $$2) {
-         this.a.a($$2.readableBytes());
-      }
-
-      $$0.fireChannelRead($$1);
+public record wd(xh a, Optional<Path> b, Optional<URI> c) {
+   public wd(xh $$0) {
+      this($$0, Optional.empty(), Optional.empty());
    }
 }

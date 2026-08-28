@@ -1,70 +1,63 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dzn implements dzt {
-   public static final MapCodec<dzn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ki.a.fieldOf("source_entity").forGetter(dzn::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
-            .apply($$0, ($$0x, $$1) -> new dzn(Either.right(Either.left($$0x)), $$1))
-   );
-   public static final zc<ByteBuf, dzn> b = zc.a(za.h, dzn::c, za.j, $$0 -> $$0.f, ($$0, $$1) -> new dzn(Either.right(Either.right($$0)), $$1));
-   private Either<btr, Either<UUID, Integer>> e;
-   private final float f;
+public class dzn {
+   private Int2ObjectMap<btz> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<btz> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<btz> c;
 
-   public dzn(btr $$0, float $$1) {
-      this(Either.left($$0), $$1);
-   }
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
 
-   private dzn(Either<btr, Either<UUID, Integer>> $$0, float $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
+         while ($$1.hasNext()) {
+            Entry<btz> $$0 = (Entry<btz>)$$1.next();
+            this.b.put($$0.getIntKey(), (btz)$$0.getValue());
+         }
 
-   @Override
-   public Optional<eyw> a(dej $$0) {
-      if (this.e.left().isEmpty()) {
-         this.b($$0);
+         Int2ObjectMap<btz> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
       }
-
-      return this.e.left().map($$0x -> $$0x.dq().b(0.0, (double)this.f, 0.0));
    }
 
-   private void b(dej $$0) {
-      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((btr)$$1.map($$1x -> $$0 instanceof arj $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.e = Either.left($$0x));
+   public void a(btz $$0) {
+      this.a();
+      this.a.put($$0.ar(), $$0);
    }
 
-   private UUID b() {
-      return (UUID)this.e.map(btr::cD, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
+   public void b(btz $$0) {
+      this.a();
+      this.a.remove($$0.ar());
    }
 
-   private int c() {
-      return (Integer)this.e.map(btr::ap, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
+   public boolean c(btz $$0) {
+      return this.a.containsKey($$0.ar());
    }
 
-   @Override
-   public dzu<dzn> a() {
-      return dzu.b;
-   }
+   public void a(Consumer<btz> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
 
-   public static class a implements dzu<dzn> {
-      @Override
-      public MapCodec<dzn> a() {
-         return dzn.a;
-      }
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
 
-      @Override
-      public zc<ByteBuf, dzn> b() {
-         return dzn.b;
+            while (var2.hasNext()) {
+               btz $$1 = (btz)var2.next();
+               $$0.accept($$1);
+            }
+         } finally {
+            this.c = null;
+         }
       }
    }
 }

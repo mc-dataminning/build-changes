@@ -1,36 +1,61 @@
-public class cbp extends cbk {
-   private final cha a;
-   private ark b;
-   private boolean c;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-   public cbp(cha $$0) {
-      this.a = $$0;
+public class cbp extends cbt {
+   private static final int a = 200;
+   private final cgk b;
+   private int c;
+   private int d;
+
+   public cbp(cgk $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(cgk $$0) {
+      return b(200 + $$0.ea().a(200) % 20);
    }
 
    @Override
    public boolean b() {
-      ark $$0 = (ark)this.a.S_();
-      boolean $$1 = $$0 != null && !$$0.Q_() && !$$0.ge().b && !$$0.bi() && !$$0.aw;
-      return !this.a.go() && $$1 && this.a.gE();
+      if (this.b.gB()) {
+         return false;
+      } else if (this.b.gy()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         this.d = this.a(this.b);
+         Predicate<cgk> $$0 = $$0x -> $$0x.gA() || !$$0x.gy();
+         List<? extends cgk> $$1 = this.b.dX().a((Class<? extends cgk>)this.b.getClass(), this.b.cS().c(8.0, 8.0, 8.0), $$0);
+         cgk $$2 = (cgk)DataFixUtils.orElse($$1.stream().filter(cgk::gA).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gy()));
+         return this.b.gy();
+      }
    }
 
    @Override
-   public boolean T_() {
-      return !this.c;
+   public boolean c() {
+      return this.b.gy() && this.b.gC();
    }
 
    @Override
    public void d() {
-      this.b = (ark)this.a.S_();
-      this.c = false;
+      this.c = 0;
+   }
+
+   @Override
+   public void e() {
+      this.b.gz();
    }
 
    @Override
    public void a() {
-      if (!this.c && !this.a.y() && !this.a.L_()) {
-         if (this.a.cO().c(this.b.cO())) {
-            this.c = this.a.b(this.b);
-         }
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gD();
       }
    }
 }

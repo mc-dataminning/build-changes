@@ -1,45 +1,106 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class awp<T> implements Iterable<awn<T>> {
-   private final kb<T> a;
-   private final Map<T, awn<T>> b = new IdentityHashMap<>();
-   private final xe c;
-   private final zc<wp, awn<T>> d;
+public class awp extends awn {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
 
-   public awp(kb<T> $$0, xe $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = za.a($$0.g()).a(this::b, awn::b);
+   public int a(Collection<dal<?>> $$0, arn $$1) {
+      List<alh> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (dal<?> $$4 : $$0) {
+         alh $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().aq_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            an.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(aeo.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   public zc<wp, awn<T>> a() {
-      return this.d;
+   public int b(Collection<dal<?>> $$0, arn $$1) {
+      List<alh> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (dal<?> $$4 : $$0) {
+         alh $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(aeo.a.c, $$1, $$2);
+      return $$3;
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   private void a(aeo.a $$0, arn $$1, List<alh> $$2) {
+      $$1.d.b(new aeo($$0, $$2, Collections.emptyList(), this.a()));
    }
 
-   public awn<T> a(T $$0, awo $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new awn<>(this, (T)$$1x, $$1));
+   public uj b() {
+      uj $$0 = new uj();
+      this.a().b($$0);
+      up $$1 = new up();
+
+      for (alh $$2 : this.a) {
+         $$1.add(ve.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      up $$3 = new up();
+
+      for (alh $$4 : this.b) {
+         $$3.add(ve.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
    }
 
-   public kb<T> b() {
-      return this.a;
+   public void a(uj $$0, dan $$1) {
+      this.a(awo.a($$0));
+      up $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      up $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
    }
 
-   @Override
-   public Iterator<awn<T>> iterator() {
-      return this.b.values().iterator();
+   private void a(up $$0, Consumer<dal<?>> $$1, dan $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            alh $$5 = alh.a($$4);
+            Optional<dal<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (aa var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
    }
 
-   public awn<T> b(T $$0) {
-      return this.a($$0, awo.b);
-   }
-
-   public xe c() {
-      return this.c;
+   public void a(arn $$0) {
+      $$0.d.b(new aeo(aeo.a.a, this.a, this.b, this.a()));
    }
 }

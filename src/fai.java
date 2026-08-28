@@ -1,59 +1,19 @@
-public interface fai extends brl {
-   cvs f();
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   default cvs c(int $$0) {
-      return this.f().a($$0);
+public interface fai {
+   int a();
+
+   boolean b();
+
+   @Nullable
+   yx c();
+
+   default xv a(yx $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
    }
 
-   void b(cvs var1);
-
-   default cvs h() {
-      return this.c(this.al_());
-   }
-
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean c() {
-      return this.f().f();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cvs b(int $$0) {
-      return this.a($$0, this.al_());
-   }
-
-   @Override
-   default cvs a(int $$0) {
-      return $$0 == 0 ? this.f() : cvs.k;
-   }
-
-   @Override
-   default cvs a(int $$0, int $$1) {
-      return $$0 != 0 ? cvs.k : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cvs $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
-
-   public interface a extends fai {
-      drv v();
-
-      @Override
-      default boolean a(cnx $$0) {
-         return brl.a(this.v(), $$0);
-      }
+   static xv a(@Nullable fai $$0, yx $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
    }
 }

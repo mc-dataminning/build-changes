@@ -1,27 +1,47 @@
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.function.LongSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class bon {
-   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private boi f = boh.a;
 
-   private bon() {
+   public bon(LongSupplier $$0, String $$1, long $$2) {
+      this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
    }
 
-   public static Map<Integer, Double> a(long[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   public bok a() {
+      this.f = new bod(this.b, () -> this.d, false);
+      this.d++;
+      return this.f;
    }
 
-   public static Map<Integer, Double> a(double[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   public void b() {
+      if (this.f != boh.a) {
+         boj $$0 = this.f.d();
+         this.f = boh.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ad.f() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
+      }
    }
 
-   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
-      Int2DoubleSortedMap $$1 = ad.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
-      return Int2DoubleSortedMaps.unmodifiable($$1);
+   @Nullable
+   public static bon a(String $$0) {
+      return null;
+   }
+
+   public static bok a(bok $$0, @Nullable bon $$1) {
+      return $$1 != null ? bok.a($$1.a(), $$0) : $$0;
    }
 }

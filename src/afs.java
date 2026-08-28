@@ -1,20 +1,16 @@
-public record afs(int b) implements zl<aca> {
-   public static final zc<wb, afs> a = zl.a(afs::a, afs::new);
-
-   private afs(wb $$0) {
-      this($$0.l());
-   }
-
-   private void a(wb $$0) {
-      $$0.c(this.b);
-   }
+public record afs(int b, cvx c) implements zo<acd> {
+   public static final zf<ws, afs> a = zf.a(zd.h, afs::b, cvx.h, afs::e, afs::new);
 
    @Override
-   public zn<afs> a() {
-      return agp.aN;
+   public zq<afs> a() {
+      return ags.cl;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
+   }
+
+   public cvx e() {
+      return this.c;
    }
 }

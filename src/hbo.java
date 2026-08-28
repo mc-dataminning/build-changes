@@ -1,285 +1,66 @@
-import com.google.common.base.MoreObjects;
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import org.apache.commons.lang3.Validate;
 
-public class hbo extends MinecraftServer {
-   private static final Logger l = LogUtils.getLogger();
-   private static final int m = 2;
-   private final fip n;
-   private boolean o = true;
-   private int p = -1;
-   @Nullable
-   private deg q;
-   @Nullable
-   private hbr r;
-   @Nullable
-   private UUID s;
-   private int t = 0;
+public class hbo implements JsonDeserializer<hbn> {
+   private static final brb a = bqz.a(1.0F);
 
-   public hbo(Thread $$0, fip $$1, esz.c $$2, aug $$3, amd $$4, alz $$5, art $$6) {
-      super($$0, $$2, $$3, $$4, $$1.Z(), $$1.au(), $$5, $$6);
-      this.b($$1.Y());
-      this.c($$1.K());
-      this.a(new hbn(this, this.bc(), this.g));
-      this.n = $$1;
+   public hbn a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+      JsonObject $$3 = ayz.m($$0, "entry");
+      boolean $$4 = ayz.a($$3, "replace", false);
+      String $$5 = ayz.a($$3, "subtitle", null);
+      List<hbm> $$6 = this.a($$3);
+      return new hbn($$6, $$4, $$5);
    }
 
-   @Override
-   public boolean e() {
-      l.info("Starting integrated minecraft server version {}", ab.b().c());
-      this.d(true);
-      this.f(true);
-      this.g(true);
-      this.V();
-      this.t_();
-      GameProfile $$0 = this.T();
-      String $$1 = this.ba().e();
-      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
-      return true;
-   }
+   private List<hbm> a(JsonObject $$0) {
+      List<hbm> $$1 = Lists.newArrayList();
+      if ($$0.has("sounds")) {
+         JsonArray $$2 = ayz.v($$0, "sounds");
 
-   @Override
-   public boolean E() {
-      return this.o;
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0) {
-      boolean $$1 = this.o;
-      this.o = fip.Q().ai();
-      bog $$2 = this.aS();
-      if (!$$1 && this.o) {
-         $$2.a("autoSave");
-         l.info("Saving and pausing game...");
-         this.b(false, false, false);
-         $$2.c();
-      }
-
-      boolean $$3 = fip.Q().L() != null;
-      if ($$3 && this.o) {
-         this.b();
-      } else {
-         if ($$1 && !this.o) {
-            this.H();
-         }
-
-         super.a($$0);
-         int $$4 = Math.max(2, this.n.n.e().c());
-         if ($$4 != this.ag().p()) {
-            l.info("Changing view distance to {}, from {}", $$4, this.ag().p());
-            this.ag().a($$4);
-         }
-
-         int $$5 = Math.max(2, this.n.n.f().c());
-         if ($$5 != this.t) {
-            l.info("Changing simulation distance to {}, from {}", $$5, this.t);
-            this.ag().b($$5);
-            this.t = $$5;
-         }
-      }
-   }
-
-   protected bmr a() {
-      return this.n.aR().l();
-   }
-
-   @Override
-   public boolean g() {
-      return true;
-   }
-
-   private void b() {
-      for (ark $$0 : this.ag().t()) {
-         $$0.a(awq.l);
-      }
-   }
-
-   @Override
-   public boolean m() {
-      return true;
-   }
-
-   @Override
-   public boolean K_() {
-      return true;
-   }
-
-   @Override
-   public Path D() {
-      return this.n.q.toPath();
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public int o() {
-      return 0;
-   }
-
-   @Override
-   public boolean p() {
-      return false;
-   }
-
-   @Override
-   public void a(o $$0) {
-      this.n.b($$0);
-   }
-
-   @Override
-   public ac a(ac $$0) {
-      $$0.a("Type", "Integrated Server (map_client.txt)");
-      $$0.a("Is Modded", () -> this.Q().b());
-      $$0.a("Launched Version", this.n::i);
-      return $$0;
-   }
-
-   @Override
-   public aze Q() {
-      return fip.e().a(super.Q());
-   }
-
-   @Override
-   public boolean a(@Nullable deg $$0, boolean $$1, int $$2) {
-      try {
-         this.n.aV();
-         this.n.L().w();
-         this.ah().a(null, $$2);
-         l.info("Started serving on {}", $$2);
-         this.p = $$2;
-         this.r = new hbr(this.ae(), $$2 + "");
-         this.r.start();
-         this.q = $$0;
-         this.ag().b($$1);
-         int $$3 = this.c(this.n.t.gc());
-         this.n.t.a($$3);
-
-         for (ark $$4 : this.ag().t()) {
-            this.aG().a($$4);
-         }
-
-         return true;
-      } catch (IOException var7) {
-         return false;
-      }
-   }
-
-   @Override
-   public void v() {
-      super.v();
-      if (this.r != null) {
-         this.r.interrupt();
-         this.r = null;
-      }
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.h(() -> {
-         for (ark $$1 : Lists.newArrayList(this.ag().t())) {
-            if (!$$1.cD().equals(this.s)) {
-               this.ag().c($$1);
+         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+            JsonElement $$4 = $$2.get($$3);
+            if (ayz.a($$4)) {
+               alh $$5 = alh.a(ayz.a($$4, "sound"));
+               $$1.add(new hbm($$5, a, a, 1, hbm.a.a, false, false, 16));
+            } else {
+               $$1.add(this.b(ayz.m($$4, "sound")));
             }
          }
-      });
-      super.a($$0);
-      if (this.r != null) {
-         this.r.interrupt();
-         this.r = null;
       }
+
+      return $$1;
    }
 
-   @Override
-   public boolean r() {
-      return this.p > -1;
+   private hbm b(JsonObject $$0) {
+      alh $$1 = alh.a(ayz.i($$0, "name"));
+      hbm.a $$2 = this.a($$0, hbm.a.a);
+      float $$3 = ayz.a($$0, "volume", 1.0F);
+      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
+      float $$4 = ayz.a($$0, "pitch", 1.0F);
+      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
+      int $$5 = ayz.a($$0, "weight", 1);
+      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
+      boolean $$6 = ayz.a($$0, "preload", false);
+      boolean $$7 = ayz.a($$0, "stream", false);
+      int $$8 = ayz.a($$0, "attenuation_distance", 16);
+      return new hbm($$1, bqz.a($$3), bqz.a($$4), $$5, $$2, $$7, $$6, $$8);
    }
 
-   @Override
-   public int S() {
-      return this.p;
-   }
-
-   @Override
-   public void a(deg $$0) {
-      super.a($$0);
-      this.q = null;
-   }
-
-   @Override
-   public boolean q() {
-      return true;
-   }
-
-   @Override
-   public int k() {
-      return 2;
-   }
-
-   @Override
-   public int l() {
-      return 2;
-   }
-
-   public void a(UUID $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return this.T() != null && $$0.getName().equalsIgnoreCase(this.T().getName());
-   }
-
-   @Override
-   public int b(int $$0) {
-      return (int)(this.n.n.g().c() * (double)$$0);
-   }
-
-   @Override
-   public boolean aY() {
-      return this.n.n.ad;
-   }
-
-   @Nullable
-   @Override
-   public deg be() {
-      return this.r() ? (deg)MoreObjects.firstNonNull(this.q, this.j.k()) : null;
-   }
-
-   @Override
-   public boolean b(boolean $$0, boolean $$1, boolean $$2) {
-      boolean $$3 = super.b($$0, $$1, $$2);
-      this.c();
-      return $$3;
-   }
-
-   private void c() {
-      if (this.f.b()) {
-         this.n.execute(() -> fmx.a(this.n));
+   private hbm.a a(JsonObject $$0, hbm.a $$1) {
+      hbm.a $$2 = $$1;
+      if ($$0.has("type")) {
+         $$2 = hbm.a.a(ayz.i($$0, "type"));
+         Validate.notNull($$2, "Invalid type", new Object[0]);
       }
-   }
 
-   @Override
-   public void a(Throwable $$0, dyh $$1, ddp $$2) {
-      super.a($$0, $$1, $$2);
-      this.c();
-      this.n.execute(() -> fmx.a(this.n, $$2));
-   }
-
-   @Override
-   public void b(Throwable $$0, dyh $$1, ddp $$2) {
-      super.b($$0, $$1, $$2);
-      this.c();
-      this.n.execute(() -> fmx.b(this.n, $$2));
+      return $$2;
    }
 }

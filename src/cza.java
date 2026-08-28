@@ -1,27 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
+import java.util.Optional;
 
-public record cza(boolean c) implements cyz {
+public record cza(float c, Optional<alh> d) {
    public static final Codec<cza> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cza::a)).apply($$0, cza::new)
+      $$0 -> $$0.group(ays.o.fieldOf("seconds").forGetter(cza::b), alh.a.optionalFieldOf("cooldown_group").forGetter(cza::c)).apply($$0, cza::new)
    );
-   public static final zc<ByteBuf, cza> b = za.b.a(cza::new, cza::a);
-   private static final xe d = xe.c("item.unbreakable").a(n.j);
+   public static final zf<ws, cza> b = zf.a(zd.j, cza::b, alh.b.a(zd::a), cza::c, cza::new);
 
-   @Override
-   public void a(cvn.b $$0, Consumer<xe> $$1, cxk $$2) {
-      if (this.c) {
-         $$1.accept(d);
+   public cza(float $$0) {
+      this($$0, Optional.empty());
+   }
+
+   public int a() {
+      return (int)(this.c * 20.0F);
+   }
+
+   public void a(cvx $$0, buv $$1) {
+      if ($$1 instanceof coh $$2) {
+         $$2.gF().a($$0, this.a());
       }
    }
 
-   public cza a(boolean $$0) {
-      return new cza($$0);
+   public float b() {
+      return this.c;
    }
 
-   public boolean a() {
-      return this.c;
+   public Optional<alh> c() {
+      return this.d;
    }
 }

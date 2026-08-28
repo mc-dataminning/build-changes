@@ -1,151 +1,61 @@
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.mojang.datafixers.util.Either;
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.Proxy;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class atc implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 20;
-   private final Path c;
-   private final bmz<atc.e> d;
-   private final bql<Runnable> e = bql.a(ad.i(), "download-queue");
+public abstract class atc implements atl {
+   private static final Logger c = LogUtils.getLogger();
+   private final atk d;
 
-   public atc(Path $$0) throws IOException {
-      this.c = $$0;
-      v.c($$0);
-      this.d = bmz.a(atc.e.a, $$0.resolve("log.json"));
-      atb.a($$0, 20);
+   protected atc(atk $$0) {
+      this.d = $$0;
    }
 
-   private atc.b b(atc.a $$0, Map<UUID, atc.c> $$1) {
-      atc.b $$2 = new atc.b();
-      $$1.forEach(
-         ($$2x, $$3) -> {
-            Path $$4 = this.c.resolve($$2x.toString());
-            Path $$5 = null;
-
-            try {
-               $$5 = ayw.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
-               $$2.a.put($$2x, $$5);
-            } catch (Exception var9) {
-               a.error("Failed to download {}", $$3.a, var9);
-               $$2.b.add($$2x);
-            }
-
-            try {
-               this.d
-                  .a(
-                     new atc.e(
-                        $$2x,
-                        $$3.a.toString(),
-                        Instant.now(),
-                        Optional.ofNullable($$3.b).map(HashCode::toString),
-                        $$5 != null ? this.a($$5) : Either.left("download_failed")
-                     )
-                  );
-            } catch (Exception var8) {
-               a.error("Failed to log download of {}", $$3.a, var8);
-            }
+   @Nullable
+   @Override
+   public <T> T a(aty<T> $$0) throws IOException {
+      aur<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
          }
-      );
-      return $$2;
-   }
 
-   private Either<String, atc.d> a(Path $$0) {
-      try {
-         long $$1 = Files.size($$0);
-         Path $$2 = this.c.relativize($$0);
-         return Either.right(new atc.d($$2.toString(), $$1));
-      } catch (IOException var5) {
-         a.error("Failed to get file size of {}", $$0, var5);
-         return Either.left("no_access");
+         return (T)var4;
       }
    }
 
-   public CompletableFuture<atc.b> a(atc.a $$0, Map<UUID, atc.c> $$1) {
-      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a);
+   @Nullable
+   public static <T> T a(aty<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = ayz.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
+
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(ayz.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
+         }
+      }
    }
 
    @Override
-   public void close() throws IOException {
-      this.e.close();
-      this.d.close();
-   }
-
-   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, ayw.a e) {
-   }
-
-   public static record b(Map<UUID, Path> a, Set<UUID> b) {
-
-      public b() {
-         this(new HashMap<>(), new HashSet<>());
-      }
-   }
-
-   public static record c(URL a, @Nullable HashCode b) {
-   }
-
-   static record d(String b, long c) {
-      public static final Codec<atc.d> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(atc.d::a), Codec.LONG.fieldOf("size").forGetter(atc.d::b)).apply($$0, atc.d::new)
-      );
-
-      public String a() {
-         return this.b;
-      }
-
-      public long b() {
-         return this.c;
-      }
-   }
-
-   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, atc.d> f) {
-      public static final Codec<atc.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ki.d.fieldOf("id").forGetter(atc.e::a),
-                  Codec.STRING.fieldOf("url").forGetter(atc.e::b),
-                  ayo.p.fieldOf("time").forGetter(atc.e::c),
-                  Codec.STRING.optionalFieldOf("hash").forGetter(atc.e::d),
-                  Codec.mapEither(Codec.STRING.fieldOf("error"), atc.d.a.fieldOf("file")).forGetter(atc.e::e)
-               )
-               .apply($$0, atc.e::new)
-      );
-
-      public UUID a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public Instant c() {
-         return this.d;
-      }
-
-      public Optional<String> d() {
-         return this.e;
-      }
-
-      public Either<String, atc.d> e() {
-         return this.f;
-      }
+   public atk a() {
+      return this.d;
    }
 }

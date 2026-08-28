@@ -1,41 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cei extends cew<bun> {
-   private static final int a = 200;
-   private static final int b = 599;
+public class cei extends ceg {
+   @Nullable
+   private jg p;
 
-   public cei() {
-      this(200);
-   }
-
-   public cei(int $$0) {
-      super($$0);
+   public cei(bux $$0, dev $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(arj $$0, bun $$1) {
-      a($$1);
+   public ers a(jg $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
    }
 
    @Override
-   public Set<cdq<?>> a() {
-      return ImmutableSet.of(cdq.g);
+   public ers a(btz $$0, int $$1) {
+      this.p = $$0.dx();
+      return super.a($$0, $$1);
    }
 
-   public static void a(bun $$0) {
-      Optional<List<bun>> $$1 = $$0.dY().c(cdq.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ao().equals(bty.af));
-         if ($$2) {
-            b($$0);
-         }
+   @Override
+   public boolean a(btz $$0, double $$1) {
+      ers $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dx();
+         this.d = $$1;
+         return true;
       }
    }
 
-   public static void b(bun $$0) {
-      $$0.dY().a(cdq.F, true, 599L);
+   @Override
+   public void c() {
+      if (!this.m()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dv(), (double)this.a.ds())
+               && (!(this.a.dE() > (double)this.p.v()) || !jg.a((double)this.p.u(), this.a.dE(), (double)this.p.w()).a(this.a.dv(), (double)this.a.ds()))) {
+               this.a.M().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

@@ -1,41 +1,8 @@
-public record aja(int b, ajn c) implements zl<aiz> {
-   public static final zc<wb, aja> a = zl.a(aja::a, aja::new);
-   private static final int d = 1048576;
-
-   private aja(wb $$0) {
-      this($$0.l(), a($$0.q(), $$0));
-   }
-
-   private static ajn a(ale $$0, wb $$1) {
-      return b($$0, $$1);
-   }
-
-   private static ajp b(ale $$0, wb $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 1048576) {
-         $$1.k($$2);
-         return new ajp($$0);
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
-   }
-
-   private void a(wb $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c.a());
-      this.c.a($$0);
-   }
-
+public interface aja extends agv {
    @Override
-   public zn<aja> a() {
-      return ajf.a;
+   default wc b() {
+      return wc.a;
    }
 
-   public void a(aiz $$0) {
-      $$0.a(this);
-   }
-
-   public ajn e() {
-      return this.c;
-   }
+   void a(aix var1);
 }

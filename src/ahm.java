@@ -1,37 +1,30 @@
-public class ahm implements zl<agr> {
-   public static final zc<wb, ahm> a = zl.a(ahm::a, ahm::new);
-   private final int b;
-   private final int c;
+public record ahm(int b, int c, boolean d) implements zo<agu> {
+   public static final zf<we, ahm> a = zo.a(ahm::a, ahm::new);
 
-   public ahm(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private ahm(we $$0) {
+      this($$0.l(), $$0.x(), $$0.readBoolean());
    }
 
-   private ahm(wb $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(wb $$0) {
+   private void a(we $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
+      $$0.f(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zn<ahm> a() {
-      return agp.bA;
+   public zq<ahm> a() {
+      return ags.bx;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 
    public int e() {
       return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

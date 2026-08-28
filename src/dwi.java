@@ -1,15 +1,25 @@
-public enum dwi {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dwi implements baf {
+   a("up"),
+   b("side"),
+   c("none");
 
-   private final int d;
+   private final String d;
 
-   private dwi(final int $$0) {
+   private dwi(final String $$0) {
       this.d = $$0;
    }
 
-   public int a() {
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
       return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

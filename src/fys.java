@@ -1,21 +1,27 @@
-public class fys extends fyb<gvb> {
-   public fys(gaq $$0) {
+public class fys extends fxz<guc> {
+   private static final String a = "main";
+
+   public fys(gbb $$0) {
       super($$0);
    }
 
-   public static gaw a() {
-      gay $$0 = fyb.a(gau.a, 0.0F);
-      gba $$1 = $$0.a();
-      gba $$2 = $$1.a("head");
-      $$2.a("hat");
-      $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      gav $$3 = gav.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new gau(1.0F));
-      $$2.a("left_ear", $$3, gas.a(-6.0F, -6.0F, 0.0F));
-      $$2.a("right_ear", $$3, gas.a(6.0F, -6.0F, 0.0F));
-      return gaw.a($$0, 64, 64);
+   public static gbh a() {
+      gbj $$0 = new gbj();
+      gbl $$1 = $$0.a();
+      int $$2 = 2;
+      $$1.a(
+         "main",
+         gbg.c()
+            .a(0, 0)
+            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
+         gbd.a
+      );
+      return gbh.a($$0, 64, 32);
    }
 }

@@ -1,50 +1,67 @@
-import com.mojang.datafixers.util.Either;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface bqk<Msg> extends AutoCloseable {
-   String bA();
+public class bqk<E extends bqi> {
+   private final int a;
+   private final ImmutableList<E> b;
 
-   void a(Msg var1);
+   bqk(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = bqj.a($$0);
+   }
+
+   public static <E extends bqi> bqk<E> c() {
+      return new bqk<>(ImmutableList.of());
+   }
+
+   @SafeVarargs
+   public static <E extends bqi> bqk<E> a(E... $$0) {
+      return new bqk<>(ImmutableList.copyOf($$0));
+   }
+
+   public static <E extends bqi> bqk<E> a(List<E> $$0) {
+      return new bqk<>($$0);
+   }
+
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(azr $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return bqj.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
+      return this.b;
+   }
+
+   public static <E extends bqi> Codec<bqk<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bqk::a, bqk::e);
+   }
 
    @Override
-   default void close() {
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bqk<?> $$1 = (bqk<?>)$$0;
+         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
+      } else {
+         return false;
+      }
    }
 
-   default <Source> CompletableFuture<Source> b(Function<? super bqk<Source>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1::complete));
-      this.a($$2);
-      return $$1;
-   }
-
-   default <Source> CompletableFuture<Source> c(Function<? super bqk<Either<Source, Exception>>, ? extends Msg> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      Msg $$2 = (Msg)$$0.apply(a("ask future procesor handle", $$1x -> {
-         $$1x.ifLeft($$1::complete);
-         $$1x.ifRight($$1::completeExceptionally);
-      }));
-      this.a($$2);
-      return $$1;
-   }
-
-   static <Msg> bqk<Msg> a(final String $$0, final Consumer<Msg> $$1) {
-      return new bqk<Msg>() {
-         @Override
-         public String bA() {
-            return $$0;
-         }
-
-         @Override
-         public void a(Msg $$0x) {
-            $$1.accept($$0);
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
    }
 }

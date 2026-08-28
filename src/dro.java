@@ -1,108 +1,54 @@
-public class dro extends dtc {
-   private jx<cvs> d = jx.a(27, cvs.k);
-   private final dsi e = new dsi() {
-      @Override
-      protected void a(dej $$0, jf $$1, dus $$2) {
-         dro.this.a($$2, awg.bz);
-         dro.this.a($$2, true);
-      }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-      @Override
-      protected void b(dej $$0, jf $$1, dus $$2) {
-         dro.this.a($$2, awg.by);
-         dro.this.a($$2, false);
-      }
+public class dro extends dhm {
+   public static final MapCodec<dro> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dvs.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dro::new)
+   );
+   public static final dwd f = dvt.aT;
+   private final int g;
 
-      @Override
-      protected void a(dej $$0, jf $$1, dus $$2, int $$3, int $$4) {
-      }
+   @Override
+   public MapCodec<dro> a() {
+      return e;
+   }
 
-      @Override
-      protected boolean a(cnx $$0) {
-         if ($$0.bZ instanceof cri) {
-            brl $$1 = ((cri)$$0.bZ).l();
-            return $$1 == dro.this;
-         } else {
-            return false;
-         }
-      }
-   };
-
-   public dro(jf $$0, dus $$1) {
-      super(drx.A, $$0, $$1);
+   protected dro(int $$0, dvs $$1, dvc.d $$2) {
+      super($$2, $$1);
+      this.l(this.F.b().b(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
    @Override
-   protected void b(ug $$0, jq.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         brm.a($$0, this.d, $$1);
+   protected int b(dev $$0, jg $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), btz.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return azj.f($$3 * 15.0F);
+      } else {
+         return 0;
       }
    }
 
    @Override
-   protected void a(ug $$0, jq.a $$1) {
-      super.a($$0, $$1);
-      this.d = jx.a(this.b(), cvs.k);
-      if (!this.b_($$0)) {
-         brm.b($$0, this.d, $$1);
-      }
+   protected int h(dvd $$0) {
+      return $$0.c(f);
    }
 
    @Override
-   public int b() {
-      return 27;
+   protected dvd a(dvd $$0, int $$1) {
+      return $$0.b(f, Integer.valueOf($$1));
    }
 
    @Override
-   protected jx<cvs> f() {
-      return this.d;
+   protected int b() {
+      return 10;
    }
 
    @Override
-   protected void a(jx<cvs> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   protected xe j() {
-      return xe.c("container.barrel");
-   }
-
-   @Override
-   protected cqz a(int $$0, cnw $$1) {
-      return cri.a($$0, $$1, this);
-   }
-
-   @Override
-   public void d_(cnx $$0) {
-      if (!this.q && !$$0.Q_()) {
-         this.e.a($$0, this.i(), this.aC_(), this.m());
-      }
-   }
-
-   @Override
-   public void c(cnx $$0) {
-      if (!this.q && !$$0.Q_()) {
-         this.e.b($$0, this.i(), this.aC_(), this.m());
-      }
-   }
-
-   public void k() {
-      if (!this.q) {
-         this.e.c(this.i(), this.aC_(), this.m());
-      }
-   }
-
-   void a(dus $$0, boolean $$1) {
-      this.o.a(this.aC_(), $$0.b(dgs.c, Boolean.valueOf($$1)), 3);
-   }
-
-   void a(dus $$0, awf $$1) {
-      kj $$2 = $$0.c(dgs.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, awh.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(f);
    }
 }

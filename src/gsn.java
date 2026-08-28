@@ -1,22 +1,25 @@
-public class gsn extends grf<gwb, gad> {
-   public gsn(gpk<gwb, gad> $$0, gom $$1) {
-      super($$0, $$1);
+public class gsn<S extends gva & gvs, M extends fxz<? super S>> extends gsm<S, M> {
+   private final alh a;
+   private final M b;
+   private final M c;
+
+   public gsn(gpv<S, M> $$0, M $$1, M $$2, alh $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.a = $$3;
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, gwb $$3, float $$4, float $$5) {
-      $$0.a();
-      if ($$3.ar.a(cvw.sm)) {
-         this.d().e().a($$0);
-         this.d().b().a($$0);
-         this.d().c().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
-      }
+   public gsn(gpv<S, M> $$0, M $$1, alh $$2) {
+      this($$0, $$1, $$1, $$2);
+   }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$0.b();
+   public void a(fdt $$0, ghw $$1, int $$2, S $$3, float $$4, float $$5) {
+      if ($$3.c()) {
+         M $$6 = $$3.ae ? this.c : this.b;
+         $$6.a($$3);
+         fdx $$7 = $$1.getBuffer(gig.f(this.a));
+         $$6.a($$0, $$7, $$2, gxj.d);
+      }
    }
 }

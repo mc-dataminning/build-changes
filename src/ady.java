@@ -1,33 +1,24 @@
-public class ady implements zl<aca> {
-   public static final zc<wp, ady> a = zc.a(za.u, ady::b, za.a(lw.V), ady::e, xg.d, ady::f, ady::new);
-   private final int b;
-   private final csi<?> c;
-   private final xe d;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public ady(int $$0, csi<?> $$1, xe $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record ady(int b, List<cqt.a> c) implements zo<acd> {
+   public static final zf<we, ady> a = zf.a(zd.h, ady::b, cqt.a.a.a(zd.a()), ady::e, ady::new);
 
    @Override
-   public zn<ady> a() {
-      return agp.X;
+   public zq<ady> a() {
+      return ags.T;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public btz a(dev $$0) {
+      return $$0.a(this.b);
    }
 
-   public csi<?> e() {
+   public List<cqt.a> e() {
       return this.c;
-   }
-
-   public xe f() {
-      return this.d;
    }
 }

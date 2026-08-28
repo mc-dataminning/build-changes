@@ -1,5 +1,5 @@
-public class fyk extends fxq<gtw> {
-   public fyk(gaq $$0) {
+public class fyk extends fwq<gud> {
+   public fyk(gbb $$0) {
       super($$0);
    }
 }

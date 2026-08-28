@@ -1,231 +1,268 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Deque;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Collection;
+import java.util.Collections;
 
 public class amu {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.clone.overlap"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xe.b("commands.clone.toobig", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xe.c("commands.clone.failed"));
-   public static final Predicate<duw> a = $$0 -> !$$0.a().l();
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xh.b("commands.bossbar.create.failed", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xh.b("commands.bossbar.unknown", $$0));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xh.c("commands.bossbar.set.players.unchanged"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xh.c("commands.bossbar.set.name.unchanged"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(xh.c("commands.bossbar.set.color.unchanged"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xh.c("commands.bossbar.set.style.unchanged"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(xh.c("commands.bossbar.set.value.unchanged"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(xh.c("commands.bossbar.set.max.unchanged"));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(xh.c("commands.bossbar.set.visibility.unchanged.hidden"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(xh.c("commands.bossbar.set.visibility.unchanged.visible"));
+   public static final SuggestionProvider<ev> a = ($$0, $$1) -> fa.a(((ev)$$0.getSource()).l().aM().a(), $$1);
 
-   public static void a(CommandDispatcher<eu> $$0, eq $$1) {
+   public static void a(CommandDispatcher<ev> $$0, er $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("clone").requires($$0x -> $$0x.c(2)))
-               .then(a($$1, $$0x -> ((eu)$$0x.getSource()).e())))
-            .then(ev.a("from").then(ev.a("sourceDimension", ff.a()).then(a($$1, $$0x -> ff.a($$0x, "sourceDimension")))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a(
+                              "bossbar"
+                           )
+                           .requires($$0x -> $$0x.c(2)))
+                        .then(
+                           ew.a("add")
+                              .then(
+                                 ew.a("id", fw.a())
+                                    .then(ew.a("name", fe.a($$1)).executes($$0x -> a((ev)$$0x.getSource(), fw.c($$0x, "id"), fe.a($$0x, "name"))))
+                              )
+                        ))
+                     .then(ew.a("remove").then(ew.a("id", fw.a()).suggests(a).executes($$0x -> e((ev)$$0x.getSource(), a($$0x))))))
+                  .then(ew.a("list").executes($$0x -> a((ev)$$0x.getSource()))))
+               .then(
+                  ew.a("set")
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ew.a(
+                                                "id", fw.a()
+                                             )
+                                             .suggests(a)
+                                             .then(
+                                                ew.a("name")
+                                                   .then(ew.a("name", fe.a($$1)).executes($$0x -> a((ev)$$0x.getSource(), a($$0x), fe.a($$0x, "name"))))
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a(
+                                                                     "color"
+                                                                  )
+                                                                  .then(ew.a("pink").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.a.a))))
+                                                               .then(ew.a("blue").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.a.b))))
+                                                            .then(ew.a("red").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.a.c))))
+                                                         .then(ew.a("green").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.a.d))))
+                                                      .then(ew.a("yellow").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.a.e))))
+                                                   .then(ew.a("purple").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.a.f))))
+                                                .then(ew.a("white").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.a.g)))
+                                          ))
+                                       .then(
+                                          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("style")
+                                                         .then(ew.a("progress").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.b.a))))
+                                                      .then(ew.a("notched_6").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.b.b))))
+                                                   .then(ew.a("notched_10").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.b.c))))
+                                                .then(ew.a("notched_12").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.b.d))))
+                                             .then(ew.a("notched_20").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), bro.b.e)))
+                                       ))
+                                    .then(
+                                       ew.a("value")
+                                          .then(
+                                             ew.a("value", IntegerArgumentType.integer(0))
+                                                .executes($$0x -> a((ev)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "value")))
+                                          )
+                                    ))
+                                 .then(
+                                    ew.a("max")
+                                       .then(
+                                          ew.a("max", IntegerArgumentType.integer(1))
+                                             .executes($$0x -> b((ev)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "max")))
+                                       )
+                                 ))
+                              .then(
+                                 ew.a("visible")
+                                    .then(
+                                       ew.a("visible", BoolArgumentType.bool())
+                                          .executes($$0x -> a((ev)$$0x.getSource(), a($$0x), BoolArgumentType.getBool($$0x, "visible")))
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)ew.a("players").executes($$0x -> a((ev)$$0x.getSource(), a($$0x), Collections.emptyList())))
+                                 .then(ew.a("targets", fi.d()).executes($$0x -> a((ev)$$0x.getSource(), a($$0x), fi.d($$0x, "targets"))))
+                           )
+                     )
+               ))
+            .then(
+               ew.a("get")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ew.a("id", fw.a())
+                                 .suggests(a)
+                                 .then(ew.a("value").executes($$0x -> a((ev)$$0x.getSource(), a($$0x)))))
+                              .then(ew.a("max").executes($$0x -> b((ev)$$0x.getSource(), a($$0x)))))
+                           .then(ew.a("visible").executes($$0x -> c((ev)$$0x.getSource(), a($$0x)))))
+                        .then(ew.a("players").executes($$0x -> d((ev)$$0x.getSource(), a($$0x))))
+                  )
+            )
       );
    }
 
-   private static ArgumentBuilder<eu, ?> a(eq $$0, amu.c<CommandContext<eu>, arj> $$1) {
-      return ev.a("begin", gq.a())
-         .then(
-            ((RequiredArgumentBuilder)ev.a("end", gq.a()).then(a($$0, $$1, $$0x -> ((eu)$$0x.getSource()).e())))
-               .then(ev.a("to").then(ev.a("targetDimension", ff.a()).then(a($$0, $$1, $$0x -> ff.a($$0x, "targetDimension")))))
-         );
+   private static int a(ev $$0, amj $$1) {
+      $$0.a(() -> xh.a("commands.bossbar.get.value", $$1.e(), $$1.c()), true);
+      return $$1.c();
    }
 
-   private static amu.d a(CommandContext<eu> $$0, arj $$1, String $$2) throws CommandSyntaxException {
-      jf $$3 = gq.a($$0, $$1, $$2);
-      return new amu.d($$1, $$3);
+   private static int b(ev $$0, amj $$1) {
+      $$0.a(() -> xh.a("commands.bossbar.get.max", $$1.e(), $$1.d()), true);
+      return $$1.d();
    }
 
-   private static ArgumentBuilder<eu, ?> a(eq $$0, amu.c<CommandContext<eu>, arj> $$1, amu.c<CommandContext<eu>, arj> $$2) {
-      amu.c<CommandContext<eu>, amu.d> $$3 = $$1x -> a($$1x, $$1.apply($$1x), "begin");
-      amu.c<CommandContext<eu>, amu.d> $$4 = $$1x -> a($$1x, $$1.apply($$1x), "end");
-      amu.c<CommandContext<eu>, amu.d> $$5 = $$1x -> a($$1x, $$2.apply($$1x), "destination");
-      return ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ev.a("destination", gq.a())
-                  .executes($$3x -> a((eu)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, amu.e.c)))
-               .then(
-                  a(
-                     $$3,
-                     $$4,
-                     $$5,
-                     $$0x -> $$0xx -> true,
-                     ev.a("replace").executes($$3x -> a((eu)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, amu.e.c))
-                  )
-               ))
-            .then(
-               a(
-                  $$3,
-                  $$4,
-                  $$5,
-                  $$0x -> a,
-                  ev.a("masked").executes($$3x -> a((eu)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), a, amu.e.c))
-               )
-            ))
-         .then(
-            ev.a("filtered")
-               .then(
-                  a(
-                     $$3,
-                     $$4,
-                     $$5,
-                     $$0x -> gm.a($$0x, "filter"),
-                     ev.a("filter", gm.a($$0))
-                        .executes($$3x -> a((eu)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), gm.a($$3x, "filter"), amu.e.c))
-                  )
-               )
-         );
-   }
-
-   private static ArgumentBuilder<eu, ?> a(
-      amu.c<CommandContext<eu>, amu.d> $$0,
-      amu.c<CommandContext<eu>, amu.d> $$1,
-      amu.c<CommandContext<eu>, amu.d> $$2,
-      amu.c<CommandContext<eu>, Predicate<duw>> $$3,
-      ArgumentBuilder<eu, ?> $$4
-   ) {
-      return $$4.then(ev.a("force").executes($$4x -> a((eu)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), amu.e.a)))
-         .then(ev.a("move").executes($$4x -> a((eu)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), amu.e.b)))
-         .then(ev.a("normal").executes($$4x -> a((eu)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), amu.e.c)));
-   }
-
-   private static int a(eu $$0, amu.d $$1, amu.d $$2, amu.d $$3, Predicate<duw> $$4, amu.e $$5) throws CommandSyntaxException {
-      jf $$6 = $$1.b();
-      jf $$7 = $$2.b();
-      eky $$8 = eky.a($$6, $$7);
-      jf $$9 = $$3.b();
-      jf $$10 = $$9.a($$8.c());
-      eky $$11 = eky.a($$9, $$10);
-      arj $$12 = $$1.a();
-      arj $$13 = $$3.a();
-      if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
-         throw b.create();
+   private static int c(ev $$0, amj $$1) {
+      if ($$1.f()) {
+         $$0.a(() -> xh.a("commands.bossbar.get.visible.visible", $$1.e()), true);
+         return 1;
       } else {
-         int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().ac().c(def.z);
-         if ($$14 > $$15) {
-            throw c.create($$15, $$14);
-         } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
-            List<amu.b> $$16 = Lists.newArrayList();
-            List<amu.b> $$17 = Lists.newArrayList();
-            List<amu.b> $$18 = Lists.newArrayList();
-            Deque<jf> $$19 = Lists.newLinkedList();
-            jf $$20 = new jf($$11.h() - $$8.h(), $$11.i() - $$8.i(), $$11.j() - $$8.j());
+         $$0.a(() -> xh.a("commands.bossbar.get.visible.hidden", $$1.e()), true);
+         return 0;
+      }
+   }
 
-            for (int $$21 = $$8.j(); $$21 <= $$8.m(); $$21++) {
-               for (int $$22 = $$8.i(); $$22 <= $$8.l(); $$22++) {
-                  for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
-                     jf $$24 = new jf($$23, $$22, $$21);
-                     jf $$25 = $$24.a((kj)$$20);
-                     duw $$26 = new duw($$12, $$24, false);
-                     dus $$27 = $$26.a();
-                     if ($$4.test($$26)) {
-                        drv $$28 = $$12.c_($$24);
-                        if ($$28 != null) {
-                           amu.a $$29 = new amu.a($$28.e($$0.v()), $$28.s());
-                           $$17.add(new amu.b($$25, $$27, $$29));
-                           $$19.addLast($$24);
-                        } else if (!$$27.s() && !$$27.m($$12, $$24)) {
-                           $$18.add(new amu.b($$25, $$27, null));
-                           $$19.addFirst($$24);
-                        } else {
-                           $$16.add(new amu.b($$25, $$27, null));
-                           $$19.addLast($$24);
-                        }
-                     }
-                  }
-               }
-            }
+   private static int d(ev $$0, amj $$1) {
+      if ($$1.g().isEmpty()) {
+         $$0.a(() -> xh.a("commands.bossbar.get.players.none", $$1.e()), true);
+      } else {
+         $$0.a(() -> xh.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), xk.b($$1.g(), coh::S_)), true);
+      }
 
-            if ($$5 == amu.e.b) {
-               for (jf $$30 : $$19) {
-                  drv $$31 = $$12.c_($$30);
-                  brj.a_($$31);
-                  $$12.a($$30, dho.hW.n(), 2);
-               }
+      return $$1.g().size();
+   }
 
-               for (jf $$32 : $$19) {
-                  $$12.a($$32, dho.a.n(), 3);
-               }
-            }
-
-            List<amu.b> $$33 = Lists.newArrayList();
-            $$33.addAll($$16);
-            $$33.addAll($$17);
-            $$33.addAll($$18);
-            List<amu.b> $$34 = Lists.reverse($$33);
-
-            for (amu.b $$35 : $$34) {
-               drv $$36 = $$13.c_($$35.a);
-               brj.a_($$36);
-               $$13.a($$35.a, dho.hW.n(), 2);
-            }
-
-            int $$37 = 0;
-
-            for (amu.b $$38 : $$33) {
-               if ($$13.a($$38.a, $$38.b, 2)) {
-                  $$37++;
-               }
-            }
-
-            for (amu.b $$39 : $$17) {
-               drv $$40 = $$13.c_($$39.a);
-               if ($$39.c != null && $$40 != null) {
-                  $$40.d($$39.c.a, $$13.G_());
-                  $$40.a($$39.c.b);
-                  $$40.e();
-               }
-
-               $$13.a($$39.a, $$39.b, 2);
-            }
-
-            for (amu.b $$41 : $$34) {
-               $$13.b($$41.a, $$41.b.b());
-            }
-
-            $$13.m().a($$12.m(), $$8, $$20);
-            if ($$37 == 0) {
-               throw d.create();
-            } else {
-               int $$42 = $$37;
-               $$0.a(() -> xe.a("commands.clone.success", $$42), true);
-               return $$37;
-            }
+   private static int a(ev $$0, amj $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.f() == $$2) {
+         if ($$2) {
+            throw k.create();
          } else {
-            throw gq.a.create();
+            throw j.create();
          }
+      } else {
+         $$1.d($$2);
+         if ($$2) {
+            $$0.a(() -> xh.a("commands.bossbar.set.visible.success.visible", $$1.e()), true);
+         } else {
+            $$0.a(() -> xh.a("commands.bossbar.set.visible.success.hidden", $$1.e()), true);
+         }
+
+         return 0;
       }
    }
 
-   static record a(ug a, ko b) {
+   private static int a(ev $$0, amj $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.c() == $$2) {
+         throw h.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> xh.a("commands.bossbar.set.value.success", $$1.e(), $$2), true);
+         return $$2;
+      }
    }
 
-   static record b(jf a, dus b, @Nullable amu.a c) {
+   private static int b(ev $$0, amj $$1, int $$2) throws CommandSyntaxException {
+      if ($$1.d() == $$2) {
+         throw i.create();
+      } else {
+         $$1.b($$2);
+         $$0.a(() -> xh.a("commands.bossbar.set.max.success", $$1.e(), $$2), true);
+         return $$2;
+      }
    }
 
-   @FunctionalInterface
-   interface c<T, R> {
-      R apply(T var1) throws CommandSyntaxException;
+   private static int a(ev $$0, amj $$1, bro.a $$2) throws CommandSyntaxException {
+      if ($$1.k().equals($$2)) {
+         throw f.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> xh.a("commands.bossbar.set.color.success", $$1.e()), true);
+         return 0;
+      }
    }
 
-   static record d(arj a, jf b) {
+   private static int a(ev $$0, amj $$1, bro.b $$2) throws CommandSyntaxException {
+      if ($$1.l().equals($$2)) {
+         throw g.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> xh.a("commands.bossbar.set.style.success", $$1.e()), true);
+         return 0;
+      }
    }
 
-   static enum e {
-      a(true),
-      b(true),
-      c(false);
+   private static int a(ev $$0, amj $$1, xh $$2) throws CommandSyntaxException {
+      xh $$3 = xk.a($$0, $$2, null, 0);
+      if ($$1.i().equals($$3)) {
+         throw e.create();
+      } else {
+         $$1.a($$3);
+         $$0.a(() -> xh.a("commands.bossbar.set.name.success", $$1.e()), true);
+         return 0;
+      }
+   }
 
-      private final boolean d;
+   private static int a(ev $$0, amj $$1, Collection<arn> $$2) throws CommandSyntaxException {
+      boolean $$3 = $$1.a($$2);
+      if (!$$3) {
+         throw d.create();
+      } else {
+         if ($$1.g().isEmpty()) {
+            $$0.a(() -> xh.a("commands.bossbar.set.players.success.none", $$1.e()), true);
+         } else {
+            $$0.a(() -> xh.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xk.b($$2, coh::S_)), true);
+         }
 
-      private e(final boolean $$0) {
-         this.d = $$0;
+         return $$1.g().size();
+      }
+   }
+
+   private static int a(ev $$0) {
+      Collection<amj> $$1 = $$0.l().aM().b();
+      if ($$1.isEmpty()) {
+         $$0.a(() -> xh.c("commands.bossbar.list.bars.none"), false);
+      } else {
+         $$0.a(() -> xh.a("commands.bossbar.list.bars.some", $$1.size(), xk.b($$1, amj::e)), false);
       }
 
-      public boolean a() {
-         return this.d;
+      return $$1.size();
+   }
+
+   private static int a(ev $$0, alh $$1, xh $$2) throws CommandSyntaxException {
+      amk $$3 = $$0.l().aM();
+      if ($$3.a($$1) != null) {
+         throw b.create($$1.toString());
+      } else {
+         amj $$4 = $$3.a($$1, xk.a($$0, $$2, null, 0));
+         $$0.a(() -> xh.a("commands.bossbar.create.success", $$4.e()), true);
+         return $$3.b().size();
+      }
+   }
+
+   private static int e(ev $$0, amj $$1) {
+      amk $$2 = $$0.l().aM();
+      $$1.b();
+      $$2.a($$1);
+      $$0.a(() -> xh.a("commands.bossbar.remove.success", $$1.e()), true);
+      return $$2.b().size();
+   }
+
+   public static amj a(CommandContext<ev> $$0) throws CommandSyntaxException {
+      alh $$1 = fw.c($$0, "id");
+      amj $$2 = ((ev)$$0.getSource()).l().aM().a($$1);
+      if ($$2 == null) {
+         throw c.create($$1.toString());
+      } else {
+         return $$2;
       }
    }
 }

@@ -1,13 +1,7 @@
-public interface fbn {
-   <T> fcu<T> a(String var1, fct<T> var2);
+public record fbn(ezh b, ezh c, ezh d) {
+   public static final fbn a = new fbn(ezh.c, new ezh(0.0, 0.0, -1.0), new ezh(0.0, 1.0, 0.0));
 
-   <T> void a(fcu<T> var1);
-
-   <T> fcu<T> b(fcu<T> var1);
-
-   void a(fbn var1);
-
-   void a();
-
-   void a(Runnable var1);
+   public ezh a() {
+      return this.c.c(this.d);
+   }
 }

@@ -1,56 +1,62 @@
-public class flv extends fkl {
-   private float a = 0.5F;
+import javax.annotation.Nullable;
 
-   public flv(xe $$0, fjz $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+public abstract class flv<E extends flv.a<E>> extends fku<E> {
+   private static final xh a = xh.c("narration.selection.usage");
+
+   public flv(fja $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public flv(int $$0, int $$1, xe $$2, fjz $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
+   @Nullable
+   @Override
+   public fkj a(fpd $$0) {
+      if (this.l() == 0) {
+         return null;
+      } else if (this.aN_() && $$0 instanceof fpd.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? fkj.a(this, fkj.a($$2)) : null;
+      } else if (!this.aN_()) {
+         E $$3 = this.h();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
 
-   public flv(int $$0, int $$1, int $$2, int $$3, xe $$4, fjz $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
-   }
-
-   public flv b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private flv b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public flv c() {
-      return this.b(0.0F);
-   }
-
-   public flv e() {
-      return this.b(0.5F);
-   }
-
-   public flv f() {
-      return this.b(1.0F);
+         return $$3 == null ? null : fkj.a(this, fkj.a($$3));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public void b(fkb $$0, int $$1, int $$2, float $$3) {
-      xe $$4 = this.z();
-      fjz $$5 = this.a();
-      int $$6 = this.y();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.D() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.E() + (this.w() - 9) / 2;
-      ayr $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   public void a(fox $$0) {
+      E $$1 = this.v();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.h();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
+      }
+
+      if (this.aN_()) {
+         $$0.a(fow.d, a);
+      }
    }
 
-   private ayr a(xe $$0, int $$1) {
-      fjz $$2 = this.a();
-      xj $$3 = $$2.a($$0, $$1 - $$2.a(xd.u));
-      return ub.a().a(xj.a($$3, xd.u));
+   public abstract static class a<E extends flv.a<E>> extends fku.a<E> implements foy {
+      public abstract xh a();
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public void b(fox $$0) {
+         $$0.a(fow.a, this.a());
+      }
    }
 }

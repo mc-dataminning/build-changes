@@ -1,19 +1,15 @@
-public record dba(cvs a) implements dan {
-   @Override
-   public cvs a(int $$0) {
-      if ($$0 != 0) {
-         throw new IllegalArgumentException("No item for index " + $$0);
-      } else {
-         return this.a;
-      }
+public class dba extends czq {
+   public dba(String $$0, czw $$1, daf $$2, cvx $$3, float $$4, int $$5) {
+      super(dap.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a() {
-      return 1;
+   public cvx g() {
+      return new cvx(dia.cD);
    }
 
-   public cvs c() {
-      return this.a;
+   @Override
+   public dao<?> ar_() {
+      return dao.o;
    }
 }

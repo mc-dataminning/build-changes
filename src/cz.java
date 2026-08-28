@@ -1,92 +1,66 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public class cz extends dw<cz.a> {
+public record cz(Optional<bd<ase<xh>, cz.a>> c, Optional<String> d, Optional<String> e, di.d f, Optional<Boolean> g) implements dy<czd> {
+   public static final Codec<cz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               bd.a(cz.a.a).optionalFieldOf("pages").forGetter(cz::b),
+               Codec.STRING.optionalFieldOf("author").forGetter(cz::c),
+               Codec.STRING.optionalFieldOf("title").forGetter(cz::d),
+               di.d.d.optionalFieldOf("generation", di.d.c).forGetter(cz::e),
+               Codec.BOOL.optionalFieldOf("resolved").forGetter(cz::f)
+            )
+            .apply($$0, cz::new)
+   );
+
    @Override
-   public Codec<cz.a> a() {
-      return cz.a.a;
+   public ks<czd> a() {
+      return kt.S;
    }
 
-   public void a(ark $$0, Collection<btr> $$1) {
-      List<etl> $$2 = Lists.newArrayList();
-      Set<bty<?>> $$3 = Sets.newHashSet();
-
-      for (btr $$4 : $$1) {
-         $$3.add($$4.ao());
-         $$2.add(bv.b($$0, $$4));
+   public boolean a(cvx $$0, czd $$1) {
+      if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
+         return false;
+      } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {
+         return false;
+      } else if (!this.f.d($$1.f())) {
+         return false;
+      } else {
+         return this.g.isPresent() && this.g.get() != $$1.g() ? false : !this.c.isPresent() || this.c.get().a($$1.a());
       }
-
-      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
    }
 
-   public static record a(Optional<bg> b, List<bg> c, dh.d d) implements dw.a {
-      public static final Codec<cz.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bv.b.optionalFieldOf("player").forGetter(cz.a::a),
-                  bv.b.listOf().optionalFieldOf("victims", List.of()).forGetter(cz.a::b),
-                  dh.d.d.optionalFieldOf("unique_entity_types", dh.d.c).forGetter(cz.a::c)
-               )
-               .apply($$0, cz.a::new)
-      );
+   public Optional<bd<ase<xh>, cz.a>> b() {
+      return this.c;
+   }
 
-      public static ao<cz.a> a(bv.a... $$0) {
-         return an.H.a(new cz.a(Optional.empty(), bv.a($$0), dh.d.c));
+   public Optional<String> c() {
+      return this.d;
+   }
+
+   public Optional<String> d() {
+      return this.e;
+   }
+
+   public di.d e() {
+      return this.f;
+   }
+
+   public Optional<Boolean> f() {
+      return this.g;
+   }
+
+   public static record a(xh b) implements Predicate<ase<xh>> {
+      public static final Codec<cz.a> a = xj.a.xmap(cz.a::new, cz.a::a);
+
+      public boolean a(ase<xh> $$0) {
+         return $$0.a().equals(this.b);
       }
 
-      public static ao<cz.a> a(dh.d $$0) {
-         return an.H.a(new cz.a(Optional.empty(), List.of(), $$0));
-      }
-
-      public boolean a(Collection<etl> $$0, int $$1) {
-         if (!this.c.isEmpty()) {
-            List<etl> $$2 = Lists.newArrayList($$0);
-
-            for (bg $$3 : this.c) {
-               boolean $$4 = false;
-               Iterator<etl> $$5 = $$2.iterator();
-
-               while ($$5.hasNext()) {
-                  etl $$6 = $$5.next();
-                  if ($$3.a($$6)) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  return false;
-               }
-            }
-         }
-
-         return this.d.d($$1);
-      }
-
-      @Override
-      public void a(bh $$0) {
-         dw.a.super.a($$0);
-         $$0.a(this.c, ".victims");
-      }
-
-      @Override
-      public Optional<bg> a() {
+      public xh a() {
          return this.b;
-      }
-
-      public List<bg> b() {
-         return this.c;
-      }
-
-      public dh.d c() {
-         return this.d;
       }
    }
 }

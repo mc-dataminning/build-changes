@@ -1,97 +1,61 @@
-import java.util.List;
+public class ctd extends crj {
+   private static final int m = 27;
+   private final brr n;
 
-public class ctd implements crr {
-   private final jx<cvs> b;
-   private final int c;
-   private final int d;
-   private final cqz e;
-
-   public ctd(cqz $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, jx.a($$1 * $$2, cvs.k));
+   public ctd(int $$0, cog $$1) {
+      this($$0, $$1, new bsf(27));
    }
 
-   private ctd(cqz $$0, int $$1, int $$2, jx<cvs> $$3) {
-      this.b = $$3;
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+   public ctd(int $$0, cog $$1, brr $$2) {
+      super(css.u, $$0);
+      a($$2, 27);
+      this.n = $$2;
+      $$2.d_($$1.k);
+      int $$3 = 3;
+      int $$4 = 9;
 
-   @Override
-   public int b() {
-      return this.b.size();
-   }
-
-   @Override
-   public boolean c() {
-      for (cvs $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cte($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
          }
       }
 
-      return true;
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public cvs a(int $$0) {
-      return $$0 >= this.b() ? cvs.k : this.b.get($$0);
+   public boolean b(coh $$0) {
+      return this.n.a($$0);
    }
 
    @Override
-   public cvs b(int $$0) {
-      return brm.a(this.b, $$0);
-   }
+   public cvx b(coh $$0, int $$1) {
+      cvx $$2 = cvx.k;
+      ctg $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cvx $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < this.n.b()) {
+            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
+               return cvx.k;
+            }
+         } else if (!this.a($$4, 0, this.n.b(), false)) {
+            return cvx.k;
+         }
 
-   @Override
-   public cvs a(int $$0, int $$1) {
-      cvs $$2 = brm.a(this.b, $$0, $$1);
-      if (!$$2.f()) {
-         this.e.a(this);
+         if ($$4.f()) {
+            $$3.e(cvx.k);
+         } else {
+            $$3.c();
+         }
       }
 
       return $$2;
    }
 
    @Override
-   public void a(int $$0, cvs $$1) {
-      this.b.set($$0, $$1);
-      this.e.a(this);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cnx $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public int g() {
-      return this.d;
-   }
-
-   @Override
-   public int aA_() {
-      return this.c;
-   }
-
-   @Override
-   public List<cvs> h() {
-      return List.copyOf(this.b);
-   }
-
-   @Override
-   public void fillStackedContents(coc $$0) {
-      for (cvs $$1 : this.b) {
-         $$0.a($$1);
-      }
+   public void a(coh $$0) {
+      super.a($$0);
+      this.n.c($$0);
    }
 }

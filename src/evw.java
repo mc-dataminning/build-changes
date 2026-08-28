@@ -1,28 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class evw extends euy {
-   public static final MapCodec<evw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cxp.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, evw::new));
-   private final jo<cxp> b;
+public class evw extends evj {
+   static final MapCodec<evw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(eye.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, evw::new));
+   private final eyd b;
 
-   private evw(List<eww> $$0, jo<cxp> $$1) {
+   private evw(List<exh> $$0, eyd $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public eva<evw> b() {
-      return evb.F;
+   public Set<ewp<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public cvs a(cvs $$0, etl $$1) {
-      $$0.a(ks.L, cxr.a, this.b, cxr::b);
-      return $$0;
+   public evl<evw> b() {
+      return evm.R;
    }
 
-   public static euy.a<?> a(jo<cxp> $$0) {
-      return a($$1 -> new evw($$1, $$0));
+   @Override
+   public cvx a(cvx $$0, etw $$1) {
+      $$0.b(kt.p, new cyh(this.b.a($$1)));
+      return $$0;
    }
 }

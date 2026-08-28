@@ -1,65 +1,229 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+
 public class qv {
-   public static final ald<ecs<?>> a = a("cave");
-   public static final ald<ecs<?>> b = a("cave_extra_underground");
-   public static final ald<ecs<?>> c = a("canyon");
-   public static final ald<ecs<?>> d = a("nether_cave");
-
-   private static ald<ecs<?>> a(String $$0) {
-      return ald.a(lw.aJ, ale.b($$0));
-   }
-
-   public static void a(qu<ecs<?>> $$0) {
-      jp<dhm> $$1 = $$0.a(lw.f);
-      $$0.a(
-         a,
-         ecu.a
-            .a(
-               new ecq(
-                  0.15F,
-                  ejq.a(ebi.b(8), ebi.a(180)),
-                  brc.b(0.1F, 0.9F),
-                  ebi.b(8),
-                  eco.a(false, dho.oS.n()),
-                  $$1.b(awv.bj),
-                  brc.b(0.7F, 1.4F),
-                  brc.b(0.8F, 1.3F),
-                  brc.b(-1.0F, -0.4F)
-               )
-            )
+   public static void a(qx<enb> $$0) {
+      jq<epr> $$1 = $$0.a(ly.aT);
+      jp<epr> $$2 = $$1.b(rf.s);
+      jp<epr> $$3 = $$1.b(rf.B);
+      jp<epr> $$4 = $$1.b(rf.r);
+      jp<epr> $$5 = $$1.b(rf.C);
+      jp<epr> $$6 = $$1.b(rf.A);
+      jq<enb> $$7 = $$0.a(ly.aV);
+      jp<enb> $$8 = $$7.b(re.a);
+      re.a($$0, "bastion/treasure/bases", new enb($$8, ImmutableList.of(Pair.of(emz.b("bastion/treasure/bases/lava_basin", $$2), 1)), enb.a.b));
+      re.a($$0, "bastion/treasure/stairs", new enb($$8, ImmutableList.of(Pair.of(emz.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), enb.a.b));
+      re.a(
+         $$0,
+         "bastion/treasure/bases/centers",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/bases/centers/center_0", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/bases/centers/center_1", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/bases/centers/center_2", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/bases/centers/center_3", $$2), 1)
+            ),
+            enb.a.b
+         )
       );
-      $$0.a(
-         b,
-         ecu.a
-            .a(
-               new ecq(
-                  0.07F,
-                  ejq.a(ebi.b(8), ebi.a(47)),
-                  brc.b(0.1F, 0.9F),
-                  ebi.b(8),
-                  eco.a(false, dho.gv.n()),
-                  $$1.b(awv.bj),
-                  brc.b(0.7F, 1.4F),
-                  brc.b(0.8F, 1.3F),
-                  brc.b(-1.0F, -0.4F)
-               )
-            )
+      re.a($$0, "bastion/treasure/brains", new enb($$8, ImmutableList.of(Pair.of(emz.b("bastion/treasure/brains/center_brain", $$2), 1)), enb.a.b));
+      re.a(
+         $$0,
+         "bastion/treasure/walls",
+         new enb(
+            $$8,
+            ImmutableList.of(Pair.of(emz.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(emz.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
+            enb.a.b
+         )
       );
-      $$0.a(
-         c,
-         ecu.c
-            .a(
-               new ecl(
-                  0.01F,
-                  ejq.a(ebi.a(10), ebi.a(67)),
-                  bqt.a(3.0F),
-                  ebi.b(8),
-                  eco.a(false, dho.oT.n()),
-                  $$1.b(awv.bj),
-                  brc.b(-0.125F, 0.125F),
-                  new ecl.a(brc.b(0.75F, 1.0F), brb.a(0.0F, 6.0F, 2.0F), 3, brc.b(0.75F, 1.0F), 1.0F, 0.0F)
-               )
-            )
+      re.a(
+         $$0,
+         "bastion/treasure/walls/outer",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
+               Pair.of(emz.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
+               Pair.of(emz.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
+               Pair.of(emz.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
+               Pair.of(emz.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
+               Pair.of(emz.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
+            ),
+            enb.a.b
+         )
       );
-      $$0.a(d, ecu.b.a(new ecq(0.2F, ejq.a(ebi.a(0), ebi.c(1)), bqt.a(0.5F), ebi.b(10), $$1.b(awv.bk), bqt.a(1.0F), bqt.a(1.0F), bqt.a(-0.7F))));
+      re.a(
+         $$0,
+         "bastion/treasure/walls/bottom",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/walls/mid",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/walls/top",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/walls/top/wall_0", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/walls/top/wall_1", $$2), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/connectors",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a($$0, "bastion/treasure/entrances", new enb($$8, ImmutableList.of(Pair.of(emz.b("bastion/treasure/entrances/entrance_0", $$2), 1)), enb.a.b));
+      re.a(
+         $$0,
+         "bastion/treasure/ramparts",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
+               Pair.of(emz.b("bastion/treasure/ramparts/top_wall", $$5), 1),
+               Pair.of(emz.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/corners/bottom",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(emz.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/corners/edges",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/corners/edges/bottom", $$3), 1),
+               Pair.of(emz.b("bastion/treasure/corners/edges/middle", $$3), 1),
+               Pair.of(emz.b("bastion/treasure/corners/edges/top", $$3), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/corners/middle",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(emz.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/corners/top",
+         new enb(
+            $$8,
+            ImmutableList.of(Pair.of(emz.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(emz.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/extensions/large_pool",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/empty", $$2), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/extensions/small_pool",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/fire_room", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/empty", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
+               Pair.of(emz.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/extensions/houses",
+         new enb(
+            $$8,
+            ImmutableList.of(Pair.of(emz.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(emz.b("bastion/treasure/extensions/house_1", $$2), 1)),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "bastion/treasure/roofs",
+         new enb(
+            $$8,
+            ImmutableList.of(
+               Pair.of(emz.b("bastion/treasure/roofs/wall_roof", $$6), 1),
+               Pair.of(emz.b("bastion/treasure/roofs/corner_roof", $$6), 1),
+               Pair.of(emz.b("bastion/treasure/roofs/center_roof", $$6), 1)
+            ),
+            enb.a.b
+         )
+      );
    }
 }

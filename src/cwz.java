@@ -1,23 +1,37 @@
-public class cwz extends cvn implements cwn {
-   public cwz(cvn.a $$0) {
+import java.util.List;
+
+public class cwz extends cvt {
+   public static final int a = 5;
+   public static final float b = 3.0F;
+
+   public cwz(cvt.a $$0) {
       super($$0);
    }
 
    @Override
-   public brs a(dej $$0, cnx $$1, brr $$2) {
-      cvs $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awg.yG, awh.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arj $$4) {
-         cor.a(cow::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
-      }
-
-      $$1.b(awq.c.b(this));
-      $$3.a(1, $$1);
-      return brs.a;
+   public xh c_(cvx $$0) {
+      cuu $$1 = $$0.a(kt.ai);
+      return (xh)($$1 != null ? xh.c(this.k + "." + $$1.b()) : super.c_($$0));
    }
 
    @Override
-   public cor a(dej $$0, jy $$1, cvs $$2, jk $$3) {
-      return new cow($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public void a(cvx $$0, cvt.b $$1, List<xh> $$2, cxp $$3) {
+      ctz.a($$0, $$2);
+   }
+
+   @Override
+   public cvz a(cvx $$0) {
+      return cvz.d;
+   }
+
+   @Override
+   public int a(cvx $$0, buv $$1) {
+      return 72000;
+   }
+
+   @Override
+   public bry a(dev $$0, coh $$1, brx $$2) {
+      $$1.c($$2);
+      return bry.c;
    }
 }

@@ -1,21 +1,25 @@
-public class gdx extends gdy<lj> {
-   protected gdx(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lj $$7, gfo $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.v = this.a($$7.b().x(), $$9);
-      this.w = this.a($$7.b().y(), $$9);
-      this.x = this.a($$7.b().z(), $$9);
+public class gdx extends gge {
+   gdx(gbx $$0, double $$1, double $$2, double $$3, dvd $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(fja.Q().ap().a().a($$4));
+      this.u = 0.0F;
+      this.t = 80;
+      this.n = false;
    }
 
-   public static class a implements gew<lj> {
-      private final gfo a;
+   @Override
+   public gfi b() {
+      return gfi.a;
+   }
 
-      public a(gfo $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public float b(float $$0) {
+      return 0.5F;
+   }
 
-      public get a(lj $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gdx($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+   public static class a implements gfh<li> {
+      public gfe a(li $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdx($$1, $$2, $$3, $$4, $$0.b());
       }
    }
 }

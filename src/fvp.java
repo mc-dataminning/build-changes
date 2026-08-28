@@ -1,529 +1,559 @@
 import com.google.common.collect.ImmutableList;
+import com.google.gson.JsonElement;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.Lifecycle;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.concurrent.CancellationException;
+import java.util.OptionalLong;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.mutable.MutableObject;
 import org.slf4j.Logger;
 
-public class fvp extends flk<fvp.a> {
-   public static final DateTimeFormatter a = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault());
-   static final ale m = ale.b("world_list/error_highlighted");
-   static final ale n = ale.b("world_list/error");
-   static final ale o = ale.b("world_list/marked_join_highlighted");
-   static final ale p = ale.b("world_list/marked_join");
-   static final ale q = ale.b("world_list/warning_highlighted");
-   static final ale r = ale.b("world_list/warning");
-   static final ale s = ale.b("world_list/join_highlighted");
-   static final ale u = ale.b("world_list/join");
-   static final Logger v = LogUtils.getLogger();
-   static final xe w = xe.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
-   static final xe x = xe.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
-   static final xe y = xe.c("selectWorld.tooltip.snapshot1").a(n.g);
-   static final xe z = xe.c("selectWorld.tooltip.snapshot2").a(n.g);
-   static final xe A = xe.c("selectWorld.locked").a(n.m);
-   static final xe B = xe.c("selectWorld.conversion.tooltip").a(n.m);
-   static final xe C = xe.c("selectWorld.incompatible.tooltip").a(n.m);
-   static final xe D = xe.c("selectWorld.experimental");
-   private final fvk E;
-   private CompletableFuture<List<eta>> F;
+public class fvp extends fqs {
+   private static final int b = 1;
+   private static final int c = 210;
+   private static final Logger d = LogUtils.getLogger();
+   private static final String s = "mcworld-";
+   static final xh u = xh.c("selectWorld.gameMode");
+   static final xh v = xh.c("selectWorld.enterName");
+   static final xh w = xh.c("selectWorld.experiments");
+   static final xh x = xh.c("selectWorld.allowCommands.info");
+   private static final xh y = xh.c("createWorld.preparing");
+   private static final int z = 10;
+   private static final int A = 8;
+   public static final alh a = alh.b("textures/gui/tab_header_background.png");
+   private final fon B = new fon(this);
+   final fvy C;
+   private final fnd D = new fnd(this::c, $$1x -> this.e($$1x));
+   private boolean E;
+   private final eyx F;
    @Nullable
-   private List<eta> G;
-   private String H;
-   private final fvp.b I;
+   private final fqs G;
+   @Nullable
+   private Path H;
+   @Nullable
+   private auk I;
+   @Nullable
+   private fne J;
 
-   public fvp(fvk $$0, fip $$1, int $$2, int $$3, int $$4, int $$5, String $$6, @Nullable fvp $$7) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.E = $$0;
-      this.I = new fvp.b($$1);
-      this.H = $$6;
-      if ($$7 != null) {
-         this.F = $$7.F;
-      } else {
-         this.F = this.M();
+   public static void a(fja $$0, @Nullable fqs $$1) {
+      a($$0, y);
+      auk $$2 = new auk(new aun($$0.bg()));
+      amf.c $$3 = a($$2, dfr.c);
+      CompletableFuture<fvx> $$4 = amf.a(
+         $$3, $$0x -> new amf.b<>(new fvp.a(new ebv(ebx.a(), elh.a($$0x.c())), $$0x.b()), $$0x.d()), ($$0x, $$1x, $$2x, $$3x) -> {
+            $$0x.close();
+            return new fvx($$3x.a(), $$2x, $$1x, $$3x.b());
+         }, ad.g(), $$0
+      );
+      $$0.b($$4::isDone);
+      $$0.a(new fvp($$0, $$1, $$4.join(), Optional.of(elh.a), OptionalLong.empty()));
+   }
+
+   public static fvp a(fja $$0, @Nullable fqs $$1, dez $$2, fvx $$3, @Nullable Path $$4) {
+      fvp $$5 = new fvp($$0, $$1, $$3, elh.a($$3.e()), OptionalLong.of($$3.c().b()));
+      $$5.E = true;
+      $$5.C.a($$2.a());
+      $$5.C.a($$2.e());
+      $$5.C.a($$2.d());
+      $$5.C.q().a($$2.f(), null);
+      if ($$2.c()) {
+         $$5.C.a(fvy.a.b);
+      } else if ($$2.b().h()) {
+         $$5.C.a(fvy.a.a);
+      } else if ($$2.b().g()) {
+         $$5.C.a(fvy.a.c);
       }
 
-      this.a(this.K());
+      $$5.H = $$4;
+      return $$5;
+   }
+
+   private fvp(fja $$0, @Nullable fqs $$1, fvx $$2, Optional<alg<elg>> $$3, OptionalLong $$4) {
+      super(xh.c("selectWorld.create"));
+      this.G = $$1;
+      this.F = $$0.bg();
+      this.C = new fvy($$0.m().c(), $$2, $$3, $$4);
+   }
+
+   public fvy m() {
+      return this.C;
    }
 
    @Override
-   protected void k() {
-      this.aJ_().forEach(fvp.a::close);
-      super.k();
+   protected void aS_() {
+      this.J = fne.a(this.D, this.n).a(new fvp.b(), new fvp.d(), new fvp.c()).a();
+      this.c(this.J);
+      fos $$0 = this.B.b(fos.e().a(8));
+      $$0.a(fkz.a(xh.c("selectWorld.create"), $$0x -> this.E()).a());
+      $$0.a(fkz.a(xg.e, $$0x -> this.D()).a());
+      this.B.a($$0x -> {
+         $$0x.o(1);
+         this.c($$0x);
+      });
+      this.J.a(0, false);
+      this.C.a();
+      this.c();
    }
 
-   @Nullable
-   private List<eta> K() {
-      try {
-         return this.F.getNow(null);
-      } catch (CancellationException | CompletionException var2) {
-         return null;
+   @Override
+   protected void aH_() {
+   }
+
+   @Override
+   public void c() {
+      if (this.J != null) {
+         this.J.a(this.n);
+         this.J.b();
+         int $$0 = this.J.H().c();
+         fph $$1 = new fph(0, $$0, this.n, this.o - this.B.b() - $$0);
+         this.D.a($$1);
+         this.B.b($$0);
+         this.B.a();
       }
    }
 
-   void L() {
-      this.F = this.M();
+   private static void a(fja $$0, xh $$1) {
+      $$0.d(new fqd($$1));
+   }
+
+   private void E() {
+      fvx $$0 = this.C.k();
+      ebu.b $$1 = $$0.e().a($$0.d());
+      jw<alq> $$2 = $$0.f().a(alq.c, $$1.b());
+      Lifecycle $$3 = crc.a($$0.h().b()) ? Lifecycle.experimental() : Lifecycle.stable();
+      Lifecycle $$4 = $$2.a().c();
+      Lifecycle $$5 = $$4.add($$3);
+      boolean $$6 = !this.E && $$4 == Lifecycle.stable();
+      fvz.a(this.m, this, $$5, () -> this.a($$1.d(), $$2, $$5), $$6);
+   }
+
+   private void a(eto.a $$0, jw<alq> $$1, Lifecycle $$2) {
+      a(this.m, y);
+      Optional<etk.c> $$3 = this.J();
+      if (!$$3.isEmpty()) {
+         this.G();
+         boolean $$4 = $$0 == eto.a.c;
+         fvx $$5 = this.C.k();
+         dez $$6 = this.c($$4);
+         etq $$7 = new eto($$6, $$5.c(), $$0, $$2);
+         this.m.x().a($$3.get(), $$5.g(), $$1, $$7);
+      }
+   }
+
+   private dez c(boolean $$0) {
+      String $$1 = this.C.b().trim();
+      if ($$0) {
+         der $$2 = new der(dfr.c.b());
+         $$2.a(der.l).a(false, null);
+         return new dez($$1, des.d, false, brv.a, true, $$2, dfr.c);
+      } else {
+         return new dez($$1, this.C.d().e, this.C.f(), this.C.e(), this.C.g(), this.C.q(), this.C.k().h());
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (foq.a($$0)) {
-         Optional<fvp.c> $$3 = this.c();
-         if ($$3.isPresent()) {
-            if ($$3.get().b()) {
-               this.c.ak().a(hav.a(awg.Ax, 1.0F));
-               $$3.get().c();
-            }
+      if (this.J.b($$0)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.E();
+         return true;
+      }
+   }
 
-            return true;
+   @Override
+   public void d() {
+      this.D();
+   }
+
+   public void D() {
+      this.m.a(this.G);
+      this.G();
+   }
+
+   @Override
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(gig::B, fqs.i, 0, this.o - this.B.b() - 2, 0.0F, 0.0F, this.n, 2, 32, 2);
+   }
+
+   @Override
+   protected void a(fkm $$0) {
+      $$0.a(gig::B, a, 0, 0, 0.0F, 0.0F, this.n, this.B.c(), 16, 16);
+      this.a($$0, 0, this.B.c(), this.n, this.o);
+   }
+
+   @Override
+   protected <T extends fmw & fov> T d(T $$0) {
+      return super.d($$0);
+   }
+
+   @Override
+   protected <T extends fmw & fmc & fov> T c(T $$0) {
+      return super.c($$0);
+   }
+
+   @Nullable
+   private Path F() {
+      if (this.H == null) {
+         try {
+            this.H = Files.createTempDirectory("mcworld-");
+         } catch (IOException var2) {
+            d.warn("Failed to create temporary dir", var2);
+            fni.c(this.m, this.C.c());
+            this.D();
          }
       }
 
-      return super.a($$0, $$1, $$2);
+      return this.H;
    }
 
-   @Override
-   public void b(fkb $$0, int $$1, int $$2, float $$3) {
-      List<eta> $$4 = this.K();
-      if ($$4 != this.G) {
-         this.a($$4);
+   void a(dfr $$0) {
+      Pair<Path, auk> $$1 = this.c($$0);
+      if ($$1 != null) {
+         this.m.a(new fvs(this, (auk)$$1.getSecond(), $$0x -> this.a($$0x, false, this::a)));
       }
-
-      super.b($$0, $$1, $$2, $$3);
    }
 
-   private void a(@Nullable List<eta> $$0) {
-      if ($$0 == null) {
-         this.N();
+   void b(dfr $$0) {
+      Pair<Path, auk> $$1 = this.c($$0);
+      if ($$1 != null) {
+         this.m.a(new fuh((auk)$$1.getSecond(), $$0x -> this.a($$0x, true, this::b), (Path)$$1.getFirst(), xh.c("dataPack.title")));
+      }
+   }
+
+   private void a(auk $$0, boolean $$1, Consumer<dfr> $$2) {
+      List<String> $$3 = ImmutableList.copyOf($$0.e());
+      List<String> $$4 = $$0.c().stream().filter($$1x -> !$$3.contains($$1x)).collect(ImmutableList.toImmutableList());
+      dfr $$5 = new dfr(new dei($$3, $$4), this.C.k().h().b());
+      if (this.C.a($$5)) {
+         this.m.a(this);
       } else {
-         this.a(this.H, $$0);
-      }
-
-      this.G = $$0;
-   }
-
-   public void a(String $$0) {
-      if (this.G != null && !$$0.equals(this.H)) {
-         this.a($$0, this.G);
-      }
-
-      this.H = $$0;
-   }
-
-   private CompletableFuture<List<eta>> M() {
-      esz.a $$0;
-      try {
-         $$0 = this.c.m().b();
-      } catch (esy var3) {
-         v.error("Couldn't load level list", var3);
-         this.c(var3.a());
-         return CompletableFuture.completedFuture(List.of());
-      }
-
-      if ($$0.a()) {
-         fve.a(this.c, null);
-         return CompletableFuture.completedFuture(List.of());
-      } else {
-         return this.c.m().a($$0).exceptionally($$0x -> {
-            this.c.a(o.a($$0x, "Couldn't load level list"));
-            return List.of();
-         });
-      }
-   }
-
-   private void a(String $$0, List<eta> $$1) {
-      this.k();
-      $$0 = $$0.toLowerCase(Locale.ROOT);
-
-      for (eta $$2 : $$1) {
-         if (this.a($$0, $$2)) {
-            this.b(new fvp.c(this, $$2));
+         cra $$6 = $$0.f();
+         if (crc.a($$6) && $$1) {
+            this.m.a(new fvo($$0.g(), $$3x -> {
+               if ($$3x) {
+                  this.a($$0, $$5, $$2);
+               } else {
+                  $$2.accept(this.C.k().h());
+               }
+            }));
+         } else {
+            this.a($$0, $$5, $$2);
          }
       }
-
-      this.O();
    }
 
-   private boolean a(String $$0, eta $$1) {
-      return $$1.b().toLowerCase(Locale.ROOT).contains($$0) || $$1.a().toLowerCase(Locale.ROOT).contains($$0);
-   }
-
-   private void N() {
-      this.k();
-      this.b(this.I);
-      this.O();
-   }
-
-   private void O() {
-      this.o();
-      this.E.d(true);
-   }
-
-   private void c(xe $$0) {
-      this.c.a(new fpq(xe.c("selectWorld.unable_to_load"), $$0));
-   }
-
-   @Override
-   public int b() {
-      return 270;
-   }
-
-   public void a(@Nullable fvp.a $$0) {
-      super.a($$0);
-      this.E.a($$0 instanceof fvp.c $$1 ? $$1.f : null);
-   }
-
-   public Optional<fvp.c> c() {
-      fvp.a $$0 = this.h();
-      return $$0 instanceof fvp.c $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   public fvk J() {
-      return this.E;
-   }
-
-   @Override
-   public void a(fol $$0) {
-      if (this.aJ_().contains(this.I)) {
-         this.I.b($$0);
-      } else {
-         super.a($$0);
-      }
-   }
-
-   public abstract static class a extends flk.a<fvp.a> implements AutoCloseable {
-      @Override
-      public void close() {
-      }
-   }
-
-   public static class b extends fvp.a {
-      private static final xe a = xe.c("selectWorld.loading_list");
-      private final fip b;
-
-      public b(fip $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = (this.b.z.n - this.b.h.a(a)) / 2;
-         int $$11 = $$2 + ($$5 - 9) / 2;
-         $$0.a(this.b.h, a, $$10, $$11, 16777215, false);
-         String $$12 = fpw.a(ad.c());
-         int $$13 = (this.b.z.n - this.b.h.b($$12)) / 2;
-         int $$14 = $$11 + 9;
-         $$0.a(this.b.h, $$12, $$13, $$14, -8355712, false);
-      }
-
-      @Override
-      public xe a() {
-         return a;
-      }
-   }
-
-   public final class c extends fvp.a {
-      private static final int b = 32;
-      private static final int c = 32;
-      private final fip d;
-      private final fvk e;
-      final eta f;
-      private final fpr g;
-      @Nullable
-      private Path h;
-      private long i;
-
-      public c(final fvp $$1, final eta $$2) {
-         this.d = $$1.c;
-         this.e = $$1.J();
-         this.f = $$2;
-         this.g = fpr.a(this.d.aa(), $$2.a());
-         this.h = $$2.c();
-         this.j();
-         this.l();
-      }
-
-      private void j() {
-         if (this.h != null) {
-            try {
-               BasicFileAttributes $$0 = Files.readAttributes(this.h, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-               if ($$0.isSymbolicLink()) {
-                  List<eyn> $$1 = this.d.bf().a(this.h);
-                  if (!$$1.isEmpty()) {
-                     fvp.v.warn("{}", eyl.a(this.h, $$1));
-                     this.h = null;
+   private void a(auk $$0, dfr $$1, Consumer<dfr> $$2) {
+      this.m.d(new fqd(xh.c("dataPack.validation.working")));
+      amf.c $$3 = a($$0, $$1);
+      amf.<fvp.a, fvx>a(
+            $$3,
+            $$0x -> {
+               if ($$0x.c().d(ly.aZ).c().findAny().isEmpty()) {
+                  throw new IllegalStateException("Needs at least one world preset to continue");
+               } else if ($$0x.c().d(ly.aG).c().findAny().isEmpty()) {
+                  throw new IllegalStateException("Needs at least one biome continue");
+               } else {
+                  fvx $$1x = this.C.k();
+                  DynamicOps<JsonElement> $$2x = $$1x.a().a(JsonOps.INSTANCE);
+                  DataResult<JsonElement> $$3x = ebv.a($$2x, $$1x.c(), $$1x.e()).setLifecycle(Lifecycle.stable());
+                  DynamicOps<JsonElement> $$4 = $$0x.c().a(JsonOps.INSTANCE);
+                  ebv $$5 = (ebv)$$3x.flatMap($$1xx -> ebv.a.parse($$4, $$1xx))
+                     .getOrThrow($$0xx -> new IllegalStateException("Error parsing worldgen settings after loading data packs: " + $$0xx));
+                  return new amf.b<>(new fvp.a($$5, $$0x.b()), $$0x.d());
+               }
+            },
+            ($$0x, $$1x, $$2x, $$3x) -> {
+               $$0x.close();
+               return new fvx($$3x.a(), $$2x, $$1x, $$3x.b());
+            },
+            ad.g(),
+            this.m
+         )
+         .thenApply($$0x -> {
+            $$0x.b();
+            return $$0x;
+         })
+         .thenAcceptAsync(this.C::a, this.m)
+         .handleAsync(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               d.warn("Failed to validate datapack", $$2x);
+               this.m.a(new fpq($$1xx -> {
+                  if ($$1xx) {
+                     $$2.accept(this.C.k().h());
                   } else {
-                     $$0 = Files.readAttributes(this.h, BasicFileAttributes.class);
+                     $$2.accept(dfr.c);
                   }
-               }
-
-               if (!$$0.isRegularFile()) {
-                  this.h = null;
-               }
-            } catch (NoSuchFileException var3) {
-               this.h = null;
-            } catch (IOException var4) {
-               fvp.v.error("could not validate symlink", var4);
-               this.h = null;
-            }
-         }
-      }
-
-      @Override
-      public xe a() {
-         xe $$0 = xe.a("narrator.select.world_info", this.f.b(), xe.a(new Date(this.f.f())), this.f.s());
-         if (this.f.p()) {
-            $$0 = xd.a($$0, fvp.A);
-         }
-
-         if (this.f.e()) {
-            $$0 = xd.a($$0, fvp.D);
-         }
-
-         return xe.a("narrator.select", $$0);
-      }
-
-      @Override
-      public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         String $$10 = this.f.b();
-         String $$11 = this.f.a();
-         long $$12 = this.f.f();
-         if ($$12 != -1L) {
-            $$11 = $$11 + " (" + fvp.a.format(Instant.ofEpochMilli($$12)) + ")";
-         }
-
-         if (StringUtils.isEmpty($$10)) {
-            $$10 = gyn.a("selectWorld.world") + " " + ($$1 + 1);
-         }
-
-         xe $$13 = this.f.s();
-         $$0.a(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, 16777215, false);
-         $$0.a(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712, false);
-         $$0.a(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712, false);
-         $$0.a(ghv::B, this.g.b(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         if (this.d.n.ab().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            boolean $$15 = $$14 < 32;
-            ale $$16 = $$15 ? fvp.s : fvp.u;
-            ale $$17 = $$15 ? fvp.q : fvp.r;
-            ale $$18 = $$15 ? fvp.m : fvp.n;
-            ale $$19 = $$15 ? fvp.o : fvp.p;
-            if (this.f instanceof eta.c || this.f instanceof eta.b) {
-               $$0.a(ghv::B, $$18, $$3, $$2, 32, 32);
-               $$0.a(ghv::B, $$19, $$3, $$2, 32, 32);
-               return;
-            }
-
-            if (this.f.p()) {
-               $$0.a(ghv::B, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fvp.A, 175));
-               }
-            } else if (this.f.d()) {
-               $$0.a(ghv::B, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fvp.B, 175));
-               }
-            } else if (!this.f.r()) {
-               $$0.a(ghv::B, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fvp.C, 175));
-               }
-            } else if (this.f.m()) {
-               $$0.a(ghv::B, $$19, $$3, $$2, 32, 32);
-               if (this.f.n()) {
-                  $$0.a(ghv::B, $$18, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fvp.w.g(), fvp.x.g()));
-                  }
-               } else if (!ab.b().g()) {
-                  $$0.a(ghv::B, $$17, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fvp.y.g(), fvp.z.g()));
-                  }
-               }
+               }, xh.c("dataPack.validation.failed"), xg.a, xh.c("dataPack.validation.back"), xh.c("dataPack.validation.reset")));
             } else {
-               $$0.a(ghv::B, $$16, $$3, $$2, 32, 32);
+               this.m.a(this);
             }
-         }
-      }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.f.u()) {
-            return true;
-         } else {
-            fvp.this.a((fvp.a)this);
-            if (!($$0 - (double)fvp.this.s() <= 32.0) && ad.c() - this.i >= 250L) {
-               this.i = ad.c();
-               return super.a($$0, $$1, $$2);
-            } else {
-               if (this.b()) {
-                  this.d.ak().a(hav.a(awg.Ax, 1.0F));
-                  this.c();
+            return null;
+         }, this.m);
+   }
+
+   private static amf.c a(auk $$0, dfr $$1) {
+      amf.d $$2 = new amf.d($$0, $$1, false, true);
+      return new amf.c($$2, ew.a.c, 2);
+   }
+
+   private void G() {
+      if (this.H != null) {
+         try (Stream<Path> $$0 = Files.walk(this.H)) {
+            $$0.sorted(Comparator.reverseOrder()).forEach($$0x -> {
+               try {
+                  Files.delete($$0x);
+               } catch (IOException var2) {
+                  d.warn("Failed to remove temporary file {}", $$0x, var2);
                }
-
-               return true;
-            }
-         }
-      }
-
-      public boolean b() {
-         return this.f.u();
-      }
-
-      public void c() {
-         if (this.f.u()) {
-            if (this.f instanceof eta.c) {
-               this.d.a(fpz.a(() -> this.d.a(this.e)));
-            } else {
-               this.d.x().a(this.f.a(), () -> {
-                  fvp.this.L();
-                  this.d.a(this.e);
-               });
-            }
-         }
-      }
-
-      public void d() {
-         this.d.a(new fpf($$0 -> {
-            if ($$0) {
-               this.d.a(new fqe(true));
-               this.e();
-            }
-
-            this.d.a(this.e);
-         }, xe.c("selectWorld.deleteQuestion"), xe.a("selectWorld.deleteWarning", this.f.b()), xe.c("selectWorld.deleteButton"), xd.e));
-      }
-
-      public void e() {
-         esz $$0 = this.d.m();
-         String $$1 = this.f.a();
-
-         try (esz.c $$2 = $$0.e($$1)) {
-            $$2.k();
-         } catch (IOException var8) {
-            fmx.b(this.d, $$1);
-            fvp.v.error("Failed to delete world {}", $$1, var8);
-         }
-
-         fvp.this.L();
-      }
-
-      public void f() {
-         this.k();
-         String $$0 = this.f.a();
-
-         esz.c $$1;
-         try {
-            $$1 = this.d.m().d($$0);
-         } catch (IOException var6) {
-            fmx.a(this.d, $$0);
-            fvp.v.error("Failed to access level {}", $$0, var6);
-            fvp.this.L();
-            return;
-         } catch (eyl var7) {
-            fvp.v.warn("{}", var7.getMessage());
-            this.d.a(fpz.a(() -> this.d.a(this.e)));
-            return;
-         }
-
-         fvg $$5;
-         try {
-            $$5 = fvg.a(this.d, $$1, $$1x -> {
-               $$1.c();
-               if ($$1x) {
-                  fvp.this.L();
-               }
-
-               this.d.a(this.e);
             });
-         } catch (ur | ux | IOException var5) {
-            $$1.c();
-            fmx.a(this.d, $$0);
-            fvp.v.error("Failed to load world data {}", $$0, var5);
-            fvp.this.L();
-            return;
+         } catch (IOException var6) {
+            d.warn("Failed to list temporary dir {}", this.H);
          }
 
-         this.d.a($$5);
+         this.H = null;
+      }
+   }
+
+   private static void a(Path $$0, Path $$1, Path $$2) {
+      try {
+         ad.b($$0, $$1, $$2);
+      } catch (IOException var4) {
+         d.warn("Failed to copy datapack file from {} to {}", $$2, $$1);
+         throw new UncheckedIOException(var4);
+      }
+   }
+
+   private Optional<etk.c> J() {
+      String $$0 = this.C.c();
+
+      try {
+         etk.c $$1 = this.m.m().e($$0);
+         if (this.H == null) {
+            return Optional.of($$1);
+         }
+
+         try {
+            Optional var5;
+            try (Stream<Path> $$2 = Files.walk(this.H)) {
+               Path $$3 = $$1.a(eti.j);
+               v.c($$3);
+               $$2.filter($$0x -> !$$0x.equals(this.H)).forEach($$1x -> a(this.H, $$3, $$1x));
+               var5 = Optional.of($$1);
+            }
+
+            return var5;
+         } catch (UncheckedIOException | IOException var8) {
+            d.warn("Failed to copy datapacks to world {}", $$0, var8);
+            $$1.close();
+         }
+      } catch (UncheckedIOException | IOException var9) {
+         d.warn("Failed to create access for {}", $$0, var9);
       }
 
-      public void h() {
-         this.k();
+      fni.c(this.m, $$0);
+      this.D();
+      return Optional.empty();
+   }
 
-         try (esz.c $$0 = this.d.m().d(this.f.a())) {
-            Pair<den, fvm> $$1 = this.d.x().a($$0);
-            den $$2 = (den)$$1.getFirst();
-            fvm $$3 = (fvm)$$1.getSecond();
-            Path $$4 = fve.a($$0.a(esx.j), this.d);
-            $$3.b();
-            if ($$3.c().e()) {
-               this.d
-                  .a(
-                     new fpf(
-                        $$3x -> this.d.a((fqh)($$3x ? fve.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
-                        xe.c("selectWorld.recreate.customized.title"),
-                        xe.c("selectWorld.recreate.customized.text"),
-                        xd.i,
-                        xd.e
-                     )
-                  );
+   @Nullable
+   public static Path a(Path $$0, fja $$1) {
+      MutableObject<Path> $$2 = new MutableObject();
+
+      try (Stream<Path> $$3 = Files.walk($$0)) {
+         $$3.filter($$1x -> !$$1x.equals($$0)).forEach($$2x -> {
+            Path $$3x = (Path)$$2.getValue();
+            if ($$3x == null) {
+               try {
+                  $$3x = Files.createTempDirectory("mcworld-");
+               } catch (IOException var5) {
+                  d.warn("Failed to create temporary dir");
+                  throw new UncheckedIOException(var5);
+               }
+
+               $$2.setValue($$3x);
+            }
+
+            a($$0, $$3x, $$2x);
+         });
+      } catch (UncheckedIOException | IOException var8) {
+         d.warn("Failed to copy datapacks from world {}", $$0, var8);
+         fni.c($$1, $$0.toString());
+         return null;
+      }
+
+      return (Path)$$2.getValue();
+   }
+
+   @Nullable
+   private Pair<Path, auk> c(dfr $$0) {
+      Path $$1 = this.F();
+      if ($$1 != null) {
+         if (this.I == null) {
+            this.I = aun.a($$1, this.F);
+            this.I.a();
+         }
+
+         this.I.b($$0.a().a());
+         return Pair.of($$1, this.I);
+      } else {
+         return null;
+      }
+   }
+
+   static record a(ebv a, dfr b) {
+   }
+
+   class b extends fnb {
+      private static final xh c = xh.c("createWorld.tab.game.title");
+      private static final xh d = xh.c("selectWorld.allowCommands");
+      private final fli e;
+
+      b() {
+         super(c);
+         fom.b $$0 = this.a.b(8).d(1);
+         foq $$1 = $$0.b();
+         this.e = new fli(fvp.this.p, 208, 20, xh.c("selectWorld.enterName"));
+         this.e.a(fvp.this.C.b());
+         this.e.b(fvp.this.C::a);
+         fvp.this.C.a($$0x -> this.e.a(fmk.a(xh.a("selectWorld.targetFolder", xh.b($$0x.c()).a(n.u)))));
+         fvp.this.b(this.e);
+         $$0.a(foj.a(fvp.this.p, this.e, fvp.v), $$0.b().b());
+         flg<fvy.a> $$2 = $$0.a(flg.<fvy.a>a($$0x -> $$0x.f).a(fvy.a.a, fvy.a.b, fvy.a.c).a(0, 0, 210, 20, fvp.u, ($$0x, $$1x) -> fvp.this.C.a($$1x)), $$1);
+         fvp.this.C.a($$1x -> {
+            $$2.a($$1x.d());
+            $$2.j = !$$1x.l();
+            $$2.a(fmk.a($$1x.d().a()));
+         });
+         flg<brv> $$3 = $$0.a(flg.a(brv::b).a(brv.values()).a(0, 0, 210, 20, xh.c("options.difficulty"), ($$0x, $$1x) -> fvp.this.C.a($$1x)), $$1);
+         fvp.this.C.a($$1x -> {
+            $$3.a(fvp.this.C.e());
+            $$3.j = !fvp.this.C.f();
+            $$3.a(fmk.a(fvp.this.C.e().d()));
+         });
+         flg<Boolean> $$4 = $$0.a(flg.e().a($$0x -> fmk.a(fvp.x)).a(0, 0, 210, 20, d, ($$0x, $$1x) -> fvp.this.C.a($$1x)));
+         fvp.this.C.a($$1x -> {
+            $$4.a(fvp.this.C.g());
+            $$4.j = !fvp.this.C.l() && !fvp.this.C.f();
+         });
+         if (!ab.b().g()) {
+            $$0.a(fkz.a(fvp.w, $$0x -> fvp.this.a(fvp.this.C.k().h())).a(210).a());
+         }
+      }
+   }
+
+   class c extends fnb {
+      private static final xh c = xh.c("createWorld.tab.more.title");
+      private static final xh d = xh.c("selectWorld.gameRules");
+      private static final xh e = xh.c("selectWorld.dataPacks");
+
+      c() {
+         super(c);
+         fom.b $$0 = this.a.b(8).d(1);
+         $$0.a(fkz.a(d, $$0x -> this.b()).a(210).a());
+         $$0.a(fkz.a(fvp.w, $$0x -> fvp.this.a(fvp.this.C.k().h())).a(210).a());
+         $$0.a(fkz.a(e, $$0x -> fvp.this.b(fvp.this.C.k().h())).a(210).a());
+      }
+
+      private void b() {
+         fvp.this.m.a(new fvq(fvp.this.C.q().a(fvp.this.C.k().h().b()), $$0 -> {
+            fvp.this.m.a(fvp.this);
+            $$0.ifPresent(fvp.this.C::a);
+         }));
+      }
+   }
+
+   class d extends fnb {
+      private static final xh c = xh.c("createWorld.tab.world.title");
+      private static final xh d = xh.c("generator.minecraft.amplified.info");
+      private static final xh e = xh.c("selectWorld.mapFeatures");
+      private static final xh f = xh.c("selectWorld.mapFeatures.info");
+      private static final xh g = xh.c("selectWorld.bonusItems");
+      private static final xh h = xh.c("selectWorld.enterSeed");
+      static final xh i = xh.c("selectWorld.seedInfo").a(n.i);
+      private static final int j = 310;
+      private final fli k;
+      private final fkz l;
+
+      d() {
+         super(c);
+         fom.b $$0 = this.a.a(10).b(8).d(2);
+         flg<fvy.b> $$1 = $$0.a(
+            flg.<fvy.b>a(fvy.b::a).a(this.c()).a(fvp.d::a).a(0, 0, 150, 20, xh.c("selectWorld.mapType"), ($$0x, $$1x) -> fvp.this.C.a($$1x))
+         );
+         $$1.a(fvp.this.C.m());
+         fvp.this.C.a($$1x -> {
+            fvy.b $$2x = $$1x.m();
+            $$1.a($$2x);
+            if ($$2x.b()) {
+               $$1.a(fmk.a(d));
             } else {
-               this.d.a(fve.a(this.d, this.e, $$2, $$3, $$4));
+               $$1.a(null);
             }
-         } catch (eyl var8) {
-            fvp.v.warn("{}", var8.getMessage());
-            this.d.a(fpz.a(() -> this.d.a(this.e)));
-         } catch (Exception var9) {
-            fvp.v.error("Unable to recreate world", var9);
-            this.d.a(new fpa(() -> this.d.a(this.e), xe.c("selectWorld.recreate.error.title"), xe.c("selectWorld.recreate.error.text")));
+
+            $$1.j = fvp.this.C.m().c() != null;
+         });
+         this.l = $$0.a(fkz.a(xh.c("selectWorld.customizeType"), $$0x -> this.b()).a());
+         fvp.this.C.a($$0x -> this.l.j = !$$0x.l() && $$0x.n() != null);
+         this.k = new fli(fvp.this.p, 308, 20, xh.c("selectWorld.enterSeed")) {
+            @Override
+            protected xv aP_() {
+               return super.aP_().b(xg.t).b(fvp.d.i);
+            }
+         };
+         this.k.c(i);
+         this.k.a(fvp.this.C.h());
+         this.k.b($$0x -> fvp.this.C.b(this.k.a()));
+         $$0.a(foj.a(fvp.this.p, this.k, h), 2);
+         fvw.a $$2 = fvw.a(310);
+         $$2.a(e, fvp.this.C::i, fvp.this.C::b).a(() -> !fvp.this.C.l()).a(f);
+         $$2.a(g, fvp.this.C::j, fvp.this.C::c).a(() -> !fvp.this.C.f() && !fvp.this.C.l());
+         fvw $$3 = $$2.a($$1x -> $$0.a($$1x, 2));
+         fvp.this.C.a($$1x -> $$3.a());
+      }
+
+      private void b() {
+         fvu $$0 = fvp.this.C.n();
+         if ($$0 != null) {
+            fvp.this.m.a($$0.createEditScreen(fvp.this, fvp.this.C.k()));
          }
       }
 
-      private void k() {
-         this.d.d(new fps(xe.c("selectWorld.data_read")));
-      }
-
-      private void l() {
-         boolean $$0 = this.h != null && Files.isRegularFile(this.h);
-         if ($$0) {
-            try (InputStream $$1 = Files.newInputStream(this.h)) {
-               this.g.a(fci.a($$1));
-            } catch (Throwable var7) {
-               fvp.v.error("Invalid icon for world {}", this.f.a(), var7);
-               this.h = null;
+      private flg.c<fvy.b> c() {
+         return new flg.c<fvy.b>() {
+            @Override
+            public List<fvy.b> a() {
+               return flg.a.getAsBoolean() ? fvp.this.C.p() : fvp.this.C.o();
             }
-         } else {
-            this.g.a();
-         }
+
+            @Override
+            public List<fvy.b> b() {
+               return fvp.this.C.o();
+            }
+         };
       }
 
-      @Override
-      public void close() {
-         this.g.close();
-      }
-
-      public String i() {
-         return this.f.b();
+      private static xv a(flg<fvy.b> $$0) {
+         return $$0.a().b() ? xg.a($$0.c(), d) : $$0.c();
       }
    }
 }

@@ -1,72 +1,159 @@
-public class fky extends fki {
-   private final fjz a;
-   private final fli b;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.UUID;
 
-   public fky(int $$0, int $$1, int $$2, int $$3, xe $$4, fjz $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.b = new fli($$4, $$5).d(this.y() - this.b());
+public class fky {
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final alh[] c = new alh[]{
+      alh.b("boss_bar/pink_background"),
+      alh.b("boss_bar/blue_background"),
+      alh.b("boss_bar/red_background"),
+      alh.b("boss_bar/green_background"),
+      alh.b("boss_bar/yellow_background"),
+      alh.b("boss_bar/purple_background"),
+      alh.b("boss_bar/white_background")
+   };
+   private static final alh[] d = new alh[]{
+      alh.b("boss_bar/pink_progress"),
+      alh.b("boss_bar/blue_progress"),
+      alh.b("boss_bar/red_progress"),
+      alh.b("boss_bar/green_progress"),
+      alh.b("boss_bar/yellow_progress"),
+      alh.b("boss_bar/purple_progress"),
+      alh.b("boss_bar/white_progress")
+   };
+   private static final alh[] e = new alh[]{
+      alh.b("boss_bar/notched_6_background"),
+      alh.b("boss_bar/notched_10_background"),
+      alh.b("boss_bar/notched_12_background"),
+      alh.b("boss_bar/notched_20_background")
+   };
+   private static final alh[] f = new alh[]{
+      alh.b("boss_bar/notched_6_progress"), alh.b("boss_bar/notched_10_progress"), alh.b("boss_bar/notched_12_progress"), alh.b("boss_bar/notched_20_progress")
+   };
+   private final fja g;
+   final Map<UUID, fln> h = Maps.newLinkedHashMap();
+
+   public fky(fja $$0) {
+      this.g = $$0;
    }
 
-   public fky a(int $$0) {
-      this.b.c($$0);
-      return this;
-   }
+   public void a(fkm $$0) {
+      if (!this.h.isEmpty()) {
+         this.g.aK().a("bossHealth");
+         int $$1 = $$0.a();
+         int $$2 = 12;
 
-   @Override
-   public void k(int $$0) {
-      super.k($$0);
-      this.b.d(this.y() - this.b());
-   }
+         for (fln $$3 : this.h.values()) {
+            int $$4 = $$1 / 2 - 91;
+            this.a($$0, $$4, $$2, $$3);
+            xh $$6 = $$3.i();
+            int $$7 = this.g.h.a($$6);
+            int $$8 = $$1 / 2 - $$7 / 2;
+            int $$9 = $$2 - 9;
+            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
+            $$2 += 10 + 9;
+            if ($$2 >= $$0.b() / 3) {
+               break;
+            }
+         }
 
-   @Override
-   protected int h() {
-      return this.b.w();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0;
-   }
-
-   @Override
-   protected void b(fkb $$0) {
-      if (this.e()) {
-         super.b($$0);
-      } else if (this.aN_()) {
-         this.a($$0, this.D() - this.a(), this.E() - this.a(), this.y() + this.b(), this.w() + this.b());
+         this.g.aK().c();
       }
    }
 
-   @Override
-   public void b(fkb $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (!this.e()) {
-            this.b($$0);
-            $$0.c().a();
-            $$0.c().a((float)this.D(), (float)this.E(), 0.0F);
-            this.b.a($$0, $$1, $$2, $$3);
-            $$0.c().b();
-         } else {
-            super.b($$0, $$1, $$2, $$3);
+   private void a(fkm $$0, int $$1, int $$2, bro $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = azj.b($$3.j(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+      }
+   }
+
+   private void a(fkm $$0, int $$1, int $$2, bro $$3, int $$4, alh[] $$5, alh[] $$6) {
+      $$0.a(gig::B, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.l() != bro.b.a) {
+         $$0.a(gig::B, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      }
+   }
+
+   public void a(acn $$0) {
+      $$0.a(new acn.b() {
+         @Override
+         public void a(UUID $$0, xh $$1, float $$2, bro.a $$3, bro.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            fky.this.h.put($$0, new fln($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         }
+
+         @Override
+         public void a(UUID $$0) {
+            fky.this.h.remove($$0);
+         }
+
+         @Override
+         public void a(UUID $$0, float $$1) {
+            fky.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, xh $$1) {
+            fky.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, bro.a $$1, bro.b $$2) {
+            fln $$3 = fky.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
+
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            fln $$4 = fky.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
+   }
+
+   public void a() {
+      this.h.clear();
+   }
+
+   public boolean b() {
+      if (!this.h.isEmpty()) {
+         for (bro $$0 : this.h.values()) {
+            if ($$0.n()) {
+               return true;
+            }
          }
       }
+
+      return false;
    }
 
-   public boolean j() {
-      return super.e();
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (bro $$0 : this.h.values()) {
+            if ($$0.m()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   protected void c(fkb $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)(this.D() + this.a()), (float)(this.E() + this.a()), 0.0F);
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
-   }
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (bro $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
+            }
+         }
+      }
 
-   @Override
-   protected void a(fol $$0) {
-      $$0.a(fok.a, this.z());
+      return false;
    }
 }

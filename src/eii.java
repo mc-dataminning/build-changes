@@ -1,20 +1,18 @@
 import com.mojang.serialization.MapCodec;
 
-public class eii extends ehz {
-   public static final MapCodec<eii> b = dus.a.fieldOf("state").xmap(eii::new, $$0 -> $$0.c);
-   private final dus c;
+public class eii<P extends eih> {
+   public static final eii<eig> a = a("mangrove_root_placer", eig.c);
+   private final MapCodec<P> b;
 
-   protected eii(dus $$0) {
-      this.c = $$0;
+   private static <P extends eih> eii<P> a(String $$0, MapCodec<P> $$1) {
+      return kc.a(lx.W, $$0, new eii<>($$1));
    }
 
-   @Override
-   protected eia<?> a() {
-      return eia.a;
+   private eii(MapCodec<P> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public dus a(azn $$0, jf $$1) {
-      return this.c;
+   public MapCodec<P> a() {
+      return this.b;
    }
 }

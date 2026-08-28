@@ -1,98 +1,56 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class byo<U> implements Iterable<U> {
-   protected final List<byo.a<U>> a;
-   private final azn b = azn.a();
-
-   public byo() {
-      this.a = Lists.newArrayList();
+@Deprecated
+public class byo {
+   public static bwp<buv> a(float $$0, brj $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   private byo(List<byo.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public static bwp<buv> a(bug<?> $$0, float $$1, brj $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.aq()));
    }
 
-   public static <U> Codec<byo<U>> a(Codec<U> $$0) {
-      return byo.a.a($$0).listOf().xmap(byo::new, $$0x -> $$0x.a);
+   private static bwp<buv> a(float $$0, brj $$1, Predicate<buv> $$2) {
+      float $$3 = $$0 * $$0;
+      byo.a $$4 = new byo.a($$1);
+      return cab.a(
+         (Function<cab.b<buv>, ? extends App<cab.c<buv>, cae<buv>>>)($$3x -> $$3x.group($$3x.c(cdz.n), $$3x.b(cdz.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<buv> $$9 = $$3x.<ceb>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((btz)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.A)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bwz($$9.get(), true));
+                        return true;
+                     }
+                  }))
+      );
    }
 
-   public byo<U> a(U $$0, int $$1) {
-      this.a.add(new byo.a<>($$0, $$1));
-      return this;
-   }
+   public static final class a {
+      private final brj a;
+      private int b;
 
-   public byo<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(byo.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(byo.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), byo.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
+      public a(brj $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
       }
 
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<byo.a<E>> a(final Codec<E> $$0) {
-         return new Codec<byo.a<E>>() {
-            public <T> DataResult<Pair<byo.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new byo.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
-            }
-
-            public <T> DataResult<T> a(byo.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
+      public boolean a(azr $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
       }
    }
 }

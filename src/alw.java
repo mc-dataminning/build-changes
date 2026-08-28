@@ -1,94 +1,95 @@
-import com.mojang.datafixers.util.Either;
-import io.netty.buffer.ByteBuf;
-import java.net.URI;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.IntFunction;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public record alw(List<alw.a> d) {
-   public static final alw a = new alw(List.of());
-   public static final zc<ByteBuf, Either<alw.b, xe>> b = za.a(alw.b.k, xg.f);
-   public static final zc<ByteBuf, List<alw.c>> c = alw.c.a.a(za.a());
+public class alw {
+   private static final Logger a = LogUtils.getLogger();
+   private static final alh b = alh.b("tick");
+   private static final alh c = alh.b("load");
+   private final MinecraftServer d;
+   private List<ij<ev>> e = ImmutableList.of();
+   private boolean f;
+   private alv g;
 
-   public boolean a() {
-      return this.d.isEmpty();
+   public alw(MinecraftServer $$0, alv $$1) {
+      this.d = $$0;
+      this.g = $$1;
+      this.b($$1);
    }
 
-   public Optional<alw.a> a(alw.b $$0) {
-      return this.d.stream().filter($$1 -> (Boolean)$$1.a.map($$1x -> $$1x == $$0, $$0xx -> false)).findFirst();
+   public CommandDispatcher<ev> a() {
+      return this.d.aG().a();
    }
 
-   public List<alw.c> b() {
-      return this.d.stream().map($$0 -> new alw.c($$0.a, $$0.b.toString())).toList();
-   }
+   public void b() {
+      if (this.d.aP().i()) {
+         if (this.f) {
+            this.f = false;
+            Collection<ij<ev>> $$0 = this.g.b(c);
+            this.a($$0, c);
+         }
 
-   public List<alw.a> c() {
-      return this.d;
-   }
-
-   public static record a(Either<alw.b, xe> a, URI b) {
-
-      public static alw.a a(alw.b $$0, URI $$1) {
-         return new alw.a(Either.left($$0), $$1);
-      }
-
-      public static alw.a a(xe $$0, URI $$1) {
-         return new alw.a(Either.right($$0), $$1);
-      }
-
-      public xe a() {
-         return (xe)this.a.map(alw.b::a, $$0 -> $$0);
-      }
-
-      public Either<alw.b, xe> b() {
-         return this.a;
-      }
-
-      public URI c() {
-         return this.b;
+         this.a(this.e, b);
       }
    }
 
-   public static enum b {
-      a(0, "report_bug"),
-      b(1, "community_guidelines"),
-      c(2, "support"),
-      d(3, "status"),
-      e(4, "feedback"),
-      f(5, "community"),
-      g(6, "website"),
-      h(7, "forums"),
-      i(8, "news"),
-      j(9, "announcements");
+   private void a(Collection<ij<ev>> $$0, alh $$1) {
+      this.d.aS().a($$1::toString);
 
-      private static final IntFunction<alw.b> l = axw.a($$0 -> $$0.m, values(), axw.a.a);
-      public static final zc<ByteBuf, alw.b> k = za.a(l, $$0 -> $$0.m);
-      private final int m;
-      private final String n;
-
-      private b(final int $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
+      for (ij<ev> $$2 : $$0) {
+         this.a($$2, this.c());
       }
 
-      private xe a() {
-         return xe.c("known_server_link." + this.n);
-      }
+      this.d.aS().c();
+   }
 
-      public alw.a a(URI $$0) {
-         return alw.a.a(this, $$0);
+   public void a(ij<ev> $$0, ev $$1) {
+      bok $$2 = this.d.aS();
+      $$2.a(() -> "function " + $$0.a());
+
+      try {
+         il<ev> $$3 = $$0.a(null, this.a());
+         ew.a($$1, $$2x -> hv.a($$2x, $$3, $$1, es.a));
+      } catch (ey var9) {
+      } catch (Exception var10) {
+         a.warn("Failed to execute function {}", $$0.a(), var10);
+      } finally {
+         $$2.c();
       }
    }
 
-   public static record c(Either<alw.b, xe> b, String c) {
-      public static final zc<ByteBuf, alw.c> a = zc.a(alw.b, alw.c::a, za.m, alw.c::b, alw.c::new);
+   public void a(alv $$0) {
+      this.g = $$0;
+      this.b($$0);
+   }
 
-      public Either<alw.b, xe> a() {
-         return this.b;
-      }
+   private void b(alv $$0) {
+      this.e = List.copyOf($$0.b(b));
+      this.f = true;
+   }
 
-      public String b() {
-         return this.c;
-      }
+   public ev c() {
+      return this.d.aH().a(2).a();
+   }
+
+   public Optional<ij<ev>> a(alh $$0) {
+      return this.g.a($$0);
+   }
+
+   public List<ij<ev>> b(alh $$0) {
+      return this.g.b($$0);
+   }
+
+   public Iterable<alh> d() {
+      return this.g.a().keySet();
+   }
+
+   public Iterable<alh> e() {
+      return this.g.b();
    }
 }

@@ -1,10 +1,19 @@
-public class dbq extends bqe.a {
-   public final jo<dbn> a;
-   public final int b;
+import com.mojang.serialization.Codec;
 
-   public dbq(jo<dbn> $$0, int $$1) {
-      super($$0.a().b());
-      this.a = $$0;
-      this.b = $$1;
+public enum dbq implements baf {
+   a("attacker"),
+   b("damaging_entity"),
+   c("victim");
+
+   public static final Codec<dbq> d = baf.a(dbq::values);
+   private final String e;
+
+   private dbq(final String $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

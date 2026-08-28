@@ -1,45 +1,67 @@
-public class ahz implements zl<agr> {
-   public static final zc<wb, ahz> a = zl.a(ahz::a, ahz::new);
-   private final csp b;
-   private final boolean c;
-   private final boolean d;
+public class ahz implements zo<agu> {
+   public static final zf<we, ahz> a = zo.a(ahz::a, ahz::new);
+   private final jg b;
+   private final jl c;
+   private final ahz.a d;
+   private final int e;
 
-   public ahz(csp $$0, boolean $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ahz(ahz.a $$0, jg $$1, jl $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.j();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   private ahz(wb $$0) {
-      this.b = $$0.b(csp.class);
-      this.c = $$0.readBoolean();
-      this.d = $$0.readBoolean();
+   public ahz(ahz.a $$0, jg $$1, jl $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private ahz(we $$0) {
+      this.d = $$0.b(ahz.a.class);
+      this.b = $$0.e();
+      this.c = jl.a($$0.readUnsignedByte());
+      this.e = $$0.l();
+   }
+
+   private void a(we $$0) {
       $$0.a(this.d);
+      $$0.a(this.b);
+      $$0.l(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public zn<ahz> a() {
-      return agp.bQ;
+   public zq<ahz> a() {
+      return ags.bN;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public csp b() {
+   public jg b() {
       return this.b;
    }
 
-   public boolean e() {
+   public jl e() {
       return this.c;
    }
 
-   public boolean f() {
+   public ahz.a f() {
       return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

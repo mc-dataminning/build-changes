@@ -1,60 +1,32 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public interface cxp {
+   cxp.a a = new cxp.a(false, false);
+   cxp.a b = new cxp.a(true, false);
 
-public class cxp implements cqn {
-   public static final Codec<jo<cxp>> a = lv.h.r();
-   public static final zc<wp, jo<cxp>> b = za.b(lw.ad);
-   @Nullable
-   private final String c;
-   private final List<bsy> d;
-   private cqq e = cqs.h;
+   boolean a();
 
-   public cxp(bsy... $$0) {
-      this(null, $$0);
-   }
+   boolean b();
 
-   public cxp(@Nullable String $$0, bsy... $$1) {
-      this.c = $$0;
-      this.d = List.of($$1);
-   }
-
-   public cxp a(cqo... $$0) {
-      this.e = cqs.f.a($$0);
-      return this;
-   }
-
-   @Override
-   public cqq i() {
-      return this.e;
-   }
-
-   public static String a(Optional<jo<cxp>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().c;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
+   public static record a(boolean c, boolean d) implements cxp {
+      @Override
+      public boolean a() {
+         return this.c;
       }
 
-      String $$3 = $$0.flatMap(jo::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
-   }
-
-   public List<bsy> a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      if (!this.d.isEmpty()) {
-         for (bsy $$0 : this.d) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
-         }
+      @Override
+      public boolean b() {
+         return this.d;
       }
 
-      return false;
+      public cxp.a c() {
+         return new cxp.a(this.c, true);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

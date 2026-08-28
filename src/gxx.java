@@ -1,75 +1,75 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import java.util.Map.Entry;
 import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class gxx extends aua {
-   private static final atw d = new atw(xe.c("resourcePack.vanilla.description"), ab.b().a(atj.a), Optional.empty());
-   private static final asz e = asz.a(atw.b, d);
-   public static final String c = "high_contrast";
-   private static final Map<String, xe> f = Map.of(
-      "programmer_art", xe.c("resourcePack.programmer_art.name"), "high_contrast", xe.c("resourcePack.high_contrast.name")
-   );
-   private static final atg g = new atg("vanilla", xe.c("resourcePack.vanilla.name"), auh.c, Optional.of(b));
-   private static final ati h = new ati(true, aud.b.b, false);
-   private static final ati i = new ati(false, aud.b.a, false);
-   private static final ale j = ale.b("resourcepacks");
-   @Nullable
-   private final Path k;
+public class gxx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ala b = new ala("atlases", ".json");
+   private final List<gxw> c;
 
-   public gxx(Path $$0, eym $$1) {
-      super(atj.a, b($$0), j, $$1);
-      this.k = this.a($$0);
+   private gxx(List<gxw> $$0) {
+      this.c = $$0;
    }
 
-   private static atg a(String $$0, xe $$1) {
-      return new atg($$0, $$1, auh.c, Optional.of(auc.a($$0)));
+   public List<Function<gxv, gxm>> a(ava $$0) {
+      final Map<alh, gxw.b> $$1 = new HashMap<>();
+      gxw.a $$2 = new gxw.a() {
+         @Override
+         public void a(alh $$0, gxw.b $$1x) {
+            gxw.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
+         }
+
+         @Override
+         public void a(Predicate<alh> $$0) {
+            Iterator<Entry<alh, gxw.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<alh, gxw.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<gxv, gxm>> $$3 = ImmutableList.builder();
+      $$3.add((Function<gxv, gxm>)$$0x -> gxi.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
    }
 
-   @Nullable
-   private Path a(Path $$0) {
-      if (ab.aW && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+   public static gxx a(ava $$0, alh $$1) {
+      alh $$2 = b.a($$1);
+      List<gxw> $$3 = new ArrayList<>();
+
+      for (auy $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends gxw>)gxz.h.parse($$6).getOrThrow());
+         } catch (Exception var11) {
+            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
          }
       }
 
-      return null;
-   }
-
-   private static atl b(Path $$0) {
-      atm $$1 = new atm().a(e).a("minecraft", "realms");
-      return $$1.b().a().a(atj.a, $$0).a(g);
-   }
-
-   @Override
-   protected xe a(String $$0) {
-      xe $$1 = f.get($$0);
-      return (xe)($$1 != null ? $$1 : xe.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected aud a(ath $$0) {
-      return aud.a(g, b($$0), atj.a, h);
-   }
-
-   @Nullable
-   @Override
-   protected aud a(String $$0, aud.c $$1, xe $$2) {
-      return aud.a(a($$0, $$2), $$1, atj.a, i);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, aud>> $$0) {
-      super.a($$0);
-      if (this.k != null) {
-         this.a(this.k, $$0);
-      }
+      return new gxx($$3);
    }
 }

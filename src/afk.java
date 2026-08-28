@@ -1,45 +1,39 @@
-public class afk implements zl<aca> {
-   public static final zc<wb, afk> a = zl.a(afk::a, afk::new);
-   private final float b;
+import javax.annotation.Nullable;
+
+public class afk implements zo<acd> {
+   public static final zf<we, afk> a = zo.a(afk::a, afk::new);
+   private final int b;
    private final int c;
-   private final int d;
 
-   public afk(float $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public afk(btz $$0, @Nullable btz $$1) {
+      this.b = $$0.ar();
+      this.c = $$1 != null ? $$1.ar() : 0;
    }
 
-   private afk(wb $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private afk(we $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+   private void a(we $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
    }
 
    @Override
-   public zn<afk> a() {
-      return agp.aG;
+   public zq<afk> a() {
+      return ags.aD;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public int b() {
       return this.b;
    }
 
    public int e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

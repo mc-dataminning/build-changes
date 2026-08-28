@@ -1,24 +1,34 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record cr(js<cxp> c) implements dx<cxr> {
-   public static final Codec<cr> a = kd.a(lw.ad).xmap(cr::new, cr::b);
+public record cr(Optional<jt<cwd>> c) implements dy<cwc> {
+   public static final Codec<cr> a = RecordCodecBuilder.create($$0 -> $$0.group(ke.a(ly.L).optionalFieldOf("song").forGetter(cr::c)).apply($$0, cr::new));
 
    @Override
-   public kr<cxr> a() {
-      return ks.L;
+   public ks<cwc> a() {
+      return kt.aa;
    }
 
-   public boolean a(cvs $$0, cxr $$1) {
-      Optional<jo<cxp>> $$2 = $$1.e();
-      return !$$2.isEmpty() && this.c.a($$2.get());
+   public boolean a(cvx $$0, cwc $$1) {
+      if (!this.c.isPresent()) {
+         return true;
+      } else {
+         boolean $$2 = false;
+
+         for (jp<cwd> $$3 : this.c.get()) {
+            Optional<alg<cwd>> $$4 = $$3.e();
+            if (!$$4.isEmpty() && $$4.get() == $$1.a().c()) {
+               $$2 = true;
+               break;
+            }
+         }
+
+         return $$2;
+      }
    }
 
-   public static ct a(js<cxp> $$0) {
-      return new cr($$0);
-   }
-
-   public js<cxp> b() {
-      return this.c;
+   public static cr b() {
+      return new cr(Optional.empty());
    }
 }

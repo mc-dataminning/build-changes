@@ -1,61 +1,30 @@
-public abstract class arf extends eqf {
-   protected arf(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+import java.util.function.IntFunction;
+
+public enum arf implements azm {
+   a(0, "options.particles.all"),
+   b(1, "options.particles.decreased"),
+   c(2, "options.particles.minimal");
+
+   private static final IntFunction<arf> d = aya.a(arf::b, values(), aya.a.b);
+   private final int e;
+   private final String f;
+
+   private arf(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  long $$6 = kh.a($$0, $$3, $$4, $$5);
-                  if ($$6 != $$0) {
-                     this.b($$0, $$6, $$1, $$2);
-                  }
-               }
-            }
-         }
-      }
+   public String a() {
+      return this.f;
    }
 
    @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               long $$7 = kh.a($$0, $$4, $$5, $$6);
-               if ($$7 == $$0) {
-                  $$7 = Long.MAX_VALUE;
-               }
-
-               if ($$7 != $$1) {
-                  int $$8 = this.b($$7, $$0, this.c($$7));
-                  if ($$3 > $$8) {
-                     $$3 = $$8;
-                  }
-
-                  if ($$3 == 0) {
-                     return $$3;
-                  }
-               }
-            }
-         }
-      }
-
-      return $$3;
+   public int b() {
+      return this.e;
    }
 
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return this.a($$0) ? this.b($$1) : $$2 + 1;
-   }
-
-   protected abstract int b(long var1);
-
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
+   public static arf a(int $$0) {
+      return d.apply($$0);
    }
 }

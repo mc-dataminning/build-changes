@@ -1,47 +1,122 @@
-public class ccg extends cbk {
-   private final cih a;
-   private int b;
+import java.util.EnumSet;
 
-   public ccg(cih $$0) {
+public abstract class ccg extends cbt {
+   private static final int g = 1200;
+   private static final int h = 1200;
+   private static final int i = 200;
+   protected final bvd a;
+   public final double b;
+   protected int c;
+   protected int d;
+   private int j;
+   protected jg e = jg.c;
+   private boolean k;
+   private final int l;
+   private final int m;
+   protected int f;
+
+   public ccg(bvd $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, 1);
+   }
+
+   public ccg(bvd $$0, double $$1, int $$2, int $$3) {
       this.a = $$0;
-      this.a($$0);
-   }
-
-   @Override
-   public void d() {
-      this.a.gV();
-      this.h();
-   }
-
-   private void h() {
-      awf $$0 = this.a.gU();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return false;
+      this.b = $$1;
+      this.l = $$2;
+      this.f = 0;
+      this.m = $$3;
+      this.a(EnumSet.of(cbt.a.a, cbt.a.c));
    }
 
    @Override
    public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.dV().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.ff() && this.a.dV().a(10) == 0;
-      } else {
+      if (this.c > 0) {
+         this.c--;
          return false;
+      } else {
+         this.c = this.a(this.a);
+         return this.n();
       }
    }
 
-   private void a(cih $$0) {
-      this.b = -$$0.gZ();
+   protected int a(bvd $$0) {
+      return b(200 + $$0.ea().a(200));
    }
 
    @Override
-   public boolean U_() {
+   public boolean c() {
+      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dX(), this.e);
+   }
+
+   @Override
+   public void d() {
+      this.h();
+      this.d = 0;
+      this.j = this.a.ea().a(this.a.ea().a(1200) + 1200) + 1200;
+   }
+
+   protected void h() {
+      this.a.P().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
+   }
+
+   public double i() {
+      return 1.0;
+   }
+
+   protected jg k() {
+      return this.e.d();
+   }
+
+   @Override
+   public boolean V_() {
       return true;
    }
+
+   @Override
+   public void a() {
+      jg $$0 = this.k();
+      if (!$$0.a(this.a.dv(), this.i())) {
+         this.k = false;
+         this.d++;
+         if (this.l()) {
+            this.a.P().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
+         }
+      } else {
+         this.k = true;
+         this.d--;
+      }
+   }
+
+   public boolean l() {
+      return this.d % 40 == 0;
+   }
+
+   protected boolean m() {
+      return this.k;
+   }
+
+   protected boolean n() {
+      int $$0 = this.l;
+      int $$1 = this.m;
+      jg $$2 = this.a.dx();
+      jg.a $$3 = new jg.a();
+
+      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
+               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
+                  $$3.a($$2, $$6, $$4 - 1, $$7);
+                  if (this.a.a($$3) && this.a(this.a.dX(), $$3)) {
+                     this.e = $$3;
+                     return true;
+                  }
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   protected abstract boolean a(dey var1, jg var2);
 }

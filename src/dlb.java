@@ -1,106 +1,111 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
 
-public abstract class dlb extends dkz implements dhp {
-   public static final dvs e = dvi.ax;
-   public static final int f = 25;
-   private final double c;
+public class dlb extends dhy {
+   public static final MapCodec<dlb> a = b(dlb::new);
+   private static final int c = 2;
+   private static final int d = 5;
+   private static final int e = 3600;
+   private static final int f = 12000;
+   protected static final fab b = dhy.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
+   private static int g = 3600;
+   private static int h = 12000;
 
-   protected dlb(dur.d $$0, jk $$1, ezq $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.l(this.F.b().b(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<dlb> a() {
+      return a;
+   }
+
+   public dlb(dvc.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dlb> a();
-
-   @Override
-   public dus a(dek $$0) {
-      return this.n().b(e, Integer.valueOf($$0.D_().a(25)));
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return b;
    }
 
    @Override
-   protected boolean f(dus $$0) {
-      return $$0.c(e) < 25;
+   protected boolean a(dvd $$0, dey $$1, jg $$2) {
+      return a($$1, $$2.e());
    }
 
    @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         jf $$4 = $$2.a(this.a);
-         if (this.h($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.z));
-         }
-      }
+   protected void b(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
+      $$1.a($$2, this, a($$1.E_()));
    }
 
-   protected dus a(dus $$0, azn $$1) {
-      return $$0.a(e);
-   }
-
-   public dus p(dus $$0) {
-      return $$0.b(e, Integer.valueOf(25));
-   }
-
-   public boolean q(dus $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected dus a(dus $$0, dus $$1) {
-      return $$1;
+   private static int a(azr $$0) {
+      return $$0.b(g, h);
    }
 
    @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      return !this.a($$0, $$3, $$4) ? dia.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, equ.c, equ.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if (!this.a($$0, $$1, $$2)) {
+         this.a((dev)$$1, $$2);
       } else {
-         return this.a($$0, this.b().n());
+         this.a($$1, $$2, $$3);
       }
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean b(dem $$0, jf $$1, dus $$2) {
-      return this.h($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
-      jf $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
+   protected void a(dvd $$0, dev $$1, jg $$2, btz $$3) {
+      if ($$3.aq().equals(bug.O)) {
+         this.a($$1, $$2);
       }
    }
 
-   protected abstract int a(azn var1);
+   private static boolean a(dea $$0, jg $$1) {
+      ere $$2 = $$0.b_($$1);
+      ere $$3 = $$0.b_($$1.d());
+      return $$2.a() == erf.c && $$3.a() == erf.a;
+   }
 
-   protected abstract boolean h(dus var1);
+   private void a(arm $$0, jg $$1, azr $$2) {
+      this.a((dev)$$0, $$1);
+      $$0.a(null, $$1, awk.jJ, awl.e, 1.0F, 1.0F);
+      this.b($$0, $$1, $$2);
+   }
 
-   @Override
-   protected dlb c() {
-      return this;
+   private void a(dev $$0, jg $$1) {
+      $$0.b($$1, false);
+   }
+
+   private void b(arm $$0, jg $$1, azr $$2) {
+      int $$3 = $$2.b(2, 6);
+
+      for (int $$4 = 1; $$4 <= $$3; $$4++) {
+         cij $$5 = bug.ba.a($$0, buf.e);
+         if ($$5 != null) {
+            double $$6 = (double)$$1.u() + this.b($$2);
+            double $$7 = (double)$$1.w() + this.b($$2);
+            int $$8 = $$2.b(1, 361);
+            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
+            $$5.gb();
+            $$0.b($$5);
+         }
+      }
+   }
+
+   private double b(azr $$0) {
+      double $$1 = 0.2F;
+      return azj.a($$0.j(), 0.2F, 0.7999999970197678);
+   }
+
+   @VisibleForTesting
+   public static void a(int $$0, int $$1) {
+      g = $$0;
+      h = $$1;
+   }
+
+   @VisibleForTesting
+   public static void b() {
+      g = 3600;
+      h = 12000;
    }
 }

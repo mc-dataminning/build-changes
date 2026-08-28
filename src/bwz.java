@@ -1,27 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class bwz {
-   public static bwg<bun> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+public class bwz implements byc {
+   private final btz a;
+   private final boolean b;
+
+   public bwz(btz $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static <E extends bun> bwg<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return bzs.a((Function<bzs.b<E>, ? extends App<bzs.c<E>, bzv<E>>>)($$4 -> {
-         bzs<E, ? extends bzt<? extends K1, cdt>> $$5 = $$2 ? $$4.a(cdq.m) : $$4.c(cdq.m);
-         return $$4.group($$4.a(cdq.n), $$5, $$4.b(cdq.L), $$4.a(cdq.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               ckh $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dS().B_().a($$11.ds()) && $$9.fJ()) {
-                  cdt $$12 = new cdt(new bwq($$11, false), $$1, 0);
-                  $$4x.a(new bwq($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   @Override
+   public ezh a() {
+      return this.b ? this.a.dv().b(0.0, (double)this.a.cT(), 0.0) : this.a.dv();
+   }
+
+   @Override
+   public jg b() {
+      return this.a.dx();
+   }
+
+   @Override
+   public boolean a(buv $$0) {
+      if (this.a instanceof buv $$1) {
+         if (!$$1.bM()) {
+            return false;
+         } else {
+            Optional<ceb> $$3 = $$0.ed().c(cdz.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
+      }
+   }
+
+   public btz c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

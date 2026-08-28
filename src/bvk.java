@@ -1,6 +1,3 @@
-import javax.annotation.Nullable;
-
 public interface bvk {
-   @Nullable
-   bun m();
+   void a(cfw var1, btz var2);
 }

@@ -1,17 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class epo implements epq {
-   private static final epo b = new epo();
-   public static final MapCodec<epo> a = MapCodec.unit(b);
+public interface epo<P extends epn> {
+   epo<eoq> a = a("always_true", eoq.a);
+   epo<eov> b = a("block_match", eov.a);
+   epo<eox> c = a("blockstate_match", eox.a);
+   epo<epv> d = a("tag_match", epv.a);
+   epo<epk> e = a("random_block_match", epk.a);
+   epo<epl> f = a("random_blockstate_match", epl.a);
 
-   @Override
-   public ug a(azn $$0, @Nullable ug $$1) {
-      return new ug();
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public epr<?> a() {
-      return epr.a;
+   static <P extends epn> epo<P> a(String $$0, MapCodec<P> $$1) {
+      return kc.a(lx.m, $$0, () -> $$1);
    }
 }

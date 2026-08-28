@@ -1,132 +1,36 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-public abstract class ggx {
-   private static final Object2ObjectMap<ale, ggx> a = ad.a(new Object2ObjectArrayMap(), $$0 -> {
-      ggx.c $$1 = new ggx.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dym.e, $$1);
-      $$0.put(dym.f, new ggx.b());
-      $$0.put(dym.g, new ggx.a());
-   });
-   private final float b;
-   private final boolean c;
-   private final ggx.d d;
-   private final boolean e;
-   private final boolean f;
+public class ggx implements bpt {
+   private final ghs a;
+   private final Set<bpr> b = new ObjectOpenHashSet();
+   private final bpz c = new bpz();
 
-   public ggx(float $$0, boolean $$1, ggx.d $$2, boolean $$3, boolean $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public ggx(LongSupplier $$0, ghs $$1) {
+      this.a = $$1;
+      this.b.add(bqa.a($$0));
+      this.a();
    }
 
-   public static ggx a(dyo $$0) {
-      return (ggx)a.get($$0.r());
+   private void a() {
+      this.b.addAll(bqa.a());
+      this.b.add(bpr.a("totalChunks", bpq.f, this.a, ghs::h));
+      this.b.add(bpr.a("renderedChunks", bpq.f, this.a, ghs::j));
+      this.b.add(bpr.a("lastViewDistance", bpq.f, this.a, ghs::i));
+      glj $$0 = this.a.g();
+      this.b.add(bpr.a("toUpload", bpq.g, $$0, glj::c));
+      this.b.add(bpr.a("freeBufferCount", bpq.g, $$0, glj::d));
+      this.b.add(bpr.a("toBatchCount", bpq.g, $$0, glj::b));
+      if (fdm.a().isPresent()) {
+         this.b.add(bpr.a("gpuUtilization", bpq.i, fja.Q(), fja::v));
+      }
    }
 
-   public boolean a(float $$0) {
-      return false;
-   }
-
-   public int b(float $$0) {
-      return 0;
-   }
-
-   public float a() {
+   @Override
+   public Set<bpr> a(Supplier<boi> $$0) {
+      this.b.addAll(this.c.a($$0));
       return this.b;
-   }
-
-   public boolean b() {
-      return this.c;
-   }
-
-   public abstract eyw a(eyw var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public ggx.d c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public static class a extends ggx {
-      public a() {
-         super(Float.NaN, false, ggx.d.c, true, false);
-      }
-
-      @Override
-      public eyw a(eyw $$0, float $$1) {
-         return $$0.c(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static class b extends ggx {
-      public b() {
-         super(Float.NaN, true, ggx.d.a, false, true);
-      }
-
-      @Override
-      public eyw a(eyw $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends ggx {
-      public static final int a = 192;
-      private static final float b = 0.4F;
-
-      public c() {
-         super(192.0F, true, ggx.d.b, false, false);
-      }
-
-      @Override
-      public boolean a(float $$0) {
-         float $$1 = azf.b($$0 * (float) (Math.PI * 2));
-         return $$1 >= -0.4F && $$1 <= 0.4F;
-      }
-
-      @Override
-      public int b(float $$0) {
-         float $$1 = azf.b($$0 * (float) (Math.PI * 2));
-         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
-         float $$3 = azf.l(1.0F - (1.0F - azf.a($$2 * (float) Math.PI)) * 0.99F);
-         return axq.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
-      }
-
-      @Override
-      public eyw a(eyw $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

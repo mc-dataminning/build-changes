@@ -1,63 +1,32 @@
-import javax.annotation.Nullable;
+import java.util.Objects;
+import org.joml.Matrix4f;
 
-public abstract class ftb extends fqh {
-   private static final int b = 100;
-   private final xe c;
-   @Nullable
-   private final xe d;
-   private final xe s;
-   @Nullable
-   protected fkq a;
-   @Nullable
-   private fkz u;
-   private final foa v;
-
-   protected ftb(xe $$0, xe $$1, xe $$2) {
-      this($$0, $$1, null, $$2);
+public interface ftb {
+   static ftb a(ayv $$0) {
+      return new fta($$0);
    }
 
-   protected ftb(xe $$0, xe $$1, @Nullable xe $$2, xe $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.s = $$3;
-      this.v = new foa(0, 0, this.n, this.o);
-   }
+   static ftb a(ctq $$0) {
+      Objects.requireNonNull($$0);
 
-   protected abstract fod m();
-
-   @Override
-   protected void aS_() {
-      fog $$0 = this.v.a(fog.d().a(8));
-      $$0.c().b();
-      $$0.a(new flv(this.n(), this.p));
-      this.u = $$0.a(new fkz(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      fog $$1 = $$0.a(fog.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(fkq.a(this.d, this.p).a());
-      }
-
-      $$1.a(this.m());
-      this.v.a($$1x -> {
-         fkm var10000 = this.c($$1x);
+      return (ftb)(switch ($$0) {
+         case ctp $$1 -> new fsz($$1.a());
+         case fsy.a $$2 -> new fsy($$2);
+         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
       });
-      this.c();
    }
 
-   @Override
-   protected void c() {
-      if (this.u != null) {
-         this.u.d(this.n - 100);
-      }
+   int a(fkk var1);
 
-      this.v.a();
-      foa.a(this.v, this.H());
+   int b(fkk var1);
+
+   default boolean a() {
+      return false;
    }
 
-   @Override
-   public xe i() {
-      return this.s;
+   default void a(fkk $$0, int $$1, int $$2, Matrix4f $$3, ghw.a $$4) {
+   }
+
+   default void a(fkk $$0, int $$1, int $$2, int $$3, int $$4, fkm $$5) {
    }
 }

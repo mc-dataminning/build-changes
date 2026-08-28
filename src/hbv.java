@@ -1,46 +1,33 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.nio.ByteBuffer;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
 import java.util.List;
-import org.lwjgl.BufferUtils;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 
-public class hbv implements FloatConsumer {
-   private final List<ByteBuffer> a = Lists.newArrayList();
-   private final int b;
-   private int c;
-   private ByteBuffer d;
+public class hbv<T> implements hbz<T> {
+   protected final Comparator<T> a;
+   protected final hby<T> b;
 
-   public hbv(int $$0) {
-      this.b = $$0 + 1 & -2;
-      this.d = BufferUtils.createByteBuffer($$0);
+   public hbv(Function<T, Stream<alh>> $$0, List<T> $$1) {
+      ToIntFunction<T> $$2 = ad.g($$1);
+      this.a = Comparator.comparingInt($$2);
+      this.b = hby.a($$1, $$0);
    }
 
-   public void accept(float $$0) {
-      if (this.d.remaining() == 0) {
-         this.d.flip();
-         this.a.add(this.d);
-         this.d = BufferUtils.createByteBuffer(this.b);
-      }
-
-      int $$1 = azf.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
-      this.d.putShort((short)$$1);
-      this.c += 2;
+   @Override
+   public List<T> search(String $$0) {
+      int $$1 = $$0.indexOf(58);
+      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
    }
 
-   public ByteBuffer a() {
-      this.d.flip();
-      if (this.a.isEmpty()) {
-         return this.d;
-      } else {
-         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
-         this.a.forEach($$0::put);
-         $$0.put(this.d);
-         $$0.flip();
-         return $$0;
-      }
+   protected List<T> a(String $$0) {
+      return this.b.b($$0);
    }
 
-   public int b() {
-      return this.c;
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      return ImmutableList.copyOf(new hbw<T>($$2.iterator(), $$3.iterator(), this.a));
    }
 }

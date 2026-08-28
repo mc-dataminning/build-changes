@@ -1,79 +1,40 @@
-public class ffz extends hdp {
-   private static final xe a = xe.c("mco.selectServer.create");
-   private static final xe b = xe.c("mco.configure.world.name");
-   private static final xe c = xe.c("mco.configure.world.description");
-   private static final int B = 10;
-   private static final int C = 210;
-   private final fdt D;
-   private final foc E = new foc(this);
-   private fkx F;
-   private fkx G;
-   private final Runnable H;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-   public ffz(fdt $$0, fep $$1) {
-      super(a);
-      this.D = $$0;
-      this.H = () -> this.a($$1);
+public class ffz implements Iterable<ffa> {
+   private final fja a;
+   private final Set<ffa> b = new HashSet<>();
+   private List<ffa> c = List.of();
+
+   public ffz(fja $$0) {
+      this.a = $$0;
    }
 
-   public ffz(fdt $$0, long $$1) {
-      super(a);
-      this.D = $$0;
-      this.H = () -> this.a($$1);
+   public void a(List<ffa> $$0) {
+      List<ffa> $$1 = new ArrayList<>($$0);
+      $$1.sort(new ffa.b(this.a.X().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
+      }
+
+      this.c = $$1;
    }
 
-   @Override
-   public void aS_() {
-      this.E.a(this.l, this.p);
-      fog $$0 = this.E.c(fog.d()).a(10);
-      fko $$1 = fko.a(xd.j, $$0x -> this.H.run()).a();
-      $$1.j = false;
-      this.F = new fkx(this.p, 210, 20, b);
-      this.F.b($$1x -> $$1.j = !bac.h($$1x));
-      this.G = new fkx(this.p, 210, 20, c);
-      $$0.a(fny.a(this.p, this.F, b));
-      $$0.a(fny.a(this.p, this.G, c));
-      fog $$2 = this.E.b(fog.e().a(10));
-      $$2.a($$1);
-      $$2.a(fko.a(xd.k, $$0x -> this.d()).a());
-      this.E.a($$1x -> {
-         fkm var10000 = this.c($$1x);
-      });
-      this.c();
+   public void a(ffa $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
    }
 
    @Override
-   protected void aH_() {
-      this.b(this.F);
+   public Iterator<ffa> iterator() {
+      return this.c.iterator();
    }
 
-   @Override
-   protected void c() {
-      this.E.a();
-   }
-
-   private void a(fep $$0) {
-      fhp $$1 = new fhp($$0.a, this.F.a(), this.G.a());
-      fgl $$2 = fgl.a(this, $$0, $$1, () -> this.m.execute(() -> {
-            fdt.g();
-            this.m.a(this.D);
-         }));
-      this.m.a($$2);
-   }
-
-   private void a(long $$0) {
-      fqh $$1 = new fgk($$1x -> {
-         if ($$1x == null) {
-            this.m.a(this);
-         } else {
-            this.m.a(new fgd(this, new fhk(this.D, $$0, $$1x, this.F.a(), this.G.a())));
-         }
-      }, a);
-      this.m.a($$1);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.D);
+   public boolean a() {
+      return this.c.isEmpty();
    }
 }

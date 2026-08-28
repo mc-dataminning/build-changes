@@ -1,28 +1,27 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cez extends cew<bun> {
-   @Override
-   public Set<cdq<?>> a() {
-      return ImmutableSet.of(cdq.i);
-   }
+public abstract class cez extends cff<buv> {
+   protected abstract boolean a(buv var1, buv var2);
+
+   protected abstract cdz<buv> b();
 
    @Override
-   protected void a(arj $$0, bun $$1) {
-      $$1.dY().a(cdq.i, this.a($$1));
+   public Set<cdz<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   private List<bun> a(bun $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   @Override
+   protected void a(arm $$0, buv $$1) {
+      $$1.ed().a(this.b(), this.b($$1));
    }
 
-   private boolean b(bun $$0) {
-      return $$0.ao() == bty.bj && $$0.p_();
+   private Optional<buv> b(buv $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
    }
 
-   private cds c(bun $$0) {
-      return $$0.dY().c(cdq.h).orElse(cds.a());
+   protected Optional<ceb> a(buv $$0) {
+      return $$0.ed().c(cdz.h);
    }
 }

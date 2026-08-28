@@ -1,11 +1,17 @@
-public class axo {
-   public static final axl<ekv> a = a("normal");
-   public static final axl<ekv> b = a("extended");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private axo() {
+public record axo(List<axn> b, boolean c) {
+   public static final Codec<axo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axn.a.listOf().fieldOf("values").forGetter(axo::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(axo::b)).apply($$0, axo::new)
+   );
+
+   public List<axn> a() {
+      return this.b;
    }
 
-   private static axl<ekv> a(String $$0) {
-      return axl.a(lw.ba, ale.b($$0));
+   public boolean b() {
+      return this.c;
    }
 }

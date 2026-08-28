@@ -1,21 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ege extends efq {
-   public static final Codec<ege> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehz.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               ayo.l.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               ayo.l.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ege::new)
-   );
-   public final int d;
-   public final int e;
+public class ege implements egj {
+   public static final Codec<ege> a = brd.b(0, 256).fieldOf("count").xmap(ege::new, ege::a).codec();
+   private final brd b;
 
-   public ege(ehz $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public ege(int $$0) {
+      this.b = bra.a($$0);
+   }
+
+   public ege(brd $$0) {
+      this.b = $$0;
+   }
+
+   public brd a() {
+      return this.b;
    }
 }

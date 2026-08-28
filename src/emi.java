@@ -1,61 +1,92 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Locale;
 
-public class emi extends emo {
-   public static final MapCodec<emi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ekk.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, emi::new)
-   );
-   private final jo<ekk> b;
-   private final ug c;
+public interface emi {
+   emi a = a(env.a::new, "MSCorridor");
+   emi b = a(env.b::new, "MSCrossing");
+   emi c = a(env.d::new, "MSRoom");
+   emi d = a(env.e::new, "MSStairs");
+   emi e = a(enx.a::new, "NeBCr");
+   emi f = a(enx.b::new, "NeBEF");
+   emi g = a(enx.c::new, "NeBS");
+   emi h = a(enx.d::new, "NeCCS");
+   emi i = a(enx.e::new, "NeCTB");
+   emi j = a(enx.f::new, "NeCE");
+   emi k = a(enx.g::new, "NeSCSC");
+   emi l = a(enx.h::new, "NeSCLT");
+   emi m = a(enx.i::new, "NeSC");
+   emi n = a(enx.j::new, "NeSCRT");
+   emi o = a(enx.k::new, "NeCSR");
+   emi p = a(enx.l::new, "NeMT");
+   emi q = a(enx.o::new, "NeRC");
+   emi r = a(enx.p::new, "NeSR");
+   emi s = a(enx.q::new, "NeStart");
+   emi t = a(eoj.a::new, "SHCC");
+   emi u = a(eoj.b::new, "SHFC");
+   emi v = a(eoj.c::new, "SH5C");
+   emi w = a(eoj.d::new, "SHLT");
+   emi x = a(eoj.e::new, "SHLi");
+   emi y = a(eoj.g::new, "SHPR");
+   emi z = a(eoj.h::new, "SHPH");
+   emi A = a(eoj.i::new, "SHRT");
+   emi B = a(eoj.j::new, "SHRC");
+   emi C = a(eoj.l::new, "SHSD");
+   emi D = a(eoj.m::new, "SHStart");
+   emi E = a(eoj.n::new, "SHS");
+   emi F = a(eoj.o::new, "SHSSD");
+   emi G = a(ent::new, "TeJP");
+   emi H = a(eod.a::a, "ORP");
+   emi I = a(enq.a::new, "Iglu");
+   emi J = a(eof::new, "RUPO");
+   emi K = a(eol::new, "TeSH");
+   emi L = a(enm::new, "TeDP");
+   emi M = a(eob.h::new, "OMB");
+   emi N = a(eob.j::new, "OMCR");
+   emi O = a(eob.k::new, "OMDXR");
+   emi P = a(eob.l::new, "OMDXYR");
+   emi Q = a(eob.m::new, "OMDYR");
+   emi R = a(eob.n::new, "OMDYZR");
+   emi S = a(eob.o::new, "OMDZR");
+   emi T = a(eob.p::new, "OMEntry");
+   emi U = a(eob.q::new, "OMPenthouse");
+   emi V = a(eob.s::new, "OMSimple");
+   emi W = a(eob.t::new, "OMSimpleT");
+   emi X = a(eob.u::new, "OMWR");
+   emi Y = a(eno.a::new, "ECP");
+   emi Z = a(eon.i::new, "WMP");
+   emi aa = a(enk.a::new, "BTP");
+   emi ab = a(eoh.a::new, "Shipwreck");
+   emi ac = a(enz.a::new, "NeFos");
+   emi ad = a(eln::new, "jigsaw");
 
-   protected emi(jo<ekk> $$0, emq.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   elv load(emh var1, uj var2);
+
+   private static emi a(emi $$0, String $$1) {
+      return kc.a(lx.Q, $$1.toLowerCase(Locale.ROOT), $$0);
    }
 
-   private ug b() {
-      ug $$0 = new ug();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dsx.a.a.c());
-      return $$0;
+   private static emi a(emi.a $$0, String $$1) {
+      return a((emi)$$0, $$1);
    }
 
-   @Override
-   public kj a(epj $$0, doa $$1) {
-      return kj.g;
+   private static emi a(emi.b $$0, String $$1) {
+      return a((emi)$$0, $$1);
    }
 
-   @Override
-   public List<epi.c> a(epj $$0, jf $$1, doa $$2, azn $$3) {
-      List<epi.c> $$4 = Lists.newArrayList();
-      $$4.add(new epi.c($$1, dho.pb.n().b(dlo.b, jm.a(jk.a, jk.d)), this.c));
-      return $$4;
+   public interface a extends emi {
+      elv load(uj var1);
+
+      @Override
+      default elv load(emh $$0, uj $$1) {
+         return this.load($$1);
+      }
    }
 
-   @Override
-   public eky a(epj $$0, jf $$1, doa $$2) {
-      kj $$3 = this.a($$0, $$2);
-      return new eky($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
+   public interface b extends emi {
+      elv load(epu var1, uj var2);
 
-   @Override
-   public boolean a(epj $$0, dfg $$1, dfe $$2, dwp $$3, jf $$4, jf $$5, doa $$6, eky $$7, azn $$8, eos $$9, boolean $$10) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public emp<?> a() {
-      return emp.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+      @Override
+      default elv load(emh $$0, uj $$1) {
+         return this.load($$0.c(), $$1);
+      }
    }
 }

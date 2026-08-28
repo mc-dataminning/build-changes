@@ -1,3 +1,8 @@
-public class gvh extends guo {
-   public cgy.a a = cgy.a.b;
+import javax.annotation.Nullable;
+
+public class gvh extends guc {
+   public jl a = jl.c;
+   @Nullable
+   public ckm b;
+   public int[] c = new int[0];
 }

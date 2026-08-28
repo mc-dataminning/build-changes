@@ -1,26 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class efk extends edu<egf> {
-   public efk(Codec<egf> $$0) {
+public class efk extends eef<ege> {
+   public efk(Codec<ege> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(edw<egf> $$0) {
-      dfg $$1 = $$0.b();
-      jf $$2 = $$0.e();
-      $$0.f();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         for (jk $$3 : jk.values()) {
-            if ($$3 != jk.a && dqj.a($$1, $$2.a($$3), $$3)) {
-               $$1.a($$2, dho.ff.n().b(dqj.a($$3), Boolean.valueOf(true)), 2);
-               return true;
-            }
-         }
+   public boolean a(eeh<ege> $$0) {
+      int $$1 = 0;
+      azr $$2 = $$0.d();
+      dfs $$3 = $$0.b();
+      jg $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-         return false;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(eaz.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         jg $$10 = new jg($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dvd $$11 = dia.mV.m().b(dov.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dia.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
       }
+
+      return $$1 > 0;
    }
 }

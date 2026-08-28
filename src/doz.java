@@ -1,60 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class doz extends dhm {
-   public static final MapCodec<doz> a = b(doz::new);
-   protected static final ezq b = dhm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int c = 20;
-
+public interface doz extends dif, dmo {
    @Override
-   public MapCodec<doz> a() {
-      return a;
-   }
-
-   public doz(dur.d $$0) {
-      super($$0);
+   default boolean a(@Nullable coh $$0, dea $$1, jg $$2, dvd $$3, erd $$4) {
+      return $$4 == erf.c;
    }
 
    @Override
-   protected ezq b(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return b;
-   }
+   default boolean a(dew $$0, jg $$1, dvd $$2, ere $$3) {
+      if (!$$2.c(dvt.C) && $$3.a() == erf.c) {
+         if (!$$0.y_()) {
+            $$0.a($$1, $$2.b(dvt.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   @Override
-   protected ezq b_(dus $$0, ddo $$1, jf $$2) {
-      return ezn.b();
-   }
-
-   @Override
-   protected ezq c(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return ezn.b();
-   }
-
-   @Override
-   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
-      dhs.b($$1, $$2.d(), $$0);
-   }
-
-   @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      if ($$1 == jk.b && $$2.a(dho.G)) {
-         $$3.a($$4, this, 20);
+         return true;
+      } else {
+         return false;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void b(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   default cvx a(@Nullable coh $$0, dew $$1, jg $$2, dvd $$3) {
+      if ($$3.c(dvt.C)) {
+         $$1.a($$2, $$3.b(dvt.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cvx(cwb.qA);
+      } else {
+         return cvx.k;
+      }
    }
 
    @Override
-   protected boolean a(dus $$0, eri $$1) {
-      return false;
-   }
-
-   @Override
-   protected float c(dus $$0, ddo $$1, jf $$2) {
-      return 0.2F;
+   default Optional<awj> au_() {
+      return erf.c.j();
    }
 }

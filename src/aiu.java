@@ -1,49 +1,51 @@
-public record aiu(int b, String c, int d, ait e) implements zl<aix> {
-   public static final zc<wb, aiu> a = zl.a(aiu::a, aiu::new);
-   private static final int f = 255;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   @Deprecated
-   public aiu(int b, String c, int d, ait e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+public class aiu {
+   private static final double a = 4096.0;
+   private ezh b = ezh.c;
+
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   private aiu(wb $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), ait.a($$0.l()));
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
    }
 
-   private void a(wb $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.m(this.d);
-      $$0.c(this.e.a());
+   public ezh a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
+         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
+         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
+         return new ezh($$3, $$4, $$5);
+      }
    }
 
-   @Override
-   public zn<aiu> a() {
-      return aiv.a;
+   public long a(ezh $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   public void a(aix $$0) {
-      $$0.a(this);
+   public long b(ezh $$0) {
+      return a($$0.e) - a(this.b.e);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public long c(ezh $$0) {
+      return a($$0.f) - a(this.b.f);
    }
 
-   public String e() {
-      return this.c;
+   public ezh d(ezh $$0) {
+      return $$0.d(this.b);
    }
 
-   public int f() {
-      return this.d;
+   public void e(ezh $$0) {
+      this.b = $$0;
    }
 
-   public ait g() {
-      return this.e;
+   public ezh a() {
+      return this.b;
    }
 }

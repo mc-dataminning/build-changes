@@ -1,67 +1,87 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class ccq extends cbk {
-   private static final int a = 10;
-   private final buv b;
-   private final int c;
-   @Nullable
-   private jf d;
+public class ccq extends cbt {
+   public static final int a = 120;
+   protected final bvd b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public ccq(buv $$0, int $$1) {
+   public ccq(bvd $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public ccq(bvd $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public ccq(bvd $$0, double $$1, int $$2, boolean $$3) {
       this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(cbk.a.a));
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cbt.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cV()) {
-         return false;
-      } else if (this.b.dS().S()) {
-         return false;
-      } else if (this.b.dV().a(this.c) != 0) {
+      if (this.b.cZ()) {
          return false;
       } else {
-         arj $$0 = (arj)this.b.dS();
-         jf $$1 = this.b.ds();
-         if (!$$0.a($$1, 6)) {
+         if (!this.h) {
+            if (this.i && this.b.ew() >= 100) {
+               return false;
+            }
+
+            if (this.b.ea().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         ezh $$0 = this.h();
+         if ($$0 == null) {
             return false;
          } else {
-            eyw $$2 = cfk.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(kh.a($$1x))));
-            this.d = $$2 == null ? null : jf.a((jy)$$2);
-            return this.d != null;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            this.h = false;
+            return true;
          }
       }
+   }
+
+   @Nullable
+   protected ezh h() {
+      return cfq.a(this.b, 10, 7);
    }
 
    @Override
    public boolean c() {
-      return this.d != null && !this.b.P().m() && this.b.P().i().equals(this.d);
+      return !this.b.P().m() && !this.b.cZ();
    }
 
    @Override
-   public void a() {
-      if (this.d != null) {
-         cdy $$0 = this.b.P();
-         if ($$0.m() && !this.d.a(this.b.dq(), 10.0)) {
-            eyw $$1 = eyw.c(this.d);
-            eyw $$2 = this.b.dq();
-            eyw $$3 = $$2.d($$1);
-            $$1 = $$3.c(0.4).e($$1);
-            eyw $$4 = $$1.d($$2).d().c(10.0).e($$2);
-            jf $$5 = jf.a((jy)$$4);
-            $$5 = this.b.dS().a(eao.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
-            }
-         }
-      }
+   public void d() {
+      this.b.P().a(this.c, this.d, this.e, this.f);
    }
 
-   private void h() {
-      azn $$0 = this.b.dV();
-      jf $$1 = this.b.dS().a(eao.a.f, this.b.ds().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.P().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+   @Override
+   public void e() {
+      this.b.P().o();
+      super.e();
+   }
+
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

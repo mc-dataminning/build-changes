@@ -1,45 +1,16 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public class cps extends cpr {
+   private static final float g = 3.0F;
 
-public class cps {
-   private final cpr a;
-   private final List<cps.a> b = Lists.newArrayList();
-
-   public cps(cpr $$0) {
-      this.a = $$0;
+   public cps(bug<? extends cpr> $$0, dev $$1) {
+      super($$0, $$1);
    }
 
-   public cps a(int $$0, cpp $$1) {
-      this.b.add(new cps.a($$0, $$1));
-      return this;
+   public cps(cmi $$0, dev $$1) {
+      super(bug.n, $$1, $$0, $$0.dC(), $$0.gx(), $$0.dI());
    }
 
-   public cpr a() {
-      this.b.stream().map(cps.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cpp $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
-   }
-
-   static class a {
-      private final int a;
-      private final cpp b;
-
-      public a(int $$0, cpp $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public cpp b() {
-         return this.b;
-      }
+   @Override
+   protected void a(ezh $$0) {
+      this.dX().a(this, null, e, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, dev.a.e, lq.A, lq.z, awk.cQ);
    }
 }

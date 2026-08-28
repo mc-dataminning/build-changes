@@ -2,32 +2,32 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class av extends dw<av.a> {
+public class av extends dx<av.a> {
    @Override
    public Codec<av.a> a() {
       return av.a.a;
    }
 
-   public void a(ark $$0, dus $$1, cvs $$2, int $$3) {
+   public void a(arn $$0, dvd $$1, cvx $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bg> b, Optional<jo<dhm>> c, Optional<cs> d, dh.d e) implements dw.a {
+   public static record a(Optional<bg> b, Optional<jp<dhy>> c, Optional<ct> d, di.d e) implements dx.a {
       public static final Codec<av.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(av.a::a),
-                  lv.e.r().optionalFieldOf("block").forGetter(av.a::b),
-                  cs.a.optionalFieldOf("item").forGetter(av.a::c),
-                  dh.d.d.optionalFieldOf("num_bees_inside", dh.d.c).forGetter(av.a::d)
+                  lx.e.r().optionalFieldOf("block").forGetter(av.a::b),
+                  ct.a.optionalFieldOf("item").forGetter(av.a::c),
+                  di.d.d.optionalFieldOf("num_bees_inside", di.d.c).forGetter(av.a::d)
                )
                .apply($$0, av.a::new)
       );
 
-      public static ao<av.a> a(dhm $$0, cs.a $$1, dh.d $$2) {
-         return an.L.a(new av.a(Optional.empty(), Optional.of($$0.r()), Optional.of($$1.b()), $$2));
+      public static ao<av.a> a(dhy $$0, ct.a $$1, di.d $$2) {
+         return an.L.a(new av.a(Optional.empty(), Optional.of($$0.p()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dus $$0, cvs $$1, int $$2) {
+      public boolean a(dvd $$0, cvx $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,15 +40,15 @@ public class av extends dw<av.a> {
          return this.b;
       }
 
-      public Optional<jo<dhm>> b() {
+      public Optional<jp<dhy>> b() {
          return this.c;
       }
 
-      public Optional<cs> c() {
+      public Optional<ct> c() {
          return this.d;
       }
 
-      public dh.d d() {
+      public di.d d() {
          return this.e;
       }
    }

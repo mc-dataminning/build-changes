@@ -1,41 +1,136 @@
+import com.google.common.base.Joiner;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
 public class ano {
-   public static void a(CommandDispatcher<eu> $$0) {
-      final LiteralArgumentBuilder<eu> $$1 = (LiteralArgumentBuilder<eu>)ev.a("gamerule").requires($$0x -> $$0x.c(2));
-      new def(cqs.f.a())
-         .a(
-            new def.c() {
-               @Override
-               public <T extends def.g<T>> void a(def.e<T> $$0, def.f<T> $$1x) {
-                  LiteralArgumentBuilder<eu> $$2 = ev.a($$0.a());
-                  if (!$$1.b().b()) {
-                     $$2.requires($$1xxx -> $$1.b().a($$1xxx.w()));
-                  }
+   private static final int a = 256;
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xh.b("commands.forceload.toobig", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xh.b("commands.forceload.query.failure", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xh.c("commands.forceload.added.failure"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xh.c("commands.forceload.removed.failure"));
 
-                  $$1.then(
-                     ((LiteralArgumentBuilder)$$2.executes($$1xxx -> ano.a((eu)$$1xxx.getSource(), $$0)))
-                        .then($$1.a("value").executes($$1xxx -> ano.a($$1xxx, $$0)))
-                  );
+   public static void a(CommandDispatcher<ev> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("forceload").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ew.a("add")
+                        .then(
+                           ((RequiredArgumentBuilder)ew.a("from", gs.a())
+                                 .executes($$0x -> a((ev)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "from"), true)))
+                              .then(ew.a("to", gs.a()).executes($$0x -> a((ev)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "to"), true)))
+                        )
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)ew.a("remove")
+                        .then(
+                           ((RequiredArgumentBuilder)ew.a("from", gs.a())
+                                 .executes($$0x -> a((ev)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "from"), false)))
+                              .then(ew.a("to", gs.a()).executes($$0x -> a((ev)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "to"), false)))
+                        ))
+                     .then(ew.a("all").executes($$0x -> b((ev)$$0x.getSource())))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)ew.a("query").executes($$0x -> a((ev)$$0x.getSource())))
+                  .then(ew.a("pos", gs.a()).executes($$0x -> a((ev)$$0x.getSource(), gs.a($$0x, "pos"))))
+            )
+      );
+   }
+
+   private static int a(ev $$0, aqz $$1) throws CommandSyntaxException {
+      deb $$2 = $$1.a();
+      arm $$3 = $$0.e();
+      alg<dev> $$4 = $$3.ag();
+      boolean $$5 = $$3.w().contains($$2.a());
+      if ($$5) {
+         $$0.a(() -> xh.a("commands.forceload.query.success", xh.a($$2), xh.a($$4.a())), false);
+         return 1;
+      } else {
+         throw c.create($$2, $$4.a());
+      }
+   }
+
+   private static int a(ev $$0) {
+      arm $$1 = $$0.e();
+      alg<dev> $$2 = $$1.ag();
+      LongSet $$3 = $$1.w();
+      int $$4 = $$3.size();
+      if ($$4 > 0) {
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(deb::new).map(deb::toString).iterator());
+         if ($$4 == 1) {
+            $$0.a(() -> xh.a("commands.forceload.list.single", xh.a($$2.a()), $$5), false);
+         } else {
+            $$0.a(() -> xh.a("commands.forceload.list.multiple", $$4, xh.a($$2.a()), $$5), false);
+         }
+      } else {
+         $$0.b(xh.a("commands.forceload.added.none", xh.a($$2.a())));
+      }
+
+      return $$4;
+   }
+
+   private static int b(ev $$0) {
+      arm $$1 = $$0.e();
+      alg<dev> $$2 = $$1.ag();
+      LongSet $$3 = $$1.w();
+      $$3.forEach($$1x -> $$1.a(deb.a($$1x), deb.b($$1x), false));
+      $$0.a(() -> xh.a("commands.forceload.removed.all", xh.a($$2.a())), true);
+      return 0;
+   }
+
+   private static int a(ev $$0, aqz $$1, aqz $$2, boolean $$3) throws CommandSyntaxException {
+      int $$4 = Math.min($$1.c(), $$2.c());
+      int $$5 = Math.min($$1.d(), $$2.d());
+      int $$6 = Math.max($$1.c(), $$2.c());
+      int $$7 = Math.max($$1.d(), $$2.d());
+      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
+         int $$8 = ki.a($$4);
+         int $$9 = ki.a($$5);
+         int $$10 = ki.a($$6);
+         int $$11 = ki.a($$7);
+         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
+         if ($$12 > 256L) {
+            throw b.create(256, $$12);
+         } else {
+            arm $$13 = $$0.e();
+            alg<dev> $$14 = $$13.ag();
+            deb $$15 = null;
+            int $$16 = 0;
+
+            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
+               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
+                  boolean $$19 = $$13.a($$17, $$18, $$3);
+                  if ($$19) {
+                     $$16++;
+                     if ($$15 == null) {
+                        $$15 = new deb($$17, $$18);
+                     }
+                  }
                }
             }
-         );
-      $$0.register($$1);
-   }
 
-   static <T extends def.g<T>> int a(CommandContext<eu> $$0, def.e<T> $$1) {
-      eu $$2 = (eu)$$0.getSource();
-      T $$3 = $$2.l().aL().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> xe.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
-   }
+            deb $$20 = $$15;
+            int $$21 = $$16;
+            if ($$21 == 0) {
+               throw ($$3 ? d : e).create();
+            } else {
+               if ($$21 == 1) {
+                  $$0.a(() -> xh.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", xh.a($$20), xh.a($$14.a())), true);
+               } else {
+                  deb $$22 = new deb($$8, $$9);
+                  deb $$23 = new deb($$10, $$11);
+                  $$0.a(() -> xh.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, xh.a($$14.a()), xh.a($$22), xh.a($$23)), true);
+               }
 
-   static <T extends def.g<T>> int a(eu $$0, def.e<T> $$1) {
-      T $$2 = $$0.l().aL().a($$1);
-      $$0.a(() -> xe.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+               return $$21;
+            }
+         }
+      } else {
+         throw gr.b.create();
+      }
    }
 }

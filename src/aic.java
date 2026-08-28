@@ -1,60 +1,45 @@
-import javax.annotation.Nullable;
+public class aic implements zo<agu> {
+   public static final zf<we, aic> a = zo.a(aic::a, aic::new);
+   private final csz b;
+   private final boolean c;
+   private final boolean d;
 
-public class aic implements zl<agr> {
-   public static final zc<wb, aic> a = zl.a(aic::a, aic::new);
-   private final aic.a b;
-   @Nullable
-   private final ale c;
-
-   public aic(aic.a $$0, @Nullable ale $$1) {
+   public aic(csz $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   public static aic a(ag $$0) {
-      return new aic(aic.a.a, $$0.a());
+   private aic(we $$0) {
+      this.b = $$0.b(csz.class);
+      this.c = $$0.readBoolean();
+      this.d = $$0.readBoolean();
    }
 
-   public static aic b() {
-      return new aic(aic.a.b, null);
-   }
-
-   private aic(wb $$0) {
-      this.b = $$0.b(aic.a.class);
-      if (this.b == aic.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
-   }
-
-   private void a(wb $$0) {
+   private void a(we $$0) {
       $$0.a(this.b);
-      if (this.b == aic.a.a) {
-         $$0.a(this.c);
-      }
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zn<aic> a() {
-      return agp.bT;
+   public zq<aic> a() {
+      return ags.bQ;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public aic.a e() {
+   public csz b() {
       return this.b;
    }
 
-   @Nullable
-   public ale f() {
+   public boolean e() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean f() {
+      return this.d;
    }
 }

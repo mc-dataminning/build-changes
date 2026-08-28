@@ -1,26 +1,53 @@
-public enum ait {
-   a,
-   b,
-   c;
+public class ait implements zo<agu> {
+   public static final zf<we, ait> a = zo.a(ait::a, ait::new);
+   private final brx b;
+   private final int c;
+   private final float d;
+   private final float e;
 
-   private static final int d = 1;
-   private static final int e = 2;
-   private static final int f = 3;
-
-   public static ait a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         case 3 -> c;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public ait(brx $$0, int $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-         case c -> 3;
-      };
+   private ait(we $$0) {
+      this.b = $$0.b(brx.class);
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+   }
+
+   @Override
+   public zq<ait> a() {
+      return ags.cg;
+   }
+
+   public void a(agu $$0) {
+      $$0.a(this);
+   }
+
+   public brx b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

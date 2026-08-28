@@ -1,62 +1,59 @@
-public class fgb extends hdp {
-   private final fqh a;
-   private final fgb.a b;
-   private flh c = flh.a;
+import java.util.List;
 
-   public fgb(ffj $$0, fqh $$1) {
-      super(fig.a);
-      this.a = $$1;
-      this.b = a($$0);
+public abstract class fgb {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
+
+   public fgb(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public fgb(xe $$0, fqh $$1) {
-      super(fig.a);
-      this.a = $$1;
-      this.b = a($$0);
+   public void a(fkm $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
    }
 
-   public fgb(xe $$0, xe $$1, fqh $$2) {
-      super(fig.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
+   protected abstract void a(fkm var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
    }
 
-   private static fgb.a a(ffj $$0) {
-      fea $$1 = $$0.a;
-      return a(xe.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   public int b() {
+      return this.d + this.b;
    }
 
-   private static fgb.a a(xe $$0) {
-      return a(xe.c("mco.errorMessage.generic"), $$0);
+   public abstract void a(int var1);
+
+   public static void a(fkm $$0, List<fgb> $$1, hed<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fgb $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
+      }
    }
 
-   private static fgb.a a(xe $$0, xe $$1) {
-      return new fgb.a($$0, $$1);
-   }
+   public static void a(hed<?> $$0, flv.a<?> $$1, List<fgb> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aJ_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.b($$6);
+         int $$7 = $$0.s();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-   @Override
-   public void aS_() {
-      this.c(fko.a(xd.h, $$0 -> this.d()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = flh.a(this.p, this.b.b, this.n * 3 / 4);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.a);
-   }
-
-   @Override
-   public xe i() {
-      return xe.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(xe a, xe b) {
+         for (fgb $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
+      }
    }
 }

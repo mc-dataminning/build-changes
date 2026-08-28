@@ -1,38 +1,28 @@
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+public class eti {
+   public static final eti a = new eti("advancements");
+   public static final eti b = new eti("stats");
+   public static final eti c = new eti("playerdata");
+   public static final eti d = new eti("players");
+   public static final eti e = new eti("level.dat");
+   public static final eti f = new eti("level.dat_old");
+   public static final eti g = new eti("icon.png");
+   public static final eti h = new eti("session.lock");
+   public static final eti i = new eti("generated");
+   public static final eti j = new eti("datapacks");
+   public static final eti k = new eti("resources.zip");
+   public static final eti l = new eti(".");
+   private final String m;
 
-public interface eti<T> {
-   kr<T> a();
-
-   T b();
-
-   T a(T var1, Stream<cvs> var2);
-
-   Stream<cvs> a(T var1);
-
-   default void a(cvs $$0, T $$1, Stream<cvs> $$2) {
-      T $$3 = $$0.a(this.a(), $$1);
-      T $$4 = this.a($$3, $$2);
-      $$0.b(this.a(), $$4);
+   private eti(String $$0) {
+      this.m = $$0;
    }
 
-   default void a(cvs $$0, Stream<cvs> $$1) {
-      this.a($$0, this.b(), $$1);
+   public String a() {
+      return this.m;
    }
 
-   default void a(cvs $$0, UnaryOperator<cvs> $$1) {
-      T $$2 = $$0.a(this.a());
-      if ($$2 != null) {
-         UnaryOperator<cvs> $$3 = $$1x -> {
-            if ($$1x.f()) {
-               return $$1x;
-            } else {
-               cvs $$2x = $$1.apply($$1x);
-               $$2x.f($$2x.k());
-               return $$2x;
-            }
-         };
-         this.a($$0, this.a($$2).map($$3));
-      }
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

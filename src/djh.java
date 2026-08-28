@@ -1,177 +1,196 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class djh extends dhv implements dhp {
-   public static final MapCodec<djh> d = b(djh::new);
-   public static final int e = 7;
-   public static final dvs f = dvi.av;
-   private static final ezq[] a = new ezq[]{
-      dhm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
+public class djh extends dhk implements dlf {
+   public static final MapCodec<djh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), t()).apply($$0, djh::new)
+   );
+   private static final Logger d = LogUtils.getLogger();
+   public static final dvx b = dkb.a;
+   public static final dvu c = dvt.c;
+   private final boolean e;
 
    @Override
-   public MapCodec<? extends djh> a() {
-      return d;
+   public MapCodec<djh> a() {
+      return a;
    }
 
-   protected djh(dur.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(this.b(), Integer.valueOf(0)));
+   public djh(boolean $$0, dvc.d $$1) {
+      super($$1);
+      this.l(this.F.b().b(b, jl.c).b(c, Boolean.valueOf(false)));
+      this.e = $$0;
    }
 
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return a[this.h($$0)];
+   public dsg a(jg $$0, dvd $$1) {
+      dsq $$2 = new dsq($$0, $$1);
+      $$2.b(this.e);
+      return $$2;
    }
 
    @Override
-   protected boolean b(dus $$0, ddo $$1, jf $$2) {
-      return $$0.a(dho.cC);
-   }
-
-   protected dvs b() {
-      return f;
-   }
-
-   public int c() {
-      return 7;
-   }
-
-   public int h(dus $$0) {
-      return $$0.c(this.b());
-   }
-
-   public dus b(int $$0) {
-      return this.n().b(this.b(), Integer.valueOf($$0));
-   }
-
-   public final boolean i(dus $$0) {
-      return this.h($$0) >= this.c();
-   }
-
-   @Override
-   protected boolean f(dus $$0) {
-      return !this.i($$0);
-   }
-
-   @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         int $$4 = this.h($$0);
-         if ($$4 < this.c()) {
-            float $$5 = a(this, $$1, $$2);
-            if ($$3.a((int)(25.0F / $$5) + 1) == 0) {
-               $$1.a($$2, this.b($$4 + 1), 2);
-            }
+   protected void a(dvd $$0, dev $$1, jg $$2, dhy $$3, @Nullable esm $$4, boolean $$5) {
+      if (!$$1.C) {
+         if ($$1.c_($$2) instanceof dsq $$7) {
+            this.a($$1, $$2, $$7, $$1.C($$2));
          }
       }
    }
 
-   public void a(dej $$0, jf $$1, dus $$2) {
-      int $$3 = this.h($$2) + this.a($$0);
-      int $$4 = this.c();
-      if ($$3 > $$4) {
-         $$3 = $$4;
-      }
-
-      $$0.a($$1, this.b($$3), 2);
-   }
-
-   protected int a(dej $$0) {
-      return azf.a($$0.z, 2, 5);
-   }
-
-   protected static float a(dhm $$0, ddo $$1, jf $$2) {
-      float $$3 = 1.0F;
-      jf $$4 = $$2.e();
-
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            float $$7 = 0.0F;
-            dus $$8 = $$1.a_($$4.b($$5, 0, $$6));
-            if ($$8.a(dho.cC)) {
-               $$7 = 1.0F;
-               if ($$8.c(dkj.b) > 0) {
-                  $$7 = 3.0F;
-               }
+   private void a(dev $$0, jg $$1, dsq $$2, boolean $$3) {
+      boolean $$4 = $$2.c();
+      if ($$3 != $$4) {
+         $$2.a($$3);
+         if ($$3) {
+            if ($$2.d() || $$2.t() == dsq.a.a) {
+               return;
             }
 
-            if ($$5 != 0 || $$6 != 0) {
-               $$7 /= 4.0F;
-            }
-
-            $$3 += $$7;
+            $$2.k();
+            $$0.a($$1, this, 1);
          }
       }
+   }
 
-      jf $$9 = $$2.f();
-      jf $$10 = $$2.g();
-      jf $$11 = $$2.h();
-      jf $$12 = $$2.i();
-      boolean $$13 = $$1.a_($$11).a($$0) || $$1.a_($$12).a($$0);
-      boolean $$14 = $$1.a_($$9).a($$0) || $$1.a_($$10).a($$0);
-      if ($$13 && $$14) {
-         $$3 /= 2.0F;
+   @Override
+   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if ($$1.c_($$2) instanceof dsq $$5) {
+         ddv $$6 = $$5.b();
+         boolean $$7 = !bag.b($$6.m());
+         dsq.a $$8 = $$5.t();
+         boolean $$9 = $$5.j();
+         if ($$8 == dsq.a.b) {
+            $$5.k();
+            if ($$9) {
+               this.a($$0, $$1, $$2, $$6, $$7);
+            } else if ($$5.u()) {
+               $$6.a(0);
+            }
+
+            if ($$5.c() || $$5.d()) {
+               $$1.a($$2, this, 1);
+            }
+         } else if ($$8 == dsq.a.c) {
+            if ($$9) {
+               this.a($$0, $$1, $$2, $$6, $$7);
+            } else if ($$5.u()) {
+               $$6.a(0);
+            }
+         }
+
+         $$1.c($$2, this);
+      }
+   }
+
+   private void a(dvd $$0, dev $$1, jg $$2, ddv $$3, boolean $$4) {
+      if ($$4) {
+         $$3.a($$1);
       } else {
-         boolean $$15 = $$1.a_($$11.f()).a($$0) || $$1.a_($$12.f()).a($$0) || $$1.a_($$12.g()).a($$0) || $$1.a_($$11.g()).a($$0);
-         if ($$15) {
-            $$3 /= 2.0F;
-         }
+         $$3.a(0);
       }
 
-      return $$3;
+      a($$1, $$2, $$0.c(b));
    }
 
    @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      return a($$1, $$2) && super.a($$0, $$1, $$2);
-   }
-
-   protected static boolean a(dem $$0, jf $$1) {
-      return $$0.b($$1, 0) >= 8;
-   }
-
-   @Override
-   protected void a(dus $$0, dej $$1, jf $$2, btr $$3) {
-      if ($$3 instanceof cli && $$1.ac().b(def.c)) {
-         $$1.a($$2, true, $$3);
+   protected bry a(dvd $$0, dev $$1, jg $$2, coh $$3, ezd $$4) {
+      dsg $$5 = $$1.c_($$2);
+      if ($$5 instanceof dsq && $$3.gH()) {
+         $$3.a((dsq)$$5);
+         return bry.a;
+      } else {
+         return bry.e;
       }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected dei d() {
-      return cvw.pw;
    }
 
    @Override
-   public cvs a(dem $$0, jf $$1, dus $$2) {
-      return new cvs(this.d());
-   }
-
-   @Override
-   public boolean b(dem $$0, jf $$1, dus $$2) {
-      return !this.i($$2);
-   }
-
-   @Override
-   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
+   protected boolean c_(dvd $$0) {
       return true;
    }
 
    @Override
-   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
-      this.a((dej)$$0, $$2, $$3);
+   protected int a(dvd $$0, dev $$1, jg $$2) {
+      dsg $$3 = $$1.c_($$2);
+      return $$3 instanceof dsq ? ((dsq)$$3).b().k() : 0;
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(f);
+   public void a(dev $$0, jg $$1, dvd $$2, buv $$3, cvx $$4) {
+      if ($$0.c_($$1) instanceof dsq $$6) {
+         ddv $$8 = $$6.b();
+         if (!$$0.C) {
+            if (!$$4.b(kt.X)) {
+               $$8.a($$0.ac().b(der.p));
+               $$6.b(this.e);
+            }
+
+            boolean $$9 = $$0.C($$1);
+            this.a($$0, $$1, $$6, $$9);
+         }
+      }
+   }
+
+   @Override
+   protected doe a_(dvd $$0) {
+      return doe.c;
+   }
+
+   @Override
+   protected dvd a(dvd $$0, dol $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dvd a(dvd $$0, dmu $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dvd a(czm $$0) {
+      return this.m().b(b, $$0.d().g());
+   }
+
+   private static void a(dev $$0, jg $$1, jl $$2) {
+      jg.a $$3 = $$1.k();
+      der $$4 = $$0.ac();
+      int $$5 = $$4.c(der.x);
+
+      while ($$5-- > 0) {
+         $$3.c($$2);
+         dvd $$6 = $$0.a_($$3);
+         dhy $$7 = $$6.b();
+         if (!$$6.a(dia.kH) || !($$0.c_($$3) instanceof dsq $$9) || $$9.t() != dsq.a.a) {
+            break;
+         }
+
+         if ($$9.c() || $$9.d()) {
+            ddv $$10 = $$9.b();
+            if ($$9.k()) {
+               if (!$$10.a($$0)) {
+                  break;
+               }
+
+               $$0.c($$3, $$7);
+            } else if ($$9.u()) {
+               $$10.a(0);
+            }
+         }
+
+         $$2 = $$6.c(b);
+      }
+
+      if ($$5 <= 0) {
+         int $$11 = Math.max($$4.c(der.x), 0);
+         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
+      }
    }
 }

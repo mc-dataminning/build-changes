@@ -1,53 +1,46 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public final class faa extends ezq {
+   private final ezq d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public interface faa {
-   String a_ = "*";
-   faa cz = new faa() {
-      @Override
-      public String cF() {
-         return "*";
-      }
-   };
-
-   String cF();
-
-   @Nullable
-   default xe R_() {
-      return null;
+   protected faa(ezq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   default xe he() {
-      xe $$0 = this.R_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xk(xk.a.a, xe.b(this.cF())))) : xe.b(this.cF());
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   static faa c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cz;
-      } else {
-         final xe $$1 = xe.b($$0);
-         return new faa() {
-            @Override
-            public String cF() {
-               return $$0;
-            }
-
-            @Override
-            public xe he() {
-               return $$1;
-            }
-         };
-      }
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   static faa a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new faa() {
-         @Override
-         public String cF() {
-            return $$1;
-         }
-      };
+   @Override
+   public int a(jl.a $$0) {
+      return this.a($$0, this.d.a($$0));
+   }
+
+   @Override
+   public int b(jl.a $$0) {
+      return this.a($$0, this.d.b($$0));
+   }
+
+   private int a(jl.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return azj.a($$1, $$2, $$3) - $$2;
    }
 }

@@ -1,24 +1,45 @@
-public record agh(int b) implements zl<aca> {
-   public static final zc<wb, agh> a = zl.a(agh::a, agh::new);
+public class agh implements zo<acd> {
+   public static final zf<we, agh> a = zo.a(agh::a, agh::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   private agh(wb $$0) {
-      this($$0.l());
+   public agh(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public static agh a(bsb $$0) {
-      return new agh($$0.k());
+   private agh(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
    }
 
-   private void a(wb $$0) {
+   private void a(we $$0) {
       $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public zn<agh> a() {
-      return agp.cj;
+   public zq<agh> a() {
+      return ags.aZ;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

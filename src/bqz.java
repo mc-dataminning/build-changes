@@ -1,25 +1,45 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class bqz implements bra {
-   private final bra[] a;
+public class bqz extends brb {
+   public static final bqz a = new bqz(0.0F);
+   public static final MapCodec<bqz> b = Codec.FLOAT.fieldOf("value").xmap(bqz::a, bqz::d);
+   private final float d;
 
-   public bqz(bra... $$0) {
-      this.a = $$0;
+   public static bqz a(float $$0) {
+      return $$0 == 0.0F ? a : new bqz($$0);
+   }
+
+   private bqz(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public float a(azn $$0) {
-      float $$1 = 1.0F;
+   public float a(azr $$0) {
+      return this.d;
+   }
 
-      for (bra $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
+   @Override
+   public float a() {
+      return this.d;
+   }
 
-      return $$1;
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public brc<?> c() {
+      return brc.a;
    }
 
    @Override
    public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+      return Float.toString(this.d);
    }
 }

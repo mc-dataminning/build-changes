@@ -1,231 +1,148 @@
-import com.google.common.primitives.Ints;
 import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
-import java.security.PrivateKey;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
 import net.minecraft.server.MinecraftServer;
-import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
-public class asn implements ajh, ws {
-   private static final AtomicInteger b = new AtomicInteger(0);
-   static final Logger c = LogUtils.getLogger();
-   private static final int d = 600;
-   private final byte[] e;
-   final MinecraftServer f;
-   final vy g;
-   private volatile asn.a h = asn.a.a;
-   private int i;
+public class asn extends asm implements abt, wv {
+   private static final Logger f = LogUtils.getLogger();
+   private static final xh g = xh.c("multiplayer.disconnect.invalid_player_data");
+   private final GameProfile h;
+   private final Queue<asd> i = new ConcurrentLinkedQueue<>();
    @Nullable
-   String j;
+   private asd j;
+   private aqy k;
    @Nullable
-   private GameProfile k;
-   private final String l = "";
-   private final boolean m;
+   private asy l;
 
-   public asn(MinecraftServer $$0, vy $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.e = Ints.toByteArray(azn.a().f());
-      this.m = $$2;
+   public asn(MinecraftServer $$0, wb $$1, asc $$2) {
+      super($$0, $$1, $$2);
+      this.h = $$2.a();
+      this.k = $$2.c();
    }
 
    @Override
-   public void d() {
-      if (this.h == asn.a.e) {
-         this.c(Objects.requireNonNull(this.k));
-      }
+   protected GameProfile i() {
+      return this.h;
+   }
 
-      if (this.h == asn.a.f && !this.a(Objects.requireNonNull(this.k))) {
-         this.d(this.k);
-      }
-
-      if (this.i++ == 600) {
-         this.a(xe.c("multiplayer.disconnect.slow_login"));
-      }
+   @Override
+   public void a(wd $$0) {
+      f.info("{} lost connection: {}", this.h, $$0.a().getString());
+      super.a($$0);
    }
 
    @Override
    public boolean c() {
-      return this.g.i();
+      return this.e.i();
    }
 
-   public void a(xe $$0) {
-      try {
-         c.info("Disconnecting {}: {}", this.e(), $$0.getString());
-         this.g.a(new aje($$0));
-         this.g.a($$0);
-      } catch (Exception var3) {
-         c.error("Error whilst disconnecting player", var3);
+   @Override
+   public void l() {
+      this.b(new zv(new aap(this.d.getServerModName())));
+      alz $$0 = this.d.bq();
+      if (!$$0.a()) {
+         this.b(new aac($$0.b()));
+      }
+
+      jw<alq> $$1 = this.d.bc();
+      List<aug> $$2 = this.d.bf().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
+      this.b(new abq(crc.f.b(this.d.ba().K())));
+      this.l = new asy($$2, $$1);
+      this.i.add(this.l);
+      this.n();
+      this.i.add(new asw());
+      this.o();
+   }
+
+   public void m() {
+      this.i.add(new asw());
+      this.o();
+   }
+
+   private void n() {
+      this.d.Y().ifPresent($$0 -> this.i.add(new asx($$0)));
+   }
+
+   @Override
+   public void a(aai $$0) {
+      this.k = $$0.b();
+   }
+
+   @Override
+   public void a(aam $$0) {
+      super.a($$0);
+      if ($$0.e().a()) {
+         this.a(asx.a);
       }
    }
 
-   private boolean a(GameProfile $$0) {
-      return this.f.ag().a($$0.getId()) != null;
-   }
-
    @Override
-   public void a(wa $$0) {
-      c.info("{} lost connection: {}", this.e(), $$0.a().getString());
-   }
-
-   @Override
-   public String e() {
-      String $$0 = this.g.a(this.f.bm());
-      return this.j != null ? this.j + " (" + $$0 + ")" : $$0;
-   }
-
-   @Override
-   public void a(ajj $$0) {
-      Validate.validState(this.h == asn.a.a, "Unexpected hello packet", new Object[0]);
-      Validate.validState(bac.f($$0.b()), "Invalid characters in username", new Object[0]);
-      this.j = $$0.b();
-      GameProfile $$1 = this.f.T();
-      if ($$1 != null && this.j.equalsIgnoreCase($$1.getName())) {
-         this.b($$1);
+   public void a(abv $$0) {
+      zr.a($$0, this, this.d);
+      if (this.l == null) {
+         throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
       } else {
-         if (this.f.aa() && !this.g.e()) {
-            this.h = asn.a.b;
-            this.g.a(new ajc("", this.f.R().getPublic().getEncoded(), this.e, true));
-         } else {
-            this.b(ki.b(this.j));
-         }
+         this.l.a($$0.b(), this::b);
+         this.a(asy.a);
       }
-   }
-
-   void b(GameProfile $$0) {
-      this.k = $$0;
-      this.h = asn.a.e;
-   }
-
-   private void c(GameProfile $$0) {
-      avj $$1 = this.f.ag();
-      xe $$2 = $$1.a(this.g.d(), $$0);
-      if ($$2 != null) {
-         this.a($$2);
-      } else {
-         if (this.f.az() >= 0 && !this.g.e()) {
-            this.g.a(new ajd(this.f.az()), wl.a(() -> this.g.a(this.f.az(), true)));
-         }
-
-         boolean $$3 = $$1.e($$0);
-         if ($$3) {
-            this.h = asn.a.f;
-         } else {
-            this.d($$0);
-         }
-      }
-   }
-
-   private void d(GameProfile $$0) {
-      this.h = asn.a.g;
-      this.g.a(new ajb($$0, true));
    }
 
    @Override
-   public void a(ajk $$0) {
-      Validate.validState(this.h == asn.a.b, "Unexpected key packet", new Object[0]);
+   public void a(abu $$0) {
+      zr.a($$0, this, this.d);
+      this.a(asw.a);
+      this.e.a(agt.b.a(ws.a(this.d.bb())));
 
-      final String $$5;
       try {
-         PrivateKey $$1 = this.f.R().getPrivate();
-         if (!$$0.a(this.e, $$1)) {
-            throw new IllegalStateException("Protocol error");
+         avn $$1 = this.d.ag();
+         if ($$1.a(this.h.getId()) != null) {
+            this.a(avn.f);
+            return;
          }
 
-         SecretKey $$2 = $$0.a($$1);
-         Cipher $$3 = ayd.a(2, $$2);
-         Cipher $$4 = ayd.a(1, $$2);
-         $$5 = new BigInteger(ayd.a("", this.f.R().getPublic(), $$2)).toString(16);
-         this.h = asn.a.c;
-         this.g.a($$3, $$4);
-      } catch (aye var7) {
-         throw new IllegalStateException("Protocol error", var7);
+         xh $$2 = $$1.a(this.e.d(), this.h);
+         if ($$2 != null) {
+            this.a($$2);
+            return;
+         }
+
+         arn $$3 = $$1.a(this.h, this.k);
+         $$1.a(this.e, $$3, this.a(this.k));
+      } catch (Exception var5) {
+         f.error("Couldn't place player in world", var5);
+         this.e.a(new zx(g));
+         this.e.a(g);
       }
+   }
 
-      Thread $$8 = new Thread("User Authenticator #" + b.incrementAndGet()) {
-         @Override
-         public void run() {
-            String $$0 = Objects.requireNonNull(asn.this.j, "Player name not initialized");
+   @Override
+   public void d() {
+      this.e();
+   }
 
-            try {
-               ProfileResult $$1 = asn.this.f.aq().hasJoinedServer($$0, $$5, this.a());
-               if ($$1 != null) {
-                  GameProfile $$2 = $$1.profile();
-                  asn.c.info("UUID of player {} is {}", $$2.getName(), $$2.getId());
-                  asn.this.b($$2);
-               } else if (asn.this.f.U()) {
-                  asn.c.warn("Failed to verify username but will let them in anyway!");
-                  asn.this.b(ki.b($$0));
-               } else {
-                  asn.this.a(xe.c("multiplayer.disconnect.unverified_username"));
-                  asn.c.error("Username '{}' tried to join with an invalid session", $$0);
-               }
-            } catch (AuthenticationUnavailableException var4) {
-               if (asn.this.f.U()) {
-                  asn.c.warn("Authentication servers are down but will let them in anyway!");
-                  asn.this.b(ki.b($$0));
-               } else {
-                  asn.this.a(xe.c("multiplayer.disconnect.authservers_down"));
-                  asn.c.error("Couldn't verify username because servers are unavailable");
-               }
-            }
+   private void o() {
+      if (this.j != null) {
+         throw new IllegalStateException("Task " + this.j.a().a() + " has not finished yet");
+      } else if (this.c()) {
+         asd $$0 = this.i.poll();
+         if ($$0 != null) {
+            this.j = $$0;
+            $$0.a(this::b);
          }
-
-         @Nullable
-         private InetAddress a() {
-            SocketAddress $$0 = asn.this.g.d();
-            return asn.this.f.ab() && $$0 instanceof InetSocketAddress ? ((InetSocketAddress)$$0).getAddress() : null;
-         }
-      };
-      $$8.setUncaughtExceptionHandler(new r(c));
-      $$8.start();
+      }
    }
 
-   @Override
-   public void a(aji $$0) {
-      this.a(asi.c);
-   }
-
-   @Override
-   public void a(ajl $$0) {
-      Validate.validState(this.h == asn.a.g, "Unexpected login acknowledgement packet", new Object[0]);
-      this.g.a(abp.d);
-      ary $$1 = ary.a(Objects.requireNonNull(this.k), this.m);
-      asj $$2 = new asj(this.f, this.g, $$1);
-      this.g.a(abp.b, $$2);
-      $$2.l();
-      this.h = asn.a.h;
-   }
-
-   @Override
-   public void a(o $$0, p $$1) {
-      $$1.a("Login phase", () -> this.h.toString());
-   }
-
-   @Override
-   public void a(aby $$0) {
-      this.a(asi.c);
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
+   private void a(asd.a $$0) {
+      asd.a $$1 = this.j != null ? this.j.a() : null;
+      if (!$$0.equals($$1)) {
+         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
+      } else {
+         this.j = null;
+         this.o();
+      }
    }
 }

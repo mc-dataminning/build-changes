@@ -1,16 +1,29 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
+import java.util.Set;
 
-public class exl {
-   private static final Codec<exk> d = lv.H.q().dispatch(exk::a, exj::a);
-   public static final Codec<exk> a = Codec.lazyInitialized(
-      () -> Codec.either(exi.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof exi $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final exj b = a("storage", exm.a);
-   public static final exj c = a("context", exi.b);
+public class exl implements exh {
+   private static final exl b = new exl();
+   public static final MapCodec<exl> a = MapCodec.unit(b);
 
-   private static exj a(String $$0, MapCodec<? extends exk> $$1) {
-      return kb.a(lv.H, ale.b($$0), new exj($$1));
+   private exl() {
+   }
+
+   @Override
+   public exi b() {
+      return exj.g;
+   }
+
+   @Override
+   public Set<ewp<?>> a() {
+      return ImmutableSet.of(ews.b);
+   }
+
+   public boolean a(etw $$0) {
+      return $$0.a(ews.b);
+   }
+
+   public static exh.a c() {
+      return () -> b;
    }
 }

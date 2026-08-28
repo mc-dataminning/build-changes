@@ -1,194 +1,183 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.net.URI;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.AccessMode;
-import java.nio.file.CopyOption;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
+import java.net.URL;
+import java.nio.file.FileSystemAlreadyExistsException;
+import java.nio.file.FileSystemNotFoundException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
-import java.nio.file.ProviderMismatchException;
-import java.nio.file.ReadOnlyFileSystemException;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.DirectoryStream.Filter;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.Iterator;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-class atq extends FileSystemProvider {
-   public static final String a = "x-mc-link";
+public class atq {
+   private static final Logger b = LogUtils.getLogger();
+   public static Consumer<atq> a = $$0 -> {
+   };
+   private static final Map<atn, Path> c = ad.a(() -> {
+      synchronized (atp.class) {
+         Builder<atn, Path> $$0 = ImmutableMap.builder();
 
-   @Override
-   public String getScheme() {
-      return "x-mc-link";
-   }
-
-   @Override
-   public FileSystem newFileSystem(URI $$0, Map<String, ?> $$1) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public FileSystem getFileSystem(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public Path getPath(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public SeekableByteChannel newByteChannel(Path $$0, Set<? extends OpenOption> $$1, FileAttribute<?>... $$2) throws IOException {
-      if (!$$1.contains(StandardOpenOption.CREATE_NEW)
-         && !$$1.contains(StandardOpenOption.CREATE)
-         && !$$1.contains(StandardOpenOption.APPEND)
-         && !$$1.contains(StandardOpenOption.WRITE)) {
-         Path $$3 = a($$0).f().h();
-         if ($$3 == null) {
-            throw new NoSuchFileException($$0.toString());
-         } else {
-            return Files.newByteChannel($$3, $$1, $$2);
-         }
-      } else {
-         throw new UnsupportedOperationException();
-      }
-   }
-
-   @Override
-   public DirectoryStream<Path> newDirectoryStream(Path $$0, final Filter<? super Path> $$1) throws IOException {
-      final ats.a $$2 = a($$0).f().i();
-      if ($$2 == null) {
-         throw new NotDirectoryException($$0.toString());
-      } else {
-         return new DirectoryStream<Path>() {
-            @Override
-            public Iterator<Path> iterator() {
-               return $$2.a().values().stream().filter($$1xx -> {
-                  try {
-                     return $$1.accept($$1xx);
-                  } catch (IOException var3) {
-                     throw new DirectoryIteratorException(var3);
+         for (atn $$1 : atn.values()) {
+            String $$2 = "/" + $$1.a() + "/.mcassetsroot";
+            URL $$3 = atp.class.getResource($$2);
+            if ($$3 == null) {
+               b.error("File {} does not exist in classpath", $$2);
+            } else {
+               try {
+                  URI $$4 = $$3.toURI();
+                  String $$5 = $$4.getScheme();
+                  if (!"jar".equals($$5) && !"file".equals($$5)) {
+                     b.warn("Assets URL '{}' uses unexpected schema", $$4);
                   }
-               }).map($$0 -> (Path)$$0).iterator();
-            }
 
-            @Override
-            public void close() {
-            }
-         };
-      }
-   }
-
-   @Override
-   public void createDirectory(Path $$0, FileAttribute<?>... $$1) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void delete(Path $$0) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void copy(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void move(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public boolean isSameFile(Path $$0, Path $$1) {
-      return $$0 instanceof atp && $$1 instanceof atp && $$0.equals($$1);
-   }
-
-   @Override
-   public boolean isHidden(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public FileStore getFileStore(Path $$0) {
-      return a($$0).a().a();
-   }
-
-   @Override
-   public void checkAccess(Path $$0, AccessMode... $$1) throws IOException {
-      if ($$1.length == 0 && !a($$0).g()) {
-         throw new NoSuchFileException($$0.toString());
-      } else {
-         AccessMode[] var3 = $$1;
-         int var4 = $$1.length;
-         int var5 = 0;
-
-         while (var5 < var4) {
-            AccessMode $$2 = var3[var5];
-            switch ($$2) {
-               case READ:
-                  if (!a($$0).g()) {
-                     throw new NoSuchFileException($$0.toString());
-                  }
-               default:
-                  var5++;
-                  break;
-               case EXECUTE:
-               case WRITE:
-                  throw new AccessDeniedException($$2.toString());
+                  Path $$6 = a($$4);
+                  $$0.put($$1, $$6.getParent());
+               } catch (Exception var12) {
+                  b.error("Couldn't resolve path to vanilla assets", var12);
+               }
             }
          }
+
+         return $$0.build();
       }
+   });
+   private final Set<Path> d = new LinkedHashSet<>();
+   private final Map<atn, Set<Path>> e = new EnumMap<>(atn.class);
+   private atd f = atd.a();
+   private final Set<String> g = new HashSet<>();
+
+   private static Path a(URI $$0) throws IOException {
+      try {
+         return Paths.get($$0);
+      } catch (FileSystemNotFoundException var3) {
+      } catch (Throwable var4) {
+         b.warn("Unable to get path for: {}", $$0, var4);
+      }
+
+      try {
+         FileSystems.newFileSystem($$0, Collections.emptyMap());
+      } catch (FileSystemAlreadyExistsException var2) {
+      }
+
+      return Paths.get($$0);
    }
 
-   @Nullable
-   @Override
-   public <V extends FileAttributeView> V getFileAttributeView(Path $$0, Class<V> $$1, LinkOption... $$2) {
-      atp $$3 = a($$0);
-      return (V)($$1 == BasicFileAttributeView.class ? $$3.j() : null);
-   }
-
-   @Override
-   public <A extends BasicFileAttributes> A readAttributes(Path $$0, Class<A> $$1, LinkOption... $$2) throws IOException {
-      atp $$3 = a($$0).f();
-      if ($$1 == BasicFileAttributes.class) {
-         return (A)$$3.k();
+   private boolean b(Path $$0) {
+      if (!Files.exists($$0)) {
+         return false;
+      } else if (!Files.isDirectory($$0)) {
+         throw new IllegalArgumentException("Path " + $$0.toAbsolutePath() + " is not directory");
       } else {
-         throw new UnsupportedOperationException("Attributes of type " + $$1.getName() + " not supported");
+         return true;
       }
    }
 
-   @Override
-   public Map<String, Object> readAttributes(Path $$0, String $$1, LinkOption... $$2) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public void setAttribute(Path $$0, String $$1, Object $$2, LinkOption... $$3) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   private static atp a(@Nullable Path $$0) {
-      if ($$0 == null) {
-         throw new NullPointerException();
-      } else if ($$0 instanceof atp) {
-         return (atp)$$0;
-      } else {
-         throw new ProviderMismatchException();
+   private void c(Path $$0) {
+      if (this.b($$0)) {
+         this.d.add($$0);
       }
+   }
+
+   private void b(atn $$0, Path $$1) {
+      if (this.b($$1)) {
+         this.e.computeIfAbsent($$0, $$0x -> new LinkedHashSet<>()).add($$1);
+      }
+   }
+
+   public atq a() {
+      c.forEach(($$0, $$1) -> {
+         this.c($$1.getParent());
+         this.b($$0, $$1);
+      });
+      return this;
+   }
+
+   public atq a(atn $$0, Class<?> $$1) {
+      Enumeration<URL> $$2 = null;
+
+      try {
+         $$2 = $$1.getClassLoader().getResources($$0.a() + "/");
+      } catch (IOException var8) {
+      }
+
+      while ($$2 != null && $$2.hasMoreElements()) {
+         URL $$3 = $$2.nextElement();
+
+         try {
+            URI $$4 = $$3.toURI();
+            if ("file".equals($$4.getScheme())) {
+               Path $$5 = Paths.get($$4);
+               this.c($$5.getParent());
+               this.b($$0, $$5);
+            }
+         } catch (Exception var7) {
+            b.error("Failed to extract path from {}", $$3, var7);
+         }
+      }
+
+      return this;
+   }
+
+   public atq b() {
+      a.accept(this);
+      return this;
+   }
+
+   public atq a(Path $$0) {
+      this.c($$0);
+
+      for (atn $$1 : atn.values()) {
+         this.b($$1, $$0.resolve($$1.a()));
+      }
+
+      return this;
+   }
+
+   public atq a(atn $$0, Path $$1) {
+      this.c($$1);
+      this.b($$0, $$1);
+      return this;
+   }
+
+   public atq a(atd $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public atq a(String... $$0) {
+      this.g.addAll(Arrays.asList($$0));
+      return this;
+   }
+
+   public atp a(atk $$0) {
+      Map<atn, List<Path>> $$1 = new EnumMap<>(atn.class);
+
+      for (atn $$2 : atn.values()) {
+         List<Path> $$3 = a(this.e.getOrDefault($$2, Set.of()));
+         $$1.put($$2, $$3);
+      }
+
+      return new atp($$0, this.f, Set.copyOf(this.g), a(this.d), $$1);
+   }
+
+   private static List<Path> a(Collection<Path> $$0) {
+      List<Path> $$1 = new ArrayList<>($$0);
+      Collections.reverse($$1);
+      return List.copyOf($$1);
    }
 }

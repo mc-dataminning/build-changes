@@ -1,37 +1,28 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class hbn extends avj {
+public class hbn {
+   private final List<hbm> a;
+   private final boolean b;
    @Nullable
-   private ug h;
+   private final String c;
 
-   public hbn(hbo $$0, jv<aln> $$1, etc $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public hbn(List<hbm> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected void b(ark $$0) {
-      if (this.b().a($$0.gc())) {
-         this.h = $$0.f(new ug());
-      }
-
-      super.b($$0);
+   public List<hbm> a() {
+      return this.a;
    }
 
-   @Override
-   public xe a(SocketAddress $$0, GameProfile $$1) {
-      return (xe)(this.b().a($$1) && this.a($$1.getName()) != null ? xe.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public hbo b() {
-      return (hbo)super.c();
+   public boolean b() {
+      return this.b;
    }
 
    @Nullable
-   @Override
-   public ug r() {
-      return this.h;
+   public String c() {
+      return this.c;
    }
 }

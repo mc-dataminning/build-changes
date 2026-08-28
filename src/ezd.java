@@ -1,18 +1,61 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class ezd extends ezf {
+   private final jl b;
+   private final jg c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
 
-public final class ezd extends ezq {
-   protected ezd(ezf $$0) {
-      super($$0);
+   public static ezd a(ezh $$0, jl $$1, jg $$2) {
+      return new ezd(true, $$0, $$1, $$2, false, false);
+   }
+
+   public ezd(ezh $$0, jl $$1, jg $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3, false);
+   }
+
+   public ezd(ezh $$0, jl $$1, jg $$2, boolean $$3, boolean $$4) {
+      this(false, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   private ezd(boolean $$0, ezh $$1, jl $$2, jg $$3, boolean $$4, boolean $$5) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public ezd a(jl $$0) {
+      return new ezd(this.d, this.a, $$0, this.c, this.e, this.f);
+   }
+
+   public ezd a(jg $$0) {
+      return new ezd(this.d, this.a, this.b, $$0, this.e, this.f);
+   }
+
+   public ezd a() {
+      return new ezd(this.d, this.a, this.b, this.c, this.e, true);
+   }
+
+   public jg b() {
+      return this.c;
+   }
+
+   public jl c() {
+      return this.b;
    }
 
    @Override
-   public DoubleList a(jk.a $$0) {
-      return new ezc(this.a.c($$0));
+   public ezf.a d() {
+      return this.d ? ezf.a.a : ezf.a.b;
    }
 
-   @Override
-   protected int a(jk.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return azf.a(azf.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
    }
 }

@@ -1,36 +1,26 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class ggm extends gdw {
+   private static final int a = 12235202;
 
-public class ggm implements bpp {
-   private final ghh a;
-   private final Set<bpn> b = new ObjectOpenHashSet();
-   private final bpv c = new bpv();
-
-   public ggm(LongSupplier $$0, ghh $$1) {
-      this.a = $$1;
-      this.b.add(bpw.a($$0));
-      this.a();
+   protected ggm(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gfz $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)axu.b(12235202) / 255.0F;
+      this.w = (float)axu.c(12235202) / 255.0F;
+      this.x = (float)axu.d(12235202) / 255.0F;
    }
 
-   private void a() {
-      this.b.addAll(bpw.a());
-      this.b.add(bpn.a("totalChunks", bpm.f, this.a, ghh::h));
-      this.b.add(bpn.a("renderedChunks", bpm.f, this.a, ghh::j));
-      this.b.add(bpn.a("lastViewDistance", bpm.f, this.a, ghh::i));
-      gky $$0 = this.a.g();
-      this.b.add(bpn.a("toUpload", bpm.g, $$0, gky::c));
-      this.b.add(bpn.a("freeBufferCount", bpm.g, $$0, gky::d));
-      this.b.add(bpn.a("toBatchCount", bpm.g, $$0, gky::b));
-      if (fdb.a().isPresent()) {
-         this.b.add(bpn.a("gpuUtilization", bpm.i, fip.Q(), fip::v));
+   public static class a implements gfh<lu> {
+      private final gfz a;
+
+      public a(gfz $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public Set<bpn> a(Supplier<boe> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azr $$8 = $$1.A;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new ggm($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      }
    }
 }

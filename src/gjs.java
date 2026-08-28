@@ -1,110 +1,51 @@
-import java.util.List;
+import com.google.common.base.Splitter;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class gjs implements gjw<drq> {
-   public static final ale a = ale.b("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
+public class gjs {
+   private static final Splitter a = Splitter.on(',');
+   private static final Splitter b = Splitter.on('=').limit(2);
 
-   public gjs(gjx.a $$0) {
-   }
+   public static <O, S extends dvf<O, S>> Predicate<dvf<O, S>> a(dve<O, S> $$0, String $$1) {
+      Map<dwg<?>, Comparable<?>> $$2 = new HashMap<>();
 
-   public void a(drq $$0, float $$1, fdi $$2, ghl $$3, int $$4, int $$5) {
-      long $$6 = $$0.i().aa();
-      List<drq.a> $$7 = $$0.b();
-      int $$8 = 0;
+      for (String $$3 : a.split($$1)) {
+         Iterator<String> $$4 = b.split($$3).iterator();
+         if ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            dwg<?> $$6 = $$0.a($$5);
+            if ($$6 != null && $$4.hasNext()) {
+               String $$7 = $$4.next();
+               Comparable<?> $$8 = a((dwg<Comparable<?>>)$$6, $$7);
+               if ($$8 == null) {
+                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
+               }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         drq.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+               $$2.put($$6, $$8);
+            } else if (!$$5.isEmpty()) {
+               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
+            }
+         }
       }
+
+      return $$1x -> {
+         for (Entry<dwg<?>, Comparable<?>> $$2x : $$2.entrySet()) {
+            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   private static void a(fdi $$0, ghl $$1, float $$2, long $$3, int $$4, int $$5, int $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
-   }
-
-   public static void a(fdi $$0, ghl $$1, ale $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = azf.i($$13 * 0.2F - (float)azf.d($$13 * 0.1F));
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$15 = 0.0F;
-      float $$18 = 0.0F;
-      float $$19 = -$$9;
-      float $$20 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 1.0F;
-      float $$25 = -1.0F + $$14;
-      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
-      a($$0, $$1.getBuffer(ghv.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-      $$15 = -$$10;
-      float $$28 = -$$10;
-      $$18 = -$$10;
-      $$19 = -$$10;
-      $$23 = 0.0F;
-      $$24 = 1.0F;
-      $$25 = -1.0F + $$14;
-      $$26 = (float)$$7 * $$4 + $$25;
-      a($$0, $$1.getBuffer(ghv.e($$2, true)), axq.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-   }
-
-   private static void a(
-      fdi $$0,
-      fdm $$1,
-      int $$2,
-      int $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      fdi.a $$17 = $$0.c();
-      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
-   }
-
-   private static void a(
-      fdi.a $$0, fdm $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
-      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
-      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
-      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
-   }
-
-   private static void a(fdi.a $$0, fdm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(gwx.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
-   }
-
-   public boolean a(drq $$0) {
-      return true;
-   }
-
-   @Override
-   public int aV_() {
-      return 256;
-   }
-
-   public boolean a(drq $$0, eyw $$1) {
-      return eyw.b($$0.aC_()).d(1.0, 0.0, 1.0).a((jy)$$1.d(1.0, 0.0, 1.0), (double)this.aV_());
+   @Nullable
+   private static <T extends Comparable<T>> T a(dwg<T> $$0, String $$1) {
+      return $$0.b($$1).orElse(null);
    }
 }

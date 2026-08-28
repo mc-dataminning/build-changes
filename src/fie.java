@@ -1,38 +1,67 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fie {
-   private final gbn a;
-   private int b = -1;
-   @Nullable
-   private Consumer<ug> c;
+public class fie extends fhy {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xh c = xh.c("mco.backup.restoring");
+   private final fep d;
+   private final long e;
+   private final fgi f;
 
-   public fie(gbn $$0) {
-      this.a = $$0;
+   public fie(fep $$0, long $$1, fgi $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public boolean a(int $$0, @Nullable ug $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   @Override
+   public void run() {
+      fej $$0 = fej.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(this.f.g());
+            return;
+         } catch (ffv var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (ffu var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var5);
+            a(new fgm(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
+         }
       }
    }
 
-   private int a(Consumer<ug> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<ug> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahm($$2, $$0));
-   }
-
-   public void a(jf $$0, Consumer<ug> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agu($$2, $$0));
+   @Override
+   public xh a() {
+      return c;
    }
 }

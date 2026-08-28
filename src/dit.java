@@ -1,125 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dit extends dli implements dhp {
-   public static final MapCodec<dit> a = b(dit::new);
-   public static final int b = 2;
-   public static final dvs c = dvi.ar;
-   protected static final int d = 4;
-   protected static final int e = 5;
-   protected static final int f = 2;
-   protected static final int g = 6;
-   protected static final int h = 7;
-   protected static final int i = 3;
-   protected static final int j = 8;
-   protected static final int k = 9;
-   protected static final int l = 4;
-   protected static final ezq[] m = new ezq[]{
-      dhm.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dhm.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dhm.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
-   };
-   protected static final ezq[] n = new ezq[]{
-      dhm.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dhm.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dhm.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
-   };
-   protected static final ezq[] o = new ezq[]{
-      dhm.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dhm.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dhm.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
-   };
-   protected static final ezq[] G = new ezq[]{
-      dhm.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dhm.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dhm.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
-   };
+public class dit extends dgr {
+   public static final MapCodec<dit> d = b(dit::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<dit> a() {
-      return a;
+      return d;
    }
 
-   public dit(dur.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(aF, jk.c).b(c, Integer.valueOf(0)));
-   }
-
-   @Override
-   protected boolean f(dus $$0) {
-      return $$0.c(c) < 2;
+   public dit(dvc.d $$0) {
+      super($$0, km.c);
    }
 
    @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if ($$1.z.a(5) == 0) {
-         int $$4 = $$0.c(c);
-         if ($$4 < 2) {
-            $$1.a($$2, $$0.b(c, Integer.valueOf($$4 + 1)), 2);
+   public boolean d(dvd $$0) {
+      return false;
+   }
+
+   protected static boolean a(dev $$0, dfw.c $$1) {
+      if ($$1 == dfw.c.b) {
+         return $$0.E_().i() < 0.05F;
+      } else {
+         return $$1 == dfw.c.c ? $$0.E_().i() < 0.1F : false;
+      }
+   }
+
+   @Override
+   public void a(dvd $$0, dev $$1, jg $$2, dfw.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dfw.c.b) {
+            $$1.b($$2, dia.fu.m());
+            $$1.a(null, eaa.c, $$2);
+         } else if ($$3 == dfw.c.c) {
+            $$1.b($$2, dia.fw.m());
+            $$1.a(null, eaa.c, $$2);
          }
       }
    }
 
    @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      dus $$3 = $$1.a_($$2.a($$0.c(aF)));
-      return $$3.a(awv.A);
-   }
-
-   @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      int $$4 = $$0.c(c);
-      switch ((jk)$$0.c(aF)) {
-         case d:
-            return G[$$4];
-         case c:
-         default:
-            return o[$$4];
-         case e:
-            return n[$$4];
-         case f:
-            return m[$$4];
-      }
-   }
-
-   @Nullable
-   @Override
-   public dus a(czn $$0) {
-      dus $$1 = this.n();
-      dem $$2 = $$0.q();
-      jf $$3 = $$0.a();
-
-      for (jk $$4 : $$0.f()) {
-         if ($$4.o().d()) {
-            $$1 = $$1.b(aF, $$4);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      return $$1 == $$0.c(aF) && !$$0.a($$3, $$4) ? dho.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean b(dem $$0, jf $$1, dus $$2) {
-      return $$2.c(c) < 2;
-   }
-
-   @Override
-   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
+   protected boolean a(erd $$0) {
       return true;
    }
 
    @Override
-   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
-      $$0.a($$2, $$3.b(c, Integer.valueOf($$3.c(c) + 1)), 2);
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(aF, c);
-   }
-
-   @Override
-   protected boolean a(dus $$0, eri $$1) {
-      return false;
+   protected void a(dvd $$0, dev $$1, jg $$2, erd $$3) {
+      if ($$3 == erf.c) {
+         dvd $$4 = dia.fu.m();
+         $$1.b($$2, $$4);
+         $$1.a(eaa.c, $$2, eaa.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == erf.e) {
+         dvd $$5 = dia.fv.m();
+         $$1.b($$2, $$5);
+         $$1.a(eaa.c, $$2, eaa.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

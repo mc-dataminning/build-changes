@@ -1,10 +1,23 @@
-public interface abq extends aae {
-   @Override
-   default vz b() {
-      return vz.e;
+import java.util.HashSet;
+import java.util.Set;
+
+public record abq(Set<alh> b) implements zo<abl> {
+   public static final zf<we, abq> a = zo.a(abq::a, abq::new);
+
+   private abq(we $$0) {
+      this($$0.a(HashSet::new, we::q));
    }
 
-   void a(abr var1);
+   private void a(we $$0) {
+      $$0.a(this.b, we::a);
+   }
 
-   void a(abs var1);
+   @Override
+   public zq<abq> a() {
+      return abr.c;
+   }
+
+   public void a(abl $$0) {
+      $$0.a(this);
+   }
 }

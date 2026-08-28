@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record ajr() implements ajp {
+   public static final ajr a = new ajr();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ajr {
+   @Override
+   public void a(we $$0) {
+   }
 }

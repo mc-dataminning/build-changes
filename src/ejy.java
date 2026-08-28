@@ -1,26 +1,13 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-public class ejy extends ekm {
-   private static final ejy c = new ejy();
-   public static MapCodec<ejy> a = MapCodec.unit(() -> c);
+public abstract class ejy {
+   private static final Codec<Either<ebt, ejy>> a = Codec.either(ebt.a, lx.L.q().dispatch(ejy::a, ejz::codec));
+   public static final Codec<ejy> c = a.xmap(
+      $$0 -> (ejy)$$0.map(ejx::a, $$0x -> $$0x), $$0 -> $$0.a() == ejz.a ? Either.left(((ejx)$$0).b()) : Either.right($$0)
+   );
 
-   private ejy() {
-   }
+   public abstract int a(azr var1, ebw var2);
 
-   public static ejy a() {
-      return c;
-   }
-
-   @Override
-   protected boolean a(ekl $$0, azn $$1, jf $$2) {
-      ekk $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      jo<dfk> $$4 = $$0.d().t($$2);
-      return $$0.f().a($$4).a($$3);
-   }
-
-   @Override
-   public eko<?> b() {
-      return eko.e;
-   }
+   public abstract ejz<?> a();
 }

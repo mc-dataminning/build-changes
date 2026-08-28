@@ -1,124 +1,86 @@
-import java.util.function.Supplier;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ftj extends fqh {
-   private static final xe a = xe.c("options.title");
-   private static final xe b = xe.c("options.skinCustomisation");
-   private static final xe c = xe.c("options.sounds");
-   private static final xe d = xe.c("options.video");
-   private static final xe s = xe.c("options.controls");
-   private static final xe u = xe.c("options.language");
-   private static final xe v = xe.c("options.chat");
-   private static final xe w = xe.c("options.resourcepack");
-   private static final xe x = xe.c("options.accessibility");
-   private static final xe y = xe.c("options.telemetry");
-   private static final flz z = flz.a(xe.c("options.telemetry.disabled"));
-   private static final xe A = xe.c("options.credits_and_attribution");
-   private static final int B = 2;
-   private final foc C = new foc(this, 61, 33);
-   private final fqh D;
-   private final fit E;
+public class ftj extends fqs {
+   private static final int a = 310;
+   private static final int b = 25;
+   private static final xh c = xh.c("menu.server_links.title");
+   private final fqs d;
    @Nullable
-   private fkv<brp> F;
-   @Nullable
-   private fle G;
+   private ftj.a s;
+   final fon u = new fon(this);
+   final alz v;
 
-   public ftj(fqh $$0, fit $$1) {
-      super(a);
-      this.D = $$0;
-      this.E = $$1;
+   public ftj(fqs $$0, alz $$1) {
+      super(c);
+      this.d = $$0;
+      this.v = $$1;
    }
 
    @Override
    protected void aS_() {
-      fog $$0 = this.C.a(fog.d().a(8));
-      $$0.a(new flv(a, this.p), fof::b);
-      fog $$1 = $$0.a(fog.e()).a(8);
-      $$1.a(this.E.aj().a(this.m.n));
-      $$1.a(this.m());
-      fob $$2 = new fob();
-      $$2.c().f(4).e(4).b();
-      fob.b $$3 = $$2.d(2);
-      $$3.a(this.a(b, () -> new ftl(this, this.E)));
-      $$3.a(this.a(c, () -> new ftm(this, this.E)));
-      $$3.a(this.a(d, () -> new fto(this, this.m, this.E)));
-      $$3.a(this.a(s, () -> new ftp(this, this.E)));
-      $$3.a(this.a(u, () -> new ftg(this, this.E, this.m.ah())));
-      $$3.a(this.a(v, () -> new fte(this, this.E)));
-      $$3.a(this.a(w, () -> new ftw(this.m.ad(), this::a, this.m.ag(), xe.c("resourcePack.title"))));
-      $$3.a(this.a(x, () -> new ftd(this, this.E)));
-      fko $$4 = $$3.a(this.a(y, () -> new fvb(this, this.E)));
-      if (!this.m.E()) {
-         $$4.j = false;
-         $$4.a(z);
-      }
-
-      $$3.a(this.a(A, () -> new fpj(this)));
-      this.C.c($$2);
-      this.C.b(fko.a(xd.d, $$0x -> this.d()).a(200).a());
-      this.C.a($$1x -> {
-         fkm var10000 = this.c($$1x);
+      this.u.a(this.l, this.p);
+      this.s = this.u.c(new ftj.a(this.m, this.n, this));
+      this.u.b(fkz.a(xg.k, $$0 -> this.d()).a(200).a());
+      this.u.a($$1 -> {
+         fkx var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      this.C.a();
+      this.u.a();
+      if (this.s != null) {
+         this.s.a(this.n, this.u);
+      }
    }
 
    @Override
    public void d() {
-      this.m.a(this.D);
+      this.m.a(this.d);
    }
 
-   private void a(aug $$0) {
-      this.E.a($$0);
-      this.m.a(this);
-   }
+   static class a extends flf<ftj.b> {
+      public a(fja $$0, int $$1, ftj $$2) {
+         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
+         $$2.v.c().forEach($$1x -> this.b(new ftj.b($$2, $$1x)));
+      }
 
-   private foe m() {
-      if (this.m.s != null && this.m.U()) {
-         this.F = a(0, 0, "options.difficulty", this.m);
-         if (!this.m.s.j().l()) {
-            this.G = new fle(0, 0, $$0x -> this.m.a(new fpf(this::c, xe.c("difficulty.lock.title"), xe.a("difficulty.lock.question", this.m.s.j().q().b()))));
-            this.F.k(this.F.y() - this.G.y());
-            this.G.b(this.m.s.j().r());
-            this.G.j = !this.G.a();
-            this.F.j = !this.G.a();
-            fnz $$0 = new fnz(150, 0, fnz.b.a);
-            $$0.a(this.F);
-            $$0.a(this.G);
-            return $$0;
-         } else {
-            this.F.j = false;
-            return this.F;
-         }
-      } else {
-         return fko.a(xe.c("options.online"), $$0x -> this.m.a(new fti(this, this.E))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
+      @Override
+      public int b() {
+         return 310;
+      }
+
+      @Override
+      public void a(int $$0, fon $$1) {
+         super.a($$0, $$1);
+         int $$2 = $$0 / 2 - 155;
+         this.aJ_().forEach($$1x -> $$1x.a.m($$2));
       }
    }
 
-   public static fkv<brp> a(int $$0, int $$1, String $$2, fip $$3) {
-      return fkv.a(brp::b).a(brp.values()).a($$3.s.am()).a($$0, $$1, 150, 20, xe.c($$2), ($$1x, $$2x) -> $$3.L().b(new agv($$2x)));
-   }
+   static class b extends flf.a<ftj.b> {
+      final fkx a;
 
-   private void c(boolean $$0) {
-      this.m.a(this);
-      if ($$0 && this.m.s != null && this.G != null && this.F != null) {
-         this.m.L().b(new ahp(true));
-         this.G.b(true);
-         this.G.j = false;
-         this.F.j = false;
+      b(fqs $$0, alz.a $$1) {
+         this.a = fkz.a($$1.a(), fpp.b($$0, $$1.c(), false)).a(310).a();
       }
-   }
 
-   @Override
-   public void j() {
-      this.E.ay();
-   }
+      @Override
+      public void a(fkm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a.n($$2);
+         this.a.a($$0, $$6, $$7, $$9);
+      }
 
-   private fko a(xe $$0, Supplier<fqh> $$1) {
-      return fko.a($$0, $$1x -> this.m.a($$1.get())).a();
+      @Override
+      public List<? extends fmw> aJ_() {
+         return List.of(this.a);
+      }
+
+      @Override
+      public List<? extends fov> b() {
+         return List.of(this.a);
+      }
    }
 }

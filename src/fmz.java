@@ -1,177 +1,123 @@
-import com.google.common.collect.Queues;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Deque;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fmz {
-   private static final int a = 5;
-   private static final int b = -1;
-   final fip c;
-   private final List<fmz.a<?>> d = new ArrayList<>();
-   private final BitSet e = new BitSet(5);
-   private final Deque<fmy> f = Queues.newArrayDeque();
-
-   public fmz(fip $$0) {
-      this.c = $$0;
-   }
-
-   public void a() {
-      this.d.removeIf($$0 -> {
-         $$0.c();
-         if ($$0.b()) {
-            this.e.clear($$0.d, $$0.d + $$0.e);
-            return true;
-         } else {
-            return false;
-         }
-      });
-      if (!this.f.isEmpty() && this.e() > 0) {
-         this.f.removeIf($$0 -> {
-            int $$1 = $$0.g();
-            int $$2 = this.a($$1);
-            if ($$2 == -1) {
-               return false;
-            } else {
-               this.d.add(new fmz.a<>($$0, $$2, $$1));
-               this.e.set($$2, $$2 + $$1);
-               return true;
-            }
-         });
-      }
-   }
-
-   public void a(fkb $$0) {
-      if (!this.c.n.X) {
-         int $$1 = $$0.a();
-
-         for (fmz.a<?> $$2 : this.d) {
-            $$2.a($$0, $$1);
-         }
-      }
-   }
-
-   private int a(int $$0) {
-      if (this.e() >= $$0) {
-         int $$1 = 0;
-
-         for (int $$2 = 0; $$2 < 5; $$2++) {
-            if (this.e.get($$2)) {
-               $$1 = 0;
-            } else if (++$$1 == $$0) {
-               return $$2 + 1 - $$1;
-            }
-         }
-      }
-
-      return -1;
-   }
-
-   private int e() {
-      return 5 - this.e.cardinality();
-   }
-
+public class fmz implements fwh {
+   private static final alh a = alh.b("hud/hotbar");
+   private static final alh b = alh.b("hud/hotbar_selection");
+   private static final long c = 5000L;
+   private static final long d = 2000L;
+   private final fja e;
+   private long f;
    @Nullable
-   public <T extends fmy> T a(Class<? extends T> $$0, Object $$1) {
-      for (fmz.a<?> $$2 : this.d) {
-         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().f().equals($$1)) {
-            return (T)$$2.a();
+   private fwe g;
+
+   public fmz(fja $$0) {
+      this.e = $$0;
+   }
+
+   public void a(int $$0) {
+      this.f = ad.c();
+      if (this.g != null) {
+         this.g.b($$0);
+      } else {
+         this.g = new fwe(this);
+      }
+   }
+
+   private float c() {
+      long $$0 = this.f - ad.c() + 5000L;
+      return azj.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
+   }
+
+   public void a(fkm $$0) {
+      if (this.g != null) {
+         float $$1 = this.c();
+         if ($$1 <= 0.0F) {
+            this.g.d();
+         } else {
+            int $$2 = $$0.a() / 2;
+            $$0.c().a();
+            $$0.c().a(0.0F, 0.0F, -90.0F);
+            int $$3 = azj.d((float)$$0.b() - 22.0F * $$1);
+            fwi $$4 = this.g.f();
+            this.a($$0, $$1, $$2, $$3, $$4);
+            $$0.c().b();
          }
       }
+   }
 
-      for (fmy $$3 : this.f) {
-         if ($$0.isAssignableFrom($$3.getClass()) && $$3.f().equals($$1)) {
-            return (T)$$3;
-         }
+   protected void a(fkm $$0, float $$1, int $$2, int $$3, fwi $$4) {
+      int $$5 = axu.a($$1);
+      $$0.a(gig::B, a, $$2 - 91, $$3, 182, 22, $$5);
+      if ($$4.a() >= 0) {
+         $$0.a(gig::B, b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23, $$5);
       }
 
-      return null;
+      for (int $$6 = 0; $$6 < 9; $$6++) {
+         this.a($$0, $$6, $$0.a() / 2 - 90 + $$6 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$6));
+      }
+   }
+
+   private void a(fkm $$0, int $$1, int $$2, float $$3, float $$4, fwg $$5) {
+      if ($$5 != fwe.a) {
+         $$0.c().a();
+         $$0.c().a((float)$$2, $$3, 0.0F);
+         float $$6 = $$5.aU_() ? 1.0F : 0.25F;
+         $$5.a($$0, $$6, $$4);
+         $$0.c().b();
+         int $$7 = (int)($$4 * 255.0F);
+         if ($$7 > 3 && $$5.aU_()) {
+            xh $$8 = this.e.n.S[$$1].k();
+            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$7 << 24));
+         }
+      }
+   }
+
+   public void b(fkm $$0) {
+      int $$1 = (int)(this.c() * 255.0F);
+      if ($$1 > 3 && this.g != null) {
+         fwg $$2 = this.g.b();
+         xh $$3 = $$2 == fwe.a ? this.g.c().b() : $$2.aT_();
+         if ($$3 != null) {
+            int $$4 = this.e.h.a($$3);
+            int $$5 = ($$0.a() - $$4) / 2;
+            int $$6 = $$0.b() - 35;
+            $$0.a(this.e.h, $$3, $$5, $$6, $$4, axu.c($$1, -1));
+         }
+      }
+   }
+
+   @Override
+   public void a(fwe $$0) {
+      this.g = null;
+      this.f = 0L;
+   }
+
+   public boolean a() {
+      return this.g != null;
+   }
+
+   public void b(int $$0) {
+      int $$1 = this.g.e() + $$0;
+
+      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fwe.a || !this.g.a($$1).aU_())) {
+         $$1 += $$0;
+      }
+
+      if ($$1 >= 0 && $$1 <= 8) {
+         this.g.b($$1);
+         this.f = ad.c();
+      }
    }
 
    public void b() {
-      this.e.clear();
-      this.d.clear();
-      this.f.clear();
-   }
-
-   public void a(fmy $$0) {
-      this.f.add($$0);
-   }
-
-   public fip c() {
-      return this.c;
-   }
-
-   public double d() {
-      return this.c.n.C().c();
-   }
-
-   class a<T extends fmy> {
-      private static final long b = 600L;
-      private final T c;
-      final int d;
-      final int e;
-      private long f = -1L;
-      private long g = -1L;
-      private fmy.a h = fmy.a.a;
-      private long i;
-      private float j;
-      private boolean k;
-
-      a(final T $$0, final int $$1, final int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      public T a() {
-         return this.c;
-      }
-
-      public boolean b() {
-         return this.k;
-      }
-
-      private void a(long $$0) {
-         float $$1 = azf.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
-         $$1 *= $$1;
-         if (this.h == fmy.a.b) {
-            this.j = 1.0F - $$1;
-         } else {
-            this.j = $$1;
+      this.f = ad.c();
+      if (this.a()) {
+         int $$0 = this.g.e();
+         if ($$0 != -1) {
+            this.g.b($$0);
          }
-      }
-
-      public void c() {
-         long $$0 = ad.c();
-         if (this.f == -1L) {
-            this.f = $$0;
-            this.h.a(fmz.this.c.ak());
-         }
-
-         if (this.h == fmy.a.a && $$0 - this.f <= 600L) {
-            this.g = $$0;
-         }
-
-         this.i = $$0 - this.g;
-         this.a($$0);
-         this.c.a(fmz.this, this.i);
-         fmy.a $$1 = this.c.a();
-         if ($$1 != this.h) {
-            this.f = $$0 - (long)((int)((1.0F - this.j) * 600.0F));
-            this.h = $$1;
-            this.h.a(fmz.this.c.ak());
-         }
-
-         this.k = this.h == fmy.a.b && $$0 - this.f > 600L;
-      }
-
-      public void a(fkb $$0, int $$1) {
-         $$0.c().a();
-         $$0.c().a((float)$$1 - (float)this.c.b() * this.j, (float)(this.d * 32), 800.0F);
-         this.c.a($$0, fmz.this.c.h, this.i);
-         $$0.c().b();
+      } else {
+         this.g = new fwe(this);
       }
    }
 }

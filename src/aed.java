@@ -1,29 +1,37 @@
-public class aed implements zl<aca> {
-   public static final zc<wb, aed> a = zl.a(aed::a, aed::new);
+public class aed implements zo<acd> {
+   public static final zf<we, aed> a = zo.a(aed::a, aed::new);
    private final int b;
+   private final alh c;
 
-   public aed(bsg $$0) {
-      this($$0.b());
-   }
-
-   public aed(int $$0) {
+   public aed(int $$0, dal<?> $$1) {
       this.b = $$0;
+      this.c = $$1.a();
    }
 
-   private aed(wb $$0) {
-      this.b = $$0.l();
+   private aed(we $$0) {
+      this.b = $$0.x();
+      this.c = $$0.q();
    }
 
-   private void a(wb $$0) {
-      $$0.c(this.b);
+   private void a(we $$0) {
+      $$0.f(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<aed> a() {
-      return agp.ac;
+   public zq<aed> a() {
+      return ags.Z;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
+   }
+
+   public alh b() {
+      return this.c;
+   }
+
+   public int e() {
+      return this.b;
    }
 }

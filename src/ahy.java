@@ -1,36 +1,20 @@
-public class ahy implements zl<agr> {
-   public static final zc<wb, ahy> a = zl.a(ahy::a, ahy::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private final float d;
-   private final float e;
-   private final boolean f;
-   private final boolean g;
+public class ahy implements zo<agu> {
+   public static final zf<we, ahy> a = zo.a(ahy::a, ahy::new);
+   private static final int b = 2;
+   private final boolean c;
 
-   public ahy(float $$0, float $$1, boolean $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public ahy(cod $$0) {
+      this.c = $$0.b;
    }
 
-   private ahy(wb $$0) {
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   private ahy(we $$0) {
       byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) > 0;
-      this.g = ($$1 & 2) > 0;
+      this.c = ($$1 & 2) != 0;
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private void a(we $$0) {
       byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
+      if (this.c) {
          $$1 = (byte)($$1 | 2);
       }
 
@@ -38,27 +22,15 @@ public class ahy implements zl<agr> {
    }
 
    @Override
-   public zn<ahy> a() {
-      return agp.bP;
+   public zq<ahy> a() {
+      return ags.bM;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.d;
-   }
-
-   public float e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
+   public boolean b() {
+      return this.c;
    }
 }

@@ -1,35 +1,38 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class goe extends gny<ckp, guh> {
+   private final giz a;
 
-public final class goe extends gmf<cij, guf, fxz> {
-   private static final Map<ciq, ale> a = ad.a(Maps.newEnumMap(ciq.class), $$0 -> {
-      $$0.put(ciq.a, ale.b("textures/entity/horse/horse_white.png"));
-      $$0.put(ciq.b, ale.b("textures/entity/horse/horse_creamy.png"));
-      $$0.put(ciq.c, ale.b("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(ciq.d, ale.b("textures/entity/horse/horse_brown.png"));
-      $$0.put(ciq.e, ale.b("textures/entity/horse/horse_black.png"));
-      $$0.put(ciq.f, ale.b("textures/entity/horse/horse_gray.png"));
-      $$0.put(ciq.g, ale.b("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public goe(gno.a $$0) {
-      super($$0, new fxz($$0.a(gap.aP)), new fxz($$0.a(gap.aQ)), 1.1F);
-      this.a(new grq(this));
-      this.a(new grp(this, $$0.f()));
+   public goe(gnz.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   public ale a(guf $$0) {
-      return a.get($$0.a);
+   public boolean a(ckp $$0, gln $$1, double $$2, double $$3, double $$4) {
+      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.q() != $$0.dX().a_($$0.dx());
    }
 
-   public guf c() {
-      return new guf();
+   public void a(guh $$0, fdt $$1, ghw $$2, int $$3) {
+      dvd $$4 = $$0.c;
+      if ($$4.o() == doe.c) {
+         $$1.a();
+         $$1.a(-0.5, 0.0, -0.5);
+         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gho.b($$4)), false, azr.a(), $$4.b($$0.a), gxj.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public void a(cij $$0, guf $$1, float $$2) {
+   public guh a() {
+      return new guh();
+   }
+
+   public void a(ckp $$0, guh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
-      $$1.h = $$0.t();
-      $$1.i = $$0.fT().u();
+      jg $$3 = jg.a($$0.dC(), $$0.cS().e, $$0.dI());
+      $$1.a = $$0.m();
+      $$1.b = $$3;
+      $$1.c = $$0.q();
+      $$1.d = $$0.dX().t($$3);
+      $$1.e = $$0.dX();
    }
 }

@@ -1,27 +1,46 @@
-public class fyp extends fzl {
-   private final gaq a;
-   private final gaq b;
-   private final gaq c;
+import java.util.Arrays;
 
-   public fyp(gaq $$0) {
+public class fyp extends fxz<gvy> {
+   private static final int a = 8;
+   private final gbb[] b = new gbb[8];
+
+   public fyp(gbb $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static gay a() {
-      gay $$0 = new gay();
-      fyq.a(gau.a, $$0);
-      return $$0;
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   public static gbh a() {
+      gbj $$0 = new gbj();
+      gbl $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = $$2;
+         if ($$2 == 2) {
+            $$3 = 24;
+            $$4 = 10;
+         } else if ($$2 == 3) {
+            $$3 = 24;
+            $$4 = 19;
+         }
+
+         $$1.a(a($$2), gbg.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gbd.a);
+      }
+
+      $$1.a("inside_cube", gbg.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gbd.a);
+      return gbh.a($$0, 64, 32);
+   }
+
+   public void a(gvy $$0) {
+      super.a($$0);
+      float $$1 = Math.max(0.0F, $$0.a);
+
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
+      }
    }
 }

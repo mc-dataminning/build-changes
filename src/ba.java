@@ -5,18 +5,18 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class ba extends dw<ba.a> {
+public class ba extends dx<ba.a> {
    @Override
    public Codec<ba.a> a() {
       return ba.a.a;
    }
 
-   public void a(ark $$0, Collection<? extends btr> $$1) {
-      List<etl> $$2 = $$1.stream().map($$1x -> bv.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(arn $$0, Collection<? extends btz> $$1) {
+      List<etw> $$2 = $$1.stream().map($$1x -> bv.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bg> b, List<bg> c) implements dw.a {
+   public static record a(Optional<bg> b, List<bg> c) implements dx.a {
       public static final Codec<ba.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(ba.a::a), bv.b.listOf().optionalFieldOf("victims", List.of()).forGetter(ba.a::b))
                .apply($$0, ba.a::new)
@@ -26,11 +26,11 @@ public class ba extends dw<ba.a> {
          return an.F.a(new ba.a(Optional.empty(), bv.a($$0)));
       }
 
-      public boolean a(Collection<? extends etl> $$0) {
+      public boolean a(Collection<? extends etw> $$0) {
          for (bg $$1 : this.c) {
             boolean $$2 = false;
 
-            for (etl $$3 : $$0) {
+            for (etw $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;
@@ -47,7 +47,7 @@ public class ba extends dw<ba.a> {
 
       @Override
       public void a(bh $$0) {
-         dw.a.super.a($$0);
+         dx.a.super.a($$0);
          $$0.a(this.c, ".victims");
       }
 

@@ -1,14 +1,19 @@
-import com.mojang.serialization.MapCodec;
+public class dnd {
+   private static final double b = 0.826;
+   public static final double a = 0.1;
 
-public class dnd extends dqo {
-   public static final MapCodec<dnd> b = b(dnd::new);
-
-   @Override
-   public MapCodec<dnd> a() {
-      return b;
+   public static boolean a(dvd $$0) {
+      return $$0.l();
    }
 
-   protected dnd(dur.d $$0) {
-      super(dop.b.e, $$0);
+   public static int a(azr $$0) {
+      double $$1 = 1.0;
+
+      int $$2;
+      for ($$2 = 0; $$0.j() < $$1; $$2++) {
+         $$1 *= 0.826;
+      }
+
+      return $$2;
    }
 }

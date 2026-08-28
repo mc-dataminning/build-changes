@@ -1,3 +1,4 @@
-public class gtu extends gtq {
-   public int a;
+public class gtu extends gva {
+   public float a;
+   public float b;
 }

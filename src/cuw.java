@@ -1,28 +1,23 @@
-public class cuw extends cvn implements cwn {
-   public cuw(cvn.a $$0) {
+public class cuw extends cvt implements cws {
+   public cuw(cvt.a $$0) {
       super($$0);
    }
 
    @Override
-   public brs a(dej $$0, cnx $$1, brr $$2) {
-      cvs $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awg.iH, awh.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arj $$4) {
-         cor.a(cpc::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
+   public bry a(dev $$0, coh $$1, brx $$2) {
+      cvx $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dC(), $$1.dE(), $$1.dI(), awk.hO, awl.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arm $$4) {
+         cpb.a(cpk::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
 
-      $$1.b(awq.c.b(this));
+      $$1.b(awu.c.b(this));
       $$3.a(1, $$1);
-      return brs.a;
+      return bry.a;
    }
 
    @Override
-   public cor a(dej $$0, jy $$1, cvs $$2, jk $$3) {
-      return new cpc($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
-   }
-
-   @Override
-   public cwn.a c() {
-      return cwn.a.a().a(cwn.a.a.c() * 0.5F).b(cwn.a.a.d() * 1.25F).a();
+   public cpb a(dev $$0, jz $$1, cvx $$2, jl $$3) {
+      return new cpk($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

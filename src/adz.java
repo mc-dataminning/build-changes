@@ -1,37 +1,61 @@
-public class adz implements zl<aca> {
-   public static final zc<wb, adz> a = zl.a(adz::a, adz::new);
-   private final jf b;
-   private final boolean c;
+public class adz implements zo<acd> {
+   public static final zf<we, adz> a = zo.a(adz::a, adz::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public adz(jf $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public adz(btz $$0) {
+      this.b = $$0.dC();
+      this.c = $$0.dE();
+      this.d = $$0.dI();
+      this.e = $$0.dN();
+      this.f = $$0.dP();
    }
 
-   private adz(wb $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private adz(we $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private void a(wb $$0) {
+   private void a(we $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zn<adz> a() {
-      return agp.Y;
+   public zq<adz> a() {
+      return ags.V;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public jf b() {
+   public double b() {
       return this.b;
    }
 
-   public boolean e() {
+   public double e() {
       return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

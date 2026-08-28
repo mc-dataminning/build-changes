@@ -1,86 +1,95 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cty extends cwo {
-   public static final int a = 20;
-   public static final int b = 15;
+public class cty extends cuq {
+   protected static final Map<dhy, dhy> a = new Builder()
+      .put(dia.ao, dia.aw)
+      .put(dia.U, dia.al)
+      .put(dia.au, dia.aC)
+      .put(dia.aa, dia.ak)
+      .put(dia.as, dia.aA)
+      .put(dia.Y, dia.ai)
+      .put(dia.at, dia.aB)
+      .put(dia.Z, dia.aj)
+      .put(dia.aq, dia.ay)
+      .put(dia.W, dia.ag)
+      .put(dia.ar, dia.az)
+      .put(dia.X, dia.ah)
+      .put(dia.ap, dia.ax)
+      .put(dia.V, dia.af)
+      .put(dia.oj, dia.ok)
+      .put(dia.ol, dia.om)
+      .put(dia.os, dia.ot)
+      .put(dia.ou, dia.ov)
+      .put(dia.av, dia.aD)
+      .put(dia.ab, dia.am)
+      .put(dia.ae, dia.an)
+      .build();
 
-   public cty(cvn.a $$0) {
-      super($$0);
+   public cty(cxo $$0, float $$1, float $$2, cvt.a $$3) {
+      super($$0, awz.bB, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean a(cvs $$0, dej $$1, bun $$2, int $$3) {
-      if (!($$2 instanceof cnx $$4)) {
-         return false;
+   public bry a(czo $$0) {
+      dev $$1 = $$0.q();
+      jg $$2 = $$0.a();
+      coh $$3 = $$0.o();
+      if (b($$0)) {
+         return bry.e;
       } else {
-         cvs $$5 = $$4.f($$0);
-         if ($$5.f()) {
-            return false;
+         Optional<dvd> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
+         if ($$4.isEmpty()) {
+            return bry.e;
          } else {
-            int $$6 = this.a($$0, $$2) - $$3;
-            float $$7 = a($$6);
-            if ((double)$$7 < 0.1) {
-               return false;
-            } else {
-               List<cvs> $$8 = a($$0, $$5, $$4);
-               if ($$1 instanceof arj $$9 && !$$8.isEmpty()) {
-                  this.a($$9, $$4, $$4.fw(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
-               }
+            cvx $$5 = $$0.n();
+            if ($$3 instanceof arn) {
+               an.N.a((arn)$$3, $$2, $$5);
+            }
 
-               $$1.a(null, $$4.dx(), $$4.dz(), $$4.dD(), awg.aG, awh.h, 1.0F, 1.0F / ($$1.D_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(awq.c.b(this));
-               return true;
+            $$1.a($$2, $$4.get(), 11);
+            $$1.a(eaa.c, $$2, eaa.a.a($$3, $$4.get()));
+            if ($$3 != null) {
+               $$5.a(1, $$3, buv.d($$0.p()));
+            }
+
+            return bry.a;
+         }
+      }
+   }
+
+   private static boolean b(czo $$0) {
+      coh $$1 = $$0.o();
+      return $$0.p().equals(brx.a) && $$1.fc().a(cwb.vu) && !$$1.ga();
+   }
+
+   private Optional<dvd> a(dev $$0, jg $$1, @Nullable coh $$2, dvd $$3) {
+      Optional<dvd> $$4 = this.a($$3);
+      if ($$4.isPresent()) {
+         $$0.a($$2, $$1, awk.aH, awl.e, 1.0F, 1.0F);
+         return $$4;
+      } else {
+         Optional<dvd> $$5 = drd.b($$3);
+         if ($$5.isPresent()) {
+            $$0.a($$2, $$1, awk.aI, awl.e, 1.0F, 1.0F);
+            $$0.a($$2, 3005, $$1, 0);
+            return $$5;
+         } else {
+            Optional<dvd> $$6 = Optional.ofNullable((dhy)cvo.b.get().get($$3.b())).map($$1x -> $$1x.m($$3));
+            if ($$6.isPresent()) {
+               $$0.a($$2, $$1, awk.aJ, awl.e, 1.0F, 1.0F);
+               $$0.a($$2, 3004, $$1, 0);
+               return $$6;
+            } else {
+               return Optional.empty();
             }
          }
       }
    }
 
-   @Override
-   protected void a(bun $$0, cor $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bun $$6) {
-      $$1.a($$0, $$0.dK(), $$0.dI() + $$5, 0.0F, $$3, $$4);
-   }
-
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public int a(cvs $$0, bun $$1) {
-      return 72000;
-   }
-
-   @Override
-   public cvu a(cvs $$0) {
-      return cvu.e;
-   }
-
-   @Override
-   public brs a(dej $$0, cnx $$1, brr $$2) {
-      cvs $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.f($$3).f();
-      if (!$$1.fR() && !$$4) {
-         return brs.d;
-      } else {
-         $$1.c($$2);
-         return brs.c;
-      }
-   }
-
-   @Override
-   public Predicate<cvs> b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 15;
+   private Optional<dvd> a(dvd $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.m().b(dok.i, $$0.c(dok.i)));
    }
 }

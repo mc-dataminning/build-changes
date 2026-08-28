@@ -1,20 +1,13 @@
-public class grf<S extends guo, M extends fxo<S>> extends gsb<S, M> {
-   private final gom a;
-
-   public grf(gpk<S, M> $$0, gom $$1) {
-      super($$0);
-      this.a = $$1;
+public class grf extends gmt<cmf, gwr, gar<gwr>> {
+   public grf(gnz.a $$0) {
+      this($$0, gba.dm, gba.ds, gba.dq, gba.dr, gba.dt, gba.du);
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, S $$3, float $$4, float $$5) {
-      gzi $$6 = $$3.b();
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.4F, -0.4F);
-         $$0.a(a.b.rotationDegrees(180.0F));
-         cvs $$7 = $$3.aX_();
-         this.a.a($$7, cvp.h, false, $$0, $$1, $$2, gwx.d, $$6);
-         $$0.b();
-      }
+   public gwr c() {
+      return new gwr();
+   }
+
+   public grf(gnz.a $$0, gaz $$1, gaz $$2, gaz $$3, gaz $$4, gaz $$5, gaz $$6) {
+      super($$0, new gar<>($$0.a($$1)), new gar<>($$0.a($$2)), new gar<>($$0.a($$3)), new gar<>($$0.a($$4)), new gar<>($$0.a($$5)), new gar<>($$0.a($$6)));
    }
 }

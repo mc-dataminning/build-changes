@@ -1,65 +1,192 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Optional;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public interface azl {
-   azl a(String var1);
+public class azl implements DynamicOps<bao> {
+   public static final azl a = new azl();
 
-   void b(String var1);
+   private azl() {
+   }
 
-   public static class a implements azl {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
+   public <U> U a(DynamicOps<U> $$0, bao $$1) {
+      return (U)$$0.empty();
+   }
 
-      public a() {
-         this(HashMultimap.create(), () -> "");
+   public bao a() {
+      return bao.a;
+   }
+
+   public bao b() {
+      return bao.a;
+   }
+
+   public bao c() {
+      return bao.a;
+   }
+
+   public bao a(Number $$0) {
+      return bao.a;
+   }
+
+   public bao a(byte $$0) {
+      return bao.a;
+   }
+
+   public bao a(short $$0) {
+      return bao.a;
+   }
+
+   public bao a(int $$0) {
+      return bao.a;
+   }
+
+   public bao a(long $$0) {
+      return bao.a;
+   }
+
+   public bao a(float $$0) {
+      return bao.a;
+   }
+
+   public bao a(double $$0) {
+      return bao.a;
+   }
+
+   public bao a(boolean $$0) {
+      return bao.a;
+   }
+
+   public bao a(String $$0) {
+      return bao.a;
+   }
+
+   public DataResult<Number> a(bao $$0) {
+      return DataResult.error(() -> "Not a number");
+   }
+
+   public DataResult<Boolean> b(bao $$0) {
+      return DataResult.error(() -> "Not a boolean");
+   }
+
+   public DataResult<String> c(bao $$0) {
+      return DataResult.error(() -> "Not a string");
+   }
+
+   public DataResult<bao> a(bao $$0, bao $$1) {
+      return DataResult.success(bao.a);
+   }
+
+   public DataResult<bao> a(bao $$0, List<bao> $$1) {
+      return DataResult.success(bao.a);
+   }
+
+   public DataResult<bao> a(bao $$0, bao $$1, bao $$2) {
+      return DataResult.success(bao.a);
+   }
+
+   public DataResult<bao> a(bao $$0, Map<bao, bao> $$1) {
+      return DataResult.success(bao.a);
+   }
+
+   public DataResult<bao> a(bao $$0, MapLike<bao> $$1) {
+      return DataResult.success(bao.a);
+   }
+
+   public DataResult<Stream<Pair<bao, bao>>> d(bao $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Consumer<BiConsumer<bao, bao>>> e(bao $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<MapLike<bao>> f(bao $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Stream<bao>> g(bao $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<Consumer<Consumer<bao>>> h(bao $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<ByteBuffer> i(bao $$0) {
+      return DataResult.error(() -> "Not a byte list");
+   }
+
+   public DataResult<IntStream> j(bao $$0) {
+      return DataResult.error(() -> "Not an int list");
+   }
+
+   public DataResult<LongStream> k(bao $$0) {
+      return DataResult.error(() -> "Not a long list");
+   }
+
+   public bao a(Stream<Pair<bao, bao>> $$0) {
+      return bao.a;
+   }
+
+   public bao a(Map<bao, bao> $$0) {
+      return bao.a;
+   }
+
+   public bao b(Stream<bao> $$0) {
+      return bao.a;
+   }
+
+   public bao a(ByteBuffer $$0) {
+      return bao.a;
+   }
+
+   public bao a(IntStream $$0) {
+      return bao.a;
+   }
+
+   public bao a(LongStream $$0) {
+      return bao.a;
+   }
+
+   public bao a(bao $$0, String $$1) {
+      return $$0;
+   }
+
+   public RecordBuilder<bao> mapBuilder() {
+      return new azl.a(this);
+   }
+
+   @Override
+   public String toString() {
+      return "Null";
+   }
+
+   static final class a extends AbstractUniversalBuilder<bao, bao> {
+      public a(DynamicOps<bao> $$0) {
+         super($$0);
       }
 
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      protected bao a() {
+         return bao.a;
       }
 
-      private String c() {
-         if (this.c == null) {
-            this.c = this.b.get();
-         }
-
-         return this.c;
+      protected bao a(bao $$0, bao $$1, bao $$2) {
+         return $$2;
       }
 
-      @Override
-      public azl a(String $$0) {
-         return new azl.a(this.a, () -> this.c() + $$0);
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.c(), $$0);
-      }
-
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
-      }
-
-      public Optional<String> b() {
-         Multimap<String, String> $$0 = this.a();
-         if (!$$0.isEmpty()) {
-            String $$1 = $$0.asMap()
-               .entrySet()
-               .stream()
-               .map($$0x -> " at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-               .collect(Collectors.joining("\n"));
-            return Optional.of($$1);
-         } else {
-            return Optional.empty();
-         }
+      protected DataResult<bao> a(bao $$0, bao $$1) {
+         return DataResult.success($$1);
       }
    }
 }

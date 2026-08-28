@@ -1,32 +1,43 @@
-import java.util.function.UnaryOperator;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Function;
 
-public class og {
-   @Deprecated
-   public static ale a(String $$0) {
-      return ale.b("block/" + $$0);
+public class og<T> {
+   final String a;
+   final Function<T, JsonElement> b;
+
+   public og(String $$0, Function<T, JsonElement> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static ale b(String $$0) {
-      return ale.b("item/" + $$0);
+   public og<T>.a a(T $$0) {
+      return new og.a($$0);
    }
 
-   public static ale a(dhm $$0, String $$1) {
-      ale $$2 = lv.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   @Override
+   public String toString() {
+      return this.a;
    }
 
-   public static ale a(dhm $$0) {
-      ale $$1 = lv.e.b($$0);
-      return $$1.f("block/");
-   }
+   public class a {
+      private final T b;
 
-   public static ale a(cvn $$0) {
-      ale $$1 = lv.g.b($$0);
-      return $$1.f("item/");
-   }
+      public a(final T $$1) {
+         this.b = $$1;
+      }
 
-   public static ale a(cvn $$0, String $$1) {
-      ale $$2 = lv.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+      public og<T> a() {
+         return og.this;
+      }
+
+      public void a(JsonObject $$0) {
+         $$0.add(og.this.a, og.this.b.apply(this.b));
+      }
+
+      @Override
+      public String toString() {
+         return og.this.a + "=" + this.b;
+      }
    }
 }

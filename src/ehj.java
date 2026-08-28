@@ -1,28 +1,8 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class ehj extends ehf {
-   public static final MapCodec<ehj> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehj::new));
-
-   public ehj(bqx $$0, bqx $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected ehl<?> a() {
-      return ehl.f;
-   }
-
-   @Override
-   protected void a(dep $$0, ehk.b $$1, azn $$2, egu $$3, int $$4, ehk.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(azn $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return azf.l((float)$$1 + 0.5F) + azf.l((float)$$3 + 0.5F) > (float)($$4 * $$4);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ehj {
 }

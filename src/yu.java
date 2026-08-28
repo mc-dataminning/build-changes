@@ -1,5 +1,8 @@
-public interface yu {
-   xs a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   yv<? extends yu> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface yu {
 }

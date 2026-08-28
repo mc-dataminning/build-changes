@@ -1,10 +1,11 @@
-public class axf {
-   public static final axl<ckd> a = a("placeable");
+public final class axf {
+   public static final axp<erd> a = a("water");
+   public static final axp<erd> b = a("lava");
 
    private axf() {
    }
 
-   private static axl<ckd> a(String $$0) {
-      return axl.a(lw.X, ale.b($$0));
+   private static axp<erd> a(String $$0) {
+      return axp.a(ly.D, alh.b($$0));
    }
 }

@@ -1,10 +1,18 @@
-import com.google.common.collect.Lists;
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-public class fek extends ffc implements few {
-   @SerializedName("pingResults")
-   public List<fex> a = Lists.newArrayList();
-   @SerializedName("worldIds")
-   public List<Long> b = Lists.newArrayList();
+public class fek {
+   @Nullable
+   private static Proxy a;
+
+   @Nullable
+   public static Proxy a() {
+      return a;
+   }
+
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
+      }
+   }
 }

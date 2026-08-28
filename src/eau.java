@@ -1,110 +1,112 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public record eau(eah b, eah c, eah d, eah e, eah f, eah g, eah h, eah i, eah j, eah k, eah l, eah m, eah n, eah o, eah p) {
-   public static final Codec<eau> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", eau::a),
-               a("fluid_level_floodedness", eau::b),
-               a("fluid_level_spread", eau::c),
-               a("lava", eau::d),
-               a("temperature", eau::e),
-               a("vegetation", eau::f),
-               a("continents", eau::g),
-               a("erosion", eau::h),
-               a("depth", eau::i),
-               a("ridges", eau::j),
-               a("initial_density_without_jaggedness", eau::k),
-               a("final_density", eau::l),
-               a("vein_toggle", eau::m),
-               a("vein_ridged", eau::n),
-               a("vein_gap", eau::o)
-            )
-            .apply($$0, eau::new)
+public class eau extends dxa {
+   public static final MapCodec<eau> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eju.a.fieldOf("settings").forGetter(eau::h)).apply($$0, $$0.stable(eau::new))
    );
+   private final eju d;
 
-   private static RecordCodecBuilder<eau, eah> a(String $$0, Function<eau, eah> $$1) {
-      return eah.d.fieldOf($$0).forGetter($$1);
+   public eau(eju $$0) {
+      super(new dgh($$0.d()), ad.b($$0::a));
+      this.d = $$0;
    }
 
-   public eau a(eah.f $$0) {
-      return new eau(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   @Override
+   public dxb a(jr<elx> $$0, ebn $$1, long $$2) {
+      Stream<jp<elx>> $$3 = this.d.c().map(jt::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
+      return dxb.a($$1, $$2, this.b, $$3);
    }
 
-   public eah a() {
-      return this.b;
+   @Override
+   protected MapCodec<? extends dxa> b() {
+      return c;
    }
 
-   public eah b() {
-      return this.c;
-   }
-
-   public eah c() {
+   public eju h() {
       return this.d;
    }
 
-   public eah d() {
-      return this.e;
+   @Override
+   public void a(aru $$0, dfq $$1, ebn $$2, dwz $$3) {
    }
 
-   public eah e() {
-      return this.f;
+   @Override
+   public int a(dex $$0) {
+      return $$0.I_() + Math.min($$0.J_(), this.d.f().size());
    }
 
-   public eah f() {
-      return this.g;
+   @Override
+   public CompletableFuture<dwz> a(ecb $$0, ebn $$1, dfq $$2, dwz $$3) {
+      List<dvd> $$4 = this.d.f();
+      jg.a $$5 = new jg.a();
+      eaz $$6 = $$3.a(eaz.a.c);
+      eaz $$7 = $$3.a(eaz.a.a);
+
+      for (int $$8 = 0; $$8 < Math.min($$3.J_(), $$4.size()); $$8++) {
+         dvd $$9 = $$4.get($$8);
+         if ($$9 != null) {
+            int $$10 = $$3.I_() + $$8;
+
+            for (int $$11 = 0; $$11 < 16; $$11++) {
+               for (int $$12 = 0; $$12 < 16; $$12++) {
+                  $$3.a($$5.d($$11, $$10, $$12), $$9, false);
+                  $$6.a($$11, $$10, $$12, $$9);
+                  $$7.a($$11, $$10, $$12, $$9);
+               }
+            }
+         }
+      }
+
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public eah g() {
-      return this.h;
+   @Override
+   public int a(int $$0, int $$1, eaz.a $$2, dex $$3, ebn $$4) {
+      List<dvd> $$5 = this.d.f();
+
+      for (int $$6 = Math.min($$5.size() - 1, $$3.an()); $$6 >= 0; $$6--) {
+         dvd $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.I_() + $$6 + 1;
+         }
+      }
+
+      return $$3.I_();
    }
 
-   public eah h() {
-      return this.i;
+   @Override
+   public dfh a(int $$0, int $$1, dex $$2, ebn $$3) {
+      return new dfh($$2.I_(), this.d.f().stream().limit((long)$$2.J_()).map($$0x -> $$0x == null ? dia.a.m() : $$0x).toArray(dvd[]::new));
    }
 
-   public eah i() {
-      return this.j;
+   @Override
+   public void a(List<String> $$0, ebn $$1, jg $$2) {
    }
 
-   public eah j() {
-      return this.k;
+   @Override
+   public void a(aru $$0, long $$1, ebn $$2, dfy $$3, dfq $$4, dwz $$5) {
    }
 
-   public eah k() {
-      return this.l;
+   @Override
+   public void a(aru $$0) {
    }
 
-   public eah l() {
-      return this.m;
+   @Override
+   public int g() {
+      return 0;
    }
 
-   public eah m() {
-      return this.n;
+   @Override
+   public int e() {
+      return 384;
    }
 
-   public eah n() {
-      return this.o;
-   }
-
-   public eah o() {
-      return this.p;
+   @Override
+   public int f() {
+      return -63;
    }
 }

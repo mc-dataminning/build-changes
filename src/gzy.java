@@ -1,20 +1,45 @@
-import java.util.function.Function;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface gzy {
-   void a(gzy.b var1, gzy.a var2);
+public abstract class gzy implements gzu {
+   protected final gzu a;
 
-   @Nullable
-   gzi a(gzo var1, Function<gzm, gxg> var2, gzu var3);
-
-   public static enum a {
-      a,
-      b;
+   public gzy(gzu $$0) {
+      this.a = $$0;
    }
 
-   public interface b {
-      gzy a(ale var1);
+   @Override
+   public List<gjd> a(@Nullable dvd $$0, @Nullable jl $$1, azr $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
 
-      gzy b(ale var1);
+   @Override
+   public boolean a() {
+      return this.a.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean d() {
+      return this.a.d();
+   }
+
+   @Override
+   public gxs e() {
+      return this.a.e();
+   }
+
+   @Override
+   public gjo f() {
+      return this.a.f();
    }
 }

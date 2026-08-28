@@ -1,54 +1,103 @@
-import com.mojang.datafixers.DSL;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Map;
 
 public class bdt extends DataFix {
-   private static final int[][] a = new int[][]{{0, 0, 1}, {-1, 0, 0}, {0, 0, -1}, {1, 0, 0}};
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("AreaEffectCloud", "minecraft:area_effect_cloud");
+      $$0.put("ArmorStand", "minecraft:armor_stand");
+      $$0.put("Arrow", "minecraft:arrow");
+      $$0.put("Bat", "minecraft:bat");
+      $$0.put("Blaze", "minecraft:blaze");
+      $$0.put("Boat", "minecraft:boat");
+      $$0.put("CaveSpider", "minecraft:cave_spider");
+      $$0.put("Chicken", "minecraft:chicken");
+      $$0.put("Cow", "minecraft:cow");
+      $$0.put("Creeper", "minecraft:creeper");
+      $$0.put("Donkey", "minecraft:donkey");
+      $$0.put("DragonFireball", "minecraft:dragon_fireball");
+      $$0.put("ElderGuardian", "minecraft:elder_guardian");
+      $$0.put("EnderCrystal", "minecraft:ender_crystal");
+      $$0.put("EnderDragon", "minecraft:ender_dragon");
+      $$0.put("Enderman", "minecraft:enderman");
+      $$0.put("Endermite", "minecraft:endermite");
+      $$0.put("EyeOfEnderSignal", "minecraft:eye_of_ender_signal");
+      $$0.put("FallingSand", "minecraft:falling_block");
+      $$0.put("Fireball", "minecraft:fireball");
+      $$0.put("FireworksRocketEntity", "minecraft:fireworks_rocket");
+      $$0.put("Ghast", "minecraft:ghast");
+      $$0.put("Giant", "minecraft:giant");
+      $$0.put("Guardian", "minecraft:guardian");
+      $$0.put("Horse", "minecraft:horse");
+      $$0.put("Husk", "minecraft:husk");
+      $$0.put("Item", "minecraft:item");
+      $$0.put("ItemFrame", "minecraft:item_frame");
+      $$0.put("LavaSlime", "minecraft:magma_cube");
+      $$0.put("LeashKnot", "minecraft:leash_knot");
+      $$0.put("MinecartChest", "minecraft:chest_minecart");
+      $$0.put("MinecartCommandBlock", "minecraft:commandblock_minecart");
+      $$0.put("MinecartFurnace", "minecraft:furnace_minecart");
+      $$0.put("MinecartHopper", "minecraft:hopper_minecart");
+      $$0.put("MinecartRideable", "minecraft:minecart");
+      $$0.put("MinecartSpawner", "minecraft:spawner_minecart");
+      $$0.put("MinecartTNT", "minecraft:tnt_minecart");
+      $$0.put("Mule", "minecraft:mule");
+      $$0.put("MushroomCow", "minecraft:mooshroom");
+      $$0.put("Ozelot", "minecraft:ocelot");
+      $$0.put("Painting", "minecraft:painting");
+      $$0.put("Pig", "minecraft:pig");
+      $$0.put("PigZombie", "minecraft:zombie_pigman");
+      $$0.put("PolarBear", "minecraft:polar_bear");
+      $$0.put("PrimedTnt", "minecraft:tnt");
+      $$0.put("Rabbit", "minecraft:rabbit");
+      $$0.put("Sheep", "minecraft:sheep");
+      $$0.put("Shulker", "minecraft:shulker");
+      $$0.put("ShulkerBullet", "minecraft:shulker_bullet");
+      $$0.put("Silverfish", "minecraft:silverfish");
+      $$0.put("Skeleton", "minecraft:skeleton");
+      $$0.put("SkeletonHorse", "minecraft:skeleton_horse");
+      $$0.put("Slime", "minecraft:slime");
+      $$0.put("SmallFireball", "minecraft:small_fireball");
+      $$0.put("SnowMan", "minecraft:snowman");
+      $$0.put("Snowball", "minecraft:snowball");
+      $$0.put("SpectralArrow", "minecraft:spectral_arrow");
+      $$0.put("Spider", "minecraft:spider");
+      $$0.put("Squid", "minecraft:squid");
+      $$0.put("Stray", "minecraft:stray");
+      $$0.put("ThrownEgg", "minecraft:egg");
+      $$0.put("ThrownEnderpearl", "minecraft:ender_pearl");
+      $$0.put("ThrownExpBottle", "minecraft:xp_bottle");
+      $$0.put("ThrownPotion", "minecraft:potion");
+      $$0.put("Villager", "minecraft:villager");
+      $$0.put("VillagerGolem", "minecraft:villager_golem");
+      $$0.put("Witch", "minecraft:witch");
+      $$0.put("WitherBoss", "minecraft:wither");
+      $$0.put("WitherSkeleton", "minecraft:wither_skeleton");
+      $$0.put("WitherSkull", "minecraft:wither_skull");
+      $$0.put("Wolf", "minecraft:wolf");
+      $$0.put("XPOrb", "minecraft:xp_orb");
+      $$0.put("Zombie", "minecraft:zombie");
+      $$0.put("ZombieHorse", "minecraft:zombie_horse");
+      $$0.put("ZombieVillager", "minecraft:zombie_villager");
+   });
 
    public bdt(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, boolean $$1, boolean $$2) {
-      if (($$1 || $$2) && $$0.get("Facing").asNumber().result().isEmpty()) {
-         int $$3;
-         if ($$0.get("Direction").asNumber().result().isPresent()) {
-            $$3 = $$0.get("Direction").asByte((byte)0) % a.length;
-            int[] $$4 = a[$$3];
-            $$0 = $$0.set("TileX", $$0.createInt($$0.get("TileX").asInt(0) + $$4[0]));
-            $$0 = $$0.set("TileY", $$0.createInt($$0.get("TileY").asInt(0) + $$4[1]));
-            $$0 = $$0.set("TileZ", $$0.createInt($$0.get("TileZ").asInt(0) + $$4[2]));
-            $$0 = $$0.remove("Direction");
-            if ($$2 && $$0.get("ItemRotation").asNumber().result().isPresent()) {
-               $$0 = $$0.set("ItemRotation", $$0.createByte((byte)($$0.get("ItemRotation").asByte((byte)0) * 2)));
-            }
-         } else {
-            $$3 = $$0.get("Dir").asByte((byte)0) % a.length;
-            $$0 = $$0.remove("Dir");
-         }
-
-         $$0 = $$0.set("Facing", $$0.createByte((byte)$$3));
-      }
-
-      return $$0;
-   }
-
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bho.B, "Painting");
-      OpticFinder<?> $$1 = DSL.namedChoice("Painting", $$0);
-      Type<?> $$2 = this.getInputSchema().getChoiceType(bho.B, "ItemFrame");
-      OpticFinder<?> $$3 = DSL.namedChoice("ItemFrame", $$2);
-      Type<?> $$4 = this.getInputSchema().getType(bho.B);
-      TypeRewriteRule $$5 = this.fixTypeEverywhereTyped(
-         "EntityPaintingFix", $$4, $$2x -> $$2x.updateTyped($$1, $$0, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, true, false)))
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bhs.B);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bhs.B);
+      Type<?> $$2 = this.getInputSchema().getType(bhs.t);
+      Type<?> $$3 = this.getOutputSchema().getType(bhs.t);
+      return TypeRewriteRule.seq(
+         this.convertUnchecked("item stack entity name hook converter", $$2, $$3),
+         this.fixTypeEverywhere("EntityIdFix", $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
       );
-      TypeRewriteRule $$6 = this.fixTypeEverywhereTyped(
-         "EntityItemFrameFix", $$4, $$2x -> $$2x.updateTyped($$3, $$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, false, true)))
-      );
-      return TypeRewriteRule.seq($$5, $$6);
    }
 }

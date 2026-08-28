@@ -1,33 +1,9 @@
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.StringReader;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public abstract class bns<C, V> implements bnm<StringReader, V>, bnt {
-   private final bng<ale> b;
-   protected final C a;
+public interface bns<S> {
+   Stream<String> possibleValues(bnp<S> var1);
 
-   protected bns(bng<ale> $$0, C $$1) {
-      this.b = $$0;
-      this.a = $$1;
+   static <S> bns<S> b() {
+      return $$0 -> Stream.empty();
    }
-
-   @Override
-   public Optional<V> a(bnl<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
-      Optional<ale> $$2 = $$0.b(this.b);
-      if ($$2.isPresent()) {
-         try {
-            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
-         } catch (Exception var5) {
-            $$0.a().a($$1, this, var5);
-            return Optional.empty();
-         }
-      } else {
-         $$0.a().a($$1, this, ale.c.createWithContext((ImmutableStringReader)$$0.b()));
-         return Optional.empty();
-      }
-   }
-
-   protected abstract V a(ImmutableStringReader var1, ale var2) throws Exception;
 }

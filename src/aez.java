@@ -1,29 +1,45 @@
-public class aez implements zl<aca> {
-   public static final zc<wb, aez> a = zl.a(aez::a, aez::new);
-   private final int b;
+public class aez implements zo<acd> {
+   public static final zf<we, aez> a = zo.a(aez::a, aez::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public aez(dwj $$0) {
-      this.b = $$0.r();
+   public aez(dwu $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private aez(wb $$0) {
-      this.b = $$0.l();
+   private aez(we $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(wb $$0) {
-      $$0.c(this.b);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zn<aez> a() {
-      return agp.aw;
+   public zq<aez> a() {
+      return ags.at;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

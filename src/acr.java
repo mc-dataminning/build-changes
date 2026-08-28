@@ -1,29 +1,20 @@
-public class acr implements zl<aca> {
-   public static final zc<wb, acr> a = zl.a(acr::a, acr::new);
-   private final boolean b;
+public record acr(int b) implements zo<acd> {
+   public static final zf<we, acr> a = zo.a(acr::a, acr::new);
 
-   public acr(boolean $$0) {
-      this.b = $$0;
+   private acr(we $$0) {
+      this($$0.l());
    }
 
-   private acr(wb $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(wb $$0) {
-      $$0.a(this.b);
+   private void a(we $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zn<acr> a() {
-      return agp.q;
+   public zq<acr> a() {
+      return ags.n;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

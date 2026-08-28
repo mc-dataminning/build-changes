@@ -1,30 +1,54 @@
-import java.util.Locale;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface esv {
-   jf a();
+public class esv {
+   private final jg a;
+   private final int b;
+   private final int c;
 
-   float b();
+   public esv(jg $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
 
-   long c();
+   @Nullable
+   public static esv a(uj $$0) {
+      Optional<jg> $$1 = uy.a($$0, "pos");
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         int $$2 = $$0.h("rotation");
+         int $$3 = $$0.h("entity_id");
+         return new esv($$1.get(), $$2, $$3);
+      }
+   }
 
-   long d();
+   public uj a() {
+      uj $$0 = new uj();
+      $$0.a("pos", uy.a(this.a));
+      $$0.a("rotation", this.b);
+      $$0.a("entity_id", this.c);
+      return $$0;
+   }
 
-   boolean g();
+   public jg b() {
+      return this.a;
+   }
 
-   boolean i();
+   public int c() {
+      return this.b;
+   }
 
-   void b(boolean var1);
+   public int d() {
+      return this.c;
+   }
 
-   boolean l();
+   public String e() {
+      return a(this.a);
+   }
 
-   def o();
-
-   brp q();
-
-   boolean r();
-
-   default void a(p $$0, del $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   public static String a(jg $$0) {
+      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
    }
 }

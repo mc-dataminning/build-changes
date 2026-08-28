@@ -1,34 +1,30 @@
-public class cpc extends coy {
-   public cpc(bty<? extends cpc> $$0, dej $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public cpc(dej $$0, bun $$1, cvs $$2) {
-      super(bty.L, $$1, $$0, $$2);
-   }
-
-   public cpc(dej $$0, double $$1, double $$2, double $$3, cvs $$4) {
-      super(bty.L, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   protected cvn o() {
-      return cvw.tX;
-   }
-
-   @Override
-   protected double bc() {
-      return 0.07;
-   }
-
-   @Override
-   protected void a(eyu $$0) {
-      super.a($$0);
-      if (this.dS() instanceof arj) {
-         this.dS().c(2002, this.ds(), cxr.c(cxs.a));
-         int $$1 = 3 + this.dS().z.a(5) + this.dS().z.a(5);
-         bud.a((arj)this.dS(), this.dq(), $$1);
-         this.as();
+@FunctionalInterface
+public interface cpc {
+   cpc a = ($$0, $$1, $$2) -> {
+   };
+   cpc b = ($$0, $$1, $$2) -> {
+      float $$3 = 170.0F + $$2.i() * 20.0F;
+      $$0.h($$0.dA().c(-0.5));
+      $$0.v($$0.dN() + $$3);
+      $$0.O += $$3;
+      $$0.as = true;
+   };
+   cpc c = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         ezh $$3 = $$1.bU().d();
+         $$0.h($$3);
+         $$0.as = true;
       }
-   }
+   };
+   cpc d = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         ezh $$3 = $$1.dA().d();
+         $$0.h($$3);
+         $$0.as = true;
+      }
+   };
+
+   void deflect(cpb var1, @Nullable btz var2, azr var3);
 }

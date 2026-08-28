@@ -1,55 +1,27 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
+import java.util.List;
 
-public enum bua implements bab {
-   a(0, "any", $$0 -> true),
-   b(1, "mainhand", btz.a),
-   c(2, "offhand", btz.b),
-   d(3, "hand", $$0 -> $$0.a() == btz.a.a),
-   e(4, "feet", btz.c),
-   f(5, "legs", btz.d),
-   g(6, "chest", btz.e),
-   h(7, "head", btz.f),
-   i(8, "armor", btz::f),
-   j(9, "body", btz.g);
+public enum bua {
+   a(bua.a.c),
+   b(bua.a.b),
+   c(bua.a.c),
+   d(bua.a.d);
 
-   public static final IntFunction<bua> k = axw.a($$0 -> $$0.n, values(), axw.a.a);
-   public static final Codec<bua> l = bab.a(bua::values);
-   public static final zc<ByteBuf, bua> m = za.a(k, $$0 -> $$0.n);
-   private final int n;
-   private final String o;
-   private final Predicate<btz> p;
+   private final bua.a e;
 
-   private bua(final int $$0, final String $$1, final Predicate<btz> $$2) {
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
+   private bua(final bua.a $$0) {
+      this.e = $$0;
    }
 
-   private bua(final int $$0, final String $$1, final btz $$2) {
-      this($$0, $$1, $$1x -> $$1x == $$2);
+   public List<ezh> a(float $$0, float $$1) {
+      return this.e.create($$0, $$1);
    }
 
-   public static bua a(btz $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> c;
-         case c -> e;
-         case d -> f;
-         case e -> g;
-         case f -> h;
-         case g -> j;
-      };
-   }
+   public interface a {
+      List<ezh> a = List.of(ezh.c);
+      bua.a b = ($$0, $$1) -> a;
+      bua.a c = ($$0, $$1) -> List.of(new ezh(0.0, (double)$$1, 0.0));
+      bua.a d = ($$0, $$1) -> List.of(new ezh(0.0, (double)$$1 / 2.0, 0.0));
 
-   @Override
-   public String c() {
-      return this.o;
-   }
-
-   public boolean b(btz $$0) {
-      return this.p.test($$0);
+      List<ezh> create(float var1, float var2);
    }
 }

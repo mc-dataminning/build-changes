@@ -1,23 +1,34 @@
-import io.netty.buffer.ByteBuf;
+public class ahf implements zo<agu> {
+   public static final zf<we, ahf> a = zo.a(ahf::a, ahf::new);
+   private final ahf.a b;
 
-public class ahf implements zl<agr> {
-   public static final ahf a = new ahf();
-   public static final zc<ByteBuf, ahf> b = zc.a(a);
+   public ahf(ahf.a $$0) {
+      this.b = $$0;
+   }
 
-   private ahf() {
+   private ahf(we $$0) {
+      this.b = $$0.b(ahf.a.class);
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<ahf> a() {
-      return agp.bt;
+   public zq<ahf> a() {
+      return ags.bq;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public ahf.a b() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

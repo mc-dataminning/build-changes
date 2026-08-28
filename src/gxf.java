@@ -2,151 +2,75 @@ import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gxf extends gwr implements gws, gxi {
-   private static final Logger f = LogUtils.getLogger();
-   @Deprecated
-   public static final ale d = csc.B;
-   @Deprecated
-   public static final ale e = ale.b("textures/atlas/particles.png");
-   private List<gxa> g = List.of();
-   private List<gxg.a> h = List.of();
-   private Map<ale, gxg> i = Map.of();
+public class gxf extends gxd implements gxe {
+   private static final Logger d = LogUtils.getLogger();
    @Nullable
-   private gxg j;
-   private final ale k;
-   private final int l;
-   private int m;
-   private int n;
-   private int o;
+   private fct e;
 
-   public gxf(ale $$0) {
-      this.k = $$0;
-      this.l = RenderSystem.maxSupportedTextureSize();
-   }
-
-   @Override
-   public void a(auv $$0) {
-   }
-
-   public void a(gxb.a $$0) {
-      f.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.k});
-      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
-      this.m = $$0.b();
-      this.n = $$0.c();
-      this.o = $$0.d();
-      this.g();
-      this.i = Map.copyOf($$0.f());
-      this.j = this.i.get(gww.b());
-      if (this.j == null) {
-         throw new IllegalStateException("Atlas '" + this.k + "' (" + this.i.size() + " sprites) has no missing texture sprite");
+   public gxf(fct $$0) {
+      this.e = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+            this.e();
+         });
       } else {
-         List<gxa> $$1 = new ArrayList<>();
-         List<gxg.a> $$2 = new ArrayList<>();
-
-         for (gxg $$3 : $$0.f().values()) {
-            $$1.add($$3.e());
-
-            try {
-               $$3.j();
-            } catch (Throwable var9) {
-               o $$5 = o.a(var9, "Stitching texture atlas");
-               p $$6 = $$5.a("Texture being stitched together");
-               $$6.a("Atlas path", this.k);
-               $$6.a("Sprite", $$3);
-               throw new z($$5);
-            }
-
-            gxg.a $$7 = $$3.f();
-            if ($$7 != null) {
-               $$2.add($$7);
-            }
-         }
-
-         this.g = List.copyOf($$1);
-         this.h = List.copyOf($$2);
+         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+         this.e();
       }
+   }
+
+   public gxf(int $$0, int $$1, boolean $$2) {
+      this.e = new fct($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
    }
 
    @Override
-   public void a(ale $$0, Path $$1) throws IOException {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.o, this.m, this.n);
-      a($$1, $$2, this.i);
-   }
-
-   private static void a(Path $$0, String $$1, Map<ale, gxg> $$2) {
-      Path $$3 = $$0.resolve($$1 + ".txt");
-
-      try (Writer $$4 = Files.newBufferedWriter($$3)) {
-         for (Entry<ale, gxg> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-            gxg $$6 = $$5.getValue();
-            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
-         }
-      } catch (IOException var10) {
-         f.warn("Failed to write file {}", $$3, var10);
-      }
+   public void a(ava $$0) {
    }
 
    @Override
    public void e() {
-      this.d();
+      if (this.e != null) {
+         this.d();
+         this.e.a(0, 0, 0, false);
+      } else {
+         d.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
 
-      for (gxg.a $$0 : this.h) {
-         $$0.a();
+   @Nullable
+   public fct f() {
+      return this.e;
+   }
+
+   public void a(fct $$0) {
+      if (this.e != null) {
+         this.e.close();
+      }
+
+      this.e = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.close();
+         this.b();
+         this.e = null;
       }
    }
 
    @Override
-   public void f() {
-      this.e();
-   }
-
-   public gxg a(ale $$0) {
-      gxg $$1 = this.i.getOrDefault($$0, this.j);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
-      } else {
-         return $$1;
+   public void a(alh $$0, Path $$1) throws IOException {
+      if (this.e != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.e.a($$3);
       }
-   }
-
-   public void g() {
-      this.g.forEach(gxa::close);
-      this.h.forEach(gxg.a::close);
-      this.g = List.of();
-      this.h = List.of();
-      this.i = Map.of();
-      this.j = null;
-   }
-
-   public ale h() {
-      return this.k;
-   }
-
-   public int i() {
-      return this.l;
-   }
-
-   int j() {
-      return this.m;
-   }
-
-   int k() {
-      return this.n;
-   }
-
-   public void b(gxb.a $$0) {
-      this.a(false, $$0.d() > 0);
    }
 }

@@ -1,42 +1,36 @@
-import java.util.EnumSet;
+public class cby extends cbt {
+   private final chj a;
+   private arn b;
+   private boolean c;
 
-public class cby extends cbk {
-   private final buv a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-
-   public cby(buv $$0, double $$1) {
+   public cby(chj $$0) {
       this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(cbk.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.a.fY()) {
-         return false;
-      } else {
-         eyw $$0 = cfh.a(this.a, 16, 7, eyw.c(this.a.fZ()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
-            return true;
-         }
-      }
+      arn $$0 = (arn)this.a.T_();
+      boolean $$1 = $$0 != null && !$$0.R_() && !$$0.gl().b && !$$0.bk() && !$$0.aw;
+      return !this.a.gv() && $$1 && this.a.gL();
    }
 
    @Override
-   public boolean c() {
-      return !this.a.P().m();
+   public boolean U_() {
+      return !this.c;
    }
 
    @Override
    public void d() {
-      this.a.P().a(this.b, this.c, this.d, this.e);
+      this.b = (arn)this.a.T_();
+      this.c = false;
+   }
+
+   @Override
+   public void a() {
+      if (!this.c && !this.a.y() && !this.a.M_()) {
+         if (this.a.cS().c(this.b.cS())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

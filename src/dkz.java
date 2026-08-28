@@ -1,56 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class dkz extends dhm {
-   protected final jk a;
-   protected final boolean b;
-   protected final ezq d;
+public class dkz extends dih implements dqa {
+   protected static final MapCodec<cyw> a = cyw.c.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<dkz> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dkz::b), t()).apply($$0, dkz::new));
+   protected static final float c = 3.0F;
+   protected static final fab d = dhy.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final cyw e;
 
-   protected dkz(dur.d $$0, jk $$1, ezq $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+   @Override
+   public MapCodec<? extends dkz> a() {
+      return b;
+   }
+
+   public dkz(jp<btc> $$0, float $$1, dvc.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dkz(cyw $$0, dvc.d $$1) {
+      super($$1);
+      this.e = $$0;
+   }
+
+   protected static cyw a(jp<btc> $$0, float $$1) {
+      return new cyw(List.of(new cyw.a($$0, azj.d($$1 * 20.0F))));
    }
 
    @Override
-   protected abstract MapCodec<? extends dkz> a();
-
-   @Nullable
-   @Override
-   public dus a(czn $$0) {
-      dus $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().n();
-   }
-
-   public dus a(dek $$0) {
-      return this.n();
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      ezh $$4 = $$0.a($$2);
+      return d.a($$4.d, $$4.e, $$4.f);
    }
 
    @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      jf $$3 = $$2.a(this.a.g());
-      dus $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   public cyw b() {
+      return this.e;
    }
-
-   @Override
-   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   protected boolean o(dus $$0) {
-      return true;
-   }
-
-   @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return this.d;
-   }
-
-   protected abstract dlb c();
-
-   protected abstract dhm b();
 }

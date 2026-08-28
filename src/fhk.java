@@ -1,69 +1,98 @@
-import com.mojang.logging.LogUtils;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.util.UndashedUuid;
+import java.util.Date;
+import java.util.UUID;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fhk extends fhn {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xe c = xe.c("mco.snapshot.creating");
-   private final long d;
-   private final fhg e;
-   private final String f;
-   private final String g;
-   private final fdt h;
+public class fhk {
+   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 == null || $$3.isJsonNull()) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else if (!$$3.isJsonObject()) {
+         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+      } else {
+         return $$2.apply($$3.getAsJsonObject());
+      }
+   }
+
    @Nullable
-   private fhp i;
+   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 == null || $$3.isJsonNull()) {
+         return null;
+      } else if (!$$3.isJsonObject()) {
+         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+      } else {
+         return $$2.apply($$3.getAsJsonObject());
+      }
+   }
+
+   public static String a(String $$0, JsonObject $$1) {
+      String $$2 = b($$0, $$1, null);
+      if ($$2 == null) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else {
+         return $$2;
+      }
+   }
+
+   public static String a(String $$0, JsonObject $$1, String $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+      } else {
+         return $$2;
+      }
+   }
+
    @Nullable
-   private fhq j;
-
-   public fhk(fdt $$0, long $$1, fhg $$2, String $$3, String $$4) {
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$0;
-   }
-
-   @Override
-   public void run() {
-      fdy $$0 = fdy.a();
-
-      try {
-         fep $$1 = $$0.a(Long.valueOf(this.d));
-         this.i = new fhp($$1.a, this.f, this.g);
-         this.j = new fhq(this.e, $$1.a, fgl.a, () -> fip.Q().execute(() -> fdt.a($$1, this.h, true)));
-         if (this.d()) {
-            return;
-         }
-
-         this.i.run();
-         if (this.d()) {
-            return;
-         }
-
-         this.j.run();
-      } catch (ffj var3) {
-         b.error("Couldn't create snapshot world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Couldn't create snapshot world", var4);
-         this.a(var4);
+   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+      } else {
+         return $$2;
       }
    }
 
-   @Override
-   public xe a() {
-      return c;
+   @Nullable
+   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
+      String $$3 = b($$0, $$1, null);
+      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
    }
 
-   @Override
-   public void b() {
-      super.b();
-      if (this.i != null) {
-         this.i.b();
+   public static int a(String $$0, JsonObject $$1, int $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
+      } else {
+         return $$2;
       }
+   }
 
-      if (this.j != null) {
-         this.j.b();
+   public static long a(String $$0, JsonObject $$1, long $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
+      } else {
+         return $$2;
       }
+   }
+
+   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
+      } else {
+         return $$2;
+      }
+   }
+
+   public static Date b(String $$0, JsonObject $$1) {
+      JsonElement $$2 = $$1.get($$0);
+      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
    }
 }

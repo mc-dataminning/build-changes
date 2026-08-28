@@ -1,51 +1,100 @@
-import io.netty.buffer.ByteBuf;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public interface aao {
-   aao.b<? extends aao> a();
+public record aao(aao.a c) implements aar {
+   public static final zf<we, aao> a = aar.a(aao::a, aao::new);
+   public static final aar.b<aao> b = aar.a("debug/brain");
 
-   static <B extends ByteBuf, T extends aao> zc<B, T> a(zf<B, T> $$0, zd<B, T> $$1) {
-      return zc.a($$0, $$1);
+   private aao(we $$0) {
+      this(new aao.a($$0));
    }
 
-   static <T extends aao> aao.b<T> a(String $$0) {
-      return new aao.b<>(ale.b($$0));
+   private void a(we $$0) {
+      this.c.a($$0);
    }
 
-   static <B extends wb> zc<B, aao> a(final aao.a<B> $$0, List<aao.c<? super B, ?>> $$1) {
-      final Map<ale, zc<? super B, ? extends aao>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aao.c::b));
-      return new zc<B, aao>() {
-         private zc<? super B, ? extends aao> a(ale $$0x) {
-            zc<? super B, ? extends aao> $$1 = $$2.get($$0);
-            return $$1 != null ? $$1 : $$0.create($$0);
-         }
-
-         private <T extends aao> void a(B $$0x, aao.b<T> $$1, aao $$2x) {
-            $$0.a($$1.a());
-            zc<B, T> $$3 = this.a($$1.a);
-            $$3.encode($$0, (T)$$2);
-         }
-
-         public void a(B $$0x, aao $$1) {
-            this.a($$0, $$1.a(), $$1);
-         }
-
-         public aao a(B $$0x) {
-            ale $$1 = $$0.q();
-            return (aao)this.a($$1).decode($$0);
-         }
-      };
+   @Override
+   public aar.b<aao> a() {
+      return b;
    }
 
-   public interface a<B extends wb> {
-      zc<B, ? extends aao> create(ale var1);
+   public aao.a b() {
+      return this.c;
    }
 
-   public static record b<T extends aao>(ale a) {
-   }
+   public static record a(
+      UUID a,
+      int b,
+      String c,
+      String d,
+      int e,
+      float f,
+      float g,
+      ezh h,
+      String i,
+      @Nullable ers j,
+      boolean k,
+      int l,
+      List<String> m,
+      List<String> n,
+      List<String> o,
+      List<String> p,
+      Set<jg> q,
+      Set<jg> r
+   ) {
+      public a(we $$0) {
+         this(
+            $$0.n(),
+            $$0.readInt(),
+            $$0.p(),
+            $$0.p(),
+            $$0.readInt(),
+            $$0.readFloat(),
+            $$0.readFloat(),
+            $$0.k(),
+            $$0.p(),
+            $$0.c(ers::b),
+            $$0.readBoolean(),
+            $$0.readInt(),
+            $$0.a(we::p),
+            $$0.a(we::p),
+            $$0.a(we::p),
+            $$0.a(we::p),
+            $$0.a(HashSet::new, jg.b),
+            $$0.a(HashSet::new, jg.b)
+         );
+      }
 
-   public static record c<B extends wb, T extends aao>(aao.b<T> a, zc<B, T> b) {
+      public void a(we $$0) {
+         $$0.a(this.a);
+         $$0.q(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+         $$0.q(this.e);
+         $$0.a(this.f);
+         $$0.a(this.g);
+         $$0.a(this.h);
+         $$0.a(this.i);
+         $$0.a(this.j, ($$0x, $$1) -> $$1.a($$0x));
+         $$0.a(this.k);
+         $$0.q(this.l);
+         $$0.a(this.m, we::a);
+         $$0.a(this.n, we::a);
+         $$0.a(this.o, we::a);
+         $$0.a(this.p, we::a);
+         $$0.a(this.q, jg.b);
+         $$0.a(this.r, jg.b);
+      }
+
+      public boolean a(jg $$0) {
+         return this.q.contains($$0);
+      }
+
+      public boolean b(jg $$0) {
+         return this.r.contains($$0);
+      }
    }
 }

@@ -1,33 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Locale;
 
-public class yt implements yu {
-   public static final yv<yt> a = new yv<yt>() {
-      private static final MapCodec<yt> a = xg.a.fieldOf("value").xmap(yt::new, $$0 -> $$0.b);
-      private static final zc<wp, yt> b = zc.a(xg.d, $$0 -> $$0.b, yt::new);
-
-      @Override
-      public MapCodec<yt> a() {
-         return a;
-      }
-
-      @Override
-      public zc<wp, yt> b() {
-         return b;
-      }
-   };
-   final xe b;
-
-   public yt(xe $$0) {
-      this.b = $$0;
+public class yt extends IllegalArgumentException {
+   public yt(ys $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   @Override
-   public xs a(int $$0) {
-      return this.b.f();
+   public yt(ys $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
    }
 
-   @Override
-   public yv<yt> a() {
-      return a;
+   public yt(ys $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

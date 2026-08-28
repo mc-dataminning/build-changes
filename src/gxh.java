@@ -1,190 +1,133 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
-
-public class gxh implements aup, gxi, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   public static final ale a = ale.b("");
-   private final Map<ale, gwr> c = Maps.newHashMap();
-   private final Set<gxi> d = Sets.newHashSet();
-   private final Map<String, Integer> e = Maps.newHashMap();
-   private final auv f;
-
-   public gxh(auv $$0) {
-      this.f = $$0;
-   }
-
-   public void a(ale $$0, gwr $$1) {
-      $$1 = this.d($$0, $$1);
-      gwr $$2 = this.c.put($$0, $$1);
-      if ($$2 != $$1) {
-         if ($$2 != null && $$2 != gww.c()) {
-            this.c($$0, $$2);
-         }
-
-         if ($$1 instanceof gxi) {
-            this.d.add((gxi)$$1);
-         }
+public class gxh {
+   private static final int a = 96;
+   private static final float[] b = ad.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
       }
+   });
+
+   private gxh() {
    }
 
-   private void c(ale $$0, gwr $$1) {
-      if ($$1 != gww.c()) {
-         this.d.remove($$1);
-
-         try {
-            $$1.close();
-         } catch (Exception var4) {
-            b.warn("Failed to close texture {}", $$0, var4);
-         }
-      }
-
-      $$1.b();
-   }
-
-   private gwr d(ale $$0, gwr $$1) {
-      try {
-         $$1.a(this.f);
-         return $$1;
-      } catch (IOException var6) {
-         if ($$0 != a) {
-            b.warn("Failed to load texture: {}", $$0, var6);
-         }
-
-         return gww.c();
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Registering texture");
-         p $$5 = $$4.a("Resource location being registered");
-         $$5.a("Resource location", $$0);
-         $$5.a("Texture object class", () -> $$1.getClass().getName());
-         throw new z($$4);
-      }
-   }
-
-   public gwr a(ale $$0) {
-      gwr $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new gwz($$0);
-         this.a($$0, $$1);
-      }
-
-      return $$1;
-   }
-
-   public gwr b(ale $$0, gwr $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   public ale a(String $$0, gwt $$1) {
-      Integer $$2 = this.e.get($$0);
-      if ($$2 == null) {
-         $$2 = 1;
+   public static fct[] a(fct[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
+         return $$0;
       } else {
-         $$2 = $$2 + 1;
-      }
+         fct[] $$2 = new fct[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
 
-      this.e.put($$0, $$2);
-      ale $$3 = ale.b(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
-      this.a($$3, $$1);
-      return $$3;
-   }
-
-   public CompletableFuture<Void> a(ale $$0, Executor $$1) {
-      if (!this.c.containsKey($$0)) {
-         gwy $$2 = new gwy(this.f, $$0, $$1);
-         this.c.put($$0, $$2);
-         return $$2.e().thenRunAsync(() -> this.a($$0, (gwr)$$2), gxh::a);
-      } else {
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   private static void a(Runnable $$0) {
-      fip.Q().execute(() -> RenderSystem.recordRenderCall($$0::run));
-   }
-
-   @Override
-   public void f() {
-      for (gxi $$0 : this.d) {
-         $$0.f();
-      }
-   }
-
-   public void b(ale $$0) {
-      gwr $$1 = this.c.remove($$0);
-      if ($$1 != null) {
-         this.c($$0, $$1);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.c.forEach(this::c);
-      this.c.clear();
-      this.d.clear();
-      this.e.clear();
-   }
-
-   @Override
-   public CompletableFuture<Void> a(aup.a $$0, auv $$1, bog $$2, bog $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Void> $$6 = new CompletableFuture<>();
-      fqj.a(this, $$4).thenCompose($$0::a).thenAcceptAsync($$3x -> {
-         gww.c();
-         ffs.a(this.f);
-         Iterator<Entry<ale, gwr>> $$4x = this.c.entrySet().iterator();
-
-         while ($$4x.hasNext()) {
-            Entry<ale, gwr> $$5x = $$4x.next();
-            ale $$6x = $$5x.getKey();
-            gwr $$7 = $$5x.getValue();
-            if ($$7 == gww.c() && !$$6x.equals(gww.b())) {
-               $$4x.remove();
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
             } else {
-               $$7.a(this, $$1, $$6x, $$5);
+               fct $$5 = $$2[$$4 - 1];
+               fct $$6 = new fct($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
+
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.a(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
+                  }
+               }
+
+               $$2[$$4] = $$6;
             }
          }
 
-         fip.Q().i(() -> $$6.complete(null));
-      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
-      return $$6;
+         return $$2;
+      }
    }
 
-   public void a(Path $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0));
+   private static boolean a(fct $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if (axu.a($$0.a($$1, $$2)) == 0) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
+         }
+
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
+
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return axu.a($$9, $$10, $$11, $$12);
       } else {
-         this.b($$0);
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return axu.a($$13, $$14, $$15, $$16);
       }
    }
 
-   private void b(Path $$0) {
-      try {
-         Files.createDirectories($$0);
-      } catch (IOException var3) {
-         b.error("Failed to create directory {}", $$0, var3);
-         return;
-      }
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
+   }
 
-      this.c.forEach(($$1, $$2) -> {
-         if ($$2 instanceof gws $$3) {
-            try {
-               $$3.a($$1, $$0);
-            } catch (IOException var5) {
-               b.error("Failed to dump texture {}", $$1, var5);
-            }
-         }
-      });
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

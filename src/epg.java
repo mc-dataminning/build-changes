@@ -1,18 +1,9 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class epg {
-   private final List<epf> a;
+public abstract class epg {
+   public static final Codec<epg> c = lx.o.q().dispatch("predicate_type", epg::a, eph::codec);
 
-   public epg(List<epf> $$0) {
-      this.a = $$0;
-   }
+   public abstract boolean a(jg var1, jg var2, jg var3, azr var4);
 
-   public List<epf> a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
-   }
+   protected abstract eph<?> a();
 }

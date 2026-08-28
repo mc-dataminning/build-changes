@@ -1,90 +1,151 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.Products.P5;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
 public abstract class emo {
-   public static final Codec<emo> f = lv.ag.q().dispatch("element_type", emo::a, emp::codec);
-   private static final jo<epg> a = jo.a(new epg(List.of()));
-   @Nullable
-   private volatile emq.a b;
+   public static final Codec<emo> b = lx.P.q().dispatch(emo::e, emp::codec);
+   private static final int a = 10387320;
+   private final kk c;
+   private final emo.c d;
+   private final float e;
+   private final int f;
+   private final Optional<emo.a> g;
 
-   protected static <E extends emo> RecordCodecBuilder<E, emq.a> e() {
-      return emq.a.c.fieldOf("projection").forGetter(emo::f);
+   protected static <S extends emo> P5<Mu<S>, kk, emo.c, Float, Integer, Optional<emo.a>> a(Instance<S> $$0) {
+      return $$0.group(
+         kk.v(16).optionalFieldOf("locate_offset", kk.g).forGetter(emo::f),
+         emo.c.e.optionalFieldOf("frequency_reduction_method", emo.c.a).forGetter(emo::g),
+         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(emo::h),
+         ays.l.fieldOf("salt").forGetter(emo::i),
+         emo.a.a.optionalFieldOf("exclusion_zone").forGetter(emo::j)
+      );
    }
 
-   protected emo(emq.a $$0) {
-      this.b = $$0;
+   protected emo(kk $$0, emo.c $$1, float $$2, int $$3, Optional<emo.a> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public abstract kj a(epj var1, doa var2);
-
-   public abstract List<epi.c> a(epj var1, jf var2, doa var3, azn var4);
-
-   public abstract eky a(epj var1, jf var2, doa var3);
-
-   public abstract boolean a(epj var1, dfg var2, dfe var3, dwp var4, jf var5, jf var6, doa var7, eky var8, azn var9, eos var10, boolean var11);
-
-   public abstract emp<?> a();
-
-   public void a(dek $$0, epi.c $$1, jf $$2, doa $$3, azn $$4, eky $$5) {
+   protected kk f() {
+      return this.c;
    }
 
-   public emo a(emq.a $$0) {
-      this.b = $$0;
-      return this;
+   protected emo.c g() {
+      return this.d;
    }
 
-   public emq.a f() {
-      emq.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
+   protected float h() {
+      return this.e;
+   }
+
+   protected int i() {
+      return this.f;
+   }
+
+   protected Optional<emo.a> j() {
+      return this.g;
+   }
+
+   public boolean b(dxb $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
+   }
+
+   public boolean a(int $$0, int $$1, long $$2) {
+      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
+   }
+
+   public boolean c(dxb $$0, int $$1, int $$2) {
+      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
+   }
+
+   protected abstract boolean a(dxb var1, int var2, int var3);
+
+   public jg a(deb $$0) {
+      return new jg($$0.d(), 0, $$0.e()).a(this.f());
+   }
+
+   public abstract emp<?> e();
+
+   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      eby $$5 = new eby(new eba(0L));
+      $$5.a($$0, $$1, $$2, $$3);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      eby $$5 = new eby(new eba(0L));
+      $$5.c($$0, $$2, $$3);
+      return $$5.j() < (double)$$4;
+   }
+
+   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      eby $$5 = new eby(new eba(0L));
+      $$5.a($$0, $$2, $$3, 10387320);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      int $$5 = $$2 >> 4;
+      int $$6 = $$3 >> 4;
+      eby $$7 = new eby(new eba(0L));
+      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
+      $$7.f();
+      return $$7.a((int)(1.0F / $$4)) == 0;
+   }
+
+   @Deprecated
+   public static record a(jp<elx> b, int c) {
+      public static final Codec<emo.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ald.a(ly.aU, elx.a, false).fieldOf("other_set").forGetter(emo.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(emo.a::b))
+               .apply($$0, emo.a::new)
+      );
+
+      boolean a(dxb $$0, int $$1, int $$2) {
+         return $$0.a(this.b, $$1, $$2, this.c);
+      }
+
+      public jp<elx> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 
-   public int g() {
-      return 1;
+   @FunctionalInterface
+   public interface b {
+      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
    }
 
-   public static Function<emq.a, emh> h() {
-      return $$0 -> emh.b;
-   }
+   public static enum c implements baf {
+      a("default", emo::a),
+      b("legacy_type_1", emo::d),
+      c("legacy_type_2", emo::c),
+      d("legacy_type_3", emo::b);
 
-   public static Function<emq.a, eml> a(String $$0) {
-      return $$1 -> new eml(Either.left(ale.a($$0)), a, $$1, Optional.empty());
-   }
+      public static final Codec<emo.c> e = baf.a(emo.c::values);
+      private final String f;
+      private final emo.b g;
 
-   public static Function<emq.a, eml> a(String $$0, jo<epg> $$1) {
-      return $$2 -> new eml(Either.left(ale.a($$0)), $$1, $$2, Optional.empty());
-   }
+      private c(final String $$0, final emo.b $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
 
-   public static Function<emq.a, emn> b(String $$0) {
-      return $$1 -> new emn(Either.left(ale.a($$0)), a, $$1, Optional.empty());
-   }
+      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
+      }
 
-   public static Function<emq.a, emn> b(String $$0, jo<epg> $$1) {
-      return $$2 -> new emn(Either.left(ale.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<emq.a, emn> a(String $$0, eos $$1) {
-      return $$2 -> new emn(Either.left(ale.a($$0)), a, $$2, Optional.of($$1));
-   }
-
-   public static Function<emq.a, emn> a(String $$0, jo<epg> $$1, eos $$2) {
-      return $$3 -> new emn(Either.left(ale.a($$0)), $$1, $$3, Optional.of($$2));
-   }
-
-   public static Function<emq.a, emi> a(jo<ekk> $$0) {
-      return $$1 -> new emi($$0, $$1);
-   }
-
-   public static Function<emq.a, emm> b(List<Function<emq.a, ? extends emo>> $$0) {
-      return $$1 -> new emm($$0.stream().map($$1x -> (emo)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

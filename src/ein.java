@@ -1,48 +1,30 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ein extends eiq {
-   public static final MapCodec<ein> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ein::new, $$0 -> $$0.d);
-   private static final jk b = jk.d;
-   private static final jk[] c = jk.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jk[]::new);
-   private final float d;
+public abstract class ein extends eik {
+   protected final long c;
+   protected final eqh.a d;
+   protected final float e;
+   protected final eqh f;
 
-   public ein(float $$0) {
-      this.d = $$0;
+   protected static <P extends ein> P3<Mu<P>, Long, eqh.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         eqh.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ays.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   protected eir<?> a() {
-      return eir.d;
+   protected ein(long $$0, eqh.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = eqh.b(new eby(new eba($$0)), $$1);
    }
 
-   @Override
-   public void a(eiq.a $$0) {
-      azn $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<jf> $$2 = $$0.d();
-         List<jf> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<jf> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<jf> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), dho.pe.n().b(dhg.b, b));
-               $$0.a().a($$6.get(), drx.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
-
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     $$1x.a(drs.c.a($$1.a(599)));
-                  }
-               });
-            }
-         }
-      }
+   protected double a(jg $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

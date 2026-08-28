@@ -1,23 +1,29 @@
-import java.util.List;
-import java.util.UUID;
+public class aeg implements zo<acd> {
+   public static final zf<we, aeg> a = zo.a(aeg::a, aeg::new);
+   private final int b;
 
-public record aeg(List<UUID> b) implements zl<aca> {
-   public static final zc<wb, aeg> a = zl.a(aeg::a, aeg::new);
-
-   private aeg(wb $$0) {
-      this($$0.a(ki.g));
+   public aeg(bsm $$0) {
+      this($$0.b());
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.b, ki.g);
+   public aeg(int $$0) {
+      this.b = $$0;
+   }
+
+   private aeg(we $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(we $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zn<aeg> a() {
-      return agp.af;
+   public zq<aeg> a() {
+      return ags.ac;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 }

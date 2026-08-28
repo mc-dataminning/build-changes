@@ -1,53 +1,58 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public final class hcv extends hct {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class hcv implements hcw<hbm> {
+   private final List<hcw<hbm>> a = Lists.newArrayList();
+   @Nullable
+   private final xh b;
+
+   public hcv(alh $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : xh.c($$1);
+   }
 
    @Override
-   public void a(hcn $$0) {
-      if (fip.Q().C()) {
-         super.a($$0);
+   public int e() {
+      int $$0 = 0;
+
+      for (hcw<hbm> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public hbm a(azr $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (hcw<hbm> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
+         }
+
+         return hcu.b;
+      } else {
+         return hcu.b;
       }
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+   public void a(hcw<hbm> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public xh a() {
+      return this.b;
    }
 
    @Override
-   public void f() {
-      this.b.add((long)fip.Q().o());
-      this.h();
-      this.c.add(fip.Q().p());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(hcn $$0) {
-      $$0.send(hco.c, $$0x -> {
-         $$0x.a(hcq.r, new LongArrayList(this.b));
-         $$0x.a(hcq.s, new LongArrayList(this.c));
-         $$0x.a(hcq.t, new LongArrayList(this.d));
-         $$0x.a(hcq.u, this.e());
-         $$0x.a(hcq.v, fip.Q().n.aG());
-         $$0x.a(hcq.w, (int)a);
-      });
-      this.g();
-   }
-
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public void a(hcr $$0) {
+      for (hcw<hbm> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

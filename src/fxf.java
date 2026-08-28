@@ -1,41 +1,38 @@
-import java.util.Set;
+public class fxf extends fyu {
+   private static final String a = "bell_body";
+   private final gbb b;
 
-public class fxf extends fyy<guo> {
-   public static final gaz a = new fwq(false, 10.0F, 4.0F, Set.of("head"));
-
-   public fxf(gaq $$0) {
-      super($$0);
+   public fxf(gbb $$0) {
+      super($$0, gig::c);
+      this.b = $$0.b("bell_body");
    }
 
-   public static gaw a() {
-      gay $$0 = new gay();
-      gba $$1 = $$0.a();
-      int $$2 = 12;
-      $$1.a(
-         "head",
-         gav.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-            .a(22, 0)
-            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
-            .a(22, 0)
-            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
-         gas.a(0.0F, 4.0F, -8.0F)
-      );
-      $$1.a(
-         "body",
-         gav.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
-         gas.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      gav $$3 = gav.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      $$1.a("right_hind_leg", $$3, gas.a(-4.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$3, gas.a(4.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$3, gas.a(-4.0F, 12.0F, -6.0F));
-      $$1.a("left_front_leg", $$3, gas.a(4.0F, 12.0F, -6.0F));
-      return gaw.a($$0, 64, 32);
+   public static gbh a() {
+      gbj $$0 = new gbj();
+      gbl $$1 = $$0.a();
+      gbl $$2 = $$1.a("bell_body", gbg.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), gbd.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", gbg.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), gbd.a(-8.0F, -12.0F, -8.0F));
+      return gbh.a($$0, 32, 32);
    }
 
-   public gaq b() {
-      return this.b;
+   public void a(dse $$0, float $$1) {
+      float $$2 = (float)$$0.a + $$1;
+      float $$3 = 0.0F;
+      float $$4 = 0.0F;
+      if ($$0.b) {
+         float $$5 = azj.a($$2 / (float) Math.PI) / (4.0F + $$2 / 3.0F);
+         if ($$0.c == jl.c) {
+            $$3 = -$$5;
+         } else if ($$0.c == jl.d) {
+            $$3 = $$5;
+         } else if ($$0.c == jl.f) {
+            $$4 = -$$5;
+         } else if ($$0.c == jl.e) {
+            $$4 = $$5;
+         }
+      }
+
+      this.b.e = $$3;
+      this.b.g = $$4;
    }
 }

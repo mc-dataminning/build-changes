@@ -1,84 +1,103 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class dfx extends dfo {
-   private static final MapCodec<jo<dfk>> d = dfk.c.fieldOf("biome");
-   public static final MapCodec<dft.c<jo<dfk>>> b = dft.c.a(d).fieldOf("biomes");
-   private static final MapCodec<jo<dfy>> e = dfy.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final MapCodec<dfx> c = Codec.mapEither(b, e).xmap(dfx::new, $$0 -> $$0.f);
-   private final Either<dft.c<jo<dfk>>, jo<dfy>> f;
+public class dfx {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dfx a = new dfx(jt.a(), List.of());
+   public static final MapCodec<dfx> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               edd.c.promotePartial(ad.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               ekv.d.promotePartial(ad.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dfx::new)
+   );
+   private final jt<edd<?>> d;
+   private final List<jt<ekv>> e;
+   private final Supplier<List<edr<?, ?>>> f;
+   private final Supplier<Set<ekv>> g;
 
-   private dfx(Either<dft.c<jo<dfk>>, jo<dfy>> $$0) {
-      this.f = $$0;
-   }
-
-   public static dfx a(dft.c<jo<dfk>> $$0) {
-      return new dfx(Either.left($$0));
-   }
-
-   public static dfx a(jo<dfy> $$0) {
-      return new dfx(Either.right($$0));
-   }
-
-   private dft.c<jo<dfk>> d() {
-      return (dft.c<jo<dfk>>)this.f.map($$0 -> $$0, $$0 -> ((dfy)$$0.a()).a());
-   }
-
-   @Override
-   protected Stream<jo<dfk>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
-   }
-
-   @Override
-   protected MapCodec<? extends dfo> a() {
-      return c;
-   }
-
-   public boolean a(ald<dfy> $$0) {
-      Optional<jo<dfy>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
-   }
-
-   @Override
-   public jo<dfk> getNoiseBiome(int $$0, int $$1, int $$2, dft.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @bal
-   public jo<dfk> a(dft.h $$0) {
-      return this.d().a($$0);
-   }
-
-   @Override
-   public void a(List<String> $$0, jf $$1, dft.f $$2) {
-      int $$3 = jz.a($$1.u());
-      int $$4 = jz.a($$1.v());
-      int $$5 = jz.a($$1.w());
-      dft.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = dft.a($$6.d());
-      float $$8 = dft.a($$6.e());
-      float $$9 = dft.a($$6.b());
-      float $$10 = dft.a($$6.c());
-      float $$11 = dft.a($$6.g());
-      double $$12 = (double)eav.a($$11);
-      dga $$13 = new dga();
-      $$0.add(
-         "Biome builder PV: "
-            + dga.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
+   dfx(jt<edd<?>> $$0, List<jt<ekv>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(jt::a).map(jp::a).flatMap(ekv::a).filter($$0xx -> $$0xx.b() == eef.g).collect(ImmutableList.toImmutableList())
       );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jt::a).map(jp::a).collect(Collectors.toSet()));
+   }
+
+   public Iterable<jp<edd<?>>> a() {
+      return this.d;
+   }
+
+   public List<edr<?, ?>> b() {
+      return this.f.get();
+   }
+
+   public List<jt<ekv>> c() {
+      return this.e;
+   }
+
+   public boolean a(ekv $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends dfx.b {
+      private final jq<ekv> a;
+      private final jq<edd<?>> b;
+
+      public a(jq<ekv> $$0, jq<edd<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dfx.a a(eav.a $$0, alg<ekv> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public dfx.a a(alg<edd<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final List<jp<edd<?>>> a = new ArrayList<>();
+      private final List<List<jp<ekv>>> b = new ArrayList<>();
+
+      public dfx.b a(eav.a $$0, jp<ekv> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public dfx.b a(int $$0, jp<ekv> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public dfx.b a(jp<edd<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public dfx a() {
+         return new dfx(jt.a(this.a), this.b.stream().map(jt::a).collect(ImmutableList.toImmutableList()));
+      }
    }
 }

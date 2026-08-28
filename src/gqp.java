@@ -1,40 +1,43 @@
-public class gqp extends gou<cju, gwc, gae> {
-   private static final ale a = ale.b("textures/entity/wither/wither_invulnerable.png");
-   private static final ale b = ale.b("textures/entity/wither/wither.png");
+public class gqp extends gny<ckr, gwg> {
+   private final giz a;
 
-   public gqp(gno.a $$0) {
-      super($$0, new gae($$0.a(gap.cZ)), 1.0F);
-      this.a(new gso(this, $$0.f()));
+   public gqp(gnz.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   protected int a(cju $$0, jf $$1) {
-      return 15;
-   }
-
-   public ale a(gwc $$0) {
-      int $$1 = azf.d($$0.c);
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
-   }
-
-   public gwc c() {
-      return new gwc();
-   }
-
-   protected void a(gwc $$0, fdi $$1) {
-      float $$2 = 2.0F;
-      if ($$0.c > 0.0F) {
-         $$2 -= $$0.c / 220.0F * 0.5F;
+   public void a(gwg $$0, fdt $$1, ghw $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.5F, 0.0F);
+      float $$4 = $$0.a;
+      if ($$0.a < 10.0F) {
+         float $$5 = 1.0F - $$0.a / 10.0F;
+         $$5 = azj.a($$5, 0.0F, 1.0F);
+         $$5 *= $$5;
+         $$5 *= $$5;
+         float $$6 = 1.0F + $$5 * 0.3F;
+         $$1.b($$6, $$6, $$6);
       }
 
-      $$1.b($$2, $$2, $$2);
+      $$1.a(a.d.rotationDegrees(-90.0F));
+      $$1.a(-0.5F, -0.5F, 0.5F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      if ($$0.b != null) {
+         gqo.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(cju $$0, gwc $$1, float $$2) {
+   public gwg a() {
+      return new gwg();
+   }
+
+   public void a(ckr $$0, gwg $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      int $$3 = $$0.gp();
-      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.go(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.y(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.gq();
+      $$1.a = (float)$$0.o() - $$2 + 1.0F;
+      $$1.b = $$0.q();
    }
 }

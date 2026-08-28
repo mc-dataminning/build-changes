@@ -1,54 +1,34 @@
-import com.google.common.collect.Lists;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringEscapeUtils;
+import com.mojang.util.UndashedUuid;
+import java.net.URI;
+import java.util.UUID;
 
 public class ayf {
-   private static final String a = "\r\n";
-   private static final String b = ",";
-   private final Writer c;
-   private final int d;
+   public static final URI a = URI.create("https://aka.ms/MinecraftGDPR");
+   public static final URI b = URI.create("https://aka.ms/MinecraftEULA");
+   public static final URI c = URI.create("http://go.microsoft.com/fwlink/?LinkId=521839");
+   public static final URI d = URI.create("https://aka.ms/MinecraftJavaAttribution");
+   public static final URI e = URI.create("https://aka.ms/MinecraftJavaLicenses");
+   public static final URI f = URI.create("https://aka.ms/BuyMinecraftJava");
+   public static final URI g = URI.create("https://aka.ms/JavaAccountSettings");
+   public static final URI h = URI.create("https://aka.ms/snapshotfeedback?ref=game");
+   public static final URI i = URI.create("https://aka.ms/javafeedback?ref=game");
+   public static final URI j = URI.create("https://aka.ms/snapshotbugs?ref=game");
+   public static final URI k = URI.create("https://aka.ms/Minecraft-Support");
+   public static final URI l = URI.create("https://aka.ms/MinecraftJavaAccessibility");
+   public static final URI m = URI.create("https://aka.ms/aboutjavareporting");
+   public static final URI n = URI.create("https://aka.ms/mcjavamoderation");
+   public static final URI o = URI.create("https://aka.ms/javablocking");
+   public static final URI p = URI.create("https://aka.ms/MinecraftSymLinks");
+   public static final URI q = URI.create("https://aka.ms/startjavarealmstrial");
+   public static final URI r = URI.create("https://aka.ms/BuyJavaRealms");
+   public static final URI s = URI.create("https://aka.ms/MinecraftRealmsTerms");
+   public static final URI t = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
 
-   ayf(Writer $$0, List<String> $$1) throws IOException {
-      this.c = $$0;
-      this.d = $$1.size();
-      this.a($$1.stream());
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   public static ayf.a a() {
-      return new ayf.a();
-   }
-
-   public void a(Object... $$0) throws IOException {
-      if ($$0.length != this.d) {
-         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
-      } else {
-         this.a(Stream.of($$0));
-      }
-   }
-
-   private void a(Stream<?> $$0) throws IOException {
-      this.c.write($$0.<CharSequence>map(ayf::a).collect(Collectors.joining(",")) + "\r\n");
-   }
-
-   private static String a(@Nullable Object $$0) {
-      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
-   }
-
-   public static class a {
-      private final List<String> a = Lists.newArrayList();
-
-      public ayf.a a(String $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public ayf a(Writer $$0) throws IOException {
-         return new ayf($$0, this.a);
-      }
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

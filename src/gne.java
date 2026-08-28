@@ -1,23 +1,22 @@
-public class gne<T extends cig> extends gmf<T, gtm, fxi> {
-   public static final ale a = ale.b("textures/entity/horse/donkey.png");
-   public static final ale b = ale.b("textures/entity/horse/mule.png");
-   private final ale k;
+public class gne extends gms<ckw, gtq> {
+   private static final alh a = alh.b("textures/entity/skeleton/bogged.png");
+   private static final alh b = alh.b("textures/entity/skeleton/bogged_overlay.png");
 
-   public gne(gno.a $$0, float $$1, gao $$2, gao $$3, boolean $$4) {
-      super($$0, new fxi($$0.a($$2)), new fxi($$0.a($$3)), $$1);
-      this.k = $$4 ? b : a;
+   public gne(gnz.a $$0) {
+      super($$0, gba.x, gba.y, new fxi($$0.a(gba.w)));
+      this.a(new gsp<>(this, $$0.f(), gba.z, b));
    }
 
-   public ale a(gtm $$0) {
-      return this.k;
+   public alh a(gtq $$0) {
+      return a;
    }
 
-   public gtm a() {
-      return new gtm();
+   public gtq a() {
+      return new gtq();
    }
 
-   public void a(T $$0, gtm $$1, float $$2) {
+   public void a(ckw $$0, gtq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.gz();
    }
 }

@@ -1,18 +1,28 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public interface fod extends foe {
-   void b(Consumer<foe> var1);
+public enum fod implements baf {
+   a("bitmap", foa.a.a),
+   b("ttf", fof.a),
+   c("space", fbu.a.a),
+   d("unihex", fog.b.a),
+   e("reference", foe.a);
 
-   @Override
-   default void a(Consumer<fkm> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   public static final Codec<fod> f = baf.a(fod::values);
+   private final String g;
+   private final MapCodec<? extends foc> h;
+
+   private fod(final String $$0, final MapCodec<? extends foc> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof fod $$1) {
-            $$1.a();
-         }
-      });
+   @Override
+   public String c() {
+      return this.g;
+   }
+
+   public MapCodec<? extends foc> a() {
+      return this.h;
    }
 }

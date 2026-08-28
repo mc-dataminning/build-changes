@@ -1,103 +1,75 @@
-public class grr<S extends gug, M extends fyb<S>, A extends fyb<S>> extends gsb<S, M> {
-   private final A a;
-   private final A b;
-   private final A c;
-   private final A d;
-   private final gxf e;
+import java.util.Map;
 
-   public grr(gpk<S, M> $$0, A $$1, A $$2, gzs $$3) {
-      this($$0, $$1, $$2, $$1, $$2, $$3);
+public class grr<S extends gva, M extends fxz<S> & fyi> extends gsm<S, M> {
+   private static final float a = 0.625F;
+   private static final float b = 1.1875F;
+   private final grr.a c;
+   private final Map<dpa.a, fzw> d;
+   private final gox e;
+
+   public grr(gpv<S, M> $$0, gax $$1, gox $$2) {
+      this($$0, $$1, grr.a.a, $$2);
    }
 
-   public grr(gpk<S, M> $$0, A $$1, A $$2, A $$3, A $$4, gzs $$5) {
+   public grr(gpv<S, M> $$0, gax $$1, grr.a $$2, gox $$3) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5.a(gig.g);
+      this.c = $$2;
+      this.d = gkw.a($$1);
+      this.e = $$3;
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$0, $$1, $$3, $$3.Q, btz.e, $$2, this.a($$3, btz.e));
-      this.a($$0, $$1, $$3, $$3.R, btz.d, $$2, this.a($$3, btz.d));
-      this.a($$0, $$1, $$3, $$3.S, btz.c, $$2, this.a($$3, btz.c));
-      this.a($$0, $$1, $$3, $$3.ao, btz.f, $$2, this.a($$3, btz.f));
-   }
-
-   private void a(fdi $$0, ghl $$1, S $$2, cvs $$3, btz $$4, int $$5, A $$6) {
-      if ($$3.h() instanceof ctl $$7) {
-         if ($$7.l() == $$4) {
-            $$6.a($$2);
-            this.a($$6, $$4);
-            boolean $$9 = this.a($$4);
-            ctm $$10 = $$7.g().a();
-            int $$11 = $$3.a(axe.bD) ? axq.f(cyk.a($$3, -6265536)) : -1;
-
-            for (ctm.a $$12 : $$10.d()) {
-               int $$13 = $$12.a() ? $$11 : -1;
-               this.a($$0, $$1, $$5, $$6, $$13, $$12.a($$9));
+   public void a(fdt $$0, ghw $$1, int $$2, S $$3, float $$4, float $$5) {
+      cvx $$6 = $$3.ao;
+      gzu $$7 = $$3.an;
+      if (!$$6.f() && $$7 != null) {
+         label17: {
+            cvt $$8 = $$6.h();
+            $$0.a();
+            $$0.b(this.c.c(), 1.0F, this.c.c());
+            M $$9 = this.d();
+            $$9.e().a($$0);
+            $$9.b().a($$0);
+            if ($$8 instanceof cuc $$10 && $$10.d() instanceof dgu $$11) {
+               $$0.a(0.0F, this.c.b(), 0.0F);
+               $$0.b(1.1875F, -1.1875F, -1.1875F);
+               cyu $$12 = $$6.a(kt.af);
+               $$0.a(-0.5, 0.0, -0.5);
+               dpa.a $$13 = $$11.b();
+               fzw $$14 = this.d.get($$13);
+               gig $$15 = gkw.a($$13, $$12);
+               gkw.a(null, 180.0F, $$3.Z, $$0, $$1, $$2, $$14, $$15);
+               break label17;
             }
 
-            cxu $$14 = $$3.a(ks.P);
-            if ($$14 != null) {
-               this.a($$7.g(), $$0, $$1, $$5, $$14, $$6, $$9);
-            }
-
-            if ($$3.A()) {
-               this.a($$0, $$1, $$5, $$6);
+            if (!gsc.a($$6, buh.f)) {
+               a($$0, this.c);
+               this.e.a($$6, cvv.f, false, $$0, $$1, $$2, gxj.d, $$7);
             }
          }
+
+         $$0.b();
       }
    }
 
-   protected void a(A $$0, btz $$1) {
-      $$0.c_(false);
-      switch ($$1) {
-         case f:
-            $$0.o.k = true;
-            $$0.p.k = true;
-            break;
-         case e:
-            $$0.q.k = true;
-            $$0.r.k = true;
-            $$0.s.k = true;
-            break;
-         case d:
-            $$0.q.k = true;
-            $$0.t.k = true;
-            $$0.u.k = true;
-            break;
-         case c:
-            $$0.t.k = true;
-            $$0.u.k = true;
+   public static void a(fdt $$0, grr.a $$1) {
+      $$0.a(0.0F, -0.25F + $$1.a(), 0.0F);
+      $$0.a(a.d.rotationDegrees(180.0F));
+      $$0.b(0.625F, -0.625F, -0.625F);
+   }
+
+   public static record a(float b, float c, float d) {
+      public static final grr.a a = new grr.a(0.0F, 0.0F, 1.0F);
+
+      public float a() {
+         return this.b;
       }
-   }
 
-   private void a(fdi $$0, ghl $$1, int $$2, A $$3, int $$4, ale $$5) {
-      fdm $$6 = $$1.getBuffer(ghv.a($$5));
-      $$3.a($$0, $$6, $$2, gwx.d, $$4);
-   }
-
-   private void a(jo<ctm> $$0, fdi $$1, ghl $$2, int $$3, cxu $$4, A $$5, boolean $$6) {
-      gxg $$7 = this.e.a($$6 ? $$4.a($$0) : $$4.b($$0));
-      fdm $$8 = $$7.a($$2.getBuffer(gig.a($$4.a().a().d())));
-      $$5.a($$1, $$8, $$3, gwx.d);
-   }
-
-   private void a(fdi $$0, ghl $$1, int $$2, A $$3) {
-      $$3.a($$0, $$1.getBuffer(ghv.j()), $$2, gwx.d);
-   }
-
-   private A a(S $$0, btz $$1) {
-      if (this.a($$1)) {
-         return $$0.ae ? this.c : this.a;
-      } else {
-         return $$0.ae ? this.d : this.b;
+      public float b() {
+         return this.c;
       }
-   }
 
-   private boolean a(btz $$0) {
-      return $$0 == btz.d;
+      public float c() {
+         return this.d;
+      }
    }
 }

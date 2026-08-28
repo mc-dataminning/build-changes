@@ -1,49 +1,58 @@
-import java.net.SocketAddress;
-import jdk.jfr.Category;
-import jdk.jfr.DataAmount;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-@Category({"Minecraft", "Network"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bos extends Event {
-   @Name("protocolId")
-   @Label("Protocol Id")
-   public final String protocolId;
-   @Name("packetDirection")
-   @Label("Packet Direction")
-   public final String packetDirection;
-   @Name("packetId")
-   @Label("Packet Id")
-   public final String packetId;
-   @Name("remoteAddress")
-   @Label("Remote Address")
-   public final String remoteAddress;
-   @Name("bytes")
-   @Label("Bytes")
-   @DataAmount
-   public final int bytes;
+public class bos {
+   private static final Logger a = LogUtils.getLogger();
+   private final Runnable b;
 
-   public bos(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
-      this.protocolId = $$0;
-      this.packetDirection = $$1;
-      this.packetId = $$2;
-      this.remoteAddress = $$3.toString();
-      this.bytes = $$4;
+   protected bos(Runnable $$0) {
+      this.b = $$0;
    }
 
-   public static final class a {
-      public static final String a = "remoteAddress";
-      public static final String b = "protocolId";
-      public static final String c = "packetDirection";
-      public static final String d = "packetId";
-      public static final String e = "bytes";
+   public void a(@Nullable Path $$0) {
+      if ($$0 != null) {
+         this.b.run();
+         a(() -> "Dumped flight recorder profiling to " + $$0);
 
-      private a() {
+         bpa $$1;
+         try {
+            $$1 = boz.a($$0);
+         } catch (Throwable var5) {
+            a(() -> "Failed to parse JFR recording", var5);
+            return;
+         }
+
+         try {
+            a($$1::b);
+            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
+            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
+            a(() -> "Dumped recording summary to " + $$4);
+         } catch (Throwable var4) {
+            a(() -> "Failed to output JFR report", var4);
+         }
+      }
+   }
+
+   private static void a(Supplier<String> $$0) {
+      if (LogUtils.isLoggerActive()) {
+         a.info($$0.get());
+      } else {
+         alj.a($$0.get());
+      }
+   }
+
+   private static void a(Supplier<String> $$0, Throwable $$1) {
+      if (LogUtils.isLoggerActive()) {
+         a.warn($$0.get(), $$1);
+      } else {
+         alj.a($$0.get());
+         $$1.printStackTrace(alj.a);
       }
    }
 }

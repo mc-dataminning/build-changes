@@ -1,10 +1,16 @@
-public abstract class cfw extends bup {
-   protected cfw(bty<? extends cfw> $$0, dej $$1) {
-      super($$0, $$1);
-   }
+public interface cfw {
+   cfw a = a("zombie_villager_cured");
+   cfw b = a("golem_killed");
+   cfw c = a("villager_hurt");
+   cfw d = a("villager_killed");
+   cfw e = a("trade");
 
-   @Override
-   public boolean A() {
-      return false;
+   static cfw a(final String $$0) {
+      return new cfw() {
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

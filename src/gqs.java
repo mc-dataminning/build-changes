@@ -1,33 +1,18 @@
-public class gqs extends gmj<chg, gwe, gaf> {
-   public gqs(gno.a $$0) {
-      super($$0, new gaf($$0.a(gap.dg)), new gaf($$0.a(gap.di)), 0.5F);
-      this.a(new gsp(this, $$0.f()));
-      this.a(new gsq(this));
+public class gqs extends gmq<ciq, gud, fwq<gud>> {
+   private static final alh a = alh.b("textures/entity/horse/horse_zombie.png");
+   private static final alh b = alh.b("textures/entity/horse/horse_skeleton.png");
+   private final alh k;
+
+   public gqs(gnz.a $$0, gaz $$1, gaz $$2, boolean $$3) {
+      super($$0, new fyk($$0.a($$1)), new fyk($$0.a($$2)), 1.0F);
+      this.k = $$3 ? b : a;
    }
 
-   protected int a(gwe $$0) {
-      float $$1 = $$0.f;
-      return $$1 == 1.0F ? -1 : axq.a(1.0F, $$1, $$1, $$1);
+   public alh a(gud $$0) {
+      return this.k;
    }
 
-   public ale b(gwe $$0) {
-      return $$0.g;
-   }
-
-   public gwe c() {
-      return new gwe();
-   }
-
-   public void a(chg $$0, gwe $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.ad_();
-      $$1.b = $$0.y();
-      $$1.c = $$0.gD();
-      $$1.d = $$0.L($$2);
-      $$1.e = $$0.K($$2);
-      $$1.g = $$0.gA();
-      $$1.f = $$0.J($$2);
-      $$1.h = $$0.q() ? $$0.gE() : null;
-      $$1.i = $$0.fT().u();
+   public gud c() {
+      return new gud();
    }
 }

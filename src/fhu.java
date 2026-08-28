@@ -1,52 +1,34 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fhu extends fhy {
+   private static final xh b = xh.c("mco.connect.connecting");
+   private final heb c;
+   private final ffa d;
+   private final ffb e;
 
-public class fhu extends fhn {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xe c = xe.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final ffe e;
-   private final ffx f;
-
-   public fhu(long $$0, ffe $$1, ffx $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fhu(fqs $$0, ffa $$1, ffb $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new heb($$0);
    }
 
    @Override
    public void run() {
-      fdy $$0 = fdy.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
-            }
-         } catch (ffk var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't start mini game!");
-            this.a(var5);
-         }
-      }
+      this.c.a(this.d, gdo.a(this.e.a));
    }
 
    @Override
-   public xe a() {
-      return c;
+   public void b() {
+      super.b();
+      this.c.a();
+      fja.Q().af().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public xh a() {
+      return b;
    }
 }

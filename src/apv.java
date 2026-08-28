@@ -1,347 +1,194 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import java.util.Locale;
 
 public class apv {
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xe.c("commands.data.merge.failed"));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> xe.b("commands.data.get.invalid", $$0));
-   private static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xe.b("commands.data.get.unknown", $$0));
-   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xe.c("commands.data.get.multiple"));
-   private static final DynamicCommandExceptionType h = new DynamicCommandExceptionType($$0 -> xe.b("commands.data.modify.expected_object", $$0));
-   private static final DynamicCommandExceptionType i = new DynamicCommandExceptionType($$0 -> xe.b("commands.data.modify.expected_value", $$0));
-   private static final Dynamic2CommandExceptionType j = new Dynamic2CommandExceptionType(
-      ($$0, $$1) -> xe.b("commands.data.modify.invalid_substring", $$0, $$1)
-   );
-   public static final List<Function<String, apv.c>> a = ImmutableList.of(apw.a, apt.a, apx.a);
-   public static final List<apv.c> b = a.stream().map($$0 -> $$0.apply("target")).collect(ImmutableList.toImmutableList());
-   public static final List<apv.c> c = a.stream().map($$0 -> $$0.apply("source")).collect(ImmutableList.toImmutableList());
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xh.c("commands.worldborder.center.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xh.c("commands.worldborder.set.failed.nochange"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xh.c("commands.worldborder.set.failed.small"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xh.a("commands.worldborder.set.failed.big", 5.999997E7F));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xh.a("commands.worldborder.set.failed.far", 2.9999984E7));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(xh.c("commands.worldborder.warning.time.failed"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(xh.c("commands.worldborder.warning.distance.failed"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(xh.c("commands.worldborder.damage.buffer.failed"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(xh.c("commands.worldborder.damage.amount.failed"));
 
-   public static void a(CommandDispatcher<eu> $$0) {
-      LiteralArgumentBuilder<eu> $$1 = (LiteralArgumentBuilder<eu>)ev.a("data").requires($$0x -> $$0x.c(2));
-
-      for (apv.c $$2 : b) {
-         ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.then(
-                     $$2.a(ev.a("merge"), $$1x -> $$1x.then(ev.a("nbt", fe.a()).executes($$1xx -> a((eu)$$1xx.getSource(), $$2.a($$1xx), fe.a($$1xx, "nbt")))))
-                  ))
-                  .then(
-                     $$2.a(
-                        ev.a("get"),
-                        $$1x -> $$1x.executes($$1xx -> a((eu)$$1xx.getSource(), $$2.a($$1xx)))
-                              .then(
-                                 ((RequiredArgumentBuilder)ev.a("path", fm.a()).executes($$1xx -> b((eu)$$1xx.getSource(), $$2.a($$1xx), fm.a($$1xx, "path"))))
-                                    .then(
-                                       ev.a("scale", DoubleArgumentType.doubleArg())
-                                          .executes(
-                                             $$1xx -> a((eu)$$1xx.getSource(), $$2.a($$1xx), fm.a($$1xx, "path"), DoubleArgumentType.getDouble($$1xx, "scale"))
-                                          )
-                                    )
+   public static void a(CommandDispatcher<ev> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a(
+                                 "worldborder"
                               )
-                     )
-                  ))
-               .then(
-                  $$2.a(ev.a("remove"), $$1x -> $$1x.then(ev.a("path", fm.a()).executes($$1xx -> a((eu)$$1xx.getSource(), $$2.a($$1xx), fm.a($$1xx, "path")))))
-               ))
-            .then(
-               a(
-                  (BiConsumer<ArgumentBuilder<eu, ?>, apv.b>)(($$0x, $$1x) -> $$0x.then(
-                           ev.a("insert")
-                              .then(
-                                 ev.a("index", IntegerArgumentType.integer())
-                                    .then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(IntegerArgumentType.getInteger($$0xx, "index"), $$1xx, $$3)))
-                              )
-                        )
-                        .then(ev.a("prepend").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(0, $$1xx, $$3))))
-                        .then(ev.a("append").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(-1, $$1xx, $$3))))
-                        .then(ev.a("set").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a($$1xx, (vd)Iterables.getLast($$3)))))
-                        .then(ev.a("merge").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> {
-                           ug $$4 = new ug();
-
-                           for (vd $$5 : $$3) {
-                              if (fm.g.a($$5, 0)) {
-                                 throw fm.b.create();
-                              }
-
-                              if (!($$5 instanceof ug $$6)) {
-                                 throw h.create($$5);
-                              }
-
-                              $$4.a($$6);
-                           }
-
-                           Collection<vd> $$7 = $$2x.a($$1xx, ug::new);
-                           int $$8 = 0;
-
-                           for (vd $$9 : $$7) {
-                              if (!($$9 instanceof ug $$10)) {
-                                 throw h.create($$9);
-                              }
-
-                              ug $$12 = $$10.i();
-                              $$10.a($$4);
-                              $$8 += $$12.equals($$10) ? 0 : 1;
-                           }
-
-                           return $$8;
-                        }))))
-               )
-            );
-      }
-
-      $$0.register($$1);
-   }
-
-   private static String a(vd $$0) throws CommandSyntaxException {
-      if ($$0.c().d()) {
-         return $$0.s_();
-      } else {
-         throw i.create($$0);
-      }
-   }
-
-   private static List<vd> a(List<vd> $$0, apv.d $$1) throws CommandSyntaxException {
-      List<vd> $$2 = new ArrayList<>($$0.size());
-
-      for (vd $$3 : $$0) {
-         String $$4 = a($$3);
-         $$2.add(vb.a($$1.process($$4)));
-      }
-
-      return $$2;
-   }
-
-   private static ArgumentBuilder<eu, ?> a(BiConsumer<ArgumentBuilder<eu, ?>, apv.b> $$0) {
-      LiteralArgumentBuilder<eu> $$1 = ev.a("modify");
-
-      for (apv.c $$2 : b) {
-         $$2.a(
-            $$1,
-            $$2x -> {
-               ArgumentBuilder<eu, ?> $$3 = ev.a("targetPath", fm.a());
-
-               for (apv.c $$4 : c) {
-                  $$0.accept(
-                     $$3,
-                     $$2xx -> $$4.a(
-                           ev.a("from"),
-                           $$3x -> $$3x.executes($$3xx -> a($$3xx, $$2, $$2xx, a($$3xx, $$4)))
-                                 .then(ev.a("sourcePath", fm.a()).executes($$3xx -> a($$3xx, $$2, $$2xx, b($$3xx, $$4))))
-                        )
-                  );
-                  $$0.accept(
-                     $$3,
-                     $$2xx -> $$4.a(
-                           ev.a("string"),
-                           $$3x -> $$3x.executes($$3xx -> a($$3xx, $$2, $$2xx, a(a($$3xx, $$4), $$0xxxxx -> $$0xxxxx)))
+                              .requires($$0x -> $$0x.c(2)))
+                           .then(
+                              ew.a("add")
                                  .then(
-                                    ((RequiredArgumentBuilder)ev.a("sourcePath", fm.a())
-                                          .executes($$3xx -> a($$3xx, $$2, $$2xx, a(b($$3xx, $$4), $$0xxxxx -> $$0xxxxx))))
+                                    ((RequiredArgumentBuilder)ew.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ev)$$0x.getSource(),
+                                                   ((ev)$$0x.getSource()).e().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   0L
+                                                )
+                                          ))
                                        .then(
-                                          ((RequiredArgumentBuilder)ev.a("start", IntegerArgumentType.integer())
-                                                .executes(
-                                                   $$3xx -> a(
-                                                         $$3xx,
-                                                         $$2,
-                                                         $$2xx,
-                                                         a(b($$3xx, $$4), $$1xxxxx -> a($$1xxxxx, IntegerArgumentType.getInteger($$3xx, "start")))
-                                                      )
-                                                ))
-                                             .then(
-                                                ev.a("end", IntegerArgumentType.integer())
-                                                   .executes(
-                                                      $$3xx -> a(
-                                                            $$3xx,
-                                                            $$2,
-                                                            $$2xx,
-                                                            a(
-                                                               b($$3xx, $$4),
-                                                               $$1xxxxx -> b(
-                                                                     $$1xxxxx,
-                                                                     IntegerArgumentType.getInteger($$3xx, "start"),
-                                                                     IntegerArgumentType.getInteger($$3xx, "end")
-                                                                  )
-                                                            )
-                                                         )
+                                          ew.a("time", IntegerArgumentType.integer(0))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ev)$$0x.getSource(),
+                                                      ((ev)$$0x.getSource()).e().C_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                      ((ev)$$0x.getSource()).e().C_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
                                                    )
                                              )
                                        )
                                  )
+                           ))
+                        .then(
+                           ew.a("set")
+                              .then(
+                                 ((RequiredArgumentBuilder)ew.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                       .executes($$0x -> a((ev)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
+                                    .then(
+                                       ew.a("time", IntegerArgumentType.integer(0))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ev)$$0x.getSource(),
+                                                   DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                )
+                                          )
+                                    )
+                              )
+                        ))
+                     .then(ew.a("center").then(ew.a("pos", gx.a()).executes($$0x -> a((ev)$$0x.getSource(), gx.a($$0x, "pos"))))))
+                  .then(
+                     ((LiteralArgumentBuilder)ew.a("damage")
+                           .then(
+                              ew.a("amount")
+                                 .then(
+                                    ew.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
+                                       .executes($$0x -> b((ev)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
+                                 )
+                           ))
+                        .then(
+                           ew.a("buffer")
+                              .then(
+                                 ew.a("distance", FloatArgumentType.floatArg(0.0F))
+                                    .executes($$0x -> a((ev)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
+                              )
                         )
-                  );
-               }
-
-               $$0.accept($$3, $$1xx -> ev.a("value").then(ev.a("value", fn.a()).executes($$2xx -> {
-                     List<vd> $$3x = Collections.singletonList(fn.a($$2xx, "value"));
-                     return a($$2xx, $$2, $$1xx, $$3x);
-                  })));
-               return $$2x.then($$3);
-            }
-         );
-      }
-
-      return $$1;
+                  ))
+               .then(ew.a("get").executes($$0x -> a((ev)$$0x.getSource()))))
+            .then(
+               ((LiteralArgumentBuilder)ew.a("warning")
+                     .then(
+                        ew.a("distance")
+                           .then(
+                              ew.a("distance", IntegerArgumentType.integer(0))
+                                 .executes($$0x -> b((ev)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
+                           )
+                     ))
+                  .then(
+                     ew.a("time")
+                        .then(
+                           ew.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((ev)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                        )
+                  )
+            )
+      );
    }
 
-   private static String a(String $$0, int $$1, int $$2) throws CommandSyntaxException {
-      if ($$1 >= 0 && $$2 <= $$0.length() && $$1 <= $$2) {
-         return $$0.substring($$1, $$2);
+   private static int a(ev $$0, float $$1) throws CommandSyntaxException {
+      dwu $$2 = $$0.l().J().C_();
+      if ($$2.n() == (double)$$1) {
+         throw h.create();
       } else {
-         throw j.create($$1, $$2);
+         $$2.b((double)$$1);
+         $$0.a(() -> xh.a("commands.worldborder.damage.buffer.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
       }
    }
 
-   private static String b(String $$0, int $$1, int $$2) throws CommandSyntaxException {
-      int $$3 = $$0.length();
-      int $$4 = a($$1, $$3);
-      int $$5 = a($$2, $$3);
-      return a($$0, $$4, $$5);
-   }
-
-   private static String a(String $$0, int $$1) throws CommandSyntaxException {
-      int $$2 = $$0.length();
-      return a($$0, a($$1, $$2), $$2);
-   }
-
-   private static int a(int $$0, int $$1) {
-      return $$0 >= 0 ? $$0 : $$1 + $$0;
-   }
-
-   private static List<vd> a(CommandContext<eu> $$0, apv.c $$1) throws CommandSyntaxException {
-      apu $$2 = $$1.a($$0);
-      return Collections.singletonList($$2.a());
-   }
-
-   private static List<vd> b(CommandContext<eu> $$0, apv.c $$1) throws CommandSyntaxException {
-      apu $$2 = $$1.a($$0);
-      fm.g $$3 = fm.a($$0, "sourcePath");
-      return $$3.a($$2.a());
-   }
-
-   private static int a(CommandContext<eu> $$0, apv.c $$1, apv.a $$2, List<vd> $$3) throws CommandSyntaxException {
-      apu $$4 = $$1.a($$0);
-      fm.g $$5 = fm.a($$0, "targetPath");
-      ug $$6 = $$4.a();
-      int $$7 = $$2.modify($$0, $$6, $$5, $$3);
-      if ($$7 == 0) {
-         throw d.create();
+   private static int b(ev $$0, float $$1) throws CommandSyntaxException {
+      dwu $$2 = $$0.l().J().C_();
+      if ($$2.o() == (double)$$1) {
+         throw i.create();
       } else {
-         $$4.a($$6);
-         ((eu)$$0.getSource()).a(() -> $$4.b(), true);
-         return $$7;
+         $$2.c((double)$$1);
+         $$0.a(() -> xh.a("commands.worldborder.damage.amount.success", String.format(Locale.ROOT, "%.2f", $$1)), true);
+         return (int)$$1;
       }
    }
 
-   private static int a(eu $$0, apu $$1, fm.g $$2) throws CommandSyntaxException {
-      ug $$3 = $$1.a();
-      int $$4 = $$2.c($$3);
-      if ($$4 == 0) {
-         throw d.create();
+   private static int a(ev $$0, int $$1) throws CommandSyntaxException {
+      dwu $$2 = $$0.l().J().C_();
+      if ($$2.q() == $$1) {
+         throw f.create();
       } else {
-         $$1.a($$3);
-         $$0.a(() -> $$1.b(), true);
-         return $$4;
+         $$2.b($$1);
+         $$0.a(() -> xh.a("commands.worldborder.warning.time.success", $$1), true);
+         return $$1;
       }
    }
 
-   public static vd a(fm.g $$0, apu $$1) throws CommandSyntaxException {
-      Collection<vd> $$2 = $$0.a($$1.a());
-      Iterator<vd> $$3 = $$2.iterator();
-      vd $$4 = $$3.next();
-      if ($$3.hasNext()) {
+   private static int b(ev $$0, int $$1) throws CommandSyntaxException {
+      dwu $$2 = $$0.l().J().C_();
+      if ($$2.r() == $$1) {
          throw g.create();
       } else {
-         return $$4;
+         $$2.c($$1);
+         $$0.a(() -> xh.a("commands.worldborder.warning.distance.success", $$1), true);
+         return $$1;
       }
    }
 
-   private static int b(eu $$0, apu $$1, fm.g $$2) throws CommandSyntaxException {
-      vd $$3 = a($$2, $$1);
-      int $$4;
-      if ($$3 instanceof uw) {
-         $$4 = azf.a(((uw)$$3).j());
-      } else if ($$3 instanceof uf) {
-         $$4 = ((uf)$$3).size();
-      } else if ($$3 instanceof ug) {
-         $$4 = ((ug)$$3).f();
-      } else {
-         if (!($$3 instanceof vb)) {
-            throw f.create($$2.toString());
-         }
-
-         $$4 = $$3.s_().length();
-      }
-
-      $$0.a(() -> $$1.a($$3), false);
-      return $$4;
+   private static int a(ev $$0) {
+      double $$1 = $$0.l().J().C_().i();
+      $$0.a(() -> xh.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
+      return azj.a($$1 + 0.5);
    }
 
-   private static int a(eu $$0, apu $$1, fm.g $$2, double $$3) throws CommandSyntaxException {
-      vd $$4 = a($$2, $$1);
-      if (!($$4 instanceof uw)) {
-         throw e.create($$2.toString());
+   private static int a(ev $$0, ezg $$1) throws CommandSyntaxException {
+      dwu $$2 = $$0.l().J().C_();
+      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
+         throw a.create();
+      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
+         $$2.c((double)$$1.i, (double)$$1.j);
+         $$0.a(() -> xh.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
+         return 0;
       } else {
-         int $$5 = azf.a(((uw)$$4).j() * $$3);
-         $$0.a(() -> $$1.a($$2, $$3, $$5), false);
-         return $$5;
+         throw e.create();
       }
    }
 
-   private static int a(eu $$0, apu $$1) throws CommandSyntaxException {
-      ug $$2 = $$1.a();
-      $$0.a(() -> $$1.a((vd)$$2), false);
-      return 1;
-   }
-
-   private static int a(eu $$0, apu $$1, ug $$2) throws CommandSyntaxException {
-      ug $$3 = $$1.a();
-      if (fm.g.a($$2, 0)) {
-         throw fm.b.create();
+   private static int a(ev $$0, double $$1, long $$2) throws CommandSyntaxException {
+      dwu $$3 = $$0.l().J().C_();
+      double $$4 = $$3.i();
+      if ($$4 == $$1) {
+         throw b.create();
+      } else if ($$1 < 1.0) {
+         throw c.create();
+      } else if ($$1 > 5.999997E7F) {
+         throw d.create();
       } else {
-         ug $$4 = $$3.i().a($$2);
-         if ($$3.equals($$4)) {
-            throw d.create();
+         if ($$2 > 0L) {
+            $$3.a($$4, $$1, $$2);
+            if ($$1 > $$4) {
+               $$0.a(() -> xh.a("commands.worldborder.set.grow", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+            } else {
+               $$0.a(() -> xh.a("commands.worldborder.set.shrink", String.format(Locale.ROOT, "%.1f", $$1), Long.toString($$2 / 1000L)), true);
+            }
          } else {
-            $$1.a($$4);
-            $$0.a(() -> $$1.b(), true);
-            return 1;
+            $$3.a($$1);
+            $$0.a(() -> xh.a("commands.worldborder.set.immediate", String.format(Locale.ROOT, "%.1f", $$1)), true);
          }
+
+         return (int)($$1 - $$4);
       }
-   }
-
-   @FunctionalInterface
-   interface a {
-      int modify(CommandContext<eu> var1, ug var2, fm.g var3, List<vd> var4) throws CommandSyntaxException;
-   }
-
-   @FunctionalInterface
-   interface b {
-      ArgumentBuilder<eu, ?> create(apv.a var1);
-   }
-
-   public interface c {
-      apu a(CommandContext<eu> var1) throws CommandSyntaxException;
-
-      ArgumentBuilder<eu, ?> a(ArgumentBuilder<eu, ?> var1, Function<ArgumentBuilder<eu, ?>, ArgumentBuilder<eu, ?>> var2);
-   }
-
-   @FunctionalInterface
-   interface d {
-      String process(String var1) throws CommandSyntaxException;
    }
 }

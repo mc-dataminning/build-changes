@@ -1,19 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public enum bsn implements bab {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public enum bsn implements baf {
+   a("hurt", awk.uk),
+   b("thorns", awk.zB),
+   c("drowning", awk.ul),
+   d("burning", awk.un),
+   e("poking", awk.uo),
+   f("freezing", awk.um);
 
-   public static final Codec<bsn> d = bab.a(bsn::values);
-   private final String e;
+   public static final Codec<bsn> g = baf.a(bsn::values);
+   private final String h;
+   private final awj i;
 
-   private bsn(final String $$0) {
-      this.e = $$0;
+   private bsn(final String $$0, final awj $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.h;
+   }
+
+   public awj a() {
+      return this.i;
    }
 }

@@ -1,34 +1,44 @@
-public class ahc implements zl<agr> {
-   public static final zc<wb, ahc> a = zl.a(ahc::a, ahc::new);
-   private final ahc.a b;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public ahc(ahc.a $$0) {
-      this.b = $$0;
+public record ahc(String b, Instant c, long d, @Nullable xt e, xo.b f) implements zo<agu> {
+   public static final zf<we, ahc> a = zo.a(ahc::a, ahc::new);
+
+   private ahc(we $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xt::a), new xo.b($$0));
    }
 
-   private ahc(wb $$0) {
-      this.b = $$0.b(ahc.a.class);
-   }
-
-   private void a(wb $$0) {
-      $$0.a(this.b);
+   private void a(we $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xt::a);
+      this.f.a($$0);
    }
 
    @Override
-   public zn<ahc> a() {
-      return agp.bq;
+   public zq<ahc> a() {
+      return ags.bn;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public ahc.a b() {
-      return this.b;
+   public Instant e() {
+      return this.c;
    }
 
-   public static enum a {
-      a,
-      b;
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public xt g() {
+      return this.e;
+   }
+
+   public xo.b h() {
+      return this.f;
    }
 }

@@ -1,5 +1,21 @@
-public interface dwl {
-   dus a(int var1);
+public enum dwl implements baf {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-   void a(int var1, dus var2);
+   private final String d;
+
+   private dwl(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

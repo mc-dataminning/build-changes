@@ -1,61 +1,29 @@
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
+import java.util.function.Function;
 
-public class fbe {
-   @Nullable
-   private ByteBuffer a;
-   private final AudioFormat b;
-   private boolean c;
-   private int d;
+public class fbe<T> implements fav<T> {
+   private final Function<jg, fbc<T>> a;
 
-   public fbe(ByteBuffer $$0, AudioFormat $$1) {
+   public fbe(Function<jg, fbc<T>> $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   OptionalInt a() {
-      if (!this.c) {
-         if (this.a == null) {
-            return OptionalInt.empty();
-         }
-
-         int $$0 = fbd.a(this.b);
-         int[] $$1 = new int[1];
-         AL10.alGenBuffers($$1);
-         if (fbd.a("Creating buffer")) {
-            return OptionalInt.empty();
-         }
-
-         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
-         if (fbd.a("Assigning buffer data")) {
-            return OptionalInt.empty();
-         }
-
-         this.d = $$1[0];
-         this.c = true;
-         this.a = null;
-      }
-
-      return OptionalInt.of(this.d);
+   @Override
+   public boolean a(jg $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
    }
 
-   public void b() {
-      if (this.c) {
-         AL10.alDeleteBuffers(new int[]{this.d});
-         if (fbd.a("Deleting stream buffers")) {
-            return;
-         }
-      }
-
-      this.c = false;
+   @Override
+   public void a(faz<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
    }
 
-   public OptionalInt c() {
-      OptionalInt $$0 = this.a();
-      this.c = false;
-      return $$0;
+   @Override
+   public boolean b(jg $$0, T $$1) {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 0;
    }
 }

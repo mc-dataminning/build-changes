@@ -1,55 +1,59 @@
-public class cqd extends cpw {
-   public cqd(bty<? extends cqd> $$0, dej $$1) {
-      super($$0, $$1);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
+
+public class cqd {
+   private final List<cqa> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<cqa> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public cqd(dej $$0, double $$1, double $$2, double $$3) {
-      super(bty.s, $$1, $$2, $$3, $$0);
+   public cqd a(int $$0, float $$1) {
+      this.a.add(new cqa($$0, $$1));
+      this.b();
+      return this;
    }
 
-   @Override
-   protected cvn ak_() {
-      return cvw.nN;
+   public cqd a(Collection<cqa> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   @Override
-   public int b() {
-      return 27;
+   private void b() {
+      Int2ObjectSortedMap<cqa> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   @Override
-   public cpv.a y() {
-      return cpv.a.b;
-   }
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         cqa $$1 = this.a.get(this.b);
+         cqa $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   @Override
-   public dus A() {
-      return dho.cv.n().b(dip.c, jk.c);
-   }
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cqa $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
 
-   @Override
-   public int C() {
-      return 8;
-   }
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
 
-   @Override
-   public cqz a(int $$0, cnw $$1) {
-      return cri.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c(cnx $$0) {
-      this.dS().a(dzp.j, this.dq(), dzp.a.a($$0));
-   }
-
-   @Override
-   public brs a(cnx $$0, brr $$1) {
-      brs $$2 = this.c_($$0);
-      if ($$2.a()) {
-         this.a(dzp.k, $$0);
-         cmo.a($$0, true);
+         return $$5;
       }
-
-      return $$2;
    }
 }

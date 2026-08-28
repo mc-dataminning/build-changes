@@ -1,44 +1,48 @@
+import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.context.ParsedCommandNode;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.Map;
 
 public class ant {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.kick.owner.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.kick.singleplayer.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xh.c("commands.help.failed"));
 
-   public static void a(CommandDispatcher<eu> $$0) {
+   public static void a(CommandDispatcher<ev> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("kick").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("help").executes($$1 -> {
+               Map<CommandNode<ev>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ev)$$1.getSource());
+
+               for (String $$3 : $$2.values()) {
+                  ((ev)$$1.getSource()).a(() -> xh.b("/" + $$3), false);
+               }
+
+               return $$2.size();
+            }))
             .then(
-               ((RequiredArgumentBuilder)ev.a("targets", fh.d())
-                     .executes($$0x -> a((eu)$$0x.getSource(), fh.f($$0x, "targets"), xe.c("multiplayer.disconnect.kicked"))))
-                  .then(ev.a("reason", fl.a()).executes($$0x -> a((eu)$$0x.getSource(), fh.f($$0x, "targets"), fl.a($$0x, "reason"))))
+               ew.a("command", StringArgumentType.greedyString())
+                  .executes(
+                     $$1 -> {
+                        ParseResults<ev> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ev)$$1.getSource());
+                        if ($$2.getContext().getNodes().isEmpty()) {
+                           throw a.create();
+                        } else {
+                           Map<CommandNode<ev>, String> $$3 = $$0.getSmartUsage(
+                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ev)$$1.getSource()
+                           );
+
+                           for (String $$4 : $$3.values()) {
+                              ((ev)$$1.getSource()).a(() -> xh.b("/" + $$2.getReader().getString() + " " + $$4), false);
+                           }
+
+                           return $$3.size();
+                        }
+                     }
+                  )
             )
       );
-   }
-
-   private static int a(eu $$0, Collection<ark> $$1, xe $$2) throws CommandSyntaxException {
-      if (!$$0.l().r()) {
-         throw b.create();
-      } else {
-         int $$3 = 0;
-
-         for (ark $$4 : $$1) {
-            if (!$$0.l().a($$4.gc())) {
-               $$4.c.a($$2);
-               $$0.a(() -> xe.a("commands.kick.success", $$4.R_(), $$2), true);
-               $$3++;
-            }
-         }
-
-         if ($$3 == 0) {
-            throw a.create();
-         } else {
-            return $$3;
-         }
-      }
    }
 }

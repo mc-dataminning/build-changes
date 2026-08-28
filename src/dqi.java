@@ -1,75 +1,31 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqi extends dgy {
-   public static final MapCodec<dqi> a = b(dqi::new);
-   public static final dvv<duf> b = dvi.bz;
-   public static final dvm c = dli.aF;
-   public static final dvj d = dvi.bA;
-
-   @Override
-   public MapCodec<dqi> a() {
-      return a;
-   }
-
-   public dqi(dur.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, jk.c).b(b, duf.a).b(d, Boolean.valueOf(false)));
-   }
+public class dqi extends dho {
+   protected static final MapCodec<lu> c = lx.i
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof lu $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dqi> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dqi::new));
+   protected final lu e;
 
    @Override
-   public brs a(cvs $$0, dus $$1, dej $$2, jf $$3, cnx $$4, brr $$5, eys $$6) {
-      if (!$$0.f() && $$1.c(b) == duf.b) {
-         if ($$2 instanceof arj $$7) {
-            if (!($$7.c_($$3) instanceof dua $$8)) {
-               return brs.f;
-            }
-
-            dua.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
-         }
-
-         return brs.b;
-      } else {
-         return brs.f;
-      }
+   public MapCodec<? extends dqi> a() {
+      return d;
    }
 
-   @Nullable
-   @Override
-   public drv a(jf $$0, dus $$1) {
-      return new dua($$0, $$1);
+   protected dqi(lu $$0, dvc.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(c, b, d);
-   }
-
-   @Nullable
-   @Override
-   public <T extends drv> drw<T> a(dej $$0, dus $$1, drx<T> $$2) {
-      return $$0 instanceof arj $$3
-         ? a($$2, drx.R, ($$1x, $$2x, $$3x, $$4) -> dua.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, drx.R, ($$0x, $$1x, $$2x, $$3x) -> dua.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
-   }
-
-   @Override
-   public dus a(czn $$0) {
-      return this.n().b(c, $$0.g().g());
-   }
-
-   @Override
-   public dus a(dus $$0, doa $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dus a(dus $$0, dmj $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dnt a_(dus $$0) {
-      return dnt.c;
+   public void a(dvd $$0, dev $$1, jg $$2, azr $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(lq.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

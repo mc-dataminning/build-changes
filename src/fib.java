@@ -1,33 +1,13 @@
-import com.mojang.serialization.Codec;
+public class fib extends fid {
+   private final fhr b;
 
-public enum fib implements azi, bab {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
-
-   public static final Codec<fib> d = bab.a(fib::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private fib(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fib(fhr $$0, long $$1, xh $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public String c() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String a() {
-      return this.g;
+   protected void a(fej $$0, long $$1) throws ffu {
+      $$0.a($$1, this.b);
    }
 }

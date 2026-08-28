@@ -1,57 +1,54 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dkt extends dgh {
-   public static final MapCodec<dkt> c = b(dkt::new);
-
-   @Override
-   public MapCodec<dkt> a() {
-      return c;
-   }
-
-   protected dkt(dur.d $$0) {
+public abstract class dkt extends dhy implements dks {
+   public dkt(dvc.d $$0) {
       super($$0);
    }
 
    @Override
-   public drv a(jf $$0, dus $$1) {
-      return new dst($$0, $$1);
-   }
+   protected abstract MapCodec<? extends dkt> a();
 
-   @Nullable
    @Override
-   public <T extends drv> drw<T> a(dej $$0, dus $$1, drx<T> $$2) {
-      return a($$0, $$2, drx.a);
+   protected void b(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   protected void a(dej $$0, jf $$1, cnx $$2) {
-      drv $$3 = $$0.c_($$1);
-      if ($$3 instanceof dst) {
-         $$2.a((bru)$$3);
-         $$2.a(awq.am);
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      $$3.a($$4, this, this.b());
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.I_()) {
+         ckp $$4 = ckp.a($$1, $$2, $$0);
+         this.a($$4);
       }
    }
 
+   protected void a(ckp $$0) {
+   }
+
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean n(dvd $$0) {
+      return $$0.l() || $$0.a(awz.aL) || $$0.n() || $$0.v();
+   }
+
    @Override
-   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awg.jZ, awh.e, 1.0F, 1.0F, false);
+   public void a(dvd $$0, dev $$1, jg $$2, azr $$3) {
+      if ($$3.a(16) == 0) {
+         jg $$4 = $$2.e();
+         if (n($$1.a_($$4))) {
+            azn.a($$1, $$2, $$3, new li(lq.C, $$0));
          }
-
-         jk $$7 = $$0.c(a);
-         jk.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jk.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == jk.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(lo.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(lo.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
+   }
+
+   public int b(dvd $$0, dea $$1, jg $$2) {
+      return -16777216;
    }
 }

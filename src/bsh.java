@@ -1,28 +1,60 @@
-import com.mojang.serialization.Codec;
+public class bsh {
+   public static final float a = 1.0F;
+   protected float b = 20.0F;
+   protected long c = bak.a / 20L;
+   protected int d = 0;
+   protected boolean e = true;
+   protected boolean f = false;
 
-public enum bsh implements bab {
-   a("hurt", awg.um),
-   b("thorns", awg.zD),
-   c("drowning", awg.un),
-   d("burning", awg.up),
-   e("poking", awg.uq),
-   f("freezing", awg.uo);
-
-   public static final Codec<bsh> g = bab.a(bsh::values);
-   private final String h;
-   private final awf i;
-
-   private bsh(final String $$0, final awf $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public void a(float $$0) {
+      this.b = Math.max($$0, 1.0F);
+      this.c = (long)((double)bak.a / (double)this.b);
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   public float f() {
+      return this.b;
    }
 
-   public awf a() {
-      return this.i;
+   public float g() {
+      return (float)this.c / (float)bak.b;
+   }
+
+   public long h() {
+      return this.c;
+   }
+
+   public boolean i() {
+      return this.e;
+   }
+
+   public boolean j() {
+      return this.d > 0;
+   }
+
+   public void c(int $$0) {
+      this.d = $$0;
+   }
+
+   public int k() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean l() {
+      return this.f;
+   }
+
+   public void m() {
+      this.e = !this.f || this.d > 0;
+      if (this.d > 0) {
+         this.d--;
+      }
+   }
+
+   public boolean a(btz $$0) {
+      return !this.i() && !($$0 instanceof coh) && $$0.df() <= 0;
    }
 }

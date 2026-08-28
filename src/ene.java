@@ -1,31 +1,15 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 
-public class ene extends elg {
-   public static final MapCodec<ene> d = a(ene::new);
-
-   public ene(elg.c $$0) {
-      super($$0);
+public class ene {
+   public static MapCodec<? extends end> a(kc<MapCodec<? extends end>> $$0) {
+      kc.a($$0, "random", eng.a);
+      kc.a($$0, "random_group", enh.a);
+      return kc.a($$0, "direct", enc.a);
    }
 
-   @Override
-   public Optional<elg.b> a(elg.a $$0) {
-      doa $$1 = doa.a($$0.f());
-      jf $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new elg.b($$2, (Consumer<ely>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(ely $$0, jf $$1, doa $$2, elg.a $$3) {
-      List<elk> $$4 = Lists.newArrayList();
-      end.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
-   }
-
-   @Override
-   public elp<?> e() {
-      return elp.c;
+   public static void a(qx<enb> $$0, jp<enb> $$1, List<end> $$2) {
+      $$2.stream().flatMap(end::a).map($$0x -> $$0x.a().a()).forEach($$2x -> re.a($$0, $$2x, new enb($$1, List.of(Pair.of(emz.b($$2x), 1)), enb.a.b)));
    }
 }

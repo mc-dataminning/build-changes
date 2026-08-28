@@ -1,12 +1,31 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+public class dep {
+   private static int[] a = new int[65536];
 
-public interface dep {
-   boolean a(jf var1, Predicate<dus> var2);
+   public static void a(int[] $$0) {
+      a = $$0;
+   }
 
-   boolean b(jf var1, Predicate<eqt> var2);
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
+   }
 
-   <T extends drv> Optional<T> a(jf var1, drx<T> var2);
+   public static int a() {
+      return -10380959;
+   }
 
-   jf a(eao.a var1, jf var2);
+   public static int b() {
+      return -8345771;
+   }
+
+   public static int c() {
+      return -12012264;
+   }
+
+   public static int d() {
+      return -7158200;
+   }
 }

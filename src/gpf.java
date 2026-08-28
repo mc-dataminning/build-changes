@@ -1,16 +1,14 @@
-public class gpf extends goh<clg, guh> {
-   private static final ale a = ale.b("textures/entity/illager/pillager.png");
-
-   public gpf(gno.a $$0) {
-      super($$0, new fyc<>($$0.a(gap.bH)), 0.5F);
-      this.a(new gru<>(this, $$0.b()));
+public abstract class gpf<T extends bux, S extends gva, M extends fxz<? super S>> extends gpa<T, S, M> {
+   public gpf(gnz.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public ale a(guh $$0) {
-      return a;
+   protected boolean a(T $$0, double $$1) {
+      return super.a($$0, $$1) && ($$0.cN() || $$0.am() && $$0 == this.e.c);
    }
 
-   public guh c() {
-      return new guh();
+   @Override
+   protected float g(S $$0) {
+      return super.g($$0) * $$0.ab;
    }
 }

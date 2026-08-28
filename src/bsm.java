@@ -1,103 +1,142 @@
-public interface bsm {
-   ald<bsl> a = ald.a(lw.s, ale.b("in_fire"));
-   ald<bsl> b = ald.a(lw.s, ale.b("campfire"));
-   ald<bsl> c = ald.a(lw.s, ale.b("lightning_bolt"));
-   ald<bsl> d = ald.a(lw.s, ale.b("on_fire"));
-   ald<bsl> e = ald.a(lw.s, ale.b("lava"));
-   ald<bsl> f = ald.a(lw.s, ale.b("hot_floor"));
-   ald<bsl> g = ald.a(lw.s, ale.b("in_wall"));
-   ald<bsl> h = ald.a(lw.s, ale.b("cramming"));
-   ald<bsl> i = ald.a(lw.s, ale.b("drown"));
-   ald<bsl> j = ald.a(lw.s, ale.b("starve"));
-   ald<bsl> k = ald.a(lw.s, ale.b("cactus"));
-   ald<bsl> l = ald.a(lw.s, ale.b("fall"));
-   ald<bsl> m = ald.a(lw.s, ale.b("ender_pearl"));
-   ald<bsl> n = ald.a(lw.s, ale.b("fly_into_wall"));
-   ald<bsl> o = ald.a(lw.s, ale.b("out_of_world"));
-   ald<bsl> p = ald.a(lw.s, ale.b("generic"));
-   ald<bsl> q = ald.a(lw.s, ale.b("magic"));
-   ald<bsl> r = ald.a(lw.s, ale.b("wither"));
-   ald<bsl> s = ald.a(lw.s, ale.b("dragon_breath"));
-   ald<bsl> t = ald.a(lw.s, ale.b("dry_out"));
-   ald<bsl> u = ald.a(lw.s, ale.b("sweet_berry_bush"));
-   ald<bsl> v = ald.a(lw.s, ale.b("freeze"));
-   ald<bsl> w = ald.a(lw.s, ale.b("stalagmite"));
-   ald<bsl> x = ald.a(lw.s, ale.b("falling_block"));
-   ald<bsl> y = ald.a(lw.s, ale.b("falling_anvil"));
-   ald<bsl> z = ald.a(lw.s, ale.b("falling_stalactite"));
-   ald<bsl> A = ald.a(lw.s, ale.b("sting"));
-   ald<bsl> B = ald.a(lw.s, ale.b("mob_attack"));
-   ald<bsl> C = ald.a(lw.s, ale.b("mob_attack_no_aggro"));
-   ald<bsl> D = ald.a(lw.s, ale.b("player_attack"));
-   ald<bsl> E = ald.a(lw.s, ale.b("arrow"));
-   ald<bsl> F = ald.a(lw.s, ale.b("trident"));
-   ald<bsl> G = ald.a(lw.s, ale.b("mob_projectile"));
-   ald<bsl> H = ald.a(lw.s, ale.b("spit"));
-   ald<bsl> I = ald.a(lw.s, ale.b("wind_charge"));
-   ald<bsl> J = ald.a(lw.s, ale.b("fireworks"));
-   ald<bsl> K = ald.a(lw.s, ale.b("fireball"));
-   ald<bsl> L = ald.a(lw.s, ale.b("unattributed_fireball"));
-   ald<bsl> M = ald.a(lw.s, ale.b("wither_skull"));
-   ald<bsl> N = ald.a(lw.s, ale.b("thrown"));
-   ald<bsl> O = ald.a(lw.s, ale.b("indirect_magic"));
-   ald<bsl> P = ald.a(lw.s, ale.b("thorns"));
-   ald<bsl> Q = ald.a(lw.s, ale.b("explosion"));
-   ald<bsl> R = ald.a(lw.s, ale.b("player_explosion"));
-   ald<bsl> S = ald.a(lw.s, ale.b("sonic_boom"));
-   ald<bsl> T = ald.a(lw.s, ale.b("bad_respawn_point"));
-   ald<bsl> U = ald.a(lw.s, ale.b("outside_border"));
-   ald<bsl> V = ald.a(lw.s, ale.b("generic_kill"));
-   ald<bsl> W = ald.a(lw.s, ale.b("mace_smash"));
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   static void a(qu<bsl> $$0) {
-      $$0.a(a, new bsl("inFire", 0.1F, bsh.d));
-      $$0.a(b, new bsl("inFire", 0.1F, bsh.d));
-      $$0.a(c, new bsl("lightningBolt", 0.1F));
-      $$0.a(d, new bsl("onFire", 0.0F, bsh.d));
-      $$0.a(e, new bsl("lava", 0.1F, bsh.d));
-      $$0.a(f, new bsl("hotFloor", 0.1F, bsh.d));
-      $$0.a(g, new bsl("inWall", 0.0F));
-      $$0.a(h, new bsl("cramming", 0.0F));
-      $$0.a(i, new bsl("drown", 0.0F, bsh.c));
-      $$0.a(j, new bsl("starve", 0.0F));
-      $$0.a(k, new bsl("cactus", 0.1F));
-      $$0.a(l, new bsl("fall", bsi.b, 0.0F, bsh.a, bsn.b));
-      $$0.a(m, new bsl("fall", bsi.b, 0.0F, bsh.a, bsn.b));
-      $$0.a(n, new bsl("flyIntoWall", 0.0F));
-      $$0.a(o, new bsl("outOfWorld", 0.0F));
-      $$0.a(p, new bsl("generic", 0.0F));
-      $$0.a(q, new bsl("magic", 0.0F));
-      $$0.a(r, new bsl("wither", 0.0F));
-      $$0.a(s, new bsl("dragonBreath", 0.0F));
-      $$0.a(t, new bsl("dryout", 0.1F));
-      $$0.a(u, new bsl("sweetBerryBush", 0.1F, bsh.e));
-      $$0.a(v, new bsl("freeze", 0.0F, bsh.f));
-      $$0.a(w, new bsl("stalagmite", 0.0F));
-      $$0.a(x, new bsl("fallingBlock", 0.1F));
-      $$0.a(y, new bsl("anvil", 0.1F));
-      $$0.a(z, new bsl("fallingStalactite", 0.1F));
-      $$0.a(A, new bsl("sting", 0.1F));
-      $$0.a(B, new bsl("mob", 0.1F));
-      $$0.a(C, new bsl("mob", 0.1F));
-      $$0.a(D, new bsl("player", 0.1F));
-      $$0.a(E, new bsl("arrow", 0.1F));
-      $$0.a(F, new bsl("trident", 0.1F));
-      $$0.a(G, new bsl("mob", 0.1F));
-      $$0.a(H, new bsl("mob", 0.1F));
-      $$0.a(J, new bsl("fireworks", 0.1F));
-      $$0.a(L, new bsl("onFire", 0.1F, bsh.d));
-      $$0.a(K, new bsl("fireball", 0.1F, bsh.d));
-      $$0.a(M, new bsl("witherSkull", 0.1F));
-      $$0.a(N, new bsl("thrown", 0.1F));
-      $$0.a(O, new bsl("indirectMagic", 0.0F));
-      $$0.a(P, new bsl("thorns", 0.1F, bsh.b));
-      $$0.a(Q, new bsl("explosion", bsi.c, 0.1F));
-      $$0.a(R, new bsl("explosion.player", bsi.c, 0.1F));
-      $$0.a(S, new bsl("sonic_boom", bsi.c, 0.0F));
-      $$0.a(T, new bsl("badRespawnPoint", bsi.c, 0.1F, bsh.a, bsn.c));
-      $$0.a(U, new bsl("outsideBorder", 0.0F));
-      $$0.a(V, new bsl("genericKill", 0.0F));
-      $$0.a(I, new bsl("mob", 0.1F));
-      $$0.a(W, new bsl("mace_smash", 0.1F));
+public class bsm {
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final ye c = ye.a.a(new xf(xf.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new xn(xn.a.a, xh.b("MCPE-28723")));
+   private final List<bsk> d = Lists.newArrayList();
+   private final buv e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
+
+   public bsm(buv $$0) {
+      this.e = $$0;
+   }
+
+   public void a(bsp $$0, float $$1) {
+      this.c();
+      bsu $$2 = bsu.a(this.e);
+      bsk $$3 = new bsk($$0, $$1, $$2, this.e.aa);
+      this.d.add($$3);
+      this.f = this.e.ag;
+      this.j = true;
+      if (!this.i && this.e.bM() && a($$0)) {
+         this.i = true;
+         this.g = this.e.ag;
+         this.h = this.g;
+         this.e.g_();
+      }
+   }
+
+   private static boolean a(bsp $$0) {
+      return $$0.d() instanceof buv;
+   }
+
+   private xh a(btz $$0, xh $$1, String $$2, String $$3) {
+      cvx $$5 = $$0 instanceof buv $$4 ? $$4.fb() : cvx.k;
+      return !$$5.f() && $$5.b(kt.g) ? xh.a($$2, this.e.S_(), $$1, $$5.J()) : xh.a($$3, this.e.S_(), $$1);
+   }
+
+   private xh a(bsk $$0, @Nullable btz $$1) {
+      bsp $$2 = $$0.a();
+      if (!$$2.a(axb.m) && !$$2.a(axb.s)) {
+         xh $$4 = a($$1);
+         btz $$5 = $$2.d();
+         xh $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (xh)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : xh.a("death.fell.killer", this.e.S_()));
+         }
+      } else {
+         bsu $$3 = Objects.requireNonNullElse($$0.c(), bsu.a);
+         return xh.a($$3.a(), this.e.S_());
+      }
+   }
+
+   @Nullable
+   private static xh a(@Nullable btz $$0) {
+      return $$0 == null ? null : $$0.S_();
+   }
+
+   public xh a() {
+      if (this.d.isEmpty()) {
+         return xh.a("death.attack.generic", this.e.S_());
+      } else {
+         bsk $$0 = this.d.get(this.d.size() - 1);
+         bsp $$1 = $$0.a();
+         bsk $$2 = this.d();
+         bst $$3 = $$1.k().e();
+         if ($$3 == bst.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == bst.c) {
+            String $$4 = "death.attack." + $$1.f();
+            xh $$5 = xk.a((xh)xh.c($$4 + ".link")).c(c);
+            return xh.a($$4 + ".message", this.e.S_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
+      }
+   }
+
+   @Nullable
+   private bsk d() {
+      bsk $$0 = null;
+      bsk $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         bsk $$5 = this.d.get($$4);
+         bsk $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         bsp $$7 = $$5.a();
+         boolean $$8 = $$7.a(axb.s);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(axb.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
+   }
+
+   public int b() {
+      return this.i ? this.e.ag - this.g : this.h - this.g;
+   }
+
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bM() || this.e.ag - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.ag;
+         if ($$1) {
+            this.e.h_();
+         }
+
+         this.d.clear();
+      }
    }
 }

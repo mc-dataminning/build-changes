@@ -1,3 +1,4 @@
-public class gvx extends guo {
-   public boolean a;
+public class gvx extends gus {
+   public boolean b;
+   public boolean c;
 }

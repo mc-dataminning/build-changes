@@ -1,32 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class efx implements efy {
-   public static final Codec<efx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jf.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, efx::new)
-   );
-   private final Optional<jf> b;
-   private final boolean c;
-
-   private efx(Optional<jf> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class efx extends efu {
+   public efx(Codec<ehi> $$0) {
+      super($$0);
    }
 
-   public static efx a(jf $$0, boolean $$1) {
-      return new efx(Optional.of($$0), $$1);
+   @Override
+   protected Set<jg> a(dfs $$0, ehi $$1, azr $$2, jg $$3, Predicate<dvd> $$4, int $$5, int $$6) {
+      Set<jg> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<jg> $$8 = new HashSet<>();
+      jg.a $$9 = new jg.a();
+
+      for (jg $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (jg $$11 : $$8) {
+         $$0.a($$11, dia.G.m(), 2);
+      }
+
+      return $$8;
    }
 
-   public static efx a() {
-      return new efx(Optional.empty(), false);
+   private static boolean a(dfs $$0, Set<jg> $$1, jg $$2, jg.a $$3) {
+      return a($$0, $$2, $$3, jl.c) || a($$0, $$2, $$3, jl.f) || a($$0, $$2, $$3, jl.d) || a($$0, $$2, $$3, jl.e) || a($$0, $$2, $$3, jl.a);
    }
 
-   public Optional<jf> b() {
-      return this.b;
+   private static boolean a(dfs $$0, jg $$1, jg.a $$2, jl $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).c($$0, $$2, $$3.g());
    }
 
-   public boolean c() {
-      return this.c;
+   @Override
+   protected boolean a(dfs $$0, ehi $$1, dxa $$2, azr $$3, jg $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
+         dvd $$5 = $$0.a_($$4);
+         if ($$5.b(dvt.C) && !$$5.c(dvt.C)) {
+            $$0.a($$4, $$5.b(dvt.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,50 +1,12 @@
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class dfb extends dec {
-   private final boolean a;
-   private final boolean b;
-   private final Optional<Float> c;
-   private final Optional<js<dhm>> d;
+public interface dfb {
+   boolean a(jg var1, Predicate<dvd> var2);
 
-   public dfb(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<js<dhm>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   boolean b(jg var1, Predicate<ere> var2);
 
-   @Override
-   public Optional<Float> a(deb $$0, ddo $$1, jf $$2, dus $$3, eqt $$4) {
-      if (this.d.isPresent()) {
-         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
+   <T extends dsg> Optional<T> a(jg var1, dsi<T> var2);
 
-   @Override
-   public boolean a(deb $$0, ddo $$1, jf $$2, dus $$3, float $$4) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(deb $$0, btr $$1) {
-      return this.b;
-   }
-
-   @Override
-   public float a(btr $$0) {
-      boolean var10000;
-      label17: {
-         if ($$0 instanceof cnx $$1 && $$1.ge().b) {
-            var10000 = true;
-            break label17;
-         }
-
-         var10000 = false;
-      }
-
-      boolean $$2 = var10000;
-      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
-   }
+   jg a(eaz.a var1, jg var2);
 }

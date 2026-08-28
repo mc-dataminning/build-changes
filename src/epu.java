@@ -1,194 +1,292 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public final class epu {
-   private static final float d = 1.0E-7F;
-   private final byte[] e;
-   public final double a;
-   public final double b;
-   public final double c;
+public class epu {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "structure";
+   private static final String c = "structures";
+   private static final String d = ".nbt";
+   private static final String e = ".snbt";
+   private final Map<alh, Optional<ept>> f = Maps.newConcurrentMap();
+   private final DataFixer g;
+   private ava h;
+   private final Path i;
+   private final List<epu.b> j;
+   private final jq<dhy> k;
+   private static final ala l = new ala("structure", ".nbt");
 
-   public epu(azn $$0) {
-      this.a = $$0.j() * 256.0;
-      this.b = $$0.j() * 256.0;
-      this.c = $$0.j() * 256.0;
-      this.e = new byte[256];
-
-      for (int $$1 = 0; $$1 < 256; $$1++) {
-         this.e[$$1] = (byte)$$1;
+   public epu(ava $$0, etk.c $$1, DataFixer $$2, jq<dhy> $$3) {
+      this.h = $$0;
+      this.g = $$2;
+      this.i = $$1.a(eti.i).normalize();
+      this.k = $$3;
+      Builder<epu.b> $$4 = ImmutableList.builder();
+      $$4.add(new epu.b(this::h, this::d));
+      if (ab.aW) {
+         $$4.add(new epu.b(this::g, this::c));
       }
 
-      for (int $$2 = 0; $$2 < 256; $$2++) {
-         int $$3 = $$0.a(256 - $$2);
-         byte $$4 = this.e[$$2];
-         this.e[$$2] = this.e[$$2 + $$3];
-         this.e[$$2 + $$3] = $$4;
+      $$4.add(new epu.b(this::f, this::b));
+      this.j = $$4.build();
+   }
+
+   public ept a(alh $$0) {
+      Optional<ept> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         return $$1.get();
+      } else {
+         ept $$2 = new ept();
+         this.f.put($$0, Optional.of($$2));
+         return $$2;
       }
    }
 
-   public double a(double $$0, double $$1, double $$2) {
-      return this.a($$0, $$1, $$2, 0.0, 0.0);
+   public Optional<ept> b(alh $$0) {
+      return this.f.computeIfAbsent($$0, this::e);
    }
 
-   @Deprecated
-   public double a(double $$0, double $$1, double $$2, double $$3, double $$4) {
-      double $$5 = $$0 + this.a;
-      double $$6 = $$1 + this.b;
-      double $$7 = $$2 + this.c;
-      int $$8 = azf.a($$5);
-      int $$9 = azf.a($$6);
-      int $$10 = azf.a($$7);
-      double $$11 = $$5 - (double)$$8;
-      double $$12 = $$6 - (double)$$9;
-      double $$13 = $$7 - (double)$$10;
-      double $$16;
-      if ($$3 != 0.0) {
-         double $$14;
-         if ($$4 >= 0.0 && $$4 < $$12) {
-            $$14 = $$4;
-         } else {
-            $$14 = $$12;
+   public Stream<alh> a() {
+      return this.j.stream().flatMap($$0 -> $$0.b().get()).distinct();
+   }
+
+   private Optional<ept> e(alh $$0) {
+      for (epu.b $$1 : this.j) {
+         try {
+            Optional<ept> $$2 = $$1.a().apply($$0);
+            if ($$2.isPresent()) {
+               return $$2;
+            }
+         } catch (Exception var5) {
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   public void a(ava $$0) {
+      this.h = $$0;
+      this.f.clear();
+   }
+
+   private Optional<ept> f(alh $$0) {
+      alh $$1 = l.a($$0);
+      return this.a(() -> this.h.open($$1), $$1x -> b.error("Couldn't load structure {}", $$0, $$1x));
+   }
+
+   private Stream<alh> b() {
+      return l.a(this.h).keySet().stream().map(l::b);
+   }
+
+   private Optional<ept> g(alh $$0) {
+      return this.a($$0, Paths.get(tu.c));
+   }
+
+   private Stream<alh> c() {
+      Path $$0 = Paths.get(tu.c);
+      if (!Files.isDirectory($$0)) {
+         return Stream.empty();
+      } else {
+         List<alh> $$1 = new ArrayList<>();
+         this.a($$0, "minecraft", ".snbt", $$1::add);
+         return $$1.stream();
+      }
+   }
+
+   private Optional<ept> h(alh $$0) {
+      if (!Files.isDirectory(this.i)) {
+         return Optional.empty();
+      } else {
+         Path $$1 = this.a($$0, ".nbt");
+         return this.a(() -> new FileInputStream($$1.toFile()), $$1x -> b.error("Couldn't load structure from {}", $$1, $$1x));
+      }
+   }
+
+   private Stream<alh> d() {
+      if (!Files.isDirectory(this.i)) {
+         return Stream.empty();
+      } else {
+         try {
+            List<alh> $$0 = new ArrayList<>();
+
+            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream(this.i, $$0x -> Files.isDirectory($$0x))) {
+               for (Path $$2 : $$1) {
+                  String $$3 = $$2.getFileName().toString();
+                  Path $$4 = $$2.resolve("structures");
+                  this.a($$4, $$3, ".nbt", $$0::add);
+               }
+            }
+
+            return $$0.stream();
+         } catch (IOException var9) {
+            return Stream.empty();
+         }
+      }
+   }
+
+   private void a(Path $$0, String $$1, String $$2, Consumer<alh> $$3) {
+      int $$4 = $$2.length();
+      Function<String, String> $$5 = $$1x -> $$1x.substring(0, $$1x.length() - $$4);
+
+      try (Stream<Path> $$6 = Files.find($$0, Integer.MAX_VALUE, ($$1x, $$2x) -> $$2x.isRegularFile() && $$1x.toString().endsWith($$2))) {
+         $$6.forEach($$4x -> {
+            try {
+               $$3.accept(alh.a($$1, $$5.apply(this.a($$0, $$4x))));
+            } catch (aa var7x) {
+               b.error("Invalid location while listing folder {} contents", $$0, var7x);
+            }
+         });
+      } catch (IOException var12) {
+         b.error("Failed to list folder {} contents", $$0, var12);
+      }
+   }
+
+   private String a(Path $$0, Path $$1) {
+      return $$0.relativize($$1).toString().replace(File.separator, "/");
+   }
+
+   private Optional<ept> a(alh $$0, Path $$1) {
+      if (!Files.isDirectory($$1)) {
+         return Optional.empty();
+      } else {
+         Path $$2 = v.b($$1, $$0.a(), ".snbt");
+
+         try {
+            Optional var6;
+            try (BufferedReader $$3 = Files.newBufferedReader($$2)) {
+               String $$4 = IOUtils.toString($$3);
+               var6 = Optional.of(this.a(uy.a($$4)));
+            }
+
+            return var6;
+         } catch (NoSuchFileException var9) {
+            return Optional.empty();
+         } catch (CommandSyntaxException | IOException var10) {
+            b.error("Couldn't load structure from {}", $$2, var10);
+            return Optional.empty();
+         }
+      }
+   }
+
+   private Optional<ept> a(epu.a $$0, Consumer<Throwable> $$1) {
+      try {
+         Optional var5;
+         try (
+            InputStream $$2 = $$0.open();
+            InputStream $$3 = new ayt($$2);
+         ) {
+            var5 = Optional.of(this.a($$3));
          }
 
-         $$16 = (double)azf.a($$14 / $$3 + 1.0E-7F) * $$3;
-      } else {
-         $$16 = 0.0;
+         return var5;
+      } catch (FileNotFoundException var11) {
+         return Optional.empty();
+      } catch (Throwable var12) {
+         $$1.accept(var12);
+         return Optional.empty();
       }
-
-      return this.a($$8, $$9, $$10, $$11, $$12 - $$16, $$13, $$12);
    }
 
-   public double a(double $$0, double $$1, double $$2, double[] $$3) {
-      double $$4 = $$0 + this.a;
-      double $$5 = $$1 + this.b;
-      double $$6 = $$2 + this.c;
-      int $$7 = azf.a($$4);
-      int $$8 = azf.a($$5);
-      int $$9 = azf.a($$6);
-      double $$10 = $$4 - (double)$$7;
-      double $$11 = $$5 - (double)$$8;
-      double $$12 = $$6 - (double)$$9;
-      return this.a($$7, $$8, $$9, $$10, $$11, $$12, $$3);
+   private ept a(InputStream $$0) throws IOException {
+      uj $$1 = uw.a($$0, us.a());
+      return this.a($$1);
    }
 
-   private static double a(int $$0, double $$1, double $$2, double $$3) {
-      return epz.a(epz.a[$$0 & 15], $$1, $$2, $$3);
+   public ept a(uj $$0) {
+      ept $$1 = new ept();
+      int $$2 = uy.b($$0, 500);
+      $$1.a(this.k, bas.f.a(this.g, $$0, $$2));
+      return $$1;
    }
 
-   private int a(int $$0) {
-      return this.e[$$0 & 0xFF] & 0xFF;
+   public boolean c(alh $$0) {
+      Optional<ept> $$1 = this.f.get($$0);
+      if ($$1.isEmpty()) {
+         return false;
+      } else {
+         ept $$2 = $$1.get();
+         Path $$3 = this.a($$0, ".nbt");
+         Path $$4 = $$3.getParent();
+         if ($$4 == null) {
+            return false;
+         } else {
+            try {
+               Files.createDirectories(Files.exists($$4) ? $$4.toRealPath() : $$4);
+            } catch (IOException var13) {
+               b.error("Failed to create parent directory: {}", $$4);
+               return false;
+            }
+
+            uj $$6 = $$2.a(new uj());
+
+            try {
+               try (OutputStream $$7 = new FileOutputStream($$3.toFile())) {
+                  uw.a($$6, $$7);
+               }
+
+               return true;
+            } catch (Throwable var12) {
+               return false;
+            }
+         }
+      }
    }
 
-   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double $$6) {
-      int $$7 = this.a($$0);
-      int $$8 = this.a($$0 + 1);
-      int $$9 = this.a($$7 + $$1);
-      int $$10 = this.a($$7 + $$1 + 1);
-      int $$11 = this.a($$8 + $$1);
-      int $$12 = this.a($$8 + $$1 + 1);
-      double $$13 = a(this.a($$9 + $$2), $$3, $$4, $$5);
-      double $$14 = a(this.a($$11 + $$2), $$3 - 1.0, $$4, $$5);
-      double $$15 = a(this.a($$10 + $$2), $$3, $$4 - 1.0, $$5);
-      double $$16 = a(this.a($$12 + $$2), $$3 - 1.0, $$4 - 1.0, $$5);
-      double $$17 = a(this.a($$9 + $$2 + 1), $$3, $$4, $$5 - 1.0);
-      double $$18 = a(this.a($$11 + $$2 + 1), $$3 - 1.0, $$4, $$5 - 1.0);
-      double $$19 = a(this.a($$10 + $$2 + 1), $$3, $$4 - 1.0, $$5 - 1.0);
-      double $$20 = a(this.a($$12 + $$2 + 1), $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
-      double $$21 = azf.h($$3);
-      double $$22 = azf.h($$6);
-      double $$23 = azf.h($$5);
-      return azf.a($$21, $$22, $$23, $$13, $$14, $$15, $$16, $$17, $$18, $$19, $$20);
+   public Path a(alh $$0, String $$1) {
+      if ($$0.a().contains("//")) {
+         throw new aa("Invalid resource path: " + $$0);
+      } else {
+         try {
+            Path $$2 = this.i.resolve($$0.b());
+            Path $$3 = $$2.resolve("structures");
+            Path $$4 = v.b($$3, $$0.a(), $$1);
+            if ($$4.startsWith(this.i) && v.a($$4) && v.b($$4)) {
+               return $$4;
+            } else {
+               throw new aa("Invalid resource path: " + $$4);
+            }
+         } catch (InvalidPathException var6) {
+            throw new aa("Invalid resource path: " + $$0, var6);
+         }
+      }
    }
 
-   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double[] $$6) {
-      int $$7 = this.a($$0);
-      int $$8 = this.a($$0 + 1);
-      int $$9 = this.a($$7 + $$1);
-      int $$10 = this.a($$7 + $$1 + 1);
-      int $$11 = this.a($$8 + $$1);
-      int $$12 = this.a($$8 + $$1 + 1);
-      int $$13 = this.a($$9 + $$2);
-      int $$14 = this.a($$11 + $$2);
-      int $$15 = this.a($$10 + $$2);
-      int $$16 = this.a($$12 + $$2);
-      int $$17 = this.a($$9 + $$2 + 1);
-      int $$18 = this.a($$11 + $$2 + 1);
-      int $$19 = this.a($$10 + $$2 + 1);
-      int $$20 = this.a($$12 + $$2 + 1);
-      int[] $$21 = epz.a[$$13 & 15];
-      int[] $$22 = epz.a[$$14 & 15];
-      int[] $$23 = epz.a[$$15 & 15];
-      int[] $$24 = epz.a[$$16 & 15];
-      int[] $$25 = epz.a[$$17 & 15];
-      int[] $$26 = epz.a[$$18 & 15];
-      int[] $$27 = epz.a[$$19 & 15];
-      int[] $$28 = epz.a[$$20 & 15];
-      double $$29 = epz.a($$21, $$3, $$4, $$5);
-      double $$30 = epz.a($$22, $$3 - 1.0, $$4, $$5);
-      double $$31 = epz.a($$23, $$3, $$4 - 1.0, $$5);
-      double $$32 = epz.a($$24, $$3 - 1.0, $$4 - 1.0, $$5);
-      double $$33 = epz.a($$25, $$3, $$4, $$5 - 1.0);
-      double $$34 = epz.a($$26, $$3 - 1.0, $$4, $$5 - 1.0);
-      double $$35 = epz.a($$27, $$3, $$4 - 1.0, $$5 - 1.0);
-      double $$36 = epz.a($$28, $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
-      double $$37 = azf.h($$3);
-      double $$38 = azf.h($$4);
-      double $$39 = azf.h($$5);
-      double $$40 = azf.a(
-         $$37,
-         $$38,
-         $$39,
-         (double)$$21[0],
-         (double)$$22[0],
-         (double)$$23[0],
-         (double)$$24[0],
-         (double)$$25[0],
-         (double)$$26[0],
-         (double)$$27[0],
-         (double)$$28[0]
-      );
-      double $$41 = azf.a(
-         $$37,
-         $$38,
-         $$39,
-         (double)$$21[1],
-         (double)$$22[1],
-         (double)$$23[1],
-         (double)$$24[1],
-         (double)$$25[1],
-         (double)$$26[1],
-         (double)$$27[1],
-         (double)$$28[1]
-      );
-      double $$42 = azf.a(
-         $$37,
-         $$38,
-         $$39,
-         (double)$$21[2],
-         (double)$$22[2],
-         (double)$$23[2],
-         (double)$$24[2],
-         (double)$$25[2],
-         (double)$$26[2],
-         (double)$$27[2],
-         (double)$$28[2]
-      );
-      double $$43 = azf.a($$38, $$39, $$30 - $$29, $$32 - $$31, $$34 - $$33, $$36 - $$35);
-      double $$44 = azf.a($$39, $$37, $$31 - $$29, $$35 - $$33, $$32 - $$30, $$36 - $$34);
-      double $$45 = azf.a($$37, $$38, $$33 - $$29, $$34 - $$30, $$35 - $$31, $$36 - $$32);
-      double $$46 = azf.i($$3);
-      double $$47 = azf.i($$4);
-      double $$48 = azf.i($$5);
-      double $$49 = $$40 + $$46 * $$43;
-      double $$50 = $$41 + $$47 * $$44;
-      double $$51 = $$42 + $$48 * $$45;
-      $$6[0] += $$49;
-      $$6[1] += $$50;
-      $$6[2] += $$51;
-      return azf.a($$37, $$38, $$39, $$29, $$30, $$31, $$32, $$33, $$34, $$35, $$36);
+   public void d(alh $$0) {
+      this.f.remove($$0);
    }
 
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      epv.a($$0, this.a, this.b, this.c, this.e);
+   @FunctionalInterface
+   interface a {
+      InputStream open() throws IOException;
+   }
+
+   static record b(Function<alh, Optional<ept>> a, Supplier<Stream<alh>> b) {
    }
 }

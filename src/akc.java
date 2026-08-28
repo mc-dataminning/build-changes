@@ -1,7 +1,7 @@
-public interface akc extends ags, ajw {
+public interface akc extends ajw, vy {
    @Override
-   default vz b() {
-      return vz.c;
+   default wc b() {
+      return wc.c;
    }
 
    void a(akd var1);

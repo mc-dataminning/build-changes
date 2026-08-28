@@ -1,22 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.function.Function;
 
 public class bzk {
-   private static final int a = 36;
+   public static <E extends buv> bxz<E> a(List<Pair<? extends cae<? super E>, Integer>> $$0) {
+      return a($$0, bxc.a.b, bxc.b.a);
+   }
 
-   public static bwg<bun> a() {
-      return bzs.a(
-         (Function<bzs.b<bun>, ? extends App<bzs.c<bun>, bzv<bun>>>)($$0 -> $$0.group($$0.a(cdq.x), $$0.a(cdq.y), $$0.a(cdq.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bun>a($$2).filter($$1xx -> $$1xx.g((btr)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.dY().a($$4.ab(), $$4.aa());
-                     }
+   public static <E extends buv> bxz<E> a(List<Pair<? extends cae<? super E>, Integer>> $$0, bxc.a $$1, bxc.b $$2) {
+      byx<cae<? super E>> $$3 = new byx<>();
+      $$0.forEach($$1x -> $$3.a((cae<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return cab.a((Function<cab.b<E>, ? extends App<cab.c<E>, cae<E>>>)($$3x -> $$3x.a((cae<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == bxc.a.b) {
+               $$3.a();
+            }
 
-                     return true;
-                  }))
-      );
+            for (cae<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bxc.b.a) {
+                  break;
+               }
+            }
+
+            return true;
+         }))));
    }
 }

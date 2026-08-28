@@ -1,25 +1,38 @@
-public class gpm extends gmj<cgz, gvi, fze> {
-   private static final ale a = ale.b("textures/entity/sheep/sheep.png");
+public class gpm extends gpf<chc, gvj, fyx> {
+   private static final alh a = alh.b("textures/entity/parrot/parrot_red_blue.png");
+   private static final alh b = alh.b("textures/entity/parrot/parrot_blue.png");
+   private static final alh k = alh.b("textures/entity/parrot/parrot_green.png");
+   private static final alh l = alh.b("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final alh m = alh.b("textures/entity/parrot/parrot_grey.png");
 
-   public gpm(gno.a $$0) {
-      super($$0, new fze($$0.a(gap.cd)), new fze($$0.a(gap.ce)), 0.7F);
-      this.a(new gsd(this, $$0.f()));
+   public gpm(gnz.a $$0) {
+      super($$0, new fyx($$0.a(gba.br)), 0.3F);
    }
 
-   public ale a(gvi $$0) {
-      return a;
+   public alh a(gvj $$0) {
+      return a($$0.a);
    }
 
-   public gvi c() {
-      return new gvi();
+   public gvj c() {
+      return new gvj();
    }
 
-   public void a(cgz $$0, gvi $$1, float $$2) {
+   public void a(chc $$0, gvj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.K($$2);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.y();
-      $$1.d = $$0.t();
-      $$1.e = $$0.ap();
+      $$1.a = $$0.gJ();
+      float $$3 = azj.h($$2, $$0.cf, $$0.cc);
+      float $$4 = azj.h($$2, $$0.ce, $$0.cd);
+      $$1.b = (azj.a($$3) + 1.0F) * $$4;
+      $$1.c = fyx.a($$0);
+   }
+
+   public static alh a(chc.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
+         case e -> m;
+      };
    }
 }

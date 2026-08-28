@@ -1,12 +1,33 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public interface boe extends bog {
-   bof d();
+public class boe {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private boi c = boh.a;
 
-   @Nullable
-   bnz.a c(String var1);
+   public boe(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   Set<Pair<String, bpm>> e();
+   public boolean a() {
+      return this.c != boh.a;
+   }
+
+   public void b() {
+      this.c = boh.a;
+   }
+
+   public void c() {
+      this.c = new bod(this.a, this.b, true);
+   }
+
+   public bok d() {
+      return this.c;
+   }
+
+   public boj e() {
+      return this.c.d();
+   }
 }

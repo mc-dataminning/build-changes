@@ -1,25 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.function.Function;
 
-record emr(ald<emq> c, ald<emq> d) implements ems {
-   static MapCodec<emr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ald.a(lw.aW).fieldOf("alias").forGetter(emr::c), ald.a(lw.aW).fieldOf("target").forGetter(emr::d)).apply($$0, emr::new)
+public record emr(int c, int d) {
+   private static final Codec<emr> e = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ays.l.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), ays.l.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
+            .apply($$0, emr::new)
    );
+   public static final Codec<emr> a = Codec.either(ays.l, e)
+      .xmap($$0 -> (emr)$$0.map(emr::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
+   public static final emr b = new emr(0);
 
-   @Override
-   public void a(azn $$0, BiConsumer<ald<emq>, ald<emq>> $$1) {
-      $$1.accept(this.c, this.d);
+   public emr(int $$0) {
+      this($$0, $$0);
    }
 
-   @Override
-   public Stream<ald<emq>> a() {
-      return Stream.of(this.d);
+   public boolean a() {
+      return this.d == this.c;
    }
 
-   @Override
-   public MapCodec<emr> b() {
-      return a;
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

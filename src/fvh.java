@@ -1,81 +1,78 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public class fvh extends fqh {
-   private static final xe a = xe.c("selectWorld.experiments");
-   private static final xe b = xe.c("selectWorld.experiments.info").a(n.m);
-   private static final int c = 310;
-   private final foc d = new foc(this);
-   private final fqh s;
-   private final aug u;
-   private final Consumer<aug> v;
-   private final Object2BooleanMap<aud> w = new Object2BooleanLinkedOpenHashMap();
+public class fvh {
+   private final fja a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   public fvh(fqh $$0, aug $$1, Consumer<aug> $$2) {
-      super(a);
-      this.s = $$0;
-      this.u = $$1;
-      this.v = $$2;
+   public fvh(fja $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
+   }
 
-      for (aud $$3 : $$1.c()) {
-         if ($$3.l() == auh.d) {
-            this.w.put($$3, $$1.f().contains($$3));
-         }
+   public void a(UUID $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(UUID $$0) {
+      this.b.remove($$0);
+   }
+
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
+   }
+
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ad.h());
+   }
+
+   public void b() {
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
       }
    }
 
-   @Override
-   protected void aS_() {
-      this.d.a(a, this.p);
-      fog $$0 = this.d.c(fog.d());
-      $$0.a(new fli(b, this.p).d(310), $$0x -> $$0x.e(15));
-      fvl.a $$1 = fvl.a(310).a(2, true).b(4);
-      this.w.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.w.getBoolean($$1x), $$1xx -> this.w.put($$1x, $$1xx)).a($$1x.c()));
-      $$1.a($$0::a);
-      fog $$2 = this.d.b(fog.e().a(8));
-      $$2.a(fko.a(xd.d, $$0x -> this.m()).a());
-      $$2.a(fko.a(xd.e, $$0x -> this.d()).a());
-      this.d.a($$1x -> {
-         fkm var10000 = this.c($$1x);
-      });
-      this.c();
+   public Set<UUID> c() {
+      return this.b;
    }
 
-   private static xe a(aud $$0) {
-      String $$1 = "dataPack." + $$0.g() + ".name";
-      return (xe)(gyn.a($$1) ? xe.c($$1) : $$0.b());
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ad.e);
    }
 
-   @Override
-   protected void c() {
-      this.d.a();
+   public void a(gci $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.z instanceof fvj $$2) {
+         $$2.a($$0);
+      }
    }
 
-   @Override
-   public xe i() {
-      return xd.a(super.i(), b);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.s);
-   }
-
-   private void m() {
-      List<aud> $$0 = new ArrayList<>(this.u.f());
-      List<aud> $$1 = new ArrayList<>();
-      this.w.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.u.b($$0.stream().map(aud::g).toList());
-      this.v.accept(this.u);
+   public void f(UUID $$0) {
+      if (this.a.z instanceof fvj $$1) {
+         $$1.a($$0);
+      }
    }
 }

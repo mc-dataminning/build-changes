@@ -1,104 +1,52 @@
 import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 
-public class fig {
-   public static final xe a = xd.a;
+public class fig extends fhy {
    private static final Logger b = LogUtils.getLogger();
-   private final fip c;
-   private final Narrator d = Narrator.getNarrator();
+   private static final xh c = xh.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   public fig(fip $$0) {
-      this.c = $$0;
+   public fig(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public void a(xe $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
+   @Override
+   public void run() {
+      fej $$0 = fej.a();
 
-   public void b(xe $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.d.say($$1, false);
-      }
-   }
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
 
-   public void c(xe $$0) {
-      this.a($$0.getString());
-   }
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (ffv var4) {
+            if (this.d()) {
+               return;
+            }
 
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
-         this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.d.say($$0, true);
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
          }
       }
    }
 
-   private fir d() {
-      return this.c.n.au().c();
-   }
-
-   private void b(String $$0) {
-      if (ab.aW) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
-      }
-   }
-
-   public void a(fir $$0) {
-      this.b();
-      this.d.say(xe.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      fmz $$1 = fip.Q().aA();
-      if (this.d.active()) {
-         if ($$0 == fir.a) {
-            fmx.b($$1, fmx.a.a, xe.c("narrator.toast.disabled"), null);
-         } else {
-            fmx.b($$1, fmx.a.a, xe.c("narrator.toast.enabled"), $$0.b());
-         }
-      } else {
-         fmx.b($$1, fmx.a.a, xe.c("narrator.toast.disabled"), xe.c("options.narrator.notavailable"));
-      }
-   }
-
-   public boolean a() {
-      return this.d.active();
-   }
-
-   public void b() {
-      if (this.d() != fir.a && this.d.active()) {
-         this.d.clear();
-      }
-   }
-
-   public void c() {
-      this.d.destroy();
-   }
-
-   public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new fig.a("Narrator library is not active");
-      }
-   }
-
-   public static class a extends fwd {
-      public a(String $$0) {
-         super($$0);
-      }
+   @Override
+   public xh a() {
+      return c;
    }
 }

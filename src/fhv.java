@@ -1,52 +1,69 @@
 import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fhv extends fhn {
+public class fhv extends fhy {
    private static final Logger b = LogUtils.getLogger();
-   private static final xe c = xe.c("mco.minigame.world.slot.screen.title");
+   private static final xh c = xh.c("mco.snapshot.creating");
    private final long d;
-   private final int e;
-   private final Runnable f;
+   private final fhr e;
+   private final String f;
+   private final String g;
+   private final fee h;
+   @Nullable
+   private fia i;
+   @Nullable
+   private fib j;
 
-   public fhv(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fhv(fee $$0, long $$1, fhr $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
    }
 
    @Override
    public void run() {
-      fdy $$0 = fdy.a();
+      fej $$0 = fej.a();
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (ffk var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
+      try {
+         ffa $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new fia($$1.a, this.f, this.g);
+         this.j = new fib(this.e, $$1.a, fgw.a, () -> fja.Q().execute(() -> fee.a($$1, this.h, true)));
+         if (this.d()) {
+            return;
          }
+
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (ffu var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
       }
    }
 
    @Override
-   public xe a() {
+   public xh a() {
       return c;
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
+      }
+
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

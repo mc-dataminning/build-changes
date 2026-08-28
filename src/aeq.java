@@ -1,37 +1,23 @@
-public class aeq implements zl<aca> {
-   public static final zc<wb, aeq> a = zl.a(aeq::a, aeq::new);
-   private final int b;
-   private final byte c;
+import javax.annotation.Nullable;
 
-   public aeq(btr $$0, byte $$1) {
-      this.b = $$0.ap();
-      this.c = $$1;
-   }
-
-   private aeq(wb $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
-   }
-
-   private void a(wb $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
-   }
+public record aeq(int b, jp<btc> c) implements zo<acd> {
+   public static final zf<ws, aeq> a = zf.a(zd.h, aeq::b, btc.b, aeq::e, aeq::new);
 
    @Override
-   public zn<aeq> a() {
-      return agp.an;
+   public zq<aeq> a() {
+      return ags.al;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public btr a(dej $$0) {
+   @Nullable
+   public btz a(dev $$0) {
       return $$0.a(this.b);
    }
 
-   public float b() {
-      return azf.a(this.c);
+   public jp<btc> e() {
+      return this.c;
    }
 }

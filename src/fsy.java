@@ -1,86 +1,44 @@
+import com.mojang.authlib.yggdrasil.ProfileResult;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class fsy extends fqh {
-   private static final int a = 310;
-   private static final int b = 25;
-   private static final xe c = xe.c("menu.server_links.title");
-   private final fqh d;
-   @Nullable
-   private fsy.a s;
-   final foc u = new foc(this);
-   final alw v;
+public class fsy implements ftb {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
 
-   public fsy(fqh $$0, alw $$1) {
-      super(c);
-      this.d = $$0;
-      this.v = $$1;
+   public fsy(fsy.a $$0) {
+      this.c = $$0.a();
    }
 
    @Override
-   protected void aS_() {
-      this.u.a(this.l, this.p);
-      this.s = this.u.c(new fsy.a(this.m, this.n, this));
-      this.u.b(fko.a(xd.k, $$0 -> this.d()).a(200).a());
-      this.u.a($$1 -> {
-         fkm var10000 = this.c($$1);
-      });
-      this.c();
+   public int a(fkk $$0) {
+      return this.c.size() * 12 + 2;
    }
 
    @Override
-   protected void c() {
-      this.u.a();
-      if (this.s != null) {
-         this.s.a(this.n, this.u);
+   public int b(fkk $$0) {
+      int $$1 = 0;
+
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
       }
+
+      return $$1 + 10 + 6;
    }
 
    @Override
-   public void d() {
-      this.m.a(this.d);
-   }
-
-   static class a extends fku<fsy.b> {
-      public a(fip $$0, int $$1, fsy $$2) {
-         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
-         $$2.v.c().forEach($$1x -> this.b(new fsy.b($$2, $$1x)));
-      }
-
-      @Override
-      public int b() {
-         return 310;
-      }
-
-      @Override
-      public void a(int $$0, foc $$1) {
-         super.a($$0, $$1);
-         int $$2 = $$0 / 2 - 155;
-         this.aJ_().forEach($$1x -> $$1x.a.m($$2));
+   public void a(fkk $$0, int $$1, int $$2, int $$3, int $$4, fkm $$5) {
+      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
+         ProfileResult $$7 = this.c.get($$6);
+         int $$8 = $$2 + 2 + $$6 * 12;
+         fly.a($$5, fja.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
+         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
       }
    }
 
-   static class b extends fku.a<fsy.b> {
-      final fkm a;
-
-      b(fqh $$0, alw.a $$1) {
-         this.a = fko.a($$1.a(), fpe.b($$0, $$1.c(), false)).a(310).a();
-      }
-
-      @Override
-      public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a.n($$2);
-         this.a.a($$0, $$6, $$7, $$9);
-      }
-
-      @Override
-      public List<? extends fml> aJ_() {
-         return List.of(this.a);
-      }
-
-      @Override
-      public List<? extends foj> b() {
-         return List.of(this.a);
-      }
+   public static record a(List<ProfileResult> a) implements ctq {
    }
 }

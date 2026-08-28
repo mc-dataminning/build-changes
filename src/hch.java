@@ -1,7 +1,8 @@
-public interface hch<T> {
-   int e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   T b(azn var1);
-
-   void a(hcc var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hch {
 }

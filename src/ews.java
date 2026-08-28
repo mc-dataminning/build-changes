@@ -1,36 +1,18 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
+public class ews {
+   public static final ewp<btz> a = a("this_entity");
+   public static final ewp<coh> b = a("last_damage_player");
+   public static final ewp<bsp> c = a("damage_source");
+   public static final ewp<btz> d = a("attacking_entity");
+   public static final ewp<btz> e = a("direct_attacking_entity");
+   public static final ewp<ezh> f = a("origin");
+   public static final ewp<dvd> g = a("block_state");
+   public static final ewp<dsg> h = a("block_entity");
+   public static final ewp<cvx> i = a("tool");
+   public static final ewp<Float> j = a("explosion_radius");
+   public static final ewp<Integer> k = a("enchantment_level");
+   public static final ewp<Boolean> l = a("enchantment_active");
 
-public class ews implements eww {
-   private static final ews b = new ews();
-   public static final MapCodec<ews> a = MapCodec.unit(b);
-
-   private ews() {
-   }
-
-   @Override
-   public ewx b() {
-      return ewy.l;
-   }
-
-   @Override
-   public Set<ewe<?>> a() {
-      return ImmutableSet.of(ewh.j);
-   }
-
-   public boolean a(etl $$0) {
-      Float $$1 = $$0.c(ewh.j);
-      if ($$1 != null) {
-         azn $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
-   }
-
-   public static eww.a c() {
-      return () -> b;
+   private static <T> ewp<T> a(String $$0) {
+      return new ewp<>(alh.b($$0));
    }
 }

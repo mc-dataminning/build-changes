@@ -1,50 +1,100 @@
-public class fkz extends fli {
-   private static final int a = 4;
-   private final boolean b;
-   private final int c;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public fkz(int $$0, xe $$1, fjz $$2) {
-      this($$0, $$1, $$2, 4);
+public class fkz extends fkq {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 200;
+   public static final int o = 20;
+   public static final int p = 8;
+   protected static final fkz.b q = $$0 -> $$0.get();
+   protected final fkz.c r;
+   protected final fkz.b s;
+
+   public static fkz.a a(xh $$0, fkz.c $$1) {
+      return new fkz.a($$0, $$1);
    }
 
-   public fkz(int $$0, xe $$1, fjz $$2, int $$3) {
-      this($$0, $$1, $$2, true, $$3);
-   }
-
-   public fkz(int $$0, xe $$1, fjz $$2, boolean $$3, int $$4) {
-      super($$1, $$2);
-      this.d($$0);
-      this.b(true);
-      this.j = true;
-      this.b = $$3;
-      this.c = $$4;
-   }
-
-   public void b(int $$0) {
-      this.d($$0 - this.c * 4);
+   protected fkz(int $$0, int $$1, int $$2, int $$3, xh $$4, fkz.c $$5, fkz.b $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.r = $$5;
+      this.s = $$6;
    }
 
    @Override
-   protected void a(fol $$0) {
-      $$0.a(fok.a, this.z());
+   public void b() {
+      this.r.onPress(this);
    }
 
    @Override
-   public void b(fkb $$0, int $$1, int $$2, float $$3) {
-      if (this.aN_() || this.b) {
-         int $$4 = this.D() - this.c;
-         int $$5 = this.E() - this.c;
-         int $$6 = this.y() + this.c * 2;
-         int $$7 = this.w() + this.c * 2;
-         int $$8 = this.b ? (this.aN_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
+   protected xv aP_() {
+      return this.s.createNarrationMessage(() -> super.aP_());
+   }
+
+   @Override
+   public void a(fox $$0) {
+      this.c($$0);
+   }
+
+   public static class a {
+      private final xh a;
+      private final fkz.c b;
+      @Nullable
+      private fmk c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private fkz.b h = fkz.q;
+
+      public a(xh $$0, fkz.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      super.b($$0, $$1, $$2, $$3);
+      public fkz.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
+
+      public fkz.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fkz.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
+
+      public fkz.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public fkz.a a(@Nullable fmk $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fkz.a a(fkz.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public fkz a() {
+         fkz $$0 = new fkz(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
+      }
    }
 
-   @Override
-   public void a(hcf $$0) {
+   public interface b {
+      xv createNarrationMessage(Supplier<xv> var1);
+   }
+
+   public interface c {
+      void onPress(fkz var1);
    }
 }

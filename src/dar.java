@@ -1,75 +1,130 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dar extends dab {
-   public dar(czy $$0) {
-      super($$0);
-   }
-
+public class dar implements czz {
+   final das a;
+   final cvx b;
+   final String c;
+   final czx d;
+   final boolean e;
    @Nullable
-   private Pair<cvs, cvs> a(czz $$0) {
-      cvs $$1 = null;
-      cvs $$2 = null;
+   private dai f;
 
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cvs $$4 = $$0.a($$3);
-         if (!$$4.f()) {
-            if ($$1 == null) {
-               $$1 = $$4;
-            } else {
-               if ($$2 != null) {
-                  return null;
-               }
+   public dar(String $$0, czx $$1, das $$2, cvx $$3, boolean $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
+      this.e = $$4;
+   }
 
-               $$2 = $$4;
-            }
-         }
+   public dar(String $$0, czx $$1, das $$2, cvx $$3) {
+      this($$0, $$1, $$2, $$3, true);
+   }
+
+   @Override
+   public dao<?> ar_() {
+      return dao.a;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
+
+   @Override
+   public czx d() {
+      return this.d;
+   }
+
+   @Override
+   public cvx a(jr.a $$0) {
+      return this.b;
+   }
+
+   @VisibleForTesting
+   public List<Optional<daf>> i() {
+      return this.a.c();
+   }
+
+   @Override
+   public dai a() {
+      if (this.f == null) {
+         this.f = dai.a(this.a.c());
       }
 
-      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
+      return this.f;
    }
 
-   private static boolean a(cvs $$0, cvs $$1) {
-      return $$1.a($$0.h()) && $$0.K() == 1 && $$1.K() == 1 && $$0.b(ks.d) && $$1.b(ks.d) && $$0.b(ks.e) && $$1.b(ks.e);
-   }
-
-   public boolean a(czz $$0, dej $$1) {
-      return this.a($$0) != null;
-   }
-
-   public cvs a(czz $$0, jq.a $$1) {
-      Pair<cvs, cvs> $$2 = this.a($$0);
-      if ($$2 == null) {
-         return cvs.k;
-      } else {
-         cvs $$3 = (cvs)$$2.getFirst();
-         cvs $$4 = (cvs)$$2.getSecond();
-         int $$5 = Math.max($$3.p(), $$4.p());
-         int $$6 = $$3.p() - $$3.o();
-         int $$7 = $$4.p() - $$4.o();
-         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
-         cvs $$9 = new cvs($$3.h());
-         $$9.b(ks.d, $$5);
-         $$9.b(Math.max($$5 - $$8, 0));
-         dbt $$10 = dbp.b($$3);
-         dbt $$11 = dbp.b($$4);
-         dbp.a($$9, $$3x -> $$1.d(lw.aN).c().filter($$0xx -> $$0xx.a(awy.o)).forEach($$3xx -> {
-               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
-               if ($$4x > 0) {
-                  $$3x.b($$3xx, $$4x);
-               }
-            }));
-         return $$9;
-      }
+   @Override
+   public boolean h() {
+      return this.e;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return $$0 >= this.a.a() && $$1 >= this.a.b();
    }
 
-   @Override
-   public dap<?> ar_() {
-      return dap.n;
+   public boolean a(czy $$0, dev $$1) {
+      return this.a.a($$0);
+   }
+
+   public cvx a(czy $$0, jr.a $$1) {
+      return this.a($$1).v();
+   }
+
+   public int j() {
+      return this.a.a();
+   }
+
+   public int k() {
+      return this.a.b();
+   }
+
+   public static class a implements dao<dar> {
+      public static final MapCodec<dar> w = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
+                  czx.e.fieldOf("category").orElse(czx.d).forGetter($$0x -> $$0x.d),
+                  das.b.forGetter($$0x -> $$0x.a),
+                  cvx.d.fieldOf("result").forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, dar::new)
+      );
+      public static final zf<ws, dar> x = zf.a(dar.a::a, dar.a::a);
+
+      @Override
+      public MapCodec<dar> a() {
+         return w;
+      }
+
+      @Override
+      public zf<ws, dar> b() {
+         return x;
+      }
+
+      private static dar a(ws $$0) {
+         String $$1 = $$0.p();
+         czx $$2 = $$0.b(czx.class);
+         das $$3 = das.c.decode($$0);
+         cvx $$4 = cvx.i.decode($$0);
+         boolean $$5 = $$0.readBoolean();
+         return new dar($$1, $$2, $$3, $$4, $$5);
+      }
+
+      private static void a(ws $$0, dar $$1) {
+         $$0.a($$1.c);
+         $$0.a($$1.d);
+         das.c.encode($$0, $$1.a);
+         cvx.i.encode($$0, $$1.b);
+         $$0.a($$1.e);
+      }
    }
 }

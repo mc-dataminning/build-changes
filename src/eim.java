@@ -1,72 +1,51 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class eim extends eiq {
-   public static final MapCodec<eim> a = RecordCodecBuilder.mapCodec(
+public class eim extends eio {
+   public static final MapCodec<eim> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               ehz.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               ayo.a(jk.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+               azb.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               eqh.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               ays.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
             )
+            .and(b($$0))
             .apply($$0, eim::new)
    );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final ehz e;
-   protected final int f;
-   protected final List<jk> g;
+   private final azb<Integer> i;
+   private final eqh.a j;
+   private final float k;
+   private final eqh l;
 
-   public eim(float $$0, int $$1, int $$2, ehz $$3, int $$4, List<jk> $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public eim(azb<Integer> $$0, eqh.a $$1, float $$2, long $$3, eqh.a $$4, float $$5, List<dvd> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = eqh.b(new eby(new eba($$3)), $$1);
    }
 
    @Override
-   public void a(eiq.a $$0) {
-      Set<jf> $$1 = new HashSet<>();
-      azn $$2 = $$0.b();
-
-      for (jf $$3 : ad.a($$0.d(), $$2)) {
-         jk $$4 = ad.a(this.g, $$2);
-         jf $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            jf $$6 = $$5.b(-this.c, -this.d, -this.c);
-            jf $$7 = $$5.b(this.c, this.d, this.c);
-
-            for (jf $$8 : jf.c($$6, $$7)) {
-               $$1.add($$8.j());
-            }
-
-            $$0.a($$5, this.e.a($$2, $$5));
-         }
-      }
-   }
-
-   private boolean a(eiq.a $$0, jf $$1, jk $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         jf $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   protected eil<?> a() {
+      return eil.e;
    }
 
    @Override
-   protected eir<?> a() {
-      return eir.f;
+   public dvd a(azr $$0, jg $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)azj.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dvd> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      }
+
+      return this.a($$4, $$1, (double)this.e);
+   }
+
+   protected double a(jg $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

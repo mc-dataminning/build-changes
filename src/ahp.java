@@ -1,29 +1,37 @@
-public class ahp implements zl<agr> {
-   public static final zc<wb, ahp> a = zl.a(ahp::a, ahp::new);
-   private final boolean b;
+public class ahp implements zo<agu> {
+   public static final zf<we, ahp> a = zo.a(ahp::a, ahp::new);
+   private final int b;
+   private final int c;
 
-   public ahp(boolean $$0) {
+   public ahp(int $$0, int $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahp(wb $$0) {
-      this.b = $$0.readBoolean();
+   private ahp(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.b);
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zn<ahp> a() {
-      return agp.bD;
+   public zq<ahp> a() {
+      return ags.bA;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public int b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

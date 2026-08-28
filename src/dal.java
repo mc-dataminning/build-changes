@@ -1,80 +1,34 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public record dal<T extends daj<?>>(alh b, T c) {
+   public static final zf<ws, dal<?>> a = zf.a(alh.b, dal::a, daj.i, dal::b, dal::new);
 
-public class dal {
-   private final dal.a[] a;
-   private WeakReference<dao> b = new WeakReference<>(null);
-
-   public dal(int $$0) {
-      this.a = new dal.a[$$0];
-   }
-
-   public Optional<dam<daa>> a(dej $$0, czz $$1) {
-      if ($$1.b()) {
-         return Optional.empty();
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         this.a($$0);
-
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            dal.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1)) {
-               this.a($$2);
-               return Optional.ofNullable($$3.d());
-            }
-         }
-
-         return this.a($$1, $$0);
-      }
-   }
-
-   private void a(dej $$0) {
-      dao $$1 = $$0.r();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
-   }
-
-   private Optional<dam<daa>> a(czz $$0, dej $$1) {
-      Optional<dam<daa>> $$2 = $$1.r().a(daq.a, $$0, $$1);
-      this.a($$0, $$2.orElse(null));
-      return $$2;
-   }
-
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         dal.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(czz $$0, @Nullable dam<daa> $$1) {
-      jx<cvs> $$2 = jx.a($$0.a(), cvs.k);
-
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         $$2.set($$3, $$0.a($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new dal.a($$2, $$0.f(), $$0.g(), $$1);
-   }
-
-   static record a(jx<cvs> a, int b, int c, @Nullable dam<daa> d) {
-      public boolean a(czz $$0) {
-         if (this.b == $$0.f() && this.c == $$0.g()) {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!cvs.c(this.a.get($$1), $$0.a($$1))) {
-                  return false;
-               }
-            }
-
+         if ($$0 instanceof dal<?> $$1 && this.b.equals($$1.b)) {
             return true;
-         } else {
-            return false;
          }
+
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
+
+   public alh a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

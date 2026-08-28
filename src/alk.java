@@ -1,50 +1,79 @@
-import com.mojang.logging.LogUtils;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Properties;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class alk {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final boolean c;
+public class alk extends IOException {
+   private final List<alk.a> a = Lists.newArrayList();
+   private final String b;
 
-   public alk(Path $$0) {
+   public alk(String $$0) {
+      this.a.add(new alk.a());
       this.b = $$0;
-      this.c = ab.aW || this.b();
    }
 
-   private boolean b() {
-      try {
-         boolean var3;
-         try (InputStream $$0 = Files.newInputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.load($$0);
-            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
+   public alk(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new alk.a());
+      this.b = $$0;
+   }
+
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new alk.a());
+   }
+
+   @Override
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
+   }
+
+   public static alk a(Exception $$0) {
+      if ($$0 instanceof alk) {
+         return (alk)$$0;
+      } else {
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
          }
 
-         return var3;
-      } catch (Exception var6) {
-         a.warn("Failed to load {}", this.b);
-         this.c();
-         return false;
+         return new alk($$1, $$0);
       }
    }
 
-   public boolean a() {
-      return this.c;
-   }
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
 
-   private void c() {
-      if (!ab.aW) {
-         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
-            Properties $$1 = new Properties();
-            $$1.setProperty("eula", "false");
-            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + ayb.b + ").");
-         } catch (Exception var6) {
-            a.warn("Failed to save {}", this.b, var6);
+      a() {
+      }
+
+      void a(String $$0) {
+         this.b.add(0, $$0);
+      }
+
+      @Nullable
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return StringUtils.join(this.b, "->");
+      }
+
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+         } else {
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
          }
       }
    }

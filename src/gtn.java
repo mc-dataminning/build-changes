@@ -1,7 +1,7 @@
-import javax.annotation.Nullable;
-
-public class gtn extends gtq {
-   public boolean a = true;
-   @Nullable
-   public eyw b;
+public class gtn extends gva {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

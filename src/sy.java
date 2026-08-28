@@ -1,20 +1,33 @@
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.function.Consumer;
 
-class sy {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
+public record sy(String b, Collection<te> c, Consumer<arm> d, Consumer<arm> e) {
+   public static final String a = "defaultBatch";
 
-   private sy(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public sy(String b, Collection<te> c, Consumer<arm> d, Consumer<arm> e) {
+      if (c.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
+      } else {
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
+      }
    }
 
-   static sy a(Runnable $$0) {
-      return new sy(null, $$0);
+   public String a() {
+      return this.b;
    }
 
-   static sy a(long $$0, Runnable $$1) {
-      return new sy($$0, $$1);
+   public Collection<te> b() {
+      return this.c;
+   }
+
+   public Consumer<arm> c() {
+      return this.d;
+   }
+
+   public Consumer<arm> d() {
+      return this.e;
    }
 }

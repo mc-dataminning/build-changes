@@ -1,284 +1,327 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class ebg {
-   private static final dus a = dho.hj.n();
-   private static final dus b = dho.hk.n();
-   private static final dus c = dho.iA.n();
-   private static final dus d = dho.hn.n();
-   private static final dus e = dho.hv.n();
-   private static final dus f = dho.hx.n();
-   private static final dus g = dho.hr.n();
-   private static final dus h = dho.iC.n();
-   private static final dus i = dho.dP.n();
-   private final dus j;
-   private final int k;
-   private final dus[] l;
-   private final epw m;
-   private final epw n;
-   private final epw o;
-   private final epw p;
-   private final epw q;
-   private final epw r;
-   private final epw s;
-   private final ebb t;
-   private final epw u;
-   private final epw v;
+   public static final float a = -0.50375F;
+   private static final float n = 0.08F;
+   private static final double o = 1.5;
+   private static final double p = 1.5;
+   private static final double q = 1.5625;
+   private static final double r = -0.703125;
+   public static final int b = 64;
+   public static final long c = 4096L;
+   private static final eas s = eat.a(10.0);
+   private static final eas t = eat.a();
+   private static final alg<eas> u = a("zero");
+   private static final alg<eas> v = a("y");
+   private static final alg<eas> w = a("shift_x");
+   private static final alg<eas> x = a("shift_z");
+   private static final alg<eas> y = a("overworld/base_3d_noise");
+   private static final alg<eas> z = a("nether/base_3d_noise");
+   private static final alg<eas> A = a("end/base_3d_noise");
+   public static final alg<eas> d = a("overworld/continents");
+   public static final alg<eas> e = a("overworld/erosion");
+   public static final alg<eas> f = a("overworld/ridges");
+   public static final alg<eas> g = a("overworld/ridges_folded");
+   public static final alg<eas> h = a("overworld/offset");
+   public static final alg<eas> i = a("overworld/factor");
+   public static final alg<eas> j = a("overworld/jaggedness");
+   public static final alg<eas> k = a("overworld/depth");
+   private static final alg<eas> B = a("overworld/sloped_cheese");
+   public static final alg<eas> l = a("overworld_large_biomes/continents");
+   public static final alg<eas> m = a("overworld_large_biomes/erosion");
+   private static final alg<eas> C = a("overworld_large_biomes/offset");
+   private static final alg<eas> D = a("overworld_large_biomes/factor");
+   private static final alg<eas> E = a("overworld_large_biomes/jaggedness");
+   private static final alg<eas> F = a("overworld_large_biomes/depth");
+   private static final alg<eas> G = a("overworld_large_biomes/sloped_cheese");
+   private static final alg<eas> H = a("overworld_amplified/offset");
+   private static final alg<eas> I = a("overworld_amplified/factor");
+   private static final alg<eas> J = a("overworld_amplified/jaggedness");
+   private static final alg<eas> K = a("overworld_amplified/depth");
+   private static final alg<eas> L = a("overworld_amplified/sloped_cheese");
+   private static final alg<eas> M = a("end/sloped_cheese");
+   private static final alg<eas> N = a("overworld/caves/spaghetti_roughness_function");
+   private static final alg<eas> O = a("overworld/caves/entrances");
+   private static final alg<eas> P = a("overworld/caves/noodle");
+   private static final alg<eas> Q = a("overworld/caves/pillars");
+   private static final alg<eas> R = a("overworld/caves/spaghetti_2d_thickness_modulator");
+   private static final alg<eas> S = a("overworld/caves/spaghetti_2d");
 
-   public ebg(ebc $$0, dus $$1, int $$2, ebb $$3) {
-      this.j = $$1;
-      this.k = $$2;
-      this.t = $$3;
-      this.m = $$0.a(eax.P);
-      this.l = a($$3.a(ale.b("clay_bands")));
-      this.u = $$0.a(eax.N);
-      this.v = $$0.a(eax.O);
-      this.n = $$0.a(eax.Q);
-      this.o = $$0.a(eax.R);
-      this.p = $$0.a(eax.S);
-      this.q = $$0.a(eax.T);
-      this.r = $$0.a(eax.U);
-      this.s = $$0.a(eax.V);
+   private static alg<eas> a(String $$0) {
+      return alg.a(ly.aK, alh.b($$0));
    }
 
-   public void a(ebc $$0, dfm $$1, kb<dfk> $$2, boolean $$3, ebl $$4, final dwo $$5, eas $$6, ebf.o $$7) {
-      final jf.a $$8 = new jf.a();
-      final ddp $$9 = $$5.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      dwl $$12 = new dwl() {
-         @Override
-         public dus a(int $$0) {
-            return $$5.a_($$8.q($$0));
-         }
-
-         @Override
-         public void a(int $$0, dus $$1) {
-            del $$2 = $$5.y();
-            if ($$2.d($$0)) {
-               $$5.a($$8.q($$0), $$1, false);
-               if (!$$1.y().c()) {
-                  $$5.e($$8);
-               }
-            }
-         }
-
-         @Override
-         public String toString() {
-            return "ChunkBlockColumn " + $$9;
-         }
-      };
-      ebf.g $$13 = new ebf.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
-      ebf.u $$14 = $$7.apply($$13);
-      jf.a $$15 = new jf.a();
-
-      for (int $$16 = 0; $$16 < 16; $$16++) {
-         for (int $$17 = 0; $$17 < 16; $$17++) {
-            int $$18 = $$10 + $$16;
-            int $$19 = $$11 + $$17;
-            int $$20 = $$5.a(eao.a.a, $$16, $$17) + 1;
-            $$8.p($$18).r($$19);
-            jo<dfk> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
-            if ($$21.a(dfr.B)) {
-               this.a($$12, $$18, $$19, $$20, $$5);
-            }
-
-            int $$22 = $$5.a(eao.a.a, $$16, $$17) + 1;
-            $$13.a($$18, $$19);
-            int $$23 = 0;
-            int $$24 = Integer.MIN_VALUE;
-            int $$25 = Integer.MAX_VALUE;
-            int $$26 = $$5.H_();
-
-            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
-               dus $$28 = $$12.a($$27);
-               if ($$28.l()) {
-                  $$23 = 0;
-                  $$24 = Integer.MIN_VALUE;
-               } else if (!$$28.y().c()) {
-                  if ($$24 == Integer.MIN_VALUE) {
-                     $$24 = $$27 + 1;
-                  }
-               } else {
-                  if ($$25 >= $$27) {
-                     $$25 = dyo.g;
-
-                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
-                        dus $$30 = $$12.a($$29);
-                        if (!this.a($$30)) {
-                           $$25 = $$29 + 1;
-                           break;
-                        }
-                     }
-                  }
-
-                  $$23++;
-                  int $$31 = $$27 - $$25 + 1;
-                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
-                  if ($$28 == this.j) {
-                     dus $$32 = $$14.tryApply($$18, $$27, $$19);
-                     if ($$32 != null) {
-                        $$12.a($$27, $$32);
-                     }
-                  }
-               }
-            }
-
-            if ($$21.a(dfr.W) || $$21.a(dfr.X)) {
-               this.a($$13.c(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
-            }
-         }
-      }
+   public static jp<? extends eas> a(qx<eas> $$0) {
+      jq<eqh.a> $$1 = $$0.a(ly.aQ);
+      jq<eas> $$2 = $$0.a(ly.aK);
+      $$0.a(u, eat.a());
+      int $$3 = dyz.e * 2;
+      int $$4 = dyz.d * 2;
+      $$0.a(v, eat.a($$3, $$4, (double)$$3, (double)$$4));
+      eas $$5 = a($$0, w, eat.b(eat.c(eat.b($$1.b(ebi.j)))));
+      eas $$6 = a($$0, x, eat.b(eat.c(eat.c($$1.b(ebi.j)))));
+      $$0.a(y, eqe.a(0.25, 0.125, 80.0, 160.0, 8.0));
+      $$0.a(z, eqe.a(0.25, 0.375, 80.0, 60.0, 8.0));
+      $$0.a(A, eqe.a(0.25, 0.25, 80.0, 160.0, 4.0));
+      jp<eas> $$7 = $$0.a(d, eat.b(eat.a($$5, $$6, 0.25, $$1.b(ebi.c))));
+      jp<eas> $$8 = $$0.a(e, eat.b(eat.a($$5, $$6, 0.25, $$1.b(ebi.d))));
+      eas $$9 = a($$0, f, eat.b(eat.a($$5, $$6, 0.25, $$1.b(ebi.i))));
+      $$0.a(g, a($$9));
+      eas $$10 = eat.b($$1.b(ebi.M), 1500.0, 0.0);
+      a($$0, $$2, $$10, $$7, $$8, h, i, j, k, B, false);
+      jp<eas> $$11 = $$0.a(l, eat.b(eat.a($$5, $$6, 0.25, $$1.b(ebi.g))));
+      jp<eas> $$12 = $$0.a(m, eat.b(eat.a($$5, $$6, 0.25, $$1.b(ebi.h))));
+      a($$0, $$2, $$10, $$11, $$12, C, D, E, F, G, false);
+      a($$0, $$2, $$10, $$7, $$8, H, I, J, K, L, true);
+      $$0.a(M, eat.a(eat.a(0L), a($$2, A)));
+      $$0.a(N, b($$1));
+      $$0.a(R, eat.d(eat.a($$1.b(ebi.u), 2.0, 1.0, -0.6, -1.3)));
+      $$0.a(S, f($$2, $$1));
+      $$0.a(O, d($$2, $$1));
+      $$0.a(P, e($$2, $$1));
+      return $$0.a(Q, c($$1));
    }
 
-   protected int a(int $$0, int $$1) {
-      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
-      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
+   private static void a(
+      qx<eas> $$0, jq<eas> $$1, eas $$2, jp<eas> $$3, jp<eas> $$4, alg<eas> $$5, alg<eas> $$6, alg<eas> $$7, alg<eas> $$8, alg<eas> $$9, boolean $$10
+   ) {
+      eat.w.a $$11 = new eat.w.a($$3);
+      eat.w.a $$12 = new eat.w.a($$4);
+      eat.w.a $$13 = new eat.w.a($$1.b(f));
+      eat.w.a $$14 = new eat.w.a($$1.b(g));
+      eas $$15 = a($$0, $$5, a(eat.a(eat.a(-0.50375F), eat.a(rm.a($$11, $$12, $$14, $$10))), eat.c()));
+      eas $$16 = a($$0, $$6, a(eat.a(rm.a($$11, $$12, $$13, $$14, $$10)), s));
+      eas $$17 = a($$0, $$8, eat.a(eat.a(-64, 320, 1.5, -1.5), $$15));
+      eas $$18 = a($$0, $$7, a(eat.a(rm.b($$11, $$12, $$13, $$14, $$10)), t));
+      eas $$19 = eat.b($$18, $$2.g());
+      eas $$20 = b($$16, eat.a($$17, $$19));
+      $$0.a($$9, eat.a($$20, a($$1, y)));
    }
 
-   protected double b(int $$0, int $$1) {
-      return this.v.a((double)$$0, 0.0, (double)$$1);
+   private static eas a(qx<eas> $$0, alg<eas> $$1, eas $$2) {
+      return new eat.j($$0.a($$1, $$2));
    }
 
-   private boolean a(dus $$0) {
-      return !$$0.l() && $$0.y().c();
+   private static eas a(jq<eas> $$0, alg<eas> $$1) {
+      return new eat.j($$0.b($$1));
    }
 
-   public int a() {
-      return this.k;
+   private static eas a(eas $$0) {
+      return eat.b(eat.a(eat.a($$0.d(), eat.a(-0.6666666666666666)).d(), eat.a(-0.3333333333333333)), eat.a(-3.0));
    }
 
-   @Deprecated
-   public Optional<dus> a(ebf.o $$0, ecp $$1, Function<jf, jo<dfk>> $$2, dwo $$3, eas $$4, jf $$5, boolean $$6) {
-      ebf.g $$7 = new ebf.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().e(lw.aH), $$1);
-      ebf.u $$8 = $$0.apply($$7);
-      int $$9 = $$5.u();
-      int $$10 = $$5.v();
-      int $$11 = $$5.w();
-      $$7.a($$9, $$11);
-      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
-      dus $$12 = $$8.tryApply($$9, $$10, $$11);
-      return Optional.ofNullable($$12);
+   public static float a(float $$0) {
+      return -(Math.abs(Math.abs($$0) - 0.6666667F) - 0.33333334F) * 3.0F;
    }
 
-   private void a(dwl $$0, int $$1, int $$2, int $$3, del $$4) {
-      double $$5 = 0.2;
-      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
-      if (!($$6 <= 0.0)) {
-         double $$7 = 0.75;
-         double $$8 = 1.5;
-         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
-         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
-         int $$11 = azf.a($$10);
-         if ($$3 <= $$11) {
-            for (int $$12 = $$11; $$12 >= $$4.H_(); $$12--) {
-               dus $$13 = $$0.a($$12);
-               if ($$13.a(this.j.b())) {
-                  break;
-               }
-
-               if ($$13.a(dho.G)) {
-                  return;
-               }
-            }
-
-            for (int $$14 = $$11; $$14 >= $$4.H_() && $$0.a($$14).l(); $$14--) {
-               $$0.a($$14, this.j);
-            }
-         }
-      }
+   private static eas b(jq<eqh.a> $$0) {
+      eas $$1 = eat.a($$0.b(ebi.z));
+      eas $$2 = eat.a($$0.b(ebi.A), 0.0, -0.1);
+      return eat.d(eat.b($$2, eat.a($$1.d(), eat.a(-0.4))));
    }
 
-   private void a(int $$0, dfk $$1, dwl $$2, jf.a $$3, int $$4, int $$5, int $$6) {
-      double $$7 = 1.28;
-      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
-      if (!($$8 <= 1.8)) {
-         double $$9 = 1.17;
-         double $$10 = 1.5;
-         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
-         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
-         if ($$1.d($$3.d($$4, this.k, $$5), this.k)) {
-            $$12 -= 2.0;
-         }
+   private static eas d(jq<eas> $$0, jq<eqh.a> $$1) {
+      eas $$2 = eat.d(eat.b($$1.b(ebi.x), 2.0, 1.0));
+      eas $$3 = eat.a($$1.b(ebi.y), -0.065, -0.088);
+      eas $$4 = eat.a($$2, $$1.b(ebi.v), eat.z.a.a);
+      eas $$5 = eat.a($$2, $$1.b(ebi.w), eat.z.a.a);
+      eas $$6 = eat.a(eat.d($$4, $$5), $$3).a(-1.0, 1.0);
+      eas $$7 = a($$0, N);
+      eas $$8 = eat.b($$1.b(ebi.B), 0.75, 0.5);
+      eas $$9 = eat.a(eat.a($$8, eat.a(0.37)), eat.a(-10, 30, 0.3, 0.0));
+      return eat.d(eat.c($$9, eat.a($$7, $$6)));
+   }
 
-         double $$13;
-         if ($$12 > 2.0) {
-            $$13 = (double)this.k - $$12 - 7.0;
-            $$12 += (double)this.k;
+   private static eas e(jq<eas> $$0, jq<eqh.a> $$1) {
+      eas $$2 = a($$0, v);
+      int $$3 = -64;
+      int $$4 = -60;
+      int $$5 = 320;
+      eas $$6 = a($$2, eat.b($$1.b(ebi.I), 1.0, 1.0), -60, 320, -1);
+      eas $$7 = a($$2, eat.a($$1.b(ebi.J), 1.0, 1.0, -0.05, -0.1), -60, 320, 0);
+      double $$8 = 2.6666666666666665;
+      eas $$9 = a($$2, eat.b($$1.b(ebi.K), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      eas $$10 = a($$2, eat.b($$1.b(ebi.L), 2.6666666666666665, 2.6666666666666665), -60, 320, 0);
+      eas $$11 = eat.b(eat.a(1.5), eat.d($$9.d(), $$10.d()));
+      return eat.a($$6, -1000000.0, 0.0, eat.a(64.0), eat.a($$7, $$11));
+   }
+
+   private static eas c(jq<eqh.a> $$0) {
+      double $$1 = 25.0;
+      double $$2 = 0.3;
+      eas $$3 = eat.b($$0.b(ebi.o), 25.0, 0.3);
+      eas $$4 = eat.a($$0.b(ebi.p), 0.0, -2.0);
+      eas $$5 = eat.a($$0.b(ebi.q), 0.0, 1.1);
+      eas $$6 = eat.a(eat.b($$3, eat.a(2.0)), $$4);
+      return eat.d(eat.b($$6, $$5.f()));
+   }
+
+   private static eas f(jq<eas> $$0, jq<eqh.a> $$1) {
+      eas $$2 = eat.b($$1.b(ebi.t), 2.0, 1.0);
+      eas $$3 = eat.a($$2, $$1.b(ebi.r), eat.z.a.b);
+      eas $$4 = eat.a($$1.b(ebi.s), 0.0, (double)Math.floorDiv(-64, 8), 8.0);
+      eas $$5 = a($$0, R);
+      eas $$6 = eat.a($$4, eat.a(-64, 320, 8.0, -40.0)).d();
+      eas $$7 = eat.a($$6, $$5).f();
+      double $$8 = 0.083;
+      eas $$9 = eat.a($$3, eat.b(eat.a(0.083), $$5));
+      return eat.d($$9, $$7).a(-1.0, 1.0);
+   }
+
+   private static eas a(jq<eas> $$0, jq<eqh.a> $$1, eas $$2) {
+      eas $$3 = a($$0, S);
+      eas $$4 = a($$0, N);
+      eas $$5 = eat.a($$1.b(ebi.C), 8.0);
+      eas $$6 = eat.b(eat.a(4.0), $$5.e());
+      eas $$7 = eat.a($$1.b(ebi.D), 0.6666666666666666);
+      eas $$8 = eat.a(eat.a(eat.a(0.27), $$7).a(-1.0, 1.0), eat.a(eat.a(1.5), eat.b(eat.a(-0.64), $$2)).a(0.0, 0.5));
+      eas $$9 = eat.a($$6, $$8);
+      eas $$10 = eat.c(eat.c($$9, a($$0, O)), eat.a($$3, $$4));
+      eas $$11 = a($$0, Q);
+      eas $$12 = eat.a($$11, -1000000.0, 0.03, eat.a(-1000000.0), $$11);
+      return eat.d($$10, $$12);
+   }
+
+   private static eas b(eas $$0) {
+      eas $$1 = eat.f($$0);
+      return eat.b(eat.a($$1), eat.a(0.64)).i();
+   }
+
+   protected static ebf a(jq<eas> $$0, jq<eqh.a> $$1, boolean $$2, boolean $$3) {
+      eas $$4 = eat.a($$1.b(ebi.k), 0.5);
+      eas $$5 = eat.a($$1.b(ebi.l), 0.67);
+      eas $$6 = eat.a($$1.b(ebi.n), 0.7142857142857143);
+      eas $$7 = eat.a($$1.b(ebi.m));
+      eas $$8 = a($$0, w);
+      eas $$9 = a($$0, x);
+      eas $$10 = eat.a($$8, $$9, 0.25, $$1.b($$2 ? ebi.e : ebi.a));
+      eas $$11 = eat.a($$8, $$9, 0.25, $$1.b($$2 ? ebi.f : ebi.b));
+      eas $$12 = a($$0, $$2 ? D : ($$3 ? I : i));
+      eas $$13 = a($$0, $$2 ? F : ($$3 ? K : k));
+      eas $$14 = b(eat.c($$12), $$13);
+      eas $$15 = a($$0, $$2 ? G : ($$3 ? L : B));
+      eas $$16 = eat.c($$15, eat.b(eat.a(5.0), a($$0, O)));
+      eas $$17 = eat.a($$15, -1000000.0, 1.5625, $$16, a($$0, $$1, $$15));
+      eas $$18 = eat.c(b(a($$3, $$17)), a($$0, P));
+      eas $$19 = a($$0, v);
+      int $$20 = Stream.of(ebj.a.values()).mapToInt($$0x -> $$0x.c).min().orElse(-dyz.e * 2);
+      int $$21 = Stream.of(ebj.a.values()).mapToInt($$0x -> $$0x.d).max().orElse(-dyz.e * 2);
+      eas $$22 = a($$19, eat.b($$1.b(ebi.E), 1.5, 1.5), $$20, $$21, 0);
+      float $$23 = 4.0F;
+      eas $$24 = a($$19, eat.b($$1.b(ebi.F), 4.0, 4.0), $$20, $$21, 0).d();
+      eas $$25 = a($$19, eat.b($$1.b(ebi.G), 4.0, 4.0), $$20, $$21, 0).d();
+      eas $$26 = eat.a(eat.a(-0.08F), eat.d($$24, $$25));
+      eas $$27 = eat.a($$1.b(ebi.H));
+      return new ebf(
+         $$4,
+         $$5,
+         $$6,
+         $$7,
+         $$10,
+         $$11,
+         a($$0, $$2 ? l : d),
+         a($$0, $$2 ? m : e),
+         $$13,
+         a($$0, f),
+         a($$3, eat.a($$14, eat.a(-0.703125)).a(-64.0, 64.0)),
+         $$18,
+         $$22,
+         $$26,
+         $$27
+      );
+   }
+
+   private static ebf b(jq<eas> $$0, jq<eqh.a> $$1, eas $$2) {
+      eas $$3 = a($$0, w);
+      eas $$4 = a($$0, x);
+      eas $$5 = eat.a($$3, $$4, 0.25, $$1.b(ebi.a));
+      eas $$6 = eat.a($$3, $$4, 0.25, $$1.b(ebi.b));
+      eas $$7 = b($$2);
+      return new ebf(eat.a(), eat.a(), eat.a(), eat.a(), $$5, $$6, eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), $$7, eat.a(), eat.a(), eat.a());
+   }
+
+   private static eas a(boolean $$0, eas $$1) {
+      return a($$1, -64, 384, $$0 ? 16 : 80, $$0 ? 0 : 64, -0.078125, 0, 24, $$0 ? 0.4 : 0.1171875);
+   }
+
+   private static eas a(jq<eas> $$0, int $$1, int $$2) {
+      return a(a($$0, z), $$1, $$2, 24, 0, 0.9375, -8, 24, 2.5);
+   }
+
+   private static eas a(eas $$0, int $$1, int $$2) {
+      return a($$0, $$1, $$2, 72, -184, -23.4375, 4, 32, -0.234375);
+   }
+
+   protected static ebf a(jq<eas> $$0, jq<eqh.a> $$1) {
+      return b($$0, $$1, a($$0, 0, 128));
+   }
+
+   protected static ebf b(jq<eas> $$0, jq<eqh.a> $$1) {
+      return b($$0, $$1, a($$0, -64, 192));
+   }
+
+   protected static ebf c(jq<eas> $$0, jq<eqh.a> $$1) {
+      return b($$0, $$1, a(a($$0, A), 0, 256));
+   }
+
+   private static eas c(eas $$0) {
+      return a($$0, 0, 128);
+   }
+
+   protected static ebf a(jq<eas> $$0) {
+      eas $$1 = eat.c(eat.a(0L));
+      eas $$2 = b(c(a($$0, M)));
+      return new ebf(
+         eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), $$1, eat.a(), eat.a(), c(eat.a($$1, eat.a(-0.703125))), $$2, eat.a(), eat.a(), eat.a()
+      );
+   }
+
+   protected static ebf a() {
+      return new ebf(eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a(), eat.a());
+   }
+
+   private static eas a(eas $$0, eas $$1) {
+      eas $$2 = eat.a(eat.b(), $$1, $$0);
+      return eat.b(eat.c($$2));
+   }
+
+   private static eas b(eas $$0, eas $$1) {
+      eas $$2 = eat.b($$1, $$0);
+      return eat.b(eat.a(4.0), $$2.h());
+   }
+
+   private static eas a(eas $$0, eas $$1, int $$2, int $$3, int $$4) {
+      return eat.a(eat.a($$0, (double)$$2, (double)($$3 + 1), $$1, eat.a((double)$$4)));
+   }
+
+   private static eas a(eas $$0, int $$1, int $$2, int $$3, int $$4, double $$5, int $$6, int $$7, double $$8) {
+      eas $$10 = eat.a($$1 + $$2 - $$3, $$1 + $$2 - $$4, 1.0, 0.0);
+      eas $$9 = eat.a($$10, $$5, $$0);
+      eas $$11 = eat.a($$1 + $$6, $$1 + $$7, 0.0, 1.0);
+      return eat.a($$11, $$8, $$9);
+   }
+
+   protected static final class a {
+      protected static double a(double $$0) {
+         if ($$0 < -0.75) {
+            return 0.5;
+         } else if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.5) {
+            return 1.0;
          } else {
-            $$12 = 0.0;
-            $$13 = 0.0;
-         }
-
-         double $$15 = $$12;
-         azn $$16 = this.t.a($$4, 0, $$5);
-         int $$17 = 2 + $$16.a(4);
-         int $$18 = this.k + 18 + $$16.a(10);
-         int $$19 = 0;
-
-         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
-            if ($$2.a($$20).l() && $$20 < (int)$$15 && $$16.j() > 0.01
-               || $$2.a($$20).a(dho.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
-               if ($$19 <= $$17 && $$20 > $$18) {
-                  $$2.a($$20, i);
-                  $$19++;
-               } else {
-                  $$2.a($$20, h);
-               }
-            }
-         }
-      }
-   }
-
-   private static dus[] a(azn $$0) {
-      dus[] $$1 = new dus[192];
-      Arrays.fill($$1, c);
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$2 += $$0.a(5) + 1;
-         if ($$2 < $$1.length) {
-            $$1[$$2] = b;
+            return $$0 < 0.75 ? 2.0 : 3.0;
          }
       }
 
-      a($$0, $$1, 1, d);
-      a($$0, $$1, 2, e);
-      a($$0, $$1, 1, f);
-      int $$3 = $$0.a(9, 15);
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
-         $$1[$$5] = a;
-         if ($$5 - 1 > 0 && $$0.h()) {
-            $$1[$$5 - 1] = g;
-         }
-
-         if ($$5 + 1 < $$1.length && $$0.h()) {
-            $$1[$$5 + 1] = g;
-         }
-
-         $$4++;
-      }
-
-      return $$1;
-   }
-
-   private static void a(azn $$0, dus[] $$1, int $$2, dus $$3) {
-      int $$4 = $$0.a(6, 15);
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         int $$6 = $$2 + $$0.a(3);
-         int $$7 = $$0.a($$1.length);
-
-         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
-            $$1[$$7 + $$8] = $$3;
+      protected static double b(double $$0) {
+         if ($$0 < -0.5) {
+            return 0.75;
+         } else if ($$0 < 0.0) {
+            return 1.0;
+         } else {
+            return $$0 < 0.5 ? 1.5 : 2.0;
          }
       }
-   }
-
-   protected dus a(int $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
-      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
    }
 }

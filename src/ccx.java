@@ -1,26 +1,67 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class ccx extends cch {
-   public static final float i = 0.001F;
-   protected final float j;
+public class ccx extends cbt {
+   private final ciq a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public ccx(buv $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public ccx(ciq $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(cbt.a.a));
    }
 
-   public ccx(buv $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected eyw h() {
-      if (this.b.bl()) {
-         eyw $$0 = cfk.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
+   public boolean b() {
+      if (!this.a.gM() && this.a.cb()) {
+         ezh $$0 = cfq.a(this.a, 5, 4);
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
+         }
       } else {
-         return this.b.dV().i() >= this.j ? cfk.a(this.b, 10, 7) : super.h();
+         return false;
+      }
+   }
+
+   @Override
+   public void d() {
+      this.a.P().a(this.c, this.d, this.e, this.b);
+   }
+
+   @Override
+   public boolean c() {
+      return !this.a.gM() && !this.a.P().m() && this.a.cb();
+   }
+
+   @Override
+   public void a() {
+      if (!this.a.gM() && this.a.ea().a(this.a(50)) == 0) {
+         btz $$0 = this.a.db();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof coh $$1) {
+            int $$2 = this.a.gS();
+            int $$3 = this.a.gY();
+            if ($$3 > 0 && this.a.ea().a($$3) < $$2) {
+               this.a.g($$1);
+               return;
+            }
+
+            this.a.v(5);
+         }
+
+         this.a.bQ();
+         this.a.hd();
+         this.a.dX().a(this.a, (byte)6);
       }
    }
 }

@@ -1,20 +1,22 @@
-public class gna extends gmj<cgk, guo, fxf> {
-   private static final ale a = ale.b("textures/entity/cow/cow.png");
+public class gna extends gpf<cgg, gtm, fxc> {
+   private static final alh a = alh.b("textures/entity/bat.png");
 
-   public gna(gno.a $$0) {
-      super($$0, new fxf($$0.a(gap.U)), new fxf($$0.a(gap.V)), 0.7F);
+   public gna(gnz.a $$0) {
+      super($$0, new fxc($$0.a(gba.n)), 0.25F);
    }
 
-   @Override
-   public ale b(guo $$0) {
+   public alh a(gtm $$0) {
       return a;
    }
 
-   public guo a() {
-      return new guo();
+   public gtm a() {
+      return new gtm();
    }
 
-   public void a(cgk $$0, guo $$1, float $$2) {
+   public void a(cgg $$0, gtm $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
+      $$1.b.a($$0.d);
+      $$1.c.a($$0.e);
    }
 }

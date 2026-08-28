@@ -1,54 +1,30 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public class fet {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final String[] d;
-
-   private fet(String $$0, @Nullable String[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public xe a(xe $$0) {
-      return Objects.requireNonNullElse(this.a(), $$0);
-   }
-
-   @Nullable
-   public xe a() {
-      if (!gyn.a(this.c)) {
-         return null;
-      } else {
-         return this.d == null ? xe.c(this.c) : xe.a(this.c, this.d);
-      }
-   }
+public class fet extends ffn {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+   public UUID d;
+   public Date e;
 
    public static fet a(JsonObject $$0) {
-      String $$1 = fgz.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
+      fet $$1 = new fet();
 
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
-         }
-      } else {
-         $$5 = null;
+      try {
+         $$1.a = fhk.b("invitationId", $$0, "");
+         $$1.b = fhk.b("worldName", $$0, "");
+         $$1.c = fhk.b("worldOwnerName", $$0, "");
+         $$1.d = fhk.a("worldOwnerUuid", $$0, ad.e);
+         $$1.e = fhk.b("date", $$0);
+      } catch (Exception var3) {
+         f.error("Could not parse PendingInvite: {}", var3.getMessage());
       }
 
-      return new fet($$1, $$5);
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
+      return $$1;
    }
 }

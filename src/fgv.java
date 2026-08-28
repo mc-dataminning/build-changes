@@ -1,167 +1,77 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fgv {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final baf d;
+public class fgv extends hee {
+   private static final xh b = xh.c("mco.reset.world.seed");
+   public static final xh a = xh.c("mco.reset.world.generate");
+   private static final int c = 10;
+   private static final int B = 210;
+   private final fon C = new fon(this);
+   private final Consumer<fhr> D;
+   private fli E;
+   private fhl F = fhl.a;
+   private boolean G = true;
+   private final Set<String> H = new HashSet<>();
+   private final xh I;
 
-   public fgv(Executor $$0, TimeUnit $$1, baf $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fgv(Consumer<fhr> $$0, xh $$1) {
+      super(a);
+      this.D = $$0;
+      this.I = $$1;
    }
 
-   public <T> fgv.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fgw $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
-      } else {
-         return new fgv.e<>($$0, $$1, $$4, $$3);
-      }
+   @Override
+   public void aS_() {
+      this.E = new fli(this.p, 210, 20, xh.c("mco.reset.world.seed"));
+      this.E.f(32);
+      this.C.a(this.l, this.p);
+      fos $$0 = this.C.c(fos.d()).a(10);
+      $$0.a(foj.a(this.p, this.E, b));
+      $$0.a(flg.a(fhl::a).a(fhl.values()).a(this.F).a(0, 0, 210, 20, xh.c("selectWorld.mapType"), ($$0x, $$1x) -> this.F = $$1x));
+      $$0.a(flg.b(this.G).a(0, 0, 210, 20, xh.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.G = $$1x));
+      this.a($$0);
+      fos $$1 = this.C.b(fos.e().a(10));
+      $$1.a(fkz.a(this.I, $$0x -> this.D.accept(this.D())).a());
+      $$1.a(fkz.a(xg.k, $$0x -> this.d()).a());
+      this.C.a($$1x -> {
+         fkx var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public fgv.c a() {
-      return new fgv.c();
+   @Override
+   protected void aH_() {
+      this.b(this.E);
    }
 
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
+   private void a(fos $$0) {
+      auk $$1 = aun.c();
+      $$1.a();
+      $$0.a(fkz.a(xh.c("selectWorld.experiments"), $$1x -> this.m.a(new fvs(this, $$1, $$0xx -> {
+            this.H.clear();
 
-   class b<T> {
-      private final fgv.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fgv.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fgv.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fgv.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fgv.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fgv.e<T> $$0, Consumer<T> $$1) {
-         fgv.b<T> $$2 = fgv.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fgv.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fgv.b<?> $$0 : this.b) {
-            $$0.a(fgv.this.d.get(fgv.this.c));
-         }
-      }
-
-      public void c() {
-         for (fgv.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fgw e;
-      @Nullable
-      private CompletableFuture<fgv.a<T>> f;
-      @Nullable
-      fgv.d<T> g;
-      private long h = -1L;
-
-      e(final String $$1, final Callable<T> $$2, final long $$3, final fgw $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fgv.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
+            for (auh $$1xx : $$0xx.g()) {
+               if ($$1xx.l() == aul.d) {
+                  this.H.add($$1xx.g());
+               }
             }
 
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fgv.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fgv.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
+            this.m.a(this);
+         }))).a(210).a());
+   }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fgv.this.d.get(fgv.this.c);
-                  return new fgv.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fgv.this.d.get(fgv.this.c);
-                  return new fgv.a<>(Either.right(var4x), $$3);
-               }
-            }, fgv.this.b);
-         }
-      }
+   private fhr D() {
+      return new fhr(this.E.a(), this.F, this.G, this.H);
+   }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+   @Override
+   protected void c() {
+      this.C.a();
+   }
+
+   @Override
+   public void d() {
+      this.D.accept(null);
    }
 }

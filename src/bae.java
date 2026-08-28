@@ -1,81 +1,144 @@
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
 public class bae {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
-   @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile z f;
+   private static final char a = '�';
+   private static final Optional<Object> b = Optional.of(bao.a);
 
-   public bae(String $$0) {
-      this.b = $$0;
+   private static boolean a(ye $$0, ayw $$1, int $$2, char $$3) {
+      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
    }
 
-   public void a() {
-      boolean $$0 = false;
+   public static boolean a(String $$0, ye $$1, ayw $$2) {
+      int $$3 = $$0.length();
 
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
-
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isHighSurrogate($$5)) {
+            if ($$4 + 1 >= $$3) {
+               if (!$$2.accept($$4, $$1, 65533)) {
+                  return false;
+               }
+               break;
             }
 
-            throw this.f;
-         }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
+            char $$6 = $$0.charAt($$4 + 1);
+            if (Character.isLowSurrogate($$6)) {
+               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
+                  return false;
+               }
+
+               $$4++;
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
          }
       }
+
+      return true;
    }
 
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            z $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
+   public static boolean b(String $$0, ye $$1, ayw $$2) {
+      int $$3 = $$0.length();
+
+      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isLowSurrogate($$5)) {
+            if ($$4 - 1 < 0) {
+               if (!$$2.accept(0, $$1, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$6 = $$0.charAt($$4 - 1);
+            if (Character.isHighSurrogate($$6)) {
+               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
+                  return false;
+               }
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
          }
-
-         this.c.release();
-      } finally {
-         this.d.unlock();
       }
+
+      return true;
    }
 
-   public static z a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(bae::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new z($$4);
+   public static boolean c(String $$0, ye $$1, ayw $$2) {
+      return a($$0, 0, $$1, $$2);
    }
 
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
+   public static boolean a(String $$0, int $$1, ye $$2, ayw $$3) {
+      return a($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public static boolean a(String $$0, int $$1, ye $$2, ye $$3, ayw $$4) {
+      int $$5 = $$0.length();
+      ye $$6 = $$2;
+
+      for (int $$7 = $$1; $$7 < $$5; $$7++) {
+         char $$8 = $$0.charAt($$7);
+         if ($$8 == 167) {
+            if ($$7 + 1 >= $$5) {
+               break;
+            }
+
+            char $$9 = $$0.charAt($$7 + 1);
+            n $$10 = n.a($$9);
+            if ($$10 != null) {
+               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
+            }
+
+            $$7++;
+         } else if (Character.isHighSurrogate($$8)) {
+            if ($$7 + 1 >= $$5) {
+               if (!$$4.accept($$7, $$6, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$11 = $$0.charAt($$7 + 1);
+            if (Character.isLowSurrogate($$11)) {
+               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
+                  return false;
+               }
+
+               $$7++;
+            } else if (!$$4.accept($$7, $$6, 65533)) {
+               return false;
+            }
+         } else if (!a($$6, $$4, $$7, $$8)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean a(xm $$0, ye $$1, ayw $$2) {
+      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
+   }
+
+   public static String a(String $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, ye.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
+   }
+
+   public static String a(xm $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, ye.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
    }
 }

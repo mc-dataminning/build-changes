@@ -1,124 +1,78 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dow extends dhm {
+public class dow extends dih implements dib, dmo {
    public static final MapCodec<dow> a = b(dow::new);
-   public static final int b = 8;
-   public static final dvs c = dvi.aF;
-   protected static final ezq[] d = new ezq[]{
-      ezn.a(),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+   protected static final float b = 6.0F;
+   protected static final fab c = dhy.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
    @Override
    public MapCodec<dow> a() {
       return a;
    }
 
-   protected dow(dur.d $$0) {
+   protected dow(dvc.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(1)));
    }
 
    @Override
-   protected boolean a(dus $$0, eri $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return c;
    }
 
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected ezq b(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return d[$$0.c(c) - 1];
-   }
-
-   @Override
-   protected ezq b_(dus $$0, ddo $$1, jf $$2) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected ezq c(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean g_(dus $$0) {
-      return true;
-   }
-
-   @Override
-   protected float c(dus $$0, ddo $$1, jf $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
-   }
-
-   @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      dus $$3 = $$1.a_($$2.e());
-      if ($$3.a(awv.cp)) {
-         return false;
-      } else {
-         return $$3.a(awv.cq) ? true : dhm.a($$3.g($$1, $$2.e()), jk.b) || $$3.a(this) && $$3.c(c) == 8;
-      }
-   }
-
-   @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      return !$$0.a($$3, $$4) ? dho.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if ($$1.a(des.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(dus $$0, czn $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.q()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == jk.b : true;
-      }
+   protected boolean b(dvd $$0, dea $$1, jg $$2) {
+      return $$0.c($$1, $$2, jl.b) && !$$0.a(dia.kJ);
    }
 
    @Nullable
    @Override
-   public dus a(czn $$0) {
-      dus $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
+   public dvd a(czm $$0) {
+      ere $$1 = $$0.q().b_($$0.a());
+      return $$1.a(axf.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(c);
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      dvd $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!$$6.l()) {
+         $$3.a($$4, erf.c, erf.c.a($$3));
+      }
+
+      return $$6;
+   }
+
+   @Override
+   public boolean b(dey $$0, jg $$1, dvd $$2) {
+      return $$0.a_($$1.d()).a(dia.G);
+   }
+
+   @Override
+   public boolean a(dev $$0, azr $$1, jg $$2, dvd $$3) {
+      return true;
+   }
+
+   @Override
+   protected ere b_(dvd $$0) {
+      return erf.c.a(false);
+   }
+
+   @Override
+   public void a(arm $$0, azr $$1, jg $$2, dvd $$3) {
+      dvd $$4 = dia.bx.m();
+      dvd $$5 = $$4.b(dqe.d, dvz.a);
+      jg $$6 = $$2.d();
+      $$0.a($$2, $$4, 2);
+      $$0.a($$6, $$5, 2);
+   }
+
+   @Override
+   public boolean a(@Nullable coh $$0, dea $$1, jg $$2, dvd $$3, erd $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dew $$0, jg $$1, dvd $$2, ere $$3) {
+      return false;
    }
 }

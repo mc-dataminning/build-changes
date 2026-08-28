@@ -1,30 +1,44 @@
-import java.util.Optional;
+import java.util.List;
 
-public record afr(String b, String c, int d, Optional<xe> e, Optional<yu> f) implements zl<aca> {
-   public static final zc<wp, afr> a = zc.a(za.m, afr::b, za.m, afr::e, za.h, afr::f, xg.e, afr::g, yw.d, afr::h, afr::new);
+public class afr implements zo<acd> {
+   public static final zf<we, afr> a = zo.a(afr::a, afr::new);
+   private final int b;
+   private final int[] c;
 
-   @Override
-   public zn<afr> a() {
-      return agp.aM;
+   public afr(btz $$0) {
+      this.b = $$0.ar();
+      List<btz> $$1 = $$0.da();
+      this.c = new int[$$1.size()];
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c[$$2] = $$1.get($$2).ar();
+      }
    }
 
-   public void a(aca $$0) {
+   private afr(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.c();
+   }
+
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zq<afr> a() {
+      return ags.aK;
+   }
+
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public String e() {
+   public int[] b() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<xe> g() {
-      return this.e;
-   }
-
-   public Optional<yu> h() {
-      return this.f;
+   public int e() {
+      return this.b;
    }
 }

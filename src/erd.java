@@ -1,145 +1,93 @@
-import java.util.Arrays;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class erd {
-   private erf[] a = new erf[128];
-   private int b;
+public abstract class erd {
+   public static final jv<ere> c = new jv<>();
+   protected final dve<erd, ere> d;
+   private ere a;
+   private final jp.c<erd> b = lx.c.f(this);
 
-   public erf a(erf $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
-      } else {
-         if (this.b == this.a.length) {
-            erf[] $$1 = new erf[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
-         }
-
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
-      }
+   protected erd() {
+      dve.a<erd, ere> $$0 = new dve.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(erd::g, ere::new);
+      this.f(this.d.b());
    }
 
-   public void a() {
-      this.b = 0;
+   protected void a(dve.a<erd, ere> $$0) {
    }
 
-   public erf b() {
-      return this.a[0];
+   public dve<erd, ere> f() {
+      return this.d;
    }
 
-   public erf c() {
-      erf $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
-      }
-
-      $$0.d = -1;
-      return $$0;
+   protected final void f(ere $$0) {
+      this.a = $$0;
    }
 
-   public void b(erf $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
-         }
-      }
-
-      $$0.d = -1;
+   public final ere g() {
+      return this.a;
    }
 
-   public void a(erf $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
-      } else {
-         this.b($$0.d);
-      }
+   public abstract cvt a();
+
+   protected void a(dev $$0, jg $$1, ere $$2, azr $$3) {
    }
 
-   public int d() {
+   protected void b(dev $$0, jg $$1, dvd $$2, ere $$3) {
+   }
+
+   protected void b(dev $$0, jg $$1, ere $$2, azr $$3) {
+   }
+
+   @Nullable
+   protected lo h() {
+      return null;
+   }
+
+   protected abstract boolean a(ere var1, dea var2, jg var3, erd var4, jl var5);
+
+   protected abstract ezh a(dea var1, jg var2, ere var3);
+
+   public abstract int a(dey var1);
+
+   protected boolean i() {
+      return false;
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected abstract float c();
+
+   public abstract float a(ere var1, dea var2, jg var3);
+
+   public abstract float a(ere var1);
+
+   protected abstract dvd b(ere var1);
+
+   public abstract boolean c(ere var1);
+
+   public abstract int d(ere var1);
+
+   public boolean a(erd $$0) {
+      return $$0 == this;
+   }
+
+   @Deprecated
+   public boolean a(axp<erd> $$0) {
+      return this.b.a($$0);
+   }
+
+   public abstract fab b(ere var1, dea var2, jg var3);
+
+   public Optional<awj> j() {
+      return Optional.empty();
+   }
+
+   @Deprecated
+   public jp.c<erd> k() {
       return this.b;
-   }
-
-   private void a(int $$0) {
-      erf $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         erf $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      erf $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         erf $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         erf $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
-         }
-      }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   public boolean e() {
-      return this.b == 0;
-   }
-
-   public erf[] f() {
-      return Arrays.copyOf(this.a, this.b);
    }
 }

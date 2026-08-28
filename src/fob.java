@@ -1,218 +1,81 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
+import org.slf4j.Logger;
 
-public class fob extends fnx {
-   private final List<foe> c = new ArrayList<>();
-   private final List<fob.a> d = new ArrayList<>();
-   private final fof e = fof.i();
-   private int f = 0;
-   private int g = 0;
+public class fob {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Object a = new Object();
+   private static long c = 0L;
 
-   public fob() {
-      this(0, 0);
-   }
+   public static long a() {
+      synchronized (a) {
+         if (c == 0L) {
+            MemoryStack $$0 = MemoryStack.stackPush();
 
-   public fob(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
-   }
+            try {
+               PointerBuffer $$1 = $$0.mallocPointer(1);
+               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
+               c = $$1.get();
+            } catch (Throwable var6) {
+               if ($$0 != null) {
+                  try {
+                     $$0.close();
+                  } catch (Throwable var5) {
+                     var6.addSuppressed(var5);
+                  }
+               }
 
-   @Override
-   public void a() {
-      super.a();
-      int $$0 = 0;
-      int $$1 = 0;
+               throw var6;
+            }
 
-      for (fob.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
-      }
-
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
-
-      for (fob.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
-
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+            if ($$0 != null) {
+               $$0.close();
+            }
          }
 
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
+         return c;
       }
+   }
 
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+   public static void a(int $$0, String $$1) {
+      if ($$0 != 0) {
+         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
       }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (fob.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
-         }
-
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.D() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.E() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
    }
 
-   public <T extends foe> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
-   }
-
-   public <T extends foe> T a(T $$0, int $$1, int $$2, fof $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
-   }
-
-   public <T extends foe> T a(T $$0, int $$1, int $$2, Consumer<fof> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, ad.a(this.b(), $$3));
-   }
-
-   public <T extends foe> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends foe> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fof $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
+   public static boolean b(int $$0, String $$1) {
+      if ($$0 != 0) {
+         b.error("FreeType error: {} ({})", a($$0), $$1);
+         return true;
       } else {
-         this.d.add(new fob.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
+         return false;
       }
    }
 
-   public <T extends foe> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fof> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, ad.a(this.b(), $$5));
+   private static String a(int $$0) {
+      String $$1 = FreeType.FT_Error_String($$0);
+      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
    }
 
-   public fob a(int $$0) {
-      this.g = $$0;
-      return this;
+   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
+      long $$3 = (long)Math.round($$1 * 64.0F);
+      long $$4 = (long)Math.round($$2 * 64.0F);
+      return $$0.set($$3, $$4);
    }
 
-   public fob b(int $$0) {
-      this.f = $$0;
-      return this;
+   public static float a(FT_Vector $$0) {
+      return (float)$$0.x() / 64.0F;
    }
 
-   public fob c(int $$0) {
-      return this.a($$0).b($$0);
-   }
-
-   @Override
-   public void b(Consumer<foe> $$0) {
-      this.c.forEach($$0);
-   }
-
-   public fof b() {
-      return this.e.g();
-   }
-
-   public fof c() {
-      return this.e;
-   }
-
-   public fob.b d(int $$0) {
-      return new fob.b($$0);
-   }
-
-   static class a extends fnx.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(foe $$0, int $$1, int $$2, int $$3, int $$4, fof $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-      }
-
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
-      }
-   }
-
-   public final class b {
-      private final int b;
-      private int c;
-
-      b(final int $$1) {
-         this.b = $$1;
-      }
-
-      public <T extends foe> T a(T $$0) {
-         return this.a($$0, 1);
-      }
-
-      public <T extends foe> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
-      }
-
-      public <T extends foe> T a(T $$0, fof $$1) {
-         return this.a($$0, 1, $$1);
-      }
-
-      public <T extends foe> T a(T $$0, int $$1, fof $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = azf.d(this.c, this.b);
+   public static void b() {
+      synchronized (a) {
+         if (c != 0L) {
+            FreeType.FT_Done_Library(c);
+            c = 0L;
          }
-
-         this.c += $$1;
-         return fob.this.a($$0, $$3, $$4, 1, $$1, $$2);
-      }
-
-      public fob a() {
-         return fob.this;
-      }
-
-      public fof b() {
-         return fob.this.b();
-      }
-
-      public fof c() {
-         return fob.this.c();
       }
    }
 }

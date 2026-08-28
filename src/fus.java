@@ -1,169 +1,115 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class fus extends fqh {
-   private static final xe a = xe.c("gui.abuseReport.reason.title");
-   private static final xe b = xe.c("gui.abuseReport.reason.description");
-   private static final xe c = xe.c("gui.abuseReport.read_info");
-   private static final int d = 320;
-   private static final int s = 62;
-   private static final int u = 4;
-   @Nullable
-   private final fqh v;
-   @Nullable
-   private fus.a w;
-   @Nullable
-   gcs x;
-   private final Consumer<gcs> y;
-   final foc z = new foc(this);
-   final gct A;
+public class fus {
+   private final kd a;
+   private final List<dal<?>> b;
+   private final boolean c;
+   private final Set<dal<?>> d = Sets.newHashSet();
+   private final Set<dal<?>> e = Sets.newHashSet();
+   private final Set<dal<?>> f = Sets.newHashSet();
 
-   public fus(@Nullable fqh $$0, @Nullable gcs $$1, gct $$2, Consumer<gcs> $$3) {
-      super(a);
-      this.v = $$0;
-      this.x = $$1;
-      this.y = $$3;
-      this.A = $$2;
-   }
-
-   @Override
-   protected void aS_() {
-      this.z.a(a, this.p);
-      fog $$0 = this.z.c(fog.d().a(4));
-      this.w = $$0.a(new fus.a(this.m));
-      fus.a.a $$1 = x.a(this.x, this.w::a);
-      this.w.a($$1);
-      $$0.a(foh.b(this.J()));
-      fog $$2 = this.z.b(fog.e().a(8));
-      $$2.a(fko.a(c, fpe.b(this, ayb.m)).a());
-      $$2.a(fko.a(xd.d, $$0x -> {
-         fus.a.a $$1x = this.w.h();
-         if ($$1x != null) {
-            this.y.accept($$1x.b());
-         }
-
-         this.m.a(this.v);
-      }).a());
-      this.z.a($$1x -> {
-         fkm var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.z.a();
-      if (this.w != null) {
-         this.w.b(this.n, this.K(), this.z.c());
+   public fus(kd $$0, List<dal<?>> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      if ($$1.size() <= 1) {
+         this.c = true;
+      } else {
+         this.c = a($$0, $$1);
       }
    }
 
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m(), this.E(), this.D(), this.F(), -16777216);
-      $$0.b(this.m(), this.E(), this.G(), this.J(), -1);
-      $$0.b(this.p, b, this.m() + 4, this.E() + 4, -1);
-      fus.a.a $$4 = this.w.h();
-      if ($$4 != null) {
-         int $$5 = this.m() + 4 + 16;
-         int $$6 = this.D() - 4;
-         int $$7 = this.E() + 4 + 9 + 2;
-         int $$8 = this.F() - 4;
-         int $$9 = $$6 - $$5;
-         int $$10 = $$8 - $$7;
-         int $$11 = this.p.b($$4.b.c(), $$9);
-         $$0.a(this.p, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
-      }
-   }
+   private static boolean a(kd $$0, List<dal<?>> $$1) {
+      int $$2 = $$1.size();
+      cvx $$3 = $$1.get(0).b().a($$0);
 
-   private int m() {
-      return (this.n - 320) / 2;
-   }
-
-   private int D() {
-      return (this.n + 320) / 2;
-   }
-
-   private int E() {
-      return this.F() - this.J();
-   }
-
-   private int F() {
-      return this.o - this.z.b() - 4;
-   }
-
-   private int G() {
-      return 320;
-   }
-
-   private int J() {
-      return 62;
-   }
-
-   int K() {
-      return this.z.d() - this.J() - 8;
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.v);
-   }
-
-   public class a extends flk<fus.a.a> {
-      public a(final fip $$1) {
-         super($$1, fus.this.n, fus.this.K(), fus.this.z.c(), 18);
-
-         for (gcs $$2 : gcs.values()) {
-            if (!gcs.a(fus.this.A).contains($$2)) {
-               this.b(new fus.a.a($$2));
-            }
+      for (int $$4 = 1; $$4 < $$2; $$4++) {
+         cvx $$5 = $$1.get($$4).b().a($$0);
+         if (!cvx.c($$3, $$5)) {
+            return false;
          }
       }
 
-      @Nullable
-      public fus.a.a a(gcs $$0) {
-         return this.aJ_().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
-      }
+      return true;
+   }
 
-      @Override
-      public int b() {
-         return 320;
-      }
+   public kd a() {
+      return this.a;
+   }
 
-      public void a(@Nullable fus.a.a $$0) {
-         super.a($$0);
-         fus.this.x = $$0 != null ? $$0.b() : null;
-      }
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
 
-      public class a extends flk.a<fus.a.a> {
-         final gcs b;
-
-         public a(final gcs $$1) {
-            this.b = $$1;
-         }
-
-         @Override
-         public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 + 1;
-            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
-            $$0.b(fus.this.p, this.b.b(), $$10, $$11, -1);
-         }
-
-         @Override
-         public xe a() {
-            return xe.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
-
-         public gcs b() {
-            return this.b;
+   public void a(awn $$0) {
+      for (dal<?> $$1 : this.b) {
+         if ($$0.b($$1)) {
+            this.f.add($$1);
          }
       }
+   }
+
+   public void a(com $$0, int $$1, int $$2, awn $$3) {
+      for (dal<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
+         } else {
+            this.e.remove($$4);
+         }
+
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
+         } else {
+            this.d.remove($$4);
+         }
+      }
+   }
+
+   public boolean a(dal<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean c() {
+      return !this.d.isEmpty();
+   }
+
+   public boolean d() {
+      return !this.e.isEmpty();
+   }
+
+   public List<dal<?>> e() {
+      return this.b;
+   }
+
+   public List<dal<?>> a(fus.a $$0) {
+      Predicate<dal<?>> $$1 = switch ($$0) {
+         case a -> this.e::contains;
+         case b -> this.d::contains;
+         case c -> $$0x -> this.e.contains($$0x) && !this.d.contains($$0x);
+      };
+      List<dal<?>> $$2 = new ArrayList<>();
+
+      for (dal<?> $$3 : this.b) {
+         if ($$1.test($$3)) {
+            $$2.add($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   public boolean f() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

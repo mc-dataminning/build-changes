@@ -1,78 +1,50 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-@Deprecated
-public class ekb extends ekn {
-   public static final MapCodec<ekb> a = bqx.b(0, 256).fieldOf("count").xmap(ekb::new, $$0 -> $$0.c);
-   private final bqx c;
+public class ekb extends ejy {
+   public static final MapCodec<ekb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ebt.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), ebt.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, ekb::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final ebt d;
+   private final ebt e;
+   private final LongSet f = new LongOpenHashSet();
 
-   private ekb(bqx $$0) {
-      this.c = $$0;
+   private ekb(ebt $$0, ebt $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static ekb a(bqx $$0) {
-      return new ekb($$0);
-   }
-
-   public static ekb a(int $$0) {
-      return a(bqu.a($$0));
-   }
-
-   @Override
-   public Stream<jf> a_(ekl $$0, azn $$1, jf $$2) {
-      Builder<jf> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(eao.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new jf($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
+   public static ekb a(ebt $$0, ebt $$1) {
+      return new ekb($$0, $$1);
    }
 
    @Override
-   public eko<?> b() {
-      return eko.i;
-   }
-
-   private static int a(ekl $$0, int $$1, int $$2, int $$3, int $$4) {
-      jf.a $$5 = new jf.a($$1, $$2, $$3);
-      int $$6 = 0;
-      dus $$7 = $$0.a($$5);
-
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         dus $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(dho.F)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
-            }
-
-            $$6++;
+   public int a(azr $$0, ebw $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
          }
 
-         $$7 = $$9;
+         return $$2;
+      } else {
+         return azj.b($$0, $$2, $$3);
       }
-
-      return Integer.MAX_VALUE;
    }
 
-   private static boolean a(dus $$0) {
-      return $$0.l() || $$0.a(dho.G) || $$0.a(dho.H);
+   @Override
+   public ejz<?> a() {
+      return ejz.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

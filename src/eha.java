@@ -1,19 +1,33 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eha<P extends egz> {
-   public static final eha<ehc> a = a("two_layers_feature_size", ehc.d);
-   public static final eha<ehb> b = a("three_layers_feature_size", ehb.d);
-   private final MapCodec<P> c;
+public record eha(int b, int c, int d, int e, int f, brd g, float h) implements egj {
+   public static final Codec<eha> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(eha::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(eha::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(eha::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(eha::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(eha::f),
+               brd.c.fieldOf("extra_rare_growths").forGetter(eha::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(eha::h)
+            )
+            .apply($$0, eha::new)
+   );
 
-   private static <P extends egz> eha<P> a(String $$0, MapCodec<P> $$1) {
-      return kb.a(lv.Y, $$0, new eha<>($$1));
+   public int a() {
+      return this.b;
    }
 
-   private eha(MapCodec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public MapCodec<P> a() {
+   public int b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

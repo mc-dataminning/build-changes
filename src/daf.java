@@ -1,124 +1,76 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class daf extends dab {
-   private static final Map<cvn, cyl.a> a = Map.of(
-      cvw.tY,
-      cyl.a.b,
-      cvw.pu,
-      cyl.a.e,
-      cvw.sj,
-      cyl.a.c,
-      cvw.un,
-      cyl.a.d,
-      cvw.uo,
-      cyl.a.d,
-      cvw.ur,
-      cyl.a.d,
-      cvw.up,
-      cyl.a.d,
-      cvw.us,
-      cyl.a.d,
-      cvw.uq,
-      cyl.a.d,
-      cvw.ut,
-      cyl.a.d
-   );
-   private static final dag b = dag.a(cvw.oA);
-   private static final dag c = dag.a(cvw.qZ);
-   private static final dag d = dag.a(cvw.pv);
+public final class daf implements Predicate<cvx> {
+   public static final zf<ws, daf> a = zd.c(ly.K).a(daf::new, $$0 -> $$0.e);
+   public static final zf<ws, Optional<daf>> b = zd.c(ly.K)
+      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new daf((jt<cvt>)$$0)), $$0 -> $$0.<jt.a<cvt>>map($$0x -> $$0x.e).orElse(jt.a()));
+   public static final Codec<jt<cvt>> c = alb.a(ly.K, cvx.a, false);
+   public static final Codec<daf> d = ays.b(c).xmap(daf::new, $$0 -> $$0.e);
+   private final jt<cvt> e;
+   @Nullable
+   private List<jp<cvt>> f;
 
-   public daf(czy $$0) {
-      super($$0);
+   private daf(jt<cvt> $$0) {
+      $$0.d().ifRight($$0x -> {
+         if ($$0x.isEmpty()) {
+            throw new UnsupportedOperationException("Ingredients can't be empty");
+         } else if ($$0x.contains(cwb.a.f())) {
+            throw new UnsupportedOperationException("Ingredient can't contain air");
+         }
+      });
+      this.e = $$0;
    }
 
-   public boolean a(czz $$0, dej $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      boolean $$5 = false;
-      boolean $$6 = false;
+   public static boolean a(Optional<daf> $$0, cvx $$1) {
+      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
+   }
 
-      for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
-         cvs $$8 = $$0.a($$7);
-         if (!$$8.f()) {
-            if (a.containsKey($$8.h())) {
-               if ($$4) {
-                  return false;
-               }
+   public List<jp<cvt>> a() {
+      if (this.f == null) {
+         this.f = ImmutableList.copyOf(this.e);
+      }
 
-               $$4 = true;
-            } else if (c.a($$8)) {
-               if ($$6) {
-                  return false;
-               }
+      return this.f;
+   }
 
-               $$6 = true;
-            } else if (b.a($$8)) {
-               if ($$5) {
-                  return false;
-               }
+   public boolean a(cvx $$0) {
+      List<jp<cvt>> $$1 = this.a();
 
-               $$5 = true;
-            } else if (d.a($$8)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else {
-               if (!($$8.h() instanceof cun)) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         if ($$0.a($$1.get($$2))) {
+            return true;
          }
       }
 
-      return $$2 && $$3;
-   }
-
-   public cvs a(czz $$0, jq.a $$1) {
-      cyl.a $$2 = cyl.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
-
-      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
-         cvs $$7 = $$0.a($$6);
-         if (!$$7.f()) {
-            cyl.a $$8 = a.get($$7.h());
-            if ($$8 != null) {
-               $$2 = $$8;
-            } else if (c.a($$7)) {
-               $$3 = true;
-            } else if (b.a($$7)) {
-               $$4 = true;
-            } else if ($$7.h() instanceof cun) {
-               $$5.add(((cun)$$7.h()).c().f());
-            }
-         }
-      }
-
-      cvs $$9 = new cvs(cvw.ux);
-      $$9.b(ks.Z, new cyl($$2, $$5, IntList.of(), $$4, $$3));
-      return $$9;
+      return false;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public boolean equals(Object $$0) {
+      return $$0 instanceof daf $$1 ? Objects.equals(this.e, $$1.e) : false;
    }
 
-   @Override
-   public cvs a(jq.a $$0) {
-      return new cvs(cvw.ux);
+   public static daf a(deu $$0) {
+      return new daf(jt.a($$0.j().f()));
    }
 
-   @Override
-   public dap<?> ar_() {
-      return dap.h;
+   public static daf a(deu... $$0) {
+      return a(Arrays.stream($$0));
+   }
+
+   public static daf a(Stream<? extends deu> $$0) {
+      return new daf(jt.a($$0.map($$0x -> $$0x.j().f()).toList()));
+   }
+
+   public static daf a(jt<cvt> $$0) {
+      return new daf($$0);
    }
 }

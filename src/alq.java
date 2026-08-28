@@ -1,13 +1,15 @@
-public final class alq extends RuntimeException {
-   public static final alq a = new alq();
+import java.util.List;
 
-   private alq() {
-      this.setStackTrace(new StackTraceElement[0]);
-   }
+public enum alq {
+   a,
+   b,
+   c,
+   d;
 
-   @Override
-   public synchronized Throwable fillInStackTrace() {
-      this.setStackTrace(new StackTraceElement[0]);
-      return this;
+   private static final List<alq> e = List.of(values());
+   private static final kd.b f = kd.a(lx.az);
+
+   public static jw<alq> a() {
+      return new jw<>(e).a(a, f);
    }
 }

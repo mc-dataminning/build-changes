@@ -1,42 +1,88 @@
-public class fxg extends fxo<gtj> {
-   private final gaq a;
-   private final gaq b;
-   private final gaq c;
-   private final gaq d;
-   private final gaq e;
-   private static final int f = 6;
+import java.util.Arrays;
 
-   public fxg(gaq $$0) {
+public class fxg extends fxz<gva> {
+   private final gbb[] a;
+   private final gbb b;
+
+   public fxg(gbb $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.c = $$0.b("right_hind_leg");
-      this.b = $$0.b("left_hind_leg");
-      this.e = $$0.b("right_front_leg");
-      this.d = $$0.b("left_front_leg");
+      this.b = $$0.b("head");
+      this.a = new gbb[12];
+      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
    }
 
-   public static gaw a(gau $$0) {
-      gay $$1 = new gay();
-      gba $$2 = $$1.a();
-      $$2.a("head", gav.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gas.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", gav.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gas.a(0.0F, 6.0F, 0.0F));
-      gav $$3 = gav.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, gas.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, gas.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, gas.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, gas.a(2.0F, 18.0F, -4.0F));
-      return gaw.a($$1, 64, 32);
+   private static String a(int $$0) {
+      return "part" + $$0;
    }
 
-   public void a(gtj $$0) {
+   public static gbh a() {
+      gbj $$0 = new gbj();
+      gbl $$1 = $$0.a();
+      $$1.a("head", gbg.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gbd.a);
+      float $$2 = 0.0F;
+      gbg $$3 = gbg.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = azj.b($$2) * 9.0F;
+         float $$6 = -2.0F + azj.b((float)($$4 * 2) * 0.25F);
+         float $$7 = azj.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, gbd.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = azj.b($$2) * 7.0F;
+         float $$10 = 2.0F + azj.b((float)($$8 * 2) * 0.25F);
+         float $$11 = azj.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, gbd.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = azj.b($$2) * 5.0F;
+         float $$14 = 11.0F + azj.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = azj.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, gbd.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return gbh.a($$0, 64, 32);
+   }
+
+   public void a(gva $$0) {
       super.a($$0);
-      this.a.f = $$0.U * (float) (Math.PI / 180.0);
-      this.a.e = $$0.V * (float) (Math.PI / 180.0);
-      float $$1 = $$0.Y;
-      float $$2 = $$0.X;
-      this.b.e = azf.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.c.e = azf.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.d.e = azf.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.e.e = azf.b($$2 * 0.6662F) * 1.4F * $$1;
+      float $$1 = $$0.p * (float) Math.PI * -0.1F;
+
+      for (int $$2 = 0; $$2 < 4; $$2++) {
+         this.a[$$2].c = -2.0F + azj.b(((float)($$2 * 2) + $$0.p) * 0.25F);
+         this.a[$$2].b = azj.b($$1) * 9.0F;
+         this.a[$$2].d = azj.a($$1) * 9.0F;
+         $$1++;
+      }
+
+      $$1 = (float) (Math.PI / 4) + $$0.p * (float) Math.PI * 0.03F;
+
+      for (int $$3 = 4; $$3 < 8; $$3++) {
+         this.a[$$3].c = 2.0F + azj.b(((float)($$3 * 2) + $$0.p) * 0.25F);
+         this.a[$$3].b = azj.b($$1) * 7.0F;
+         this.a[$$3].d = azj.a($$1) * 7.0F;
+         $$1++;
+      }
+
+      $$1 = 0.47123894F + $$0.p * (float) Math.PI * -0.05F;
+
+      for (int $$4 = 8; $$4 < 12; $$4++) {
+         this.a[$$4].c = 11.0F + azj.b(((float)$$4 * 1.5F + $$0.p) * 0.5F);
+         this.a[$$4].b = azj.b($$1) * 5.0F;
+         this.a[$$4].d = azj.a($$1) * 5.0F;
+         $$1++;
+      }
+
+      this.b.f = $$0.U * (float) (Math.PI / 180.0);
+      this.b.e = $$0.V * (float) (Math.PI / 180.0);
    }
 }

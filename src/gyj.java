@@ -1,56 +1,75 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class gyj extends avb<List<String>> {
-   private static final ale a = ale.b("texts/splashes.txt");
-   private static final azn b = azn.a();
-   private final List<String> c = Lists.newArrayList();
-   private final fjc d;
+public class gyj extends aue {
+   private static final aua d = new aua(xh.c("resourcePack.vanilla.description"), ab.b().a(atn.a), Optional.empty());
+   private static final atd e = atd.a(aua.b, d);
+   public static final String c = "high_contrast";
+   private static final Map<String, xh> f = Map.of(
+      "programmer_art", xh.c("resourcePack.programmer_art.name"), "high_contrast", xh.c("resourcePack.high_contrast.name")
+   );
+   private static final atk g = new atk("vanilla", xh.c("resourcePack.vanilla.name"), aul.c, Optional.of(b));
+   private static final atm h = new atm(true, auh.b.b, false);
+   private static final atm i = new atm(false, auh.b.a, false);
+   private static final alh j = alh.b("resourcepacks");
+   @Nullable
+   private final Path k;
 
-   public gyj(fjc $$0) {
-      this.d = $$0;
+   public gyj(Path $$0, eyx $$1) {
+      super(atn.a, b($$0), j, $$1);
+      this.k = this.a($$0);
    }
 
-   protected List<String> a(auv $$0, bog $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = fip.Q().ac().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
-
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
-      }
-   }
-
-   protected void a(List<String> $$0, auv $$1, bog $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
+   private static atk a(String $$0, xh $$1) {
+      return new atk($$0, $$1, aul.c, Optional.of(aug.a($$0)));
    }
 
    @Nullable
-   public fls a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return fls.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return fls.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return fls.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new fls(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fls(this.c.get(b.a(this.c.size())));
+   private Path a(Path $$0) {
+      if (ab.aW && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   private static atp b(Path $$0) {
+      atq $$1 = new atq().a(e).a("minecraft", "realms");
+      return $$1.b().a().a(atn.a, $$0).a(g);
+   }
+
+   @Override
+   protected xh a(String $$0) {
+      xh $$1 = f.get($$0);
+      return (xh)($$1 != null ? $$1 : xh.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected auh a(atl $$0) {
+      return auh.a(g, b($$0), atn.a, h);
+   }
+
+   @Nullable
+   @Override
+   protected auh a(String $$0, auh.c $$1, xh $$2) {
+      return auh.a(a($$0, $$2), $$1, atn.a, i);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, auh>> $$0) {
+      super.a($$0);
+      if (this.k != null) {
+         this.a(this.k, $$0);
       }
    }
 }

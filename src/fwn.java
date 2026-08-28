@@ -1,62 +1,96 @@
-public class fwn extends fwm {
-   private static final String a = "right_body_stick";
-   private static final String b = "left_body_stick";
-   private static final String c = "shoulder_stick";
-   private static final String d = "base_plate";
-   private final gaq e;
-   private final gaq f;
-   private final gaq g;
-   private final gaq x;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-   public fwn(gaq $$0) {
-      super($$0);
-      this.e = $$0.b("right_body_stick");
-      this.f = $$0.b("left_body_stick");
-      this.g = $$0.b("shoulder_stick");
-      this.x = $$0.b("base_plate");
-      this.p.k = false;
+public class fwn {
+   public final fwn.d a;
+   public final fcj b;
+   public final fwn.a c;
+   public final fwn.b d;
+   public final fwn.c e;
+
+   public fwn(fwn.d $$0, fcj $$1, fwn.a $$2, fwn.b $$3, fwn.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static gaw a() {
-      gay $$0 = fyb.a(gau.a, 0.0F);
-      gba $$1 = $$0.a();
-      $$1.a("head", gav.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), gas.a(0.0F, 1.0F, 0.0F));
-      $$1.a("body", gav.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), gas.a);
-      $$1.a("right_arm", gav.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gas.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", gav.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gas.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", gav.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gas.a(-1.9F, 12.0F, 0.0F));
-      $$1.a("left_leg", gav.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gas.a(1.9F, 12.0F, 0.0F));
-      $$1.a("right_body_stick", gav.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gas.a);
-      $$1.a("left_body_stick", gav.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gas.a);
-      $$1.a("shoulder_stick", gav.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), gas.a);
-      $$1.a("base_plate", gav.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), gas.a(0.0F, 12.0F, 0.0F));
-      return gaw.a($$0, 64, 64);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : gyn.a(this.c.toPath(), this.d);
+      }
    }
 
-   @Override
-   public void a(gsx $$0) {
-      super.a($$0);
-      this.x.f = (float) (Math.PI / 180.0) * -$$0.a;
-      this.s.k = $$0.e;
-      this.r.k = $$0.e;
-      this.x.k = $$0.f;
-      this.e.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.e.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.e.g = (float) (Math.PI / 180.0) * $$0.h.d();
-      this.f.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.f.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.f.g = (float) (Math.PI / 180.0) * $$0.h.d();
-      this.g.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.g.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.g.g = (float) (Math.PI / 180.0) * $$0.h.d();
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
    }
 
-   @Override
-   public void a(buh $$0, fdi $$1) {
-      gaq $$2 = this.a($$0);
-      boolean $$3 = $$2.k;
-      $$2.k = true;
-      super.a($$0, $$1);
-      $$2.k = $$3;
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !bag.h(this.b) || !bag.h(this.c) || !bag.h(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final fjn a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(fjn $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

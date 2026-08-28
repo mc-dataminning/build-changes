@@ -1,26 +1,53 @@
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public record cyu(int f) implements cyf, cyz {
-   public static final int a = 120000;
-   public static final int b = 0;
-   public static final int c = 4;
-   public static final Codec<cyu> d = ayo.a(0, 4).xmap(cyu::new, cyu::a);
-   public static final zc<wp, cyu> e = zc.a(za.h, cyu::a, cyu::new);
+public record cyu(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<cyu> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.y.optionalFieldOf("name").forGetter(cyu::c),
+               kj.a.optionalFieldOf("id").forGetter(cyu::d),
+               ays.x.optionalFieldOf("properties", new PropertyMap()).forGetter(cyu::e)
+            )
+            .apply($$0, cyu::new)
+   );
+   public static final Codec<cyu> a = Codec.withAlternative(g, ays.y, $$0 -> new cyu(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final zf<ByteBuf, cyu> b = zf.a(zd.b(16).a(zd::a), cyu::c, kj.g.a(zd::a), cyu::d, zd.v, cyu::e, cyu::new);
 
-   @Override
-   public void a(dej $$0, bun $$1, cvs $$2, cye $$3) {
-      $$1.a(new bsy(bta.E, 120000, this.f, false, false, true));
+   public cyu(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   @Override
-   public void a(cvn.b $$0, Consumer<xe> $$1, cxk $$2) {
-      List<bsy> $$3 = List.of(new bsy(bta.E, 120000, this.f, false, false, true));
-      cxr.a($$3, $$1, 1.0F, $$0.b());
+   public cyu(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
    }
 
-   public int a() {
-      return this.f;
+   public CompletableFuture<cyu> a() {
+      if (this.b()) {
+         return CompletableFuture.completedFuture(this);
+      } else {
+         return this.d.isPresent() ? dtu.a(this.d.get()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
+            return new cyu($$1);
+         }) : dtu.a(this.c.orElseThrow()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ad.e, this.c.get()));
+            return new cyu($$1);
+         });
+      }
+   }
+
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ad.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
+   }
+
+   public boolean b() {
+      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
    }
 }

@@ -1,7 +1,9 @@
-import javax.annotation.Nullable;
+public class csh extends crl {
+   public csh(int $$0, cog $$1) {
+      super(css.o, dap.b, csz.b, $$0, $$1);
+   }
 
-@FunctionalInterface
-public interface csh {
-   @Nullable
-   cqz createMenu(int var1, cnw var2, cnx var3);
+   public csh(int $$0, cog $$1, brr $$2, crv $$3) {
+      super(css.o, dap.b, csz.b, $$0, $$1, $$2, $$3);
+   }
 }

@@ -1,24 +1,8 @@
-import java.util.function.IntFunction;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public enum cil {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
-
-   private static final IntFunction<cil> f = axw.a(cil::a, values(), axw.a.b);
-   private final int g;
-
-   private cil(final int $$0) {
-      this.g = $$0;
-   }
-
-   public int a() {
-      return this.g;
-   }
-
-   public static cil a(int $$0) {
-      return f.apply($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cil {
 }

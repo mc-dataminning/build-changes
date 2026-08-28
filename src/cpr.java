@@ -1,39 +1,139 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class cpr {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final cpr c = a("empty").a(0, cpp.b).a();
-   public static final cpr d = a("simple").a(5000, cpp.c).a(11000, cpp.e).a();
-   public static final cpr e = a("villager_baby").a(10, cpp.b).a(3000, cpp.d).a(6000, cpp.b).a(10000, cpp.d).a(12000, cpp.e).a();
-   public static final cpr f = a("villager_default").a(10, cpp.b).a(2000, cpp.c).a(9000, cpp.f).a(11000, cpp.b).a(12000, cpp.e).a();
-   private final Map<cpp, cpt> g = Maps.newHashMap();
+public abstract class cpr extends coq implements coy {
+   public static final deo e = new dfn(true, false, Optional.empty(), lx.e.a(awz.cA).map(Function.identity()));
+   public static final double f = 0.25;
 
-   protected static cps a(String $$0) {
-      cpr $$1 = kb.a(lv.B, $$0, new cpr());
-      return new cps($$1);
+   public cpr(bug<? extends cpr> $$0, dev $$1) {
+      super($$0, $$1);
+      this.d = 0.0;
    }
 
-   protected void a(cpp $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cpt());
+   public cpr(bug<? extends cpr> $$0, dev $$1, btz $$2, double $$3, double $$4, double $$5) {
+      super($$0, $$3, $$4, $$5, $$1);
+      this.c($$2);
+      this.d = 0.0;
+   }
+
+   cpr(bug<? extends cpr> $$0, double $$1, double $$2, double $$3, ezh $$4, dev $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.d = 0.0;
+   }
+
+   @Override
+   protected ezc ay() {
+      float $$0 = this.aq().n().a() / 2.0F;
+      float $$1 = this.aq().n().b();
+      float $$2 = 0.15F;
+      return new ezc(
+         this.dv().d - (double)$$0,
+         this.dv().e - 0.15F,
+         this.dv().f - (double)$$0,
+         this.dv().d + (double)$$0,
+         this.dv().e - 0.15F + (double)$$1,
+         this.dv().f + (double)$$0
+      );
+   }
+
+   @Override
+   public boolean i(btz $$0) {
+      return $$0 instanceof cpr ? false : super.i($$0);
+   }
+
+   @Override
+   protected boolean b(btz $$0) {
+      if ($$0 instanceof cpr) {
+         return false;
+      } else {
+         return $$0.aq() == bug.E ? false : super.b($$0);
       }
    }
 
-   protected cpt b(cpp $$0) {
-      return this.g.get($$0);
+   @Override
+   protected void a(eze $$0) {
+      super.a($$0);
+      if (!this.dX().C) {
+         buv $$2 = this.s() instanceof buv $$1 ? $$1 : null;
+         btz $$3 = $$0.a();
+         if ($$2 != null) {
+            $$2.B($$3);
+         }
+
+         bsp $$4 = this.dY().c(this, $$2);
+         if ($$3.a($$4, 1.0F) && $$3 instanceof buv $$5) {
+            dbo.a((arm)this.dX(), (btz)$$5, $$4);
+         }
+
+         this.a(this.dv());
+      }
    }
 
-   protected List<cpt> c(cpp $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   @Override
+   public void j(double $$0, double $$1, double $$2) {
    }
 
-   public cpp a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cpp.b);
+   protected abstract void a(ezh var1);
+
+   @Override
+   protected void a(ezd $$0) {
+      super.a($$0);
+      if (!this.dX().C) {
+         kk $$1 = $$0.c().q();
+         ezh $$2 = ezh.a($$1).d(0.25, 0.25, 0.25);
+         ezh $$3 = $$0.g().e($$2);
+         this.a($$3);
+         this.au();
+      }
+   }
+
+   @Override
+   protected void a(ezf $$0) {
+      super.a($$0);
+      if (!this.dX().C) {
+         this.au();
+      }
+   }
+
+   @Override
+   protected boolean o() {
+      return false;
+   }
+
+   @Override
+   public cvx m() {
+      return cvx.k;
+   }
+
+   @Override
+   protected float t() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float v() {
+      return this.t();
+   }
+
+   @Nullable
+   @Override
+   protected lo q() {
+      return null;
+   }
+
+   @Override
+   public void l() {
+      if (!this.dX().C && this.dD() > this.dX().an() + 30) {
+         this.a(this.dv());
+         this.au();
+      } else {
+         super.l();
+      }
+   }
+
+   @Override
+   public boolean a(bsp $$0, float $$1) {
+      return false;
    }
 }

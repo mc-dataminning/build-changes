@@ -1,5 +1,8 @@
-public class guj extends guo {
-   public float a;
-   public int b;
-   public bto.a c = bto.a.a;
+import javax.annotation.Nullable;
+
+public class guj extends guc {
+   public boolean a;
+   @Nullable
+   public gzu b;
+   public cvx c = cvx.k;
 }

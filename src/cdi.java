@@ -1,40 +1,32 @@
-import java.util.EnumSet;
-
-public class cdi extends cdk {
-   private final bvj a;
-   private bun b;
+public class cdi extends ccd {
+   private final cmf b;
    private int c;
 
-   public cdi(bvj $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cbk.a.d));
-   }
-
-   @Override
-   public boolean b() {
-      if (this.a.q() && !this.a.go()) {
-         bun $$0 = this.a.S_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.ep();
-            int $$1 = $$0.eq();
-            return $$1 != this.c && this.a(this.b, cfd.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
+   public cdi(cmf $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
    public void d() {
-      this.e.h(this.b);
-      bun $$0 = this.a.S_();
-      if ($$0 != null) {
-         this.c = $$0.eq();
-      }
-
       super.d();
+      this.c = 0;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b.w(false);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.w(true);
+      } else {
+         this.b.w(false);
+      }
    }
 }

@@ -1,44 +1,147 @@
-public class bro {
-   public static void a(dej $$0, jf $$1, brl $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.UUID;
+
+public abstract class bro {
+   private final UUID h;
+   protected xh a;
+   protected float b;
+   protected bro.a c;
+   protected bro.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
+
+   public bro(UUID $$0, xh $$1, bro.a $$2, bro.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   public static void a(dej $$0, btr $$1, brl $$2) {
-      a($$0, $$1.dx(), $$1.dz(), $$1.dD(), $$2);
+   public UUID h() {
+      return this.h;
    }
 
-   private static void a(dej $$0, double $$1, double $$2, double $$3, brl $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   public xh i() {
+      return this.a;
+   }
+
+   public void a(xh $$0) {
+      this.a = $$0;
+   }
+
+   public float j() {
+      return this.b;
+   }
+
+   public void a(float $$0) {
+      this.b = $$0;
+   }
+
+   public bro.a k() {
+      return this.c;
+   }
+
+   public void a(bro.a $$0) {
+      this.c = $$0;
+   }
+
+   public bro.b l() {
+      return this.d;
+   }
+
+   public void a(bro.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean m() {
+      return this.e;
+   }
+
+   public bro a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean n() {
+      return this.f;
+   }
+
+   public bro b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bro c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(final String $$0, final n $$1) {
+         this.h = $$0;
+         this.i = $$1;
       }
-   }
 
-   public static void a(dej $$0, jf $$1, jx<cvs> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
-   }
-
-   public static void a(dej $$0, double $$1, double $$2, double $$3, cvs $$4) {
-      double $$5 = (double)bty.ag.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.f()) {
-         ckh $$11 = new ckh($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.n($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
+      public n a() {
+         return this.i;
       }
-   }
 
-   public static void a(dus $$0, dus $$1, dej $$2, jf $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof brl $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
+      public String b() {
+         return this.h;
+      }
+
+      public static bro.a a(String $$0) {
+         for (bro.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
          }
+
+         return g;
+      }
+   }
+
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
+
+      private final String f;
+
+      private b(final String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bro.b a(String $$0) {
+         for (bro.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return a;
       }
    }
 }

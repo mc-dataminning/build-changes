@@ -1,30 +1,66 @@
-import java.util.function.IntFunction;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-public enum fiv implements azi {
-   a(0, "options.prioritizeChunkUpdates.none"),
-   b(1, "options.prioritizeChunkUpdates.byPlayer"),
-   c(2, "options.prioritizeChunkUpdates.nearby");
+public class fiv {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final ggu[] e = new ggu[9];
+   private boolean f;
 
-   private static final IntFunction<fiv> d = axw.a(fiv::b, values(), axw.a.b);
-   private final int e;
-   private final String f;
+   public fiv(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-   private fiv(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new ggu();
+      }
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   private void b() {
+      try {
+         uj $$0 = uw.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = uy.b($$0, 1343);
+         $$0 = bas.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = ggu.a.parse(ux.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(ggu::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   public void a() {
+      try {
+         uj $$0 = uy.e(new uj());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            ggu $$2 = this.a($$1);
+            DataResult<vg> $$3 = ggu.a.encodeStart(ux.a, $$2);
+            $$0.a(String.valueOf($$1), (vg)$$3.getOrThrow());
+         }
+
+         uw.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
    }
 
-   public static fiv a(int $$0) {
-      return d.apply($$0);
+   public ggu a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
    }
 }

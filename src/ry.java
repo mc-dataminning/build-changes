@@ -1,82 +1,54 @@
 import java.util.List;
 
 public class ry {
-   public static final ald<edg<?, ?>> a = rv.a("ore_magma");
-   public static final ald<edg<?, ?>> b = rv.a("ore_soul_sand");
-   public static final ald<edg<?, ?>> c = rv.a("ore_nether_gold");
-   public static final ald<edg<?, ?>> d = rv.a("ore_quartz");
-   public static final ald<edg<?, ?>> e = rv.a("ore_gravel_nether");
-   public static final ald<edg<?, ?>> f = rv.a("ore_blackstone");
-   public static final ald<edg<?, ?>> g = rv.a("ore_dirt");
-   public static final ald<edg<?, ?>> h = rv.a("ore_gravel");
-   public static final ald<edg<?, ?>> i = rv.a("ore_granite");
-   public static final ald<edg<?, ?>> j = rv.a("ore_diorite");
-   public static final ald<edg<?, ?>> k = rv.a("ore_andesite");
-   public static final ald<edg<?, ?>> l = rv.a("ore_tuff");
-   public static final ald<edg<?, ?>> m = rv.a("ore_coal");
-   public static final ald<edg<?, ?>> n = rv.a("ore_coal_buried");
-   public static final ald<edg<?, ?>> o = rv.a("ore_iron");
-   public static final ald<edg<?, ?>> p = rv.a("ore_iron_small");
-   public static final ald<edg<?, ?>> q = rv.a("ore_gold");
-   public static final ald<edg<?, ?>> r = rv.a("ore_gold_buried");
-   public static final ald<edg<?, ?>> s = rv.a("ore_redstone");
-   public static final ald<edg<?, ?>> t = rv.a("ore_diamond_small");
-   public static final ald<edg<?, ?>> u = rv.a("ore_diamond_medium");
-   public static final ald<edg<?, ?>> v = rv.a("ore_diamond_large");
-   public static final ald<edg<?, ?>> w = rv.a("ore_diamond_buried");
-   public static final ald<edg<?, ?>> x = rv.a("ore_lapis");
-   public static final ald<edg<?, ?>> y = rv.a("ore_lapis_buried");
-   public static final ald<edg<?, ?>> z = rv.a("ore_infested");
-   public static final ald<edg<?, ?>> A = rv.a("ore_emerald");
-   public static final ald<edg<?, ?>> B = rv.a("ore_ancient_debris_large");
-   public static final ald<edg<?, ?>> C = rv.a("ore_ancient_debris_small");
-   public static final ald<edg<?, ?>> D = rv.a("ore_copper_small");
-   public static final ald<edg<?, ?>> E = rv.a("ore_copper_large");
-   public static final ald<edg<?, ?>> F = rv.a("ore_clay");
+   public static void a(qx<edr<?, ?>> $$0) {
+      rv.a($$0);
+      rw.a($$0);
+      rx.a($$0);
+      rz.a($$0);
+      sa.a($$0);
+      sb.a($$0);
+      sc.a($$0);
+      sd.a($$0);
+      se.a($$0);
+   }
 
-   public static void a(qu<edg<?, ?>> $$0) {
-      epc $$1 = new epk(awv.bf);
-      epc $$2 = new epk(awv.bg);
-      epc $$3 = new epk(awv.bh);
-      epc $$4 = new eok(dho.dV);
-      epc $$5 = new epk(awv.bi);
-      List<egg.a> $$6 = List.of(egg.a($$2, dho.P.n()), egg.a($$3, dho.Q.n()));
-      List<egg.a> $$7 = List.of(egg.a($$2, dho.N.n()), egg.a($$3, dho.O.n()));
-      List<egg.a> $$8 = List.of(egg.a($$2, dho.cx.n()), egg.a($$3, dho.cy.n()));
-      List<egg.a> $$9 = List.of(egg.a($$2, dho.aR.n()), egg.a($$3, dho.aS.n()));
-      List<egg.a> $$10 = List.of(egg.a($$2, dho.ra.n()), egg.a($$3, dho.rb.n()));
-      List<egg.a> $$11 = List.of(egg.a($$2, dho.R.n()), egg.a($$3, dho.S.n()));
-      rv.a($$0, a, edu.I, new egg($$4, dho.kJ.n(), 33));
-      rv.a($$0, b, edu.I, new egg($$4, dho.dW.n(), 12));
-      rv.a($$0, c, edu.I, new egg($$4, dho.T.n(), 10));
-      rv.a($$0, d, edu.I, new egg($$4, dho.hb.n(), 14));
-      rv.a($$0, e, edu.I, new egg($$4, dho.L.n(), 33));
-      rv.a($$0, f, edu.I, new egg($$4, dho.pr.n(), 33));
-      rv.a($$0, g, edu.I, new egg($$1, dho.j.n(), 33));
-      rv.a($$0, h, edu.I, new egg($$1, dho.L.n(), 33));
-      rv.a($$0, i, edu.I, new egg($$1, dho.c.n(), 64));
-      rv.a($$0, j, edu.I, new egg($$1, dho.e.n(), 64));
-      rv.a($$0, k, edu.I, new egg($$1, dho.g.n(), 64));
-      rv.a($$0, l, edu.I, new egg($$1, dho.qz.n(), 64));
-      rv.a($$0, m, edu.I, new egg($$11, 17));
-      rv.a($$0, n, edu.I, new egg($$11, 17, 0.5F));
-      rv.a($$0, o, edu.I, new egg($$6, 9));
-      rv.a($$0, p, edu.I, new egg($$6, 4));
-      rv.a($$0, q, edu.I, new egg($$7, 9));
-      rv.a($$0, r, edu.I, new egg($$7, 9, 0.5F));
-      rv.a($$0, s, edu.I, new egg(List.of(egg.a($$2, dho.dI.n()), egg.a($$3, dho.dJ.n())), 8));
-      rv.a($$0, t, edu.I, new egg($$8, 4, 0.5F));
-      rv.a($$0, v, edu.I, new egg($$8, 12, 0.7F));
-      rv.a($$0, w, edu.I, new egg($$8, 8, 1.0F));
-      rv.a($$0, u, edu.I, new egg($$8, 8, 0.5F));
-      rv.a($$0, x, edu.I, new egg($$9, 7));
-      rv.a($$0, y, edu.I, new egg($$9, 7, 1.0F));
-      rv.a($$0, z, edu.I, new egg(List.of(egg.a($$2, dho.eN.n()), egg.a($$3, dho.td.n())), 9));
-      rv.a($$0, A, edu.I, new egg(List.of(egg.a($$2, dho.fE.n()), egg.a($$3, dho.fF.n())), 3));
-      rv.a($$0, B, edu.af, new egg($$5, dho.pj.n(), 3, 1.0F));
-      rv.a($$0, C, edu.af, new egg($$5, dho.pj.n(), 2, 1.0F));
-      rv.a($$0, D, edu.I, new egg($$10, 10));
-      rv.a($$0, E, edu.I, new egg($$10, 20));
-      rv.a($$0, F, edu.I, new egg($$1, dho.dR.n(), 33));
+   private static ecg a(List<dhy> $$0) {
+      ecg $$1;
+      if (!$$0.isEmpty()) {
+         $$1 = ecg.a(ecg.c, ecg.a(jl.a.q(), $$0));
+      } else {
+         $$1 = ecg.c;
+      }
+
+      return $$1;
+   }
+
+   public static egw a(int $$0, jp<ekv> $$1) {
+      return new egw($$0, 7, 3, $$1);
+   }
+
+   public static <FC extends egj, F extends eef<FC>> egw a(F $$0, FC $$1, List<dhy> $$2, int $$3) {
+      return a($$3, sn.a($$0, $$1, a($$2)));
+   }
+
+   public static <FC extends egj, F extends eef<FC>> egw a(F $$0, FC $$1, List<dhy> $$2) {
+      return a($$0, $$1, $$2, 96);
+   }
+
+   public static <FC extends egj, F extends eef<FC>> egw a(F $$0, FC $$1) {
+      return a($$0, $$1, List.of(), 96);
+   }
+
+   public static alg<edr<?, ?>> a(String $$0) {
+      return alg.a(ly.aJ, alh.b($$0));
+   }
+
+   public static void a(qx<edr<?, ?>> $$0, alg<edr<?, ?>> $$1, eef<egq> $$2) {
+      a($$0, $$1, $$2, egj.m);
+   }
+
+   public static <FC extends egj, F extends eef<FC>> void a(qx<edr<?, ?>> $$0, alg<edr<?, ?>> $$1, F $$2, FC $$3) {
+      $$0.a($$1, new edr($$2, $$3));
    }
 }

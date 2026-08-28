@@ -1,26 +1,31 @@
-public record aba(jf c, int d) implements aao {
-   public static final zc<wb, aba> a = aao.a(aba::a, aba::new);
-   public static final aao.b<aba> b = aao.a("debug/poi_ticket_count");
+public record aba(int c, ers d, float e) implements aar {
+   public static final zf<we, aba> a = aar.a(aba::a, aba::new);
+   public static final aar.b<aba> b = aar.a("debug/path");
 
-   private aba(wb $$0) {
-      this($$0.e(), $$0.readInt());
+   private aba(we $$0) {
+      this($$0.readInt(), ers.b($$0), $$0.readFloat());
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.c);
-      $$0.q(this.d);
+   private void a(we $$0) {
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aao.b<aba> a() {
+   public aar.b<aba> a() {
       return b;
    }
 
-   public jf b() {
+   public int b() {
       return this.c;
    }
 
-   public int c() {
+   public ers c() {
       return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

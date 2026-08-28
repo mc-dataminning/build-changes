@@ -1,19 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-record eci(kj e) implements ebv {
-   public static MapCodec<eci> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kj.f.optionalFieldOf("offset", kj.g).forGetter(eci::g)).apply($$0, eci::new));
+abstract class eci implements ecg {
+   protected final List<ecg> e;
 
-   @Override
-   public ebw<?> a() {
-      return ebw.m;
+   protected eci(List<ecg> $$0) {
+      this.e = $$0;
    }
 
-   public boolean a(dfg $$0, jf $$1) {
-      return $$0.a(null, ezn.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
-   }
-
-   public kj g() {
-      return this.e;
+   public static <T extends eci> MapCodec<T> a(Function<List<ecg>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ecg.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

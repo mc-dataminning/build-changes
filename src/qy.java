@@ -1,72 +1,65 @@
 public class qy {
-   @Deprecated
-   public static final epw.a a = new epw.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final alg<edd<?>> a = a("cave");
+   public static final alg<edd<?>> b = a("cave_extra_underground");
+   public static final alg<edd<?>> c = a("canyon");
+   public static final alg<edd<?>> d = a("nether_cave");
 
-   public static void a(qu<epw.a> $$0) {
-      a($$0, 0, eax.a, eax.b, eax.c, eax.d);
-      a($$0, -2, eax.e, eax.f, eax.g, eax.h);
-      a($$0, eax.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(eax.j, a);
-      a($$0, eax.k, -3, 1.0);
-      a($$0, eax.l, -7, 1.0);
-      a($$0, eax.m, -1, 1.0);
-      a($$0, eax.n, -5, 1.0);
-      a($$0, eax.o, -7, 1.0, 1.0);
-      a($$0, eax.p, -8, 1.0);
-      a($$0, eax.q, -8, 1.0);
-      a($$0, eax.r, -7, 1.0);
-      a($$0, eax.s, -8, 1.0);
-      a($$0, eax.t, -11, 1.0);
-      a($$0, eax.u, -11, 1.0);
-      a($$0, eax.v, -7, 1.0);
-      a($$0, eax.w, -7, 1.0);
-      a($$0, eax.x, -11, 1.0);
-      a($$0, eax.y, -8, 1.0);
-      a($$0, eax.z, -5, 1.0);
-      a($$0, eax.A, -8, 1.0);
-      a($$0, eax.B, -7, 0.4, 0.5, 1.0);
-      a($$0, eax.C, -8, 1.0);
-      a($$0, eax.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, eax.E, -8, 1.0);
-      a($$0, eax.F, -7, 1.0);
-      a($$0, eax.G, -7, 1.0);
-      a($$0, eax.H, -5, 1.0);
-      a($$0, eax.I, -8, 1.0);
-      a($$0, eax.J, -8, 1.0);
-      a($$0, eax.K, -7, 1.0);
-      a($$0, eax.L, -7, 1.0);
-      a($$0, eax.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eax.N, -6, 1.0, 1.0, 1.0);
-      a($$0, eax.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, eax.P, -8, 1.0);
-      a($$0, eax.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eax.R, -8, 1.0);
-      a($$0, eax.S, -6, 1.0, 1.0, 1.0);
-      a($$0, eax.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eax.U, -3, 1.0);
-      a($$0, eax.V, -6, 1.0, 1.0, 1.0);
-      a($$0, eax.W, -2, 1.0);
-      a($$0, eax.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eax.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eax.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eax.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eax.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eax.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eax.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eax.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eax.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, eax.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, eax.ah, -4, 1.0);
+   private static alg<edd<?>> a(String $$0) {
+      return alg.a(ly.aI, alh.b($$0));
    }
 
-   private static void a(qu<epw.a> $$0, int $$1, ald<epw.a> $$2, ald<epw.a> $$3, ald<epw.a> $$4, ald<epw.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qu<epw.a> $$0, ald<epw.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new epw.a($$2, $$3, $$4));
+   public static void a(qx<edd<?>> $$0) {
+      jq<dhy> $$1 = $$0.a(ly.f);
+      $$0.a(
+         a,
+         edf.a
+            .a(
+               new edb(
+                  0.15F,
+                  ekb.a(ebt.b(8), ebt.a(180)),
+                  bri.b(0.1F, 0.9F),
+                  ebt.b(8),
+                  ecz.a(false, dia.oS.m()),
+                  $$1.b(awz.bj),
+                  bri.b(0.7F, 1.4F),
+                  bri.b(0.8F, 1.3F),
+                  bri.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         b,
+         edf.a
+            .a(
+               new edb(
+                  0.07F,
+                  ekb.a(ebt.b(8), ebt.a(47)),
+                  bri.b(0.1F, 0.9F),
+                  ebt.b(8),
+                  ecz.a(false, dia.gv.m()),
+                  $$1.b(awz.bj),
+                  bri.b(0.7F, 1.4F),
+                  bri.b(0.8F, 1.3F),
+                  bri.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         c,
+         edf.c
+            .a(
+               new ecw(
+                  0.01F,
+                  ekb.a(ebt.a(10), ebt.a(67)),
+                  bqz.a(3.0F),
+                  ebt.b(8),
+                  ecz.a(false, dia.oT.m()),
+                  $$1.b(awz.bj),
+                  bri.b(-0.125F, 0.125F),
+                  new ecw.a(bri.b(0.75F, 1.0F), brh.a(0.0F, 6.0F, 2.0F), 3, bri.b(0.75F, 1.0F), 1.0F, 0.0F)
+               )
+            )
+      );
+      $$0.a(d, edf.b.a(new edb(0.2F, ekb.a(ebt.a(0), ebt.c(1)), bqz.a(0.5F), ebt.b(10), $$1.b(awz.bk), bqz.a(1.0F), bqz.a(1.0F), bqz.a(-0.7F))));
    }
 }

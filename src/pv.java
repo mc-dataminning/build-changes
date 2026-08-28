@@ -1,13 +1,19 @@
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
-public class pv extends py<eqs> {
-   public pv(me $$0, CompletableFuture<jq.a> $$1) {
-      super($$0, lw.D, $$1, $$0x -> $$0x.k().h());
+public abstract class pv extends qg<dbm> {
+   public pv(mg $$0, CompletableFuture<jr.a> $$1) {
+      super($$0, ly.aM, $$1);
    }
 
-   @Override
-   protected void a(jq.a $$0) {
-      this.a(axb.a).a(equ.c, equ.b);
-      this.a(axb.b).a(equ.e, equ.d);
+   protected void a(jr.a $$0, alg<dbm>... $$1) {
+      this.b(axc.a).a($$1);
+      Set<alg<dbm>> $$2 = Set.of($$1);
+      List<String> $$3 = $$0.d(ly.aM).c().filter($$1x -> !$$2.contains($$1x.e().get())).map(jp::g).collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         throw new IllegalStateException("Not all enchantments were registered for tooltip ordering. Missing: " + String.join(", ", $$3));
+      }
    }
 }

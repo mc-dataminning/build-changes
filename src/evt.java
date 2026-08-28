@@ -1,93 +1,75 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class evt extends euy {
+public class evt extends evj {
    public static final MapCodec<evt> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  xg.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  eux.a(256).forGetter($$0x -> $$0x.c),
-                  etl.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(etu.e.fieldOf("component").forGetter($$0x -> $$0x.b), euk.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, evt::new)
    );
-   private final List<xe> b;
-   private final eux c;
-   private final Optional<etl.b> d;
+   private final ett<?> b;
+   private final List<eum> c;
 
-   public evt(List<eww> $$0, List<xe> $$1, eux $$2, Optional<etl.b> $$3) {
+   evt(List<exh> $$0, ett<?> $$1, List<eum> $$2) {
       super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
-      this.d = $$3;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public eva<evt> b() {
-      return evb.A;
+   public evl<evt> b() {
+      return evm.t;
    }
 
    @Override
-   public Set<ewe<?>> a() {
-      return this.d.<Set<ewe<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
-   }
-
-   @Override
-   public cvs a(cvs $$0, etl $$1) {
-      $$0.a(ks.i, cyp.a, $$1x -> new cyp(this.a($$1x, $$1)));
-      return $$0;
-   }
-
-   private List<xe> a(@Nullable cyp $$0, etl $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
+   public cvx a(cvx $$0, etw $$1) {
+      if ($$0.f()) {
+         return $$0;
       } else {
-         UnaryOperator<xe> $$2 = evu.a($$1, this.d.orElse(null));
-         List<xe> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
+         Builder<cvx> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(eub.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
       }
    }
 
-   public static evt.a c() {
-      return new evt.a();
+   @Override
+   public void a(euc $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
 
-   public static class a extends euy.a<evt.a> {
-      private Optional<etl.b> a = Optional.empty();
-      private final Builder<xe> b = ImmutableList.builder();
-      private eux c = eux.a.b;
+   public static evt.a a(ett<?> $$0) {
+      return new evt.a($$0);
+   }
 
-      public evt.a a(eux $$0) {
-         this.c = $$0;
-         return this;
-      }
+   public static class a extends evj.a<evt.a> {
+      private final com.google.common.collect.ImmutableList.Builder<eum> a = ImmutableList.builder();
+      private final ett<?> b;
 
-      public evt.a a(etl.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public evt.a a(xe $$0) {
-         this.b.add($$0);
-         return this;
+      public a(ett<?> $$0) {
+         this.b = $$0;
       }
 
       protected evt.a a() {
          return this;
       }
 
+      public evt.a a(eum.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
       @Override
-      public euz b() {
-         return new evt(this.g(), this.b.build(), this.c, this.a);
+      public evk b() {
+         return new evt(this.g(), this.b, this.a.build());
       }
    }
 }

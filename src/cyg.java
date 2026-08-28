@@ -1,26 +1,150 @@
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
+import io.netty.buffer.ByteBuf;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class cyg {
-   public static final cye a = a().a();
-   public static final cye b = b().a();
-   public static final cye c = b().a(2.0F).a(awg.mE).a(new czk(bta.s)).a();
-   public static final cye d = b().b(awg.ss).a();
-   public static final cye e = a().a(0.8F).a();
-   public static final cye f = a().a(new czg(new bsy(bta.q, 600, 0), 0.3F)).a();
-   public static final cye g = a().a(new czg(List.of(new bsy(bta.j, 400, 1), new bsy(bta.k, 6000, 0), new bsy(bta.l, 6000, 0), new bsy(bta.v, 2400, 3)))).a();
-   public static final cye h = a().a(new czg(List.of(new bsy(bta.j, 100, 1), new bsy(bta.v, 2400, 0)))).a();
-   public static final cye i = a().a(new czg(new bsy(bta.s, 100, 0), 0.6F)).a();
-   public static final cye j = a().a(new czg(List.of(new bsy(bta.s, 1200, 1), new bsy(bta.q, 300, 2), new bsy(bta.i, 300, 0)))).a();
-   public static final cye k = a().a(new czg(new bsy(bta.q, 600, 0), 0.8F)).a();
-   public static final cye l = a().a(new czg(new bsy(bta.s, 100, 0))).a();
-   public static final cye m = b().a(czh.a).a();
-   public static final cye n = a().a(new czl()).a();
+public final class cyg {
+   private static final Logger e = LogUtils.getLogger();
+   public static final cyg a = new cyg(new uj());
+   public static final Codec<cyg> b = Codec.withAlternative(uj.a, vh.i).xmap(cyg::new, $$0 -> $$0.f);
+   public static final Codec<cyg> c = b.validate(
+      $$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
+   );
+   @Deprecated
+   public static final zf<ByteBuf, cyg> d = zd.p.a(cyg::new, $$0 -> $$0.f);
+   private final uj f;
 
-   public static cye.a a() {
-      return cye.b().a(1.6F).a(cvu.b).a(awg.ke).a(true);
+   private cyg(uj $$0) {
+      this.f = $$0;
    }
 
-   public static cye.a b() {
-      return cye.b().a(1.6F).a(cvu.c).a(awg.kd).a(false);
+   public static cyg a(uj $$0) {
+      return new cyg($$0.i());
+   }
+
+   public static Predicate<cvx> a(ks<cyg> $$0, uj $$1) {
+      return $$2 -> {
+         cyg $$3 = $$2.a($$0, a);
+         return $$3.b($$1);
+      };
+   }
+
+   public boolean b(uj $$0) {
+      return uy.a($$0, this.f, true);
+   }
+
+   public static void a(ks<cyg> $$0, cvx $$1, Consumer<uj> $$2) {
+      cyg $$3 = $$1.a($$0, a).a($$2);
+      if ($$3.f.g()) {
+         $$1.c($$0);
+      } else {
+         $$1.b($$0, $$3);
+      }
+   }
+
+   public static void a(ks<cyg> $$0, cvx $$1, uj $$2) {
+      if (!$$2.g()) {
+         $$1.b($$0, a($$2));
+      } else {
+         $$1.c($$0);
+      }
+   }
+
+   public cyg a(Consumer<uj> $$0) {
+      uj $$1 = this.f.i();
+      $$0.accept($$1);
+      return new cyg($$1);
+   }
+
+   public void a(btz $$0) {
+      uj $$1 = $$0.f(new uj());
+      UUID $$2 = $$0.cH();
+      $$1.a(this.f);
+      $$0.g($$1);
+      $$0.a_($$2);
+   }
+
+   public boolean a(dsg $$0, jr.a $$1) {
+      uj $$2 = $$0.e($$1);
+      uj $$3 = $$2.i();
+      $$2.a(this.f);
+      if (!$$2.equals($$3)) {
+         try {
+            $$0.d($$2, $$1);
+            $$0.e();
+            return true;
+         } catch (Exception var8) {
+            e.warn("Failed to apply custom data to block entity at {}", $$0.aC_(), var8);
+
+            try {
+               $$0.d($$3, $$1);
+            } catch (Exception var7) {
+               e.warn("Failed to rollback block entity at {} after failure", $$0.aC_(), var7);
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public <T> DataResult<cyg> a(DynamicOps<vg> $$0, MapEncoder<T> $$1, T $$2) {
+      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.f).map($$0x -> new cyg((uj)$$0x));
+   }
+
+   public <T> DataResult<T> a(MapDecoder<T> $$0) {
+      return this.a(ux.a, $$0);
+   }
+
+   public <T> DataResult<T> a(DynamicOps<vg> $$0, MapDecoder<T> $$1) {
+      MapLike<vg> $$2 = (MapLike<vg>)$$0.getMap(this.f).getOrThrow();
+      return $$1.decode($$0, $$2);
+   }
+
+   public int a() {
+      return this.f.f();
+   }
+
+   public boolean b() {
+      return this.f.g();
+   }
+
+   public uj c() {
+      return this.f.i();
+   }
+
+   public boolean a(String $$0) {
+      return this.f.e($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return $$0 instanceof cyg $$1 ? this.f.equals($$1.f) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return this.f.toString();
+   }
+
+   @Deprecated
+   public uj d() {
+      return this.f;
    }
 }

@@ -1,8 +1,5 @@
-import javax.annotation.Nullable;
-
-public class guv extends gtq {
-   public jk a = jk.c;
-   @Nullable
-   public ckd b;
-   public int[] c = new int[0];
+public class guv extends gva {
+   public float a;
+   public int b;
+   public btw.a c = btw.a.a;
 }

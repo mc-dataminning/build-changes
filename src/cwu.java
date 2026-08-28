@@ -1,43 +1,32 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class cwu extends cvn implements cuv {
-   public static final int a = 5;
-   public static final float b = 3.0F;
+public enum cwu implements baf {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
 
-   public cwu(cvn.a $$0) {
-      super($$0);
-      djr.a(this, ctl.a);
+   public static final Codec<cwu> e = baf.b(cwu::values);
+   public static final IntFunction<cwu> f = aya.a($$0 -> $$0.h, values(), aya.a.a);
+   public static final zf<ByteBuf, cwu> g = zd.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cwu(final int $$0, final String $$1, final n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   public n a() {
+      return this.j;
    }
 
    @Override
-   public String d_(cvs $$0) {
-      cum $$1 = $$0.a(ks.ae);
-      return $$1 != null ? this.a() + "." + $$1.b() : super.d_($$0);
-   }
-
-   @Override
-   public void a(cvs $$0, cvn.b $$1, List<xe> $$2, cxk $$3) {
-      ctr.a($$0, $$2);
-   }
-
-   @Override
-   public cvu a(cvs $$0) {
-      return cvu.d;
-   }
-
-   @Override
-   public int a(cvs $$0, bun $$1) {
-      return 72000;
-   }
-
-   @Override
-   public brs a(dej $$0, cnx $$1, brr $$2) {
-      $$1.c($$2);
-      return brs.c;
-   }
-
-   @Override
-   public btz l() {
-      return btz.b;
+   public String c() {
+      return this.i;
    }
 }

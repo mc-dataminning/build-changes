@@ -1,42 +1,42 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class byu {
-   private static final int a = 200;
+   public static bxz<cnt> a(cdz<jo> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return cab.a(
+         (Function<cab.b<cnt>, ? extends App<cab.c<cnt>, cae<cnt>>>)($$5 -> $$5.group($$5.a(cdz.E), $$5.c(cdz.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     jo $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ag() && (!$$13.isPresent() || $$9.aa() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dx()) > $$3) {
+                           ezh $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public static <E extends bup> bwg<E> a(BiConsumer<E, bun> $$0) {
-      return a($$0x -> false, $$0, true);
-   }
+                           while ($$14 == null || jg.a((jz)$$14).k($$10.dx()) > $$3) {
+                              $$14 = cfq.a($$10, 15, 7, ezh.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   public static <E extends bup> bwg<E> a(Predicate<bun> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
-   }
+                           $$7.a(new cec($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dx()) > $$2) {
+                           $$7.a(new cec($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
 
-   public static <E extends bup> bwg<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
-   }
-
-   public static <E extends bup> bwg<E> a(Predicate<bun> $$0, BiConsumer<E, bun> $$1, boolean $$2) {
-      return bzs.a(
-         (Function<bzs.b<E>, ? extends App<bzs.c<E>, bzv<E>>>)($$3 -> $$3.group($$3.b(cdq.o), $$3.a(cdq.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bun $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bI() && $$9.dS() == $$7.dS() && !$$0.test($$9)) {
                      return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
+                  }))
       );
-   }
-
-   private static boolean a(bun $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dS().aa() - $$1.get() > 200L;
    }
 }

@@ -1,149 +1,97 @@
-import java.io.DataInput;
-import java.io.DataOutput;
+import com.google.common.collect.ImmutableList;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class ue extends uw {
-   private static final int w = 9;
-   public static final vf<ue> a = new vf.a<ue>() {
-      public ue a(DataInput $$0, up $$1) throws IOException {
-         return ue.a(d($$0, $$1));
-      }
+public abstract class ue {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new Gson();
+   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
+   public static final String a = "en_us";
+   private static volatile ue e = c();
 
-      @Override
-      public va.b a(DataInput $$0, va $$1, up $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static byte d(DataInput $$0, up $$1) throws IOException {
-         $$1.b(9L);
-         return $$0.readByte();
-      }
-
-      @Override
-      public int c() {
-         return 1;
-      }
-
-      @Override
-      public String a() {
-         return "BYTE";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Byte";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final ue b = a((byte)0);
-   public static final ue c = a((byte)1);
-   private final byte x;
-
-   ue(byte $$0) {
-      this.x = $$0;
-   }
-
-   public static ue a(byte $$0) {
-      return ue.a.a[128 + $$0];
-   }
-
-   public static ue a(boolean $$0) {
-      return $$0 ? c : b;
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeByte(this.x);
-   }
-
-   @Override
-   public int a() {
-      return 9;
-   }
-
-   @Override
-   public byte b() {
-      return 1;
-   }
-
-   @Override
-   public vf<ue> c() {
-      return a;
-   }
-
-   public ue e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ue && this.x == ((ue)$$0).x;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.x;
-   }
-
-   @Override
-   public void a(vh $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.x;
-   }
-
-   @Override
-   public int g() {
-      return this.x;
-   }
-
-   @Override
-   public short h() {
-      return (short)this.x;
-   }
-
-   @Override
-   public byte i() {
-      return this.x;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.x;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.x;
-   }
-
-   @Override
-   public Number l() {
-      return this.x;
-   }
-
-   @Override
-   public va.b a(va $$0) {
-      return $$0.a(this.x);
-   }
-
-   static class a {
-      static final ue[] a = new ue[256];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new ue((byte)($$0 - 128));
+   private static ue c() {
+      ud $$0 = ud.a();
+      Map<String, String> $$1 = new HashMap<>();
+      BiConsumer<String, String> $$2 = $$1::put;
+      a($$2, "/assets/minecraft/lang/en_us.json");
+      $$0.a($$1);
+      final Map<String, String> $$3 = Map.copyOf($$1);
+      return new ue() {
+         @Override
+         public String a(String $$0, String $$1) {
+            return $$3.getOrDefault($$0, $$1);
          }
+
+         @Override
+         public boolean b(String $$0) {
+            return $$3.containsKey($$0);
+         }
+
+         @Override
+         public boolean b() {
+            return false;
+         }
+
+         @Override
+         public ayv a(xm $$0) {
+            return $$1 -> $$0.a(($$1x, $$2) -> bae.c($$2, $$1x, $$1) ? Optional.empty() : xm.a, ye.a).isPresent();
+         }
+      };
+   }
+
+   private static void a(BiConsumer<String, String> $$0, String $$1) {
+      try (InputStream $$2 = ue.class.getResourceAsStream($$1)) {
+         a($$2, $$0);
+      } catch (JsonParseException | IOException var7) {
+         b.error("Couldn't read strings from {}", $$1, var7);
       }
+   }
+
+   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
+      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
+
+      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+         String $$4 = d.matcher(ayz.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         $$1.accept($$3.getKey(), $$4);
+      }
+   }
+
+   public static ue a() {
+      return e;
+   }
+
+   public static void a(ue $$0) {
+      e = $$0;
+   }
+
+   public String a(String $$0) {
+      return this.a($$0, $$0);
+   }
+
+   public abstract String a(String var1, String var2);
+
+   public abstract boolean b(String var1);
+
+   public abstract boolean b();
+
+   public abstract ayv a(xm var1);
+
+   public List<ayv> a(List<xm> $$0) {
+      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

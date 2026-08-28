@@ -1,41 +1,18 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.function.BiConsumer;
 
-public class nq implements mc {
-   private final me d;
-   private final Map<String, Supplier<JsonElement>> e = new HashMap<>();
-
-   public nq(me $$0) {
-      this.d = $$0;
-   }
-
-   public <T> nq a(atv<T> $$0, T $$1) {
-      this.e.put($$0.a(), () -> $$0.a($$1));
-      return this;
-   }
-
+public record nq(jr.a a) implements nc {
    @Override
-   public CompletableFuture<?> a(ma $$0) {
-      JsonObject $$1 = new JsonObject();
-      this.e.forEach(($$1x, $$2) -> $$1.add($$1x, $$2.get()));
-      return mc.a($$0, $$1, this.d.a().resolve("pack.mcmeta"));
-   }
-
-   @Override
-   public final String a() {
-      return "Pack Metadata";
-   }
-
-   public static nq a(me $$0, xe $$1) {
-      return new nq($$0).a(atw.b, new atw($$1, t.a.a(atj.b), Optional.empty()));
-   }
-
-   public static nq a(me $$0, xe $$1, cqq $$2) {
-      return a($$0, $$1).a(atd.a, new atd($$2));
+   public void generate(BiConsumer<alg<eub>, eub.a> $$0) {
+      $$0.accept(ets.aM, eub.b().a(eua.a().a(eya.a(2.0F)).a(euj.a(cwb.dA).a(ewb.a(eya.a(1.0F)))).a(euj.a(cwb.dB).a(ewb.a(eya.a(1.0F))))));
+      ne.a.forEach(($$1, $$2) -> $$0.accept(ets.aS.get($$1), eub.b().a(eua.a().a(eyh.a(1.0F, 3.0F)).a(euj.a($$2)))));
+      $$0.accept(ets.aR, eub.b().a(na.a(ets.aS)));
+      $$0.accept(
+         ets.aN,
+         eub.b()
+            .a(eua.a().a(eud.a(eup.a(ets.aO).a(exk.a(etw.b.a, bv.a.a().a(bx.j.a(cgz.a.a)))), eup.a(ets.aP).a(exk.a(etw.b.a, bv.a.a().a(bx.j.a(cgz.a.b)))))))
+      );
+      $$0.accept(ets.aO, eub.b().a(eua.a().a(eya.a(5.0F)).a(euj.a(cwb.dB))));
+      $$0.accept(ets.aP, eub.b().a(eua.a().a(eya.a(5.0F)).a(euj.a(cwb.dA))));
+      $$0.accept(ets.aQ, eub.b().a(eua.a().a(eya.a(1.0F)).a(euj.a(cwb.fl))));
    }
 }

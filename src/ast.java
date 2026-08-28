@@ -1,22 +1,36 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+public class ast implements akf {
+   private static final xh b = xh.c("multiplayer.status.request_handled");
+   private final ake c;
+   private final wb d;
+   private boolean e;
 
-public class ast implements arz {
-   public static final arz.a a = new arz.a("server_resource_pack");
-   private final MinecraftServer.b b;
-
-   public ast(MinecraftServer.b $$0) {
-      this.b = $$0;
+   public ast(ake $$0, wb $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(Consumer<zl<?>> $$0) {
-      $$0.accept(new zy(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   public void a(wd $$0) {
    }
 
    @Override
-   public arz.a a() {
-      return a;
+   public boolean c() {
+      return this.d.i();
+   }
+
+   @Override
+   public void a(akg $$0) {
+      if (this.e) {
+         this.d.a(b);
+      } else {
+         this.e = true;
+         this.d.a(new akd(this.c));
+      }
+   }
+
+   @Override
+   public void a(aka $$0) {
+      this.d.a(new ajx($$0.b()));
+      this.d.a(b);
    }
 }

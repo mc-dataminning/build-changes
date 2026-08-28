@@ -1,9 +1,8 @@
-public class gvz extends guo implements gvy {
+public class gvz extends gva {
    public boolean a;
-   public cnl b = new cnl(cnp.c, cnn.b, 1);
-
-   @Override
-   public cnl a() {
-      return this.b;
-   }
+   public final btr b = new btr();
+   public final btr c = new btr();
+   public final btr d = new btr();
+   public final btr e = new btr();
+   public final btr f = new btr();
 }

@@ -1,91 +1,93 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dkk extends dji {
-   public static final MapCodec<dkk> i = b(dkk::new);
-   private final ezq[] j;
+public class dkk extends dhk {
+   public static final MapCodec<dkk> a = b(dkk::new);
+   protected static final fab b = dhy.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
+   public static final List<jg> c = jg.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(jg::j).toList();
 
    @Override
    public MapCodec<dkk> a() {
-      return i;
+      return a;
    }
 
-   public dkk(dur.d $$0) {
-      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
-      this.l(
-         this.F
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
-      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
+   protected dkk(dvc.d $$0) {
+      super($$0);
+   }
+
+   public static boolean a(dev $$0, jg $$1, jg $$2) {
+      return $$0.a_($$1.a((kk)$$2)).a(awz.cx) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(awz.cy);
    }
 
    @Override
-   protected ezq d_(dus $$0) {
-      return this.j[this.h($$0)];
+   protected boolean g_(dvd $$0) {
+      return true;
    }
 
    @Override
-   protected ezq c(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return this.a($$0, $$1, $$2, $$3);
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return b;
    }
 
    @Override
-   protected boolean a(dus $$0, eri $$1) {
-      return false;
-   }
+   public void a(dvd $$0, dev $$1, jg $$2, azr $$3) {
+      super.a($$0, $$1, $$2, $$3);
 
-   public boolean a(dus $$0, boolean $$1, jk $$2) {
-      dhm $$3 = $$0.b();
-      boolean $$4 = this.o($$0);
-      boolean $$5 = $$3 instanceof dkl && dkl.a($$0, $$2);
-      return !k($$0) && $$1 || $$4 || $$5;
-   }
-
-   private boolean o(dus $$0) {
-      return $$0.a(awv.T) && $$0.a(awv.l) == this.n().a(awv.l);
-   }
-
-   @Override
-   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
-      return (brs)(!$$1.x_() ? cwc.a($$3, $$1, $$2) : brs.e);
-   }
-
-   @Override
-   public dus a(czn $$0) {
-      ddo $$1 = $$0.q();
-      jf $$2 = $$0.a();
-      eqt $$3 = $$0.q().b_($$0.a());
-      jf $$4 = $$2.f();
-      jf $$5 = $$2.i();
-      jf $$6 = $$2.g();
-      jf $$7 = $$2.h();
-      dus $$8 = $$1.a_($$4);
-      dus $$9 = $$1.a_($$5);
-      dus $$10 = $$1.a_($$6);
-      dus $$11 = $$1.a_($$7);
-      return super.a($$0)
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jk.d), jk.d)))
-         .b(b, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jk.e), jk.e)))
-         .b(c, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jk.c), jk.c)))
-         .b(d, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jk.f), jk.f)))
-         .b(e, Boolean.valueOf($$3.a() == equ.c));
+      for (jg $$4 : c) {
+         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
+            $$1.a(
+               lq.s,
+               (double)$$2.u() + 0.5,
+               (double)$$2.v() + 2.0,
+               (double)$$2.w() + 0.5,
+               (double)((float)$$4.u() + $$3.i()) - 0.5,
+               (double)((float)$$4.v() - $$3.i() - 1.0F),
+               (double)((float)$$4.w() + $$3.i()) - 0.5
+            );
+         }
+      }
    }
 
    @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, equ.c, equ.c.a($$3));
+   protected doe a_(dvd $$0) {
+      return doe.c;
+   }
+
+   @Override
+   public dsg a(jg $$0, dvd $$1) {
+      return new dtb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsg> dsh<T> a(dev $$0, dvd $$1, dsi<T> $$2) {
+      return $$0.C ? a($$2, dsi.m, dtb::a) : null;
+   }
+
+   @Override
+   protected bry a(dvd $$0, dev $$1, jg $$2, coh $$3, ezd $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
       }
 
-      return $$1.o().e() == jk.c.a ? $$0.b(f.get($$1), Boolean.valueOf(this.a($$2, $$2.c($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return bry.a;
+   }
+
+   @Nullable
+   @Override
+   protected bsa b(dvd $$0, dev $$1, jg $$2) {
+      dsg $$3 = $$1.c_($$2);
+      if ($$3 instanceof dtb) {
+         xh $$4 = ((bsb)$$3).S_();
+         return new bsg(($$2x, $$3x, $$4x) -> new csf($$2x, $$3x, crw.a($$1, $$2)), $$4);
+      } else {
+         return null;
+      }
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected boolean a(dvd $$0, ert $$1) {
+      return false;
    }
 }

@@ -1,21 +1,26 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
 
-public class bir extends bgj {
-   private static final String a = "CanPickUpLoot";
+public class bir extends bgn {
+   private final Map<String, String> a;
 
-   public bir(Schema $$0) {
-      super($$0, true, "Villager CanPickUpLoot default value", bho.B, "Villager");
+   public bir(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
+      super($$0, false, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bir::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
+            )
+      );
    }
 }

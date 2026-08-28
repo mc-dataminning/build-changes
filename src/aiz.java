@@ -1,16 +1,4 @@
-public interface aiz extends abu {
-   @Override
-   default vz b() {
-      return vz.d;
-   }
-
-   void a(ajc var1);
-
-   void a(ajb var1);
-
-   void a(aje var1);
-
-   void a(ajd var1);
-
-   void a(aja var1);
+public class aiz {
+   public static final wp.a<aja, we> a = zt.a(wc.a, $$0 -> $$0.a(aiy.a, aix.a));
+   public static final wp<aja> b = a.a(we::new);
 }

@@ -1,82 +1,181 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class eap implements ead {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final eaq i = new eaq(this);
-
-   public eap(long $$0) {
-      this.b($$0);
+public abstract class eap {
+   public static eap.b a(int $$0, int $$1) {
+      return new eap.b($$0 - 1, $$1 + 1);
    }
 
-   @Override
-   public azn d() {
-      return new eap(this.g());
+   public static eap.b b(int $$0, int $$1) {
+      return new eap.b($$0, $$1);
    }
 
-   @Override
-   public ebb e() {
-      return new eap.a(this.g());
+   public static eap a(int $$0) {
+      return new eap.c($$0, false);
    }
 
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw bae.a("LegacyRandomSource", null);
+   public static eap b(int $$0) {
+      return new eap.c($$0 + 1, false);
+   }
+
+   public static eap c(int $$0) {
+      return new eap.c($$0, true);
+   }
+
+   public static eap d(int $$0) {
+      return new eap.c($$0 - 1, true);
+   }
+
+   public static eap a() {
+      return eap.a.a;
+   }
+
+   public static eap a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
       } else {
-         this.i.a();
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw bae.a("LegacyRandomSource", null);
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public eap a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public eap b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<eap> a(dfb $$0, jg $$1, int $$2, Predicate<dvd> $$3, Predicate<dvd> $$4) {
+      jg.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
       } else {
-         return (int)($$2 >> 48 - $$0);
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jl.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jl.a);
+         return Optional.of(a($$8, $$7));
       }
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   private static OptionalInt a(dfb $$0, int $$1, Predicate<dvd> $$2, Predicate<dvd> $$3, jg.a $$4, int $$5, jl $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
    }
 
-   public static class a implements ebb {
-      private final long a;
+   public static final class a extends eap {
+      static final eap.a a = new eap.a();
 
-      public a(long $$0) {
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends eap {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
          this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
       }
 
       @Override
-      public azn a(int $$0, int $$1, int $$2) {
-         long $$3 = azf.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new eap($$4);
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
       }
 
       @Override
-      public azn a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new eap((long)$$1 ^ this.a);
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
       }
 
       @Override
-      public azn a(long $$0) {
-         return new eap($$0);
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
       }
 
-      @VisibleForTesting
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
       @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends eap {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

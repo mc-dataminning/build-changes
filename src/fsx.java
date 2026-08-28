@@ -1,32 +1,26 @@
-public class fsx extends ftb {
-   private static final xe b = xe.c("multiplayerWarning.header").a(n.r);
-   private static final xe c = xe.c("multiplayerWarning.message");
-   private static final xe d = xe.c("multiplayerWarning.check");
-   private static final xe s = b.f().f("\n").b(c);
-   private final fqh u;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fsx(fqh $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+public class fsx implements ftc {
+   private final fph a;
+
+   public fsx(fph $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected fod m() {
-      fog $$0 = fog.e().a(8);
-      $$0.a(fko.a(xd.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.ay();
-         }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
+      }
 
-         this.m.a(new fsw(this.u));
-      }).a());
-      $$0.a(fko.a(xd.k, $$0x -> this.d()).a());
-      return $$0;
-   }
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
 
-   @Override
-   public void d() {
-      this.m.a(this.u);
+      return $$6;
    }
 }

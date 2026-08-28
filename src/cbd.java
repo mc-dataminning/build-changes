@@ -1,70 +1,77 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
 public class cbd extends cbk {
-   protected final buv a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final dej f;
+   private static final int g = 240;
+   private final Predicate<brv> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public cbd(buv $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dS();
-      this.a(EnumSet.of(cbk.a.a));
+   public cbd(bux $$0, Predicate<brv> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public cbd(bux $$0, int $$1, Predicate<brv> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean b() {
-      if (this.a.m() != null) {
-         return false;
-      } else if (!this.f.S()) {
-         return false;
-      } else if (!this.a.bV()) {
-         return false;
-      } else if (!this.f.h(this.a.ds())) {
+      if (!super.b()) {
          return false;
       } else {
-         return !this.a.a(btz.f).f() ? false : this.h();
+         return !this.d.dX().ac().b(der.c) ? false : this.a(this.d.dX().am()) && !this.h();
       }
-   }
-
-   protected boolean h() {
-      eyw $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.d;
-         this.c = $$0.e;
-         this.d = $$0.f;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a.P().m();
    }
 
    @Override
    public void d() {
-      this.a.P().a(this.b, this.c, this.d, this.e);
+      super.d();
+      this.a = 0;
    }
 
-   @Nullable
-   protected eyw i() {
-      azn $$0 = this.a.dV();
-      jf $$1 = this.a.ds();
+   @Override
+   public boolean c() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dv(), 2.0) && this.a(this.d.dX().am());
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         jf $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return eyw.c($$3);
+   @Override
+   public void e() {
+      super.e();
+      this.d.dX().a(this.d.ar(), this.e, -1);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (this.d.ea().a(20) == 0) {
+         this.d.dX().c(1019, this.e, 0);
+         if (!this.d.aF) {
+            this.d.a(this.d.fC());
          }
       }
 
-      return null;
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dX().a(this.d.ar(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dX().am())) {
+         this.d.dX().a(this.e, false);
+         this.d.dX().c(1021, this.e, 0);
+         this.d.dX().c(2001, this.e, dhy.j(this.d.dX().a_(this.e)));
+      }
+   }
+
+   private boolean a(brv $$0) {
+      return this.h.test($$0);
    }
 }

@@ -1,126 +1,91 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
+import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
 
-public interface aqu {
-   aqu a = new aqu() {
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return false;
-      }
+public class aqu implements aqq.a, AutoCloseable {
+   public static final int a = 4;
+   private static final Logger c = LogUtils.getLogger();
+   private final aqv d;
+   private final bqt<Runnable> e;
+   private final bqq f;
+   protected boolean b;
 
-      @Override
-      public void a(Consumer<ddp> $$0) {
-      }
-   };
-
-   static aqu a(ddp $$0, int $$1) {
-      return new aqu.a($$0, $$1);
+   public aqu(bqt<Runnable> $$0, Executor $$1) {
+      this.d = new aqv($$0.x_() + "_queue");
+      this.e = $$0;
+      this.f = new bqq(4, $$1, "dispatcher");
+      this.b = true;
    }
 
-   static void a(aqu $$0, aqu $$1, Consumer<ddp> $$2, Consumer<ddp> $$3) {
-      if (!$$0.equals($$1)) {
-         if ($$0 instanceof aqu.a $$4 && $$1 instanceof aqu.a $$5 && $$4.a($$5)) {
-            int $$6 = Math.min($$4.c(), $$5.c());
-            int $$7 = Math.min($$4.d(), $$5.d());
-            int $$8 = Math.max($$4.e(), $$5.e());
-            int $$9 = Math.max($$4.f(), $$5.f());
+   public boolean a() {
+      return this.f.c() || this.d.b();
+   }
 
-            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
-                  boolean $$12 = $$4.a($$10, $$11);
-                  boolean $$13 = $$5.a($$10, $$11);
-                  if ($$12 != $$13) {
-                     if ($$13) {
-                        $$2.accept(new ddp($$10, $$11));
-                     } else {
-                        $$3.accept(new ddp($$10, $$11));
-                     }
-                  }
-               }
-            }
+   @Override
+   public void onLevelChange(deb $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.f.a_(new bqs.c(0, () -> {
+         int $$4 = $$1.getAsInt();
+         this.d.a($$4, $$0, $$2);
+         $$3.accept($$2);
+      }));
+   }
 
-            return;
+   public void a(long $$0, Runnable $$1, boolean $$2) {
+      this.f.a_(new bqs.c(1, () -> {
+         this.d.a($$0, $$2);
+         this.a($$0);
+         if (this.b) {
+            this.b = false;
+            this.b();
          }
 
-         $$0.a($$3);
-         $$1.a($$2);
-      }
+         $$1.run();
+      }));
    }
 
-   default boolean a(ddp $$0) {
-      return this.a($$0.e, $$0.f);
-   }
-
-   default boolean a(int $$0, int $$1) {
-      return this.a($$0, $$1, true);
-   }
-
-   boolean a(int var1, int var2, boolean var3);
-
-   void a(Consumer<ddp> var1);
-
-   default boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      return a($$0, $$1, $$2, $$3, $$4, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
-      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
-      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
-      long $$9 = (long)Math.min($$6, $$7);
-      long $$10 = $$9 * $$9 + $$8 * $$8;
-      int $$11 = $$2 * $$2;
-      return $$10 < (long)$$11;
-   }
-
-   public static record a(ddp b, int c) implements aqu {
-      int c() {
-         return this.b.e - this.c - 1;
-      }
-
-      int d() {
-         return this.b.f - this.c - 1;
-      }
-
-      int e() {
-         return this.b.e + this.c + 1;
-      }
-
-      int f() {
-         return this.b.f + this.c + 1;
-      }
-
-      @VisibleForTesting
-      protected boolean a(aqu.a $$0) {
-         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return aqu.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(Consumer<ddp> $$0) {
-         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
-            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
-               if (this.a($$1, $$2)) {
-                  $$0.accept(new ddp($$1, $$2));
-               }
-            }
+   public void a(Runnable $$0, long $$1, IntSupplier $$2) {
+      this.f.a_(new bqs.c(2, () -> {
+         int $$3 = $$2.getAsInt();
+         this.d.a($$0, $$1, $$3);
+         if (this.b) {
+            this.b = false;
+            this.b();
          }
-      }
+      }));
+   }
 
-      public ddp a() {
-         return this.b;
-      }
+   protected void b() {
+      this.f.a_(new bqs.c(3, () -> {
+         aqv.a $$0 = this.c();
+         if ($$0 == null) {
+            this.b = true;
+         } else {
+            this.a($$0);
+         }
+      }));
+   }
 
-      public int b() {
-         return this.c;
-      }
+   protected void a(aqv.a $$0) {
+      CompletableFuture.allOf($$0.b().stream().map($$0x -> this.e.a($$1 -> {
+            $$0x.run();
+            $$1.complete(bao.a);
+         })).toArray(CompletableFuture[]::new)).thenAccept($$0x -> this.b());
+   }
+
+   protected void a(long $$0) {
+   }
+
+   @Nullable
+   protected aqv.a c() {
+      return this.d.a();
+   }
+
+   @Override
+   public void close() {
+      this.e.close();
    }
 }

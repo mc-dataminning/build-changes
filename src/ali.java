@@ -1,9 +1,8 @@
-public class ali {
-   public final String a;
-   public final eu b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public ali(String $$0, eu $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ali {
 }

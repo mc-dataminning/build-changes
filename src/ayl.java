@@ -1,100 +1,328 @@
-import com.google.common.base.Charsets;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.floats.FloatArrayList;
+import it.unimi.dsi.fastutil.floats.FloatList;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class ayl implements AutoCloseable {
-   public static final String a = "session.lock";
-   private final FileChannel b;
-   private final FileLock c;
-   private static final ByteBuffer d;
+public interface ayl<C, I extends bal<C>> extends bal<C> {
+   @bap
+   String a();
 
-   public static ayl a(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
-      v.c($$0);
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+   ayl<C, I> a(ayl.d<I> var1);
 
-      try {
-         $$2.write(d.duplicate());
-         $$2.force(true);
-         FileLock $$3 = $$2.tryLock();
-         if ($$3 == null) {
-            throw ayl.a.a($$1);
+   static <C, I extends bal<C>> Codec<ayl<C, I>> a(Codec<I> $$0) {
+      MutableObject<Codec<ayl<C, I>>> $$1 = new MutableObject();
+
+      record a<C, I extends bal<C>>(float a, ayl<C, I> b, float c) {
+      }
+
+      Codec<a<C, I>> $$2 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group(
+                  Codec.FLOAT.fieldOf("location").forGetter(a::a),
+                  Codec.lazyInitialized($$1::getValue).fieldOf("value").forGetter(a::b),
+                  Codec.FLOAT.fieldOf("derivative").forGetter(a::c)
+               )
+               .apply($$1x, ($$0xx, $$1xx, $$2x) -> new a($$0xx, $$1xx, $$2x))
+      );
+      Codec<ayl.e<C, I>> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group(
+                  $$0.fieldOf("coordinate").forGetter(ayl.e::d),
+                  ays.a($$2.listOf())
+                     .fieldOf("points")
+                     .forGetter(
+                        $$0xx -> IntStream.range(0, $$0xx.c.length)
+                              .mapToObj($$1xx -> new a($$0xx.e()[$$1xx], (ayl<C, I>)$$0xx.f().get($$1xx), $$0xx.g()[$$1xx]))
+                              .toList()
+                     )
+               )
+               .apply($$2x, ($$0xx, $$1xx) -> {
+                  float[] $$2xx = new float[$$1xx.size()];
+                  Builder<ayl<C, I>> $$3x = ImmutableList.builder();
+                  float[] $$4 = new float[$$1xx.size()];
+
+                  for (int $$5 = 0; $$5 < $$1xx.size(); $$5++) {
+                     a<C, I> $$6 = (a<C, I>)$$1xx.get($$5);
+                     $$2xx[$$5] = $$6.a();
+                     $$3x.add($$6.b());
+                     $$4[$$5] = $$6.c();
+                  }
+
+                  return ayl.e.a((I)$$0xx, $$2xx, $$3x.build(), $$4);
+               })
+      );
+      $$1.setValue(
+         Codec.either(Codec.FLOAT, $$3)
+            .xmap(
+               $$0x -> (ayl)$$0x.map(ayl.c::new, $$0xx -> $$0xx), $$0x -> $$0x instanceof ayl.c<C, I> $$1x ? Either.left($$1x.d()) : Either.right((ayl.e)$$0x)
+            )
+      );
+      return (Codec<ayl<C, I>>)$$1.getValue();
+   }
+
+   static <C, I extends bal<C>> ayl<C, I> a(float $$0) {
+      return new ayl.c<>($$0);
+   }
+
+   static <C, I extends bal<C>> ayl.b<C, I> a(I $$0) {
+      return new ayl.b<>($$0);
+   }
+
+   static <C, I extends bal<C>> ayl.b<C, I> a(I $$0, bal<Float> $$1) {
+      return new ayl.b<>($$0, $$1);
+   }
+
+   public static final class b<C, I extends bal<C>> {
+      private final I a;
+      private final bal<Float> b;
+      private final FloatList c = new FloatArrayList();
+      private final List<ayl<C, I>> d = Lists.newArrayList();
+      private final FloatList e = new FloatArrayList();
+
+      protected b(I $$0) {
+         this($$0, bal.a);
+      }
+
+      protected b(I $$0, bal<Float> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ayl.b<C, I> a(float $$0, float $$1) {
+         return this.a($$0, new ayl.c<>(this.b.a($$1)), 0.0F);
+      }
+
+      public ayl.b<C, I> a(float $$0, float $$1, float $$2) {
+         return this.a($$0, new ayl.c<>(this.b.a($$1)), $$2);
+      }
+
+      public ayl.b<C, I> a(float $$0, ayl<C, I> $$1) {
+         return this.a($$0, $$1, 0.0F);
+      }
+
+      private ayl.b<C, I> a(float $$0, ayl<C, I> $$1, float $$2) {
+         if (!this.c.isEmpty() && $$0 <= this.c.getFloat(this.c.size() - 1)) {
+            throw new IllegalArgumentException("Please register points in ascending order");
          } else {
-            return new ayl($$2, $$3);
+            this.c.add($$0);
+            this.d.add($$1);
+            this.e.add($$2);
+            return this;
          }
-      } catch (IOException var6) {
-         try {
-            $$2.close();
-         } catch (IOException var5) {
-            var6.addSuppressed(var5);
-         }
-
-         throw var6;
       }
-   }
 
-   private ayl(FileChannel $$0, FileLock $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public void close() throws IOException {
-      try {
-         if (this.c.isValid()) {
-            this.c.release();
-         }
-      } finally {
-         if (this.b.isOpen()) {
-            this.b.close();
+      public ayl<C, I> a() {
+         if (this.c.isEmpty()) {
+            throw new IllegalStateException("No elements added");
+         } else {
+            return ayl.e.a(this.a, this.c.toFloatArray(), ImmutableList.copyOf(this.d), this.e.toFloatArray());
          }
       }
    }
 
-   public boolean a() {
-      return this.c.isValid();
+   @bap
+   public static record c<C, I extends bal<C>>(float b) implements ayl<C, I> {
+      @Override
+      public float a(C $$0) {
+         return this.b;
+      }
+
+      @Override
+      public String a() {
+         return String.format(Locale.ROOT, "k=%.3f", this.b);
+      }
+
+      @Override
+      public float c() {
+         return this.b;
+      }
+
+      @Override
+      public ayl<C, I> a(ayl.d<I> $$0) {
+         return this;
+      }
+
+      public float d() {
+         return this.b;
+      }
    }
 
-   public static boolean b(Path $$0) throws IOException {
-      Path $$1 = $$0.resolve("session.lock");
+   public interface d<I> {
+      I visit(I var1);
+   }
 
-      try {
-         boolean var4;
-         try (
-            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
-            FileLock $$3 = $$2.tryLock();
-         ) {
-            var4 = $$3 == null;
+   @bap
+   public static record e<C, I extends bal<C>>(I b, float[] c, List<ayl<C, I>> d, float[] e, float f, float g) implements ayl<C, I> {
+
+      public e(I b, float[] c, List<ayl<C, I>> d, float[] e, float f, float g) {
+         a(c, d, e);
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
+         this.f = f;
+         this.g = g;
+      }
+
+      static <C, I extends bal<C>> ayl.e<C, I> a(I $$0, float[] $$1, List<ayl<C, I>> $$2, float[] $$3) {
+         a($$1, $$2, $$3);
+         int $$4 = $$1.length - 1;
+         float $$5 = Float.POSITIVE_INFINITY;
+         float $$6 = Float.NEGATIVE_INFINITY;
+         float $$7 = $$0.b();
+         float $$8 = $$0.c();
+         if ($$7 < $$1[0]) {
+            float $$9 = a($$7, $$1, $$2.get(0).b(), $$3, 0);
+            float $$10 = a($$7, $$1, $$2.get(0).c(), $$3, 0);
+            $$5 = Math.min($$5, Math.min($$9, $$10));
+            $$6 = Math.max($$6, Math.max($$9, $$10));
          }
 
-         return var4;
-      } catch (AccessDeniedException var10) {
-         return true;
-      } catch (NoSuchFileException var11) {
-         return false;
+         if ($$8 > $$1[$$4]) {
+            float $$11 = a($$8, $$1, $$2.get($$4).b(), $$3, $$4);
+            float $$12 = a($$8, $$1, $$2.get($$4).c(), $$3, $$4);
+            $$5 = Math.min($$5, Math.min($$11, $$12));
+            $$6 = Math.max($$6, Math.max($$11, $$12));
+         }
+
+         for (ayl<C, I> $$13 : $$2) {
+            $$5 = Math.min($$5, $$13.b());
+            $$6 = Math.max($$6, $$13.c());
+         }
+
+         for (int $$14 = 0; $$14 < $$4; $$14++) {
+            float $$15 = $$1[$$14];
+            float $$16 = $$1[$$14 + 1];
+            float $$17 = $$16 - $$15;
+            ayl<C, I> $$18 = $$2.get($$14);
+            ayl<C, I> $$19 = $$2.get($$14 + 1);
+            float $$20 = $$18.b();
+            float $$21 = $$18.c();
+            float $$22 = $$19.b();
+            float $$23 = $$19.c();
+            float $$24 = $$3[$$14];
+            float $$25 = $$3[$$14 + 1];
+            if ($$24 != 0.0F || $$25 != 0.0F) {
+               float $$26 = $$24 * $$17;
+               float $$27 = $$25 * $$17;
+               float $$28 = Math.min($$20, $$22);
+               float $$29 = Math.max($$21, $$23);
+               float $$30 = $$26 - $$23 + $$20;
+               float $$31 = $$26 - $$22 + $$21;
+               float $$32 = -$$27 + $$22 - $$21;
+               float $$33 = -$$27 + $$23 - $$20;
+               float $$34 = Math.min($$30, $$32);
+               float $$35 = Math.max($$31, $$33);
+               $$5 = Math.min($$5, $$28 + 0.25F * $$34);
+               $$6 = Math.max($$6, $$29 + 0.25F * $$35);
+            }
+         }
+
+         return new ayl.e<>($$0, $$1, $$2, $$3, $$5, $$6);
       }
-   }
 
-   static {
-      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
-      d = ByteBuffer.allocateDirect($$0.length);
-      d.put($$0);
-      d.flip();
-   }
-
-   public static class a extends IOException {
-      private a(Path $$0, String $$1) {
-         super($$0.toAbsolutePath() + ": " + $$1);
+      private static float a(float $$0, float[] $$1, float $$2, float[] $$3, int $$4) {
+         float $$5 = $$3[$$4];
+         return $$5 == 0.0F ? $$2 : $$2 + $$5 * ($$0 - $$1[$$4]);
       }
 
-      public static ayl.a a(Path $$0) {
-         return new ayl.a($$0, "already locked (possibly by other Minecraft instance?)");
+      private static <C, I extends bal<C>> void a(float[] $$0, List<ayl<C, I>> $$1, float[] $$2) {
+         if ($$0.length != $$1.size() || $$0.length != $$2.length) {
+            throw new IllegalArgumentException("All lengths must be equal, got: " + $$0.length + " " + $$1.size() + " " + $$2.length);
+         } else if ($$0.length == 0) {
+            throw new IllegalArgumentException("Cannot create a multipoint spline with no points");
+         }
+      }
+
+      @Override
+      public float a(C $$0) {
+         float $$1 = this.b.a($$0);
+         int $$2 = a(this.c, $$1);
+         int $$3 = this.c.length - 1;
+         if ($$2 < 0) {
+            return a($$1, this.c, this.d.get(0).a($$0), this.e, 0);
+         } else if ($$2 == $$3) {
+            return a($$1, this.c, this.d.get($$3).a($$0), this.e, $$3);
+         } else {
+            float $$4 = this.c[$$2];
+            float $$5 = this.c[$$2 + 1];
+            float $$6 = ($$1 - $$4) / ($$5 - $$4);
+            bal<C> $$7 = (bal<C>)this.d.get($$2);
+            bal<C> $$8 = (bal<C>)this.d.get($$2 + 1);
+            float $$9 = this.e[$$2];
+            float $$10 = this.e[$$2 + 1];
+            float $$11 = $$7.a($$0);
+            float $$12 = $$8.a($$0);
+            float $$13 = $$9 * ($$5 - $$4) - ($$12 - $$11);
+            float $$14 = -$$10 * ($$5 - $$4) + ($$12 - $$11);
+            return azj.h($$6, $$11, $$12) + $$6 * (1.0F - $$6) * azj.h($$6, $$13, $$14);
+         }
+      }
+
+      private static int a(float[] $$0, float $$1) {
+         return azj.a(0, $$0.length, $$2 -> $$1 < $$0[$$2]) - 1;
+      }
+
+      @VisibleForTesting
+      @Override
+      public String a() {
+         return "Spline{coordinate="
+            + this.b
+            + ", locations="
+            + this.a(this.c)
+            + ", derivatives="
+            + this.a(this.e)
+            + ", values="
+            + this.d.stream().map(ayl::a).collect(Collectors.joining(", ", "[", "]"))
+            + "}";
+      }
+
+      private String a(float[] $$0) {
+         return "["
+            + IntStream.range(0, $$0.length)
+               .mapToDouble($$1 -> (double)$$0[$$1])
+               .mapToObj($$0x -> String.format(Locale.ROOT, "%.3f", $$0x))
+               .collect(Collectors.joining(", "))
+            + "]";
+      }
+
+      @Override
+      public ayl<C, I> a(ayl.d<I> $$0) {
+         return a($$0.visit(this.b), this.c, this.f().stream().map($$1 -> $$1.a($$0)).toList(), this.e);
+      }
+
+      public I d() {
+         return this.b;
+      }
+
+      public float[] e() {
+         return this.c;
+      }
+
+      public List<ayl<C, I>> f() {
+         return this.d;
+      }
+
+      public float[] g() {
+         return this.e;
+      }
+
+      @Override
+      public float b() {
+         return this.f;
+      }
+
+      @Override
+      public float c() {
+         return this.g;
       }
    }
 }

@@ -1,45 +1,61 @@
-public class ahu implements zl<agr> {
-   public static final zc<wb, ahu> a = zl.a(ahu::a, ahu::new);
-   private final int b;
-   private final ale c;
-   private final boolean d;
+public class ahu implements zo<agu> {
+   public static final zf<we, ahu> a = zo.a(ahu::a, ahu::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-   public ahu(int $$0, dam<?> $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
+   public ahu(btz $$0) {
+      this.b = $$0.dC();
+      this.c = $$0.dE();
+      this.d = $$0.dI();
+      this.e = $$0.dN();
+      this.f = $$0.dP();
    }
 
-   private ahu(wb $$0) {
-      this.b = $$0.x();
-      this.c = $$0.q();
-      this.d = $$0.readBoolean();
+   private ahu(we $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
    }
 
-   private void a(wb $$0) {
-      $$0.f(this.b);
+   private void a(we $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zn<ahu> a() {
-      return agp.bL;
+   public zq<ahu> a() {
+      return ags.bI;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public ale e() {
+   public double e() {
       return this.c;
    }
 
-   public boolean f() {
+   public double f() {
       return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
    }
 }

@@ -1,76 +1,130 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public final class chh {
-   public static final Codec<chh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ale.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.e),
-               ale.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.f),
-               ale.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.g),
-               kd.a(lw.aH).fieldOf("biomes").forGetter(chh::d)
-            )
-            .apply($$0, chh::new)
-   );
-   public static final zc<wp, chh> b = zc.a(ale.b, chh::a, ale.b, chh::b, ale.b, chh::c, za.c(lw.aH), chh::d, chh::new);
-   public static final Codec<jo<chh>> c = ala.a(lw.m, a);
-   public static final zc<wp, jo<chh>> d = za.a(lw.m, b);
-   private final ale e;
-   private final ale f;
-   private final ale g;
-   private final ale h;
-   private final ale i;
-   private final ale j;
-   private final js<dfk> k;
+public class chh extends cgk implements bvv<chh.a> {
+   private static final akk<String> b = ako.a(chh.class, akm.e);
 
-   public chh(ale $$0, ale $$1, ale $$2, js<dfk> $$3) {
-      this.e = $$0;
-      this.h = a($$0);
-      this.f = $$1;
-      this.i = a($$1);
-      this.g = $$2;
-      this.j = a($$2);
-      this.k = $$3;
-   }
-
-   private static ale a(ale $$0) {
-      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
-   }
-
-   public ale a() {
-      return this.h;
-   }
-
-   public ale b() {
-      return this.i;
-   }
-
-   public ale c() {
-      return this.j;
-   }
-
-   public js<dfk> d() {
-      return this.k;
+   public chh(bug<? extends chh> $$0, dev $$1) {
+      super($$0, $$1);
+      this.j_();
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return !($$0 instanceof chh $$1)
-            ? false
-            : Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Objects.equals(this.g, $$1.g) && Objects.equals(this.k, $$1.k);
+   public int gx() {
+      return 5;
+   }
+
+   @Override
+   public cvx X_() {
+      return new cvx(cwb.qH);
+   }
+
+   @Override
+   protected awj w() {
+      return awk.vE;
+   }
+
+   @Override
+   protected awj o_() {
+      return awk.vF;
+   }
+
+   @Override
+   protected awj d(bsp $$0) {
+      return awk.vH;
+   }
+
+   @Override
+   protected awj gw() {
+      return awk.vG;
+   }
+
+   @Override
+   protected void a(ako.a $$0) {
+      super.a($$0);
+      $$0.a(b, chh.a.b.e);
+   }
+
+   @Override
+   public void a(akk<?> $$0) {
+      super.a($$0);
+      if (b.equals($$0)) {
+         this.j_();
       }
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = 1;
-      $$0 = 31 * $$0 + this.e.hashCode();
-      $$0 = 31 * $$0 + this.f.hashCode();
-      $$0 = 31 * $$0 + this.g.hashCode();
-      return 31 * $$0 + this.k.hashCode();
+   public void b(uj $$0) {
+      super.b($$0);
+      $$0.a("type", this.gE().c());
+   }
+
+   @Override
+   public void a(uj $$0) {
+      super.a($$0);
+      this.a(chh.a.a($$0.l("type")));
+   }
+
+   @Override
+   public void k(cvx $$0) {
+      cgo.a(this, $$0);
+      cyg.a(kt.W, $$0, $$0x -> $$0x.a("type", this.gE().c()));
+   }
+
+   @Override
+   public void h(uj $$0) {
+      cgo.a(this, $$0);
+      this.a(chh.a.a($$0.l("type")));
+   }
+
+   public void a(chh.a $$0) {
+      this.am.a(b, $$0.e);
+   }
+
+   public chh.a gE() {
+      return chh.a.a(this.am.a(b));
+   }
+
+   @Nullable
+   @Override
+   public bvo a(dfl $$0, brw $$1, buf $$2, @Nullable bvo $$3) {
+      bqg.a<chh.a> $$4 = bqg.a();
+      $$4.a(chh.a.a, 30);
+      $$4.a(chh.a.b, 50);
+      $$4.a(chh.a.c, 15);
+      $$4.a().a(this.af).ifPresent(this::a);
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   public float gF() {
+      return this.gE().f;
+   }
+
+   @Override
+   protected buc e(bvh $$0) {
+      return super.e($$0).a(this.gF());
+   }
+
+   public static enum a implements baf {
+      a("small", 0.5F),
+      b("medium", 1.0F),
+      c("large", 1.5F);
+
+      public static final baf.a<chh.a> d = baf.a(chh.a::values);
+      final String e;
+      final float f;
+
+      private a(final String $$0, final float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+
+      static chh.a a(String $$0) {
+         return d.a($$0, a);
+      }
    }
 }

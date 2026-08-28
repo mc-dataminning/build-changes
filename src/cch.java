@@ -1,87 +1,42 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cch extends cbk {
-   public static final int a = 120;
-   protected final buv b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
+public class cch extends cbt {
+   private final bvd a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public cch(buv $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
-
-   public cch(buv $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public cch(buv $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(cbk.a.a));
+   public cch(bvd $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(cbt.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cV()) {
+      if (this.a.gd()) {
          return false;
       } else {
-         if (!this.h) {
-            if (this.i && this.b.er() >= 100) {
-               return false;
-            }
-
-            if (this.b.dV().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         eyw $$0 = this.h();
+         ezh $$0 = cfq.a(this.a, 16, 7, ezh.c(this.a.ge()), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            this.h = false;
+            this.b = $$0.d;
+            this.c = $$0.e;
+            this.d = $$0.f;
             return true;
          }
       }
    }
 
-   @Nullable
-   protected eyw h() {
-      return cfh.a(this.b, 10, 7);
-   }
-
    @Override
    public boolean c() {
-      return !this.b.P().m() && !this.b.cV();
+      return !this.a.P().m();
    }
 
    @Override
    public void d() {
-      this.b.P().a(this.c, this.d, this.e, this.f);
-   }
-
-   @Override
-   public void e() {
-      this.b.P().o();
-      super.e();
-   }
-
-   public void i() {
-      this.h = true;
-   }
-
-   public void c(int $$0) {
-      this.g = $$0;
+      this.a.P().a(this.b, this.c, this.d, this.e);
    }
 }

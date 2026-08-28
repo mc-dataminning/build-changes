@@ -1,138 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public class cg extends dw<cg.a> {
-   @Override
-   public Codec<cg.a> a() {
-      return cg.a.a;
+public record cg(
+   Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f, Optional<Boolean> g, Optional<Boolean> h
+) {
+   public static final Codec<cg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("forward").forGetter(cg::a),
+               Codec.BOOL.optionalFieldOf("backward").forGetter(cg::b),
+               Codec.BOOL.optionalFieldOf("left").forGetter(cg::c),
+               Codec.BOOL.optionalFieldOf("right").forGetter(cg::d),
+               Codec.BOOL.optionalFieldOf("jump").forGetter(cg::e),
+               Codec.BOOL.optionalFieldOf("sneak").forGetter(cg::f),
+               Codec.BOOL.optionalFieldOf("sprint").forGetter(cg::g)
+            )
+            .apply($$0, cg::new)
+   );
+
+   public boolean a(cof $$0) {
+      return this.a(this.b, $$0.a())
+         && this.a(this.c, $$0.b())
+         && this.a(this.d, $$0.c())
+         && this.a(this.e, $$0.d())
+         && this.a(this.f, $$0.e())
+         && this.a(this.g, $$0.f())
+         && this.a(this.h, $$0.g());
    }
 
-   public void a(ark $$0, cnw $$1, cvs $$2) {
-      int $$3 = 0;
-      int $$4 = 0;
-      int $$5 = 0;
-
-      for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cvs $$7 = $$1.a($$6);
-         if ($$7.f()) {
-            $$4++;
-         } else {
-            $$5++;
-            if ($$7.K() >= $$7.k()) {
-               $$3++;
-            }
-         }
-      }
-
-      this.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private boolean a(Optional<Boolean> $$0, boolean $$1) {
+      return $$0.<Boolean>map($$1x -> $$1x == $$1).orElse(true);
    }
 
-   private void a(ark $$0, cnw $$1, cvs $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
+   public Optional<Boolean> a() {
+      return this.b;
    }
 
-   public static record a(Optional<bg> b, cg.a.a c, List<cs> d) implements dw.a {
-      public static final Codec<cg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bv.b.optionalFieldOf("player").forGetter(cg.a::a),
-                  cg.a.a.a.optionalFieldOf("slots", cg.a.a.b).forGetter(cg.a::b),
-                  cs.a.listOf().optionalFieldOf("items", List.of()).forGetter(cg.a::c)
-               )
-               .apply($$0, cg.a::new)
-      );
+   public Optional<Boolean> b() {
+      return this.c;
+   }
 
-      public static ao<cg.a> a(cs.a... $$0) {
-         return a(Stream.of($$0).map(cs.a::b).toArray(cs[]::new));
-      }
+   public Optional<Boolean> c() {
+      return this.d;
+   }
 
-      public static ao<cg.a> a(cs... $$0) {
-         return an.f.a(new cg.a(Optional.empty(), cg.a.a.b, List.of($$0)));
-      }
+   public Optional<Boolean> d() {
+      return this.e;
+   }
 
-      public static ao<cg.a> a(dei... $$0) {
-         cs[] $$1 = new cs[$$0.length];
+   public Optional<Boolean> e() {
+      return this.f;
+   }
 
-         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-            $$1[$$2] = new cs(Optional.of(js.a($$0[$$2].q().n())), dh.d.c, kq.c, Map.of());
-         }
+   public Optional<Boolean> f() {
+      return this.g;
+   }
 
-         return a($$1);
-      }
-
-      public boolean a(cnw $$0, cvs $$1, int $$2, int $$3, int $$4) {
-         if (!this.c.a($$2, $$3, $$4)) {
-            return false;
-         } else if (this.d.isEmpty()) {
-            return true;
-         } else if (this.d.size() != 1) {
-            List<cs> $$5 = new ObjectArrayList(this.d);
-            int $$6 = $$0.b();
-
-            for (int $$7 = 0; $$7 < $$6; $$7++) {
-               if ($$5.isEmpty()) {
-                  return true;
-               }
-
-               cvs $$8 = $$0.a($$7);
-               if (!$$8.f()) {
-                  $$5.removeIf($$1x -> $$1x.a($$8));
-               }
-            }
-
-            return $$5.isEmpty();
-         } else {
-            return !$$1.f() && this.d.get(0).a($$1);
-         }
-      }
-
-      @Override
-      public Optional<bg> a() {
-         return this.b;
-      }
-
-      public cg.a.a b() {
-         return this.c;
-      }
-
-      public List<cs> c() {
-         return this.d;
-      }
-
-      public static record a(dh.d c, dh.d d, dh.d e) {
-         public static final Codec<cg.a.a> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     dh.d.d.optionalFieldOf("occupied", dh.d.c).forGetter(cg.a.a::a),
-                     dh.d.d.optionalFieldOf("full", dh.d.c).forGetter(cg.a.a::b),
-                     dh.d.d.optionalFieldOf("empty", dh.d.c).forGetter(cg.a.a::c)
-                  )
-                  .apply($$0, cg.a.a::new)
-         );
-         public static final cg.a.a b = new cg.a.a(dh.d.c, dh.d.c, dh.d.c);
-
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (!this.d.d($$0)) {
-               return false;
-            } else {
-               return !this.e.d($$1) ? false : this.c.d($$2);
-            }
-         }
-
-         public dh.d a() {
-            return this.c;
-         }
-
-         public dh.d b() {
-            return this.d;
-         }
-
-         public dh.d c() {
-            return this.e;
-         }
-      }
+   public Optional<Boolean> g() {
+      return this.h;
    }
 }

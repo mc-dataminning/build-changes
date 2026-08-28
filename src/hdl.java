@@ -1,37 +1,60 @@
-public class hdl extends hdp {
-   private final xe a;
-   private flh b = flh.a;
-   private final fqh c;
-   private int B;
+import javax.annotation.Nullable;
 
-   public hdl(fqh $$0, xe $$1, xe $$2) {
-      super($$1);
+public class hdl {
+   private boolean a;
+   @Nullable
+   private hdf.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
+
+   public hdl(@Nullable String $$0) {
+      this.d = $$0;
+   }
+
+   public void a(hdg.a $$0) {
+      if (this.c != null) {
+         $$0.a(hdf.j, !this.c.equals("vanilla"));
+      }
+
+      $$0.a(hdf.k, this.a());
+   }
+
+   private hdf.c a() {
+      gcl $$0 = fja.Q().S();
+      if ($$0 != null && $$0.e()) {
+         return hdf.c.a;
+      } else {
+         return fja.Q().U() ? hdf.c.b : hdf.c.c;
+      }
+   }
+
+   public boolean a(hdc $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(hdd.b, $$0x -> {
+            $$0x.a(hdf.n, this.b);
+            if (this.d != null) {
+               $$0x.a(hdf.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void a(des $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? hdf.b.e : hdf.b.a;
+         case b -> hdf.b.b;
+         case c -> hdf.b.c;
+         case d -> hdf.b.d;
+      };
+   }
+
+   public void a(String $$0) {
       this.c = $$0;
-      this.a = $$2;
-   }
-
-   @Override
-   public void aS_() {
-      this.m.af().i();
-      this.b = flh.a(this.p, this.a, this.n - 50);
-      this.B = this.b.a() * 9;
-      this.c(fko.a(xd.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.B / 2 + 9, 200, 20).a());
-   }
-
-   @Override
-   public xe i() {
-      return xe.i().b(this.l).f(": ").b(this.a);
-   }
-
-   @Override
-   public void d() {
-      fip.Q().a(this.c);
-   }
-
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.B / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.B / 2);
    }
 }

@@ -1,115 +1,71 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class fnh extends gwr implements gws {
-   private static final int d = 256;
-   private final fni e;
-   private final boolean f;
-   private final fnh.a g;
+public class fnh implements fnj {
+   private static final alh a = alh.b("toast/recipe");
+   private static final long e = 5000L;
+   private static final xh f = xh.c("recipe.toast.title");
+   private static final xh g = xh.c("recipe.toast.description");
+   private final List<fnh.a> h = Lists.newArrayList();
+   private long i;
+   private boolean j;
+   private fnj.a k = fnj.a.b;
+   private int l;
 
-   public fnh(fni $$0, boolean $$1) {
-      this.f = $$1;
-      this.g = new fnh.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? fci.b.a : fci.b.d, this.a(), 256, 256);
-      this.e = $$0;
+   public fnh(cvx $$0, cvx $$1) {
+      this.h.add(new fnh.a($$0, $$1));
    }
 
    @Override
-   public void a(auv $$0) {
+   public fnj.a a() {
+      return this.k;
    }
 
    @Override
-   public void close() {
-      this.b();
-   }
+   public void a(fnk $$0, long $$1) {
+      if (this.j) {
+         this.i = $$1;
+         this.j = false;
+      }
 
-   @Nullable
-   public fnk a(fbi $$0) {
-      if ($$0.c() != this.f) {
-         return null;
+      if (this.h.isEmpty()) {
+         this.k = fnj.a.b;
       } else {
-         fnh.a $$1 = this.g.a($$0);
-         if ($$1 != null) {
-            this.d();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fnk(
-               this.e,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
+         this.k = (double)($$1 - this.i) >= 5000.0 * $$0.d() ? fnj.a.b : fnj.a.a;
       }
+
+      this.l = (int)((double)$$1 / Math.max(1.0, 5000.0 * $$0.d() / (double)this.h.size()) % (double)this.h.size());
    }
 
    @Override
-   public void a(ale $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+   public void a(fkm $$0, fkk $$1, long $$2) {
+      $$0.a(gig::B, a, 0, 0, this.b(), this.c());
+      $$0.a($$1, f, 30, 7, -11534256, false);
+      $$0.a($$1, g, 30, 18, -16777216, false);
+      fnh.a $$3 = this.h.get(this.l);
+      $$0.c().a();
+      $$0.c().b(0.6F, 0.6F, 1.0F);
+      $$0.b($$3.a(), 3, 3);
+      $$0.c().b();
+      $$0.b($$3.b(), 8, 8);
    }
 
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fnh.a e;
-      @Nullable
-      private fnh.a f;
-      private boolean g;
+   private void a(cvx $$0, cvx $$1) {
+      this.h.add(new fnh.a($$0, $$1));
+      this.j = true;
+   }
 
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public static void a(fnk $$0, dal<?> $$1) {
+      fnh $$2 = $$0.a(fnh.class, b);
+      cvx $$3 = $$1.b().g();
+      cvx $$4 = $$1.b().a($$0.c().s.H_());
+      if ($$2 == null) {
+         $$0.a(new fnh($$3, $$4));
+      } else {
+         $$2.a($$3, $$4);
       }
+   }
 
-      @Nullable
-      fnh.a a(fbi $$0) {
-         if (this.e != null && this.f != null) {
-            fnh.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
-         } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fnh.a(this.a, this.b, $$2, this.d);
-                  this.f = new fnh.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fnh.a(this.a, this.b, this.c, $$3);
-                  this.f = new fnh.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
-         }
-      }
+   static record a(cvx a, cvx b) {
    }
 }

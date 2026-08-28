@@ -1,25 +1,28 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class ld extends kz {
+   private final cws c;
+   private final cws.a d;
 
-public class ld extends la {
-   private static final Logger c = LogUtils.getLogger();
+   public ld(cvt $$0) {
+      if ($$0 instanceof cws $$1) {
+         this.c = $$1;
+         this.d = $$1.c();
+      } else {
+         throw new IllegalArgumentException($$0 + " not instance of " + cws.class.getSimpleName());
+      }
+   }
 
    @Override
-   protected cvs a(kw $$0, cvs $$1) {
-      this.a(false);
-      cvn $$2 = $$1.h();
-      if ($$2 instanceof ctu) {
-         jk $$3 = $$0.d().c(djr.b);
-         jf $$4 = $$0.c().a($$3);
-         jk $$5 = $$0.b().u($$4.e()) ? $$3 : jk.b;
-
-         try {
-            this.a(((ctu)$$2).a((czn)(new czo($$0.b(), $$4, $$3, $$1, $$5))).a());
-         } catch (Exception var8) {
-            c.error("Error trying to place shulker box at {}", $$4, var8);
-         }
-      }
-
+   public cvx a(kx $$0, cvx $$1) {
+      arm $$2 = $$0.b();
+      jl $$3 = $$0.d().c(dkd.b);
+      jz $$4 = this.d.b().getDispensePosition($$0, $$3);
+      cpb.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
+      $$1.h(1);
       return $$1;
+   }
+
+   @Override
+   protected void a(kx $$0) {
+      $$0.b().c(this.d.e().orElse(1002), $$0.c(), 0);
    }
 }

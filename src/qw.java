@@ -1,219 +1,473 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
 public class qw {
-   public static final ald<emq> a = rb.a("village/desert/town_centers");
-   private static final ald<emq> b = rb.a("village/desert/terminators");
-   private static final ald<emq> c = rb.a("village/desert/zombie/terminators");
+   public static void a(dfx.a $$0) {
+      $$0.a(qy.a);
+      $$0.a(qy.b);
+      $$0.a(qy.c);
+      $$0.a(eav.a.b, sk.g);
+      $$0.a(eav.a.b, sk.h);
+   }
 
-   public static void a(qu<emq> $$0) {
-      jp<ekk> $$1 = $$0.a(lw.aS);
-      jo<ekk> $$2 = $$1.b(sn.j);
-      jo<ekk> $$3 = $$1.b(sn.a);
-      jp<epg> $$4 = $$0.a(lw.aU);
-      jo<epg> $$5 = $$4.b(rc.e);
-      jo<epg> $$6 = $$4.b(rc.p);
-      jp<emq> $$7 = $$0.a(lw.aW);
-      jo<emq> $$8 = $$7.b(rb.a);
-      jo<emq> $$9 = $$7.b(b);
-      jo<emq> $$10 = $$7.b(c);
-      $$0.a(
-         a,
-         new emq(
-            $$8,
-            ImmutableList.of(
-               Pair.of(emo.a("village/desert/town_centers/desert_meeting_point_1"), 98),
-               Pair.of(emo.a("village/desert/town_centers/desert_meeting_point_2"), 98),
-               Pair.of(emo.a("village/desert/town_centers/desert_meeting_point_3"), 49),
-               Pair.of(emo.a("village/desert/zombie/town_centers/desert_meeting_point_1", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/town_centers/desert_meeting_point_2", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/town_centers/desert_meeting_point_3", $$5), 1)
-            ),
-            emq.a.b
-         )
-      );
-      rb.a(
-         $$0,
-         "village/desert/streets",
-         new emq(
-            $$9,
-            ImmutableList.of(
-               Pair.of(emo.a("village/desert/streets/corner_01"), 3),
-               Pair.of(emo.a("village/desert/streets/corner_02"), 3),
-               Pair.of(emo.a("village/desert/streets/straight_01"), 4),
-               Pair.of(emo.a("village/desert/streets/straight_02"), 4),
-               Pair.of(emo.a("village/desert/streets/straight_03"), 3),
-               Pair.of(emo.a("village/desert/streets/crossroad_01"), 3),
-               Pair.of(emo.a("village/desert/streets/crossroad_02"), 3),
-               Pair.of(emo.a("village/desert/streets/crossroad_03"), 3),
-               Pair.of(emo.a("village/desert/streets/square_01"), 3),
-               Pair.of(emo.a("village/desert/streets/square_02"), 3),
-               Pair.of(emo.a("village/desert/streets/turn_01"), 3)
-            ),
-            emq.a.a
-         )
-      );
-      rb.a(
-         $$0,
-         "village/desert/zombie/streets",
-         new emq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(emo.a("village/desert/zombie/streets/corner_01"), 3),
-               Pair.of(emo.a("village/desert/zombie/streets/corner_02"), 3),
-               Pair.of(emo.a("village/desert/zombie/streets/straight_01"), 4),
-               Pair.of(emo.a("village/desert/zombie/streets/straight_02"), 4),
-               Pair.of(emo.a("village/desert/zombie/streets/straight_03"), 3),
-               Pair.of(emo.a("village/desert/zombie/streets/crossroad_01"), 3),
-               Pair.of(emo.a("village/desert/zombie/streets/crossroad_02"), 3),
-               Pair.of(emo.a("village/desert/zombie/streets/crossroad_03"), 3),
-               Pair.of(emo.a("village/desert/zombie/streets/square_01"), 3),
-               Pair.of(emo.a("village/desert/zombie/streets/square_02"), 3),
-               Pair.of(emo.a("village/desert/zombie/streets/turn_01"), 3)
-            ),
-            emq.a.a
-         )
-      );
-      rb.a(
-         $$0,
-         "village/desert/houses",
-         new emq(
-            $$9,
-            ImmutableList.of(
-               Pair.of(emo.a("village/desert/houses/desert_small_house_1"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_small_house_2"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_small_house_3"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_small_house_4"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_small_house_5"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_small_house_6"), 1),
-               Pair.of(emo.a("village/desert/houses/desert_small_house_7"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_small_house_8"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_medium_house_1"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_medium_house_2"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_butcher_shop_1"), 2),
-               Pair.of(emo.a("village/desert/houses/desert_tool_smith_1"), 2),
-               new Pair[]{
-                  Pair.of(emo.a("village/desert/houses/desert_fletcher_house_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_shepherd_house_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_armorer_1"), 1),
-                  Pair.of(emo.a("village/desert/houses/desert_fisher_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_tannery_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_cartographer_house_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_library_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_mason_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_weaponsmith_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_temple_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_temple_2"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_large_farm_1", $$6), 11),
-                  Pair.of(emo.a("village/desert/houses/desert_farm_1", $$6), 4),
-                  Pair.of(emo.a("village/desert/houses/desert_farm_2", $$6), 4),
-                  Pair.of(emo.a("village/desert/houses/desert_animal_pen_1"), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_animal_pen_2"), 2),
-                  Pair.of(emo.h(), 5)
-               }
-            ),
-            emq.a.b
-         )
-      );
-      rb.a(
-         $$0,
-         "village/desert/zombie/houses",
-         new emq(
-            $$10,
-            ImmutableList.of(
-               Pair.of(emo.a("village/desert/zombie/houses/desert_small_house_1", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/houses/desert_small_house_2", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/houses/desert_small_house_3", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/houses/desert_small_house_4", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/houses/desert_small_house_5", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/houses/desert_small_house_6", $$5), 1),
-               Pair.of(emo.a("village/desert/zombie/houses/desert_small_house_7", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/houses/desert_small_house_8", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/houses/desert_medium_house_1", $$5), 2),
-               Pair.of(emo.a("village/desert/zombie/houses/desert_medium_house_2", $$5), 2),
-               Pair.of(emo.a("village/desert/houses/desert_butcher_shop_1", $$5), 2),
-               Pair.of(emo.a("village/desert/houses/desert_tool_smith_1", $$5), 2),
-               new Pair[]{
-                  Pair.of(emo.a("village/desert/houses/desert_fletcher_house_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_shepherd_house_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_armorer_1", $$5), 1),
-                  Pair.of(emo.a("village/desert/houses/desert_fisher_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_tannery_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_cartographer_house_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_library_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_mason_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_weaponsmith_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_temple_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_temple_2", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_large_farm_1", $$5), 7),
-                  Pair.of(emo.a("village/desert/houses/desert_farm_1", $$5), 4),
-                  Pair.of(emo.a("village/desert/houses/desert_farm_2", $$5), 4),
-                  Pair.of(emo.a("village/desert/houses/desert_animal_pen_1", $$5), 2),
-                  Pair.of(emo.a("village/desert/houses/desert_animal_pen_2", $$5), 2),
-                  Pair.of(emo.h(), 5)
-               }
-            ),
-            emq.a.b
-         )
-      );
-      $$0.a(
-         b,
-         new emq(
-            $$8,
-            ImmutableList.of(Pair.of(emo.a("village/desert/terminators/terminator_01"), 1), Pair.of(emo.a("village/desert/terminators/terminator_02"), 1)),
-            emq.a.a
-         )
-      );
-      $$0.a(
-         c,
-         new emq(
-            $$8,
-            ImmutableList.of(
-               Pair.of(emo.a("village/desert/terminators/terminator_01"), 1), Pair.of(emo.a("village/desert/zombie/terminators/terminator_02"), 1)
-            ),
-            emq.a.a
-         )
-      );
-      rb.a(
-         $$0,
-         "village/desert/decor",
-         new emq(
-            $$8,
-            ImmutableList.of(Pair.of(emo.a("village/desert/desert_lamp_1"), 10), Pair.of(emo.a($$2), 4), Pair.of(emo.a($$3), 4), Pair.of(emo.h(), 10)),
-            emq.a.b
-         )
-      );
-      rb.a(
-         $$0,
-         "village/desert/zombie/decor",
-         new emq(
-            $$8,
-            ImmutableList.of(Pair.of(emo.a("village/desert/desert_lamp_1", $$5), 10), Pair.of(emo.a($$2), 4), Pair.of(emo.a($$3), 4), Pair.of(emo.h(), 10)),
-            emq.a.b
-         )
-      );
-      rb.a(
-         $$0,
-         "village/desert/villagers",
-         new emq(
-            $$8,
-            ImmutableList.of(
-               Pair.of(emo.a("village/desert/villagers/nitwit"), 1),
-               Pair.of(emo.a("village/desert/villagers/baby"), 1),
-               Pair.of(emo.a("village/desert/villagers/unemployed"), 10)
-            ),
-            emq.a.b
-         )
-      );
-      rb.a($$0, "village/desert/camel", new emq($$8, ImmutableList.of(Pair.of(emo.a("village/desert/camel_spawn"), 1)), emq.a.b));
-      rb.a(
-         $$0,
-         "village/desert/zombie/villagers",
-         new emq(
-            $$8,
-            ImmutableList.of(Pair.of(emo.a("village/desert/zombie/villagers/nitwit"), 1), Pair.of(emo.a("village/desert/zombie/villagers/unemployed"), 10)),
-            emq.a.b
-         )
-      );
+   public static void b(dfx.a $$0) {
+      $$0.a(eav.a.d, si.a);
+      $$0.a(eav.a.d, si.b);
+   }
+
+   public static void c(dfx.a $$0) {
+      $$0.a(eav.a.g, sm.i);
+      $$0.a(eav.a.g, sm.j);
+      $$0.a(eav.a.g, sm.k);
+      $$0.a(eav.a.g, sm.l);
+      $$0.a(eav.a.g, sm.m);
+      $$0.a(eav.a.g, sm.n);
+      $$0.a(eav.a.g, sm.o);
+      $$0.a(eav.a.g, sm.p);
+      $$0.a(eav.a.g, sm.q);
+      $$0.a(eav.a.j, si.i);
+   }
+
+   public static void d(dfx.a $$0) {
+      $$0.a(eav.a.c, si.f);
+      $$0.a(eav.a.h, si.e);
+      $$0.a(eav.a.h, si.g);
+   }
+
+   public static void e(dfx.a $$0) {
+      $$0.a(eav.a.h, si.t);
+      $$0.a(eav.a.h, si.r);
+   }
+
+   public static void f(dfx.a $$0) {
+      a($$0, false);
+   }
+
+   public static void a(dfx.a $$0, boolean $$1) {
+      $$0.a(eav.a.g, sm.r);
+      $$0.a(eav.a.g, sm.s);
+      $$0.a(eav.a.g, sm.t);
+      $$0.a(eav.a.g, sm.u);
+      $$0.a(eav.a.g, sm.v);
+      $$0.a(eav.a.g, sm.x);
+      $$0.a(eav.a.g, sm.y);
+      $$0.a(eav.a.g, sm.z);
+      $$0.a(eav.a.g, sm.A);
+      $$0.a(eav.a.g, sm.B);
+      $$0.a(eav.a.g, sm.C);
+      $$0.a(eav.a.g, sm.D);
+      $$0.a(eav.a.g, sm.E);
+      $$0.a(eav.a.g, sm.F);
+      $$0.a(eav.a.g, sm.G);
+      $$0.a(eav.a.g, $$1 ? sm.M : sm.L);
+      $$0.a(eav.a.g, si.h);
+   }
+
+   public static void g(dfx.a $$0) {
+      $$0.a(eav.a.g, sm.w);
+   }
+
+   public static void h(dfx.a $$0) {
+      $$0.a(eav.a.g, sm.I);
+   }
+
+   public static void i(dfx.a $$0) {
+      $$0.a(eav.a.h, sm.H);
+   }
+
+   public static void j(dfx.a $$0) {
+      $$0.a(eav.a.g, sk.k);
+      $$0.a(eav.a.g, sk.i);
+      $$0.a(eav.a.g, sk.j);
+   }
+
+   public static void k(dfx.a $$0) {
+      $$0.a(eav.a.g, sk.i);
+   }
+
+   public static void l(dfx.a $$0) {
+      $$0.a(eav.a.g, sk.l);
+      $$0.a(eav.a.g, sk.i);
+   }
+
+   public static void m(dfx.a $$0) {
+      $$0.a(eav.a.c, sk.c);
+   }
+
+   public static void n(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.y);
+   }
+
+   public static void o(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.u);
+   }
+
+   public static void p(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.t);
+   }
+
+   public static void q(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.a);
+   }
+
+   public static void r(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.b);
+      $$0.a(eav.a.j, sp.au);
+   }
+
+   public static void s(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.ad);
+   }
+
+   public static void t(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.ae);
+   }
+
+   public static void u(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.ao);
+   }
+
+   public static void v(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.al);
+   }
+
+   public static void w(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.ap);
+   }
+
+   public static void x(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.ak);
+   }
+
+   public static void y(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.aj);
+   }
+
+   public static void z(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.ai);
+   }
+
+   public static void A(dfx.a $$0) {
+      $$0.a(eav.a.j, si.n);
+      $$0.a(eav.a.j, si.k);
+      $$0.a(eav.a.j, si.m);
+      $$0.a(eav.a.j, si.l);
+      $$0.a(eav.a.j, si.j);
+      $$0.a(eav.a.j, si.o);
+      $$0.a(eav.a.j, si.p);
+   }
+
+   public static void B(dfx.a $$0) {
+      $$0.a(eav.a.g, sm.N);
+   }
+
+   public static void C(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.an);
+   }
+
+   public static void D(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.am);
+   }
+
+   public static void E(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.at);
+   }
+
+   public static void F(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.aq);
+   }
+
+   public static void G(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.af);
+   }
+
+   public static void H(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.ag);
+   }
+
+   public static void I(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.m);
+   }
+
+   public static void J(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.x);
+   }
+
+   public static void K(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.j);
+   }
+
+   public static void L(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.i);
+   }
+
+   public static void M(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.h);
+      $$0.a(eav.a.j, sp.q);
+   }
+
+   public static void N(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.Z);
+   }
+
+   public static void O(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.g);
+   }
+
+   public static void P(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.ah);
+      $$0.a(eav.a.j, sp.S);
+      $$0.a(eav.a.j, sp.j);
+      $$0.a(eav.a.j, sp.p);
+      $$0.a(eav.a.j, sp.v);
+      $$0.a(eav.a.j, sp.N);
+      $$0.a(eav.a.j, sp.O);
+   }
+
+   public static void Q(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.aw);
+      $$0.a(eav.a.j, sp.j);
+      $$0.a(eav.a.j, sp.p);
+      $$0.a(eav.a.j, sp.v);
+   }
+
+   public static void R(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.av);
+      $$0.a(eav.a.j, sp.J);
+      $$0.a(eav.a.j, sp.K);
+   }
+
+   public static void S(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.W);
+      $$0.a(eav.a.j, sp.T);
+      $$0.a(eav.a.j, sp.f);
+   }
+
+   public static void T(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.o);
+   }
+
+   public static void U(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.l);
+      $$0.a(eav.a.j, sp.p);
+      $$0.a(eav.a.j, sp.L);
+      $$0.a(eav.a.j, sp.M);
+   }
+
+   public static void V(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.Q);
+   }
+
+   public static void W(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.f);
+      $$0.a(eav.a.j, sp.V);
+      $$0.a(eav.a.j, sp.ac);
+   }
+
+   public static void X(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.f);
+      $$0.a(eav.a.j, sp.U);
+      $$0.a(eav.a.j, sp.ab);
+   }
+
+   public static void Y(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.P);
+   }
+
+   public static void Z(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.h);
+   }
+
+   public static void aa(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.k);
+      $$0.a(eav.a.j, sp.J);
+      $$0.a(eav.a.j, sp.K);
+   }
+
+   public static void ab(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.w);
+   }
+
+   public static void ac(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.H);
+      $$0.a(eav.a.j, sp.I);
+   }
+
+   public static void ad(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.E);
+      $$0.a(eav.a.j, sp.e);
+   }
+
+   public static void ae(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.D);
+      $$0.a(eav.a.j, sp.e);
+      $$0.a(eav.a.j, sp.A);
+   }
+
+   public static void af(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.r);
+   }
+
+   public static void ag(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.s);
+   }
+
+   public static void ah(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.c);
+   }
+
+   public static void ai(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.C);
+      $$0.a(eav.a.j, sp.e);
+      $$0.a(eav.a.j, sp.z);
+   }
+
+   public static void aj(dfx.a $$0) {
+      $$0.a(eav.a.j, sp.B);
+      $$0.a(eav.a.j, sp.e);
+   }
+
+   public static void ak(dfx.a $$0) {
+      $$0.a(eav.a.e, sk.o);
+   }
+
+   public static void al(dfx.a $$0) {
+      $$0.a(eav.a.d, si.c);
+      $$0.a(eav.a.d, si.d);
+   }
+
+   public static void am(dfx.a $$0) {
+      $$0.a(eav.a.j, sh.j);
+   }
+
+   public static void an(dfx.a $$0) {
+      $$0.a(eav.a.j, sh.k);
+   }
+
+   public static void ao(dfx.a $$0) {
+      $$0.a(eav.a.i, sk.r);
+      $$0.a(eav.a.i, sk.p);
+   }
+
+   public static void ap(dfx.a $$0) {
+      $$0.a(eav.a.i, sk.q);
+   }
+
+   public static void aq(dfx.a $$0) {
+      $$0.a(eav.a.c, sk.d);
+      $$0.a(eav.a.c, sk.e);
+   }
+
+   public static void ar(dfx.a $$0) {
+      $$0.a(eav.a.e, sk.f);
+   }
+
+   public static void as(dfx.a $$0) {
+      $$0.a(eav.a.k, sk.m);
+   }
+
+   public static void at(dfx.a $$0) {
+      $$0.a(eav.a.h, sm.g);
+      $$0.a(eav.a.h, sm.h);
+      $$0.a(eav.a.h, sm.e);
+      $$0.a(eav.a.h, sm.f);
+      au($$0);
+   }
+
+   public static void au(dfx.a $$0) {
+      $$0.a(eav.a.h, sm.J);
+      $$0.a(eav.a.h, sm.K);
+   }
+
+   public static void av(dfx.a $$0) {
+      $$0.a(eav.a.c, si.q);
+   }
+
+   public static void a(dgi.a $$0) {
+      $$0.a(buy.b, new dgi.c(bug.aJ, 12, 4, 4));
+      $$0.a(buy.b, new dgi.c(bug.az, 10, 4, 4));
+      $$0.a(buy.b, new dgi.c(bug.t, 10, 4, 4));
+      $$0.a(buy.b, new dgi.c(bug.w, 8, 4, 4));
+   }
+
+   public static void b(dgi.a $$0) {
+      $$0.a(buy.c, new dgi.c(bug.g, 10, 8, 8));
+      $$0.a(buy.e, new dgi.c(bug.W, 10, 4, 6));
+   }
+
+   public static void c(dgi.a $$0) {
+      a($$0, 100);
+   }
+
+   public static void a(dgi.a $$0, int $$1) {
+      b($$0);
+      a($$0, 95, 5, $$1, false);
+   }
+
+   public static void a(dgi.a $$0, int $$1, int $$2, int $$3) {
+      $$0.a(buy.f, new dgi.c(bug.aX, $$1, 1, $$2));
+      $$0.a(buy.g, new dgi.c(bug.u, $$3, 3, 6));
+      c($$0);
+      $$0.a(buy.a, new dgi.c(bug.B, 5, 1, 1));
+   }
+
+   public static void a(dgi.a $$0, int $$1, int $$2) {
+      $$0.a(buy.f, new dgi.c(bug.aX, $$1, $$2, 4));
+      $$0.a(buy.g, new dgi.c(bug.bg, 25, 8, 8));
+      $$0.a(buy.f, new dgi.c(bug.y, 2, 1, 2));
+      $$0.a(buy.a, new dgi.c(bug.B, 5, 1, 1));
+      c($$0);
+   }
+
+   public static void d(dgi.a $$0) {
+      a($$0);
+      $$0.a(buy.b, new dgi.c(bug.ab, 5, 2, 6));
+      $$0.a(buy.b, new dgi.c(bug.z, 1, 1, 3));
+      c($$0);
+   }
+
+   public static void e(dgi.a $$0) {
+      $$0.a(buy.b, new dgi.c(bug.aG, 10, 2, 3));
+      $$0.a(buy.b, new dgi.c(bug.aD, 1, 1, 2));
+      b($$0);
+      a($$0, 95, 5, 20, false);
+      $$0.a(buy.a, new dgi.c(bug.aY, 80, 4, 4));
+   }
+
+   public static void f(dgi.a $$0) {
+      $$0.a(buy.b, new dgi.c(bug.aG, 4, 2, 3));
+      b($$0);
+      a($$0, 19, 1, 100, false);
+      $$0.a(buy.a, new dgi.c(bug.ac, 80, 4, 4));
+   }
+
+   public static void g(dgi.a $$0) {
+      b($$0);
+      int $$1 = 95;
+      a($$0, 95, 5, 100, false);
+      $$0.a(buy.a, new dgi.c(bug.B, 95, 4, 4));
+   }
+
+   public static void a(dgi.a $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      $$0.a(buy.a, new dgi.c(bug.aW, 100, 4, 4));
+      $$0.a(buy.a, new dgi.c($$4 ? bug.B : bug.bu, $$1, 4, 4));
+      $$0.a(buy.a, new dgi.c(bug.bw, $$2, 1, 1));
+      $$0.a(buy.a, new dgi.c(bug.aN, $$3, 4, 4));
+      $$0.a(buy.a, new dgi.c(bug.x, 100, 4, 4));
+      $$0.a(buy.a, new dgi.c(bug.aP, 100, 4, 4));
+      $$0.a(buy.a, new dgi.c(bug.H, 10, 1, 4));
+      $$0.a(buy.a, new dgi.c(bug.bo, 5, 1, 1));
+   }
+
+   public static void h(dgi.a $$0) {
+      $$0.a(buy.b, new dgi.c(bug.as, 8, 4, 8));
+      b($$0);
+   }
+
+   public static void i(dgi.a $$0) {
+      a($$0);
+      $$0.a(buy.b, new dgi.c(bug.t, 10, 4, 4));
+      c($$0);
+   }
+
+   public static void j(dgi.a $$0) {
+      $$0.a(buy.a, new dgi.c(bug.H, 10, 4, 4));
    }
 }

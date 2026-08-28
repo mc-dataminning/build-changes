@@ -1,68 +1,30 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cdd extends cbt {
+   private final bvd a;
 
-public class cdd<T extends bun> extends cdk {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
-   @Nullable
-   protected bun c;
-   protected cfd d;
-
-   public cdd(bup $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public cdd(bup $$0, Class<T> $$1, boolean $$2, Predicate<bun> $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public cdd(bup $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public cdd(bup $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bun> $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(cbk.a.d));
-      this.d = cfd.a().a(this.l()).a($$5);
+   public cdd(bvd $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.b > 0 && this.e.dV().a(this.b) != 0) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
-   }
-
-   protected eyr a(double $$0) {
-      return this.e.cO().c($$0, $$0, $$0);
-   }
-
-   protected void h() {
-      if (this.a != cnx.class && this.a != ark.class) {
-         this.c = this.e.dS().a(this.e.dS().a(this.a, this.a(this.l()), $$0 -> true), this.i(), this.e, this.e.dx(), this.e.dB(), this.e.dD());
-      } else {
-         this.c = this.e.dS().a(this.i(), this.e, this.e.dx(), this.e.dB(), this.e.dD());
-      }
+      return this.a.aJ() && !this.a.dX().b_(this.a.dx()).a(axf.a);
    }
 
    @Override
    public void d() {
-      this.e.h(this.c);
-      super.d();
-   }
+      jg $$0 = null;
 
-   public void a(@Nullable bun $$0) {
-      this.c = $$0;
-   }
+      for (jg $$2 : jg.b(
+         azj.a(this.a.dC() - 2.0), azj.a(this.a.dE() - 2.0), azj.a(this.a.dI() - 2.0), azj.a(this.a.dC() + 2.0), this.a.dD(), azj.a(this.a.dI() + 2.0)
+      )) {
+         if (this.a.dX().b_($$2).a(axf.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
 
-   private cfd i() {
-      return this.d.a(this.l());
+      if ($$0 != null) {
+         this.a.M().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+      }
    }
 }

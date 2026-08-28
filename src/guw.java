@@ -1,17 +1,13 @@
-public class guw extends guo {
-   public cgs.a a;
-   public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float i;
-   public float j;
-   public float k;
+import javax.annotation.Nullable;
 
-   public guw() {
-      this.a = cgs.a.a;
+public class guw extends gtw {
+   @Nullable
+   public btx.g.a a;
+   @Nullable
+   public gzu f;
+
+   @Override
+   public boolean a() {
+      return this.a != null && this.f != null;
    }
 }

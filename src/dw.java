@@ -1,71 +1,41 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public abstract class dw<T extends dw.a> implements aq<T> {
-   private final Map<alm, Set<aq.a<T>>> a = Maps.newIdentityHashMap();
-
+public class dw extends dx<dw.a> {
    @Override
-   public final void a(alm $$0, aq.a<T> $$1) {
-      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
+   public Codec<dw.a> a() {
+      return dw.a.a;
    }
 
-   @Override
-   public final void b(alm $$0, aq.a<T> $$1) {
-      Set<aq.a<T>> $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         $$2.remove($$1);
-         if ($$2.isEmpty()) {
-            this.a.remove($$0);
-         }
+   public void a(arn $$0, cvx $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public static record a(Optional<bg> b, Optional<ct> c) implements dx.a {
+      public static final Codec<dw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(dw.a::a), ct.a.optionalFieldOf("item").forGetter(dw.a::b)).apply($$0, dw.a::new)
+      );
+
+      public static ao<dw.a> a(Optional<ct> $$0) {
+         return an.G.a(new dw.a(Optional.empty(), $$0));
       }
-   }
 
-   @Override
-   public final void a(alm $$0) {
-      this.a.remove($$0);
-   }
-
-   protected void a(ark $$0, Predicate<T> $$1) {
-      alm $$2 = $$0.T();
-      Set<aq.a<T>> $$3 = this.a.get($$2);
-      if ($$3 != null && !$$3.isEmpty()) {
-         etl $$4 = bv.b($$0, $$0);
-         List<aq.a<T>> $$5 = null;
-
-         for (aq.a<T> $$6 : $$3) {
-            T $$7 = $$6.a();
-            if ($$1.test($$7)) {
-               Optional<bg> $$8 = $$7.a();
-               if ($$8.isEmpty() || $$8.get().a($$4)) {
-                  if ($$5 == null) {
-                     $$5 = Lists.newArrayList();
-                  }
-
-                  $$5.add($$6);
-               }
-            }
-         }
-
-         if ($$5 != null) {
-            for (aq.a<T> $$9 : $$5) {
-               $$9.a($$2);
-            }
-         }
+      public static ao<dw.a> a(jq<cvt> $$0, deu $$1) {
+         return an.G.a(new dw.a(Optional.empty(), Optional.of(ct.a.a().a($$0, $$1).b())));
       }
-   }
 
-   public interface a extends ar {
+      public boolean a(cvx $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
+      }
+
       @Override
-      default void a(bh $$0) {
-         $$0.a(this.a(), ".player");
+      public Optional<bg> a() {
+         return this.b;
       }
 
-      Optional<bg> a();
+      public Optional<ct> b() {
+         return this.c;
+      }
    }
 }

@@ -1,44 +1,37 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dnw extends djp {
-   protected static final float f = 6.0F;
-   protected static final float g = 10.0F;
-   protected static final ezq h = dhm.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final ezq i = dhm.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
-   protected static final ezq j = dhm.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+public class dnw extends dhy {
+   public static final MapCodec<dnw> a = b(dnw::new);
 
-   protected dnw(dur.d $$0) {
+   @Override
+   public MapCodec<dnw> a() {
+      return a;
+   }
+
+   protected dnw(dvc.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dnw> a();
-
-   @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      switch ($$0.c(a).o()) {
-         case a:
-         default:
-            return j;
-         case c:
-            return i;
-         case b:
-            return h;
+   protected bry a(cvx $$0, dvd $$1, dev $$2, jg $$3, coh $$4, brx $$5, ezd $$6) {
+      if (!$$0.a(cwb.rW)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.C) {
+         return bry.a;
+      } else {
+         jl $$7 = $$6.c();
+         jl $$8 = $$7.o() == jl.a.b ? $$4.cP().g() : $$7;
+         $$2.a(null, $$3, awk.uV, awl.e, 1.0F, 1.0F);
+         $$2.a($$3, dia.ee.m().b(dis.b, $$8), 11);
+         ckq $$9 = new ckq(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cvx(cwb.rZ, 4)
+         );
+         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, buv.d($$5));
+         $$2.a($$4, eaa.M, $$3);
+         $$4.b(awu.c.b(cwb.rW));
+         return bry.a;
       }
-   }
-
-   @Override
-   protected dus a(dus $$0, doa $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected dus a(dus $$0, dmj $$1) {
-      return $$0.b(a, $$1.b($$0.c(a)));
-   }
-
-   @Override
-   protected boolean a(dus $$0, eri $$1) {
-      return false;
    }
 }

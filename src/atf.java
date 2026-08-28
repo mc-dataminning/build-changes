@@ -1,34 +1,121 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.regex.Pattern;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public record atf(List<atf.a> b) {
-   private static final Pattern c = Pattern.compile("[-_a-zA-Z0-9.]+");
-   private static final Codec<atf> d = RecordCodecBuilder.create($$0 -> $$0.group(atf.a.c.listOf().fieldOf("entries").forGetter(atf::a)).apply($$0, atf::new));
-   public static final atv<atf> a = atv.a("overlays", d);
+public class atf {
+   private static final Logger a = LogUtils.getLogger();
 
-   private static DataResult<String> a(String $$0) {
-      return !c.matcher($$0).matches() ? DataResult.error(() -> $$0 + " is not accepted directory name") : DataResult.success($$0);
+   public static void a(Path $$0, int $$1) {
+      try {
+         List<atf.b> $$2 = a($$0);
+         int $$3 = $$2.size() - $$1;
+         if ($$3 <= 0) {
+            return;
+         }
+
+         $$2.sort(atf.b.a);
+         List<atf.a> $$4 = a($$2);
+         Collections.reverse($$4);
+         $$4.sort(atf.a.a);
+         Set<Path> $$5 = new HashSet<>();
+
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            atf.a $$7 = $$4.get($$6);
+            Path $$8 = $$7.b;
+
+            try {
+               Files.delete($$8);
+               if ($$7.c == 0) {
+                  $$5.add($$8.getParent());
+               }
+            } catch (IOException var12) {
+               a.warn("Failed to delete cache file {}", $$8, var12);
+            }
+         }
+
+         $$5.remove($$0);
+
+         for (Path $$10 : $$5) {
+            try {
+               Files.delete($$10);
+            } catch (DirectoryNotEmptyException var10) {
+            } catch (IOException var11) {
+               a.warn("Failed to delete empty(?) cache directory {}", $$10, var11);
+            }
+         }
+      } catch (UncheckedIOException | IOException var13) {
+         a.error("Failed to vacuum cache dir {}", $$0, var13);
+      }
    }
 
-   public List<String> a(int $$0) {
-      return this.b.stream().filter($$1 -> $$1.a($$0)).map(atf.a::b).toList();
+   private static List<atf.b> a(final Path $$0) throws IOException {
+      try {
+         final List<atf.b> $$1 = new ArrayList<>();
+         Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+            public FileVisitResult a(Path $$0x, BasicFileAttributes $$1) {
+               if ($$1.isRegularFile() && !$$0.getParent().equals($$0)) {
+                  FileTime $$2 = $$1.lastModifiedTime();
+                  $$1.add(new atf.b($$0, $$2));
+               }
+
+               return FileVisitResult.CONTINUE;
+            }
+         });
+         return $$1;
+      } catch (NoSuchFileException var2) {
+         return List.of();
+      }
    }
 
-   public List<atf.a> a() {
-      return this.b;
+   private static List<atf.a> a(List<atf.b> $$0) {
+      List<atf.a> $$1 = new ArrayList<>();
+      Object2IntOpenHashMap<Path> $$2 = new Object2IntOpenHashMap();
+
+      for (atf.b $$3 : $$0) {
+         int $$4 = $$2.addTo($$3.b.getParent(), 1);
+         $$1.add(new atf.a($$3.b, $$4));
+      }
+
+      return $$1;
    }
 
-   public static record a(ayx<Integer> a, String b) {
-      static final Codec<atf.a> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ayx.a(Codec.INT).fieldOf("formats").forGetter(atf.a::a), Codec.STRING.validate(atf::a).fieldOf("directory").forGetter(atf.a::b))
-               .apply($$0, atf.a::new)
-      );
+   static record a(Path b, int c) {
+      public static final Comparator<atf.a> a = Comparator.comparing(atf.a::b).reversed();
 
-      public boolean a(int $$0) {
-         return this.a.a($$0);
+      public Path a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   static record b(Path b, FileTime c) {
+      public static final Comparator<atf.b> a = Comparator.comparing(atf.b::b).reversed();
+
+      public Path a() {
+         return this.b;
+      }
+
+      public FileTime b() {
+         return this.c;
       }
    }
 }

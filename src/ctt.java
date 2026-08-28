@@ -1,10 +1,16 @@
-public class ctt extends ctu {
-   public ctt(dhm $$0, cvn.a $$1) {
-      super($$0, $$1);
+import java.util.List;
+
+public class ctt extends cvt {
+   private final dhy a;
+
+   public ctt(dhy $$0, cvt.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   protected boolean a(czn $$0, dus $$1) {
-      return $$0.q().a($$0.a(), $$1, 26);
+   public void a(cvx $$0, cvt.b $$1, List<xh> $$2, cxp $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

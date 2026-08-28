@@ -1,62 +1,50 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class gkt implements gkh<duz> {
+   private final giz a;
 
-public class gkt {
-   private static final int a = 2;
-   private int b = 2;
-   private final List<gky.b.a> c = new ObjectArrayList();
-
-   public synchronized void a(gky.b.a $$0) {
-      this.c.add($$0);
+   public gkt(gki.a $$0) {
+      this.a = $$0.b();
    }
 
-   @Nullable
-   public synchronized gky.b.a a(eyw $$0) {
-      int $$1 = -1;
-      int $$2 = -1;
-      double $$3 = Double.MAX_VALUE;
-      double $$4 = Double.MAX_VALUE;
+   public void a(duz $$0, float $$1, fdt $$2, ghw $$3, int $$4, int $$5) {
+      dev $$6 = $$0.i();
+      if ($$6 != null) {
+         jg $$7 = $$0.aC_().a($$0.f().g());
+         dvd $$8 = $$0.j();
+         if (!$$8.l()) {
+            gjb.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(dia.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.b(dux.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.d() && !$$0.b()) {
+               dwf $$9 = $$8.a(dia.br) ? dwf.b : dwf.a;
+               dvd $$10 = dia.bz.m().b(dux.c, $$9).b(dux.a, $$8.c(duw.a));
+               $$10 = $$10.b(dux.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               jg $$11 = $$7.a($$0.f());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.b(duw.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            }
 
-      for (int $$5 = 0; $$5 < this.c.size(); $$5++) {
-         gky.b.a $$6 = this.c.get($$5);
-         double $$7 = $$6.d().b($$0);
-         if (!$$6.c() && $$7 < $$3) {
-            $$3 = $$7;
-            $$1 = $$5;
+            $$2.b();
+            gjb.b();
          }
-
-         if ($$6.c() && $$7 < $$4) {
-            $$4 = $$7;
-            $$2 = $$5;
-         }
-      }
-
-      boolean $$8 = $$2 >= 0;
-      boolean $$9 = $$1 >= 0;
-      if (!$$8 || $$9 && (this.b <= 0 || !($$4 < $$3))) {
-         this.b = 2;
-         return this.a($$1);
-      } else {
-         this.b--;
-         return this.a($$2);
       }
    }
 
-   public int a() {
-      return this.c.size();
+   private void a(jg $$0, dvd $$1, fdt $$2, ghw $$3, dev $$4, boolean $$5, int $$6) {
+      gig $$7 = gho.b($$1);
+      fdx $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azr.a(), $$1.b($$0), $$6);
    }
 
-   @Nullable
-   private gky.b.a a(int $$0) {
-      return $$0 >= 0 ? this.c.remove($$0) : null;
-   }
-
-   public synchronized void b() {
-      for (gky.b.a $$0 : this.c) {
-         $$0.a();
-      }
-
-      this.c.clear();
+   @Override
+   public int aV_() {
+      return 68;
    }
 }

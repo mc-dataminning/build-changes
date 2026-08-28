@@ -1,46 +1,68 @@
 import javax.annotation.Nullable;
 
-public class agd implements zl<aca> {
-   public static final zc<wb, agd> a = zl.a(agd::a, agd::new);
-   private final int b;
+public class agd implements zo<acd> {
+   public static final zf<we, agd> a = zo.a(agd::a, agd::new);
+   private static final int b = 1;
+   private static final int c = 2;
    @Nullable
-   private final ug c;
+   private final alh d;
+   @Nullable
+   private final awl e;
 
-   public agd(int $$0, @Nullable ug $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public agd(@Nullable alh $$0, @Nullable awl $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private agd(wb $$0) {
-      this.b = $$0.l();
-      this.c = $$0.o();
+   private agd(we $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.e = $$0.b(awl.class);
+      } else {
+         this.e = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.d = $$0.q();
+      } else {
+         this.d = null;
+      }
    }
 
-   private void a(wb $$0) {
-      $$0.c(this.b);
-      $$0.a((vd)this.c);
+   private void a(we $$0) {
+      if (this.e != null) {
+         if (this.d != null) {
+            $$0.l(3);
+            $$0.a(this.e);
+            $$0.a(this.d);
+         } else {
+            $$0.l(1);
+            $$0.a(this.e);
+         }
+      } else if (this.d != null) {
+         $$0.l(2);
+         $$0.a(this.d);
+      } else {
+         $$0.l(0);
+      }
    }
 
    @Override
-   public zn<agd> a() {
-      return agp.aY;
+   public zq<agd> a() {
+      return ags.aV;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   @Nullable
+   public alh b() {
+      return this.d;
    }
 
    @Nullable
-   public ug e() {
-      return this.c;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
+   public awl e() {
+      return this.e;
    }
 }

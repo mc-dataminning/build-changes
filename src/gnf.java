@@ -1,36 +1,45 @@
-public class gnf extends gnn<coh, gtq> {
-   private static final ale a = ale.b("textures/entity/enderdragon/dragon_fireball.png");
-   private static final ghv b = ghv.f(a);
+public class gnf extends gpf<cmi, gtr, fxk> {
+   private static final alh a = alh.b("textures/entity/breeze/breeze.png");
 
-   public gnf(gno.a $$0) {
-      super($$0);
+   public gnf(gnz.a $$0) {
+      super($$0, new fxk($$0.a(gba.B)), 0.5F);
+      this.a(new grl($$0, this));
+      this.a(new grk(this));
    }
 
-   protected int a(coh $$0, jf $$1) {
-      return 15;
-   }
-
-   @Override
-   public void a(gtq $$0, fdi $$1, ghl $$2, int $$3) {
-      $$1.a();
-      $$1.b(2.0F, 2.0F, 2.0F);
-      $$1.a(this.e.b());
-      fdi.a $$4 = $$1.c();
-      fdm $$5 = $$2.getBuffer(b);
-      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
-      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
-      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
-      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
-      $$1.b();
+   public void a(gtr $$0, fdt $$1, ghw $$2, int $$3) {
+      fxk $$4 = this.e();
+      a($$4, $$4.a(), $$4.c());
       super.a($$0, $$1, $$2, $$3);
    }
 
-   private static void a(fdm $$0, fdi.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(gwx.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   public alh a(gtr $$0) {
+      return a;
    }
 
-   @Override
-   public gtq b() {
-      return new gtq();
+   public gtr a() {
+      return new gtr();
+   }
+
+   public void a(cmi $$0, gtr $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a.a($$0.bY);
+      $$1.b.a($$0.c);
+      $$1.c.a($$0.d);
+      $$1.d.a($$0.bZ);
+      $$1.e.a($$0.e);
+   }
+
+   public static fxk a(fxk $$0, gbb... $$1) {
+      $$0.a().k = false;
+      $$0.b().k = false;
+      $$0.c().k = false;
+      $$0.d().k = false;
+
+      for (gbb $$2 : $$1) {
+         $$2.k = true;
+      }
+
+      return $$0;
    }
 }

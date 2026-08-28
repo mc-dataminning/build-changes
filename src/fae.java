@@ -1,136 +1,87 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 public class fae {
-   private static final Map<String, fae> a = Maps.newHashMap();
-   private static final Map<String, fae> o = Maps.newHashMap();
-   public static final fae b = b("dummy");
-   public static final fae c = b("trigger");
-   public static final fae d = b("deathCount");
-   public static final fae e = b("playerKillCount");
-   public static final fae f = b("totalKillCount");
-   public static final fae g = a("health", true, fae.a.b);
-   public static final fae h = a("food", true, fae.a.a);
-   public static final fae i = a("air", true, fae.a.a);
-   public static final fae j = a("armor", true, fae.a.a);
-   public static final fae k = a("xp", true, fae.a.a);
-   public static final fae l = a("level", true, fae.a.a);
-   public static final fae[] m = new fae[]{
-      b("teamkill." + n.a.g()),
-      b("teamkill." + n.b.g()),
-      b("teamkill." + n.c.g()),
-      b("teamkill." + n.d.g()),
-      b("teamkill." + n.e.g()),
-      b("teamkill." + n.f.g()),
-      b("teamkill." + n.g.g()),
-      b("teamkill." + n.h.g()),
-      b("teamkill." + n.i.g()),
-      b("teamkill." + n.j.g()),
-      b("teamkill." + n.k.g()),
-      b("teamkill." + n.l.g()),
-      b("teamkill." + n.m.g()),
-      b("teamkill." + n.n.g()),
-      b("teamkill." + n.o.g()),
-      b("teamkill." + n.p.g())
-   };
-   public static final fae[] n = new fae[]{
-      b("killedByTeam." + n.a.g()),
-      b("killedByTeam." + n.b.g()),
-      b("killedByTeam." + n.c.g()),
-      b("killedByTeam." + n.d.g()),
-      b("killedByTeam." + n.e.g()),
-      b("killedByTeam." + n.f.g()),
-      b("killedByTeam." + n.g.g()),
-      b("killedByTeam." + n.h.g()),
-      b("killedByTeam." + n.i.g()),
-      b("killedByTeam." + n.j.g()),
-      b("killedByTeam." + n.k.g()),
-      b("killedByTeam." + n.l.g()),
-      b("killedByTeam." + n.m.g()),
-      b("killedByTeam." + n.n.g()),
-      b("killedByTeam." + n.o.g()),
-      b("killedByTeam." + n.p.g())
-   };
-   private final String p;
-   private final boolean q;
-   private final fae.a r;
+   private final fam a;
+   private final String b;
+   private final fap c;
+   private xh d;
+   private xh e;
+   private fap.a f;
+   private boolean g;
+   @Nullable
+   private yx h;
 
-   private static fae a(String $$0, boolean $$1, fae.a $$2) {
-      fae $$3 = new fae($$0, $$1, $$2);
-      a.put($$0, $$3);
-      return $$3;
+   public fae(fam $$0, String $$1, fap $$2, xh $$3, fap.a $$4, boolean $$5, @Nullable yx $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.i();
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   private static fae b(String $$0) {
-      return a($$0, false, fae.a.a);
+   public fam a() {
+      return this.a;
    }
 
-   protected fae(String $$0) {
-      this($$0, false, fae.a.a);
+   public String b() {
+      return this.b;
    }
 
-   protected fae(String $$0, boolean $$1, fae.a $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      o.put($$0, this);
+   public fap c() {
+      return this.c;
    }
 
-   public static Set<String> c() {
-      return ImmutableSet.copyOf(a.keySet());
-   }
-
-   public static Optional<fae> a(String $$0) {
-      fae $$1 = o.get($$0);
-      if ($$1 != null) {
-         return Optional.of($$1);
-      } else {
-         int $$2 = $$0.indexOf(58);
-         return $$2 < 0 ? Optional.empty() : lv.v.b(ale.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, ale.a($$0.substring($$2 + 1), '.')));
-      }
-   }
-
-   private static <T> Optional<fae> a(awp<T> $$0, ale $$1) {
-      return $$0.b().b($$1).map($$0::b);
-   }
-
-   public String d() {
-      return this.p;
+   public xh d() {
+      return this.d;
    }
 
    public boolean e() {
-      return this.q;
+      return this.g;
    }
 
-   public fae.a f() {
-      return this.r;
+   @Nullable
+   public yx f() {
+      return this.h;
    }
 
-   public static enum a implements bab {
-      a("integer"),
-      b("hearts");
+   public yx a(yx $$0) {
+      return Objects.requireNonNullElse(this.h, $$0);
+   }
 
-      private final String d;
-      public static final bab.a<fae.a> c = bab.a(fae.a::values);
+   private xh i() {
+      return xk.a((xh)this.d.f().a($$0 -> $$0.a(new xn(xn.a.a, xh.b(this.b)))));
+   }
 
-      private a(final String $$0) {
-         this.d = $$0;
-      }
+   public xh g() {
+      return this.e;
+   }
 
-      public String a() {
-         return this.d;
-      }
+   public void a(xh $$0) {
+      this.d = $$0;
+      this.e = this.i();
+      this.a.b(this);
+   }
 
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public fap.a h() {
+      return this.f;
+   }
 
-      public static fae.a a(String $$0) {
-         return c.a($$0, a);
-      }
+   public void a(fap.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+      this.a.b(this);
+   }
+
+   public void b(@Nullable yx $$0) {
+      this.h = $$0;
+      this.a.b(this);
    }
 }

@@ -1,51 +1,66 @@
-public class fpm extends fqh {
-   private static final ale a = ale.b("textures/gui/demo_background.png");
-   private static final int b = 256;
-   private static final int c = 256;
-   private flh d = flh.a;
-   private flh s = flh.a;
+public class fpm extends fqs {
+   private static final xh s = xh.c("selectWorld.backupJoinSkipButton");
+   public static final xh a = xh.c("selectWorld.backupJoinConfirmButton");
+   private final Runnable u;
+   protected final fpm.a b;
+   private final xh v;
+   private final boolean w;
+   private fls x = fls.a;
+   final xh c;
+   protected int d;
+   private flb y;
 
-   public fpm() {
-      super(xe.c("demo.help.title"));
+   public fpm(Runnable $$0, fpm.a $$1, xh $$2, xh $$3, boolean $$4) {
+      this($$0, $$1, $$2, $$3, a, $$4);
+   }
+
+   public fpm(Runnable $$0, fpm.a $$1, xh $$2, xh $$3, xh $$4, boolean $$5) {
+      super($$2);
+      this.u = $$0;
+      this.b = $$1;
+      this.v = $$3;
+      this.w = $$5;
+      this.c = $$4;
    }
 
    @Override
    protected void aS_() {
-      int $$0 = -16;
-      this.c(fko.a(xe.c("demo.help.buy"), $$0x -> {
-         $$0x.j = false;
-         ad.m().a(ayb.f);
-      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
-      this.c(fko.a(xe.c("demo.help.later"), $$0x -> {
-         this.m.a(null);
-         this.m.o.i();
-      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
-      fit $$1 = this.m.n;
-      this.d = flh.a(
-         this.p,
-         xe.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
-         xe.c("demo.help.movementMouse"),
-         xe.a("demo.help.jump", $$1.z.k()),
-         xe.a("demo.help.inventory", $$1.C.k())
-      );
-      this.s = flh.a(this.p, xe.c("demo.help.fullWrapped"), 218);
+      super.aS_();
+      this.x = fls.a(this.p, this.v, this.n - 50);
+      int $$0 = (this.x.a() + 1) * 9;
+      this.y = flb.a(xh.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
+      if (this.w) {
+         this.c(this.y);
+      }
+
+      this.c(fkz.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fkz.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fkz.a(xg.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
    }
 
    @Override
-   public void b(fkb $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2;
-      int $$5 = (this.o - 166) / 2;
-      $$0.a(ghv::B, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
-   }
-
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2 + 10;
-      int $$5 = (this.o - 166) / 2 + 8;
-      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
-      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      this.x.a($$0, this.n / 2, 70);
+   }
+
+   @Override
+   public boolean aI_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.u.run();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

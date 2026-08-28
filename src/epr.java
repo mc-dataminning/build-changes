@@ -1,14 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface epr<P extends epq> {
-   epr<epo> a = a("clear", epo.a);
-   epr<epp> b = a("passthrough", epp.b);
-   epr<epn> c = a("append_static", epn.a);
-   epr<epm> d = a("append_loot", epm.a);
+public class epr {
+   private final List<epq> a;
 
-   MapCodec<P> codec();
+   public epr(List<epq> $$0) {
+      this.a = $$0;
+   }
 
-   private static <P extends epq> epr<P> a(String $$0, MapCodec<P> $$1) {
-      return kb.a(lv.n, $$0, () -> $$1);
+   public List<epq> a() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

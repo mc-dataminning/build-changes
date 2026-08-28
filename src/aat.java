@@ -1,16 +1,26 @@
-public record aat() implements aao {
-   public static final zc<wb, aat> a = aao.a(aat::a, aat::new);
-   public static final aao.b<aat> b = aao.a("debug/game_test_clear");
+public record aat(alg<eaa> c, ezh d) implements aar {
+   public static final zf<we, aat> a = aar.a(aat::a, aat::new);
+   public static final aar.b<aat> b = aar.a("debug/game_event");
 
-   private aat(wb $$0) {
-      this();
+   private aat(we $$0) {
+      this($$0.a(ly.G), $$0.k());
    }
 
-   private void a(wb $$0) {
+   private void a(we $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aao.b<aat> a() {
+   public aar.b<aat> a() {
       return b;
+   }
+
+   public alg<eaa> b() {
+      return this.c;
+   }
+
+   public ezh c() {
+      return this.d;
    }
 }

@@ -1,263 +1,131 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class xk {
-   public static final Codec<xk> a = Codec.withAlternative(xk.e.a.codec(), xk.e.b.codec()).xmap(xk::new, $$0 -> $$0.b);
-   private final xk.e<?> b;
+   public static final String a = ", ";
+   public static final xh b = xh.b(", ").a(n.h);
+   public static final xh c = xh.b(", ");
 
-   public <T> xk(xk.a<T> $$0, T $$1) {
-      this(new xk.e<>($$0, $$1));
-   }
-
-   private xk(xk.e<?> $$0) {
-      this.b = $$0;
-   }
-
-   public xk.a<?> a() {
-      return this.b.c;
-   }
-
-   @Nullable
-   public <T> T a(xk.a<T> $$0) {
-      return this.b.c == $$0 ? $$0.a(this.b.d) : null;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public static xv a(xv $$0, ye $$1) {
+      if ($$1.g()) {
+         return $$0;
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? ((xk)$$0).b.equals(this.b) : false;
+         ye $$2 = $$0.a();
+         if ($$2.g()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
       }
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
+   public static Optional<xv> a(@Nullable ev $$0, Optional<xh> $$1, @Nullable btz $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public static xv a(@Nullable ev $$0, xh $$1, @Nullable btz $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.f();
+      } else {
+         xv $$4 = $$1.b().a($$0, $$2, $$3 + 1);
+
+         for (xh $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         }
+
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
+      }
    }
 
-   public static class a<T> implements bab {
-      public static final xk.a<xe> a = new xk.a<>("show_text", true, xg.a, ($$0, $$1) -> DataResult.success($$0));
-      public static final xk.a<xk.c> b = new xk.a<>("show_item", true, xk.c.b, xk.c::a);
-      public static final xk.a<xk.b> c = new xk.a<>("show_entity", true, xk.b.a, xk.b::a);
-      public static final Codec<xk.a<?>> d = bab.b(() -> new xk.a[]{a, b, c});
-      public static final Codec<xk.a<?>> e = d.validate(xk.a::a);
-      private final String f;
-      private final boolean g;
-      final MapCodec<xk.e<T>> h;
-      final MapCodec<xk.e<T>> i;
+   private static ye a(@Nullable ev $$0, ye $$1, @Nullable btz $$2, int $$3) throws CommandSyntaxException {
+      xn $$4 = $$1.i();
+      if ($$4 != null) {
+         xh $$5 = $$4.a(xn.a.a);
+         if ($$5 != null) {
+            xn $$6 = new xn(xn.a.a, a($$0, $$5, $$2, $$3 + 1));
+            return $$1.a($$6);
+         }
+      }
 
-      public a(String $$0, boolean $$1, Codec<T> $$2, final xk.d<T> $$3) {
-         this.f = $$0;
-         this.g = $$1;
-         this.h = $$2.xmap($$0x -> new xk.e<>(this, (T)$$0x), $$0x -> $$0x.d).fieldOf("contents");
-         this.i = (new Codec<xk.e<T>>() {
-            public <D> DataResult<Pair<xk.e<T>, D>> decode(DynamicOps<D> $$0, D $$1) {
-               return xg.a.decode($$0, $$1).flatMap($$2 -> {
-                  DataResult<T> $$4;
-                  if ($$0 instanceof alc<D> $$3xx) {
-                     $$4 = $$3.parse((xe)$$2.getFirst(), $$3xx);
-                  } else {
-                     $$4 = $$3.parse((xe)$$2.getFirst(), null);
-                  }
+      return $$1;
+   }
 
-                  return $$4.map($$1xx -> Pair.of(new xk.e<>(a.this, $$1xx), $$2.getSecond()));
-               });
+   public static xh a(Collection<String> $$0) {
+      return a($$0, $$0x -> xh.b($$0x).a(n.k));
+   }
+
+   public static <T extends Comparable<T>> xh a(Collection<T> $$0, Function<T, xh> $$1) {
+      if ($$0.isEmpty()) {
+         return xg.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
+      }
+   }
+
+   public static <T> xh b(Collection<? extends T> $$0, Function<T, xh> $$1) {
+      return a($$0, b, $$1);
+   }
+
+   public static <T> xv a(Collection<? extends T> $$0, Optional<? extends xh> $$1, Function<T, xh> $$2) {
+      return a($$0, (xh)DataFixUtils.orElse($$1, b), $$2);
+   }
+
+   public static xh a(Collection<? extends xh> $$0, xh $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> xv a(Collection<? extends T> $$0, xh $$1, Function<T, xh> $$2) {
+      if ($$0.isEmpty()) {
+         return xh.i();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).f();
+      } else {
+         xv $$3 = xh.i();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
             }
 
-            public <D> DataResult<D> a(xk.e<T> $$0, DynamicOps<D> $$1, D $$2) {
-               return DataResult.error(() -> "Can't encode in legacy format");
-            }
-         }).fieldOf("value");
-      }
-
-      public boolean a() {
-         return this.g;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
-
-      T a(Object $$0) {
-         return (T)$$0;
-      }
-
-      @Override
-      public String toString() {
-         return "<action " + this.f + ">";
-      }
-
-      private static DataResult<xk.a<?>> a(@Nullable xk.a<?> $$0) {
-         if ($$0 == null) {
-            return DataResult.error(() -> "Unknown action");
-         } else {
-            return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+            $$3.b($$2.apply($$5));
+            $$4 = false;
          }
+
+         return $$3;
       }
    }
 
-   public static class b {
-      public static final Codec<xk.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  lv.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                  ki.f.fieldOf("id").forGetter($$0x -> $$0x.c),
-                  xg.a.lenientOptionalFieldOf("name").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, xk.b::new)
-      );
-      public final bty<?> b;
-      public final UUID c;
-      public final Optional<xe> d;
-      @Nullable
-      private List<xe> e;
+   public static xv a(xh $$0) {
+      return xh.a("chat.square_brackets", $$0);
+   }
 
-      public b(bty<?> $$0, UUID $$1, @Nullable xe $$2) {
-         this($$0, $$1, Optional.ofNullable($$2));
-      }
+   public static xh a(Message $$0) {
+      return (xh)($$0 instanceof xh ? (xh)$$0 : xh.b($$0.getString()));
+   }
 
-      public b(bty<?> $$0, UUID $$1, Optional<xe> $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public static DataResult<xk.b> a(xe $$0, @Nullable alc<?> $$1) {
-         try {
-            ug $$2 = ve.a($$0.getString());
-            DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
-            DataResult<xe> $$4 = xg.a.parse($$3, JsonParser.parseString($$2.l("name")));
-            bty<?> $$5 = lv.f.a(ale.a($$2.l("type")));
-            UUID $$6 = UUID.fromString($$2.l("id"));
-            return $$4.map($$2x -> new xk.b($$5, $$6, $$2x));
-         } catch (Exception var7) {
-            return DataResult.error(() -> "Failed to parse tooltip: " + var7.getMessage());
-         }
-      }
-
-      public List<xe> a() {
-         if (this.e == null) {
-            this.e = new ArrayList<>();
-            this.d.ifPresent(this.e::add);
-            this.e.add(xe.a("gui.entity_tooltip.type", this.b.h()));
-            this.e.add(xe.b(this.c.toString()));
-         }
-
-         return this.e;
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            xk.b $$1 = (xk.b)$$0;
-            return this.b.equals($$1.b) && this.c.equals($$1.c) && this.d.equals($$1.d);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.b.hashCode();
-         $$0 = 31 * $$0 + this.c.hashCode();
-         return 31 * $$0 + this.d.hashCode();
+   public static boolean b(@Nullable xh $$0) {
+      if ($$0 != null && $$0.b() instanceof ys $$1) {
+         String $$2 = $$1.b();
+         String $$3 = $$1.c();
+         return $$3 != null || ue.a().b($$2);
+      } else {
+         return true;
       }
    }
 
-   public static class c {
-      public static final Codec<xk.c> a = cvs.b.xmap(xk.c::new, xk.c::a);
-      private static final Codec<xk.c> c = cvs.g.xmap(xk.c::new, xk.c::a);
-      public static final Codec<xk.c> b = Codec.withAlternative(a, c);
-      private final jo<cvn> d;
-      private final int e;
-      private final kp f;
-      @Nullable
-      private cvs g;
-
-      c(jo<cvn> $$0, int $$1, kp $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
-
-      public c(cvs $$0) {
-         this($$0.i(), $$0.K(), $$0.e());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            xk.c $$1 = (xk.c)$$0;
-            return this.e == $$1.e && this.d.equals($$1.d) && this.f.equals($$1.f);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.d.hashCode();
-         $$0 = 31 * $$0 + this.e;
-         return 31 * $$0 + this.f.hashCode();
-      }
-
-      public cvs a() {
-         if (this.g == null) {
-            this.g = new cvs(this.d, this.e, this.f);
-         }
-
-         return this.g;
-      }
-
-      private static DataResult<xk.c> a(xe $$0, @Nullable alc<?> $$1) {
-         try {
-            ug $$2 = ve.a($$0.getString());
-            DynamicOps<vd> $$3 = (DynamicOps<vd>)($$1 != null ? $$1.a(uu.a) : uu.a);
-            return cvs.b.parse($$3, $$2).map(xk.c::new);
-         } catch (CommandSyntaxException var4) {
-            return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
-         }
-      }
-   }
-
-   public interface d<T> {
-      DataResult<T> parse(xe var1, @Nullable alc<?> var2);
-   }
-
-   static record e<T>(xk.a<T> c, T d) {
-      public static final MapCodec<xk.e<?>> a = xk.a.e.dispatchMap("action", xk.e::a, $$0 -> $$0.h);
-      public static final MapCodec<xk.e<?>> b = xk.a.e.dispatchMap("action", xk.e::a, $$0 -> $$0.i);
-
-      public xk.a<T> a() {
-         return this.c;
-      }
-
-      public T b() {
-         return this.d;
-      }
+   public static xv a(String $$0) {
+      return a((xh)xh.b($$0).a($$1 -> $$1.a(n.k).a(new xf(xf.a.f, $$0)).a(new xn(xn.a.a, xh.c("chat.copy.click"))).a($$0)));
    }
 }

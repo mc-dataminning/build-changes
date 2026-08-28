@@ -1,58 +1,54 @@
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
 
-public class edy extends edu<edz> {
-   public edy(Codec<edz> $$0) {
+public class edy extends eef<egg> {
+   public edy(Codec<egg> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(edw<edz> $$0) {
-      azn $$1 = $$0.d();
-      dfg $$2 = $$0.b();
-      jf $$3 = $$0.e();
-      doa $$4 = doa.a($$1);
-      edz $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      epj $$7 = $$2.E().o().aZ();
-      epi $$8 = $$7.a($$5.b.get($$6));
-      epi $$9 = $$7.a($$5.c.get($$6));
-      ddp $$10 = new ddp($$3);
-      eky $$11 = new eky($$10.d() - 16, $$2.H_(), $$10.e() - 16, $$10.f() + 16, $$2.an(), $$10.g() + 16);
-      epe $$12 = new epe().a($$4).a($$11).a($$1);
-      kj $$13 = $$8.a($$4);
-      jf $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
+   public boolean a(eeh<egg> $$0) {
+      egg $$1 = $$0.f();
+      jg $$2 = $$0.e();
+      dfs $$3 = $$0.b();
+      azr $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      jg.a $$10 = new jg.a();
 
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(eao.a.c, $$14.u() + $$16, $$14.w() + $$17));
+      for (jg $$11 : jg.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.H_() + 10);
-      jf $$19 = $$8.a($$14.h($$18), dmj.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
-         return true;
-      }
+      return $$5;
    }
 
-   private static int a(dfg $$0, eky $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dus $$3 = $$0.a_($$2x);
-         if ($$3.l() || $$3.a(dho.H) || $$3.a(dho.G)) {
-            $$2.add(1);
+   protected boolean a(egg $$0, dfs $$1, azr $$2, int $$3, int $$4, jg.a $$5) {
+      boolean $$6 = false;
+      boolean $$7 = false;
+
+      for (int $$8 = $$3; $$8 > $$4; $$8--) {
+         $$5.q($$8);
+         if ($$0.b().test($$1, $$5)) {
+            dvd $$9 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$9, 2);
+            if (!$$7) {
+               this.a($$1, $$5);
+            }
+
+            $$6 = true;
+            $$7 = true;
+         } else {
+            $$7 = false;
          }
-      });
-      return $$2.getValue();
+      }
+
+      return $$6;
    }
 }

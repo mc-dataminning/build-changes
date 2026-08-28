@@ -1,35 +1,5 @@
-import javax.annotation.Nullable;
-
-public class su extends st {
-   private final jf a;
-   private final jf b;
-   private final long c;
-
-   public su(String $$0, jf $$1, jf $$2, long $$3) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-   }
-
-   @Override
-   public String getMessage() {
-      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
-      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
-   }
-
-   @Nullable
-   public String a() {
-      return super.getMessage();
-   }
-
-   @Nullable
-   public jf b() {
-      return this.b;
-   }
-
-   @Nullable
-   public jf c() {
-      return this.a;
+class su extends Throwable {
+   public su(int $$0, int $$1, te $$2) {
+      super("Not enough successes: " + $$1 + " out of " + $$0 + " attempts. Required successes: " + $$2.y() + ". max attempts: " + $$2.x() + ".", $$2.m());
    }
 }

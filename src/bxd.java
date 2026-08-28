@@ -1,136 +1,122 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.OptionalBox.Mu;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class bxd {
-   private static final int a = 20;
-   private static final double b = 3.0;
-   private static final double c = 2.0;
+public class bxd extends bwo<cnt> {
+   private static final int c = 5;
+   private static final int d = 600;
+   private static final int e = 6600;
+   private static final int f = 20;
+   private static final Map<cnw, alg<eub>> g = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cnw.c, ets.ar);
+      $$0.put(cnw.d, ets.as);
+      $$0.put(cnw.e, ets.at);
+      $$0.put(cnw.f, ets.au);
+      $$0.put(cnw.g, ets.av);
+      $$0.put(cnw.h, ets.aw);
+      $$0.put(cnw.i, ets.ax);
+      $$0.put(cnw.j, ets.ay);
+      $$0.put(cnw.k, ets.az);
+      $$0.put(cnw.l, ets.aA);
+      $$0.put(cnw.n, ets.aB);
+      $$0.put(cnw.o, ets.aC);
+      $$0.put(cnw.p, ets.aD);
+   });
+   private static final float h = 0.5F;
+   private int i = 600;
+   private boolean j;
+   private long k;
 
-   public static bwg<bun> a() {
-      MutableObject<erf> $$0 = new MutableObject(null);
-      MutableInt $$1 = new MutableInt(0);
-      return bzs.a(
-         (Function<bzs.b<bun>, ? extends App<bzs.c<bun>, bzv<bun>>>)($$2 -> $$2.group($$2.b(cdq.t), $$2.a(cdq.v), $$2.a(cdq.g))
-               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     erh $$9 = $$2.b($$3);
-                     Optional<Set<jn>> $$10 = $$2.a($$4);
-                     if (!$$9.b() && !$$9.c()) {
-                        if (Objects.equals($$0.getValue(), $$9.h())) {
-                           $$1.setValue(20);
-                        } else if ($$1.decrementAndGet() > 0) {
-                           return false;
-                        }
-
-                        $$0.setValue($$9.h());
-                        erf $$11 = $$9.i();
-                        erf $$12 = $$9.h();
-                        jf $$13 = $$11.a();
-                        dus $$14 = $$6.a_($$13);
-                        if ($$14.a(awv.i, $$0xxxx -> $$0xxxx.b() instanceof djs)) {
-                           djs $$15 = (djs)$$14.b();
-                           if (!$$15.n($$14)) {
-                              $$15.a($$7, $$6, $$14, $$13, true);
-                           }
-
-                           $$10 = a($$4, $$10, $$6, $$13);
-                        }
-
-                        jf $$16 = $$12.a();
-                        dus $$17 = $$6.a_($$16);
-                        if ($$17.a(awv.i, $$0xxxx -> $$0xxxx.b() instanceof djs)) {
-                           djs $$18 = (djs)$$17.b();
-                           if (!$$18.n($$17)) {
-                              $$18.a($$7, $$6, $$17, $$16, true);
-                              $$10 = a($$4, $$10, $$6, $$16);
-                           }
-                        }
-
-                        $$10.ifPresent($$6x -> a($$6, $$7, $$11, $$12, $$6x, $$2.a($$5)));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public bxd(int $$0) {
+      super(ImmutableMap.of(cdz.m, cea.c, cdz.n, cea.c, cdz.q, cea.c, cdz.k, cea.a), $$0);
    }
 
-   public static void a(arj $$0, bun $$1, @Nullable erf $$2, @Nullable erf $$3, Set<jn> $$4, Optional<List<bun>> $$5) {
-      Iterator<jn> $$6 = $$4.iterator();
-
-      while ($$6.hasNext()) {
-         jn $$7 = $$6.next();
-         jf $$8 = $$7.b();
-         if (($$2 == null || !$$2.a().equals($$8)) && ($$3 == null || !$$3.a().equals($$8))) {
-            if (a($$0, $$1, $$7)) {
-               $$6.remove();
-            } else {
-               dus $$9 = $$0.a_($$8);
-               if (!$$9.a(awv.i, $$0x -> $$0x.b() instanceof djs)) {
-                  $$6.remove();
-               } else {
-                  djs $$10 = (djs)$$9.b();
-                  if (!$$10.n($$9)) {
-                     $$6.remove();
-                  } else if (a($$1, $$8, $$5)) {
-                     $$6.remove();
-                  } else {
-                     $$10.a($$1, $$0, $$9, $$8, false);
-                     $$6.remove();
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private static boolean a(bun $$0, jf $$1, Optional<List<bun>> $$2) {
-      return $$2.isEmpty()
-         ? false
-         : $$2.get().stream().filter($$1x -> $$1x.ao() == $$0.ao()).filter($$1x -> $$1.a($$1x.dq(), 2.0)).anyMatch($$1x -> a($$1x.dY(), $$1));
-   }
-
-   private static boolean a(bvo<?> $$0, jf $$1) {
-      if (!$$0.a(cdq.t)) {
+   protected boolean a(arm $$0, cnt $$1) {
+      if (!this.b($$1)) {
+         return false;
+      } else if (this.i > 0) {
+         this.i--;
          return false;
       } else {
-         erh $$2 = $$0.c(cdq.t).get();
-         if ($$2.c()) {
-            return false;
+         return true;
+      }
+   }
+
+   protected void a(arm $$0, cnt $$1, long $$2) {
+      this.j = false;
+      this.k = $$2;
+      coh $$3 = this.c($$1).get();
+      $$1.ed().a(cdz.q, $$3);
+      bwq.a($$1, $$3);
+   }
+
+   protected boolean b(arm $$0, cnt $$1, long $$2) {
+      return this.b($$1) && !this.j;
+   }
+
+   protected void c(arm $$0, cnt $$1, long $$2) {
+      coh $$3 = this.c($$1).get();
+      bwq.a($$1, $$3);
+      if (this.a($$1, $$3)) {
+         if ($$2 - this.k > 20L) {
+            this.a($$1, (buv)$$3);
+            this.j = true;
+         }
+      } else {
+         bwq.a($$1, $$3, 0.5F, 5);
+      }
+   }
+
+   protected void d(arm $$0, cnt $$1, long $$2) {
+      this.i = a($$0);
+      $$1.ed().b(cdz.q);
+      $$1.ed().b(cdz.m);
+      $$1.ed().b(cdz.n);
+   }
+
+   private void a(cnt $$0, buv $$1) {
+      for (cvx $$3 : this.a($$0)) {
+         bwq.a($$0, $$3, $$1.dv());
+      }
+   }
+
+   private List<cvx> a(cnt $$0) {
+      if ($$0.p_()) {
+         return ImmutableList.of(new cvx(cwb.dl));
+      } else {
+         cnw $$1 = $$0.gF().b();
+         if (g.containsKey($$1)) {
+            eub $$2 = $$0.dX().o().bd().b(g.get($$1));
+            etz $$3 = new etz.a((arm)$$0.dX()).a(ews.f, $$0.dv()).a(ews.a, $$0).a(ewr.j);
+            return $$2.a($$3);
          } else {
-            erf $$3 = $$2.i();
-            if ($$3 == null) {
-               return false;
-            } else {
-               erf $$4 = $$2.h();
-               return $$1.equals($$3.a()) || $$1.equals($$4.a());
-            }
+            return ImmutableList.of(new cvx(cwb.pw));
          }
       }
    }
 
-   private static boolean a(arj $$0, bun $$1, jn $$2) {
-      return $$2.a() != $$0.ag() || !$$2.b().a($$1.dq(), 3.0);
+   private boolean b(cnt $$0) {
+      return this.c($$0).isPresent();
    }
 
-   private static Optional<Set<jn>> a(bzt<Mu, Set<jn>> $$0, Optional<Set<jn>> $$1, arj $$2, jf $$3) {
-      jn $$4 = jn.a($$2.ag(), $$3);
-      return Optional.of($$1.<Set<jn>>map($$1x -> {
-         $$1x.add($$4);
-         return $$1x;
-      }).orElseGet(() -> {
-         Set<jn> $$2x = Sets.newHashSet(new jn[]{$$4});
-         $$0.a($$2x);
-         return $$2x;
-      }));
+   private Optional<coh> c(cnt $$0) {
+      return $$0.ed().c(cdz.k).filter(this::a);
+   }
+
+   private boolean a(coh $$0) {
+      return $$0.b(btg.F);
+   }
+
+   private boolean a(cnt $$0, coh $$1) {
+      jg $$2 = $$1.dx();
+      jg $$3 = $$0.dx();
+      return $$3.a($$2, 5.0);
+   }
+
+   private static int a(arm $$0) {
+      return 600 + $$0.A.a(6001);
    }
 }

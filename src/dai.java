@@ -1,54 +1,98 @@
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-public class dai extends das {
-   public dai(czy $$0) {
-      super("", $$0, dat.a(Map.of('#', dag.a(cvw.qP), 'x', dag.a(cvw.rV)), "###", "#x#", "###"), new cvs(cvw.ul));
+public class dai {
+   public static final dai a = new dai(List.of(), List.of());
+   private final List<col.a<jp<cvt>>> b;
+   private final List<Optional<dai.a>> c;
+
+   private dai(List<col.a<jp<cvt>>> $$0, List<Optional<dai.a>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public boolean a(czz $$0, dej $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
+   private static col.a<jp<cvt>> c(List<cvx> $$0) {
+      return com.a($$0.stream().map(cvx::i));
+   }
+
+   private static List<cvx> b(daf $$0) {
+      return $$0.a().stream().map(cvx::new).toList();
+   }
+
+   public static dai a(daf $$0) {
+      List<cvx> $$1 = b($$0);
+      if ($$1.isEmpty()) {
+         return a;
       } else {
-         cvs $$2 = a($$0);
-         if ($$2.f()) {
-            return false;
-         } else {
-            esn $$3 = cwf.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.g() ? false : $$3.f < 4;
+         col.a<jp<cvt>> $$2 = c($$1);
+         dai.a $$3 = new dai.a($$1, 0);
+         return new dai(List.of($$2), List.of(Optional.of($$3)));
+      }
+   }
+
+   public static dai a(List<Optional<daf>> $$0) {
+      int $$1 = $$0.size();
+      List<col.a<jp<cvt>>> $$2 = new ArrayList<>($$1);
+      List<Optional<dai.a>> $$3 = new ArrayList<>($$1);
+      int $$4 = 0;
+
+      for (Optional<daf> $$5 : $$0) {
+         if ($$5.isPresent()) {
+            List<cvx> $$6 = b($$5.get());
+            if ($$6.isEmpty()) {
+               return a;
             }
-         }
-      }
-   }
 
-   @Override
-   public cvs a(czz $$0, jq.a $$1) {
-      cvs $$2 = a($$0).c(1);
-      $$2.b(ks.I, cyt.b);
-      return $$2;
-   }
-
-   private static cvs a(czz $$0) {
-      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-         cvs $$2 = $$0.a($$1);
-         if ($$2.a(cvw.rV)) {
-            return $$2;
+            $$2.add(c($$6));
+            $$3.add(Optional.of(new dai.a($$6, $$4++)));
+         } else {
+            $$3.add(Optional.empty());
          }
       }
 
-      return cvs.k;
+      return new dai($$2, $$3);
    }
 
-   @Override
-   public boolean aq_() {
-      return true;
+   public static dai b(List<daf> $$0) {
+      int $$1 = $$0.size();
+      List<col.a<jp<cvt>>> $$2 = new ArrayList<>($$1);
+      List<Optional<dai.a>> $$3 = new ArrayList<>($$1);
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         daf $$5 = $$0.get($$4);
+         List<cvx> $$6 = b($$5);
+         if ($$6.isEmpty()) {
+            return a;
+         }
+
+         $$2.add(c($$6));
+         $$3.add(Optional.of(new dai.a($$6, $$4)));
+      }
+
+      return new dai($$2, $$3);
    }
 
-   @Override
-   public dap<?> ar_() {
-      return dap.f;
+   public List<Optional<dai.a>> a() {
+      return this.c;
+   }
+
+   public List<col.a<jp<cvt>>> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c.isEmpty();
+   }
+
+   public static record a(List<cvx> a, int b) {
+      public a(List<cvx> a, int b) {
+         if (a.isEmpty()) {
+            throw new IllegalArgumentException("Possible items list must be not empty");
+         } else {
+            this.a = a;
+            this.b = b;
+         }
+      }
    }
 }

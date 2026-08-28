@@ -1,81 +1,48 @@
-import com.mojang.logging.LogUtils;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class fnq {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Object a = new Object();
-   private static long c = 0L;
+public enum fnq implements baf {
+   a("uniform"),
+   b("jp");
 
-   public static long a() {
-      synchronized (a) {
-         if (c == 0L) {
-            MemoryStack $$0 = MemoryStack.stackPush();
+   public static final Codec<fnq> c = baf.a(fnq::values);
+   private final String d;
 
-            try {
-               PointerBuffer $$1 = $$0.mallocPointer(1);
-               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
-               c = $$1.get();
-            } catch (Throwable var6) {
-               if ($$0 != null) {
-                  try {
-                     $$0.close();
-                  } catch (Throwable var5) {
-                     var6.addSuppressed(var5);
-                  }
-               }
+   private fnq(final String $$0) {
+      this.d = $$0;
+   }
 
-               throw var6;
-            }
+   @Override
+   public String c() {
+      return this.d;
+   }
 
-            if ($$0 != null) {
-               $$0.close();
+   public static class a {
+      private final Map<fnq, Boolean> c;
+      public static final Codec<fnq.a> a = Codec.unboundedMap(fnq.c, Codec.BOOL).xmap(fnq.a::new, $$0 -> $$0.c);
+      public static final fnq.a b = new fnq.a(Map.of());
+
+      public a(Map<fnq, Boolean> $$0) {
+         this.c = $$0;
+      }
+
+      public boolean a(Set<fnq> $$0) {
+         for (Entry<fnq, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
             }
          }
 
-         return c;
-      }
-   }
-
-   public static void a(int $$0, String $$1) {
-      if ($$0 != 0) {
-         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
-      }
-   }
-
-   public static boolean b(int $$0, String $$1) {
-      if ($$0 != 0) {
-         b.error("FreeType error: {} ({})", a($$0), $$1);
          return true;
-      } else {
-         return false;
       }
-   }
 
-   private static String a(int $$0) {
-      String $$1 = FreeType.FT_Error_String($$0);
-      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
-   }
-
-   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
-      long $$3 = (long)Math.round($$1 * 64.0F);
-      long $$4 = (long)Math.round($$2 * 64.0F);
-      return $$0.set($$3, $$4);
-   }
-
-   public static float a(FT_Vector $$0) {
-      return (float)$$0.x() / 64.0F;
-   }
-
-   public static void b() {
-      synchronized (a) {
-         if (c != 0L) {
-            FreeType.FT_Done_Library(c);
-            c = 0L;
-         }
+      public fnq.a a(fnq.a $$0) {
+         Map<fnq, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new fnq.a(Map.copyOf($$1));
       }
    }
 }

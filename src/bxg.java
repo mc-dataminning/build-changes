@@ -1,34 +1,41 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bxg extends bwf<bup> {
-   public static final int c = 100;
-   private final brd d;
-   private final awf e;
+public class bxg extends bwo<cnt> {
+   private static final int d = 1200;
+   final float c;
 
-   public bxg(brd $$0, awf $$1) {
-      super(ImmutableMap.of(cdq.n, cdr.c, cdq.T, cdr.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+   public bxg(float $$0) {
+      super(ImmutableMap.of(cdz.d, cea.a), 1200);
+      this.c = $$0;
    }
 
-   protected boolean a(arj $$0, bup $$1, long $$2) {
-      return !$$1.aH();
+   protected boolean a(arm $$0, cnt $$1) {
+      return $$1.ed().g().map($$0x -> $$0x == cpz.b || $$0x == cpz.c || $$0x == cpz.d).orElse(true);
    }
 
-   protected void b(arj $$0, bup $$1, long $$2) {
-      $$1.r(true);
-      $$1.b(buz.g);
+   protected boolean a(arm $$0, cnt $$1, long $$2) {
+      return $$1.ed().a(cdz.d);
    }
 
-   protected void c(arj $$0, bup $$1, long $$2) {
-      if ($$1.aH()) {
-         $$1.h($$1.dv().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, awh.g, 2.0F, 1.0F);
-      }
+   protected void b(arm $$0, cnt $$1, long $$2) {
+      bwq.a($$1, $$1.ed().c(cdz.d).get().b(), this.c, 1);
+   }
 
-      $$1.r(false);
-      $$1.b(buz.a);
-      $$1.dY().b(cdq.T);
-      $$1.dY().a(cdq.S, this.d.a($$0.z));
+   protected void c(arm $$0, cnt $$1, long $$2) {
+      Optional<jo> $$3 = $$1.ed().c(cdz.d);
+      $$3.ifPresent($$1x -> {
+         jg $$2x = $$1x.b();
+         arm $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            cfz $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            agr.c($$0, $$2x);
+         }
+      });
+      $$1.ed().b(cdz.d);
    }
 }

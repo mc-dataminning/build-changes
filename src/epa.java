@@ -1,27 +1,46 @@
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class epa extends epc {
-   public static final MapCodec<epa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dus.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, epa::new)
-   );
-   private final dus b;
-   private final float d;
+public class epa extends epq {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<epa> a = MapCodec.unit(() -> epa.b);
+   public static final epa b = new epa();
 
-   public epa(dus $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   private epa() {
+   }
+
+   @Nullable
+   @Override
+   public ept.c a(dey $$0, jg $$1, jg $$2, ept.c $$3, ept.c $$4, epp $$5) {
+      dvd $$6 = $$4.b();
+      if ($$6.a(dia.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dvd $$9;
+            try {
+               gp.a $$8 = gp.a($$0.a(ly.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
+            }
+
+            return $$9.a(dia.kN) ? null : new ept.c($$4.a(), $$9, null);
+         }
+      } else {
+         return $$4;
+      }
    }
 
    @Override
-   public boolean a(dus $$0, azn $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected epd<?> a() {
-      return epd.f;
+   protected eps<?> a() {
+      return eps.h;
    }
 }

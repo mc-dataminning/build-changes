@@ -1,30 +1,41 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class ety extends eud {
-   public static final MapCodec<ety> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lv.g.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ety::new)
-   );
-   private final jo<cvn> j;
+public record ety<T>(alg<kc<T>> d, Codec<T> e, ety.a<T> f) {
+   public static final ety<exh> a = new ety<>(ly.bf, exh.e, e());
+   public static final ety<evk> b = new ety<>(ly.be, evm.c, e());
+   public static final ety<eub> c = new ety<>(ly.bd, eub.d, f());
 
-   private ety(jo<cvn> $$0, int $$1, int $$2, List<eww> $$3, List<euz> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public void a(euc $$0, alg<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   @Override
-   public euc a() {
-      return etz.c;
+   public static Stream<ety<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   @Override
-   public void a(Consumer<cvs> $$0, etl $$1) {
-      $$0.accept(new cvs(this.j));
+   private static <T extends etx> ety.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public static eud.a<?> a(dei $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ety($$0.q().n(), $$1, $$2, $$3, $$4));
+   private static ety.a<eub> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   public alg<kc<T>> b() {
+      return this.d;
+   }
+
+   public Codec<T> c() {
+      return this.e;
+   }
+
+   public ety.a<T> d() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void run(euc var1, alg<T> var2, T var3);
    }
 }

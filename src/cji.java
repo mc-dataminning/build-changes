@@ -1,80 +1,128 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cji extends cjc {
-   private static final cfd b = cfd.a().d();
-   @Nullable
-   private erh c;
-   @Nullable
-   private eyw d;
+public class cji extends btz {
+   private static final akk<Optional<jg>> c = ako.a(cji.class, akm.p);
+   private static final akk<Boolean> d = ako.a(cji.class, akm.k);
+   public int b;
 
-   public cji(cja $$0) {
-      super($$0);
+   public cji(bug<? extends cji> $$0, dev $$1) {
+      super($$0, $$1);
+      this.J = true;
+      this.b = this.af.a(100000);
+   }
+
+   public cji(dev $$0, double $$1, double $$2, double $$3) {
+      this(bug.E, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   public cjq<cji> i() {
-      return cjq.c;
+   protected btz.b bh() {
+      return btz.b.a;
    }
 
    @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
+   protected void a(ako.a $$0) {
+      $$0.a(c, Optional.empty());
+      $$0.a(d, true);
    }
 
    @Override
-   public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dx(), this.a.dz(), this.a.dD());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
-         this.j();
-      }
-   }
-
-   @Nullable
-   @Override
-   public eyw g() {
-      return this.d;
-   }
-
-   private void j() {
-      if (this.c == null || this.c.c()) {
-         int $$0 = this.a.y();
-         jf $$1 = this.a.dS().a(eao.a.f, edt.a(this.a.q()));
-         cnx $$2 = this.a.dS().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         int $$4;
-         if ($$2 != null) {
-            eyw $$3 = new eyw($$2.dx(), 0.0, $$2.dD()).d();
-            $$4 = this.a.q(-$$3.d * 40.0, 105.0, -$$3.f * 40.0);
-         } else {
-            $$4 = this.a.q(40.0, (double)$$1.v(), 0.0);
-         }
-
-         erf $$6 = new erf($$1.u(), $$1.v(), $$1.w());
-         this.c = this.a.a($$0, $$4, $$6);
-         if (this.c != null) {
-            this.c.a();
+   public void l() {
+      this.b++;
+      this.aY();
+      this.bX();
+      if (this.dX() instanceof arm) {
+         jg $$0 = this.dx();
+         if (((arm)this.dX()).D() != null && this.dX().a_($$0).l()) {
+            this.dX().b($$0, dhl.a(this.dX(), $$0));
          }
       }
+   }
 
-      this.k();
-      if (this.c != null && this.c.c()) {
-         this.a.gl().a(cjq.d);
+   @Override
+   protected void b(uj $$0) {
+      if (this.m() != null) {
+         $$0.a("beam_target", uy.a(this.m()));
+      }
+
+      $$0.a("ShowBottom", this.o());
+   }
+
+   @Override
+   protected void a(uj $$0) {
+      uy.a($$0, "beam_target").ifPresent(this::a);
+      if ($$0.b("ShowBottom", 1)) {
+         this.a($$0.q("ShowBottom"));
       }
    }
 
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         kj $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
+   @Override
+   public boolean bI() {
+      return true;
+   }
 
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dV().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
+   @Override
+   public boolean a(bsp $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else if ($$0.d() instanceof cjj) {
+         return false;
+      } else {
+         if (!this.dS() && !this.dX().C) {
+            this.a(btz.c.a);
+            if (!$$0.a(axb.l)) {
+               bsp $$2 = $$0.d() != null ? this.dY().d(this, $$0.d()) : null;
+               this.dX().a(this, $$2, null, this.dC(), this.dE(), this.dI(), 6.0F, false, dev.a.b);
+            }
 
-         this.d = new eyw($$1, $$3, $$2);
+            this.a($$0);
+         }
+
+         return true;
       }
+   }
+
+   @Override
+   public void at() {
+      this.a(this.dY().p());
+      super.at();
+   }
+
+   private void a(bsp $$0) {
+      if (this.dX() instanceof arm) {
+         dzc $$1 = ((arm)this.dX()).D();
+         if ($$1 != null) {
+            $$1.a(this, $$0);
+         }
+      }
+   }
+
+   public void a(@Nullable jg $$0) {
+      this.av().a(c, Optional.ofNullable($$0));
+   }
+
+   @Nullable
+   public jg m() {
+      return this.av().a(c).orElse(null);
+   }
+
+   public void a(boolean $$0) {
+      this.av().a(d, $$0);
+   }
+
+   public boolean o() {
+      return this.av().a(d);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return super.a($$0) || this.m() != null;
+   }
+
+   @Override
+   public cvx dK() {
+      return new cvx(cwb.vh);
    }
 }

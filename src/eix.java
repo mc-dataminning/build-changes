@@ -1,165 +1,72 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.BiConsumer;
+import java.util.Set;
 
-public class eix extends ejc {
-   public static final MapCodec<eix> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eix::new));
-   private static final double b = 0.618;
-   private static final double h = 1.382;
-   private static final double i = 0.381;
-   private static final double j = 0.328;
+public class eix extends ejb {
+   public static final MapCodec<eix> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               eik.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               ays.a(jl.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eix::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final eik e;
+   protected final int f;
+   protected final List<jl> g;
 
-   public eix(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public eix(float $$0, int $$1, int $$2, eik $$3, int $$4, List<jl> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
    @Override
-   protected ejd<?> a() {
-      return ejd.f;
+   public void a(ejb.a $$0) {
+      Set<jg> $$1 = new HashSet<>();
+      azr $$2 = $$0.b();
+
+      for (jg $$3 : ad.a($$0.d(), $$2)) {
+         jl $$4 = ad.a(this.g, $$2);
+         jg $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            jg $$6 = $$5.b(-this.c, -this.d, -this.c);
+            jg $$7 = $$5.b(this.c, this.d, this.c);
+
+            for (jg $$8 : jg.c($$6, $$7)) {
+               $$1.add($$8.j());
+            }
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
+      }
+   }
+
+   private boolean a(ejb.a $$0, jg $$1, jl $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         jg $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public List<ehk.a> a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, int $$3, jf $$4, egu $$5) {
-      int $$6 = 5;
-      int $$7 = $$3 + 2;
-      int $$8 = azf.a((double)$$7 * 0.618);
-      a($$0, $$1, $$2, $$4.e(), $$5);
-      double $$9 = 1.0;
-      int $$10 = Math.min(1, azf.a(1.382 + Math.pow(1.0 * (double)$$7 / 13.0, 2.0)));
-      int $$11 = $$4.v() + $$8;
-      int $$12 = $$7 - 5;
-      List<eix.a> $$13 = Lists.newArrayList();
-      $$13.add(new eix.a($$4.b($$12), $$11));
-
-      for (; $$12 >= 0; $$12--) {
-         float $$14 = b($$7, $$12);
-         if (!($$14 < 0.0F)) {
-            for (int $$15 = 0; $$15 < $$10; $$15++) {
-               double $$16 = 1.0;
-               double $$17 = 1.0 * (double)$$14 * ((double)$$2.i() + 0.328);
-               double $$18 = (double)($$2.i() * 2.0F) * Math.PI;
-               double $$19 = $$17 * Math.sin($$18) + 0.5;
-               double $$20 = $$17 * Math.cos($$18) + 0.5;
-               jf $$21 = $$4.b(azf.a($$19), $$12 - 1, azf.a($$20));
-               jf $$22 = $$21.b(5);
-               if (this.a($$0, $$1, $$2, $$21, $$22, false, $$5)) {
-                  int $$23 = $$4.u() - $$21.u();
-                  int $$24 = $$4.w() - $$21.w();
-                  double $$25 = (double)$$21.v() - Math.sqrt((double)($$23 * $$23 + $$24 * $$24)) * 0.381;
-                  int $$26 = $$25 > (double)$$11 ? $$11 : (int)$$25;
-                  jf $$27 = new jf($$4.u(), $$26, $$4.w());
-                  if (this.a($$0, $$1, $$2, $$27, $$21, false, $$5)) {
-                     $$13.add(new eix.a($$21, $$27.v()));
-                  }
-               }
-            }
-         }
-      }
-
-      this.a($$0, $$1, $$2, $$4, $$4.b($$8), true, $$5);
-      this.a($$0, $$1, $$2, $$7, $$4, $$13, $$5);
-      List<ehk.a> $$28 = Lists.newArrayList();
-
-      for (eix.a $$29 : $$13) {
-         if (this.a($$7, $$29.a() - $$4.v())) {
-            $$28.add($$29.a);
-         }
-      }
-
-      return $$28;
-   }
-
-   private boolean a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, jf $$3, jf $$4, boolean $$5, egu $$6) {
-      if (!$$5 && Objects.equals($$3, $$4)) {
-         return true;
-      } else {
-         jf $$7 = $$4.b(-$$3.u(), -$$3.v(), -$$3.w());
-         int $$8 = this.a($$7);
-         float $$9 = (float)$$7.u() / (float)$$8;
-         float $$10 = (float)$$7.v() / (float)$$8;
-         float $$11 = (float)$$7.w() / (float)$$8;
-
-         for (int $$12 = 0; $$12 <= $$8; $$12++) {
-            jf $$13 = $$3.b(azf.d(0.5F + (float)$$12 * $$9), azf.d(0.5F + (float)$$12 * $$10), azf.d(0.5F + (float)$$12 * $$11));
-            if ($$5) {
-               this.a($$0, $$1, $$2, $$13, $$6, $$2x -> $$2x.c(dnz.i, this.a($$3, $$13)));
-            } else if (!this.b($$0, $$13)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private int a(jf $$0) {
-      int $$1 = azf.a($$0.u());
-      int $$2 = azf.a($$0.v());
-      int $$3 = azf.a($$0.w());
-      return Math.max($$1, Math.max($$2, $$3));
-   }
-
-   private jk.a a(jf $$0, jf $$1) {
-      jk.a $$2 = jk.a.b;
-      int $$3 = Math.abs($$1.u() - $$0.u());
-      int $$4 = Math.abs($$1.w() - $$0.w());
-      int $$5 = Math.max($$3, $$4);
-      if ($$5 > 0) {
-         if ($$3 == $$5) {
-            $$2 = jk.a.a;
-         } else {
-            $$2 = jk.a.c;
-         }
-      }
-
-      return $$2;
-   }
-
-   private boolean a(int $$0, int $$1) {
-      return (double)$$1 >= (double)$$0 * 0.2;
-   }
-
-   private void a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, int $$3, jf $$4, List<eix.a> $$5, egu $$6) {
-      for (eix.a $$7 : $$5) {
-         int $$8 = $$7.a();
-         jf $$9 = new jf($$4.u(), $$8, $$4.w());
-         if (!$$9.equals($$7.a.a()) && this.a($$3, $$8 - $$4.v())) {
-            this.a($$0, $$1, $$2, $$9, $$7.a.a(), true, $$6);
-         }
-      }
-   }
-
-   private static float b(int $$0, int $$1) {
-      if ((float)$$1 < (float)$$0 * 0.3F) {
-         return -1.0F;
-      } else {
-         float $$2 = (float)$$0 / 2.0F;
-         float $$3 = $$2 - (float)$$1;
-         float $$4 = azf.c($$2 * $$2 - $$3 * $$3);
-         if ($$3 == 0.0F) {
-            $$4 = $$2;
-         } else if (Math.abs($$3) >= $$2) {
-            return 0.0F;
-         }
-
-         return $$4 * 0.5F;
-      }
-   }
-
-   static class a {
-      final ehk.a a;
-      private final int b;
-
-      public a(jf $$0, int $$1) {
-         this.a = new ehk.a($$0, 0, false);
-         this.b = $$1;
-      }
-
-      public int a() {
-         return this.b;
-      }
+   protected ejc<?> a() {
+      return ejc.f;
    }
 }

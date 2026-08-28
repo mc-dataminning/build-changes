@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface akn {
+public interface akn {
+   void a(akk<?> var1);
+
+   void a(List<ako.c<?>> var1);
 }

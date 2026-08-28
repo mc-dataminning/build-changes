@@ -1,26 +1,20 @@
-import java.util.Optional;
+public record adf(xt.a b) implements zo<acd> {
+   public static final zf<we, adf> a = zo.a(adf::a, adf::new);
 
-public record adf(eyw b, Optional<eyw> c, lm d, jo<awf> e) implements zl<aca> {
-   public static final zc<wp, adf> a = zc.a(eyw.b, adf::b, eyw.b.a(za::a), adf::e, lo.bg, adf::f, awf.d, adf::g, adf::new);
+   private adf(we $$0) {
+      this(xt.a.a($$0));
+   }
+
+   private void a(we $$0) {
+      xt.a.a($$0, this.b);
+   }
 
    @Override
-   public zn<adf> a() {
-      return agp.E;
+   public zq<adf> a() {
+      return ags.B;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
-   }
-
-   public Optional<eyw> e() {
-      return this.c;
-   }
-
-   public lm f() {
-      return this.d;
-   }
-
-   public jo<awf> g() {
-      return this.e;
    }
 }

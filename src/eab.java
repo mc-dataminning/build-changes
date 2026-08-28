@@ -1,150 +1,59 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class eab implements eai.c {
-   public static final int a = 12;
-   private static final int f = 24;
-   private static final float[] g = ad.a(new float[13824], $$0 -> {
-      for (int $$1 = 0; $$1 < 24; $$1++) {
-         for (int $$2 = 0; $$2 < 24; $$2++) {
-            for (int $$3 = 0; $$3 < 24; $$3++) {
-               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
-            }
+public class eab {
+   private final arm a;
+
+   public eab(arm $$0) {
+      this.a = $$0;
+   }
+
+   public void a(jp<eaa> $$0, ezh $$1, eaa.a $$2) {
+      int $$3 = $$0.a().a();
+      jg $$4 = jg.a((jz)$$1);
+      int $$5 = ki.a($$4.u() - $$3);
+      int $$6 = ki.a($$4.v() - $$3);
+      int $$7 = ki.a($$4.w() - $$3);
+      int $$8 = ki.a($$4.u() + $$3);
+      int $$9 = ki.a($$4.v() + $$3);
+      int $$10 = ki.a($$4.w() + $$3);
+      List<eaa.b> $$11 = new ArrayList<>();
+      ead.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == eac.a.b) {
+            $$11.add(new eaa.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
          }
-      }
-   });
-   private final ObjectListIterator<eab.a> h;
-   private final ObjectListIterator<emj> i;
+      };
+      boolean $$13 = false;
 
-   public static eab a(dfe $$0, ddp $$1) {
-      int $$2 = $$1.d();
-      int $$3 = $$1.e();
-      ObjectList<eab.a> $$4 = new ObjectArrayList(10);
-      ObjectList<emj> $$5 = new ObjectArrayList(32);
-      $$0.a($$1, $$0x -> $$0x.d() != elr.a).forEach($$5x -> {
-         elr $$6 = $$5x.h().d();
-
-         for (elk $$7 : $$5x.i()) {
-            if ($$7.a($$1, 12)) {
-               if ($$7 instanceof elc) {
-                  elc $$8 = (elc)$$7;
-                  emq.a $$9 = $$8.b().f();
-                  if ($$9 == emq.a.b) {
-                     $$4.add(new eab.a($$8.f(), $$6, $$8.d()));
-                  }
-
-                  for (emj $$10 : $$8.e()) {
-                     int $$11 = $$10.a();
-                     int $$12 = $$10.c();
-                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
-                        $$5.add($$10);
-                     }
-                  }
-               } else {
-                  $$4.add(new eab.a($$7.f(), $$6, 0));
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dwz $$16 = this.a.l().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
                }
             }
          }
-      });
-      return new eab($$4.iterator(), $$5.iterator());
-   }
-
-   @VisibleForTesting
-   public eab(ObjectListIterator<eab.a> $$0, ObjectListIterator<emj> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   @Override
-   public double a(eah.b $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      int $$3 = $$0.c();
-      double $$4 = 0.0;
-
-      while (this.h.hasNext()) {
-         eab.a $$5 = (eab.a)this.h.next();
-         eky $$6 = $$5.a();
-         int $$7 = $$5.c();
-         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
-         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
-         int $$10 = $$6.i() + $$7;
-         int $$11 = $$2 - $$10;
-
-         int $$12 = switch ($$5.b()) {
-            case a -> 0;
-            case b, c -> $$11;
-            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
-            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
-         };
-
-         $$4 += switch ($$5.b()) {
-            case a -> 0.0;
-            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
-            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
-            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
-         };
       }
 
-      this.h.back(Integer.MAX_VALUE);
-
-      while (this.i.hasNext()) {
-         emj $$13 = (emj)this.i.next();
-         int $$14 = $$1 - $$13.a();
-         int $$15 = $$2 - $$13.b();
-         int $$16 = $$3 - $$13.c();
-         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      if (!$$11.isEmpty()) {
+         this.a($$11);
       }
 
-      this.i.back(Integer.MAX_VALUE);
-      return $$4;
-   }
-
-   @Override
-   public double a() {
-      return Double.NEGATIVE_INFINITY;
-   }
-
-   @Override
-   public double b() {
-      return Double.POSITIVE_INFINITY;
-   }
-
-   private static double a(double $$0, double $$1, double $$2) {
-      double $$3 = azf.g($$0, $$1, $$2);
-      return azf.a($$3, 0.0, 6.0, 1.0, 0.0);
-   }
-
-   private static double a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0 + 12;
-      int $$5 = $$1 + 12;
-      int $$6 = $$2 + 12;
-      if (a($$4) && a($$5) && a($$6)) {
-         double $$7 = (double)$$3 + 0.5;
-         double $$8 = azf.f((double)$$0, $$7, (double)$$2);
-         double $$9 = -$$7 * azf.g($$8 / 2.0) / 2.0;
-         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
-      } else {
-         return 0.0;
+      if ($$13) {
+         agr.a(this.a, $$0, $$1);
       }
    }
 
-   private static boolean a(int $$0) {
-      return $$0 >= 0 && $$0 < 24;
-   }
+   private void a(List<eaa.b> $$0) {
+      Collections.sort($$0);
 
-   private static double a(int $$0, int $$1, int $$2) {
-      return a($$0, (double)$$1 + 0.5, $$2);
-   }
-
-   private static double a(int $$0, double $$1, int $$2) {
-      double $$3 = azf.f((double)$$0, $$1, (double)$$2);
-      return Math.pow(Math.E, -$$3 / 16.0);
-   }
-
-   @VisibleForTesting
-   public static record a(eky a, elr b, int c) {
+      for (eaa.b $$1 : $$0) {
+         eac $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+      }
    }
 }

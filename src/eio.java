@@ -1,37 +1,41 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public class eio extends eiq {
-   public static final MapCodec<eio> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eio::new, $$0 -> $$0.b);
-   private final float b;
+public class eio extends ein {
+   public static final MapCodec<eio> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eio::new));
+   protected final List<dvd> h;
 
-   public eio(float $$0) {
-      this.b = $$0;
+   protected static <P extends eio> P4<Mu<P>, Long, eqh.a, Float, List<dvd>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dvd.a).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public eio(long $$0, eqh.a $$1, float $$2, List<dvd> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected eir<?> a() {
-      return eir.c;
+   protected eil<?> a() {
+      return eil.d;
    }
 
    @Override
-   public void a(eiq.a $$0) {
-      azn $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<jf> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (jk $$3x : jk.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  jk $$4 = $$3x.g();
-                  jf $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, dho.fC.n().b(dit.c, Integer.valueOf($$1.a(3))).b(dit.aF, $$3x));
-                  }
-               }
-            }
-         });
-      }
+   public dvd a(azr $$0, jg $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
+
+   protected dvd a(List<dvd> $$0, jg $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
+
+   protected dvd a(List<dvd> $$0, double $$1) {
+      double $$2 = azj.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

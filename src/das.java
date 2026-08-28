@@ -1,130 +1,228 @@
 import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.chars.CharArraySet;
+import it.unimi.dsi.fastutil.chars.CharSet;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class das implements daa {
-   final dat a;
-   final cvs b;
-   final String c;
-   final czy d;
-   final boolean e;
-   @Nullable
-   private daj f;
+public final class das {
+   private static final int d = 3;
+   public static final char a = ' ';
+   public static final MapCodec<das> b = das.a.a
+      .flatXmap(das::a, $$0 -> $$0.h.<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe")));
+   public static final zf<ws, das> c = zf.a(zd.h, $$0 -> $$0.e, zd.h, $$0 -> $$0.f, daf.b.a(zd.a()), $$0 -> $$0.g, das::a);
+   private final int e;
+   private final int f;
+   private final List<Optional<daf>> g;
+   private final Optional<das.a> h;
+   private final int i;
+   private final boolean j;
 
-   public das(String $$0, czy $$1, dat $$2, cvs $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+   public das(int $$0, int $$1, List<Optional<daf>> $$2, Optional<das.a> $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = (int)$$2.stream().flatMap(Optional::stream).count();
+      this.j = ad.a($$0, $$1, $$2);
    }
 
-   public das(String $$0, czy $$1, dat $$2, cvs $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   private static das a(Integer $$0, Integer $$1, List<Optional<daf>> $$2) {
+      return new das($$0, $$1, $$2, Optional.empty());
    }
 
-   @Override
-   public dap<?> ar_() {
-      return dap.a;
+   public static das a(Map<Character, daf> $$0, String... $$1) {
+      return a($$0, List.of($$1));
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public static das a(Map<Character, daf> $$0, List<String> $$1) {
+      das.a $$2 = new das.a($$0, $$1);
+      return (das)a($$2).getOrThrow();
    }
 
-   @Override
-   public czy d() {
-      return this.d;
-   }
+   private static DataResult<das> a(das.a $$0) {
+      String[] $$1 = a($$0.c);
+      int $$2 = $$1[0].length();
+      int $$3 = $$1.length;
+      List<Optional<daf>> $$4 = new ArrayList<>($$2 * $$3);
+      CharSet $$5 = new CharArraySet($$0.b.keySet());
 
-   @Override
-   public cvs a(jq.a $$0) {
-      return this.b;
+      for (String $$6 : $$1) {
+         for (int $$7 = 0; $$7 < $$6.length(); $$7++) {
+            char $$8 = $$6.charAt($$7);
+            Optional<daf> $$9;
+            if ($$8 == ' ') {
+               $$9 = Optional.empty();
+            } else {
+               daf $$10 = $$0.b.get($$8);
+               if ($$10 == null) {
+                  return DataResult.error(() -> "Pattern references symbol '" + $$8 + "' but it's not defined in the key");
+               }
+
+               $$9 = Optional.of($$10);
+            }
+
+            $$5.remove($$8);
+            $$4.add($$9);
+         }
+      }
+
+      return !$$5.isEmpty()
+         ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + $$5)
+         : DataResult.success(new das($$2, $$3, $$4, Optional.of($$0)));
    }
 
    @VisibleForTesting
-   public List<Optional<dag>> i() {
-      return this.a.c();
-   }
+   static String[] a(List<String> $$0) {
+      int $$1 = Integer.MAX_VALUE;
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
 
-   @Override
-   public daj a() {
-      if (this.f == null) {
-         this.f = daj.a(this.a.c());
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         String $$6 = $$0.get($$5);
+         $$1 = Math.min($$1, a($$6));
+         int $$7 = b($$6);
+         $$2 = Math.max($$2, $$7);
+         if ($$7 < 0) {
+            if ($$3 == $$5) {
+               $$3++;
+            }
+
+            $$4++;
+         } else {
+            $$4 = 0;
+         }
       }
 
-      return this.f;
+      if ($$0.size() == $$4) {
+         return new String[0];
+      } else {
+         String[] $$8 = new String[$$0.size() - $$4 - $$3];
+
+         for (int $$9 = 0; $$9 < $$8.length; $$9++) {
+            $$8[$$9] = $$0.get($$9 + $$3).substring($$1, $$2 + 1);
+         }
+
+         return $$8;
+      }
    }
 
-   @Override
-   public boolean h() {
+   private static int a(String $$0) {
+      int $$1 = 0;
+
+      while ($$1 < $$0.length() && $$0.charAt($$1) == ' ') {
+         $$1++;
+      }
+
+      return $$1;
+   }
+
+   private static int b(String $$0) {
+      int $$1 = $$0.length() - 1;
+
+      while ($$1 >= 0 && $$0.charAt($$1) == ' ') {
+         $$1--;
+      }
+
+      return $$1;
+   }
+
+   public boolean a(czy $$0) {
+      if ($$0.e() != this.i) {
+         return false;
+      } else {
+         if ($$0.f() == this.e && $$0.g() == this.f) {
+            if (!this.j && this.a($$0, true)) {
+               return true;
+            }
+
+            if (this.a($$0, false)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private boolean a(czy $$0, boolean $$1) {
+      for (int $$2 = 0; $$2 < this.f; $$2++) {
+         for (int $$3 = 0; $$3 < this.e; $$3++) {
+            Optional<daf> $$4;
+            if ($$1) {
+               $$4 = this.g.get(this.e - $$3 - 1 + $$2 * this.e);
+            } else {
+               $$4 = this.g.get($$3 + $$2 * this.e);
+            }
+
+            cvx $$6 = $$0.a($$3, $$2);
+            if (!daf.a($$4, $$6)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   public int a() {
       return this.e;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
+   public int b() {
+      return this.f;
    }
 
-   public boolean a(czz $$0, dej $$1) {
-      return this.a.a($$0);
+   public List<Optional<daf>> c() {
+      return this.g;
    }
 
-   public cvs a(czz $$0, jq.a $$1) {
-      return this.a($$1).u();
-   }
+   public static record a(Map<Character, daf> b, List<String> c) {
+      private static final Codec<List<String>> d = Codec.STRING.listOf().comapFlatMap($$0 -> {
+         if ($$0.size() > 3) {
+            return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
+         } else if ($$0.isEmpty()) {
+            return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
+         } else {
+            int $$1 = ((String)$$0.getFirst()).length();
 
-   public int j() {
-      return this.a.a();
-   }
+            for (String $$2 : $$0) {
+               if ($$2.length() > 3) {
+                  return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
+               }
 
-   public int k() {
-      return this.a.b();
-   }
+               if ($$1 != $$2.length()) {
+                  return DataResult.error(() -> "Invalid pattern: each row must be the same width");
+               }
+            }
 
-   public static class a implements dap<das> {
-      public static final MapCodec<das> w = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  czy.e.fieldOf("category").orElse(czy.d).forGetter($$0x -> $$0x.d),
-                  dat.b.forGetter($$0x -> $$0x.a),
-                  cvs.d.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.optionalFieldOf("show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, das::new)
+            return DataResult.success($$0);
+         }
+      }, Function.identity());
+      private static final Codec<Character> e = Codec.STRING.comapFlatMap($$0 -> {
+         if ($$0.length() != 1) {
+            return DataResult.error(() -> "Invalid key entry: '" + $$0 + "' is an invalid symbol (must be 1 character only).");
+         } else {
+            return " ".equals($$0) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success($$0.charAt(0));
+         }
+      }, String::valueOf);
+      public static final MapCodec<das.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ays.b(e, daf.d).fieldOf("key").forGetter($$0x -> $$0x.b), d.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, das.a::new)
       );
-      public static final zc<wp, das> x = zc.a(das.a::a, das.a::a);
 
-      @Override
-      public MapCodec<das> a() {
-         return w;
+      public Map<Character, daf> a() {
+         return this.b;
       }
 
-      @Override
-      public zc<wp, das> b() {
-         return x;
-      }
-
-      private static das a(wp $$0) {
-         String $$1 = $$0.p();
-         czy $$2 = $$0.b(czy.class);
-         dat $$3 = dat.c.decode($$0);
-         cvs $$4 = cvs.i.decode($$0);
-         boolean $$5 = $$0.readBoolean();
-         return new das($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private static void a(wp $$0, das $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         dat.c.encode($$0, $$1.a);
-         cvs.i.encode($$0, $$1.b);
-         $$0.a($$1.e);
+      public List<String> b() {
+         return this.c;
       }
    }
 }

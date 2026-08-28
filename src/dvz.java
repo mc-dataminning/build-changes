@@ -1,21 +1,28 @@
-public enum dvz implements bab {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum dvz implements baf {
+   a(jl.a),
+   b(jl.b);
 
-   private final String d;
+   private final jl c;
 
-   private dvz(final String $$0) {
-      this.d = $$0;
+   private dvz(final jl $$0) {
+      this.c = $$0;
+   }
+
+   public jl a() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this == a ? "upper" : "lower";
+   }
+
+   public dvz b() {
+      return this == a ? b : a;
    }
 }

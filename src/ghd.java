@@ -1,373 +1,113 @@
-import com.google.common.collect.Maps;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Map;
+import java.util.Objects;
 
-public class ghd {
-   private static final Map<dhm, ghv> a = ad.a(Maps.newHashMap(), $$0 -> {
-      ghv $$1 = ghv.s();
-      $$0.put(dho.fI, $$1);
-      ghv $$2 = ghv.d();
-      $$0.put(dho.i, $$2);
-      $$0.put(dho.eW, $$2);
-      $$0.put(dho.eY, $$2);
-      $$0.put(dho.fH, $$2);
-      $$0.put(dho.hc, $$2);
-      $$0.put(dho.eX, $$2);
-      $$0.put(dho.aH, $$2);
-      $$0.put(dho.aE, $$2);
-      $$0.put(dho.aF, $$2);
-      $$0.put(dho.aI, $$2);
-      $$0.put(dho.aJ, $$2);
-      $$0.put(dho.aG, $$2);
-      $$0.put(dho.aK, $$2);
-      $$0.put(dho.aM, $$2);
-      $$0.put(dho.aN, $$2);
-      $$0.put(dho.ac, $$2);
-      $$0.put(dho.aL, $$2);
-      ghv $$3 = ghv.e();
-      $$0.put(dho.x, $$3);
-      $$0.put(dho.y, $$3);
-      $$0.put(dho.z, $$3);
-      $$0.put(dho.A, $$3);
-      $$0.put(dho.B, $$3);
-      $$0.put(dho.C, $$3);
-      $$0.put(dho.D, $$3);
-      $$0.put(dho.aQ, $$3);
-      $$0.put(dho.aZ, $$3);
-      $$0.put(dho.ba, $$3);
-      $$0.put(dho.bb, $$3);
-      $$0.put(dho.bc, $$3);
-      $$0.put(dho.bd, $$3);
-      $$0.put(dho.be, $$3);
-      $$0.put(dho.bf, $$3);
-      $$0.put(dho.bg, $$3);
-      $$0.put(dho.bh, $$3);
-      $$0.put(dho.bi, $$3);
-      $$0.put(dho.bj, $$3);
-      $$0.put(dho.bk, $$3);
-      $$0.put(dho.bl, $$3);
-      $$0.put(dho.bm, $$3);
-      $$0.put(dho.bn, $$3);
-      $$0.put(dho.bo, $$3);
-      $$0.put(dho.bp, $$3);
-      $$0.put(dho.bq, $$3);
-      $$0.put(dho.bs, $$3);
-      $$0.put(dho.bt, $$3);
-      $$0.put(dho.bu, $$3);
-      $$0.put(dho.bv, $$3);
-      $$0.put(dho.bw, $$3);
-      $$0.put(dho.bx, $$3);
-      $$0.put(dho.bR, $$3);
-      $$0.put(dho.bT, $$3);
-      $$0.put(dho.bU, $$3);
-      $$0.put(dho.bV, $$3);
-      $$0.put(dho.bW, $$3);
-      $$0.put(dho.bX, $$3);
-      $$0.put(dho.bY, $$3);
-      $$0.put(dho.bZ, $$3);
-      $$0.put(dho.ca, $$3);
-      $$0.put(dho.cb, $$3);
-      $$0.put(dho.cc, $$3);
-      $$0.put(dho.cd, $$3);
-      $$0.put(dho.ce, $$3);
-      $$0.put(dho.cf, $$3);
-      $$0.put(dho.cg, $$3);
-      $$0.put(dho.cp, $$3);
-      $$0.put(dho.cq, $$3);
-      $$0.put(dho.ea, $$3);
-      $$0.put(dho.eb, $$3);
-      $$0.put(dho.cr, $$3);
-      $$0.put(dho.cs, $$3);
-      $$0.put(dho.ct, $$3);
-      $$0.put(dho.tr, $$3);
-      $$0.put(dho.ts, $$3);
-      $$0.put(dho.cw, $$3);
-      $$0.put(dho.cB, $$3);
-      $$0.put(dho.cN, $$3);
-      $$0.put(dho.cO, $$3);
-      $$0.put(dho.cP, $$3);
-      $$0.put(dho.dy, $$3);
-      $$0.put(dho.dK, $$3);
-      $$0.put(dho.dL, $$3);
-      $$0.put(dho.dQ, $$3);
-      $$0.put(dho.dS, $$3);
-      $$0.put(dho.eh, $$3);
-      $$0.put(dho.ey, $$3);
-      $$0.put(dho.ez, $$3);
-      $$0.put(dho.eA, $$3);
-      $$0.put(dho.eB, $$3);
-      $$0.put(dho.eC, $$3);
-      $$0.put(dho.eD, $$3);
-      $$0.put(dho.eE, $$3);
-      $$0.put(dho.oM, $$3);
-      $$0.put(dho.oN, $$3);
-      $$0.put(dho.eF, $$3);
-      $$0.put(dho.eG, $$3);
-      $$0.put(dho.rU, $$3);
-      $$0.put(dho.rV, $$3);
-      $$0.put(dho.rX, $$3);
-      $$0.put(dho.rW, $$3);
-      $$0.put(dho.rY, $$3);
-      $$0.put(dho.rZ, $$3);
-      $$0.put(dho.sb, $$3);
-      $$0.put(dho.sa, $$3);
-      $$0.put(dho.fb, $$3);
-      $$0.put(dho.fc, $$3);
-      $$0.put(dho.fd, $$3);
-      $$0.put(dho.fe, $$3);
-      $$0.put(dho.ff, $$3);
-      $$0.put(dho.fg, $$3);
-      $$0.put(dho.fm, $$3);
-      $$0.put(dho.fq, $$3);
-      $$0.put(dho.fs, $$3);
-      $$0.put(dho.fC, $$3);
-      $$0.put(dho.fO, $$3);
-      $$0.put(dho.fR, $$3);
-      $$0.put(dho.fT, $$3);
-      $$0.put(dho.fU, $$3);
-      $$0.put(dho.fV, $$3);
-      $$0.put(dho.fW, $$3);
-      $$0.put(dho.fX, $$3);
-      $$0.put(dho.fY, $$3);
-      $$0.put(dho.fZ, $$3);
-      $$0.put(dho.ga, $$3);
-      $$0.put(dho.gb, $$3);
-      $$0.put(dho.gc, $$3);
-      $$0.put(dho.gd, $$3);
-      $$0.put(dho.ge, $$3);
-      $$0.put(dho.gf, $$3);
-      $$0.put(dho.gg, $$3);
-      $$0.put(dho.gh, $$3);
-      $$0.put(dho.gi, $$3);
-      $$0.put(dho.gj, $$3);
-      $$0.put(dho.gk, $$3);
-      $$0.put(dho.gl, $$3);
-      $$0.put(dho.gm, $$3);
-      $$0.put(dho.gn, $$3);
-      $$0.put(dho.go, $$3);
-      $$0.put(dho.gp, $$3);
-      $$0.put(dho.gq, $$3);
-      $$0.put(dho.gr, $$3);
-      $$0.put(dho.gs, $$3);
-      $$0.put(dho.ti, $$3);
-      $$0.put(dho.tj, $$3);
-      $$0.put(dho.fS, $$3);
-      $$0.put(dho.gt, $$3);
-      $$0.put(dho.gu, $$3);
-      $$0.put(dho.gY, $$3);
-      $$0.put(dho.hh, $$3);
-      $$0.put(dho.hY, $$3);
-      $$0.put(dho.iD, $$3);
-      $$0.put(dho.iE, $$3);
-      $$0.put(dho.iF, $$3);
-      $$0.put(dho.iG, $$3);
-      $$0.put(dho.iH, $$3);
-      $$0.put(dho.iI, $$3);
-      $$0.put(dho.kl, $$3);
-      $$0.put(dho.km, $$3);
-      $$0.put(dho.kn, $$3);
-      $$0.put(dho.ko, $$3);
-      $$0.put(dho.kp, $$3);
-      $$0.put(dho.kq, $$3);
-      $$0.put(dho.kr, $$3);
-      $$0.put(dho.ks, $$3);
-      $$0.put(dho.rM, $$3);
-      $$0.put(dho.rN, $$3);
-      $$0.put(dho.rP, $$3);
-      $$0.put(dho.rO, $$3);
-      $$0.put(dho.rQ, $$3);
-      $$0.put(dho.rR, $$3);
-      $$0.put(dho.rT, $$3);
-      $$0.put(dho.rS, $$3);
-      $$0.put(dho.kt, $$3);
-      $$0.put(dho.ku, $$3);
-      $$0.put(dho.kv, $$3);
-      $$0.put(dho.bS, $$3);
-      $$0.put(dho.kA, $$3);
-      $$0.put(dho.kC, $$3);
-      $$0.put(dho.kB, $$3);
-      $$0.put(dho.kD, $$3);
-      $$0.put(dho.mc, $$3);
-      $$0.put(dho.md, $$3);
-      $$0.put(dho.mf, $$3);
-      $$0.put(dho.mr, $$3);
-      $$0.put(dho.ms, $$3);
-      $$0.put(dho.mt, $$3);
-      $$0.put(dho.mu, $$3);
-      $$0.put(dho.mv, $$3);
-      $$0.put(dho.mw, $$3);
-      $$0.put(dho.mx, $$3);
-      $$0.put(dho.my, $$3);
-      $$0.put(dho.mz, $$3);
-      $$0.put(dho.mA, $$3);
-      $$0.put(dho.mB, $$3);
-      $$0.put(dho.mC, $$3);
-      $$0.put(dho.mD, $$3);
-      $$0.put(dho.mE, $$3);
-      $$0.put(dho.mF, $$3);
-      $$0.put(dho.mG, $$3);
-      $$0.put(dho.mH, $$3);
-      $$0.put(dho.mI, $$3);
-      $$0.put(dho.mJ, $$3);
-      $$0.put(dho.mK, $$3);
-      $$0.put(dho.mL, $$3);
-      $$0.put(dho.mM, $$3);
-      $$0.put(dho.mN, $$3);
-      $$0.put(dho.mO, $$3);
-      $$0.put(dho.mP, $$3);
-      $$0.put(dho.mQ, $$3);
-      $$0.put(dho.mR, $$3);
-      $$0.put(dho.mS, $$3);
-      $$0.put(dho.mT, $$3);
-      $$0.put(dho.mU, $$3);
-      $$0.put(dho.mV, $$3);
-      $$0.put(dho.mX, $$3);
-      $$0.put(dho.mY, $$3);
-      $$0.put(dho.mZ, $$3);
-      $$0.put(dho.na, $$3);
-      $$0.put(dho.nS, $$3);
-      $$0.put(dho.oc, $$3);
-      $$0.put(dho.oe, $$3);
-      $$0.put(dho.of, $$3);
-      $$0.put(dho.og, $$3);
-      $$0.put(dho.oh, $$3);
-      $$0.put(dho.oi, $$3);
-      $$0.put(dho.oz, $$3);
-      $$0.put(dho.oA, $$3);
-      $$0.put(dho.oB, $$3);
-      $$0.put(dho.oC, $$3);
-      $$0.put(dho.or, $$3);
-      $$0.put(dho.ox, $$3);
-      $$0.put(dho.oo, $$3);
-      $$0.put(dho.oD, $$3);
-      $$0.put(dho.oq, $$3);
-      $$0.put(dho.pm, $$3);
-      $$0.put(dho.pn, $$3);
-      $$0.put(dho.po, $$3);
-      $$0.put(dho.pp, $$3);
-      $$0.put(dho.oU, $$3);
-      $$0.put(dho.oV, $$3);
-      $$0.put(dho.st, $$3);
-      $$0.put(dho.qy, $$3);
-      $$0.put(dho.qx, $$3);
-      $$0.put(dho.qw, $$3);
-      $$0.put(dho.qv, $$3);
-      $$0.put(dho.ss, $$3);
-      $$0.put(dho.sv, $$3);
-      $$0.put(dho.sw, $$3);
-      $$0.put(dho.sx, $$3);
-      $$0.put(dho.sz, $$3);
-      $$0.put(dho.sy, $$3);
-      $$0.put(dho.sB, $$3);
-      $$0.put(dho.sD, $$3);
-      $$0.put(dho.sE, $$3);
-      $$0.put(dho.sF, $$3);
-      $$0.put(dho.sG, $$3);
-      $$0.put(dho.qQ, $$3);
-      $$0.put(dho.qR, $$3);
-      $$0.put(dho.qT, $$3);
-      $$0.put(dho.qV, $$3);
-      $$0.put(dho.E, $$3);
-      $$0.put(dho.tn, $$3);
-      $$0.put(dho.sc, $$3);
-      $$0.put(dho.sd, $$3);
-      $$0.put(dho.se, $$3);
-      $$0.put(dho.sf, $$3);
-      $$0.put(dho.sg, $$3);
-      $$0.put(dho.sh, $$3);
-      $$0.put(dho.si, $$3);
-      $$0.put(dho.sj, $$3);
-      ghv $$4 = ghv.f();
-      $$0.put(dho.dO, $$4);
-      $$0.put(dho.ed, $$4);
-      $$0.put(dho.ei, $$4);
-      $$0.put(dho.ej, $$4);
-      $$0.put(dho.ek, $$4);
-      $$0.put(dho.el, $$4);
-      $$0.put(dho.em, $$4);
-      $$0.put(dho.en, $$4);
-      $$0.put(dho.eo, $$4);
-      $$0.put(dho.ep, $$4);
-      $$0.put(dho.eq, $$4);
-      $$0.put(dho.er, $$4);
-      $$0.put(dho.es, $$4);
-      $$0.put(dho.et, $$4);
-      $$0.put(dho.eu, $$4);
-      $$0.put(dho.ev, $$4);
-      $$0.put(dho.ew, $$4);
-      $$0.put(dho.ex, $$4);
-      $$0.put(dho.hz, $$4);
-      $$0.put(dho.hA, $$4);
-      $$0.put(dho.hB, $$4);
-      $$0.put(dho.hC, $$4);
-      $$0.put(dho.hD, $$4);
-      $$0.put(dho.hE, $$4);
-      $$0.put(dho.hF, $$4);
-      $$0.put(dho.hG, $$4);
-      $$0.put(dho.hH, $$4);
-      $$0.put(dho.hI, $$4);
-      $$0.put(dho.hJ, $$4);
-      $$0.put(dho.hK, $$4);
-      $$0.put(dho.hL, $$4);
-      $$0.put(dho.hM, $$4);
-      $$0.put(dho.hN, $$4);
-      $$0.put(dho.hO, $$4);
-      $$0.put(dho.hV, $$4);
-      $$0.put(dho.pg, $$4);
-      $$0.put(dho.kI, $$4);
-      $$0.put(dho.nd, $$4);
-      $$0.put(dho.qO, $$4);
-   });
-   private static final Map<eqs, ghv> b = ad.a(Maps.newHashMap(), $$0 -> {
-      ghv $$1 = ghv.f();
-      $$0.put(equ.b, $$1);
-      $$0.put(equ.c, $$1);
-   });
-   private static boolean c;
+public class ghd implements avb {
+   private static final dtr[] a = Arrays.stream(cuu.values())
+      .sorted(Comparator.comparingInt(cuu::a))
+      .map($$0 -> new dtr($$0, jg.c, dia.kP.m()))
+      .toArray(dtr[]::new);
+   private static final dtr b = new dtr(jg.c, dia.kP.m());
+   private final dsn c = new dsn(jg.c, dia.cv.m());
+   private final dsn d = new dub(jg.c, dia.gV.m());
+   private final dtc e = new dtc(jg.c, dia.fG.m());
+   private final drv f = new drv(jg.c, dia.iJ.m());
+   private final dsc g = new dsc(jg.c, dia.bn.m());
+   private final dss h = new dss(jg.c, dia.mX.m());
+   private final dsw i = new dsw(jg.c, dia.tp.m());
+   private fzq j;
+   private gaf k;
+   private Map<dpa.a, fzw> l;
+   private final gkg m;
+   private final gax n;
 
-   public static ghv a(dus $$0) {
-      dhm $$1 = $$0.b();
-      if ($$1 instanceof dlw) {
-         return c ? ghv.d() : ghv.c();
-      } else {
-         ghv $$2 = a.get($$1);
-         return $$2 != null ? $$2 : ghv.c();
-      }
+   public ghd(gkg $$0, gax $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public static ghv b(dus $$0) {
-      dhm $$1 = $$0.b();
-      if ($$1 instanceof dlw) {
-         return c ? ghv.d() : ghv.c();
-      } else {
-         ghv $$2 = a.get($$1);
-         if ($$2 != null) {
-            return $$2 == ghv.f() ? ghv.g() : $$2;
+   @Override
+   public void a(ava $$0) {
+      this.j = new fzq(this.n.a(gba.ch));
+      this.k = new gaf(this.n.a(gba.cL));
+      this.l = gkw.a(this.n);
+   }
+
+   public void a(cvx $$0, cvv $$1, fdt $$2, ghw $$3, int $$4, int $$5) {
+      cvt $$6 = $$0.h();
+      if ($$6 instanceof cuc) {
+         dhy $$7 = ((cuc)$$6).d();
+         if ($$7 instanceof dgu $$8) {
+            cyu $$9 = $$0.a(kt.af);
+            if ($$9 != null && !$$9.b()) {
+               $$0.c(kt.af);
+               $$9.a().thenAcceptAsync($$1x -> $$0.b(kt.af, $$1x), fja.Q());
+               $$9 = null;
+            }
+
+            fzw $$10 = this.l.get($$8.b());
+            gig $$11 = gkw.a($$8.b(), $$9);
+            gkw.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$10, $$11);
          } else {
-            return ghv.c();
+            dvd $$12 = $$7.m();
+            dsg $$13;
+            if ($$7 instanceof dgp) {
+               this.f.a($$0, ((dgp)$$7).b());
+               $$13 = this.f;
+            } else if ($$7 instanceof dhr) {
+               this.g.a(((dhr)$$7).b());
+               $$13 = this.g;
+            } else if ($$12.a(dia.mX)) {
+               $$13 = this.h;
+            } else if ($$12.a(dia.cv)) {
+               $$13 = this.c;
+            } else if ($$12.a(dia.fG)) {
+               $$13 = this.e;
+            } else if ($$12.a(dia.gV)) {
+               $$13 = this.d;
+            } else if ($$12.a(dia.tp)) {
+               this.i.c($$0);
+               $$13 = this.i;
+            } else {
+               if (!($$7 instanceof dox)) {
+                  return;
+               }
+
+               cuu $$20 = dox.b($$6);
+               if ($$20 == null) {
+                  $$13 = b;
+               } else {
+                  $$13 = a[$$20.a()];
+               }
+            }
+
+            this.m.a($$13, $$2, $$3, $$4, $$5);
+         }
+      } else {
+         if ($$0.a(cwb.vu)) {
+            drx $$24 = $$0.a(kt.ah, drx.a);
+            cuu $$25 = $$0.a(kt.ai);
+            boolean $$26 = !$$24.b().isEmpty() || $$25 != null;
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            hab $$27 = $$26 ? hae.g : hae.h;
+            fdx $$28 = $$27.c().a(gox.a($$3, this.j.a($$27.a()), $$1 == cvv.g, $$0.B()));
+            this.j.c().a($$2, $$28, $$4, $$5);
+            if ($$26) {
+               gkc.a($$2, $$3, $$4, $$5, this.j.b(), $$27, false, Objects.requireNonNullElse($$25, cuu.a), $$24, $$0.B(), false);
+            } else {
+               this.j.b().a($$2, $$28, $$4, $$5);
+            }
+
+            $$2.b();
+         } else if ($$0.a(cwb.vU)) {
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            fdx $$29 = gox.a($$3, this.k.a(gaf.a), false, $$0.B());
+            this.k.a($$2, $$29, $$4, $$5);
+            $$2.b();
          }
       }
-   }
-
-   public static ghv c(dus $$0) {
-      ghv $$1 = a($$0);
-      return $$1 == ghv.f() ? gig.j() : gig.i();
-   }
-
-   public static ghv a(cvs $$0) {
-      if ($$0.h() instanceof ctu $$2) {
-         dhm $$3 = $$2.d();
-         return c($$3.n());
-      } else {
-         return gig.j();
-      }
-   }
-
-   public static ghv a(eqt $$0) {
-      ghv $$1 = b.get($$0.a());
-      return $$1 != null ? $$1 : ghv.c();
-   }
-
-   public static void a(boolean $$0) {
-      c = $$0;
    }
 }

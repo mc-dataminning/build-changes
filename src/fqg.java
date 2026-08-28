@@ -1,132 +1,101 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class fqg extends fqh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final xe c = xe.c("recover_world.title").a(n.r);
-   private static final xe d = xe.c("recover_world.bug_tracker");
-   private static final xe s = xe.c("recover_world.restore");
-   private static final xe u = xe.c("recover_world.no_fallback");
-   private static final xe v = xe.c("recover_world.done.title");
-   private static final xe w = xe.c("recover_world.done.success");
-   private static final xe x = xe.c("recover_world.done.failed");
-   private static final xe y = xe.c("recover_world.issue.none").a(n.k);
-   private static final xe z = xe.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer A;
-   private final fog B = fog.d().a(8);
-   private final xe C;
-   private final fli D;
-   private final fli E;
-   private final esz.c F;
+public class fqg extends fqs {
+   private static final long a = 2000L;
+   private final asa b;
+   private long c = -1L;
+   private boolean d;
+   private static final Object2IntMap<dya> s = ad.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dya.c, 5526612);
+      $$0.put(dya.d, 10066329);
+      $$0.put(dya.e, 6250897);
+      $$0.put(dya.f, 8434258);
+      $$0.put(dya.g, 13750737);
+      $$0.put(dya.h, 7497737);
+      $$0.put(dya.i, 3159410);
+      $$0.put(dya.j, 2213376);
+      $$0.put(dya.k, 13421772);
+      $$0.put(dya.l, 16769184);
+      $$0.put(dya.m, 15884384);
+      $$0.put(dya.n, 16777215);
+   });
 
-   public fqg(fip $$0, BooleanConsumer $$1, esz.c $$2) {
-      super(c);
-      this.A = $$1;
-      this.C = xe.a("recover_world.message", xe.b($$2.f()).a(n.h));
-      this.D = new fli(this.C, $$0.h);
-      this.F = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      xe $$5 = xe.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.E = new fli($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.B.c().b();
-      this.B.a(new flv(this.l, $$0.h));
-      this.B.a(this.D.b(true));
-      this.B.a(this.E);
-      fog $$7 = fog.e().a(5);
-      $$7.a(fko.a(d, fpe.b(this, ayb.j)).b(120, 20).a());
-      $$7.a(fko.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : flz.a(u)).a()).j = $$6;
-      this.B.a($$7);
-      this.B.a(fko.a(xd.k, $$0x -> this.d()).b(120, 20).a());
-      this.B.a(this::c);
+   public fqg(asa $$0) {
+      super(fir.a);
+      this.b = $$0;
    }
 
-   private void a(fip $$0) {
-      Exception $$1 = this.a(this.F, false);
-      Exception $$2 = this.a(this.F, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new fps(xe.c("recover_world.restoring")));
-         fvg.a(this.F);
-         if (this.F.n()) {
-            $$0.a(new fpf(this.A, v, w, xd.j, xd.k));
-         } else {
-            $$0.a(new fpa(() -> this.A.accept(false), v, x));
-         }
+   @Override
+   public boolean aI_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aR_() {
+      return false;
+   }
+
+   @Override
+   public void j() {
+      this.d = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fox $$0) {
+      if (this.d) {
+         $$0.a(fow.a, xh.c("narrator.loading.done"));
       } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new fpa(() -> this.A.accept(false), v, x));
+         $$0.a(fow.a, this.m());
       }
    }
 
-   private xe a(esz.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return xe.i();
-      } else {
-         xs $$3 = xe.i();
-         Instant $$4 = $$0.a($$1);
-         xs $$5 = $$4 != null ? xe.b(fvp.a.format($$4)) : xe.c("recover_world.state_entry.unknown");
-         $$3.b(xe.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(y);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(z);
-         } else if ($$2 instanceof ux) {
-            $$3.b(xe.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(xe.b($$2.toString()).a(n.m));
+   private xh m() {
+      return xh.a("loading.progress", azj.a(this.b.f(), 0, 100));
+   }
+
+   @Override
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ad.c();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
+      }
+
+      int $$5 = this.n / 2;
+      int $$6 = this.o / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
+   }
+
+   public static void a(fkm $$0, asa $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      if ($$5 != 0) {
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+      }
+
+      for (int $$15 = 0; $$15 < $$9; $$15++) {
+         for (int $$16 = 0; $$16 < $$9; $$16++) {
+            dya $$17 = $$1.a($$15, $$16);
+            int $$18 = $$11 + $$15 * $$6;
+            int $$19 = $$12 + $$16 * $$6;
+            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axu.f(s.getInt($$17)));
          }
-
-         return $$3;
       }
-   }
-
-   @Nullable
-   private Exception a(esz.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.h());
-         } else {
-            $$0.a($$0.i());
-         }
-
-         return null;
-      } catch (ur | ux | IOException var4) {
-         return var4;
-      }
-   }
-
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.E.d(this.n - 50);
-      this.D.d(this.n - 50);
-      this.B.a();
-      foa.a(this.B, this.H());
-   }
-
-   @Override
-   public xe i() {
-      return xd.a(super.i(), this.C);
-   }
-
-   @Override
-   public void d() {
-      this.A.accept(false);
    }
 }

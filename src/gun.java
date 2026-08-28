@@ -1,3 +1,3 @@
-public class gun extends gtq {
-   public long a;
+public class gun extends gva {
+   public boolean a;
 }

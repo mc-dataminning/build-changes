@@ -2,55 +2,81 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aom {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xe.b("commands.ride.not_riding", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xe.b("commands.ride.already_riding", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xe.b("commands.ride.mount.failure.generic", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xe.c("commands.ride.mount.failure.cant_ride_players"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xe.c("commands.ride.mount.failure.loop"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(xe.c("commands.ride.mount.failure.wrong_dimension"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xh.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xh.c("commands.recipe.take.failed"));
 
-   public static void a(CommandDispatcher<eu> $$0) {
+   public static void a(CommandDispatcher<ev> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("ride").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ew.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)ew.a("targets", fi.d())
+                              .then(
+                                 ew.a("recipe", fw.a())
+                                    .suggests(iv.b)
+                                    .executes($$0x -> a((ev)$$0x.getSource(), fi.f($$0x, "targets"), Collections.singleton(fw.b($$0x, "recipe"))))
+                              ))
+                           .then(ew.a("*").executes($$0x -> a((ev)$$0x.getSource(), fi.f($$0x, "targets"), ((ev)$$0x.getSource()).l().aI().f())))
+                     )
+               ))
             .then(
-               ((RequiredArgumentBuilder)ev.a("target", fh.a())
-                     .then(ev.a("mount").then(ev.a("vehicle", fh.a()).executes($$0x -> a((eu)$$0x.getSource(), fh.a($$0x, "target"), fh.a($$0x, "vehicle"))))))
-                  .then(ev.a("dismount").executes($$0x -> a((eu)$$0x.getSource(), fh.a($$0x, "target"))))
+               ew.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)ew.a("targets", fi.d())
+                           .then(
+                              ew.a("recipe", fw.a())
+                                 .suggests(iv.b)
+                                 .executes($$0x -> b((ev)$$0x.getSource(), fi.f($$0x, "targets"), Collections.singleton(fw.b($$0x, "recipe"))))
+                           ))
+                        .then(ew.a("*").executes($$0x -> b((ev)$$0x.getSource(), fi.f($$0x, "targets"), ((ev)$$0x.getSource()).l().aI().f())))
+                  )
             )
       );
    }
 
-   private static int a(eu $$0, btr $$1, btr $$2) throws CommandSyntaxException {
-      btr $$3 = $$1.dg();
-      if ($$3 != null) {
-         throw b.create($$1.R_(), $$3.R_());
-      } else if ($$2.ao() == bty.by) {
-         throw d.create();
-      } else if ($$1.cY().anyMatch($$1x -> $$1x == $$2)) {
-         throw e.create();
-      } else if ($$1.dS() != $$2.dS()) {
-         throw f.create();
-      } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.R_(), $$2.R_());
+   private static int a(ev $$0, Collection<arn> $$1, Collection<dal<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (arn $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         $$0.a(() -> xe.a("commands.ride.mount.success", $$1.R_(), $$2.R_()), true);
-         return 1;
+         if ($$1.size() == 1) {
+            $$0.a(() -> xh.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().S_()), true);
+         } else {
+            $$0.a(() -> xh.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 
-   private static int a(eu $$0, btr $$1) throws CommandSyntaxException {
-      btr $$2 = $$1.dg();
-      if ($$2 == null) {
-         throw a.create($$1.R_());
+   private static int b(ev $$0, Collection<arn> $$1, Collection<dal<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (arn $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
       } else {
-         $$1.af();
-         $$0.a(() -> xe.a("commands.ride.dismount.success", $$1.R_(), $$2.R_()), true);
-         return 1;
+         if ($$1.size() == 1) {
+            $$0.a(() -> xh.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().S_()), true);
+         } else {
+            $$0.a(() -> xh.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 }

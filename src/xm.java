@@ -1,77 +1,99 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-public class xm {
-   private final xo[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private xq d;
-
-   public xm(int $$0) {
-      this.a = new xo[$$0];
-   }
-
-   public boolean a(xq $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new xo($$0, true) : null);
-         return true;
+public interface xm {
+   Optional<bao> a = Optional.of(bao.a);
+   xm b = new xm() {
+      @Override
+      public <T> Optional<T> a(xm.a<T> $$0) {
+         return Optional.empty();
       }
-   }
 
-   private void a(@Nullable xo $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
-   }
+      @Override
+      public <T> Optional<T> a(xm.b<T> $$0, ye $$1) {
+         return Optional.empty();
+      }
+   };
 
-   public void a(xq $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         xo $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
+   <T> Optional<T> a(xm.a<T> var1);
+
+   <T> Optional<T> a(xm.b<T> var1, ye var2);
+
+   static xm e(final String $$0) {
+      return new xm() {
+         @Override
+         public <T> Optional<T> a(xm.a<T> $$0x) {
+            return $$0.accept($$0);
          }
-      }
-   }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
-
-   public xm.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xq> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         xo $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
+         @Override
+         public <T> Optional<T> a(xm.b<T> $$0x, ye $$1) {
+            return $$0.accept($$1, $$0);
          }
-      }
-
-      xl $$6 = new xl($$2);
-      xl.b $$7 = new xl.b($$0, $$1);
-      return new xm.a($$6, $$7);
+      };
    }
 
-   public int c() {
-      return this.c;
+   static xm a(final String $$0, final ye $$1) {
+      return new xm() {
+         @Override
+         public <T> Optional<T> a(xm.a<T> $$0x) {
+            return $$0.accept($$0);
+         }
+
+         @Override
+         public <T> Optional<T> a(xm.b<T> $$0x, ye $$1x) {
+            return $$0.accept($$1.a($$1), $$0);
+         }
+      };
    }
 
-   public static record a(xl a, xl.b b) {
+   static xm a(xm... $$0) {
+      return a(ImmutableList.copyOf($$0));
+   }
+
+   static xm a(final List<? extends xm> $$0) {
+      return new xm() {
+         @Override
+         public <T> Optional<T> a(xm.a<T> $$0x) {
+            for (xm $$1 : $$0) {
+               Optional<T> $$2 = $$1.a($$0);
+               if ($$2.isPresent()) {
+                  return $$2;
+               }
+            }
+
+            return Optional.empty();
+         }
+
+         @Override
+         public <T> Optional<T> a(xm.b<T> $$0x, ye $$1) {
+            for (xm $$2 : $$0) {
+               Optional<T> $$3 = $$2.a($$0, $$1);
+               if ($$3.isPresent()) {
+                  return $$3;
+               }
+            }
+
+            return Optional.empty();
+         }
+      };
+   }
+
+   default String getString() {
+      StringBuilder $$0 = new StringBuilder();
+      this.a($$1 -> {
+         $$0.append($$1);
+         return Optional.empty();
+      });
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      Optional<T> accept(String var1);
+   }
+
+   public interface b<T> {
+      Optional<T> accept(ye var1, String var2);
    }
 }

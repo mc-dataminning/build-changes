@@ -1,15 +1,96 @@
-public interface gjw<T extends drv> {
-   void a(T var1, float var2, fdi var3, ghl var4, int var5, int var6);
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   default boolean a(T $$0) {
-      return false;
+public class gjw implements gjq {
+   private final List<gjw.d> a;
+
+   gjw(List<gjw.d> $$0) {
+      this.a = $$0;
    }
 
-   default int aV_() {
-      return 64;
+   @Override
+   public Object a(dvd $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+         if (this.a.get($$2).a.test($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      record a(gjw a, IntList b) {
+         a(IntList b) {
+            this.b = b;
+         }
+      }
+
+      return new a($$1);
    }
 
-   default boolean a(T $$0, eyw $$1) {
-      return eyw.b($$0.aC_()).a((jy)$$1, (double)this.aV_());
+   @Override
+   public void a(han.a $$0) {
+      this.a.forEach($$1 -> $$1.b.a($$0));
+   }
+
+   @Override
+   public gzu a(had $$0, Function<hab, gxs> $$1, haj $$2) {
+      List<hak.a> $$3 = new ArrayList<>(this.a.size());
+
+      for (gjw.d $$4 : this.a) {
+         gzu $$5 = $$4.b.a($$0, $$1, $$2);
+         $$3.add(new hak.a($$4.a, $$5));
+      }
+
+      return new hak($$3);
+   }
+
+   public static record b(List<gjy> a) {
+      public gjw a(dve<dhy, dvd> $$0) {
+         List<gjw.d> $$1 = this.a.stream().map($$1x -> new gjw.d($$1x.a($$0), $$1x.a())).toList();
+         return new gjw($$1);
+      }
+
+      public Set<gjp> a() {
+         return this.a.stream().map(gjy::a).collect(Collectors.toSet());
+      }
+
+      public List<gjy> b() {
+         return this.a;
+      }
+   }
+
+   public static class c implements JsonDeserializer<gjw.b> {
+      public gjw.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new gjw.b(this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<gjy> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<gjy> $$2 = new ArrayList<>();
+         if ($$1.isEmpty()) {
+            throw new JsonSyntaxException("Empty selector array");
+         } else {
+            for (JsonElement $$3 : $$1) {
+               $$2.add((gjy)$$0.deserialize($$3, gjy.class));
+            }
+
+            return $$2;
+         }
+      }
+   }
+
+   static record d(Predicate<dvd> a, gjp b) {
    }
 }

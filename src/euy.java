@@ -1,80 +1,62 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class euy implements euz {
-   protected final List<eww> g;
-   private final Predicate<etl> a;
+public class euy extends evj {
+   public static final MapCodec<euy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(euy.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, euy::new)
+   );
+   private final euy.a b;
 
-   protected euy(List<eww> $$0) {
-      this.g = $$0;
-      this.a = ad.a($$0);
+   private euy(List<exh> $$0, euy.a $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public abstract eva<? extends euy> b();
-
-   protected static <T extends euy> P1<Mu<T>, List<eww>> a(Instance<T> $$0) {
-      return $$0.group(eww.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+   public evl<euy> b() {
+      return evm.s;
    }
-
-   public final cvs b(cvs $$0, etl $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract cvs a(cvs var1, etl var2);
 
    @Override
-   public void a(etr $$0) {
-      euz.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
+   public Set<ewp<?>> a() {
+      return ImmutableSet.of(this.b.g);
    }
 
-   protected static euy.a<?> a(Function<List<eww>, euz> $$0) {
-      return new euy.b($$0);
+   @Override
+   public cvx a(cvx $$0, etw $$1) {
+      if ($$1.c(this.b.g) instanceof bsb $$3) {
+         $$0.b(kt.g, $$3.an());
+      }
+
+      return $$0;
    }
 
-   public abstract static class a<T extends euy.a<T>> implements euz.a, ewo<T> {
-      private final Builder<eww> a = ImmutableList.builder();
-
-      public T a(eww.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
-
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<eww> g() {
-         return this.a.build();
-      }
+   public static evj.a<?> a(euy.a $$0) {
+      return a($$1 -> new euy($$1, $$0));
    }
 
-   static final class b extends euy.a<euy.b> {
-      private final Function<List<eww>, euz> a;
+   public static enum a implements baf {
+      a("this", ews.a),
+      b("attacking_entity", ews.d),
+      c("last_damage_player", ews.b),
+      d("block_entity", ews.h);
 
-      public b(Function<List<eww>, euz> $$0) {
-         this.a = $$0;
-      }
+      public static final Codec<euy.a> e = baf.a(euy.a::values);
+      private final String f;
+      final ewp<?> g;
 
-      protected euy.b a() {
-         return this;
+      private a(final String $$0, final ewp<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public euz b() {
-         return this.a.apply(this.g());
+      public String c() {
+         return this.f;
       }
    }
 }

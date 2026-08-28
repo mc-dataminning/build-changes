@@ -1,80 +1,105 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public record dj(dh.c b, dh.c c, dh.c d, dh.c e, dh.c f, dh.c g, dh.c h) {
-   public static final Codec<dj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dh.c.d.optionalFieldOf("x", dh.c.c).forGetter(dj::a),
-               dh.c.d.optionalFieldOf("y", dh.c.c).forGetter(dj::b),
-               dh.c.d.optionalFieldOf("z", dh.c.c).forGetter(dj::c),
-               dh.c.d.optionalFieldOf("speed", dh.c.c).forGetter(dj::d),
-               dh.c.d.optionalFieldOf("horizontal_speed", dh.c.c).forGetter(dj::e),
-               dh.c.d.optionalFieldOf("vertical_speed", dh.c.c).forGetter(dj::f),
-               dh.c.d.optionalFieldOf("fall_distance", dh.c.c).forGetter(dj::g)
-            )
-            .apply($$0, dj::new)
-   );
+public record dj(Map<jp<btc>, dj.b> b) {
+   public static final Codec<dj> a = Codec.unboundedMap(btc.a, dj.b.a).xmap(dj::new, dj::a);
 
-   public static dj a(dh.c $$0) {
-      return new dj(dh.c.c, dh.c.c, dh.c.c, $$0, dh.c.c, dh.c.c, dh.c.c);
-   }
-
-   public static dj b(dh.c $$0) {
-      return new dj(dh.c.c, dh.c.c, dh.c.c, dh.c.c, $$0, dh.c.c, dh.c.c);
-   }
-
-   public static dj c(dh.c $$0) {
-      return new dj(dh.c.c, dh.c.c, dh.c.c, dh.c.c, dh.c.c, $$0, dh.c.c);
-   }
-
-   public static dj d(dh.c $$0) {
-      return new dj(dh.c.c, dh.c.c, dh.c.c, dh.c.c, dh.c.c, dh.c.c, $$0);
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
-         double $$4 = azf.f($$0, $$1, $$2);
-         if (!this.e.e($$4)) {
-            return false;
-         } else {
-            double $$5 = azf.e($$0, $$2);
-            if (!this.f.e($$5)) {
-               return false;
-            } else {
-               double $$6 = Math.abs($$1);
-               return !this.g.d($$6) ? false : this.h.d($$3);
-            }
-         }
-      } else {
-         return false;
+   public boolean a(btz $$0) {
+      if ($$0 instanceof buv $$1 && this.a($$1.eE())) {
+         return true;
       }
+
+      return false;
    }
 
-   public dh.c a() {
+   public boolean a(buv $$0) {
+      return this.a($$0.eE());
+   }
+
+   public boolean a(Map<jp<btc>, bte> $$0) {
+      for (Entry<jp<btc>, dj.b> $$1 : this.b.entrySet()) {
+         bte $$2 = $$0.get($$1.getKey());
+         if (!$$1.getValue().a($$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public Map<jp<btc>, dj.b> a() {
       return this.b;
    }
 
-   public dh.c b() {
-      return this.c;
+   public static class a {
+      private final Builder<jp<btc>, dj.b> a = ImmutableMap.builder();
+
+      public static dj.a a() {
+         return new dj.a();
+      }
+
+      public dj.a a(jp<btc> $$0) {
+         this.a.put($$0, new dj.b());
+         return this;
+      }
+
+      public dj.a a(jp<btc> $$0, dj.b $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public Optional<dj> b() {
+         return Optional.of(new dj(this.a.build()));
+      }
    }
 
-   public dh.c c() {
-      return this.d;
-   }
+   public static record b(di.d b, di.d c, Optional<Boolean> d, Optional<Boolean> e) {
+      public static final Codec<dj.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  di.d.d.optionalFieldOf("amplifier", di.d.c).forGetter(dj.b::a),
+                  di.d.d.optionalFieldOf("duration", di.d.c).forGetter(dj.b::b),
+                  Codec.BOOL.optionalFieldOf("ambient").forGetter(dj.b::c),
+                  Codec.BOOL.optionalFieldOf("visible").forGetter(dj.b::d)
+               )
+               .apply($$0, dj.b::new)
+      );
 
-   public dh.c d() {
-      return this.e;
-   }
+      public b() {
+         this(di.d.c, di.d.c, Optional.empty(), Optional.empty());
+      }
 
-   public dh.c e() {
-      return this.f;
-   }
+      public boolean a(@Nullable bte $$0) {
+         if ($$0 == null) {
+            return false;
+         } else if (!this.b.d($$0.e())) {
+            return false;
+         } else if (!this.c.d($$0.d())) {
+            return false;
+         } else {
+            return this.d.isPresent() && this.d.get() != $$0.f() ? false : !this.e.isPresent() || this.e.get() == $$0.g();
+         }
+      }
 
-   public dh.c f() {
-      return this.g;
-   }
+      public di.d a() {
+         return this.b;
+      }
 
-   public dh.c g() {
-      return this.h;
+      public di.d b() {
+         return this.c;
+      }
+
+      public Optional<Boolean> c() {
+         return this.d;
+      }
+
+      public Optional<Boolean> d() {
+         return this.e;
+      }
    }
 }

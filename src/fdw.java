@@ -1,210 +1,209 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.time.Duration;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.nio.ByteBuffer;
 import javax.annotation.Nullable;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.InputStreamEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.Args;
-import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class fdw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 5;
-   private static final String c = "/upload";
-   private final File d;
-   private final long e;
-   private final int f;
-   private final ffb g;
-   private final String h;
-   private final String i;
-   private final String j;
-   private final String k;
-   private final fec l;
-   private final AtomicBoolean m = new AtomicBoolean(false);
+public class fdw implements AutoCloseable {
+   private final fdw.a a;
+   private int b;
+   private int c;
+   private int d;
    @Nullable
-   private CompletableFuture<fgt> n;
-   private final RequestConfig o = RequestConfig.custom()
-      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
-      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
-      .build();
+   private fdy e;
+   @Nullable
+   private RenderSystem.a f;
+   private fdy.b g;
+   private int h;
+   private fdy.c i;
 
-   public fdw(File $$0, long $$1, int $$2, ffb $$3, fjc $$4, String $$5, String $$6, fec $$7) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4.a();
-      this.i = $$4.c();
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
+   public fdw(fdw.a $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = GlStateManager._glGenBuffers();
+      this.c = GlStateManager._glGenBuffers();
+      this.d = GlStateManager._glGenVertexArrays();
    }
 
-   public void a(Consumer<fgt> $$0) {
-      if (this.n == null) {
-         this.n = CompletableFuture.supplyAsync(() -> this.a(0));
-         this.n.thenAccept($$0);
+   public void a(fds $$0) {
+      fds var2 = $$0;
+
+      label40: {
+         try {
+            if (this.e()) {
+               break label40;
+            }
+
+            RenderSystem.assertOnRenderThread();
+            fds.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.c();
+            this.g = $$1.e();
+            this.i = $$1.d();
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+            }
+
+            throw var6;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return;
+      }
+
+      if ($$0 != null) {
+         $$0.close();
+      }
+   }
+
+   public void a(fdq.a $$0) {
+      fdq.a var2 = $$0;
+
+      label40: {
+         try {
+            if (this.e()) {
+               break label40;
+            }
+
+            RenderSystem.assertOnRenderThread();
+            GlStateManager._glBindBuffer(34963, this.c);
+            RenderSystem.glBufferData(34963, $$0.a(), this.a.c);
+            this.f = null;
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+            }
+
+            throw var6;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return;
+      }
+
+      if ($$0 != null) {
+         $$0.close();
+      }
+   }
+
+   private fdy a(fds.a $$0, @Nullable ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.a().equals(this.e)) {
+         if (this.e != null) {
+            this.e.h();
+         }
+
+         GlStateManager._glBindBuffer(34962, this.b);
+         $$0.a().g();
+         $$2 = true;
+      }
+
+      if ($$1 != null) {
+         if (!$$2) {
+            GlStateManager._glBindBuffer(34962, this.b);
+         }
+
+         RenderSystem.glBufferData(34962, $$1, this.a.c);
+      }
+
+      return $$0.a();
+   }
+
+   @Nullable
+   private RenderSystem.a b(fds.a $$0, @Nullable ByteBuffer $$1) {
+      if ($$1 != null) {
+         GlStateManager._glBindBuffer(34963, this.c);
+         RenderSystem.glBufferData(34963, $$1, this.a.c);
+         return null;
+      } else {
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
+         if ($$2 != this.f || !$$2.a($$0.c())) {
+            $$2.b($$0.c());
+         }
+
+         return $$2;
       }
    }
 
    public void a() {
-      this.m.set(true);
-      if (this.n != null) {
-         this.n.cancel(false);
-         this.n = null;
+      fdp.b();
+      GlStateManager._glBindVertexArray(this.d);
+   }
+
+   public static void b() {
+      fdp.b();
+      GlStateManager._glBindVertexArray(0);
+   }
+
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private fdy.b f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, @Nullable ghf $$2) {
+      if ($$2 != null) {
+         RenderSystem.assertOnRenderThread();
+         $$2.a(this.i, $$0, $$1, fja.Q().aP());
+         $$2.b();
+         this.c();
+         $$2.a();
       }
    }
 
-   private fgt a(int $$0) {
-      fgt.a $$1 = new fgt.a();
-      if (this.m.get()) {
-         return $$1.a();
-      } else {
-         this.l.b = this.d.length();
-         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
-         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.o).build();
+   @Override
+   public void close() {
+      if (this.b >= 0) {
+         RenderSystem.glDeleteBuffers(this.b);
+         this.b = -1;
+      }
 
-         fgt var8;
-         try {
-            this.a($$2);
-            HttpResponse $$4 = $$3.execute($$2);
-            long $$5 = this.a($$4);
-            if (!this.a($$5, $$0)) {
-               this.a($$4, $$1);
-               return $$1.a();
-            }
+      if (this.c >= 0) {
+         RenderSystem.glDeleteBuffers(this.c);
+         this.c = -1;
+      }
 
-            var8 = this.b($$5, $$0);
-         } catch (Exception var12) {
-            if (!this.m.get()) {
-               a.error("Caught exception while uploading: ", var12);
-            }
-
-            return $$1.a();
-         } finally {
-            this.a($$2, $$3);
-         }
-
-         return var8;
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
       }
    }
 
-   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
-      $$0.releaseConnection();
-      if ($$1 != null) {
-         try {
-            $$1.close();
-         } catch (IOException var4) {
-            a.error("Failed to close Realms upload client");
-         }
-      }
+   public fdy d() {
+      return this.e;
    }
 
-   private void a(HttpPost $$0) throws FileNotFoundException {
-      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j + ";worldVersion=" + this.k);
-      fdw.a $$1 = new fdw.a(new FileInputStream(this.d), this.d.length(), this.l);
-      $$1.setContentType("application/octet-stream");
-      $$0.setEntity($$1);
+   public boolean e() {
+      return this.d == -1;
    }
 
-   private void a(HttpResponse $$0, fgt.a $$1) throws IOException {
-      int $$2 = $$0.getStatusLine().getStatusCode();
-      if ($$2 == 401) {
-         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
-      }
+   public static enum a {
+      a(35044),
+      b(35048);
 
-      $$1.a($$2);
-      if ($$0.getEntity() != null) {
-         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
-         if ($$3 != null) {
-            try {
-               JsonParser $$4 = new JsonParser();
-               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
-               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
-               $$1.a($$6.orElse(null));
-            } catch (Exception var8) {
-            }
-         }
-      }
-   }
+      final int c;
 
-   private boolean a(long $$0, int $$1) {
-      return $$0 > 0L && $$1 + 1 < 5;
-   }
-
-   private fgt b(long $$0, int $$1) throws InterruptedException {
-      Thread.sleep(Duration.ofSeconds($$0).toMillis());
-      return this.a($$1 + 1);
-   }
-
-   private long a(HttpResponse $$0) {
-      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
-   }
-
-   public boolean b() {
-      return this.n.isDone() || this.n.isCancelled();
-   }
-
-   static class a extends InputStreamEntity {
-      private final long a;
-      private final InputStream b;
-      private final fec c;
-
-      public a(InputStream $$0, long $$1, fec $$2) {
-         super($$0);
-         this.b = $$0;
-         this.a = $$1;
-         this.c = $$2;
-      }
-
-      public void writeTo(OutputStream $$0) throws IOException {
-         Args.notNull($$0, "Output stream");
-         InputStream $$1 = this.b;
-
-         try {
-            byte[] $$2 = new byte[4096];
-            int $$3;
-            if (this.a < 0L) {
-               while (($$3 = $$1.read($$2)) != -1) {
-                  $$0.write($$2, 0, $$3);
-                  this.c.a += (long)$$3;
-               }
-            } else {
-               long $$4 = this.a;
-
-               while ($$4 > 0L) {
-                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
-                  if ($$3 == -1) {
-                     break;
-                  }
-
-                  $$0.write($$2, 0, $$3);
-                  this.c.a += (long)$$3;
-                  $$4 -= (long)$$3;
-                  $$0.flush();
-               }
-            }
-         } finally {
-            $$1.close();
-         }
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 }

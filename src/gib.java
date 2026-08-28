@@ -1,103 +1,201 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.Map.Entry;
+import java.util.function.Function;
 
-public record gib(Map<String, String> c, Set<String> d) {
-   public static final gib a = new gib(Map.of(), Set.of());
-   public static final Codec<gib> b = RecordCodecBuilder.create(
+public record gib(Map<alh, gib.d> b, List<gib.e> c) {
+   public static final Codec<gib> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gib::d),
-               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gib::e)
+               Codec.unboundedMap(alh.a, gib.d.b).optionalFieldOf("targets", Map.of()).forGetter(gib::a),
+               gib.e.a.listOf().optionalFieldOf("passes", List.of()).forGetter(gib::b)
             )
             .apply($$0, gib::new)
    );
 
-   public static gib.a a() {
-      return new gib.a();
+   public Map<alh, gib.d> a() {
+      return this.b;
    }
 
-   public gib a(gib $$0) {
-      if (this.c()) {
-         return $$0;
-      } else if ($$0.c()) {
-         return this;
-      } else {
-         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
-         $$1.putAll(this.c);
-         $$1.putAll($$0.c);
-         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
-         $$2.addAll(this.d);
-         $$2.addAll($$0.d);
-         return new gib($$1.buildKeepingLast(), $$2.build());
-      }
-   }
-
-   public String b() {
-      StringBuilder $$0 = new StringBuilder();
-
-      for (Entry<String, String> $$1 : this.c.entrySet()) {
-         String $$2 = $$1.getKey();
-         String $$3 = $$1.getValue();
-         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
-      }
-
-      for (String $$4 : this.d) {
-         $$0.append("#define ").append($$4).append('\n');
-      }
-
-      return $$0.toString();
-   }
-
-   public boolean c() {
-      return this.c.isEmpty() && this.d.isEmpty();
-   }
-
-   public Map<String, String> d() {
+   public List<gib.e> b() {
       return this.c;
    }
 
-   public Set<String> e() {
-      return this.d;
+   public static record a(int c, int d) implements gib.d {
+      public static final Codec<gib.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ays.m.fieldOf("width").forGetter(gib.a::a), ays.m.fieldOf("height").forGetter(gib.a::b)).apply($$0, gib.a::new)
+      );
+
+      public int a() {
+         return this.c;
+      }
+
+      public int b() {
+         return this.d;
+      }
    }
 
-   public static class a {
-      private final Builder<String, String> a = ImmutableMap.builder();
-      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
+   public static record b() implements gib.d {
+      public static final Codec<gib.b> a = Codec.unit(gib.b::new);
+   }
 
-      a() {
-      }
+   public sealed interface c permits gib.g, gib.f {
+      Codec<gib.c> a = Codec.xor(gib.g.b, gib.f.b).xmap($$0 -> (gib.c)$$0.map(Function.identity(), Function.identity()), $$0 -> {
+         Objects.requireNonNull($$0);
 
-      public gib.a a(String $$0, String $$1) {
-         if ($$1.isBlank()) {
-            throw new IllegalArgumentException("Cannot define empty string");
-         } else {
-            this.a.put($$0, b($$1));
-            return this;
+         return switch ($$0) {
+            case gib.g $$3 -> Either.left($$3);
+            case gib.f $$4 -> Either.right($$4);
+            default -> throw new MatchException(null, null);
+         };
+      });
+
+      String a();
+
+      Set<alh> b();
+   }
+
+   public sealed interface d permits gib.b, gib.a {
+      Codec<gib.d> b = Codec.either(gib.a.a, gib.b.a).xmap($$0 -> (gib.d)$$0.map(Function.identity(), Function.identity()), $$0 -> {
+         Objects.requireNonNull($$0);
+
+         return switch ($$0) {
+            case gib.a $$3 -> Either.left($$3);
+            case gib.b $$4 -> Either.right($$4);
+            default -> throw new MatchException(null, null);
+         };
+      });
+   }
+
+   public static record e(alh b, List<gib.c> c, alh d, List<gib.h> e) {
+      private static final Codec<List<gib.c>> f = gib.c.a.listOf().validate($$0 -> {
+         Set<String> $$1 = new ObjectArraySet($$0.size());
+
+         for (gib.c $$2 : $$0) {
+            if (!$$1.add($$2.a())) {
+               return DataResult.error(() -> "Encountered repeated sampler name: " + $$2.a());
+            }
          }
+
+         return DataResult.success($$0);
+      });
+      public static final Codec<gib.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alh.a.fieldOf("program").forGetter(gib.e::a),
+                  f.optionalFieldOf("inputs", List.of()).forGetter(gib.e::b),
+                  alh.a.fieldOf("output").forGetter(gib.e::c),
+                  gib.h.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gib.e::d)
+               )
+               .apply($$0, gib.e::new)
+      );
+
+      public alh a() {
+         return this.b;
       }
 
-      private static String b(String $$0) {
-         return $$0.replaceAll("\n", "\\\\\n");
+      public List<gib.c> b() {
+         return this.c;
       }
 
-      public gib.a a(String $$0, float $$1) {
-         this.a.put($$0, String.valueOf($$1));
-         return this;
+      public alh c() {
+         return this.d;
       }
 
-      public gib.a a(String $$0) {
-         this.b.add($$0);
-         return this;
+      public List<gib.h> d() {
+         return this.e;
+      }
+   }
+
+   public static record f(String c, alh d, boolean e, boolean f) implements gib.c {
+      public static final Codec<gib.f> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("sampler_name").forGetter(gib.f::a),
+                  alh.a.fieldOf("target").forGetter(gib.f::c),
+                  Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(gib.f::d),
+                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gib.f::e)
+               )
+               .apply($$0, gib.f::new)
+      );
+
+      @Override
+      public Set<alh> b() {
+         return Set.of(this.d);
       }
 
-      public gib a() {
-         return new gib(this.a.build(), this.b.build());
+      @Override
+      public String a() {
+         return this.c;
+      }
+
+      public alh c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+   }
+
+   public static record g(String c, alh d, int e, int f, boolean g) implements gib.c {
+      public static final Codec<gib.g> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("sampler_name").forGetter(gib.g::a),
+                  alh.a.fieldOf("location").forGetter(gib.g::c),
+                  ays.m.fieldOf("width").forGetter(gib.g::d),
+                  ays.m.fieldOf("height").forGetter(gib.g::e),
+                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gib.g::f)
+               )
+               .apply($$0, gib.g::new)
+      );
+
+      @Override
+      public Set<alh> b() {
+         return Set.of();
+      }
+
+      @Override
+      public String a() {
+         return this.c;
+      }
+
+      public alh c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public int e() {
+         return this.f;
+      }
+
+      public boolean f() {
+         return this.g;
+      }
+   }
+
+   public static record h(String b, List<Float> c) {
+      public static final Codec<gib.h> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gib.h::a), Codec.FLOAT.sizeLimitedListOf(4).fieldOf("values").forGetter(gib.h::b))
+               .apply($$0, gib.h::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public List<Float> b() {
+         return this.c;
       }
    }
 }

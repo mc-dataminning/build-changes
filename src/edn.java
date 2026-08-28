@@ -1,54 +1,45 @@
 import com.mojang.serialization.Codec;
 
-public class edn extends edu<efv> {
-   public edn(Codec<efv> $$0) {
+public class edn extends eef<egb> {
+   public edn(Codec<egb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(edw<efv> $$0) {
-      efv $$1 = $$0.f();
-      jf $$2 = $$0.e();
-      dfg $$3 = $$0.b();
-      azn $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      jf.a $$10 = new jf.a();
+   public boolean a(eeh<egb> $$0) {
+      jg $$1 = $$0.e();
+      dfs $$2 = $$0.b();
+      azr $$3 = $$0.d();
+      egb $$4 = $$0.f();
+      if ($$1.v() < $$2.I_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-      for (jf $$11 : jf.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
+         for (jg $$7 : jg.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
+            }
          }
-      }
 
-      return $$5;
+         return true;
+      }
    }
 
-   protected boolean a(efv $$0, dfg $$1, azn $$2, int $$3, int $$4, jf.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
+   private boolean a(dew $$0, jg $$1, azr $$2) {
+      jg $$3 = $$1.e();
+      dvd $$4 = $$0.a_($$3);
+      return $$4.a(dia.kE) ? $$2.h() : $$4.c($$0, $$3, jl.b);
+   }
 
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            dus $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
-            }
-
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
-         }
+   private void a(dew $$0, jg $$1, azr $$2, egb $$3) {
+      if ($$0.u($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 4);
       }
-
-      return $$6;
    }
 }

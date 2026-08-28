@@ -1,98 +1,65 @@
+import java.time.Duration;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class hdh {
-   private final fip a;
-   @Nullable
-   private hdi b;
+   private final UUID a = UUID.randomUUID();
+   private final hdc b;
+   private final hdl c;
+   private final hdn d = new hdn();
+   private final hdk e;
+   private final hdm f;
 
-   public hdh(fip $$0, fit $$1) {
-      this.a = $$0;
-   }
-
-   public void a(ggf $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable gbm $$0, @Nullable eyu $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(gbm $$0, jf $$1, dus $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
+   public hdh(hdc $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new hdl($$3);
+      this.e = new hdk();
+      this.f = new hdm($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(hdf.i, this.a);
+      });
    }
 
    public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
+      this.e.a(this.b);
    }
 
-   public void a(cvs $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
+   public void a(des $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
    }
 
    public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
    }
 
    public void c() {
-      if (this.b != null) {
-         this.b();
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
+   }
+
+   public void a(dev $$0, ag $$1) {
+      alh $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.aa();
+         this.b.send(hdd.f, $$2x -> {
+            $$2x.a(hdf.D, $$2.toString());
+            $$2x.a(hdf.E, $$3);
+         });
       }
-
-      this.b = this.a.n.r.a(this);
-   }
-
-   public void d() {
-      if (this.b != null) {
-         if (this.a.s != null) {
-            this.b.a();
-         } else {
-            this.b();
-         }
-      } else if (this.a.s != null) {
-         this.c();
-      }
-   }
-
-   public void a(hdj $$0) {
-      this.a.n.r = $$0;
-      this.a.n.ay();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public fip e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.r == null ? false : this.a.r.j() == deg.a;
-   }
-
-   public static xe a(String $$0) {
-      return xe.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cvs $$0, cvs $$1, crj $$2) {
    }
 }

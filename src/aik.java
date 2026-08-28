@@ -1,85 +1,84 @@
-public class aik implements zl<agr> {
-   public static final zc<wb, aik> a = zl.a(aik::a, aik::new);
-   private final jf b;
-   private final ale c;
-   private final ale d;
-   private final ale e;
+public class aik implements zo<agu> {
+   public static final zf<we, aik> a = zo.a(aik::a, aik::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private final jg e;
    private final String f;
-   private final dsx.a g;
-   private final int h;
-   private final int i;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final dsq.a j;
 
-   public aik(jf $$0, ale $$1, ale $$2, ale $$3, String $$4, dsx.a $$5, int $$6, int $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   public aik(jg $$0, String $$1, dsq.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$2;
    }
 
-   private aik(wb $$0) {
-      this.b = $$0.e();
-      this.c = $$0.q();
-      this.d = $$0.q();
-      this.e = $$0.q();
+   private aik(we $$0) {
+      this.e = $$0.e();
       this.f = $$0.p();
-      this.g = dsx.a.a($$0.p()).orElse(dsx.a.b);
-      this.h = $$0.l();
-      this.i = $$0.l();
+      this.j = $$0.b(dsq.a.class);
+      int $$1 = $$0.readByte();
+      this.g = ($$1 & 1) != 0;
+      this.h = ($$1 & 2) != 0;
+      this.i = ($$1 & 4) != 0;
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(we $$0) {
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.a(this.g.c());
-      $$0.c(this.h);
-      $$0.c(this.i);
+      $$0.a(this.j);
+      int $$1 = 0;
+      if (this.g) {
+         $$1 |= 1;
+      }
+
+      if (this.h) {
+         $$1 |= 2;
+      }
+
+      if (this.i) {
+         $$1 |= 4;
+      }
+
+      $$0.l($$1);
    }
 
    @Override
-   public zn<aik> a() {
-      return agp.ca;
+   public zq<aik> a() {
+      return ags.bX;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public jf b() {
-      return this.b;
-   }
-
-   public ale e() {
-      return this.c;
-   }
-
-   public ale f() {
-      return this.d;
-   }
-
-   public ale g() {
+   public jg b() {
       return this.e;
    }
 
-   public String h() {
+   public String e() {
       return this.f;
    }
 
-   public dsx.a i() {
+   public boolean f() {
       return this.g;
    }
 
-   public int j() {
+   public boolean g() {
       return this.h;
    }
 
-   public int k() {
+   public boolean h() {
       return this.i;
+   }
+
+   public dsq.a i() {
+      return this.j;
    }
 }

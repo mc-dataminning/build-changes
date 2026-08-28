@@ -1,41 +1,41 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.BiFunction;
 
-public class evo extends euy {
+public class evo implements evk {
    public static final MapCodec<evo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  eux.e.a(cyl.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
-                  ayo.j.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, evo::new)
+      $$0 -> $$0.group(evm.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, evo::new)
    );
-   public static final cym b = new cym(0, List.of());
-   private final Optional<eux.e<cyl>> c;
-   private final Optional<Integer> d;
+   public static final Codec<evo> b = evm.b.listOf().xmap(evo::new, $$0 -> $$0.c);
+   private final List<evk> c;
+   private final BiFunction<cvx, etw, cvx> d;
 
-   protected evo(List<eww> $$0, Optional<eux.e<cyl>> $$1, Optional<Integer> $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   private evo(List<evk> $$0) {
+      this.c = $$0;
+      this.d = evm.a($$0);
+   }
+
+   public static evo a(List<evk> $$0) {
+      return new evo(List.copyOf($$0));
+   }
+
+   public cvx a(cvx $$0, etw $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   protected cvs a(cvs $$0, etl $$1) {
-      $$0.a(ks.aa, b, this::a);
-      return $$0;
-   }
+   public void a(euc $$0) {
+      evk.super.a($$0);
 
-   private cym a(cym $$0) {
-      return new cym(this.d.orElseGet($$0::a), this.c.<List<cyl>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public eva<evo> b() {
-      return evb.K;
+   public evl<evo> b() {
+      return evm.I;
    }
 }

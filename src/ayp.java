@@ -1,97 +1,100 @@
+import com.google.common.base.Charsets;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
-public class ayp extends InputStream {
-   private static final int a = 8192;
-   private final InputStream b;
-   private final byte[] c;
-   private int d;
-   private int e;
+public class ayp implements AutoCloseable {
+   public static final String a = "session.lock";
+   private final FileChannel b;
+   private final FileLock c;
+   private static final ByteBuffer d;
 
-   public ayp(InputStream $$0) {
-      this($$0, 8192);
-   }
+   public static ayp a(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+      v.c($$0);
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
-   public ayp(InputStream $$0, int $$1) {
-      this.b = $$0;
-      this.c = new byte[$$1];
-   }
-
-   @Override
-   public int read() throws IOException {
-      if (this.e >= this.d) {
-         this.b();
-         if (this.e >= this.d) {
-            return -1;
-         }
-      }
-
-      return Byte.toUnsignedInt(this.c[this.e++]);
-   }
-
-   @Override
-   public int read(byte[] $$0, int $$1, int $$2) throws IOException {
-      int $$3 = this.a();
-      if ($$3 <= 0) {
-         if ($$2 >= this.c.length) {
-            return this.b.read($$0, $$1, $$2);
-         }
-
-         this.b();
-         $$3 = this.a();
-         if ($$3 <= 0) {
-            return -1;
-         }
-      }
-
-      if ($$2 > $$3) {
-         $$2 = $$3;
-      }
-
-      System.arraycopy(this.c, this.e, $$0, $$1, $$2);
-      this.e += $$2;
-      return $$2;
-   }
-
-   @Override
-   public long skip(long $$0) throws IOException {
-      if ($$0 <= 0L) {
-         return 0L;
-      } else {
-         long $$1 = (long)this.a();
-         if ($$1 <= 0L) {
-            return this.b.skip($$0);
+      try {
+         $$2.write(d.duplicate());
+         $$2.force(true);
+         FileLock $$3 = $$2.tryLock();
+         if ($$3 == null) {
+            throw ayp.a.a($$1);
          } else {
-            if ($$0 > $$1) {
-               $$0 = $$1;
-            }
-
-            this.e = (int)((long)this.e + $$0);
-            return $$0;
+            return new ayp($$2, $$3);
          }
+      } catch (IOException var6) {
+         try {
+            $$2.close();
+         } catch (IOException var5) {
+            var6.addSuppressed(var5);
+         }
+
+         throw var6;
       }
    }
 
-   @Override
-   public int available() throws IOException {
-      return this.a() + this.b.available();
+   private ayp(FileChannel $$0, FileLock $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    public void close() throws IOException {
-      this.b.close();
+      try {
+         if (this.c.isValid()) {
+            this.c.release();
+         }
+      } finally {
+         if (this.b.isOpen()) {
+            this.b.close();
+         }
+      }
    }
 
-   private int a() {
-      return this.d - this.e;
+   public boolean a() {
+      return this.c.isValid();
    }
 
-   private void b() throws IOException {
-      this.d = 0;
-      this.e = 0;
-      int $$0 = this.b.read(this.c, 0, this.c.length);
-      if ($$0 > 0) {
-         this.d = $$0;
+   public static boolean b(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+
+      try {
+         boolean var4;
+         try (
+            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
+            FileLock $$3 = $$2.tryLock();
+         ) {
+            var4 = $$3 == null;
+         }
+
+         return var4;
+      } catch (AccessDeniedException var10) {
+         return true;
+      } catch (NoSuchFileException var11) {
+         return false;
+      }
+   }
+
+   static {
+      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
+      d = ByteBuffer.allocateDirect($$0.length);
+      d.put($$0);
+      d.flip();
+   }
+
+   public static class a extends IOException {
+      private a(Path $$0, String $$1) {
+         super($$0.toAbsolutePath() + ": " + $$1);
+      }
+
+      public static ayp.a a(Path $$0) {
+         return new ayp.a($$0, "already locked (possibly by other Minecraft instance?)");
       }
    }
 }

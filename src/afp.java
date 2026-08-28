@@ -1,16 +1,29 @@
-public record afp(int b, cvs c) implements zl<aca> {
-   public static final zc<wp, afp> a = zc.a(za.h, afp::b, cvs.h, afp::e, afp::new);
+public class afp implements zo<acd> {
+   public static final zf<we, afp> a = zo.a(afp::a, afp::new);
+   private final int b;
 
-   @Override
-   public zn<afp> a() {
-      return agp.cl;
+   public afp(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(aca $$0) {
+   private afp(we $$0) {
+      this.b = $$0.readByte();
+   }
+
+   private void a(we $$0) {
+      $$0.l(this.b);
+   }
+
+   @Override
+   public zq<afp> a() {
+      return ags.aI;
+   }
+
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public cvs e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

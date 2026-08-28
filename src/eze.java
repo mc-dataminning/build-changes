@@ -1,38 +1,21 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class eze extends ezf {
+   private final btz b;
 
-public final class eze implements ezi {
-   private final ezc a;
-   private final int b;
-   private final int c;
+   public eze(btz $$0) {
+      this($$0, $$0.dv());
+   }
 
-   eze(int $$0, int $$1) {
-      this.a = new ezc((int)ezn.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   public eze(btz $$0, ezh $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public btz a() {
+      return this.b;
    }
 
    @Override
-   public boolean a(ezi.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public ezf.a d() {
+      return ezf.a.c;
    }
 }

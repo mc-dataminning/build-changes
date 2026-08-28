@@ -1,40 +1,37 @@
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Objects;
 
-public class vb implements vd {
-   private static final int b = 36;
-   public static final vf<vb> a = new vf.b<vb>() {
-      public vb a(DataInput $$0, up $$1) throws IOException {
+public class vb extends uz {
+   private static final int b = 10;
+   public static final vi<vb> a = new vi.a<vb>() {
+      public vb a(DataInput $$0, us $$1) throws IOException {
          return vb.a(d($$0, $$1));
       }
 
       @Override
-      public va.b a(DataInput $$0, va $$1, up $$2) throws IOException {
+      public vd.b a(DataInput $$0, vd $$1, us $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static String d(DataInput $$0, up $$1) throws IOException {
-         $$1.b(36L);
-         String $$2 = $$0.readUTF();
-         $$1.a(2L, (long)$$2.length());
-         return $$2;
+      private static short d(DataInput $$0, us $$1) throws IOException {
+         $$1.b(10L);
+         return $$0.readShort();
       }
 
       @Override
-      public void b(DataInput $$0, up $$1) throws IOException {
-         vb.a($$0);
+      public int c() {
+         return 2;
       }
 
       @Override
       public String a() {
-         return "STRING";
+         return "SHORT";
       }
 
       @Override
       public String b() {
-         return "TAG_String";
+         return "TAG_Short";
       }
 
       @Override
@@ -42,49 +39,34 @@ public class vb implements vd {
          return true;
       }
    };
-   private static final vb c = new vb("");
-   private static final char w = '"';
-   private static final char x = '\'';
-   private static final char y = '\\';
-   private static final char z = '\u0000';
-   private final String A;
+   private final short c;
 
-   public static void a(DataInput $$0) throws IOException {
-      $$0.skipBytes($$0.readUnsignedShort());
+   vb(short $$0) {
+      this.c = $$0;
    }
 
-   private vb(String $$0) {
-      Objects.requireNonNull($$0, "Null string not allowed");
-      this.A = $$0;
-   }
-
-   public static vb a(String $$0) {
-      return $$0.isEmpty() ? c : new vb($$0);
+   public static vb a(short $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? vb.a.a[$$0 - -128] : new vb($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeUTF(this.A);
+      $$0.writeShort(this.c);
    }
 
    @Override
    public int a() {
-      return 36 + 2 * this.A.length();
+      return 10;
    }
 
    @Override
    public byte b() {
-      return 8;
+      return 2;
    }
 
    @Override
-   public vf<vb> c() {
+   public vi<vb> c() {
       return a;
-   }
-
-   @Override
-   public String toString() {
-      return vd.super.s_();
    }
 
    public vb e() {
@@ -93,56 +75,71 @@ public class vb implements vd {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof vb && Objects.equals(this.A, ((vb)$$0).A);
+      return this == $$0 ? true : $$0 instanceof vb && this.c == ((vb)$$0).c;
    }
 
    @Override
    public int hashCode() {
-      return this.A.hashCode();
+      return this.c;
    }
 
    @Override
-   public String s_() {
-      return this.A;
-   }
-
-   @Override
-   public void a(vh $$0) {
+   public void a(vk $$0) {
       $$0.a(this);
    }
 
-   public static String b(String $$0) {
-      StringBuilder $$1 = new StringBuilder(" ");
-      char $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
-         char $$4 = $$0.charAt($$3);
-         if ($$4 == '\\') {
-            $$1.append('\\');
-         } else if ($$4 == '"' || $$4 == '\'') {
-            if ($$2 == 0) {
-               $$2 = (char)($$4 == '"' ? 39 : 34);
-            }
-
-            if ($$2 == $$4) {
-               $$1.append('\\');
-            }
-         }
-
-         $$1.append($$4);
-      }
-
-      if ($$2 == 0) {
-         $$2 = '"';
-      }
-
-      $$1.setCharAt(0, $$2);
-      $$1.append($$2);
-      return $$1.toString();
+   @Override
+   public long f() {
+      return (long)this.c;
    }
 
    @Override
-   public va.b a(va $$0) {
-      return $$0.a(this.A);
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public short h() {
+      return this.c;
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(this.c & 255);
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.c;
+   }
+
+   @Override
+   public Number l() {
+      return this.c;
+   }
+
+   @Override
+   public vd.b a(vd $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final vb[] a = new vb[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new vb((short)(-128 + $$0));
+         }
+      }
    }
 }

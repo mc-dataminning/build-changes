@@ -1,44 +1,28 @@
-public class fxp extends fxo<gts> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final gaq d;
-   private final gaq e;
-   private final gaq f;
+public class fxp extends fxz<gva> {
+   private final gbb a;
 
-   public fxp(gaq $$0) {
+   public fxp(gbb $$0) {
       super($$0);
-      this.d = $$0.b("base");
-      this.e = this.d.b("upper_jaw");
-      this.f = this.d.b("lower_jaw");
+      this.a = $$0.b("tail_fin");
    }
 
-   public static gaw a() {
-      gay $$0 = new gay();
-      gba $$1 = $$0.a();
-      gba $$2 = $$1.a("base", gav.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gas.a(-5.0F, 24.0F, -5.0F));
-      gav $$3 = gav.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, gas.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, gas.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return gaw.a($$0, 64, 32);
+   public static gbh a() {
+      gbj $$0 = new gbj();
+      gbl $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gbg.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), gbd.a(0.0F, 22.0F, 0.0F));
+      $$1.a("head", gbg.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), gbd.a(0.0F, 22.0F, 0.0F));
+      $$1.a("nose", gbg.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), gbd.a(0.0F, 22.0F, -3.0F));
+      $$1.a("right_fin", gbg.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gbd.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", gbg.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gbd.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      $$1.a("tail_fin", gbg.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), gbd.a(0.0F, 22.0F, 7.0F));
+      $$1.a("top_fin", gbg.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), gbd.a(0.0F, 20.0F, 0.0F));
+      return gbh.a($$0, 32, 32);
    }
 
-   public void a(gts $$0) {
+   public void a(gva $$0) {
       super.a($$0);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.d.c = this.d.c - ($$1 + azf.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
-      }
-
-      this.v.c = 24.0F - 20.0F * $$3;
-      this.v.h = $$3;
-      this.v.i = $$3;
-      this.v.j = $$3;
+      float $$1 = $$0.af ? 1.0F : 1.5F;
+      this.a.f = -$$1 * 0.45F * azj.a(0.6F * $$0.p);
    }
 }

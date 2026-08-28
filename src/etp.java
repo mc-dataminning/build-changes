@@ -1,146 +1,67 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class etp {
-   public static final Codec<etp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               etz.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               eww.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               evb.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               ext.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               ext.a.fieldOf("bonus_rolls").orElse(exp.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, etp::new)
-   );
-   private final List<eub> b;
-   private final List<eww> c;
-   private final Predicate<etl> d;
-   private final List<euz> e;
-   private final BiFunction<cvs, etl, cvs> f;
-   private final exs g;
-   private final exs h;
+public interface etp extends etr {
+   @Override
+   String e();
 
-   etp(List<eub> $$0, List<eww> $$1, List<euz> $$2, exs $$3, exs $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ad.a($$1);
-      this.e = $$2;
-      this.f = evb.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(p $$0, dex $$1) {
+      etr.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   private void b(Consumer<cvs> $$0, etl $$1) {
-      azn $$2 = $$1.b();
-      List<eua> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   int f();
 
-      for (eub $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
+   void a(int var1);
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
+   int t();
 
-            for (eua $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
-         }
-      }
-   }
+   void d(int var1);
 
-   public void a(Consumer<cvs> $$0, etl $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cvs> $$2 = euz.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + azf.d(this.h.b($$1) * $$1.c());
+   int u();
 
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
-   }
+   void e(int var1);
 
-   public void a(etr $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
+   @Nullable
+   UUID v();
 
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
+   void a(UUID var1);
 
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
+   des k();
 
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
+   void a(dwu.c var1);
 
-   public static etp.a a() {
-      return new etp.a();
-   }
+   dwu.c p();
 
-   public static class a implements euv<etp.a>, ewo<etp.a> {
-      private final Builder<eub> a = ImmutableList.builder();
-      private final Builder<eww> b = ImmutableList.builder();
-      private final Builder<euz> c = ImmutableList.builder();
-      private exs d = exp.a(1.0F);
-      private exs e = exp.a(0.0F);
+   boolean n();
 
-      public etp.a a(exs $$0) {
-         this.d = $$0;
-         return this;
-      }
+   void c(boolean var1);
 
-      public etp.a a() {
-         return this;
-      }
+   boolean m();
 
-      public etp.a b(exs $$0) {
-         this.e = $$0;
-         return this;
-      }
+   void a(des var1);
 
-      public etp.a a(eub.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   eyu<MinecraftServer> s();
 
-      public etp.a a(eww.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
+   void a(long var1);
 
-      public etp.a a(euz.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public etp b() {
-         return new etp(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
-   }
+   void b(long var1);
 }

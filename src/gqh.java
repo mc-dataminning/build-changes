@@ -1,18 +1,30 @@
-public class gqh extends gmf<cih, gtr, fwf<gtr>> {
-   private static final ale a = ale.b("textures/entity/horse/horse_zombie.png");
-   private static final ale b = ale.b("textures/entity/horse/horse_skeleton.png");
-   private final ale k;
+public class gqh<T extends chl> extends gmu<T, gwa, gac> {
+   private static final alh a = alh.b("textures/entity/squid/squid.png");
 
-   public gqh(gno.a $$0, gao $$1, gao $$2, boolean $$3) {
-      super($$0, new fxz($$0.a($$1)), new fxz($$0.a($$2)), 1.0F);
-      this.k = $$3 ? b : a;
+   public gqh(gnz.a $$0, gac $$1, gac $$2) {
+      super($$0, $$1, $$2, 0.7F);
    }
 
-   public ale a(gtr $$0) {
-      return this.k;
+   public alh a(gwa $$0) {
+      return a;
    }
 
-   public gtr c() {
-      return new gtr();
+   public gwa c() {
+      return new gwa();
+   }
+
+   public void a(T $$0, gwa $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = azj.h($$2, $$0.cf, $$0.ce);
+      $$1.b = azj.h($$2, $$0.bZ, $$0.bY);
+      $$1.c = azj.h($$2, $$0.cb, $$0.ca);
+   }
+
+   protected void a(gwa $$0, fdt $$1, float $$2, float $$3) {
+      $$1.a(0.0F, $$0.ae ? 0.25F : 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      $$1.a(a.b.rotationDegrees($$0.b));
+      $$1.a(a.d.rotationDegrees($$0.c));
+      $$1.a(0.0F, $$0.ae ? -0.6F : -1.2F, 0.0F);
    }
 }

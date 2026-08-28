@@ -1,61 +1,75 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.List;
 
-public final class cnp {
-   public static final cnp a = a("desert");
-   public static final cnp b = a("jungle");
-   public static final cnp c = a("plains");
-   public static final cnp d = a("savanna");
-   public static final cnp e = a("snow");
-   public static final cnp f = a("swamp");
-   public static final cnp g = a("taiga");
-   private final String h;
-   private static final Map<ald<dfk>, cnp> i = ad.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dfr.A, a);
-      $$0.put(dfr.f, a);
-      $$0.put(dfr.B, a);
-      $$0.put(dfr.C, a);
-      $$0.put(dfr.z, b);
-      $$0.put(dfr.x, b);
-      $$0.put(dfr.y, b);
-      $$0.put(dfr.s, d);
-      $$0.put(dfr.r, d);
-      $$0.put(dfr.w, d);
-      $$0.put(dfr.X, e);
-      $$0.put(dfr.W, e);
-      $$0.put(dfr.L, e);
-      $$0.put(dfr.e, e);
-      $$0.put(dfr.N, e);
-      $$0.put(dfr.q, e);
-      $$0.put(dfr.d, e);
-      $$0.put(dfr.F, e);
-      $$0.put(dfr.G, e);
-      $$0.put(dfr.H, e);
-      $$0.put(dfr.I, e);
-      $$0.put(dfr.g, f);
-      $$0.put(dfr.h, f);
-      $$0.put(dfr.o, g);
-      $$0.put(dfr.n, g);
-      $$0.put(dfr.u, g);
-      $$0.put(dfr.t, g);
-      $$0.put(dfr.p, g);
-      $$0.put(dfr.v, g);
-   });
-
-   private cnp(String $$0) {
-      this.h = $$0;
-   }
+public class cnp implements deh {
+   private static final int a = 1200;
+   private int b;
 
    @Override
-   public String toString() {
-      return this.h;
+   public int a(arm $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.ac().b(der.e)) {
+         this.b--;
+         if (this.b > 0) {
+            return 0;
+         } else {
+            this.b = 1200;
+            coh $$3 = $$0.j();
+            if ($$3 == null) {
+               return 0;
+            } else {
+               azr $$4 = $$0.A;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               jg $$7 = $$3.dx().b($$5, 0, $$6);
+               int $$8 = 10;
+               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  return 0;
+               } else {
+                  if (bvr.a(bug.p, $$0, $$7)) {
+                     if ($$0.a($$7, 2)) {
+                        return this.a($$0, $$7);
+                     }
+
+                     if ($$0.a().a($$7, axl.n).b()) {
+                        return this.b($$0, $$7);
+                     }
+                  }
+
+                  return 0;
+               }
+            }
+         }
+      } else {
+         return 0;
+      }
    }
 
-   private static cnp a(String $$0) {
-      return kb.a(lv.w, ale.b($$0), new cnp($$0));
+   private int a(arm $$0, jg $$1) {
+      int $$2 = 48;
+      if ($$0.y().a($$0x -> $$0x.a(cgd.n), $$1, 48, cfz.b.b) > 4L) {
+         List<cgp> $$3 = $$0.a(cgp.class, new ezc($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            return this.a($$1, $$0);
+         }
+      }
+
+      return 0;
    }
 
-   public static cnp a(jo<dfk> $$0) {
-      return $$0.e().map(i::get).orElse(c);
+   private int b(arm $$0, jg $$1) {
+      int $$2 = 16;
+      List<cgp> $$3 = $$0.a(cgp.class, new ezc($$1).c(16.0, 8.0, 16.0));
+      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
+   }
+
+   private int a(jg $$0, arm $$1) {
+      cgp $$2 = bug.p.a($$1, buf.a);
+      if ($$2 == null) {
+         return 0;
+      } else {
+         $$2.a($$1, $$1.d_($$0), buf.a, null);
+         $$2.a($$0, 0.0F, 0.0F);
+         $$1.a_($$2);
+         return 1;
+      }
    }
 }

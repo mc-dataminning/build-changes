@@ -1,43 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dqr extends dpz implements doo {
-   public static final MapCodec<dqr> a = b(dqr::new);
-   public static final dvj c = dvi.C;
+public class dqr extends dlm {
+   public static final MapCodec<dqr> c = b(dqr::new);
+   public static final fab g = dhy.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
 
    @Override
-   protected MapCodec<? extends dqr> a() {
-      return a;
+   public MapCodec<dqr> a() {
+      return c;
    }
 
-   protected dqr(dur.d $$0) {
-      super($$0);
-      this.l(this.n().b(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dus a(czn $$0) {
-      eqt $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).b(c, Boolean.valueOf($$1.b(equ.c)));
+   public dqr(dvc.d $$0) {
+      super($$0, jl.b, g, false, 0.1);
    }
 
    @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, equ.c, equ.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected int a(azr $$0) {
+      return dnd.a($$0);
    }
 
    @Override
-   protected eqt b_(dus $$0) {
-      return $$0.c(c) ? equ.c.a(true) : super.b_($$0);
+   protected dhy b() {
+      return dia.oC;
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(c);
+   protected boolean h(dvd $$0) {
+      return dnd.a($$0);
    }
 }

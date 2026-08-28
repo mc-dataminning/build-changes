@@ -1,22 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmp extends dpe {
+public class dmp extends dlt {
    public static final MapCodec<dmp> a = b(dmp::new);
+   private static final xh b = xh.c("container.loom");
 
    @Override
    public MapCodec<dmp> a() {
       return a;
    }
 
-   public dmp(dur.d $$0) {
+   protected dmp(dvc.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(lo.Z, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+   protected bry a(dvd $$0, dev $$1, jg $$2, coh $$3, ezd $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awu.ax);
       }
+
+      return bry.a;
+   }
+
+   @Override
+   protected bsa b(dvd $$0, dev $$1, jg $$2) {
+      return new bsg(($$2x, $$3, $$4) -> new csq($$2x, $$3, crw.a($$1, $$2)), b);
+   }
+
+   @Override
+   public dvd a(czm $$0) {
+      return this.m().b(aF, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(aF);
    }
 }

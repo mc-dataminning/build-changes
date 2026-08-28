@@ -1,35 +1,36 @@
-public record aav(aav.a c) implements aao {
-   public static final zc<wb, aav> a = aao.a(aav::a, aav::new);
-   public static final aao.b<aav> b = aao.a("debug/hive");
+public record aav(jg c, int d, String e, int f) implements aar {
+   public static final zf<we, aav> a = aar.a(aav::a, aav::new);
+   public static final aar.b<aav> b = aar.a("debug/game_test_add_marker");
 
-   private aav(wb $$0) {
-      this(new aav.a($$0));
+   private aav(we $$0) {
+      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
    }
 
-   private void a(wb $$0) {
-      this.c.a($$0);
+   private void a(we $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
+      $$0.q(this.f);
    }
 
    @Override
-   public aao.b<aav> a() {
+   public aar.b<aav> a() {
       return b;
    }
 
-   public aav.a b() {
+   public jg b() {
       return this.c;
    }
 
-   public static record a(jf a, String b, int c, int d, boolean e) {
-      public a(wb $$0) {
-         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
+   public int c() {
+      return this.d;
+   }
 
-      public void a(wb $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.q(this.c);
-         $$0.q(this.d);
-         $$0.a(this.e);
-      }
+   public String d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
    }
 }

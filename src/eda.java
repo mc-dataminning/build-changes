@@ -1,45 +1,31 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class eda extends edu<efr> {
-   public eda(Codec<efr> $$0) {
-      super($$0);
+public class eda extends ebw {
+   private final kd a;
+   private final ebd b;
+   private final ebn c;
+   private final ebq.o d;
+
+   public eda(ebc $$0, kd $$1, dex $$2, ebd $$3, ebn $$4, ebq.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public boolean a(edw<efr> $$0) {
-      jf $$1 = $$0.e();
-      dfg $$2 = $$0.b();
-      azn $$3 = $$0.d();
+   @Deprecated
+   public Optional<dvd> a(Function<jg, jp<dfw>> $$0, dwz $$1, jg $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
 
-      efr $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.H_() + 3; $$1 = $$1.e()) {
-         if (!$$2.u($$1.e())) {
-            dus $$5 = $$2.a_($$1.e());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
+   @Deprecated
+   public kd c() {
+      return this.a;
+   }
 
-      if ($$1.v() <= $$2.H_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (jf $$11 : jf.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
-
-         return true;
-      }
+   public ebn d() {
+      return this.c;
    }
 }

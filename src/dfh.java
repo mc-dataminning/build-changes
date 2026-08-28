@@ -1,23 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public final class dfh implements dww {
+   private final int a;
+   private final dvd[] b;
 
-public class dfh {
-   public static final Codec<dfh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awf.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dfh::new)
-   );
-   private final jo<awf> b;
-   private final double c;
-
-   public dfh(jo<awf> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dfh(int $$0, dvd[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public jo<awf> a() {
-      return this.b;
+   @Override
+   public dvd a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dia.a.m();
    }
 
-   public double b() {
-      return this.c;
+   @Override
+   public void a(int $$0, dvd $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
+      }
    }
 }

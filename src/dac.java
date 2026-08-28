@@ -1,49 +1,76 @@
-public class dac extends dab {
-   public dac(czy $$0) {
+import java.util.ArrayList;
+import java.util.List;
+
+public class dac extends daa {
+   private static final daf a = daf.a(cwb.qP);
+   private static final daf b = daf.a(cwb.pv);
+   private static final daf c = daf.a(cwb.ux);
+
+   public dac(czx $$0) {
       super($$0);
    }
 
-   public boolean a(czz $$0, dej $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-            cvs $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(axe.bu)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(cvw.a)) {
-                     return false;
-                  }
+   public boolean a(czy $$0, dev $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvx $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
+
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
             }
          }
-
-         return true;
       }
+
+      return $$2 && $$3 >= 1;
    }
 
-   public cvs a(czz $$0, jq.a $$1) {
-      dtb $$2 = new dtb($$0.a(1).h(), $$0.a(3).h(), $$0.a(5).h(), $$0.a(7).h());
-      return dsl.a($$2);
+   public cvx a(czy $$0, jr.a $$1) {
+      List<cyk> $$2 = new ArrayList<>();
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvx $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (b.a($$5)) {
+               $$3++;
+            } else if (c.a($$5)) {
+               cyk $$6 = $$5.a(kt.ad);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
+         }
+      }
+
+      cvx $$7 = new cvx(cwb.uw, 3);
+      $$7.b(kt.ae, new cyl($$3, $$2));
+      return $$7;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public dap<?> ar_() {
-      return dap.v;
+   public cvx a(jr.a $$0) {
+      return new cvx(cwb.uw);
+   }
+
+   @Override
+   public dao<?> ar_() {
+      return dao.g;
    }
 }

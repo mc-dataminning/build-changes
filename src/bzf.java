@@ -1,34 +1,29 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzf {
-   public static bwg<bun> a(dhm $$0) {
-      return bzs.a(
-         (Function<bzs.b<bun>, ? extends App<bzs.c<bun>, bzv<bun>>>)($$1 -> $$1.group($$1.c(cdq.o), $$1.b(cdq.m), $$1.b(cdq.Y))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.bi() && $$3x.aH()) {
-                        jf $$5 = $$3x.ds().e();
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
 
-                        for (jk $$6 : jk.c.a) {
-                           jf $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).g($$2x, $$7).a(jk.b).c() && $$2x.b_($$7).b(equ.c)) {
-                              jf $$8 = $$7.d();
-                              if ($$2x.a_($$8).l()) {
-                                 dus $$9 = $$0.n();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(dzp.i, $$8, dzp.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, awg.jQ, awh.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
-                        }
-
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
+   public static bxz<bvd> a(cdz<jo> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return cab.a(
+         (Function<cab.b<bvd>, ? extends App<cab.c<bvd>, cae<bvd>>>)($$4 -> $$4.group($$4.a(cdz.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  jo $$9 = $$4.b($$5);
+                  if ($$6.ag() != $$9.a() || !$$9.b().a($$7.dv(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<ezh> $$10 = Optional.ofNullable(cft.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new cec($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
       );
    }
 }

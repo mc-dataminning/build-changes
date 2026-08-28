@@ -1,25 +1,29 @@
-public record aid(int b, int c) implements zl<agr> {
-   public static final zc<wb, aid> a = zl.a(aid::a, aid::new);
+public class aid implements zo<agu> {
+   public static final zf<we, aid> a = zo.a(aid::a, aid::new);
+   private final alh b;
 
-   private aid(wb $$0) {
-      this($$0.l(), $$0.l());
+   public aid(dal<?> $$0) {
+      this.b = $$0.a();
    }
 
-   private void a(wb $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private aid(we $$0) {
+      this.b = $$0.q();
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<aid> a() {
-      return agp.bi;
+   public zq<aid> a() {
+      return ags.bR;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
+   public alh b() {
+      return this.b;
    }
 }

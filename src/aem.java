@@ -1,36 +1,38 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Set;
 
-public class aem implements zl<aca> {
-   public static final zc<wb, aem> a = zl.a(aem::a, aem::new);
-   private final IntList b;
+public record aem(int b, ezh c, ezh d, float e, float f, Set<bvj> g) implements zo<acd> {
+   public static final zf<we, aem> a = zf.a(zd.h, aem::b, ezh.b, aem::e, ezh.b, aem::f, zd.d, aem::g, zd.d, aem::h, bvj.m, aem::i, aem::new);
 
-   public aem(IntList $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   public aem(int... $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   private aem(wb $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(wb $$0) {
-      $$0.a(this.b);
+   public static aem a(int $$0, bvi $$1, Set<bvj> $$2) {
+      return new aem($$0, $$1.a(), $$1.b(), $$1.c(), $$1.d(), $$2);
    }
 
    @Override
-   public zn<aem> a() {
-      return agp.ak;
+   public zq<aem> a() {
+      return ags.ai;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
-      return this.b;
+   public ezh e() {
+      return this.c;
+   }
+
+   public ezh f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public Set<bvj> i() {
+      return this.g;
    }
 }

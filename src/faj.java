@@ -1,132 +1,81 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class faj<T> implements fap<T>, far<T> {
-   private final Queue<fao<T>> a = new PriorityQueue<>(fao.a);
+public class faj implements fai {
+   private static final String a = "Score";
+   private static final String b = "Locked";
+   private static final String c = "display";
+   private static final String d = "format";
+   private int e;
+   private boolean f = true;
    @Nullable
-   private List<fan<T>> b;
-   private final Set<fao<?>> c = new ObjectOpenCustomHashSet(fao.c);
+   private xh g;
    @Nullable
-   private BiConsumer<faj<T>, fao<T>> d;
-
-   public faj() {
-   }
-
-   public faj(List<fan<T>> $$0) {
-      this.b = $$0;
-
-      for (fan<T> $$1 : $$0) {
-         this.c.add(fao.a($$1.a(), $$1.b()));
-      }
-   }
-
-   public void a(@Nullable BiConsumer<faj<T>, fao<T>> $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   public fao<T> b() {
-      return this.a.peek();
-   }
-
-   @Nullable
-   public fao<T> c() {
-      fao<T> $$0 = this.a.poll();
-      if ($$0 != null) {
-         this.c.remove($$0);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(fao<T> $$0) {
-      if (this.c.add($$0)) {
-         this.b($$0);
-      }
-   }
-
-   private void b(fao<T> $$0) {
-      this.a.add($$0);
-      if (this.d != null) {
-         this.d.accept(this, $$0);
-      }
-   }
-
-   @Override
-   public boolean a(jf $$0, T $$1) {
-      return this.c.contains(fao.a($$1, $$0));
-   }
-
-   public void a(Predicate<fao<T>> $$0) {
-      Iterator<fao<T>> $$1 = this.a.iterator();
-
-      while ($$1.hasNext()) {
-         fao<T> $$2 = $$1.next();
-         if ($$0.test($$2)) {
-            $$1.remove();
-            this.c.remove($$2);
-         }
-      }
-   }
-
-   public Stream<fao<T>> d() {
-      return this.a.stream();
-   }
+   private yx h;
 
    @Override
    public int a() {
-      return this.a.size() + (this.b != null ? this.b.size() : 0);
+      return this.e;
+   }
+
+   public void a(int $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public List<fan<T>> a(long $$0) {
-      List<fan<T>> $$1 = new ArrayList<>(this.a.size());
-      if (this.b != null) {
-         $$1.addAll(this.b);
+   public boolean b() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
+
+   @Nullable
+   public xh d() {
+      return this.g;
+   }
+
+   public void a(@Nullable xh $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
+   @Override
+   public yx c() {
+      return this.h;
+   }
+
+   public void b(@Nullable yx $$0) {
+      this.h = $$0;
+   }
+
+   public uj a(jr.a $$0) {
+      uj $$1 = new uj();
+      $$1.a("Score", this.e);
+      $$1.a("Locked", this.f);
+      if (this.g != null) {
+         $$1.a("display", xh.a.a(this.g, $$0));
       }
 
-      for (fao<T> $$2 : this.a) {
-         $$1.add($$2.a($$0));
+      if (this.h != null) {
+         yz.b.encodeStart($$0.a(ux.a), this.h).ifSuccess($$1x -> $$1.a("format", $$1x));
       }
 
       return $$1;
    }
 
-   public um a(long $$0, Function<T, String> $$1) {
-      um $$2 = new um();
+   public static faj a(uj $$0, jr.a $$1) {
+      faj $$2 = new faj();
+      $$2.e = $$0.h("Score");
+      $$2.f = $$0.q("Locked");
+      if ($$0.b("display", 8)) {
+         $$2.g = xh.a.a($$0.l("display"), $$1);
+      }
 
-      for (fan<T> $$4 : this.a($$0)) {
-         $$2.add($$4.a($$1));
+      if ($$0.b("format", 10)) {
+         yz.b.parse($$1.a(ux.a), $$0.c("format")).ifSuccess($$1x -> $$2.h = $$1x);
       }
 
       return $$2;
-   }
-
-   public void b(long $$0) {
-      if (this.b != null) {
-         int $$1 = -this.b.size();
-
-         for (fan<T> $$2 : this.b) {
-            this.b($$2.a($$0, (long)($$1++)));
-         }
-      }
-
-      this.b = null;
-   }
-
-   public static <T> faj<T> a(um $$0, Function<String, Optional<T>> $$1, ddp $$2) {
-      return new faj<>(fan.a($$0, $$1, $$2));
    }
 }

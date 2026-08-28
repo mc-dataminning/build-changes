@@ -1,110 +1,63 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class gzv implements gzi {
-   private final List<Pair<Predicate<dus>, gzi>> g;
-   protected final boolean a;
-   protected final boolean b;
-   protected final boolean c;
-   protected final gxg d;
-   protected final gjd e;
-   protected final gjb f;
-   private final Map<dus, BitSet> h = new Reference2ObjectOpenHashMap();
+public enum gzv implements haj {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public gzv(List<Pair<Predicate<dus>, gzi>> $$0) {
-      this.g = $$0;
-      gzi $$1 = (gzi)$$0.iterator().next().getRight();
-      this.a = $$1.a();
-      this.b = $$1.b();
-      this.c = $$1.c();
-      this.d = $$1.e();
-      this.e = $$1.f();
-      this.f = $$1.g();
+   private static final int q = 360;
+   private static final Map<Integer, gzv> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (gzv)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   @Override
-   public List<gir> a(@Nullable dus $$0, @Nullable jk $$1, azn $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.h.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
+   private gzv(final int $$0, final int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
 
-            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
-               Pair<Predicate<dus>, gzi> $$5 = this.g.get($$4);
-               if (((Predicate)$$5.getLeft()).test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.h.put($$0, $$3);
-         }
-
-         List<gir> $$6 = Lists.newArrayList();
-         long $$7 = $$2.g();
-
-         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
-            if ($$3.get($$8)) {
-               $$6.addAll(((gzi)this.g.get($$8).getRight()).a($$0, $$1, azn.a($$7)));
-            }
-         }
-
-         return $$6;
-      }
-   }
-
-   @Override
-   public boolean a() {
-      return this.a;
-   }
-
-   @Override
-   public boolean b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public gxg e() {
-      return this.d;
-   }
-
-   @Override
-   public gjd f() {
-      return this.e;
-   }
-
-   @Override
-   public gjb g() {
-      return this.f;
-   }
-
-   public static class a {
-      private final List<Pair<Predicate<dus>, gzi>> a = Lists.newArrayList();
-
-      public void a(Predicate<dus> $$0, gzi $$1) {
-         this.a.add(Pair.of($$0, $$1));
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
 
-      public gzi a() {
-         return new gzv(this.a);
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
       }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
+   }
+
+   @Override
+   public j b() {
+      return this.s;
+   }
+
+   public static gzv a(int $$0, int $$1) {
+      return r.get(b(azj.b($$0, 360), azj.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

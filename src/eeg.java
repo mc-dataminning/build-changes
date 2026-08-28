@@ -1,89 +1,80 @@
-import com.mojang.serialization.Codec;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class eeg extends edu<egf> {
-   public eeg(Codec<egf> $$0) {
-      super($$0);
+public class eeg {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<arm, eeg.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<arm, eeg.b>() {
+         public eeg.b a(arm $$0) {
+            return new eeg.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
+         }
+      });
+
+   public static void a(arm $$0) {
+      try {
+         ((eeg.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
+      }
    }
 
-   @Override
-   public boolean a(edw<egf> $$0) {
-      jf $$1 = $$0.e();
-      azn $$2 = $$0.d();
-      dfg $$3 = $$0.b();
-
-      while ($$3.u($$1) && $$1.v() > $$3.H_() + 2) {
-         $$1 = $$1.e();
+   public static void a(arm $$0, edr<?, ?> $$1, Optional<ekv> $$2) {
+      try {
+         ((eeg.b)b.get($$0)).a().computeInt(new eeg.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
       }
+   }
 
-      if (!$$3.a_($$1).a(dho.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
 
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = azf.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)azf.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)azf.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dus $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.l() || b($$13) || $$13.a(dho.dP) || $$13.a(dho.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dho.iC.n());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.l() || b($$13) || $$13.a(dho.dP) || $$13.a(dho.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dho.iC.n());
-                        }
-                     }
-                  }
-               }
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ag().a().toString();
+               boolean $$3 = $$0.o().x();
+               kc<ekv> $$4 = $$0.H_().e(ly.aR);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::d).<alh>map(alg::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
             }
-         }
+         );
+   }
 
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
+   static record a(edr<?, ?> a, Optional<ekv> b) {
+   }
 
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               jf $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dus $$19 = $$3.a_($$17);
-                  if (!$$19.l() && !b($$19) && !$$19.a(dho.dP) && !$$19.a(dho.dO) && !$$19.a(dho.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dho.iC.n());
-                  $$17 = $$17.e();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
-      }
+   static record b(Object2IntMap<eeg.a> a, MutableInt b) {
    }
 }

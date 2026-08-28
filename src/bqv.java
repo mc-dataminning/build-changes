@@ -1,26 +1,52 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bqv implements bra {
-   private static final Codec<Either<Float, bqv>> a = Codec.either(Codec.FLOAT, lv.J.q().dispatch(bqv::c, bqw::codec));
-   public static final Codec<bqv> c = a.xmap(
-      $$0 -> (bqv)$$0.map(bqt::a, $$0x -> $$0x), $$0 -> $$0.c() == bqw.a ? Either.left(((bqt)$$0).d()) : Either.right($$0)
-   );
+public class bqv extends brd {
+   public static final MapCodec<bqv> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bqv::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   public static Codec<bqv> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+   private bqv(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   public abstract float a();
+   public static bqv a(int $$0, int $$1) {
+      return new bqv($$0, $$1);
+   }
 
-   public abstract float b();
+   @Override
+   public int a(azr $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
+   }
 
-   public abstract bqw<?> c();
+   @Override
+   public int a() {
+      return this.b;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bre<?> c() {
+      return bre.c;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
+   }
 }

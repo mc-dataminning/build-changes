@@ -1,78 +1,85 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cbj extends cbx {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final cgu b;
+   private final int c;
+   private boolean d;
 
-public class cbj extends cbk {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final cgd d;
-   @Nullable
-   private cgd e;
-   private final double f;
-   private int g;
-
-   public cbj(cgd $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public cbj(cgu $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
    }
 
    @Override
    public boolean b() {
-      if (this.d.g() >= 0) {
+      if (this.b.ea().a(this.c) != 0) {
          return false;
       } else {
-         List<? extends cgd> $$0 = this.d.dS().a((Class<? extends cgd>)this.d.getClass(), this.d.cO().c(8.0, 4.0, 8.0));
-         cgd $$1 = null;
-         double $$2 = Double.MAX_VALUE;
+         jl $$0 = this.b.cQ();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         jg $$3 = this.b.dx();
 
-         for (cgd $$3 : $$0) {
-            if ($$3.g() >= 0) {
-               double $$4 = this.d.g($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
+               return false;
             }
          }
 
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
+         return true;
       }
+   }
+
+   private boolean a(jg $$0, int $$1, int $$2, int $$3) {
+      jg $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dX().b_($$4).a(axf.a) && !this.b.dX().a_($$4).d();
+   }
+
+   private boolean b(jg $$0, int $$1, int $$2, int $$3) {
+      return this.b.dX().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dX().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
    }
 
    @Override
    public boolean c() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else if (!this.e.bI()) {
-         return false;
-      } else {
-         double $$0 = this.d.g(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
+      double $$0 = this.b.dA().e;
+      return (!($$0 * $$0 < 0.03F) || this.b.dP() == 0.0F || !(Math.abs(this.b.dP()) < 10.0F) || !this.b.bk()) && !this.b.aJ();
+   }
+
+   @Override
+   public boolean U_() {
+      return false;
    }
 
    @Override
    public void d() {
-      this.g = 0;
+      jl $$0 = this.b.cQ();
+      this.b.h(this.b.dA().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.P().o();
    }
 
    @Override
    public void e() {
-      this.e = null;
+      this.b.w(0.0F);
    }
 
    @Override
    public void a() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.P().a(this.e, this.f);
+      boolean $$0 = this.d;
+      if (!$$0) {
+         ere $$1 = this.b.dX().b_(this.b.dx());
+         this.d = $$1.a(axf.a);
+      }
+
+      if (this.d && !$$0) {
+         this.b.a(awk.hc, 1.0F, 1.0F);
+      }
+
+      ezh $$2 = this.b.dA();
+      if ($$2.e * $$2.e < 0.03F && this.b.dP() != 0.0F) {
+         this.b.w(azj.i(0.2F, this.b.dP(), 0.0F));
+      } else if ($$2.g() > 1.0E-5F) {
+         double $$3 = $$2.i();
+         double $$4 = Math.atan2(-$$2.e, $$3) * 180.0F / (float)Math.PI;
+         this.b.w((float)$$4);
       }
    }
 }

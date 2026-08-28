@@ -1,62 +1,71 @@
-public class czo extends czn {
-   private final jk b;
+import javax.annotation.Nullable;
 
-   public czo(dej $$0, jf $$1, jk $$2, cvs $$3, jk $$4) {
-      super($$0, null, brr.a, $$3, new eys(eyw.c($$1), $$4, $$1, false));
+public class czo {
+   @Nullable
+   private final coh a;
+   private final brx b;
+   private final ezd c;
+   private final dev d;
+   private final cvx e;
+
+   public czo(coh $$0, brx $$1, ezd $$2) {
+      this($$0.dX(), $$0, $$1, $$0.b($$1), $$2);
+   }
+
+   protected czo(dev $$0, @Nullable coh $$1, brx $$2, cvx $$3, ezd $$4) {
+      this.a = $$1;
       this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   @Override
-   public jf a() {
-      return this.j().b();
+   protected final ezd j() {
+      return this.c;
    }
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
+   public jg a() {
+      return this.c.b();
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
+   public jl k() {
+      return this.c.c();
    }
 
-   @Override
-   public jk d() {
-      return jk.a;
+   public ezh l() {
+      return this.c.g();
    }
 
-   @Override
-   public jk[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jk[]{jk.a, jk.c, jk.f, jk.d, jk.e, jk.b};
-         case b:
-            return new jk[]{jk.a, jk.b, jk.c, jk.f, jk.d, jk.e};
-         case c:
-            return new jk[]{jk.a, jk.c, jk.f, jk.e, jk.b, jk.d};
-         case d:
-            return new jk[]{jk.a, jk.d, jk.f, jk.e, jk.b, jk.c};
-         case e:
-            return new jk[]{jk.a, jk.e, jk.d, jk.b, jk.c, jk.f};
-         case f:
-            return new jk[]{jk.a, jk.f, jk.d, jk.b, jk.c, jk.e};
-      }
+   public boolean m() {
+      return this.c.e();
    }
 
-   @Override
-   public jk g() {
-      return this.b.o() == jk.a.b ? jk.c : this.b;
+   public cvx n() {
+      return this.e;
    }
 
-   @Override
+   @Nullable
+   public coh o() {
+      return this.a;
+   }
+
+   public brx p() {
+      return this.b;
+   }
+
+   public dev q() {
+      return this.d;
+   }
+
+   public jl g() {
+      return this.a == null ? jl.c : this.a.cP();
+   }
+
    public boolean h() {
-      return false;
+      return this.a != null && this.a.ga();
    }
 
-   @Override
    public float i() {
-      return (float)(this.b.e() * 90);
+      return this.a == null ? 0.0F : this.a.dN();
    }
 }

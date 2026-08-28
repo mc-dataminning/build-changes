@@ -1,26 +1,84 @@
-import com.mojang.serialization.MapCodec;
+public abstract class elp extends elv {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public interface elp<S extends elg> {
-   elp<ena> a = a("buried_treasure", ena.d);
-   elp<enc> b = a("desert_pyramid", enc.d);
-   elp<ene> c = a("end_city", ene.d);
-   elp<enn> d = a("fortress", enn.e);
-   elp<eng> e = a("igloo", eng.d);
-   elp<enh> f = a("jigsaw", enh.i);
-   elp<enj> g = a("jungle_temple", enj.d);
-   elp<enl> h = a("mineshaft", enl.d);
-   elp<enp> i = a("nether_fossil", enp.d);
-   elp<enr> j = a("ocean_monument", enr.d);
-   elp<ent> k = a("ocean_ruin", ent.d);
-   elp<env> l = a("ruined_portal", env.d);
-   elp<enx> m = a("shipwreck", enx.d);
-   elp<enz> n = a("stronghold", enz.d);
-   elp<eob> o = a("swamp_hut", eob.d);
-   elp<eod> p = a("woodland_mansion", eod.d);
+   protected elp(emi $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, jl $$7) {
+      super($$0, 0, elv.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
+   }
 
-   MapCodec<S> codec();
+   protected elp(emi $$0, uj $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
+   }
 
-   private static <S extends elg> elp<S> a(String $$0, MapCodec<S> $$1) {
-      return kb.a(lv.R, $$0, () -> $$1);
+   @Override
+   protected void a(emh $$0, uj $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
+   }
+
+   protected boolean a(dew $$0, elj $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         jg.a $$5 = new jg.a();
+
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(eaz.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
+         }
+      }
+   }
+
+   protected boolean a(dew $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.an() + 1;
+         boolean $$3 = false;
+         jg.a $$4 = new jg.a();
+
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(eaz.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
+
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

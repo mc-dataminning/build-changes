@@ -1,13 +1,15 @@
+import java.util.UUID;
 import javax.annotation.Nullable;
 
 public interface bvc {
-   boolean f();
+   @Nullable
+   UUID ab_();
 
-   void a(cvs var1, @Nullable awh var2);
+   dem e();
 
-   default awf ac_() {
-      return awg.mR;
+   @Nullable
+   default buv T_() {
+      UUID $$0 = this.ab_();
+      return $$0 == null ? null : this.e().b($$0);
    }
-
-   boolean i();
 }

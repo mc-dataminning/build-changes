@@ -1,8 +1,29 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface avd {
+@FunctionalInterface
+public interface avd {
+   avd b = $$0 -> Optional.empty();
+
+   Optional<auy> getResource(alh var1);
+
+   default auy getResourceOrThrow(alh $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+   }
+
+   default InputStream open(alh $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
+   }
+
+   default BufferedReader openAsReader(alh $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
+   }
+
+   static avd fromMap(Map<alh, auy> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
+   }
 }

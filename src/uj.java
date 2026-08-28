@@ -1,131 +1,568 @@
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class uj extends uw {
-   private static final int c = 12;
-   public static final uj a = new uj(0.0F);
-   public static final vf<uj> b = new vf.a<uj>() {
-      public uj a(DataInput $$0, up $$1) throws IOException {
-         return uj.a(d($$0, $$1));
+public class uj implements vg {
+   public static final Codec<uj> a = Codec.PASSTHROUGH.comapFlatMap($$0 -> {
+      vg $$1 = (vg)$$0.convert(ux.a).getValue();
+      return $$1 instanceof uj $$2 ? DataResult.success($$2 == $$0.getValue() ? $$2.i() : $$2) : DataResult.error(() -> "Not a compound tag: " + $$1);
+   }, $$0 -> new Dynamic(ux.a, $$0.i()));
+   private static final int c = 48;
+   private static final int w = 32;
+   public static final vi<uj> b = new vi.b<uj>() {
+      public uj a(DataInput $$0, us $$1) throws IOException {
+         $$1.b();
+
+         uj var3;
+         try {
+            var3 = d($$0, $$1);
+         } finally {
+            $$1.c();
+         }
+
+         return var3;
+      }
+
+      private static uj d(DataInput $$0, us $$1) throws IOException {
+         $$1.b(48L);
+         Map<String, vg> $$2 = Maps.newHashMap();
+
+         byte $$3;
+         while (($$3 = $$0.readByte()) != 0) {
+            String $$4 = e($$0, $$1);
+            vg $$5 = uj.a(vj.a($$3), $$4, $$0, $$1);
+            if ($$2.put($$4, $$5) == null) {
+               $$1.b(36L);
+            }
+         }
+
+         return new uj($$2);
       }
 
       @Override
-      public va.b a(DataInput $$0, va $$1, up $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
+      public vd.b a(DataInput $$0, vd $$1, us $$2) throws IOException {
+         $$2.b();
+
+         vd.b var4;
+         try {
+            var4 = c($$0, $$1, $$2);
+         } finally {
+            $$2.c();
+         }
+
+         return var4;
       }
 
-      private static float d(DataInput $$0, up $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      private static vd.b c(DataInput $$0, vd $$1, us $$2) throws IOException {
+         $$2.b(48L);
+
+         byte $$3;
+         label35:
+         while (($$3 = $$0.readByte()) != 0) {
+            vi<?> $$4 = vj.a($$3);
+            switch ($$1.a($$4)) {
+               case d:
+                  return vd.b.c;
+               case c:
+                  ve.a($$0);
+                  $$4.b($$0, $$2);
+                  break label35;
+               case b:
+                  ve.a($$0);
+                  $$4.b($$0, $$2);
+                  break;
+               default:
+                  String $$5 = e($$0, $$2);
+                  switch ($$1.a($$4, $$5)) {
+                     case d:
+                        return vd.b.c;
+                     case c:
+                        $$4.b($$0, $$2);
+                        break label35;
+                     case b:
+                        $$4.b($$0, $$2);
+                        break;
+                     default:
+                        $$2.b(36L);
+                        switch ($$4.a($$0, $$1, $$2)) {
+                           case c:
+                              return vd.b.c;
+                           case b:
+                        }
+                  }
+            }
+         }
+
+         if ($$3 != 0) {
+            while (($$3 = $$0.readByte()) != 0) {
+               ve.a($$0);
+               vj.a($$3).b($$0, $$2);
+            }
+         }
+
+         return $$1.b();
+      }
+
+      private static String e(DataInput $$0, us $$1) throws IOException {
+         String $$2 = $$0.readUTF();
+         $$1.b(28L);
+         $$1.a(2L, (long)$$2.length());
+         return $$2;
       }
 
       @Override
-      public int c() {
-         return 4;
+      public void b(DataInput $$0, us $$1) throws IOException {
+         $$1.b();
+
+         byte $$2;
+         try {
+            while (($$2 = $$0.readByte()) != 0) {
+               ve.a($$0);
+               vj.a($$2).b($$0, $$1);
+            }
+         } finally {
+            $$1.c();
+         }
       }
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "COMPOUND";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
+         return "TAG_Compound";
       }
    };
-   private final float w;
+   private final Map<String, vg> x;
 
-   private uj(float $$0) {
-      this.w = $$0;
+   protected uj(Map<String, vg> $$0) {
+      this.x = $$0;
    }
 
-   public static uj a(float $$0) {
-      return $$0 == 0.0F ? a : new uj($$0);
+   public uj() {
+      this(Maps.newHashMap());
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+      for (String $$1 : this.x.keySet()) {
+         vg $$2 = this.x.get($$1);
+         a($$1, $$2, $$0);
+      }
+
+      $$0.writeByte(0);
    }
 
    @Override
    public int a() {
-      return 12;
+      int $$0 = 48;
+
+      for (Entry<String, vg> $$1 : this.x.entrySet()) {
+         $$0 += 28 + 2 * $$1.getKey().length();
+         $$0 += 36;
+         $$0 += $$1.getValue().a();
+      }
+
+      return $$0;
+   }
+
+   public Set<String> e() {
+      return this.x.keySet();
    }
 
    @Override
    public byte b() {
-      return 5;
+      return 10;
    }
 
    @Override
-   public vf<uj> c() {
+   public vi<uj> c() {
       return b;
    }
 
-   public uj e() {
-      return this;
+   public int f() {
+      return this.x.size();
+   }
+
+   @Nullable
+   public vg a(String $$0, vg $$1) {
+      return this.x.put($$0, $$1);
+   }
+
+   public void a(String $$0, byte $$1) {
+      this.x.put($$0, uh.a($$1));
+   }
+
+   public void a(String $$0, short $$1) {
+      this.x.put($$0, vb.a($$1));
+   }
+
+   public void a(String $$0, int $$1) {
+      this.x.put($$0, uo.a($$1));
+   }
+
+   public void a(String $$0, long $$1) {
+      this.x.put($$0, ur.a($$1));
+   }
+
+   public void a(String $$0, UUID $$1) {
+      this.x.put($$0, uy.a($$1));
+   }
+
+   public UUID a(String $$0) {
+      return uy.a(this.c($$0));
+   }
+
+   public boolean b(String $$0) {
+      vg $$1 = this.c($$0);
+      return $$1 != null && $$1.c() == un.a && ((un)$$1).g().length == 4;
+   }
+
+   public void a(String $$0, float $$1) {
+      this.x.put($$0, um.a($$1));
+   }
+
+   public void a(String $$0, double $$1) {
+      this.x.put($$0, uk.a($$1));
+   }
+
+   public void a(String $$0, String $$1) {
+      this.x.put($$0, ve.a($$1));
+   }
+
+   public void a(String $$0, byte[] $$1) {
+      this.x.put($$0, new ug($$1));
+   }
+
+   public void a(String $$0, List<Byte> $$1) {
+      this.x.put($$0, new ug($$1));
+   }
+
+   public void a(String $$0, int[] $$1) {
+      this.x.put($$0, new un($$1));
+   }
+
+   public void b(String $$0, List<Integer> $$1) {
+      this.x.put($$0, new un($$1));
+   }
+
+   public void a(String $$0, long[] $$1) {
+      this.x.put($$0, new uq($$1));
+   }
+
+   public void c(String $$0, List<Long> $$1) {
+      this.x.put($$0, new uq($$1));
+   }
+
+   public void a(String $$0, boolean $$1) {
+      this.x.put($$0, uh.a($$1));
+   }
+
+   @Nullable
+   public vg c(String $$0) {
+      return this.x.get($$0);
+   }
+
+   public byte d(String $$0) {
+      vg $$1 = this.x.get($$0);
+      return $$1 == null ? 0 : $$1.b();
+   }
+
+   public boolean e(String $$0) {
+      return this.x.containsKey($$0);
+   }
+
+   public boolean b(String $$0, int $$1) {
+      int $$2 = this.d($$0);
+      if ($$2 == $$1) {
+         return true;
+      } else {
+         return $$1 != 99 ? false : $$2 == 1 || $$2 == 2 || $$2 == 3 || $$2 == 4 || $$2 == 5 || $$2 == 6;
+      }
+   }
+
+   public byte f(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((uz)this.x.get($$0)).i();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0;
+   }
+
+   public short g(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((uz)this.x.get($$0)).h();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0;
+   }
+
+   public int h(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((uz)this.x.get($$0)).g();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0;
+   }
+
+   public long i(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((uz)this.x.get($$0)).f();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0L;
+   }
+
+   public float j(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((uz)this.x.get($$0)).k();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0.0F;
+   }
+
+   public double k(String $$0) {
+      try {
+         if (this.b($$0, 99)) {
+            return ((uz)this.x.get($$0)).j();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return 0.0;
+   }
+
+   public String l(String $$0) {
+      try {
+         if (this.b($$0, 8)) {
+            return this.x.get($$0).s_();
+         }
+      } catch (ClassCastException var3) {
+      }
+
+      return "";
+   }
+
+   public byte[] m(String $$0) {
+      try {
+         if (this.b($$0, 7)) {
+            return ((ug)this.x.get($$0)).e();
+         }
+      } catch (ClassCastException var3) {
+         throw new z(this.a($$0, ug.a, var3));
+      }
+
+      return new byte[0];
+   }
+
+   public int[] n(String $$0) {
+      try {
+         if (this.b($$0, 11)) {
+            return ((un)this.x.get($$0)).g();
+         }
+      } catch (ClassCastException var3) {
+         throw new z(this.a($$0, un.a, var3));
+      }
+
+      return new int[0];
+   }
+
+   public long[] o(String $$0) {
+      try {
+         if (this.b($$0, 12)) {
+            return ((uq)this.x.get($$0)).g();
+         }
+      } catch (ClassCastException var3) {
+         throw new z(this.a($$0, uq.a, var3));
+      }
+
+      return new long[0];
+   }
+
+   public uj p(String $$0) {
+      try {
+         if (this.b($$0, 10)) {
+            return (uj)this.x.get($$0);
+         }
+      } catch (ClassCastException var3) {
+         throw new z(this.a($$0, b, var3));
+      }
+
+      return new uj();
+   }
+
+   public up c(String $$0, int $$1) {
+      try {
+         if (this.d($$0) == 9) {
+            up $$2 = (up)this.x.get($$0);
+            if (!$$2.isEmpty() && $$2.f() != $$1) {
+               return new up();
+            }
+
+            return $$2;
+         }
+      } catch (ClassCastException var4) {
+         throw new z(this.a($$0, up.a, var4));
+      }
+
+      return new up();
+   }
+
+   public boolean q(String $$0) {
+      return this.f($$0) != 0;
+   }
+
+   public void r(String $$0) {
+      this.x.remove($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.s_();
+   }
+
+   public boolean g() {
+      return this.x.isEmpty();
+   }
+
+   private o a(String $$0, vi<?> $$1, ClassCastException $$2) {
+      o $$3 = o.a($$2, "Reading NBT data");
+      p $$4 = $$3.a("Corrupt NBT tag", 1);
+      $$4.a("Tag type found", () -> this.x.get($$0).c().a());
+      $$4.a("Tag type expected", $$1::a);
+      $$4.a("Tag name", $$0);
+      return $$3;
+   }
+
+   protected uj h() {
+      return new uj(new HashMap<>(this.x));
+   }
+
+   public uj i() {
+      Map<String, vg> $$0 = Maps.newHashMap(Maps.transformValues(this.x, vg::d));
+      return new uj($$0);
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uj && this.w == ((uj)$$0).w;
+      return this == $$0 ? true : $$0 instanceof uj && Objects.equals(this.x, ((uj)$$0).x);
    }
 
    @Override
    public int hashCode() {
-      return Float.floatToIntBits(this.w);
+      return this.x.hashCode();
+   }
+
+   private static void a(String $$0, vg $$1, DataOutput $$2) throws IOException {
+      $$2.writeByte($$1.b());
+      if ($$1.b() != 0) {
+         $$2.writeUTF($$0);
+         $$1.a($$2);
+      }
+   }
+
+   static vg a(vi<?> $$0, String $$1, DataInput $$2, us $$3) {
+      try {
+         return $$0.c($$2, $$3);
+      } catch (IOException var7) {
+         o $$5 = o.a(var7, "Loading NBT data");
+         p $$6 = $$5.a("NBT Tag");
+         $$6.a("Tag name", $$1);
+         $$6.a("Tag type", $$0.a());
+         throw new va($$5);
+      }
+   }
+
+   public uj a(uj $$0) {
+      for (String $$1 : $$0.x.keySet()) {
+         vg $$2 = $$0.x.get($$1);
+         if ($$2.b() == 10) {
+            if (this.b($$1, 10)) {
+               uj $$3 = this.p($$1);
+               $$3.a((uj)$$2);
+            } else {
+               this.a($$1, $$2.d());
+            }
+         } else {
+            this.a($$1, $$2.d());
+         }
+      }
+
+      return this;
    }
 
    @Override
-   public void a(vh $$0) {
+   public void a(vk $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public long f() {
-      return (long)this.w;
+   protected Set<Entry<String, vg>> j() {
+      return this.x.entrySet();
    }
 
    @Override
-   public int g() {
-      return azf.d(this.w);
-   }
+   public vd.b a(vd $$0) {
+      for (Entry<String, vg> $$1 : this.x.entrySet()) {
+         vg $$2 = $$1.getValue();
+         vi<?> $$3 = $$2.c();
+         vd.a $$4 = $$0.a($$3);
+         switch ($$4) {
+            case d:
+               return vd.b.c;
+            case c:
+               return $$0.b();
+            case b:
+               break;
+            default:
+               $$4 = $$0.a($$3, $$1.getKey());
+               switch ($$4) {
+                  case d:
+                     return vd.b.c;
+                  case c:
+                     return $$0.b();
+                  case b:
+                     break;
+                  default:
+                     vd.b $$5 = $$2.a($$0);
+                     switch ($$5) {
+                        case c:
+                           return vd.b.c;
+                        case b:
+                           return $$0.b();
+                     }
+               }
+         }
+      }
 
-   @Override
-   public short h() {
-      return (short)(azf.d(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(azf.d(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.w;
-   }
-
-   @Override
-   public float k() {
-      return this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public va.b a(va $$0) {
-      return $$0.a(this.w);
+      return $$0.b();
    }
 }

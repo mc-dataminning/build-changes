@@ -1,46 +1,130 @@
-import java.util.List;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class fon<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final fon<?> a = new fon<>(bak.a, ($$0, $$1) -> {
-   });
+public class fon implements foo {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final fol c = new fol();
+   private final fol d = new fol();
+   private final fol e = new fol();
+   private final fqs f;
+   private int g;
+   private int h;
 
-   private fon(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fon(fqs $$0) {
+      this($$0, 33);
    }
 
-   public static fon<?> a(String $$0) {
-      return new fon<>($$0, Consumer::accept);
+   public fon(fqs $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   public static fon<?> a(xe $$0) {
-      return new fon<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
-
-   public static fon<?> a(List<xe> $$0) {
-      return new fon<>($$0, ($$1, $$2) -> $$0.stream().map(xe::getString).forEach($$1));
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fon<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
-      }
+   public fon(fqs $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public void m(int $$0) {
+   }
+
+   @Override
+   public void n(int $$0) {
+   }
+
+   @Override
+   public int D() {
+      return 0;
+   }
+
+   @Override
+   public int E() {
+      return 0;
+   }
+
+   @Override
+   public int y() {
+      return this.f.n;
+   }
+
+   @Override
+   public int w() {
+      return this.f.o;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.f.o - this.c() - this.b();
+   }
+
+   @Override
+   public void b(Consumer<fop> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.n);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.n);
+      this.d.a($$1);
+      this.d.a();
+      this.d.n(this.f.o - $$1);
+      this.e.b(this.f.n);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.o - $$1 - this.e.w();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends fop> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends fop> T a(T $$0, Consumer<foq> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public void a(xh $$0, fkk $$1) {
+      this.c.a(new fmg($$0, $$1));
+   }
+
+   public <T extends fop> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends fop> T b(T $$0, Consumer<foq> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends fop> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends fop> T c(T $$0, Consumer<foq> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

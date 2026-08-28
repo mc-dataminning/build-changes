@@ -1,88 +1,73 @@
-import java.util.Arrays;
+public class fwv extends fxz<gti> {
+   public static final gbk a = gbk.scaling(0.6F);
+   private static final float b = 25.0F;
+   private static final float c = 22.5F;
+   private static final float d = 16.5F;
+   private static final float e = 2.5F;
+   private static final String f = "head_cube";
+   private static final String g = "right_ear_cube";
+   private static final String i = "left_ear_cube";
+   private final gbb j;
+   private final gbb k;
+   private final gbb l;
+   private final gbb m;
+   private final gbb n;
+   private final gbb o;
 
-public class fwv extends fxo<guo> {
-   private final gaq[] a;
-   private final gaq b;
-
-   public fwv(gaq $$0) {
+   public fwv(gbb $$0) {
       super($$0);
-      this.b = $$0.b("head");
-      this.a = new gaq[12];
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+      this.j = $$0.b("body");
+      this.k = $$0.b("right_hind_leg");
+      this.l = $$0.b("left_hind_leg");
+      this.n = this.j.b("head");
+      this.o = this.j.b("tail");
+      this.m = $$0.b("cube");
    }
 
-   private static String a(int $$0) {
-      return "part" + $$0;
+   public static gbh a() {
+      gbj $$0 = new gbj();
+      gbl $$1 = $$0.a();
+      gbl $$2 = $$1.a(
+         "body",
+         gbg.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new gbf(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new gbf(0.0F)),
+         gbd.a(0.0F, 21.0F, 4.0F)
+      );
+      $$2.a("tail", gbg.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new gbf(0.0F)), gbd.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
+      gbl $$3 = $$2.a("head", gbg.c(), gbd.a(0.0F, -2.0F, -11.0F));
+      $$3.a("head_cube", gbg.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new gbf(0.0F)), gbd.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
+      gbl $$4 = $$3.a("right_ear", gbg.c(), gbd.a(-1.0F, -1.0F, 0.0F));
+      $$4.a("right_ear_cube", gbg.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new gbf(0.0F)), gbd.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
+      gbl $$5 = $$3.a("left_ear", gbg.c(), gbd.a(1.0F, -2.0F, 0.0F));
+      $$5.a("left_ear_cube", gbg.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new gbf(0.0F)), gbd.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
+      $$1.a("right_hind_leg", gbg.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gbf(0.0F)), gbd.a(-2.0F, 21.0F, 4.0F));
+      $$1.a("left_hind_leg", gbg.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gbf(0.0F)), gbd.a(2.0F, 21.0F, 4.0F));
+      $$1.a("right_front_leg", gbg.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gbf(0.0F)), gbd.a(-2.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", gbg.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new gbf(0.0F)), gbd.a(2.0F, 21.0F, -4.0F));
+      $$1.a("cube", gbg.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new gbf(0.0F)), gbd.a(0.0F, 24.0F, 0.0F));
+      return gbh.a($$0, 64, 64);
    }
 
-   public static gaw a() {
-      gay $$0 = new gay();
-      gba $$1 = $$0.a();
-      $$1.a("head", gav.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gas.a);
-      float $$2 = 0.0F;
-      gav $$3 = gav.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = azf.b($$2) * 9.0F;
-         float $$6 = -2.0F + azf.b((float)($$4 * 2) * 0.25F);
-         float $$7 = azf.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, gas.a($$5, $$6, $$7));
-         $$2++;
-      }
-
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = azf.b($$2) * 7.0F;
-         float $$10 = 2.0F + azf.b((float)($$8 * 2) * 0.25F);
-         float $$11 = azf.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, gas.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = azf.b($$2) * 5.0F;
-         float $$14 = 11.0F + azf.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = azf.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, gas.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return gaw.a($$0, 64, 32);
-   }
-
-   public void a(guo $$0) {
+   public void a(gti $$0) {
       super.a($$0);
-      float $$1 = $$0.p * (float) Math.PI * -0.1F;
-
-      for (int $$2 = 0; $$2 < 4; $$2++) {
-         this.a[$$2].c = -2.0F + azf.b(((float)($$2 * 2) + $$0.p) * 0.25F);
-         this.a[$$2].b = azf.b($$1) * 9.0F;
-         this.a[$$2].d = azf.a($$1) * 9.0F;
-         $$1++;
+      if ($$0.a) {
+         this.j.l = true;
+         this.l.k = false;
+         this.k.k = false;
+         this.o.k = false;
+         this.m.k = true;
+      } else {
+         this.j.l = false;
+         this.l.k = true;
+         this.k.k = true;
+         this.o.k = true;
+         this.m.k = false;
+         this.n.e = azj.a($$0.V, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
+         this.n.f = azj.a($$0.U, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
       }
 
-      $$1 = (float) (Math.PI / 4) + $$0.p * (float) Math.PI * 0.03F;
-
-      for (int $$3 = 4; $$3 < 8; $$3++) {
-         this.a[$$3].c = 2.0F + azf.b(((float)($$3 * 2) + $$0.p) * 0.25F);
-         this.a[$$3].b = azf.b($$1) * 7.0F;
-         this.a[$$3].d = azf.a($$1) * 7.0F;
-         $$1++;
-      }
-
-      $$1 = 0.47123894F + $$0.p * (float) Math.PI * -0.05F;
-
-      for (int $$4 = 8; $$4 < 12; $$4++) {
-         this.a[$$4].c = 11.0F + azf.b(((float)$$4 * 1.5F + $$0.p) * 0.5F);
-         this.a[$$4].b = azf.b($$1) * 5.0F;
-         this.a[$$4].d = azf.a($$1) * 5.0F;
-         $$1++;
-      }
-
-      this.b.f = $$0.U * (float) (Math.PI / 180.0);
-      this.b.e = $$0.V * (float) (Math.PI / 180.0);
+      this.a(fjs.b, $$0.X, $$0.Y, 16.5F, 2.5F);
+      this.a($$0.b, fjs.d, $$0.p, 1.0F);
+      this.a($$0.c, fjs.a, $$0.p, 1.0F);
+      this.a($$0.d, fjs.c, $$0.p, 1.0F);
    }
 }

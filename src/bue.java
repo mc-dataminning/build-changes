@@ -1,44 +1,55 @@
-public abstract class bue extends bup {
-   protected bue(bty<? extends bue> $$0, dej $$1) {
-      super($$0, $$1);
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
+
+public final class bue {
+   public static final Predicate<btz> a = btz::bM;
+   public static final Predicate<btz> b = $$0 -> $$0.bM() && $$0 instanceof buv;
+   public static final Predicate<btz> c = $$0 -> $$0.bM() && !$$0.cb() && !$$0.ca();
+   public static final Predicate<btz> d = $$0 -> $$0 instanceof brr && $$0.bM();
+   public static final Predicate<btz> e = $$0 -> !($$0 instanceof coh) || !$$0.R_() && !((coh)$$0).f();
+   public static final Predicate<btz> f = $$0 -> !$$0.R_();
+   public static final Predicate<btz> g = f.and(btz::bO);
+   public static final Predicate<btz> h = f.and(btz::bI);
+
+   private bue() {
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dus $$2, jf $$3) {
+   public static Predicate<btz> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   @Override
-   public void a_(eyw $$0) {
-      if (this.de()) {
-         if (this.bi()) {
-            this.a(0.02F, $$0);
-            this.a(bur.a, this.dv());
-            this.h(this.dv().c(0.8F));
-         } else if (this.bw()) {
-            this.a(0.02F, $$0);
-            this.a(bur.a, this.dv());
-            this.h(this.dv().c(0.5));
+   public static Predicate<btz> a(btz $$0) {
+      fao $$1 = $$0.cs();
+      fao.a $$2 = $$1 == null ? fao.a.a : $$1.l();
+      return (Predicate<btz>)($$2 == fao.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bJ()) {
+            return false;
+         } else if (!$$0.dX().C || $$3 instanceof coh && ((coh)$$3).g()) {
+            fao $$4 = $$3.cs();
+            fao.a $$5 = $$4 == null ? fao.a.a : $$4.l();
+            if ($$5 == fao.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == fao.a.d || $$5 == fao.a.d) && $$6 ? false : $$2 != fao.a.c && $$5 != fao.a.c || $$6;
+            }
          } else {
-            float $$1 = 0.91F;
-            if (this.aH()) {
-               $$1 = this.dS().a_(this.aO()).b().g() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aH()) {
-               $$1 = this.dS().a_(this.aO()).b().g() * 0.91F;
-            }
-
-            this.a(this.aH() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bur.a, this.dv());
-            this.h(this.dv().c((double)$$1));
+            return false;
          }
-      }
+      }));
    }
 
-   @Override
-   public boolean q_() {
-      return false;
+   public static Predicate<btz> b(btz $$0) {
+      return $$1 -> {
+         while ($$1.ca()) {
+            $$1 = $$1.dl();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 }

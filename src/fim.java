@@ -1,14 +1,33 @@
-public enum fim {
-   a,
-   b,
-   c,
-   d;
+import com.mojang.serialization.Codec;
 
-   public boolean a() {
-      return this == b;
+public enum fim implements azm, baf {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
+
+   public static final Codec<fim> d = baf.a(fim::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private fim(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public boolean b() {
-      return this == c || this == d;
+   @Override
+   public String c() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.g;
    }
 }

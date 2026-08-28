@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fqm {
+public abstract class fqm implements fmc {
+   public boolean a() {
+      return true;
+   }
 }

@@ -1,26 +1,37 @@
-public class gpj extends gou<cli, gvf, fzb> {
-   private static final ale a = ale.b("textures/entity/illager/ravager.png");
+public class gpj extends gny<bvb, gvg> {
+   private static final float a = 40.0F;
+   private static final int b = 50;
+   private final gox h;
 
-   public gpj(gno.a $$0) {
-      super($$0, new fzb($$0.a(gap.bZ)), 1.1F);
+   protected gpj(gnz.a $$0) {
+      super($$0);
+      this.h = $$0.b();
    }
 
-   public ale a(gvf $$0) {
-      return a;
+   public gvg a() {
+      return new gvg();
    }
 
-   public gvf c() {
-      return new gvf();
-   }
-
-   public void a(cli $$0, gvf $$1, float $$2) {
+   public void a(bvb $$0, gvg $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.go() > 0.0F ? (float)$$0.go() - $$2 : 0.0F;
-      $$1.b = (float)$$0.t() > 0.0F ? (float)$$0.t() - $$2 : 0.0F;
-      if ($$0.gy() > 0) {
-         $$1.c = ((float)(20 - $$0.gy()) + $$2) / 20.0F;
-      } else {
-         $$1.c = 0.0F;
+      cvx $$3 = $$0.o();
+      $$1.b = $$3.v();
+      $$1.a = !$$3.f() ? this.h.a($$3, $$0.dX(), null, 0) : null;
+   }
+
+   public void a(gvg $$0, fdt $$1, ghw $$2, int $$3) {
+      gzu $$4 = $$0.a;
+      if ($$4 != null) {
+         $$1.a();
+         if ($$0.p <= 50.0F) {
+            float $$5 = Math.min($$0.p, 50.0F) / 50.0F;
+            $$1.b($$5, $$5, $$5);
+         }
+
+         float $$6 = azj.h($$0.p * 40.0F);
+         $$1.a(a.d.rotationDegrees($$6));
+         gov.a(this.h, $$1, $$2, 15728880, $$0.b, $$4, $$4.b(), azr.a());
+         $$1.b();
       }
    }
 }

@@ -1,69 +1,73 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.Optional;
 
-public class dll extends dhm {
-   public static final MapCodec<dll> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lv.e.q().fieldOf("host").forGetter(dll::b), t()).apply($$0, dll::new));
-   private final dhm b;
-   private static final Map<dhm, dhm> c = Maps.newIdentityHashMap();
-   private static final Map<dus, dus> d = Maps.newIdentityHashMap();
-   private static final Map<dus, dus> e = Maps.newIdentityHashMap();
-
-   @Override
-   public MapCodec<? extends dll> a() {
-      return a;
-   }
-
-   public dll(dhm $$0, dur.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
-   }
-
-   public dhm b() {
-      return this.b;
-   }
-
-   public static boolean o(dus $$0) {
-      return c.containsKey($$0.b());
-   }
-
-   private void a(arj $$0, jf $$1) {
-      clk $$2 = bty.aM.a($$0, btx.k);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.V();
-      }
+public abstract class dll extends dlk implements dib {
+   protected dll(dvc.d $$0, jl $$1, fab $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dus $$0, arj $$1, jf $$2, cvs $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.ac().b(def.h) && !dbp.a($$3, awy.t)) {
-         this.a($$1, $$2);
+   protected abstract MapCodec<? extends dll> a();
+
+   protected dvd a(dvd $$0, dvd $$1) {
+      return $$1;
+   }
+
+   @Override
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
-   }
 
-   public static dus p(dus $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).n());
-   }
-
-   public dus q(dus $$0) {
-      return a(e, $$0, () -> this.b().n());
-   }
-
-   private static dus a(Map<dus, dus> $$0, dus $$1, Supplier<dus> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dus $$2x = $$2.get();
-
-         for (dvv $$3 : $$1x.F()) {
-            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
+      dlm $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
+      } else {
+         if (this.b) {
+            $$3.a($$4, erf.c, erf.c.a($$3));
          }
 
-         return $$2x;
-      });
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public cvx a(dey $$0, jg $$1, dvd $$2) {
+      return new cvx(this.c());
+   }
+
+   @Override
+   public boolean b(dey $$0, jg $$1, dvd $$2) {
+      Optional<jg> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
+   }
+
+   @Override
+   public boolean a(dev $$0, azr $$1, jg $$2, dvd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arm $$0, azr $$1, jg $$2, dvd $$3) {
+      Optional<jg> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dvd $$5 = $$0.a_($$4.get());
+         ((dlm)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<jg> a(dea $$0, jg $$1, dhy $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   protected boolean a(dvd $$0, czm $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().j()) ? false : $$2;
+   }
+
+   @Override
+   protected dhy b() {
+      return this;
    }
 }

@@ -1,14 +1,24 @@
-public class gse<S extends gvl, M extends fxo<S>> extends gsb<S, M> {
-   private final fzj<S> a;
-   private final ale b;
+public class gse extends gsm<guv, fyo> {
+   private final giz a;
 
-   public gse(gpk<S, M> $$0, gam $$1, gao $$2, ale $$3) {
+   public gse(gpv<guv, fyo> $$0, giz $$1) {
       super($$0);
-      this.b = $$3;
-      this.a = new fzj<>($$1.a($$2));
+      this.a = $$1;
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   public void a(fdt $$0, ghw $$1, int $$2, guv $$3, float $$4, float $$5) {
+      if ($$3.b != 0) {
+         $$0.a();
+         gbb $$6 = this.d().b();
+         $$6.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$7 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(dia.bT.m(), $$0, $$1, $$2, gxj.d);
+         $$0.b();
+      }
    }
 }

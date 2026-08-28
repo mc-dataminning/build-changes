@@ -1,95 +1,64 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class euq extends euy {
-   public static final int a = 0;
-   public static final MapCodec<euq> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  dbn.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
-                  ext.a.fieldOf("count").forGetter($$0x -> $$0x.d),
-                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
-               )
-            )
-            .apply($$0, euq::new)
-   );
-   private final jo<dbn> c;
-   private final exs d;
-   private final int e;
+public class euq extends euf {
+   public static final MapCodec<euq> a = a(euq::new);
 
-   euq(List<eww> $$0, jo<dbn> $$1, exs $$2, int $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   euq(List<eum> $$0, List<exh> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eva<euq> b() {
-      return evb.m;
+   public eun a() {
+      return euk.h;
    }
 
    @Override
-   public Set<ewe<?>> a() {
-      return Sets.union(ImmutableSet.of(ewh.d), this.d.a());
-   }
-
-   private boolean c() {
-      return this.e > 0;
-   }
-
-   @Override
-   public cvs a(cvs $$0, etl $$1) {
-      btr $$2 = $$1.c(ewh.d);
-      if ($$2 instanceof bun $$3) {
-         int $$4 = dbp.a(this.c, $$3);
-         if ($$4 == 0) {
-            return $$0;
+   protected eue a(List<? extends eue> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eue)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (eue $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
          }
 
-         float $$5 = (float)$$4 * this.d.b($$1);
-         $$0.g(Math.round($$5));
-         if (this.c()) {
-            $$0.f(this.e);
+         return true;
+      };
+      };
+   }
+
+   public static euq.a a(eum.a<?>... $$0) {
+      return new euq.a($$0);
+   }
+
+   public static class a extends eum.a<euq.a> {
+      private final Builder<eum> a = ImmutableList.builder();
+
+      public a(eum.a<?>... $$0) {
+         for (eum.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
-      }
-
-      return $$0;
-   }
-
-   public static euq.a a(jq.a $$0, exs $$1) {
-      jq.b<dbn> $$2 = $$0.d(lw.aN);
-      return new euq.a($$2.b(dbs.s), $$1);
-   }
-
-   public static class a extends euy.a<euq.a> {
-      private final jo<dbn> a;
-      private final exs b;
-      private int c = 0;
-
-      public a(jo<dbn> $$0, exs $$1) {
-         this.a = $$0;
-         this.b = $$1;
       }
 
       protected euq.a a() {
          return this;
       }
 
-      public euq.a a(int $$0) {
-         this.c = $$0;
+      @Override
+      public euq.a c(eum.a<?> $$0) {
+         this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public euz b() {
-         return new euq(this.g(), this.a, this.b, this.c);
+      public eum b() {
+         return new euq(this.a.build(), this.f());
       }
    }
 }

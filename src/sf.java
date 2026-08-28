@@ -1,65 +1,8 @@
-public class sf {
-   public static final ald<ekk> a = sk.a("monster_room");
-   public static final ald<ekk> b = sk.a("monster_room_deep");
-   public static final ald<ekk> c = sk.a("fossil_upper");
-   public static final ald<ekk> d = sk.a("fossil_lower");
-   public static final ald<ekk> e = sk.a("dripstone_cluster");
-   public static final ald<ekk> f = sk.a("large_dripstone");
-   public static final ald<ekk> g = sk.a("pointed_dripstone");
-   public static final ald<ekk> h = sk.a("underwater_magma");
-   public static final ald<ekk> i = sk.a("glow_lichen");
-   public static final ald<ekk> j = sk.a("rooted_azalea_tree");
-   public static final ald<ekk> k = sk.a("cave_vines");
-   public static final ald<ekk> l = sk.a("lush_caves_vegetation");
-   public static final ald<ekk> m = sk.a("lush_caves_clay");
-   public static final ald<ekk> n = sk.a("lush_caves_ceiling_vegetation");
-   public static final ald<ekk> o = sk.a("spore_blossom");
-   public static final ald<ekk> p = sk.a("classic_vines_cave_feature");
-   public static final ald<ekk> q = sk.a("amethyst_geode");
-   public static final ald<ekk> r = sk.a("sculk_patch_deep_dark");
-   public static final ald<ekk> s = sk.a("sculk_patch_ancient_city");
-   public static final ald<ekk> t = sk.a("sculk_vein");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static void a(qu<ekk> $$0) {
-      jp<edg<?, ?>> $$1 = $$0.a(lw.aK);
-      jo<edg<?, ?>> $$2 = $$1.b(rt.a);
-      jo<edg<?, ?>> $$3 = $$1.b(rt.b);
-      jo<edg<?, ?>> $$4 = $$1.b(rt.c);
-      jo<edg<?, ?>> $$5 = $$1.b(rt.d);
-      jo<edg<?, ?>> $$6 = $$1.b(rt.e);
-      jo<edg<?, ?>> $$7 = $$1.b(rt.f);
-      jo<edg<?, ?>> $$8 = $$1.b(rt.g);
-      jo<edg<?, ?>> $$9 = $$1.b(rt.h);
-      jo<edg<?, ?>> $$10 = $$1.b(rt.i);
-      jo<edg<?, ?>> $$11 = $$1.b(rt.j);
-      jo<edg<?, ?>> $$12 = $$1.b(rt.m);
-      jo<edg<?, ?>> $$13 = $$1.b(rt.r);
-      jo<edg<?, ?>> $$14 = $$1.b(rt.s);
-      jo<edg<?, ?>> $$15 = $$1.b(rt.t);
-      jo<edg<?, ?>> $$16 = $$1.b(sb.c);
-      jo<edg<?, ?>> $$17 = $$1.b(rt.u);
-      jo<edg<?, ?>> $$18 = $$1.b(rt.v);
-      jo<edg<?, ?>> $$19 = $$1.b(rt.w);
-      jo<edg<?, ?>> $$20 = $$1.b(rt.x);
-      sk.a($$0, a, $$2, ekc.a(10), ekh.a(), ekf.a(ebi.a(0), ebi.b()), ejy.a());
-      sk.a($$0, b, $$2, ekc.a(4), ekh.a(), ekf.a(ebi.b(6), ebi.a(-1)), ejy.a());
-      sk.a($$0, c, $$3, ekq.a(64), ekh.a(), ekf.a(ebi.a(0), ebi.b()), ejy.a());
-      sk.a($$0, d, $$4, ekq.a(64), ekh.a(), ekf.a(ebi.a(), ebi.a(-8)), ejy.a());
-      sk.a($$0, e, $$5, ekc.a(brd.a(48, 96)), ekh.a(), sk.i, ejy.a());
-      sk.a($$0, f, $$6, ekc.a(brd.a(10, 48)), ekh.a(), sk.i, ejy.a());
-      sk.a($$0, g, $$7, ekc.a(brd.a(192, 256)), ekh.a(), sk.i, ekc.a(brd.a(1, 5)), ekp.a(bqs.a(0.0F, 3.0F, -10, 10), bqs.a(0.0F, 0.6F, -2, 2)), ejy.a());
-      sk.a($$0, h, $$8, ekc.a(brd.a(44, 52)), ekh.a(), sk.i, eks.a(eao.a.c, Integer.MIN_VALUE, -2), ejy.a());
-      sk.a($$0, i, $$9, ekc.a(brd.a(104, 157)), sk.i, ekh.a(), eks.a(eao.a.c, Integer.MIN_VALUE, -13), ejy.a());
-      sk.a($$0, j, $$10, ekc.a(brd.a(1, 2)), ekh.a(), sk.i, ekd.a(jk.b, ebv.c(), ebv.c, 12), ekp.a(bqu.a(-1)), ejy.a());
-      sk.a($$0, k, $$11, ekc.a(188), ekh.a(), sk.i, ekd.a(jk.b, ebv.a(jk.a), ebv.c, 12), ekp.a(bqu.a(-1)), ejy.a());
-      sk.a($$0, l, $$12, ekc.a(125), ekh.a(), sk.i, ekd.a(jk.a, ebv.c(), ebv.c, 12), ekp.a(bqu.a(1)), ejy.a());
-      sk.a($$0, m, $$13, ekc.a(62), ekh.a(), sk.i, ekd.a(jk.a, ebv.c(), ebv.c, 12), ekp.a(bqu.a(1)), ejy.a());
-      sk.a($$0, n, $$14, ekc.a(125), ekh.a(), sk.i, ekd.a(jk.b, ebv.c(), ebv.c, 12), ekp.a(bqu.a(-1)), ejy.a());
-      sk.a($$0, o, $$15, ekc.a(25), ekh.a(), sk.i, ekd.a(jk.b, ebv.c(), ebv.c, 12), ekp.a(bqu.a(-1)), ejy.a());
-      sk.a($$0, p, $$16, ekc.a(256), ekh.a(), sk.i, ejy.a());
-      sk.a($$0, q, $$17, ekq.a(24), ekh.a(), ekf.a(ebi.b(6), ebi.a(30)), ejy.a());
-      sk.a($$0, r, $$18, ekc.a(bqu.a(256)), ekh.a(), sk.i, ejy.a());
-      sk.a($$0, s, $$19);
-      sk.a($$0, t, $$20, ekc.a(brd.a(204, 250)), ekh.a(), sk.i, ejy.a());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface sf {
 }

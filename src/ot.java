@@ -1,100 +1,21 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import javax.annotation.Nullable;
+public enum ot {
+   a("building_blocks"),
+   b("decorations"),
+   c("redstone"),
+   d("transportation"),
+   e("tools"),
+   f("combat"),
+   g("food"),
+   h("brewing"),
+   i("misc");
 
-public class ot implements op {
-   private final jp<cvn> b;
-   private final oq c;
-   private final cvn d;
-   private final int e;
-   private final List<String> f = Lists.newArrayList();
-   private final Map<Character, dag> g = Maps.newLinkedHashMap();
-   private final Map<String, ao<?>> h = new LinkedHashMap<>();
-   @Nullable
-   private String i;
-   private boolean j = true;
+   private final String j;
 
-   private ot(jp<cvn> $$0, oq $$1, dei $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.q();
-      this.e = $$3;
-   }
-
-   public static ot a(jp<cvn> $$0, oq $$1, dei $$2) {
-      return a($$0, $$1, $$2, 1);
-   }
-
-   public static ot a(jp<cvn> $$0, oq $$1, dei $$2, int $$3) {
-      return new ot($$0, $$1, $$2, $$3);
-   }
-
-   public ot a(Character $$0, axl<cvn> $$1) {
-      return this.a($$0, dag.a(this.b.b($$1)));
-   }
-
-   public ot a(Character $$0, dei $$1) {
-      return this.a($$0, dag.a($$1));
-   }
-
-   public ot a(Character $$0, dag $$1) {
-      if (this.g.containsKey($$0)) {
-         throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
-      } else if ($$0 == ' ') {
-         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
-      } else {
-         this.g.put($$0, $$1);
-         return this;
-      }
-   }
-
-   public ot b(String $$0) {
-      if (!this.f.isEmpty() && $$0.length() != this.f.get(0).length()) {
-         throw new IllegalArgumentException("Pattern must be the same width on every line!");
-      } else {
-         this.f.add($$0);
-         return this;
-      }
-   }
-
-   public ot b(String $$0, ao<?> $$1) {
-      this.h.put($$0, $$1);
-      return this;
-   }
-
-   public ot c(@Nullable String $$0) {
-      this.i = $$0;
-      return this;
-   }
-
-   public ot a(boolean $$0) {
+   private ot(final String $$0) {
       this.j = $$0;
-      return this;
    }
 
-   @Override
-   public cvn a() {
-      return this.d;
-   }
-
-   @Override
-   public void a(or $$0, ale $$1) {
-      dat $$2 = this.a($$1);
-      af.a $$3 = $$0.a().a("has_the_recipe", dt.a($$1)).a(ak.a.a($$1)).a(aj.a.b);
-      this.h.forEach($$3::a);
-      das $$4 = new das(Objects.requireNonNullElse(this.i, ""), op.a(this.c), $$2, new cvs(this.d, this.e), this.j);
-      $$0.a($$1, $$4, $$3.b($$1.f("recipes/" + this.c.a() + "/")));
-   }
-
-   private dat a(ale $$0) {
-      if (this.h.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + $$0);
-      } else {
-         return dat.a(this.g, this.f);
-      }
+   public String a() {
+      return this.j;
    }
 }

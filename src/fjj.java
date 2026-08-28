@@ -1,218 +1,136 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
 public class fjj {
-   public static final fje a = fje.a.a(1.125F)
-      .a(
-         "head",
-         new fjd(
-            fjd.d.b,
-            new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.25F, fjg.b(-12.5F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.75F, fjg.b(-12.5F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.9167F, fjg.b(5.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(1.125F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.25F, fjg.a(0.0F, -2.0F, 0.0F), fjd.b.a),
-            new fjf(0.7917F, fjg.a(0.0F, -1.0F, 2.0F), fjd.b.a),
-            new fjf(0.9583F, fjg.a(0.0F, -1.0F, 0.0F), fjd.b.a),
-            new fjf(1.125F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a("wind_bottom", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a)))
-      .a(
-         "wind_mid",
-         new fjd(
-            fjd.d.b,
-            new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.25F, fjg.b(12.5F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.75F, fjg.b(12.5F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.9167F, fjg.b(-10.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(1.125F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.25F, fjg.a(0.0F, 0.0F, 5.0F), fjd.b.a),
-            new fjf(0.75F, fjg.a(0.0F, 0.0F, 6.0F), fjd.b.a),
-            new fjf(0.9167F, fjg.a(0.0F, 0.0F, -2.0F), fjd.b.a),
-            new fjf(1.125F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fjd(
-            fjd.d.b,
-            new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.25F, fjg.b(15.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.75F, fjg.b(15.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.9167F, fjg.b(-10.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(1.125F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.25F, fjg.a(0.0F, 0.0F, 3.0F), fjd.b.a),
-            new fjf(0.8333F, fjg.a(0.0F, 0.0F, 4.0F), fjd.b.a),
-            new fjf(0.9583F, fjg.a(0.0F, 0.0F, -2.0F), fjd.b.a),
-            new fjf(1.125F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fjd(
-            fjd.d.b,
-            new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.25F, fjg.b(12.5F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.75F, fjg.b(12.5F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.9167F, fjg.b(-2.5F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(1.125F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.25F, fjg.a(0.0F, 3.0F, 5.0F), fjd.b.a),
-            new fjf(0.8333F, fjg.a(0.0F, 3.0F, 6.0F), fjd.b.a),
-            new fjf(0.9583F, fjg.a(0.0F, 3.0F, -1.0F), fjd.b.a),
-            new fjf(1.125F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a("rods", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(1.0F, fjg.b(0.0F, 360.0F, 0.0F), fjd.b.a)))
-      .b();
-   public static final fje b = fje.a.a(0.5F)
-      .a(
-         "body",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, -10.0F, 0.0F), fjd.b.a),
-            new fjf(0.125F, fjg.a(0.0F, 11.0F, 0.0F), fjd.b.a),
-            new fjf(0.5F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fjd(
-            fjd.d.b,
-            new fjf(0.0F, fjg.b(22.5F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.2083F, fjg.b(-19.25F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.5F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new fjd(
-            fjd.d.c,
-            new fjf(0.0F, fjg.a(1.0, 1.0, 1.0), fjd.b.a),
-            new fjf(0.125F, fjg.a(1.0, 1.3F, 1.0), fjd.b.a),
-            new fjf(0.5F, fjg.a(1.0, 1.0, 1.0), fjd.b.a)
-         )
-      )
-      .a("wind_bottom", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 90.0F, 0.0F), fjd.b.a), new fjf(0.5F, fjg.b(0.0F, 360.0F, 0.0F), fjd.b.a)))
-      .a(
-         "wind_bottom",
-         new fjd(
-            fjd.d.c,
-            new fjf(0.0F, fjg.a(1.0, 1.0, 1.0), fjd.b.a),
-            new fjf(0.125F, fjg.a(1.0, 1.1F, 1.0), fjd.b.a),
-            new fjf(0.5F, fjg.a(1.0, 1.0, 1.0), fjd.b.a)
-         )
-      )
-      .a("wind_mid", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.5F, fjg.b(0.0F, 180.0F, 0.0F), fjd.b.a)))
-      .a(
-         "wind_mid",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, -6.0F, 0.0F), fjd.b.a),
-            new fjf(0.125F, fjg.a(0.0F, 2.0F, 0.0F), fjd.b.a),
-            new fjf(0.5F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a("wind_top", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.5F, fjg.b(0.0F, 90.0F, 0.0F), fjd.b.a)))
-      .a(
-         "wind_top",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, -5.0F, 0.0F), fjd.b.a),
-            new fjf(0.125F, fjg.a(0.0F, 2.0F, 0.0F), fjd.b.a),
-            new fjf(0.5F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a("rods", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.5F, fjg.b(0.0F, 360.0F, 0.0F), fjd.b.a)))
-      .b();
-   public static final fje c = fje.a.a(2.0F)
-      .a(
-         "body",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.5F, fjg.a(0.0F, -10.0F, 0.0F), fjd.b.a),
-            new fjf(0.625F, fjg.a(0.0F, -10.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fjd(
-            fjd.d.b,
-            new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.5F, fjg.b(22.5F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.625F, fjg.b(22.5F, 0.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new fjd(
-            fjd.d.c, new fjf(0.0F, fjg.a(1.0, 1.0, 1.0), fjd.b.a), new fjf(0.5F, fjg.a(1.0, 1.0, 1.0), fjd.b.a), new fjf(0.625F, fjg.a(1.0, 1.0, 1.0), fjd.b.a)
-         )
-      )
-      .a("wind_bottom", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.625F, fjg.b(0.0F, 90.0F, 0.0F), fjd.b.a)))
-      .a(
-         "wind_bottom",
-         new fjd(
-            fjd.d.c, new fjf(0.0F, fjg.a(1.0, 1.0, 1.0), fjd.b.a), new fjf(0.5F, fjg.a(1.0, 1.0, 1.0), fjd.b.a), new fjf(0.625F, fjg.a(1.0, 1.0, 1.0), fjd.b.a)
-         )
-      )
-      .a("wind_mid", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.625F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a)))
-      .a(
-         "wind_mid",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.5F, fjg.a(0.0F, -6.0F, 0.0F), fjd.b.a),
-            new fjf(0.625F, fjg.a(0.0F, -6.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a("wind_top", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.625F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a)))
-      .a(
-         "wind_top",
-         new fjd(
-            fjd.d.a,
-            new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a),
-            new fjf(0.5F, fjg.a(0.0F, -5.0F, 0.0F), fjd.b.a),
-            new fjf(0.625F, fjg.a(0.0F, -5.0F, 0.0F), fjd.b.a)
-         )
-      )
-      .a("rods", new fjd(fjd.d.b, new fjf(0.0F, fjg.b(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.625F, fjg.b(0.0F, 360.0F, 0.0F), fjd.b.a)))
-      .b();
-   public static final fje d = fje.a.a(0.2F)
-      .a("body", new fjd(fjd.d.a, new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.2F, fjg.a(0.0F, 0.0F, -6.0F), fjd.b.a)))
-      .a("wind_mid", new fjd(fjd.d.a, new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.2F, fjg.a(0.0F, 0.0F, -3.0F), fjd.b.a)))
-      .a("wind_top", new fjd(fjd.d.a, new fjf(0.0F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a), new fjf(0.2F, fjg.a(0.0F, 0.0F, -2.0F), fjd.b.a)))
-      .b();
-   public static final fje e = fje.a.a(0.1F)
-      .a("body", new fjd(fjd.d.a, new fjf(0.0F, fjg.a(0.0F, 0.0F, -6.0F), fjd.b.a), new fjf(0.1F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)))
-      .a("wind_mid", new fjd(fjd.d.a, new fjf(0.0F, fjg.a(0.0F, 0.0F, -3.0F), fjd.b.a), new fjf(0.1F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)))
-      .a("wind_top", new fjd(fjd.d.a, new fjf(0.0F, fjg.a(0.0F, 0.0F, -2.0F), fjd.b.a), new fjf(0.1F, fjg.a(0.0F, 0.0F, 0.0F), fjd.b.a)))
-      .b();
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "screenshots";
+   private int c;
+   private final DataOutputStream d;
+   private final byte[] e;
+   private final int f;
+   private final int g;
+   private File h;
+
+   public static void a(File $$0, fcd $$1, Consumer<xh> $$2) {
+      a($$0, null, $$1, $$2);
+   }
+
+   public static void a(File $$0, @Nullable String $$1, fcd $$2, Consumer<xh> $$3) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
+      } else {
+         b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private static void b(File $$0, @Nullable String $$1, fcd $$2, Consumer<xh> $$3) {
+      fct $$4 = a($$2);
+      File $$5 = new File($$0, "screenshots");
+      $$5.mkdir();
+      File $$6;
+      if ($$1 == null) {
+         $$6 = a($$5);
+      } else {
+         $$6 = new File($$5, $$1);
+      }
+
+      ad.h().execute(() -> {
+         try {
+            $$4.a($$6);
+            xh $$3x = xh.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new xf(xf.a.b, $$6.getAbsolutePath())));
+            $$3.accept(xh.a("screenshot.success", $$3x));
+         } catch (Exception var7) {
+            b.warn("Couldn't save screenshot", var7);
+            $$3.accept(xh.a("screenshot.failure", var7.getMessage()));
+         } finally {
+            $$4.close();
+         }
+      });
+   }
+
+   public static fct a(fcd $$0) {
+      int $$1 = $$0.c;
+      int $$2 = $$0.d;
+      fct $$3 = new fct($$1, $$2, false);
+      RenderSystem.bindTexture($$0.g());
+      $$3.a(0, true);
+      $$3.h();
+      return $$3;
+   }
+
+   private static File a(File $$0) {
+      String $$1 = ad.f();
+      int $$2 = 1;
+
+      while (true) {
+         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
+         if (!$$3.exists()) {
+            return $$3;
+         }
+
+         $$2++;
+      }
+   }
+
+   public fjj(File $$0, int $$1, int $$2, int $$3) throws IOException {
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      File $$4 = new File($$0, "screenshots");
+      $$4.mkdir();
+      String $$5 = "huge_" + ad.f();
+      int $$6 = 1;
+
+      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
+         $$6++;
+      }
+
+      byte[] $$7 = new byte[18];
+      $$7[2] = 2;
+      $$7[12] = (byte)($$1 % 256);
+      $$7[13] = (byte)($$1 / 256);
+      $$7[14] = (byte)($$2 % 256);
+      $$7[15] = (byte)($$2 / 256);
+      $$7[16] = 24;
+      this.e = new byte[$$1 * $$3 * 3];
+      this.d = new DataOutputStream(new FileOutputStream(this.h));
+      this.d.write($$7);
+   }
+
+   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$3;
+      int $$6 = $$4;
+      if ($$3 > this.f - $$1) {
+         $$5 = this.f - $$1;
+      }
+
+      if ($$4 > this.g - $$2) {
+         $$6 = this.g - $$2;
+      }
+
+      this.c = $$6;
+
+      for (int $$7 = 0; $$7 < $$6; $$7++) {
+         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
+         int $$8 = ($$1 + $$7 * this.f) * 3;
+         $$0.get(this.e, $$8, $$5 * 3);
+      }
+   }
+
+   public void a() throws IOException {
+      this.d.write(this.e, 0, this.f * 3 * this.c);
+   }
+
+   public File b() throws IOException {
+      this.d.close();
+      return this.h;
+   }
 }

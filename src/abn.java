@@ -1,23 +1,20 @@
-import java.util.HashSet;
-import java.util.Set;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record abn(Set<ale> b) implements zl<abi> {
-   public static final zc<wb, abn> a = zl.a(abn::a, abn::new);
-
-   private abn(wb $$0) {
-      this($$0.a(HashSet::new, wb::q));
-   }
-
-   private void a(wb $$0) {
-      $$0.a(this.b, wb::a);
-   }
+public record abn(alg<? extends kc<?>> b, List<kg.a> c) implements zo<abl> {
+   private static final zf<ByteBuf, alg<? extends kc<?>>> d = alh.b.a(alg::a, alg::a);
+   public static final zf<we, abn> a = zf.a(d, abn::b, kg.a.a.a(zd.a()), abn::e, abn::new);
 
    @Override
-   public zn<abn> a() {
-      return abo.c;
+   public zq<abn> a() {
+      return abr.b;
    }
 
-   public void a(abi $$0) {
+   public void a(abl $$0) {
       $$0.a(this);
+   }
+
+   public List<kg.a> e() {
+      return this.c;
    }
 }

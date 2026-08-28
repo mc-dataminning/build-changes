@@ -1,24 +1,33 @@
-public abstract class grm<S extends gtq, M extends fxo<S>> extends gsb<S, M> {
-   public grm(gpk<S, M> $$0) {
+public class grm extends gsm<gvn, fze> {
+   private final fym<gvn> a;
+   private final gzz b;
+
+   public grm(gpv<gvn, fze> $$0, gax $$1, gzz $$2) {
       super($$0);
+      this.a = new fzc<>($$1.a(gba.bK));
+      this.b = $$2;
    }
 
-   @Override
-   public void a(fdi $$0, ghl $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.p;
-         M $$7 = this.c();
-         fdm $$8 = $$1.getBuffer(ghv.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, gwx.d, -8355712);
+   private boolean a(cvx $$0) {
+      ddh $$1 = $$0.a(kt.D);
+      if ($$1 != null && !$$1.c().isEmpty()) {
+         ddf $$2 = this.b.a($$1.c().get());
+         return !$$2.a(ddf.d.c).isEmpty();
+      } else {
+         return false;
       }
    }
 
-   protected abstract boolean a(S var1);
-
-   protected abstract float a(float var1);
-
-   protected abstract ale a();
-
-   protected abstract M c();
+   public void a(fdt $$0, ghw $$1, int $$2, gvn $$3, float $$4, float $$5) {
+      if (!$$3.u && $$3.aw) {
+         gyt $$6 = $$3.a;
+         if ($$6.c() != null) {
+            if (!this.a($$3.Q)) {
+               fdx $$7 = $$1.getBuffer(gig.c($$6.c()));
+               this.a.a($$3);
+               this.a.a($$0, $$7, $$2, gxj.d);
+            }
+         }
+      }
+   }
 }

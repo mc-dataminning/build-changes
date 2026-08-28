@@ -1,35 +1,40 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.HashCommon;
+import org.jetbrains.annotations.Nullable;
 
-public class erw extends esd {
-   public erw(dnp $$0) {
-      super($$0);
+public class erw {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final erv[] d = new erv[4096];
+
+   public erv a(dea $$0, jg $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      erv $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   @Override
-   public void a(dej $$0, jf $$1, dus $$2, @Nullable esb $$3, boolean $$4) {
-      int $$5 = this.c($$0, $$1);
-      if ($$2.c(dnp.f) != $$5) {
-         if ($$0.a_($$1) == $$2) {
-            $$0.a($$1, $$2.b(dnp.f, Integer.valueOf($$5)), 2);
-         }
+   @Nullable
+   private erv a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
+   }
 
-         Set<jf> $$6 = Sets.newHashSet();
-         $$6.add($$1);
+   private erv a(dea $$0, jg $$1, int $$2, long $$3) {
+      erv $$4 = esa.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
+   }
 
-         for (jk $$7 : jk.values()) {
-            $$6.add($$1.a($$7));
-         }
-
-         for (jf $$8 : $$6) {
-            $$0.a($$8, this.a);
-         }
+   public void a(jg $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
       }
    }
 
-   private int c(dej $$0, jf $$1) {
-      int $$2 = this.a($$0, $$1);
-      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

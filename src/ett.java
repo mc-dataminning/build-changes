@@ -1,20 +1,38 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
-@FunctionalInterface
-interface ett {
-   ett b = ($$0, $$1) -> false;
-   ett c = ($$0, $$1) -> true;
+public interface ett<T> {
+   ks<T> a();
 
-   boolean expand(etl var1, Consumer<eua> var2);
+   T b();
 
-   default ett and(ett $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+   T a(T var1, Stream<cvx> var2);
+
+   Stream<cvx> a(T var1);
+
+   default void a(cvx $$0, T $$1, Stream<cvx> $$2) {
+      T $$3 = $$0.a(this.a(), $$1);
+      T $$4 = this.a($$3, $$2);
+      $$0.b(this.a(), $$4);
    }
 
-   default ett or(ett $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   default void a(cvx $$0, Stream<cvx> $$1) {
+      this.a($$0, this.b(), $$1);
+   }
+
+   default void a(cvx $$0, UnaryOperator<cvx> $$1) {
+      T $$2 = $$0.a(this.a());
+      if ($$2 != null) {
+         UnaryOperator<cvx> $$3 = $$1x -> {
+            if ($$1x.f()) {
+               return $$1x;
+            } else {
+               cvx $$2x = $$1.apply($$1x);
+               $$2x.f($$2x.k());
+               return $$2x;
+            }
+         };
+         this.a($$0, this.a($$2).map($$3));
+      }
    }
 }

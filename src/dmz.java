@@ -1,89 +1,99 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiFunction;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dmz extends dhv implements dhp {
-   public static final MapCodec<dmz> a = b(dmz::new);
-   public static final int b = 1;
-   public static final int c = 4;
-   public static final dvm d = dvi.R;
-   public static final dvs e = dvi.S;
-   private static final BiFunction<jk, Integer, ezq> f = ad.a(
-      ($$0, $$1) -> {
-         ezq[] $$2 = new ezq[]{
-            dhm.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
-            dhm.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
-            dhm.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
-            dhm.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
-         };
-         ezq $$3 = ezn.a();
-
-         for (int $$4 = 0; $$4 < $$1; $$4++) {
-            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
-            $$3 = ezn.a($$3, $$2[$$5]);
-         }
-
-         return $$3.b();
-      }
+public class dmz extends dih implements dib {
+   public static final MapCodec<dmz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alg.a(ly.aJ).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, dmz::new)
    );
+   protected static final float b = 3.0F;
+   protected static final fab c = dhy.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final alg<edr<?, ?>> d;
 
    @Override
    public MapCodec<dmz> a() {
       return a;
    }
 
-   protected dmz(dur.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(d, jk.c).b(e, Integer.valueOf(1)));
+   public dmz(alg<edr<?, ?>> $$0, dvc.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   public dus a(dus $$0, doa $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return c;
    }
 
    @Override
-   public dus a(dus $$0, dmj $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
+   protected void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
 
-   @Override
-   public boolean a(dus $$0, czn $$1) {
-      return !$$1.h() && $$1.n().a(this.q()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
-   }
+         for (jg $$6 : jg.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
+         }
 
-   @Override
-   public ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return f.apply($$0.c(d), $$0.c(e));
-   }
+         jg $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
 
-   @Override
-   public dus a(czn $$0) {
-      dus $$1 = $$0.q().a_($$0.a());
-      return $$1.a(this) ? $$1.b(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.n().b(d, $$0.g().g());
-   }
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.u($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
 
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(d, e);
-   }
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
 
-   @Override
-   public boolean b(dem $$0, jf $$1, dus $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
-      int $$4 = $$3.c(e);
-      if ($$4 < 4) {
-         $$0.a($$2, $$3.b(e, Integer.valueOf($$4 + 1)), 2);
-      } else {
-         a($$0, $$2, new cvs(this));
+         if ($$1.u($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
+   }
+
+   @Override
+   protected boolean b(dvd $$0, dea $$1, jg $$2) {
+      return $$0.s();
+   }
+
+   @Override
+   protected boolean a(dvd $$0, dey $$1, jg $$2) {
+      jg $$3 = $$2.e();
+      dvd $$4 = $$1.a_($$3);
+      return $$4.a(awz.bb) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   }
+
+   public boolean a(arm $$0, jg $$1, dvd $$2, azr $$3) {
+      Optional<? extends jp<edr<?, ?>>> $$4 = $$0.H_().e(ly.aJ).a(this.d);
+      if ($$4.isEmpty()) {
+         return false;
+      } else {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
+            return false;
+         }
+      }
+   }
+
+   @Override
+   public boolean b(dey $$0, jg $$1, dvd $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dev $$0, azr $$1, jg $$2, dvd $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(arm $$0, azr $$1, jg $$2, dvd $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

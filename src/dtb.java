@@ -1,61 +1,127 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record dtb(Optional<cvn> d, Optional<cvn> e, Optional<cvn> f, Optional<cvn> g) {
-   public static final dtb a = new dtb(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
-   public static final Codec<dtb> b = lv.g.q().sizeLimitedListOf(4).xmap(dtb::new, dtb::a);
-   public static final zc<wp, dtb> c = za.a(lw.K).a(za.c(4)).a(dtb::new, dtb::a);
+public class dtb extends dsg implements bsb {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final azr k = azr.a();
+   @Nullable
+   private xh l;
 
-   private dtb(List<cvn> $$0) {
-      this(a($$0, 0), a($$0, 1), a($$0, 2), a($$0, 3));
+   public dtb(jg $$0, dvd $$1) {
+      super(dsi.m, $$0, $$1);
    }
 
-   public dtb(cvn $$0, cvn $$1, cvn $$2, cvn $$3) {
-      this(List.of($$0, $$1, $$2, $$3));
-   }
-
-   private static Optional<cvn> a(List<cvn> $$0, int $$1) {
-      if ($$1 >= $$0.size()) {
-         return Optional.empty();
-      } else {
-         cvn $$2 = $$0.get($$1);
-         return $$2 == cvw.qM ? Optional.empty() : Optional.of($$2);
+   @Override
+   protected void b(uj $$0, jr.a $$1) {
+      super.b($$0, $$1);
+      if (this.am()) {
+         $$0.a("CustomName", xh.a.a(this.l, $$1));
       }
    }
 
-   public ug a(ug $$0) {
-      if (this.equals(a)) {
-         return $$0;
-      } else {
-         $$0.a("sherds", (vd)b.encodeStart(uu.a, this).getOrThrow());
-         return $$0;
+   @Override
+   protected void a(uj $$0, jr.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.l = a($$0.l("CustomName"), $$1);
       }
    }
 
-   public List<cvn> a() {
-      return Stream.of(this.d, this.e, this.f, this.g).map($$0 -> $$0.orElse(cvw.qM)).toList();
+   public static void a(dev $$0, jg $$1, dvd $$2, dtb $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      coh $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.dC() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dI() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)azj.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
+
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
+         }
+      } else {
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
+      }
+
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
+      }
+
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = azj.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = azj.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
    }
 
-   public static dtb b(@Nullable ug $$0) {
-      return $$0 != null && $$0.e("sherds") ? b.parse(uu.a, $$0.c("sherds")).result().orElse(a) : a;
+   @Override
+   public xh al() {
+      return (xh)(this.l != null ? this.l : xh.c("container.enchant"));
    }
 
-   public Optional<cvn> b() {
-      return this.d;
+   public void a(@Nullable xh $$0) {
+      this.l = $$0;
    }
 
-   public Optional<cvn> c() {
-      return this.e;
+   @Nullable
+   @Override
+   public xh an() {
+      return this.l;
    }
 
-   public Optional<cvn> d() {
-      return this.f;
+   @Override
+   protected void a(dsg.b $$0) {
+      super.a($$0);
+      this.l = $$0.a(kt.g);
    }
 
-   public Optional<cvn> e() {
-      return this.g;
+   @Override
+   protected void a(kp.a $$0) {
+      super.a($$0);
+      $$0.a(kt.g, this.l);
+   }
+
+   @Override
+   public void a(uj $$0) {
+      $$0.r("CustomName");
    }
 }

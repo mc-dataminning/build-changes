@@ -1,6 +1,13 @@
 import javax.annotation.Nullable;
 
 public interface bvl {
-   @Nullable
-   btr s();
+   boolean f();
+
+   void a(cvx var1, @Nullable awl var2);
+
+   default awj ad_() {
+      return awk.mP;
+   }
+
+   boolean i();
 }

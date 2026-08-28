@@ -1,193 +1,28 @@
-public final class awv {
-   public static final axl<dhm> a = a("wool");
-   public static final axl<dhm> b = a("planks");
-   public static final axl<dhm> c = a("stone_bricks");
-   public static final axl<dhm> d = a("wooden_buttons");
-   public static final axl<dhm> e = a("stone_buttons");
-   public static final axl<dhm> f = a("buttons");
-   public static final axl<dhm> g = a("wool_carpets");
-   public static final axl<dhm> h = a("wooden_doors");
-   public static final axl<dhm> i = a("mob_interactable_doors");
-   public static final axl<dhm> j = a("wooden_stairs");
-   public static final axl<dhm> k = a("wooden_slabs");
-   public static final axl<dhm> l = a("wooden_fences");
-   public static final axl<dhm> m = a("pressure_plates");
-   public static final axl<dhm> n = a("wooden_pressure_plates");
-   public static final axl<dhm> o = a("stone_pressure_plates");
-   public static final axl<dhm> p = a("wooden_trapdoors");
-   public static final axl<dhm> q = a("doors");
-   public static final axl<dhm> r = a("saplings");
-   public static final axl<dhm> s = a("logs_that_burn");
-   public static final axl<dhm> t = a("overworld_natural_logs");
-   public static final axl<dhm> u = a("logs");
-   public static final axl<dhm> v = a("dark_oak_logs");
-   public static final axl<dhm> w = a("oak_logs");
-   public static final axl<dhm> x = a("birch_logs");
-   public static final axl<dhm> y = a("acacia_logs");
-   public static final axl<dhm> z = a("cherry_logs");
-   public static final axl<dhm> A = a("jungle_logs");
-   public static final axl<dhm> B = a("spruce_logs");
-   public static final axl<dhm> C = a("mangrove_logs");
-   public static final axl<dhm> D = a("crimson_stems");
-   public static final axl<dhm> E = a("warped_stems");
-   public static final axl<dhm> F = a("bamboo_blocks");
-   public static final axl<dhm> G = a("wart_blocks");
-   public static final axl<dhm> H = a("banners");
-   public static final axl<dhm> I = a("sand");
-   public static final axl<dhm> J = a("smelts_to_glass");
-   public static final axl<dhm> K = a("stairs");
-   public static final axl<dhm> L = a("slabs");
-   public static final axl<dhm> M = a("walls");
-   public static final axl<dhm> N = a("anvil");
-   public static final axl<dhm> O = a("rails");
-   public static final axl<dhm> P = a("leaves");
-   public static final axl<dhm> Q = a("trapdoors");
-   public static final axl<dhm> R = a("small_flowers");
-   public static final axl<dhm> S = a("beds");
-   public static final axl<dhm> T = a("fences");
-   public static final axl<dhm> U = a("tall_flowers");
-   public static final axl<dhm> V = a("flowers");
-   public static final axl<dhm> W = a("piglin_repellents");
-   public static final axl<dhm> X = a("gold_ores");
-   public static final axl<dhm> Y = a("iron_ores");
-   public static final axl<dhm> Z = a("diamond_ores");
-   public static final axl<dhm> aa = a("redstone_ores");
-   public static final axl<dhm> ab = a("lapis_ores");
-   public static final axl<dhm> ac = a("coal_ores");
-   public static final axl<dhm> ad = a("emerald_ores");
-   public static final axl<dhm> ae = a("copper_ores");
-   public static final axl<dhm> af = a("candles");
-   public static final axl<dhm> ag = a("dirt");
-   public static final axl<dhm> ah = a("terracotta");
-   public static final axl<dhm> ai = a("badlands_terracotta");
-   public static final axl<dhm> aj = a("concrete_powder");
-   public static final axl<dhm> ak = a("completes_find_tree_tutorial");
-   public static final axl<dhm> al = a("flower_pots");
-   public static final axl<dhm> am = a("enderman_holdable");
-   public static final axl<dhm> an = a("ice");
-   public static final axl<dhm> ao = a("valid_spawn");
-   public static final axl<dhm> ap = a("impermeable");
-   public static final axl<dhm> aq = a("underwater_bonemeals");
-   public static final axl<dhm> ar = a("coral_blocks");
-   public static final axl<dhm> as = a("wall_corals");
-   public static final axl<dhm> at = a("coral_plants");
-   public static final axl<dhm> au = a("corals");
-   public static final axl<dhm> av = a("bamboo_plantable_on");
-   public static final axl<dhm> aw = a("standing_signs");
-   public static final axl<dhm> ax = a("wall_signs");
-   public static final axl<dhm> ay = a("signs");
-   public static final axl<dhm> az = a("ceiling_hanging_signs");
-   public static final axl<dhm> aA = a("wall_hanging_signs");
-   public static final axl<dhm> aB = a("all_hanging_signs");
-   public static final axl<dhm> aC = a("all_signs");
-   public static final axl<dhm> aD = a("dragon_immune");
-   public static final axl<dhm> aE = a("dragon_transparent");
-   public static final axl<dhm> aF = a("wither_immune");
-   public static final axl<dhm> aG = a("wither_summon_base_blocks");
-   public static final axl<dhm> aH = a("beehives");
-   public static final axl<dhm> aI = a("crops");
-   public static final axl<dhm> aJ = a("bee_growables");
-   public static final axl<dhm> aK = a("portals");
-   public static final axl<dhm> aL = a("fire");
-   public static final axl<dhm> aM = a("nylium");
-   public static final axl<dhm> aN = a("beacon_base_blocks");
-   public static final axl<dhm> aO = a("soul_speed_blocks");
-   public static final axl<dhm> aP = a("wall_post_override");
-   public static final axl<dhm> aQ = a("climbable");
-   public static final axl<dhm> aR = a("fall_damage_resetting");
-   public static final axl<dhm> aS = a("shulker_boxes");
-   public static final axl<dhm> aT = a("hoglin_repellents");
-   public static final axl<dhm> aU = a("soul_fire_base_blocks");
-   public static final axl<dhm> aV = a("strider_warm_blocks");
-   public static final axl<dhm> aW = a("campfires");
-   public static final axl<dhm> aX = a("guarded_by_piglins");
-   public static final axl<dhm> aY = a("prevent_mob_spawning_inside");
-   public static final axl<dhm> aZ = a("fence_gates");
-   public static final axl<dhm> ba = a("unstable_bottom_center");
-   public static final axl<dhm> bb = a("mushroom_grow_block");
-   public static final axl<dhm> bc = a("infiniburn_overworld");
-   public static final axl<dhm> bd = a("infiniburn_nether");
-   public static final axl<dhm> be = a("infiniburn_end");
-   public static final axl<dhm> bf = a("base_stone_overworld");
-   public static final axl<dhm> bg = a("stone_ore_replaceables");
-   public static final axl<dhm> bh = a("deepslate_ore_replaceables");
-   public static final axl<dhm> bi = a("base_stone_nether");
-   public static final axl<dhm> bj = a("overworld_carver_replaceables");
-   public static final axl<dhm> bk = a("nether_carver_replaceables");
-   public static final axl<dhm> bl = a("candle_cakes");
-   public static final axl<dhm> bm = a("cauldrons");
-   public static final axl<dhm> bn = a("crystal_sound_blocks");
-   public static final axl<dhm> bo = a("inside_step_sound_blocks");
-   public static final axl<dhm> bp = a("combination_step_sound_blocks");
-   public static final axl<dhm> bq = a("camel_sand_step_sound_blocks");
-   public static final axl<dhm> br = a("occludes_vibration_signals");
-   public static final axl<dhm> bs = a("dampens_vibrations");
-   public static final axl<dhm> bt = a("dripstone_replaceable_blocks");
-   public static final axl<dhm> bu = a("cave_vines");
-   public static final axl<dhm> bv = a("moss_replaceable");
-   public static final axl<dhm> bw = a("lush_ground_replaceable");
-   public static final axl<dhm> bx = a("azalea_root_replaceable");
-   public static final axl<dhm> by = a("small_dripleaf_placeable");
-   public static final axl<dhm> bz = a("big_dripleaf_placeable");
-   public static final axl<dhm> bA = a("snow");
-   public static final axl<dhm> bB = a("mineable/axe");
-   public static final axl<dhm> bC = a("mineable/hoe");
-   public static final axl<dhm> bD = a("mineable/pickaxe");
-   public static final axl<dhm> bE = a("mineable/shovel");
-   public static final axl<dhm> bF = a("sword_efficient");
-   public static final axl<dhm> bG = a("needs_diamond_tool");
-   public static final axl<dhm> bH = a("needs_iron_tool");
-   public static final axl<dhm> bI = a("needs_stone_tool");
-   public static final axl<dhm> bJ = a("incorrect_for_netherite_tool");
-   public static final axl<dhm> bK = a("incorrect_for_diamond_tool");
-   public static final axl<dhm> bL = a("incorrect_for_iron_tool");
-   public static final axl<dhm> bM = a("incorrect_for_stone_tool");
-   public static final axl<dhm> bN = a("incorrect_for_gold_tool");
-   public static final axl<dhm> bO = a("incorrect_for_wooden_tool");
-   public static final axl<dhm> bP = a("features_cannot_replace");
-   public static final axl<dhm> bQ = a("lava_pool_stone_cannot_replace");
-   public static final axl<dhm> bR = a("geode_invalid_blocks");
-   public static final axl<dhm> bS = a("frog_prefer_jump_to");
-   public static final axl<dhm> bT = a("sculk_replaceable");
-   public static final axl<dhm> bU = a("sculk_replaceable_world_gen");
-   public static final axl<dhm> bV = a("ancient_city_replaceable");
-   public static final axl<dhm> bW = a("vibration_resonators");
-   public static final axl<dhm> bX = a("animals_spawnable_on");
-   public static final axl<dhm> bY = a("armadillo_spawnable_on");
-   public static final axl<dhm> bZ = a("axolotls_spawnable_on");
-   public static final axl<dhm> ca = a("goats_spawnable_on");
-   public static final axl<dhm> cb = a("mooshrooms_spawnable_on");
-   public static final axl<dhm> cc = a("parrots_spawnable_on");
-   public static final axl<dhm> cd = a("polar_bears_spawnable_on_alternate");
-   public static final axl<dhm> ce = a("rabbits_spawnable_on");
-   public static final axl<dhm> cf = a("foxes_spawnable_on");
-   public static final axl<dhm> cg = a("wolves_spawnable_on");
-   public static final axl<dhm> ch = a("frogs_spawnable_on");
-   public static final axl<dhm> ci = a("azalea_grows_on");
-   public static final axl<dhm> cj = a("convertable_to_mud");
-   public static final axl<dhm> ck = a("mangrove_logs_can_grow_through");
-   public static final axl<dhm> cl = a("mangrove_roots_can_grow_through");
-   public static final axl<dhm> cm = a("dead_bush_may_place_on");
-   public static final axl<dhm> cn = a("snaps_goat_horn");
-   public static final axl<dhm> co = a("replaceable_by_trees");
-   public static final axl<dhm> cp = a("snow_layer_cannot_survive_on");
-   public static final axl<dhm> cq = a("snow_layer_can_survive_on");
-   public static final axl<dhm> cr = a("invalid_spawn_inside");
-   public static final axl<dhm> cs = a("sniffer_diggable_block");
-   public static final axl<dhm> ct = a("sniffer_egg_hatch_boost");
-   public static final axl<dhm> cu = a("trail_ruins_replaceable");
-   public static final axl<dhm> cv = a("replaceable");
-   public static final axl<dhm> cw = a("enchantment_power_provider");
-   public static final axl<dhm> cx = a("enchantment_power_transmitter");
-   public static final axl<dhm> cy = a("maintains_farmland");
-   public static final axl<dhm> cz = a("blocks_wind_charge_explosions");
-   public static final axl<dhm> cA = a("does_not_block_hoppers");
-   public static final axl<dhm> cB = a("air");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private awv() {
+public class awv {
+   protected final Object2IntMap<awr<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public awv() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static axl<dhm> a(String $$0) {
-      return axl.a(lw.f, ale.b($$0));
+   public void b(coh $$0, awr<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(coh $$0, awr<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(awt<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(awr<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

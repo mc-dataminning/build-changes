@@ -1,17 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
 
-public record gyo(String b, String c, boolean d) {
-   public static final Codec<gyo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayo.z.fieldOf("region").forGetter(gyo::b),
-               ayo.z.fieldOf("name").forGetter(gyo::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gyo::d)
-            )
-            .apply($$0, gyo::new)
-   );
+public class gyo {
+   @Deprecated
+   public static int[] a(ava $$0, alh $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         fct $$3 = fct.a($$2);
+      ) {
+         var4 = $$3.f();
+      }
 
-   public xe a() {
-      return xe.b(this.c + " (" + this.b + ")");
+      return var4;
    }
 }

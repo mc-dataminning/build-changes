@@ -1,26 +1,15 @@
-import java.util.function.Function;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.system.MemoryUtil;
 
-public interface fbg {
-   float getAdvance();
-
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+public class fbg {
+   public static void a() {
+      MemoryUtil.memSet(0L, 0, 1L);
    }
 
-   default float a() {
-      return 1.0F;
+   public static double b() {
+      return GLFW.glfwGetTime();
    }
 
-   default float b() {
-      return 1.0F;
-   }
-
-   fnk bake(Function<fbi, fnk> var1);
-
-   public interface a extends fbg {
-      @Override
-      default fnk bake(Function<fbi, fnk> $$0) {
-         return fnl.a;
-      }
+   private fbg() {
    }
 }

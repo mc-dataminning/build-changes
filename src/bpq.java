@@ -1,5 +1,21 @@
-import java.util.List;
+public enum bpq {
+   a("pathfinding"),
+   b("event-loops"),
+   c("consecutive-executors"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public interface bpq {
-   List<bpn> bx();
+   private final String j;
+
+   private bpq(final String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

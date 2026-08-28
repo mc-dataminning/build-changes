@@ -1,88 +1,141 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.IntStream;
-import org.slf4j.Logger;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
+import javax.annotation.Nullable;
 
-public class bpw implements bpp {
-   private static final Logger a = LogUtils.getLogger();
-   private final Set<bpn> b = new ObjectOpenHashSet();
-   private final bpv c = new bpv();
+public class bpw implements bpy {
+   public static final int a = 10;
+   @Nullable
+   private static Consumer<Path> b = null;
+   private final Map<bpr, List<bqd>> c = new Object2ObjectOpenHashMap();
+   private final boe d;
+   private final Executor e;
+   private final bqc f;
+   private final Consumer<boj> g;
+   private final Consumer<Path> h;
+   private final bpt i;
+   private final LongSupplier j;
+   private final long k;
+   private int l;
+   private boi m;
+   private volatile boolean n;
+   private Set<bpr> o = ImmutableSet.of();
 
-   public bpw(LongSupplier $$0, boolean $$1) {
-      this.b.add(a($$0));
-      if ($$1) {
-         this.b.addAll(a());
-      }
+   private bpw(bpt $$0, LongSupplier $$1, Executor $$2, bqc $$3, Consumer<boj> $$4, Consumer<Path> $$5) {
+      this.i = $$0;
+      this.j = $$1;
+      this.d = new boe($$1, () -> this.l);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = b == null ? $$5 : $$5.andThen(b);
+      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
+      this.m = new bod(this.j, () -> this.l, false);
+      this.d.c();
    }
 
-   public static Set<bpn> a() {
-      Builder<bpn> $$0 = ImmutableSet.builder();
-
-      try {
-         bpw.a $$1 = new bpw.a();
-         IntStream.range(0, $$1.a).mapToObj($$1x -> bpn.a("cpu#" + $$1x, bpm.h, () -> $$1.a($$1))).forEach($$0::add);
-      } catch (Throwable var2) {
-         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
-      }
-
-      $$0.add(bpn.a("heap MiB", bpm.e, () -> (double)ac.a(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())));
-      $$0.addAll(bpo.a.a());
-      return $$0.build();
+   public static bpw a(bpt $$0, LongSupplier $$1, Executor $$2, bqc $$3, Consumer<boj> $$4, Consumer<Path> $$5) {
+      return new bpw($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public Set<bpn> a(Supplier<boe> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
-   }
-
-   public static bpn a(final LongSupplier $$0) {
-      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
-         public long read() {
-            return $$0.getAsLong();
-         }
-      });
-      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
-         if ($$0x.isRunning()) {
-            $$0x.stop();
-         }
-
-         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
-         $$0x.reset();
-         return (double)$$1x;
-      };
-      bpn.d $$3 = new bpn.d(2.0F);
-      return bpn.a("ticktime", bpm.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
-   }
-
-   static class a {
-      private final SystemInfo b = new SystemInfo();
-      private final CentralProcessor c = this.b.getHardware().getProcessor();
-      public final int a = this.c.getLogicalProcessorCount();
-      private long[][] d = this.c.getProcessorCpuLoadTicks();
-      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-      private long f;
-
-      public double a(int $$0) {
-         long $$1 = System.currentTimeMillis();
-         if (this.f == 0L || this.f + 501L < $$1) {
-            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-            this.d = this.c.getProcessorCpuLoadTicks();
-            this.f = $$1;
-         }
-
-         return this.e[$$0] * 100.0;
+   public synchronized void a() {
+      if (this.e()) {
+         this.n = true;
       }
+   }
+
+   @Override
+   public synchronized void b() {
+      if (this.e()) {
+         this.m = boh.a;
+         this.g.accept(bof.a);
+         this.a(this.o);
+      }
+   }
+
+   @Override
+   public void c() {
+      this.g();
+      this.o = this.i.a(() -> this.m);
+
+      for (bpr $$0 : this.o) {
+         $$0.a();
+      }
+
+      this.l++;
+   }
+
+   @Override
+   public void d() {
+      this.g();
+      if (this.l != 0) {
+         for (bpr $$0 : this.o) {
+            $$0.a(this.l);
+            if ($$0.g()) {
+               bqd $$1 = new bqd(Instant.now(), this.l, this.m.d());
+               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+            }
+         }
+
+         if (!this.n && this.j.getAsLong() <= this.k) {
+            this.m = new bod(this.j, () -> this.l, false);
+         } else {
+            this.n = false;
+            boj $$2 = this.d.e();
+            this.m = boh.a;
+            this.g.accept($$2);
+            this.a($$2);
+         }
+      }
+   }
+
+   @Override
+   public boolean e() {
+      return this.d.a();
+   }
+
+   @Override
+   public bok f() {
+      return bok.a(this.d.d(), this.m);
+   }
+
+   private void g() {
+      if (!this.e()) {
+         throw new IllegalStateException("Not started!");
+      }
+   }
+
+   private void a(boj $$0) {
+      HashSet<bpr> $$1 = new HashSet<>(this.o);
+      this.e.execute(() -> {
+         Path $$2 = this.f.a($$1, this.c, $$0);
+         this.a($$1);
+         this.h.accept($$2);
+      });
+   }
+
+   private void a(Collection<bpr> $$0) {
+      for (bpr $$1 : $$0) {
+         $$1.b();
+      }
+
+      this.c.clear();
+      this.d.b();
+   }
+
+   public static void a(Consumer<Path> $$0) {
+      b = $$0;
    }
 }

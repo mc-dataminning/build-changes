@@ -1,3 +1,3 @@
-public class gty extends gtq {
-   public eyw a = eyw.c;
+public class gty extends gud {
+   public boolean a;
 }

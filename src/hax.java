@@ -1,99 +1,107 @@
-import javax.annotation.Nullable;
+public abstract class hax implements hbp {
+   protected hbm a;
+   protected final awl b;
+   protected final alh c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected hbp.a k = hbp.a.b;
+   protected boolean l;
+   protected azr m;
 
-public class hax implements hch<hax> {
-   public static final akx a = new akx("sounds", ".ogg");
-   private final ale b;
-   private final bra c;
-   private final bra d;
-   private final int e;
-   private final hax.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
-
-   public hax(ale $$0, bra $$1, bra $$2, int $$3, hax.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   protected hax(awj $$0, awl $$1, azr $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   public ale a() {
-      return this.b;
+   protected hax(alh $$0, awl $$1, azr $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
-   public ale b() {
-      return a.a(this.b);
-   }
-
-   public bra c() {
+   @Override
+   public alh a() {
       return this.c;
    }
 
-   public bra d() {
-      return this.d;
-   }
-
    @Override
-   public int e() {
-      return this.e;
-   }
+   public hcv a(hcu $$0) {
+      if (this.c.equals(hcu.c)) {
+         this.a = hcu.e;
+         return hcu.d;
+      } else {
+         hcv $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = hcu.b;
+         } else {
+            this.a = $$1.a(this.m);
+         }
 
-   public hax a(azn $$0) {
-      return this;
-   }
-
-   @Override
-   public void a(hcc $$0) {
-      if (this.h) {
-         $$0.a(this);
+         return $$1;
       }
    }
 
-   public hax.a f() {
-      return this.f;
+   @Override
+   public hbm b() {
+      return this.a;
    }
 
-   public boolean g() {
-      return this.g;
+   @Override
+   public awl c() {
+      return this.b;
    }
 
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
+   @Override
+   public boolean d() {
       return this.i;
    }
 
    @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
+   public int e() {
+      return this.j;
    }
 
-   public static enum a {
-      a("file"),
-      b("event");
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
 
-      private final String c;
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
 
-      private a(final String $$0) {
-         this.c = $$0;
-      }
+   @Override
+   public double h() {
+      return this.f;
+   }
 
-      @Nullable
-      public static hax.a a(String $$0) {
-         for (hax.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
+   @Override
+   public double i() {
+      return this.g;
+   }
 
-         return null;
-      }
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public hbp.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

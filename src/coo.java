@@ -1,3 +1,8 @@
-public interface coo {
-   cvs m();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface coo {
 }

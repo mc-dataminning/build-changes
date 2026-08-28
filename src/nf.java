@@ -1,143 +1,177 @@
 import java.util.function.BiConsumer;
 
-public record nf(jq.a a) implements na {
+public record nf(jr.a a) implements nc {
    @Override
-   public void generate(BiConsumer<ald<etq>, etq.a> $$0) {
+   public void generate(BiConsumer<alg<eub>, eub.a> $$0) {
+      jr.b<dbm> $$1 = this.a.d(ly.aM);
       $$0.accept(
-         eth.aT,
-         etq.b()
+         ets.t,
+         eub.b()
             .a(
-               etp.a()
-                  .a(exp.a(1.0F))
-                  .a(ety.a(cvw.xT).a(2))
-                  .a(ety.a(cvw.xV).a(2))
-                  .a(ety.a(cvw.qM))
-                  .a(ety.a(cvw.oB))
-                  .a(ety.a(cvw.pr))
-                  .a(
-                     ety.a(cvw.vY)
-                        .a(
-                           evx.c()
-                              .a(bta.p, exw.a(7.0F, 10.0F))
-                              .a(bta.h, exw.a(7.0F, 10.0F))
-                              .a(bta.r, exw.a(6.0F, 8.0F))
-                              .a(bta.o, exw.a(5.0F, 7.0F))
-                              .a(bta.s, exw.a(10.0F, 20.0F))
-                              .a(bta.w, exw.a(7.0F, 10.0F))
-                        )
-                  )
+               eua.a()
+                  .a(eya.a(1.0F))
+                  .a(euj.a(cwb.qb).a(20))
+                  .a(euj.a(cwb.qc))
+                  .a(euj.a(cwb.uN).a(30))
+                  .a(euj.a(cwb.qQ).a(10).a(euz.a(this.a)))
+                  .a(euj.a(cwb.pe).a(5))
+                  .a(euh.b().a(5))
             )
-      );
-      $$0.accept(
-         eth.aU,
-         etq.b()
             .a(
-               etp.a()
-                  .a(exp.a(1.0F))
-                  .a(ety.a(cvw.xS))
-                  .a(ety.a(cvw.yf))
-                  .a(ety.a(cvw.yi))
-                  .a(ety.a(cvw.ym))
-                  .a(ety.a(cvw.oA))
-                  .a(ety.a(cvw.md))
-                  .a(ety.a(cvw.pv))
-                  .a(ety.a(cvw.oB))
+               eua.a()
+                  .a(eyh.a(2.0F, 4.0F))
+                  .a(euj.a(cwb.oG).a(10).a(ewb.a(eyh.a(1.0F, 5.0F))))
+                  .a(euj.a(cwb.oK).a(5).a(ewb.a(eyh.a(1.0F, 3.0F))))
+                  .a(euj.a(cwb.lH).a(5).a(ewb.a(eyh.a(4.0F, 9.0F))))
+                  .a(euj.a(cwb.oC).a(5).a(ewb.a(eyh.a(4.0F, 9.0F))))
+                  .a(euj.a(cwb.oA).a(3).a(ewb.a(eyh.a(1.0F, 2.0F))))
+                  .a(euj.a(cwb.oy).a(10).a(ewb.a(eyh.a(3.0F, 8.0F))))
+                  .a(euj.a(cwb.py).a(15).a(ewb.a(eyh.a(1.0F, 3.0F))))
+                  .a(euj.a(cwb.wy).a(15).a(ewb.a(eyh.a(3.0F, 6.0F))))
+                  .a(euj.a(cwb.sa).a(10).a(ewb.a(eyh.a(2.0F, 4.0F))))
+                  .a(euj.a(cwb.rZ).a(10).a(ewb.a(eyh.a(2.0F, 4.0F))))
+                  .a(euj.a(cwb.vn).a(10).a(ewb.a(eyh.a(2.0F, 4.0F))))
             )
-      );
-      $$0.accept(
-         eth.aV,
-         etq.b()
             .a(
-               etp.a()
-                  .a(exp.a(1.0F))
-                  .a(ety.a(cvw.oB).a(2))
-                  .a(ety.a(cvw.px).a(2))
-                  .a(ety.a(cvw.oR).a(2))
-                  .a(ety.a(cvw.eX).a(2))
-                  .a(ety.a(cvw.qM).a(2))
-                  .a(ety.a(cvw.rn).a(2))
-                  .a(ety.a(cvw.ru).a(2))
-                  .a(ety.a(cvw.rm).a(2))
-                  .a(ety.a(cvw.rj).a(2))
-                  .a(ety.a(cvw.rk).a(2))
-                  .a(ety.a(cvw.xl).a(2))
-                  .a(ety.a(cvw.xk).a(2))
-                  .a(ety.a(cvw.xh).a(2))
-                  .a(ety.a(cvw.xj).a(2))
-                  .a(ety.a(cvw.iv))
-                  .a(ety.a(cvw.iz))
-                  .a(ety.a(cvw.iE))
-                  .a(ety.a(cvw.iw))
-                  .a(ety.a(cvw.iH))
-                  .a(ety.a(cvw.ix))
-                  .a(ety.a(cvw.iD))
-                  .a(ety.a(cvw.qp))
-                  .a(ety.a(cvw.qo))
-                  .a(ety.a(cvw.sj))
-                  .a(ety.a(cvw.oy))
-                  .a(ety.a(cvw.pw))
-                  .a(ety.a(cvw.vn))
-                  .a(ety.a(cvw.cR))
-                  .a(ety.a(cvw.ug))
-                  .a(ety.a(cvw.pt))
-                  .a(ety.a(cvw.uM))
+               eua.a()
+                  .a(eya.a(3.0F))
+                  .a(euj.a(dia.cP).a(20).a(ewb.a(eyh.a(4.0F, 8.0F))))
+                  .a(euj.a(dia.bp).a(5).a(ewb.a(eyh.a(1.0F, 4.0F))))
+                  .a(euj.a(dia.bq).a(5).a(ewb.a(eyh.a(1.0F, 4.0F))))
+                  .a(euj.a(dia.hh).a(5).a(ewb.a(eyh.a(1.0F, 4.0F))))
+                  .a(euj.a(dia.cp).a(15).a(ewb.a(eyh.a(1.0F, 16.0F))))
             )
+            .a(eua.a().a(eya.a(1.0F)).a(euh.b().a(4)).a(euj.a(cwb.qQ).a(1).a(new euz.a().a($$1.b(dbr.u)))))
       );
-      $$0.accept(
-         eth.aW,
-         etq.b()
-            .a(
-               etp.a()
-                  .a(exp.a(1.0F))
-                  .a(ety.a(cvw.xW))
-                  .a(ety.a(cvw.xX))
-                  .a(ety.a(cvw.ya))
-                  .a(ety.a(cvw.yc))
-                  .a(ety.a(cvw.yd))
-                  .a(ety.a(cvw.ye))
-                  .a(ety.a(cvw.yk))
-                  .a(ety.a(cvw.xK))
-                  .a(ety.a(cvw.xN))
-                  .a(ety.a(cvw.xL))
-                  .a(ety.a(cvw.xO))
-                  .a(ety.a(cvw.vP))
-            )
-      );
-      $$0.accept(
-         eth.aX,
-         etq.b()
-            .a(
-               etp.a()
-                  .a(exp.a(1.0F))
-                  .a(ety.a(cvw.xR))
-                  .a(ety.a(cvw.yl))
-                  .a(ety.a(cvw.yn))
-                  .a(ety.a(cvw.kq))
-                  .a(ety.a(cvw.pf))
-                  .a(ety.a(cvw.oB).a(2))
-                  .a(ety.a(cvw.px).a(2))
-                  .a(ety.a(cvw.oR).a(2))
-                  .a(ety.a(cvw.oy).a(2))
-                  .a(ety.a(cvw.sj).a(2))
-            )
-      );
-      $$0.accept(
-         eth.aY,
-         etq.b()
-            .a(
-               etp.a()
-                  .a(exp.a(1.0F))
-                  .a(ety.a(cvw.xU))
-                  .a(ety.a(cvw.xY))
-                  .a(ety.a(cvw.yg))
-                  .a(ety.a(cvw.yh))
-                  .a(ety.a(cvw.pf))
-                  .a(ety.a(cvw.oB).a(2))
-                  .a(ety.a(cvw.px).a(2))
-                  .a(ety.a(cvw.oR).a(2))
-                  .a(ety.a(cvw.oy).a(2))
-                  .a(ety.a(cvw.sj).a(2))
-            )
-      );
+      $$0.accept(ets.O, this.c());
+      $$0.accept(ets.y, this.b());
+      $$0.accept(ets.z, this.d());
+      $$0.accept(ets.J, this.a());
+   }
+
+   public eub.a a() {
+      jr.b<dbm> $$0 = this.a.d(ly.aM);
+      return eub.b()
+         .a(eua.a().a(eyh.a(0.0F, 1.0F)).a(euj.a(cwb.vX)))
+         .a(
+            eua.a()
+               .a(eyh.a(2.0F, 3.0F))
+               .a(euj.a(cwb.px).a(7).a(ewb.a(eyh.a(3.0F, 5.0F))))
+               .a(euj.a(cwb.ui).a(5).a(ewb.a(eyh.a(2.0F, 5.0F))))
+               .a(euj.a(cwb.uh).a(5).a(ewb.a(eyh.a(3.0F, 5.0F))))
+         )
+         .a(eua.a().a(eyh.a(1.0F, 3.0F)).a(euj.a(dia.aa).a(ewb.a(eyh.a(2.0F, 3.0F)))))
+         .a(
+            eua.a()
+               .a(eyh.a(2.0F, 3.0F))
+               .a(euj.a(cwb.tX).a(7))
+               .a(euj.a(cwb.pt).a(4).a(ewb.a(eyh.a(1.0F, 6.0F))))
+               .a(euj.a(cwb.ox).a(4).a(ewb.a(eyh.a(2.0F, 7.0F))))
+               .a(euj.a(cwb.mb).a(3).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.oG).a(3).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.qQ).a(1).a(euz.a(this.a)))
+         )
+         .a(eua.a().a(eyh.a(0.0F, 1.0F)).a(euj.a(cwb.wk)).a(ewa.a(axh.a)))
+         .a(eua.a().a(eya.a(1.0F)).a(euh.b().a(3)).a(euj.a(cwb.xz).a(1).a(ewb.a(eya.a(2.0F)))))
+         .a(eua.a().a(eya.a(1.0F)).a(euh.b().a(1)).a(euj.a(cwb.qQ).a(2).a(new euz.a().a($$0.b(dbr.J)))));
+   }
+
+   public eub.a b() {
+      jr.b<dbm> $$0 = this.a.d(ly.aM);
+      return eub.b()
+         .a(
+            eua.a()
+               .a(eyh.a(2.0F, 4.0F))
+               .a(euj.a(cwb.oA).a(5).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.oG).a(15).a(ewb.a(eyh.a(1.0F, 5.0F))))
+               .a(euj.a(cwb.oK).a(15).a(ewb.a(eyh.a(2.0F, 7.0F))))
+               .a(euj.a(cwb.oB).a(15).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.rA).a(25).a(ewb.a(eyh.a(4.0F, 6.0F))))
+               .a(euj.a(cwb.sn).a(25).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.sf).a(25).a(ewb.a(eyh.a(3.0F, 7.0F))))
+               .a(euj.a(cwb.nL).a(20))
+               .a(euj.a(cwb.uI).a(15))
+               .a(euj.a(cwb.uJ).a(10))
+               .a(euj.a(cwb.uK).a(5))
+               .a(euj.a(cwb.qQ).a(10).a(euz.a(this.a)))
+               .a(euj.a(cwb.qb).a(20))
+               .a(euj.a(cwb.qc).a(2))
+               .a(euh.b().a(15))
+         )
+         .a(
+            eua.a()
+               .a(eya.a(4.0F))
+               .a(euj.a(cwb.rA).a(10).a(ewb.a(eyh.a(1.0F, 8.0F))))
+               .a(euj.a(cwb.pv).a(10).a(ewb.a(eyh.a(1.0F, 8.0F))))
+               .a(euj.a(cwb.sf).a(10).a(ewb.a(eyh.a(1.0F, 8.0F))))
+               .a(euj.a(cwb.pt).a(10).a(ewb.a(eyh.a(1.0F, 8.0F))))
+               .a(euj.a(dia.I).a(10).a(ewb.a(eyh.a(1.0F, 8.0F))))
+         )
+         .a(eua.a().a(eya.a(1.0F)).a(euh.b().a(4)).a(euj.a(cwb.xA).a(1).a(ewb.a(eya.a(2.0F)))).a(euj.a(cwb.qQ).a(2).a(new euz.a().a($$0.b(dbr.w)))));
+   }
+
+   public eub.a c() {
+      jr.b<dbm> $$0 = this.a.d(ly.aM);
+      return eub.b()
+         .a(
+            eua.a()
+               .a(eyh.a(5.0F, 10.0F))
+               .a(euj.a(cwb.qc).a(1).a(ewb.a(eyh.a(1.0F, 2.0F))))
+               .a(euj.a(cwb.vO).a(1))
+               .a(euj.a(cwb.qT).a(2).a(ewb.a(eya.a(1.0F))))
+               .a(euj.a(cwb.gj).a(2).a(ewb.a(eyh.a(1.0F, 2.0F))))
+               .a(euj.a(cwb.uN).a(2))
+               .a(euj.a(cwb.pl).a(2).a(ewb.a(eya.a(1.0F))).a(ewc.a(eyh.a(0.8F, 1.0F))).a(eva.a(this.a, eyh.a(30.0F, 50.0F))))
+               .a(euj.a(cwb.uM).a(2).a(ewb.a(eya.a(1.0F))))
+               .a(euj.a(cwb.uK).a(2).a(ewb.a(eya.a(1.0F))))
+               .a(euj.a(cwb.nL).a(2).a(ewb.a(eya.a(1.0F))))
+               .a(euj.a(cwb.vA).a(2))
+               .a(euj.a(cwb.vB).a(2))
+               .a(euj.a(cwb.pN).a(2).a(eva.a(this.a, eyh.a(30.0F, 50.0F))))
+               .a(euj.a(cwb.qQ).a(3).a(new euz.a().a($$0.b(dbr.m))))
+               .a(euj.a(cwb.gh).a(3).a(ewb.a(eyh.a(4.0F, 10.0F))))
+               .a(euj.a(cwb.lZ).a(3).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.wW).a(3).a(ewb.a(eyh.a(1.0F, 4.0F))))
+               .a(euj.a(cwb.oE).a(3).a(ewb.a(eyh.a(1.0F, 15.0F))))
+               .a(euj.a(cwb.tX).a(3).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.wy).a(3).a(ewb.a(eyh.a(1.0F, 15.0F))))
+               .a(euj.a(cwb.pJ).a(3).a(eva.a(this.a, eyh.a(20.0F, 39.0F))))
+               .a(euj.a(cwb.xw).a(4).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.vT).a(4).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.sm).a(5).a(ewb.a(eyh.a(1.0F, 3.0F))).a(ewh.a(cxx.H)))
+               .a(euj.a(cwb.qQ).a(5).a(euz.a(this.a)))
+               .a(euj.a(cwb.qQ).a(5).a(ewb.a(eyh.a(3.0F, 10.0F))))
+               .a(euj.a(cwb.rA).a(5).a(ewb.a(eyh.a(1.0F, 15.0F))))
+               .a(euj.a(cwb.ft).a(5).a(ewb.a(eyh.a(1.0F, 15.0F))))
+               .a(euj.a(cwb.oy).a(7).a(ewb.a(eyh.a(6.0F, 15.0F))))
+         )
+         .a(eua.a().a(eya.a(1.0F)).a(euh.b().a(71)).a(euj.a(cwb.qQ).a(4).a(new euz.a().a($$0.b(dbr.O)))).a(euj.a(cwb.xD).a(4)).a(euj.a(cwb.xM).a(1)));
+   }
+
+   public eub.a d() {
+      jr.b<dbm> $$0 = this.a.d(ly.aM);
+      return eub.b()
+         .a(
+            eua.a()
+               .a(eyh.a(2.0F, 6.0F))
+               .a(euj.a(cwb.oA).a(3).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.oG).a(10).a(ewb.a(eyh.a(1.0F, 5.0F))))
+               .a(euj.a(cwb.oK).a(15).a(ewb.a(eyh.a(2.0F, 7.0F))))
+               .a(euj.a(dia.mZ).a(15).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.oB).a(2).a(ewb.a(eyh.a(1.0F, 3.0F))))
+               .a(euj.a(cwb.rA).a(20).a(ewb.a(eyh.a(4.0F, 6.0F))))
+               .a(euj.a(cwb.sf).a(16).a(ewb.a(eyh.a(3.0F, 7.0F))))
+               .a(euj.a(cwb.nL).a(3))
+               .a(euj.a(cwb.uI))
+               .a(euj.a(cwb.uJ))
+               .a(euj.a(cwb.uK))
+               .a(euj.a(cwb.qQ).a(eva.a(this.a, eya.a(30.0F))))
+         )
+         .a(eua.a().a(eya.a(1.0F)).a(euh.b().a(2)).a(euj.a(cwb.xC).a(1).a(ewb.a(eya.a(2.0F)))))
+         .a(eua.a().a(eya.a(1.0F)).a(euh.b().a(1)).a(euj.a(cwb.qQ).a(new euz.a().a($$0.b(dbr.w)))));
+   }
+
+   public jr.a e() {
+      return this.a;
    }
 }

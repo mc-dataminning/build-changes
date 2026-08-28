@@ -4,13 +4,13 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record bd<T, P extends Predicate<T>>(Optional<bb<T, P>> a, Optional<bc<T, P>> b, Optional<dh.d> c) implements Predicate<Iterable<T>> {
+public record bd<T, P extends Predicate<T>>(Optional<bb<T, P>> a, Optional<bc<T, P>> b, Optional<di.d> c) implements Predicate<Iterable<T>> {
    public static <T, P extends Predicate<T>> Codec<bd<T, P>> a(Codec<P> $$0) {
       return RecordCodecBuilder.create(
          $$1 -> $$1.group(
                   bb.a($$0).optionalFieldOf("contains").forGetter(bd::a),
                   bc.a($$0).optionalFieldOf("count").forGetter(bd::b),
-                  dh.d.d.optionalFieldOf("size").forGetter(bd::c)
+                  di.d.d.optionalFieldOf("size").forGetter(bd::c)
                )
                .apply($$1, bd::new)
       );

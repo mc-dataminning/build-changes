@@ -1,32 +1,18 @@
-public class ccc extends cbb {
-   private final boolean a;
-   private int b;
+public class ccc extends ccb {
+   private final cno h;
 
-   public ccc(bup $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+   public ccc(cno $$0) {
+      super($$0, coh.class, 8.0F);
+      this.h = $$0;
    }
 
    @Override
-   public boolean c() {
-      return this.a && this.b > 0 && super.c();
-   }
-
-   @Override
-   public void d() {
-      this.b = 20;
-      this.a(true);
-   }
-
-   @Override
-   public void e() {
-      this.a(false);
-   }
-
-   @Override
-   public void a() {
-      this.b--;
-      super.a();
+   public boolean b() {
+      if (this.h.gw()) {
+         this.c = this.h.gv();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -3,22 +3,17 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bbw extends bgj {
+public class bbw extends bgn {
    public bbw(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bho.s, "Sign");
+      super($$0, $$1, "BlockEntityKeepPacked", bhs.s, "DUMMY");
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.update($$1, ban::b);
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("keepPacked", $$0.createBoolean(true));
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         $$0x = this.a($$0x, "Text1");
-         $$0x = this.a($$0x, "Text2");
-         $$0x = this.a($$0x, "Text3");
-         return this.a($$0x, "Text4");
-      });
+      return $$0.update(DSL.remainderFinder(), bbw::a);
    }
 }

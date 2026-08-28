@@ -1,22 +1,36 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class cfj {
-   @Nullable
-   public static eyw a(buv $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = cfi.a($$0, $$1);
-      return cfl.a($$0, () -> {
-         jf $$9 = cfl.a($$0.dV(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
-         } else {
-            jf $$10 = cfk.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = cfl.a($$10, $$0.dV().a($$6 - $$7 + 1) + $$7, $$0.dS().an(), $$1xx -> cfi.c($$0, $$1xx));
-               return !cfi.a($$0, $$10) && !cfi.b($$0, $$10) ? $$10 : null;
-            }
-         }
-      });
+public class cfj extends cez {
+   private static final ImmutableMap<bug<?>, Float> a = ImmutableMap.builder()
+      .put(bug.B, 8.0F)
+      .put(bug.J, 12.0F)
+      .put(bug.ac, 8.0F)
+      .put(bug.ad, 12.0F)
+      .put(bug.aC, 15.0F)
+      .put(bug.aH, 12.0F)
+      .put(bug.bi, 8.0F)
+      .put(bug.bk, 10.0F)
+      .put(bug.bt, 10.0F)
+      .put(bug.bu, 8.0F)
+      .put(bug.bw, 8.0F)
+      .build();
+
+   @Override
+   protected boolean a(buv $$0, buv $$1) {
+      return this.b($$1) && this.e($$0, $$1);
+   }
+
+   private boolean e(buv $$0, buv $$1) {
+      float $$2 = (Float)a.get($$1.aq());
+      return $$1.g((btz)$$0) <= (double)($$2 * $$2);
+   }
+
+   @Override
+   protected cdz<buv> b() {
+      return cdz.A;
+   }
+
+   private boolean b(buv $$0) {
+      return a.containsKey($$0.aq());
    }
 }

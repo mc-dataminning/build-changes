@@ -1,22 +1,62 @@
-public class dun {
-   public static eyr a(eyr $$0, jk $$1, double $$2) {
-      double $$3 = $$2 * (double)$$1.f().a();
-      double $$4 = Math.min($$3, 0.0);
-      double $$5 = Math.max($$3, 0.0);
-      switch ($$1) {
-         case e:
-            return new eyr($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
-         case f:
-            return new eyr($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
-         case a:
-            return new eyr($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
-         case b:
-         default:
-            return new eyr($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
-         case c:
-            return new eyr($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
-         case d:
-            return new eyr($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
-      }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
+public record dun(alg<eub> d, double e, double f, cvx g, Optional<alg<eub>> h, due i, due.a j) {
+   static final String a = "config";
+   static dun b = new dun();
+   static Codec<dun> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alg.a(ly.bd).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dun::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dun::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dun::d),
+                  cvx.a("key_item").forGetter(dun::e),
+                  alg.a(ly.bd).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dun::f)
+               )
+               .apply($$0, dun::new)
+      )
+      .validate(dun::h);
+
+   private dun() {
+      this(ets.R, 4.0, 4.5, new cvx(cwb.yF), Optional.empty(), due.b, due.a.a);
+   }
+
+   public dun(alg<eub> $$0, double $$1, double $$2, cvx $$3, Optional<alg<eub>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   }
+
+   public due a() {
+      return this.i;
+   }
+
+   private DataResult<dun> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
+   }
+
+   public alg<eub> b() {
+      return this.d;
+   }
+
+   public double c() {
+      return this.e;
+   }
+
+   public double d() {
+      return this.f;
+   }
+
+   public cvx e() {
+      return this.g;
+   }
+
+   public Optional<alg<eub>> f() {
+      return this.h;
+   }
+
+   public due.a g() {
+      return this.j;
    }
 }

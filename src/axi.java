@@ -1,35 +1,172 @@
-import java.util.ArrayList;
-import java.util.List;
+public final class axi {
+   public static final axp<cvt> a = a("wool");
+   public static final axp<cvt> b = a("planks");
+   public static final axp<cvt> c = a("stone_bricks");
+   public static final axp<cvt> d = a("wooden_buttons");
+   public static final axp<cvt> e = a("stone_buttons");
+   public static final axp<cvt> f = a("buttons");
+   public static final axp<cvt> g = a("wool_carpets");
+   public static final axp<cvt> h = a("wooden_doors");
+   public static final axp<cvt> i = a("wooden_stairs");
+   public static final axp<cvt> j = a("wooden_slabs");
+   public static final axp<cvt> k = a("wooden_fences");
+   public static final axp<cvt> l = a("fence_gates");
+   public static final axp<cvt> m = a("wooden_pressure_plates");
+   public static final axp<cvt> n = a("wooden_trapdoors");
+   public static final axp<cvt> o = a("doors");
+   public static final axp<cvt> p = a("saplings");
+   public static final axp<cvt> q = a("logs_that_burn");
+   public static final axp<cvt> r = a("logs");
+   public static final axp<cvt> s = a("dark_oak_logs");
+   public static final axp<cvt> t = a("oak_logs");
+   public static final axp<cvt> u = a("birch_logs");
+   public static final axp<cvt> v = a("acacia_logs");
+   public static final axp<cvt> w = a("cherry_logs");
+   public static final axp<cvt> x = a("jungle_logs");
+   public static final axp<cvt> y = a("spruce_logs");
+   public static final axp<cvt> z = a("mangrove_logs");
+   public static final axp<cvt> A = a("crimson_stems");
+   public static final axp<cvt> B = a("warped_stems");
+   public static final axp<cvt> C = a("bamboo_blocks");
+   public static final axp<cvt> D = a("wart_blocks");
+   public static final axp<cvt> E = a("banners");
+   public static final axp<cvt> F = a("sand");
+   public static final axp<cvt> G = a("smelts_to_glass");
+   public static final axp<cvt> H = a("stairs");
+   public static final axp<cvt> I = a("slabs");
+   public static final axp<cvt> J = a("walls");
+   public static final axp<cvt> K = a("anvil");
+   public static final axp<cvt> L = a("rails");
+   public static final axp<cvt> M = a("leaves");
+   public static final axp<cvt> N = a("trapdoors");
+   public static final axp<cvt> O = a("small_flowers");
+   public static final axp<cvt> P = a("beds");
+   public static final axp<cvt> Q = a("fences");
+   public static final axp<cvt> R = a("tall_flowers");
+   public static final axp<cvt> S = a("flowers");
+   public static final axp<cvt> T = a("piglin_repellents");
+   public static final axp<cvt> U = a("piglin_loved");
+   public static final axp<cvt> V = a("ignored_by_piglin_babies");
+   public static final axp<cvt> W = a("piglin_safe_armor");
+   public static final axp<cvt> X = a("meat");
+   public static final axp<cvt> Y = a("sniffer_food");
+   public static final axp<cvt> Z = a("piglin_food");
+   public static final axp<cvt> aa = a("fox_food");
+   public static final axp<cvt> ab = a("cow_food");
+   public static final axp<cvt> ac = a("goat_food");
+   public static final axp<cvt> ad = a("sheep_food");
+   public static final axp<cvt> ae = a("wolf_food");
+   public static final axp<cvt> af = a("cat_food");
+   public static final axp<cvt> ag = a("horse_food");
+   public static final axp<cvt> ah = a("horse_tempt_items");
+   public static final axp<cvt> ai = a("camel_food");
+   public static final axp<cvt> aj = a("armadillo_food");
+   public static final axp<cvt> ak = a("bee_food");
+   public static final axp<cvt> al = a("chicken_food");
+   public static final axp<cvt> am = a("frog_food");
+   public static final axp<cvt> an = a("hoglin_food");
+   public static final axp<cvt> ao = a("llama_food");
+   public static final axp<cvt> ap = a("llama_tempt_items");
+   public static final axp<cvt> aq = a("ocelot_food");
+   public static final axp<cvt> ar = a("panda_food");
+   public static final axp<cvt> as = a("pig_food");
+   public static final axp<cvt> at = a("rabbit_food");
+   public static final axp<cvt> au = a("strider_food");
+   public static final axp<cvt> av = a("strider_tempt_items");
+   public static final axp<cvt> aw = a("turtle_food");
+   public static final axp<cvt> ax = a("parrot_food");
+   public static final axp<cvt> ay = a("parrot_poisonous_food");
+   public static final axp<cvt> az = a("axolotl_food");
+   public static final axp<cvt> aA = a("gold_ores");
+   public static final axp<cvt> aB = a("iron_ores");
+   public static final axp<cvt> aC = a("diamond_ores");
+   public static final axp<cvt> aD = a("redstone_ores");
+   public static final axp<cvt> aE = a("lapis_ores");
+   public static final axp<cvt> aF = a("coal_ores");
+   public static final axp<cvt> aG = a("emerald_ores");
+   public static final axp<cvt> aH = a("copper_ores");
+   public static final axp<cvt> aI = a("non_flammable_wood");
+   public static final axp<cvt> aJ = a("soul_fire_base_blocks");
+   public static final axp<cvt> aK = a("candles");
+   public static final axp<cvt> aL = a("dirt");
+   public static final axp<cvt> aM = a("terracotta");
+   public static final axp<cvt> aN = a("completes_find_tree_tutorial");
+   public static final axp<cvt> aO = a("boats");
+   public static final axp<cvt> aP = a("chest_boats");
+   public static final axp<cvt> aQ = a("fishes");
+   public static final axp<cvt> aR = a("signs");
+   public static final axp<cvt> aS = a("creeper_drop_music_discs");
+   public static final axp<cvt> aT = a("coals");
+   public static final axp<cvt> aU = a("arrows");
+   public static final axp<cvt> aV = a("lectern_books");
+   public static final axp<cvt> aW = a("bookshelf_books");
+   public static final axp<cvt> aX = a("beacon_payment_items");
+   public static final axp<cvt> aY = a("wooden_tool_materials");
+   public static final axp<cvt> aZ = a("stone_tool_materials");
+   public static final axp<cvt> ba = a("iron_tool_materials");
+   public static final axp<cvt> bb = a("gold_tool_materials");
+   public static final axp<cvt> bc = a("diamond_tool_materials");
+   public static final axp<cvt> bd = a("netherite_tool_materials");
+   public static final axp<cvt> be = a("repairs_leather_armor");
+   public static final axp<cvt> bf = a("repairs_chain_armor");
+   public static final axp<cvt> bg = a("repairs_iron_armor");
+   public static final axp<cvt> bh = a("repairs_gold_armor");
+   public static final axp<cvt> bi = a("repairs_diamond_armor");
+   public static final axp<cvt> bj = a("repairs_netherite_armor");
+   public static final axp<cvt> bk = a("repairs_turtle_helmet");
+   public static final axp<cvt> bl = a("repairs_wolf_armor");
+   public static final axp<cvt> bm = a("stone_crafting_materials");
+   public static final axp<cvt> bn = a("freeze_immune_wearables");
+   public static final axp<cvt> bo = a("dampens_vibrations");
+   public static final axp<cvt> bp = a("cluster_max_harvestables");
+   public static final axp<cvt> bq = a("compasses");
+   public static final axp<cvt> br = a("hanging_signs");
+   public static final axp<cvt> bs = a("creeper_igniters");
+   public static final axp<cvt> bt = a("noteblock_top_instruments");
+   public static final axp<cvt> bu = a("foot_armor");
+   public static final axp<cvt> bv = a("leg_armor");
+   public static final axp<cvt> bw = a("chest_armor");
+   public static final axp<cvt> bx = a("head_armor");
+   public static final axp<cvt> by = a("skulls");
+   public static final axp<cvt> bz = a("trimmable_armor");
+   public static final axp<cvt> bA = a("trim_materials");
+   public static final axp<cvt> bB = a("trim_templates");
+   public static final axp<cvt> bC = a("decorated_pot_sherds");
+   public static final axp<cvt> bD = a("decorated_pot_ingredients");
+   public static final axp<cvt> bE = a("swords");
+   public static final axp<cvt> bF = a("axes");
+   public static final axp<cvt> bG = a("hoes");
+   public static final axp<cvt> bH = a("pickaxes");
+   public static final axp<cvt> bI = a("shovels");
+   public static final axp<cvt> bJ = a("breaks_decorated_pots");
+   public static final axp<cvt> bK = a("villager_plantable_seeds");
+   public static final axp<cvt> bL = a("villager_picks_up");
+   public static final axp<cvt> bM = a("dyeable");
+   public static final axp<cvt> bN = a("furnace_minecart_fuel");
+   public static final axp<cvt> bO = a("enchantable/foot_armor");
+   public static final axp<cvt> bP = a("enchantable/leg_armor");
+   public static final axp<cvt> bQ = a("enchantable/chest_armor");
+   public static final axp<cvt> bR = a("enchantable/head_armor");
+   public static final axp<cvt> bS = a("enchantable/armor");
+   public static final axp<cvt> bT = a("enchantable/sword");
+   public static final axp<cvt> bU = a("enchantable/fire_aspect");
+   public static final axp<cvt> bV = a("enchantable/sharp_weapon");
+   public static final axp<cvt> bW = a("enchantable/weapon");
+   public static final axp<cvt> bX = a("enchantable/mining");
+   public static final axp<cvt> bY = a("enchantable/mining_loot");
+   public static final axp<cvt> bZ = a("enchantable/fishing");
+   public static final axp<cvt> ca = a("enchantable/trident");
+   public static final axp<cvt> cb = a("enchantable/durability");
+   public static final axp<cvt> cc = a("enchantable/bow");
+   public static final axp<cvt> cd = a("enchantable/equippable");
+   public static final axp<cvt> ce = a("enchantable/crossbow");
+   public static final axp<cvt> cf = a("enchantable/vanishing");
+   public static final axp<cvt> cg = a("enchantable/mace");
 
-public class axi {
-   private final List<axj> a = new ArrayList<>();
-
-   public static axi a() {
-      return new axi();
+   private axi() {
    }
 
-   public List<axj> b() {
-      return List.copyOf(this.a);
-   }
-
-   public axi a(axj $$0) {
-      this.a.add($$0);
-      return this;
-   }
-
-   public axi a(ale $$0) {
-      return this.a(axj.a($$0));
-   }
-
-   public axi b(ale $$0) {
-      return this.a(axj.b($$0));
-   }
-
-   public axi c(ale $$0) {
-      return this.a(axj.c($$0));
-   }
-
-   public axi d(ale $$0) {
-      return this.a(axj.d($$0));
+   private static axp<cvt> a(String $$0) {
+      return axp.a(ly.K, alh.b($$0));
    }
 }

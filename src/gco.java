@@ -1,102 +1,90 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
 public class gco {
-   final int a;
-   private final List<gco.a> b = new ArrayList<>();
+   private static final gco.a a = new gco.a();
+   private static final gco.a b = new gco.a();
+   private static final gco.a c = new gco.a();
+   private CompletableFuture<hbz<cvx>> d = CompletableFuture.completedFuture(hbz.empty());
+   private CompletableFuture<hbz<cvx>> e = CompletableFuture.completedFuture(hbz.empty());
+   private CompletableFuture<hbz<fus>> f = CompletableFuture.completedFuture(hbz.empty());
+   private final Map<gco.a, Runnable> g = new IdentityHashMap<>();
 
-   public gco(int $$0) {
-      this.a = $$0;
+   private void a(gco.a $$0, Runnable $$1) {
+      $$1.run();
+      this.g.put($$0, $$1);
    }
 
-   public void a(gcg $$0, IntCollection $$1, gco.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
+   public void a() {
+      for (Runnable $$0 : this.g.values()) {
+         $$0.run();
+      }
+   }
 
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         gci $$6 = $$0.b($$4);
-         if ($$6 instanceof gcj.a) {
-            gcj.a $$5 = (gcj.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
-            }
+   private static Stream<String> a(Stream<cvx> $$0, cvt.b $$1, cxp $$2) {
+      return $$0.<xh>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> n.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
+   }
+
+   public void a(fil $$0, kd.b $$1) {
+      this.a(
+         a,
+         () -> {
+            List<fus> $$2 = $$0.b();
+            kc<cvt> $$3 = $$1.e(ly.K);
+            cvt.b $$4 = cvt.b.a($$1);
+            cxp $$5 = cxp.a.a;
+            CompletableFuture<?> $$6 = this.f;
+            this.f = CompletableFuture.supplyAsync(
+               () -> new hbu<>(
+                     $$3xx -> a($$3xx.e().stream().map($$1xxxx -> $$1xxxx.b().a($$1)), $$4, $$5),
+                     $$2xx -> $$2xx.e().stream().map($$2xxx -> $$3.b($$2xxx.b().a($$1).h())),
+                     $$2
+                  ),
+               ad.g()
+            );
+            $$6.cancel(true);
          }
-      }
+      );
    }
 
-   public void a(xu $$0) {
-      this.b.add(new gco.a($$0));
+   public hbz<fus> b() {
+      return this.f.join();
    }
 
-   public boolean b(xu $$0) {
-      boolean $$1 = false;
-      Iterator<gco.a> $$2 = this.b.iterator();
+   public void a(List<cvx> $$0) {
+      this.a(c, () -> {
+         CompletableFuture<?> $$1 = this.e;
+         this.e = CompletableFuture.supplyAsync(() -> new hbv<>($$0xxx -> $$0xxx.j().map(axp::b), $$0), ad.g());
+         $$1.cancel(true);
+      });
+   }
 
-      while ($$2.hasNext()) {
-         gco.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
+   public hbz<cvx> c() {
+      return this.e.join();
+   }
+
+   public void a(jr.a $$0, List<cvx> $$1) {
+      this.a(
+         b,
+         () -> {
+            cvt.b $$2 = cvt.b.a($$0);
+            cxp $$3 = cxp.a.a.c();
+            CompletableFuture<?> $$4 = this.d;
+            this.d = CompletableFuture.supplyAsync(
+               () -> new hbu<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.i().e().map(alg::a).stream(), $$1), ad.g()
+            );
+            $$4.cancel(true);
          }
-      }
-
-      return $$1;
+      );
    }
 
-   public boolean a() {
-      return !this.b.isEmpty();
+   public hbz<cvx> d() {
+      return this.d.join();
    }
 
-   class a {
-      private final Set<xq> b;
-      private xu c;
-      private boolean d = true;
-      private int e;
-
-      a(final xu $$0) {
-         this.b = new ObjectOpenHashSet($$0.m().d().a());
-         this.c = $$0;
-      }
-
-      boolean a(xu $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
-         } else {
-            boolean $$1 = this.b.remove($$0.l());
-            if (this.d && this.c.g().equals($$0.g())) {
-               if (this.c.k().a($$0.k())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
-         }
-      }
-
-      boolean a() {
-         return this.e >= gco.this.a || !this.d && this.b.isEmpty();
-      }
-   }
-
-   public interface b {
-      void accept(int var1, gcj.a var2);
+   static class a {
    }
 }

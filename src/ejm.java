@@ -1,34 +1,29 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
 public class ejm extends ejn {
-   public static final ejm a = new ejm(ebi.a(0));
-   public static final MapCodec<ejm> b = ebi.a.fieldOf("value").xmap(ejm::new, ejm::b);
-   private final ebi d;
+   public static final MapCodec<ejm> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejm::new));
 
-   public static ejm a(ebi $$0) {
-      return new ejm($$0);
-   }
-
-   private ejm(ebi $$0) {
-      this.d = $$0;
-   }
-
-   public ebi b() {
-      return this.d;
+   public ejm(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(azn $$0, ebl $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public ejo<?> a() {
+   protected ejo<?> a() {
       return ejo.a;
    }
 
    @Override
-   public String toString() {
-      return this.d.toString();
+   public List<ehv.a> a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, int $$3, jg $$4, ehf $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      }
+
+      return ImmutableList.of(new ehv.a($$4.b($$3), 0, false));
    }
 }

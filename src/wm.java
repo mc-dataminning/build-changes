@@ -1,30 +1,37 @@
+import com.mojang.logging.LogUtils;
 import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import org.slf4j.Logger;
 
-public interface wm<T extends wk> {
-   vz a();
+public class wm<T extends wn> extends MessageToByteEncoder<zo<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   private final wp<T> b;
 
-   zm b();
+   public wm(wp<T> $$0) {
+      this.b = $$0;
+   }
 
-   zc<ByteBuf, zl<? super T>> c();
+   protected void a(ChannelHandlerContext $$0, zo<T> $$1, ByteBuf $$2) throws Exception {
+      zq<? extends zo<? super T>> $$3 = $$1.a();
 
-   @Nullable
-   zk d();
+      try {
+         this.b.c().encode($$2, $$1);
+         int $$4 = $$2.readableBytes();
+         if (a.isDebugEnabled()) {
+            a.debug(wb.d, "OUT: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName(), $$4});
+         }
 
-   public interface a<T extends wk, B extends ByteBuf> {
-      wm<T> a(Function<ByteBuf, B> var1);
+         boq.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
+      } catch (Throwable var9) {
+         a.error("Error sending packet {}", $$3, var9);
+         if ($$1.c()) {
+            throw new wu(var9);
+         }
 
-      vz a();
-
-      zm b();
-
-      @bal
-      void a(wm.a.a var1);
-
-      @FunctionalInterface
-      public interface a {
-         void accept(zn<?> var1, int var2);
+         throw var9;
+      } finally {
+         wq.b($$0, $$1);
       }
    }
 }

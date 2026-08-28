@@ -1,67 +1,53 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fht extends fhn {
+public class fht extends fhy {
    private static final Logger b = LogUtils.getLogger();
-   private static final xe c = xe.c("mco.backup.restoring");
-   private final fee d;
-   private final long e;
-   private final ffx f;
+   private static final xh c = xh.c("mco.configure.world.closing");
+   private final ffa d;
+   private final fgi e;
 
-   public fht(fee $$0, long $$1, ffx $$2) {
+   public fht(ffa $$0, fgi $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
    }
 
    @Override
    public void run() {
-      fdy $$0 = fdy.a();
-      int $$1 = 0;
+      fej $$0 = fej.a();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.g());
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
             return;
-         } catch (ffk var4) {
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = ffa.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (ffv var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-            $$1++;
-         } catch (ffj var5) {
+         } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't restore backup", var5);
-            a(new fgb(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
+            b.error("Failed to close server", var5);
+            this.a(var5);
          }
       }
    }
 
    @Override
-   public xe a() {
+   public xh a() {
       return c;
    }
 }

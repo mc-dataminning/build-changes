@@ -1,17 +1,12 @@
-import com.mojang.serialization.MapCodec;
+public class ln {
+   private final int b;
+   public static final ln a = new ln(1000);
 
-public abstract class ln<T extends lm> {
-   private final boolean a;
-
-   protected ln(boolean $$0) {
-      this.a = $$0;
+   public ln(int $$0) {
+      this.b = $$0;
    }
 
-   public boolean b() {
-      return this.a;
+   public int a() {
+      return this.b;
    }
-
-   public abstract MapCodec<T> c();
-
-   public abstract zc<? super wp, T> d();
 }

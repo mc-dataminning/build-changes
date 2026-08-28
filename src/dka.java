@@ -1,84 +1,177 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dka extends dgy implements dnf {
-   public static final MapCodec<dka> a = b(dka::new);
-   protected static final ezq b = dhm.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+public abstract class dka extends dlt {
+   protected static final fab c = dhy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   public static final dvu d = dvt.w;
 
-   @Override
-   public MapCodec<dka> a() {
-      return a;
-   }
-
-   protected dka(dur.d $$0) {
+   protected dka(dvc.d $$0) {
       super($$0);
    }
 
    @Override
-   public drv a(jf $$0, dus $$1) {
-      return new dto($$0, $$1);
+   protected abstract MapCodec<? extends dka> a();
+
+   @Override
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return c;
    }
 
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return b;
+   protected boolean a(dvd $$0, dey $$1, jg $$2) {
+      jg $$3 = $$2.e();
+      return this.b($$1, $$3, $$1.a_($$3));
+   }
+
+   protected boolean b(dey $$0, jg $$1, dvd $$2) {
+      return $$2.a($$0, $$1, jl.b, dpz.c);
    }
 
    @Override
-   protected void a(dus $$0, dej $$1, jf $$2, btr $$3) {
-      if ($$3.o(false) && ezn.c(ezn.a($$3.cO().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.f($$1, $$2), eza.i)) {
-         if (!$$1.B && $$1.ag() == dej.j && $$3 instanceof ark $$4 && !$$4.f) {
-            $$4.q();
-            return;
+   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if (!this.c((dey)$$1, $$2, $$0)) {
+         boolean $$4 = $$0.c(d);
+         boolean $$5 = this.a((dev)$$1, $$2, $$0);
+         if ($$4 && !$$5) {
+            $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 2);
+         } else if (!$$4) {
+            $$1.a($$2, $$0.b(d, Boolean.valueOf(true)), 2);
+            if (!$$5) {
+               $$1.a($$2, this, this.h($$0), fbd.b);
+            }
          }
-
-         $$3.a(this, $$2);
       }
    }
 
    @Override
-   public err a(arj $$0, btr $$1, jf $$2) {
-      ald<dej> $$3 = $$0.ag() == dej.j ? dej.h : dej.j;
-      arj $$4 = $$0.o().a($$3);
-      if ($$4 == null) {
-         return null;
+   protected int b(dvd $$0, dea $$1, jg $$2, jl $$3) {
+      return $$0.a($$1, $$2, $$3);
+   }
+
+   @Override
+   protected int a(dvd $$0, dea $$1, jg $$2, jl $$3) {
+      if (!$$0.c(d)) {
+         return 0;
       } else {
-         boolean $$5 = $$3 == dej.j;
-         jf $$6 = $$5 ? arj.a : $$4.W();
-         eyw $$7 = $$6.c();
-         float $$8 = $$1.dI();
-         if ($$5) {
-            eds.a($$4, jf.a((jy)$$7).e(), true);
-            $$8 = jk.e.p();
-            if ($$1 instanceof ark) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
-         } else {
-            if ($$1 instanceof ark $$9) {
-               return $$9.a(false, err.a);
-            }
-
-            $$7 = $$1.a($$4, $$6).c();
-         }
-
-         return new err($$4, $$7, $$1.dv(), $$8, $$1.dK(), err.b.then(err.c));
+         return $$0.c(aF) == $$3 ? this.a($$1, $$2, $$0) : 0;
       }
    }
 
    @Override
-   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(lo.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected void a(dvd $$0, dev $$1, jg $$2, dhy $$3, @Nullable esm $$4, boolean $$5) {
+      if ($$0.a((dey)$$1, $$2)) {
+         this.c($$1, $$2, $$0);
+      } else {
+         dsg $$6 = $$0.x() ? $$1.c_($$2) : null;
+         a($$0, $$1, $$2, $$6);
+         $$1.a($$2, false);
+
+         for (jl $$7 : jl.values()) {
+            $$1.a($$2.a($$7), this);
+         }
+      }
    }
 
-   @Override
-   public cvs a(dem $$0, jf $$1, dus $$2) {
-      return cvs.k;
+   protected void c(dev $$0, jg $$1, dvd $$2) {
+      if (!this.c((dey)$$0, $$1, $$2)) {
+         boolean $$3 = $$2.c(d);
+         boolean $$4 = this.a($$0, $$1, $$2);
+         if ($$3 != $$4 && !$$0.R().b($$1, this)) {
+            fbd $$5 = fbd.c;
+            if (this.b((dea)$$0, $$1, $$2)) {
+               $$5 = fbd.a;
+            } else if ($$3) {
+               $$5 = fbd.b;
+            }
+
+            $$0.a($$1, this, this.h($$2), $$5);
+         }
+      }
    }
 
-   @Override
-   protected boolean a(dus $$0, eqs $$1) {
+   public boolean c(dey $$0, jg $$1, dvd $$2) {
       return false;
    }
+
+   protected boolean a(dev $$0, jg $$1, dvd $$2) {
+      return this.b($$0, $$1, $$2) > 0;
+   }
+
+   protected int b(dev $$0, jg $$1, dvd $$2) {
+      jl $$3 = $$2.c(aF);
+      jg $$4 = $$1.a($$3);
+      int $$5 = $$0.c($$4, $$3);
+      if ($$5 >= 15) {
+         return $$5;
+      } else {
+         dvd $$6 = $$0.a_($$4);
+         return Math.max($$5, $$6.a(dia.cw) ? $$6.c(doa.f) : 0);
+      }
+   }
+
+   protected int a(dfm $$0, jg $$1, dvd $$2) {
+      jl $$3 = $$2.c(aF);
+      jl $$4 = $$3.h();
+      jl $$5 = $$3.i();
+      boolean $$6 = this.b();
+      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
+   }
+
+   @Override
+   protected boolean f_(dvd $$0) {
+      return true;
+   }
+
+   @Override
+   public dvd a(czm $$0) {
+      return this.m().b(aF, $$0.g().g());
+   }
+
+   @Override
+   public void a(dev $$0, jg $$1, dvd $$2, buv $$3, cvx $$4) {
+      if (this.a($$0, $$1, $$2)) {
+         $$0.a($$1, this, 1);
+      }
+   }
+
+   @Override
+   protected void b(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
+      this.d($$1, $$2, $$0);
+   }
+
+   @Override
+   protected void a(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         this.d($$1, $$2, $$0);
+      }
+   }
+
+   protected void d(dev $$0, jg $$1, dvd $$2) {
+      jl $$3 = $$2.c(aF);
+      jg $$4 = $$1.a($$3.g());
+      esm $$5 = esi.a($$0, $$3.g(), jl.b);
+      $$0.b($$4, this, $$5);
+      $$0.a($$4, this, $$3, $$5);
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected int a(dea $$0, jg $$1, dvd $$2) {
+      return 15;
+   }
+
+   public static boolean n(dvd $$0) {
+      return $$0.b() instanceof dka;
+   }
+
+   public boolean b(dea $$0, jg $$1, dvd $$2) {
+      jl $$3 = $$2.c(aF).g();
+      dvd $$4 = $$0.a_($$1.a($$3));
+      return n($$4) && $$4.c(aF) != $$3;
+   }
+
+   protected abstract int h(dvd var1);
 }

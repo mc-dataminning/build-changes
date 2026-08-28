@@ -1,89 +1,101 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.hash.Hashing;
 
 public class dfy {
-   public static final Codec<dfy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dfy.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), alc.c(lw.aH)).apply($$0, dfy::new)
-   );
-   public static final Codec<jo<dfy>> b = ala.a(lw.bb, a);
-   private final dfy.a c;
-   private final dft.c<jo<dfk>> d;
+   public static final int a = ka.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final dfy.a e;
+   private final long f;
 
-   public dfy(dfy.a $$0, jp<dfk> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
+   public dfy(dfy.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public dft.c<jo<dfk>> a() {
-      return this.d;
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   public static Map<dfy.a, dft.c<ald<dfk>>> b() {
-      return dfy.a.f.values().stream().collect(Collectors.toMap($$0 -> (dfy.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   public dfy a(dfy.a $$0) {
+      return new dfy($$0, this.f);
    }
 
-   public static record a(ale d, dfy.a.a e) {
-      public static final dfy.a a = new dfy.a(
-         ale.b("nether"),
-         new dfy.a.a() {
-            @Override
-            public <T> dft.c<T> apply(Function<ald<dfk>, T> $$0) {
-               return new dft.c<>(
-                  List.of(
-                     Pair.of(dft.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfr.ac)),
-                     Pair.of(dft.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfr.af)),
-                     Pair.of(dft.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfr.ae)),
-                     Pair.of(dft.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dfr.ad)),
-                     Pair.of(dft.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dfr.ag))
-                  )
-               );
-            }
+   public jp<dfw> a(jg $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
          }
-      );
-      public static final dfy.a b = new dfy.a(ale.b("overworld"), new dfy.a.a() {
-         @Override
-         public <T> dft.c<T> apply(Function<ald<dfk>, T> $$0) {
-            return dfy.a.a($$0);
-         }
-      });
-      static final Map<ale, dfy.a> f = Stream.of(a, b).collect(Collectors.toMap(dfy.a::b, $$0 -> (dfy.a)$$0));
-      public static final Codec<dfy.a> c = ale.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
-
-      static <T> dft.c<T> a(Function<ald<dfk>, T> $$0) {
-         Builder<Pair<dft.d, T>> $$1 = ImmutableList.builder();
-         new dga().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new dft.c<>($$1.build());
       }
 
-      public Stream<ald<dfk>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<ald<dfk>>map(Pair::getSecond).distinct();
-      }
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
+   }
 
-      public ale b() {
-         return this.d;
-      }
+   public jp<dfw> a(double $$0, double $$1, double $$2) {
+      int $$3 = ka.a(azj.a($$0));
+      int $$4 = ka.a(azj.a($$1));
+      int $$5 = ka.a(azj.a($$2));
+      return this.a($$3, $$4, $$5);
+   }
 
-      public dfy.a.a c() {
-         return this.e;
-      }
+   public jp<dfw> b(jg $$0) {
+      int $$1 = ka.a($$0.u());
+      int $$2 = ka.a($$0.v());
+      int $$3 = ka.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
 
-      @FunctionalInterface
-      interface a {
-         <T> dft.c<T> apply(Function<ald<dfk>, T> var1);
-      }
+   public jp<dfw> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = aze.a($$0, (long)$$1);
+      $$7 = aze.a($$7, (long)$$2);
+      $$7 = aze.a($$7, (long)$$3);
+      $$7 = aze.a($$7, (long)$$1);
+      $$7 = aze.a($$7, (long)$$2);
+      $$7 = aze.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = aze.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = aze.a($$7, $$0);
+      double $$10 = b($$7);
+      return azj.k($$6 + $$10) + azj.k($$5 + $$9) + azj.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      jp<dfw> getNoiseBiome(int var1, int var2, int var3);
    }
 }

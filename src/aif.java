@@ -1,18 +1,60 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record aif(Optional<jo<bsw>> b, Optional<jo<bsw>> c) implements zl<agr> {
-   public static final zc<wp, aif> a = zc.a(bsw.b.a(za::a), aif::b, bsw.b.a(za::a), aif::e, aif::new);
+public class aif implements zo<agu> {
+   public static final zf<we, aif> a = zo.a(aif::a, aif::new);
+   private final aif.a b;
+   @Nullable
+   private final alh c;
 
-   @Override
-   public zn<aif> a() {
-      return agp.bV;
+   public aif(aif.a $$0, @Nullable alh $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(agr $$0) {
+   public static aif a(ag $$0) {
+      return new aif(aif.a.a, $$0.a());
+   }
+
+   public static aif b() {
+      return new aif(aif.a.b, null);
+   }
+
+   private aif(we $$0) {
+      this.b = $$0.b(aif.a.class);
+      if (this.b == aif.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
+      }
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.b);
+      if (this.b == aif.a.a) {
+         $$0.a(this.c);
+      }
+   }
+
+   @Override
+   public zq<aif> a() {
+      return ags.bT;
+   }
+
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public Optional<jo<bsw>> e() {
+   public aif.a e() {
+      return this.b;
+   }
+
+   @Nullable
+   public alh f() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,86 +1,77 @@
+import java.util.EnumSet;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class cbf extends cbk {
-   private int a;
-   private final buv b;
+public class cbf extends cbt {
+   private static final cfm d = cfm.b().a(8.0).d();
+   protected final cgm a;
+   private final Class<? extends cgm> e;
+   protected final dev b;
    @Nullable
-   private cnx c;
-   private cat d;
+   protected cgm c;
+   private int f;
+   private final double g;
 
-   public cbf(buv $$0) {
-      this.b = $$0;
+   public cbf(cgm $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cgm>)$$0.getClass());
+   }
+
+   public cbf(cgm $$0, double $$1, Class<? extends cgm> $$2) {
+      this.a = $$0;
+      this.b = $$0.dX();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(cbt.a.a, cbt.a.b));
    }
 
    @Override
    public boolean b() {
-      List<cpx> $$0 = this.b.dS().a(cpx.class, this.b.cO().g(5.0));
-      boolean $$1 = false;
-
-      for (cpx $$2 : $$0) {
-         btr $$3 = $$2.cU();
-         if ($$3 instanceof cnx && (azf.e(((cnx)$$3).bk) > 0.0F || azf.e(((cnx)$$3).bm) > 0.0F)) {
-            $$1 = true;
-            break;
-         }
+      if (!this.a.gF()) {
+         return false;
+      } else {
+         this.c = this.h();
+         return this.c != null;
       }
-
-      return this.c != null && (azf.e(this.c.bk) > 0.0F || azf.e(this.c.bm) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
    }
 
    @Override
    public boolean c() {
-      return this.c != null && this.c.bW() && (azf.e(this.c.bk) > 0.0F || azf.e(this.c.bm) > 0.0F);
-   }
-
-   @Override
-   public void d() {
-      for (cpx $$1 : this.b.dS().a(cpx.class, this.b.cO().g(5.0))) {
-         if ($$1.cU() instanceof cnx $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = cat.a;
+      return this.c.bM() && this.c.gF() && this.f < 60 && !this.c.gs();
    }
 
    @Override
    public void e() {
       this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void a() {
-      boolean $$0 = azf.e(this.c.bk) > 0.0F || azf.e(this.c.bm) > 0.0F;
-      float $$1 = this.d == cat.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new eyw((double)this.b.bk, (double)this.b.bl, (double)this.b.bm));
-      this.b.a(bur.a, this.b.dv());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == cat.a) {
-            jf $$2 = this.c.ds().a(this.c.cL().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.P().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = cat.b;
-            }
-         } else if (this.d == cat.b) {
-            jk $$3 = this.c.cM();
-            jf $$4 = this.c.ds().a($$3, 10);
-            this.b.P().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = cat.a;
-            }
+      this.a.K().a(this.c, 10.0F, (float)this.a.ad());
+      this.a.P().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private cgm h() {
+      List<? extends cgm> $$0 = this.b.a(this.e, d, this.a, this.a.cS().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cgm $$2 = null;
+
+      for (cgm $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gs() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
          }
       }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((arm)this.b, this.c);
    }
 }

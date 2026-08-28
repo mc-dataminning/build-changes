@@ -1,129 +1,231 @@
-import com.mojang.brigadier.context.CommandContext;
-import java.util.LinkedList;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class tu<T> implements tp, tx {
-   static final tx a = Stream::empty;
-   static final tp b = Stream::empty;
-   private final tx c;
-   private final tp d;
-   private final eu e;
-   private final Function<tu<T>, T> f;
+public class tu {
+   private static final Logger d = LogUtils.getLogger();
+   public static final int a = 10;
+   public static final String b = "gameteststructures";
+   public static String c = "gameteststructures";
 
-   @Override
-   public Stream<jf> findStructureBlockPos() {
-      return this.d.findStructureBlockPos();
+   public static dol a(int $$0) {
+      switch ($$0) {
+         case 0:
+            return dol.a;
+         case 1:
+            return dol.b;
+         case 2:
+            return dol.c;
+         case 3:
+            return dol.d;
+         default:
+            throw new IllegalArgumentException("rotationSteps must be a value from 0-3. Got value " + $$0);
+      }
    }
 
-   tu(eu $$0, Function<tu<T>, T> $$1, tx $$2, tp $$3) {
-      this.e = $$0;
-      this.f = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static int a(dol $$0) {
+      switch ($$0) {
+         case a:
+            return 0;
+         case b:
+            return 1;
+         case c:
+            return 2;
+         case d:
+            return 3;
+         default:
+            throw new IllegalArgumentException("Unknown rotation value, don't know how many steps it represents: " + $$0);
+      }
    }
 
-   T b() {
-      return this.f.apply(this);
+   public static ezc a(dtx $$0) {
+      return ezc.a(b($$0));
    }
 
-   public eu a() {
-      return this.e;
+   public static elj b(dtx $$0) {
+      jg $$1 = c($$0);
+      jg $$2 = a($$1, $$0.j(), $$0.t());
+      return elj.a($$1, $$2);
    }
 
-   @Override
-   public Stream<tv> findTestFunctions() {
-      return this.c.findTestFunctions();
+   public static jg c(dtx $$0) {
+      return $$0.aC_().a((kk)$$0.f());
    }
 
-   public static class a<T> {
-      private final Function<tu<T>, T> a;
-      private final UnaryOperator<Supplier<Stream<tv>>> b;
-      private final UnaryOperator<Supplier<Stream<jf>>> c;
+   public static void a(jg $$0, jg $$1, dol $$2, arm $$3) {
+      jg $$4 = ept.a($$0.a((kk)$$1), dmu.a, $$2, $$0);
+      $$3.b($$4, dia.fN.m());
+      dsq $$5 = (dsq)$$3.c_($$4);
+      $$5.b().a("test runclosest");
+      jg $$6 = ept.a($$4.b(0, 0, -1), dmu.a, $$2, $$4);
+      $$3.b($$6, dia.dM.m().a($$2));
+   }
 
-      public a(Function<tu<T>, T> $$0) {
-         this.a = $$0;
-         this.b = $$0x -> $$0x;
-         this.c = $$0x -> $$0x;
+   public static void a(String $$0, jg $$1, kk $$2, dol $$3, arm $$4) {
+      elj $$5 = b($$1.d(), $$2, $$3);
+      a($$5, $$4);
+      $$4.b($$1, dia.pa.m());
+      dtx $$6 = (dtx)$$4.c_($$1);
+      $$6.a(false);
+      $$6.a(alh.a($$0));
+      $$6.b($$0);
+      $$6.a($$2);
+      $$6.a(dwn.a);
+      $$6.e(true);
+   }
+
+   public static jg a(te $$0, jg $$1, dol $$2, arm $$3) {
+      kk $$4 = $$3.q().b(alh.a($$0.s())).orElseThrow(() -> new IllegalStateException("Missing test structure: " + $$0.s())).a();
+      jg $$5;
+      if ($$2 == dol.a) {
+         $$5 = $$1;
+      } else if ($$2 == dol.b) {
+         $$5 = $$1.b($$4.w() - 1, 0, 0);
+      } else if ($$2 == dol.c) {
+         $$5 = $$1.b($$4.u() - 1, 0, $$4.w() - 1);
+      } else {
+         if ($$2 != dol.d) {
+            throw new IllegalArgumentException("Invalid rotation: " + $$2);
+         }
+
+         $$5 = $$1.b(0, 0, $$4.u() - 1);
       }
 
-      private a(Function<tu<T>, T> $$0, UnaryOperator<Supplier<Stream<tv>>> $$1, UnaryOperator<Supplier<Stream<jf>>> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      return $$5;
+   }
+
+   public static dtx b(te $$0, jg $$1, dol $$2, arm $$3) {
+      kk $$4 = $$3.q().b(alh.a($$0.s())).orElseThrow(() -> new IllegalStateException("Missing test structure: " + $$0.s())).a();
+      elj $$5 = b($$1, $$4, $$2);
+      jg $$6 = a($$0, $$1, $$2, $$3);
+      b($$5, $$3);
+      a($$5, $$3);
+      return c($$0, $$6.e(), $$2, $$3);
+   }
+
+   public static void a(ezc $$0, arm $$1, boolean $$2) {
+      jg $$3 = jg.a($$0.a, $$0.b, $$0.c).b(-1, 0, -1);
+      jg $$4 = jg.a($$0.d, $$0.e, $$0.f);
+      jg.d($$3, $$4).forEach($$4x -> {
+         boolean $$5 = $$4x.u() == $$3.u() || $$4x.u() == $$4.u() || $$4x.w() == $$3.w() || $$4x.w() == $$4.w();
+         boolean $$6 = $$4x.v() == $$4.v();
+         if ($$5 || $$6 && $$2) {
+            $$1.b($$4x, dia.hW.m());
+         }
+      });
+   }
+
+   public static void a(ezc $$0, arm $$1) {
+      jg $$2 = jg.a($$0.a, $$0.b, $$0.c).b(-1, 0, -1);
+      jg $$3 = jg.a($$0.d, $$0.e, $$0.f);
+      jg.d($$2, $$3).forEach($$3x -> {
+         boolean $$4 = $$3x.u() == $$2.u() || $$3x.u() == $$3.u() || $$3x.w() == $$2.w() || $$3x.w() == $$3.w();
+         boolean $$5 = $$3x.v() == $$3.v();
+         if ($$1.a_($$3x).a(dia.hW) && ($$4 || $$5)) {
+            $$1.b($$3x, dia.a.m());
+         }
+      });
+   }
+
+   private static void b(elj $$0, arm $$1) {
+      $$0.b().forEach($$1x -> $$1.a($$1x.e, $$1x.f, true));
+   }
+
+   public static void a(elj $$0, arm $$1) {
+      int $$2 = $$0.i() - 1;
+      elj $$3 = new elj($$0.h() - 2, $$0.i() - 3, $$0.j() - 3, $$0.k() + 3, $$0.l() + 20, $$0.m() + 3);
+      jg.a($$3).forEach($$2x -> a($$2, $$2x, $$1));
+      $$1.m().a($$3);
+      $$1.a($$3);
+      ezc $$4 = ezc.a($$3);
+      List<btz> $$5 = $$1.a(btz.class, $$4, $$0x -> !($$0x instanceof coh));
+      $$5.forEach(btz::au);
+   }
+
+   public static jg a(jg $$0, kk $$1, dol $$2) {
+      jg $$3 = $$0.a($$1).b(-1, -1, -1);
+      return ept.a($$3, dmu.a, $$2, $$0);
+   }
+
+   public static elj b(jg $$0, kk $$1, dol $$2) {
+      jg $$3 = a($$0, $$1, $$2);
+      elj $$4 = elj.a($$0, $$3);
+      int $$5 = Math.min($$4.h(), $$4.k());
+      int $$6 = Math.min($$4.j(), $$4.m());
+      return $$4.a($$0.u() - $$5, 0, $$0.w() - $$6);
+   }
+
+   public static Optional<jg> a(jg $$0, int $$1, arm $$2) {
+      return c($$0, $$1, $$2).filter($$2x -> a($$2x, $$0, $$2)).findFirst();
+   }
+
+   public static Optional<jg> b(jg $$0, int $$1, arm $$2) {
+      Comparator<jg> $$3 = Comparator.comparingInt($$1x -> $$1x.k($$0));
+      return c($$0, $$1, $$2).min($$3);
+   }
+
+   public static Stream<jg> a(jg $$0, int $$1, arm $$2, String $$3) {
+      return c($$0, $$1, $$2).map($$1x -> (dtx)$$2.c_($$1x)).filter(Objects::nonNull).filter($$1x -> Objects.equals($$1x.c(), $$3)).map(dsg::aC_).map(jg::j);
+   }
+
+   public static Stream<jg> c(jg $$0, int $$1, arm $$2) {
+      elj $$3 = d($$0, $$1, $$2);
+      return jg.a($$3).filter($$1x -> $$2.a_($$1x).a(dia.pa)).map(jg::j);
+   }
+
+   private static dtx c(te $$0, jg $$1, dol $$2, arm $$3) {
+      $$3.b($$1, dia.pa.m());
+      dtx $$4 = (dtx)$$3.c_($$1);
+      $$4.a(dwn.b);
+      $$4.a($$2);
+      $$4.a(false);
+      $$4.a(alh.a($$0.s()));
+      $$4.b($$0.b());
+      if (!$$4.b($$3)) {
+         throw new RuntimeException("Failed to load structure info for test: " + $$0.b() + ". Structure name: " + $$0.s());
+      } else {
+         return $$4;
+      }
+   }
+
+   private static elj d(jg $$0, int $$1, arm $$2) {
+      jg $$3 = jg.a((double)$$0.u(), (double)$$2.a(eaz.a.b, $$0).v(), (double)$$0.w());
+      return new elj($$3).c($$1, 10, $$1);
+   }
+
+   public static Stream<jg> a(jg $$0, btz $$1, arm $$2) {
+      int $$3 = 200;
+      ezh $$4 = $$1.bG();
+      ezh $$5 = $$4.e($$1.bU().c(200.0));
+      return c($$0, 200, $$2)
+         .map($$1x -> $$2.a($$1x, dsi.u))
+         .flatMap(Optional::stream)
+         .filter($$2x -> a($$2x).b($$4, $$5).isPresent())
+         .map(dsg::aC_)
+         .sorted(Comparator.comparing($$0::j))
+         .limit(1L);
+   }
+
+   private static void a(int $$0, jg $$1, arm $$2) {
+      dvd $$3;
+      if ($$1.v() < $$0) {
+         $$3 = dia.b.m();
+      } else {
+         $$3 = dia.a.m();
       }
 
-      public tu.a<T> a(int $$0) {
-         return new tu.a<>(this.a, b($$0), b($$0));
-      }
+      gm $$5 = new gm($$3, Collections.emptySet(), null);
+      $$5.a($$2, $$1, 2);
+      $$2.b($$1, $$3.b());
+   }
 
-      private static <Q> UnaryOperator<Supplier<Stream<Q>>> b(int $$0) {
-         return $$1 -> {
-            List<Q> $$2 = new LinkedList<>();
-            List<Q> $$3 = ((Stream)$$1.get()).toList();
-
-            for (int $$4 = 0; $$4 < $$0; $$4++) {
-               $$2.addAll($$3);
-            }
-
-            return $$2::stream;
-         };
-      }
-
-      private T a(eu $$0, tx $$1, tp $$2) {
-         return new tu<>($$0, this.a, this.b.apply($$1::findTestFunctions)::get, this.c.apply($$2::findStructureBlockPos)::get).b();
-      }
-
-      public T a(CommandContext<eu> $$0, int $$1) {
-         eu $$2 = (eu)$$0.getSource();
-         jf $$3 = jf.a((jy)$$2.d());
-         return this.a($$2, tu.a, () -> tr.c($$3, $$1, $$2.e()));
-      }
-
-      public T a(CommandContext<eu> $$0) {
-         eu $$1 = (eu)$$0.getSource();
-         jf $$2 = jf.a((jy)$$1.d());
-         return this.a($$1, tu.a, () -> tr.b($$2, 15, $$1.e()).stream());
-      }
-
-      public T b(CommandContext<eu> $$0) {
-         eu $$1 = (eu)$$0.getSource();
-         jf $$2 = jf.a((jy)$$1.d());
-         return this.a($$1, tu.a, () -> tr.c($$2, 200, $$1.e()));
-      }
-
-      public T c(CommandContext<eu> $$0) {
-         eu $$1 = (eu)$$0.getSource();
-         return this.a($$1, tu.a, () -> tr.a(jf.a((jy)$$1.d()), $$1.i().M(), $$1.e()));
-      }
-
-      public T d(CommandContext<eu> $$0) {
-         return this.a((eu)$$0.getSource(), () -> td.a().stream().filter($$0x -> !$$0x.i()), tu.b);
-      }
-
-      public T a(CommandContext<eu> $$0, String $$1) {
-         return this.a((eu)$$0.getSource(), () -> td.a($$1).filter($$0xx -> !$$0xx.i()), tu.b);
-      }
-
-      public T a(CommandContext<eu> $$0, boolean $$1) {
-         return this.a((eu)$$0.getSource(), () -> td.c().filter($$1x -> !$$1 || $$1x.h()), tu.b);
-      }
-
-      public T b(CommandContext<eu> $$0, String $$1) {
-         return this.a((eu)$$0.getSource(), () -> Stream.of(tw.a($$0, $$1)), tu.b);
-      }
-
-      public T c(CommandContext<eu> $$0, String $$1) {
-         eu $$2 = (eu)$$0.getSource();
-         jf $$3 = jf.a((jy)$$2.d());
-         return this.a($$2, tu.a, () -> tr.a($$3, 1024, $$2.e(), $$1));
-      }
-
-      public T e(CommandContext<eu> $$0) {
-         return this.a($$0, false);
-      }
+   private static boolean a(jg $$0, jg $$1, arm $$2) {
+      dtx $$3 = (dtx)$$2.c_($$0);
+      return b($$3).b($$1);
    }
 }

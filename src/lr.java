@@ -1,22 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
 
-public class lr implements lm {
-   public static final MapCodec<lr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.c)).apply($$0, lr::new));
-   public static final zc<wp, lr> b = zc.a(za.h, $$0 -> $$0.c, lr::new);
-   private final int c;
+public abstract class lr implements lo {
+   public static final float e = 0.01F;
+   public static final float f = 4.0F;
+   protected static final Codec<Float> g = Codec.FLOAT
+      .validate($$0 -> $$0 >= 0.01F && $$0 <= 4.0F ? DataResult.success($$0) : DataResult.error(() -> "Value must be within range [0.01;4.0]: " + $$0));
+   private final float a;
 
-   public lr(int $$0) {
-      this.c = $$0;
+   public lr(float $$0) {
+      this.a = azj.a($$0, 0.01F, 4.0F);
    }
 
-   @Override
-   public ln<lr> a() {
-      return lo.aV;
-   }
-
-   public int b() {
-      return this.c;
+   public float d() {
+      return this.a;
    }
 }

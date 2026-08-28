@@ -1,15 +1,5 @@
-public interface dsv extends brl {
-   eyr t_ = dhm.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
-
-   default eyr am_() {
-      return t_;
+public class dsv extends dsg {
+   public dsv(jg $$0, dvd $$1) {
+      super(dsi.q, $$0, $$1);
    }
-
-   double L();
-
-   double M();
-
-   double O();
-
-   boolean P();
 }

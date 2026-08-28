@@ -1,31 +1,22 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface czi {
-   Codec<czi> d = lv.az.q().dispatch(czi::a, czi.a::a);
-   zc<wp, czi> e = za.a(lw.aF).b(czi::a, czi.a::b);
+public record czi(jp<awj> c) implements czh {
+   public static final MapCodec<czi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(awj.b.fieldOf("sound").forGetter(czi::b)).apply($$0, czi::new));
+   public static final zf<ws, czi> b = zf.a(awj.d, czi::b, czi::new);
 
-   czi.a<? extends czi> a();
+   @Override
+   public czh.a<czi> a() {
+      return czh.a.e;
+   }
 
-   boolean a(dej var1, cvs var2, bun var3);
+   @Override
+   public boolean a(dev $$0, cvx $$1, buv $$2) {
+      $$0.a(null, $$2.dx(), this.c.a(), $$2.dn(), 1.0F, 1.0F);
+      return true;
+   }
 
-   public static record a<T extends czi>(MapCodec<T> f, zc<wp, T> g) {
-      public static final czi.a<czg> a = a("apply_effects", czg.a, czg.b);
-      public static final czi.a<czk> b = a("remove_effects", czk.a, czk.b);
-      public static final czi.a<czh> c = a("clear_all_effects", czh.b, czh.c);
-      public static final czi.a<czl> d = a("teleport_randomly", czl.a, czl.b);
-      public static final czi.a<czj> e = a("play_sound", czj.a, czj.b);
-
-      private static <T extends czi> czi.a<T> a(String $$0, MapCodec<T> $$1, zc<wp, T> $$2) {
-         return kb.a(lv.az, $$0, new czi.a<>($$1, $$2));
-      }
-
-      public MapCodec<T> a() {
-         return this.f;
-      }
-
-      public zc<wp, T> b() {
-         return this.g;
-      }
+   public jp<awj> b() {
+      return this.c;
    }
 }

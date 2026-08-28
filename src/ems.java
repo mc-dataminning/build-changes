@@ -1,38 +1,42 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public interface ems {
-   Codec<ems> b = lv.ah.q().dispatch(ems::b, Function.identity());
+public class ems extends emz {
+   public static final MapCodec<ems> a = MapCodec.unit(() -> ems.b);
+   public static final ems b = new ems();
 
-   void a(azn var1, BiConsumer<ald<emq>, ald<emq>> var2);
-
-   Stream<ald<emq>> a();
-
-   static emr a(String $$0, String $$1) {
-      return a(rb.a($$0), rb.a($$1));
+   private ems() {
+      super(enb.a.a);
    }
 
-   static emr a(ald<emq> $$0, ald<emq> $$1) {
-      return new emr($$0, $$1);
+   @Override
+   public kk a(epu $$0, dol $$1) {
+      return kk.g;
    }
 
-   static emv a(String $$0, bqc<String> $$1) {
-      bqc.a<ald<emq>> $$2 = bqc.a();
-      $$1.e().forEach($$1x -> $$2.a(rb.a((String)$$1x.b()), $$1x.a().a()));
-      return a(rb.a($$0), $$2.a());
+   @Override
+   public List<ept.c> a(epu $$0, jg $$1, dol $$2, azr $$3) {
+      return Collections.emptyList();
    }
 
-   static emv a(ald<emq> $$0, bqc<ald<emq>> $$1) {
-      return new emv($$0, $$1);
+   @Override
+   public elj a(epu $$0, jg $$1, dol $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
    }
 
-   static emw a(bqc<List<ems>> $$0) {
-      return new emw($$0);
+   @Override
+   public boolean a(epu $$0, dfs $$1, dfq $$2, dxa $$3, jg $$4, jg $$5, dol $$6, elj $$7, azr $$8, epd $$9, boolean $$10) {
+      return true;
    }
 
-   MapCodec<? extends ems> b();
+   @Override
+   public ena<?> a() {
+      return ena.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
+   }
 }

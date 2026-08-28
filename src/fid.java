@@ -1,29 +1,59 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fid {
-   private final List<xj> a = Lists.newArrayList();
+public abstract class fid extends fhy {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final xh d;
+   private final Runnable e;
 
-   public void a(xj $$0) {
-      this.a.add($$0);
+   public fid(long $$0, xh $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Nullable
-   public xj a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : xj.a(this.a);
+   protected abstract void a(fej var1, long var2) throws ffu;
+
+   @Override
+   public void run() {
+      fej $$0 = fej.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (ffv var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
       }
    }
 
-   public xj b() {
-      xj $$0 = this.a();
-      return $$0 != null ? $$0 : xj.b;
-   }
-
-   public void c() {
-      this.a.clear();
+   @Override
+   public xh a() {
+      return this.d;
    }
 }

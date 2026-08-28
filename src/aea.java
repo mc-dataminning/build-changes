@@ -1,37 +1,29 @@
-public class aea implements zl<aca> {
-   public static final zc<wb, aea> a = zl.a(aea::a, aea::new);
-   private final int b;
-   private final ale c;
+public class aea implements zo<acd> {
+   public static final zf<we, aea> a = zo.a(aea::a, aea::new);
+   private final brx b;
 
-   public aea(int $$0, dam<?> $$1) {
+   public aea(brx $$0) {
       this.b = $$0;
-      this.c = $$1.a();
    }
 
-   private aea(wb $$0) {
-      this.b = $$0.x();
-      this.c = $$0.q();
+   private aea(we $$0) {
+      this.b = $$0.b(brx.class);
    }
 
-   private void a(wb $$0) {
-      $$0.f(this.b);
-      $$0.a(this.c);
+   private void a(we $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<aea> a() {
-      return agp.Z;
+   public zq<aea> a() {
+      return ags.W;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public ale b() {
-      return this.c;
-   }
-
-   public int e() {
+   public brx b() {
       return this.b;
    }
 }

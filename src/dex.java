@@ -1,41 +1,59 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public interface dex {
+   int J_();
 
-public class dex {
-   private final List<dex.a> a = Lists.newArrayList();
+   int I_();
 
-   public void a(jf $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new dex.a($$0, $$1));
-      }
+   default int an() {
+      return this.I_() + this.J_() - 1;
    }
 
-   public double b(jf $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
+   default int ao() {
+      return this.aq() - this.ap() + 1;
+   }
 
-         for (dex.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
+   default int ap() {
+      return ki.a(this.I_());
+   }
+
+   default int aq() {
+      return ki.a(this.an());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 >= this.I_() && $$0 <= this.an();
+   }
+
+   default boolean s(jg $$0) {
+      return this.e($$0.v());
+   }
+
+   default boolean e(int $$0) {
+      return $$0 < this.I_() || $$0 > this.an();
+   }
+
+   default int f(int $$0) {
+      return this.g(ki.a($$0));
+   }
+
+   default int g(int $$0) {
+      return $$0 - this.ap();
+   }
+
+   default int h(int $$0) {
+      return $$0 + this.ap();
+   }
+
+   static dex e(final int $$0, final int $$1) {
+      return new dex() {
+         @Override
+         public int J_() {
+            return $$1;
          }
 
-         return $$2 * $$1;
-      }
-   }
-
-   static class a {
-      private final jf a;
-      private final double b;
-
-      public a(jf $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(jf $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+         @Override
+         public int I_() {
+            return $$0;
+         }
+      };
    }
 }

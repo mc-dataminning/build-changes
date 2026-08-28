@@ -1,109 +1,115 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class eew extends edu<ego> {
-   public eew(Codec<ego> $$0) {
+public class eew extends eef<egq> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bug<?>[] b = new bug[]{bug.aN, bug.bu, bug.bu, bug.aW};
+   private static final dvd c = dia.nc.m();
+
+   public eew(Codec<egq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(edw<ego> $$0) {
-      dfg $$1 = $$0.b();
-      jf $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
+   public boolean a(eeh<egq> $$0) {
+      Predicate<dvd> $$1 = eef.a(awz.bP);
+      jg $$2 = $$0.e();
+      azr $$3 = $$0.d();
+      dfs $$4 = $$0.b();
+      int $$5 = 3;
+      int $$6 = $$3.a(2) + 2;
+      int $$7 = -$$6 - 1;
+      int $$8 = $$6 + 1;
+      int $$9 = -1;
+      int $$10 = 4;
+      int $$11 = $$3.a(2) + 2;
+      int $$12 = -$$11 - 1;
+      int $$13 = $$11 + 1;
+      int $$14 = 0;
+
+      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
+         for (int $$16 = -1; $$16 <= 4; $$16++) {
+            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
+               jg $$18 = $$2.b($$15, $$16, $$17);
+               boolean $$19 = $$4.a_($$18).e();
+               if ($$16 == -1 && !$$19) {
+                  return false;
+               }
+
+               if ($$16 == 4 && !$$19) {
+                  return false;
+               }
+
+               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.d())) {
+                  $$14++;
+               }
+            }
+         }
+      }
+
+      if ($$14 >= 1 && $$14 <= 5) {
+         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
+            for (int $$21 = 3; $$21 >= -1; $$21--) {
+               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
+                  jg $$23 = $$2.b($$20, $$21, $$22);
+                  dvd $$24 = $$4.a_($$23);
+                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
+                     if ($$23.v() >= $$4.I_() && !$$4.a_($$23.e()).e()) {
+                        $$4.a($$23, c, 2);
+                     } else if ($$24.e() && !$$24.a(dia.cv)) {
+                        if ($$21 == -1 && $$3.a(4) != 0) {
+                           this.a($$4, $$23, dia.cn.m(), $$1);
+                        } else {
+                           this.a($$4, $$23, dia.m.m(), $$1);
+                        }
+                     }
+                  } else if (!$$24.a(dia.cv) && !$$24.a(dia.ct)) {
+                     this.a($$4, $$23, c, $$1);
+                  }
+               }
+            }
+         }
+
+         for (int $$25 = 0; $$25 < 2; $$25++) {
+            for (int $$26 = 0; $$26 < 3; $$26++) {
+               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
+               int $$28 = $$2.v();
+               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
+               jg $$30 = new jg($$27, $$28, $$29);
+               if ($$4.u($$30)) {
+                  int $$31 = 0;
+
+                  for (jl $$32 : jl.c.a) {
+                     if ($$4.a_($$30.a($$32)).e()) {
+                        $$31++;
+                     }
+                  }
+
+                  if ($$31 == 1) {
+                     this.a($$4, $$30, elv.a($$4, $$30, dia.cv.m()), $$1);
+                     bse.a($$4, $$3, $$30, ets.c);
+                     break;
+                  }
+               }
+            }
+         }
+
+         this.a($$4, $$2, dia.ct.m(), $$1);
+         if ($$4.c_($$2) instanceof dtw $$34) {
+            $$34.a(this.a($$3), $$3);
+         } else {
+            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+         }
+
+         return true;
+      } else {
          return false;
-      } else {
-         azn $$3 = $$0.d();
-         jf $$4 = $$0.e();
-         ego $$5 = $$0.f();
-         jf.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
-
-         return true;
       }
    }
 
-   private static boolean a(dfg $$0, ego $$1, jf $$2) {
-      jf.a $$3 = $$2.k();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jk.b);
-         dus $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(dus $$0, int $$1, int $$2) {
-      if ($$0.l()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(axb.a);
-      }
-   }
-
-   private static boolean a(dfg $$0, dwp $$1, ego $$2, azn $$3, jf.a $$4, jf $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jk.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            jf $$7 = $$4.e();
-            if ($$0.b_($$7).a(axb.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
-
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(jf $$0, int $$1, dfg $$2, ego $$3, azn $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      jf.a $$7 = $$0.k();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
-
-   private static void a(dfg $$0, ego $$1, azn $$2, int $$3, int $$4, jf.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dus> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dfg $$0, ego $$1, azn $$2, jf $$3, jf.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dus $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jk.a)) {
-               $$0.a($$4, $$8, 2);
-            }
-         }
-      }
+   private bug<?> a(azr $$0) {
+      return ad.a(b, $$0);
    }
 }

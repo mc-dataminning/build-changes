@@ -1,60 +1,39 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
-public class cds {
-   private static final cds a = new cds();
-   private final List<bun> b;
-   private final Predicate<bun> c;
+public class cds<T extends bux & bva> extends cbt {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   private cds() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public cds(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public cds(bun $$0, List<bun> $$1) {
-      this.b = $$1;
-      Object2BooleanOpenHashMap<bun> $$2 = new Object2BooleanOpenHashMap($$1.size());
-      Predicate<bun> $$3 = $$1x -> cew.b($$0, $$1x);
-      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
+   @Override
+   public boolean b() {
+      return this.b.dX().ac().b(der.O) && this.h();
    }
 
-   public static cds a() {
-      return a;
+   private boolean h() {
+      return this.b.es() != null && this.b.es().aq() == bug.by && this.b.et() > this.d;
    }
 
-   public Optional<bun> a(Predicate<bun> $$0) {
-      for (bun $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
-         }
+   @Override
+   public void d() {
+      this.d = this.b.et();
+      this.b.af_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bva)$$0).forEach(bva::af_);
       }
 
-      return Optional.empty();
+      super.d();
    }
 
-   public Iterable<bun> b(Predicate<bun> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public Stream<bun> c(Predicate<bun> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(bun $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<bun> $$0) {
-      for (bun $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   private List<? extends bux> i() {
+      double $$0 = this.b.h(bwd.m);
+      ezc $$1 = ezc.a(this.b.dv()).c($$0, 10.0, $$0);
+      return this.b.dX().a((Class<? extends bux>)this.b.getClass(), $$1, bue.f);
    }
 }

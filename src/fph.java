@@ -1,109 +1,101 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fph extends fqh {
-   private static final xe a = xe.c("createWorld.customize.buffet.biome").b(-8355712);
-   private static final int b = 8;
-   private final foc c = new foc(this);
-   private final fqh d;
-   private final Consumer<jo<dfk>> s;
-   final kb<dfk> u;
-   private fph.a v;
-   jo<dfk> w;
-   private fko x;
+public record fph(fpg a, int b, int c) {
+   private static final fph d = new fph(0, 0, 0, 0);
 
-   public fph(fqh $$0, fvm $$1, Consumer<jo<dfk>> $$2) {
-      super(xe.c("createWorld.customize.buffet.title"));
-      this.d = $$0;
-      this.s = $$2;
-      this.u = $$1.a().e(lw.aH);
-      jo<dfk> $$3 = this.u.a(dfr.b).or(() -> this.u.c().findAny()).orElseThrow();
-      this.w = $$1.e().a().d().c().stream().findFirst().orElse($$3);
+   public fph(int $$0, int $$1, int $$2, int $$3) {
+      this(new fpg($$0, $$1), $$2, $$3);
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.d);
+   public static fph a() {
+      return d;
    }
 
-   @Override
-   protected void aS_() {
-      fog $$0 = this.c.a(fog.d().a(8));
-      $$0.c().b();
-      $$0.a(new flv(this.n(), this.p));
-      $$0.a(new flv(a, this.p));
-      this.v = this.c.c(new fph.a());
-      fog $$1 = this.c.b(fog.e().a(8));
-      this.x = $$1.a(fko.a(xd.d, $$0x -> {
-         this.s.accept(this.w);
-         this.d();
-      }).a());
-      $$1.a(fko.a(xd.e, $$0x -> this.d()).a());
-      this.v.a(this.v.aJ_().stream().filter($$0x -> Objects.equals($$0x.b, this.w)).findFirst().orElse(null));
-      this.c.a(this::c);
-      this.c();
+   public static fph a(fpe $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fph($$1, $$2, $$3, $$4);
+         case b -> new fph($$2, $$1, $$4, $$3);
+      };
    }
 
-   @Override
-   protected void c() {
-      this.c.a();
-      this.v.a(this.n, this.c);
+   public fph a(fpf $$0) {
+      return new fph(this.a.a($$0), this.b, this.c);
    }
 
-   void m() {
-      this.x.j = this.v.h() != null;
+   public int a(fpe $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   class a extends flk<fph.a.a> {
-      a() {
-         super(fph.this.m, fph.this.n, fph.this.o - 77, 40, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         fph.this.u.c().map($$0x -> new fph.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
-      }
+   public int b(fpf $$0) {
+      fpe $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
 
-      public void a(@Nullable fph.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            fph.this.w = $$0.b;
-         }
+   public fph c(fpf $$0) {
+      int $$1 = this.b($$0);
+      fpe $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
 
-         fph.this.m();
-      }
+   public boolean a(fph $$0) {
+      return this.a($$0, fpe.a) && this.a($$0, fpe.b);
+   }
 
-      class a extends flk.a<fph.a.a> {
-         final jo.c<dfk> b;
-         final xe c;
+   public boolean a(fph $$0, fpe $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
 
-         public a(final jo.c<dfk> $$0) {
-            this.b = $$0;
-            ale $$1 = $$0.h().a();
-            String $$2 = $$1.h("biome");
-            if (ub.a().b($$2)) {
-               this.c = xe.c($$2);
-            } else {
-               this.c = xe.b($$1.toString());
-            }
-         }
+   public int b(fpe $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
 
-         @Override
-         public xe a() {
-            return xe.a("narrator.select", this.c);
-         }
+   @Nullable
+   public fph b(fph $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fph($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
 
-         @Override
-         public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fph.this.p, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
+   public int b() {
+      return this.a.b();
+   }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
-      }
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public fpg f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

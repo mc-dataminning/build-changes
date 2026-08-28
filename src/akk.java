@@ -1,7 +1,23 @@
-import java.util.List;
+public record akk<T>(int a, akl<T> b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         akk<?> $$1 = (akk<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
+   }
 
-public interface akk {
-   void a(akh<?> var1);
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
 
-   void a(List<akl.c<?>> var1);
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
+   }
 }

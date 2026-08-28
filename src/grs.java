@@ -1,27 +1,17 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class grs extends gsm<gvn, fze> {
+   private final fym<gvn> a;
 
-public class grs extends gsb<guj, fyd> {
-   private static final Map<bto.a, ale> a = ImmutableMap.of(
-      bto.a.b,
-      ale.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bto.a.c,
-      ale.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bto.a.d,
-      ale.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public grs(gpk<guj, fyd> $$0) {
+   public grs(gpv<gvn, fze> $$0, gax $$1) {
       super($$0);
+      this.a = new fzd($$1.a(gba.bJ));
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, guj $$3, float $$4, float $$5) {
-      if (!$$3.u) {
-         bto.a $$6 = $$3.c;
-         if ($$6 != bto.a.a) {
-            ale $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
+   public void a(fdt $$0, ghw $$1, int $$2, gvn $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.u) {
+         fdx $$6 = $$1.getBuffer(gig.c($$3.a.a()));
+         int $$7 = gpa.a($$3, 0.0F);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
       }
    }
 }

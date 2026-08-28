@@ -1,13 +1,28 @@
 import java.util.EnumSet;
 
-public class cbn extends cbs {
-   public cbn(bup $$0, Class<? extends bun> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(cbk.a.b, cbk.a.a));
+public class cbn extends cbt {
+   private final bux a;
+
+   public cbn(bux $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cbt.a.c));
+      $$0.P().a(true);
    }
 
-   public cbn(bup $$0, Class<? extends bun> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(cbk.a.b, cbk.a.a));
+   @Override
+   public boolean b() {
+      return this.a.bk() && this.a.b(axf.a) > this.a.dr() || this.a.by();
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.a.ea().i() < 0.8F) {
+         this.a.O().a();
+      }
    }
 }

@@ -1,59 +1,19 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-
-public class cwv extends cui {
-   protected static final Map<dhm, dus> a = Maps.newHashMap(
-      new Builder()
-         .put(dho.i, dho.kE.n())
-         .put(dho.j, dho.kE.n())
-         .put(dho.l, dho.kE.n())
-         .put(dho.k, dho.kE.n())
-         .put(dho.fl, dho.kE.n())
-         .put(dho.sH, dho.kE.n())
-         .build()
-   );
-
-   public cwv(cxj $$0, float $$1, float $$2, cvn.a $$3) {
-      super($$0, awv.bE, $$1, $$2, $$3);
+public class cwv extends cvt {
+   public cwv(cvt.a $$0) {
+      super($$0);
    }
 
    @Override
-   public brs a(czp $$0) {
-      dej $$1 = $$0.q();
-      jf $$2 = $$0.a();
-      dus $$3 = $$1.a_($$2);
-      if ($$0.k() == jk.a) {
-         return brs.e;
-      } else {
-         cnx $$4 = $$0.o();
-         dus $$5 = a.get($$3.b());
-         dus $$6 = null;
-         if ($$5 != null && $$1.a_($$2.d()).l()) {
-            $$1.a($$4, $$2, awg.wL, awh.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dia && $$3.c(dia.c)) {
-            if (!$$1.x_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
-
-            dia.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.b(dia.c, Boolean.valueOf(false));
+   public bry a(cvx $$0, coh $$1, buv $$2, brx $$3) {
+      if ($$2 instanceof bvl $$4 && $$2.bM() && !$$4.i() && $$4.f()) {
+         if (!$$1.dX().C) {
+            $$4.a($$0.a(1), awl.g);
+            $$2.dX().a($$2, eaa.v, $$2.dv());
          }
 
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dzp.c, $$2, dzp.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, bun.d($$0.p()));
-               }
-            }
-
-            return brs.a;
-         } else {
-            return brs.e;
-         }
+         return bry.a;
       }
+
+      return bry.e;
    }
 }

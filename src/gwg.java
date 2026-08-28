@@ -1,8 +1,7 @@
-public class gwg extends gwf implements gvy {
-   public cnl c = new cnl(cnp.c, cnn.b, 1);
+import javax.annotation.Nullable;
 
-   @Override
-   public cnl a() {
-      return this.c;
-   }
+public class gwg extends guc {
+   public float a;
+   @Nullable
+   public dvd b;
 }

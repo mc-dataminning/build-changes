@@ -1,144 +1,221 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
 
-public interface dds extends ddo {
-   dwj B_();
+public class dds {
+   public static final Codec<dds> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ddq.a.fieldOf("buy").forGetter($$0x -> $$0x.c),
+               ddq.a.lenientOptionalFieldOf("buyB").forGetter($$0x -> $$0x.d),
+               cvx.b.fieldOf("sell").forGetter($$0x -> $$0x.e),
+               Codec.INT.lenientOptionalFieldOf("uses", 0).forGetter($$0x -> $$0x.f),
+               Codec.INT.lenientOptionalFieldOf("maxUses", 4).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.lenientOptionalFieldOf("rewardExp", true).forGetter($$0x -> $$0x.h),
+               Codec.INT.lenientOptionalFieldOf("specialPrice", 0).forGetter($$0x -> $$0x.i),
+               Codec.INT.lenientOptionalFieldOf("demand", 0).forGetter($$0x -> $$0x.j),
+               Codec.FLOAT.lenientOptionalFieldOf("priceMultiplier", 0.0F).forGetter($$0x -> $$0x.k),
+               Codec.INT.lenientOptionalFieldOf("xp", 1).forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, dds::new)
+   );
+   public static final zf<ws, dds> b = zf.a(dds::a, dds::a);
+   private final ddq c;
+   private final Optional<ddq> d;
+   private final cvx e;
+   private int f;
+   private final int g;
+   private final boolean h;
+   private int i;
+   private int j;
+   private final float k;
+   private final int l;
 
-   @Nullable
-   ddo c(int var1, int var2);
-
-   default boolean a(@Nullable btr $$0, ezq $$1) {
-      return true;
+   private dds(ddq $$0, Optional<ddq> $$1, cvx $$2, int $$3, int $$4, boolean $$5, int $$6, int $$7, float $$8, int $$9) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
    }
 
-   default boolean a(dus $$0, jf $$1, ezb $$2) {
-      ezq $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   public dds(ddq $$0, cvx $$1, int $$2, int $$3, float $$4) {
+      this($$0, Optional.empty(), $$1, $$2, $$3, $$4);
    }
 
-   default boolean f(btr $$0) {
-      return this.a($$0, ezn.a($$0.cO()));
+   public dds(ddq $$0, Optional<ddq> $$1, cvx $$2, int $$3, int $$4, float $$5) {
+      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
    }
 
-   default boolean b(eyr $$0) {
-      return this.a(null, $$0);
+   public dds(ddq $$0, Optional<ddq> $$1, cvx $$2, int $$3, int $$4, int $$5, float $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
    }
 
-   default boolean g(btr $$0) {
-      return this.a($$0, $$0.cO());
+   public dds(ddq $$0, Optional<ddq> $$1, cvx $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
+      this($$0, $$1, $$2, $$3, $$4, true, 0, $$7, $$6, $$5);
    }
 
-   default boolean a(@Nullable btr $$0, eyr $$1) {
-      return this.a($$0, $$1, false);
+   private dds(dds $$0) {
+      this($$0.c, $$0.d, $$0.e.v(), $$0.f, $$0.g, $$0.h, $$0.i, $$0.j, $$0.k, $$0.l);
    }
 
-   default boolean a(@Nullable btr $$0, eyr $$1, boolean $$2) {
-      for (ezq $$4 : $$2 ? this.f($$0, $$1) : this.e($$0, $$1)) {
-         if (!$$4.c()) {
-            return false;
-         }
-      }
+   public cvx a() {
+      return this.c.d();
+   }
 
-      if (!this.c($$0, $$1).isEmpty()) {
+   public cvx b() {
+      return this.c.d().c(this.a(this.c));
+   }
+
+   private int a(ddq $$0) {
+      int $$1 = $$0.b();
+      int $$2 = Math.max(0, azj.d((float)($$1 * this.j) * this.k));
+      return azj.a($$1 + $$2 + this.i, 1, $$0.d().k());
+   }
+
+   public cvx c() {
+      return this.d.map(ddq::d).orElse(cvx.k);
+   }
+
+   public ddq d() {
+      return this.c;
+   }
+
+   public Optional<ddq> e() {
+      return this.d;
+   }
+
+   public cvx f() {
+      return this.e;
+   }
+
+   public void g() {
+      this.j = this.j + this.f - (this.g - this.f);
+   }
+
+   public cvx h() {
+      return this.e.v();
+   }
+
+   public int i() {
+      return this.f;
+   }
+
+   public void j() {
+      this.f = 0;
+   }
+
+   public int k() {
+      return this.g;
+   }
+
+   public void l() {
+      this.f++;
+   }
+
+   public int m() {
+      return this.j;
+   }
+
+   public void a(int $$0) {
+      this.i += $$0;
+   }
+
+   public void n() {
+      this.i = 0;
+   }
+
+   public int o() {
+      return this.i;
+   }
+
+   public void b(int $$0) {
+      this.i = $$0;
+   }
+
+   public float p() {
+      return this.k;
+   }
+
+   public int q() {
+      return this.l;
+   }
+
+   public boolean r() {
+      return this.f >= this.g;
+   }
+
+   public void s() {
+      this.f = this.g;
+   }
+
+   public boolean t() {
+      return this.f > 0;
+   }
+
+   public boolean u() {
+      return this.h;
+   }
+
+   public boolean a(cvx $$0, cvx $$1) {
+      if (!this.c.a($$0) || $$0.L() < this.a(this.c)) {
          return false;
-      } else if ($$0 == null) {
+      } else {
+         return !this.d.isPresent() ? $$1.f() : this.d.get().a($$1) && $$1.L() >= this.d.get().b();
+      }
+   }
+
+   public boolean b(cvx $$0, cvx $$1) {
+      if (!this.a($$0, $$1)) {
+         return false;
+      } else {
+         $$0.h(this.b().L());
+         if (!this.c().f()) {
+            $$1.h(this.c().L());
+         }
+
          return true;
-      } else {
-         ezq $$5 = this.i($$0, $$1);
-         return $$5 == null || !ezn.c($$5, ezn.a($$1), eza.i);
       }
    }
 
-   default boolean b(@Nullable btr $$0, eyr $$1) {
-      for (ezq $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
+   public dds v() {
+      return new dds(this);
+   }
+
+   private static void a(ws $$0, dds $$1) {
+      ddq.b.encode($$0, $$1.d());
+      cvx.i.encode($$0, $$1.f());
+      ddq.c.encode($$0, $$1.e());
+      $$0.a($$1.r());
+      $$0.q($$1.i());
+      $$0.q($$1.k());
+      $$0.q($$1.q());
+      $$0.q($$1.o());
+      $$0.a($$1.p());
+      $$0.q($$1.m());
+   }
+
+   public static dds a(ws $$0) {
+      ddq $$1 = ddq.b.decode($$0);
+      cvx $$2 = cvx.i.decode($$0);
+      Optional<ddq> $$3 = ddq.c.decode($$0);
+      boolean $$4 = $$0.readBoolean();
+      int $$5 = $$0.readInt();
+      int $$6 = $$0.readInt();
+      int $$7 = $$0.readInt();
+      int $$8 = $$0.readInt();
+      float $$9 = $$0.readFloat();
+      int $$10 = $$0.readInt();
+      dds $$11 = new dds($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
+      if ($$4) {
+         $$11.s();
       }
 
-      return true;
-   }
-
-   List<ezq> c(@Nullable btr var1, eyr var2);
-
-   default Iterable<ezq> d(@Nullable btr $$0, eyr $$1) {
-      List<ezq> $$2 = this.c($$0, $$1);
-      Iterable<ezq> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<ezq> e(@Nullable btr $$0, eyr $$1) {
-      return () -> new ddm<ezq>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
-   }
-
-   default Iterable<ezq> f(@Nullable btr $$0, eyr $$1) {
-      return () -> new ddm<ezq>(this, ezb.a($$0, true), $$1, false, ($$0xx, $$1xx) -> $$1xx);
-   }
-
-   @Nullable
-   private ezq i(btr $$0, eyr $$1) {
-      dwj $$2 = this.B_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default eyu b(ddr $$0) {
-      eyu $$1 = this.a($$0);
-      dwj $$2 = this.B_();
-      if ($$2.a($$0.b()) && !$$2.a($$1.g())) {
-         eyw $$3 = $$1.g().d($$0.b());
-         jk $$4 = jk.a($$3.d, $$3.e, $$3.f);
-         eyw $$5 = $$2.c($$1.g());
-         return new eys($$5, $$4, jf.a((jy)$$5), false, true);
-      } else {
-         return $$1;
-      }
-   }
-
-   default boolean g(@Nullable btr $$0, eyr $$1) {
-      ddm<ezq> $$2 = new ddm<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((ezq)$$2.next()).c()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   default Optional<jf> h(btr $$0, eyr $$1) {
-      jf $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      ddm<jf> $$4 = new ddm<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         jf $$5 = (jf)$$4.next();
-         double $$6 = $$5.b($$0.dq());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.j();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<eyw> a(@Nullable btr $$0, ezq $$1, eyw $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
-      } else {
-         eyr $$6 = $$1.a().c($$3, $$4, $$5);
-         ezq $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.B_() == null || this.B_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(ezn::a)
-            .reduce(ezn.a(), ezn::a);
-         ezq $$8 = ezn.a($$1, $$7, eza.e);
-         return $$8.a($$2);
-      }
+      $$11.b($$8);
+      return $$11;
    }
 }

@@ -1,72 +1,122 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public final class bxj {
-   public static Optional<eyw> a(bup $$0, eyw $$1, float $$2, int $$3, boolean $$4) {
-      eyw $$5 = $$0.dq();
-      eyw $$6 = new eyw($$1.d - $$5.d, 0.0, $$1.f - $$5.f).d().c(0.5);
-      eyw $$7 = $$1.d($$6);
-      eyw $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.f, $$8.d);
-      double $$11 = $$8.a(0.0, $$8.e, 0.0).h();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.e;
-      double $$14 = $$0.bd();
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
+public class bxj extends bwo<cnt> {
+   private static final int d = 200;
+   public static final float c = 0.5F;
+   @Nullable
+   private jg e;
+   private long f;
+   private int g;
+   private final List<jg> h = Lists.newArrayList();
+
+   public bxj() {
+      super(ImmutableMap.of(cdz.n, cea.b, cdz.m, cea.b, cdz.f, cea.a));
+   }
+
+   protected boolean a(arm $$0, cnt $$1) {
+      if (!$$0.ac().b(der.c)) {
+         return false;
+      } else if ($$1.gF().b() != cnw.g) {
+         return false;
       } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
-         } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = azf.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               eyw $$27 = null;
-               btu $$28 = $$0.a(buz.g);
+         jg.a $$2 = $$1.dx().k();
+         this.h.clear();
 
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  eyw $$33 = new eyw($$5.d + $$31, $$5.e + $$30, $$5.f + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  $$2.b($$1.dC() + (double)$$3, $$1.dE() + (double)$$4, $$1.dI() + (double)$$5);
+                  if (this.a($$2, $$0)) {
+                     this.h.add(new jg($$2));
                   }
-
-                  $$27 = $$33;
                }
             }
-
-            return Optional.of(new eyw($$23 * $$20, $$24, $$23 * $$19).c(0.95F));
          }
+
+         this.e = this.a($$0);
+         return this.e != null;
       }
    }
 
-   private static boolean a(bup $$0, btu $$1, eyw $$2, eyw $$3) {
-      eyw $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = azf.c($$4.g() / $$5);
-      eyw $$7 = $$4.d();
-      eyw $$8 = $$2;
+   @Nullable
+   private jg a(arm $$0) {
+      return this.h.isEmpty() ? null : this.h.get($$0.E_().a(this.h.size()));
+   }
 
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.c($$5 * 0.9F));
-         if (!$$0.dS().a($$0, $$1.a($$8))) {
-            return false;
-         }
+   private boolean a(jg $$0, arm $$1) {
+      dvd $$2 = $$1.a_($$0);
+      dhy $$3 = $$2.b();
+      dhy $$4 = $$1.a_($$0.e()).b();
+      return $$3 instanceof djt && ((djt)$$3).i($$2) || $$2.l() && $$4 instanceof dku;
+   }
+
+   protected void a(arm $$0, cnt $$1, long $$2) {
+      if ($$2 > this.f && this.e != null) {
+         $$1.ed().a(cdz.n, new bwr(this.e));
+         $$1.ed().a(cdz.m, new cec(new bwr(this.e), 0.5F, 1));
       }
+   }
 
-      return true;
+   protected void b(arm $$0, cnt $$1, long $$2) {
+      $$1.ed().b(cdz.n);
+      $$1.ed().b(cdz.m);
+      this.g = 0;
+      this.f = $$2 + 40L;
+   }
+
+   protected void c(arm $$0, cnt $$1, long $$2) {
+      if (this.e == null || this.e.a($$1.dv(), 1.0)) {
+         if (this.e != null && $$2 > this.f) {
+            dvd $$3 = $$0.a_(this.e);
+            dhy $$4 = $$3.b();
+            dhy $$5 = $$0.a_(this.e.e()).b();
+            if ($$4 instanceof djt && ((djt)$$4).i($$3)) {
+               $$0.a(this.e, true, $$1);
+            }
+
+            if ($$3.l() && $$5 instanceof dku && $$1.gO()) {
+               bsf $$6 = $$1.y();
+
+               for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
+                  cvx $$8 = $$6.a($$7);
+                  boolean $$9 = false;
+                  if (!$$8.f() && $$8.a(axi.bK) && $$8.h() instanceof cuc $$10) {
+                     dvd $$11 = $$10.d().m();
+                     $$0.b(this.e, $$11);
+                     $$0.a(eaa.i, this.e, eaa.a.a($$1, $$11));
+                     $$9 = true;
+                  }
+
+                  if ($$9) {
+                     $$0.a(null, (double)this.e.u(), (double)this.e.v(), (double)this.e.w(), awk.gn, awl.e, 1.0F, 1.0F);
+                     $$8.h(1);
+                     if ($$8.f()) {
+                        $$6.a($$7, cvx.k);
+                     }
+                     break;
+                  }
+               }
+            }
+
+            if ($$4 instanceof djt && !((djt)$$4).i($$3)) {
+               this.h.remove(this.e);
+               this.e = this.a($$0);
+               if (this.e != null) {
+                  this.f = $$2 + 20L;
+                  $$1.ed().a(cdz.m, new cec(new bwr(this.e), 0.5F, 1));
+                  $$1.ed().a(cdz.n, new bwr(this.e));
+               }
+            }
+         }
+
+         this.g++;
+      }
+   }
+
+   protected boolean d(arm $$0, cnt $$1, long $$2) {
+      return this.g < 200;
    }
 }

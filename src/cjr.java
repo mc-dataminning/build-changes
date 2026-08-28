@@ -1,45 +1,80 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cjr {
-   private static final Logger a = LogUtils.getLogger();
-   private final cja b;
-   private final cjk[] c = new cjk[cjq.c()];
+public class cjr extends cjl {
+   private static final cfm b = cfm.a().d();
    @Nullable
-   private cjk d;
+   private ers c;
+   @Nullable
+   private ezh d;
 
-   public cjr(cja $$0) {
-      this.b = $$0;
-      this.a(cjq.k);
+   public cjr(cjj $$0) {
+      super($$0);
    }
 
-   public void a(cjq<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
+   @Override
+   public cjz<cjr> i() {
+      return cjz.c;
+   }
 
-         this.d = this.b((cjq<cjk>)$$0);
-         if (!this.b.dS().B) {
-            this.b.at().a(cja.b, $$0.b());
-         }
+   @Override
+   public void d() {
+      this.c = null;
+      this.d = null;
+   }
 
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dS().B ? "client" : "server");
-         this.d.d();
+   @Override
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dC(), this.a.dE(), this.a.dI());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+         this.j();
       }
    }
 
-   public cjk a() {
+   @Nullable
+   @Override
+   public ezh g() {
       return this.d;
    }
 
-   public <T extends cjk> T b(cjq<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.y();
+         jg $$1 = this.a.dX().a(eaz.a.f, eee.a(this.a.q()));
+         coh $$2 = this.a.dX().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            ezh $$3 = new ezh($$2.dC(), 0.0, $$2.dI()).d();
+            $$4 = this.a.q(-$$3.d * 40.0, 105.0, -$$3.f * 40.0);
+         } else {
+            $$4 = this.a.q(40.0, (double)$$1.v(), 0.0);
+         }
+
+         erq $$6 = new erq($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
       }
 
-      return (T)this.c[$$1];
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gs().a(cjz.d);
+      }
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         kk $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.ea().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new ezh($$1, $$3, $$2);
+      }
    }
 }

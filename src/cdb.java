@@ -1,42 +1,103 @@
 import java.util.EnumSet;
-import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cdb extends cdk {
-   private final cgp a;
+public class cdb extends cbt {
+   private static final cfm c = cfm.b().d();
+   private final cfm d;
+   protected final bvd a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
    @Nullable
-   private bun b;
-   private final cfd c = cfd.a().a(64.0);
+   protected coh b;
+   private int k;
+   private boolean l;
+   private final Predicate<cvx> m;
+   private final boolean n;
 
-   public cdb(cgp $$0) {
-      super($$0, false, true);
+   public cdb(bvd $$0, double $$1, Predicate<cvx> $$2, boolean $$3) {
       this.a = $$0;
-      this.a(EnumSet.of(cbk.a.d));
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(cbt.a.a, cbt.a.b));
+      this.d = c.c().a(this::a);
    }
 
    @Override
    public boolean b() {
-      eyr $$0 = this.a.cO().c(10.0, 8.0, 10.0);
-      List<? extends bun> $$1 = this.a.dS().a(cnk.class, this.c, this.a, $$0);
-      List<cnx> $$2 = this.a.dS().a(this.c, this.a, $$0);
+      if (this.k > 0) {
+         this.k--;
+         return false;
+      } else {
+         this.b = this.a.dX().a(this.d.a(this.a.h(bwd.E)), this.a);
+         return this.b != null;
+      }
+   }
 
-      for (bun $$3 : $$1) {
-         cnk $$4 = (cnk)$$3;
+   private boolean a(buv $$0) {
+      return this.m.test($$0.fb()) || this.m.test($$0.fc());
+   }
 
-         for (cnx $$5 : $$2) {
-            int $$6 = $$4.f($$5);
-            if ($$6 <= -100) {
-               this.b = $$5;
+   @Override
+   public boolean c() {
+      if (this.h()) {
+         if (this.a.g(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
             }
+
+            if (Math.abs((double)this.b.dP() - this.i) > 5.0 || Math.abs((double)this.b.dN() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.dC();
+            this.g = this.b.dE();
+            this.h = this.b.dI();
          }
+
+         this.i = (double)this.b.dP();
+         this.j = (double)this.b.dN();
       }
 
-      return this.b == null ? false : !(this.b instanceof cnx) || !this.b.Q_() && !((cnx)this.b).f();
+      return this.b();
+   }
+
+   protected boolean h() {
+      return this.n;
    }
 
    @Override
    public void d() {
-      this.a.h(this.b);
-      super.d();
+      this.f = this.b.dC();
+      this.g = this.b.dE();
+      this.h = this.b.dI();
+      this.l = true;
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.P().o();
+      this.k = b(100);
+      this.l = false;
+   }
+
+   @Override
+   public void a() {
+      this.a.K().a(this.b, (float)(this.a.ae() + 20), (float)this.a.ad());
+      if (this.a.g(this.b) < 6.25) {
+         this.a.P().o();
+      } else {
+         this.a.P().a(this.b, this.e);
+      }
+   }
+
+   public boolean i() {
+      return this.l;
    }
 }

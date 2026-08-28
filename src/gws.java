@@ -1,6 +1,8 @@
-import java.io.IOException;
-import java.nio.file.Path;
+public class gws extends gwr implements gwk {
+   public cnu c = new cnu(cny.c, cnw.b, 1);
 
-public interface gws {
-   void a(ale var1, Path var2) throws IOException;
+   @Override
+   public cnu a() {
+      return this.c;
+   }
 }

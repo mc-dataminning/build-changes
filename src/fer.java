@@ -1,36 +1,20 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fer extends ffc {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fep> a;
+public class fer {
+   private final Gson a = new Gson();
 
-   public static fer a(String $$0) {
-      fer $$1 = new fer();
-      $$1.a = Lists.newArrayList();
+   public String a(ffh $$0) {
+      return this.a.toJson($$0);
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("servers").isJsonArray()) {
-            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
-            Iterator<JsonElement> $$5 = $$4.iterator();
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
+   }
 
-            while ($$5.hasNext()) {
-               $$1.a.add(fep.a($$5.next().getAsJsonObject()));
-            }
-         }
-      } catch (Exception var6) {
-         b.error("Could not parse McoServerList: {}", var6.getMessage());
-      }
-
-      return $$1;
+   @Nullable
+   public <T extends ffh> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

@@ -1,86 +1,196 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import org.slf4j.Logger;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class mb {
-   private static final Logger a = LogUtils.getLogger();
-   private final Path b;
-   private final me c;
-   final Set<String> d = new HashSet<>();
-   final Map<String, mc> e = new LinkedHashMap<>();
-   private final ae f;
-   private final boolean g;
+   private final dhy a;
+   final Map<mb.b, dhy> b = Maps.newHashMap();
+   boolean c = true;
+   boolean d = true;
+   @Nullable
+   String e;
+   @Nullable
+   String f;
 
-   public mb(Path $$0, ae $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = new me(this.b);
-      this.f = $$1;
-      this.g = $$2;
+   mb(dhy $$0) {
+      this.a = $$0;
    }
 
-   public void a() throws IOException {
-      md $$0 = new md(this.b, this.d, this.f);
-      Stopwatch $$1 = Stopwatch.createStarted();
-      Stopwatch $$2 = Stopwatch.createUnstarted();
-      this.e.forEach(($$2x, $$3) -> {
-         if (!this.g && !$$0.a($$2x)) {
-            a.debug("Generator {} already run for version {}", $$2x, this.f.c());
-         } else {
-            a.info("Starting provider: {}", $$2x);
-            $$2.start();
-            $$0.a($$0.a($$2x, $$3::a).join());
-            $$2.stop();
-            a.info("{} finished after {} ms", $$2x, $$2.elapsed(TimeUnit.MILLISECONDS));
-            $$2.reset();
-         }
-      });
-      a.info("All providers took: {} ms", $$1.elapsed(TimeUnit.MILLISECONDS));
-      $$0.a();
+   public dhy a() {
+      return this.a;
    }
 
-   public mb.a a(boolean $$0) {
-      return new mb.a($$0, "vanilla", this.c);
+   public Map<mb.b, dhy> b() {
+      return this.b;
    }
 
-   public mb.a a(boolean $$0, String $$1) {
-      Path $$2 = this.c.a(me.b.a).resolve("minecraft").resolve("datapacks").resolve($$1);
-      return new mb.a($$0, $$1, new me($$2));
+   public dhy a(mb.b $$0) {
+      return this.b.get($$0);
    }
 
-   static {
-      alg.a();
+   public boolean c() {
+      return this.c;
    }
 
-   public class a {
-      private final boolean b;
-      private final String c;
-      private final me d;
+   public boolean d() {
+      return this.d;
+   }
 
-      a(final boolean $$1, final String $$2, final me $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public Optional<String> e() {
+      return bag.h(this.e) ? Optional.empty() : Optional.of(this.e);
+   }
+
+   public Optional<String> f() {
+      return bag.h(this.f) ? Optional.empty() : Optional.of(this.f);
+   }
+
+   public static class a {
+      private final mb a;
+
+      public a(dhy $$0) {
+         this.a = new mb($$0);
       }
 
-      public <T extends mc> T a(mc.a<T> $$0) {
-         T $$1 = $$0.create(this.d);
-         String $$2 = this.c + "/" + $$1.a();
-         if (!mb.this.d.add($$2)) {
-            throw new IllegalStateException("Duplicate provider: " + $$2);
-         } else {
-            if (this.b) {
-               mb.this.e.put($$2, $$1);
-            }
+      public mb a() {
+         return this.a;
+      }
 
-            return $$1;
-         }
+      public mb.a a(dhy $$0) {
+         this.a.b.put(mb.b.a, $$0);
+         return this;
+      }
+
+      public mb.a b(dhy $$0) {
+         this.a.b.put(mb.b.b, $$0);
+         return this;
+      }
+
+      public mb.a c(dhy $$0) {
+         this.a.b.put(mb.b.j, $$0);
+         return this;
+      }
+
+      public mb.a d(dhy $$0) {
+         this.a.b.put(mb.b.c, $$0);
+         return this;
+      }
+
+      public mb.a e(dhy $$0) {
+         this.a.b.put(mb.b.d, $$0);
+         return this;
+      }
+
+      public mb.a f(dhy $$0) {
+         this.a.b.put(mb.b.e, $$0);
+         return this;
+      }
+
+      public mb.a g(dhy $$0) {
+         this.a.b.put(mb.b.f, $$0);
+         return this;
+      }
+
+      public mb.a h(dhy $$0) {
+         this.a.b.put(mb.b.g, $$0);
+         return this;
+      }
+
+      public mb.a i(dhy $$0) {
+         this.a.b.put(mb.b.h, $$0);
+         return this;
+      }
+
+      public mb.a j(dhy $$0) {
+         this.a.b.put(mb.b.i, $$0);
+         return this;
+      }
+
+      public mb.a a(dhy $$0, dhy $$1) {
+         this.a.b.put(mb.b.k, $$0);
+         this.a.b.put(mb.b.r, $$1);
+         return this;
+      }
+
+      public mb.a k(dhy $$0) {
+         this.a.b.put(mb.b.l, $$0);
+         return this;
+      }
+
+      public mb.a l(dhy $$0) {
+         this.a.b.put(mb.b.m, $$0);
+         return this;
+      }
+
+      public mb.a m(dhy $$0) {
+         this.a.b.put(mb.b.n, $$0);
+         return this;
+      }
+
+      public mb.a n(dhy $$0) {
+         this.a.b.put(mb.b.o, $$0);
+         return this;
+      }
+
+      public mb.a o(dhy $$0) {
+         this.a.b.put(mb.b.p, $$0);
+         return this;
+      }
+
+      public mb.a p(dhy $$0) {
+         this.a.b.put(mb.b.q, $$0);
+         return this;
+      }
+
+      public mb.a b() {
+         this.a.c = false;
+         return this;
+      }
+
+      public mb.a c() {
+         this.a.d = false;
+         return this;
+      }
+
+      public mb.a a(String $$0) {
+         this.a.e = $$0;
+         return this;
+      }
+
+      public mb.a b(String $$0) {
+         this.a.f = $$0;
+         return this;
+      }
+   }
+
+   public static enum b {
+      a("button"),
+      b("chiseled"),
+      c("cracked"),
+      d("cut"),
+      e("door"),
+      f("fence"),
+      g("fence"),
+      h("fence_gate"),
+      i("fence_gate"),
+      j("mosaic"),
+      k("sign"),
+      l("slab"),
+      m("stairs"),
+      n("pressure_plate"),
+      o("polished"),
+      p("trapdoor"),
+      q("wall"),
+      r("wall_sign");
+
+      private final String s;
+
+      private b(final String $$0) {
+         this.s = $$0;
+      }
+
+      public String a() {
+         return this.s;
       }
    }
 }

@@ -1,5 +1,4 @@
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public interface fjq {
-   int getColor(dus var1, @Nullable ddl var2, @Nullable jf var3, int var4);
+public record fjq(float a, Vector3f b, fjo.a c) {
 }

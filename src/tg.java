@@ -1,224 +1,148 @@
-import com.google.common.base.Stopwatch;
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import java.net.Proxy;
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class tg extends MinecraftServer {
-   private static final Logger l = LogUtils.getLogger();
-   private static final int m = 20;
-   private static final int n = 14999992;
-   private static final alz o = new alz(null, ServicesKeySet.EMPTY, null, null);
-   private static final cqq p = cqs.f.a().d(cqq.a(cqs.d));
-   private final bmr q = new bmr(4);
-   private List<sv> r = new ArrayList<>();
-   private final List<tv> s;
-   private final jf t;
-   private final Stopwatch u = Stopwatch.createUnstarted();
-   private static final def v = ad.a(new def(p), $$0 -> {
-      $$0.a(def.e).a(false, null);
-      $$0.a(def.v).a(false, null);
-      $$0.a(def.o).a(0, null);
-      $$0.a(def.b).a(false, null);
-   });
-   private static final ebm w = new ebm(0L, false, false);
-   @Nullable
-   private tm x;
+public class tg {
+   private static final Collection<ty> a = Lists.newArrayList();
+   private static final Set<String> b = Sets.newHashSet();
+   private static final Map<String, Consumer<arm>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<arm>> d = Maps.newHashMap();
+   private static final Set<ty> e = Sets.newHashSet();
 
-   public static tg a(Thread $$0, esz.c $$1, aug $$2, Collection<tv> $$3, jf $$4) {
-      if ($$3.isEmpty()) {
-         throw new IllegalArgumentException("No test functions were given!");
-      } else {
-         $$2.a();
-         dff $$5 = new dff(new ddw(new ArrayList<>($$2.b()), List.of()), p);
-         den $$6 = new den("Test Level", deg.b, false, brp.c, true, v, $$5);
-         amc.d $$7 = new amc.d($$2, $$5, false, true);
-         amc.c $$8 = new amc.c($$7, ev.a.b, 4);
+   public static void a(Class<?> $$0) {
+      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(tg::a);
+   }
 
-         try {
-            l.debug("Starting resource loading");
-            Stopwatch $$9 = Stopwatch.createStarted();
-            amd $$10 = ad.<amd>c($$2x -> amc.a($$8, $$1xx -> {
-                  kb<dyp> $$2xx = new jw<>(lw.bd, Lifecycle.stable()).n();
-                  ebj.b $$3x = $$1xx.c().d(lw.ba).b(ekw.b).a().a().a($$2xx);
-                  return new amc.b<>(new etd($$6, w, $$3x.d(), $$3x.a()), $$3x.b());
-               }, amd::new, ad.g(), $$2x)).get();
-            $$9.stop();
-            l.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
-            return new tg($$0, $$1, $$2, $$10, $$3, $$4);
-         } catch (Exception var11) {
-            l.warn("Failed to load vanilla datapack, bit oops", var11);
-            System.exit(-1);
-            throw new IllegalStateException();
+   public static void a(Method $$0) {
+      String $$1 = $$0.getDeclaringClass().getSimpleName();
+      sv $$2 = $$0.getAnnotation(sv.class);
+      if ($$2 != null) {
+         a.add(c($$0));
+         b.add($$1);
+      }
+
+      tc $$3 = $$0.getAnnotation(tc.class);
+      if ($$3 != null) {
+         a.addAll(b($$0));
+         b.add($$1);
+      }
+
+      a($$0, st.class, st::a, c);
+      a($$0, ss.class, ss::a, d);
+   }
+
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<arm>> $$3) {
+      T $$4 = $$0.getAnnotation($$1);
+      if ($$4 != null) {
+         String $$5 = $$2.apply($$4);
+         Consumer<arm> $$6 = $$3.putIfAbsent($$5, (Consumer<arm>)d($$0));
+         if ($$6 != null) {
+            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
          }
       }
    }
 
-   private tg(Thread $$0, esz.c $$1, aug $$2, amd $$3, Collection<tv> $$4, jf $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bap.a(), o, aru::b);
-      this.s = Lists.newArrayList($$4);
-      this.t = $$5;
+   public static Stream<ty> a(String $$0) {
+      return a.stream().filter($$1 -> a($$1, $$0));
    }
 
-   @Override
-   public boolean e() {
-      this.a(new avj(this, this.bc(), this.g, 1) {
+   public static Collection<ty> a() {
+      return a;
+   }
+
+   public static Collection<String> b() {
+      return b;
+   }
+
+   public static boolean b(String $$0) {
+      return b.contains($$0);
+   }
+
+   public static Consumer<arm> c(String $$0) {
+      return c.getOrDefault($$0, $$0x -> {
       });
-      this.t_();
-      arj $$0 = this.J();
-      this.r = Lists.newArrayList(sw.a(this.s, $$0));
-      $$0.a(this.t, 0.0F);
-      int $$1 = 20000000;
-      $$0.a(20000000, 20000000, false, false);
-      l.info("Started game test server");
-      return true;
    }
 
-   @Override
-   public void a(BooleanSupplier $$0) {
-      super.a($$0);
-      arj $$1 = this.J();
-      if (!this.bs()) {
-         this.b($$1);
-      }
+   public static Consumer<arm> d(String $$0) {
+      return d.getOrDefault($$0, $$0x -> {
+      });
+   }
 
-      if ($$1.aa() % 20L == 0L) {
-         l.info(this.x.j());
-      }
+   public static Optional<ty> e(String $$0) {
+      return a().stream().filter($$1 -> $$1.c().equalsIgnoreCase($$0)).findFirst();
+   }
 
-      if (this.x.i()) {
-         this.a(false);
-         l.info(this.x.j());
-         tj.a();
-         l.info("========= {} GAME TESTS COMPLETE IN {} ======================", this.x.h(), this.u.stop());
-         if (this.x.d()) {
-            l.info("{} required tests failed :(", this.x.a());
-            this.x.f().forEach($$0x -> l.info("   - {}", $$0x.b()));
-         } else {
-            l.info("All {} required tests passed :)", this.x.h());
+   public static ty f(String $$0) {
+      Optional<ty> $$1 = e($$0);
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Can't find the test function for " + $$0);
+      } else {
+         return $$1.get();
+      }
+   }
+
+   private static Collection<ty> b(Method $$0) {
+      try {
+         Object $$1 = $$0.getDeclaringClass().newInstance();
+         return (Collection<ty>)$$0.invoke($$1);
+      } catch (ReflectiveOperationException var2) {
+         throw new RuntimeException(var2);
+      }
+   }
+
+   private static ty c(Method $$0) {
+      sv $$1 = $$0.getAnnotation(sv.class);
+      String $$2 = $$0.getDeclaringClass().getSimpleName();
+      String $$3 = $$2.toLowerCase();
+      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
+      String $$5 = $$1.g().isEmpty() ? $$4 : $$3 + "." + $$1.g();
+      String $$6 = $$1.b();
+      dol $$7 = tu.a($$1.d());
+      return new ty($$6, $$4, $$5, $$7, $$1.a(), $$1.h(), $$1.e(), $$1.f(), $$1.j(), $$1.i(), $$1.c(), (Consumer<td>)d($$0));
+   }
+
+   private static Consumer<?> d(Method $$0) {
+      return $$1 -> {
+         try {
+            Object $$2 = $$0.getDeclaringClass().newInstance();
+            $$0.invoke($$2, $$1);
+         } catch (InvocationTargetException var3) {
+            if (var3.getCause() instanceof RuntimeException) {
+               throw (RuntimeException)var3.getCause();
+            } else {
+               throw new RuntimeException(var3.getCause());
+            }
+         } catch (ReflectiveOperationException var4) {
+            throw new RuntimeException(var4);
          }
-
-         if (this.x.e()) {
-            l.info("{} optional tests failed", this.x.b());
-            this.x.g().forEach($$0x -> l.info("   - {} with rotation: {}", $$0x.b(), $$0x.t()));
-         }
-
-         l.info("====================================================");
-      }
+      };
    }
 
-   @Override
-   public bmu f() {
-      return this.q;
+   private static boolean a(ty $$0, String $$1) {
+      return $$0.c().toLowerCase().startsWith($$1.toLowerCase() + ".");
    }
 
-   @Override
-   public boolean g() {
-      return false;
+   public static Stream<ty> c() {
+      return e.stream();
    }
 
-   @Override
-   public void v_() {
-      this.bC();
+   public static void a(ty $$0) {
+      e.add($$0);
    }
 
-   @Override
-   public ac a(ac $$0) {
-      $$0.a("Type", "Game test server");
-      return $$0;
-   }
-
-   @Override
-   public void i() {
-      super.i();
-      l.info("Game test server shutting down");
-      System.exit(this.x.a());
-   }
-
-   @Override
-   public void a(o $$0) {
-      super.a($$0);
-      l.error("Game test server crashed\n{}", $$0.a(y.a));
-      System.exit(1);
-   }
-
-   private void b(arj $$0) {
-      jf $$1 = new jf($$0.z.a(-14999992, 14999992), -59, $$0.z.a(-14999992, 14999992));
-      te $$2 = te.a.a(this.r, $$0).a((te.c)(new tq($$1, 8, false))).a();
-      Collection<tb> $$3 = $$2.a();
-      this.x = new tm($$3);
-      l.info("{} tests are now running at position {}!", this.x.h(), $$1.x());
-      this.u.reset();
-      this.u.start();
-      $$2.b();
-   }
-
-   private boolean bs() {
-      return this.x != null;
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   @Override
-   public int k() {
-      return 0;
-   }
-
-   @Override
-   public int l() {
-      return 4;
-   }
-
-   @Override
-   public boolean m() {
-      return false;
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public int o() {
-      return 0;
-   }
-
-   @Override
-   public boolean p() {
-      return false;
-   }
-
-   @Override
-   public boolean q() {
-      return true;
-   }
-
-   @Override
-   public boolean r() {
-      return false;
-   }
-
-   @Override
-   public boolean K_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return false;
+   public static void d() {
+      e.clear();
    }
 }

@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface eyd extends etx {
+   float b(etw var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eyd {
+   default int a(etw $$0) {
+      return Math.round(this.b($$0));
+   }
+
+   eyc b();
 }

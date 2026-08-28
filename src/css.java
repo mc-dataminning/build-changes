@@ -1,87 +1,55 @@
-public class css extends csw {
-   private final crr a;
-   private final cnx b;
-   private int g;
+public class css<T extends crj> implements cqx {
+   public static final css<crs> a = a("generic_9x1", crs::a);
+   public static final css<crs> b = a("generic_9x2", crs::b);
+   public static final css<crs> c = a("generic_9x3", crs::c);
+   public static final css<crs> d = a("generic_9x4", crs::d);
+   public static final css<crs> e = a("generic_9x5", crs::e);
+   public static final css<crs> f = a("generic_9x6", crs::f);
+   public static final css<cse> g = a("generic_3x3", cse::new);
+   public static final css<crz> h = a("crafter_3x3", crz::new);
+   public static final css<crm> i = a("anvil", crm::new);
+   public static final css<cro> j = a("beacon", cro::new);
+   public static final css<crp> k = a("blast_furnace", crp::new);
+   public static final css<crq> l = a("brewing_stand", crq::new);
+   public static final css<csc> m = a("crafting", csc::new);
+   public static final css<csf> n = a("enchantment", csf::new);
+   public static final css<csh> o = a("furnace", csh::new);
+   public static final css<csj> p = a("grindstone", csj::new);
+   public static final css<csk> q = a("hopper", csk::new);
+   public static final css<csp> r = a("lectern", ($$0, $$1) -> new csp($$0));
+   public static final css<csq> s = a("loom", csq::new);
+   public static final css<csu> t = a("merchant", csu::new);
+   public static final css<ctd> u = a("shulker_box", ctd::new);
+   public static final css<ctj> v = a("smithing", ctj::new);
+   public static final css<ctk> w = a("smoker", ctk::new);
+   public static final css<crr> x = a("cartography_table", crr::new);
+   public static final css<ctm> y = a("stonecutter", ctm::new);
+   private final cra z;
+   private final css.a<T> A;
 
-   public css(cnx $$0, crr $$1, brl $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.a = $$1;
+   private static <T extends crj> css<T> a(String $$0, css.a<T> $$1) {
+      return kc.a(lx.p, $$0, new css<>($$1, crc.h));
+   }
+
+   private static <T extends crj> css<T> a(String $$0, css.a<T> $$1, cqy... $$2) {
+      return kc.a(lx.p, $$0, new css<>($$1, crc.f.a($$2)));
+   }
+
+   private css(css.a<T> $$0, cra $$1) {
+      this.A = $$0;
+      this.z = $$1;
+   }
+
+   public T a(int $$0, cog $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public boolean a(cvs $$0) {
-      return false;
+   public cra i() {
+      return this.z;
    }
 
-   @Override
-   public cvs a(int $$0) {
-      if (this.h()) {
-         this.g = this.g + Math.min($$0, this.g().K());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cvs $$0, int $$1) {
-      this.g += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b(int $$0) {
-      this.g += $$0;
-   }
-
-   @Override
-   protected void b_(cvs $$0) {
-      if (this.g > 0) {
-         $$0.a(this.b.dS(), this.b, this.g);
-      }
-
-      if (this.c instanceof csq $$1) {
-         $$1.a(this.b, this.a.h());
-      }
-
-      this.g = 0;
-   }
-
-   @Override
-   public void a(cnx $$0, cvs $$1) {
-      this.b_($$1);
-      czz.a $$2 = this.a.aE_();
-      czz $$3 = $$2.a();
-      int $$4 = $$2.b();
-      int $$5 = $$2.c();
-      jx<cvs> $$6 = $$0.dS().r().c(daq.a, $$3, $$0.dS());
-
-      for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
-         for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
-            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.aA_();
-            cvs $$10 = this.a.a($$9);
-            cvs $$11 = $$6.get($$8 + $$7 * $$3.f());
-            if (!$$10.f()) {
-               this.a.a($$9, 1);
-               $$10 = this.a.a($$9);
-            }
-
-            if (!$$11.f()) {
-               if ($$10.f()) {
-                  this.a.a($$9, $$11);
-               } else if (cvs.c($$10, $$11)) {
-                  $$11.g($$10.K());
-                  this.a.a($$9, $$11);
-               } else if (!this.b.gd().f($$11)) {
-                  this.b.a($$11, false);
-               }
-            }
-         }
-      }
-   }
-
-   @Override
-   public boolean f() {
-      return true;
+   interface a<T extends crj> {
+      T create(int var1, cog var2);
    }
 }

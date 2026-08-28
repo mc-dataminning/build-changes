@@ -1,98 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dhx extends dhm {
-   public static final MapCodec<dhx> a = b(dhx::new);
-   public static final dvs b = dvi.aw;
-   public static final int c = 15;
-   protected static final int d = 1;
-   protected static final ezq e = dhm.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   protected static final ezq f = dhm.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dhx extends dgt {
+   public static final MapCodec<dhx> c = b(dhx::new);
 
    @Override
    public MapCodec<dhx> a() {
-      return a;
+      return c;
    }
 
-   protected dhx(dur.d $$0) {
+   protected dhx(dvc.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   public dsg a(jg $$0, dvd $$1) {
+      return new dsf($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dsg> dsh<T> a(dev $$0, dvd $$1, dsi<T> $$2) {
+      return a($$0, $$2, dsi.C);
+   }
+
+   @Override
+   protected void a(dev $$0, jg $$1, coh $$2) {
+      dsg $$3 = $$0.c_($$1);
+      if ($$3 instanceof dsf) {
+         $$2.a((bsa)$$3);
+         $$2.a(awu.as);
       }
    }
 
    @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      jf $$4 = $$2.d();
-      if ($$1.u($$4)) {
-         int $$5 = 1;
-
-         while ($$1.a_($$2.c($$5)).a(this)) {
-            $$5++;
+   public void a(dvd $$0, dev $$1, jg $$2, azr $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awk.cA, awl.e, 1.0F, 1.0F, false);
          }
 
-         if ($$5 < 3) {
-            int $$6 = $$0.c(b);
-            if ($$6 == 15) {
-               $$1.b($$4, this.n());
-               dus $$7 = $$0.b(b, Integer.valueOf(0));
-               $$1.a($$2, $$7, 4);
-               $$1.a($$7, $$4, this, null, false);
-            } else {
-               $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 4);
-            }
-         }
+         jl $$7 = $$0.c(a);
+         jl.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jl.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == jl.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lq.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   protected ezq b(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return e;
-   }
-
-   @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return f;
-   }
-
-   @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      for (jk $$3 : jk.c.a) {
-         dus $$4 = $$1.a_($$2.a($$3));
-         if ($$4.e() || $$1.b_($$2.a($$3)).a(axb.b)) {
-            return false;
-         }
-      }
-
-      dus $$5 = $$1.a_($$2.e());
-      return ($$5.a(dho.dQ) || $$5.a(awv.I)) && !$$1.a_($$2.d()).n();
-   }
-
-   @Override
-   protected void a(dus $$0, dej $$1, jf $$2, btr $$3) {
-      $$3.a($$1.ak().k(), 1.0F);
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dus $$0, eri $$1) {
-      return false;
    }
 }

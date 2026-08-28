@@ -1,69 +1,92 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class cvo {
-   private final Map<ale, cvo.a> a = Maps.newHashMap();
-   private int b;
+public class cvo extends cvt implements cxb {
+   public static final Supplier<BiMap<dhy, dhy>> a = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dia.qW, dia.rw)
+            .put(dia.qX, dia.ry)
+            .put(dia.qY, dia.rx)
+            .put(dia.qZ, dia.rz)
+            .put(dia.rf, dia.rD)
+            .put(dia.re, dia.rC)
+            .put(dia.rd, dia.rB)
+            .put(dia.rc, dia.rA)
+            .put(dia.rv, dia.rL)
+            .put(dia.ru, dia.rK)
+            .put(dia.rt, dia.rJ)
+            .put(dia.rs, dia.rI)
+            .put(dia.rr, dia.rH)
+            .put(dia.rq, dia.rG)
+            .put(dia.rp, dia.rF)
+            .put(dia.ro, dia.rE)
+            .put(dia.rj, dia.rn)
+            .put(dia.ri, dia.rm)
+            .put(dia.rh, dia.rl)
+            .put(dia.rg, dia.rk)
+            .put(dia.rM, dia.rQ)
+            .put(dia.rN, dia.rR)
+            .put(dia.rP, dia.rT)
+            .put(dia.rO, dia.rS)
+            .put(dia.rU, dia.rY)
+            .put(dia.rV, dia.rZ)
+            .put(dia.rX, dia.sb)
+            .put(dia.rW, dia.sa)
+            .put(dia.sc, dia.sg)
+            .put(dia.sd, dia.sh)
+            .put(dia.se, dia.si)
+            .put(dia.sf, dia.sj)
+            .put(dia.sk, dia.so)
+            .put(dia.sl, dia.sp)
+            .put(dia.sm, dia.sq)
+            .put(dia.sn, dia.sr)
+            .build()
+   );
+   public static final Supplier<BiMap<dhy, dhy>> b = Suppliers.memoize(() -> a.get().inverse());
 
-   public boolean a(cvs $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public cvo(cvt.a $$0) {
+      super($$0);
    }
 
-   public float a(cvs $$0, float $$1) {
-      ale $$2 = this.b($$0);
-      cvo.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azf.a($$5 / $$4, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<ale, cvo.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<ale, cvo.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
-            }
+   @Override
+   public bry a(czo $$0) {
+      dev $$1 = $$0.q();
+      jg $$2 = $$0.a();
+      dvd $$3 = $$1.a_($$2);
+      return a($$3).map($$3x -> {
+         coh $$4 = $$0.o();
+         cvx $$5 = $$0.n();
+         if ($$4 instanceof arn $$6) {
+            an.N.a($$6, $$2, $$5);
          }
+
+         $$5.h(1);
+         $$1.a($$2, $$3x, 11);
+         $$1.a(eaa.c, $$2, eaa.a.a($$4, $$3x));
+         $$1.a($$4, 3003, $$2, 0);
+         return bry.a;
+      }).orElse(bry.e);
+   }
+
+   public static Optional<dvd> a(dvd $$0) {
+      return Optional.ofNullable((dhy)a.get().get($$0.b())).map($$1 -> ((dhy)$$1).m($$0));
+   }
+
+   @Override
+   public boolean a(dev $$0, dts $$1, boolean $$2, coh $$3) {
+      if ($$1.b(true)) {
+         $$0.a(null, 3003, $$1.aC_(), 0);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public ale b(cvs $$0) {
-      czb $$1 = $$0.a(ks.y);
-      ale $$2 = lv.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
-   }
-
-   public void a(cvs $$0, int $$1) {
-      this.a(this.b($$0), $$1);
-   }
-
-   public void a(ale $$0, int $$1) {
-      this.a.put($$0, new cvo.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void a(ale $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(ale $$0, int $$1) {
-   }
-
-   protected void b(ale $$0) {
-   }
-
-   static record a(int a, int b) {
+   @Override
+   public boolean a(dtt $$0, coh $$1) {
+      return true;
    }
 }

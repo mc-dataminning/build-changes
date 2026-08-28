@@ -1,53 +1,30 @@
-public class gek extends gft {
-   gek(gbm $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class gek extends gdw {
+   private static final int a = 12235202;
+
+   protected gek(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gfz $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)axu.b(12235202) / 255.0F - $$9;
+      this.w = (float)axu.c(12235202) / 255.0F - $$9;
+      this.x = (float)axu.d(12235202) / 255.0F - $$9;
    }
 
    @Override
-   public gex b() {
-      return gex.b;
+   public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azf.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements gfh<lu> {
+      private final gfz a;
 
-   public static class a implements gew<ls> {
-      private final gfo a;
-
-      public a(gfo $$0) {
+      public a(gfz $$0) {
          this.a = $$0;
       }
 
-      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gek $$8 = new gek($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements gew<ls> {
-      private final gfo a;
-
-      public b(gfo $$0) {
-         this.a = $$0;
-      }
-
-      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gek $$8 = new gek($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gek($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

@@ -1,31 +1,45 @@
-public class acj implements zl<aca> {
-   public static final zc<wp, acj> a = zc.a(jf.b, acj::e, za.a(dhm.q), acj::b, acj::new);
-   private final jf b;
-   private final dus c;
+public class acj implements zo<acd> {
+   public static final zf<we, acj> a = zo.a(acj::a, acj::new);
+   private final int b;
+   private final jg c;
+   private final int d;
 
-   public acj(jf $$0, dus $$1) {
+   public acj(int $$0, jg $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
    }
 
-   public acj(ddo $$0, jf $$1) {
-      this($$1, $$0.a_($$1));
+   private acj(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+      this.d = $$0.readUnsignedByte();
+   }
+
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.l(this.d);
    }
 
    @Override
-   public zn<acj> a() {
-      return agp.k;
+   public zq<acj> a() {
+      return ags.h;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public dus b() {
+   public int b() {
+      return this.b;
+   }
+
+   public jg e() {
       return this.c;
    }
 
-   public jf e() {
-      return this.b;
+   public int f() {
+      return this.d;
    }
 }

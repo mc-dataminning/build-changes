@@ -1,142 +1,228 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fvg extends fqh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final xe b = xe.c("selectWorld.enterName").a(n.h);
-   private static final xe c = xe.c("selectWorld.edit.resetIcon");
-   private static final xe d = xe.c("selectWorld.edit.openFolder");
-   private static final xe s = xe.c("selectWorld.edit.backup");
-   private static final xe u = xe.c("selectWorld.edit.backupFolder");
-   private static final xe v = xe.c("selectWorld.edit.optimize");
-   private static final xe w = xe.c("optimizeWorld.confirm.title");
-   private static final xe x = xe.c("optimizeWorld.confirm.description");
-   private static final xe y = xe.c("optimizeWorld.confirm.proceed");
-   private static final xe z = xe.c("selectWorld.edit.save");
-   private static final int A = 200;
-   private static final int B = 4;
-   private static final int C = 98;
-   private final fog D = fog.d().a(5);
-   private final BooleanConsumer E;
-   private final esz.c F;
-   private final fkx G;
+public class fvg extends flf.a<fvg> {
+   private static final alh f = alh.b("icon/draft_report");
+   private static final Duration g = Duration.ofMillis(500L);
+   private static final fmm h = new fmm(
+      alh.b("social_interactions/report_button"), alh.b("social_interactions/report_button_disabled"), alh.b("social_interactions/report_button_highlighted")
+   );
+   private static final fmm i = new fmm(alh.b("social_interactions/mute_button"), alh.b("social_interactions/mute_button_highlighted"));
+   private static final fmm j = new fmm(alh.b("social_interactions/unmute_button"), alh.b("social_interactions/unmute_button_highlighted"));
+   private final fja k;
+   private final List<fkx> l;
+   private final UUID m;
+   private final String n;
+   private final Supplier<gyt> o;
+   private boolean p;
+   private boolean q;
+   private final boolean r;
+   private final boolean s;
+   private final boolean u;
+   @Nullable
+   private fkz v;
+   @Nullable
+   private fkz w;
+   @Nullable
+   private fkz x;
+   private float y;
+   private static final xh z = xh.c("gui.socialInteractions.status_hidden").a(n.u);
+   private static final xh A = xh.c("gui.socialInteractions.status_blocked").a(n.u);
+   private static final xh B = xh.c("gui.socialInteractions.status_offline").a(n.u);
+   private static final xh C = xh.c("gui.socialInteractions.status_hidden_offline").a(n.u);
+   private static final xh D = xh.c("gui.socialInteractions.status_blocked_offline").a(n.u);
+   private static final xh E = xh.c("gui.socialInteractions.tooltip.report.disabled");
+   private static final xh F = xh.c("gui.socialInteractions.tooltip.hide");
+   private static final xh G = xh.c("gui.socialInteractions.tooltip.show");
+   private static final xh H = xh.c("gui.socialInteractions.tooltip.report");
+   private static final int I = 24;
+   private static final int J = 4;
+   public static final int a = axu.a(190, 0, 0, 0);
+   private static final int K = 20;
+   public static final int b = axu.a(255, 74, 74, 74);
+   public static final int c = axu.a(255, 48, 48, 48);
+   public static final int d = axu.a(255, 255, 255, 255);
+   public static final int e = axu.a(140, 255, 255, 255);
 
-   public static fvg a(fip $$0, esz.c $$1, BooleanConsumer $$2) throws IOException {
-      eta $$3 = $$1.a($$1.h());
-      return new fvg($$0, $$1, $$3.b(), $$2);
-   }
-
-   private fvg(fip $$0, esz.c $$1, String $$2, BooleanConsumer $$3) {
-      super(xe.c("selectWorld.edit.title"));
-      this.E = $$3;
-      this.F = $$1;
-      fjz $$4 = $$0.h;
-      this.D.a(new foh(200, 20));
-      this.D.a(new flv(b, $$4));
-      this.G = this.D.a(new fkx($$4, 200, 20, b));
-      this.G.a($$2);
-      fog $$5 = fog.e().a(4);
-      fko $$6 = $$5.a(fko.a(z, $$0x -> this.a(this.G.a())).a(98).a());
-      $$5.a(fko.a(xd.e, $$0x -> this.d()).a(98).a());
-      this.G.b($$1x -> $$6.j = !bac.h($$1x));
-      this.D.a(fko.a(c, $$1x -> {
-         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$1x.j = false;
-      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.D.a(fko.a(d, $$1x -> ad.m().a($$1.a(esx.l))).a(200).a());
-      this.D.a(fko.a(s, $$1x -> {
-         boolean $$2x = a($$1);
-         this.E.accept(!$$2x);
-      }).a(200).a());
-      this.D.a(fko.a(u, $$1x -> {
-         esz $$2x = $$0.m();
-         Path $$3x = $$2x.d();
-
-         try {
-            v.c($$3x);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
-         }
-
-         ad.m().a($$3x);
-      }).a(200).a());
-      this.D.a(fko.a(v, $$2x -> $$0.a(new fpb(() -> $$0.a(this), ($$2xx, $$3x) -> {
-            if ($$2xx) {
-               a($$1);
+   public fvg(fja $$0, fvj $$1, UUID $$2, String $$3, Supplier<gyt> $$4, boolean $$5) {
+      this.k = $$0;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = $$4;
+      gdf $$6 = $$0.bc();
+      this.r = $$6.a().a();
+      this.u = $$5;
+      this.s = $$6.a($$2);
+      xh $$7 = xh.a("gui.socialInteractions.narration.hide", $$3);
+      xh $$8 = xh.a("gui.socialInteractions.narration.show", $$3);
+      fvh $$9 = $$0.aO();
+      boolean $$10 = $$0.J().a($$0.T());
+      boolean $$11 = !$$0.t.cH().equals($$2);
+      if ($$11 && $$10 && !$$9.e($$2)) {
+         this.x = new fll(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fvc($$1, $$6, this)), false), xh.c("gui.socialInteractions.report")) {
+            @Override
+            protected xv aP_() {
+               return fvg.this.a(super.aP_());
             }
-
-            $$0.a(fvi.a($$0, this.E, $$0.au(), $$1, $$3x));
-         }, w, x, y, true))).a(200).a());
-      this.D.a(new foh(200, 20));
-      this.D.a($$5);
-      this.D.a($$1x -> {
-         fkm var10000 = this.c($$1x);
-      });
-   }
-
-   @Override
-   protected void aH_() {
-      this.b(this.G);
-   }
-
-   @Override
-   protected void aS_() {
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.D.a();
-      foa.a(this.D, this.H());
-   }
-
-   @Override
-   public void d() {
-      this.E.accept(false);
-   }
-
-   private void a(String $$0) {
-      try {
-         this.F.a($$0);
-      } catch (ur | ux | IOException var3) {
-         a.error("Failed to access world '{}'", this.F.f(), var3);
-         fmx.a(this.m, this.F.f());
-      }
-
-      this.E.accept(true);
-   }
-
-   public static boolean a(esz.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
-
-      try {
-         $$1 = $$0.l();
-      } catch (IOException var6) {
-         $$2 = var6;
-      }
-
-      if ($$2 != null) {
-         xe $$4 = xe.c("selectWorld.edit.backupFailed");
-         xe $$5 = xe.b($$2.getMessage());
-         fip.Q().aA().a(new fmx(fmx.a.b, $$4, $$5));
-         return false;
+         };
+         this.x.j = this.r;
+         this.x.a(this.l());
+         this.x.a(g);
+         this.v = new fll(0, 0, 20, 20, i, $$3x -> {
+            $$9.a($$2);
+            this.a(true, xh.a("gui.socialInteractions.hidden_in_chat", $$3));
+         }, xh.c("gui.socialInteractions.hide")) {
+            @Override
+            protected xv aP_() {
+               return fvg.this.a(super.aP_());
+            }
+         };
+         this.v.a(fmk.a(F, $$7));
+         this.v.a(g);
+         this.w = new fll(0, 0, 20, 20, j, $$3x -> {
+            $$9.b($$2);
+            this.a(false, xh.a("gui.socialInteractions.shown_in_chat", $$3));
+         }, xh.c("gui.socialInteractions.show")) {
+            @Override
+            protected xv aP_() {
+               return fvg.this.a(super.aP_());
+            }
+         };
+         this.w.a(fmk.a(G, $$8));
+         this.w.a(g);
+         this.l = new ArrayList<>();
+         this.l.add(this.v);
+         this.l.add(this.x);
+         this.e($$9.d(this.m));
       } else {
-         xe $$6 = xe.a("selectWorld.edit.backupCreated", $$0.f());
-         xe $$7 = xe.a("selectWorld.edit.backupSize", azf.c((double)$$1 / 1048576.0));
-         fip.Q().aA().a(new fmx(fmx.a.b, $$6, $$7));
-         return true;
+         this.l = ImmutableList.of();
+      }
+   }
+
+   private fmk l() {
+      return !this.r ? fmk.a(E) : fmk.a(H, xh.a("gui.socialInteractions.narration.report", this.n));
+   }
+
+   @Override
+   public void a(fkm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+      int $$10 = $$3 + 4;
+      int $$11 = $$2 + ($$5 - 24) / 2;
+      int $$12 = $$10 + 24 + 4;
+      xh $$13 = this.m();
+      int $$14;
+      if ($$13 == xg.a) {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
+         $$14 = $$2 + ($$5 - 9) / 2;
+      } else {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
+         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
+         $$0.a(this.k.h, $$13, $$12, $$14 + 12, e, false);
+      }
+
+      fly.a($$0, this.o.get(), $$10, $$11, 24);
+      $$0.a(this.k.h, this.n, $$12, $$14, d, false);
+      if (this.p) {
+         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
+      }
+
+      if (this.v != null && this.w != null && this.x != null) {
+         float $$16 = this.y;
+         this.v.m($$3 + ($$4 - this.v.y() - 4) - 20 - 4);
+         this.v.n($$2 + ($$5 - this.v.w()) / 2);
+         this.v.a($$0, $$6, $$7, $$9);
+         this.w.m($$3 + ($$4 - this.w.y() - 4) - 20 - 4);
+         this.w.n($$2 + ($$5 - this.w.w()) / 2);
+         this.w.a($$0, $$6, $$7, $$9);
+         this.x.m($$3 + ($$4 - this.w.y() - 4));
+         this.x.n($$2 + ($$5 - this.w.w()) / 2);
+         this.x.a($$0, $$6, $$7, $$9);
+         if ($$16 == this.y) {
+            this.y = 0.0F;
+         }
+      }
+
+      if (this.s && this.x != null) {
+         $$0.a(gig::B, f, this.x.D() + 5, this.x.E() + 1, 15, 15);
       }
    }
 
    @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 15, 16777215);
+   public List<? extends fmw> aJ_() {
+      return this.l;
+   }
+
+   @Override
+   public List<? extends fov> b() {
+      return this.l;
+   }
+
+   public String c() {
+      return this.n;
+   }
+
+   public UUID d() {
+      return this.m;
+   }
+
+   public Supplier<gyt> h() {
+      return this.o;
+   }
+
+   public void c(boolean $$0) {
+      this.p = $$0;
+   }
+
+   public boolean i() {
+      return this.p;
+   }
+
+   public void d(boolean $$0) {
+      this.q = $$0;
+   }
+
+   public boolean j() {
+      return this.q;
+   }
+
+   public boolean k() {
+      return this.u;
+   }
+
+   private void a(boolean $$0, xh $$1) {
+      this.e($$0);
+      this.k.m.d().a($$1);
+      this.k.ba().c($$1);
+   }
+
+   private void e(boolean $$0) {
+      this.w.k = $$0;
+      this.v.k = !$$0;
+      this.l.set(0, $$0 ? this.w : this.v);
+   }
+
+   xv a(xv $$0) {
+      xh $$1 = this.m();
+      return $$1 == xg.a ? xh.b(this.n).f(", ").b($$0) : xh.b(this.n).f(", ").b($$1).f(", ").b($$0);
+   }
+
+   private xh m() {
+      boolean $$0 = this.k.aO().d(this.m);
+      boolean $$1 = this.k.aO().e(this.m);
+      if ($$1 && this.p) {
+         return D;
+      } else if ($$0 && this.p) {
+         return C;
+      } else if ($$1) {
+         return A;
+      } else if ($$0) {
+         return z;
+      } else {
+         return this.p ? B : xg.a;
+      }
    }
 }

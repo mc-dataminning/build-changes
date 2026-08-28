@@ -1,53 +1,19 @@
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class cem<T extends bun> extends cew<T> {
-   private final BiPredicate<T, bun> a;
-   private final Predicate<T> b;
-   private final cdq<Boolean> c;
-   private final int d;
-
-   public cem(int $$0, BiPredicate<T, bun> $$1, Predicate<T> $$2, cdq<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-   }
-
+public class cem extends cff<btq> {
    @Override
-   protected void a(arj $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
+   public Set<cdz<?>> a() {
+      return ImmutableSet.of(cdz.K, cdz.h);
    }
 
-   @Override
-   public Set<cdq<?>> a() {
-      return Set.of(cdq.g);
+   protected void a(arm $$0, btq $$1) {
+      $$1.ed().c(cdz.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   @Override
-   public void a(T $$0) {
-      Optional<List<bun>> $$1 = $$0.dY().c(cdq.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
-         }
-      }
-   }
-
-   public void b(T $$0) {
-      $$0.dY().a(this.c, true, (long)this.d);
-   }
-
-   public void c(T $$0) {
-      $$0.dY().b(this.c);
+   private void a(btq $$0, ceb $$1) {
+      Optional<btq> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.p_()).map(btq.class::cast);
+      $$0.ed().a(cdz.K, $$2);
    }
 }

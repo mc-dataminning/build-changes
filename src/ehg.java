@@ -1,28 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehg extends ehf {
-   public static final MapCodec<ehg> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehg::new));
+public record ehg(int b, int c, int d) implements egj {
+   public static final Codec<ehg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ays.m.fieldOf("spread_width").forGetter(ehg::a), ays.m.fieldOf("spread_height").forGetter(ehg::b), ays.m.fieldOf("max_height").forGetter(ehg::c)
+            )
+            .apply($$0, ehg::new)
+   );
 
-   public ehg(bqx $$0, bqx $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected ehl<?> a() {
-      return ehl.e;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(dep $$0, ehk.b $$1, azn $$2, egu $$3, int $$4, ehk.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(azn $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public int c() {
+      return this.d;
    }
 }

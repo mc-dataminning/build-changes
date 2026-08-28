@@ -1,8 +1,28 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@u
-@w
-interface cth {
+public interface cth extends baf {
+   IntList a();
+
+   default int b() {
+      return this.a().size();
+   }
+
+   static cth a(final String $$0, final IntList $$1) {
+      return new cth() {
+         @Override
+         public IntList a() {
+            return $$1;
+         }
+
+         @Override
+         public String c() {
+            return $$0;
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
+   }
 }

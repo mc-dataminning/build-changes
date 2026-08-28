@@ -1,184 +1,163 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class ckl extends cld implements clh {
-   private static final int b = 20;
-   private static final int c = 40;
-   private final cck<ckl> d = new cck<>(this, 1.0, 20, 15.0F);
-   private final cbu e = new cbu(this, 1.2, false) {
-      @Override
-      public void e() {
-         super.e();
-         ckl.this.w(false);
-      }
+public class ckl extends cki implements bvv<jp<ckm>> {
+   private static final akk<jp<ckm>> h = ako.a(ckl.class, akm.A);
+   public static final MapCodec<jp<ckm>> e = ckm.c.fieldOf("variant");
+   public static final Codec<jp<ckm>> f = e.codec();
+   public static final float g = 0.0625F;
 
-      @Override
-      public void d() {
-         super.d();
-         ckl.this.w(true);
-      }
-   };
-
-   protected ckl(bty<? extends ckl> $$0, dej $$1) {
+   public ckl(bug<? extends ckl> $$0, dev $$1) {
       super($$0, $$1);
-      this.y();
    }
 
    @Override
-   protected void D() {
-      this.bS.a(2, new ccn(this));
-      this.bS.a(3, new cbd(this, 1.0));
-      this.bS.a(3, new car<>(this, chg.class, 6.0F, 1.0, 1.2));
-      this.bS.a(5, new ccx(this, 1.0));
-      this.bS.a(6, new cbs(this, cnx.class, 8.0F));
-      this.bS.a(6, new ccf(this));
-      this.bT.a(1, new cdc(this));
-      this.bT.a(2, new cdd<>(this, cnx.class, true));
-      this.bT.a(3, new cdd<>(this, cgp.class, true));
-      this.bT.a(3, new cdd<>(this, che.class, 10, true, false, che.bY));
-   }
-
-   public static bvt.a q() {
-      return cld.gu().a(bvu.v, 0.25);
+   protected void a(ako.a $$0) {
+      $$0.a(h, this.dZ().e(ly.X).a().orElseThrow());
    }
 
    @Override
-   protected void b(jf $$0, dus $$1) {
-      this.a(this.t(), 0.15F, 1.0F);
-   }
-
-   abstract awf t();
-
-   @Override
-   public void n_() {
-      boolean $$0 = this.gi();
-      if ($$0) {
-         cvs $$1 = this.a(btz.f);
-         if (!$$1.f()) {
-            if ($$1.m()) {
-               cvn $$2 = $$1.h();
-               $$1.b($$1.o() + this.af.a(2));
-               if ($$1.o() >= $$1.p()) {
-                  this.a($$2, btz.f);
-                  this.a(btz.f, cvs.k);
-               }
-            }
-
-            $$0 = false;
-         }
-
-         if ($$0) {
-            this.d(8.0F);
-         }
-      }
-
-      super.n_();
-   }
-
-   @Override
-   public void u() {
-      super.u();
-      if (this.dh() instanceof buv $$0) {
-         this.aT = $$0.aT;
+   public void a(akk<?> $$0) {
+      if (h.equals($$0)) {
+         this.m();
       }
    }
 
-   @Override
-   protected void a(azn $$0, brq $$1) {
-      super.a($$0, $$1);
-      this.a(btz.a, new cvs(cvw.ow));
+   public void b(jp<ckm> $$0) {
+      this.am.a(h, $$0);
    }
 
-   @Nullable
-   @Override
-   public bvf a(dez $$0, brq $$1, btx $$2, @Nullable bvf $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      azn $$4 = $$0.D_();
-      this.a($$4, $$1);
-      this.a($$0, $$4, $$1);
-      this.y();
-      this.a_($$4.i() < 0.55F * $$1.d());
-      if (this.a(btz.f).f()) {
-         LocalDate $$5 = LocalDate.now();
-         int $$6 = $$5.get(ChronoField.DAY_OF_MONTH);
-         int $$7 = $$5.get(ChronoField.MONTH_OF_YEAR);
-         if ($$7 == 10 && $$6 == 31 && $$4.i() < 0.25F) {
-            this.a(btz.f, new cvs($$4.i() < 0.1F ? dho.ef : dho.ee));
-            this.bV[btz.f.b()] = 0.0F;
-         }
-      }
-
-      return $$3;
+   public jp<ckm> t() {
+      return this.am.a(h);
    }
 
-   public void y() {
-      if (this.dS() != null && !this.dS().B) {
-         this.bS.a(this.e);
-         this.bS.a(this.d);
-         cvs $$0 = this.b(cot.a(this, cvw.ow));
-         if ($$0.a(cvw.ow)) {
-            int $$1 = this.go();
-            if (this.dS().am() != brp.d) {
-               $$1 = this.gp();
-            }
-
-            this.d.c($$1);
-            this.bS.a(4, this.d);
+   public static Optional<ckl> a(dev $$0, jg $$1, jl $$2) {
+      ckl $$3 = new ckl($$0, $$1);
+      List<jp<ckm>> $$4 = new ArrayList<>();
+      $$0.H_().e(ly.X).c(axj.a).forEach($$4::add);
+      if ($$4.isEmpty()) {
+         return Optional.empty();
+      } else {
+         $$3.a($$2);
+         $$4.removeIf($$1x -> {
+            $$3.b($$1x);
+            return !$$3.o();
+         });
+         if ($$4.isEmpty()) {
+            return Optional.empty();
          } else {
-            this.bS.a(4, this.e);
+            int $$5 = $$4.stream().mapToInt(ckl::c).max().orElse(0);
+            $$4.removeIf($$1x -> c($$1x) < $$5);
+            Optional<jp<ckm>> $$6 = ad.b($$4, $$3.af);
+            if ($$6.isEmpty()) {
+               return Optional.empty();
+            } else {
+               $$3.b($$6.get());
+               $$3.a($$2);
+               return Optional.of($$3);
+            }
          }
       }
    }
 
-   protected int go() {
-      return 20;
+   private static int c(jp<ckm> $$0) {
+      return $$0.a().a();
    }
 
-   protected int gp() {
-      return 40;
+   private ckl(dev $$0, jg $$1) {
+      super(bug.av, $$0, $$1);
    }
 
-   @Override
-   public void a(bun $$0, float $$1) {
-      cvs $$2 = this.b(cot.a(this, cvw.ow));
-      cvs $$3 = this.f($$2);
-      coe $$4 = this.a($$3, $$1, $$2);
-      double $$5 = $$0.dx() - this.dx();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dz();
-      double $$7 = $$0.dD() - this.dD();
-      double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      if (this.dS() instanceof arj $$9) {
-         cor.a($$4, $$9, $$3, $$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - $$9.am().a() * 4));
-      }
-
-      this.a(awg.xo, 1.0F, 1.0F / (this.dV().i() * 0.4F + 0.8F));
-   }
-
-   protected coe a(cvs $$0, float $$1, @Nullable cvs $$2) {
-      return cot.a(this, $$0, $$1, $$2);
+   public ckl(dev $$0, jg $$1, jl $$2, jp<ckm> $$3) {
+      this($$0, $$1);
+      this.b($$3);
+      this.a($$2);
    }
 
    @Override
-   public boolean a(cwo $$0) {
-      return $$0 == cvw.ow;
+   public void b(uj $$0) {
+      f.encodeStart(this.dZ().a(ux.a), this.t()).ifSuccess($$1 -> $$0.a((uj)$$1));
+      $$0.a("facing", (byte)this.d.e());
+      super.b($$0);
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(uj $$0) {
+      f.parse(this.dZ().a(ux.a), $$0).ifSuccess(this::b);
+      this.d = jl.b($$0.f("facing"));
       super.a($$0);
-      this.y();
+      this.a(this.d);
    }
 
    @Override
-   public void a(btz $$0, cvs $$1) {
-      super.a($$0, $$1);
-      if (!this.dS().B) {
-         this.y();
+   protected ezc a(jg $$0, jl $$1) {
+      float $$2 = 0.46875F;
+      ezh $$3 = ezh.b($$0).a($$1, -0.46875);
+      ckm $$4 = this.t().a();
+      double $$5 = this.b($$4.b());
+      double $$6 = this.b($$4.c());
+      jl $$7 = $$1.i();
+      ezh $$8 = $$3.a($$7, $$5).a(jl.b, $$6);
+      jl.a $$9 = $$1.o();
+      double $$10 = $$9 == jl.a.a ? 0.0625 : (double)$$4.b();
+      double $$11 = (double)$$4.c();
+      double $$12 = $$9 == jl.a.c ? 0.0625 : (double)$$4.b();
+      return ezc.a($$8, $$10, $$11, $$12);
+   }
+
+   private double b(int $$0) {
+      return $$0 % 2 == 0 ? 0.5 : 0.0;
+   }
+
+   @Override
+   public void b(@Nullable btz $$0) {
+      if (this.dX().ac().b(der.i)) {
+         this.a(awk.sr, 1.0F, 1.0F);
+         if ($$0 instanceof coh $$1 && $$1.fX()) {
+            return;
+         }
+
+         this.a(cwb.qa);
       }
    }
 
-   public boolean gq() {
-      return this.ct();
+   @Override
+   public void B() {
+      this.a(awk.ss, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public ezh dw() {
+      return ezh.a(this.b);
+   }
+
+   @Override
+   public zo<acd> a(arl $$0) {
+      return new ace(this, this.d.d(), this.q());
+   }
+
+   @Override
+   public void a(ace $$0) {
+      super.a($$0);
+      this.a(jl.a($$0.p()));
+   }
+
+   @Override
+   public cvx dK() {
+      return new cvx(cwb.qa);
    }
 }

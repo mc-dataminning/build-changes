@@ -1,67 +1,59 @@
-public class eaz implements ddv {
-   private int a;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-   @Override
-   public int a(arj $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ac().b(def.K)) {
-         return 0;
-      } else {
-         azn $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.ab() / 24000L;
-            if ($$4 < 5L || !$$0.S()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.x().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  cnx $$6 = $$0.x().get($$3.a($$5));
-                  if ($$6.Q_()) {
-                     return 0;
-                  } else if ($$0.a($$6.ds(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     jf.a $$9 = $$6.ds().k().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        jo<dfk> $$11 = $$0.t($$9);
-                        if ($$11.a(awu.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public class eaz {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dvd> b = $$0 -> !$$0.l();
+   static final Predicate<dvd> c = dvc.a::d;
+   private final axy d;
+   private final Predicate<dvd> e;
+   private final dwz f;
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(eao.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
+   public eaz(dwz $$0, eaz.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = azj.e($$0.J_() + 1);
+      this.d = new azy($$2, 256);
+   }
 
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
+   public static void a(dwz $$0, Set<eaz.a> $$1) {
+      if (!$$1.isEmpty()) {
+         int $$2 = $$1.size();
+         ObjectList<eaz> $$3 = new ObjectArrayList($$2);
+         ObjectListIterator<eaz> $$4 = $$3.iterator();
+         int $$5 = $$0.b() + 16;
+         jg.a $$6 = new jg.a();
 
-                           return $$12;
+         for (int $$7 = 0; $$7 < 16; $$7++) {
+            for (int $$8 = 0; $$8 < 16; $$8++) {
+               for (eaz.a $$9 : $$1) {
+                  $$3.add($$0.a($$9));
+               }
+
+               for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
+                  $$6.d($$7, $$10, $$8);
+                  dvd $$11 = $$0.a_($$6);
+                  if (!$$11.a(dia.a)) {
+                     while ($$4.hasNext()) {
+                        eaz $$12 = (eaz)$$4.next();
+                        if ($$12.e.test($$11)) {
+                           $$12.a($$7, $$8, $$10 + 1);
+                           $$4.remove();
                         }
                      }
+
+                     if ($$3.isEmpty()) {
+                        break;
+                     }
+
+                     $$4.back($$2);
                   }
                }
             }
@@ -69,27 +61,113 @@ public class eaz implements ddv {
       }
    }
 
-   private boolean a(arj $$0, jf $$1, azn $$2, boolean $$3) {
-      dus $$4 = $$0.a_($$1);
-      if (!deu.a($$0, $$1, $$4, $$4.y(), bty.aC)) {
-         return false;
-      } else if (!cle.b(bty.aC, $$0, btx.p, $$1, $$2)) {
+   public boolean a(int $$0, int $$1, int $$2, dvd $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
          return false;
       } else {
-         cle $$5 = bty.aC.a($$0, btx.p);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.x(true);
-               $$5.gw();
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            jg.a $$5 = new jg.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
             }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), btx.p, null);
-            $$0.a_($$5);
+            this.a($$0, $$2, this.f.I_());
             return true;
-         } else {
-            return false;
          }
+
+         return false;
       }
+   }
+
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
+   }
+
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
+   }
+
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.I_();
+   }
+
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.I_());
+   }
+
+   public void a(dwz $$0, eaz.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements baf {
+      a("WORLD_SURFACE_WG", eaz.b.a, eaz.b),
+      b("WORLD_SURFACE", eaz.b.c, eaz.b),
+      c("OCEAN_FLOOR_WG", eaz.b.a, eaz.c),
+      d("OCEAN_FLOOR", eaz.b.b, eaz.c),
+      e("MOTION_BLOCKING", eaz.b.c, $$0 -> $$0.d() || !$$0.y().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", eaz.b.b, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof dmh));
+
+      public static final Codec<eaz.a> g = baf.a(eaz.a::values);
+      private final String h;
+      private final eaz.b i;
+      private final Predicate<dvd> j;
+
+      private a(final String $$0, final eaz.b $$1, final Predicate<dvd> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public boolean b() {
+         return this.i == eaz.b.c;
+      }
+
+      public boolean d() {
+         return this.i != eaz.b.a;
+      }
+
+      public Predicate<dvd> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

@@ -1,30 +1,24 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class djg extends dhm {
-   public static final MapCodec<djg> a = b(djg::new);
-   private static final xe b = xe.c("container.crafting");
+public class djg extends dkt {
+   public static final MapCodec<djg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayd.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), t()).apply($$0, djg::new)
+   );
+   private final ayd b;
 
    @Override
-   public MapCodec<? extends djg> a() {
+   public MapCodec<djg> a() {
       return a;
    }
 
-   protected djg(dur.d $$0) {
-      super($$0);
+   public djg(ayd $$0, dvc.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
-      if (!$$1.B) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awq.an);
-      }
-
-      return brs.a;
-   }
-
-   @Override
-   protected bru b(dus $$0, dej $$1, jf $$2) {
-      return new bsa(($$2x, $$3, $$4) -> new crs($$2x, $$3, crm.a($$1, $$2)), b);
+   public int b(dvd $$0, dea $$1, jg $$2) {
+      return this.b.a();
    }
 }

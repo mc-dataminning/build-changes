@@ -1,9 +1,9 @@
-public interface tc {
-   void a(tb var1);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-   void a(tb var1, te var2);
-
-   void b(tb var1, te var2);
-
-   void a(tb var1, tb var2, te var3);
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface tc {
 }

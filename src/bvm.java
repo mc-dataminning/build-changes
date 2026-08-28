@@ -1,5 +1,5 @@
-public interface bvm<T> {
-   void a(T var1);
+public interface bvm {
+   void a(awl var1);
 
-   T d();
+   boolean a();
 }

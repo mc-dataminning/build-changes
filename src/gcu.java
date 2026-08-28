@@ -1,73 +1,119 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public final class gcu {
-   private static final int a = 1024;
-   private final gcl b;
-   private final gcr c;
-   private final gcg d;
-   @Nullable
-   private gcq e;
-
-   public gcu(gcl $$0, gcr $$1, gcg $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public interface gcu extends gct {
+   static gcu.a a(GameProfile $$0, xx $$1, gcs $$2) {
+      return new gcu.a($$0, $$1, $$2);
    }
 
-   public static gcu a(gcr $$0, UserApiService $$1) {
-      gcg $$2 = new gcg(1024);
-      gcl $$3 = gcl.a($$0, $$1);
-      return new gcu($$3, $$0, $$2);
+   static gcu.b a(xh $$0, Instant $$1) {
+      return new gcu.b($$0, $$1);
    }
 
-   public void a(fip $$0, fqh $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         gcq $$4 = this.e.b();
-         $$0.a(
-            new fpf(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               xe.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               xe.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               xe.c("gui.abuseReport.draft.edit"),
-               xe.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+   xh b();
+
+   default xh c() {
+      return this.b();
+   }
+
+   boolean a(UUID var1);
+
+   public static record a(GameProfile c, xx d, gcs e) implements gcu {
+      public static final MapCodec<gcu.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  ays.z.fieldOf("profile").forGetter(gcu.a::f), xx.a.forGetter(gcu.a::g), gcs.d.optionalFieldOf("trust_level", gcs.a).forGetter(gcu.a::h)
+               )
+               .apply($$0, gcu.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+      @Override
+      public xh b() {
+         if (!this.d.o().a()) {
+            xh $$0 = this.d.o().b(this.d.c());
+            return (xh)($$0 != null ? $$0 : xh.i());
+         } else {
+            return this.d.d();
+         }
+      }
+
+      @Override
+      public xh c() {
+         xh $$0 = this.b();
+         xh $$1 = this.i();
+         return xh.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public xh d() {
+         xh $$0 = this.i();
+         return xh.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private xh i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return xh.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public gct.a a() {
+         return gct.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public xx g() {
+         return this.d;
+      }
+
+      public gcs h() {
+         return this.e;
       }
    }
 
-   public gcl a() {
-      return this.b;
-   }
+   public static record b(xh c, Instant d) implements gcu {
+      public static final MapCodec<gcu.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(xj.a.fieldOf("message").forGetter(gcu.b::d), ays.q.fieldOf("time_stamp").forGetter(gcu.b::e)).apply($$0, gcu.b::new)
+      );
 
-   public gcg b() {
-      return this.d;
-   }
+      @Override
+      public xh b() {
+         return this.c;
+      }
 
-   public boolean a(gcr $$0) {
-      return Objects.equals(this.c, $$0);
-   }
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
 
-   public void a(@Nullable gcq $$0) {
-      this.e = $$0;
-   }
+      @Override
+      public gct.a a() {
+         return gct.a.b;
+      }
 
-   public boolean c() {
-      return this.e != null;
-   }
+      public xh d() {
+         return this.c;
+      }
 
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+      public Instant e() {
+         return this.d;
+      }
    }
 }

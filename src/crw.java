@@ -1,22 +1,34 @@
-public class crw extends csw {
-   private final crb a;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
-   public crw(crb $$0, brl $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+public interface crw {
+   crw a = new crw() {
+      @Override
+      public <T> Optional<T> a(BiFunction<dev, jg, T> $$0) {
+         return Optional.empty();
+      }
+   };
+
+   static crw a(final dev $$0, final jg $$1) {
+      return new crw() {
+         @Override
+         public <T> Optional<T> a(BiFunction<dev, jg, T> $$0x) {
+            return Optional.of($$0.apply($$0, $$1));
+         }
+      };
    }
 
-   @Override
-   public boolean a(cvs $$0) {
-      return this.a.d($$0) || c($$0);
+   <T> Optional<T> a(BiFunction<dev, jg, T> var1);
+
+   default <T> T a(BiFunction<dev, jg, T> $$0, T $$1) {
+      return this.a($$0).orElse($$1);
    }
 
-   @Override
-   public int a_(cvs $$0) {
-      return c($$0) ? 1 : super.a_($$0);
-   }
-
-   public static boolean c(cvs $$0) {
-      return $$0.a(cvw.qz);
+   default void a(BiConsumer<dev, jg> $$0) {
+      this.a(($$1, $$2) -> {
+         $$0.accept($$1, $$2);
+         return Optional.empty();
+      });
    }
 }

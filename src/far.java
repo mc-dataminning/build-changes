@@ -1,2 +1,8 @@
-public interface far<T> extends faq<T> {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface far {
 }

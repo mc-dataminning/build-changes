@@ -1,42 +1,35 @@
-import java.util.Optional;
+import com.google.common.collect.Sets;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record esh(jo<esi> b, byte c, byte d, byte e, Optional<xe> f) {
-   public static final zc<wp, esh> a = zc.a(esi.c, esh::c, za.c, esh::d, za.c, esh::e, za.c, esh::f, xg.c, esh::g, esh::new);
-
-   public esh(jo<esi> b, byte c, byte d, byte e, Optional<xe> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+public class esh extends eso {
+   public esh(doa $$0) {
+      super($$0);
    }
 
-   public ale a() {
-      return this.b.a().b();
+   @Override
+   public void a(dev $$0, jg $$1, dvd $$2, @Nullable esm $$3, boolean $$4) {
+      int $$5 = this.c($$0, $$1);
+      if ($$2.c(doa.f) != $$5) {
+         if ($$0.a_($$1) == $$2) {
+            $$0.a($$1, $$2.b(doa.f, Integer.valueOf($$5)), 2);
+         }
+
+         Set<jg> $$6 = Sets.newHashSet();
+         $$6.add($$1);
+
+         for (jl $$7 : jl.values()) {
+            $$6.add($$1.a($$7));
+         }
+
+         for (jg $$8 : $$6) {
+            $$0.a($$8, this.a);
+         }
+      }
    }
 
-   public boolean b() {
-      return this.b.a().c();
-   }
-
-   public jo<esi> c() {
-      return this.b;
-   }
-
-   public byte d() {
-      return this.c;
-   }
-
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<xe> g() {
-      return this.f;
+   private int c(dev $$0, jg $$1) {
+      int $$2 = this.a($$0, $$1);
+      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
    }
 }

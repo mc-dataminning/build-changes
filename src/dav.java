@@ -1,65 +1,52 @@
-public class dav extends dab {
-   public dav(czy $$0) {
+public class dav extends daa {
+   public dav(czx $$0) {
       super($$0);
    }
 
-   public boolean a(czz $$0, dej $$1) {
-      cvs $$2 = cvs.k;
-      cvs $$3 = cvs.k;
+   public boolean a(czy $$0, dev $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvs $$5 = $$0.a($$4);
+         cvx $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if ($$5.h() instanceof ctr) {
-               if (!$$3.f()) {
-                  return false;
-               }
-
-               $$3 = $$5;
+            if (dhy.a($$5.h()) instanceof dox) {
+               $$2++;
             } else {
-               if (!$$5.a(cvw.vu)) {
+               if (!($$5.h() instanceof cuv)) {
                   return false;
                }
 
-               if (!$$2.f()) {
-                  return false;
-               }
+               $$3++;
+            }
 
-               drm $$6 = $$5.a(ks.ad, drm.a);
-               if (!$$6.b().isEmpty()) {
-                  return false;
-               }
-
-               $$2 = $$5;
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
             }
          }
       }
 
-      return !$$2.f() && !$$3.f();
+      return $$2 == 1 && $$3 == 1;
    }
 
-   public cvs a(czz $$0, jq.a $$1) {
-      cvs $$2 = cvs.k;
-      cvs $$3 = cvs.k;
+   public cvx a(czy $$0, jr.a $$1) {
+      cvx $$2 = cvx.k;
+      cuv $$3 = (cuv)cwb.rj;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvs $$5 = $$0.a($$4);
+         cvx $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if ($$5.h() instanceof ctr) {
+            cvt $$6 = $$5.h();
+            if (dhy.a($$6) instanceof dox) {
                $$2 = $$5;
-            } else if ($$5.a(cvw.vu)) {
-               $$3 = $$5.u();
+            } else if ($$6 instanceof cuv) {
+               $$3 = (cuv)$$6;
             }
          }
       }
 
-      if ($$3.f()) {
-         return $$3;
-      } else {
-         $$3.b(ks.ad, $$2.a(ks.ad));
-         $$3.b(ks.ae, ((ctr)$$2.h()).b());
-         return $$3;
-      }
+      dhy $$7 = dox.a($$3.c());
+      return $$2.a($$7, 1);
    }
 
    @Override
@@ -68,7 +55,7 @@ public class dav extends dab {
    }
 
    @Override
-   public dap<?> ar_() {
-      return dap.l;
+   public dao<?> ar_() {
+      return dao.m;
    }
 }

@@ -1,168 +1,17 @@
-import java.util.Optional;
-import java.util.stream.IntStream;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Supplier;
 
-public class oi {
-   public static final oh a = a("cube", ok.c, ok.j, ok.k, ok.l, ok.m, ok.n, ok.o);
-   public static final oh b = a("cube_directional", ok.c, ok.j, ok.k, ok.l, ok.m, ok.n, ok.o);
-   public static final oh c = a("cube_all", ok.a);
-   public static final oh d = a("cube_all_inner_faces", ok.a);
-   public static final oh e = a("cube_mirrored_all", "_mirrored", ok.a);
-   public static final oh f = a("cube_north_west_mirrored_all", "_north_west_mirrored", ok.a);
-   public static final oh g = a("cube_column_uv_locked_x", "_x", ok.d, ok.i);
-   public static final oh h = a("cube_column_uv_locked_y", "_y", ok.d, ok.i);
-   public static final oh i = a("cube_column_uv_locked_z", "_z", ok.d, ok.i);
-   public static final oh j = a("cube_column", ok.d, ok.i);
-   public static final oh k = a("cube_column_horizontal", "_horizontal", ok.d, ok.i);
-   public static final oh l = a("cube_column_mirrored", "_mirrored", ok.d, ok.i);
-   public static final oh m = a("cube_top", ok.f, ok.i);
-   public static final oh n = a("cube_bottom_top", ok.f, ok.e, ok.i);
-   public static final oh o = a("cube_bottom_top_inner_faces", ok.f, ok.e, ok.i);
-   public static final oh p = a("orientable", ok.f, ok.g, ok.i);
-   public static final oh q = a("orientable_with_bottom", ok.f, ok.e, ok.i, ok.g);
-   public static final oh r = a("orientable_vertical", "_vertical", ok.g, ok.i);
-   public static final oh s = a("button", ok.b);
-   public static final oh t = a("button_pressed", "_pressed", ok.b);
-   public static final oh u = a("button_inventory", "_inventory", ok.b);
-   public static final oh v = a("door_bottom_left", "_bottom_left", ok.f, ok.e);
-   public static final oh w = a("door_bottom_left_open", "_bottom_left_open", ok.f, ok.e);
-   public static final oh x = a("door_bottom_right", "_bottom_right", ok.f, ok.e);
-   public static final oh y = a("door_bottom_right_open", "_bottom_right_open", ok.f, ok.e);
-   public static final oh z = a("door_top_left", "_top_left", ok.f, ok.e);
-   public static final oh A = a("door_top_left_open", "_top_left_open", ok.f, ok.e);
-   public static final oh B = a("door_top_right", "_top_right", ok.f, ok.e);
-   public static final oh C = a("door_top_right_open", "_top_right_open", ok.f, ok.e);
-   public static final oh D = a("custom_fence_post", "_post", ok.b, ok.c);
-   public static final oh E = a("custom_fence_side_north", "_side_north", ok.b);
-   public static final oh F = a("custom_fence_side_east", "_side_east", ok.b);
-   public static final oh G = a("custom_fence_side_south", "_side_south", ok.b);
-   public static final oh H = a("custom_fence_side_west", "_side_west", ok.b);
-   public static final oh I = a("custom_fence_inventory", "_inventory", ok.b);
-   public static final oh J = a("fence_post", "_post", ok.b);
-   public static final oh K = a("fence_side", "_side", ok.b);
-   public static final oh L = a("fence_inventory", "_inventory", ok.b);
-   public static final oh M = a("template_wall_post", "_post", ok.r);
-   public static final oh N = a("template_wall_side", "_side", ok.r);
-   public static final oh O = a("template_wall_side_tall", "_side_tall", ok.r);
-   public static final oh P = a("wall_inventory", "_inventory", ok.r);
-   public static final oh Q = a("template_custom_fence_gate", ok.b, ok.c);
-   public static final oh R = a("template_custom_fence_gate_open", "_open", ok.b, ok.c);
-   public static final oh S = a("template_custom_fence_gate_wall", "_wall", ok.b, ok.c);
-   public static final oh T = a("template_custom_fence_gate_wall_open", "_wall_open", ok.b, ok.c);
-   public static final oh U = a("template_fence_gate", ok.b);
-   public static final oh V = a("template_fence_gate_open", "_open", ok.b);
-   public static final oh W = a("template_fence_gate_wall", "_wall", ok.b);
-   public static final oh X = a("template_fence_gate_wall_open", "_wall_open", ok.b);
-   public static final oh Y = a("pressure_plate_up", ok.b);
-   public static final oh Z = a("pressure_plate_down", "_down", ok.b);
-   public static final oh aa = a(ok.c);
-   public static final oh ab = a("slab", ok.e, ok.f, ok.i);
-   public static final oh ac = a("slab_top", "_top", ok.e, ok.f, ok.i);
-   public static final oh ad = a("leaves", ok.a);
-   public static final oh ae = a("stairs", ok.e, ok.f, ok.i);
-   public static final oh af = a("inner_stairs", "_inner", ok.e, ok.f, ok.i);
-   public static final oh ag = a("outer_stairs", "_outer", ok.e, ok.f, ok.i);
-   public static final oh ah = a("template_trapdoor_top", "_top", ok.b);
-   public static final oh ai = a("template_trapdoor_bottom", "_bottom", ok.b);
-   public static final oh aj = a("template_trapdoor_open", "_open", ok.b);
-   public static final oh ak = a("template_orientable_trapdoor_top", "_top", ok.b);
-   public static final oh al = a("template_orientable_trapdoor_bottom", "_bottom", ok.b);
-   public static final oh am = a("template_orientable_trapdoor_open", "_open", ok.b);
-   public static final oh an = a("pointed_dripstone", ok.p);
-   public static final oh ao = a("cross", ok.p);
-   public static final oh ap = a("tinted_cross", ok.p);
-   public static final oh aq = a("flower_pot_cross", ok.q);
-   public static final oh ar = a("tinted_flower_pot_cross", ok.q);
-   public static final oh as = a("rail_flat", ok.s);
-   public static final oh at = a("rail_curved", "_corner", ok.s);
-   public static final oh au = a("template_rail_raised_ne", "_raised_ne", ok.s);
-   public static final oh av = a("template_rail_raised_sw", "_raised_sw", ok.s);
-   public static final oh aw = a("carpet", ok.t);
-   public static final oh ax = a("flowerbed_1", "_1", ok.P, ok.y);
-   public static final oh ay = a("flowerbed_2", "_2", ok.P, ok.y);
-   public static final oh az = a("flowerbed_3", "_3", ok.P, ok.y);
-   public static final oh aA = a("flowerbed_4", "_4", ok.P, ok.y);
-   public static final oh aB = a("coral_fan", ok.x);
-   public static final oh aC = a("coral_wall_fan", ok.x);
-   public static final oh aD = a("template_glazed_terracotta", ok.u);
-   public static final oh aE = a("template_chorus_flower", ok.b);
-   public static final oh aF = a("template_daylight_detector", ok.f, ok.i);
-   public static final oh aG = a("template_glass_pane_noside", "_noside", ok.v);
-   public static final oh aH = a("template_glass_pane_noside_alt", "_noside_alt", ok.v);
-   public static final oh aI = a("template_glass_pane_post", "_post", ok.v, ok.w);
-   public static final oh aJ = a("template_glass_pane_side", "_side", ok.v, ok.w);
-   public static final oh aK = a("template_glass_pane_side_alt", "_side_alt", ok.v, ok.w);
-   public static final oh aL = a("template_command_block", ok.g, ok.h, ok.i);
-   public static final oh aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", ok.b);
-   public static final oh aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", ok.b);
-   public static final oh aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", ok.b);
-   public static final oh aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", ok.b);
-   public static final oh aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", ok.b);
-   public static final oh aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", ok.b);
-   public static final oh aS = a("template_anvil", ok.f);
-   public static final oh[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, ok.y)).toArray(oh[]::new);
-   public static final oh aU = a("stem_fruit", ok.y, ok.z);
-   public static final oh aV = a("crop", ok.A);
-   public static final oh aW = a("template_farmland", ok.B, ok.f);
-   public static final oh aX = a("template_fire_floor", ok.C);
-   public static final oh aY = a("template_fire_side", ok.C);
-   public static final oh aZ = a("template_fire_side_alt", ok.C);
-   public static final oh ba = a("template_fire_up", ok.C);
-   public static final oh bb = a("template_fire_up_alt", ok.C);
-   public static final oh bc = a("template_campfire", ok.C, ok.K);
-   public static final oh bd = a("template_lantern", ok.D);
-   public static final oh be = a("template_hanging_lantern", "_hanging", ok.D);
-   public static final oh bf = a("template_torch", ok.G);
-   public static final oh bg = a("template_torch_wall", ok.G);
-   public static final oh bh = a("template_redstone_torch", ok.G);
-   public static final oh bi = a("template_redstone_torch_wall", ok.G);
-   public static final oh bj = a("template_piston", ok.E, ok.e, ok.i);
-   public static final oh bk = a("template_piston_head", ok.E, ok.i, ok.F);
-   public static final oh bl = a("template_piston_head_short", ok.E, ok.i, ok.F);
-   public static final oh bm = a("template_seagrass", ok.b);
-   public static final oh bn = a("template_turtle_egg", ok.a);
-   public static final oh bo = a("template_two_turtle_eggs", ok.a);
-   public static final oh bp = a("template_three_turtle_eggs", ok.a);
-   public static final oh bq = a("template_four_turtle_eggs", ok.a);
-   public static final oh br = a("template_single_face", ok.b);
-   public static final oh bs = a("template_cauldron_level1", ok.N, ok.M, ok.c, ok.f, ok.e, ok.i);
-   public static final oh bt = a("template_cauldron_level2", ok.N, ok.M, ok.c, ok.f, ok.e, ok.i);
-   public static final oh bu = a("template_cauldron_full", ok.N, ok.M, ok.c, ok.f, ok.e, ok.i);
-   public static final oh bv = a("template_azalea", ok.f, ok.i);
-   public static final oh bw = a("template_potted_azalea_bush", ok.q, ok.f, ok.i);
-   public static final oh bx = a("template_potted_azalea_bush", ok.q, ok.f, ok.i);
-   public static final oh by = a("sniffer_egg", ok.f, ok.e, ok.j, ok.k, ok.l, ok.m);
-   public static final oh bz = b("generated", ok.H);
-   public static final oh bA = b("template_music_disc", ok.H);
-   public static final oh bB = b("handheld", ok.H);
-   public static final oh bC = b("handheld_rod", ok.H);
-   public static final oh bD = b("generated", ok.H, ok.I);
-   public static final oh bE = b("generated", ok.H, ok.I, ok.J);
-   public static final oh bF = b("template_shulker_box", ok.c);
-   public static final oh bG = b("template_bed", ok.c);
-   public static final oh bH = b("template_banner");
-   public static final oh bI = b("template_skull");
-   public static final oh bJ = a("template_candle", ok.a, ok.c);
-   public static final oh bK = a("template_two_candles", ok.a, ok.c);
-   public static final oh bL = a("template_three_candles", ok.a, ok.c);
-   public static final oh bM = a("template_four_candles", ok.a, ok.c);
-   public static final oh bN = a("template_cake_with_candle", ok.L, ok.e, ok.i, ok.f, ok.c);
-   public static final oh bO = a("template_sculk_shrieker", ok.e, ok.i, ok.f, ok.c, ok.O);
-   public static final oh bP = a("template_vault", ok.f, ok.e, ok.i, ok.g);
-   public static final oh bQ = b("handheld_mace", ok.H);
+public class oi implements Supplier<JsonElement> {
+   private final alh a;
 
-   private static oh a(ok... $$0) {
-      return new oh(Optional.empty(), Optional.empty(), $$0);
+   public oi(alh $$0) {
+      this.a = $$0;
    }
 
-   private static oh a(String $$0, ok... $$1) {
-      return new oh(Optional.of(ale.b("block/" + $$0)), Optional.empty(), $$1);
-   }
-
-   private static oh b(String $$0, ok... $$1) {
-      return new oh(Optional.of(ale.b("item/" + $$0)), Optional.empty(), $$1);
-   }
-
-   private static oh a(String $$0, String $$1, ok... $$2) {
-      return new oh(Optional.of(ale.b("block/" + $$0)), Optional.of($$1), $$2);
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
    }
 }

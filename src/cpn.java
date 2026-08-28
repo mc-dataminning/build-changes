@@ -1,160 +1,168 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.doubles.DoubleDoubleImmutablePair;
 import java.util.List;
-import java.util.Map;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cpn extends esf {
-   private static final String a = "raids";
-   private final Map<Integer, cpl> b = Maps.newHashMap();
-   private final arj c;
-   private int d;
-   private int e;
+public class cpn extends cpi {
+   public static final double b = 4.0;
+   private static final double d = 16.0;
+   public static final Predicate<buv> c = $$0 -> $$0.ft() || $$0.bZ();
 
-   public static esf.a<cpn> a(arj $$0) {
-      return new esf.a<>(() -> new cpn($$0), ($$1, $$2) -> a($$0, $$1), bao.l);
+   public cpn(bug<? extends cpn> $$0, dev $$1) {
+      super($$0, $$1);
    }
 
-   public cpn(arj $$0) {
-      this.c = $$0;
-      this.d = 1;
-      this.c();
+   public cpn(dev $$0, buv $$1, cvx $$2) {
+      super(bug.aE, $$1, $$0, $$2);
    }
 
-   public cpl a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public void a() {
-      this.e++;
-      Iterator<cpl> $$0 = this.b.values().iterator();
-
-      while ($$0.hasNext()) {
-         cpl $$1 = $$0.next();
-         if (this.c.ac().b(def.B)) {
-            $$1.n();
-         }
-
-         if ($$1.d()) {
-            $$0.remove();
-            this.c();
-         } else {
-            $$1.o();
-         }
-      }
-
-      if (this.e % 200 == 0) {
-         this.c();
-      }
-
-      ago.a(this.c, this.b.values());
-   }
-
-   public static boolean a(cpm $$0, cpl $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bI() && $$0.gB() && $$0.er() <= 2400 && $$0.dS().C_() == $$1.i().C_() : false;
-   }
-
-   @Nullable
-   public cpl a(ark $$0, jf $$1) {
-      if ($$0.Q_()) {
-         return null;
-      } else if (this.c.ac().b(def.B)) {
-         return null;
-      } else {
-         dyo $$2 = $$0.dS().C_();
-         if (!$$2.c()) {
-            return null;
-         } else {
-            List<cfr> $$3 = this.c.y().c($$0x -> $$0x.a(axg.b), $$1, 64, cfq.b.b).toList();
-            int $$4 = 0;
-            eyw $$5 = eyw.c;
-
-            for (cfr $$6 : $$3) {
-               jf $$7 = $$6.g();
-               $$5 = $$5.b((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
-               $$4++;
-            }
-
-            jf $$8;
-            if ($$4 > 0) {
-               $$5 = $$5.c(1.0 / (double)$$4);
-               $$8 = jf.a((jy)$$5);
-            } else {
-               $$8 = $$1;
-            }
-
-            cpl $$10 = this.a($$0.B(), $$8);
-            if (!$$10.j() && !this.b.containsKey($$10.t())) {
-               this.b.put($$10.t(), $$10);
-            }
-
-            if (!$$10.j() || $$10.m() < $$10.l()) {
-               $$10.a($$0);
-            }
-
-            this.c();
-            return $$10;
-         }
-      }
-   }
-
-   private cpl a(arj $$0, jf $$1) {
-      cpl $$2 = $$0.d($$1);
-      return $$2 != null ? $$2 : new cpl(this.b(), $$0, $$1);
-   }
-
-   public static cpn a(arj $$0, ug $$1) {
-      cpn $$2 = new cpn($$0);
-      $$2.d = $$1.h("NextAvailableID");
-      $$2.e = $$1.h("Tick");
-      um $$3 = $$1.c("Raids", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         ug $$5 = $$3.a($$4);
-         cpl $$6 = new cpl($$0, $$5);
-         $$2.b.put($$6.t(), $$6);
-      }
-
-      return $$2;
+   public cpn(dev $$0, double $$1, double $$2, double $$3, cvx $$4) {
+      super(bug.aE, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   public ug a(ug $$0, jq.a $$1) {
-      $$0.a("NextAvailableID", this.d);
-      $$0.a("Tick", this.e);
-      um $$2 = new um();
+   protected cvt o() {
+      return cwb.vq;
+   }
 
-      for (cpl $$3 : this.b.values()) {
-         ug $$4 = new ug();
-         $$3.a($$4);
-         $$2.add($$4);
+   @Override
+   protected double be() {
+      return 0.05;
+   }
+
+   @Override
+   protected void a(ezd $$0) {
+      super.a($$0);
+      if (!this.dX().C) {
+         cvx $$1 = this.m();
+         jl $$2 = $$0.c();
+         jg $$3 = $$0.b();
+         jg $$4 = $$3.a($$2);
+         cxw $$5 = $$1.a(kt.P, cxw.a);
+         if ($$5.a(cxx.a)) {
+            this.a($$4);
+            this.a($$4.a($$2.g()));
+
+            for (jl $$6 : jl.c.a) {
+               this.a($$4.a($$6));
+            }
+         }
       }
-
-      $$0.a("Raids", $$2);
-      return $$0;
    }
 
-   public static String a(jo<dyo> $$0) {
-      return $$0.a(dym.c) ? "raids_end" : "raids";
+   @Override
+   protected void a(ezf $$0) {
+      super.a($$0);
+      if (!this.dX().C) {
+         cvx $$1 = this.m();
+         cxw $$2 = $$1.a(kt.P, cxw.a);
+         if ($$2.a(cxx.a)) {
+            this.q();
+         } else if ($$2.c()) {
+            if (this.t()) {
+               this.a($$2);
+            } else {
+               this.a($$2.a(), $$0.d() == ezf.a.c ? ((eze)$$0).a() : null);
+            }
+         }
+
+         int $$3 = $$2.e().isPresent() && $$2.e().get().a().c() ? 2007 : 2002;
+         this.dX().c($$3, this.dx(), $$2.b());
+         this.au();
+      }
    }
 
-   private int b() {
-      return ++this.d;
-   }
+   private void q() {
+      ezc $$0 = this.cS().c(4.0, 2.0, 4.0);
 
-   @Nullable
-   public cpl a(jf $$0, int $$1) {
-      cpl $$2 = null;
-      double $$3 = (double)$$1;
+      for (buv $$2 : this.dX().a(buv.class, $$0, c)) {
+         double $$3 = this.g($$2);
+         if ($$3 < 16.0) {
+            if ($$2.ft()) {
+               $$2.a(this.dY().c(this, this.s()), 1.0F);
+            }
 
-      for (cpl $$4 : this.b.values()) {
-         double $$5 = $$4.s().j($$0);
-         if ($$4.u() && $$5 < $$3) {
-            $$2 = $$4;
-            $$3 = $$5;
+            if ($$2.bZ() && $$2.bM()) {
+               $$2.aN();
+            }
          }
       }
 
-      return $$2;
+      for (chy $$5 : this.dX().a(chy.class, $$0)) {
+         $$5.q();
+      }
+   }
+
+   private void a(Iterable<bte> $$0, @Nullable btz $$1) {
+      ezc $$2 = this.cS().c(4.0, 2.0, 4.0);
+      List<buv> $$3 = this.dX().a(buv.class, $$2);
+      if (!$$3.isEmpty()) {
+         btz $$4 = this.F();
+
+         for (buv $$5 : $$3) {
+            if ($$5.fN()) {
+               double $$6 = this.g($$5);
+               if ($$6 < 16.0) {
+                  double $$7;
+                  if ($$5 == $$1) {
+                     $$7 = 1.0;
+                  } else {
+                     $$7 = 1.0 - Math.sqrt($$6) / 4.0;
+                  }
+
+                  for (bte $$9 : $$0) {
+                     jp<btc> $$10 = $$9.c();
+                     if ($$10.a().a()) {
+                        $$10.a().a(this, this.s(), $$5, $$9.e(), $$7);
+                     } else {
+                        int $$11 = $$9.a($$1x -> (int)($$7 * (double)$$1x + 0.5));
+                        bte $$12 = new bte($$10, $$11, $$9.e(), $$9.f(), $$9.g());
+                        if (!$$12.a(20)) {
+                           $$5.b($$12, $$4);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void a(cxw $$0) {
+      bts $$1 = new bts(this.dX(), this.dC(), this.dE(), this.dI());
+      if (this.s() instanceof buv $$2) {
+         $$1.a($$2);
+      }
+
+      $$1.a(3.0F);
+      $$1.b(-0.5F);
+      $$1.c(10);
+      $$1.c(-$$1.g() / (float)$$1.j());
+      $$1.a($$0);
+      this.dX().b($$1);
+   }
+
+   private boolean t() {
+      return this.m().a(cwb.vt);
+   }
+
+   private void a(jg $$0) {
+      dvd $$1 = this.dX().a_($$0);
+      if ($$1.a(awz.aL)) {
+         this.dX().a($$0, false, this);
+      } else if (dgq.c($$1)) {
+         dgq.a(null, $$1, this.dX(), $$0);
+      } else if (dim.h($$1)) {
+         this.dX().a(null, 1009, $$0, 0);
+         dim.a(this.s(), this.dX(), $$0, $$1);
+         this.dX().b($$0, $$1.b(dim.c, Boolean.valueOf(false)));
+      }
+   }
+
+   @Override
+   public DoubleDoubleImmutablePair a_(buv $$0, bsp $$1) {
+      double $$2 = $$0.dv().d - this.dv().d;
+      double $$3 = $$0.dv().f - this.dv().f;
+      return DoubleDoubleImmutablePair.of($$2, $$3);
    }
 }

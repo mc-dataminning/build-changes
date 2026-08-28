@@ -1,166 +1,194 @@
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.util.function.LongPredicate;
+import com.google.common.annotations.VisibleForTesting;
 
-public abstract class eqf {
-   public static final long e = Long.MAX_VALUE;
-   private static final int a = 255;
-   protected final int f;
-   private final eqj b;
-   private final Long2ByteMap c;
-   private volatile boolean d;
+public final class eqf {
+   private static final float d = 1.0E-7F;
+   private final byte[] e;
+   public final double a;
+   public final double b;
+   public final double c;
 
-   protected eqf(int $$0, int $$1, final int $$2) {
-      if ($$0 >= 254) {
-         throw new IllegalArgumentException("Level count must be < 254.");
-      } else {
-         this.f = $$0;
-         this.b = new eqj($$0, $$1);
-         this.c = new Long2ByteOpenHashMap($$2, 0.5F) {
-            protected void rehash(int $$0) {
-               if ($$0 > $$2) {
-                  super.rehash($$0);
-               }
-            }
-         };
-         this.c.defaultReturnValue((byte)-1);
+   public eqf(azr $$0) {
+      this.a = $$0.j() * 256.0;
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.e = new byte[256];
+
+      for (int $$1 = 0; $$1 < 256; $$1++) {
+         this.e[$$1] = (byte)$$1;
+      }
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         byte $$4 = this.e[$$2];
+         this.e[$$2] = this.e[$$2 + $$3];
+         this.e[$$2 + $$3] = $$4;
       }
    }
 
-   protected void e(long $$0) {
-      int $$1 = this.c.remove($$0) & 255;
-      if ($$1 != 255) {
-         int $$2 = this.c($$0);
-         int $$3 = this.a($$2, $$1);
-         this.b.a($$0, $$3, this.f);
-         this.d = !this.b.b();
-      }
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0);
    }
 
-   public void a(LongPredicate $$0) {
-      LongList $$1 = new LongArrayList();
-      this.c.keySet().forEach($$2 -> {
-         if ($$0.test($$2)) {
-            $$1.add($$2);
-         }
-      });
-      $$1.forEach(this::e);
-   }
-
-   private int a(int $$0, int $$1) {
-      return Math.min(Math.min($$0, $$1), this.f - 1);
-   }
-
-   protected void f(long $$0) {
-      this.a($$0, $$0, this.f - 1, false);
-   }
-
-   protected void a(long $$0, long $$1, int $$2, boolean $$3) {
-      this.a($$0, $$1, $$2, this.c($$1), this.c.get($$1) & 255, $$3);
-      this.d = !this.b.b();
-   }
-
-   private void a(long $$0, long $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if (!this.a($$1)) {
-         $$2 = azf.a($$2, 0, this.f - 1);
-         $$3 = azf.a($$3, 0, this.f - 1);
-         boolean $$6 = $$4 == 255;
-         if ($$6) {
-            $$4 = $$3;
-         }
-
-         int $$7;
-         if ($$5) {
-            $$7 = Math.min($$4, $$2);
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$0 + this.a;
+      double $$6 = $$1 + this.b;
+      double $$7 = $$2 + this.c;
+      int $$8 = azj.a($$5);
+      int $$9 = azj.a($$6);
+      int $$10 = azj.a($$7);
+      double $$11 = $$5 - (double)$$8;
+      double $$12 = $$6 - (double)$$9;
+      double $$13 = $$7 - (double)$$10;
+      double $$16;
+      if ($$3 != 0.0) {
+         double $$14;
+         if ($$4 >= 0.0 && $$4 < $$12) {
+            $$14 = $$4;
          } else {
-            $$7 = azf.a(this.a($$1, $$0, $$2), 0, this.f - 1);
+            $$14 = $$12;
          }
 
-         int $$9 = this.a($$3, $$4);
-         if ($$3 != $$7) {
-            int $$10 = this.a($$3, $$7);
-            if ($$9 != $$10 && !$$6) {
-               this.b.a($$1, $$9, $$10);
-            }
-
-            this.b.a($$1, $$10);
-            this.c.put($$1, (byte)$$7);
-         } else if (!$$6) {
-            this.b.a($$1, $$9, this.f);
-            this.c.remove($$1);
-         }
-      }
-   }
-
-   protected final void b(long $$0, long $$1, int $$2, boolean $$3) {
-      int $$4 = this.c.get($$1) & 255;
-      int $$5 = azf.a(this.b($$0, $$1, $$2), 0, this.f - 1);
-      if ($$3) {
-         this.a($$0, $$1, $$5, this.c($$1), $$4, $$3);
+         $$16 = (double)azj.a($$14 / $$3 + 1.0E-7F) * $$3;
       } else {
-         boolean $$6 = $$4 == 255;
-         int $$7;
-         if ($$6) {
-            $$7 = azf.a(this.c($$1), 0, this.f - 1);
-         } else {
-            $$7 = $$4;
-         }
-
-         if ($$5 == $$7) {
-            this.a($$0, $$1, this.f - 1, $$6 ? $$7 : this.c($$1), $$4, $$3);
-         }
+         $$16 = 0.0;
       }
+
+      return this.a($$8, $$9, $$10, $$11, $$12 - $$16, $$13, $$12);
    }
 
-   protected final boolean c() {
-      return this.d;
+   public double a(double $$0, double $$1, double $$2, double[] $$3) {
+      double $$4 = $$0 + this.a;
+      double $$5 = $$1 + this.b;
+      double $$6 = $$2 + this.c;
+      int $$7 = azj.a($$4);
+      int $$8 = azj.a($$5);
+      int $$9 = azj.a($$6);
+      double $$10 = $$4 - (double)$$7;
+      double $$11 = $$5 - (double)$$8;
+      double $$12 = $$6 - (double)$$9;
+      return this.a($$7, $$8, $$9, $$10, $$11, $$12, $$3);
    }
 
-   protected final int b(int $$0) {
-      if (this.b.b()) {
-         return $$0;
-      } else {
-         while (!this.b.b() && $$0 > 0) {
-            $$0--;
-            long $$1 = this.b.a();
-            int $$2 = azf.a(this.c($$1), 0, this.f - 1);
-            int $$3 = this.c.remove($$1) & 255;
-            if ($$3 < $$2) {
-               this.a($$1, $$3);
-               this.a($$1, $$3, true);
-            } else if ($$3 > $$2) {
-               this.a($$1, this.f - 1);
-               if ($$3 != this.f - 1) {
-                  this.b.a($$1, this.a(this.f - 1, $$3));
-                  this.c.put($$1, (byte)$$3);
-               }
-
-               this.a($$1, $$2, false);
-            }
-         }
-
-         this.d = !this.b.b();
-         return $$0;
-      }
+   private static double a(int $$0, double $$1, double $$2, double $$3) {
+      return eqk.a(eqk.a[$$0 & 15], $$1, $$2, $$3);
    }
 
-   public int d() {
-      return this.c.size();
+   private int a(int $$0) {
+      return this.e[$$0 & 0xFF] & 0xFF;
    }
 
-   protected boolean a(long $$0) {
-      return $$0 == Long.MAX_VALUE;
+   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double $$6) {
+      int $$7 = this.a($$0);
+      int $$8 = this.a($$0 + 1);
+      int $$9 = this.a($$7 + $$1);
+      int $$10 = this.a($$7 + $$1 + 1);
+      int $$11 = this.a($$8 + $$1);
+      int $$12 = this.a($$8 + $$1 + 1);
+      double $$13 = a(this.a($$9 + $$2), $$3, $$4, $$5);
+      double $$14 = a(this.a($$11 + $$2), $$3 - 1.0, $$4, $$5);
+      double $$15 = a(this.a($$10 + $$2), $$3, $$4 - 1.0, $$5);
+      double $$16 = a(this.a($$12 + $$2), $$3 - 1.0, $$4 - 1.0, $$5);
+      double $$17 = a(this.a($$9 + $$2 + 1), $$3, $$4, $$5 - 1.0);
+      double $$18 = a(this.a($$11 + $$2 + 1), $$3 - 1.0, $$4, $$5 - 1.0);
+      double $$19 = a(this.a($$10 + $$2 + 1), $$3, $$4 - 1.0, $$5 - 1.0);
+      double $$20 = a(this.a($$12 + $$2 + 1), $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
+      double $$21 = azj.h($$3);
+      double $$22 = azj.h($$6);
+      double $$23 = azj.h($$5);
+      return azj.a($$21, $$22, $$23, $$13, $$14, $$15, $$16, $$17, $$18, $$19, $$20);
    }
 
-   protected abstract int a(long var1, long var3, int var5);
+   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double[] $$6) {
+      int $$7 = this.a($$0);
+      int $$8 = this.a($$0 + 1);
+      int $$9 = this.a($$7 + $$1);
+      int $$10 = this.a($$7 + $$1 + 1);
+      int $$11 = this.a($$8 + $$1);
+      int $$12 = this.a($$8 + $$1 + 1);
+      int $$13 = this.a($$9 + $$2);
+      int $$14 = this.a($$11 + $$2);
+      int $$15 = this.a($$10 + $$2);
+      int $$16 = this.a($$12 + $$2);
+      int $$17 = this.a($$9 + $$2 + 1);
+      int $$18 = this.a($$11 + $$2 + 1);
+      int $$19 = this.a($$10 + $$2 + 1);
+      int $$20 = this.a($$12 + $$2 + 1);
+      int[] $$21 = eqk.a[$$13 & 15];
+      int[] $$22 = eqk.a[$$14 & 15];
+      int[] $$23 = eqk.a[$$15 & 15];
+      int[] $$24 = eqk.a[$$16 & 15];
+      int[] $$25 = eqk.a[$$17 & 15];
+      int[] $$26 = eqk.a[$$18 & 15];
+      int[] $$27 = eqk.a[$$19 & 15];
+      int[] $$28 = eqk.a[$$20 & 15];
+      double $$29 = eqk.a($$21, $$3, $$4, $$5);
+      double $$30 = eqk.a($$22, $$3 - 1.0, $$4, $$5);
+      double $$31 = eqk.a($$23, $$3, $$4 - 1.0, $$5);
+      double $$32 = eqk.a($$24, $$3 - 1.0, $$4 - 1.0, $$5);
+      double $$33 = eqk.a($$25, $$3, $$4, $$5 - 1.0);
+      double $$34 = eqk.a($$26, $$3 - 1.0, $$4, $$5 - 1.0);
+      double $$35 = eqk.a($$27, $$3, $$4 - 1.0, $$5 - 1.0);
+      double $$36 = eqk.a($$28, $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
+      double $$37 = azj.h($$3);
+      double $$38 = azj.h($$4);
+      double $$39 = azj.h($$5);
+      double $$40 = azj.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[0],
+         (double)$$22[0],
+         (double)$$23[0],
+         (double)$$24[0],
+         (double)$$25[0],
+         (double)$$26[0],
+         (double)$$27[0],
+         (double)$$28[0]
+      );
+      double $$41 = azj.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[1],
+         (double)$$22[1],
+         (double)$$23[1],
+         (double)$$24[1],
+         (double)$$25[1],
+         (double)$$26[1],
+         (double)$$27[1],
+         (double)$$28[1]
+      );
+      double $$42 = azj.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[2],
+         (double)$$22[2],
+         (double)$$23[2],
+         (double)$$24[2],
+         (double)$$25[2],
+         (double)$$26[2],
+         (double)$$27[2],
+         (double)$$28[2]
+      );
+      double $$43 = azj.a($$38, $$39, $$30 - $$29, $$32 - $$31, $$34 - $$33, $$36 - $$35);
+      double $$44 = azj.a($$39, $$37, $$31 - $$29, $$35 - $$33, $$32 - $$30, $$36 - $$34);
+      double $$45 = azj.a($$37, $$38, $$33 - $$29, $$34 - $$30, $$35 - $$31, $$36 - $$32);
+      double $$46 = azj.i($$3);
+      double $$47 = azj.i($$4);
+      double $$48 = azj.i($$5);
+      double $$49 = $$40 + $$46 * $$43;
+      double $$50 = $$41 + $$47 * $$44;
+      double $$51 = $$42 + $$48 * $$45;
+      $$6[0] += $$49;
+      $$6[1] += $$50;
+      $$6[2] += $$51;
+      return azj.a($$37, $$38, $$39, $$29, $$30, $$31, $$32, $$33, $$34, $$35, $$36);
+   }
 
-   protected abstract void a(long var1, int var3, boolean var4);
-
-   protected abstract int c(long var1);
-
-   protected abstract void a(long var1, int var3);
-
-   protected abstract int b(long var1, long var3, int var5);
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      eqg.a($$0, this.a, this.b, this.c, this.e);
+   }
 }

@@ -1,27 +1,40 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class ffy {
+   private final fhm a;
+   private boolean b;
+   private String c;
 
-public class ffy extends hdp {
-   protected BooleanConsumer a;
-   private final xe b;
-   private final xe c;
-
-   public ffy(BooleanConsumer $$0, xe $$1, xe $$2) {
-      super(fig.a);
+   public ffy(fhm $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      fhm.a $$1 = $$0.a();
+      this.b = $$1.b;
+      this.c = $$1.a;
    }
 
-   @Override
-   public void aS_() {
-      this.c(fko.a(xd.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
-      this.c(fko.a(xd.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
-      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
+   public String b() {
+      return this.c;
+   }
+
+   public void a(fey $$0) {
+      fhm.a $$1 = this.b($$0);
+      this.b = $$1.b;
+      this.c = $$1.a;
+   }
+
+   private fhm.a b(fey $$0) {
+      fhm.a $$1 = new fhm.a();
+      $$1.a = $$0.a;
+      fhm.a $$2 = this.a.a();
+      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
+      if ($$3) {
+         return $$2;
+      } else {
+         $$1.b = true;
+         this.a.a($$1);
+         return $$1;
+      }
    }
 }

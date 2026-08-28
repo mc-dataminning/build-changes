@@ -1,27 +1,53 @@
-class bsr extends bsw {
-   protected bsr(bsx $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record bsr(String d, bso e, float f, bsn g, bst h) {
+   public static final Codec<bsr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bsr::a),
+               bso.d.fieldOf("scaling").forGetter(bsr::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bsr::c),
+               bsn.g.optionalFieldOf("effects", bsn.a).forGetter(bsr::d),
+               bst.d.optionalFieldOf("death_message_type", bst.a).forGetter(bsr::e)
+            )
+            .apply($$0, bsr::new)
+   );
+   public static final Codec<jp<bsr>> b = ale.a(ly.s);
+   public static final zf<ws, jp<bsr>> c = zd.b(ly.s);
+
+   public bsr(String $$0, bso $$1, float $$2) {
+      this($$0, $$1, $$2, bsn.a, bst.a);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public bsr(String $$0, bso $$1, float $$2, bsn $$3) {
+      this($$0, $$1, $$2, $$3, bst.a);
    }
 
-   @Override
-   public boolean a(bun $$0, int $$1) {
-      if ($$0 instanceof ark $$2 && !$$2.Q_()) {
-         arj $$3 = $$2.B();
-         if ($$3.am() != brp.a && $$3.c($$2.ds())) {
-            cpl $$4 = $$3.d($$2.ds());
-            if ($$4 == null || $$4.m() < $$4.l()) {
-               $$2.a(new bsy(bta.I, 600, $$1));
-               $$2.c($$2.ds());
-               return false;
-            }
-         }
-      }
+   public bsr(String $$0, float $$1, bsn $$2) {
+      this($$0, bso.b, $$1, $$2);
+   }
 
-      return true;
+   public bsr(String $$0, float $$1) {
+      this($$0, bso.b, $$1);
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public bso b() {
+      return this.e;
+   }
+
+   public float c() {
+      return this.f;
+   }
+
+   public bsn d() {
+      return this.g;
+   }
+
+   public bst e() {
+      return this.h;
    }
 }

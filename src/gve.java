@@ -1,5 +1,3 @@
-public class gve extends guo {
-   public float a;
-   public boolean b;
-   public cgx.g c = cgx.g.a;
+public class gve extends gvd {
+   public float C = -1.0F;
 }

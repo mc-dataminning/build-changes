@@ -1,25 +1,14 @@
-public class baj<A, B> {
-   private A a;
-   private B b;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 
-   public baj(A $$0, B $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+@FunctionalInterface
+public interface baj {
+   long get(TimeUnit var1);
 
-   public A a() {
-      return this.a;
-   }
-
-   public void a(A $$0) {
-      this.a = $$0;
-   }
-
-   public B b() {
-      return this.b;
-   }
-
-   public void b(B $$0) {
-      this.b = $$0;
+   public interface a extends baj, LongSupplier {
+      @Override
+      default long get(TimeUnit $$0) {
+         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
+      }
    }
 }

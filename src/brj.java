@@ -1,11 +1,52 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface brj {
-   void a();
+public class brj extends brd {
+   public static final MapCodec<brj> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, brj::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   static void a_(@Nullable Object $$0) {
-      if ($$0 instanceof brj) {
-         ((brj)$$0).a();
-      }
+   private brj(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
+   }
+
+   public static brj a(int $$0, int $$1) {
+      return new brj($$0, $$1);
+   }
+
+   @Override
+   public int a(azr $$0) {
+      return azj.b($$0, this.b, this.f);
+   }
+
+   @Override
+   public int a() {
+      return this.b;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bre<?> c() {
+      return bre.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

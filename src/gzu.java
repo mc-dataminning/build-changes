@@ -1,9 +1,22 @@
-public interface gzu {
-   default j b() {
-      return j.a();
-   }
+import java.util.List;
+import javax.annotation.Nullable;
 
-   default boolean c() {
-      return false;
+public interface gzu {
+   List<gjd> a(@Nullable dvd var1, @Nullable jl var2, azr var3);
+
+   boolean a();
+
+   boolean b();
+
+   boolean c();
+
+   boolean d();
+
+   gxs e();
+
+   gjo f();
+
+   default gjc g() {
+      return gjc.a;
    }
 }

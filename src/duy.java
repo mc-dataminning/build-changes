@@ -1,96 +1,22 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-
 public class duy {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<duw>> c = Maps.newHashMap();
-   private int d;
-   private int e;
-
-   private duy() {
-      this.c.put(' ', $$0 -> true);
-   }
-
-   public duy a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
-         }
-
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
-
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
-            }
-
-            this.b.add($$0);
-            return this;
-         }
-      } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
-      }
-   }
-
-   public static duy a() {
-      return new duy();
-   }
-
-   public duy a(char $$0, Predicate<duw> $$1) {
-      this.c.put($$0, $$1);
-      return this;
-   }
-
-   public dux b() {
-      return new dux(this.c());
-   }
-
-   private Predicate<duw>[][][] c() {
-      this.d();
-      Predicate<duw>[][][] $$0 = (Predicate<duw>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
-
-      for (Entry<Character, Predicate<duw>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
-
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+   public static ezc a(ezc $$0, jl $$1, double $$2) {
+      double $$3 = $$2 * (double)$$1.f().a();
+      double $$4 = Math.min($$3, 0.0);
+      double $$5 = Math.max($$3, 0.0);
+      switch ($$1) {
+         case e:
+            return new ezc($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
+         case f:
+            return new ezc($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
+         case a:
+            return new ezc($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
+         case b:
+         default:
+            return new ezc($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
+         case c:
+            return new ezc($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
+         case d:
+            return new ezc($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
       }
    }
 }

@@ -1,158 +1,74 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fiu extends avb<Map<String, List<fiu.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<fiu.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fiu.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(fiu.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(fiu.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(fiu.a::d)
-                  )
-                  .apply($$0, fiu.a::new)
-         )
-         .listOf()
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final ale c;
-   private final Object2BooleanFunction<String> d;
+public record fiu(int a, @Nullable fiu.a b, @Nullable xh c, @Nullable String d) {
+   private static final xh e = xh.c("chat.tag.system");
+   private static final xh f = xh.c("chat.tag.system_single_player");
+   private static final xh g = xh.c("chat.tag.not_secure");
+   private static final xh h = xh.c("chat.tag.modified");
+   private static final xh i = xh.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final fiu l = new fiu(13684944, null, e, "System");
+   private static final fiu m = new fiu(13684944, null, f, "System");
+   private static final fiu n = new fiu(13684944, null, g, "Not Secure");
+   private static final fiu o = new fiu(16733525, null, i, "Chat Error");
+
+   public static fiu a() {
+      return l;
+   }
+
+   public static fiu b() {
+      return m;
+   }
+
+   public static fiu c() {
+      return n;
+   }
+
+   public static fiu a(String $$0) {
+      xh $$1 = xh.b($$0).a(n.h);
+      xh $$2 = xh.i().b(h).b(xg.s).b($$1);
+      return new fiu(6316128, fiu.a.a, $$2, "Modified");
+   }
+
+   public static fiu d() {
+      return o;
+   }
+
+   public int e() {
+      return this.a;
+   }
+
    @Nullable
-   private Timer e;
+   public fiu.a f() {
+      return this.b;
+   }
+
    @Nullable
-   private fiu.b f;
-
-   public fiu(ale $$0, Object2BooleanFunction<String> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public xh g() {
+      return this.c;
    }
 
-   protected Map<String, List<fiu.a>> a(auv $$0, bog $$1) {
-      try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
-         }
-
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
-      }
+   @Nullable
+   public String h() {
+      return this.d;
    }
 
-   protected void a(Map<String, List<fiu.a>> $$0, auv $$1, bog $$2) {
-      List<fiu.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ad.b("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
-      } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
-         }
+   public static enum a {
+      a(alh.b("icon/chat_modified"), 9, 9);
 
-         if (this.f == null) {
-            this.f = new fiu.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
-         }
+      public final alh b;
+      public final int c;
+      public final int d;
 
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
-      }
-   }
-
-   @Override
-   public void close() {
-      this.a();
-   }
-
-   private void a() {
-      if (this.e != null) {
-         this.e.cancel();
-      }
-   }
-
-   private long a(List<fiu.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
-   }
-
-   private long a(List<fiu.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(final long a, final long b, final String c, final String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-   }
-
-   static class b extends TimerTask {
-      private final fip a = fip.Q();
-      private final List<fiu.a> b;
-      private final long c;
-      private final AtomicLong d;
-
-      public b(List<fiu.a> $$0, long $$1, long $$2) {
+      private a(final alh $$0, final int $$1, final int $$2) {
          this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      public fiu.b a(List<fiu.a> $$0, long $$1) {
-         this.cancel();
-         return new fiu.b($$0, this.d.get(), $$1);
-      }
-
-      @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
-
-         for (fiu.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> fmx.a(fip.Q().aA(), fmx.a.g, xe.a($$2.c, $$3), xe.a($$2.d, $$3)));
-                  return;
-               }
-            }
-         }
+      public void a(fkm $$0, int $$1, int $$2) {
+         $$0.a(gig::B, this.b, $$1, $$2, this.c, this.d);
       }
    }
 }

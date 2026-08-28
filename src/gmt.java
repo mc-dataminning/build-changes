@@ -1,22 +1,22 @@
-public class gmt extends gmh<ckn, gte> {
-   private static final ale a = ale.b("textures/entity/skeleton/bogged.png");
-   private static final ale b = ale.b("textures/entity/skeleton/bogged_overlay.png");
+public abstract class gmt<T extends cmf, S extends gwr, M extends gar<S>> extends goq<T, S, M> {
+   private static final alh a = alh.b("textures/entity/zombie/zombie.png");
 
-   public gmt(gno.a $$0) {
-      super($$0, gap.x, gap.y, new fwx($$0.a(gap.w)));
-      this.a(new gse<>(this, $$0.f(), gap.z, b));
+   protected gmt(gnz.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
+      super($$0, $$1, $$2, 0.5F);
+      this.a(new gsc<>(this, $$3, $$4, $$5, $$6, $$0.h()));
    }
 
-   public ale a(gte $$0) {
+   public alh a(S $$0) {
       return a;
    }
 
-   public gte a() {
-      return new gte();
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gk();
+      $$1.b = $$0.gz();
    }
 
-   public void a(ckn $$0, gte $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gs();
+   protected boolean b(S $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

@@ -1,27 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
+import io.netty.buffer.ByteBuf;
 
-public class lj extends lp {
-   public static final Vector3f a = eyw.a(16711680).k();
-   public static final lj b = new lj(a, 1.0F);
-   public static final MapCodec<lj> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayo.c.fieldOf("color").forGetter($$0x -> $$0x.h), g.fieldOf("scale").forGetter(lp::d)).apply($$0, lj::new)
-   );
-   public static final zc<wp, lj> d = zc.a(za.s, $$0 -> $$0.h, za.j, lp::d, lj::new);
-   private final Vector3f h;
+public class lj implements lo {
+   private final lp<lj> a;
+   private final int b;
 
-   public lj(Vector3f $$0, float $$1) {
-      super($$1);
-      this.h = $$0;
+   public static MapCodec<lj> a(lp<lj> $$0) {
+      return ays.j.xmap($$1 -> new lj($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
+   }
+
+   public static zf<? super ByteBuf, lj> b(lp<lj> $$0) {
+      return zd.g.a($$1 -> new lj($$0, $$1), $$0x -> $$0x.b);
+   }
+
+   private lj(lp<lj> $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public ln<lj> a() {
-      return lo.n;
+   public lp<lj> a() {
+      return this.a;
    }
 
-   public Vector3f b() {
-      return this.h;
+   public float b() {
+      return (float)axu.b(this.b) / 255.0F;
+   }
+
+   public float c() {
+      return (float)axu.c(this.b) / 255.0F;
+   }
+
+   public float d() {
+      return (float)axu.d(this.b) / 255.0F;
+   }
+
+   public float e() {
+      return (float)axu.a(this.b) / 255.0F;
+   }
+
+   public static lj a(lp<lj> $$0, int $$1) {
+      return new lj($$0, $$1);
+   }
+
+   public static lj a(lp<lj> $$0, float $$1, float $$2, float $$3) {
+      return a($$0, axu.a(1.0F, $$1, $$2, $$3));
    }
 }

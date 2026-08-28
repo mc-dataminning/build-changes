@@ -1,60 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class eey extends edu<egp> {
+public class eey extends eef<egp> {
    public eey(Codec<egp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(edw<egp> $$0) {
-      dfg $$1 = $$0.b();
-      jf $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+   public boolean a(eeh<egp> $$0) {
+      dfs $$1 = $$0.b();
+      jg $$2 = $$0.e();
+      dvd $$3 = $$1.a_($$2.e());
+      egp $$4 = $$0.f();
+      azr $$5 = $$0.d();
+      if (!$$3.a(awz.aM)) {
          return false;
       } else {
-         egp $$3 = $$0.f();
-         azn $$4 = $$0.d();
-         doi $$5 = doi.b();
-         int $$6 = $$3.f() + $$3.d();
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.I_() + 1 && $$6 + 1 <= $$1.an()) {
+            int $$7 = 0;
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               jg $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dvd $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.I_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
             }
 
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
+            return $$7 > 0;
+         } else {
+            return false;
          }
-
-         jf $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, dho.qU.n(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            jf $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jk.b)) {
-               $$1.a($$14, dho.qV.n().b(doh.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(dek $$0, jf $$1) {
-      dus $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dod) {
-         return true;
-      } else {
-         return !$$2.l() && (!$$2.a(dho.G) || !$$2.y().b()) ? false : jk.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
       }
    }
 }

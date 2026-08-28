@@ -1,18 +1,13 @@
-import java.util.function.Consumer;
+public class ig<T extends ex<T>> implements hu<T> {
+   private static final ig<? extends ex<?>> a = (ig<? extends ex<?>>)(new ig<>());
 
-public class ig<T extends ew<T>> implements ht<T> {
-   private final Consumer<hv<T>> a;
-   private final er b;
-
-   public ig(Consumer<hv<T>> $$0, er $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static <T extends ex<T>> hu<T> a() {
+      return (hu<T>)a;
    }
 
    @Override
-   public void execute(hu<T> $$0, hw $$1) {
-      int $$2 = $$1.c() + 1;
-      hw $$3 = new hw($$2, this.b, $$0.b($$2));
-      this.a.accept(hv.a($$0, $$3));
+   public void execute(hv<T> $$0, hx $$1) {
+      $$1.a();
+      $$1.b();
    }
 }

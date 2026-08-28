@@ -1,68 +1,69 @@
-import javax.annotation.Nullable;
+public class aga implements zo<acd> {
+   public static final zf<ws, aga> a = zo.a(aga::a, aga::new);
+   private final jp<awj> b;
+   private final awl c;
+   private final int d;
+   private final float e;
+   private final float f;
+   private final long g;
 
-public class aga implements zl<aca> {
-   public static final zc<wb, aga> a = zl.a(aga::a, aga::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   @Nullable
-   private final ale d;
-   @Nullable
-   private final awh e;
-
-   public aga(@Nullable ale $$0, @Nullable awh $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public aga(jp<awj> $$0, awl $$1, btz $$2, float $$3, float $$4, long $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.ar();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private aga(wb $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.e = $$0.b(awh.class);
-      } else {
-         this.e = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.d = $$0.q();
-      } else {
-         this.d = null;
-      }
+   private aga(ws $$0) {
+      this.b = awj.d.decode($$0);
+      this.c = $$0.b(awl.class);
+      this.d = $$0.l();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readLong();
    }
 
-   private void a(wb $$0) {
-      if (this.e != null) {
-         if (this.d != null) {
-            $$0.l(3);
-            $$0.a(this.e);
-            $$0.a(this.d);
-         } else {
-            $$0.l(1);
-            $$0.a(this.e);
-         }
-      } else if (this.d != null) {
-         $$0.l(2);
-         $$0.a(this.d);
-      } else {
-         $$0.l(0);
-      }
+   private void a(ws $$0) {
+      awj.d.encode($$0, this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.b(this.g);
    }
 
    @Override
-   public zn<aga> a() {
-      return agp.aV;
+   public zq<aga> a() {
+      return ags.aS;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public ale b() {
+   public jp<awj> b() {
+      return this.b;
+   }
+
+   public awl e() {
+      return this.c;
+   }
+
+   public int f() {
       return this.d;
    }
 
-   @Nullable
-   public awh e() {
+   public float g() {
       return this.e;
+   }
+
+   public float h() {
+      return this.f;
+   }
+
+   public long i() {
+      return this.g;
    }
 }

@@ -1,28 +1,20 @@
-import javax.annotation.Nullable;
+public record aby(alh b) implements zo<abx> {
+   public static final zf<we, aby> a = zo.a(aby::a, aby::new);
 
-public record aby(ale b, @Nullable byte[] c) implements zl<abx> {
-   public static final zc<wb, aby> a = zl.a(aby::a, aby::new);
-
-   private aby(wb $$0) {
-      this($$0.q(), $$0.c(aaa.b));
+   private aby(we $$0) {
+      this($$0.q());
    }
 
-   private void a(wb $$0) {
+   private void a(we $$0) {
       $$0.a(this.b);
-      $$0.a(this.c, aaa.b);
    }
 
    @Override
-   public zn<aby> a() {
-      return abw.b;
+   public zq<aby> a() {
+      return abz.a;
    }
 
    public void a(abx $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public byte[] e() {
-      return this.c;
    }
 }

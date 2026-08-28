@@ -1,31 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record ajx(long b) implements zo<ajw> {
+   public static final zf<we, ajx> a = zo.a(ajx::a, ajx::new);
 
-public class ajx implements zl<ajw> {
-   public static final zc<ByteBuf, ajx> a = zl.a(ajx::a, ajx::new);
-   private final long b;
-
-   public ajx(long $$0) {
-      this.b = $$0;
+   private ajx(we $$0) {
+      this($$0.readLong());
    }
 
-   private ajx(ByteBuf $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(ByteBuf $$0) {
-      $$0.writeLong(this.b);
+   private void a(we $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zn<ajx> a() {
-      return ajv.b;
+   public zq<ajx> a() {
+      return ajy.a;
    }
 
    public void a(ajw $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

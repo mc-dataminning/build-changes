@@ -1,96 +1,130 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dis extends dna {
+public class dis extends dlt {
    public static final MapCodec<dis> a = b(dis::new);
+   public static final dvx b = dlt.aF;
+   @Nullable
+   private dvi c;
+   @Nullable
+   private dvi d;
+   @Nullable
+   private dvi e;
+   @Nullable
+   private dvi f;
+   private static final Predicate<dvd> g = $$0 -> $$0 != null && ($$0.a(dia.ee) || $$0.a(dia.ef));
 
    @Override
-   public MapCodec<dis> a() {
+   public MapCodec<? extends dis> a() {
       return a;
    }
 
-   protected dis(dur.d $$0) {
-      super(0.3125F, $$0);
-      this.l(
-         this.F
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-            .b(g, Boolean.valueOf(false))
-      );
+   protected dis(dvc.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jl.c));
    }
 
    @Override
-   public dus a(czn $$0) {
-      return a($$0.q(), $$0.a(), this.n());
+   protected void b(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
+      }
    }
 
-   public static dus a(ddo $$0, jf $$1, dus $$2) {
-      dus $$3 = $$0.a_($$1.e());
-      dus $$4 = $$0.a_($$1.d());
-      dus $$5 = $$0.a_($$1.f());
-      dus $$6 = $$0.a_($$1.i());
-      dus $$7 = $$0.a_($$1.g());
-      dus $$8 = $$0.a_($$1.h());
-      dhm $$9 = $$2.b();
-      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dho.kv) || $$3.a(dho.fz)))
-         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dho.kv)))
-         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dho.kv)))
-         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dho.kv)))
-         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dho.kv)))
-         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dho.kv)));
+   public boolean a(dey $$0, jg $$1) {
+      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
    }
 
-   @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private void a(dev $$0, jg $$1) {
+      dvi.b $$2 = this.q().a($$0, $$1);
+      if ($$2 != null) {
+         chk $$3 = bug.aS.a($$0, buf.k);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
       } else {
-         boolean $$6 = $$2.a(this) || $$2.a(dho.kv) || $$1 == jk.a && $$2.a(dho.fz);
-         return $$0.b(h.get($$1), Boolean.valueOf($$6));
-      }
-   }
-
-   @Override
-   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      dus $$3 = $$1.a_($$2.e());
-      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
-
-      for (jk $$5 : jk.c.a) {
-         jf $$6 = $$2.a($$5);
-         dus $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
-
-            dus $$8 = $$1.a_($$6.e());
-            if ($$8.a(this) || $$8.a(dho.fz)) {
-               return true;
+         dvi.b $$4 = this.y().a($$0, $$1);
+         if ($$4 != null) {
+            cgy $$5 = bug.af.a($$0, buf.k);
+            if ($$5 != null) {
+               $$5.y(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
             }
          }
       }
+   }
 
-      return $$3.a(this) || $$3.a(dho.fz);
+   private static void a(dev $$0, dvi.b $$1, btz $$2, jg $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (arn $$4 : $$0.a(arn.class, $$2.cS().g(5.0))) {
+         an.o.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(dev $$0, dvi.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dvh $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dia.a.m(), 2);
+            $$0.c(2001, $$4.d(), dhy.j($$4.a()));
+         }
+      }
+   }
+
+   public static void b(dev $$0, dvi.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dvh $$4 = $$1.a($$2, $$3, 0);
+            $$0.b($$4.d(), dia.a);
+         }
+      }
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   public dvd a(czm $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   protected boolean a(dus $$0, eri $$1) {
-      return false;
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(b);
+   }
+
+   private dvi b() {
+      if (this.c == null) {
+         this.c = dvj.a().a(" ", "#", "#").a('#', dvh.a(dvm.a(dia.dP))).b();
+      }
+
+      return this.c;
+   }
+
+   private dvi q() {
+      if (this.d == null) {
+         this.d = dvj.a().a("^", "#", "#").a('^', dvh.a(g)).a('#', dvh.a(dvm.a(dia.dP))).b();
+      }
+
+      return this.d;
+   }
+
+   private dvi r() {
+      if (this.e == null) {
+         this.e = dvj.a().a("~ ~", "###", "~#~").a('#', dvh.a(dvm.a(dia.ci))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.e;
+   }
+
+   private dvi y() {
+      if (this.f == null) {
+         this.f = dvj.a().a("~^~", "###", "~#~").a('^', dvh.a(g)).a('#', dvh.a(dvm.a(dia.ci))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.f;
    }
 }

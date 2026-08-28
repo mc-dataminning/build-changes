@@ -1,54 +1,19 @@
-import java.util.List;
-
 public class rv {
-   public static void a(qu<edg<?, ?>> $$0) {
-      rs.a($$0);
-      rt.a($$0);
-      ru.a($$0);
-      rw.a($$0);
-      rx.a($$0);
-      ry.a($$0);
-      rz.a($$0);
-      sa.a($$0);
-      sb.a($$0);
-   }
+   public static final alg<edr<?, ?>> a = ry.a("seagrass_short");
+   public static final alg<edr<?, ?>> b = ry.a("seagrass_slightly_less_short");
+   public static final alg<edr<?, ?>> c = ry.a("seagrass_mid");
+   public static final alg<edr<?, ?>> d = ry.a("seagrass_tall");
+   public static final alg<edr<?, ?>> e = ry.a("sea_pickle");
+   public static final alg<edr<?, ?>> f = ry.a("kelp");
+   public static final alg<edr<?, ?>> g = ry.a("warm_ocean_vegetation");
 
-   private static ebv a(List<dhm> $$0) {
-      ebv $$1;
-      if (!$$0.isEmpty()) {
-         $$1 = ebv.a(ebv.c, ebv.a(jk.a.q(), $$0));
-      } else {
-         $$1 = ebv.c;
-      }
-
-      return $$1;
-   }
-
-   public static egl a(int $$0, jo<ekk> $$1) {
-      return new egl($$0, 7, 3, $$1);
-   }
-
-   public static <FC extends efy, F extends edu<FC>> egl a(F $$0, FC $$1, List<dhm> $$2, int $$3) {
-      return a($$3, sk.a($$0, $$1, a($$2)));
-   }
-
-   public static <FC extends efy, F extends edu<FC>> egl a(F $$0, FC $$1, List<dhm> $$2) {
-      return a($$0, $$1, $$2, 96);
-   }
-
-   public static <FC extends efy, F extends edu<FC>> egl a(F $$0, FC $$1) {
-      return a($$0, $$1, List.of(), 96);
-   }
-
-   public static ald<edg<?, ?>> a(String $$0) {
-      return ald.a(lw.aK, ale.b($$0));
-   }
-
-   public static void a(qu<edg<?, ?>> $$0, ald<edg<?, ?>> $$1, edu<egf> $$2) {
-      a($$0, $$1, $$2, efy.m);
-   }
-
-   public static <FC extends efy, F extends edu<FC>> void a(qu<edg<?, ?>> $$0, ald<edg<?, ?>> $$1, F $$2, FC $$3) {
-      $$0.a($$1, new edg($$2, $$3));
+   public static void a(qx<edr<?, ?>> $$0) {
+      ry.a($$0, a, eef.N, new egt(0.3F));
+      ry.a($$0, b, eef.N, new egt(0.4F));
+      ry.a($$0, c, eef.N, new egt(0.6F));
+      ry.a($$0, d, eef.N, new egt(0.8F));
+      ry.a($$0, e, eef.S, new ege(20));
+      ry.a($$0, f, eef.O);
+      ry.a($$0, g, eef.ah, new ehc(jt.a(sn.a(eef.P, egj.m), sn.a(eef.R, egj.m), sn.a(eef.Q, egj.m))));
    }
 }

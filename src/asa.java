@@ -1,47 +1,85 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public record asa<T>(T a, Optional<T> b) {
-   public static <T> Codec<asa<T>> a(Codec<T> $$0) {
-      Codec<asa<T>> $$1 = RecordCodecBuilder.create(
-         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(asa::a), $$0.optionalFieldOf("filtered").forGetter(asa::b)).apply($$1x, asa::new)
-      );
-      Codec<asa<T>> $$2 = $$0.xmap(asa::a, asa::a);
-      return Codec.withAlternative($$1, $$2);
+public class asa implements arw {
+   private final ary a;
+   private final Long2ObjectOpenHashMap<dya> b = new Long2ObjectOpenHashMap();
+   private deb c = new deb(0, 0);
+   private final int d;
+   private final int e;
+   private final int f;
+   private boolean g;
+
+   private asa(ary $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public static <B extends ByteBuf, T> zc<B, asa<T>> a(zc<B, T> $$0) {
-      return zc.a($$0, asa::a, $$0.a(za::a), asa::b, asa::new);
+   public static asa b(int $$0) {
+      return $$0 > 0 ? c($$0 + 1) : c();
    }
 
-   public static <T> asa<T> a(T $$0) {
-      return new asa<>($$0, Optional.empty());
+   public static asa c(int $$0) {
+      ary $$1 = ary.c($$0);
+      int $$2 = arw.a($$0);
+      int $$3 = $$0 + aqr.a;
+      int $$4 = arw.a($$3);
+      return new asa($$1, $$2, $$3, $$4);
    }
 
-   public static asa<String> a(asb $$0) {
-      return new asa<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
+   public static asa c() {
+      return new asa(ary.c(), 0, 0, 0);
    }
 
-   public T a(boolean $$0) {
-      return $$0 ? this.b.orElse(this.a) : this.a;
-   }
-
-   public <U> asa<U> a(Function<T, U> $$0) {
-      return new asa<>($$0.apply(this.a), this.b.map($$0));
-   }
-
-   public <U> Optional<asa<U>> b(Function<T, Optional<U>> $$0) {
-      Optional<U> $$1 = $$0.apply(this.a);
-      if ($$1.isEmpty()) {
-         return Optional.empty();
-      } else if (this.b.isPresent()) {
-         Optional<U> $$2 = $$0.apply(this.b.get());
-         return $$2.isEmpty() ? Optional.empty() : Optional.of(new asa<>($$1.get(), $$2));
-      } else {
-         return Optional.of(new asa<>($$1.get(), Optional.empty()));
+   @Override
+   public void a(deb $$0) {
+      if (this.g) {
+         this.a.a($$0);
+         this.c = $$0;
       }
+   }
+
+   @Override
+   public void a(deb $$0, @Nullable dya $$1) {
+      if (this.g) {
+         this.a.a($$0, $$1);
+         if ($$1 == null) {
+            this.b.remove($$0.a());
+         } else {
+            this.b.put($$0.a(), $$1);
+         }
+      }
+   }
+
+   @Override
+   public void a() {
+      this.g = true;
+      this.b.clear();
+      this.a.a();
+   }
+
+   @Override
+   public void b() {
+      this.g = false;
+      this.a.b();
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.a.d();
+   }
+
+   @Nullable
+   public dya a(int $$0, int $$1) {
+      return (dya)this.b.get(deb.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
    }
 }

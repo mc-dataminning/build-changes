@@ -1,5 +1,4 @@
-public class gvv extends guo {
-   public chd.b a = chd.b.g;
-   public int b = -1;
-   public int c = -1;
+public class gvv extends guc {
+   public float a;
+   public float b;
 }

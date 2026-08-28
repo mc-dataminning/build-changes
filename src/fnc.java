@@ -1,16 +1,9 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fnc implements fbh {
-   @Nullable
-   @Override
-   public fbg a(int $$0) {
-      return fnm.b;
-   }
+public interface fnc {
+   xh a();
 
-   @Override
-   public IntSet a() {
-      return IntSets.EMPTY_SET;
-   }
+   void a(Consumer<fkx> var1);
+
+   void a(fph var1);
 }

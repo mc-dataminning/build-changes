@@ -1,46 +1,42 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class bzd {
-   public static bwg<buv> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return bzs.a(
-         (Function<bzs.b<buv>, ? extends App<bzs.c<buv>, bzv<buv>>>)($$3 -> $$3.group($$3.c(cdq.o), $$3.c(cdq.m), $$3.a(cdq.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.ds()).a(axb.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           ezb $$8 = ezb.a($$6);
-                           jf $$9 = $$6.ds();
-                           jf.a $$10 = new jf.a();
+   private static final int a = 200;
 
-                           label45:
-                           for (jf $$11 : jf.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, jk.a)).b($$5x, $$11, $$8).c()) {
-                                 for (jk $$12 : jk.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jk.a)).a(dho.G)) {
-                                       $$5.a(new bwi($$11));
-                                       $$4.a(new cdt(new bwi($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
+   public static <E extends bux> bwp<E> a(BiConsumer<E, buv> $$0) {
+      return a($$0x -> false, $$0, true);
+   }
 
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        }
-                     }
-               ))
+   public static <E extends bux> bwp<E> a(Predicate<buv> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends bux> bwp<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends bux> bwp<E> a(Predicate<buv> $$0, BiConsumer<E, buv> $$1, boolean $$2) {
+      return cab.a(
+         (Function<cab.b<E>, ? extends App<cab.c<E>, cae<E>>>)($$3 -> $$3.group($$3.b(cdz.o), $$3.a(cdz.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  buv $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bM() && $$9.dX() == $$7.dX() && !$$0.test($$9)) {
+                     return true;
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
       );
+   }
+
+   private static boolean a(buv $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dX().aa() - $$1.get() > 200L;
    }
 }

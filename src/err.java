@@ -1,56 +1,79 @@
-public record err(arj d, eyw e, eyw f, float g, float h, boolean i, err.a j) {
-   public static final err.a a = $$0 -> {
-   };
-   public static final err.a b = err::a;
-   public static final err.a c = err::b;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   public err(arj $$0, eyw $$1, eyw $$2, float $$3, float $$4, err.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, false, $$5);
+public abstract class err {
+   protected erx a;
+   protected bux b;
+   protected final Int2ObjectMap<erq> c = new Int2ObjectOpenHashMap();
+   protected int d;
+   protected int e;
+   protected int f;
+   protected boolean g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
+
+   public void a(dfi $$0, bux $$1) {
+      this.a = new erx($$0, $$1);
+      this.b = $$1;
+      this.c.clear();
+      this.d = azj.d($$1.ds() + 1.0F);
+      this.e = azj.d($$1.dt() + 1.0F);
+      this.f = azj.d($$1.ds() + 1.0F);
    }
 
-   public err(arj $$0, btr $$1, err.a $$2) {
-      this($$0, a($$0, $$1), eyw.c, 0.0F, 0.0F, false, $$2);
+   public void b() {
+      this.a = null;
+      this.b = null;
    }
 
-   private static void a(btr $$0) {
-      if ($$0 instanceof ark $$1) {
-         $$1.c.b(new adn(1032, jf.c, 0, false));
-      }
+   protected erq b(jg $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
    }
 
-   private static void b(btr $$0) {
-      $$0.f(jf.a((jy)$$0.dq()));
+   protected erq c(int $$0, int $$1, int $$2) {
+      return (erq)this.c.computeIfAbsent(erq.b($$0, $$1, $$2), $$3 -> new erq($$0, $$1, $$2));
    }
 
-   public static err a(arj $$0, btr $$1, err.a $$2) {
-      return new err($$0, a($$0, $$1), eyw.c, 0.0F, 0.0F, true, $$2);
+   public abstract erq a();
+
+   public abstract erz a(double var1, double var3, double var5);
+
+   protected erz b(double $$0, double $$1, double $$2) {
+      return new erz(this.c(azj.a($$0), azj.a($$1), azj.a($$2)));
    }
 
-   private static eyw a(arj $$0, btr $$1) {
-      return $$1.a($$0, $$0.W()).c();
+   public abstract int a(erq[] var1, erq var2);
+
+   public abstract erv a(erx var1, int var2, int var3, int var4, bux var5);
+
+   public abstract erv a(erx var1, int var2, int var3, int var4);
+
+   public erv a(bux $$0, jg $$1) {
+      return this.a(new erx($$0.dX(), $$0), $$1.u(), $$1.v(), $$1.w());
    }
 
-   public err a(float $$0, float $$1) {
-      return new err(this.a(), this.b(), this.c(), $$0, $$1, this.f(), this.g());
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   public arj a() {
-      return this.d;
+   public void b(boolean $$0) {
+      this.h = $$0;
    }
 
-   public eyw b() {
-      return this.e;
+   public void c(boolean $$0) {
+      this.i = $$0;
    }
 
-   public eyw c() {
-      return this.f;
+   public void d(boolean $$0) {
+      this.j = $$0;
    }
 
-   public float d() {
+   public boolean d() {
       return this.g;
    }
 
-   public float e() {
+   public boolean e() {
       return this.h;
    }
 
@@ -58,19 +81,11 @@ public record err(arj d, eyw e, eyw f, float g, float h, boolean i, err.a j) {
       return this.i;
    }
 
-   public err.a g() {
+   public boolean g() {
       return this.j;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void onTransition(btr var1);
-
-      default err.a then(err.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
-      }
+   public static boolean a(dvd $$0) {
+      return $$0.a(awz.aL) || $$0.a(dia.H) || $$0.a(dia.kJ) || dim.h($$0) || $$0.a(dia.fv);
    }
 }

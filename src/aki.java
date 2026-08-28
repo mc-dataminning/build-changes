@@ -1,20 +1,8 @@
-public interface aki<T> {
-   zc<? super wp, T> codec();
+import io.netty.buffer.ByteBuf;
 
-   default akh<T> a(int $$0) {
-      return new akh<>($$0, this);
-   }
-
-   T copy(T var1);
-
-   static <T> aki<T> a(zc<? super wp, T> $$0) {
-      return () -> $$0;
-   }
-
-   public interface a<T> extends aki<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
-      }
-   }
+public class aki {
+   public static final wp.a<akf, ByteBuf> a = zt.a(wc.c, $$0 -> $$0.a(akh.b, akg.b).a(ajy.b, aka.a));
+   public static final wp<akf> b = a.a($$0 -> $$0);
+   public static final wp.a<akc, we> c = zt.b(wc.c, $$0 -> $$0.a(akh.a, akd.a).a(ajy.a, ajx.a));
+   public static final wp<akc> d = c.a(we::new);
 }

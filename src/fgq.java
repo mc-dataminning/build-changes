@@ -1,135 +1,167 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fgq extends hdp {
-   static final Logger a = LogUtils.getLogger();
-   private static final xe b = xe.c("mco.configure.world.subscription.title");
-   private static final xe c = xe.c("mco.configure.world.subscription.start");
-   private static final xe B = xe.c("mco.configure.world.subscription.timeleft");
-   private static final xe C = xe.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final xe D = xe.c("mco.configure.world.subscription.expired");
-   private static final xe E = xe.c("mco.configure.world.subscription.less_than_a_day");
-   private static final xe F = xe.c("mco.configure.world.subscription.unknown");
-   private static final xe G = xe.c("mco.configure.world.subscription.recurring.info");
-   private final fqh H;
-   final fep I;
-   final fqh J;
-   private xe K = F;
-   private xe L = F;
+public class fgq extends hee {
+   private static final alh a = alh.b("icon/unseen_notification");
+   private static final alh b = alh.b("icon/news");
+   private static final alh c = alh.b("icon/invite");
+   private static final alh B = alh.b("icon/trial_available");
+   private final CompletableFuture<Boolean> C = fed.a().thenApply($$0 -> $$0.a() == fed.b.a);
    @Nullable
-   private ffa.a M;
+   private fhg.c D;
+   @Nullable
+   private fgq.a E;
+   private volatile int F;
+   private static boolean G;
+   private static boolean H;
+   private static boolean I;
+   private final fgq.a J = new fgq.a() {
+      @Override
+      public fhg.c a(ffx $$0) {
+         fhg.c $$1 = $$0.a.a();
+         fgq.this.a($$0, $$1);
+         fgq.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public fgq(fqh $$0, fep $$1, fqh $$2) {
-      super(fig.a);
-      this.H = $$0;
-      this.I = $$1;
-      this.J = $$2;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final fgq.a K = new fgq.a() {
+      @Override
+      public fhg.c a(ffx $$0) {
+         fhg.c $$1 = $$0.a.a();
+         fgq.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public fgq() {
+      super(fir.a);
    }
 
    @Override
    public void aS_() {
-      this.a(this.I.a);
-      this.c(fko.a(xe.c("mco.configure.world.subscription.extend"), $$0 -> fpe.a(this, ayb.a(this.I.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
-      if (this.I.j) {
-         this.c(
-            fko.a(xe.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fgj.b(this, xe.c("mco.configure.world.delete.question.line1"), $$0x -> this.D())))
-               .a(this.n / 2 - 100, g(10), 200, 20)
-               .a()
-         );
-      } else if (fdt.b() && this.I.s != null) {
-         this.c(new fky(this.n / 2 - 100, g(8), 200, 46, xe.a("mco.snapshot.subscription.info", this.I.s), this.p));
+      if (this.D != null) {
+         this.D.a();
+      }
+   }
+
+   @Override
+   public void aK_() {
+      super.aK_();
+      this.m.bd().b.a();
+   }
+
+   @Nullable
+   private fgq.a D() {
+      boolean $$0 = this.F() && this.C.getNow(false);
+      if (!$$0) {
+         return null;
       } else {
-         this.c(new fky(this.n / 2 - 100, g(8), 200, 46, G, this.p));
-      }
-
-      this.c(fko.a(xd.k, $$0 -> this.d()).a(this.n / 2 - 100, g(12), 200, 20).a());
-   }
-
-   @Override
-   public xe i() {
-      return xd.b(b, c, this.L, B, this.K);
-   }
-
-   private void D() {
-      (new Thread("Realms-delete-realm") {
-         @Override
-         public void run() {
-            try {
-               fdy $$0 = fdy.a();
-               $$0.i(fgq.this.I.a);
-            } catch (ffj var2) {
-               fgq.a.error("Couldn't delete world", var2);
-            }
-
-            fgq.this.m.execute(() -> fgq.this.m.a(fgq.this.J));
-         }
-      }).start();
-      this.m.a(this);
-   }
-
-   private void a(long $$0) {
-      fdy $$1 = fdy.a();
-
-      try {
-         ffa $$2 = $$1.h($$0);
-         this.K = this.a($$2.b);
-         this.L = b($$2.a);
-         this.M = $$2.c;
-      } catch (ffj var5) {
-         a.error("Couldn't get subscription", var5);
-         this.m.a(new fgb(var5, this.H));
+         return this.E() ? this.J : this.K;
       }
    }
 
-   private static xe b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return xe.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
-   }
-
    @Override
-   public void d() {
-      this.m.a(this.H);
-   }
-
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.n / 2 - 100;
-      $$0.a(this.p, b, this.n / 2, 17, -1);
-      $$0.a(this.p, c, $$4, g(0), -6250336, false);
-      $$0.a(this.p, this.L, $$4, g(1), -1, false);
-      if (this.M == ffa.a.a) {
-         $$0.a(this.p, B, $$4, g(3), -6250336, false);
-      } else if (this.M == ffa.a.b) {
-         $$0.a(this.p, C, $$4, g(3), -6250336, false);
-      }
-
-      $$0.a(this.p, this.K, $$4, g(4), -1, false);
-   }
-
-   private xe a(int $$0) {
-      if ($$0 < 0 && this.I.j) {
-         return D;
-      } else if ($$0 <= 1) {
-         return E;
-      } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return xe.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return xe.a("mco.configure.world.subscription.remaining.months", $$1);
+   public void e() {
+      fgq.a $$0 = this.D();
+      if (!Objects.equals(this.E, $$0)) {
+         this.E = $$0;
+         if (this.E != null) {
+            this.D = this.E.a(this.m.bd());
          } else {
-            return $$4 ? xe.a("mco.configure.world.subscription.remaining.days", $$2) : xe.i();
+            this.D = null;
          }
       }
+
+      if (this.D != null) {
+         this.D.b();
+      }
+   }
+
+   private boolean E() {
+      return this.m.n.V().c();
+   }
+
+   private boolean F() {
+      return this.m.z instanceof fqu;
+   }
+
+   @Override
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.C.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(fkm $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(fkm $$0) {
+      int $$1 = this.F;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      int $$4 = this.n / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (I) {
+         $$0.a(gig::B, a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
+      }
+
+      if (this.E != null && this.E.a()) {
+         if (H) {
+            $$0.a(gig::B, b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if ($$1 != 0) {
+            $$0.a(gig::B, c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
+         }
+
+         if (G) {
+            $$0.a(gig::B, B, $$6 - 10, $$5 + 4, 8, 8);
+         }
+      }
+   }
+
+   void a(ffx $$0, fhg.c $$1) {
+      $$1.a($$0.d, $$0x -> this.F = $$0x);
+      $$1.a($$0.e, $$0x -> G = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.h.a($$1x);
+         H = $$0.h.a();
+      });
+   }
+
+   void b(ffx $$0, fhg.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         I = false;
+
+         for (fez $$1x : $$0x) {
+            if (!$$1x.a()) {
+               I = true;
+               break;
+            }
+         }
+      });
+   }
+
+   interface a {
+      fhg.c a(ffx var1);
+
+      boolean a();
    }
 }

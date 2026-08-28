@@ -1,3 +1,8 @@
-public class gte extends gvl {
-   public boolean a;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gte {
 }

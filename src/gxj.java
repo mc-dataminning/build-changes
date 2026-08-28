@@ -1,44 +1,59 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-@FunctionalInterface
-public interface gxj {
-   Logger a = LogUtils.getLogger();
+public class gxj implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final gxf f = new gxf(16, 16, false);
 
-   static gxj create(Collection<atu<?>> $$0) {
-      return ($$1, $$2) -> {
-         auy $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
+   public gxj() {
+      fct $$0 = this.f.f();
+
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1291911168);
+            } else {
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, axu.c($$3, -1));
+            }
          }
+      }
 
-         fci $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = fci.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         gys $$11 = $$3.a(gys.a).orElse(gys.e);
-         gyu $$12 = $$11.a($$7.a(), $$7.b());
-         if (azf.c($$7.a(), $$12.a()) && azf.c($$7.b(), $$12.b())) {
-            return new gxa($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+      RenderSystem.activeTexture(33985);
+      this.f.d();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
-   @Nullable
-   gxa loadSprite(ale var1, aut var2);
+   @Override
+   public void close() {
+      this.f.close();
+   }
+
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f.a(), 16);
+   }
+
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
+   }
+
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
+   }
 }

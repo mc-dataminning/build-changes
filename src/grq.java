@@ -1,24 +1,20 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class grq<S extends gva, M extends fxz<S>> extends gsm<S, M> {
+   private final gox a;
 
-public class grq extends gsb<guf, fxz> {
-   private static final Map<cil, ale> a = ad.a(Maps.newEnumMap(cil.class), $$0 -> {
-      $$0.put(cil.a, null);
-      $$0.put(cil.b, ale.b("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(cil.c, ale.b("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(cil.d, ale.b("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(cil.e, ale.b("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public grq(gpk<guf, fxz> $$0) {
+   public grq(gpv<S, M> $$0, gox $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, guf $$3, float $$4, float $$5) {
-      ale $$6 = a.get($$3.h);
-      if ($$6 != null && !$$3.u) {
-         fdm $$7 = $$1.getBuffer(ghv.i($$6));
-         this.d().a($$0, $$7, $$2, gop.a($$3, 0.0F));
+   public void a(fdt $$0, ghw $$1, int $$2, S $$3, float $$4, float $$5) {
+      gzu $$6 = $$3.b();
+      if ($$6 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.4F, -0.4F);
+         $$0.a(a.b.rotationDegrees(180.0F));
+         cvx $$7 = $$3.aX_();
+         this.a.a($$7, cvv.h, false, $$0, $$1, $$2, gxj.d, $$6);
+         $$0.b();
       }
    }
 }

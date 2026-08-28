@@ -1,102 +1,148 @@
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class dju extends dhv {
-   public static final MapCodec<dju> a = b(dju::new);
-   public static final dvq<dvo> b = dvi.ae;
+public abstract class dju extends dhy implements doz {
+   public static final dvu a = dnl.b;
+   public static final dvu b = dnl.c;
+   public static final dvu c = dnl.d;
+   public static final dvu d = dnl.e;
+   public static final dvu e = dvt.C;
+   protected static final Map<jl, dvu> f = dnl.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ad.a());
+   protected final fab[] g;
+   protected final fab[] h;
+   private final Object2IntMap<dvd> i = new Object2IntOpenHashMap();
 
-   @Override
-   public MapCodec<? extends dju> a() {
-      return a;
-   }
+   protected dju(float $$0, float $$1, float $$2, float $$3, float $$4, dvc.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.F.a().iterator();
 
-   public dju(dur.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, dvo.b));
-   }
-
-   @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      dvo $$6 = $$0.c(b);
-      if ($$1.o() != jk.a.b || $$6 == dvo.b != ($$1 == jk.b) || $$2.a(this) && $$2.c(b) != $$6) {
-         return $$6 == dvo.b && $$1 == jk.a && !$$0.a($$3, $$4) ? dho.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return dho.a.n();
+      while (var7.hasNext()) {
+         dvd $$6 = (dvd)var7.next();
+         this.h($$6);
       }
    }
 
-   @Nullable
    @Override
-   public dus a(czn $$0) {
-      jf $$1 = $$0.a();
-      dej $$2 = $$0.q();
-      return $$1.v() < $$2.an() && $$2.a_($$1.d()).a($$0) ? super.a($$0) : null;
-   }
+   protected abstract MapCodec<? extends dju> a();
 
-   @Override
-   public void a(dej $$0, jf $$1, dus $$2, bun $$3, cvs $$4) {
-      jf $$5 = $$1.d();
-      $$0.a($$5, c($$0, $$5, this.n().b(b, dvo.a)), 3);
-   }
+   protected fab[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      fab $$9 = dhy.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      fab $$10 = dhy.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      fab $$11 = dhy.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      fab $$12 = dhy.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      fab $$13 = dhy.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      fab $$14 = ezy.a($$10, $$13);
+      fab $$15 = ezy.a($$11, $$12);
+      fab[] $$16 = new fab[]{
+         ezy.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         ezy.a($$11, $$10),
+         ezy.a($$12, $$10),
+         ezy.a($$15, $$10),
+         $$13,
+         ezy.a($$11, $$13),
+         ezy.a($$12, $$13),
+         ezy.a($$15, $$13),
+         $$14,
+         ezy.a($$11, $$14),
+         ezy.a($$12, $$14),
+         ezy.a($$15, $$14)
+      };
 
-   @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      if ($$0.c(b) != dvo.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         dus $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(b) == dvo.b;
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = ezy.a($$9, $$16[$$17]);
       }
-   }
 
-   public static void a(dek $$0, dus $$1, jf $$2, int $$3) {
-      jf $$4 = $$2.d();
-      $$0.a($$2, c($$0, $$2, $$1.b(b, dvo.b)), $$3);
-      $$0.a($$4, c($$0, $$4, $$1.b(b, dvo.a)), $$3);
-   }
-
-   public static dus c(dem $$0, jf $$1, dus $$2) {
-      return $$2.b(dvi.C) ? $$2.b(dvi.C, Boolean.valueOf($$0.z($$1))) : $$2;
+      return $$16;
    }
 
    @Override
-   public dus a(dej $$0, jf $$1, dus $$2, cnx $$3) {
-      if (!$$0.B) {
-         if ($$3.f()) {
-            b($$0, $$1, $$2, $$3);
-         } else {
-            a($$2, $$0, $$1, null, $$3, $$3.eW());
+   protected boolean e_(dvd $$0) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return this.h[this.h($$0)];
+   }
+
+   @Override
+   protected fab b(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return this.g[this.h($$0)];
+   }
+
+   private static int a(jl $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int h(dvd $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(jl.c);
          }
-      }
 
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(dej $$0, cnx $$1, jf $$2, dus $$3, @Nullable drv $$4, cvs $$5) {
-      super.a($$0, $$1, $$2, dho.a.n(), $$4, $$5);
-   }
-
-   protected static void b(dej $$0, jf $$1, dus $$2, cnx $$3) {
-      dvo $$4 = $$2.c(b);
-      if ($$4 == dvo.a) {
-         jf $$5 = $$1.e();
-         dus $$6 = $$0.a_($$5);
-         if ($$6.a($$2.b()) && $$6.c(b) == dvo.b) {
-            dus $$7 = $$6.y().b(equ.c) ? dho.G.n() : dho.a.n();
-            $$0.a($$5, $$7, 35);
-            $$0.a($$3, 2001, $$5, dhm.j($$6));
+         if ($$0x.c(b)) {
+            $$1 |= a(jl.f);
          }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(jl.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(jl.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   protected ere b_(dvd $$0) {
+      return $$0.c(e) ? erf.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dvd $$0, ert $$1) {
+      return false;
+   }
+
+   @Override
+   protected dvd a(dvd $$0, dol $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
+         case d:
+            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
+         case b:
+            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
+         default:
+            return $$0;
       }
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected long a(dus $$0, jf $$1) {
-      return azf.b($$1.u(), $$1.c($$0.c(b) == dvo.b ? 0 : 1).v(), $$1.w());
+   protected dvd a(dvd $$0, dmu $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
+         case c:
+            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

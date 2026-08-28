@@ -1,59 +1,87 @@
+import com.google.common.hash.Hashing;
+import com.google.common.hash.HashingOutputStream;
+import com.google.gson.JsonElement;
+import com.google.gson.stream.JsonWriter;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.ToIntFunction;
+import org.slf4j.Logger;
 
-public class me {
-   private final Path a;
+public interface me {
+   ToIntFunction<String> a = ad.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.put("type", 0);
+      $$0.put("parent", 1);
+      $$0.defaultReturnValue(2);
+   });
+   Comparator<String> b = Comparator.comparingInt(a).thenComparing($$0 -> (String)$$0);
+   Logger c = LogUtils.getLogger();
 
-   public me(Path $$0) {
-      this.a = $$0;
+   CompletableFuture<?> a(mc var1);
+
+   String a();
+
+   static <T> CompletableFuture<?> a(mc $$0, Codec<T> $$1, mg.a $$2, Map<alh, T> $$3) {
+      return CompletableFuture.allOf(
+         $$3.entrySet().stream().map($$3x -> a($$0, $$1, $$3x.getValue(), $$2.a((alh)$$3x.getKey()))).toArray(CompletableFuture[]::new)
+      );
    }
 
-   public Path a() {
-      return this.a;
+   static <T> CompletableFuture<?> a(mc $$0, jr.a $$1, Codec<T> $$2, T $$3, Path $$4) {
+      alf<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
+      return a($$0, $$5, $$2, $$3, $$4);
    }
 
-   public Path a(me.b $$0) {
-      return this.a().resolve($$0.d);
+   static <T> CompletableFuture<?> a(mc $$0, Codec<T> $$1, T $$2, Path $$3) {
+      return a($$0, JsonOps.INSTANCE, $$1, $$2, $$3);
    }
 
-   public me.a a(me.b $$0, String $$1) {
-      return new me.a(this, $$0, $$1);
+   private static <T> CompletableFuture<?> a(mc $$0, DynamicOps<JsonElement> $$1, Codec<T> $$2, T $$3, Path $$4) {
+      JsonElement $$5 = (JsonElement)$$2.encodeStart($$1, $$3).getOrThrow();
+      return a($$0, $$5, $$4);
    }
 
-   public me.a a(ald<? extends kb<?>> $$0) {
-      return this.a(me.b.a, lw.c($$0));
+   static CompletableFuture<?> a(mc $$0, JsonElement $$1, Path $$2) {
+      return CompletableFuture.runAsync(() -> {
+         try {
+            ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
+            HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
+            JsonWriter $$5 = new JsonWriter(new OutputStreamWriter($$4, StandardCharsets.UTF_8));
+
+            try {
+               $$5.setSerializeNulls(false);
+               $$5.setIndent("  ");
+               ayz.a($$5, $$1, b);
+            } catch (Throwable var9) {
+               try {
+                  $$5.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+
+               throw var9;
+            }
+
+            $$5.close();
+            $$0.writeIfNeeded($$2, $$3.toByteArray(), $$4.hash());
+         } catch (IOException var10) {
+            c.error("Failed to save file to {}", $$2, var10);
+         }
+      }, ad.g());
    }
 
-   public me.a b(ald<? extends kb<?>> $$0) {
-      return this.a(me.b.a, lw.d($$0));
-   }
-
-   public static class a {
-      private final Path a;
-      private final String b;
-
-      a(me $$0, me.b $$1, String $$2) {
-         this.a = $$0.a($$1);
-         this.b = $$2;
-      }
-
-      public Path a(ale $$0, String $$1) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + "." + $$1);
-      }
-
-      public Path a(ale $$0) {
-         return this.a.resolve($$0.b()).resolve(this.b).resolve($$0.a() + ".json");
-      }
-   }
-
-   public static enum b {
-      a("data"),
-      b("assets"),
-      c("reports");
-
-      final String d;
-
-      private b(final String $$0) {
-         this.d = $$0;
-      }
+   @FunctionalInterface
+   public interface a<T extends me> {
+      T create(mg var1);
    }
 }

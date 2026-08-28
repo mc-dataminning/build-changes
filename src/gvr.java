@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gvr extends gtq {
-   @Nullable
-   public gzi a;
-   public cvs b = cvs.k;
+public class gvr extends gva {
+   public float a;
+   public float b;
+   public float c;
 }

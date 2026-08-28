@@ -1,114 +1,103 @@
-import java.util.function.Predicate;
+public class cld extends clm {
+   private static final int b = 2400;
+   private int c;
 
-public abstract class cld extends buv implements ckv {
-   protected cld(bty<? extends cld> $$0, dej $$1) {
+   public cld(bug<? extends cld> $$0, dev $$1) {
       super($$0, $$1);
-      this.bN = 5;
+      this.bN = 3;
    }
 
    @Override
-   public awh di() {
-      return awh.f;
+   protected void D() {
+      this.bS.a(1, new cbn(this));
+      this.bS.a(1, new cbi(this, this.dX()));
+      this.bS.a(2, new ccd(this, 1.0, false));
+      this.bS.a(3, new cdg(this, 1.0));
+      this.bS.a(7, new ccb(this, coh.class, 8.0F));
+      this.bS.a(8, new cco(this));
+      this.bT.a(1, new cdl(this).a());
+      this.bT.a(2, new cdm<>(this, coh.class, true));
+   }
+
+   public static bwc.a q() {
+      return clm.gB().a(bwd.s, 8.0).a(bwd.v, 0.25).a(bwd.c, 2.0);
+   }
+
+   @Override
+   protected btz.b bh() {
+      return btz.b.c;
+   }
+
+   @Override
+   protected awj w() {
+      return awk.iq;
+   }
+
+   @Override
+   protected awj d(bsp $$0) {
+      return awk.is;
+   }
+
+   @Override
+   protected awj o_() {
+      return awk.ir;
+   }
+
+   @Override
+   protected void b(jg $$0, dvd $$1) {
+      this.a(awk.it, 0.15F, 1.0F);
+   }
+
+   @Override
+   public void a(uj $$0) {
+      super.a($$0);
+      this.c = $$0.h("Lifetime");
+   }
+
+   @Override
+   public void b(uj $$0) {
+      super.b($$0);
+      $$0.a("Lifetime", this.c);
+   }
+
+   @Override
+   public void l() {
+      this.aU = this.dN();
+      super.l();
+   }
+
+   @Override
+   public void r(float $$0) {
+      this.v($$0);
+      super.r($$0);
    }
 
    @Override
    public void n_() {
-      this.eU();
-      this.gt();
       super.n_();
-   }
-
-   protected void gt() {
-      float $$0 = this.bx();
-      if ($$0 > 0.5F) {
-         this.bb += 2;
-      }
-   }
-
-   @Override
-   protected boolean aa() {
-      return true;
-   }
-
-   @Override
-   protected awf aT() {
-      return awg.mZ;
-   }
-
-   @Override
-   protected awf aU() {
-      return awg.mY;
-   }
-
-   @Override
-   protected awf d(bsj $$0) {
-      return awg.mW;
-   }
-
-   @Override
-   protected awf o_() {
-      return awg.mV;
-   }
-
-   @Override
-   public bun.a eK() {
-      return new bun.a(awg.mX, awg.mU);
-   }
-
-   @Override
-   public float a(jf $$0, dem $$1) {
-      return -$$1.w($$0);
-   }
-
-   public static boolean a(dez $$0, jf $$1, azn $$2) {
-      if ($$0.a(des.a, $$1) > $$2.a(32)) {
-         return false;
+      if (this.dX().C) {
+         for (int $$0 = 0; $$0 < 2; $$0++) {
+            this.dX().a(lq.ac, this.d(0.5), this.dF(), this.g(0.5), (this.af.j() - 0.5) * 2.0, -this.af.j(), (this.af.j() - 0.5) * 2.0);
+         }
       } else {
-         dyo $$3 = $$0.C_();
-         int $$4 = $$3.e();
-         if ($$4 < 15 && $$0.a(des.b, $$1) > $$4) {
-            return false;
-         } else {
-            int $$5 = $$0.E().ad() ? $$0.c($$1, 10) : $$0.A($$1);
-            return $$5 <= $$3.d().a($$2);
+         if (!this.gc()) {
+            this.c++;
+         }
+
+         if (this.c >= 2400) {
+            this.au();
          }
       }
    }
 
-   public static boolean b(bty<? extends cld> $$0, dez $$1, btx $$2, jf $$3, azn $$4) {
-      return $$1.am() != brp.a && (btx.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static boolean c(bty<? extends cld> $$0, dek $$1, btx $$2, jf $$3, azn $$4) {
-      return $$1.am() != brp.a && a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static bvt.a gu() {
-      return bup.E().a(bvu.c);
-   }
-
-   @Override
-   public boolean ej() {
-      return true;
-   }
-
-   @Override
-   protected boolean ek() {
-      return true;
-   }
-
-   public boolean a(cnx $$0) {
-      return true;
-   }
-
-   @Override
-   public cvs f(cvs $$0) {
-      if ($$0.h() instanceof cwo) {
-         Predicate<cvs> $$1 = ((cwo)$$0.h()).d();
-         cvs $$2 = cwo.a(this, $$1);
-         return $$2.f() ? new cvs(cvw.ox) : $$2;
+   public static boolean b(bug<cld> $$0, dew $$1, buf $$2, jg $$3, azr $$4) {
+      if (!c($$0, $$1, $$2, $$3, $$4)) {
+         return false;
+      } else if (buf.a($$2)) {
+         return true;
       } else {
-         return cvs.k;
+         coh $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
+         return $$5 == null;
       }
    }
 }

@@ -1,47 +1,40 @@
 import com.mojang.serialization.Codec;
 
-public class eeb extends edu<egf> {
-   public eeb(Codec<egf> $$0) {
+public class eeb extends eef<egi> {
+   public eeb(Codec<egi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(edw<egf> $$0) {
-      dfg $$1 = $$0.b();
-      jf $$2 = $$0.e();
-      azn $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dus $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dho.dV) && !$$4.a(dho.dY) && !$$4.a(dho.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, dho.ec.n(), 2);
+   public boolean a(eeh<egi> $$0) {
+      jg $$1 = $$0.e();
+      dfs $$2 = $$0.b();
+      egi $$3 = $$0.f();
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               jf $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
-
-                  for (jk $$8 : jk.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dho.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dho.ec.n(), 2);
-                  }
+      for (jg $$4 : jg.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            jg $$9 = $$4.j();
+            this.a($$2, $$9, dia.kF.m());
+            $$3.b().ifPresent($$3x -> {
+               if ($$2.c_($$9) instanceof dty $$5x) {
+                  $$5x.a($$3x, $$3.c());
                }
-            }
-
-            return true;
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dia.a.m());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dia.F.m());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dia.F.m());
+         } else {
+            this.a($$2, $$4, dia.a.m());
          }
       }
+
+      return true;
    }
 }

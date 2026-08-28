@@ -1,77 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+public class axx {
+   private final int a;
+   private final axx.a b;
+   private int c;
+   private int d;
 
-public class axx<T> extends AbstractCollection<T> {
-   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
-   private final Class<T> b;
-   private final List<T> c = Lists.newArrayList();
-
-   public axx(Class<T> $$0) {
-      this.b = $$0;
-      this.a.put($$0, this.c);
+   public axx(int $$0, axx.a $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public boolean add(T $$0) {
-      boolean $$1 = false;
+   public axx(int $$0) {
+      this($$0, $$0x -> $$0x);
+   }
 
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            $$1 |= $$2.getValue().add($$0);
+   public void a(boolean $$0) {
+      this.d = this.c;
+      if ($$0) {
+         if (this.c < this.a) {
+            this.c++;
          }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean remove(Object $$0) {
-      boolean $$1 = false;
-
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            List<T> $$3 = $$2.getValue();
-            $$1 |= $$3.remove($$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      return this.a($$0.getClass()).contains($$0);
-   }
-
-   public <S> Collection<S> a(Class<S> $$0) {
-      if (!this.b.isAssignableFrom($$0)) {
-         throw new IllegalArgumentException("Don't know how to search for " + $$0);
-      } else {
-         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(ad.b()));
-         return (Collection<S>)Collections.unmodifiableCollection($$1);
+      } else if (this.c > 0) {
+         this.c--;
       }
    }
 
-   @Override
-   public Iterator<T> iterator() {
-      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
+   public float a(float $$0) {
+      float $$1 = azj.h($$0, (float)this.d, (float)this.c) / (float)this.a;
+      return this.b.apply($$1);
    }
 
-   public List<T> a() {
-      return ImmutableList.copyOf(this.c);
-   }
-
-   @Override
-   public int size() {
-      return this.c.size();
+   public interface a {
+      float apply(float var1);
    }
 }

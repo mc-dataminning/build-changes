@@ -1,19 +1,19 @@
-class bst extends bsw {
-   protected bst(bsx $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bst implements baf {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bst> d = baf.a(bst::values);
+   private final String e;
+
+   private bst(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(bun $$0, int $$1) {
-      if ($$0 instanceof cnx $$2) {
-         $$2.G(0.005F * (float)($$1 + 1));
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public String c() {
+      return this.e;
    }
 }

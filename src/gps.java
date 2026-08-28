@@ -1,29 +1,40 @@
-public class gps extends gmj<ciu, gvn, fzn> {
-   private static final ale a = ale.b("textures/entity/sniffer/sniffer.png");
+public class gps extends gpf<chf, gvp, fxz<guc>> {
+   private static final alh a = alh.b("textures/entity/fish/pufferfish.png");
+   private final fxz<guc> b;
+   private final fxz<guc> k;
+   private final fxz<guc> l = this.e();
 
-   public gps(gno.a $$0) {
-      super($$0, new fzn($$0.a(gap.cu)), new fzn($$0.a(gap.cv)), 1.1F);
+   public gps(gnz.a $$0) {
+      super($$0, new fzg($$0.a(gba.bU)), 0.2F);
+      this.k = new fzh($$0.a(gba.bV));
+      this.b = new fzi($$0.a(gba.bW));
    }
 
-   public ale a(gvn $$0) {
+   public alh a(gvp $$0) {
       return a;
    }
 
-   public gvn c() {
-      return new gvn();
+   public gvp c() {
+      return new gvp();
    }
 
-   public void a(ciu $$0, gvn $$1, float $$2) {
+   public void a(gvp $$0, fdt $$1, ghw $$2, int $$3) {
+      this.h = switch ($$0.a) {
+         case 0 -> this.b;
+         case 1 -> this.k;
+         default -> this.l;
+      };
+      this.f = 0.1F + 0.1F * (float)$$0.a;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(chf $$0, gvp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.ca);
-      $$1.d.a($$0.cd);
-      $$1.e.a($$0.bY);
-      $$1.f.a($$0.bZ);
+      $$1.a = $$0.gx();
    }
 
-   protected eyr a(ciu $$0) {
-      return super.a($$0).g(0.6F);
+   protected void a(gvp $$0, fdt $$1, float $$2, float $$3) {
+      $$1.a(0.0F, azj.b($$0.p * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3);
    }
 }

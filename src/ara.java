@@ -1,13 +1,85 @@
-import java.util.concurrent.CompletableFuture;
+public class ara extends aro {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
 
-public interface ara {
-   arb d(long var1);
+   public ara(arn $$0) {
+      super($$0);
+   }
 
-   void a(arb var1);
+   @Override
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.aa();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.d.b(new adk(adk.g, 0.0F));
+      }
 
-   CompletableFuture<dwo> a(arb var1, dxs var2, azz<arb> var3);
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
 
-   aqm a(dxp var1, ddp var2);
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.d.b(new adk(adk.g, 104.0F));
+            } else {
+               this.d.a(xh.c("demo.day." + $$1));
+            }
+         }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.d.b(new adk(adk.g, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.d.b(new adk(adk.g, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.d.b(new adk(adk.g, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(xh.c("demo.day.warning"));
+      }
+   }
 
-   void g();
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(xh.c("demo.reminder"));
+         this.g = 0;
+      }
+   }
+
+   @Override
+   public void a(jg $$0, ahz.a $$1, jl $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public bry a(arn $$0, dev $$1, cvx $$2, brx $$3) {
+      if (this.f) {
+         this.f();
+         return bry.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public bry a(arn $$0, dev $$1, cvx $$2, brx $$3, ezd $$4) {
+      if (this.f) {
+         this.f();
+         return bry.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
 }

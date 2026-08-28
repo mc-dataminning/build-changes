@@ -1,23 +1,13 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class aow {
-   public static void a(CommandDispatcher<eu> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("setidletimeout").requires($$0x -> $$0x.c(3)))
-            .then(ev.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((eu)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
-      );
-   }
-
-   private static int a(eu $$0, int $$1) {
-      $$0.l().c($$1);
-      if ($$1 > 0) {
-         $$0.a(() -> xe.a("commands.setidletimeout.success", $$1), true);
-      } else {
-         $$0.a(() -> xe.c("commands.setidletimeout.success.disabled"), true);
-      }
-
-      return $$1;
+   public static void a(CommandDispatcher<ev> $$0, boolean $$1) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
+         long $$1x = ((ev)$$0x.getSource()).e().C();
+         xh $$2 = xk.a(String.valueOf($$1x));
+         ((ev)$$0x.getSource()).a(() -> xh.a("commands.seed.success", $$2), false);
+         return (int)$$1x;
+      }));
    }
 }

@@ -1,169 +1,162 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Base64;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gca {
-   private static final Logger j = LogUtils.getLogger();
-   private static final int k = 1024;
-   public String a;
-   public String b;
-   public xe c;
-   public xe d;
+public class gca implements fa {
+   private final gby a;
+   private final fja b;
+   private int c = -1;
    @Nullable
-   public akb.b e;
-   public long f;
-   public int g = ab.b().e();
-   public xe h = xe.b(ab.b().c());
-   public List<xe> i = Collections.emptyList();
-   private gca.a l = gca.a.c;
-   @Nullable
-   private byte[] m;
-   private gca.c n;
-   private gca.b o = gca.b.a;
+   private CompletableFuture<Suggestions> d;
+   private final Set<String> e = new HashSet<>();
 
-   public gca(String $$0, String $$1, gca.c $$2) {
+   public gca(gby $$0, fja $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.n = $$2;
    }
 
-   public ug a() {
-      ug $$0 = new ug();
-      $$0.a("name", this.a);
-      $$0.a("ip", this.b);
-      if (this.m != null) {
-         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
-      }
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
 
-      if (this.l == gca.a.a) {
-         $$0.a("acceptTextures", true);
-      } else if (this.l == gca.a.b) {
-         $$0.a("acceptTextures", false);
+      for (gci $$1 : this.a.m()) {
+         $$0.add($$1.a().getName());
       }
 
       return $$0;
    }
 
-   public gca.a b() {
-      return this.l;
-   }
-
-   public void a(gca.a $$0) {
-      this.l = $$0;
-   }
-
-   public static gca a(ug $$0) {
-      gca $$1 = new gca($$0.l("name"), $$0.l("ip"), gca.c.c);
-      if ($$0.b("icon", 8)) {
-         try {
-            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
-            $$1.a(b($$2));
-         } catch (IllegalArgumentException var3) {
-            j.warn("Malformed base64 server icon", var3);
-         }
-      }
-
-      if ($$0.b("acceptTextures", 99)) {
-         if ($$0.q("acceptTextures")) {
-            $$1.a(gca.a.a);
-         } else {
-            $$1.a(gca.a.b);
-         }
+   @Override
+   public Collection<String> z() {
+      if (this.e.isEmpty()) {
+         return this.q();
       } else {
-         $$1.a(gca.a.c);
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public byte[] c() {
-      return this.m;
-   }
-
-   public void a(@Nullable byte[] $$0) {
-      this.m = $$0;
-   }
-
-   public boolean d() {
-      return this.n == gca.c.a;
-   }
-
-   public boolean e() {
-      return this.n == gca.c.b;
-   }
-
-   public gca.c f() {
-      return this.n;
-   }
-
-   public void a(gca $$0) {
-      this.b = $$0.b;
-      this.a = $$0.a;
-      this.m = $$0.m;
-   }
-
-   public void b(gca $$0) {
-      this.a($$0);
-      this.a($$0.b());
-      this.n = $$0.n;
-   }
-
-   public gca.b g() {
-      return this.o;
-   }
-
-   public void a(gca.b $$0) {
-      this.o = $$0;
-   }
-
-   @Nullable
-   public static byte[] b(@Nullable byte[] $$0) {
-      if ($$0 != null) {
-         try {
-            azk $$1 = azk.a($$0);
-            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
-               return $$0;
-            }
-         } catch (IOException var2) {
-            j.warn("Failed to decode server icon", var2);
-         }
-      }
-
-      return null;
-   }
-
-   public static enum a {
-      a("enabled"),
-      b("disabled"),
-      c("prompt");
-
-      private final xe d;
-
-      private a(final String $$0) {
-         this.d = xe.c("addServer.resourcePack." + $$0);
-      }
-
-      public xe a() {
-         return this.d;
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.e);
+         return $$0;
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+   @Override
+   public Collection<String> A() {
+      return (Collection<String>)(this.b.w != null && this.b.w.d() == ezf.a.c ? Collections.singleton(((eze)this.b.w).a().cI()) : Collections.emptyList());
    }
 
-   public static enum c {
-      a,
-      b,
-      c;
+   @Override
+   public Collection<String> r() {
+      return this.a.z().f();
+   }
+
+   @Override
+   public Stream<alh> s() {
+      return this.b.ak().d().stream();
+   }
+
+   @Override
+   public Stream<alh> t() {
+      return this.a.j().g();
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      ggs $$1 = this.b.t;
+      return $$1 != null ? $$1.l($$0) : $$0 == 0;
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(alg<? extends kc<?>> $$0, fa.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.v().a($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.d != null) {
+         this.d.cancel(false);
+      }
+
+      this.d = new CompletableFuture<>();
+      int $$1 = ++this.c;
+      this.a.b(new ahh($$1, $$0.getInput()));
+      return this.d;
+   }
+
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
+   }
+
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
+
+   @Override
+   public Collection<fa.b> B() {
+      ezf $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == ezf.a.b) {
+         jg $$1 = ((ezd)$$0).b();
+         return Collections.singleton(new fa.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return fa.super.B();
+      }
+   }
+
+   @Override
+   public Collection<fa.b> C() {
+      ezf $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == ezf.a.b) {
+         ezh $$1 = $$0.g();
+         return Collections.singleton(new fa.b(a($$1.d), a($$1.e), a($$1.f)));
+      } else {
+         return fa.super.C();
+      }
+   }
+
+   @Override
+   public Set<alg<dev>> u() {
+      return this.a.u();
+   }
+
+   @Override
+   public kd v() {
+      return this.a.v();
+   }
+
+   @Override
+   public cra w() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.c) {
+         this.d.complete($$1);
+         this.d = null;
+         this.c = -1;
+      }
+   }
+
+   public void a(adc.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.e.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.e::remove);
+            break;
+         case c:
+            this.e.clear();
+            this.e.addAll($$1);
+      }
    }
 }

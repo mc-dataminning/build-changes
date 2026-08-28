@@ -1,100 +1,59 @@
 import java.util.List;
 
-public class cwy extends cvn {
-   private static final n a = n.h;
-   private static final n b = n.j;
-   private static final xe c = xe.c(ad.a("item", ale.b("smithing_template.ingredients"))).a(a);
-   private static final xe d = xe.c(ad.a("item", ale.b("smithing_template.applies_to"))).a(a);
-   private static final xe k = xe.c(ad.a("item", ale.b("smithing_template"))).a(a);
-   private static final xe l = xe.c(ad.a("item", ale.b("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final xe m = xe.c(ad.a("item", ale.b("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final xe n = xe.c(ad.a("item", ale.b("smithing_template.armor_trim.base_slot_description")));
-   private static final xe o = xe.c(ad.a("item", ale.b("smithing_template.armor_trim.additions_slot_description")));
-   private static final xe p = xe.c(ad.a("item", ale.b("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final xe q = xe.c(ad.a("item", ale.b("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final xe r = xe.c(ad.a("item", ale.b("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final xe s = xe.c(ad.a("item", ale.b("smithing_template.netherite_upgrade.additions_slot_description")));
-   private static final ale t = ale.b("item/empty_armor_slot_helmet");
-   private static final ale u = ale.b("item/empty_armor_slot_chestplate");
-   private static final ale v = ale.b("item/empty_armor_slot_leggings");
-   private static final ale w = ale.b("item/empty_armor_slot_boots");
-   private static final ale x = ale.b("item/empty_slot_hoe");
-   private static final ale y = ale.b("item/empty_slot_axe");
-   private static final ale z = ale.b("item/empty_slot_sword");
-   private static final ale A = ale.b("item/empty_slot_shovel");
-   private static final ale B = ale.b("item/empty_slot_pickaxe");
-   private static final ale C = ale.b("item/empty_slot_ingot");
-   private static final ale D = ale.b("item/empty_slot_redstone_dust");
-   private static final ale E = ale.b("item/empty_slot_quartz");
-   private static final ale F = ale.b("item/empty_slot_emerald");
-   private static final ale G = ale.b("item/empty_slot_diamond");
-   private static final ale H = ale.b("item/empty_slot_lapis_lazuli");
-   private static final ale I = ale.b("item/empty_slot_amethyst_shard");
-   private final xe J;
-   private final xe K;
-   private final xe L;
-   private final xe M;
-   private final List<ale> N;
-   private final List<ale> O;
-
-   public cwy(cvn.a $$0, xe $$1, xe $$2, xe $$3, xe $$4, List<ale> $$5, List<ale> $$6, cqo... $$7) {
-      super($$0.a($$7));
-      this.J = $$1;
-      this.K = $$2;
-      this.L = $$3;
-      this.M = $$4;
-      this.N = $$5;
-      this.O = $$6;
+public class cwy extends cvt {
+   public cwy(cvt.a $$0) {
+      super($$0);
    }
 
-   public static cwy a(cvn.a $$0, cqo... $$1) {
-      return new cwy($$0, l, m, n, o, k(), l(), $$1);
-   }
-
-   public static cwy a(cvn.a $$0) {
-      return new cwy($$0, p, q, r, s, m(), w());
-   }
-
-   private static List<ale> k() {
-      return List.of(t, u, v, w);
-   }
-
-   private static List<ale> l() {
-      return List.of(C, D, H, E, G, F, I);
-   }
-
-   private static List<ale> m() {
-      return List.of(t, z, u, B, v, y, w, x, A);
-   }
-
-   private static List<ale> w() {
-      return List.of(C);
+   public static cyx c() {
+      jq<dhy> $$0 = lx.a(lx.e);
+      return new cyx(
+         List.of(cyx.a.a(jt.a(dia.bs.p()), 15.0F), cyx.a.b($$0.b(awz.P), 15.0F), cyx.a.b($$0.b(awz.a), 5.0F), cyx.a.b(jt.a(dia.ff.p(), dia.fg.p()), 2.0F)),
+         1.0F,
+         1
+      );
    }
 
    @Override
-   public void a(cvs $$0, cvn.b $$1, List<xe> $$2, cxk $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$2.add(k);
-      $$2.add(xd.a);
-      $$2.add(d);
-      $$2.add(xd.a().b(this.J));
-      $$2.add(c);
-      $$2.add(xd.a().b(this.K));
+   public boolean a(cvx $$0, dev $$1, dvd $$2, jg $$3, buv $$4) {
+      if (!$$1.C && !$$2.a(awz.aL)) {
+         $$0.a(1, $$4, buh.a);
+      }
+
+      return $$2.a(awz.P)
+         || $$2.a(dia.bs)
+         || $$2.a(dia.bt)
+         || $$2.a(dia.bu)
+         || $$2.a(dia.bv)
+         || $$2.a(dia.sG)
+         || $$2.a(dia.ff)
+         || $$2.a(dia.fI)
+         || $$2.a(awz.a);
    }
 
-   public xe c() {
-      return this.L;
-   }
+   @Override
+   public bry a(czo $$0) {
+      dev $$1 = $$0.q();
+      jg $$2 = $$0.a();
+      dvd $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dlm $$5 && !$$5.q($$3)) {
+         coh $$6 = $$0.o();
+         cvx $$7 = $$0.n();
+         if ($$6 instanceof arn) {
+            an.N.a((arn)$$6, $$2, $$7);
+         }
 
-   public xe d() {
-      return this.M;
-   }
+         $$1.a($$6, $$2, awk.lo, awl.e, 1.0F, 1.0F);
+         dvd $$8 = $$5.p($$3);
+         $$1.b($$2, $$8);
+         $$1.a(eaa.c, $$2, eaa.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, buv.d($$0.p()));
+         }
 
-   public List<ale> g() {
-      return this.N;
-   }
+         return bry.a;
+      }
 
-   public List<ale> j() {
-      return this.O;
+      return super.a($$0);
    }
 }

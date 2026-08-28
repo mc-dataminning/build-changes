@@ -1,20 +1,12 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
 
-public interface gzi {
-   List<gir> a(@Nullable dus var1, @Nullable jk var2, azn var3);
+public class gzi implements aty<gzh> {
+   public gzh b(JsonObject $$0) {
+      return new gzh(gzh.a.a(ayz.a($$0, "hat", "none")));
+   }
 
-   boolean a();
-
-   boolean b();
-
-   boolean c();
-
-   boolean d();
-
-   gxg e();
-
-   gjd f();
-
-   gjb g();
+   @Override
+   public String a() {
+      return "villager";
+   }
 }

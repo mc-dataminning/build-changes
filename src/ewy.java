@@ -1,27 +1,59 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class ewy {
-   public static final ewx a = a("inverted", ewt.a);
-   public static final ewx b = a("any_of", ewk.a);
-   public static final ewx c = a("all_of", ewj.a);
-   public static final ewx d = a("random_chance", exb.a);
-   public static final ewx e = a("random_chance_with_enchanted_bonus", exc.a);
-   public static final ewx f = a("entity_properties", ewz.a);
-   public static final ewx g = a("killed_by_player", exa.a);
-   public static final ewx h = a("entity_scores", ewr.a);
-   public static final ewx i = a("block_state_property", ewv.a);
-   public static final ewx j = a("match_tool", exd.a);
-   public static final ewx k = a("table_bonus", ewl.a);
-   public static final ewx l = a("survives_explosion", ews.a);
-   public static final ewx m = a("damage_source_properties", ewp.a);
-   public static final ewx n = a("location_check", ewu.a);
-   public static final ewx o = a("weather_check", exg.a);
-   public static final ewx p = a("reference", ewn.a);
-   public static final ewx q = a("time_check", exe.a);
-   public static final ewx r = a("value_check", exf.a);
-   public static final ewx s = a("enchantment_active_check", ewq.a);
+public record ewy(alg<exh> b) implements exh {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<ewy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alg.a(ly.bf).fieldOf("name").forGetter(ewy::c)).apply($$0, ewy::new));
 
-   private static ewx a(String $$0, MapCodec<? extends eww> $$1) {
-      return kb.a(lv.F, ale.b($$0), new ewx($$1));
+   @Override
+   public exi b() {
+      return exj.p;
+   }
+
+   @Override
+   public void a(euc $$0) {
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else if ($$0.a(this.b)) {
+         $$0.b("Condition " + this.b.a() + " is recursively called");
+      } else {
+         exh.super.a($$0);
+         $$0.a()
+            .c(this.b)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+      }
+   }
+
+   public boolean a(etw $$0) {
+      exh $$1 = $$0.a().c(this.b).map(jp.c::a).orElse(null);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b.a());
+         return false;
+      } else {
+         etw.c<?> $$2 = etw.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
+         }
+      }
+   }
+
+   public static exh.a a(alg<exh> $$0) {
+      return () -> new ewy($$0);
+   }
+
+   public alg<exh> c() {
+      return this.b;
    }
 }

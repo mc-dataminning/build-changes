@@ -1,32 +1,29 @@
-import javax.annotation.Nullable;
+public class afa implements zo<acd> {
+   public static final zf<we, afa> a = zo.a(afa::a, afa::new);
+   private final double b;
 
-public class afa implements zl<aca> {
-   public static final zc<wb, afa> a = zl.a(afa::a, afa::new);
-   private final int b;
-
-   public afa(btr $$0) {
-      this.b = $$0.ap();
+   public afa(dwu $$0) {
+      this.b = $$0.k();
    }
 
-   private afa(wb $$0) {
-      this.b = $$0.l();
+   private afa(we $$0) {
+      this.b = $$0.readDouble();
    }
 
-   private void a(wb $$0) {
-      $$0.c(this.b);
+   private void a(we $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<afa> a() {
-      return agp.ax;
+   public zq<afa> a() {
+      return ags.au;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public btr a(dej $$0) {
-      return $$0.a(this.b);
+   public double b() {
+      return this.b;
    }
 }

@@ -1,149 +1,111 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public class eea extends edu<efz> {
-   private static final jk[] a = jk.values();
+public class eea {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
 
-   public eea(Codec<efz> $$0) {
-      super($$0);
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   @Override
-   public boolean a(edw<efz> $$0) {
-      efz $$1 = $$0.f();
-      azn $$2 = $$0.d();
-      jf $$3 = $$0.e();
-      dfg $$4 = $$0.b();
-      int $$5 = $$1.l;
-      int $$6 = $$1.n;
-      List<Pair<jf, Integer>> $$7 = Lists.newLinkedList();
-      int $$8 = $$1.j.a($$2);
-      ebn $$9 = new ebn(new eap($$4.C()));
-      epw $$10 = epw.a($$9, -4, 1.0);
-      List<jf> $$11 = Lists.newLinkedList();
-      double $$12 = (double)$$8 / (double)$$1.i.b();
-      ean $$13 = $$1.d;
-      eal $$14 = $$1.c;
-      eam $$15 = $$1.e;
-      double $$16 = 1.0 / Math.sqrt($$13.b);
-      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
-      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
-      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
-      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
-      boolean $$21 = (double)$$2.i() < $$15.b;
-      int $$22 = 0;
+   protected static boolean a(dfs $$0, jg $$1, int $$2) {
+      if (b($$0, $$1)) {
+         return false;
+      } else {
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
 
-      for (int $$23 = 0; $$23 < $$8; $$23++) {
-         int $$24 = $$1.i.a($$2);
-         int $$25 = $$1.i.a($$2);
-         int $$26 = $$1.i.a($$2);
-         jf $$27 = $$3.b($$24, $$25, $$26);
-         dus $$28 = $$4.a_($$27);
-         if ($$28.l() || $$28.a($$14.h)) {
-            if (++$$22 > $$1.p) {
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(azj.b($$5) * (float)$$2);
+            int $$7 = (int)(azj.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
                return false;
             }
          }
 
-         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+         return true;
       }
+   }
 
-      if ($$21) {
-         int $$29 = $$2.a(4);
-         int $$30 = $$8 * 2 + 1;
-         if ($$29 == 0) {
-            $$11.add($$3.b($$30, 7, 0));
-            $$11.add($$3.b($$30, 5, 0));
-            $$11.add($$3.b($$30, 1, 0));
-         } else if ($$29 == 1) {
-            $$11.add($$3.b(0, 7, $$30));
-            $$11.add($$3.b(0, 5, $$30));
-            $$11.add($$3.b(0, 1, $$30));
-         } else if ($$29 == 2) {
-            $$11.add($$3.b($$30, 7, $$30));
-            $$11.add($$3.b($$30, 5, $$30));
-            $$11.add($$3.b($$30, 1, $$30));
-         } else {
-            $$11.add($$3.b(0, 7, 0));
-            $$11.add($$3.b(0, 5, 0));
-            $$11.add($$3.b(0, 1, 0));
+   protected static boolean a(dew $$0, jg $$1) {
+      return $$0.a($$1, eea::c);
+   }
+
+   protected static boolean b(dew $$0, jg $$1) {
+      return $$0.a($$1, eea::e);
+   }
+
+   protected static void a(jl $$0, int $$1, boolean $$2, Consumer<dvd> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dwa.e));
+
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dwa.d));
          }
       }
 
-      List<jf> $$31 = Lists.newArrayList();
-      Predicate<dus> $$32 = a($$1.c.g);
-
-      for (jf $$33 : jf.c($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
-         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
-         double $$35 = 0.0;
-         double $$36 = 0.0;
-
-         for (Pair<jf, Integer> $$37 : $$7) {
-            $$35 += azf.f($$33.j((kj)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
-         }
-
-         for (jf $$38 : $$11) {
-            $$36 += azf.f($$33.j($$38) + (double)$$15.d) + $$34;
-         }
-
-         if (!($$35 < $$19)) {
-            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
-               this.a($$4, $$33, dho.a.n(), $$32);
-
-               for (jk $$39 : a) {
-                  jf $$40 = $$33.a($$39);
-                  eqt $$41 = $$4.b_($$40);
-                  if (!$$41.c()) {
-                     $$4.a($$40, $$41.a(), 0);
-                  }
-               }
-            } else if ($$35 >= $$16) {
-               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
-            } else if ($$35 >= $$17) {
-               boolean $$42 = (double)$$2.i() < $$1.g;
-               if ($$42) {
-                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
-               } else {
-                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
-               }
-
-               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
-                  $$31.add($$33.j());
-               }
-            } else if ($$35 >= $$18) {
-               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
-            } else if ($$35 >= $$19) {
-               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
-            }
-         }
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dwa.c));
       }
 
-      List<dus> $$43 = $$14.f;
-
-      for (jf $$44 : $$31) {
-         dus $$45 = ad.a($$43, $$2);
-
-         for (jk $$46 : a) {
-            if ($$45.b(dvi.P)) {
-               $$45 = $$45.b(dvi.P, $$46);
-            }
-
-            jf $$47 = $$44.a($$46);
-            dus $$48 = $$4.a_($$47);
-            if ($$45.b(dvi.C)) {
-               $$45 = $$45.b(dvi.C, Boolean.valueOf($$48.y().b()));
-            }
-
-            if (dhu.h($$48)) {
-               this.a($$4, $$47, $$45, $$32);
-               break;
-            }
-         }
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dwa.a : dwa.b));
       }
+   }
 
-      return true;
+   protected static void a(dew $$0, jg $$1, jl $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         jg.a $$5 = $$1.k();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dia.st)) {
+               $$3x = $$3x.b(dnp.d, Boolean.valueOf($$0.z($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
+   }
+
+   protected static boolean c(dew $$0, jg $$1) {
+      dvd $$2 = $$0.a_($$1);
+      if ($$2.a(awz.bt)) {
+         $$0.a($$1, dia.su.m(), 2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static dvd a(jl $$0, dwa $$1) {
+      return dia.st.m().b(dnp.b, $$0).b(dnp.c, $$1);
+   }
+
+   public static boolean a(dvd $$0) {
+      return b($$0) || $$0.a(dia.H);
+   }
+
+   public static boolean b(dvd $$0) {
+      return $$0.a(dia.su) || $$0.a(awz.bt);
+   }
+
+   public static boolean c(dvd $$0) {
+      return $$0.l() || $$0.a(dia.G);
+   }
+
+   public static boolean d(dvd $$0) {
+      return !$$0.l() && !$$0.a(dia.G);
+   }
+
+   public static boolean e(dvd $$0) {
+      return $$0.l() || $$0.a(dia.G) || $$0.a(dia.H);
    }
 }

@@ -1,51 +1,24 @@
-public class grw extends gsb<gut, fxf> {
-   private final gio a;
-
-   public grw(gpk<gut, fxf> $$0, gio $$1) {
+public abstract class grw<S extends guc, M extends fxz<S>> extends gsm<S, M> {
+   public grw(gpv<S, M> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, gut $$3, float $$4, float $$5) {
-      if (!$$3.ae) {
-         boolean $$6 = $$3.aj && $$3.u;
-         if (!$$3.u || $$6) {
-            dus $$7 = $$3.a.a();
-            int $$8 = gop.a($$3, 0.0F);
-            gzi $$9 = this.a.a($$7);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            this.d().b().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-         }
+   @Override
+   public void a(fdt $$0, ghw $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (this.a($$3)) {
+         float $$6 = $$3.p;
+         M $$7 = this.c();
+         fdx $$8 = $$1.getBuffer(gig.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
+         $$7.a($$3);
+         $$7.a($$0, $$8, $$2, gxj.d, -8355712);
       }
    }
 
-   private void a(fdi $$0, ghl $$1, int $$2, boolean $$3, dus $$4, int $$5, gzi $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(ghv.r(gxf.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
-   }
+   protected abstract boolean a(S var1);
+
+   protected abstract float a(float var1);
+
+   protected abstract alh a();
+
+   protected abstract M c();
 }

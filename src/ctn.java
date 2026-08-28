@@ -1,88 +1,97 @@
-import java.util.EnumMap;
 import java.util.List;
-import java.util.function.Predicate;
 
-public class ctn {
-   static int a = 15;
-   static int b = 12;
-   static int c = 9;
-   static int d = 25;
-   static int e = 10;
-   static int f = 9;
-   static int g = 15;
-   public static final jo<ctm> h = a("leather", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
-      $$0.put(ctl.a.d, 1);
-      $$0.put(ctl.a.c, 2);
-      $$0.put(ctl.a.b, 3);
-      $$0.put(ctl.a.a, 1);
-      $$0.put(ctl.a.e, 3);
-   }), awg.av, 0.0F, 0.0F, $$0 -> $$0.a(cvw.qE), List.of(new ctm.a(ale.b("leather"), "", true), new ctm.a(ale.b("leather"), "_overlay", false)));
-   public static final jo<ctm> i = a("chainmail", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
-      $$0.put(ctl.a.d, 1);
-      $$0.put(ctl.a.c, 4);
-      $$0.put(ctl.a.b, 5);
-      $$0.put(ctl.a.a, 2);
-      $$0.put(ctl.a.e, 4);
-   }), awg.ap, 0.0F, 0.0F, $$0 -> $$0.a(cvw.oG));
-   public static final jo<ctm> j = a("iron", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
-      $$0.put(ctl.a.d, 2);
-      $$0.put(ctl.a.c, 5);
-      $$0.put(ctl.a.b, 6);
-      $$0.put(ctl.a.a, 2);
-      $$0.put(ctl.a.e, 5);
-   }), awg.au, 0.0F, 0.0F, $$0 -> $$0.a(cvw.oG));
-   public static final jo<ctm> k = a("gold", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
-      $$0.put(ctl.a.d, 1);
-      $$0.put(ctl.a.c, 3);
-      $$0.put(ctl.a.b, 5);
-      $$0.put(ctl.a.a, 2);
-      $$0.put(ctl.a.e, 7);
-   }), awg.at, 0.0F, 0.0F, $$0 -> $$0.a(cvw.oK));
-   public static final jo<ctm> l = a("diamond", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
-      $$0.put(ctl.a.d, 3);
-      $$0.put(ctl.a.c, 6);
-      $$0.put(ctl.a.b, 8);
-      $$0.put(ctl.a.a, 3);
-      $$0.put(ctl.a.e, 11);
-   }), awg.aq, 2.0F, 0.0F, $$0 -> $$0.a(cvw.oA));
-   public static final jo<ctm> m = a("turtle", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
-      $$0.put(ctl.a.d, 2);
-      $$0.put(ctl.a.c, 5);
-      $$0.put(ctl.a.b, 6);
-      $$0.put(ctl.a.a, 2);
-      $$0.put(ctl.a.e, 5);
-   }), awg.ax, 0.0F, 0.0F, $$0 -> $$0.a(cvw.oq));
-   public static final jo<ctm> n = a("netherite", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
-      $$0.put(ctl.a.d, 3);
-      $$0.put(ctl.a.c, 6);
-      $$0.put(ctl.a.b, 8);
-      $$0.put(ctl.a.a, 3);
-      $$0.put(ctl.a.e, 11);
-   }), awg.aw, 3.0F, 0.1F, $$0 -> $$0.a(cvw.oL));
-   public static final jo<ctm> o = a("armadillo", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
-      $$0.put(ctl.a.d, 3);
-      $$0.put(ctl.a.c, 6);
-      $$0.put(ctl.a.b, 8);
-      $$0.put(ctl.a.a, 3);
-      $$0.put(ctl.a.e, 11);
-   }), awg.ay, 0.0F, 0.0F, $$0 -> $$0.a(cvw.or));
+public class ctn implements csb {
+   private final jy<cvx> b;
+   private final int c;
+   private final int d;
+   private final crj e;
 
-   public static jo<ctm> a(kb<ctm> $$0) {
-      return h;
+   public ctn(crj $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, jy.a($$1 * $$2, cvx.k));
    }
 
-   private static jo<ctm> a(String $$0, EnumMap<ctl.a, Integer> $$1, jo<awf> $$2, float $$3, float $$4, Predicate<cvs> $$5) {
-      List<ctm.a> $$6 = List.of(new ctm.a(ale.b($$0)));
-      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   private ctn(crj $$0, int $$1, int $$2, jy<cvx> $$3) {
+      this.b = $$3;
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private static jo<ctm> a(String $$0, EnumMap<ctl.a, Integer> $$1, jo<awf> $$2, float $$3, float $$4, Predicate<cvs> $$5, List<ctm.a> $$6) {
-      EnumMap<ctl.a, Integer> $$7 = new EnumMap<>(ctl.a.class);
+   @Override
+   public int b() {
+      return this.b.size();
+   }
 
-      for (ctl.a $$8 : ctl.a.values()) {
-         $$7.put($$8, $$1.get($$8));
+   @Override
+   public boolean c() {
+      for (cvx $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
+         }
       }
 
-      return kb.b(lv.ao, ale.b($$0), new ctm($$7, $$2, $$5, $$6, $$3, $$4));
+      return true;
+   }
+
+   @Override
+   public cvx a(int $$0) {
+      return $$0 >= this.b() ? cvx.k : this.b.get($$0);
+   }
+
+   @Override
+   public cvx b(int $$0) {
+      return brs.a(this.b, $$0);
+   }
+
+   @Override
+   public cvx a(int $$0, int $$1) {
+      cvx $$2 = brs.a(this.b, $$0, $$1);
+      if (!$$2.f()) {
+         this.e.a(this);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(int $$0, cvx $$1) {
+      this.b.set($$0, $$1);
+      this.e.a(this);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(coh $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.d;
+   }
+
+   @Override
+   public int aA_() {
+      return this.c;
+   }
+
+   @Override
+   public List<cvx> h() {
+      return List.copyOf(this.b);
+   }
+
+   @Override
+   public void fillStackedContents(com $$0) {
+      for (cvx $$1 : this.b) {
+         $$0.a($$1);
+      }
    }
 }

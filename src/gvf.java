@@ -1,5 +1,7 @@
-public class gvf extends guo {
-   public float a;
-   public float b;
-   public float c;
+public class gvf extends gva {
+   public cgz.a a;
+
+   public gvf() {
+      this.a = cgz.a.a;
+   }
 }

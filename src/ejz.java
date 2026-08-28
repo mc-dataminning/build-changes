@@ -1,27 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejz extends ekm {
-   public static final MapCodec<ejz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ebv.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, ejz::new)
-   );
-   private final ebv c;
+public interface ejz<P extends ejy> {
+   ejz<ejx> a = a("constant", ejx.b);
+   ejz<ekb> b = a("uniform", ekb.a);
+   ejz<ejw> c = a("biased_to_bottom", ejw.a);
+   ejz<ekc> d = a("very_biased_to_bottom", ekc.a);
+   ejz<eka> e = a("trapezoid", eka.a);
+   ejz<ekd> f = a("weighted_list", ekd.a);
 
-   private ejz(ebv $$0) {
-      this.c = $$0;
-   }
+   MapCodec<P> codec();
 
-   public static ejz a(ebv $$0) {
-      return new ejz($$0);
-   }
-
-   @Override
-   protected boolean a(ekl $$0, azn $$1, jf $$2) {
-      return this.c.test($$0.d(), $$2);
-   }
-
-   @Override
-   public eko<?> b() {
-      return eko.a;
+   private static <P extends ejy> ejz<P> a(String $$0, MapCodec<P> $$1) {
+      return kc.a(lx.L, $$0, () -> $$1);
    }
 }

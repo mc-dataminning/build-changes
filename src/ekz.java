@@ -1,26 +1,25 @@
-public interface ekz {
-   ald<elm> a = a("villages");
-   ald<elm> b = a("desert_pyramids");
-   ald<elm> c = a("igloos");
-   ald<elm> d = a("jungle_temples");
-   ald<elm> e = a("swamp_huts");
-   ald<elm> f = a("pillager_outposts");
-   ald<elm> g = a("ocean_monuments");
-   ald<elm> h = a("woodland_mansions");
-   ald<elm> i = a("buried_treasures");
-   ald<elm> j = a("mineshafts");
-   ald<elm> k = a("ruined_portals");
-   ald<elm> l = a("shipwrecks");
-   ald<elm> m = a("ocean_ruins");
-   ald<elm> n = a("nether_complexes");
-   ald<elm> o = a("nether_fossils");
-   ald<elm> p = a("end_cities");
-   ald<elm> q = a("ancient_cities");
-   ald<elm> r = a("strongholds");
-   ald<elm> s = a("trail_ruins");
-   ald<elm> t = a("trial_chambers");
+import com.mojang.serialization.MapCodec;
 
-   private static ald<elm> a(String $$0) {
-      return ald.a(lw.aV, ale.b($$0));
+public interface ekz<P extends eky> {
+   ekz<ekk> a = a("block_predicate_filter", ekk.a);
+   ekz<elb> b = a("rarity_filter", elb.a);
+   ekz<eld> c = a("surface_relative_threshold_filter", eld.a);
+   ekz<ele> d = a("surface_water_depth_filter", ele.a);
+   ekz<ekj> e = a("biome", ekj.a);
+   ekz<ekn> f = a("count", ekn.a);
+   ekz<ekt> g = a("noise_based_count", ekt.a);
+   ekz<eku> h = a("noise_threshold_count", eku.a);
+   ekz<ekm> i = a("count_on_every_layer", ekm.a);
+   ekz<eko> j = a("environment_scan", eko.a);
+   ekz<ekr> k = a("heightmap", ekr.a);
+   ekz<ekq> l = a("height_range", ekq.a);
+   ekz<eks> m = a("in_square", eks.a);
+   ekz<ela> n = a("random_offset", ela.a);
+   ekz<ekp> o = a("fixed_placement", ekp.a);
+
+   MapCodec<P> codec();
+
+   private static <P extends eky> ekz<P> a(String $$0, MapCodec<P> $$1) {
+      return kc.a(lx.S, $$0, () -> $$1);
    }
 }

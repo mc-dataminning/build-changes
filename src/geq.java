@@ -1,39 +1,76 @@
-public class geq extends get {
-   private final fyj a;
-   private final ghv b = ghv.i(gnh.a);
+public class geq extends gge {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final int G;
+   private final int H;
 
-   geq(gbm $$0, double $$1, double $$2, double $$3) {
+   geq(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
       super($$0, $$1, $$2, $$3);
-      this.a = new fxw(fip.Q().aT().a(gap.aq));
-      this.u = 0.0F;
-      this.t = 30;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
+      this.n = false;
+      this.t = (int)(Math.random() * 5.0) + 25;
+      this.G = $$7;
+      this.H = $$8;
    }
 
    @Override
-   public gex b() {
-      return gex.d;
+   public gfi b() {
+      return gfi.b;
    }
 
    @Override
-   public void a(fdm $$0, fhy $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * azf.a($$3 * (float) Math.PI);
-      int $$5 = axq.a($$4, 1.0F, 1.0F, 1.0F);
-      fdi $$6 = new fdi();
-      $$6.a($$1.f());
-      $$6.a(a.b.rotationDegrees(60.0F - 150.0F * $$3));
-      float $$7 = 0.42553192F;
-      $$6.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$6.a(0.0F, -0.56F, 3.5F);
-      ghl.a $$8 = fip.Q().aS().c();
-      fdm $$9 = $$8.getBuffer(this.b);
-      this.a.a($$6, $$9, 15728880, gwx.d, $$5);
-      $$8.b();
+   public void a(double $$0, double $$1, double $$2) {
    }
 
-   public static class a implements gew<ls> {
-      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new geq($$1, $$2, $$3, $$4);
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         float $$1 = 1.0F - $$0;
+         this.g = this.a + this.j * (double)$$1;
+         this.h = this.b + this.k * (double)$$1;
+         this.i = this.F + this.l * (double)$$1;
+         int $$2 = axu.a($$0, this.G, this.H);
+         this.a((float)axu.b($$2) / 255.0F, (float)axu.c($$2) / 255.0F, (float)axu.d($$2) / 255.0F);
+         this.e((float)axu.a($$2) / 255.0F);
+      }
+   }
+
+   public static class a implements gfh<lu> {
+      private final gfz a;
+
+      public a(gfz $$0) {
+         this.a = $$0;
+      }
+
+      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         geq $$8 = new geq($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
+         $$8.d(azj.b($$1.E_(), 3.0F, 5.0F));
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

@@ -1,131 +1,168 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.Collection;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fvd extends fqh {
-   private static final xe a = xe.c("selectWorld.experimental.title");
-   private static final xe b = xe.c("selectWorld.experimental.message");
-   private static final xe c = xe.c("selectWorld.experimental.details");
-   private static final int d = 10;
-   private static final int s = 100;
-   private final BooleanConsumer u;
-   final Collection<aud> v;
-   private final fob w = new fob().a(10).b(20);
+public class fvd extends fqs {
+   private static final xh a = xh.c("gui.abuseReport.reason.title");
+   private static final xh b = xh.c("gui.abuseReport.reason.description");
+   private static final xh c = xh.c("gui.abuseReport.read_info");
+   private static final int d = 320;
+   private static final int s = 62;
+   private static final int u = 4;
+   @Nullable
+   private final fqs v;
+   @Nullable
+   private fvd.a w;
+   @Nullable
+   gdd x;
+   private final Consumer<gdd> y;
+   final fon z = new fon(this);
+   final gde A;
 
-   public fvd(Collection<aud> $$0, BooleanConsumer $$1) {
+   public fvd(@Nullable fqs $$0, @Nullable gdd $$1, gde $$2, Consumer<gdd> $$3) {
       super(a);
       this.v = $$0;
-      this.u = $$1;
-   }
-
-   @Override
-   public xe i() {
-      return xd.a(super.i(), b);
+      this.x = $$1;
+      this.y = $$3;
+      this.A = $$2;
    }
 
    @Override
    protected void aS_() {
-      super.aS_();
-      fob.b $$0 = this.w.d(2);
-      fof $$1 = $$0.b().b();
-      $$0.a(new flv(this.l, this.p), 2, $$1);
-      fli $$2 = $$0.a(new fli(b, this.p).b(true), 2, $$1);
-      $$2.d(310);
-      $$0.a(fko.a(c, $$0x -> this.m.a(new fvd.a())).a(100).a(), 2, $$1);
-      $$0.a(fko.a(xd.i, $$0x -> this.u.accept(true)).a());
-      $$0.a(fko.a(xd.k, $$0x -> this.u.accept(false)).a());
-      this.w.a($$1x -> {
-         fkm var10000 = this.c($$1x);
+      this.z.a(a, this.p);
+      fos $$0 = this.z.c(fos.d().a(4));
+      this.w = $$0.a(new fvd.a(this.m));
+      fvd.a.a $$1 = x.a(this.x, this.w::a);
+      this.w.a($$1);
+      $$0.a(fot.b(this.J()));
+      fos $$2 = this.z.b(fos.e().a(8));
+      $$2.a(fkz.a(c, fpp.b(this, ayf.m)).a());
+      $$2.a(fkz.a(xg.d, $$0x -> {
+         fvd.a.a $$1x = this.w.h();
+         if ($$1x != null) {
+            this.y.accept($$1x.b());
+         }
+
+         this.m.a(this.v);
+      }).a());
+      this.z.a($$1x -> {
+         fkx var10000 = this.c($$1x);
       });
-      this.w.a();
       this.c();
    }
 
    @Override
    protected void c() {
-      foa.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
+      this.z.a();
+      if (this.w != null) {
+         this.w.b(this.n, this.K(), this.z.c());
+      }
+   }
+
+   @Override
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.m(), this.E(), this.D(), this.F(), -16777216);
+      $$0.b(this.m(), this.E(), this.G(), this.J(), -1);
+      $$0.b(this.p, b, this.m() + 4, this.E() + 4, -1);
+      fvd.a.a $$4 = this.w.h();
+      if ($$4 != null) {
+         int $$5 = this.m() + 4 + 16;
+         int $$6 = this.D() - 4;
+         int $$7 = this.E() + 4 + 9 + 2;
+         int $$8 = this.F() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.p.b($$4.b.c(), $$9);
+         $$0.a(this.p, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+      }
+   }
+
+   private int m() {
+      return (this.n - 320) / 2;
+   }
+
+   private int D() {
+      return (this.n + 320) / 2;
+   }
+
+   private int E() {
+      return this.F() - this.J();
+   }
+
+   private int F() {
+      return this.o - this.z.b() - 4;
+   }
+
+   private int G() {
+      return 320;
+   }
+
+   private int J() {
+      return 62;
+   }
+
+   int K() {
+      return this.z.d() - this.J() - 8;
    }
 
    @Override
    public void d() {
-      this.u.accept(false);
+      this.m.a(this.v);
    }
 
-   class a extends fqh {
-      private static final xe b = xe.c("selectWorld.experimental.details.title");
-      final foc c = new foc(this);
-      @Nullable
-      private fvd.a.a d;
+   public class a extends flv<fvd.a.a> {
+      public a(final fja $$1) {
+         super($$1, fvd.this.n, fvd.this.K(), fvd.this.z.c(), 18);
 
-      a() {
-         super(b);
-      }
-
-      @Override
-      protected void aS_() {
-         this.c.a(b, this.p);
-         this.d = this.c.c(new fvd.a.a(this.m, fvd.this.v));
-         this.c.b(fko.a(xd.k, $$0 -> this.d()).a());
-         this.c.a($$1 -> {
-            fkm var10000 = this.c($$1);
-         });
-         this.c();
-      }
-
-      @Override
-      protected void c() {
-         if (this.d != null) {
-            this.d.a(this.n, this.c);
-         }
-
-         this.c.a();
-      }
-
-      @Override
-      public void d() {
-         this.m.a(fvd.this);
-      }
-
-      class a extends flk<fvd.a.b> {
-         public a(final fip $$0, final Collection<aud> $$1) {
-            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
-
-            for (aud $$2 : $$1) {
-               String $$3 = cqs.a(cqs.h, $$2.e());
-               if (!$$3.isEmpty()) {
-                  xe $$4 = xh.a($$2.b().f(), yb.a.a(true));
-                  xe $$5 = xe.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, flh.a(a.this.p, $$5, this.b())));
-               }
+         for (gdd $$2 : gdd.values()) {
+            if (!gdd.a(fvd.this.A).contains($$2)) {
+               this.b(new fvd.a.a($$2));
             }
          }
-
-         @Override
-         public int b() {
-            return this.g * 3 / 4;
-         }
       }
 
-      class b extends flk.a<fvd.a.b> {
-         private final xe b;
-         private final xe c;
-         private final flh d;
+      @Nullable
+      public fvd.a.a a(gdd $$0) {
+         return this.aJ_().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      }
 
-         b(final xe $$0, final xe $$1, final flh $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
+      @Override
+      public int b() {
+         return 320;
+      }
+
+      public void a(@Nullable fvd.a.a $$0) {
+         super.a($$0);
+         fvd.this.x = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends flv.a<fvd.a.a> {
+         final gdd b;
+
+         public a(final gdd $$1) {
+            this.b = $$1;
          }
 
          @Override
-         public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
-            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         public void a(fkm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fvd.this.p, this.b.b(), $$10, $$11, -1);
          }
 
          @Override
-         public xe a() {
-            return xe.a("narrator.select", xd.a(this.b, this.c));
+         public xh a() {
+            return xh.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         public gdd b() {
+            return this.b;
          }
       }
    }

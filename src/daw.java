@@ -1,61 +1,58 @@
-public class daw extends dab {
-   public daw(czy $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public boolean a(czz $$0, dej $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
+public class daw<T extends czq> implements dao<T> {
+   private final czq.a<T> w;
+   private final MapCodec<T> x;
+   private final zf<ws, T> y;
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvs $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (dhm.a($$5.h()) instanceof dom) {
-               $$2++;
-            } else {
-               if (!($$5.h() instanceof cun)) {
-                  return false;
-               }
-
-               $$3++;
-            }
-
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 == 1 && $$3 == 1;
-   }
-
-   public cvs a(czz $$0, jq.a $$1) {
-      cvs $$2 = cvs.k;
-      cun $$3 = (cun)cvw.rj;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvs $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            cvn $$6 = $$5.h();
-            if (dhm.a($$6) instanceof dom) {
-               $$2 = $$5;
-            } else if ($$6 instanceof cun) {
-               $$3 = (cun)$$6;
-            }
-         }
-      }
-
-      dhm $$7 = dom.a($$3.c());
-      return $$2.a($$7, 1);
+   public daw(czq.a<T> $$0, int $$1) {
+      this.w = $$0;
+      this.x = RecordCodecBuilder.mapCodec(
+         $$2 -> $$2.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
+                  czw.d.fieldOf("category").orElse(czw.c).forGetter($$0xx -> $$0xx.b),
+                  daf.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  cvx.e.fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
+               )
+               .apply($$2, $$0::create)
+      );
+      this.y = zf.a(this::a, this::a);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public MapCodec<T> a() {
+      return this.x;
    }
 
    @Override
-   public dap<?> ar_() {
-      return dap.m;
+   public zf<ws, T> b() {
+      return this.y;
+   }
+
+   private T a(ws $$0) {
+      String $$1 = $$0.p();
+      czw $$2 = $$0.b(czw.class);
+      daf $$3 = daf.a.decode($$0);
+      cvx $$4 = cvx.i.decode($$0);
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.l();
+      return this.w.create($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   private void a(ws $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      daf.a.encode($$0, $$1.d);
+      cvx.i.encode($$0, $$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
+   }
+
+   public czq a(String $$0, czw $$1, daf $$2, cvx $$3, float $$4, int $$5) {
+      return this.w.create($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

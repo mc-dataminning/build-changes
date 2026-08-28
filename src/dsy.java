@@ -1,136 +1,95 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dsy extends drv implements fai.a {
-   public static final String b = "RecordItem";
-   public static final String c = "ticks_since_song_started";
-   private cvs d = cvs.k;
-   private final cvz e = new cvz(this::k, this.aC_());
+public class dsy {
+   public static final alg<dsx> a = a("blank");
+   public static final alg<dsx> b = a("angler");
+   public static final alg<dsx> c = a("archer");
+   public static final alg<dsx> d = a("arms_up");
+   public static final alg<dsx> e = a("blade");
+   public static final alg<dsx> f = a("brewer");
+   public static final alg<dsx> g = a("burn");
+   public static final alg<dsx> h = a("danger");
+   public static final alg<dsx> i = a("explorer");
+   public static final alg<dsx> j = a("flow");
+   public static final alg<dsx> k = a("friend");
+   public static final alg<dsx> l = a("guster");
+   public static final alg<dsx> m = a("heart");
+   public static final alg<dsx> n = a("heartbreak");
+   public static final alg<dsx> o = a("howl");
+   public static final alg<dsx> p = a("miner");
+   public static final alg<dsx> q = a("mourner");
+   public static final alg<dsx> r = a("plenty");
+   public static final alg<dsx> s = a("prize");
+   public static final alg<dsx> t = a("scrape");
+   public static final alg<dsx> u = a("sheaf");
+   public static final alg<dsx> v = a("shelter");
+   public static final alg<dsx> w = a("skull");
+   public static final alg<dsx> x = a("snort");
+   private static final Map<cvt, alg<dsx>> y = Map.ofEntries(
+      Map.entry(cwb.qM, a),
+      Map.entry(cwb.xR, b),
+      Map.entry(cwb.xS, c),
+      Map.entry(cwb.xT, d),
+      Map.entry(cwb.xU, e),
+      Map.entry(cwb.xV, f),
+      Map.entry(cwb.xW, g),
+      Map.entry(cwb.xX, h),
+      Map.entry(cwb.xY, i),
+      Map.entry(cwb.xZ, j),
+      Map.entry(cwb.ya, k),
+      Map.entry(cwb.yb, l),
+      Map.entry(cwb.yc, m),
+      Map.entry(cwb.yd, n),
+      Map.entry(cwb.ye, o),
+      Map.entry(cwb.yf, p),
+      Map.entry(cwb.yg, q),
+      Map.entry(cwb.yh, r),
+      Map.entry(cwb.yi, s),
+      Map.entry(cwb.yj, t),
+      Map.entry(cwb.yk, u),
+      Map.entry(cwb.yl, v),
+      Map.entry(cwb.ym, w),
+      Map.entry(cwb.yn, x)
+   );
 
-   public dsy(jf $$0, dus $$1) {
-      super(drx.e, $$0, $$1);
+   @Nullable
+   public static alg<dsx> a(cvt $$0) {
+      return y.get($$0);
    }
 
-   public cvz j() {
-      return this.e;
+   private static alg<dsx> a(String $$0) {
+      return alg.a(ly.ax, alh.b($$0));
    }
 
-   public void k() {
-      this.o.a(this.aC_(), this.m().b());
-      this.e();
+   public static dsx a(kc<dsx> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   private void a(boolean $$0) {
-      if (this.o != null && this.o.a_(this.aC_()) == this.m()) {
-         this.o.a(this.aC_(), this.m().b(dlp.b, Boolean.valueOf($$0)), 2);
-         this.o.a(dzp.c, this.aC_(), dzp.a.a(this.m()));
-      }
-   }
-
-   public void t() {
-      if (this.o != null && !this.o.B) {
-         jf $$0 = this.aC_();
-         cvs $$1 = this.f();
-         if (!$$1.f()) {
-            this.h();
-            eyw $$2 = eyw.a($$0, 0.5, 1.01, 0.5).a(this.o.z, 0.7F);
-            cvs $$3 = $$1.u();
-            ckh $$4 = new ckh(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
-            $$4.q();
-            this.o.b($$4);
-         }
-      }
-   }
-
-   public static void a(dej $$0, jf $$1, dus $$2, dsy $$3) {
-      $$3.e.b($$0, $$2);
-   }
-
-   public int u() {
-      return cvy.a(this.o.G_(), this.d).map(jo::a).map(cvy::e).orElse(0);
-   }
-
-   @Override
-   protected void a(ug $$0, jq.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("RecordItem", 10)) {
-         this.d = cvs.a($$1, (vd)$$0.p("RecordItem")).orElse(cvs.k);
-      } else {
-         this.d = cvs.k;
-      }
-
-      if ($$0.b("ticks_since_song_started", 4)) {
-         cvy.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.i("ticks_since_song_started")));
-      }
-   }
-
-   @Override
-   protected void b(ug $$0, jq.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f().f()) {
-         $$0.a("RecordItem", this.f().a($$1));
-      }
-
-      if (this.e.b() != null) {
-         $$0.a("ticks_since_song_started", this.e.c());
-      }
-   }
-
-   @Override
-   public cvs f() {
-      return this.d;
-   }
-
-   @Override
-   public cvs c(int $$0) {
-      cvs $$1 = this.d;
-      this.b(cvs.k);
-      return $$1;
-   }
-
-   @Override
-   public void b(cvs $$0) {
-      this.d = $$0;
-      boolean $$1 = !this.d.f();
-      Optional<jo<cvy>> $$2 = cvy.a(this.o.G_(), this.d);
-      this.a($$1);
-      if ($$1 && $$2.isPresent()) {
-         this.e.a(this.o, $$2.get());
-      } else {
-         this.e.a(this.o, this.m());
-      }
-   }
-
-   @Override
-   public int al_() {
-      return 1;
-   }
-
-   @Override
-   public drv v() {
-      return this;
-   }
-
-   @Override
-   public boolean b(int $$0, cvs $$1) {
-      return $$1.b(ks.W) && this.a($$0).f();
-   }
-
-   @Override
-   public boolean a(brl $$0, int $$1, cvs $$2) {
-      return $$0.a_(cvs::f);
-   }
-
-   @VisibleForTesting
-   public void c(cvs $$0) {
-      this.d = $$0;
-      cvy.a(this.o.G_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
-      this.o.a(this.aC_(), this.m().b());
-      this.e();
-   }
-
-   @VisibleForTesting
-   public void w() {
-      cvy.a(this.o.G_(), this.f()).ifPresent($$0 -> this.e.a(this.o, (jo<cvy>)$$0));
+   private static dsx a(kc<dsx> $$0, alg<dsx> $$1, String $$2) {
+      return kc.a($$0, $$1, new dsx(alh.b($$2)));
    }
 }

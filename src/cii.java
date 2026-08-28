@@ -1,59 +1,132 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-public class cii extends cig {
-   public cii(bty<? extends cii> $$0, dej $$1) {
-      super($$0, $$1);
+public class cii extends bwo<cig> {
+   public static final int c = 100;
+   public static final int d = 6;
+   public static final int e = 10;
+   private static final float h = 1.75F;
+   private static final float i = 0.75F;
+   public static final int f = 100;
+   public static final int g = 5;
+   private int j;
+   private int k;
+   private final awj l;
+   private final awj m;
+   private ezh n;
+   private cii.a o = cii.a.d;
+
+   public cii(awj $$0, awj $$1) {
+      super(ImmutableMap.of(cdz.m, cea.b, cdz.n, cea.c, cdz.o, cea.a, cdz.Z, cea.b), 100);
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   @Override
-   protected awf w() {
-      return awg.hg;
+   protected boolean a(arm $$0, cig $$1) {
+      buv $$2 = $$1.ed().c(cdz.o).get();
+      boolean $$3 = this.a($$1, $$2);
+      if (!$$3) {
+         $$1.ed().b(cdz.o);
+         this.b($$1, $$2);
+      }
+
+      return $$3 && $$1.ax() != bvh.i && cig.j($$2);
    }
 
-   @Override
-   protected awf gP() {
-      return awg.hh;
+   protected boolean a(arm $$0, cig $$1, long $$2) {
+      return $$1.ed().a(cdz.o) && this.o != cii.a.d && !$$1.ed().a(cdz.Z);
    }
 
-   @Override
-   protected awf o_() {
-      return awg.hj;
+   protected void b(arm $$0, cig $$1, long $$2) {
+      buv $$3 = $$1.ed().c(cdz.o).get();
+      bwq.a($$1, $$3);
+      $$1.c($$3);
+      $$1.ed().a(cdz.m, new cec($$3.dv(), 2.0F, 0));
+      this.k = 10;
+      this.o = cii.a.a;
    }
 
-   @Nullable
-   @Override
-   protected awf gq() {
-      return awg.hk;
+   protected void c(arm $$0, cig $$1, long $$2) {
+      $$1.ed().b(cdz.o);
+      $$1.q();
+      $$1.b(bvh.a);
    }
 
-   @Override
-   protected awf d(bsj $$0) {
-      return awg.hl;
-   }
-
-   @Override
-   public boolean a(cgd $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof cii) && !($$0 instanceof cij) ? false : this.gY() && ((cih)$$0).gY();
+   private void b(arm $$0, cig $$1) {
+      $$0.a(null, $$1, this.m, awl.g, 2.0F, 1.0F);
+      Optional<btz> $$2 = $$1.t();
+      if ($$2.isPresent()) {
+         btz $$3 = $$2.get();
+         if ($$3.bM()) {
+            $$1.E($$3);
+            if (!$$3.bM()) {
+               $$3.a(btz.c.a);
+            }
+         }
       }
    }
 
-   @Override
-   protected void gX() {
-      this.a(awg.hm, 0.4F, 1.0F);
+   protected void d(arm $$0, cig $$1, long $$2) {
+      buv $$3 = $$1.ed().c(cdz.o).get();
+      $$1.c($$3);
+      switch (this.o) {
+         case a:
+            if ($$3.f($$1) < 1.75F) {
+               $$0.a(null, $$1, this.l, awl.g, 2.0F, 1.0F);
+               $$1.b(bvh.j);
+               $$3.h($$3.dv().a($$1.dv()).d().c(0.75));
+               this.n = $$3.dv();
+               this.j = 0;
+               this.o = cii.a.b;
+            } else if (this.k <= 0) {
+               $$1.ed().a(cdz.m, new cec($$3.dv(), 2.0F, 0));
+               this.k = 10;
+            } else {
+               this.k--;
+            }
+            break;
+         case b:
+            if (this.j++ >= 6) {
+               this.o = cii.a.c;
+               this.b($$0, $$1);
+            }
+            break;
+         case c:
+            if (this.j >= 10) {
+               this.o = cii.a.d;
+            } else {
+               this.j++;
+            }
+         case d:
+      }
    }
 
-   @Nullable
-   @Override
-   public btk a(arj $$0, btk $$1) {
-      bty<? extends cih> $$2 = $$1 instanceof cij ? bty.at : bty.z;
-      cih $$3 = $$2.a($$0, btx.e);
-      if ($$3 != null) {
-         this.a($$1, $$3);
+   private boolean a(cig $$0, buv $$1) {
+      ers $$2 = $$0.P().a($$1, 0);
+      return $$2 != null && $$2.m() < 1.75F;
+   }
+
+   private void b(cig $$0, buv $$1) {
+      List<UUID> $$2 = $$0.ed().c(cdz.aa).orElseGet(ArrayList::new);
+      boolean $$3 = !$$2.contains($$1.cH());
+      if ($$2.size() == 5 && $$3) {
+         $$2.remove(0);
       }
 
-      return $$3;
+      if ($$3) {
+         $$2.add($$1.cH());
+      }
+
+      $$0.ed().a(cdz.aa, $$2, 100L);
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

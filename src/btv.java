@@ -1,60 +1,125 @@
-public class btv {
-   public static final byte a = 1;
-   public static final byte b = 3;
-   public static final byte c = 4;
-   public static final byte d = 5;
-   public static final byte e = 6;
-   public static final byte f = 7;
-   public static final byte g = 8;
-   public static final byte h = 9;
-   public static final byte i = 10;
-   public static final byte j = 11;
-   public static final byte k = 12;
-   public static final byte l = 13;
-   public static final byte m = 14;
-   public static final byte n = 15;
-   public static final byte o = 16;
-   public static final byte p = 17;
-   public static final byte q = 18;
-   public static final byte r = 19;
-   public static final byte s = 20;
-   public static final byte t = 21;
-   public static final byte u = 22;
-   public static final byte v = 23;
-   public static final byte w = 24;
-   public static final byte x = 25;
-   public static final byte y = 26;
-   public static final byte z = 27;
-   public static final byte A = 28;
-   public static final byte B = 29;
-   public static final byte C = 30;
-   public static final byte D = 31;
-   public static final byte E = 32;
-   public static final byte F = 34;
-   public static final byte G = 35;
-   public static final byte H = 38;
-   public static final byte I = 39;
-   public static final byte J = 40;
-   public static final byte K = 41;
-   public static final byte L = 42;
-   public static final byte M = 45;
-   public static final byte N = 46;
-   public static final byte O = 47;
-   public static final byte P = 48;
-   public static final byte Q = 49;
-   public static final byte R = 50;
-   public static final byte S = 51;
-   public static final byte T = 52;
-   public static final byte U = 53;
-   public static final byte V = 54;
-   public static final byte W = 55;
-   public static final byte X = 56;
-   public static final byte Y = 58;
-   public static final byte Z = 59;
-   public static final byte aa = 60;
-   public static final byte ab = 61;
-   public static final byte ac = 62;
-   public static final byte ad = 63;
-   public static final byte ae = 64;
-   public static final byte af = 65;
+public enum btv {
+   a(true) {
+      @Override
+      void a(bux $$0, bux $$1, btu $$2) {
+         btz $$3 = $$0.db();
+         if ($$3 != null) {
+            $$3.af();
+            $$3.K = 0;
+            $$3.n($$1);
+         }
+
+         if ($$2.b()) {
+            for (buh $$4 : buh.i) {
+               cvx $$5 = $$0.a($$4);
+               if (!$$5.f()) {
+                  $$1.a($$4, $$5.g());
+                  $$1.a($$4, $$0.h($$4));
+               }
+            }
+         }
+
+         $$1.fa().a($$0.fa());
+         $$1.aa = $$0.aa;
+         $$1.b(7, $$0.fL());
+         float $$6 = $$0.eG() / $$0.eV();
+         $$1.x($$1.eV() * $$6);
+         $$1.ba = $$0.ba;
+         $$1.aK = $$0.aK;
+         $$1.aU = $$0.aU;
+         $$1.w($$0);
+         $$1.h($$0.dA());
+         $$1.d($$0.aJ());
+         $$0.fR().ifPresent($$1::g);
+         btz $$7 = $$0.C();
+         if ($$7 != null) {
+            $$1.b($$7, true);
+         }
+
+         this.b($$0, $$1, $$2);
+      }
+   },
+   b(false) {
+      @Override
+      void a(bux $$0, bux $$1, btu $$2) {
+         btz $$3 = $$0.db();
+         if ($$3 != null) {
+            $$3.af();
+         }
+
+         btz $$4 = $$0.C();
+         if ($$4 != null) {
+            $$0.a(true, true);
+         }
+
+         this.b($$0, $$1, $$2);
+      }
+   };
+
+   private final boolean c;
+
+   btv(final boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   abstract void a(bux var1, bux var2, btu var3);
+
+   void b(bux $$0, bux $$1, btu $$2) {
+      $$1.E($$0.fy());
+
+      for (bte $$3 : $$0.eD()) {
+         $$1.a($$3);
+      }
+
+      if ($$0.p_()) {
+         $$1.a(true);
+      }
+
+      if ($$0 instanceof btq $$4 && $$1 instanceof btq $$5) {
+         $$5.c_($$4.g());
+         $$5.d = $$4.d;
+         $$5.e = $$4.e;
+      }
+
+      bvx<?> $$6 = $$0.ed();
+      bvx<?> $$7 = $$1.ed();
+      if ($$6.a(cdz.ab, cea.c) && $$6.a(cdz.ab)) {
+         $$7.a(cdz.ab, $$6.c(cdz.ab));
+      }
+
+      if ($$2.c()) {
+         $$1.a_($$0.fP());
+      }
+
+      $$1.v($$0.gj());
+      $$1.u($$0.gi());
+      if ($$0.gc()) {
+         $$1.gb();
+      }
+
+      $$1.a($$0.ec());
+      $$1.a($$0.eK());
+      if ($$0.am()) {
+         $$1.b($$0.an());
+         $$1.p($$0.cM());
+      }
+
+      $$1.c($$0.bZ());
+      $$1.n($$0.cD());
+      $$1.f($$0.bd());
+      $$1.f($$0.aD());
+      $$1.e($$0.bc());
+      $$0.as().forEach($$1::a);
+      if ($$2.d() != null) {
+         fam $$8 = $$1.dX().O();
+         $$8.a($$1.cI(), $$2.d());
+         if ($$0.cs() != null && $$0.cs() == $$2.d()) {
+            $$8.b($$0.cI(), $$0.cs());
+         }
+      }
+   }
 }

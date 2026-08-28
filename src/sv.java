@@ -1,33 +1,28 @@
-import java.util.Collection;
-import java.util.function.Consumer;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public record sv(String b, Collection<tb> c, Consumer<arj> d, Consumer<arj> e) {
-   public static final String a = "defaultBatch";
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sv {
+   int a() default 100;
 
-   public sv(String b, Collection<tb> c, Consumer<arj> d, Consumer<arj> e) {
-      if (c.isEmpty()) {
-         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
-      } else {
-         this.b = b;
-         this.c = c;
-         this.d = d;
-         this.e = e;
-      }
-   }
+   String b() default "defaultBatch";
 
-   public String a() {
-      return this.b;
-   }
+   boolean c() default false;
 
-   public Collection<tb> b() {
-      return this.c;
-   }
+   int d() default 0;
 
-   public Consumer<arj> c() {
-      return this.d;
-   }
+   boolean e() default true;
 
-   public Consumer<arj> d() {
-      return this.e;
-   }
+   boolean f() default false;
+
+   String g() default "";
+
+   long h() default 0L;
+
+   int i() default 1;
+
+   int j() default 1;
 }

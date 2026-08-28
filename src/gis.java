@@ -1,193 +1,265 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 import org.joml.Vector3f;
 
-public class gis {
-   private static final boolean g = false;
-   private static final float h = -16.0F;
-   private static final float i = 32.0F;
-   public final Vector3f a;
-   public final Vector3f b;
-   public final Map<jk, git> c;
-   public final giu d;
-   public final boolean e;
-   public final int f;
+public class gis implements AutoCloseable {
+   private static final alh a = alh.b("textures/environment/sun.png");
+   private static final alh b = alh.b("textures/environment/moon_phases.png");
+   private static final alh c = alh.b("textures/environment/end_sky.png");
+   private static final float d = 512.0F;
+   private final fdw e = this.a();
+   private final fdw f = this.b();
+   private final fdw g = this.c();
 
-   public gis(Vector3f $$0, Vector3f $$1, Map<jk, git> $$2) {
-      this($$0, $$1, $$2, null, true, 0);
+   private fdw a() {
+      fdw $$0 = new fdw(fdw.a.a);
+      $$0.a();
+      $$0.a(this.a(fdv.b()));
+      fdw.b();
+      return $$0;
    }
 
-   public gis(Vector3f $$0, Vector3f $$1, Map<jk, git> $$2, @Nullable giu $$3, boolean $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.a();
+   private fdw b() {
+      fdw $$0 = new fdw(fdw.a.a);
+      $$0.a();
+      $$0.a(this.a(fdv.b(), 16.0F));
+      fdw.b();
+      return $$0;
    }
 
-   private void a() {
-      for (Entry<jk, git> $$0 : this.c.entrySet()) {
-         float[] $$1 = this.a($$0.getKey());
-         $$0.getValue().d().a($$1);
-      }
+   private fdw c() {
+      fdw $$0 = new fdw(fdw.a.a);
+      $$0.a();
+      $$0.a(this.a(fdv.b(), -16.0F));
+      fdw.b();
+      return $$0;
    }
 
-   private float[] a(jk $$0) {
-      switch ($$0) {
-         case a:
-            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
-         case b:
-            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
-         case c:
-         default:
-            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
-         case d:
-            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
-         case e:
-            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
-         case f:
-            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
+   private fds a(fdv $$0) {
+      azr $$1 = azr.a(10842L);
+      int $$2 = 1500;
+      float $$3 = 100.0F;
+      fdo $$4 = $$0.a(fdy.c.h, fdr.e);
+
+      for (int $$5 = 0; $$5 < 1500; $$5++) {
+         float $$6 = $$1.i() * 2.0F - 1.0F;
+         float $$7 = $$1.i() * 2.0F - 1.0F;
+         float $$8 = $$1.i() * 2.0F - 1.0F;
+         float $$9 = 0.15F + $$1.i() * 0.1F;
+         float $$10 = azj.k($$6, $$7, $$8);
+         if (!($$10 <= 0.010000001F) && !($$10 >= 1.0F)) {
+            Vector3f $$11 = new Vector3f($$6, $$7, $$8).normalize(100.0F);
+            float $$12 = (float)($$1.j() * (float) Math.PI * 2.0);
+            Matrix3f $$13 = new Matrix3f().rotateTowards(new Vector3f($$11).negate(), new Vector3f(0.0F, 1.0F, 0.0F)).rotateZ(-$$12);
+            $$4.a(new Vector3f($$9, -$$9, 0.0F).mul($$13).add($$11));
+            $$4.a(new Vector3f($$9, $$9, 0.0F).mul($$13).add($$11));
+            $$4.a(new Vector3f(-$$9, $$9, 0.0F).mul($$13).add($$11));
+            $$4.a(new Vector3f(-$$9, -$$9, 0.0F).mul($$13).add($$11));
+         }
       }
+
+      return $$4.b();
    }
 
-   protected static class a implements JsonDeserializer<gis> {
-      private static final boolean a = true;
-      private static final int b = 0;
+   private fds a(fdv $$0, float $$1) {
+      float $$2 = Math.signum($$1) * 512.0F;
+      fdo $$3 = $$0.a(fdy.c.g, fdr.e);
+      $$3.a(0.0F, $$1, 0.0F);
 
-      public gis a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.e($$3);
-         Vector3f $$5 = this.d($$3);
-         giu $$6 = this.a($$3);
-         Map<jk, git> $$7 = this.a($$2, $$3);
-         if ($$3.has("shade") && !ayv.c($$3, "shade")) {
-            throw new JsonParseException("Expected shade to be a Boolean");
-         } else {
-            boolean $$8 = ayv.a($$3, "shade", true);
-            int $$9 = 0;
-            if ($$3.has("light_emission")) {
-               boolean $$10 = ayv.b($$3, "light_emission");
-               if ($$10) {
-                  $$9 = ayv.o($$3, "light_emission");
-               }
-
-               if (!$$10 || $$9 < 0 || $$9 > 15) {
-                  throw new JsonParseException("Expected light_emission to be an Integer between (inclusive) 0 and 15");
-               }
-            }
-
-            return new gis($$4, $$5, $$7, $$6, $$8, $$9);
-         }
+      for (int $$4 = -180; $$4 <= 180; $$4 += 45) {
+         $$3.a($$2 * azj.b((float)$$4 * (float) (Math.PI / 180.0)), $$1, 512.0F * azj.a((float)$$4 * (float) (Math.PI / 180.0)));
       }
 
-      @Nullable
-      private giu a(JsonObject $$0) {
-         giu $$1 = null;
-         if ($$0.has("rotation")) {
-            JsonObject $$2 = ayv.u($$0, "rotation");
-            Vector3f $$3 = this.a($$2, "origin");
-            $$3.mul(0.0625F);
-            jk.a $$4 = this.c($$2);
-            float $$5 = this.b($$2);
-            boolean $$6 = ayv.a($$2, "rescale", false);
-            $$1 = new giu($$3, $$4, $$5, $$6);
-         }
+      return $$3.b();
+   }
 
-         return $$1;
+   public void a(float $$0, float $$1, float $$2) {
+      RenderSystem.depthMask(false);
+      RenderSystem.setShader(ghg.d);
+      RenderSystem.setShaderColor($$0, $$1, $$2, 1.0F);
+      this.f.a();
+      this.f.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      fdw.b();
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.depthMask(true);
+   }
+
+   public void a(fdt $$0) {
+      RenderSystem.depthMask(false);
+      RenderSystem.setShader(ghg.d);
+      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
+      $$0.a();
+      $$0.a(0.0F, 12.0F, 0.0F);
+      this.g.a();
+      this.g.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      fdw.b();
+      $$0.b();
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.depthMask(true);
+   }
+
+   public void a(fdt $$0, fdv $$1, float $$2, int $$3, float $$4, float $$5, ghk $$6) {
+      $$0.a();
+      $$0.a(a.d.rotationDegrees(-90.0F));
+      $$0.a(a.b.rotationDegrees($$2 * 360.0F));
+      this.a($$4, $$1, $$0);
+      this.a($$3, $$4, $$1, $$0);
+      if ($$5 > 0.0F) {
+         this.a($$6, $$5, $$0);
       }
 
-      private float b(JsonObject $$0) {
-         float $$1 = ayv.m($$0, "angle");
-         if ($$1 != 0.0F && azf.e($$1) != 22.5F && azf.e($$1) != 45.0F) {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
-         } else {
-            return $$1;
-         }
+      $$0.b();
+   }
+
+   private void a(float $$0, fdv $$1, fdt $$2) {
+      float $$3 = 30.0F;
+      float $$4 = 100.0F;
+      fdo $$5 = $$1.a(fdy.c.h, fdr.i);
+      Matrix4f $$6 = $$2.c().a();
+      RenderSystem.depthMask(false);
+      RenderSystem.overlayBlendFunc();
+      RenderSystem.setShader(ghg.h);
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$0);
+      RenderSystem.setShaderTexture(0, a);
+      RenderSystem.enableBlend();
+      $$5.a($$6, -30.0F, 100.0F, -30.0F).a(0.0F, 0.0F);
+      $$5.a($$6, 30.0F, 100.0F, -30.0F).a(1.0F, 0.0F);
+      $$5.a($$6, 30.0F, 100.0F, 30.0F).a(1.0F, 1.0F);
+      $$5.a($$6, -30.0F, 100.0F, 30.0F).a(0.0F, 1.0F);
+      fdp.a($$5.b());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.depthMask(true);
+   }
+
+   private void a(int $$0, float $$1, fdv $$2, fdt $$3) {
+      float $$4 = 20.0F;
+      int $$5 = $$0 % 4;
+      int $$6 = $$0 / 4 % 2;
+      float $$7 = (float)($$5 + 0) / 4.0F;
+      float $$8 = (float)($$6 + 0) / 2.0F;
+      float $$9 = (float)($$5 + 1) / 4.0F;
+      float $$10 = (float)($$6 + 1) / 2.0F;
+      float $$11 = 100.0F;
+      fdo $$12 = $$2.a(fdy.c.h, fdr.i);
+      RenderSystem.depthMask(false);
+      RenderSystem.overlayBlendFunc();
+      RenderSystem.setShader(ghg.h);
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$1);
+      RenderSystem.setShaderTexture(0, b);
+      RenderSystem.enableBlend();
+      Matrix4f $$13 = $$3.c().a();
+      $$12.a($$13, -20.0F, -100.0F, 20.0F).a($$9, $$10);
+      $$12.a($$13, 20.0F, -100.0F, 20.0F).a($$7, $$10);
+      $$12.a($$13, 20.0F, -100.0F, -20.0F).a($$7, $$8);
+      $$12.a($$13, -20.0F, -100.0F, -20.0F).a($$9, $$8);
+      fdp.a($$12.b());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.depthMask(true);
+   }
+
+   private void a(ghk $$0, float $$1, fdt $$2) {
+      Matrix4fStack $$3 = RenderSystem.getModelViewStack();
+      $$3.pushMatrix();
+      $$3.mul($$2.c().a());
+      RenderSystem.depthMask(false);
+      RenderSystem.overlayBlendFunc();
+      RenderSystem.setShader(ghg.d);
+      RenderSystem.setShaderColor($$1, $$1, $$1, $$1);
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderFog(ghk.a);
+      this.e.a();
+      this.e.a($$3, RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      fdw.b();
+      RenderSystem.setShaderFog($$0);
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.depthMask(true);
+      $$3.popMatrix();
+   }
+
+   public void a(fdt $$0, fdv $$1, float $$2, int $$3) {
+      RenderSystem.setShader(ghg.e);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      $$0.a();
+      $$0.a(a.b.rotationDegrees(90.0F));
+      float $$4 = azj.a($$2) < 0.0F ? 180.0F : 0.0F;
+      $$0.a(a.f.rotationDegrees($$4));
+      $$0.a(a.f.rotationDegrees(90.0F));
+      Matrix4f $$5 = $$0.c().a();
+      fdo $$6 = $$1.a(fdy.c.g, fdr.f);
+      float $$7 = axu.h(axu.a($$3));
+      $$6.a($$5, 0.0F, 100.0F, 0.0F).a($$3);
+      int $$8 = axu.g($$3);
+      int $$9 = 16;
+
+      for (int $$10 = 0; $$10 <= 16; $$10++) {
+         float $$11 = (float)$$10 * (float) (Math.PI * 2) / 16.0F;
+         float $$12 = azj.a($$11);
+         float $$13 = azj.b($$11);
+         $$6.a($$5, $$12 * 120.0F, $$13 * 120.0F, -$$13 * 40.0F * $$7).a($$8);
       }
 
-      private jk.a c(JsonObject $$0) {
-         String $$1 = ayv.i($$0, "axis");
-         jk.a $$2 = jk.a.a($$1.toLowerCase(Locale.ROOT));
-         if ($$2 == null) {
-            throw new JsonParseException("Invalid rotation axis: " + $$1);
-         } else {
-            return $$2;
-         }
-      }
+      fdp.a($$6.b());
+      $$0.b();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+   }
 
-      private Map<jk, git> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jk, git> $$2 = this.b($$0, $$1);
-         if ($$2.isEmpty()) {
-            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
-         } else {
-            return $$2;
-         }
-      }
+   public void b(fdt $$0) {
+      RenderSystem.enableBlend();
+      RenderSystem.depthMask(false);
+      RenderSystem.setShader(ghg.i);
+      RenderSystem.setShaderTexture(0, c);
+      fdv $$1 = fdv.b();
 
-      private Map<jk, git> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<jk, git> $$2 = Maps.newEnumMap(jk.class);
-         JsonObject $$3 = ayv.u($$1, "faces");
-
-         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-            jk $$5 = this.a($$4.getKey());
-            $$2.put($$5, (git)$$0.deserialize($$4.getValue(), git.class));
+      for (int $$2 = 0; $$2 < 6; $$2++) {
+         $$0.a();
+         if ($$2 == 1) {
+            $$0.a(a.b.rotationDegrees(90.0F));
          }
 
-         return $$2;
-      }
-
-      private jk a(String $$0) {
-         jk $$1 = jk.a($$0);
-         if ($$1 == null) {
-            throw new JsonParseException("Unknown facing: " + $$0);
-         } else {
-            return $$1;
+         if ($$2 == 2) {
+            $$0.a(a.b.rotationDegrees(-90.0F));
          }
-      }
 
-      private Vector3f d(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "to");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         if ($$2 == 3) {
+            $$0.a(a.b.rotationDegrees(180.0F));
          }
-      }
 
-      private Vector3f e(JsonObject $$0) {
-         Vector3f $$1 = this.a($$0, "from");
-         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
-            return $$1;
-         } else {
-            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         if ($$2 == 4) {
+            $$0.a(a.f.rotationDegrees(90.0F));
          }
-      }
 
-      private Vector3f a(JsonObject $$0, String $$1) {
-         JsonArray $$2 = ayv.v($$0, $$1);
-         if ($$2.size() != 3) {
-            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
-         } else {
-            float[] $$3 = new float[3];
-
-            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-               $$3[$$4] = ayv.e($$2.get($$4), $$1 + "[" + $$4 + "]");
-            }
-
-            return new Vector3f($$3[0], $$3[1], $$3[2]);
+         if ($$2 == 5) {
+            $$0.a(a.f.rotationDegrees(-90.0F));
          }
+
+         Matrix4f $$3 = $$0.c().a();
+         fdo $$4 = $$1.a(fdy.c.h, fdr.j);
+         $$4.a($$3, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(-14145496);
+         $$4.a($$3, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(-14145496);
+         $$4.a($$3, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(-14145496);
+         $$4.a($$3, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(-14145496);
+         fdp.a($$4.b());
+         $$0.b();
       }
+
+      RenderSystem.depthMask(true);
+      RenderSystem.disableBlend();
+   }
+
+   @Override
+   public void close() {
+      this.e.close();
+      this.f.close();
+      this.g.close();
    }
 }

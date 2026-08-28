@@ -1,328 +1,197 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.io.Reader;
-import java.lang.reflect.Type;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class giw implements gzy {
-   private static final Logger g = LogUtils.getLogger();
-   private static final giy h = new giy();
-   @VisibleForTesting
-   static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(giw.class, new giw.a())
-      .registerTypeAdapter(gis.class, new gis.a())
-      .registerTypeAdapter(git.class, new git.a())
-      .registerTypeAdapter(giv.class, new giv.a())
-      .registerTypeAdapter(gjc.class, new gjc.a())
-      .registerTypeAdapter(gjd.class, new gjd.a())
-      .registerTypeAdapter(gja.class, new gja.a())
-      .create();
-   private static final char i = '#';
-   public static final String b = "particle";
-   private static final boolean j = true;
-   private final List<gis> k;
-   @Nullable
-   private final giw.b l;
-   @Nullable
-   private final Boolean m;
-   private final gjd n;
-   private final List<gja> o;
-   public String c = "";
-   @VisibleForTesting
-   protected final Map<String, Either<gzm, String>> d;
-   @Nullable
-   protected giw e;
-   @Nullable
-   protected ale f;
+public class giw {
+   private static final int a = 10;
+   private static final int b = 21;
+   private static final alh c = alh.b("textures/environment/rain.png");
+   private static final alh d = alh.b("textures/environment/snow.png");
+   private static final int e = 32;
+   private static final int f = 16;
+   private int g;
+   private final float[] h = new float[1024];
+   private final float[] i = new float[1024];
 
-   public static giw a(Reader $$0) {
-      return ayv.a(a, $$0, giw.class);
-   }
-
-   public giw(@Nullable ale $$0, List<gis> $$1, Map<String, Either<gzm, String>> $$2, @Nullable Boolean $$3, @Nullable giw.b $$4, gjd $$5, List<gja> $$6) {
-      this.k = $$1;
-      this.m = $$3;
-      this.l = $$4;
-      this.d = $$2;
-      this.f = $$0;
-      this.n = $$5;
-      this.o = $$6;
-   }
-
-   public List<gis> a() {
-      return this.k.isEmpty() && this.e != null ? this.e.a() : this.k;
-   }
-
-   public boolean b() {
-      if (this.m != null) {
-         return this.m;
-      } else {
-         return this.e != null ? this.e.b() : true;
-      }
-   }
-
-   public giw.b c() {
-      if (this.l != null) {
-         return this.l;
-      } else {
-         return this.e != null ? this.e.c() : giw.b.b;
-      }
-   }
-
-   public boolean d() {
-      return this.f == null || this.e != null && this.e.d();
-   }
-
-   public List<gja> e() {
-      return this.o;
-   }
-
-   private gjb a(gzo $$0, giw $$1) {
-      return this.o.isEmpty() ? gjb.a : new gjb($$0, $$1, this.o);
-   }
-
-   @Override
-   public void a(gzy.b $$0, gzy.a $$1) {
-      if (this.f != null) {
-         if (!($$0.a(this.f) instanceof giw $$3)) {
-            throw new IllegalStateException("BlockModel parent has to be a block model.");
+   public giw() {
+      for (int $$0 = 0; $$0 < 32; $$0++) {
+         for (int $$1 = 0; $$1 < 32; $$1++) {
+            float $$2 = (float)($$1 - 16);
+            float $$3 = (float)($$0 - 16);
+            float $$4 = azj.f($$2, $$3);
+            this.h[$$0 * 32 + $$1] = -$$3 / $$4;
+            this.i[$$0 * 32 + $$1] = $$2 / $$4;
          }
-
-         this.e = $$3;
-      }
-
-      if ($$1 != gzy.a.b) {
-         this.o.forEach($$1x -> $$0.b($$1x.a()));
       }
    }
 
-   @Override
-   public gzi a(gzo $$0, Function<gzm, gxg> $$1, gzu $$2) {
-      return this.a($$0, this, $$1, $$2, true);
+   public void a(dev $$0, ghu $$1, int $$2, float $$3, ezh $$4) {
+      float $$5 = $$0.d($$3);
+      if (!($$5 <= 0.0F)) {
+         int $$6 = fja.N() ? 10 : 5;
+         List<giw.a> $$7 = new ArrayList<>();
+         List<giw.a> $$8 = new ArrayList<>();
+         this.a($$0, $$2, $$3, $$4, $$6, $$7, $$8);
+         if (!$$7.isEmpty() || !$$8.isEmpty()) {
+            this.a($$1, $$4, $$6, $$5, $$7, $$8);
+         }
+      }
    }
 
-   public gzi a(gzo $$0, giw $$1, Function<gzm, gxg> $$2, gzu $$3, boolean $$4) {
-      gxg $$5 = $$2.apply(this.b("particle"));
-      if (this.f() == gzx.d) {
-         return new gzl(this.g(), this.a($$0, $$1), $$5, this.c().a());
-      } else {
-         gzw.a $$6 = new gzw.a(this, this.a($$0, $$1), $$4).a($$5);
+   private void a(dev $$0, int $$1, float $$2, ezh $$3, int $$4, List<giw.a> $$5, List<giw.a> $$6) {
+      int $$7 = azj.a($$3.d);
+      int $$8 = azj.a($$3.e);
+      int $$9 = azj.a($$3.f);
+      jg.a $$10 = new jg.a();
+      azr $$11 = azr.a();
 
-         for (gis $$7 : this.a()) {
-            for (jk $$8 : $$7.c.keySet()) {
-               git $$9 = $$7.c.get($$8);
-               gxg $$10 = $$2.apply(this.b($$9.c()));
-               if ($$9.a() == null) {
-                  $$6.a(a($$7, $$9, $$10, $$8, $$3));
-               } else {
-                  $$6.a(jk.a($$3.b().c(), $$9.a()), a($$7, $$9, $$10, $$8, $$3));
+      for (int $$12 = $$9 - $$4; $$12 <= $$9 + $$4; $$12++) {
+         for (int $$13 = $$7 - $$4; $$13 <= $$7 + $$4; $$13++) {
+            int $$14 = $$0.a(eaz.a.e, $$13, $$12);
+            int $$15 = Math.max($$8 - $$4, $$14);
+            int $$16 = Math.max($$8 + $$4, $$14);
+            if ($$16 - $$15 != 0) {
+               dfw.c $$17 = this.a($$0, $$10.d($$13, $$8, $$12));
+               if ($$17 != dfw.c.a) {
+                  int $$18 = $$13 * $$13 * 3121 + $$13 * 45238971 ^ $$12 * $$12 * 418711 + $$12 * 13761;
+                  $$11.b((long)$$18);
+                  int $$19 = Math.max($$8, $$14);
+                  int $$20 = ghs.a($$0, $$10.d($$13, $$19, $$12));
+                  if ($$17 == dfw.c.b) {
+                     $$5.add(this.a($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
+                  } else if ($$17 == dfw.c.c) {
+                     $$6.add(this.b($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
+                  }
                }
             }
          }
-
-         return $$6.b();
       }
    }
 
-   private static gir a(gis $$0, git $$1, gxg $$2, jk $$3, gzu $$4) {
-      return h.a($$0.a, $$0.b, $$1, $$2, $$3, $$4, $$0.d, $$0.e, $$0.f);
-   }
-
-   public boolean a(String $$0) {
-      return !gww.b().equals(this.b($$0).b());
-   }
-
-   public gzm b(String $$0) {
-      if (d($$0)) {
-         $$0 = $$0.substring(1);
+   private void a(ghu $$0, ezh $$1, int $$2, float $$3, List<giw.a> $$4, List<giw.a> $$5) {
+      $$0.c();
+      fdv $$6 = fdv.b();
+      RenderSystem.disableCull();
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      RenderSystem.depthMask(fja.O());
+      RenderSystem.setShader(ghg.c);
+      if (!$$4.isEmpty()) {
+         RenderSystem.setShaderTexture(0, c);
+         this.a($$6, $$4, $$1, 1.0F, $$2, $$3);
       }
 
-      List<String> $$1 = Lists.newArrayList();
-
-      while (true) {
-         Either<gzm, String> $$2 = this.c($$0);
-         Optional<gzm> $$3 = $$2.left();
-         if ($$3.isPresent()) {
-            return $$3.get();
-         }
-
-         $$0 = (String)$$2.right().get();
-         if ($$1.contains($$0)) {
-            g.warn("Unable to resolve texture due to reference chain {}->{} in {}", new Object[]{Joiner.on("->").join($$1), $$0, this.c});
-            return new gzm(gxf.d, gww.b());
-         }
-
-         $$1.add($$0);
-      }
-   }
-
-   private Either<gzm, String> c(String $$0) {
-      for (giw $$1 = this; $$1 != null; $$1 = $$1.e) {
-         Either<gzm, String> $$2 = $$1.d.get($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
+      if (!$$5.isEmpty()) {
+         RenderSystem.setShaderTexture(0, d);
+         this.a($$6, $$5, $$1, 0.8F, $$2, $$3);
       }
 
-      return Either.left(new gzm(gxf.d, gww.b()));
+      RenderSystem.depthMask(true);
+      RenderSystem.enableCull();
+      RenderSystem.disableBlend();
+      $$0.b();
    }
 
-   static boolean d(String $$0) {
-      return $$0.charAt(0) == '#';
+   private giw.a a(azr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
+      int $$8 = $$1 & 131071;
+      int $$9 = $$2 * $$2 * 3121 + $$2 * 45238971 + $$5 * $$5 * 418711 + $$5 * 13761 & 0xFF;
+      float $$10 = 3.0F + $$0.i();
+      float $$11 = -((float)($$8 + $$9) + $$7) / 32.0F * $$10;
+      float $$12 = $$11 % 32.0F;
+      return new giw.a($$2, $$5, $$3, $$4, 0.0F, $$12, $$6);
    }
 
-   public giw f() {
-      return this.e == null ? this : this.e.f();
+   private giw.a b(azr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
+      float $$8 = (float)$$1 + $$7;
+      float $$9 = (float)($$0.j() + (double)($$8 * 0.01F * (float)$$0.k()));
+      float $$10 = (float)($$0.j() + (double)($$8 * (float)$$0.k() * 0.001F));
+      float $$11 = -((float)($$1 & 511) + $$7) / 512.0F;
+      int $$12 = ghu.a((ghu.a($$6) * 3 + 15) / 4, (ghu.b($$6) * 3 + 15) / 4);
+      return new giw.a($$2, $$5, $$3, $$4, $$9, $$11 + $$10, $$12);
    }
 
-   public gjd g() {
-      gjc $$0 = this.a(cvp.b);
-      gjc $$1 = this.a(cvp.c);
-      gjc $$2 = this.a(cvp.d);
-      gjc $$3 = this.a(cvp.e);
-      gjc $$4 = this.a(cvp.f);
-      gjc $$5 = this.a(cvp.g);
-      gjc $$6 = this.a(cvp.h);
-      gjc $$7 = this.a(cvp.i);
-      return new gjd($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   private void a(fdv $$0, List<giw.a> $$1, ezh $$2, float $$3, int $$4, float $$5) {
+      fdo $$6 = $$0.a(fdy.c.h, fdr.d);
 
-   private gjc a(cvp $$0) {
-      return this.e != null && !this.n.b($$0) ? this.e.a($$0) : this.n.a($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   public static class a implements JsonDeserializer<giw> {
-      public giw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         List<gis> $$4 = this.b($$2, $$3);
-         String $$5 = this.c($$3);
-         Map<String, Either<gzm, String>> $$6 = this.b($$3);
-         Boolean $$7 = this.a($$3);
-         gjd $$8 = gjd.a;
-         if ($$3.has("display")) {
-            JsonObject $$9 = ayv.u($$3, "display");
-            $$8 = (gjd)$$2.deserialize($$9, gjd.class);
-         }
-
-         List<gja> $$10 = this.a($$2, $$3);
-         giw.b $$11 = null;
-         if ($$3.has("gui_light")) {
-            $$11 = giw.b.a(ayv.i($$3, "gui_light"));
-         }
-
-         ale $$12 = $$5.isEmpty() ? null : ale.a($$5);
-         return new giw($$12, $$4, $$6, $$7, $$11, $$8, $$10);
+      for (giw.a $$7 : $$1) {
+         float $$8 = (float)((double)$$7.a + 0.5 - $$2.d);
+         float $$9 = (float)((double)$$7.b + 0.5 - $$2.f);
+         float $$10 = (float)azj.e((double)$$8, (double)$$9);
+         float $$11 = azj.h($$10 / (float)($$4 * $$4), $$3, 0.5F) * $$5;
+         int $$12 = axu.a($$11);
+         int $$13 = ($$7.b - azj.a($$2.f) + 16) * 32 + $$7.a - azj.a($$2.d) + 16;
+         float $$14 = this.h[$$13] / 2.0F;
+         float $$15 = this.i[$$13] / 2.0F;
+         float $$16 = $$8 - $$14;
+         float $$17 = $$8 + $$14;
+         float $$18 = (float)((double)$$7.d - $$2.e);
+         float $$19 = (float)((double)$$7.c - $$2.e);
+         float $$20 = $$9 - $$15;
+         float $$21 = $$9 + $$15;
+         float $$22 = $$7.e + 0.0F;
+         float $$23 = $$7.e + 1.0F;
+         float $$24 = (float)$$7.c * 0.25F + $$7.f;
+         float $$25 = (float)$$7.d * 0.25F + $$7.f;
+         $$6.a($$16, $$18, $$20).a($$22, $$24).a($$12).c($$7.g);
+         $$6.a($$17, $$18, $$21).a($$23, $$24).a($$12).c($$7.g);
+         $$6.a($$17, $$19, $$21).a($$23, $$25).a($$12).c($$7.g);
+         $$6.a($$16, $$19, $$20).a($$22, $$25).a($$12).c($$7.g);
       }
 
-      protected List<gja> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<gja> $$2 = Lists.newArrayList();
-         if ($$1.has("overrides")) {
-            for (JsonElement $$4 : ayv.v($$1, "overrides")) {
-               $$2.add((gja)$$0.deserialize($$4, gja.class));
+      fdp.a($$6.b());
+   }
+
+   public void a(gbx $$0, fij $$1, int $$2, arf $$3) {
+      float $$4 = $$0.d(1.0F) / (fja.N() ? 1.0F : 2.0F);
+      if (!($$4 <= 0.0F)) {
+         azr $$5 = azr.a((long)$$2 * 312987231L);
+         jg $$6 = jg.a((jz)$$1.b());
+         jg $$7 = null;
+         int $$8 = (int)(100.0F * $$4 * $$4) / ($$3 == arf.b ? 2 : 1);
+
+         for (int $$9 = 0; $$9 < $$8; $$9++) {
+            int $$10 = $$5.a(21) - 10;
+            int $$11 = $$5.a(21) - 10;
+            jg $$12 = $$0.a(eaz.a.e, $$6.b($$10, 0, $$11));
+            if ($$12.v() > $$0.I_() && $$12.v() <= $$6.v() + 10 && $$12.v() >= $$6.v() - 10 && this.a($$0, $$12) == dfw.c.b) {
+               $$7 = $$12.e();
+               if ($$3 == arf.c) {
+                  break;
+               }
+
+               double $$13 = $$5.j();
+               double $$14 = $$5.j();
+               dvd $$15 = $$0.a_($$7);
+               ere $$16 = $$0.b_($$7);
+               fab $$17 = $$15.g($$0, $$7);
+               double $$18 = $$17.b(jl.a.b, $$13, $$14);
+               double $$19 = (double)$$16.a($$0, $$7);
+               double $$20 = Math.max($$18, $$19);
+               lo $$21 = !$$16.a(axf.b) && !$$15.a(dia.kJ) && !dim.h($$15) ? lq.ad : lq.ae;
+               $$0.a($$21, (double)$$7.u() + $$13, (double)$$7.v() + $$20, (double)$$7.w() + $$14, 0.0, 0.0, 0.0);
             }
          }
 
-         return $$2;
-      }
-
-      private Map<String, Either<gzm, String>> b(JsonObject $$0) {
-         ale $$1 = gxf.d;
-         Map<String, Either<gzm, String>> $$2 = Maps.newHashMap();
-         if ($$0.has("textures")) {
-            JsonObject $$3 = ayv.u($$0, "textures");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), a($$1, $$4.getValue().getAsString()));
-            }
-         }
-
-         return $$2;
-      }
-
-      private static Either<gzm, String> a(ale $$0, String $$1) {
-         if (giw.d($$1)) {
-            return Either.right($$1.substring(1));
-         } else {
-            ale $$2 = ale.c($$1);
-            if ($$2 == null) {
-               throw new JsonParseException($$1 + " is not valid resource location");
+         if ($$7 != null && $$5.a(3) < this.g++) {
+            this.g = 0;
+            if ($$7.v() > $$6.v() + 1 && $$0.a(eaz.a.e, $$6).v() > azj.d((float)$$6.v())) {
+               $$0.a($$7, awk.Ci, awl.d, 0.1F, 0.5F, false);
             } else {
-               return Either.left(new gzm($$0, $$2));
+               $$0.a($$7, awk.Ch, awl.d, 0.2F, 1.0F, false);
             }
          }
-      }
-
-      private String c(JsonObject $$0) {
-         return ayv.a($$0, "parent", "");
-      }
-
-      @Nullable
-      protected Boolean a(JsonObject $$0) {
-         return $$0.has("ambientocclusion") ? ayv.k($$0, "ambientocclusion") : null;
-      }
-
-      protected List<gis> b(JsonDeserializationContext $$0, JsonObject $$1) {
-         List<gis> $$2 = Lists.newArrayList();
-         if ($$1.has("elements")) {
-            for (JsonElement $$3 : ayv.v($$1, "elements")) {
-               $$2.add((gis)$$0.deserialize($$3, gis.class));
-            }
-         }
-
-         return $$2;
       }
    }
 
-   public static enum b {
-      a("front"),
-      b("side");
-
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static giw.b a(String $$0) {
-         for (giw.b $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         throw new IllegalArgumentException("Invalid gui light: " + $$0);
-      }
-
-      public boolean a() {
-         return this == b;
+   private dfw.c a(dev $$0, jg $$1) {
+      if (!$$0.P().b(ki.a($$1.u()), ki.a($$1.w()))) {
+         return dfw.c.a;
+      } else {
+         dfw $$2 = $$0.t($$1).a();
+         return $$2.a($$1, $$0.N());
       }
    }
 
-   public static class c extends RuntimeException {
-      public c(String $$0) {
-         super($$0);
-      }
+   static record a(int a, int b, int c, int d, float e, float f, int g) {
    }
 }

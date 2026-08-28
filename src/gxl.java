@@ -1,75 +1,118 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gxl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akx b = new akx("atlases", ".json");
-   private final List<gxk> c;
+public class gxl extends gxd {
+   static final Logger e = LogUtils.getLogger();
+   protected final alh d;
 
-   private gxl(List<gxk> $$0) {
-      this.c = $$0;
+   public gxl(alh $$0) {
+      this.d = $$0;
    }
 
-   public List<Function<gxj, gxa>> a(auv $$0) {
-      final Map<ale, gxk.b> $$1 = new HashMap<>();
-      gxk.a $$2 = new gxk.a() {
-         @Override
-         public void a(ale $$0, gxk.b $$1x) {
-            gxk.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
-         }
+   @Override
+   public void a(ava $$0) throws IOException {
+      gxl.a $$1 = this.b($$0);
+      $$1.c();
+      gzq $$2 = $$1.a();
+      boolean $$3;
+      if ($$2 != null) {
+         this.c = $$2.a();
+         $$3 = $$2.b();
+      } else {
+         this.c = false;
+         $$3 = false;
+      }
 
-         @Override
-         public void a(Predicate<ale> $$0) {
-            Iterator<Entry<ale, gxk.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<ale, gxk.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<gxj, gxa>> $$3 = ImmutableList.builder();
-      $$3.add((Function<gxj, gxa>)$$0x -> gww.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
+      fct $$5 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$5, this.c, $$3));
+      } else {
+         this.a($$5, this.c, $$3);
+      }
    }
 
-   public static gxl a(auv $$0, ale $$1) {
-      ale $$2 = b.a($$1);
-      List<gxk> $$3 = new ArrayList<>();
+   private void a(fct $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   }
 
-      for (aut $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends gxk>)gxn.h.parse($$6).getOrThrow());
-         } catch (Exception var11) {
-            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+   protected gxl.a b(ava $$0) {
+      return gxl.a.a($$0, this.d);
+   }
+
+   protected static class a implements Closeable {
+      @Nullable
+      private final gzq a;
+      @Nullable
+      private final fct b;
+      @Nullable
+      private final IOException c;
+
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
+
+      public a(@Nullable gzq $$0, fct $$1) {
+         this.c = null;
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static gxl.a a(ava $$0, alh $$1) {
+         try {
+            auy $$2 = $$0.getResourceOrThrow($$1);
+
+            fct $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = fct.a($$3);
+            }
+
+            gzq $$6 = null;
+
+            try {
+               $$6 = $$2.f().a(gzq.a).orElse(null);
+            } catch (RuntimeException var8) {
+               gxl.e.warn("Failed reading metadata of: {}", $$1, var8);
+            }
+
+            return new gxl.a($$6, $$4);
+         } catch (IOException var10) {
+            return new gxl.a(var10);
          }
       }
 
-      return new gxl($$3);
+      @Nullable
+      public gzq a() {
+         return this.a;
+      }
+
+      public fct b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         } else {
+            return this.b;
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.b != null) {
+            this.b.close();
+         }
+      }
+
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         }
+      }
    }
 }

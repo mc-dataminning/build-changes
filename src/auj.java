@@ -1,56 +1,55 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.util.Optional;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class auj extends aua {
-   private static final atw c = new atw(xe.c("dataPack.vanilla.description"), ab.b().a(atj.b), Optional.empty());
-   private static final atd d = new atd(cqs.i);
-   private static final asz e = asz.a(atw.b, c, atd.a, d);
-   private static final atg f = new atg("vanilla", xe.c("dataPack.vanilla.name"), auh.c, Optional.of(b));
-   private static final ati g = new ati(false, aud.b.b, false);
-   private static final ati h = new ati(false, aud.b.a, false);
-   private static final ale i = ale.b("datapacks");
+public abstract class auj<T> {
+   private final eyx a;
 
-   public auj(eym $$0) {
-      super(atj.b, b(), i, $$0);
-   }
-
-   private static atg a(String $$0, xe $$1) {
-      return new atg($$0, $$1, auh.d, Optional.of(auc.a($$0)));
-   }
-
-   @VisibleForTesting
-   public static atl b() {
-      return new atm().a(e).a("minecraft").b().a().a(f);
-   }
-
-   @Override
-   protected xe a(String $$0) {
-      return xe.b($$0);
+   protected auj(eyx $$0) {
+      this.a = $$0;
    }
 
    @Nullable
-   @Override
-   protected aud a(ath $$0) {
-      return aud.a(f, b($$0), atj.b, g);
+   public T a(Path $$0, List<eyy> $$1) throws IOException {
+      Path $$2 = $$0;
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return null;
+      }
+
+      if ($$3.isSymbolicLink()) {
+         this.a.a($$0, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         }
+
+         $$2 = Files.readSymbolicLink($$0);
+         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      }
+
+      if ($$3.isDirectory()) {
+         this.a.b($$2, $$1);
+         if (!$$1.isEmpty()) {
+            return null;
+         } else {
+            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+         }
+      } else {
+         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
+      }
    }
 
    @Nullable
-   @Override
-   protected aud a(String $$0, aud.c $$1, xe $$2) {
-      return aud.a(a($$0, $$2), $$1, atj.b, h);
-   }
+   protected abstract T d(Path var1) throws IOException;
 
-   public static aug a(Path $$0, eym $$1) {
-      return new aug(new auj($$1), new aub($$0, atj.b, auh.e, $$1));
-   }
-
-   public static aug c() {
-      return new aug(new auj(new eym($$0 -> true)));
-   }
-
-   public static aug a(esz.c $$0) {
-      return a($$0.a(esx.j), $$0.d().e());
-   }
+   @Nullable
+   protected abstract T c(Path var1) throws IOException;
 }

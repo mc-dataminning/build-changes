@@ -1,29 +1,29 @@
-public class acu implements zl<aca> {
-   public static final zc<wb, acu> a = zl.a(acu::a, acu::new);
-   private final int b;
+public class acu implements zo<acd> {
+   public static final zf<we, acu> a = zo.a(acu::a, acu::new);
+   private final boolean b;
 
-   public acu(int $$0) {
+   public acu(boolean $$0) {
       this.b = $$0;
    }
 
-   private acu(wb $$0) {
-      this.b = $$0.x();
+   private acu(we $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(wb $$0) {
-      $$0.f(this.b);
+   private void a(we $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<acu> a() {
-      return agp.t;
+   public zq<acu> a() {
+      return ags.q;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
    }
 }

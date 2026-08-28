@@ -1,79 +1,22 @@
+import java.time.Duration;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bpo {
-   public static final bpo a = new bpo();
-   private final WeakHashMap<bpq, Void> b = new WeakHashMap<>();
-
-   private bpo() {
-   }
-
-   public void a(bpq $$0) {
-      this.b.put($$0, null);
-   }
-
-   public List<bpn> a() {
-      Map<String, List<bpn>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bx().stream()).collect(Collectors.groupingBy(bpn::d));
-      return a($$0);
-   }
-
-   private static List<bpn> a(Map<String, List<bpn>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<bpn> $$2 = (List<bpn>)$$0x.getValue();
-         return (bpn)($$2.size() > 1 ? new bpo.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
-   }
-
-   static class a extends bpn {
-      private final List<bpn> b;
-
-      a(String $$0, List<bpn> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
-         this.b = $$1;
-      }
-
-      private static bpn.c a(List<bpn> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
-      }
-
-      private static void b(List<bpn> $$0) {
-         for (bpn $$1 : $$0) {
-            $$1.a();
-         }
-      }
-
-      private static double c(List<bpn> $$0) {
-         double $$1 = 0.0;
-
-         for (bpn $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
-         }
-
-         return $$1 / (double)$$0.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
-         } else {
-            bpo.a $$1 = (bpo.a)$$0;
-            return this.b.equals($$1.b);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
+public record bpo<T extends bpn>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
+   public static <T extends bpn> bpo<T> a(List<T> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("No values");
+      } else {
+         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bpn::a)).toList();
+         Duration $$2 = $$1.stream().map(bpn::a).reduce(Duration::plus).orElse(Duration.ZERO);
+         T $$3 = (T)$$1.get(0);
+         T $$4 = (T)$$1.get($$1.size() - 1);
+         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
+         int $$6 = $$1.size();
+         Map<Integer, Double> $$7 = bor.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
+         return new bpo<>($$3, $$4, $$5, $$6, $$7, $$2);
       }
    }
 }

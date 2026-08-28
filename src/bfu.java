@@ -1,35 +1,35 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Optional;
 
-public class bfu extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("down", "down_south")
-      .put("up", "up_north")
-      .put("north", "north_up")
-      .put("south", "south_up")
-      .put("west", "west_up")
-      .put("east", "east_up")
-      .build();
-
-   public bfu(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bfu extends baz {
+   public bfu(Schema $$0) {
+      super($$0, bhs.t);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      return $$1.equals(Optional.of("minecraft:jigsaw")) ? $$0.update("Properties", $$0x -> {
-         String $$1x = $$0x.get("facing").asString("north");
-         return $$0x.remove("facing").set("orientation", $$0x.createString(a.getOrDefault($$1x, $$1x)));
-      }) : $$0;
+   public TypeRewriteRule makeRule() {
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bhs.D.typeName(), bjg.a()));
+      return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.a), $$1 -> {
+         OpticFinder<?> $$2 = $$1.getType().findField("tag");
+         return $$1.updateTyped($$2, $$2x -> $$2x.update(DSL.remainderFinder(), $$2xx -> {
+               $$2xx = this.b($$2xx);
+               if ($$1.getOptional($$0).map($$0xxxx -> "minecraft:player_head".equals($$0xxxx.getSecond())).orElse(false)) {
+                  $$2xx = this.c($$2xx);
+               }
+
+               return $$2xx;
+            }));
+      });
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(bho.u), $$0 -> $$0.update(DSL.remainderFinder(), bfu::a));
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("AttributeModifiers", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)c($$0xx, "UUID", "UUID").orElse($$0xx))));
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update("SkullOwner", $$0x -> a($$0x, "Id", "Id").orElse($$0x));
    }
 }

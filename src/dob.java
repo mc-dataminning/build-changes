@@ -1,63 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dob extends dhv implements dhp {
-   public static final MapCodec<dob> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(duh.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dob::new)
-   );
-   public static final dvs f = dvi.aU;
-   protected static final float g = 6.0F;
-   protected static final ezq h = dhm.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final duh i;
+public class dob extends dhy {
+   public static final MapCodec<dob> a = b(dob::new);
+   public static final dvu b = doc.d;
 
    @Override
-   public MapCodec<? extends dob> a() {
-      return e;
+   public MapCodec<dob> a() {
+      return a;
    }
 
-   protected dob(duh $$0, dur.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.l(this.F.b().b(f, Integer.valueOf(0)));
+   public dob(dvc.d $$0) {
+      super($$0);
+      this.l(this.m().b(b, Boolean.valueOf(false)));
    }
 
+   @Nullable
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return h;
+   public dvd a(czm $$0) {
+      return this.m().b(b, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
-      }
-   }
-
-   public void a(arj $$0, jf $$1, dus $$2, azn $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
-      } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
+   protected void a(dvd $$0, dev $$1, jg $$2, dhy $$3, @Nullable esm $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.C($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
+         }
       }
    }
 
    @Override
-   public boolean b(dem $$0, jf $$1, dus $$2) {
-      return true;
+   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if ($$0.c(b) && !$$1.C($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
    }
 
    @Override
-   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
-      return (double)$$0.z.i() < 0.45;
-   }
-
-   @Override
-   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(f);
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(b);
    }
 }

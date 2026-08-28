@@ -1,94 +1,35 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class gye implements AutoCloseable {
-   private final Int2ObjectMap<gye.a> a = new Int2ObjectOpenHashMap();
-   final gxh b;
+public class gye implements gxw {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<gye> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alh.a.fieldOf("resource").forGetter($$0x -> $$0x.d), alh.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gye::new)
+   );
+   private final alh d;
+   private final Optional<alh> e;
 
-   public gye(gxh $$0) {
-      this.b = $$0;
-   }
-
-   public void a(esl $$0, esn $$1) {
-      this.c($$0, $$1).a();
-   }
-
-   public ale b(esl $$0, esn $$1) {
-      gye.a $$2 = this.c($$0, $$1);
-      $$2.b();
-      return $$2.d;
-   }
-
-   public void a() {
-      ObjectIterator var1 = this.a.values().iterator();
-
-      while (var1.hasNext()) {
-         gye.a $$0 = (gye.a)var1.next();
-         $$0.close();
-      }
-
-      this.a.clear();
-   }
-
-   private gye.a c(esl $$0, esn $$1) {
-      return (gye.a)this.a.compute($$0.b(), ($$1x, $$2) -> {
-         if ($$2 == null) {
-            return new gye.a($$1x, $$1);
-         } else {
-            $$2.a($$1);
-            return $$2;
-         }
-      });
+   public gye(alh $$0, Optional<alh> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public void close() {
-      this.a();
+   public void a(ava $$0, gxw.a $$1) {
+      alh $$2 = a.a(this.d);
+      Optional<auy> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
+      }
    }
 
-   class a implements AutoCloseable {
-      private esn a;
-      private final gwt b;
-      private boolean c = true;
-      final ale d;
-
-      a(final int $$0, final esn $$1) {
-         this.a = $$1;
-         this.b = new gwt(128, 128, true);
-         this.d = gye.this.b.a("map/" + $$0, this.b);
-      }
-
-      void a(esn $$0) {
-         boolean $$1 = this.a != $$0;
-         this.a = $$0;
-         this.c |= $$1;
-      }
-
-      public void a() {
-         this.c = true;
-      }
-
-      void b() {
-         if (this.c) {
-            fci $$0 = this.b.f();
-            if ($$0 != null) {
-               for (int $$1 = 0; $$1 < 128; $$1++) {
-                  for (int $$2 = 0; $$2 < 128; $$2++) {
-                     int $$3 = $$2 + $$1 * 128;
-                     $$0.a($$2, $$1, eqx.b(this.a.g[$$3]));
-                  }
-               }
-            }
-
-            this.b.e();
-            this.c = false;
-         }
-      }
-
-      @Override
-      public void close() {
-         this.b.close();
-      }
+   @Override
+   public gxy a() {
+      return gxz.a;
    }
 }

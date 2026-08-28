@@ -1,30 +1,35 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class asf implements aix {
-   private final MinecraftServer b;
-   private final vy c;
+public record asf(String b, xl c) {
+   public static final asf a = a("");
 
-   public asf(MinecraftServer $$0, vy $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static asf a(String $$0) {
+      return new asf($$0, xl.c);
    }
 
-   @Override
-   public void a(aiu $$0) {
-      if ($$0.g() != ait.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      } else {
-         this.c.a(ajg.b, new asn(this.b, this.c, false));
-         this.c.a(ajg.d);
-      }
+   public static asf b(String $$0) {
+      return new asf($$0, xl.b);
    }
 
-   @Override
-   public void a(wa $$0) {
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
    }
 
-   @Override
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
    public boolean c() {
-      return this.c.i();
+      return !this.c.a();
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public xl e() {
+      return this.c;
    }
 }

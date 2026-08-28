@@ -2,45 +2,62 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class evq extends euy {
+public class evq extends evj {
    public static final MapCodec<evq> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(ext.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .and($$0.group(drx.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, evq::new)
    );
-   private final exs b;
+   private final drx b;
    private final boolean c;
 
-   private evq(List<eww> $$0, exs $$1, boolean $$2) {
+   evq(List<exh> $$0, drx $$1, boolean $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
    }
 
    @Override
-   public eva<evq> b() {
-      return evb.e;
-   }
+   protected cvx a(cvx $$0, etw $$1) {
+      if (this.c) {
+         $$0.a(kt.ah, drx.a, this.b, ($$0x, $$1x) -> new drx.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(kt.ah, this.b);
+      }
 
-   @Override
-   public Set<ewe<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public cvs a(cvs $$0, etl $$1) {
-      int $$2 = this.c ? $$0.K() : 0;
-      $$0.e($$2 + this.b.a($$1));
       return $$0;
    }
 
-   public static euy.a<?> a(exs $$0) {
-      return a($$1 -> new evq($$1, $$0, false));
+   @Override
+   public evl<evq> b() {
+      return evm.E;
    }
 
-   public static euy.a<?> a(exs $$0, boolean $$1) {
-      return a($$2 -> new evq($$2, $$0, $$1));
+   public static evq.a a(boolean $$0) {
+      return new evq.a($$0);
+   }
+
+   public static class a extends evj.a<evq.a> {
+      private final drx.a a = new drx.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected evq.a a() {
+         return this;
+      }
+
+      @Override
+      public evk b() {
+         return new evq(this.g(), this.a.a(), this.b);
+      }
+
+      public evq.a a(jp<drw> $$0, cuu $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

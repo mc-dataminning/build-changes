@@ -1,90 +1,79 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
 
-public class fdb {
-   private int a;
+public class fdb implements fdc, AutoCloseable {
+   private final int b;
+   private final Deque<fdb.a<?>> c = new ArrayDeque<>();
 
-   public static Optional<fdb> a() {
-      return fdb.b.a;
+   public fdb(int $$0) {
+      this.b = $$0;
+   }
+
+   public void a() {
+      Iterator<? extends fdb.a<?>> $$0 = this.c.iterator();
+
+      while ($$0.hasNext()) {
+         fdb.a<?> $$1 = (fdb.a<?>)$$0.next();
+         if ($$1.c-- == 0) {
+            $$1.close();
+            $$0.remove();
+         }
+      }
+   }
+
+   @Override
+   public <T> T a(fde<T> $$0) {
+      Iterator<? extends fdb.a<?>> $$1 = this.c.iterator();
+
+      while ($$1.hasNext()) {
+         fdb.a<?> $$2 = (fdb.a<?>)$$1.next();
+         if ($$2.a.equals($$0)) {
+            $$1.remove();
+            return (T)$$2.b;
+         }
+      }
+
+      return $$0.e();
+   }
+
+   @Override
+   public <T> void a(fde<T> $$0, T $$1) {
+      this.c.addFirst(new fdb.a<>($$0, $$1, this.b));
    }
 
    public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
-      }
+      this.c.forEach(fdb.a::close);
+      this.c.clear();
    }
 
-   public fdb.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         fdb.a $$0 = new fdb.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
+   @Override
+   public void close() {
+      this.b();
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
+   @VisibleForTesting
+   protected Collection<fdb.a<?>> c() {
+      return this.c;
    }
 
-   static class b {
-      static final Optional<fdb> a = Optional.ofNullable(a());
+   @VisibleForTesting
+   protected static final class a<T> implements AutoCloseable {
+      final fde<T> a;
+      final T b;
+      int c;
 
-      private b() {
+      a(fde<T> $$0, T $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      @Nullable
-      private static fdb a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fdb();
+      @Override
+      public void close() {
+         this.a.a(this.b);
       }
    }
 }

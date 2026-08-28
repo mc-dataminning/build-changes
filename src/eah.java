@@ -1,105 +1,70 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public interface eah {
-   Codec<eah> b = eai.b;
-   Codec<jo<eah>> c = ala.a(lw.aL, b);
-   Codec<eah> d = c.xmap(eai.j::new, $$0 -> (jo)($$0 instanceof eai.j $$1 ? $$1.j() : new jo.a<>($$0)));
+public record eah(jp<eaa> b, float c, ezh d, @Nullable UUID e, @Nullable UUID f, @Nullable btz g) {
+   public static final Codec<eah> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eaa.aj.fieldOf("game_event").forGetter(eah::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(eah::b),
+               ezh.a.fieldOf("pos").forGetter(eah::c),
+               kj.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               kj.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new eah($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
 
-   double a(eah.b var1);
-
-   void a(double[] var1, eah.a var2);
-
-   eah a(eah.f var1);
-
-   double a();
-
-   double b();
-
-   ayy<? extends eah> c();
-
-   default eah a(double $$0, double $$1) {
-      return new eai.g(this, $$0, $$1);
+   public eah(jp<eaa> $$0, float $$1, ezh $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   default eah d() {
-      return eai.a(this, eai.k.a.a);
+   public eah(jp<eaa> $$0, float $$1, ezh $$2, @Nullable btz $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cH(), a($$3), $$3);
    }
 
-   default eah e() {
-      return eai.a(this, eai.k.a.b);
-   }
-
-   default eah f() {
-      return eai.a(this, eai.k.a.c);
-   }
-
-   default eah g() {
-      return eai.a(this, eai.k.a.d);
-   }
-
-   default eah h() {
-      return eai.a(this, eai.k.a.e);
-   }
-
-   default eah i() {
-      return eai.a(this, eai.k.a.f);
-   }
-
-   public interface a {
-      eah.b a(int var1);
-
-      void a(double[] var1, eah var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default ebq d() {
-         return ebq.a();
-      }
-   }
-
-   public static record c(jo<epw.a> b, @Nullable epw c) {
-      public static final Codec<eah.c> a = epw.a.b.xmap($$0 -> new eah.c($$0, null), eah.c::b);
-
-      public c(jo<epw.a> $$0) {
-         this($$0, null);
+   @Nullable
+   private static UUID a(@Nullable btz $$0) {
+      if ($$0 instanceof cpb $$1 && $$1.s() != null) {
+         return $$1.s().cH();
       }
 
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+      return null;
    }
 
-   public interface d extends eah {
-      @Override
-      default void a(double[] $$0, eah.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default eah a(eah.f $$0) {
-         return $$0.apply(this);
-      }
+   public Optional<btz> a(arm $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
    }
 
-   public static record e(int a, int b, int c) implements eah.b {
+   public Optional<btz> b(arm $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cpb).map($$0x -> (cpb)$$0x).map(cpb::s).or(() -> Optional.ofNullable(this.f).map($$0::a));
    }
 
-   public interface f {
-      eah apply(eah var1);
+   public jp<eaa> a() {
+      return this.b;
+   }
 
-      default eah.c a(eah.c $$0) {
-         return $$0;
-      }
+   public float b() {
+      return this.c;
+   }
+
+   public ezh c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public btz f() {
+      return this.g;
    }
 }

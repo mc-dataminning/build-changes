@@ -1,23 +1,31 @@
-import java.util.List;
+public record abb(jg c, String d, int e) implements aar {
+   public static final zf<we, abb> a = aar.a(abb::a, abb::new);
+   public static final aar.b<abb> b = aar.a("debug/poi_added");
 
-public record abb(List<jf> c) implements aao {
-   public static final zc<wb, abb> a = aao.a(abb::a, abb::new);
-   public static final aao.b<abb> b = aao.a("debug/raids");
-
-   private abb(wb $$0) {
-      this($$0.a(jf.b));
+   private abb(we $$0) {
+      this($$0.e(), $$0.p(), $$0.readInt());
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.c, jf.b);
+   private void a(we $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.q(this.e);
    }
 
    @Override
-   public aao.b<abb> a() {
+   public aar.b<abb> a() {
       return b;
    }
 
-   public List<jf> b() {
+   public jg b() {
       return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

@@ -1,55 +1,48 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cbz extends cbk {
-   private final buv a;
-   @Nullable
-   private bun b;
-   private double c;
-   private double d;
-   private double e;
-   private final double f;
-   private final float g;
+public class cbz extends cbt {
+   private final bux a;
+   private buv b;
+   private final float c;
 
-   public cbz(buv $$0, double $$1, float $$2) {
+   public cbz(bux $$0, float $$1) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(cbk.a.a));
+      this.c = $$1;
+      this.a(EnumSet.of(cbt.a.c, cbt.a.a));
    }
 
    @Override
    public boolean b() {
-      this.b = this.a.m();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+      if (this.a.cZ()) {
          return false;
       } else {
-         eyw $$0 = cfh.a(this.a, 16, 7, this.b.dq(), (float) (Math.PI / 2));
-         if ($$0 == null) {
+         this.b = this.a.m();
+         if (this.b == null) {
             return false;
          } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            return true;
+            double $$0 = this.a.g(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aJ() ? false : this.a.ea().a(b(5)) == 0;
+            }
          }
       }
    }
 
    @Override
    public boolean c() {
-      return !this.a.P().m() && this.b.bI() && this.b.g(this.a) < (double)(this.g * this.g);
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
+      return !this.a.aJ();
    }
 
    @Override
    public void d() {
-      this.a.P().a(this.c, this.d, this.e, this.f);
+      ezh $$0 = this.a.dA();
+      ezh $$1 = new ezh(this.b.dC() - this.a.dC(), 0.0, this.b.dI() - this.a.dI());
+      if ($$1.h() > 1.0E-7) {
+         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
+      }
+
+      this.a.n($$1.d, (double)this.c, $$1.f);
    }
 }

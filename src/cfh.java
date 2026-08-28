@@ -1,38 +1,47 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cfh {
-   @Nullable
-   public static eyw a(buv $$0, int $$1, int $$2) {
-      boolean $$3 = cfi.a($$0, $$1);
-      return cfl.a($$0, () -> {
-         jf $$4 = cfl.a($$0.dV(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public class cfh extends cff<bvd> {
+   private static final cfm a = cfm.b().d();
+   private final Predicate<cvx> b;
+
+   public cfh(Predicate<cvx> $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   public static eyw a(buv $$0, int $$1, int $$2, eyw $$3, double $$4) {
-      eyw $$5 = $$3.a($$0.dx(), $$0.dz(), $$0.dD());
-      boolean $$6 = cfi.a($$0, $$1);
-      return cfl.a($$0, () -> {
-         jf $$6x = cfl.a($$0.dV(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   protected void a(arm $$0, bvd $$1) {
+      bvx<?> $$2 = $$1.ed();
+      cfm $$3 = a.c().a((double)((float)$$1.h(bwd.E)));
+      List<coh> $$4 = $$0.x()
+         .stream()
+         .filter(bue.f)
+         .filter($$2x -> $$3.a($$1, $$2x))
+         .filter(this::a)
+         .filter($$1x -> !$$1.y($$1x))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      if (!$$4.isEmpty()) {
+         coh $$5 = $$4.get(0);
+         $$2.a(cdz.O, $$5);
+      } else {
+         $$2.b(cdz.O);
+      }
    }
 
-   @Nullable
-   public static eyw a(buv $$0, int $$1, int $$2, eyw $$3) {
-      eyw $$4 = $$0.dq().d($$3);
-      boolean $$5 = cfi.a($$0, $$1);
-      return cfl.a($$0, () -> {
-         jf $$5x = cfl.a($$0.dV(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   private boolean a(coh $$0) {
+      return this.a($$0.fb()) || this.a($$0.fc());
    }
 
-   @Nullable
-   private static jf a(buv $$0, int $$1, boolean $$2, jf $$3) {
-      jf $$4 = cfl.a($$0, $$1, $$0.dV(), $$3);
-      return !cfi.a($$4, $$0) && !cfi.a($$2, $$0, $$4) && !cfi.a($$0.P(), $$4) && !cfi.b($$0, $$4) ? $$4 : null;
+   private boolean a(cvx $$0) {
+      return this.b.test($$0);
+   }
+
+   @Override
+   public Set<cdz<?>> a() {
+      return ImmutableSet.of(cdz.O);
    }
 }

@@ -1,41 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class euj extends euy {
-   public static final MapCodec<euj> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, euj::new));
+public class euj extends euo {
+   public static final MapCodec<euj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lx.g.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, euj::new)
+   );
+   private final jp<cvt> j;
 
-   private euj(List<eww> $$0) {
-      super($$0);
+   private euj(jp<cvt> $$0, int $$1, int $$2, List<exh> $$3, List<evk> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public eva<euj> b() {
-      return evb.z;
+   public eun a() {
+      return euk.c;
    }
 
    @Override
-   public cvs a(cvs $$0, etl $$1) {
-      Float $$2 = $$1.c(ewh.j);
-      if ($$2 != null) {
-         azn $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.K();
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
-
-         $$0.e($$6);
-      }
-
-      return $$0;
+   public void a(Consumer<cvx> $$0, etw $$1) {
+      $$0.accept(new cvx(this.j));
    }
 
-   public static euy.a<?> c() {
-      return a(euj::new);
+   public static euo.a<?> a(deu $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new euj($$0.j().f(), $$1, $$2, $$3, $$4));
    }
 }

@@ -1,57 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cir extends cih {
-   private static final btu bY = bty.bv.n().a(btt.a().a(bts.a, 0.0F, bty.bv.m() - 0.03125F, 0.0F)).a(0.5F);
-
-   public cir(bty<? extends cir> $$0, dej $$1) {
+public class cir extends cip {
+   public cir(bug<? extends cir> $$0, dev $$1) {
       super($$0, $$1);
    }
 
-   public static bvt.a q() {
-      return gQ().a(bvu.s, 15.0).a(bvu.v, 0.2F);
-   }
-
-   public static boolean c(bty<? extends cgd> $$0, dek $$1, btx $$2, jf $$3, azn $$4) {
-      return !btx.a($$2) ? cgd.b($$0, $$1, $$2, $$3, $$4) : btx.b($$2) || a($$1, $$3);
+   @Override
+   protected awj w() {
+      return awk.hg;
    }
 
    @Override
-   protected void a(azn $$0) {
-      this.g(bvu.o).a(a($$0::j));
+   protected awj gW() {
+      return awk.hh;
    }
 
    @Override
-   protected awf w() {
-      return awg.DG;
-   }
-
-   @Override
-   protected awf o_() {
-      return awg.DH;
-   }
-
-   @Override
-   protected awf d(bsj $$0) {
-      return awg.DI;
+   protected awj o_() {
+      return awk.hj;
    }
 
    @Nullable
    @Override
-   public btk a(arj $$0, btk $$1) {
-      return bty.bv.a($$0, btx.e);
+   protected awj gx() {
+      return awk.hk;
    }
 
    @Override
-   public brs b(cnx $$0, brr $$1) {
-      return (brs)(!this.gF() ? brs.e : super.b($$0, $$1));
+   protected awj d(bsp $$0) {
+      return awk.hl;
    }
 
    @Override
-   protected void gG() {
+   public boolean a(cgm $$0) {
+      if ($$0 == this) {
+         return false;
+      } else {
+         return !($$0 instanceof cir) && !($$0 instanceof cis) ? false : this.hf() && ((ciq)$$0).hf();
+      }
    }
 
    @Override
-   public btu e(buz $$0) {
-      return this.p_() ? bY : super.e($$0);
+   protected void he() {
+      this.a(awk.hm, 0.4F, 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public btq a(arm $$0, btq $$1) {
+      bug<? extends ciq> $$2 = $$1 instanceof cis ? bug.at : bug.z;
+      ciq $$3 = $$2.a($$0, buf.e);
+      if ($$3 != null) {
+         this.a($$1, $$3);
+      }
+
+      return $$3;
    }
 }

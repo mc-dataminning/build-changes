@@ -1,28 +1,28 @@
-public class cvc<T extends btr & buk> extends cvn {
-   private final bty<T> a;
-   private final int b;
-
-   public cvc(cvn.a $$0, bty<T> $$1, int $$2) {
+public class cvc extends cvt implements cws {
+   public cvc(cvt.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public brs a(dej $$0, cnx $$1, brr $$2) {
-      cvs $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return brs.e;
-      } else {
-         btr $$4 = $$1.dh();
-         if ($$1.bW() && $$4 instanceof buk $$5 && $$4.ao() == this.a && $$5.a()) {
-            btz $$6 = bun.d($$2);
-            cvs $$7 = $$3.a(this.b, cvw.qW, $$1, $$6);
-            return brs.b.a($$7);
-         }
-
-         $$1.b(awq.c.b(this));
-         return brs.e;
+   public bry a(dev $$0, coh $$1, brx $$2) {
+      cvx $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dC(), $$1.dE(), $$1.dI(), awk.iH, awl.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arm $$4) {
+         cpb.a(cpm::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
       }
+
+      $$1.b(awu.c.b(this));
+      $$3.a(1, $$1);
+      return bry.a;
+   }
+
+   @Override
+   public cpb a(dev $$0, jz $$1, cvx $$2, jl $$3) {
+      return new cpm($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   }
+
+   @Override
+   public cws.a c() {
+      return cws.a.a().a(cws.a.a.c() * 0.5F).b(cws.a.a.d() * 1.25F).a();
    }
 }

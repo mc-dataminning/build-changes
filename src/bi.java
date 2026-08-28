@@ -2,19 +2,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bi extends dw<bi.a> {
+public class bi extends dx<bi.a> {
    @Override
    public Codec<bi.a> a() {
       return bi.a.a;
    }
 
-   public void a(ark $$0, clw $$1, cnk $$2) {
-      etl $$3 = bv.b($$0, $$1);
-      etl $$4 = bv.b($$0, $$2);
+   public void a(arn $$0, cmf $$1, cnt $$2) {
+      etw $$3 = bv.b($$0, $$1);
+      etw $$4 = bv.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
-   public static record a(Optional<bg> b, Optional<bg> c, Optional<bg> d) implements dw.a {
+   public static record a(Optional<bg> b, Optional<bg> c, Optional<bg> d) implements dx.a {
       public static final Codec<bi.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(bi.a::a),
@@ -28,13 +28,13 @@ public class bi extends dw<bi.a> {
          return an.s.a(new bi.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(etl $$0, etl $$1) {
+      public boolean a(etw $$0, etw $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 
       @Override
       public void a(bh $$0) {
-         dw.a.super.a($$0);
+         dx.a.super.a($$0);
          $$0.a(this.c, ".zombie");
          $$0.a(this.d, ".villager");
       }

@@ -1,58 +1,32 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class fti extends ftm {
+   private static final xh b = xh.c("multiplayerWarning.header").a(n.r);
+   private static final xh c = xh.c("multiplayerWarning.message");
+   private static final xh d = xh.c("multiplayerWarning.check");
+   private static final xh s = b.f().f("\n").b(c);
+   private final fqs u;
 
-public class fti extends ftk {
-   private static final xe a = xe.c("options.online.title");
-   @Nullable
-   private fis<Unit> u;
-
-   public fti(fqh $$0, fit $$1) {
-      super($$0, $$1, a);
+   public fti(fqs $$0) {
+      super(b, c, d, s);
+      this.u = $$0;
    }
 
    @Override
-   protected void aS_() {
-      super.aS_();
-      if (this.u != null) {
-         fkm $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
+   protected foo m() {
+      fos $$0 = fos.e().a(8);
+      $$0.a(fkz.a(xg.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.n.u = true;
+            this.m.n.ay();
          }
-      }
-   }
 
-   private fis<?>[] a(fit $$0, fip $$1) {
-      List<fis<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.V());
-      $$2.add($$0.W());
-      fis<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            brp $$1x = $$0x.am();
-            return new fis<>(
-               "options.difficulty.online",
-               fis.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fis.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
-      }
-
-      return $$2.toArray(new fis[0]);
+         this.m.a(new fth(this.u));
+      }).a());
+      $$0.a(fkz.a(xg.k, $$0x -> this.d()).a());
+      return $$0;
    }
 
    @Override
-   protected void m() {
-      this.d.a(this.a(this.c, this.m));
+   public void d() {
+      this.m.a(this.u);
    }
 }

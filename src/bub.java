@@ -1,47 +1,98 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public record bub(ald<etq> c, Map<btz, Float> d) {
-   public static final Codec<Map<btz, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(btz.i, Codec.FLOAT))
-      .xmap($$0 -> (Map)$$0.map(bub::a, Function.identity()), $$0 -> {
-         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
-         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(btz.values()));
-         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
-      });
-   public static final Codec<bub> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ald.a(lw.be).fieldOf("loot_table").forGetter(bub::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bub::b))
-            .apply($$0, bub::new)
-   );
+public class bub {
+   private final Map<bua, List<ezh>> a;
 
-   public bub(ald<etq> $$0, float $$1) {
-      this($$0, a($$1));
+   bub(Map<bua, List<ezh>> $$0) {
+      this.a = $$0;
    }
 
-   private static Map<btz, Float> a(float $$0) {
-      return a(List.of(btz.values()), $$0);
+   public static bub a(float $$0, float $$1) {
+      return a().a($$0, $$1);
    }
 
-   private static Map<btz, Float> a(List<btz> $$0, float $$1) {
-      Map<btz, Float> $$2 = Maps.newHashMap();
+   public static bub.a a() {
+      return new bub.a();
+   }
 
-      for (btz $$3 : $$0) {
-         $$2.put($$3, $$1);
+   public bub a(float $$0, float $$1, float $$2) {
+      Map<bua, List<ezh>> $$3 = new EnumMap<>(bua.class);
+
+      for (Entry<bua, List<ezh>> $$4 : this.a.entrySet()) {
+         $$3.put($$4.getKey(), a($$4.getValue(), $$0, $$1, $$2));
       }
 
-      return $$2;
+      return new bub($$3);
    }
 
-   public ald<etq> a() {
-      return this.c;
+   private static List<ezh> a(List<ezh> $$0, float $$1, float $$2, float $$3) {
+      List<ezh> $$4 = new ArrayList<>($$0.size());
+
+      for (ezh $$5 : $$0) {
+         $$4.add($$5.d((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      return $$4;
    }
 
-   public Map<btz, Float> b() {
-      return this.d;
+   @Nullable
+   public ezh a(bua $$0, int $$1, float $$2) {
+      List<ezh> $$3 = this.a.get($$0);
+      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
+   }
+
+   public ezh b(bua $$0, int $$1, float $$2) {
+      ezh $$3 = this.a($$0, $$1, $$2);
+      if ($$3 == null) {
+         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+      } else {
+         return $$3;
+      }
+   }
+
+   public ezh c(bua $$0, int $$1, float $$2) {
+      List<ezh> $$3 = this.a.get($$0);
+      if ($$3.isEmpty()) {
+         throw new IllegalStateException("Had no attachment points of type: " + $$0);
+      } else {
+         ezh $$4 = $$3.get(azj.a($$1, 0, $$3.size() - 1));
+         return a($$4, $$2);
+      }
+   }
+
+   private static ezh a(ezh $$0, float $$1) {
+      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
+   }
+
+   public static class a {
+      private final Map<bua, List<ezh>> a = new EnumMap<>(bua.class);
+
+      a() {
+      }
+
+      public bub.a a(bua $$0, float $$1, float $$2, float $$3) {
+         return this.a($$0, new ezh((double)$$1, (double)$$2, (double)$$3));
+      }
+
+      public bub.a a(bua $$0, ezh $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
+         return this;
+      }
+
+      public bub a(float $$0, float $$1) {
+         Map<bua, List<ezh>> $$2 = new EnumMap<>(bua.class);
+
+         for (bua $$3 : bua.values()) {
+            List<ezh> $$4 = this.a.get($$3);
+            $$2.put($$3, $$4 != null ? List.copyOf($$4) : $$3.a($$0, $$1));
+         }
+
+         return new bub($$2);
+      }
    }
 }

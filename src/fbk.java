@@ -1,219 +1,166 @@
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.util.Locale;
-import java.util.function.Function;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Bitmap;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FT_GlyphSlot;
-import org.lwjgl.util.freetype.FT_Vector;
-import org.lwjgl.util.freetype.FreeType;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
+import org.slf4j.Logger;
 
-public class fbk implements fbh {
+public class fbk {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 4;
+   public static final int a = 1;
+   private final int d;
+   private final AtomicBoolean e = new AtomicBoolean(true);
+   private int f = 16384;
    @Nullable
-   private ByteBuffer b;
+   private hci g;
+
    @Nullable
-   private FT_Face c;
-   final float d;
-   private final fnd<fbk.b> e = new fnd<>(fbk.b[]::new, fbk.b[][]::new);
+   static fbk a() {
+      int[] $$0 = new int[1];
+      AL10.alGenSources($$0);
+      return fbo.a("Allocate new source") ? null : new fbk($$0[0]);
+   }
 
-   public fbk(ByteBuffer $$0, FT_Face $$1, float $$2, float $$3, float $$4, float $$5, String $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      IntSet $$7 = new IntArraySet();
-      $$6.codePoints().forEach($$7::add);
-      int $$8 = Math.round($$2 * $$3);
-      FreeType.FT_Set_Pixel_Sizes($$1, $$8, $$8);
-      float $$9 = $$4 * $$3;
-      float $$10 = -$$5 * $$3;
-      MemoryStack $$11 = MemoryStack.stackPush();
+   private fbk(int $$0) {
+      this.d = $$0;
+   }
 
-      try {
-         FT_Vector $$12 = fnq.a(FT_Vector.malloc($$11), $$9, $$10);
-         FreeType.FT_Set_Transform($$1, null, $$12);
-         IntBuffer $$13 = $$11.mallocInt(1);
-         int $$14 = (int)FreeType.FT_Get_First_Char($$1, $$13);
-
-         while (true) {
-            int $$15 = $$13.get(0);
-            if ($$15 == 0) {
-               break;
-            }
-
-            if (!$$7.contains($$14)) {
-               this.e.a($$14, new fbk.b($$15));
-            }
-
-            $$14 = (int)FreeType.FT_Get_Next_Char($$1, (long)$$14, $$13);
-         }
-      } catch (Throwable var18) {
-         if ($$11 != null) {
+   public void b() {
+      if (this.e.compareAndSet(true, false)) {
+         AL10.alSourceStop(this.d);
+         fbo.a("Stop");
+         if (this.g != null) {
             try {
-               $$11.close();
-            } catch (Throwable var17) {
-               var18.addSuppressed(var17);
+               this.g.close();
+            } catch (IOException var2) {
+               b.error("Failed to close audio stream", var2);
             }
+
+            this.l();
+            this.g = null;
          }
 
-         throw var18;
-      }
-
-      if ($$11 != null) {
-         $$11.close();
+         AL10.alDeleteSources(new int[]{this.d});
+         fbo.a("Cleanup");
       }
    }
 
-   @Nullable
-   @Override
-   public fbg a(int $$0) {
-      fbk.b $$1 = this.e.a($$0);
-      return $$1 != null ? this.a($$0, $$1) : null;
+   public void c() {
+      AL10.alSourcePlay(this.d);
    }
 
-   private fbg a(int $$0, fbk.b $$1) {
-      fbg $$2 = $$1.b;
-      if ($$2 == null) {
-         FT_Face $$3 = this.b();
-         synchronized ($$3) {
-            $$2 = $$1.b;
-            if ($$2 == null) {
-               $$2 = this.a($$0, $$3, $$1.a);
-               $$1.b = $$2;
-            }
-         }
-      }
-
-      return $$2;
+   private int k() {
+      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
    }
 
-   private fbg a(int $$0, FT_Face $$1, int $$2) {
-      int $$3 = FreeType.FT_Load_Glyph($$1, $$2, 4194312);
-      if ($$3 != 0) {
-         fnq.a($$3, String.format(Locale.ROOT, "Loading glyph U+%06X", $$0));
-      }
-
-      FT_GlyphSlot $$4 = $$1.glyph();
-      if ($$4 == null) {
-         throw new NullPointerException(String.format(Locale.ROOT, "Glyph U+%06X not initialized", $$0));
-      } else {
-         float $$5 = fnq.a($$4.advance());
-         FT_Bitmap $$6 = $$4.bitmap();
-         int $$7 = $$4.bitmap_left();
-         int $$8 = $$4.bitmap_top();
-         int $$9 = $$6.width();
-         int $$10 = $$6.rows();
-         return (fbg)($$9 > 0 && $$10 > 0 ? new fbk.a((float)$$7, (float)$$8, $$9, $$10, $$5, $$2) : () -> $$5 / this.d);
+   public void d() {
+      if (this.k() == 4114) {
+         AL10.alSourcePause(this.d);
       }
    }
 
-   FT_Face b() {
-      if (this.b != null && this.c != null) {
-         return this.c;
-      } else {
-         throw new IllegalStateException("Provider already closed");
+   public void e() {
+      if (this.k() == 4115) {
+         AL10.alSourcePlay(this.d);
       }
    }
 
-   @Override
-   public void close() {
-      if (this.c != null) {
-         synchronized (fnq.a) {
-            fnq.b(FreeType.FT_Done_Face(this.c), "Deleting face");
-         }
-
-         this.c = null;
+   public void f() {
+      if (this.e.get()) {
+         AL10.alSourceStop(this.d);
+         fbo.a("Stop");
       }
-
-      MemoryUtil.memFree(this.b);
-      this.b = null;
    }
 
-   @Override
-   public IntSet a() {
-      return this.e.b();
+   public boolean g() {
+      return this.k() == 4114;
    }
 
-   class a implements fbg {
-      final int b;
-      final int c;
-      final float d;
-      final float e;
-      private final float f;
-      final int g;
+   public boolean h() {
+      return this.k() == 4116;
+   }
 
-      a(final float $$0, final float $$1, final int $$2, final int $$3, final float $$4, final int $$5) {
-         this.b = $$2;
-         this.c = $$3;
-         this.f = $$4 / fbk.this.d;
-         this.d = $$0 / fbk.this.d;
-         this.e = $$1 / fbk.this.d;
-         this.g = $$5;
-      }
+   public void a(ezh $$0) {
+      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.d, (float)$$0.e, (float)$$0.f});
+   }
 
-      @Override
-      public float getAdvance() {
-         return this.f;
-      }
+   public void a(float $$0) {
+      AL10.alSourcef(this.d, 4099, $$0);
+   }
 
-      @Override
-      public fnk bake(Function<fbi, fnk> $$0) {
-         return $$0.apply(new fbi() {
-            @Override
-            public int a() {
-               return a.this.b;
-            }
+   public void a(boolean $$0) {
+      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
+   }
 
-            @Override
-            public int b() {
-               return a.this.c;
-            }
+   public void b(float $$0) {
+      AL10.alSourcef(this.d, 4106, $$0);
+   }
 
-            @Override
-            public float d() {
-               return fbk.this.d;
-            }
+   public void i() {
+      AL10.alSourcei(this.d, 53248, 0);
+   }
 
-            @Override
-            public float i() {
-               return a.this.d;
-            }
+   public void c(float $$0) {
+      AL10.alSourcei(this.d, 53248, 53251);
+      AL10.alSourcef(this.d, 4131, $$0);
+      AL10.alSourcef(this.d, 4129, 1.0F);
+      AL10.alSourcef(this.d, 4128, 0.0F);
+   }
 
-            @Override
-            public float j() {
-               return a.this.e;
-            }
+   public void b(boolean $$0) {
+      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
+   }
 
-            @Override
-            public void a(int $$0, int $$1) {
-               FT_Face $$2 = fbk.this.b();
-               fci $$3 = new fci(fci.a.d, a.this.b, a.this.c, false);
-               if ($$3.a($$2, a.this.g)) {
-                  $$3.a(0, $$0, $$1, 0, 0, a.this.b, a.this.c, false, true);
-               } else {
-                  $$3.close();
+   public void a(fbp $$0) {
+      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
+   }
+
+   public void a(hci $$0) {
+      this.g = $$0;
+      AudioFormat $$1 = $$0.a();
+      this.f = a($$1, 1);
+      this.a(4);
+   }
+
+   private static int a(AudioFormat $$0, int $$1) {
+      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
+   }
+
+   private void a(int $$0) {
+      if (this.g != null) {
+         try {
+            for (int $$1 = 0; $$1 < $$0; $$1++) {
+               ByteBuffer $$2 = this.g.a(this.f);
+               if ($$2 != null) {
+                  new fbp($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
                }
             }
-
-            @Override
-            public boolean c() {
-               return false;
-            }
-         });
+         } catch (IOException var4) {
+            b.error("Failed to read from audio stream", var4);
+         }
       }
    }
 
-   static class b {
-      final int a;
-      @Nullable
-      volatile fbg b;
-
-      b(int $$0) {
-         this.a = $$0;
+   public void j() {
+      if (this.g != null) {
+         int $$0 = this.l();
+         this.a($$0);
       }
+   }
+
+   private int l() {
+      int $$0 = AL10.alGetSourcei(this.d, 4118);
+      if ($$0 > 0) {
+         int[] $$1 = new int[$$0];
+         AL10.alSourceUnqueueBuffers(this.d, $$1);
+         fbo.a("Unqueue buffers");
+         AL10.alDeleteBuffers($$1);
+         fbo.a("Remove processed buffers");
+      }
+
+      return $$0;
    }
 }

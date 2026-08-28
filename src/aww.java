@@ -1,11 +1,8 @@
-public class aww {
-   public static final axl<cgh> a = a("default_spawns");
-   public static final axl<cgh> b = a("full_moon_spawns");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private aww() {
-   }
-
-   private static axl<cgh> a(String $$0) {
-      return axl.a(lw.l, ale.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aww {
 }

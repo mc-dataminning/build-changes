@@ -1,61 +1,112 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import org.joml.FrustumIntersection;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class gln implements gll.a {
-   private static final float a = 0.02F;
-   private final Map<jf, gln.a> b = Maps.newHashMap();
+public class gln {
+   public static final int a = 4;
+   private final FrustumIntersection b = new FrustumIntersection();
+   private final Matrix4f c = new Matrix4f();
+   private Vector4f d;
+   private double e;
+   private double f;
+   private double g;
 
-   public void a(jf $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new gln.a($$1, $$2, ad.c() + (long)$$3));
+   public gln(Matrix4f $$0, Matrix4f $$1) {
+      this.a($$0, $$1);
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
+   public gln(gln $$0) {
+      this.b.set($$0.c);
+      this.c.set($$0.c);
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.d = $$0.d;
    }
 
-   @Override
-   public void a(fdi $$0, ghl $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ad.c();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((gln.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   public gln a(int $$0) {
+      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
+      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
+      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
+      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
+      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
+
+      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
+         this.b
+               .intersectAab(
+                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
+               )
+            != -2;
+         this.g = this.g - (double)(this.d.z() * 4.0F)
+      ) {
+         this.e = this.e - (double)(this.d.x() * 4.0F);
+         this.f = this.f - (double)(this.d.y() * 4.0F);
+      }
+
+      return this;
    }
 
-   private void a(fdi $$0, ghl $$1, jf $$2, gln.a $$3) {
-      gll.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         gll.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
-      }
+   public void a(double $$0, double $$1, double $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   static class a {
-      public int a;
-      public String b;
-      public long c;
+   private void a(Matrix4f $$0, Matrix4f $$1) {
+      $$1.mul($$0, this.c);
+      this.b.set(this.c);
+      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
+   }
 
-      public a(int $$0, String $$1, long $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public boolean a(ezc $$0) {
+      int $$1 = this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+      return $$1 == -2 || $$1 == -1;
+   }
+
+   public int a(elj $$0) {
+      return this.a((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
+   }
+
+   private int a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - this.e);
+      float $$7 = (float)($$1 - this.f);
+      float $$8 = (float)($$2 - this.g);
+      float $$9 = (float)($$3 - this.e);
+      float $$10 = (float)($$4 - this.f);
+      float $$11 = (float)($$5 - this.g);
+      return this.b.intersectAab($$6, $$7, $$8, $$9, $$10, $$11);
+   }
+
+   public Vector4f[] a() {
+      Vector4f[] $$0 = new Vector4f[]{
+         new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F),
+         new Vector4f(1.0F, -1.0F, -1.0F, 1.0F),
+         new Vector4f(1.0F, 1.0F, -1.0F, 1.0F),
+         new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F),
+         new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F),
+         new Vector4f(1.0F, -1.0F, 1.0F, 1.0F),
+         new Vector4f(1.0F, 1.0F, 1.0F, 1.0F),
+         new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F)
+      };
+      Matrix4f $$1 = this.c.invert(new Matrix4f());
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         $$1.transform($$0[$$2]);
+         $$0[$$2].div($$0[$$2].w());
       }
 
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
-      }
+      return $$0;
+   }
 
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
+   public double b() {
+      return this.e;
+   }
 
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
+   public double c() {
+      return this.f;
+   }
 
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
-      }
+   public double d() {
+      return this.g;
    }
 }

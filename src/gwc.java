@@ -1,6 +1,13 @@
-public class gwc extends guo {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+import javax.annotation.Nullable;
+
+public class gwc extends gtw {
+   @Nullable
+   public btx.l.e a;
+   @Nullable
+   public btx.l.b f;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

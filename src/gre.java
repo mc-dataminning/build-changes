@@ -1,27 +1,11 @@
-public class gre extends grm<gtj, fxg> {
-   private static final ale a = ale.b("textures/entity/creeper/creeper_armor.png");
-   private final fxg b;
+public class gre extends gmp<cme> {
+   private static final alh a = alh.b("textures/entity/hoglin/zoglin.png");
 
-   public gre(gpk<gtj, fxg> $$0, gam $$1) {
-      super($$0);
-      this.b = new fxg($$1.a(gap.X));
+   public gre(gnz.a $$0) {
+      super($$0, gba.dk, gba.dl, 0.7F);
    }
 
-   protected boolean a(gtj $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected ale a() {
+   public alh a(guq $$0) {
       return a;
-   }
-
-   protected fxg b() {
-      return this.b;
    }
 }

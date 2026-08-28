@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fuu {
+   void F();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fuu {
+   fuo G();
 }

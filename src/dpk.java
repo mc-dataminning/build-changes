@@ -1,75 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dpk extends dhm {
+public class dpk extends dhy {
    public static final MapCodec<dpk> a = b(dpk::new);
-   private static final xe d = xe.c("container.stonecutter");
-   public static final dvm b = dli.aF;
-   protected static final ezq c = dhm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   protected static final fab b = dhy.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<dpk> a() {
       return a;
    }
 
-   public dpk(dur.d $$0) {
+   public dpk(dvc.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jk.c));
    }
 
    @Override
-   public dus a(czn $$0) {
-      return this.n().b(b, $$0.g().g());
+   protected fab b(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return b;
    }
 
    @Override
-   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
-      if (!$$1.B) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awq.ay);
+   protected fab b_(dvd $$0, dea $$1, jg $$2) {
+      return ezy.b();
+   }
+
+   @Override
+   protected fab c(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return ezy.b();
+   }
+
+   @Override
+   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      die.b($$1, $$2.d(), $$0);
+   }
+
+   @Override
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      if ($$1 == jl.b && $$2.a(dia.G)) {
+         $$3.a($$4, this, 20);
       }
 
-      return brs.a;
-   }
-
-   @Nullable
-   @Override
-   protected bru b(dus $$0, dej $$1, jf $$2) {
-      return new bsa(($$2x, $$3, $$4) -> new ctc($$2x, $$3, crm.a($$1, $$2)), d);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return c;
+   protected void b(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   protected boolean g_(dus $$0) {
-      return true;
-   }
-
-   @Override
-   protected dnt a_(dus $$0) {
-      return dnt.c;
-   }
-
-   @Override
-   protected dus a(dus $$0, doa $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dus a(dus $$0, dmj $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dus $$0, eri $$1) {
+   protected boolean a(dvd $$0, ert $$1) {
       return false;
+   }
+
+   @Override
+   protected float c(dvd $$0, dea $$1, jg $$2) {
+      return 0.2F;
    }
 }

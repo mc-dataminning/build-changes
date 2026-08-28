@@ -1,90 +1,57 @@
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class glh implements gll.a {
-   private final fip a;
-   private static final int b = axq.a(255, 0, 155, 155);
-   private static final int c = axq.a(255, 255, 255, 0);
+public class glh {
+   private final Long2ObjectMap<glh.a> a = new Long2ObjectOpenHashMap();
 
-   public glh(fip $$0) {
-      this.a = $$0;
+   @Nullable
+   public glg a(dev $$0, ki $$1) {
+      glh.a $$2 = this.a($$0, $$1.a(), $$1.c());
+      if ($$2.a().c($$1.b())) {
+         return null;
+      } else {
+         int $$3 = $$1.a() - 1;
+         int $$4 = $$1.c() - 1;
+         int $$5 = $$1.a() + 1;
+         int $$6 = $$1.c() + 1;
+         glf[] $$7 = new glf[9];
+
+         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
+            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
+               int $$10 = glg.a($$3, $$4, $$9, $$8);
+               glh.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
+               $$7[$$10] = $$11.b();
+            }
+         }
+
+         return new glg($$0, $$3, $$4, $$7);
+      }
    }
 
-   @Override
-   public void a(fdi $$0, ghl $$1, double $$2, double $$3, double $$4) {
-      btr $$5 = this.a.j.k().g();
-      float $$6 = (float)((double)this.a.s.H_() - $$3);
-      float $$7 = (float)((double)(this.a.s.an() + 1) - $$3);
-      ddp $$8 = $$5.du();
-      float $$9 = (float)((double)$$8.d() - $$2);
-      float $$10 = (float)((double)$$8.e() - $$4);
-      fdm $$11 = $$1.getBuffer(ghv.a(1.0));
-      Matrix4f $$12 = $$0.c().a();
+   private glh.a a(dev $$0, int $$1, int $$2) {
+      return (glh.a)this.a.computeIfAbsent(deb.c($$1, $$2), $$1x -> new glh.a($$0.d(deb.a($$1x), deb.b($$1x))));
+   }
 
-      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
-         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
+   static final class a {
+      private final dxj a;
+      @Nullable
+      private glf b;
+
+      a(dxj $$0) {
+         this.a = $$0;
+      }
+
+      public dxj a() {
+         return this.a;
+      }
+
+      public glf b() {
+         if (this.b == null) {
+            this.b = new glf(this.a);
          }
-      }
 
-      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
-         int $$16 = $$15 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16);
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16);
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16);
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16);
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
-         int $$18 = $$17 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18);
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18);
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18);
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18);
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (int $$19 = this.a.s.H_(); $$19 <= this.a.s.an() + 1; $$19 += 2) {
-         float $$20 = (float)((double)$$19 - $$3);
-         int $$21 = $$19 % 8 == 0 ? b : c;
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
-         $$11.a($$12, $$9, $$20, $$10).a($$21);
-         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21);
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21);
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21);
-         $$11.a($$12, $$9, $$20, $$10).a($$21);
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
-      }
-
-      $$11 = $$1.getBuffer(ghv.a(2.0));
-
-      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
-         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
-         }
-      }
-
-      for (int $$24 = this.a.s.H_(); $$24 <= this.a.s.an() + 1; $$24 += 16) {
-         float $$25 = (float)((double)$$24 - $$3);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
+         return this.b;
       }
    }
 }

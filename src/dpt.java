@@ -1,73 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpt extends dju implements dmd {
-   public static final MapCodec<dpt> c = b(dpt::new);
-   public static final dvq<dvo> d = dju.b;
-   protected static final float e = 6.0F;
-   protected static final ezq f = dhm.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class dpt extends doy {
+   public static final MapCodec<dpt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dwq.a.fieldOf("wood_type").forGetter(doy::d), t()).apply($$0, dpt::new));
+   public static final dwd b = dvt.ba;
 
    @Override
    public MapCodec<dpt> a() {
-      return c;
+      return a;
    }
 
-   public dpt(dur.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return f;
+   public dpt(dwq $$0, dvc.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.F.b().b(b, Integer.valueOf(0)).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean b(dus $$0, ddo $$1, jf $$2) {
-      return $$0.c($$1, $$2, jk.b) && !$$0.a(dho.kJ);
+   protected boolean a(dvd $$0, dey $$1, jg $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   public cvs a(dem $$0, jf $$1, dus $$2) {
-      return new cvs(dho.bw);
-   }
-
-   @Nullable
-   @Override
-   public dus a(czn $$0) {
-      dus $$1 = super.a($$0);
-      if ($$1 != null) {
-         eqt $$2 = $$0.q().b_($$0.a().d());
-         if ($$2.a(axb.a) && $$2.e() == 8) {
-            return $$1;
-         }
-      }
-
-      return null;
+   public dvd a(czm $$0) {
+      ere $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Integer.valueOf(dwj.a($$0.i() + 180.0F))).b(f, Boolean.valueOf($$1.a() == erf.c));
    }
 
    @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      if ($$0.c(d) == dvo.a) {
-         dus $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(d) == dvo.b;
-      } else {
-         eqt $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(axb.a) && $$4.e() == 8;
-      }
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      return $$1 == jl.a && !this.a($$0, $$3, $$4) ? dia.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eqt b_(dus $$0) {
-      return equ.c.a(false);
+   public float h(dvd $$0) {
+      return dwj.b($$0.c(b));
    }
 
    @Override
-   public boolean a(@Nullable cnx $$0, ddo $$1, jf $$2, dus $$3, eqs $$4) {
-      return false;
+   protected dvd a(dvd $$0, dol $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public boolean a(dek $$0, jf $$1, dus $$2, eqt $$3) {
-      return false;
+   protected dvd a(dvd $$0, dmu $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(b, f);
    }
 }

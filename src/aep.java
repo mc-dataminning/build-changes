@@ -1,36 +1,36 @@
-public record aep(agm e, byte f) implements zl<aca> {
-   public static final zc<wp, aep> a = zl.a(aep::a, aep::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   private aep(wp $$0) {
-      this(new agm($$0), $$0.readByte());
+public class aep implements zo<acd> {
+   public static final zf<we, aep> a = zo.a(aep::a, aep::new);
+   private final IntList b;
+
+   public aep(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(wp $$0) {
-      this.e.a($$0);
-      $$0.l(this.f);
+   public aep(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private aep(we $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<aep> a() {
-      return agp.am;
+   public zq<aep> a() {
+      return ags.ak;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
-   }
-
-   public agm b() {
-      return this.e;
-   }
-
-   public byte e() {
-      return this.f;
+   public IntList b() {
+      return this.b;
    }
 }

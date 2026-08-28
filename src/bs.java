@@ -3,116 +3,116 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record bs(Optional<cs> b, Optional<cs> c, Optional<cs> d, Optional<cs> e, Optional<cs> f, Optional<cs> g, Optional<cs> h) {
+public record bs(Optional<ct> b, Optional<ct> c, Optional<ct> d, Optional<ct> e, Optional<ct> f, Optional<ct> g, Optional<ct> h) {
    public static final Codec<bs> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cs.a.optionalFieldOf("head").forGetter(bs::a),
-               cs.a.optionalFieldOf("chest").forGetter(bs::b),
-               cs.a.optionalFieldOf("legs").forGetter(bs::c),
-               cs.a.optionalFieldOf("feet").forGetter(bs::d),
-               cs.a.optionalFieldOf("body").forGetter(bs::e),
-               cs.a.optionalFieldOf("mainhand").forGetter(bs::f),
-               cs.a.optionalFieldOf("offhand").forGetter(bs::g)
+               ct.a.optionalFieldOf("head").forGetter(bs::a),
+               ct.a.optionalFieldOf("chest").forGetter(bs::b),
+               ct.a.optionalFieldOf("legs").forGetter(bs::c),
+               ct.a.optionalFieldOf("feet").forGetter(bs::d),
+               ct.a.optionalFieldOf("body").forGetter(bs::e),
+               ct.a.optionalFieldOf("mainhand").forGetter(bs::f),
+               ct.a.optionalFieldOf("offhand").forGetter(bs::g)
             )
             .apply($$0, bs::new)
    );
 
-   public static bs a(jp<cvn> $$0, jp<drl> $$1) {
-      return bs.a.a().a(cs.a.a().a($$0, cvw.uR).a(kq.a(cpl.a($$1).a()))).b();
+   public static bs a(jq<cvt> $$0, jq<drw> $$1) {
+      return bs.a.a().a(ct.a.a().a($$0, cwb.uR).a(kr.a(cpv.a($$1).a(), kt.ah, kt.h))).b();
    }
 
-   public boolean a(@Nullable btr $$0) {
-      if ($$0 instanceof bun $$1) {
-         if (this.b.isPresent() && !this.b.get().a($$1.a(btz.f))) {
+   public boolean a(@Nullable btz $$0) {
+      if ($$0 instanceof buv $$1) {
+         if (this.b.isPresent() && !this.b.get().a($$1.a(buh.f))) {
             return false;
-         } else if (this.c.isPresent() && !this.c.get().a($$1.a(btz.e))) {
+         } else if (this.c.isPresent() && !this.c.get().a($$1.a(buh.e))) {
             return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1.a(btz.d))) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.a(buh.d))) {
             return false;
-         } else if (this.e.isPresent() && !this.e.get().a($$1.a(btz.c))) {
+         } else if (this.e.isPresent() && !this.e.get().a($$1.a(buh.c))) {
             return false;
-         } else if (this.f.isPresent() && !this.f.get().a($$1.a(btz.g))) {
+         } else if (this.f.isPresent() && !this.f.get().a($$1.a(buh.g))) {
             return false;
          } else {
-            return this.g.isPresent() && !this.g.get().a($$1.a(btz.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(btz.b));
+            return this.g.isPresent() && !this.g.get().a($$1.a(buh.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(buh.b));
          }
       } else {
          return false;
       }
    }
 
-   public Optional<cs> a() {
+   public Optional<ct> a() {
       return this.b;
    }
 
-   public Optional<cs> b() {
+   public Optional<ct> b() {
       return this.c;
    }
 
-   public Optional<cs> c() {
+   public Optional<ct> c() {
       return this.d;
    }
 
-   public Optional<cs> d() {
+   public Optional<ct> d() {
       return this.e;
    }
 
-   public Optional<cs> e() {
+   public Optional<ct> e() {
       return this.f;
    }
 
-   public Optional<cs> f() {
+   public Optional<ct> f() {
       return this.g;
    }
 
-   public Optional<cs> g() {
+   public Optional<ct> g() {
       return this.h;
    }
 
    public static class a {
-      private Optional<cs> a = Optional.empty();
-      private Optional<cs> b = Optional.empty();
-      private Optional<cs> c = Optional.empty();
-      private Optional<cs> d = Optional.empty();
-      private Optional<cs> e = Optional.empty();
-      private Optional<cs> f = Optional.empty();
-      private Optional<cs> g = Optional.empty();
+      private Optional<ct> a = Optional.empty();
+      private Optional<ct> b = Optional.empty();
+      private Optional<ct> c = Optional.empty();
+      private Optional<ct> d = Optional.empty();
+      private Optional<ct> e = Optional.empty();
+      private Optional<ct> f = Optional.empty();
+      private Optional<ct> g = Optional.empty();
 
       public static bs.a a() {
          return new bs.a();
       }
 
-      public bs.a a(cs.a $$0) {
+      public bs.a a(ct.a $$0) {
          this.a = Optional.of($$0.b());
          return this;
       }
 
-      public bs.a b(cs.a $$0) {
+      public bs.a b(ct.a $$0) {
          this.b = Optional.of($$0.b());
          return this;
       }
 
-      public bs.a c(cs.a $$0) {
+      public bs.a c(ct.a $$0) {
          this.c = Optional.of($$0.b());
          return this;
       }
 
-      public bs.a d(cs.a $$0) {
+      public bs.a d(ct.a $$0) {
          this.d = Optional.of($$0.b());
          return this;
       }
 
-      public bs.a e(cs.a $$0) {
+      public bs.a e(ct.a $$0) {
          this.e = Optional.of($$0.b());
          return this;
       }
 
-      public bs.a f(cs.a $$0) {
+      public bs.a f(ct.a $$0) {
          this.f = Optional.of($$0.b());
          return this;
       }
 
-      public bs.a g(cs.a $$0) {
+      public bs.a g(ct.a $$0) {
          this.g = Optional.of($$0.b());
          return this;
       }

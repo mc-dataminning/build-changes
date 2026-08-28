@@ -1,101 +1,145 @@
-public class ado implements zl<aca> {
-   public static final zc<wp, ado> a = zl.a(ado::a, ado::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final int i;
-   private final boolean j;
-   private final lm k;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public <T extends lm> ado(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.k = $$0;
-      this.j = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
-      this.f = $$6;
-      this.g = $$7;
-      this.h = $$8;
-      this.i = $$9;
+public class ado {
+   private static final int a = 2097152;
+   private final uj b;
+   private final byte[] c;
+   private final List<ado.a> d;
+
+   public ado(dxj $$0) {
+      this.b = new uj();
+
+      for (Entry<eaz.a, eaz> $$1 : $$0.e()) {
+         if ($$1.getKey().b()) {
+            this.b.a($$1.getKey().a(), new uq($$1.getValue().a()));
+         }
+      }
+
+      this.c = new byte[a($$0)];
+      a(new we(this.c()), $$0);
+      this.d = Lists.newArrayList();
+
+      for (Entry<jg, dsg> $$2 : $$0.F().entrySet()) {
+         this.d.add(ado.a.a($$2.getValue()));
+      }
    }
 
-   private ado(wp $$0) {
-      this.j = $$0.readBoolean();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readInt();
-      this.k = lo.bg.decode($$0);
+   public ado(ws $$0, int $$1, int $$2) {
+      this.b = $$0.o();
+      if (this.b == null) {
+         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
+      } else {
+         int $$3 = $$0.l();
+         if ($$3 > 2097152) {
+            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
+         } else {
+            this.c = new byte[$$3];
+            $$0.b(this.c);
+            this.d = ado.a.b.decode($$0);
+         }
+      }
    }
 
-   private void a(wp $$0) {
-      $$0.a(this.j);
+   public void a(ws $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.q(this.i);
-      lo.bg.encode($$0, this.k);
+      $$0.c(this.c.length);
+      $$0.c(this.c);
+      ado.a.b.encode($$0, this.d);
    }
 
-   @Override
-   public zn<ado> a() {
-      return agp.M;
+   private static int a(dxj $$0) {
+      int $$1 = 0;
+
+      for (dxk $$2 : $$0.d()) {
+         $$1 += $$2.j();
+      }
+
+      return $$1;
    }
 
-   public void a(aca $$0) {
-      $$0.a(this);
+   private ByteBuf c() {
+      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
+      $$0.writerIndex(0);
+      return $$0;
    }
 
-   public boolean b() {
-      return this.j;
+   public static void a(we $$0, dxj $$1) {
+      for (dxk $$2 : $$1.d()) {
+         $$2.c($$0);
+      }
    }
 
-   public double e() {
+   public Consumer<ado.b> a(int $$0, int $$1) {
+      return $$2 -> this.a($$2, $$0, $$1);
+   }
+
+   private void a(ado.b $$0, int $$1, int $$2) {
+      int $$3 = 16 * $$1;
+      int $$4 = 16 * $$2;
+      jg.a $$5 = new jg.a();
+
+      for (ado.a $$6 : this.d) {
+         int $$7 = $$3 + ki.b($$6.c >> 4);
+         int $$8 = $$4 + ki.b($$6.c);
+         $$5.d($$7, $$6.d, $$8);
+         $$0.accept($$5, $$6.e, $$6.f);
+      }
+   }
+
+   public we a() {
+      return new we(Unpooled.wrappedBuffer(this.c));
+   }
+
+   public uj b() {
       return this.b;
    }
 
-   public double f() {
-      return this.c;
+   static class a {
+      public static final zf<ws, ado.a> a = zf.a(ado.a::a, ado.a::new);
+      public static final zf<ws, List<ado.a>> b = a.a(zd.a());
+      final int c;
+      final int d;
+      final dsi<?> e;
+      @Nullable
+      final uj f;
+
+      private a(int $$0, int $$1, dsi<?> $$2, @Nullable uj $$3) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+
+      private a(ws $$0) {
+         this.c = $$0.readByte();
+         this.d = $$0.readShort();
+         this.e = zd.a(ly.h).decode($$0);
+         this.f = $$0.o();
+      }
+
+      private void a(ws $$0) {
+         $$0.l(this.c);
+         $$0.m(this.d);
+         zd.a(ly.h).encode($$0, this.e);
+         $$0.a(this.f);
+      }
+
+      static ado.a a(dsg $$0) {
+         uj $$1 = $$0.a($$0.i().H_());
+         jg $$2 = $$0.aC_();
+         int $$3 = ki.b($$2.u()) << 4 | ki.b($$2.w());
+         return new ado.a($$3, $$2.v(), $$0.q(), $$1.g() ? null : $$1);
+      }
    }
 
-   public double g() {
-      return this.d;
-   }
-
-   public float h() {
-      return this.e;
-   }
-
-   public float i() {
-      return this.f;
-   }
-
-   public float j() {
-      return this.g;
-   }
-
-   public float k() {
-      return this.h;
-   }
-
-   public int l() {
-      return this.i;
-   }
-
-   public lm m() {
-      return this.k;
+   @FunctionalInterface
+   public interface b {
+      void accept(jg var1, dsi<?> var2, @Nullable uj var3);
    }
 }

@@ -1,96 +1,79 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
-public class da extends dw<da.a> {
+public class da extends dx<da.a> {
    @Override
    public Codec<da.a> a() {
       return da.a.a;
    }
 
-   public void a(ark $$0, btr $$1, bsj $$2) {
-      etl $$3 = bv.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
+   public void a(arn $$0, Collection<btz> $$1) {
+      List<etw> $$2 = Lists.newArrayList();
+      Set<bug<?>> $$3 = Sets.newHashSet();
+
+      for (btz $$4 : $$1) {
+         $$3.add($$4.aq());
+         $$2.add(bv.b($$0, $$4));
+      }
+
+      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
    }
 
-   public static record a(Optional<bg> b, Optional<bg> c, Optional<bk> d) implements dw.a {
+   public static record a(Optional<bg> b, List<bg> c, di.d d) implements dx.a {
       public static final Codec<da.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(da.a::a),
-                  bv.b.optionalFieldOf("entity").forGetter(da.a::e),
-                  bk.a.optionalFieldOf("killing_blow").forGetter(da.a::f)
+                  bv.b.listOf().optionalFieldOf("victims", List.of()).forGetter(da.a::b),
+                  di.d.d.optionalFieldOf("unique_entity_types", di.d.c).forGetter(da.a::c)
                )
                .apply($$0, da.a::new)
       );
 
-      public static ao<da.a> a(Optional<bv> $$0) {
-         return an.c.a(new da.a(Optional.empty(), bv.a($$0), Optional.empty()));
+      public static ao<da.a> a(bv.a... $$0) {
+         return an.H.a(new da.a(Optional.empty(), bv.a($$0), di.d.c));
       }
 
-      public static ao<da.a> a(bv.a $$0) {
-         return an.c.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), Optional.empty()));
+      public static ao<da.a> a(di.d $$0) {
+         return an.H.a(new da.a(Optional.empty(), List.of(), $$0));
       }
 
-      public static ao<da.a> b() {
-         return an.c.a(new da.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
+      public boolean a(Collection<etw> $$0, int $$1) {
+         if (!this.c.isEmpty()) {
+            List<etw> $$2 = Lists.newArrayList($$0);
 
-      public static ao<da.a> a(Optional<bv> $$0, Optional<bk> $$1) {
-         return an.c.a(new da.a(Optional.empty(), bv.a($$0), $$1));
-      }
+            for (bg $$3 : this.c) {
+               boolean $$4 = false;
+               Iterator<etw> $$5 = $$2.iterator();
 
-      public static ao<da.a> a(bv.a $$0, Optional<bk> $$1) {
-         return an.c.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), $$1));
-      }
+               while ($$5.hasNext()) {
+                  etw $$6 = $$5.next();
+                  if ($$3.a($$6)) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
 
-      public static ao<da.a> a(Optional<bv> $$0, bk.a $$1) {
-         return an.c.a(new da.a(Optional.empty(), bv.a($$0), Optional.of($$1.b())));
-      }
+               if (!$$4) {
+                  return false;
+               }
+            }
+         }
 
-      public static ao<da.a> a(bv.a $$0, bk.a $$1) {
-         return an.c.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), Optional.of($$1.b())));
-      }
-
-      public static ao<da.a> c() {
-         return an.Z.a(new da.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static ao<da.a> b(Optional<bv> $$0) {
-         return an.d.a(new da.a(Optional.empty(), bv.a($$0), Optional.empty()));
-      }
-
-      public static ao<da.a> b(bv.a $$0) {
-         return an.d.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), Optional.empty()));
-      }
-
-      public static ao<da.a> d() {
-         return an.d.a(new da.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static ao<da.a> b(Optional<bv> $$0, Optional<bk> $$1) {
-         return an.d.a(new da.a(Optional.empty(), bv.a($$0), $$1));
-      }
-
-      public static ao<da.a> b(bv.a $$0, Optional<bk> $$1) {
-         return an.d.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), $$1));
-      }
-
-      public static ao<da.a> b(Optional<bv> $$0, bk.a $$1) {
-         return an.d.a(new da.a(Optional.empty(), bv.a($$0), Optional.of($$1.b())));
-      }
-
-      public static ao<da.a> b(bv.a $$0, bk.a $$1) {
-         return an.d.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), Optional.of($$1.b())));
-      }
-
-      public boolean a(ark $$0, etl $$1, bsj $$2) {
-         return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
+         return this.d.d($$1);
       }
 
       @Override
       public void a(bh $$0) {
-         dw.a.super.a($$0);
-         $$0.a(this.c, ".entity");
+         dx.a.super.a($$0);
+         $$0.a(this.c, ".victims");
       }
 
       @Override
@@ -98,11 +81,11 @@ public class da extends dw<da.a> {
          return this.b;
       }
 
-      public Optional<bg> e() {
+      public List<bg> b() {
          return this.c;
       }
 
-      public Optional<bk> f() {
+      public di.d c() {
          return this.d;
       }
    }

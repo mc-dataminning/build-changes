@@ -1,46 +1,20 @@
-public class gro extends gsb<gtz, fxr> {
-   private final gom a;
+public class gro extends gsm<gtt, fxm> {
+   private static final alh a = alh.b("textures/entity/cat/cat_collar.png");
+   private final fxm b;
+   private final fxm c;
 
-   public gro(gpk<gtz, fxr> $$0, gom $$1) {
+   public gro(gpv<gtt, fxm> $$0, gax $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new fxm($$1.a(gba.F));
+      this.c = new fxm($$1.a(gba.G));
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, gtz $$3, float $$4, float $$5) {
-      gzi $$6 = $$3.b();
-      cvs $$7 = $$3.aX_();
-      if ($$6 != null && !$$7.f()) {
-         boolean $$8 = $$3.d;
-         boolean $$9 = $$3.ae;
-         $$0.a();
-         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
-         if ($$9) {
-            float $$10 = 0.75F;
-            $$0.b(0.75F, 0.75F, 0.75F);
-         }
-
-         $$0.a(a.f.rotation($$3.a));
-         $$0.a(a.d.rotationDegrees($$4));
-         $$0.a(a.b.rotationDegrees($$5));
-         if ($$3.ae) {
-            if ($$8) {
-               $$0.a(0.4F, 0.26F, 0.15F);
-            } else {
-               $$0.a(0.06F, 0.26F, -0.5F);
-            }
-         } else if ($$8) {
-            $$0.a(0.46F, 0.26F, 0.22F);
-         } else {
-            $$0.a(0.06F, 0.27F, -0.5F);
-         }
-
-         $$0.a(a.b.rotationDegrees(90.0F));
-         if ($$8) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         this.a.a($$7, cvp.h, false, $$0, $$1, $$2, gwx.d, $$6);
-         $$0.b();
+   public void a(fdt $$0, ghw $$1, int $$2, gtt $$3, float $$4, float $$5) {
+      cuu $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         fxm $$8 = $$3.ae ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
       }
    }
 }

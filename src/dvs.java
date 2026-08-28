@@ -1,71 +1,101 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class dvs extends dvv<Integer> {
-   private final ImmutableSet<Integer> a;
-   private final int b;
-   private final int c;
+public record dvs(String r, boolean s, boolean t, boolean u, dvs.a v, dpl w, awj x, awj y, awj z, awj A, awj B, awj C, awj D, awj E) {
+   private static final Map<String, dvs> F = new Object2ObjectArrayMap();
+   public static final Codec<dvs> a = Codec.stringResolver(dvs::b, F::get);
+   public static final dvs b = a(new dvs("iron", false, false, false, dvs.a.a, dpl.g, awk.nl, awk.nm, awk.nt, awk.nu, awk.oH, awk.oI, awk.zi, awk.zj));
+   public static final dvs c = a(new dvs("copper", true, true, false, dvs.a.a, dpl.aj, awk.fO, awk.fP, awk.fV, awk.fW, awk.oH, awk.oI, awk.zi, awk.zj));
+   public static final dvs d = a(new dvs("gold", false, true, false, dvs.a.a, dpl.g, awk.nl, awk.nm, awk.nt, awk.nu, awk.oH, awk.oI, awk.zi, awk.zj));
+   public static final dvs e = a(new dvs("stone", true, true, false, dvs.a.b, dpl.f, awk.nl, awk.nm, awk.nt, awk.nu, awk.zn, awk.zo, awk.zi, awk.zj));
+   public static final dvs f = a(
+      new dvs("polished_blackstone", true, true, false, dvs.a.b, dpl.f, awk.nl, awk.nm, awk.nt, awk.nu, awk.zn, awk.zo, awk.zi, awk.zj)
+   );
+   public static final dvs g = a(new dvs("oak"));
+   public static final dvs h = a(new dvs("spruce"));
+   public static final dvs i = a(new dvs("birch"));
+   public static final dvs j = a(new dvs("acacia"));
+   public static final dvs k = a(new dvs("cherry", true, true, true, dvs.a.a, dpl.aU, awk.eF, awk.eG, awk.eH, awk.eI, awk.eL, awk.eM, awk.eJ, awk.eK));
+   public static final dvs l = a(new dvs("jungle"));
+   public static final dvs m = a(new dvs("dark_oak"));
+   public static final dvs n = a(new dvs("crimson", true, true, true, dvs.a.a, dpl.aT, awk.qN, awk.qO, awk.qP, awk.qQ, awk.qT, awk.qU, awk.qR, awk.qS));
+   public static final dvs o = a(new dvs("warped", true, true, true, dvs.a.a, dpl.aT, awk.qN, awk.qO, awk.qP, awk.qQ, awk.qT, awk.qU, awk.qR, awk.qS));
+   public static final dvs p = a(new dvs("mangrove"));
+   public static final dvs q = a(new dvs("bamboo", true, true, true, dvs.a.a, dpl.aS, awk.bo, awk.bp, awk.bq, awk.br, awk.bu, awk.bv, awk.bs, awk.bt));
 
-   protected dvs(String $$0, int $$1, int $$2) {
-      super($$0, Integer.class);
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
-      } else if ($$2 <= $$1) {
-         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
-      } else {
-         this.b = $$1;
-         this.c = $$2;
-         Set<Integer> $$3 = Sets.newHashSet();
-
-         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
-            $$3.add($$4);
-         }
-
-         this.a = ImmutableSet.copyOf($$3);
-      }
+   public dvs(String $$0) {
+      this($$0, true, true, true, dvs.a.a, dpl.b, awk.CZ, awk.Da, awk.Db, awk.Dc, awk.Df, awk.Dg, awk.Dd, awk.De);
    }
 
-   @Override
-   public Collection<Integer> a() {
-      return this.a;
+   private static dvs a(dvs $$0) {
+      F.put($$0.r, $$0);
+      return $$0;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dvs $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
+   public static Stream<dvs> a() {
+      return F.values().stream();
    }
 
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
+   public String b() {
+      return this.r;
    }
 
-   public static dvs a(String $$0, int $$1, int $$2) {
-      return new dvs($$0, $$1, $$2);
+   public boolean c() {
+      return this.s;
    }
 
-   @Override
-   public Optional<Integer> b(String $$0) {
-      try {
-         Integer $$1 = Integer.valueOf($$0);
-         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
-      } catch (NumberFormatException var3) {
-         return Optional.empty();
-      }
+   public boolean d() {
+      return this.t;
    }
 
-   public String a(Integer $$0) {
-      return $$0.toString();
+   public boolean e() {
+      return this.u;
+   }
+
+   public dvs.a f() {
+      return this.v;
+   }
+
+   public dpl g() {
+      return this.w;
+   }
+
+   public awj h() {
+      return this.x;
+   }
+
+   public awj i() {
+      return this.y;
+   }
+
+   public awj j() {
+      return this.z;
+   }
+
+   public awj k() {
+      return this.A;
+   }
+
+   public awj l() {
+      return this.B;
+   }
+
+   public awj m() {
+      return this.C;
+   }
+
+   public awj n() {
+      return this.D;
+   }
+
+   public awj o() {
+      return this.E;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,24 +1,19 @@
-public class cwi extends cvn {
-   public cwi(cvn.a $$0) {
+import java.util.List;
+
+public class cwi extends cxm {
+   public cwi(cvt.a $$0) {
       super($$0);
    }
 
    @Override
-   public brs a(cvs $$0, cnx $$1, bun $$2, brr $$3) {
-      xe $$4 = $$0.a(ks.g);
-      if ($$4 != null && !($$2 instanceof cnx)) {
-         if (!$$1.dS().B && $$2.bI()) {
-            $$2.b($$4);
-            if ($$2 instanceof bup $$5) {
-               $$5.fW();
-            }
+   public void a(cvx $$0, cvt.b $$1, List<xh> $$2, cxp $$3) {
+      cxw $$4 = $$0.a(kt.P, cxw.a);
+      $$4.a($$2::add, 0.25F, $$1.b());
+   }
 
-            $$0.h(1);
-         }
-
-         return brs.a;
-      } else {
-         return brs.e;
-      }
+   @Override
+   public bry a(dev $$0, coh $$1, brx $$2) {
+      $$0.a(null, $$1.dC(), $$1.dE(), $$1.dI(), awk.nW, awl.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

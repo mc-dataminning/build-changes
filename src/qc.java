@@ -1,24 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class qc extends qd<elg> {
-   public qc(me $$0, CompletableFuture<jq.a> $$1) {
-      super($$0, lw.aT, $$1);
+public abstract class qc extends qb<cvt> {
+   private final CompletableFuture<qg.c<dhy>> d;
+   private final Map<axp<dhy>, axp<cvt>> g = new HashMap<>();
+
+   public qc(mg $$0, CompletableFuture<jr.a> $$1, CompletableFuture<qg.c<dhy>> $$2) {
+      super($$0, ly.K, $$1, $$0x -> $$0x.f().h());
+      this.d = $$2;
+   }
+
+   public qc(mg $$0, CompletableFuture<jr.a> $$1, CompletableFuture<qg.c<cvt>> $$2, CompletableFuture<qg.c<dhy>> $$3) {
+      super($$0, ly.K, $$1, $$2, $$0x -> $$0x.f().h());
+      this.d = $$3;
+   }
+
+   protected void a(axp<dhy> $$0, axp<cvt> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(jq.a $$0) {
-      this.b(axh.p).a(ela.t).a(ela.u).a(ela.v).a(ela.w).a(ela.x);
-      this.b(axh.q).a(ela.b).a(ela.c);
-      this.b(axh.t).a(ela.m).a(ela.n);
-      this.b(axh.r).a(ela.h).a(ela.i);
-      this.b(axh.s).a(ela.z).a(ela.A).a(ela.C).a(ela.E).a(ela.D).a(ela.y).a(ela.B);
-      this.b(axh.n).a(ela.j);
-      this.b(axh.o).a(ela.j);
-      this.b(axh.a).a(ela.k);
-      this.b(axh.b).b(axh.t).b(axh.r);
-      this.b(axh.c).a(ela.d);
-      this.b(axh.d).a(ela.l);
-      this.b(axh.l).a(ela.r);
-      this.b(axh.m).a(ela.H);
+   protected CompletableFuture<jr.a> b() {
+      return super.b().thenCombine(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            axm $$3 = this.c((axp<cvt>)$$2);
+            Optional<axm> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (jr.a)$$0;
+      });
    }
 }

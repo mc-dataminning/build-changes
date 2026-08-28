@@ -1,50 +1,8 @@
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class coc {
-   private final cob<jo<cvn>> a = new cob<>();
-
-   public void a(cvs $$0) {
-      if (cnw.d($$0)) {
-         this.b($$0);
-      }
-   }
-
-   public void b(cvs $$0) {
-      this.a($$0, $$0.k());
-   }
-
-   public void a(cvs $$0, int $$1) {
-      if (!$$0.f()) {
-         int $$2 = Math.min($$1, $$0.K());
-         this.a.a($$0.i(), $$2);
-      }
-   }
-
-   public static cob.a<jo<cvn>> a(Stream<jo<cvn>> $$0) {
-      List<jo<cvn>> $$1 = $$0.sorted(Comparator.comparingInt($$0x -> lv.g.a((cvn)$$0x.a()))).toList();
-      return new cob.a<>($$1);
-   }
-
-   public boolean a(dak<?> $$0, @Nullable cob.b<jo<cvn>> $$1) {
-      return this.a($$0, 1, $$1);
-   }
-
-   public boolean a(dak<?> $$0, int $$1, @Nullable cob.b<jo<cvn>> $$2) {
-      return this.a.a($$0.a().b(), $$1, $$2);
-   }
-
-   public int b(dak<?> $$0, @Nullable cob.b<jo<cvn>> $$1) {
-      return this.b($$0, Integer.MAX_VALUE, $$1);
-   }
-
-   public int b(dak<?> $$0, int $$1, @Nullable cob.b<jo<cvn>> $$2) {
-      return this.a.b($$0.a().b(), $$1, $$2);
-   }
-
-   public void a() {
-      this.a.a();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@u
+@w
+interface coc {
 }

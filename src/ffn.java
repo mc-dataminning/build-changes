@@ -1,40 +1,32 @@
-public class ffn {
-   private final fhb a;
-   private boolean b;
-   private String c;
+import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
-   public ffn(fhb $$0) {
-      this.a = $$0;
-      fhb.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
+public abstract class ffn {
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder("{");
 
-   public boolean a() {
-      return this.b;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public void a(fen $$0) {
-      fhb.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fhb.a b(fen $$0) {
-      fhb.a $$1 = new fhb.a();
-      $$1.a = $$0.a;
-      fhb.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
+      for (Field $$1 : this.getClass().getFields()) {
+         if (!b($$1)) {
+            try {
+               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
+            } catch (IllegalAccessException var7) {
+            }
+         }
       }
+
+      $$0.deleteCharAt($$0.length() - 1);
+      $$0.append('}');
+      return $$0.toString();
+   }
+
+   private static String a(Field $$0) {
+      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
+      return $$1 != null ? $$1.value() : $$0.getName();
+   }
+
+   private static boolean b(Field $$0) {
+      return Modifier.isStatic($$0.getModifiers());
    }
 }

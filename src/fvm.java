@@ -1,65 +1,108 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public record fvm(ebm a, kb<dyp> b, ebj c, jv<aln> d, alp e, dff f) {
-   public fvm(ebk $$0, jv<aln> $$1, alp $$2, dff $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+public class fvm extends fqs {
+   private static final xh a = xh.c("telemetry_info.screen.title");
+   private static final xh b = xh.c("telemetry_info.screen.description").b(-4539718);
+   private static final xh c = xh.c("telemetry_info.button.privacy_statement");
+   private static final xh d = xh.c("telemetry_info.button.give_feedback");
+   private static final xh s = xh.c("telemetry_info.button.show_data");
+   private static final xh u = xh.c("telemetry_info.opt_in.description");
+   private static final int v = 8;
+   private static final boolean w = fja.Q().D();
+   private final fqs x;
+   private final fje y;
+   private final fon z = new fon(this, 16 + 9 * 5 + 20, w ? 33 + flb.a(fja.Q().h) : 33);
+   @Nullable
+   private fvl A;
+   @Nullable
+   private flt B;
+   private double C;
+
+   public fvm(fqs $$0, fje $$1) {
+      super(a);
+      this.x = $$0;
+      this.y = $$1;
    }
 
-   public fvm(ebm $$0, ebj $$1, jv<aln> $$2, alp $$3, dff $$4) {
-      this($$0, $$2.a(aln.c).e(lw.bd), $$1, $$2.a(aln.c), $$3, $$4);
+   @Override
+   public xh i() {
+      return xg.a(super.i(), b);
    }
 
-   public fvm a(ebm $$0, ebj $$1) {
-      return new fvm($$0, this.b, $$1, this.d, this.e, this.f);
+   @Override
+   protected void aS_() {
+      fos $$0 = this.z.a(fos.d().a(4));
+      $$0.c().b();
+      $$0.a(new fmg(a, this.p));
+      this.B = $$0.a(new flt(b, this.p).b(true));
+      fos $$1 = $$0.a(fos.e().a(8));
+      $$1.a(fkz.a(c, this::a).a());
+      $$1.a(fkz.a(d, this::b).a());
+      fos $$2 = this.z.b(fos.d().a(4));
+      if (w) {
+         $$2.a(this.m());
+      }
+
+      fos $$3 = $$2.a(fos.e().a(8));
+      $$3.a(fkz.a(s, this::c).a());
+      $$3.a(fkz.a(xg.d, $$0x -> this.d()).a());
+      fos $$4 = this.z.c(fos.d().a(8));
+      this.A = $$4.a(new fvl(0, 0, this.n - 40, this.z.d(), this.p));
+      this.A.a($$0x -> this.C = $$0x);
+      this.z.a($$1x -> {
+         fkx var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public fvm a(fvm.b $$0) {
-      return new fvm($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   @Override
+   protected void c() {
+      if (this.A != null) {
+         this.A.a(this.C);
+         this.A.k(this.n - 40);
+         this.A.l(this.z.d());
+         this.A.j();
+      }
+
+      if (this.B != null) {
+         this.B.d(this.n - 16);
+      }
+
+      this.z.a();
    }
 
-   public fvm a(fvm.a $$0) {
-      return new fvm(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
-   }
-
-   public kc.b a() {
-      return this.d.a();
-   }
-
-   public void b() {
-      for (dyp $$0 : this.d()) {
-         $$0.b().a();
+   @Override
+   protected void aH_() {
+      if (this.A != null) {
+         this.b(this.A);
       }
    }
 
-   public ebm c() {
-      return this.a;
+   private fkx m() {
+      fjd<Boolean> $$0 = this.y.ak();
+      return flb.a(u, this.p).a($$0).a(this::a).a();
    }
 
-   public kb<dyp> d() {
-      return this.b;
+   private void a(fkx $$0, boolean $$1) {
+      if (this.A != null) {
+         this.A.b($$1);
+      }
    }
 
-   public ebj e() {
-      return this.c;
+   private void a(fkz $$0) {
+      fpp.a(this, ayf.c);
    }
 
-   public jv<aln> f() {
-      return this.d;
+   private void b(fkz $$0) {
+      fpp.a(this, ayf.i);
    }
 
-   public alp g() {
-      return this.e;
+   private void c(fkz $$0) {
+      ad.m().a(this.m.u().b());
    }
 
-   public dff h() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<kc.b, ebj, ebj> {
-   }
-
-   public interface b extends UnaryOperator<ebm> {
+   @Override
+   public void d() {
+      this.m.a(this.x);
    }
 }

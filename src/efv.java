@@ -1,30 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record efv(eih b, ebv c, bqx d, int e) implements efy {
-   public static final Codec<efv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eih.a.fieldOf("state_provider").forGetter(efv::a),
-               ebv.b.fieldOf("target").forGetter(efv::b),
-               bqx.b(0, 8).fieldOf("radius").forGetter(efv::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(efv::d)
-            )
-            .apply($$0, efv::new)
-   );
-
-   public eih a() {
-      return this.b;
+public class efv extends eef<egq> {
+   public efv(Codec<egq> $$0) {
+      super($$0);
    }
 
-   public ebv b() {
-      return this.c;
-   }
+   @Override
+   public boolean a(eeh<egq> $$0) {
+      dfs $$1 = $$0.b();
+      jg $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (jl $$3 : jl.values()) {
+            if ($$3 != jl.a && dqu.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dia.ff.m().b(dqu.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
 
-   public bqx c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+         return false;
+      }
    }
 }

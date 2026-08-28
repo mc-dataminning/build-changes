@@ -1,62 +1,153 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.function.Function;
 
 public class cnl {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] e = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<cnl> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               lv.w.q().fieldOf("type").orElseGet(() -> cnp.c).forGetter($$0x -> $$0x.f),
-               lv.x.q().fieldOf("profession").orElseGet(() -> cnn.b).forGetter($$0x -> $$0x.g),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, cnl::new)
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = azj.f(100.0F);
+   public static final int a = azj.f(133.59999F);
+   public static final int b = azj.f(84.0F);
+   private static final int i = azj.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cfg<? extends cff<? super cnk>>> k = List.of(cfg.d, cfg.x);
+   private static final List<cdz<?>> l = List.of(
+      cdz.g,
+      cdz.h,
+      cdz.k,
+      cdz.l,
+      cdz.M,
+      cdz.n,
+      cdz.m,
+      cdz.E,
+      cdz.t,
+      cdz.o,
+      cdz.p,
+      cdz.B,
+      cdz.ay,
+      cdz.az,
+      cdz.aA,
+      cdz.aB,
+      cdz.aC,
+      cdz.aD,
+      cdz.aE,
+      cdz.aF,
+      cdz.aG,
+      cdz.aH,
+      cdz.aI,
+      cdz.aJ,
+      cdz.aK,
+      cdz.aL
    );
-   public static final zc<wp, cnl> d = zc.a(za.a(lw.aw), $$0 -> $$0.f, za.a(lw.av), $$0 -> $$0.g, za.h, $$0 -> $$0.h, cnl::new);
-   private final cnp f;
-   private final cnn g;
-   private final int h;
+   private static final bwp<cnk> m = cab.a(
+      (Function<cab.b<cnk>, ? extends App<cab.c<cnk>, cae<cnk>>>)($$0 -> $$0.group($$0.a(cdz.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(bao.a, 1200L);
+               }
 
-   public cnl(cnp $$0, cnn $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = Math.max(1, $$2);
+               return true;
+            }))
+   );
+
+   public static void a(cnk $$0) {
+      $$0.ed().a(ImmutableList.of(cpz.y, cpz.z, cpz.x, cpz.k, cpz.w, cpz.v, cpz.b));
    }
 
-   public cnp a() {
-      return this.f;
+   protected static bvx<?> a(cnk $$0, Dynamic<?> $$1) {
+      bvx.b<cnk> $$2 = bvx.a(l, k);
+      bvx<cnk> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(cpz.a));
+      $$3.b(cpz.b);
+      $$3.f();
+      return $$3;
    }
 
-   public cnn b() {
-      return this.g;
+   private static void a(bvx<cnk> $$0) {
+      $$0.a(cpz.a, 0, ImmutableList.of(new bzi(0.8F), cam.a(), new bxu(45, 90), new bxy()));
    }
 
-   public int c() {
-      return this.h;
+   private static void b(bvx<cnk> $$0) {
+      $$0.a(cpz.y, 5, ImmutableList.of(new cai(a)), cdz.aC);
    }
 
-   public cnl a(cnp $$0) {
-      return new cnl($$0, this.g, this.h);
+   private static void c(bvx<cnk> $$0) {
+      $$0.a(cpz.z, ImmutableList.of(Pair.of(0, new caj()), Pair.of(1, new cah(h))), ImmutableSet.of(Pair.of(cdz.ay, cea.b), Pair.of(cdz.aE, cea.b)));
    }
 
-   public cnl a(cnn $$0) {
-      return new cnl(this.f, $$0, this.h);
+   private static void d(bvx<cnk> $$0) {
+      $$0.a(
+         cpz.b,
+         10,
+         ImmutableList.of(
+            cal.a(cnk::gv), cap.a(), new byl(ImmutableMap.of(cdz.aB, cea.b), ImmutableList.of(Pair.of(byg.a(0.5F), 2), Pair.of(new bwy(30, 60), 1)))
+         )
+      );
    }
 
-   public cnl a(int $$0) {
-      return new cnl(this.f, this.g, $$0);
+   private static void e(bvx<cnk> $$0) {
+      $$0.a(cpz.w, 5, ImmutableList.of(cal.a(cnk::gv), bxh.a(cdz.az, 2, 0.7F)), cdz.az);
    }
 
-   public static int b(int $$0) {
-      return d($$0) ? e[$$0 - 1] : 0;
+   private static void f(bvx<cnk> $$0) {
+      $$0.a(cpz.v, 5, ImmutableList.of(cal.a(cnk::gv), new can(i)), cdz.aB);
    }
 
-   public static int c(int $$0) {
-      return d($$0) ? e[$$0] : 0;
+   private static void g(bvx<cnk> $$0) {
+      $$0.a(cpz.x, 10, ImmutableList.of(new cak()), cdz.ay);
    }
 
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   private static void a(cnk $$0, bvx<cnk> $$1) {
+      $$1.a(
+         cpz.k,
+         10,
+         ImmutableList.of(
+            m, bzd.a($$1x -> !$$0.y().d() || !$$0.c($$1x), cnl::b, false), byn.a($$1x -> a($$0, $$1x), (float)$$0.h(bwd.m)), byt.a(1.2F), new cao(), bxv.a(18)
+         ),
+         cdz.o
+      );
+   }
+
+   private static boolean a(cnk $$0, buv $$1) {
+      return $$0.ed().c(cdz.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void b(cnk $$0, buv $$1) {
+      if (!$$0.c($$1)) {
+         $$0.d($$1);
+      }
+
+      a((buv)$$0);
+   }
+
+   public static void a(buv $$0) {
+      if ($$0.ed().a(cdz.aE)) {
+         $$0.ed().a(cdz.aE, bao.a, 1200L);
+      }
+   }
+
+   public static void a(cnk $$0, jg $$1) {
+      if ($$0.dX().C_().a($$1) && !$$0.gv().isPresent() && !$$0.ed().c(cdz.o).isPresent()) {
+         a((buv)$$0);
+         $$0.ed().a(cdz.aG, bao.a, 100L);
+         $$0.ed().a(cdz.n, new bwr($$1), 100L);
+         $$0.ed().a(cdz.az, $$1, 100L);
+         $$0.ed().b(cdz.m);
+      }
    }
 }

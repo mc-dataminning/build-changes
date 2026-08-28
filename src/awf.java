@@ -1,51 +1,113 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class awf {
-   public static final Codec<awf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ale.a.fieldOf("sound_id").forGetter(awf::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(awf::b)).apply($$0, awf::a)
-   );
-   public static final Codec<jo<awf>> b = ala.a(lw.al, a);
-   public static final zc<ByteBuf, awf> c = zc.a(ale.b, awf::a, za.j.a(za::a), awf::b, awf::a);
-   public static final zc<wp, jo<awf>> d = za.a(lw.al, c);
-   private static final float e = 16.0F;
-   private final ale f;
-   private final float g;
-   private final boolean h;
+public class awf extends awc {
+   private static final Logger d = LogUtils.getLogger();
+   private final ServerSocket e;
+   private final String f;
+   private final List<awe> g = Lists.newArrayList();
+   private final aly h;
 
-   private static awf a(ale $$0, Optional<Float> $$1) {
-      return $$1.<awf>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
+   private awf(aly $$0, ServerSocket $$1, String $$2) {
+      super("RCON Listener");
+      this.h = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static awf a(ale $$0) {
-      return new awf($$0, 16.0F, false);
+   private void d() {
+      this.g.removeIf($$0 -> !$$0.c());
    }
 
-   public static awf a(ale $$0, float $$1) {
-      return new awf($$0, $$1, true);
-   }
-
-   private awf(ale $$0, float $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   public ale a() {
-      return this.f;
-   }
-
-   public float a(float $$0) {
-      if (this.h) {
-         return this.g;
-      } else {
-         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
+   @Override
+   public void run() {
+      try {
+         while (this.a) {
+            try {
+               Socket $$0 = this.e.accept();
+               awe $$1 = new awe(this.h, this.f, $$0);
+               $$1.a();
+               this.g.add($$1);
+               this.d();
+            } catch (SocketTimeoutException var7) {
+               this.d();
+            } catch (IOException var8) {
+               if (this.a) {
+                  d.info("IO exception: ", var8);
+               }
+            }
+         }
+      } finally {
+         this.a(this.e);
       }
    }
 
-   private Optional<Float> b() {
-      return this.h ? Optional.of(this.g) : Optional.empty();
+   @Nullable
+   public static awf a(aly $$0) {
+      aqf $$1 = $$0.a();
+      String $$2 = $$0.b();
+      if ($$2.isEmpty()) {
+         $$2 = "0.0.0.0";
+      }
+
+      int $$3 = $$1.r;
+      if (0 < $$3 && 65535 >= $$3) {
+         String $$4 = $$1.s;
+         if ($$4.isEmpty()) {
+            d.warn("No rcon password set in server.properties, rcon disabled!");
+            return null;
+         } else {
+            try {
+               ServerSocket $$5 = new ServerSocket($$3, 0, InetAddress.getByName($$2));
+               $$5.setSoTimeout(500);
+               awf $$6 = new awf($$0, $$5, $$4);
+               if (!$$6.a()) {
+                  return null;
+               } else {
+                  d.info("RCON running on {}:{}", $$2, $$3);
+                  return $$6;
+               }
+            } catch (IOException var7) {
+               d.warn("Unable to initialise RCON on {}:{}", new Object[]{$$2, $$3, var7});
+               return null;
+            }
+         }
+      } else {
+         d.warn("Invalid rcon port {} found in server.properties, rcon disabled!", $$3);
+         return null;
+      }
+   }
+
+   @Override
+   public void b() {
+      this.a = false;
+      this.a(this.e);
+      super.b();
+
+      for (awe $$0 : this.g) {
+         if ($$0.c()) {
+            $$0.b();
+         }
+      }
+
+      this.g.clear();
+   }
+
+   private void a(ServerSocket $$0) {
+      d.debug("closeSocket: {}", $$0);
+
+      try {
+         $$0.close();
+      } catch (IOException var3) {
+         d.warn("Failed to close socket", var3);
+      }
    }
 }

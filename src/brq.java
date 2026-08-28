@@ -1,59 +1,86 @@
-import javax.annotation.concurrent.Immutable;
+public class brq implements brr {
+   private final brr b;
+   private final brr c;
 
-@Immutable
-public class brq {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final brp d;
-   private final float e;
-
-   public brq(brp $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   public brq(brr $$0, brr $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public brp a() {
-      return this.d;
+   @Override
+   public int b() {
+      return this.b.b() + this.c.b();
    }
 
-   public float b() {
-      return this.e;
-   }
-
+   @Override
    public boolean c() {
-      return this.e >= (float)brp.d.ordinal();
+      return this.b.c() && this.c.c();
    }
 
-   public boolean a(float $$0) {
-      return this.e > $$0;
+   public boolean a(brr $$0) {
+      return this.b == $$0 || this.c == $$0;
    }
 
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
+   @Override
+   public cvx a(int $$0) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
+   }
+
+   @Override
+   public cvx a(int $$0, int $$1) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
+   }
+
+   @Override
+   public cvx b(int $$0) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cvx $$1) {
+      if ($$0 >= this.b.b()) {
+         this.c.a($$0 - this.b.b(), $$1);
       } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+         this.b.a($$0, $$1);
       }
    }
 
-   private float a(brp $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == brp.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == brp.d;
-         float $$5 = 0.75F;
-         float $$6 = azf.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += azf.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += azf.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == brp.b) {
-            $$7 *= 0.5F;
-         }
+   @Override
+   public int am_() {
+      return this.b.am_();
+   }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
-      }
+   @Override
+   public void e() {
+      this.b.e();
+      this.c.e();
+   }
+
+   @Override
+   public boolean a(coh $$0) {
+      return this.b.a($$0) && this.c.a($$0);
+   }
+
+   @Override
+   public void d_(coh $$0) {
+      this.b.d_($$0);
+      this.c.d_($$0);
+   }
+
+   @Override
+   public void c(coh $$0) {
+      this.b.c($$0);
+      this.c.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cvx $$1) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.b.a();
+      this.c.a();
    }
 }

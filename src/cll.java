@@ -1,114 +1,93 @@
-public class cll extends ckl {
-   private static final int c = 300;
-   private static final akh<Boolean> d = akl.a(cll.class, akj.k);
-   public static final String b = "StrayConversionTime";
-   private int e;
-   private int bY;
-
-   public cll(bty<? extends cll> $$0, dej $$1) {
+public class cll extends clv {
+   public cll(bug<? extends cll> $$0, dev $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void a(akl.a $$0) {
-      super.a($$0);
-      $$0.a(d, false);
+   public static bwc.a q() {
+      return clm.gB().a(bwd.v, 0.2F);
    }
 
-   public boolean gr() {
-      return this.at().a(d);
-   }
-
-   public void x(boolean $$0) {
-      this.am.a(d, $$0);
+   public static boolean b(bug<cll> $$0, dew $$1, buf $$2, jg $$3, azr $$4) {
+      return $$1.am() != brv.a;
    }
 
    @Override
-   public boolean gq() {
-      return this.gr();
+   public void a(int $$0, boolean $$1) {
+      super.a($$0, $$1);
+      this.g(bwd.a).a((double)($$0 * 3));
    }
 
    @Override
-   public void l() {
-      if (!this.dS().B && this.bI() && !this.gd()) {
-         if (this.aw) {
-            if (this.gr()) {
-               this.bY--;
-               if (this.bY < 0) {
-                  this.gs();
-               }
-            } else {
-               this.e++;
-               if (this.e >= 140) {
-                  this.b(300);
-               }
-            }
-         } else {
-            this.e = -1;
-            this.x(false);
-         }
-      }
-
-      super.l();
+   public float bz() {
+      return 1.0F;
    }
 
    @Override
-   public void b(ug $$0) {
-      super.b($$0);
-      $$0.a("StrayConversionTime", this.gr() ? this.bY : -1);
+   protected lo t() {
+      return lq.F;
    }
 
    @Override
-   public void a(ug $$0) {
-      super.a($$0);
-      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
-         this.b($$0.h("StrayConversionTime"));
-      }
-   }
-
-   private void b(int $$0) {
-      this.bY = $$0;
-      this.x(true);
-   }
-
-   protected void gs() {
-      this.a(bty.aY, true);
-      if (!this.ba()) {
-         this.dS().a(null, 1048, this.ds(), 0);
-      }
-   }
-
-   @Override
-   public boolean dG() {
+   public boolean bZ() {
       return false;
    }
 
    @Override
-   protected awf w() {
-      return awg.xc;
+   protected int y() {
+      return super.y() * 4;
    }
 
    @Override
-   protected awf d(bsj $$0) {
-      return awg.xn;
+   protected void gr() {
+      this.e *= 0.9F;
    }
 
    @Override
-   protected awf o_() {
-      return awg.xe;
+   public void v() {
+      ezh $$0 = this.dA();
+      float $$1 = (float)this.gw() * 0.1F;
+      this.n($$0.d, (double)(this.fl() + $$1), $$0.f);
+      this.as = true;
    }
 
    @Override
-   awf t() {
-      return awg.xp;
-   }
-
-   @Override
-   protected void a(arj $$0, bsj $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof ckp $$4 && $$4.gq()) {
-         $$4.gr();
-         this.a(cvw.un);
+   protected void c(axp<erd> $$0) {
+      if ($$0 == axf.b) {
+         ezh $$1 = this.dA();
+         this.n($$1.d, (double)(0.22F + (float)this.gw() * 0.05F), $$1.f);
+         this.as = true;
+      } else {
+         super.c($$0);
       }
+   }
+
+   @Override
+   protected boolean gs() {
+      return this.dk();
+   }
+
+   @Override
+   protected float gt() {
+      return super.gt() + 2.0F;
+   }
+
+   @Override
+   protected awj d(bsp $$0) {
+      return this.gx() ? awk.os : awk.or;
+   }
+
+   @Override
+   protected awj o_() {
+      return this.gx() ? awk.og : awk.oq;
+   }
+
+   @Override
+   protected awj gu() {
+      return this.gx() ? awk.ov : awk.ou;
+   }
+
+   @Override
+   protected awj gv() {
+      return awk.ot;
    }
 }

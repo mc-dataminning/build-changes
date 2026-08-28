@@ -1,80 +1,109 @@
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
 
-public class fpp extends fqh {
-   private static final xe a = xe.c("addServer.enterName");
-   private static final xe b = xe.c("addServer.enterIp");
-   private fko c;
-   private final BooleanConsumer d;
-   private final gca s;
-   private fkx u;
-   private fkx v;
-   private final fqh w;
+public class fpp extends fpq {
+   private static final xh d = xh.c("chat.copy");
+   private static final xh s = xh.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
 
-   public fpp(fqh $$0, BooleanConsumer $$1, gca $$2) {
-      super(xe.c("addServer.title"));
-      this.w = $$0;
-      this.d = $$1;
-      this.s = $$2;
+   public fpp(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), xh.b($$1), $$1, $$2 ? xg.e : xg.g, $$2);
+   }
+
+   public fpp(BooleanConsumer $$0, xh $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xg.e : xg.g, $$3);
+   }
+
+   public fpp(BooleanConsumer $$0, xh $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
+   }
+
+   public fpp(BooleanConsumer $$0, xh $$1, xh $$2, URI $$3, xh $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   }
+
+   public fpp(BooleanConsumer $$0, xh $$1, xh $$2, String $$3, xh $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (xh)($$5 ? xh.c("chat.link.open") : xg.f);
+      this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
+   }
+
+   protected static xv a(boolean $$0, String $$1) {
+      return c($$0).b(xg.v).b(xh.b($$1));
+   }
+
+   protected static xv c(boolean $$0) {
+      return xh.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   protected void aS_() {
-      this.v = new fkx(this.p, this.n / 2 - 100, 66, 200, 20, xe.c("addServer.enterName"));
-      this.v.a(this.s.a);
-      this.v.b($$0 -> this.D());
-      this.d(this.v);
-      this.u = new fkx(this.p, this.n / 2 - 100, 106, 200, 20, xe.c("addServer.enterIp"));
-      this.u.f(128);
-      this.u.a(this.s.b);
-      this.u.b($$0 -> this.D());
-      this.d(this.u);
-      this.c(
-         fkv.a(gca.a::a)
-            .a(gca.a.values())
-            .a(this.s.b())
-            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, xe.c("addServer.resourcePack"), ($$0, $$1) -> this.s.a($$1))
-      );
-      this.c = this.c(fko.a(xe.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
-      this.c(fko.a(xd.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
-      this.D();
+   protected void a(int $$0) {
+      this.c(fkz.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fkz.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(fkz.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void l() {
+      this.m.p.a(this.u);
    }
 
    @Override
-   protected void aH_() {
-      this.b(this.v);
-   }
-
-   @Override
-   public void a(fip $$0, int $$1, int $$2) {
-      String $$3 = this.u.a();
-      String $$4 = this.v.a();
-      this.b($$0, $$1, $$2);
-      this.u.a($$3);
-      this.v.a($$4);
-   }
-
-   private void m() {
-      this.s.a = this.v.a();
-      this.s.b = this.u.a();
-      this.d.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.w);
-   }
-
-   private void D() {
-      this.c.j = gdd.b(this.u.a()) && !this.v.a().isEmpty();
-   }
-
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
-      this.v.a($$0, $$1, $$2, $$3);
-      this.u.a($$0, $$1, $$2, $$3);
+      if (this.v) {
+         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+      }
+   }
+
+   public static void a(fqs $$0, String $$1, boolean $$2) {
+      fja $$3 = fja.Q();
+      $$3.a(new fpp($$3x -> {
+         if ($$3x) {
+            ad.m().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1, $$2));
+   }
+
+   public static void a(fqs $$0, URI $$1, boolean $$2) {
+      fja $$3 = fja.Q();
+      $$3.a(new fpp($$3x -> {
+         if ($$3x) {
+            ad.m().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
+   }
+
+   public static void a(fqs $$0, URI $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static void a(fqs $$0, String $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static fkz.c b(fqs $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fkz.c b(fqs $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fkz.c b(fqs $$0, String $$1) {
+      return b($$0, $$1, true);
+   }
+
+   public static fkz.c b(fqs $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

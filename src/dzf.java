@@ -1,19 +1,24 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.stream.Stream;
 
-public interface dzf<T extends dyw> {
-   @Nullable
-   T a(int var1);
+public class dzf<T> {
+   private final deb a;
+   private final List<T> b;
 
-   @Nullable
-   T a(UUID var1);
+   public dzf(deb $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   Iterable<T> a();
+   public deb a() {
+      return this.a;
+   }
 
-   <U extends T> void a(dzd<T, U> var1, axr<U> var2);
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-   void a(eyr var1, Consumer<T> var2);
-
-   <U extends T> void a(dzd<T, U> var1, eyr var2, axr<U> var3);
+   public boolean c() {
+      return this.b.isEmpty();
+   }
 }

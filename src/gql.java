@@ -1,27 +1,44 @@
-public class gql extends gou<cnq, gvz, gaa> {
-   private static final ale a = ale.b("textures/entity/wandering_trader.png");
+public class gql<T extends btz & coy> extends gny<T, gwd> {
+   private final gox a;
+   private final float b;
+   private final boolean h;
 
-   public gql(gno.a $$0) {
-      super($$0, new gaa($$0.a(gap.cW)), 0.5F);
-      this.a(new grg<>(this, $$0.f(), $$0.b()));
-      this.a(new grf<>(this, $$0.b()));
+   public gql(gnz.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.a = $$0.b();
+      this.b = $$1;
+      this.h = $$2;
    }
 
-   public ale a(gvz $$0) {
-      return a;
+   public gql(gnz.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   protected void a(gvz $$0, fdi $$1) {
-      float $$2 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   @Override
+   protected int a(T $$0, jg $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
-   public gvz c() {
-      return new gvz();
+   public void a(gwd $$0, fdt $$1, ghw $$2, int $$3) {
+      $$1.a();
+      $$1.b(this.b, this.b, this.b);
+      $$1.a(this.e.b());
+      if ($$0.a != null) {
+         this.a.a($$0.b, cvv.h, false, $$1, $$2, $$3, gxj.d, $$0.a);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(cnq $$0, gvz $$1, float $$2) {
+   public gwd a() {
+      return new gwd();
+   }
+
+   public void a(T $$0, gwd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q() > 0;
+      cvx $$3 = $$0.m();
+      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dX(), null, $$0.ar()) : null;
+      $$1.b = $$3.v();
    }
 }

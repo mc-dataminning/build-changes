@@ -1,13 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gvq extends gtk {
-   @Nullable
-   public btp.l.e a;
-   @Nullable
-   public btp.l.b f;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class gvq extends gva {
+   public float a;
+   public boolean b;
+   public chg.g c = chg.g.a;
 }

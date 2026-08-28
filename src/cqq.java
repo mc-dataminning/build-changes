@@ -1,104 +1,100 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+public class cqq extends cqg implements dtg {
+   private boolean c = true;
+   private boolean d = false;
 
-public final class cqq {
-   private static final cqq b = new cqq(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cqr c;
-   private final long d;
-
-   private cqq(@Nullable cqr $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public cqq(bug<? extends cqq> $$0, dev $$1) {
+      super($$0, $$1);
    }
 
-   static cqq a(cqr $$0, Collection<cqo> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cqq($$0, $$2);
-      }
-   }
-
-   public static cqq a() {
-      return b;
-   }
-
-   public static cqq a(cqo $$0) {
-      return new cqq($$0.a, $$0.b);
-   }
-
-   public static cqq a(cqo $$0, cqo... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cqq($$0.a, $$2);
-   }
-
-   private static long a(cqr $$0, long $$1, Iterable<cqo> $$2) {
-      for (cqo $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cqo $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean b() {
-      return this.equals(b);
-   }
-
-   public boolean a(cqq $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public boolean b(cqq $$0) {
-      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
-   }
-
-   public cqq c(cqq $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cqq(this.c, this.d | $$0.d);
-      }
-   }
-
-   public cqq d(cqq $$0) {
-      if (this.c == null || $$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         long $$1 = this.d & ~$$0.d;
-         return $$1 == 0L ? b : new cqq(this.c, $$1);
-      }
+   public cqq(dev $$0, double $$1, double $$2, double $$3) {
+      super(bug.aa, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   public cqf.a y() {
+      return cqf.a.f;
+   }
+
+   @Override
+   public dvd A() {
+      return dia.hc.m();
+   }
+
+   @Override
+   public int C() {
+      return 1;
+   }
+
+   @Override
+   public int b() {
+      return 5;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      boolean $$4 = !$$3;
+      if ($$4 != this.J()) {
+         this.s($$4);
+      }
+   }
+
+   public boolean J() {
+      return this.c;
+   }
+
+   public void s(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public double K() {
+      return this.dC();
+   }
+
+   @Override
+   public double L() {
+      return this.dE() + 0.5;
+   }
+
+   @Override
+   public double M() {
+      return this.dI();
+   }
+
+   @Override
+   public boolean O() {
+      return false;
+   }
+
+   @Override
+   public void l() {
+      this.d = false;
+      super.l();
+      this.T();
+   }
+
+   @Override
+   protected double a(jg $$0, dwh $$1, double $$2) {
+      double $$3 = super.a($$0, $$1, $$2);
+      this.T();
+      return $$3;
+   }
+
+   private void T() {
+      if (!this.dX().C && this.bM() && this.J() && !this.d && this.P()) {
+         this.d = true;
+         this.e();
+      }
+   }
+
+   public boolean P() {
+      if (dth.a(this.dX(), this)) {
          return true;
       } else {
-         if ($$0 instanceof cqq $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
+         for (ckq $$1 : this.dX().a(ckq.class, this.cS().c(0.25, 0.0, 0.25), bue.a)) {
+            if (dth.a(this, $$1)) {
+               return true;
+            }
          }
 
          return false;
@@ -106,7 +102,24 @@ public final class cqq {
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   protected cvt al_() {
+      return cwb.nQ;
+   }
+
+   @Override
+   protected void b(uj $$0) {
+      super.b($$0);
+      $$0.a("Enabled", this.c);
+   }
+
+   @Override
+   protected void a(uj $$0) {
+      super.a($$0);
+      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   }
+
+   @Override
+   public crj a(int $$0, cog $$1) {
+      return new csk($$0, $$1, this);
    }
 }

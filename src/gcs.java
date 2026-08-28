@@ -1,47 +1,60 @@
-import java.util.List;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public enum gcs {
-   a("i_want_to_report_them"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery"),
-   k("sexually_inappropriate");
+public enum gcs implements baf {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   private final String l;
-   private final xe m;
-   private final xe n;
+   public static final Codec<gcs> d = baf.a(gcs::values);
+   private final String e;
 
    private gcs(final String $$0) {
-      this.l = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.m = xe.c($$1);
-      this.n = xe.c($$1 + ".description");
+      this.e = $$0;
    }
 
-   public String a() {
-      return this.l;
+   public static gcs a(xx $$0, xh $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
    }
 
-   public xe b() {
-      return this.m;
+   private static boolean a(xx $$0, xh $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         xh $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
    }
 
-   public xe c() {
-      return this.n;
+   private static boolean a(xh $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), ye.a).orElse(false);
    }
 
-   public static List<gcs> a(gct $$0) {
-      return switch ($$0) {
-         case a -> List.of(k);
-         case b -> List.of(e, f);
-         default -> List.of();
+   private static boolean a(ye $$0) {
+      return !$$0.k().equals(ye.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public fiu a(xx $$0) {
+      return switch (this) {
+         case b -> fiu.a($$0.c());
+         case c -> fiu.c();
+         default -> null;
       };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

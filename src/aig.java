@@ -1,29 +1,25 @@
-public class aig implements zl<agr> {
-   public static final zc<wb, aig> a = zl.a(aig::a, aig::new);
-   private final int b;
+public record aig(int b, int c) implements zo<agu> {
+   public static final zf<we, aig> a = zo.a(aig::a, aig::new);
 
-   public aig(int $$0) {
-      this.b = $$0;
+   private aig(we $$0) {
+      this($$0.l(), $$0.l());
    }
 
-   private aig(wb $$0) {
-      this.b = $$0.readShort();
-   }
-
-   private void a(wb $$0) {
-      $$0.m(this.b);
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zn<aig> a() {
-      return agp.bW;
+   public zq<aig> a() {
+      return ags.bi;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

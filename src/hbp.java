@@ -1,23 +1,47 @@
-public class hbp {
-   private final String a;
-   private final String b;
-   private long c;
+import javax.annotation.Nullable;
 
-   public hbp(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ad.c();
+public interface hbp {
+   alh a();
+
+   @Nullable
+   hcv a(hcu var1);
+
+   hbm b();
+
+   awl c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   hbp.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   public String a() {
-      return this.a;
+   default boolean s() {
+      return true;
    }
 
-   public String b() {
-      return this.b;
+   static azr t() {
+      return azr.a();
    }
 
-   public void c() {
-      this.c = ad.c();
+   public static enum a {
+      a,
+      b;
    }
 }

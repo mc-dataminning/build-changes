@@ -1,31 +1,26 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public record esi(ale d, boolean e, int f, boolean g, boolean h) {
-   public static final int a = -1;
-   public static final Codec<jo<esi>> b = lv.as.r();
-   public static final zc<wp, jo<esi>> c = za.b(lw.aD);
+public class esi {
+   @Nullable
+   public static esm a(dev $$0, @Nullable jl $$1, @Nullable jl $$2) {
+      if ($$0.J().b(crc.d)) {
+         esm $$3 = esm.a($$0.A).a(esm.a.a);
+         if ($$2 != null) {
+            $$3 = $$3.a($$2);
+         }
 
-   public boolean a() {
-      return this.f != -1;
+         if ($$1 != null) {
+            $$3 = $$3.b($$1);
+         }
+
+         return $$3;
+      } else {
+         return null;
+      }
    }
 
-   public ale b() {
-      return this.d;
-   }
-
-   public boolean c() {
-      return this.e;
-   }
-
-   public int d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
+   @Nullable
+   public static esm a(@Nullable esm $$0, jl $$1) {
+      return $$0 == null ? null : $$0.b($$1);
    }
 }

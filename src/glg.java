@@ -1,66 +1,66 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class glg {
-   private static final int a = axq.a(255, 255, 100, 255);
-   private static final int b = axq.a(255, 100, 255, 255);
-   private static final int c = axq.a(255, 0, 255, 0);
-   private static final int d = axq.a(255, 255, 165, 0);
-   private static final int e = axq.a(255, 255, 0, 0);
-   private static final int f = 20;
-   private static final float g = (float) (Math.PI / 10);
-   private final fip h;
-   private final Map<Integer, aan.a> i = new HashMap<>();
+public class glg implements ddx {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final glf[] c;
+   protected final dev d;
 
-   public glg(fip $$0) {
-      this.h = $$0;
+   glg(dev $$0, int $$1, int $$2, glf[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
    }
 
-   public void a(fdi $$0, ghl $$1, double $$2, double $$3, double $$4) {
-      ggh $$5 = this.h.t;
-      $$5.dS().a(bty.m, $$5.cO().g(100.0), $$0x -> true).forEach($$6 -> {
-         Optional<aan.a> $$7 = Optional.ofNullable(this.i.get($$6.ap()));
-         $$7.map(aan.a::d).map($$1xx -> $$5.dS().a($$1xx)).map($$0xx -> $$0xx.o(this.h.av().a(true))).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dq(), $$6x, b);
-            eyw $$7x = $$6x.b(0.0, 0.01F, 0.0);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(ghv.a(2.0)), $$7x, 4.0F, c);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(ghv.a(2.0)), $$7x, 8.0F, d);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(ghv.a(2.0)), $$7x, 24.0F, e);
-         });
-         $$7.map(aan.a::e).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dq(), $$6x.b(), a);
-            gll.a($$0, $$1, eyr.a(eyw.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
-         });
-      });
+   @Override
+   public dvd a_(jg $$0) {
+      return this.a(ki.a($$0.u()), ki.a($$0.w())).b($$0);
    }
 
-   private static void a(fdi $$0, ghl $$1, double $$2, double $$3, double $$4, eyw $$5, eyw $$6, int $$7) {
-      fdm $$8 = $$1.getBuffer(ghv.a(2.0));
-      $$8.a($$0.c(), (float)($$5.d - $$2), (float)($$5.e - $$3), (float)($$5.f - $$4)).a($$7);
-      $$8.a($$0.c(), (float)($$6.d - $$2), (float)($$6.e - $$3), (float)($$6.f - $$4)).a($$7);
+   @Override
+   public ere b_(jg $$0) {
+      return this.a(ki.a($$0.u()), ki.a($$0.w())).b($$0).y();
    }
 
-   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fdm $$4, eyw $$5, float $$6, int $$7) {
-      for (int $$8 = 0; $$8 < 20; $$8++) {
-         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   @Override
+   public float a(jl $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
    }
 
-   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fdm $$5, eyw $$6, float $$7, int $$8) {
-      float $$9 = (float)$$0 * (float) (Math.PI / 10);
-      eyw $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
-      $$5.a($$1, (float)($$10.d - $$2), (float)($$10.e - $$3), (float)($$10.f - $$4)).a($$8);
+   @Override
+   public eqt z_() {
+      return this.d.z_();
    }
 
-   public void a() {
-      this.i.clear();
+   @Nullable
+   @Override
+   public dsg c_(jg $$0) {
+      return this.a(ki.a($$0.u()), ki.a($$0.w())).a($$0);
    }
 
-   public void a(aan.a $$0) {
-      this.i.put($$0.c(), $$0);
+   private glf a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
+   }
+
+   @Override
+   public int a(jg $$0, def $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public int I_() {
+      return this.d.I_();
+   }
+
+   @Override
+   public int J_() {
+      return this.d.J_();
+   }
+
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
    }
 }

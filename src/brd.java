@@ -1,52 +1,36 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class brd extends bqx {
-   public static final MapCodec<brd> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, brd::new)
-      )
-      .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
-      );
-   private final int b;
-   private final int f;
+public abstract class brd {
+   private static final Codec<Either<Integer, brd>> a = Codec.either(Codec.INT, lx.K.q().dispatch(brd::c, bre::codec));
+   public static final Codec<brd> c = a.xmap(
+      $$0 -> (brd)$$0.map(bra::a, $$0x -> $$0x), $$0 -> $$0.c() == bre.a ? Either.left(((bra)$$0).d()) : Either.right($$0)
+   );
+   public static final Codec<brd> d = b(0, Integer.MAX_VALUE);
+   public static final Codec<brd> e = b(1, Integer.MAX_VALUE);
 
-   private brd(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
+   public static Codec<brd> b(int $$0, int $$1) {
+      return a($$0, $$1, c);
    }
 
-   public static brd a(int $$0, int $$1) {
-      return new brd($$0, $$1);
+   public static <T extends brd> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
+      return $$2.validate($$2x -> a($$0, $$1, $$2x));
    }
 
-   @Override
-   public int a(azn $$0) {
-      return azf.b($$0, this.b, this.f);
+   private static <T extends brd> DataResult<T> a(int $$0, int $$1, T $$2) {
+      if ($$2.a() < $$0) {
+         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+      } else {
+         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+      }
    }
 
-   @Override
-   public int a() {
-      return this.b;
-   }
+   public abstract int a(azr var1);
 
-   @Override
-   public int b() {
-      return this.f;
-   }
+   public abstract int a();
 
-   @Override
-   public bqy<?> c() {
-      return bqy.b;
-   }
+   public abstract int b();
 
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
-   }
+   public abstract bre<?> c();
 }

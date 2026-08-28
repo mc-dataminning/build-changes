@@ -1,6 +1,8 @@
-public interface gxc extends AutoCloseable {
-   void a(int var1, int var2);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   void close();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gxc {
 }

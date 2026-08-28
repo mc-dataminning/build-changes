@@ -1,16 +1,23 @@
-public class gsq extends gsb<gwe, gaf> {
-   private static final ale a = ale.b("textures/entity/wolf/wolf_collar.png");
+public class gsq extends gsm<gvy, fzx> {
+   private final fzx a;
 
-   public gsq(gpk<gwe, gaf> $$0) {
+   public gsq(gpv<gvy, fzx> $$0, gax $$1) {
       super($$0);
+      this.a = new fzx($$1.a(gba.ct));
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, gwe $$3, float $$4, float $$5) {
-      cum $$6 = $$3.h;
-      if ($$6 != null && !$$3.u) {
-         int $$7 = $$6.d();
-         fdm $$8 = $$1.getBuffer(ghv.f(a));
-         this.d().a($$0, $$8, $$2, gwx.d, $$7);
+   public void a(fdt $$0, ghw $$1, int $$2, gvy $$3, float $$4, float $$5) {
+      boolean $$6 = $$3.aj && $$3.u;
+      if (!$$3.u || $$6) {
+         fdx $$7;
+         if ($$6) {
+            $$7 = $$1.getBuffer(gig.r(gqc.a));
+         } else {
+            $$7 = $$1.getBuffer(gig.i(gqc.a));
+         }
+
+         this.a.a($$3);
+         this.a.a($$0, $$7, $$2, gpa.a($$3, 0.0F));
       }
    }
 }

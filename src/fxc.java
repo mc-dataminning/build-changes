@@ -1,45 +1,49 @@
-public class fxc extends fyj {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final gaq d;
-   private final gaq e;
+public class fxc extends fxz<gtm> {
+   private final gbb a;
+   private final gbb b;
+   private final gbb c;
+   private final gbb d;
+   private final gbb e;
+   private final gbb f;
+   private final gbb g;
 
-   public fxc(gaq $$0) {
-      super($$0, ghv::c);
-      this.d = $$0.b("lid");
-      this.e = $$0.b("lock");
+   public fxc(gbb $$0) {
+      super($$0, gig::e);
+      this.b = $$0.b("body");
+      this.a = $$0.b("head");
+      this.c = this.b.b("right_wing");
+      this.e = this.c.b("right_wing_tip");
+      this.d = this.b.b("left_wing");
+      this.f = this.d.b("left_wing_tip");
+      this.g = this.b.b("feet");
    }
 
-   public static gaw a() {
-      gay $$0 = new gay();
-      gba $$1 = $$0.a();
-      $$1.a("bottom", gav.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), gas.a);
-      $$1.a("lid", gav.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), gas.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", gav.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), gas.a(0.0F, 9.0F, 1.0F));
-      return gaw.a($$0, 64, 64);
+   public static gbh a() {
+      gbj $$0 = new gbj();
+      gbl $$1 = $$0.a();
+      gbl $$2 = $$1.a("body", gbg.c().a(0, 0).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F), gbd.a(0.0F, 17.0F, 0.0F));
+      gbl $$3 = $$1.a("head", gbg.c().a(0, 7).a(-2.0F, -3.0F, -1.0F, 4.0F, 3.0F, 2.0F), gbd.a(0.0F, 17.0F, 0.0F));
+      $$3.a("right_ear", gbg.c().a(1, 15).a(-2.5F, -4.0F, 0.0F, 3.0F, 5.0F, 0.0F), gbd.a(-1.5F, -2.0F, 0.0F));
+      $$3.a("left_ear", gbg.c().a(8, 15).a(-0.1F, -3.0F, 0.0F, 3.0F, 5.0F, 0.0F), gbd.a(1.1F, -3.0F, 0.0F));
+      gbl $$4 = $$2.a("right_wing", gbg.c().a(12, 0).a(-2.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gbd.a(-1.5F, 0.0F, 0.0F));
+      $$4.a("right_wing_tip", gbg.c().a(16, 0).a(-6.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gbd.a(-2.0F, 0.0F, 0.0F));
+      gbl $$5 = $$2.a("left_wing", gbg.c().a(12, 7).a(0.0F, -2.0F, 0.0F, 2.0F, 7.0F, 0.0F), gbd.a(1.5F, 0.0F, 0.0F));
+      $$5.a("left_wing_tip", gbg.c().a(16, 8).a(0.0F, -2.0F, 0.0F, 6.0F, 8.0F, 0.0F), gbd.a(2.0F, 0.0F, 0.0F));
+      $$2.a("feet", gbg.c().a(16, 16).a(-1.5F, 0.0F, 0.0F, 3.0F, 2.0F, 0.0F), gbd.a(0.0F, 5.0F, 0.0F));
+      return gbh.a($$0, 32, 32);
    }
 
-   public static gaw b() {
-      gay $$0 = new gay();
-      gba $$1 = $$0.a();
-      $$1.a("bottom", gav.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gas.a);
-      $$1.a("lid", gav.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gas.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", gav.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gas.a(0.0F, 9.0F, 1.0F));
-      return gaw.a($$0, 64, 64);
+   public void a(gtm $$0) {
+      super.a($$0);
+      if ($$0.a) {
+         this.a($$0.U);
+      }
+
+      this.a($$0.b, fjt.b, $$0.p, 1.0F);
+      this.a($$0.c, fjt.a, $$0.p, 1.0F);
    }
 
-   public static gaw c() {
-      gay $$0 = new gay();
-      gba $$1 = $$0.a();
-      $$1.a("bottom", gav.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), gas.a);
-      $$1.a("lid", gav.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), gas.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", gav.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), gas.a(0.0F, 9.0F, 1.0F));
-      return gaw.a($$0, 64, 64);
-   }
-
-   public void a(float $$0) {
-      this.d.e = -($$0 * (float) (Math.PI / 2));
-      this.e.e = this.d.e;
+   private void a(float $$0) {
+      this.a.f = $$0 * (float) (Math.PI / 180.0);
    }
 }

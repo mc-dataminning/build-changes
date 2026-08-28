@@ -1,84 +1,120 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dns extends dnr {
-   public static final MapCodec<dns> h = b(dns::new);
-   public static final dvm i = dli.aF;
-   public static final dvj j = dnr.d;
+public class dns extends dhy implements dif {
+   public static final MapCodec<dns> a = b(dns::new);
+   private static final float b = 0.083333336F;
+   private static final float c = 0.9F;
+   private static final float d = 1.5F;
+   private static final float e = 2.5F;
+   private static final fab f = ezy.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
+   private static final double g = 4.0;
+   private static final double h = 7.0;
 
    @Override
    public MapCodec<dns> a() {
-      return h;
+      return a;
    }
 
-   protected dns(dur.d $$0) {
+   public dns(dvc.d $$0) {
       super($$0);
-      this.l(this.F.b().b(i, jk.c).b(j, Boolean.valueOf(true)));
    }
 
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return dqp.o($$0);
+   protected boolean b(dvd $$0, dvd $$1, jl $$2) {
+      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      return dqp.b($$1, $$2, $$0.c(i));
-   }
+   protected void a(dvd $$0, dev $$1, jg $$2, btz $$3) {
+      if (!($$3 instanceof buv) || $$3.dy().a(this)) {
+         $$3.a($$0, new ezh(0.9F, 1.5, 0.9F));
+         if ($$1.C) {
+            azr $$4 = $$1.E_();
+            boolean $$5 = $$3.ab != $$3.dC() || $$3.ad != $$3.dI();
+            if ($$5 && $$4.h()) {
+               $$1.a(
+                  lq.aK,
+                  $$3.dC(),
+                  (double)($$2.v() + 1),
+                  $$3.dI(),
+                  (double)(azj.b($$4, -1.0F, 1.0F) * 0.083333336F),
+                  0.05F,
+                  (double)(azj.b($$4, -1.0F, 1.0F) * 0.083333336F)
+               );
+            }
+         }
+      }
 
-   @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? dho.a.n() : $$0;
-   }
+      $$3.q(true);
+      if (!$$1.C) {
+         if ($$3.bZ() && ($$1.ac().b(der.c) || $$3 instanceof coh) && $$3.a($$1, $$2)) {
+            $$1.b($$2, false);
+         }
 
-   @Nullable
-   @Override
-   public dus a(czn $$0) {
-      dus $$1 = dho.cq.a($$0);
-      return $$1 == null ? null : this.n().b(i, $$1.c(i));
-   }
-
-   @Override
-   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
-      if ($$0.c(j)) {
-         jk $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(lj.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+         $$3.c(false);
       }
    }
 
    @Override
-   protected boolean a(dej $$0, jf $$1, dus $$2) {
-      jk $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   public void a(dev $$0, dvd $$1, jg $$2, btz $$3, float $$4) {
+      if (!((double)$$4 < 4.0) && $$3 instanceof buv $$5) {
+         buv.a $$7 = $$5.eP();
+         awj $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
+         $$3.a($$8, 1.0F, 1.0F);
+      }
    }
 
    @Override
-   protected int a(dus $$0, ddo $$1, jf $$2, jk $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   protected fab b(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      if ($$3 instanceof ezr $$4) {
+         btz $$5 = $$4.c();
+         if ($$5 != null) {
+            if ($$5.aa > 2.5F) {
+               return f;
+            }
+
+            boolean $$6 = $$5 instanceof ckp;
+            if ($$6 || a($$5) && $$3.a(ezy.b(), $$2, false) && !$$3.b()) {
+               return super.b($$0, $$1, $$2, $$3);
+            }
+         }
+      }
+
+      return ezy.a();
    }
 
    @Override
-   protected dus a(dus $$0, doa $$1) {
-      return $$0.b(i, $$1.a($$0.c(i)));
+   protected fab c(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return ezy.a();
+   }
+
+   public static boolean a(btz $$0) {
+      if ($$0.aq().a(axd.h)) {
+         return true;
+      } else {
+         return $$0 instanceof buv ? ((buv)$$0).a(buh.c).a(cwb.pC) : false;
+      }
    }
 
    @Override
-   protected dus a(dus $$0, dmj $$1) {
-      return $$0.a($$1.a($$0.c(i)));
+   public cvx a(@Nullable coh $$0, dew $$1, jg $$2, dvd $$3) {
+      $$1.a($$2, dia.a.m(), 11);
+      if (!$$1.y_()) {
+         $$1.c(2001, $$2, dhy.j($$3));
+      }
+
+      return new cvx(cwb.qC);
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(i, j);
+   public Optional<awj> au_() {
+      return Optional.of(awk.dm);
    }
 
-   @Nullable
    @Override
-   protected esb a(dej $$0, dus $$1) {
-      return erx.a($$0, $$1.c(i).g(), jk.b);
+   protected boolean a(dvd $$0, ert $$1) {
+      return true;
    }
 }

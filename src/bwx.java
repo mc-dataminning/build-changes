@@ -1,41 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class bwx extends bwf<cnk> {
-   private static final int d = 1200;
-   final float c;
-
-   public bwx(float $$0) {
-      super(ImmutableMap.of(cdq.d, cdr.a), 1200);
-      this.c = $$0;
+public class bwx {
+   public static <E extends buv> bwp<E> a(int $$0, BiPredicate<E, btz> $$1) {
+      return cab.a((Function<cab.b<E>, ? extends App<cab.c<E>, cae<E>>>)($$2 -> $$2.group($$2.a(cdz.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
+               btz $$7 = $$5.dl();
+               btz $$8 = $$2.<btz>a($$3).orElse(null);
+               if ($$7 == null && $$8 == null) {
+                  return false;
+               } else {
+                  btz $$9 = $$7 == null ? $$8 : $$7;
+                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+                     return false;
+                  } else {
+                     $$5.af();
+                     $$3.b();
+                     return true;
+                  }
+               }
+            })));
    }
 
-   protected boolean a(arj $$0, cnk $$1) {
-      return $$1.dY().g().map($$0x -> $$0x == cpp.b || $$0x == cpp.c || $$0x == cpp.d).orElse(true);
-   }
-
-   protected boolean a(arj $$0, cnk $$1, long $$2) {
-      return $$1.dY().a(cdq.d);
-   }
-
-   protected void b(arj $$0, cnk $$1, long $$2) {
-      bwh.a($$1, $$1.dY().c(cdq.d).get().b(), this.c, 1);
-   }
-
-   protected void c(arj $$0, cnk $$1, long $$2) {
-      Optional<jn> $$3 = $$1.dY().c(cdq.d);
-      $$3.ifPresent($$1x -> {
-         jf $$2x = $$1x.b();
-         arj $$3x = $$0.o().a($$1x.a());
-         if ($$3x != null) {
-            cfq $$4 = $$3x.y();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
-
-            ago.c($$0, $$2x);
-         }
-      });
-      $$1.dY().b(cdq.d);
+   private static boolean a(buv $$0, btz $$1, int $$2) {
+      return $$1.bM() && $$1.a($$0, (double)$$2) && $$1.dX() == $$0.dX();
    }
 }

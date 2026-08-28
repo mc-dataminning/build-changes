@@ -1,30 +1,57 @@
-public class cjl extends cjd {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cjl(cja $$0) {
-      super($$0);
+public abstract class cjl implements cjt {
+   protected final cjj a;
+
+   public cjl(cjj $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return false;
    }
 
    @Override
    public void b() {
-      this.a.dS().a(this.a.dx(), this.a.dz(), this.a.dD(), awg.if, this.a.di(), 2.5F, 0.8F + this.a.dV().i() * 0.3F, false);
    }
 
    @Override
    public void c() {
-      if (this.c++ >= 40) {
-         this.a.gl().a(cjq.f);
-      }
+   }
+
+   @Override
+   public void a(cji $$0, jg $$1, bsp $$2, @Nullable coh $$3) {
    }
 
    @Override
    public void d() {
-      this.c = 0;
    }
 
    @Override
-   public cjq<cjl> i() {
-      return cjq.h;
+   public void e() {
+   }
+
+   @Override
+   public float f() {
+      return 0.6F;
+   }
+
+   @Nullable
+   @Override
+   public ezh g() {
+      return null;
+   }
+
+   @Override
+   public float a(bsp $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dA().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

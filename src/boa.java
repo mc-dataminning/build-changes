@@ -1,33 +1,22 @@
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class boa {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private boe c = bod.a;
+public class boa implements bnq<StringReader, vg> {
+   public static final bnq<StringReader, vg> a = new boa();
 
-   public boa(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private boa() {
    }
 
-   public boolean a() {
-      return this.c != bod.a;
-   }
+   @Override
+   public Optional<vg> a(bnp<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
 
-   public void b() {
-      this.c = bod.a;
-   }
-
-   public void c() {
-      this.c = new bnz(this.a, this.b, true);
-   }
-
-   public bog d() {
-      return this.c;
-   }
-
-   public bof e() {
-      return this.c.d();
+      try {
+         return Optional.of(new vh($$0.b()).d());
+      } catch (Exception var4) {
+         $$0.a().a($$1, var4);
+         return Optional.empty();
+      }
    }
 }

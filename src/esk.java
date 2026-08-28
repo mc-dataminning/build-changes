@@ -1,54 +1,25 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class esk {
-   private final jf a;
-   private final int b;
-   private final int c;
+public class esk implements esl {
+   private final dev b;
 
-   public esk(jf $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public esk(dev $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   public static esk a(ug $$0) {
-      Optional<jf> $$1 = uv.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new esk($$1.get(), $$2, $$3);
-      }
+   @Override
+   public void a(jl $$0, dvd $$1, jg $$2, jg $$3, int $$4, int $$5) {
+      esl.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
    }
 
-   public ug a() {
-      ug $$0 = new ug();
-      $$0.a("pos", uv.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
+   @Override
+   public void a(jg $$0, dhy $$1, @Nullable esm $$2) {
+      dvd $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
    }
 
-   public jf b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(jf $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   @Override
+   public void a(dvd $$0, jg $$1, dhy $$2, @Nullable esm $$3, boolean $$4) {
+      esl.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

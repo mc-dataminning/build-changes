@@ -1,127 +1,166 @@
-import javax.annotation.Nullable;
+public class dsq extends dsg {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final ddv d = new ddv() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dsq.this.e();
+      }
 
-public class dsq extends drv implements brv {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final azn k = azn.a();
-   @Nullable
-   private xe l;
+      @Override
+      public arm e() {
+         return (arm)dsq.this.o;
+      }
 
-   public dsq(jf $$0, dus $$1) {
-      super(drx.m, $$0, $$1);
+      @Override
+      public void f() {
+         dvd $$0 = dsq.this.o.a_(dsq.this.p);
+         this.e().a(dsq.this.p, $$0, $$0, 3);
+      }
+
+      @Override
+      public ezh g() {
+         return ezh.b(dsq.this.p);
+      }
+
+      @Override
+      public ev i() {
+         jl $$0 = dsq.this.m().c(djh.b);
+         return new ev(this, ezh.b(dsq.this.p), new ezg(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dsq.this.n();
+      }
+   };
+
+   public dsq(jg $$0, dvd $$1) {
+      super(dsi.w, $$0, $$1);
    }
 
    @Override
-   protected void b(ug $$0, jq.a $$1) {
+   protected void b(uj $$0, jr.a $$1) {
       super.b($$0, $$1);
-      if (this.ak()) {
-         $$0.a("CustomName", xe.a.a(this.l, $$1));
-      }
+      this.d.a($$0, $$1);
+      $$0.a("powered", this.c());
+      $$0.a("conditionMet", this.j());
+      $$0.a("auto", this.d());
    }
 
    @Override
-   protected void a(ug $$0, jq.a $$1) {
+   protected void a(uj $$0, jr.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.l = a($$0.l("CustomName"), $$1);
+      this.d.b($$0, $$1);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
+   }
+
+   @Override
+   public boolean p() {
+      return true;
+   }
+
+   public ddv b() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.t() != dsq.a.a) {
+         this.v();
       }
    }
 
-   public static void a(dej $$0, jf $$1, dus $$2, dsq $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      cnx $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dx() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dD() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)azf.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
+   public void f() {
+      dsq.a $$0 = this.t();
+      if ($$0 == dsq.a.b && (this.a || this.b) && this.o != null) {
+         this.v();
+      }
+   }
 
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
+   private void v() {
+      dhy $$0 = this.m().b();
+      if ($$0 instanceof djh) {
+         this.k();
+         this.o.a(this.p, $$0, 1);
+      }
+   }
+
+   public boolean j() {
+      return this.c;
+   }
+
+   public boolean k() {
+      this.c = true;
+      if (this.u()) {
+         jg $$0 = this.p.a(this.o.a_(this.p).c(djh.b).g());
+         if (this.o.a_($$0).b() instanceof djh) {
+            dsg $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dsq && ((dsq)$$1).b().k() > 0;
+         } else {
+            this.c = false;
          }
+      }
+
+      return this.c;
+   }
+
+   public dsq.a t() {
+      dvd $$0 = this.m();
+      if ($$0.a(dia.fN)) {
+         return dsq.a.c;
+      } else if ($$0.a(dia.kG)) {
+         return dsq.a.b;
       } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
+         return $$0.a(dia.kH) ? dsq.a.a : dsq.a.c;
       }
+   }
 
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = azf.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = azf.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
+   public boolean u() {
+      dvd $$0 = this.o.a_(this.aC_());
+      return $$0.b() instanceof djh ? $$0.c(djh.c) : false;
    }
 
    @Override
-   public xe aj() {
-      return (xe)(this.l != null ? this.l : xe.c("container.enchant"));
-   }
-
-   public void a(@Nullable xe $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
-   @Override
-   public xe al() {
-      return this.l;
-   }
-
-   @Override
-   protected void a(drv.b $$0) {
+   protected void a(dsg.b $$0) {
       super.a($$0);
-      this.l = $$0.a(ks.g);
+      this.d.b($$0.a(kt.g));
    }
 
    @Override
-   protected void a(ko.a $$0) {
+   protected void a(kp.a $$0) {
       super.a($$0);
-      $$0.a(ks.g, this.l);
+      $$0.a(kt.g, this.d.o());
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(uj $$0) {
+      super.a($$0);
       $$0.r("CustomName");
+      $$0.r("conditionMet");
+      $$0.r("powered");
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

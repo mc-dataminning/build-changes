@@ -1,49 +1,58 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+public interface dws {
+   void a(dwu var1, double var2);
 
-public abstract class dws implements dxb, AutoCloseable {
-   @Nullable
-   public dwy a(int $$0, int $$1, boolean $$2) {
-      return (dwy)this.a($$0, $$1, dxp.n, $$2);
-   }
+   void a(dwu var1, double var2, double var4, long var6);
 
-   @Nullable
-   public dwy a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
+   void a(dwu var1, double var2, double var4);
 
-   @Nullable
-   @Override
-   public dxa c(int $$0, int $$1) {
-      return this.a($$0, $$1, dxp.c, false);
-   }
+   void a(dwu var1, int var2);
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dxp.n, false) != null;
-   }
+   void b(dwu var1, int var2);
 
-   @Nullable
-   public abstract dwo a(int var1, int var2, dxp var3, boolean var4);
+   void b(dwu var1, double var2);
 
-   public abstract void a(BooleanSupplier var1, boolean var2);
+   void c(dwu var1, double var2);
 
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-   }
+   public static class a implements dws {
+      private final dwu a;
 
-   public abstract String e();
+      public a(dwu $$0) {
+         this.a = $$0;
+      }
 
-   public abstract int j();
+      @Override
+      public void a(dwu $$0, double $$1) {
+         this.a.a($$1);
+      }
 
-   @Override
-   public void close() throws IOException {
-   }
+      @Override
+      public void a(dwu $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
 
-   public abstract eqi p();
+      @Override
+      public void a(dwu $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
 
-   public void b(boolean $$0) {
-   }
+      @Override
+      public void a(dwu $$0, int $$1) {
+         this.a.b($$1);
+      }
 
-   public void a(ddp $$0, boolean $$1) {
+      @Override
+      public void b(dwu $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dwu $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dwu $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

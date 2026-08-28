@@ -1,21 +1,27 @@
-public class gqw extends gof<cly, gwh, gai> {
-   private static final ale a = ale.b("textures/entity/piglin/zombified_piglin.png");
+public class gqw extends gpf<cnz, gwl, gal> {
+   private static final alh a = alh.b("textures/entity/wandering_trader.png");
 
-   public gqw(gno.a $$0, gao $$1, gao $$2, gao $$3, gao $$4, gao $$5, gao $$6) {
-      super($$0, new gai($$0.a($$1)), new gai($$0.a($$2)), 0.5F, gpe.a);
-      this.a(new grr<>(this, new fya($$0.a($$3)), new fya($$0.a($$4)), new fya($$0.a($$5)), new fya($$0.a($$5)), $$0.g()));
+   public gqw(gnz.a $$0) {
+      super($$0, new gal($$0.a(gba.cW)), 0.5F);
+      this.a(new grr<>(this, $$0.f(), $$0.b()));
+      this.a(new grq<>(this, $$0.b()));
    }
 
-   public ale a(gwh $$0) {
+   public alh a(gwl $$0) {
       return a;
    }
 
-   public gwh c() {
-      return new gwh();
+   protected void a(gwl $$0, fdt $$1) {
+      float $$2 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 
-   public void a(cly $$0, gwh $$1, float $$2) {
+   public gwl c() {
+      return new gwl();
+   }
+
+   public void a(cnz $$0, gwl $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gf();
+      $$1.a = $$0.q() > 0;
    }
 }

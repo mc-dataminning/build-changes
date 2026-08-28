@@ -1,34 +1,77 @@
-import com.mojang.util.UndashedUuid;
-import java.net.URI;
-import java.util.UUID;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class ayb {
-   public static final URI a = URI.create("https://aka.ms/MinecraftGDPR");
-   public static final URI b = URI.create("https://aka.ms/MinecraftEULA");
-   public static final URI c = URI.create("http://go.microsoft.com/fwlink/?LinkId=521839");
-   public static final URI d = URI.create("https://aka.ms/MinecraftJavaAttribution");
-   public static final URI e = URI.create("https://aka.ms/MinecraftJavaLicenses");
-   public static final URI f = URI.create("https://aka.ms/BuyMinecraftJava");
-   public static final URI g = URI.create("https://aka.ms/JavaAccountSettings");
-   public static final URI h = URI.create("https://aka.ms/snapshotfeedback?ref=game");
-   public static final URI i = URI.create("https://aka.ms/javafeedback?ref=game");
-   public static final URI j = URI.create("https://aka.ms/snapshotbugs?ref=game");
-   public static final URI k = URI.create("https://aka.ms/Minecraft-Support");
-   public static final URI l = URI.create("https://aka.ms/MinecraftJavaAccessibility");
-   public static final URI m = URI.create("https://aka.ms/aboutjavareporting");
-   public static final URI n = URI.create("https://aka.ms/mcjavamoderation");
-   public static final URI o = URI.create("https://aka.ms/javablocking");
-   public static final URI p = URI.create("https://aka.ms/MinecraftSymLinks");
-   public static final URI q = URI.create("https://aka.ms/startjavarealmstrial");
-   public static final URI r = URI.create("https://aka.ms/BuyJavaRealms");
-   public static final URI s = URI.create("https://aka.ms/MinecraftRealmsTerms");
-   public static final URI t = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
+public class ayb<T> extends AbstractCollection<T> {
+   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
+   private final Class<T> b;
+   private final List<T> c = Lists.newArrayList();
 
-   public static String a(String $$0, UUID $$1, boolean $$2) {
-      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
+   public ayb(Class<T> $$0) {
+      this.b = $$0;
+      this.a.put($$0, this.c);
    }
 
-   public static String a(String $$0, UUID $$1) {
-      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
+   @Override
+   public boolean add(T $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            $$1 |= $$2.getValue().add($$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean remove(Object $$0) {
+      boolean $$1 = false;
+
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            List<T> $$3 = $$2.getValue();
+            $$1 |= $$3.remove($$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean contains(Object $$0) {
+      return this.a($$0.getClass()).contains($$0);
+   }
+
+   public <S> Collection<S> a(Class<S> $$0) {
+      if (!this.b.isAssignableFrom($$0)) {
+         throw new IllegalArgumentException("Don't know how to search for " + $$0);
+      } else {
+         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(ad.b()));
+         return (Collection<S>)Collections.unmodifiableCollection($$1);
+      }
+   }
+
+   @Override
+   public Iterator<T> iterator() {
+      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
+   }
+
+   public List<T> a() {
+      return ImmutableList.copyOf(this.c);
+   }
+
+   @Override
+   public int size() {
+      return this.c.size();
    }
 }

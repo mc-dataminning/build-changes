@@ -1,147 +1,65 @@
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public class cpz {
+   public static final cpz a = a("core");
+   public static final cpz b = a("idle");
+   public static final cpz c = a("work");
+   public static final cpz d = a("play");
+   public static final cpz e = a("rest");
+   public static final cpz f = a("meet");
+   public static final cpz g = a("panic");
+   public static final cpz h = a("raid");
+   public static final cpz i = a("pre_raid");
+   public static final cpz j = a("hide");
+   public static final cpz k = a("fight");
+   public static final cpz l = a("celebrate");
+   public static final cpz m = a("admire_item");
+   public static final cpz n = a("avoid");
+   public static final cpz o = a("ride");
+   public static final cpz p = a("play_dead");
+   public static final cpz q = a("long_jump");
+   public static final cpz r = a("ram");
+   public static final cpz s = a("tongue");
+   public static final cpz t = a("swim");
+   public static final cpz u = a("lay_spawn");
+   public static final cpz v = a("sniff");
+   public static final cpz w = a("investigate");
+   public static final cpz x = a("roar");
+   public static final cpz y = a("emerge");
+   public static final cpz z = a("dig");
+   private final String A;
+   private final int B;
 
-public interface cpz extends brl, bru {
-   eyw dq();
+   private cpz(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
+   }
 
-   eyr cO();
+   public String a() {
+      return this.A;
+   }
 
-   @Nullable
-   ald<etq> F();
-
-   void a(@Nullable ald<etq> var1);
-
-   long G();
-
-   void a(long var1);
-
-   jx<cvs> I();
-
-   void J();
-
-   dej dS();
-
-   boolean dN();
+   private static cpz a(String $$0) {
+      return kc.a(lx.C, $$0, new cpz($$0));
+   }
 
    @Override
-   default boolean c() {
-      return this.g();
-   }
-
-   default void a(ug $$0, jq.a $$1) {
-      if (this.F() != null) {
-         $$0.a("LootTable", this.F().a().toString());
-         if (this.G() != 0L) {
-            $$0.a("LootTableSeed", this.G());
-         }
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cpz $$1 = (cpz)$$0;
+         return this.A.equals($$1.A);
       } else {
-         brm.a($$0, this.I(), $$1);
+         return false;
       }
    }
 
-   default void b(ug $$0, jq.a $$1) {
-      this.J();
-      if ($$0.b("LootTable", 8)) {
-         this.a(ald.a(lw.be, ale.a($$0.l("LootTable"))));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         brm.b($$0, this.I(), $$1);
-      }
+   @Override
+   public int hashCode() {
+      return this.B;
    }
 
-   default void a(bsj $$0, dej $$1, btr $$2) {
-      if ($$1.ac().b(def.i)) {
-         bro.a($$1, $$2, this);
-         if (!$$1.B) {
-            btr $$3 = $$0.c();
-            if ($$3 != null && $$3.ao() == bty.by) {
-               cmo.a((cnx)$$3, true);
-            }
-         }
-      }
-   }
-
-   default brs c_(cnx $$0) {
-      $$0.a(this);
-      return brs.a;
-   }
-
-   default void f(@Nullable cnx $$0) {
-      MinecraftServer $$1 = this.dS().o();
-      if (this.F() != null && $$1 != null) {
-         etq $$2 = $$1.bd().b(this.F());
-         if ($$0 != null) {
-            an.Q.a((ark)$$0, this.F());
-         }
-
-         this.a(null);
-         eto.a $$3 = new eto.a((arj)this.dS()).a(ewh.f, this.dq());
-         if ($$0 != null) {
-            $$3.a($$0.gz()).a(ewh.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(ewg.c), this.G());
-      }
-   }
-
-   default void f() {
-      this.f(null);
-      this.I().clear();
-   }
-
-   default boolean g() {
-      for (cvs $$0 : this.I()) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   default cvs e_(int $$0) {
-      this.f(null);
-      cvs $$1 = this.I().get($$0);
-      if ($$1.f()) {
-         return cvs.k;
-      } else {
-         this.I().set($$0, cvs.k);
-         return $$1;
-      }
-   }
-
-   default cvs f_(int $$0) {
-      this.f(null);
-      return this.I().get($$0);
-   }
-
-   default cvs b(int $$0, int $$1) {
-      this.f(null);
-      return brm.a(this.I(), $$0, $$1);
-   }
-
-   default void c(int $$0, cvs $$1) {
-      this.f(null);
-      this.I().set($$0, $$1);
-      $$1.f(this.f_($$1));
-   }
-
-   default bve g_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bve() {
-         @Override
-         public cvs a() {
-            return cpz.this.f_($$0);
-         }
-
-         @Override
-         public boolean a(cvs $$0x) {
-            cpz.this.c($$0, $$0);
-            return true;
-         }
-      } : bve.a;
-   }
-
-   default boolean g(cnx $$0) {
-      return !this.dN() && $$0.a(this.cO(), 4.0);
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

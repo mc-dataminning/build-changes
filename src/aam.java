@@ -1,21 +1,42 @@
-public record aam(String c) implements aao {
-   public static final zc<wb, aam> a = aao.a(aam::a, aam::new);
-   public static final aao.b<aam> b = aao.a("brand");
+import java.util.UUID;
 
-   private aam(wb $$0) {
-      this($$0.p());
+public record aam(UUID b, aam.a c) implements zo<aah> {
+   public static final zf<we, aam> a = zo.a(aam::a, aam::new);
+
+   private aam(we $$0) {
+      this($$0.n(), $$0.b(aam.a.class));
    }
 
-   private void a(wb $$0) {
+   private void a(we $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public aao.b<aam> a() {
-      return b;
+   public zq<aam> a() {
+      return aag.p;
    }
 
-   public String b() {
+   public void a(aah $$0) {
+      $$0.a(this);
+   }
+
+   public aam.a e() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+
+      public boolean a() {
+         return this != d && this != e;
+      }
    }
 }

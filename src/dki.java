@@ -1,54 +1,27 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dki extends dhm implements dkh {
-   public dki(dur.d $$0) {
-      super($$0);
+public class dki extends dhy {
+   public static final MapCodec<dki> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(brd.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), t()).apply($$0, dki::new)
+   );
+   private final brd b;
+
+   @Override
+   public MapCodec<? extends dki> a() {
+      return a;
+   }
+
+   public dki(brd $$0, dvc.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected abstract MapCodec<? extends dki> a();
-
-   @Override
-   protected void b(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
-   }
-
-   @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      $$3.a($$4, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.H_()) {
-         ckg $$4 = ckg.a($$1, $$2, $$0);
-         this.a($$4);
+   protected void a(dvd $$0, arm $$1, jg $$2, cvx $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.b);
       }
-   }
-
-   protected void a(ckg $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean n(dus $$0) {
-      return $$0.l() || $$0.a(awv.aL) || $$0.n() || $$0.v();
-   }
-
-   @Override
-   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
-      if ($$3.a(16) == 0) {
-         jf $$4 = $$2.e();
-         if (n($$1.a_($$4))) {
-            azj.a($$1, $$2, $$3, new lg(lo.C, $$0));
-         }
-      }
-   }
-
-   public int b(dus $$0, ddo $$1, jf $$2) {
-      return -16777216;
    }
 }

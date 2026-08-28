@@ -1,37 +1,53 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
-public class cev {
-   private final bup a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
+public class cev<T extends buv> extends cff<T> {
+   private final BiPredicate<T, buv> a;
+   private final Predicate<T> b;
+   private final cdz<Boolean> c;
+   private final int d;
 
-   public cev(bup $$0) {
-      this.a = $$0;
+   public cev(int $$0, BiPredicate<T, buv> $$1, Predicate<T> $$2, cdz<Boolean> $$3, int $$4) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   public boolean a(btr $$0) {
-      int $$1 = $$0.ap();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
+   @Override
+   protected void a(arm $$0, T $$1) {
+      if (!this.b.test($$1)) {
+         this.c($$1);
       } else {
-         this.a.dS().ah().a("hasLineOfSight");
-         boolean $$2 = this.a.G($$0);
-         this.a.dS().ah().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
-
-         return $$2;
+         this.a($$1);
       }
+   }
+
+   @Override
+   public Set<cdz<?>> a() {
+      return Set.of(cdz.g);
+   }
+
+   @Override
+   public void a(T $$0) {
+      Optional<List<buv>> $$1 = $$0.ed().c(cdz.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
+         if ($$2) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public void b(T $$0) {
+      $$0.ed().a(this.c, true, (long)this.d);
+   }
+
+   public void c(T $$0) {
+      $$0.ed().b(this.c);
    }
 }

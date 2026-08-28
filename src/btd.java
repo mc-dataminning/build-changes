@@ -1,25 +1,15 @@
-class btd extends bsw {
-   protected btd(bsx $$0, int $$1, lm $$2) {
-      super($$0, $$1, $$2);
+public enum btd {
+   a(n.j),
+   b(n.m),
+   c(n.j);
+
+   private final n d;
+
+   private btd(final n $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 == 1;
-   }
-
-   @Override
-   public boolean a(bun $$0, int $$1) {
-      if ($$0 instanceof ark $$2 && !$$0.Q_()) {
-         arj $$3 = $$2.B();
-         jf $$4 = $$2.ah();
-         if ($$4 != null) {
-            $$3.z().a($$2, $$4);
-            $$2.ag();
-            return false;
-         }
-      }
-
-      return true;
+   public n a() {
+      return this.d;
    }
 }

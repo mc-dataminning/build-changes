@@ -1,44 +1,37 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eiz extends ejc {
-   public static final MapCodec<eiz> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eiz::new));
+public class eiz extends ejb {
+   public static final MapCodec<eiz> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eiz::new, $$0 -> $$0.b);
+   private final float b;
 
-   public eiz(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public eiz(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected ejd<?> a() {
-      return ejd.c;
+   protected ejc<?> a() {
+      return ejc.c;
    }
 
    @Override
-   public List<ehk.a> a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, int $$3, jf $$4, egu $$5) {
-      jf $$6 = $$4.e();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.i(), $$5);
-      a($$0, $$1, $$2, $$6.g(), $$5);
-      a($$0, $$1, $$2, $$6.g().i(), $$5);
-      jf.a $$7 = new jf.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
+   public void a(ejb.a $$0) {
+      azr $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<jg> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (jl $$3x : jl.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  jl $$4 = $$3x.g();
+                  jg $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, dia.fC.m().b(djf.c, Integer.valueOf($$1.a(3))).b(djf.aF, $$3x));
+                  }
+               }
+            }
+         });
       }
-
-      return ImmutableList.of(new ehk.a($$4.b($$3), 0, true));
-   }
-
-   private void a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, jf.a $$3, egu $$4, jf $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

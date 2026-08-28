@@ -1,101 +1,92 @@
-import com.google.common.hash.Hashing;
+public interface dfm extends dea {
+   jl[] D = jl.values();
 
-public class dfm {
-   public static final int a = jz.a(8);
-   private static final int b = 2;
-   private static final int c = 4;
-   private static final int d = 3;
-   private final dfm.a e;
-   private final long f;
-
-   public dfm(dfm.a $$0, long $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   default int a(jg $$0, jl $$1) {
+      return this.a_($$0).b(this, $$0, $$1);
    }
 
-   public static long a(long $$0) {
-      return Hashing.sha256().hashLong($$0).asLong();
+   default int e_(jg $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.e(), jl.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.d(), jl.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.f(), jl.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.g(), jl.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.h(), jl.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.i(), jl.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public dfm a(dfm.a $$0) {
-      return new dfm($$0, this.f);
+   default int a(jg $$0, jl $$1, boolean $$2) {
+      dvd $$3 = this.a_($$0);
+      if ($$2) {
+         return dka.n($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(dia.ha)) {
+         return 15;
+      } else if ($$3.a(dia.cw)) {
+         return $$3.c(doa.f);
+      } else {
+         return $$3.p() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   public jo<dfk> a(jf $$0) {
-      int $$1 = $$0.u() - 2;
-      int $$2 = $$0.v() - 2;
-      int $$3 = $$0.w() - 2;
-      int $$4 = $$1 >> 2;
-      int $$5 = $$2 >> 2;
-      int $$6 = $$3 >> 2;
-      double $$7 = (double)($$1 & 3) / 4.0;
-      double $$8 = (double)($$2 & 3) / 4.0;
-      double $$9 = (double)($$3 & 3) / 4.0;
-      int $$10 = 0;
-      double $$11 = Double.POSITIVE_INFINITY;
+   default boolean b(jg $$0, jl $$1) {
+      return this.c($$0, $$1) > 0;
+   }
 
-      for (int $$12 = 0; $$12 < 8; $$12++) {
-         boolean $$13 = ($$12 & 4) == 0;
-         boolean $$14 = ($$12 & 2) == 0;
-         boolean $$15 = ($$12 & 1) == 0;
-         int $$16 = $$13 ? $$4 : $$4 + 1;
-         int $$17 = $$14 ? $$5 : $$5 + 1;
-         int $$18 = $$15 ? $$6 : $$6 + 1;
-         double $$19 = $$13 ? $$7 : $$7 - 1.0;
-         double $$20 = $$14 ? $$8 : $$8 - 1.0;
-         double $$21 = $$15 ? $$9 : $$9 - 1.0;
-         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
-         if ($$11 > $$22) {
-            $$10 = $$12;
-            $$11 = $$22;
+   default int c(jg $$0, jl $$1) {
+      dvd $$2 = this.a_($$0);
+      int $$3 = $$2.a(this, $$0, $$1);
+      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean C(jg $$0) {
+      if (this.c($$0.e(), jl.a) > 0) {
+         return true;
+      } else if (this.c($$0.d(), jl.b) > 0) {
+         return true;
+      } else if (this.c($$0.f(), jl.c) > 0) {
+         return true;
+      } else if (this.c($$0.g(), jl.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.h(), jl.e) > 0 ? true : this.c($$0.i(), jl.f) > 0;
+      }
+   }
+
+   default int D(jg $$0) {
+      int $$1 = 0;
+
+      for (jl $$2 : D) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
          }
       }
 
-      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
-      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
-      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
-      return this.e.getNoiseBiome($$23, $$24, $$25);
-   }
-
-   public jo<dfk> a(double $$0, double $$1, double $$2) {
-      int $$3 = jz.a(azf.a($$0));
-      int $$4 = jz.a(azf.a($$1));
-      int $$5 = jz.a(azf.a($$2));
-      return this.a($$3, $$4, $$5);
-   }
-
-   public jo<dfk> b(jf $$0) {
-      int $$1 = jz.a($$0.u());
-      int $$2 = jz.a($$0.v());
-      int $$3 = jz.a($$0.w());
-      return this.a($$1, $$2, $$3);
-   }
-
-   public jo<dfk> a(int $$0, int $$1, int $$2) {
-      return this.e.getNoiseBiome($$0, $$1, $$2);
-   }
-
-   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      long $$7 = aza.a($$0, (long)$$1);
-      $$7 = aza.a($$7, (long)$$2);
-      $$7 = aza.a($$7, (long)$$3);
-      $$7 = aza.a($$7, (long)$$1);
-      $$7 = aza.a($$7, (long)$$2);
-      $$7 = aza.a($$7, (long)$$3);
-      double $$8 = b($$7);
-      $$7 = aza.a($$7, $$0);
-      double $$9 = b($$7);
-      $$7 = aza.a($$7, $$0);
-      double $$10 = b($$7);
-      return azf.k($$6 + $$10) + azf.k($$5 + $$9) + azf.k($$4 + $$8);
-   }
-
-   private static double b(long $$0) {
-      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
-      return ($$1 - 0.5) * 0.9;
-   }
-
-   public interface a {
-      jo<dfk> getNoiseBiome(int var1, int var2, int var3);
+      return $$1;
    }
 }

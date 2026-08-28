@@ -1,18 +1,40 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehx<P extends ehw> {
-   public static final ehx<ehv> a = a("mangrove_root_placer", ehv.c);
-   private final MapCodec<P> b;
+public class ehx extends ehv {
+   public static final MapCodec<ehx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ehx::new)
+   );
+   protected final int b;
 
-   private static <P extends ehw> ehx<P> a(String $$0, MapCodec<P> $$1) {
-      return kb.a(lv.W, $$0, new ehx<>($$1));
+   public ehx(brd $$0, brd $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   private ehx(MapCodec<P> $$0) {
-      this.b = $$0;
+   @Override
+   protected ehw<?> a() {
+      return ehw.g;
    }
 
-   public MapCodec<P> a() {
+   @Override
+   protected void a(dfb $$0, ehv.b $$1, azr $$2, ehf $$3, int $$4, ehv.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
+      }
+   }
+
+   @Override
+   public int a(azr $$0, int $$1, ehf $$2) {
       return this.b;
+   }
+
+   @Override
+   protected boolean a(azr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

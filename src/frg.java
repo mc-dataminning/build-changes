@@ -1,82 +1,140 @@
-public class frg extends fqv {
-   private final dsf u;
-   private fkv<dsf.a> v;
-   private fkv<Boolean> w;
-   private fkv<Boolean> x;
-   private dsf.a y = dsf.a.c;
-   private boolean z;
-   private boolean A;
+public abstract class frg extends fqs {
+   private static final xh u = xh.c("advMode.setCommand");
+   private static final xh v = xh.c("advMode.command");
+   private static final xh w = xh.c("advMode.previousOutput");
+   protected fli a;
+   protected fli b;
+   protected fkz c;
+   protected fkz d;
+   protected flg<Boolean> s;
+   flc x;
 
-   public frg(dsf $$0) {
-      this.u = $$0;
+   public frg() {
+      super(fir.a);
    }
 
    @Override
-   ddj m() {
-      return this.u.b();
+   public void e() {
+      if (!this.m().j()) {
+         this.d();
+      }
    }
 
-   @Override
-   int D() {
-      return 135;
-   }
+   abstract ddv m();
+
+   abstract int D();
 
    @Override
    protected void aS_() {
-      super.aS_();
-      this.v = this.c(fkv.<dsf.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> xe.c("advMode.mode.sequence");
-            case b -> xe.c("advMode.mode.auto");
-            case c -> xe.c("advMode.mode.redstone");
-         };
-      }).a(dsf.a.values()).a().a(this.y).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, xe.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
-      this.w = this.c(
-         fkv.a(xe.c("advMode.mode.conditional"), xe.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.z)
-            .a(this.n / 2 - 50, 165, 100, 20, xe.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.x = this.c(
-         fkv.a(xe.c("advMode.mode.autoexec.bat"), xe.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.A)
-            .a(this.n / 2 + 50 + 4, 165, 100, 20, xe.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
-      );
-      this.f(false);
-   }
-
-   private void f(boolean $$0) {
-      this.c.j = $$0;
-      this.s.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-      this.x.j = $$0;
-   }
-
-   public void F() {
-      ddj $$0 = this.u.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.y = this.u.t();
-      this.z = this.u.u();
-      this.A = this.u.d();
-      this.s.a($$1);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.x.a(this.A);
-      this.c($$1);
-      this.f(true);
+      this.c = this.c(fkz.a(xg.d, $$0x -> this.E()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
+      this.d = this.c(fkz.a(xg.e, $$0x -> this.d()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.m().p();
+      this.s = this.c(flg.a(xh.b("O"), xh.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.D(), 20, 20, xh.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         ddv $$2 = this.m();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fli(this.p, this.n / 2 - 150, 50, 300, 20, xh.c("advMode.command")) {
+         @Override
+         protected xv aP_() {
+            return super.aP_().b(frg.this.x.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fli(this.p, this.n / 2 - 150, this.D(), 276, 20, xh.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.x = new flc(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.x.a(true);
+      this.x.d();
+      this.c($$0);
    }
 
    @Override
-   public void a(fip $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.f(true);
+   protected void aH_() {
+      this.b(this.a);
    }
 
    @Override
-   protected void a(ddj $$0) {
-      this.m.L().b(new aih(jf.a((jy)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
+   protected xh A() {
+      return this.x.a() ? this.x.b() : super.A();
+   }
+
+   @Override
+   public void a(fja $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.x.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.m().l().getString() : "-");
+   }
+
+   protected void E() {
+      ddv $$0 = this.m();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.m.a(null);
+   }
+
+   protected abstract void a(ddv var1);
+
+   private void a(String $$0) {
+      this.x.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.E();
+         return true;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, u, this.n / 2, 20, 16777215);
+      $$0.b(this.p, v, this.n / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.D() - 135;
+         $$0.b(this.p, w, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+
+      this.x.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void b(fkm $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

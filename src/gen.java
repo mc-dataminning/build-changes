@@ -1,76 +1,79 @@
-public class gen extends get {
-   private static final int a = 3;
-   private final ght b;
-   private final btr D;
-   private final btr E;
-   private int F;
-   private final gnm G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-   private double M;
+import javax.annotation.Nullable;
 
-   public gen(gnm $$0, ght $$1, gbm $$2, btr $$3, btr $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dv());
-   }
+public class gen extends gge {
+   private final float a;
+   private final gfz b;
 
-   private gen(gnm $$0, ght $$1, gbm $$2, btr $$3, btr $$4, eyw $$5) {
-      super($$2, $$3.dx(), $$3.dz(), $$3.dD(), $$5.d, $$5.e, $$5.f);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-      this.c();
-      this.d();
-   }
-
-   private btr a(btr $$0) {
-      return (btr)(!($$0 instanceof ckh) ? $$0 : ((ckh)$$0).A());
+   gen(gbx $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gfz $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.b = $$7;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public gex b() {
-      return gex.d;
+   public gfi b() {
+      return gfi.b;
    }
 
    @Override
-   public void a(fdm $$0, fhy $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = azf.d((double)$$2, this.K, this.H);
-      double $$5 = azf.d((double)$$2, this.L, this.I);
-      double $$6 = azf.d((double)$$2, this.M, this.J);
-      double $$7 = azf.d((double)$$3, this.D.dx(), $$4);
-      double $$8 = azf.d((double)$$3, this.D.dz(), $$5);
-      double $$9 = azf.d((double)$$3, this.D.dD(), $$6);
-      ghl.a $$10 = this.b.c();
-      eyw $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), $$2, new fdi(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public float b(float $$0) {
+      return this.D * azj.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      this.F++;
-      if (this.F == 3) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
+
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
+      }
+   }
+
+   public static class a implements gfh<li> {
+      private final gfz a;
+
+      public a(gfz $$0) {
+         this.a = $$0;
       }
 
-      this.d();
-      this.c();
-   }
+      @Nullable
+      public gfe a(li $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dvd $$8 = $$0.b();
+         if (!$$8.l() && $$8.o() == doe.a) {
+            return null;
+         } else {
+            jg $$9 = jg.a($$2, $$3, $$4);
+            int $$10 = fja.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dkt) {
+               $$10 = ((dkt)$$8.b()).b($$8, $$1, $$9);
+            }
 
-   private void c() {
-      this.H = this.E.dx();
-      this.I = (this.E.dz() + this.E.dB()) / 2.0;
-      this.J = this.E.dD();
-   }
-
-   private void d() {
-      this.K = this.H;
-      this.L = this.I;
-      this.M = this.J;
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new gen($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         }
+      }
    }
 }

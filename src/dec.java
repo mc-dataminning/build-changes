@@ -1,27 +1,25 @@
-import java.util.Optional;
+import java.util.function.Predicate;
 
 public class dec {
-   public Optional<Float> a(deb $$0, ddo $$1, jf $$2, dus $$3, eqt $$4) {
-      return $$3.l() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+   private final ezh a;
+   private final ezh b;
+   private final Predicate<dvd> c;
+
+   public dec(ezh $$0, ezh $$1, Predicate<dvd> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public boolean a(deb $$0, ddo $$1, jf $$2, dus $$3, float $$4) {
-      return true;
+   public ezh a() {
+      return this.b;
    }
 
-   public boolean a(deb $$0, btr $$1) {
-      return true;
+   public ezh b() {
+      return this.a;
    }
 
-   public float a(btr $$0) {
-      return 1.0F;
-   }
-
-   public float a(deb $$0, btr $$1, float $$2) {
-      float $$3 = $$0.d() * 2.0F;
-      eyw $$4 = $$0.e();
-      double $$5 = Math.sqrt($$1.f($$4)) / (double)$$3;
-      double $$6 = (1.0 - $$5) * (double)$$2;
-      return (float)(($$6 * $$6 + $$6) / 2.0 * 7.0 * (double)$$3 + 1.0);
+   public Predicate<dvd> c() {
+      return this.c;
    }
 }

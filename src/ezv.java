@@ -1,46 +1,37 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-class ezv {
-   private final Reference2ObjectOpenHashMap<ezt, ezy> a = new Reference2ObjectOpenHashMap(16, 0.5F);
-
+public class ezv extends ezr {
    @Nullable
-   public ezy a(ezt $$0) {
-      return (ezy)this.a.get($$0);
+   private jg b;
+   @Nullable
+   private jg c;
+
+   protected ezv(cqf $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
    }
 
-   public ezy a(ezt $$0, Consumer<ezy> $$1) {
-      return (ezy)this.a.computeIfAbsent($$0, $$1x -> {
-         ezy $$2 = new ezy();
-         $$1.accept($$2);
-         return $$2;
-      });
+   private void a(cqf $$0) {
+      jg $$1 = $$0.q();
+      dvd $$2 = $$0.dX().a_($$1);
+      boolean $$3 = dhn.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         dwh $$4 = $$2.c(((dhn)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
    }
 
-   public boolean b(ezt $$0) {
-      return this.a.remove($$0) != null;
-   }
-
-   public boolean a() {
-      return !this.a.isEmpty();
-   }
-
-   public Object2IntMap<ezt> b() {
-      Object2IntMap<ezt> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
-   }
-
-   void a(ezt $$0, ezy $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<ezt, ezy> c() {
-      return Collections.unmodifiableMap(this.a);
+   @Override
+   public fab a(dvd $$0, dee $$1, jg $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : ezy.a();
    }
 }

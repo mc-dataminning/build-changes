@@ -1,20 +1,18 @@
-import javax.annotation.Nullable;
+public class ftr extends ftv {
+   private static final xh a = xh.c("options.languageAccuracyWarning").b(-4539718);
+   private static final int u = 53;
+   private ftr.a v;
+   final gzb w;
 
-public class ftr extends ftk {
-   private static final xe v = xe.c("controls.keybinds.title");
-   @Nullable
-   public fin a;
-   public long u;
-   private ftq w;
-   private fko x;
-
-   public ftr(fqh $$0, fit $$1) {
-      super($$0, $$1, v);
+   public ftr(fqs $$0, fje $$1, gzb $$2) {
+      super($$0, $$1, xh.c("options.language.title"));
+      this.w = $$2;
+      this.s.a(53);
    }
 
    @Override
    protected void E() {
-      this.w = this.s.c(new ftq(this, this.m));
+      this.v = this.s.c(new ftr.a(this.m));
    }
 
    @Override
@@ -23,66 +21,97 @@ public class ftr extends ftk {
 
    @Override
    protected void D() {
-      this.x = fko.a(xe.c("controls.resetAll"), $$0x -> {
-         for (fin $$1 : this.c.V) {
-            $$1.b($$1.i());
-         }
-
-         this.w.c();
-      }).a();
-      fog $$0 = this.s.b(fog.e().a(8));
-      $$0.a(this.x);
-      $$0.a(fko.a(xd.d, $$0x -> this.d()).a());
+      fos $$0 = this.s.b(fos.d()).a(8);
+      $$0.c().b();
+      $$0.a(new fmg(a, this.p));
+      fos $$1 = $$0.a(fos.e().a(8));
+      $$1.a(fkz.a(xh.c("options.font"), $$0x -> this.m.a(new ftq(this, this.c))).a());
+      $$1.a(fkz.a(xg.d, $$0x -> this.G()).a());
    }
 
    @Override
    protected void c() {
-      this.s.a();
-      this.w.a(this.n, this.s);
+      super.c();
+      this.v.a(this.n, this.s);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.a != null) {
-         this.a.b(fcd.b.c.a($$2));
-         this.a = null;
-         this.w.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   void G() {
+      ftr.a.a $$0 = this.v.h();
+      if ($$0 != null && !$$0.b.equals(this.w.a())) {
+         this.w.a($$0.b);
+         this.c.ab = $$0.b;
+         this.m.l();
       }
+
+      this.m.a(this.b);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.a != null) {
-         if ($$0 == 256) {
-            this.a.b(fcd.bv);
-         } else {
-            this.a.b(fcd.a($$0, $$1));
-         }
-
-         this.a = null;
-         this.u = ad.c();
-         this.w.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      boolean $$4 = false;
-
-      for (fin $$5 : this.c.V) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
+   class a extends flv<ftr.a.a> {
+      public a(final fja $$0) {
+         super($$0, ftr.this.n, ftr.this.o - 33 - 53, 33, 18);
+         String $$1 = ftr.this.w.a();
+         ftr.this.w.b().forEach(($$1x, $$2) -> {
+            ftr.a.a $$3 = new ftr.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.h() != null) {
+            this.e(this.h());
          }
       }
 
-      this.x.j = $$4;
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
+
+      public class a extends flv.a<ftr.a.a> {
+         final String b;
+         private final xh c;
+         private long d;
+
+         public a(final String $$1, final gza $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(fkm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(ftr.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (fpc.a($$0)) {
+               this.b();
+               ftr.this.G();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
+            }
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ad.c() - this.d < 250L) {
+               ftr.this.G();
+            }
+
+            this.d = ad.c();
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public xh a() {
+            return xh.a("narrator.select", this.c);
+         }
+      }
    }
 }

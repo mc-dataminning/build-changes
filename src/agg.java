@@ -1,29 +1,46 @@
-public record agg(float b, boolean c) implements zl<aca> {
-   public static final zc<wb, agg> a = zl.a(agg::a, agg::new);
+import javax.annotation.Nullable;
 
-   private agg(wb $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+public class agg implements zo<acd> {
+   public static final zf<we, agg> a = zo.a(agg::a, agg::new);
+   private final int b;
+   @Nullable
+   private final uj c;
+
+   public agg(int $$0, @Nullable uj $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static agg a(bsb $$0) {
-      return new agg($$0.f(), $$0.l());
+   private agg(we $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.a((vg)this.c);
    }
 
    @Override
-   public zn<agg> a() {
-      return agp.ci;
+   public zq<agg> a() {
+      return ags.aY;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   @Nullable
+   public uj e() {
       return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

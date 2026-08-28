@@ -1,26 +1,33 @@
-public interface dbc extends dak<dbd> {
+public record dbc(cvx a, cvx b, cvx c) implements dam {
    @Override
-   default daq<?> e() {
-      return daq.g;
+   public cvx a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public int a() {
+      return 3;
    }
 
    @Override
-   default cvs g() {
-      return new cvs(dho.ob);
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
    }
 
-   default boolean a(dbd $$0, dej $$1) {
-      return this.a($$0.c()) && this.b($$0.d()) && this.c($$0.e());
+   public cvx c() {
+      return this.a;
    }
 
-   boolean a(cvs var1);
+   public cvx d() {
+      return this.b;
+   }
 
-   boolean b(cvs var1);
-
-   boolean c(cvs var1);
+   public cvx e() {
+      return this.c;
+   }
 }

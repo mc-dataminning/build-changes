@@ -1,143 +1,108 @@
-public interface fof {
-   fof a(int var1);
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-   fof a(int var1, int var2);
+public record fof(alh c, float d, float e, fof.a f, String g) implements foc {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fof> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alh.a.fieldOf("file").forGetter(fof::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fof::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fof::e),
+               fof.a.b.optionalFieldOf("shift", fof.a.a).forGetter(fof::f),
+               h.optionalFieldOf("skip", "").forGetter(fof::g)
+            )
+            .apply($$0, fof::new)
+   );
 
-   fof a(int var1, int var2, int var3, int var4);
-
-   fof b(int var1);
-
-   fof c(int var1);
-
-   fof d(int var1);
-
-   fof e(int var1);
-
-   fof f(int var1);
-
-   fof g(int var1);
-
-   fof a(float var1, float var2);
-
-   fof a(float var1);
-
-   fof b(float var1);
-
-   default fof a() {
-      return this.a(0.0F);
+   @Override
+   public fod a() {
+      return fod.b;
    }
 
-   default fof b() {
-      return this.a(0.5F);
+   @Override
+   public Either<foc.b, foc.c> b() {
+      return Either.left(this::a);
    }
 
-   default fof c() {
-      return this.a(1.0F);
+   private fbs a(ava $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
+
+      try {
+         fbv var20;
+         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (fob.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
+
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  fob.a(FreeType.FT_New_Memory_Face(fob.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
+                  }
+
+                  throw var14;
+               }
+
+               if ($$4 != null) {
+                  $$4.close();
+               }
+
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
+               }
+
+               fob.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new fbv($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            }
+         }
+
+         return var20;
+      } catch (Exception var17) {
+         synchronized (fob.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var17;
+      }
    }
 
-   default fof d() {
-      return this.b(0.0F);
-   }
+   public static record a(float c, float d) {
+      public static final fof.a a = new fof.a(0.0F, 0.0F);
+      public static final Codec<fof.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new fof.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   default fof e() {
-      return this.b(0.5F);
-   }
-
-   default fof f() {
-      return this.b(1.0F);
-   }
-
-   fof g();
-
-   fof.a h();
-
-   static fof i() {
-      return new fof.a();
-   }
-
-   public static class a implements fof {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
-
-      public a() {
+      public float a() {
+         return this.c;
       }
 
-      public a(fof.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
-      }
-
-      public fof.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
-
-      public fof.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
-
-      public fof.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
-
-      public fof.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fof.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fof.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fof.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fof.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public fof.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public fof.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fof.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fof.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fof.a j() {
-         return new fof.a(this);
-      }
-
-      @Override
-      public fof.a h() {
-         return this;
+      public float b() {
+         return this.d;
       }
    }
 }

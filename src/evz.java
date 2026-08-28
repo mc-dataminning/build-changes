@@ -1,38 +1,41 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 
-public class evz extends euy {
-   public static final Codec<xe> a = xg.a.validate($$0 -> cze.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<evz> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(cze.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), eux.a.forGetter($$0x -> $$0x.d))).apply($$0, evz::new)
+public class evz extends evj {
+   public static final MapCodec<evz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  evi.e.a(cyk.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  ays.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, evz::new)
    );
-   private final List<asa<xe>> c;
-   private final eux d;
+   public static final cyl b = new cyl(0, List.of());
+   private final Optional<evi.e<cyk>> c;
+   private final Optional<Integer> d;
 
-   protected evz(List<eww> $$0, List<asa<xe>> $$1, eux $$2) {
+   protected evz(List<exh> $$0, Optional<evi.e<cyk>> $$1, Optional<Integer> $$2) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
    }
 
    @Override
-   protected cvs a(cvs $$0, etl $$1) {
-      $$0.a(ks.O, cze.a, this::a);
+   protected cvx a(cvx $$0, etw $$1) {
+      $$0.a(kt.ae, b, this::a);
       return $$0;
    }
 
-   @VisibleForTesting
-   public cze a(cze $$0) {
-      List<asa<xe>> $$1 = this.d.a($$0.a(), this.c);
-      return $$0.b($$1);
+   private cyl a(cyl $$0) {
+      return new cyl(this.d.orElseGet($$0::a), this.c.<List<cyk>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
    @Override
-   public eva<evz> b() {
-      return evb.N;
+   public evl<evz> b() {
+      return evm.K;
    }
 }

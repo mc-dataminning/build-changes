@@ -1,62 +1,59 @@
-import java.util.ArrayList;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class dad extends dab {
-   private static final dag a = dag.a(cvw.qP);
-   private static final dag b = dag.a(cvw.pv);
-   private static final dag c = dag.a(cvw.ux);
+public class dad extends daa {
+   private static final daf a = daf.a(cwb.ux);
 
-   public dad(czy $$0) {
+   public dad(czx $$0) {
       super($$0);
    }
 
-   public boolean a(czz $$0, dej $$1) {
+   public boolean a(czy $$0, dev $$1) {
       boolean $$2 = false;
-      int $$3 = 0;
+      boolean $$3 = false;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvs $$5 = $$0.a($$4);
+         cvx $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if (a.a($$5)) {
-               if ($$2) {
+            if ($$5.h() instanceof cuv) {
+               $$2 = true;
+            } else {
+               if (!a.a($$5)) {
                   return false;
                }
 
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
+               if ($$3) {
                   return false;
                }
-            } else if (!c.a($$5)) {
-               return false;
+
+               $$3 = true;
             }
          }
       }
 
-      return $$2 && $$3 >= 1;
+      return $$3 && $$2;
    }
 
-   public cvs a(czz $$0, jq.a $$1) {
-      List<cyl> $$2 = new ArrayList<>();
-      int $$3 = 0;
+   public cvx a(czy $$0, jr.a $$1) {
+      IntList $$2 = new IntArrayList();
+      cvx $$3 = null;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvs $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (b.a($$5)) {
-               $$3++;
-            } else if (c.a($$5)) {
-               cyl $$6 = $$5.a(ks.Z);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
+         cvx $$5 = $$0.a($$4);
+         cvt $$6 = $$5.h();
+         if ($$6 instanceof cuv) {
+            $$2.add(((cuv)$$6).c().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
          }
       }
 
-      cvs $$7 = new cvs(cvw.uw, 3);
-      $$7.b(ks.aa, new cym($$3, $$2));
-      return $$7;
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(kt.ad, cyk.a, $$2, cyk::a);
+         return $$3;
+      } else {
+         return cvx.k;
+      }
    }
 
    @Override
@@ -65,12 +62,7 @@ public class dad extends dab {
    }
 
    @Override
-   public cvs a(jq.a $$0) {
-      return new cvs(cvw.uw);
-   }
-
-   @Override
-   public dap<?> ar_() {
-      return dap.g;
+   public dao<?> ar_() {
+      return dao.i;
    }
 }

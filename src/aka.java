@@ -1,20 +1,31 @@
-public record aka(akb b) implements zl<ajz> {
-   public static final zc<wb, aka> a = zl.a(aka::a, aka::new);
+import io.netty.buffer.ByteBuf;
 
-   private aka(wb $$0) {
-      this($$0.a(akb.a));
+public class aka implements zo<ajz> {
+   public static final zf<ByteBuf, aka> a = zo.a(aka::a, aka::new);
+   private final long b;
+
+   public aka(long $$0) {
+      this.b = $$0;
    }
 
-   private void a(wb $$0) {
-      $$0.a(akb.a, this.b);
+   private aka(ByteBuf $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(ByteBuf $$0) {
+      $$0.writeLong(this.b);
    }
 
    @Override
-   public zn<aka> a() {
-      return ake.a;
+   public zq<aka> a() {
+      return ajy.b;
    }
 
    public void a(ajz $$0) {
       $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

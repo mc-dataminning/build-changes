@@ -1,19 +1,20 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface ezx {
-   int a();
+public class ezx extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
 
-   boolean b();
-
-   @Nullable
-   yu c();
-
-   default xs a(yu $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   public ezx(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   static xs a(@Nullable ezx $$0, yu $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
+   }
+
+   public int size() {
+      return this.a.size();
    }
 }

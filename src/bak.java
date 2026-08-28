@@ -1,7 +1,13 @@
-import com.mojang.serialization.Codec;
+import java.util.concurrent.TimeUnit;
 
-public enum bak {
-   a;
+public class bak {
+   public static final long a = TimeUnit.SECONDS.toNanos(1L);
+   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
+   public static final long c = TimeUnit.SECONDS.toMillis(1L);
+   public static final long d = TimeUnit.HOURS.toSeconds(1L);
+   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   public static final Codec<bak> b = Codec.unit(a);
+   public static brj a(int $$0, int $$1) {
+      return brj.a($$0 * 20, $$1 * 20);
+   }
 }

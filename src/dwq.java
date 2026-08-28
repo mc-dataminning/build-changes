@@ -1,166 +1,57 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dwq {
-   private static final Logger a = LogUtils.getLogger();
-   private final ebc b;
-   private final dfo c;
-   private final long d;
-   private final long e;
-   private final Map<elg, List<emd>> f = new Object2ObjectOpenHashMap();
-   private final Map<ema, CompletableFuture<List<ddp>>> g = new Object2ObjectArrayMap();
-   private boolean h;
-   private final List<jo<elm>> i;
+public record dwq(String m, dvs n, dpl o, dpl p, awj q, awj r) {
+   private static final Map<String, dwq> s = new Object2ObjectArrayMap();
+   public static final Codec<dwq> a = Codec.stringResolver(dwq::b, s::get);
+   public static final dwq b = a(new dwq("oak", dvs.g));
+   public static final dwq c = a(new dwq("spruce", dvs.h));
+   public static final dwq d = a(new dwq("birch", dvs.i));
+   public static final dwq e = a(new dwq("acacia", dvs.j));
+   public static final dwq f = a(new dwq("cherry", dvs.k, dpl.aU, dpl.aX, awk.eN, awk.eO));
+   public static final dwq g = a(new dwq("jungle", dvs.l));
+   public static final dwq h = a(new dwq("dark_oak", dvs.m));
+   public static final dwq i = a(new dwq("crimson", dvs.n, dpl.aT, dpl.aQ, awk.qV, awk.qW));
+   public static final dwq j = a(new dwq("warped", dvs.o, dpl.aT, dpl.aQ, awk.qV, awk.qW));
+   public static final dwq k = a(new dwq("mangrove", dvs.p));
+   public static final dwq l = a(new dwq("bamboo", dvs.q, dpl.aS, dpl.aR, awk.bw, awk.bx));
 
-   public static dwq a(ebc $$0, long $$1, dfo $$2, Stream<jo<elm>> $$3) {
-      List<jo<elm>> $$4 = $$3.filter($$1x -> a((elm)$$1x.a(), $$2)).toList();
-      return new dwq($$0, $$2, $$1, 0L, $$4);
+   public dwq(String $$0, dvs $$1) {
+      this($$0, $$1, dpl.b, dpl.aP, awk.iJ, awk.iK);
    }
 
-   public static dwq a(ebc $$0, long $$1, dfo $$2, jq<elm> $$3) {
-      List<jo<elm>> $$4 = $$3.c().filter($$1x -> a((elm)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
-      return new dwq($$0, $$2, $$1, $$1, $$4);
+   private static dwq a(dwq $$0) {
+      s.put($$0.b(), $$0);
+      return $$0;
    }
 
-   private static boolean a(elm $$0, dfo $$1) {
-      Stream<jo<dfk>> $$2 = $$0.a().stream().flatMap($$0x -> {
-         elg $$1x = $$0x.a().a();
-         return $$1x.a().a();
-      });
-      return $$2.anyMatch($$1.c()::contains);
+   public static Stream<dwq> a() {
+      return s.values().stream();
    }
 
-   private dwq(ebc $$0, dfo $$1, long $$2, long $$3, List<jo<elm>> $$4) {
-      this.b = $$0;
-      this.d = $$2;
-      this.c = $$1;
-      this.e = $$3;
-      this.i = $$4;
+   public String b() {
+      return this.m;
    }
 
-   public List<jo<elm>> a() {
-      return this.i;
+   public dvs c() {
+      return this.n;
    }
 
-   private void e() {
-      Set<jo<dfk>> $$0 = this.c.c();
-      this.a().forEach($$1 -> {
-         elm $$2 = $$1.a();
-         boolean $$3 = false;
-
-         for (elm.a $$4 : $$2.a()) {
-            elg $$5 = $$4.a().a();
-            if ($$5.a().a().anyMatch($$0::contains)) {
-               this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
-               $$3 = true;
-            }
-         }
-
-         if ($$3 && $$2.b() instanceof ema $$7) {
-            this.g.put($$7, this.a((jo<elm>)$$1, $$7));
-         }
-      });
+   public dpl d() {
+      return this.o;
    }
 
-   private CompletableFuture<List<ddp>> a(jo<elm> $$0, ema $$1) {
-      if ($$1.c() == 0) {
-         return CompletableFuture.completedFuture(List.of());
-      } else {
-         Stopwatch $$2 = Stopwatch.createStarted(ad.d);
-         int $$3 = $$1.a();
-         int $$4 = $$1.c();
-         List<CompletableFuture<ddp>> $$5 = new ArrayList<>($$4);
-         int $$6 = $$1.b();
-         js<dfk> $$7 = $$1.d();
-         azn $$8 = azn.a();
-         $$8.b(this.e);
-         double $$9 = $$8.j() * Math.PI * 2.0;
-         int $$10 = 0;
-         int $$11 = 0;
-
-         for (int $$12 = 0; $$12 < $$4; $$12++) {
-            double $$13 = (double)(4 * $$3 + $$3 * $$11 * 6) + ($$8.j() - 0.5) * (double)$$3 * 2.5;
-            int $$14 = (int)Math.round(Math.cos($$9) * $$13);
-            int $$15 = (int)Math.round(Math.sin($$9) * $$13);
-            azn $$16 = $$8.d();
-            $$5.add(CompletableFuture.supplyAsync(() -> {
-               Pair<jf, jo<dfk>> $$4x = this.c.a(kh.a($$14, 8), 0, kh.a($$15, 8), 112, $$7::a, $$16, this.b.b());
-               if ($$4x != null) {
-                  jf $$5x = (jf)$$4x.getFirst();
-                  return new ddp(kh.a($$5x.u()), kh.a($$5x.w()));
-               } else {
-                  return new ddp($$14, $$15);
-               }
-            }, ad.g()));
-            $$9 += (Math.PI * 2) / (double)$$6;
-            if (++$$10 == $$6) {
-               $$11++;
-               $$10 = 0;
-               $$6 += 2 * $$6 / ($$11 + 1);
-               $$6 = Math.min($$6, $$4 - $$12);
-               $$9 += $$8.j() * Math.PI * 2.0;
-            }
-         }
-
-         return ad.d($$5).thenApply($$2x -> {
-            double $$3x = (double)$$2.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
-            a.debug("Calculation for {} took {}s", $$0, $$3x);
-            return $$2x;
-         });
-      }
+   public dpl e() {
+      return this.p;
    }
 
-   public void b() {
-      if (!this.h) {
-         this.e();
-         this.h = true;
-      }
+   public awj f() {
+      return this.q;
    }
 
-   @Nullable
-   public List<ddp> a(ema $$0) {
-      this.b();
-      CompletableFuture<List<ddp>> $$1 = this.g.get($$0);
-      return $$1 != null ? $$1.join() : null;
-   }
-
-   public List<emd> a(jo<elg> $$0) {
-      this.b();
-      return this.f.getOrDefault($$0.a(), List.of());
-   }
-
-   public ebc c() {
-      return this.b;
-   }
-
-   public boolean a(jo<elm> $$0, int $$1, int $$2, int $$3) {
-      emd $$4 = $$0.a().b();
-
-      for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
-         for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {
-            if ($$4.b(this, $$5, $$6)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public long d() {
-      return this.d;
+   public awj g() {
+      return this.r;
    }
 }

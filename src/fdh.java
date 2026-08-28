@@ -1,111 +1,95 @@
-import it.unimi.dsi.fastutil.ints.IntConsumer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 import org.joml.Vector3f;
-import org.lwjgl.system.MemoryUtil;
+import org.joml.Vector4f;
 
-public class fdh implements AutoCloseable {
-   private final fdf.a a;
-   @Nullable
-   private fdf.a b;
-   private final fdh.a c;
-
-   public fdh(fdf.a $$0, fdh.a $$1) {
-      this.a = $$0;
-      this.c = $$1;
+public class fdh {
+   public void a(float $$0) {
    }
 
-   private static Vector3f[] a(ByteBuffer $$0, int $$1, fdn $$2) {
-      int $$3 = $$2.a(fdo.b);
-      if ($$3 == -1) {
-         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
-      } else {
-         FloatBuffer $$4 = $$0.asFloatBuffer();
-         int $$5 = $$2.b() / 4;
-         int $$6 = $$5 * 4;
-         int $$7 = $$1 / 4;
-         Vector3f[] $$8 = new Vector3f[$$7];
-
-         for (int $$9 = 0; $$9 < $$7; $$9++) {
-            int $$10 = $$9 * $$6 + $$3;
-            int $$11 = $$10 + $$5 * 2;
-            float $$12 = $$4.get($$10 + 0);
-            float $$13 = $$4.get($$10 + 1);
-            float $$14 = $$4.get($$10 + 2);
-            float $$15 = $$4.get($$11 + 0);
-            float $$16 = $$4.get($$11 + 1);
-            float $$17 = $$4.get($$11 + 2);
-            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
-         }
-
-         return $$8;
-      }
+   public void a(float $$0, float $$1) {
    }
 
-   public ByteBuffer a() {
-      return this.a.a();
+   public void a(float $$0, float $$1, float $$2) {
    }
 
-   @Nullable
-   public ByteBuffer b() {
-      return this.b != null ? this.b.a() : null;
+   public void a(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   public fdh.a c() {
-      return this.c;
+   public void b(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   @Nullable
-   public fdh.b a(fdf $$0, fdq $$1) {
-      if (this.c.d() != fdn.c.h) {
-         return null;
-      } else {
-         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
-         fdh.b $$3 = new fdh.b($$2, this.c.e());
-         this.b = $$3.a($$0, $$1);
-         return $$3;
-      }
+   public void a(int $$0, int $$1, int $$2, int $$3) {
    }
 
-   @Override
-   public void close() {
-      this.a.close();
-      if (this.b != null) {
-         this.b.close();
-      }
+   public void a(int $$0) {
    }
 
-   public static record a(fdn a, int b, int c, fdn.c d, fdn.b e) {
+   public void a(int $$0, int $$1) {
    }
 
-   public static record b(Vector3f[] a, fdn.b b) {
-      @Nullable
-      public fdf.a a(fdf $$0, fdq $$1) {
-         int[] $$2 = $$1.sort(this.a);
-         long $$3 = $$0.a($$2.length * 6 * this.b.d);
-         IntConsumer $$4 = this.a($$3, this.b);
+   public void a(int $$0, int $$1, int $$2) {
+   }
 
-         for (int $$5 : $$2) {
-            $$4.accept($$5 * 4 + 0);
-            $$4.accept($$5 * 4 + 1);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 3);
-            $$4.accept($$5 * 4 + 0);
-         }
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+   }
 
-         return $$0.a();
-      }
+   public void a(float[] $$0) {
+   }
 
-      private IntConsumer a(long $$0, fdn.b $$1) {
-         MutableLong $$2 = new MutableLong($$0);
+   public void a(Vector3f $$0) {
+   }
 
-         return switch ($$1) {
-            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
-            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
-         };
-      }
+   public void a(Vector4f $$0) {
+   }
+
+   public void c(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+   }
+
+   public void a(Matrix4f $$0) {
+   }
+
+   public void a(Matrix3f $$0) {
    }
 }

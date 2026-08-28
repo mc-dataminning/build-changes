@@ -1,393 +1,284 @@
-import com.google.common.primitives.Doubles;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrays;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
 public class ebr {
-   private static final double e = 0.1;
-   protected static final int a = 4;
-   protected static final int b = 8;
-   protected static final int c = 2;
-   private static final double f = 1.0;
-   private static final double g = -1.0;
-   private static final int h = 2;
-   private static final int i = jz.a(16);
-   private static final int j = i - 1;
-   private static final int k = i;
-   private static final int l = 2 * j + 1;
-   private static final int m = 2 * k + 1;
-   static final int n = l + m;
-   private final del o;
-   private static final List<dhm> p = List.of(dho.l, dho.L, dho.i, dho.b, dho.k, dho.I, dho.K, dho.fl, dho.dP, dho.iA, dho.j);
-   protected static final double d = Double.MAX_VALUE;
-   private boolean q;
-   private final double[] r;
-   private final List<List<jo<dfk>>> s;
-   private final transient double[][] t;
+   private static final dvd a = dia.hj.m();
+   private static final dvd b = dia.hk.m();
+   private static final dvd c = dia.iA.m();
+   private static final dvd d = dia.hn.m();
+   private static final dvd e = dia.hv.m();
+   private static final dvd f = dia.hx.m();
+   private static final dvd g = dia.hr.m();
+   private static final dvd h = dia.iC.m();
+   private static final dvd i = dia.dP.m();
+   private final dvd j;
+   private final int k;
+   private final dvd[] l;
+   private final eqh m;
+   private final eqh n;
+   private final eqh o;
+   private final eqh p;
+   private final eqh q;
+   private final eqh r;
+   private final eqh s;
+   private final ebm t;
+   private final eqh u;
+   private final eqh v;
 
-   private ebr(int $$0, int $$1, Optional<double[]> $$2) {
-      this.r = $$2.orElseGet(() -> ad.a(new double[n], $$0x -> Arrays.fill($$0x, Double.MAX_VALUE)));
-      this.t = new double[n][];
-      ObjectArrayList<List<jo<dfk>>> $$3 = new ObjectArrayList(n);
-      $$3.size(n);
-      this.s = $$3;
-      int $$4 = kh.c($$0);
-      int $$5 = kh.c($$1) - $$4;
-      this.o = del.e($$4, $$5);
+   public ebr(ebn $$0, dvd $$1, int $$2, ebm $$3) {
+      this.j = $$1;
+      this.k = $$2;
+      this.t = $$3;
+      this.m = $$0.a(ebi.P);
+      this.l = a($$3.a(alh.b("clay_bands")));
+      this.u = $$0.a(ebi.N);
+      this.v = $$0.a(ebi.O);
+      this.n = $$0.a(ebi.Q);
+      this.o = $$0.a(ebi.R);
+      this.p = $$0.a(ebi.S);
+      this.q = $$0.a(ebi.T);
+      this.r = $$0.a(ebi.U);
+      this.s = $$0.a(ebi.V);
    }
 
-   @Nullable
-   public static ebr a(@Nullable ebr.d $$0) {
-      return $$0 == null ? null : new ebr($$0.a(), $$0.b(), $$0.c());
-   }
-
-   public ebr.d a() {
-      boolean $$0 = false;
-
-      for (double $$1 : this.r) {
-         if ($$1 != Double.MAX_VALUE) {
-            $$0 = true;
-            break;
-         }
-      }
-
-      return new ebr.d(this.o.ap(), this.o.aq() + 1, $$0 ? Optional.of(DoubleArrays.copy(this.r)) : Optional.empty());
-   }
-
-   @Nullable
-   public static ebr a(arq $$0, int $$1, int $$2) {
-      dwo $$3 = $$0.a($$1, $$2);
-      ebr $$4 = $$3.s();
-      if ($$4 != null && !$$3.m().d(dxp.f)) {
-         $$4.a($$3, a($$0, $$1, $$2, false));
-         return $$4;
-      } else {
-         return null;
-      }
-   }
-
-   public static Set<jl> a(dfg $$0, int $$1, int $$2, boolean $$3) {
-      Set<jl> $$4 = EnumSet.noneOf(jl.class);
-
-      for (jl $$5 : jl.values()) {
-         int $$6 = $$1 + $$5.b();
-         int $$7 = $$2 + $$5.c();
-         if ($$0.a($$6, $$7).r() == $$3) {
-            $$4.add($$5);
-         }
-      }
-
-      return $$4;
-   }
-
-   private void a(dwo $$0, Set<jl> $$1) {
-      if (!this.q) {
-         if ($$1.contains(jl.a) || $$1.contains(jl.g) || $$1.contains(jl.h)) {
-            this.a(a(0, 0), $$0, 0, 0);
+   public void a(ebn $$0, dfy $$1, kc<dfw> $$2, boolean $$3, ebw $$4, final dwz $$5, ebd $$6, ebq.o $$7) {
+      final jg.a $$8 = new jg.a();
+      final deb $$9 = $$5.f();
+      int $$10 = $$9.d();
+      int $$11 = $$9.e();
+      dww $$12 = new dww() {
+         @Override
+         public dvd a(int $$0) {
+            return $$5.a_($$8.q($$0));
          }
 
-         if ($$1.contains(jl.a)) {
-            for (int $$2 = 1; $$2 < i; $$2++) {
-               this.a(a($$2, 0), $$0, 4 * $$2, 0);
+         @Override
+         public void a(int $$0, dvd $$1) {
+            dex $$2 = $$5.y();
+            if ($$2.d($$0)) {
+               $$5.a($$8.q($$0), $$1, false);
+               if (!$$1.y().c()) {
+                  $$5.e($$8);
+               }
             }
          }
 
-         if ($$1.contains(jl.g)) {
-            for (int $$3 = 1; $$3 < i; $$3++) {
-               this.a(a(0, $$3), $$0, 0, 4 * $$3);
+         @Override
+         public String toString() {
+            return "ChunkBlockColumn " + $$9;
+         }
+      };
+      ebq.g $$13 = new ebq.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
+      ebq.u $$14 = $$7.apply($$13);
+      jg.a $$15 = new jg.a();
+
+      for (int $$16 = 0; $$16 < 16; $$16++) {
+         for (int $$17 = 0; $$17 < 16; $$17++) {
+            int $$18 = $$10 + $$16;
+            int $$19 = $$11 + $$17;
+            int $$20 = $$5.a(eaz.a.a, $$16, $$17) + 1;
+            $$8.p($$18).r($$19);
+            jp<dfw> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
+            if ($$21.a(dgd.B)) {
+               this.a($$12, $$18, $$19, $$20, $$5);
+            }
+
+            int $$22 = $$5.a(eaz.a.a, $$16, $$17) + 1;
+            $$13.a($$18, $$19);
+            int $$23 = 0;
+            int $$24 = Integer.MIN_VALUE;
+            int $$25 = Integer.MAX_VALUE;
+            int $$26 = $$5.I_();
+
+            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
+               dvd $$28 = $$12.a($$27);
+               if ($$28.l()) {
+                  $$23 = 0;
+                  $$24 = Integer.MIN_VALUE;
+               } else if (!$$28.y().c()) {
+                  if ($$24 == Integer.MIN_VALUE) {
+                     $$24 = $$27 + 1;
+                  }
+               } else {
+                  if ($$25 >= $$27) {
+                     $$25 = dyz.g;
+
+                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
+                        dvd $$30 = $$12.a($$29);
+                        if (!this.a($$30)) {
+                           $$25 = $$29 + 1;
+                           break;
+                        }
+                     }
+                  }
+
+                  $$23++;
+                  int $$31 = $$27 - $$25 + 1;
+                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
+                  if ($$28 == this.j) {
+                     dvd $$32 = $$14.tryApply($$18, $$27, $$19);
+                     if ($$32 != null) {
+                        $$12.a($$27, $$32);
+                     }
+                  }
+               }
+            }
+
+            if ($$21.a(dgd.W) || $$21.a(dgd.X)) {
+               this.a($$13.c(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
             }
          }
+      }
+   }
 
-         if ($$1.contains(jl.c)) {
-            for (int $$4 = 1; $$4 < i; $$4++) {
-               this.a(b(k, $$4), $$0, 15, 4 * $$4);
+   protected int a(int $$0, int $$1) {
+      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
+      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
+   }
+
+   protected double b(int $$0, int $$1) {
+      return this.v.a((double)$$0, 0.0, (double)$$1);
+   }
+
+   private boolean a(dvd $$0) {
+      return !$$0.l() && $$0.y().c();
+   }
+
+   public int a() {
+      return this.k;
+   }
+
+   @Deprecated
+   public Optional<dvd> a(ebq.o $$0, eda $$1, Function<jg, jp<dfw>> $$2, dwz $$3, ebd $$4, jg $$5, boolean $$6) {
+      ebq.g $$7 = new ebq.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().e(ly.aG), $$1);
+      ebq.u $$8 = $$0.apply($$7);
+      int $$9 = $$5.u();
+      int $$10 = $$5.v();
+      int $$11 = $$5.w();
+      $$7.a($$9, $$11);
+      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
+      dvd $$12 = $$8.tryApply($$9, $$10, $$11);
+      return Optional.ofNullable($$12);
+   }
+
+   private void a(dww $$0, int $$1, int $$2, int $$3, dex $$4) {
+      double $$5 = 0.2;
+      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
+      if (!($$6 <= 0.0)) {
+         double $$7 = 0.75;
+         double $$8 = 1.5;
+         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
+         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
+         int $$11 = azj.a($$10);
+         if ($$3 <= $$11) {
+            for (int $$12 = $$11; $$12 >= $$4.I_(); $$12--) {
+               dvd $$13 = $$0.a($$12);
+               if ($$13.a(this.j.b())) {
+                  break;
+               }
+
+               if ($$13.a(dia.G)) {
+                  return;
+               }
+            }
+
+            for (int $$14 = $$11; $$14 >= $$4.I_() && $$0.a($$14).l(); $$14--) {
+               $$0.a($$14, this.j);
             }
          }
+      }
+   }
 
-         if ($$1.contains(jl.e)) {
-            for (int $$5 = 0; $$5 < i; $$5++) {
-               this.a(b($$5, k), $$0, 4 * $$5, 15);
-            }
+   private void a(int $$0, dfw $$1, dww $$2, jg.a $$3, int $$4, int $$5, int $$6) {
+      double $$7 = 1.28;
+      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
+      if (!($$8 <= 1.8)) {
+         double $$9 = 1.17;
+         double $$10 = 1.5;
+         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
+         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
+         if ($$1.d($$3.d($$4, this.k, $$5), this.k)) {
+            $$12 -= 2.0;
          }
 
-         if ($$1.contains(jl.c) && $$1.contains(jl.b)) {
-            this.a(b(k, 0), $$0, 15, 0);
+         double $$13;
+         if ($$12 > 2.0) {
+            $$13 = (double)this.k - $$12 - 7.0;
+            $$12 += (double)this.k;
+         } else {
+            $$12 = 0.0;
+            $$13 = 0.0;
          }
 
-         if ($$1.contains(jl.c) && $$1.contains(jl.e) && $$1.contains(jl.d)) {
-            this.a(b(k, k), $$0, 15, 15);
-         }
+         double $$15 = $$12;
+         azr $$16 = this.t.a($$4, 0, $$5);
+         int $$17 = 2 + $$16.a(4);
+         int $$18 = this.k + 18 + $$16.a(10);
+         int $$19 = 0;
 
-         this.q = true;
-      }
-   }
-
-   private void a(int $$0, dwo $$1, int $$2, int $$3) {
-      if (this.r[$$0] == Double.MAX_VALUE) {
-         this.r[$$0] = (double)this.a($$1, $$2, $$3);
-      }
-
-      this.t[$$0] = this.a($$1, $$2, $$3, azf.a(this.r[$$0]));
-      this.s.set($$0, this.b($$1, $$2, $$3));
-   }
-
-   private int a(dwo $$0, int $$1, int $$2) {
-      int $$3;
-      if ($$0.b(eao.a.a)) {
-         $$3 = Math.min($$0.a(eao.a.a, $$1, $$2), this.o.an());
-      } else {
-         $$3 = this.o.an();
-      }
-
-      int $$5 = this.o.H_();
-      jf.a $$6 = new jf.a($$1, $$3, $$2);
-
-      while ($$6.v() > $$5) {
-         if (p.contains($$0.a_($$6).b())) {
-            return $$6.v();
-         }
-
-         $$6.c(jk.a);
-      }
-
-      return $$5;
-   }
-
-   private static double a(dwo $$0, jf.a $$1) {
-      return a($$0, (jf)$$1.c(jk.a)) ? 1.0 : -1.0;
-   }
-
-   private static double b(dwo $$0, jf.a $$1) {
-      double $$2 = 0.0;
-
-      for (int $$3 = 0; $$3 < 7; $$3++) {
-         $$2 += a($$0, $$1);
-      }
-
-      return $$2;
-   }
-
-   private double[] a(dwo $$0, int $$1, int $$2, int $$3) {
-      double[] $$4 = new double[this.c()];
-      Arrays.fill($$4, -1.0);
-      jf.a $$5 = new jf.a($$1, this.o.an() + 1, $$2);
-      double $$6 = b($$0, $$5);
-
-      for (int $$7 = $$4.length - 2; $$7 >= 0; $$7--) {
-         double $$8 = a($$0, $$5);
-         double $$9 = b($$0, $$5);
-         $$4[$$7] = ($$6 + $$8 + $$9) / 15.0;
-         $$6 = $$9;
-      }
-
-      int $$10 = this.a(azf.a($$3, 8));
-      if ($$10 >= 0 && $$10 < $$4.length - 1) {
-         double $$11 = ((double)$$3 + 0.5) % 8.0 / 8.0;
-         double $$12 = (1.0 - $$11) / $$11;
-         double $$13 = Math.max($$12, 1.0) * 0.25;
-         $$4[$$10 + 1] = -$$12 / $$13;
-         $$4[$$10] = 1.0 / $$13;
-      }
-
-      return $$4;
-   }
-
-   private List<jo<dfk>> b(dwo $$0, int $$1, int $$2) {
-      ObjectArrayList<jo<dfk>> $$3 = new ObjectArrayList(this.d());
-      $$3.size(this.d());
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         int $$5 = $$4 + jz.a(this.o.H_());
-         $$3.set($$4, $$0.getNoiseBiome(jz.a($$1), $$5, jz.a($$2)));
-      }
-
-      return $$3;
-   }
-
-   private static boolean a(dwo $$0, jf $$1) {
-      dus $$2 = $$0.a_($$1);
-      if ($$2.l()) {
-         return false;
-      } else if ($$2.a(awv.P)) {
-         return false;
-      } else if ($$2.a(awv.u)) {
-         return false;
-      } else {
-         return $$2.a(dho.eT) || $$2.a(dho.eU) ? false : !$$2.g($$0, $$1).c();
-      }
-   }
-
-   protected double a(int $$0, int $$1, int $$2) {
-      if ($$0 == k || $$2 == k) {
-         return this.r[b($$0, $$2)];
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.r[a($$0, $$2)];
-      }
-   }
-
-   private double a(@Nullable double[] $$0, int $$1) {
-      if ($$0 == null) {
-         return Double.MAX_VALUE;
-      } else {
-         int $$2 = this.a($$1);
-         return $$2 >= 0 && $$2 < $$0.length ? $$0[$$2] * 0.1 : Double.MAX_VALUE;
-      }
-   }
-
-   protected double b(int $$0, int $$1, int $$2) {
-      if ($$1 == this.f()) {
-         return 0.1;
-      } else if ($$0 == k || $$2 == k) {
-         return this.a(this.t[b($$0, $$2)], $$1);
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.a(this.t[a($$0, $$2)], $$1);
-      }
-   }
-
-   protected void a(int $$0, int $$1, int $$2, ebr.a $$3) {
-      if ($$1 >= jz.a(this.o.H_()) && $$1 <= jz.a(this.o.an())) {
-         int $$4 = $$1 - jz.a(this.o.H_());
-
-         for (int $$5 = 0; $$5 < this.s.size(); $$5++) {
-            if (this.s.get($$5) != null) {
-               jo<dfk> $$6 = this.s.get($$5).get($$4);
-               if ($$6 != null) {
-                  $$3.consume($$0 + b($$5), $$2 + c($$5), $$6);
+         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
+            if ($$2.a($$20).l() && $$20 < (int)$$15 && $$16.j() > 0.01
+               || $$2.a($$20).a(dia.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
+               if ($$19 <= $$17 && $$20 > $$18) {
+                  $$2.a($$20, i);
+                  $$19++;
+               } else {
+                  $$2.a($$20, h);
                }
             }
          }
       }
    }
 
-   protected void a(int $$0, int $$1, ebr.c $$2) {
-      for (int $$3 = 0; $$3 < this.r.length; $$3++) {
-         double $$4 = this.r[$$3];
-         if ($$4 != Double.MAX_VALUE) {
-            $$2.consume($$0 + b($$3), $$1 + c($$3), $$4);
+   private static dvd[] a(azr $$0) {
+      dvd[] $$1 = new dvd[192];
+      Arrays.fill($$1, c);
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$2 += $$0.a(5) + 1;
+         if ($$2 < $$1.length) {
+            $$1[$$2] = b;
+         }
+      }
+
+      a($$0, $$1, 1, d);
+      a($$0, $$1, 2, e);
+      a($$0, $$1, 1, f);
+      int $$3 = $$0.a(9, 15);
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
+         $$1[$$5] = a;
+         if ($$5 - 1 > 0 && $$0.h()) {
+            $$1[$$5 - 1] = g;
+         }
+
+         if ($$5 + 1 < $$1.length && $$0.h()) {
+            $$1[$$5 + 1] = g;
+         }
+
+         $$4++;
+      }
+
+      return $$1;
+   }
+
+   private static void a(azr $$0, dvd[] $$1, int $$2, dvd $$3) {
+      int $$4 = $$0.a(6, 15);
+
+      for (int $$5 = 0; $$5 < $$4; $$5++) {
+         int $$6 = $$2 + $$0.a(3);
+         int $$7 = $$0.a($$1.length);
+
+         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
+            $$1[$$7 + $$8] = $$3;
          }
       }
    }
 
-   protected void a(int $$0, int $$1, int $$2, int $$3, ebr.b $$4) {
-      int $$5 = this.e();
-      int $$6 = Math.max(0, $$2 - $$5);
-      int $$7 = Math.min(this.c(), $$3 - $$5);
-
-      for (int $$8 = 0; $$8 < this.t.length; $$8++) {
-         double[] $$9 = this.t[$$8];
-         if ($$9 != null) {
-            int $$10 = $$0 + b($$8);
-            int $$11 = $$1 + c($$8);
-
-            for (int $$12 = $$6; $$12 < $$7; $$12++) {
-               $$4.consume($$10, $$12 + $$5, $$11, $$9[$$12] * 0.1);
-            }
-         }
-      }
-   }
-
-   private int c() {
-      return this.o.ao() * 2;
-   }
-
-   private int d() {
-      return jz.d(this.o.ao());
-   }
-
-   private int e() {
-      return this.f() + 1;
-   }
-
-   private int f() {
-      return this.o.ap() * 2;
-   }
-
-   private int a(int $$0) {
-      return $$0 - this.e();
-   }
-
-   private static int a(int $$0, int $$1) {
-      return j - $$0 + $$1;
-   }
-
-   private static int b(int $$0, int $$1) {
-      return l + $$0 + k - $$1;
-   }
-
-   private static int b(int $$0) {
-      if ($$0 < l) {
-         return d(j - $$0);
-      } else {
-         int $$1 = $$0 - l;
-         return k - d(k - $$1);
-      }
-   }
-
-   private static int c(int $$0) {
-      if ($$0 < l) {
-         return d($$0 - j);
-      } else {
-         int $$1 = $$0 - l;
-         return k - d($$1 - k);
-      }
-   }
-
-   private static int d(int $$0) {
-      return $$0 & ~($$0 >> 31);
-   }
-
-   public del b() {
-      return this.o;
-   }
-
-   protected interface a {
-      void consume(int var1, int var2, jo<dfk> var3);
-   }
-
-   protected interface b {
-      void consume(int var1, int var2, int var3, double var4);
-   }
-
-   protected interface c {
-      void consume(int var1, int var2, double var3);
-   }
-
-   public static record d(int b, int c, Optional<double[]> d) {
-      private static final Codec<double[]> e = Codec.DOUBLE.listOf().xmap(Doubles::toArray, Doubles::asList);
-      public static final Codec<ebr.d> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.INT.fieldOf("min_section").forGetter(ebr.d::a),
-                     Codec.INT.fieldOf("max_section").forGetter(ebr.d::b),
-                     e.lenientOptionalFieldOf("heights").forGetter(ebr.d::c)
-                  )
-                  .apply($$0, ebr.d::new)
-         )
-         .validate(ebr.d::a);
-
-      private static DataResult<ebr.d> a(ebr.d $$0) {
-         return $$0.d.isPresent() && ((double[])$$0.d.get()).length != ebr.n
-            ? DataResult.error(() -> "heights has to be of length " + ebr.n)
-            : DataResult.success($$0);
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public Optional<double[]> c() {
-         return this.d;
-      }
+   protected dvd a(int $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
+      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
    }
 }

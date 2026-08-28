@@ -1,9 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface or {
-   void a(ale var1, dak<?> var2, @Nullable ag var3);
-
-   af.a a();
-
-   void b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface or {
 }

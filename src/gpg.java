@@ -1,20 +1,27 @@
-public class gpg extends gmj<cgv, gvc, fyu> {
-   private static final ale a = ale.b("textures/entity/bear/polarbear.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gpg(gno.a $$0) {
-      super($$0, new fyu($$0.a(gap.bS)), new fyu($$0.a(gap.bT)), 0.9F);
+public class gpg extends gmu<cgz, gvf, fxq> {
+   private static final Map<cgz.a, alh> a = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cgz.a.b, alh.b("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cgz.a.a, alh.b("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gpg(gnz.a $$0) {
+      super($$0, new fxq($$0.a(gba.bj)), new fxq($$0.a(gba.bk)), 0.7F);
+      this.a(new gsh(this, $$0.d()));
    }
 
-   public ale a(gvc $$0) {
-      return a;
+   public alh a(gvf $$0) {
+      return a.get($$0.a);
    }
 
-   public gvc c() {
-      return new gvc();
+   public gvf c() {
+      return new gvf();
    }
 
-   public void a(cgv $$0, gvc $$1, float $$2) {
+   public void a(cgz $$0, gvf $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
+      $$1.a = $$0.t();
    }
 }

@@ -1,41 +1,82 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class fuq extends fum<gcp.a> {
-   private static final xe C = xe.c("gui.abuseReport.name.title");
-   private static final xe D = xe.c("gui.abuseReport.name.comment_box_label");
-   @Nullable
-   private flg E;
+public class fuq extends fmf {
+   private static final fmm c = new fmm(alh.b("recipe_book/tab"), alh.b("recipe_book/tab_selected"));
+   private final fjh d;
+   private static final float e = 15.0F;
+   private float f;
 
-   private fuq(fqh $$0, gcu $$1, gcp.a $$2) {
-      super(C, $$0, $$1, $$2);
+   public fuq(fjh $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
    }
 
-   public fuq(fqh $$0, gcu $$1, UUID $$2, String $$3) {
-      this($$0, $$1, new gcp.a($$2, $$3, $$1.a().b()));
-   }
+   public void a(fil $$0, boolean $$1) {
+      fus.a $$2 = $$1 ? fus.a.b : fus.a.a;
 
-   public fuq(fqh $$0, gcu $$1, gcp $$2) {
-      this($$0, $$1, new gcp.a($$2, $$1.a().b()));
-   }
-
-   @Override
-   protected void D() {
-      xe $$0 = xe.b(this.A.e().a()).a(n.o);
-      this.z.a(new flv(xe.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.b().a(0, 8));
-      this.E = this.a(280, 9 * 8, $$0x -> {
-         this.A.a($$0x);
-         this.F();
-      });
-      this.z.a(fny.a(this.p, this.E, D, $$0x -> $$0x.e(12)));
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (super.b($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.E != null ? this.E.b($$0, $$1, $$2) : false;
+      for (fus $$4 : $$0.a(this.d)) {
+         for (dal<?> $$5 : $$4.a($$2)) {
+            if ($$0.d($$5)) {
+               this.f = 15.0F;
+               return;
+            }
+         }
       }
+   }
+
+   @Override
+   public void b(fkm $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.f > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.D() + 8), (float)(this.E() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.D() + 8)), (float)(-(this.E() + 12)), 0.0F);
+         }
+
+         alh $$5 = this.a.a(true, this.b);
+         int $$6 = this.D();
+         if (this.b) {
+            $$6 -= 2;
+         }
+
+         $$0.a(gig::B, $$5, $$6, this.E(), this.g, this.h);
+         this.a($$0);
+         if (this.f > 0.0F) {
+            $$0.c().b();
+            this.f -= $$3;
+         }
+      }
+   }
+
+   private void a(fkm $$0) {
+      List<cvx> $$1 = this.d.a();
+      int $$2 = this.b ? -2 : 0;
+      if ($$1.size() == 1) {
+         $$0.b($$1.get(0), this.D() + 9 + $$2, this.E() + 5);
+      } else if ($$1.size() == 2) {
+         $$0.b($$1.get(0), this.D() + 3 + $$2, this.E() + 5);
+         $$0.b($$1.get(1), this.D() + 14 + $$2, this.E() + 5);
+      }
+   }
+
+   public fjh b() {
+      return this.d;
+   }
+
+   public boolean a(fil $$0) {
+      List<fus> $$1 = $$0.a(this.d);
+      this.k = false;
+
+      for (fus $$2 : $$1) {
+         if ($$2.b() && $$2.d()) {
+            this.k = true;
+            break;
+         }
+      }
+
+      return this.k;
    }
 }

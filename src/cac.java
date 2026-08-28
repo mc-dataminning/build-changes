@@ -1,21 +1,35 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class cac {
-   public static <E extends cnb> bwg<E> a(Function<E, Optional<? extends bun>> $$0) {
-      return bzs.a(
-         (Function<bzs.b<E>, ? extends App<bzs.c<E>, bzv<E>>>)($$1 -> $$1.group($$1.c(cdq.ay), $$1.c(cdq.o), $$1.a(cdq.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bun> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::c).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public final class cac<F extends K1, Value> {
+   private final bvx<?> a;
+   private final cdz<Value> b;
+   private final App<F, Value> c;
+
+   public cac(bvx<?> $$0, cdz<Value> $$1, App<F, Value> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public App<F, Value> a() {
+      return this.c;
+   }
+
+   public void a(Value $$0) {
+      this.a.a(this.b, Optional.of($$0));
+   }
+
+   public void a(Optional<Value> $$0) {
+      this.a.a(this.b, $$0);
+   }
+
+   public void a(Value $$0, long $$1) {
+      this.a.a(this.b, $$0, $$1);
+   }
+
+   public void b() {
+      this.a.b(this.b);
    }
 }

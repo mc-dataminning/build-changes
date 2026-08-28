@@ -1,62 +1,95 @@
-public class fgo extends hdp {
-   private static final int a = 212;
-   private static final xe b = xe.c("mco.configure.world.name");
-   private static final xe c = xe.c("mco.configure.world.description");
-   private final ffx B;
-   private final fep C;
-   private fkx D;
-   private fkx E;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fgo(ffx $$0, fep $$1) {
-      super(xe.c("mco.configure.world.settings.title"));
+public class fgo extends hee {
+   private static final Logger a = LogUtils.getLogger();
+   private static final hef b = new hef(Duration.ofSeconds(5L));
+   private final List<fhy> c;
+   private final fqs B;
+   private final fos C = fos.d();
+   private volatile xh D;
+   @Nullable
+   private flo E;
+
+   public fgo(fqs $$0, fhy... $$1) {
+      super(fir.a);
       this.B = $$0;
-      this.C = $$1;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.D = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (fhy $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
+
+               $$1x.run();
+               if ($$1x.d()) {
+                  return;
+               }
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new ffs(a));
+         $$3.start();
+      }
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      if (this.E != null) {
+         b.a(this.m.ba(), this.E.z());
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
    public void aS_() {
-      int $$0 = this.n / 2 - 106;
-      String $$1 = this.C.e == fep.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      fko $$2 = fko.a(xe.c($$1), $$0x -> {
-         if (this.C.e == fep.c.b) {
-            this.m.a(fgj.a(this, xe.c("mco.configure.world.close.question.line1"), $$0xx -> this.B.b()));
-         } else {
-            this.B.b(false);
-         }
-      }).a(this.n / 2 - 53, g(0), 106, 20).a();
-      this.c($$2);
-      this.E = new fkx(this.m.h, $$0, g(4), 212, 20, xe.c("mco.configure.world.name"));
-      this.E.f(32);
-      this.E.a(this.C.b());
-      this.c(this.E);
-      this.D = new fkx(this.m.h, $$0, g(8), 212, 20, xe.c("mco.configure.world.description"));
-      this.D.f(32);
-      this.D.a(this.C.a());
-      this.c(this.D);
-      fko $$3 = this.c(fko.a(xe.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
-      this.E.b($$1x -> $$3.j = !bac.h($$1x));
-      this.c(fko.a(xd.e, $$0x -> this.d()).a(this.n / 2 + 2, g(12), 106, 20).a());
+      this.C.c().b();
+      this.E = new flo(this.p, this.D);
+      this.C.a(this.E, $$0 -> $$0.e(30));
+      this.C.a(fkz.a(xg.e, $$0 -> this.f()).a());
+      this.C.a($$1 -> {
+         fkx var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   protected void aH_() {
-      this.b(this.E);
+   protected void c() {
+      this.C.a();
+      fol.a(this.C, this.H());
    }
 
-   @Override
-   public void d() {
+   protected void f() {
+      for (fhy $$0 : this.c) {
+         $$0.b();
+      }
+
       this.m.a(this.B);
    }
 
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.a(this.p, b, this.n / 2 - 106, g(3), -1, false);
-      $$0.a(this.p, c, this.n / 2 - 106, g(7), -1, false);
-   }
+   public void a(xh $$0) {
+      if (this.E != null) {
+         this.E.b($$0);
+      }
 
-   public void g() {
-      this.B.a(this.E.a(), this.D.a());
+      this.D = $$0;
    }
 }

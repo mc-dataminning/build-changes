@@ -1,49 +1,122 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.IOException;
-import java.nio.file.Path;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class dyk implements AutoCloseable {
-   private final dya a;
-   private final DataFixer b;
-   private final bao c;
+public class dyk implements dzk<btz> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Entities";
+   private static final String c = "Position";
+   private final arm d;
+   private final dyv e;
+   private final LongSet f = new LongOpenHashSet();
+   private final bqo g;
 
-   public dyk(dyh $$0, Path $$1, DataFixer $$2, boolean $$3, bao $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new dya($$0, $$1, $$3);
+   public dyk(dyv $$0, arm $$1, Executor $$2) {
+      this.e = $$0;
+      this.d = $$1;
+      this.g = new bqo($$2, "entity-deserializer");
    }
 
-   public CompletableFuture<Optional<ug>> a(ddp $$0) {
-      return this.a.a($$0);
+   @Override
+   public CompletableFuture<dzf<btz>> a(deb $$0) {
+      if (this.f.contains($$0.a())) {
+         return CompletableFuture.completedFuture(b($$0));
+      } else {
+         CompletableFuture<Optional<uj>> $$1 = this.e.a($$0);
+         this.b($$1, $$0);
+         return $$1.thenApplyAsync($$1x -> {
+            if ($$1x.isEmpty()) {
+               this.f.add($$0.a());
+               return b($$0);
+            } else {
+               try {
+                  deb $$2 = a((uj)$$1x.get());
+                  if (!Objects.equals($$0, $$2)) {
+                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
+                     this.d.o().a($$2, $$0, this.e.a());
+                  }
+               } catch (Exception var6) {
+                  a.warn("Failed to parse chunk {} position info", $$0, var6);
+                  this.d.o().a(var6, this.e.a(), $$0);
+               }
+
+               uj $$4 = this.e.a((uj)$$1x.get(), -1);
+               up $$5 = $$4.c("Entities", 10);
+               List<btz> $$6 = bug.a($$5, this.d, buf.r).collect(ImmutableList.toImmutableList());
+               return new dzf<>($$0, $$6);
+            }
+         }, this.g::a_);
+      }
    }
 
-   public CompletableFuture<Void> a(ddp $$0, @Nullable ug $$1) {
-      return this.a.a($$0, $$1);
+   private static deb a(uj $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new deb($$1[0], $$1[1]);
    }
 
-   public ug a(ug $$0, int $$1) {
-      int $$2 = uv.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
+   private static void a(uj $$0, deb $$1) {
+      $$0.a("Position", new un(new int[]{$$1.e, $$1.f}));
    }
 
-   public Dynamic<vd> a(Dynamic<vd> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
+   private static dzf<btz> b(deb $$0) {
+      return new dzf<>($$0, ImmutableList.of());
    }
 
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
+   @Override
+   public void a(dzf<btz> $$0) {
+      deb $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.f.add($$1.a())) {
+            this.a(this.e.a($$1, null), $$1);
+         }
+      } else {
+         up $$2 = new up();
+         $$0.b().forEach($$1x -> {
+            uj $$2x = new uj();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         uj $$3 = uy.e(new uj());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.a(this.e.a($$1, $$3), $$1);
+         this.f.remove($$1.a());
+      }
+   }
+
+   private void a(CompletableFuture<?> $$0, deb $$1) {
+      $$0.exceptionally($$1x -> {
+         a.error("Failed to store entity chunk {}", $$1, $$1x);
+         this.d.o().b($$1x, this.e.a(), $$1);
+         return null;
+      });
+   }
+
+   private void b(CompletableFuture<?> $$0, deb $$1) {
+      $$0.exceptionally($$1x -> {
+         a.error("Failed to load entity chunk {}", $$1, $$1x);
+         this.d.o().a($$1x, this.e.a(), $$1);
+         return null;
+      });
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.e.a($$0).join();
+      this.g.a();
    }
 
    @Override
    public void close() throws IOException {
-      this.a.close();
-   }
-
-   public dyh a() {
-      return this.a.a();
+      this.e.close();
    }
 }

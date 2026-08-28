@@ -1,195 +1,93 @@
+import java.util.UUID;
+
 public class agq {
-   public static final wm.a<agr, wp> a = zq.a(
-      vz.b,
-      $$0 -> $$0.a(agp.bg, agt.a)
-            .a(agp.bh, agu.a)
-            .a(agp.bi, aid.a)
-            .a(agp.bj, agv.a)
-            .a(agp.bk, agw.a)
-            .a(agp.bl, agx.a)
-            .a(agp.bm, agy.a)
-            .a(agp.bn, agz.a)
-            .a(agp.bo, aha.a)
-            .a(agp.bp, ahb.a)
-            .a(agp.bq, ahc.a)
-            .a(agp.br, ahd.b)
-            .a(aad.l, aaf.a)
-            .a(agp.bs, ahe.a)
-            .a(agp.bt, ahf.b)
-            .a(agp.bu, ahg.a)
-            .a(agp.bv, ahh.a)
-            .a(agp.bw, ahi.a)
-            .a(agp.bx, ahj.a)
-            .a(abw.b, aby.a)
-            .a(aad.m, aag.a)
-            .a(agp.by, ahk.a)
-            .a(agp.bz, ahl.a)
-            .a(agp.bA, ahm.a)
-            .a(agp.bB, ahn.a)
-            .a(agp.bC, aho.a)
-            .a(aad.n, aah.a)
-            .a(agp.bD, ahp.a)
-            .a(agp.bE, ahq.a.j)
-            .a(agp.bF, ahq.b.j)
-            .a(agp.bG, ahq.c.j)
-            .a(agp.bH, ahq.d.j)
-            .a(agp.bI, ahr.a)
-            .a(agp.bJ, ahs.a)
-            .a(agp.bK, aht.a)
-            .a(ajv.b, ajx.a)
-            .a(agp.bL, ahu.a)
-            .a(agp.bM, ahv.a)
-            .a(agp.bN, ahw.a)
-            .a(agp.bO, ahx.a)
-            .a(agp.bP, ahy.a)
-            .a(aad.o, aai.a)
-            .a(agp.bQ, ahz.a)
-            .a(agp.bR, aia.a)
-            .a(agp.bS, aib.a)
-            .a(aad.p, aaj.a)
-            .a(agp.bT, aic.a)
-            .a(agp.bU, aie.a)
-            .a(agp.bV, aif.a)
-            .a(agp.bW, aig.a)
-            .a(agp.bX, aih.a)
-            .a(agp.bY, aii.a)
-            .a(agp.bZ, aij.a)
-            .a(agp.ca, aik.a)
-            .a(agp.cb, ail.a)
-            .a(agp.cc, aim.a)
-            .a(agp.cd, ain.a)
-            .a(agp.ce, aio.a)
-            .a(agp.cf, aip.a)
-            .a(agp.cg, aiq.a)
-   );
-   public static final wm.a<aca, wp> b = zq.b(
-      vz.b,
-      $$0 -> $$0.a(agp.a, acm::new, new acl())
-            .a(agp.c, acb.a)
-            .a(agp.d, acc.a)
-            .a(agp.e, acd.a)
-            .a(agp.f, ace.a)
-            .a(agp.g, acf.a)
-            .a(agp.h, acg.a)
-            .a(agp.i, ach.a)
-            .a(agp.j, aci.a)
-            .a(agp.k, acj.a)
-            .a(agp.l, ack.a)
-            .a(agp.m, acn.a)
-            .a(agp.n, aco.a)
-            .a(agp.o, acp.b)
-            .a(agp.p, acq.a)
-            .a(agp.q, acr.a)
-            .a(agp.r, acs.a)
-            .a(agp.s, act.a)
-            .a(agp.t, acu.a)
-            .a(agp.u, acv.a)
-            .a(agp.v, acw.a)
-            .a(agp.w, acx.a)
-            .a(abw.a, abv.a)
-            .a(agp.x, acy.a)
-            .a(agp.y, acz.a)
-            .a(aad.a, zs.a)
-            .a(agp.z, ada.a)
-            .a(agp.A, adb.a)
-            .a(agp.B, adc.a)
-            .a(aad.c, zu.a)
-            .a(agp.C, add.a)
-            .a(agp.D, ade.a)
-            .a(agp.E, adf.a)
-            .a(agp.F, adg.a)
-            .a(agp.G, adh.a)
-            .a(agp.H, adi.a)
-            .a(agp.I, adj.a)
-            .a(agp.J, adk.a)
-            .a(aad.d, zv.a)
-            .a(agp.K, adm.a)
-            .a(agp.L, adn.a)
-            .a(agp.M, ado.a)
-            .a(agp.N, adp.a)
-            .a(agp.O, adr.a)
-            .a(agp.P, ads.a)
-            .a(agp.Q, adt.a)
-            .a(agp.R, adu.a.j)
-            .a(agp.S, adu.b.j)
-            .a(agp.T, adv.a)
-            .a(agp.U, adu.c.j)
-            .a(agp.V, adw.a)
-            .a(agp.W, adx.a)
-            .a(agp.X, ady.a)
-            .a(agp.Y, adz.a)
-            .a(aad.e, zw.a)
-            .a(ajv.a, aju.a)
-            .a(agp.Z, aea.a)
-            .a(agp.aa, aeb.a)
-            .a(agp.ab, aec.a)
-            .a(agp.ac, aed.a)
-            .a(agp.ad, aee.b)
-            .a(agp.ae, aef.a)
-            .a(agp.af, aeg.a)
-            .a(agp.ag, aeh.a)
-            .a(agp.ah, aei.a)
-            .a(agp.ai, aej.a)
-            .a(agp.aj, ael.a)
-            .a(agp.ak, aem.a)
-            .a(agp.al, aen.a)
-            .a(agp.ch, aeo.a)
-            .a(aad.f, zx.a)
-            .a(aad.g, zy.b)
-            .a(agp.am, aep.a)
-            .a(agp.an, aeq.a)
-            .a(agp.ao, aer.a)
-            .a(agp.ap, aes.a)
-            .a(agp.aq, aet.a)
-            .a(agp.ar, aeu.a)
-            .a(agp.as, aev.a)
-            .a(agp.at, aew.a)
-            .a(agp.au, aex.a)
-            .a(agp.av, aey.a)
-            .a(agp.aw, aez.a)
-            .a(agp.ax, afa.a)
-            .a(agp.ay, afb.a)
-            .a(agp.az, afc.a)
-            .a(agp.ck, afd.a)
-            .a(agp.aA, afe.a)
-            .a(agp.aB, aff.a)
-            .a(agp.aC, afg.a)
-            .a(agp.aD, afh.a)
-            .a(agp.aE, afi.a)
-            .a(agp.aF, afj.a)
-            .a(agp.aG, afk.a)
-            .a(agp.aH, afl.a)
-            .a(agp.aI, afm.a)
-            .a(agp.aJ, afn.a)
-            .a(agp.aK, afo.a)
-            .a(agp.cl, afp.a)
-            .a(agp.aL, afq.a)
-            .a(agp.aM, afr.a)
-            .a(agp.aN, afs.a)
-            .a(agp.aO, aft.a)
-            .a(agp.aP, afu.a)
-            .a(agp.aQ, afv.a)
-            .a(agp.aR, afw.a)
-            .a(agp.aS, afx.a)
-            .a(agp.aT, afy.a)
-            .a(agp.aU, afz.b)
-            .a(agp.aV, aga.a)
-            .a(aad.i, aaa.a)
-            .a(agp.aW, agb.a)
-            .a(agp.aX, agc.a)
-            .a(agp.aY, agd.a)
-            .a(agp.aZ, age.a)
-            .a(agp.ba, agf.a)
-            .a(agp.ci, agg.a)
-            .a(agp.cj, agh.a)
-            .a(aad.j, aab.a)
-            .a(agp.bb, agi.a)
-            .a(agp.bc, agj.a)
-            .a(agp.bd, agk.a)
-            .a(agp.be, agl.a)
-            .a(aad.k, aac.a)
-            .a(agp.bf, aek.a)
-            .a(aad.b, zt.a)
-            .a(aad.h, zz.a)
-   );
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
+
+   public static String a(btz $$0) {
+      if ($$0 instanceof coh) {
+         return $$0.al().getString();
+      } else {
+         xh $$1 = $$0.an();
+         return $$1 != null ? $$1.getString() : a($$0.cH());
+      }
+   }
+
+   public static String a(UUID $$0) {
+      azr $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
+   }
+
+   private static String a(azr $$0, String[] $$1) {
+      return ad.a($$1, $$0);
+   }
+
+   private static azr b(UUID $$0) {
+      return azr.a((long)($$0.hashCode() >> 2));
+   }
 }

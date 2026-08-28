@@ -1,44 +1,16 @@
-import java.util.function.BiFunction;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class ach implements zl<aca> {
-   public static final zc<wp, ach> a = zc.a(jf.b, ach::b, za.a(lw.h), ach::e, za.q, ach::f, ach::new);
-   private final jf b;
-   private final drx<?> c;
-   private final ug d;
-
-   public static ach a(drv $$0, BiFunction<drv, kc, ug> $$1) {
-      kc $$2 = $$0.i().G_();
-      return new ach($$0.aC_(), $$0.q(), $$1.apply($$0, $$2));
-   }
-
-   public static ach a(drv $$0) {
-      return a($$0, drv::a);
-   }
-
-   private ach(jf $$0, drx<?> $$1, ug $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
+public record ach(Object2IntMap<awr<?>> b) implements zo<acd> {
+   private static final zf<ws, Object2IntMap<awr<?>>> c = zd.a(Object2IntOpenHashMap::new, awr.a, zd.h);
+   public static final zf<ws, ach> a = c.a(ach::new, ach::b);
 
    @Override
-   public zn<ach> a() {
-      return agp.i;
+   public zq<ach> a() {
+      return ags.f;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
-   }
-
-   public jf b() {
-      return this.b;
-   }
-
-   public drx<?> e() {
-      return this.c;
-   }
-
-   public ug f() {
-      return this.d;
    }
 }

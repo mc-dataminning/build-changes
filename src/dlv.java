@@ -1,95 +1,51 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dlv extends dgf {
-   public static final MapCodec<dlv> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dfk.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), kl.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
-            .apply($$0, dlv::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dvs g = dvi.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final dfk.c j;
+public class dlv extends dln {
+   public static final MapCodec<dlv> e = b(dlv::new);
 
    @Override
-   public MapCodec<dlv> a() {
-      return d;
+   public MapCodec<? extends dlv> a() {
+      return e;
    }
 
-   public dlv(dfk.c $$0, kl.a $$1, dur.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.l(this.F.b().b(g, Integer.valueOf(1)));
+   public dlv(dvc.d $$0) {
+      super($$0);
+   }
+
+   public static dvd b() {
+      return dia.G.m();
    }
 
    @Override
-   public boolean d(dus $$0) {
-      return $$0.c(g) == 3;
-   }
+   public void a(dev $$0, coh $$1, jg $$2, dvd $$3, @Nullable dsg $$4, cvx $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!dbo.a($$5, axc.s)) {
+         if ($$0.D_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
 
-   @Override
-   protected boolean a(eqs $$0) {
-      return $$0 == equ.c && this.j == dfk.c.b;
-   }
-
-   @Override
-   protected double b(dus $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   protected void a(dus $$0, dej $$1, jf $$2, btr $$3) {
-      if (!$$1.B && $$3.bV() && this.a($$0, $$2, $$3)) {
-         $$3.aF();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
+         dvd $$6 = $$0.a_($$2.e());
+         if ($$6.d() || $$6.n()) {
+            $$0.b($$2, b());
          }
       }
    }
 
-   private void e(dus $$0, dej $$1, jf $$2) {
-      if (this.j == dfk.c.c) {
-         d(dho.fu.n().b(g, $$0.c(g)), $$1, $$2);
+   @Override
+   protected void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if ($$1.a(dfe.b, $$2) > 11 - $$0.g()) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   protected void e(dvd $$0, dev $$1, jg $$2) {
+      if ($$1.D_().i()) {
+         $$1.a($$2, false);
       } else {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public static void d(dus $$0, dej $$1, jf $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dus $$4 = $$3 == 0 ? dho.ft.n() : $$0.b(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dzp.c, $$2, dzp.a.a($$4));
-   }
-
-   @Override
-   public void a(dus $$0, dej $$1, jf $$2, dfk.c $$3) {
-      if (dih.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dus $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dzp.c, $$2, dzp.a.a($$4));
-      }
-   }
-
-   @Override
-   protected int a(dus $$0, dej $$1, jf $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dus $$0, dej $$1, jf $$2, eqs $$3) {
-      if (!this.d($$0)) {
-         dus $$4 = $$0.b(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dzp.c, $$2, dzp.a.a($$4));
-         $$1.c(1047, $$2, 0);
+         $$1.b($$2, b());
+         $$1.b($$2, b().b(), null);
       }
    }
 }

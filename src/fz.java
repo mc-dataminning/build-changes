@@ -3,215 +3,150 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.ArrayList;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.datafixers.util.Either;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
-import net.minecraft.server.MinecraftServer;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
 
-public class fz implements ArgumentType<fz.b> {
-   public static final SuggestionProvider<eu> a = ($$0, $$1) -> {
-      StringReader $$2 = new StringReader($$1.getInput());
-      $$2.setCursor($$1.getStart());
-      hk $$3 = new hk($$2, hk.a((eu)$$0.getSource()));
+public class fz<T> implements ArgumentType<fz.c<T>> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
+   final alg<? extends kc<T>> b;
 
-      try {
-         $$3.t();
-      } catch (CommandSyntaxException var5) {
-      }
-
-      return $$3.a($$1, $$1x -> ez.b(((eu)$$0.getSource()).q(), $$1x));
-   };
-   private static final Collection<String> b = Arrays.asList("Player", "0123", "*", "@e");
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xe.c("argument.scoreHolder.empty"));
-   final boolean d;
-
-   public fz(boolean $$0) {
-      this.d = $$0;
+   public fz(alg<? extends kc<T>> $$0) {
+      this.b = $$0;
    }
 
-   public static faa a(CommandContext<eu> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1).iterator().next();
+   public static <T> fz<T> a(alg<? extends kc<T>> $$0) {
+      return new fz<>($$0);
    }
 
-   public static Collection<faa> b(CommandContext<eu> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, Collections::emptyList);
+   public static <T> fz.c<T> a(CommandContext<ev> $$0, String $$1, alg<kc<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      fz.c<?> $$4 = (fz.c<?>)$$0.getArgument($$1, fz.c.class);
+      Optional<fz.c<T>> $$5 = $$4.a($$2);
+      return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   public static Collection<faa> c(CommandContext<eu> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, ((eu)$$0.getSource()).l().aJ()::e);
-   }
+   public fz.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '#') {
+         int $$1 = $$0.getCursor();
 
-   public static Collection<faa> a(CommandContext<eu> $$0, String $$1, Supplier<Collection<faa>> $$2) throws CommandSyntaxException {
-      Collection<faa> $$3 = ((fz.b)$$0.getArgument($$1, fz.b.class)).getNames((eu)$$0.getSource(), $$2);
-      if ($$3.isEmpty()) {
-         throw fh.d.create();
-      } else {
-         return $$3;
-      }
-   }
-
-   public static fz a() {
-      return new fz(false);
-   }
-
-   public static fz b() {
-      return new fz(true);
-   }
-
-   public fz.b a(StringReader $$0) throws CommandSyntaxException {
-      return this.a($$0, true);
-   }
-
-   public <S> fz.b a(StringReader $$0, S $$1) throws CommandSyntaxException {
-      return this.a($$0, hk.a($$1));
-   }
-
-   private fz.b a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '@') {
-         hk $$2 = new hk($$0, $$1);
-         hj $$3 = $$2.t();
-         if (!this.d && $$3.a() > 1) {
-            throw fh.a.createWithContext($$0);
-         } else {
-            return new fz.c($$3);
-         }
-      } else {
-         int $$4 = $$0.getCursor();
-
-         while ($$0.canRead() && $$0.peek() != ' ') {
+         try {
             $$0.skip();
+            alh $$2 = alh.a($$0);
+            return new fz.d<>(axp.a(this.b, $$2));
+         } catch (CommandSyntaxException var4) {
+            $$0.setCursor($$1);
+            throw var4;
          }
-
-         String $$5 = $$0.getString().substring($$4, $$0.getCursor());
-         if ($$5.equals("*")) {
-            return ($$0x, $$1x) -> {
-               Collection<faa> $$2 = (Collection<faa>)$$1x.get();
-               if ($$2.isEmpty()) {
-                  throw c.create();
-               } else {
-                  return $$2;
-               }
-            };
-         } else {
-            List<faa> $$6 = List.of(faa.c($$5));
-            if ($$5.startsWith("#")) {
-               return ($$1x, $$2) -> $$6;
-            } else {
-               try {
-                  UUID $$7 = UUID.fromString($$5);
-                  return ($$2, $$3) -> {
-                     MinecraftServer $$4x = $$2.l();
-                     faa $$5x = null;
-                     List<faa> $$6x = null;
-
-                     for (arj $$7x : $$4x.L()) {
-                        btr $$8 = $$7x.a($$7);
-                        if ($$8 != null) {
-                           if ($$5x == null) {
-                              $$5x = $$8;
-                           } else {
-                              if ($$6x == null) {
-                                 $$6x = new ArrayList<>();
-                                 $$6x.add($$5x);
-                              }
-
-                              $$6x.add($$8);
-                           }
-                        }
-                     }
-
-                     if ($$6x != null) {
-                        return $$6x;
-                     } else {
-                        return $$5x != null ? List.of($$5x) : $$6;
-                     }
-                  };
-               } catch (IllegalArgumentException var7) {
-                  return ($$2, $$3) -> {
-                     MinecraftServer $$4x = $$2.l();
-                     ark $$5x = $$4x.ag().a($$5);
-                     return $$5x != null ? List.of($$5x) : $$6;
-                  };
-               }
-            }
-         }
+      } else {
+         alh $$4 = alh.a($$0);
+         return new fz.b<>(alg.a(this.b, $$4));
       }
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return $$0.getSource() instanceof fa $$2 ? $$2.a(this.b, fa.a.c, $$1, $$0) : $$1.buildFuture();
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 
-   public static class a implements iq<fz, fz.a.a> {
-      private static final byte a = 1;
-
-      public void a(fz.a.a $$0, wb $$1) {
-         int $$2 = 0;
-         if ($$0.b) {
-            $$2 |= 1;
-         }
-
-         $$1.l($$2);
+   public static class a<T> implements ir<fz<T>, fz.a<T>.a> {
+      public void a(fz.a<T>.a $$0, we $$1) {
+         $$1.b($$0.b);
       }
 
-      public fz.a.a a(wb $$0) {
-         byte $$1 = $$0.readByte();
-         boolean $$2 = ($$1 & 1) != 0;
-         return new fz.a.a($$2);
+      public fz.a<T>.a a(we $$0) {
+         return new fz.a.a($$0.r());
       }
 
-      public void a(fz.a.a $$0, JsonObject $$1) {
-         $$1.addProperty("amount", $$0.b ? "multiple" : "single");
+      public void a(fz.a<T>.a $$0, JsonObject $$1) {
+         $$1.addProperty("registry", $$0.b.a().toString());
       }
 
-      public fz.a.a a(fz $$0) {
-         return new fz.a.a($$0.d);
+      public fz.a<T>.a a(fz<T> $$0) {
+         return new fz.a.a($$0.b);
       }
 
-      public final class a implements iq.a<fz> {
-         final boolean b;
+      public final class a implements ir.a<fz<T>> {
+         final alg<? extends kc<T>> b;
 
-         a(final boolean $$1) {
+         a(final alg<? extends kc<T>> $$1) {
             this.b = $$1;
          }
 
-         public fz a(eq $$0) {
-            return new fz(this.b);
+         public fz<T> a(er $$0) {
+            return new fz<>(this.b);
          }
 
          @Override
-         public iq<fz, ?> a() {
+         public ir<fz<T>, ?> a() {
             return a.this;
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      Collection<faa> getNames(eu var1, Supplier<Collection<faa>> var2) throws CommandSyntaxException;
-   }
-
-   public static class c implements fz.b {
-      private final hj a;
-
-      public c(hj $$0) {
-         this.a = $$0;
+   static record b<T>(alg<T> a) implements fz.c<T> {
+      @Override
+      public Either<alg<T>, axp<T>> a() {
+         return Either.left(this.a);
       }
 
       @Override
-      public Collection<faa> getNames(eu $$0, Supplier<Collection<faa>> $$1) throws CommandSyntaxException {
-         List<? extends btr> $$2 = this.a.b($$0);
-         if ($$2.isEmpty()) {
-            throw fh.d.create();
-         } else {
-            return List.copyOf($$2);
-         }
+      public <E> Optional<fz.c<E>> a(alg<? extends kc<E>> $$0) {
+         return this.a.d($$0).map(fz.b::new);
+      }
+
+      public boolean a(jp<T> $$0) {
+         return $$0.a(this.a);
+      }
+
+      @Override
+      public String b() {
+         return this.a.a().toString();
+      }
+
+      public alg<T> c() {
+         return this.a;
+      }
+   }
+
+   public interface c<T> extends Predicate<jp<T>> {
+      Either<alg<T>, axp<T>> a();
+
+      <E> Optional<fz.c<E>> a(alg<? extends kc<E>> var1);
+
+      String b();
+   }
+
+   static record d<T>(axp<T> a) implements fz.c<T> {
+      @Override
+      public Either<alg<T>, axp<T>> a() {
+         return Either.right(this.a);
+      }
+
+      @Override
+      public <E> Optional<fz.c<E>> a(alg<? extends kc<E>> $$0) {
+         return this.a.d($$0).map(fz.d::new);
+      }
+
+      public boolean a(jp<T> $$0) {
+         return $$0.a(this.a);
+      }
+
+      @Override
+      public String b() {
+         return "#" + this.a.b();
+      }
+
+      public axp<T> c() {
+         return this.a;
       }
    }
 }

@@ -1,57 +1,53 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class eeq extends edu<egh> {
-   public eeq(Codec<egh> $$0) {
+public class eeq extends edh {
+   public eeq(Codec<egl> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(edw<egh> $$0) {
-      dek $$1 = $$0.b();
-      jf $$2 = $$0.e();
-      azn $$3 = $$0.d();
-      egh $$4 = $$0.f();
-      Optional<jk> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         jf $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && edp.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         edp.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+   protected void a(dew $$0, azr $$1, jg $$2, int $$3, jg.a $$4, egl $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-   private static Optional<jk> a(dek $$0, jf $$1, azn $$2) {
-      boolean $$3 = edp.b($$0.a_($$1.d()));
-      boolean $$4 = edp.b($$0.a_($$1.e()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? jk.a : jk.b);
-      } else if ($$3) {
-         return Optional.of(jk.a);
-      } else {
-         return $$4 ? Optional.of(jk.b) : Optional.empty();
-      }
-   }
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  if (!$$0.a_($$4).s()) {
+                     dvd $$17 = $$5.b.a($$1, $$2);
+                     if ($$17.b(dlu.e) && $$17.b(dlu.c) && $$17.b(dlu.b) && $$17.b(dlu.d) && $$17.b(dlu.f)) {
+                        $$17 = $$17.b(dlu.f, Boolean.valueOf($$6 >= $$3 - 1))
+                           .b(dlu.e, Boolean.valueOf($$9 < -$$8))
+                           .b(dlu.c, Boolean.valueOf($$9 > $$8))
+                           .b(dlu.b, Boolean.valueOf($$10 < -$$8))
+                           .b(dlu.d, Boolean.valueOf($$10 > $$8));
+                     }
 
-   private static void a(dek $$0, azn $$1, jf $$2, egh $$3) {
-      edp.c($$0, $$2);
-
-      for (jk $$4 : jk.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            jf $$5 = $$2.a($$4);
-            edp.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               jf $$6 = $$5.a(jk.b($$1));
-               edp.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  jf $$7 = $$6.a(jk.b($$1));
-                  edp.c($$0, $$7);
+                     this.a($$0, $$4, $$17);
+                  }
                }
             }
          }
       }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
+      }
+
+      return $$4;
    }
 }

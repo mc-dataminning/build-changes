@@ -1,7 +1,7 @@
 import jdk.jfr.consumer.RecordedEvent;
 
-public record bpg(String a, String b, String c) {
+public record bpg(double a, double b, double c) {
    public static bpg a(RecordedEvent $$0) {
-      return new bpg($$0.getString("packetDirection"), $$0.getString("protocolId"), $$0.getString("packetId"));
+      return new bpg((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
    }
 }

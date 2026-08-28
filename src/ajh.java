@@ -1,14 +1,29 @@
-public interface ajh extends abx {
-   @Override
-   default vz b() {
-      return vz.d;
+public class ajh implements zo<ajc> {
+   public static final zf<we, ajh> a = zo.a(ajh::a, ajh::new);
+   private final xh b;
+
+   public ajh(xh $$0) {
+      this.b = $$0;
    }
 
-   void a(ajj var1);
+   private ajh(we $$0) {
+      this.b = xh.a.b($$0.d(262144), kd.b);
+   }
 
-   void a(ajk var1);
+   private void a(we $$0) {
+      $$0.a(xh.a.a(this.b, kd.b));
+   }
 
-   void a(aji var1);
+   @Override
+   public zq<ajh> a() {
+      return aji.e;
+   }
 
-   void a(ajl var1);
+   public void a(ajc $$0) {
+      $$0.a(this);
+   }
+
+   public xh b() {
+      return this.b;
+   }
 }

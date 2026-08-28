@@ -1,33 +1,31 @@
-public class gpc extends gou<clf, guy, fyn> {
-   private static final ale a = ale.b("textures/entity/phantom.png");
+public class gpc extends gny<cpa, gvc> {
+   private static final alh a = alh.b("textures/entity/llama/spit.png");
+   private final fys b;
 
-   public gpc(gno.a $$0) {
-      super($$0, new fyn($$0.a(gap.bs)), 0.75F);
-      this.a(new grz(this));
+   public gpc(gnz.a $$0) {
+      super($$0);
+      this.b = new fys($$0.a(gba.bg));
    }
 
-   public ale a(guy $$0) {
-      return a;
-   }
-
-   public guy c() {
-      return new guy();
-   }
-
-   public void a(clf $$0, guy $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.t() + $$1.p;
-      $$1.b = $$0.q();
-   }
-
-   protected void a(guy $$0, fdi $$1) {
-      float $$2 = 1.0F + 0.15F * (float)$$0.b;
-      $$1.b($$2, $$2, $$2);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(guy $$0, fdi $$1, float $$2, float $$3) {
+   public void a(gvc $$0, fdt $$1, ghw $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.b.a($$0);
+      fdx $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, gxj.d);
+      $$1.b();
       super.a($$0, $$1, $$2, $$3);
-      $$1.a(a.b.rotationDegrees($$0.V));
+   }
+
+   public gvc a() {
+      return new gvc();
+   }
+
+   public void a(cpa $$0, gvc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.j($$2);
+      $$1.a = $$0.k($$2);
    }
 }

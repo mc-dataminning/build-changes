@@ -1,28 +1,48 @@
-public class esx {
-   public static final esx a = new esx("advancements");
-   public static final esx b = new esx("stats");
-   public static final esx c = new esx("playerdata");
-   public static final esx d = new esx("players");
-   public static final esx e = new esx("level.dat");
-   public static final esx f = new esx("level.dat_old");
-   public static final esx g = new esx("icon.png");
-   public static final esx h = new esx("session.lock");
-   public static final esx i = new esx("generated");
-   public static final esx j = new esx("datapacks");
-   public static final esx k = new esx("resources.zip");
-   public static final esx l = new esx(".");
-   private final String m;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-   private esx(String $$0) {
-      this.m = $$0;
+public class esx extends esq {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
+
+   public static esq.a<esx> a() {
+      return new esq.a<>(esx::new, esx::b, bas.k);
    }
 
-   public String a() {
-      return this.m;
+   public esx() {
+      this.b.defaultReturnValue(-1);
+   }
+
+   public static esx b(uj $$0, jr.a $$1) {
+      esx $$2 = new esx();
+
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public String toString() {
-      return "/" + this.m;
+   public uj a(uj $$0, jr.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
+
+      return $$0;
+   }
+
+   public esw b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new esw($$0);
    }
 }

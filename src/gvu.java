@@ -1,7 +1,7 @@
-import javax.annotation.Nullable;
-
-public class gvu extends gtq {
+public class gvu extends gva {
    public float a;
-   @Nullable
-   public dus b;
+   public float b;
+   public boolean c;
+   public cuu d = cuu.a;
+   public int e;
 }

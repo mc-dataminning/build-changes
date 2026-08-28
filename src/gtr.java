@@ -1,8 +1,7 @@
-public class gtr extends guo {
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public float e;
-   public float f;
-   public float g;
+public class gtr extends gva {
+   public final btr a = new btr();
+   public final btr b = new btr();
+   public final btr c = new btr();
+   public final btr d = new btr();
+   public final btr e = new btr();
 }

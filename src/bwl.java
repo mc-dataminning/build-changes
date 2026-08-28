@@ -1,37 +1,29 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bwl extends bwf<bun> {
-   private final cdq<Integer> c;
-
-   public bwl(cdq<Integer> $$0) {
-      super(ImmutableMap.of($$0, cdr.a));
-      this.c = $$0;
+public class bwl {
+   public static bxz<btq> a(brj $$0, float $$1) {
+      return a($$0, $$1x -> $$1);
    }
 
-   private Optional<Integer> b(bun $$0) {
-      return $$0.dY().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(arj $$0, bun $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(arj $$0, bun $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dY().a(this.c, $$3.get() - 1);
-   }
-
-   @Override
-   protected void b(arj $$0, bun $$1, long $$2) {
-      $$1.dY().b(this.c);
+   public static bxz<btq> a(brj $$0, Function<buv, Float> $$1) {
+      return cab.a(
+         (Function<cab.b<btq>, ? extends App<cab.c<btq>, cae<btq>>>)($$2 -> $$2.group($$2.b(cdz.K), $$2.a(cdz.n), $$2.c(cdz.m))
+               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     if (!$$7.p_()) {
+                        return false;
+                     } else {
+                        btq $$9 = $$2.b($$3);
+                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
+                           cec $$10 = new cec(new bwz($$9, false), $$1.apply($$7), $$0.a() - 1);
+                           $$4.a(new bwz($$9, true));
+                           $$5.a($$10);
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

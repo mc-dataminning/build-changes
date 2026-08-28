@@ -1,27 +1,11 @@
-import java.util.List;
-
-public class cxi extends ctp {
-   public cxi(cvn.a $$0) {
+public class cxi extends cxm {
+   public cxi(cvt.a $$0) {
       super($$0);
    }
 
    @Override
-   public cvs v() {
-      cvs $$0 = super.v();
-      $$0.b(ks.L, new cxr(cxs.C));
-      return $$0;
-   }
-
-   @Override
-   public void a(cvs $$0, cvn.b $$1, List<xe> $$2, cxk $$3) {
-      cxr $$4 = $$0.a(ks.L);
-      if ($$4 != null) {
-         $$4.a($$2::add, 0.125F, $$1.b());
-      }
-   }
-
-   @Override
-   public String d_(cvs $$0) {
-      return cxp.a($$0.a(ks.L, cxr.a).e(), this.a() + ".effect.");
+   public bry a(dev $$0, coh $$1, brx $$2) {
+      $$0.a(null, $$1.dC(), $$1.dE(), $$1.dI(), awk.yU, awl.h, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

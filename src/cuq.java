@@ -1,25 +1,15 @@
-public class cuq extends cvn implements cuv {
-   public cuq(cvn.a $$0) {
-      super($$0);
-      djr.a(this, ctl.a);
-   }
-
-   public static boolean g(cvs $$0) {
-      return $$0.o() < $$0.p() - 1;
+public class cuq extends cvt {
+   protected cuq(cxo $$0, axp<dhy> $$1, float $$2, float $$3, cvt.a $$4) {
+      super($$0.a($$4, $$1, $$2, $$3));
    }
 
    @Override
-   public brs a(dej $$0, cnx $$1, brr $$2) {
-      return this.a(this, $$0, $$1, $$2);
+   public boolean a(cvx $$0, buv $$1, buv $$2) {
+      return true;
    }
 
    @Override
-   public jo<awf> m() {
-      return awg.ar;
-   }
-
-   @Override
-   public btz l() {
-      return btz.e;
+   public void b(cvx $$0, buv $$1, buv $$2) {
+      $$0.a(2, $$2, buh.a);
    }
 }

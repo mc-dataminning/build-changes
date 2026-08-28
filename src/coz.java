@@ -1,68 +1,48 @@
-public abstract class coz extends cor {
-   private static final float b = 12.25F;
+public class coz extends cov {
+   private int e = 1;
 
-   protected coz(bty<? extends coz> $$0, dej $$1) {
+   public coz(bug<? extends coz> $$0, dev $$1) {
       super($$0, $$1);
    }
 
-   protected coz(bty<? extends coz> $$0, double $$1, double $$2, double $$3, dej $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
+   public coz(dev $$0, buv $$1, ezh $$2, int $$3) {
+      super(bug.ak, $$1, $$2, $$0);
+      this.e = $$3;
    }
 
    @Override
-   public boolean a(double $$0) {
-      if (this.ag < 2 && $$0 < 12.25) {
-         return false;
-      } else {
-         double $$1 = this.cO().a() * 4.0;
-         if (Double.isNaN($$1)) {
-            $$1 = 4.0;
-         }
-
-         $$1 *= 64.0;
-         return $$0 < $$1 * $$1;
+   protected void a(ezf $$0) {
+      super.a($$0);
+      if (!this.dX().C) {
+         boolean $$1 = this.dX().ac().b(der.c);
+         this.dX().a(this, this.dC(), this.dE(), this.dI(), (float)this.e, $$1, dev.a.c);
+         this.au();
       }
    }
 
    @Override
-   public boolean o(boolean $$0) {
-      return true;
+   protected void a(eze $$0) {
+      super.a($$0);
+      if (this.dX() instanceof arm $$1) {
+         btz var6 = $$0.a();
+         btz $$4 = this.s();
+         bsp $$5 = this.dY().a((cov)this, $$4);
+         var6.a($$5, 6.0F);
+         dbo.a($$1, var6, $$5);
+      }
    }
 
    @Override
-   public void l() {
-      super.l();
-      eyu $$0 = cot.a(this, this::b);
-      if ($$0.d() != eyu.a.a) {
-         this.b($$0);
-      }
-
-      eyw $$1 = this.dv();
-      double $$2 = this.dx() + $$1.d;
-      double $$3 = this.dz() + $$1.e;
-      double $$4 = this.dD() + $$1.f;
-      this.G();
-      float $$7;
-      if (this.bi()) {
-         for (int $$5 = 0; $$5 < 4; $$5++) {
-            float $$6 = 0.25F;
-            this.dS().a(lo.d, $$2 - $$1.d * 0.25, $$3 - $$1.e * 0.25, $$4 - $$1.f * 0.25, $$1.d, $$1.e, $$1.f);
-         }
-
-         $$7 = 0.8F;
-      } else {
-         $$7 = 0.99F;
-      }
-
-      this.h($$1.c((double)$$7));
-      this.be();
-      this.a_($$2, $$3, $$4);
-      this.aW();
+   public void b(uj $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.e);
    }
 
    @Override
-   protected double bc() {
-      return 0.03;
+   public void a(uj $$0) {
+      super.a($$0);
+      if ($$0.b("ExplosionPower", 99)) {
+         this.e = $$0.f("ExplosionPower");
+      }
    }
 }

@@ -1,102 +1,117 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class euo extends euy {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<euo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  kd.a(lw.aN).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, euo::new)
-   );
-   private final Optional<js<dbn>> c;
-   private final boolean d;
+public abstract class euo extends eum {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<evk> i;
+   final BiFunction<cvx, etw, cvx> a;
+   private final eul j = new euo.c() {
+      @Override
+      public void a(Consumer<cvx> $$0, etw $$1) {
+         euo.this.a(evk.a(euo.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   euo(List<eww> $$0, Optional<js<dbn>> $$1, boolean $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
+   protected euo(int $$0, int $$1, List<exh> $$2, List<evk> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = evm.a($$3);
+   }
+
+   protected static <T extends euo> P4<Mu<T>, Integer, Integer, List<exh>, List<evk>> b(Instance<T> $$0) {
+      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
+         .and(a($$0).t1())
+         .and(evm.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public eva<euo> b() {
-      return evb.h;
+   public void a(euc $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
 
+   protected abstract void a(Consumer<cvx> var1, etw var2);
+
    @Override
-   public cvs a(cvs $$0, etl $$1) {
-      azn $$2 = $$1.b();
-      boolean $$3 = $$0.a(cvw.qQ);
-      boolean $$4 = !$$3 && this.d;
-      Stream<jo<dbn>> $$5 = this.c
-         .<Stream<jo<dbn>>>map(js::a)
-         .orElseGet(() -> $$1.d().G_().e(lw.aN).c().map(Function.identity()))
-         .filter($$2x -> !$$4 || ((dbn)$$2x.a()).c($$0));
-      List<jo<dbn>> $$6 = $$5.toList();
-      Optional<jo<dbn>> $$7 = ad.b($$6, $$2);
-      if ($$7.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
+   public boolean expand(etw $$0, Consumer<eul> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
       } else {
-         return a($$0, $$7.get(), $$2);
+         return false;
       }
    }
 
-   private static cvs a(cvs $$0, jo<dbn> $$1, azn $$2) {
-      int $$3 = azf.a($$2, $$1.a().d(), $$1.a().e());
-      if ($$0.a(cvw.qQ)) {
-         $$0 = new cvs(cvw.uy);
-      }
-
-      $$0.a($$1, $$3);
-      return $$0;
+   public static euo.a<?> a(euo.d $$0) {
+      return new euo.b($$0);
    }
 
-   public static euo.a c() {
-      return new euo.a();
+   public abstract static class a<T extends euo.a<T>> extends eum.a<T> implements evg<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<evk> c = ImmutableList.builder();
+
+      public T a(evk.a $$0) {
+         this.c.add($$0.b());
+         return this.aG_();
+      }
+
+      protected List<evk> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.aG_();
+      }
+
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aG_();
+      }
    }
 
-   public static euo.a a(jq.a $$0) {
-      return c().a($$0.d(lw.aN).b(awy.n));
-   }
+   static class b extends euo.a<euo.b> {
+      private final euo.d c;
 
-   public static class a extends euy.a<euo.a> {
-      private Optional<js<dbn>> a = Optional.empty();
-      private boolean b = true;
-
-      protected euo.a a() {
-         return this;
+      public b(euo.d $$0) {
+         this.c = $$0;
       }
 
-      public euo.a a(jo<dbn> $$0) {
-         this.a = Optional.of(js.a($$0));
-         return this;
-      }
-
-      public euo.a a(js<dbn> $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public euo.a e() {
-         this.b = false;
+      protected euo.b g() {
          return this;
       }
 
       @Override
-      public euz b() {
-         return new euo(this.g(), this.a, this.b);
+      public eum b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
+   }
+
+   protected abstract class c implements eul {
+      @Override
+      public int a(float $$0) {
+         return Math.max(azj.d((float)euo.this.g + (float)euo.this.h * $$0), 0);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface d {
+      euo build(int var1, int var2, List<exh> var3, List<evk> var4);
    }
 }

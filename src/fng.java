@@ -1,178 +1,66 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class fng implements AutoCloseable {
-   private static final azn a = azn.a();
-   private static final float b = 32.0F;
-   private final gxh c;
-   private final ale d;
-   private fnk e;
-   private fnk f;
-   private List<fbh.a> g = List.of();
-   private List<fbh> h = List.of();
-   private final fnd<fnk> i = new fnd<>(fnk[]::new, fnk[][]::new);
-   private final fnd<fng.a> j = new fnd<>(fng.a[]::new, fng.a[][]::new);
-   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
-   private final List<fnh> l = Lists.newArrayList();
+public class fng implements fnj {
+   private static final alh e = alh.b("toast/advancement");
+   public static final int a = 5000;
+   private final ag f;
+   private boolean g;
+   private fnj.a h = fnj.a.b;
 
-   public fng(gxh $$0, ale $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public void a(List<fbh.a> $$0, Set<fnf> $$1) {
-      this.g = $$0;
-      this.a($$1);
-   }
-
-   public void a(Set<fnf> $$0) {
-      this.h = List.of();
-      this.c();
-      this.h = this.b(this.g, $$0);
-   }
-
-   private void c() {
-      this.d();
-      this.i.a();
-      this.j.a();
-      this.k.clear();
-      this.e = fnm.b.bake(this::a);
-      this.f = fnm.a.bake(this::a);
-   }
-
-   private List<fbh> b(List<fbh.a> $$0, Set<fnf> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<fbh> $$3 = new ArrayList<>();
-
-      for (fbh.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
-      }
-
-      Set<fbh> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (fbh $$3x : $$3) {
-            fbg $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fnm.b) {
-                  ((IntList)this.k.computeIfAbsent(azf.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
-         }
-      });
-      return $$3.stream().filter($$5::contains).toList();
+   public fng(ag $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public void close() {
-      this.d();
+   public fnj.a a() {
+      return this.h;
    }
 
-   private void d() {
-      for (fnh $$0 : this.l) {
-         $$0.close();
-      }
-
-      this.l.clear();
-   }
-
-   private static boolean b(fbg $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
+   @Override
+   public void a(fnk $$0, long $$1) {
+      as $$2 = this.f.b().c().orElse(null);
+      if ($$2 == null) {
+         this.h = fnj.a.b;
       } else {
-         return true;
-      }
-   }
-
-   private fng.a b(int $$0) {
-      fbg $$1 = null;
-
-      for (fbh $$2 : this.h) {
-         fbg $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
-            }
-
-            if (!b($$3)) {
-               return new fng.a($$1, $$3);
+         if (!this.g && $$1 > 0L) {
+            this.g = true;
+            if ($$2.e() == am.b) {
+               $$0.c().ak().a(hbk.a(awk.AB, 1.0F, 1.0F));
             }
          }
+
+         this.h = (double)$$1 >= 5000.0 * $$0.d() ? fnj.a.b : fnj.a.a;
       }
-
-      return $$1 != null ? new fng.a($$1, fnm.b) : fng.a.c;
    }
 
-   public fbg a(int $$0, boolean $$1) {
-      return this.j.a($$0, this::b).a($$1);
-   }
+   @Override
+   public void a(fkm $$0, fkk $$1, long $$2) {
+      as $$3 = this.f.b().c().orElse(null);
+      $$0.a(gig::B, e, 0, 0, this.b(), this.c());
+      if ($$3 != null) {
+         List<ayv> $$4 = $$1.c($$3.a(), 125);
+         int $$5 = $$3.e() == am.b ? -30465 : -256;
+         if ($$4.size() == 1) {
+            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
+            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = azj.d(azj.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = azj.d(azj.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
 
-   private fnk c(int $$0) {
-      for (fbh $$1 : this.h) {
-         fbg $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
+               for (ayv $$11 : $$4) {
+                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
          }
-      }
 
-      return this.e;
-   }
-
-   public fnk a(int $$0) {
-      return this.i.a($$0, this::c);
-   }
-
-   private fnk a(fbi $$0) {
-      for (fnh $$1 : this.l) {
-         fnk $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      ale $$3 = this.d.g("/" + this.l.size());
-      boolean $$4 = $$0.c();
-      fni $$5 = $$4 ? fni.b($$3) : fni.a($$3);
-      fnh $$6 = new fnh($$5, $$4);
-      this.l.add($$6);
-      this.c.a($$3, $$6);
-      fnk $$7 = $$6.a($$0);
-      return $$7 == null ? this.e : $$7;
-   }
-
-   public fnk a(fbg $$0) {
-      IntList $$1 = (IntList)this.k.get(azf.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
-   }
-
-   public ale a() {
-      return this.d;
-   }
-
-   public fnk b() {
-      return this.f;
-   }
-
-   static record a(fbg a, fbg b) {
-      static final fng.a c = new fng.a(fnm.b, fnm.b);
-
-      fbg a(boolean $$0) {
-         return $$0 ? this.b : this.a;
+         $$0.b($$3.c(), 8, 8);
       }
    }
 }

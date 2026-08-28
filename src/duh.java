@@ -1,150 +1,105 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public final class duh {
-   private static final Map<String, duh> k = new Object2ObjectArrayMap();
-   public static final Codec<duh> a = Codec.stringResolver($$0 -> $$0.l, k::get);
-   public static final duh b = new duh(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(sa.g), Optional.of(sa.n), Optional.of(sa.C), Optional.of(sa.I)
-   );
-   public static final duh c = new duh(
-      "spruce", 0.5F, Optional.of(sa.q), Optional.of(sa.r), Optional.of(sa.k), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final duh d = new duh(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(sa.x), Optional.of(sa.y), Optional.empty(), Optional.empty()
-   );
-   public static final duh e = new duh("azalea", Optional.empty(), Optional.of(sa.w), Optional.empty());
-   public static final duh f = new duh("birch", Optional.empty(), Optional.of(sa.i), Optional.of(sa.F));
-   public static final duh g = new duh("jungle", Optional.of(sa.p), Optional.of(sa.o), Optional.empty());
-   public static final duh h = new duh("acacia", Optional.empty(), Optional.of(sa.j), Optional.empty());
-   public static final duh i = new duh("cherry", Optional.empty(), Optional.of(sa.z), Optional.of(sa.K));
-   public static final duh j = new duh("dark_oak", Optional.of(sa.h), Optional.empty(), Optional.empty());
-   private final String l;
-   private final float m;
-   private final Optional<ald<edg<?, ?>>> n;
-   private final Optional<ald<edg<?, ?>>> o;
-   private final Optional<ald<edg<?, ?>>> p;
-   private final Optional<ald<edg<?, ?>>> q;
-   private final Optional<ald<edg<?, ?>>> r;
-   private final Optional<ald<edg<?, ?>>> s;
+public class duh {
+   private static final duh.a a = duh.a.a("trial_chamber/breeze");
+   private static final duh.a b = duh.a.a("trial_chamber/melee/husk");
+   private static final duh.a c = duh.a.a("trial_chamber/melee/spider");
+   private static final duh.a d = duh.a.a("trial_chamber/melee/zombie");
+   private static final duh.a e = duh.a.a("trial_chamber/ranged/poison_skeleton");
+   private static final duh.a f = duh.a.a("trial_chamber/ranged/skeleton");
+   private static final duh.a g = duh.a.a("trial_chamber/ranged/stray");
+   private static final duh.a h = duh.a.a("trial_chamber/slow_ranged/poison_skeleton");
+   private static final duh.a i = duh.a.a("trial_chamber/slow_ranged/skeleton");
+   private static final duh.a j = duh.a.a("trial_chamber/slow_ranged/stray");
+   private static final duh.a k = duh.a.a("trial_chamber/small_melee/baby_zombie");
+   private static final duh.a l = duh.a.a("trial_chamber/small_melee/cave_spider");
+   private static final duh.a m = duh.a.a("trial_chamber/small_melee/silverfish");
+   private static final duh.a n = duh.a.a("trial_chamber/small_melee/slime");
 
-   public duh(String $$0, Optional<ald<edg<?, ?>>> $$1, Optional<ald<edg<?, ?>>> $$2, Optional<ald<edg<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   public static void a(qx<dug> $$0) {
+      a(
+         $$0,
+         a,
+         dug.b().b(1.0F).d(0.5F).b(20).a(2.0F).c(1.0F).a(bqg.a(a(bug.m))).a(),
+         dug.b().d(0.5F).b(20).a(4.0F).c(1.0F).a(bqg.a(a(bug.m))).b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a()
+      );
+      a($$0, b, c().a(bqg.a(a(bug.ac))).a(), c().a(bqg.a(a(bug.ac, ets.ak))).b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a());
+      a($$0, c, c().a(bqg.a(a(bug.aW))).a(), a().a(bqg.a(a(bug.aW))).b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a());
+      a($$0, d, c().a(bqg.a(a(bug.bu))).a(), c().b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.bu, ets.ak))).a());
+      a($$0, e, c().a(bqg.a(a(bug.l))).a(), c().b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.l, ets.aj))).a());
+      a($$0, f, c().a(bqg.a(a(bug.aN))).a(), c().b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.aN, ets.aj))).a());
+      a($$0, g, c().a(bqg.a(a(bug.aY))).a(), c().b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.aY, ets.aj))).a());
+      a($$0, h, b().a(bqg.a(a(bug.l))).a(), b().b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.l, ets.aj))).a());
+      a($$0, i, b().a(bqg.a(a(bug.aN))).a(), b().b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.aN, ets.aj))).a());
+      a($$0, j, b().a(bqg.a(a(bug.aY))).a(), b().b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.aY, ets.aj))).a());
+      a(
+         $$0,
+         k,
+         dug.b().d(0.5F).b(20).a(bqg.a(a(bug.bu, $$0x -> $$0x.a("IsBaby", true), null))).a(),
+         dug.b().d(0.5F).b(20).b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.bu, $$0x -> $$0x.a("IsBaby", true), ets.ak))).a()
+      );
+      a($$0, l, c().a(bqg.a(a(bug.q))).a(), a().b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.q))).a());
+      a($$0, m, c().a(bqg.a(a(bug.aM))).a(), a().b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a()).a(bqg.a(a(bug.aM))).a());
+      a(
+         $$0,
+         n,
+         c().a(bqg.<dfo>a().a(a(bug.aP, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bug.aP, $$0x -> $$0x.a("Size", (byte)2)), 1).a()).a(),
+         a()
+            .b(bqg.<alg<eub>>a().a(ets.aJ, 3).a(ets.aK, 7).a())
+            .a(bqg.<dfo>a().a(a(bug.aP, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bug.aP, $$0x -> $$0x.a("Size", (byte)2)), 1).a())
+            .a()
+      );
    }
 
-   public duh(
-      String $$0,
-      float $$1,
-      Optional<ald<edg<?, ?>>> $$2,
-      Optional<ald<edg<?, ?>>> $$3,
-      Optional<ald<edg<?, ?>>> $$4,
-      Optional<ald<edg<?, ?>>> $$5,
-      Optional<ald<edg<?, ?>>> $$6,
-      Optional<ald<edg<?, ?>>> $$7
-   ) {
-      this.l = $$0;
-      this.m = $$1;
-      this.n = $$2;
-      this.o = $$3;
-      this.p = $$4;
-      this.q = $$5;
-      this.r = $$6;
-      this.s = $$7;
-      k.put($$0, this);
+   private static <T extends btz> dfo a(bug<T> $$0) {
+      return a($$0, $$0x -> {
+      }, null);
    }
 
-   @Nullable
-   private ald<edg<?, ?>> a(azn $$0, boolean $$1) {
-      if ($$0.i() < this.m) {
-         if ($$1 && this.s.isPresent()) {
-            return this.s.get();
-         }
+   private static <T extends btz> dfo a(bug<T> $$0, Consumer<uj> $$1) {
+      return a($$0, $$1, null);
+   }
 
-         if (this.q.isPresent()) {
-            return this.q.get();
-         }
+   private static <T extends btz> dfo a(bug<T> $$0, alg<eub> $$1) {
+      return a($$0, $$0x -> {
+      }, $$1);
+   }
+
+   private static <T extends btz> dfo a(bug<T> $$0, Consumer<uj> $$1, @Nullable alg<eub> $$2) {
+      uj $$3 = new uj();
+      $$3.a("id", lx.f.b($$0).toString());
+      $$1.accept($$3);
+      Optional<buj> $$4 = Optional.ofNullable($$2).map($$0x -> new buj($$0x, 0.0F));
+      return new dfo($$3, Optional.empty(), $$4);
+   }
+
+   private static void a(qx<dug> $$0, duh.a $$1, dug $$2, dug $$3) {
+      $$0.a($$1.a, $$2);
+      $$0.a($$1.b, $$3);
+   }
+
+   static alg<dug> a(String $$0) {
+      return alg.a(ly.aF, alh.b($$0));
+   }
+
+   private static dug.a a() {
+      return dug.b().b(4.0F).d(0.5F).b(20).a(12.0F);
+   }
+
+   private static dug.a b() {
+      return dug.b().b(4.0F).d(2.0F).b(160);
+   }
+
+   private static dug.a c() {
+      return dug.b().b(3.0F).d(0.5F).b(20);
+   }
+
+   static record a(alg<dug> a, alg<dug> b) {
+
+      public static duh.a a(String $$0) {
+         return new duh.a(duh.a($$0 + "/normal"), duh.a($$0 + "/ominous"));
       }
-
-      return $$1 && this.r.isPresent() ? this.r.get() : this.p.orElse(null);
-   }
-
-   @Nullable
-   private ald<edg<?, ?>> a(azn $$0) {
-      return this.o.isPresent() && $$0.i() < this.m ? this.o.get() : this.n.orElse(null);
-   }
-
-   public boolean a(arj $$0, dwp $$1, jf $$2, dus $$3, azn $$4) {
-      ald<edg<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         jo<edg<?, ?>> $$6 = $$0.G_().e(lw.aK).a($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     edg<?, ?> $$9 = $$6.a();
-                     dus $$10 = dho.a.n();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
-
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
-                     return false;
-                  }
-               }
-            }
-         }
-      }
-
-      ald<edg<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
-      } else {
-         jo<edg<?, ?>> $$12 = $$0.G_().e(lw.aK).a($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
-         } else {
-            edg<?, ?> $$13 = $$12.a();
-            dus $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 4);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
-
-               return true;
-            } else {
-               $$0.a($$2, $$3, 4);
-               return false;
-            }
-         }
-      }
-   }
-
-   private static boolean a(dus $$0, ddo $$1, jf $$2, int $$3, int $$4) {
-      dhm $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
-   }
-
-   private boolean a(dek $$0, jf $$1) {
-      for (jf $$2 : jf.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
-         if ($$0.a_($$2).a(awv.V)) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

@@ -1,24 +1,50 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eia<P extends ehz> {
-   public static final eia<eii> a = a("simple_state_provider", eii.b);
-   public static final eia<eij> b = a("weighted_state_provider", eij.b);
-   public static final eia<eie> c = a("noise_threshold_provider", eie.b);
-   public static final eia<eid> d = a("noise_provider", eid.g);
-   public static final eia<eib> e = a("dual_noise_provider", eib.b);
-   public static final eia<eig> f = a("rotated_block_provider", eig.b);
-   public static final eia<eif> g = a("randomized_int_state_provider", eif.b);
-   private final MapCodec<P> h;
+public class eia extends ehv {
+   public static final MapCodec<eia> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  brd.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, eia::new)
+   );
+   private final brd b;
+   private final int c;
 
-   private static <P extends ehz> eia<P> a(String $$0, MapCodec<P> $$1) {
-      return kb.a(lv.T, $$0, new eia<>($$1));
+   public eia(brd $$0, brd $$1, brd $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   private eia(MapCodec<P> $$0) {
-      this.h = $$0;
+   @Override
+   protected ehw<?> a() {
+      return ehw.j;
    }
 
-   public MapCodec<P> a() {
-      return this.h;
+   @Override
+   protected void a(dfb $$0, ehv.b $$1, azr $$2, ehf $$3, int $$4, ehv.a $$5, int $$6, int $$7, int $$8) {
+      jg $$9 = $$5.a();
+      jg.a $$10 = $$9.k();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
+      }
+   }
+
+   @Override
+   public int a(azr $$0, int $$1, ehf $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

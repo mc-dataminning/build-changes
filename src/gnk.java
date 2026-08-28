@@ -1,35 +1,27 @@
-public class gnk extends gou<ckt, gtp, fxm<gtp>> {
-   private static final ale a = ale.b("textures/entity/enderman/enderman.png");
-   private final azn b = azn.a();
+public class gnk extends gpf<cgs, gva, fxp> {
+   private static final alh a = alh.b("textures/entity/fish/cod.png");
 
-   public gnk(gno.a $$0) {
-      super($$0, new fxm<>($$0.a(gap.at)), 0.5F);
-      this.a(new grl(this));
-      this.a(new grc(this, $$0.d()));
+   public gnk(gnz.a $$0) {
+      super($$0, new fxp($$0.a(gba.O)), 0.3F);
    }
 
-   public eyw a(gtp $$0) {
-      eyw $$1 = super.a($$0);
-      if ($$0.a) {
-         double $$2 = 0.02 * (double)$$0.aa;
-         return $$1.b(this.b.k() * $$2, 0.0, this.b.k() * $$2);
-      } else {
-         return $$1;
-      }
-   }
-
-   public ale b(gtp $$0) {
+   @Override
+   public alh b(gva $$0) {
       return a;
    }
 
-   public gtp a() {
-      return new gtp();
+   public gva a() {
+      return new gva();
    }
 
-   public void a(ckt $$0, gtp $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gof.a($$0, $$1, $$2);
-      $$1.a = $$0.gp();
-      $$1.b = $$0.go();
+   @Override
+   protected void a(gva $$0, fdt $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * azj.a(0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.af) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

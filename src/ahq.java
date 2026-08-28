@@ -1,205 +1,166 @@
-public abstract class ahq implements zl<agr> {
-   private static final int j = 1;
-   private static final int k = 2;
-   protected final double a;
-   protected final double b;
-   protected final double c;
-   protected final float d;
-   protected final float e;
-   protected final boolean f;
-   protected final boolean g;
-   protected final boolean h;
-   protected final boolean i;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   static int a(boolean $$0, boolean $$1) {
-      int $$2 = 0;
-      if ($$0) {
-         $$2 |= 1;
+public class ahq implements zo<agu> {
+   public static final zf<we, ahq> a = zo.a(ahq::a, ahq::new);
+   private final int b;
+   private final ahq.a c;
+   private final boolean d;
+   static final ahq.a e = new ahq.a() {
+      @Override
+      public ahq.b a() {
+         return ahq.b.b;
       }
 
-      if ($$1) {
-         $$2 |= 2;
+      @Override
+      public void a(ahq.c $$0) {
+         $$0.a();
       }
 
-      return $$2;
-   }
+      @Override
+      public void a(we $$0) {
+      }
+   };
 
-   static boolean a(int $$0) {
-      return ($$0 & 1) != 0;
-   }
-
-   static boolean b(int $$0) {
-      return ($$0 & 2) != 0;
-   }
-
-   protected ahq(double $$0, double $$1, double $$2, float $$3, float $$4, boolean $$5, boolean $$6, boolean $$7, boolean $$8) {
-      this.a = $$0;
-      this.b = $$1;
+   private ahq(int $$0, boolean $$1, ahq.a $$2) {
+      this.b = $$0;
       this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+      this.d = $$1;
+   }
+
+   public static ahq a(btz $$0, boolean $$1) {
+      return new ahq($$0.ar(), $$1, e);
+   }
+
+   public static ahq a(btz $$0, boolean $$1, brx $$2) {
+      return new ahq($$0.ar(), $$1, new ahq.d($$2));
+   }
+
+   public static ahq a(btz $$0, boolean $$1, brx $$2, ezh $$3) {
+      return new ahq($$0.ar(), $$1, new ahq.e($$2, $$3));
+   }
+
+   private ahq(we $$0) {
+      this.b = $$0.l();
+      ahq.b $$1 = $$0.b(ahq.b.class);
+      this.c = $$1.d.apply($$0);
+      this.d = $$0.readBoolean();
+   }
+
+   private void a(we $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
+      $$0.a(this.d);
    }
 
    @Override
-   public abstract zn<? extends ahq> a();
+   public zq<ahq> a() {
+      return ags.bB;
+   }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public double a(double $$0) {
-      return this.h ? this.a : $$0;
-   }
-
-   public double b(double $$0) {
-      return this.h ? this.b : $$0;
-   }
-
-   public double c(double $$0) {
-      return this.h ? this.c : $$0;
-   }
-
-   public float a(float $$0) {
-      return this.i ? this.d : $$0;
-   }
-
-   public float b(float $$0) {
-      return this.i ? this.e : $$0;
+   @Nullable
+   public btz a(arm $$0) {
+      return $$0.b(this.b);
    }
 
    public boolean b() {
-      return this.f;
+      return this.d;
    }
 
-   public boolean e() {
-      return this.g;
+   public void a(ahq.c $$0) {
+      this.c.a($$0);
    }
 
-   public boolean f() {
-      return this.h;
+   interface a {
+      ahq.b a();
+
+      void a(ahq.c var1);
+
+      void a(we var1);
    }
 
-   public boolean g() {
-      return this.i;
+   static enum b {
+      a(ahq.d::new),
+      b($$0 -> ahq.e),
+      c(ahq.e::new);
+
+      final Function<we, ahq.a> d;
+
+      private b(final Function<we, ahq.a> $$0) {
+         this.d = $$0;
+      }
    }
 
-   public static class a extends ahq {
-      public static final zc<wb, ahq.a> j = zl.a(ahq.a::b, ahq.a::a);
+   public interface c {
+      void a(brx var1);
 
-      public a(double $$0, double $$1, double $$2, boolean $$3, boolean $$4) {
-         super($$0, $$1, $$2, 0.0F, 0.0F, $$3, $$4, true, false);
+      void a(brx var1, ezh var2);
+
+      void a();
+   }
+
+   static class d implements ahq.a {
+      private final brx a;
+
+      d(brx $$0) {
+         this.a = $$0;
       }
 
-      private static ahq.a a(wb $$0) {
-         double $$1 = $$0.readDouble();
-         double $$2 = $$0.readDouble();
-         double $$3 = $$0.readDouble();
-         short $$4 = $$0.readUnsignedByte();
-         boolean $$5 = ahq.a($$4);
-         boolean $$6 = ahq.b($$4);
-         return new ahq.a($$1, $$2, $$3, $$5, $$6);
+      private d(we $$0) {
+         this.a = $$0.b(brx.class);
       }
 
-      private void b(wb $$0) {
+      @Override
+      public ahq.b a() {
+         return ahq.b.a;
+      }
+
+      @Override
+      public void a(ahq.c $$0) {
          $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.l(ahq.a(this.f, this.g));
       }
 
       @Override
-      public zn<ahq.a> a() {
-         return agp.bE;
-      }
-   }
-
-   public static class b extends ahq {
-      public static final zc<wb, ahq.b> j = zl.a(ahq.b::b, ahq.b::a);
-
-      public b(double $$0, double $$1, double $$2, float $$3, float $$4, boolean $$5, boolean $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
-      }
-
-      private static ahq.b a(wb $$0) {
-         double $$1 = $$0.readDouble();
-         double $$2 = $$0.readDouble();
-         double $$3 = $$0.readDouble();
-         float $$4 = $$0.readFloat();
-         float $$5 = $$0.readFloat();
-         short $$6 = $$0.readUnsignedByte();
-         boolean $$7 = ahq.a($$6);
-         boolean $$8 = ahq.b($$6);
-         return new ahq.b($$1, $$2, $$3, $$4, $$5, $$7, $$8);
-      }
-
-      private void b(wb $$0) {
+      public void a(we $$0) {
          $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-         $$0.a(this.e);
-         $$0.l(ahq.a(this.f, this.g));
-      }
-
-      @Override
-      public zn<ahq.b> a() {
-         return agp.bF;
       }
    }
 
-   public static class c extends ahq {
-      public static final zc<wb, ahq.c> j = zl.a(ahq.c::b, ahq.c::a);
+   static class e implements ahq.a {
+      private final brx a;
+      private final ezh b;
 
-      public c(float $$0, float $$1, boolean $$2, boolean $$3) {
-         super(0.0, 0.0, 0.0, $$0, $$1, $$2, $$3, false, true);
+      e(brx $$0, ezh $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      private static ahq.c a(wb $$0) {
-         float $$1 = $$0.readFloat();
-         float $$2 = $$0.readFloat();
-         short $$3 = $$0.readUnsignedByte();
-         boolean $$4 = ahq.a($$3);
-         boolean $$5 = ahq.b($$3);
-         return new ahq.c($$1, $$2, $$4, $$5);
-      }
-
-      private void b(wb $$0) {
-         $$0.a(this.d);
-         $$0.a(this.e);
-         $$0.l(ahq.a(this.f, this.g));
+      private e(we $$0) {
+         this.b = new ezh((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(brx.class);
       }
 
       @Override
-      public zn<ahq.c> a() {
-         return agp.bG;
-      }
-   }
-
-   public static class d extends ahq {
-      public static final zc<wb, ahq.d> j = zl.a(ahq.d::b, ahq.d::a);
-
-      public d(boolean $$0, boolean $$1) {
-         super(0.0, 0.0, 0.0, 0.0F, 0.0F, $$0, $$1, false, false);
-      }
-
-      private static ahq.d a(wb $$0) {
-         short $$1 = $$0.readUnsignedByte();
-         boolean $$2 = ahq.a($$1);
-         boolean $$3 = ahq.b($$1);
-         return new ahq.d($$2, $$3);
-      }
-
-      private void b(wb $$0) {
-         $$0.l(ahq.a(this.f, this.g));
+      public ahq.b a() {
+         return ahq.b.c;
       }
 
       @Override
-      public zn<ahq.d> a() {
-         return agp.bH;
+      public void a(ahq.c $$0) {
+         $$0.a(this.a, this.b);
+      }
+
+      @Override
+      public void a(we $$0) {
+         $$0.a((float)this.b.d);
+         $$0.a((float)this.b.e);
+         $$0.a((float)this.b.f);
+         $$0.a(this.a);
       }
    }
 }

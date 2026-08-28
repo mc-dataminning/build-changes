@@ -1,11 +1,9 @@
 public interface azm {
-   void a(xe var1);
+   int b();
 
-   void b(xe var1);
+   String a();
 
-   void c(xe var1);
-
-   void a(int var1);
-
-   void a();
+   default xh d() {
+      return xh.c(this.a());
+   }
 }

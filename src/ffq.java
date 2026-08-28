@@ -1,59 +1,56 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import org.slf4j.Logger;
 
-public abstract class ffq {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class ffq extends ffn {
+   private static final Logger e = LogUtils.getLogger();
+   public List<ffp> a;
+   public int b;
+   public int c;
+   public int d;
 
-   public ffq(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public ffq() {
    }
 
-   public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
+   public ffq(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   protected abstract void a(fkb var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
    }
 
-   public int b() {
-      return this.d + this.b;
-   }
+   public static ffq a(String $$0) {
+      ffq $$1 = new ffq();
+      $$1.a = Lists.newArrayList();
 
-   public abstract void a(int var1);
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
 
-   public static void a(fkb $$0, List<ffq> $$1, hdo<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (ffq $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
-      }
-   }
-
-   public static void a(hdo<?> $$0, flk.a<?> $$1, List<ffq> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aJ_().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.b($$6);
-         int $$7 = $$0.s();
-         int $$8 = $$0.g($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
-
-         for (ffq $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
+            while ($$4.hasNext()) {
+               $$1.a.add(ffp.a($$4.next().getAsJsonObject()));
             }
          }
+
+         $$1.b = fhk.a("page", $$3, 0);
+         $$1.c = fhk.a("size", $$3, 0);
+         $$1.d = fhk.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
       }
+
+      return $$1;
    }
 }

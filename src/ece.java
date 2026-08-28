@@ -1,20 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-class ece extends ecg {
-   public static final MapCodec<ece> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ece::new));
+class ece extends eci {
+   public static final MapCodec<ece> a = a(ece::new);
 
-   public ece(kj $$0) {
+   public ece(List<ecg> $$0) {
       super($$0);
    }
 
-   @Override
-   protected boolean a(dus $$0) {
-      return $$0.v();
+   public boolean a(dfs $$0, jg $$1) {
+      for (ecg $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public ebw<?> a() {
-      return ebw.f;
+   public ech<?> a() {
+      return ech.j;
    }
 }

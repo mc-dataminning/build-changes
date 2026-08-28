@@ -1,78 +1,24 @@
 public interface dda {
-   ald<dcv> a = ddb.a("trades/desert_armorer_boots_4");
-   ald<dcv> b = ddb.a("trades/desert_armorer_leggings_4");
-   ald<dcv> c = ddb.a("trades/desert_armorer_chestplate_4");
-   ald<dcv> d = ddb.a("trades/desert_armorer_helmet_4");
-   ald<dcv> e = ddb.a("trades/desert_armorer_leggings_5");
-   ald<dcv> f = ddb.a("trades/desert_armorer_chestplate_5");
-   ald<dcv> g = ddb.a("trades/plains_armorer_boots_4");
-   ald<dcv> h = ddb.a("trades/plains_armorer_leggings_4");
-   ald<dcv> i = ddb.a("trades/plains_armorer_chestplate_4");
-   ald<dcv> j = ddb.a("trades/plains_armorer_helmet_4");
-   ald<dcv> k = ddb.a("trades/plains_armorer_boots_5");
-   ald<dcv> l = ddb.a("trades/plains_armorer_leggings_5");
-   ald<dcv> m = ddb.a("trades/savanna_armorer_boots_4");
-   ald<dcv> n = ddb.a("trades/savanna_armorer_leggings_4");
-   ald<dcv> o = ddb.a("trades/savanna_armorer_chestplate_4");
-   ald<dcv> p = ddb.a("trades/savanna_armorer_helmet_4");
-   ald<dcv> q = ddb.a("trades/savanna_armorer_chestplate_5");
-   ald<dcv> r = ddb.a("trades/savanna_armorer_helmet_5");
-   ald<dcv> s = ddb.a("trades/snow_armorer_boots_4");
-   ald<dcv> t = ddb.a("trades/snow_armorer_helmet_4");
-   ald<dcv> u = ddb.a("trades/snow_armorer_boots_5");
-   ald<dcv> v = ddb.a("trades/snow_armorer_helmet_5");
-   ald<dcv> w = ddb.a("trades/jungle_armorer_boots_4");
-   ald<dcv> x = ddb.a("trades/jungle_armorer_leggings_4");
-   ald<dcv> y = ddb.a("trades/jungle_armorer_chestplate_4");
-   ald<dcv> z = ddb.a("trades/jungle_armorer_helmet_4");
-   ald<dcv> A = ddb.a("trades/jungle_armorer_boots_5");
-   ald<dcv> B = ddb.a("trades/jungle_armorer_helmet_5");
-   ald<dcv> C = ddb.a("trades/swamp_armorer_boots_4");
-   ald<dcv> D = ddb.a("trades/swamp_armorer_leggings_4");
-   ald<dcv> E = ddb.a("trades/swamp_armorer_chestplate_4");
-   ald<dcv> F = ddb.a("trades/swamp_armorer_helmet_4");
-   ald<dcv> G = ddb.a("trades/swamp_armorer_boots_5");
-   ald<dcv> H = ddb.a("trades/swamp_armorer_helmet_5");
-   ald<dcv> I = ddb.a("trades/taiga_armorer_leggings_5");
-   ald<dcv> J = ddb.a("trades/taiga_armorer_chestplate_5");
+   alg<dcu> a = a("mob_spawn_equipment");
+   alg<dcu> b = a("pillager_spawn_crossbow");
+   alg<dcu> c = a("raid/pillager_post_wave_3");
+   alg<dcu> d = a("raid/pillager_post_wave_5");
+   alg<dcu> e = a("raid/vindicator");
+   alg<dcu> f = a("raid/vindicator_post_wave_5");
+   alg<dcu> g = a("enderman_loot_drop");
 
-   static void a(qu<dcv> $$0) {
-      jp<dbn> $$1 = $$0.a(lw.aN);
-      $$0.a(a, new dcz($$1.b(dbs.h), bqu.a(1)));
-      $$0.a(b, new dcz($$1.b(dbs.h), bqu.a(1)));
-      $$0.a(c, new dcz($$1.b(dbs.h), bqu.a(1)));
-      $$0.a(d, new dcz($$1.b(dbs.h), bqu.a(1)));
-      $$0.a(e, new dcz($$1.b(dbs.h), bqu.a(1)));
-      $$0.a(f, new dcz($$1.b(dbs.h), bqu.a(1)));
-      $$0.a(g, new dcz($$1.b(dbs.a), bqu.a(1)));
-      $$0.a(h, new dcz($$1.b(dbs.a), bqu.a(1)));
-      $$0.a(i, new dcz($$1.b(dbs.a), bqu.a(1)));
-      $$0.a(j, new dcz($$1.b(dbs.a), bqu.a(1)));
-      $$0.a(k, new dcz($$1.b(dbs.a), bqu.a(1)));
-      $$0.a(l, new dcz($$1.b(dbs.a), bqu.a(1)));
-      $$0.a(m, new dcz($$1.b(dbs.k), bqu.a(1)));
-      $$0.a(n, new dcz($$1.b(dbs.k), bqu.a(1)));
-      $$0.a(o, new dcz($$1.b(dbs.k), bqu.a(1)));
-      $$0.a(p, new dcz($$1.b(dbs.k), bqu.a(1)));
-      $$0.a(q, new dcz($$1.b(dbs.k), bqu.a(1)));
-      $$0.a(r, new dcz($$1.b(dbs.k), bqu.a(1)));
-      $$0.a(s, new dcz($$1.b(dbs.j), bqu.a(1)));
-      $$0.a(t, new dcz($$1.b(dbs.g), bqu.a(1)));
-      $$0.a(u, new dcz($$1.b(dbs.j), bqu.a(1)));
-      $$0.a(v, new dcz($$1.b(dbs.g), bqu.a(1)));
-      $$0.a(w, new dcz($$1.b(dbs.w), bqu.a(1)));
-      $$0.a(x, new dcz($$1.b(dbs.w), bqu.a(1)));
-      $$0.a(y, new dcz($$1.b(dbs.w), bqu.a(1)));
-      $$0.a(z, new dcz($$1.b(dbs.w), bqu.a(1)));
-      $$0.a(A, new dcz($$1.b(dbs.c), bqu.a(1)));
-      $$0.a(B, new dcz($$1.b(dbs.e), bqu.a(1)));
-      $$0.a(C, new dcz($$1.b(dbs.O), bqu.a(1)));
-      $$0.a(D, new dcz($$1.b(dbs.O), bqu.a(1)));
-      $$0.a(E, new dcz($$1.b(dbs.O), bqu.a(1)));
-      $$0.a(F, new dcz($$1.b(dbs.O), bqu.a(1)));
-      $$0.a(G, new dcz($$1.b(dbs.i), bqu.a(1)));
-      $$0.a(H, new dcz($$1.b(dbs.f), bqu.a(1)));
-      $$0.a(I, new dcz($$1.b(dbs.d), bqu.a(1)));
-      $$0.a(J, new dcz($$1.b(dbs.d), bqu.a(1)));
+   static void a(qx<dcu> $$0) {
+      jq<dbm> $$1 = $$0.a(ly.aM);
+      $$0.a(a, new dcx($$1.b(axc.l), 5, 17));
+      $$0.a(b, new dcy($$1.b(dbr.K), bra.a(1)));
+      $$0.a(c, new dcy($$1.b(dbr.J), bra.a(1)));
+      $$0.a(d, new dcy($$1.b(dbr.J), bra.a(2)));
+      $$0.a(e, new dcy($$1.b(dbr.n), bra.a(1)));
+      $$0.a(f, new dcy($$1.b(dbr.n), bra.a(2)));
+      $$0.a(g, new dcy($$1.b(dbr.v), bra.a(1)));
+   }
+
+   static alg<dcu> a(String $$0) {
+      return alg.a(ly.aN, alh.b($$0));
    }
 }

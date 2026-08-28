@@ -1,20 +1,31 @@
-public record aaf(aqv b) implements zl<aae> {
-   public static final zc<wb, aaf> a = zl.a(aaf::a, aaf::new);
+import java.util.Map;
 
-   private aaf(wb $$0) {
-      this(new aqv($$0));
+public class aaf implements zo<zu> {
+   public static final zf<we, aaf> a = zo.a(aaf::a, aaf::new);
+   private final Map<alg<? extends kc<?>>, axr.a> b;
+
+   public aaf(Map<alg<? extends kc<?>>, axr.a> $$0) {
+      this.b = $$0;
    }
 
-   private void a(wb $$0) {
-      this.b.a($$0);
+   private aaf(we $$0) {
+      this.b = $$0.a(we::r, axr.a::b);
+   }
+
+   private void a(we $$0) {
+      $$0.a(this.b, we::b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zn<aaf> a() {
-      return aad.l;
+   public zq<aaf> a() {
+      return aag.k;
    }
 
-   public void a(aae $$0) {
+   public void a(zu $$0) {
       $$0.a(this);
+   }
+
+   public Map<alg<? extends kc<?>>, axr.a> b() {
+      return this.b;
    }
 }

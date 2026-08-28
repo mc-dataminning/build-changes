@@ -1,53 +1,41 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class ejl extends ejn {
-   public static final MapCodec<ejl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ebi.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               ebi.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ejl::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final ebi d;
-   private final ebi e;
-   private final int f;
+public class ejl extends ejk {
+   public static final MapCodec<ejl> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejl::new));
 
-   private ejl(ebi $$0, ebi $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static ejl a(ebi $$0, ebi $$1, int $$2) {
-      return new ejl($$0, $$1, $$2);
+   public ejl(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(azn $$0, ebl $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
-         return $$0.a($$4 + this.f) + $$2;
+   protected ejo<?> a() {
+      return ejo.d;
+   }
+
+   @Override
+   public List<ehv.a> a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, int $$3, jg $$4, ehf $$5) {
+      List<ehv.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + azj.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + azj.a($$8) * (float)$$11);
+            jg $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
+
+         $$6.add(new ehv.a($$4.b($$9, $$7, $$10), -2, false));
       }
-   }
 
-   @Override
-   public ejo<?> a() {
-      return ejo.c;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+      return $$6;
    }
 }

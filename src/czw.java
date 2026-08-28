@@ -1,15 +1,17 @@
-public class czw extends czr {
-   public czw(String $$0, czx $$1, dag $$2, cvs $$3, float $$4, int $$5) {
-      super(daq.e, $$0, $$1, $$2, $$3, $$4, $$5);
+public enum czw implements baf {
+   a("food"),
+   b("blocks"),
+   c("misc");
+
+   public static final baf.a<czw> d = baf.a(czw::values);
+   private final String e;
+
+   private czw(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public cvs g() {
-      return new cvs(dho.og);
-   }
-
-   @Override
-   public dap<?> ar_() {
-      return dap.r;
+   public String c() {
+      return this.e;
    }
 }

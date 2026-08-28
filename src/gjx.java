@@ -1,50 +1,16 @@
-@FunctionalInterface
-public interface gjx<T extends drv> {
-   gjw<T> create(gjx.a var1);
+import com.google.common.collect.Streams;
+import java.util.function.Predicate;
 
-   public static class a {
-      private final gjv a;
-      private final gio b;
-      private final gom c;
-      private final gnm d;
-      private final gam e;
-      private final fjz f;
+public class gjx implements gju {
+   public static final String a = "OR";
+   private final Iterable<? extends gju> d;
 
-      public a(gjv $$0, gio $$1, gom $$2, gnm $$3, gam $$4, fjz $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-      }
+   public gjx(Iterable<? extends gju> $$0) {
+      this.d = $$0;
+   }
 
-      public gjv a() {
-         return this.a;
-      }
-
-      public gio b() {
-         return this.b;
-      }
-
-      public gnm c() {
-         return this.d;
-      }
-
-      public gom d() {
-         return this.c;
-      }
-
-      public gam e() {
-         return this.e;
-      }
-
-      public gaq a(gao $$0) {
-         return this.e.a($$0);
-      }
-
-      public fjz f() {
-         return this.f;
-      }
+   @Override
+   public Predicate<dvd> getPredicate(dve<dhy, dvd> $$0) {
+      return ad.b(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
    }
 }

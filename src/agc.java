@@ -1,16 +1,23 @@
-public record agc(xe b, xe c) implements zl<aca> {
-   public static final zc<wp, agc> a = zc.a(xg.d, agc::b, xg.d, agc::e, agc::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zn<agc> a() {
-      return agp.aX;
+public class agc implements zo<acd> {
+   public static final agc a = new agc();
+   public static final zf<ByteBuf, agc> b = zf.a(a);
+
+   private agc() {
    }
 
-   public void a(aca $$0) {
+   @Override
+   public zq<agc> a() {
+      return ags.aU;
+   }
+
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public xe e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

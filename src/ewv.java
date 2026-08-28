@@ -1,65 +1,36 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record ewv(jo<dhm> b, Optional<ec> c) implements eww {
-   public static final MapCodec<ewv> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(lv.e.r().fieldOf("block").forGetter(ewv::c), ec.a.optionalFieldOf("properties").forGetter(ewv::d)).apply($$0, ewv::new)
-      )
-      .validate(ewv::a);
+public class ewv extends ewx {
+   public static final MapCodec<ewv> a = a(ewv::new);
 
-   private static DataResult<ewv> a(ewv $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().k()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   ewv(List<exh> $$0) {
+      super($$0, ad.b($$0));
    }
 
    @Override
-   public ewx b() {
-      return ewy.i;
+   public exi b() {
+      return exj.b;
    }
 
-   @Override
-   public Set<ewe<?>> a() {
-      return Set.of(ewh.g);
-   }
-
-   public boolean a(etl $$0) {
-      dus $$1 = $$0.c(ewh.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
-   }
-
-   public static ewv.a a(dhm $$0) {
+   public static ewv.a a(exh.a... $$0) {
       return new ewv.a($$0);
    }
 
-   public jo<dhm> c() {
-      return this.b;
-   }
-
-   public Optional<ec> d() {
-      return this.c;
-   }
-
-   public static class a implements eww.a {
-      private final jo<dhm> a;
-      private Optional<ec> b = Optional.empty();
-
-      public a(dhm $$0) {
-         this.a = $$0.r();
+   public static class a extends ewx.a {
+      public a(exh.a... $$0) {
+         super($$0);
       }
 
-      public ewv.a a(ec.a $$0) {
-         this.b = $$0.b();
+      @Override
+      public ewv.a or(exh.a $$0) {
+         this.a($$0);
          return this;
       }
 
       @Override
-      public eww build() {
-         return new ewv(this.a, this.b);
+      protected exh a(List<exh> $$0) {
+         return new ewv($$0);
       }
    }
 }

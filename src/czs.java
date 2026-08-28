@@ -1,70 +1,90 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-
-public class czs extends dab {
-   public czs(czy $$0) {
+public class czs extends daa {
+   public czs(czx $$0) {
       super($$0);
    }
 
-   public boolean a(czz $$0, dej $$1) {
-      cvs $$2 = cvs.k;
-      List<cvs> $$3 = Lists.newArrayList();
+   public boolean a(czy $$0, dev $$1) {
+      cuu $$2 = null;
+      cvx $$3 = null;
+      cvx $$4 = null;
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvs $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axe.bD)) {
-               if (!$$2.f()) {
+      for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
+         cvx $$6 = $$0.a($$5);
+         if (!$$6.f()) {
+            cvt $$7 = $$6.h();
+            if (!($$7 instanceof ctz)) {
+               return false;
+            }
+
+            ctz $$8 = (ctz)$$7;
+            if ($$2 == null) {
+               $$2 = $$8.b();
+            } else if ($$2 != $$8.b()) {
+               return false;
+            }
+
+            int $$9 = $$6.a(kt.ah, drx.a).b().size();
+            if ($$9 > 6) {
+               return false;
+            }
+
+            if ($$9 > 0) {
+               if ($$3 != null) {
                   return false;
                }
 
-               $$2 = $$5;
+               $$3 = $$6;
             } else {
-               if (!($$5.h() instanceof cun)) {
+               if ($$4 != null) {
                   return false;
                }
 
-               $$3.add($$5);
+               $$4 = $$6;
             }
          }
       }
 
-      return !$$2.f() && !$$3.isEmpty();
+      return $$3 != null && $$4 != null;
    }
 
-   public cvs a(czz $$0, jq.a $$1) {
-      List<cun> $$2 = Lists.newArrayList();
-      cvs $$3 = cvs.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvs $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axe.bD)) {
-               if (!$$3.f()) {
-                  return cvs.k;
-               }
-
-               $$3 = $$5.u();
-            } else {
-               if (!($$5.h() instanceof cun $$6)) {
-                  return cvs.k;
-               }
-
-               $$2.add($$6);
+   public cvx a(czy $$0, jr.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+         cvx $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            int $$4 = $$3.a(kt.ah, drx.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
             }
          }
       }
 
-      return !$$3.f() && !$$2.isEmpty() ? cyk.a($$3, $$2) : cvs.k;
+      return cvx.k;
+   }
+
+   public jy<cvx> a(czy $$0) {
+      jy<cvx> $$1 = jy.a($$0.a(), cvx.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cvx $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            if ($$3.h().l()) {
+               $$1.set($$2, new cvx($$3.h().k()));
+            } else if (!$$3.a(kt.ah, drx.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public dao<?> ar_() {
+      return dao.k;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
       return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public dap<?> ar_() {
-      return dap.c;
    }
 }

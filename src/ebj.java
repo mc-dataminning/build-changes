@@ -1,167 +1,68 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+public final class ebj {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public record ebj(Map<ald<dyp>, dyp> b) {
-   public static final MapCodec<ebj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(ald.a(lw.bd), dyp.a).fieldOf("dimensions").forGetter(ebj::d)).apply($$0, $$0.stable(ebj::new))
-   );
-   private static final Set<ald<dyp>> c = ImmutableSet.of(dyp.b, dyp.c, dyp.d);
-   private static final int d = c.size();
-
-   public ebj(Map<ald<dyp>, dyp> b) {
-      dyp $$1 = b.get(dyp.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.b = b;
-      }
+   private ebj() {
    }
 
-   public ebj(kb<dyp> $$0) {
-      this($$0.c().collect(Collectors.toMap(jo.c::h, jo.c::a)));
-   }
-
-   public static Stream<ald<dyp>> a(Stream<ald<dyp>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
-   }
-
-   public ebj a(jq.a $$0, dwp $$1) {
-      jq<dyo> $$2 = $$0.d(lw.aM);
-      Map<ald<dyp>, dyp> $$3 = a($$2, this.b, $$1);
-      return new ebj($$3);
-   }
-
-   public static Map<ald<dyp>, dyp> a(jq<dyo> $$0, Map<ald<dyp>, dyp> $$1, dwp $$2) {
-      dyp $$3 = $$1.get(dyp.b);
-      jo<dyo> $$4 = (jo<dyo>)($$3 == null ? $$0.b(dym.a) : $$3.a());
-      return a($$1, $$4, $$2);
-   }
-
-   public static Map<ald<dyp>, dyp> a(Map<ald<dyp>, dyp> $$0, jo<dyo> $$1, dwp $$2) {
-      Builder<ald<dyp>, dyp> $$3 = ImmutableMap.builder();
-      $$3.putAll($$0);
-      $$3.put(dyp.b, new dyp($$1, $$2));
-      return $$3.buildKeepingLast();
-   }
-
-   public dwp a() {
-      dyp $$0 = this.b.get(dyp.b);
-      if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return $$0.b();
-      }
-   }
-
-   public Optional<dyp> a(ald<dyp> $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public ImmutableSet<ald<dej>> b() {
-      return this.d().keySet().stream().map(lw::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof eaf;
-   }
-
-   private static etd.a b(kb<dyp> $$0) {
-      return $$0.f(dyp.b).map($$0x -> {
-         dwp $$1 = $$0x.b();
-         if ($$1 instanceof eaf) {
-            return etd.a.c;
+   protected static ebd.c a(eas $$0, eas $$1, eas $$2, ebm $$3) {
+      dvd $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         ebj.a $$8 = $$6 > 0.0 ? ebj.a.a : ebj.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = azj.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               azr $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = azj.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
          } else {
-            return $$1 instanceof eaj ? etd.a.b : etd.a.a;
+            return $$4;
          }
-      }).orElse(etd.a.a);
+      };
    }
 
-   static Lifecycle a(ald<dyp> $$0, dyp $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
+   protected static enum a {
+      a(dia.ra.m(), dia.tg.m(), dia.c.m(), 0, 50),
+      b(dia.Q.m(), dia.tf.m(), dia.qz.m(), -60, -8);
 
-   private static boolean b(ald<dyp> $$0, dyp $$1) {
-      if ($$0 == dyp.b) {
-         return a($$1);
-      } else if ($$0 == dyp.c) {
-         return b($$1);
-      } else {
-         return $$0 == dyp.d ? c($$1) : false;
-      }
-   }
+      final dvd e;
+      final dvd f;
+      final dvd g;
+      protected final int c;
+      protected final int d;
 
-   private static boolean a(dyp $$0) {
-      jo<dyo> $$1 = $$0.a();
-      if (!$$1.a(dym.a) && !$$1.a(dym.d)) {
-         return false;
-      } else {
-         if ($$0.b().d() instanceof dfx $$2 && !$$2.a(dfz.b)) {
-            return false;
-         }
-
-         return true;
-      }
-   }
-
-   private static boolean b(dyp $$0) {
-      return $$0.a().a(dym.b) && $$0.b() instanceof ear $$1 && $$1.a(eat.f) && $$1.d() instanceof dfx $$2 && $$2.a(dfz.a);
-   }
-
-   private static boolean c(dyp $$0) {
-      return $$0.a().a(dym.c) && $$0.b() instanceof ear $$1 && $$1.a(eat.g) && $$1.d() instanceof dgb;
-   }
-
-   public ebj.b a(kb<dyp> $$0) {
-      Stream<ald<dyp>> $$1 = Stream.concat($$0.j().stream(), this.b.keySet().stream()).distinct();
-
-      record a(ald<dyp> a, dyp b) {
-
-         ka c() {
-            return new ka(Optional.empty(), ebj.a(this.a, this.b));
-         }
-      }
-
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.f($$2x).or(() -> Optional.ofNullable(this.b.get($$2x))).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      kk<dyp> $$4 = new jw<>(lw.bd, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      kb<dyp> $$5 = $$4.n();
-      etd.a $$6 = b($$5);
-      return new ebj.b($$5.n(), $$6);
-   }
-
-   public Map<ald<dyp>, dyp> d() {
-      return this.b;
-   }
-
-   public static record b(kb<dyp> a, etd.a b) {
-      public Lifecycle a() {
-         return this.a.h();
-      }
-
-      public kc.b b() {
-         return new kc.c(List.of(this.a)).e();
-      }
-
-      public kb<dyp> c() {
-         return this.a;
-      }
-
-      public etd.a d() {
-         return this.b;
+      private a(final dvd $$0, final dvd $$1, final dvd $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
       }
    }
 }

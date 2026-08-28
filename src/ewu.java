@@ -1,51 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record ewu(Optional<df> b, jf c) implements eww {
-   private static final MapCodec<jf> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kj::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kj::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kj::w)
-            )
-            .apply($$0, jf::new)
-   );
-   public static final MapCodec<ewu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(df.a.optionalFieldOf("predicate").forGetter(ewu::c), g.forGetter(ewu::d)).apply($$0, ewu::new)
-   );
+public class ewu extends ewx {
+   public static final MapCodec<ewu> a = a(ewu::new);
+   public static final Codec<ewu> b = b(ewu::new);
 
-   @Override
-   public ewx b() {
-      return ewy.n;
+   ewu(List<exh> $$0) {
+      super($$0, ad.a($$0));
    }
 
-   public boolean a(etl $$0) {
-      eyw $$1 = $$0.c(ewh.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   public static ewu a(List<exh> $$0) {
+      return new ewu(List.copyOf($$0));
    }
 
    @Override
-   public Set<ewe<?>> a() {
-      return Set.of(ewh.f);
+   public exi b() {
+      return exj.c;
    }
 
-   public static eww.a a(df.a $$0) {
-      return () -> new ewu(Optional.of($$0.b()), jf.c);
+   public static ewu.a a(exh.a... $$0) {
+      return new ewu.a($$0);
    }
 
-   public static eww.a a(df.a $$0, jf $$1) {
-      return () -> new ewu(Optional.of($$0.b()), $$1);
-   }
+   public static class a extends ewx.a {
+      public a(exh.a... $$0) {
+         super($$0);
+      }
 
-   public Optional<df> c() {
-      return this.b;
-   }
+      @Override
+      public ewu.a and(exh.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public jf d() {
-      return this.c;
+      @Override
+      protected exh a(List<exh> $$0) {
+         return new ewu($$0);
+      }
    }
 }

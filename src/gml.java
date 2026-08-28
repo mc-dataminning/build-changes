@@ -1,23 +1,37 @@
-public class gml extends gmj<chm, gsw, fwk> {
-   private static final ale a = ale.b("textures/entity/armadillo.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gml(gno.a $$0) {
-      super($$0, new fwk($$0.a(gap.b)), new fwk($$0.a(gap.c)), 0.4F);
+public class gml implements glw.a {
+   private static final int a = 60;
+   private final Set<ki> b = Sets.newHashSet();
+
+   gml() {
    }
 
-   public ale a(gsw $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public gsw a() {
-      return new gsw();
+   public void a(ki $$0) {
+      this.b.add($$0);
    }
 
-   public void a(chm $$0, gsw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.y();
-      $$1.d.a($$0.ce);
-      $$1.b.a($$0.cc);
-      $$1.c.a($$0.cd);
+   public void b(ki $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fdt $$0, ghw $$1, double $$2, double $$3, double $$4) {
+      jg $$5 = jg.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fdt $$0, ghw $$1, ki $$2) {
+      glw.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

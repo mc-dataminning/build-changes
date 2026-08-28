@@ -1,29 +1,37 @@
-public class aey implements zl<aca> {
-   public static final zc<wb, aey> a = zl.a(aey::a, aey::new);
-   private final int b;
+public class aey implements zo<acd> {
+   public static final zf<we, aey> a = zo.a(aey::a, aey::new);
+   private final double b;
+   private final double c;
 
-   public aey(dwj $$0) {
-      this.b = $$0.q();
+   public aey(dwu $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private aey(wb $$0) {
-      this.b = $$0.l();
+   private aey(we $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
-   private void a(wb $$0) {
-      $$0.c(this.b);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<aey> a() {
-      return agp.av;
+   public zq<aey> a() {
+      return ags.as;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
+      return this.c;
+   }
+
+   public double e() {
       return this.b;
    }
 }

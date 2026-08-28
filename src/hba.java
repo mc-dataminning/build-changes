@@ -1,47 +1,16 @@
-import javax.annotation.Nullable;
-
-public interface hba {
-   ale a();
-
-   @Nullable
-   hcg a(hcf var1);
-
-   hax b();
-
-   awh c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hba.a k();
-
-   default boolean r() {
-      return false;
+public class hba extends hbc {
+   public hba(cgn $$0) {
+      super($$0, awk.bQ, awl.g);
+      this.j = 0;
    }
 
-   default boolean s() {
-      return true;
+   @Override
+   protected hay o() {
+      return new hbb(this.n);
    }
 
-   static azn t() {
-      return azn.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected boolean p() {
+      return !this.n.ae_();
    }
 }

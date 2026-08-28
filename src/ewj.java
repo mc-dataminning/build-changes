@@ -1,42 +1,33 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class ewj extends ewm {
-   public static final MapCodec<ewj> a = a(ewj::new);
-   public static final Codec<ewj> b = b(ewj::new);
+public class ewj extends evj {
+   public static final MapCodec<ewj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(czc.d.fieldOf("pages").forGetter($$0x -> $$0x.b), evi.a(100).forGetter($$0x -> $$0x.c))).apply($$0, ewj::new)
+   );
+   private final List<ase<String>> b;
+   private final evi c;
 
-   ewj(List<eww> $$0) {
-      super($$0, ad.a($$0));
-   }
-
-   public static ewj a(List<eww> $$0) {
-      return new ewj(List.copyOf($$0));
+   protected ewj(List<exh> $$0, List<ase<String>> $$1, evi $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public ewx b() {
-      return ewy.c;
+   protected cvx a(cvx $$0, etw $$1) {
+      $$0.a(kt.R, czc.a, this::a);
+      return $$0;
    }
 
-   public static ewj.a a(eww.a... $$0) {
-      return new ewj.a($$0);
+   public czc a(czc $$0) {
+      List<ase<String>> $$1 = this.c.a($$0.a(), this.b, 100);
+      return $$0.b($$1);
    }
 
-   public static class a extends ewm.a {
-      public a(eww.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public ewj.a and(eww.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected eww a(List<eww> $$0) {
-         return new ewj($$0);
-      }
+   @Override
+   public evl<ewj> b() {
+      return evm.O;
    }
 }

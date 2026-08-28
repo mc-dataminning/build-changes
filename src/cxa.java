@@ -1,46 +1,59 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class cxa extends ctu implements cuk {
-   private final awf a;
+public class cxa extends cuq {
+   protected static final Map<dhy, dvd> a = Maps.newHashMap(
+      new Builder()
+         .put(dia.i, dia.kE.m())
+         .put(dia.j, dia.kE.m())
+         .put(dia.l, dia.kE.m())
+         .put(dia.k, dia.kE.m())
+         .put(dia.fl, dia.kE.m())
+         .put(dia.sH, dia.kE.m())
+         .build()
+   );
 
-   public cxa(dhm $$0, awf $$1, cvn.a $$2) {
-      super($$0, $$2);
-      this.a = $$1;
+   public cxa(cxo $$0, float $$1, float $$2, cvt.a $$3) {
+      super($$0, awz.bE, $$1, $$2, $$3);
    }
 
    @Override
-   public brs a(czp $$0) {
-      brs $$1 = super.a($$0);
-      cnx $$2 = $$0.o();
-      if ($$1.a() && $$2 != null) {
-         $$2.a($$0.p(), cua.a($$0.n(), $$2));
-      }
+   public bry a(czo $$0) {
+      dev $$1 = $$0.q();
+      jg $$2 = $$0.a();
+      dvd $$3 = $$1.a_($$2);
+      if ($$0.k() == jl.a) {
+         return bry.e;
+      } else {
+         coh $$4 = $$0.o();
+         dvd $$5 = a.get($$3.b());
+         dvd $$6 = null;
+         if ($$5 != null && $$1.a_($$2.d()).l()) {
+            $$1.a($$4, $$2, awk.wJ, awl.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof dim && $$3.c(dim.c)) {
+            if (!$$1.y_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
 
-      return $$1;
-   }
-
-   @Override
-   public String a() {
-      return this.s();
-   }
-
-   @Override
-   protected awf a(dus $$0) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(@Nullable cnx $$0, dej $$1, jf $$2, @Nullable eys $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.B) {
-            $$1.a($$2, this.d().n(), 3);
+            dim.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.b(dim.c, Boolean.valueOf(false));
          }
 
-         $$1.a($$0, dzp.z, $$2);
-         $$1.a($$0, $$2, this.a, awh.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+         if ($$6 != null) {
+            if (!$$1.C) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(eaa.c, $$2, eaa.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, buv.d($$0.p()));
+               }
+            }
+
+            return bry.a;
+         } else {
+            return bry.e;
+         }
       }
    }
 }

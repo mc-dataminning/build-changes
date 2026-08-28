@@ -1,4 +1,3 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -8,56 +7,51 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fp implements ArgumentType<fae> {
-   private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xe.b("argument.criteria.invalid", $$0));
-
-   private fp() {
-   }
+public class fp implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("foo", "*", "012");
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xh.b("arguments.objective.notFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xh.b("arguments.objective.readonly", $$0));
 
    public static fp a() {
       return new fp();
    }
 
-   public static fae a(CommandContext<eu> $$0, String $$1) {
-      return (fae)$$0.getArgument($$1, fae.class);
+   public static fae a(CommandContext<ev> $$0, String $$1) throws CommandSyntaxException {
+      String $$2 = (String)$$0.getArgument($$1, String.class);
+      fam $$3 = ((ev)$$0.getSource()).l().aJ();
+      fae $$4 = $$3.a($$2);
+      if ($$4 == null) {
+         throw b.create($$2);
+      } else {
+         return $$4;
+      }
    }
 
-   public fae a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && $$0.peek() != ' ') {
-         $$0.skip();
+   public static fae b(CommandContext<ev> $$0, String $$1) throws CommandSyntaxException {
+      fae $$2 = a($$0, $$1);
+      if ($$2.c().e()) {
+         throw c.create($$2.b());
+      } else {
+         return $$2;
       }
+   }
 
-      String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-      return fae.a($$2).orElseThrow(() -> {
-         $$0.setCursor($$1);
-         return a.createWithContext($$0, $$2);
-      });
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      return $$0.readUnquotedString();
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList(fae.c());
-
-      for (awp<?> $$3 : lv.v) {
-         for (Object $$4 : $$3.b()) {
-            String $$5 = this.a($$3, $$4);
-            $$2.add($$5);
-         }
+      S $$2 = (S)$$0.getSource();
+      if ($$2 instanceof ev $$3) {
+         return fa.b($$3.l().aJ().d(), $$1);
+      } else {
+         return $$2 instanceof fa $$4 ? $$4.a($$0) : Suggestions.empty();
       }
-
-      return ez.b($$2, $$1);
-   }
-
-   public <T> String a(awp<T> $$0, Object $$1) {
-      return awn.a($$0, (T)$$1);
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 }

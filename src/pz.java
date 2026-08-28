@@ -1,35 +1,61 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public abstract class pz extends py<cvn> {
-   private final CompletableFuture<qd.c<dhm>> d;
-   private final Map<axl<dhm>, axl<cvn>> g = new HashMap<>();
+public class pz extends qg<eaa> {
+   @VisibleForTesting
+   static final List<alg<eaa>> d = List.of(
+      eaa.b.h(),
+      eaa.c.h(),
+      eaa.d.h(),
+      eaa.f.h(),
+      eaa.g.h(),
+      eaa.h.h(),
+      eaa.i.h(),
+      eaa.a.h(),
+      eaa.e.h(),
+      eaa.j.h(),
+      eaa.k.h(),
+      eaa.l.h(),
+      eaa.m.h(),
+      eaa.n.h(),
+      eaa.o.h(),
+      eaa.p.h(),
+      eaa.q.h(),
+      eaa.r.h(),
+      eaa.s.h(),
+      eaa.t.h(),
+      eaa.u.h(),
+      eaa.v.h(),
+      eaa.w.h(),
+      eaa.y.h(),
+      eaa.z.h(),
+      eaa.A.h(),
+      eaa.B.h(),
+      eaa.C.h(),
+      eaa.G.h(),
+      eaa.H.h(),
+      eaa.I.h(),
+      eaa.J.h(),
+      eaa.K.h(),
+      eaa.M.h(),
+      eaa.O.h(),
+      eaa.P.h(),
+      eaa.Q.h(),
+      eaa.R.h(),
+      eaa.S.h()
+   );
 
-   public pz(me $$0, CompletableFuture<jq.a> $$1, CompletableFuture<qd.c<dhm>> $$2) {
-      super($$0, lw.K, $$1, $$0x -> $$0x.n().h());
-      this.d = $$2;
-   }
-
-   public pz(me $$0, CompletableFuture<jq.a> $$1, CompletableFuture<qd.c<cvn>> $$2, CompletableFuture<qd.c<dhm>> $$3) {
-      super($$0, lw.K, $$1, $$2, $$0x -> $$0x.n().h());
-      this.d = $$3;
-   }
-
-   protected void a(axl<dhm> $$0, axl<cvn> $$1) {
-      this.g.put($$0, $$1);
+   public pz(mg $$0, CompletableFuture<jr.a> $$1) {
+      super($$0, ly.G, $$1);
    }
 
    @Override
-   protected CompletableFuture<jq.a> b() {
-      return super.b().thenCombine(this.d, ($$0, $$1) -> {
-         this.g.forEach(($$1x, $$2) -> {
-            axi $$3 = this.c((axl<cvn>)$$2);
-            Optional<axi> $$4 = $$1.apply($$1x);
-            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
-         });
-         return (jq.a)$$0;
-      });
+   protected void a(jr.a $$0) {
+      this.b(axg.a).a(d).a(eaj.f_).a(eaa.x.h());
+      this.b(axg.c).a(eaa.L.h());
+      this.b(axg.b).a(d).a(eaj.f_).a(eaa.N.h()).b(axg.c);
+      this.b(axg.d).a(eaa.A.h(), eaa.K.h(), eaa.P.h(), eaa.Q.h(), eaa.D.h(), eaa.C.h());
+      this.b(axg.e).a(eaa.H.h());
    }
 }

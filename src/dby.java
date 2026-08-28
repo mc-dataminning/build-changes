@@ -1,88 +1,54 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
+import java.util.Optional;
 
-public interface dby {
-   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
-      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
-   }
+public record dby(jt<btc> d, dbt e, dbt f, dbt g, dbt h) implements dcd {
+   public static final MapCodec<dby> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ke.a(ly.W).fieldOf("to_apply").forGetter(dby::b),
+               dbt.b.fieldOf("min_duration").forGetter(dby::c),
+               dbt.b.fieldOf("max_duration").forGetter(dby::d),
+               dbt.b.fieldOf("min_amplifier").forGetter(dby::e),
+               dbt.b.fieldOf("max_amplifier").forGetter(dby::f)
+            )
+            .apply($$0, dby::new)
+   );
 
-   static dby.a a(dce... $$0) {
-      return new dby.a(List.of($$0));
-   }
-
-   static dby.b a(dcf... $$0) {
-      return new dby.b(List.of($$0));
-   }
-
-   static dby.c a(dcg... $$0) {
-      return new dby.c(List.of($$0));
-   }
-
-   public static record a(List<dce> d) implements dce {
-      public static final MapCodec<dby.a> a = dby.a(dce.b, dby.a::new, dby.a::b);
-
-      @Override
-      public void a(arj $$0, int $$1, dbm $$2, btr $$3, eyw $$4) {
-         for (dce $$5 : this.d) {
-            $$5.a($$0, $$1, $$2, $$3, $$4);
+   @Override
+   public void a(arm $$0, int $$1, dbl $$2, btz $$3, ezh $$4) {
+      if ($$3 instanceof buv $$5) {
+         azr $$6 = $$5.ea();
+         Optional<jp<btc>> $$7 = this.d.a($$6);
+         if ($$7.isPresent()) {
+            int $$8 = Math.round(azj.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
+            int $$9 = Math.max(0, Math.round(azj.b($$6, this.g.a($$1), this.h.a($$1))));
+            $$5.a(new bte($$7.get(), $$8, $$9));
          }
       }
-
-      @Override
-      public MapCodec<dby.a> a() {
-         return a;
-      }
-
-      public List<dce> b() {
-         return this.d;
-      }
    }
 
-   public static record b(List<dcf> b) implements dcf {
-      public static final MapCodec<dby.b> a = dby.a(dcf.c, dby.b::new, dby.b::b);
-
-      @Override
-      public void a(arj $$0, int $$1, dbm $$2, btr $$3, eyw $$4, boolean $$5) {
-         for (dcf $$6 : this.b) {
-            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
-      }
-
-      @Override
-      public void a(dbm $$0, btr $$1, eyw $$2, int $$3) {
-         for (dcf $$4 : this.b) {
-            $$4.a($$0, $$1, $$2, $$3);
-         }
-      }
-
-      @Override
-      public MapCodec<dby.b> a() {
-         return a;
-      }
+   @Override
+   public MapCodec<dby> a() {
+      return a;
    }
 
-   public static record c(List<dcg> c) implements dcg {
-      public static final MapCodec<dby.c> a = dby.a(dcg.b, dby.c::new, dby.c::b);
+   public jt<btc> b() {
+      return this.d;
+   }
 
-      @Override
-      public float a(int $$0, azn $$1, float $$2) {
-         for (dcg $$3 : this.c) {
-            $$2 = $$3.a($$0, $$1, $$2);
-         }
+   public dbt c() {
+      return this.e;
+   }
 
-         return $$2;
-      }
+   public dbt d() {
+      return this.f;
+   }
 
-      @Override
-      public MapCodec<dby.c> a() {
-         return a;
-      }
+   public dbt e() {
+      return this.g;
+   }
 
-      public List<dcg> b() {
-         return this.c;
-      }
+   public dbt f() {
+      return this.h;
    }
 }

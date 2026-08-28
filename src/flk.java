@@ -1,62 +1,50 @@
-import javax.annotation.Nullable;
+public class flk extends flt {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public abstract class flk<E extends flk.a<E>> extends fkj<E> {
-   private static final xe a = xe.c("narration.selection.usage");
-
-   public flk(fip $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public flk(int $$0, xh $$1, fkk $$2) {
+      this($$0, $$1, $$2, 4);
    }
 
-   @Nullable
-   @Override
-   public fjy a(fos $$0) {
-      if (this.l() == 0) {
-         return null;
-      } else if (this.aN_() && $$0 instanceof fos.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? fjy.a(this, fjy.a($$2)) : null;
-      } else if (!this.aN_()) {
-         E $$3 = this.h();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
+   public flk(int $$0, xh $$1, fkk $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
+   }
 
-         return $$3 == null ? null : fjy.a(this, fjy.a($$3));
-      } else {
-         return null;
-      }
+   public flk(int $$0, xh $$1, fkk $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   public void a(fol $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.h();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aN_()) {
-         $$0.a(fok.d, a);
-      }
+   protected void a(fox $$0) {
+      $$0.a(fow.a, this.z());
    }
 
-   public abstract static class a<E extends flk.a<E>> extends fkj.a<E> implements fom {
-      public abstract xe a();
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
+   @Override
+   public void b(fkm $$0, int $$1, int $$2, float $$3) {
+      if (this.aN_() || this.b) {
+         int $$4 = this.D() - this.c;
+         int $$5 = this.E() - this.c;
+         int $$6 = this.y() + this.c * 2;
+         int $$7 = this.w() + this.c * 2;
+         int $$8 = this.b ? (this.aN_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
       }
 
-      @Override
-      public void b(fol $$0) {
-         $$0.a(fok.a, this.a());
-      }
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(hcu $$0) {
    }
 }

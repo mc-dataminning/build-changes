@@ -1,81 +1,72 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 public class emm extends emo {
    public static final MapCodec<emm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(emo.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), e()).apply($$0, emm::new)
-   );
-   private final List<emo> b;
+         $$0 -> a($$0)
+               .and(
+                  $$0.group(
+                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(emm::a),
+                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(emm::b),
+                     emn.c.optionalFieldOf("spread_type", emn.a).forGetter(emm::c)
+                  )
+               )
+               .apply($$0, emm::new)
+      )
+      .validate(emm::a);
+   private final int c;
+   private final int d;
+   private final emn e;
 
-   public emm(List<emo> $$0, emq.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
+   private static DataResult<emm> a(emm $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   }
+
+   public emm(kk $$0, emo.c $$1, float $$2, int $$3, Optional<emo.a> $$4, int $$5, int $$6, emn $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
+
+   public emm(int $$0, int $$1, emn $$2, int $$3) {
+      this(kk.g, emo.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public emn c() {
+      return this.e;
+   }
+
+   public deb a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      eby $$5 = new eby(new eba(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new deb($$3 * this.c + $$7, $$4 * this.c + $$8);
    }
 
    @Override
-   public kj a(epj $$0, doa $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (emo $$5 : this.b) {
-         kj $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
-      }
-
-      return new kj($$2, $$3, $$4);
+   protected boolean a(dxb $$0, int $$1, int $$2) {
+      deb $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.e == $$1 && $$3.f == $$2;
    }
 
    @Override
-   public List<epi.c> a(epj $$0, jf $$1, doa $$2, azn $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public eky a(epj $$0, jf $$1, doa $$2) {
-      Stream<eky> $$3 = this.b.stream().filter($$0x -> $$0x != emh.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return eky.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
-
-   @Override
-   public boolean a(epj $$0, dfg $$1, dfe $$2, dwp $$3, jf $$4, jf $$5, doa $$6, eky $$7, azn $$8, eos $$9, boolean $$10) {
-      for (emo $$11 : this.b) {
-         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public emp<?> a() {
-      return emp.b;
-   }
-
-   @Override
-   public emo a(emq.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
-   }
-
-   @Override
-   public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
-   }
-
-   private void b(emq.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+   public emp<?> e() {
+      return emp.a;
    }
 }

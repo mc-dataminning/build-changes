@@ -1,14 +1,29 @@
-import com.mojang.serialization.MapCodec;
+public enum dzu {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public interface dzu<T extends dzt> {
-   dzu<dzl> a = a("block", new dzl.a());
-   dzu<dzn> b = a("entity", new dzn.a());
+   private final boolean d;
+   private final boolean e;
 
-   MapCodec<T> a();
+   private dzu(final boolean $$0, final boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
 
-   zc<? super wp, T> b();
+   public boolean a() {
+      return this.e;
+   }
 
-   static <S extends dzu<T>, T extends dzt> S a(String $$0, S $$1) {
-      return kb.a(lv.t, $$0, $$1);
+   public boolean b() {
+      return this.d;
+   }
+
+   public static dzu a(arc $$0) {
+      if ($$0.a(arc.d)) {
+         return c;
+      } else {
+         return $$0.a(arc.b) ? b : a;
+      }
    }
 }

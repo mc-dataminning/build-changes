@@ -1,31 +1,35 @@
-public record aay(jf c, String d, int e) implements aao {
-   public static final zc<wb, aay> a = aao.a(aay::a, aay::new);
-   public static final aao.b<aay> b = aao.a("debug/poi_added");
+public record aay(aay.a c) implements aar {
+   public static final zf<we, aay> a = aar.a(aay::a, aay::new);
+   public static final aar.b<aay> b = aar.a("debug/hive");
 
-   private aay(wb $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+   private aay(we $$0) {
+      this(new aay.a($$0));
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.q(this.e);
+   private void a(we $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public aao.b<aay> a() {
+   public aar.b<aay> a() {
       return b;
    }
 
-   public jf b() {
+   public aay.a b() {
       return this.c;
    }
 
-   public String c() {
-      return this.d;
-   }
+   public static record a(jg a, String b, int c, int d, boolean e) {
+      public a(we $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
 
-   public int d() {
-      return this.e;
+      public void a(we $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.q(this.c);
+         $$0.q(this.d);
+         $$0.a(this.e);
+      }
    }
 }

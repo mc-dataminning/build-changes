@@ -1,22 +1,14 @@
-public class gmp extends gou<cfx, gta, fwr> {
-   private static final ale a = ale.b("textures/entity/bat.png");
-
-   public gmp(gno.a $$0) {
-      super($$0, new fwr($$0.a(gap.n)), 0.25F);
+public abstract class gmp<T extends bux & cms> extends gmu<T, guq, fyj> {
+   public gmp(gnz.a $$0, gaz $$1, gaz $$2, float $$3) {
+      super($$0, new fyj($$0.a($$1)), new fyj($$0.a($$2)), $$3);
    }
 
-   public ale a(gta $$0) {
-      return a;
+   public guq a() {
+      return new guq();
    }
 
-   public gta a() {
-      return new gta();
-   }
-
-   public void a(cfx $$0, gta $$1, float $$2) {
+   public void a(T $$0, guq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.d);
-      $$1.c.a($$0.e);
+      $$1.a = $$0.gv();
    }
 }

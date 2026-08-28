@@ -1,30 +1,73 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
 
-public class fei extends ffc {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
-
-   public static fei a(JsonObject $$0) {
-      fei $$1 = new fei();
-
-      try {
-         $$1.a = fgz.b("invitationId", $$0, "");
-         $$1.b = fgz.b("worldName", $$0, "");
-         $$1.c = fgz.b("worldOwnerName", $$0, "");
-         $$1.d = fgz.a("worldOwnerUuid", $$0, ad.e);
-         $$1.e = fgz.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+public class fei {
+   public static List<ffi> a(fei.a... $$0) {
+      for (fei.a $$1 : $$0) {
+         a($$1.j);
       }
 
-      return $$1;
+      List<ffi> $$2 = Lists.newArrayList();
+
+      for (fei.a $$3 : $$0) {
+         $$2.add(new ffi($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(ffi::a));
+      return $$2;
+   }
+
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
+
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
+         }
+      }
+
+      return (int)((double)$$2 / 5.0);
+   }
+
+   private static long b() {
+      return ad.c();
+   }
+
+   public static List<ffi> a() {
+      return a(fei.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(final String $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
    }
 }

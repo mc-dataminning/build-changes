@@ -1,60 +1,56 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cwr extends ctu {
-   public cwr(dhm $$0, cvn.a $$1) {
-      super($$0, $$1);
+public class cwr extends cvt {
+   public cwr(cvt.a $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public czn b(czn $$0) {
-      jf $$1 = $$0.a();
-      dej $$2 = $$0.q();
-      dus $$3 = $$2.a_($$1);
-      dhm $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return doc.a($$2, $$1) == 7 ? null : $$0;
+   public cvx o() {
+      cvx $$0 = super.o();
+      $$0.b(kt.P, new cxw(cxx.a));
+      return $$0;
+   }
+
+   @Override
+   public bry a(czo $$0) {
+      dev $$1 = $$0.q();
+      jg $$2 = $$0.a();
+      coh $$3 = $$0.o();
+      cvx $$4 = $$0.n();
+      cxw $$5 = $$4.a(kt.P, cxw.a);
+      dvd $$6 = $$1.a_($$2);
+      if ($$0.k() != jl.a && $$6.a(awz.ck) && $$5.a(cxx.a)) {
+         $$1.a(null, $$2, awk.kj, awl.e, 1.0F, 1.0F);
+         $$3.a($$0.p(), cwa.a($$4, $$3, new cvx(cwb.sl)));
+         $$3.b(awu.c.b($$4.h()));
+         if (!$$1.C) {
+            arm $$7 = (arm)$$1;
+
+            for (int $$8 = 0; $$8 < 5; $$8++) {
+               $$7.a(lq.am, (double)$$2.u() + $$1.A.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.A.j(), 1, 0.0, 0.0, 0.0, 1.0);
+            }
+         }
+
+         $$1.a(null, $$2, awk.cB, awl.e, 1.0F, 1.0F);
+         $$1.a(null, eaa.z, $$2);
+         $$1.b($$2, dia.sI.m());
+         return bry.a;
       } else {
-         jk $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == jk.b ? $$0.g() : jk.b;
-         }
-
-         int $$7 = 0;
-         jf.a $$8 = $$1.k().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.k($$8)) {
-               cnx $$9 = $$0.o();
-               int $$10 = $$2.an();
-               if ($$9 instanceof ark && $$8.v() > $$10) {
-                  ((ark)$$9).b(xe.a("build.tooHigh", $$10).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return czn.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+         return bry.e;
       }
    }
 
    @Override
-   protected boolean c() {
-      return false;
+   public xh c_(cvx $$0) {
+      return $$0.a(kt.P, cxw.a).e().map($$0x -> xh.c(this.k + ".effect." + ((cxu)$$0x.a()).b())).orElseGet(() -> xh.c(this.k + ".effect.empty"));
+   }
+
+   @Override
+   public void a(cvx $$0, cvt.b $$1, List<xh> $$2, cxp $$3) {
+      cxw $$4 = $$0.a(kt.P);
+      if ($$4 != null) {
+         $$4.a($$2::add, 1.0F, $$1.b());
+      }
    }
 }

@@ -1,31 +1,76 @@
+import java.util.function.Predicate;
+
 public class ded {
-   private static int[] a = new int[65536];
+   private final ezh a;
+   private final ezh b;
+   private final ded.a c;
+   private final ded.b d;
+   private final ezm e;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+   public ded(ezh $$0, ezh $$1, ded.a $$2, ded.b $$3, btz $$4) {
+      this($$0, $$1, $$2, $$3, ezm.a($$4));
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? c() : a[$$4];
+   public ded(ezh $$0, ezh $$1, ded.a $$2, ded.b $$3, ezm $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static int a() {
-      return -10380959;
+   public ezh a() {
+      return this.b;
    }
 
-   public static int b() {
-      return -8345771;
+   public ezh b() {
+      return this.a;
    }
 
-   public static int c() {
-      return -12012264;
+   public fab a(dvd $$0, dea $$1, jg $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
    }
 
-   public static int d() {
-      return -7158200;
+   public fab a(ere $$0, dea $$1, jg $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : ezy.a();
+   }
+
+   public static enum a implements ded.c {
+      a(dvc.a::b),
+      b(dvc.a::a),
+      c(dvc.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(awz.aR) ? ezy.b() : ezy.a());
+
+      private final ded.c e;
+
+      private a(final ded.c $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public fab get(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
+      }
+   }
+
+   public static enum b {
+      a($$0 -> false),
+      b(ere::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(axf.a));
+
+      private final Predicate<ere> e;
+
+      private b(final Predicate<ere> $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a(ere $$0) {
+         return this.e.test($$0);
+      }
+   }
+
+   public interface c {
+      fab get(dvd var1, dea var2, jg var3, ezm var4);
    }
 }

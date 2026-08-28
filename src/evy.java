@@ -1,33 +1,52 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
+import java.util.Optional;
 
-public class evy extends euy {
+public class evy extends evj {
    public static final MapCodec<evy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(czd.d.fieldOf("pages").forGetter($$0x -> $$0x.b), eux.a(100).forGetter($$0x -> $$0x.c))).apply($$0, evy::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  cyk.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  cyk.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  cyk.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, evy::new)
    );
-   private final List<asa<String>> b;
-   private final eux c;
+   public static final cyk b = new cyk(cyk.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<cyk.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   protected evy(List<eww> $$0, List<asa<String>> $$1, eux $$2) {
+   public evy(List<exh> $$0, Optional<cyk.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   protected cvs a(cvs $$0, etl $$1) {
-      $$0.a(ks.N, czd.a, this::a);
+   protected cvx a(cvx $$0, etw $$1) {
+      $$0.a(kt.ad, b, this::a);
       return $$0;
    }
 
-   public czd a(czd $$0) {
-      List<asa<String>> $$1 = this.c.a($$0.a(), this.b, 100);
-      return $$0.b($$1);
+   private cyk a(cyk $$0) {
+      return new cyk(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
    @Override
-   public eva<evy> b() {
-      return evb.O;
+   public evl<evy> b() {
+      return evm.L;
    }
 }

@@ -1,75 +1,81 @@
-public class cpa extends coy {
-   private static final btu b = btu.c(0.0F, 0.0F);
-
-   public cpa(bty<? extends cpa> $$0, dej $$1) {
+public class cpa extends cpb {
+   public cpa(bug<? extends cpa> $$0, dev $$1) {
       super($$0, $$1);
    }
 
-   public cpa(dej $$0, bun $$1, cvs $$2) {
-      super(bty.C, $$1, $$0, $$2);
-   }
-
-   public cpa(dej $$0, double $$1, double $$2, double $$3, cvs $$4) {
-      super(bty.C, $$1, $$2, $$3, $$0, $$4);
+   public cpa(dev $$0, cit $$1) {
+      this(bug.ao, $$0);
+      this.c($$1);
+      this.a_(
+         $$1.dC() - (double)($$1.ds() + 1.0F) * 0.5 * (double)azj.a($$1.aU * (float) (Math.PI / 180.0)),
+         $$1.dG() - 0.1F,
+         $$1.dI() + (double)($$1.ds() + 1.0F) * 0.5 * (double)azj.b($$1.aU * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
+   protected double be() {
+      return 0.06;
+   }
 
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dS()
-               .a(
-                  new lk(lo.S, this.m()),
-                  this.dx(),
-                  this.dz(),
-                  this.dD(),
-                  ((double)this.af.i() - 0.5) * 0.08,
-                  ((double)this.af.i() - 0.5) * 0.08,
-                  ((double)this.af.i() - 0.5) * 0.08
-               );
+   @Override
+   public void l() {
+      super.l();
+      ezh $$0 = this.dA();
+      ezf $$1 = cpd.a(this, this::b);
+      this.b($$1);
+      double $$2 = this.dC() + $$0.d;
+      double $$3 = this.dE() + $$0.e;
+      double $$4 = this.dI() + $$0.f;
+      this.G();
+      float $$5 = 0.99F;
+      if (this.dX().a(this.cS()).noneMatch(dvc.a::l)) {
+         this.au();
+      } else if (this.bn()) {
+         this.au();
+      } else {
+         this.h($$0.c(0.99F));
+         this.bg();
+         this.a_($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected void a(eze $$0) {
+      super.a($$0);
+      if (this.s() instanceof buv $$1) {
+         btz $$2 = $$0.a();
+         bsp $$3 = this.dY().b(this, $$1);
+         if ($$2.a($$3, 1.0F) && this.dX() instanceof arm $$4) {
+            dbo.a($$4, $$2, $$3);
          }
       }
    }
 
    @Override
-   protected void a(eyt $$0) {
+   protected void a(ezd $$0) {
       super.a($$0);
-      $$0.a().a(this.dT().b(this, this.s()), 0.0F);
-   }
-
-   @Override
-   protected void a(eyu $$0) {
-      super.a($$0);
-      if (!this.dS().B) {
-         if (this.af.a(8) == 0) {
-            int $$1 = 1;
-            if (this.af.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cgi $$3 = bty.t.a(this.dS(), btx.k);
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dx(), this.dz(), this.dD(), this.dI(), 0.0F);
-                  if (!$$3.a(b)) {
-                     break;
-                  }
-
-                  this.dS().b($$3);
-               }
-            }
-         }
-
-         this.dS().a(this, (byte)3);
-         this.as();
+      if (!this.dX().C) {
+         this.au();
       }
    }
 
    @Override
-   protected cvn o() {
-      return cvw.qS;
+   protected void a(ako.a $$0) {
+   }
+
+   @Override
+   public void a(ace $$0) {
+      super.a($$0);
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dX().a(lq.ah, this.dC(), this.dE(), this.dI(), $$1 * $$5, $$2, $$3 * $$5);
+      }
+
+      this.n($$1, $$2, $$3);
    }
 }

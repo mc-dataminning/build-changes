@@ -1,35 +1,121 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class gxs implements gxk {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<gxs> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ale.a.fieldOf("resource").forGetter($$0x -> $$0x.d), ale.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gxs::new)
-   );
-   private final ale d;
-   private final Optional<ale> e;
+public class gxs {
+   private final alh a;
+   private final gxm b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   public gxs(ale $$0, Optional<ale> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   protected gxs(alh $$0, gxm $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public gxm e() {
+      return this.b;
+   }
+
+   @Nullable
+   public gxs.a f() {
+      final gxo $$0 = this.b.e();
+      return $$0 != null ? new gxs.a() {
+         @Override
+         public void a() {
+            $$0.a(gxs.this.c, gxs.this.d);
+         }
+
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
+   }
+
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public alh i() {
+      return this.a;
    }
 
    @Override
-   public void a(auv $$0, gxk.a $$1) {
-      ale $$2 = a.a(this.d);
-      Optional<aut> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
    }
 
-   @Override
-   public gxm a() {
-      return gxn.a;
+   public void j() {
+      this.b.a(this.c, this.d);
+   }
+
+   private float l() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
+   }
+
+   public float k() {
+      return 4.0F / this.l();
+   }
+
+   public fdx a(fdx $$0) {
+      return new git($$0, this);
+   }
+
+   public interface a extends AutoCloseable {
+      void a();
+
+      @Override
+      void close();
    }
 }

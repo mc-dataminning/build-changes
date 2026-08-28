@@ -1,30 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record egl(int b, int c, int d, jo<ekk> e) implements efy {
+public class egl implements egj {
    public static final Codec<egl> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayo.l.fieldOf("tries").orElse(128).forGetter(egl::a),
-               ayo.k.fieldOf("xz_spread").orElse(7).forGetter(egl::b),
-               ayo.k.fieldOf("y_spread").orElse(3).forGetter(egl::c),
-               ekk.b.fieldOf("feature").forGetter(egl::d)
+               eik.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
+               eik.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
             )
             .apply($$0, egl::new)
    );
+   public final eik b;
+   public final eik c;
+   public final int d;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public jo<ekk> d() {
-      return this.e;
+   public egl(eik $$0, eik $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

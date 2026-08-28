@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public enum am implements bab {
+public enum am implements baf {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<am> d = bab.a(am::values);
+   public static final Codec<am> d = baf.a(am::values);
    private final String e;
    private final n f;
-   private final xe g;
+   private final xh g;
 
    private am(final String $$0, final n $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = xe.c("advancements.toast." + $$0);
+      this.g = xh.c("advancements.toast." + $$0);
    }
 
    public n a() {
       return this.f;
    }
 
-   public xe b() {
+   public xh b() {
       return this.g;
    }
 
@@ -29,7 +29,7 @@ public enum am implements bab {
       return this.e;
    }
 
-   public xs a(ag $$0, ark $$1) {
-      return xe.a("chat.type.advancement." + this.e, $$1.R_(), af.a($$0));
+   public xv a(ag $$0, arn $$1) {
+      return xh.a("chat.type.advancement." + this.e, $$1.S_(), af.a($$0));
    }
 }

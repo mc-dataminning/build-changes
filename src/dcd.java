@@ -1,60 +1,33 @@
-import com.google.common.collect.HashMultimap;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dcd(ale b, jo<bvp> d, dbu e, bvs.a f) implements dcf {
-   public static final MapCodec<dcd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ale.a.fieldOf("id").forGetter(dcd::b),
-               bvp.a.fieldOf("attribute").forGetter(dcd::c),
-               dbu.b.fieldOf("amount").forGetter(dcd::d),
-               bvs.a.f.fieldOf("operation").forGetter(dcd::e)
-            )
-            .apply($$0, dcd::new)
-   );
+public interface dcd extends dce {
+   Codec<dcd> b = lx.au.q().dispatch(dcd::a, Function.identity());
 
-   private ale a(bab $$0) {
-      return this.b.g("/" + $$0.c());
+   static MapCodec<? extends dcd> a(kc<MapCodec<? extends dcd>> $$0) {
+      kc.a($$0, "all_of", dbx.a.a);
+      kc.a($$0, "apply_mob_effect", dby.a);
+      kc.a($$0, "damage_entity", dbz.a);
+      kc.a($$0, "damage_item", dcb.a);
+      kc.a($$0, "explode", dcg.a);
+      kc.a($$0, "ignite", dch.a);
+      kc.a($$0, "play_sound", dcj.a);
+      kc.a($$0, "replace_block", dcl.a);
+      kc.a($$0, "replace_disk", dcm.a);
+      kc.a($$0, "run_function", dcn.a);
+      kc.a($$0, "set_block_properties", dco.a);
+      kc.a($$0, "spawn_particles", dcq.a);
+      return kc.a($$0, "summon_entity", dcr.a);
    }
 
-   public bvs a(int $$0, bab $$1) {
-      return new bvs(this.a($$1), (double)this.d().a($$0), this.e());
+   void a(arm var1, int var2, dbl var3, btz var4, ezh var5);
+
+   @Override
+   default void a(arm $$0, int $$1, dbl $$2, btz $$3, ezh $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(arj $$0, int $$1, dbm $$2, btr $$3, eyw $$4, boolean $$5) {
-      if ($$5 && $$3 instanceof bun $$6) {
-         $$6.eV().a(this.a($$1, $$2.b()));
-      }
-   }
-
-   @Override
-   public void a(dbm $$0, btr $$1, eyw $$2, int $$3) {
-      if ($$1 instanceof bun $$4) {
-         $$4.eV().b(this.a($$3, $$0.b()));
-      }
-   }
-
-   private HashMultimap<jo<bvp>, bvs> a(int $$0, btz $$1) {
-      HashMultimap<jo<bvp>, bvs> $$2 = HashMultimap.create();
-      $$2.put(this.d, this.a($$0, (bab)$$1));
-      return $$2;
-   }
-
-   @Override
-   public MapCodec<dcd> a() {
-      return a;
-   }
-
-   public jo<bvp> c() {
-      return this.d;
-   }
-
-   public dbu d() {
-      return this.e;
-   }
-
-   public bvs.a e() {
-      return this.f;
-   }
+   MapCodec<? extends dcd> a();
 }

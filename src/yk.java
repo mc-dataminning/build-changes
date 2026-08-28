@@ -1,70 +1,48 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.List;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class yk implements xf {
-   private static final Logger d = LogUtils.getLogger();
-   public static final MapCodec<yk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("nbt").forGetter(yk::b),
-               Codec.BOOL.lenientOptionalFieldOf("interpret", false).forGetter(yk::c),
-               xg.a.lenientOptionalFieldOf("separator").forGetter(yk::d),
-               yg.c.forGetter(yk::e)
-            )
-            .apply($$0, yk::new)
-   );
-   public static final xf.a<yk> b = new xf.a<>(a, "nbt");
-   private final boolean e;
-   private final Optional<xe> f;
-   private final String g;
-   private final yg h;
-   @Nullable
-   protected final fm.g c;
+public record yk(String d, @Nullable hk e) implements yj {
+   public static final MapCodec<yk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(yk::b)).apply($$0, yk::new));
+   public static final yj.a<yk> b = new yj.a<>(a, "entity");
 
-   public yk(String $$0, boolean $$1, Optional<xe> $$2, yg $$3) {
-      this($$0, a($$0), $$1, $$2, $$3);
-   }
-
-   private yk(String $$0, @Nullable fm.g $$1, boolean $$2, Optional<xe> $$3, yg $$4) {
-      this.g = $$0;
-      this.c = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.h = $$4;
+   public yk(String $$0) {
+      this($$0, a($$0));
    }
 
    @Nullable
-   private static fm.g a(String $$0) {
+   private static hk a(String $$0) {
       try {
-         return new fm().a(new StringReader($$0));
+         hl $$1 = new hl(new StringReader($$0), true);
+         return $$1.t();
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
-   public String b() {
-      return this.g;
+   @Override
+   public Stream<uj> a(ev $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends btz> $$1 = this.e.b($$0);
+         return $$1.stream().map(dl::b);
+      } else {
+         return Stream.empty();
+      }
    }
 
-   public boolean c() {
-      return this.e;
+   @Override
+   public yj.a<?> a() {
+      return b;
    }
 
-   public Optional<xe> d() {
-      return this.f;
-   }
-
-   public yg e() {
-      return this.h;
+   @Override
+   public String toString() {
+      return "entity=" + this.d;
    }
 
    @Override
@@ -72,7 +50,7 @@ public class yk implements xf {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof yk $$1 && this.h.equals($$1.h) && this.f.equals($$1.f) && this.e == $$1.e && this.g.equals($$1.g)) {
+         if ($$0 instanceof yk $$1 && this.d.equals($$1.d)) {
             return true;
          }
 
@@ -82,50 +60,15 @@ public class yk implements xf {
 
    @Override
    public int hashCode() {
-      int $$0 = this.e ? 1 : 0;
-      $$0 = 31 * $$0 + this.f.hashCode();
-      $$0 = 31 * $$0 + this.g.hashCode();
-      return 31 * $$0 + this.h.hashCode();
+      return this.d.hashCode();
    }
 
-   @Override
-   public String toString() {
-      return "nbt{" + this.h + ", interpreting=" + this.e + ", separator=" + this.f + "}";
+   public String b() {
+      return this.d;
    }
 
-   @Override
-   public xs a(@Nullable eu $$0, @Nullable btr $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.c != null) {
-         Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
-            try {
-               return this.c.a($$0x).stream();
-            } catch (CommandSyntaxException var3x) {
-               return Stream.empty();
-            }
-         }).map(vd::s_);
-         if (this.e) {
-            xe $$4 = (xe)DataFixUtils.orElse(xh.a($$0, this.f, $$1, $$2), xh.c);
-            return $$3.flatMap($$3x -> {
-               try {
-                  xs $$4x = xe.a.a($$3x, $$0.v());
-                  return Stream.of(xh.a($$0, $$4x, $$1, $$2));
-               } catch (Exception var5x) {
-                  d.warn("Failed to parse component: {}", $$3x, var5x);
-                  return Stream.of();
-               }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(xe::i);
-         } else {
-            return xh.a($$0, this.f, $$1, $$2)
-               .map($$1x -> $$3.map(xe::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(xe::i))
-               .orElseGet(() -> xe.b($$3.collect(Collectors.joining(", "))));
-         }
-      } else {
-         return xe.i();
-      }
-   }
-
-   @Override
-   public xf.a<?> a() {
-      return b;
+   @Nullable
+   public hk c() {
+      return this.e;
    }
 }

@@ -1,43 +1,59 @@
-import org.joml.Vector3f;
+public class gdw extends gge {
+   private final gfz a;
 
-public class gdw extends gdy<li> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected gdw(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, li $$7, gfo $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   protected gdw(
+      gbx $$0,
+      double $$1,
+      double $$2,
+      double $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      float $$10,
+      gfz $$11,
+      float $$12,
+      int $$13,
+      float $$14,
+      boolean $$15
+   ) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.u = $$14;
+      this.C = true;
+      this.a = $$11;
+      this.j *= (double)$$4;
+      this.k *= (double)$$5;
+      this.l *= (double)$$6;
+      this.j += $$7;
+      this.k += $$8;
+      this.l += $$9;
+      float $$16 = $$0.A.i() * $$12;
+      this.v = $$16;
+      this.w = $$16;
+      this.x = $$16;
+      this.D *= 0.75F * $$10;
+      this.t = (int)((double)$$13 / ((double)$$0.A.i() * 0.8 + 0.2) * (double)$$10);
+      this.t = Math.max(this.t, 1);
+      this.b($$11);
+      this.n = $$15;
    }
 
    @Override
-   public void a(fdm $$0, fhy $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public gfi b() {
+      return gfi.b;
    }
 
-   public static class a implements gew<li> {
-      private final gfo a;
+   @Override
+   public float b(float $$0) {
+      return this.D * azj.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      public a(gfo $$0) {
-         this.a = $$0;
-      }
-
-      public get a(li $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gdw($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
-      }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 }

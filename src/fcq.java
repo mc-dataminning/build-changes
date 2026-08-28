@@ -1,79 +1,53 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayDeque;
-import java.util.Collection;
-import java.util.Deque;
-import java.util.Iterator;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
-public class fcq implements fcr, AutoCloseable {
-   private final int b;
-   private final Deque<fcq.a<?>> c = new ArrayDeque<>();
+public class fcq {
+   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
+   private static final int b = 8;
+   private static final int c = 16384;
 
-   public fcq(int $$0) {
-      this.b = $$0;
+   public static void a(long $$0) {
+      c($$0).filter(fcq::a).ifPresent(fcq::c);
    }
 
-   public void a() {
-      Iterator<? extends fcq.a<?>> $$0 = this.c.iterator();
-
-      while ($$0.hasNext()) {
-         fcq.a<?> $$1 = (fcq.a<?>)$$0.next();
-         if ($$1.c-- == 0) {
-            $$1.close();
-            $$0.remove();
-         }
-      }
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   @Override
-   public <T> T a(fct<T> $$0) {
-      Iterator<? extends fcq.a<?>> $$1 = this.c.iterator();
-
-      while ($$1.hasNext()) {
-         fcq.a<?> $$2 = (fcq.a<?>)$$1.next();
-         if ($$2.a.equals($$0)) {
-            $$1.remove();
-            return (T)$$2.b;
-         }
-      }
-
-      return $$0.e();
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   @Override
-   public <T> void a(fct<T> $$0, T $$1) {
-      this.c.addFirst(new fcq.a<>($$0, $$1, this.b));
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
    }
 
-   public void b() {
-      this.c.forEach(fcq.a::close);
-      this.c.clear();
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
    }
 
-   @Override
-   public void close() {
-      this.b();
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
    }
 
-   @VisibleForTesting
-   protected Collection<fcq.a<?>> c() {
-      return this.c;
-   }
-
-   @VisibleForTesting
-   protected static final class a<T> implements AutoCloseable {
-      final fct<T> a;
-      final T b;
-      int c;
-
-      a(fct<T> $$0, T $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      @Override
-      public void close() {
-         this.a.a(this.b);
+   public static void a(aur<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
       }
    }
 }

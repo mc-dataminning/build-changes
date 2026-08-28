@@ -1,50 +1,32 @@
-import java.util.EnumSet;
+public class cax extends cav {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class cax extends cbx {
-   private final cgg g;
-
-   public cax(cgg $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(cbk.a.c, cbk.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.q() && !this.g.go() && !this.g.gB() && super.b();
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.y(false);
-   }
-
-   @Override
-   protected int a(buv $$0) {
-      return 40;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.A(false);
+   public cax(bux $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gB()) {
-         this.g.A(true);
-      }
-   }
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dP(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.P().m()) {
+            this.a.w(this.a(this.a.dP(), 0.0F, 5.0F));
+         }
 
-   @Override
-   protected boolean a(dem $$0, jf $$1) {
-      return $$0.u($$1.d()) && $$0.a_($$1).a(awv.S);
+         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
+      }
+
+      float $$0 = azj.h(this.a.aW - this.a.aU);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aU -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aU += 4.0F;
+      }
    }
 }

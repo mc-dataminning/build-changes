@@ -1,72 +1,101 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class emb extends emd {
-   public static final MapCodec<emb> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(emb::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(emb::b),
-                     emc.c.optionalFieldOf("spread_type", emc.a).forGetter(emb::c)
-                  )
-               )
-               .apply($$0, emb::new)
-      )
-      .validate(emb::a);
-   private final int c;
-   private final int d;
-   private final emc e;
+public abstract class emb extends elv {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected ept b;
+   protected epp c;
+   protected jg d;
 
-   private static DataResult<emb> a(emb $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
-   }
-
-   public emb(kj $$0, emd.c $$1, float $$2, int $$3, Optional<emd.a> $$4, int $$5, int $$6, emc $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
+   public emb(emi $$0, int $$1, epu $$2, alh $$3, String $$4, epp $$5, jg $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(jl.c);
+      this.a = $$4;
       this.d = $$6;
-      this.e = $$7;
+      this.b = $$2.a($$3);
+      this.c = $$5;
    }
 
-   public emb(int $$0, int $$1, emc $$2, int $$3) {
-      this(kj.g, emd.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   public emb(emi $$0, uj $$1, epu $$2, Function<alh, epp> $$3) {
+      super($$0, $$1);
+      this.a(jl.c);
+      this.a = $$1.l("Template");
+      this.d = new jg($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      alh $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
    }
 
-   public int a() {
-      return this.c;
+   protected alh b() {
+      return alh.a(this.a);
    }
 
-   public int b() {
+   @Override
+   protected void a(emh $$0, uj $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
+   }
+
+   @Override
+   public void a(dfs $$0, dfq $$1, dxa $$2, azr $$3, elj $$4, deb $$5, jg $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (ept.c $$8 : this.b.a(this.d, this.c, dia.pa)) {
+            if ($$8.c() != null) {
+               dwn $$9 = dwn.valueOf($$8.c().l("mode"));
+               if ($$9 == dwn.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
+
+         for (ept.c $$11 : this.b.a(this.d, this.c, dia.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dvd $$13 = dia.a.m();
+
+               try {
+                  $$13 = gp.a($$0.a(ly.f), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
+            }
+         }
+      }
+   }
+
+   protected abstract void a(String var1, jg var2, dfl var3, azr var4, elj var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public dol a() {
+      return this.c.d();
+   }
+
+   public ept c() {
+      return this.b;
+   }
+
+   public jg d() {
       return this.d;
    }
 
-   public emc c() {
-      return this.e;
-   }
-
-   public ddp a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      ebn $$5 = new ebn(new eap(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new ddp($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
-
-   @Override
-   protected boolean a(dwq $$0, int $$1, int $$2) {
-      ddp $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.e == $$1 && $$3.f == $$2;
-   }
-
-   @Override
-   public eme<?> e() {
-      return eme.a;
+   public epp e() {
+      return this.c;
    }
 }

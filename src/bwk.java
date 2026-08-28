@@ -1,18 +1,38 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import net.minecraft.server.MinecraftServer;
 
 public class bwk {
-   public static <E extends bun, T> bwg<E> a(Predicate<E> $$0, cdq<? extends T> $$1, cdq<T> $$2, brd $$3) {
-      return bzs.a(
-         (Function<bzs.b<E>, ? extends App<bzs.c<E>, bzv<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
-                  if (!$$0.test((E)$$6)) {
-                     return false;
-                  } else {
-                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
-                     return true;
-                  }
-               }))
+   public static bwp<cnt> a() {
+      return cab.a(
+         (Function<cab.b<cnt>, ? extends App<cab.c<cnt>, cae<cnt>>>)($$0 -> $$0.group($$0.b(cdz.d), $$0.a(cdz.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jo $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.dv(), 2.0) && !$$4.gG()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gF().b() != cnw.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.o();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.y().c($$6.b()))
+                                 .flatMap($$0xxx -> lx.x.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gF().a($$2xx));
+                                    $$4.a($$3);
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
       );
    }
 }

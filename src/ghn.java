@@ -1,81 +1,168 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ghn implements ghl {
-   private final ghl.a a;
-   private final ghl.a b = ghl.a(new fdf(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+public class ghn extends avf<ghn.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final alh b = alh.b("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   public ghn(ghl.a $$0) {
-      this.a = $$0;
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   @Override
-   public fdm getBuffer(ghv $$0) {
-      if ($$0.Q()) {
-         fdm $$1 = this.b.getBuffer($$0);
-         return new ghn.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         fdm $$2 = this.a.getBuffer($$0);
-         Optional<ghv> $$3 = $$0.P();
-         if ($$3.isPresent()) {
-            fdm $$4 = this.b.getBuffer($$3.get());
-            ghn.a $$5 = new ghn.a($$4, this.c, this.d, this.e, this.f);
-            return fdp.a($$5, $$2);
-         } else {
-            return $$2;
+   public boolean b() {
+      return this.a() && !this.e;
+   }
+
+   public void d() {
+      this.d = true;
+   }
+
+   public void e() {
+      this.e = true;
+   }
+
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected ghn.a a(ava $$0, bok $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      $$1.a();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         $$1.a("compile_regex");
+         a($$5.getAsJsonArray("renderer"), $$2);
+         a($$5.getAsJsonArray("version"), $$3);
+         a($$5.getAsJsonArray("vendor"), $$4);
+         $$1.c();
+      }
+
+      $$1.b();
+      return new ghn.a($$2, $$3, $$4);
+   }
+
+   protected void a(ghn.a $$0, ava $$1, bok $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(ava $$0, bok $$1) {
+      $$1.a("parse_json");
+      JsonObject $$2 = null;
+
+      try (Reader $$3 = $$0.openAsReader(b)) {
+         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
+      } catch (JsonSyntaxException | IOException var8) {
+         a.warn("Failed to load GPU warnlist");
+      }
+
+      $$1.c();
+      return $$2;
+   }
+
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
+
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
          }
-      }
-   }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public void a() {
-      this.b.b();
-   }
-
-   static record a(fdm a, int b) implements fdm {
-      public a(fdm $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, axq.a($$4, $$1, $$2, $$3));
+         return String.join(", ", $$2);
       }
 
-      @Override
-      public fdm a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2).a(this.b);
-         return this;
-      }
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, fcm.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
 
-      @Override
-      public fdm a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
+         String $$2 = a(this.b, fcm.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
 
-      @Override
-      public fdm a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
+         String $$3 = a(this.c, fcm.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
 
-      @Override
-      public fdm a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fdm b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fdm b(float $$0, float $$1, float $$2) {
-         return this;
+         return $$0.build();
       }
    }
 }

@@ -1,12 +1,7 @@
-import com.mojang.serialization.MapCodec;
+@FunctionalInterface
+public interface eme<C extends egj> {
+   void generatePieces(emj var1, eme.a<C> var2);
 
-public interface eme<SP extends emd> {
-   eme<emb> a = a("random_spread", emb.a);
-   eme<ema> b = a("concentric_rings", ema.a);
-
-   MapCodec<SP> codec();
-
-   private static <SP extends emd> eme<SP> a(String $$0, MapCodec<SP> $$1) {
-      return kb.a(lv.P, $$0, () -> $$1);
+   public static record a<C extends egj>(C a, dxa b, epu c, deb d, dex e, eby f, long g) {
    }
 }

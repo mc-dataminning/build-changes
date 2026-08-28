@@ -1,15 +1,12 @@
 import com.mojang.serialization.MapCodec;
 
-public interface emp<P extends emo> {
-   emp<emn> a = a("single_pool_element", emn.b);
-   emp<emm> b = a("list_pool_element", emm.a);
-   emp<emi> c = a("feature_pool_element", emi.a);
-   emp<emh> d = a("empty_pool_element", emh.a);
-   emp<eml> e = a("legacy_single_pool_element", eml.a);
+public interface emp<SP extends emo> {
+   emp<emm> a = a("random_spread", emm.a);
+   emp<eml> b = a("concentric_rings", eml.a);
 
-   MapCodec<P> codec();
+   MapCodec<SP> codec();
 
-   static <P extends emo> emp<P> a(String $$0, MapCodec<P> $$1) {
-      return kb.a(lv.ag, $$0, () -> $$1);
+   private static <SP extends emo> emp<SP> a(String $$0, MapCodec<SP> $$1) {
+      return kc.a(lx.P, $$0, () -> $$1);
    }
 }

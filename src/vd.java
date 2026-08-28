@@ -1,52 +1,48 @@
-import java.io.DataOutput;
-import java.io.IOException;
-
 public interface vd {
-   int d = 8;
-   int e = 12;
-   int f = 4;
-   int g = 28;
-   byte h = 0;
-   byte i = 1;
-   byte j = 2;
-   byte k = 3;
-   byte l = 4;
-   byte m = 5;
-   byte n = 6;
-   byte o = 7;
-   byte p = 8;
-   byte q = 9;
-   byte r = 10;
-   byte s = 11;
-   byte t = 12;
-   byte u = 99;
-   int v = 512;
+   vd.b a();
 
-   void a(DataOutput var1) throws IOException;
+   vd.b a(String var1);
 
-   @Override
-   String toString();
+   vd.b a(byte var1);
 
-   byte b();
+   vd.b a(short var1);
 
-   vf<?> c();
+   vd.b a(int var1);
 
-   vd d();
+   vd.b a(long var1);
 
-   int a();
+   vd.b a(float var1);
 
-   default String s_() {
-      return new vc().a(this);
+   vd.b a(double var1);
+
+   vd.b a(byte[] var1);
+
+   vd.b a(int[] var1);
+
+   vd.b a(long[] var1);
+
+   vd.b a(vi<?> var1, int var2);
+
+   vd.a a(vi<?> var1);
+
+   vd.a a(vi<?> var1, String var2);
+
+   vd.a b(vi<?> var1, int var2);
+
+   vd.b b();
+
+   vd.b b(vi<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   void a(vh var1);
-
-   va.b a(va var1);
-
-   default void b(va $$0) {
-      va.b $$1 = $$0.b(this.c());
-      if ($$1 == va.b.a) {
-         this.a($$0);
-      }
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

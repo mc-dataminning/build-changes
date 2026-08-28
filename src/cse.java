@@ -1,73 +1,72 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class cse extends crj {
+   private static final int m = 9;
+   private static final int n = 9;
+   private static final int o = 36;
+   private static final int p = 36;
+   private static final int q = 45;
+   private final brr r;
 
-public class cse {
-   private final List<cse.b> a;
-   private final cse.b b;
+   public cse(int $$0, cog $$1) {
+      this($$0, $$1, new bsf(9));
+   }
 
-   cse(List<cse.b> $$0, cse.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cse.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+   public cse(int $$0, cog $$1, brr $$2) {
+      super(css.g, $$0);
+      a($$2, 9);
+      this.r = $$2;
+      $$2.d_($$1.k);
+      this.d($$2, 62, 17);
+      this.c($$1, 8, 84);
+   }
+
+   protected void d(brr $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            int $$5 = $$4 + $$3 * 3;
+            this.a(new ctg($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
+         }
       }
    }
 
-   public static cse.a a() {
-      return new cse.a();
+   @Override
+   public boolean b(coh $$0) {
+      return this.r.a($$0);
    }
 
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
-   }
+   @Override
+   public cvx b(coh $$0, int $$1) {
+      cvx $$2 = cvx.k;
+      ctg $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cvx $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cvx.k;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cvx.k;
+         }
 
-   public cse.b b(int $$0) {
-      return this.a.get($$0);
-   }
+         if ($$4.f()) {
+            $$3.e(cvx.k);
+         } else {
+            $$3.c();
+         }
 
-   public cse.b b() {
-      return this.b;
-   }
+         if ($$4.L() == $$2.L()) {
+            return cvx.k;
+         }
 
-   public List<cse.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(cse.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<cse.b> a = new ArrayList<>();
-      private cse.b b = cse.b.e;
-
-      public cse.a a(int $$0, int $$1, int $$2, Predicate<cvs> $$3) {
-         this.a.add(new cse.b($$0, $$1, $$2, $$3));
-         return this;
+         $$3.a($$0, $$4);
       }
 
-      public cse.a a(int $$0, int $$1, int $$2) {
-         this.b = new cse.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cse a() {
-         return new cse(this.a, this.b);
-      }
+      return $$2;
    }
 
-   public static record b(int a, int b, int c, Predicate<cvs> d) {
-      static final cse.b e = new cse.b(0, 0, 0, $$0 -> true);
+   @Override
+   public void a(coh $$0) {
+      super.a($$0);
+      this.r.c($$0);
    }
 }

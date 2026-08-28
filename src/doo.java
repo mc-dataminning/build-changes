@@ -1,42 +1,52 @@
-import java.util.Optional;
+import java.util.Collection;
 import javax.annotation.Nullable;
 
-public interface doo extends dht, dmd {
-   @Override
-   default boolean a(@Nullable cnx $$0, ddo $$1, jf $$2, dus $$3, eqs $$4) {
-      return $$4 == equ.c;
-   }
-
-   @Override
-   default boolean a(dek $$0, jf $$1, dus $$2, eqt $$3) {
-      if (!$$2.c(dvi.C) && $$3.a() == equ.c) {
-         if (!$$0.x_()) {
-            $$0.a($$1, $$2.b(dvi.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+public interface doo {
+   doo w_ = new doo() {
+      @Override
+      public boolean a(dew $$0, jg $$1, dvd $$2, @Nullable Collection<jl> $$3, boolean $$4) {
+         if ($$3 == null) {
+            return ((dou)dia.qT).q().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
+         } else if (!$$3.isEmpty()) {
+            return !$$2.l() && !$$2.y().b(erf.c) ? false : dou.a($$0, $$1, $$2, $$3);
+         } else {
+            return doo.super.a($$0, $$1, $$2, $$3, $$4);
          }
-
-         return true;
-      } else {
-         return false;
       }
-   }
 
-   @Override
-   default cvs a(@Nullable cnx $$0, dek $$1, jf $$2, dus $$3) {
-      if ($$3.c(dvi.C)) {
-         $$1.a($$2, $$3.b(dvi.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new cvs(cvw.qA);
-      } else {
-         return cvs.k;
+      @Override
+      public int a(dot.a $$0, dew $$1, jg $$2, azr $$3, dot $$4, boolean $$5) {
+         return $$0.c() > 0 ? $$0.b() : 0;
       }
+
+      @Override
+      public int j_(int $$0) {
+         return Math.max($$0 - 1, 0);
+      }
+   };
+
+   default byte b() {
+      return 1;
    }
 
-   @Override
-   default Optional<awf> au_() {
-      return equ.c.j();
+   default void a(dew $$0, dvd $$1, jg $$2, azr $$3) {
    }
+
+   default boolean a(dew $$0, jg $$1, azr $$2) {
+      return false;
+   }
+
+   default boolean a(dew $$0, jg $$1, dvd $$2, @Nullable Collection<jl> $$3, boolean $$4) {
+      return ((dmx)dia.qT).c().a($$2, $$0, $$1, $$4) > 0L;
+   }
+
+   default boolean d() {
+      return true;
+   }
+
+   default int j_(int $$0) {
+      return 1;
+   }
+
+   int a(dot.a var1, dew var2, jg var3, azr var4, dot var5, boolean var6);
 }

@@ -1,22 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egw implements efy {
+public record egw(int b, int c, int d, jp<ekv> e) implements egj {
    public static final Codec<egw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               ays.m.fieldOf("tries").orElse(128).forGetter(egw::a),
+               ays.l.fieldOf("xz_spread").orElse(7).forGetter(egw::b),
+               ays.l.fieldOf("y_spread").orElse(3).forGetter(egw::c),
+               ekv.b.fieldOf("feature").forGetter(egw::d)
             )
             .apply($$0, egw::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
 
-   public egw(int $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public jp<ekv> d() {
+      return this.e;
    }
 }

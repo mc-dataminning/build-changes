@@ -1,42 +1,52 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class enn extends elg {
-   public static final bqg<dfw.c> d = bqg.a(
-      new dfw.c(bty.i, 10, 2, 3), new dfw.c(bty.bx, 5, 4, 4), new dfw.c(bty.bq, 8, 5, 5), new dfw.c(bty.aN, 2, 5, 5), new dfw.c(bty.ap, 3, 4, 4)
-   );
-   public static final MapCodec<enn> e = a(enn::new);
+public class enn extends elq {
+   public static final MapCodec<enn> d = a(enn::new);
 
-   public enn(elg.c $$0) {
-      super($$0);
+   public enn(elr.c $$0) {
+      super(enm::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<elg.b> a(elg.a $$0) {
-      ddp $$1 = $$0.h();
-      jf $$2 = new jf($$1.d(), 64, $$1.e());
-      return Optional.of(new elg.b($$2, (Consumer<ely>)($$1x -> a($$1x, $$0))));
-   }
+   public void a(dfs $$0, dfq $$1, dxa $$2, azr $$3, elj $$4, deb $$5, emg $$6) {
+      Set<jg> $$7 = bab.a(kk::i);
 
-   private static void a(ely $$0, elg.a $$1) {
-      enm.q $$2 = new enm.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<elk> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         elk $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
+      for (elv $$8 : $$6.c()) {
+         if ($$8 instanceof enm $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
+         }
       }
 
-      $$0.a($$1.f(), 48, 70);
+      ObjectArrayList<jg> $$10 = new ObjectArrayList($$7.stream().toList());
+      azr $$11 = azr.a($$0.C()).e().a($$6.b().g());
+      ad.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         jg $$13 = (jg)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, dia.I.m(), 2);
+         }
+      }
+   }
+
+   private static void a(elj $$0, dfs $$1, jg $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, dia.J.m(), 2);
+         $$1.a($$2, dsi.N).ifPresent($$1x -> $$1x.a(ets.aU, $$2.a()));
+      }
    }
 
    @Override
-   public elp<?> e() {
-      return elp.d;
+   public ema<?> e() {
+      return ema.b;
    }
 }

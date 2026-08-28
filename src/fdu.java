@@ -1,43 +1,67 @@
-import java.util.Locale;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public enum fdu {
-   a,
-   b,
-   c,
-   d;
+public class fdu implements fdx {
+   private final fdx a;
+   private final Matrix4f b;
+   private final Matrix3f c;
+   private final float d;
+   private final Vector3f e = new Vector3f();
+   private final Vector3f f = new Vector3f();
+   private float g;
+   private float h;
+   private float i;
 
-   private static final int e = 1024;
-
-   public static fdu a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
-         }
-      }
+   public fdu(fdx $$0, fdt.a $$1, float $$2) {
+      this.a = $$0;
+      this.b = new Matrix4f($$1.a()).invert();
+      this.c = new Matrix3f($$1.b()).invert();
+      this.d = $$2;
    }
 
-   public static double a(long $$0, fdu $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   @Override
+   public fdx a(float $$0, float $$1, float $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.a.a($$0, $$1, $$2);
+      return this;
    }
 
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
-      }
+   @Override
+   public fdx a(int $$0, int $$1, int $$2, int $$3) {
+      this.a.a(-1);
+      return this;
    }
 
-   public static String b(long $$0, fdu $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   @Override
+   public fdx a(float $$0, float $$1) {
+      return this;
+   }
+
+   @Override
+   public fdx a(int $$0, int $$1) {
+      this.a.a($$0, $$1);
+      return this;
+   }
+
+   @Override
+   public fdx b(int $$0, int $$1) {
+      this.a.b($$0, $$1);
+      return this;
+   }
+
+   @Override
+   public fdx b(float $$0, float $$1, float $$2) {
+      this.a.b($$0, $$1, $$2);
+      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
+      jl $$4 = jl.a($$3.x(), $$3.y(), $$3.z());
+      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
+      $$5.rotateY((float) Math.PI);
+      $$5.rotateX((float) (-Math.PI / 2));
+      $$5.rotate($$4.b());
+      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
+      return this;
    }
 }

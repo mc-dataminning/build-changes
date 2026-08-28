@@ -1,28 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 public class bzb {
-   public static <E extends bun> bxq<E> a(List<Pair<? extends bzv<? super E>, Integer>> $$0) {
-      return a($$0, bwt.a.b, bwt.b.a);
-   }
+   public static bwp<buv> a(int $$0, BiPredicate<buv, buv> $$1) {
+      return cab.a(
+         (Function<cab.b<buv>, ? extends App<cab.c<buv>, cae<buv>>>)($$2 -> $$2.group($$2.b(cdz.o), $$2.a(cdz.ab), $$2.c(cdz.ai), $$2.a(cdz.aj))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     buv $$10 = $$2.b($$3);
+                     if (!$$10.eH()) {
+                        return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
 
-   public static <E extends bun> bxq<E> a(List<Pair<? extends bzv<? super E>, Integer>> $$0, bwt.a $$1, bwt.b $$2) {
-      byo<bzv<? super E>> $$3 = new byo<>();
-      $$0.forEach($$1x -> $$3.a((bzv<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bzs.a((Function<bzs.b<E>, ? extends App<bzs.c<E>, bzv<E>>>)($$3x -> $$3x.a((bzv<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bwt.a.b) {
-               $$3.a();
-            }
+                        $$5.a($$10.dx(), (long)$$0);
+                        if ($$10.aq() != bug.by || $$7.ac().b(der.N)) {
+                           $$3.b();
+                           $$4.b();
+                        }
 
-            for (bzv<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bwt.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

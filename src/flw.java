@@ -1,166 +1,143 @@
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class flw implements hce {
-   private static final long a = 3000L;
-   private final fip b;
-   private final List<flw.b> c = Lists.newArrayList();
-   private boolean d;
-   private final List<flw.b> e = new ArrayList<>();
+public class flw extends flf<flw.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final ftv n;
 
-   public flw(fip $$0) {
-      this.b = $$0;
+   public flw(fja $$0, int $$1, ftv $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
    }
 
-   public void a(fkb $$0) {
-      hcf $$1 = this.b.ak();
-      if (!this.d && this.b.n.Y().c()) {
-         $$1.a(this);
-         this.d = true;
-      } else if (this.d && !this.b.n.Y().c()) {
-         $$1.b(this);
-         this.d = false;
+   public void a(fjd<?> $$0) {
+      this.b(flw.b.a(this.c.n, $$0, this.n));
+   }
+
+   public void a(fjd<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         fjd<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(flw.b.a(this.c.n, $$0[$$1], $$2, this.n));
       }
+   }
 
-      if (this.d) {
-         fbc $$2 = $$1.b();
-         eyw $$3 = $$2.b();
-         eyw $$4 = $$2.c();
-         eyw $$5 = $$2.a();
-         this.e.clear();
-
-         for (flw.b $$6 : this.c) {
-            if ($$6.c($$3)) {
-               this.e.add($$6);
-            }
-         }
-
-         if (!this.e.isEmpty()) {
-            int $$7 = 0;
-            int $$8 = 0;
-            double $$9 = this.b.n.C().c();
-            Iterator<flw.b> $$10 = this.e.iterator();
-
-            while ($$10.hasNext()) {
-               flw.b $$11 = $$10.next();
-               $$11.a(3000.0 * $$9);
-               if (!$$11.b()) {
-                  $$10.remove();
-               } else {
-                  $$8 = Math.max($$8, this.b.h.a($$11.a()));
-               }
-            }
-
-            $$8 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
-
-            for (flw.b $$12 : this.e) {
-               int $$13 = 255;
-               xe $$14 = $$12.a();
-               flw.a $$15 = $$12.a($$3);
-               if ($$15 != null) {
-                  eyw $$16 = $$15.a.d($$3).d();
-                  double $$17 = $$5.b($$16);
-                  double $$18 = $$4.b($$16);
-                  boolean $$19 = $$18 > 0.5;
-                  int $$20 = $$8 / 2;
-                  int $$21 = 9;
-                  int $$22 = $$21 / 2;
-                  float $$23 = 1.0F;
-                  int $$24 = this.b.h.a($$14);
-                  int $$25 = azf.d(azf.b(255.0F, 75.0F, (float)(ad.c() - $$15.b) / (float)(3000.0 * $$9)));
-                  $$0.c().a();
-                  $$0.c().a((float)$$0.a() - (float)$$20 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$7 * ($$21 + 1)) * 1.0F, 0.0F);
-                  $$0.c().b(1.0F, 1.0F, 1.0F);
-                  $$0.a(-$$20 - 1, -$$22 - 1, $$20 + 1, $$22 + 1, this.b.n.b(0.8F));
-                  int $$26 = axq.a(255, $$25, $$25, $$25);
-                  if (!$$19) {
-                     if ($$17 > 0.0) {
-                        $$0.b(this.b.h, ">", $$20 - this.b.h.b(">"), -$$22, $$26);
-                     } else if ($$17 < 0.0) {
-                        $$0.b(this.b.h, "<", -$$20, -$$22, $$26);
-                     }
-                  }
-
-                  $$0.b(this.b.h, $$14, -$$24 / 2, -$$22, $$26);
-                  $$0.c().b();
-                  $$7++;
-               }
-            }
-         }
+   public void a(List<fkx> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
       }
+   }
+
+   public void a(fkx $$0, @Nullable fkx $$1) {
+      this.b(flw.a.a($$0, $$1, this.n));
    }
 
    @Override
-   public void a(hba $$0, hcg $$1, float $$2) {
-      if ($$1.a() != null) {
-         xe $$3 = $$1.a();
-         if (!this.c.isEmpty()) {
-            for (flw.b $$4 : this.c) {
-               if ($$4.a().equals($$3)) {
-                  $$4.b(new eyw($$0.h(), $$0.i(), $$0.j()));
-                  return;
+   public int b() {
+      return 310;
+   }
+
+   @Nullable
+   public fkx b(fjd<?> $$0) {
+      for (flw.a $$1 : this.aJ_()) {
+         if ($$1 instanceof flw.b $$2) {
+            fkx $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   public void c() {
+      for (flw.a $$0 : this.aJ_()) {
+         if ($$0 instanceof flw.b) {
+            flw.b $$1 = (flw.b)$$0;
+
+            for (fkx $$2 : $$1.a.values()) {
+               if ($$2 instanceof fjd.i<?> $$3) {
+                  $$3.c();
                }
             }
          }
-
-         this.c.add(new flw.b($$3, $$2, new eyw($$0.h(), $$0.i(), $$0.j())));
       }
    }
 
-   static record a(eyw a, long b) {
+   public Optional<fmw> e(double $$0, double $$1) {
+      for (flw.a $$2 : this.aJ_()) {
+         for (fmw $$3 : $$2.aJ_()) {
+            if ($$3.c($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
+      }
+
+      return Optional.empty();
    }
 
-   static class b {
-      private final xe a;
-      private final float b;
-      private final List<flw.a> c = new ArrayList<>();
+   protected static class a extends flf.a<flw.a> {
+      private final List<fkx> a;
+      private final fqs b;
+      private static final int c = 160;
 
-      public b(xe $$0, float $$1, eyw $$2) {
-         this.a = $$0;
+      a(List<fkx> $$0, fqs $$1) {
+         this.a = ImmutableList.copyOf($$0);
          this.b = $$1;
-         this.c.add(new flw.a($$2, ad.c()));
       }
 
-      public xe a() {
+      public static flw.a a(List<fkx> $$0, fqs $$1) {
+         return new flw.a($$0, $$1);
+      }
+
+      public static flw.a a(fkx $$0, @Nullable fkx $$1, fqs $$2) {
+         return $$1 == null ? new flw.a(ImmutableList.of($$0), $$2) : new flw.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(fkm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fkx $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
+      }
+
+      @Override
+      public List<? extends fmw> aJ_() {
          return this.a;
       }
 
-      @Nullable
-      public flw.a a(eyw $$0) {
-         if (this.c.isEmpty()) {
-            return null;
-         } else {
-            return this.c.size() == 1 ? this.c.getFirst() : this.c.stream().min(Comparator.comparingDouble($$1 -> $$1.a().f($$0))).orElse(null);
-         }
+      @Override
+      public List<? extends fov> b() {
+         return this.a;
+      }
+   }
+
+   protected static class b extends flw.a {
+      final Map<fjd<?>, fkx> a;
+
+      private b(Map<fjd<?>, fkx> $$0, ftv $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
       }
 
-      public void b(eyw $$0) {
-         this.c.removeIf($$1 -> $$0.equals($$1.a()));
-         this.c.add(new flw.a($$0, ad.c()));
+      public static flw.b a(fje $$0, fjd<?> $$1, ftv $$2) {
+         return new flw.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
       }
 
-      public boolean c(eyw $$0) {
-         if (Float.isInfinite(this.b)) {
-            return true;
-         } else if (this.c.isEmpty()) {
-            return false;
-         } else {
-            flw.a $$1 = this.a($$0);
-            return $$1 == null ? false : $$0.a((jy)$$1.a, (double)this.b);
-         }
-      }
-
-      public void a(double $$0) {
-         long $$1 = ad.c();
-         this.c.removeIf($$2 -> (double)($$1 - $$2.b()) > $$0);
-      }
-
-      public boolean b() {
-         return !this.c.isEmpty();
+      public static flw.b a(fje $$0, fjd<?> $$1, @Nullable fjd<?> $$2, ftv $$3) {
+         fkx $$4 = $$1.a($$0);
+         return $$2 == null ? new flw.b(ImmutableMap.of($$1, $$4), $$3) : new flw.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
       }
    }
 }

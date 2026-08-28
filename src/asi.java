@@ -1,173 +1,160 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public abstract class asi implements aae {
-   private static final Logger f = LogUtils.getLogger();
-   public static final int b = 15000;
-   private static final int g = 15000;
-   private static final xe h = xe.c("disconnect.timeout");
-   static final xe c = xe.c("multiplayer.disconnect.unexpected_query_response");
-   protected final MinecraftServer d;
-   protected final vy e;
-   private final boolean i;
-   private long j;
-   private boolean k;
-   private long l;
-   private long m;
-   private boolean n = false;
-   private int o;
-   private volatile boolean p = false;
+public class asi extends asu {
+   private static final String b = "v1/chat";
+   final URL c;
+   final asi.a d;
+   final URL e;
+   final asi.a f;
+   private final String g;
 
-   public asi(MinecraftServer $$0, vy $$1, ary $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.j = ad.c();
-      this.o = $$2.b();
-      this.i = $$2.d();
+   private asi(URL $$0, asu.b $$1, URL $$2, asi.a $$3, URL $$4, asi.a $$5, String $$6, asu.a $$7, ExecutorService $$8) {
+      super($$0, $$1, $$7, $$8);
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   private void l() {
-      if (!this.n) {
-         this.m = ad.c();
-         this.n = true;
-      }
-   }
-
-   @Override
-   public void a(wa $$0) {
-      if (this.h()) {
-         f.info("Stopping singleplayer server as player logged out");
-         this.d.a(false);
-      }
-   }
-
-   @Override
-   public void a(zl $$0, Exception $$1) throws z {
-      aae.super.a($$0, $$1);
-      this.d.a($$1, $$0.a());
-   }
-
-   @Override
-   public void a(aah $$0) {
-      if (this.k && $$0.b() == this.l) {
-         int $$1 = (int)(ad.c() - this.j);
-         this.o = (this.o * 3 + $$1) / 4;
-         this.k = false;
-      } else if (!this.h()) {
-         this.a(h);
-      }
-   }
-
-   @Override
-   public void a(aai $$0) {
-   }
-
-   @Override
-   public void a(aag $$0) {
-   }
-
-   @Override
-   public void a(aaj $$0) {
-      zo.a($$0, this, this.d);
-      if ($$0.e() == aaj.a.b && this.d.Z()) {
-         f.info("Disconnecting {} due to resource pack {} rejection", this.i().getName(), $$0.b());
-         this.a(xe.c("multiplayer.requiredTexturePrompt.disconnect"));
-      }
-   }
-
-   @Override
-   public void a(aby $$0) {
-      this.a(c);
-   }
-
-   protected void e() {
-      this.d.aS().a("keepAlive");
-      long $$0 = ad.c();
-      if (!this.h() && $$0 - this.j >= 15000L) {
-         if (this.k) {
-            this.a(h);
-         } else if (this.a($$0)) {
-            this.k = true;
-            this.j = $$0;
-            this.l = $$0;
-            this.b(new zv(this.l));
-         }
-      }
-
-      this.d.aS().c();
-   }
-
-   private boolean a(long $$0) {
-      if (this.n) {
-         if ($$0 - this.m >= 15000L) {
-            this.a(h);
-         }
-
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   public void f() {
-      this.p = true;
-   }
-
-   public void g() {
-      this.p = false;
-      this.e.a();
-   }
-
-   public void b(zl<?> $$0) {
-      this.a($$0, null);
-   }
-
-   public void a(zl<?> $$0, @Nullable wl $$1) {
-      if ($$0.d()) {
-         this.l();
-      }
-
-      boolean $$2 = !this.p || !this.d.by();
-
+   @Nullable
+   public static asu a(String $$0) {
       try {
-         this.e.a($$0, $$1, $$2);
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Sending packet");
-         p $$5 = $$4.a("Packet being sent");
-         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
-         throw new z($$4);
+         JsonObject $$1 = ayz.a($$0);
+         URI $$2 = new URI(ayz.i($$1, "apiServer"));
+         String $$3 = ayz.i($$1, "apiKey");
+         if ($$3.isEmpty()) {
+            throw new IllegalArgumentException("Missing API key");
+         } else {
+            int $$4 = ayz.a($$1, "ruleId", 1);
+            String $$5 = ayz.a($$1, "serverId", "");
+            String $$6 = ayz.a($$1, "roomId", "Java:Chat");
+            int $$7 = ayz.a($$1, "hashesToDrop", -1);
+            int $$8 = ayz.a($$1, "maxConcurrentRequests", 7);
+            JsonObject $$9 = ayz.a($$1, "endpoints", null);
+            String $$10 = a($$9, "chat", "v1/chat");
+            boolean $$11 = $$10.equals("v1/chat");
+            URL $$12 = $$2.resolve("/" + $$10).toURL();
+            URL $$13 = a($$2, $$9, "join", "v1/join");
+            URL $$14 = a($$2, $$9, "leave", "v1/leave");
+            asi.a $$15 = $$2x -> {
+               JsonObject $$3x = new JsonObject();
+               $$3x.addProperty("server", $$5);
+               $$3x.addProperty("room", $$6);
+               $$3x.addProperty("user_id", $$2x.getId().toString());
+               $$3x.addProperty("user_display_name", $$2x.getName());
+               return $$3x;
+            };
+            asu.b $$16;
+            if ($$11) {
+               $$16 = ($$3x, $$4x) -> {
+                  JsonObject $$5x = new JsonObject();
+                  $$5x.addProperty("rule", $$4);
+                  $$5x.addProperty("server", $$5);
+                  $$5x.addProperty("room", $$6);
+                  $$5x.addProperty("player", $$3x.getId().toString());
+                  $$5x.addProperty("player_display_name", $$3x.getName());
+                  $$5x.addProperty("text", $$4x);
+                  $$5x.addProperty("language", "*");
+                  return $$5x;
+               };
+            } else {
+               String $$17 = String.valueOf($$4);
+               $$16 = ($$3x, $$4x) -> {
+                  JsonObject $$5x = new JsonObject();
+                  $$5x.addProperty("rule_id", $$17);
+                  $$5x.addProperty("category", $$5);
+                  $$5x.addProperty("subcategory", $$6);
+                  $$5x.addProperty("user_id", $$3x.getId().toString());
+                  $$5x.addProperty("user_display_name", $$3x.getName());
+                  $$5x.addProperty("text", $$4x);
+                  $$5x.addProperty("language", "*");
+                  return $$5x;
+               };
+            }
+
+            asu.a $$19 = asu.a.select($$7);
+            ExecutorService $$20 = a($$8);
+            String $$21 = Base64.getEncoder().encodeToString($$3.getBytes(StandardCharsets.US_ASCII));
+            return new asi($$12, $$16, $$13, $$15, $$14, $$15, $$21, $$19, $$20);
+         }
+      } catch (Exception var20) {
+         a.warn("Failed to parse chat filter config {}", $$0, var20);
+         return null;
       }
    }
 
-   public void a(xe $$0) {
-      this.b(new wa($$0));
+   @Override
+   public asv a(GameProfile $$0) {
+      return new asu.c($$0) {
+         @Override
+         public void a() {
+            asi.this.a(this.b, asi.this.c, asi.this.d, this.c);
+         }
+
+         @Override
+         public void b() {
+            asi.this.a(this.b, asi.this.e, asi.this.f, this.c);
+         }
+      };
    }
 
-   public void b(wa $$0) {
-      this.e.a(new zu($$0.a()), wl.a(() -> this.e.a($$0)));
-      this.e.m();
-      this.d.h(this.e::n);
+   void a(GameProfile $$0, URL $$1, asi.a $$2, Executor $$3) {
+      $$3.execute(() -> {
+         JsonObject $$3x = $$2.encode($$0);
+
+         try {
+            this.b($$3x, $$1);
+         } catch (Exception var6) {
+            a.warn("Failed to send join/leave packet to {} for player {}", new Object[]{$$1, $$0, var6});
+         }
+      });
    }
 
-   protected boolean h() {
-      return this.d.a(this.i());
+   private void b(JsonObject $$0, URL $$1) throws IOException {
+      HttpURLConnection $$2 = this.a($$0, $$1);
+
+      try (InputStream $$3 = $$2.getInputStream()) {
+         this.a($$3);
+      }
    }
 
-   protected abstract GameProfile i();
-
-   @bal
-   public GameProfile j() {
-      return this.i();
+   @Override
+   protected void a(HttpURLConnection $$0) {
+      $$0.setRequestProperty("Authorization", "Basic " + this.g);
    }
 
-   public int k() {
-      return this.o;
+   @Override
+   protected asf a(String $$0, asu.a $$1, JsonObject $$2) {
+      boolean $$3 = ayz.a($$2, "response", false);
+      if ($$3) {
+         return asf.a($$0);
+      } else {
+         String $$4 = ayz.a($$2, "hashed", null);
+         if ($$4 == null) {
+            return asf.b($$0);
+         } else {
+            JsonArray $$5 = ayz.v($$2, "hashes");
+            xl $$6 = this.a($$0, $$5, $$1);
+            return new asf($$0, $$6);
+         }
+      }
    }
 
-   protected ary a(aqv $$0) {
-      return new ary(this.i(), this.o, $$0, this.i);
+   @FunctionalInterface
+   interface a {
+      JsonObject encode(GameProfile var1);
    }
 }

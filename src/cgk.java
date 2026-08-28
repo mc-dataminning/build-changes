@@ -1,78 +1,110 @@
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cgk extends cgd {
-   private static final btu bY = bty.w.n().a(0.5F).b(0.665F);
+public abstract class cgk extends cgi {
+   @Nullable
+   private cgk b;
+   private int c = 1;
 
-   public cgk(bty<? extends cgk> $$0, dej $$1) {
+   public cgk(bug<? extends cgk> $$0, dev $$1) {
       super($$0, $$1);
    }
 
    @Override
    protected void D() {
-      this.bS.a(0, new cbe(this));
-      this.bS.a(1, new ccd(this, 2.0));
-      this.bS.a(2, new caw(this, 1.0));
-      this.bS.a(3, new ccs(this, 1.25, $$0 -> $$0.a(axe.aa), false));
-      this.bS.a(4, new cbj(this, 1.25));
-      this.bS.a(5, new ccx(this, 1.0));
-      this.bS.a(6, new cbs(this, cnx.class, 6.0F));
-      this.bS.a(7, new ccf(this));
+      super.D();
+      this.bS.a(5, new cbp(this));
    }
 
    @Override
-   public boolean n(cvs $$0) {
-      return $$0.a(axe.aa);
+   public int aj() {
+      return this.gx();
    }
 
-   public static bvt.a q() {
-      return cgd.gt().a(bvu.s, 10.0).a(bvu.v, 0.2F);
-   }
-
-   @Override
-   protected awf w() {
-      return awg.gc;
+   public int gx() {
+      return super.aj();
    }
 
    @Override
-   protected awf d(bsj $$0) {
-      return awg.ge;
+   protected boolean gv() {
+      return !this.gy();
+   }
+
+   public boolean gy() {
+      return this.b != null && this.b.bM();
+   }
+
+   public cgk a(cgk $$0) {
+      this.b = $$0;
+      $$0.gE();
+      return $$0;
+   }
+
+   public void gz() {
+      this.b.gF();
+      this.b = null;
+   }
+
+   private void gE() {
+      this.c++;
+   }
+
+   private void gF() {
+      this.c--;
+   }
+
+   public boolean gA() {
+      return this.gB() && this.c < this.gx();
    }
 
    @Override
-   protected awf o_() {
-      return awg.gd;
-   }
-
-   @Override
-   protected void b(jf $$0, dus $$1) {
-      this.a(awg.gg, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float fd() {
-      return 0.4F;
-   }
-
-   @Override
-   public brs b(cnx $$0, brr $$1) {
-      cvs $$2 = $$0.b($$1);
-      if ($$2.a(cvw.qz) && !this.p_()) {
-         $$0.a(awg.gf, 1.0F, 1.0F);
-         cvs $$3 = cvv.a($$2, $$0, cvw.qF.v());
-         $$0.a($$1, $$3);
-         return brs.a;
-      } else {
-         return super.b($$0, $$1);
+   public void l() {
+      super.l();
+      if (this.gB() && this.dX().A.a(200) == 1) {
+         List<? extends cgi> $$0 = this.dX().a((Class<? extends cgi>)this.getClass(), this.cS().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.c = 1;
+         }
       }
    }
 
-   @Nullable
-   public cgk b(arj $$0, btk $$1) {
-      return bty.w.a($$0, btx.e);
+   public boolean gB() {
+      return this.c > 1;
    }
 
+   public boolean gC() {
+      return this.g(this.b) <= 121.0;
+   }
+
+   public void gD() {
+      if (this.gy()) {
+         this.P().a(this.b, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends cgk> $$0) {
+      $$0.limit((long)(this.gx() - this.c)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
+   @Nullable
    @Override
-   public btu e(buz $$0) {
-      return this.p_() ? bY : super.e($$0);
+   public bvo a(dfl $$0, brw $$1, buf $$2, @Nullable bvo $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3 == null) {
+         $$3 = new cgk.a(this);
+      } else {
+         this.a(((cgk.a)$$3).a);
+      }
+
+      return $$3;
+   }
+
+   public static class a implements bvo {
+      public final cgk a;
+
+      public a(cgk $$0) {
+         this.a = $$0;
+      }
    }
 }

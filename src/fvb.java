@@ -1,108 +1,41 @@
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class fvb extends fqh {
-   private static final xe a = xe.c("telemetry_info.screen.title");
-   private static final xe b = xe.c("telemetry_info.screen.description").b(-4539718);
-   private static final xe c = xe.c("telemetry_info.button.privacy_statement");
-   private static final xe d = xe.c("telemetry_info.button.give_feedback");
-   private static final xe s = xe.c("telemetry_info.button.show_data");
-   private static final xe u = xe.c("telemetry_info.opt_in.description");
-   private static final int v = 8;
-   private static final boolean w = fip.Q().D();
-   private final fqh x;
-   private final fit y;
-   private final foc z = new foc(this, 16 + 9 * 5 + 20, w ? 33 + fkq.a(fip.Q().h) : 33);
+public class fvb extends fux<gda.a> {
+   private static final xh C = xh.c("gui.abuseReport.name.title");
+   private static final xh D = xh.c("gui.abuseReport.name.comment_box_label");
    @Nullable
-   private fva A;
-   @Nullable
-   private fli B;
-   private double C;
+   private flr E;
 
-   public fvb(fqh $$0, fit $$1) {
-      super(a);
-      this.x = $$0;
-      this.y = $$1;
+   private fvb(fqs $$0, gdf $$1, gda.a $$2) {
+      super(C, $$0, $$1, $$2);
+   }
+
+   public fvb(fqs $$0, gdf $$1, UUID $$2, String $$3) {
+      this($$0, $$1, new gda.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fvb(fqs $$0, gdf $$1, gda $$2) {
+      this($$0, $$1, new gda.a($$2, $$1.a().b()));
    }
 
    @Override
-   public xe i() {
-      return xd.a(super.i(), b);
-   }
-
-   @Override
-   protected void aS_() {
-      fog $$0 = this.z.a(fog.d().a(4));
-      $$0.c().b();
-      $$0.a(new flv(a, this.p));
-      this.B = $$0.a(new fli(b, this.p).b(true));
-      fog $$1 = $$0.a(fog.e().a(8));
-      $$1.a(fko.a(c, this::a).a());
-      $$1.a(fko.a(d, this::b).a());
-      fog $$2 = this.z.b(fog.d().a(4));
-      if (w) {
-         $$2.a(this.m());
-      }
-
-      fog $$3 = $$2.a(fog.e().a(8));
-      $$3.a(fko.a(s, this::c).a());
-      $$3.a(fko.a(xd.d, $$0x -> this.d()).a());
-      fog $$4 = this.z.c(fog.d().a(8));
-      this.A = $$4.a(new fva(0, 0, this.n - 40, this.z.d(), this.p));
-      this.A.a($$0x -> this.C = $$0x);
-      this.z.a($$1x -> {
-         fkm var10000 = this.c($$1x);
+   protected void D() {
+      xh $$0 = xh.b(this.A.e().a()).a(n.o);
+      this.z.a(new fmg(xh.a("gui.abuseReport.name.reporting", $$0), this.p), $$0x -> $$0x.b().a(0, 8));
+      this.E = this.a(280, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.F();
       });
-      this.c();
+      this.z.a(foj.a(this.p, this.E, D, $$0x -> $$0x.e(12)));
    }
 
    @Override
-   protected void c() {
-      if (this.A != null) {
-         this.A.a(this.C);
-         this.A.k(this.n - 40);
-         this.A.l(this.z.d());
-         this.A.j();
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (super.b($$0, $$1, $$2)) {
+         return true;
+      } else {
+         return this.E != null ? this.E.b($$0, $$1, $$2) : false;
       }
-
-      if (this.B != null) {
-         this.B.d(this.n - 16);
-      }
-
-      this.z.a();
-   }
-
-   @Override
-   protected void aH_() {
-      if (this.A != null) {
-         this.b(this.A);
-      }
-   }
-
-   private fkm m() {
-      fis<Boolean> $$0 = this.y.ak();
-      return fkq.a(u, this.p).a($$0).a(this::a).a();
-   }
-
-   private void a(fkm $$0, boolean $$1) {
-      if (this.A != null) {
-         this.A.b($$1);
-      }
-   }
-
-   private void a(fko $$0) {
-      fpe.a(this, ayb.c);
-   }
-
-   private void b(fko $$0) {
-      fpe.a(this, ayb.i);
-   }
-
-   private void c(fko $$0) {
-      ad.m().a(this.m.u().b());
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.x);
    }
 }

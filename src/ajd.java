@@ -1,29 +1,41 @@
-public class ajd implements zl<aiz> {
-   public static final zc<wb, ajd> a = zl.a(ajd::a, ajd::new);
-   private final int b;
+public record ajd(int b, ajq c) implements zo<ajc> {
+   public static final zf<we, ajd> a = zo.a(ajd::a, ajd::new);
+   private static final int d = 1048576;
 
-   public ajd(int $$0) {
-      this.b = $$0;
+   private ajd(we $$0) {
+      this($$0.l(), a($$0.q(), $$0));
    }
 
-   private ajd(wb $$0) {
-      this.b = $$0.l();
+   private static ajq a(alh $$0, we $$1) {
+      return b($$0, $$1);
    }
 
-   private void a(wb $$0) {
+   private static ajs b(alh $$0, we $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.k($$2);
+         return new ajs($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void a(we $$0) {
       $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
    }
 
    @Override
-   public zn<ajd> a() {
-      return ajf.d;
+   public zq<ajd> a() {
+      return aji.a;
    }
 
-   public void a(aiz $$0) {
+   public void a(ajc $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public ajq e() {
+      return this.c;
    }
 }

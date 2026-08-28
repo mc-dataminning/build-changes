@@ -2,29 +2,37 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekt extends ekm {
+public class ekt extends elc {
    public static final MapCodec<ekt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, ekt::new)
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ekt::new)
    );
    private final int c;
+   private final double d;
+   private final double e;
 
-   private ekt(int $$0) {
+   private ekt(int $$0, double $$1, double $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static ekt a(int $$0) {
-      return new ekt($$0);
-   }
-
-   @Override
-   protected boolean a(ekl $$0, azn $$1, jf $$2) {
-      int $$3 = $$0.a(eao.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(eao.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public static ekt a(int $$0, double $$1, double $$2) {
+      return new ekt($$0, $$1, $$2);
    }
 
    @Override
-   public eko<?> b() {
-      return eko.d;
+   protected int a(azr $$0, jg $$1) {
+      double $$2 = dfw.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   }
+
+   @Override
+   public ekz<?> b() {
+      return ekz.g;
    }
 }

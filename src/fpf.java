@@ -1,102 +1,45 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.IntComparator;
 
-public class fpf extends fqh {
-   private static final int d = 20;
-   private final xe s;
-   private flh u = flh.a;
-   protected xe a;
-   protected xe b;
-   private int v;
-   protected final BooleanConsumer c;
-   private final List<fko> w = Lists.newArrayList();
+public enum fpf {
+   a,
+   b,
+   c,
+   d;
 
-   public fpf(BooleanConsumer $$0, xe $$1, xe $$2) {
-      this($$0, $$1, $$2, xd.f, xd.g);
+   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+
+   public fpe a() {
+      return switch (this) {
+         case a, b -> fpe.b;
+         case c, d -> fpe.a;
+      };
    }
 
-   public fpf(BooleanConsumer $$0, xe $$1, xe $$2, xe $$3, xe $$4) {
-      super($$1);
-      this.c = $$0;
-      this.s = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public fpf b() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+         case c -> d;
+         case d -> c;
+      };
    }
 
-   @Override
-   public xe i() {
-      return xd.a(super.i(), this.s);
+   public boolean c() {
+      return switch (this) {
+         case a, c -> false;
+         case b, d -> true;
+      };
    }
 
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.u = flh.a(this.p, this.s, this.n - 50);
-      int $$0 = azf.a(this.D() + this.E() + 20, this.o / 6 + 96, this.o - 24);
-      this.w.clear();
-      this.a($$0);
+   public boolean a(int $$0, int $$1) {
+      return this.c() ? $$0 > $$1 : $$1 > $$0;
    }
 
-   protected void a(int $$0) {
-      this.a(fko.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
-      this.a(fko.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   public boolean b(int $$0, int $$1) {
+      return this.c() ? $$0 < $$1 : $$1 < $$0;
    }
 
-   protected void a(fko $$0) {
-      this.w.add(this.c($$0));
-   }
-
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
-      this.u.a($$0, this.n / 2, this.D());
-   }
-
-   private int m() {
-      int $$0 = (this.o - this.E()) / 2;
-      return azf.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int D() {
-      return this.m() + 20;
-   }
-
-   private int E() {
-      return this.u.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.v = $$0;
-
-      for (fko $$1 : this.w) {
-         $$1.j = false;
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (--this.v == 0) {
-         for (fko $$0 : this.w) {
-            $$0.j = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean aI_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public IntComparator d() {
+      return this.e;
    }
 }

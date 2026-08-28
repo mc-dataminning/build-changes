@@ -1,240 +1,322 @@
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.Reader;
 import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fnp implements fbh {
+public class fnp implements aut, AutoCloseable {
    static final Logger b = LogUtils.getLogger();
-   private final fci c;
-   private final fnd<fnp.b> d;
+   private static final String c = "fonts.json";
+   public static final alh a = alh.b("missing");
+   private static final ala d = ala.a("font");
+   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private final fnr f;
+   private final List<fbs> g = new ArrayList<>();
+   private final Map<alh, fnr> h = new HashMap<>();
+   private final gxt i;
+   @Nullable
+   private volatile fnr j;
 
-   fnp(fci $$0, fnd<fnp.b> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public fnp(gxt $$0) {
+      this.i = $$0;
+      this.f = ad.a(new fnr($$0, a), $$0x -> $$0x.a(List.of(d()), Set.of()));
+   }
+
+   private static fbs.a d() {
+      return new fbs.a(new fnn(), fnq.a.b);
+   }
+
+   @Override
+   public CompletableFuture<Void> a(aut.a $$0, ava $$1, bok $$2, bok $$3, Executor $$4, Executor $$5) {
+      $$2.a();
+      $$2.b();
+      return this.a($$1, $$4).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   }
+
+   private CompletableFuture<fnp.d> a(ava $$0, Executor $$1) {
+      List<CompletableFuture<fnp.e>> $$2 = new ArrayList<>();
+
+      for (Entry<alh, List<auy>> $$3 : d.b($$0).entrySet()) {
+         alh $$4 = d.b($$3.getKey());
+         $$2.add(CompletableFuture.supplyAsync(() -> {
+            List<Pair<fnp.a, foc.a>> $$4x = a($$3.getValue(), $$4);
+            fnp.e $$5 = new fnp.e($$4);
+
+            for (Pair<fnp.a, foc.a> $$6 : $$4x) {
+               fnp.a $$7 = (fnp.a)$$6.getFirst();
+               fnq.a $$8 = ((foc.a)$$6.getSecond()).b();
+               ((foc.a)$$6.getSecond()).a().b().ifLeft($$5x -> {
+                  CompletableFuture<Optional<fbs>> $$6x = this.a($$7, $$5x, $$0, $$1);
+                  $$5.a($$7, $$8, $$6x);
+               }).ifRight($$3xx -> $$5.a($$7, $$8, $$3xx));
+            }
+
+            return $$5;
+         }, $$1));
+      }
+
+      return ad.d($$2)
+         .thenCompose(
+            $$1x -> {
+               List<CompletableFuture<Optional<fbs>>> $$2x = $$1x.stream().flatMap(fnp.e::d).collect(ad.b());
+               fbs.a $$3x = d();
+               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x.a())));
+               return ad.d($$2x)
+                  .thenCompose(
+                     $$3xx -> {
+                        Map<alh, List<fbs.a>> $$4x = this.a($$1x);
+                        CompletableFuture<?>[] $$5 = $$4x.values()
+                           .stream()
+                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
+                           .toArray(CompletableFuture[]::new);
+                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
+                           List<fbs> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
+                           return new fnp.d($$4x, $$3xxx);
+                        });
+                     }
+                  );
+            }
+         );
+   }
+
+   private CompletableFuture<Optional<fbs>> a(fnp.a $$0, foc.b $$1, ava $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            return Optional.of($$1.load($$2));
+         } catch (Exception var4x) {
+            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
+            return Optional.empty();
+         }
+      }, $$3);
+   }
+
+   private Map<alh, List<fbs.a>> a(List<fnp.e> $$0) {
+      Map<alh, List<fbs.a>> $$1 = new HashMap<>();
+      ayo<alh, fnp.e> $$2 = new ayo<>();
+      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
+      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
+      return $$1;
+   }
+
+   private void a(List<fbs.a> $$0, fbs.a $$1) {
+      $$0.add(0, $$1);
+      IntSet $$2 = new IntOpenHashSet();
+
+      for (fbs.a $$3 : $$0) {
+         $$2.addAll($$3.a().a());
+      }
+
+      $$2.forEach($$1x -> {
+         if ($$1x != 32) {
+            for (fbs.a $$2x : Lists.reverse($$0)) {
+               if ($$2x.a().a($$1x) != null) {
+                  break;
+               }
+            }
+         }
+      });
+   }
+
+   private static Set<fnq> b(fje $$0) {
+      Set<fnq> $$1 = EnumSet.noneOf(fnq.class);
+      if ($$0.R().c()) {
+         $$1.add(fnq.a);
+      }
+
+      if ($$0.S().c()) {
+         $$1.add(fnq.b);
+      }
+
+      return $$1;
+   }
+
+   private void a(fnp.d $$0, bok $$1) {
+      $$1.a();
+      $$1.a("closing");
+      this.j = null;
+      this.h.values().forEach(fnr::close);
+      this.h.clear();
+      this.g.forEach(fbs::close);
+      this.g.clear();
+      Set<fnq> $$2 = b(fja.Q().n);
+      $$1.b("reloading");
+      $$0.a().forEach(($$1x, $$2x) -> {
+         fnr $$3 = new fnr(this.i, $$1x);
+         $$3.a(Lists.reverse($$2x), $$2);
+         this.h.put($$1x, $$3);
+      });
+      this.g.addAll($$0.b);
+      $$1.c();
+      $$1.b();
+      if (!this.h.containsKey(fja.b)) {
+         throw new IllegalStateException("Default font failed to load");
+      }
+   }
+
+   public void a(fje $$0) {
+      Set<fnq> $$1 = b($$0);
+
+      for (fnr $$2 : this.h.values()) {
+         $$2.a($$1);
+      }
+   }
+
+   private static List<Pair<fnp.a, foc.a>> a(List<auy> $$0, alh $$1) {
+      List<Pair<fnp.a, foc.a>> $$2 = new ArrayList<>();
+
+      for (auy $$3 : $$0) {
+         try (Reader $$4 = $$3.e()) {
+            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
+            fnp.c $$6 = (fnp.c)fnp.c.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonParseException::new);
+            List<foc.a> $$7 = $$6.b;
+
+            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
+               fnp.a $$9 = new fnp.a($$1, $$3.b(), $$8);
+               $$2.add(Pair.of($$9, $$7.get($$8)));
+            }
+         } catch (Exception var13) {
+            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
+         }
+      }
+
+      return $$2;
+   }
+
+   public fkk a() {
+      return new fkk(this::b, false);
+   }
+
+   public fkk b() {
+      return new fkk(this::b, true);
+   }
+
+   private fnr a(alh $$0) {
+      return this.h.getOrDefault($$0, this.f);
+   }
+
+   private fnr b(alh $$0) {
+      fnr $$1 = this.j;
+      if ($$1 != null && $$0.equals($$1.a())) {
+         return $$1;
+      } else {
+         fnr $$2 = this.a($$0);
+         this.j = $$2;
+         return $$2;
+      }
    }
 
    @Override
    public void close() {
-      this.c.close();
+      this.h.values().forEach(fnr::close);
+      this.g.forEach(fbs::close);
+      this.f.close();
    }
 
-   @Nullable
-   @Override
-   public fbg a(int $$0) {
-      return this.d.a($$0);
+   static record a(alh a, String b, int c) {
+      @Override
+      public String toString() {
+         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
+      }
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.d.b());
-   }
+   static record b(fnp.a a, fnq.a b, Either<CompletableFuture<Optional<fbs>>, alh> c) {
 
-   public static record a(ale c, int d, int e, int[][] f) implements fnr {
-      private static final Codec<int[][]> g = Codec.STRING.listOf().xmap($$0 -> {
-         int $$1 = $$0.size();
-         int[][] $$2 = new int[$$1][];
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
-         }
-
-         return $$2;
-      }, $$0 -> {
-         List<String> $$1 = new ArrayList<>($$0.length);
-
-         for (int[] $$2 : $$0) {
-            $$1.add(new String($$2, 0, $$2.length));
-         }
-
-         return $$1;
-      }).validate(fnp.a::a);
-      public static final MapCodec<fnp.a> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ale.a.fieldOf("file").forGetter(fnp.a::c),
-                     Codec.INT.optionalFieldOf("height", 8).forGetter(fnp.a::d),
-                     Codec.INT.fieldOf("ascent").forGetter(fnp.a::e),
-                     g.fieldOf("chars").forGetter(fnp.a::f)
-                  )
-                  .apply($$0, fnp.a::new)
-         )
-         .validate(fnp.a::a);
-
-      private static DataResult<int[][]> a(int[][] $$0) {
-         int $$1 = $$0.length;
-         if ($$1 == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
-         } else {
-            int[] $$2 = $$0[0];
-            int $$3 = $$2.length;
-            if ($$3 == 0) {
-               return DataResult.error(() -> "Expected to find data in codepoint grid");
+      public Optional<List<fbs.a>> a(Function<alh, List<fbs.a>> $$0) {
+         return (Optional<List<fbs.a>>)this.c.map($$0x -> ((Optional)$$0x.join()).map($$0xx -> List.of(new fbs.a($$0xx, this.b))), $$1 -> {
+            List<fbs.a> $$2 = $$0.apply($$1);
+            if ($$2 == null) {
+               fnp.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
+               return Optional.empty();
             } else {
-               for (int $$4 = 1; $$4 < $$1; $$4++) {
-                  int[] $$5 = $$0[$$4];
-                  if ($$5.length != $$3) {
-                     return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                              + $$5.length
-                              + " codepoints, expected: "
-                              + $$3
-                              + "), pad with \\u0000"
-                     );
-                  }
-               }
-
-               return DataResult.success($$0);
-            }
-         }
-      }
-
-      private static DataResult<fnp.a> a(fnp.a $$0) {
-         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
-      }
-
-      @Override
-      public fns a() {
-         return fns.a;
-      }
-
-      @Override
-      public Either<fnr.b, fnr.c> b() {
-         return Either.left(this::a);
-      }
-
-      private fbh a(auv $$0) throws IOException {
-         ale $$1 = this.c.f("textures/");
-
-         fnp var22;
-         try (InputStream $$2 = $$0.open($$1)) {
-            fci $$3 = fci.a(fci.a.a, $$2);
-            int $$4 = $$3.a();
-            int $$5 = $$3.b();
-            int $$6 = $$4 / this.f[0].length;
-            int $$7 = $$5 / this.f.length;
-            float $$8 = (float)this.d / (float)$$7;
-            fnd<fnp.b> $$9 = new fnd<>(fnp.b[]::new, fnp.b[][]::new);
-
-            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
-               int $$11 = 0;
-
-               for (int $$12 : this.f[$$10]) {
-                  int $$13 = $$11++;
-                  if ($$12 != 0) {
-                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
-                     fnp.b $$15 = $$9.a($$12, new fnp.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
-                     if ($$15 != null) {
-                        fnp.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
-                     }
-                  }
-               }
-            }
-
-            var22 = new fnp($$3, $$9);
-         }
-
-         return var22;
-      }
-
-      private int a(fci $$0, int $$1, int $$2, int $$3, int $$4) {
-         int $$5;
-         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
-            int $$6 = $$3 * $$1 + $$5;
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               int $$8 = $$4 * $$2 + $$7;
-               if ($$0.b($$6, $$8) != 0) {
-                  return $$5 + 1;
-               }
-            }
-         }
-
-         return $$5 + 1;
-      }
-   }
-
-   static record b(float a, fci b, int c, int d, int e, int f, int g, int h) implements fbg {
-
-      @Override
-      public float getAdvance() {
-         return (float)this.g;
-      }
-
-      @Override
-      public fnk bake(Function<fbi, fnk> $$0) {
-         return $$0.apply(new fbi() {
-            @Override
-            public float d() {
-               return 1.0F / b.this.a;
-            }
-
-            @Override
-            public int a() {
-               return b.this.e;
-            }
-
-            @Override
-            public int b() {
-               return b.this.f;
-            }
-
-            @Override
-            public float j() {
-               return (float)b.this.h;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
-            }
-
-            @Override
-            public boolean c() {
-               return b.this.b.c().a() > 1;
+               return Optional.of($$2.stream().map(this::a).toList());
             }
          });
       }
 
-      public float c() {
-         return this.a;
+      private fbs.a a(fbs.a $$0) {
+         return new fbs.a($$0.a(), this.b.a($$0.b()));
       }
+   }
 
-      public fci d() {
+   static record c(List<foc.a> b) {
+      public static final Codec<fnp.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(foc.a.a.listOf().fieldOf("providers").forGetter(fnp.c::a)).apply($$0, fnp.c::new)
+      );
+
+      public List<foc.a> a() {
          return this.b;
       }
+   }
 
-      public int e() {
-         return this.c;
+   static record d(Map<alh, List<fbs.a>> a, List<fbs> b) {
+   }
+
+   static record e(alh a, List<fnp.b> b, Set<alh> c) implements ayo.a<alh> {
+
+      public e(alh $$0) {
+         this($$0, new ArrayList<>(), new HashSet<>());
       }
 
-      public int f() {
-         return this.d;
+      public void a(fnp.a $$0, fnq.a $$1, foc.c $$2) {
+         this.b.add(new fnp.b($$0, $$1, Either.right($$2.a())));
+         this.c.add($$2.a());
       }
 
-      public int g() {
-         return this.e;
+      public void a(fnp.a $$0, fnq.a $$1, CompletableFuture<Optional<fbs>> $$2) {
+         this.b.add(new fnp.b($$0, $$1, Either.left($$2)));
       }
 
-      public int h() {
-         return this.f;
+      private Stream<CompletableFuture<Optional<fbs>>> d() {
+         return this.b.stream().flatMap($$0 -> $$0.c.left().stream());
       }
 
-      public int i() {
-         return this.g;
+      public Optional<List<fbs.a>> a(Function<alh, List<fbs.a>> $$0) {
+         List<fbs.a> $$1 = new ArrayList<>();
+
+         for (fnp.b $$2 : this.b) {
+            Optional<List<fbs.a>> $$3 = $$2.a($$0);
+            if (!$$3.isPresent()) {
+               return Optional.empty();
+            }
+
+            $$1.addAll($$3.get());
+         }
+
+         return Optional.of($$1);
       }
 
-      public int j() {
-         return this.h;
+      @Override
+      public void a(Consumer<alh> $$0) {
+         this.c.forEach($$0);
+      }
+
+      @Override
+      public void b(Consumer<alh> $$0) {
       }
    }
 }

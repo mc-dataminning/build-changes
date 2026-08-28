@@ -1,97 +1,133 @@
-import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
+import java.util.Collections;
+import java.util.SequencedSet;
 
-public class dtd extends drv implements dzr.b<dtd.a> {
-   private final dtd.a a;
+public class dtd {
+   private final Object2IntSortedMap<cvt> a;
 
-   public dtd(jf $$0, dus $$1) {
-      super(drx.K, $$0, $$1);
-      this.a = new dtd.a($$1, new dzl($$0));
+   dtd(Object2IntSortedMap<cvt> $$0) {
+      this.a = $$0;
    }
 
-   public static void a(dej $$0, jf $$1, dus $$2, dtd $$3) {
-      $$3.a.d().a($$0, $$1, $$0.D_(), true);
+   public boolean a(cvx $$0) {
+      return this.a.containsKey($$0.h());
    }
 
-   @Override
-   protected void a(ug $$0, jq.a $$1) {
-      super.a($$0, $$1);
-      this.a.b.a($$0);
+   public SequencedSet<cvt> a() {
+      return Collections.unmodifiableSequencedSet(this.a.keySet());
    }
 
-   @Override
-   protected void b(ug $$0, jq.a $$1) {
-      this.a.b.b($$0);
-      super.b($$0, $$1);
+   public int b(cvx $$0) {
+      return $$0.f() ? 0 : this.a.getInt($$0.h());
    }
 
-   public dtd.a b() {
-      return this.a;
+   public static dtd a(jr.a $$0, cra $$1) {
+      return a($$0, $$1, 200);
    }
 
-   public static class a implements dzr {
-      public static final int a = 8;
-      final doi b;
-      private final dus c;
-      private final dzt d;
+   public static dtd a(jr.a $$0, cra $$1, int $$2) {
+      return new dtd.a($$0, $$1)
+         .a(cwb.qB, $$2 * 100)
+         .a(dia.iB, $$2 * 8 * 10)
+         .a(cwb.sh, $$2 * 12)
+         .a(cwb.oy, $$2 * 8)
+         .a(cwb.oz, $$2 * 8)
+         .a(axi.r, $$2 * 3 / 2)
+         .a(axi.C, $$2 * 3 / 2)
+         .a(axi.b, $$2 * 3 / 2)
+         .a(dia.w, $$2 * 3 / 2)
+         .a(axi.i, $$2 * 3 / 2)
+         .a(dia.hU, $$2 * 3 / 2)
+         .a(axi.j, $$2 * 3 / 4)
+         .a(dia.jC, $$2 * 3 / 4)
+         .a(axi.n, $$2 * 3 / 2)
+         .a(axi.m, $$2 * 3 / 2)
+         .a(axi.k, $$2 * 3 / 2)
+         .a(axi.l, $$2 * 3 / 2)
+         .a(dia.aY, $$2 * 3 / 2)
+         .a(dia.cl, $$2 * 3 / 2)
+         .a(dia.cm, $$2 * 3 / 2)
+         .a(dia.oa, $$2 * 3 / 2)
+         .a(dia.dT, $$2 * 3 / 2)
+         .a(dia.cv, $$2 * 3 / 2)
+         .a(dia.gV, $$2 * 3 / 2)
+         .a(dia.cA, $$2 * 3 / 2)
+         .a(dia.gZ, $$2 * 3 / 2)
+         .a(axi.E, $$2 * 3 / 2)
+         .a(cwb.ow, $$2 * 3 / 2)
+         .a(cwb.qW, $$2 * 3 / 2)
+         .a(dia.cO, $$2 * 3 / 2)
+         .a(axi.aR, $$2)
+         .a(axi.br, $$2 * 4)
+         .a(cwb.oO, $$2)
+         .a(cwb.oN, $$2)
+         .a(cwb.oR, $$2)
+         .a(cwb.oQ, $$2)
+         .a(cwb.oP, $$2)
+         .a(axi.h, $$2)
+         .a(axi.aO, $$2 * 6)
+         .a(axi.a, $$2 / 2)
+         .a(axi.d, $$2 / 2)
+         .a(cwb.pr, $$2 / 2)
+         .a(axi.p, $$2 / 2)
+         .a(cwb.ou, $$2 / 2)
+         .a(axi.g, 1 + $$2 / 3)
+         .a(dia.me, 1 + $$2 * 20)
+         .a(cwb.vX, $$2 * 3 / 2)
+         .a(dia.mZ, $$2 / 4)
+         .a(dia.bv, $$2 / 2)
+         .a(dia.nS, $$2 / 4)
+         .a(dia.nT, $$2 * 3 / 2)
+         .a(dia.nU, $$2 * 3 / 2)
+         .a(dia.nX, $$2 * 3 / 2)
+         .a(dia.nY, $$2 * 3 / 2)
+         .a(dia.ob, $$2 * 3 / 2)
+         .a(dia.pc, $$2 * 3 / 2)
+         .a(dia.sy, $$2 / 2)
+         .a(dia.sz, $$2 / 2)
+         .a(dia.ac, $$2 * 3 / 2)
+         .a(axi.aI)
+         .a();
+   }
 
-      public a(dus $$0, dzt $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = doi.a();
+   public static class a {
+      private final jr<cvt> a;
+      private final cra b;
+      private final Object2IntSortedMap<cvt> c = new Object2IntLinkedOpenHashMap();
+
+      public a(jr.a $$0, cra $$1) {
+         this.a = $$0.d(ly.K);
+         this.b = $$1;
       }
 
-      @Override
-      public dzt a() {
-         return this.d;
+      public dtd a() {
+         return new dtd(this.c);
       }
 
-      @Override
-      public int b() {
-         return 8;
+      public dtd.a a(axp<cvt> $$0) {
+         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
+         return this;
       }
 
-      @Override
-      public dzr.a c() {
-         return dzr.a.b;
-      }
-
-      @Override
-      public boolean a(arj $$0, jo<dzp> $$1, dzp.a $$2, eyw $$3) {
-         if ($$1.a(dzp.p) && $$2.a() instanceof bun $$4) {
-            if (!$$4.eH()) {
-               bsj $$5 = $$4.eD();
-               int $$6 = $$4.a($$0, x.a($$5, bsj::d));
-               if ($$4.ej() && $$6 > 0) {
-                  this.b.a(jf.a((jy)$$3.a(jk.b, 0.5)), $$6);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eG();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, jf.a((jy)$$1x), this.c, $$0.D_()));
+      public dtd.a a(axp<cvt> $$0, int $$1) {
+         this.a.a($$0).ifPresent($$1x -> {
+            for (jp<cvt> $$2 : $$1x) {
+               this.a($$1, $$2.a());
             }
-
-            return true;
-         } else {
-            return false;
-         }
+         });
+         return this;
       }
 
-      @VisibleForTesting
-      public doi d() {
-         return this.b;
+      public dtd.a a(deu $$0, int $$1) {
+         cvt $$2 = $$0.j();
+         this.a($$1, $$2);
+         return this;
       }
 
-      private void a(arj $$0, jf $$1, dus $$2, azn $$3) {
-         $$0.a($$1, $$2.b(dof.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(lo.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, awg.wb, awh.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
-
-      private void a(dej $$0, bun $$1) {
-         if ($$1.en() instanceof ark $$3) {
-            bsj $$4 = $$1.eD() == null ? $$0.ak().a((cnx)$$3) : $$1.eD();
-            an.Z.a($$3, $$1, $$4);
+      private void a(int $$0, cvt $$1) {
+         if ($$1.a(this.b)) {
+            this.c.put($$1, $$0);
          }
       }
    }

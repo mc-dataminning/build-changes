@@ -1,37 +1,33 @@
-public class aev implements zl<aca> {
-   public static final zc<wb, aev> a = zl.a(aev::a, aev::new);
-   private final double b;
-   private final double c;
+import javax.annotation.Nullable;
 
-   public aev(dwj $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
+public class aev implements zo<acd> {
+   public static final zf<we, aev> a = zo.a(aev::a, aev::new);
+   @Nullable
+   private final alh b;
+
+   public aev(@Nullable alh $$0) {
+      this.b = $$0;
    }
 
-   private aev(wb $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
+   private aev(we $$0) {
+      this.b = $$0.c(we::q);
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(we $$0) {
+      $$0.a(this.b, we::a);
    }
 
    @Override
-   public zn<aev> a() {
-      return agp.as;
+   public zq<aev> a() {
+      return ags.ap;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.c;
-   }
-
-   public double e() {
+   @Nullable
+   public alh b() {
       return this.b;
    }
 }

@@ -1,10 +1,28 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ekn {
-   public static final Codec<ekn> b = lv.S.q().dispatch(ekn::b, eko::codec);
+public class ekn extends elc {
+   public static final MapCodec<ekn> a = brd.b(0, 256).fieldOf("count").xmap(ekn::new, $$0 -> $$0.c);
+   private final brd c;
 
-   public abstract Stream<jf> a_(ekl var1, azn var2, jf var3);
+   private ekn(brd $$0) {
+      this.c = $$0;
+   }
 
-   public abstract eko<?> b();
+   public static ekn a(brd $$0) {
+      return new ekn($$0);
+   }
+
+   public static ekn a(int $$0) {
+      return a(bra.a($$0));
+   }
+
+   @Override
+   protected int a(azr $$0, jg $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public ekz<?> b() {
+      return ekz.f;
+   }
 }

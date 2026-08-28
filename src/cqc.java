@@ -1,113 +1,45 @@
-public abstract class cqc {
-   protected final cpv a;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-   protected cqc(cpv $$0) {
+public class cqc {
+   private final cqb a;
+   private final List<cqc.a> b = Lists.newArrayList();
+
+   public cqc(cqb $$0) {
       this.a = $$0;
    }
 
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.c($$0, $$1, $$2);
-      this.b($$3 % 360.0F);
-      this.a($$4 % 360.0F);
+   public cqc a(int $$0, cpz $$1) {
+      this.b.add(new cqc.a($$0, $$1));
+      return this;
    }
 
-   public double a() {
-      return this.l();
+   public cqb a() {
+      this.b.stream().map(cqc.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         cpz $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
    }
 
-   public double b() {
-      return this.m();
+   static class a {
+      private final int a;
+      private final cpz b;
+
+      public a(int $$0, cpz $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public cpz b() {
+         return this.b;
+      }
    }
-
-   public double c() {
-      return this.n();
-   }
-
-   public float d() {
-      return this.o();
-   }
-
-   public float e() {
-      return this.p();
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2);
-   }
-
-   public abstract void f();
-
-   public dej g() {
-      return this.a.dS();
-   }
-
-   public abstract void h();
-
-   public abstract double a(jf var1, dvw var2, double var3);
-
-   public abstract boolean i();
-
-   public eyw j() {
-      return this.a.dv();
-   }
-
-   public void a(eyw $$0) {
-      this.a.h($$0);
-   }
-
-   public void b(double $$0, double $$1, double $$2) {
-      this.a.n($$0, $$1, $$2);
-   }
-
-   public eyw k() {
-      return this.a.dq();
-   }
-
-   public double l() {
-      return this.a.dx();
-   }
-
-   public double m() {
-      return this.a.dz();
-   }
-
-   public double n() {
-      return this.a.dD();
-   }
-
-   public void b(eyw $$0) {
-      this.a.b($$0);
-   }
-
-   public void c(double $$0, double $$1, double $$2) {
-      this.a.a_($$0, $$1, $$2);
-   }
-
-   public float o() {
-      return this.a.dK();
-   }
-
-   public void a(float $$0) {
-      this.a.w($$0);
-   }
-
-   public float p() {
-      return this.a.dI();
-   }
-
-   public void b(float $$0) {
-      this.a.v($$0);
-   }
-
-   public jk q() {
-      return this.a.cL();
-   }
-
-   public eyw c(eyw $$0) {
-      return $$0;
-   }
-
-   public abstract double r();
-
-   public abstract double s();
 }

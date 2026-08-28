@@ -1,45 +1,44 @@
-public abstract class gft extends gfg {
-   protected gxg E;
+public class gft extends gge {
+   private final gfz a;
 
-   protected gft(gbm $$0, double $$1, double $$2, double $$3) {
+   protected gft(gbx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfz $$7) {
       super($$0, $$1, $$2, $$3);
-   }
-
-   protected gft(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(gxg $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   protected float d() {
-      return this.E.d();
+   public gfi b() {
+      return gfi.b;
    }
 
    @Override
-   protected float e() {
-      return this.E.g();
+   public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   @Override
-   protected float f() {
-      return this.E.h();
-   }
+   public static class a implements gfh<lu> {
+      private final gfz a;
 
-   public void a(gfo $$0) {
-      this.a($$0.a(this.r));
-   }
+      public a(gfz $$0) {
+         this.a = $$0;
+      }
 
-   public void b(gfo $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gft $$8 = new gft($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
       }
    }
 }

@@ -1,216 +1,97 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public abstract class cgd extends btk {
-   protected static final int cb = 6000;
-   private int bY;
-   @Nullable
-   private UUID bZ;
+public class cgd {
+   public static final alg<cgc> a = a("armorer");
+   public static final alg<cgc> b = a("butcher");
+   public static final alg<cgc> c = a("cartographer");
+   public static final alg<cgc> d = a("cleric");
+   public static final alg<cgc> e = a("farmer");
+   public static final alg<cgc> f = a("fisherman");
+   public static final alg<cgc> g = a("fletcher");
+   public static final alg<cgc> h = a("leatherworker");
+   public static final alg<cgc> i = a("librarian");
+   public static final alg<cgc> j = a("mason");
+   public static final alg<cgc> k = a("shepherd");
+   public static final alg<cgc> l = a("toolsmith");
+   public static final alg<cgc> m = a("weaponsmith");
+   public static final alg<cgc> n = a("home");
+   public static final alg<cgc> o = a("meeting");
+   public static final alg<cgc> p = a("beehive");
+   public static final alg<cgc> q = a("bee_nest");
+   public static final alg<cgc> r = a("nether_portal");
+   public static final alg<cgc> s = a("lodestone");
+   public static final alg<cgc> t = a("lightning_rod");
+   private static final Set<dvd> u = ImmutableList.of(
+         dia.bn, dia.bo, dia.bk, dia.bl, dia.bi, dia.bg, dia.bm, dia.bc, dia.bh, dia.be, dia.bb, dia.ba, new dhy[]{dia.bf, dia.bj, dia.aZ, dia.bd}
+      )
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .filter($$0 -> $$0.c(dhr.b) == dvq.a)
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Set<dvd> v = ImmutableList.of(dia.ft, dia.fv, dia.fu, dia.fw)
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Map<dvd, jp<cgc>> w = Maps.newHashMap();
 
-   protected cgd(bty<? extends cgd> $$0, dej $$1) {
-      super($$0, $$1);
-      this.a(erk.n, 16.0F);
-      this.a(erk.o, -1.0F);
+   private static Set<dvd> a(dhy $$0) {
+      return ImmutableSet.copyOf($$0.l().a());
    }
 
-   public static bvt.a gt() {
-      return bup.E().a(bvu.E, 10.0);
+   private static alg<cgc> a(String $$0) {
+      return alg.a(ly.aa, alh.b($$0));
    }
 
-   @Override
-   protected void ac() {
-      if (this.g() != 0) {
-         this.bY = 0;
-      }
-
-      super.ac();
+   private static cgc a(kc<cgc> $$0, alg<cgc> $$1, Set<dvd> $$2, int $$3, int $$4) {
+      cgc $$5 = new cgc($$2, $$3, $$4);
+      kc.a($$0, $$1, $$5);
+      a($$0.b($$1), $$2);
+      return $$5;
    }
 
-   @Override
-   public void n_() {
-      super.n_();
-      if (this.g() != 0) {
-         this.bY = 0;
-      }
-
-      if (this.bY > 0) {
-         this.bY--;
-         if (this.bY % 10 == 0) {
-            double $$0 = this.af.k() * 0.02;
-            double $$1 = this.af.k() * 0.02;
-            double $$2 = this.af.k() * 0.02;
-            this.dS().a(lo.Q, this.d(1.0), this.dA() + 0.5, this.g(1.0), $$0, $$1, $$2);
+   private static void a(jp<cgc> $$0, Set<dvd> $$1) {
+      $$1.forEach($$1x -> {
+         jp<cgc> $$2 = w.put($$1x, $$0);
+         if ($$2 != null) {
+            throw (IllegalStateException)ad.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
          }
-      }
-   }
-
-   @Override
-   protected void f(bsj $$0, float $$1) {
-      this.gz();
-      super.f($$0, $$1);
-   }
-
-   @Override
-   public float a(jf $$0, dem $$1) {
-      return $$1.a_($$0.e()).a(dho.i) ? 10.0F : $$1.w($$0);
-   }
-
-   @Override
-   public void b(ug $$0) {
-      super.b($$0);
-      $$0.a("InLove", this.bY);
-      if (this.bZ != null) {
-         $$0.a("LoveCause", this.bZ);
-      }
-   }
-
-   @Override
-   public void a(ug $$0) {
-      super.a($$0);
-      this.bY = $$0.h("InLove");
-      this.bZ = $$0.b("LoveCause") ? $$0.a("LoveCause") : null;
-   }
-
-   public static boolean b(bty<? extends cgd> $$0, dek $$1, btx $$2, jf $$3, azn $$4) {
-      boolean $$5 = btx.b($$2) || a($$1, $$3);
-      return $$1.a_($$3.e()).a(awv.bX) && $$5;
-   }
-
-   protected static boolean a(ddl $$0, jf $$1) {
-      return $$0.b($$1, 0) > 8;
-   }
-
-   @Override
-   public int T() {
-      return 120;
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return false;
-   }
-
-   @Override
-   protected int el() {
-      return 1 + this.dS().z.a(3);
-   }
-
-   public abstract boolean n(cvs var1);
-
-   @Override
-   public brs b(cnx $$0, brr $$1) {
-      cvs $$2 = $$0.b($$1);
-      if (this.n($$2)) {
-         int $$3 = this.g();
-         if (!this.dS().B && $$3 == 0 && this.gv()) {
-            this.a($$0, $$1, $$2);
-            this.f($$0);
-            this.gu();
-            return brs.b;
-         }
-
-         if (this.p_()) {
-            this.a($$0, $$1, $$2);
-            this.a(d_(-$$3), true);
-            this.gu();
-            return brs.a;
-         }
-      }
-
-      return super.b($$0, $$1);
-   }
-
-   protected void gu() {
-   }
-
-   protected void a(cnx $$0, brr $$1, cvs $$2) {
-      $$2.a(1, $$0);
-   }
-
-   public boolean gv() {
-      return this.bY <= 0;
-   }
-
-   public void f(@Nullable cnx $$0) {
-      this.bY = 600;
-      if ($$0 != null) {
-         this.bZ = $$0.cD();
-      }
-
-      this.dS().a(this, (byte)18);
-   }
-
-   public void s(int $$0) {
-      this.bY = $$0;
-   }
-
-   public int gw() {
-      return this.bY;
-   }
-
-   @Nullable
-   public ark gx() {
-      if (this.bZ == null) {
-         return null;
-      } else {
-         cnx $$0 = this.dS().b(this.bZ);
-         return $$0 instanceof ark ? (ark)$$0 : null;
-      }
-   }
-
-   public boolean gy() {
-      return this.bY > 0;
-   }
-
-   public void gz() {
-      this.bY = 0;
-   }
-
-   public boolean a(cgd $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return $$0.getClass() != this.getClass() ? false : this.gy() && $$0.gy();
-      }
-   }
-
-   public void a(arj $$0, cgd $$1) {
-      btk $$2 = this.a($$0, (btk)$$1);
-      if ($$2 != null) {
-         $$2.a(true);
-         $$2.b(this.dx(), this.dz(), this.dD(), 0.0F, 0.0F);
-         this.a($$0, $$1, $$2);
-         $$0.a_($$2);
-      }
-   }
-
-   public void a(arj $$0, cgd $$1, @Nullable btk $$2) {
-      Optional.ofNullable(this.gx()).or(() -> Optional.ofNullable($$1.gx())).ifPresent($$2x -> {
-         $$2x.a(awq.P);
-         an.p.a($$2x, this, $$1, $$2);
       });
-      this.c_(6000);
-      $$1.c_(6000);
-      this.gz();
-      $$1.gz();
-      $$0.a(this, (byte)18);
-      if ($$0.ac().b(def.f)) {
-         $$0.b(new bud($$0, this.dx(), this.dz(), this.dD(), this.dV().a(7) + 1));
-      }
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 18) {
-         for (int $$1 = 0; $$1 < 7; $$1++) {
-            double $$2 = this.af.k() * 0.02;
-            double $$3 = this.af.k() * 0.02;
-            double $$4 = this.af.k() * 0.02;
-            this.dS().a(lo.Q, this.d(1.0), this.dA() + 0.5, this.g(1.0), $$2, $$3, $$4);
-         }
-      } else {
-         super.b($$0);
-      }
+   public static Optional<jp<cgc>> a(dvd $$0) {
+      return Optional.ofNullable(w.get($$0));
+   }
+
+   public static boolean b(dvd $$0) {
+      return w.containsKey($$0);
+   }
+
+   public static cgc a(kc<cgc> $$0) {
+      a($$0, a, a(dia.nW), 1, 1);
+      a($$0, b, a(dia.nV), 1, 1);
+      a($$0, c, a(dia.nX), 1, 1);
+      a($$0, d, a(dia.fs), 1, 1);
+      a($$0, e, a(dia.pc), 1, 1);
+      a($$0, f, a(dia.nU), 1, 1);
+      a($$0, g, a(dia.nY), 1, 1);
+      a($$0, h, v, 1, 1);
+      a($$0, i, a(dia.oa), 1, 1);
+      a($$0, j, a(dia.oc), 1, 1);
+      a($$0, k, a(dia.nT), 1, 1);
+      a($$0, l, a(dia.ob), 1, 1);
+      a($$0, m, a(dia.nZ), 1, 1);
+      a($$0, n, u, 1, 1);
+      a($$0, o, a(dia.od), 32, 6);
+      a($$0, p, a(dia.pf), 0, 1);
+      a($$0, q, a(dia.pe), 0, 1);
+      a($$0, r, a(dia.ed), 0, 1);
+      a($$0, s, a(dia.pq), 0, 1);
+      return a($$0, t, a(dia.ss), 0, 1);
    }
 }

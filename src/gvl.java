@@ -1,4 +1,8 @@
-public class gvl extends gug {
-   public boolean b;
-   public boolean c;
+public class gvl extends gva implements gvs {
+   public boolean a;
+
+   @Override
+   public boolean c() {
+      return this.a;
+   }
 }

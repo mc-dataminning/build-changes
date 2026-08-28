@@ -1,160 +1,47 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class ase extends asq {
-   private static final String b = "v1/chat";
-   final URL c;
-   final ase.a d;
-   final URL e;
-   final ase.a f;
-   private final String g;
-
-   private ase(URL $$0, asq.b $$1, URL $$2, ase.a $$3, URL $$4, ase.a $$5, String $$6, asq.a $$7, ExecutorService $$8) {
-      super($$0, $$1, $$7, $$8);
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+public record ase<T>(T a, Optional<T> b) {
+   public static <T> Codec<ase<T>> a(Codec<T> $$0) {
+      Codec<ase<T>> $$1 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(ase::a), $$0.optionalFieldOf("filtered").forGetter(ase::b)).apply($$1x, ase::new)
+      );
+      Codec<ase<T>> $$2 = $$0.xmap(ase::a, ase::a);
+      return Codec.withAlternative($$1, $$2);
    }
 
-   @Nullable
-   public static asq a(String $$0) {
-      try {
-         JsonObject $$1 = ayv.a($$0);
-         URI $$2 = new URI(ayv.i($$1, "apiServer"));
-         String $$3 = ayv.i($$1, "apiKey");
-         if ($$3.isEmpty()) {
-            throw new IllegalArgumentException("Missing API key");
-         } else {
-            int $$4 = ayv.a($$1, "ruleId", 1);
-            String $$5 = ayv.a($$1, "serverId", "");
-            String $$6 = ayv.a($$1, "roomId", "Java:Chat");
-            int $$7 = ayv.a($$1, "hashesToDrop", -1);
-            int $$8 = ayv.a($$1, "maxConcurrentRequests", 7);
-            JsonObject $$9 = ayv.a($$1, "endpoints", null);
-            String $$10 = a($$9, "chat", "v1/chat");
-            boolean $$11 = $$10.equals("v1/chat");
-            URL $$12 = $$2.resolve("/" + $$10).toURL();
-            URL $$13 = a($$2, $$9, "join", "v1/join");
-            URL $$14 = a($$2, $$9, "leave", "v1/leave");
-            ase.a $$15 = $$2x -> {
-               JsonObject $$3x = new JsonObject();
-               $$3x.addProperty("server", $$5);
-               $$3x.addProperty("room", $$6);
-               $$3x.addProperty("user_id", $$2x.getId().toString());
-               $$3x.addProperty("user_display_name", $$2x.getName());
-               return $$3x;
-            };
-            asq.b $$16;
-            if ($$11) {
-               $$16 = ($$3x, $$4x) -> {
-                  JsonObject $$5x = new JsonObject();
-                  $$5x.addProperty("rule", $$4);
-                  $$5x.addProperty("server", $$5);
-                  $$5x.addProperty("room", $$6);
-                  $$5x.addProperty("player", $$3x.getId().toString());
-                  $$5x.addProperty("player_display_name", $$3x.getName());
-                  $$5x.addProperty("text", $$4x);
-                  $$5x.addProperty("language", "*");
-                  return $$5x;
-               };
-            } else {
-               String $$17 = String.valueOf($$4);
-               $$16 = ($$3x, $$4x) -> {
-                  JsonObject $$5x = new JsonObject();
-                  $$5x.addProperty("rule_id", $$17);
-                  $$5x.addProperty("category", $$5);
-                  $$5x.addProperty("subcategory", $$6);
-                  $$5x.addProperty("user_id", $$3x.getId().toString());
-                  $$5x.addProperty("user_display_name", $$3x.getName());
-                  $$5x.addProperty("text", $$4x);
-                  $$5x.addProperty("language", "*");
-                  return $$5x;
-               };
-            }
-
-            asq.a $$19 = asq.a.select($$7);
-            ExecutorService $$20 = a($$8);
-            String $$21 = Base64.getEncoder().encodeToString($$3.getBytes(StandardCharsets.US_ASCII));
-            return new ase($$12, $$16, $$13, $$15, $$14, $$15, $$21, $$19, $$20);
-         }
-      } catch (Exception var20) {
-         a.warn("Failed to parse chat filter config {}", $$0, var20);
-         return null;
-      }
+   public static <B extends ByteBuf, T> zf<B, ase<T>> a(zf<B, T> $$0) {
+      return zf.a($$0, ase::a, $$0.a(zd::a), ase::b, ase::new);
    }
 
-   @Override
-   public asr a(GameProfile $$0) {
-      return new asq.c($$0) {
-         @Override
-         public void a() {
-            ase.this.a(this.b, ase.this.c, ase.this.d, this.c);
-         }
-
-         @Override
-         public void b() {
-            ase.this.a(this.b, ase.this.e, ase.this.f, this.c);
-         }
-      };
+   public static <T> ase<T> a(T $$0) {
+      return new ase<>($$0, Optional.empty());
    }
 
-   void a(GameProfile $$0, URL $$1, ase.a $$2, Executor $$3) {
-      $$3.execute(() -> {
-         JsonObject $$3x = $$2.encode($$0);
-
-         try {
-            this.b($$3x, $$1);
-         } catch (Exception var6) {
-            a.warn("Failed to send join/leave packet to {} for player {}", new Object[]{$$1, $$0, var6});
-         }
-      });
+   public static ase<String> a(asf $$0) {
+      return new ase<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
    }
 
-   private void b(JsonObject $$0, URL $$1) throws IOException {
-      HttpURLConnection $$2 = this.a($$0, $$1);
-
-      try (InputStream $$3 = $$2.getInputStream()) {
-         this.a($$3);
-      }
+   public T a(boolean $$0) {
+      return $$0 ? this.b.orElse(this.a) : this.a;
    }
 
-   @Override
-   protected void a(HttpURLConnection $$0) {
-      $$0.setRequestProperty("Authorization", "Basic " + this.g);
+   public <U> ase<U> a(Function<T, U> $$0) {
+      return new ase<>($$0.apply(this.a), this.b.map($$0));
    }
 
-   @Override
-   protected asb a(String $$0, asq.a $$1, JsonObject $$2) {
-      boolean $$3 = ayv.a($$2, "response", false);
-      if ($$3) {
-         return asb.a($$0);
+   public <U> Optional<ase<U>> b(Function<T, Optional<U>> $$0) {
+      Optional<U> $$1 = $$0.apply(this.a);
+      if ($$1.isEmpty()) {
+         return Optional.empty();
+      } else if (this.b.isPresent()) {
+         Optional<U> $$2 = $$0.apply(this.b.get());
+         return $$2.isEmpty() ? Optional.empty() : Optional.of(new ase<>($$1.get(), $$2));
       } else {
-         String $$4 = ayv.a($$2, "hashed", null);
-         if ($$4 == null) {
-            return asb.b($$0);
-         } else {
-            JsonArray $$5 = ayv.v($$2, "hashes");
-            xi $$6 = this.a($$0, $$5, $$1);
-            return new asb($$0, $$6);
-         }
+         return Optional.of(new ase<>($$1.get(), Optional.empty()));
       }
-   }
-
-   @FunctionalInterface
-   interface a {
-      JsonObject encode(GameProfile var1);
    }
 }

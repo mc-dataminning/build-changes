@@ -1,24 +1,34 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ekq extends ekm {
-   public static final MapCodec<ekq> a = ayo.l.fieldOf("chance").xmap(ekq::new, $$0 -> $$0.c);
-   private final int c;
+public class ekq extends eky {
+   public static final MapCodec<ekq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ejy.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ekq::new));
+   private final ejy c;
 
-   private ekq(int $$0) {
+   private ekq(ejy $$0) {
       this.c = $$0;
    }
 
-   public static ekq a(int $$0) {
+   public static ekq a(ejy $$0) {
       return new ekq($$0);
    }
 
-   @Override
-   protected boolean a(ekl $$0, azn $$1, jf $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public static ekq a(ebt $$0, ebt $$1) {
+      return a(ekb.a($$0, $$1));
+   }
+
+   public static ekq b(ebt $$0, ebt $$1) {
+      return a(eka.a($$0, $$1));
    }
 
    @Override
-   public eko<?> b() {
-      return eko.b;
+   public Stream<jg> a_(ekw $$0, azr $$1, jg $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   }
+
+   @Override
+   public ekz<?> b() {
+      return ekz.l;
    }
 }

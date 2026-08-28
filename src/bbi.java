@@ -1,47 +1,60 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
+import java.util.function.UnaryOperator;
 
 public class bbi extends DataFix {
-   public bbi(Schema $$0) {
-      super($$0, true);
+   private final String a;
+   private final UnaryOperator<String> b;
+
+   public bbi(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhs.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped(this.a + " (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, this::a)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bhs.B), this::b),
+            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bhs.b), this::b)
+         }
+      );
    }
 
    private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.remove("Bees");
+      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map(this.b).map($$0::createString), $$0);
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      $$0 = $$0.remove("EntityData");
-      $$0 = $$0.renameField("TicksInHive", "ticks_in_hive");
-      return $$0.renameField("MinOccupationTicks", "min_ticks_in_hive");
+   private Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "AttributeModifiers",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", this::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bho.s, "minecraft:beehive");
-      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
-      ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
-      Type<?> $$3 = $$2.getElement();
-      OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
-      OpticFinder<?> $$5 = DSL.typeFinder($$3);
-      Type<?> $$6 = this.getInputSchema().getType(bho.s);
-      Type<?> $$7 = this.getOutputSchema().getType(bho.s);
-      return this.fixTypeEverywhereTyped(
-         "BeehiveFieldRenameFix",
-         $$6,
-         $$7,
-         $$4x -> baq.a(
-               $$7,
-               $$4x.updateTyped(
-                  $$1,
-                  $$2xx -> $$2xx.update(DSL.remainderFinder(), this::a)
-                        .updateTyped($$4, $$1xxx -> $$1xxx.updateTyped($$5, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), this::b)))
-               )
+   private Typed<?> b(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Attributes",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", this::a))).map($$0xx::createList), $$0xx
+                  )
             )
       );
    }

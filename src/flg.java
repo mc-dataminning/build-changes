@@ -1,213 +1,278 @@
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class flg extends fki {
-   private static final int a = 1;
-   private static final int b = -3092272;
-   private static final String c = "_";
-   private static final int d = -2039584;
-   private static final int e = -857677600;
-   private static final int f = 300;
-   private final fjz m;
-   private final xe n;
-   private final flj o;
-   private long p = ad.c();
+public class flg<T> extends fkq {
+   public static final BooleanSupplier a = fqs::u;
+   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
+   private final xh c;
+   private int d;
+   private T f;
+   private final flg.c<T> m;
+   private final Function<T, xh> n;
+   private final Function<flg<T>, xv> o;
+   private final flg.b<T> p;
+   private final boolean q;
+   private final fjd.l<T> r;
 
-   public flg(fjz $$0, int $$1, int $$2, int $$3, int $$4, xe $$5, xe $$6) {
-      super($$1, $$2, $$3, $$4, $$6);
-      this.m = $$0;
-      this.n = $$5;
-      this.o = new flj($$0, $$3 - this.b());
-      this.o.a(this::k);
+   flg(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      xh $$4,
+      xh $$5,
+      int $$6,
+      T $$7,
+      flg.c<T> $$8,
+      Function<T, xh> $$9,
+      Function<flg<T>, xv> $$10,
+      flg.b<T> $$11,
+      fjd.l<T> $$12,
+      boolean $$13
+   ) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.f = $$7;
+      this.m = $$8;
+      this.n = $$9;
+      this.o = $$10;
+      this.p = $$11;
+      this.q = $$13;
+      this.r = $$12;
+      this.f();
    }
 
-   public void a(int $$0) {
-      this.o.a($$0);
-   }
-
-   public void b(Consumer<String> $$0) {
-      this.o.a($$0);
-   }
-
-   public void a(String $$0) {
-      this.o.a($$0);
-   }
-
-   public String j() {
-      return this.o.c();
+   private void f() {
+      this.a(this.r.apply(this.f));
    }
 
    @Override
-   public void a(fol $$0) {
-      $$0.a(fok.a, xe.a("gui.narrate.editBox", this.z(), this.j()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(fqh.t());
-         this.e($$0, $$1);
-         return true;
+   public void b() {
+      if (fqs.t()) {
+         this.a(-1);
       } else {
-         return super.a($$0, $$1, $$2);
+         this.a(1);
       }
    }
 
+   private void a(int $$0) {
+      List<T> $$1 = this.m.a();
+      this.d = azj.b(this.d + $$0, $$1.size());
+      T $$2 = $$1.get(this.d);
+      this.b($$2);
+      this.p.onValueChange(this, $$2);
+   }
+
+   private T b(int $$0) {
+      List<T> $$1 = this.m.a();
+      return $$1.get(azj.b(this.d + $$0, $$1.size()));
+   }
+
    @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(true);
-         this.e($$0, $$1);
-         this.o.a(fqh.t());
-         return true;
-      } else {
-         return false;
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$3 > 0.0) {
+         this.a(-1);
+      } else if ($$3 < 0.0) {
+         this.a(1);
+      }
+
+      return true;
+   }
+
+   public void a(T $$0) {
+      List<T> $$1 = this.m.a();
+      int $$2 = $$1.indexOf($$0);
+      if ($$2 != -1) {
+         this.d = $$2;
+      }
+
+      this.b($$0);
+   }
+
+   private void b(T $$0) {
+      xh $$1 = this.c($$0);
+      this.b($$1);
+      this.f = $$0;
+      this.f();
+   }
+
+   private xh c(T $$0) {
+      return (xh)(this.q ? this.n.apply($$0) : this.d($$0));
+   }
+
+   private xv d(T $$0) {
+      return xg.a(this.c, this.n.apply($$0));
+   }
+
+   public T a() {
+      return this.f;
+   }
+
+   @Override
+   protected xv aP_() {
+      return this.o.apply(this);
+   }
+
+   @Override
+   public void a(fox $$0) {
+      $$0.a(fow.a, this.aP_());
+      if (this.j) {
+         T $$1 = this.b(1);
+         xh $$2 = this.c($$1);
+         if (this.aN_()) {
+            $$0.a(fow.d, xh.a("narration.cycle_button.usage.focused", $$2));
+         } else {
+            $$0.a(fow.d, xh.a("narration.cycle_button.usage.hovered", $$2));
+         }
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.o.e($$0);
+   public xv c() {
+      return a_((xh)(this.q ? this.d(this.f) : this.z()));
    }
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.k && this.aN_() && bac.a($$0)) {
-         this.o.b(Character.toString($$0));
-         return true;
-      } else {
-         return false;
+   public static <T> flg.a<T> a(Function<T, xh> $$0) {
+      return new flg.a<>($$0);
+   }
+
+   public static flg.a<Boolean> a(xh $$0, xh $$1) {
+      return new flg.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   }
+
+   public static flg.a<Boolean> e() {
+      return new flg.a<Boolean>($$0 -> $$0 ? xg.b : xg.c).a(b);
+   }
+
+   public static flg.a<Boolean> b(boolean $$0) {
+      return e().a($$0);
+   }
+
+   public static class a<T> {
+      private int a;
+      @Nullable
+      private T b;
+      private final Function<T, xh> c;
+      private fjd.l<T> d = $$0x -> null;
+      private Function<flg<T>, xv> e = flg::c;
+      private flg.c<T> f = flg.c.a(ImmutableList.of());
+      private boolean g;
+
+      public a(Function<T, xh> $$0) {
+         this.c = $$0;
+      }
+
+      public flg.a<T> a(Collection<T> $$0) {
+         return this.a(flg.c.a($$0));
+      }
+
+      @SafeVarargs
+      public final flg.a<T> a(T... $$0) {
+         return this.a(ImmutableList.copyOf($$0));
+      }
+
+      public flg.a<T> a(List<T> $$0, List<T> $$1) {
+         return this.a(flg.c.a(flg.a, $$0, $$1));
+      }
+
+      public flg.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         return this.a(flg.c.a($$0, $$1, $$2));
+      }
+
+      public flg.a<T> a(flg.c<T> $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public flg.a<T> a(fjd.l<T> $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public flg.a<T> a(T $$0) {
+         this.b = $$0;
+         int $$1 = this.f.b().indexOf($$0);
+         if ($$1 != -1) {
+            this.a = $$1;
+         }
+
+         return this;
+      }
+
+      public flg.a<T> a(Function<flg<T>, xv> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public flg.a<T> a() {
+         this.g = true;
+         return this;
+      }
+
+      public flg<T> a(xh $$0, flg.b<T> $$1) {
+         return this.a(0, 0, 150, 20, $$0, $$1);
+      }
+
+      public flg<T> a(int $$0, int $$1, int $$2, int $$3, xh $$4) {
+         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
+         });
+      }
+
+      public flg<T> a(int $$0, int $$1, int $$2, int $$3, xh $$4, flg.b<T> $$5) {
+         List<T> $$6 = this.f.b();
+         if ($$6.isEmpty()) {
+            throw new IllegalStateException("No values for cycle button");
+         } else {
+            T $$7 = this.b != null ? this.b : $$6.get(this.a);
+            xh $$8 = this.c.apply($$7);
+            xh $$9 = (xh)(this.g ? $$8 : xg.a($$4, $$8));
+            return new flg<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+         }
       }
    }
 
-   @Override
-   protected void c(fkb $$0, int $$1, int $$2, float $$3) {
-      String $$4 = this.o.c();
-      if ($$4.isEmpty() && !this.aN_()) {
-         $$0.a(this.m, (xj)this.n, this.D() + this.a(), this.E() + this.a(), this.g - this.b(), -857677600);
-      } else {
-         int $$5 = this.o.d();
-         boolean $$6 = this.aN_() && (ad.c() - this.p) / 300L % 2L == 0L;
-         boolean $$7 = $$5 < $$4.length();
-         int $$8 = 0;
-         int $$9 = 0;
-         int $$10 = this.E() + this.a();
+   public interface b<T> {
+      void onValueChange(flg<T> var1, T var2);
+   }
 
-         for (flj.a $$11 : this.o.h()) {
-            boolean $$12 = this.a($$10, $$10 + 9);
-            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.D() + this.a(), $$10, -2039584) - 1;
-                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
-                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
-               }
-            } else {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.D() + this.a(), $$10, -2039584) - 1;
-               }
+   public interface c<T> {
+      List<T> a();
 
-               $$9 = $$10;
+      List<T> b();
+
+      static <T> flg.c<T> a(Collection<T> $$0) {
+         final List<T> $$1 = ImmutableList.copyOf($$0);
+         return new flg.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$1;
             }
 
-            $$10 += 9;
-         }
-
-         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
-            $$0.b(this.m, "_", $$8, $$9, -3092272);
-         }
-
-         if (this.o.i()) {
-            flj.a $$13 = this.o.e();
-            int $$14 = this.D() + this.a();
-            $$10 = this.E() + this.a();
-
-            for (flj.a $$15 : this.o.h()) {
-               if ($$13.a() > $$15.b()) {
-                  $$10 += 9;
-               } else {
-                  if ($$15.a() > $$13.b()) {
-                     break;
-                  }
-
-                  if (this.a($$10, $$10 + 9)) {
-                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
-                     int $$17;
-                     if ($$13.b() > $$15.b()) {
-                        $$17 = this.g - this.a();
-                     } else {
-                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
-                     }
-
-                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
-                  }
-
-                  $$10 += 9;
-               }
+            @Override
+            public List<T> b() {
+               return $$1;
             }
-         }
-      }
-   }
-
-   @Override
-   protected void a(fkb $$0) {
-      super.a($$0);
-      if (this.o.b()) {
-         int $$1 = this.o.a();
-         xe $$2 = xe.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
-         $$0.b(this.m, $$2, this.D() + this.g - this.m.a($$2), this.E() + this.h + 4, 10526880);
-      }
-   }
-
-   @Override
-   public int h() {
-      return 9 * this.o.f();
-   }
-
-   @Override
-   protected boolean e() {
-      return (double)this.o.f() > this.l();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0 / 2.0;
-   }
-
-   private void b(fkb $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.a(ghv.I(), $$1, $$2, $$3, $$4, -16776961);
-   }
-
-   private void k() {
-      double $$0 = this.c();
-      flj.a $$1 = this.o.c((int)($$0 / 9.0));
-      if (this.o.d() <= $$1.a()) {
-         $$0 = (double)(this.o.g() * 9);
-      } else {
-         flj.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
-         if (this.o.d() > $$2.b()) {
-            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
-         }
+         };
       }
 
-      this.a($$0);
-   }
+      static <T> flg.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         final List<T> $$3 = ImmutableList.copyOf($$1);
+         final List<T> $$4 = ImmutableList.copyOf($$2);
+         return new flg.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$0.getAsBoolean() ? $$4 : $$3;
+            }
 
-   private double l() {
-      return (double)(this.h - this.b()) / 9.0;
-   }
-
-   private void e(double $$0, double $$1) {
-      double $$2 = $$0 - (double)this.D() - (double)this.a();
-      double $$3 = $$1 - (double)this.E() - (double)this.a() + this.c();
-      this.o.a($$2, $$3);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if ($$0) {
-         this.p = ad.c();
+            @Override
+            public List<T> b() {
+               return $$3;
+            }
+         };
       }
    }
 }

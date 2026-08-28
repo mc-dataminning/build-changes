@@ -1,29 +1,12 @@
-public class aib implements zl<agr> {
-   public static final zc<wb, aib> a = zl.a(aib::a, aib::new);
-   private final String b;
-
-   public aib(String $$0) {
-      this.b = $$0;
-   }
-
-   private aib(wb $$0) {
-      this.b = $$0.p();
-   }
-
-   private void a(wb $$0) {
-      $$0.a(this.b);
-   }
+public record aib(cof b) implements zo<agu> {
+   public static final zf<we, aib> a = zf.a(cof.a, aib::b, aib::new);
 
    @Override
-   public zn<aib> a() {
-      return agp.bS;
+   public zq<aib> a() {
+      return ags.bP;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
-   }
-
-   public String b() {
-      return this.b;
    }
 }

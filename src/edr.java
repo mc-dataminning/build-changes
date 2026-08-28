@@ -1,29 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class edr extends edu<egf> {
-   public edr(Codec<egf> $$0) {
-      super($$0);
+public record edr<FC extends egj, F extends eef<FC>>(F d, FC e) {
+   public static final Codec<edr<?, ?>> a = lx.O.q().dispatch($$0 -> $$0.d, eef::a);
+   public static final Codec<jp<edr<?, ?>>> b = ald.a(ly.aJ, a);
+   public static final Codec<jt<edr<?, ?>>> c = ke.a(ly.aJ, a);
+
+   public boolean a(dfs $$0, dxa $$1, azr $$2, jg $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<edr<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(edw<egf> $$0) {
-      dfg $$1 = $$0.b();
-      azn $$2 = $$0.d();
-      jf $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = azf.d(-$$4); $$6 <= azf.f($$4); $$6++) {
-            for (int $$7 = azf.d(-$$4); $$7 <= azf.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), dho.fz.n());
-               }
-            }
-         }
+   public F b() {
+      return this.d;
+   }
 
-         $$4 -= (float)$$2.a(2) + 0.5F;
-      }
-
-      return true;
+   public FC c() {
+      return this.e;
    }
 }

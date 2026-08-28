@@ -1,136 +1,123 @@
-import com.mojang.datafixers.util.Pair;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class csc extends cra {
+public class csc extends crk {
+   private static final int p = 3;
+   private static final int q = 3;
    public static final int o = 0;
-   public static final int p = 0;
-   private static final int I = 2;
-   private static final int J = 2;
-   public static final int q = 1;
-   public static final int r = 4;
-   public static final int s = 5;
-   public static final int t = 5;
-   public static final int u = 4;
-   public static final int v = 9;
-   public static final int w = 9;
-   public static final int x = 36;
-   public static final int y = 36;
-   public static final int z = 45;
-   public static final int A = 45;
-   public static final ale B = ale.b("textures/atlas/blocks.png");
-   public static final ale C = ale.b("item/empty_armor_slot_helmet");
-   public static final ale D = ale.b("item/empty_armor_slot_chestplate");
-   public static final ale E = ale.b("item/empty_armor_slot_leggings");
-   public static final ale F = ale.b("item/empty_armor_slot_boots");
-   public static final ale G = ale.b("item/empty_armor_slot_shield");
-   private static final Map<btz, ale> K = Map.of(btz.c, F, btz.d, E, btz.e, D, btz.f, C);
-   private static final btz[] L = new btz[]{btz.f, btz.e, btz.d, btz.c};
-   public final boolean H;
-   private final cnx M;
+   private static final int r = 1;
+   private static final int s = 9;
+   private static final int t = 10;
+   private static final int u = 10;
+   private static final int v = 37;
+   private static final int w = 37;
+   private static final int x = 46;
+   private final crw y;
+   private final coh z;
+   private boolean A;
 
-   public csc(cnw $$0, boolean $$1, final cnx $$2) {
-      super(null, 0, 2, 2);
-      this.H = $$1;
-      this.M = $$2;
-      this.a($$2, 154, 28);
-      this.d(98, 18);
+   public csc(int $$0, cog $$1) {
+      this($$0, $$1, crw.a);
+   }
 
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         btz $$4 = L[$$3];
-         ale $$5 = K.get($$4);
-         this.a(new crd($$0, $$2, $$4, 39 - $$3, 8, 8 + $$3 * 18, $$5));
+   public csc(int $$0, cog $$1, crw $$2) {
+      super(css.m, $$0, 3, 3);
+      this.y = $$2;
+      this.z = $$1.k;
+      this.a(this.z, 124, 35);
+      this.d(30, 17);
+      this.c($$1, 8, 84);
+   }
+
+   protected static void a(crj $$0, dev $$1, coh $$2, csb $$3, ctb $$4, @Nullable dal<czz> $$5) {
+      if (!$$1.C) {
+         czy $$6 = $$3.aD_();
+         arn $$7 = (arn)$$2;
+         cvx $$8 = cvx.k;
+         Optional<dal<czz>> $$9 = $$1.o().aI().a(dap.a, $$6, $$1, $$5);
+         if ($$9.isPresent()) {
+            dal<czz> $$10 = $$9.get();
+            czz $$11 = $$10.b();
+            if ($$4.a($$1, $$7, $$10)) {
+               cvx $$12 = $$11.a($$6, $$1.H_());
+               if ($$12.a($$1.J())) {
+                  $$8 = $$12;
+               }
+            }
+         }
+
+         $$4.a(0, $$8);
+         $$0.a(0, $$8);
+         $$7.d.b(new ada($$0.l, $$0.k(), 0, $$8));
       }
-
-      this.c($$0, 8, 84);
-      this.a(new csw($$0, 40, 77, 62) {
-         @Override
-         public void a(cvs $$0, cvs $$1) {
-            $$2.a(btz.b, $$1, $$0);
-            super.a($$0, $$1);
-         }
-
-         @Override
-         public Pair<ale, ale> b() {
-            return Pair.of(csc.B, csc.G);
-         }
-      });
-   }
-
-   public static boolean e(int $$0) {
-      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
    }
 
    @Override
-   public void a(brl $$0) {
-      crs.a(this, this.M.dS(), this.M, this.m, this.n, null);
+   public void a(brr $$0) {
+      if (!this.A) {
+         this.y.a(($$0x, $$1) -> a(this, $$0x, this.z, this.m, this.n, null));
+      }
    }
 
    @Override
-   public void a(cnx $$0) {
+   public void l() {
+      this.A = true;
+   }
+
+   @Override
+   public void a(dal<czz> $$0) {
+      this.A = false;
+      this.y.a(($$1, $$2) -> a(this, $$1, this.z, this.m, this.n, $$0));
+   }
+
+   @Override
+   public void a(coh $$0) {
       super.a($$0);
-      this.n.a();
-      if (!$$0.dS().B) {
-         this.a($$0, this.m);
-      }
+      this.y.a(($$1, $$2) -> this.a($$0, this.m));
    }
 
    @Override
-   public boolean b(cnx $$0) {
-      return true;
+   public boolean b(coh $$0) {
+      return a(this.y, $$0, dia.cA);
    }
 
    @Override
-   public cvs b(cnx $$0, int $$1) {
-      cvs $$2 = cvs.k;
-      csw $$3 = this.k.get($$1);
-      if ($$3.h()) {
-         cvs $$4 = $$3.g();
-         $$2 = $$4.u();
-         btz $$5 = $$0.g($$2);
+   public cvx b(coh $$0, int $$1) {
+      cvx $$2 = cvx.k;
+      ctg $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cvx $$4 = $$3.g();
+         $$2 = $$4.v();
          if ($$1 == 0) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cvs.k;
+            this.y.a(($$2x, $$3x) -> $$4.h().b($$4, $$2x, $$0));
+            if (!this.a($$4, 10, 46, true)) {
+               return cvx.k;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 >= 1 && $$1 < 5) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cvs.k;
+         } else if ($$1 >= 10 && $$1 < 46) {
+            if (!this.a($$4, 1, 10, false)) {
+               if ($$1 < 37) {
+                  if (!this.a($$4, 37, 46, false)) {
+                     return cvx.k;
+                  }
+               } else if (!this.a($$4, 10, 37, false)) {
+                  return cvx.k;
+               }
             }
-         } else if ($$1 >= 5 && $$1 < 9) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cvs.k;
-            }
-         } else if ($$5.a() == btz.a.b && !this.k.get(8 - $$5.b()).h()) {
-            int $$6 = 8 - $$5.b();
-            if (!this.a($$4, $$6, $$6 + 1, false)) {
-               return cvs.k;
-            }
-         } else if ($$5 == btz.b && !this.k.get(45).h()) {
-            if (!this.a($$4, 45, 46, false)) {
-               return cvs.k;
-            }
-         } else if ($$1 >= 9 && $$1 < 36) {
-            if (!this.a($$4, 36, 45, false)) {
-               return cvs.k;
-            }
-         } else if ($$1 >= 36 && $$1 < 45) {
-            if (!this.a($$4, 9, 36, false)) {
-               return cvs.k;
-            }
-         } else if (!this.a($$4, 9, 45, false)) {
-            return cvs.k;
+         } else if (!this.a($$4, 10, 46, false)) {
+            return cvx.k;
          }
 
          if ($$4.f()) {
-            $$3.a(cvs.k, $$2);
+            $$3.e(cvx.k);
          } else {
             $$3.c();
          }
 
-         if ($$4.K() == $$2.K()) {
-            return cvs.k;
+         if ($$4.L() == $$2.L()) {
+            return cvx.k;
          }
 
          $$3.a($$0, $$4);
@@ -143,31 +130,27 @@ public class csc extends cra {
    }
 
    @Override
-   public boolean a(cvs $$0, csw $$1) {
+   public boolean a(cvx $$0, ctg $$1) {
       return $$1.c != this.n && super.a($$0, $$1);
    }
 
    @Override
-   public csw m() {
+   public ctg m() {
       return this.k.get(0);
    }
 
    @Override
-   public List<csw> n() {
-      return this.k.subList(1, 5);
-   }
-
-   public crr r() {
-      return this.m;
+   public List<ctg> n() {
+      return this.k.subList(1, 10);
    }
 
    @Override
-   public csp an_() {
-      return csp.a;
+   public csz ao_() {
+      return csz.a;
    }
 
    @Override
-   protected cnx q() {
-      return this.M;
+   protected coh q() {
+      return this.z;
    }
 }

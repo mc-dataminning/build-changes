@@ -1,19 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record drl(ale e, String f) {
-   public static final Codec<drl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ale.a.fieldOf("asset_id").forGetter(drl::a), Codec.STRING.fieldOf("translation_key").forGetter(drl::b)).apply($$0, drl::new)
-   );
-   public static final zc<wp, drl> b = zc.a(ale.b, drl::a, za.m, drl::b, drl::new);
-   public static final Codec<jo<drl>> c = ala.a(lw.d, a);
-   public static final zc<wp, jo<drl>> d = za.a(lw.d, b);
+public class drl extends dhy {
+   public static final MapCodec<drl> a = b(drl::new);
 
-   public ale a() {
-      return this.e;
+   @Override
+   public MapCodec<drl> a() {
+      return a;
    }
 
-   public String b() {
-      return this.f;
+   public drl(dvc.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected void a(dvd $$0, dev $$1, jg $$2, btz $$3) {
+      ezh $$4 = new ezh(0.25, 0.05F, 0.25);
+      if ($$3 instanceof buv $$5 && $$5.b(btg.K)) {
+         $$4 = new ezh(0.5, 0.25, 0.5);
+      }
+
+      $$3.a($$0, $$4);
    }
 }

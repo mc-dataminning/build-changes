@@ -1,20 +1,34 @@
-import com.google.common.annotations.VisibleForTesting;
+public class ebb {
+   public final azr a;
+   private double b;
+   private boolean c;
 
-public interface ebb {
-   default azn a(jf $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
+   public ebb(azr $$0) {
+      this.a = $$0;
    }
 
-   default azn a(ale $$0) {
-      return this.a($$0.toString());
+   public void a() {
+      this.c = false;
    }
 
-   azn a(String var1);
+   public double b() {
+      if (this.c) {
+         this.c = false;
+         return this.b;
+      } else {
+         double $$0;
+         double $$1;
+         double $$2;
+         do {
+            $$0 = 2.0 * this.a.j() - 1.0;
+            $$1 = 2.0 * this.a.j() - 1.0;
+            $$2 = azj.k($$0) + azj.k($$1);
+         } while ($$2 >= 1.0 || $$2 == 0.0);
 
-   azn a(long var1);
-
-   azn a(int var1, int var2, int var3);
-
-   @VisibleForTesting
-   void a(StringBuilder var1);
+         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
+         this.b = $$1 * $$3;
+         this.c = true;
+         return $$0 * $$3;
+      }
+   }
 }

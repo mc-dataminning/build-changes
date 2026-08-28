@@ -1,38 +1,46 @@
-import java.util.function.ToIntFunction;
-import org.joml.Vector3f;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-class bsu extends bsw {
-   private final float c;
-   private final ToIntFunction<azn> d;
+public record bsu(String i) {
+   public static final bsu a = new bsu("generic");
+   public static final bsu b = new bsu("ladder");
+   public static final bsu c = new bsu("vines");
+   public static final bsu d = new bsu("weeping_vines");
+   public static final bsu e = new bsu("twisting_vines");
+   public static final bsu f = new bsu("scaffolding");
+   public static final bsu g = new bsu("other_climbable");
+   public static final bsu h = new bsu("water");
 
-   protected bsu(bsx $$0, int $$1, float $$2, ToIntFunction<azn> $$3) {
-      super($$0, $$1, lo.G);
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   @Override
-   public void a(bun $$0, int $$1, bsj $$2, float $$3) {
-      if ($$0.dV().i() <= this.c) {
-         int $$4 = this.d.applyAsInt($$0.dV());
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            this.a($$0.dS(), $$0, $$0.dx(), $$0.dz() + (double)$$0.do() / 2.0, $$0.dD());
-         }
+   public static bsu a(dvd $$0) {
+      if ($$0.a(dia.cO) || $$0.a(awz.Q)) {
+         return b;
+      } else if ($$0.a(dia.ff)) {
+         return c;
+      } else if ($$0.a(dia.oz) || $$0.a(dia.oA)) {
+         return d;
+      } else if ($$0.a(dia.oB) || $$0.a(dia.oC)) {
+         return e;
+      } else {
+         return $$0.a(dia.nS) ? f : g;
       }
    }
 
-   private void a(dej $$0, bun $$1, double $$2, double $$3, double $$4) {
-      clk $$5 = bty.aM.a($$0, btx.k);
-      if ($$5 != null) {
-         azn $$6 = $$1.dV();
-         float $$7 = (float) (Math.PI / 2);
-         float $$8 = azf.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
-         Vector3f $$9 = $$1.bQ().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
-         $$5.b($$2, $$3, $$4, $$0.D_().i() * 360.0F, 0.0F);
-         $$5.h(new eyw($$9));
-         $$0.b($$5);
-         $$5.a(awg.xa);
+   @Nullable
+   public static bsu a(buv $$0) {
+      Optional<jg> $$1 = $$0.eQ();
+      if ($$1.isPresent()) {
+         dvd $$2 = $$0.dX().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bk() ? h : null;
       }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

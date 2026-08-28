@@ -1,4 +1,26 @@
-public class aiw {
-   public static final wm.a<aix, wb> a = zq.a(vz.a, $$0 -> $$0.a(aiv.a, aiu.a));
-   public static final wm<aix> b = a.a(wb::new);
+public enum aiw {
+   a,
+   b,
+   c;
+
+   private static final int d = 1;
+   private static final int e = 2;
+   private static final int f = 3;
+
+   public static aiw a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         case 3 -> c;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
+   }
+
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+         case c -> 3;
+      };
+   }
 }

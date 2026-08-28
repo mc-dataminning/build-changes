@@ -1,18 +1,21 @@
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fey extends ffc {
+public class fey extends ffn {
+   private static final Logger b = LogUtils.getLogger();
    public String a;
-   public long b;
-   public long c;
 
-   public static fey a(JsonObject $$0) {
+   public static fey a(String $$0) {
       fey $$1 = new fey();
 
       try {
-         $$1.a = fgz.b("profileUuid", $$0, null);
-         $$1.b = fgz.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fgz.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fhk.b("newsLink", $$3, null);
+      } catch (Exception var4) {
+         b.error("Could not parse RealmsNews: {}", var4.getMessage());
       }
 
       return $$1;

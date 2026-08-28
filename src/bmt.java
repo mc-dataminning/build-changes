@@ -1,19 +1,42 @@
-public class bmt extends bmp {
-   private final bmq c;
-   private final bms d;
+public abstract class bmt implements bmy {
+   protected final long[] a;
+   protected final long[] b;
 
-   public bmt(int $$0, bmq $$1, bms $$2) {
-      this($$0, $$1, $$2, new long[$$0]);
-   }
-
-   public bmt(int $$0, bmq $$1, bms $$2, long[] $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
+   protected bmt(int $$0, long[] $$1) {
+      if ($$1.length != $$0) {
+         throw new IllegalArgumentException("defaults have incorrect length of " + $$1.length);
+      } else {
+         this.b = new long[$$0];
+         this.a = $$1;
+      }
    }
 
    @Override
-   protected void a() {
-      this.c.a(new adb((long[])this.b.clone(), this.d));
+   public void a(long[] $$0) {
+      System.arraycopy($$0, 0, this.b, 0, $$0.length);
+      this.a();
+      this.b();
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.b[0] = $$0;
+      this.a();
+      this.b();
+   }
+
+   @Override
+   public void a(long $$0, int $$1) {
+      if ($$1 >= 1 && $$1 < this.b.length) {
+         this.b[$$1] = $$0;
+      } else {
+         throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + this.b.length);
+      }
+   }
+
+   protected abstract void a();
+
+   protected void b() {
+      System.arraycopy(this.a, 0, this.b, 0, this.a.length);
    }
 }

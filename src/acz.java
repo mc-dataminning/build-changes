@@ -1,33 +1,45 @@
-import java.util.List;
+public class acz implements zo<acd> {
+   public static final zf<we, acz> a = zo.a(acz::a, acz::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public record acz(acz.a b, List<String> c) implements zl<aca> {
-   public static final zc<wb, acz> a = zl.a(acz::a, acz::new);
-
-   private acz(wb $$0) {
-      this($$0.b(acz.a.class), $$0.a(wb::p));
+   public acz(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, wb::a);
+   private acz(we $$0) {
+      this.b = $$0.x();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+   }
+
+   private void a(we $$0) {
+      $$0.f(this.b);
+      $$0.m(this.c);
+      $$0.m(this.d);
    }
 
    @Override
-   public zn<acz> a() {
-      return agp.y;
+   public zq<acz> a() {
+      return ags.v;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int f() {
+      return this.d;
    }
 }

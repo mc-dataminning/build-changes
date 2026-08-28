@@ -1,50 +1,50 @@
-public class gki implements gjw<duo> {
-   private final gio a;
+@FunctionalInterface
+public interface gki<T extends dsg> {
+   gkh<T> create(gki.a var1);
 
-   public gki(gjx.a $$0) {
-      this.a = $$0.b();
-   }
+   public static class a {
+      private final gkg a;
+      private final giz b;
+      private final gox c;
+      private final gnx d;
+      private final gax e;
+      private final fkk f;
 
-   public void a(duo $$0, float $$1, fdi $$2, ghl $$3, int $$4, int $$5) {
-      dej $$6 = $$0.i();
-      if ($$6 != null) {
-         jf $$7 = $$0.aC_().a($$0.f().g());
-         dus $$8 = $$0.j();
-         if (!$$8.l()) {
-            giq.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(dho.bz) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.b(dum.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.d() && !$$0.b()) {
-               dvu $$9 = $$8.a(dho.br) ? dvu.b : dvu.a;
-               dus $$10 = dho.bz.n().b(dum.c, $$9).b(dum.a, $$8.c(dul.a));
-               $$10 = $$10.b(dum.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               jf $$11 = $$7.a($$0.f());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.b(dul.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
-
-            $$2.b();
-            giq.b();
-         }
+      public a(gkg $$0, giz $$1, gox $$2, gnx $$3, gax $$4, fkk $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
       }
-   }
 
-   private void a(jf $$0, dus $$1, fdi $$2, ghl $$3, dej $$4, boolean $$5, int $$6) {
-      ghv $$7 = ghd.b($$1);
-      fdm $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azn.a(), $$1.b($$0), $$6);
-   }
+      public gkg a() {
+         return this.a;
+      }
 
-   @Override
-   public int aV_() {
-      return 68;
+      public giz b() {
+         return this.b;
+      }
+
+      public gnx c() {
+         return this.d;
+      }
+
+      public gox d() {
+         return this.c;
+      }
+
+      public gax e() {
+         return this.e;
+      }
+
+      public gbb a(gaz $$0) {
+         return this.e.a($$0);
+      }
+
+      public fkk f() {
+         return this.f;
+      }
    }
 }

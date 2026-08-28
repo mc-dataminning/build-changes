@@ -1,22 +1,22 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class byv {
-   public static bwg<bun> a() {
-      return bzs.a(
-         (Function<bzs.b<bun>, ? extends App<bzs.c<bun>, bzv<bun>>>)($$0 -> $$0.group($$0.b(cdq.ab))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof bun $$1xx ? $$1xx : null)
-                           .filter(bun::eC)
-                           .filter($$1xx -> $$1xx.ao() != bty.by || $$2.ac().b(def.N))
-                           .ifPresent($$1xx -> $$1.b());
-                        return true;
-                     }
-               ))
+   public static bxz<buv> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
+   }
+
+   public static bxz<buv> a(Predicate<buv> $$0, Function<buv, Float> $$1, int $$2) {
+      return cab.a(
+         (Function<cab.b<buv>, ? extends App<cab.c<buv>, cae<buv>>>)($$3 -> $$3.group($$3.c(cdz.m), $$3.b(cdz.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
+                     return false;
+                  } else {
+                     $$4.a(new cec($$3.b($$5), $$1.apply($$7), $$2));
+                     return true;
+                  }
+               }))
       );
    }
 }

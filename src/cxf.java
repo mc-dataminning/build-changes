@@ -1,44 +1,41 @@
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cxf extends ctu {
-   protected final dhm a;
-   private final jk b;
+public class cxf extends cuc implements cus {
+   private final awj a;
 
-   public cxf(dhm $$0, dhm $$1, cvn.a $$2, jk $$3) {
+   public cxf(dhy $$0, awj $$1, cvt.a $$2) {
       super($$0, $$2);
       this.a = $$1;
-      this.b = $$3;
    }
 
-   protected boolean a(dem $$0, dus $$1, jf $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
    @Override
-   protected dus c(czn $$0) {
-      dus $$1 = this.a.a($$0);
-      dus $$2 = null;
-      dem $$3 = $$0.q();
-      jf $$4 = $$0.a();
-
-      for (jk $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            dus $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
+   public bry a(czo $$0) {
+      bry $$1 = super.a($$0);
+      coh $$2 = $$0.o();
+      if ($$1.a() && $$2 != null) {
+         $$2.a($$0.p(), cui.a($$0.n(), $$2));
       }
 
-      return $$2 != null && $$3.a($$2, $$4, ezb.a()) ? $$2 : null;
+      return $$1;
    }
 
    @Override
-   public void a(Map<dhm, cvn> $$0, cvn $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   protected awj a(dvd $$0) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(@Nullable coh $$0, dev $$1, jg $$2, @Nullable ezd $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.C) {
+            $$1.a($$2, this.d().m(), 3);
+         }
+
+         $$1.a($$0, eaa.z, $$2);
+         $$1.a($$0, $$2, this.a, awl.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

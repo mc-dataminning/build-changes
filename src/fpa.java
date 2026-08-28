@@ -1,47 +1,88 @@
-public class fpa extends fqh {
-   private static final int a = 90;
-   private final xe b;
-   private flh c = flh.a;
-   private final Runnable d;
-   private final xe s;
-   private final boolean u;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public fpa(Runnable $$0, xe $$1, xe $$2) {
-      this($$0, $$1, $$2, xd.k, true);
+public class fpa {
+   int a;
+   final Map<fpa.a, fpa.b> b = Maps.newTreeMap(Comparator.<fpa.a, fow>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<fox> $$0) {
+      this.a++;
+      $$0.accept(new fpa.c(0));
    }
 
-   public fpa(Runnable $$0, xe $$1, xe $$2, xe $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.s = $$3;
-      this.u = $$4;
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
+
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
+
+            this.b = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   public xe i() {
-      return xd.a(super.i(), this.b);
+   static class a {
+      final fow a;
+      final int b;
+
+      a(fow $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.c = flh.a(this.p, this.b, this.n - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = azf.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
-      int $$2 = 150;
-      this.c(fko.a(this.s, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
+   static class b {
+      foz<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = foz.a;
+         this.b = -1;
+      }
+
+      public fpa.b a(int $$0, foz<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
    }
 
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
-      this.c.a($$0, this.n / 2, 90);
-   }
+   class c implements fox {
+      private final int b;
 
-   @Override
-   public boolean aI_() {
-      return this.u;
+      c(final int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fow $$0, foz<?> $$1) {
+         fpa.this.b.computeIfAbsent(new fpa.a($$0, this.b), $$0x -> new fpa.b()).a(fpa.this.a, $$1);
+      }
+
+      @Override
+      public fox a() {
+         return fpa.this.new c(this.b + 1);
+      }
    }
 }

@@ -1,42 +1,30 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class ekl extends ebl {
-   private final dfg a;
-   private final dwp b;
-   private final Optional<ekk> c;
+public enum ekl implements baf {
+   a(jl.b, 1, "ceiling"),
+   b(jl.a, -1, "floor");
 
-   public ekl(dfg $$0, dwp $$1, Optional<ekk> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static final Codec<ekl> c = baf.a(ekl::values);
+   private final jl d;
+   private final int e;
+   private final String f;
+
+   private ekl(final jl $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public int a(eao.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public jl a() {
+      return this.d;
    }
 
-   public dwn a(ddp $$0) {
-      return ((dxi)this.a.a($$0.e, $$0.f)).C();
+   public int b() {
+      return this.e;
    }
 
-   public dus a(jf $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.H_();
-   }
-
-   public dfg d() {
-      return this.a;
-   }
-
-   public Optional<ekk> e() {
-      return this.c;
-   }
-
-   public dwp f() {
-      return this.b;
+   @Override
+   public String c() {
+      return this.f;
    }
 }

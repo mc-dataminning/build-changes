@@ -1,10 +1,11 @@
 public class axa {
-   public static final axl<ejh> a = a("visible");
+   public static final axp<cgq> a = a("default_spawns");
+   public static final axp<cgq> b = a("full_moon_spawns");
 
    private axa() {
    }
 
-   private static axl<ejh> a(String $$0) {
-      return axl.a(lw.aP, ale.b($$0));
+   private static axp<cgq> a(String $$0) {
+      return axp.a(ly.l, alh.b($$0));
    }
 }

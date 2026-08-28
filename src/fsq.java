@@ -1,32 +1,21 @@
-import java.util.Objects;
-import org.joml.Matrix4f;
+public class fsq extends frh<ctd> {
+   private static final alh G = alh.b("textures/gui/container/shulker_box.png");
 
-public interface fsq {
-   static fsq a(ayr $$0) {
-      return new fsp($$0);
+   public fsq(ctd $$0, cog $$1, xh $$2) {
+      super($$0, $$1, $$2);
+      this.u++;
    }
 
-   static fsq a(ctg $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fsq)(switch ($$0) {
-         case ctf $$1 -> new fso($$1.a());
-         case fsn.a $$2 -> new fsn($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+   @Override
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   int a(fjz var1);
-
-   int b(fjz var1);
-
-   default boolean a() {
-      return false;
-   }
-
-   default void a(fjz $$0, int $$1, int $$2, Matrix4f $$3, ghl.a $$4) {
-   }
-
-   default void a(fjz $$0, int $$1, int $$2, int $$3, int $$4, fkb $$5) {
+   @Override
+   protected void a(fkm $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gig::B, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

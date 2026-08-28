@@ -1,30 +1,24 @@
-public class fsd extends fqv {
-   private final ddj u;
+public class fsd extends frh<csj> {
+   private static final alh G = alh.b("container/grindstone/error");
+   private static final alh H = alh.b("textures/gui/container/grindstone.png");
 
-   public fsd(ddj $$0) {
-      this.u = $$0;
+   public fsd(csj $$0, cog $$1, xh $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public ddj m() {
-      return this.u;
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   int D() {
-      return 150;
-   }
-
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.a.a(this.m().m());
-   }
-
-   @Override
-   protected void a(ddj $$0) {
-      if ($$0 instanceof cqe.a $$1) {
-         this.m.L().b(new aii($$1.h().ap(), this.a.a(), $$0.p()));
+   protected void a(fkm $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gig::B, H, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(2).h()) {
+         $$0.a(gig::B, G, $$4 + 92, $$5 + 31, 28, 21);
       }
    }
 }

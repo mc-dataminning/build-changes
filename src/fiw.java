@@ -1,51 +1,32 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Codec;
 
-public enum fiw {
-   a(new cvs(cvw.qT)),
-   b(new cvs(dho.cj)),
-   c(new cvs(cvw.lH)),
-   d(new cvs(cvw.pf), new cvs(cvw.oX)),
-   e(new cvs(cvw.qB), new cvs(cvw.ov)),
-   f(new cvs(cvw.qT)),
-   g(new cvs(cvw.pY)),
-   h(new cvs(dho.b)),
-   i(new cvs(cvw.qB), new cvs(cvw.oB)),
-   j(new cvs(cvw.qT)),
-   k(new cvs(dho.dI)),
-   l(new cvs(cvw.pd), new cvs(cvw.pR)),
-   m(new cvs(cvw.qT)),
-   n(new cvs(cvw.pY)),
-   o(new cvs(cvw.fF)),
-   p(new cvs(cvw.pU)),
-   q(new cvs(cvw.pY)),
-   r(new cvs(cvw.hB));
+public enum fiw implements azm, baf {
+   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
+   b(1, "afk", "options.inactivityFpsLimit.afk");
 
-   public static final List<fiw> s = ImmutableList.of(m, n);
-   public static final List<fiw> t = ImmutableList.of(j, k, l);
-   public static final List<fiw> u = ImmutableList.of(f, g, h, i);
-   public static final List<fiw> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<fiw, List<fiw>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<cvs> x;
+   public static final Codec<fiw> c = baf.a(fiw::values);
+   private final int d;
+   private final String e;
+   private final String f;
 
-   private fiw(final cvs... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   private fiw(final int $$0, final String $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static List<fiw> a(csp $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   @Override
+   public int b() {
+      return this.d;
    }
 
-   public List<cvs> a() {
-      return this.x;
+   @Override
+   public String a() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

@@ -1,20 +1,45 @@
-public class awt {
-   public static final axl<drl> a = a("no_item_required");
-   public static final axl<drl> b = a("pattern_item/flower");
-   public static final axl<drl> c = a("pattern_item/creeper");
-   public static final axl<drl> d = a("pattern_item/skull");
-   public static final axl<drl> e = a("pattern_item/mojang");
-   public static final axl<drl> f = a("pattern_item/globe");
-   public static final axl<drl> g = a("pattern_item/piglin");
-   public static final axl<drl> h = a("pattern_item/flow");
-   public static final axl<drl> i = a("pattern_item/guster");
-   public static final axl<drl> j = a("pattern_item/field_masoned");
-   public static final axl<drl> k = a("pattern_item/bordure_indented");
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private awt() {
+public class awt<T> implements Iterable<awr<T>> {
+   private final kc<T> a;
+   private final Map<T, awr<T>> b = new IdentityHashMap<>();
+   private final xh c;
+   private final zf<ws, awr<T>> d;
+
+   public awt(kc<T> $$0, xh $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = zd.a($$0.g()).a(this::b, awr::b);
    }
 
-   private static axl<drl> a(String $$0) {
-      return axl.a(lw.d, ale.b($$0));
+   public zf<ws, awr<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public awr<T> a(T $$0, aws $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new awr<>(this, (T)$$1x, $$1));
+   }
+
+   public kc<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<awr<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public awr<T> b(T $$0) {
+      return this.a($$0, aws.b);
+   }
+
+   public xh c() {
+      return this.c;
    }
 }

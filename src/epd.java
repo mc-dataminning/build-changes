@@ -1,16 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface epd<P extends epc> {
-   epd<eof> a = a("always_true", eof.a);
-   epd<eok> b = a("block_match", eok.a);
-   epd<eom> c = a("blockstate_match", eom.a);
-   epd<epk> d = a("tag_match", epk.a);
-   epd<eoz> e = a("random_block_match", eoz.a);
-   epd<epa> f = a("random_blockstate_match", epa.a);
+public enum epd implements baf {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   MapCodec<P> codec();
+   public static Codec<epd> c = baf.b(epd::values);
+   private final String d;
 
-   static <P extends epc> epd<P> a(String $$0, MapCodec<P> $$1) {
-      return kb.a(lv.m, $$0, () -> $$1);
+   private epd(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
    }
 }

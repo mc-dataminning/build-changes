@@ -1,25 +1,48 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
 
 public class bbm extends DataFix {
    public bbm(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bho.c);
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.remove("Bees");
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      $$0 = $$0.remove("EntityData");
+      $$0 = $$0.renameField("TicksInHive", "ticks_in_hive");
+      return $$0.renameField("MinOccupationTicks", "min_ticks_in_hive");
+   }
+
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bhs.s, "minecraft:beehive");
+      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
+      ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
+      Type<?> $$3 = $$2.getElement();
+      OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
+      OpticFinder<?> $$5 = DSL.typeFinder($$3);
+      Type<?> $$6 = this.getInputSchema().getType(bhs.s);
+      Type<?> $$7 = this.getOutputSchema().getType(bhs.s);
       return this.fixTypeEverywhereTyped(
-         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
+         "BeehiveFieldRenameFix",
+         $$6,
+         $$7,
+         $$4x -> bau.a(
+               $$7,
+               $$4x.updateTyped(
+                  $$1,
+                  $$2xx -> $$2xx.update(DSL.remainderFinder(), this::a)
+                        .updateTyped($$4, $$1xxx -> $$1xxx.updateTyped($$5, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), this::b)))
+               )
+            )
       );
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      return $$2 ? $$0 : $$0.remove("blending_data");
    }
 }

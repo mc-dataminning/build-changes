@@ -1,4 +1,6 @@
-public class gvm extends guo {
-   public float a;
-   public int b = 1;
+public class gvm extends gus {
+   public boolean a;
+   public boolean b;
+   public float c;
+   public cmy d = cmy.f;
 }

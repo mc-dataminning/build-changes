@@ -1,23 +1,15 @@
-public class gkh implements gjw<dsz> {
-   private final fwy a;
+public interface gkh<T extends dsg> {
+   void a(T var1, float var2, fdt var3, ghw var4, int var5, int var6);
 
-   public gkh(gjx.a $$0) {
-      this.a = new fwy($$0.a(gap.A));
+   default boolean a(T $$0) {
+      return false;
    }
 
-   public void a(dsz $$0, float $$1, fdi $$2, ghl $$3, int $$4, int $$5) {
-      dus $$6 = $$0.m();
-      if ($$6.c(dlx.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$7 = $$6.c(dlx.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$7));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         fdm $$8 = gkf.a.a($$3, ghv::c);
-         this.a.a($$2, $$8, $$4, $$5);
-         $$2.b();
-      }
+   default int aV_() {
+      return 64;
+   }
+
+   default boolean a(T $$0, ezh $$1) {
+      return ezh.b($$0.aC_()).a((jz)$$1, (double)this.aV_());
    }
 }

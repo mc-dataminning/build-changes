@@ -1,59 +1,62 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hcp implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final bmy d;
+public class hcp {
+   private static final int a = 100;
+   private final azr b = azr.a();
+   private final fja c;
    @Nullable
-   private CompletableFuture<Optional<hcl>> e;
+   private hbp d;
+   private int e = 100;
 
-   private hcp(bmy $$0) {
-      this.d = $$0;
+   public hcp(fja $$0) {
+      this.c = $$0;
    }
 
-   public static CompletableFuture<Optional<hcp>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            bmy $$1 = bmy.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new hcp($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
+   public void a() {
+      awh $$0 = this.c.al();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ak().b(this.d);
+            this.e = azj.a(this.b, 0, $$0.b() / 2);
          }
-      }, ad.g());
-   }
 
-   public CompletableFuture<Optional<hcm>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               bmy.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new hcl($$1, ad.g()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ad.g());
+         if (!this.c.ak().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, azj.a(this.b, $$0.b(), $$0.c()));
+         }
       }
 
-      return this.e.thenApply($$0 -> $$0.map(hcl::a));
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
+      }
    }
 
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(hcl::close));
+   public void a(awh $$0) {
+      this.d = hbk.a($$0.a().a());
+      if (this.d.b() != hcu.b) {
+         this.c.ak().a(this.d);
       }
+
+      this.e = Integer.MAX_VALUE;
+   }
+
+   public void b(awh $$0) {
+      if (this.c($$0)) {
+         this.b();
+      }
+   }
+
+   public void b() {
+      if (this.d != null) {
+         this.c.ak().b(this.d);
+         this.d = null;
+      }
+
+      this.e += 100;
+   }
+
+   public boolean c(awh $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

@@ -1,82 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SequencedMap;
 
-public record gie(ale b, ale c, List<gie.a> d, List<gie.b> e, gib f) {
-   public static final Codec<gie> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ale.a.fieldOf("vertex").forGetter(gie::a),
-               ale.a.fieldOf("fragment").forGetter(gie::b),
-               gie.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(gie::c),
-               gie.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gie::d),
-               gib.b.optionalFieldOf("defines", gib.a).forGetter(gie::e)
-            )
-            .apply($$0, gie::new)
-   );
+public class gie {
+   private final gij a = new gij();
+   private final gik b;
+   private final ghw.a c;
+   private final ghw.a d;
+   private final ghy e;
 
-   public ale a() {
+   public gie(int $$0) {
+      this.b = gik.a($$0);
+      SequencedMap<gig, fdq> $$1 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(gir.h(), this.a.a(gig.c()));
+         $$0x.put(gir.i(), this.a.a(gig.e()));
+         $$0x.put(gir.a(), this.a.a(gig.d()));
+         $$0x.put(gir.j(), this.a.a(gig.f()));
+         a($$0x, gir.b());
+         a($$0x, gir.c());
+         a($$0x, gir.d());
+         a($$0x, gir.e());
+         a($$0x, gir.f());
+         $$0x.put(gir.g(), new fdq(786432));
+         a($$0x, gig.j());
+         a($$0x, gig.l());
+         a($$0x, gig.k());
+         a($$0x, gig.m());
+         a($$0x, gig.i());
+      });
+      this.c = ghw.a($$1, new fdq(786432));
+      this.e = new ghy(this.c);
+      SequencedMap<gig, fdq> $$2 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hae.l.forEach($$1x -> a($$0x, $$1x)));
+      this.d = ghw.a($$2, new fdq(0));
+   }
+
+   private static void a(Object2ObjectLinkedOpenHashMap<gig, fdq> $$0, gig $$1) {
+      $$0.put($$1, new fdq($$1.M()));
+   }
+
+   public gij a() {
+      return this.a;
+   }
+
+   public gik b() {
       return this.b;
    }
 
-   public ale b() {
+   public ghw.a c() {
       return this.c;
    }
 
-   public List<gie.a> c() {
+   public ghw.a d() {
       return this.d;
    }
 
-   public List<gie.b> d() {
+   public ghy e() {
       return this.e;
-   }
-
-   public gib e() {
-      return this.f;
-   }
-
-   public static record a(String b) {
-      public static final Codec<gie.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gie.a::a)).apply($$0, gie.a::new));
-
-      public String a() {
-         return this.b;
-      }
-   }
-
-   public static record b(String b, String c, int d, List<Float> e) {
-      public static final Codec<gie.b> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.STRING.fieldOf("name").forGetter(gie.b::a),
-                     Codec.STRING.fieldOf("type").forGetter(gie.b::b),
-                     Codec.INT.fieldOf("count").forGetter(gie.b::c),
-                     Codec.FLOAT.listOf().fieldOf("values").forGetter(gie.b::d)
-                  )
-                  .apply($$0, gie.b::new)
-         )
-         .validate(gie.b::a);
-
-      private static DataResult<gie.b> a(gie.b $$0) {
-         int $$1 = $$0.d;
-         int $$2 = $$0.e.size();
-         return $$2 != $$1 && $$2 > 1
-            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
-            : DataResult.success($$0);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public List<Float> d() {
-         return this.e;
-      }
    }
 }

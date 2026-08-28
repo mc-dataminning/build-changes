@@ -1,59 +1,52 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dlq extends dlb implements dmd {
-   public static final MapCodec<dlq> c = b(dlq::new);
-   protected static final ezq g = dhm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class dlq extends dhy implements doz {
+   public static final MapCodec<dlq> a = b(dlq::new);
+   private static final fab c = dhy.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   public static final dvu b = dvt.C;
+
+   public dlq(dvc.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)));
+   }
 
    @Override
    public MapCodec<dlq> a() {
+      return a;
+   }
+
+   @Override
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, erf.c, erf.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected ere b_(dvd $$0) {
+      return $$0.c(b) ? erf.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public dvd a(czm $$0) {
+      ere $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Boolean.valueOf($$1.b(erf.c)));
+   }
+
+   @Override
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
       return c;
    }
 
-   protected dlq(dur.d $$0) {
-      super($$0, jk.b, g, true, 0.14);
-   }
-
    @Override
-   protected boolean h(dus $$0) {
-      return $$0.a(dho.G);
-   }
-
-   @Override
-   protected dhm b() {
-      return dho.md;
-   }
-
-   @Override
-   protected boolean o(dus $$0) {
-      return !$$0.a(dho.kJ);
-   }
-
-   @Override
-   public boolean a(@Nullable cnx $$0, ddo $$1, jf $$2, dus $$3, eqs $$4) {
+   protected boolean a(dvd $$0, ert $$1) {
       return false;
-   }
-
-   @Override
-   public boolean a(dek $$0, jf $$1, dus $$2, eqt $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(azn $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dus a(czn $$0) {
-      eqt $$1 = $$0.q().b_($$0.a());
-      return $$1.a(axb.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected eqt b_(dus $$0) {
-      return equ.c.a(false);
    }
 }

@@ -1,36 +1,72 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class dzl implements dzt {
-   public static final MapCodec<dzl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jf.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, dzl::new));
-   public static final zc<ByteBuf, dzl> b = zc.a(jf.b, $$0 -> $$0.e, dzl::new);
-   private final jf e;
+public class dzl<T extends dzh> {
+   private static final Logger a = LogUtils.getLogger();
+   private final ayb<T> b;
+   private dzu c;
 
-   public dzl(jf $$0) {
-      this.e = $$0;
+   public dzl(Class<T> $$0, dzu $$1) {
+      this.c = $$1;
+      this.b = new ayb<>($$0);
    }
 
-   @Override
-   public Optional<eyw> a(dej $$0) {
-      return Optional.of(eyw.b(this.e));
+   public void a(T $$0) {
+      this.b.add($$0);
    }
 
-   @Override
-   public dzu<dzl> a() {
-      return dzu.a;
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
    }
 
-   public static class a implements dzu<dzl> {
-      @Override
-      public MapCodec<dzl> a() {
-         return dzl.a;
+   public axv.a a(ezc $$0, axv<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cS().c($$0) && $$1.accept($$2).a()) {
+            return axv.a.b;
+         }
       }
 
-      @Override
-      public zc<ByteBuf, dzl> b() {
-         return dzl.b;
+      return axv.a.a;
+   }
+
+   public <U extends T> axv.a a(dzo<T, U> $$0, ezc $$1, axv<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
+      if ($$3.isEmpty()) {
+         return axv.a.a;
+      } else {
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cS().c($$1) && $$2.accept($$5).a()) {
+               return axv.a.b;
+            }
+         }
+
+         return axv.a.a;
       }
+   }
+
+   public boolean a() {
+      return this.b.isEmpty();
+   }
+
+   public Stream<T> b() {
+      return this.b.stream();
+   }
+
+   public dzu c() {
+      return this.c;
+   }
+
+   public dzu a(dzu $$0) {
+      dzu $$1 = this.c;
+      this.c = $$0;
+      return $$1;
+   }
+
+   @bap
+   public int d() {
+      return this.b.size();
    }
 }

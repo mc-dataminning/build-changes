@@ -1,57 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dmt extends dhv {
+public class dmt extends dhy implements doz {
    public static final MapCodec<dmt> a = b(dmt::new);
-   public static final int b = 3;
-   public static final dvs c = dvi.as;
-   private static final ezq[] d = new ezq[]{
-      dhm.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
-      dhm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
-   };
+   public static final dvu b = dvt.C;
 
    @Override
    public MapCodec<dmt> a() {
       return a;
    }
 
-   protected dmt(dur.d $$0) {
+   protected dmt(dvc.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+      this.l(this.F.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return d[$$0.c(c)];
+   protected boolean b(dvd $$0, dvd $$1, jl $$2) {
+      return $$1.a(dia.ac) && $$2.o() == jl.a.b;
+   }
+
+   @Nullable
+   @Override
+   public dvd a(czm $$0) {
+      ere $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == erf.c;
+      return super.a($$0).b(b, Boolean.valueOf($$2));
    }
 
    @Override
-   protected boolean b(dus $$0, ddo $$1, jf $$2) {
-      return $$0.a(dho.dW);
-   }
-
-   @Override
-   protected boolean f(dus $$0) {
-      return $$0.c(c) < 3;
-   }
-
-   @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      int $$4 = $$0.c(c);
-      if ($$4 < 3 && $$3.a(10) == 0) {
-         $$0 = $$0.b(c, Integer.valueOf($$4 + 1));
-         $$1.a($$2, $$0, 2);
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, erf.c, erf.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public cvs a(dem $$0, jf $$1, dus $$2) {
-      return new cvs(cvw.sk);
+   protected ere b_(dvd $$0) {
+      return $$0.c(b) ? erf.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(c);
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(b);
    }
 }

@@ -1,11 +1,25 @@
-public interface aae extends abx {
-   void a(aah var1);
+public record aae(String b, int c) implements zo<zu> {
+   public static final zf<we, aae> a = zo.a(aae::a, aae::new);
 
-   void a(aai var1);
+   private aae(we $$0) {
+      this($$0.p(), $$0.l());
+   }
 
-   void a(aag var1);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+   }
 
-   void a(aaj var1);
+   @Override
+   public zq<aae> a() {
+      return aag.j;
+   }
 
-   void a(aaf var1);
+   public void a(zu $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
+   }
 }

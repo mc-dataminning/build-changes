@@ -1,17 +1,31 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public enum gct {
-   a("chat"),
-   b("skin"),
-   c("username");
+public interface gct {
+   Codec<gct> a = baf.a(gct.a::values).dispatch(gct::a, gct.a::a);
 
-   private final String d;
+   gct.a a();
 
-   private gct(final String $$0) {
-      this.d = $$0.toUpperCase(Locale.ROOT);
-   }
+   public static enum a implements baf {
+      a("player", () -> gcu.a.b),
+      b("system", () -> gcu.b.b);
 
-   public String a() {
-      return this.d;
+      private final String c;
+      private final Supplier<MapCodec<? extends gct>> d;
+
+      private a(final String $$0, final Supplier<MapCodec<? extends gct>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      private MapCodec<? extends gct> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
+      }
    }
 }

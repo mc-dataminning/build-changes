@@ -1,67 +1,67 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public record gcr(String a, @Nullable gcr.a b) {
-   public static gcr a() {
-      return a(null);
+public class gcr {
+   private final gct[] a;
+   private int b;
+
+   public static Codec<gcr> a(int $$0) {
+      return Codec.list(gct.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new gcr($$0, $$1));
+            },
+            gcr::c
+         );
    }
 
-   public static gcr a(String $$0) {
-      return a(new gcr.a.b($$0));
+   public gcr(int $$0) {
+      this.a = new gct[$$0];
    }
 
-   public static gcr a(fep $$0) {
-      return a(new gcr.a.a($$0));
+   private gcr(int $$0, List<gct> $$1) {
+      this.a = $$1.toArray(gct[]::new);
+      this.b = $$1.size();
    }
 
-   public static gcr a(@Nullable gcr.a $$0) {
-      return new gcr(g(), $$0);
+   private List<gct> c() {
+      List<gct> $$0 = new ArrayList<>(this.d());
+
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
+      }
+
+      return $$0;
    }
 
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   public void a(gct $$0) {
+      this.a[this.c(this.b++)] = $$0;
    }
 
    @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof gcr.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   public gct b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
    }
 
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof gcr.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   private int c(int $$0) {
+      return $$0 % this.a.length;
    }
 
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w35a");
-      if (fip.e().a()) {
-         $$0.append(" (modded)");
-      }
-
-      return $$0.toString();
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
    }
 
-   public String e() {
-      return this.a;
+   public int b() {
+      return this.b - 1;
    }
 
-   @Nullable
-   public gcr.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements gcr.a {
-         public a(fep $$0) {
-            this($$0.a, $$0.n);
-         }
-      }
-
-      public static record b(String a) implements gcr.a {
-      }
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

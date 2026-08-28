@@ -1,44 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class eex extends edu<egg> {
-   private static final int a = 7;
-
-   eex(Codec<egg> $$0) {
+public class eex extends eef<ego> {
+   public eex(Codec<ego> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(edw<egg> $$0) {
-      dfg $$1 = $$0.b();
-      azn $$2 = $$0.d();
-      egg $$3 = $$0.f();
-      jf $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      jf.a $$6 = new jf.a();
+   public boolean a(eeh<ego> $$0) {
+      dfs $$1 = $$0.b();
+      jg $$2 = $$0.e();
+      azr $$3 = $$0.d();
+      ego $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
+         return false;
+      } else {
+         List<jl> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            jg.a $$6 = $$2.k();
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dus $$8 = $$1.a_($$6);
+            for (jl $$7 : $$5) {
+               $$6.g($$2);
+               List<jl> $$8 = $$4.a($$3, $$7.g());
 
-         for (egg.a $$9 : $$3.b) {
-            if (eep.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dvd $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
             }
+
+            return false;
+         }
+      }
+   }
+
+   public static boolean a(dfs $$0, jg $$1, dvd $$2, ego $$3, azr $$4, List<jl> $$5) {
+      jg.a $$6 = $$1.k();
+
+      for (jl $$7 : $$5) {
+         dvd $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dvd $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
          }
       }
 
-      return true;
+      return false;
    }
 
-   private void a(jf.a $$0, azn $$1, jf $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(azn $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+   private static boolean c(dvd $$0) {
+      return $$0.l() || $$0.a(dia.G);
    }
 }

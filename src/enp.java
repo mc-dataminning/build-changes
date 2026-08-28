@@ -1,48 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class enp extends elg {
-   public static final MapCodec<enp> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), ejn.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, enp::new)
-   );
-   public final ejn e;
+public class enp extends elr {
+   public static final MapCodec<enp> d = a(enp::new);
 
-   public enp(elg.c $$0, ejn $$1) {
+   public enp(elr.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<elg.b> a(elg.a $$0) {
-      ebn $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().f();
-      ebl $$5 = new ebl($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      dev $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      jf.a $$8 = new jf.a($$2, $$6, $$3);
+   public Optional<elr.b> a(elr.a $$0) {
+      dol $$1 = dol.a($$0.f());
+      jg $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new elr.b($$2, (Consumer<emj>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   }
 
-      while ($$6 > $$4) {
-         dus $$9 = $$7.a($$6);
-         dus $$10 = $$7.a(--$$6);
-         if ($$9.l() && ($$10.a(dho.dW) || $$10.c(ddy.a, $$8.q($$6), jk.b))) {
-            break;
-         }
-      }
-
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         jf $$11 = new jf($$2, $$6, $$3);
-         return Optional.of(new elg.b($$11, (Consumer<ely>)($$3x -> eno.a($$0.e(), $$3x, $$1, $$11))));
-      }
+   private void a(emj $$0, jg $$1, dol $$2, elr.a $$3) {
+      List<elv> $$4 = Lists.newArrayList();
+      eno.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public elp<?> e() {
-      return elp.i;
+   public ema<?> e() {
+      return ema.c;
    }
 }

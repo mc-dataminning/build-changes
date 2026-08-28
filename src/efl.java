@@ -1,43 +1,40 @@
 import com.mojang.serialization.Codec;
 
-public class efl extends edu<egf> {
-   private static final jf a = new jf(8, 3, 8);
-   private static final ddp b = new ddp(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public efl(Codec<egf> $$0) {
+public class efl extends eef<egt> {
+   public efl(Codec<egt> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(edw<egf> $$0) {
-      dfg $$1 = $$0.b();
-      ddp $$2 = new ddp($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
-      } else {
-         jf $$3 = a.h($$0.e().v() + a.v());
-         jf.a $$4 = new jf.a();
-
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, dho.m.n(), 2);
-                  } else {
-                     $$1.a($$4, dho.b.n(), 2);
-                  }
+   public boolean a(eeh<egt> $$0) {
+      boolean $$1 = false;
+      azr $$2 = $$0.d();
+      dfs $$3 = $$0.b();
+      jg $$4 = $$0.e();
+      egt $$5 = $$0.f();
+      int $$6 = $$2.a(8) - $$2.a(8);
+      int $$7 = $$2.a(8) - $$2.a(8);
+      int $$8 = $$3.a(eaz.a.d, $$4.u() + $$6, $$4.w() + $$7);
+      jg $$9 = new jg($$4.u() + $$6, $$8, $$4.w() + $$7);
+      if ($$3.a_($$9).a(dia.G)) {
+         boolean $$10 = $$2.j() < (double)$$5.l;
+         dvd $$11 = $$10 ? dia.bx.m() : dia.bw.m();
+         if ($$11.a($$3, $$9)) {
+            if ($$10) {
+               dvd $$12 = $$11.b(dqe.d, dvz.a);
+               jg $$13 = $$9.d();
+               if ($$3.a_($$13).a(dia.G)) {
+                  $$3.a($$9, $$11, 2);
+                  $$3.a($$13, $$12, 2);
                }
+            } else {
+               $$3.a($$9, $$11, 2);
             }
-         }
 
-         return true;
+            $$1 = true;
+         }
       }
+
+      return $$1;
    }
 }

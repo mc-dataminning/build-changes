@@ -1,223 +1,136 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
 public class ly {
-   private static final Map<dhm, lz> ap = Maps.newHashMap();
-   private static final String aq = "wooden";
-   private static final String ar = "has_planks";
-   public static final lz a = a(dho.r)
-      .a(dho.gz)
-      .h(dho.kg)
-      .j(dho.jY)
-      .m(dho.dD)
-      .a(dho.cH, dho.cU)
-      .k(dho.jx)
-      .l(dho.hP)
-      .f(dho.ko)
-      .o(dho.eC)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz b = a(dho.s)
-      .a(dho.gA)
-      .h(dho.kh)
-      .j(dho.jZ)
-      .m(dho.dE)
-      .a(dho.cI, dho.cV)
-      .k(dho.jy)
-      .l(dho.hQ)
-      .f(dho.kp)
-      .o(dho.eD)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz c = a(dho.p)
-      .a(dho.gx)
-      .h(dho.ke)
-      .j(dho.jW)
-      .m(dho.dB)
-      .a(dho.cG, dho.cT)
-      .k(dho.jv)
-      .l(dho.fL)
-      .f(dho.km)
-      .o(dho.eA)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz d = a(dho.oE)
-      .a(dho.oS)
-      .h(dho.oK)
-      .j(dho.oO)
-      .m(dho.oI)
-      .a(dho.oW, dho.oY)
-      .k(dho.oG)
-      .l(dho.oQ)
-      .f(dho.oU)
-      .o(dho.oM)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz e = a(dho.q)
-      .a(dho.gy)
-      .h(dho.kf)
-      .j(dho.jX)
-      .m(dho.dC)
-      .a(dho.cJ, dho.cW)
-      .k(dho.jw)
-      .l(dho.fM)
-      .f(dho.kn)
-      .o(dho.eB)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz f = a(dho.n)
-      .a(dho.gv)
-      .h(dho.dU)
-      .j(dho.fh)
-      .m(dho.dz)
-      .a(dho.cE, dho.cR)
-      .k(dho.jt)
-      .l(dho.cu)
-      .f(dho.cN)
-      .o(dho.ey)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz g = a(dho.t)
-      .a(dho.gB)
-      .h(dho.ki)
-      .j(dho.ka)
-      .m(dho.dF)
-      .a(dho.cK, dho.cX)
-      .k(dho.jz)
-      .l(dho.hR)
-      .f(dho.kq)
-      .o(dho.eE)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz h = a(dho.o)
-      .a(dho.gw)
-      .h(dho.kd)
-      .j(dho.jV)
-      .m(dho.dA)
-      .a(dho.cF, dho.cS)
-      .k(dho.ju)
-      .l(dho.fK)
-      .f(dho.kl)
-      .o(dho.ez)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz i = a(dho.oF)
-      .a(dho.oT)
-      .h(dho.oL)
-      .j(dho.oP)
-      .m(dho.oJ)
-      .a(dho.oX, dho.oZ)
-      .k(dho.oH)
-      .l(dho.oR)
-      .f(dho.oV)
-      .o(dho.oN)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz j = a(dho.u)
-      .a(dho.gC)
-      .k(dho.jA)
-      .l(dho.hS)
-      .h(dho.kj)
-      .j(dho.kb)
-      .m(dho.dG)
-      .a(dho.cL, dho.cY)
-      .f(dho.kr)
-      .o(dho.eF)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz k = a(dho.v)
-      .a(dho.gD)
-      .k(dho.jB)
-      .l(dho.hT)
-      .g(dho.kk)
-      .i(dho.kc)
-      .m(dho.dH)
-      .a(dho.cM, dho.cZ)
-      .f(dho.ks)
-      .o(dho.eG)
-      .c(dho.w)
-      .a("wooden")
-      .b("has_planks")
-      .a();
-   public static final lz l = a(dho.w).k(dho.jC).l(dho.hU).a();
-   public static final lz m = a(dho.eM).p(dho.nL).l(dho.fk).k(dho.jL).a();
-   public static final lz n = a(dho.g).p(dho.nN).l(dho.no).k(dho.nB).n(dho.h).a();
-   public static final lz o = a(dho.h).l(dho.nq).k(dho.nD).a();
-   public static final lz p = a(dho.pr).p(dho.pt).l(dho.ps).k(dho.pu).n(dho.pv).a();
-   public static final lz q = a(dho.pv).p(dho.pH).m(dho.pF).a(dho.pG).l(dho.pD).k(dho.pE).n(dho.pw).b(dho.py).a();
-   public static final lz r = a(dho.pw).p(dho.pB).l(dho.pA).k(dho.pz).d(dho.px).a();
-   public static final lz s = a(dho.cj).p(dho.nF).l(dho.fi).k(dho.jJ).a();
-   public static final lz t = a(dho.kz).p(dho.nQ).l(dho.nj).k(dho.nx).a();
-   public static final lz u = a(dho.eI).p(dho.nI).l(dho.ng).k(dho.nu).a();
-   public static final lz v = a(dho.qW).e(dho.rf).b().a();
-   public static final lz w = a(dho.rf).k(dho.rv).l(dho.rr).b(dho.rj).b().a();
-   public static final lz x = a(dho.rw).e(dho.rD).a("waxed_cut_copper").b().a();
-   public static final lz y = a(dho.rD).k(dho.rL).l(dho.rH).b(dho.rn).a("waxed_cut_copper").b().a();
-   public static final lz z = a(dho.qX).e(dho.re).b().a();
-   public static final lz A = a(dho.re).k(dho.ru).l(dho.rq).b(dho.ri).b().a();
-   public static final lz B = a(dho.ry).e(dho.rC).a("waxed_exposed_cut_copper").b().a();
-   public static final lz C = a(dho.rC).k(dho.rK).l(dho.rG).b(dho.rm).a("waxed_exposed_cut_copper").b().a();
-   public static final lz D = a(dho.qY).e(dho.rd).b().a();
-   public static final lz E = a(dho.rd).k(dho.rt).l(dho.rp).b(dho.rh).b().a();
-   public static final lz F = a(dho.rx).e(dho.rB).a("waxed_weathered_cut_copper").b().a();
-   public static final lz G = a(dho.rB).k(dho.rJ).l(dho.rF).b(dho.rl).a("waxed_weathered_cut_copper").b().a();
-   public static final lz H = a(dho.qZ).e(dho.rc).b().a();
-   public static final lz I = a(dho.rc).k(dho.rs).l(dho.ro).b(dho.rg).b().a();
-   public static final lz J = a(dho.rz).e(dho.rA).a("waxed_oxidized_cut_copper").b().a();
-   public static final lz K = a(dho.rA).k(dho.rI).l(dho.rE).b(dho.rk).a("waxed_oxidized_cut_copper").b().a();
-   public static final lz L = a(dho.m).p(dho.fP).l(dho.cQ).k(dho.jI).a();
-   public static final lz M = a(dho.cn).p(dho.fQ).l(dho.ni).k(dho.nw).a();
-   public static final lz N = a(dho.e).p(dho.nR).l(dho.nr).k(dho.nE).n(dho.f).a();
-   public static final lz O = a(dho.f).l(dho.nh).k(dho.nv).a();
-   public static final lz P = a(dho.c).p(dho.nJ).l(dho.nn).k(dho.nA).n(dho.d).a();
-   public static final lz Q = a(dho.d).l(dho.ne).k(dho.ns).a();
-   public static final lz R = a(dho.qz).p(dho.qC).l(dho.qB).k(dho.qA).b(dho.qH).n(dho.qD).a();
-   public static final lz S = a(dho.qD).p(dho.qG).l(dho.qF).k(dho.qE).n(dho.qI).a();
-   public static final lz T = a(dho.qI).p(dho.qL).l(dho.qK).k(dho.qJ).b(dho.qM).a();
-   public static final lz U = a(dho.fn).h(dho.fo).p(dho.nM).l(dho.fp).k(dho.jM).b(dho.pI).d(dho.pJ).a();
-   public static final lz V = a(dho.kL).k(dho.nC).l(dho.np).p(dho.nO).a();
-   public static final lz W = a(dho.hZ).p(dho.nG).l(dho.ic).k(dho.if).a();
-   public static final lz X = a(dho.kw).l(dho.ky).k(dho.jQ).c().a();
-   public static final lz Y = a(dho.ia).l(dho.id).k(dho.ig).a();
-   public static final lz Z = a(dho.ib).l(dho.ie).k(dho.ih).a();
-   public static final lz aa = a(dho.hd).l(dho.hg).k(dho.jN).b(dho.he).c().a();
-   public static final lz ab = a(dho.jT).l(dho.nm).k(dho.nz).a();
-   public static final lz ac = a(dho.aV).p(dho.nP).l(dho.fD).k(dho.jF).b(dho.aW).e(dho.aX).c().a();
-   public static final lz ad = a(dho.aX).k(dho.jG).a();
-   public static final lz ae = a(dho.jS).k(dho.ny).l(dho.nl).a();
-   public static final lz af = a(dho.jp).p(dho.nH).l(dho.js).k(dho.jO).b(dho.jq).e(dho.jr).c().a();
-   public static final lz ag = a(dho.jr).k(dho.jP).a();
-   public static final lz ah = a(dho.jU).k(dho.nt).l(dho.nf).a();
-   public static final lz ai = a(dho.b).k(dho.jD).m(dho.dx).a(dho.dM).l(dho.nk).a();
-   public static final lz aj = a(dho.eH).p(dho.nK).l(dho.fj).k(dho.jK).b(dho.eK).d(dho.eJ).c().a();
-   public static final lz ak = a(dho.sJ).a();
-   public static final lz al = a(dho.sK).k(dho.sM).l(dho.sL).p(dho.sN).b(dho.ta).n(dho.sO).a();
-   public static final lz am = a(dho.sO).k(dho.sQ).l(dho.sP).p(dho.sR).a();
-   public static final lz an = a(dho.sW).k(dho.sY).l(dho.sX).p(dho.sZ).d(dho.tb).a();
-   public static final lz ao = a(dho.sS).k(dho.sU).l(dho.sT).p(dho.sV).d(dho.tc).a();
+   public static final alh a = alh.b("root");
+   public static final alg<kc<cpz>> b = a("activity");
+   public static final alg<kc<bvy>> c = a("attribute");
+   public static final alg<kc<drw>> d = a("banner_pattern");
+   public static final alg<kc<MapCodec<? extends dga>>> e = a("worldgen/biome_source");
+   public static final alg<kc<dhy>> f = a("block");
+   public static final alg<kc<MapCodec<? extends dhy>>> g = a("block_type");
+   public static final alg<kc<dsi<?>>> h = a("block_entity_type");
+   public static final alg<kc<ech<?>>> i = a("block_predicate_type");
+   public static final alg<kc<eil<?>>> j = a("worldgen/block_state_provider_type");
+   public static final alg<kc<edf<?>>> k = a("worldgen/carver");
+   public static final alg<kc<cgq>> l = a("cat_variant");
+   public static final alg<kc<chq>> m = a("wolf_variant");
+   public static final alg<kc<MapCodec<? extends dxa>>> n = a("worldgen/chunk_generator");
+   public static final alg<kc<dya>> o = a("chunk_status");
+   public static final alg<kc<ir<?, ?>>> p = a("command_argument_type");
+   public static final alg<kc<cum>> q = a("creative_mode_tab");
+   public static final alg<kc<alh>> r = a("custom_stat");
+   public static final alg<kc<bsr>> s = a("damage_type");
+   public static final alg<kc<MapCodec<? extends eas>>> t = a("worldgen/density_function_type");
+   public static final alg<kc<MapCodec<? extends dcd>>> u = a("enchantment_entity_effect_type");
+   public static final alg<kc<MapCodec<? extends dbt>>> v = a("enchantment_level_based_value_type");
+   public static final alg<kc<MapCodec<? extends dce>>> w = a("enchantment_location_based_effect_type");
+   public static final alg<kc<MapCodec<? extends dcu>>> x = a("enchantment_provider_type");
+   public static final alg<kc<MapCodec<? extends dcf>>> y = a("enchantment_value_effect_type");
+   public static final alg<kc<bug<?>>> z = a("entity_type");
+   public static final alg<kc<eef<?>>> A = a("worldgen/feature");
+   public static final alg<kc<ehl<?>>> B = a("worldgen/feature_size_type");
+   public static final alg<kc<brc<?>>> C = a("float_provider_type");
+   public static final alg<kc<erd>> D = a("fluid");
+   public static final alg<kc<ehw<?>>> E = a("worldgen/foliage_placer_type");
+   public static final alg<kc<cgx>> F = a("frog_variant");
+   public static final alg<kc<eaa>> G = a("game_event");
+   public static final alg<kc<ejz<?>>> H = a("height_provider_type");
+   public static final alg<kc<cvq>> I = a("instrument");
+   public static final alg<kc<bre<?>>> J = a("int_provider_type");
+   public static final alg<kc<cvt>> K = a("item");
+   public static final alg<kc<cwd>> L = a("jukebox_song");
+   public static final alg<kc<exi>> M = a("loot_condition_type");
+   public static final alg<kc<evl<?>>> N = a("loot_function_type");
+   public static final alg<kc<exu>> O = a("loot_nbt_provider_type");
+   public static final alg<kc<eyc>> P = a("loot_number_provider_type");
+   public static final alg<kc<eun>> Q = a("loot_pool_entry_type");
+   public static final alg<kc<eyl>> R = a("loot_score_provider_type");
+   public static final alg<kc<MapCodec<? extends ebq.f>>> S = a("worldgen/material_condition");
+   public static final alg<kc<MapCodec<? extends ebq.o>>> T = a("worldgen/material_rule");
+   public static final alg<kc<cdz<?>>> U = a("memory_module_type");
+   public static final alg<kc<css<?>>> V = a("menu");
+   public static final alg<kc<btc>> W = a("mob_effect");
+   public static final alg<kc<ckm>> X = a("painting_variant");
+   public static final alg<kc<lp<?>>> Y = a("particle_type");
+   public static final alg<kc<ekz<?>>> Z = a("worldgen/placement_modifier_type");
+   public static final alg<kc<cgc>> aa = a("point_of_interest_type");
+   public static final alg<kc<eaf<?>>> ab = a("position_source_type");
+   public static final alg<kc<eph<?>>> ac = a("pos_rule_test");
+   public static final alg<kc<cxu>> ad = a("potion");
+   public static final alg<kc<dao<?>>> ae = a("recipe_serializer");
+   public static final alg<kc<dap<?>>> af = a("recipe_type");
+   public static final alg<kc<eii<?>>> ag = a("worldgen/root_placer_type");
+   public static final alg<kc<epo<?>>> ah = a("rule_test");
+   public static final alg<kc<eqc<?>>> ai = a("rule_block_entity_modifier");
+   public static final alg<kc<cqb>> aj = a("schedule");
+   public static final alg<kc<cfg<?>>> ak = a("sensor_type");
+   public static final alg<kc<awj>> al = a("sound_event");
+   public static final alg<kc<awt<?>>> am = a("stat_type");
+   public static final alg<kc<emi>> an = a("worldgen/structure_piece");
+   public static final alg<kc<emp<?>>> ao = a("worldgen/structure_placement");
+   public static final alg<kc<ena<?>>> ap = a("worldgen/structure_pool_element");
+   public static final alg<kc<MapCodec<? extends end>>> aq = a("worldgen/pool_alias_binding");
+   public static final alg<kc<eps<?>>> ar = a("worldgen/structure_processor");
+   public static final alg<kc<ema<?>>> as = a("worldgen/structure_type");
+   public static final alg<kc<ejc<?>>> at = a("worldgen/tree_decorator_type");
+   public static final alg<kc<ejo<?>>> au = a("worldgen/trunk_placer_type");
+   public static final alg<kc<cnw>> av = a("villager_profession");
+   public static final alg<kc<cny>> aw = a("villager_type");
+   public static final alg<kc<dsx>> ax = a("decorated_pot_pattern");
+   public static final alg<kc<yy<?>>> ay = a("number_format_type");
+   public static final alg<kc<ks<?>>> az = a("data_component_type");
+   public static final alg<kc<MapCodec<? extends bw>>> aA = a("entity_sub_predicate_type");
+   public static final alg<kc<cu.a<?>>> aB = a("item_sub_predicate_type");
+   public static final alg<kc<est>> aC = a("map_decoration_type");
+   public static final alg<kc<ks<?>>> aD = a("enchantment_effect_component_type");
+   public static final alg<kc<czh.a<?>>> aE = a("consume_effect_type");
+   public static final alg<kc<dug>> aF = a("trial_spawner");
+   public static final alg<kc<dfw>> aG = a("worldgen/biome");
+   public static final alg<kc<xd>> aH = a("chat_type");
+   public static final alg<kc<edd<?>>> aI = a("worldgen/configured_carver");
+   public static final alg<kc<edr<?, ?>>> aJ = a("worldgen/configured_feature");
+   public static final alg<kc<eas>> aK = a("worldgen/density_function");
+   public static final alg<kc<dyz>> aL = a("dimension_type");
+   public static final alg<kc<dbm>> aM = a("enchantment");
+   public static final alg<kc<dcu>> aN = a("enchantment_provider");
+   public static final alg<kc<ejs>> aO = a("worldgen/flat_level_generator_preset");
+   public static final alg<kc<ebe>> aP = a("worldgen/noise_settings");
+   public static final alg<kc<eqh.a>> aQ = a("worldgen/noise");
+   public static final alg<kc<ekv>> aR = a("worldgen/placed_feature");
+   public static final alg<kc<elr>> aS = a("worldgen/structure");
+   public static final alg<kc<epr>> aT = a("worldgen/processor_list");
+   public static final alg<kc<elx>> aU = a("worldgen/structure_set");
+   public static final alg<kc<enb>> aV = a("worldgen/template_pool");
+   public static final alg<kc<aq<?>>> aW = a("trigger_type");
+   public static final alg<kc<ddk>> aX = a("trim_material");
+   public static final alg<kc<ddm>> aY = a("trim_pattern");
+   public static final alg<kc<elg>> aZ = a("worldgen/world_preset");
+   public static final alg<kc<dgk>> ba = a("worldgen/multi_noise_biome_source_parameter_list");
+   public static final alg<kc<dev>> bb = a("dimension");
+   public static final alg<kc<dza>> bc = a("dimension");
+   public static final alg<kc<eub>> bd = a("loot_table");
+   public static final alg<kc<evk>> be = a("item_modifier");
+   public static final alg<kc<exh>> bf = a("predicate");
+   public static final alg<kc<af>> bg = a("advancement");
+   public static final alg<kc<daj<?>>> bh = a("recipe");
 
-   private static lz.a a(dhm $$0) {
-      lz.a $$1 = new lz.a($$0);
-      lz $$2 = ap.put($$0, $$1.a());
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate family definition for " + lv.e.b($$0));
-      } else {
-         return $$1;
-      }
+   public static alg<dev> a(alg<dza> $$0) {
+      return alg.a(bb, $$0.a());
    }
 
-   public static Stream<lz> a() {
-      return ap.values().stream();
+   public static alg<dza> b(alg<dev> $$0) {
+      return alg.a(bc, $$0.a());
+   }
+
+   private static <T> alg<kc<T>> a(String $$0) {
+      return alg.a(alh.b($$0));
+   }
+
+   public static String c(alg<? extends kc<?>> $$0) {
+      return $$0.a().a();
+   }
+
+   public static String d(alg<? extends kc<?>> $$0) {
+      return "tags/" + $$0.a().a();
    }
 }

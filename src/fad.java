@@ -1,83 +1,66 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public abstract class fad {
-   public boolean a(@Nullable fad $$0) {
-      return $$0 == null ? false : this == $$0;
+public enum fad implements baf {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
+
+   public static final baf.a<fad> t = baf.a(fad::values);
+   public static final IntFunction<fad> u = aya.a(fad::a, values(), aya.a.a);
+   private final int v;
+   private final String w;
+
+   private fad(final int $$0, final String $$1) {
+      this.v = $$0;
+      this.w = $$1;
    }
 
-   public abstract String b();
-
-   public abstract xs d(xe var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract fad.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract fad.b k();
-
-   public abstract fad.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, fad.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fad.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static fad.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public xe a() {
-         return xe.c("team.collision." + this.e);
-      }
+   public int a() {
+      return this.v;
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   @Override
+   public String c() {
+      return this.w;
+   }
 
-      private static final Map<String, fad.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fad.b)$$0));
-      public final String e;
-      public final int f;
-
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
-
-      @Nullable
-      public static fad.b a(String $$0) {
-         return g.get($$0);
-      }
-
-      private b(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public xe b() {
-         return xe.c("team.visibility." + this.e);
-      }
+   @Nullable
+   public static fad a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

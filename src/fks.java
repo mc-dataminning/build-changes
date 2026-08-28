@@ -1,10 +1,8 @@
-public class fks {
-   public static flt a(int $$0, fko.c $$1, boolean $$2) {
-      return flt.a(xe.c("options.language"), $$1, $$2).a($$0).a(ale.b("icon/language"), 15, 15).a();
-   }
+public abstract class fks extends fkv {
+   protected final fje a;
 
-   public static flt b(int $$0, fko.c $$1, boolean $$2) {
-      xe $$3 = $$2 ? xe.c("options.accessibility") : xe.c("accessibility.onboarding.accessibility.button");
-      return flt.a($$3, $$1, $$2).a($$0).a(ale.b("icon/accessibility"), 15, 15).a();
+   protected fks(fje $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
+      super($$1, $$2, $$3, $$4, xg.a, $$5);
+      this.a = $$0;
    }
 }

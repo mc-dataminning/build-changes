@@ -1,29 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpr extends dju implements dhp {
-   public static final MapCodec<dpr> c = b(dpr::new);
+public class dpr extends dly implements dhp {
+   public static final MapCodec<dpr> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cuu.q.fieldOf("color").forGetter(dpr::b), t()).apply($$0, dpr::new));
+   private final cuu k;
 
    @Override
    public MapCodec<dpr> a() {
-      return c;
+      return j;
    }
 
-   public dpr(dur.d $$0) {
-      super($$0);
+   public dpr(cuu $$0, dvc.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.l(
+         this.F
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public boolean b(dem $$0, jf $$1, dus $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
-      a($$0, $$2, new cvs(this));
+   public cuu b() {
+      return this.k;
    }
 }

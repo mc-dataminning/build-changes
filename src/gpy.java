@@ -1,39 +1,42 @@
-public class gpy extends gou<clq, gvp, fzs> {
-   private static final ale a = ale.b("textures/entity/strider/strider.png");
-   private static final ale b = ale.b("textures/entity/strider/strider_cold.png");
-   private static final float k = 0.5F;
+public class gpy extends gny<cpe, gvv> {
+   private static final alh a = alh.b("textures/entity/shulker/spark.png");
+   private static final gig b = gig.i(a);
+   private final fzr h;
 
-   public gpy(gno.a $$0) {
-      super($$0, new fzs($$0.a(gap.cF)), 0.5F);
-      this.a(new gsc<>(this, new fzs($$0.a(gap.cG)), ale.b("textures/entity/strider/strider_saddle.png")));
+   public gpy(gnz.a $$0) {
+      super($$0);
+      this.h = new fzr($$0.a(gba.ck));
    }
 
-   public ale a(gvp $$0) {
-      return $$0.b ? b : a;
+   protected int a(cpe $$0, jg $$1) {
+      return 15;
    }
 
-   protected float b(gvp $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.5F : $$1;
+   public void a(gvv $$0, fdt $$1, ghw $$2, int $$3) {
+      $$1.a();
+      float $$4 = $$0.p;
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees(azj.a($$4 * 0.1F) * 180.0F));
+      $$1.a(a.b.rotationDegrees(azj.b($$4 * 0.1F) * 180.0F));
+      $$1.a(a.f.rotationDegrees(azj.a($$4 * 0.15F) * 360.0F));
+      $$1.b(-0.5F, -0.5F, 0.5F);
+      this.h.a($$0);
+      fdx $$5 = $$2.getBuffer(this.h.a(a));
+      this.h.a($$1, $$5, $$3, gxj.d);
+      $$1.b(1.5F, 1.5F, 1.5F);
+      fdx $$6 = $$2.getBuffer(b);
+      this.h.a($$1, $$6, $$3, gxj.d, 654311423);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gvp c() {
-      return new gvp();
+   public gvv a() {
+      return new gvv();
    }
 
-   public void a(clq $$0, gvp $$1, float $$2) {
+   public void a(cpe $$0, gvv $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.i();
-      $$1.b = $$0.q();
-      $$1.c = $$0.bX();
-   }
-
-   protected void a(gvp $$0, fdi $$1) {
-      float $$2 = $$0.ab;
-      $$1.b($$2, $$2, $$2);
-   }
-
-   protected boolean c(gvp $$0) {
-      return super.a($$0) || $$0.b;
+      $$1.b = $$0.k($$2);
+      $$1.a = $$0.j($$2);
    }
 }

@@ -1,46 +1,52 @@
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.Date;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class avu {
-   private final ByteArrayOutputStream a;
-   private final DataOutputStream b;
-
-   public avu(int $$0) {
-      this.a = new ByteArrayOutputStream($$0);
-      this.b = new DataOutputStream(this.a);
+public class avu extends avi<GameProfile> {
+   public avu(@Nullable GameProfile $$0) {
+      this($$0, null, null, null, null);
    }
 
-   public void a(byte[] $$0) throws IOException {
-      this.b.write($$0, 0, $$0.length);
+   public avu(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public void a(String $$0) throws IOException {
-      this.b.writeBytes($$0);
-      this.b.write(0);
+   public avu(JsonObject $$0) {
+      super(b($$0), $$0);
    }
 
-   public void a(int $$0) throws IOException {
-      this.b.write($$0);
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         super.a($$0);
+      }
    }
 
-   public void a(short $$0) throws IOException {
-      this.b.writeShort(Short.reverseBytes($$0));
+   @Override
+   public xh e() {
+      GameProfile $$0 = this.g();
+      return $$0 != null ? xh.b($$0.getName()) : xh.c("commands.banlist.entry.unknown");
    }
 
-   public void b(int $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes($$0));
-   }
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
 
-   public void a(float $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
-   }
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
 
-   public byte[] a() {
-      return this.a.toByteArray();
-   }
-
-   public void b() {
-      this.a.reset();
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

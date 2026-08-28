@@ -1,32 +1,36 @@
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public abstract class ffc {
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
+public class ffc extends ffn {
+   private static final Logger b = LogUtils.getLogger();
+   public List<ffa> a;
 
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
+   public static ffc a(String $$0) {
+      ffc $$1 = new ffc();
+      $$1.a = Lists.newArrayList();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("servers").isJsonArray()) {
+            JsonArray $$4 = $$3.get("servers").getAsJsonArray();
+            Iterator<JsonElement> $$5 = $$4.iterator();
+
+            while ($$5.hasNext()) {
+               $$1.a.add(ffa.a($$5.next().getAsJsonObject()));
             }
          }
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
 
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
-   }
-
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
-   }
-
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+      return $$1;
    }
 }

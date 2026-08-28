@@ -1,1997 +1,1228 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import com.google.common.math.IntMath;
-import com.mojang.authlib.GameProfile;
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
-import javax.annotation.Nonnull;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public abstract class cnx extends bun {
-   private static final Logger b = LogUtils.getLogger();
-   public static final buh bD = buh.b;
-   public static final int bE = 0;
-   public static final int bF = 20;
-   public static final int bG = 100;
-   public static final int bH = 10;
-   public static final int bI = 200;
-   public static final int bJ = 499;
-   public static final int bK = 500;
-   public static final float bL = 4.5F;
-   public static final float bM = 3.0F;
-   public static final float bN = 1.5F;
-   public static final float bO = 0.6F;
-   public static final float bP = 0.6F;
-   public static final float bQ = 1.62F;
-   private static final int c = 40;
-   public static final eyw bR = new eyw(0.0, 0.6, 0.0);
-   public static final btu bS = btu.b(0.6F, 1.8F).b(1.62F).a(btt.a().a(bts.b, bR));
-   private static final Map<buz, btu> d = ImmutableMap.builder()
-      .put(buz.a, bS)
-      .put(buz.c, aA)
-      .put(buz.b, btu.b(0.6F, 0.6F).b(0.4F))
-      .put(buz.d, btu.b(0.6F, 0.6F).b(0.4F))
-      .put(buz.e, btu.b(0.6F, 0.6F).b(0.4F))
-      .put(buz.f, btu.b(0.6F, 1.5F).b(1.27F).a(btt.a().a(bts.b, bR)))
-      .put(buz.h, btu.c(0.2F, 0.2F).b(1.62F))
-      .build();
-   private static final akh<Float> e = akl.a(cnx.class, akj.d);
-   private static final akh<Integer> f = akl.a(cnx.class, akj.b);
-   protected static final akh<Byte> bT = akl.a(cnx.class, akj.a);
-   protected static final akh<Byte> bU = akl.a(cnx.class, akj.a);
-   protected static final akh<ug> bV = akl.a(cnx.class, akj.t);
-   protected static final akh<ug> bW = akl.a(cnx.class, akj.t);
-   private long g;
-   final cnw h = new cnw(this);
-   protected csn bX = new csn();
-   public final csc bY;
-   public cqz bZ;
-   protected cqv ca = new cqv();
-   protected int cb;
-   public float cc;
-   public float cd;
-   public int ce;
-   public double cf;
-   public double cg;
-   public double ch;
-   public double ci;
-   public double cj;
-   public double ck;
-   private int cv;
-   protected boolean cl;
-   private final cnu cw = new cnu();
-   public int cm;
-   public int cn;
-   public float co;
-   protected int cp;
-   protected final float cq = 0.02F;
-   private int cx;
-   private final GameProfile cy;
-   private boolean cA;
-   private cvs cB = cvs.k;
-   private final cvo cC = this.k();
-   private Optional<jn> cD = Optional.empty();
-   @Nullable
-   public com cr;
-   protected float cs;
-   @Nullable
-   public eyw ct;
-   @Nullable
-   public btr cu;
-   private boolean cE;
-   private int cF;
-
-   public cnx(dej $$0, jf $$1, float $$2, GameProfile $$3) {
-      super(bty.by, $$0);
-      this.a_($$3.getId());
-      this.cy = $$3;
-      this.bY = new csc(this.h, !$$0.B, this);
-      this.bZ = this.bY;
-      this.b((double)$$1.u() + 0.5, (double)($$1.v() + 1), (double)$$1.w() + 0.5, $$2, 0.0F);
-      this.bg = 180.0F;
-   }
-
-   public boolean a(dej $$0, jf $$1, deg $$2) {
-      if (!$$2.f()) {
-         return false;
-      } else if ($$2 == deg.d) {
-         return true;
-      } else if (this.gp()) {
-         return false;
-      } else {
-         cvs $$3 = this.eW();
-         return $$3.f() || !$$3.b(new duw($$0, $$1, false));
-      }
-   }
-
-   public static bvt.a fS() {
-      return bun.ea().a(bvu.c, 1.0).a(bvu.v, 0.1F).a(bvu.e).a(bvu.q).a(bvu.g, 4.5).a(bvu.j, 3.0).a(bvu.f).a(bvu.C).a(bvu.z).a(bvu.t).a(bvu.D);
-   }
-
-   @Override
-   protected void a(akl.a $$0) {
-      super.a($$0);
-      $$0.a(e, 0.0F);
-      $$0.a(f, 0);
-      $$0.a(bT, (byte)0);
-      $$0.a(bU, (byte)bD.b());
-      $$0.a(bV, new ug());
-      $$0.a(bW, new ug());
-   }
-
-   @Override
-   public void l() {
-      this.ae = this.Q_();
-      if (this.Q_()) {
-         this.d(false);
-      }
-
-      if (this.ce > 0) {
-         this.ce--;
-      }
-
-      if (this.fN()) {
-         this.cv++;
-         if (this.cv > 100) {
-            this.cv = 100;
-         }
-
-         if (!this.dS().B && this.dS().S()) {
-            this.a(false, true);
-         }
-      } else if (this.cv > 0) {
-         this.cv++;
-         if (this.cv >= 110) {
-            this.cv = 0;
-         }
-      }
-
-      this.fW();
-      super.l();
-      if (!this.dS().B && this.bZ != null && !this.bZ.b(this)) {
-         this.s();
-         this.bZ = this.bY;
-      }
-
-      this.w();
-      if (!this.dS().B) {
-         this.ca.a(this);
-         this.a(awq.k);
-         this.a(awq.l);
-         if (this.bI()) {
-            this.a(awq.m);
-         }
-
-         if (this.cd()) {
-            this.a(awq.o);
-         }
-
-         if (!this.fN()) {
-            this.a(awq.n);
-         }
-      }
-
-      int $$0 = 29999999;
-      double $$1 = azf.a(this.dx(), -2.9999999E7, 2.9999999E7);
-      double $$2 = azf.a(this.dD(), -2.9999999E7, 2.9999999E7);
-      if ($$1 != this.dx() || $$2 != this.dD()) {
-         this.a_($$1, this.dz(), $$2);
-      }
-
-      this.aO++;
-      cvs $$3 = this.eW();
-      if (!cvs.a(this.cB, $$3)) {
-         if (!cvs.b(this.cB, $$3)) {
-            this.gx();
-         }
-
-         this.cB = $$3.u();
-      }
-
-      this.q();
-      this.cC.a();
-      this.fX();
-      if (this.cF > 0) {
-         this.cF--;
-      }
-   }
-
-   @Override
-   protected float fn() {
-      return this.fC() ? 15.0F : super.fn();
-   }
-
-   public boolean fT() {
-      return this.ca();
-   }
-
-   protected boolean fU() {
-      return this.ca();
-   }
-
-   protected boolean fV() {
-      return this.ca();
-   }
-
-   protected boolean fW() {
-      this.cl = this.a(axb.a);
-      return this.cl;
-   }
-
-   @Override
-   public void l(boolean $$0) {
-      if (!this.f()) {
-         super.l($$0);
-      }
-   }
-
-   @Override
-   public void m(boolean $$0) {
-      if (!this.f()) {
-         super.m($$0);
-      }
-   }
-
-   private void q() {
-      cvs $$0 = this.a(btz.f);
-      if ($$0.a(cvw.op) && !this.a(axb.a)) {
-         this.a(new bsy(bta.m, 200, 0, false, false, true));
-      }
-   }
-
-   protected cvo k() {
-      return new cvo();
-   }
-
-   private void w() {
-      this.cf = this.ci;
-      this.cg = this.cj;
-      this.ch = this.ck;
-      double $$0 = this.dx() - this.ci;
-      double $$1 = this.dz() - this.cj;
-      double $$2 = this.dD() - this.ck;
-      double $$3 = 10.0;
-      if ($$0 > 10.0) {
-         this.ci = this.dx();
-         this.cf = this.ci;
-      }
-
-      if ($$2 > 10.0) {
-         this.ck = this.dD();
-         this.ch = this.ck;
-      }
-
-      if ($$1 > 10.0) {
-         this.cj = this.dz();
-         this.cg = this.cj;
-      }
-
-      if ($$0 < -10.0) {
-         this.ci = this.dx();
-         this.cf = this.ci;
-      }
-
-      if ($$2 < -10.0) {
-         this.ck = this.dD();
-         this.ch = this.ck;
-      }
-
-      if ($$1 < -10.0) {
-         this.cj = this.dz();
-         this.cg = this.cj;
-      }
-
-      this.ci += $$0 * 0.25;
-      this.ck += $$2 * 0.25;
-      this.cj += $$1 * 0.25;
-   }
-
-   protected void fX() {
-      if (this.h(buz.d)) {
-         buz $$0;
-         if (this.fF()) {
-            $$0 = buz.b;
-         } else if (this.fN()) {
-            $$0 = buz.c;
-         } else if (this.ch()) {
-            $$0 = buz.d;
-         } else if (this.fr()) {
-            $$0 = buz.e;
-         } else if (this.ca() && !this.cw.b) {
-            $$0 = buz.f;
-         } else {
-            $$0 = buz.a;
-         }
-
-         buz $$6;
-         if (this.Q_() || this.bW() || this.h($$0)) {
-            $$6 = $$0;
-         } else if (this.h(buz.f)) {
-            $$6 = buz.f;
-         } else {
-            $$6 = buz.d;
-         }
-
-         this.b($$6);
-      }
-   }
-
-   protected boolean h(buz $$0) {
-      return this.dS().a(this, this.a($$0).a(this.dq()).h(1.0E-7));
-   }
-
-   @Override
-   protected awf aT() {
-      return awg.uv;
-   }
-
-   @Override
-   protected awf aU() {
-      return awg.ut;
-   }
-
-   @Override
-   protected awf aV() {
-      return awg.uu;
-   }
-
-   @Override
-   public int bU() {
-      return 10;
-   }
-
-   @Override
-   public void a(awf $$0, float $$1, float $$2) {
-      this.dS().a(this, this.dx(), this.dz(), this.dD(), $$0, this.di(), $$1, $$2);
-   }
-
-   public void a(awf $$0, awh $$1, float $$2, float $$3) {
-   }
-
-   @Override
-   public awh di() {
-      return awh.h;
-   }
-
-   @Override
-   protected int dj() {
-      return 20;
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 9) {
-         this.z();
-      } else if ($$0 == 23) {
-         this.cA = false;
-      } else if ($$0 == 22) {
-         this.cA = true;
-      } else {
-         super.b($$0);
-      }
-   }
-
-   protected void s() {
-      this.bZ = this.bY;
-   }
-
-   protected void t() {
-   }
-
-   @Override
-   public void u() {
-      if (!this.dS().B && this.fU() && this.bW()) {
-         this.af();
-         this.g(false);
-      } else {
-         super.u();
-         this.cc = this.cd;
-         this.cd = 0.0F;
-      }
-   }
-
-   @Override
-   protected void fq() {
-      super.fq();
-      this.eU();
-      this.aV = this.dI();
-   }
-
-   @Override
-   public void n_() {
-      if (this.cb > 0) {
-         this.cb--;
-      }
-
-      if (this.dS().am() == brp.a && this.dS().ac().b(def.k)) {
-         if (this.eB() < this.eQ() && this.ag % 20 == 0) {
-            this.c(1.0F);
-         }
-
-         if (this.ca.e() < 20.0F && this.ag % 20 == 0) {
-            this.ca.b(this.ca.e() + 1.0F);
-         }
-
-         if (this.ca.c() && this.ag % 10 == 0) {
-            this.ca.a(this.ca.a() + 1);
-         }
-      }
-
-      this.h.j();
-      this.cc = this.cd;
-      if (this.cw.b && !this.bW()) {
-         this.n();
-      }
-
-      super.n_();
-      this.C((float)this.h(bvu.v));
-      float $$1;
-      if (this.aH() && !this.eC() && !this.ch()) {
-         $$1 = Math.min(0.1F, (float)this.dv().i());
-      } else {
-         $$1 = 0.0F;
-      }
-
-      this.cd = this.cd + ($$1 - this.cd) * 0.4F;
-      if (this.eB() > 0.0F && !this.Q_()) {
-         eyr $$2;
-         if (this.bW() && !this.dg().dN()) {
-            $$2 = this.cO().b(this.dg().cO()).c(1.0, 0.0, 1.0);
-         } else {
-            $$2 = this.cO().c(1.0, 0.5, 1.0);
-         }
-
-         List<btr> $$4 = this.dS().a_(this, $$2);
-         List<btr> $$5 = Lists.newArrayList();
-
-         for (btr $$6 : $$4) {
-            if ($$6.ao() == bty.M) {
-               $$5.add($$6);
-            } else if (!$$6.dN()) {
-               this.d($$6);
-            }
-         }
-
-         if (!$$5.isEmpty()) {
-            this.d(ad.a($$5, this.af));
-         }
-      }
-
-      this.c(this.gu());
-      this.c(this.gv());
-      if (!this.dS().B && (this.aa > 0.5F || this.bi()) || this.cw.b || this.fN() || this.aw) {
-         this.gr();
-      }
-   }
-
-   private void c(@Nullable ug $$0) {
-      if ($$0 != null && (!$$0.e("Silent") || !$$0.q("Silent")) && this.dS().z.a(200) == 0) {
-         String $$1 = $$0.l("id");
-         bty.a($$1).filter($$0x -> $$0x == bty.ax).ifPresent($$0x -> {
-            if (!cgt.a(this.dS(), this)) {
-               this.dS().a(null, this.dx(), this.dz(), this.dD(), cgt.a(this.dS(), this.dS().z), this.di(), 1.0F, cgt.a(this.dS().z));
-            }
-         });
-      }
-   }
-
-   private void d(btr $$0) {
-      $$0.b_(this);
-   }
-
-   public int fY() {
-      return this.am.a(f);
-   }
-
-   public void r(int $$0) {
-      this.am.a(f, $$0);
-   }
-
-   public void s(int $$0) {
-      int $$1 = this.fY();
-      this.am.a(f, $$1 + $$0);
-   }
-
-   public void a(int $$0, float $$1, cvs $$2) {
-      this.by = $$0;
-      this.bz = $$1;
-      this.bA = $$2;
-      if (!this.dS().B) {
-         this.gr();
-         this.c(4, true);
-      }
-   }
-
-   @Nonnull
-   @Override
-   public cvs dW() {
-      return this.fr() && this.bA != null ? this.bA : super.dW();
-   }
-
-   @Override
-   public void a(bsj $$0) {
-      super.a($$0);
-      this.ax();
-      if (!this.Q_() && this.dS() instanceof arj $$1) {
-         this.a($$1, $$0);
-      }
-
-      if ($$0 != null) {
-         this.n(
-            (double)(-azf.b((this.eI() + this.dI()) * (float) (Math.PI / 180.0)) * 0.1F),
-            0.1F,
-            (double)(-azf.a((this.eI() + this.dI()) * (float) (Math.PI / 180.0)) * 0.1F)
+import org.apache.commons.lang3.tuple.Pair;
+
+public class cnx {
+   private static final int e = 12;
+   private static final int f = 16;
+   private static final int g = 3;
+   private static final int h = 1;
+   private static final int i = 2;
+   private static final int j = 5;
+   private static final int k = 10;
+   private static final int l = 10;
+   private static final int m = 20;
+   private static final int n = 15;
+   private static final int o = 30;
+   private static final int p = 30;
+   private static final float q = 0.05F;
+   private static final float r = 0.2F;
+   public static final Map<cnw, Int2ObjectMap<cnx.g[]>> a = ad.a(
+      Maps.newHashMap(),
+      $$0 -> {
+         $$0.put(
+            cnw.g,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{
+                     new cnx.b(cwb.px, 20, 16, 2),
+                     new cnx.b(cwb.ui, 26, 16, 2),
+                     new cnx.b(cwb.uh, 22, 16, 2),
+                     new cnx.b(cwb.vm, 15, 16, 2),
+                     new cnx.i(cwb.py, 1, 6, 16, 1)
+                  },
+                  2,
+                  new cnx.g[]{new cnx.b(dia.eZ, 6, 12, 10), new cnx.i(cwb.uv, 1, 4, 5), new cnx.i(cwb.ov, 1, 4, 16, 5)},
+                  3,
+                  new cnx.g[]{new cnx.i(cwb.rT, 3, 18, 10), new cnx.b(dia.fa, 4, 12, 20)},
+                  4,
+                  new cnx.g[]{
+                     new cnx.i(dia.eg, 1, 1, 12, 15),
+                     new cnx.j(btg.p, 100, 15),
+                     new cnx.j(btg.h, 160, 15),
+                     new cnx.j(btg.r, 140, 15),
+                     new cnx.j(btg.o, 120, 15),
+                     new cnx.j(btg.s, 280, 15),
+                     new cnx.j(btg.w, 7, 15)
+                  },
+                  5,
+                  new cnx.g[]{new cnx.i(cwb.um, 3, 3, 30), new cnx.i(cwb.su, 4, 3, 30)}
+               )
+            )
          );
-      } else {
-         this.n(0.0, 0.1, 0.0);
+         $$0.put(
+            cnw.h,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{
+                     new cnx.b(cwb.pt, 20, 16, 2),
+                     new cnx.b(cwb.oy, 10, 16, 2),
+                     new cnx.h(cwb.ra, 6, 1, cwb.re, 6, 16, 1, 0.05F),
+                     new cnx.i(cwb.qI, 3, 1, 16, 1)
+                  },
+                  2,
+                  new cnx.g[]{new cnx.b(cwb.ra, 15, 16, 10), new cnx.h(cwb.rb, 6, 1, cwb.rf, 6, 16, 5, 0.05F), new cnx.i(cwb.wz, 2, 1, 5)},
+                  3,
+                  new cnx.g[]{new cnx.b(cwb.rb, 13, 16, 20), new cnx.e(cwb.qW, 3, 3, 10, 0.2F)},
+                  4,
+                  new cnx.g[]{new cnx.b(cwb.rc, 6, 12, 30)},
+                  5,
+                  new cnx.g[]{
+                     new cnx.b(cwb.rd, 4, 12, 30),
+                     new cnx.c(
+                        1,
+                        12,
+                        30,
+                        ImmutableMap.builder()
+                           .put(cny.c, cwb.nV)
+                           .put(cny.g, cwb.nX)
+                           .put(cny.e, cwb.nX)
+                           .put(cny.a, cwb.ob)
+                           .put(cny.b, cwb.ob)
+                           .put(cny.d, cwb.od)
+                           .put(cny.f, cwb.oh)
+                           .build()
+                     )
+                  }
+               )
+            )
+         );
+         $$0.put(
+            cnw.n,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{
+                     new cnx.b(dia.bA, 18, 16, 2),
+                     new cnx.b(dia.bM, 18, 16, 2),
+                     new cnx.b(dia.bP, 18, 16, 2),
+                     new cnx.b(dia.bH, 18, 16, 2),
+                     new cnx.i(cwb.rW, 2, 1, 1)
+                  },
+                  2,
+                  new cnx.g[]{
+                     new cnx.b(cwb.rj, 12, 16, 10),
+                     new cnx.b(cwb.rq, 12, 16, 10),
+                     new cnx.b(cwb.ry, 12, 16, 10),
+                     new cnx.b(cwb.rm, 12, 16, 10),
+                     new cnx.b(cwb.ro, 12, 16, 10),
+                     new cnx.i(dia.bA, 1, 1, 16, 5),
+                     new cnx.i(dia.bB, 1, 1, 16, 5),
+                     new cnx.i(dia.bC, 1, 1, 16, 5),
+                     new cnx.i(dia.bD, 1, 1, 16, 5),
+                     new cnx.i(dia.bE, 1, 1, 16, 5),
+                     new cnx.i(dia.bF, 1, 1, 16, 5),
+                     new cnx.i(dia.bG, 1, 1, 16, 5),
+                     new cnx.i(dia.bH, 1, 1, 16, 5),
+                     new cnx.i(dia.bI, 1, 1, 16, 5),
+                     new cnx.i(dia.bJ, 1, 1, 16, 5),
+                     new cnx.i(dia.bK, 1, 1, 16, 5),
+                     new cnx.i(dia.bL, 1, 1, 16, 5),
+                     new cnx.i(dia.bM, 1, 1, 16, 5),
+                     new cnx.i(dia.bN, 1, 1, 16, 5),
+                     new cnx.i(dia.bO, 1, 1, 16, 5),
+                     new cnx.i(dia.bP, 1, 1, 16, 5),
+                     new cnx.i(dia.ik, 1, 4, 16, 5),
+                     new cnx.i(dia.il, 1, 4, 16, 5),
+                     new cnx.i(dia.im, 1, 4, 16, 5),
+                     new cnx.i(dia.in, 1, 4, 16, 5),
+                     new cnx.i(dia.io, 1, 4, 16, 5),
+                     new cnx.i(dia.ip, 1, 4, 16, 5),
+                     new cnx.i(dia.iq, 1, 4, 16, 5),
+                     new cnx.i(dia.ir, 1, 4, 16, 5),
+                     new cnx.i(dia.is, 1, 4, 16, 5),
+                     new cnx.i(dia.it, 1, 4, 16, 5),
+                     new cnx.i(dia.iu, 1, 4, 16, 5),
+                     new cnx.i(dia.iv, 1, 4, 16, 5),
+                     new cnx.i(dia.iw, 1, 4, 16, 5),
+                     new cnx.i(dia.ix, 1, 4, 16, 5),
+                     new cnx.i(dia.iy, 1, 4, 16, 5),
+                     new cnx.i(dia.iz, 1, 4, 16, 5)
+                  },
+                  3,
+                  new cnx.g[]{
+                     new cnx.b(cwb.rn, 12, 16, 20),
+                     new cnx.b(cwb.rr, 12, 16, 20),
+                     new cnx.b(cwb.rk, 12, 16, 20),
+                     new cnx.b(cwb.rx, 12, 16, 20),
+                     new cnx.b(cwb.rp, 12, 16, 20),
+                     new cnx.i(dia.aZ, 3, 1, 12, 10),
+                     new cnx.i(dia.bd, 3, 1, 12, 10),
+                     new cnx.i(dia.bn, 3, 1, 12, 10),
+                     new cnx.i(dia.bo, 3, 1, 12, 10),
+                     new cnx.i(dia.bk, 3, 1, 12, 10),
+                     new cnx.i(dia.bl, 3, 1, 12, 10),
+                     new cnx.i(dia.bi, 3, 1, 12, 10),
+                     new cnx.i(dia.bg, 3, 1, 12, 10),
+                     new cnx.i(dia.bm, 3, 1, 12, 10),
+                     new cnx.i(dia.bc, 3, 1, 12, 10),
+                     new cnx.i(dia.bh, 3, 1, 12, 10),
+                     new cnx.i(dia.be, 3, 1, 12, 10),
+                     new cnx.i(dia.bb, 3, 1, 12, 10),
+                     new cnx.i(dia.ba, 3, 1, 12, 10),
+                     new cnx.i(dia.bf, 3, 1, 12, 10),
+                     new cnx.i(dia.bj, 3, 1, 12, 10)
+                  },
+                  4,
+                  new cnx.g[]{
+                     new cnx.b(cwb.rv, 12, 16, 30),
+                     new cnx.b(cwb.rt, 12, 16, 30),
+                     new cnx.b(cwb.ru, 12, 16, 30),
+                     new cnx.b(cwb.rw, 12, 16, 30),
+                     new cnx.b(cwb.rl, 12, 16, 30),
+                     new cnx.b(cwb.rs, 12, 16, 30),
+                     new cnx.i(cwb.uR, 3, 1, 12, 15),
+                     new cnx.i(cwb.vc, 3, 1, 12, 15),
+                     new cnx.i(cwb.uU, 3, 1, 12, 15),
+                     new cnx.i(cwb.vf, 3, 1, 12, 15),
+                     new cnx.i(cwb.uX, 3, 1, 12, 15),
+                     new cnx.i(cwb.ve, 3, 1, 12, 15),
+                     new cnx.i(cwb.uW, 3, 1, 12, 15),
+                     new cnx.i(cwb.uY, 3, 1, 12, 15),
+                     new cnx.i(cwb.vg, 3, 1, 12, 15),
+                     new cnx.i(cwb.vb, 3, 1, 12, 15),
+                     new cnx.i(cwb.uT, 3, 1, 12, 15),
+                     new cnx.i(cwb.va, 3, 1, 12, 15),
+                     new cnx.i(cwb.vd, 3, 1, 12, 15),
+                     new cnx.i(cwb.uV, 3, 1, 12, 15),
+                     new cnx.i(cwb.uS, 3, 1, 12, 15),
+                     new cnx.i(cwb.uZ, 3, 1, 12, 15)
+                  },
+                  5,
+                  new cnx.g[]{new cnx.i(cwb.qa, 2, 3, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cnw.i,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{new cnx.b(cwb.pr, 32, 16, 2), new cnx.i(cwb.ox, 1, 16, 1), new cnx.h(dia.L, 10, 1, cwb.pX, 10, 12, 1, 0.05F)},
+                  2,
+                  new cnx.g[]{new cnx.b(cwb.pX, 26, 12, 10), new cnx.i(cwb.ow, 2, 1, 5)},
+                  3,
+                  new cnx.g[]{new cnx.b(cwb.pt, 14, 16, 20), new cnx.i(cwb.vX, 3, 1, 10)},
+                  4,
+                  new cnx.g[]{new cnx.b(cwb.pu, 24, 16, 30), new cnx.e(cwb.ow, 2, 3, 15)},
+                  5,
+                  new cnx.g[]{new cnx.b(cwb.mb, 8, 12, 30), new cnx.e(cwb.vX, 3, 3, 15), new cnx.k(cwb.ox, 5, cwb.vs, 5, 2, 12, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cnw.k,
+            a(
+               ImmutableMap.builder()
+                  .put(1, new cnx.g[]{new cnx.b(cwb.qP, 24, 16, 2), new cnx.d(1, axc.i), new cnx.i(dia.cl, 9, 1, 12, 1)})
+                  .put(2, new cnx.g[]{new cnx.b(cwb.qQ, 4, 12, 10), new cnx.d(5, axc.i), new cnx.i(cwb.wv, 1, 1, 5)})
+                  .put(3, new cnx.g[]{new cnx.b(cwb.rg, 5, 12, 20), new cnx.d(10, axc.i), new cnx.i(cwb.cG, 1, 4, 10)})
+                  .put(4, new cnx.g[]{new cnx.b(cwb.ua, 2, 12, 30), new cnx.d(15, axc.i), new cnx.i(cwb.qX, 5, 1, 15), new cnx.i(cwb.qT, 4, 1, 15)})
+                  .put(5, new cnx.g[]{new cnx.i(cwb.uN, 20, 1, 30)})
+                  .build()
+            )
+         );
+         $$0.put(
+            cnw.e,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{new cnx.b(cwb.qP, 24, 16, 2), new cnx.i(cwb.ul, 7, 1, 1)},
+                  2,
+                  new cnx.g[]{new cnx.b(cwb.fT, 11, 16, 10), new cnx.l(13, axl.d, "filled_map.monument", esu.j, 12, 5)},
+                  3,
+                  new cnx.g[]{
+                     new cnx.b(cwb.qT, 1, 12, 20),
+                     new cnx.l(14, axl.c, "filled_map.mansion", esu.i, 12, 10),
+                     new cnx.l(12, axl.m, "filled_map.trial_chambers", esu.I, 12, 10)
+                  },
+                  4,
+                  new cnx.g[]{
+                     new cnx.i(cwb.ue, 7, 1, 15),
+                     new cnx.i(cwb.uR, 3, 1, 15),
+                     new cnx.i(cwb.vc, 3, 1, 15),
+                     new cnx.i(cwb.uU, 3, 1, 15),
+                     new cnx.i(cwb.vf, 3, 1, 15),
+                     new cnx.i(cwb.uX, 3, 1, 15),
+                     new cnx.i(cwb.ve, 3, 1, 15),
+                     new cnx.i(cwb.uW, 3, 1, 15),
+                     new cnx.i(cwb.uY, 3, 1, 15),
+                     new cnx.i(cwb.vg, 3, 1, 15),
+                     new cnx.i(cwb.vb, 3, 1, 15),
+                     new cnx.i(cwb.uT, 3, 1, 15),
+                     new cnx.i(cwb.va, 3, 1, 15),
+                     new cnx.i(cwb.vd, 3, 1, 15),
+                     new cnx.i(cwb.uV, 3, 1, 15),
+                     new cnx.i(cwb.uS, 3, 1, 15),
+                     new cnx.i(cwb.uZ, 3, 1, 15)
+                  },
+                  5,
+                  new cnx.g[]{new cnx.i(cwb.we, 8, 1, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cnw.f,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{new cnx.b(cwb.sf, 32, 16, 2), new cnx.i(cwb.lH, 1, 2, 1)},
+                  2,
+                  new cnx.g[]{new cnx.b(cwb.oK, 3, 12, 10), new cnx.i(cwb.oC, 1, 1, 5)},
+                  3,
+                  new cnx.g[]{new cnx.b(cwb.uF, 2, 12, 20), new cnx.i(dia.ec, 4, 1, 12, 10)},
+                  4,
+                  new cnx.g[]{new cnx.b(cwb.oq, 4, 12, 30), new cnx.b(cwb.sl, 9, 12, 30), new cnx.i(cwb.sg, 5, 1, 15)},
+                  5,
+                  new cnx.g[]{new cnx.b(cwb.sk, 22, 12, 30), new cnx.i(cwb.tX, 3, 1, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cnw.c,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{
+                     new cnx.b(cwb.oy, 15, 16, 2),
+                     new cnx.i(new cvx(cwb.pJ), 7, 1, 12, 1, 0.2F),
+                     new cnx.i(new cvx(cwb.pK), 4, 1, 12, 1, 0.2F),
+                     new cnx.i(new cvx(cwb.pH), 5, 1, 12, 1, 0.2F),
+                     new cnx.i(new cvx(cwb.pI), 9, 1, 12, 1, 0.2F)
+                  },
+                  2,
+                  new cnx.g[]{
+                     new cnx.b(cwb.oG, 4, 12, 10),
+                     new cnx.i(new cvx(cwb.wu), 36, 1, 12, 5, 0.2F),
+                     new cnx.i(new cvx(cwb.pG), 1, 1, 12, 5, 0.2F),
+                     new cnx.i(new cvx(cwb.pF), 3, 1, 12, 5, 0.2F)
+                  },
+                  3,
+                  new cnx.g[]{
+                     new cnx.b(cwb.qB, 1, 12, 20),
+                     new cnx.b(cwb.oA, 1, 12, 20),
+                     new cnx.i(new cvx(cwb.pD), 1, 1, 12, 10, 0.2F),
+                     new cnx.i(new cvx(cwb.pE), 4, 1, 12, 10, 0.2F),
+                     new cnx.i(new cvx(cwb.vu), 5, 1, 12, 10, 0.2F)
+                  },
+                  4,
+                  new cnx.g[]{new cnx.e(cwb.pN, 14, 3, 15, 0.2F), new cnx.e(cwb.pO, 8, 3, 15, 0.2F)},
+                  5,
+                  new cnx.g[]{new cnx.e(cwb.pL, 8, 3, 30, 0.2F), new cnx.e(cwb.pM, 16, 3, 30, 0.2F)}
+               )
+            )
+         );
+         $$0.put(
+            cnw.p,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{new cnx.b(cwb.oy, 15, 16, 2), new cnx.i(new cvx(cwb.pf), 3, 1, 12, 1, 0.2F), new cnx.e(cwb.pc, 2, 3, 1)},
+                  2,
+                  new cnx.g[]{new cnx.b(cwb.oG, 4, 12, 10), new cnx.i(new cvx(cwb.wu), 36, 1, 12, 5, 0.2F)},
+                  3,
+                  new cnx.g[]{new cnx.b(cwb.pX, 24, 12, 20)},
+                  4,
+                  new cnx.g[]{new cnx.b(cwb.oA, 1, 12, 30), new cnx.e(cwb.pk, 12, 3, 15, 0.2F)},
+                  5,
+                  new cnx.g[]{new cnx.e(cwb.ph, 8, 3, 30, 0.2F)}
+               )
+            )
+         );
+         $$0.put(
+            cnw.o,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{
+                     new cnx.b(cwb.oy, 15, 16, 2),
+                     new cnx.i(new cvx(cwb.oV), 1, 1, 12, 1, 0.2F),
+                     new cnx.i(new cvx(cwb.oT), 1, 1, 12, 1, 0.2F),
+                     new cnx.i(new cvx(cwb.oU), 1, 1, 12, 1, 0.2F),
+                     new cnx.i(new cvx(cwb.oW), 1, 1, 12, 1, 0.2F)
+                  },
+                  2,
+                  new cnx.g[]{new cnx.b(cwb.oG, 4, 12, 10), new cnx.i(new cvx(cwb.wu), 36, 1, 12, 5, 0.2F)},
+                  3,
+                  new cnx.g[]{
+                     new cnx.b(cwb.pX, 30, 12, 20),
+                     new cnx.e(cwb.pf, 1, 3, 10, 0.2F),
+                     new cnx.e(cwb.pd, 2, 3, 10, 0.2F),
+                     new cnx.e(cwb.pe, 3, 3, 10, 0.2F),
+                     new cnx.i(new cvx(cwb.pl), 4, 1, 3, 10, 0.2F)
+                  },
+                  4,
+                  new cnx.g[]{new cnx.b(cwb.oA, 1, 12, 30), new cnx.e(cwb.pk, 12, 3, 15, 0.2F), new cnx.e(cwb.pi, 5, 3, 15, 0.2F)},
+                  5,
+                  new cnx.g[]{new cnx.e(cwb.pj, 13, 3, 30, 0.2F)}
+               )
+            )
+         );
+         $$0.put(
+            cnw.d,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{new cnx.b(cwb.sd, 14, 16, 2), new cnx.b(cwb.pY, 7, 16, 2), new cnx.b(cwb.uC, 4, 16, 2), new cnx.i(cwb.uE, 1, 1, 1)},
+                  2,
+                  new cnx.g[]{new cnx.b(cwb.oy, 15, 16, 2), new cnx.i(cwb.pZ, 1, 5, 16, 5), new cnx.i(cwb.se, 1, 8, 16, 5)},
+                  3,
+                  new cnx.g[]{new cnx.b(cwb.uP, 7, 16, 20), new cnx.b(cwb.sb, 10, 16, 20)},
+                  4,
+                  new cnx.g[]{new cnx.b(cwb.qO, 10, 12, 30)},
+                  5,
+                  new cnx.g[]{new cnx.b(cwb.wx, 10, 12, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cnw.j,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{new cnx.b(cwb.qE, 6, 16, 2), new cnx.a(cwb.pB, 3), new cnx.a(cwb.pA, 7)},
+                  2,
+                  new cnx.g[]{new cnx.b(cwb.pX, 26, 12, 10), new cnx.a(cwb.pz, 5, 12, 5), new cnx.a(cwb.pC, 4, 12, 5)},
+                  3,
+                  new cnx.g[]{new cnx.b(cwb.uG, 9, 12, 20), new cnx.a(cwb.pA, 7)},
+                  4,
+                  new cnx.g[]{new cnx.b(cwb.oq, 4, 12, 30), new cnx.a(cwb.uL, 6, 12, 15)},
+                  5,
+                  new cnx.g[]{new cnx.i(new cvx(cwb.nL), 6, 1, 12, 30, 0.2F), new cnx.a(cwb.pz, 5, 12, 30)}
+               )
+            )
+         );
+         $$0.put(
+            cnw.l,
+            a(
+               ImmutableMap.of(
+                  1,
+                  new cnx.g[]{new cnx.b(cwb.qN, 10, 16, 2), new cnx.i(cwb.qM, 1, 10, 16, 1)},
+                  2,
+                  new cnx.g[]{new cnx.b(dia.b, 20, 16, 10), new cnx.i(dia.eK, 1, 4, 16, 5)},
+                  3,
+                  new cnx.g[]{
+                     new cnx.b(dia.c, 16, 16, 20),
+                     new cnx.b(dia.g, 16, 16, 20),
+                     new cnx.b(dia.e, 16, 16, 20),
+                     new cnx.i(dia.su, 1, 4, 16, 10),
+                     new cnx.i(dia.h, 1, 4, 16, 10),
+                     new cnx.i(dia.f, 1, 4, 16, 10),
+                     new cnx.i(dia.d, 1, 4, 16, 10)
+                  },
+                  4,
+                  new cnx.g[]{
+                     new cnx.b(cwb.oD, 12, 12, 30),
+                     new cnx.i(dia.hk, 1, 1, 12, 15),
+                     new cnx.i(dia.hj, 1, 1, 12, 15),
+                     new cnx.i(dia.hu, 1, 1, 12, 15),
+                     new cnx.i(dia.hm, 1, 1, 12, 15),
+                     new cnx.i(dia.hq, 1, 1, 12, 15),
+                     new cnx.i(dia.hr, 1, 1, 12, 15),
+                     new cnx.i(dia.hy, 1, 1, 12, 15),
+                     new cnx.i(dia.hx, 1, 1, 12, 15),
+                     new cnx.i(dia.hp, 1, 1, 12, 15),
+                     new cnx.i(dia.hl, 1, 1, 12, 15),
+                     new cnx.i(dia.ho, 1, 1, 12, 15),
+                     new cnx.i(dia.hw, 1, 1, 12, 15),
+                     new cnx.i(dia.hs, 1, 1, 12, 15),
+                     new cnx.i(dia.ht, 1, 1, 12, 15),
+                     new cnx.i(dia.hn, 1, 1, 12, 15),
+                     new cnx.i(dia.hv, 1, 1, 12, 15),
+                     new cnx.i(dia.lh, 1, 1, 12, 15),
+                     new cnx.i(dia.lg, 1, 1, 12, 15),
+                     new cnx.i(dia.lr, 1, 1, 12, 15),
+                     new cnx.i(dia.lj, 1, 1, 12, 15),
+                     new cnx.i(dia.ln, 1, 1, 12, 15),
+                     new cnx.i(dia.lo, 1, 1, 12, 15),
+                     new cnx.i(dia.lv, 1, 1, 12, 15),
+                     new cnx.i(dia.lu, 1, 1, 12, 15),
+                     new cnx.i(dia.lm, 1, 1, 12, 15),
+                     new cnx.i(dia.li, 1, 1, 12, 15),
+                     new cnx.i(dia.ll, 1, 1, 12, 15),
+                     new cnx.i(dia.lt, 1, 1, 12, 15),
+                     new cnx.i(dia.lp, 1, 1, 12, 15),
+                     new cnx.i(dia.lq, 1, 1, 12, 15),
+                     new cnx.i(dia.lk, 1, 1, 12, 15),
+                     new cnx.i(dia.ls, 1, 1, 12, 15)
+                  },
+                  5,
+                  new cnx.g[]{new cnx.i(dia.hf, 1, 1, 12, 30), new cnx.i(dia.hd, 1, 1, 12, 30)}
+               )
+            )
+         );
       }
-
-      this.a(awq.N);
-      this.a(awq.i.b(awq.m));
-      this.a(awq.i.b(awq.n));
-      this.aF();
-      this.c(false);
-      this.a(Optional.of(jn.a(this.dS().ag(), this.ds())));
-   }
-
-   @Override
-   protected void eE() {
-      super.eE();
-      if (!this.dS().ac().b(def.d)) {
-         this.fZ();
-         this.h.k();
-      }
-   }
-
-   protected void fZ() {
-      for (int $$0 = 0; $$0 < this.h.b(); $$0++) {
-         cvs $$1 = this.h.a($$0);
-         if (!$$1.f() && dbp.a($$1, dbo.D)) {
-            this.h.b($$0);
+   );
+   public static final Int2ObjectMap<cnx.g[]> b = a(
+      ImmutableMap.of(
+         1,
+         new cnx.g[]{
+            new cnx.i(cwb.cT, 2, 1, 5, 1),
+            new cnx.i(cwb.qR, 4, 1, 5, 1),
+            new cnx.i(cwb.fu, 2, 1, 5, 1),
+            new cnx.i(cwb.vV, 5, 1, 5, 1),
+            new cnx.i(cwb.cO, 1, 1, 12, 1),
+            new cnx.i(cwb.dJ, 1, 1, 8, 1),
+            new cnx.i(cwb.fk, 1, 1, 4, 1),
+            new cnx.i(cwb.dK, 3, 1, 12, 1),
+            new cnx.i(cwb.eW, 3, 1, 8, 1),
+            new cnx.i(cwb.dk, 1, 1, 12, 1),
+            new cnx.i(cwb.dl, 1, 1, 12, 1),
+            new cnx.i(cwb.dm, 1, 1, 8, 1),
+            new cnx.i(cwb.dn, 1, 1, 12, 1),
+            new cnx.i(cwb.do, 1, 1, 12, 1),
+            new cnx.i(cwb.dp, 1, 1, 12, 1),
+            new cnx.i(cwb.dq, 1, 1, 12, 1),
+            new cnx.i(cwb.dr, 1, 1, 12, 1),
+            new cnx.i(cwb.ds, 1, 1, 12, 1),
+            new cnx.i(cwb.dt, 1, 1, 12, 1),
+            new cnx.i(cwb.du, 1, 1, 12, 1),
+            new cnx.i(cwb.dv, 1, 1, 7, 1),
+            new cnx.i(cwb.pw, 1, 1, 12, 1),
+            new cnx.i(cwb.vn, 1, 1, 12, 1),
+            new cnx.i(cwb.rZ, 1, 1, 12, 1),
+            new cnx.i(cwb.sa, 1, 1, 12, 1),
+            new cnx.i(cwb.aa, 5, 1, 8, 1),
+            new cnx.i(cwb.Y, 5, 1, 8, 1),
+            new cnx.i(cwb.ac, 5, 1, 8, 1),
+            new cnx.i(cwb.Z, 5, 1, 8, 1),
+            new cnx.i(cwb.W, 5, 1, 8, 1),
+            new cnx.i(cwb.X, 5, 1, 8, 1),
+            new cnx.i(cwb.ab, 5, 1, 8, 1),
+            new cnx.i(cwb.ad, 5, 1, 8, 1),
+            new cnx.i(cwb.rx, 1, 3, 12, 1),
+            new cnx.i(cwb.rj, 1, 3, 12, 1),
+            new cnx.i(cwb.ru, 1, 3, 12, 1),
+            new cnx.i(cwb.rp, 1, 3, 12, 1),
+            new cnx.i(cwb.ry, 1, 3, 12, 1),
+            new cnx.i(cwb.rw, 1, 3, 12, 1),
+            new cnx.i(cwb.rr, 1, 3, 12, 1),
+            new cnx.i(cwb.rl, 1, 3, 12, 1),
+            new cnx.i(cwb.rn, 1, 3, 12, 1),
+            new cnx.i(cwb.rq, 1, 3, 12, 1),
+            new cnx.i(cwb.rt, 1, 3, 12, 1),
+            new cnx.i(cwb.rm, 1, 3, 12, 1),
+            new cnx.i(cwb.ro, 1, 3, 12, 1),
+            new cnx.i(cwb.rk, 1, 3, 12, 1),
+            new cnx.i(cwb.rv, 1, 3, 12, 1),
+            new cnx.i(cwb.rs, 1, 3, 12, 1),
+            new cnx.i(cwb.kx, 3, 1, 8, 1),
+            new cnx.i(cwb.ky, 3, 1, 8, 1),
+            new cnx.i(cwb.kz, 3, 1, 8, 1),
+            new cnx.i(cwb.kA, 3, 1, 8, 1),
+            new cnx.i(cwb.kw, 3, 1, 8, 1),
+            new cnx.i(cwb.fV, 1, 1, 12, 1),
+            new cnx.i(cwb.dA, 1, 1, 12, 1),
+            new cnx.i(cwb.dB, 1, 1, 12, 1),
+            new cnx.i(cwb.gb, 1, 2, 5, 1),
+            new cnx.i(cwb.dQ, 1, 2, 5, 1),
+            new cnx.i(cwb.af, 1, 8, 8, 1),
+            new cnx.i(cwb.ai, 1, 4, 6, 1),
+            new cnx.i(cwb.xr, 1, 2, 5, 1),
+            new cnx.i(cwb.F, 1, 2, 5, 1),
+            new cnx.i(cwb.dN, 1, 2, 5, 1)
+         },
+         2,
+         new cnx.g[]{
+            new cnx.i(cwb.qJ, 5, 1, 4, 1),
+            new cnx.i(cwb.qG, 5, 1, 4, 1),
+            new cnx.i(cwb.hV, 3, 1, 6, 1),
+            new cnx.i(cwb.kV, 6, 1, 6, 1),
+            new cnx.i(cwb.pv, 1, 1, 8, 1),
+            new cnx.i(cwb.E, 3, 3, 6, 1)
          }
-      }
-   }
-
-   @Override
-   protected awf d(bsj $$0) {
-      return $$0.k().d().a();
-   }
-
-   @Override
-   protected awf o_() {
-      return awg.ul;
-   }
-
-   @Override
-   public void h(cvs $$0) {
-   }
-
-   @Nullable
-   public ckh a(cvs $$0, boolean $$1) {
-      return this.a($$0, false, $$1);
-   }
-
-   @Nullable
-   public ckh a(cvs $$0, boolean $$1, boolean $$2) {
-      if (!$$0.f() && this.dS().B) {
-         this.a(brr.a);
-      }
-
-      return null;
-   }
-
-   public float c(dus $$0) {
-      float $$1 = this.h.a($$0);
-      if ($$1 > 1.0F) {
-         $$1 += (float)this.h(bvu.t);
-      }
-
-      if (bsz.a(this)) {
-         $$1 *= 1.0F + (float)(bsz.b(this) + 1) * 0.2F;
-      }
-
-      if (this.b(bta.d)) {
-         float $$2 = switch (this.c(bta.d).e()) {
-            case 0 -> 0.3F;
-            case 1 -> 0.09F;
-            case 2 -> 0.0027F;
-            default -> 8.1E-4F;
-         };
-         $$1 *= $$2;
-      }
-
-      $$1 *= (float)this.h(bvu.f);
-      if (this.a(axb.a)) {
-         $$1 *= (float)this.g(bvu.C).g();
-      }
-
-      if (!this.aH()) {
-         $$1 /= 5.0F;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean d(dus $$0) {
-      return !$$0.C() || this.h.f().b($$0);
-   }
-
-   @Override
-   public void a(ug $$0) {
-      super.a($$0);
-      this.a_(this.cy.getId());
-      um $$1 = $$0.c("Inventory", 10);
-      this.h.b($$1);
-      this.h.j = $$0.h("SelectedItemSlot");
-      this.cv = $$0.g("SleepTimer");
-      this.co = $$0.j("XpP");
-      this.cm = $$0.h("XpLevel");
-      this.cn = $$0.h("XpTotal");
-      this.cp = $$0.h("XpSeed");
-      if (this.cp == 0) {
-         this.cp = this.af.f();
-      }
-
-      this.r($$0.h("Score"));
-      this.ca.a($$0);
-      this.cw.b($$0);
-      this.g(bvu.v).a((double)this.cw.b());
-      if ($$0.b("EnderItems", 9)) {
-         this.bX.a($$0.c("EnderItems", 10), this.dU());
-      }
-
-      if ($$0.b("ShoulderEntityLeft", 10)) {
-         this.i($$0.p("ShoulderEntityLeft"));
-      }
-
-      if ($$0.b("ShoulderEntityRight", 10)) {
-         this.j($$0.p("ShoulderEntityRight"));
-      }
-
-      if ($$0.b("LastDeathLocation", 10)) {
-         this.a(jn.b.parse(uu.a, $$0.c("LastDeathLocation")).resultOrPartial(b::error));
-      }
-
-      if ($$0.b("current_explosion_impact_pos", 9)) {
-         eyw.a.parse(uu.a, $$0.c("current_explosion_impact_pos")).resultOrPartial(b::error).ifPresent($$0x -> this.ct = $$0x);
-      }
-
-      this.cE = $$0.q("ignore_fall_damage_from_current_explosion");
-      this.cF = $$0.h("current_impulse_context_reset_grace_time");
-   }
-
-   @Override
-   public void b(ug $$0) {
-      super.b($$0);
-      uv.e($$0);
-      $$0.a("Inventory", this.h.a(new um()));
-      $$0.a("SelectedItemSlot", this.h.j);
-      $$0.a("SleepTimer", (short)this.cv);
-      $$0.a("XpP", this.co);
-      $$0.a("XpLevel", this.cm);
-      $$0.a("XpTotal", this.cn);
-      $$0.a("XpSeed", this.cp);
-      $$0.a("Score", this.fY());
-      this.ca.b($$0);
-      this.cw.a($$0);
-      $$0.a("EnderItems", this.bX.a(this.dU()));
-      if (!this.gu().g()) {
-         $$0.a("ShoulderEntityLeft", this.gu());
-      }
-
-      if (!this.gv().g()) {
-         $$0.a("ShoulderEntityRight", this.gv());
-      }
-
-      this.gC().flatMap($$0x -> jn.b.encodeStart(uu.a, $$0x).resultOrPartial(b::error)).ifPresent($$1 -> $$0.a("LastDeathLocation", $$1));
-      if (this.ct != null) {
-         $$0.a("current_explosion_impact_pos", (vd)eyw.a.encodeStart(uu.a, this.ct).getOrThrow());
-      }
-
-      $$0.a("ignore_fall_damage_from_current_explosion", this.cE);
-      $$0.a("current_impulse_context_reset_grace_time", this.cF);
-   }
-
-   @Override
-   public boolean b(bsj $$0) {
-      if (super.b($$0)) {
-         return true;
-      } else if ($$0.a(awx.n)) {
-         return !this.dS().ac().b(def.G);
-      } else if ($$0.a(awx.m)) {
-         return !this.dS().ac().b(def.H);
-      } else if ($$0.a(awx.i)) {
-         return !this.dS().ac().b(def.I);
-      } else {
-         return $$0.a(awx.o) ? !this.dS().ac().b(def.J) : false;
-      }
-   }
-
-   @Override
-   public boolean a(bsj $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else if (this.cw.a && !$$0.a(awx.d)) {
-         return false;
-      } else {
-         this.bb = 0;
-         if (this.eC()) {
-            return false;
-         } else {
-            if (!this.dS().B) {
-               this.gr();
-            }
-
-            if ($$0.g()) {
-               if (this.dS().am() == brp.a) {
-                  $$1 = 0.0F;
+      )
+   );
+   private static final cnx.l s = new cnx.l(8, axl.f, "filled_map.village_desert", esu.B, 12, 5);
+   private static final cnx.l t = new cnx.l(8, axl.e, "filled_map.village_savanna", esu.D, 12, 5);
+   private static final cnx.l u = new cnx.l(8, axl.g, "filled_map.village_plains", esu.C, 12, 5);
+   private static final cnx.l v = new cnx.l(8, axl.h, "filled_map.village_taiga", esu.F, 12, 5);
+   private static final cnx.l w = new cnx.l(8, axl.i, "filled_map.village_snowy", esu.E, 12, 5);
+   private static final cnx.l x = new cnx.l(8, axl.j, "filled_map.explorer_jungle", esu.G, 12, 5);
+   private static final cnx.l y = new cnx.l(8, axl.k, "filled_map.explorer_swamp", esu.H, 12, 5);
+   public static final Map<cnw, Int2ObjectMap<cnx.g[]>> c = Map.of(
+      cnw.k,
+      a(
+         ImmutableMap.builder()
+            .put(1, new cnx.g[]{new cnx.b(cwb.qP, 24, 16, 2), a(1), new cnx.i(dia.cl, 9, 1, 12, 1)})
+            .put(2, new cnx.g[]{new cnx.b(cwb.qQ, 4, 12, 10), a(5), new cnx.i(cwb.wv, 1, 1, 5)})
+            .put(3, new cnx.g[]{new cnx.b(cwb.rg, 5, 12, 20), a(10), new cnx.i(cwb.cG, 1, 4, 10)})
+            .put(4, new cnx.g[]{new cnx.b(cwb.ua, 2, 12, 30), new cnx.i(cwb.qX, 5, 1, 15), new cnx.i(cwb.qT, 4, 1, 15)})
+            .put(5, new cnx.g[]{a(), new cnx.i(cwb.uN, 20, 1, 30)})
+            .build()
+      ),
+      cnw.c,
+      a(
+         ImmutableMap.builder()
+            .put(1, new cnx.g[]{new cnx.b(cwb.oy, 15, 12, 2), new cnx.b(cwb.oG, 5, 12, 2)})
+            .put(
+               2,
+               new cnx.g[]{
+                  cnx.m.a(new cnx.i(cwb.pK, 4, 1, 12, 5, 0.05F), cny.a, cny.c, cny.d, cny.e, cny.g),
+                  cnx.m.a(new cnx.i(cwb.pG, 4, 1, 12, 5, 0.05F), cny.b, cny.f),
+                  cnx.m.a(new cnx.i(cwb.pH, 5, 1, 12, 5, 0.05F), cny.a, cny.c, cny.d, cny.e, cny.g),
+                  cnx.m.a(new cnx.i(cwb.pD, 5, 1, 12, 5, 0.05F), cny.b, cny.f),
+                  cnx.m.a(new cnx.i(cwb.pJ, 7, 1, 12, 5, 0.05F), cny.a, cny.c, cny.d, cny.e, cny.g),
+                  cnx.m.a(new cnx.i(cwb.pF, 7, 1, 12, 5, 0.05F), cny.b, cny.f),
+                  cnx.m.a(new cnx.i(cwb.pI, 9, 1, 12, 5, 0.05F), cny.a, cny.c, cny.d, cny.e, cny.g),
+                  cnx.m.a(new cnx.i(cwb.pE, 9, 1, 12, 5, 0.05F), cny.b, cny.f)
                }
-
-               if (this.dS().am() == brp.b) {
-                  $$1 = Math.min($$1 / 2.0F + 1.0F, $$1);
+            )
+            .put(3, new cnx.g[]{new cnx.b(cwb.qB, 1, 12, 20), new cnx.i(cwb.vu, 5, 1, 12, 10, 0.05F), new cnx.i(cwb.wu, 36, 1, 12, 10, 0.2F)})
+            .put(
+               4,
+               new cnx.g[]{
+                  cnx.m.a(new cnx.i(cwb.pK, 8, 1, 3, 15, 0.05F, dcz.a), cny.a),
+                  cnx.m.a(new cnx.i(cwb.pH, 9, 1, 3, 15, 0.05F, dcz.d), cny.a),
+                  cnx.m.a(new cnx.i(cwb.pJ, 11, 1, 3, 15, 0.05F, dcz.b), cny.a),
+                  cnx.m.a(new cnx.i(cwb.pI, 13, 1, 3, 15, 0.05F, dcz.c), cny.a),
+                  cnx.m.a(new cnx.i(cwb.pK, 8, 1, 3, 15, 0.05F, dcz.g), cny.c),
+                  cnx.m.a(new cnx.i(cwb.pH, 9, 1, 3, 15, 0.05F, dcz.j), cny.c),
+                  cnx.m.a(new cnx.i(cwb.pJ, 11, 1, 3, 15, 0.05F, dcz.h), cny.c),
+                  cnx.m.a(new cnx.i(cwb.pI, 13, 1, 3, 15, 0.05F, dcz.i), cny.c),
+                  cnx.m.a(new cnx.i(cwb.pK, 2, 1, 3, 15, 0.05F, dcz.m), cny.d),
+                  cnx.m.a(new cnx.i(cwb.pH, 3, 1, 3, 15, 0.05F, dcz.p), cny.d),
+                  cnx.m.a(new cnx.i(cwb.pJ, 5, 1, 3, 15, 0.05F, dcz.n), cny.d),
+                  cnx.m.a(new cnx.i(cwb.pI, 7, 1, 3, 15, 0.05F, dcz.o), cny.d),
+                  cnx.m.a(new cnx.i(cwb.pK, 8, 1, 3, 15, 0.05F, dcz.s), cny.e),
+                  cnx.m.a(new cnx.i(cwb.pH, 9, 1, 3, 15, 0.05F, dcz.t), cny.e),
+                  cnx.m.a(new cnx.i(cwb.pG, 8, 1, 3, 15, 0.05F, dcz.w), cny.b),
+                  cnx.m.a(new cnx.i(cwb.pD, 9, 1, 3, 15, 0.05F, dcz.z), cny.b),
+                  cnx.m.a(new cnx.i(cwb.pF, 11, 1, 3, 15, 0.05F, dcz.x), cny.b),
+                  cnx.m.a(new cnx.i(cwb.pE, 13, 1, 3, 15, 0.05F, dcz.y), cny.b),
+                  cnx.m.a(new cnx.i(cwb.pG, 8, 1, 3, 15, 0.05F, dcz.C), cny.f),
+                  cnx.m.a(new cnx.i(cwb.pD, 9, 1, 3, 15, 0.05F, dcz.F), cny.f),
+                  cnx.m.a(new cnx.i(cwb.pF, 11, 1, 3, 15, 0.05F, dcz.D), cny.f),
+                  cnx.m.a(new cnx.i(cwb.pE, 13, 1, 3, 15, 0.05F, dcz.E), cny.f),
+                  cnx.m.a(new cnx.h(cwb.pO, 1, 4, cwb.pN, 1, 3, 15, 0.05F), cny.g),
+                  cnx.m.a(new cnx.h(cwb.pN, 1, 4, cwb.pM, 1, 3, 15, 0.05F), cny.g),
+                  cnx.m.a(new cnx.h(cwb.pL, 1, 4, cwb.pO, 1, 3, 15, 0.05F), cny.g),
+                  cnx.m.a(new cnx.h(cwb.pM, 1, 2, cwb.pL, 1, 3, 15, 0.05F), cny.g)
                }
-
-               if (this.dS().am() == brp.d) {
-                  $$1 = $$1 * 3.0F / 2.0F;
+            )
+            .put(
+               5,
+               new cnx.g[]{
+                  cnx.m.a(new cnx.h(cwb.oA, 4, 16, cwb.pM, 1, 3, 30, 0.05F, dcz.f), cny.a),
+                  cnx.m.a(new cnx.h(cwb.oA, 3, 16, cwb.pN, 1, 3, 30, 0.05F, dcz.e), cny.a),
+                  cnx.m.a(new cnx.h(cwb.oA, 3, 16, cwb.pN, 1, 3, 30, 0.05F, dcz.l), cny.c),
+                  cnx.m.a(new cnx.h(cwb.oA, 2, 12, cwb.pO, 1, 3, 30, 0.05F, dcz.k), cny.c),
+                  cnx.m.a(new cnx.h(cwb.oA, 2, 6, cwb.pL, 1, 3, 30, 0.05F, dcz.r), cny.d),
+                  cnx.m.a(new cnx.h(cwb.oA, 3, 8, cwb.pM, 1, 3, 30, 0.05F, dcz.q), cny.d),
+                  cnx.m.a(new cnx.h(cwb.oA, 2, 12, cwb.pO, 1, 3, 30, 0.05F, dcz.u), cny.e),
+                  cnx.m.a(new cnx.h(cwb.oA, 3, 12, cwb.pL, 1, 3, 30, 0.05F, dcz.v), cny.e),
+                  cnx.m.a(new cnx.i(cwb.pD, 9, 1, 3, 30, 0.05F, dcz.B), cny.b),
+                  cnx.m.a(new cnx.i(cwb.pG, 8, 1, 3, 30, 0.05F, dcz.A), cny.b),
+                  cnx.m.a(new cnx.i(cwb.pD, 9, 1, 3, 30, 0.05F, dcz.H), cny.f),
+                  cnx.m.a(new cnx.i(cwb.pG, 8, 1, 3, 30, 0.05F, dcz.G), cny.f),
+                  cnx.m.a(new cnx.h(cwb.oA, 4, 18, cwb.pM, 1, 3, 30, 0.05F, dcz.J), cny.g),
+                  cnx.m.a(new cnx.h(cwb.oA, 3, 18, cwb.pN, 1, 3, 30, 0.05F, dcz.I), cny.g),
+                  cnx.m.a(new cnx.b(cwb.aN, 1, 12, 30, 42), cny.g),
+                  cnx.m.a(new cnx.b(cwb.aK, 1, 12, 30, 4), cny.a, cny.b, cny.c, cny.d, cny.e, cny.f)
                }
+            )
+            .build()
+      ),
+      cnw.e,
+      a(
+         ImmutableMap.of(
+            1,
+            new cnx.g[]{new cnx.b(cwb.qP, 24, 16, 2), new cnx.i(cwb.ul, 7, 1, 1)},
+            2,
+            new cnx.g[]{
+               new cnx.b(cwb.fT, 11, 16, 10),
+               new cnx.m(ImmutableMap.builder().put(cny.a, t).put(cny.d, u).put(cny.c, v).put(cny.g, w).put(cny.e, u).put(cny.b, t).put(cny.f, w).build()),
+               new cnx.m(ImmutableMap.builder().put(cny.a, u).put(cny.d, s).put(cny.c, t).put(cny.g, u).put(cny.e, v).put(cny.b, s).put(cny.f, v).build()),
+               new cnx.m(
+                  ImmutableMap.builder().put(cny.a, x).put(cny.d, x).put(cny.c, new cnx.f()).put(cny.g, y).put(cny.e, y).put(cny.b, y).put(cny.f, x).build()
+               )
+            },
+            3,
+            new cnx.g[]{
+               new cnx.b(cwb.qT, 1, 12, 20),
+               new cnx.l(13, axl.d, "filled_map.monument", esu.j, 12, 10),
+               new cnx.l(12, axl.m, "filled_map.trial_chambers", esu.I, 12, 10)
+            },
+            4,
+            new cnx.g[]{
+               new cnx.i(cwb.ue, 7, 1, 15),
+               new cnx.i(cwb.uR, 3, 1, 15),
+               new cnx.i(cwb.vc, 3, 1, 15),
+               new cnx.i(cwb.uU, 3, 1, 15),
+               new cnx.i(cwb.vf, 3, 1, 15),
+               new cnx.i(cwb.uX, 3, 1, 15),
+               new cnx.i(cwb.ve, 3, 1, 15),
+               new cnx.i(cwb.uW, 3, 1, 15),
+               new cnx.i(cwb.uY, 3, 1, 15),
+               new cnx.i(cwb.vg, 3, 1, 15),
+               new cnx.i(cwb.vb, 3, 1, 15),
+               new cnx.i(cwb.uT, 3, 1, 15),
+               new cnx.i(cwb.va, 3, 1, 15),
+               new cnx.i(cwb.vd, 3, 1, 15),
+               new cnx.i(cwb.uV, 3, 1, 15),
+               new cnx.i(cwb.uS, 3, 1, 15),
+               new cnx.i(cwb.uZ, 3, 1, 15)
+            },
+            5,
+            new cnx.g[]{new cnx.i(cwb.we, 8, 1, 30), new cnx.l(14, axl.c, "filled_map.mansion", esu.i, 1, 30)}
+         )
+      )
+   );
+   public static final List<Pair<cnx.g[], Integer>> d = ImmutableList.builder()
+      .add(
+         Pair.of(
+            new cnx.g[]{
+               new cnx.b(a(cxx.a), 1, 1, 1),
+               new cnx.b(cwb.qA, 1, 1, 1, 2),
+               new cnx.b(cwb.qF, 1, 1, 1, 2),
+               new cnx.b(cwb.so, 1, 1, 1, 3),
+               new cnx.b(cwb.uj, 4, 1, 1),
+               new cnx.b(cwb.hD, 1, 1, 1)
+            },
+            2
+         )
+      )
+      .add(
+         Pair.of(
+            new cnx.g[]{
+               new cnx.i(cwb.hV, 1, 1, 6, 1),
+               new cnx.i(cwb.kV, 6, 1, 6, 1),
+               new cnx.i(cwb.pv, 1, 4, 2, 1),
+               new cnx.i(cwb.E, 3, 3, 6, 1),
+               new cnx.i(dia.Y, 1, 8, 4, 1),
+               new cnx.i(dia.W, 1, 8, 4, 1),
+               new cnx.i(dia.aa, 1, 8, 4, 1),
+               new cnx.i(dia.X, 1, 8, 4, 1),
+               new cnx.i(dia.U, 1, 8, 4, 1),
+               new cnx.i(dia.V, 1, 8, 4, 1),
+               new cnx.i(dia.Z, 1, 8, 4, 1),
+               new cnx.e(cwb.pe, 1, 1, 1, 0.2F),
+               new cnx.i(b(cxx.h), 5, 1, 1, 1)
+            },
+            2
+         )
+      )
+      .add(
+         Pair.of(
+            new cnx.g[]{
+               new cnx.i(cwb.qJ, 3, 1, 4, 1),
+               new cnx.i(cwb.qG, 3, 1, 4, 1),
+               new cnx.i(cwb.cT, 2, 1, 5, 1),
+               new cnx.i(cwb.qR, 4, 1, 5, 1),
+               new cnx.i(cwb.fu, 2, 1, 5, 1),
+               new cnx.i(cwb.vV, 5, 1, 5, 1),
+               new cnx.i(cwb.cO, 1, 1, 12, 1),
+               new cnx.i(cwb.dJ, 1, 1, 8, 1),
+               new cnx.i(cwb.fk, 1, 1, 4, 1),
+               new cnx.i(cwb.dK, 3, 1, 12, 1),
+               new cnx.i(cwb.eW, 3, 1, 8, 1),
+               new cnx.i(cwb.dk, 1, 1, 12, 1),
+               new cnx.i(cwb.dl, 1, 1, 12, 1),
+               new cnx.i(cwb.dm, 1, 1, 8, 1),
+               new cnx.i(cwb.dn, 1, 1, 12, 1),
+               new cnx.i(cwb.do, 1, 1, 12, 1),
+               new cnx.i(cwb.dp, 1, 1, 12, 1),
+               new cnx.i(cwb.dq, 1, 1, 12, 1),
+               new cnx.i(cwb.dr, 1, 1, 12, 1),
+               new cnx.i(cwb.ds, 1, 1, 12, 1),
+               new cnx.i(cwb.dt, 1, 1, 12, 1),
+               new cnx.i(cwb.du, 1, 1, 12, 1),
+               new cnx.i(cwb.dv, 1, 1, 7, 1),
+               new cnx.i(cwb.pw, 1, 1, 12, 1),
+               new cnx.i(cwb.vn, 1, 1, 12, 1),
+               new cnx.i(cwb.rZ, 1, 1, 12, 1),
+               new cnx.i(cwb.sa, 1, 1, 12, 1),
+               new cnx.i(cwb.aa, 5, 1, 8, 1),
+               new cnx.i(cwb.Y, 5, 1, 8, 1),
+               new cnx.i(cwb.ac, 5, 1, 8, 1),
+               new cnx.i(cwb.Z, 5, 1, 8, 1),
+               new cnx.i(cwb.W, 5, 1, 8, 1),
+               new cnx.i(cwb.X, 5, 1, 8, 1),
+               new cnx.i(cwb.ab, 5, 1, 8, 1),
+               new cnx.i(cwb.ad, 5, 1, 8, 1),
+               new cnx.i(cwb.rx, 1, 3, 12, 1),
+               new cnx.i(cwb.rj, 1, 3, 12, 1),
+               new cnx.i(cwb.ru, 1, 3, 12, 1),
+               new cnx.i(cwb.rp, 1, 3, 12, 1),
+               new cnx.i(cwb.ry, 1, 3, 12, 1),
+               new cnx.i(cwb.rw, 1, 3, 12, 1),
+               new cnx.i(cwb.rr, 1, 3, 12, 1),
+               new cnx.i(cwb.rl, 1, 3, 12, 1),
+               new cnx.i(cwb.rn, 1, 3, 12, 1),
+               new cnx.i(cwb.rq, 1, 3, 12, 1),
+               new cnx.i(cwb.rt, 1, 3, 12, 1),
+               new cnx.i(cwb.rm, 1, 3, 12, 1),
+               new cnx.i(cwb.ro, 1, 3, 12, 1),
+               new cnx.i(cwb.rk, 1, 3, 12, 1),
+               new cnx.i(cwb.rv, 1, 3, 12, 1),
+               new cnx.i(cwb.rs, 1, 3, 12, 1),
+               new cnx.i(cwb.kx, 3, 1, 8, 1),
+               new cnx.i(cwb.ky, 3, 1, 8, 1),
+               new cnx.i(cwb.kz, 3, 1, 8, 1),
+               new cnx.i(cwb.kA, 3, 1, 8, 1),
+               new cnx.i(cwb.kw, 3, 1, 8, 1),
+               new cnx.i(cwb.fV, 1, 3, 4, 1),
+               new cnx.i(cwb.dA, 1, 3, 4, 1),
+               new cnx.i(cwb.dB, 1, 3, 4, 1),
+               new cnx.i(cwb.gb, 1, 5, 2, 1),
+               new cnx.i(cwb.dQ, 1, 2, 5, 1),
+               new cnx.i(cwb.af, 1, 8, 8, 1),
+               new cnx.i(cwb.ai, 1, 4, 6, 1),
+               new cnx.i(cwb.xr, 1, 2, 5, 1),
+               new cnx.i(cwb.F, 1, 2, 5, 1),
+               new cnx.i(cwb.dN, 1, 2, 5, 1)
+            },
+            5
+         )
+      )
+      .build();
+
+   private static cnx.g a(int $$0) {
+      return new cnx.m(
+         ImmutableMap.builder()
+            .put(cny.a, new cnx.d($$0, axc.w))
+            .put(cny.b, new cnx.d($$0, axc.x))
+            .put(cny.c, new cnx.d($$0, axc.y))
+            .put(cny.d, new cnx.d($$0, axc.z))
+            .put(cny.e, new cnx.d($$0, axc.A))
+            .put(cny.f, new cnx.d($$0, axc.B))
+            .put(cny.g, new cnx.d($$0, axc.C))
+            .build()
+      );
+   }
+
+   private static cnx.g a() {
+      return new cnx.m(
+         ImmutableMap.builder()
+            .put(cny.a, new cnx.d(30, 3, 3, axc.D))
+            .put(cny.b, new cnx.d(30, 2, 2, axc.E))
+            .put(cny.c, new cnx.d(30, 3, 3, axc.F))
+            .put(cny.d, new cnx.d(30, 3, 3, axc.G))
+            .put(cny.e, new cnx.d(30, axc.H))
+            .put(cny.f, new cnx.d(30, axc.I))
+            .put(cny.g, new cnx.d(30, 2, 2, axc.J))
+            .build()
+      );
+   }
+
+   private static Int2ObjectMap<cnx.g[]> a(ImmutableMap<Integer, cnx.g[]> $$0) {
+      return new Int2ObjectOpenHashMap($$0);
+   }
+
+   private static ddq a(jp<cxu> $$0) {
+      return new ddq(cwb.sm).a($$1 -> $$1.a(kt.P, new cxw($$0)));
+   }
+
+   private static cvx b(jp<cxu> $$0) {
+      return cxw.a(cwb.sm, $$0);
+   }
+
+   static class a implements cnx.g {
+      private final cvt a;
+      private final int b;
+      private final int c;
+      private final int d;
+
+      public a(cvt $$0, int $$1) {
+         this($$0, $$1, 12, 1);
+      }
+
+      public a(cvt $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         ddq $$2 = new ddq(cwb.oB, this.b);
+         cvx $$3 = new cvx(this.a);
+         if ($$3.a(axi.bM)) {
+            List<cuv> $$4 = Lists.newArrayList();
+            $$4.add(a($$1));
+            if ($$1.i() > 0.7F) {
+               $$4.add(a($$1));
             }
 
-            return $$1 == 0.0F ? false : super.a($$0, $$1);
-         }
-      }
-   }
-
-   @Override
-   protected void d(bun $$0) {
-      super.d($$0);
-      cvs $$1 = this.fD();
-      if ($$0.fQ() && $$1 != null) {
-         this.i($$1);
-      }
-   }
-
-   @Override
-   public boolean eu() {
-      return !this.ge().a && super.eu();
-   }
-
-   public boolean a(cnx $$0) {
-      fad $$1 = this.co();
-      fad $$2 = $$0.co();
-      if ($$1 == null) {
-         return true;
-      } else {
-         return !$$1.a($$2) ? true : $$1.h();
-      }
-   }
-
-   @Override
-   protected void b(bsj $$0, float $$1) {
-      this.a($$0, $$1, new btz[]{btz.c, btz.d, btz.e, btz.f});
-   }
-
-   @Override
-   protected void c(bsj $$0, float $$1) {
-      this.a($$0, $$1, new btz[]{btz.f});
-   }
-
-   @Override
-   protected void z(float $$0) {
-      if (this.bv.a(cvw.vu)) {
-         if (!this.dS().B) {
-            this.b(awq.c.b(this.bv.h()));
-         }
-
-         if ($$0 >= 3.0F) {
-            int $$1 = 1 + azf.d($$0);
-            brr $$2 = this.fw();
-            this.bv.a($$1, this, d($$2));
-            if (this.bv.f()) {
-               if ($$2 == brr.a) {
-                  this.a(btz.a, cvs.k);
-               } else {
-                  this.a(btz.b, cvs.k);
-               }
-
-               this.bv = cvs.k;
-               this.a(awg.wF, 0.8F, 0.8F + this.dS().z.i() * 0.4F);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void f(bsj $$0, float $$1) {
-      if (!this.b($$0)) {
-         $$1 = this.d($$0, $$1);
-         $$1 = this.e($$0, $$1);
-         float var7 = Math.max($$1 - this.fs(), 0.0F);
-         this.E(this.fs() - ($$1 - var7));
-         float $$3 = $$1 - var7;
-         if ($$3 > 0.0F && $$3 < 3.4028235E37F) {
-            this.a(awq.L, Math.round($$3 * 10.0F));
-         }
-
-         if (var7 != 0.0F) {
-            this.G($$0.a());
-            this.eO().a($$0, var7);
-            this.x(this.eB() - var7);
-            if (var7 < 3.4028235E37F) {
-               this.a(awq.J, Math.round(var7 * 10.0F));
+            if ($$1.i() > 0.8F) {
+               $$4.add(a($$1));
             }
 
-            this.a(dzp.o);
-         }
-      }
-   }
-
-   public boolean ab() {
-      return false;
-   }
-
-   public void a(dth $$0, boolean $$1) {
-   }
-
-   public void a(ddj $$0) {
-   }
-
-   public void a(dsf $$0) {
-   }
-
-   public void a(dtm $$0) {
-   }
-
-   public void a(dsx $$0) {
-   }
-
-   public void a(cih $$0, brl $$1) {
-   }
-
-   public OptionalInt a(@Nullable bru $$0) {
-      return OptionalInt.empty();
-   }
-
-   public void a(int $$0, ddh $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-   }
-
-   public void a(cvs $$0, brr $$1) {
-   }
-
-   public brs a(btr $$0, brr $$1) {
-      if (this.Q_()) {
-         if ($$0 instanceof bru) {
-            this.a((bru)$$0);
+            $$3 = cyj.a($$3, $$4);
          }
 
-         return brs.e;
-      } else {
-         cvs $$2 = this.b($$1);
-         cvs $$3 = $$2.u();
-         brs $$4 = $$0.a(this, $$1);
-         if ($$4.a()) {
-            if (this.cw.d && $$2 == this.b($$1) && $$2.K() < $$3.K()) {
-               $$2.e($$3.K());
-            }
+         return new dds($$2, $$3, this.c, this.d, 0.2F);
+      }
 
-            return $$4;
-         } else {
-            if (!$$2.f() && $$0 instanceof bun) {
-               if (this.cw.d) {
-                  $$2 = $$3;
-               }
-
-               brs $$5 = $$2.a(this, (bun)$$0, $$1);
-               if ($$5.a()) {
-                  this.dS().a(dzp.r, $$0.dq(), dzp.a.a(this));
-                  if ($$2.f() && !this.cw.d) {
-                     this.a($$1, cvs.k);
-                  }
-
-                  return $$5;
-               }
-            }
-
-            return brs.e;
-         }
+      private static cuv a(azr $$0) {
+         return cuv.a(cuu.a($$0.a(16)));
       }
    }
 
-   @Override
-   public void bN() {
-      super.bN();
-      this.K = 0;
-   }
+   static class b implements cnx.g {
+      private final ddq a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final float e;
 
-   @Override
-   protected boolean ff() {
-      return super.ff() || this.fN();
-   }
+      public b(deu $$0, int $$1, int $$2, int $$3) {
+         this($$0, $$1, $$2, $$3, 1);
+      }
 
-   @Override
-   public boolean eh() {
-      return !this.cw.b;
-   }
+      public b(deu $$0, int $$1, int $$2, int $$3, int $$4) {
+         this(new ddq($$0.j(), $$1), $$2, $$3, $$4);
+      }
 
-   @Override
-   protected eyw a(eyw $$0, bur $$1) {
-      float $$2 = this.dM();
-      if (!this.cw.b && !($$0.e > 0.0) && ($$1 == bur.a || $$1 == bur.b) && this.fV() && this.I($$2)) {
-         double $$3 = $$0.d;
-         double $$4 = $$0.f;
-         double $$5 = 0.05;
-         double $$6 = Math.signum($$3) * 0.05;
+      public b(ddq $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = 0.05F;
+      }
 
-         double $$7;
-         for ($$7 = Math.signum($$4) * 0.05; $$3 != 0.0 && this.b($$3, 0.0, $$2); $$3 -= $$6) {
-            if (Math.abs($$3) <= 0.05) {
-               $$3 = 0.0;
-               break;
-            }
-         }
-
-         while ($$4 != 0.0 && this.b(0.0, $$4, $$2)) {
-            if (Math.abs($$4) <= 0.05) {
-               $$4 = 0.0;
-               break;
-            }
-
-            $$4 -= $$7;
-         }
-
-         while ($$3 != 0.0 && $$4 != 0.0 && this.b($$3, $$4, $$2)) {
-            if (Math.abs($$3) <= 0.05) {
-               $$3 = 0.0;
-            } else {
-               $$3 -= $$6;
-            }
-
-            if (Math.abs($$4) <= 0.05) {
-               $$4 = 0.0;
-            } else {
-               $$4 -= $$7;
-            }
-         }
-
-         return new eyw($$3, $$0.e, $$4);
-      } else {
-         return $$0;
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         return new dds(this.a, new cvx(cwb.oB, this.d), this.b, this.c, this.e);
       }
    }
 
-   private boolean I(float $$0) {
-      return this.aH() || this.aa < $$0 && !this.b(0.0, 0.0, $$0 - this.aa);
-   }
-
-   private boolean b(double $$0, double $$1, float $$2) {
-      eyr $$3 = this.cO();
-      return this.dS().a(this, new eyr($$3.a + $$0, $$3.b - (double)$$2 - 1.0E-5F, $$3.c + $$1, $$3.d + $$0, $$3.b, $$3.f + $$1));
-   }
-
-   public void e(btr $$0) {
-      if ($$0.cy()) {
-         if (!$$0.v(this)) {
-            float $$1 = this.fr() ? this.bz : (float)this.h(bvu.c);
-            cvs $$2 = this.dW();
-            bsj $$3;
-            if ($$2.h() == cvw.ud && cwe.a(this)) {
-               $$3 = this.dT().f(this);
-            } else {
-               $$3 = this.dT().a(this);
-            }
-
-            float $$5 = this.a($$0, $$1, $$3) - $$1;
-            float $$6 = this.H(0.5F);
-            $$1 *= 0.2F + $$6 * $$6 * 0.8F;
-            $$5 *= $$6;
-            this.gx();
-            if ($$0.ao().a(awz.H) && $$0 instanceof cor $$7 && $$7.a(cos.c, this, this, true)) {
-               this.dS().a(null, this.dx(), this.dz(), this.dD(), awg.ue, this.di());
-               return;
-            }
-
-            if ($$1 > 0.0F || $$5 > 0.0F) {
-               boolean $$8 = $$6 > 0.9F;
-               boolean $$9;
-               if (this.cg() && $$8) {
-                  this.dS().a(null, this.dx(), this.dz(), this.dD(), awg.ud, this.di(), 1.0F, 1.0F);
-                  $$9 = true;
-               } else {
-                  $$9 = false;
-               }
-
-               $$1 += $$2.h().a($$0, $$1, $$3);
-               boolean $$11 = $$8
-                  && this.aa > 0.0F
-                  && !this.aH()
-                  && !this.q_()
-                  && !this.bi()
-                  && !this.b(bta.o)
-                  && !this.bW()
-                  && $$0 instanceof bun
-                  && !this.cg();
-               if ($$11) {
-                  $$1 *= 1.5F;
-               }
-
-               float $$12 = $$1 + $$5;
-               boolean $$13 = false;
-               if ($$8 && !$$11 && !$$9 && this.aH()) {
-                  double $$14 = this.ai().j();
-                  double $$15 = (double)this.fm() * 2.5;
-                  if ($$14 < azf.k($$15) && this.b(brr.a).a(axe.bv)) {
-                     $$13 = true;
-                  }
-               }
-
-               float $$16 = 0.0F;
-               if ($$0 instanceof bun $$17) {
-                  $$16 = $$17.eB();
-               }
-
-               eyw $$18 = $$0.dv();
-               boolean $$19 = $$0.a($$3, $$12);
-               if ($$19) {
-                  float $$20 = this.a($$0, $$3) + ($$9 ? 1.0F : 0.0F);
-                  if ($$20 > 0.0F) {
-                     if ($$0 instanceof bun $$21) {
-                        $$21.p(
-                           (double)($$20 * 0.5F), (double)azf.a(this.dI() * (float) (Math.PI / 180.0)), (double)(-azf.b(this.dI() * (float) (Math.PI / 180.0)))
-                        );
-                     } else {
-                        $$0.j(
-                           (double)(-azf.a(this.dI() * (float) (Math.PI / 180.0)) * $$20 * 0.5F),
-                           0.1,
-                           (double)(azf.b(this.dI() * (float) (Math.PI / 180.0)) * $$20 * 0.5F)
-                        );
-                     }
-
-                     this.h(this.dv().d(0.6, 1.0, 0.6));
-                     this.h(false);
-                  }
-
-                  if ($$13) {
-                     float $$22 = 1.0F + (float)this.h(bvu.D) * $$1;
-
-                     for (bun $$24 : this.dS().a(bun.class, $$0.cO().c(1.0, 0.25, 1.0))) {
-                        if ($$24 != this && $$24 != $$0 && !this.s($$24) && (!($$24 instanceof cjw) || !((cjw)$$24).A()) && this.g($$24) < 9.0) {
-                           float $$25 = this.a($$24, $$22, $$3) * $$6;
-                           $$24.p(0.4F, (double)azf.a(this.dI() * (float) (Math.PI / 180.0)), (double)(-azf.b(this.dI() * (float) (Math.PI / 180.0))));
-                           $$24.a($$3, $$25);
-                           if (this.dS() instanceof arj $$26) {
-                              dbp.a($$26, (btr)$$24, $$3);
-                           }
-                        }
-                     }
-
-                     this.dS().a(null, this.dx(), this.dz(), this.dD(), awg.ug, this.di(), 1.0F, 1.0F);
-                     this.ga();
-                  }
-
-                  if ($$0 instanceof ark && $$0.U) {
-                     ((ark)$$0).c.b(new afi($$0));
-                     $$0.U = false;
-                     $$0.h($$18);
-                  }
-
-                  if ($$11) {
-                     this.dS().a(null, this.dx(), this.dz(), this.dD(), awg.uc, this.di(), 1.0F, 1.0F);
-                     this.b($$0);
-                  }
-
-                  if (!$$11 && !$$13) {
-                     if ($$8) {
-                        this.dS().a(null, this.dx(), this.dz(), this.dD(), awg.uf, this.di(), 1.0F, 1.0F);
-                     } else {
-                        this.dS().a(null, this.dx(), this.dz(), this.dD(), awg.uh, this.di(), 1.0F, 1.0F);
-                     }
-                  }
-
-                  if ($$5 > 0.0F) {
-                     this.c($$0);
-                  }
-
-                  this.B($$0);
-                  btr $$27 = $$0;
-                  if ($$0 instanceof cix) {
-                     $$27 = ((cix)$$0).b;
-                  }
-
-                  boolean $$28 = false;
-                  if (this.dS() instanceof arj $$29) {
-                     if ($$27 instanceof bun $$30) {
-                        $$28 = $$2.a($$30, this);
-                     }
-
-                     dbp.a($$29, $$0, $$3);
-                  }
-
-                  if (!this.dS().B && !$$2.f() && $$27 instanceof bun) {
-                     if ($$28) {
-                        $$2.b((bun)$$27, this);
-                     }
-
-                     if ($$2.f()) {
-                        if ($$2 == this.eW()) {
-                           this.a(brr.a, cvs.k);
-                        } else {
-                           this.a(brr.b, cvs.k);
-                        }
-                     }
-                  }
-
-                  if ($$0 instanceof bun) {
-                     float $$31 = $$16 - ((bun)$$0).eB();
-                     this.a(awq.G, Math.round($$31 * 10.0F));
-                     if (this.dS() instanceof arj && $$31 > 2.0F) {
-                        int $$32 = (int)((double)$$31 * 0.5);
-                        ((arj)this.dS()).a(lo.g, $$0.dx(), $$0.e(0.5), $$0.dD(), $$32, 0.1, 0.0, 0.1, 0.2);
-                     }
-                  }
-
-                  this.G(0.1F);
-               } else {
-                  this.dS().a(null, this.dx(), this.dz(), this.dD(), awg.ue, this.di(), 1.0F, 1.0F);
-               }
-            }
-         }
-      }
-   }
-
-   protected float a(btr $$0, float $$1, bsj $$2) {
-      return $$1;
-   }
-
-   @Override
-   protected void g(bun $$0) {
-      this.e($$0);
-   }
-
-   public void i(cvs $$0) {
-      this.gy().a($$0, 100);
-      this.fB();
-      this.dS().a(this, (byte)30);
-   }
-
-   public void b(btr $$0) {
-   }
-
-   public void c(btr $$0) {
-   }
-
-   public void ga() {
-      double $$0 = (double)(-azf.a(this.dI() * (float) (Math.PI / 180.0)));
-      double $$1 = (double)azf.b(this.dI() * (float) (Math.PI / 180.0));
-      if (this.dS() instanceof arj) {
-         ((arj)this.dS()).a(lo.aj, this.dx() + $$0, this.e(0.5), this.dD() + $$1, 0, $$0, 0.0, $$1, 0.0);
-      }
-   }
-
-   public void gb() {
-   }
-
-   @Override
-   public void a(btr.c $$0) {
-      super.a($$0);
-      this.bY.a(this);
-      if (this.bZ != null && this.gf()) {
-         this.t();
-      }
-   }
-
-   public boolean g() {
-      return false;
-   }
-
-   public GameProfile gc() {
-      return this.cy;
-   }
-
-   public cnw gd() {
-      return this.h;
-   }
-
-   public cnu ge() {
-      return this.cw;
-   }
-
-   @Override
-   public boolean fR() {
-      return this.cw.d;
-   }
-
-   public void a(cvs $$0, cvs $$1, crj $$2) {
-   }
-
-   public boolean gf() {
-      return this.bZ != this.bY;
-   }
-
-   public Either<cnx.a, bak> a(jf $$0) {
-      this.b($$0);
-      this.cv = 0;
-      return Either.right(bak.a);
-   }
-
-   public void a(boolean $$0, boolean $$1) {
-      super.fO();
-      if (this.dS() instanceof arj && $$1) {
-         ((arj)this.dS()).e();
-      }
-
-      this.cv = $$0 ? 0 : 100;
-   }
-
-   @Override
-   public void fO() {
-      this.a(true, true);
-   }
-
-   public boolean gg() {
-      return this.fN() && this.cv >= 100;
-   }
-
-   public int gh() {
-      return this.cv;
-   }
-
-   public void a(xe $$0, boolean $$1) {
-   }
-
-   public void a(ale $$0) {
-      this.b(awq.i.b($$0));
-   }
-
-   public void a(ale $$0, int $$1) {
-      this.a(awq.i.b($$0), $$1);
-   }
-
-   public void b(awn<?> $$0) {
-      this.a($$0, 1);
-   }
-
-   public void a(awn<?> $$0, int $$1) {
-   }
-
-   public void a(awn<?> $$0) {
-   }
-
-   public int a(Collection<dam<?>> $$0) {
-      return 0;
-   }
-
-   public void a(dam<?> $$0, List<cvs> $$1) {
-   }
-
-   public void b(List<ale> $$0) {
-   }
-
-   public int b(Collection<dam<?>> $$0) {
-      return 0;
-   }
-
-   @Override
-   public void a_(eyw $$0) {
-      if (this.bW()) {
-         super.a_($$0);
-      } else {
-         if (this.ch()) {
-            double $$1 = this.bQ().e;
-            double $$2 = $$1 < -0.2 ? 0.085 : 0.06;
-            if ($$1 <= 0.0 || this.bj || !this.dS().b_(jf.a(this.dx(), this.dz() + 1.0 - 0.1, this.dD())).c()) {
-               eyw $$3 = this.dv();
-               this.h($$3.b(0.0, ($$1 - $$3.e) * $$2, 0.0));
-            }
-         }
-
-         if (this.ge().b) {
-            double $$4 = this.dv().e;
-            super.a_($$0);
-            this.h(this.dv().a(jk.a.b, $$4 * 0.6));
-         } else {
-            super.a_($$0);
-         }
-      }
-   }
-
-   @Override
-   protected boolean d(cvs $$0) {
-      return !this.cw.b && super.d($$0);
-   }
-
-   @Override
-   public void bo() {
-      if (this.cw.b) {
-         this.i(false);
-      } else {
-         super.bo();
-      }
-   }
-
-   protected boolean h(jf $$0) {
-      return !this.dS().a_($$0).j(this.dS(), $$0);
-   }
-
-   @Override
-   public float fm() {
-      return (float)this.h(bvu.v);
-   }
-
-   @Override
-   public boolean a(float $$0, float $$1, bsj $$2) {
-      if (this.cw.c) {
-         return false;
-      } else {
-         if ($$0 >= 2.0F) {
-            this.a(awq.t, (int)Math.round((double)$$0 * 100.0));
-         }
-
-         boolean $$3 = this.ct != null && this.cE;
-         float $$4;
-         if ($$3) {
-            $$4 = Math.min($$0, (float)(this.ct.e - this.dz()));
-            boolean $$5 = $$4 <= 0.0F;
-            if ($$5) {
-               this.gH();
-            } else {
-               this.gG();
-            }
-         } else {
-            $$4 = $$0;
-         }
-
-         if ($$4 > 0.0F && super.a($$4, $$1, $$2)) {
-            this.gH();
-            return true;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   public boolean gi() {
-      if (!this.aH() && !this.fF() && !this.bi() && !this.b(bta.y)) {
-         cvs $$0 = this.a(btz.e);
-         if ($$0.a(cvw.nU) && cuq.g($$0)) {
-            this.gj();
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public void gj() {
-      this.b(7, true);
-   }
-
-   public void gk() {
-      this.b(7, true);
-      this.b(7, false);
-   }
-
-   @Override
-   protected void br() {
-      if (!this.Q_()) {
-         super.br();
-      }
-   }
-
-   @Override
-   protected void b(jf $$0, dus $$1) {
-      if (this.bi()) {
-         this.aX();
-         this.b($$1);
-      } else {
-         jf $$2 = this.e($$0);
-         if (!$$0.equals($$2)) {
-            dus $$3 = this.dS().a_($$2);
-            if ($$3.a(awv.bp)) {
-               this.a($$3, $$1);
-            } else {
-               super.b($$2, $$3);
-            }
-         } else {
-            super.b($$0, $$1);
-         }
-      }
-   }
-
-   @Override
-   public bun.a eK() {
-      return new bun.a(awg.us, awg.ui);
-   }
-
-   @Override
-   public boolean a(arj $$0, bun $$1) {
-      this.b(awq.g.b($$1.ao()));
-      return true;
-   }
-
-   @Override
-   public void a(dus $$0, eyw $$1) {
-      if (!this.cw.b) {
-         super.a($$0, $$1);
-      }
-
-      this.gG();
-   }
-
-   public void d(int $$0) {
-      this.s($$0);
-      this.co = this.co + (float)$$0 / (float)this.gm();
-      this.cn = azf.a(this.cn + $$0, 0, Integer.MAX_VALUE);
-
-      while (this.co < 0.0F) {
-         float $$1 = this.co * (float)this.gm();
-         if (this.cm > 0) {
-            this.c(-1);
-            this.co = 1.0F + $$1 / (float)this.gm();
-         } else {
-            this.c(-1);
-            this.co = 0.0F;
-         }
-      }
-
-      while (this.co >= 1.0F) {
-         this.co = (this.co - 1.0F) * (float)this.gm();
-         this.c(1);
-         this.co = this.co / (float)this.gm();
-      }
-   }
-
-   public int gl() {
-      return this.cp;
-   }
-
-   public void a(cvs $$0, int $$1) {
-      this.cm -= $$1;
-      if (this.cm < 0) {
-         this.cm = 0;
-         this.co = 0.0F;
-         this.cn = 0;
-      }
-
-      this.cp = this.af.f();
-   }
-
-   public void c(int $$0) {
-      this.cm = IntMath.saturatedAdd(this.cm, $$0);
-      if (this.cm < 0) {
-         this.cm = 0;
-         this.co = 0.0F;
-         this.cn = 0;
-      }
-
-      if ($$0 > 0 && this.cm % 5 == 0 && (float)this.cx < (float)this.ag - 100.0F) {
-         float $$1 = this.cm > 30 ? 1.0F : (float)this.cm / 30.0F;
-         this.dS().a(null, this.dx(), this.dz(), this.dD(), awg.ur, this.di(), $$1 * 0.75F, 1.0F);
-         this.cx = this.ag;
-      }
-   }
-
-   public int gm() {
-      if (this.cm >= 30) {
-         return 112 + (this.cm - 30) * 9;
-      } else {
-         return this.cm >= 15 ? 37 + (this.cm - 15) * 5 : 7 + this.cm * 2;
-      }
-   }
-
-   public void G(float $$0) {
-      if (!this.cw.a) {
-         if (!this.dS().B) {
-            this.ca.a($$0);
-         }
-      }
-   }
-
-   public Optional<cnd> ad() {
-      return Optional.empty();
-   }
-
-   public cqv gn() {
-      return this.ca;
-   }
-
-   public boolean u(boolean $$0) {
-      return this.cw.a || $$0 || this.ca.c();
-   }
-
-   public boolean go() {
-      return this.eB() > 0.0F && this.eB() < this.eQ();
-   }
-
-   public boolean gp() {
-      return this.cw.e;
-   }
-
-   public boolean a(jf $$0, jk $$1, cvs $$2) {
-      if (this.cw.e) {
-         return true;
-      } else {
-         jf $$3 = $$0.a($$1.g());
-         duw $$4 = new duw(this.dS(), $$3, false);
-         return $$2.a($$4);
-      }
-   }
-
-   @Override
-   protected int el() {
-      return !this.dS().ac().b(def.d) && !this.Q_() ? Math.min(this.cm * 7, 100) : 0;
-   }
-
-   @Override
-   protected boolean em() {
-      return true;
-   }
-
-   @Override
-   public boolean cJ() {
-      return true;
-   }
-
-   @Override
-   protected btr.b bf() {
-      return this.cw.b || this.aH() && this.cd() ? btr.b.a : btr.b.d;
-   }
-
-   public void A() {
-   }
-
-   @Override
-   public xe aj() {
-      return xe.b(this.cy.getName());
-   }
-
-   public csn gq() {
-      return this.bX;
-   }
-
-   @Override
-   public cvs a(btz $$0) {
-      if ($$0 == btz.a) {
-         return this.h.f();
-      } else if ($$0 == btz.b) {
-         return this.h.i.getFirst();
-      } else {
-         return $$0.a() == btz.a.b ? this.h.h.get($$0.b()) : cvs.k;
-      }
-   }
-
-   @Override
-   protected boolean b(btz $$0) {
-      return $$0.a() == btz.a.b;
-   }
-
-   @Override
-   public void a(btz $$0, cvs $$1) {
-      this.c($$1);
-      if ($$0 == btz.a) {
-         this.a($$0, this.h.g.set(this.h.j, $$1), $$1);
-      } else if ($$0 == btz.b) {
-         this.a($$0, this.h.i.set(0, $$1), $$1);
-      } else if ($$0.a() == btz.a.b) {
-         this.a($$0, this.h.h.set($$0.b(), $$1), $$1);
-      }
-   }
-
-   public boolean j(cvs $$0) {
-      return this.h.f($$0);
-   }
-
-   @Override
-   public Iterable<cvs> eZ() {
-      return Lists.newArrayList(new cvs[]{this.eW(), this.eX()});
-   }
-
-   @Override
-   public Iterable<cvs> eY() {
-      return this.h.h;
-   }
-
-   @Override
-   public boolean e(btz $$0) {
-      return $$0 != btz.g;
-   }
-
-   public boolean h(ug $$0) {
-      if (this.bW() || !this.aH() || this.bi() || this.aw) {
-         return false;
-      } else if (this.gu().g()) {
-         this.i($$0);
-         this.g = this.dS().aa();
-         return true;
-      } else if (this.gv().g()) {
-         this.j($$0);
-         this.g = this.dS().aa();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void gr() {
-      if (this.g + 20L < this.dS().aa()) {
-         this.k(this.gu());
-         this.i(new ug());
-         this.k(this.gv());
-         this.j(new ug());
-      }
-   }
-
-   private void k(ug $$0) {
-      if (!this.dS().B && !$$0.g()) {
-         bty.a($$0, this.dS(), btx.r).ifPresent($$0x -> {
-            if ($$0x instanceof bvj) {
-               ((bvj)$$0x).b(this.au);
-            }
-
-            $$0x.a_(this.dx(), this.dz() + 0.7F, this.dD());
-            ((arj)this.dS()).c($$0x);
+   static class c implements cnx.g {
+      private final Map<cny, cvt> a;
+      private final int b;
+      private final int c;
+      private final int d;
+
+      public c(int $$0, int $$1, int $$2, Map<cny, cvt> $$3) {
+         lx.w.s().filter($$1x -> !$$3.containsKey($$1x)).findAny().ifPresent($$0x -> {
+            throw new IllegalStateException("Missing trade for villager type: " + lx.w.b($$0x));
          });
-      }
-   }
-
-   @Override
-   public abstract boolean Q_();
-
-   @Override
-   public boolean bD() {
-      return !this.Q_() && super.bD();
-   }
-
-   @Override
-   public boolean ch() {
-      return !this.cw.b && !this.Q_() && super.ch();
-   }
-
-   public abstract boolean f();
-
-   @Override
-   public boolean cG() {
-      return !this.cw.b;
-   }
-
-   public fab gs() {
-      return this.dS().O();
-   }
-
-   @Override
-   public xe R_() {
-      xs $$0 = ezw.a(this.co(), this.aj());
-      return this.a($$0);
-   }
-
-   private xs a(xs $$0) {
-      String $$1 = this.gc().getName();
-      return $$0.a($$1x -> $$1x.a(new xc(xc.a.d, "/tell " + $$1 + " ")).a(this.cN()).a($$1));
-   }
-
-   @Override
-   public String cF() {
-      return this.gc().getName();
-   }
-
-   @Override
-   protected void F(float $$0) {
-      this.at().a(e, $$0);
-   }
-
-   @Override
-   public float fs() {
-      return this.at().a(e);
-   }
-
-   public boolean a(cny $$0) {
-      return (this.at().a(bT) & $$0.a()) == $$0.a();
-   }
-
-   @Override
-   public bve a_(int $$0) {
-      if ($$0 == 499) {
-         return new bve() {
-            @Override
-            public cvs a() {
-               return cnx.this.bZ.g();
-            }
-
-            @Override
-            public boolean a(cvs $$0) {
-               cnx.this.bZ.b($$0);
-               return true;
-            }
-         };
-      } else {
-         final int $$1 = $$0 - 500;
-         if ($$1 >= 0 && $$1 < 4) {
-            return new bve() {
-               @Override
-               public cvs a() {
-                  return cnx.this.bY.r().a($$1);
-               }
-
-               @Override
-               public boolean a(cvs $$0) {
-                  cnx.this.bY.r().a($$1, $$0);
-                  cnx.this.bY.a(cnx.this.h);
-                  return true;
-               }
-            };
-         } else if ($$0 >= 0 && $$0 < this.h.g.size()) {
-            return bve.a(this.h, $$0);
-         } else {
-            int $$2 = $$0 - 200;
-            return $$2 >= 0 && $$2 < this.bX.b() ? bve.a(this.bX, $$2) : super.a_($$0);
-         }
-      }
-   }
-
-   public boolean gt() {
-      return this.cA;
-   }
-
-   public void v(boolean $$0) {
-      this.cA = $$0;
-   }
-
-   @Override
-   public void h(int $$0) {
-      super.h(this.cw.a ? Math.min($$0, 1) : $$0);
-   }
-
-   @Override
-   public buh fu() {
-      return this.am.a(bU) == 0 ? buh.a : buh.b;
-   }
-
-   public void b(buh $$0) {
-      this.am.a(bU, (byte)($$0 == buh.a ? 0 : 1));
-   }
-
-   public ug gu() {
-      return this.am.a(bV);
-   }
-
-   protected void i(ug $$0) {
-      this.am.a(bV, $$0);
-   }
-
-   public ug gv() {
-      return this.am.a(bW);
-   }
-
-   protected void j(ug $$0) {
-      this.am.a(bW, $$0);
-   }
-
-   public float gw() {
-      return (float)(1.0 / this.h(bvu.e) * 20.0);
-   }
-
-   public float H(float $$0) {
-      return azf.a(((float)this.aO + $$0) / this.gw(), 0.0F, 1.0F);
-   }
-
-   public void gx() {
-      this.aO = 0;
-   }
-
-   public cvo gy() {
-      return this.cC;
-   }
-
-   @Override
-   protected float aR() {
-      return !this.cw.b && !this.fF() ? super.aR() : 1.0F;
-   }
-
-   public float gz() {
-      return (float)this.h(bvu.q);
-   }
-
-   public boolean gA() {
-      return this.cw.d && this.H() >= 2;
-   }
-
-   @Override
-   public boolean e(cvs $$0) {
-      btz $$1 = this.g($$0);
-      return this.a($$1).f();
-   }
-
-   @Override
-   public btu e(buz $$0) {
-      return d.getOrDefault($$0, bS);
-   }
-
-   @Override
-   public ImmutableList<buz> fK() {
-      return ImmutableList.of(buz.a, buz.f, buz.d);
-   }
-
-   @Override
-   public cvs f(cvs $$0) {
-      if (!($$0.h() instanceof cwo)) {
-         return cvs.k;
-      } else {
-         Predicate<cvs> $$1 = ((cwo)$$0.h()).d();
-         cvs $$2 = cwo.a(this, $$1);
-         if (!$$2.f()) {
-            return $$2;
-         } else {
-            $$1 = ((cwo)$$0.h()).b();
-
-            for (int $$3 = 0; $$3 < this.h.b(); $$3++) {
-               cvs $$4 = this.h.a($$3);
-               if ($$1.test($$4)) {
-                  return $$4;
-               }
-            }
-
-            return this.cw.d ? new cvs(cvw.ox) : cvs.k;
-         }
-      }
-   }
-
-   @Override
-   public eyw u(float $$0) {
-      double $$1 = 0.22 * (this.fu() == buh.b ? -1.0 : 1.0);
-      float $$2 = azf.h($$0 * 0.5F, this.dK(), this.P) * (float) (Math.PI / 180.0);
-      float $$3 = azf.h($$0, this.aU, this.aT) * (float) (Math.PI / 180.0);
-      if (this.fF() || this.fr()) {
-         eyw $$4 = this.g($$0);
-         eyw $$5 = this.dv();
-         double $$6 = $$5.j();
-         double $$7 = $$4.j();
-         float $$10;
-         if ($$6 > 0.0 && $$7 > 0.0) {
-            double $$8 = ($$5.d * $$4.d + $$5.f * $$4.f) / Math.sqrt($$6 * $$7);
-            double $$9 = $$5.d * $$4.f - $$5.f * $$4.d;
-            $$10 = (float)(Math.signum($$9) * Math.acos($$8));
-         } else {
-            $$10 = 0.0F;
-         }
-
-         return this.o($$0).e(new eyw($$1, -0.11, 0.85).c(-$$10).a(-$$2).b(-$$3));
-      } else if (this.ci()) {
-         return this.o($$0).e(new eyw($$1, 0.2, -0.15).a(-$$2).b(-$$3));
-      } else {
-         double $$12 = this.cO().c() - 1.0;
-         double $$13 = this.cf() ? -0.2 : 0.07;
-         return this.o($$0).e(new eyw($$1, $$12, $$13).b(-$$3));
-      }
-   }
-
-   @Override
-   public boolean dR() {
-      return true;
-   }
-
-   public boolean gB() {
-      return this.fv() && this.fx().a(cvw.qY);
-   }
-
-   @Override
-   public boolean dQ() {
-      return false;
-   }
-
-   public Optional<jn> gC() {
-      return this.cD;
-   }
-
-   public void a(Optional<jn> $$0) {
-      this.cD = $$0;
-   }
-
-   @Override
-   public float eI() {
-      return this.cs;
-   }
-
-   @Override
-   public void p(float $$0) {
-      super.p($$0);
-      this.cs = $$0;
-   }
-
-   @Override
-   public boolean dL() {
-      return true;
-   }
-
-   @Override
-   protected float fl() {
-      if (this.cw.b && !this.bW()) {
-         return this.cg() ? this.cw.a() * 2.0F : this.cw.a();
-      } else {
-         return this.cg() ? 0.025999999F : 0.02F;
-      }
-   }
-
-   public double gD() {
-      return this.h(bvu.g);
-   }
-
-   public double gE() {
-      return this.h(bvu.j);
-   }
-
-   public boolean b(btr $$0, double $$1) {
-      return $$0.dN() ? false : this.a($$0.cO(), $$1);
-   }
-
-   public boolean a(eyr $$0, double $$1) {
-      double $$2 = this.gE() + $$1;
-      return $$0.e(this.bC()) < $$2 * $$2;
-   }
-
-   public boolean a(jf $$0, double $$1) {
-      double $$2 = this.gD() + $$1;
-      return new eyr($$0).e(this.bC()) < $$2 * $$2;
-   }
-
-   public void w(boolean $$0) {
-      this.cE = $$0;
-      if ($$0) {
-         this.cF = 40;
-      } else {
-         this.cF = 0;
-      }
-   }
-
-   public boolean gF() {
-      return this.cE;
-   }
-
-   public void gG() {
-      if (this.cF == 0) {
-         this.gH();
-      }
-   }
-
-   public void gH() {
-      this.cF = 0;
-      this.cu = null;
-      this.ct = null;
-      this.cE = false;
-   }
-
-   public boolean gI() {
-      return false;
-   }
-
-   public static enum a {
-      a,
-      b(xe.c("block.minecraft.bed.no_sleep")),
-      c(xe.c("block.minecraft.bed.too_far_away")),
-      d(xe.c("block.minecraft.bed.obstructed")),
-      e,
-      f(xe.c("block.minecraft.bed.not_safe"));
-
-      @Nullable
-      private final xe g;
-
-      private a() {
-         this.g = null;
-      }
-
-      private a(final xe $$0) {
-         this.g = $$0;
+         this.a = $$3;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
       @Nullable
-      public xe a() {
-         return this.g;
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         if ($$0 instanceof cnv $$2) {
+            ddq $$3 = new ddq(this.a.get($$2.gF().a()), this.b);
+            return new dds($$3, new cvx(cwb.oB), this.c, this.d, 0.05F);
+         } else {
+            return null;
+         }
+      }
+   }
+
+   static class d implements cnx.g {
+      private final int a;
+      private final axp<dbm> b;
+      private final int c;
+      private final int d;
+
+      public d(int $$0, axp<dbm> $$1) {
+         this($$0, 0, Integer.MAX_VALUE, $$1);
+      }
+
+      public d(int $$0, int $$1, int $$2, axp<dbm> $$3) {
+         this.c = $$1;
+         this.d = $$2;
+         this.a = $$0;
+         this.b = $$3;
+      }
+
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         Optional<jp<dbm>> $$2 = $$0.dX().H_().e(ly.aM).a(this.b, $$1);
+         int $$9;
+         cvx $$8;
+         if (!$$2.isEmpty()) {
+            jp<dbm> $$3 = $$2.get();
+            dbm $$4 = $$3.a();
+            int $$5 = Math.max($$4.d(), this.c);
+            int $$6 = Math.min($$4.e(), this.d);
+            int $$7 = azj.a($$1, $$5, $$6);
+            $$8 = dbo.a(new dbp($$3, $$7));
+            $$9 = 2 + $$1.a(5 + $$7 * 10) + 3 * $$7;
+            if ($$3.a(axc.j)) {
+               $$9 *= 2;
+            }
+
+            if ($$9 > 64) {
+               $$9 = 64;
+            }
+         } else {
+            $$9 = 1;
+            $$8 = new cvx(cwb.qQ);
+         }
+
+         return new dds(new ddq(cwb.oB, $$9), Optional.of(new ddq(cwb.qQ)), $$8, 12, this.a, 0.2F);
+      }
+   }
+
+   static class e implements cnx.g {
+      private final cvx a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final float e;
+
+      public e(cvt $$0, int $$1, int $$2, int $$3) {
+         this($$0, $$1, $$2, $$3, 0.05F);
+      }
+
+      public e(cvt $$0, int $$1, int $$2, int $$3, float $$4) {
+         this.a = new cvx($$0);
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         int $$2 = 5 + $$1.a(15);
+         kd $$3 = $$0.dX().H_();
+         Optional<jt.c<dbm>> $$4 = $$3.e(ly.aM).a(axc.m);
+         cvx $$5 = dbo.a($$1, new cvx(this.a.h()), $$2, $$3, $$4);
+         int $$6 = Math.min(this.b + $$2, 64);
+         ddq $$7 = new ddq(cwb.oB, $$6);
+         return new dds($$7, $$5, this.c, this.d, this.e);
+      }
+   }
+
+   static class f implements cnx.g {
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         return null;
+      }
+   }
+
+   public interface g {
+      @Nullable
+      dds a(btz var1, azr var2);
+   }
+
+   static class h implements cnx.g {
+      private final ddq a;
+      private final int b;
+      private final cvx c;
+      private final int d;
+      private final int e;
+      private final float f;
+      private final Optional<alg<dcu>> g;
+
+      public h(deu $$0, int $$1, int $$2, cvt $$3, int $$4, int $$5, int $$6, float $$7) {
+         this($$0, $$1, $$2, new cvx($$3), $$4, $$5, $$6, $$7);
+      }
+
+      private h(deu $$0, int $$1, int $$2, cvx $$3, int $$4, int $$5, int $$6, float $$7) {
+         this(new ddq($$0, $$1), $$2, $$3.c($$4), $$5, $$6, $$7, Optional.empty());
+      }
+
+      h(deu $$0, int $$1, int $$2, deu $$3, int $$4, int $$5, int $$6, float $$7, alg<dcu> $$8) {
+         this(new ddq($$0, $$1), $$2, new cvx($$3, $$4), $$5, $$6, $$7, Optional.of($$8));
+      }
+
+      public h(ddq $$0, int $$1, cvx $$2, int $$3, int $$4, float $$5, Optional<alg<dcu>> $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+      }
+
+      @Nullable
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         cvx $$2 = this.c.v();
+         dev $$3 = $$0.dX();
+         this.g.ifPresent($$4 -> dbo.a($$2, $$3.H_(), (alg<dcu>)$$4, $$3.d_($$0.dx()), $$1));
+         return new dds(new ddq(cwb.oB, this.b), Optional.of(this.a), $$2, 0, this.d, this.e, this.f);
+      }
+   }
+
+   static class i implements cnx.g {
+      private final cvx a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final float e;
+      private final Optional<alg<dcu>> f;
+
+      public i(dhy $$0, int $$1, int $$2, int $$3, int $$4) {
+         this(new cvx($$0), $$1, $$2, $$3, $$4);
+      }
+
+      public i(cvt $$0, int $$1, int $$2, int $$3) {
+         this(new cvx($$0), $$1, $$2, 12, $$3);
+      }
+
+      public i(cvt $$0, int $$1, int $$2, int $$3, int $$4) {
+         this(new cvx($$0), $$1, $$2, $$3, $$4);
+      }
+
+      public i(cvx $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, $$1, $$2, $$3, $$4, 0.05F);
+      }
+
+      public i(cvt $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+         this(new cvx($$0), $$1, $$2, $$3, $$4, $$5);
+      }
+
+      public i(cvt $$0, int $$1, int $$2, int $$3, int $$4, float $$5, alg<dcu> $$6) {
+         this(new cvx($$0), $$1, $$2, $$3, $$4, $$5, Optional.of($$6));
+      }
+
+      public i(cvx $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+         this($$0, $$1, $$2, $$3, $$4, $$5, Optional.empty());
+      }
+
+      public i(cvx $$0, int $$1, int $$2, int $$3, int $$4, float $$5, Optional<alg<dcu>> $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.a.e($$2);
+         this.c = $$3;
+         this.d = $$4;
+         this.e = $$5;
+         this.f = $$6;
+      }
+
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         cvx $$2 = this.a.v();
+         dev $$3 = $$0.dX();
+         this.f.ifPresent($$4 -> dbo.a($$2, $$3.H_(), (alg<dcu>)$$4, $$3.d_($$0.dx()), $$1));
+         return new dds(new ddq(cwb.oB, this.b), $$2, this.c, this.d, this.e);
+      }
+   }
+
+   static class j implements cnx.g {
+      private final cyw a;
+      private final int b;
+      private final float c;
+
+      public j(jp<btc> $$0, int $$1, int $$2) {
+         this(new cyw(List.of(new cyw.a($$0, $$1))), $$2, 0.05F);
+      }
+
+      public j(cyw $$0, int $$1, float $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Nullable
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         cvx $$2 = new cvx(cwb.vY, 1);
+         $$2.b(kt.Q, this.a);
+         return new dds(new ddq(cwb.oB), $$2, 12, this.b, this.c);
+      }
+   }
+
+   static class k implements cnx.g {
+      private final cvx a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final int e;
+      private final cvt f;
+      private final int g;
+      private final float h;
+
+      public k(cvt $$0, int $$1, cvt $$2, int $$3, int $$4, int $$5, int $$6) {
+         this.a = new cvx($$2);
+         this.c = $$4;
+         this.d = $$5;
+         this.e = $$6;
+         this.f = $$0;
+         this.g = $$1;
+         this.b = $$3;
+         this.h = 0.05F;
+      }
+
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         ddq $$2 = new ddq(cwb.oB, this.c);
+         List<jp<cxu>> $$3 = lx.h.c().filter($$1x -> !((cxu)$$1x.a()).a().isEmpty() && $$0.dX().K().a($$1x)).collect(Collectors.toList());
+         jp<cxu> $$4 = ad.a($$3, $$1);
+         cvx $$5 = new cvx(this.a.h(), this.b);
+         $$5.b(kt.P, new cxw($$4));
+         return new dds($$2, Optional.of(new ddq(this.f, this.g)), $$5, this.d, this.e, this.h);
+      }
+   }
+
+   static class l implements cnx.g {
+      private final int a;
+      private final axp<elr> b;
+      private final String c;
+      private final jp<est> d;
+      private final int e;
+      private final int f;
+
+      public l(int $$0, axp<elr> $$1, String $$2, jp<est> $$3, int $$4, int $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
+
+      @Nullable
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         if (!($$0.dX() instanceof arm)) {
+            return null;
+         } else {
+            arm $$2 = (arm)$$0.dX();
+            jg $$3 = $$2.a(this.b, $$0.dx(), 100, true);
+            if ($$3 != null) {
+               cvx $$4 = cwk.a($$2, $$3.u(), $$3.w(), (byte)2, true, true);
+               cwk.a($$2, $$4);
+               esy.a($$4, $$3, "+", this.d);
+               $$4.b(kt.h, xh.c(this.c));
+               return new dds(new ddq(cwb.oB, this.a), Optional.of(new ddq(cwb.qT)), $$4, this.e, this.f, 0.2F);
+            } else {
+               return null;
+            }
+         }
+      }
+   }
+
+   static record m(Map<cny, cnx.g> a) implements cnx.g {
+      public static cnx.m a(cnx.g $$0, cny... $$1) {
+         return new cnx.m(Arrays.stream($$1).collect(Collectors.toMap($$0x -> $$0x, $$1x -> $$0)));
+      }
+
+      @Nullable
+      @Override
+      public dds a(btz $$0, azr $$1) {
+         if ($$0 instanceof cnv $$2) {
+            cny $$3 = $$2.gF().a();
+            cnx.g $$4 = this.a.get($$3);
+            return $$4 == null ? null : $$4.a($$0, $$1);
+         } else {
+            return null;
+         }
       }
    }
 }

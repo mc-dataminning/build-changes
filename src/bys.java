@@ -1,29 +1,48 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bys {
-   public static bwg<bun> a(int $$0, BiPredicate<bun, bun> $$1) {
-      return bzs.a(
-         (Function<bzs.b<bun>, ? extends App<bzs.c<bun>, bzv<bun>>>)($$2 -> $$2.group($$2.b(cdq.o), $$2.a(cdq.ab), $$2.c(cdq.ai), $$2.a(cdq.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bun $$10 = $$2.b($$3);
-                     if (!$$10.eC()) {
+   public static bwp<bvd> a(cdz<jg> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, ezh::c);
+   }
+
+   public static bxz<bvd> b(cdz<? extends btz> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, btz::dv);
+   }
+
+   private static <T> bxz<bvd> a(cdz<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ezh> $$4) {
+      return cab.a(
+         (Function<cab.b<bvd>, ? extends App<cab.c<bvd>, cae<bvd>>>)($$5 -> $$5.group($$5.a(cdz.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cec> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     ezh $$11 = $$8.dv();
+                     ezh $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((jz)$$12, (double)$$2)) {
                         return false;
                      } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           ezh $$13 = $$10.get().a().a().d($$11);
+                           ezh $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
                         }
 
-                        $$5.a($$10.ds(), (long)$$0);
-                        if ($$10.ao() != bty.by || $$7.ac().b(def.N)) {
-                           $$3.b();
-                           $$4.b();
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           ezh $$16 = cft.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cec($$16, $$1, 0));
+                              break;
+                           }
                         }
 
                         return true;
                      }
-                  }))
+                  }
+               }))
       );
    }
 }

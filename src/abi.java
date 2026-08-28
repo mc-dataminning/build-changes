@@ -1,16 +1,46 @@
-public interface abi extends zr {
-   @Override
-   default vz b() {
-      return vz.e;
+public record abi(jg c, float d, float e, float f, float g, float h) implements aar {
+   public static final zf<we, abi> a = aar.a(abi::a, abi::new);
+   public static final aar.b<abi> b = aar.a("debug/worldgen_attempt");
+
+   private abi(we $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   void a(abj var1);
+   private void a(we $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+   }
 
-   void a(abk var1);
+   @Override
+   public aar.b<abi> a() {
+      return b;
+   }
 
-   void a(abn var1);
+   public jg b() {
+      return this.c;
+   }
 
-   void a(abm var1);
+   public float c() {
+      return this.d;
+   }
 
-   void a(abl var1);
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
 }

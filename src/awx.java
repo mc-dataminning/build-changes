@@ -1,40 +1,20 @@
-public interface awx {
-   axl<bsl> a = a("damages_helmet");
-   axl<bsl> b = a("bypasses_armor");
-   axl<bsl> c = a("bypasses_shield");
-   axl<bsl> d = a("bypasses_invulnerability");
-   axl<bsl> e = a("bypasses_cooldown");
-   axl<bsl> f = a("bypasses_effects");
-   axl<bsl> g = a("bypasses_resistance");
-   axl<bsl> h = a("bypasses_enchantments");
-   axl<bsl> i = a("is_fire");
-   axl<bsl> j = a("is_projectile");
-   axl<bsl> k = a("witch_resistant_to");
-   axl<bsl> l = a("is_explosion");
-   axl<bsl> m = a("is_fall");
-   axl<bsl> n = a("is_drowning");
-   axl<bsl> o = a("is_freezing");
-   axl<bsl> p = a("is_lightning");
-   axl<bsl> q = a("no_anger");
-   axl<bsl> r = a("no_impact");
-   axl<bsl> s = a("always_most_significant_fall");
-   axl<bsl> t = a("wither_immune_to");
-   axl<bsl> u = a("ignites_armor_stands");
-   axl<bsl> v = a("burns_armor_stands");
-   axl<bsl> w = a("avoids_guardian_thorns");
-   axl<bsl> x = a("always_triggers_silverfish");
-   axl<bsl> y = a("always_hurts_ender_dragons");
-   axl<bsl> z = a("no_knockback");
-   axl<bsl> A = a("always_kills_armor_stands");
-   axl<bsl> B = a("can_break_armor_stand");
-   axl<bsl> C = a("bypasses_wolf_armor");
-   axl<bsl> D = a("is_player_attack");
-   axl<bsl> E = a("burn_from_stepping");
-   axl<bsl> F = a("panic_causes");
-   axl<bsl> G = a("panic_environmental_causes");
-   axl<bsl> H = a("mace_smash");
+public class awx {
+   public static final axp<drw> a = a("no_item_required");
+   public static final axp<drw> b = a("pattern_item/flower");
+   public static final axp<drw> c = a("pattern_item/creeper");
+   public static final axp<drw> d = a("pattern_item/skull");
+   public static final axp<drw> e = a("pattern_item/mojang");
+   public static final axp<drw> f = a("pattern_item/globe");
+   public static final axp<drw> g = a("pattern_item/piglin");
+   public static final axp<drw> h = a("pattern_item/flow");
+   public static final axp<drw> i = a("pattern_item/guster");
+   public static final axp<drw> j = a("pattern_item/field_masoned");
+   public static final axp<drw> k = a("pattern_item/bordure_indented");
 
-   private static axl<bsl> a(String $$0) {
-      return axl.a(lw.s, ale.b($$0));
+   private awx() {
+   }
+
+   private static axp<drw> a(String $$0) {
+      return axp.a(ly.d, alh.b($$0));
    }
 }

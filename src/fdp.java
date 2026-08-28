@@ -1,142 +1,49 @@
-import java.util.function.Consumer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
 public class fdp {
-   public static fdm a() {
-      throw new IllegalArgumentException();
-   }
+   @Nullable
+   private static fdw a;
 
-   public static fdm a(fdm $$0) {
-      return $$0;
-   }
-
-   public static fdm a(fdm $$0, fdm $$1) {
-      return new fdp.a($$0, $$1);
-   }
-
-   public static fdm a(fdm... $$0) {
-      return new fdp.b($$0);
-   }
-
-   static class a implements fdm {
-      private final fdm a;
-      private final fdm b;
-
-      public a(fdm $$0, fdm $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
-
-      @Override
-      public fdm a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public fdm a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public fdm a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdm a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdm b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdm b(float $$0, float $$1, float $$2) {
-         this.a.b($$0, $$1, $$2);
-         this.b.b($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+   public static void a() {
+      if (a != null) {
+         b();
+         fdw.b();
       }
    }
 
-   static record b(fdm[] a) implements fdm {
-      b(fdm[] a) {
-         for (int $$1 = 0; $$1 < a.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
-               if (a[$$1] == a[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
-         }
+   public static void b() {
+      a = null;
+   }
 
-         this.a = a;
-      }
+   public static void a(fds $$0) {
+      RenderSystem.assertOnRenderThread();
+      fdw $$1 = c($$0);
+      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+   }
 
-      private void a(Consumer<fdm> $$0) {
-         for (fdm $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
+   public static void b(fds $$0) {
+      RenderSystem.assertOnRenderThread();
+      fdw $$1 = c($$0);
+      $$1.c();
+   }
 
-      @Override
-      public fdm a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
+   private static fdw c(fds $$0) {
+      fdw $$1 = a($$0.c().a());
+      $$1.a($$0);
+      return $$1;
+   }
 
-      @Override
-      public fdm a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
+   private static fdw a(fdy $$0) {
+      fdw $$1 = $$0.i();
+      a($$1);
+      return $$1;
+   }
 
-      @Override
-      public fdm a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fdm a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fdm b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fdm b(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.b($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+   private static void a(fdw $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
       }
    }
 }

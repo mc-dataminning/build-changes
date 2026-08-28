@@ -1,46 +1,19 @@
-import javax.annotation.Nullable;
+public interface ddx extends dea {
+   float a(jl var1, boolean var2);
 
-public enum ddx implements ddl {
-   a;
+   eqt z_();
 
-   @Override
-   public float a(jk $$0, boolean $$1) {
-      return 1.0F;
+   int a(jg var1, def var2);
+
+   default int a(dfe $$0, jg $$1) {
+      return this.z_().a($$0).b($$1);
    }
 
-   @Override
-   public eqi y_() {
-      return eqi.c;
+   default int b(jg $$0, int $$1) {
+      return this.z_().a($$0, $$1);
    }
 
-   @Override
-   public int a(jf $$0, ddt $$1) {
-      return -1;
-   }
-
-   @Nullable
-   @Override
-   public drv c_(jf $$0) {
-      return null;
-   }
-
-   @Override
-   public dus a_(jf $$0) {
-      return dho.a.n();
-   }
-
-   @Override
-   public eqt b_(jf $$0) {
-      return equ.a.g();
-   }
-
-   @Override
-   public int I_() {
-      return 0;
-   }
-
-   @Override
-   public int H_() {
-      return 0;
+   default boolean h(jg $$0) {
+      return this.a(dfe.a, $$0) >= 15;
    }
 }

@@ -1,8 +1,3 @@
-public interface ajz extends ajt, vv {
-   @Override
-   default vz b() {
-      return vz.c;
-   }
-
+public interface ajz extends wn {
    void a(aka var1);
 }

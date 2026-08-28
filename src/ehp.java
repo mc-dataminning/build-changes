@@ -1,50 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehp extends ehk {
-   public static final MapCodec<ehp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bqx.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, ehp::new)
-   );
-   private final bqx b;
-   private final int c;
+public class ehp extends ehv {
+   public static final MapCodec<ehp> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ehp::new));
 
-   public ehp(bqx $$0, bqx $$1, bqx $$2, int $$3) {
+   public ehp(brd $$0, brd $$1) {
       super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
    }
 
    @Override
-   protected ehl<?> a() {
-      return ehl.j;
+   protected ehw<?> a() {
+      return ehw.d;
    }
 
    @Override
-   protected void a(dep $$0, ehk.b $$1, azn $$2, egu $$3, int $$4, ehk.a $$5, int $$6, int $$7, int $$8) {
-      jf $$9 = $$5.a();
-      jf.a $$10 = $$9.k();
-
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
-      }
+   protected void a(dfb $$0, ehv.b $$1, azr $$2, ehf $$3, int $$4, ehv.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      jg $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
    }
 
    @Override
-   public int a(azn $$0, int $$1, egu $$2) {
-      return this.b.a($$0);
+   public int a(azr $$0, int $$1, ehf $$2) {
+      return 0;
    }
 
    @Override
-   protected boolean a(azn $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+   protected boolean a(azr $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

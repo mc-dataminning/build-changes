@@ -1,17 +1,37 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public abstract class bxz<E extends buv> implements bwp<E>, cae<E> {
+   private bwo.a a;
 
-public class bxz {
-   public static bwg<cnk> a() {
-      return bzs.a((Function<bzs.b<cnk>, ? extends App<bzs.c<cnk>, bzv<cnk>>>)($$0 -> $$0.group($$0.c(cdq.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               cnl $$3 = $$1.gy();
-               if ($$3.b() != cnn.b && $$3.b() != cnn.m && $$1.t() == 0 && $$3.c() <= 1) {
-                  $$1.a($$1.gy().a(cnn.b));
-                  $$1.a($$0xx);
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public bxz() {
+      this.a = bwo.a.a;
+   }
+
+   @Override
+   public final bwo.a a() {
+      return this.a;
+   }
+
+   @Override
+   public final boolean e(arm $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bwo.a.b;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public final void f(arm $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(arm $$0, E $$1, long $$2) {
+      this.a = bwo.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

@@ -1,25 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmr extends dhv {
+public class dmr extends dmh implements dib {
    public static final MapCodec<dmr> a = b(dmr::new);
-   protected static final ezq b = dhm.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
 
    @Override
    public MapCodec<dmr> a() {
       return a;
    }
 
-   public dmr(dur.d $$0) {
+   public dmr(dvc.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return b;
+   public boolean b(dey $$0, jg $$1, dvd $$2) {
+      return $$0.a_($$1.e()).l();
    }
 
    @Override
-   protected boolean b(dus $$0, ddo $$1, jf $$2) {
-      return $$0.a(awv.aM) || $$0.a(dho.dX) || super.b($$0, $$1, $$2);
+   public boolean a(dev $$0, azr $$1, jg $$2, dvd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arm $$0, azr $$1, jg $$2, dvd $$3) {
+      $$0.a($$2.e(), dms.c(), 2);
+   }
+
+   @Override
+   public jg a(jg $$0) {
+      return $$0.e();
    }
 }

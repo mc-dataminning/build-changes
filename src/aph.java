@@ -1,48 +1,61 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
 
 public class aph {
-   private static final yb a = yb.a.a(new xk(xk.a.a, xe.c("chat.type.team.hover"))).a(new xc(xc.a.d, "/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.teammsg.failed.noteam"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xh.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xh.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xh.c("commands.summon.invalidPosition"));
 
-   public static void a(CommandDispatcher<eu> $$0) {
-      LiteralCommandNode<eu> $$1 = $$0.register((LiteralArgumentBuilder)ev.a("teammsg").then(ev.a("message", fl.a()).executes($$0x -> {
-         eu $$1x = (eu)$$0x.getSource();
-         btr $$2 = $$1x.g();
-         ezw $$3 = $$2.co();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<ark> $$4 = $$1x.l().ag().t().stream().filter($$2x -> $$2x == $$2 || $$2x.co() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               fl.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
-
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)ev.a("tm").redirect($$1));
+   public static void a(CommandDispatcher<ev> $$0, er $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("summon").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)ew.a("entity", fu.a($$1, ly.z))
+                     .suggests(iv.d)
+                     .executes($$0x -> b((ev)$$0x.getSource(), fu.e($$0x, "entity"), ((ev)$$0x.getSource()).d(), new uj(), true)))
+                  .then(
+                     ((RequiredArgumentBuilder)ew.a("pos", gy.a())
+                           .executes($$0x -> b((ev)$$0x.getSource(), fu.e($$0x, "entity"), gy.a($$0x, "pos"), new uj(), true)))
+                        .then(ew.a("nbt", ff.a()).executes($$0x -> b((ev)$$0x.getSource(), fu.e($$0x, "entity"), gy.a($$0x, "pos"), ff.a($$0x, "nbt"), false)))
+                  )
+            )
+      );
    }
 
-   private static void a(eu $$0, btr $$1, ezw $$2, List<ark> $$3, xu $$4) {
-      xe $$5 = $$2.d().c(a);
-      xa.a $$6 = xa.a(xa.i, $$0).c($$5);
-      xa.a $$7 = xa.a(xa.j, $$0).c($$5);
-      xt $$8 = xt.a($$4);
-      boolean $$9 = false;
+   public static btz a(ev $$0, jp.c<bug<?>> $$1, ezh $$2, uj $$3, boolean $$4) throws CommandSyntaxException {
+      jg $$5 = jg.a((jz)$$2);
+      if (!dev.l($$5)) {
+         throw c.create();
+      } else {
+         uj $$6 = $$3.i();
+         $$6.a("id", $$1.h().a().toString());
+         arm $$7 = $$0.e();
+         btz $$8 = bug.a($$6, $$7, buf.n, $$1x -> {
+            $$1x.b($$2.d, $$2.e, $$2.f, $$1x.dN(), $$1x.dP());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
+         } else {
+            if ($$4 && $$8 instanceof bux) {
+               ((bux)$$8).a($$0.e(), $$0.e().d_($$8.dx()), buf.n, null);
+            }
 
-      for (ark $$10 : $$3) {
-         xa.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.j();
+            if (!$$7.e($$8)) {
+               throw b.create();
+            } else {
+               return $$8;
+            }
+         }
       }
+   }
 
-      if ($$9) {
-         $$0.a(avj.e);
-      }
+   private static int b(ev $$0, jp.c<bug<?>> $$1, ezh $$2, uj $$3, boolean $$4) throws CommandSyntaxException {
+      btz $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> xh.a("commands.summon.success", $$5.S_()), true);
+      return 1;
    }
 }

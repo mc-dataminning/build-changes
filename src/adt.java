@@ -1,69 +1,88 @@
-public class adt implements zl<aca> {
-   public static final zc<wp, adt> a = zl.a(adt::a, adt::new);
-   private final int b;
-   private final ddh c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public adt(int $$0, ddh $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public class adt {
+   private static final zf<ByteBuf, byte[]> a = zd.a(2048);
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final BitSet e;
+   private final List<byte[]> f;
+   private final List<byte[]> g;
+
+   public adt(deb $$0, eqt $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = new BitSet();
+      this.f = Lists.newArrayList();
+      this.g = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, dfe.a, $$4, this.b, this.d, this.f);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, dfe.b, $$4, this.c, this.e, this.g);
+         }
+      }
    }
 
-   private adt(wp $$0) {
-      this.b = $$0.x();
-      this.c = ddh.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
+   public adt(we $$0, int $$1, int $$2) {
+      this.b = $$0.w();
+      this.c = $$0.w();
+      this.d = $$0.w();
+      this.e = $$0.w();
+      this.f = $$0.a(a);
+      this.g = $$0.a(a);
    }
 
-   private void a(wp $$0) {
-      $$0.f(this.b);
-      ddh.b.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   public void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f, a);
+      $$0.a(this.g, a);
    }
 
-   @Override
-   public zn<adt> a() {
-      return agp.Q;
+   private void a(deb $$0, eqt $$1, dfe $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dxe $$7 = $$1.a($$2).a(ki.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public void a(aca $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
+   public BitSet a() {
       return this.b;
    }
 
-   public ddh e() {
-      return this.c;
-   }
-
-   public int f() {
+   public BitSet b() {
       return this.d;
    }
 
-   public int g() {
-      return this.e;
-   }
-
-   public boolean h() {
+   public List<byte[]> c() {
       return this.f;
    }
 
-   public boolean i() {
+   public BitSet d() {
+      return this.c;
+   }
+
+   public BitSet e() {
+      return this.e;
+   }
+
+   public List<byte[]> f() {
       return this.g;
    }
 }

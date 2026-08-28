@@ -1,32 +1,70 @@
-import com.mojang.serialization.MapCodec;
+public abstract class dgd {
+   public static final alg<dfw> a = a("the_void");
+   public static final alg<dfw> b = a("plains");
+   public static final alg<dfw> c = a("sunflower_plains");
+   public static final alg<dfw> d = a("snowy_plains");
+   public static final alg<dfw> e = a("ice_spikes");
+   public static final alg<dfw> f = a("desert");
+   public static final alg<dfw> g = a("swamp");
+   public static final alg<dfw> h = a("mangrove_swamp");
+   public static final alg<dfw> i = a("forest");
+   public static final alg<dfw> j = a("flower_forest");
+   public static final alg<dfw> k = a("birch_forest");
+   public static final alg<dfw> l = a("dark_forest");
+   public static final alg<dfw> m = a("old_growth_birch_forest");
+   public static final alg<dfw> n = a("old_growth_pine_taiga");
+   public static final alg<dfw> o = a("old_growth_spruce_taiga");
+   public static final alg<dfw> p = a("taiga");
+   public static final alg<dfw> q = a("snowy_taiga");
+   public static final alg<dfw> r = a("savanna");
+   public static final alg<dfw> s = a("savanna_plateau");
+   public static final alg<dfw> t = a("windswept_hills");
+   public static final alg<dfw> u = a("windswept_gravelly_hills");
+   public static final alg<dfw> v = a("windswept_forest");
+   public static final alg<dfw> w = a("windswept_savanna");
+   public static final alg<dfw> x = a("jungle");
+   public static final alg<dfw> y = a("sparse_jungle");
+   public static final alg<dfw> z = a("bamboo_jungle");
+   public static final alg<dfw> A = a("badlands");
+   public static final alg<dfw> B = a("eroded_badlands");
+   public static final alg<dfw> C = a("wooded_badlands");
+   public static final alg<dfw> D = a("meadow");
+   public static final alg<dfw> E = a("cherry_grove");
+   public static final alg<dfw> F = a("grove");
+   public static final alg<dfw> G = a("snowy_slopes");
+   public static final alg<dfw> H = a("frozen_peaks");
+   public static final alg<dfw> I = a("jagged_peaks");
+   public static final alg<dfw> J = a("stony_peaks");
+   public static final alg<dfw> K = a("river");
+   public static final alg<dfw> L = a("frozen_river");
+   public static final alg<dfw> M = a("beach");
+   public static final alg<dfw> N = a("snowy_beach");
+   public static final alg<dfw> O = a("stony_shore");
+   public static final alg<dfw> P = a("warm_ocean");
+   public static final alg<dfw> Q = a("lukewarm_ocean");
+   public static final alg<dfw> R = a("deep_lukewarm_ocean");
+   public static final alg<dfw> S = a("ocean");
+   public static final alg<dfw> T = a("deep_ocean");
+   public static final alg<dfw> U = a("cold_ocean");
+   public static final alg<dfw> V = a("deep_cold_ocean");
+   public static final alg<dfw> W = a("frozen_ocean");
+   public static final alg<dfw> X = a("deep_frozen_ocean");
+   public static final alg<dfw> Y = a("mushroom_fields");
+   public static final alg<dfw> Z = a("dripstone_caves");
+   public static final alg<dfw> aa = a("lush_caves");
+   public static final alg<dfw> ab = a("deep_dark");
+   public static final alg<dfw> ac = a("nether_wastes");
+   public static final alg<dfw> ad = a("warped_forest");
+   public static final alg<dfw> ae = a("crimson_forest");
+   public static final alg<dfw> af = a("soul_sand_valley");
+   public static final alg<dfw> ag = a("basalt_deltas");
+   public static final alg<dfw> ah = a("the_end");
+   public static final alg<dfw> ai = a("end_highlands");
+   public static final alg<dfw> aj = a("end_midlands");
+   public static final alg<dfw> ak = a("small_end_islands");
+   public static final alg<dfw> al = a("end_barrens");
 
-public abstract class dgd extends dgy {
-   private final cum a;
-
-   protected dgd(cum $$0, dur.d $$1) {
-      super($$1);
-      this.a = $$0;
-   }
-
-   @Override
-   protected abstract MapCodec<? extends dgd> a();
-
-   @Override
-   public boolean a(dus $$0) {
-      return true;
-   }
-
-   @Override
-   public drv a(jf $$0, dus $$1) {
-      return new drk($$0, $$1, this.a);
-   }
-
-   @Override
-   public cvs a(dem $$0, jf $$1, dus $$2) {
-      return $$0.c_($$1) instanceof drk $$3 ? $$3.c() : super.a($$0, $$1, $$2);
-   }
-
-   public cum b() {
-      return this.a;
+   private static alg<dfw> a(String $$0) {
+      return alg.a(ly.aG, alh.b($$0));
    }
 }

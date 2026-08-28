@@ -1,89 +1,51 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
 public class awj {
-   protected final Set<ale> a = Sets.newHashSet();
-   protected final Set<ale> b = Sets.newHashSet();
-   private final awk c = new awk();
+   public static final Codec<awj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(alh.a.fieldOf("sound_id").forGetter(awj::a), Codec.FLOAT.lenientOptionalFieldOf("range").forGetter(awj::b)).apply($$0, awj::a)
+   );
+   public static final Codec<jp<awj>> b = ald.a(ly.al, a);
+   public static final zf<ByteBuf, awj> c = zf.a(alh.b, awj::a, zd.j.a(zd::a), awj::b, awj::a);
+   public static final zf<ws, jp<awj>> d = zd.a(ly.al, c);
+   private static final float e = 16.0F;
+   private final alh f;
+   private final float g;
+   private final boolean h;
 
-   public void a(awj $$0) {
-      this.a.clear();
-      this.b.clear();
-      this.c.a($$0.c);
-      this.a.addAll($$0.a);
-      this.b.addAll($$0.b);
+   private static awj a(alh $$0, Optional<Float> $$1) {
+      return $$1.<awj>map($$1x -> a($$0, $$1x.floatValue())).orElseGet(() -> a($$0));
    }
 
-   public void a(dam<?> $$0) {
-      if (!$$0.b().aq_()) {
-         this.a($$0.a());
+   public static awj a(alh $$0) {
+      return new awj($$0, 16.0F, false);
+   }
+
+   public static awj a(alh $$0, float $$1) {
+      return new awj($$0, $$1, true);
+   }
+
+   private awj(alh $$0, float $$1, boolean $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   public alh a() {
+      return this.f;
+   }
+
+   public float a(float $$0) {
+      if (this.h) {
+         return this.g;
+      } else {
+         return $$0 > 1.0F ? 16.0F * $$0 : 16.0F;
       }
    }
 
-   protected void a(ale $$0) {
-      this.a.add($$0);
-   }
-
-   public boolean b(@Nullable dam<?> $$0) {
-      return $$0 == null ? false : this.a.contains($$0.a());
-   }
-
-   public boolean b(ale $$0) {
-      return this.a.contains($$0);
-   }
-
-   public void c(dam<?> $$0) {
-      this.c($$0.a());
-   }
-
-   protected void c(ale $$0) {
-      this.a.remove($$0);
-      this.b.remove($$0);
-   }
-
-   public boolean d(dam<?> $$0) {
-      return this.b.contains($$0.a());
-   }
-
-   public void e(dam<?> $$0) {
-      this.b.remove($$0.a());
-   }
-
-   public void f(dam<?> $$0) {
-      this.d($$0.a());
-   }
-
-   protected void d(ale $$0) {
-      this.b.add($$0);
-   }
-
-   public boolean a(csp $$0) {
-      return this.c.a($$0);
-   }
-
-   public void a(csp $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-   }
-
-   public boolean b(csp $$0) {
-      return this.c.b($$0);
-   }
-
-   public void b(csp $$0, boolean $$1) {
-      this.c.b($$0, $$1);
-   }
-
-   public void a(awk $$0) {
-      this.c.a($$0);
-   }
-
-   public awk a() {
-      return this.c.a();
-   }
-
-   public void a(csp $$0, boolean $$1, boolean $$2) {
-      this.c.a($$0, $$1);
-      this.c.b($$0, $$2);
+   private Optional<Float> b() {
+      return this.h ? Optional.of(this.g) : Optional.empty();
    }
 }

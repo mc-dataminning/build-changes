@@ -1,39 +1,52 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class yi implements xf {
-   public static final MapCodec<yi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, yi::new)
-   );
-   public static final xf.a<yi> b = new xf.a<>(a, "keybind");
-   private final String c;
-   @Nullable
-   private Supplier<xe> d;
+public record yi(String d, @Nullable gt e) implements yj {
+   public static final MapCodec<yi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(yi::b)).apply($$0, yi::new));
+   public static final yj.a<yi> b = new yj.a<>(a, "block");
 
    public yi(String $$0) {
-      this.c = $$0;
+      this($$0, a($$0));
    }
 
-   private xe c() {
-      if (this.d == null) {
-         this.d = yj.a.apply(this.c);
+   @Nullable
+   private static gt a(String $$0) {
+      try {
+         return gr.a().a(new StringReader($$0));
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
+   }
+
+   @Override
+   public Stream<uj> a(ev $$0) {
+      if (this.e != null) {
+         arm $$1 = $$0.e();
+         jg $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            dsg $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.b($$0.v()));
+            }
+         }
       }
 
-      return this.d.get();
+      return Stream.empty();
    }
 
    @Override
-   public <T> Optional<T> a(xj.a<T> $$0) {
-      return this.c().a($$0);
+   public yj.a<?> a() {
+      return b;
    }
 
    @Override
-   public <T> Optional<T> a(xj.b<T> $$0, yb $$1) {
-      return this.c().a($$0, $$1);
+   public String toString() {
+      return "block=" + this.d;
    }
 
    @Override
@@ -41,7 +54,7 @@ public class yi implements xf {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof yi $$1 && this.c.equals($$1.c)) {
+         if ($$0 instanceof yi $$1 && this.d.equals($$1.d)) {
             return true;
          }
 
@@ -51,20 +64,15 @@ public class yi implements xf {
 
    @Override
    public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.c + "}";
+      return this.d.hashCode();
    }
 
    public String b() {
-      return this.c;
+      return this.d;
    }
 
-   @Override
-   public xf.a<?> a() {
-      return b;
+   @Nullable
+   public gt c() {
+      return this.e;
    }
 }

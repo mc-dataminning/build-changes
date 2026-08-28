@@ -1,25 +1,38 @@
-import javax.annotation.Nullable;
+public class erz extends erq {
+   private float m = Float.MAX_VALUE;
+   private erq n;
+   private boolean o;
 
-public class erz implements esa {
-   private final dej b;
-
-   public erz(dej $$0) {
-      this.b = $$0;
+   public erz(erq $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   @Override
-   public void a(jk $$0, dus $$1, jf $$2, jf $$3, int $$4, int $$5) {
-      esa.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
+   public erz(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(jf $$0, dhm $$1, @Nullable esb $$2) {
-      dus $$3 = this.b.a_($$0);
-      this.a($$3, $$0, $$1, $$2, false);
+   public void a(float $$0, erq $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
+      }
    }
 
-   @Override
-   public void a(dus $$0, jf $$1, dhm $$2, @Nullable esb $$3, boolean $$4) {
-      esa.a(this.b, $$0, $$1, $$2, $$3, $$4);
+   public erq d() {
+      return this.n;
+   }
+
+   public void e() {
+      this.o = true;
+   }
+
+   public boolean f() {
+      return this.o;
+   }
+
+   public static erz c(we $$0) {
+      erz $$1 = new erz($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

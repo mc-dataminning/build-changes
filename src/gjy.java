@@ -1,51 +1,66 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class gjy {
-   private static final Map<drx<?>, gjx<?>> a = Maps.newHashMap();
+   private final gju a;
+   private final gjp b;
 
-   private static <T extends drv> void a(drx<? extends T> $$0, gjx<T> $$1) {
-      a.put($$0, $$1);
+   public gjy(gju $$0, gjp $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static Map<drx<?>, gjw<?>> a(gjx.a $$0) {
-      Builder<drx<?>, gjw<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + lv.j.b((drx<?>)$$2), var5);
+   public gjp a() {
+      return this.b;
+   }
+
+   public Predicate<dvd> a(dve<dhy, dvd> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   public static class a implements JsonDeserializer<gjy> {
+      public gjy a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new gjy(this.b($$3), (gjp)$$2.deserialize($$3.get("apply"), gjp.class));
+      }
+
+      private gju b(JsonObject $$0) {
+         return $$0.has("when") ? a(ayz.u($$0, "when")) : gju.b;
+      }
+
+      @VisibleForTesting
+      static gju a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gju> $$2 = Streams.stream(ayz.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gjx($$2);
+            } else if ($$0.has("AND")) {
+               List<gju> $$3 = Streams.stream(ayz.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gjt($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new gjt($$1.stream().map(gjy.a::a).collect(Collectors.toList()));
          }
-      });
-      return $$1.build();
-   }
+      }
 
-   static {
-      a(drx.h, gkk::new);
-      a(drx.i, gkg::new);
-      a(drx.j, gkm::new);
-      a(drx.k, gki::new);
-      a(drx.b, gkc::new);
-      a(drx.d, gkc::new);
-      a(drx.c, gkc::new);
-      a(drx.m, gkf::new);
-      a(drx.D, gkh::new);
-      a(drx.n, gkp::new);
-      a(drx.v, gko::new);
-      a(drx.o, gjs::new);
-      a(drx.p, gkl::new);
-      a(drx.t, gjr::new);
-      a(drx.u, gkn::new);
-      a(drx.x, gkj::new);
-      a(drx.y, gjt::new);
-      a(drx.z, gkd::new);
-      a(drx.E, gju::new);
-      a(drx.G, gkb::new);
-      a(drx.N, gka::new);
-      a(drx.O, gke::new);
-      a(drx.Q, gkq::new);
-      a(drx.R, gkr::new);
+      private static gju a(Entry<String, JsonElement> $$0) {
+         return new gjv($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

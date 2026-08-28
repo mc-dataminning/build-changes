@@ -1,37 +1,25 @@
-public class goy extends gnn<but, guu> {
-   private static final float a = 40.0F;
-   private static final int b = 50;
-   private final gom h;
+public class goy extends gny<ckk, guc> {
+   private static final alh a = alh.b("textures/entity/lead_knot.png");
+   private final fyq b;
 
-   protected goy(gno.a $$0) {
+   public goy(gnz.a $$0) {
       super($$0);
-      this.h = $$0.b();
+      this.b = new fyq($$0.a(gba.bb));
    }
 
-   public guu a() {
-      return new guu();
+   @Override
+   public void a(guc $$0, fdt $$1, ghw $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.b.a($$0);
+      fdx $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, gxj.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(but $$0, guu $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      cvs $$3 = $$0.o();
-      $$1.b = $$3.u();
-      $$1.a = !$$3.f() ? this.h.a($$3, $$0.dS(), null, 0) : null;
-   }
-
-   public void a(guu $$0, fdi $$1, ghl $$2, int $$3) {
-      gzi $$4 = $$0.a;
-      if ($$4 != null) {
-         $$1.a();
-         if ($$0.p <= 50.0F) {
-            float $$5 = Math.min($$0.p, 50.0F) / 50.0F;
-            $$1.b($$5, $$5, $$5);
-         }
-
-         float $$6 = azf.h($$0.p * 40.0F);
-         $$1.a(a.d.rotationDegrees($$6));
-         gok.a(this.h, $$1, $$2, 15728880, $$0.b, $$4, $$4.b(), azn.a());
-         $$1.b();
-      }
+   @Override
+   public guc b() {
+      return new guc();
    }
 }

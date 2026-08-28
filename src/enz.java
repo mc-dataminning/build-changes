@@ -1,45 +1,53 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+public class enz {
+   private static final alh[] a = new alh[]{
+      alh.b("nether_fossils/fossil_1"),
+      alh.b("nether_fossils/fossil_2"),
+      alh.b("nether_fossils/fossil_3"),
+      alh.b("nether_fossils/fossil_4"),
+      alh.b("nether_fossils/fossil_5"),
+      alh.b("nether_fossils/fossil_6"),
+      alh.b("nether_fossils/fossil_7"),
+      alh.b("nether_fossils/fossil_8"),
+      alh.b("nether_fossils/fossil_9"),
+      alh.b("nether_fossils/fossil_10"),
+      alh.b("nether_fossils/fossil_11"),
+      alh.b("nether_fossils/fossil_12"),
+      alh.b("nether_fossils/fossil_13"),
+      alh.b("nether_fossils/fossil_14")
+   };
 
-public class enz extends elg {
-   public static final MapCodec<enz> d = a(enz::new);
-
-   public enz(elg.c $$0) {
-      super($$0);
+   public static void a(epu $$0, elw $$1, azr $$2, jg $$3) {
+      dol $$4 = dol.a($$2);
+      $$1.a(new enz.a($$0, ad.a(a, $$2), $$3, $$4));
    }
 
-   @Override
-   public Optional<elg.b> a(elg.a $$0) {
-      return Optional.of(new elg.b($$0.h().l(), (Consumer<ely>)($$1 -> a($$1, $$0))));
-   }
+   public static class a extends emb {
+      public a(epu $$0, alh $$1, jg $$2, dol $$3) {
+         super(emi.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+      }
 
-   private static void a(ely $$0, elg.a $$1) {
-      int $$2 = 0;
+      public a(epu $$0, uj $$1) {
+         super(emi.ac, $$1, $$0, $$1x -> a(dol.valueOf($$1.l("Rot"))));
+      }
 
-      eny.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         eny.a();
-         $$3 = new eny.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<elk> $$4 = $$3.c;
+      private static epp a(dol $$0) {
+         return new epp().a($$0).a(dmu.a).a(eou.d);
+      }
 
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            elk $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
-         }
+      @Override
+      protected void a(emh $$0, uj $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
 
-         $$0.a($$1.b().f(), $$1.b().g(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
-   }
+      @Override
+      protected void a(String $$0, jg $$1, dfl $$2, azr $$3, elj $$4) {
+      }
 
-   @Override
-   public elp<?> e() {
-      return elp.n;
+      @Override
+      public void a(dfs $$0, dfq $$1, dxa $$2, azr $$3, elj $$4, deb $$5, jg $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

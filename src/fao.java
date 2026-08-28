@@ -1,73 +1,83 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public record fao<T>(T d, jf e, long f, fas g, long h) {
-   public static final Comparator<fao<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+public abstract class fao {
+   public boolean a(@Nullable fao $$0) {
+      return $$0 == null ? false : this == $$0;
+   }
+
+   public abstract String b();
+
+   public abstract xv d(xh var1);
+
+   public abstract boolean i();
+
+   public abstract boolean h();
+
+   public abstract fao.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract fao.b k();
+
+   public abstract fao.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, fao.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fao.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static fao.a a(String $$0) {
+         return g.get($$0);
       }
-   };
-   public static final Comparator<fao<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<fao<?>> c = new Strategy<fao<?>>() {
-      public int a(fao<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+
+      private a(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
 
-      public boolean a(@Nullable fao<?> $$0, @Nullable fao<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
+      public xh a() {
+         return xh.c("team.collision." + this.e);
       }
-   };
-
-   public fao(T $$0, jf $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, fas.d, $$3);
    }
 
-   public fao(T d, jf e, long f, fas g, long h) {
-      e = e.j();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
-   }
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   public static <T> fao<T> a(T $$0, jf $$1) {
-      return new fao<>($$0, $$1, 0L, fas.d, 0L);
-   }
+      private static final Map<String, fao.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fao.b)$$0));
+      public final String e;
+      public final int f;
 
-   public fan<T> a(long $$0) {
-      return new fan<>(this.d, this.e, (int)(this.f - $$0), this.g);
-   }
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
+      }
 
-   public T a() {
-      return this.d;
-   }
+      @Nullable
+      public static fao.b a(String $$0) {
+         return g.get($$0);
+      }
 
-   public jf b() {
-      return this.e;
-   }
+      private b(final String $$0, final int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
 
-   public long c() {
-      return this.f;
-   }
-
-   public fas d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+      public xh b() {
+         return xh.c("team.visibility." + this.e);
+      }
    }
 }

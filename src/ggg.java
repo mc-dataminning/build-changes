@@ -1,31 +1,42 @@
-public class ggg extends ggf {
-   private final fit i;
+public class ggg extends gfc {
+   private final btz a;
+   private int b;
+   private final int D;
+   private final lo E;
 
-   public ggg(fit $$0) {
-      this.i = $$0;
+   public ggg(gbx $$0, btz $$1, lo $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
-      }
+   public ggg(gbx $$0, btz $$1, lo $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dA());
+   }
+
+   private ggg(gbx $$0, btz $$1, lo $$2, int $$3, ezh $$4) {
+      super($$0, $$1.dC(), $$1.e(0.5), $$1.dI(), $$4.d, $$4.e, $$4.f);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
    @Override
-   public void a(boolean $$0, float $$1) {
-      this.c = this.i.v.e();
-      this.d = this.i.x.e();
-      this.e = this.i.w.e();
-      this.f = this.i.y.e();
-      this.b = a(this.c, this.d);
-      this.a = a(this.e, this.f);
-      this.g = this.i.z.e();
-      this.h = this.i.A.e();
-      if ($$0) {
-         this.a *= $$1;
-         this.b *= $$1;
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
+      }
+
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
       }
    }
 }

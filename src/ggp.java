@@ -1,125 +1,80 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ggp {
-   private static final ggp a = new ggp("") {
-      @Override
-      public void a(fip $$0) {
-      }
-
-      @Override
-      public void a(ggp.c $$0, String $$1, String $$2) {
-      }
-   };
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
+public abstract class ggp extends coh {
    @Nullable
-   private ggp.b e;
+   private gci i;
+   protected ezh b = ezh.c;
+   public float c;
+   public float d;
+   public float e;
+   public final gbx f;
+   public float g;
+   public float h;
 
-   ggp(String $$0) {
-      this.d = fip.Q().q.toPath().resolve($$0);
+   public ggp(gbx $$0, GameProfile $$1) {
+      super($$0, $$0.W(), $$0.X(), $$1);
+      this.f = $$0;
    }
 
-   public static ggp a(@Nullable String $$0) {
-      return $$0 == null ? a : new ggp($$0);
+   @Override
+   public boolean R_() {
+      gci $$0 = this.a();
+      return $$0 != null && $$0.e() == des.d;
    }
 
-   public void a(ggp.c $$0, String $$1, String $$2) {
-      this.e = new ggp.b($$0, $$1, $$2);
+   @Override
+   public boolean f() {
+      gci $$0 = this.a();
+      return $$0 != null && $$0.e() == des.b;
    }
 
-   public void a(fip $$0) {
-      if ($$0.r != null && this.e != null) {
-         ad.h().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
-            }
-
-            ggp.a $$2 = new ggp.a(this.e, Instant.now(), $$0.r.j());
-            Codec.list(ggp.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ad.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
-      } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+   @Nullable
+   protected gci a() {
+      if (this.i == null) {
+         this.i = fja.Q().L().a(this.cH());
       }
+
+      return this.i;
    }
 
-   static record a(ggp.b b, Instant c, deg d) {
-      public static final Codec<ggp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ggp.b.a.forGetter(ggp.a::a), ayo.p.fieldOf("lastPlayedTime").forGetter(ggp.a::b), deg.f.fieldOf("gamemode").forGetter(ggp.a::c))
-               .apply($$0, ggp.a::new)
-      );
-
-      public ggp.b a() {
-         return this.b;
-      }
-
-      public Instant b() {
-         return this.c;
-      }
-
-      public deg c() {
-         return this.d;
-      }
+   @Override
+   public void l() {
+      this.g = this.h;
+      this.b = this.dA();
+      super.l();
    }
 
-   static record b(ggp.c b, String c, String d) {
-      public static final MapCodec<ggp.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ggp.c.d.fieldOf("type").forGetter(ggp.b::a), ayo.r.fieldOf("id").forGetter(ggp.b::b), Codec.STRING.fieldOf("name").forGetter(ggp.b::c)
-               )
-               .apply($$0, ggp.b::new)
-      );
-
-      public ggp.c a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
-      }
+   public ezh I(float $$0) {
+      return this.b.a(this.dA(), (double)$$0);
    }
 
-   public static enum c implements bab {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
+   public gyt b() {
+      gci $$0 = this.a();
+      return $$0 == null ? gyk.a(this.cH()) : $$0.g();
+   }
 
-      static final Codec<ggp.c> d = bab.a(ggp.c::values);
-      private final String e;
-
-      private c(final String $$0) {
-         this.e = $$0;
+   public float a(boolean $$0, float $$1) {
+      float $$2 = 1.0F;
+      if (this.gl().b) {
+         $$2 *= 1.1F;
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      float $$3 = this.gl().b();
+      if ($$3 != 0.0F) {
+         float $$4 = (float)this.h(bwd.v) / $$3;
+         $$2 *= ($$4 + 1.0F) / 2.0F;
       }
+
+      if (this.fB()) {
+         if (this.fD().a(cwb.ow)) {
+            float $$5 = Math.min((float)this.fF() / 20.0F, 1.0F);
+            $$2 *= 1.0F - azj.l($$5) * 0.15F;
+         } else if ($$0 && this.gI()) {
+            return 0.1F;
+         }
+      }
+
+      return azj.h($$1, 1.0F, $$2);
    }
 }

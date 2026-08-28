@@ -1,50 +1,50 @@
-public abstract class frx<T extends csd> extends fqw<T> implements crn {
-   private final ale G;
+import java.util.List;
 
-   public frx(T $$0, cnw $$1, xe $$2, ale $$3) {
-      super($$0, $$1, $$2);
-      this.G = $$3;
+public class frx {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<alh> e = List.of();
+   private int f;
+   private int g;
+
+   public frx(int $$0) {
+      this.d = $$0;
    }
 
-   protected void F() {
+   public void a(List<alh> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
+
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
    }
 
-   @Override
-   protected void aS_() {
-      super.aS_();
-      this.F();
-      this.z.a(this);
+   public void a(crj $$0, fkm $$1, float $$2, int $$3, int $$4) {
+      ctg $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
    }
 
-   @Override
-   public void j() {
-      super.j();
-      this.z.b(this);
+   private void a(ctg $$0, alh $$1, float $$2, fkm $$3, int $$4, int $$5) {
+      gxs $$6 = fja.Q().a(gxr.d).apply($$1);
+      $$3.a(gig::B, $$6, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axu.a($$2));
    }
 
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   protected void d(fkb $$0, int $$1, int $$2, float $$3) {
-   }
-
-   @Override
-   protected void a(fkb $$0, float $$1, int $$2, int $$3) {
-      $$0.a(ghv::B, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      this.c($$0, this.C, this.D);
-   }
-
-   protected abstract void c(fkb var1, int var2, int var3);
-
-   @Override
-   public void a(cqz $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(cqz $$0, int $$1, cvs $$2) {
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

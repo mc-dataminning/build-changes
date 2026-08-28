@@ -1,268 +1,95 @@
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.google.gson.stream.JsonReader;
-import com.mojang.brigadier.Message;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.JsonOps;
-import java.io.StringReader;
-import java.lang.reflect.Type;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public interface xe extends Message, xj {
-   yb a();
+public record xe(String c, List<xe.a> d, ye e) {
+   public static final Codec<xe> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(xe::a),
+               xe.a.d.listOf().fieldOf("parameters").forGetter(xe::b),
+               ye.b.b.optionalFieldOf("style", ye.a).forGetter(xe::c)
+            )
+            .apply($$0, xe::new)
+   );
+   public static final zf<ws, xe> b = zf.a(zd.m, xe::a, xe.a.e.a(zd.a()), xe::b, ye.b.c, xe::c, xe::new);
 
-   xf b();
-
-   @Override
-   default String getString() {
-      return xj.super.getString();
+   public static xe a(String $$0) {
+      return new xe($$0, List.of(xe.a.a, xe.a.c), ye.a);
    }
 
-   default String a(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      this.a((xj.a)($$2 -> {
-         int $$3 = $$0 - $$1.length();
-         if ($$3 <= 0) {
-            return a;
-         } else {
-            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
-            return Optional.empty();
-         }
-      }));
-      return $$1.toString();
+   public static xe b(String $$0) {
+      ye $$1 = ye.a.a(n.h).b(true);
+      return new xe($$0, List.of(xe.a.a, xe.a.c), $$1);
    }
 
-   List<xe> c();
+   public static xe c(String $$0) {
+      ye $$1 = ye.a.a(n.h).b(true);
+      return new xe($$0, List.of(xe.a.b, xe.a.c), $$1);
+   }
 
-   @Nullable
-   default String d() {
-      if (this.b() instanceof yl $$0 && this.c().isEmpty() && this.a().g()) {
-         return $$0.b();
+   public static xe d(String $$0) {
+      return new xe($$0, List.of(xe.a.b, xe.a.a, xe.a.c), ye.a);
+   }
+
+   public xh a(xh $$0, xd.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return xh.a(this.c, $$2).c(this.e);
+   }
+
+   private xh[] b(xh $$0, xd.a $$1) {
+      xh[] $$2 = new xh[this.d.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         xe.a $$4 = this.d.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
 
-      return null;
+      return $$2;
    }
 
-   default xs e() {
-      return xs.a(this.b());
+   public String a() {
+      return this.c;
    }
 
-   default xs f() {
-      return new xs(this.b(), new ArrayList<>(this.c()), this.a());
+   public List<xe.a> b() {
+      return this.d;
    }
 
-   ayr g();
-
-   @Override
-   default <T> Optional<T> a(xj.b<T> $$0, yb $$1) {
-      yb $$2 = this.a().a($$1);
-      Optional<T> $$3 = this.b().a($$0, $$2);
-      if ($$3.isPresent()) {
-         return $$3;
-      } else {
-         for (xe $$4 : this.c()) {
-            Optional<T> $$5 = $$4.a($$0, $$2);
-            if ($$5.isPresent()) {
-               return $$5;
-            }
-         }
-
-         return Optional.empty();
-      }
+   public ye c() {
+      return this.e;
    }
 
-   @Override
-   default <T> Optional<T> a(xj.a<T> $$0) {
-      Optional<T> $$1 = this.b().a($$0);
-      if ($$1.isPresent()) {
-         return $$1;
-      } else {
-         for (xe $$2 : this.c()) {
-            Optional<T> $$3 = $$2.a($$0);
-            if ($$3.isPresent()) {
-               return $$3;
-            }
-         }
+   public static enum a implements baf {
+      a(0, "sender", ($$0, $$1) -> $$1.b()),
+      b(1, "target", ($$0, $$1) -> $$1.c().orElse(xg.a)),
+      c(2, "content", ($$0, $$1) -> $$0);
 
-         return Optional.empty();
-      }
-   }
+      private static final IntFunction<xe.a> f = aya.a($$0 -> $$0.g, values(), aya.a.a);
+      public static final Codec<xe.a> d = baf.a(xe.a::values);
+      public static final zf<ByteBuf, xe.a> e = zd.a(f, $$0 -> $$0.g);
+      private final int g;
+      private final String h;
+      private final xe.a.a i;
 
-   default List<xe> h() {
-      return this.a(yb.a);
-   }
-
-   default List<xe> a(yb $$0) {
-      List<xe> $$1 = Lists.newArrayList();
-      this.a(($$1x, $$2) -> {
-         if (!$$2.isEmpty()) {
-            $$1.add(b($$2).c($$1x));
-         }
-
-         return Optional.empty();
-      }, $$0);
-      return $$1;
-   }
-
-   default boolean a(xe $$0) {
-      if (this.equals($$0)) {
-         return true;
-      } else {
-         List<xe> $$1 = this.h();
-         List<xe> $$2 = $$0.a(this.a());
-         return Collections.indexOfSubList($$1, $$2) != -1;
-      }
-   }
-
-   static xe a(@Nullable String $$0) {
-      return (xe)($$0 != null ? b($$0) : xd.a);
-   }
-
-   static xs b(String $$0) {
-      return xs.a(yl.a($$0));
-   }
-
-   static xs c(String $$0) {
-      return xs.a(new yp($$0, null, yp.a));
-   }
-
-   static xs a(String $$0, Object... $$1) {
-      return xs.a(new yp($$0, null, $$1));
-   }
-
-   static xs b(String $$0, Object... $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         Object $$3 = $$1[$$2];
-         if (!yp.a($$3) && !($$3 instanceof xe)) {
-            $$1[$$2] = String.valueOf($$3);
-         }
+      private a(final int $$0, final String $$1, final xe.a.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      return a($$0, $$1);
-   }
-
-   static xs a(String $$0, @Nullable String $$1) {
-      return xs.a(new yp($$0, $$1, yp.a));
-   }
-
-   static xs a(String $$0, @Nullable String $$1, Object... $$2) {
-      return xs.a(new yp($$0, $$1, $$2));
-   }
-
-   static xs i() {
-      return xs.a(yl.c);
-   }
-
-   static xs d(String $$0) {
-      return xs.a(new yi($$0));
-   }
-
-   static xs a(String $$0, boolean $$1, Optional<xe> $$2, yg $$3) {
-      return xs.a(new yk($$0, $$1, $$2, $$3));
-   }
-
-   static xs a(hl $$0, String $$1) {
-      return xs.a(new ym(Either.left($$0), $$1));
-   }
-
-   static xs b(String $$0, String $$1) {
-      return xs.a(new ym(Either.right($$0), $$1));
-   }
-
-   static xs a(hl $$0, Optional<xe> $$1) {
-      return xs.a(new yn($$0, $$1));
-   }
-
-   static xe a(Date $$0) {
-      return b($$0.toString());
-   }
-
-   static xe a(Message $$0) {
-      return (xe)($$0 instanceof xe $$1 ? $$1 : b($$0.getString()));
-   }
-
-   static xe a(UUID $$0) {
-      return b($$0.toString());
-   }
-
-   static xe a(ale $$0) {
-      return b($$0.toString());
-   }
-
-   static xe a(ddp $$0) {
-      return b($$0.toString());
-   }
-
-   static xe a(URI $$0) {
-      return b($$0.toString());
-   }
-
-   public static class a {
-      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
-
-      private a() {
+      public xh a(xh $$0, xd.a $$1) {
+         return this.i.select($$0, $$1);
       }
 
-      static xs b(JsonElement $$0, jq.a $$1) {
-         return (xs)xg.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      @Override
+      public String c() {
+         return this.h;
       }
 
-      static JsonElement b(xe $$0, jq.a $$1) {
-         return (JsonElement)xg.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
-      }
-
-      public static String a(xe $$0, jq.a $$1) {
-         return a.toJson(b($$0, $$1));
-      }
-
-      @Nullable
-      public static xs a(String $$0, jq.a $$1) {
-         JsonElement $$2 = JsonParser.parseString($$0);
-         return $$2 == null ? null : b($$2, $$1);
-      }
-
-      @Nullable
-      public static xs a(@Nullable JsonElement $$0, jq.a $$1) {
-         return $$0 == null ? null : b($$0, $$1);
-      }
-
-      @Nullable
-      public static xs b(String $$0, jq.a $$1) {
-         JsonReader $$2 = new JsonReader(new StringReader($$0));
-         $$2.setLenient(true);
-         JsonElement $$3 = JsonParser.parseReader($$2);
-         return $$3 == null ? null : b($$3, $$1);
-      }
-   }
-
-   public static class b implements JsonDeserializer<xs>, JsonSerializer<xe> {
-      private final jq.a a;
-
-      public b(jq.a $$0) {
-         this.a = $$0;
-      }
-
-      public xs a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return xe.a.b($$0, this.a);
-      }
-
-      public JsonElement a(xe $$0, Type $$1, JsonSerializationContext $$2) {
-         return xe.a.b($$0, this.a);
+      public interface a {
+         xh select(xh var1, xd.a var2);
       }
    }
 }

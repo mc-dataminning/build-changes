@@ -1,98 +1,62 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.util.Date;
-import java.util.UUID;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class fgz extends hee {
+   private static final int a = 212;
+   private static final xh b = xh.c("mco.configure.world.name");
+   private static final xh c = xh.c("mco.configure.world.description");
+   private final fgi B;
+   private final ffa C;
+   private fli D;
+   private fli E;
 
-public class fgz {
-   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
+   public fgz(fgi $$0, ffa $$1) {
+      super(xh.c("mco.configure.world.settings.title"));
+      this.B = $$0;
+      this.C = $$1;
    }
 
-   @Nullable
-   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         return null;
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
-      }
+   @Override
+   public void aS_() {
+      int $$0 = this.n / 2 - 106;
+      String $$1 = this.C.e == ffa.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
+      fkz $$2 = fkz.a(xh.c($$1), $$0x -> {
+         if (this.C.e == ffa.c.b) {
+            this.m.a(fgu.a(this, xh.c("mco.configure.world.close.question.line1"), $$0xx -> this.B.b()));
+         } else {
+            this.B.b(false);
+         }
+      }).a(this.n / 2 - 53, g(0), 106, 20).a();
+      this.c($$2);
+      this.E = new fli(this.m.h, $$0, g(4), 212, 20, xh.c("mco.configure.world.name"));
+      this.E.f(32);
+      this.E.a(this.C.b());
+      this.c(this.E);
+      this.D = new fli(this.m.h, $$0, g(8), 212, 20, xh.c("mco.configure.world.description"));
+      this.D.f(32);
+      this.D.a(this.C.a());
+      this.c(this.D);
+      fkz $$3 = this.c(fkz.a(xh.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
+      this.E.b($$1x -> $$3.j = !bag.h($$1x));
+      this.c(fkz.a(xg.e, $$0x -> this.d()).a(this.n / 2 + 2, g(12), 106, 20).a());
    }
 
-   public static String a(String $$0, JsonObject $$1) {
-      String $$2 = b($$0, $$1, null);
-      if ($$2 == null) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else {
-         return $$2;
-      }
+   @Override
+   protected void aH_() {
+      this.b(this.E);
    }
 
-   public static String a(String $$0, JsonObject $$1, String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
-      }
+   @Override
+   public void d() {
+      this.m.a(this.B);
    }
 
-   @Nullable
-   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
-      }
+   @Override
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.a(this.p, b, this.n / 2 - 106, g(3), -1, false);
+      $$0.a(this.p, c, this.n / 2 - 106, g(7), -1, false);
    }
 
-   @Nullable
-   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
-      String $$3 = b($$0, $$1, null);
-      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
-   }
-
-   public static int a(String $$0, JsonObject $$1, int $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static long a(String $$0, JsonObject $$1, long $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static Date b(String $$0, JsonObject $$1) {
-      JsonElement $$2 = $$1.get($$0);
-      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
+   public void g() {
+      this.B.a(this.E.a(), this.D.a());
    }
 }

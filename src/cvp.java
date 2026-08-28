@@ -1,37 +1,15 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-
-public enum cvp implements bab {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
-
-   public static final Codec<cvp> j = bab.a(cvp::values);
-   public static final IntFunction<cvp> k = axw.a(cvp::a, values(), axw.a.a);
-   private final byte l;
-   private final String m;
-
-   private cvp(final int $$0, final String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+public class cvp extends cvt implements cxb {
+   public cvp(cvt.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.m;
-   }
-
-   public byte a() {
-      return this.l;
-   }
-
-   public boolean b() {
-      return this == d || this == e;
+   public boolean a(dev $$0, dts $$1, boolean $$2, coh $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.aC_(), awk.nk, awl.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,32 +1,48 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class eyg implements eyh<MinecraftServer> {
-   final ale a;
+public record eyg(alh b, fn.g c) implements eyd {
+   public static final MapCodec<eyg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alh.a.fieldOf("storage").forGetter(eyg::c), fn.g.a.fieldOf("path").forGetter(eyg::d)).apply($$0, eyg::new)
+   );
 
-   public eyg(ale $$0) {
-      this.a = $$0;
+   @Override
+   public eyc b() {
+      return eye.f;
    }
 
-   public void a(MinecraftServer $$0, eyj<MinecraftServer> $$1, long $$2) {
-      alt $$3 = $$0.aE();
+   private Optional<uz> c(etw $$0) {
+      uj $$1 = $$0.d().o().aK().a(this.b);
 
-      for (ii<eu> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
+      try {
+         List<vg> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof uz $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
       }
+
+      return Optional.empty();
    }
 
-   public static class a extends eyh.a<MinecraftServer, eyg> {
-      public a() {
-         super(ale.b("function_tag"), eyg.class);
-      }
+   @Override
+   public float b(etw $$0) {
+      return this.c($$0).map(uz::k).orElse(0.0F);
+   }
 
-      public void a(ug $$0, eyg $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public int a(etw $$0) {
+      return this.c($$0).map(uz::g).orElse(0);
+   }
 
-      public eyg a(ug $$0) {
-         ale $$1 = ale.a($$0.l("Name"));
-         return new eyg($$1);
-      }
+   public alh c() {
+      return this.b;
+   }
+
+   public fn.g d() {
+      return this.c;
    }
 }

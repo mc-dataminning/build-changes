@@ -1,36 +1,50 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class hbi extends hay {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cqf s;
+   private float t = 0.0F;
 
-public class hbi<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public hbi(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public hbi(cqf $$0) {
+      super(awk.oM, awl.g, hbp.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dC());
+      this.g = (double)((float)$$0.dE());
+      this.h = (double)((float)$$0.dI());
    }
 
-   protected T computeNext() {
-      boolean $$0 = !this.a.hasNext();
-      boolean $$1 = !this.b.hasNext();
-      if ($$0 && $$1) {
-         return (T)this.endOfData();
-      } else if ($$0) {
-         return (T)this.b.next();
-      } else if ($$1) {
-         return (T)this.a.next();
-      } else {
-         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$2 == 0) {
-            this.b.next();
-         }
+   @Override
+   public boolean s() {
+      return !this.s.bc();
+   }
 
-         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.s.dS()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dC());
+         this.g = (double)((float)this.s.dE());
+         this.h = (double)((float)this.s.dI());
+         float $$0 = (float)this.s.dA().i();
+         boolean $$1 = !this.s.cr() && this.s.m() instanceof cqt;
+         if ($$0 >= 0.01F && this.s.dX().s().i() && !$$1) {
+            this.t = azj.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = azj.h(azj.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
+         }
       }
    }
 }

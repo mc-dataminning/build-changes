@@ -1,46 +1,54 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ffe extends ffc {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
+public class ffe {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
    @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public ffe.a i = ffe.a.a;
+   private final String[] d;
 
-   public static ffe a(JsonObject $$0) {
-      ffe $$1 = new ffe();
-
-      try {
-         $$1.a = fgz.b("id", $$0, "");
-         $$1.b = fgz.b("name", $$0, "");
-         $$1.c = fgz.b("version", $$0, "");
-         $$1.d = fgz.b("author", $$0, "");
-         $$1.e = fgz.b("link", $$0, "");
-         $$1.f = fgz.b("image", $$0, null);
-         $$1.g = fgz.b("trailer", $$0, "");
-         $$1.h = fgz.b("recommendedPlayers", $$0, "");
-         $$1.i = ffe.a.valueOf(fgz.b("type", $$0, ffe.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
-      }
-
-      return $$1;
+   private ffe(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public xh a(xh $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public xh a() {
+      if (!gyz.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? xh.c(this.c) : xh.a(this.c, this.d);
+      }
+   }
+
+   public static ffe a(JsonObject $$0) {
+      String $$1 = fhk.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
+      }
+
+      return new ffe($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

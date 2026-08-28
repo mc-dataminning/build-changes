@@ -1,25 +1,16 @@
-public record adb(long[] b, bms c) implements zl<aca> {
-   public static final zc<wb, adb> a = zl.a(adb::a, adb::new);
-
-   private adb(wb $$0) {
-      this($$0.d(), $$0.b(bms.class));
-   }
-
-   private void a(wb $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record adb(alh b, int c) implements zo<acd> {
+   public static final zf<ws, adb> a = zf.a(alh.b, adb::b, zd.h, adb::e, adb::new);
 
    @Override
-   public zn<adb> a() {
-      return agp.A;
+   public zq<adb> a() {
+      return ags.x;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public bms e() {
+   public int e() {
       return this.c;
    }
 }

@@ -1,59 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class cpt {
-   private final List<cpq> a = Lists.newArrayList();
-   private int b;
+public class cpt extends cpr {
+   private static final deo g = new dfn(true, false, Optional.of(1.22F), lx.e.a(awz.cA).map(Function.identity()));
+   private static final float h = 1.2F;
+   private static final float i = azj.l(3.5F);
+   private int j = 5;
 
-   public ImmutableList<cpq> a() {
-      return ImmutableList.copyOf(this.a);
+   public cpt(bug<? extends cpr> $$0, dev $$1) {
+      super($$0, $$1);
    }
 
-   public cpt a(int $$0, float $$1) {
-      this.a.add(new cpq($$0, $$1));
-      this.b();
-      return this;
+   public cpt(coh $$0, dev $$1, double $$2, double $$3, double $$4) {
+      super(bug.bn, $$1, $$0, $$2, $$3, $$4);
    }
 
-   public cpt a(Collection<cpq> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   public cpt(dev $$0, double $$1, double $$2, double $$3, ezh $$4) {
+      super(bug.bn, $$1, $$2, $$3, $$4, $$0);
    }
 
-   private void b() {
-      Int2ObjectSortedMap<cpq> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         cpq $$1 = this.a.get(this.b);
-         cpq $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            cpq $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+   @Override
+   public void l() {
+      super.l();
+      if (this.j > 0) {
+         this.j--;
       }
+   }
+
+   @Override
+   public boolean a(cpc $$0, @Nullable btz $$1, @Nullable btz $$2, boolean $$3) {
+      return this.j > 0 ? false : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(ezh $$0) {
+      this.dX().a(this, null, g, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dev.a.e, lq.A, lq.z, awk.Cu);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return this.ag < 2 && $$0 < (double)i ? false : super.a($$0);
    }
 }

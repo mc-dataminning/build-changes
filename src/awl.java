@@ -1,106 +1,22 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+public enum awl {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-public class awl extends awj {
-   public static final String c = "recipeBook";
-   private static final Logger d = LogUtils.getLogger();
+   private final String k;
 
-   public int a(Collection<dam<?>> $$0, ark $$1) {
-      List<ale> $$2 = Lists.newArrayList();
-      int $$3 = 0;
-
-      for (dam<?> $$4 : $$0) {
-         ale $$5 = $$4.a();
-         if (!this.a.contains($$5) && !$$4.b().aq_()) {
-            this.a($$5);
-            this.d($$5);
-            $$2.add($$5);
-            an.g.a($$1, $$4);
-            $$3++;
-         }
-      }
-
-      if ($$2.size() > 0) {
-         this.a(ael.a.b, $$1, $$2);
-      }
-
-      return $$3;
+   private awl(final String $$0) {
+      this.k = $$0;
    }
 
-   public int b(Collection<dam<?>> $$0, ark $$1) {
-      List<ale> $$2 = Lists.newArrayList();
-      int $$3 = 0;
-
-      for (dam<?> $$4 : $$0) {
-         ale $$5 = $$4.a();
-         if (this.a.contains($$5)) {
-            this.c($$5);
-            $$2.add($$5);
-            $$3++;
-         }
-      }
-
-      this.a(ael.a.c, $$1, $$2);
-      return $$3;
-   }
-
-   private void a(ael.a $$0, ark $$1, List<ale> $$2) {
-      $$1.c.b(new ael($$0, $$2, Collections.emptyList(), this.a()));
-   }
-
-   public ug b() {
-      ug $$0 = new ug();
-      this.a().b($$0);
-      um $$1 = new um();
-
-      for (ale $$2 : this.a) {
-         $$1.add(vb.a($$2.toString()));
-      }
-
-      $$0.a("recipes", $$1);
-      um $$3 = new um();
-
-      for (ale $$4 : this.b) {
-         $$3.add(vb.a($$4.toString()));
-      }
-
-      $$0.a("toBeDisplayed", $$3);
-      return $$0;
-   }
-
-   public void a(ug $$0, dao $$1) {
-      this.a(awk.a($$0));
-      um $$2 = $$0.c("recipes", 8);
-      this.a($$2, this::a, $$1);
-      um $$3 = $$0.c("toBeDisplayed", 8);
-      this.a($$3, this::f, $$1);
-   }
-
-   private void a(um $$0, Consumer<dam<?>> $$1, dao $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         String $$4 = $$0.j($$3);
-
-         try {
-            ale $$5 = ale.a($$4);
-            Optional<dam<?>> $$6 = $$2.a($$5);
-            if ($$6.isEmpty()) {
-               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
-            } else {
-               $$1.accept($$6.get());
-            }
-         } catch (aa var8) {
-            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
-         }
-      }
-   }
-
-   public void a(ark $$0) {
-      $$0.c.b(new ael(ael.a.a, this.a, this.b, this.a()));
+   public String a() {
+      return this.k;
    }
 }

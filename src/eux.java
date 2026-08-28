@@ -1,199 +1,178 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public interface eux {
-   MapCodec<eux> a = a(Integer.MAX_VALUE);
+public class eux extends evj {
+   public static final MapCodec<eux> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(exw.a.fieldOf("source").forGetter($$0x -> $$0x.b), eux.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eux::new)
+   );
+   private final exv b;
+   private final List<eux.b> c;
 
-   static MapCodec<eux> a(int $$0) {
-      return eux.f.e.dispatchMap("mode", eux::a, $$0x -> $$0x.g).validate($$1 -> {
-         if ($$1 instanceof eux.d $$2 && $$2.c().isPresent()) {
-            int $$3 = $$2.c().get();
-            if ($$3 > $$0) {
-               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+   eux(List<exh> $$0, exv $$1, List<eux.b> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = List.copyOf($$2);
+   }
+
+   @Override
+   public evl<eux> b() {
+      return evm.C;
+   }
+
+   @Override
+   public Set<ewp<?>> a() {
+      return this.b.b();
+   }
+
+   @Override
+   public cvx a(cvx $$0, etw $$1) {
+      vg $$2 = this.b.a($$1);
+      if ($$2 == null) {
+         return $$0;
+      } else {
+         MutableObject<uj> $$3 = new MutableObject();
+         Supplier<vg> $$4 = () -> {
+            if ($$3.getValue() == null) {
+               $$3.setValue($$0.a(kt.b, cyg.a).c());
             }
+
+            return (vg)$$3.getValue();
+         };
+         this.c.forEach($$2x -> $$2x.a($$4, $$2));
+         uj $$5 = (uj)$$3.getValue();
+         if ($$5 != null) {
+            cyg.a(kt.b, $$0, $$5);
          }
 
-         return DataResult.success($$1);
-      });
+         return $$0;
+      }
    }
 
-   eux.f a();
-
-   default <T> List<T> a(List<T> $$0, List<T> $$1) {
-      return this.a($$0, $$1, Integer.MAX_VALUE);
+   @Deprecated
+   public static eux.a a(exv $$0) {
+      return new eux.a($$0);
    }
 
-   <T> List<T> a(List<T> var1, List<T> var2, int var3);
+   public static eux.a a(etw.b $$0) {
+      return new eux.a(ext.a($$0));
+   }
 
-   public static class a implements eux {
-      private static final Logger d = LogUtils.getLogger();
-      public static final eux.a b = new eux.a();
-      public static final MapCodec<eux.a> c = MapCodec.unit(() -> b);
+   public static class a extends evj.a<eux.a> {
+      private final exv a;
+      private final List<eux.b> b = Lists.newArrayList();
 
-      private a() {
+      a(exv $$0) {
+         this.a = $$0;
+      }
+
+      public eux.a a(String $$0, String $$1, eux.c $$2) {
+         try {
+            this.b.add(new eux.b(fn.g.a($$0), fn.g.a($$1), $$2));
+            return this;
+         } catch (CommandSyntaxException var5) {
+            throw new IllegalArgumentException(var5);
+         }
+      }
+
+      public eux.a a(String $$0, String $$1) {
+         return this.a($$0, $$1, eux.c.a);
+      }
+
+      protected eux.a a() {
+         return this;
       }
 
       @Override
-      public eux.f a() {
-         return eux.f.d;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         if ($$0.size() + $$1.size() > $$2) {
-            d.error("Contents overflow in section append");
-            return $$0;
-         } else {
-            return Stream.concat($$0.stream(), $$1.stream()).toList();
-         }
+      public evk b() {
+         return new eux(this.g(), this.a, this.b);
       }
    }
 
-   public static record b(int c) implements eux {
-      private static final Logger d = LogUtils.getLogger();
-      public static final MapCodec<eux.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayo.k.optionalFieldOf("offset", 0).forGetter(eux.b::b)).apply($$0, eux.b::new)
+   static record b(fn.g b, fn.g c, eux.c d) {
+      public static final Codec<eux.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fn.g.a.fieldOf("source").forGetter(eux.b::a), fn.g.a.fieldOf("target").forGetter(eux.b::b), eux.c.d.fieldOf("op").forGetter(eux.b::c))
+               .apply($$0, eux.b::new)
       );
 
-      @Override
-      public eux.f a() {
-         return eux.f.c;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            d.error("Cannot insert when offset is out of bounds");
-            return $$0;
-         } else if ($$3 + $$1.size() > $$2) {
-            d.error("Contents overflow in section insertion");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            $$4.addAll($$0.subList(this.c, $$3));
-            return $$4.build();
+      public void a(Supplier<vg> $$0, vg $$1) {
+         try {
+            List<vg> $$2 = this.b.a($$1);
+            if (!$$2.isEmpty()) {
+               this.d.a($$0.get(), this.c, $$2);
+            }
+         } catch (CommandSyntaxException var4) {
          }
       }
 
-      public int b() {
-         return this.c;
-      }
-   }
-
-   public static class c implements eux {
-      public static final eux.c b = new eux.c();
-      public static final MapCodec<eux.c> c = MapCodec.unit(() -> b);
-
-      private c() {
+      public fn.g a() {
+         return this.b;
       }
 
-      @Override
-      public eux.f a() {
-         return eux.f.a;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         return $$1;
-      }
-   }
-
-   public static record d(int c, Optional<Integer> d) implements eux {
-      private static final Logger e = LogUtils.getLogger();
-      public static final MapCodec<eux.d> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayo.k.optionalFieldOf("offset", 0).forGetter(eux.d::b), ayo.k.optionalFieldOf("size").forGetter(eux.d::c)).apply($$0, eux.d::new)
-      );
-
-      public d(int $$0) {
-         this($$0, Optional.empty());
-      }
-
-      @Override
-      public eux.f a() {
-         return eux.f.b;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            e.error("Cannot replace when offset is out of bounds");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            int $$5 = this.c + this.d.orElse($$1.size());
-            if ($$5 < $$3) {
-               $$4.addAll($$0.subList($$5, $$3));
-            }
-
-            List<T> $$6 = $$4.build();
-            if ($$6.size() > $$2) {
-               e.error("Contents overflow in section replacement");
-               return $$0;
-            } else {
-               return $$6;
-            }
-         }
-      }
-
-      public int b() {
+      public fn.g b() {
          return this.c;
       }
 
-      public Optional<Integer> c() {
+      public eux.c c() {
          return this.d;
       }
    }
 
-   public static record e<T>(List<T> a, eux b) {
-      public static <T> Codec<eux.e<T>> a(Codec<T> $$0, int $$1) {
-         return RecordCodecBuilder.create(
-            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), eux.a($$1).forGetter($$0xx -> $$0xx.b))
-                  .apply($$2, eux.e::new)
-         );
-      }
+   public static enum c implements baf {
+      a("replace") {
+         @Override
+         public void a(vg $$0, fn.g $$1, List<vg> $$2) throws CommandSyntaxException {
+            $$1.a($$0, (vg)Iterables.getLast($$2));
+         }
+      },
+      b("append") {
+         @Override
+         public void a(vg $$0, fn.g $$1, List<vg> $$2) throws CommandSyntaxException {
+            List<vg> $$3 = $$1.a($$0, up::new);
+            $$3.forEach($$1x -> {
+               if ($$1x instanceof up) {
+                  $$2.forEach($$1xx -> ((up)$$1x).add($$1xx.d()));
+               }
+            });
+         }
+      },
+      c("merge") {
+         @Override
+         public void a(vg $$0, fn.g $$1, List<vg> $$2) throws CommandSyntaxException {
+            List<vg> $$3 = $$1.a($$0, uj::new);
+            $$3.forEach($$1x -> {
+               if ($$1x instanceof uj) {
+                  $$2.forEach($$1xx -> {
+                     if ($$1xx instanceof uj) {
+                        ((uj)$$1x).a((uj)$$1xx);
+                     }
+                  });
+               }
+            });
+         }
+      };
 
-      public List<T> a(List<T> $$0) {
-         return this.b.a($$0, this.a);
-      }
-   }
+      public static final Codec<eux.c> d = baf.a(eux.c::values);
+      private final String e;
 
-   public static enum f implements bab {
-      a("replace_all", eux.c.c),
-      b("replace_section", eux.d.b),
-      c("insert", eux.b.b),
-      d("append", eux.a.c);
+      public abstract void a(vg var1, fn.g var2, List<vg> var3) throws CommandSyntaxException;
 
-      public static final Codec<eux.f> e = bab.a(eux.f::values);
-      private final String f;
-      final MapCodec<? extends eux> g;
-
-      private f(final String $$0, final MapCodec<? extends eux> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public MapCodec<? extends eux> a() {
-         return this.g;
+      c(final String $$0) {
+         this.e = $$0;
       }
 
       @Override
       public String c() {
-         return this.f;
+         return this.e;
       }
    }
 }

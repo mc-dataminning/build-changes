@@ -1,141 +1,87 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Predicate;
 
-public class cin extends cih {
-   private final cio bY = new cio(this);
-   private static final int bZ = 18000;
-   private static final btu ca = bty.aO.n().a(btt.a().a(bts.a, 0.0F, bty.aO.m() - 0.03125F, 0.0F)).a(0.5F);
-   private boolean cc;
-   private int cd;
+public class cin {
+   public static final int a = 20;
+   public static final int b = 7;
+   private static final brj i = brj.a(5, 16);
+   private static final float j = 1.0F;
+   private static final float k = 1.25F;
+   private static final float l = 1.25F;
+   private static final float m = 2.0F;
+   private static final float n = 1.25F;
+   private static final brj o = brj.a(600, 1200);
+   public static final int c = 5;
+   public static final int d = 5;
+   public static final float e = 3.5714288F;
+   private static final brj p = brj.a(600, 6000);
+   private static final brj q = brj.a(100, 300);
+   private static final cfm r = cfm.a().a($$0 -> !$$0.aq().equals(bug.X) && ($$0.dX().ac().b(der.c) || !$$0.aq().equals(bug.d)) && $$0.dX().C_().a($$0.cS()));
+   private static final float s = 3.0F;
+   public static final int f = 4;
+   public static final float g = 2.5F;
+   public static final float h = 1.0F;
 
-   public cin(bty<? extends cin> $$0, dej $$1) {
-      super($$0, $$1);
+   protected static void a(cim $$0, azr $$1) {
+      $$0.ed().a(cdz.S, o.a($$1));
+      $$0.ed().a(cdz.V, p.a($$1));
    }
 
-   public static bvt.a q() {
-      return gQ().a(bvu.s, 15.0).a(bvu.v, 0.2F);
+   protected static bvx<?> a(bvx<cim> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      e($$0);
+      $$0.a(ImmutableSet.of(cpz.a));
+      $$0.b(cpz.b);
+      $$0.f();
+      return $$0;
    }
 
-   public static boolean c(bty<? extends cgd> $$0, dek $$1, btx $$2, jf $$3, azn $$4) {
-      return !btx.a($$2) ? cgd.b($$0, $$1, $$2, $$3, $$4) : btx.b($$2) || a($$1, $$3);
+   private static void b(bvx<cim> $$0) {
+      $$0.a(cpz.a, 0, ImmutableList.of(new bzi(0.8F), new bwj(2.0F), new bxu(45, 90), new bxy(), new bwu(cdz.P), new bwu(cdz.S), new bwu(cdz.V)));
    }
 
-   @Override
-   protected void a(azn $$0) {
-      this.g(bvu.o).a(a($$0::j));
+   private static void c(bvx<cim> $$0) {
+      $$0.a(
+         cpz.b,
+         ImmutableList.of(
+            Pair.of(0, byo.a(bug.by, 6.0F, brj.a(30, 60))),
+            Pair.of(0, new bwi(bug.X)),
+            Pair.of(1, new bxb($$0x -> 1.25F)),
+            Pair.of(2, bwl.a(i, 1.25F)),
+            Pair.of(3, new byl(ImmutableList.of(Pair.of(byg.a(1.0F), 2), Pair.of(byv.a(1.0F, 3), 2), Pair.of(new bwy(30, 60), 1))))
+         ),
+         ImmutableSet.of(Pair.of(cdz.W, cea.b), Pair.of(cdz.T, cea.b))
+      );
    }
 
-   @Override
-   protected void gG() {
+   private static void d(bvx<cim> $$0) {
+      $$0.a(
+         cpz.q,
+         ImmutableList.of(Pair.of(0, new bxp(o, awk.lc)), Pair.of(1, new bxr<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gH() ? awk.kY : awk.kP))),
+         ImmutableSet.of(Pair.of(cdz.O, cea.b), Pair.of(cdz.r, cea.b), Pair.of(cdz.m, cea.b), Pair.of(cdz.S, cea.b))
+      );
    }
 
-   @Override
-   protected awf w() {
-      return this.a(axb.a) ? awg.xj : awg.xf;
+   private static void e(bvx<cim> $$0) {
+      $$0.a(
+         cpz.r,
+         ImmutableList.of(
+            Pair.of(0, new bye($$0x -> $$0x.gH() ? q : p, r, 3.0F, $$0x -> $$0x.p_() ? 1.0 : 2.5, $$0x -> $$0x.gH() ? awk.lb : awk.kS, $$0x -> awk.kT)),
+            Pair.of(1, new byd<>($$0x -> $$0x.gH() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gH() ? awk.la : awk.kR))
+         ),
+         ImmutableSet.of(Pair.of(cdz.O, cea.b), Pair.of(cdz.r, cea.b), Pair.of(cdz.V, cea.b))
+      );
    }
 
-   @Override
-   protected awf o_() {
-      return awg.xg;
+   public static void a(cim $$0) {
+      $$0.ed().a(ImmutableList.of(cpz.r, cpz.q, cpz.b));
    }
 
-   @Override
-   protected awf d(bsj $$0) {
-      return awg.xh;
-   }
-
-   @Override
-   protected awf aT() {
-      if (this.aH()) {
-         if (!this.bX()) {
-            return awg.xm;
-         }
-
-         this.cy++;
-         if (this.cy > 5 && this.cy % 3 == 0) {
-            return awg.xk;
-         }
-
-         if (this.cy <= 5) {
-            return awg.xm;
-         }
-      }
-
-      return awg.xi;
-   }
-
-   @Override
-   protected void f(float $$0) {
-      if (this.aH()) {
-         super.f(0.3F);
-      } else {
-         super.f(Math.min(0.1F, $$0 * 25.0F));
-      }
-   }
-
-   @Override
-   protected void gX() {
-      if (this.bi()) {
-         this.a(awg.xl, 0.4F, 1.0F);
-      } else {
-         super.gX();
-      }
-   }
-
-   @Override
-   public btu e(buz $$0) {
-      return this.p_() ? ca : super.e($$0);
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      if (this.t() && this.cd++ >= 18000) {
-         this.as();
-      }
-   }
-
-   @Override
-   public void b(ug $$0) {
-      super.b($$0);
-      $$0.a("SkeletonTrap", this.t());
-      $$0.a("SkeletonTrapTime", this.cd);
-   }
-
-   @Override
-   public void a(ug $$0) {
-      super.a($$0);
-      this.x($$0.q("SkeletonTrap"));
-      this.cd = $$0.h("SkeletonTrapTime");
-   }
-
-   @Override
-   protected float fj() {
-      return 0.96F;
-   }
-
-   public boolean t() {
-      return this.cc;
-   }
-
-   public void x(boolean $$0) {
-      if ($$0 != this.cc) {
-         this.cc = $$0;
-         if ($$0) {
-            this.bS.a(1, this.bY);
-         } else {
-            this.bS.a(this.bY);
-         }
-      }
-   }
-
-   @Nullable
-   @Override
-   public btk a(arj $$0, btk $$1) {
-      return bty.aO.a($$0, btx.e);
-   }
-
-   @Override
-   public brs b(cnx $$0, brr $$1) {
-      return (brs)(!this.gF() ? brs.e : super.b($$0, $$1));
+   public static Predicate<cvx> a() {
+      return $$0 -> $$0.a(axi.ac);
    }
 }

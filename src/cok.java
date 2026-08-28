@@ -1,69 +1,83 @@
-public abstract class cok extends cof implements coo {
-   private static final float e = 12.25F;
-   private static final akh<cvs> f = akl.a(cok.class, akj.h);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-   public cok(bty<? extends cok> $$0, dej $$1) {
-      super($$0, $$1);
-   }
+public record cok(cok.a d) {
+   public static final xh a = xh.c("multiplayer.disconnect.expired_public_key");
+   private static final xh e = xh.c("multiplayer.disconnect.invalid_public_key_signature");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<cok> c = cok.a.a.xmap(cok::new, cok::b);
 
-   public cok(bty<? extends cok> $$0, double $$1, double $$2, double $$3, eyw $$4, dej $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public cok(bty<? extends cok> $$0, bun $$1, eyw $$2, dej $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   public void a(cvs $$0) {
-      if ($$0.f()) {
-         this.at().a(f, this.w());
+   public static cok a(azw $$0, UUID $$1, cok.a $$2) throws cok.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new cok.b(e);
       } else {
-         this.at().a(f, $$0.c(1));
+         return new cok($$2);
       }
    }
 
-   @Override
-   public cvs m() {
-      return this.at().a(f);
+   public azw a() {
+      return azw.a(this.d.c, "SHA256withRSA");
    }
 
-   @Override
-   protected void a(akl.a $$0) {
-      $$0.a(f, this.w());
+   public cok.a b() {
+      return this.d;
    }
 
-   @Override
-   public void b(ug $$0) {
-      super.b($$0);
-      $$0.a("Item", this.m().a(this.dU()));
-   }
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<cok.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ays.q.fieldOf("expires_at").forGetter(cok.a::b), ayh.f.fieldOf("key").forGetter(cok.a::c), ays.r.fieldOf("signature_v2").forGetter(cok.a::d)
+               )
+               .apply($$0, cok.a::new)
+      );
 
-   @Override
-   public void a(ug $$0) {
-      super.a($$0);
-      if ($$0.b("Item", 10)) {
-         this.a(cvs.a(this.dU(), (vd)$$0.p("Item")).orElse(this.w()));
-      } else {
-         this.a(this.w());
+      public a(we $$0) {
+         this($$0.t(), $$0.u(), $$0.a(4096));
+      }
+
+      public void a(we $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(azw $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof cok.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
       }
    }
 
-   private cvs w() {
-      return new cvs(cvw.tY);
-   }
-
-   @Override
-   public bve a_(int $$0) {
-      return $$0 == 0 ? bve.a(this::m, this::a) : super.a_($$0);
-   }
-
-   @Override
-   public boolean a(bsj $$0, float $$1) {
-      return false;
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return this.ag < 2 && $$0 < 12.25 ? false : super.a($$0);
+   public static class b extends yh {
+      public b(xh $$0) {
+         super($$0);
+      }
    }
 }

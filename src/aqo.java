@@ -1,65 +1,60 @@
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+public class aqo implements Comparable<aqo> {
+   private final int a;
+   private final jg b;
+   private int c;
+   private int d;
 
-public class aqo {
-   private static final int c = 33;
-   private static final int d = 32;
-   private static final int e = 31;
-   private static final dxs f = dxo.a.a(dxp.n);
-   public static final int a = f.c().c();
-   public static final int b = 33 + a;
-
-   @Nullable
-   public static dxp a(int $$0) {
-      return a($$0 - 33, null);
+   public aqo(int $$0, jg $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
-   @Contract("_,!null->!null;_,_->_")
-   public static dxp a(int $$0, @Nullable dxp $$1) {
-      if ($$0 > a) {
-         return $$1;
+   public int a() {
+      return this.a;
+   }
+
+   public jg b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      if ($$0 > 10) {
+         $$0 = 10;
+      }
+
+      this.c = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public void b(int $$0) {
+      this.d = $$0;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         aqo $$1 = (aqo)$$0;
+         return this.a == $$1.a;
       } else {
-         return $$0 <= 0 ? dxp.n : f.c().a($$0);
+         return false;
       }
    }
 
-   public static dxp b(int $$0) {
-      return a($$0, dxp.c);
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.a);
    }
 
-   public static int a(dxp $$0) {
-      return 33 + f.a($$0);
-   }
-
-   public static aqz c(int $$0) {
-      if ($$0 <= 31) {
-         return aqz.d;
-      } else if ($$0 <= 32) {
-         return aqz.c;
-      } else {
-         return $$0 <= 33 ? aqz.b : aqz.a;
-      }
-   }
-
-   public static int a(aqz $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 <= 31;
-   }
-
-   public static boolean e(int $$0) {
-      return $$0 <= 32;
-   }
-
-   public static boolean f(int $$0) {
-      return $$0 <= b;
+   public int a(aqo $$0) {
+      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

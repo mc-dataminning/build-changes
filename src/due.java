@@ -1,76 +1,64 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
-public class due {
-   static final String a = "shared_data";
-   static Codec<due> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cvs.a("display_item").forGetter($$0x -> $$0x.d),
-               ki.c.lenientOptionalFieldOf("connected_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.lenientOptionalFieldOf("connected_particles_range", duc.b.d()).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, due::new)
-   );
-   private cvs d = cvs.k;
-   private Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private double f = duc.b.d();
-   boolean c;
+public interface due {
+   due a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dx().a($$2, $$3) && !$$2x.f() && !$$2x.R_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bG()))
+         .map(btz::cH)
+         .toList();
+   due b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dx().a($$2, $$3) && !$$2x.R_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bG()))
+         .map(btz::cH)
+         .toList();
+   due c = ($$0, $$1, $$2, $$3, $$4) -> {
+      ezc $$5 = new ezc($$2).g($$3);
+      return $$1.a($$0, bug.aJ, $$5, buv::bM).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bG())).map(btz::cH).toList();
+   };
 
-   due(cvs $$0, Set<UUID> $$1, double $$2) {
-      this.d = $$0;
-      this.e.addAll($$1);
-      this.f = $$2;
+   List<UUID> detect(arm var1, due.a var2, jg var3, double var4, boolean var6);
+
+   private static boolean a(dev $$0, ezh $$1, ezh $$2) {
+      ezd $$3 = $$0.a(new ded($$2, $$1, ded.a.c, ded.b.a, ezm.a()));
+      return $$3.b().equals(jg.a((jz)$$1)) || $$3.d() == ezf.a.a;
    }
 
-   due() {
-   }
+   public interface a {
+      due.a a = new due.a() {
+         @Override
+         public List<arn> a(arm $$0, Predicate<? super coh> $$1) {
+            return $$0.a($$1);
+         }
 
-   public cvs a() {
-      return this.d;
-   }
+         @Override
+         public <T extends btz> List<T> a(arm $$0, dzo<btz, T> $$1, ezc $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
 
-   public boolean b() {
-      return !this.d.f();
-   }
+      List<? extends coh> a(arm var1, Predicate<? super coh> var2);
 
-   public void a(cvs $$0) {
-      if (!cvs.a(this.d, $$0)) {
-         this.d = $$0.u();
-         this.f();
+      <T extends btz> List<T> a(arm var1, dzo<btz, T> var2, ezc var3, Predicate<? super T> var4);
+
+      static due.a a(coh $$0) {
+         return a(List.of($$0));
       }
-   }
 
-   boolean c() {
-      return !this.e.isEmpty();
-   }
+      static due.a a(final List<coh> $$0) {
+         return new due.a() {
+            @Override
+            public List<coh> a(arm $$0x, Predicate<? super coh> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
 
-   Set<UUID> d() {
-      return this.e;
-   }
-
-   double e() {
-      return this.f;
-   }
-
-   void a(arj $$0, jf $$1, dud $$2, duc $$3, double $$4) {
-      Set<UUID> $$5 = $$3.a().detect($$0, $$3.g(), $$1, $$4, false).stream().filter($$1x -> !$$2.b().contains($$1x)).collect(Collectors.toSet());
-      if (!this.e.equals($$5)) {
-         this.e = $$5;
-         this.f();
+            @Override
+            public <T extends btz> List<T> a(arm $$0x, dzo<btz, T> $$1, ezc $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-   }
-
-   private void f() {
-      this.c = true;
-   }
-
-   void a(due $$0) {
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
    }
 }

@@ -1,29 +1,66 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.BiConsumer;
 
-public class ejb extends ejc {
-   public static final MapCodec<ejb> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejb::new));
+public abstract class ejb {
+   public static final Codec<ejb> h = lx.X.q().dispatch(ejb::a, ejc::a);
 
-   public ejb(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   protected abstract ejc<?> a();
 
-   @Override
-   protected ejd<?> a() {
-      return ejd.a;
-   }
+   public abstract void a(ejb.a var1);
 
-   @Override
-   public List<ehk.a> a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, int $$3, jf $$4, egu $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
+   public static final class a {
+      private final dfb a;
+      private final BiConsumer<jg, dvd> b;
+      private final azr c;
+      private final ObjectArrayList<jg> d;
+      private final ObjectArrayList<jg> e;
+      private final ObjectArrayList<jg> f;
 
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
+      public a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, Set<jg> $$3, Set<jg> $$4, Set<jg> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(kk::v));
+         this.e.sort(Comparator.comparingInt(kk::v));
+         this.f.sort(Comparator.comparingInt(kk::v));
       }
 
-      return ImmutableList.of(new ehk.a($$4.b($$3), 0, false));
+      public void a(jg $$0, dvu $$1) {
+         this.a($$0, dia.ff.m().b($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(jg $$0, dvd $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(jg $$0) {
+         return this.a.a($$0, dvc.a::l);
+      }
+
+      public dfb a() {
+         return this.a;
+      }
+
+      public azr b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<jg> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<jg> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<jg> e() {
+         return this.f;
+      }
    }
 }

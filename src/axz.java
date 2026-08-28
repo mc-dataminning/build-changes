@@ -1,32 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Locale;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record axz(int b) {
-   private static final String c = "#";
-   public static final Codec<axz> a = Codec.STRING.comapFlatMap($$0 -> {
-      if (!$$0.startsWith("#")) {
-         return DataResult.error(() -> "Not a color code: " + $$0);
-      } else {
-         try {
-            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
-            return DataResult.success(new axz($$1));
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
-         }
-      }
-   }, axz::b);
-
-   private String b() {
-      return String.format(Locale.ROOT, "#%08X", this.b);
-   }
-
-   @Override
-   public String toString() {
-      return this.b();
-   }
+public record axz(int d, int e) {
+   public static final Codec<Integer> a = ays.a(0, 15);
+   public static final Codec<axz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a.fieldOf("block").forGetter(axz::b), a.fieldOf("sky").forGetter(axz::c)).apply($$0, axz::new)
+   );
+   public static axz c = new axz(15, 15);
 
    public int a() {
-      return this.b;
+      return this.d << 4 | this.e << 20;
+   }
+
+   public static axz a(int $$0) {
+      int $$1 = $$0 >> 4 & 65535;
+      int $$2 = $$0 >> 20 & 65535;
+      return new axz($$1, $$2);
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
    }
 }

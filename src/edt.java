@@ -1,56 +1,52 @@
-public class edt extends edu<egf> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final jf ao = jf.c;
-   private final boolean ap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-   public static jf a(jf $$0) {
-      return ao.a((kj)$$0);
-   }
-
-   public edt(boolean $$0) {
-      super(egf.a);
-      this.ap = $$0;
+public abstract class edt extends eef<egq> {
+   public edt(Codec<egq> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(edw<egf> $$0) {
-      jf $$1 = $$0.e();
-      dfg $$2 = $$0.b();
+   public boolean a(eeh<egq> $$0) {
+      azr $$1 = $$0.d();
+      dfs $$2 = $$0.b();
+      jg $$3 = $$0.e();
+      Optional<dhy> $$4 = lx.e.a(awz.ar, $$1).map(jp::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
+   }
 
-      for (jf $$3 : jf.c(new jf($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new jf($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, dho.F.n());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, dho.fz.n());
+   protected abstract boolean a(dew var1, azr var2, jg var3, dvd var4);
+
+   protected boolean b(dew $$0, azr $$1, jg $$2, dvd $$3) {
+      jg $$4 = $$2.d();
+      dvd $$5 = $$0.a_($$2);
+      if (($$5.a(dia.G) || $$5.a(awz.au)) && $$0.a_($$4).a(dia.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            lx.e.a(awz.au, $$1).map(jp::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dia.mV.m().b(dov.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (jl $$6 : jl.c.a) {
+            if ($$1.i() < 0.2F) {
+               jg $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dia.G)) {
+                  lx.e.a(awz.as, $$1).map(jp::a).ifPresent($$3x -> {
+                     dvd $$4x = $$3x.m();
+                     if ($$4x.b(dhj.c)) {
+                        $$4x = $$4x.b(dhj.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
                }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, dho.a.n());
-            } else if (!$$4) {
-               this.a($$2, $$3, dho.F.n());
-            } else if (this.ap) {
-               this.a($$2, new jf($$3), dho.fx.n());
-            } else {
-               this.a($$2, new jf($$3), dho.a.n());
             }
          }
+
+         return true;
+      } else {
+         return false;
       }
-
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), dho.F.n());
-      }
-
-      jf $$6 = $$1.b(2);
-
-      for (jk $$7 : jk.c.a) {
-         this.a($$2, $$6.a($$7), dho.cq.n().b(dqp.g, $$7));
-      }
-
-      return true;
    }
 }

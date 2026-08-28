@@ -1,74 +1,39 @@
-public class cqb extends cpv {
-   private float c;
-   private float d;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-   public cqb(bty<?> $$0, dej $$1) {
-      super($$0, $$1);
+public class cqb {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cqb c = a("empty").a(0, cpz.b).a();
+   public static final cqb d = a("simple").a(5000, cpz.c).a(11000, cpz.e).a();
+   public static final cqb e = a("villager_baby").a(10, cpz.b).a(3000, cpz.d).a(6000, cpz.b).a(10000, cpz.d).a(12000, cpz.e).a();
+   public static final cqb f = a("villager_default").a(10, cpz.b).a(2000, cpz.c).a(9000, cpz.f).a(11000, cpz.b).a(12000, cpz.e).a();
+   private final Map<cpz, cqd> g = Maps.newHashMap();
+
+   protected static cqc a(String $$0) {
+      cqb $$1 = kc.a(lx.B, $$0, new cqb());
+      return new cqc($$1);
    }
 
-   public cqb(dej $$0, double $$1, double $$2, double $$3) {
-      super(bty.ar, $$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public brs a(cnx $$0, brr $$1) {
-      if (!$$0.fT() && !this.bX() && (this.dS().B || $$0.n(this))) {
-         this.d = this.c;
-         if (!this.dS().B) {
-            return (brs)($$0.n(this) ? brs.c : brs.e);
-         } else {
-            return brs.a;
-         }
-      } else {
-         return brs.e;
+   protected void a(cpz $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cqd());
       }
    }
 
-   @Override
-   protected cvn ak_() {
-      return cvw.nM;
+   protected cqd b(cpz $$0) {
+      return this.g.get($$0);
    }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3) {
-         if (this.bX()) {
-            this.bM();
-         }
-
-         if (this.S() == 0) {
-            this.m(-this.T());
-            this.d(10);
-            this.b(50.0F);
-            this.bA();
-         }
-      }
+   protected List<cqd> c(cpz $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   @Override
-   public cpv.a y() {
-      return cpv.a.a;
-   }
-
-   @Override
-   public void l() {
-      double $$0 = (double)this.dI();
-      eyw $$1 = this.dq();
-      super.l();
-      double $$2 = ((double)this.dI() - $$0) % 360.0;
-      if (this.dS().B && $$1.f(this.dq()) > 0.01) {
-         this.c += (float)$$2;
-         this.c %= 360.0F;
-      }
-   }
-
-   @Override
-   protected void a(btr $$0, btr.a $$1) {
-      super.a($$0, $$1);
-      if (this.dS().B && $$0 instanceof cnx $$2 && $$2.gI() && b(this.dS())) {
-         float $$3 = (float)azf.e(0.5, (double)this.d, (double)this.c);
-         $$2.v($$2.dI() - ($$3 - this.d));
-         this.d = $$3;
-      }
+   public cpz a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cpz.b);
    }
 }

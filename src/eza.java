@@ -1,20 +1,8 @@
-public interface eza {
-   eza a = ($$0, $$1) -> false;
-   eza b = ($$0, $$1) -> !$$0 && !$$1;
-   eza c = ($$0, $$1) -> $$1 && !$$0;
-   eza d = ($$0, $$1) -> !$$0;
-   eza e = ($$0, $$1) -> $$0 && !$$1;
-   eza f = ($$0, $$1) -> !$$1;
-   eza g = ($$0, $$1) -> $$0 != $$1;
-   eza h = ($$0, $$1) -> !$$0 || !$$1;
-   eza i = ($$0, $$1) -> $$0 && $$1;
-   eza j = ($$0, $$1) -> $$0 == $$1;
-   eza k = ($$0, $$1) -> $$1;
-   eza l = ($$0, $$1) -> !$$0 || $$1;
-   eza m = ($$0, $$1) -> $$0;
-   eza n = ($$0, $$1) -> $$0 || !$$1;
-   eza o = ($$0, $$1) -> $$0 || $$1;
-   eza p = ($$0, $$1) -> true;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean apply(boolean var1, boolean var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eza {
 }

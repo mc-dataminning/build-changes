@@ -1,25 +1,31 @@
-import com.google.gson.JsonObject;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
 import org.slf4j.Logger;
 
-public class feq extends ffc {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class feq extends ffn {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fep> a;
 
    public static feq a(String $$0) {
       JsonParser $$1 = new JsonParser();
       feq $$2 = new feq();
+      $$2.a = Lists.newArrayList();
 
       try {
-         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
-         $$2.a = fgz.b("address", $$3, null);
-         $$2.b = fgz.b("resourcePackUrl", $$3, null);
-         $$2.c = fgz.b("resourcePackHash", $$3, null);
-      } catch (Exception var4) {
-         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$2.a.add(fep.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
 
       return $$2;

@@ -23,10 +23,10 @@ public interface bc<T, P extends Predicate<T>> extends Predicate<Iterable<T>> {
       });
    }
 
-   public static record a<T, P extends Predicate<T>>(P a, dh.d b) {
+   public static record a<T, P extends Predicate<T>>(P a, di.d b) {
       public static <T, P extends Predicate<T>> Codec<bc.a<T, P>> a(Codec<P> $$0) {
          return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.fieldOf("test").forGetter(bc.a::a), dh.d.d.fieldOf("count").forGetter(bc.a::b)).apply($$1, bc.a::new)
+            $$1 -> $$1.group($$0.fieldOf("test").forGetter(bc.a::a), di.d.d.fieldOf("count").forGetter(bc.a::b)).apply($$1, bc.a::new)
          );
       }
 

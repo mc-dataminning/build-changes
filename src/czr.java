@@ -1,76 +1,70 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public abstract class czr implements dak<dba> {
-   protected final daq<?> a;
-   protected final czx b;
-   protected final String c;
-   protected final dag d;
-   protected final cvs e;
-   protected final float f;
-   protected final int g;
-   @Nullable
-   private daj j;
-
-   public czr(daq<?> $$0, String $$1, czx $$2, dag $$3, cvs $$4, float $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+public class czr extends daa {
+   public czr(czx $$0) {
+      super($$0);
    }
 
-   public boolean a(dba $$0, dej $$1) {
-      return this.d.a($$0.c());
+   public boolean a(czy $$0, dev $$1) {
+      cvx $$2 = cvx.k;
+      List<cvx> $$3 = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvx $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(axi.bM)) {
+               if (!$$2.f()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            } else {
+               if (!($$5.h() instanceof cuv)) {
+                  return false;
+               }
+
+               $$3.add($$5);
+            }
+         }
+      }
+
+      return !$$2.f() && !$$3.isEmpty();
    }
 
-   public cvs a(dba $$0, jq.a $$1) {
-      return this.e.u();
+   public cvx a(czy $$0, jr.a $$1) {
+      List<cuv> $$2 = Lists.newArrayList();
+      cvx $$3 = cvx.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvx $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(axi.bM)) {
+               if (!$$3.f()) {
+                  return cvx.k;
+               }
+
+               $$3 = $$5.v();
+            } else {
+               if (!($$5.h() instanceof cuv $$6)) {
+                  return cvx.k;
+               }
+
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.f() && !$$2.isEmpty() ? cyj.a($$3, $$2) : cvx.k;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return true;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public daj a() {
-      if (this.j == null) {
-         this.j = daj.a(this.d);
-      }
-
-      return this.j;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public cvs a(jq.a $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public daq<?> e() {
-      return this.a;
-   }
-
-   public czx f() {
-      return this.b;
-   }
-
-   public interface a<T extends czr> {
-      T create(String var1, czx var2, dag var3, cvs var4, float var5, int var6);
+   public dao<?> ar_() {
+      return dao.c;
    }
 }

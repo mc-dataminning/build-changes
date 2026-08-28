@@ -1,111 +1,65 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class aqr<T> {
-   public static final int a = aqo.b + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Optional<T>>>> b = IntStream.range(0, a)
-      .mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap())
-      .collect(Collectors.toList());
-   private volatile int c = a;
-   private final String d;
-   private final LongSet e = new LongOpenHashSet();
-   private final int f;
+public class aqr {
+   private static final int c = 33;
+   private static final int d = 32;
+   private static final int e = 31;
+   private static final dyd f = dxz.a.a(dya.n);
+   public static final int a = f.c().c();
+   public static final int b = 33 + a;
 
-   public aqr(String $$0, int $$1) {
-      this.d = $$0;
-      this.f = $$1;
-   }
-
-   protected void a(int $$0, ddp $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
-         List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
-            }
-         }
-
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
-         }
-      }
-   }
-
-   protected void a(Optional<T> $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
-   }
-
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$2 : this.b) {
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            } else {
-               $$3.removeIf($$0x -> $$0x.isEmpty());
-            }
-
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
-            }
-         }
-      }
-
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
-
-      this.e.remove($$0);
-   }
-
-   private Runnable a(long $$0) {
-      return () -> this.e.add($$0);
+   @Nullable
+   public static dya a(int $$0) {
+      return a($$0 - 33, null);
    }
 
    @Nullable
-   public Stream<Either<T, Runnable>> a() {
-      if (this.e.size() >= this.f) {
-         return null;
-      } else if (!this.b()) {
-         return null;
+   @Contract("_,!null->!null;_,_->_")
+   public static dya a(int $$0, @Nullable dya $$1) {
+      if ($$0 > a) {
+         return $$1;
       } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Optional<T>> $$3 = (List<Optional<T>>)$$1.removeFirst();
-
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
-         }
-
-         return $$3.stream().map($$1x -> $$1x.map(Either::left).orElseGet(() -> Either.right(this.a($$2))));
+         return $$0 <= 0 ? dya.n : f.c().a($$0);
       }
    }
 
-   public boolean b() {
-      return this.c < a;
+   public static dya b(int $$0) {
+      return a($$0, dya.c);
    }
 
-   @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
+   public static int a(dya $$0) {
+      return 33 + f.a($$0);
    }
 
-   @VisibleForTesting
-   LongSet c() {
-      return new LongOpenHashSet(this.e);
+   public static arc c(int $$0) {
+      if ($$0 <= 31) {
+         return arc.d;
+      } else if ($$0 <= 32) {
+         return arc.c;
+      } else {
+         return $$0 <= 33 ? arc.b : arc.a;
+      }
+   }
+
+   public static int a(arc $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 <= 31;
+   }
+
+   public static boolean e(int $$0) {
+      return $$0 <= 32;
+   }
+
+   public static boolean f(int $$0) {
+      return $$0 <= b;
    }
 }

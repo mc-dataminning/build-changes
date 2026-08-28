@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface abt extends aah {
+   @Override
+   default wc b() {
+      return wc.e;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface abt {
+   void a(abu var1);
+
+   void a(abv var1);
 }

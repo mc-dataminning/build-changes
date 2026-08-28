@@ -1,84 +1,82 @@
-public class dly {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1004;
-   public static final int e = 1009;
-   public static final int f = 1010;
-   public static final int g = 1011;
-   public static final int h = 1015;
-   public static final int i = 1016;
-   public static final int j = 1017;
-   public static final int k = 1018;
-   public static final int l = 1019;
-   public static final int m = 1020;
-   public static final int n = 1021;
-   public static final int o = 1022;
-   public static final int p = 1023;
-   public static final int q = 1024;
-   public static final int r = 1025;
-   public static final int s = 1026;
-   public static final int t = 1027;
-   public static final int u = 1028;
-   public static final int v = 1029;
-   public static final int w = 1030;
-   public static final int x = 1031;
-   public static final int y = 1032;
-   public static final int z = 1033;
-   public static final int A = 1034;
-   public static final int B = 1035;
-   public static final int C = 1038;
-   public static final int D = 1039;
-   public static final int E = 1040;
-   public static final int F = 1041;
-   public static final int G = 1042;
-   public static final int H = 1043;
-   public static final int I = 1044;
-   public static final int J = 1045;
-   public static final int K = 1046;
-   public static final int L = 1047;
-   public static final int M = 1048;
-   public static final int N = 1049;
-   public static final int O = 1050;
-   public static final int P = 1051;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 2013;
-   public static final int aj = 3000;
-   public static final int ak = 3001;
-   public static final int al = 3002;
-   public static final int am = 3003;
-   public static final int an = 3004;
-   public static final int ao = 3005;
-   public static final int ap = 3006;
-   public static final int aq = 3007;
-   public static final int ar = 3008;
-   public static final int as = 3009;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
-   public static final int ax = 3015;
-   public static final int ay = 3016;
-   public static final int az = 3017;
-   public static final int aA = 3018;
-   public static final int aB = 3019;
-   public static final int aC = 3020;
-   public static final int aD = 3021;
+import com.mojang.serialization.MapCodec;
+
+public class dly extends dju {
+   public static final MapCodec<dly> i = b(dly::new);
+
+   @Override
+   public MapCodec<? extends dly> a() {
+      return i;
+   }
+
+   protected dly(dvc.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.l(
+         this.F
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
+   }
+
+   @Override
+   public dvd a(czm $$0) {
+      dea $$1 = $$0.q();
+      jg $$2 = $$0.a();
+      ere $$3 = $$0.q().b_($$0.a());
+      jg $$4 = $$2.f();
+      jg $$5 = $$2.g();
+      jg $$6 = $$2.h();
+      jg $$7 = $$2.i();
+      dvd $$8 = $$1.a_($$4);
+      dvd $$9 = $$1.a_($$5);
+      dvd $$10 = $$1.a_($$6);
+      dvd $$11 = $$1.a_($$7);
+      return this.m()
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jl.d))))
+         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jl.c))))
+         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jl.f))))
+         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jl.e))))
+         .b(e, Boolean.valueOf($$3.a() == erf.c));
+   }
+
+   @Override
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, erf.c, erf.c.a($$3));
+      }
+
+      return $$1.o().d() ? $$0.b(f.get($$1), Boolean.valueOf(this.a($$2, $$2.c($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected fab c(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return ezy.a();
+   }
+
+   @Override
+   protected boolean b(dvd $$0, dvd $$1, jl $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
+         }
+
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
+         }
+      }
+
+      return super.b($$0, $$1, $$2);
+   }
+
+   public final boolean a(dvd $$0, boolean $$1) {
+      return !k($$0) && $$1 || $$0.b() instanceof dly || $$0.a(awz.M);
+   }
+
+   @Override
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(a, b, d, c, e);
+   }
 }

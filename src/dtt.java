@@ -1,64 +1,127 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface dtt {
-   dtt a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.ds().a($$2, $$3) && !$$2x.f() && !$$2x.Q_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bC()))
-         .map(btr::cD)
-         .toList();
-   dtt b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.ds().a($$2, $$3) && !$$2x.Q_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bC()))
-         .map(btr::cD)
-         .toList();
-   dtt c = ($$0, $$1, $$2, $$3, $$4) -> {
-      eyr $$5 = new eyr($$2).g($$3);
-      return $$1.a($$0, bty.aJ, $$5, bun::bI).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bC())).map(btr::cD).toList();
-   };
+public class dtt {
+   private static final Codec<xh[]> c = xj.g
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ad.a($$0, 4).map($$0x -> new xh[]{(xh)$$0x.get(0), (xh)$$0x.get(1), (xh)$$0x.get(2), (xh)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dtt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.lenientOptionalFieldOf("filtered_messages").forGetter(dtt::d),
+               cuu.q.fieldOf("color").orElse(cuu.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dtt::a)
+   );
+   public static final int b = 4;
+   private final xh[] d;
+   private final xh[] e;
+   private final cuu f;
+   private final boolean g;
+   @Nullable
+   private ayv[] h;
+   private boolean i;
 
-   List<UUID> detect(arj var1, dtt.a var2, jf var3, double var4, boolean var6);
-
-   private static boolean a(dej $$0, eyw $$1, eyw $$2) {
-      eys $$3 = $$0.a(new ddr($$2, $$1, ddr.a.c, ddr.b.a, ezb.a()));
-      return $$3.b().equals(jf.a((jy)$$1)) || $$3.d() == eyu.a.a;
+   public dtt() {
+      this(c(), c(), cuu.p, false);
    }
 
-   public interface a {
-      dtt.a a = new dtt.a() {
-         @Override
-         public List<ark> a(arj $$0, Predicate<? super cnx> $$1) {
-            return $$0.a($$1);
+   public dtt(xh[] $$0, xh[] $$1, cuu $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+   }
+
+   private static xh[] c() {
+      return new xh[]{xg.a, xg.a, xg.a, xg.a};
+   }
+
+   private static dtt a(xh[] $$0, Optional<xh[]> $$1, cuu $$2, boolean $$3) {
+      return new dtt($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public dtt a(boolean $$0) {
+      return $$0 == this.g ? this : new dtt(this.d, this.e, this.f, $$0);
+   }
+
+   public cuu b() {
+      return this.f;
+   }
+
+   public dtt a(cuu $$0) {
+      return $$0 == this.b() ? this : new dtt(this.d, this.e, $$0, this.g);
+   }
+
+   public xh a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
+   }
+
+   public dtt a(int $$0, xh $$1) {
+      return this.a($$0, $$1, $$1);
+   }
+
+   public dtt a(int $$0, xh $$1, xh $$2) {
+      xh[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      xh[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dtt($$3, $$4, this.f, this.g);
+   }
+
+   public boolean a(coh $$0) {
+      return Arrays.stream(this.b($$0.ab())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   }
+
+   public xh[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
+   }
+
+   public ayv[] a(boolean $$0, Function<xh, ayv> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new ayv[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
          }
-
-         @Override
-         public <T extends btr> List<T> a(arj $$0, dzd<btr, T> $$1, eyr $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
-
-      List<? extends cnx> a(arj var1, Predicate<? super cnx> var2);
-
-      <T extends btr> List<T> a(arj var1, dzd<btr, T> var2, eyr var3, Predicate<? super T> var4);
-
-      static dtt.a a(cnx $$0) {
-         return a(List.of($$0));
       }
 
-      static dtt.a a(final List<cnx> $$0) {
-         return new dtt.a() {
-            @Override
-            public List<cnx> a(arj $$0x, Predicate<? super cnx> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
+      return this.h;
+   }
 
-            @Override
-            public <T extends btr> List<T> a(arj $$0x, dzd<btr, T> $$1, eyr $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
-            }
-         };
+   private Optional<xh[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
+         }
       }
+
+      return Optional.empty();
+   }
+
+   public boolean b(coh $$0) {
+      for (xh $$1 : this.b($$0.ab())) {
+         ye $$2 = $$1.a();
+         xf $$3 = $$2.h();
+         if ($$3 != null && $$3.a() == xf.a.c) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

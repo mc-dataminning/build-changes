@@ -1,6 +1,8 @@
-public interface bnh {
-   bnh a = () -> {
-   };
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void cut();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bnh {
 }

@@ -1,11 +1,9 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
 
 public interface dcv {
-   Codec<dcv> a = lv.ay.q().dispatch(dcv::a, Function.identity());
-
-   void a(cvs var1, dbt.a var2, azn var3, brq var4);
-
-   MapCodec<? extends dcv> a();
+   static MapCodec<? extends dcu> a(kc<MapCodec<? extends dcu>> $$0) {
+      kc.a($$0, "by_cost", dcw.b);
+      kc.a($$0, "by_cost_with_difficulty", dcx.c);
+      return kc.a($$0, "single", dcy.b);
+   }
 }

@@ -1,23 +1,28 @@
-public class gsf extends gsb<gvm, fzm> {
-   private final fzm a;
+import javax.annotation.Nullable;
 
-   public gsf(gpk<gvm, fzm> $$0, gam $$1) {
+public class gsf<S extends gva, M extends fxz<S> & fww> extends gsm<S, M> {
+   private final gox a;
+
+   public gsf(gpv<S, M> $$0, gox $$1) {
       super($$0);
-      this.a = new fzm($$1.a(gap.ct));
+      this.a = $$1;
    }
 
-   public void a(fdi $$0, ghl $$1, int $$2, gvm $$3, float $$4, float $$5) {
-      boolean $$6 = $$3.aj && $$3.u;
-      if (!$$3.u || $$6) {
-         fdm $$7;
-         if ($$6) {
-            $$7 = $$1.getBuffer(ghv.r(gpr.a));
-         } else {
-            $$7 = $$1.getBuffer(ghv.i(gpr.a));
-         }
+   public void a(fdt $$0, ghw $$1, int $$2, S $$3, float $$4, float $$5) {
+      this.a($$3, $$3.aq, $$3.ar, cvv.c, bup.b, $$0, $$1, $$2);
+      this.a($$3, $$3.as, $$3.at, cvv.b, bup.a, $$0, $$1, $$2);
+   }
 
-         this.a.a($$3);
-         this.a.a($$0, $$7, $$2, gop.a($$3, 0.0F));
+   protected void a(S $$0, @Nullable gzu $$1, cvx $$2, cvv $$3, bup $$4, fdt $$5, ghw $$6, int $$7) {
+      if ($$1 != null && !$$2.f()) {
+         $$5.a();
+         this.d().a($$4, $$5);
+         $$5.a(a.b.rotationDegrees(-90.0F));
+         $$5.a(a.d.rotationDegrees(180.0F));
+         boolean $$8 = $$4 == bup.a;
+         $$5.a((float)($$8 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$2, $$3, $$8, $$5, $$6, $$7, gxj.d, $$1);
+         $$5.b();
       }
    }
 }

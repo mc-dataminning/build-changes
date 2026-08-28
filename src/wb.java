@@ -1,1472 +1,592 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.buffer.ByteBufInputStream;
-import io.netty.buffer.ByteBufOutputStream;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import io.netty.util.ByteProcessor;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.channels.FileChannel;
-import java.nio.channels.GatheringByteChannel;
-import java.nio.channels.ScatteringByteChannel;
-import java.nio.charset.Charset;
-import java.security.PublicKey;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.Collection;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Queues;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelOutboundHandler;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.ChannelPromise;
+import io.netty.channel.DefaultEventLoopGroup;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollSocketChannel;
+import io.netty.channel.local.LocalChannel;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.flow.FlowControlHandler;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.handler.timeout.TimeoutException;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.nio.channels.ClosedChannelException;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import javax.crypto.Cipher;
+import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
-public class wb extends ByteBuf {
-   public static final int a = 2097152;
-   private final ByteBuf d;
-   public static final short b = 32767;
-   public static final int c = 262144;
-   private static final int e = 256;
-   private static final int f = 256;
-   private static final int g = 512;
-   private static final Gson h = new Gson();
+public class wb extends SimpleChannelInboundHandler<zo<?>> {
+   private static final float h = 0.75F;
+   private static final Logger i = LogUtils.getLogger();
+   public static final Marker a = MarkerFactory.getMarker("NETWORK");
+   public static final Marker b = ad.a(MarkerFactory.getMarker("NETWORK_PACKETS"), $$0 -> $$0.add(a));
+   public static final Marker c = ad.a(MarkerFactory.getMarker("PACKET_RECEIVED"), $$0 -> $$0.add(b));
+   public static final Marker d = ad.a(MarkerFactory.getMarker("PACKET_SENT"), $$0 -> $$0.add(b));
+   public static final Supplier<NioEventLoopGroup> e = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Client IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<EpollEventLoopGroup> f = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Client IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<DefaultEventLoopGroup> g = Suppliers.memoize(
+      () -> new DefaultEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Local Client IO #%d").setDaemon(true).build())
+   );
+   private static final wp<aja> j = aiz.b;
+   private final zp k;
+   private volatile boolean l = true;
+   private final Queue<Consumer<wb>> m = Queues.newConcurrentLinkedQueue();
+   private Channel n;
+   private SocketAddress o;
+   @Nullable
+   private volatile wn p;
+   @Nullable
+   private volatile wn q;
+   @Nullable
+   private wd r;
+   private boolean s;
+   private boolean t;
+   private int u;
+   private int v;
+   private float w;
+   private float x;
+   private int y;
+   private boolean z;
+   @Nullable
+   private volatile wd A;
+   @Nullable
+   vu B;
 
-   public wb(ByteBuf $$0) {
-      this.d = $$0;
+   public wb(zp $$0) {
+      this.k = $$0;
    }
 
-   @Deprecated
-   public <T> T a(DynamicOps<vd> $$0, Codec<T> $$1) {
-      return this.a($$0, $$1, up.a());
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      this.n = $$0.channel();
+      this.o = this.n.remoteAddress();
+      if (this.A != null) {
+         this.a(this.A);
+      }
    }
 
-   @Deprecated
-   public <T> T a(DynamicOps<vd> $$0, Codec<T> $$1, up $$2) {
-      vd $$3 = this.a($$2);
-      return (T)$$1.parse($$0, $$3).getOrThrow($$1x -> new DecoderException("Failed to decode: " + $$1x + " " + $$3));
+   public void channelInactive(ChannelHandlerContext $$0) {
+      this.a(xh.c("disconnect.endOfStream"));
    }
 
-   @Deprecated
-   public <T> wb a(DynamicOps<vd> $$0, Codec<T> $$1, T $$2) {
-      vd $$3 = (vd)$$1.encodeStart($$0, $$2).getOrThrow($$1x -> new EncoderException("Failed to encode: " + $$1x + " " + $$2));
-      this.a($$3);
-      return this;
-   }
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      if ($$1 instanceof wu) {
+         i.debug("Skipping packet due to errors", $$1.getCause());
+      } else {
+         boolean $$2 = !this.z;
+         this.z = true;
+         if (this.n.isOpen()) {
+            if ($$1 instanceof TimeoutException) {
+               i.debug("Timeout", $$1);
+               this.a(xh.c("disconnect.timeout"));
+            } else {
+               xh $$3 = xh.a("disconnect.genericReason", "Internal Exception: " + $$1);
+               wn $$4 = this.q;
+               wd $$5;
+               if ($$4 != null) {
+                  $$5 = $$4.a($$3, $$1);
+               } else {
+                  $$5 = new wd($$3);
+               }
 
-   public <T> T a(Codec<T> $$0) {
-      JsonElement $$1 = ayv.a(h, this.p(), JsonElement.class);
-      DataResult<T> $$2 = $$0.parse(JsonOps.INSTANCE, $$1);
-      return (T)$$2.getOrThrow($$0x -> new DecoderException("Failed to decode json: " + $$0x));
-   }
+               if ($$2) {
+                  i.debug("Failed to sent packet", $$1);
+                  if (this.g() == zp.b) {
+                     zo<?> $$7 = (zo<?>)(this.l ? new ajh($$3) : new zx($$3));
+                     this.a($$7, wo.a(() -> this.a($$5)));
+                  } else {
+                     this.a($$5);
+                  }
 
-   public <T> void a(Codec<T> $$0, T $$1) {
-      DataResult<JsonElement> $$2 = $$0.encodeStart(JsonOps.INSTANCE, $$1);
-      this.a(h.toJson((JsonElement)$$2.getOrThrow($$1x -> new EncoderException("Failed to encode: " + $$1x + " " + $$1))));
-   }
-
-   public static <T> IntFunction<T> a(IntFunction<T> $$0, int $$1) {
-      return $$2 -> {
-         if ($$2 > $$1) {
-            throw new DecoderException("Value " + $$2 + " is larger than limit " + $$1);
-         } else {
-            return $$0.apply($$2);
+                  this.m();
+               } else {
+                  i.debug("Double fault", $$1);
+                  this.a($$5);
+               }
+            }
          }
-      };
-   }
-
-   public <T, C extends Collection<T>> C a(IntFunction<C> $$0, zd<? super wb, T> $$1) {
-      int $$2 = this.l();
-      C $$3 = (C)$$0.apply($$2);
-
-      for (int $$4 = 0; $$4 < $$2; $$4++) {
-         $$3.add($$1.decode(this));
-      }
-
-      return $$3;
-   }
-
-   public <T> void a(Collection<T> $$0, ze<? super wb, T> $$1) {
-      this.c($$0.size());
-
-      for (T $$2 : $$0) {
-         $$1.encode(this, $$2);
       }
    }
 
-   public <T> List<T> a(zd<? super wb, T> $$0) {
-      return this.a(Lists::newArrayListWithCapacity, $$0);
-   }
+   protected void a(ChannelHandlerContext $$0, zo<?> $$1) {
+      if (this.n.isOpen()) {
+         wn $$2 = this.q;
+         if ($$2 == null) {
+            throw new IllegalStateException("Received a packet before the packet listener was initialized");
+         } else {
+            if ($$2.a($$1)) {
+               try {
+                  a($$1, $$2);
+               } catch (alt var5) {
+               } catch (RejectedExecutionException var6) {
+                  this.a(xh.c("multiplayer.disconnect.server_shutdown"));
+               } catch (ClassCastException var7) {
+                  i.error("Received {} that couldn't be processed", $$1.getClass(), var7);
+                  this.a(xh.c("multiplayer.disconnect.invalid_packet"));
+               }
 
-   public IntList a() {
-      int $$0 = this.l();
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         $$1.add(this.l());
+               this.u++;
+            }
+         }
       }
-
-      return $$1;
    }
 
-   public void a(IntList $$0) {
-      this.c($$0.size());
-      $$0.forEach(this::c);
+   private static <T extends wn> void a(zo<T> $$0, wn $$1) {
+      $$0.a((T)$$1);
    }
 
-   public <K, V, M extends Map<K, V>> M a(IntFunction<M> $$0, zd<? super wb, K> $$1, zd<? super wb, V> $$2) {
-      int $$3 = this.l();
-      M $$4 = (M)$$0.apply($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         K $$6 = $$1.decode(this);
-         V $$7 = $$2.decode(this);
-         $$4.put($$6, $$7);
+   private void b(wp<?> $$0, wn $$1) {
+      Validate.notNull($$1, "packetListener", new Object[0]);
+      zp $$2 = $$1.a();
+      if ($$2 != this.k) {
+         throw new IllegalStateException("Trying to set listener for wrong side: connection is " + this.k + ", but listener is " + $$2);
+      } else {
+         wc $$3 = $$1.b();
+         if ($$0.a() != $$3) {
+            throw new IllegalStateException("Listener protocol (" + $$3 + ") does not match requested one " + $$0);
+         }
       }
-
-      return $$4;
    }
 
-   public <K, V> Map<K, V> a(zd<? super wb, K> $$0, zd<? super wb, V> $$1) {
-      return this.a(Maps::newHashMapWithExpectedSize, $$0, $$1);
+   private static void a(ChannelFuture $$0) {
+      try {
+         $$0.syncUninterruptibly();
+      } catch (Exception var2) {
+         if (var2 instanceof ClosedChannelException) {
+            i.info("Connection closed during protocol change");
+         } else {
+            throw var2;
+         }
+      }
    }
 
-   public <K, V> void a(Map<K, V> $$0, ze<? super wb, K> $$1, ze<? super wb, V> $$2) {
-      this.c($$0.size());
-      $$0.forEach(($$2x, $$3) -> {
-         $$1.encode(this, (K)$$2x);
-         $$2.encode(this, (V)$$3);
-      });
+   public <T extends wn> void a(wp<T> $$0, T $$1) {
+      this.b($$0, $$1);
+      if ($$0.b() != this.f()) {
+         throw new IllegalStateException("Invalid inbound protocol: " + $$0.a());
+      } else {
+         this.q = $$1;
+         this.p = null;
+         ww.b $$2 = ww.a($$0);
+         zn $$3 = $$0.d();
+         if ($$3 != null) {
+            wj $$4 = new wj($$3);
+            $$2 = $$2.andThen($$1x -> $$1x.pipeline().addAfter("decoder", "bundler", $$4));
+         }
+
+         a(this.n.writeAndFlush($$2));
+      }
+   }
+
+   public void a(wp<?> $$0) {
+      if ($$0.b() != this.g()) {
+         throw new IllegalStateException("Invalid outbound protocol: " + $$0.a());
+      } else {
+         ww.d $$1 = ww.b($$0);
+         zn $$2 = $$0.d();
+         if ($$2 != null) {
+            wk $$3 = new wk($$2);
+            $$1 = $$1.andThen($$1x -> $$1x.pipeline().addAfter("encoder", "unbundler", $$3));
+         }
+
+         boolean $$4 = $$0.a() == wc.d;
+         a(this.n.writeAndFlush($$1.andThen($$1x -> this.l = $$4)));
+      }
+   }
+
+   public void a(wn $$0) {
+      if (this.q != null) {
+         throw new IllegalStateException("Listener already set");
+      } else if (this.k == zp.a && $$0.a() == zp.a && $$0.b() == j.a()) {
+         this.q = $$0;
+      } else {
+         throw new IllegalStateException("Invalid initial listener");
+      }
+   }
+
+   public void a(String $$0, int $$1, akc $$2) {
+      this.a($$0, $$1, aki.b, aki.d, $$2, aiw.a);
+   }
+
+   public void a(String $$0, int $$1, ajc $$2) {
+      this.a($$0, $$1, ajj.b, ajj.d, $$2, aiw.b);
+   }
+
+   public <S extends wt, C extends vy> void a(String $$0, int $$1, wp<S> $$2, wp<C> $$3, C $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 ? aiw.c : aiw.b);
+   }
+
+   private <S extends wt, C extends vy> void a(String $$0, int $$1, wp<S> $$2, wp<C> $$3, C $$4, aiw $$5) {
+      if ($$2.a() != $$3.a()) {
+         throw new IllegalStateException("Mismatched initial protocols");
+      } else {
+         this.p = $$4;
+         this.a((Consumer<wb>)($$6 -> {
+            this.a($$3, $$4);
+            $$6.b(new aix(ab.b().e(), $$0, $$1, $$5), null, true);
+            this.a($$2);
+         }));
+      }
+   }
+
+   public void a(zo<?> $$0) {
+      this.a($$0, null);
+   }
+
+   public void a(zo<?> $$0, @Nullable wo $$1) {
+      this.a($$0, $$1, true);
+   }
+
+   public void a(zo<?> $$0, @Nullable wo $$1, boolean $$2) {
+      if (this.i()) {
+         this.r();
+         this.b($$0, $$1, $$2);
+      } else {
+         this.m.add($$3 -> $$3.b($$0, $$1, $$2));
+      }
    }
 
    public void a(Consumer<wb> $$0) {
-      int $$1 = this.l();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
+      if (this.i()) {
+         this.r();
          $$0.accept(this);
+      } else {
+         this.m.add($$0);
       }
    }
 
-   public <E extends Enum<E>> void a(EnumSet<E> $$0, Class<E> $$1) {
-      E[] $$2 = (E[])$$1.getEnumConstants();
-      BitSet $$3 = new BitSet($$2.length);
-
-      for (int $$4 = 0; $$4 < $$2.length; $$4++) {
-         $$3.set($$4, $$0.contains($$2[$$4]));
+   private void b(zo<?> $$0, @Nullable wo $$1, boolean $$2) {
+      this.v++;
+      if (this.n.eventLoop().inEventLoop()) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.n.eventLoop().execute(() -> this.c($$0, $$1, $$2));
       }
-
-      this.a($$3, $$2.length);
    }
 
-   public <E extends Enum<E>> EnumSet<E> a(Class<E> $$0) {
-      E[] $$1 = (E[])$$0.getEnumConstants();
-      BitSet $$2 = this.e($$1.length);
-      EnumSet<E> $$3 = EnumSet.noneOf($$0);
+   private void c(zo<?> $$0, @Nullable wo $$1, boolean $$2) {
+      ChannelFuture $$3 = $$2 ? this.n.writeAndFlush($$0) : this.n.write($$0);
+      if ($$1 != null) {
+         $$3.addListener($$1x -> {
+            if ($$1x.isSuccess()) {
+               $$1.a();
+            } else {
+               zo<?> $$2x = $$1.b();
+               if ($$2x != null) {
+                  ChannelFuture $$3x = this.n.writeAndFlush($$2x);
+                  $$3x.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
+               }
+            }
+         });
+      }
 
-      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
-         if ($$2.get($$4)) {
-            $$3.add($$1[$$4]);
+      $$3.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
+   }
+
+   public void a() {
+      if (this.i()) {
+         this.q();
+      } else {
+         this.m.add(wb::q);
+      }
+   }
+
+   private void q() {
+      if (this.n.eventLoop().inEventLoop()) {
+         this.n.flush();
+      } else {
+         this.n.eventLoop().execute(() -> this.n.flush());
+      }
+   }
+
+   private void r() {
+      if (this.n != null && this.n.isOpen()) {
+         synchronized (this.m) {
+            Consumer<wb> $$0;
+            while (($$0 = this.m.poll()) != null) {
+               $$0.accept(this);
+            }
          }
       }
+   }
 
+   public void b() {
+      this.r();
+      if (this.q instanceof wv $$0) {
+         $$0.d();
+      }
+
+      if (!this.i() && !this.t) {
+         this.n();
+      }
+
+      if (this.n != null) {
+         this.n.flush();
+      }
+
+      if (this.y++ % 20 == 0) {
+         this.c();
+      }
+
+      if (this.B != null) {
+         this.B.a();
+      }
+   }
+
+   protected void c() {
+      this.x = azj.h(0.75F, (float)this.v, this.x);
+      this.w = azj.h(0.75F, (float)this.u, this.w);
+      this.v = 0;
+      this.u = 0;
+   }
+
+   public SocketAddress d() {
+      return this.o;
+   }
+
+   public String a(boolean $$0) {
+      if (this.o == null) {
+         return "local";
+      } else {
+         return $$0 ? this.o.toString() : "IP hidden";
+      }
+   }
+
+   public void a(xh $$0) {
+      this.a(new wd($$0));
+   }
+
+   public void a(wd $$0) {
+      if (this.n == null) {
+         this.A = $$0;
+      }
+
+      if (this.i()) {
+         this.n.close().awaitUninterruptibly();
+         this.r = $$0;
+      }
+   }
+
+   public boolean e() {
+      return this.n instanceof LocalChannel || this.n instanceof LocalServerChannel;
+   }
+
+   public zp f() {
+      return this.k;
+   }
+
+   public zp g() {
+      return this.k.a();
+   }
+
+   public static wb a(InetSocketAddress $$0, boolean $$1, @Nullable bmv $$2) {
+      wb $$3 = new wb(zp.b);
+      if ($$2 != null) {
+         $$3.a($$2);
+      }
+
+      ChannelFuture $$4 = a($$0, $$1, $$3);
+      $$4.syncUninterruptibly();
       return $$3;
    }
 
-   public <T> void a(Optional<T> $$0, ze<? super wb, T> $$1) {
-      if ($$0.isPresent()) {
-         this.a(true);
-         $$1.encode(this, $$0.get());
+   public static ChannelFuture a(InetSocketAddress $$0, boolean $$1, final wb $$2) {
+      Class<? extends SocketChannel> $$3;
+      EventLoopGroup $$4;
+      if (Epoll.isAvailable() && $$1) {
+         $$3 = EpollSocketChannel.class;
+         $$4 = (EventLoopGroup)f.get();
       } else {
-         this.a(false);
+         $$3 = NioSocketChannel.class;
+         $$4 = (EventLoopGroup)e.get();
+      }
+
+      return ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group($$4)).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            try {
+               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+            } catch (ChannelException var3) {
+            }
+
+            ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
+            wb.a($$1, zp.b, false, $$2.B);
+            $$2.a($$1);
+         }
+      })).channel($$3)).connect($$0.getAddress(), $$0.getPort());
+   }
+
+   private static String b(boolean $$0) {
+      return $$0 ? "encoder" : "outbound_config";
+   }
+
+   private static String c(boolean $$0) {
+      return $$0 ? "decoder" : "inbound_config";
+   }
+
+   public void a(ChannelPipeline $$0) {
+      $$0.addLast("hackfix", new ChannelOutboundHandlerAdapter() {
+         public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+            super.write($$0, $$1, $$2);
+         }
+      }).addLast("packet_handler", this);
+   }
+
+   public static void a(ChannelPipeline $$0, zp $$1, boolean $$2, @Nullable vu $$3) {
+      zp $$4 = $$1.a();
+      boolean $$5 = $$1 == zp.a;
+      boolean $$6 = $$4 == zp.a;
+      $$0.addLast("splitter", a($$3, $$2))
+         .addLast(new ChannelHandler[]{new FlowControlHandler()})
+         .addLast(c($$5), (ChannelHandler)($$5 ? new wl<aja>(j) : new ww.a()))
+         .addLast("prepender", d($$2))
+         .addLast(b($$6), (ChannelHandler)($$6 ? new wm<aja>(j) : new ww.c()));
+   }
+
+   private static ChannelOutboundHandler d(boolean $$0) {
+      return (ChannelOutboundHandler)($$0 ? new wi() : new xb());
+   }
+
+   private static ChannelInboundHandler a(@Nullable vu $$0, boolean $$1) {
+      if (!$$1) {
+         return new xa($$0);
+      } else {
+         return (ChannelInboundHandler)($$0 != null ? new wg($$0) : new wh());
       }
    }
 
-   public <T> Optional<T> b(zd<? super wb, T> $$0) {
-      return this.readBoolean() ? Optional.of($$0.decode(this)) : Optional.empty();
+   public static void a(ChannelPipeline $$0, zp $$1) {
+      a($$0, $$1, true, null);
+   }
+
+   public static wb a(SocketAddress $$0) {
+      final wb $$1 = new wb(zp.b);
+      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)g.get())).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            ChannelPipeline $$1 = $$0.pipeline();
+            wb.a($$1, zp.b);
+            $$1.a($$1);
+         }
+      })).channel(LocalChannel.class)).connect($$0).syncUninterruptibly();
+      return $$1;
+   }
+
+   public void a(Cipher $$0, Cipher $$1) {
+      this.s = true;
+      this.n.pipeline().addBefore("splitter", "decrypt", new vw($$0));
+      this.n.pipeline().addBefore("prepender", "encrypt", new vx($$1));
+   }
+
+   public boolean h() {
+      return this.s;
+   }
+
+   public boolean i() {
+      return this.n != null && this.n.isOpen();
+   }
+
+   public boolean j() {
+      return this.n == null;
    }
 
    @Nullable
-   public <T> T c(zd<? super wb, T> $$0) {
-      return a(this, $$0);
+   public wn k() {
+      return this.q;
    }
 
    @Nullable
-   public static <T, B extends ByteBuf> T a(B $$0, zd<? super B, T> $$1) {
-      return $$0.readBoolean() ? $$1.decode($$0) : null;
+   public wd l() {
+      return this.r;
    }
 
-   public <T> void a(@Nullable T $$0, ze<? super wb, T> $$1) {
-      a(this, $$0, $$1);
-   }
-
-   public static <T, B extends ByteBuf> void a(B $$0, @Nullable T $$1, ze<? super B, T> $$2) {
-      if ($$1 != null) {
-         $$0.writeBoolean(true);
-         $$2.encode($$0, $$1);
-      } else {
-         $$0.writeBoolean(false);
+   public void m() {
+      if (this.n != null) {
+         this.n.config().setAutoRead(false);
       }
    }
 
-   public byte[] b() {
-      return a((ByteBuf)this);
-   }
-
-   public static byte[] a(ByteBuf $$0) {
-      return a($$0, $$0.readableBytes());
-   }
-
-   public wb a(byte[] $$0) {
-      a(this, $$0);
-      return this;
-   }
-
-   public static void a(ByteBuf $$0, byte[] $$1) {
-      wv.a($$0, $$1.length);
-      $$0.writeBytes($$1);
-   }
-
-   public byte[] a(int $$0) {
-      return a(this, $$0);
-   }
-
-   public static byte[] a(ByteBuf $$0, int $$1) {
-      int $$2 = wv.a($$0);
-      if ($$2 > $$1) {
-         throw new DecoderException("ByteArray with size " + $$2 + " is bigger than allowed " + $$1);
-      } else {
-         byte[] $$3 = new byte[$$2];
-         $$0.readBytes($$3);
-         return $$3;
-      }
-   }
-
-   public wb a(int[] $$0) {
-      this.c($$0.length);
-
-      for (int $$1 : $$0) {
-         this.c($$1);
-      }
-
-      return this;
-   }
-
-   public int[] c() {
-      return this.b(this.readableBytes());
-   }
-
-   public int[] b(int $$0) {
-      int $$1 = this.l();
-      if ($$1 > $$0) {
-         throw new DecoderException("VarIntArray with size " + $$1 + " is bigger than allowed " + $$0);
-      } else {
-         int[] $$2 = new int[$$1];
-
-         for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-            $$2[$$3] = this.l();
+   public void a(int $$0, boolean $$1) {
+      if ($$0 >= 0) {
+         if (this.n.pipeline().get("decompress") instanceof vz $$2) {
+            $$2.a($$0, $$1);
+         } else {
+            this.n.pipeline().addAfter("splitter", "decompress", new vz($$0, $$1));
          }
 
-         return $$2;
-      }
-   }
-
-   public wb a(long[] $$0) {
-      this.c($$0.length);
-
-      for (long $$1 : $$0) {
-         this.b($$1);
-      }
-
-      return this;
-   }
-
-   public long[] d() {
-      return this.b(null);
-   }
-
-   public long[] b(@Nullable long[] $$0) {
-      return this.a($$0, this.readableBytes() / 8);
-   }
-
-   public long[] a(@Nullable long[] $$0, int $$1) {
-      int $$2 = this.l();
-      if ($$0 == null || $$0.length != $$2) {
-         if ($$2 > $$1) {
-            throw new DecoderException("LongArray with size " + $$2 + " is bigger than allowed " + $$1);
+         if (this.n.pipeline().get("compress") instanceof wa $$3) {
+            $$3.a($$0);
+         } else {
+            this.n.pipeline().addAfter("prepender", "compress", new wa($$0));
+         }
+      } else {
+         if (this.n.pipeline().get("decompress") instanceof vz) {
+            this.n.pipeline().remove("decompress");
          }
 
-         $$0 = new long[$$2];
-      }
-
-      for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-         $$0[$$3] = this.readLong();
-      }
-
-      return $$0;
-   }
-
-   public jf e() {
-      return b(this);
-   }
-
-   public static jf b(ByteBuf $$0) {
-      return jf.d($$0.readLong());
-   }
-
-   public wb a(jf $$0) {
-      a(this, $$0);
-      return this;
-   }
-
-   public static void a(ByteBuf $$0, jf $$1) {
-      $$0.writeLong($$1.a());
-   }
-
-   public ddp f() {
-      return new ddp(this.readLong());
-   }
-
-   public wb a(ddp $$0) {
-      this.b($$0.a());
-      return this;
-   }
-
-   public kh g() {
-      return kh.a(this.readLong());
-   }
-
-   public wb a(kh $$0) {
-      this.b($$0.s());
-      return this;
-   }
-
-   public jn h() {
-      ald<dej> $$0 = this.a(lw.bc);
-      jf $$1 = this.e();
-      return jn.a($$0, $$1);
-   }
-
-   public void a(jn $$0) {
-      this.b($$0.a());
-      this.a($$0.b());
-   }
-
-   public Vector3f i() {
-      return c(this);
-   }
-
-   public static Vector3f c(ByteBuf $$0) {
-      return new Vector3f($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
-   }
-
-   public void a(Vector3f $$0) {
-      a(this, $$0);
-   }
-
-   public static void a(ByteBuf $$0, Vector3f $$1) {
-      $$0.writeFloat($$1.x());
-      $$0.writeFloat($$1.y());
-      $$0.writeFloat($$1.z());
-   }
-
-   public Quaternionf j() {
-      return d(this);
-   }
-
-   public static Quaternionf d(ByteBuf $$0) {
-      return new Quaternionf($$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
-   }
-
-   public void a(Quaternionf $$0) {
-      a(this, $$0);
-   }
-
-   public static void a(ByteBuf $$0, Quaternionf $$1) {
-      $$0.writeFloat($$1.x);
-      $$0.writeFloat($$1.y);
-      $$0.writeFloat($$1.z);
-      $$0.writeFloat($$1.w);
-   }
-
-   public static eyw e(ByteBuf $$0) {
-      return new eyw($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
-   }
-
-   public eyw k() {
-      return e(this);
-   }
-
-   public static void a(ByteBuf $$0, eyw $$1) {
-      $$0.writeDouble($$1.a());
-      $$0.writeDouble($$1.b());
-      $$0.writeDouble($$1.c());
-   }
-
-   public void a(eyw $$0) {
-      a(this, $$0);
-   }
-
-   public <T extends Enum<T>> T b(Class<T> $$0) {
-      return $$0.getEnumConstants()[this.l()];
-   }
-
-   public wb a(Enum<?> $$0) {
-      return this.c($$0.ordinal());
-   }
-
-   public <T> T a(IntFunction<T> $$0) {
-      int $$1 = this.l();
-      return $$0.apply($$1);
-   }
-
-   public <T> wb a(ToIntFunction<T> $$0, T $$1) {
-      int $$2 = $$0.applyAsInt($$1);
-      return this.c($$2);
-   }
-
-   public int l() {
-      return wv.a(this.d);
-   }
-
-   public long m() {
-      return ww.a(this.d);
-   }
-
-   public wb a(UUID $$0) {
-      a(this, $$0);
-      return this;
-   }
-
-   public static void a(ByteBuf $$0, UUID $$1) {
-      $$0.writeLong($$1.getMostSignificantBits());
-      $$0.writeLong($$1.getLeastSignificantBits());
-   }
-
-   public UUID n() {
-      return f(this);
-   }
-
-   public static UUID f(ByteBuf $$0) {
-      return new UUID($$0.readLong(), $$0.readLong());
-   }
-
-   public wb c(int $$0) {
-      wv.a(this.d, $$0);
-      return this;
-   }
-
-   public wb a(long $$0) {
-      ww.a(this.d, $$0);
-      return this;
-   }
-
-   public wb a(@Nullable vd $$0) {
-      a(this, $$0);
-      return this;
-   }
-
-   public static void a(ByteBuf $$0, @Nullable vd $$1) {
-      if ($$1 == null) {
-         $$1 = ui.b;
-      }
-
-      try {
-         ut.a($$1, new ByteBufOutputStream($$0));
-      } catch (IOException var3) {
-         throw new EncoderException(var3);
+         if (this.n.pipeline().get("compress") instanceof wa) {
+            this.n.pipeline().remove("compress");
+         }
       }
    }
 
-   @Nullable
-   public ug o() {
-      return g(this);
-   }
-
-   @Nullable
-   public static ug g(ByteBuf $$0) {
-      vd $$1 = a($$0, up.a(2097152L));
-      if ($$1 != null && !($$1 instanceof ug)) {
-         throw new DecoderException("Not a compound tag: " + $$1);
-      } else {
-         return (ug)$$1;
+   public void n() {
+      if (this.n != null && !this.n.isOpen()) {
+         if (this.t) {
+            i.warn("handleDisconnection() called twice");
+         } else {
+            this.t = true;
+            wn $$0 = this.k();
+            wn $$1 = $$0 != null ? $$0 : this.p;
+            if ($$1 != null) {
+               wd $$2 = Objects.requireNonNullElseGet(this.l(), () -> new wd(xh.c("multiplayer.disconnect.generic")));
+               $$1.a($$2);
+            }
+         }
       }
    }
 
-   @Nullable
-   public static vd a(ByteBuf $$0, up $$1) {
-      try {
-         vd $$2 = ut.b(new ByteBufInputStream($$0), $$1);
-         return $$2.b() == 0 ? null : $$2;
-      } catch (IOException var3) {
-         throw new EncoderException(var3);
-      }
+   public float o() {
+      return this.w;
    }
 
-   @Nullable
-   public vd a(up $$0) {
-      return a(this, $$0);
+   public float p() {
+      return this.x;
    }
 
-   public String p() {
-      return this.d(32767);
-   }
-
-   public String d(int $$0) {
-      return wu.a(this.d, $$0);
-   }
-
-   public wb a(String $$0) {
-      return this.a($$0, 32767);
-   }
-
-   public wb a(String $$0, int $$1) {
-      wu.a(this.d, $$0, $$1);
-      return this;
-   }
-
-   public ale q() {
-      return ale.a(this.d(32767));
-   }
-
-   public wb a(ale $$0) {
-      this.a($$0.toString());
-      return this;
-   }
-
-   public <T> ald<T> a(ald<? extends kb<T>> $$0) {
-      ale $$1 = this.q();
-      return ald.a($$0, $$1);
-   }
-
-   public void b(ald<?> $$0) {
-      this.a($$0.a());
-   }
-
-   public <T> ald<? extends kb<T>> r() {
-      ale $$0 = this.q();
-      return ald.a($$0);
-   }
-
-   public Date s() {
-      return new Date(this.readLong());
-   }
-
-   public wb a(Date $$0) {
-      this.b($$0.getTime());
-      return this;
-   }
-
-   public Instant t() {
-      return Instant.ofEpochMilli(this.readLong());
-   }
-
-   public void a(Instant $$0) {
-      this.b($$0.toEpochMilli());
-   }
-
-   public PublicKey u() {
-      try {
-         return ayd.a(this.a(512));
-      } catch (aye var2) {
-         throw new DecoderException("Malformed public key bytes", var2);
-      }
-   }
-
-   public wb a(PublicKey $$0) {
-      this.a($$0.getEncoded());
-      return this;
-   }
-
-   public eys v() {
-      jf $$0 = this.e();
-      jk $$1 = this.b(jk.class);
-      float $$2 = this.readFloat();
-      float $$3 = this.readFloat();
-      float $$4 = this.readFloat();
-      boolean $$5 = this.readBoolean();
-      boolean $$6 = this.readBoolean();
-      return new eys(new eyw((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
-   }
-
-   public void a(eys $$0) {
-      jf $$1 = $$0.b();
-      this.a($$1);
-      this.a($$0.c());
-      eyw $$2 = $$0.g();
-      this.a((float)($$2.d - (double)$$1.u()));
-      this.a((float)($$2.e - (double)$$1.v()));
-      this.a((float)($$2.f - (double)$$1.w()));
-      this.a($$0.e());
-      this.a($$0.f());
-   }
-
-   public BitSet w() {
-      return BitSet.valueOf(this.d());
-   }
-
-   public void a(BitSet $$0) {
-      this.a($$0.toLongArray());
-   }
-
-   public BitSet e(int $$0) {
-      byte[] $$1 = new byte[azf.e($$0, 8)];
-      this.b($$1);
-      return BitSet.valueOf($$1);
-   }
-
-   public void a(BitSet $$0, int $$1) {
-      if ($$0.length() > $$1) {
-         throw new EncoderException("BitSet is larger than expected size (" + $$0.length() + ">" + $$1 + ")");
-      } else {
-         byte[] $$2 = $$0.toByteArray();
-         this.c(Arrays.copyOf($$2, azf.e($$1, 8)));
-      }
-   }
-
-   public static int h(ByteBuf $$0) {
-      return wv.a($$0);
-   }
-
-   public int x() {
-      return h(this.d);
-   }
-
-   public static void b(ByteBuf $$0, int $$1) {
-      wv.a($$0, $$1);
-   }
-
-   public void f(int $$0) {
-      b(this.d, $$0);
-   }
-
-   public boolean isContiguous() {
-      return this.d.isContiguous();
-   }
-
-   public int maxFastWritableBytes() {
-      return this.d.maxFastWritableBytes();
-   }
-
-   public int capacity() {
-      return this.d.capacity();
-   }
-
-   public wb g(int $$0) {
-      this.d.capacity($$0);
-      return this;
-   }
-
-   public int maxCapacity() {
-      return this.d.maxCapacity();
-   }
-
-   public ByteBufAllocator alloc() {
-      return this.d.alloc();
-   }
-
-   public ByteOrder order() {
-      return this.d.order();
-   }
-
-   public ByteBuf order(ByteOrder $$0) {
-      return this.d.order($$0);
-   }
-
-   public ByteBuf unwrap() {
-      return this.d;
-   }
-
-   public boolean isDirect() {
-      return this.d.isDirect();
-   }
-
-   public boolean isReadOnly() {
-      return this.d.isReadOnly();
-   }
-
-   public ByteBuf asReadOnly() {
-      return this.d.asReadOnly();
-   }
-
-   public int readerIndex() {
-      return this.d.readerIndex();
-   }
-
-   public wb h(int $$0) {
-      this.d.readerIndex($$0);
-      return this;
-   }
-
-   public int writerIndex() {
-      return this.d.writerIndex();
-   }
-
-   public wb i(int $$0) {
-      this.d.writerIndex($$0);
-      return this;
-   }
-
-   public wb a(int $$0, int $$1) {
-      this.d.setIndex($$0, $$1);
-      return this;
-   }
-
-   public int readableBytes() {
-      return this.d.readableBytes();
-   }
-
-   public int writableBytes() {
-      return this.d.writableBytes();
-   }
-
-   public int maxWritableBytes() {
-      return this.d.maxWritableBytes();
-   }
-
-   public boolean isReadable() {
-      return this.d.isReadable();
-   }
-
-   public boolean isReadable(int $$0) {
-      return this.d.isReadable($$0);
-   }
-
-   public boolean isWritable() {
-      return this.d.isWritable();
-   }
-
-   public boolean isWritable(int $$0) {
-      return this.d.isWritable($$0);
-   }
-
-   public wb y() {
-      this.d.clear();
-      return this;
-   }
-
-   public wb z() {
-      this.d.markReaderIndex();
-      return this;
-   }
-
-   public wb A() {
-      this.d.resetReaderIndex();
-      return this;
-   }
-
-   public wb B() {
-      this.d.markWriterIndex();
-      return this;
-   }
-
-   public wb C() {
-      this.d.resetWriterIndex();
-      return this;
-   }
-
-   public wb D() {
-      this.d.discardReadBytes();
-      return this;
-   }
-
-   public wb E() {
-      this.d.discardSomeReadBytes();
-      return this;
-   }
-
-   public wb j(int $$0) {
-      this.d.ensureWritable($$0);
-      return this;
-   }
-
-   public int ensureWritable(int $$0, boolean $$1) {
-      return this.d.ensureWritable($$0, $$1);
-   }
-
-   public boolean getBoolean(int $$0) {
-      return this.d.getBoolean($$0);
-   }
-
-   public byte getByte(int $$0) {
-      return this.d.getByte($$0);
-   }
-
-   public short getUnsignedByte(int $$0) {
-      return this.d.getUnsignedByte($$0);
-   }
-
-   public short getShort(int $$0) {
-      return this.d.getShort($$0);
-   }
-
-   public short getShortLE(int $$0) {
-      return this.d.getShortLE($$0);
-   }
-
-   public int getUnsignedShort(int $$0) {
-      return this.d.getUnsignedShort($$0);
-   }
-
-   public int getUnsignedShortLE(int $$0) {
-      return this.d.getUnsignedShortLE($$0);
-   }
-
-   public int getMedium(int $$0) {
-      return this.d.getMedium($$0);
-   }
-
-   public int getMediumLE(int $$0) {
-      return this.d.getMediumLE($$0);
-   }
-
-   public int getUnsignedMedium(int $$0) {
-      return this.d.getUnsignedMedium($$0);
-   }
-
-   public int getUnsignedMediumLE(int $$0) {
-      return this.d.getUnsignedMediumLE($$0);
-   }
-
-   public int getInt(int $$0) {
-      return this.d.getInt($$0);
-   }
-
-   public int getIntLE(int $$0) {
-      return this.d.getIntLE($$0);
-   }
-
-   public long getUnsignedInt(int $$0) {
-      return this.d.getUnsignedInt($$0);
-   }
-
-   public long getUnsignedIntLE(int $$0) {
-      return this.d.getUnsignedIntLE($$0);
-   }
-
-   public long getLong(int $$0) {
-      return this.d.getLong($$0);
-   }
-
-   public long getLongLE(int $$0) {
-      return this.d.getLongLE($$0);
-   }
-
-   public char getChar(int $$0) {
-      return this.d.getChar($$0);
-   }
-
-   public float getFloat(int $$0) {
-      return this.d.getFloat($$0);
-   }
-
-   public double getDouble(int $$0) {
-      return this.d.getDouble($$0);
-   }
-
-   public wb a(int $$0, ByteBuf $$1) {
-      this.d.getBytes($$0, $$1);
-      return this;
-   }
-
-   public wb a(int $$0, ByteBuf $$1, int $$2) {
-      this.d.getBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public wb a(int $$0, ByteBuf $$1, int $$2, int $$3) {
-      this.d.getBytes($$0, $$1, $$2, $$3);
-      return this;
-   }
-
-   public wb a(int $$0, byte[] $$1) {
-      this.d.getBytes($$0, $$1);
-      return this;
-   }
-
-   public wb a(int $$0, byte[] $$1, int $$2, int $$3) {
-      this.d.getBytes($$0, $$1, $$2, $$3);
-      return this;
-   }
-
-   public wb a(int $$0, ByteBuffer $$1) {
-      this.d.getBytes($$0, $$1);
-      return this;
-   }
-
-   public wb a(int $$0, OutputStream $$1, int $$2) throws IOException {
-      this.d.getBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public int getBytes(int $$0, GatheringByteChannel $$1, int $$2) throws IOException {
-      return this.d.getBytes($$0, $$1, $$2);
-   }
-
-   public int getBytes(int $$0, FileChannel $$1, long $$2, int $$3) throws IOException {
-      return this.d.getBytes($$0, $$1, $$2, $$3);
-   }
-
-   public CharSequence getCharSequence(int $$0, int $$1, Charset $$2) {
-      return this.d.getCharSequence($$0, $$1, $$2);
-   }
-
-   public wb a(int $$0, boolean $$1) {
-      this.d.setBoolean($$0, $$1);
-      return this;
-   }
-
-   public wb b(int $$0, int $$1) {
-      this.d.setByte($$0, $$1);
-      return this;
-   }
-
-   public wb c(int $$0, int $$1) {
-      this.d.setShort($$0, $$1);
-      return this;
-   }
-
-   public wb d(int $$0, int $$1) {
-      this.d.setShortLE($$0, $$1);
-      return this;
-   }
-
-   public wb e(int $$0, int $$1) {
-      this.d.setMedium($$0, $$1);
-      return this;
-   }
-
-   public wb f(int $$0, int $$1) {
-      this.d.setMediumLE($$0, $$1);
-      return this;
-   }
-
-   public wb g(int $$0, int $$1) {
-      this.d.setInt($$0, $$1);
-      return this;
-   }
-
-   public wb h(int $$0, int $$1) {
-      this.d.setIntLE($$0, $$1);
-      return this;
-   }
-
-   public wb a(int $$0, long $$1) {
-      this.d.setLong($$0, $$1);
-      return this;
-   }
-
-   public wb b(int $$0, long $$1) {
-      this.d.setLongLE($$0, $$1);
-      return this;
-   }
-
-   public wb i(int $$0, int $$1) {
-      this.d.setChar($$0, $$1);
-      return this;
-   }
-
-   public wb a(int $$0, float $$1) {
-      this.d.setFloat($$0, $$1);
-      return this;
-   }
-
-   public wb a(int $$0, double $$1) {
-      this.d.setDouble($$0, $$1);
-      return this;
-   }
-
-   public wb b(int $$0, ByteBuf $$1) {
-      this.d.setBytes($$0, $$1);
-      return this;
-   }
-
-   public wb b(int $$0, ByteBuf $$1, int $$2) {
-      this.d.setBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public wb b(int $$0, ByteBuf $$1, int $$2, int $$3) {
-      this.d.setBytes($$0, $$1, $$2, $$3);
-      return this;
-   }
-
-   public wb b(int $$0, byte[] $$1) {
-      this.d.setBytes($$0, $$1);
-      return this;
-   }
-
-   public wb b(int $$0, byte[] $$1, int $$2, int $$3) {
-      this.d.setBytes($$0, $$1, $$2, $$3);
-      return this;
-   }
-
-   public wb b(int $$0, ByteBuffer $$1) {
-      this.d.setBytes($$0, $$1);
-      return this;
-   }
-
-   public int setBytes(int $$0, InputStream $$1, int $$2) throws IOException {
-      return this.d.setBytes($$0, $$1, $$2);
-   }
-
-   public int setBytes(int $$0, ScatteringByteChannel $$1, int $$2) throws IOException {
-      return this.d.setBytes($$0, $$1, $$2);
-   }
-
-   public int setBytes(int $$0, FileChannel $$1, long $$2, int $$3) throws IOException {
-      return this.d.setBytes($$0, $$1, $$2, $$3);
-   }
-
-   public wb j(int $$0, int $$1) {
-      this.d.setZero($$0, $$1);
-      return this;
-   }
-
-   public int setCharSequence(int $$0, CharSequence $$1, Charset $$2) {
-      return this.d.setCharSequence($$0, $$1, $$2);
-   }
-
-   public boolean readBoolean() {
-      return this.d.readBoolean();
-   }
-
-   public byte readByte() {
-      return this.d.readByte();
-   }
-
-   public short readUnsignedByte() {
-      return this.d.readUnsignedByte();
-   }
-
-   public short readShort() {
-      return this.d.readShort();
-   }
-
-   public short readShortLE() {
-      return this.d.readShortLE();
-   }
-
-   public int readUnsignedShort() {
-      return this.d.readUnsignedShort();
-   }
-
-   public int readUnsignedShortLE() {
-      return this.d.readUnsignedShortLE();
-   }
-
-   public int readMedium() {
-      return this.d.readMedium();
-   }
-
-   public int readMediumLE() {
-      return this.d.readMediumLE();
-   }
-
-   public int readUnsignedMedium() {
-      return this.d.readUnsignedMedium();
-   }
-
-   public int readUnsignedMediumLE() {
-      return this.d.readUnsignedMediumLE();
-   }
-
-   public int readInt() {
-      return this.d.readInt();
-   }
-
-   public int readIntLE() {
-      return this.d.readIntLE();
-   }
-
-   public long readUnsignedInt() {
-      return this.d.readUnsignedInt();
-   }
-
-   public long readUnsignedIntLE() {
-      return this.d.readUnsignedIntLE();
-   }
-
-   public long readLong() {
-      return this.d.readLong();
-   }
-
-   public long readLongLE() {
-      return this.d.readLongLE();
-   }
-
-   public char readChar() {
-      return this.d.readChar();
-   }
-
-   public float readFloat() {
-      return this.d.readFloat();
-   }
-
-   public double readDouble() {
-      return this.d.readDouble();
-   }
-
-   public ByteBuf readBytes(int $$0) {
-      return this.d.readBytes($$0);
-   }
-
-   public ByteBuf readSlice(int $$0) {
-      return this.d.readSlice($$0);
-   }
-
-   public ByteBuf readRetainedSlice(int $$0) {
-      return this.d.readRetainedSlice($$0);
-   }
-
-   public wb i(ByteBuf $$0) {
-      this.d.readBytes($$0);
-      return this;
-   }
-
-   public wb c(ByteBuf $$0, int $$1) {
-      this.d.readBytes($$0, $$1);
-      return this;
-   }
-
-   public wb a(ByteBuf $$0, int $$1, int $$2) {
-      this.d.readBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public wb b(byte[] $$0) {
-      this.d.readBytes($$0);
-      return this;
-   }
-
-   public wb a(byte[] $$0, int $$1, int $$2) {
-      this.d.readBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public wb a(ByteBuffer $$0) {
-      this.d.readBytes($$0);
-      return this;
-   }
-
-   public wb a(OutputStream $$0, int $$1) throws IOException {
-      this.d.readBytes($$0, $$1);
-      return this;
-   }
-
-   public int readBytes(GatheringByteChannel $$0, int $$1) throws IOException {
-      return this.d.readBytes($$0, $$1);
-   }
-
-   public CharSequence readCharSequence(int $$0, Charset $$1) {
-      return this.d.readCharSequence($$0, $$1);
-   }
-
-   public int readBytes(FileChannel $$0, long $$1, int $$2) throws IOException {
-      return this.d.readBytes($$0, $$1, $$2);
-   }
-
-   public wb k(int $$0) {
-      this.d.skipBytes($$0);
-      return this;
-   }
-
-   public wb a(boolean $$0) {
-      this.d.writeBoolean($$0);
-      return this;
-   }
-
-   public wb l(int $$0) {
-      this.d.writeByte($$0);
-      return this;
-   }
-
-   public wb m(int $$0) {
-      this.d.writeShort($$0);
-      return this;
-   }
-
-   public wb n(int $$0) {
-      this.d.writeShortLE($$0);
-      return this;
-   }
-
-   public wb o(int $$0) {
-      this.d.writeMedium($$0);
-      return this;
-   }
-
-   public wb p(int $$0) {
-      this.d.writeMediumLE($$0);
-      return this;
-   }
-
-   public wb q(int $$0) {
-      this.d.writeInt($$0);
-      return this;
-   }
-
-   public wb r(int $$0) {
-      this.d.writeIntLE($$0);
-      return this;
-   }
-
-   public wb b(long $$0) {
-      this.d.writeLong($$0);
-      return this;
-   }
-
-   public wb c(long $$0) {
-      this.d.writeLongLE($$0);
-      return this;
-   }
-
-   public wb s(int $$0) {
-      this.d.writeChar($$0);
-      return this;
-   }
-
-   public wb a(float $$0) {
-      this.d.writeFloat($$0);
-      return this;
-   }
-
-   public wb a(double $$0) {
-      this.d.writeDouble($$0);
-      return this;
-   }
-
-   public wb j(ByteBuf $$0) {
-      this.d.writeBytes($$0);
-      return this;
-   }
-
-   public wb d(ByteBuf $$0, int $$1) {
-      this.d.writeBytes($$0, $$1);
-      return this;
-   }
-
-   public wb b(ByteBuf $$0, int $$1, int $$2) {
-      this.d.writeBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public wb c(byte[] $$0) {
-      this.d.writeBytes($$0);
-      return this;
-   }
-
-   public wb b(byte[] $$0, int $$1, int $$2) {
-      this.d.writeBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public wb b(ByteBuffer $$0) {
-      this.d.writeBytes($$0);
-      return this;
-   }
-
-   public int writeBytes(InputStream $$0, int $$1) throws IOException {
-      return this.d.writeBytes($$0, $$1);
-   }
-
-   public int writeBytes(ScatteringByteChannel $$0, int $$1) throws IOException {
-      return this.d.writeBytes($$0, $$1);
-   }
-
-   public int writeBytes(FileChannel $$0, long $$1, int $$2) throws IOException {
-      return this.d.writeBytes($$0, $$1, $$2);
-   }
-
-   public wb t(int $$0) {
-      this.d.writeZero($$0);
-      return this;
-   }
-
-   public int writeCharSequence(CharSequence $$0, Charset $$1) {
-      return this.d.writeCharSequence($$0, $$1);
-   }
-
-   public int indexOf(int $$0, int $$1, byte $$2) {
-      return this.d.indexOf($$0, $$1, $$2);
-   }
-
-   public int bytesBefore(byte $$0) {
-      return this.d.bytesBefore($$0);
-   }
-
-   public int bytesBefore(int $$0, byte $$1) {
-      return this.d.bytesBefore($$0, $$1);
-   }
-
-   public int bytesBefore(int $$0, int $$1, byte $$2) {
-      return this.d.bytesBefore($$0, $$1, $$2);
-   }
-
-   public int forEachByte(ByteProcessor $$0) {
-      return this.d.forEachByte($$0);
-   }
-
-   public int forEachByte(int $$0, int $$1, ByteProcessor $$2) {
-      return this.d.forEachByte($$0, $$1, $$2);
-   }
-
-   public int forEachByteDesc(ByteProcessor $$0) {
-      return this.d.forEachByteDesc($$0);
-   }
-
-   public int forEachByteDesc(int $$0, int $$1, ByteProcessor $$2) {
-      return this.d.forEachByteDesc($$0, $$1, $$2);
-   }
-
-   public ByteBuf copy() {
-      return this.d.copy();
-   }
-
-   public ByteBuf copy(int $$0, int $$1) {
-      return this.d.copy($$0, $$1);
-   }
-
-   public ByteBuf slice() {
-      return this.d.slice();
-   }
-
-   public ByteBuf retainedSlice() {
-      return this.d.retainedSlice();
-   }
-
-   public ByteBuf slice(int $$0, int $$1) {
-      return this.d.slice($$0, $$1);
-   }
-
-   public ByteBuf retainedSlice(int $$0, int $$1) {
-      return this.d.retainedSlice($$0, $$1);
-   }
-
-   public ByteBuf duplicate() {
-      return this.d.duplicate();
-   }
-
-   public ByteBuf retainedDuplicate() {
-      return this.d.retainedDuplicate();
-   }
-
-   public int nioBufferCount() {
-      return this.d.nioBufferCount();
-   }
-
-   public ByteBuffer nioBuffer() {
-      return this.d.nioBuffer();
-   }
-
-   public ByteBuffer nioBuffer(int $$0, int $$1) {
-      return this.d.nioBuffer($$0, $$1);
-   }
-
-   public ByteBuffer internalNioBuffer(int $$0, int $$1) {
-      return this.d.internalNioBuffer($$0, $$1);
-   }
-
-   public ByteBuffer[] nioBuffers() {
-      return this.d.nioBuffers();
-   }
-
-   public ByteBuffer[] nioBuffers(int $$0, int $$1) {
-      return this.d.nioBuffers($$0, $$1);
-   }
-
-   public boolean hasArray() {
-      return this.d.hasArray();
-   }
-
-   public byte[] array() {
-      return this.d.array();
-   }
-
-   public int arrayOffset() {
-      return this.d.arrayOffset();
-   }
-
-   public boolean hasMemoryAddress() {
-      return this.d.hasMemoryAddress();
-   }
-
-   public long memoryAddress() {
-      return this.d.memoryAddress();
-   }
-
-   public String toString(Charset $$0) {
-      return this.d.toString($$0);
-   }
-
-   public String toString(int $$0, int $$1, Charset $$2) {
-      return this.d.toString($$0, $$1, $$2);
-   }
-
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public boolean equals(Object $$0) {
-      return this.d.equals($$0);
-   }
-
-   public int compareTo(ByteBuf $$0) {
-      return this.d.compareTo($$0);
-   }
-
-   public String toString() {
-      return this.d.toString();
-   }
-
-   public wb u(int $$0) {
-      this.d.retain($$0);
-      return this;
-   }
-
-   public wb F() {
-      this.d.retain();
-      return this;
-   }
-
-   public wb G() {
-      this.d.touch();
-      return this;
-   }
-
-   public wb a(Object $$0) {
-      this.d.touch($$0);
-      return this;
-   }
-
-   public int refCnt() {
-      return this.d.refCnt();
-   }
-
-   public boolean release() {
-      return this.d.release();
-   }
-
-   public boolean release(int $$0) {
-      return this.d.release($$0);
+   public void a(bmv $$0) {
+      this.B = new vu($$0);
    }
 }

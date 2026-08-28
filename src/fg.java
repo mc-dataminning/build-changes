@@ -1,4 +1,3 @@
-import com.google.common.collect.Maps;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -6,74 +5,39 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
-import javax.annotation.Nullable;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class fg implements ArgumentType<fg.a> {
-   private static final Collection<String> a = Arrays.asList("eyes", "feet");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xe.b("argument.anchor.invalid", $$0));
+public class fg implements ArgumentType<alh> {
+   private static final Collection<String> a = Stream.of(dev.i, dev.j).map($$0 -> $$0.a().toString()).collect(Collectors.toList());
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xh.b("argument.dimension.invalid", $$0));
 
-   public static fg.a a(CommandContext<eu> $$0, String $$1) {
-      return (fg.a)$$0.getArgument($$1, fg.a.class);
-   }
-
-   public static fg a() {
-      return new fg();
-   }
-
-   public fg.a a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = $$0.readUnquotedString();
-      fg.a $$3 = fg.a.a($$2);
-      if ($$3 == null) {
-         $$0.setCursor($$1);
-         throw b.createWithContext($$0, $$2);
-      } else {
-         return $$3;
-      }
+   public alh a(StringReader $$0) throws CommandSyntaxException {
+      return alh.a($$0);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ez.b(fg.a.c.keySet(), $$1);
+      return $$0.getSource() instanceof fa ? fa.a(((fa)$$0.getSource()).u().stream().map(alg::a), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
       return a;
    }
 
-   public static enum a {
-      a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new eyw($$0.d, $$0.e + (double)$$1.cP(), $$0.f));
+   public static fg a() {
+      return new fg();
+   }
 
-      static final Map<String, fg.a> c = ad.a(Maps.newHashMap(), $$0 -> {
-         for (fg.a $$1 : values()) {
-            $$0.put($$1.d, $$1);
-         }
-      });
-      private final String d;
-      private final BiFunction<eyw, btr, eyw> e;
-
-      private a(final String $$0, final BiFunction<eyw, btr, eyw> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      @Nullable
-      public static fg.a a(String $$0) {
-         return c.get($$0);
-      }
-
-      public eyw a(btr $$0) {
-         return this.e.apply($$0.dq(), $$0);
-      }
-
-      public eyw a(eu $$0) {
-         btr $$1 = $$0.f();
-         return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
+   public static arm a(CommandContext<ev> $$0, String $$1) throws CommandSyntaxException {
+      alh $$2 = (alh)$$0.getArgument($$1, alh.class);
+      alg<dev> $$3 = alg.a(ly.bb, $$2);
+      arm $$4 = ((ev)$$0.getSource()).l().a($$3);
+      if ($$4 == null) {
+         throw b.create($$2);
+      } else {
+         return $$4;
       }
    }
 }

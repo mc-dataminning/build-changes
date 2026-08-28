@@ -1,85 +1,84 @@
-public class cba extends cbo {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final cgl b;
-   private final int c;
-   private boolean d;
+import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public cba(cgl $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class cba<T extends buv> extends cbt {
+   protected final bvd a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected ers d;
+   protected final ceh e;
+   protected final Class<T> f;
+   protected final Predicate<buv> g;
+   protected final Predicate<buv> h;
+   private final cfm k;
+
+   public cba(bvd $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bue.e::test);
+   }
+
+   public cba(bvd $$0, Class<T> $$1, Predicate<buv> $$2, float $$3, double $$4, double $$5, Predicate<buv> $$6) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.P();
+      this.a(EnumSet.of(cbt.a.a));
+      this.k = cfm.a().a((double)$$3).a($$6.and($$2));
+   }
+
+   public cba(bvd $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<buv> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean b() {
-      if (this.b.dV().a(this.c) != 0) {
+      this.b = this.a
+         .dX()
+         .a(this.a.dX().a(this.f, this.a.cS().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dC(), this.a.dE(), this.a.dI());
+      if (this.b == null) {
          return false;
       } else {
-         jk $$0 = this.b.cM();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         jf $$3 = this.b.ds();
-
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
+         ezh $$0 = cfq.a(this.a, 16, 7, this.b.dv());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
+            return this.d != null;
          }
-
-         return true;
       }
-   }
-
-   private boolean a(jf $$0, int $$1, int $$2, int $$3) {
-      jf $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dS().b_($$4).a(axb.a) && !this.b.dS().a_($$4).d();
-   }
-
-   private boolean b(jf $$0, int $$1, int $$2, int $$3) {
-      return this.b.dS().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dS().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
    }
 
    @Override
    public boolean c() {
-      double $$0 = this.b.dv().e;
-      return (!($$0 * $$0 < 0.03F) || this.b.dK() == 0.0F || !(Math.abs(this.b.dK()) < 10.0F) || !this.b.bi()) && !this.b.aH();
-   }
-
-   @Override
-   public boolean T_() {
-      return false;
+      return !this.e.m();
    }
 
    @Override
    public void d() {
-      jk $$0 = this.b.cM();
-      this.b.h(this.b.dv().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.P().o();
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void e() {
-      this.b.w(0.0F);
+      this.b = null;
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         eqt $$1 = this.b.dS().b_(this.b.ds());
-         this.d = $$1.a(axb.a);
-      }
-
-      if (this.d && !$$0) {
-         this.b.a(awg.hc, 1.0F, 1.0F);
-      }
-
-      eyw $$2 = this.b.dv();
-      if ($$2.e * $$2.e < 0.03F && this.b.dK() != 0.0F) {
-         this.b.w(azf.i(0.2F, this.b.dK(), 0.0F));
-      } else if ($$2.g() > 1.0E-5F) {
-         double $$3 = $$2.i();
-         double $$4 = Math.atan2(-$$2.e, $$3) * 180.0F / (float)Math.PI;
-         this.b.w((float)$$4);
+      if (this.a.g((btz)this.b) < 49.0) {
+         this.a.P().a(this.j);
+      } else {
+         this.a.P().a(this.i);
       }
    }
 }

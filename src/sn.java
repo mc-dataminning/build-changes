@@ -1,45 +1,71 @@
-public class sn {
-   public static final ald<ekk> a = sk.a("pile_hay");
-   public static final ald<ekk> b = sk.a("pile_melon");
-   public static final ald<ekk> c = sk.a("pile_snow");
-   public static final ald<ekk> d = sk.a("pile_ice");
-   public static final ald<ekk> e = sk.a("pile_pumpkin");
-   public static final ald<ekk> f = sk.a("oak");
-   public static final ald<ekk> g = sk.a("acacia");
-   public static final ald<ekk> h = sk.a("spruce");
-   public static final ald<ekk> i = sk.a("pine");
-   public static final ald<ekk> j = sk.a("patch_cactus");
-   public static final ald<ekk> k = sk.a("flower_plain");
-   public static final ald<ekk> l = sk.a("patch_taiga_grass");
-   public static final ald<ekk> m = sk.a("patch_berry_bush");
+import java.util.List;
 
-   public static void a(qu<ekk> $$0) {
-      jp<edg<?, ?>> $$1 = $$0.a(lw.aK);
-      jo<edg<?, ?>> $$2 = $$1.b(rz.a);
-      jo<edg<?, ?>> $$3 = $$1.b(rz.b);
-      jo<edg<?, ?>> $$4 = $$1.b(rz.c);
-      jo<edg<?, ?>> $$5 = $$1.b(rz.d);
-      jo<edg<?, ?>> $$6 = $$1.b(rz.e);
-      jo<edg<?, ?>> $$7 = $$1.b(sa.g);
-      jo<edg<?, ?>> $$8 = $$1.b(sa.j);
-      jo<edg<?, ?>> $$9 = $$1.b(sa.k);
-      jo<edg<?, ?>> $$10 = $$1.b(sa.l);
-      jo<edg<?, ?>> $$11 = $$1.b(sb.r);
-      jo<edg<?, ?>> $$12 = $$1.b(sb.w);
-      jo<edg<?, ?>> $$13 = $$1.b(sb.i);
-      jo<edg<?, ?>> $$14 = $$1.b(sb.h);
-      sk.a($$0, a, $$2);
-      sk.a($$0, b, $$3);
-      sk.a($$0, c, $$4);
-      sk.a($$0, d, $$5);
-      sk.a($$0, e, $$6);
-      sk.a($$0, f, $$7, sk.a(dho.x));
-      sk.a($$0, g, $$8, sk.a(dho.B));
-      sk.a($$0, h, $$9, sk.a(dho.y));
-      sk.a($$0, i, $$10, sk.a(dho.y));
-      sk.a($$0, j, $$11);
-      sk.a($$0, k, $$12);
-      sk.a($$0, l, $$13);
-      sk.a($$0, m, $$14);
+public class sn {
+   public static final eky a = ekr.a(eaz.a.e);
+   public static final eky b = ekr.a(eaz.a.c);
+   public static final eky c = ekr.a(eaz.a.a);
+   public static final eky d = ekr.a(eaz.a.d);
+   public static final eky e = ekq.a(ebt.a(), ebt.b());
+   public static final eky f = ekq.a(ebt.b(10), ebt.c(10));
+   public static final eky g = ekq.a(ebt.b(8), ebt.c(8));
+   public static final eky h = ekq.a(ebt.b(4), ebt.c(4));
+   public static final eky i = ekq.a(ebt.a(), ebt.a(256));
+
+   public static void a(qx<ekv> $$0) {
+      sh.a($$0);
+      si.a($$0);
+      sj.a($$0);
+      sk.a($$0);
+      sl.a($$0);
+      sm.a($$0);
+      so.a($$0);
+      sp.a($$0);
+      sq.a($$0);
+   }
+
+   public static alg<ekv> a(String $$0) {
+      return alg.a(ly.aR, alh.b($$0));
+   }
+
+   public static void a(qx<ekv> $$0, alg<ekv> $$1, jp<edr<?, ?>> $$2, List<eky> $$3) {
+      $$0.a($$1, new ekv($$2, List.copyOf($$3)));
+   }
+
+   public static void a(qx<ekv> $$0, alg<ekv> $$1, jp<edr<?, ?>> $$2, eky... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static eky a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bqg<brd> $$4 = bqg.<brd>a().a(bra.a($$0), (int)$$3 - 1).a(bra.a($$0 + $$2), 1).a();
+         return ekn.a(new brk($$4));
+      }
+   }
+
+   public static ekx a() {
+      return ekk.a(ecg.c);
+   }
+
+   public static ekk a(dhy $$0) {
+      return ekk.a(ecg.a($$0.m(), jg.c));
+   }
+
+   public static jp<ekv> a(jp<edr<?, ?>> $$0, eky... $$1) {
+      return jp.a(new ekv($$0, List.of($$1)));
+   }
+
+   public static <FC extends egj, F extends eef<FC>> jp<ekv> a(F $$0, FC $$1, eky... $$2) {
+      return a(jp.a(new edr($$0, $$1)), $$2);
+   }
+
+   public static <FC extends egj, F extends eef<FC>> jp<ekv> a(F $$0, FC $$1) {
+      return a($$0, $$1, ecg.c);
+   }
+
+   public static <FC extends egj, F extends eef<FC>> jp<ekv> a(F $$0, FC $$1, ecg $$2) {
+      return a($$0, $$1, ekk.a($$2));
    }
 }

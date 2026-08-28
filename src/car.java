@@ -1,84 +1,59 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class car implements cas {
+   private final bux a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-public class car<T extends bun> extends cbk {
-   protected final buv a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected erh d;
-   protected final cdy e;
-   protected final Class<T> f;
-   protected final Predicate<bun> g;
-   protected final Predicate<bun> h;
-   private final cfd k;
-
-   public car(buv $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, btw.e::test);
-   }
-
-   public car(buv $$0, Class<T> $$1, Predicate<bun> $$2, float $$3, double $$4, double $$5, Predicate<bun> $$6) {
+   public car(bux $$0) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.P();
-      this.a(EnumSet.of(cbk.a.a));
-      this.k = cfd.a().a((double)$$3).a($$6.and($$2));
    }
 
-   public car(buv $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bun> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean b() {
-      this.b = this.a
-         .dS()
-         .a(this.a.dS().a(this.f, this.a.cO().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dx(), this.a.dz(), this.a.dD());
-      if (this.b == null) {
-         return false;
+   public void a() {
+      if (this.f()) {
+         this.a.aU = this.a.dN();
+         this.c();
+         this.f = this.a.aW;
+         this.e = 0;
       } else {
-         eyw $$0 = cfh.a(this.a, 16, 7, this.b.dq());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
-            return this.d != null;
+         if (this.e()) {
+            if (Math.abs(this.a.aW - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aW;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
          }
       }
    }
 
-   @Override
-   public boolean c() {
-      return !this.e.m();
+   private void b() {
+      this.a.aU = azj.c(this.a.aU, this.a.aW, (float)this.a.ae());
    }
 
-   @Override
-   public void d() {
-      this.e.a(this.d, this.i);
+   private void c() {
+      this.a.aW = azj.c(this.a.aW, this.a.aU, (float)this.a.ae());
    }
 
-   @Override
-   public void e() {
-      this.b = null;
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = azj.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.ae() * (1.0F - $$1);
+      this.a.aU = azj.c(this.a.aU, this.a.aW, $$2);
    }
 
-   @Override
-   public void a() {
-      if (this.a.g((btr)this.b) < 49.0) {
-         this.a.P().a(this.j);
-      } else {
-         this.a.P().a(this.i);
-      }
+   private boolean e() {
+      return !(this.a.db() instanceof bux);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dC() - this.a.L;
+      double $$1 = this.a.dI() - this.a.N;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

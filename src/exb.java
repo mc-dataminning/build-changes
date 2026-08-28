@@ -1,28 +1,34 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record exb(exs b) implements eww {
-   public static final MapCodec<exb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ext.a.fieldOf("chance").forGetter(exb::c)).apply($$0, exb::new));
+public record exb(boolean b) implements exh {
+   public static final MapCodec<exb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(exb::e)).apply($$0, exb::new));
+
+   public boolean a(etw $$0) {
+      return $$0.b(ews.l) == this.b;
+   }
 
    @Override
-   public ewx b() {
-      return ewy.d;
+   public exi b() {
+      return exj.s;
    }
 
-   public boolean a(etl $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
+   @Override
+   public Set<ewp<?>> a() {
+      return Set.of(ews.l);
    }
 
-   public static eww.a a(float $$0) {
-      return () -> new exb(exp.a($$0));
+   public static exh.a c() {
+      return () -> new exb(true);
    }
 
-   public static eww.a a(exs $$0) {
-      return () -> new exb($$0);
+   public static exh.a d() {
+      return () -> new exb(false);
    }
 
-   public exs c() {
+   public boolean e() {
       return this.b;
    }
 }

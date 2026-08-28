@@ -1,75 +1,24 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 
-public class eil extends eiq {
-   public static final MapCodec<eil> a = ehz.a.fieldOf("provider").xmap(eil::new, $$0 -> $$0.b);
-   private final ehz b;
+public class eil<P extends eik> {
+   public static final eil<eit> a = a("simple_state_provider", eit.b);
+   public static final eil<eiu> b = a("weighted_state_provider", eiu.b);
+   public static final eil<eip> c = a("noise_threshold_provider", eip.b);
+   public static final eil<eio> d = a("noise_provider", eio.g);
+   public static final eil<eim> e = a("dual_noise_provider", eim.b);
+   public static final eil<eir> f = a("rotated_block_provider", eir.b);
+   public static final eil<eiq> g = a("randomized_int_state_provider", eiq.b);
+   private final MapCodec<P> h;
 
-   public eil(ehz $$0) {
-      this.b = $$0;
+   private static <P extends eik> eil<P> a(String $$0, MapCodec<P> $$1) {
+      return kc.a(lx.T, $$0, new eil<>($$1));
    }
 
-   @Override
-   protected eir<?> a() {
-      return eir.e;
+   private eil(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public void a(eiq.a $$0) {
-      List<jf> $$1 = Lists.newArrayList();
-      List<jf> $$2 = $$0.e();
-      List<jf> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
-
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(eiq.a $$0, jf $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(eiq.a $$0, jf $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         jf $$3 = $$1.b($$2);
-         if (edu.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

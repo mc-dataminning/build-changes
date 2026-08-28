@@ -1,109 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dkj extends dhm {
-   public static final MapCodec<dkj> a = b(dkj::new);
-   public static final dvs b = dvi.aQ;
-   protected static final ezq c = dhm.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
-   public static final int d = 7;
+public class dkj extends dkd {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<dkj> e = b(dkj::new);
+   private static final la g = new kz();
 
    @Override
    public MapCodec<dkj> a() {
-      return a;
+      return e;
    }
 
-   protected dkj(dur.d $$0) {
+   public dkj(dvc.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      if ($$1 == jk.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected la a(dev $$0, cvx $$1) {
+      return g;
    }
 
    @Override
-   protected boolean a(dus $$0, dem $$1, jf $$2) {
-      dus $$3 = $$1.a_($$2.d());
-      return !$$3.e() || $$3.b() instanceof dkl || $$3.b() instanceof duk;
+   public dsg a(jg $$0, dvd $$1) {
+      return new dta($$0, $$1);
    }
 
    @Override
-   public dus a(czn $$0) {
-      return !this.n().a((dem)$$0.q(), $$0.a()) ? dho.j.n() : super.a($$0);
-   }
+   protected void a(arm $$0, dvd $$1, jg $$2) {
+      dsz $$3 = $$0.a($$2, dsi.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+      } else {
+         kx $$4 = new kx($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.A);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            cvx $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               jl $$7 = $$0.a_($$2).c(b);
+               brr $$8 = dth.a($$0, $$2.a($$7));
+               cvx $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = dth.a($$3, $$8, $$6.c(1), $$7.g());
+                  if ($$9.f()) {
+                     $$9 = $$6.v();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.v();
+                  }
+               }
 
-   @Override
-   protected boolean g_(dus $$0) {
-      return true;
-   }
-
-   @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return c;
-   }
-
-   @Override
-   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if (!$$0.a($$1, $$2)) {
-         a(null, $$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      int $$4 = $$0.c(b);
-      if (!a((dem)$$1, $$2) && !$$1.r($$2.d())) {
-         if ($$4 > 0) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf($$4 - 1)), 2);
-         } else if (!a((ddo)$$1, $$2)) {
-            a(null, $$0, $$1, $$2);
-         }
-      } else if ($$4 < 7) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(7)), 2);
-      }
-   }
-
-   @Override
-   public void a(dej $$0, dus $$1, jf $$2, btr $$3, float $$4) {
-      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof bun && ($$3 instanceof cnx || $$0.ac().b(def.c)) && $$3.dn() * $$3.dn() * $$3.do() > 0.512F) {
-         a($$3, $$1, $$0, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static void a(@Nullable btr $$0, dus $$1, dej $$2, jf $$3) {
-      dus $$4 = a($$1, dho.j.n(), $$2, $$3);
-      $$2.b($$3, $$4);
-      $$2.a(dzp.c, $$3, dzp.a.a($$0, $$4));
-   }
-
-   private static boolean a(ddo $$0, jf $$1) {
-      return $$0.a_($$1.d()).a(awv.cy);
-   }
-
-   private static boolean a(dem $$0, jf $$1) {
-      for (jf $$2 : jf.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
-         if ($$0.b_($$2).a(axb.a)) {
-            return true;
+               $$3.a($$5, $$9);
+            }
          }
       }
-
-      return false;
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dus $$0, eri $$1) {
-      return false;
    }
 }

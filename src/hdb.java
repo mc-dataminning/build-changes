@@ -1,4 +1,3 @@
-public class hdb implements hdi {
-   public hdb(hdh $$0) {
-   }
+public interface hdb {
+   void log(hcz var1);
 }

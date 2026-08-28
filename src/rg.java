@@ -1,119 +1,270 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class rg {
-   public static void a(qu<elg> $$0) {
-      jp<dfk> $$1 = $$0.a(lw.aH);
-      jp<emq> $$2 = $$0.a(lw.aW);
+   public static final alg<enb> a = re.a("village/savanna/town_centers");
+   private static final alg<enb> b = re.a("village/savanna/terminators");
+   private static final alg<enb> c = re.a("village/savanna/zombie/terminators");
+
+   public static void a(qx<enb> $$0) {
+      jq<ekv> $$1 = $$0.a(ly.aR);
+      jp<ekv> $$2 = $$1.b(sq.g);
+      jp<ekv> $$3 = $$1.b(sq.a);
+      jp<ekv> $$4 = $$1.b(sq.b);
+      jq<epr> $$5 = $$0.a(ly.aT);
+      jp<epr> $$6 = $$5.b(rf.b);
+      jp<epr> $$7 = $$5.b(rf.j);
+      jp<epr> $$8 = $$5.b(rf.m);
+      jq<enb> $$9 = $$0.a(ly.aV);
+      jp<enb> $$10 = $$9.b(re.a);
+      jp<enb> $$11 = $$9.b(b);
+      jp<enb> $$12 = $$9.b(c);
       $$0.a(
-         ela.a,
-         new enh(
-            new elg.c.a($$1.b(awu.y)).a(Map.of(buq.a, new eln(eln.a.b, bqg.a(new dfw.c(bty.aC, 1, 1, 1))))).a(elr.c).a(),
-            $$2.b(qz.a),
-            7,
-            ejm.a(ebi.a(0)),
-            true,
-            eao.a.a
+         a,
+         new enb(
+            $$10,
+            ImmutableList.of(
+               Pair.of(emz.a("village/savanna/town_centers/savanna_meeting_point_1"), 100),
+               Pair.of(emz.a("village/savanna/town_centers/savanna_meeting_point_2"), 50),
+               Pair.of(emz.a("village/savanna/town_centers/savanna_meeting_point_3"), 150),
+               Pair.of(emz.a("village/savanna/town_centers/savanna_meeting_point_4"), 150),
+               Pair.of(emz.a("village/savanna/zombie/town_centers/savanna_meeting_point_1", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/town_centers/savanna_meeting_point_2", $$6), 1),
+               Pair.of(emz.a("village/savanna/zombie/town_centers/savanna_meeting_point_3", $$6), 3),
+               Pair.of(emz.a("village/savanna/zombie/town_centers/savanna_meeting_point_4", $$6), 3)
+            ),
+            enb.a.b
          )
       );
-      $$0.a(ela.b, new enl(new elg.c.a($$1.b(awu.t)).a(eak.a.d).a(), enl.a.a));
-      $$0.a(ela.c, new enl(new elg.c.a($$1.b(awu.u)).a(eak.a.d).a(), enl.a.b));
-      $$0.a(ela.d, new eod(new elg.c($$1.b(awu.Q))));
-      $$0.a(ela.e, new enj(new elg.c($$1.b(awu.s))));
-      $$0.a(ela.f, new enc(new elg.c($$1.b(awu.q))));
-      $$0.a(ela.g, new eng(new elg.c($$1.b(awu.r))));
-      $$0.a(ela.h, new enx(new elg.c($$1.b(awu.G)), false));
-      $$0.a(ela.i, new enx(new elg.c($$1.b(awu.F)), true));
-      $$0.a(
-         ela.j,
-         new eob(
-            new elg.c.a($$1.b(awu.J))
-               .a(Map.of(buq.a, new eln(eln.a.a, bqg.a(new dfw.c(bty.bo, 1, 1, 1))), buq.b, new eln(eln.a.a, bqg.a(new dfw.c(bty.p, 1, 1, 1)))))
-               .a()
+      re.a(
+         $$0,
+         "village/savanna/streets",
+         new enb(
+            $$11,
+            ImmutableList.of(
+               Pair.of(emz.a("village/savanna/streets/corner_01", $$7), 2),
+               Pair.of(emz.a("village/savanna/streets/corner_03", $$7), 2),
+               Pair.of(emz.a("village/savanna/streets/straight_02", $$7), 4),
+               Pair.of(emz.a("village/savanna/streets/straight_04", $$7), 7),
+               Pair.of(emz.a("village/savanna/streets/straight_05", $$7), 3),
+               Pair.of(emz.a("village/savanna/streets/straight_06", $$7), 4),
+               Pair.of(emz.a("village/savanna/streets/straight_08", $$7), 4),
+               Pair.of(emz.a("village/savanna/streets/straight_09", $$7), 4),
+               Pair.of(emz.a("village/savanna/streets/straight_10", $$7), 4),
+               Pair.of(emz.a("village/savanna/streets/straight_11", $$7), 4),
+               Pair.of(emz.a("village/savanna/streets/crossroad_02", $$7), 1),
+               Pair.of(emz.a("village/savanna/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(emz.a("village/savanna/streets/crossroad_04", $$7), 2),
+                  Pair.of(emz.a("village/savanna/streets/crossroad_05", $$7), 2),
+                  Pair.of(emz.a("village/savanna/streets/crossroad_06", $$7), 2),
+                  Pair.of(emz.a("village/savanna/streets/crossroad_07", $$7), 2),
+                  Pair.of(emz.a("village/savanna/streets/split_01", $$7), 2),
+                  Pair.of(emz.a("village/savanna/streets/split_02", $$7), 2),
+                  Pair.of(emz.a("village/savanna/streets/turn_01", $$7), 3)
+               }
+            ),
+            enb.a.a
          )
       );
-      $$0.a(ela.k, new enz(new elg.c.a($$1.b(awu.H)).a(elr.b).a()));
-      $$0.a(
-         ela.l,
-         new enr(
-            new elg.c.a($$1.b(awu.v))
-               .a(Map.of(buq.a, new eln(eln.a.b, bqg.a(new dfw.c(bty.Y, 1, 2, 4))), buq.e, new eln(eln.a.b, dfw.a), buq.d, new eln(eln.a.b, dfw.a)))
-               .a()
+      re.a(
+         $$0,
+         "village/savanna/zombie/streets",
+         new enb(
+            $$12,
+            ImmutableList.of(
+               Pair.of(emz.a("village/savanna/zombie/streets/corner_01", $$7), 2),
+               Pair.of(emz.a("village/savanna/zombie/streets/corner_03", $$7), 2),
+               Pair.of(emz.a("village/savanna/zombie/streets/straight_02", $$7), 4),
+               Pair.of(emz.a("village/savanna/zombie/streets/straight_04", $$7), 7),
+               Pair.of(emz.a("village/savanna/zombie/streets/straight_05", $$7), 3),
+               Pair.of(emz.a("village/savanna/zombie/streets/straight_06", $$7), 4),
+               Pair.of(emz.a("village/savanna/zombie/streets/straight_08", $$7), 4),
+               Pair.of(emz.a("village/savanna/zombie/streets/straight_09", $$7), 4),
+               Pair.of(emz.a("village/savanna/zombie/streets/straight_10", $$7), 4),
+               Pair.of(emz.a("village/savanna/zombie/streets/straight_11", $$7), 4),
+               Pair.of(emz.a("village/savanna/zombie/streets/crossroad_02", $$7), 1),
+               Pair.of(emz.a("village/savanna/zombie/streets/crossroad_03", $$7), 2),
+               new Pair[]{
+                  Pair.of(emz.a("village/savanna/zombie/streets/crossroad_04", $$7), 2),
+                  Pair.of(emz.a("village/savanna/zombie/streets/crossroad_05", $$7), 2),
+                  Pair.of(emz.a("village/savanna/zombie/streets/crossroad_06", $$7), 2),
+                  Pair.of(emz.a("village/savanna/zombie/streets/crossroad_07", $$7), 2),
+                  Pair.of(emz.a("village/savanna/zombie/streets/split_01", $$7), 2),
+                  Pair.of(emz.a("village/savanna/zombie/streets/split_02", $$7), 2),
+                  Pair.of(emz.a("village/savanna/zombie/streets/turn_01", $$7), 3)
+               }
+            ),
+            enb.a.a
          )
       );
-      $$0.a(ela.m, new ent(new elg.c($$1.b(awu.w)), ent.a.b, 0.3F, 0.9F));
-      $$0.a(ela.n, new ent(new elg.c($$1.b(awu.x)), ent.a.a, 0.3F, 0.9F));
-      $$0.a(ela.o, new enn(new elg.c.a($$1.b(awu.R)).a(Map.of(buq.a, new eln(eln.a.a, enn.d))).a(eak.a.h).a()));
-      $$0.a(ela.p, new enp(new elg.c.a($$1.b(awu.S)).a(eak.a.h).a(elr.c).a(), ejq.a(ebi.a(32), ebi.c(2))));
-      $$0.a(ela.q, new ene(new elg.c($$1.b(awu.W))));
-      $$0.a(ela.r, new ena(new elg.c.a($$1.b(awu.p)).a(eak.a.d).a()));
-      $$0.a(ela.s, new enh(new elg.c($$1.b(awu.T)), $$2.b(qq.a), 6, ejm.a(ebi.a(33)), false));
-      $$0.a(ela.t, new enh(new elg.c.a($$1.b(awu.L)).a(elr.c).a(), $$2.b(ra.a), 6, ejm.a(ebi.a(0)), true, eao.a.a));
-      $$0.a(ela.u, new enh(new elg.c.a($$1.b(awu.K)).a(elr.c).a(), $$2.b(qw.a), 6, ejm.a(ebi.a(0)), true, eao.a.a));
-      $$0.a(ela.v, new enh(new elg.c.a($$1.b(awu.M)).a(elr.c).a(), $$2.b(rd.a), 6, ejm.a(ebi.a(0)), true, eao.a.a));
-      $$0.a(ela.w, new enh(new elg.c.a($$1.b(awu.N)).a(elr.c).a(), $$2.b(re.a), 6, ejm.a(ebi.a(0)), true, eao.a.a));
-      $$0.a(ela.x, new enh(new elg.c.a($$1.b(awu.O)).a(elr.c).a(), $$2.b(ri.a), 6, ejm.a(ebi.a(0)), true, eao.a.a));
-      $$0.a(
-         ela.y,
-         new env(
-            new elg.c($$1.b(awu.E)),
-            List.of(new env.a(enu.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new env.a(enu.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      re.a(
+         $$0,
+         "village/savanna/houses",
+         new enb(
+            $$11,
+            ImmutableList.of(
+               Pair.of(emz.a("village/savanna/houses/savanna_small_house_1"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_small_house_2"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_small_house_3"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_small_house_4"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_small_house_5"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_small_house_6"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_small_house_7"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_small_house_8"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_medium_house_1"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_medium_house_2"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_butchers_shop_1"), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_butchers_shop_2"), 2),
+               new Pair[]{
+                  Pair.of(emz.a("village/savanna/houses/savanna_tool_smith_1"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_fletcher_house_1"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_shepherd_1"), 7),
+                  Pair.of(emz.a("village/savanna/houses/savanna_armorer_1"), 1),
+                  Pair.of(emz.a("village/savanna/houses/savanna_fisher_cottage_1"), 3),
+                  Pair.of(emz.a("village/savanna/houses/savanna_tannery_1"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_cartographer_1"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_library_1"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_mason_1"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_weaponsmith_1"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_weaponsmith_2"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_temple_1"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_temple_2"), 3),
+                  Pair.of(emz.a("village/savanna/houses/savanna_large_farm_1", $$8), 4),
+                  Pair.of(emz.a("village/savanna/houses/savanna_large_farm_2", $$8), 6),
+                  Pair.of(emz.a("village/savanna/houses/savanna_small_farm", $$8), 4),
+                  Pair.of(emz.a("village/savanna/houses/savanna_animal_pen_1"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_animal_pen_2"), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_animal_pen_3"), 2),
+                  Pair.of(emz.h(), 5)
+               }
+            ),
+            enb.a.b
          )
       );
-      $$0.a(ela.z, new env(new elg.c($$1.b(awu.z)), new env.a(enu.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
-      $$0.a(ela.A, new env(new elg.c($$1.b(awu.A)), new env.a(enu.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
-      $$0.a(ela.B, new env(new elg.c($$1.b(awu.C)), new env.a(enu.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
-      $$0.a(
-         ela.C,
-         new env(
-            new elg.c($$1.b(awu.D)),
-            List.of(new env.a(enu.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new env.a(enu.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
+      re.a(
+         $$0,
+         "village/savanna/zombie/houses",
+         new enb(
+            $$12,
+            ImmutableList.of(
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_small_house_1", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_small_house_2", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_small_house_3", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_small_house_4", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_small_house_5", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_small_house_6", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_small_house_7", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_small_house_8", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_medium_house_1", $$6), 2),
+               Pair.of(emz.a("village/savanna/zombie/houses/savanna_medium_house_2", $$6), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_butchers_shop_1", $$6), 2),
+               Pair.of(emz.a("village/savanna/houses/savanna_butchers_shop_2", $$6), 2),
+               new Pair[]{
+                  Pair.of(emz.a("village/savanna/houses/savanna_tool_smith_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_fletcher_house_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_shepherd_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_armorer_1", $$6), 1),
+                  Pair.of(emz.a("village/savanna/houses/savanna_fisher_cottage_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_tannery_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_cartographer_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_library_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_mason_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_weaponsmith_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_weaponsmith_2", $$6), 2),
+                  Pair.of(emz.a("village/savanna/houses/savanna_temple_1", $$6), 1),
+                  Pair.of(emz.a("village/savanna/houses/savanna_temple_2", $$6), 3),
+                  Pair.of(emz.a("village/savanna/houses/savanna_large_farm_1", $$6), 4),
+                  Pair.of(emz.a("village/savanna/zombie/houses/savanna_large_farm_2", $$6), 4),
+                  Pair.of(emz.a("village/savanna/houses/savanna_small_farm", $$6), 4),
+                  Pair.of(emz.a("village/savanna/houses/savanna_animal_pen_1", $$6), 2),
+                  Pair.of(emz.a("village/savanna/zombie/houses/savanna_animal_pen_2", $$6), 2),
+                  Pair.of(emz.a("village/savanna/zombie/houses/savanna_animal_pen_3", $$6), 2),
+                  Pair.of(emz.h(), 5)
+               }
+            ),
+            enb.a.b
          )
       );
-      $$0.a(ela.D, new env(new elg.c($$1.b(awu.B)), new env.a(enu.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
-      $$0.a(ela.E, new env(new elg.c($$1.b(awu.V)), new env.a(enu.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
       $$0.a(
-         ela.F,
-         new enh(
-            new elg.c.a($$1.b(awu.U))
-               .a(Arrays.stream(buq.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eln(eln.a.b, bqg.c()))))
-               .a(eak.a.h)
-               .a(elr.d)
-               .a(),
-            $$2.b(ql.a),
-            Optional.of(ale.b("city_anchor")),
-            7,
-            ejm.a(ebi.a(-27)),
-            false,
-            Optional.empty(),
-            116,
-            List.of(),
-            enh.d,
-            enh.e
+         b,
+         new enb(
+            $$10,
+            ImmutableList.of(
+               Pair.of(emz.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(emz.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(emz.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(emz.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(emz.a("village/savanna/terminators/terminator_05", $$7), 1)
+            ),
+            enb.a.a
          )
       );
-      $$0.a(ela.G, new enh(new elg.c.a($$1.b(awu.P)).a(eak.a.d).a(elr.b).a(), $$2.b(rk.a), 7, ejm.a(ebi.a(-15)), false, eao.a.a));
       $$0.a(
-         ela.H,
-         new enh(
-            new elg.c.a($$1.b(awu.I))
-               .a(eak.a.d)
-               .a(elr.e)
-               .a(Arrays.stream(buq.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new eln(eln.a.a, bqg.c()))))
-               .a(),
-            $$2.b(rl.a),
-            Optional.empty(),
-            20,
-            ejq.a(ebi.a(-40), ebi.a(-20)),
-            false,
-            Optional.empty(),
-            116,
-            rl.c,
-            new emg(10),
-            eos.a
+         c,
+         new enb(
+            $$10,
+            ImmutableList.of(
+               Pair.of(emz.a("village/plains/terminators/terminator_01", $$7), 1),
+               Pair.of(emz.a("village/plains/terminators/terminator_02", $$7), 1),
+               Pair.of(emz.a("village/plains/terminators/terminator_03", $$7), 1),
+               Pair.of(emz.a("village/plains/terminators/terminator_04", $$7), 1),
+               Pair.of(emz.a("village/savanna/zombie/terminators/terminator_05", $$7), 1)
+            ),
+            enb.a.a
+         )
+      );
+      re.a($$0, "village/savanna/trees", new enb($$10, ImmutableList.of(Pair.of(emz.a($$2), 1)), enb.a.b));
+      re.a(
+         $$0,
+         "village/savanna/decor",
+         new enb(
+            $$10,
+            ImmutableList.of(
+               Pair.of(emz.a("village/savanna/savanna_lamp_post_01"), 4),
+               Pair.of(emz.a($$2), 4),
+               Pair.of(emz.a($$3), 4),
+               Pair.of(emz.a($$4), 1),
+               Pair.of(emz.h(), 4)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "village/savanna/zombie/decor",
+         new enb(
+            $$10,
+            ImmutableList.of(
+               Pair.of(emz.a("village/savanna/savanna_lamp_post_01", $$6), 4),
+               Pair.of(emz.a($$2), 4),
+               Pair.of(emz.a($$3), 4),
+               Pair.of(emz.a($$4), 1),
+               Pair.of(emz.h(), 4)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "village/savanna/villagers",
+         new enb(
+            $$10,
+            ImmutableList.of(
+               Pair.of(emz.a("village/savanna/villagers/nitwit"), 1),
+               Pair.of(emz.a("village/savanna/villagers/baby"), 1),
+               Pair.of(emz.a("village/savanna/villagers/unemployed"), 10)
+            ),
+            enb.a.b
+         )
+      );
+      re.a(
+         $$0,
+         "village/savanna/zombie/villagers",
+         new enb(
+            $$10,
+            ImmutableList.of(Pair.of(emz.a("village/savanna/zombie/villagers/nitwit"), 1), Pair.of(emz.a("village/savanna/zombie/villagers/unemployed"), 10)),
+            enb.a.b
          )
       );
    }

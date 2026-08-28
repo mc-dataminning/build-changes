@@ -1,37 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.concurrent.Immutable;
 
+@Immutable
 public class brw {
-   public static final Codec<brw> a = RecordCodecBuilder.create($$0 -> $$0.group(ebp.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, brw::new));
-   private final ebp b;
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final brv d;
+   private final float e;
 
-   public brw(ebp $$0) {
-      this.b = $$0;
+   public brw(brv $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public brw(long $$0, ale $$1) {
-      this(a($$0, Optional.of($$1)));
+   public brv a() {
+      return this.d;
    }
 
-   public brw(long $$0, Optional<ale> $$1) {
-      this(a($$0, $$1));
+   public float b() {
+      return this.e;
    }
 
-   private static ebp a(long $$0, Optional<ale> $$1) {
-      ebd.a $$2 = ebd.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public boolean c() {
+      return this.e >= (float)brv.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
       }
-
-      return new ebp($$2.a());
    }
 
-   public static ebd.a a(ale $$0) {
-      return ebd.a($$0.toString());
-   }
+   private float a(brv $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == brv.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == brv.d;
+         float $$5 = 0.75F;
+         float $$6 = azj.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += azj.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += azj.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == brv.b) {
+            $$7 *= 0.5F;
+         }
 
-   public azn a() {
-      return this.b;
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

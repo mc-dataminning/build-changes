@@ -1,84 +1,57 @@
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class dgh extends dgy {
-   public static final dvm a = dli.aF;
-   public static final dvj b = dvi.r;
+public class dgh extends dga implements dfy.a {
+   public static final MapCodec<dgh> b = dfw.c.fieldOf("biome").xmap(dgh::new, $$0 -> $$0.c).stable();
+   private final jp<dfw> c;
 
-   protected dgh(dur.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(a, jk.c).b(b, Boolean.valueOf(false)));
+   public dgh(jp<dfw> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected abstract MapCodec<? extends dgh> a();
-
-   @Override
-   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
-      if (!$$1.B) {
-         this.a($$1, $$2, $$3);
-      }
-
-      return brs.a;
-   }
-
-   protected abstract void a(dej var1, jf var2, cnx var3);
-
-   @Override
-   public dus a(czn $$0) {
-      return this.n().b(a, $$0.g().g());
+   protected Stream<jp<dfw>> b() {
+      return Stream.of(this.c);
    }
 
    @Override
-   protected void a(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         drv $$5 = $$1.c_($$2);
-         if ($$5 instanceof drj) {
-            if ($$1 instanceof arj) {
-               bro.a($$1, $$2, (drj)$$5);
-               ((drj)$$5).a((arj)$$1, eyw.b($$2));
-            }
-
-            super.a($$0, $$1, $$2, $$3, $$4);
-            $$1.c($$2, this);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+   protected MapCodec<? extends dga> a() {
+      return b;
    }
 
    @Override
-   protected boolean c_(dus $$0) {
-      return true;
+   public jp<dfw> getNoiseBiome(int $$0, int $$1, int $$2, dgf.f $$3) {
+      return this.c;
    }
 
    @Override
-   protected int a(dus $$0, dej $$1, jf $$2) {
-      return cqz.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dnt a_(dus $$0) {
-      return dnt.c;
-   }
-
-   @Override
-   protected dus a(dus $$0, doa $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected dus a(dus $$0, dmj $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(a, b);
+   public jp<dfw> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
    }
 
    @Nullable
-   protected static <T extends drv> drw<T> a(dej $$0, drx<T> $$1, drx<? extends drj> $$2) {
-      return $$0.B ? null : a($$1, $$2, drj::a);
+   @Override
+   public Pair<jg, jp<dfw>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jp<dfw>> $$5, azr $$6, boolean $$7, dgf.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new jg($$0, $$1, $$2), this.c) : Pair.of(new jg($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
+      }
+   }
+
+   @Nullable
+   @Override
+   public Pair<jg, jp<dfw>> a(jg $$0, int $$1, int $$2, int $$3, Predicate<jp<dfw>> $$4, dgf.f $$5, dey $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
+
+   @Override
+   public Set<jp<dfw>> a(int $$0, int $$1, int $$2, int $$3, dgf.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

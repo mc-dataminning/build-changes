@@ -1,29 +1,35 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bdr extends bdz {
-   public bdr(Schema $$0) {
-      super("EntityMinecartIdentifiersFix", $$0, true);
+public class bdr extends bgn {
+   public bdr(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityHorseSaddleFix", bhs.B, "EntityHorse");
    }
 
    @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (!$$0.equals("Minecart")) {
-         return Pair.of($$0, $$1);
+   protected Typed<?> a(Typed<?> $$0) {
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bhs.D.typeName(), bjg.a()));
+      Type<?> $$2 = this.getInputSchema().getTypeRaw(bhs.t);
+      OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
+      Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
+      Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
+         Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
+         $$6 = $$6.set($$1, Pair.of(bhs.D.typeName(), "minecraft:saddle"));
+         Dynamic<?> $$7 = $$5.emptyMap();
+         $$7 = $$7.set("Count", $$7.createByte((byte)1));
+         $$7 = $$7.set("Damage", $$7.createShort((short)0));
+         $$6 = $$6.set(DSL.remainderFinder(), $$7);
+         $$5.remove("Saddle");
+         return $$0.set($$3, $$6).set(DSL.remainderFinder(), $$5);
       } else {
-         int $$2 = ((Dynamic)$$1.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
-
-         String $$3 = switch ($$2) {
-            case 1 -> "MinecartChest";
-            case 2 -> "MinecartFurnace";
-            default -> "MinecartRideable";
-         };
-         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bho.B).types().get($$3);
-         return Pair.of($$3, ad.a($$1, $$4, $$0x -> $$0x.remove("Type")));
+         return $$0;
       }
    }
 }

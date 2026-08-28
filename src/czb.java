@@ -1,32 +1,45 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record czb(float c, Optional<ale> d) {
-   public static final Codec<czb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayo.n.fieldOf("seconds").forGetter(czb::b), ale.a.optionalFieldOf("cooldown_group").forGetter(czb::c)).apply($$0, czb::new)
-   );
-   public static final zc<wp, czb> b = zc.a(za.j, czb::b, ale.b.a(za::a), czb::c, czb::new);
+public record czb(cvx c) {
+   public static final Codec<czb> a = cvx.b.xmap(czb::new, czb::a);
+   public static final zf<ws, czb> b = zf.a(cvx.i, czb::a, czb::new);
 
-   public czb(float $$0) {
-      this($$0, Optional.empty());
-   }
+   public cvx a(buv $$0, cvx $$1, int $$2) {
+      boolean $$3 = $$0.fX();
+      cvx $$4 = this.c.v();
+      if ($$3) {
+         return $$1;
+      } else if ($$1.L() >= $$2) {
+         return $$1;
+      } else if ($$1.f()) {
+         return $$4;
+      } else {
+         if (!$$0.dX().y_() && $$0 instanceof coh $$5 && !$$5.gk().f($$4)) {
+            $$5.a($$4, false);
+         }
 
-   public int a() {
-      return (int)(this.c * 20.0F);
-   }
-
-   public void a(cvs $$0, bun $$1) {
-      if ($$1 instanceof cnx $$2) {
-         $$2.gy().a($$0, this.a());
+         return $$1;
       }
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         czb $$1 = (czb)$$0;
+         return cvx.a(this.c, $$1.c);
+      } else {
+         return false;
+      }
    }
 
-   public Optional<ale> c() {
-      return this.d;
+   @Override
+   public int hashCode() {
+      return cvx.a(this.c);
+   }
+
+   public cvx a() {
+      return this.c;
    }
 }

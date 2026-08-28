@@ -1,80 +1,27 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class gex extends gfc {
+   gex(gbx $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 8;
+   }
 
-public interface gex {
-   gex a = new gex() {
-      @Override
-      public fdd a(fdk $$0, gxh $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ggv.c);
-         RenderSystem.setShaderTexture(0, gxf.d);
-         return $$0.a(fdn.c.h, fdg.d);
-      }
-
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   gex b = new gex() {
-      @Override
-      public fdd a(fdk $$0, gxh $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ggv.c);
-         RenderSystem.setShaderTexture(0, gxf.e);
-         return $$0.a(fdn.c.h, fdg.d);
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(lq.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
       }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
+      this.s++;
+      if (this.s == this.t) {
+         this.k();
       }
-   };
-   gex c = new gex() {
-      @Override
-      public fdd a(fdk $$0, gxh $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ggv.c);
-         RenderSystem.setShaderTexture(0, gxf.e);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         return $$0.a(fdn.c.h, fdg.d);
-      }
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
+   public static class a implements gfh<lu> {
+      public gfe a(lu $$0, gbx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gex($$1, $$2, $$3, $$4);
       }
-   };
-   gex d = new gex() {
-      @Override
-      public fdd a(fdk $$0, gxh $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-         return $$0.a(fdn.c.h, fdg.d);
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   gex e = new gex() {
-      @Nullable
-      @Override
-      public fdd a(fdk $$0, gxh $$1) {
-         return null;
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   @Nullable
-   fdd a(fdk var1, gxh var2);
+   }
 }

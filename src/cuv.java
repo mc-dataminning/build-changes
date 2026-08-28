@@ -1,48 +1,46 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public interface cuv {
-   btz l();
+public class cuv extends cvt implements cxb {
+   private static final Map<cuu, cuv> a = Maps.newEnumMap(cuu.class);
+   private final cuu b;
 
-   default jo<awf> m() {
-      return awg.as;
+   public cuv(cuu $$0, cvt.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
-   default brs a(cvn $$0, dej $$1, cnx $$2, brr $$3) {
-      cvs $$4 = $$2.b($$3);
-      btz $$5 = $$2.g($$4);
-      if (!$$2.e($$5)) {
-         return brs.e;
-      } else {
-         cvs $$6 = $$2.a($$5);
-         if ((!dbp.a($$6, dbo.E) || $$2.f()) && !cvs.a($$4, $$6)) {
-            if (!$$1.x_()) {
-               $$2.b(awq.c.b($$0));
-            }
-
-            cvs $$7 = $$6.f() ? $$4 : $$6.g();
-            cvs $$8 = $$2.f() ? $$4.u() : $$4.g();
-            $$2.a($$5, $$8);
-            return brs.a.a($$7);
-         } else {
-            return brs.d;
+   @Override
+   public bry a(cvx $$0, coh $$1, buv $$2, brx $$3) {
+      if ($$2 instanceof chi $$4 && $$4.bM() && !$$4.y() && $$4.t() != this.b) {
+         $$4.dX().a($$1, $$4, awk.hN, awl.h, 1.0F, 1.0F);
+         if (!$$1.dX().C) {
+            $$4.b(this.b);
+            $$0.h(1);
          }
+
+         return bry.a;
       }
+
+      return bry.e;
    }
 
-   @Nullable
-   static cuv c_(cvs $$0) {
-      cvn $$3 = $$0.h();
-      if ($$3 instanceof cuv) {
-         return (cuv)$$3;
-      } else {
-         if ($$0.h() instanceof ctu $$2) {
-            dhm var6 = $$2.d();
-            if (var6 instanceof cuv) {
-               return (cuv)var6;
-            }
-         }
+   public cuu c() {
+      return this.b;
+   }
 
-         return null;
+   public static cuv a(cuu $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(dev $$0, dts $$1, boolean $$2, coh $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.c()), $$2)) {
+         $$0.a(null, $$1.aC_(), awk.hN, awl.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
       }
    }
 }

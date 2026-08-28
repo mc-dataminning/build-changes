@@ -1,62 +1,76 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record duc(ald<etq> d, double e, double f, cvs g, Optional<ald<etq>> h, dtt i, dtt.a j) {
-   static final String a = "config";
-   static duc b = new duc();
-   static Codec<duc> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ald.a(lw.be).lenientOptionalFieldOf("loot_table", b.b()).forGetter(duc::b),
-                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(duc::c),
-                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(duc::d),
-                  cvs.a("key_item").forGetter(duc::e),
-                  ald.a(lw.be).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(duc::f)
-               )
-               .apply($$0, duc::new)
-      )
-      .validate(duc::h);
+public class duc extends dsg implements dfp, duf.b {
+   private static final Logger a = LogUtils.getLogger();
+   private duf b;
 
-   private duc() {
-      this(eth.R, 4.0, 4.5, new cvs(cvw.yF), Optional.empty(), dtt.b, dtt.a.a);
+   public duc(jg $$0, dvd $$1) {
+      super(dsi.Q, $$0, $$1);
+      due $$2 = due.a;
+      due.a $$3 = due.a.a;
+      this.b = new duf(this, $$2, $$3);
    }
 
-   public duc(ald<etq> $$0, double $$1, double $$2, cvs $$3, Optional<ald<etq>> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   @Override
+   protected void a(uj $$0, jr.a $$1) {
+      super.a($$0, $$1);
+      this.b.a().parse($$1.a(ux.a), $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
+      if (this.o != null) {
+         this.f();
+      }
    }
 
-   public dtt a() {
-      return this.i;
+   @Override
+   protected void b(uj $$0, jr.a $$1) {
+      super.b($$0, $$1);
+      this.b
+         .a()
+         .encodeStart($$1.a(ux.a), this.b)
+         .ifSuccess($$1x -> $$0.a((uj)$$1x))
+         .ifError($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
    }
 
-   private DataResult<duc> h() {
-      return this.e > this.f
-         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
-         : DataResult.success(this);
+   public ack b() {
+      return ack.a(this);
    }
 
-   public ald<etq> b() {
-      return this.d;
+   @Override
+   public uj a(jr.a $$0) {
+      return this.b.f().a(this.m().c(dqn.b));
    }
 
-   public double c() {
-      return this.e;
+   @Override
+   public boolean p() {
+      return true;
    }
 
-   public double d() {
-      return this.f;
+   @Override
+   public void a(bug<?> $$0, azr $$1) {
+      this.b.f().a(this.b, $$1, $$0);
+      this.e();
    }
 
-   public cvs e() {
-      return this.g;
+   public duf c() {
+      return this.b;
    }
 
-   public Optional<ald<etq>> f() {
-      return this.h;
+   @Override
+   public duj d() {
+      return !this.m().b(dvt.by) ? duj.a : this.m().c(dvt.by);
    }
 
-   public dtt.a g() {
-      return this.j;
+   @Override
+   public void a(dev $$0, duj $$1) {
+      this.e();
+      $$0.b(this.p, this.m().b(dvt.by, $$1));
+   }
+
+   @Override
+   public void f() {
+      this.e();
+      if (this.o != null) {
+         this.o.a(this.p, this.m(), this.m(), 3);
+      }
    }
 }

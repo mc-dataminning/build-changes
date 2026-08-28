@@ -1,4 +1,4 @@
-public class guq extends gtq {
-   public float a;
-   public float b;
+public class guq extends gva {
+   public int a;
+   public boolean b;
 }

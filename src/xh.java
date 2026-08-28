@@ -1,131 +1,268 @@
 import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.stream.JsonReader;
 import com.mojang.brigadier.Message;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Collection;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.JsonOps;
+import java.io.StringReader;
+import java.lang.reflect.Type;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class xh {
-   public static final String a = ", ";
-   public static final xe b = xe.b(", ").a(n.h);
-   public static final xe c = xe.b(", ");
+public interface xh extends Message, xm {
+   ye a();
 
-   public static xs a(xs $$0, yb $$1) {
-      if ($$1.g()) {
-         return $$0;
-      } else {
-         yb $$2 = $$0.a();
-         if ($$2.g()) {
-            return $$0.b($$1);
+   xi b();
+
+   @Override
+   default String getString() {
+      return xm.super.getString();
+   }
+
+   default String a(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      this.a((xm.a)($$2 -> {
+         int $$3 = $$0 - $$1.length();
+         if ($$3 <= 0) {
+            return a;
          } else {
-            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
+            return Optional.empty();
          }
+      }));
+      return $$1.toString();
+   }
+
+   List<xh> c();
+
+   @Nullable
+   default String d() {
+      if (this.b() instanceof yo $$0 && this.c().isEmpty() && this.a().g()) {
+         return $$0.b();
       }
+
+      return null;
    }
 
-   public static Optional<xs> a(@Nullable eu $$0, Optional<xe> $$1, @Nullable btr $$2, int $$3) throws CommandSyntaxException {
-      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
+   default xv e() {
+      return xv.a(this.b());
    }
 
-   public static xs a(@Nullable eu $$0, xe $$1, @Nullable btr $$2, int $$3) throws CommandSyntaxException {
-      if ($$3 > 100) {
-         return $$1.f();
+   default xv f() {
+      return new xv(this.b(), new ArrayList<>(this.c()), this.a());
+   }
+
+   ayv g();
+
+   @Override
+   default <T> Optional<T> a(xm.b<T> $$0, ye $$1) {
+      ye $$2 = this.a().a($$1);
+      Optional<T> $$3 = this.b().a($$0, $$2);
+      if ($$3.isPresent()) {
+         return $$3;
       } else {
-         xs $$4 = $$1.b().a($$0, $$2, $$3 + 1);
-
-         for (xe $$5 : $$1.c()) {
-            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         for (xh $$4 : this.c()) {
+            Optional<T> $$5 = $$4.a($$0, $$2);
+            if ($$5.isPresent()) {
+               return $$5;
+            }
          }
 
-         return $$4.c(a($$0, $$1.a(), $$2, $$3));
+         return Optional.empty();
       }
    }
 
-   private static yb a(@Nullable eu $$0, yb $$1, @Nullable btr $$2, int $$3) throws CommandSyntaxException {
-      xk $$4 = $$1.i();
-      if ($$4 != null) {
-         xe $$5 = $$4.a(xk.a.a);
-         if ($$5 != null) {
-            xk $$6 = new xk(xk.a.a, a($$0, $$5, $$2, $$3 + 1));
-            return $$1.a($$6);
+   @Override
+   default <T> Optional<T> a(xm.a<T> $$0) {
+      Optional<T> $$1 = this.b().a($$0);
+      if ($$1.isPresent()) {
+         return $$1;
+      } else {
+         for (xh $$2 : this.c()) {
+            Optional<T> $$3 = $$2.a($$0);
+            if ($$3.isPresent()) {
+               return $$3;
+            }
          }
-      }
 
+         return Optional.empty();
+      }
+   }
+
+   default List<xh> h() {
+      return this.a(ye.a);
+   }
+
+   default List<xh> a(ye $$0) {
+      List<xh> $$1 = Lists.newArrayList();
+      this.a(($$1x, $$2) -> {
+         if (!$$2.isEmpty()) {
+            $$1.add(b($$2).c($$1x));
+         }
+
+         return Optional.empty();
+      }, $$0);
       return $$1;
    }
 
-   public static xe a(Collection<String> $$0) {
-      return a($$0, $$0x -> xe.b($$0x).a(n.k));
-   }
-
-   public static <T extends Comparable<T>> xe a(Collection<T> $$0, Function<T, xe> $$1) {
-      if ($$0.isEmpty()) {
-         return xd.a;
-      } else if ($$0.size() == 1) {
-         return $$1.apply($$0.iterator().next());
-      } else {
-         List<T> $$2 = Lists.newArrayList($$0);
-         $$2.sort(Comparable::compareTo);
-         return b($$2, $$1);
-      }
-   }
-
-   public static <T> xe b(Collection<? extends T> $$0, Function<T, xe> $$1) {
-      return a($$0, b, $$1);
-   }
-
-   public static <T> xs a(Collection<? extends T> $$0, Optional<? extends xe> $$1, Function<T, xe> $$2) {
-      return a($$0, (xe)DataFixUtils.orElse($$1, b), $$2);
-   }
-
-   public static xe a(Collection<? extends xe> $$0, xe $$1) {
-      return a($$0, $$1, Function.identity());
-   }
-
-   public static <T> xs a(Collection<? extends T> $$0, xe $$1, Function<T, xe> $$2) {
-      if ($$0.isEmpty()) {
-         return xe.i();
-      } else if ($$0.size() == 1) {
-         return $$2.apply((T)$$0.iterator().next()).f();
-      } else {
-         xs $$3 = xe.i();
-         boolean $$4 = true;
-
-         for (T $$5 : $$0) {
-            if (!$$4) {
-               $$3.b($$1);
-            }
-
-            $$3.b($$2.apply($$5));
-            $$4 = false;
-         }
-
-         return $$3;
-      }
-   }
-
-   public static xs a(xe $$0) {
-      return xe.a("chat.square_brackets", $$0);
-   }
-
-   public static xe a(Message $$0) {
-      return (xe)($$0 instanceof xe ? (xe)$$0 : xe.b($$0.getString()));
-   }
-
-   public static boolean b(@Nullable xe $$0) {
-      if ($$0 != null && $$0.b() instanceof yp $$1) {
-         String $$2 = $$1.b();
-         String $$3 = $$1.c();
-         return $$3 != null || ub.a().b($$2);
-      } else {
+   default boolean a(xh $$0) {
+      if (this.equals($$0)) {
          return true;
+      } else {
+         List<xh> $$1 = this.h();
+         List<xh> $$2 = $$0.a(this.a());
+         return Collections.indexOfSubList($$1, $$2) != -1;
       }
    }
 
-   public static xs a(String $$0) {
-      return a((xe)xe.b($$0).a($$1 -> $$1.a(n.k).a(new xc(xc.a.f, $$0)).a(new xk(xk.a.a, xe.c("chat.copy.click"))).a($$0)));
+   static xh a(@Nullable String $$0) {
+      return (xh)($$0 != null ? b($$0) : xg.a);
+   }
+
+   static xv b(String $$0) {
+      return xv.a(yo.a($$0));
+   }
+
+   static xv c(String $$0) {
+      return xv.a(new ys($$0, null, ys.a));
+   }
+
+   static xv a(String $$0, Object... $$1) {
+      return xv.a(new ys($$0, null, $$1));
+   }
+
+   static xv b(String $$0, Object... $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         Object $$3 = $$1[$$2];
+         if (!ys.a($$3) && !($$3 instanceof xh)) {
+            $$1[$$2] = String.valueOf($$3);
+         }
+      }
+
+      return a($$0, $$1);
+   }
+
+   static xv a(String $$0, @Nullable String $$1) {
+      return xv.a(new ys($$0, $$1, ys.a));
+   }
+
+   static xv a(String $$0, @Nullable String $$1, Object... $$2) {
+      return xv.a(new ys($$0, $$1, $$2));
+   }
+
+   static xv i() {
+      return xv.a(yo.c);
+   }
+
+   static xv d(String $$0) {
+      return xv.a(new yl($$0));
+   }
+
+   static xv a(String $$0, boolean $$1, Optional<xh> $$2, yj $$3) {
+      return xv.a(new yn($$0, $$1, $$2, $$3));
+   }
+
+   static xv a(hm $$0, String $$1) {
+      return xv.a(new yp(Either.left($$0), $$1));
+   }
+
+   static xv b(String $$0, String $$1) {
+      return xv.a(new yp(Either.right($$0), $$1));
+   }
+
+   static xv a(hm $$0, Optional<xh> $$1) {
+      return xv.a(new yq($$0, $$1));
+   }
+
+   static xh a(Date $$0) {
+      return b($$0.toString());
+   }
+
+   static xh a(Message $$0) {
+      return (xh)($$0 instanceof xh $$1 ? $$1 : b($$0.getString()));
+   }
+
+   static xh a(UUID $$0) {
+      return b($$0.toString());
+   }
+
+   static xh a(alh $$0) {
+      return b($$0.toString());
+   }
+
+   static xh a(deb $$0) {
+      return b($$0.toString());
+   }
+
+   static xh a(URI $$0) {
+      return b($$0.toString());
+   }
+
+   public static class a {
+      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
+
+      private a() {
+      }
+
+      static xv b(JsonElement $$0, jr.a $$1) {
+         return (xv)xj.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      }
+
+      static JsonElement b(xh $$0, jr.a $$1) {
+         return (JsonElement)xj.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
+      }
+
+      public static String a(xh $$0, jr.a $$1) {
+         return a.toJson(b($$0, $$1));
+      }
+
+      @Nullable
+      public static xv a(String $$0, jr.a $$1) {
+         JsonElement $$2 = JsonParser.parseString($$0);
+         return $$2 == null ? null : b($$2, $$1);
+      }
+
+      @Nullable
+      public static xv a(@Nullable JsonElement $$0, jr.a $$1) {
+         return $$0 == null ? null : b($$0, $$1);
+      }
+
+      @Nullable
+      public static xv b(String $$0, jr.a $$1) {
+         JsonReader $$2 = new JsonReader(new StringReader($$0));
+         $$2.setLenient(true);
+         JsonElement $$3 = JsonParser.parseReader($$2);
+         return $$3 == null ? null : b($$3, $$1);
+      }
+   }
+
+   public static class b implements JsonDeserializer<xv>, JsonSerializer<xh> {
+      private final jr.a a;
+
+      public b(jr.a $$0) {
+         this.a = $$0;
+      }
+
+      public xv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return xh.a.b($$0, this.a);
+      }
+
+      public JsonElement a(xh $$0, Type $$1, JsonSerializationContext $$2) {
+         return xh.a.b($$0, this.a);
+      }
    }
 }

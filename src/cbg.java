@@ -1,61 +1,50 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.EnumSet;
 
-public class cbg extends cbk {
-   private static final int a = 200;
-   private final cgb b;
-   private int c;
-   private int d;
+public class cbg extends ccg {
+   private final cgp g;
 
-   public cbg(cgb $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(cgb $$0) {
-      return b(200 + $$0.dV().a(200) % 20);
+   public cbg(cgp $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(cbt.a.c, cbt.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.gu()) {
-         return false;
-      } else if (this.b.gr()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         this.d = this.a(this.b);
-         Predicate<cgb> $$0 = $$0x -> $$0x.gt() || !$$0x.gr();
-         List<? extends cgb> $$1 = this.b.dS().a((Class<? extends cgb>)this.b.getClass(), this.b.cO().c(8.0, 8.0, 8.0), $$0);
-         cgb $$2 = (cgb)DataFixUtils.orElse($$1.stream().filter(cgb::gt).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gr()));
-         return this.b.gr();
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.gr() && this.b.gv();
+      return this.g.q() && !this.g.gv() && !this.g.gI() && super.b();
    }
 
    @Override
    public void d() {
-      this.c = 0;
+      super.d();
+      this.g.y(false);
+   }
+
+   @Override
+   protected int a(bvd $$0) {
+      return 40;
    }
 
    @Override
    public void e() {
-      this.b.gs();
+      super.e();
+      this.g.A(false);
    }
 
    @Override
    public void a() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gw();
+      super.a();
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gI()) {
+         this.g.A(true);
       }
+   }
+
+   @Override
+   protected boolean a(dey $$0, jg $$1) {
+      return $$0.u($$1.d()) && $$0.a_($$1).a(awz.S);
    }
 }

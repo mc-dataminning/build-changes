@@ -1,43 +1,40 @@
-public class gmb implements gll.a {
-   private final fip a;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public gmb(fip $$0) {
+public class gmb implements glw.a {
+   private final fja a;
+   private static final int b = 10;
+
+   public gmb(fja $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fdi $$0, ghl $$1, double $$2, double $$3, double $$4) {
-      jf $$5 = this.a.t.ds();
-      dem $$6 = this.a.t.dS();
+   public void a(fdt $$0, ghw $$1, double $$2, double $$3, double $$4) {
+      dev $$5 = this.a.s;
+      jg $$6 = jg.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      for (jf $$7 : jf.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eqt $$8 = $$6.b_($$7);
-         if ($$8.a(axb.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            gll.a(
+      for (jg $$8 : jg.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(dfe.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azj.g($$10, 0.9F, 0.9F);
+         long $$12 = ki.e($$8.a());
+         if ($$7.add($$12)) {
+            glw.a(
                $$0,
                $$1,
-               new eyr(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
+               $$5.P().p().a(dfe.a, ki.a($$12)),
+               (double)ki.a(ki.b($$12), 8),
+               (double)ki.a(ki.c($$12), 8),
+               (double)ki.a(ki.d($$12), 8),
+               16711680,
+               0.3F
             );
          }
-      }
 
-      for (jf $$10 : jf.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eqt $$11 = $$6.b_($$10);
-         if ($$11.a(axb.a)) {
-            gll.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         if ($$9 != 15) {
+            glw.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
          }
       }
    }

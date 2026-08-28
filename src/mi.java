@@ -1,8 +1,9 @@
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
-public class mi {
-   public static mf a(me $$0, CompletableFuture<jq.a> $$1) {
-      return new mf($$0, $$1, List.of(new mn(), new mk(), new mj(), new ml(), new mm()));
+public interface mi {
+   void a(jr.a var1, Consumer<ag> var2);
+
+   static ag a(String $$0) {
+      return af.a.a().b(alh.a($$0));
    }
 }

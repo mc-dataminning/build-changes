@@ -2,24 +2,29 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class evs extends euy {
+public class evs extends evj {
    public static final MapCodec<evs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(alb.a(lw.K).fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, evs::new)
+      $$0 -> a($$0).and(kq.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, evs::new)
    );
-   private final jo<cvn> b;
+   private final kq b;
 
-   private evs(List<eww> $$0, jo<cvn> $$1) {
+   private evs(List<exh> $$0, kq $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public eva<evs> b() {
-      return evb.f;
+   public evl<evs> b() {
+      return evm.k;
    }
 
    @Override
-   public cvs a(cvs $$0, etl $$1) {
-      return $$0.a(this.b.a());
+   public cvx a(cvx $$0, etw $$1) {
+      $$0.a(this.b);
+      return $$0;
+   }
+
+   public static <T> evj.a<?> a(ks<T> $$0, T $$1) {
+      return a($$2 -> new evs($$2, kq.a().a($$0, $$1).a()));
    }
 }

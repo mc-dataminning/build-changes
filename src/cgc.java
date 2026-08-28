@@ -1,56 +1,29 @@
-public abstract class cgc extends btk {
-   protected cgc(bty<? extends cgc> $$0, dej $$1) {
-      super($$0, $$1);
-      this.a(erk.j, 0.0F);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public record cgc(Set<dvd> b, int c, int d) {
+   public static final Predicate<jp<cgc>> a = $$0 -> false;
+
+   public cgc(Set<dvd> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   @Override
-   public boolean a(dem $$0) {
-      return $$0.f(this);
+   public boolean a(dvd $$0) {
+      return this.b.contains($$0);
    }
 
-   @Override
-   public int T() {
-      return 120;
+   public Set<dvd> a() {
+      return this.b;
    }
 
-   @Override
-   public int el() {
-      return 1 + this.dS().z.a(3);
+   public int b() {
+      return this.c;
    }
 
-   protected void s(int $$0) {
-      if (this.bI() && !this.bl()) {
-         this.j($$0 - 1);
-         if (this.cq() == -20) {
-            this.j(0);
-            this.a(this.dT().i(), 2.0F);
-         }
-      } else {
-         this.j(300);
-      }
-   }
-
-   @Override
-   public void ay() {
-      int $$0 = this.cq();
-      super.ay();
-      this.s($$0);
-   }
-
-   @Override
-   public boolean cG() {
-      return false;
-   }
-
-   @Override
-   public boolean A() {
-      return false;
-   }
-
-   public static boolean b(bty<? extends cgc> $$0, dek $$1, btx $$2, jf $$3, azn $$4) {
-      int $$5 = $$1.N();
-      int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axb.a) && $$1.a_($$3.d()).a(dho.G);
+   public int c() {
+      return this.d;
    }
 }

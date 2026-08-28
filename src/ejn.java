@@ -1,13 +1,76 @@
-import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
 public abstract class ejn {
-   private static final Codec<Either<ebi, ejn>> a = Codec.either(ebi.a, lv.L.q().dispatch(ejn::a, ejo::codec));
-   public static final Codec<ejn> c = a.xmap(
-      $$0 -> (ejn)$$0.map(ejm::a, $$0x -> $$0x), $$0 -> $$0.a() == ejo.a ? Either.left(((ejm)$$0).b()) : Either.right($$0)
-   );
+   public static final Codec<ejn> c = lx.V.q().dispatch(ejn::a, ejo::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   public abstract int a(azn var1, ebl var2);
+   protected static <P extends ejn> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
+   }
 
-   public abstract ejo<?> a();
+   public ejn(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   protected abstract ejo<?> a();
+
+   public abstract List<ehv.a> a(dfb var1, BiConsumer<jg, dvd> var2, azr var3, int var4, jg var5, ehf var6);
+
+   public int a(azr $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   }
+
+   private static boolean c(dfb $$0, jg $$1) {
+      return $$0.a($$1, $$0x -> eef.b($$0x) && !$$0x.a(dia.i) && !$$0x.a(dia.fl));
+   }
+
+   protected static void a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, jg $$3, ehf $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
+      }
+   }
+
+   protected boolean b(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, jg $$3, ehf $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, jg $$3, ehf $$4, Function<dvd, dvd> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(dfb $$0, BiConsumer<jg, dvd> $$1, azr $$2, jg.a $$3, ehf $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(dfb $$0, jg $$1) {
+      return efr.c($$0, $$1);
+   }
+
+   public boolean b(dfb $$0, jg $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(awz.u));
+   }
 }

@@ -1,29 +1,23 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public record abe(Set<kh> c, Set<kh> d) implements aao {
-   public static final zc<wb, abe> a = aao.a(abe::a, abe::new);
-   public static final aao.b<abe> b = aao.a("debug/village_sections");
+public record abe(List<jg> c) implements aar {
+   public static final zf<we, abe> a = aar.a(abe::a, abe::new);
+   public static final aar.b<abe> b = aar.a("debug/raids");
 
-   private abe(wb $$0) {
-      this($$0.a(HashSet::new, wb::g), $$0.a(HashSet::new, wb::g));
+   private abe(we $$0) {
+      this($$0.a(jg.b));
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.c, wb::a);
-      $$0.a(this.d, wb::a);
+   private void a(we $$0) {
+      $$0.a(this.c, jg.b);
    }
 
    @Override
-   public aao.b<abe> a() {
+   public aar.b<abe> a() {
       return b;
    }
 
-   public Set<kh> b() {
+   public List<jg> b() {
       return this.c;
-   }
-
-   public Set<kh> c() {
-      return this.d;
    }
 }

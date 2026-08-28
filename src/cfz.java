@@ -1,179 +1,232 @@
-public abstract class cfz extends chf implements cgf {
-   private static final akh<Boolean> b = akl.a(cfz.class, akj.k);
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-   public cfz(bty<? extends cfz> $$0, dej $$1) {
-      super($$0, $$1);
-      this.bP = new cfz.a(this);
+public class cfz extends dyt<cgb, cgb.a> {
+   public static final int a = 6;
+   public static final int b = 1;
+   private final cfz.a d;
+   private final LongSet e = new LongOpenHashSet();
+
+   public cfz(dys $$0, Path $$1, DataFixer $$2, boolean $$3, kd $$4, dyh $$5, dex $$6) {
+      super(new dyv($$0, $$1, $$2, $$3, bas.q), cgb.a.a, cgb::a, cgb.a::a, cgb::new, $$4, $$5, $$6);
+      this.d = new cfz.a();
    }
 
-   public static bvt.a q() {
-      return bup.E().a(bvu.s, 3.0);
+   public void a(jg $$0, jp<cgc> $$1) {
+      this.f(ki.c($$0)).a($$0, $$1);
+   }
+
+   public void a(jg $$0) {
+      this.d(ki.c($$0)).ifPresent($$1 -> $$1.a($$0));
+   }
+
+   public long a(Predicate<jp<cgc>> $$0, jg $$1, int $$2, cfz.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).count();
+   }
+
+   public boolean a(alg<cgc> $$0, jg $$1) {
+      return this.a($$1, (Predicate<jp<cgc>>)($$1x -> $$1x.a($$0)));
+   }
+
+   public Stream<cga> b(Predicate<jp<cgc>> $$0, jg $$1, int $$2, cfz.b $$3) {
+      int $$4 = Math.floorDiv($$2, 16) + 1;
+      return deb.a(new deb($$1), $$4).flatMap($$2x -> this.a($$0, $$2x, $$3)).filter($$2x -> {
+         jg $$3x = $$2x.g();
+         return Math.abs($$3x.u() - $$1.u()) <= $$2 && Math.abs($$3x.w() - $$1.w()) <= $$2;
+      });
+   }
+
+   public Stream<cga> c(Predicate<jp<cgc>> $$0, jg $$1, int $$2, cfz.b $$3) {
+      int $$4 = $$2 * $$2;
+      return this.b($$0, $$1, $$2, $$3).filter($$2x -> $$2x.g().j($$1) <= (double)$$4);
+   }
+
+   @bap
+   public Stream<cga> a(Predicate<jp<cgc>> $$0, deb $$1, cfz.b $$2) {
+      return IntStream.rangeClosed(this.c.ap(), this.c.aq())
+         .boxed()
+         .map($$1x -> this.d(ki.a($$1, $$1x).s()))
+         .filter(Optional::isPresent)
+         .flatMap($$2x -> ((cgb)$$2x.get()).a($$0, $$2));
+   }
+
+   public Stream<jg> a(Predicate<jp<cgc>> $$0, Predicate<jg> $$1, jg $$2, int $$3, cfz.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).map(cga::g).filter($$1);
+   }
+
+   public Stream<Pair<jp<cgc>, jg>> b(Predicate<jp<cgc>> $$0, Predicate<jg> $$1, jg $$2, int $$3, cfz.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).filter($$1x -> $$1.test($$1x.g())).map($$0x -> Pair.of($$0x.h(), $$0x.g()));
+   }
+
+   public Stream<Pair<jp<cgc>, jg>> c(Predicate<jp<cgc>> $$0, Predicate<jg> $$1, jg $$2, int $$3, cfz.b $$4) {
+      return this.b($$0, $$1, $$2, $$3, $$4).sorted(Comparator.comparingDouble($$1x -> ((jg)$$1x.getSecond()).j($$2)));
+   }
+
+   public Optional<jg> d(Predicate<jp<cgc>> $$0, Predicate<jg> $$1, jg $$2, int $$3, cfz.b $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4).findFirst();
+   }
+
+   public Optional<jg> d(Predicate<jp<cgc>> $$0, jg $$1, int $$2, cfz.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).map(cga::g).min(Comparator.comparingDouble($$1x -> $$1x.j($$1)));
+   }
+
+   public Optional<Pair<jp<cgc>, jg>> e(Predicate<jp<cgc>> $$0, jg $$1, int $$2, cfz.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).min(Comparator.comparingDouble($$1x -> $$1x.g().j($$1))).map($$0x -> Pair.of($$0x.h(), $$0x.g()));
+   }
+
+   public Optional<jg> e(Predicate<jp<cgc>> $$0, Predicate<jg> $$1, jg $$2, int $$3, cfz.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).map(cga::g).filter($$1).min(Comparator.comparingDouble($$1x -> $$1x.j($$2)));
+   }
+
+   public Optional<jg> a(Predicate<jp<cgc>> $$0, BiPredicate<jp<cgc>, jg> $$1, jg $$2, int $$3) {
+      return this.c($$0, $$2, $$3, cfz.b.a).filter($$1x -> $$1.test($$1x.h(), $$1x.g())).findFirst().map($$0x -> {
+         $$0x.c();
+         return $$0x.g();
+      });
+   }
+
+   public Optional<jg> a(Predicate<jp<cgc>> $$0, Predicate<jg> $$1, cfz.b $$2, jg $$3, int $$4, azr $$5) {
+      List<cga> $$6 = ad.a(this.c($$0, $$3, $$4, $$2), $$5);
+      return $$6.stream().filter($$1x -> $$1.test($$1x.g())).findFirst().map(cga::g);
+   }
+
+   public boolean b(jg $$0) {
+      return this.d(ki.c($$0)).map($$1 -> $$1.c($$0)).orElseThrow(() -> ad.b(new IllegalStateException("POI never registered at " + $$0)));
+   }
+
+   public boolean a(jg $$0, Predicate<jp<cgc>> $$1) {
+      return this.d(ki.c($$0)).map($$2 -> $$2.a($$0, $$1)).orElse(false);
+   }
+
+   public Optional<jp<cgc>> c(jg $$0) {
+      return this.d(ki.c($$0)).flatMap($$1 -> $$1.d($$0));
+   }
+
+   @Deprecated
+   @bap
+   public int d(jg $$0) {
+      return this.d(ki.c($$0)).map($$1 -> $$1.b($$0)).orElse(0);
+   }
+
+   public int a(ki $$0) {
+      this.d.a();
+      return this.d.c($$0.s());
+   }
+
+   boolean g(long $$0) {
+      Optional<cgb> $$1 = this.c($$0);
+      return $$1 == null ? false : $$1.<Boolean>map($$0x -> $$0x.a($$0xx -> $$0xx.a(axk.b), cfz.b.b).findAny().isPresent()).orElse(false);
    }
 
    @Override
-   public boolean Z() {
-      return super.Z() || this.t();
-   }
-
-   @Override
-   public boolean h(double $$0) {
-      return !this.t() && !this.ak();
-   }
-
-   @Override
-   public int fS() {
-      return 8;
-   }
-
-   @Override
-   protected void a(akl.a $$0) {
+   public void a(BooleanSupplier $$0) {
       super.a($$0);
-      $$0.a(b, false);
+      this.d.a();
    }
 
    @Override
-   public boolean t() {
-      return this.am.a(b);
-   }
-
-   @Override
-   public void x(boolean $$0) {
-      this.am.a(b, $$0);
-   }
-
-   @Override
-   public void b(ug $$0) {
-      super.b($$0);
-      $$0.a("FromBucket", this.t());
-   }
-
-   @Override
-   public void a(ug $$0) {
+   protected void a(long $$0) {
       super.a($$0);
-      this.x($$0.q("FromBucket"));
+      this.d.b($$0, this.d.b($$0), false);
    }
 
    @Override
-   protected void D() {
-      super.D();
-      this.bS.a(0, new ccd(this, 1.25));
-      this.bS.a(2, new car<>(this, cnx.class, 8.0F, 1.6, 1.4, btw.f::test));
-      this.bS.a(4, new cfz.b(this));
+   protected void b(long $$0) {
+      this.d.b($$0, this.d.b($$0), false);
    }
 
-   @Override
-   protected cdy b(dej $$0) {
-      return new cea(this, $$0);
-   }
-
-   @Override
-   public void a_(eyw $$0) {
-      if (this.de() && this.bi()) {
-         this.a(0.01F, $$0);
-         this.a(bur.a, this.dv());
-         this.h(this.dv().c(0.9));
-         if (this.m() == null) {
-            this.h(this.dv().b(0.0, -0.005, 0.0));
+   public void a(ki $$0, dxk $$1) {
+      ad.a(this.d($$0.s()), $$2 -> $$2.a($$2x -> {
+            if (a($$1)) {
+               this.a($$1, $$0, $$2x);
+            }
+         }), () -> {
+         if (a($$1)) {
+            cgb $$2 = this.f($$0.s());
+            this.a($$1, $$0, $$2::a);
          }
-      } else {
-         super.a_($$0);
-      }
+      });
    }
 
-   @Override
-   public void n_() {
-      if (!this.bi() && this.aH() && this.R) {
-         this.h(this.dv().b((double)((this.af.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.af.i() * 2.0F - 1.0F) * 0.05F)));
-         this.d(false);
-         this.as = true;
-         this.b(this.gp());
-      }
-
-      super.n_();
+   private static boolean a(dxk $$0) {
+      return $$0.a(cgd::b);
    }
 
-   @Override
-   protected brs b(cnx $$0, brr $$1) {
-      return cgf.a($$0, $$1, this).orElse(super.b($$0, $$1));
+   private void a(dxk $$0, ki $$1, BiConsumer<jg, jp<cgc>> $$2) {
+      $$1.t().forEach($$2x -> {
+         dvd $$3 = $$0.a(ki.b($$2x.u()), ki.b($$2x.v()), ki.b($$2x.w()));
+         cgd.a($$3).ifPresent($$2xx -> $$2.accept($$2x, $$2xx));
+      });
    }
 
-   @Override
-   public void m(cvs $$0) {
-      cgf.a(this, $$0);
+   public void a(dey $$0, jg $$1, int $$2) {
+      ki.a(new deb($$1), Math.floorDiv($$2, 16), this.c.ap(), this.c.aq())
+         .map($$0x -> Pair.of($$0x, this.d($$0x.s())))
+         .filter($$0x -> !((Optional)$$0x.getSecond()).<Boolean>map(cgb::b).orElse(false))
+         .map($$0x -> ((ki)$$0x.getFirst()).r())
+         .filter($$0x -> this.e.add($$0x.a()))
+         .forEach($$1x -> $$0.a($$1x.e, $$1x.f, dya.c));
    }
 
-   @Override
-   public void h(ug $$0) {
-      cgf.a(this, $$0);
-   }
+   final class a extends ari {
+      private final Long2ByteMap b = new Long2ByteOpenHashMap();
 
-   @Override
-   public awf y() {
-      return awg.dk;
-   }
-
-   protected boolean go() {
-      return true;
-   }
-
-   protected abstract awf gp();
-
-   @Override
-   protected awf aT() {
-      return awg.iW;
-   }
-
-   @Override
-   protected void b(jf $$0, dus $$1) {
-   }
-
-   static class a extends can {
-      private final cfz l;
-
-      a(cfz $$0) {
-         super($$0);
-         this.l = $$0;
+      protected a() {
+         super(7, 16, 256);
+         this.b.defaultReturnValue((byte)7);
       }
 
       @Override
-      public void a() {
-         if (this.l.a(axb.a)) {
-            this.l.h(this.l.dv().b(0.0, 0.005, 0.0));
-         }
+      protected int b(long $$0) {
+         return cfz.this.g($$0) ? 0 : 7;
+      }
 
-         if (this.k == can.a.b && !this.l.P().m()) {
-            float $$0 = (float)(this.h * this.l.h(bvu.v));
-            this.l.C(azf.h(0.125F, this.l.fm(), $$0));
-            double $$1 = this.e - this.l.dx();
-            double $$2 = this.f - this.l.dz();
-            double $$3 = this.g - this.l.dD();
-            if ($$2 != 0.0) {
-               double $$4 = Math.sqrt($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-               this.l.h(this.l.dv().b(0.0, (double)this.l.fm() * ($$2 / $$4) * 0.1, 0.0));
-            }
+      @Override
+      protected int c(long $$0) {
+         return this.b.get($$0);
+      }
 
-            if ($$1 != 0.0 || $$3 != 0.0) {
-               float $$5 = (float)(azf.d($$3, $$1) * 180.0F / (float)Math.PI) - 90.0F;
-               this.l.v(this.a(this.l.dI(), $$5, 90.0F));
-               this.l.aT = this.l.dI();
-            }
+      @Override
+      protected void a(long $$0, int $$1) {
+         if ($$1 > 6) {
+            this.b.remove($$0);
          } else {
-            this.l.C(0.0F);
+            this.b.put($$0, (byte)$$1);
          }
+      }
+
+      public void a() {
+         super.b(Integer.MAX_VALUE);
       }
    }
 
-   static class b extends cci {
-      private final cfz i;
+   public static enum b {
+      a(cga::e),
+      b(cga::f),
+      c($$0 -> true);
 
-      public b(cfz $$0) {
-         super($$0, 1.0, 40);
-         this.i = $$0;
+      private final Predicate<? super cga> d;
+
+      private b(final Predicate<? super cga> $$0) {
+         this.d = $$0;
       }
 
-      @Override
-      public boolean b() {
-         return this.i.go() && super.b();
+      public Predicate<? super cga> a() {
+         return this.d;
       }
    }
 }

@@ -1,18 +1,14 @@
-import io.netty.buffer.ByteBuf;
-
-public class acp implements zl<aca> {
-   public static final acp a = new acp();
-   public static final zc<ByteBuf, acp> b = zc.a(a);
-
-   private acp() {
+public class acp extends zm<acd> {
+   public acp(Iterable<zo<? super acd>> $$0) {
+      super($$0);
    }
 
    @Override
-   public zn<acp> a() {
-      return agp.o;
+   public zq<acp> a() {
+      return ags.a;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 }

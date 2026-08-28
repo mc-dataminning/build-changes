@@ -1,23 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record egv(int b, int c, int d) implements efy {
+public class egv implements egj {
    public static final Codec<egv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayo.l.fieldOf("spread_width").forGetter(egv::a), ayo.l.fieldOf("spread_height").forGetter(egv::b), ayo.l.fieldOf("max_height").forGetter(egv::c)
-            )
-            .apply($$0, egv::new)
+      $$0 -> $$0.apply2(egv::new, efz.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), ekv.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
+   public final List<efz> b;
+   public final jp<ekv> c;
 
-   public int a() {
-      return this.b;
+   public egv(List<efz> $$0, jp<ekv> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   @Override
+   public Stream<edr<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

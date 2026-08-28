@@ -1,154 +1,201 @@
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class ers {
-   public static final int a = 3;
-   private static final int b = 16;
-   private static final int c = 128;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final arj n;
+   private final List<erq> a;
+   @Nullable
+   private ers.a b;
+   private int c;
+   private final jg d;
+   private final float e;
+   private final boolean f;
 
-   public ers(arj $$0) {
-      this.n = $$0;
+   public ers(List<erq> $$0, jg $$1, boolean $$2) {
+      this.a = $$0;
+      this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
    }
 
-   public Optional<jf> a(jf $$0, boolean $$1, dwj $$2) {
-      cfq $$3 = this.n.y();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4);
-      return $$3.b($$0x -> $$0x.a(cfu.r), $$0, $$4, cfq.b.c)
-         .map(cfr::g)
-         .filter($$2::a)
-         .filter($$0x -> this.n.a_($$0x).b(dvi.H))
-         .min(Comparator.<jf>comparingDouble($$1x -> $$1x.j($$0)).thenComparingInt(kj::v));
+   public void a() {
+      this.c++;
    }
 
-   public Optional<l.a> a(jf $$0, jk.a $$1) {
-      jk $$2 = jk.a(jk.b.a, $$1);
-      double $$3 = -1.0;
-      jf $$4 = null;
-      double $$5 = -1.0;
-      jf $$6 = null;
-      dwj $$7 = this.n.B_();
-      int $$8 = Math.min(this.n.an(), this.n.H_() + this.n.k() - 1);
-      int $$9 = 1;
-      jf.a $$10 = $$0.k();
-
-      for (jf.a $$11 : jf.a($$0, 16, jk.f, jk.d)) {
-         int $$12 = Math.min($$8, this.n.a(eao.a.e, $$11.u(), $$11.w()));
-         if ($$7.a($$11) && $$7.a($$11.c($$2, 1))) {
-            $$11.c($$2.g(), 1);
-
-            for (int $$13 = $$12; $$13 >= this.n.H_(); $$13--) {
-               $$11.q($$13);
-               if (this.a($$11)) {
-                  int $$14 = $$13;
-
-                  while ($$13 > this.n.H_() && this.a($$11.c(jk.a))) {
-                     $$13--;
-                  }
-
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$11.q($$13);
-                        if (this.a($$11, $$10, $$2, 0)) {
-                           double $$16 = $$0.j($$11);
-                           if (this.a($$11, $$10, $$2, -1) && this.a($$11, $$10, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$11.j();
-                           }
-
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$11.j();
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
-      }
-
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.H_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
-         }
-
-         $$4 = new jf($$0.u() - $$2.j() * 1, azf.a($$0.v(), $$17, $$18), $$0.w() - $$2.l() * 1).j();
-         $$4 = $$7.b($$4);
-         jk $$19 = $$2.h();
-
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  dus $$23 = $$22 < 0 ? dho.co.n() : dho.a.n();
-                  $$10.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$10, $$23);
-               }
-            }
-         }
-      }
-
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$10.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$10, dho.co.n(), 3);
-            }
-         }
-      }
-
-      dus $$26 = dho.ed.n().b(dmq.b, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$10.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$10, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.j(), 2, 3));
+   public boolean b() {
+      return this.c <= 0;
    }
 
-   private boolean a(jf.a $$0) {
-      dus $$1 = this.n.a_($$0);
-      return $$1.v() && $$1.y().c();
+   public boolean c() {
+      return this.c >= this.a.size();
    }
 
-   private boolean a(jf $$0, jf.a $$1, jk $$2, int $$3) {
-      jk $$4 = $$2.h();
+   @Nullable
+   public erq d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
+   }
 
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
-            }
+   public erq a(int $$0) {
+      return this.a.get($$0);
+   }
 
-            if ($$6 >= 0 && !this.a($$1)) {
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
+      }
+   }
+
+   public void a(int $$0, erq $$1) {
+      this.a.set($$0, $$1);
+   }
+
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public ezh a(btz $$0, int $$1) {
+      erq $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.ds() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.ds() + 1.0F)) * 0.5;
+      return new ezh($$3, $$4, $$5);
+   }
+
+   public jg d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public ezh a(btz $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public jg g() {
+      return this.a.get(this.c).a();
+   }
+
+   public erq h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public erq i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable ers $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            erq $$2 = this.a.get($$1);
+            erq $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
                return false;
             }
          }
+
+         return true;
+      }
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   @bap
+   void a(erq[] $$0, erq[] $$1, Set<erz> $$2) {
+      this.b = new ers.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public ers.a k() {
+      return this.b;
+   }
+
+   public void a(we $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.q(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
+      }
+   }
+
+   public static ers b(we $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      jg $$3 = $$0.e();
+      List<erq> $$4 = $$0.a(erq::b);
+      ers.a $$5 = ers.a.b($$0);
+      ers $$6 = new ers($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public jg l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static erq[] c(we $$0) {
+      erq[] $$1 = new erq[$$0.l()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = erq.b($$0);
       }
 
-      return true;
+      return $$1;
+   }
+
+   static void a(we $$0, erq[] $$1) {
+      $$0.c($$1.length);
+
+      for (erq $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public ers n() {
+      ers $$0 = new ers(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(erq[] a, erq[] b, Set<erz> c) {
+
+      public void a(we $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         ers.a($$0, this.a);
+         ers.a($$0, this.b);
+      }
+
+      public static ers.a b(we $$0) {
+         HashSet<erz> $$1 = $$0.a(HashSet::new, erz::c);
+         erq[] $$2 = ers.c($$0);
+         erq[] $$3 = ers.c($$0);
+         return new ers.a($$2, $$3, $$1);
+      }
    }
 }

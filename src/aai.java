@@ -1,29 +1,20 @@
-public class aai implements zl<aae> {
-   public static final zc<wb, aai> a = zl.a(aai::a, aai::new);
-   private final int b;
+public record aai(aqy b) implements zo<aah> {
+   public static final zf<we, aai> a = zo.a(aai::a, aai::new);
 
-   public aai(int $$0) {
-      this.b = $$0;
+   private aai(we $$0) {
+      this(new aqy($$0));
    }
 
-   private aai(wb $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(wb $$0) {
-      $$0.q(this.b);
+   private void a(we $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public zn<aai> a() {
-      return aad.o;
+   public zq<aai> a() {
+      return aag.l;
    }
 
-   public void a(aae $$0) {
+   public void a(aah $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

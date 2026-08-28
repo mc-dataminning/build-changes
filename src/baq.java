@@ -1,77 +1,63 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.RewriteResult;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.View;
-import com.mojang.datafixers.functions.PointFreeRule;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.BitSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Arrays;
+import java.util.function.IntConsumer;
+import org.apache.commons.lang3.Validate;
 
-public class baq {
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("X").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
-      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
-      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
-         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
-         : $$0;
+public class baq implements axy {
+   public static final long[] a = new long[0];
+   private final int b;
+
+   public baq(int $$0) {
+      this.b = $$0;
    }
 
-   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
-      return new Typed($$0, $$1.getOps(), $$1.getValue());
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+      return 0;
    }
 
-   public static Type<?> a(Type<?> $$0, Type<?> $$1, Type<?> $$2) {
-      return $$0.all(a($$1, $$2), true, false).view().newType();
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
    }
 
-   private static <A, B> TypeRewriteRule a(Type<A> $$0, Type<B> $$1) {
-      RewriteResult<A, B> $$2 = RewriteResult.create(View.create("Patcher", $$0, $$1, $$0x -> $$0xx -> {
-            throw new UnsupportedOperationException();
-         }), new BitSet());
-      return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame($$0, $$2), PointFreeRule.nop(), true, true);
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      return 0;
    }
 
-   @SafeVarargs
-   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
-      return $$1 -> {
-         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
-            $$1 = $$2.apply($$1);
-         }
-
-         return $$1;
-      };
+   @Override
+   public long[] a() {
+      return a;
    }
 
-   public static Dynamic<?> a(String $$0, Map<String, String> $$1) {
-      Dynamic<vd> $$2 = new Dynamic(uu.a, new ug());
-      Dynamic<vd> $$3 = $$2.set("Name", $$2.createString($$0));
-      if (!$$1.isEmpty()) {
-         $$3 = $$3.set(
-            "Properties",
-            $$2.createMap(
-               $$1.entrySet()
-                  .stream()
-                  .collect(Collectors.toMap($$1x -> $$2.createString((String)$$1x.getKey()), $$1x -> $$2.createString((String)$$1x.getValue())))
-            )
-         );
+   @Override
+   public int b() {
+      return this.b;
+   }
+
+   @Override
+   public int c() {
+      return 0;
+   }
+
+   @Override
+   public void a(IntConsumer $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         $$0.accept(0);
       }
-
-      return $$3;
    }
 
-   public static Dynamic<?> a(String $$0) {
-      return a($$0, Map.of());
+   @Override
+   public void a(int[] $$0) {
+      Arrays.fill($$0, 0, this.b, 0);
    }
 
-   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, UnaryOperator<String> $$2) {
-      return $$0.update($$1, $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asString().map($$2).map($$0::createString).result(), $$2x));
+   @Override
+   public axy d() {
+      return this;
    }
 }

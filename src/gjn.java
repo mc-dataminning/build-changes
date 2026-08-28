@@ -1,66 +1,96 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class gjn {
-   private final gjj a;
-   private final gje b;
+   public static final gjn a = new gjn(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   public gjn(gjj $$0, gje $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gjn(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   public gje a() {
-      return this.b;
+   public void a(boolean $$0, fdt $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
+         }
+
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
+      }
    }
 
-   public Predicate<dus> a(dut<dhm, dus> $$0) {
-      return this.a.getPredicate($$0);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
+      } else {
+         gjn $$1 = (gjn)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
    }
 
-   public static class a implements JsonDeserializer<gjn> {
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
+   }
+
+   protected static class a implements JsonDeserializer<gjn> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
       public gjn a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         return new gjn(this.b($$3), (gje)$$2.deserialize($$3.get("apply"), gje.class));
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(azj.a($$5.x, -5.0F, 5.0F), azj.a($$5.y, -5.0F, 5.0F), azj.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(azj.a($$6.x, -4.0F, 4.0F), azj.a($$6.y, -4.0F, 4.0F), azj.a($$6.z, -4.0F, 4.0F));
+         return new gjn($$4, $$5, $$6);
       }
 
-      private gjj b(JsonObject $$0) {
-         return $$0.has("when") ? a(ayv.u($$0, "when")) : gjj.b;
-      }
-
-      @VisibleForTesting
-      static gjj a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gjj> $$2 = Streams.stream(ayv.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gjm($$2);
-            } else if ($$0.has("AND")) {
-               List<gjj> $$3 = Streams.stream(ayv.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gji($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
          } else {
-            return new gji($$1.stream().map(gjn.a::a).collect(Collectors.toList()));
-         }
-      }
+            JsonArray $$3 = ayz.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
 
-      private static gjj a(Entry<String, JsonElement> $$0) {
-         return new gjk($$0.getKey(), $$0.getValue().getAsString());
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = ayz.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
+
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
+         }
       }
    }
 }

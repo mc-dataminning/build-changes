@@ -1,76 +1,23 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ejc {
-   public static final Codec<ejc> c = lv.V.q().dispatch(ejc::a, ejd::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
+public class ejc<P extends ejb> {
+   public static final ejc<ejd> a = a("trunk_vine", ejd.a);
+   public static final ejc<eja> b = a("leave_vine", eja.a);
+   public static final ejc<eiz> c = a("cocoa", eiz.a);
+   public static final ejc<eiy> d = a("beehive", eiy.a);
+   public static final ejc<eiw> e = a("alter_ground", eiw.a);
+   public static final ejc<eix> f = a("attached_to_leaves", eix.a);
+   private final MapCodec<P> g;
 
-   protected static <P extends ejc> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
+   private static <P extends ejb> ejc<P> a(String $$0, MapCodec<P> $$1) {
+      return kc.a(lx.X, $$0, new ejc<>($$1));
    }
 
-   public ejc(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private ejc(MapCodec<P> $$0) {
+      this.g = $$0;
    }
 
-   protected abstract ejd<?> a();
-
-   public abstract List<ehk.a> a(dep var1, BiConsumer<jf, dus> var2, azn var3, int var4, jf var5, egu var6);
-
-   public int a(azn $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
-
-   private static boolean c(dep $$0, jf $$1) {
-      return $$0.a($$1, $$0x -> edu.b($$0x) && !$$0x.a(dho.i) && !$$0x.a(dho.fl));
-   }
-
-   protected static void a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, jf $$3, egu $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
-      }
-   }
-
-   protected boolean b(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, jf $$3, egu $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, jf $$3, egu $$4, Function<dus, dus> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, jf.a $$3, egu $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(dep $$0, jf $$1) {
-      return efg.c($$0, $$1);
-   }
-
-   public boolean b(dep $$0, jf $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(awv.u));
+   public MapCodec<P> a() {
+      return this.g;
    }
 }

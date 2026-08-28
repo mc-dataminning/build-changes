@@ -1,112 +1,98 @@
-import com.google.common.base.Suppliers;
-import java.util.List;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class dew implements dds {
-   protected final int a;
-   protected final int b;
-   protected final dwo[][] c;
-   protected boolean d;
-   protected final dej e;
-   private final Supplier<jo<dfk>> f;
-
-   public dew(dej $$0, jf $$1, jf $$2) {
-      this.e = $$0;
-      this.f = Suppliers.memoize(() -> $$0.G_().e(lw.aH).b(dfr.b));
-      this.a = kh.a($$1.u());
-      this.b = kh.a($$1.w());
-      int $$3 = kh.a($$2.u());
-      int $$4 = kh.a($$2.w());
-      this.c = new dwo[$$3 - this.a + 1][$$4 - this.b + 1];
-      dws $$5 = $$0.P();
-      this.d = true;
-
-      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
-         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
-            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
-         }
-      }
-
-      for (int $$8 = kh.a($$1.u()); $$8 <= kh.a($$2.u()); $$8++) {
-         for (int $$9 = kh.a($$1.w()); $$9 <= kh.a($$2.w()); $$9++) {
-            dwo $$10 = this.c[$$8 - this.a][$$9 - this.b];
-            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
-               this.d = false;
-               return;
-            }
-         }
-      }
-   }
-
-   private dwo d(jf $$0) {
-      return this.a(kh.a($$0.u()), kh.a($$0.w()));
-   }
-
-   private dwo a(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
-         dwo $$4 = this.c[$$2][$$3];
-         return (dwo)($$4 != null ? $$4 : new dwu(this.e, new ddp($$0, $$1), this.f.get()));
-      } else {
-         return new dwu(this.e, new ddp($$0, $$1), this.f.get());
-      }
-   }
-
+public interface dew extends deg, dfc {
    @Override
-   public dwj B_() {
-      return this.e.B_();
+   default long al() {
+      return this.A_().d();
    }
 
-   @Override
-   public ddo c(int $$0, int $$1) {
-      return this.a($$0, $$1);
+   long G_();
+
+   fav<dhy> R();
+
+   private <T> faz<T> a(jg $$0, T $$1, int $$2, fbd $$3) {
+      return new faz<>($$1, $$0, this.A_().c() + (long)$$2, $$3, this.G_());
    }
 
-   @Override
-   public List<ezq> c(@Nullable btr $$0, eyr $$1) {
-      return List.of();
+   private <T> faz<T> a(jg $$0, T $$1, int $$2) {
+      return new faz<>($$1, $$0, this.A_().c() + (long)$$2, this.G_());
    }
+
+   default void a(jg $$0, dhy $$1, int $$2, fbd $$3) {
+      this.R().a(this.a($$0, $$1, $$2, $$3));
+   }
+
+   default void a(jg $$0, dhy $$1, int $$2) {
+      this.R().a(this.a($$0, $$1, $$2));
+   }
+
+   fav<erd> Q();
+
+   default void a(jg $$0, erd $$1, int $$2, fbd $$3) {
+      this.Q().a(this.a($$0, $$1, $$2, $$3));
+   }
+
+   default void a(jg $$0, erd $$1, int $$2) {
+      this.Q().a(this.a($$0, $$1, $$2));
+   }
+
+   etg A_();
+
+   brw d_(jg var1);
 
    @Nullable
-   @Override
-   public drv c_(jf $$0) {
-      dwo $$1 = this.d($$0);
-      return $$1.c_($$0);
+   MinecraftServer o();
+
+   default brv am() {
+      return this.A_().q();
    }
 
-   @Override
-   public dus a_(jf $$0) {
-      if (this.s($$0)) {
-         return dho.a.n();
-      } else {
-         dwo $$1 = this.d($$0);
-         return $$1.a_($$0);
-      }
-   }
+   dxd P();
 
    @Override
-   public eqt b_(jf $$0) {
-      if (this.s($$0)) {
-         return equ.a.g();
-      } else {
-         dwo $$1 = this.d($$0);
-         return $$1.b_($$0);
-      }
+   default boolean b(int $$0, int $$1) {
+      return this.P().b($$0, $$1);
    }
 
-   @Override
-   public int H_() {
-      return this.e.H_();
+   azr E_();
+
+   default void b(jg $$0, dhy $$1) {
    }
 
-   @Override
-   public int I_() {
-      return this.e.I_();
+   default void a(jl $$0, jg $$1, jg $$2, dvd $$3, int $$4, int $$5) {
+      esl.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   public bog a() {
-      return this.e.ah();
+   default void a(@Nullable coh $$0, jg $$1, awj $$2, awl $$3) {
+      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
+   }
+
+   void a(@Nullable coh var1, jg var2, awj var3, awl var4, float var5, float var6);
+
+   void a(lo var1, double var2, double var4, double var6, double var8, double var10, double var12);
+
+   void a(@Nullable coh var1, int var2, jg var3, int var4);
+
+   default void c(int $$0, jg $$1, int $$2) {
+      this.a(null, $$0, $$1, $$2);
+   }
+
+   void a(jp<eaa> var1, ezh var2, eaa.a var3);
+
+   default void a(@Nullable btz $$0, jp<eaa> $$1, ezh $$2) {
+      this.a($$1, $$2, new eaa.a($$0, null));
+   }
+
+   default void a(@Nullable btz $$0, jp<eaa> $$1, jg $$2) {
+      this.a($$1, $$2, new eaa.a($$0, null));
+   }
+
+   default void a(jp<eaa> $$0, jg $$1, eaa.a $$2) {
+      this.a($$0, ezh.b($$1), $$2);
+   }
+
+   default void a(alg<eaa> $$0, jg $$1, eaa.a $$2) {
+      this.a(this.H_().e(ly.G).b($$0), $$1, $$2);
    }
 }

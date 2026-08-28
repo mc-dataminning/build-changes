@@ -1,10 +1,38 @@
-public class frb extends fqx<crf> {
-   private static final ale G = ale.b("container/blast_furnace/lit_progress");
-   private static final ale H = ale.b("container/blast_furnace/burn_progress");
-   private static final ale I = ale.b("textures/gui/container/blast_furnace.png");
-   private static final xe J = xe.c("gui.recipebook.toggleRecipes.blastable");
+public enum frb {
+   a(
+      alh.b("advancements/box_obtained"),
+      alh.b("advancements/task_frame_obtained"),
+      alh.b("advancements/challenge_frame_obtained"),
+      alh.b("advancements/goal_frame_obtained")
+   ),
+   b(
+      alh.b("advancements/box_unobtained"),
+      alh.b("advancements/task_frame_unobtained"),
+      alh.b("advancements/challenge_frame_unobtained"),
+      alh.b("advancements/goal_frame_unobtained")
+   );
 
-   public frb(crf $$0, cnw $$1, xe $$2) {
-      super($$0, $$1, $$2, J, I, G, H);
+   private final alh c;
+   private final alh d;
+   private final alh e;
+   private final alh f;
+
+   private frb(final alh $$0, final alh $$1, final alh $$2, final alh $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public alh a() {
+      return this.c;
+   }
+
+   public alh a(am $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

@@ -1,61 +1,39 @@
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public abstract class asy implements ath {
-   private static final Logger c = LogUtils.getLogger();
-   private final atg d;
+public class asy implements asd {
+   public static final asd.a a = new asd.a("synchronize_registries");
+   private final List<aug> b;
+   private final jw<alq> c;
 
-   protected asy(atg $$0) {
-      this.d = $$0;
+   public asy(List<aug> $$0, jw<alq> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Nullable
    @Override
-   public <T> T a(atu<T> $$0) throws IOException {
-      aun<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
-      if ($$1 == null) {
-         return null;
-      } else {
-         Object var4;
-         try (InputStream $$2 = $$1.get()) {
-            var4 = a($$0, $$2);
-         }
-
-         return (T)var4;
-      }
+   public void a(Consumer<zo<?>> $$0) {
+      $$0.accept(new abp(this.b));
    }
 
-   @Nullable
-   public static <T> T a(atu<T> $$0, InputStream $$1) {
-      JsonObject $$3;
-      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
-         $$3 = ayv.a($$2);
-      } catch (Exception var9) {
-         c.error("Couldn't load {} metadata", $$0.a(), var9);
-         return null;
-      }
+   private void a(Consumer<zo<?>> $$0, Set<aug> $$1) {
+      DynamicOps<vg> $$2 = this.c.a().a(ux.a);
+      kg.a($$2, this.c.c(alq.b), $$1, ($$1x, $$2x) -> $$0.accept(new abn($$1x, $$2x)));
+      $$0.accept(new aaf(axr.a(this.c)));
+   }
 
-      if (!$$3.has($$0.a())) {
-         return null;
+   public void a(List<aug> $$0, Consumer<zo<?>> $$1) {
+      if ($$0.equals(this.b)) {
+         this.a($$1, Set.copyOf(this.b));
       } else {
-         try {
-            return $$0.a(ayv.u($$3, $$0.a()));
-         } catch (Exception var7) {
-            c.error("Couldn't load {} metadata", $$0.a(), var7);
-            return null;
-         }
+         this.a($$1, Set.of());
       }
    }
 
    @Override
-   public atg a() {
-      return this.d;
+   public asd.a a() {
+      return a;
    }
 }

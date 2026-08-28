@@ -1,27 +1,27 @@
-public class gng extends gmi<ckr, gwf, fxj> {
-   private static final ale a = ale.b("textures/entity/zombie/drowned.png");
+public class gng extends gmu<cid, gts, fxl> {
+   private static final alh a = alh.b("textures/entity/camel/camel.png");
 
-   public gng(gno.a $$0) {
-      super($$0, new fxj($$0.a(gap.ai)), new fxj($$0.a(gap.am)), new fxj($$0.a(gap.aj)), new fxj($$0.a(gap.ak)), new fxj($$0.a(gap.an)), new fxj($$0.a(gap.ao)));
-      this.a(new grj(this, $$0.f()));
+   public gng(gnz.a $$0) {
+      super($$0, new fxl($$0.a(gba.H)), new fxl($$0.a(gba.I)), 0.7F);
    }
 
-   public gwf a() {
-      return new gwf();
-   }
-
-   @Override
-   public ale a(gwf $$0) {
+   public alh a(gts $$0) {
       return a;
    }
 
-   protected void a(gwf $$0, fdi $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.B;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.V;
-         float $$6 = azf.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.r / 2.0F / $$3, 0.0F);
-      }
+   public gts a() {
+      return new gts();
+   }
+
+   public void a(cid $$0, gts $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.i();
+      $$1.b = $$0.cb();
+      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.cf);
+      $$1.f.a($$0.cg);
+      $$1.g.a($$0.ch);
+      $$1.h.a($$0.ci);
    }
 }

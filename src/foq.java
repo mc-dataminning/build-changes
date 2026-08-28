@@ -1,5 +1,143 @@
-public class foq {
-   public static boolean a(int $$0) {
-      return $$0 == 257 || $$0 == 32 || $$0 == 335;
+public interface foq {
+   foq a(int var1);
+
+   foq a(int var1, int var2);
+
+   foq a(int var1, int var2, int var3, int var4);
+
+   foq b(int var1);
+
+   foq c(int var1);
+
+   foq d(int var1);
+
+   foq e(int var1);
+
+   foq f(int var1);
+
+   foq g(int var1);
+
+   foq a(float var1, float var2);
+
+   foq a(float var1);
+
+   foq b(float var1);
+
+   default foq a() {
+      return this.a(0.0F);
+   }
+
+   default foq b() {
+      return this.a(0.5F);
+   }
+
+   default foq c() {
+      return this.a(1.0F);
+   }
+
+   default foq d() {
+      return this.b(0.0F);
+   }
+
+   default foq e() {
+      return this.b(0.5F);
+   }
+
+   default foq f() {
+      return this.b(1.0F);
+   }
+
+   foq g();
+
+   foq.a h();
+
+   static foq i() {
+      return new foq.a();
+   }
+
+   public static class a implements foq {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
+      }
+
+      public a(foq.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
+
+      public foq.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public foq.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public foq.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public foq.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public foq.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public foq.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public foq.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public foq.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public foq.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public foq.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public foq.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public foq.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public foq.a j() {
+         return new foq.a(this);
+      }
+
+      @Override
+      public foq.a h() {
+         return this;
+      }
    }
 }

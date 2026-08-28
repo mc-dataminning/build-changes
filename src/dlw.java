@@ -1,124 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.OptionalInt;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dlw extends dhm implements doo {
-   public static final MapCodec<dlw> b = b(dlw::new);
-   public static final int c = 7;
-   public static final dvs d = dvi.aC;
-   public static final dvj e = dvi.v;
-   public static final dvj f = dvi.C;
-   private static final int a = 1;
+public class dlw extends dhy {
+   public static final MapCodec<dlw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lx.e.q().fieldOf("host").forGetter(dlw::b), t()).apply($$0, dlw::new));
+   private final dhy b;
+   private static final Map<dhy, dhy> c = Maps.newIdentityHashMap();
+   private static final Map<dvd, dvd> d = Maps.newIdentityHashMap();
+   private static final Map<dvd, dvd> e = Maps.newIdentityHashMap();
 
    @Override
    public MapCodec<? extends dlw> a() {
-      return b;
+      return a;
    }
 
-   public dlw(dur.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(d, Integer.valueOf(7)).b(e, Boolean.valueOf(false)).b(f, Boolean.valueOf(false)));
+   public dlw(dhy $$0, dvc.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected ezq b_(dus $$0, ddo $$1, jf $$2) {
-      return ezn.a();
+   public dhy b() {
+      return this.b;
    }
 
-   @Override
-   protected boolean f(dus $$0) {
-      return $$0.c(d) == 7 && !$$0.c(e);
+   public static boolean o(dvd $$0) {
+      return c.containsKey($$0.b());
    }
 
-   @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if (this.o($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
+   private void a(arm $$0, jg $$1) {
+      clt $$2 = bug.aM.a($$0, buf.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.V();
       }
    }
 
-   protected boolean o(dus $$0) {
-      return !$$0.c(e) && $$0.c(d) == 7;
-   }
-
    @Override
-   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   protected int i_(dus $$0) {
-      return 1;
-   }
-
-   @Override
-   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
-      if ($$0.c(f)) {
-         $$3.a($$4, equ.c, equ.c.a($$3));
+   protected void a(dvd $$0, arm $$1, jg $$2, cvx $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.ac().b(der.h) && !dbo.a($$3, axc.t)) {
+         this.a($$1, $$2);
       }
-
-      int $$6 = r($$2) + 1;
-      if ($$6 != 1 || $$0.c(d) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
    }
 
-   private static dus a(dus $$0, dek $$1, jf $$2) {
-      int $$3 = 7;
-      jf.a $$4 = new jf.a();
+   public static dvd p(dvd $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).m());
+   }
 
-      for (jk $$5 : jk.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, r($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
+   public dvd q(dvd $$0) {
+      return a(e, $$0, () -> this.b().m());
+   }
+
+   private static dvd a(Map<dvd, dvd> $$0, dvd $$1, Supplier<dvd> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dvd $$2x = $$2.get();
+
+         for (dwg $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
          }
-      }
 
-      return $$0.b(d, Integer.valueOf($$3));
-   }
-
-   private static int r(dus $$0) {
-      return q($$0).orElse(7);
-   }
-
-   public static OptionalInt q(dus $$0) {
-      if ($$0.a(awv.u)) {
-         return OptionalInt.of(0);
-      } else {
-         return $$0.b(d) ? OptionalInt.of($$0.c(d)) : OptionalInt.empty();
-      }
-   }
-
-   @Override
-   protected eqt b_(dus $$0) {
-      return $$0.c(f) ? equ.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
-      if ($$1.r($$2.d())) {
-         if ($$3.a(15) == 1) {
-            jf $$4 = $$2.e();
-            dus $$5 = $$1.a_($$4);
-            if (!$$5.t() || !$$5.c($$1, $$4, jk.b)) {
-               azj.a($$1, $$2, $$3, lo.l);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(d, e, f);
-   }
-
-   @Override
-   public dus a(czn $$0) {
-      eqt $$1 = $$0.q().b_($$0.a());
-      dus $$2 = this.n().b(e, Boolean.valueOf(true)).b(f, Boolean.valueOf($$1.a() == equ.c));
-      return a($$2, $$0.q(), $$0.a());
+         return $$2x;
+      });
    }
 }

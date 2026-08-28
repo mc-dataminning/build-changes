@@ -1,46 +1,32 @@
-public record abf(jf c, float d, float e, float f, float g, float h) implements aao {
-   public static final zc<wb, abf> a = aao.a(abf::a, abf::new);
-   public static final aao.b<abf> b = aao.a("debug/worldgen_attempt");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private abf(wb $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
-   }
-
-   private void a(wb $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-   }
+public record abf(long c, List<abf.a> d) implements aar {
+   public static final aar.b<abf> a = aar.a("debug/redstone_update_order");
+   public static final zf<we, abf> b = zf.a(zd.i, abf::b, abf.a.a.a(zd.a()), abf::c, abf::new);
 
    @Override
-   public aao.b<abf> a() {
-      return b;
+   public aar.b<abf> a() {
+      return a;
    }
 
-   public jf b() {
+   public long b() {
       return this.c;
    }
 
-   public float c() {
+   public List<abf.a> c() {
       return this.d;
    }
 
-   public float d() {
-      return this.e;
-   }
+   public static record a(jg b, esm c) {
+      public static final zf<ByteBuf, abf.a> a = zf.a(jg.b, abf.a::a, esm.a, abf.a::b, abf.a::new);
 
-   public float e() {
-      return this.f;
-   }
+      public jg a() {
+         return this.b;
+      }
 
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
+      public esm b() {
+         return this.c;
+      }
    }
 }

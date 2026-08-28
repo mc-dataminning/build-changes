@@ -1,8 +1,8 @@
-@FunctionalInterface
-public interface akw<T, V> {
-   V get(ald<T> var1);
+public class akw {
+   public static final alg<cvt> a = a("pumpkin_seeds");
+   public static final alg<cvt> b = a("melon_seeds");
 
-   static <T, V> akw<T, V> fixed(V $$0) {
-      return $$1 -> $$0;
+   private static alg<cvt> a(String $$0) {
+      return alg.a(ly.K, alh.b($$0));
    }
 }

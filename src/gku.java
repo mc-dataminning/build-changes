@@ -1,71 +1,51 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class gku implements gkh<dtr> {
+   private final gku.a a;
 
-class gku {
-   private final Map<jf, drv> a;
-   @Nullable
-   private final List<dxg<dus>> b;
-   private final boolean c;
-   private final dwy d;
+   public gku(gki.a $$0) {
+      this.a = new gku.a($$0.a(gba.cj));
+   }
 
-   gku(dwy $$0) {
-      this.d = $$0;
-      this.c = $$0.E().aj();
-      this.a = ImmutableMap.copyOf($$0.F());
-      if ($$0 instanceof dwu) {
-         this.b = null;
-      } else {
-         dwz[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dwz $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
+   public void a(dtr $$0, float $$1, fdt $$2, ghw $$3, int $$4, int $$5) {
+      jl $$6 = jl.b;
+      if ($$0.l()) {
+         dvd $$7 = $$0.i().a_($$0.aC_());
+         if ($$7.b() instanceof dox) {
+            $$6 = $$7.c(dox.b);
          }
       }
-   }
 
-   @Nullable
-   public drv a(jf $$0) {
-      return this.a.get($$0);
-   }
-
-   public dus b(jf $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dus $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dho.hW.n();
-         }
-
-         if ($$2 == 70) {
-            $$4 = eaf.a($$1, $$3);
-         }
-
-         return $$4 == null ? dho.a.n() : $$4;
-      } else if (this.b == null) {
-         return dho.a.n();
+      cuu $$8 = $$0.t();
+      hab $$9;
+      if ($$8 == null) {
+         $$9 = gir.i;
       } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dxg<dus> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
+         $$9 = gir.j.get($$8.a());
+      }
 
-            return dho.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
-         }
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      this.a.a($$0, $$1);
+      fdx $$12 = $$9.a($$3, this.a::a);
+      this.a.a($$2, $$12, $$4, $$5);
+      $$2.b();
+   }
+
+   static class a extends fyu {
+      private final gbb a;
+
+      public a(gbb $$0) {
+         super($$0, gig::f);
+         this.a = $$0.b("lid");
+      }
+
+      public void a(dtr $$0, float $$1) {
+         this.a.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+         this.a.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
       }
    }
 }

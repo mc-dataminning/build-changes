@@ -1,45 +1,53 @@
-public class aip implements zl<agr> {
-   public static final zc<wb, aip> a = zl.a(aip::a, aip::new);
-   private final eys b;
-   private final brr c;
-   private final int d;
+public class aip implements zo<agu> {
+   public static final zf<we, aip> a = zo.a(aip::a, aip::new);
+   private static final int b = 384;
+   private final jg c;
+   private final String[] d;
+   private final boolean e;
 
-   public aip(brr $$0, eys $$1, int $$2) {
+   public aip(jg $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
       this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+      this.e = $$1;
+      this.d = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   private aip(wb $$0) {
-      this.c = $$0.b(brr.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private aip(we $$0) {
+      this.c = $$0.e();
+      this.e = $$0.readBoolean();
+      this.d = new String[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.d(384);
+      }
    }
 
-   private void a(wb $$0) {
+   private void a(we $$0) {
       $$0.a(this.c);
-      $$0.a(this.b);
-      $$0.c(this.d);
+      $$0.a(this.e);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.d[$$1]);
+      }
    }
 
    @Override
-   public zn<aip> a() {
-      return agp.cf;
+   public zq<aip> a() {
+      return ags.cc;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public brr b() {
+   public jg b() {
       return this.c;
    }
 
-   public eys e() {
-      return this.b;
+   public boolean e() {
+      return this.e;
    }
 
-   public int f() {
+   public String[] f() {
       return this.d;
    }
 }

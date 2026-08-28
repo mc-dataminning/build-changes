@@ -1,48 +1,42 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public record ewl(jo<dbn> b, List<Float> c) implements eww {
-   public static final MapCodec<ewl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dbn.c.fieldOf("enchantment").forGetter(ewl::c), ayo.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(ewl::d)).apply($$0, ewl::new)
-   );
+public class ewl extends evj {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<ewl> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ewl::new));
 
-   @Override
-   public ewx b() {
-      return ewy.k;
+   private ewl(List<exh> $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<ewe<?>> a() {
-      return ImmutableSet.of(ewh.i);
+   public evl<ewl> b() {
+      return evm.l;
    }
 
-   public boolean a(etl $$0) {
-      cvs $$1 = $$0.c(ewh.i);
-      int $$2 = $$1 != null ? dbp.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
-   }
+   @Override
+   public cvx a(cvx $$0, etw $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         Optional<dal<dba>> $$2 = $$1.d().r().a(dap.b, new daz($$0), $$1.d());
+         if ($$2.isPresent()) {
+            cvx $$3 = $$2.get().b().a($$1.d().H_());
+            if (!$$3.f()) {
+               return $$3.c($$0.L());
+            }
+         }
 
-   public static eww.a a(jo<dbn> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
       }
-
-      return () -> new ewl($$0, $$2);
    }
 
-   public jo<dbn> c() {
-      return this.b;
-   }
-
-   public List<Float> d() {
-      return this.c;
+   public static evj.a<?> c() {
+      return a(ewl::new);
    }
 }

@@ -1,35 +1,31 @@
-public class fln {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+import java.util.UUID;
 
-   public static void a(fkb $$0, gyh $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, -1);
+public class fln extends bro {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
+
+   public fln(UUID $$0, xh $$1, float $$2, bro.a $$3, bro.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ad.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
-   public static void a(fkb $$0, gyh $$1, int $$2, int $$3, int $$4, int $$5) {
-      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
+   @Override
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = ad.c();
    }
 
-   public static void a(fkb $$0, ale $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
-      int $$8 = 8 + ($$6 ? 8 : 0);
-      int $$9 = 8 * ($$6 ? -1 : 1);
-      $$0.a(ghv::B, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
-      }
-   }
-
-   private static void a(fkb $$0, ale $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
-      int $$7 = 8 + ($$5 ? 8 : 0);
-      int $$8 = 8 * ($$5 ? -1 : 1);
-      $$0.a(ghv::B, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
+   @Override
+   public float j() {
+      long $$0 = ad.c() - this.i;
+      float $$1 = azj.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return azj.h($$1, this.b, this.h);
    }
 }

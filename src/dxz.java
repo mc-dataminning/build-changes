@@ -1,122 +1,63 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import java.util.function.UnaryOperator;
 
-public class dxz implements dyz<btr> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final arj d;
-   private final dyk e;
-   private final LongSet f = new LongOpenHashSet();
-   private final bql<Runnable> g;
+public record dxz(ImmutableList<dyd> c) {
+   public static final dxz a = new dxz.a()
+      .a(dya.c, $$0 -> $$0)
+      .a(dya.d, $$0 -> $$0.a(dyc::b))
+      .a(dya.e, $$0 -> $$0.a(dya.d, 8).a(dyc::d))
+      .a(dya.f, $$0 -> $$0.a(dya.d, 8).a(dyc::e))
+      .a(dya.g, $$0 -> $$0.a(dya.d, 8).a(dya.f, 1).a(0).a(dyc::f))
+      .a(dya.h, $$0 -> $$0.a(dya.d, 8).a(dya.f, 1).a(0).a(dyc::g))
+      .a(dya.i, $$0 -> $$0.a(dya.d, 8).a(0).a(dyc::h))
+      .a(dya.j, $$0 -> $$0.a(dya.d, 8).a(dya.i, 1).a(1).a(dyc::i))
+      .a(dya.k, $$0 -> $$0.a(dyc::j))
+      .a(dya.l, $$0 -> $$0.a(dya.k, 1).a(dyc::k))
+      .a(dya.m, $$0 -> $$0.a(dya.f, 1).a(dyc::l))
+      .a(dya.n, $$0 -> $$0.a(dyc::m))
+      .a();
+   public static final dxz b = new dxz.a()
+      .a(dya.c, $$0 -> $$0)
+      .a(dya.d, $$0 -> $$0.a(dyc::c))
+      .a(dya.e, $$0 -> $$0)
+      .a(dya.f, $$0 -> $$0)
+      .a(dya.g, $$0 -> $$0)
+      .a(dya.h, $$0 -> $$0)
+      .a(dya.i, $$0 -> $$0)
+      .a(dya.j, $$0 -> $$0)
+      .a(dya.k, $$0 -> $$0.a(dyc::j))
+      .a(dya.l, $$0 -> $$0.a(dya.k, 1).a(dyc::k))
+      .a(dya.m, $$0 -> $$0)
+      .a(dya.n, $$0 -> $$0.a(dyc::m))
+      .a();
 
-   public dxz(dyk $$0, arj $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = bql.a($$2, "entity-deserializer");
+   public dyd a(dya $$0) {
+      return (dyd)this.c.get($$0.b());
    }
 
-   @Override
-   public CompletableFuture<dyu<btr>> a(ddp $$0) {
-      if (this.f.contains($$0.a())) {
-         return CompletableFuture.completedFuture(b($$0));
-      } else {
-         CompletableFuture<Optional<ug>> $$1 = this.e.a($$0);
-         this.b($$1, $$0);
-         return $$1.thenApplyAsync($$1x -> {
-            if ($$1x.isEmpty()) {
-               this.f.add($$0.a());
-               return b($$0);
-            } else {
-               try {
-                  ddp $$2 = a((ug)$$1x.get());
-                  if (!Objects.equals($$0, $$2)) {
-                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-                     this.d.o().a($$2, $$0, this.e.a());
-                  }
-               } catch (Exception var6) {
-                  a.warn("Failed to parse chunk {} position info", $$0, var6);
-                  this.d.o().a(var6, this.e.a(), $$0);
-               }
+   public ImmutableList<dyd> a() {
+      return this.c;
+   }
 
-               ug $$4 = this.e.a((ug)$$1x.get(), -1);
-               um $$5 = $$4.c("Entities", 10);
-               List<btr> $$6 = bty.a($$5, this.d, btx.r).collect(ImmutableList.toImmutableList());
-               return new dyu<>($$0, $$6);
-            }
-         }, this.g::a);
+   public static class a {
+      private final List<dyd> a = new ArrayList<>();
+
+      public dxz a() {
+         return new dxz(ImmutableList.copyOf(this.a));
       }
-   }
 
-   private static ddp a(ug $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new ddp($$1[0], $$1[1]);
-   }
-
-   private static void a(ug $$0, ddp $$1) {
-      $$0.a("Position", new uk(new int[]{$$1.e, $$1.f}));
-   }
-
-   private static dyu<btr> b(ddp $$0) {
-      return new dyu<>($$0, ImmutableList.of());
-   }
-
-   @Override
-   public void a(dyu<btr> $$0) {
-      ddp $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.a(this.e.a($$1, null), $$1);
+      public dxz.a a(dya $$0, UnaryOperator<dyd.a> $$1) {
+         dyd.a $$2;
+         if (this.a.isEmpty()) {
+            $$2 = new dyd.a($$0);
+         } else {
+            $$2 = new dyd.a($$0, this.a.getLast());
          }
-      } else {
-         um $$2 = new um();
-         $$0.b().forEach($$1x -> {
-            ug $$2x = new ug();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         ug $$3 = uv.e(new ug());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.a(this.e.a($$1, $$3), $$1);
-         this.f.remove($$1.a());
+
+         this.a.add($$1.apply($$2).a());
+         return this;
       }
-   }
-
-   private void a(CompletableFuture<?> $$0, ddp $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to store entity chunk {}", $$1, $$1x);
-         this.d.o().b($$1x, this.e.a(), $$1);
-         return null;
-      });
-   }
-
-   private void b(CompletableFuture<?> $$0, ddp $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to load entity chunk {}", $$1, $$1x);
-         this.d.o().a($$1x, this.e.a(), $$1);
-         return null;
-      });
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.e.close();
    }
 }

@@ -1,71 +1,111 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
+import it.unimi.dsi.fastutil.ints.IntConsumer;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.mutable.MutableLong;
+import org.joml.Vector3f;
+import org.lwjgl.system.MemoryUtil;
 
-public class fds {
-   private static final Logger a = LogUtils.getLogger();
+public class fds implements AutoCloseable {
+   private final fdq.a a;
    @Nullable
-   private static CompletableFuture<fds.a> b;
+   private fdq.a b;
+   private final fds.a c;
 
-   public static CompletableFuture<fds.a> a() {
-      if (b == null || a(b)) {
-         b = b();
-      }
-
-      return b;
+   public fds(fdq.a $$0, fds.a $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   private static boolean a(CompletableFuture<fds.a> $$0) {
-      fds.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
-   }
+   private static Vector3f[] a(ByteBuffer $$0, int $$1, fdy $$2) {
+      int $$3 = $$2.a(fdz.b);
+      if ($$3 == -1) {
+         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
+      } else {
+         FloatBuffer $$4 = $$0.asFloatBuffer();
+         int $$5 = $$2.b() / 4;
+         int $$6 = $$5 * 4;
+         int $$7 = $$1 / 4;
+         Vector3f[] $$8 = new Vector3f[$$7];
 
-   private static CompletableFuture<fds.a> b() {
-      fjc $$0 = fip.Q().X();
-      return $$0.g() != fjc.a.c ? CompletableFuture.completedFuture(new fds.a(fds.b.d)) : CompletableFuture.supplyAsync(() -> {
-         fdy $$0x = fdy.a();
-
-         try {
-            if ($$0x.g() != fdy.a.a) {
-               return new fds.a(fds.b.b);
-            } else {
-               return !$$0x.f() ? new fds.a(fds.b.c) : new fds.a(fds.b.a);
-            }
-         } catch (ffj var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new fds.a(fds.b.d) : new fds.a(var2);
+         for (int $$9 = 0; $$9 < $$7; $$9++) {
+            int $$10 = $$9 * $$6 + $$3;
+            int $$11 = $$10 + $$5 * 2;
+            float $$12 = $$4.get($$10 + 0);
+            float $$13 = $$4.get($$10 + 1);
+            float $$14 = $$4.get($$10 + 2);
+            float $$15 = $$4.get($$11 + 0);
+            float $$16 = $$4.get($$11 + 1);
+            float $$17 = $$4.get($$11 + 2);
+            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
          }
-      }, ad.h());
+
+         return $$8;
+      }
    }
 
-   public static record a(fds.b a, @Nullable ffj b) {
-      public a(fds.b $$0) {
-         this($$0, null);
-      }
+   public ByteBuffer a() {
+      return this.a.a();
+   }
 
-      public a(ffj $$0) {
-         this(fds.b.e, $$0);
-      }
+   @Nullable
+   public ByteBuffer b() {
+      return this.b != null ? this.b.a() : null;
+   }
 
+   public fds.a c() {
+      return this.c;
+   }
+
+   @Nullable
+   public fds.b a(fdq $$0, feb $$1) {
+      if (this.c.d() != fdy.c.h) {
+         return null;
+      } else {
+         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
+         fds.b $$3 = new fds.b($$2, this.c.e());
+         this.b = $$3.a($$0, $$1);
+         return $$3;
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a.close();
+      if (this.b != null) {
+         this.b.close();
+      }
+   }
+
+   public static record a(fdy a, int b, int c, fdy.c d, fdy.b e) {
+   }
+
+   public static record b(Vector3f[] a, fdy.b b) {
       @Nullable
-      public fqh a(fqh $$0) {
-         return (fqh)(switch (this.a) {
-            case a -> null;
-            case b -> new ffw($$0);
-            case c -> new fgg($$0);
-            case d -> new fgb(xe.c("mco.error.invalid.session.title"), xe.c("mco.error.invalid.session.message"), $$0);
-            case e -> new fgb(Objects.requireNonNull(this.b), $$0);
-         });
-      }
-   }
+      public fdq.a a(fdq $$0, feb $$1) {
+         int[] $$2 = $$1.sort(this.a);
+         long $$3 = $$0.a($$2.length * 6 * this.b.d);
+         IntConsumer $$4 = this.a($$3, this.b);
 
-   public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+         for (int $$5 : $$2) {
+            $$4.accept($$5 * 4 + 0);
+            $$4.accept($$5 * 4 + 1);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 2);
+            $$4.accept($$5 * 4 + 3);
+            $$4.accept($$5 * 4 + 0);
+         }
+
+         return $$0.a();
+      }
+
+      private IntConsumer a(long $$0, fdy.b $$1) {
+         MutableLong $$2 = new MutableLong($$0);
+
+         return switch ($$1) {
+            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
+            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
+         };
+      }
    }
 }

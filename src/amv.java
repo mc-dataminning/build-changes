@@ -1,89 +1,132 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class amv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.damage.invulnerable"));
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "localhost";
+   private static final String d = "0.0.0.0";
+   private static final int e = 10000;
+   private static final int f = 100;
+   public static BiMap<String, alg<dev>> a = ImmutableBiMap.of("o", dev.i, "n", dev.j, "e", dev.k);
+   @Nullable
+   private static amn g;
+   @Nullable
+   private static amm h;
 
-   public static void a(CommandDispatcher<eu> $$0, eq $$1) {
+   public static void a(CommandDispatcher<ev> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("damage").requires($$0x -> $$0x.c(2)))
-            .then(
-               ev.a("target", fh.a())
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("chase")
                   .then(
-                     ((RequiredArgumentBuilder)ev.a("amount", FloatArgumentType.floatArg(0.0F))
-                           .executes(
-                              $$0x -> a(
-                                    (eu)$$0x.getSource(), fh.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((eu)$$0x.getSource()).e().ak().p()
-                                 )
-                           ))
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ev.a("damageType", ft.a($$1, lw.s))
-                                    .executes(
-                                       $$0x -> a(
-                                             (eu)$$0x.getSource(),
-                                             fh.a($$0x, "target"),
-                                             FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bsj(ft.a($$0x, "damageType", lw.s))
-                                          )
-                                    ))
+                     ((LiteralArgumentBuilder)ew.a("follow")
+                           .then(
+                              ((RequiredArgumentBuilder)ew.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((ev)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
                                  .then(
-                                    ev.a("at")
-                                       .then(
-                                          ev.a("location", gx.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (eu)$$0x.getSource(),
-                                                      fh.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bsj(ft.a($$0x, "damageType", lw.s), gx.a($$0x, "location"))
-                                                   )
+                                    ew.a("port", IntegerArgumentType.integer(1, 65535))
+                                       .executes(
+                                          $$0x -> b(
+                                                (ev)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
                                              )
                                        )
-                                 ))
+                                 )
+                           ))
+                        .executes($$0x -> b((ev)$$0x.getSource(), "localhost", 10000))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)ew.a("lead")
+                        .then(
+                           ((RequiredArgumentBuilder)ew.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((ev)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
                               .then(
-                                 ev.a("by")
-                                    .then(
-                                       ((RequiredArgumentBuilder)ev.a("entity", fh.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (eu)$$0x.getSource(),
-                                                      fh.a($$0x, "target"),
-                                                      FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bsj(ft.a($$0x, "damageType", lw.s), fh.a($$0x, "entity"))
-                                                   )
-                                             ))
-                                          .then(
-                                             ev.a("from")
-                                                .then(
-                                                   ev.a("cause", fh.a())
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (eu)$$0x.getSource(),
-                                                               fh.a($$0x, "target"),
-                                                               FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bsj(ft.a($$0x, "damageType", lw.s), fh.a($$0x, "entity"), fh.a($$0x, "cause"))
-                                                            )
-                                                      )
-                                                )
+                                 ew.a("port", IntegerArgumentType.integer(1024, 65535))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ev)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "bind_address"),
+                                             IntegerArgumentType.getInteger($$0x, "port")
                                           )
                                     )
                               )
-                        )
-                  )
-            )
+                        ))
+                     .executes($$0x -> a((ev)$$0x.getSource(), "0.0.0.0", 10000))
+               ))
+            .then(ew.a("stop").executes($$0x -> a((ev)$$0x.getSource())))
       );
    }
 
-   private static int a(eu $$0, btr $$1, float $$2, bsj $$3) throws CommandSyntaxException {
-      if ($$1.a($$3, $$2)) {
-         $$0.a(() -> xe.a("commands.damage.success", $$2, $$1.R_()), true);
-         return 1;
+   private static int a(ev $$0) {
+      if (h != null) {
+         h.b();
+         $$0.a(() -> xh.b("You have now stopped chasing"), false);
+         h = null;
+      }
+
+      if (g != null) {
+         g.b();
+         $$0.a(() -> xh.b("You are no longer being chased"), false);
+         g = null;
+      }
+
+      return 0;
+   }
+
+   private static boolean b(ev $$0) {
+      if (g != null) {
+         $$0.b(xh.b("Chase server is already running. Stop it using /chase stop"));
+         return true;
+      } else if (h != null) {
+         $$0.b(xh.b("You are already chasing someone. Stop it using /chase stop"));
+         return true;
       } else {
-         throw a.create();
+         return false;
+      }
+   }
+
+   private static int a(ev $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         g = new amn($$1, $$2, $$0.l().ag(), 100);
+
+         try {
+            g.a();
+            $$0.a(() -> xh.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+         } catch (IOException var4) {
+            b.error("Failed to start chase server", var4);
+            $$0.b(xh.b("Failed to start chase server on port " + $$2));
+            g = null;
+         }
+
+         return 0;
+      }
+   }
+
+   private static int b(ev $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         h = new amm($$1, $$2, $$0.l());
+         h.a();
+         $$0.a(
+            () -> xh.b(
+                  "You are now chasing "
+                     + $$1
+                     + ":"
+                     + $$2
+                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+               ),
+            false
+         );
+         return 0;
       }
    }
 }

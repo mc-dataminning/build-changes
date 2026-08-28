@@ -1,32 +1,45 @@
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 
-public interface bof {
-   char d = '\u001e';
+public class bof implements boj {
+   public static final bof a = new bof();
 
-   List<boi> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   private bof() {
    }
 
-   default int f() {
-      return this.d() - this.b();
+   @Override
+   public List<bom> a(String $$0) {
+      return Collections.emptyList();
    }
 
-   String e();
+   @Override
+   public boolean a(Path $$0) {
+      return false;
+   }
 
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   @Override
+   public long a() {
+      return 0L;
+   }
+
+   @Override
+   public int b() {
+      return 0;
+   }
+
+   @Override
+   public long c() {
+      return 0L;
+   }
+
+   @Override
+   public int d() {
+      return 0;
+   }
+
+   @Override
+   public String e() {
+      return "";
    }
 }

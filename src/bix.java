@@ -1,99 +1,55 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import java.util.Set;
 
 public class bix extends DataFix {
-   private static final String b = "WorldGenSettingsHeightAndBiomeFix";
-   public static final String a = "has_increased_height_already";
+   private static final Set<String> a = ImmutableSet.of(
+      "minecraft:andesite_wall",
+      "minecraft:brick_wall",
+      "minecraft:cobblestone_wall",
+      "minecraft:diorite_wall",
+      "minecraft:end_stone_brick_wall",
+      "minecraft:granite_wall",
+      new String[]{
+         "minecraft:mossy_cobblestone_wall",
+         "minecraft:mossy_stone_brick_wall",
+         "minecraft:nether_brick_wall",
+         "minecraft:prismarine_wall",
+         "minecraft:red_nether_brick_wall",
+         "minecraft:red_sandstone_wall",
+         "minecraft:sandstone_wall",
+         "minecraft:stone_brick_wall"
+      }
+   );
 
-   public bix(Schema $$0) {
-      super($$0, true);
+   public bix(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bho.M);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      Type<?> $$2 = this.getOutputSchema().getType(bho.M);
-      Type<?> $$3 = $$2.findFieldType("dimensions");
-      return this.fixTypeEverywhereTyped(
-         "WorldGenSettingsHeightAndBiomeFix",
-         $$0,
-         $$2,
-         $$2x -> {
-            OptionalDynamic<?> $$3x = ((Dynamic)$$2x.get(DSL.remainderFinder())).get("has_increased_height_already");
-            boolean $$4 = $$3x.result().isEmpty();
-            boolean $$5 = $$3x.asBoolean(true);
-            return $$2x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("has_increased_height_already"))
-               .updateTyped(
-                  $$1,
-                  $$3,
-                  $$3xx -> ad.a(
-                        $$3xx,
-                        $$3,
-                        $$2xxx -> $$2xxx.update(
-                              "minecraft:overworld",
-                              $$2xxxx -> $$2xxxx.update(
-                                    "generator",
-                                    $$2xxxxx -> {
-                                       String $$3xxx = $$2xxxxx.get("type").asString("");
-                                       if ("minecraft:noise".equals($$3xxx)) {
-                                          MutableBoolean $$4x = new MutableBoolean();
-                                          $$2xxxxx = $$2xxxxx.update(
-                                             "biome_source",
-                                             $$2xxxxxx -> {
-                                                String $$3xxxx = $$2xxxxxx.get("type").asString("");
-                                                if ("minecraft:vanilla_layered".equals($$3xxxx) || $$4 && "minecraft:multi_noise".equals($$3xxxx)) {
-                                                   if ($$2xxxxxx.get("large_biomes").asBoolean(false)) {
-                                                      $$4x.setTrue();
-                                                   }
-
-                                                   return $$2xxxxxx.createMap(
-                                                      ImmutableMap.of(
-                                                         $$2xxxxxx.createString("preset"),
-                                                         $$2xxxxxx.createString("minecraft:overworld"),
-                                                         $$2xxxxxx.createString("type"),
-                                                         $$2xxxxxx.createString("minecraft:multi_noise")
-                                                      )
-                                                   );
-                                                } else {
-                                                   return $$2xxxxxx;
-                                                }
-                                             }
-                                          );
-                                          return $$4x.booleanValue()
-                                             ? $$2xxxxx.update(
-                                                "settings",
-                                                $$0xxxxxx -> "minecraft:overworld".equals($$0xxxxxx.asString(""))
-                                                      ? $$0xxxxxx.createString("minecraft:large_biomes")
-                                                      : $$0xxxxxx
-                                             )
-                                             : $$2xxxxx;
-                                       } else if ("minecraft:flat".equals($$3xxx)) {
-                                          return $$5 ? $$2xxxxx : $$2xxxxx.update("settings", $$0xxxxxx -> $$0xxxxxx.update("layers", bix::a));
-                                       } else {
-                                          return $$2xxxxx;
-                                       }
-                                    }
-                                 )
-                           )
-                     )
-               );
-         }
-      );
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("WallPropertyFix", this.getInputSchema().getType(bhs.u), $$0 -> $$0.update(DSL.remainderFinder(), bix::a));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.createMap(
-         ImmutableMap.of($$0.createString("height"), $$0.createInt(64), $$0.createString("block"), $$0.createString("minecraft:air"))
-      );
-      return $$0.createList(Stream.concat(Stream.of($$1), $$0.asStream()));
+   private static String a(String $$0) {
+      return "true".equals($$0) ? "low" : "none";
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1) {
+      return $$0.update($$1, $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().result().map(bix::a).map($$0x::createString), $$0x));
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("Name").asString().result().filter(a::contains).isPresent();
+      return !$$1 ? $$0 : $$0.update("Properties", $$0x -> {
+         Dynamic<?> $$1x = a($$0x, "east");
+         $$1x = a((Dynamic<T>)$$1x, "west");
+         $$1x = a((Dynamic<T>)$$1x, "north");
+         return a((Dynamic<T>)$$1x, "south");
+      });
    }
 }

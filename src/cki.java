@@ -1,163 +1,103 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class cki extends btr implements bvl {
-   private static final akh<Integer> b = akl.a(cki.class, akj.b);
-   private static final akh<dus> c = akl.a(cki.class, akj.i);
-   private static final int d = 80;
-   private static final float e = 4.0F;
-   private static final String f = "block_state";
-   private static final String g = "fuse";
-   private static final String h = "explosion_power";
-   private static final dec i = new dec() {
-      @Override
-      public boolean a(deb $$0, ddo $$1, jf $$2, dus $$3, float $$4) {
-         return $$3.a(dho.ed) ? false : super.a($$0, $$1, $$2, $$3, $$4);
-      }
+public abstract class cki extends ckg {
+   protected static final Predicate<btz> c = $$0 -> $$0 instanceof cki;
+   protected jl d;
 
-      @Override
-      public Optional<Float> a(deb $$0, ddo $$1, jf $$2, dus $$3, eqt $$4) {
-         return $$3.a(dho.ed) ? Optional.empty() : super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   };
-   @Nullable
-   private bun j;
-   private boolean k;
-   private float l = 4.0F;
-
-   public cki(bty<? extends cki> $$0, dej $$1) {
+   protected cki(bug<? extends cki> $$0, dev $$1) {
       super($$0, $$1);
-      this.J = true;
+      this.d = jl.d;
    }
 
-   public cki(dej $$0, double $$1, double $$2, double $$3, @Nullable bun $$4) {
-      this(bty.bc, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
-      this.n(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.L = $$1;
-      this.M = $$2;
-      this.N = $$3;
-      this.j = $$4;
+   protected cki(bug<? extends cki> $$0, dev $$1, jg $$2) {
+      this($$0, $$1);
+      this.b = $$2;
    }
 
-   @Override
-   protected void a(akl.a $$0) {
-      $$0.a(b, 80);
-      $$0.a(c, dho.ck.n());
+   protected void a(jl $$0) {
+      Objects.requireNonNull($$0);
+      Validate.isTrue($$0.o().d());
+      this.d = $$0;
+      this.v((float)(this.d.e() * 90));
+      this.O = this.dN();
+      this.m();
    }
 
    @Override
-   protected btr.b bf() {
-      return btr.b.a;
-   }
-
-   @Override
-   public boolean bE() {
-      return !this.dN();
-   }
-
-   @Override
-   protected double bc() {
-      return 0.04;
-   }
-
-   @Override
-   public void l() {
-      this.bT();
-      this.be();
-      this.a(bur.a, this.dv());
-      if (!this.dS().x_()) {
-         this.aI();
+   protected final void m() {
+      if (this.d != null) {
+         ezc $$0 = this.a(this.b, this.d);
+         ezh $$1 = $$0.f();
+         this.o($$1.d, $$1.e, $$1.f);
+         this.a($$0);
       }
+   }
 
-      this.h(this.dv().c(0.98));
-      if (this.aH()) {
-         this.h(this.dv().d(0.7, -0.5, 0.7));
-      }
+   protected abstract ezc a(jg var1, jl var2);
 
-      int $$0 = this.o() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.as();
-         if (!this.dS().B) {
-            this.t();
-         }
+   @Override
+   public boolean o() {
+      if (!this.dX().g(this)) {
+         return false;
       } else {
-         this.bp();
-         if (this.dS().B) {
-            this.dS().a(lo.ae, this.dx(), this.dz() + 0.5, this.dD(), 0.0, 0.0, 0.0);
+         boolean $$0 = jg.b(this.A()).allMatch($$0x -> {
+            dvd $$1 = this.dX().a_($$0x);
+            return $$1.e() || dka.n($$1);
+         });
+         return !$$0 ? false : this.dX().a(this, this.cS(), c).isEmpty();
+      }
+   }
+
+   protected ezc A() {
+      return this.cS().a(this.d.m().mul(-0.5F)).h(1.0E-7);
+   }
+
+   @Override
+   public jl cP() {
+      return this.d;
+   }
+
+   public abstract void B();
+
+   @Override
+   public ckq a(cvx $$0, float $$1) {
+      ckq $$2 = new ckq(
+         this.dX(), this.dC() + (double)((float)this.d.j() * 0.15F), this.dE() + (double)$$1, this.dI() + (double)((float)this.d.l() * 0.15F), $$0
+      );
+      $$2.q();
+      this.dX().b($$2);
+      return $$2;
+   }
+
+   @Override
+   public float a(dol $$0) {
+      if (this.d.o() != jl.a.b) {
+         switch ($$0) {
+            case c:
+               this.d = this.d.g();
+               break;
+            case d:
+               this.d = this.d.i();
+               break;
+            case b:
+               this.d = this.d.h();
          }
       }
-   }
 
-   private void t() {
-      this.dS().a(this, deb.a(this.dS(), this), this.k ? i : null, this.dx(), this.e(0.0625), this.dD(), this.l, false, dej.a.d);
-   }
+      float $$1 = azj.h(this.dN());
 
-   @Override
-   protected void b(ug $$0) {
-      $$0.a("fuse", (short)this.o());
-      $$0.a("block_state", uv.a(this.q()));
-      if (this.l != 4.0F) {
-         $$0.a("explosion_power", this.l);
-      }
+      return switch ($$0) {
+         case c -> $$1 + 180.0F;
+         case d -> $$1 + 90.0F;
+         case b -> $$1 + 270.0F;
+         default -> $$1;
+      };
    }
 
    @Override
-   protected void a(ug $$0) {
-      this.b($$0.g("fuse"));
-      if ($$0.b("block_state", 10)) {
-         this.c(uv.a(this.dS().a(lw.f), $$0.p("block_state")));
-      }
-
-      if ($$0.b("explosion_power", 99)) {
-         this.l = azf.a($$0.j("explosion_power"), 0.0F, 128.0F);
-      }
-   }
-
-   @Nullable
-   public bun m() {
-      return this.j;
-   }
-
-   @Override
-   public void x(btr $$0) {
-      super.x($$0);
-      if ($$0 instanceof cki $$1) {
-         this.j = $$1.j;
-      }
-   }
-
-   public void b(int $$0) {
-      this.am.a(b, $$0);
-   }
-
-   public int o() {
-      return this.am.a(b);
-   }
-
-   public void c(dus $$0) {
-      this.am.a(c, $$0);
-   }
-
-   public dus q() {
-      return this.am.a(c);
-   }
-
-   private void a(boolean $$0) {
-      this.k = $$0;
-   }
-
-   @Nullable
-   @Override
-   public btr b(err $$0) {
-      btr $$1 = super.b($$0);
-      if ($$1 instanceof cki $$2) {
-         $$2.a(true);
-      }
-
-      return $$1;
+   public float a(dmu $$0) {
+      return this.a($$0.a(this.d));
    }
 }

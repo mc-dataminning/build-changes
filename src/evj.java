@@ -1,63 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class evj extends euy {
-   public static final MapCodec<evj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ald.a(lw.be).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  lv.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, evj::new)
-   );
-   private final ald<etq> b;
-   private final long c;
-   private final jo<drx<?>> d;
+public abstract class evj implements evk {
+   protected final List<exh> g;
+   private final Predicate<etw> a;
 
-   private evj(List<eww> $$0, ald<etq> $$1, long $$2, jo<drx<?>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   protected evj(List<exh> $$0) {
+      this.g = $$0;
+      this.a = ad.a($$0);
    }
 
    @Override
-   public eva<evj> b() {
-      return evb.y;
+   public abstract evl<? extends evj> b();
+
+   protected static <T extends evj> P1<Mu<T>, List<exh>> a(Instance<T> $$0) {
+      return $$0.group(exh.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
 
+   public final cvx b(cvx $$0, etw $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cvx a(cvx var1, etw var2);
+
    @Override
-   public cvs a(cvs $$0, etl $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         $$0.b(ks.ak, new cyw(this.b, this.c));
-         return $$0;
+   public void a(euc $$0) {
+      evk.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
       }
    }
 
-   @Override
-   public void a(etr $$0) {
-      super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().c(this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
+   protected static evj.a<?> a(Function<List<exh>, evk> $$0) {
+      return new evj.b($$0);
+   }
+
+   public abstract static class a<T extends evj.a<T>> implements evk.a, ewz<T> {
+      private final Builder<exh> a = ImmutableList.builder();
+
+      public T a(exh.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<exh> g() {
+         return this.a.build();
       }
    }
 
-   public static euy.a<?> a(drx<?> $$0, ald<etq> $$1) {
-      return a($$2 -> new evj($$2, $$1, 0L, $$0.a()));
-   }
+   static final class b extends evj.a<evj.b> {
+      private final Function<List<exh>, evk> a;
 
-   public static euy.a<?> a(drx<?> $$0, ald<etq> $$1, long $$2) {
-      return a($$3 -> new evj($$3, $$1, $$2, $$0.a()));
+      public b(Function<List<exh>, evk> $$0) {
+         this.a = $$0;
+      }
+
+      protected evj.b a() {
+         return this;
+      }
+
+      @Override
+      public evk b() {
+         return this.a.apply(this.g());
+      }
    }
 }

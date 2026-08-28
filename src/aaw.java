@@ -1,26 +1,16 @@
-public record aaw(long c, jf d) implements aao {
-   public static final zc<wb, aaw> a = aao.a(aaw::a, aaw::new);
-   public static final aao.b<aaw> b = aao.a("debug/neighbors_update");
+public record aaw() implements aar {
+   public static final zf<we, aaw> a = aar.a(aaw::a, aaw::new);
+   public static final aar.b<aaw> b = aar.a("debug/game_test_clear");
 
-   private aaw(wb $$0) {
-      this($$0.m(), $$0.e());
+   private aaw(we $$0) {
+      this();
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(we $$0) {
    }
 
    @Override
-   public aao.b<aaw> a() {
+   public aar.b<aaw> a() {
       return b;
-   }
-
-   public long b() {
-      return this.c;
-   }
-
-   public jf c() {
-      return this.d;
    }
 }

@@ -1,9 +1,6 @@
-import javax.annotation.Nullable;
-
-public class gth extends gtw {
-   private static final ale j = ale.b("textures/entity/cat/tabby.png");
-   public ale a = j;
+public class gth extends gva {
+   public boolean a;
    public boolean b;
-   @Nullable
-   public cum c;
+   public float c;
+   public float d;
 }

@@ -1,40 +1,25 @@
-import javax.annotation.Nullable;
+public record ade(long[] b, bmw c) implements zo<acd> {
+   public static final zf<we, ade> a = zo.a(ade::a, ade::new);
 
-public class ade implements zl<aca> {
-   public static final zc<wb, ade> a = zl.a(ade::a, ade::new);
-   private final int b;
-   private final byte c;
-
-   public ade(btr $$0, byte $$1) {
-      this.b = $$0.ap();
-      this.c = $$1;
+   private ade(we $$0) {
+      this($$0.d(), $$0.b(bmw.class));
    }
 
-   private ade(wb $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(wb $$0) {
-      $$0.q(this.b);
-      $$0.l(this.c);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<ade> a() {
-      return agp.D;
+   public zq<ade> a() {
+      return ags.A;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public btr a(dej $$0) {
-      return $$0.a(this.b);
-   }
-
-   public byte b() {
+   public bmw e() {
       return this.c;
    }
 }

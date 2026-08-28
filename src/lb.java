@@ -1,28 +1,29 @@
-public class lb extends ky {
-   private final cwn c;
-   private final cwn.a d;
+import java.util.List;
 
-   public lb(cvn $$0) {
-      if ($$0 instanceof cwn $$1) {
-         this.c = $$1;
-         this.d = $$1.c();
+public class lb extends kz {
+   public static final lb c = new lb();
+
+   @Override
+   protected cvx a(kx $$0, cvx $$1) {
+      return b($$0, $$1) ? $$1 : super.a($$0, $$1);
+   }
+
+   public static boolean b(kx $$0, cvx $$1) {
+      jg $$2 = $$0.c().a($$0.d().c(dkd.b));
+      List<buv> $$3 = $$0.b().a(buv.class, new ezc($$2), $$1x -> $$1x.e($$1));
+      if ($$3.isEmpty()) {
+         return false;
       } else {
-         throw new IllegalArgumentException($$0 + " not instance of " + cwn.class.getSimpleName());
+         buv $$4 = $$3.getFirst();
+         buh $$5 = $$4.f($$1);
+         cvx $$6 = $$1.a(1);
+         $$4.a($$5, $$6);
+         if ($$4 instanceof bux $$7) {
+            $$7.a($$5, 2.0F);
+            $$7.gb();
+         }
+
+         return true;
       }
-   }
-
-   @Override
-   public cvs a(kw $$0, cvs $$1) {
-      arj $$2 = $$0.b();
-      jk $$3 = $$0.d().c(djr.b);
-      jy $$4 = this.d.b().getDispensePosition($$0, $$3);
-      cor.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
-      $$1.h(1);
-      return $$1;
-   }
-
-   @Override
-   protected void a(kw $$0) {
-      $$0.b().c(this.d.e().orElse(1002), $$0.c(), 0);
    }
 }

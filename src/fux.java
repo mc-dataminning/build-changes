@@ -1,167 +1,198 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class fux extends fku<fuv> {
-   private final fuy a;
-   private final List<fuv> m = Lists.newArrayList();
-   @Nullable
-   private String n;
+public abstract class fux<B extends gdb.a<?>> extends fqs {
+   private static final xh C = xh.c("gui.abuseReport.report_sent_msg");
+   private static final xh D = xh.c("gui.abuseReport.sending.title").a(n.r);
+   private static final xh E = xh.c("gui.abuseReport.sent.title").a(n.r);
+   private static final xh F = xh.c("gui.abuseReport.error.title").a(n.r);
+   private static final xh G = xh.c("gui.abuseReport.send.generic_error");
+   protected static final xh a = xh.c("gui.abuseReport.send");
+   protected static final xh b = xh.c("gui.abuseReport.observed_what");
+   protected static final xh c = xh.c("gui.abuseReport.select_reason");
+   private static final xh H = xh.c("gui.abuseReport.describe");
+   protected static final xh d = xh.c("gui.abuseReport.more_comments");
+   private static final xh I = xh.c("gui.abuseReport.comments");
+   private static final xh J = xh.c("gui.abuseReport.attestation");
+   protected static final int s = 120;
+   protected static final int u = 20;
+   protected static final int v = 280;
+   protected static final int w = 8;
+   private static final Logger K = LogUtils.getLogger();
+   protected final fqs x;
+   protected final gdf y;
+   protected final fos z = fos.d().a(8);
+   protected B A;
+   private flb L;
+   protected fkz B;
 
-   public fux(fuy $$0, fip $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.a = $$0;
+   protected fux(xh $$0, fqs $$1, gdf $$2, B $$3) {
+      super($$0);
+      this.x = $$1;
+      this.y = $$2;
+      this.A = $$3;
+   }
+
+   protected flr a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.y.a().b();
+      flr $$4 = new flr(this.p, 0, 0, $$0, $$1, H, I);
+      $$4.a(this.A.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
    @Override
-   protected void b(fkb $$0) {
+   protected void aS_() {
+      this.z.c().b();
+      this.m();
+      this.D();
+      this.E();
+      this.F();
+      this.z.a($$1 -> {
+         fkx var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   protected void m() {
+      this.z.a(new fmg(this.l, this.p));
+   }
+
+   protected abstract void D();
+
+   protected void E() {
+      this.L = this.z.a(flb.a(J, this.p).a(this.A.h()).a(280).a(($$0x, $$1) -> {
+         this.A.a($$1);
+         this.F();
+      }).a());
+      fos $$0 = this.z.a(fos.e().a(8));
+      $$0.a(fkz.a(xg.k, $$0x -> this.d()).a(120).a());
+      this.B = $$0.a(fkz.a(a, $$0x -> this.G()).a(120).a());
+   }
+
+   protected void F() {
+      gdb.b $$0 = this.A.c();
+      this.B.j = $$0 == null && this.L.a();
+      this.B.a(x.a($$0, gdb.b::a));
    }
 
    @Override
-   protected void a(fkb $$0) {
+   protected void c() {
+      this.z.a();
+      fol.a(this.z, this.H());
    }
 
-   @Override
-   protected void c(fkb $$0) {
-      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
-   }
+   protected void G() {
+      this.A.a(this.y).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.y.a().a($$0.a(), $$0.b(), $$0.c());
+         this.m.a(fqe.a(D, xg.e, () -> {
+            this.m.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.J();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
 
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, fuv> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
-   }
-
-   private void a(Collection<UUID> $$0, Map<UUID, fuv> $$1) {
-      gbn $$2 = this.c.t.cw;
-
-      for (UUID $$3 : $$0) {
-         gbx $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new fuv(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
-      }
-   }
-
-   private void a(Map<UUID, fuv> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.bb().b())) {
-         fuv $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               fuv $$2 = new fuv(this.c, this.a, $$3.getId(), $$3.getName(), this.c.an().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
-         } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
+               this.a($$1x);
             }
-         }
 
-         $$4.d(true);
-      }
-   }
-
-   private static Collection<GameProfile> a(gcg $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         gci $$3 = $$0.b($$2);
-         if ($$3 instanceof gcj.a) {
-            gcj.a $$4 = (gcj.a)$$3;
-            if ($$4.g().i()) {
-               $$1.add($$4.f());
-            }
-         }
-      }
-
-      return $$1;
+            return null;
+         }, this.m);
+      }).ifRight($$0 -> this.a($$0.b()));
    }
 
    private void J() {
-      this.m.sort(Comparator.<fuv, Integer>comparing($$0 -> {
-         if (this.c.b($$0.d())) {
-            return 0;
-         } else if (this.c.bb().a($$0.d())) {
-            return 1;
-         } else if ($$0.d().version() == 2) {
-            return 4;
-         } else {
-            return $$0.j() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.c().isBlank()) {
-            int $$1 = $$0.c().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(fuv::c, String::compareToIgnoreCase));
+      this.L();
+      this.m.a(fqe.a(E, C, xg.d, () -> this.m.a(null)));
    }
 
-   private void a(Collection<fuv> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.J();
+   private void a(Throwable $$0) {
+      K.error("Encountered error while sending abuse report", $$0);
+      xh $$2;
+      if ($$0.getCause() instanceof yh $$1) {
+         $$2 = $$1.a();
+      } else {
+         $$2 = G;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(xh $$0) {
+      xh $$1 = $$0.f().a(n.m);
+      this.m.a(fqe.a(F, $$1, xg.k, () -> this.m.a(this)));
+   }
+
+   void K() {
+      if (this.A.b()) {
+         this.y.a(this.A.e().b());
+      }
+   }
+
+   void L() {
+      this.y.a(null);
+   }
+
+   @Override
+   public void d() {
+      if (this.A.b()) {
+         this.m.a(new fux.a());
+      } else {
+         this.m.a(this.x);
+      }
+   }
+
+   @Override
+   public void j() {
       this.K();
-      this.a(this.m);
-      this.b($$1);
+      super.j();
    }
 
-   private void K() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
-      }
-   }
+   class a extends ftm {
+      private static final xh c = xh.c("gui.abuseReport.discard.title").a(n.r);
+      private static final xh d = xh.c("gui.abuseReport.discard.content");
+      private static final xh s = xh.c("gui.abuseReport.discard.return");
+      private static final xh u = xh.c("gui.abuseReport.discard.draft");
+      private static final xh v = xh.c("gui.abuseReport.discard.discard");
 
-   public void a(String $$0) {
-      this.n = $$0;
-   }
-
-   public boolean c() {
-      return this.m.isEmpty();
-   }
-
-   public void a(gbx $$0, fuy.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (fuv $$3 : this.m) {
-         if ($$3.d().equals($$2)) {
-            $$3.c(false);
-            return;
-         }
+      protected a() {
+         super(c, d, d);
       }
 
-      if (($$1 == fuy.a.a || this.c.aO().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         fuv $$5 = new fuv(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b((fuv)$$5);
-         this.m.add($$5);
+      @Override
+      protected foo m() {
+         fos $$0 = fos.d().a(8);
+         $$0.c().b();
+         fos $$1 = $$0.a(fos.e().a(8));
+         $$1.a(fkz.a(s, $$0x -> this.d()).a());
+         $$1.a(fkz.a(u, $$0x -> {
+            fux.this.K();
+            this.m.a(fux.this.x);
+         }).a());
+         $$0.a(fkz.a(v, $$0x -> {
+            fux.this.L();
+            this.m.a(fux.this.x);
+         }).a());
+         return $$0;
       }
-   }
 
-   public void a(UUID $$0) {
-      for (fuv $$1 : this.m) {
-         if ($$1.d().equals($$0)) {
-            $$1.c(true);
-            return;
-         }
+      @Override
+      public void d() {
+         this.m.a(fux.this);
+      }
+
+      @Override
+      public boolean aI_() {
+         return false;
       }
    }
 }

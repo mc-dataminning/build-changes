@@ -1,52 +1,40 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
 
-public class evn extends euy {
+public class evn extends evj {
    public static final MapCodec<evn> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  cyl.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cyl.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cyl.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
-               )
-            )
+            .and($$0.group(etu.e.fieldOf("component").forGetter($$0x -> $$0x.b), evm.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
             .apply($$0, evn::new)
    );
-   public static final cyl b = new cyl(cyl.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cyl.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final ett<?> b;
+   private final evk c;
 
-   public evn(List<eww> $$0, Optional<cyl.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   private evn(List<exh> $$0, ett<?> $$1, evk $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cvs a(cvs $$0, etl $$1) {
-      $$0.a(ks.Z, b, this::a);
-      return $$0;
-   }
-
-   private cyl a(cyl $$0) {
-      return new cyl(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   public evl<evn> b() {
+      return evm.u;
    }
 
    @Override
-   public eva<evn> b() {
-      return evb.L;
+   public cvx a(cvx $$0, etw $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(euc $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

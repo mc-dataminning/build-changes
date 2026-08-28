@@ -1,45 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
 
-public class bqt extends bqv {
-   public static final bqt a = new bqt(0.0F);
-   public static final MapCodec<bqt> b = Codec.FLOAT.fieldOf("value").xmap(bqt::a, bqt::d);
-   private final float d;
+public interface bqt<R extends Runnable> extends AutoCloseable {
+   String x_();
 
-   public static bqt a(float $$0) {
-      return $$0 == 0.0F ? a : new bqt($$0);
-   }
-
-   private bqt(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
-   }
+   void a_(R var1);
 
    @Override
-   public float a(azn $$0) {
-      return this.d;
+   default void close() {
    }
 
-   @Override
-   public float a() {
-      return this.d;
+   R f(Runnable var1);
+
+   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
+      CompletableFuture<Source> $$1 = new CompletableFuture<>();
+      this.a_(this.f(() -> $$0.accept($$1)));
+      return $$1;
    }
 
-   @Override
-   public float b() {
-      return this.d;
-   }
+   static bqt<Runnable> a(final String $$0, final Executor $$1) {
+      return new bqt<Runnable>() {
+         @Override
+         public String x_() {
+            return $$0;
+         }
 
-   @Override
-   public bqw<?> c() {
-      return bqw.a;
-   }
+         @Override
+         public void a_(Runnable $$0x) {
+            $$1.execute($$0);
+         }
 
-   @Override
-   public String toString() {
-      return Float.toString(this.d);
+         @Override
+         public Runnable f(Runnable $$0x) {
+            return $$0;
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

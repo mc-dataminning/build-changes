@@ -1,13 +1,19 @@
 import javax.annotation.Nullable;
 
-public class gup extends guo {
-   public cik.d a;
-   public boolean b;
+public class gup extends gva {
+   public float a;
+   public float b;
+   public ezh c;
    @Nullable
-   public cum c;
-   public boolean d;
+   public ezh d;
+   @Nullable
+   public ezh e;
+   @Nullable
+   public ezh f;
+   public float g;
+   public float h;
 
    public gup() {
-      this.a = cik.d.a;
+      this.c = ezh.c;
    }
 }

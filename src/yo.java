@@ -1,28 +1,53 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public record yo(ale d) implements yg {
-   public static final MapCodec<yo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ale.a.fieldOf("storage").forGetter(yo::b)).apply($$0, yo::new));
-   public static final yg.a<yo> b = new yg.a<>(a, "storage");
+public interface yo extends xi {
+   MapCodec<yo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(yo::b)).apply($$0, yo::a));
+   xi.a<yo> b = new xi.a<>(a, "text");
+   yo c = new yo() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
 
-   @Override
-   public Stream<ug> a(eu $$0) {
-      ug $$1 = $$0.l().aK().a(this.d);
-      return Stream.of($$1);
+      @Override
+      public String b() {
+         return "";
+      }
+   };
+
+   static yo a(String $$0) {
+      return (yo)($$0.isEmpty() ? c : new yo.a($$0));
    }
 
+   String b();
+
    @Override
-   public yg.a<?> a() {
+   default xi.a<?> a() {
       return b;
    }
 
-   @Override
-   public String toString() {
-      return "storage=" + this.d;
-   }
+   public static record a(String d) implements yo {
+      @Override
+      public <T> Optional<T> a(xm.a<T> $$0) {
+         return $$0.accept(this.d);
+      }
 
-   public ale b() {
-      return this.d;
+      @Override
+      public <T> Optional<T> a(xm.b<T> $$0, ye $$1) {
+         return $$0.accept($$1, this.d);
+      }
+
+      @Override
+      public String toString() {
+         return "literal{" + this.d + "}";
+      }
+
+      @Override
+      public String b() {
+         return this.d;
+      }
    }
 }

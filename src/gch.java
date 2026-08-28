@@ -1,60 +1,17 @@
-import com.mojang.serialization.Codec;
-import java.time.Instant;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class gch {
+   private final gby a;
+   private final bmv b;
 
-public enum gch implements bab {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
-
-   public static final Codec<gch> d = bab.a(gch::values);
-   private final String e;
-
-   private gch(final String $$0) {
-      this.e = $$0;
+   public gch(gby $$0, bmv $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static gch a(xu $$0, xe $$1, Instant $$2) {
-      if (!$$0.i() || $$0.b($$2)) {
-         return c;
-      } else {
-         return a($$0, $$1) ? b : a;
-      }
+   public void a() {
+      this.a.b(new aka(ad.c()));
    }
 
-   private static boolean a(xu $$0, xe $$1) {
-      if (!$$1.getString().contains($$0.c())) {
-         return true;
-      } else {
-         xe $$2 = $$0.n();
-         return $$2 == null ? false : a($$2);
-      }
-   }
-
-   private static boolean a(xe $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), yb.a).orElse(false);
-   }
-
-   private static boolean a(yb $$0) {
-      return !$$0.k().equals(yb.b);
-   }
-
-   public boolean a() {
-      return this == c;
-   }
-
-   @Nullable
-   public fij a(xu $$0) {
-      return switch (this) {
-         case b -> fij.a($$0.c());
-         case c -> fij.c();
-         default -> null;
-      };
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   public void a(ajx $$0) {
+      this.b.a(ad.c() - $$0.b());
    }
 }

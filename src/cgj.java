@@ -1,30 +1,35 @@
-public class cgj extends cgb {
-   public cgj(bty<? extends cgj> $$0, dej $$1) {
+import javax.annotation.Nullable;
+
+public abstract class cgj extends bvd {
+   protected cgj(bug<? extends cgj> $$0, dev $$1) {
       super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public cvs W_() {
-      return new cvs(cvw.qI);
+   protected awj w() {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected awj d(bsp $$0) {
+      return null;
+   }
+
+   @Nullable
+   @Override
+   protected awj o_() {
+      return null;
    }
 
    @Override
-   protected awf w() {
-      return awg.fo;
+   public int T() {
+      return 120;
    }
 
    @Override
-   protected awf o_() {
-      return awg.fp;
-   }
-
-   @Override
-   protected awf d(bsj $$0) {
-      return awg.fr;
-   }
-
-   @Override
-   protected awf gp() {
-      return awg.fq;
+   public boolean h(double $$0) {
+      return false;
    }
 }

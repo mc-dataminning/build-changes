@@ -1,79 +1,37 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
+public class acq implements zo<acd> {
+   public static final zf<we, acq> a = zo.a(acq::a, acq::new);
+   private final brv b;
+   private final boolean c;
 
-public record acq(List<acq.a> b) implements zl<aca> {
-   public static final zc<wb, acq> a = zl.a(acq::a, acq::new);
-   private static final int c = 2097152;
-
-   private acq(wb $$0) {
-      this($$0.a(acq.a::new));
+   public acq(brv $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static acq a(List<dwy> $$0) {
-      return new acq($$0.stream().map(acq.a::new).toList());
+   private acq(we $$0) {
+      this.b = brv.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
    }
 
-   private void a(wb $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   private void a(we $$0) {
+      $$0.l(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<acq> a() {
-      return agp.p;
+   public zq<acq> a() {
+      return ags.m;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public static record a(ddp a, byte[] b) {
-      public a(dwy $$0) {
-         this($$0.f(), new byte[a($$0)]);
-         a(new wb(this.d()), $$0);
-      }
+   public boolean b() {
+      return this.c;
+   }
 
-      public a(wb $$0) {
-         this($$0.f(), $$0.a(2097152));
-      }
-
-      private static int a(dwy $$0) {
-         int $$1 = 0;
-
-         for (dwz $$2 : $$0.d()) {
-            $$1 += $$2.i().c();
-         }
-
-         return $$1;
-      }
-
-      public wb a() {
-         return new wb(Unpooled.wrappedBuffer(this.b));
-      }
-
-      private ByteBuf d() {
-         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
-         $$0.writerIndex(0);
-         return $$0;
-      }
-
-      public static void a(wb $$0, dwy $$1) {
-         for (dwz $$2 : $$1.d()) {
-            $$2.i().b($$0);
-         }
-      }
-
-      public void a(wb $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
-
-      public ddp b() {
-         return this.a;
-      }
-
-      public byte[] c() {
-         return this.b;
-      }
+   public brv e() {
+      return this.b;
    }
 }

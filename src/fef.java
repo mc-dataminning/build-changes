@@ -1,33 +1,43 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-public class fef extends ffc {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fee> a;
+public enum fef {
+   a,
+   b,
+   c,
+   d;
 
-   public static fef a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      fef $$2 = new fef();
-      $$2.a = Lists.newArrayList();
+   private static final int e = 1024;
 
-      try {
-         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
-         if ($$3.isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$2.a.add(fee.a($$4.next()));
-            }
+   public static fef a(long $$0) {
+      if ($$0 < 1024L) {
+         return a;
+      } else {
+         try {
+            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
+            return valueOf($$2 + "B");
+         } catch (Exception var4) {
+            return d;
          }
-      } catch (Exception var5) {
-         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
+   }
 
-      return $$2;
+   public static double a(long $$0, fef $$1) {
+      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
+   }
+
+   public static String b(long $$0) {
+      int $$1 = 1024;
+      if ($$0 < 1024L) {
+         return $$0 + " B";
+      } else {
+         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
+         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
+         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      }
+   }
+
+   public static String b(long $$0, fef $$1) {
+      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
    }
 }

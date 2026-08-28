@@ -1,82 +1,84 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
 
-public class dop extends dgi {
-   public static final MapCodec<dop> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dop.a.b.fieldOf("kind").forGetter(dgi::b), t()).apply($$0, dop::new));
-   public static final int d = dvy.a();
-   private static final int b = d + 1;
-   public static final dvs e = dvi.ba;
-   protected static final ezq f = dhm.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-   protected static final ezq g = dhm.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+public class dop extends dki implements doo {
+   public static final MapCodec<dop> b = b(dop::new);
 
    @Override
-   public MapCodec<? extends dop> a() {
-      return c;
+   public MapCodec<dop> a() {
+      return b;
    }
 
-   protected dop(dop.a $$0, dur.d $$1) {
-      super($$0, $$1);
-      this.l(this.n().b(e, Integer.valueOf(0)));
+   public dop(dvc.d $$0) {
+      super(bra.a(1), $$0);
    }
 
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      return this.b() == dop.b.h ? g : f;
+   public int a(dot.a $$0, dew $$1, jg $$2, azr $$3, dot $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         jg $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               jg $$10 = $$7.d();
+               dvd $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.A().e(), awl.e, 1.0F, 1.0F);
+            }
+
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+         }
+      } else {
+         return $$6;
+      }
    }
 
-   @Override
-   protected ezq d_(dus $$0) {
-      return ezn.a();
+   private static int a(dot $$0, jg $$1, jg $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = azj.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = azj.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
    }
 
-   @Override
-   public dus a(czn $$0) {
-      return super.a($$0).b(e, Integer.valueOf(dvy.a($$0.i())));
-   }
-
-   @Override
-   protected dus a(dus $$0, doa $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected dus a(dus $$0, dmj $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends bab {
-      Map<String, dop.a> a = new Object2ObjectArrayMap();
-      Codec<dop.a> b = Codec.stringResolver(bab::c, a::get);
-   }
-
-   public static enum b implements dop.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
+   private dvd a(dew $$0, jg $$1, azr $$2, boolean $$3) {
+      dvd $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dia.qV.m().b(dos.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dia.qQ.m();
       }
 
-      @Override
-      public String c() {
-         return this.j;
+      return $$4.b(dvt.C) && !$$0.b_($$1).c() ? $$4.b(dvt.C, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(dew $$0, jg $$1) {
+      dvd $$2 = $$0.a_($$1.d());
+      if ($$2.l() || $$2.a(dia.G) && $$2.y().b(erf.c)) {
+         int $$3 = 0;
+
+         for (jg $$4 : jg.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dvd $$5 = $$0.a_($$4);
+            if ($$5.a(dia.qQ) || $$5.a(dia.qV)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public boolean d() {
+      return false;
    }
 }

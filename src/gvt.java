@@ -1,3 +1,3 @@
-public class gvt extends gsy {
-   public boolean d;
+public class gvt extends gva {
+   public chh.a a = chh.a.b;
 }

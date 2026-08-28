@@ -1,46 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class eec extends ecw {
-   public eec(Codec<ega> $$0) {
+public class eec extends eef<egq> {
+   public eec(Codec<egq> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dek $$0, azn $$1, jf $$2, int $$3, jf.a $$4, ega $$5) {
-      int $$6 = $$5.d;
+   public boolean a(eeh<egq> $$0) {
+      dfs $$1 = $$0.b();
+      azr $$2 = $$0.d();
+      jg $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).s()) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dus $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(dlj.e) && $$19.b(dlj.c) && $$19.b(dlj.b) && $$19.b(dlj.d)) {
-                     $$19 = $$19.b(dlj.e, Boolean.valueOf($$15))
-                        .b(dlj.c, Boolean.valueOf($$16))
-                        .b(dlj.b, Boolean.valueOf($$17))
-                        .b(dlj.d, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = azj.d(-$$4); $$6 <= azj.f($$4); $$6++) {
+            for (int $$7 = azj.d(-$$4); $$7 <= azj.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dia.fz.m());
                }
             }
          }
-      }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+         $$4 -= (float)$$2.a(2) + 0.5F;
+      }
+
+      return true;
    }
 }

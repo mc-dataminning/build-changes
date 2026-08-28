@@ -1,16 +1,26 @@
-import com.google.common.collect.Lists;
+public class aag {
+   public static final zq<zv> a = a("custom_payload");
+   public static final zq<zw> b = a("custom_report_details");
+   public static final zq<zx> c = a("disconnect");
+   public static final zq<zy> d = a("keep_alive");
+   public static final zq<zz> e = a("ping");
+   public static final zq<aaa> f = a("resource_pack_pop");
+   public static final zq<aab> g = a("resource_pack_push");
+   public static final zq<aac> h = a("server_links");
+   public static final zq<aad> i = a("store_cookie");
+   public static final zq<aae> j = a("transfer");
+   public static final zq<aaf> k = a("update_tags");
+   public static final zq<aai> l = b("client_information");
+   public static final zq<aaj> m = b("custom_payload");
+   public static final zq<aak> n = b("keep_alive");
+   public static final zq<aal> o = b("pong");
+   public static final zq<aam> p = b("resource_pack");
 
-public record aag(aao b) implements zl<aae> {
-   private static final int c = 32767;
-   public static final zc<wb, aag> a = aao.<wb>a($$0 -> aap.a($$0, 32767), ad.a(Lists.newArrayList(new aao.c[]{new aao.c<>(aam.b, aam.a)}), $$0 -> {
-   })).a(aag::new, aag::b);
-
-   @Override
-   public zn<aag> a() {
-      return aad.m;
+   private static <T extends zo<zu>> zq<T> a(String $$0) {
+      return new zq<>(zp.b, alh.b($$0));
    }
 
-   public void a(aae $$0) {
-      $$0.a(this);
+   private static <T extends zo<aah>> zq<T> b(String $$0) {
+      return new zq<>(zp.a, alh.b($$0));
    }
 }

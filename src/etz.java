@@ -1,18 +1,136 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class etz {
-   public static final Codec<eub> a = lv.D.q().dispatch(eub::a, euc::a);
-   public static final euc b = a("empty", etw.a);
-   public static final euc c = a("item", ety.a);
-   public static final euc d = a("loot_table", eue.a);
-   public static final euc e = a("dynamic", etv.a);
-   public static final euc f = a("tag", eug.a);
-   public static final euc g = a("alternatives", ets.a);
-   public static final euc h = a("sequence", euf.a);
-   public static final euc i = a("group", etx.a);
+   private final arm a;
+   private final Map<ewp<?>, Object> b;
+   private final Map<alh, etz.b> c;
+   private final float d;
 
-   private static euc a(String $$0, MapCodec<? extends eub> $$1) {
-      return kb.a(lv.D, ale.b($$0), new euc($$1));
+   public etz(arm $$0, Map<ewp<?>, Object> $$1, Map<alh, etz.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public arm a() {
+      return this.a;
+   }
+
+   public boolean a(ewp<?> $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public <T> T b(ewp<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public <T> T c(ewp<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public <T> T d(ewp<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public void a(alh $$0, Consumer<cvx> $$1) {
+      etz.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
+
+   public float b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final arm a;
+      private final Map<ewp<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<alh, etz.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(arm $$0) {
+         this.a = $$0;
+      }
+
+      public arm a() {
+         return this.a;
+      }
+
+      public <T> etz.a a(ewp<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> etz.a b(ewp<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public <T> T a(ewp<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
+         } else {
+            return $$1;
+         }
+      }
+
+      @Nullable
+      public <T> T b(ewp<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public etz.a a(alh $$0, etz.b $$1) {
+         etz.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public etz.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public etz a(ewq $$0) {
+         Set<ewp<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<ewp<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new etz(this.a, this.b, this.c, this.d);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cvx> var1);
    }
 }

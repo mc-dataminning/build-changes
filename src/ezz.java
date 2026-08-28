@@ -1,34 +1,24 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface ezz {
-   int a();
+public class ezz extends fab {
+   private final fab b;
+   private final jl.a c;
+   private static final DoubleList d = new ezn(1);
 
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
+   public ezz(fab $$0, jl.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   default int b() {
-      return this.b(1);
+   private static ezq a(ezq $$0, jl.a $$1, int $$2) {
+      return new faa(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
-   default void c() {
-      this.a(0);
+   @Override
+   public DoubleList a(jl.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
-
-   boolean d();
-
-   void e();
-
-   void f();
-
-   @Nullable
-   xe g();
-
-   void a(@Nullable xe var1);
-
-   void a(@Nullable yu var1);
 }

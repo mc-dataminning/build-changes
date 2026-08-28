@@ -1,28 +1,57 @@
 import com.google.gson.JsonObject;
 import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class avp extends avo<GameProfile, avq> {
-   public avp(File $$0) {
+public class avp extends avr<GameProfile> {
+   private final int a;
+   private final boolean b;
+
+   public avp(GameProfile $$0, int $$1, boolean $$2) {
       super($$0);
+      this.a = $$1;
+      this.b = $$2;
+   }
+
+   public avp(JsonObject $$0) {
+      super(b($$0));
+      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
+      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return this.b;
    }
 
    @Override
-   protected avn<GameProfile> a(JsonObject $$0) {
-      return new avq($$0);
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         $$0.addProperty("level", this.a);
+         $$0.addProperty("bypassesPlayerLimit", this.b);
+      }
    }
 
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
-   }
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(avn::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

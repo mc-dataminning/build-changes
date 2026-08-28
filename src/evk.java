@@ -1,29 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class evk extends euy {
-   public static final MapCodec<evk> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(ve.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, evk::new));
-   private final ug b;
+public interface evk extends etx, BiFunction<cvx, etw, cvx> {
+   evl<? extends evk> b();
 
-   private evk(List<eww> $$0, ug $$1) {
-      super($$0);
-      this.b = $$1;
+   static Consumer<cvx> a(BiFunction<cvx, etw, cvx> $$0, Consumer<cvx> $$1, etw $$2) {
+      return $$3 -> $$1.accept($$0.apply($$3, $$2));
    }
 
-   @Override
-   public eva<evk> b() {
-      return evb.j;
-   }
-
-   @Override
-   public cvs a(cvs $$0, etl $$1) {
-      cyh.a(ks.b, $$0, $$0x -> $$0x.a(this.b));
-      return $$0;
-   }
-
-   @Deprecated
-   public static euy.a<?> a(ug $$0) {
-      return a($$1 -> new evk($$1, $$0));
+   public interface a {
+      evk b();
    }
 }

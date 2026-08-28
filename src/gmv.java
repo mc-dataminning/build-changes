@@ -1,27 +1,28 @@
-public class gmv extends gmj<chu, gtg, fxa> {
-   private static final ale a = ale.b("textures/entity/camel/camel.png");
+public class gmv extends gpf<chs, gth, fwt> {
+   private static final alh a = alh.b("textures/entity/allay/allay.png");
 
-   public gmv(gno.a $$0) {
-      super($$0, new fxa($$0.a(gap.H)), new fxa($$0.a(gap.I)), 0.7F);
+   public gmv(gnz.a $$0) {
+      super($$0, new fwt($$0.a(gba.a)), 0.4F);
+      this.a(new gsf<>(this, $$0.b()));
    }
 
-   public ale a(gtg $$0) {
+   public alh a(gth $$0) {
       return a;
    }
 
-   public gtg a() {
-      return new gtg();
+   public gth a() {
+      return new gth();
    }
 
-   public void a(chu $$0, gtg $$1, float $$2) {
+   public void a(chs $$0, gth $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.i();
-      $$1.b = $$0.bX();
-      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.cf);
-      $$1.f.a($$0.cg);
-      $$1.g.a($$0.ch);
-      $$1.h.a($$0.ci);
+      $$1.a = $$0.gv();
+      $$1.b = $$0.gw();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
+
+   protected int a(chs $$0, jg $$1) {
+      return 15;
    }
 }

@@ -1,31 +1,33 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dri extends did implements cuv {
-   public static final MapCodec<dri> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cum.q.fieldOf("color").forGetter(dri::b), t()).apply($$0, dri::new));
-   private final cum d;
+public class dri extends dpb implements drd {
+   public static final MapCodec<dri> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(drd.a.e.fieldOf("weathering_state").forGetter(diz::c), t()).apply($$0, dri::new)
+   );
+   private final drd.a g;
 
    @Override
    public MapCodec<dri> a() {
-      return c;
+      return f;
    }
 
-   protected dri(cum $$0, dur.d $$1) {
+   public dri(drd.a $$0, dvc.d $$1) {
       super($$1);
-      this.d = $$0;
-   }
-
-   public cum b() {
-      return this.d;
+      this.g = $$0;
    }
 
    @Override
-   public btz l() {
-      return btz.g;
+   protected void b(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public jo<awf> m() {
-      return awg.oh;
+   protected boolean f(dvd $$0) {
+      return drd.c($$0.b()).isPresent();
+   }
+
+   public drd.a q() {
+      return this.g;
    }
 }

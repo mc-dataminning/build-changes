@@ -1,42 +1,230 @@
-public class acd implements zl<aca> {
-   public static final zc<wb, acd> a = zl.a(acd::a, acd::new);
-   public static final int b = 0;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   private final int g;
-   private final int h;
-
-   public acd(btr $$0, int $$1) {
-      this.g = $$0.ap();
-      this.h = $$1;
-   }
-
-   private acd(wb $$0) {
-      this.g = $$0.l();
-      this.h = $$0.readUnsignedByte();
-   }
-
-   private void a(wb $$0) {
-      $$0.c(this.g);
-      $$0.l(this.h);
-   }
-
+public interface acd extends ajw, zu {
    @Override
-   public zn<acd> a() {
-      return agp.e;
+   default wc b() {
+      return wc.b;
    }
 
-   public void a(aca $$0) {
-      $$0.a(this);
-   }
+   void a(ace var1);
 
-   public int b() {
-      return this.g;
-   }
+   void a(acf var1);
 
-   public int e() {
-      return this.h;
-   }
+   void a(afq var1);
+
+   void a(acg var1);
+
+   void a(adm var1);
+
+   void a(ach var1);
+
+   void a(aeo var1);
+
+   void a(acj var1);
+
+   void a(aec var1);
+
+   void a(ack var1);
+
+   void a(acl var1);
+
+   void a(acm var1);
+
+   void a(age var1);
+
+   void a(aef var1);
+
+   void a(adg var1);
+
+   void a(adf var1);
+
+   void a(aeu var1);
+
+   void a(adv var1);
+
+   void a(acx var1);
+
+   void a(acy var1);
+
+   void a(adl var1);
+
+   void a(acz var1);
+
+   void a(ada var1);
+
+   void a(adh var1);
+
+   void a(afk var1);
+
+   void a(afr var1);
+
+   void a(adi var1);
+
+   void a(adk var1);
+
+   void a(adp var1);
+
+   void a(act var1);
+
+   void a(adj var1);
+
+   void a(adq var1);
+
+   void a(adu var1);
+
+   void a(adx var1);
+
+   void a(ady var1);
+
+   void a(aem var1);
+
+   void a(adr var1);
+
+   void a(aee var1);
+
+   void a(aej var1);
+
+   void a(aek var1);
+
+   void a(aep var1);
+
+   void a(aeq var1);
+
+   void a(aes var1);
+
+   void a(aet var1);
+
+   void a(afp var1);
+
+   void a(afi var1);
+
+   void a(afj var1);
+
+   void a(afl var1);
+
+   void a(afm var1);
+
+   void a(afn var1);
+
+   void a(afo var1);
+
+   void a(aft var1);
+
+   void a(afu var1);
+
+   void a(aer var1);
+
+   void a(afh var1);
+
+   void a(afx var1);
+
+   void a(agb var1);
+
+   void a(aga var1);
+
+   void a(agh var1);
+
+   void a(agi var1);
+
+   void a(agj var1);
+
+   void a(agk var1);
+
+   void a(agm var1);
+
+   void a(agn var1);
+
+   void a(aeg var1);
+
+   void a(aeh var1);
+
+   void a(aei var1);
+
+   void a(acq var1);
+
+   void a(afd var1);
+
+   void a(adn var1);
+
+   void a(aez var1);
+
+   void a(afa var1);
+
+   void a(afb var1);
+
+   void a(afc var1);
+
+   void a(aey var1);
+
+   void a(agf var1);
+
+   void a(acn var1);
+
+   void a(adb var1);
+
+   void a(adz var1);
+
+   void a(agl var1);
+
+   void a(aev var1);
+
+   void a(aed var1);
+
+   void a(acw var1);
+
+   void a(agd var1);
+
+   void a(acv var1);
+
+   void a(ago var1);
+
+   void a(ael var1);
+
+   void a(agg var1);
+
+   void a(ads var1);
+
+   void a(aea var1);
+
+   void a(aeb var1);
+
+   void a(adw var1);
+
+   void a(aff var1);
+
+   void a(afv var1);
+
+   void a(afe var1);
+
+   void a(aci var1);
+
+   void a(aex var1);
+
+   void a(afw var1);
+
+   void a(afy var1);
+
+   void a(afz var1);
+
+   void a(acu var1);
+
+   void a(aew var1);
+
+   void a(adc var1);
+
+   void a(acp var1);
+
+   void a(add var1);
+
+   void a(agc var1);
+
+   void a(acs var1);
+
+   void a(acr var1);
+
+   void a(ade var1);
+
+   void a(aen var1);
+
+   void a(afg var1);
+
+   void a(afs var1);
 }

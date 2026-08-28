@@ -1,28 +1,25 @@
-import java.util.EnumMap;
-
 public class gbr {
-   public static final int a = 5000;
-   private final gbn b;
-   private final fkw c;
-   private final EnumMap<bms, Long> d;
-
-   public gbr(gbn $$0, fkw $$1) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = new EnumMap<>(bms.class);
-   }
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = ad.d();
 
    public void a() {
-      if (this.c.g()) {
-         this.a(bms.a);
+      this.e = ad.d();
+   }
+
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(ad.d() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = azj.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
       }
    }
 
-   private void a(bms $$0) {
-      long $$1 = ad.c();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new ahk($$0));
-         this.d.put($$0, $$1);
-      }
+   public float b() {
+      return (float)(7000000.0 / this.c);
    }
 }

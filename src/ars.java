@@ -1,15 +1,41 @@
-import javax.annotation.Nullable;
+import java.util.Comparator;
 
-public interface ars {
-   void a(ddp var1);
+public class ars<T> {
+   private final String h;
+   private final Comparator<T> i;
+   private final long j;
+   public static final ars<bao> a = a("start", ($$0, $$1) -> 0);
+   public static final ars<bao> b = a("dragon", ($$0, $$1) -> 0);
+   public static final ars<deb> c = a("player", Comparator.comparingLong(deb::a));
+   public static final ars<deb> d = a("forced", Comparator.comparingLong(deb::a));
+   public static final ars<jg> e = a("portal", kk::i, 300);
+   public static final ars<Integer> f = a("post_teleport", Integer::compareTo, 5);
+   public static final ars<deb> g = a("unknown", Comparator.comparingLong(deb::a), 1);
 
-   void a(ddp var1, @Nullable dxp var2);
+   public static <T> ars<T> a(String $$0, Comparator<T> $$1) {
+      return new ars<>($$0, $$1, 0L);
+   }
 
-   void a();
+   public static <T> ars<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new ars<>($$0, $$1, (long)$$2);
+   }
 
-   void b();
+   protected ars(String $$0, Comparator<T> $$1, long $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
 
-   static int a(int $$0) {
-      return 2 * $$0 + 1;
+   @Override
+   public String toString() {
+      return this.h;
+   }
+
+   public Comparator<T> a() {
+      return this.i;
+   }
+
+   public long b() {
+      return this.j;
    }
 }

@@ -1,23 +1,21 @@
 import com.mojang.serialization.MapCodec;
 
-public class eir<P extends eiq> {
-   public static final eir<eis> a = a("trunk_vine", eis.a);
-   public static final eir<eip> b = a("leave_vine", eip.a);
-   public static final eir<eio> c = a("cocoa", eio.a);
-   public static final eir<ein> d = a("beehive", ein.a);
-   public static final eir<eil> e = a("alter_ground", eil.a);
-   public static final eir<eim> f = a("attached_to_leaves", eim.a);
-   private final MapCodec<P> g;
+public class eir extends eik {
+   public static final MapCodec<eir> b = dvd.a.fieldOf("state").xmap(dvc.a::b, dhy::m).xmap(eir::new, $$0 -> $$0.c);
+   private final dhy c;
 
-   private static <P extends eiq> eir<P> a(String $$0, MapCodec<P> $$1) {
-      return kb.a(lv.X, $$0, new eir<>($$1));
+   public eir(dhy $$0) {
+      this.c = $$0;
    }
 
-   private eir(MapCodec<P> $$0) {
-      this.g = $$0;
+   @Override
+   protected eil<?> a() {
+      return eil.f;
    }
 
-   public MapCodec<P> a() {
-      return this.g;
+   @Override
+   public dvd a(azr $$0, jg $$1) {
+      jl.a $$2 = jl.a.a($$0);
+      return this.c.m().c(dok.i, $$2);
    }
 }

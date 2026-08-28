@@ -1,208 +1,80 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.io.File;
+import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
 
-public class ate extends asy {
-   static final Logger c = LogUtils.getLogger();
-   private final ate.b d;
-   private final String e;
+public class ate implements atl {
+   private final atl c;
+   private final List<atl> d;
 
-   ate(atg $$0, ate.b $$1, String $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   private static String b(atj $$0, ale $$1) {
-      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
+   public ate(atl $$0, List<atl> $$1) {
+      this.c = $$0;
+      List<atl> $$2 = new ArrayList<>($$1.size() + 1);
+      $$2.addAll(Lists.reverse($$1));
+      $$2.add($$0);
+      this.d = List.copyOf($$2);
    }
 
    @Nullable
    @Override
-   public aun<InputStream> a(String... $$0) {
-      return this.b(String.join("/", $$0));
-   }
-
-   @Override
-   public aun<InputStream> a(atj $$0, ale $$1) {
-      return this.b(b($$0, $$1));
-   }
-
-   private String a(String $$0) {
-      return this.e.isEmpty() ? $$0 : this.e + "/" + $$0;
+   public aur<InputStream> a(String... $$0) {
+      return this.c.a($$0);
    }
 
    @Nullable
-   private aun<InputStream> b(String $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return null;
-      } else {
-         ZipEntry $$2 = $$1.getEntry(this.a($$0));
-         return $$2 == null ? null : aun.create($$1, $$2);
-      }
-   }
-
    @Override
-   public Set<String> a(atj $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return Set.of();
-      } else {
-         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
-         Set<String> $$3 = Sets.newHashSet();
-         String $$4 = this.a($$0.a() + "/");
-
-         while ($$2.hasMoreElements()) {
-            ZipEntry $$5 = $$2.nextElement();
-            String $$6 = $$5.getName();
-            String $$7 = a($$4, $$6);
-            if (!$$7.isEmpty()) {
-               if (ale.j($$7)) {
-                  $$3.add($$7);
-               } else {
-                  c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
-               }
-            }
+   public aur<InputStream> a(atn $$0, alh $$1) {
+      for (atl $$2 : this.d) {
+         aur<InputStream> $$3 = $$2.a($$0, $$1);
+         if ($$3 != null) {
+            return $$3;
          }
-
-         return $$3;
       }
+
+      return null;
    }
 
-   @VisibleForTesting
-   public static String a(String $$0, String $$1) {
-      if (!$$1.startsWith($$0)) {
-         return "";
-      } else {
-         int $$2 = $$0.length();
-         int $$3 = $$1.indexOf(47, $$2);
-         return $$3 == -1 ? $$1.substring($$2) : $$1.substring($$2, $$3);
+   @Override
+   public void a(atn $$0, String $$1, String $$2, atl.a $$3) {
+      Map<alh, aur<InputStream>> $$4 = new HashMap<>();
+
+      for (atl $$5 : this.d) {
+         $$5.a($$0, $$1, $$2, $$4::putIfAbsent);
       }
+
+      $$4.forEach($$3);
+   }
+
+   @Override
+   public Set<String> a(atn $$0) {
+      Set<String> $$1 = new HashSet<>();
+
+      for (atl $$2 : this.d) {
+         $$1.addAll($$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(aty<T> $$0) throws IOException {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public atk a() {
+      return this.c.a();
    }
 
    @Override
    public void close() {
-      this.d.close();
-   }
-
-   @Override
-   public void a(atj $$0, String $$1, String $$2, ath.a $$3) {
-      ZipFile $$4 = this.d.a();
-      if ($$4 != null) {
-         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
-         String $$6 = this.a($$0.a() + "/" + $$1 + "/");
-         String $$7 = $$6 + $$2 + "/";
-
-         while ($$5.hasMoreElements()) {
-            ZipEntry $$8 = $$5.nextElement();
-            if (!$$8.isDirectory()) {
-               String $$9 = $$8.getName();
-               if ($$9.startsWith($$7)) {
-                  String $$10 = $$9.substring($$6.length());
-                  ale $$11 = ale.b($$1, $$10);
-                  if ($$11 != null) {
-                     $$3.accept($$11, aun.create($$4, $$8));
-                  } else {
-                     c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public static class a implements aud.c {
-      private final File a;
-
-      public a(Path $$0) {
-         this($$0.toFile());
-      }
-
-      public a(File $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public ath a(atg $$0) {
-         ate.b $$1 = new ate.b(this.a);
-         return new ate($$0, $$1, "");
-      }
-
-      @Override
-      public ath a(atg $$0, aud.a $$1) {
-         ate.b $$2 = new ate.b(this.a);
-         ath $$3 = new ate($$0, $$2, "");
-         List<String> $$4 = $$1.d();
-         if ($$4.isEmpty()) {
-            return $$3;
-         } else {
-            List<ath> $$5 = new ArrayList<>($$4.size());
-
-            for (String $$6 : $$4) {
-               $$5.add(new ate($$0, $$2, $$6));
-            }
-
-            return new ata($$3, $$5);
-         }
-      }
-   }
-
-   static class b implements AutoCloseable {
-      final File a;
-      @Nullable
-      private ZipFile b;
-      private boolean c;
-
-      b(File $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      ZipFile a() {
-         if (this.c) {
-            return null;
-         } else {
-            if (this.b == null) {
-               try {
-                  this.b = new ZipFile(this.a);
-               } catch (IOException var2) {
-                  ate.c.error("Failed to open pack {}", this.a, var2);
-                  this.c = true;
-                  return null;
-               }
-            }
-
-            return this.b;
-         }
-      }
-
-      @Override
-      public void close() {
-         if (this.b != null) {
-            IOUtils.closeQuietly(this.b);
-            this.b = null;
-         }
-      }
-
-      @Override
-      protected void finalize() throws Throwable {
-         this.close();
-         super.finalize();
-      }
+      this.d.forEach(atl::close);
    }
 }

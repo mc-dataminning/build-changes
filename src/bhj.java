@@ -1,32 +1,22 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
-public class bhj extends DataFix {
+public class bhj extends baz {
    public bhj(Schema $$0) {
-      super($$0, true);
+      super($$0, bhs.b);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bho.B);
-      Type<?> $$1 = this.getOutputSchema().getType(bho.B);
-      return this.fixTypeEverywhereTyped("Fix Arrow stored weapon", $$0, $$1, baq.a(this.a("minecraft:arrow"), this.a("minecraft:spectral_arrow")));
-   }
-
-   private Function<Typed<?>, Typed<?>> a(String $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bho.B, $$0);
-      Type<?> $$2 = this.getOutputSchema().getChoiceType(bho.B, $$0);
-      return a($$0, $$1, $$2);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, Type<?> $$1, Type<T> $$2) {
-      OpticFinder<?> $$3 = DSL.namedChoice($$0, $$1);
-      return $$2x -> $$2x.updateTyped($$3, $$2, $$1xx -> ad.a($$1xx, $$2, UnaryOperator.identity()));
+      return this.fixTypeEverywhereTyped(
+         "PlayerUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> {
+            OpticFinder<?> $$1 = $$0.getType().findField("RootVehicle");
+            return $$0.updateTyped($$1, $$1.type(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> c($$0xx, "Attach", "Attach").orElse($$0xx)))
+               .update(DSL.remainderFinder(), $$0x -> bel.c(bel.b($$0x)));
+         }
+      );
    }
 }

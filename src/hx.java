@@ -1,12 +1,30 @@
-public interface hx extends AutoCloseable {
-   void a(int var1, String var2);
+public record hx(int a, es b, hx.a c) {
+   public void a(int $$0) {
+      this.b.onSuccess($$0);
+   }
 
-   void a(int var1, String var2, int var3);
+   public void a() {
+      this.b.onFailure();
+   }
 
-   void a(String var1);
+   public void b() {
+      this.c.discard();
+   }
 
-   void a(int var1, ale var2, int var3);
+   public int c() {
+      return this.a;
+   }
 
-   @Override
-   void close();
+   public es d() {
+      return this.b;
+   }
+
+   public hx.a e() {
+      return this.c;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void discard();
+   }
 }

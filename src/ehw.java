@@ -1,61 +1,28 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ehw {
-   public static final Codec<ehw> d = lv.W.q().dispatch(ehw::a, ehx::a);
-   protected final bqx e;
-   protected final ehz f;
-   protected final Optional<eht> g;
+public class ehw<P extends ehv> {
+   public static final ehw<ehq> a = a("blob_foliage_placer", ehq.a);
+   public static final ehw<eib> b = a("spruce_foliage_placer", eib.a);
+   public static final ehw<ehz> c = a("pine_foliage_placer", ehz.a);
+   public static final ehw<ehp> d = a("acacia_foliage_placer", ehp.a);
+   public static final ehw<ehr> e = a("bush_foliage_placer", ehr.c);
+   public static final ehw<ehu> f = a("fancy_foliage_placer", ehu.c);
+   public static final ehw<ehx> g = a("jungle_foliage_placer", ehx.a);
+   public static final ehw<ehy> h = a("mega_pine_foliage_placer", ehy.a);
+   public static final ehw<eht> i = a("dark_oak_foliage_placer", eht.a);
+   public static final ehw<eia> j = a("random_spread_foliage_placer", eia.a);
+   public static final ehw<ehs> k = a("cherry_foliage_placer", ehs.a);
+   private final MapCodec<P> l;
 
-   protected static <P extends ehw> P3<Mu<P>, bqx, ehz, Optional<eht>> a(Instance<P> $$0) {
-      return $$0.group(
-         bqx.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         ehz.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         eht.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   private static <P extends ehv> ehw<P> a(String $$0, MapCodec<P> $$1) {
+      return kc.a(lx.U, $$0, new ehw<>($$1));
    }
 
-   public ehw(bqx $$0, ehz $$1, Optional<eht> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private ehw(MapCodec<P> $$0) {
+      this.l = $$0;
    }
 
-   protected abstract ehx<?> a();
-
-   public abstract boolean a(dep var1, BiConsumer<jf, dus> var2, azn var3, jf var4, jf var5, egu var6);
-
-   protected boolean a(dep $$0, jf $$1) {
-      return efg.c($$0, $$1);
-   }
-
-   protected void a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, jf $$3, egu $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            eht $$5 = this.g.get();
-            jf $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dur.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
-      }
-   }
-
-   protected dus a(dep $$0, jf $$1, dus $$2) {
-      if ($$2.b(dvi.C)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axb.a));
-         return $$2.b(dvi.C, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
-   }
-
-   public jf a(jf $$0, azn $$1) {
-      return $$0.b(this.e.a($$1));
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

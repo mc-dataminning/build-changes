@@ -1,49 +1,15 @@
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public interface eqg extends eql {
-   @Nullable
-   dwt a(kh var1);
+public class eqg {
+   public static double a(double $$0, double $$1) {
+      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
+   }
 
-   int b(jf var1);
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   }
 
-   public static enum a implements eqg {
-      a;
-
-      @Nullable
-      @Override
-      public dwt a(kh $$0) {
-         return null;
-      }
-
-      @Override
-      public int b(jf $$0) {
-         return 0;
-      }
-
-      @Override
-      public void a(jf $$0) {
-      }
-
-      @Override
-      public boolean J_() {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public void a(kh $$0, boolean $$1) {
-      }
-
-      @Override
-      public void a(ddp $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(ddp $$0) {
-      }
+   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
+      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
    }
 }

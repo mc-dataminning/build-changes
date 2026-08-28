@@ -1,139 +1,144 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dse extends drv implements brl {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final jx<cvs> d = jx.a(6, cvs.k);
-   private int e = -1;
+public class dse extends dsg {
+   private static final int d = 50;
+   private static final int e = 60;
+   private static final int f = 60;
+   private static final int g = 40;
+   private static final int h = 5;
+   private static final int i = 48;
+   private static final int j = 32;
+   private static final int k = 48;
+   private long l;
+   public int a;
+   public boolean b;
+   public jl c;
+   private List<buv> m;
+   private boolean n;
+   private int r;
 
-   public dse(jf $$0, dus $$1) {
-      super(drx.M, $$0, $$1);
+   public dse(jg $$0, dvd $$1) {
+      super(dsi.E, $$0, $$1);
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         dus $$1 = this.m();
-
-         for (int $$2 = 0; $$2 < diq.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).f();
-            dvj $$4 = diq.c.get($$2);
-            $$1 = $$1.b($$4, Boolean.valueOf($$3));
-         }
-
-         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
-         this.o.a(dzp.c, this.p, dzp.a.a($$1));
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.b();
+         this.r = 0;
+         this.c = jl.a($$1);
+         this.a = 0;
+         this.b = true;
+         return true;
       } else {
-         c.error("Expected slot 0-5, got {}", $$0);
+         return super.a_($$0, $$1);
       }
    }
 
-   @Override
-   protected void a(ug $$0, jq.a $$1) {
-      super.a($$0, $$1);
-      this.d.clear();
-      brm.b($$0, this.d, $$1);
-      this.e = $$0.h("last_interacted_slot");
-   }
-
-   @Override
-   protected void b(ug $$0, jq.a $$1) {
-      super.b($$0, $$1);
-      brm.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
-   }
-
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(cvs::f)).count();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(cvs::f);
-   }
-
-   @Override
-   public cvs a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cvs a(int $$0, int $$1) {
-      cvs $$2 = Objects.requireNonNullElse(this.d.get($$0), cvs.k);
-      this.d.set($$0, cvs.k);
-      if (!$$2.f()) {
-         this.c($$0);
+   private static void a(dev $$0, jg $$1, dvd $$2, dse $$3, dse.a $$4) {
+      if ($$3.b) {
+         $$3.a++;
       }
 
-      return $$2;
-   }
+      if ($$3.a >= 50) {
+         $$3.b = false;
+         $$3.a = 0;
+      }
 
-   @Override
-   public cvs b(int $$0) {
-      return this.a($$0, 1);
-   }
+      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
+         $$3.n = true;
+         $$0.a(null, $$1, awk.ca, awl.e, 1.0F, 1.0F);
+      }
 
-   @Override
-   public void a(int $$0, cvs $$1) {
-      if ($$1.a(axe.aV)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.f()) {
-         this.a($$0, 1);
+      if ($$3.n) {
+         if ($$3.r < 40) {
+            $$3.r++;
+         } else {
+            $$4.run($$0, $$1, $$3.m);
+            $$3.n = false;
+         }
       }
    }
 
-   @Override
-   public boolean a(brl $$0, int $$1, cvs $$2) {
-      return $$0.a_($$2x -> $$2x.f() ? true : cvs.c($$2, $$2x) && $$2x.K() + $$2.K() <= $$0.f_($$2x));
+   public static void a(dev $$0, jg $$1, dvd $$2, dse $$3) {
+      a($$0, $$1, $$2, $$3, dse::b);
    }
 
-   @Override
-   public int al_() {
-      return 1;
+   public static void b(dev $$0, jg $$1, dvd $$2, dse $$3) {
+      a($$0, $$1, $$2, $$3, dse::a);
    }
 
-   @Override
-   public boolean a(cnx $$0) {
-      return brl.a(this, $$0);
+   public void a(jl $$0) {
+      jg $$1 = this.aC_();
+      this.c = $$0;
+      if (this.b) {
+         this.a = 0;
+      } else {
+         this.b = true;
+      }
+
+      this.o.a($$1, this.m().b(), 1, $$0.d());
    }
 
-   @Override
-   public boolean b(int $$0, cvs $$1) {
-      return $$1.a(axe.aV) && this.a($$0).f() && $$1.K() == this.al_();
+   private void b() {
+      jg $$0 = this.aC_();
+      if (this.o.aa() > this.l + 60L || this.m == null) {
+         this.l = this.o.aa();
+         ezc $$1 = new ezc($$0).g(48.0);
+         this.m = this.o.a(buv.class, $$1);
+      }
+
+      if (!this.o.C) {
+         for (buv $$2 : this.m) {
+            if ($$2.bM() && !$$2.dS() && $$0.a($$2.dv(), 32.0)) {
+               $$2.ed().a(cdz.D, this.o.aa());
+            }
+         }
+      }
    }
 
-   public int j() {
-      return this.e;
+   private static boolean a(jg $$0, List<buv> $$1) {
+      for (buv $$2 : $$1) {
+         if ($$2.bM() && !$$2.dS() && $$0.a($$2.dv(), 32.0) && $$2.aq().a(axd.c)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   protected void a(drv.b $$0) {
-      super.a($$0);
-      $$0.a(ks.ag, cyo.a).a(this.d);
+   private static void a(dev $$0, jg $$1, List<buv> $$2) {
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dse::a);
    }
 
-   @Override
-   protected void a(ko.a $$0) {
-      super.a($$0);
-      $$0.a(ks.ag, cyo.a(this.d));
+   private static void b(dev $$0, jg $$1, List<buv> $$2) {
+      MutableInt $$3 = new MutableInt(16700985);
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dv(), 48.0)).count();
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
+         float $$5 = 1.0F;
+         double $$6 = Math.sqrt(($$4x.dC() - (double)$$1.u()) * ($$4x.dC() - (double)$$1.u()) + ($$4x.dI() - (double)$$1.w()) * ($$4x.dI() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dC() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dI() - (double)$$1.w());
+         int $$9 = azj.a(($$4 - 21) / -2, 3, 15);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            int $$11 = $$3.addAndGet(5);
+            $$0.a(lj.a(lq.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
+         }
+      });
    }
 
-   @Override
-   public void a(ug $$0) {
-      $$0.r("Items");
+   private static boolean a(jg $$0, buv $$1) {
+      return $$1.bM() && !$$1.dS() && $$0.a($$1.dv(), 48.0) && $$1.aq().a(axd.c);
+   }
+
+   private static void a(buv $$0) {
+      $$0.a(new bte(btg.x, 60));
+   }
+
+   @FunctionalInterface
+   interface a {
+      void run(dev var1, jg var2, List<buv> var3);
    }
 }

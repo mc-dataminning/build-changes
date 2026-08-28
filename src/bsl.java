@@ -1,53 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class bsl {
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-public record bsl(String d, bsi e, float f, bsh g, bsn h) {
-   public static final Codec<bsl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(bsl::a),
-               bsi.d.fieldOf("scaling").forGetter(bsl::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(bsl::c),
-               bsh.g.optionalFieldOf("effects", bsh.a).forGetter(bsl::d),
-               bsn.d.optionalFieldOf("death_message_type", bsn.a).forGetter(bsl::e)
-            )
-            .apply($$0, bsl::new)
-   );
-   public static final Codec<jo<bsl>> b = alb.a(lw.s);
-   public static final zc<wp, jo<bsl>> c = za.b(lw.s);
+   public static float a(buv $$0, float $$1, bsp $$2, float $$3, float $$4) {
+      float $$5 = 2.0F + $$4 / 4.0F;
+      float $$6 = azj.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
+      float $$7 = $$6 / 25.0F;
+      cvx $$8 = $$2.e();
+      float $$10;
+      if ($$8 != null && $$0.dX() instanceof arm $$9) {
+         $$10 = azj.a(dbo.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
+      } else {
+         $$10 = $$7;
+      }
 
-   public bsl(String $$0, bsi $$1, float $$2) {
-      this($$0, $$1, $$2, bsh.a, bsn.a);
+      float $$12 = 1.0F - $$10;
+      return $$1 * $$12;
    }
 
-   public bsl(String $$0, bsi $$1, float $$2, bsh $$3) {
-      this($$0, $$1, $$2, $$3, bsn.a);
-   }
-
-   public bsl(String $$0, float $$1, bsh $$2) {
-      this($$0, bsi.b, $$1, $$2);
-   }
-
-   public bsl(String $$0, float $$1) {
-      this($$0, bsi.b, $$1);
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public bsi b() {
-      return this.e;
-   }
-
-   public float c() {
-      return this.f;
-   }
-
-   public bsh d() {
-      return this.g;
-   }
-
-   public bsn e() {
-      return this.h;
+   public static float a(float $$0, float $$1) {
+      float $$2 = azj.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

@@ -1,12 +1,11 @@
 public class axg {
-   public static final axl<cft> a = a("acquirable_job_site");
-   public static final axl<cft> b = a("village");
-   public static final axl<cft> c = a("bee_home");
+   public static final axp<eaa> a = a("vibrations");
+   public static final axp<eaa> b = a("warden_can_listen");
+   public static final axp<eaa> c = a("shrieker_can_listen");
+   public static final axp<eaa> d = a("ignore_vibrations_sneaking");
+   public static final axp<eaa> e = a("allay_can_listen");
 
-   private axg() {
-   }
-
-   private static axl<cft> a(String $$0) {
-      return axl.a(lw.aa, ale.b($$0));
+   private static axp<eaa> a(String $$0) {
+      return axp.a(ly.G, alh.b($$0));
    }
 }

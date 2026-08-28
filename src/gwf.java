@@ -1,4 +1,3 @@
-public class gwf extends gug {
-   public boolean a;
-   public boolean b;
+public class gwf extends gtk {
+   public boolean d;
 }

@@ -1,41 +1,60 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eja extends eiz {
-   public static final MapCodec<eja> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eja::new));
+public class eja extends ejb {
+   public static final MapCodec<eja> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eja::new, $$0 -> $$0.b);
+   private final float b;
 
-   public eja(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected ejc<?> a() {
+      return ejc.b;
+   }
+
+   public eja(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected ejd<?> a() {
-      return ejd.d;
-   }
-
-   @Override
-   public List<ehk.a> a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, int $$3, jf $$4, egu $$5) {
-      List<ehk.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + azf.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + azf.a($$8) * (float)$$11);
-            jf $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
+   public void a(ejb.a $$0) {
+      azr $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            jg $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dqu.d, $$0);
+            }
          }
 
-         $$6.add(new ehk.a($$4.b($$9, $$7, $$10), -2, false));
-      }
+         if ($$1.i() < this.b) {
+            jg $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dqu.f, $$0);
+            }
+         }
 
-      return $$6;
+         if ($$1.i() < this.b) {
+            jg $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dqu.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            jg $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dqu.c, $$0);
+            }
+         }
+      });
+   }
+
+   private static void a(jg $$0, dvu $$1, ejb.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (jg var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
+      }
    }
 }

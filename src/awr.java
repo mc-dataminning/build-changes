@@ -1,28 +1,51 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class awr {
-   protected final Object2IntMap<awn<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+public class awr<T> extends fap {
+   public static final zf<ws, awr<?>> a = zd.a(ly.am).b(awr::a, awt::a);
+   private final aws o;
+   private final T p;
+   private final awt<T> q;
 
-   public awr() {
-      this.a.defaultReturnValue(0);
+   protected awr(awt<T> $$0, T $$1, aws $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
    }
 
-   public void b(cnx $$0, awn<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
+   public static <T> String a(awt<T> $$0, T $$1) {
+      return a(lx.v.b($$0)) + ":" + a($$0.b().b($$1));
    }
 
-   public void a(cnx $$0, awn<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
+   private static <T> String a(@Nullable alh $$0) {
+      return $$0.toString().replace(':', '.');
    }
 
-   public <T> int a(awp<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   public awt<T> a() {
+      return this.q;
    }
 
-   public int a(awn<?> $$0) {
-      return this.a.getInt($$0);
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awr && Objects.equals(this.d(), ((awr)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
    }
 }

@@ -1,174 +1,146 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public class dux {
-   private final Predicate<duw>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public class dux extends dkb {
+   public static final MapCodec<dux> b = b(dux::new);
+   public static final dwb<dwf> c = dvt.bg;
+   public static final dvu d = dvt.x;
+   public static final float e = 4.0F;
+   protected static final fab f = dhy.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final fab g = dhy.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final fab h = dhy.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final fab i = dhy.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final fab j = dhy.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final fab k = dhy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final fab o = dhy.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final fab G = dhy.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final fab H = dhy.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final fab I = dhy.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final fab J = dhy.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final fab K = dhy.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final fab L = dhy.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final fab M = dhy.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final fab N = dhy.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final fab O = dhy.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final fab P = dhy.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final fab Q = dhy.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final fab[] R = a(true);
+   private static final fab[] S = a(false);
 
-   public dux(Predicate<duw>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
+   @Override
+   protected MapCodec<dux> a() {
+      return b;
+   }
+
+   private static fab[] a(boolean $$0) {
+      return Arrays.stream(jl.values()).map($$1 -> a($$1, $$0)).toArray(fab[]::new);
+   }
+
+   private static fab a(jl $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return ezy.a(k, $$1 ? M : G);
+         case b:
+            return ezy.a(j, $$1 ? L : o);
+         case c:
+            return ezy.a(i, $$1 ? O : I);
+         case d:
+            return ezy.a(h, $$1 ? N : H);
+         case e:
+            return ezy.a(g, $$1 ? Q : K);
+         case f:
+            return ezy.a(f, $$1 ? P : J);
+      }
+   }
+
+   public dux(dvc.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(a, jl.c).b(c, dwf.a).b(d, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected boolean g_(dvd $$0) {
+      return true;
+   }
+
+   @Override
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return ($$0.c(d) ? R : S)[$$0.c(a).ordinal()];
+   }
+
+   private boolean a(dvd $$0, dvd $$1) {
+      dhy $$2 = $$0.c(c) == dwf.a ? dia.by : dia.br;
+      return $$1.a($$2) && $$1.c(duw.c) && $$1.c(a) == $$0.c(a);
+   }
+
+   @Override
+   public dvd a(dev $$0, jg $$1, dvd $$2, coh $$3) {
+      if (!$$0.C && $$3.gl().d) {
+         jg $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
          }
-      } else {
-         this.c = 0;
-         this.d = 0;
       }
+
+      return super.a($$0, $$1, $$2, $$3);
    }
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public Predicate<duw>[][][] d() {
-      return this.a;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public dux.b a(dem $$0, jf $$1, jk $$2, jk $$3) {
-      LoadingCache<jf, duw> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   private dux.b a(jf $$0, jk $$1, jk $$2, LoadingCache<jf, duw> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((duw)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
+   @Override
+   protected void a(dvd $$0, dev $$1, jg $$2, dvd $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         jg $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
          }
       }
-
-      return new dux.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
    }
 
-   @Nullable
-   public dux.b a(dem $$0, jf $$1) {
-      LoadingCache<jf, duw> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
-
-      for (jf $$4 : jf.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (jk $$5 : jk.values()) {
-            for (jk $$6 : jk.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dux.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
-                  }
-               }
-            }
-         }
-      }
-
-      return null;
+   @Override
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      return $$1.g() == $$0.c(a) && !$$0.a($$3, $$4) ? dia.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static LoadingCache<jf, duw> a(dem $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dux.a($$0, $$1));
+   @Override
+   protected boolean a(dvd $$0, dey $$1, jg $$2) {
+      dvd $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(dia.bQ) && $$3.c(a) == $$0.c(a);
    }
 
-   protected static jf a(jf $$0, jk $$1, jk $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         kj $$6 = new kj($$1.j(), $$1.k(), $$1.l());
-         kj $$7 = new kj($$2.j(), $$2.k(), $$2.l());
-         kj $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
+   @Override
+   protected void a(dvd $$0, dev $$1, jg $$2, dhy $$3, @Nullable esm $$4, boolean $$5) {
+      if ($$0.a((dey)$$1, $$2)) {
+         $$1.b($$2.a($$0.c(a).g()), $$3, esi.a($$4, $$0.c(a).g()));
       }
    }
 
-   static class a extends CacheLoader<jf, duw> {
-      private final dem a;
-      private final boolean b;
-
-      public a(dem $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public duw a(jf $$0) {
-         return new duw(this.a, $$0, this.b);
-      }
+   @Override
+   public cvx a(dey $$0, jg $$1, dvd $$2) {
+      return new cvx($$2.c(c) == dwf.b ? dia.br : dia.by);
    }
 
-   public static class b {
-      private final jf a;
-      private final jk b;
-      private final jk c;
-      private final LoadingCache<jf, duw> d;
-      private final int e;
-      private final int f;
-      private final int g;
+   @Override
+   protected dvd a(dvd $$0, dol $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
 
-      public b(jf $$0, jk $$1, jk $$2, LoadingCache<jf, duw> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
+   @Override
+   protected dvd a(dvd $$0, dmu $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
 
-      public jf a() {
-         return this.a;
-      }
+   @Override
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(a, c, d);
+   }
 
-      public jk b() {
-         return this.b;
-      }
-
-      public jk c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public duw a(int $$0, int $$1, int $$2) {
-         return (duw)this.d.getUnchecked(dux.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   @Override
+   protected boolean a(dvd $$0, ert $$1) {
+      return false;
    }
 }

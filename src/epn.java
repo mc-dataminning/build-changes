@@ -1,22 +1,9 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class epn implements epq {
-   public static final MapCodec<epn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ug.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, epn::new));
-   private final ug b;
+public abstract class epn {
+   public static final Codec<epn> c = lx.m.q().dispatch("predicate_type", epn::a, epo::codec);
 
-   public epn(ug $$0) {
-      this.b = $$0;
-   }
+   public abstract boolean a(dvd var1, azr var2);
 
-   @Override
-   public ug a(azn $$0, @Nullable ug $$1) {
-      return $$1 == null ? this.b.i() : $$1.a(this.b);
-   }
-
-   @Override
-   public epr<?> a() {
-      return epr.c;
-   }
+   protected abstract epo<?> a();
 }

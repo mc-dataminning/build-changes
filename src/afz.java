@@ -1,23 +1,45 @@
-import io.netty.buffer.ByteBuf;
+public class afz implements zo<acd> {
+   public static final zf<we, afz> a = zo.a(afz::a, afz::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public class afz implements zl<aca> {
-   public static final afz a = new afz();
-   public static final zc<ByteBuf, afz> b = zc.a(a);
+   public afz(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   private afz() {
+   private afz(we $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
+   }
+
+   private void a(we $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public zn<afz> a() {
-      return agp.aU;
+   public zq<afz> a() {
+      return ags.aR;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

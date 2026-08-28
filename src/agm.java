@@ -1,32 +1,59 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public record agm(jo<dyo> a, ald<dej> b, long c, deg d, @Nullable deg e, boolean f, boolean g, Optional<jn> h, int i, int j) {
-   public agm(wp $$0) {
-      this(
-         dyo.i.decode($$0),
-         $$0.a(lw.bc),
-         $$0.readLong(),
-         deg.a($$0.readByte()),
-         deg.b($$0.readByte()),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(wb::h),
-         $$0.l(),
-         $$0.l()
-      );
+public class agm implements zo<acd> {
+   public static final zf<ws, agm> a = zf.a(zd.h, agm::b, agm.a.b.a(zd.a()), agm::e, agm::new);
+   private final int b;
+   private final List<agm.a> c;
+
+   public agm(int $$0, Collection<bvz> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (bvz $$2 : $$1) {
+         this.c.add(new agm.a($$2.a(), $$2.b(), $$2.c()));
+      }
    }
 
-   public void a(wp $$0) {
-      dyo.i.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.l(this.d.a());
-      $$0.l(deg.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, wb::a);
-      $$0.c(this.i);
-      $$0.c(this.j);
+   private agm(int $$0, List<agm.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public zq<agm> a() {
+      return ags.bc;
+   }
+
+   public void a(acd $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public List<agm.a> e() {
+      return this.c;
+   }
+
+   public static record a(jp<bvy> c, double d, Collection<bwb> e) {
+      public static final zf<ByteBuf, bwb> a = zf.a(alh.b, bwb::b, zd.k, bwb::c, bwb.a.e, bwb::d, bwb::new);
+      public static final zf<ws, agm.a> b = zf.a(bvy.b, agm.a::a, zd.k, agm.a::b, a.a(zd.a(ArrayList::new)), agm.a::c, agm.a::new);
+
+      public jp<bvy> a() {
+         return this.c;
+      }
+
+      public double b() {
+         return this.d;
+      }
+
+      public Collection<bwb> c() {
+         return this.e;
+      }
    }
 }

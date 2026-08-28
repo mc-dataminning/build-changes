@@ -1,45 +1,69 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class etu extends eub {
-   protected final List<eub> d;
-   private final ett a;
-
-   protected etu(List<eub> $$0, List<eww> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
-   }
-
-   @Override
-   public void a(etr $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
+public interface etu {
+   ett<cyn> a = new ett<cyn>() {
+      @Override
+      public ks<cyn> a() {
+         return kt.ak;
       }
 
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      public Stream<cvx> a(cyn $$0) {
+         return $$0.b();
       }
-   }
 
-   protected abstract ett a(List<? extends ett> var1);
+      public cyn c() {
+         return cyn.a;
+      }
 
-   @Override
-   public final boolean expand(etl $$0, Consumer<eua> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
-   }
+      public cyn a(cyn $$0, Stream<cvx> $$1) {
+         return cyn.a($$1.toList());
+      }
+   };
+   ett<cyb> b = new ett<cyb>() {
+      @Override
+      public ks<cyb> a() {
+         return kt.O;
+      }
 
-   public static <T extends etu> MapCodec<T> a(etu.a<T> $$0) {
-      return RecordCodecBuilder.mapCodec(
-         $$1 -> $$1.group(etz.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
+      public cyb c() {
+         return cyb.a;
+      }
 
-   @FunctionalInterface
-   public interface a<T extends etu> {
-      T create(List<eub> var1, List<eww> var2);
-   }
+      public Stream<cvx> a(cyb $$0) {
+         return $$0.b();
+      }
+
+      public cyb a(cyb $$0, Stream<cvx> $$1) {
+         cyb.a $$2 = new cyb.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   ett<cyc> c = new ett<cyc>() {
+      @Override
+      public ks<cyc> a() {
+         return kt.N;
+      }
+
+      public cyc c() {
+         return cyc.a;
+      }
+
+      public Stream<cvx> a(cyc $$0) {
+         return $$0.a().stream();
+      }
+
+      public cyc a(cyc $$0, Stream<cvx> $$1) {
+         return cyc.a($$1.toList());
+      }
+   };
+   Map<ks<?>, ett<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(ett::a, $$0 -> (ett<?>)$$0));
+   Codec<ett<?>> e = lx.ao.q().comapFlatMap($$0 -> {
+      ett<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, ett::a);
 }

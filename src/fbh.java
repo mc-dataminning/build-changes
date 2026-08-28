@@ -1,24 +1,9 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-public interface fbh extends AutoCloseable {
-   float a = 7.0F;
-
-   @Override
-   default void close() {
-   }
-
-   @Nullable
-   default fbg a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
-
-   public static record a(fbh a, fnf.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
-      }
-   }
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface fbh {
 }

@@ -1,30 +1,29 @@
-import java.util.List;
-import java.util.Optional;
+public class ahl implements zo<agu> {
+   public static final zf<we, ahl> a = zo.a(ahl::a, ahl::new);
+   private final int b;
 
-public record ahl(int b, List<String> c, Optional<String> d) implements zl<agr> {
-   public static final zc<wb, ahl> a = zc.a(za.h, ahl::b, za.b(1024).a(za.c(100)), ahl::e, za.b(32).a(za::a), ahl::f, ahl::new);
+   public ahl(int $$0) {
+      this.b = $$0;
+   }
 
-   public ahl(int b, List<String> c, Optional<String> d) {
-      c = List.copyOf(c);
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private ahl(we $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(we $$0) {
+      $$0.f(this.b);
    }
 
    @Override
-   public zn<ahl> a() {
-      return agp.bz;
+   public zq<ahl> a() {
+      return ags.bw;
    }
 
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
-   }
-
-   public Optional<String> f() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

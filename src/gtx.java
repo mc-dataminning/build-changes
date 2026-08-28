@@ -1,8 +1,3 @@
-import javax.annotation.Nullable;
-
-public class gtx extends gtq {
+public class gtx extends gva {
    public boolean a;
-   @Nullable
-   public gzi b;
-   public cvs c = cvs.k;
 }

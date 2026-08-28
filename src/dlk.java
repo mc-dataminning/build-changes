@@ -1,51 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dlk extends dlc {
-   public static final MapCodec<dlk> e = b(dlk::new);
+public abstract class dlk extends dhy {
+   protected final jl a;
+   protected final boolean b;
+   protected final fab d;
 
-   @Override
-   public MapCodec<? extends dlk> a() {
-      return e;
-   }
-
-   public dlk(dur.d $$0) {
+   protected dlk(dvc.d $$0, jl $$1, fab $$2, boolean $$3) {
       super($$0);
-   }
-
-   public static dus b() {
-      return dho.G.n();
-   }
-
-   @Override
-   public void a(dej $$0, cnx $$1, jf $$2, dus $$3, @Nullable drv $$4, cvs $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!dbp.a($$5, awy.s)) {
-         if ($$0.C_().i()) {
-            $$0.a($$2, false);
-            return;
-         }
-
-         dus $$6 = $$0.a_($$2.e());
-         if ($$6.d() || $$6.n()) {
-            $$0.b($$2, b());
-         }
-      }
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if ($$1.a(des.b, $$2) > 11 - $$0.g()) {
-         this.d($$0, $$1, $$2);
+   protected abstract MapCodec<? extends dlk> a();
+
+   @Nullable
+   @Override
+   public dvd a(czm $$0) {
+      dvd $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().m();
+   }
+
+   public dvd a(dew $$0) {
+      return this.m();
+   }
+
+   @Override
+   protected boolean a(dvd $$0, dey $$1, jg $$2) {
+      jg $$3 = $$2.a(this.a.g());
+      dvd $$4 = $$1.a_($$3);
+      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   }
+
+   @Override
+   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   protected void d(dus $$0, dej $$1, jf $$2) {
-      if ($$1.C_().i()) {
-         $$1.a($$2, false);
-      } else {
-         $$1.b($$2, b());
-         $$1.b($$2, b().b(), null);
-      }
+   protected boolean o(dvd $$0) {
+      return true;
    }
+
+   @Override
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      return this.d;
+   }
+
+   protected abstract dlm c();
+
+   protected abstract dhy b();
 }

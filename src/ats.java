@@ -1,29 +1,65 @@
-import java.nio.file.Path;
-import java.util.Map;
+import java.io.IOException;
+import java.nio.file.FileStore;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.FileAttributeView;
+import java.nio.file.attribute.FileStoreAttributeView;
+import javax.annotation.Nullable;
 
-interface ats {
-   ats a = new ats() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-   };
-   ats b = new ats() {
-      @Override
-      public String toString() {
-         return "relative";
-      }
-   };
+class ats extends FileStore {
+   private final String a;
 
-   public static record a(Map<String, atp> c) implements ats {
-      public Map<String, atp> a() {
-         return this.c;
-      }
+   public ats(String $$0) {
+      this.a = $$0;
    }
 
-   public static record b(Path c) implements ats {
-      public Path a() {
-         return this.c;
-      }
+   @Override
+   public String name() {
+      return this.a;
+   }
+
+   @Override
+   public String type() {
+      return "index";
+   }
+
+   @Override
+   public boolean isReadOnly() {
+      return true;
+   }
+
+   @Override
+   public long getTotalSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUsableSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUnallocatedSpace() {
+      return 0L;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
+      return $$0 == BasicFileAttributeView.class;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(String $$0) {
+      return "basic".equals($$0);
+   }
+
+   @Nullable
+   @Override
+   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
+      return null;
+   }
+
+   @Override
+   public Object getAttribute(String $$0) throws IOException {
+      throw new UnsupportedOperationException();
    }
 }

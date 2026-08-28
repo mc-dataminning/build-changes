@@ -1,30 +1,18 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record dbz(js<bsw> d, dbu e, dbu f, dbu g, dbu h) implements dce {
+public record dbz(dbt d, dbt e, jp<bsr> f) implements dcd {
    public static final MapCodec<dbz> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               kd.a(lw.W).fieldOf("to_apply").forGetter(dbz::b),
-               dbu.b.fieldOf("min_duration").forGetter(dbz::c),
-               dbu.b.fieldOf("max_duration").forGetter(dbz::d),
-               dbu.b.fieldOf("min_amplifier").forGetter(dbz::e),
-               dbu.b.fieldOf("max_amplifier").forGetter(dbz::f)
+               dbt.b.fieldOf("min_damage").forGetter(dbz::b), dbt.b.fieldOf("max_damage").forGetter(dbz::c), bsr.b.fieldOf("damage_type").forGetter(dbz::d)
             )
             .apply($$0, dbz::new)
    );
 
    @Override
-   public void a(arj $$0, int $$1, dbm $$2, btr $$3, eyw $$4) {
-      if ($$3 instanceof bun $$5) {
-         azn $$6 = $$5.dV();
-         Optional<jo<bsw>> $$7 = this.d.a($$6);
-         if ($$7.isPresent()) {
-            int $$8 = Math.round(azf.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
-            int $$9 = Math.max(0, Math.round(azf.b($$6, this.g.a($$1), this.h.a($$1))));
-            $$5.a(new bsy($$7.get(), $$8, $$9));
-         }
-      }
+   public void a(arm $$0, int $$1, dbl $$2, btz $$3, ezh $$4) {
+      float $$5 = azj.b($$3.ea(), this.d.a($$1), this.e.a($$1));
+      $$3.a(new bsp(this.f, $$2.c()), $$5);
    }
 
    @Override
@@ -32,23 +20,15 @@ public record dbz(js<bsw> d, dbu e, dbu f, dbu g, dbu h) implements dce {
       return a;
    }
 
-   public js<bsw> b() {
+   public dbt b() {
       return this.d;
    }
 
-   public dbu c() {
+   public dbt c() {
       return this.e;
    }
 
-   public dbu d() {
+   public jp<bsr> d() {
       return this.f;
-   }
-
-   public dbu e() {
-      return this.g;
-   }
-
-   public dbu f() {
-      return this.h;
    }
 }

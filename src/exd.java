@@ -1,32 +1,36 @@
 import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record exd(Optional<cs> b) implements eww {
-   public static final MapCodec<exd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cs.a.optionalFieldOf("predicate").forGetter(exd::c)).apply($$0, exd::new));
+public class exd implements exh {
+   private static final exd b = new exd();
+   public static final MapCodec<exd> a = MapCodec.unit(b);
 
-   @Override
-   public ewx b() {
-      return ewy.j;
+   private exd() {
    }
 
    @Override
-   public Set<ewe<?>> a() {
-      return ImmutableSet.of(ewh.i);
+   public exi b() {
+      return exj.l;
    }
 
-   public boolean a(etl $$0) {
-      cvs $$1 = $$0.c(ewh.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   @Override
+   public Set<ewp<?>> a() {
+      return ImmutableSet.of(ews.j);
    }
 
-   public static eww.a a(cs.a $$0) {
-      return () -> new exd(Optional.of($$0.b()));
+   public boolean a(etw $$0) {
+      Float $$1 = $$0.c(ews.j);
+      if ($$1 != null) {
+         azr $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public Optional<cs> c() {
-      return this.b;
+   public static exh.a c() {
+      return () -> b;
    }
 }

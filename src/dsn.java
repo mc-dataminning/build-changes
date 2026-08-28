@@ -1,95 +1,159 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+public class dsn extends dtn implements dtl {
+   private static final int d = 1;
+   private jy<cvx> e = jy.a(27, cvx.k);
+   private final dst f = new dst() {
+      @Override
+      protected void a(dev $$0, jg $$1, dvd $$2) {
+         dsn.a($$0, $$1, $$2, awk.eR);
+      }
 
-public class dsn {
-   public static final ald<dsm> a = a("blank");
-   public static final ald<dsm> b = a("angler");
-   public static final ald<dsm> c = a("archer");
-   public static final ald<dsm> d = a("arms_up");
-   public static final ald<dsm> e = a("blade");
-   public static final ald<dsm> f = a("brewer");
-   public static final ald<dsm> g = a("burn");
-   public static final ald<dsm> h = a("danger");
-   public static final ald<dsm> i = a("explorer");
-   public static final ald<dsm> j = a("flow");
-   public static final ald<dsm> k = a("friend");
-   public static final ald<dsm> l = a("guster");
-   public static final ald<dsm> m = a("heart");
-   public static final ald<dsm> n = a("heartbreak");
-   public static final ald<dsm> o = a("howl");
-   public static final ald<dsm> p = a("miner");
-   public static final ald<dsm> q = a("mourner");
-   public static final ald<dsm> r = a("plenty");
-   public static final ald<dsm> s = a("prize");
-   public static final ald<dsm> t = a("scrape");
-   public static final ald<dsm> u = a("sheaf");
-   public static final ald<dsm> v = a("shelter");
-   public static final ald<dsm> w = a("skull");
-   public static final ald<dsm> x = a("snort");
-   private static final Map<cvn, ald<dsm>> y = Map.ofEntries(
-      Map.entry(cvw.qM, a),
-      Map.entry(cvw.xR, b),
-      Map.entry(cvw.xS, c),
-      Map.entry(cvw.xT, d),
-      Map.entry(cvw.xU, e),
-      Map.entry(cvw.xV, f),
-      Map.entry(cvw.xW, g),
-      Map.entry(cvw.xX, h),
-      Map.entry(cvw.xY, i),
-      Map.entry(cvw.xZ, j),
-      Map.entry(cvw.ya, k),
-      Map.entry(cvw.yb, l),
-      Map.entry(cvw.yc, m),
-      Map.entry(cvw.yd, n),
-      Map.entry(cvw.ye, o),
-      Map.entry(cvw.yf, p),
-      Map.entry(cvw.yg, q),
-      Map.entry(cvw.yh, r),
-      Map.entry(cvw.yi, s),
-      Map.entry(cvw.yj, t),
-      Map.entry(cvw.yk, u),
-      Map.entry(cvw.yl, v),
-      Map.entry(cvw.ym, w),
-      Map.entry(cvw.yn, x)
-   );
+      @Override
+      protected void b(dev $$0, jg $$1, dvd $$2) {
+         dsn.a($$0, $$1, $$2, awk.eP);
+      }
 
-   @Nullable
-   public static ald<dsm> a(cvn $$0) {
-      return y.get($$0);
+      @Override
+      protected void a(dev $$0, jg $$1, dvd $$2, int $$3, int $$4) {
+         dsn.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(coh $$0) {
+         if (!($$0.ca instanceof crs)) {
+            return false;
+         } else {
+            brr $$1 = ((crs)$$0.ca).l();
+            return $$1 == dsn.this || $$1 instanceof brq && ((brq)$$1).a(dsn.this);
+         }
+      }
+   };
+   private final dso g = new dso();
+
+   protected dsn(dsi<?> $$0, jg $$1, dvd $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private static ald<dsm> a(String $$0) {
-      return ald.a(lw.ax, ale.b($$0));
+   public dsn(jg $$0, dvd $$1) {
+      this(dsi.b, $$0, $$1);
    }
 
-   public static dsm a(kb<dsm> $$0) {
-      a($$0, b, "angler_pottery_pattern");
-      a($$0, c, "archer_pottery_pattern");
-      a($$0, d, "arms_up_pottery_pattern");
-      a($$0, e, "blade_pottery_pattern");
-      a($$0, f, "brewer_pottery_pattern");
-      a($$0, g, "burn_pottery_pattern");
-      a($$0, h, "danger_pottery_pattern");
-      a($$0, i, "explorer_pottery_pattern");
-      a($$0, j, "flow_pottery_pattern");
-      a($$0, k, "friend_pottery_pattern");
-      a($$0, l, "guster_pottery_pattern");
-      a($$0, m, "heart_pottery_pattern");
-      a($$0, n, "heartbreak_pottery_pattern");
-      a($$0, o, "howl_pottery_pattern");
-      a($$0, p, "miner_pottery_pattern");
-      a($$0, q, "mourner_pottery_pattern");
-      a($$0, r, "plenty_pottery_pattern");
-      a($$0, s, "prize_pottery_pattern");
-      a($$0, t, "scrape_pottery_pattern");
-      a($$0, u, "sheaf_pottery_pattern");
-      a($$0, v, "shelter_pottery_pattern");
-      a($$0, w, "skull_pottery_pattern");
-      a($$0, x, "snort_pottery_pattern");
-      return a($$0, a, "decorated_pot_side");
+   @Override
+   public int b() {
+      return 27;
    }
 
-   private static dsm a(kb<dsm> $$0, ald<dsm> $$1, String $$2) {
-      return kb.a($$0, $$1, new dsm(ale.b($$2)));
+   @Override
+   protected xh j() {
+      return xh.c("container.chest");
+   }
+
+   @Override
+   protected void a(uj $$0, jr.a $$1) {
+      super.a($$0, $$1);
+      this.e = jy.a(this.b(), cvx.k);
+      if (!this.b_($$0)) {
+         brs.b($$0, this.e, $$1);
+      }
+   }
+
+   @Override
+   protected void b(uj $$0, jr.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         brs.a($$0, this.e, $$1);
+      }
+   }
+
+   public static void a(dev $$0, jg $$1, dvd $$2, dsn $$3) {
+      $$3.g.a();
+   }
+
+   static void a(dev $$0, jg $$1, dvd $$2, awj $$3) {
+      dvv $$4 = $$2.c(djb.d);
+      if ($$4 != dvv.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dvv.c) {
+            jl $$8 = djb.i($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, awl.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   @Override
+   public void d_(coh $$0) {
+      if (!this.q && !$$0.R_()) {
+         this.f.a($$0, this.i(), this.aC_(), this.m());
+      }
+   }
+
+   @Override
+   public void c(coh $$0) {
+      if (!this.q && !$$0.R_()) {
+         this.f.b($$0, this.i(), this.aC_(), this.m());
+      }
+   }
+
+   @Override
+   protected jy<cvx> f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jy<cvx> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(dea $$0, jg $$1) {
+      dvd $$2 = $$0.a_($$1);
+      if ($$2.x()) {
+         dsg $$3 = $$0.c_($$1);
+         if ($$3 instanceof dsn) {
+            return ((dsn)$$3).f.a();
+         }
+      }
+
+      return 0;
+   }
+
+   public static void a(dsn $$0, dsn $$1) {
+      jy<cvx> $$2 = $$0.f();
+      $$0.a($$1.f());
+      $$1.a($$2);
+   }
+
+   @Override
+   protected crj a(int $$0, cog $$1) {
+      return crs.a($$0, $$1, this);
+   }
+
+   public void k() {
+      if (!this.q) {
+         this.f.c(this.i(), this.aC_(), this.m());
+      }
+   }
+
+   protected void a(dev $$0, jg $$1, dvd $$2, int $$3, int $$4) {
+      dhy $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

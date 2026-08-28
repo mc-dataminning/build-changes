@@ -1,34 +1,27 @@
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface et {
    et a = new et() {
+      @Nullable
       @Override
-      public void a(xe $$0) {
-      }
-
-      @Override
-      public boolean l_() {
-         return false;
-      }
-
-      @Override
-      public boolean w_() {
-         return false;
-      }
-
-      @Override
-      public boolean K_() {
-         return false;
+      public xx a(String $$0) {
+         return null;
       }
    };
 
-   void a(xe var1);
+   @Nullable
+   xx a(String var1);
 
-   boolean l_();
+   public static record a(Map<String, xx> b) implements et {
+      @Nullable
+      @Override
+      public xx a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   boolean w_();
-
-   boolean K_();
-
-   default boolean m_() {
-      return false;
+      public Map<String, xx> a() {
+         return this.b;
+      }
    }
 }

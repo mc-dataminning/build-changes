@@ -1,36 +1,51 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record exf(exs b, etk c) implements eww {
+public record exf(Optional<dg> b, jg c) implements exh {
+   private static final MapCodec<jg> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kk::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kk::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kk::w)
+            )
+            .apply($$0, jg::new)
+   );
    public static final MapCodec<exf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ext.a.fieldOf("value").forGetter(exf::c), etk.a.fieldOf("range").forGetter(exf::d)).apply($$0, exf::new)
+      $$0 -> $$0.group(dg.a.optionalFieldOf("predicate").forGetter(exf::c), g.forGetter(exf::d)).apply($$0, exf::new)
    );
 
    @Override
-   public ewx b() {
-      return ewy.r;
+   public exi b() {
+      return exj.n;
+   }
+
+   public boolean a(etw $$0) {
+      ezh $$1 = $$0.c(ews.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
    @Override
-   public Set<ewe<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public Set<ewp<?>> a() {
+      return Set.of(ews.f);
    }
 
-   public boolean a(etl $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public static exh.a a(dg.a $$0) {
+      return () -> new exf(Optional.of($$0.b()), jg.c);
    }
 
-   public static eww.a a(exs $$0, etk $$1) {
-      return () -> new exf($$0, $$1);
+   public static exh.a a(dg.a $$0, jg $$1) {
+      return () -> new exf(Optional.of($$0.b()), $$1);
    }
 
-   public exs c() {
+   public Optional<dg> c() {
       return this.b;
    }
 
-   public etk d() {
+   public jg d() {
       return this.c;
    }
 }

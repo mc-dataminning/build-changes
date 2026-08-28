@@ -1,49 +1,97 @@
 import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 
-public final class oa {
-   private static final oa a = new oa(ImmutableList.of());
-   private static final Comparator<dvv.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
-   private final List<dvv.a<?>> c;
+public class oa implements ny {
+   private final dhy a;
+   private final List<oa.b> b = Lists.newArrayList();
 
-   public oa a(dvv.a<?> $$0) {
-      return new oa(ImmutableList.builder().addAll(this.c).add($$0).build());
-   }
-
-   public oa a(oa $$0) {
-      return new oa(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
-   }
-
-   private oa(List<dvv.a<?>> $$0) {
-      this.c = $$0;
-   }
-
-   public static oa a() {
-      return a;
-   }
-
-   public static oa a(dvv.a<?>... $$0) {
-      return new oa(ImmutableList.copyOf($$0));
+   private oa(dhy $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof oa && this.c.equals(((oa)$$0).c);
+   public dhy a() {
+      return this.a;
    }
 
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
+   public static oa a(dhy $$0) {
+      return new oa($$0);
    }
 
-   public String b() {
-      return this.c.stream().sorted(b).map(dvv.a::toString).collect(Collectors.joining(","));
+   public oa a(List<oe> $$0) {
+      this.b.add(new oa.b($$0));
+      return this;
    }
 
-   @Override
-   public String toString() {
-      return this.b();
+   public oa a(oe $$0) {
+      return this.a(ImmutableList.of($$0));
+   }
+
+   public oa a(nz $$0, List<oe> $$1) {
+      this.b.add(new oa.a($$0, $$1));
+      return this;
+   }
+
+   public oa a(nz $$0, oe... $$1) {
+      return this.a($$0, ImmutableList.copyOf($$1));
+   }
+
+   public oa a(nz $$0, oe $$1) {
+      return this.a($$0, ImmutableList.of($$1));
+   }
+
+   public JsonElement b() {
+      dve<dhy, dvd> $$0 = this.a.l();
+      this.b.forEach($$1x -> $$1x.a($$0));
+      JsonArray $$1 = new JsonArray();
+      this.b.stream().map(oa.b::a).forEach($$1::add);
+      JsonObject $$2 = new JsonObject();
+      $$2.add("multipart", $$1);
+      return $$2;
+   }
+
+   static class a extends oa.b {
+      private final nz a;
+
+      a(nz $$0, List<oe> $$1) {
+         super($$1);
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dve<?, ?> $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("when", this.a.get());
+      }
+   }
+
+   static class b implements Supplier<JsonElement> {
+      private final List<oe> a;
+
+      b(List<oe> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(dve<?, ?> $$0) {
+      }
+
+      public void a(JsonObject $$0) {
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         this.a($$0);
+         $$0.add("apply", oe.a(this.a));
+         return $$0;
+      }
    }
 }

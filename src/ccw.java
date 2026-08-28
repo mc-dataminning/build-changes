@@ -1,16 +1,24 @@
-import javax.annotation.Nullable;
+public class ccw extends cbt {
+   private final bvd a;
 
-public class ccw extends ccx {
-   public ccw(buv $$0, double $$1) {
-      super($$0, $$1);
+   public ccw(bvd $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
    @Override
-   protected eyw h() {
-      eyw $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      eyw $$2 = cfj.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cff.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      return this.a.dX().S() && this.a.a(buh.f).f() && cfr.a(this.a);
+   }
+
+   @Override
+   public void d() {
+      ((ceg)this.a.P()).d(true);
+   }
+
+   @Override
+   public void e() {
+      if (cfr.a(this.a)) {
+         ((ceg)this.a.P()).d(false);
+      }
    }
 }

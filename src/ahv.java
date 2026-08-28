@@ -1,36 +1,37 @@
-public class ahv implements zl<agr> {
-   public static final zc<wb, ahv> a = zl.a(ahv::a, ahv::new);
-   private static final int b = 2;
+public class ahv implements zo<agu> {
+   public static final zf<we, ahv> a = zo.a(ahv::a, ahv::new);
+   private final boolean b;
    private final boolean c;
 
-   public ahv(cnu $$0) {
-      this.c = $$0.b;
+   public ahv(boolean $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahv(wb $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
+   private ahv(we $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(wb $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   @Override
-   public zn<ahv> a() {
-      return agp.bM;
-   }
-
-   public void a(agr $$0) {
+   public void a(agu $$0) {
       $$0.a(this);
    }
 
+   @Override
+   public zq<ahv> a() {
+      return ags.bJ;
+   }
+
    public boolean b() {
+      return this.b;
+   }
+
+   public boolean e() {
       return this.c;
    }
 }

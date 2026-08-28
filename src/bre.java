@@ -1,49 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class bre extends bqx {
-   public static final MapCodec<bre> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bqc.b(bqx.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bre::new)
-   );
-   private final bqc<bqx> b;
-   private final int f;
-   private final int g;
+public interface bre<P extends brd> {
+   bre<bra> a = a("constant", bra.b);
+   bre<brj> b = a("uniform", brj.a);
+   bre<bqv> c = a("biased_to_bottom", bqv.a);
+   bre<bqw> d = a("clamped", bqw.a);
+   bre<brk> e = a("weighted_list", brk.a);
+   bre<bqy> f = a("clamped_normal", bqy.a);
 
-   public bre(bqc<bqx> $$0) {
-      this.b = $$0;
-      List<bqe.b<bqx>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+   MapCodec<P> codec();
 
-      for (bqe.b<bqx> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
-      }
-
-      this.f = $$2;
-      this.g = $$3;
-   }
-
-   @Override
-   public int a(azn $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
-   }
-
-   @Override
-   public int a() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.g;
-   }
-
-   @Override
-   public bqy<?> c() {
-      return bqy.e;
+   static <P extends brd> bre<P> a(String $$0, MapCodec<P> $$1) {
+      return kc.a(lx.K, $$0, () -> $$1);
    }
 }

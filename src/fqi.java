@@ -1,96 +1,159 @@
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class fqi extends fqh {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final xe c = xe.c("selectWorld.allowCommands");
-   private static final xe d = xe.c("selectWorld.gameMode");
-   private static final xe s = xe.c("lanServer.otherPlayers");
-   private static final xe u = xe.c("lanServer.port");
-   private static final xe v = xe.a("lanServer.port.unavailable", 1024, 65535);
-   private static final xe w = xe.a("lanServer.port.invalid", 1024, 65535);
-   private static final int x = 16733525;
-   private final fqh y;
-   private deg z = deg.a;
-   private boolean A;
-   private int B = ayw.a();
-   @Nullable
-   private fkx C;
+public class fqi extends fqm {
+   public static final alh a = alh.b("textures/gui/title/mojangstudios.png");
+   private static final int d = axu.a(255, 239, 50, 61);
+   private static final int e = axu.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> fja.Q().n.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long b = 1000L;
+   public static final long c = 500L;
+   private final fja m;
+   private final auv n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
 
-   public fqi(fqh $$0) {
-      super(xe.c("lanServer.title"));
-      this.y = $$0;
+   public fqi(fja $$0, auv $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+   }
+
+   public static void a(fja $$0) {
+      $$0.aa().a(a, new fqi.a());
+   }
+
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
    }
 
    @Override
-   protected void aS_() {
-      hbo $$0 = this.m.V();
-      this.z = $$0.u_();
-      this.A = $$0.ba().m();
-      this.c(fkv.a(deg::e).a(deg.a, deg.d, deg.b, deg.c).a(this.z).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.z = $$1x));
-      this.c(fkv.b(this.A).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.A = $$1x));
-      fko $$1 = fko.a(xe.c("lanServer.start"), $$1x -> {
-         this.m.a(null);
-         xe $$2;
-         if ($$0.a(this.z, this.A, this.B)) {
-            $$2 = aog.a(this.B);
-         } else {
-            $$2 = xe.c("commands.publish.failed");
+   public void a(fkm $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ad.c();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
+      }
+
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.z != null) {
+            this.m.z.a($$0, 0, 0, $$3);
          }
 
-         this.m.m.d().a($$2);
-         this.m.d();
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
-      this.C = new fkx(this.p, this.n / 2 - 75, 160, 150, 20, xe.c("lanServer.port"));
-      this.C.b($$1x -> {
-         xe $$2 = this.a($$1x);
-         this.C.c(xe.b(this.B + "").a(n.i));
-         if ($$2 == null) {
-            this.C.g(14737632);
-            this.C.a(null);
-            $$1.j = true;
-         } else {
-            this.C.g(16733525);
-            this.C.a(flz.a($$2));
-            $$1.j = false;
+         int $$9 = azj.f((1.0F - azj.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(gig.G(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - azj.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.z != null && $$8 < 1.0F) {
+            this.m.z.a($$0, $$1, $$2, $$3);
          }
-      });
-      this.C.c(xe.b(this.B + "").a(n.i));
-      this.c(this.C);
-      this.c($$1);
-      this.c(fko.a(xd.e, $$0x -> this.d()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
-   }
 
-   @Override
-   public void d() {
-      this.m.a(this.y);
-   }
-
-   @Nullable
-   private xe a(String $$0) {
-      if ($$0.isBlank()) {
-         this.B = ayw.a();
-         return null;
+         int $$11 = azj.c(azj.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(gig.G(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = azj.a($$8, 0.0F, 1.0F);
       } else {
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384);
+         $$10 = 1.0F;
+      }
+
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      int $$24 = axu.a($$10);
+      $$0.a($$0x -> gig.K(), a, $$18 - $$23, $$19 - $$21, -0.0625F, 0.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
+      $$0.a($$0x -> gig.K(), a, $$18, $$19 - $$21, 0.0625F, 60.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
+      int $$25 = (int)((double)$$0.b() * 0.8325);
+      float $$26 = this.n.b();
+      this.q = azj.a(this.q * 0.95F + $$26 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$25 - 5, $$4 / 2 + $$23, $$25 + 5, 1.0F - azj.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
          try {
-            this.B = Integer.parseInt($$0);
-            if (this.B < 1024 || this.B > 65535) {
-               return w;
-            } else {
-               return !ayw.a(this.B) ? v : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.B = ayw.a();
-            return w;
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var24) {
+            this.o.accept(Optional.of(var24));
+         }
+
+         this.r = ad.c();
+         if (this.m.z != null) {
+            this.m.z.b(this.m, $$0.a(), $$0.b());
          }
       }
    }
 
+   private void a(fkm $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = azj.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = axu.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   }
+
    @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      $$0.a(this.p, s, this.n / 2, 82, 16777215);
-      $$0.a(this.p, u, this.n / 2, 142, 16777215);
+   public boolean a() {
+      return true;
+   }
+
+   static class a extends gxl {
+      public a() {
+         super(fqi.a);
+      }
+
+      @Override
+      protected gxl.a b(ava $$0) {
+         atp $$1 = fja.Q().ae();
+         aur<InputStream> $$2 = $$1.a(atn.a, fqi.a);
+         if ($$2 == null) {
+            return new gxl.a(new FileNotFoundException(fqi.a.toString()));
+         } else {
+            try {
+               gxl.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new gxl.a(new gzq(true, true), fct.a($$3));
+               }
+
+               return var5;
+            } catch (IOException var9) {
+               return new gxl.a(var9);
+            }
+         }
+      }
    }
 }

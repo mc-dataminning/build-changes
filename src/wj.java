@@ -1,37 +1,43 @@
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import org.slf4j.Logger;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class wj<T extends wk> extends MessageToByteEncoder<zl<T>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final wm<T> b;
+public class wj extends MessageToMessageDecoder<zo<?>> {
+   private final zn a;
+   @Nullable
+   private zn.a b;
 
-   public wj(wm<T> $$0) {
-      this.b = $$0;
+   public wj(zn $$0) {
+      this.a = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, zl<T> $$1, ByteBuf $$2) throws Exception {
-      zn<? extends zl<? super T>> $$3 = $$1.a();
-
-      try {
-         this.b.c().encode($$2, $$1);
-         int $$4 = $$2.readableBytes();
-         if (a.isDebugEnabled()) {
-            a.debug(vy.d, "OUT: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName(), $$4});
+   protected void a(ChannelHandlerContext $$0, zo<?> $$1, List<Object> $$2) throws Exception {
+      if (this.b != null) {
+         a($$1);
+         zo<?> $$3 = this.b.a($$1);
+         if ($$3 != null) {
+            this.b = null;
+            $$2.add($$3);
          }
-
-         bom.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
-      } catch (Throwable var9) {
-         a.error("Error sending packet {}", $$3, var9);
-         if ($$1.c()) {
-            throw new wr(var9);
+      } else {
+         zn.a $$4 = this.a.a($$1);
+         if ($$4 != null) {
+            a($$1);
+            this.b = $$4;
+         } else {
+            $$2.add($$1);
+            if ($$1.d()) {
+               $$0.pipeline().remove($$0.name());
+            }
          }
+      }
+   }
 
-         throw var9;
-      } finally {
-         wn.b($$0, $$1);
+   private static void a(zo<?> $$0) {
+      if ($$0.d()) {
+         throw new DecoderException("Terminal message received in bundle");
       }
    }
 }

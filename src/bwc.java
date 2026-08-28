@@ -1,29 +1,95 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class bwc {
-   public static bxq<btk> a(brd $$0, float $$1) {
-      return a($$0, $$1x -> $$1);
+   private final Map<jp<bvy>, bvz> a;
+
+   bwc(Map<jp<bvy>, bvz> $$0) {
+      this.a = $$0;
    }
 
-   public static bxq<btk> a(brd $$0, Function<bun, Float> $$1) {
-      return bzs.a(
-         (Function<bzs.b<btk>, ? extends App<bzs.c<btk>, bzv<btk>>>)($$2 -> $$2.group($$2.b(cdq.K), $$2.a(cdq.n), $$2.c(cdq.m))
-               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     if (!$$7.p_()) {
-                        return false;
-                     } else {
-                        btk $$9 = $$2.b($$3);
-                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
-                           cdt $$10 = new cdt(new bwq($$9, false), $$1.apply($$7), $$0.a() - 1);
-                           $$4.a(new bwq($$9, true));
-                           $$5.a($$10);
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+   private bvz d(jp<bvy> $$0) {
+      bvz $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
+      } else {
+         return $$1;
+      }
+   }
+
+   public double a(jp<bvy> $$0) {
+      return this.d($$0).g();
+   }
+
+   public double b(jp<bvy> $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(jp<bvy> $$0, alh $$1) {
+      bwb $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
+      } else {
+         return $$2.c();
+      }
+   }
+
+   @Nullable
+   public bvz a(Consumer<bvz> $$0, jp<bvy> $$1) {
+      bvz $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         bvz $$3 = new bvz($$1, $$0);
+         $$3.a($$2);
+         return $$3;
+      }
+   }
+
+   public static bwc.a a() {
+      return new bwc.a();
+   }
+
+   public boolean c(jp<bvy> $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(jp<bvy> $$0, alh $$1) {
+      bvz $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Builder<jp<bvy>, bvz> a = ImmutableMap.builder();
+      private boolean b;
+
+      private bvz b(jp<bvy> $$0) {
+         bvz $$1 = new bvz($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
+      }
+
+      public bwc.a a(jp<bvy> $$0) {
+         this.b($$0);
+         return this;
+      }
+
+      public bwc.a a(jp<bvy> $$0, double $$1) {
+         bvz $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public bwc a() {
+         this.b = true;
+         return new bwc(this.a.buildKeepingLast());
+      }
    }
 }

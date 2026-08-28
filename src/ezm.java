@@ -1,20 +1,30 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Objects;
 
-public class ezm extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
-
-   public ezm(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface ezm {
+   static ezm a() {
+      return ezr.a;
    }
 
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
+   static ezm a(btz $$0) {
+      Objects.requireNonNull($$0);
+
+      return (ezm)(switch ($$0) {
+         case cqf $$1 -> cqf.b($$1.dX()) ? new ezv($$1, false) : new ezr($$0, false);
+         default -> new ezr($$0, false);
+      });
    }
 
-   public int size() {
-      return this.a.size();
+   static ezm a(btz $$0, boolean $$1) {
+      return new ezr($$0, $$1);
    }
+
+   boolean b();
+
+   boolean a(fab var1, jg var2, boolean var3);
+
+   boolean a(cvt var1);
+
+   boolean a(ere var1, ere var2);
+
+   fab a(dvd var1, dee var2, jg var3);
 }

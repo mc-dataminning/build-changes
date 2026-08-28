@@ -1,77 +1,109 @@
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class hdg implements hdi {
-   private static final int a = 600;
-   private static final xe b = xe.c("tutorial.punch_tree.title");
-   private static final xe c = xe.a("tutorial.punch_tree.description", hdh.a("attack"));
-   private final hdh d;
-   @Nullable
-   private fna e;
-   private int f;
-   private int g;
+public class hdg {
+   final Map<hdf<?>, Object> a;
 
-   public hdg(hdh $$0) {
-      this.d = $$0;
+   hdg(Map<hdf<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hdj.f);
-      } else {
-         if (this.f == 1) {
-            ggh $$0 = this.d.e().t;
-            if ($$0 != null) {
-               if ($$0.gd().a(axe.r)) {
-                  this.d.a(hdj.e);
-                  return;
-               }
+   public static hdg.a a() {
+      return new hdg.a();
+   }
 
-               if (hdd.a($$0)) {
-                  this.d.a(hdj.e);
-                  return;
-               }
+   public static MapCodec<hdg> a(final List<hdf<?>> $$0) {
+      return new MapCodec<hdg>() {
+         public <T> RecordBuilder<T> a(hdg $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
+
+            for (hdf<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
+
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(hdg $$0x, RecordBuilder<T> $$1, hdf<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<hdg> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<hdg.a> $$2 = DataResult.success(new hdg.a());
+
+            for (hdf<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(hdg.a::a);
+         }
+
+         private <T, V> DataResult<hdg.a> a(DataResult<hdg.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, hdf<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
             }
          }
 
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new fna(fna.a.c, b, c, true);
-            this.d.e().aA().a(this.e);
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(hdf::b).map($$0::createString);
          }
-      }
+      };
+   }
+
+   @Nullable
+   public <T> T a(hdf<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.d();
-         this.e = null;
-      }
+   public String toString() {
+      return this.a.toString();
    }
 
-   @Override
-   public void a(gbm $$0, jf $$1, dus $$2, float $$3) {
-      boolean $$4 = $$2.a(awv.u);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
-         }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(hdj.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
-      }
+   public Set<hdf<?>> b() {
+      return this.a.keySet();
    }
 
-   @Override
-   public void a(cvs $$0) {
-      if ($$0.a(axe.r)) {
-         this.d.a(hdj.e);
+   public static class a {
+      private final Map<hdf<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
+      }
+
+      public <T> hdg.a a(hdf<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> hdg.a b(hdf<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public hdg.a a(hdg $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public hdg a() {
+         return new hdg(this.a);
       }
    }
 }

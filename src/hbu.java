@@ -1,87 +1,28 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList;
 import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class hbu {
-   private final Set<hbu.a> a = Sets.newIdentityHashSet();
-   final fba b;
-   final Executor c;
+public class hbu<T> extends hbv<T> {
+   private final hbz<T> c;
 
-   public hbu(fba $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public hbu(Function<T, Stream<String>> $$0, Function<T, Stream<alh>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = hbz.plainText($$2, $$0);
    }
 
-   public CompletableFuture<hbu.a> a(fba.c $$0) {
-      CompletableFuture<hbu.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         faz $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            hbu.a $$3 = new hbu.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
-      return $$1;
+   @Override
+   protected List<T> a(String $$0) {
+      return this.c.search($$0);
    }
 
-   public void a(Consumer<Stream<faz>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
-   }
-
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<hbu.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            hbu.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
-   }
-
-   public void b() {
-      this.a.forEach(hbu.a::b);
-      this.a.clear();
-   }
-
-   public class a {
-      @Nullable
-      faz b;
-      private boolean c;
-
-      public boolean a() {
-         return this.c;
-      }
-
-      public a(final faz $$1) {
-         this.b = $$1;
-      }
-
-      public void a(Consumer<faz> $$0) {
-         hbu.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
-
-      public void b() {
-         this.c = true;
-         hbu.this.b.a(this.b);
-         this.b = null;
-      }
+   @Override
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.c.search($$1);
+      Iterator<T> $$5 = new hbx<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new hbw<T>($$2.iterator(), $$5, this.a));
    }
 }

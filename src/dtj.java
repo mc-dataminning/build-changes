@@ -1,215 +1,136 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
+import com.google.common.annotations.VisibleForTesting;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dtj extends drv {
-   private static final String b = "profile";
-   private static final String c = "note_block_sound";
-   private static final String d = "custom_name";
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private static Executor f;
-   @Nullable
-   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> g;
-   @Nullable
-   private static LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> h;
-   public static final Executor a = $$0 -> {
-      Executor $$1 = f;
-      if ($$1 != null) {
-         $$1.execute($$0);
+public class dtj extends dsg implements fat.a {
+   public static final String b = "RecordItem";
+   public static final String c = "ticks_since_song_started";
+   private cvx d = cvx.k;
+   private final cwe e = new cwe(this::k, this.aC_());
+
+   public dtj(jg $$0, dvd $$1) {
+      super(dsi.e, $$0, $$1);
+   }
+
+   public cwe j() {
+      return this.e;
+   }
+
+   public void k() {
+      this.o.a(this.aC_(), this.m().b());
+      this.e();
+   }
+
+   private void a(boolean $$0) {
+      if (this.o != null && this.o.a_(this.aC_()) == this.m()) {
+         this.o.a(this.aC_(), this.m().b(dma.b, Boolean.valueOf($$0)), 2);
+         this.o.a(eaa.c, this.aC_(), eaa.a.a(this.m()));
       }
-   };
-   @Nullable
-   private cyv i;
-   @Nullable
-   private ale j;
-   private int k;
-   private boolean l;
-   @Nullable
-   private xe m;
-
-   public dtj(jf $$0, dus $$1) {
-      super(drx.p, $$0, $$1);
    }
 
-   public static void a(final alz $$0, Executor $$1) {
-      f = $$1;
-      final BooleanSupplier $$2 = () -> h == null;
-      g = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
-               return dtj.a($$0, $$0);
-            }
-         });
-      h = CacheBuilder.newBuilder()
-         .expireAfterAccess(Duration.ofMinutes(10L))
-         .maximumSize(256L)
-         .build(new CacheLoader<UUID, CompletableFuture<Optional<GameProfile>>>() {
-            public CompletableFuture<Optional<GameProfile>> a(UUID $$0x) {
-               return dtj.a($$0, $$0, $$2);
-            }
-         });
-   }
-
-   static CompletableFuture<Optional<GameProfile>> a(String $$0, alz $$1) {
-      return $$1.f()
-         .b($$0)
-         .thenCompose(
-            $$0x -> {
-               LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1x = h;
-               return $$1x != null && !$$0x.isEmpty()
-                  ? ((CompletableFuture)$$1x.getUnchecked(((GameProfile)$$0x.get()).getId())).thenApply($$1xx -> $$1xx.or(() -> $$0x))
-                  : CompletableFuture.completedFuture(Optional.empty());
-            }
-         );
-   }
-
-   static CompletableFuture<Optional<GameProfile>> a(UUID $$0, alz $$1, BooleanSupplier $$2) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$2.getAsBoolean()) {
-            return Optional.empty();
-         } else {
-            ProfileResult $$3 = $$1.c().fetchProfile($$0, true);
-            return Optional.ofNullable($$3).map(ProfileResult::profile);
+   public void t() {
+      if (this.o != null && !this.o.C) {
+         jg $$0 = this.aC_();
+         cvx $$1 = this.f();
+         if (!$$1.f()) {
+            this.h();
+            ezh $$2 = ezh.a($$0, 0.5, 1.01, 0.5).a(this.o.A, 0.7F);
+            cvx $$3 = $$1.v();
+            ckq $$4 = new ckq(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.q();
+            this.o.b($$4);
          }
-      }, ad.g());
+      }
    }
 
-   public static void b() {
-      f = null;
-      g = null;
-      h = null;
+   public static void a(dev $$0, jg $$1, dvd $$2, dtj $$3) {
+      $$3.e.b($$0, $$2);
    }
 
-   @Override
-   protected void b(ug $$0, jq.a $$1) {
-      super.b($$0, $$1);
-      if (this.i != null) {
-         $$0.a("profile", (vd)cyv.a.encodeStart(uu.a, this.i).getOrThrow());
-      }
-
-      if (this.j != null) {
-         $$0.a("note_block_sound", this.j.toString());
-      }
-
-      if (this.m != null) {
-         $$0.a("custom_name", xe.a.a(this.m, $$1));
-      }
+   public int u() {
+      return cwd.a(this.o.H_(), this.d).map(jp::a).map(cwd::e).orElse(0);
    }
 
    @Override
-   protected void a(ug $$0, jq.a $$1) {
+   protected void a(uj $$0, jr.a $$1) {
       super.a($$0, $$1);
-      if ($$0.e("profile")) {
-         cyv.a.parse(uu.a, $$0.c("profile")).resultOrPartial($$0x -> e.error("Failed to load profile from player head: {}", $$0x)).ifPresent(this::a);
-      }
-
-      if ($$0.b("note_block_sound", 8)) {
-         this.j = ale.c($$0.l("note_block_sound"));
-      }
-
-      if ($$0.b("custom_name", 8)) {
-         this.m = a($$0.l("custom_name"), $$1);
+      if ($$0.b("RecordItem", 10)) {
+         this.d = cvx.a($$1, (vg)$$0.p("RecordItem")).orElse(cvx.k);
       } else {
-         this.m = null;
+         this.d = cvx.k;
+      }
+
+      if ($$0.b("ticks_since_song_started", 4)) {
+         cwd.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.i("ticks_since_song_started")));
       }
    }
 
-   public static void a(dej $$0, jf $$1, dus $$2, dtj $$3) {
-      if ($$2.b(dop.a) && $$2.c(dop.a)) {
-         $$3.l = true;
-         $$3.k++;
+   @Override
+   protected void b(uj $$0, jr.a $$1) {
+      super.b($$0, $$1);
+      if (!this.f().f()) {
+         $$0.a("RecordItem", this.f().a($$1));
+      }
+
+      if (this.e.b() != null) {
+         $$0.a("ticks_since_song_started", this.e.c());
+      }
+   }
+
+   @Override
+   public cvx f() {
+      return this.d;
+   }
+
+   @Override
+   public cvx c(int $$0) {
+      cvx $$1 = this.d;
+      this.b(cvx.k);
+      return $$1;
+   }
+
+   @Override
+   public void b(cvx $$0) {
+      this.d = $$0;
+      boolean $$1 = !this.d.f();
+      Optional<jp<cwd>> $$2 = cwd.a(this.o.H_(), this.d);
+      this.a($$1);
+      if ($$1 && $$2.isPresent()) {
+         this.e.a(this.o, $$2.get());
       } else {
-         $$3.l = false;
+         this.e.a(this.o, this.m());
       }
    }
 
-   public float a(float $$0) {
-      return this.l ? (float)this.k + $$0 : (float)this.k;
-   }
-
-   @Nullable
-   public cyv c() {
-      return this.i;
-   }
-
-   @Nullable
-   public ale d() {
-      return this.j;
-   }
-
-   public ach f() {
-      return ach.a(this);
+   @Override
+   public int am_() {
+      return 1;
    }
 
    @Override
-   public ug a(jq.a $$0) {
-      return this.e($$0);
-   }
-
-   public void a(@Nullable cyv $$0) {
-      synchronized (this) {
-         this.i = $$0;
-      }
-
-      this.j();
-   }
-
-   private void j() {
-      if (this.i != null && !this.i.b()) {
-         this.i.a().thenAcceptAsync($$0 -> {
-            this.i = $$0;
-            this.e();
-         }, a);
-      } else {
-         this.e();
-      }
-   }
-
-   public static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = g;
-      return $$1 != null && bac.f($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
-   }
-
-   public static CompletableFuture<Optional<GameProfile>> a(UUID $$0) {
-      LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1 = h;
-      return $$1 != null ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
+   public dsg v() {
+      return this;
    }
 
    @Override
-   protected void a(drv.b $$0) {
-      super.a($$0);
-      this.a($$0.a(ks.ab));
-      this.j = $$0.a(ks.ac);
-      this.m = $$0.a(ks.g);
+   public boolean b(int $$0, cvx $$1) {
+      return $$1.b(kt.aa) && this.a($$0).f();
    }
 
    @Override
-   protected void a(ko.a $$0) {
-      super.a($$0);
-      $$0.a(ks.ab, this.i);
-      $$0.a(ks.ac, this.j);
-      $$0.a(ks.g, this.m);
+   public boolean a(brr $$0, int $$1, cvx $$2) {
+      return $$0.a_(cvx::f);
    }
 
-   @Override
-   public void a(ug $$0) {
-      super.a($$0);
-      $$0.r("profile");
-      $$0.r("note_block_sound");
-      $$0.r("custom_name");
+   @VisibleForTesting
+   public void c(cvx $$0) {
+      this.d = $$0;
+      cwd.a(this.o.H_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
+      this.o.a(this.aC_(), this.m().b());
+      this.e();
+   }
+
+   @VisibleForTesting
+   public void w() {
+      cwd.a(this.o.H_(), this.f()).ifPresent($$0 -> this.e.a(this.o, (jp<cwd>)$$0));
    }
 }

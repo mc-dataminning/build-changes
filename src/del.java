@@ -1,59 +1,19 @@
-public interface del {
-   int I_();
+import java.util.Optional;
 
-   int H_();
+public class del extends deo {
+   private final btz a;
 
-   default int an() {
-      return this.H_() + this.I_() - 1;
+   public del(btz $$0) {
+      this.a = $$0;
    }
 
-   default int ao() {
-      return this.aq() - this.ap() + 1;
+   @Override
+   public Optional<Float> a(den $$0, dea $$1, jg $$2, dvd $$3, ere $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   default int ap() {
-      return kh.a(this.H_());
-   }
-
-   default int aq() {
-      return kh.a(this.an());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 >= this.H_() && $$0 <= this.an();
-   }
-
-   default boolean s(jf $$0) {
-      return this.e($$0.v());
-   }
-
-   default boolean e(int $$0) {
-      return $$0 < this.H_() || $$0 > this.an();
-   }
-
-   default int f(int $$0) {
-      return this.g(kh.a($$0));
-   }
-
-   default int g(int $$0) {
-      return $$0 - this.ap();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.ap();
-   }
-
-   static del e(final int $$0, final int $$1) {
-      return new del() {
-         @Override
-         public int I_() {
-            return $$1;
-         }
-
-         @Override
-         public int H_() {
-            return $$0;
-         }
-      };
+   @Override
+   public boolean a(den $$0, dea $$1, jg $$2, dvd $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

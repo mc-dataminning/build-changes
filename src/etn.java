@@ -1,53 +1,77 @@
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
-import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public record etn<T>(ald<kb<T>> d, Codec<T> e, etn.a<T> f) {
-   private static final Logger g = LogUtils.getLogger();
-   public static final etn<eww> a = new etn<>(lw.bg, eww.e, e());
-   public static final etn<euz> b = new etn<>(lw.bf, evb.c, e());
-   public static final etn<etq> c = new etn<>(lw.be, etq.d, f());
+public class etn {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+   private static final DateTimeFormatter d = etf.a();
 
-   public void a(etr $$0, ald<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
+   public etn(etk.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(eti.c).toFile();
+      this.c.mkdirs();
    }
 
-   public <V> Optional<T> a(ale $$0, DynamicOps<V> $$1, V $$2) {
-      DataResult<T> $$3 = this.e.parse($$1, $$2);
-      $$3.error().ifPresent($$1x -> g.error("Couldn't parse element {}/{} - {}", new Object[]{this.d.a(), $$0, $$1x.message()}));
-      return $$3.result();
+   public void a(coh $$0) {
+      try {
+         uj $$1 = $$0.f(new uj());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cI() + "-", ".dat");
+         uw.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cI() + ".dat");
+         Path $$5 = $$2.resolve($$0.cI() + ".dat_old");
+         ad.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.al().getString());
+      }
    }
 
-   public static Stream<etn<?>> a() {
-      return Stream.of(a, b, c);
+   private void a(coh $$0, String $$1) {
+      Path $$2 = this.c.toPath();
+      Path $$3 = $$2.resolve($$0.cI() + $$1);
+      Path $$4 = $$2.resolve($$0.cI() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
+      if (Files.isRegularFile($$3)) {
+         try {
+            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+         } catch (Exception var7) {
+            b.warn("Failed to copy the player.dat file for {}", $$0.al().getString(), var7);
+         }
+      }
    }
 
-   private static <T extends etm> etn.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   private Optional<uj> b(coh $$0, String $$1) {
+      File $$2 = new File(this.c, $$0.cI() + $$1);
+      if ($$2.exists() && $$2.isFile()) {
+         try {
+            return Optional.of(uw.a($$2.toPath(), us.a()));
+         } catch (Exception var5) {
+            b.warn("Failed to load player data for {}", $$0.al().getString());
+         }
+      }
+
+      return Optional.empty();
    }
 
-   private static etn.a<etq> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
+   public Optional<uj> b(coh $$0) {
+      Optional<uj> $$1 = this.b($$0, ".dat");
+      if ($$1.isEmpty()) {
+         this.a($$0, ".dat");
+      }
 
-   public ald<kb<T>> b() {
-      return this.d;
-   }
-
-   public Codec<T> c() {
-      return this.e;
-   }
-
-   public etn.a<T> d() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void run(etr var1, ald<T> var2, T var3);
+      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
+         int $$2 = uy.b($$1x, -1);
+         $$1x = bas.b.a(this.a, $$1x, $$2);
+         $$0.g($$1x);
+         return $$1x;
+      });
    }
 }

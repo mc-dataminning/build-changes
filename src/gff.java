@@ -1,53 +1,27 @@
-public class gff extends gft {
-   protected final gfo a;
-   private float b;
-   private float F;
-   private float G;
-   private boolean H;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
 
-   protected gff(gbm $$0, double $$1, double $$2, double $$3, gfo $$4, float $$5) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.91F;
-      this.u = $$5;
-      this.a = $$4;
+public class gff {
+   private final List<alh> a;
+
+   private gff(List<alh> $$0) {
+      this.a = $$0;
    }
 
-   public void b(int $$0) {
-      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      float $$4 = 1.0F;
-      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   public List<alh> a() {
+      return this.a;
    }
 
-   public void c(int $$0) {
-      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      this.H = true;
-   }
-
-   @Override
-   public gex b() {
-      return gex.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-      if (this.s > this.t / 2) {
-         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         if (this.H) {
-            this.v = this.v + (this.b - this.v) * 0.2F;
-            this.w = this.w + (this.F - this.w) * 0.2F;
-            this.x = this.x + (this.G - this.x) * 0.2F;
-         }
+   public static gff a(JsonObject $$0) {
+      JsonArray $$1 = ayz.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new gff(List.of());
+      } else {
+         List<alh> $$2 = Streams.stream($$1).map($$0x -> ayz.a($$0x, "texture")).map(alh::a).collect(ImmutableList.toImmutableList());
+         return new gff($$2);
       }
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
    }
 }

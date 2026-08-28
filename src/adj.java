@@ -1,29 +1,20 @@
-public record adj(int b, float c) implements zl<aca> {
-   public static final zc<wb, adj> a = zl.a(adj::a, adj::new);
+public record adj(deb b) implements zo<acd> {
+   public static final zf<we, adj> a = zo.a(adj::a, adj::new);
 
-   public adj(bun $$0) {
-      this($$0.ap(), $$0.eI());
+   private adj(we $$0) {
+      this($$0.f());
    }
 
-   private adj(wb $$0) {
-      this($$0.l(), $$0.readFloat());
-   }
-
-   private void a(wb $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(we $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zn<adj> a() {
-      return agp.I;
+   public zq<adj> a() {
+      return ags.F;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
-   }
-
-   public float e() {
-      return this.c;
    }
 }

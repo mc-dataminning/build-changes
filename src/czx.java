@@ -1,17 +1,30 @@
-public enum czx implements bab {
-   a("food"),
-   b("blocks"),
-   c("misc");
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public static final bab.a<czx> d = bab.a(czx::values);
-   private final String e;
+public enum czx implements baf {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-   private czx(final String $$0) {
-      this.e = $$0;
+   public static final Codec<czx> e = baf.a(czx::values);
+   public static final IntFunction<czx> f = aya.a(czx::a, values(), aya.a.a);
+   public static final zf<ByteBuf, czx> g = zd.a(f, czx::a);
+   private final String h;
+   private final int i;
+
+   private czx(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.h;
+   }
+
+   private int a() {
+      return this.i;
    }
 }

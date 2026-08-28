@@ -1,68 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class dmu extends dhm implements dhp {
-   public static final MapCodec<dmu> a = b(dmu::new);
+public enum dmu implements baf {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dmu> a() {
-      return a;
+   public static final Codec<dmu> d = baf.a(dmu::values);
+   private final String e;
+   private final xh f;
+   private final h g;
+
+   private dmu(final String $$0, final h $$1) {
+      this.e = $$0;
+      this.f = xh.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dmu(dur.d $$0) {
-      super($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
+      }
    }
 
-   @Override
-   public boolean b(dem $$0, jf $$1, dus $$2) {
-      if (!$$0.a_($$1.d()).f()) {
-         return false;
+   public dol a(jl $$0) {
+      jl.a $$1 = $$0.o();
+      return (this != b || $$1 != jl.a.c) && (this != c || $$1 != jl.a.a) ? dol.a : dol.c;
+   }
+
+   public jl b(jl $$0) {
+      if (this == c && $$0.o() == jl.a.a) {
+         return $$0.g();
       } else {
-         for (jf $$3 : jf.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(awv.aM)) {
-               return true;
-            }
-         }
-
-         return false;
+         return this == b && $$0.o() == jl.a.c ? $$0.g() : $$0;
       }
    }
 
-   @Override
-   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
-      return true;
+   public h a() {
+      return this.g;
+   }
+
+   public xh b() {
+      return this.f;
    }
 
    @Override
-   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (jf $$6 : jf.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dus $$7 = $$0.a_($$6);
-         if ($$7.a(dho.on)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dho.ow)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dho.on.n() : dho.ow.n(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dho.on.n(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dho.ow.n(), 3);
-      }
-   }
-
-   @Override
-   public dhp.a as_() {
-      return dhp.a.a;
+   public String c() {
+      return this.e;
    }
 }

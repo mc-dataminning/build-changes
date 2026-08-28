@@ -1,40 +1,42 @@
-public interface ela {
-   ald<elg> a = a("pillager_outpost");
-   ald<elg> b = a("mineshaft");
-   ald<elg> c = a("mineshaft_mesa");
-   ald<elg> d = a("mansion");
-   ald<elg> e = a("jungle_pyramid");
-   ald<elg> f = a("desert_pyramid");
-   ald<elg> g = a("igloo");
-   ald<elg> h = a("shipwreck");
-   ald<elg> i = a("shipwreck_beached");
-   ald<elg> j = a("swamp_hut");
-   ald<elg> k = a("stronghold");
-   ald<elg> l = a("monument");
-   ald<elg> m = a("ocean_ruin_cold");
-   ald<elg> n = a("ocean_ruin_warm");
-   ald<elg> o = a("fortress");
-   ald<elg> p = a("nether_fossil");
-   ald<elg> q = a("end_city");
-   ald<elg> r = a("buried_treasure");
-   ald<elg> s = a("bastion_remnant");
-   ald<elg> t = a("village_plains");
-   ald<elg> u = a("village_desert");
-   ald<elg> v = a("village_savanna");
-   ald<elg> w = a("village_snowy");
-   ald<elg> x = a("village_taiga");
-   ald<elg> y = a("ruined_portal");
-   ald<elg> z = a("ruined_portal_desert");
-   ald<elg> A = a("ruined_portal_jungle");
-   ald<elg> B = a("ruined_portal_swamp");
-   ald<elg> C = a("ruined_portal_mountain");
-   ald<elg> D = a("ruined_portal_ocean");
-   ald<elg> E = a("ruined_portal_nether");
-   ald<elg> F = a("ancient_city");
-   ald<elg> G = a("trail_ruins");
-   ald<elg> H = a("trial_chambers");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   private static ald<elg> a(String $$0) {
-      return ald.a(lw.aT, ale.b($$0));
+public class ela extends eky {
+   public static final MapCodec<ela> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(brd.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), brd.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, ela::new)
+   );
+   private final brd c;
+   private final brd d;
+
+   public static ela a(brd $$0, brd $$1) {
+      return new ela($$0, $$1);
+   }
+
+   public static ela a(brd $$0) {
+      return new ela(bra.a(0), $$0);
+   }
+
+   public static ela b(brd $$0) {
+      return new ela($$0, bra.a(0));
+   }
+
+   private ela(brd $$0, brd $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Override
+   public Stream<jg> a_(ekw $$0, azr $$1, jg $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new jg($$3, $$4, $$5));
+   }
+
+   @Override
+   public ekz<?> b() {
+      return ekz.n;
    }
 }

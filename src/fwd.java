@@ -1,9 +1,22 @@
-public class fwd extends RuntimeException {
-   public fwd(String $$0) {
-      super($$0);
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class fwd implements fwf {
+   private static final xh a = xh.c("spectatorMenu.root.prompt");
+   private final List<fwg> b = Lists.newArrayList();
+
+   public fwd() {
+      this.b.add(new fwj());
+      this.b.add(new fwk());
    }
 
-   public fwd(String $$0, Throwable $$1) {
-      super($$0, $$1);
+   @Override
+   public List<fwg> a() {
+      return this.b;
+   }
+
+   @Override
+   public xh b() {
+      return a;
    }
 }

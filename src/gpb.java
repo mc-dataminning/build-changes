@@ -1,38 +1,32 @@
-public class gpb extends gou<cgt, gux, fym> {
-   private static final ale a = ale.b("textures/entity/parrot/parrot_red_blue.png");
-   private static final ale b = ale.b("textures/entity/parrot/parrot_blue.png");
-   private static final ale k = ale.b("textures/entity/parrot/parrot_green.png");
-   private static final ale l = ale.b("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final ale m = ale.b("textures/entity/parrot/parrot_grey.png");
+public class gpb extends gmu<cit, gvb, fyr> {
+   private static final alh a = alh.b("textures/entity/llama/creamy.png");
+   private static final alh b = alh.b("textures/entity/llama/white.png");
+   private static final alh k = alh.b("textures/entity/llama/brown.png");
+   private static final alh l = alh.b("textures/entity/llama/gray.png");
 
-   public gpb(gno.a $$0) {
-      super($$0, new fym($$0.a(gap.br)), 0.3F);
+   public gpb(gnz.a $$0, gaz $$1, gaz $$2) {
+      super($$0, new fyr($$0.a($$1)), new fyr($$0.a($$2)), 0.7F);
+      this.a(new gsg(this, $$0.f(), $$0.h()));
    }
 
-   public ale a(gux $$0) {
-      return a($$0.a);
-   }
-
-   public gux c() {
-      return new gux();
-   }
-
-   public void a(cgt $$0, gux $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gC();
-      float $$3 = azf.h($$2, $$0.cf, $$0.cc);
-      float $$4 = azf.h($$2, $$0.ce, $$0.cd);
-      $$1.b = (azf.a($$3) + 1.0F) * $$4;
-      $$1.c = fym.a($$0);
-   }
-
-   public static ale a(cgt.b $$0) {
-      return switch ($$0) {
+   public alh a(gvb $$0) {
+      return switch ($$0.a) {
          case a -> a;
          case b -> b;
          case c -> k;
          case d -> l;
-         case e -> m;
       };
+   }
+
+   public gvb c() {
+      return new gvb();
+   }
+
+   public void a(cit $$0, gvb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gI();
+      $$1.b = !$$0.p_() && $$0.t();
+      $$1.c = $$0.ak();
+      $$1.d = $$0.gy();
    }
 }

@@ -1,97 +1,118 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
 public class cfu {
-   public static final ald<cft> a = a("armorer");
-   public static final ald<cft> b = a("butcher");
-   public static final ald<cft> c = a("cartographer");
-   public static final ald<cft> d = a("cleric");
-   public static final ald<cft> e = a("farmer");
-   public static final ald<cft> f = a("fisherman");
-   public static final ald<cft> g = a("fletcher");
-   public static final ald<cft> h = a("leatherworker");
-   public static final ald<cft> i = a("librarian");
-   public static final ald<cft> j = a("mason");
-   public static final ald<cft> k = a("shepherd");
-   public static final ald<cft> l = a("toolsmith");
-   public static final ald<cft> m = a("weaponsmith");
-   public static final ald<cft> n = a("home");
-   public static final ald<cft> o = a("meeting");
-   public static final ald<cft> p = a("beehive");
-   public static final ald<cft> q = a("bee_nest");
-   public static final ald<cft> r = a("nether_portal");
-   public static final ald<cft> s = a("lodestone");
-   public static final ald<cft> t = a("lightning_rod");
-   private static final Set<dus> u = ImmutableList.of(
-         dho.bn, dho.bo, dho.bk, dho.bl, dho.bi, dho.bg, dho.bm, dho.bc, dho.bh, dho.be, dho.bb, dho.ba, new dhm[]{dho.bf, dho.bj, dho.aZ, dho.bd}
-      )
-      .stream()
-      .flatMap($$0 -> $$0.k().a().stream())
-      .filter($$0 -> $$0.c(dhf.b) == dvf.a)
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Set<dus> v = ImmutableList.of(dho.ft, dho.fv, dho.fu, dho.fw)
-      .stream()
-      .flatMap($$0 -> $$0.k().a().stream())
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Map<dus, jo<cft>> w = Maps.newHashMap();
+   private static final int a = 10;
 
-   private static Set<dus> a(dhm $$0) {
-      return ImmutableSet.copyOf($$0.k().a());
+   public static jg a(azr $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new jg($$3, $$4, $$5);
    }
 
-   private static ald<cft> a(String $$0) {
-      return ald.a(lw.aa, ale.b($$0));
+   @Nullable
+   public static jg a(azr $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = azj.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)azj.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return jg.a($$10, (double)$$12, $$11);
+      } else {
+         return null;
+      }
    }
 
-   private static cft a(kb<cft> $$0, ald<cft> $$1, Set<dus> $$2, int $$3, int $$4) {
-      cft $$5 = new cft($$2, $$3, $$4);
-      kb.a($$0, $$1, $$5);
-      a($$0.b($$1), $$2);
-      return $$5;
-   }
+   @VisibleForTesting
+   public static jg a(jg $$0, int $$1, Predicate<jg> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         jg.a $$3 = $$0.k().c(jl.b);
 
-   private static void a(jo<cft> $$0, Set<dus> $$1) {
-      $$1.forEach($$1x -> {
-         jo<cft> $$2 = w.put($$1x, $$0);
-         if ($$2 != null) {
-            throw (IllegalStateException)ad.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
+         while ($$3.v() <= $$1 && $$2.test($$3)) {
+            $$3.c(jl.b);
          }
-      });
+
+         return $$3.j();
+      }
    }
 
-   public static Optional<jo<cft>> a(dus $$0) {
-      return Optional.ofNullable(w.get($$0));
+   @VisibleForTesting
+   public static jg a(jg $$0, int $$1, int $$2, Predicate<jg> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         jg.a $$4 = $$0.k().c(jl.b);
+
+         while ($$4.v() <= $$2 && $$3.test($$4)) {
+            $$4.c(jl.b);
+         }
+
+         int $$5 = $$4.v();
+
+         while ($$4.v() <= $$2 && $$4.v() - $$5 < $$1) {
+            $$4.c(jl.b);
+            if ($$3.test($$4)) {
+               $$4.c(jl.a);
+               break;
+            }
+         }
+
+         return $$4.j();
+      }
    }
 
-   public static boolean b(dus $$0) {
-      return w.containsKey($$0);
+   @Nullable
+   public static ezh a(bvd $$0, Supplier<jg> $$1) {
+      return a($$1, $$0::c);
    }
 
-   public static cft a(kb<cft> $$0) {
-      a($$0, a, a(dho.nW), 1, 1);
-      a($$0, b, a(dho.nV), 1, 1);
-      a($$0, c, a(dho.nX), 1, 1);
-      a($$0, d, a(dho.fs), 1, 1);
-      a($$0, e, a(dho.pc), 1, 1);
-      a($$0, f, a(dho.nU), 1, 1);
-      a($$0, g, a(dho.nY), 1, 1);
-      a($$0, h, v, 1, 1);
-      a($$0, i, a(dho.oa), 1, 1);
-      a($$0, j, a(dho.oc), 1, 1);
-      a($$0, k, a(dho.nT), 1, 1);
-      a($$0, l, a(dho.ob), 1, 1);
-      a($$0, m, a(dho.nZ), 1, 1);
-      a($$0, n, u, 1, 1);
-      a($$0, o, a(dho.od), 32, 6);
-      a($$0, p, a(dho.pf), 0, 1);
-      a($$0, q, a(dho.pe), 0, 1);
-      a($$0, r, a(dho.ed), 0, 1);
-      a($$0, s, a(dho.pq), 0, 1);
-      return a($$0, t, a(dho.ss), 0, 1);
+   @Nullable
+   public static ezh a(Supplier<jg> $$0, ToDoubleFunction<jg> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      jg $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         jg $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
+         }
+      }
+
+      return $$3 != null ? ezh.c($$3) : null;
+   }
+
+   public static jg a(bvd $$0, int $$1, azr $$2, jg $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.gh() && $$1 > 1) {
+         jg $$6 = $$0.ge();
+         if ($$0.dC() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dI() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return jg.a((double)$$4 + $$0.dC(), (double)$$3.v() + $$0.dE(), (double)$$5 + $$0.dI());
    }
 }

@@ -3,23 +3,23 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bz extends dw<bz.a> {
+public class bz extends dx<bz.a> {
    @Override
    public Codec<bz.a> a() {
       return bz.a.a;
    }
 
-   public void a(ark $$0, eyw $$1, @Nullable btr $$2) {
-      eyw $$3 = $$0.dq();
-      etl $$4 = $$2 != null ? bv.b($$0, $$2) : null;
+   public void a(arn $$0, ezh $$1, @Nullable btz $$2) {
+      ezh $$3 = $$0.dv();
+      etw $$4 = $$2 != null ? bv.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.B(), $$1, $$3, $$4));
    }
 
-   public static record a(Optional<bg> b, Optional<df> c, Optional<bm> d, Optional<bg> e) implements dw.a {
+   public static record a(Optional<bg> b, Optional<dg> c, Optional<bm> d, Optional<bg> e) implements dx.a {
       public static final Codec<bz.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(bz.a::a),
-                  df.a.optionalFieldOf("start_position").forGetter(bz.a::b),
+                  dg.a.optionalFieldOf("start_position").forGetter(bz.a::b),
                   bm.a.optionalFieldOf("distance").forGetter(bz.a::c),
                   bv.b.optionalFieldOf("cause").forGetter(bz.a::d)
                )
@@ -32,11 +32,11 @@ public class bz extends dw<bz.a> {
 
       @Override
       public void a(bh $$0) {
-         dw.a.super.a($$0);
+         dx.a.super.a($$0);
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(arj $$0, eyw $$1, eyw $$2, @Nullable etl $$3) {
+      public boolean a(arm $$0, ezh $$1, ezh $$2, @Nullable etw $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
             return false;
          } else {
@@ -51,7 +51,7 @@ public class bz extends dw<bz.a> {
          return this.b;
       }
 
-      public Optional<df> b() {
+      public Optional<dg> b() {
          return this.c;
       }
 

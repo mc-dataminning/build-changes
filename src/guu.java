@@ -1,7 +1,4 @@
-import javax.annotation.Nullable;
-
-public class guu extends gtq {
-   @Nullable
-   public gzi a;
-   public cvs b = cvs.k;
+public class guu extends gut {
+   public ezh[] a = new ezh[0];
+   public boolean i;
 }

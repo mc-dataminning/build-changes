@@ -1,182 +1,114 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dhw extends dkg {
-   public static final MapCodec<dhw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dvh.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.O),
-               Codec.intRange(1, 1024).fieldOf("ticks_to_stay_pressed").forGetter($$0x -> $$0x.P),
-               t()
-            )
-            .apply($$0, dhw::new)
-   );
-   public static final dvj b = dvi.w;
-   private static final int M = 1;
-   private static final int N = 2;
-   protected static final int c = 2;
-   protected static final int d = 3;
-   protected static final ezq e = dhm.a(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
-   protected static final ezq f = dhm.a(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
-   protected static final ezq g = dhm.a(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
-   protected static final ezq h = dhm.a(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
-   protected static final ezq i = dhm.a(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
-   protected static final ezq j = dhm.a(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
-   protected static final ezq k = dhm.a(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
-   protected static final ezq l = dhm.a(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
-   protected static final ezq m = dhm.a(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
-   protected static final ezq n = dhm.a(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
-   protected static final ezq o = dhm.a(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
-   protected static final ezq G = dhm.a(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
-   protected static final ezq H = dhm.a(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
-   protected static final ezq I = dhm.a(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
-   protected static final ezq J = dhm.a(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
-   protected static final ezq K = dhm.a(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
-   private final dvh O;
-   private final int P;
+public class dhw extends dlt implements dib, doz {
+   public static final MapCodec<dhw> a = b(dhw::new);
+   private static final dvu f = dvt.C;
+   private static final int g = 6;
+   protected static final fab b = dhy.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
+   protected static final fab c = dhy.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
+   protected static final fab d = dhy.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
+   protected static final fab e = dhy.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
 
    @Override
    public MapCodec<dhw> a() {
       return a;
    }
 
-   protected dhw(dvh $$0, int $$1, dur.d $$2) {
-      super($$2.a($$0.g()));
-      this.O = $$0;
-      this.l(this.F.b().b(aF, jk.c).b(b, Boolean.valueOf(false)).b(L, dvd.b));
-      this.P = $$1;
+   protected dhw(dvc.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(f, Boolean.valueOf(false)).b(aF, jl.c));
    }
 
    @Override
-   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
-      jk $$4 = $$0.c(aF);
-      boolean $$5 = $$0.c(b);
-      switch ((dvd)$$0.c(L)) {
-         case a:
-            if ($$4.o() == jk.a.a) {
-               return $$5 ? o : g;
-            }
-
-            return $$5 ? G : h;
-         case b:
-            return switch ($$4) {
-               case f -> $$5 ? K : l;
-               case e -> $$5 ? J : k;
-               case d -> $$5 ? I : j;
-               case c, b, a -> $$5 ? H : i;
-            };
+   protected fab a(dvd $$0, dea $$1, jg $$2, ezm $$3) {
+      switch ((jl)$$0.c(aF)) {
+         case d:
+            return c;
          case c:
          default:
-            if ($$4.o() == jk.a.a) {
-               return $$5 ? m : e;
-            } else {
-               return $$5 ? n : f;
-            }
+            return b;
+         case e:
+            return e;
+         case f:
+            return d;
       }
    }
 
    @Override
-   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
-      if ($$0.c(b)) {
-         return brs.c;
+   protected void a(dve.a<dhy, dvd> $$0) {
+      $$0.a(f, aF);
+   }
+
+   @Override
+   protected ere b_(dvd $$0) {
+      return $$0.c(f) ? erf.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dvd $$0, dey $$1, jg $$2) {
+      jg $$3 = $$2.e();
+      dvd $$4 = $$1.a_($$3);
+      dvd $$5 = $$1.a_($$2.d());
+      return ($$4.a(this) || $$4.a(awz.bz)) && ($$5.a(this) || $$5.a(dia.sD));
+   }
+
+   protected static boolean a(dew $$0, jg $$1, ere $$2, jl $$3) {
+      dvd $$4 = dia.sE.m().b(f, Boolean.valueOf($$2.a(erf.c))).b(aF, $$3);
+      return $$0.a($$1, $$4, 3);
+   }
+
+   @Override
+   protected dvd a(dvd $$0, jl $$1, dvd $$2, dew $$3, jg $$4, jg $$5) {
+      if (($$1 == jl.a || $$1 == jl.b) && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$0.c(f)) {
+         $$3.a($$4, erf.c, erf.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dvd $$0, arm $$1, jg $$2, azr $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   public boolean b(dey $$0, jg $$1, dvd $$2) {
+      Optional<jg> $$3 = l.a($$0, $$1, $$2.b(), jl.b, dia.sD);
+      if ($$3.isEmpty()) {
+         return false;
       } else {
-         this.a($$0, $$1, $$2, $$3);
-         return brs.a;
+         jg $$4 = $$3.get().d();
+         dvd $$5 = $$0.a_($$4);
+         return dhv.a($$0, $$4, $$5);
       }
    }
 
    @Override
-   protected void a(dus $$0, arj $$1, jf $$2, deb $$3, BiConsumer<cvs, jf> $$4) {
-      if ($$3.f() && !$$0.c(b)) {
-         this.a($$0, $$1, $$2, null);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public void a(dus $$0, dej $$1, jf $$2, @Nullable cnx $$3) {
-      $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
-      this.e($$0, $$1, $$2);
-      $$1.a($$2, this, this.P);
-      this.a($$3, $$1, $$2, true);
-      $$1.a($$3, dzp.a, $$2);
-   }
-
-   protected void a(@Nullable cnx $$0, dek $$1, jf $$2, boolean $$3) {
-      $$1.a($$3 ? $$0 : null, $$2, this.a($$3), awh.e);
-   }
-
-   protected awf a(boolean $$0) {
-      return $$0 ? this.O.o() : this.O.n();
-   }
-
-   @Override
-   protected void a(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if ($$0.c(b)) {
-            this.e($$0, $$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected int a(dus $$0, ddo $$1, jf $$2, jk $$3) {
-      return $$0.c(b) ? 15 : 0;
-   }
-
-   @Override
-   protected int b(dus $$0, ddo $$1, jf $$2, jk $$3) {
-      return $$0.c(b) && n($$0) == $$3 ? 15 : 0;
-   }
-
-   @Override
-   protected boolean f_(dus $$0) {
+   public boolean a(dev $$0, azr $$1, jg $$2, dvd $$3) {
       return true;
    }
 
    @Override
-   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
-      if ($$0.c(b)) {
-         this.d($$0, $$1, $$2);
+   public void a(arm $$0, azr $$1, jg $$2, dvd $$3) {
+      Optional<jg> $$4 = l.a($$0, $$2, $$3.b(), jl.b, dia.sD);
+      if (!$$4.isEmpty()) {
+         jg $$5 = $$4.get();
+         jg $$6 = $$5.d();
+         jl $$7 = $$3.c(aF);
+         a($$0, $$5, $$0.b_($$5), $$7);
+         dhv.a($$0, $$6, $$0.b_($$6), $$7);
       }
    }
 
    @Override
-   protected void a(dus $$0, dej $$1, jf $$2, btr $$3) {
-      if (!$$1.B && this.O.e() && !$$0.c(b)) {
-         this.d($$0, $$1, $$2);
-      }
-   }
-
-   protected void d(dus $$0, dej $$1, jf $$2) {
-      coe $$3 = this.O.e() ? $$1.a(coe.class, $$0.f($$1, $$2).a().a($$2)).stream().findFirst().orElse(null) : null;
-      boolean $$4 = $$3 != null;
-      boolean $$5 = $$0.c(b);
-      if ($$4 != $$5) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf($$4)), 3);
-         this.e($$0, $$1, $$2);
-         this.a(null, $$1, $$2, $$4);
-         $$1.a($$3, $$4 ? dzp.a : dzp.e, $$2);
-      }
-
-      if ($$4) {
-         $$1.a(new jf($$2), this, this.P);
-      }
-   }
-
-   private void e(dus $$0, dej $$1, jf $$2) {
-      jk $$3 = n($$0).g();
-      esb $$4 = erx.a($$1, $$3, $$3.o().d() ? jk.b : $$0.c(aF));
-      $$1.a($$2, this, $$4);
-      $$1.a($$2.a($$3), this, $$4);
-   }
-
-   @Override
-   protected void a(dut.a<dhm, dus> $$0) {
-      $$0.a(aF, b, L);
+   public cvx a(dey $$0, jg $$1, dvd $$2) {
+      return new cvx(dia.sD);
    }
 }

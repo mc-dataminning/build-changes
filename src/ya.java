@@ -1,68 +1,71 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
+import java.util.Optional;
 
-@FunctionalInterface
-public interface ya {
-   Logger a = LogUtils.getLogger();
-   ya b = xu::b;
-   ya c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
-      return null;
-   };
+public record ya(String b, Instant c, long d, xo e) {
+   public static final MapCodec<ya> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(ya::a),
+               ays.q.fieldOf("time_stamp").forGetter(ya::b),
+               Codec.LONG.fieldOf("salt").forGetter(ya::c),
+               xo.a.optionalFieldOf("last_seen", xo.b).forGetter(ya::d)
+            )
+            .apply($$0, ya::new)
+   );
 
-   @Nullable
-   xu updateAndValidate(xu var1);
+   public static ya a(String $$0) {
+      return new ya($$0, Instant.now(), 0L, xo.b);
+   }
 
-   public static class a implements ya {
-      private final azs d;
-      private final BooleanSupplier e;
-      @Nullable
-      private xu f;
-      private boolean g = true;
+   public void a(azv.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
+   }
 
-      public a(azs $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
+   public ya.a a(xu $$0) {
+      return new ya.a(this.b, this.c, this.d, this.e.a($$0));
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public xo d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, xo.a d) {
+      public a(we $$0) {
+         this($$0.d(256), $$0.t(), $$0.readLong(), new xo.a($$0));
       }
 
-      private boolean a(xu $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.k().a(this.f.k())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
-            );
-            return false;
-         } else {
-            return true;
-         }
+      public void a(we $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
       }
 
-      private boolean b(xu $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.g());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
-
-      @Nullable
-      @Override
-      public xu updateAndValidate(xu $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return null;
-         } else {
-            this.f = $$0;
-            return $$0;
-         }
+      public Optional<ya> a(xu $$0) {
+         return this.d.a($$0).map($$0x -> new ya(this.a, this.b, this.c, $$0x));
       }
    }
 }

@@ -1,108 +1,20 @@
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class cam implements caj {
-   protected final bup a;
-   protected float b;
-   protected float c;
-   protected int d;
-   protected double e;
-   protected double f;
-   protected double g;
-
-   public cam(bup $$0) {
-      this.a = $$0;
-   }
-
-   public void a(eyw $$0) {
-      this.a($$0.d, $$0.e, $$0.f);
-   }
-
-   public void a(btr $$0) {
-      this.a($$0.dx(), b($$0), $$0.dD());
-   }
-
-   public void a(btr $$0, float $$1, float $$2) {
-      this.a($$0.dx(), b($$0), $$0.dD(), $$1, $$2);
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.a($$0, $$1, $$2, (float)this.a.ah(), (float)this.a.ad());
-   }
-
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = 2;
-   }
-
-   public void a() {
-      if (this.c()) {
-         this.a.w(0.0F);
-      }
-
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0 -> this.a.aV = this.a(this.a.aV, $$0, this.b));
-         this.h().ifPresent($$0 -> this.a.w(this.a(this.a.dK(), $$0, this.c)));
-      } else {
-         this.a.aV = this.a(this.a.aV, this.a.aT, 10.0F);
-      }
-
-      this.b();
-   }
-
-   protected void b() {
-      if (!this.a.P().m()) {
-         this.a.aV = azf.c(this.a.aV, this.a.aT, (float)this.a.ae());
-      }
-   }
-
-   protected boolean c() {
-      return true;
-   }
-
-   public boolean d() {
-      return this.d > 0;
-   }
-
-   public double e() {
-      return this.e;
-   }
-
-   public double f() {
-      return this.f;
-   }
-
-   public double g() {
-      return this.g;
-   }
-
-   protected Optional<Float> h() {
-      double $$0 = this.e - this.a.dx();
-      double $$1 = this.f - this.a.dB();
-      double $$2 = this.g - this.a.dD();
-      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(azf.d($$1, $$3) * 180.0F / (float)Math.PI)));
-   }
-
-   protected Optional<Float> i() {
-      double $$0 = this.e - this.a.dx();
-      double $$1 = this.g - this.a.dD();
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
-         ? Optional.empty()
-         : Optional.of((float)(azf.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
-   }
-
-   protected float a(float $$0, float $$1, float $$2) {
-      float $$3 = azf.c($$0, $$1);
-      float $$4 = azf.a($$3, -$$2, $$2);
-      return $$0 + $$4;
-   }
-
-   private static double b(btr $$0) {
-      return $$0 instanceof bun ? $$0.dB() : ($$0.cO().b + $$0.cO().e) / 2.0;
+public class cam {
+   public static bwp<buv> a() {
+      return cab.a(
+         (Function<cab.b<buv>, ? extends App<cab.c<buv>, cae<buv>>>)($$0 -> $$0.group($$0.a(cdz.n), $$0.a(cdz.az), $$0.a(cdz.ay), $$0.c(cdz.o))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<jg> $$7 = $$0.<buv>a($$3).map(btz::dx).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new bwr($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

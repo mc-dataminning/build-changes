@@ -1,49 +1,25 @@
-public class fle extends fko {
-   private boolean a;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public fle(int $$0, int $$1, fko.c $$2) {
-      super($$0, $$1, 20, 20, xe.c("narrator.button.difficulty_lock"), $$2, q);
+public class fle {
+   private static final ayv a = ayv.codepoint(32, ye.a);
+
+   private static String a(String $$0) {
+      return fja.Q().n.M().c() ? $$0 : n.a($$0);
    }
 
-   @Override
-   protected xs aP_() {
-      return xd.a(super.aP_(), this.a() ? xe.c("narrator.button.difficulty_lock.locked") : xe.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void b(fkb $$0, int $$1, int $$2, float $$3) {
-      fle.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? fle.a.c : fle.a.f;
-      } else if (this.B()) {
-         $$4 = this.a ? fle.a.b : fle.a.e;
-      } else {
-         $$4 = this.a ? fle.a.a : fle.a.d;
-      }
-
-      $$0.a(ghv::B, $$4.g, this.D(), this.E(), this.g, this.h);
-   }
-
-   static enum a {
-      a(ale.b("widget/locked_button")),
-      b(ale.b("widget/locked_button_highlighted")),
-      c(ale.b("widget/locked_button_disabled")),
-      d(ale.b("widget/unlocked_button")),
-      e(ale.b("widget/unlocked_button_highlighted")),
-      f(ale.b("widget/unlocked_button_disabled"));
-
-      final ale g;
-
-      private a(final ale $$0) {
-         this.g = $$0;
-      }
+   public static List<ayv> a(xm $$0, int $$1, fkk $$2) {
+      fio $$3 = new fio();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(xm.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, ye.a);
+      List<ayv> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, ye.a, ($$1x, $$2x) -> {
+         ayv $$3x = ue.a().a($$1x);
+         $$4.add($$2x ? ayv.composite(a, $$3x) : $$3x);
+      });
+      return (List<ayv>)($$4.isEmpty() ? Lists.newArrayList(new ayv[]{ayv.a}) : $$4);
    }
 }

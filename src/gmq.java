@@ -1,31 +1,23 @@
-public class gmq extends gmj<cge, gtb, fws> {
-   private static final ale a = ale.b("textures/entity/bee/bee_angry.png");
-   private static final ale b = ale.b("textures/entity/bee/bee_angry_nectar.png");
-   private static final ale k = ale.b("textures/entity/bee/bee.png");
-   private static final ale l = ale.b("textures/entity/bee/bee_nectar.png");
+public abstract class gmq<T extends ciq, S extends gud, M extends fxz<? super S>> extends gmu<T, S, M> {
+   private final float a;
 
-   public gmq(gno.a $$0) {
-      super($$0, new fws($$0.a(gap.q)), new fws($$0.a(gap.r)), 0.4F);
+   public gmq(gnz.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$2, 0.75F);
+      this.a = $$3;
    }
 
-   public ale a(gtb $$0) {
-      if ($$0.d) {
-         return $$0.e ? b : a;
-      } else {
-         return $$0.e ? l : k;
-      }
+   protected void a(S $$0, fdt $$1) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1);
    }
 
-   public gtb a() {
-      return new gtb();
-   }
-
-   public void a(cge $$0, gtb $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = !$$0.gB();
-      $$1.c = $$0.aH() && $$0.dv().h() < 1.0E-7;
-      $$1.d = $$0.ad_();
-      $$1.e = $$0.gA();
+      $$1.b = $$0.i();
+      $$1.c = $$0.cb();
+      $$1.e = $$0.J($$2);
+      $$1.f = $$0.K($$2);
+      $$1.g = $$0.L($$2);
+      $$1.d = $$0.cq > 0;
    }
 }

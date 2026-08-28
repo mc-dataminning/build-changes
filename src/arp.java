@@ -1,118 +1,176 @@
 import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class arp extends aqt {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<azx<arn<?>>> d = new Long2ObjectOpenHashMap();
+public class arp extends eqt implements AutoCloseable {
+   public static final int a = 1000;
+   private static final Logger e = LogUtils.getLogger();
+   private final bqo f;
+   private final ObjectList<Pair<arp.a, Runnable>> g = new ObjectArrayList();
+   private final aqs h;
+   private final aqu i;
+   private final int j = 1000;
+   private final AtomicBoolean k = new AtomicBoolean();
 
-   public arp() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   public arp(dxm $$0, aqs $$1, boolean $$2, bqo $$3, aqu $$4) {
+      super($$0, true, $$2);
+      this.h = $$1;
+      this.i = $$4;
+      this.f = $$3;
    }
 
-   private azx<arn<?>> g(long $$0) {
-      return (azx<arn<?>>)this.d.computeIfAbsent($$0, $$0x -> azx.a(4));
+   @Override
+   public void close() {
    }
 
-   private int a(azx<arn<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
+   @Override
+   public int a() {
+      throw (UnsupportedOperationException)ad.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
    }
 
-   public void a(long $$0, arn<?> $$1) {
-      azx<arn<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
+   @Override
+   public void a(jg $$0) {
+      jg $$1 = $$0.j();
+      this.a(ki.a($$0.u()), ki.a($$0.w()), arp.a.a, ad.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
    }
 
-   public void b(long $$0, arn<?> $$1) {
-      azx<arn<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
+   protected void a(deb $$0) {
+      this.a($$0.e, $$0.f, () -> 0, arp.a.a, ad.a((Runnable)(() -> {
+         super.b($$0, false);
+         super.a($$0, false);
 
-      this.b($$0, this.a($$2), false);
+         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
+            super.a(dfe.b, ki.a($$0, $$1), null);
+            super.a(dfe.a, ki.a($$0, $$1), null);
+         }
+
+         for (int $$2 = this.d.ap(); $$2 <= this.d.aq(); $$2++) {
+            super.a(ki.a($$0, $$2), true);
+         }
+      }), (Supplier<String>)(() -> "updateChunkStatus " + $$0 + " true")));
    }
 
-   public <T> void a(aro<T> $$0, ddp $$1, int $$2, T $$3) {
-      this.a($$1.a(), new arn<>($$0, $$2, $$3));
+   @Override
+   public void a(ki $$0, boolean $$1) {
+      this.a($$0.a(), $$0.c(), () -> 0, arp.a.a, ad.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "updateSectionStatus " + $$0 + " " + $$1)));
    }
 
-   public <T> void b(aro<T> $$0, ddp $$1, int $$2, T $$3) {
-      arn<T> $$4 = new arn<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
+   @Override
+   public void b(deb $$0) {
+      this.a($$0.e, $$0.f, arp.a.a, ad.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
    }
 
-   public void a(int $$0) {
-      List<Pair<arn<ddp>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
+   @Override
+   public void a(deb $$0, boolean $$1) {
+      this.a($$0.e, $$0.f, arp.a.a, ad.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
+   }
 
-      while (var3.hasNext()) {
-         Entry<azx<arn<?>>> $$2 = (Entry<azx<arn<?>>>)var3.next();
+   @Override
+   public void a(dfe $$0, ki $$1, @Nullable dxe $$2) {
+      this.a($$1.a(), $$1.c(), () -> 0, arp.a.a, ad.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
+   }
 
-         for (arn<?> $$3 : (azx)$$2.getValue()) {
-            if ($$3.a() == aro.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
+   private void a(int $$0, int $$1, arp.a $$2, Runnable $$3) {
+      this.a($$0, $$1, this.h.c(deb.c($$0, $$1)), $$2, $$3);
+   }
+
+   private void a(int $$0, int $$1, IntSupplier $$2, arp.a $$3, Runnable $$4) {
+      this.i.a(() -> {
+         this.g.add(Pair.of($$3, $$4));
+         if (this.g.size() >= 1000) {
+            this.f();
+         }
+      }, deb.c($$0, $$1), $$2);
+   }
+
+   @Override
+   public void b(deb $$0, boolean $$1) {
+      this.a($$0.e, $$0.f, () -> 0, arp.a.a, ad.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
+   }
+
+   public CompletableFuture<dwz> a(dwz $$0, boolean $$1) {
+      deb $$2 = $$0.f();
+      this.a($$2.e, $$2.f, arp.a.a, ad.a((Runnable)(() -> {
+         dxk[] $$2x = $$0.d();
+
+         for (int $$3 = 0; $$3 < $$0.ao(); $$3++) {
+            dxk $$4 = $$2x[$$3];
+            if (!$$4.c()) {
+               int $$5 = this.d.h($$3);
+               super.a(ki.a($$2, $$5), false);
             }
          }
-      }
-
-      for (Pair<arn<ddp>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         arn<ddp> $$6 = (arn<ddp>)$$4.getFirst();
-         this.b($$5, $$6);
-         ddp $$7 = new ddp($$5);
-         aro<ddp> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
+      }), (Supplier<String>)(() -> "initializeLight: " + $$2)));
+      return CompletableFuture.supplyAsync(() -> {
+         super.a($$2, $$1);
+         super.b($$2, false);
+         return $$0;
+      }, $$1x -> this.a($$2.e, $$2.f, arp.a.b, $$1x));
    }
 
-   @Override
-   protected int b(long $$0) {
-      azx<arn<?>> $$1 = (azx<arn<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(ddp $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
-      } else {
-         this.b.put($$0, (byte)$$1);
-      }
-   }
-
-   public LongSet a() {
-      return this.b.keySet();
+   public CompletableFuture<dwz> b(dwz $$0, boolean $$1) {
+      deb $$2 = $$0.f();
+      $$0.b(false);
+      this.a($$2.e, $$2.f, arp.a.a, ad.a((Runnable)(() -> {
+         if (!$$1) {
+            super.b($$2);
+         }
+      }), (Supplier<String>)(() -> "lightChunk " + $$2 + " " + $$1)));
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.b(true);
+         return $$0;
+      }, $$1x -> this.a($$2.e, $$2.f, arp.a.b, $$1x));
    }
 
    public void b() {
-      this.b(Integer.MAX_VALUE);
+      if ((!this.g.isEmpty() || super.K_()) && this.k.compareAndSet(false, true)) {
+         this.f.a_(() -> {
+            this.f();
+            this.k.set(false);
+         });
+      }
    }
 
-   public String d(long $$0) {
-      azx<arn<?>> $$1 = (azx<arn<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   private void f() {
+      int $$0 = Math.min(this.g.size(), 1000);
+      ObjectListIterator<Pair<arp.a, Runnable>> $$1 = this.g.iterator();
+
+      int $$2;
+      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
+         Pair<arp.a, Runnable> $$3 = (Pair<arp.a, Runnable>)$$1.next();
+         if ($$3.getFirst() == arp.a.a) {
+            ((Runnable)$$3.getSecond()).run();
+         }
+      }
+
+      $$1.back($$2);
+      super.a();
+
+      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
+         Pair<arp.a, Runnable> $$4 = (Pair<arp.a, Runnable>)$$1.next();
+         if ($$4.getFirst() == arp.a.b) {
+            ((Runnable)$$4.getSecond()).run();
+         }
+
+         $$1.remove();
+      }
+   }
+
+   public CompletableFuture<?> a(int $$0, int $$1) {
+      return CompletableFuture.runAsync(() -> {
+      }, $$2 -> this.a($$0, $$1, arp.a.b, $$2));
+   }
+
+   static enum a {
+      a,
+      b;
    }
 }

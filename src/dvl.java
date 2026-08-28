@@ -1,20 +1,18 @@
-public enum dvl implements bab {
-   a("compare"),
-   b("subtract");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class dvl implements Predicate<dvd> {
+   private final dhy a;
 
-   private dvl(final String $$0) {
-      this.c = $$0;
+   public dvl(dhy $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static dvl a(dhy $$0) {
+      return new dvl($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable dvd $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

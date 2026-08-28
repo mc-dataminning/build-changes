@@ -1,56 +1,57 @@
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public abstract class fhn implements Runnable {
-   protected static final int a = 25;
+public class fhn {
+   private static final Map<String, fhn.a> a = Maps.newHashMap();
    private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+   private static final alh c = alh.b("textures/gui/presets/isles.png");
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
+   public static alh a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
    }
 
-   public static void a(fqh $$0) {
-      fip $$1 = fip.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(xe $$0) {
-      this.b();
-      fip $$1 = fip.Q();
-      $$1.execute(() -> $$1.a(new fgb($$0, new fdt(new fqj()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof ffj $$1) {
-         this.a($$1.a.b());
+   private static alh b(String $$0, String $$1) {
+      fhn.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
       } else {
-         this.a(xe.b($$0.getMessage()));
+         fct $$3 = a($$1);
+         if ($$3 == null) {
+            alh $$4 = gxi.b();
+            a.put($$0, new fhn.a($$1, $$4));
+            return $$4;
+         } else {
+            alh $$5 = alh.a("realms", "dynamic/" + $$0);
+            fja.Q().aa().a($$5, new gxf($$3));
+            a.put($$0, new fhn.a($$1, $$5));
+            return $$5;
+         }
       }
    }
 
-   protected void a(ffj $$0) {
-      this.a($$0.a.b());
+   @Nullable
+   private static fct a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return fct.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
+      }
+
+      return null;
    }
 
-   public abstract xe a();
-
-   public boolean d() {
-      return this.c;
-   }
-
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   public static record a(String a, alh b) {
    }
 }

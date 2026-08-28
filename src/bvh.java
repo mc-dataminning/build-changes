@@ -1,38 +1,35 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public interface bvh {
-   bvg a = ($$0, $$1, $$2) -> true;
-   bvg b = ($$0, $$1, $$2) -> {
-      if ($$2 != null && $$0.B_().a($$1)) {
-         jf $$3 = $$1.d();
-         return $$0.b_($$1).a(axb.a) && !$$0.a_($$3).d($$0, $$3);
-      } else {
-         return false;
-      }
-   };
-   bvg c = ($$0, $$1, $$2) -> $$2 != null && $$0.B_().a($$1) ? $$0.b_($$1).a(axb.b) : false;
-   bvg d = new bvg() {
-      @Override
-      public boolean isSpawnPositionOk(dem $$0, jf $$1, @Nullable bty<?> $$2) {
-         if ($$2 != null && $$0.B_().a($$1)) {
-            jf $$3 = $$1.d();
-            jf $$4 = $$1.e();
-            dus $$5 = $$0.a_($$4);
-            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
-         } else {
-            return false;
-         }
-      }
+public enum bvh {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8),
+   j(9),
+   k(10),
+   l(11),
+   m(12),
+   n(13),
+   o(14),
+   p(15),
+   q(16),
+   r(17);
 
-      private boolean a(dem $$0, jf $$1, bty<?> $$2) {
-         dus $$3 = $$0.a_($$1);
-         return deu.a($$0, $$1, $$3, $$3.y(), $$2);
-      }
+   public static final IntFunction<bvh> s = aya.a(bvh::a, values(), aya.a.a);
+   public static final zf<ByteBuf, bvh> t = zd.a(s, bvh::a);
+   private final int u;
 
-      @Override
-      public jf a(dem $$0, jf $$1) {
-         jf $$2 = $$1.e();
-         return $$0.a_($$2).a(eri.a) ? $$2 : $$1;
-      }
-   };
+   private bvh(final int $$0) {
+      this.u = $$0;
+   }
+
+   public int a() {
+      return this.u;
+   }
 }

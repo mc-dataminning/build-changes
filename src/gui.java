@@ -1,4 +1,8 @@
-public class gui extends guh {
-   public eyw[] a = new eyw[0];
-   public boolean i;
+public class gui extends gva {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

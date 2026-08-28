@@ -1,19 +1,142 @@
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
-public abstract class ps extends qd<dbn> {
-   public ps(me $$0, CompletableFuture<jq.a> $$1) {
-      super($$0, lw.aN, $$1);
+public class ps extends qg<dfw> {
+   public ps(mg $$0, CompletableFuture<jr.a> $$1) {
+      super($$0, ly.aG, $$1);
    }
 
-   protected void a(jq.a $$0, ald<dbn>... $$1) {
-      this.b(awy.a).a($$1);
-      Set<ald<dbn>> $$2 = Set.of($$1);
-      List<String> $$3 = $$0.d(lw.aN).c().filter($$1x -> !$$2.contains($$1x.e().get())).map(jo::g).collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         throw new IllegalStateException("Not all enchantments were registered for tooltip ordering. Missing: " + String.join(", ", $$3));
-      }
+   @Override
+   protected void a(jr.a $$0) {
+      this.b(awy.a).a(dgd.X).a(dgd.V).a(dgd.T).a(dgd.R);
+      this.b(awy.b).b(awy.a).a(dgd.W).a(dgd.S).a(dgd.U).a(dgd.Q).a(dgd.P);
+      this.b(awy.c).a(dgd.M).a(dgd.N);
+      this.b(awy.d).a(dgd.K).a(dgd.L);
+      this.b(awy.e).a(dgd.D).a(dgd.H).a(dgd.I).a(dgd.J).a(dgd.G).a(dgd.E);
+      this.b(awy.f).a(dgd.A).a(dgd.B).a(dgd.C);
+      this.b(awy.g).a(dgd.t).a(dgd.v).a(dgd.u);
+      this.b(awy.h).a(dgd.p).a(dgd.q).a(dgd.n).a(dgd.o);
+      this.b(awy.i).a(dgd.z).a(dgd.x).a(dgd.y);
+      this.b(awy.j).a(dgd.i).a(dgd.j).a(dgd.k).a(dgd.m).a(dgd.l).a(dgd.F);
+      this.b(awy.k).a(dgd.r).a(dgd.s).a(dgd.w);
+      qg.b<dfw> $$1 = this.b(awy.m);
+      dgk.a.a.a().forEach($$1::a);
+      qg.b<dfw> $$2 = this.b(awy.l);
+      dgk.a.b.a().forEach($$2::a);
+      this.b(awy.n).a(dgd.ah).a(dgd.ai).a(dgd.aj).a(dgd.ak).a(dgd.al);
+      this.b(awy.p).b(awy.c);
+      this.b(awy.q).a(dgd.f);
+      this.b(awy.r).a(dgd.q).a(dgd.d).a(dgd.G);
+      this.b(awy.s).a(dgd.z).a(dgd.x);
+      this.b(awy.t)
+         .b(awy.b)
+         .b(awy.d)
+         .b(awy.c)
+         .b(awy.e)
+         .b(awy.g)
+         .b(awy.h)
+         .b(awy.i)
+         .b(awy.j)
+         .a(dgd.O)
+         .a(dgd.Y)
+         .a(dgd.e)
+         .a(dgd.w)
+         .a(dgd.f)
+         .a(dgd.r)
+         .a(dgd.d)
+         .a(dgd.b)
+         .a(dgd.c)
+         .a(dgd.g)
+         .a(dgd.h)
+         .a(dgd.s)
+         .a(dgd.Z)
+         .a(dgd.aa);
+      this.b(awy.u).b(awy.f);
+      this.b(awy.Y).a(dgd.ab);
+      this.b(awy.v).b(awy.a);
+      this.b(awy.X).b(awy.b).b(awy.d);
+      this.b(awy.w).a(dgd.W).a(dgd.U).a(dgd.S).a(dgd.X).a(dgd.V).a(dgd.T);
+      this.b(awy.x).a(dgd.Q).a(dgd.P).a(dgd.R);
+      this.b(awy.y).a(dgd.f).a(dgd.b).a(dgd.r).a(dgd.d).a(dgd.p).b(awy.e).a(dgd.F);
+      this.b(awy.z).a(dgd.f);
+      this.b(awy.A).b(awy.i);
+      this.b(awy.B).b(awy.b);
+      this.b(awy.C).a(dgd.g).a(dgd.h);
+      this.b(awy.D).b(awy.f).b(awy.g).a(dgd.s).a(dgd.w).a(dgd.O).b(awy.e);
+      this.b(awy.E).b(awy.c).b(awy.d).b(awy.h).b(awy.j).a(dgd.Y).a(dgd.e).a(dgd.Z).a(dgd.aa).a(dgd.r).a(dgd.d).a(dgd.b).a(dgd.c);
+      this.b(awy.F).b(awy.c);
+      this.b(awy.G).b(awy.b);
+      this.b(awy.J).a(dgd.g);
+      this.b(awy.K).a(dgd.f);
+      this.b(awy.L).a(dgd.b).a(dgd.D);
+      this.b(awy.M).a(dgd.r);
+      this.b(awy.N).a(dgd.d);
+      this.b(awy.O).a(dgd.p);
+      this.b(awy.P).a(dgd.p).a(dgd.q).a(dgd.n).a(dgd.o).a(dgd.m).a(dgd.x);
+      this.b(awy.Q).a(dgd.l);
+      this.b(awy.o)
+         .a(dgd.b)
+         .a(dgd.c)
+         .a(dgd.d)
+         .a(dgd.e)
+         .a(dgd.f)
+         .a(dgd.i)
+         .a(dgd.j)
+         .a(dgd.k)
+         .a(dgd.l)
+         .a(dgd.m)
+         .a(dgd.n)
+         .a(dgd.o)
+         .a(dgd.p)
+         .a(dgd.q)
+         .a(dgd.r)
+         .a(dgd.s)
+         .a(dgd.t)
+         .a(dgd.u)
+         .a(dgd.v)
+         .a(dgd.w)
+         .a(dgd.x)
+         .a(dgd.y)
+         .a(dgd.z)
+         .a(dgd.A)
+         .a(dgd.B)
+         .a(dgd.C)
+         .a(dgd.D)
+         .a(dgd.F)
+         .a(dgd.G)
+         .a(dgd.H)
+         .a(dgd.I)
+         .a(dgd.J)
+         .a(dgd.Y)
+         .a(dgd.Z)
+         .a(dgd.aa);
+      this.b(awy.H).b(awy.l);
+      qg.b<dfw> $$3 = this.b(awy.I);
+      dgk.a.b.a().filter(Predicate.not(dgd.ab::equals)).forEach($$3::a);
+      this.b(awy.R).b(awy.m);
+      this.b(awy.S).a(dgd.af);
+      this.b(awy.T).a(dgd.ae).a(dgd.ac).a(dgd.af).a(dgd.ad);
+      this.b(awy.U).a(dgd.ab);
+      this.b(awy.V).b(awy.m);
+      this.b(awy.W).a(dgd.ai).a(dgd.aj);
+      this.b(awy.ac).a(dgd.P);
+      this.b(awy.Z).b(awy.b).b(awy.d);
+      this.b(awy.aa).a(dgd.g).a(dgd.h);
+      this.b(awy.ab).b(awy.b).b(awy.d).a(dgd.g).a(dgd.h);
+      this.b(awy.af).a(dgd.Y);
+      this.b(awy.ag).a(dgd.Y);
+      this.b(awy.ah).a(dgd.a);
+      this.b(awy.ai).a(dgd.d).a(dgd.e).a(dgd.H).a(dgd.I).a(dgd.G).a(dgd.W).a(dgd.X).a(dgd.F).a(dgd.ab).a(dgd.L).a(dgd.q).a(dgd.N).b(awy.n);
+      this.b(awy.aj).a(dgd.f).a(dgd.P).b(awy.i).b(awy.k).b(awy.m).b(awy.f).a(dgd.h);
+      this.b(awy.ak).a(dgd.f);
+      this.b(awy.al).a(dgd.d).a(dgd.e).a(dgd.W).a(dgd.q).a(dgd.L).a(dgd.N).a(dgd.H).a(dgd.I).a(dgd.G).a(dgd.F);
+      this.b(awy.am).b(awy.d);
+      this.b(awy.an).a(dgd.aa);
+      this.b(awy.ao).a(dgd.W).a(dgd.X);
+      this.b(awy.ap).b(awy.d);
+      this.b(awy.aq).a(dgd.g).a(dgd.h);
+      this.b(awy.ar).a(dgd.d).a(dgd.e).a(dgd.W).a(dgd.q).a(dgd.L).a(dgd.N).a(dgd.H).a(dgd.I).a(dgd.G).a(dgd.F);
+      this.b(awy.ad).a(dgd.z).a(dgd.Y).a(dgd.h).a(dgd.G).a(dgd.H).a(dgd.I).a(dgd.g).a(dgd.x);
+      this.b(awy.ae).a(dgd.A).a(dgd.ag).a(dgd.ae).a(dgd.f).a(dgd.B).a(dgd.ac).a(dgd.r).a(dgd.s).a(dgd.af).a(dgd.ad).a(dgd.w).a(dgd.C);
    }
 }

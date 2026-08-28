@@ -1,64 +1,42 @@
-public class fpu extends fpd {
-   private fko c;
+public class fpu extends fqs {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xh c = xh.c("credits_and_attribution.screen.title");
+   private static final xh d = xh.c("credits_and_attribution.button.credits");
+   private static final xh s = xh.c("credits_and_attribution.button.attribution");
+   private static final xh u = xh.c("credits_and_attribution.button.licenses");
+   private final fqs v;
+   private final fon w = new fon(this);
 
-   public fpu() {
-      super("");
+   public fpu(fqs $$0) {
+      super(c);
+      this.v = $$0;
    }
 
    @Override
    protected void aS_() {
-      super.aS_();
-      this.c = fko.a(xe.c("multiplayer.stopSleeping"), $$0 -> this.D()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
-      this.c(this.c);
+      this.w.a(c, this.p);
+      fos $$0 = this.w.c(fos.d()).a(8);
+      $$0.c().b();
+      $$0.a(fkz.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(fkz.a(s, fpp.b(this, ayf.d)).a(210).a());
+      $$0.a(fkz.a(u, fpp.b(this, ayf.e)).a(210).a());
+      this.w.b(fkz.a(xg.d, $$0x -> this.d()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
    @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      if (!this.m.J().a(this.m.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
+   protected void c() {
+      this.w.a();
+   }
+
+   private void m() {
+      this.m.a(new fqv(false, () -> this.m.a(this)));
    }
 
    @Override
    public void d() {
-      this.D();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.D();
-      }
-
-      if (!this.m.J().a(this.m.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.m.m.d().d();
-         return true;
-      }
-   }
-
-   private void D() {
-      gbn $$0 = this.m.t.cw;
-      $$0.b(new ahx(this.m.t, ahx.a.c));
-   }
-
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.m.a(null);
-      } else {
-         this.m.a(new fpd(this.b.a()));
-      }
+      this.m.a(this.v);
    }
 }

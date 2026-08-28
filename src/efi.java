@@ -1,56 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class efi extends edu<egw> {
-   public efi(Codec<egw> $$0) {
+public class efi extends eef<egr> {
+   private static final int a = 7;
+
+   efi(Codec<egr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(edw<egw> $$0) {
-      dfg $$1 = $$0.b();
-      jf $$2 = $$0.e();
-      egw $$3 = $$0.f();
-      azn $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         jf $$6 = $$2.h($$5.getAsInt());
-         kj $$7 = new kj($$3.c, $$3.c, $$3.c);
-         eky $$8 = eky.a($$6.b($$7), $$6.a($$7));
-         return jf.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dho.kJ.n(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+   public boolean a(eeh<egr> $$0) {
+      dfs $$1 = $$0.b();
+      azr $$2 = $$0.d();
+      egr $$3 = $$0.f();
+      jg $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      jg.a $$6 = new jg.a();
 
-   private static OptionalInt a(dfg $$0, jf $$1, egw $$2) {
-      Predicate<dus> $$3 = $$0x -> $$0x.a(dho.G);
-      Predicate<dus> $$4 = $$0x -> !$$0x.a(dho.G);
-      Optional<eae> $$5 = eae.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(eae::c).orElseGet(OptionalInt::empty);
-   }
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dvd $$8 = $$1.a_($$6);
 
-   private boolean b(dfg $$0, jf $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
-         for (jk $$2 : jk.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+         for (egr.a $$9 : $$3.b) {
+            if (efa.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 
-   private boolean a(dek $$0, jf $$1) {
-      dus $$2 = $$0.a_($$1);
-      return $$2.a(dho.G) || $$2.l();
+   private void a(jg.a $$0, azr $$1, jg $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(azr $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

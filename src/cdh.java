@@ -1,40 +1,99 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdh extends cdk {
-   private final bvj a;
-   private bun b;
-   private int c;
+public class cdh extends cbt {
+   private final cbt a;
+   private final int b;
+   private boolean c;
 
-   public cdh(bvj $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cbk.a.d));
+   public cdh(int $$0, cbt $$1) {
+      this.b = $$0;
+      this.a = $$1;
+   }
+
+   public boolean a(cdh $$0) {
+      return this.U_() && $$0.i() < this.i();
    }
 
    @Override
    public boolean b() {
-      if (this.a.q() && !this.a.go()) {
-         bun $$0 = this.a.S_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.en();
-            int $$1 = $$0.eo();
-            return $$1 != this.c && this.a(this.b, cfd.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
+      return this.a.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public boolean U_() {
+      return this.a.U_();
    }
 
    @Override
    public void d() {
-      this.e.h(this.b);
-      bun $$0 = this.a.S_();
-      if ($$0 != null) {
-         this.c = $$0.eo();
+      if (!this.c) {
+         this.c = true;
+         this.a.d();
       }
+   }
 
-      super.d();
+   @Override
+   public void e() {
+      if (this.c) {
+         this.c = false;
+         this.a.e();
+      }
+   }
+
+   @Override
+   public boolean V_() {
+      return this.a.V_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public void a(EnumSet<cbt.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<cbt.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public cbt k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cdh)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

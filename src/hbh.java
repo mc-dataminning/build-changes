@@ -1,35 +1,34 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class hbh extends hay {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cli r;
 
-public class hbh<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public hbh(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public hbh(cli $$0) {
+      super(awk.lr, awl.f, hbp.t());
+      this.r = $$0;
+      this.k = hbp.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   @Override
+   public boolean s() {
+      return !this.r.bc();
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
-         }
+   @Override
+   public void q() {
+      if (!this.r.dS() && this.r.m() == null) {
+         this.f = (double)((float)this.r.dC());
+         this.g = (double)((float)this.r.dE());
+         this.h = (double)((float)this.r.dI());
+         float $$0 = this.r.L(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
-
-      return (T)this.endOfData();
    }
 }

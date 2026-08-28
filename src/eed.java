@@ -1,31 +1,33 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eed implements efy {
-   public static final Codec<eed> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dus.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dus.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dus.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dus.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               ebv.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eed::new)
-   );
-   public final dus b;
-   public final dus c;
-   public final dus d;
-   public final dus e;
-   public final ebv f;
-   public final boolean g;
+public class eed extends eef<egq> {
+   public eed(Codec<egq> $$0) {
+      super($$0);
+   }
 
-   public eed(dus $$0, dus $$1, dus $$2, dus $$3, ebv $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   public boolean a(eeh<egq> $$0) {
+      a($$0.b(), $$0.e(), false);
+      return true;
+   }
+
+   public static void a(dfl $$0, jg $$1, boolean $$2) {
+      jg.a $$3 = $$1.k();
+
+      for (int $$4 = -2; $$4 <= 2; $$4++) {
+         for (int $$5 = -2; $$5 <= 2; $$5++) {
+            for (int $$6 = -1; $$6 < 3; $$6++) {
+               jg $$7 = $$3.g($$1).e($$5, $$6, $$4);
+               dhy $$8 = $$6 == -1 ? dia.co : dia.a;
+               if (!$$0.a_($$7).a($$8)) {
+                  if ($$2) {
+                     $$0.a($$7, true, null);
+                  }
+
+                  $$0.a($$7, $$8.m(), 3);
+               }
+            }
+         }
+      }
    }
 }

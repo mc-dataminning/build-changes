@@ -1,107 +1,46 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class foz extends fqh {
-   private static final xe a = xe.c("accessibility.onboarding.screen.title");
-   private static final xe b = xe.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final flf s;
-   private final fit u;
-   private final boolean v;
-   private boolean w;
-   private float x;
-   private final Runnable y;
-   @Nullable
-   private fkz z;
-   private final foc A = new foc(this, this.m(), 33);
+public class foz<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final foz<?> a = new foz<>(bao.a, ($$0, $$1) -> {
+   });
 
-   public foz(fit $$0, Runnable $$1) {
-      super(a);
-      this.u = $$0;
-      this.y = $$1;
-      this.s = new flf(true);
-      this.v = fip.Q().aZ().a();
+   private foz(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static foz<?> a(String $$0) {
+      return new foz<>($$0, Consumer::accept);
+   }
+
+   public static foz<?> a(xh $$0) {
+      return new foz<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
+   }
+
+   public static foz<?> a(List<xh> $$0) {
+      return new foz<>($$0, ($$1, $$2) -> $$0.stream().map(xh::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
    }
 
    @Override
-   public void aS_() {
-      fog $$0 = this.A.c(fog.d());
-      $$0.c().b().a(4);
-      this.z = $$0.a(new fkz(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      if (this.u.au().a(this.u) instanceof fkv $$1) {
-         this.q = $$1;
-         this.q.j = this.v;
-         $$0.a(this.q);
-      }
-
-      $$0.a(fks.b(150, $$0x -> this.a(new ftd(this, this.m.n)), false));
-      $$0.a(fks.a(150, $$0x -> this.a(new ftg(this, this.m.n, this.m.ah())), false));
-      this.A.b(fko.a(xd.j, $$0x -> this.d()).a());
-      this.A.a(this::c);
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.b(this.n);
-      }
-
-      this.A.a();
-   }
-
-   @Override
-   protected void aH_() {
-      if (this.v && this.q != null) {
-         this.b(this.q);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         super.aH_();
+         return !($$0 instanceof foz<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
       }
    }
 
-   private int m() {
-      return 90;
-   }
-
    @Override
-   public void d() {
-      this.a(true, this.y);
-   }
-
-   private void a(fqh $$0) {
-      this.a(false, () -> this.m.a($$0));
-   }
-
-   private void a(boolean $$0, Runnable $$1) {
-      if ($$0) {
-         this.u.aw();
-      }
-
-      Narrator.getNarrator().clear();
-      $$1.run();
-   }
-
-   @Override
-   public void a(fkb $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.D();
-      this.s.a($$0, this.n, 1.0F);
-   }
-
-   @Override
-   protected void a(fkb $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
-   }
-
-   private void D() {
-      if (!this.w && this.v) {
-         if (this.x < 40.0F) {
-            this.x++;
-         } else if (this.m.aC()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.w = true;
-         }
-      }
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

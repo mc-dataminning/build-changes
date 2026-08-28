@@ -1,10 +1,8 @@
-public class gux extends guo {
-   public cgt.b a;
-   public float b;
-   public fym.a c;
+import javax.annotation.Nullable;
 
-   public gux() {
-      this.a = cgt.b.a;
-      this.c = fym.a.a;
-   }
+public class gux extends guc {
+   public float a;
+   @Nullable
+   public gzu b;
+   public cvx c = cvx.k;
 }

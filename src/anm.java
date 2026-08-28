@@ -1,188 +1,123 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Either;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class anm {
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xe.b("commands.function.error.argument_not_compound", $$0));
-   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xe.b("commands.function.scheduled.no_functions", $$0));
-   @VisibleForTesting
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xe.b("commands.function.instantiationFailure", $$0, $$1));
-   public static final SuggestionProvider<eu> b = ($$0, $$1) -> {
-      alt $$2 = ((eu)$$0.getSource()).l().aE();
-      ez.a($$2.e(), $$1, "#");
-      return ez.a($$2.d(), $$1);
-   };
-   static final anm.b<eu> e = new anm.b<eu>() {
-      public void a(eu $$0, ale $$1, int $$2) {
-         $$0.a(() -> xe.a("commands.function.result", xe.a($$1), $$2), true);
-      }
-   };
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xh.c("argument.pos.unloaded"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xh.b("commands.fillbiome.toobig", $$0, $$1));
 
-   public static void a(CommandDispatcher<eu> $$0) {
-      LiteralArgumentBuilder<eu> $$1 = ev.a("with");
-
-      for (apv.c $$2 : apv.c) {
-         $$2.a($$1, $$1x -> $$1x.executes(new anm.c() {
-               @Override
-               protected ug a(CommandContext<eu> $$0) throws CommandSyntaxException {
-                  return $$2.a($$0).a();
-               }
-            }).then(ev.a("path", fm.a()).executes(new anm.c() {
-               @Override
-               protected ug a(CommandContext<eu> $$0) throws CommandSyntaxException {
-                  return anm.a(fm.a($$0, "path"), $$2.a($$0));
-               }
-            })));
-      }
-
+   public static void a(CommandDispatcher<ev> $$0, er $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("function").requires($$0x -> $$0x.c(2)))
-            .then(((RequiredArgumentBuilder)((RequiredArgumentBuilder)ev.a("name", hc.a()).suggests(b).executes(new anm.c() {
-               @Nullable
-               @Override
-               protected ug a(CommandContext<eu> $$0) {
-                  return null;
-               }
-            })).then(ev.a("arguments", fe.a()).executes(new anm.c() {
-               @Override
-               protected ug a(CommandContext<eu> $$0) {
-                  return fe.a($$0, "arguments");
-               }
-            }))).then($$1))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ew.a("fillbiome").requires($$0x -> $$0x.c(2)))
+            .then(
+               ew.a("from", gr.a())
+                  .then(
+                     ew.a("to", gr.a())
+                        .then(
+                           ((RequiredArgumentBuilder)ew.a("biome", fu.a($$1, ly.aG))
+                                 .executes($$0x -> a((ev)$$0x.getSource(), gr.a($$0x, "from"), gr.a($$0x, "to"), fu.a($$0x, "biome", ly.aG), $$0xx -> true)))
+                              .then(
+                                 ew.a("replace")
+                                    .then(
+                                       ew.a("filter", fy.a($$1, ly.aG))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ev)$$0x.getSource(),
+                                                   gr.a($$0x, "from"),
+                                                   gr.a($$0x, "to"),
+                                                   fu.a($$0x, "biome", ly.aG),
+                                                   fy.a($$0x, "filter", ly.aG)::test
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   static ug a(fm.g $$0, apu $$1) throws CommandSyntaxException {
-      vd $$2 = apv.a($$0, $$1);
-      if ($$2 instanceof ug) {
-         return (ug)$$2;
-      } else {
-         throw c.create($$2.c().a());
-      }
+   private static int a(int $$0) {
+      return ka.c(ka.a($$0));
    }
 
-   public static eu a(eu $$0) {
-      return $$0.a().b(2);
+   private static jg a(jg $$0) {
+      return new jg(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static <T extends ew<T>> void a(Collection<ii<T>> $$0, @Nullable ug $$1, T $$2, T $$3, hv<T> $$4, anm.b<T> $$5, hp $$6) throws CommandSyntaxException {
-      if ($$6.c()) {
-         a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         b($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   private static <T extends ew<T>> void a(@Nullable ug $$0, hv<T> $$1, CommandDispatcher<T> $$2, T $$3, ii<T> $$4, ale $$5, er $$6, boolean $$7) throws CommandSyntaxException {
-      try {
-         ik<T> $$8 = $$4.a($$0, $$2);
-         $$1.a(new ib<>($$8, $$6, $$7).bind($$3));
-      } catch (ex var9) {
-         throw a.create($$5, var9.a());
-      }
-   }
-
-   private static <T extends ew<T>> er a(T $$0, anm.b<T> $$1, ale $$2, er $$3) {
-      return $$0.y() ? $$3 : ($$4, $$5) -> {
-         $$1.a($$0, $$2, $$5);
-         $$3.onResult($$4, $$5);
+   private static dfz a(MutableInt $$0, dwz $$1, elj $$2, jp<dfw> $$3, Predicate<jp<dfw>> $$4) {
+      return ($$5, $$6, $$7, $$8) -> {
+         int $$9 = ka.c($$5);
+         int $$10 = ka.c($$6);
+         int $$11 = ka.c($$7);
+         jp<dfw> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
+            $$0.increment();
+            return $$3;
+         } else {
+            return $$12;
+         }
       };
    }
 
-   private static <T extends ew<T>> void a(Collection<ii<T>> $$0, @Nullable ug $$1, T $$2, T $$3, hv<T> $$4, anm.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      er $$8 = er.chain($$2.p(), $$4.b().d());
-
-      for (ii<T> $$9 : $$0) {
-         ale $$10 = $$9.a();
-         er $$11 = a($$2, $$5, $$10, $$8);
-         a($$1, $$4, $$6, $$7, $$9, $$10, $$11, true);
-      }
-
-      $$4.a(ie.a());
+   public static Either<Integer, CommandSyntaxException> a(arm $$0, jg $$1, jg $$2, jp<dfw> $$3) {
+      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
+      });
    }
 
-   private static <T extends ew<T>> void b(Collection<ii<T>> $$0, @Nullable ug $$1, T $$2, T $$3, hv<T> $$4, anm.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      er $$8 = $$2.p();
-      if (!$$0.isEmpty()) {
-         if ($$0.size() == 1) {
-            ii<T> $$9 = $$0.iterator().next();
-            ale $$10 = $$9.a();
-            er $$11 = a($$2, $$5, $$10, $$8);
-            a($$1, $$4, $$6, $$7, $$9, $$10, $$11, false);
-         } else if ($$8 == er.a) {
-            for (ii<T> $$12 : $$0) {
-               ale $$13 = $$12.a();
-               er $$14 = a($$2, $$5, $$13, $$8);
-               a($$1, $$4, $$6, $$7, $$12, $$13, $$14, false);
-            }
-         } else {
-            class a {
-               boolean a;
-               int b;
+   public static Either<Integer, CommandSyntaxException> a(arm $$0, jg $$1, jg $$2, jp<dfw> $$3, Predicate<jp<dfw>> $$4, Consumer<Supplier<xh>> $$5) {
+      jg $$6 = a($$1);
+      jg $$7 = a($$2);
+      elj $$8 = elj.a($$6, $$7);
+      int $$9 = $$8.d() * $$8.e() * $$8.f();
+      int $$10 = $$0.ac().c(der.z);
+      if ($$9 > $$10) {
+         return Either.right(b.create($$10, $$9));
+      } else {
+         List<dwz> $$11 = new ArrayList<>();
 
-               public void a(int $$0) {
-                  this.a = true;
-                  this.b += $$0;
+         for (int $$12 = ki.a($$8.j()); $$12 <= ki.a($$8.m()); $$12++) {
+            for (int $$13 = ki.a($$8.h()); $$13 <= ki.a($$8.k()); $$13++) {
+               dwz $$14 = $$0.a($$13, $$12, dya.n, false);
+               if ($$14 == null) {
+                  return Either.right(a.create());
                }
+
+               $$11.add($$14);
             }
-
-            a $$15 = new a();
-            er $$16 = ($$1x, $$2x) -> $$15.a($$2x);
-
-            for (ii<T> $$17 : $$0) {
-               ale $$18 = $$17.a();
-               er $$19 = a($$2, $$5, $$18, $$16);
-               a($$1, $$4, $$6, $$7, $$17, $$18, $$19, false);
-            }
-
-            $$4.a(($$2x, $$3x) -> {
-               if ($$15.a) {
-                  $$8.onSuccess($$15.b);
-               }
-            });
          }
+
+         MutableInt $$15 = new MutableInt(0);
+
+         for (dwz $$16 : $$11) {
+            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.l().i().b());
+            $$16.a(true);
+         }
+
+         $$0.l().a.a($$11);
+         $$5.accept(() -> xh.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
+         return Either.left($$15.getValue());
       }
    }
 
-   public interface b<T> {
-      void a(T var1, ale var2, int var3);
-   }
-
-   abstract static class c extends hr.b<eu> implements hr.a<eu> {
-      @Nullable
-      protected abstract ug a(CommandContext<eu> var1) throws CommandSyntaxException;
-
-      public void a(eu $$0, ContextChain<eu> $$1, hp $$2, hv<eu> $$3) throws CommandSyntaxException {
-         CommandContext<eu> $$4 = $$1.getTopContext().copyFor($$0);
-         Pair<ale, Collection<ii<eu>>> $$5 = hc.c($$4, "name");
-         Collection<ii<eu>> $$6 = (Collection<ii<eu>>)$$5.getSecond();
-         if ($$6.isEmpty()) {
-            throw anm.d.create(xe.a((ale)$$5.getFirst()));
-         } else {
-            ug $$7 = this.a($$4);
-            eu $$8 = anm.a($$0);
-            if ($$6.size() == 1) {
-               $$0.a(() -> xe.a("commands.function.scheduled.single", xe.a($$6.iterator().next().a())), true);
-            } else {
-               $$0.a(() -> xe.a("commands.function.scheduled.multiple", xh.b($$6.stream().map(ii::a).toList(), xe::a)), true);
-            }
-
-            anm.a($$6, $$7, $$0, $$8, $$3, anm.e, $$2);
-         }
+   private static int a(ev $$0, jg $$1, jg $$2, jp.c<dfw> $$3, Predicate<jp<dfw>> $$4) throws CommandSyntaxException {
+      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
+      Optional<CommandSyntaxException> $$6 = $$5.right();
+      if ($$6.isPresent()) {
+         throw (CommandSyntaxException)$$6.get();
+      } else {
+         return (Integer)$$5.left().get();
       }
    }
 }

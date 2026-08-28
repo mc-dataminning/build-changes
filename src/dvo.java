@@ -1,28 +1,16 @@
-public enum dvo implements bab {
-   a(jk.a),
-   b(jk.b);
+public enum dvo implements baf {
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
-   private final jk c;
+   private final String d;
 
-   private dvo(final jk $$0) {
-      this.c = $$0;
-   }
-
-   public jk a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+   private dvo(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dvo b() {
-      return this == a ? b : a;
+      return this.d;
    }
 }

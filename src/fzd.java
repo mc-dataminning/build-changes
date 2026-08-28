@@ -1,24 +1,21 @@
-public class fzd extends fyy<gvi> {
-   public fzd(gaq $$0) {
+public class fzd extends fym<gvn> {
+   public fzd(gbb $$0) {
       super($$0);
    }
 
-   public static gaw a() {
-      gay $$0 = new gay();
-      gba $$1 = $$0.a();
-      $$1.a("head", gav.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new gau(0.6F)), gas.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", gav.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new gau(1.75F)), gas.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gav $$2 = gav.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new gau(0.5F));
-      $$1.a("right_hind_leg", $$2, gas.a(-3.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, gas.a(3.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$2, gas.a(-3.0F, 12.0F, -5.0F));
-      $$1.a("left_front_leg", $$2, gas.a(3.0F, 12.0F, -5.0F));
-      return gaw.a($$0, 64, 32);
-   }
-
-   public void a(gvi $$0) {
-      super.a($$0);
-      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ab;
-      this.b.e = $$0.b;
+   public static gbh a() {
+      gbj $$0 = fym.a(gbf.a, 0.0F);
+      gbl $$1 = $$0.a();
+      gbl $$2 = $$1.a("head");
+      $$2.a("hat");
+      $$1.a("body");
+      $$1.a("left_arm");
+      $$1.a("right_arm");
+      $$1.a("left_leg");
+      $$1.a("right_leg");
+      gbg $$3 = gbg.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new gbf(1.0F));
+      $$2.a("left_ear", $$3, gbd.a(-6.0F, -6.0F, 0.0F));
+      $$2.a("right_ear", $$3, gbd.a(6.0F, -6.0F, 0.0F));
+      return gbh.a($$0, 64, 64);
    }
 }

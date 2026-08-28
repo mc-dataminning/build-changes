@@ -1,21 +1,26 @@
-public record aaz(jf c) implements aao {
-   public static final zc<wb, aaz> a = aao.a(aaz::a, aaz::new);
-   public static final aao.b<aaz> b = aao.a("debug/poi_removed");
+public record aaz(long c, jg d) implements aar {
+   public static final zf<we, aaz> a = aar.a(aaz::a, aaz::new);
+   public static final aar.b<aaz> b = aar.a("debug/neighbors_update");
 
-   private aaz(wb $$0) {
-      this($$0.e());
+   private aaz(we $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(wb $$0) {
+   private void a(we $$0) {
       $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aao.b<aaz> a() {
+   public aar.b<aaz> a() {
       return b;
    }
 
-   public jf b() {
+   public long b() {
       return this.c;
+   }
+
+   public jg c() {
+      return this.d;
    }
 }

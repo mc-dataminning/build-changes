@@ -1,18 +1,28 @@
-public class ewh {
-   public static final ewe<btr> a = a("this_entity");
-   public static final ewe<cnx> b = a("last_damage_player");
-   public static final ewe<bsj> c = a("damage_source");
-   public static final ewe<btr> d = a("attacking_entity");
-   public static final ewe<btr> e = a("direct_attacking_entity");
-   public static final ewe<eyw> f = a("origin");
-   public static final ewe<dus> g = a("block_state");
-   public static final ewe<drv> h = a("block_entity");
-   public static final ewe<cvs> i = a("tool");
-   public static final ewe<Float> j = a("explosion_radius");
-   public static final ewe<Integer> k = a("enchantment_level");
-   public static final ewe<Boolean> l = a("enchantment_active");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private static <T> ewe<T> a(String $$0) {
-      return new ewe<>(ale.b($$0));
+public class ewh extends evj {
+   public static final MapCodec<ewh> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cxu.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, ewh::new));
+   private final jp<cxu> b;
+
+   private ewh(List<exh> $$0, jp<cxu> $$1) {
+      super($$0);
+      this.b = $$1;
+   }
+
+   @Override
+   public evl<ewh> b() {
+      return evm.F;
+   }
+
+   @Override
+   public cvx a(cvx $$0, etw $$1) {
+      $$0.a(kt.P, cxw.a, this.b, cxw::b);
+      return $$0;
+   }
+
+   public static evj.a<?> a(jp<cxu> $$0) {
+      return a($$1 -> new ewh($$1, $$0));
    }
 }

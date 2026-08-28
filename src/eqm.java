@@ -1,154 +1,61 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import com.google.common.annotations.VisibleForTesting;
 
-public final class eqm extends eqk<eqn.a, eqn> {
-   private static final long g = eqk.a.a(15);
-   private static final long h = eqk.a.a(15, jk.b);
-   private static final long i = eqk.a.a(15, false, jk.b);
-   private final jf.a j = new jf.a();
-   private final eqd k;
+public final class eqm extends eqv<eqn.a, eqn> {
+   private final jg.a g = new jg.a();
 
-   public eqm(dxb $$0) {
+   public eqm(dxm $$0) {
       this($$0, new eqn($$0));
    }
 
    @VisibleForTesting
-   protected eqm(dxb $$0, eqn $$1) {
+   public eqm(dxm $$0, eqn $$1) {
       super($$0, $$1);
-      this.k = new eqd($$0.q());
-   }
-
-   private static boolean a(int $$0) {
-      return $$0 == 15;
-   }
-
-   private int a(int $$0, int $$1, int $$2) {
-      eqd $$3 = this.b(kh.a($$0), kh.a($$1));
-      return $$3 == null ? $$2 : $$3.a(kh.b($$0), kh.b($$1));
-   }
-
-   @Nullable
-   private eqd b(int $$0, int $$1) {
-      dxa $$2 = this.e.c($$0, $$1);
-      return $$2 != null ? $$2.A() : null;
    }
 
    @Override
    protected void a(long $$0) {
-      int $$1 = jf.a($$0);
-      int $$2 = jf.b($$0);
-      int $$3 = jf.c($$0);
-      long $$4 = kh.e($$0);
-      int $$5 = this.f.j($$4) ? this.a($$1, $$3, Integer.MAX_VALUE) : Integer.MAX_VALUE;
-      if ($$5 != Integer.MAX_VALUE) {
-         this.b($$1, $$3, $$5);
-      }
-
-      if (this.f.b($$4)) {
-         boolean $$6 = $$2 >= $$5;
-         if ($$6) {
-            this.b($$0, h);
-            this.c($$0, i);
+      long $$1 = ki.e($$0);
+      if (this.f.b($$1)) {
+         dvd $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, eqv.a.a($$4));
          } else {
-            int $$7 = this.f.e($$0);
-            if ($$7 > 0) {
-               this.f.a($$0, 0);
-               this.b($$0, eqk.a.a($$7));
-            } else {
-               this.b($$0, c);
-            }
+            this.b($$0, c);
          }
-      }
-   }
 
-   private void b(int $$0, int $$1, int $$2) {
-      int $$3 = kh.c(this.f.c());
-      this.a($$0, $$1, $$2, $$3);
-      this.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0, int $$1, int $$2, int $$3) {
-      if ($$2 > $$3) {
-         int $$4 = kh.a($$0);
-         int $$5 = kh.a($$1);
-         int $$6 = $$2 - 1;
-
-         for (int $$7 = kh.a($$6); this.f.a($$7); $$7--) {
-            if (this.f.b(kh.b($$4, $$7, $$5))) {
-               int $$8 = kh.c($$7);
-               int $$9 = $$8 + 15;
-
-               for (int $$10 = Math.min($$9, $$6); $$10 >= $$8; $$10--) {
-                  long $$11 = jf.a($$0, $$10, $$1);
-                  if (!a(this.f.e($$11))) {
-                     return;
-                  }
-
-                  this.f.a($$11, 0);
-                  this.b($$11, $$10 == $$2 - 1 ? g : h);
-               }
-            }
-         }
-      }
-   }
-
-   private void b(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = kh.a($$0);
-      int $$5 = kh.a($$1);
-      int $$6 = Math.max(
-         Math.max(this.a($$0 - 1, $$1, Integer.MIN_VALUE), this.a($$0 + 1, $$1, Integer.MIN_VALUE)),
-         Math.max(this.a($$0, $$1 - 1, Integer.MIN_VALUE), this.a($$0, $$1 + 1, Integer.MIN_VALUE))
-      );
-      int $$7 = Math.max($$2, $$3);
-
-      for (long $$8 = kh.b($$4, kh.a($$7), $$5); !this.f.m($$8); $$8 = kh.a($$8, jk.b)) {
-         if (this.f.b($$8)) {
-            int $$9 = kh.c(kh.c($$8));
-            int $$10 = $$9 + 15;
-
-            for (int $$11 = Math.max($$9, $$7); $$11 <= $$10; $$11++) {
-               long $$12 = jf.a($$0, $$11, $$1);
-               if (a(this.f.e($$12))) {
-                  return;
-               }
-
-               this.f.a($$12, 15);
-               if ($$11 < $$6 || $$11 == $$2) {
-                  this.c($$12, i);
-               }
-            }
+         if ($$3 > 0) {
+            this.c($$0, eqv.a.a($$3, a($$2)));
          }
       }
    }
 
    @Override
    protected void a(long $$0, long $$1, int $$2) {
-      dus $$3 = null;
-      int $$4 = this.d($$0);
+      dvd $$3 = null;
 
-      for (jk $$5 : d) {
-         if (eqk.a.a($$1, $$5)) {
-            long $$6 = jf.a($$0, $$5);
-            if (this.f.b(kh.e($$6))) {
-               int $$7 = this.f.e($$6);
-               int $$8 = $$2 - 1;
-               if ($$8 > $$7) {
-                  this.j.f($$6);
-                  dus $$9 = this.c(this.j);
-                  int $$10 = $$2 - this.b($$9);
-                  if ($$10 > $$7) {
+      for (jl $$4 : d) {
+         if (eqv.a.a($$1, $$4)) {
+            long $$5 = jg.a($$0, $$4);
+            if (this.f.b(ki.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dvd $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.b($$8);
+                  if ($$9 > $$6) {
                      if ($$3 == null) {
-                        $$3 = eqk.a.b($$1) ? dho.a.n() : this.c(this.j.f($$0));
+                        $$3 = eqv.a.b($$1) ? dia.a.m() : this.c(this.g.f($$0));
                      }
 
-                     if (!this.a($$3, $$9, $$5)) {
-                        this.f.a($$6, $$10);
-                        if ($$10 > 1) {
-                           this.c($$6, eqk.a.a($$10, a($$9), $$5.g()));
+                     if (!this.a($$3, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, eqv.a.a($$9, a($$8), $$4.g()));
                         }
-
-                        this.a($$6, $$5, $$10, true, $$4);
                      }
                   }
                }
@@ -159,21 +66,27 @@ public final class eqm extends eqk<eqn.a, eqn> {
 
    @Override
    protected void a(long $$0, long $$1) {
-      int $$2 = this.d($$0);
-      int $$3 = eqk.a.a($$1);
+      int $$2 = eqv.a.a($$1);
 
-      for (jk $$4 : d) {
-         if (eqk.a.a($$1, $$4)) {
-            long $$5 = jf.a($$0, $$4);
-            if (this.f.b(kh.e($$5))) {
-               int $$6 = this.f.e($$5);
-               if ($$6 != 0) {
-                  if ($$6 <= $$3 - 1) {
-                     this.f.a($$5, 0);
-                     this.b($$5, eqk.a.a($$6, $$4.g()));
-                     this.a($$5, $$4, $$6, false, $$2);
+      for (jl $$3 : d) {
+         if (eqv.a.a($$1, $$3)) {
+            long $$4 = jg.a($$0, $$3);
+            if (this.f.b(ki.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dvd $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, eqv.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, eqv.a.a($$7, a($$6)));
+                     }
                   } else {
-                     this.c($$5, eqk.a.b($$6, false, $$4.g()));
+                     this.c($$4, eqv.a.b($$5, false, $$3.g()));
                   }
                }
             }
@@ -181,151 +94,20 @@ public final class eqm extends eqk<eqn.a, eqn> {
       }
    }
 
-   private int d(long $$0) {
-      int $$1 = jf.b($$0);
-      int $$2 = kh.b($$1);
-      if ($$2 != 0) {
-         return 0;
-      } else {
-         int $$3 = jf.a($$0);
-         int $$4 = jf.c($$0);
-         int $$5 = kh.b($$3);
-         int $$6 = kh.b($$4);
-         if ($$5 != 0 && $$5 != 15 && $$6 != 0 && $$6 != 15) {
-            return 0;
-         } else {
-            int $$7 = kh.a($$3);
-            int $$8 = kh.a($$1);
-            int $$9 = kh.a($$4);
-            int $$10 = 0;
-
-            while (!this.f.b(kh.b($$7, $$8 - $$10 - 1, $$9)) && this.f.a($$8 - $$10 - 1)) {
-               $$10++;
-            }
-
-            return $$10;
-         }
-      }
-   }
-
-   private void a(long $$0, jk $$1, int $$2, boolean $$3, int $$4) {
-      if ($$4 != 0) {
-         int $$5 = jf.a($$0);
-         int $$6 = jf.c($$0);
-         if (a($$1, kh.b($$5), kh.b($$6))) {
-            int $$7 = jf.b($$0);
-            int $$8 = kh.a($$5);
-            int $$9 = kh.a($$6);
-            int $$10 = kh.a($$7) - 1;
-            int $$11 = $$10 - $$4 + 1;
-
-            while ($$10 >= $$11) {
-               if (!this.f.b(kh.b($$8, $$10, $$9))) {
-                  $$10--;
-               } else {
-                  int $$12 = kh.c($$10);
-
-                  for (int $$13 = 15; $$13 >= 0; $$13--) {
-                     long $$14 = jf.a($$5, $$12 + $$13, $$6);
-                     if ($$3) {
-                        this.f.a($$14, $$2);
-                        if ($$2 > 1) {
-                           this.c($$14, eqk.a.a($$2, true, $$1.g()));
-                        }
-                     } else {
-                        this.f.a($$14, 0);
-                        this.b($$14, eqk.a.a($$2, $$1.g()));
-                     }
-                  }
-
-                  $$10--;
-               }
-            }
-         }
-      }
-   }
-
-   private static boolean a(jk $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case c -> $$2 == 15;
-         case d -> $$2 == 0;
-         case e -> $$1 == 15;
-         case f -> $$1 == 0;
-         default -> false;
-      };
+   private int a(long $$0, dvd $$1) {
+      int $$2 = $$1.k();
+      return $$2 > 0 && this.f.j(ki.e($$0)) ? $$2 : 0;
    }
 
    @Override
-   public void a(ddp $$0, boolean $$1) {
-      super.a($$0, $$1);
-      if ($$1) {
-         eqd $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-         int $$3 = $$2.a() - 1;
-         int $$4 = kh.a($$3) + 1;
-         long $$5 = kh.b($$0.e, $$0.f);
-         int $$6 = this.f.n($$5);
-         int $$7 = Math.max(this.f.c(), $$4);
-
-         for (int $$8 = $$6 - 1; $$8 >= $$7; $$8--) {
-            dwt $$9 = this.f.c(kh.b($$0.e, $$8, $$0.f));
-            if ($$9 != null && $$9.d()) {
-               $$9.a(15);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void b(ddp $$0) {
-      long $$1 = kh.b($$0.e, $$0.f);
-      this.f.b($$1, true);
-      eqd $$2 = Objects.requireNonNullElse(this.b($$0.e, $$0.f), this.k);
-      eqd $$3 = Objects.requireNonNullElse(this.b($$0.e, $$0.f - 1), this.k);
-      eqd $$4 = Objects.requireNonNullElse(this.b($$0.e, $$0.f + 1), this.k);
-      eqd $$5 = Objects.requireNonNullElse(this.b($$0.e - 1, $$0.f), this.k);
-      eqd $$6 = Objects.requireNonNullElse(this.b($$0.e + 1, $$0.f), this.k);
-      int $$7 = this.f.n($$1);
-      int $$8 = this.f.c();
-      int $$9 = kh.c($$0.e);
-      int $$10 = kh.c($$0.f);
-
-      for (int $$11 = $$7 - 1; $$11 >= $$8; $$11--) {
-         long $$12 = kh.b($$0.e, $$11, $$0.f);
-         dwt $$13 = this.f.c($$12);
-         if ($$13 != null) {
-            int $$14 = kh.c($$11);
-            int $$15 = $$14 + 15;
-            boolean $$16 = false;
-
-            for (int $$17 = 0; $$17 < 16; $$17++) {
-               for (int $$18 = 0; $$18 < 16; $$18++) {
-                  int $$19 = $$2.a($$18, $$17);
-                  if ($$19 <= $$15) {
-                     int $$20 = $$17 == 0 ? $$3.a($$18, 15) : $$2.a($$18, $$17 - 1);
-                     int $$21 = $$17 == 15 ? $$4.a($$18, 0) : $$2.a($$18, $$17 + 1);
-                     int $$22 = $$18 == 0 ? $$5.a(15, $$17) : $$2.a($$18 - 1, $$17);
-                     int $$23 = $$18 == 15 ? $$6.a(0, $$17) : $$2.a($$18 + 1, $$17);
-                     int $$24 = Math.max(Math.max($$20, $$21), Math.max($$22, $$23));
-
-                     for (int $$25 = $$15; $$25 >= Math.max($$14, $$19); $$25--) {
-                        $$13.a($$18, kh.b($$25), $$17, 15);
-                        if ($$25 == $$19 || $$25 < $$24) {
-                           long $$26 = jf.a($$9 + $$18, $$25, $$10 + $$17);
-                           this.c($$26, eqk.a.a($$25 == $$19, $$25 < $$20, $$25 < $$21, $$25 < $$22, $$25 < $$23));
-                        }
-                     }
-
-                     if ($$19 < $$14) {
-                        $$16 = true;
-                     }
-                  }
-               }
-            }
-
-            if (!$$16) {
-               break;
-            }
-         }
+   public void b(deb $$0) {
+      this.a($$0, true);
+      dxl $$1 = this.e.c($$0.e, $$0.f);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.k();
+            this.c($$0x.a(), eqv.a.a($$2, a($$1x)));
+         });
       }
    }
 }

@@ -1,55 +1,16 @@
-import java.security.PublicKey;
-
-public class ajc implements zl<aiz> {
-   public static final zc<wb, ajc> a = zl.a(ajc::a, ajc::new);
-   private final String b;
-   private final byte[] c;
-   private final byte[] d;
-   private final boolean e;
-
-   public ajc(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   private ajc(wb $$0) {
-      this.b = $$0.d(20);
-      this.c = $$0.b();
-      this.d = $$0.b();
-      this.e = $$0.readBoolean();
-   }
-
-   private void a(wb $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-   }
-
+public interface ajc extends abx {
    @Override
-   public zn<ajc> a() {
-      return ajf.c;
+   default wc b() {
+      return wc.d;
    }
 
-   public void a(aiz $$0) {
-      $$0.a(this);
-   }
+   void a(ajf var1);
 
-   public String b() {
-      return this.b;
-   }
+   void a(aje var1);
 
-   public PublicKey e() throws aye {
-      return ayd.a(this.c);
-   }
+   void a(ajh var1);
 
-   public byte[] f() {
-      return this.d;
-   }
+   void a(ajg var1);
 
-   public boolean g() {
-      return this.e;
-   }
+   void a(ajd var1);
 }

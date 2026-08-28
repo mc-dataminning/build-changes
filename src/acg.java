@@ -1,45 +1,42 @@
-public class acg implements zl<aca> {
-   public static final zc<wb, acg> a = zl.a(acg::a, acg::new);
-   private final int b;
-   private final jf c;
-   private final int d;
+public class acg implements zo<acd> {
+   public static final zf<we, acg> a = zo.a(acg::a, acg::new);
+   public static final int b = 0;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   public static final int f = 5;
+   private final int g;
+   private final int h;
 
-   public acg(int $$0, jf $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public acg(btz $$0, int $$1) {
+      this.g = $$0.ar();
+      this.h = $$1;
    }
 
-   private acg(wb $$0) {
-      this.b = $$0.l();
-      this.c = $$0.e();
-      this.d = $$0.readUnsignedByte();
+   private acg(we $$0) {
+      this.g = $$0.l();
+      this.h = $$0.readUnsignedByte();
    }
 
-   private void a(wb $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.l(this.d);
+   private void a(we $$0) {
+      $$0.c(this.g);
+      $$0.l(this.h);
    }
 
    @Override
-   public zn<acg> a() {
-      return agp.h;
+   public zq<acg> a() {
+      return ags.e;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.b;
+      return this.g;
    }
 
-   public jf e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
+   public int e() {
+      return this.h;
    }
 }

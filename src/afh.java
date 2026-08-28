@@ -1,39 +1,37 @@
-import javax.annotation.Nullable;
+public class afh implements zo<acd> {
+   public static final zf<we, afh> a = zo.a(afh::a, afh::new);
+   private final jg b;
+   private final float c;
 
-public class afh implements zl<aca> {
-   public static final zc<wb, afh> a = zl.a(afh::a, afh::new);
-   private final int b;
-   private final int c;
-
-   public afh(btr $$0, @Nullable btr $$1) {
-      this.b = $$0.ap();
-      this.c = $$1 != null ? $$1.ap() : 0;
+   public afh(jg $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private afh(wb $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   private afh(we $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private void a(wb $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
+   private void a(we $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zn<afh> a() {
-      return agp.aD;
+   public zq<afh> a() {
+      return ags.aA;
    }
 
-   public void a(aca $$0) {
+   public void a(acd $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public jg b() {
       return this.b;
    }
 
-   public int e() {
+   public float e() {
       return this.c;
    }
 }

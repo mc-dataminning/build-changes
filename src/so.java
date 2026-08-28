@@ -1,8 +1,95 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface so {
+public class so {
+   public static final alg<ekv> a = sn.a("crimson_fungi");
+   public static final alg<ekv> b = sn.a("warped_fungi");
+   public static final alg<ekv> c = sn.a("oak_checked");
+   public static final alg<ekv> d = sn.a("dark_oak_checked");
+   public static final alg<ekv> e = sn.a("birch_checked");
+   public static final alg<ekv> f = sn.a("acacia_checked");
+   public static final alg<ekv> g = sn.a("spruce_checked");
+   public static final alg<ekv> h = sn.a("mangrove_checked");
+   public static final alg<ekv> i = sn.a("cherry_checked");
+   public static final alg<ekv> j = sn.a("pine_on_snow");
+   public static final alg<ekv> k = sn.a("spruce_on_snow");
+   public static final alg<ekv> l = sn.a("pine_checked");
+   public static final alg<ekv> m = sn.a("jungle_tree");
+   public static final alg<ekv> n = sn.a("fancy_oak_checked");
+   public static final alg<ekv> o = sn.a("mega_jungle_tree_checked");
+   public static final alg<ekv> p = sn.a("mega_spruce_checked");
+   public static final alg<ekv> q = sn.a("mega_pine_checked");
+   public static final alg<ekv> r = sn.a("tall_mangrove_checked");
+   public static final alg<ekv> s = sn.a("jungle_bush");
+   public static final alg<ekv> t = sn.a("super_birch_bees_0002");
+   public static final alg<ekv> u = sn.a("super_birch_bees");
+   public static final alg<ekv> v = sn.a("oak_bees_0002");
+   public static final alg<ekv> w = sn.a("oak_bees_002");
+   public static final alg<ekv> x = sn.a("birch_bees_0002");
+   public static final alg<ekv> y = sn.a("birch_bees_002");
+   public static final alg<ekv> z = sn.a("fancy_oak_bees_0002");
+   public static final alg<ekv> A = sn.a("fancy_oak_bees_002");
+   public static final alg<ekv> B = sn.a("fancy_oak_bees");
+   public static final alg<ekv> C = sn.a("cherry_bees_005");
+
+   public static void a(qx<ekv> $$0) {
+      jq<edr<?, ?>> $$1 = $$0.a(ly.aJ);
+      jp<edr<?, ?>> $$2 = $$1.b(sd.a);
+      jp<edr<?, ?>> $$3 = $$1.b(sd.c);
+      jp<edr<?, ?>> $$4 = $$1.b(sd.g);
+      jp<edr<?, ?>> $$5 = $$1.b(sd.h);
+      jp<edr<?, ?>> $$6 = $$1.b(sd.i);
+      jp<edr<?, ?>> $$7 = $$1.b(sd.j);
+      jp<edr<?, ?>> $$8 = $$1.b(sd.k);
+      jp<edr<?, ?>> $$9 = $$1.b(sd.x);
+      jp<edr<?, ?>> $$10 = $$1.b(sd.z);
+      jp<edr<?, ?>> $$11 = $$1.b(sd.l);
+      jp<edr<?, ?>> $$12 = $$1.b(sd.m);
+      jp<edr<?, ?>> $$13 = $$1.b(sd.n);
+      jp<edr<?, ?>> $$14 = $$1.b(sd.p);
+      jp<edr<?, ?>> $$15 = $$1.b(sd.q);
+      jp<edr<?, ?>> $$16 = $$1.b(sd.r);
+      jp<edr<?, ?>> $$17 = $$1.b(sd.y);
+      jp<edr<?, ?>> $$18 = $$1.b(sd.v);
+      jp<edr<?, ?>> $$19 = $$1.b(sd.s);
+      jp<edr<?, ?>> $$20 = $$1.b(sd.t);
+      jp<edr<?, ?>> $$21 = $$1.b(sd.A);
+      jp<edr<?, ?>> $$22 = $$1.b(sd.B);
+      jp<edr<?, ?>> $$23 = $$1.b(sd.D);
+      jp<edr<?, ?>> $$24 = $$1.b(sd.E);
+      jp<edr<?, ?>> $$25 = $$1.b(sd.G);
+      jp<edr<?, ?>> $$26 = $$1.b(sd.H);
+      jp<edr<?, ?>> $$27 = $$1.b(sd.J);
+      jp<edr<?, ?>> $$28 = $$1.b(sd.K);
+      sn.a($$0, a, $$2, ekm.a(8), ekj.a());
+      sn.a($$0, b, $$3, ekm.a(8), ekj.a());
+      sn.a($$0, c, $$4, sn.a(dia.x));
+      sn.a($$0, d, $$5, sn.a(dia.D));
+      sn.a($$0, e, $$6, sn.a(dia.z));
+      sn.a($$0, f, $$7, sn.a(dia.B));
+      sn.a($$0, g, $$8, sn.a(dia.y));
+      sn.a($$0, h, $$9, sn.a(dia.E));
+      sn.a($$0, i, $$10, sn.a(dia.C));
+      ecg $$29 = ecg.a(jl.a.q(), dia.dP, dia.qP);
+      List<eky> $$30 = List.of(eko.a(jl.b, ecg.a(ecg.a(dia.qP)), 8), ekk.a($$29));
+      sn.a($$0, j, $$11, $$30);
+      sn.a($$0, k, $$8, $$30);
+      sn.a($$0, l, $$11, sn.a(dia.y));
+      sn.a($$0, m, $$12, sn.a(dia.A));
+      sn.a($$0, n, $$13, sn.a(dia.x));
+      sn.a($$0, o, $$14, sn.a(dia.A));
+      sn.a($$0, p, $$15, sn.a(dia.y));
+      sn.a($$0, q, $$16, sn.a(dia.y));
+      sn.a($$0, r, $$17, sn.a(dia.E));
+      sn.a($$0, s, $$18, sn.a(dia.x));
+      sn.a($$0, t, $$19, sn.a(dia.z));
+      sn.a($$0, u, $$20, sn.a(dia.z));
+      sn.a($$0, v, $$21, sn.a(dia.x));
+      sn.a($$0, w, $$22, sn.a(dia.x));
+      sn.a($$0, x, $$23, sn.a(dia.z));
+      sn.a($$0, y, $$24, sn.a(dia.z));
+      sn.a($$0, z, $$25, sn.a(dia.x));
+      sn.a($$0, A, $$26, sn.a(dia.x));
+      sn.a($$0, B, $$27, sn.a(dia.x));
+      sn.a($$0, C, $$28, sn.a(dia.C));
+   }
 }
