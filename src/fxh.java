@@ -1,66 +1,113 @@
-public class fxh extends fyn {
-   private static final wy s = wy.c("selectWorld.backupJoinSkipButton");
-   public static final wy a = wy.c("selectWorld.backupJoinConfirmButton");
-   private final Runnable u;
-   protected final fxh.a b;
-   private final wy v;
-   private final boolean w;
-   private fto x = fto.a;
-   final wy c;
-   protected int d;
-   private fsx y;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-   public fxh(Runnable $$0, fxh.a $$1, wy $$2, wy $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, a, $$4);
+public record fxh(fxg a, int b, int c) {
+   private static final fxh d = new fxh(0, 0, 0, 0);
+
+   public fxh(int $$0, int $$1, int $$2, int $$3) {
+      this(new fxg($$0, $$1), $$2, $$3);
    }
 
-   public fxh(Runnable $$0, fxh.a $$1, wy $$2, wy $$3, wy $$4, boolean $$5) {
-      super($$2);
-      this.u = $$0;
-      this.b = $$1;
-      this.v = $$3;
-      this.w = $$5;
-      this.c = $$4;
+   public static fxh a() {
+      return d;
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.x = fto.a(this.p, this.v, this.n - 50);
-      int $$0 = (this.x.a() + 1) * 9;
-      this.y = fsx.a(wy.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
-      if (this.w) {
-         this.c(this.y);
-      }
-
-      this.c(fsv.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fsv.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(fsv.a(wx.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+   public static fxh a(fxe $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fxh($$1, $$2, $$3, $$4);
+         case b -> new fxh($$2, $$1, $$4, $$3);
+      };
    }
 
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      this.x.a($$0, this.n / 2, 70);
+   public fxh a(fxf $$0) {
+      return new fxh(this.a.a($$0), this.b, this.c);
    }
 
-   @Override
-   public boolean aD_() {
-      return false;
+   public int a(fxe $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.u.run();
-         return true;
+   public int b(fxf $$0) {
+      fxe $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
+
+   public fxh c(fxf $$0) {
+      int $$1 = this.b($$0);
+      fxe $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(fxh $$0) {
+      return this.a($$0, fxe.a) && this.a($$0, fxe.b);
+   }
+
+   public boolean a(fxh $$0, fxe $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fxe $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fxh b(fxh $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fxh($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public fxh a(Matrix4f $$0) {
+      if (f.a($$0)) {
+         return this;
       } else {
-         return super.a($$0, $$1, $$2);
+         Vector3f $$1 = $$0.transformPosition((float)this.d(), (float)this.b(), 0.0F, new Vector3f());
+         Vector3f $$2 = $$0.transformPosition((float)this.e(), (float)this.c(), 0.0F, new Vector3f());
+         return new fxh(azm.d($$1.x), azm.d($$1.y), azm.d($$2.x - $$1.x), azm.d($$2.y - $$1.y));
       }
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   public fxg f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

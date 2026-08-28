@@ -1,56 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class dno extends dtf implements dtx {
-   public static final MapCodec<dno> a = b(dno::new);
-   public static final ebf b = ebe.I;
-   private static final Map<jb.a, ffr> e = ffo.b(dmm.a(3.0, 3.0, 16.0));
+public class dno extends dlk {
+   public static final MapCodec<dno> c = b(dno::new);
+   private static final float d = 0.05F;
+   private static final float e = 0.1F;
 
    @Override
    public MapCodec<dno> a() {
-      return a;
+      return c;
    }
 
-   public dno(ean.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)).b(d, jb.a.b));
-   }
-
-   @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return e.get($$0.c(d));
-   }
-
-   @Nullable
-   @Override
-   public eao a(ddd $$0) {
-      ewv $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eww.c;
-      return super.a($$0).b(b, Boolean.valueOf($$2));
+   public dno(eas.d $$0) {
+      super($$0, kc.c);
    }
 
    @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, eww.c, eww.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b).a(d);
-   }
-
-   @Override
-   protected ewv b_(eao $$0) {
-      return $$0.c(b) ? eww.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(eao $$0, exk $$1) {
+   public boolean d(eat $$0) {
       return false;
+   }
+
+   protected static boolean a(djm $$0, dkp.c $$1) {
+      if ($$1 == dkp.c.b) {
+         return $$0.C_().i() < 0.05F;
+      } else {
+         return $$1 == dkp.c.c ? $$0.C_().i() < 0.1F : false;
+      }
+   }
+
+   @Override
+   public void a(eat $$0, djm $$1, iv $$2, dkp.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dkp.c.b) {
+            $$1.b($$2, dmt.fT.m());
+            $$1.a(null, eft.c, $$2);
+         } else if ($$3 == dkp.c.c) {
+            $$1.b($$2, dmt.fV.m());
+            $$1.a(null, eft.c, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(ewz $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(eat $$0, djm $$1, iv $$2, ewz $$3) {
+      if ($$3 == exb.c) {
+         eat $$4 = dmt.fT.m();
+         $$1.b($$2, $$4);
+         $$1.a(eft.c, $$2, eft.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == exb.e) {
+         eat $$5 = dmt.fU.m();
+         $$1.b($$2, $$5);
+         $$1.a(eft.c, $$2, eft.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

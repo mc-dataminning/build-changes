@@ -1,166 +1,211 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dri extends dmm implements dmu {
-   private static final Codec<ewt> f = mg.c
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof ewt $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a flowing fluid: " + $$0), $$0 -> $$0);
-   public static final MapCodec<dri> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("fluid").forGetter($$0x -> $$0x.c), t()).apply($$0, dri::new));
-   public static final ebo b = ebe.aS;
-   protected final ewt c;
-   private final List<ewv> g;
-   public static final ffr d = dmm.b(16.0, 0.0, 8.0);
-   public static final ImmutableList<jb> e = ImmutableList.of(jb.a, jb.d, jb.c, jb.f, jb.e);
+public class dri extends dmd {
+   public static final MapCodec<dri> a = b(dri::new);
+   public static final ebr<jb> b = dqs.e;
+   public static final ebk c = ebj.A;
+   public static final ebk d = ebj.r;
+   private static final ffw e = fft.a(dmr.b(16.0, 0.0, 2.0), dmr.b(8.0, 2.0, 14.0));
+   private static final Map<jb, ffw> f = fft.c(
+      fft.a(dmr.a(16.0, 10.0, 14.0, 1.0, 5.333333), dmr.a(16.0, 12.0, 16.0, 5.333333, 9.666667), dmr.a(16.0, 14.0, 18.0, 9.666667, 14.0), e)
+   );
+   private static final int g = 2;
 
    @Override
    public MapCodec<dri> a() {
       return a;
    }
 
-   protected dri(ewt $$0, ean.d $$1) {
-      super($$1);
-      this.c = $$0;
-      this.g = Lists.newArrayList();
-      this.g.add($$0.a(false));
-
-      for (int $$2 = 1; $$2 < 8; $$2++) {
-         this.g.add($$0.a(8 - $$2, false));
-      }
-
-      this.g.add($$0.a(8, true));
-      this.l(this.C.b().b(b, Integer.valueOf(0)));
+   protected dri(eas.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, jb.c).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffr b(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return $$3.a(d, $$2, true) && $$0.c(b) == 0 && $$3.a($$1.b_($$2.d()), $$0.y()) ? d : ffo.a();
+   protected ffw d_(eat $$0) {
+      return e;
    }
 
    @Override
-   protected boolean f(eao $$0) {
-      return $$0.y().f();
-   }
-
-   @Override
-   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
-      $$0.y().a($$1, $$2, $$3);
-   }
-
-   @Override
-   protected boolean e_(eao $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(eao $$0, exk $$1) {
-      return !this.c.a(axh.b);
-   }
-
-   @Override
-   protected ewv b_(eao $$0) {
-      int $$1 = $$0.c(b);
-      return this.g.get(Math.min($$1, 8));
-   }
-
-   @Override
-   protected boolean b(eao $$0, eao $$1, jb $$2) {
-      return $$1.y().a().a(this.c);
-   }
-
-   @Override
-   protected dsz a_(eao $$0) {
-      return dsz.a;
-   }
-
-   @Override
-   protected List<czk> a(eao $$0, ezr.a $$1) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return ffo.a();
-   }
-
-   @Override
-   protected void a(eao $$0, djh $$1, iv $$2, eao $$3, boolean $$4) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.y().a(), this.c.a($$1));
-      }
-   }
-
-   @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if ($$0.y().b() || $$6.y().b()) {
-         $$2.a($$3, $$0.y().a(), this.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(eao $$0, djh $$1, iv $$2, dmm $$3, @Nullable eyd $$4, boolean $$5) {
-      if (this.a($$1, $$2, $$0)) {
-         $$1.a($$2, $$0.y().a(), this.c.a($$1));
-      }
-   }
-
-   private boolean a(djh $$0, iv $$1, eao $$2) {
-      if (this.c.a(axh.b)) {
-         boolean $$3 = $$0.a_($$1.e()).a(dmo.eo);
-         UnmodifiableIterator var5 = e.iterator();
-
-         while (var5.hasNext()) {
-            jb $$4 = (jb)var5.next();
-            iv $$5 = $$1.a($$4.g());
-            if ($$0.b_($$5).a(axh.a)) {
-               dmm $$6 = $$0.b_($$1).b() ? dmo.cy : dmo.m;
-               $$0.b($$1, $$6.m());
-               this.a($$0, $$1);
-               return false;
-            }
-
-            if ($$3 && $$0.a_($$5).a(dmo.nC)) {
-               $$0.b($$1, dmo.ep.m());
-               this.a($$0, $$1);
-               return false;
-            }
-         }
-      }
-
+   protected boolean g_(eat $$0) {
       return true;
    }
 
-   private void a(dji $$0, iv $$1) {
-      $$0.c(1501, $$1, 0);
+   @Override
+   public eat a(ddg $$0) {
+      djm $$1 = $$0.q();
+      czn $$2 = $$0.n();
+      crm $$3 = $$0.o();
+      boolean $$4 = false;
+      if (!$$1.C && $$3 != null && $$3.gF()) {
+         dbv $$5 = $$2.a(kk.aa, dbv.a);
+         if ($$5.a("Book")) {
+            $$4 = true;
+         }
+      }
+
+      return this.m().b(b, $$0.g().g()).b(d, Boolean.valueOf($$4));
    }
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b);
+   protected ffw b(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return e;
    }
 
    @Override
-   public czk a(@Nullable bxj $$0, dji $$1, iv $$2, eao $$3) {
-      if ($$3.c(b) == 0) {
-         $$1.a($$2, dmo.a.m(), 11);
-         return new czk(this.c.a());
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return f.get($$0.c(b));
+   }
+
+   @Override
+   protected eat a(eat $$0, dtl $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected eat a(eat $$0, dru $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(b, c, d);
+   }
+
+   @Override
+   public dxr a(iv $$0, eat $$1) {
+      return new dyx($$0, $$1);
+   }
+
+   public static boolean a(@Nullable bxj $$0, djm $$1, iv $$2, eat $$3, czn $$4) {
+      if (!$$3.c(d)) {
+         if (!$$1.C) {
+            b($$0, $$1, $$2, $$3, $$4);
+         }
+
+         return true;
       } else {
-         return czk.k;
+         return false;
+      }
+   }
+
+   private static void b(@Nullable bxj $$0, djm $$1, iv $$2, eat $$3, czn $$4) {
+      if ($$1.c_($$2) instanceof dyx $$6) {
+         $$6.b($$4.b(1, $$0));
+         a($$0, $$1, $$2, $$3, true);
+         $$1.a(null, $$2, awn.cz, awo.e, 1.0F, 1.0F);
+      }
+   }
+
+   public static void a(@Nullable bwi $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
+      eat $$5 = $$3.b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf($$4));
+      $$1.a($$2, $$5, 3);
+      $$1.a(eft.c, $$2, eft.a.a($$0, $$5));
+      b($$1, $$2, $$3);
+   }
+
+   public static void a(djm $$0, iv $$1, eat $$2) {
+      a($$0, $$1, $$2, true);
+      $$0.a($$1, $$2.b(), 2);
+      $$0.c(1043, $$1, 0);
+   }
+
+   private static void a(djm $$0, iv $$1, eat $$2, boolean $$3) {
+      $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 3);
+      b($$0, $$1, $$2);
+   }
+
+   private static void b(djm $$0, iv $$1, eat $$2) {
+      eyi $$3 = eye.a($$0, $$2.c(b).g(), jb.b);
+      $$0.a($$1.e(), $$2.b(), $$3);
+   }
+
+   @Override
+   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
+      a($$1, $$2, $$0, false);
+   }
+
+   @Override
+   protected void a(eat $$0, arq $$1, iv $$2, boolean $$3) {
+      if ($$0.c(c)) {
+         b($$1, $$2, $$0);
       }
    }
 
    @Override
-   public Optional<awm> ap_() {
-      return this.c.j();
+   protected boolean f_(eat $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(eat $$0, diq $$1, iv $$2, jb $$3) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(eat $$0, diq $$1, iv $$2, jb $$3) {
+      return $$3 == jb.b && $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected boolean c_(eat $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(eat $$0, djm $$1, iv $$2) {
+      if ($$0.c(d)) {
+         dxr $$3 = $$1.c_($$2);
+         if ($$3 instanceof dyx) {
+            return ((dyx)$$3).k();
+         }
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
+      if ($$1.c(d)) {
+         return bug.f;
+      } else if ($$0.a(axk.aZ)) {
+         return (bug)(a($$4, $$2, $$3, $$1, $$0) ? bug.a : bug.e);
+      } else {
+         return (bug)($$0.f() && $$5 == buf.a ? bug.e : bug.f);
+      }
+   }
+
+   @Override
+   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
+      if ($$0.c(d)) {
+         if (!$$1.C) {
+            this.a($$1, $$2, $$3);
+         }
+
+         return bug.a;
+      } else {
+         return bug.c;
+      }
+   }
+
+   @Nullable
+   @Override
+   protected bui b(eat $$0, djm $$1, iv $$2) {
+      return !$$0.c(d) ? null : super.b($$0, $$1, $$2);
+   }
+
+   private void a(djm $$0, iv $$1, crm $$2) {
+      dxr $$3 = $$0.c_($$1);
+      if ($$3 instanceof dyx) {
+         $$2.a((dyx)$$3);
+         $$2.a(awx.au);
+      }
+   }
+
+   @Override
+   protected boolean a(eat $$0, exp $$1) {
+      return false;
    }
 }

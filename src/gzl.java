@@ -1,52 +1,39 @@
-public class gzl extends gxz<ckf, hff, ggk<hff>> {
-   private final ggk<hff> a = this.c();
-   private final ggk<hff> j;
-   private static final alg k = alg.b("textures/entity/fish/tropical_a.png");
-   private static final alg l = alg.b("textures/entity/fish/tropical_b.png");
+public class gzl<T extends bwi & cse> extends gwx<T, hfh> {
+   private final hgg a;
+   private final float g;
+   private final boolean h;
 
-   public gzl(gwt.a $$0) {
-      super($$0, new gis($$0.a(gjn.dE)), 0.15F);
-      this.j = new git($$0.a(gjn.dC));
-      this.a(new hbq(this, $$0.f()));
+   public gzl(gwy.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.a = $$0.b();
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public alg a(hff $$0) {
-      return switch ($$0.a.a()) {
-         case a -> k;
-         case b -> l;
-      };
+   public gzl(gwy.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   public hff b() {
-      return new hff();
+   @Override
+   protected int a(T $$0, iv $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
-   public void a(ckf $$0, hff $$1, float $$2) {
+   public void a(hfh $$0, fkd $$1, gqr $$2, int $$3) {
+      $$1.a();
+      $$1.b(this.g, this.g, this.g);
+      $$1.a(this.d.b());
+      $$0.a.a($$1, $$2, $$3, hjg.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public hfh a() {
+      return new hfh();
+   }
+
+   public void a(T $$0, hfh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gB();
-      $$1.b = $$0.gz().d();
-      $$1.c = $$0.gA().d();
-   }
-
-   public void a(hff $$0, fjy $$1, gqm $$2, int $$3) {
-      this.g = switch ($$0.a.a()) {
-         case a -> this.a;
-         case b -> this.j;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected int b(hff $$0) {
-      return $$0.b;
-   }
-
-   protected void a(hff $$0, fjy $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * azm.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+      this.a.a($$1.a, $$0.f(), czl.h, $$0);
    }
 }

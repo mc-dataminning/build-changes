@@ -1,40 +1,75 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public record hjw(alg c, Optional<alg> d) implements hjp {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<hjw> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alg.a.fieldOf("resource").forGetter(hjw::b), alg.a.optionalFieldOf("sprite").forGetter(hjw::c)).apply($$0, hjw::new)
-   );
+public class hjw {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akz b = new akz("atlases", ".json");
+   private final List<hjv> c;
 
-   public hjw(alg $$0) {
-      this($$0, Optional.empty());
+   private hjw(List<hjv> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a(avd $$0, hjp.a $$1) {
-      alg $$2 = a.a(this.c);
-      Optional<avb> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.d.orElse(this.c), $$3.get());
-      } else {
-         e.warn("Missing sprite: {}", $$2);
+   public List<Function<hju, hjk>> a(avd $$0) {
+      final Map<alg, hjv.b> $$1 = new HashMap<>();
+      hjv.a $$2 = new hjv.a() {
+         @Override
+         public void a(alg $$0, hjv.b $$1x) {
+            hjv.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
+         }
+
+         @Override
+         public void a(Predicate<alg> $$0) {
+            Iterator<Entry<alg, hjv.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<alg, hjv.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<hju, hjk>> $$3 = ImmutableList.builder();
+      $$3.add((Function<hju, hjk>)$$0x -> hjf.b());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static hjw a(avd $$0, alg $$1) {
+      alg $$2 = b.a($$1);
+      List<hjv> $$3 = new ArrayList<>();
+
+      for (avb $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends hjv>)hjx.b.parse($$6).getOrThrow());
+         } catch (Exception var11) {
+            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
       }
-   }
 
-   @Override
-   public MapCodec<hjw> a() {
-      return b;
-   }
-
-   public alg b() {
-      return this.c;
-   }
-
-   public Optional<alg> c() {
-      return this.d;
+      return new hjw($$3);
    }
 }

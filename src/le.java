@@ -1,5 +1,5 @@
-public record le(arq a, iv b, eao c, dyh d) {
-   public fex a() {
+public record le(arq a, iv b, eat c, dym d) {
+   public ffc a() {
       return this.b.b();
    }
 
@@ -11,11 +11,11 @@ public record le(arq a, iv b, eao c, dyh d) {
       return this.b;
    }
 
-   public eao d() {
+   public eat d() {
       return this.c;
    }
 
-   public dyh e() {
+   public dym e() {
       return this.d;
    }
 }

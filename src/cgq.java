@@ -1,12 +1,12 @@
 public class cgq extends cgt {
-   public cgq(bxl $$0, djh $$1) {
+   public cgq(bxl $$0, djm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected exl a(int $$0) {
-      this.o = new exe(false);
-      return new exl(this.o, $$0);
+   protected exq a(int $$0) {
+      this.o = new exj(false);
+      return new exq(this.o, $$0);
    }
 
    @Override
@@ -15,17 +15,17 @@ public class cgq extends cgt {
    }
 
    @Override
-   protected fex b() {
-      return new fex(this.a.dz(), this.a.e(0.5), this.a.dF());
+   protected ffc b() {
+      return new ffc(this.a.dz(), this.a.e(0.5), this.a.dF());
    }
 
    @Override
-   protected double a(fex $$0) {
+   protected double a(ffc $$0) {
       return $$0.e;
    }
 
    @Override
-   protected boolean a(fex $$0, fex $$1) {
+   protected boolean a(ffc $$0, ffc $$1) {
       return this.a.bk() ? a(this.a, $$0, $$1, false) : false;
    }
 

@@ -47,7 +47,7 @@ public enum bws implements bak {
       return $$0 + this.o;
    }
 
-   public czk a(czk $$0) {
+   public czn a(czn $$0) {
       return this.p > 0 ? $$0.a(this.p) : $$0;
    }
 

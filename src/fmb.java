@@ -1,40 +1,23 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.Set;
 
-public class fmb extends fmd {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public fmb.a c = fmb.a.a;
+public class fmb extends fmi implements fmc {
+   @SerializedName("seed")
+   private final String a;
+   @SerializedName("worldTemplateId")
+   private final long b;
+   @SerializedName("levelType")
+   private final int c;
+   @SerializedName("generateStructures")
+   private final boolean d;
+   @SerializedName("experiments")
+   private final Set<String> e;
 
-   public static fmb a(String $$0) {
-      fmb $$1 = new fmb();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fnz.a("startDate", $$3, 0L);
-         $$1.b = fnz.a("daysLeft", $$3, 0);
-         $$1.c = b(fnz.b("subscriptionType", $$3, fmb.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
-      }
-
-      return $$1;
-   }
-
-   private static fmb.a b(String $$0) {
-      try {
-         return fmb.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fmb.a.a;
-      }
-   }
-
-   public static enum a {
-      a,
-      b;
+   public fmb(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 }

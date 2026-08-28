@@ -1,27 +1,13 @@
-public class hak extends har<hcs, ggc> {
-   private static final alg a = alg.b("textures/entity/creeper/creeper_armor.png");
-   private final ggc b;
+public class hak extends hbm<hcs, gfv> {
+   private static final grc a = grc.r(alg.b("textures/entity/breeze/breeze_eyes.png"));
 
-   public hak(gyq<hcs, ggc> $$0, gjk $$1) {
+   public hak(gyv<hcs, gfv> $$0) {
       super($$0);
-      this.b = new ggc($$1.a(gjn.ar));
    }
 
-   protected boolean a(hcs $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected alg a() {
-      return a;
-   }
-
-   protected ggc b() {
-      return this.b;
+   public void a(fkd $$0, gqr $$1, int $$2, hcs $$3, float $$4, float $$5) {
+      fkh $$6 = $$1.getBuffer(a);
+      gfv $$7 = this.d();
+      gwd.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hjg.d);
    }
 }

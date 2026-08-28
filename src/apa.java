@@ -10,7 +10,7 @@ public class apa {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.setblock.failed"));
 
    public static void a(CommandDispatcher<ej> $$0, ef $$1) {
-      Predicate<eas> $$2 = $$0x -> $$0x.c().v($$0x.d());
+      Predicate<eax> $$2 = $$0x -> $$0x.c().v($$0x.d());
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("setblock").requires($$0x -> $$0x.c(2)))
             .then(
@@ -27,11 +27,11 @@ public class apa {
       );
    }
 
-   private static int a(ej $$0, iv $$1, gb $$2, apa.a $$3, @Nullable Predicate<eas> $$4, boolean $$5) throws CommandSyntaxException {
+   private static int a(ej $$0, iv $$1, gb $$2, apa.a $$3, @Nullable Predicate<eax> $$4, boolean $$5) throws CommandSyntaxException {
       arq $$6 = $$0.e();
       if ($$6.ak()) {
          throw a.create();
-      } else if ($$4 != null && !$$4.test(new eas($$6, $$1, true))) {
+      } else if ($$4 != null && !$$4.test(new eax($$6, $$1, true))) {
          throw a.create();
       } else {
          boolean $$7;

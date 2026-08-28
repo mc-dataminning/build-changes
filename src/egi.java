@@ -1,112 +1,181 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class egi extends ecm {
-   public static final MapCodec<egi> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(epl.a.fieldOf("settings").forGetter(egi::h)).apply($$0, $$0.stable(egi::new))
-   );
-   private final epl d;
-
-   public egi(epl $$0) {
-      super(new dkv($$0.d()), ag.b($$0::a));
-      this.d = $$0;
+public abstract class egi {
+   public static egi.b a(int $$0, int $$1) {
+      return new egi.b($$0 - 1, $$1 + 1);
    }
 
-   @Override
-   public ecn a(jh<ero> $$0, ehb $$1, long $$2) {
-      Stream<jf<ero>> $$3 = this.d.c().map(jj::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
-      return ecn.a($$1, $$2, this.b, $$3);
+   public static egi.b b(int $$0, int $$1) {
+      return new egi.b($$0, $$1);
    }
 
-   @Override
-   protected MapCodec<? extends ecm> b() {
-      return c;
+   public static egi a(int $$0) {
+      return new egi.c($$0, false);
    }
 
-   public epl h() {
-      return this.d;
+   public static egi b(int $$0) {
+      return new egi.c($$0 + 1, false);
    }
 
-   @Override
-   public void a(ary $$0, dkd $$1, ehb $$2, ecl $$3) {
+   public static egi c(int $$0) {
+      return new egi.c($$0, true);
    }
 
-   @Override
-   public int a(djj $$0) {
-      return $$0.G_() + Math.min($$0.H_(), this.d.f().size());
+   public static egi d(int $$0) {
+      return new egi.c($$0 - 1, true);
    }
 
-   @Override
-   public CompletableFuture<ecl> a(ehp $$0, ehb $$1, dkd $$2, ecl $$3) {
-      List<eao> $$4 = this.d.f();
-      iv.a $$5 = new iv.a();
-      egn $$6 = $$3.a(egn.a.c);
-      egn $$7 = $$3.a(egn.a.a);
+   public static egi a() {
+      return egi.a.a;
+   }
 
-      for (int $$8 = 0; $$8 < Math.min($$3.H_(), $$4.size()); $$8++) {
-         eao $$9 = $$4.get($$8);
-         if ($$9 != null) {
-            int $$10 = $$3.G_() + $$8;
+   public static egi a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
+   }
 
-            for (int $$11 = 0; $$11 < 16; $$11++) {
-               for (int $$12 = 0; $$12 < 16; $$12++) {
-                  $$3.a($$5.d($$11, $$10, $$12), $$9);
-                  $$6.a($$11, $$10, $$12, $$9);
-                  $$7.a($$11, $$10, $$12, $$9);
-               }
-            }
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public egi a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public egi b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<egi> a(djs $$0, iv $$1, int $$2, Predicate<eat> $$3, Predicate<eat> $$4) {
+      iv.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jb.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jb.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(djs $$0, int $$1, Predicate<eat> $$2, Predicate<eat> $$3, iv.a $$4, int $$5, jb $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends egi {
+      static final egi.a a = new egi.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends egi {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
          }
       }
 
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, egn.a $$2, djj $$3, ehb $$4) {
-      List<eao> $$5 = this.d.f();
-
-      for (int $$6 = Math.min($$5.size() - 1, $$3.ao()); $$6 >= 0; $$6--) {
-         eao $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.G_() + $$6 + 1;
-         }
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
       }
 
-      return $$3.G_();
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   @Override
-   public djt a(int $$0, int $$1, djj $$2, ehb $$3) {
-      return new djt($$2.G_(), this.d.f().stream().limit((long)$$2.H_()).map($$0x -> $$0x == null ? dmo.a.m() : $$0x).toArray(eao[]::new));
-   }
+   public static final class c extends egi {
+      private final int a;
+      private final boolean b;
 
-   @Override
-   public void a(List<String> $$0, ehb $$1, iv $$2) {
-   }
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public void a(ary $$0, long $$1, ehb $$2, dkm $$3, dkd $$4, ecl $$5) {
-   }
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
 
-   @Override
-   public void a(ary $$0) {
-   }
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
 
-   @Override
-   public int g() {
-      return 0;
-   }
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
 
-   @Override
-   public int e() {
-      return 384;
-   }
-
-   @Override
-   public int f() {
-      return -63;
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

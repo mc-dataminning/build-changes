@@ -1,39 +1,42 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpe extends dtc {
-   public static final MapCodec<dpe> b = b(dpe::new);
+public class dpe extends dwd {
+   public static final MapCodec<dpe> a = b(dpe::new);
+   private static final ffw b = dmr.b(12.0, 0.0, 13.0);
+   private static final int c = 150;
+   private static final int d = 5;
 
    @Override
-   public MapCodec<dpe> a() {
+   public MapCodec<? extends dpe> a() {
+      return a;
+   }
+
+   protected dpe(eas.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
       return b;
    }
 
-   protected dpe(ean.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(a, jb.b));
+   @Override
+   protected boolean b(eat $$0, diq $$1, iv $$2) {
+      return $$0.a(axc.cr);
    }
 
    @Override
-   public eao a(ddd $$0) {
-      jb $$1 = $$0.k();
-      eao $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
-   }
+   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
+      if ($$3.a(150) == 0) {
+         eat $$4 = $$1.a_($$2.e());
+         if (($$4.a(dmt.N) || $$4.a(axc.ai)) && $$3.a(5) != 0) {
+            return;
+         }
 
-   @Override
-   public void a(eao $$0, djh $$1, iv $$2, azv $$3) {
-      jb $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(ly.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+         eat $$5 = $$1.a_($$2.c(2));
+         if ($$4.a(axc.cH) && $$5.a(axc.cH)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.gS, awo.i, 1.0F, 1.0F, false);
+         }
       }
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(a);
    }
 }

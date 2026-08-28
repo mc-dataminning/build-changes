@@ -1,17 +1,20 @@
-import java.io.IOException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hkd extends avi<int[]> {
-   private static final alg a = alg.b("textures/colormap/foliage.png");
+public record hkd(azx c) implements hjv {
+   public static final MapCodec<hkd> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azx.a.fieldOf("pattern").forGetter(hkd::b)).apply($$0, hkd::new));
 
-   protected int[] a(avd $$0, bqq $$1) {
-      try {
-         return hkg.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
+   @Override
+   public void a(avd $$0, hjv.a $$1) {
+      $$1.a(this.c.c());
    }
 
-   protected void a(int[] $$0, avd $$1, bqq $$2) {
-      djc.a($$0);
+   @Override
+   public MapCodec<hkd> a() {
+      return b;
+   }
+
+   public azx b() {
+      return this.c;
    }
 }

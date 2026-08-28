@@ -1,67 +1,70 @@
-import java.util.Comparator;
-import java.util.Objects;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class hlq {
-   public static final Comparator<hlq> a = Comparator.<hlq, alg>comparing(hlq::a).thenComparing(hlq::b);
-   private final alg b;
-   private final alg c;
-   @Nullable
-   private gqx d;
+public class hlq implements AutoCloseable {
+   private final Map<alg, hlq.a> a;
 
-   public hlq(alg $$0, alg $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public hlq(Map<alg, alg> $$0, hjs $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         hjp $$2 = new hjp((alg)$$1x.getKey());
+         $$1.a((alg)$$1x.getKey(), $$2);
+         return new hlq.a($$2, (alg)$$1x.getValue());
+      }));
    }
 
-   public alg a() {
-      return this.b;
-   }
-
-   public alg b() {
-      return this.c;
-   }
-
-   public hjk c() {
-      return fpo.Q().a(this.a()).apply(this.b());
-   }
-
-   public gqx a(Function<alg, gqx> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
-      }
-
-      return this.d;
-   }
-
-   public fkc a(gqm $$0, Function<alg, gqx> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public fkc a(gqm $$0, Function<alg, gqx> $$1, boolean $$2, boolean $$3) {
-      return this.c().a(gxr.a($$0, this.a($$1), $$2, $$3));
+   public hjp a(alg $$0) {
+      return this.a.get($$0).a();
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         hlq $$1 = (hlq)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
+   public void close() {
+      this.a.values().forEach(hlq.a::close);
+      this.a.clear();
+   }
+
+   public Map<alg, CompletableFuture<hlq.b>> a(avd $$0, int $$1, Executor $$2) {
+      return ag.a(
+         this.a, (Function<? super hlq.a, CompletableFuture<hlq.b>>)($$3 -> hjl.a($$3.a).a($$0, $$3.b, $$1, $$2).thenApply($$1xx -> new hlq.b($$3.a, $$1xx)))
+      );
+   }
+
+   static record a(hjp a, alg b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.e();
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
+   public static class b {
+      private final hjp a;
+      private final hjl.a b;
 
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+      public b(hjp $$0, hjl.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Nullable
+      public hjq a(alg $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public hjq a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
+      }
    }
 }

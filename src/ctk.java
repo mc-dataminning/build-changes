@@ -1,17 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-public record ctk<T>(T a, iw b) {
-   public ctk(T $$0, alg $$1) {
-      this($$0, new iw($$1));
+public class ctk {
+   private final List<cth> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<cth> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public static <T> MapCodec<ctk<T>> a(Codec<T> $$0, T $$1) {
-      return RecordCodecBuilder.mapCodec($$2 -> $$2.group($$0.optionalFieldOf("model", $$1).forGetter(ctk::a), iw.b.forGetter(ctk::b)).apply($$2, ctk::new));
+   public ctk a(int $$0, float $$1) {
+      this.a.add(new cth($$0, $$1));
+      this.b();
+      return this;
    }
 
-   public static <T> yw<wj, ctk<T>> a(yw<? super wj, T> $$0) {
-      return yw.a($$0, ctk::a, iw.c, ctk::b, ctk::new);
+   public ctk a(Collection<cth> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<cth> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         cth $$1 = this.a.get(this.b);
+         cth $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cth $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
+
+         return $$5;
+      }
    }
 }

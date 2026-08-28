@@ -1,163 +1,108 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.function.Consumer;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fwg extends fwe {
-   private final fwg.b c;
-   private final List<fwg.a> d = new ArrayList<>();
-   private final fwm e = fwm.i();
+public record fwg(alg c, float d, float e, fwg.a f, String g) implements fwd {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fwg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alg.a.fieldOf("file").forGetter(fwg::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fwg::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fwg::e),
+               fwg.a.b.optionalFieldOf("shift", fwg.a.a).forGetter(fwg::f),
+               h.optionalFieldOf("skip", "").forGetter(fwg::g)
+            )
+            .apply($$0, fwg::new)
+   );
 
-   public fwg(int $$0, int $$1, fwg.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
-
-   public fwg(int $$0, int $$1, int $$2, int $$3, fwg.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
+   @Override
+   public fwe a() {
+      return fwe.b;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
+   public Either<fwd.b, fwd.c> b() {
+      return Either.left(this::a);
+   }
 
-         for (fwg.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
-         }
+   private fhw a(avd $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
 
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<fwg.a> $$5 = this.d.iterator();
-         fwg.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
+      try {
+         fhz var20;
+         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (fwc.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
 
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               fwg.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  fwc.a(FreeType.FT_New_Memory_Face(fwc.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
+                  }
+
+                  throw var14;
+               }
+
+               if ($$4 != null) {
+                  $$4.close();
+               }
+
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
+               }
+
+               fwc.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new fhz($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
             }
          }
 
-         int $$9 = this.c.d(this);
-
-         for (fwg.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
+         return var20;
+      } catch (Exception var17) {
+         synchronized (fwc.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
          }
 
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
+         MemoryUtil.memFree($$2);
+         throw var17;
       }
    }
 
-   @Override
-   public void b(Consumer<fwl> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
-   }
+   public static record a(float c, float d) {
+      public static final fwg.a a = new fwg.a(0.0F, 0.0F);
+      public static final Codec<fwg.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> ag.a($$0, 2).map($$0x -> new fwg.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   public fwm b() {
-      return this.e.g();
-   }
-
-   public fwm c() {
-      return this.e;
-   }
-
-   public <T extends fwl> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fwl> T a(T $$0, fwm $$1) {
-      this.d.add(new fwg.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fwl> T a(T $$0, Consumer<fwm> $$1) {
-      return this.a($$0, ag.a(this.b(), $$1));
-   }
-
-   static class a extends fwe.a {
-      protected a(fwl $$0, fwm $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(fwl $$0) {
-         return switch (this) {
-            case a -> $$0.A();
-            case b -> $$0.y();
-         };
+      public float a() {
+         return this.c;
       }
 
-      int a(fwg.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
-      }
-
-      int b(fwl $$0) {
-         return switch (this) {
-            case a -> $$0.y();
-            case b -> $$0.A();
-         };
-      }
-
-      int b(fwg.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
-      }
-
-      void a(fwg.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
-         }
-      }
-
-      void a(fwg.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
-      }
-
-      int c(fwl $$0) {
-         return switch (this) {
-            case a -> $$0.F();
-            case b -> $$0.G();
-         };
-      }
-
-      int d(fwl $$0) {
-         return switch (this) {
-            case a -> $$0.G();
-            case b -> $$0.F();
-         };
+      public float b() {
+         return this.d;
       }
    }
 }

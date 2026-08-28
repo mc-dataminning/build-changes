@@ -1,127 +1,71 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+public class ehb {
+   public static final alf<ewd.a> a = a("temperature");
+   public static final alf<ewd.a> b = a("vegetation");
+   public static final alf<ewd.a> c = a("continentalness");
+   public static final alf<ewd.a> d = a("erosion");
+   public static final alf<ewd.a> e = a("temperature_large");
+   public static final alf<ewd.a> f = a("vegetation_large");
+   public static final alf<ewd.a> g = a("continentalness_large");
+   public static final alf<ewd.a> h = a("erosion_large");
+   public static final alf<ewd.a> i = a("ridge");
+   public static final alf<ewd.a> j = a("offset");
+   public static final alf<ewd.a> k = a("aquifer_barrier");
+   public static final alf<ewd.a> l = a("aquifer_fluid_level_floodedness");
+   public static final alf<ewd.a> m = a("aquifer_lava");
+   public static final alf<ewd.a> n = a("aquifer_fluid_level_spread");
+   public static final alf<ewd.a> o = a("pillar");
+   public static final alf<ewd.a> p = a("pillar_rareness");
+   public static final alf<ewd.a> q = a("pillar_thickness");
+   public static final alf<ewd.a> r = a("spaghetti_2d");
+   public static final alf<ewd.a> s = a("spaghetti_2d_elevation");
+   public static final alf<ewd.a> t = a("spaghetti_2d_modulator");
+   public static final alf<ewd.a> u = a("spaghetti_2d_thickness");
+   public static final alf<ewd.a> v = a("spaghetti_3d_1");
+   public static final alf<ewd.a> w = a("spaghetti_3d_2");
+   public static final alf<ewd.a> x = a("spaghetti_3d_rarity");
+   public static final alf<ewd.a> y = a("spaghetti_3d_thickness");
+   public static final alf<ewd.a> z = a("spaghetti_roughness");
+   public static final alf<ewd.a> A = a("spaghetti_roughness_modulator");
+   public static final alf<ewd.a> B = a("cave_entrance");
+   public static final alf<ewd.a> C = a("cave_layer");
+   public static final alf<ewd.a> D = a("cave_cheese");
+   public static final alf<ewd.a> E = a("ore_veininess");
+   public static final alf<ewd.a> F = a("ore_vein_a");
+   public static final alf<ewd.a> G = a("ore_vein_b");
+   public static final alf<ewd.a> H = a("ore_gap");
+   public static final alf<ewd.a> I = a("noodle");
+   public static final alf<ewd.a> J = a("noodle_thickness");
+   public static final alf<ewd.a> K = a("noodle_ridge_a");
+   public static final alf<ewd.a> L = a("noodle_ridge_b");
+   public static final alf<ewd.a> M = a("jagged");
+   public static final alf<ewd.a> N = a("surface");
+   public static final alf<ewd.a> O = a("surface_secondary");
+   public static final alf<ewd.a> P = a("clay_bands_offset");
+   public static final alf<ewd.a> Q = a("badlands_pillar");
+   public static final alf<ewd.a> R = a("badlands_pillar_roof");
+   public static final alf<ewd.a> S = a("badlands_surface");
+   public static final alf<ewd.a> T = a("iceberg_pillar");
+   public static final alf<ewd.a> U = a("iceberg_pillar_roof");
+   public static final alf<ewd.a> V = a("iceberg_surface");
+   public static final alf<ewd.a> W = a("surface_swamp");
+   public static final alf<ewd.a> X = a("calcite");
+   public static final alf<ewd.a> Y = a("gravel");
+   public static final alf<ewd.a> Z = a("powder_snow");
+   public static final alf<ewd.a> aa = a("packed_ice");
+   public static final alf<ewd.a> ab = a("ice");
+   public static final alf<ewd.a> ac = a("soul_sand_layer");
+   public static final alf<ewd.a> ad = a("gravel_layer");
+   public static final alf<ewd.a> ae = a("patch");
+   public static final alf<ewd.a> af = a("netherrack");
+   public static final alf<ewd.a> ag = a("nether_wart");
+   public static final alf<ewd.a> ah = a("nether_state_selector");
 
-public final class ehb {
-   final eha a;
-   private final jg<evy.a> b;
-   private final egt c;
-   private final dkt.f d;
-   private final ehf e;
-   private final eha f;
-   private final eha g;
-   private final Map<alf<evy.a>, evy> h;
-   private final Map<alg, eha> i;
-
-   public static ehb a(jg.a $$0, alf<egs> $$1, long $$2) {
-      return a($$0.b(mh.aX).b($$1).a(), $$0.b(mh.aY), $$2);
+   private static alf<ewd.a> a(String $$0) {
+      return alf.a(mh.aY, alg.b($$0));
    }
 
-   public static ehb a(egs $$0, jg<evy.a> $$1, long $$2) {
-      return new ehb($$0, $$1, $$2);
-   }
-
-   private ehb(egs $$0, jg<evy.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(alg.b("aquifer")).e();
-      this.g = this.a.a(alg.b("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new ehf(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements egg.f {
-         private final Map<egg, egg> d = new HashMap<>();
-
-         private azv a(long $$0) {
-            return new ego($$2 + $$0);
-         }
-
-         @Override
-         public egg.c a(egg.c $$0) {
-            jf<evy.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(egw.a)) {
-                  evy $$2 = evy.a(this.a(0L), new evy.a(-7, 1.0, 1.0));
-                  return new egg.c($$1, $$2);
-               }
-
-               if ($$1.a(egw.b)) {
-                  evy $$3 = evy.a(this.a(1L), new evy.a(-7, 1.0, 1.0));
-                  return new egg.c($$1, $$3);
-               }
-
-               if ($$1.a(egw.j)) {
-                  evy $$4 = evy.b(ehb.this.a.a(egw.j.a()), new evy.a(0, 0.0));
-                  return new egg.c($$1, $$4);
-               }
-            }
-
-            evy $$5 = ehb.this.a($$1.e().orElseThrow());
-            return new egg.c($$1, $$5);
-         }
-
-         private egg a(egg $$0) {
-            if ($$0 instanceof evv $$1) {
-               azv $$2 = $$3 ? this.a(0L) : ehb.this.a.a(alg.b("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (egg)($$0 instanceof egh.i ? new egh.i($$2) : $$0);
-            }
-         }
-
-         @Override
-         public egg apply(egg $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
-         }
-      }
-
-      this.c = $$0.i().a(new a());
-      egg.f $$4 = new egg.f() {
-         private final Map<egg, egg> a = new HashMap<>();
-
-         private egg a(egg $$0) {
-            if ($$0 instanceof egh.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof egh.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public egg apply(egg $$0) {
-            return this.a.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new dkt.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
-   }
-
-   public evy a(alf<evy.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> egw.a(this.b, this.a, $$0));
-   }
-
-   public eha a(alg $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
-
-   public egt a() {
-      return this.c;
-   }
-
-   public dkt.f b() {
-      return this.d;
-   }
-
-   public ehf c() {
-      return this.e;
-   }
-
-   public eha d() {
-      return this.f;
-   }
-
-   public eha e() {
-      return this.g;
+   public static ewd a(jg<ewd.a> $$0, ehf $$1, alf<ewd.a> $$2) {
+      jf<ewd.a> $$3 = $$0.b($$2);
+      return ewd.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

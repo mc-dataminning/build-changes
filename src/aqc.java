@@ -17,14 +17,14 @@ public class aqc implements apz {
             return $$0.then(ek.a("storage").then($$1.apply(ek.a($$0, fk.a()).suggests(aqc.b))));
          }
       };
-   private final eyt c;
+   private final eyy c;
    private final alg d;
 
-   static eyt a(CommandContext<ej> $$0) {
+   static eyy a(CommandContext<ej> $$0) {
       return ((ej)$$0.getSource()).l().aK();
    }
 
-   aqc(eyt $$0, alg $$1) {
+   aqc(eyy $$0, alg $$1) {
       this.c = $$0;
       this.d = $$1;
    }

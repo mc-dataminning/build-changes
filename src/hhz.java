@@ -1,19 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hhz {
-   private static final ayu.b<alg, hia.a<?, ?>> b = new ayu.b<>();
-   public static final Codec<hia.a<?, ?>> a = b.a(alg.a);
+public record hhz() implements hig<alf<bwr<?>>> {
+   public static final Codec<alf<bwr<?>>> a = alf.a(mh.B);
+   public static final hig.a<hhz, alf<bwr<?>>> b = hig.a.a(MapCodec.unit(new hhz()), a);
 
-   public static void a() {
-      b.a(alg.b("custom_model_data"), hhu.b);
-      b.a(alg.b("main_hand"), hhy.b);
-      b.a(alg.b("charge_type"), hhq.b);
-      b.a(alg.b("trim_material"), hib.b);
-      b.a(alg.b("block_state"), hhw.b);
-      b.a(alg.b("display_context"), hhv.b);
-      b.a(alg.b("local_time"), hhx.c);
-      b.a(alg.b("context_entity_type"), hht.b);
-      b.a(alg.b("context_dimension"), hhs.b);
-      b.a(alg.b("component"), hhr.c());
+   @Nullable
+   public alf<bwr<?>> a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3, czl $$4) {
+      return $$2 == null ? null : $$2.an().r().h();
+   }
+
+   @Override
+   public hig.a<hhz, alf<bwr<?>>> a() {
+      return b;
+   }
+
+   @Override
+   public Codec<alf<bwr<?>>> b() {
+      return a;
    }
 }

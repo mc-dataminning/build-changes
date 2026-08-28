@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class ft implements ArgumentType<cxa> {
+public class ft implements ArgumentType<cxd> {
    private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("slot.unknown", $$0));
 
@@ -17,13 +17,13 @@ public class ft implements ArgumentType<cxa> {
       return new ft();
    }
 
-   public static cxa a(CommandContext<ej> $$0, String $$1) {
-      return (cxa)$$0.getArgument($$1, cxa.class);
+   public static cxd a(CommandContext<ej> $$0, String $$1) {
+      return (cxd)$$0.getArgument($$1, cxd.class);
    }
 
-   public cxa a(StringReader $$0) throws CommandSyntaxException {
+   public cxd a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = en.a($$0, $$0x -> $$0x != ' ');
-      cxa $$2 = cxb.a($$1);
+      cxd $$2 = cxe.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else {
@@ -32,7 +32,7 @@ public class ft implements ArgumentType<cxa> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return eo.b(cxb.a(), $$1);
+      return eo.b(cxe.a(), $$1);
    }
 
    public Collection<String> getExamples() {

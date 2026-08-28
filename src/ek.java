@@ -214,8 +214,8 @@ public class ek {
       hk<ej> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aL().d(djd.z));
-         int $$6 = $$2.aL().d(djd.A);
+         int $$5 = Math.max(1, $$2.aL().d(dji.z));
+         int $$6 = $$2.aL().d(dji.A);
 
          try (hk<ej> $$7 = new hk<>($$5, $$6, bqp.a())) {
             f.set($$7);
@@ -313,8 +313,8 @@ public class ek {
    public static ef a(final jh.a $$0) {
       return new ef() {
          @Override
-         public cut a() {
-            return cuv.e.a();
+         public cuw a() {
+            return cuy.e.a();
          }
 
          @Override

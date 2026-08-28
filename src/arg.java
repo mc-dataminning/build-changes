@@ -10,31 +10,31 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public abstract class arg {
-   private static final List<edm> a = edm.a();
-   private static final aqv<ecl> e = aqv.a("Not done yet");
-   public static final aqv<ecl> b = aqv.a("Unloaded chunk");
-   public static final CompletableFuture<aqv<ecl>> c = CompletableFuture.completedFuture(b);
-   protected final dio d;
+   private static final List<edr> a = edr.a();
+   private static final aqv<ecq> e = aqv.a("Not done yet");
+   public static final aqv<ecq> b = aqv.a("Unloaded chunk");
+   public static final CompletableFuture<aqv<ecq>> c = CompletableFuture.completedFuture(b);
+   protected final dir d;
    @Nullable
-   private volatile edm f;
-   private final AtomicReference<edm> g = new AtomicReference<>();
-   private final AtomicReferenceArray<CompletableFuture<aqv<ecl>>> h = new AtomicReferenceArray<>(a.size());
+   private volatile edr f;
+   private final AtomicReference<edr> g = new AtomicReference<>();
+   private final AtomicReferenceArray<CompletableFuture<aqv<ecq>>> h = new AtomicReferenceArray<>(a.size());
    private final AtomicReference<aqr> i = new AtomicReference<>();
    private final AtomicInteger j = new AtomicInteger();
    private volatile CompletableFuture<Void> k = CompletableFuture.completedFuture(null);
 
-   public arg(dio $$0) {
+   public arg(dir $$0) {
       this.d = $$0;
-      if ($$0.a(dio.e) > dio.d) {
+      if ($$0.a(dir.e) > dir.d) {
          throw new IllegalStateException("Trying to create chunk out of reasonable bounds: " + $$0);
       }
    }
 
-   public CompletableFuture<aqv<ecl>> a(edm $$0, aqu $$1) {
+   public CompletableFuture<aqv<ecq>> a(edr $$0, aqu $$1) {
       if (this.f($$0)) {
          return c;
       } else {
-         CompletableFuture<aqv<ecl>> $$2 = this.c($$0);
+         CompletableFuture<aqv<ecq>> $$2 = this.c($$0);
          if ($$2.isDone()) {
             return $$2;
          } else {
@@ -48,7 +48,7 @@ public abstract class arg {
       }
    }
 
-   CompletableFuture<aqv<ecl>> a(edp $$0, arf $$1, bai<arg> $$2) {
+   CompletableFuture<aqv<ecq>> a(edu $$0, arf $$1, bai<arg> $$2) {
       if (this.f($$0.a())) {
          return c;
       } else {
@@ -66,8 +66,8 @@ public abstract class arg {
    }
 
    protected void a(aqu $$0) {
-      edm $$1 = this.f;
-      edm $$2 = aqt.a(this.j());
+      edr $$1 = this.f;
+      edr $$2 = aqt.a(this.j());
       this.f = $$2;
       boolean $$3 = $$1 != null && ($$2 == null || $$2.d($$1));
       if ($$3) {
@@ -78,14 +78,14 @@ public abstract class arg {
       }
    }
 
-   public void a(ecu $$0) {
-      CompletableFuture<aqv<ecl>> $$1 = CompletableFuture.completedFuture(aqv.a($$0));
+   public void a(ecz $$0) {
+      CompletableFuture<aqv<ecq>> $$1 = CompletableFuture.completedFuture(aqv.a($$0));
 
       for (int $$2 = 0; $$2 < this.h.length() - 1; $$2++) {
-         CompletableFuture<aqv<ecl>> $$3 = this.h.get($$2);
+         CompletableFuture<aqv<ecq>> $$3 = this.h.get($$2);
          Objects.requireNonNull($$3);
-         ecl $$4 = $$3.getNow(e).b(null);
-         if (!($$4 instanceof edf)) {
+         ecq $$4 = $$3.getNow(e).b(null);
+         if (!($$4 instanceof edk)) {
             throw new IllegalStateException("Trying to replace a ProtoChunk, but found " + $$4);
          }
 
@@ -99,7 +99,7 @@ public abstract class arg {
       this.i.compareAndSet($$0, null);
    }
 
-   private void a(aqu $$0, @Nullable edm $$1) {
+   private void a(aqu $$0, @Nullable edr $$1) {
       aqr $$2;
       if ($$1 != null) {
          $$2 = $$0.a($$1, this.r());
@@ -113,15 +113,15 @@ public abstract class arg {
       }
    }
 
-   private CompletableFuture<aqv<ecl>> c(edm $$0) {
+   private CompletableFuture<aqv<ecq>> c(edr $$0) {
       if (this.f($$0)) {
          return c;
       } else {
          int $$1 = $$0.b();
-         CompletableFuture<aqv<ecl>> $$2 = this.h.get($$1);
+         CompletableFuture<aqv<ecq>> $$2 = this.h.get($$1);
 
          while ($$2 == null) {
-            CompletableFuture<aqv<ecl>> $$3 = new CompletableFuture<>();
+            CompletableFuture<aqv<ecq>> $$3 = new CompletableFuture<>();
             $$2 = this.h.compareAndExchange($$1, null, $$3);
             if ($$2 == null) {
                if (this.f($$0)) {
@@ -137,30 +137,30 @@ public abstract class arg {
       }
    }
 
-   private void a(@Nullable edm $$0, edm $$1) {
+   private void a(@Nullable edr $$0, edr $$1) {
       int $$2 = $$0 == null ? 0 : $$0.b() + 1;
       int $$3 = $$1.b();
 
       for (int $$4 = $$2; $$4 <= $$3; $$4++) {
-         CompletableFuture<aqv<ecl>> $$5 = this.h.get($$4);
+         CompletableFuture<aqv<ecq>> $$5 = this.h.get($$4);
          if ($$5 != null) {
             this.a($$4, $$5);
          }
       }
    }
 
-   private void a(int $$0, CompletableFuture<aqv<ecl>> $$1) {
+   private void a(int $$0, CompletableFuture<aqv<ecq>> $$1) {
       if ($$1.complete(b) && !this.h.compareAndSet($$0, $$1, null)) {
          throw new IllegalStateException("Nothing else should replace the future here");
       }
    }
 
-   private void a(edm $$0, ecl $$1) {
-      aqv<ecl> $$2 = aqv.a($$1);
+   private void a(edr $$0, ecq $$1) {
+      aqv<ecq> $$2 = aqv.a($$1);
       int $$3 = $$0.b();
 
       while (true) {
-         CompletableFuture<aqv<ecl>> $$4 = this.h.get($$3);
+         CompletableFuture<aqv<ecq>> $$4 = this.h.get($$3);
          if ($$4 == null) {
             if (this.h.compareAndSet($$3, null, CompletableFuture.completedFuture($$2))) {
                return;
@@ -180,18 +180,18 @@ public abstract class arg {
    }
 
    @Nullable
-   private edm d(@Nullable edm $$0) {
+   private edr d(@Nullable edr $$0) {
       if ($$0 == null) {
          return null;
       } else {
-         edm $$1 = $$0;
+         edr $$1 = $$0;
 
-         for (edm $$2 = this.g.get(); $$2 == null || $$1.b($$2); $$1 = $$1.c()) {
+         for (edr $$2 = this.g.get(); $$2 == null || $$1.b($$2); $$1 = $$1.c()) {
             if (this.h.get($$1.b()) != null) {
                return $$1;
             }
 
-            if ($$1 == edm.c) {
+            if ($$1 == edr.c) {
                break;
             }
          }
@@ -200,9 +200,9 @@ public abstract class arg {
       }
    }
 
-   private boolean e(edm $$0) {
-      edm $$1 = $$0 == edm.c ? null : $$0.c();
-      edm $$2 = this.g.compareAndExchange($$1, $$0);
+   private boolean e(edr $$0) {
+      edr $$1 = $$0 == edr.c ? null : $$0.c();
+      edr $$2 = this.g.compareAndExchange($$1, $$0);
       if ($$2 == $$1) {
          return true;
       } else if ($$2 != null && !$$0.b($$2)) {
@@ -212,8 +212,8 @@ public abstract class arg {
       }
    }
 
-   private boolean f(edm $$0) {
-      edm $$1 = this.f;
+   private boolean f(edr $$0) {
+      edr $$1 = this.f;
       return $$1 == null || $$0.b($$1);
    }
 
@@ -239,35 +239,35 @@ public abstract class arg {
    }
 
    @Nullable
-   public ecl a(edm $$0) {
-      CompletableFuture<aqv<ecl>> $$1 = this.h.get($$0.b());
+   public ecq a(edr $$0) {
+      CompletableFuture<aqv<ecq>> $$1 = this.h.get($$0.b());
       return $$1 == null ? null : $$1.getNow(e).b(null);
    }
 
    @Nullable
-   public ecl b(edm $$0) {
+   public ecq b(edr $$0) {
       return this.f($$0) ? null : this.a($$0);
    }
 
    @Nullable
-   public ecl p() {
-      edm $$0 = this.g.get();
+   public ecq p() {
+      edr $$0 = this.g.get();
       if ($$0 == null) {
          return null;
       } else {
-         ecl $$1 = this.a($$0);
+         ecq $$1 = this.a($$0);
          return $$1 != null ? $$1 : this.a($$0.c());
       }
    }
 
    @Nullable
-   public edm q() {
-      CompletableFuture<aqv<ecl>> $$0 = this.h.get(edm.c.b());
-      ecl $$1 = $$0 == null ? null : $$0.getNow(e).b(null);
+   public edr q() {
+      CompletableFuture<aqv<ecq>> $$0 = this.h.get(edr.c.b());
+      ecq $$1 = $$0 == null ? null : $$0.getNow(e).b(null);
       return $$1 == null ? null : $$1.n();
    }
 
-   public dio r() {
+   public dir r() {
       return this.d;
    }
 
@@ -280,8 +280,8 @@ public abstract class arg {
    public abstract int k();
 
    @bav
-   public List<Pair<edm, CompletableFuture<aqv<ecl>>>> t() {
-      List<Pair<edm, CompletableFuture<aqv<ecl>>>> $$0 = new ArrayList<>();
+   public List<Pair<edr, CompletableFuture<aqv<ecq>>>> t() {
+      List<Pair<edr, CompletableFuture<aqv<ecq>>>> $$0 = new ArrayList<>();
 
       for (int $$1 = 0; $$1 < a.size(); $$1++) {
          $$0.add(Pair.of(a.get($$1), this.h.get($$1)));
@@ -292,10 +292,10 @@ public abstract class arg {
 
    @Nullable
    @bav
-   public edm u() {
+   public edr u() {
       for (int $$0 = a.size() - 1; $$0 >= 0; $$0--) {
-         edm $$1 = a.get($$0);
-         ecl $$2 = this.a($$1);
+         edr $$1 = a.get($$0);
+         ecq $$2 = this.a($$1);
          if ($$2 != null) {
             return $$1;
          }

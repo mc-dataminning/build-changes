@@ -1,54 +1,32 @@
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class hba<S extends hdz, M extends ggk<S>> extends hbh<S, M> {
-   private final alg a;
-   private final hba.a<S> b;
-   private final hba.b<S, M> c;
-   private final Function<alg, gqx> d;
-   private final boolean e;
+public class hba extends hbm<hdv, ghb> {
+   private static final alg a = alg.b("invisible");
+   private static final Map<clm, alg> b = Maps.newEnumMap(
+      Map.of(
+         clm.a,
+         a,
+         clm.b,
+         alg.b("textures/entity/horse/horse_markings_white.png"),
+         clm.c,
+         alg.b("textures/entity/horse/horse_markings_whitefield.png"),
+         clm.d,
+         alg.b("textures/entity/horse/horse_markings_whitedots.png"),
+         clm.e,
+         alg.b("textures/entity/horse/horse_markings_blackdots.png")
+      )
+   );
 
-   public hba(gyq<S, M> $$0, alg $$1, hba.a<S> $$2, hba.b<S, M> $$3, Function<alg, gqx> $$4, boolean $$5) {
+   public hba(gyv<hdv, ghb> $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (!$$3.z || this.e) {
-         if (this.a($$3)) {
-            fkc $$6 = $$1.getBuffer(this.d.apply(this.a));
-            float $$7 = this.b.apply($$3, $$3.u);
-            int $$8 = axw.a(azm.d($$7 * 255.0F), 255, 255, 255);
-            this.d().a($$0, $$6, $$2, gxu.a($$3, 0.0F), $$8);
-            this.a();
-         }
+   public void a(fkd $$0, gqr $$1, int $$2, hdv $$3, float $$4, float $$5) {
+      alg $$6 = b.get($$3.h);
+      if ($$6 != a && !$$3.z) {
+         fkh $$7 = $$1.getBuffer(grc.j($$6));
+         this.d().a($$0, $$7, $$2, gxz.a($$3, 0.0F));
       }
-   }
-
-   private boolean a(S $$0) {
-      List<gjo> $$1 = this.c.getPartsToDraw(this.d(), $$0);
-      if ($$1.isEmpty()) {
-         return false;
-      } else {
-         this.d().f().forEach($$0x -> $$0x.l = true);
-         $$1.forEach($$0x -> $$0x.l = false);
-         return true;
-      }
-   }
-
-   private void a() {
-      this.d().f().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<S extends hdz> {
-      float apply(S var1, float var2);
-   }
-
-   public interface b<S extends hdz, M extends ggk<S>> {
-      List<gjo> getPartsToDraw(M var1, S var2);
    }
 }

@@ -1,40 +1,9 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-
-public abstract class hko implements auw, AutoCloseable {
-   private final hjj a;
-   private final alg b;
-   private final Set<auc<?>> c;
-
-   public hko(hjm $$0, alg $$1, alg $$2) {
-      this($$0, $$1, $$2, hjf.a);
+public class hko extends hkv {
+   public hko(hjs $$0) {
+      super($$0, alg.b("textures/atlas/map_decorations.png"), hlp.h);
    }
 
-   public hko(hjm $$0, alg $$1, alg $$2, Set<auc<?>> $$3) {
-      this.b = $$2;
-      this.a = new hjj($$1);
-      $$0.a(this.a.h(), this.a);
-      this.c = $$3;
-   }
-
-   protected hjk a(alg $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public final CompletableFuture<Void> reload(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
-      return hjf.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hjf.a::a).thenCompose($$0::wait).thenAcceptAsync(this::a, $$3);
-   }
-
-   private void a(hjf.a $$0) {
-      try (bqv $$1 = bqp.a().d("upload")) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.a.g();
+   public hjq a(eyp $$0) {
+      return this.a($$0.a());
    }
 }

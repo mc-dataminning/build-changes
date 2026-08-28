@@ -1,54 +1,36 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dgj(jj<bvk> d, dge e, dge f, dge g, dge h) implements dgo {
-   public static final MapCodec<dgj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ju.a(mh.W).fieldOf("to_apply").forGetter(dgj::b),
-               dge.b.fieldOf("min_duration").forGetter(dgj::c),
-               dge.b.fieldOf("max_duration").forGetter(dgj::d),
-               dge.b.fieldOf("min_amplifier").forGetter(dgj::e),
-               dge.b.fieldOf("max_amplifier").forGetter(dgj::f)
-            )
-            .apply($$0, dgj::new)
-   );
-
-   @Override
-   public void a(arq $$0, int $$1, dfw $$2, bwi $$3, fex $$4) {
-      if ($$3 instanceof bxj $$5) {
-         azv $$6 = $$5.dX();
-         Optional<jf<bvk>> $$7 = this.d.a($$6);
-         if ($$7.isPresent()) {
-            int $$8 = Math.round(azm.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
-            int $$9 = Math.max(0, Math.round(azm.b($$6, this.g.a($$1), this.h.a($$1))));
-            $$5.a(new bvm($$7.get(), $$8, $$9));
-         }
-      }
+public record dgj<T>(dge a, dge b, T c, Optional<fdc> d) {
+   public static <S> Codec<dgj<S>> a(Codec<S> $$0, bay $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dge.d.fieldOf("enchanted").forGetter(dgj::a),
+                  dge.d.fieldOf("affected").forGetter(dgj::b),
+                  $$0.fieldOf("effect").forGetter(dgj::c),
+                  dfx.a($$1).optionalFieldOf("requirements").forGetter(dgj::d)
+               )
+               .apply($$2, dgj::new)
+      );
    }
 
-   @Override
-   public MapCodec<dgj> a() {
-      return a;
+   public static <S> Codec<dgj<S>> b(Codec<S> $$0, bay $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dge.d
+                     .validate($$0xx -> $$0xx != dge.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
+                     .fieldOf("enchanted")
+                     .forGetter(dgj::a),
+                  $$0.fieldOf("effect").forGetter(dgj::c),
+                  dfx.a($$1).optionalFieldOf("requirements").forGetter(dgj::d)
+               )
+               .apply($$2, ($$0xx, $$1xx, $$2x) -> new dgj<>($$0xx, dge.c, $$1xx, $$2x))
+      );
    }
 
-   public jj<bvk> b() {
-      return this.d;
-   }
-
-   public dge c() {
-      return this.e;
-   }
-
-   public dge d() {
-      return this.f;
-   }
-
-   public dge e() {
-      return this.g;
-   }
-
-   public dge f() {
-      return this.h;
+   public boolean a(ezt $$0) {
+      return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

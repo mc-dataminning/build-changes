@@ -1,27 +1,46 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class djb {
-   public Optional<Float> a(dja $$0, din $$1, iv $$2, eao $$3, ewv $$4) {
-      return $$3.l() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
-   }
+public enum djb implements din {
+   a;
 
-   public boolean a(dja $$0, din $$1, iv $$2, eao $$3, float $$4) {
-      return true;
-   }
-
-   public boolean a(dja $$0, bwi $$1) {
-      return true;
-   }
-
-   public float a(bwi $$0) {
+   @Override
+   public float a(jb $$0, boolean $$1) {
       return 1.0F;
    }
 
-   public float a(dja $$0, bwi $$1, float $$2) {
-      float $$3 = $$0.e() * 2.0F;
-      fex $$4 = $$0.f();
-      double $$5 = Math.sqrt($$1.g($$4)) / (double)$$3;
-      double $$6 = (1.0 - $$5) * (double)$$2;
-      return (float)(($$6 * $$6 + $$6) / 2.0 * 7.0 * (double)$$3 + 1.0);
+   @Override
+   public ewp x_() {
+      return ewp.c;
+   }
+
+   @Override
+   public int a(iv $$0, diw $$1) {
+      return -1;
+   }
+
+   @Nullable
+   @Override
+   public dxr c_(iv $$0) {
+      return null;
+   }
+
+   @Override
+   public eat a_(iv $$0) {
+      return dmt.a.m();
+   }
+
+   @Override
+   public exa b_(iv $$0) {
+      return exb.a.g();
+   }
+
+   @Override
+   public int H_() {
+      return 0;
+   }
+
+   @Override
+   public int G_() {
+      return 0;
    }
 }

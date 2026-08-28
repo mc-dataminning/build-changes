@@ -1,11 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface dhf {
-   Codec<dhf> a = mg.av.q().dispatch(dhf::a, Function.identity());
+public record dhf(jj<bwr<?>> d, boolean e) implements dgr {
+   public static final MapCodec<dhf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ju.a(mh.B).fieldOf("entity").forGetter(dhf::b), Codec.BOOL.optionalFieldOf("join_team", false).forGetter(dhf::c)).apply($$0, dhf::new)
+   );
 
-   void a(czk var1, dgd.a var2, azv var3, bue var4);
+   @Override
+   public void a(arq $$0, int $$1, dfz $$2, bwi $$3, ffc $$4) {
+      iv $$5 = iv.a((jp)$$4);
+      if (djm.l($$5)) {
+         Optional<jf<bwr<?>>> $$6 = this.b().a($$0.C_());
+         if (!$$6.isEmpty()) {
+            bwi $$7 = $$6.get().a().a($$0, $$5, bwq.k);
+            if ($$7 != null) {
+               if ($$7 instanceof bxi $$8 && $$2.c() instanceof arr $$9) {
+                  $$8.b($$9);
+               }
 
-   MapCodec<? extends dhf> a();
+               if (this.e && $$3.cp() != null) {
+                  $$0.g().a($$7.cH(), $$3.cp());
+               }
+
+               $$7.b($$4.d, $$4.e, $$4.f, $$7.dK(), $$7.dM());
+            }
+         }
+      }
+   }
+
+   @Override
+   public MapCodec<dhf> a() {
+      return a;
+   }
+
+   public jj<bwr<?>> b() {
+      return this.d;
+   }
+
+   public boolean c() {
+      return this.e;
+   }
 }

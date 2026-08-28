@@ -24,15 +24,15 @@ public class afn implements zf<abu> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static afn a(ffx $$0, boolean $$1) {
+   public static afn a(fgc $$0, boolean $$1) {
       return new afn($$0.c(), $$1 ? 0 : 2, Optional.of(new afn.b($$0)), (Collection<String>)($$1 ? $$0.h() : ImmutableList.of()));
    }
 
-   public static afn a(ffx $$0) {
+   public static afn a(fgc $$0) {
       return new afn($$0.c(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static afn a(ffx $$0, String $$1, afn.a $$2) {
+   public static afn a(fgc $$0, String $$1, afn.a $$2) {
       return new afn($$0.c(), $$2 == afn.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -120,12 +120,12 @@ public class afn implements zf<abu> {
       private final wy a;
       private final wy b;
       private final wy c;
-      private final fge.b d;
-      private final fge.a e;
+      private final fgj.b d;
+      private final fgj.a e;
       private final o f;
       private final int g;
 
-      public b(ffx $$0) {
+      public b(fgc $$0) {
          this.a = $$0.d();
          this.g = $$0.n();
          this.d = $$0.k();
@@ -138,8 +138,8 @@ public class afn implements zf<abu> {
       public b(wj $$0) {
          this.a = xa.d.decode($$0);
          this.g = $$0.readByte();
-         this.d = fge.b.f.decode($$0);
-         this.e = fge.a.f.decode($$0);
+         this.d = fgj.b.f.decode($$0);
+         this.e = fgj.a.f.decode($$0);
          this.f = $$0.b(o.class);
          this.b = xa.d.decode($$0);
          this.c = xa.d.decode($$0);
@@ -157,11 +157,11 @@ public class afn implements zf<abu> {
          return this.f;
       }
 
-      public fge.b d() {
+      public fgj.b d() {
          return this.d;
       }
 
-      public fge.a e() {
+      public fgj.a e() {
          return this.e;
       }
 
@@ -176,8 +176,8 @@ public class afn implements zf<abu> {
       public void a(wj $$0) {
          xa.d.encode($$0, this.a);
          $$0.l(this.g);
-         fge.b.f.encode($$0, this.d);
-         fge.a.f.encode($$0, this.e);
+         fgj.b.f.encode($$0, this.d);
+         fgj.a.f.encode($$0, this.e);
          $$0.a(this.f);
          xa.d.encode($$0, this.b);
          xa.d.encode($$0, this.c);

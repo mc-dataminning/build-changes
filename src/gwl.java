@@ -1,32 +1,38 @@
-public class gwl extends gvm<cny, hfp, ggf> {
-   private static final alg a = alg.b("textures/entity/zombie/drowned.png");
+public class gwl extends gye<cnz, hcy, ggh> {
+   private static final alg a = alg.b("textures/entity/creeper/creeper.png");
 
-   public gwl(gwt.a $$0) {
-      super($$0, new ggf($$0.a(gjn.aG)), new ggf($$0.a(gjn.aH)), new ggf($$0.a(gjn.aL)), new ggf($$0.a(gjn.aM)), new ggf($$0.a(gjn.aI)), new ggf($$0.a(gjn.aJ)));
+   public gwl(gwy.a $$0) {
+      super($$0, new ggh($$0.a(gjs.aq)), 0.5F);
       this.a(new hap(this, $$0.f()));
    }
 
-   public hfp a() {
-      return new hfp();
+   protected void a(hcy $$0, fkd $$1) {
+      float $$2 = $$0.a;
+      float $$3 = 1.0F + azm.a($$2 * 100.0F) * $$2 * 0.01F;
+      $$2 = azm.a($$2, 0.0F, 1.0F);
+      $$2 *= $$2;
+      $$2 *= $$2;
+      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
+      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
+      $$1.b($$4, $$5, $$4);
    }
 
-   @Override
-   public alg a(hfp $$0) {
+   protected float a(hcy $$0) {
+      float $$1 = $$0.a;
+      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azm.a($$1, 0.5F, 1.0F);
+   }
+
+   public alg b(hcy $$0) {
       return a;
    }
 
-   protected void a(hfp $$0, fjy $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.G;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.ab;
-         float $$6 = azm.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
-      }
+   public hcy a() {
+      return new hcy();
    }
 
-   protected ggy.a a(cny $$0, bxa $$1) {
-      czk $$2 = $$0.a($$1);
-      return $$0.fx() == $$1 && $$0.gk() && $$2.a(czo.xd) ? ggy.a.e : ggy.a.a;
+   public void a(cnz $$0, hcy $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = $$0.m();
    }
 }

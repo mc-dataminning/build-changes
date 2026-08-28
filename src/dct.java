@@ -1,36 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public record dct(List<asi<String>> g) implements dbm<String, dct> {
-   public static final dct a = new dct(List.of());
-   public static final int b = 1024;
-   public static final int c = 100;
-   private static final Codec<asi<String>> h = asi.a(Codec.string(0, 1024));
-   public static final Codec<List<asi<String>>> d = h.sizeLimitedListOf(100);
-   public static final Codec<dct> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dct::a)).apply($$0, dct::new));
-   public static final yw<ByteBuf, dct> f = asi.a(yu.b(1024)).a(yu.c(100)).a(dct::new, dct::a);
+public record dct(float c, Optional<alg> d) {
+   public static final Codec<dct> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayu.o.fieldOf("seconds").forGetter(dct::b), alg.a.optionalFieldOf("cooldown_group").forGetter(dct::c)).apply($$0, dct::new)
+   );
+   public static final yw<wj, dct> b = yw.a(yu.l, dct::b, alg.b.a(yu::a), dct::c, dct::new);
 
-   public dct(List<asi<String>> g) {
-      if (g.size() > 100) {
-         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
-      } else {
-         this.g = g;
+   public dct(float $$0) {
+      this($$0, Optional.empty());
+   }
+
+   public int a() {
+      return (int)(this.c * 20.0F);
+   }
+
+   public void a(czn $$0, bxj $$1) {
+      if ($$1 instanceof crm $$2) {
+         $$2.gE().a($$0, this.a());
       }
    }
 
-   public Stream<String> a(boolean $$0) {
-      return this.g.stream().map($$1 -> $$1.a($$0));
+   public float b() {
+      return this.c;
    }
 
-   public dct b(List<asi<String>> $$0) {
-      return new dct($$0);
-   }
-
-   @Override
-   public List<asi<String>> a() {
-      return this.g;
+   public Optional<alg> c() {
+      return this.d;
    }
 }

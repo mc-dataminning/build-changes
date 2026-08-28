@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface fgv {
+public interface fgv<T> {
+   List<fgt<T>> a(long var1);
 }

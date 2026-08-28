@@ -1,31 +1,25 @@
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public enum dix implements din {
-   a;
-
-   @Nullable
+public interface dix extends dje, djp, djr {
    @Override
-   public dxm c_(iv $$0) {
-      return null;
+   default <T extends dxr> Optional<T> a(iv $$0, dxt<T> $$1) {
+      return djp.super.a($$0, $$1);
    }
 
    @Override
-   public eao a_(iv $$0) {
-      return dmo.a.m();
+   default List<ffw> c(@Nullable bwi $$0, fex $$1) {
+      return dje.super.c($$0, $$1);
    }
 
    @Override
-   public ewv b_(iv $$0) {
-      return eww.a.g();
+   default boolean a(@Nullable bwi $$0, ffw $$1) {
+      return dje.super.a($$0, $$1);
    }
 
    @Override
-   public int G_() {
-      return 0;
-   }
-
-   @Override
-   public int H_() {
-      return 0;
+   default iv a(egs.a $$0, iv $$1) {
+      return djp.super.a($$0, $$1);
    }
 }

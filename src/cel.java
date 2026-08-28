@@ -37,8 +37,8 @@ public class cel extends cef {
 
    @Override
    public void d() {
-      fex $$0 = this.a.dx();
-      fex $$1 = new fex(this.b.dz() - this.a.dz(), 0.0, this.b.dF() - this.a.dF());
+      ffc $$0 = this.a.dx();
+      ffc $$1 = new ffc(this.b.dz() - this.a.dz(), 0.0, this.b.dF() - this.a.dF());
       if ($$1.h() > 1.0E-7) {
          $$1 = $$1.d().c(0.4).e($$0.c(0.2));
       }

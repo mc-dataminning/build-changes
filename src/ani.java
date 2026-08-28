@@ -36,8 +36,8 @@ public class ani {
       );
    }
 
-   private static int a(ej $$0, Collection<? extends bwi> $$1, jf<dfx> $$2, int $$3) throws CommandSyntaxException {
-      dfx $$4 = $$2.a();
+   private static int a(ej $$0, Collection<? extends bwi> $$1, jf<dga> $$2, int $$3) throws CommandSyntaxException {
+      dga $$4 = $$2.a();
       if ($$3 > $$4.e()) {
          throw d.create($$3, $$4.e());
       } else {
@@ -46,9 +46,9 @@ public class ani {
          for (bwi $$6 : $$1) {
             if ($$6 instanceof bxj) {
                bxj $$7 = (bxj)$$6;
-               czk $$8 = $$7.fa();
+               czn $$8 = $$7.fa();
                if (!$$8.f()) {
-                  if ($$4.c($$8) && dfz.a(dfz.b($$8).a(), $$2)) {
+                  if ($$4.c($$8) && dgc.a(dgc.b($$8).a(), $$2)) {
                      $$8.a($$2, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {
@@ -66,9 +66,9 @@ public class ani {
             throw e.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> wy.a("commands.enchant.success.single", dfx.a($$2, $$3), $$1.iterator().next().m_()), true);
+               $$0.a(() -> wy.a("commands.enchant.success.single", dga.a($$2, $$3), $$1.iterator().next().m_()), true);
             } else {
-               $$0.a(() -> wy.a("commands.enchant.success.multiple", dfx.a($$2, $$3), $$1.size()), true);
+               $$0.a(() -> wy.a("commands.enchant.success.multiple", dga.a($$2, $$3), $$1.size()), true);
             }
 
             return $$5;

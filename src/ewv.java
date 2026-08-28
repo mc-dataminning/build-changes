@@ -1,127 +1,213 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.HashCommon;
+import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import java.util.NoSuchElementException;
 
-public final class ewv extends eaq<ewu, ewv> {
-   public static final Codec<ewv> a = a(mg.c.q(), ewu::g).stable();
-   public static final int f = 9;
-   public static final int g = 8;
+public class ewv extends LongLinkedOpenHashSet {
+   private final ewv.a a;
 
-   public ewv(ewu $$0, Reference2ObjectArrayMap<ebr<?>, Comparable<?>> $$1, MapCodec<ewv> $$2) {
-      super($$0, $$1, $$2);
+   public ewv(int $$0, float $$1) {
+      super($$0, $$1);
+      this.a = new ewv.a($$0 / 64, $$1);
    }
 
-   public ewu a() {
-      return this.d;
+   public boolean add(long $$0) {
+      return this.a.c($$0);
    }
 
-   public boolean b() {
-      return this.a().c(this);
+   public boolean rem(long $$0) {
+      return this.a.d($$0);
    }
 
-   public boolean a(ewu $$0) {
-      return this.d == $$0 && this.d.c(this);
+   public long removeFirstLong() {
+      return this.a.a();
    }
 
-   public boolean c() {
-      return this.a().b();
+   public int size() {
+      throw new UnsupportedOperationException();
    }
 
-   public float a(din $$0, iv $$1) {
-      return this.a().a(this, $$0, $$1);
+   public boolean isEmpty() {
+      return this.a.isEmpty();
    }
 
-   public float d() {
-      return this.a().a(this);
-   }
+   protected static class a extends Long2LongLinkedOpenHashMap {
+      private static final int a = azm.f(60000000);
+      private static final int b = azm.f(60000000);
+      private static final int c = 64 - a - b;
+      private static final int d = 0;
+      private static final int e = c;
+      private static final int g = c + b;
+      private static final long h = 3L << g | 3L | 3L << e;
+      private int i = -1;
+      private long j;
+      private final int k;
 
-   public int e() {
-      return this.a().d(this);
-   }
+      public a(int $$0, float $$1) {
+         super($$0, $$1);
+         this.k = $$0;
+      }
 
-   public boolean b(din $$0, iv $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            iv $$4 = $$1.b($$2, 0, $$3);
-            ewv $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).s()) {
+      static long a(long $$0) {
+         return $$0 & ~h;
+      }
+
+      static int b(long $$0) {
+         int $$1 = (int)($$0 >>> g & 3L);
+         int $$2 = (int)($$0 >>> 0 & 3L);
+         int $$3 = (int)($$0 >>> e & 3L);
+         return $$1 << 4 | $$3 << 2 | $$2;
+      }
+
+      static long a(long $$0, int $$1) {
+         $$0 |= (long)($$1 >>> 4 & 3) << g;
+         $$0 |= (long)($$1 >>> 2 & 3) << e;
+         return $$0 | (long)($$1 >>> 0 & 3) << 0;
+      }
+
+      public boolean c(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         int $$4;
+         if ($$1 == 0L) {
+            if (this.containsNullKey) {
+               return this.a(this.n, $$3);
+            }
+
+            this.containsNullKey = true;
+            $$4 = this.n;
+         } else {
+            if (this.i != -1 && $$1 == this.j) {
+               return this.a(this.i, $$3);
+            }
+
+            long[] $$5 = this.key;
+            $$4 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
+               if ($$7 == $$1) {
+                  this.i = $$4;
+                  this.j = $$1;
+                  return this.a($$4, $$3);
+               }
+
+               $$4 = $$4 + 1 & this.mask;
+            }
+         }
+
+         this.key[$$4] = $$1;
+         this.value[$$4] = $$3;
+         if (this.size == 0) {
+            this.first = this.last = $$4;
+            this.link[$$4] = -1L;
+         } else {
+            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
+            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
+            this.last = $$4;
+         }
+
+         if (this.size++ >= this.maxFill) {
+            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
+         }
+
+         return false;
+      }
+
+      private boolean a(int $$0, long $$1) {
+         boolean $$2 = (this.value[$$0] & $$1) != 0L;
+         this.value[$$0] = this.value[$$0] | $$1;
+         return $$2;
+      }
+
+      public boolean d(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         if ($$1 == 0L) {
+            return this.containsNullKey ? this.e($$3) : false;
+         } else if (this.i != -1 && $$1 == this.j) {
+            return this.b(this.i, $$3);
+         } else {
+            long[] $$4 = this.key;
+            int $$5 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
+               if ($$1 == $$6) {
+                  this.i = $$5;
+                  this.j = $$1;
+                  return this.b($$5, $$3);
+               }
+
+               $$5 = $$5 + 1 & this.mask;
+            }
+
+            return false;
+         }
+      }
+
+      private boolean e(long $$0) {
+         if ((this.value[this.n] & $$0) == 0L) {
+            return false;
+         } else {
+            this.value[this.n] = this.value[this.n] & ~$$0;
+            if (this.value[this.n] != 0L) {
+               return true;
+            } else {
+               this.containsNullKey = false;
+               this.size--;
+               this.fixPointers(this.n);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
                return true;
             }
          }
       }
 
-      return false;
-   }
+      private boolean b(int $$0, long $$1) {
+         if ((this.value[$$0] & $$1) == 0L) {
+            return false;
+         } else {
+            this.value[$$0] = this.value[$$0] & ~$$1;
+            if (this.value[$$0] != 0L) {
+               return true;
+            } else {
+               this.i = -1;
+               this.size--;
+               this.fixPointers($$0);
+               this.shiftKeys($$0);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
 
-   public void a(arq $$0, iv $$1, eao $$2) {
-      this.a().b($$0, $$1, $$2, this);
-   }
+               return true;
+            }
+         }
+      }
 
-   public void a(djh $$0, iv $$1, azv $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
+      public long a() {
+         if (this.size == 0) {
+            throw new NoSuchElementException();
+         } else {
+            int $$0 = this.first;
+            long $$1 = this.key[$$0];
+            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
+            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
+            if (this.value[$$0] == 0L) {
+               this.removeFirstLong();
+               this.i = -1;
+            }
 
-   public boolean f() {
-      return this.a().i();
-   }
+            return a($$1, $$2);
+         }
+      }
 
-   public void a(arq $$0, iv $$1, azv $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public fex c(din $$0, iv $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public eao g() {
-      return this.a().b(this);
-   }
-
-   @Nullable
-   public lw h() {
-      return this.a().h();
-   }
-
-   public boolean a(axr<ewu> $$0) {
-      return this.a().k().a($$0);
-   }
-
-   public boolean a(jj<ewu> $$0) {
-      return $$0.a(this.a().k());
-   }
-
-   public boolean b(ewu $$0) {
-      return this.a() == $$0;
-   }
-
-   public float i() {
-      return this.a().c();
-   }
-
-   public boolean a(din $$0, iv $$1, ewu $$2, jb $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
-   }
-
-   public ffr d(din $$0, iv $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   @Nullable
-   public fes e(din $$0, iv $$1) {
-      return this.a().c(this, $$0, $$1);
-   }
-
-   public jf<ewu> j() {
-      return this.d.k();
-   }
-
-   public Stream<axr<ewu>> k() {
-      return this.d.k().c();
-   }
-
-   public void a(djh $$0, iv $$1, bwi $$2, bxb $$3) {
-      this.a().a($$0, $$1, $$2, $$3);
+      protected void rehash(int $$0) {
+         if ($$0 > this.k) {
+            super.rehash($$0);
+         }
+      }
    }
 }

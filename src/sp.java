@@ -42,12 +42,12 @@ public class sp {
       return this.a.g();
    }
 
-   public eao a(iv $$0) {
+   public eat a(iv $$0) {
       return this.a().a_(this.j($$0));
    }
 
-   public <T extends dxm> T a(iv $$0, Class<T> $$1) {
-      dxm $$2 = this.a().c_(this.j($$0));
+   public <T extends dxr> T a(iv $$0, Class<T> $$1) {
+      dxr $$2 = this.a().c_(this.j($$0));
       if ($$2 == null) {
          throw this.a($$0, "test.error.missing_block_entity");
       } else if ($$1.isInstance($$2)) {
@@ -62,33 +62,33 @@ public class sp {
    }
 
    public void a(Class<? extends bwi> $$0) {
-      fes $$1 = this.j();
-      List<? extends bwi> $$2 = this.a().a($$0, $$1.g(1.0), $$0x -> !($$0x instanceof crj));
+      fex $$1 = this.j();
+      List<? extends bwi> $$2 = this.a().a($$0, $$1.g(1.0), $$0x -> !($$0x instanceof crm));
       $$2.forEach($$0x -> $$0x.c(this.a()));
    }
 
-   public cno a(czg $$0, fex $$1) {
+   public cnr a(czj $$0, ffc $$1) {
       arq $$2 = this.a();
-      fex $$3 = this.a($$1);
-      cno $$4 = new cno($$2, $$3.d, $$3.e, $$3.f, new czk($$0, 1));
+      ffc $$3 = this.a($$1);
+      cnr $$4 = new cnr($$2, $$3.d, $$3.e, $$3.f, new czn($$0, 1));
       $$4.n(0.0, 0.0, 0.0);
       $$2.b($$4);
       return $$4;
    }
 
-   public cno a(czg $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0, new fex((double)$$1, (double)$$2, (double)$$3));
+   public cnr a(czj $$0, float $$1, float $$2, float $$3) {
+      return this.a($$0, new ffc((double)$$1, (double)$$2, (double)$$3));
    }
 
-   public cno a(czg $$0, iv $$1) {
+   public cnr a(czj $$0, iv $$1) {
       return this.a($$0, (float)$$1.u(), (float)$$1.v(), (float)$$1.w());
    }
 
    public <E extends bwi> E a(bwr<E> $$0, iv $$1) {
-      return this.a($$0, fex.c($$1));
+      return this.a($$0, ffc.c($$1));
    }
 
-   public <E extends bwi> E a(bwr<E> $$0, fex $$1) {
+   public <E extends bwi> E a(bwr<E> $$0, ffc $$1) {
       arq $$2 = this.a();
       E $$3 = $$0.a($$2, bwq.d);
       if ($$3 == null) {
@@ -98,7 +98,7 @@ public class sp {
             $$4.gb();
          }
 
-         fex $$5 = this.a($$1);
+         ffc $$5 = this.a($$1);
          $$3.b($$5.d, $$5.e, $$5.f, $$3.dK(), $$3.dM());
          $$2.b($$3);
          return $$3;
@@ -124,7 +124,7 @@ public class sp {
       } else if ($$5.size() > 1) {
          throw this.a("test.error.too_many_entities", $$0.i(), $$1, $$2, $$3, $$5.size());
       } else {
-         fex $$6 = this.a(new fex((double)$$1, (double)$$2, (double)$$3));
+         ffc $$6 = this.a(new ffc((double)$$1, (double)$$2, (double)$$3));
          $$5.sort(($$1x, $$2x) -> {
             double $$3x = $$1x.ds().f($$6);
             double $$4x = $$2x.ds().f($$6);
@@ -135,14 +135,14 @@ public class sp {
    }
 
    public <E extends bwi> List<E> b(bwr<E> $$0, int $$1, int $$2, int $$3, double $$4) {
-      return this.a($$0, fex.c(new iv($$1, $$2, $$3)), $$4);
+      return this.a($$0, ffc.c(new iv($$1, $$2, $$3)), $$4);
    }
 
-   public <E extends bwi> List<E> a(bwr<E> $$0, fex $$1, double $$2) {
+   public <E extends bwi> List<E> a(bwr<E> $$0, ffc $$1, double $$2) {
       arq $$3 = this.a();
-      fex $$4 = this.a($$1);
-      fes $$5 = this.a.e();
-      fes $$6 = new fes($$4.b(-$$2, -$$2, -$$2), $$4.b($$2, $$2, $$2));
+      ffc $$4 = this.a($$1);
+      fex $$5 = this.a.e();
+      fex $$6 = new fex($$4.b(-$$2, -$$2, -$$2), $$4.b($$2, $$2, $$2));
       return $$3.a($$0, $$5, $$1x -> $$1x.cQ().c($$6) && $$1x.bI());
    }
 
@@ -151,7 +151,7 @@ public class sp {
    }
 
    public <E extends bwi> E a(bwr<E> $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0, new fex((double)$$1, (double)$$2, (double)$$3));
+      return this.a($$0, new ffc((double)$$1, (double)$$2, (double)$$3));
    }
 
    public <E extends bxl> E b(bwr<E> $$0, iv $$1) {
@@ -164,24 +164,24 @@ public class sp {
       return this.b($$0, new iv($$1, $$2, $$3));
    }
 
-   public <E extends bxl> E b(bwr<E> $$0, fex $$1) {
+   public <E extends bxl> E b(bwr<E> $$0, ffc $$1) {
       E $$2 = (E)this.a($$0, $$1);
       $$2.go();
       return $$2;
    }
 
    public <E extends bxl> E b(bwr<E> $$0, float $$1, float $$2, float $$3) {
-      return this.b($$0, new fex((double)$$1, (double)$$2, (double)$$3));
+      return this.b($$0, new ffc((double)$$1, (double)$$2, (double)$$3));
    }
 
    public void a(bxl $$0, float $$1, float $$2, float $$3) {
-      fex $$4 = this.a(new fex((double)$$1, (double)$$2, (double)$$3));
+      ffc $$4 = this.a(new ffc((double)$$1, (double)$$2, (double)$$3));
       $$0.b($$4.d, $$4.e, $$4.f, $$0.dK(), $$0.dM());
    }
 
    public sw a(bxl $$0, iv $$1, float $$2) {
       return this.g().a(2, () -> {
-         exj $$3 = $$0.O().a(this.j($$1), 0);
+         exo $$3 = $$0.O().a(this.j($$1), 0);
          $$0.O().a($$3, (double)$$2);
       });
    }
@@ -193,28 +193,28 @@ public class sp {
    public void b(iv $$0) {
       this.a(axc.f, $$0);
       iv $$1 = this.j($$0);
-      eao $$2 = this.a().a_($$1);
-      dmx $$3 = (dmx)$$2.b();
+      eat $$2 = this.a().a_($$1);
+      dnc $$3 = (dnc)$$2.b();
       $$3.a($$2, this.a(), $$1, null);
    }
 
    public void c(iv $$0) {
-      this.a($$0, this.a(dje.b));
+      this.a($$0, this.a(djj.b));
    }
 
-   public void a(iv $$0, crj $$1) {
+   public void a(iv $$0, crm $$1) {
       iv $$2 = this.j($$0);
-      this.a($$0, $$1, new fet(fex.b($$2), jb.c, $$2, true));
+      this.a($$0, $$1, new fey(ffc.b($$2), jb.c, $$2, true));
    }
 
-   public void a(iv $$0, crj $$1, fet $$2) {
+   public void a(iv $$0, crm $$1, fey $$2) {
       iv $$3 = this.j($$0);
-      eao $$4 = this.a().a_($$3);
+      eat $$4 = this.a().a_($$3);
       buf $$5 = buf.a;
       bug $$6 = $$4.a($$1.b($$5), this.a(), $$1, $$5, $$2);
       if (!$$6.a()) {
          if (!($$6 instanceof bug.f) || !$$4.a(this.a(), $$1, $$2).a()) {
-            ddf $$7 = new ddf($$1, $$5, $$2);
+            ddi $$7 = new ddi($$1, $$5, $$2);
             $$1.b($$5).a($$7);
          }
       }
@@ -231,11 +231,11 @@ public class sp {
       return $$0;
    }
 
-   public crj a(final dje $$0) {
-      return new crj(this.a(), iv.c, 0.0F, new GameProfile(UUID.randomUUID(), "test-mock-player")) {
+   public crm a(final djj $$0) {
+      return new crm(this.a(), iv.c, 0.0F, new GameProfile(UUID.randomUUID(), "test-mock-player")) {
          @Override
          public boolean V_() {
-            return $$0 == dje.d;
+            return $$0 == djj.d;
          }
 
          @Override
@@ -277,35 +277,35 @@ public class sp {
    }
 
    public void d(iv $$0) {
-      this.a(dmo.dL, $$0);
+      this.a(dmt.dL, $$0);
       iv $$1 = this.j($$0);
-      eao $$2 = this.a().a_($$1);
-      drf $$3 = (drf)$$2.b();
+      eat $$2 = this.a().a_($$1);
+      drk $$3 = (drk)$$2.b();
       $$3.b($$2, this.a(), $$1, null);
    }
 
    public void a(iv $$0, long $$1) {
-      this.a($$0, dmo.hB);
-      this.b($$1, () -> this.a($$0, dmo.a));
+      this.a($$0, dmt.hB);
+      this.b($$1, () -> this.a($$0, dmt.a));
    }
 
    public void e(iv $$0) {
       this.a().a(this.j($$0), false, null);
    }
 
-   public void a(int $$0, int $$1, int $$2, dmm $$3) {
+   public void a(int $$0, int $$1, int $$2, dmr $$3) {
       this.a(new iv($$0, $$1, $$2), $$3);
    }
 
-   public void a(int $$0, int $$1, int $$2, eao $$3) {
+   public void a(int $$0, int $$1, int $$2, eat $$3) {
       this.a(new iv($$0, $$1, $$2), $$3);
    }
 
-   public void a(iv $$0, dmm $$1) {
+   public void a(iv $$0, dmr $$1) {
       this.a($$0, $$1.m());
    }
 
-   public void a(iv $$0, eao $$1) {
+   public void a(iv $$0, eat $$1) {
       this.a().a(this.j($$0), $$1, 3);
    }
 
@@ -317,41 +317,41 @@ public class sp {
       this.a().b((long)$$0);
    }
 
-   public void a(dmm $$0, int $$1, int $$2, int $$3) {
+   public void a(dmr $$0, int $$1, int $$2, int $$3) {
       this.a($$0, new iv($$1, $$2, $$3));
    }
 
-   public void a(dmm $$0, iv $$1) {
-      eao $$2 = this.a($$1);
+   public void a(dmr $$0, iv $$1) {
+      eat $$2 = this.a($$1);
       this.a($$1, $$2x -> $$2.a($$0), $$1x -> wy.a("test.error.expected_block", $$0.f(), $$1x.f()));
    }
 
-   public void b(dmm $$0, int $$1, int $$2, int $$3) {
+   public void b(dmr $$0, int $$1, int $$2, int $$3) {
       this.b($$0, new iv($$1, $$2, $$3));
    }
 
-   public void b(dmm $$0, iv $$1) {
+   public void b(dmr $$0, iv $$1) {
       this.a($$1, $$2 -> !this.a($$1).a($$0), $$1x -> wy.a("test.error.unexpected_block", $$0.f()));
    }
 
-   public void a(axr<dmm> $$0, iv $$1) {
+   public void a(axr<dmr> $$0, iv $$1) {
       this.b($$1, $$1x -> $$1x.a($$0), $$1x -> wy.a("test.error.expected_block_tag", $$0.b(), $$1x.b().f()));
    }
 
-   public void c(dmm $$0, int $$1, int $$2, int $$3) {
+   public void c(dmr $$0, int $$1, int $$2, int $$3) {
       this.c($$0, new iv($$1, $$2, $$3));
    }
 
-   public void c(dmm $$0, iv $$1) {
+   public void c(dmr $$0, iv $$1) {
       this.b(() -> this.a($$0, $$1));
    }
 
-   public void a(iv $$0, Predicate<dmm> $$1, Function<dmm, wy> $$2) {
+   public void a(iv $$0, Predicate<dmr> $$1, Function<dmr, wy> $$2) {
       this.b($$0, $$1x -> $$1.test($$1x.b()), $$1x -> $$2.apply($$1x.b()));
    }
 
-   public <T extends Comparable<T>> void a(iv $$0, ebr<T> $$1, T $$2) {
-      eao $$3 = this.a($$0);
+   public <T extends Comparable<T>> void a(iv $$0, ebw<T> $$1, T $$2) {
+      eat $$3 = this.a($$0);
       boolean $$4 = $$3.b($$1);
       if (!$$4) {
          throw this.a($$0, "test.error.block_property_missing", $$1.f(), $$2);
@@ -360,7 +360,7 @@ public class sp {
       }
    }
 
-   public <T extends Comparable<T>> void a(iv $$0, ebr<T> $$1, Predicate<T> $$2, wy $$3) {
+   public <T extends Comparable<T>> void a(iv $$0, ebw<T> $$1, Predicate<T> $$2, wy $$3) {
       this.b($$0, $$2x -> {
          if (!$$2x.b($$1)) {
             return false;
@@ -371,21 +371,21 @@ public class sp {
       }, $$1x -> $$3);
    }
 
-   public void b(iv $$0, eao $$1) {
-      eao $$2 = this.a($$0);
+   public void b(iv $$0, eat $$1) {
+      eat $$2 = this.a($$0);
       if (!$$2.equals($$1)) {
          throw this.a($$0, "test.error.state_not_equal", $$1, $$2);
       }
    }
 
-   public void b(iv $$0, Predicate<eao> $$1, Function<eao, wy> $$2) {
-      eao $$3 = this.a($$0);
+   public void b(iv $$0, Predicate<eat> $$1, Function<eat, wy> $$2) {
+      eat $$3 = this.a($$0);
       if (!$$1.test($$3)) {
          throw this.a($$0, $$2.apply($$3));
       }
    }
 
-   public <T extends dxm> void a(iv $$0, Class<T> $$1, Predicate<T> $$2, Supplier<wy> $$3) {
+   public <T extends dxr> void a(iv $$0, Class<T> $$1, Predicate<T> $$2, Supplier<wy> $$3) {
       T $$4 = this.a($$0, $$1);
       if (!$$2.test($$4)) {
          throw this.a($$0, $$3.get());
@@ -395,7 +395,7 @@ public class sp {
    public void a(iv $$0, jb $$1, IntPredicate $$2, Supplier<wy> $$3) {
       iv $$4 = this.j($$0);
       arq $$5 = this.a();
-      eao $$6 = $$5.a_($$4);
+      eat $$6 = $$5.a_($$4);
       int $$7 = $$6.a($$5, $$4, $$1);
       if (!$$2.test($$7)) {
          throw this.a($$0, $$3.get());
@@ -415,14 +415,14 @@ public class sp {
 
    public void c(bwr<?> $$0, iv $$1) {
       iv $$2 = this.j($$1);
-      List<? extends bwi> $$3 = this.a().a($$0, new fes($$2), bwi::bI);
+      List<? extends bwi> $$3 = this.a().a($$0, new fex($$2), bwi::bI);
       if ($$3.isEmpty()) {
          throw this.a($$1, "test.error.expected_entity", $$0.h());
       }
    }
 
-   public void a(bwr<?> $$0, fes $$1) {
-      fes $$2 = this.a($$1);
+   public void a(bwr<?> $$0, fex $$1) {
+      fex $$2 = this.a($$1);
       List<? extends bwi> $$3 = this.a().a($$0, $$2, bwi::bI);
       if ($$3.isEmpty()) {
          throw this.a(iv.a((jp)$$1.f()), "test.error.expected_entity", $$0.h());
@@ -454,7 +454,7 @@ public class sp {
 
    public <T extends bwi> List<T> b(bwr<T> $$0, iv $$1, double $$2) {
       iv $$3 = this.j($$1);
-      return this.a().a($$0, new fes($$3).g($$2), bwi::bI);
+      return this.a().a($$0, new fex($$3).g($$2), bwi::bI);
    }
 
    public <T extends bwi> List<T> c(bwr<T> $$0) {
@@ -467,17 +467,17 @@ public class sp {
 
    public void a(bwi $$0, iv $$1) {
       iv $$2 = this.j($$1);
-      List<? extends bwi> $$3 = this.a().a($$0.an(), new fes($$2), bwi::bI);
+      List<? extends bwi> $$3 = this.a().a($$0.an(), new fex($$2), bwi::bI);
       $$3.stream().filter($$1x -> $$1x == $$0).findFirst().orElseThrow(() -> this.a($$1, "test.error.expected_entity", $$0.an().h()));
    }
 
-   public void a(czg $$0, iv $$1, double $$2, int $$3) {
+   public void a(czj $$0, iv $$1, double $$2, int $$3) {
       iv $$4 = this.j($$1);
-      List<cno> $$5 = this.a().a(bwr.aq, new fes($$4).g($$2), bwi::bI);
+      List<cnr> $$5 = this.a().a(bwr.aq, new fex($$4).g($$2), bwi::bI);
       int $$6 = 0;
 
-      for (cno $$7 : $$5) {
-         czk $$8 = $$7.f();
+      for (cnr $$7 : $$5) {
+         czn $$8 = $$7.f();
          if ($$8.a($$0)) {
             $$6 += $$8.M();
          }
@@ -488,11 +488,11 @@ public class sp {
       }
    }
 
-   public void a(czg $$0, iv $$1, double $$2) {
+   public void a(czj $$0, iv $$1, double $$2) {
       iv $$3 = this.j($$1);
 
-      for (bwi $$5 : this.a().a(bwr.aq, new fes($$3).g($$2), bwi::bI)) {
-         cno $$6 = (cno)$$5;
+      for (bwi $$5 : this.a().a(bwr.aq, new fex($$3).g($$2), bwi::bI)) {
+         cnr $$6 = (cnr)$$5;
          if ($$6.f().h().equals($$0)) {
             return;
          }
@@ -501,20 +501,20 @@ public class sp {
       throw this.a($$1, "test.error.expected_item", $$0.l());
    }
 
-   public void b(czg $$0, iv $$1, double $$2) {
+   public void b(czj $$0, iv $$1, double $$2) {
       iv $$3 = this.j($$1);
 
-      for (bwi $$5 : this.a().a(bwr.aq, new fes($$3).g($$2), bwi::bI)) {
-         cno $$6 = (cno)$$5;
+      for (bwi $$5 : this.a().a(bwr.aq, new fex($$3).g($$2), bwi::bI)) {
+         cnr $$6 = (cnr)$$5;
          if ($$6.f().h().equals($$0)) {
             throw this.a($$1, "test.error.unexpected_item", $$0.l());
          }
       }
    }
 
-   public void a(czg $$0) {
+   public void a(czj $$0) {
       for (bwi $$2 : this.a().a(bwr.aq, this.j(), bwi::bI)) {
-         cno $$3 = (cno)$$2;
+         cnr $$3 = (cnr)$$2;
          if ($$3.f().h().equals($$0)) {
             return;
          }
@@ -523,9 +523,9 @@ public class sp {
       throw this.a("test.error.expected_item", $$0.l());
    }
 
-   public void b(czg $$0) {
+   public void b(czj $$0) {
       for (bwi $$2 : this.a().a(bwr.aq, this.j(), bwi::bI)) {
-         cno $$3 = (cno)$$2;
+         cnr $$3 = (cnr)$$2;
          if ($$3.f().h().equals($$0)) {
             throw this.a("test.error.unexpected_item", $$0.l());
          }
@@ -545,14 +545,14 @@ public class sp {
 
    public void d(bwr<?> $$0, iv $$1) {
       iv $$2 = this.j($$1);
-      List<? extends bwi> $$3 = this.a().a($$0, new fes($$2), bwi::bI);
+      List<? extends bwi> $$3 = this.a().a($$0, new fex($$2), bwi::bI);
       if (!$$3.isEmpty()) {
          throw this.a($$1, "test.error.unexpected_entity", $$0.h());
       }
    }
 
-   public void b(bwr<?> $$0, fes $$1) {
-      fes $$2 = this.a($$1);
+   public void b(bwr<?> $$0, fex $$1) {
+      fex $$2 = this.a($$1);
       List<? extends bwi> $$3 = this.a().a($$0, $$2, bwi::bI);
       if (!$$3.isEmpty()) {
          throw this.a($$3.getFirst().du(), "test.error.unexpected_entity", $$0.h());
@@ -560,8 +560,8 @@ public class sp {
    }
 
    public void a(bwr<?> $$0, double $$1, double $$2, double $$3) {
-      fex $$4 = new fex($$1, $$2, $$3);
-      fex $$5 = this.a($$4);
+      ffc $$4 = new ffc($$1, $$2, $$3);
+      ffc $$5 = this.a($$4);
       Predicate<? super bwi> $$6 = $$1x -> $$1x.cQ().a($$5, $$5);
       List<? extends bwi> $$7 = this.a().a($$0, this.j(), $$6);
       if ($$7.isEmpty()) {
@@ -570,8 +570,8 @@ public class sp {
    }
 
    public void b(bwr<?> $$0, double $$1, double $$2, double $$3) {
-      fex $$4 = new fex($$1, $$2, $$3);
-      fex $$5 = this.a($$4);
+      ffc $$4 = new ffc($$1, $$2, $$3);
+      ffc $$5 = this.a($$4);
       Predicate<? super bwi> $$6 = $$1x -> !$$1x.cQ().a($$5, $$5);
       List<? extends bwi> $$7 = this.a().a($$0, this.j(), $$6);
       if ($$7.isEmpty()) {
@@ -581,7 +581,7 @@ public class sp {
 
    public <E extends bwi, T> void a(iv $$0, bwr<E> $$1, Predicate<E> $$2) {
       iv $$3 = this.j($$0);
-      List<E> $$4 = this.a().a($$1, new fes($$3), bwi::bI);
+      List<E> $$4 = this.a().a($$1, new fex($$3), bwi::bI);
       if ($$4.isEmpty()) {
          throw this.a($$0, "test.error.expected_entity", $$1.h());
       } else {
@@ -595,7 +595,7 @@ public class sp {
 
    public <E extends bwi, T> void a(iv $$0, bwr<E> $$1, Function<? super E, T> $$2, @Nullable T $$3) {
       iv $$4 = this.j($$0);
-      List<E> $$5 = this.a().a($$1, new fes($$4), bwi::bI);
+      List<E> $$5 = this.a().a($$1, new fex($$4), bwi::bI);
       if ($$5.isEmpty()) {
          throw this.a($$0, "test.error.expected_entity", $$1.h());
       } else {
@@ -608,9 +608,9 @@ public class sp {
       }
    }
 
-   public <E extends bxj> void a(iv $$0, bwr<E> $$1, czg $$2) {
+   public <E extends bxj> void a(iv $$0, bwr<E> $$1, czj $$2) {
       iv $$3 = this.j($$0);
-      List<E> $$4 = this.a().a($$1, new fes($$3), bwi::bI);
+      List<E> $$4 = this.a().a($$1, new fex($$3), bwi::bI);
       if ($$4.isEmpty()) {
          throw this.a($$0, "test.error.expected_entity", $$1.h());
       } else {
@@ -624,9 +624,9 @@ public class sp {
       }
    }
 
-   public <E extends bwi & cqt> void b(iv $$0, bwr<E> $$1, czg $$2) {
+   public <E extends bwi & cqw> void b(iv $$0, bwr<E> $$1, czj $$2) {
       iv $$3 = this.j($$0);
-      List<E> $$4 = this.a().a($$1, new fes($$3), $$0x -> ((bwi)$$0x).bI());
+      List<E> $$4 = this.a().a($$1, new fex($$3), $$0x -> ((bwi)$$0x).bI());
       if ($$4.isEmpty()) {
          throw this.a($$0, "test.error.expected_entity", $$1.h());
       } else {
@@ -641,27 +641,27 @@ public class sp {
    }
 
    public void f(iv $$0) {
-      dxf $$1 = this.a($$0, dxf.class);
+      dxk $$1 = this.a($$0, dxk.class);
       if (!$$1.c()) {
          throw this.a($$0, "test.error.expected_empty_container");
       }
    }
 
-   public void a(iv $$0, czg $$1) {
-      dxf $$2 = this.a($$0, dxf.class);
+   public void a(iv $$0, czj $$1) {
+      dxk $$2 = this.a($$0, dxk.class);
       if ($$2.a_($$1) != 1) {
          throw this.a($$0, "test.error.expected_container_contents_single", $$1.l());
       }
    }
 
-   public void b(iv $$0, czg $$1) {
-      dxf $$2 = this.a($$0, dxf.class);
+   public void b(iv $$0, czj $$1) {
+      dxk $$2 = this.a($$0, dxk.class);
       if ($$2.a_($$1) == 0) {
          throw this.a($$0, "test.error.expected_container_contents", $$1.l());
       }
    }
 
-   public void a(era $$0, iv $$1) {
+   public void a(erf $$0, iv $$1) {
       iv.a($$0).forEach($$2 -> {
          iv $$3 = $$1.b($$2.u() - $$0.h(), $$2.v() - $$0.i(), $$2.w() - $$0.j());
          this.a($$2, $$3);
@@ -669,14 +669,14 @@ public class sp {
    }
 
    public void a(iv $$0, iv $$1) {
-      eao $$2 = this.a($$0);
-      eao $$3 = this.a($$1);
+      eat $$2 = this.a($$0);
+      eat $$3 = this.a($$1);
       if ($$2 != $$3) {
          throw this.a($$0, "test.error.state_not_equal", $$3, $$2);
       }
    }
 
-   public void a(long $$0, iv $$1, czg $$2) {
+   public void a(long $$0, iv $$1, czj $$2) {
       this.a($$0, () -> this.a($$1, $$2));
    }
 
@@ -688,7 +688,7 @@ public class sp {
       this.b(() -> this.a($$0, $$1, $$2, $$3));
    }
 
-   public void a(bwi $$0, fes $$1, wy $$2) {
+   public void a(bwi $$0, fex $$1, wy $$2) {
       if (!$$1.d(this.b($$0.ds()))) {
          throw this.a($$2);
       }
@@ -710,7 +710,7 @@ public class sp {
    public void a(bxj $$0, jf<bvk> $$1, int $$2) {
       bvm $$3 = $$0.c($$1);
       if ($$3 == null || $$3.e() != $$2) {
-         throw this.a("test.error.expected_entity_effect", $$0.ai(), dbg.a($$1, $$2));
+         throw this.a("test.error.expected_entity_effect", $$0.ai(), dbj.a($$1, $$2));
       }
    }
 
@@ -784,7 +784,7 @@ public class sp {
    }
 
    public void f() {
-      fes $$0 = this.l();
+      fex $$0 = this.l();
       int $$1 = (int)Math.floor($$0.d);
       int $$2 = (int)Math.floor($$0.f);
       int $$3 = (int)Math.floor($$0.e);
@@ -796,7 +796,7 @@ public class sp {
       }
    }
 
-   public int a(egn.a $$0, int $$1, int $$2) {
+   public int a(egs.a $$0, int $$1, int $$2) {
       iv $$3 = this.j(new iv($$1, 0, $$2));
       return this.k(this.a().a($$0, $$3)).v();
    }
@@ -828,39 +828,39 @@ public class sp {
    public iv j(iv $$0) {
       iv $$1 = this.a.d();
       iv $$2 = $$1.a((ka)$$0);
-      return evk.a($$2, drp.a, this.a.u(), $$1);
+      return evp.a($$2, dru.a, this.a.u(), $$1);
    }
 
    public iv k(iv $$0) {
       iv $$1 = this.a.d();
-      dtg $$2 = this.a.u().a(dtg.c);
-      iv $$3 = evk.a($$0, drp.a, $$2, $$1);
+      dtl $$2 = this.a.u().a(dtl.c);
+      iv $$3 = evp.a($$0, dru.a, $$2, $$1);
       return $$3.b($$1);
    }
 
-   public fes a(fes $$0) {
-      fex $$1 = this.a($$0.h());
-      fex $$2 = this.a($$0.i());
-      return new fes($$1, $$2);
-   }
-
-   public fes b(fes $$0) {
-      fex $$1 = this.b($$0.h());
-      fex $$2 = this.b($$0.i());
-      return new fes($$1, $$2);
-   }
-
    public fex a(fex $$0) {
-      fex $$1 = fex.a(this.a.d());
-      return evk.a($$1.e($$0), drp.a, this.a.u(), this.a.d());
+      ffc $$1 = this.a($$0.h());
+      ffc $$2 = this.a($$0.i());
+      return new fex($$1, $$2);
    }
 
    public fex b(fex $$0) {
-      fex $$1 = fex.a(this.a.d());
-      return evk.a($$0.d($$1), drp.a, this.a.u(), this.a.d());
+      ffc $$1 = this.b($$0.h());
+      ffc $$2 = this.b($$0.i());
+      return new fex($$1, $$2);
    }
 
-   public dtg h() {
+   public ffc a(ffc $$0) {
+      ffc $$1 = ffc.a(this.a.d());
+      return evp.a($$1.e($$0), dru.a, this.a.u(), this.a.d());
+   }
+
+   public ffc b(ffc $$0) {
+      ffc $$1 = ffc.a(this.a.d());
+      return evp.a($$0.d($$1), dru.a, this.a.u(), this.a.d());
+   }
+
+   public dtl h() {
       return this.a.u();
    }
 
@@ -884,24 +884,24 @@ public class sp {
       return (long)this.a.p();
    }
 
-   public fes j() {
+   public fex j() {
       return this.a.e();
    }
 
-   private fes l() {
-      fes $$0 = this.a.e();
-      dtg $$1 = this.a.u();
+   private fex l() {
+      fex $$0 = this.a.e();
+      dtl $$1 = this.a.u();
       switch ($$1) {
          case d:
          case b:
-            return new fes(0.0, 0.0, 0.0, $$0.d(), $$0.c(), $$0.b());
+            return new fex(0.0, 0.0, 0.0, $$0.d(), $$0.c(), $$0.b());
          default:
-            return new fes(0.0, 0.0, 0.0, $$0.b(), $$0.c(), $$0.d());
+            return new fex(0.0, 0.0, 0.0, $$0.b(), $$0.c(), $$0.d());
       }
    }
 
    public void a(Consumer<iv> $$0) {
-      fes $$1 = this.l().a(1.0, 1.0, 1.0);
+      fex $$1 = this.l().a(1.0, 1.0, 1.0);
       iv.a.b($$1).forEach($$0);
    }
 
@@ -909,15 +909,15 @@ public class sp {
       LongStream.range((long)this.a.p(), (long)this.a.x()).forEach($$1 -> this.a.a($$1, $$0::run));
    }
 
-   public void a(crj $$0, czk $$1, iv $$2, jb $$3) {
+   public void a(crm $$0, czn $$1, iv $$2, jb $$3) {
       iv $$4 = this.j($$2.a($$3));
-      fet $$5 = new fet(fex.b($$4), $$3, $$4, false);
-      ddf $$6 = new ddf($$0, buf.a, $$5);
+      fey $$5 = new fey(ffc.b($$4), $$3, $$4, false);
+      ddi $$6 = new ddi($$0, buf.a, $$5);
       $$1.a($$6);
    }
 
-   public void a(alf<dkk> $$0) {
-      fes $$1 = this.j();
+   public void a(alf<dkp> $$0) {
+      fex $$1 = this.j();
       iv $$2 = iv.a($$1.a, $$1.b, $$1.c);
       iv $$3 = iv.a($$1.d, $$1.e, $$1.f);
       Either<Integer, CommandSyntaxException> $$4 = anl.a(this.a(), $$2, $$3, this.a().F_().f(mh.aG).b($$0));

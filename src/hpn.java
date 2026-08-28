@@ -1,42 +1,37 @@
-import javax.annotation.Nullable;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-public class hpn implements hpq {
-   private static final int a = 600;
-   private static final wy b = wy.c("tutorial.open_inventory.title");
-   private static final wy c = wy.a("tutorial.open_inventory.description", hpp.a("inventory"));
-   private final hpp d;
-   @Nullable
-   private fvh e;
-   private int f;
+public class hpn {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   public hpn(hpp $$0) {
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
+   }
+
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hpr.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            fpo $$0 = this.d.e();
-            this.e = new fvh($$0.h, fvh.a.d, b, c, false);
-            $$0.aA().a(this.e);
-         }
-      }
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(hpr.e);
+   public void a(hpc $$0) {
+      this.b.ifPresent($$1 -> $$0.send(hpd.e, $$1x -> {
+            $$1x.a(hpf.p, this.a($$1));
+            $$1x.a(hpf.q, (int)this.c);
+         }));
    }
 }

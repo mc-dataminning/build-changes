@@ -1,34 +1,28 @@
-public class hbg<S extends hel, M extends ggk<S> & gfa & ggu> extends haz<S, M> {
-   private static final float a = (float) (-Math.PI / 6);
-   private static final float b = (float) (Math.PI / 2);
+public class hbg extends hbm<heg, ghi> {
+   private final ghi a;
+   private final ghi b;
+   private final hax c;
 
-   public hbg(gyq<S, M> $$0) {
+   public hbg(gyv<heg, ghi> $$0, gjp $$1, hax $$2) {
       super($$0);
+      this.c = $$2;
+      this.a = new ghi($$1.a(gjs.bH));
+      this.b = new ghi($$1.a(gjs.bG));
    }
 
-   protected void a(S $$0, hgc $$1, bxa $$2, fjy $$3, gqm $$4, int $$5) {
-      if (!$$1.c()) {
-         buf $$6 = $$2 == $$0.e ? buf.a : buf.b;
-         if ($$0.R && $$0.M == $$6 && $$0.H < 1.0E-5F && !$$0.aI.c()) {
-            this.a($$0.aI, $$2, $$3, $$4, $$5);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
+   public void a(fkd $$0, gqr $$1, int $$2, heg $$3, float $$4, float $$5) {
+      czn $$6 = $$3.c;
+      dhw $$7 = $$6.a(kk.D);
+      if ($$7 != null && $$7.d().isPresent()) {
+         this.a($$0, $$1, $$3, $$6, $$7.d().get(), $$2);
+      } else if ($$3.d) {
+         this.a($$0, $$1, $$3, czn.k, dhv.m, $$2);
       }
    }
 
-   private void a(hgc $$0, bxa $$1, fjy $$2, gqm $$3, int $$4) {
-      $$2.a();
-      this.d().e().a($$2);
-      gjo $$5 = this.d().b();
-      float $$6 = $$5.e;
-      $$5.e = azm.a($$5.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$5.a($$2);
-      $$5.e = $$6;
-      ham.a($$2, ham.a.a);
-      boolean $$7 = $$1 == bxa.a;
-      $$2.a(($$7 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      $$0.a($$2, $$3, $$4, hja.d);
-      $$2.b();
+   private void a(fkd $$0, gqr $$1, heg $$2, czn $$3, alf<dhu> $$4, int $$5) {
+      ghi $$6 = $$2.aj ? this.b : this.a;
+      $$6.a($$2);
+      this.c.a(hlw.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
    }
 }

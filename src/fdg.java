@@ -1,36 +1,28 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record fdg(fdt b, ezn c) implements fcx {
-   public static final MapCodec<fdg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fdu.a.fieldOf("value").forGetter(fdg::c), ezn.a.fieldOf("range").forGetter(fdg::d)).apply($$0, fdg::new)
-   );
+public class fdg implements fdc {
+   private static final fdg b = new fdg();
+   public static final MapCodec<fdg> a = MapCodec.unit(b);
+
+   private fdg() {
+   }
 
    @Override
-   public fcy b() {
-      return fcz.r;
+   public fdd b() {
+      return fde.g;
    }
 
    @Override
    public Set<bax<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+      return Set.of(fcn.b);
    }
 
-   public boolean a(ezo $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public boolean a(ezt $$0) {
+      return $$0.a(fcn.b);
    }
 
-   public static fcx.a a(fdt $$0, ezn $$1) {
-      return () -> new fdg($$0, $$1);
-   }
-
-   public fdt c() {
-      return this.b;
-   }
-
-   public ezn d() {
-      return this.c;
+   public static fdc.a c() {
+      return () -> b;
    }
 }

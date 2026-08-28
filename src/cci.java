@@ -1,18 +1,18 @@
 import com.google.common.collect.ImmutableMap;
 
-public class cci extends bza<cqv> {
+public class cci extends bza<cqy> {
    public cci() {
       super(ImmutableMap.of());
    }
 
-   protected boolean a(arq $$0, cqv $$1, long $$2) {
+   protected boolean a(arq $$0, cqy $$1, long $$2) {
       return c($$1) || b($$1);
    }
 
-   protected void b(arq $$0, cqv $$1, long $$2) {
+   protected void b(arq $$0, cqy $$1, long $$2) {
       if (c($$1) || b($$1)) {
          byj<?> $$3 = $$1.eb();
-         if (!$$3.c(ctd.g)) {
+         if (!$$3.c(ctg.g)) {
             $$3.b(cgl.u);
             $$3.b(cgl.n);
             $$3.b(cgl.o);
@@ -20,11 +20,11 @@ public class cci extends bza<cqv> {
             $$3.b(cgl.r);
          }
 
-         $$3.a(ctd.g);
+         $$3.a(ctg.g);
       }
    }
 
-   protected void c(arq $$0, cqv $$1, long $$2) {
+   protected void c(arq $$0, cqy $$1, long $$2) {
       if ($$2 % 100L == 0L) {
          $$1.a($$0, $$2, 3);
       }

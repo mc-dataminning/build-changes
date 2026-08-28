@@ -9,12 +9,12 @@ public class awy {
       this.a.defaultReturnValue(0);
    }
 
-   public void b(crj $$0, awu<?> $$1, int $$2) {
+   public void b(crm $$0, awu<?> $$1, int $$2) {
       int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
       this.a($$0, $$1, $$3);
    }
 
-   public void a(crj $$0, awu<?> $$1, int $$2) {
+   public void a(crm $$0, awu<?> $$1, int $$2) {
       this.a.put($$1, $$2);
    }
 

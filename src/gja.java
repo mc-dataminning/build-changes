@@ -1,33 +1,93 @@
-public class gja extends ggk<hcz> {
-   private static final int a = 16;
-   private final gjo b;
-   private final gjo c;
-   private final gjo d;
+public class gja extends ggp<hfn> implements gff {
+   private final gjt a = this.v.b("body");
+   private final gjt b = this.a.b("right_arm");
+   private final gjt c = this.a.b("left_arm");
+   private final gjt d = this.a.b("right_wing");
+   private final gjt e = this.a.b("left_wing");
+   private final gjt f = this.v.b("head");
 
-   public gja(gjo $$0) {
-      super($$0, gqx::j);
-      this.b = $$0.b("bone");
-      this.d = this.b.b("wind");
-      this.c = this.b.b("wind_charge");
+   public gja(gjt $$0) {
+      super($$0.b("root"), grc::j);
    }
 
-   public static gju a() {
-      gjw $$0 = new gjw();
-      gjy $$1 = $$0.a();
-      gjy $$2 = $$1.a("bone", gjt.c(), gjq.a(0.0F, 0.0F, 0.0F));
-      $$2.a(
-         "wind",
-         gjt.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new gjs(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new gjs(0.0F)),
-         gjq.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
+   public static gjz a() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      gkd $$2 = $$1.a("root", gjy.c(), gjv.a(0.0F, -2.5F, 0.0F));
+      $$2.a("head", gjy.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new gjx(0.0F)), gjv.a(0.0F, 20.0F, 0.0F));
+      gkd $$3 = $$2.a(
+         "body",
+         gjy.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new gjx(0.0F)).a(0, 16).a(-1.5F, 1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new gjx(-0.2F)),
+         gjv.a(0.0F, 20.0F, 0.0F)
       );
-      $$2.a("wind_charge", gjt.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new gjs(0.0F)), gjq.a(0.0F, 0.0F, 0.0F));
-      return gju.a($$0, 64, 32);
+      $$3.a("right_arm", gjy.c().a(23, 0).a(-1.25F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new gjx(-0.1F)), gjv.a(-1.75F, 0.25F, 0.0F));
+      $$3.a("left_arm", gjy.c().a(23, 6).a(-0.75F, -0.5F, -1.0F, 2.0F, 4.0F, 2.0F, new gjx(-0.1F)), gjv.a(1.75F, 0.25F, 0.0F));
+      $$3.a("left_wing", gjy.c().a(16, 14).a().a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gjx(0.0F)).a(false), gjv.a(0.5F, 1.0F, 1.0F));
+      $$3.a("right_wing", gjy.c().a(16, 14).a(0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gjx(0.0F)), gjv.a(-0.5F, 1.0F, 1.0F));
+      return gjz.a($$0, 32, 32);
+   }
+
+   public void a(hfn $$0) {
+      super.a($$0);
+      this.f.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.f.e = $$0.ab * (float) (Math.PI / 180.0);
+      float $$1 = azm.b($$0.u * 5.5F * (float) (Math.PI / 180.0)) * 0.1F;
+      this.b.g = (float) (Math.PI / 5) + $$1;
+      this.c.g = -((float) (Math.PI / 5) + $$1);
+      if ($$0.a) {
+         this.a.e = 0.0F;
+         this.a(!$$0.g.c(), !$$0.i.c(), $$1);
+      } else {
+         this.a.e = (float) (Math.PI / 20);
+      }
+
+      this.e.f = 1.0995574F + azm.b($$0.u * 45.836624F * (float) (Math.PI / 180.0)) * (float) (Math.PI / 180.0) * 16.2F;
+      this.d.f = -this.e.f;
+      this.e.e = 0.47123888F;
+      this.e.g = -0.47123888F;
+      this.d.e = 0.47123888F;
+      this.d.g = 0.47123888F;
+   }
+
+   private void a(boolean $$0, boolean $$1, float $$2) {
+      if (!$$0 && !$$1) {
+         this.b.e = -1.2217305F;
+         this.b.f = (float) (Math.PI / 12);
+         this.b.g = -0.47123888F - $$2;
+         this.c.e = -1.2217305F;
+         this.c.f = (float) (-Math.PI / 12);
+         this.c.g = 0.47123888F + $$2;
+      } else {
+         if ($$0) {
+            this.b.e = (float) (Math.PI * 7.0 / 6.0);
+            this.b.f = (float) (Math.PI / 12);
+            this.b.g = -0.47123888F - $$2;
+         }
+
+         if ($$1) {
+            this.c.e = (float) (Math.PI * 7.0 / 6.0);
+            this.c.f = (float) (-Math.PI / 12);
+            this.c.g = 0.47123888F + $$2;
+         }
+      }
    }
 
    @Override
-   public void a(hcz $$0) {
-      super.a($$0);
-      this.c.f = -$$0.u * 16.0F * (float) (Math.PI / 180.0);
-      this.d.f = $$0.u * 16.0F * (float) (Math.PI / 180.0);
+   public void a(bxa $$0, fkd $$1) {
+      boolean $$2 = $$0 == bxa.b;
+      gjt $$3 = $$2 ? this.b : this.c;
+      this.v.a($$1);
+      this.a.a($$1);
+      $$3.a($$1);
+      $$1.b(0.55F, 0.55F, 0.55F);
+      this.a($$1, $$2);
+   }
+
+   private void a(fkd $$0, boolean $$1) {
+      if ($$1) {
+         $$0.a(0.046875, -0.15625, 0.078125);
+      } else {
+         $$0.a(-0.046875, -0.15625, 0.078125);
+      }
    }
 }

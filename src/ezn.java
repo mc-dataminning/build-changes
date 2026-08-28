@@ -1,109 +1,94 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
 import java.util.Set;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class ezn {
-   private static final Codec<ezn> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               fdu.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-               fdu.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, ezn::new)
-   );
-   public static final Codec<ezn> a = Codec.either(Codec.INT, b).xmap($$0 -> (ezn)$$0.map(ezn::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
+public interface ezn {
+   int d = 19133;
+   int e = 19132;
+
+   dkk D();
+
+   void a(dkk var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(q $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
+   }
+
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
+      }
+   }
+
    @Nullable
-   private final fdt c;
+   tz E();
+
+   void a(@Nullable tz var1);
+
+   ezm I();
+
+   djq J();
+
+   tz a(jt var1, @Nullable tz var2);
+
+   boolean l();
+
+   int x();
+
+   String e();
+
+   djj k();
+
+   void a(djj var1);
+
+   boolean m();
+
+   bud q();
+
+   void a(bud var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   dji o();
+
    @Nullable
-   private final fdt d;
-   private final ezn.b e;
-   private final ezn.a f;
+   tz w();
 
-   public Set<bax<?>> a() {
-      Builder<bax<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
+   eet.a C();
 
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
+   void a(eet.a var1);
 
-      return $$0.build();
-   }
+   ehq y();
 
-   private ezn(Optional<fdt> $$0, Optional<fdt> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
-   }
+   boolean z();
 
-   private ezn(@Nullable fdt $$0, @Nullable fdt $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> azm.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
-      }
-   }
+   boolean A();
 
-   public static ezn a(int $$0) {
-      fdq $$1 = fdq.a((float)$$0);
-      return new ezn(Optional.of($$1), Optional.of($$1));
-   }
+   Lifecycle B();
 
-   public static ezn a(int $$0, int $$1) {
-      return new ezn(Optional.of(fdq.a((float)$$0)), Optional.of(fdq.a((float)$$1)));
-   }
-
-   public static ezn b(int $$0) {
-      return new ezn(Optional.of(fdq.a((float)$$0)), Optional.empty());
-   }
-
-   public static ezn c(int $$0) {
-      return new ezn(Optional.empty(), Optional.of(fdq.a((float)$$0)));
-   }
-
-   public int a(ezo $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
-
-   public boolean b(ezo $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
-
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof fdq $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface a {
-      boolean test(ezo var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      int apply(ezo var1, int var2);
+   default cuw K() {
+      return this.D().b();
    }
 }

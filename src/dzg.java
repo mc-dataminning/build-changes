@@ -1,113 +1,127 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dzg extends dxm {
-   private static final Logger a = LogUtils.getLogger();
-   private ebz b;
-   private String c = "";
-   private boolean d;
-   private boolean e;
-
-   public dzg(iv $$0, eao $$1) {
-      super(dxo.T, $$0, $$1);
-      this.b = $$1.c(dvg.b);
-   }
-
-   @Override
-   public void b(tz $$0, jh.a $$1) {
-      $$0.a("mode", ebz.e, this.b);
-      $$0.a("message", this.c);
-      $$0.a("powered", this.d);
-   }
-
-   @Override
-   public void a(tz $$0, jh.a $$1) {
-      this.b = $$0.<ebz>a("mode", ebz.e).orElse(ebz.c);
-      this.c = $$0.j("message");
-      this.d = $$0.o("powered");
-   }
-
-   private void u() {
-      if (this.n != null) {
-         iv $$0 = this.ax_();
-         eao $$1 = this.n.a_($$0);
-         if ($$1.a(dmo.pI)) {
-            this.n.a($$0, $$1.b(dvg.b, this.b), 2);
-         }
-      }
-   }
-
+public class dzg {
+   private static final Codec<wy[]> c = xa.a
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ag.a($$0, 4).map($$0x -> new wy[]{(wy)$$0x.get(0), (wy)$$0x.get(1), (wy)$$0x.get(2), (wy)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dzg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.lenientOptionalFieldOf("filtered_messages").forGetter(dzg::d),
+               cyl.q.fieldOf("color").orElse(cyl.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dzg::a)
+   );
+   public static final int b = 4;
+   private final wy[] d;
+   private final wy[] e;
+   private final cyl f;
+   private final boolean g;
    @Nullable
-   public aca a() {
-      return aca.a(this);
+   private ayy[] h;
+   private boolean i;
+
+   public dzg() {
+      this(c(), c(), cyl.p, false);
    }
 
-   @Override
-   public tz a(jh.a $$0) {
-      return this.e($$0);
-   }
-
-   public boolean c() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
+   public dzg(wy[] $$0, wy[] $$1, cyl $$2, boolean $$3) {
       this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public ebz d() {
-      return this.b;
+   private static wy[] c() {
+      return new wy[]{wx.a, wx.a, wx.a, wx.a};
    }
 
-   public void a(ebz $$0) {
-      this.b = $$0;
-      this.u();
+   private static dzg a(wy[] $$0, Optional<wy[]> $$1, cyl $$2, boolean $$3) {
+      return new dzg($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
    }
 
-   private dmm v() {
-      return this.m().b();
+   public boolean a() {
+      return this.g;
    }
 
-   public void f() {
-      this.e = false;
-      if (this.b == ebz.a && this.n != null) {
-         this.a(false);
-         this.n.a(this.ax_(), this.v());
-      }
+   public dzg a(boolean $$0) {
+      return $$0 == this.g ? this : new dzg(this.d, this.e, this.f, $$0);
    }
 
-   public void j() {
-      if (this.b == ebz.a && this.n != null) {
-         this.a(true);
-         iv $$0 = this.ax_();
-         this.n.a($$0, this.v());
-         this.n.U().b($$0, this.v());
-         this.k();
-      } else {
-         if (this.b == ebz.b) {
-            this.k();
+   public cyl b() {
+      return this.f;
+   }
+
+   public dzg a(cyl $$0) {
+      return $$0 == this.b() ? this : new dzg(this.d, this.e, $$0, this.g);
+   }
+
+   public wy a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
+   }
+
+   public dzg a(int $$0, wy $$1) {
+      return this.a($$0, $$1, $$1);
+   }
+
+   public dzg a(int $$0, wy $$1, wy $$2) {
+      wy[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      wy[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dzg($$3, $$4, this.f, this.g);
+   }
+
+   public boolean a(crm $$0) {
+      return Arrays.stream(this.b($$0.X())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   }
+
+   public wy[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
+   }
+
+   public ayy[] a(boolean $$0, Function<wy, ayy> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new ayy[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
          }
-
-         this.e = true;
       }
+
+      return this.h;
    }
 
-   public void k() {
-      if (!this.c.isBlank()) {
-         a.info("Test {} (at {}): {}", new Object[]{this.b.c(), this.ax_(), this.c});
+   private Optional<wy[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
+         }
       }
+
+      return Optional.empty();
    }
 
-   public boolean s() {
-      return this.e;
-   }
+   public boolean b(crm $$0) {
+      for (wy $$1 : this.b($$0.X())) {
+         xv $$2 = $$1.a();
+         ww $$3 = $$2.i();
+         if ($$3 != null && $$3.a() == ww.a.c) {
+            return true;
+         }
+      }
 
-   public String t() {
-      return this.c;
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
+      return false;
    }
 }

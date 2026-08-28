@@ -185,11 +185,11 @@ public class buy {
       return this.a(bva.C, $$0);
    }
 
-   public bux a(crj $$0) {
+   public bux a(crm $$0) {
       return this.a(bva.D, $$0);
    }
 
-   public bux a(crr $$0, @Nullable bwi $$1) {
+   public bux a(cru $$0, @Nullable bwi $$1) {
       return this.a(bva.E, $$0, $$1);
    }
 
@@ -209,15 +209,15 @@ public class buy {
       return this.a(bva.I, $$0, $$1);
    }
 
-   public bux a(crz $$0, @Nullable bwi $$1) {
+   public bux a(csc $$0, @Nullable bwi $$1) {
       return this.a(bva.J, $$0, $$1);
    }
 
-   public bux a(cry $$0, @Nullable bwi $$1) {
+   public bux a(csb $$0, @Nullable bwi $$1) {
       return $$1 == null ? this.a(bva.L, $$0) : this.a(bva.K, $$0, $$1);
    }
 
-   public bux a(cst $$0, bwi $$1) {
+   public bux a(csw $$0, bwi $$1) {
       return this.a(bva.M, $$0, $$1);
    }
 
@@ -233,7 +233,7 @@ public class buy {
       return this.a(bva.P, $$0);
    }
 
-   public bux a(@Nullable dja $$0) {
+   public bux a(@Nullable djf $$0) {
       return $$0 != null ? this.d($$0.d(), $$0.c()) : this.d(null, null);
    }
 
@@ -245,7 +245,7 @@ public class buy {
       return this.a(bva.S, $$0);
    }
 
-   public bux a(fex $$0) {
+   public bux a(ffc $$0) {
       return new bux(this.a.b(bva.T), $$0);
    }
 

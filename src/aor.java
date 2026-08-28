@@ -38,7 +38,7 @@ public class aor {
    }
 
    private static int a(ej $$0, bwi $$1, gi $$2) {
-      few $$3 = $$2.b($$0);
+      ffb $$3 = $$2.b($$0);
       $$1.a($$3.k, $$3.j);
       $$0.a(() -> wy.a("commands.rotate.success", $$1.m_()), true);
       return 1;

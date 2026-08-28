@@ -2,7 +2,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class bzq<E extends bxj & cqt> extends bza<E> {
+public class bzq<E extends bxj & cqw> extends bza<E> {
    private static final int c = 3;
    private static final int d = 60;
    private final Function<bxj, Optional<cao>> e;
@@ -36,11 +36,11 @@ public class bzq<E extends bxj & cqt> extends bza<E> {
          cao $$4 = $$3.get();
          double $$5 = $$4.a().f($$1.bC());
          if ($$5 < 3.0) {
-            czk $$6 = $$1.n().a(0, 1);
+            czn $$6 = $$1.n().a(0, 1);
             if (!$$6.f()) {
                a($$1, $$6, a($$4));
-               if ($$1 instanceof ckl $$7) {
-                  ckm.a((bxj)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               if ($$1 instanceof cki $$7) {
+                  ckj.a((bxj)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
                }
 
                $$1.eb().a(cgl.aQ, 60);
@@ -49,7 +49,7 @@ public class bzq<E extends bxj & cqt> extends bza<E> {
       }
    }
 
-   private void a(cao $$0, czk $$1, arr $$2) {
+   private void a(cao $$0, czn $$1, arr $$2) {
       iv $$3 = $$0.b().e();
       aq.aa.a($$2, $$3, $$1);
    }
@@ -63,16 +63,16 @@ public class bzq<E extends bxj & cqt> extends bza<E> {
       }
    }
 
-   private static fex a(cao $$0) {
+   private static ffc a(cao $$0) {
       return $$0.a().b(0.0, 1.0, 0.0);
    }
 
-   public static void a(bxj $$0, czk $$1, fex $$2) {
-      fex $$3 = new fex(0.2F, 0.3F, 0.2F);
+   public static void a(bxj $$0, czn $$1, ffc $$2) {
+      ffc $$3 = new ffc(0.2F, 0.3F, 0.2F);
       bzc.a($$0, $$1, $$2, $$3, 0.2F);
-      djh $$4 = $$0.dU();
+      djm $$4 = $$0.dU();
       if ($$4.ae() % 7L == 0L && $$4.A.j() < 0.9) {
-         float $$5 = ag.<Float>a(ckl.d, $$4.C_());
+         float $$5 = ag.<Float>a(cki.d, $$4.C_());
          $$4.a(null, $$0, awn.g, awo.g, 1.0F, $$5);
       }
    }

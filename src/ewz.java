@@ -1,127 +1,106 @@
-import com.google.common.base.Preconditions;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ewz {
-   private static final ewz[] am = new ewz[64];
-   public static final ewz a = new ewz(0, 0);
-   public static final ewz b = new ewz(1, 8368696);
-   public static final ewz c = new ewz(2, 16247203);
-   public static final ewz d = new ewz(3, 13092807);
-   public static final ewz e = new ewz(4, 16711680);
-   public static final ewz f = new ewz(5, 10526975);
-   public static final ewz g = new ewz(6, 10987431);
-   public static final ewz h = new ewz(7, 31744);
-   public static final ewz i = new ewz(8, 16777215);
-   public static final ewz j = new ewz(9, 10791096);
-   public static final ewz k = new ewz(10, 9923917);
-   public static final ewz l = new ewz(11, 7368816);
-   public static final ewz m = new ewz(12, 4210943);
-   public static final ewz n = new ewz(13, 9402184);
-   public static final ewz o = new ewz(14, 16776437);
-   public static final ewz p = new ewz(15, 14188339);
-   public static final ewz q = new ewz(16, 11685080);
-   public static final ewz r = new ewz(17, 6724056);
-   public static final ewz s = new ewz(18, 15066419);
-   public static final ewz t = new ewz(19, 8375321);
-   public static final ewz u = new ewz(20, 15892389);
-   public static final ewz v = new ewz(21, 5000268);
-   public static final ewz w = new ewz(22, 10066329);
-   public static final ewz x = new ewz(23, 5013401);
-   public static final ewz y = new ewz(24, 8339378);
-   public static final ewz z = new ewz(25, 3361970);
-   public static final ewz A = new ewz(26, 6704179);
-   public static final ewz B = new ewz(27, 6717235);
-   public static final ewz C = new ewz(28, 10040115);
-   public static final ewz D = new ewz(29, 1644825);
-   public static final ewz E = new ewz(30, 16445005);
-   public static final ewz F = new ewz(31, 6085589);
-   public static final ewz G = new ewz(32, 4882687);
-   public static final ewz H = new ewz(33, 55610);
-   public static final ewz I = new ewz(34, 8476209);
-   public static final ewz J = new ewz(35, 7340544);
-   public static final ewz K = new ewz(36, 13742497);
-   public static final ewz L = new ewz(37, 10441252);
-   public static final ewz M = new ewz(38, 9787244);
-   public static final ewz N = new ewz(39, 7367818);
-   public static final ewz O = new ewz(40, 12223780);
-   public static final ewz P = new ewz(41, 6780213);
-   public static final ewz Q = new ewz(42, 10505550);
-   public static final ewz R = new ewz(43, 3746083);
-   public static final ewz S = new ewz(44, 8874850);
-   public static final ewz T = new ewz(45, 5725276);
-   public static final ewz U = new ewz(46, 8014168);
-   public static final ewz V = new ewz(47, 4996700);
-   public static final ewz W = new ewz(48, 4993571);
-   public static final ewz X = new ewz(49, 5001770);
-   public static final ewz Y = new ewz(50, 9321518);
-   public static final ewz Z = new ewz(51, 2430480);
-   public static final ewz aa = new ewz(52, 12398641);
-   public static final ewz ab = new ewz(53, 9715553);
-   public static final ewz ac = new ewz(54, 6035741);
-   public static final ewz ad = new ewz(55, 1474182);
-   public static final ewz ae = new ewz(56, 3837580);
-   public static final ewz af = new ewz(57, 5647422);
-   public static final ewz ag = new ewz(58, 1356933);
-   public static final ewz ah = new ewz(59, 6579300);
-   public static final ewz ai = new ewz(60, 14200723);
-   public static final ewz aj = new ewz(61, 8365974);
-   public final int ak;
-   public final int al;
+public abstract class ewz {
+   public static final jl<exa> c = new jl<>();
+   protected final eau<ewz, exa> d;
+   private exa a;
+   private final jf.c<ewz> b = mg.c.f(this);
 
-   private ewz(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 <= 63) {
-         this.al = $$0;
-         this.ak = $$1;
-         am[$$0] = this;
+   protected ewz() {
+      eau.a<ewz, exa> $$0 = new eau.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(ewz::g, exa::new);
+      this.f(this.d.b());
+   }
+
+   protected void a(eau.a<ewz, exa> $$0) {
+   }
+
+   public eau<ewz, exa> f() {
+      return this.d;
+   }
+
+   protected final void f(exa $$0) {
+      this.a = $$0;
+   }
+
+   public final exa g() {
+      return this.a;
+   }
+
+   public abstract czj a();
+
+   protected void a(djm $$0, iv $$1, exa $$2, azv $$3) {
+   }
+
+   protected void b(arq $$0, iv $$1, eat $$2, exa $$3) {
+   }
+
+   protected void a(arq $$0, iv $$1, exa $$2, azv $$3) {
+   }
+
+   protected void a(djm $$0, iv $$1, bwi $$2, bxb $$3) {
+   }
+
+   @Nullable
+   protected lw h() {
+      return null;
+   }
+
+   protected abstract boolean a(exa var1, diq var2, iv var3, ewz var4, jb var5);
+
+   protected abstract ffc a(diq var1, iv var2, exa var3);
+
+   public abstract int a(djp var1);
+
+   protected boolean i() {
+      return false;
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected abstract float c();
+
+   public abstract float a(exa var1, diq var2, iv var3);
+
+   public abstract float a(exa var1);
+
+   protected abstract eat b(exa var1);
+
+   public abstract boolean c(exa var1);
+
+   public abstract int d(exa var1);
+
+   public boolean a(ewz $$0) {
+      return $$0 == this;
+   }
+
+   @Deprecated
+   public boolean a(axr<ewz> $$0) {
+      return this.b.a($$0);
+   }
+
+   public abstract ffw b(exa var1, diq var2, iv var3);
+
+   @Nullable
+   public fex c(exa $$0, diq $$1, iv $$2) {
+      if (this.b()) {
+         return null;
       } else {
-         throw new IndexOutOfBoundsException("Map colour ID must be between 0 and 63 (inclusive)");
+         float $$3 = $$0.a($$1, $$2);
+         return new fex((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)$$2.u() + 1.0, (double)((float)$$2.v() + $$3), (double)$$2.w() + 1.0);
       }
    }
 
-   public int a(ewz.a $$0) {
-      return this == a ? 0 : axw.b(axw.f(this.ak), $$0.f);
+   public Optional<awm> j() {
+      return Optional.empty();
    }
 
-   public static ewz a(int $$0) {
-      Preconditions.checkPositionIndex($$0, am.length, "material id");
-      return c($$0);
-   }
-
-   private static ewz c(int $$0) {
-      ewz $$1 = am[$$0];
-      return $$1 != null ? $$1 : a;
-   }
-
-   public static int b(int $$0) {
-      int $$1 = $$0 & 0xFF;
-      return c($$1 >> 2).a(ewz.a.b($$1 & 3));
-   }
-
-   public byte b(ewz.a $$0) {
-      return (byte)(this.al << 2 | $$0.e & 3);
-   }
-
-   public static enum a {
-      a(0, 180),
-      b(1, 220),
-      c(2, 255),
-      d(3, 135);
-
-      private static final ewz.a[] g = new ewz.a[]{a, b, c, d};
-      public final int e;
-      public final int f;
-
-      private a(final int $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public static ewz.a a(int $$0) {
-         Preconditions.checkPositionIndex($$0, g.length, "brightness id");
-         return b($$0);
-      }
-
-      static ewz.a b(int $$0) {
-         return g[$$0];
-      }
+   @Deprecated
+   public jf.c<ewz> k() {
+      return this.b;
    }
 }

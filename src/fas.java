@@ -1,65 +1,93 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class fas extends fbb {
+public class fas extends fbg {
    public static final MapCodec<fas> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(fdu.a.fieldOf("levels").forGetter($$0x -> $$0x.b), ju.a(mh.aR).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  mg.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(ebw::f).toList())
+               )
+            )
             .apply($$0, fas::new)
    );
-   private final fdt b;
-   private final Optional<jj<dfx>> c;
+   private final jf<dmr> b;
+   private final Set<ebw<?>> c;
 
-   fas(List<fcx> $$0, fdt $$1, Optional<jj<dfx>> $$2) {
+   fas(List<fdc> $$0, jf<dmr> $$1, Set<ebw<?>> $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
    }
 
+   private fas(List<fdc> $$0, jf<dmr> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   }
+
    @Override
-   public fbd<fas> b() {
-      return fbe.g;
+   public fbi<fas> b() {
+      return fbj.D;
    }
 
    @Override
    public Set<bax<?>> a() {
-      return this.b.a();
+      return Set.of(fcn.g);
    }
 
    @Override
-   public czk a(czk $$0, ezo $$1) {
-      azv $$2 = $$1.b();
-      jt $$3 = $$1.d().F_();
-      return dfz.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   protected czn a(czn $$0, ezt $$1) {
+      eat $$2 = $$1.c(fcn.g);
+      if ($$2 != null) {
+         $$0.a(kk.aq, dbn.a, $$1x -> {
+            for (ebw<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
+      }
+
+      return $$0;
    }
 
-   public static fas.a a(jh.a $$0, fdt $$1) {
-      return new fas.a($$1).a($$0.e(mh.aR).b(axe.n));
+   public static fas.a a(dmr $$0) {
+      return new fas.a($$0);
    }
 
-   public static class a extends fbb.a<fas.a> {
-      private final fdt a;
-      private Optional<jj<dfx>> b = Optional.empty();
+   public static class a extends fbg.a<fas.a> {
+      private final jf<dmr> a;
+      private final Builder<ebw<?>> b = ImmutableSet.builder();
 
-      public a(fdt $$0) {
-         this.a = $$0;
+      a(dmr $$0) {
+         this.a = $$0.p();
+      }
+
+      public fas.a a(ebw<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected fas.a a() {
          return this;
       }
 
-      public fas.a a(jj<dfx> $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
       @Override
-      public fbc b() {
-         return new fas(this.g(), this.a, this.b);
+      public fbh b() {
+         return new fas(this.g(), this.a, this.b.build());
       }
    }
 }

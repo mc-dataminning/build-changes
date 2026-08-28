@@ -4,7 +4,7 @@ public class cga<T extends bxj> extends cfy<T> {
    private static final int i = 200;
    private int j = 0;
 
-   public cga(cta $$0, Class<T> $$1, boolean $$2, @Nullable chy.a $$3) {
+   public cga(ctd $$0, Class<T> $$1, boolean $$2, @Nullable chy.a $$3) {
       super($$0, $$1, 500, $$2, false, $$3);
    }
 
@@ -20,7 +20,7 @@ public class cga<T extends bxj> extends cfy<T> {
    public boolean b() {
       if (this.j > 0 || !this.e.dX().h()) {
          return false;
-      } else if (!((cta)this.e).gH()) {
+      } else if (!((ctd)this.e).gH()) {
          return false;
       } else {
          this.h();

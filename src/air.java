@@ -1,10 +1,10 @@
 public class air implements zf<agp> {
    public static final yw<vu, air> a = zf.a(air::a, air::new);
-   private final fet b;
+   private final fey b;
    private final buf c;
    private final int d;
 
-   public air(buf $$0, fet $$1, int $$2) {
+   public air(buf $$0, fey $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
@@ -35,7 +35,7 @@ public class air implements zf<agp> {
       return this.c;
    }
 
-   public fet e() {
+   public fey e() {
       return this.b;
    }
 

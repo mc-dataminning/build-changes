@@ -1,30 +1,30 @@
 import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Function;
 
-public class esn extends esp {
-   public static final MapCodec<esn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), f(), c()).apply($$0, esn::new));
+public record esn(int c, int d) {
+   private static final Codec<esn> e = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayu.l.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), ayu.l.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
+            .apply($$0, esn::new)
+   );
+   public static final Codec<esn> a = Codec.either(ayu.l, e)
+      .xmap($$0 -> (esn)$$0.map(esn::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
+   public static final esn b = new esn(0);
 
-   protected esn(Either<alg, evk> $$0, jf<evi> $$1, ess.a $$2, Optional<euu> $$3) {
-      super($$0, $$1, $$2, $$3);
+   public esn(int $$0) {
+      this($$0, $$0);
    }
 
-   @Override
-   protected evg a(dtg $$0, era $$1, euu $$2, boolean $$3) {
-      evg $$4 = super.a($$0, $$1, $$2, $$3);
-      $$4.b(eul.b);
-      $$4.a(eul.d);
-      return $$4;
+   public boolean a() {
+      return this.d == this.c;
    }
 
-   @Override
-   public esr<?> a() {
-      return esr.e;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   public int c() {
+      return this.d;
    }
 }

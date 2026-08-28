@@ -10,12 +10,12 @@ public class cjm extends ciy {
    static final chy bL = chy.b().a(10.0).d();
    public static final int bG = 4800;
    private static final int bM = 2400;
-   public static final Predicate<cno> bH = $$0 -> !$$0.o() && $$0.bI() && $$0.bh();
+   public static final Predicate<cnr> bH = $$0 -> !$$0.o() && $$0.bI() && $$0.bh();
    public static final float bI = 0.65F;
    @Nullable
    iv bN;
 
-   public cjm(bwr<? extends cjm> $$0, djh $$1) {
+   public cjm(bwr<? extends cjm> $$0, djm $$1) {
       super($$0, $$1);
       this.bA = new cdk(this, 85, 10, 0.02F, 0.1F, true);
       this.bz = new cdj(this, 10);
@@ -24,7 +24,7 @@ public class cjm extends ciy {
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       this.j(this.cq());
       this.x(0.0F);
       byb $$4 = Objects.requireNonNullElseGet($$3, () -> new bvy.a(0.1F));
@@ -90,13 +90,13 @@ public class cjm extends ciy {
       this.bD.a(2, new cjm.b(this, 4.0));
       this.bD.a(4, new cfd(this, 1.0, 10));
       this.bD.a(4, new cfa(this));
-      this.bD.a(5, new cen(this, crj.class, 6.0F));
+      this.bD.a(5, new cen(this, crm.class, 6.0F));
       this.bD.a(5, new cdv(this, 10));
       this.bD.a(6, new cep(this, 1.2F, true));
       this.bD.a(8, new cjm.c());
       this.bD.a(8, new cea(this));
-      this.bD.a(9, new cdm<>(this, cog.class, 8.0F, 1.0, 1.0));
-      this.bE.a(1, new cfx(this, cog.class).a());
+      this.bD.a(9, new cdm<>(this, coj.class, 8.0F, 1.0, 1.0));
+      this.bE.a(1, new cfx(this, coj.class).a());
    }
 
    public static byo.a x() {
@@ -104,7 +104,7 @@ public class cjm extends ciy {
    }
 
    @Override
-   protected cgt b(djh $$0) {
+   protected cgt b(djm $$0) {
       return new cgv(this, $$0);
    }
 
@@ -149,9 +149,9 @@ public class cjm extends ciy {
    }
 
    @Override
-   protected void a(arq $$0, cno $$1) {
+   protected void a(arq $$0, cnr $$1) {
       if (this.a(bws.a).f()) {
-         czk $$2 = $$1.f();
+         czn $$2 = $$1.f();
          if (this.g($$2)) {
             this.a($$1);
             this.a(bws.a, $$2);
@@ -185,7 +185,7 @@ public class cjm extends ciy {
          }
 
          if (this.dU().C && this.bh() && this.dx().h() > 0.03) {
-            fex $$0 = this.h(0.0F);
+            ffc $$0 = this.h(0.0F);
             float $$1 = azm.b(this.dK() * (float) (Math.PI / 180.0)) * 0.3F;
             float $$2 = azm.a(this.dK() * (float) (Math.PI / 180.0)) * 0.3F;
             float $$3 = 1.2F - this.ae.i() * 0.7F;
@@ -219,8 +219,8 @@ public class cjm extends ciy {
    }
 
    @Override
-   protected bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
+   protected bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
       if (!$$2.f() && $$2.a(axk.aU)) {
          if (!this.dU().C) {
             this.a(awn.hx, 1.0F, 1.0F);
@@ -273,7 +273,7 @@ public class cjm extends ciy {
    }
 
    @Override
-   public void a_(fex $$0) {
+   public void a_(ffc $$0) {
       if (this.bh()) {
          this.a(this.fn(), $$0);
          this.a(bxn.a, this.dx());
@@ -344,17 +344,17 @@ public class cjm extends ciy {
       @Override
       public void a() {
          if (this.a.bN != null) {
-            djh $$0 = this.a.dU();
+            djm $$0 = this.a.dU();
             if (this.a.gt() || this.a.O().k()) {
-               fex $$1 = fex.b(this.a.bN);
-               fex $$2 = cic.a(this.a, 16, 1, $$1, (float) (Math.PI / 8));
+               ffc $$1 = ffc.b(this.a.bN);
+               ffc $$2 = cic.a(this.a, 16, 1, $$1, (float) (Math.PI / 8));
                if ($$2 == null) {
                   $$2 = cic.a(this.a, 8, 4, $$1, (float) (Math.PI / 2));
                }
 
                if ($$2 != null) {
                   iv $$3 = iv.a((jp)$$2);
-                  if (!$$0.b_($$3).a(axh.a) || !$$0.a_($$3).a(exk.b)) {
+                  if (!$$0.b_($$3).a(axh.a) || !$$0.a_($$3).a(exp.b)) {
                      $$2 = cic.a(this.a, 8, 5, $$1, (float) (Math.PI / 2));
                   }
                }
@@ -378,7 +378,7 @@ public class cjm extends ciy {
       private final cjm a;
       private final double b;
       @Nullable
-      private crj c;
+      private crm c;
 
       b(cjm $$0, double $$1) {
          this.a = $$0;
@@ -431,14 +431,14 @@ public class cjm extends ciy {
          if (this.b > cjm.this.af) {
             return false;
          } else {
-            List<cno> $$0 = cjm.this.dU().a(cno.class, cjm.this.cQ().c(8.0, 8.0, 8.0), cjm.bH);
+            List<cnr> $$0 = cjm.this.dU().a(cnr.class, cjm.this.cQ().c(8.0, 8.0, 8.0), cjm.bH);
             return !$$0.isEmpty() || !cjm.this.a(bws.a).f();
          }
       }
 
       @Override
       public void d() {
-         List<cno> $$0 = cjm.this.dU().a(cno.class, cjm.this.cQ().c(8.0, 8.0, 8.0), cjm.bH);
+         List<cnr> $$0 = cjm.this.dU().a(cnr.class, cjm.this.cQ().c(8.0, 8.0, 8.0), cjm.bH);
          if (!$$0.isEmpty()) {
             cjm.this.O().a($$0.get(0), 1.2F);
             cjm.this.a(awn.hA, 1.0F, 1.0F);
@@ -449,30 +449,30 @@ public class cjm extends ciy {
 
       @Override
       public void e() {
-         czk $$0 = cjm.this.a(bws.a);
+         czn $$0 = cjm.this.a(bws.a);
          if (!$$0.f()) {
             this.a($$0);
-            cjm.this.a(bws.a, czk.k);
+            cjm.this.a(bws.a, czn.k);
             this.b = cjm.this.af + cjm.this.ae.a(100);
          }
       }
 
       @Override
       public void a() {
-         List<cno> $$0 = cjm.this.dU().a(cno.class, cjm.this.cQ().c(8.0, 8.0, 8.0), cjm.bH);
-         czk $$1 = cjm.this.a(bws.a);
+         List<cnr> $$0 = cjm.this.dU().a(cnr.class, cjm.this.cQ().c(8.0, 8.0, 8.0), cjm.bH);
+         czn $$1 = cjm.this.a(bws.a);
          if (!$$1.f()) {
             this.a($$1);
-            cjm.this.a(bws.a, czk.k);
+            cjm.this.a(bws.a, czn.k);
          } else if (!$$0.isEmpty()) {
             cjm.this.O().a($$0.get(0), 1.2F);
          }
       }
 
-      private void a(czk $$0) {
+      private void a(czn $$0) {
          if (!$$0.f()) {
             double $$1 = cjm.this.dD() - 0.3F;
-            cno $$2 = new cno(cjm.this.dU(), cjm.this.dz(), $$1, cjm.this.dF(), $$0);
+            cnr $$2 = new cnr(cjm.this.dU(), cjm.this.dz(), $$1, cjm.this.dF(), $$0);
             $$2.b(40);
             $$2.b(cjm.this);
             float $$3 = 0.3F;

@@ -1,245 +1,139 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dyb extends dyv implements cvu {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jo<czk> q = jo.a(9, czk.k);
-   private int r = 0;
-   protected final cvo k = new cvo() {
-      private final int[] a = new int[9];
-      private int b = 0;
+public class dyb extends dxr implements btz {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jo<czn> d = jo.a(6, czn.k);
+   private int e = -1;
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.b : this.a[$$0];
-      }
+   public dyb(iv $$0, eat $$1) {
+      super(dxt.N, $$0, $$1);
+   }
 
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.b = $$1;
-         } else {
-            this.a[$$0] = $$1;
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         eat $$1 = this.m();
+
+         for (int $$2 = 0; $$2 < dnw.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            ebk $$4 = dnw.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
          }
-      }
 
-      @Override
-      public int a() {
-         return 10;
-      }
-   };
-
-   public dyb(iv $$0, eao $$1) {
-      super(dxo.Q, $$0, $$1);
-   }
-
-   @Override
-   protected wy j() {
-      return wy.c("container.crafter");
-   }
-
-   @Override
-   protected cvc a(int $$0, cri $$1) {
-      return new cvs($$0, $$1, this, this.k);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
-         this.e();
-      }
-   }
-
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
-   }
-
-   @Override
-   public boolean b(int $$0, czk $$1) {
-      if (this.k.a($$0) == 1) {
-         return false;
+         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
+         this.n.a(eft.c, this.o, eft.a.a($$1));
       } else {
-         czk $$2 = this.q.get($$0);
-         int $$3 = $$2.M();
-         if ($$3 >= $$2.k()) {
-            return false;
-         } else {
-            return $$2.f() ? true : !this.a($$3, $$2, $$0);
-         }
+         c.error("Expected slot 0-5, got {}", $$0);
       }
-   }
-
-   private boolean a(int $$0, czk $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            czk $$4 = this.a($$3);
-            if ($$4.f() || $$4.M() < $$0 && czk.c($$4, $$1)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
    }
 
    @Override
    protected void a(tz $$0, jh.a $$1) {
       super.a($$0, $$1);
-      this.r = $$0.f("crafting_ticks_remaining");
-      this.q = jo.a(this.b(), czk.k);
-      if (!this.b_($$0)) {
-         bua.b($$0, this.q, $$1);
-      }
-
-      int[] $$2 = $$0.l("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.f("triggered"));
+      this.d.clear();
+      bua.b($$0, this.d, $$1);
+      this.e = $$0.f("last_interacted_slot");
    }
 
    @Override
    protected void b(tz $$0, jh.a $$1) {
       super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.c_($$0)) {
-         bua.a($$0, this.q, $$1);
-      }
+      bua.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
 
-      this.c($$0);
-      this.d($$0);
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(czn::f)).count();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
    }
 
    @Override
    public int b() {
-      return 9;
+      return 6;
    }
 
    @Override
    public boolean c() {
-      for (czk $$0 : this.q) {
-         if (!$$0.f()) {
-            return false;
-         }
+      return this.d.stream().allMatch(czn::f);
+   }
+
+   @Override
+   public czn a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public czn a(int $$0, int $$1) {
+      czn $$2 = Objects.requireNonNullElse(this.d.get($$0), czn.k);
+      this.d.set($$0, czn.k);
+      if (!$$2.f()) {
+         this.c($$0);
       }
 
-      return true;
+      return $$2;
    }
 
    @Override
-   public czk a(int $$0) {
-      return this.q.get($$0);
+   public czn b(int $$0) {
+      return this.a($$0, 1);
    }
 
    @Override
-   public void a(int $$0, czk $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
+   public void a(int $$0, czn $$1) {
+      if ($$1.a(axk.ba)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
       }
-
-      super.a($$0, $$1);
    }
 
    @Override
-   public boolean a(crj $$0) {
+   public boolean a(btz $$0, int $$1, czn $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : czn.c($$2, $$2x) && $$2x.M() + $$2.M() <= $$0.f_($$2x));
+   }
+
+   @Override
+   public int ak_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(crm $$0) {
       return btz.a(this, $$0);
    }
 
    @Override
-   public jo<czk> f() {
-      return this.q;
+   public boolean b(int $$0, czn $$1) {
+      return $$1.a(axk.ba) && this.a($$0).f() && $$1.M() == this.ak_();
+   }
+
+   public int j() {
+      return this.e;
    }
 
    @Override
-   protected void a(jo<czk> $$0) {
-      this.q = $$0;
+   protected void a(kf $$0) {
+      super.a($$0);
+      $$0.a(kk.ap, dcf.a).a(this.d);
    }
 
    @Override
-   public int av_() {
-      return 3;
+   protected void a(kh.a $$0) {
+      super.a($$0);
+      $$0.a(kk.ap, dcf.a(this.d));
    }
 
    @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void fillStackedContents(crp $$0) {
-      for (czk $$1 : this.q) {
-         $$0.a($$1);
-      }
-   }
-
-   private void c(tz $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
-   }
-
-   private void d(tz $$0) {
-      $$0.a("triggered", this.k.a(9));
-   }
-
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean k() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(djh $$0, iv $$1, eao $$2, dyb $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.b(dog.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int s() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         czk $$2 = this.a($$1);
-         if (!$$2.f() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.q.get($$0).f();
+   public void a(tz $$0) {
+      $$0.p("Items");
    }
 }

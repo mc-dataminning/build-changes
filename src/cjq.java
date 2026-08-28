@@ -10,20 +10,20 @@ public class cjq extends ciu implements bxz {
    private static final int bH = 1024;
    private static final String bI = "stew_effects";
    @Nullable
-   private dcm bK;
+   private dcp bK;
    @Nullable
    private UUID bL;
 
-   public cjq(bwr<? extends cjq> $$0, djh $$1) {
+   public cjq(bwr<? extends cjq> $$0, djm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public float a(iv $$0, djk $$1) {
-      return $$1.a_($$0.e()).a(dmo.fE) ? 10.0F : $$1.x($$0);
+   public float a(iv $$0, djp $$1) {
+      return $$1.a_($$0.e()).a(dmt.fE) ? 10.0F : $$1.x($$0);
    }
 
-   public static boolean c(bwr<cjq> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
+   public static boolean c(bwr<cjq> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
       return $$1.a_($$3.e()).a(axc.ce) && a($$1, $$3);
    }
 
@@ -44,21 +44,21 @@ public class cjq extends ciu implements bxz {
    }
 
    @Override
-   public bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
-      if ($$2.a(czo.ph) && !this.n_()) {
+   public bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
+      if ($$2.a(czr.ph) && !this.n_()) {
          boolean $$3 = false;
-         czk $$4;
+         czn $$4;
          if (this.bK != null) {
             $$3 = true;
-            $$4 = new czk(czo.xh);
+            $$4 = new czn(czr.xh);
             $$4.b(kk.T, this.bK);
             this.bK = null;
          } else {
-            $$4 = new czk(czo.qf);
+            $$4 = new czn(czr.qf);
          }
 
-         czk $$6 = czn.a($$2, $$0, $$4, false);
+         czn $$6 = czq.a($$2, $$0, $$4, false);
          $$0.a($$1, $$6);
          awm $$7;
          if ($$3) {
@@ -69,16 +69,16 @@ public class cjq extends ciu implements bxz {
 
          this.a($$7, 1.0F, 1.0F);
          return bug.a;
-      } else if ($$2.a(czo.td) && this.a()) {
+      } else if ($$2.a(czr.td) && this.a()) {
          if (this.dU() instanceof arq $$9) {
             this.a($$9, awo.h, $$2);
-            this.a(efo.M, $$0);
+            this.a(eft.M, $$0);
             $$2.a(1, $$0, d($$1));
          }
 
          return bug.a;
       } else if (this.t() == cjq.a.b) {
-         Optional<dcm> $$10 = this.j($$2);
+         Optional<dcp> $$10 = this.j($$2);
          if ($$10.isEmpty()) {
             return super.b($$0, $$1);
          } else {
@@ -105,13 +105,13 @@ public class cjq extends ciu implements bxz {
    }
 
    @Override
-   public void a(arq $$0, awo $$1, czk $$2) {
+   public void a(arq $$0, awo $$1, czn $$2) {
       $$0.a(null, this, awn.pE, $$1, 1.0F, 1.0F);
       this.a(bwr.C, bwc.a(this, false, false), $$2x -> {
          $$0.a(ly.w, this.dz(), this.e(0.5), this.dF(), 1, 0.0, 0.0, 0.0, 0.0);
-         this.a($$0, ezk.aR, $$2, ($$0xx, $$1xx) -> {
+         this.a($$0, ezp.aR, $$2, ($$0xx, $$1xx) -> {
             for (int $$2xx = 0; $$2xx < $$1xx.M(); $$2xx++) {
-               $$0xx.b(new cno(this.dU(), this.dz(), this.e(1.0), this.dF(), $$1xx.c(1)));
+               $$0xx.b(new cnr(this.dU(), this.dz(), this.e(1.0), this.dF(), $$1xx.c(1)));
             }
          });
       });
@@ -126,18 +126,18 @@ public class cjq extends ciu implements bxz {
    public void b(tz $$0) {
       super.b($$0);
       $$0.a("Type", cjq.a.c, this.t());
-      $$0.b("stew_effects", dcm.c, this.bK);
+      $$0.b("stew_effects", dcp.c, this.bK);
    }
 
    @Override
    public void a(tz $$0) {
       super.a($$0);
       this.a($$0.<cjq.a>a("Type", cjq.a.c).orElse(cjq.a.a));
-      this.bK = $$0.<dcm>a("stew_effects", dcm.c).orElse(dcm.a);
+      this.bK = $$0.<dcp>a("stew_effects", dcp.c).orElse(dcp.a);
    }
 
-   private Optional<dcm> j(czk $$0) {
-      duy $$1 = duy.a($$0.h());
+   private Optional<dcp> j(czn $$0) {
+      dvd $$1 = dvd.a($$0.h());
       return $$1 != null ? Optional.of($$1.c()) : Optional.empty();
    }
 
@@ -152,19 +152,19 @@ public class cjq extends ciu implements bxz {
    @Nullable
    @Override
    public <T> T a(kj<? extends T> $$0) {
-      return $$0 == kk.aE ? c((kj<T>)$$0, this.t()) : super.a($$0);
+      return $$0 == kk.aF ? c((kj<T>)$$0, this.t()) : super.a($$0);
    }
 
    @Override
    protected void a(kf $$0) {
-      this.a($$0, kk.aE);
+      this.a($$0, kk.aF);
       super.a($$0);
    }
 
    @Override
    protected <T> boolean b(kj<T> $$0, T $$1) {
-      if ($$0 == kk.aE) {
-         this.a(c(kk.aE, $$1));
+      if ($$0 == kk.aF) {
+         this.a(c(kk.aF, $$1));
          return true;
       } else {
          return super.b($$0, $$1);
@@ -195,23 +195,23 @@ public class cjq extends ciu implements bxz {
    }
 
    public static enum a implements bak {
-      a("red", 0, dmo.cq.m()),
-      b("brown", 1, dmo.cp.m());
+      a("red", 0, dmt.cq.m()),
+      b("brown", 1, dmt.cp.m());
 
       public static final Codec<cjq.a> c = bak.a(cjq.a::values);
       private static final IntFunction<cjq.a> e = ayc.a(cjq.a::b, values(), ayc.a.c);
       public static final yw<ByteBuf, cjq.a> d = yu.a(e, cjq.a::b);
       private final String f;
       final int g;
-      private final eao h;
+      private final eat h;
 
-      private a(final String $$0, final int $$1, final eao $$2) {
+      private a(final String $$0, final int $$1, final eat $$2) {
          this.f = $$0;
          this.g = $$1;
          this.h = $$2;
       }
 
-      public eao a() {
+      public eat a() {
          return this.h;
       }
 

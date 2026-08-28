@@ -9,7 +9,7 @@ public class db extends dk<db.a> {
    }
 
    public void a(arr $$0, bwi $$1, bux $$2, float $$3, float $$4, boolean $$5) {
-      ezo $$6 = by.b($$0, $$1);
+      ezt $$6 = by.b($$0, $$1);
       this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
@@ -47,7 +47,7 @@ public class db extends dk<db.a> {
          return aq.h.a(new db.a(Optional.empty(), Optional.of($$0.b()), by.a($$1)));
       }
 
-      public boolean a(arr $$0, ezo $$1, bux $$2, float $$3, float $$4, boolean $$5) {
+      public boolean a(arr $$0, ezt $$1, bux $$2, float $$3, float $$4, boolean $$5) {
          return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

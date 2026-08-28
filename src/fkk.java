@@ -1,43 +1,142 @@
-import java.util.Locale;
+import java.util.function.Consumer;
 
-public enum fkk {
-   a,
-   b,
-   c,
-   d;
+public class fkk {
+   public static fkh a() {
+      throw new IllegalArgumentException();
+   }
 
-   private static final int e = 1024;
+   public static fkh a(fkh $$0) {
+      return $$0;
+   }
 
-   public static fkk a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
+   public static fkh a(fkh $$0, fkh $$1) {
+      return new fkk.a($$0, $$1);
+   }
+
+   public static fkh a(fkh... $$0) {
+      return new fkk.b($$0);
+   }
+
+   static class a implements fkh {
+      private final fkh a;
+      private final fkh b;
+
+      public a(fkh $$0, fkh $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
          }
       }
-   }
 
-   public static double a(long $$0, fkk $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
-   }
+      @Override
+      public fkh a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
 
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+      @Override
+      public fkh a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public fkh a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fkh a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fkh b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fkh b(float $$0, float $$1, float $$2) {
+         this.a.b($$0, $$1, $$2);
+         this.b.b($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
-   public static String b(long $$0, fkk $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   static record b(fkh[] a) implements fkh {
+      b(fkh[] a) {
+         for (int $$1 = 0; $$1 < a.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
+               if (a[$$1] == a[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
+               }
+            }
+         }
+
+         this.a = a;
+      }
+
+      private void a(Consumer<fkh> $$0) {
+         for (fkh $$1 : this.a) {
+            $$0.accept($$1);
+         }
+      }
+
+      @Override
+      public fkh a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public fkh a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      @Override
+      public fkh a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fkh a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fkh b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fkh b(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.b($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+      }
    }
 }

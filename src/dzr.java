@@ -1,105 +1,70 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class dzr extends dxr implements dkh, dzu.b {
+   private dzu a = this.j();
 
-public class dzr {
-   private static final dzr.a a = dzr.a.a("trial_chamber/breeze");
-   private static final dzr.a b = dzr.a.a("trial_chamber/melee/husk");
-   private static final dzr.a c = dzr.a.a("trial_chamber/melee/spider");
-   private static final dzr.a d = dzr.a.a("trial_chamber/melee/zombie");
-   private static final dzr.a e = dzr.a.a("trial_chamber/ranged/poison_skeleton");
-   private static final dzr.a f = dzr.a.a("trial_chamber/ranged/skeleton");
-   private static final dzr.a g = dzr.a.a("trial_chamber/ranged/stray");
-   private static final dzr.a h = dzr.a.a("trial_chamber/slow_ranged/poison_skeleton");
-   private static final dzr.a i = dzr.a.a("trial_chamber/slow_ranged/skeleton");
-   private static final dzr.a j = dzr.a.a("trial_chamber/slow_ranged/stray");
-   private static final dzr.a k = dzr.a.a("trial_chamber/small_melee/baby_zombie");
-   private static final dzr.a l = dzr.a.a("trial_chamber/small_melee/cave_spider");
-   private static final dzr.a m = dzr.a.a("trial_chamber/small_melee/silverfish");
-   private static final dzr.a n = dzr.a.a("trial_chamber/small_melee/slime");
-
-   public static void a(qh<dzq> $$0) {
-      a(
-         $$0,
-         a,
-         dzq.b().b(1.0F).d(0.5F).b(20).a(2.0F).c(1.0F).a(bsq.a(a(bwr.r))).a(),
-         dzq.b().d(0.5F).b(20).a(4.0F).c(1.0F).a(bsq.a(a(bwr.r))).b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a()
-      );
-      a($$0, b, c().a(bsq.a(a(bwr.am))).a(), c().a(bsq.a(a(bwr.am, ezk.ak))).b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a());
-      a($$0, c, c().a(bsq.a(a(bwr.bo))).a(), a().a(bsq.a(a(bwr.bo))).b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a());
-      a($$0, d, c().a(bsq.a(a(bwr.bO))).a(), c().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bO, ezk.ak))).a());
-      a($$0, e, c().a(bsq.a(a(bwr.q))).a(), c().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.q, ezk.aj))).a());
-      a($$0, f, c().a(bsq.a(a(bwr.bf))).a(), c().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bf, ezk.aj))).a());
-      a($$0, g, c().a(bsq.a(a(bwr.bs))).a(), c().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bs, ezk.aj))).a());
-      a($$0, h, b().a(bsq.a(a(bwr.q))).a(), b().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.q, ezk.aj))).a());
-      a($$0, i, b().a(bsq.a(a(bwr.bf))).a(), b().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bf, ezk.aj))).a());
-      a($$0, j, b().a(bsq.a(a(bwr.bs))).a(), b().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bs, ezk.aj))).a());
-      a(
-         $$0,
-         k,
-         dzq.b().d(0.5F).b(20).a(bsq.a(a(bwr.bO, $$0x -> $$0x.a("IsBaby", true), null))).a(),
-         dzq.b().d(0.5F).b(20).b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bO, $$0x -> $$0x.a("IsBaby", true), ezk.ak))).a()
-      );
-      a($$0, l, c().a(bsq.a(a(bwr.v))).a(), a().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.v))).a());
-      a($$0, m, c().a(bsq.a(a(bwr.be))).a(), a().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.be))).a());
-      a(
-         $$0,
-         n,
-         c().a(bsq.<dkb>b().a(a(bwr.bh, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bwr.bh, $$0x -> $$0x.a("Size", (byte)2)), 1).a()).a(),
-         a()
-            .b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a())
-            .a(bsq.<dkb>b().a(a(bwr.bh, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bwr.bh, $$0x -> $$0x.a("Size", (byte)2)), 1).a())
-            .a()
-      );
+   public dzr(iv $$0, eat $$1) {
+      super(dxt.R, $$0, $$1);
    }
 
-   private static <T extends bwi> dkb a(bwr<T> $$0) {
-      return a($$0, $$0x -> {
-      }, null);
+   private dzu j() {
+      dzt $$0 = dzt.a;
+      dzt.a $$1 = dzt.a.a;
+      return new dzu(this, $$0, $$1);
    }
 
-   private static <T extends bwi> dkb a(bwr<T> $$0, Consumer<tz> $$1) {
-      return a($$0, $$1, null);
+   @Override
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      this.a = $$0.<dzu>a(this.a.a(), $$1.a(un.a)).orElseGet(this::j);
+      if (this.n != null) {
+         this.f();
+      }
    }
 
-   private static <T extends bwi> dkb a(bwr<T> $$0, alf<ezt> $$1) {
-      return a($$0, $$0x -> {
-      }, $$1);
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      $$0.a(this.a.a(), $$1.a(un.a), this.a);
    }
 
-   private static <T extends bwi> dkb a(bwr<T> $$0, Consumer<tz> $$1, @Nullable alf<ezt> $$2) {
-      tz $$3 = new tz();
-      $$3.a("id", mg.f.b($$0).toString());
-      $$1.accept($$3);
-      Optional<bwu> $$4 = Optional.ofNullable($$2).map($$0x -> new bwu($$0x, 0.0F));
-      return new dkb($$3, Optional.empty(), $$4);
+   public aca a() {
+      return aca.a(this);
    }
 
-   private static void a(qh<dzq> $$0, dzr.a $$1, dzq $$2, dzq $$3) {
-      $$0.a($$1.a, $$2);
-      $$0.a($$1.b, $$3);
+   @Override
+   public tz a(jh.a $$0) {
+      return this.a.f().a(this.m().c(dvv.b));
    }
 
-   static alf<dzq> a(String $$0) {
-      return alf.a(mh.bi, alg.b($$0));
+   @Override
+   public void a(bwr<?> $$0, azv $$1) {
+      if (this.n == null) {
+         ag.b("Expected non-null level");
+      } else {
+         this.a.a($$0, this.n);
+         this.e();
+      }
    }
 
-   private static dzq.a a() {
-      return dzq.b().b(4.0F).d(0.5F).b(20).a(12.0F);
+   public dzu c() {
+      return this.a;
    }
 
-   private static dzq.a b() {
-      return dzq.b().b(4.0F).d(2.0F).b(160);
+   @Override
+   public dzy d() {
+      return !this.m().b(ebj.bB) ? dzy.a : this.m().c(ebj.bB);
    }
 
-   private static dzq.a c() {
-      return dzq.b().b(3.0F).d(0.5F).b(20);
+   @Override
+   public void a(djm $$0, dzy $$1) {
+      this.e();
+      $$0.b(this.o, this.m().b(ebj.bB, $$1));
    }
 
-   static record a(alf<dzq> a, alf<dzq> b) {
-
-      public static dzr.a a(String $$0) {
-         return new dzr.a(dzr.a($$0 + "/normal"), dzr.a($$0 + "/ominous"));
+   @Override
+   public void f() {
+      this.e();
+      if (this.n != null) {
+         this.n.a(this.o, this.m(), this.m(), 3);
       }
    }
 }

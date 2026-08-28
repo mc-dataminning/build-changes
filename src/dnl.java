@@ -1,72 +1,25 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnl extends dqf implements dnk {
-   public static final MapCodec<dnl> c = b(dnl::new);
-   private static final float g = 0.11F;
+public class dnl extends doo {
+   public static final MapCodec<dnl> a = b(dnl::new);
+   private static final ffw[] b = dmr.a(7, $$0 -> dmr.b(16.0, 0.0, (double)(2 + $$0)));
 
    @Override
    public MapCodec<dnl> a() {
-      return c;
+      return a;
    }
 
-   public dnl(ean.d $$0) {
-      super($$0, jb.a, s_, false, 0.1);
-      this.l(this.C.b().b(e, Integer.valueOf(0)).b(t_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected int a(azv $$0) {
-      return 1;
+   public dnl(eas.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean h(eao $$0) {
-      return $$0.l();
+   protected djl d() {
+      return czr.vp;
    }
 
    @Override
-   protected dmm b() {
-      return dmo.te;
-   }
-
-   @Override
-   protected eao a(eao $$0, eao $$1) {
-      return $$1.b(t_, $$0.c(t_));
-   }
-
-   @Override
-   protected eao a(eao $$0, azv $$1) {
-      return super.a($$0, $$1).b(t_, Boolean.valueOf($$1.i() < 0.11F));
-   }
-
-   @Override
-   protected czk a(djk $$0, iv $$1, eao $$2, boolean $$3) {
-      return new czk(czo.xH);
-   }
-
-   @Override
-   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
-      return dnk.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      super.a($$0);
-      $$0.a(t_);
-   }
-
-   @Override
-   public boolean a(djk $$0, iv $$1, eao $$2) {
-      return !$$2.c(t_);
-   }
-
-   @Override
-   public boolean a(djh $$0, azv $$1, iv $$2, eao $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iv $$2, eao $$3) {
-      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return b[this.h($$0)];
    }
 }

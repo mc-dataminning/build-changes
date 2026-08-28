@@ -8,9 +8,9 @@ public class bl extends dk<bl.a> {
       return bl.a.a;
    }
 
-   public void a(arr $$0, cpe $$1, cqv $$2) {
-      ezo $$3 = by.b($$0, $$1);
-      ezo $$4 = by.b($$0, $$2);
+   public void a(arr $$0, cph $$1, cqy $$2) {
+      ezt $$3 = by.b($$0, $$1);
+      ezt $$4 = by.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
@@ -28,7 +28,7 @@ public class bl extends dk<bl.a> {
          return aq.s.a(new bl.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(ezo $$0, ezo $$1) {
+      public boolean a(ezt $$0, ezt $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

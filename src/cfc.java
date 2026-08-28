@@ -43,7 +43,7 @@ public class cfc extends cef {
             }
          }
 
-         fex $$0 = this.h();
+         ffc $$0 = this.h();
          if ($$0 == null) {
             return false;
          } else {
@@ -57,7 +57,7 @@ public class cfc extends cef {
    }
 
    @Nullable
-   protected fex h() {
+   protected ffc h() {
       return cic.a(this.b, 10, 7);
    }
 

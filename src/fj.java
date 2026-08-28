@@ -43,26 +43,26 @@ public class fj<T> implements ArgumentType<alf<T>> {
       return a($$0, $$2).a($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static jf.c<ejf<?, ?>> a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static jf.c<ejk<?, ?>> a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, mh.aL, b);
    }
 
-   public static jf.c<eri> b(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static jf.c<ern> b(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, mh.be, c);
    }
 
-   public static jf.c<ess> c(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static jf.c<esx> c(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, mh.bf, d);
    }
 
-   public static deg<?> d(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
-      dei $$2 = ((ej)$$0.getSource()).l().aI();
-      alf<deb<?>> $$3 = a($$0, $$1, mh.bu, e);
+   public static dej<?> d(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+      del $$2 = ((ej)$$0.getSource()).l().aI();
+      alf<dee<?>> $$3 = a($$0, $$1, mh.bv, e);
       return $$2.b($$3).orElseThrow(() -> e.create($$3.a()));
    }
 
    public static aj e(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
-      alf<ai> $$2 = a($$0, $$1, mh.bt, f);
+      alf<ai> $$2 = a($$0, $$1, mh.bu, f);
       aj $$3 = ((ej)$$0.getSource()).l().aD().a($$2.a());
       if ($$3 == null) {
          throw f.create($$2.a());

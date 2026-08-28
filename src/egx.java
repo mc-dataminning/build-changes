@@ -1,68 +1,117 @@
-public final class egx {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private egx() {
+public record egx(eha j, eat k, eat l, egy m, ehj.o n, List<dky.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<egx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eha.a.fieldOf("noise").forGetter(egx::f),
+               eat.a.fieldOf("default_block").forGetter(egx::g),
+               eat.a.fieldOf("default_fluid").forGetter(egx::h),
+               egy.a.fieldOf("noise_router").forGetter(egx::i),
+               ehj.o.b.fieldOf("surface_rule").forGetter(egx::j),
+               dky.d.a.listOf().fieldOf("spawn_target").forGetter(egx::k),
+               Codec.INT.fieldOf("sea_level").forGetter(egx::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(egx::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(egx::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(egx::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(egx::n)
+            )
+            .apply($$0, egx::new)
+   );
+   public static final Codec<jf<egx>> b = alc.a(mh.aX, a);
+   public static final alf<egx> c = alf.a(mh.aX, alg.b("overworld"));
+   public static final alf<egx> d = alf.a(mh.aX, alg.b("large_biomes"));
+   public static final alf<egx> e = alf.a(mh.aX, alg.b("amplified"));
+   public static final alf<egx> f = alf.a(mh.aX, alg.b("nether"));
+   public static final alf<egx> g = alf.a(mh.aX, alg.b("end"));
+   public static final alf<egx> h = alf.a(mh.aX, alg.b("caves"));
+   public static final alf<egx> i = alf.a(mh.aX, alg.b("floating_islands"));
+
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   protected static egr.c a(egg $$0, egg $$1, egg $$2, eha $$3) {
-      eao $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         egx.a $$8 = $$6 > 0.0 ? egx.a.a : egx.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = azm.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               azv $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = azm.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
+   public boolean b() {
+      return this.r;
    }
 
-   protected static enum a {
-      a(dmo.rI.m(), dmo.tQ.m(), dmo.c.m(), 0, 50),
-      b(dmo.T.m(), dmo.tP.m(), dmo.rh.m(), -60, -8);
+   public boolean c() {
+      return this.s;
+   }
 
-      final eao e;
-      final eao f;
-      final eao g;
-      protected final int c;
-      protected final int d;
+   public ehr.a d() {
+      return this.t ? ehr.a.a : ehr.a.b;
+   }
 
-      private a(final eao $$0, final eao $$1, final eao $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
-      }
+   public static void a(qh<egx> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
+
+   private static egx b(qh<?> $$0) {
+      return new egx(eha.d, dmt.fY.m(), dmt.a.m(), egz.a($$0.a(mh.aO)), qu.c(), List.of(), 0, true, false, false, true);
+   }
+
+   private static egx c(qh<?> $$0) {
+      return new egx(eha.c, dmt.em.m(), dmt.K.m(), egz.a($$0.a(mh.aO), $$0.a(mh.aY)), qu.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static egx a(qh<?> $$0, boolean $$1, boolean $$2) {
+      return new egx(eha.b, dmt.b.m(), dmt.J.m(), egz.a($$0.a(mh.aO), $$0.a(mh.aY), $$2, $$1), qu.a(), new dlf().a(), 63, false, true, true, false);
+   }
+
+   private static egx d(qh<?> $$0) {
+      return new egx(eha.e, dmt.b.m(), dmt.J.m(), egz.b($$0.a(mh.aO), $$0.a(mh.aY)), qu.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static egx e(qh<?> $$0) {
+      return new egx(eha.f, dmt.b.m(), dmt.J.m(), egz.c($$0.a(mh.aO), $$0.a(mh.aY)), qu.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static egx e() {
+      return new egx(eha.b, dmt.b.m(), dmt.a.m(), egz.a(), qu.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public eha f() {
+      return this.j;
+   }
+
+   public eat g() {
+      return this.k;
+   }
+
+   public eat h() {
+      return this.l;
+   }
+
+   public egy i() {
+      return this.m;
+   }
+
+   public ehj.o j() {
+      return this.n;
+   }
+
+   public List<dky.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

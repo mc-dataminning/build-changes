@@ -1,86 +1,53 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duw extends dmm {
-   public static final MapCodec<duw> a = b(duw::new);
-   public static final ebo b = ebe.az;
-   private static final ffr c = dmm.b(12.0, 0.0, 16.0);
+public class duw extends dub {
+   public static final MapCodec<duw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ech.a.fieldOf("wood_type").forGetter(dub::d), t()).apply($$0, duw::new));
+   public static final ebt b = ebj.bd;
 
    @Override
    public MapCodec<duw> a() {
       return a;
    }
 
-   protected duw(ean.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Integer.valueOf(0)));
+   public duw(ech $$0, eas.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.C.b().b(b, Integer.valueOf(0)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return c;
+   protected boolean a(eat $$0, djp $$1, iv $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   public eat a(ddg $$0) {
+      exa $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Integer.valueOf(ebz.a($$0.i() + 180.0F))).b(d, Boolean.valueOf($$1.a() == exb.c));
    }
 
    @Override
-   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
-      if ($$1.v($$2.d())) {
-         int $$4 = 1;
-
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(b);
-            if ($$5 == 15) {
-               $$1.b($$2.d(), this.m());
-               $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 260);
-            } else {
-               $$1.a($$2, $$0.b(b, Integer.valueOf($$5 + 1)), 260);
-            }
-         }
-      }
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      return $$4 == jb.a && !this.a($$0, $$1, $$3) ? dmt.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public float h(eat $$0) {
+      return ebz.b($$0.c(b));
    }
 
    @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      eao $$3 = $$1.a_($$2.e());
-      if ($$3.a(this)) {
-         return true;
-      } else {
-         if ($$3.a(axc.ah) || $$3.a(axc.J)) {
-            iv $$4 = $$2.e();
-
-            for (jb $$5 : jb.c.a) {
-               eao $$6 = $$1.a_($$4.a($$5));
-               ewv $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(axh.a) || $$6.a(dmo.lo)) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
-      }
+   protected eat a(eat $$0, dtl $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b);
+   protected eat a(eat $$0, dru $$1) {
+      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   }
+
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(b, d);
    }
 }

@@ -28,7 +28,7 @@ public abstract class ard {
    final Long2ObjectMap<ObjectSet<arr>> d = new Long2ObjectOpenHashMap();
    private final arh e;
    private final art f;
-   final dke g;
+   final dkj g;
    private final ard.a h = new ard.a(8);
    private final ard.b i = new ard.b(32);
    protected final Set<aqs> b = new ReferenceOpenHashSet();
@@ -37,7 +37,7 @@ public abstract class ard {
    final Executor l;
    private int m = 10;
 
-   protected ard(dke $$0, Executor $$1, Executor $$2) {
+   protected ard(dkj $$0, Executor $$1, Executor $$2) {
       this.g = $$0;
       this.e = new arh(this, $$0);
       this.f = new art($$0);
@@ -86,7 +86,7 @@ public abstract class ard {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<aqv<ecv>> $$8 = $$7.b();
+                  CompletableFuture<aqv<eda>> $$8 = $$7.b();
                   $$8.thenAccept($$1x -> this.l.execute(() -> this.j.a($$6, () -> {
                         }, false)));
                }
@@ -100,7 +100,7 @@ public abstract class ard {
    }
 
    public void a(jy $$0, arr $$1) {
-      dio $$2 = $$0.r();
+      dir $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.h.b($$3, 0, true);
@@ -109,7 +109,7 @@ public abstract class ard {
    }
 
    public void b(jy $$0, arr $$1) {
-      dio $$2 = $$0.r();
+      dir $$2 = $$0.r();
       long $$3 = $$2.a();
       ObjectSet<arr> $$4 = (ObjectSet<arr>)this.d.get($$3);
       $$4.remove($$1);
@@ -156,7 +156,7 @@ public abstract class ard {
    public bas e(long $$0) {
       this.h.a();
       int $$1 = this.h.c($$0);
-      if ($$1 <= djs.c) {
+      if ($$1 <= djx.c) {
          return bas.a;
       } else {
          return $$1 > 8 ? bas.b : bas.c;
@@ -293,7 +293,7 @@ public abstract class ard {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  ard.this.j.onLevelChange(new dio($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  ard.this.j.onLevelChange(new dir($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

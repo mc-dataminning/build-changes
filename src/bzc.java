@@ -54,16 +54,16 @@ public class bzc {
       $$0.eb().a(cgl.n, $$4);
    }
 
-   public static void a(bxj $$0, czk $$1, fex $$2) {
-      fex $$3 = new fex(0.3F, 0.3F, 0.3F);
+   public static void a(bxj $$0, czn $$1, ffc $$2) {
+      ffc $$3 = new ffc(0.3F, 0.3F, 0.3F);
       a($$0, $$1, $$2, $$3, 0.3F);
    }
 
-   public static void a(bxj $$0, czk $$1, fex $$2, fex $$3, float $$4) {
+   public static void a(bxj $$0, czn $$1, ffc $$2, ffc $$3, float $$4) {
       double $$5 = $$0.dD() - (double)$$4;
-      cno $$6 = new cno($$0.dU(), $$0.dz(), $$5, $$0.dF(), $$1);
+      cnr $$6 = new cnr($$0.dU(), $$0.dz(), $$5, $$0.dF(), $$1);
       $$6.b($$0);
-      fex $$7 = $$2.d($$0.ds());
+      ffc $$7 = $$2.d($$0.ds());
       $$7 = $$7.d().d($$3.d, $$3.e, $$3.f);
       $$6.i($$7);
       $$6.j();
@@ -76,7 +76,7 @@ public class bzc {
    }
 
    public static boolean a(bxl $$0, bxj $$1, int $$2) {
-      if ($$0.fa().h() instanceof daf $$3 && $$0.a($$3)) {
+      if ($$0.fa().h() instanceof dai $$3 && $$0.a($$3)) {
          int $$4 = $$3.b() - $$2;
          return $$0.a($$1, (double)$$4);
       }
@@ -105,8 +105,8 @@ public class bzc {
    }
 
    public static bxj a(bxj $$0, bxj $$1, bxj $$2) {
-      fex $$3 = $$1.ds();
-      fex $$4 = $$2.ds();
+      ffc $$3 = $$1.ds();
+      ffc $$4 = $$2.ds();
       return $$0.g($$3) < $$0.g($$4) ? $$1 : $$2;
    }
 
@@ -116,11 +116,11 @@ public class bzc {
    }
 
    @Nullable
-   public static fex a(bxr $$0, int $$1, int $$2) {
-      fex $$3 = cic.a($$0, $$1, $$2);
+   public static ffc a(bxr $$0, int $$1, int $$2) {
+      ffc $$3 = cic.a($$0, $$1, $$2);
       int $$4 = 0;
 
-      while ($$3 != null && !$$0.dU().a_(iv.a((jp)$$3)).a(exk.b) && $$4++ < 10) {
+      while ($$3 != null && !$$0.dU().a_(iv.a((jp)$$3)).a(exp.b) && $$4++ < 10) {
          $$3 = cic.a($$0, $$1, $$2);
       }
 

@@ -1,52 +1,75 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class fbq extends fbb {
+public class fbq extends fbg {
    public static final MapCodec<fbq> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  dby.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  dby.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  dby.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
-               )
-            )
+            .and($$0.group(ezr.e.fieldOf("component").forGetter($$0x -> $$0x.b), fah.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, fbq::new)
    );
-   public static final dby b = new dby(dby.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<dby.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final ezq<?> b;
+   private final List<faj> c;
 
-   public fbq(List<fcx> $$0, Optional<dby.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   fbq(List<fdc> $$0, ezq<?> $$1, List<faj> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   protected czk a(czk $$0, ezo $$1) {
-      $$0.a(kk.ai, b, this::a);
-      return $$0;
-   }
-
-   private dby a(dby $$0) {
-      return new dby(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   public fbi<fbq> b() {
+      return fbj.t;
    }
 
    @Override
-   public fbd<fbq> b() {
-      return fbe.L;
+   public czn a(czn $$0, ezt $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         Builder<czn> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ezy.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(ezz $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   public static fbq.a a(ezq<?> $$0) {
+      return new fbq.a($$0);
+   }
+
+   public static class a extends fbg.a<fbq.a> {
+      private final com.google.common.collect.ImmutableList.Builder<faj> a = ImmutableList.builder();
+      private final ezq<?> b;
+
+      public a(ezq<?> $$0) {
+         this.b = $$0;
+      }
+
+      protected fbq.a a() {
+         return this;
+      }
+
+      public fbq.a a(faj.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public fbh b() {
+         return new fbq(this.g(), this.b, this.a.build());
+      }
    }
 }

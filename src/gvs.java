@@ -1,32 +1,17 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+@Deprecated
+public abstract class gvs<T extends bxl, S extends hef, M extends ggp<? super S>> extends gye<T, S, M> {
+   private final M a;
+   private final M j;
 
-public class gvs extends gvn<ckr, hcg, gfe> {
-   private static final Map<ckr.e, alg> a = ag.a(Maps.newHashMap(), $$0 -> {
-      for (ckr.e $$1 : ckr.e.values()) {
-         $$0.put($$1, alg.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
-
-   public gvs(gwt.a $$0) {
-      super($$0, new gfe($$0.a(gjn.m)), new gfe($$0.a(gjn.n)), 0.5F);
+   public gvs(gwy.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.j = $$2;
    }
 
-   public alg a(hcg $$0) {
-      return a.get($$0.a);
-   }
-
-   public hcg a() {
-      return new hcg();
-   }
-
-   public void a(ckr $$0, hcg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b = $$0.bN.a($$2);
-      $$1.d = $$0.bO.a($$2);
-      $$1.e = $$0.bP.a($$2);
-      $$1.c = $$0.bQ.a($$2);
+   @Override
+   public void a(S $$0, fkd $$1, gqr $$2, int $$3) {
+      this.g = $$0.aj ? this.j : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

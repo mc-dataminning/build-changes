@@ -1,10 +1,23 @@
+import com.mojang.serialization.MapCodec;
 import java.util.stream.Stream;
 
-public abstract class eqo extends eqp {
-   @Override
-   public final Stream<iv> a_(eqn $$0, azv $$1, iv $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class eqo extends equ {
+   private static final eqo c = new eqo();
+   public static final MapCodec<eqo> a = MapCodec.unit(() -> c);
+
+   public static eqo a() {
+      return c;
    }
 
-   protected abstract boolean a(eqn var1, azv var2, iv var3);
+   @Override
+   public Stream<iv> a_(eqs $$0, azv $$1, iv $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new iv($$3, $$2.v(), $$4));
+   }
+
+   @Override
+   public eqv<?> b() {
+      return eqv.m;
+   }
 }

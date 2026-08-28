@@ -1,42 +1,77 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface dtx extends dmu, drj {
+public class dtx extends dwd implements dmu, dro {
+   public static final MapCodec<dtx> a = b(dtx::new);
+   private static final ffw b = dmr.b(12.0, 0.0, 12.0);
+
    @Override
-   default boolean a(@Nullable bxj $$0, din $$1, iv $$2, eao $$3, ewu $$4) {
-      return $$4 == eww.c;
+   public MapCodec<dtx> a() {
+      return a;
+   }
+
+   protected dtx(eas.d $$0) {
+      super($$0);
    }
 
    @Override
-   default boolean a(dji $$0, iv $$1, eao $$2, ewv $$3) {
-      if (!$$2.c(ebe.I) && $$3.a() == eww.c) {
-         if (!$$0.w_()) {
-            $$0.a($$1, $$2.b(ebe.I, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return b;
+   }
 
-         return true;
-      } else {
-         return false;
+   @Override
+   protected boolean b(eat $$0, diq $$1, iv $$2) {
+      return $$0.c($$1, $$2, jb.b) && !$$0.a(dmt.lp);
+   }
+
+   @Nullable
+   @Override
+   public eat a(ddg $$0) {
+      exa $$1 = $$0.q().b_($$0.a());
+      return $$1.a(axh.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      eat $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if (!$$8.l()) {
+         $$2.a($$3, exb.c, exb.c.a($$1));
       }
+
+      return $$8;
    }
 
    @Override
-   default czk a(@Nullable bxj $$0, dji $$1, iv $$2, eao $$3) {
-      if ($$3.c(ebe.I)) {
-         $$1.a($$2, $$3.b(ebe.I, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new czk(czo.rp);
-      } else {
-         return czk.k;
-      }
+   public boolean a(djp $$0, iv $$1, eat $$2) {
+      return $$0.a_($$1.d()).a(dmt.J);
    }
 
    @Override
-   default Optional<awm> ap_() {
-      return eww.c.j();
+   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
+      return true;
+   }
+
+   @Override
+   protected exa b_(eat $$0) {
+      return exb.c.a(false);
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
+      eat $$4 = dmt.bH.m();
+      eat $$5 = $$4.b(dvi.d, ebp.a);
+      iv $$6 = $$2.d();
+      $$0.a($$2, $$4, 2);
+      $$0.a($$6, $$5, 2);
+   }
+
+   @Override
+   public boolean a(@Nullable bxj $$0, diq $$1, iv $$2, eat $$3, ewz $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(djn $$0, iv $$1, eat $$2, exa $$3) {
+      return false;
    }
 }

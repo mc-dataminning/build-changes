@@ -5,25 +5,25 @@ public interface azv {
    double a = 2.297;
 
    static azv a() {
-      return a(ehc.a());
+      return a(ehh.a());
    }
 
    @Deprecated
    static azv b() {
-      return new ehg(ehc.a());
+      return new ehl(ehh.a());
    }
 
    static azv a(long $$0) {
-      return new ego($$0);
+      return new egt($$0);
    }
 
    static azv c() {
-      return new ehd(ThreadLocalRandom.current().nextLong());
+      return new ehi(ThreadLocalRandom.current().nextLong());
    }
 
    azv d();
 
-   eha e();
+   ehf e();
 
    void b(long var1);
 

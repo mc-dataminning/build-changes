@@ -19,9 +19,9 @@ public class cad<E extends bxl> extends bza<E> {
    protected final int f;
    protected final float g;
    protected List<cad.a> h = Lists.newArrayList();
-   protected Optional<fex> i = Optional.empty();
+   protected Optional<ffc> i = Optional.empty();
    @Nullable
-   protected fex j;
+   protected ffc j;
    protected int k;
    protected long l;
    private final Function<E, awm> q;
@@ -32,9 +32,9 @@ public class cad<E extends bxl> extends bza<E> {
    }
 
    public static <E extends bxl> boolean a(E $$0, iv $$1) {
-      djh $$2 = $$0.dU();
+      djm $$2 = $$0.dU();
       iv $$3 = $$1.e();
-      return $$2.a_($$3).s() && $$0.a(exr.b($$0, $$1)) == 0.0F;
+      return $$2.a_($$3).s() && $$0.a(exw.b($$0, $$1)) == 0.0F;
    }
 
    public cad(btr $$0, int $$1, int $$2, float $$3, Function<E, awm> $$4, BiPredicate<E, iv> $$5) {
@@ -48,7 +48,7 @@ public class cad<E extends bxl> extends bza<E> {
    }
 
    protected boolean a(arq $$0, bxl $$1) {
-      boolean $$2 = $$1.aH() && !$$1.bh() && !$$1.bu() && !$$0.a_($$1.du()).a(dmo.pO);
+      boolean $$2 = $$1.aH() && !$$1.bh() && !$$1.bu() && !$$0.a_($$1.du()).a(dmt.pO);
       if (!$$2) {
          $$1.eb().a(cgl.T, this.p.a($$0.A) / 2);
       }
@@ -104,12 +104,12 @@ public class cad<E extends bxl> extends bza<E> {
             cad.a $$4 = $$3.get();
             iv $$5 = $$4.a();
             if (this.a($$0, $$1, $$5)) {
-               fex $$6 = fex.b($$5);
-               fex $$7 = this.a($$1, $$6);
+               ffc $$6 = ffc.b($$5);
+               ffc $$7 = this.a($$1, $$6);
                if ($$7 != null) {
                   $$1.eb().a(cgl.o, new bzd($$5));
                   cgt $$8 = $$1.O();
-                  exj $$9 = $$8.a($$5, 0, 8);
+                  exo $$9 = $$8.a($$5, 0, 8);
                   if ($$9 == null || !$$9.j()) {
                      this.j = $$7;
                      this.l = $$2;
@@ -135,13 +135,13 @@ public class cad<E extends bxl> extends bza<E> {
    }
 
    @Nullable
-   protected fex a(bxl $$0, fex $$1) {
+   protected ffc a(bxl $$0, ffc $$1) {
       List<Integer> $$2 = Lists.newArrayList(o);
       Collections.shuffle($$2);
       float $$3 = (float)($$0.h(byp.o) * (double)this.g);
 
       for (int $$4 : $$2) {
-         Optional<fex> $$5 = cae.a($$0, $$1, $$3, $$4, true);
+         Optional<ffc> $$5 = cae.a($$0, $$1, $$3, $$4, true);
          if ($$5.isPresent()) {
             return $$5.get();
          }

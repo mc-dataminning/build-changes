@@ -1,38 +1,16 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-
 public class fpd {
-   private final gkm a;
-   private int b = -1;
-   @Nullable
-   private Consumer<tz> c;
+   private static volatile boolean a;
 
-   public fpd(gkm $$0) {
-      this.a = $$0;
-   }
-
-   public boolean a(int $$0, @Nullable tz $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   public static void a() {
+      if (!a) {
+         a = true;
+         hgh.a();
+         hiv.a();
+         fre.a();
+         hif.a();
+         hgs.a();
+         hhp.a();
+         hjx.a();
       }
-   }
-
-   private int a(Consumer<tz> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<tz> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahk($$2, $$0));
-   }
-
-   public void a(iv $$0, Consumer<tz> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ags($$2, $$0));
    }
 }

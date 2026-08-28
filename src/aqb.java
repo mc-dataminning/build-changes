@@ -27,7 +27,7 @@ public class aqb implements apz {
 
    @Override
    public void a(tz $$0) throws CommandSyntaxException {
-      if (this.c instanceof crj) {
+      if (this.c instanceof crm) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cF();

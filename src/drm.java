@@ -1,37 +1,102 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drm extends dvj implements dmp {
-   public static final MapCodec<drm> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayu.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, drm::new)
-   );
+public class drm extends dth implements duc {
+   public static final MapCodec<drm> b = b(drm::new);
+   public static final ebk c = ebj.I;
+   public static final ebk d = ebj.A;
+   private static final int f = 8;
+   public static final int e = 128;
+   private static final int g = 200;
 
    @Override
    public MapCodec<drm> a() {
-      return f;
+      return b;
    }
 
-   public drm(float $$0, ean.d $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public boolean a(djk $$0, iv $$1, eao $$2) {
-      return $$0.a_($$1.e()).l();
+   public drm(eas.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(a, jb.b).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a(djh $$0, azv $$1, iv $$2, eao $$3) {
+   public eat a(ddg $$0) {
+      exa $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == exb.c;
+      return this.m().b(a, $$0.k()).b(c, Boolean.valueOf($$2));
+   }
+
+   @Override
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, exb.c, exb.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected exa b_(eat $$0) {
+      return $$0.c(c) ? exb.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected int a(eat $$0, diq $$1, iv $$2, jb $$3) {
+      return $$0.c(d) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(eat $$0, diq $$1, iv $$2, jb $$3) {
+      return $$0.c(d) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   public void d(eat $$0, djm $$1, iv $$2) {
+      $$1.a($$2, $$0.b(d, Boolean.valueOf(true)), 3);
+      this.e($$0, $$1, $$2);
+      $$1.a($$2, this, 8);
+      $$1.c(3002, $$2, $$0.c(a).o().ordinal());
+   }
+
+   private void e(eat $$0, djm $$1, iv $$2) {
+      jb $$3 = $$0.c(a).g();
+      $$1.a($$2.a($$3), this, eye.a($$1, $$3, null));
+   }
+
+   @Override
+   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
+      $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 3);
+      this.e($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
+      if ($$1.ag() && (long)$$1.A.a(200) <= $$1.ae() % 200L && $$2.v() == $$1.a(egs.a.b, $$2.u(), $$2.w()) - 1) {
+         azq.a($$0.c(a).o(), $$1, $$2, 0.125, ly.aW, btr.a(1, 2));
+      }
+   }
+
+   @Override
+   protected void a(eat $$0, arq $$1, iv $$2, boolean $$3) {
+      if ($$0.c(d)) {
+         this.e($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a(eat $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d) && !$$1.U().a($$2, this)) {
+            $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 18);
+         }
+      }
+   }
+
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(a, d, c);
+   }
+
+   @Override
+   protected boolean f_(eat $$0) {
       return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iv $$2, eao $$3) {
-      $$0.a($$2.e(), drn.c(), 2);
-   }
-
-   @Override
-   public iv a(iv $$0) {
-      return $$0.e();
    }
 }

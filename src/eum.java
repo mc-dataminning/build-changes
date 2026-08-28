@@ -1,20 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public class eum extends eve {
-   public static final MapCodec<eum> a = mg.e.q().fieldOf("block").xmap(eum::new, $$0 -> $$0.b);
-   private final dmm b;
+public class eum extends evj {
+   public static final MapCodec<eum> a = MapCodec.unit(() -> eum.b);
+   public static final eum b = new eum();
 
-   public eum(dmm $$0) {
-      this.b = $$0;
+   private eum() {
    }
 
    @Override
-   public boolean a(eao $$0, azv $$1) {
-      return $$0.a(this.b);
+   public boolean a(eat $$0, azv $$1) {
+      return true;
    }
 
    @Override
-   protected evf<?> a() {
-      return evf.b;
+   protected evk<?> a() {
+      return evk.a;
    }
 }

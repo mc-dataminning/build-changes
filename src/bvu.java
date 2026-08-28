@@ -12,7 +12,7 @@ class bvu extends bvk {
 
    @Override
    public void a(arq $$0, bxj $$1, int $$2, bwi.d $$3) {
-      if ($$3 == bwi.d.a && ($$1 instanceof crj || $$0.O().c(djd.d))) {
+      if ($$3 == bwi.d.a && ($$1 instanceof crm || $$0.O().c(dji.d))) {
          this.a($$0, $$1.dX(), $$1.du());
       }
    }
@@ -32,7 +32,7 @@ class bvu extends bvk {
       }
 
       for (iv $$7 : $$3) {
-         $$0.a($$7, dmo.bz.m(), 3);
+         $$0.a($$7, dmt.bz.m(), 3);
          $$0.c(3018, $$7, 0);
       }
    }

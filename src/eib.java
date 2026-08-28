@@ -1,24 +1,16 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-class eib extends eif {
-   private final jj<ewu> e;
-   public static final MapCodec<eib> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ju.a(mh.F).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, eib::new)
-   );
+abstract class eib implements ehz {
+   protected final List<ehz> e;
 
-   public eib(ka $$0, jj<ewu> $$1) {
-      super($$0);
-      this.e = $$1;
+   protected eib(List<ehz> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected boolean a(eao $$0) {
-      return $$0.y().a(this.e);
-   }
-
-   @Override
-   public ehv<?> a() {
-      return ehv.c;
+   public static <T extends eib> MapCodec<T> a(Function<List<ehz>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ehz.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

@@ -1,29 +1,26 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public enum fpc {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public class fpc {
-   private final List<xd> a = Lists.newArrayList();
+   private static final fpc[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public void a(xd $$0) {
-      this.a.add($$0);
+   private fpc(final boolean $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Nullable
-   public xd a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : xd.a(this.a);
-      }
+   public boolean a() {
+      return this.e;
    }
 
-   public xd b() {
-      xd $$0 = this.a();
-      return $$0 != null ? $$0 : xd.b;
+   public boolean b() {
+      return this.f;
    }
 
-   public void c() {
-      this.a.clear();
+   public fpc c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

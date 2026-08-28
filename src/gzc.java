@@ -1,30 +1,36 @@
-public class gzc<T extends ckd> extends gvn<T, hey, gio> {
-   private static final alg a = alg.b("textures/entity/squid/squid.png");
+public class gzc extends gye<cox, hfb, gio> {
+   public static final alg a = alg.b("textures/entity/slime/slime.png");
 
-   public gzc(gwt.a $$0, gio $$1, gio $$2) {
-      super($$0, $$1, $$2, 0.7F);
+   public gzc(gwy.a $$0) {
+      super($$0, new gio($$0.a(gjs.dg)), 0.25F);
+      this.a(new hbr(this, $$0.f()));
    }
 
-   public alg a(hey $$0) {
+   protected float a(hfb $$0) {
+      return (float)$$0.b * 0.25F;
+   }
+
+   protected void a(hfb $$0, fkd $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   }
+
+   public alg b(hfb $$0) {
       return a;
    }
 
-   public hey b() {
-      return new hey();
+   public hfb b() {
+      return new hfb();
    }
 
-   public void a(T $$0, hey $$1, float $$2) {
+   public void a(cox $$0, hfb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azm.h($$2, $$0.bN, $$0.bM);
-      $$1.b = azm.h($$2, $$0.bH, $$0.bG);
-      $$1.c = azm.h($$2, $$0.bJ, $$0.bI);
-   }
-
-   protected void a(hey $$0, fjy $$1, float $$2, float $$3) {
-      $$1.a(0.0F, $$0.aj ? 0.25F : 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$2));
-      $$1.a(a.b.rotationDegrees($$0.b));
-      $$1.a(a.d.rotationDegrees($$0.c));
-      $$1.a(0.0F, $$0.aj ? -0.6F : -1.2F, 0.0F);
+      $$1.a = azm.h($$2, $$0.bG, $$0.bF);
+      $$1.b = $$0.gr();
    }
 }

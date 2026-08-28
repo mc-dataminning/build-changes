@@ -14,43 +14,43 @@ import org.slf4j.Logger;
 public class aws extends awq {
    public static final String b = "recipeBook";
    private static final Logger e = LogUtils.getLogger();
-   private static final Codec<List<alf<deb<?>>>> f = deb.b.listOf();
+   private static final Codec<List<alf<dee<?>>>> f = dee.b.listOf();
    private final aws.a g;
    @VisibleForTesting
-   protected final Set<alf<deb<?>>> c = Sets.newIdentityHashSet();
+   protected final Set<alf<dee<?>>> c = Sets.newIdentityHashSet();
    @VisibleForTesting
-   protected final Set<alf<deb<?>>> d = Sets.newIdentityHashSet();
+   protected final Set<alf<dee<?>>> d = Sets.newIdentityHashSet();
 
    public aws(aws.a $$0) {
       this.g = $$0;
    }
 
-   public void a(alf<deb<?>> $$0) {
+   public void a(alf<dee<?>> $$0) {
       this.c.add($$0);
    }
 
-   public boolean b(alf<deb<?>> $$0) {
+   public boolean b(alf<dee<?>> $$0) {
       return this.c.contains($$0);
    }
 
-   public void c(alf<deb<?>> $$0) {
+   public void c(alf<dee<?>> $$0) {
       this.c.remove($$0);
       this.d.remove($$0);
    }
 
-   public void d(alf<deb<?>> $$0) {
+   public void d(alf<dee<?>> $$0) {
       this.d.remove($$0);
    }
 
-   private void e(alf<deb<?>> $$0) {
+   private void e(alf<dee<?>> $$0) {
       this.d.add($$0);
    }
 
-   public int a(Collection<deg<?>> $$0, arr $$1) {
+   public int a(Collection<dej<?>> $$0, arr $$1) {
       List<aeg.a> $$2 = new ArrayList<>();
 
-      for (deg<?> $$3 : $$0) {
-         alf<deb<?>> $$4 = $$3.a();
+      for (dej<?> $$3 : $$0) {
+         alf<dee<?>> $$4 = $$3.a();
          if (!this.c.contains($$4) && !$$3.b().am_()) {
             this.a($$4);
             this.e($$4);
@@ -66,11 +66,11 @@ public class aws extends awq {
       return $$2.size();
    }
 
-   public int b(Collection<deg<?>> $$0, arr $$1) {
-      List<dfj> $$2 = Lists.newArrayList();
+   public int b(Collection<dej<?>> $$0, arr $$1) {
+      List<dfm> $$2 = Lists.newArrayList();
 
-      for (deg<?> $$3 : $$0) {
-         alf<deb<?>> $$4 = $$3.a();
+      for (dej<?> $$3 : $$0) {
+         alf<dee<?>> $$4 = $$3.a();
          if (this.c.contains($$4)) {
             this.c($$4);
             this.g.displaysForRecipe($$4, $$1x -> $$2.add($$1x.a()));
@@ -89,14 +89,14 @@ public class aws extends awq {
       this.a().b($$0);
       uf $$1 = new uf();
 
-      for (alf<deb<?>> $$2 : this.c) {
+      for (alf<dee<?>> $$2 : this.c) {
          $$1.add(uu.a($$2.a().toString()));
       }
 
       $$0.a("recipes", $$1);
       uf $$3 = new uf();
 
-      for (alf<deb<?>> $$4 : this.d) {
+      for (alf<dee<?>> $$4 : this.d) {
          $$3.add(uu.a($$4.a().toString()));
       }
 
@@ -104,16 +104,16 @@ public class aws extends awq {
       return $$0;
    }
 
-   public void a(tz $$0, Predicate<alf<deb<?>>> $$1) {
+   public void a(tz $$0, Predicate<alf<dee<?>>> $$1) {
       this.a(awr.a($$0));
-      List<alf<deb<?>>> $$2 = $$0.<List<alf<deb<?>>>>a("recipes", f).orElse(List.of());
+      List<alf<dee<?>>> $$2 = $$0.<List<alf<dee<?>>>>a("recipes", f).orElse(List.of());
       this.a($$2, this::a, $$1);
-      List<alf<deb<?>>> $$3 = $$0.<List<alf<deb<?>>>>a("toBeDisplayed", f).orElse(List.of());
+      List<alf<dee<?>>> $$3 = $$0.<List<alf<dee<?>>>>a("toBeDisplayed", f).orElse(List.of());
       this.a($$3, this::e, $$1);
    }
 
-   private void a(List<alf<deb<?>>> $$0, Consumer<alf<deb<?>>> $$1, Predicate<alf<deb<?>>> $$2) {
-      for (alf<deb<?>> $$3 : $$0) {
+   private void a(List<alf<dee<?>>> $$0, Consumer<alf<dee<?>>> $$1, Predicate<alf<dee<?>>> $$2) {
+      for (alf<dee<?>> $$3 : $$0) {
          if (!$$2.test($$3)) {
             e.error("Tried to load unrecognized recipe: {} removed now.", $$3);
          } else {
@@ -126,7 +126,7 @@ public class aws extends awq {
       $$0.f.b(new aei(this.a()));
       List<aeg.a> $$1 = new ArrayList<>(this.c.size());
 
-      for (alf<deb<?>> $$2 : this.c) {
+      for (alf<dee<?>> $$2 : this.c) {
          this.g.displaysForRecipe($$2, $$2x -> $$1.add(new aeg.a($$2x, false, this.d.contains($$2))));
       }
 
@@ -143,6 +143,6 @@ public class aws extends awq {
 
    @FunctionalInterface
    public interface a {
-      void displaysForRecipe(alf<deb<?>> var1, Consumer<dfi> var2);
+      void displaysForRecipe(alf<dee<?>> var1, Consumer<dfl> var2);
    }
 }

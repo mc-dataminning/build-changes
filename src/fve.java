@@ -1,166 +1,48 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fve implements fvf {
-   private static final alg a = alg.b("toast/system");
-   private static final int e = 200;
-   private static final int f = 12;
-   private static final int g = 10;
-   private final fve.a h;
-   private wy i;
-   private List<ayy> j;
-   private long k;
-   private boolean l;
-   private final int m;
-   private boolean n;
-   private fvf.a o = fvf.a.b;
+public class fve {
+   private final Consumer<fsy> a;
+   private final Consumer<fsy> b;
+   @Nullable
+   private fvd c;
+   @Nullable
+   private fxh d;
 
-   public fve(fve.a $$0, wy $$1, @Nullable wy $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(fpo.Q().h.a($$1), $$2 == null ? 0 : fpo.Q().h.a($$2))));
+   public fve(Consumer<fsy> $$0, Consumer<fsy> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fve a(fpo $$0, fve.a $$1, wy $$2, wy $$3) {
-      fsf $$4 = $$0.h;
-      List<ayy> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new fve($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private fve(fve.a $$0, wy $$1, List<ayy> $$2, int $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.m = $$3;
-   }
-
-   private static ImmutableList<ayy> a(@Nullable wy $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
-   }
-
-   @Override
-   public int c() {
-      return this.m;
-   }
-
-   @Override
-   public int d() {
-      return 20 + Math.max(this.j.size(), 1) * 12;
-   }
-
-   public void e() {
-      this.n = true;
-   }
-
-   @Override
-   public fvf.a a() {
-      return this.o;
-   }
-
-   @Override
-   public void a(fvg $$0, long $$1) {
-      if (this.l) {
-         this.k = $$1;
-         this.l = false;
+   public void a(fxh $$0) {
+      this.d = $$0;
+      fvd $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
       }
-
-      double $$2 = (double)this.h.l * $$0.d();
-      long $$3 = $$1 - this.k;
-      this.o = !this.n && (double)$$3 < $$2 ? fvf.a.a : fvf.a.b;
    }
 
-   @Override
-   public void a(fsh $$0, fsf $$1, long $$2) {
-      $$0.a(gqx::H, a, 0, 0, this.c(), this.d());
-      if (this.j.isEmpty()) {
-         $$0.a($$1, this.i, 18, 12, -256, false);
-      } else {
-         $$0.a($$1, this.i, 18, 7, -256, false);
+   public void a(fvd $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
 
-         for (int $$3 = 0; $$3 < this.j.size(); $$3++) {
-            $$0.a($$1, this.j.get($$3), 18, 18 + $$3 * 12, -1, false);
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
+
+         if ($$1) {
+            fpt.Q().ak().a(hnj.a(awn.Bv, 1.0F));
          }
       }
    }
 
-   public void a(wy $$0, @Nullable wy $$1) {
-      this.i = $$0;
-      this.j = a($$1);
-      this.l = true;
-   }
-
-   public fve.a f() {
-      return this.h;
-   }
-
-   public static void a(fvg $$0, fve.a $$1, wy $$2, @Nullable wy $$3) {
-      $$0.a(new fve($$1, $$2, $$3));
-   }
-
-   public static void b(fvg $$0, fve.a $$1, wy $$2, @Nullable wy $$3) {
-      fve $$4 = $$0.a(fve.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
-      } else {
-         $$4.a($$2, $$3);
-      }
-   }
-
-   public static void a(fvg $$0, fve.a $$1) {
-      fve $$2 = $$0.a(fve.class, $$1);
-      if ($$2 != null) {
-         $$2.e();
-      }
-   }
-
-   public static void a(fpo $$0, String $$1) {
-      a($$0.aA(), fve.a.d, wy.c("selectWorld.access_failure"), wy.b($$1));
-   }
-
-   public static void b(fpo $$0, String $$1) {
-      a($$0.aA(), fve.a.d, wy.c("selectWorld.delete_failure"), wy.b($$1));
-   }
-
-   public static void c(fpo $$0, String $$1) {
-      a($$0.aA(), fve.a.e, wy.c("pack.copyFailure"), wy.b($$1));
-   }
-
-   public static void a(fpo $$0, int $$1) {
-      a($$0.aA(), fve.a.f, wy.c("gui.fileDropFailure.title"), wy.a("gui.fileDropFailure.detail", $$1));
-   }
-
-   public static void a(fpo $$0) {
-      b($$0.aA(), fve.a.h, wy.c("chunk.toast.lowDiskSpace"), wy.c("chunk.toast.lowDiskSpace.description"));
-   }
-
-   public static void a(fpo $$0, dio $$1) {
-      b($$0.aA(), fve.a.i, wy.a("chunk.toast.loadFailure", wy.a($$1)).a(o.m), wy.c("chunk.toast.checkLog"));
-   }
-
-   public static void b(fpo $$0, dio $$1) {
-      b($$0.aA(), fve.a.j, wy.a("chunk.toast.saveFailure", wy.a($$1)).a(o.m), wy.c("chunk.toast.checkLog"));
-   }
-
-   public static class a {
-      public static final fve.a a = new fve.a();
-      public static final fve.a b = new fve.a();
-      public static final fve.a c = new fve.a();
-      public static final fve.a d = new fve.a();
-      public static final fve.a e = new fve.a();
-      public static final fve.a f = new fve.a();
-      public static final fve.a g = new fve.a();
-      public static final fve.a h = new fve.a(10000L);
-      public static final fve.a i = new fve.a();
-      public static final fve.a j = new fve.a();
-      public static final fve.a k = new fve.a(10000L);
-      final long l;
-
-      public a(long $$0) {
-         this.l = $$0;
-      }
-
-      public a() {
-         this(5000L);
-      }
+   @Nullable
+   public fvd a() {
+      return this.c;
    }
 }

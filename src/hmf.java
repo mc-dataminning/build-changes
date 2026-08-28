@@ -1,59 +1,18 @@
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 
 public interface hmf {
-   String c = "particle";
+   Matrix4fc q = new Matrix4f();
 
-   @Nullable
-   default Boolean c() {
-      return null;
+   default k a() {
+      return k.a();
    }
 
-   @Nullable
-   default hmf.a b() {
-      return null;
+   default Matrix4fc a(jb $$0) {
+      return q;
    }
 
-   @Nullable
-   default gsc d() {
-      return null;
-   }
-
-   default gsg.a e() {
-      return gsg.a.a;
-   }
-
-   @Nullable
-   default hme a() {
-      return null;
-   }
-
-   @Nullable
-   default alg f() {
-      return null;
-   }
-
-   public static enum a {
-      a("front"),
-      b("side");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static hmf.a a(String $$0) {
-         for (hmf.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         throw new IllegalArgumentException("Invalid gui light: " + $$0);
-      }
-
-      public boolean a() {
-         return this == b;
-      }
+   default Matrix4fc b(jb $$0) {
+      return q;
    }
 }

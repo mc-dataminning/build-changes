@@ -1,131 +1,101 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import java.nio.file.Path;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class frj implements mn {
-   private final mp.a d;
-   private final mp.a e;
-   private final mp.a f;
+   private static final alg d = alg.b("trims/color_palettes/trim_palette");
+   private static final Map<String, alg> e = c().collect(Collectors.toMap(dhz.a::a, $$0 -> alg.b("trims/color_palettes/" + $$0.a())));
+   private static final List<alf<dic>> f = List.of(
+      did.a, did.b, did.c, did.d, did.e, did.f, did.g, did.h, did.i, did.j, did.k, did.l, did.m, did.n, did.o, did.p, did.q, did.r
+   );
+   private static final List<hlw.d> g = List.of(hlw.d.a, hlw.d.b);
+   private final mp.a h;
 
    public frj(mp $$0) {
-      this.d = $$0.a(mp.b.b, "blockstates");
-      this.e = $$0.a(mp.b.b, "items");
-      this.f = $$0.a(mp.b.b, "models");
+      this.h = $$0.a(mp.b.b, "atlases");
+   }
+
+   private static List<alg> b() {
+      List<alg> $$0 = new ArrayList<>(f.size() * g.size());
+
+      for (alf<dic> $$1 : f) {
+         alg $$2 = did.a($$1);
+
+         for (hlw.d $$3 : g) {
+            $$0.add($$2.a((UnaryOperator<String>)($$1x -> $$3.a() + "/" + $$1x)));
+         }
+      }
+
+      return $$0;
+   }
+
+   private static hjv a(hlx $$0) {
+      return new hkc($$0.b());
+   }
+
+   private static hjv a(gqq $$0) {
+      return new hjz($$0.b(), $$0.b() + "/");
+   }
+
+   private static List<hjv> b(gqq $$0) {
+      return List.of(a($$0));
+   }
+
+   private static List<hjv> a(String $$0) {
+      return List.of(new hjz($$0, ""));
+   }
+
+   private static Stream<dhz.a> c() {
+      return frm.e.stream().map(frm.a::a).flatMap($$0 -> Stream.concat(Stream.of($$0.a()), $$0.b().values().stream())).sorted(Comparator.comparing(dhz.a::a));
+   }
+
+   private static List<hjv> d() {
+      return List.of(new hkb(b(), d, e));
+   }
+
+   private static List<hjv> e() {
+      return List.of(a(grl.j), a(grl.i), a(gtl.a), a(gtb.a), a(grl.A), a(gtn.a), new hkb(List.of(frm.a, frm.b, frm.c, frm.d), d, e));
+   }
+
+   private static List<hjv> f() {
+      return List.of(a(hma.f), a(grl.k));
+   }
+
+   private static List<hjv> g() {
+      return List.of(a(hma.g), a(hma.h), a(grl.l));
    }
 
    @Override
    public CompletableFuture<?> a(ml $$0) {
-      frj.b $$1 = new frj.b();
-      frj.a $$2 = new frj.a();
-      frj.c $$3 = new frj.c();
-      new frf($$2, $$1, $$3).a();
-      new frh($$1, $$3).a();
-      $$2.a();
-      $$1.a();
-      return CompletableFuture.allOf($$2.a($$0, this.d), $$3.a($$0, this.f), $$1.a($$0, this.e));
+      return CompletableFuture.allOf(
+         this.a($$0, hlp.a, d()),
+         this.a($$0, hlp.b, f()),
+         this.a($$0, hlp.c, b(grl.o)),
+         this.a($$0, hlp.d, e()),
+         this.a($$0, hlp.e, b(grl.m)),
+         this.a($$0, hlp.f, b(grl.n)),
+         this.a($$0, hlp.g, a("gui/sprites")),
+         this.a($$0, hlp.h, a("map/decorations")),
+         this.a($$0, hlp.i, a("mob_effect")),
+         this.a($$0, hlp.j, a("painting")),
+         this.a($$0, hlp.k, a("particle")),
+         this.a($$0, hlp.l, g()),
+         this.a($$0, hlp.m, b(grl.p)),
+         this.a($$0, hlp.n, b(grl.q))
+      );
+   }
+
+   private CompletableFuture<?> a(ml $$0, alg $$1, List<hjv> $$2) {
+      return mn.a($$0, hjx.b, $$2, this.h.a($$1));
    }
 
    @Override
-   public final String a() {
-      return "Model Definitions";
-   }
-
-   static class a implements Consumer<frk> {
-      private final Map<dmm, frk> a = new HashMap<>();
-
-      public void a(frk $$0) {
-         dmm $$1 = $$0.a();
-         frk $$2 = this.a.put($$1, $$0);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicate blockstate definition for " + $$1);
-         }
-      }
-
-      public void a() {
-         Stream<jf.c<dmm>> $$0 = mg.e.c().filter($$0x -> true);
-         List<alg> $$1 = $$0.filter($$0x -> !this.a.containsKey($$0x.a())).map($$0x -> $$0x.h().a()).toList();
-         if (!$$1.isEmpty()) {
-            throw new IllegalStateException("Missing blockstate definitions for: " + $$1);
-         }
-      }
-
-      public CompletableFuture<?> a(ml $$0, mp.a $$1) {
-         Map<dmm, grx> $$2 = Maps.transformValues(this.a, frk::b);
-         Function<dmm, Path> $$3 = $$1x -> $$1.a($$1x.p().h().a());
-         return mn.a($$0, grx.a, $$3, $$2);
-      }
-   }
-
-   static class b implements fri {
-      private final Map<czg, hfv> a = new HashMap<>();
-      private final Map<czg, czg> b = new HashMap<>();
-
-      @Override
-      public void a(czg $$0, hfz.b $$1) {
-         this.a($$0, new hfv($$1, hfv.a.a));
-      }
-
-      private void a(czg $$0, hfv $$1) {
-         hfv $$2 = this.a.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicate item model definition for " + $$0);
-         }
-      }
-
-      @Override
-      public void a(czg $$0, czg $$1) {
-         this.b.put($$1, $$0);
-      }
-
-      public void a() {
-         mg.g.forEach($$0x -> {
-            if (!this.b.containsKey($$0x)) {
-               if ($$0x instanceof cxs $$1 && !this.a.containsKey($$1)) {
-                  alg $$2 = fru.a($$1.c());
-                  this.a($$1, frs.a($$2));
-               }
-            }
-         });
-         this.b.forEach(($$0x, $$1) -> {
-            hfv $$2 = this.a.get($$1);
-            if ($$2 == null) {
-               throw new IllegalStateException("Missing donor: " + $$1 + " -> " + $$0x);
-            } else {
-               this.a($$0x, $$2);
-            }
-         });
-         List<alg> $$0 = mg.g.c().filter($$0x -> !this.a.containsKey($$0x.a())).map($$0x -> $$0x.h().a()).toList();
-         if (!$$0.isEmpty()) {
-            throw new IllegalStateException("Missing item model definitions for: " + $$0);
-         }
-      }
-
-      public CompletableFuture<?> a(ml $$0, mp.a $$1) {
-         return mn.a($$0, hfv.a, $$1x -> $$1.a($$1x.e().h().a()), this.a);
-      }
-   }
-
-   static class c implements BiConsumer<alg, frt> {
-      private final Map<alg, frt> a = new HashMap<>();
-
-      public void a(alg $$0, frt $$1) {
-         Supplier<JsonElement> $$2 = this.a.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicate model definition for " + $$0);
-         }
-      }
-
-      public CompletableFuture<?> a(ml $$0, mp.a $$1) {
-         return mn.a($$0, Supplier::get, $$1::a, this.a);
-      }
+   public String a() {
+      return "Atlas Definitions";
    }
 }

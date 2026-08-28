@@ -5,16 +5,16 @@ import java.util.Optional;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class bwo<StoredEntityType extends efh> {
+public class bwo<StoredEntityType extends efm> {
    private static final Codec<? extends bwo<?>> a = jz.a.xmap(bwo::new, bwo::c);
    private static final yw<ByteBuf, ? extends bwo<?>> b = jz.g.a(bwo::new, bwo::c);
    private Either<UUID, StoredEntityType> c;
 
-   public static <Type extends efh> Codec<bwo<Type>> a() {
+   public static <Type extends efm> Codec<bwo<Type>> a() {
       return (Codec<bwo<Type>>)a;
    }
 
-   public static <Type extends efh> yw<ByteBuf, bwo<Type>> b() {
+   public static <Type extends efm> yw<ByteBuf, bwo<Type>> b() {
       return (yw<ByteBuf, bwo<Type>>)b;
    }
 
@@ -27,11 +27,11 @@ public class bwo<StoredEntityType extends efh> {
    }
 
    public UUID c() {
-      return (UUID)this.c.map($$0 -> $$0, efh::cF);
+      return (UUID)this.c.map($$0 -> $$0, efm::cF);
    }
 
    @Nullable
-   public StoredEntityType a(efg<? super StoredEntityType> $$0, Class<StoredEntityType> $$1) {
+   public StoredEntityType a(efl<? super StoredEntityType> $$0, Class<StoredEntityType> $$1) {
       Optional<StoredEntityType> $$2 = this.c.right();
       if ($$2.isPresent()) {
          StoredEntityType $$3 = $$2.get();
@@ -55,7 +55,7 @@ public class bwo<StoredEntityType extends efh> {
    }
 
    @Nullable
-   private StoredEntityType a(@Nullable efh $$0, Class<StoredEntityType> $$1) {
+   private StoredEntityType a(@Nullable efm $$0, Class<StoredEntityType> $$1) {
       return $$0 != null && $$1.isAssignableFrom($$0.getClass()) ? $$1.cast($$0) : null;
    }
 
@@ -68,19 +68,19 @@ public class bwo<StoredEntityType extends efh> {
    }
 
    @Nullable
-   public static <StoredEntityType extends efh> StoredEntityType a(
-      @Nullable bwo<StoredEntityType> $$0, efg<? super StoredEntityType> $$1, Class<StoredEntityType> $$2
+   public static <StoredEntityType extends efm> StoredEntityType a(
+      @Nullable bwo<StoredEntityType> $$0, efl<? super StoredEntityType> $$1, Class<StoredEntityType> $$2
    ) {
       return $$0 != null ? $$0.a($$1, $$2) : null;
    }
 
    @Nullable
-   public static <StoredEntityType extends efh> bwo<StoredEntityType> b(tz $$0, String $$1) {
+   public static <StoredEntityType extends efm> bwo<StoredEntityType> b(tz $$0, String $$1) {
       return $$0.<bwo<StoredEntityType>>a($$1, a()).orElse(null);
    }
 
    @Nullable
-   public static <StoredEntityType extends efh> bwo<StoredEntityType> a(tz $$0, String $$1, djh $$2) {
+   public static <StoredEntityType extends efm> bwo<StoredEntityType> a(tz $$0, String $$1, djm $$2) {
       Optional<UUID> $$3 = $$0.a($$1, jz.a);
       if ($$3.isPresent()) {
          return new bwo<>($$3.get());

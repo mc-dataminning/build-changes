@@ -1,19 +1,5 @@
-public class cvt extends cwz {
-   private final cvs a;
+public interface cvt {
+   void a(cvf var1, int var2, czn var3);
 
-   public cvt(btz $$0, int $$1, int $$2, int $$3, cvs $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-   }
-
-   @Override
-   public boolean a(czk $$0) {
-      return !this.a.e(this.d) && super.a($$0);
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.a.a(this.c);
-   }
+   void a(cvf var1, int var2, int var3);
 }

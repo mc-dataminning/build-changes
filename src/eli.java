@@ -1,96 +1,172 @@
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
-public class eli extends ejt<emw> {
+public class eli extends ejy<emw> {
+   public static final int a = 10;
+   private static final int b = 42;
+   private static final LoadingCache<Long, List<eli.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new eli.b());
+
    public eli(Codec<emw> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(ejv<emw> $$0) {
-      dkg $$1 = $$0.b();
-      emw $$2 = $$0.f();
-      azv $$3 = $$0.d();
-      iv $$4 = $$0.e();
-      Predicate<eao> $$5 = $$1x -> $$1x.a($$2.b);
-      int $$6 = $$2.j.a($$3) + 1;
-      int $$7 = $$2.j.a($$3) + 1;
-      Set<iv> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
-      return !$$8.isEmpty();
+   public static List<eli.a> a(dkl $$0) {
+      azv $$1 = azv.a($$0.E());
+      long $$2 = $$1.g() & 65535L;
+      return (List<eli.a>)c.getUnchecked($$2);
    }
 
-   protected Set<iv> a(dkg $$0, emw $$1, azv $$2, iv $$3, Predicate<eao> $$4, int $$5, int $$6) {
-      iv.a $$7 = $$3.k();
-      iv.a $$8 = $$7.k();
-      jb $$9 = $$1.e.a();
-      jb $$10 = $$9.g();
-      Set<iv> $$11 = new HashSet<>();
+   @Override
+   public boolean a(eka<emw> $$0) {
+      emw $$1 = $$0.f();
+      dkl $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      iv $$4 = $$0.e();
+      List<eli.a> $$5 = $$1.b();
+      if ($$5.isEmpty()) {
+         $$5 = a($$2);
+      }
 
-      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
+      for (eli.a $$6 : $$5) {
+         if ($$6.a($$4)) {
+            this.a($$2, $$3, $$1, $$6);
+         }
+      }
 
-         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
-            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
-            boolean $$16 = $$13 || $$15;
-            boolean $$17 = $$13 && $$15;
-            boolean $$18 = $$16 && !$$17;
-            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
-               $$7.a($$3, $$12, 0, $$14);
+      return true;
+   }
 
-               for (int $$19 = 0; $$0.a($$7, ean.a::l) && $$19 < $$1.h; $$19++) {
-                  $$7.c($$9);
-               }
+   private void a(dkd $$0, azv $$1, emw $$2, eli.a $$3) {
+      int $$4 = $$3.c();
 
-               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.l()) && var25 < $$1.h; var25++) {
-                  $$7.c($$10);
-               }
+      for (iv $$5 : iv.c(new iv($$3.a() - $$4, $$0.G_(), $$3.b() - $$4), new iv($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
+         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
+            this.a($$0, $$5, dmt.cy.m());
+         } else if ($$5.v() > 65) {
+            this.a($$0, $$5, dmt.a.m());
+         }
+      }
 
-               $$8.a($$7, $$1.e.a());
-               eao $$20 = $$0.a_($$8);
-               if ($$0.v($$7) && $$20.c($$0, $$8, $$1.e.a().g())) {
-                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
-                  iv $$22 = $$8.j();
-                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
-                  if ($$23) {
-                     $$11.add($$22);
+      if ($$3.e()) {
+         int $$6 = -2;
+         int $$7 = 2;
+         int $$8 = 3;
+         iv.a $$9 = new iv.a();
+
+         for (int $$10 = -2; $$10 <= 2; $$10++) {
+            for (int $$11 = -2; $$11 <= 2; $$11++) {
+               for (int $$12 = 0; $$12 <= 3; $$12++) {
+                  boolean $$13 = azm.a($$10) == 2;
+                  boolean $$14 = azm.a($$11) == 2;
+                  boolean $$15 = $$12 == 3;
+                  if ($$13 || $$14 || $$15) {
+                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
+                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
+                     eat $$18 = dmt.fo
+                        .m()
+                        .b(dqx.a, Boolean.valueOf($$16 && $$11 != -2))
+                        .b(dqx.c, Boolean.valueOf($$16 && $$11 != 2))
+                        .b(dqx.d, Boolean.valueOf($$17 && $$10 != -2))
+                        .b(dqx.b, Boolean.valueOf($$17 && $$10 != 2));
+                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
                   }
                }
             }
          }
       }
 
-      return $$11;
-   }
-
-   protected void a(ejv<emw> $$0, dkg $$1, emw $$2, azv $$3, Set<iv> $$4, int $$5, int $$6) {
-      for (iv $$7 : $$4) {
-         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
-            this.a($$1, $$2, $$0.c(), $$3, $$7);
-         }
+      cmj $$19 = bwr.R.a($$0.a(), bwq.d);
+      if ($$19 != null) {
+         $$19.a($$2.c());
+         $$19.m($$2.a());
+         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
+         $$0.b($$19);
+         iv $$20 = $$19.du();
+         this.a($$0, $$20.e(), dmt.I.m());
+         this.a($$0, $$20, dpt.a($$0, $$20));
       }
    }
 
-   protected boolean a(dkg $$0, emw $$1, ecm $$2, azv $$3, iv $$4) {
-      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
-   }
+   public static class a {
+      public static final Codec<eli.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
+                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
+                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, eli.a::new)
+      );
+      private final int b;
+      private final int c;
+      private final int d;
+      private final int e;
+      private final boolean f;
+      private final fex g;
 
-   protected boolean a(dkg $$0, emw $$1, Predicate<eao> $$2, azv $$3, iv.a $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         eao $$7 = $$1.c.a($$3, $$4);
-         eao $$8 = $$0.a_($$4);
-         if (!$$7.a($$8.b())) {
-            if (!$$2.test($$8)) {
-               return $$6 != 0;
-            }
-
-            $$0.a($$4, $$7, 2);
-            $$4.c($$1.e.a());
-         }
+      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = new fex((double)($$0 - $$2), (double)eeq.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)eeq.d, (double)($$1 + $$2));
       }
 
-      return true;
+      public boolean a(iv $$0) {
+         return jy.a($$0.u()) == jy.a(this.b) && jy.a($$0.w()) == jy.a(this.c);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public fex f() {
+         return this.g;
+      }
+   }
+
+   static class b extends CacheLoader<Long, List<eli.a>> {
+      public List<eli.a> a(Long $$0) {
+         IntArrayList $$1 = ag.a(IntStream.range(0, 10), azv.a($$0));
+         List<eli.a> $$2 = Lists.newArrayList();
+
+         for (int $$3 = 0; $$3 < 10; $$3++) {
+            int $$4 = azm.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$5 = azm.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$6 = $$1.get($$3);
+            int $$7 = 2 + $$6 / 3;
+            int $$8 = 76 + $$6 * 3;
+            boolean $$9 = $$6 == 1 || $$6 == 2;
+            $$2.add(new eli.a($$4, $$5, $$7, $$8, $$9));
+         }
+
+         return $$2;
+      }
    }
 }

@@ -1,25 +1,20 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.server.MinecraftServer;
 
-public class fem extends Exception {
-   private final Path a;
-   private final List<feo> b;
+public record fem(alg b) implements fen<MinecraftServer> {
+   public static final MapCodec<fem> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alg.a.fieldOf("Name").forGetter(fem::b)).apply($$0, fem::new));
 
-   public fem(Path $$0, List<feo> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public void a(MinecraftServer $$0, fep<MinecraftServer> $$1, long $$2) {
+      alv $$3 = $$0.aE();
+
+      for (hx<ej> $$5 : $$3.b(this.b)) {
+         $$3.a($$5, $$3.c());
+      }
    }
 
    @Override
-   public String getMessage() {
-      return a(this.a, this.b);
-   }
-
-   public static String a(Path $$0, List<feo> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   public MapCodec<fem> a() {
+      return a;
    }
 }

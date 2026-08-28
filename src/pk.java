@@ -2,48 +2,48 @@ import com.google.common.annotations.VisibleForTesting;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class pk extends pr<efo> {
+public class pk extends pr<eft> {
    @VisibleForTesting
-   static final List<alf<efo>> d = List.of(
-      efo.b.h(),
-      efo.c.h(),
-      efo.d.h(),
-      efo.f.h(),
-      efo.g.h(),
-      efo.h.h(),
-      efo.i.h(),
-      efo.a.h(),
-      efo.e.h(),
-      efo.j.h(),
-      efo.k.h(),
-      efo.l.h(),
-      efo.m.h(),
-      efo.n.h(),
-      efo.o.h(),
-      efo.p.h(),
-      efo.q.h(),
-      efo.r.h(),
-      efo.s.h(),
-      efo.t.h(),
-      efo.u.h(),
-      efo.v.h(),
-      efo.w.h(),
-      efo.y.h(),
-      efo.z.h(),
-      efo.A.h(),
-      efo.B.h(),
-      efo.C.h(),
-      efo.G.h(),
-      efo.H.h(),
-      efo.I.h(),
-      efo.J.h(),
-      efo.K.h(),
-      efo.M.h(),
-      efo.O.h(),
-      efo.P.h(),
-      efo.Q.h(),
-      efo.R.h(),
-      efo.S.h()
+   static final List<alf<eft>> d = List.of(
+      eft.b.h(),
+      eft.c.h(),
+      eft.d.h(),
+      eft.f.h(),
+      eft.g.h(),
+      eft.h.h(),
+      eft.i.h(),
+      eft.a.h(),
+      eft.e.h(),
+      eft.j.h(),
+      eft.k.h(),
+      eft.l.h(),
+      eft.m.h(),
+      eft.n.h(),
+      eft.o.h(),
+      eft.p.h(),
+      eft.q.h(),
+      eft.r.h(),
+      eft.s.h(),
+      eft.t.h(),
+      eft.u.h(),
+      eft.v.h(),
+      eft.w.h(),
+      eft.y.h(),
+      eft.z.h(),
+      eft.A.h(),
+      eft.B.h(),
+      eft.C.h(),
+      eft.G.h(),
+      eft.H.h(),
+      eft.I.h(),
+      eft.J.h(),
+      eft.K.h(),
+      eft.M.h(),
+      eft.O.h(),
+      eft.P.h(),
+      eft.Q.h(),
+      eft.R.h(),
+      eft.S.h()
    );
 
    public pk(mp $$0, CompletableFuture<jh.a> $$1) {
@@ -52,10 +52,10 @@ public class pk extends pr<efo> {
 
    @Override
    protected void a(jh.a $$0) {
-      this.b(axi.a).a(d).a(efx.d_).a(efo.x.h());
-      this.b(axi.c).a(efo.L.h());
-      this.b(axi.b).a(d).a(efx.d_).a(efo.N.h()).b(axi.c);
-      this.b(axi.d).a(efo.A.h(), efo.K.h(), efo.P.h(), efo.Q.h(), efo.D.h(), efo.C.h());
-      this.b(axi.e).a(efo.H.h());
+      this.b(axi.a).a(d).a(egc.d_).a(eft.x.h());
+      this.b(axi.c).a(eft.L.h());
+      this.b(axi.b).a(d).a(egc.d_).a(eft.N.h()).b(axi.c);
+      this.b(axi.d).a(eft.A.h(), eft.K.h(), eft.P.h(), eft.Q.h(), eft.D.h(), eft.C.h());
+      this.b(axi.e).a(eft.H.h());
    }
 }

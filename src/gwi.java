@@ -1,22 +1,27 @@
-public class gwi extends gvn<cjm, hcu, ggd> {
-   private static final alg a = alg.b("textures/entity/dolphin.png");
+public class gwi extends gye<cji, hef, ggb> {
+   private static final alg a = alg.b("textures/entity/fish/cod.png");
 
-   public gwi(gwt.a $$0) {
-      super($$0, new ggd($$0.a(gjn.ax)), new ggd($$0.a(gjn.ay)), 0.7F);
-      this.a(new hao(this));
+   public gwi(gwy.a $$0) {
+      super($$0, new ggb($$0.a(gjs.ab)), 0.3F);
    }
 
-   public alg a(hcu $$0) {
+   @Override
+   public alg b(hef $$0) {
       return a;
    }
 
-   public hcu a() {
-      return new hcu();
+   public hef a() {
+      return new hef();
    }
 
-   public void a(cjm $$0, hcu $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      hdo.a($$0, $$1, this.h);
-      $$1.a = $$0.dx().j() > 1.0E-7;
+   @Override
+   protected void a(hef $$0, fkd $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * azm.a(0.6F * $$0.u);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.ak) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

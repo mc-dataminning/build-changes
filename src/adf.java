@@ -10,22 +10,22 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class adf {
-   private static final yw<ByteBuf, Map<egn.a, long[]>> a = yu.a($$0 -> new EnumMap<>(egn.a.class), egn.a.h, yu.o);
+   private static final yw<ByteBuf, Map<egs.a, long[]>> a = yu.a($$0 -> new EnumMap<>(egs.a.class), egs.a.h, yu.o);
    private static final int b = 2097152;
-   private final Map<egn.a, long[]> c;
+   private final Map<egs.a, long[]> c;
    private final byte[] d;
    private final List<adf.a> e;
 
-   public adf(ecv $$0) {
+   public adf(eda $$0) {
       this.c = $$0.e()
          .stream()
-         .filter($$0x -> ((egn.a)$$0x.getKey()).b())
-         .collect(Collectors.toMap(Entry::getKey, $$0x -> (long[])((egn)$$0x.getValue()).a().clone()));
+         .filter($$0x -> ((egs.a)$$0x.getKey()).b())
+         .collect(Collectors.toMap(Entry::getKey, $$0x -> (long[])((egs)$$0x.getValue()).a().clone()));
       this.d = new byte[a($$0)];
       a(new vu(this.c()), $$0);
       this.e = Lists.newArrayList();
 
-      for (Entry<iv, dxm> $$1 : $$0.I().entrySet()) {
+      for (Entry<iv, dxr> $$1 : $$0.I().entrySet()) {
          this.e.add(adf.a.a($$1.getValue()));
       }
    }
@@ -49,10 +49,10 @@ public class adf {
       adf.a.b.encode($$0, this.e);
    }
 
-   private static int a(ecv $$0) {
+   private static int a(eda $$0) {
       int $$1 = 0;
 
-      for (ecw $$2 : $$0.d()) {
+      for (edb $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -65,8 +65,8 @@ public class adf {
       return $$0;
    }
 
-   public static void a(vu $$0, ecv $$1) {
-      for (ecw $$2 : $$1.d()) {
+   public static void a(vu $$0, eda $$1) {
+      for (edb $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -92,7 +92,7 @@ public class adf {
       return new vu(Unpooled.wrappedBuffer(this.d));
    }
 
-   public Map<egn.a, long[]> b() {
+   public Map<egs.a, long[]> b() {
       return this.c;
    }
 
@@ -101,11 +101,11 @@ public class adf {
       public static final yw<wj, List<adf.a>> b = a.a(yu.a());
       final int c;
       final int d;
-      final dxo<?> e;
+      final dxt<?> e;
       @Nullable
       final tz f;
 
-      private a(int $$0, int $$1, dxo<?> $$2, @Nullable tz $$3) {
+      private a(int $$0, int $$1, dxt<?> $$2, @Nullable tz $$3) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
@@ -126,7 +126,7 @@ public class adf {
          $$0.a(this.f);
       }
 
-      static adf.a a(dxm $$0) {
+      static adf.a a(dxr $$0) {
          tz $$1 = $$0.a($$0.i().F_());
          iv $$2 = $$0.ax_();
          int $$3 = jy.b($$2.u()) << 4 | jy.b($$2.w());
@@ -136,6 +136,6 @@ public class adf {
 
    @FunctionalInterface
    public interface b {
-      void accept(iv var1, dxo<?> var2, @Nullable tz var3);
+      void accept(iv var1, dxt<?> var2, @Nullable tz var3);
    }
 }

@@ -1,29 +1,66 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public record ejf<FC extends elx, F extends ejt<FC>>(F d, FC e) {
-   public static final Codec<ejf<?, ?>> a = mg.O.q().dispatch($$0 -> $$0.d, ejt::a);
-   public static final Codec<jf<ejf<?, ?>>> b = alc.a(mh.aL, a);
-   public static final Codec<jj<ejf<?, ?>>> c = ju.a(mh.aL, a);
-
-   public boolean a(dkg $$0, ecm $$1, azv $$2, iv $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<ejf<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+public class ejf extends ejy<elt> {
+   public ejf(Codec<elt> $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
+   public boolean a(eka<elt> $$0) {
+      dkl $$1 = $$0.b();
+      elt $$2 = $$0.f();
+      azv $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
+
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
+
+      if ($$6 == 0) {
+         return false;
+      } else {
+         iv.a $$8 = $$0.e().k();
+         iv.a $$9 = $$8.k().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               elt.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
+            }
+         }
+
+         return true;
+      }
    }
 
-   public F b() {
-      return this.d;
-   }
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
 
-   public FC c() {
-      return this.e;
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
+      }
    }
 }

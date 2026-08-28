@@ -1,74 +1,51 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+public class fxx extends fys {
+   private static final alg a = alg.b("textures/gui/demo_background.png");
+   private static final int b = 256;
+   private static final int c = 256;
+   private ftt d = ftt.a;
+   private ftt s = ftt.a;
 
-public class fxx implements AutoCloseable {
-   private static final alg a = alg.b("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final hjm d;
-   private final alg e;
-   @Nullable
-   private hix f;
-   private boolean g;
-
-   private fxx(hjm $$0, alg $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static fxx a(hjm $$0, String $$1) {
-      return new fxx($$0, alg.b("worlds/" + ag.a($$1, alg::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fxx b(hjm $$0, String $$1) {
-      return new fxx($$0, alg.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(fiu $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new hix(() -> "Favicon " + this.e, $$0);
-            } else {
-               this.f.a($$0);
-               this.f.e();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public alg b() {
-      return this.f != null ? this.e : a;
+   public fxx() {
+      super(wy.c("demo.help.title"));
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   protected void aO_() {
+      int $$0 = -16;
+      this.c(fta.a(wy.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ag.n().a(ayh.f);
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(fta.a(wy.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      fpx $$1 = this.m.n;
+      this.d = ftt.a(
+         this.p,
+         wy.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
+         wy.c("demo.help.movementMouse"),
+         wy.a("demo.help.jump", $$1.z.k()),
+         wy.a("demo.help.inventory", $$1.C.k())
+      );
+      this.s = ftt.a(this.p, wy.c("demo.help.fullWrapped"), 218);
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(grc::H, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
+   }
+
+   @Override
+   public void a(fsm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

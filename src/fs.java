@@ -24,7 +24,7 @@ public class fs implements ArgumentType<Integer> {
 
    public Integer a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = en.a($$0, $$0x -> $$0x != ' ');
-      cxa $$2 = cxb.a($$1);
+      cxd $$2 = cxe.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else if ($$2.b() != 1) {
@@ -35,7 +35,7 @@ public class fs implements ArgumentType<Integer> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return eo.b(cxb.b(), $$1);
+      return eo.b(cxe.b(), $$1);
    }
 
    public Collection<String> getExamples() {

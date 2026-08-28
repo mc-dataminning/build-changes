@@ -1,20 +1,41 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class czl {
-   private static final Strategy<? super czk> a = new Strategy<czk>() {
-      public int a(@Nullable czk $$0) {
-         return czk.b($$0);
-      }
+public enum czl implements bak {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
 
-      public boolean a(@Nullable czk $$0, @Nullable czk $$1) {
-         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.f() == $$1.f() && czk.c($$0, $$1);
-      }
-   };
+   public static final Codec<czl> j = bak.a(czl::values);
+   public static final IntFunction<czl> k = ayc.a(czl::a, values(), ayc.a.a);
+   private final byte l;
+   private final String m;
 
-   public static Set<czk> a() {
-      return new ObjectLinkedOpenCustomHashSet(a);
+   private czl(final int $$0, final String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
+   }
+
+   @Override
+   public String c() {
+      return this.m;
+   }
+
+   public byte a() {
+      return this.l;
+   }
+
+   public boolean b() {
+      return this == d || this == e;
+   }
+
+   public boolean d() {
+      return this == d || this == b;
    }
 }

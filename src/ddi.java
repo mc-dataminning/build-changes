@@ -1,69 +1,71 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ddi extends ddr {
-   public ddi(ddo $$0) {
-      super($$0);
+public class ddi {
+   @Nullable
+   private final crm a;
+   private final buf b;
+   private final fey c;
+   private final djm d;
+   private final czn e;
+
+   public ddi(crm $$0, buf $$1, fey $$2) {
+      this($$0.dU(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(ddp $$0, djh $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czk $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.a(axk.bP)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else {
-                  if (!($$5.h() instanceof cyj)) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
+   protected ddi(djm $$0, @Nullable crm $$1, buf $$2, czn $$3, fey $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public czk a(ddp $$0, jh.a $$1) {
-      List<cyj> $$2 = new ArrayList<>();
-      czk $$3 = czk.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czk $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axk.bP)) {
-               if (!$$3.f()) {
-                  return czk.k;
-               }
-
-               $$3 = $$5.v();
-            } else {
-               if (!($$5.h() instanceof cyj $$6)) {
-                  return czk.k;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.f() && !$$2.isEmpty() ? dbx.a($$3, $$2) : czk.k;
+   protected final fey j() {
+      return this.c;
    }
 
-   @Override
-   public del<ddi> a() {
-      return del.c;
+   public iv a() {
+      return this.c.b();
+   }
+
+   public jb k() {
+      return this.c.c();
+   }
+
+   public ffc l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public czn n() {
+      return this.e;
+   }
+
+   @Nullable
+   public crm o() {
+      return this.a;
+   }
+
+   public buf p() {
+      return this.b;
+   }
+
+   public djm q() {
+      return this.d;
+   }
+
+   public jb g() {
+      return this.a == null ? jb.c : this.a.cN();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fX();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dK();
    }
 }

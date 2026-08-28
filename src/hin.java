@@ -1,59 +1,32 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
 
-public class hin implements hio<dck> {
-   private final dty.a a;
-   private final gii b;
-   @Nullable
-   private final alg c;
-   private final float d;
+public class hin implements hiq {
+   private final gjt a;
 
-   public hin(dty.a $$0, gii $$1, @Nullable alg $$2, float $$3) {
+   public hin(gjt $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   @Nullable
-   public dck a(czk $$0) {
-      return $$0.a(kk.ak);
+   @Override
+   public void a(czl $$0, fkd $$1, gqr $$2, int $$3, int $$4, boolean $$5) {
+      fkh $$6 = gtl.b.a($$2, grc::d);
+      $$1.a();
+      $$1.a(0.5F, 0.5F, 0.5F);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
    }
 
-   public void a(@Nullable dck $$0, czi $$1, fjy $$2, gqm $$3, int $$4, int $$5, boolean $$6) {
-      gqx $$7 = gto.a(this.a, $$0, this.c);
-      gto.a(null, 180.0F, this.d, $$2, $$3, $$4, this.b, $$7);
-   }
-
-   public static record a(dty.a b, Optional<alg> c, float d) implements hio.a {
-      public static final MapCodec<hin.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  dty.a.b.fieldOf("kind").forGetter(hin.a::b),
-                  alg.a.optionalFieldOf("texture").forGetter(hin.a::c),
-                  Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(hin.a::d)
-               )
-               .apply($$0, hin.a::new)
-      );
-
-      public a(dty.a $$0) {
-         this($$0, Optional.empty(), 0.0F);
-      }
+   public static record a() implements hiu.a {
+      public static final MapCodec<hin.a> a = MapCodec.unit(new hin.a());
 
       @Override
       public MapCodec<hin.a> a() {
          return a;
       }
 
-      @Nullable
       @Override
-      public hio<?> a(gjk $$0) {
-         gii $$1 = gto.a($$0, this.b);
-         alg $$2 = this.c.<alg>map($$0x -> $$0x.a((UnaryOperator<String>)($$0xx -> "textures/entity/" + $$0xx + ".png"))).orElse(null);
-         return $$1 != null ? new hin(this.b, $$1, $$2, this.d) : null;
+      public hiu<?> a(gjp $$0) {
+         return new hin($$0.a(gjs.al));
       }
    }
 }

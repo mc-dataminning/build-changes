@@ -11,22 +11,22 @@ public class ti {
    public static final String b = "Minecraft.Server/src/test/convertables/data";
    public static Path c = Paths.get("Minecraft.Server/src/test/convertables/data");
 
-   public static dtg a(int $$0) {
+   public static dtl a(int $$0) {
       switch ($$0) {
          case 0:
-            return dtg.a;
+            return dtl.a;
          case 1:
-            return dtg.b;
+            return dtl.b;
          case 2:
-            return dtg.c;
+            return dtl.c;
          case 3:
-            return dtg.d;
+            return dtl.d;
          default:
             throw new IllegalArgumentException("rotationSteps must be a value from 0-3. Got value " + $$0);
       }
    }
 
-   public static int a(dtg $$0) {
+   public static int a(dtl $$0) {
       switch ($$0) {
          case a:
             return 0;
@@ -41,35 +41,35 @@ public class ti {
       }
    }
 
-   public static dzh a(alg $$0, iv $$1, ka $$2, dtg $$3, arq $$4) {
-      era $$5 = b(dzh.a($$1), $$2, $$3);
+   public static dzm a(alg $$0, iv $$1, ka $$2, dtl $$3, arq $$4) {
+      erf $$5 = b(dzm.a($$1), $$2, $$3);
       a($$5, $$4);
-      $$4.b($$1, dmo.pJ.m());
-      dzh $$6 = (dzh)$$4.c_($$1);
+      $$4.b($$1, dmt.pJ.m());
+      dzm $$6 = (dzm)$$4.c_($$1);
       alf<sr> $$7 = alf.a(mh.bh, $$0);
-      $$6.a(new dzh.a(Optional.of($$7), $$2, $$3, false, dzh.b.a, Optional.empty()));
+      $$6.a(new dzm.a(Optional.of($$7), $$2, $$3, false, dzm.b.a, Optional.empty()));
       return $$6;
    }
 
-   public static void a(era $$0, arq $$1) {
+   public static void a(erf $$0, arq $$1) {
       int $$2 = $$0.i() - 1;
-      era $$3 = new era($$0.h() - 2, $$0.i() - 3, $$0.j() - 3, $$0.k() + 3, $$0.l() + 20, $$0.m() + 3);
+      erf $$3 = new erf($$0.h() - 2, $$0.i() - 3, $$0.j() - 3, $$0.k() + 3, $$0.l() + 20, $$0.m() + 3);
       iv.a($$3).forEach($$2x -> a($$2, $$2x, $$1));
       $$1.n().a($$3);
       $$1.a($$3);
-      fes $$4 = fes.a($$3);
-      List<bwi> $$5 = $$1.a(bwi.class, $$4, $$0x -> !($$0x instanceof crj));
+      fex $$4 = fex.a($$3);
+      List<bwi> $$5 = $$1.a(bwi.class, $$4, $$0x -> !($$0x instanceof crm));
       $$5.forEach(bwi::aq);
    }
 
-   public static iv a(iv $$0, ka $$1, dtg $$2) {
+   public static iv a(iv $$0, ka $$1, dtl $$2) {
       iv $$3 = $$0.a($$1).b(-1, -1, -1);
-      return evk.a($$3, drp.a, $$2, $$0);
+      return evp.a($$3, dru.a, $$2, $$0);
    }
 
-   public static era b(iv $$0, ka $$1, dtg $$2) {
+   public static erf b(iv $$0, ka $$1, dtl $$2) {
       iv $$3 = a($$0, $$1, $$2);
-      era $$4 = era.a($$0, $$3);
+      erf $$4 = erf.a($$0, $$3);
       int $$5 = Math.min($$4.h(), $$4.k());
       int $$6 = Math.min($$4.j(), $$4.m());
       return $$4.a($$0.u() - $$5, 0, $$0.w() - $$6);
@@ -85,34 +85,34 @@ public class ti {
    }
 
    public static Stream<iv> c(iv $$0, int $$1, arq $$2) {
-      era $$3 = d($$0, $$1, $$2);
-      return iv.a($$3).filter($$1x -> $$2.a_($$1x).a(dmo.pJ)).map(iv::j);
+      erf $$3 = d($$0, $$1, $$2);
+      return iv.a($$3).filter($$1x -> $$2.a_($$1x).a(dmt.pJ)).map(iv::j);
    }
 
-   private static era d(iv $$0, int $$1, arq $$2) {
-      iv $$3 = iv.a((double)$$0.u(), (double)$$2.a(egn.a.b, $$0).v(), (double)$$0.w());
-      return new era($$3).c($$1, 10, $$1);
+   private static erf d(iv $$0, int $$1, arq $$2) {
+      iv $$3 = iv.a((double)$$0.u(), (double)$$2.a(egs.a.b, $$0).v(), (double)$$0.w());
+      return new erf($$3).c($$1, 10, $$1);
    }
 
    public static Stream<iv> a(iv $$0, bwi $$1, arq $$2) {
       int $$3 = 200;
-      fex $$4 = $$1.bC();
-      fex $$5 = $$4.e($$1.bR().c(200.0));
+      ffc $$4 = $$1.bC();
+      ffc $$5 = $$4.e($$1.bR().c(200.0));
       return c($$0, 200, $$2)
-         .map($$1x -> $$2.a($$1x, dxo.U))
+         .map($$1x -> $$2.a($$1x, dxt.U))
          .flatMap(Optional::stream)
          .filter($$2x -> $$2x.f().b($$4, $$5).isPresent())
-         .map(dxm::ax_)
+         .map(dxr::ax_)
          .sorted(Comparator.comparing($$0::j))
          .limit(1L);
    }
 
    private static void a(int $$0, iv $$1, arq $$2) {
-      eao $$3;
+      eat $$3;
       if ($$1.v() < $$0) {
-         $$3 = dmo.b.m();
+         $$3 = dmt.b.m();
       } else {
-         $$3 = dmo.a.m();
+         $$3 = dmt.a.m();
       }
 
       gb $$5 = new gb($$3, Collections.emptySet(), null);
@@ -121,6 +121,6 @@ public class ti {
    }
 
    private static boolean a(iv $$0, iv $$1, arq $$2) {
-      return $$2.c_($$0) instanceof dzh $$3 ? $$3.d().b($$1) : false;
+      return $$2.c_($$0) instanceof dzm $$3 ? $$3.d().b($$1) : false;
    }
 }

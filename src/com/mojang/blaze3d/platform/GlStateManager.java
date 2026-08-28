@@ -24,7 +24,7 @@ import org.lwjgl.opengl.GL32C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-@fgx
+@fhc
 public class GlStateManager {
    private static final boolean ON_LINUX = ag.n() == ag.a.a;
    private static final Plot PLOT_TEXTURES = TracyClient.createPlot("GPU Textures");
@@ -503,11 +503,6 @@ public class GlStateManager {
       GL11.glTexSubImage2D($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   public static void _getTexImage(int $$0, int $$1, int $$2, int $$3, long $$4) {
-      RenderSystem.assertOnRenderThread();
-      GL11.glGetTexImage($$0, $$1, $$2, $$3, $$4);
-   }
-
    public static void _viewport(int $$0, int $$1, int $$2, int $$3) {
       RenderSystem.assertOnRenderThread();
       GlStateManager.l.a.b = $$0;
@@ -541,14 +536,9 @@ public class GlStateManager {
    public static void _clear(int $$0) {
       RenderSystem.assertOnRenderThread();
       GL11.glClear($$0);
-      if (fir.a) {
+      if (fiw.a) {
          _getError();
       }
-   }
-
-   public static void _glDrawPixels(int $$0, int $$1, int $$2, int $$3, long $$4) {
-      RenderSystem.assertOnRenderThread();
-      GL11.glDrawPixels($$0, $$1, $$2, $$3, $$4);
    }
 
    public static void _vertexAttribPointer(int $$0, int $$1, int $$2, boolean $$3, int $$4, long $$5) {
@@ -579,11 +569,6 @@ public class GlStateManager {
    public static void _pixelStore(int $$0, int $$1) {
       RenderSystem.assertOnRenderThread();
       GL11.glPixelStorei($$0, $$1);
-   }
-
-   public static void _readPixels(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, ByteBuffer $$6) {
-      RenderSystem.assertOnRenderThread();
-      GL11.glReadPixels($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    public static void _readPixels(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, long $$6) {
@@ -621,7 +606,7 @@ public class GlStateManager {
       GL32.glDeleteSync($$0);
    }
 
-   @fgx
+   @fhc
    public static enum DestFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),
@@ -645,7 +630,7 @@ public class GlStateManager {
       }
    }
 
-   @fgx
+   @fhc
    public static enum SourceFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),

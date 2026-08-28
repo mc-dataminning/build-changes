@@ -1,19 +1,52 @@
-public class djf {
-   private static int[] a = new int[65536];
+import javax.annotation.Nullable;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+public interface djf {
+   static bux a(djm $$0, @Nullable bwi $$1) {
+      return $$0.al().d($$1, a($$1));
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
+   @Nullable
+   static bxj a(@Nullable bwi $$0) {
+      return switch ($$0) {
+         case null, default -> null;
+         case cns $$1 -> $$1.f();
+         case bxj $$2 -> $$2;
+         case csh $$3 when $$3.q() instanceof bxj $$4 -> $$4;
+      };
    }
 
-   public static int a() {
-      return a(0.5, 1.0);
+   arq a();
+
+   djf.a b();
+
+   @Nullable
+   bxj c();
+
+   @Nullable
+   bwi d();
+
+   float e();
+
+   ffc f();
+
+   boolean g();
+
+   boolean h();
+
+   public static enum a {
+      a(false),
+      b(true),
+      c(true),
+      d(false);
+
+      private final boolean e;
+
+      private a(final boolean $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a() {
+         return this.e;
+      }
    }
 }

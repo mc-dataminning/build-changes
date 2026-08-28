@@ -1,25 +1,23 @@
 import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class gbv extends gbt {
-   private static final wy a = wy.c("options.sounds.title");
+public class gbv extends gby {
+   private static final wy a = wy.c("options.mouse_settings.title");
 
-   private static fpr<?>[] a(fps $$0) {
-      return new fpr[]{$$0.Z(), $$0.aa()};
+   private static fpw<?>[] a(fpx $$0) {
+      return new fpw[]{$$0.d(), $$0.U(), $$0.H(), $$0.V(), $$0.ac()};
    }
 
-   public gbv(fyn $$0, fps $$1) {
+   public gbv(fys $$0, fpx $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void m() {
-      this.d.a(this.c.b(awo.a));
-      this.d.a(this.H());
-      this.d.a(this.c.aw());
-      this.d.a(a(this.c));
-   }
-
-   private fpr<?>[] H() {
-      return Arrays.stream(awo.values()).filter($$0 -> $$0 != awo.a).map($$0 -> this.c.b($$0)).toArray(fpr[]::new);
+      if (fiu.a()) {
+         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.I())).toArray(fpw[]::new));
+      } else {
+         this.d.a(a(this.c));
+      }
    }
 }

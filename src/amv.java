@@ -31,11 +31,11 @@ public class amv {
       );
    }
 
-   private static int a(ej $$0, Collection<arr> $$1, Predicate<czk> $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<arr> $$1, Predicate<czn> $$2) throws CommandSyntaxException {
       return a($$0, $$1, $$2, -1);
    }
 
-   private static int a(ej $$0, Collection<arr> $$1, Predicate<czk> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<arr> $$1, Predicate<czn> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
       for (arr $$5 : $$1) {

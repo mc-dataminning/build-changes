@@ -1,66 +1,120 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DataResult;
-import java.nio.file.Path;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
 
-public class fpj {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 9;
-   private final Path c;
-   private final DataFixer d;
-   private final gpl[] e = new gpl[9];
-   private boolean f;
+public interface fpj {
+   fpj a = new fpj.a(0.0F);
+   fpj b = new fpj.a(1.0F);
 
-   public fpj(Path $$0, DataFixer $$1) {
-      this.c = $$0.resolve("hotbar.nbt");
-      this.d = $$1;
+   float a();
 
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new gpl();
+   float a(boolean var1);
+
+   float b();
+
+   public static class a implements fpj {
+      private final float c;
+
+      a(float $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         return this.c;
+      }
+
+      @Override
+      public float b() {
+         return this.c;
       }
    }
 
-   private void b() {
-      try {
-         tz $$0 = um.a(this.c);
-         if ($$0 == null) {
-            return;
-         }
+   public static class b implements fpj {
+      private float c;
+      private float d;
+      private float e;
+      private float f;
+      private long g;
+      private long h;
+      private final float i;
+      private final FloatUnaryOperator j;
+      private boolean k;
+      private boolean l;
 
-         int $$1 = uo.b($$0, 1343);
-         $$0 = bbb.d.a(this.d, $$0, $$1);
-
-         for (int $$2 = 0; $$2 < 9; $$2++) {
-            this.e[$$2] = gpl.a.parse(un.a, $$0.a(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gpl::new);
-         }
-      } catch (Exception var4) {
-         b.error("Failed to load creative mode options", var4);
-      }
-   }
-
-   public void a() {
-      try {
-         tz $$0 = uo.e(new tz());
-
-         for (int $$1 = 0; $$1 < 9; $$1++) {
-            gpl $$2 = this.a($$1);
-            DataResult<uw> $$3 = gpl.a.encodeStart(un.a, $$2);
-            $$0.a(String.valueOf($$1), (uw)$$3.getOrThrow());
-         }
-
-         um.b($$0, this.c);
-      } catch (Exception var5) {
-         b.error("Failed to save creative mode options", var5);
-      }
-   }
-
-   public gpl a(int $$0) {
-      if (!this.f) {
-         this.b();
-         this.f = true;
+      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
+         this.i = 1000.0F / $$0;
+         this.h = this.g = $$1;
+         this.j = $$2;
       }
 
-      return this.e[$$0];
+      public int a(long $$0, boolean $$1) {
+         this.b($$0);
+         return $$1 ? this.a($$0) : 0;
+      }
+
+      private int a(long $$0) {
+         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
+         this.g = $$0;
+         this.d = this.d + this.c;
+         int $$1 = (int)this.d;
+         this.d -= (float)$$1;
+         return $$1;
+      }
+
+      private void b(long $$0) {
+         this.e = (float)($$0 - this.h) / this.i;
+         this.h = $$0;
+      }
+
+      public void b(boolean $$0) {
+         if ($$0) {
+            this.c();
+         } else {
+            this.d();
+         }
+      }
+
+      private void c() {
+         if (!this.k) {
+            this.f = this.d;
+         }
+
+         this.k = true;
+      }
+
+      private void d() {
+         if (this.k) {
+            this.d = this.f;
+         }
+
+         this.k = false;
+      }
+
+      public void c(boolean $$0) {
+         this.l = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         if (!$$0 && this.l) {
+            return 1.0F;
+         } else {
+            return this.k ? this.f : this.d;
+         }
+      }
+
+      @Override
+      public float b() {
+         return this.e > 7.0F ? 0.5F : this.e;
+      }
    }
 }

@@ -1,183 +1,96 @@
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.function.BiConsumer;
 
-public class epl {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<epl> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ju.a(mh.bd).lenientOptionalFieldOf("structure_overrides").forGetter($$0x -> $$0x.c),
-                  epi.a.listOf().fieldOf("layers").forGetter(epl::e),
-                  Codec.BOOL.fieldOf("lakes").orElse(false).forGetter($$0x -> $$0x.i),
-                  Codec.BOOL.fieldOf("features").orElse(false).forGetter($$0x -> $$0x.h),
-                  dkk.c.lenientOptionalFieldOf("biome").orElseGet(Optional::empty).forGetter($$0x -> Optional.of($$0x.e)),
-                  ale.d(dkr.b),
-                  ale.d(ru.g),
-                  ale.d(ru.h)
+public class epl extends epj {
+   public static final MapCodec<epl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  btl.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
+                  btl.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
+                  ju.a(mh.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
                )
-               .apply($$0, epl::new)
-      )
-      .comapFlatMap(epl::a, Function.identity())
-      .stable();
-   private final Optional<jj<ero>> c;
-   private final List<epi> d = Lists.newArrayList();
-   private final jf<dkk> e;
-   private final List<eao> f;
-   private boolean g;
-   private boolean h;
-   private boolean i;
-   private final List<jf<eqm>> j;
+            )
+            .apply($$0, epl::new)
+   );
+   private final btl b;
+   private final float h;
+   private final btl i;
+   private final jj<dmr> j;
 
-   private static DataResult<epl> a(epl $$0) {
-      int $$1 = $$0.d.stream().mapToInt(epi::a).sum();
-      return $$1 > eel.c ? DataResult.error(() -> "Sum of layer heights is > " + eel.c, $$0) : DataResult.success($$0);
+   public epl(int $$0, int $$1, int $$2, btl $$3, float $$4, btl $$5, jj<dmr> $$6) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   private epl(Optional<jj<ero>> $$0, List<epi> $$1, boolean $$2, boolean $$3, Optional<jf<dkk>> $$4, jf.c<dkk> $$5, jf<eqm> $$6, jf<eqm> $$7) {
-      this($$0, a($$4, $$5), List.of($$6, $$7));
-      if ($$2) {
-         this.b();
+   @Override
+   protected epk<?> a() {
+      return epk.h;
+   }
+
+   @Override
+   public List<eno.a> a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, iv $$4, emy $$5) {
+      List<eno.a> $$6 = Lists.newArrayList();
+      iv.a $$7 = new iv.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         int $$9 = $$4.v() + $$8;
+         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
+            jb $$10 = jb.c.a.a($$2);
+            int $$11 = this.i.a($$2);
+            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
+            int $$13 = this.b.a($$2);
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
+         }
+
+         if ($$8 == $$3 - 1) {
+            $$6.add(new eno.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
+         }
       }
 
-      if ($$3) {
-         this.a();
-      }
-
-      this.d.addAll($$1);
-      this.g();
+      return $$6;
    }
 
-   private static jf<dkk> a(Optional<? extends jf<dkk>> $$0, jf<dkk> $$1) {
-      if ($$0.isEmpty()) {
-         b.error("Unknown biome, defaulting to plains");
-         return $$1;
-      } else {
-         return (jf<dkk>)$$0.get();
-      }
-   }
+   private void a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, emy $$4, List<eno.a> $$5, iv.a $$6, int $$7, jb $$8, int $$9, int $$10) {
+      int $$11 = $$7 + $$9;
+      int $$12 = $$6.u();
+      int $$13 = $$6.w();
+      int $$14 = $$9;
 
-   public epl(Optional<jj<ero>> $$0, jf<dkk> $$1, List<jf<eqm>> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.f = Lists.newArrayList();
-      this.j = $$2;
-   }
-
-   public epl a(List<epi> $$0, Optional<jj<ero>> $$1, jf<dkk> $$2) {
-      epl $$3 = new epl($$1, $$2, this.j);
-
-      for (epi $$4 : $$0) {
-         $$3.d.add(new epi($$4.a(), $$4.b().b()));
-         $$3.g();
-      }
-
-      if (this.h) {
-         $$3.a();
-      }
-
-      if (this.i) {
-         $$3.b();
-      }
-
-      return $$3;
-   }
-
-   public void a() {
-      this.h = true;
-   }
-
-   public void b() {
-      this.i = true;
-   }
-
-   public dkl a(jf<dkk> $$0) {
-      if (!$$0.equals(this.e)) {
-         return $$0.a().d();
-      } else {
-         dkl $$1 = this.d().a().d();
-         dkl.b $$2 = new dkl.b();
-         if (this.i) {
-            for (jf<eqm> $$3 : this.j) {
-               $$2.a(egj.a.b, $$3);
+      while ($$14 < $$3 && $$10 > 0) {
+         if ($$14 >= 1) {
+            int $$15 = $$7 + $$14;
+            $$12 += $$8.j();
+            $$13 += $$8.l();
+            $$11 = $$15;
+            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
+               $$11 = $$15 + 1;
             }
+
+            $$5.add(new eno.a($$6.j(), 0, false));
          }
 
-         boolean $$4 = (!this.g || $$0.a(dkr.a)) && this.h;
-         if ($$4) {
-            List<jj<eqm>> $$5 = $$1.c();
+         $$14++;
+         $$10--;
+      }
 
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               if ($$6 != egj.a.d.ordinal() && $$6 != egj.a.e.ordinal() && (!this.i || $$6 != egj.a.b.ordinal())) {
-                  for (jf<eqm> $$8 : $$5.get($$6)) {
-                     $$2.a($$6, $$8);
-                  }
-               }
-            }
-         }
-
-         List<eao> $$9 = this.f();
-
-         for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-            eao $$11 = $$9.get($$10);
-            if (!egn.a.e.e().test($$11)) {
-               $$9.set($$10, null);
-               $$2.a(egj.a.k, rx.a(ejt.ac, new emb($$10, $$11)));
-            }
-         }
-
-         return $$2.a();
+      if ($$11 - $$7 > 1) {
+         iv $$16 = new iv($$12, $$11, $$13);
+         $$5.add(new eno.a($$16, 0, false));
+         $$5.add(new eno.a($$16.c(2), 0, false));
       }
    }
 
-   public Optional<jj<ero>> c() {
-      return this.c;
-   }
-
-   public jf<dkk> d() {
-      return this.e;
-   }
-
-   public List<epi> e() {
-      return this.d;
-   }
-
-   public List<eao> f() {
-      return this.f;
-   }
-
-   public void g() {
-      this.f.clear();
-
-      for (epi $$0 : this.d) {
-         for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-            this.f.add($$0.b());
-         }
-      }
-
-      this.g = this.f.stream().allMatch($$0x -> $$0x.a(dmo.a));
-   }
-
-   public static epl a(jg<dkk> $$0, jg<ero> $$1, jg<eqm> $$2) {
-      jj<ero> $$3 = jj.a($$1.b(erb.r), $$1.b(erb.a));
-      epl $$4 = new epl(Optional.of($$3), a($$0), b($$2));
-      $$4.e().add(new epi(1, dmo.I));
-      $$4.e().add(new epi(2, dmo.j));
-      $$4.e().add(new epi(1, dmo.i));
-      $$4.g();
-      return $$4;
-   }
-
-   public static jf<dkk> a(jg<dkk> $$0) {
-      return $$0.b(dkr.b);
-   }
-
-   public static List<jf<eqm>> b(jg<eqm> $$0) {
-      return List.of($$0.b(ru.g), $$0.b(ru.h));
+   @Override
+   protected boolean a(djs $$0, iv $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
    }
 }

@@ -1,304 +1,133 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class hje implements hjh.a, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final alg b;
-   final int c;
-   final int d;
-   private final fiu e;
-   fiu[] f;
-   @Nullable
-   private final hje.a g;
-   private final avf h;
-
-   public hje(alg $$0, hkx $$1, fiu $$2, avf $$3) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$1.b();
-      this.h = $$3;
-      this.g = $$3.a(hkw.b).map($$2x -> this.a($$1, $$2.a(), $$2.b(), $$2x)).orElse(null);
-      this.e = $$2;
-      this.f = new fiu[]{this.e};
-   }
-
-   public void a(int $$0) {
-      try {
-         this.f = hiy.a(this.f, $$0);
-      } catch (Throwable var6) {
-         p $$2 = p.a(var6, "Generating mipmaps for frame");
-         q $$3 = $$2.a("Sprite being mipmapped");
-         $$3.a("First frame", () -> {
-            StringBuilder $$0x = new StringBuilder();
-            if ($$0x.length() > 0) {
-               $$0x.append(", ");
-            }
-
-            $$0x.append(this.e.a()).append("x").append(this.e.b());
-            return $$0x.toString();
-         });
-         q $$4 = $$2.a("Frame being iterated");
-         $$4.a("Sprite name", this.b);
-         $$4.a("Sprite size", () -> this.c + " x " + this.d);
-         $$4.a("Sprite frames", () -> this.g() + " frames");
-         $$4.a("Mipmap levels", $$0);
-         throw new aa($$2);
+public class hje {
+   private static final int a = 96;
+   private static final float[] b = ag.a(new float[256], $$0 -> {
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         $$0[$$1] = (float)Math.pow((double)((float)$$1 / 255.0F), 2.2);
       }
+   });
+
+   private hje() {
    }
 
-   private int g() {
-      return this.g != null ? this.g.b.size() : 1;
-   }
-
-   @Nullable
-   private hje.a a(hkx $$0, int $$1, int $$2, hkw $$3) {
-      int $$4 = $$1 / $$0.a();
-      int $$5 = $$2 / $$0.b();
-      int $$6 = $$4 * $$5;
-      int $$7 = $$3.d();
-      List<hje.b> $$8;
-      if ($$3.a().isEmpty()) {
-         $$8 = new ArrayList<>($$6);
-
-         for (int $$9 = 0; $$9 < $$6; $$9++) {
-            $$8.add(new hje.b($$9, $$7));
-         }
+   public static fiz[] a(fiz[] $$0, int $$1) {
+      if ($$1 + 1 <= $$0.length) {
+         return $$0;
       } else {
-         List<hkv> $$10 = $$3.a().get();
-         $$8 = new ArrayList<>($$10.size());
+         fiz[] $$2 = new fiz[$$1 + 1];
+         $$2[0] = $$0[0];
+         boolean $$3 = a($$2[0]);
 
-         for (hkv $$12 : $$10) {
-            $$8.add(new hje.b($$12.a(), $$12.a($$7)));
-         }
-
-         int $$13 = 0;
-         IntSet $$14 = new IntOpenHashSet();
-
-         for (Iterator<hje.b> $$15 = $$8.iterator(); $$15.hasNext(); $$13++) {
-            hje.b $$16 = $$15.next();
-            boolean $$17 = true;
-            if ($$16.b <= 0) {
-               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$13, $$16.b});
-               $$17 = false;
-            }
-
-            if ($$16.a < 0 || $$16.a >= $$6) {
-               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$13, $$16.a});
-               $$17 = false;
-            }
-
-            if ($$17) {
-               $$14.add($$16.a);
+         for (int $$4 = 1; $$4 <= $$1; $$4++) {
+            if ($$4 < $$0.length) {
+               $$2[$$4] = $$0[$$4];
             } else {
-               $$15.remove();
-            }
-         }
+               fiz $$5 = $$2[$$4 - 1];
+               fiz $$6 = new fiz($$5.a() >> 1, $$5.b() >> 1, false);
+               int $$7 = $$6.a();
+               int $$8 = $$6.b();
 
-         int[] $$18 = IntStream.range(0, $$6).filter($$1x -> !$$14.contains($$1x)).toArray();
-         if ($$18.length > 0) {
-            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$18));
-         }
-      }
-
-      return $$8.size() <= 1 ? null : new hje.a(List.copyOf($$8), $$4, $$3.e());
-   }
-
-   void a(int $$0, int $$1, int $$2, int $$3, fiu[] $$4, fjr $$5) {
-      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
-         $$5.a($$4[$$6], $$6, $$0 >> $$6, $$1 >> $$6, this.c >> $$6, this.d >> $$6, $$2 >> $$6, $$3 >> $$6);
-      }
-   }
-
-   @Override
-   public int a() {
-      return this.c;
-   }
-
-   @Override
-   public int b() {
-      return this.d;
-   }
-
-   @Override
-   public alg c() {
-      return this.b;
-   }
-
-   public IntStream d() {
-      return this.g != null ? this.g.b() : IntStream.of(1);
-   }
-
-   @Nullable
-   public hjg e() {
-      return this.g != null ? this.g.a() : null;
-   }
-
-   public avf f() {
-      return this.h;
-   }
-
-   @Override
-   public void close() {
-      for (fiu $$0 : this.f) {
-         $$0.close();
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
-   }
-
-   public boolean a(int $$0, int $$1, int $$2) {
-      int $$3 = $$1;
-      int $$4 = $$2;
-      if (this.g != null) {
-         $$3 = $$1 + this.g.a($$0) * this.c;
-         $$4 = $$2 + this.g.b($$0) * this.d;
-      }
-
-      return axw.a(this.e.a($$3, $$4)) == 0;
-   }
-
-   public void a(int $$0, int $$1, fjr $$2) {
-      if (this.g != null) {
-         this.g.a($$0, $$1, $$2);
-      } else {
-         this.a($$0, $$1, 0, 0, this.f, $$2);
-      }
-   }
-
-   class a {
-      final List<hje.b> b;
-      private final int c;
-      private final boolean d;
-
-      a(final List<hje.b> $$0, final int $$1, final boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      int a(int $$0) {
-         return $$0 % this.c;
-      }
-
-      int b(int $$0) {
-         return $$0 / this.c;
-      }
-
-      void a(int $$0, int $$1, int $$2, fjr $$3) {
-         int $$4 = this.a($$2) * hje.this.c;
-         int $$5 = this.b($$2) * hje.this.d;
-         hje.this.a($$0, $$1, $$4, $$5, hje.this.f, $$3);
-      }
-
-      public hjg a() {
-         return hje.this.new d(this, this.d ? hje.this.new c() : null);
-      }
-
-      public void a(int $$0, int $$1, fjr $$2) {
-         this.a($$0, $$1, this.b.get(0).a, $$2);
-      }
-
-      public IntStream b() {
-         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
-      }
-   }
-
-   static record b(int a, int b) {
-   }
-
-   final class c implements AutoCloseable {
-      private final fiu[] b = new fiu[hje.this.f.length];
-
-      c() {
-         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
-            int $$1 = hje.this.c >> $$0;
-            int $$2 = hje.this.d >> $$0;
-            this.b[$$0] = new fiu($$1, $$2, false);
-         }
-      }
-
-      void a(int $$0, int $$1, hje.d $$2, fjr $$3) {
-         hje.a $$4 = $$2.c;
-         List<hje.b> $$5 = $$4.b;
-         hje.b $$6 = $$5.get($$2.a);
-         float $$7 = (float)$$2.b / (float)$$6.b;
-         int $$8 = $$6.a;
-         int $$9 = $$5.get(($$2.a + 1) % $$5.size()).a;
-         if ($$8 != $$9) {
-            for (int $$10 = 0; $$10 < this.b.length; $$10++) {
-               int $$11 = hje.this.c >> $$10;
-               int $$12 = hje.this.d >> $$10;
-
-               for (int $$13 = 0; $$13 < $$12; $$13++) {
-                  for (int $$14 = 0; $$14 < $$11; $$14++) {
-                     int $$15 = this.a($$4, $$8, $$10, $$14, $$13);
-                     int $$16 = this.a($$4, $$9, $$10, $$14, $$13);
-                     this.b[$$10].a($$14, $$13, axw.a($$7, $$15, $$16));
+               for (int $$9 = 0; $$9 < $$7; $$9++) {
+                  for (int $$10 = 0; $$10 < $$8; $$10++) {
+                     $$6.b(
+                        $$9,
+                        $$10,
+                        a(
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 0),
+                           $$5.a($$9 * 2 + 0, $$10 * 2 + 1),
+                           $$5.a($$9 * 2 + 1, $$10 * 2 + 1),
+                           $$3
+                        )
+                     );
                   }
                }
+
+               $$2[$$4] = $$6;
             }
-
-            hje.this.a($$0, $$1, 0, 0, this.b, $$3);
          }
-      }
 
-      private int a(hje.a $$0, int $$1, int $$2, int $$3, int $$4) {
-         return hje.this.f[$$2].a($$3 + ($$0.a($$1) * hje.this.c >> $$2), $$4 + ($$0.b($$1) * hje.this.d >> $$2));
-      }
-
-      @Override
-      public void close() {
-         for (fiu $$0 : this.b) {
-            $$0.close();
-         }
+         return $$2;
       }
    }
 
-   class d implements hjg {
-      int a;
-      int b;
-      final hje.a c;
-      @Nullable
-      private final hje.c d;
-
-      d(final hje.a $$0, @Nullable final hje.c $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(int $$0, int $$1, fjr $$2) {
-         this.b++;
-         hje.b $$3 = this.c.b.get(this.a);
-         if (this.b >= $$3.b) {
-            int $$4 = $$3.a;
-            this.a = (this.a + 1) % this.c.b.size();
-            this.b = 0;
-            int $$5 = this.c.b.get(this.a).a;
-            if ($$4 != $$5) {
-               this.c.a($$0, $$1, $$5, $$2);
+   private static boolean a(fiz $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            if (axw.a($$0.a($$1, $$2)) == 0) {
+               return true;
             }
-         } else if (this.d != null) {
-            this.d.a($$0, $$1, this, $$2);
          }
       }
 
-      @Override
-      public void close() {
-         if (this.d != null) {
-            this.d.close();
+      return false;
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      if ($$4) {
+         float $$5 = 0.0F;
+         float $$6 = 0.0F;
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         if ($$0 >> 24 != 0) {
+            $$5 += a($$0 >> 24);
+            $$6 += a($$0 >> 16);
+            $$7 += a($$0 >> 8);
+            $$8 += a($$0 >> 0);
          }
+
+         if ($$1 >> 24 != 0) {
+            $$5 += a($$1 >> 24);
+            $$6 += a($$1 >> 16);
+            $$7 += a($$1 >> 8);
+            $$8 += a($$1 >> 0);
+         }
+
+         if ($$2 >> 24 != 0) {
+            $$5 += a($$2 >> 24);
+            $$6 += a($$2 >> 16);
+            $$7 += a($$2 >> 8);
+            $$8 += a($$2 >> 0);
+         }
+
+         if ($$3 >> 24 != 0) {
+            $$5 += a($$3 >> 24);
+            $$6 += a($$3 >> 16);
+            $$7 += a($$3 >> 8);
+            $$8 += a($$3 >> 0);
+         }
+
+         $$5 /= 4.0F;
+         $$6 /= 4.0F;
+         $$7 /= 4.0F;
+         $$8 /= 4.0F;
+         int $$9 = (int)(Math.pow((double)$$5, 0.45454545454545453) * 255.0);
+         int $$10 = (int)(Math.pow((double)$$6, 0.45454545454545453) * 255.0);
+         int $$11 = (int)(Math.pow((double)$$7, 0.45454545454545453) * 255.0);
+         int $$12 = (int)(Math.pow((double)$$8, 0.45454545454545453) * 255.0);
+         if ($$9 < 96) {
+            $$9 = 0;
+         }
+
+         return axw.a($$9, $$10, $$11, $$12);
+      } else {
+         int $$13 = a($$0, $$1, $$2, $$3, 24);
+         int $$14 = a($$0, $$1, $$2, $$3, 16);
+         int $$15 = a($$0, $$1, $$2, $$3, 8);
+         int $$16 = a($$0, $$1, $$2, $$3, 0);
+         return axw.a($$13, $$14, $$15, $$16);
       }
+   }
+
+   private static int a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      float $$5 = a($$0 >> $$4);
+      float $$6 = a($$1 >> $$4);
+      float $$7 = a($$2 >> $$4);
+      float $$8 = a($$3 >> $$4);
+      float $$9 = (float)((double)((float)Math.pow((double)($$5 + $$6 + $$7 + $$8) * 0.25, 0.45454545454545453)));
+      return (int)((double)$$9 * 255.0);
+   }
+
+   private static float a(int $$0) {
+      return b[$$0 & 0xFF];
    }
 }

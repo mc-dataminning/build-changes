@@ -1,52 +1,30 @@
-public class csi extends cry {
-   public csi(bwr<? extends csi> $$0, djh $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public csi(djh $$0, bxj $$1, fex $$2) {
-      super(bwr.bi, $$1, $$2, $$0);
-   }
-
-   public csi(djh $$0, double $$1, double $$2, double $$3, fex $$4) {
-      super(bwr.bi, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   @Override
-   protected void a(feu $$0) {
-      super.a($$0);
-      if (this.dU() instanceof arq $$1) {
-         bwi var7 = $$0.a();
-         bwi $$4 = this.q();
-         int $$5 = var7.aE();
-         var7.e(5.0F);
-         bux $$6 = this.dV().a((cry)this, $$4);
-         if (!var7.a($$1, $$6, 5.0F)) {
-            var7.h($$5);
-         } else {
-            dfz.a($$1, var7, $$6);
-         }
+@FunctionalInterface
+public interface csi {
+   csi a = ($$0, $$1, $$2) -> {
+   };
+   csi b = ($$0, $$1, $$2) -> {
+      float $$3 = 170.0F + $$2.i() * 20.0F;
+      $$0.i($$0.dx().c(-0.5));
+      $$0.w($$0.dK() + $$3);
+      $$0.N += $$3;
+      $$0.ar = true;
+   };
+   csi c = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         ffc $$3 = $$1.bR().d();
+         $$0.i($$3);
+         $$0.ar = true;
       }
-   }
-
-   @Override
-   protected void a(fet $$0) {
-      super.a($$0);
-      if (this.dU() instanceof arq $$1) {
-         bwi $$3 = this.q();
-         if (!($$3 instanceof bxl) || $$1.O().c(djd.d)) {
-            iv $$4 = $$0.b().a($$0.c());
-            if (this.dU().v($$4)) {
-               this.dU().b($$4, dlz.a(this.dU(), $$4));
-            }
-         }
+   };
+   csi d = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         ffc $$3 = $$1.dx().d();
+         $$0.i($$3);
+         $$0.ar = true;
       }
-   }
+   };
 
-   @Override
-   protected void a(fev $$0) {
-      super.a($$0);
-      if (!this.dU().C) {
-         this.aq();
-      }
-   }
+   void deflect(csh var1, @Nullable bwi var2, azv var3);
 }

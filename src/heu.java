@@ -1,5 +1,5 @@
-public class heu extends hdq {
+public class heu extends hef {
+   public float a;
    public boolean b;
-   public boolean c;
-   public boolean d;
+   public cjz.g c = cjz.g.a;
 }

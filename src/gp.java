@@ -13,15 +13,15 @@ public class gp implements gi {
    }
 
    @Override
-   public fex a(ej $$0) {
-      fex $$1 = $$0.d();
-      return new fex(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
+   public ffc a(ej $$0) {
+      ffc $$1 = $$0.d();
+      return new ffc(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
    }
 
    @Override
-   public few b(ej $$0) {
-      few $$1 = $$0.k();
-      return new few((float)this.a.a((double)$$1.j), (float)this.b.a((double)$$1.k));
+   public ffb b(ej $$0) {
+      ffb $$1 = $$0.k();
+      return new ffb((float)this.a.a((double)$$1.j), (float)this.b.a((double)$$1.k));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class gp implements gi {
       return new gp(new go(false, $$0), new go(false, $$1), new go(false, $$2));
    }
 
-   public static gp a(few $$0) {
+   public static gp a(ffb $$0) {
       return new gp(new go(false, (double)$$0.j), new go(false, (double)$$0.k), new go(true, 0.0));
    }
 

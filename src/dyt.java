@@ -1,3 +1,15 @@
-public interface dyt {
-   float a(float var1);
+public interface dyt extends btz {
+   fex y_ = dmr.b(16.0, 11.0, 32.0).e().get(0);
+
+   default fex ai_() {
+      return y_;
+   }
+
+   double B();
+
+   double C();
+
+   double D();
+
+   boolean E();
 }

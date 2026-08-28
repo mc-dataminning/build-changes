@@ -1,20 +1,17 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record hjx(azx c) implements hjp {
-   public static final MapCodec<hjx> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azx.a.fieldOf("pattern").forGetter(hjx::b)).apply($$0, hjx::new));
+public class hjx {
+   private static final ayu.b<alg, MapCodec<? extends hjv>> c = new ayu.b<>();
+   public static final Codec<hjv> a = c.a(alg.a).dispatch(hjv::a, $$0 -> $$0);
+   public static final Codec<List<hjv>> b = a.listOf().fieldOf("sources").codec();
 
-   @Override
-   public void a(avd $$0, hjp.a $$1) {
-      $$1.a(this.c.c());
-   }
-
-   @Override
-   public MapCodec<hjx> a() {
-      return b;
-   }
-
-   public azx b() {
-      return this.c;
+   public static void a() {
+      c.a(alg.b("single"), hkc.b);
+      c.a(alg.b("directory"), hjz.b);
+      c.a(alg.b("filter"), hkd.b);
+      c.a(alg.b("unstitch"), hke.b);
+      c.a(alg.b("paletted_permutations"), hkb.c);
    }
 }

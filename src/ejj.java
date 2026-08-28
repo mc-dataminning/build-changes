@@ -1,44 +1,20 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class ejj extends ejh {
-   public ejj(Codec<eme> $$0) {
+public class ejj extends ejy<emj> {
+   public ejj(Codec<emj> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dji $$0, azv $$1, iv $$2, eao $$3) {
-      iv.a $$4 = $$2.k();
-      int $$5 = $$1.a(3) + 1;
-
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
-
-         $$4.c(jb.b);
+   public boolean a(eka<emj> $$0) {
+      dkl $$1 = $$0.b();
+      iv $$2 = $$0.e();
+      azv $$3 = $$0.d();
+      if ($$1.v($$2) && $$1.a_($$2.e()).a(dmt.fY)) {
+         dnx.a($$1, $$2, $$3, 8);
+         return true;
+      } else {
+         return false;
       }
-
-      iv $$7 = $$4.j();
-      int $$8 = $$1.a(3) + 2;
-      List<jb> $$9 = jb.c.a.c($$1);
-
-      for (jb $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(jb.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
-      }
-
-      return true;
    }
 }

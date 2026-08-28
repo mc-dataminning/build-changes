@@ -1,21 +1,41 @@
-public class dat extends daw {
-   public dat(czg.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class dat extends cxv implements cyj {
+   private final awm a;
+
+   public dat(dmr $$0, awm $$1, czj.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
    @Override
-   public bug a(djh $$0, crj $$1, buf $$2) {
-      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awn.zU, awo.h, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public bug a(ddi $$0) {
+      bug $$1 = super.a($$0);
+      crm $$2 = $$0.o();
+      if ($$1.a() && $$2 != null) {
+         $$2.a($$0.p(), cyb.b($$0.n(), $$2));
+      }
+
+      return $$1;
    }
 
    @Override
-   protected crt a(arq $$0, bxj $$1, czk $$2) {
-      return new csr($$0, $$1, $$2);
+   protected awm a(eat $$0) {
+      return this.a;
    }
 
    @Override
-   protected crt a(djh $$0, jp $$1, czk $$2) {
-      return new csr($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public boolean a(@Nullable bxj $$0, djm $$1, iv $$2, @Nullable fey $$3) {
+      if ($$1.k($$2) && $$1.v($$2)) {
+         if (!$$1.C) {
+            $$1.a($$2, this.c().m(), 3);
+         }
+
+         $$1.a($$0, eft.z, $$2);
+         $$1.a($$0, $$2, this.a, awo.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

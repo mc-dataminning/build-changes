@@ -1,92 +1,108 @@
-public interface djz extends din {
-   jb[] D = jb.values();
+import com.google.common.base.Suppliers;
+import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   default int a(iv $$0, jb $$1) {
-      return this.a_($$0).b(this, $$0, $$1);
-   }
+public class djz implements diu {
+   protected final int a;
+   protected final int b;
+   protected final ecq[][] c;
+   protected boolean d;
+   protected final djm e;
+   private final Supplier<jf<dkp>> f;
 
-   default int e_(iv $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.e(), jb.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.d(), jb.b));
-         if ($$1 >= 15) {
-            return $$1;
-         } else {
-            $$1 = Math.max($$1, this.a($$0.f(), jb.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.g(), jb.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.h(), jb.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.i(), jb.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
+   public djz(djm $$0, iv $$1, iv $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.F_().f(mh.aG).b(dkw.b));
+      this.a = jy.a($$1.u());
+      this.b = jy.a($$1.w());
+      int $$3 = jy.a($$2.u());
+      int $$4 = jy.a($$2.w());
+      this.c = new ecq[$$3 - this.a + 1][$$4 - this.b + 1];
+      ecu $$5 = $$0.S();
+      this.d = true;
+
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+         }
+      }
+
+      for (int $$8 = jy.a($$1.u()); $$8 <= jy.a($$2.u()); $$8++) {
+         for (int $$9 = jy.a($$1.w()); $$9 <= jy.a($$2.w()); $$9++) {
+            ecq $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
             }
          }
       }
    }
 
-   default int a(iv $$0, jb $$1, boolean $$2) {
-      eao $$3 = this.a_($$0);
-      if ($$2) {
-         return dop.n($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(dmo.hB)) {
-         return 15;
-      } else if ($$3.a(dmo.cH)) {
-         return $$3.c(dsv.f);
+   private ecq d(iv $$0) {
+      return this.a(jy.a($$0.u()), jy.a($$0.w()));
+   }
+
+   private ecq a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         ecq $$4 = this.c[$$2][$$3];
+         return (ecq)($$4 != null ? $$4 : new ecw(this.e, new dir($$0, $$1), this.f.get()));
       } else {
-         return $$3.p() ? this.a($$0, $$1) : 0;
+         return new ecw(this.e, new dir($$0, $$1), this.f.get());
       }
    }
 
-   default boolean b(iv $$0, jb $$1) {
-      return this.c($$0, $$1) > 0;
+   @Override
+   public ecl A_() {
+      return this.e.A_();
    }
 
-   default int c(iv $$0, jb $$1) {
-      eao $$2 = this.a_($$0);
-      int $$3 = $$2.a(this, $$0, $$1);
-      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   @Override
+   public diq c(int $$0, int $$1) {
+      return this.a($$0, $$1);
    }
 
-   default boolean D(iv $$0) {
-      if (this.c($$0.e(), jb.a) > 0) {
-         return true;
-      } else if (this.c($$0.d(), jb.b) > 0) {
-         return true;
-      } else if (this.c($$0.f(), jb.c) > 0) {
-         return true;
-      } else if (this.c($$0.g(), jb.d) > 0) {
-         return true;
+   @Override
+   public List<ffw> c(@Nullable bwi $$0, fex $$1) {
+      return List.of();
+   }
+
+   @Nullable
+   @Override
+   public dxr c_(iv $$0) {
+      ecq $$1 = this.d($$0);
+      return $$1.c_($$0);
+   }
+
+   @Override
+   public eat a_(iv $$0) {
+      if (this.t($$0)) {
+         return dmt.a.m();
       } else {
-         return this.c($$0.h(), jb.e) > 0 ? true : this.c($$0.i(), jb.f) > 0;
+         ecq $$1 = this.d($$0);
+         return $$1.a_($$0);
       }
    }
 
-   default int E(iv $$0) {
-      int $$1 = 0;
-
-      for (jb $$2 : D) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
-         }
-
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
+   @Override
+   public exa b_(iv $$0) {
+      if (this.t($$0)) {
+         return exb.a.g();
+      } else {
+         ecq $$1 = this.d($$0);
+         return $$1.b_($$0);
       }
+   }
 
-      return $$1;
+   @Override
+   public int G_() {
+      return this.e.G_();
+   }
+
+   @Override
+   public int H_() {
+      return this.e.H_();
    }
 }

@@ -1,30 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class doh extends dmm {
-   public static final MapCodec<doh> a = b(doh::new);
-   private static final wy b = wy.c("container.crafting");
+public class doh extends dmr {
+   public static final MapCodec<dmr> a = mg.e.q().fieldOf("dead");
+   public static final MapCodec<doh> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, doh::new));
+   private final dmr c;
 
-   @Override
-   public MapCodec<? extends doh> a() {
-      return a;
+   public doh(dmr $$0, eas.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
-   protected doh(ean.d $$0) {
-      super($$0);
+   @Override
+   public MapCodec<doh> a() {
+      return b;
    }
 
    @Override
-   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awx.an);
+   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.m(), 2);
+      }
+   }
+
+   @Override
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      if (!this.a($$1, $$3)) {
+         $$2.a($$3, this, 60 + $$7.a(40));
       }
 
-      return bug.a;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
+   protected boolean a(diq $$0, iv $$1) {
+      for (jb $$2 : jb.values()) {
+         exa $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(axh.a)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Nullable
    @Override
-   protected bui b(eao $$0, djh $$1, iv $$2) {
-      return new buo(($$2x, $$3, $$4) -> new cvv($$2x, $$3, cvp.a($$1, $$2)), b);
+   public eat a(ddg $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().C_().a(40));
+      }
+
+      return this.m();
    }
 }

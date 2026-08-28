@@ -1,11 +1,12 @@
-import java.util.Set;
+import java.util.function.Supplier;
 
-public interface cuq {
-   Set<alf<? extends js<? extends cuq>>> bU = Set.of(mh.K, mh.i, mh.B, mh.V, mh.ae, mh.W);
+public class cuq extends ctx {
+   public cuq(bwr<? extends cuq> $$0, djm $$1, Supplier<czj> $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   cut k();
-
-   default boolean a(cut $$0) {
-      return this.k().a($$0);
+   @Override
+   protected double b(bwl $$0) {
+      return (double)($$0.b() * 0.8888889F);
    }
 }

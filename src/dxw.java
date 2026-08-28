@@ -1,139 +1,216 @@
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.Objects;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dxw extends dxm implements btz {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final jo<czk> d = jo.a(6, czk.k);
-   private int e = -1;
+public class dxw extends dxr {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "LootTable";
+   private static final String c = "LootTableSeed";
+   private static final String d = "hit_direction";
+   private static final String e = "item";
+   private static final int f = 10;
+   private static final int g = 40;
+   private static final int h = 10;
+   private int i;
+   private long j;
+   private long k;
+   private czn l = czn.k;
+   @Nullable
+   private jb m;
+   @Nullable
+   private alf<ezy> q;
+   private long r;
 
-   public dxw(iv $$0, eao $$1) {
-      super(dxo.N, $$0, $$1);
+   public dxw(iv $$0, eat $$1) {
+      super(dxt.O, $$0, $$1);
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         eao $$1 = this.m();
+   public boolean a(long $$0, arq $$1, bxj $$2, jb $$3, czn $$4) {
+      if (this.m == null) {
+         this.m = $$3;
+      }
 
-         for (int $$2 = 0; $$2 < dnr.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).f();
-            ebf $$4 = dnr.c.get($$2);
-            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+      this.j = $$0 + 40L;
+      if ($$0 < this.k) {
+         return false;
+      } else {
+         this.k = $$0 + 10L;
+         this.a($$1, $$2, $$4);
+         int $$5 = this.f();
+         if (++this.i >= 10) {
+            this.b($$1, $$2, $$4);
+            return true;
+         } else {
+            $$1.a(this.ax_(), this.m().b(), 2);
+            int $$6 = this.f();
+            if ($$5 != $$6) {
+               eat $$7 = this.m();
+               eat $$8 = $$7.b(ebj.by, Integer.valueOf($$6));
+               $$1.a(this.ax_(), $$8, 3);
+            }
+
+            return false;
+         }
+      }
+   }
+
+   private void a(arq $$0, bxj $$1, czn $$2) {
+      if (this.q != null) {
+         ezy $$3 = $$0.p().bc().b(this.q);
+         if ($$1 instanceof arr $$4) {
+            aq.Q.a($$4, this.q);
          }
 
-         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
-         this.n.a(efo.c, this.o, efo.a.a($$1));
-      } else {
-         c.error("Expected slot 0-5, got {}", $$0);
+         ezw $$5 = new ezw.a($$0).a(fcn.f, ffc.b(this.o)).a($$1.eg()).a(fcn.a, $$1).a(fcn.i, $$2).a(fcm.i);
+         ObjectArrayList<czn> $$6 = $$3.a($$5, this.r);
+
+         this.l = switch ($$6.size()) {
+            case 0 -> czn.k;
+            case 1 -> (czn)$$6.getFirst();
+            default -> {
+               a.warn("Expected max 1 loot from loot table {}, but got {}", this.q.a(), $$6.size());
+               yield (czn)$$6.getFirst();
+            }
+         };
+         this.q = null;
+         this.e();
       }
+   }
+
+   private void b(arq $$0, bxj $$1, czn $$2) {
+      this.c($$0, $$1, $$2);
+      eat $$3 = this.m();
+      $$0.c(3008, this.ax_(), dmr.j($$3));
+      dmr $$6;
+      if (this.m().b() instanceof dmx $$5) {
+         $$6 = $$5.b();
+      } else {
+         $$6 = dmt.a;
+      }
+
+      $$0.a(this.o, $$6.m(), 3);
+   }
+
+   private void c(arq $$0, bxj $$1, czn $$2) {
+      this.a($$0, $$1, $$2);
+      if (!this.l.f()) {
+         double $$3 = (double)bwr.aq.l();
+         double $$4 = 1.0 - $$3;
+         double $$5 = $$3 / 2.0;
+         jb $$6 = Objects.requireNonNullElse(this.m, jb.b);
+         iv $$7 = this.o.a($$6, 1);
+         double $$8 = (double)$$7.u() + 0.5 * $$4 + $$5;
+         double $$9 = (double)$$7.v() + 0.5 + (double)(bwr.aq.m() / 2.0F);
+         double $$10 = (double)$$7.w() + 0.5 * $$4 + $$5;
+         cnr $$11 = new cnr($$0, $$8, $$9, $$10, this.l.a($$0.A.a(21) + 10));
+         $$11.i(ffc.c);
+         $$0.b($$11);
+         this.l = czn.k;
+      }
+   }
+
+   public void a(arq $$0) {
+      if (this.i != 0 && $$0.ae() >= this.j) {
+         int $$1 = this.f();
+         this.i = Math.max(0, this.i - 2);
+         int $$2 = this.f();
+         if ($$1 != $$2) {
+            $$0.a(this.ax_(), this.m().b(ebj.by, Integer.valueOf($$2)), 3);
+         }
+
+         int $$3 = 4;
+         this.j = $$0.ae() + 4L;
+      }
+
+      if (this.i == 0) {
+         this.m = null;
+         this.j = 0L;
+         this.k = 0L;
+      } else {
+         $$0.a(this.ax_(), this.m().b(), 2);
+      }
+   }
+
+   private boolean c(tz $$0) {
+      this.q = $$0.<alf<ezy>>a("LootTable", ezy.a).orElse(null);
+      this.r = $$0.b("LootTableSeed", 0L);
+      return this.q != null;
+   }
+
+   private boolean d(tz $$0) {
+      if (this.q == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", ezy.a, this.q);
+         if (this.r != 0L) {
+            $$0.a("LootTableSeed", this.r);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public tz a(jh.a $$0) {
+      tz $$1 = super.a($$0);
+      $$1.b("hit_direction", jb.k, this.m);
+      if (!this.l.f()) {
+         ale<uw> $$2 = $$0.a(un.a);
+         $$1.a("item", czn.b, $$2, this.l);
+      }
+
+      return $$1;
+   }
+
+   public aca a() {
+      return aca.a(this);
    }
 
    @Override
    protected void a(tz $$0, jh.a $$1) {
       super.a($$0, $$1);
-      this.d.clear();
-      bua.b($$0, this.d, $$1);
-      this.e = $$0.f("last_interacted_slot");
+      ale<uw> $$2 = $$1.a(un.a);
+      if (!this.c($$0)) {
+         this.l = $$0.<czn>a("item", czn.b, $$2).orElse(czn.k);
+      } else {
+         this.l = czn.k;
+      }
+
+      this.m = $$0.<jb>a("hit_direction", jb.k).orElse(null);
    }
 
    @Override
    protected void b(tz $$0, jh.a $$1) {
       super.b($$0, $$1);
-      bua.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
-   }
-
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(czk::f)).count();
-   }
-
-   @Override
-   public void a() {
-      this.d.clear();
-   }
-
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(czk::f);
-   }
-
-   @Override
-   public czk a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public czk a(int $$0, int $$1) {
-      czk $$2 = Objects.requireNonNullElse(this.d.get($$0), czk.k);
-      this.d.set($$0, czk.k);
-      if (!$$2.f()) {
-         this.c($$0);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public czk b(int $$0) {
-      return this.a($$0, 1);
-   }
-
-   @Override
-   public void a(int $$0, czk $$1) {
-      if ($$1.a(axk.ba)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.f()) {
-         this.a($$0, 1);
+      if (!this.d($$0) && !this.l.f()) {
+         ale<uw> $$2 = $$1.a(un.a);
+         $$0.a("item", czn.b, $$2, this.l);
       }
    }
 
-   @Override
-   public boolean a(btz $$0, int $$1, czk $$2) {
-      return $$0.a_($$2x -> $$2x.f() ? true : czk.c($$2, $$2x) && $$2x.M() + $$2.M() <= $$0.f_($$2x));
+   public void a(alf<ezy> $$0, long $$1) {
+      this.q = $$0;
+      this.r = $$1;
    }
 
-   @Override
-   public int ak_() {
-      return 1;
+   private int f() {
+      if (this.i == 0) {
+         return 0;
+      } else if (this.i < 3) {
+         return 1;
+      } else {
+         return this.i < 6 ? 2 : 3;
+      }
    }
 
-   @Override
-   public boolean a(crj $$0) {
-      return btz.a(this, $$0);
+   @Nullable
+   public jb c() {
+      return this.m;
    }
 
-   @Override
-   public boolean b(int $$0, czk $$1) {
-      return $$1.a(axk.ba) && this.a($$0).f() && $$1.M() == this.ak_();
-   }
-
-   public int j() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(kf $$0) {
-      super.a($$0);
-      $$0.a(kk.ap, dcc.a).a(this.d);
-   }
-
-   @Override
-   protected void a(kh.a $$0) {
-      super.a($$0);
-      $$0.a(kk.ap, dcc.a(this.d));
-   }
-
-   @Override
-   public void a(tz $$0) {
-      $$0.p("Items");
+   public czn d() {
+      return this.l;
    }
 }

@@ -1,8 +1,8 @@
 public class ceo extends cen {
-   private final cqq h;
+   private final cqt h;
 
-   public ceo(cqq $$0) {
-      super($$0, crj.class, 8.0F);
+   public ceo(cqt $$0) {
+      super($$0, crm.class, 8.0F);
       this.h = $$0;
    }
 

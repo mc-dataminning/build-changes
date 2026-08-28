@@ -11,14 +11,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ex implements ArgumentType<dje> {
-   private static final Collection<String> a = Stream.of(dje.a, dje.b).map(dje::b).collect(Collectors.toList());
-   private static final dje[] b = dje.values();
+public class ex implements ArgumentType<djj> {
+   private static final Collection<String> a = Stream.of(djj.a, djj.b).map(djj::b).collect(Collectors.toList());
+   private static final djj[] b = djj.values();
    private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wy.b("argument.gamemode.invalid", $$0));
 
-   public dje a(StringReader $$0) throws CommandSyntaxException {
+   public djj a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      dje $$2 = dje.a($$1, null);
+      djj $$2 = djj.a($$1, null);
       if ($$2 == null) {
          throw c.createWithContext($$0, $$1);
       } else {
@@ -27,7 +27,7 @@ public class ex implements ArgumentType<dje> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof eo ? eo.b(Arrays.stream(b).map(dje::b), $$1) : Suggestions.empty();
+      return $$0.getSource() instanceof eo ? eo.b(Arrays.stream(b).map(djj::b), $$1) : Suggestions.empty();
    }
 
    public Collection<String> getExamples() {
@@ -38,7 +38,7 @@ public class ex implements ArgumentType<dje> {
       return new ex();
    }
 
-   public static dje a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
-      return (dje)$$0.getArgument($$1, dje.class);
+   public static djj a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+      return (djj)$$0.getArgument($$1, djj.class);
    }
 }

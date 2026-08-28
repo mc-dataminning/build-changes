@@ -136,7 +136,7 @@ public class hc {
                   }
                }
 
-               for (dje $$6 : dje.values()) {
+               for (djj $$6 : djj.values()) {
                   if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
                      if ($$5) {
                         $$1x.suggest("!" + $$6.b());
@@ -157,7 +157,7 @@ public class hc {
                throw b.createWithContext($$0.g(), "gamemode");
             } else {
                String $$3 = $$0.g().readUnquotedString();
-               dje $$4 = dje.a($$3, null);
+               djj $$4 = djj.a($$3, null);
                if ($$4 == null) {
                   $$0.g().setCursor($$1);
                   throw g.createWithContext($$0.g(), $$3);
@@ -167,7 +167,7 @@ public class hc {
                      if (!($$2x instanceof arr)) {
                         return false;
                      } else {
-                        dje $$3x = ((arr)$$2x).h.b();
+                        djj $$3x = ((arr)$$2x).h.b();
                         return $$2 ? $$3x != $$4 : $$3x == $$4;
                      }
                   });
@@ -183,7 +183,7 @@ public class hc {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
             $$0.a($$2x -> {
-               fge $$3 = $$2x.cp();
+               fgj $$3 = $$2x.cp();
                String $$4 = $$3 == null ? "" : $$3.c();
                return $$4.equals($$2) != $$1;
             });
@@ -245,7 +245,7 @@ public class hc {
             $$0.a($$2x -> {
                tz $$3 = $$2x.f(new tz());
                if ($$2x instanceof arr $$4) {
-                  czk $$5 = $$4.gi().g();
+                  czn $$5 = $$4.gi().g();
                   if (!$$5.f()) {
                      $$3.a("SelectedItem", $$5.a($$4.dW()));
                   }
@@ -277,15 +277,15 @@ public class hc {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  fgc $$2x = $$1x.cU().aJ();
+                  fgh $$2x = $$1x.cU().aJ();
 
                   for (Entry<String, cw.d> $$3x : $$2.entrySet()) {
-                     ffu $$4x = $$2x.a($$3x.getKey());
+                     ffz $$4x = $$2x.a($$3x.getKey());
                      if ($$4x == null) {
                         return false;
                      }
 
-                     ffy $$5 = $$2x.d($$1x, $$4x);
+                     fgd $$5 = $$2x.d($$1x, $$4x);
                      if ($$5 == null) {
                         return false;
                      }
@@ -383,19 +383,19 @@ public class hc {
          }, $$0 -> !$$0.H(), wy.c("argument.entity.options.advancements.description"));
          a("predicate", $$0 -> {
             boolean $$1 = $$0.e();
-            alf<fcx> $$2 = alf.a(mh.bs, alg.a($$0.g()));
+            alf<fdc> $$2 = alf.a(mh.bt, alg.a($$0.g()));
             $$0.a($$2x -> {
                if (!($$2x.dU() instanceof arq)) {
                   return false;
                } else {
                   arq $$3 = (arq)$$2x.dU();
-                  Optional<fcx> $$4 = $$3.p().bc().a().c($$2).map(jf::a);
+                  Optional<fdc> $$4 = $$3.p().bc().a().c($$2).map(jf::a);
                   if ($$4.isEmpty()) {
                      return false;
                   } else {
-                     ezr $$5 = new ezr.a($$3).a(fci.a, $$2x).a(fci.f, $$2x.ds()).a(fch.e);
-                     ezo $$6 = new ezo.a($$5).a(Optional.empty());
-                     $$6.b(ezo.a($$4.get()));
+                     ezw $$5 = new ezw.a($$3).a(fcn.a, $$2x).a(fcn.f, $$2x.ds()).a(fcm.e);
+                     ezt $$6 = new ezt.a($$5).a(Optional.empty());
+                     $$6.b(ezt.a($$4.get()));
                      return $$1 ^ $$4.get().test($$6);
                   }
                }

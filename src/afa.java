@@ -1,5 +1,5 @@
-public record afa(czk b) implements zf<abu> {
-   public static final yw<wj, afa> a = yw.a(czk.h, afa::b, afa::new);
+public record afa(czn b) implements zf<abu> {
+   public static final yw<wj, afa> a = yw.a(czn.h, afa::b, afa::new);
 
    @Override
    public zh<afa> a() {

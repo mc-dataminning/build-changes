@@ -1,8 +1,8 @@
 public class cfb extends cef {
-   private final cll a;
+   private final cli a;
    private int b;
 
-   public cfb(cll $$0) {
+   public cfb(cli $$0) {
       this.a = $$0;
       this.a($$0);
    }
@@ -36,7 +36,7 @@ public class cfb extends cef {
       }
    }
 
-   private void a(cll $$0) {
+   private void a(cli $$0) {
       this.b = -$$0.hc();
    }
 

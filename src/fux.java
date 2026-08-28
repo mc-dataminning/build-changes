@@ -1,26 +1,62 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fux implements fuy {
-   private final wy b;
-   protected final fwi a = new fwi();
+public interface fux extends fuk {
+   long t = 250L;
 
-   public fux(wy $$0) {
-      this.b = $$0;
+   default void f(double $$0, double $$1) {
    }
 
-   @Override
-   public wy a() {
-      return this.b;
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   @Override
-   public void a(Consumer<fst> $$0) {
-      this.a.a($$0);
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   @Override
-   public void a(fxc $$0) {
-      this.a.a();
-      fwh.a(this.a, $$0, 0.5F, 0.16666667F);
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
+   @Nullable
+   default fsj a(fxd $$0) {
+      return null;
+   }
+
+   default boolean a_(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aJ_();
+
+   @Nullable
+   default fsj aK_() {
+      return this.aJ_() ? fsj.a(this) : null;
+   }
+
+   default fxh J() {
+      return fxh.a();
+   }
+
+   default fxh b(fxf $$0) {
+      return this.J().c($$0);
    }
 }

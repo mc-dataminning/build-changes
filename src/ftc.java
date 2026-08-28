@@ -1,278 +1,154 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class ftc<T> extends fsl {
-   public static final BooleanSupplier a = fyn::u;
-   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
-   private final wy c;
-   private int d;
-   private T f;
-   private final ftc.c<T> m;
-   private final Function<T, wy> n;
-   private final Function<ftc<T>, xm> o;
-   private final ftc.b<T> p;
-   private final boolean q;
-   private final fpr.l<T> r;
+public class ftc extends fsq {
+   private static final alg a = alg.b("widget/checkbox_selected_highlighted");
+   private static final alg b = alg.b("widget/checkbox_selected");
+   private static final alg c = alg.b("widget/checkbox_highlighted");
+   private static final alg d = alg.b("widget/checkbox");
+   private static final int f = 14737632;
+   private static final int m = 4;
+   private static final int n = 8;
+   private boolean o;
+   private final ftc.b p;
+   private final ftu q;
 
-   ftc(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      wy $$4,
-      wy $$5,
-      int $$6,
-      T $$7,
-      ftc.c<T> $$8,
-      Function<T, wy> $$9,
-      Function<ftc<T>, xm> $$10,
-      ftc.b<T> $$11,
-      fpr.l<T> $$12,
-      boolean $$13
-   ) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.f = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$13;
-      this.r = $$12;
-      this.g();
+   ftc(int $$0, int $$1, int $$2, wy $$3, fsk $$4, boolean $$5, ftc.b $$6) {
+      super($$0, $$1, 0, 0, $$3);
+      this.g = this.a($$2, $$3, $$4);
+      this.q = new ftu($$3, $$4).d(this.g).c(14737632);
+      this.h = this.b($$4);
+      this.o = $$5;
+      this.p = $$6;
    }
 
-   private void g() {
-      this.a(this.r.apply(this.f));
+   private int a(int $$0, wy $$1, fsk $$2) {
+      return Math.min(b($$1, $$2), $$0);
+   }
+
+   private int b(fsk $$0) {
+      return Math.max(a($$0), this.q.y());
+   }
+
+   static int b(wy $$0, fsk $$1) {
+      return a($$1) + 4 + $$1.a($$0);
+   }
+
+   public static ftc.a a(wy $$0, fsk $$1) {
+      return new ftc.a($$0, $$1);
+   }
+
+   public static int a(fsk $$0) {
+      return 9 + 8;
    }
 
    @Override
    public void b() {
-      if (fyn.t()) {
-         this.a(-1);
-      } else {
-         this.a(1);
-      }
+      this.o = !this.o;
+      this.p.onValueChange(this, this.o);
    }
 
-   private void a(int $$0) {
-      List<T> $$1 = this.m.a();
-      this.d = azm.b(this.d + $$0, $$1.size());
-      T $$2 = $$1.get(this.d);
-      this.b($$2);
-      this.p.onValueChange(this, $$2);
-   }
-
-   private T b(int $$0) {
-      List<T> $$1 = this.m.a();
-      return $$1.get(azm.b(this.d + $$0, $$1.size()));
+   public boolean a() {
+      return this.o;
    }
 
    @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$3 > 0.0) {
-         this.a(-1);
-      } else if ($$3 < 0.0) {
-         this.a(1);
-      }
-
-      return true;
-   }
-
-   public void a(T $$0) {
-      List<T> $$1 = this.m.a();
-      int $$2 = $$1.indexOf($$0);
-      if ($$2 != -1) {
-         this.d = $$2;
-      }
-
-      this.b($$0);
-   }
-
-   private void b(T $$0) {
-      wy $$1 = this.c($$0);
-      this.b($$1);
-      this.f = $$0;
-      this.g();
-   }
-
-   private wy c(T $$0) {
-      return (wy)(this.q ? this.n.apply($$0) : this.d($$0));
-   }
-
-   private xm d(T $$0) {
-      return wx.a(this.c, this.n.apply($$0));
-   }
-
-   public T a() {
-      return this.f;
-   }
-
-   @Override
-   protected xm d() {
-      return this.o.apply(this);
-   }
-
-   @Override
-   public void a(fws $$0) {
-      $$0.a(fwr.a, this.d());
+   public void a(fwx $$0) {
+      $$0.a(fww.a, this.d());
       if (this.j) {
-         T $$1 = this.b(1);
-         wy $$2 = this.c($$1);
          if (this.aJ_()) {
-            $$0.a(fwr.d, wy.a("narration.cycle_button.usage.focused", $$2));
+            $$0.a(fww.d, wy.c("narration.checkbox.usage.focused"));
          } else {
-            $$0.a(fwr.d, wy.a("narration.cycle_button.usage.hovered", $$2));
+            $$0.a(fww.d, wy.c("narration.checkbox.usage.hovered"));
          }
       }
    }
 
-   public xm c() {
-      return a_((wy)(this.q ? this.d(this.f) : this.B()));
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+      fpt $$4 = fpt.Q();
+      fsk $$5 = $$4.h;
+      alg $$6;
+      if (this.o) {
+         $$6 = this.aJ_() ? a : b;
+      } else {
+         $$6 = this.aJ_() ? c : d;
+      }
+
+      int $$8 = a($$5);
+      $$0.a(grc::H, $$6, this.F(), this.G(), $$8, $$8, axw.a(this.l));
+      int $$9 = this.F() + $$8 + 4;
+      int $$10 = this.G() + $$8 / 2 - this.q.y() / 2;
+      this.q.c($$9, $$10);
+      this.q.b($$0, $$1, $$2, $$3);
    }
 
-   public static <T> ftc.a<T> a(Function<T, wy> $$0) {
-      return new ftc.a<>($$0);
-   }
-
-   public static ftc.a<Boolean> a(wy $$0, wy $$1) {
-      return new ftc.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
-   }
-
-   public static ftc.a<Boolean> e() {
-      return new ftc.a<Boolean>($$0 -> $$0 ? wx.b : wx.c).a(b);
-   }
-
-   public static ftc.a<Boolean> b(boolean $$0) {
-      return e().a($$0);
-   }
-
-   public static class a<T> {
-      private int a;
+   public static class a {
+      private final wy a;
+      private final fsk b;
+      private int c;
+      private int d = 0;
+      private int e = 0;
+      private ftc.b f = ftc.b.a;
+      private boolean g = false;
       @Nullable
-      private T b;
-      private final Function<T, wy> c;
-      private fpr.l<T> d = $$0x -> null;
-      private Function<ftc<T>, xm> e = ftc::c;
-      private ftc.c<T> f = ftc.c.a(ImmutableList.of());
-      private boolean g;
+      private fpw<Boolean> h = null;
+      @Nullable
+      private ful i = null;
 
-      public a(Function<T, wy> $$0) {
-         this.c = $$0;
+      a(wy $$0, fsk $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = ftc.b($$0, $$1);
       }
 
-      public ftc.a<T> a(Collection<T> $$0) {
-         return this.a(ftc.c.a($$0));
+      public ftc.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
       }
 
-      @SafeVarargs
-      public final ftc.a<T> a(T... $$0) {
-         return this.a(ImmutableList.copyOf($$0));
-      }
-
-      public ftc.a<T> a(List<T> $$0, List<T> $$1) {
-         return this.a(ftc.c.a(ftc.a, $$0, $$1));
-      }
-
-      public ftc.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         return this.a(ftc.c.a($$0, $$1, $$2));
-      }
-
-      public ftc.a<T> a(ftc.c<T> $$0) {
+      public ftc.a a(ftc.b $$0) {
          this.f = $$0;
          return this;
       }
 
-      public ftc.a<T> a(fpr.l<T> $$0) {
-         this.d = $$0;
+      public ftc.a a(boolean $$0) {
+         this.g = $$0;
+         this.h = null;
          return this;
       }
 
-      public ftc.a<T> a(T $$0) {
-         this.b = $$0;
-         int $$1 = this.f.b().indexOf($$0);
-         if ($$1 != -1) {
-            this.a = $$1;
-         }
-
+      public ftc.a a(fpw<Boolean> $$0) {
+         this.h = $$0;
+         this.g = $$0.c();
          return this;
       }
 
-      public ftc.a<T> a(Function<ftc<T>, xm> $$0) {
-         this.e = $$0;
+      public ftc.a a(ful $$0) {
+         this.i = $$0;
          return this;
       }
 
-      public ftc.a<T> a() {
-         this.g = true;
+      public ftc.a a(int $$0) {
+         this.c = $$0;
          return this;
       }
 
-      public ftc<T> a(wy $$0, ftc.b<T> $$1) {
-         return this.a(0, 0, 150, 20, $$0, $$1);
-      }
-
-      public ftc<T> a(int $$0, int $$1, int $$2, int $$3, wy $$4) {
-         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
-         });
-      }
-
-      public ftc<T> a(int $$0, int $$1, int $$2, int $$3, wy $$4, ftc.b<T> $$5) {
-         List<T> $$6 = this.f.b();
-         if ($$6.isEmpty()) {
-            throw new IllegalStateException("No values for cycle button");
-         } else {
-            T $$7 = this.b != null ? this.b : $$6.get(this.a);
-            wy $$8 = this.c.apply($$7);
-            wy $$9 = (wy)(this.g ? $$8 : wx.a($$4, $$8));
-            return new ftc<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
-         }
+      public ftc a() {
+         ftc.b $$0 = this.h == null ? this.f : ($$0x, $$1x) -> {
+            this.h.a($$1x);
+            this.f.onValueChange($$0x, $$1x);
+         };
+         ftc $$1 = new ftc(this.d, this.e, this.c, this.a, this.b, this.g, $$0);
+         $$1.a(this.i);
+         return $$1;
       }
    }
 
-   public interface b<T> {
-      void onValueChange(ftc<T> var1, T var2);
-   }
+   public interface b {
+      ftc.b a = ($$0, $$1) -> {
+      };
 
-   public interface c<T> {
-      List<T> a();
-
-      List<T> b();
-
-      static <T> ftc.c<T> a(Collection<T> $$0) {
-         final List<T> $$1 = ImmutableList.copyOf($$0);
-         return new ftc.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$1;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$1;
-            }
-         };
-      }
-
-      static <T> ftc.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
-         final List<T> $$3 = ImmutableList.copyOf($$1);
-         final List<T> $$4 = ImmutableList.copyOf($$2);
-         return new ftc.c<T>() {
-            @Override
-            public List<T> a() {
-               return $$0.getAsBoolean() ? $$4 : $$3;
-            }
-
-            @Override
-            public List<T> b() {
-               return $$3;
-            }
-         };
-      }
+      void onValueChange(ftc var1, boolean var2);
    }
 }

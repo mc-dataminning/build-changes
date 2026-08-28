@@ -1,23 +1,20 @@
-public class hao extends hbh<hcu, ggd> {
-   public hao(gyq<hcu, ggd> $$0) {
+public class hao extends hbm<hcu, gfy> {
+   private static final alg a = alg.b("textures/entity/cat/cat_collar.png");
+   private final gfy b;
+   private final gfy c;
+
+   public hao(gyv<hcu, gfy> $$0, gjp $$1) {
       super($$0);
+      this.b = new gfy($$1.a(gjs.T));
+      this.c = new gfy($$1.a(gjs.S));
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, hcu $$3, float $$4, float $$5) {
-      hgc $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         float $$7 = 1.0F;
-         float $$8 = -1.0F;
-         float $$9 = azm.e($$3.ab) / 60.0F;
-         if ($$3.ab < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
-         }
-
-         $$6.a($$0, $$1, $$2, hja.d);
-         $$0.b();
+   public void a(fkd $$0, gqr $$1, int $$2, hcu $$3, float $$4, float $$5) {
+      cyl $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         gfy $$8 = $$3.aj ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
       }
    }
 }

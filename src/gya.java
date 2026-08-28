@@ -1,27 +1,32 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gya extends gvs<cll, heg, ghi> {
+   private static final alg a = alg.b("textures/entity/llama/creamy.png");
+   private static final alg j = alg.b("textures/entity/llama/white.png");
+   private static final alg k = alg.b("textures/entity/llama/brown.png");
+   private static final alg l = alg.b("textures/entity/llama/gray.png");
 
-public class gya extends gvn<cjq, hee, gga> {
-   private static final Map<cjq.a, alg> a = ag.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cjq.a.b, alg.b("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cjq.a.a, alg.b("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public gya(gwt.a $$0) {
-      super($$0, new gga($$0.a(gjn.bN)), new gga($$0.a(gjn.bO)), 0.7F);
-      this.a(new hbc(this, $$0.d()));
+   public gya(gwy.a $$0, gjr $$1, gjr $$2) {
+      super($$0, new ghi($$0.a($$1)), new ghi($$0.a($$2)), 0.7F);
+      this.a(new hbg(this, $$0.f(), $$0.h()));
    }
 
-   public alg a(hee $$0) {
-      return a.get($$0.a);
+   public alg a(heg $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> j;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   public hee b() {
-      return new hee();
+   public heg b() {
+      return new heg();
    }
 
-   public void a(cjq $$0, hee $$1, float $$2) {
+   public void a(cll $$0, heg $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.gG();
+      $$1.b = !$$0.n_() && $$0.t();
+      $$1.c = $$0.fX();
+      $$1.d = $$0.gw();
    }
 }

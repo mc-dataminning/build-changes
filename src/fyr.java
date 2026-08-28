@@ -1,481 +1,132 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Instant;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fyr extends fyn {
-   private static final wy b = wy.c("gui.stats");
-   static final alg c = alg.b("container/slot");
-   static final alg d = alg.b("statistics/header");
-   static final alg s = alg.b("statistics/sort_up");
-   static final alg u = alg.b("statistics/sort_down");
-   private static final wy v = wy.c("multiplayer.downloadingStats");
-   static final wy w = wy.c("stats.none");
-   private static final wy x = wy.c("stat.generalButton");
-   private static final wy y = wy.c("stat.itemsButton");
-   private static final wy z = wy.c("stat.mobsButton");
-   protected final fyn a;
-   private static final int A = 280;
-   private static final int B = 5;
-   private static final int C = 58;
-   private fwj D = new fwj(this, 33, 58);
-   @Nullable
-   private fyr.a E;
-   @Nullable
-   fyr.b F;
-   @Nullable
-   private fyr.c G;
-   final awy H;
-   @Nullable
-   private ftr<?> I;
-   private boolean J = true;
+public class fyr extends fys {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final wy c = wy.c("recover_world.title").a(o.r);
+   private static final wy d = wy.c("recover_world.bug_tracker");
+   private static final wy s = wy.c("recover_world.restore");
+   private static final wy u = wy.c("recover_world.no_fallback");
+   private static final wy v = wy.c("recover_world.done.title");
+   private static final wy w = wy.c("recover_world.done.success");
+   private static final wy x = wy.c("recover_world.done.failed");
+   private static final wy y = wy.c("recover_world.issue.none").a(o.k);
+   private static final wy z = wy.c("recover_world.issue.missing_file").a(o.m);
+   private final BooleanConsumer A;
+   private final fws B = fws.d().a(8);
+   private final wy C;
+   private final ftu D;
+   private final ftu E;
+   private final ezh.c F;
 
-   public fyr(fyn $$0, awy $$1) {
-      super(b);
-      this.a = $$0;
-      this.H = $$1;
+   public fyr(fpt $$0, BooleanConsumer $$1, ezh.c $$2) {
+      super(c);
+      this.A = $$1;
+      this.C = wy.a("recover_world.message", wy.b($$2.f()).a(o.h));
+      this.D = new ftu(this.C, $$0.h);
+      this.F = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      wy $$5 = wy.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.E = new ftu($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.B.c().b();
+      this.B.a(new fuh(this.l, $$0.h));
+      this.B.a(this.D.b(true));
+      this.B.a(this.E);
+      fws $$7 = fws.e().a(5);
+      $$7.a(fta.a(d, fxp.b(this, ayh.j)).b(120, 20).a());
+      $$7.a(fta.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : ful.a(u)).a()).j = $$6;
+      this.B.a($$7);
+      this.B.a(fta.a(wx.k, $$0x -> this.aL_()).b(120, 20).a());
+      this.B.a(this::c);
+   }
+
+   private void a(fpt $$0) {
+      Exception $$1 = this.a(this.F, false);
+      Exception $$2 = this.a(this.F, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fyd(wy.c("recover_world.restoring")));
+         gdw.a(this.F);
+         if (this.F.n()) {
+            $$0.a(new fxq(this.A, v, w, wx.j, wx.k));
+         } else {
+            $$0.a(new fxl(() -> this.A.accept(false), v, x));
+         }
+      } else {
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fxl(() -> this.A.accept(false), v, x));
+      }
+   }
+
+   private wy a(ezh.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return wy.i();
+      } else {
+         xm $$3 = wy.i();
+         Instant $$4 = $$0.a($$1);
+         xm $$5 = $$4 != null ? wy.b(geh.a.format($$4)) : wy.c("recover_world.state_entry.unknown");
+         $$3.b(wy.a("recover_world.state_entry", $$5.a(o.h)));
+         if ($$2 == null) {
+            $$3.b(y);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(z);
+         } else if ($$2 instanceof uq) {
+            $$3.b(wy.b($$2.getCause().toString()).a(o.m));
+         } else {
+            $$3.b(wy.b($$2.toString()).a(o.m));
+         }
+
+         return $$3;
+      }
+   }
+
+   @Nullable
+   private Exception a(ezh.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.h());
+         } else {
+            $$0.a($$0.i());
+         }
+
+         return null;
+      } catch (uk | uq | IOException var4) {
+         return var4;
+      }
    }
 
    @Override
    protected void aO_() {
-      this.D.c(new ftk(this.p, v));
-      this.m.L().b(new aha(aha.a.b));
-   }
-
-   public void m() {
-      this.E = new fyr.a(this.m);
-      this.F = new fyr.b(this.m);
-      this.G = new fyr.c(this.m);
-   }
-
-   public void E() {
-      fwj $$0 = new fwj(this, 33, 58);
-      $$0.a(b, this.p);
-      fwn $$1 = $$0.b(fwn.d()).a(5);
-      $$1.c().b();
-      fwn $$2 = $$1.a(fwn.e()).a(5);
-      $$2.a(fsv.a(x, $$0x -> this.a(this.E)).a(120).a());
-      fsv $$3 = $$2.a(fsv.a(y, $$0x -> this.a(this.F)).a(120).a());
-      fsv $$4 = $$2.a(fsv.a(z, $$0x -> this.a(this.G)).a(120).a());
-      $$1.a(fsv.a(wx.d, $$0x -> this.aL_()).a(200).a());
-      if (this.F != null && this.F.aE_().isEmpty()) {
-         $$3.j = false;
-      }
-
-      if (this.G != null && this.G.aE_().isEmpty()) {
-         $$4.j = false;
-      }
-
-      this.D = $$0;
-      this.D.a($$1x -> {
-         fst var10000 = this.c($$1x);
-      });
+      super.aO_();
       this.c();
    }
 
    @Override
    protected void c() {
-      this.D.a();
-      if (this.I != null) {
-         this.I.a(this.n, this.D);
-      }
+      this.E.d(this.n - 50);
+      this.D.d(this.n - 50);
+      this.B.a();
+      fwm.a(this.B, this.J());
+   }
+
+   @Override
+   public wy i() {
+      return wx.a(super.i(), this.C);
    }
 
    @Override
    public void aL_() {
-      this.m.a(this.a);
-   }
-
-   public void F() {
-      if (this.J) {
-         this.m();
-         this.a(this.E);
-         this.E();
-         this.aC_();
-         this.J = false;
-      }
-   }
-
-   @Override
-   public boolean k() {
-      return !this.J;
-   }
-
-   public void a(@Nullable ftr<?> $$0) {
-      if (this.I != null) {
-         this.e(this.I);
-      }
-
-      if ($$0 != null) {
-         this.c($$0);
-         this.I = $$0;
-         this.c();
-      }
-   }
-
-   static String a(awu<alg> $$0) {
-      return "stat." + $$0.b().toString().replace(':', '.');
-   }
-
-   class a extends ftr<fyr.a.a> {
-      public a(final fpo $$0) {
-         super($$0, fyr.this.n, fyr.this.o - 33 - 58, 33, 14);
-         ObjectArrayList<awu<alg>> $$1 = new ObjectArrayList(awx.i.iterator());
-         $$1.sort(Comparator.comparing($$0x -> hkr.a(fyr.a($$0x))));
-         ObjectListIterator var4 = $$1.iterator();
-
-         while (var4.hasNext()) {
-            awu<alg> $$2 = (awu<alg>)var4.next();
-            this.b(new fyr.a.a($$2));
-         }
-      }
-
-      @Override
-      public int a() {
-         return 280;
-      }
-
-      class a extends ftr.a<fyr.a.a> {
-         private final awu<alg> b;
-         private final wy c;
-
-         a(final awu<alg> $$0) {
-            this.b = $$0;
-            this.c = wy.c(fyr.a($$0));
-         }
-
-         private String b() {
-            return this.b.a(fyr.this.H.a(this.b));
-         }
-
-         @Override
-         public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$2 + $$5 / 2 - 9 / 2;
-            int $$11 = $$1 % 2 == 0 ? -1 : -4539718;
-            $$0.b(fyr.this.p, this.c, $$3 + 2, $$10, $$11);
-            String $$12 = this.b();
-            $$0.b(fyr.this.p, $$12, $$3 + $$4 - fyr.this.p.b($$12) - 4, $$10, $$11);
-         }
-
-         @Override
-         public wy a() {
-            return wy.a("narrator.select", wy.i().b(this.c).b(wx.v).f(this.b()));
-         }
-      }
-   }
-
-   class b extends ftr<fyr.b.a> {
-      private static final int s = 18;
-      private static final int u = 22;
-      private static final int v = 1;
-      private static final int w = 0;
-      private static final int x = -1;
-      private static final int y = 1;
-      private final alg[] z = new alg[]{
-         alg.b("statistics/block_mined"),
-         alg.b("statistics/item_broken"),
-         alg.b("statistics/item_crafted"),
-         alg.b("statistics/item_used"),
-         alg.b("statistics/item_picked_up"),
-         alg.b("statistics/item_dropped")
-      };
-      protected final List<aww<dmm>> a;
-      protected final List<aww<czg>> m;
-      protected final Comparator<fyr.b.a> n = new fyr.b.b();
-      @Nullable
-      protected aww<?> o;
-      protected int p = -1;
-      protected int q;
-
-      public b(final fpo $$0) {
-         super($$0, fyr.this.n, fyr.this.o - 33 - 58, 33, 22, 22);
-         this.a = Lists.newArrayList();
-         this.a.add(awx.a);
-         this.m = Lists.newArrayList(new aww[]{awx.d, awx.b, awx.c, awx.e, awx.f});
-         Set<czg> $$1 = Sets.newIdentityHashSet();
-
-         for (czg $$2 : mg.g) {
-            boolean $$3 = false;
-
-            for (aww<czg> $$4 : this.m) {
-               if ($$4.a($$2) && fyr.this.H.a($$4.b($$2)) > 0) {
-                  $$3 = true;
-               }
-            }
-
-            if ($$3) {
-               $$1.add($$2);
-            }
-         }
-
-         for (dmm $$5 : mg.e) {
-            boolean $$6 = false;
-
-            for (aww<dmm> $$7 : this.a) {
-               if ($$7.a($$5) && fyr.this.H.a($$7.b($$5)) > 0) {
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               $$1.add($$5.h());
-            }
-         }
-
-         $$1.remove(czo.a);
-
-         for (czg $$8 : $$1) {
-            this.b(new fyr.b.a($$8));
-         }
-      }
-
-      int m(int $$0) {
-         return 75 + 40 * $$0;
-      }
-
-      @Override
-      protected void a(fsh $$0, int $$1, int $$2) {
-         if (!this.c.o.b()) {
-            this.p = -1;
-         }
-
-         for (int $$3 = 0; $$3 < this.z.length; $$3++) {
-            alg $$4 = this.p == $$3 ? fyr.c : fyr.d;
-            $$0.a(gqx::H, $$4, $$1 + this.m($$3) - 18, $$2 + 1, 18, 18);
-         }
-
-         if (this.o != null) {
-            int $$5 = this.m(this.b(this.o)) - 36;
-            alg $$6 = this.q == 1 ? fyr.s : fyr.u;
-            $$0.a(gqx::H, $$6, $$1 + $$5, $$2 + 1, 18, 18);
-         }
-
-         for (int $$7 = 0; $$7 < this.z.length; $$7++) {
-            int $$8 = this.p == $$7 ? 1 : 0;
-            $$0.a(gqx::H, this.z[$$7], $$1 + this.m($$7) - 18 + $$8, $$2 + 1 + $$8, 18, 18);
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         boolean $$3 = super.a($$0, $$1, $$2);
-         return !$$3
-               && this.a((int)($$0 - ((double)this.F() + (double)this.g / 2.0 - (double)this.a() / 2.0)), (int)($$1 - (double)this.G()) + (int)this.g() - 4)
-            ? true
-            : $$3;
-      }
-
-      protected boolean a(int $$0, int $$1) {
-         this.p = -1;
-
-         for (int $$2 = 0; $$2 < this.z.length; $$2++) {
-            int $$3 = $$0 - this.m($$2);
-            if ($$3 >= -36 && $$3 <= 0) {
-               this.p = $$2;
-               break;
-            }
-         }
-
-         if (this.p >= 0) {
-            this.a(this.n(this.p));
-            this.c.ak().a(hnc.a(awn.Bv, 1.0F));
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 280;
-      }
-
-      private aww<?> n(int $$0) {
-         return $$0 < this.a.size() ? this.a.get($$0) : this.m.get($$0 - this.a.size());
-      }
-
-      private int b(aww<?> $$0) {
-         int $$1 = this.a.indexOf($$0);
-         if ($$1 >= 0) {
-            return $$1;
-         } else {
-            int $$2 = this.m.indexOf($$0);
-            return $$2 >= 0 ? $$2 + this.a.size() : -1;
-         }
-      }
-
-      @Override
-      protected void b(fsh $$0, int $$1, int $$2) {
-         if ($$2 >= this.G() && $$2 <= this.I()) {
-            fyr.b.a $$3 = this.x();
-            int $$4 = this.u();
-            if ($$3 != null) {
-               if ($$1 < $$4 || $$1 > $$4 + 18) {
-                  return;
-               }
-
-               czg $$5 = $$3.b();
-               $$0.a(fyr.this.p, $$5.l(), $$1, $$2, $$5.f().a(kk.G));
-            } else {
-               wy $$6 = null;
-               int $$7 = $$1 - $$4;
-
-               for (int $$8 = 0; $$8 < this.z.length; $$8++) {
-                  int $$9 = this.m($$8);
-                  if ($$7 >= $$9 - 18 && $$7 <= $$9) {
-                     $$6 = this.n($$8).c();
-                     break;
-                  }
-               }
-
-               if ($$6 != null) {
-                  $$0.a(fyr.this.p, $$6, $$1, $$2);
-               }
-            }
-         }
-      }
-
-      protected void a(aww<?> $$0) {
-         if ($$0 != this.o) {
-            this.o = $$0;
-            this.q = -1;
-         } else if (this.q == -1) {
-            this.q = 1;
-         } else {
-            this.o = null;
-            this.q = 0;
-         }
-
-         this.aE_().sort(this.n);
-      }
-
-      class a extends ftr.a<fyr.b.a> {
-         private final czg b;
-
-         a(final czg $$0) {
-            this.b = $$0;
-         }
-
-         public czg b() {
-            return this.b;
-         }
-
-         @Override
-         public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(gqx::H, fyr.c, $$3, $$2, 18, 18);
-            $$0.b(this.b.m(), $$3 + 1, $$2 + 1);
-            if (fyr.this.F != null) {
-               for (int $$10 = 0; $$10 < fyr.this.F.a.size(); $$10++) {
-                  awu<dmm> $$12;
-                  if (this.b instanceof cxs $$11) {
-                     $$12 = fyr.this.F.a.get($$10).b($$11.c());
-                  } else {
-                     $$12 = null;
-                  }
-
-                  this.a($$0, $$12, $$3 + b.this.m($$10), $$2 + $$5 / 2 - 9 / 2, $$1 % 2 == 0);
-               }
-
-               for (int $$14 = 0; $$14 < fyr.this.F.m.size(); $$14++) {
-                  this.a($$0, fyr.this.F.m.get($$14).b(this.b), $$3 + b.this.m($$14 + fyr.this.F.a.size()), $$2 + $$5 / 2 - 9 / 2, $$1 % 2 == 0);
-               }
-            }
-         }
-
-         protected void a(fsh $$0, @Nullable awu<?> $$1, int $$2, int $$3, boolean $$4) {
-            wy $$5 = (wy)($$1 == null ? fyr.w : wy.b($$1.a(fyr.this.H.a($$1))));
-            $$0.b(fyr.this.p, $$5, $$2 - fyr.this.p.a($$5), $$3, $$4 ? -1 : -4539718);
-         }
-
-         @Override
-         public wy a() {
-            return wy.a("narrator.select", this.b.l());
-         }
-      }
-
-      class b implements Comparator<fyr.b.a> {
-         public int a(fyr.b.a $$0, fyr.b.a $$1) {
-            czg $$2 = $$0.b();
-            czg $$3 = $$1.b();
-            int $$4;
-            int $$5;
-            if (b.this.o == null) {
-               $$4 = 0;
-               $$5 = 0;
-            } else if (b.this.a.contains(b.this.o)) {
-               aww<dmm> $$6 = (aww<dmm>)b.this.o;
-               $$4 = $$2 instanceof cxs ? fyr.this.H.a($$6, ((cxs)$$2).c()) : -1;
-               $$5 = $$3 instanceof cxs ? fyr.this.H.a($$6, ((cxs)$$3).c()) : -1;
-            } else {
-               aww<czg> $$9 = (aww<czg>)b.this.o;
-               $$4 = fyr.this.H.a($$9, $$2);
-               $$5 = fyr.this.H.a($$9, $$3);
-            }
-
-            return $$4 == $$5 ? b.this.q * Integer.compare(czg.a($$2), czg.a($$3)) : b.this.q * Integer.compare($$4, $$5);
-         }
-      }
-   }
-
-   class c extends ftr<fyr.c.a> {
-      public c(final fpo $$0) {
-         super($$0, fyr.this.n, fyr.this.o - 33 - 58, 33, 9 * 4);
-
-         for (bwr<?> $$1 : mg.f) {
-            if (fyr.this.H.a(awx.g.b($$1)) > 0 || fyr.this.H.a(awx.h.b($$1)) > 0) {
-               this.b(new fyr.c.a($$1));
-            }
-         }
-      }
-
-      @Override
-      public int a() {
-         return 280;
-      }
-
-      class a extends ftr.a<fyr.c.a> {
-         private final wy b;
-         private final wy c;
-         private final wy d;
-         private final boolean e;
-         private final boolean f;
-
-         public a(final bwr<?> $$0) {
-            this.b = $$0.h();
-            int $$1 = fyr.this.H.a(awx.g.b($$0));
-            if ($$1 == 0) {
-               this.c = wy.a("stat_type.minecraft.killed.none", this.b);
-               this.e = false;
-            } else {
-               this.c = wy.a("stat_type.minecraft.killed", $$1, this.b);
-               this.e = true;
-            }
-
-            int $$2 = fyr.this.H.a(awx.h.b($$0));
-            if ($$2 == 0) {
-               this.d = wy.a("stat_type.minecraft.killed_by.none", this.b);
-               this.f = false;
-            } else {
-               this.d = wy.a("stat_type.minecraft.killed_by", this.b, $$2);
-               this.f = true;
-            }
-         }
-
-         @Override
-         public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fyr.this.p, this.b, $$3 + 2, $$2 + 1, -1);
-            $$0.b(fyr.this.p, this.c, $$3 + 2 + 10, $$2 + 1 + 9, this.e ? -4539718 : -8355712);
-            $$0.b(fyr.this.p, this.d, $$3 + 2 + 10, $$2 + 1 + 9 * 2, this.f ? -4539718 : -8355712);
-         }
-
-         @Override
-         public wy a() {
-            return wy.a("narrator.select", wx.a(this.c, this.d));
-         }
-      }
+      this.A.accept(false);
    }
 }

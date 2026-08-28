@@ -1,179 +1,124 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class gbx extends gbt {
-   private static final wy a = wy.c("options.videoTitle");
-   private static final wy u = wy.c("options.graphics.fabulous").a(o.u);
-   private static final wy v = wy.a("options.graphics.warning.message", u, u);
-   private static final wy w = wy.c("options.graphics.warning.title").a(o.m);
-   private static final wy x = wy.c("options.graphics.warning.accept");
-   private static final wy y = wy.c("options.graphics.warning.cancel");
-   private final gqd z;
-   private final int A;
+public class gbx extends fys {
+   private static final wy a = wy.c("options.title");
+   private static final wy b = wy.c("options.skinCustomisation");
+   private static final wy c = wy.c("options.sounds");
+   private static final wy d = wy.c("options.video");
+   private static final wy s = wy.c("options.controls");
+   private static final wy u = wy.c("options.language");
+   private static final wy v = wy.c("options.chat");
+   private static final wy w = wy.c("options.resourcepack");
+   private static final wy x = wy.c("options.accessibility");
+   private static final wy y = wy.c("options.telemetry");
+   private static final ful z = ful.a(wy.c("options.telemetry.disabled"));
+   private static final wy A = wy.c("options.credits_and_attribution");
+   private static final int B = 2;
+   private final fwo C = new fwo(this, 61, 33);
+   private final fys D;
+   private final fpx E;
+   @Nullable
+   private fth<bud> F;
+   @Nullable
+   private ftq G;
 
-   private static fpr<?>[] a(fps $$0) {
-      return new fpr[]{
-         $$0.k(),
-         $$0.e(),
-         $$0.m(),
-         $$0.f(),
-         $$0.l(),
-         $$0.h(),
-         $$0.Q(),
-         $$0.i(),
-         $$0.at(),
-         $$0.F(),
-         $$0.as(),
-         $$0.j(),
-         $$0.ad(),
-         $$0.au(),
-         $$0.E(),
-         $$0.R(),
-         $$0.am(),
-         $$0.g(),
-         $$0.an(),
-         $$0.ai(),
-         $$0.ap(),
-         $$0.aq(),
-         $$0.q(),
-         $$0.ae()
-      };
-   }
-
-   public gbx(fyn $$0, fpo $$1, fps $$2) {
-      super($$0, $$2, a);
-      this.z = $$1.aj();
-      this.z.h();
-      if ($$2.k().c() == fpg.c) {
-         this.z.d();
-      }
-
-      this.A = $$2.E().c();
+   public gbx(fys $$0, fpx $$1) {
+      super(a);
+      this.D = $$0;
+      this.E = $$1;
    }
 
    @Override
-   protected void m() {
-      int $$0 = -1;
-      fix $$1 = this.m.aO();
-      fis $$2 = $$1.t();
-      int $$3;
-      if ($$2 == null) {
-         $$3 = -1;
-      } else {
-         Optional<fiw> $$4 = $$1.e();
-         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
+   protected void aO_() {
+      fws $$0 = this.C.a(fws.d().a(8));
+      $$0.a(new fuh(a, this.p), fwr::b);
+      fws $$1 = $$0.a(fws.e()).a(8);
+      $$1.a(this.E.ak().a(this.m.n));
+      $$1.a(this.m());
+      fwn $$2 = new fwn();
+      $$2.c().f(4).e(4).b();
+      fwn.b $$3 = $$2.d(2);
+      $$3.a(this.a(b, () -> new gbz(this, this.E)));
+      $$3.a(this.a(c, () -> new gca(this, this.E)));
+      $$3.a(this.a(d, () -> new gcc(this, this.m, this.E)));
+      $$3.a(this.a(s, () -> new gcd(this, this.E)));
+      $$3.a(this.a(u, () -> new gbu(this, this.E, this.m.ah())));
+      $$3.a(this.a(v, () -> new gbs(this, this.E)));
+      $$3.a(this.a(w, () -> new gck(this.m.ad(), this::a, this.m.ag(), wy.c("resourcePack.title"))));
+      $$3.a(this.a(x, () -> new gbr(this, this.E)));
+      fta $$4 = $$3.a(this.a(y, () -> new gdp(this, this.E)));
+      if (!this.m.E()) {
+         $$4.j = false;
+         $$4.a(z);
       }
 
-      fpr<Integer> $$6 = new fpr<>("options.fullscreen.resolution", fpr.a(), ($$1x, $$2x) -> {
-         if ($$2 == null) {
-            return wy.c("options.fullscreen.unavailable");
-         } else if ($$2x == -1) {
-            return fps.a($$1x, wy.c("options.fullscreen.current"));
-         } else {
-            fiw $$3x = $$2.a($$2x);
-            return fps.a($$1x, wy.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
-         }
-      }, new fpr.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
-         if ($$2 != null) {
-            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
-         }
+      $$3.a(this.a(A, () -> new fxu(this)));
+      this.C.c($$2);
+      this.C.b(fta.a(wx.d, $$0x -> this.aL_()).a(200).a());
+      this.C.a($$1x -> {
+         fsy var10000 = this.c($$1x);
       });
-      this.d.a($$6);
-      this.d.a(this.c.G());
-      this.d.a(a(this.c));
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.C.a();
    }
 
    @Override
    public void aL_() {
-      this.m.aO().f();
-      super.aL_();
+      this.m.a(this.D);
+   }
+
+   private void a(aun $$0) {
+      this.E.a($$0);
+      this.m.a(this);
+   }
+
+   private fwq m() {
+      if (this.m.s != null && this.m.U()) {
+         this.F = a(0, 0, "options.difficulty", this.m);
+         if (!this.m.s.k().l()) {
+            this.G = new ftq(0, 0, $$0x -> this.m.a(new fxq(this::c, wy.c("difficulty.lock.title"), wy.a("difficulty.lock.question", this.m.s.k().q().b()))));
+            this.F.h(this.F.A() - this.G.A());
+            this.G.b(this.m.s.k().r());
+            this.G.j = !this.G.a();
+            this.F.j = !this.G.a();
+            fwl $$0 = new fwl(150, 0, fwl.b.a);
+            $$0.a(this.F);
+            $$0.a(this.G);
+            return $$0;
+         } else {
+            this.F.j = false;
+            return this.F;
+         }
+      } else {
+         return fta.a(wy.c("options.online"), $$0x -> this.m.a(new gbw(this, this.E))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
+      }
+   }
+
+   public static fth<bud> a(int $$0, int $$1, String $$2, fpt $$3) {
+      return fth.a(bud::b).a(bud.values()).a($$3.s.an()).a($$0, $$1, 150, 20, wy.c($$2), ($$1x, $$2x) -> $$3.L().b(new agt($$2x)));
+   }
+
+   private void c(boolean $$0) {
+      this.m.a(this);
+      if ($$0 && this.m.s != null && this.G != null && this.F != null) {
+         this.m.L().b(new ahn(true));
+         this.G.b(true);
+         this.G.j = false;
+         this.F.j = false;
+      }
    }
 
    @Override
    public void aF_() {
-      if (this.c.E().c() != this.A) {
-         this.m.a(this.c.E().c());
-         this.m.R();
-      }
-
-      super.aF_();
+      this.E.az();
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         if (this.z.f()) {
-            List<wy> $$3 = Lists.newArrayList(new wy[]{v, wx.s});
-            String $$4 = this.z.i();
-            if ($$4 != null) {
-               $$3.add(wx.s);
-               $$3.add(wy.a("options.graphics.warning.renderer", $$4).a(o.h));
-            }
-
-            String $$5 = this.z.k();
-            if ($$5 != null) {
-               $$3.add(wx.s);
-               $$3.add(wy.a("options.graphics.warning.vendor", $$5).a(o.h));
-            }
-
-            String $$6 = this.z.j();
-            if ($$6 != null) {
-               $$3.add(wx.s);
-               $$3.add(wy.a("options.graphics.warning.version", $$6).a(o.h));
-            }
-
-            this.m.a(new gbw(w, $$3, ImmutableList.of(new gbw.a(x, $$0x -> {
-               this.c.k().a(fpg.c);
-               fpo.Q().f.d();
-               this.z.d();
-               this.m.a(this);
-            }), new gbw.a(y, $$0x -> {
-               this.z.e();
-               this.m.a(this);
-            }))));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (fyn.s()) {
-         fpr<Integer> $$4 = this.c.at();
-         if ($$4.e() instanceof fpr.c $$5) {
-            int $$6 = $$4.c();
-            int $$7 = $$6 == 0 ? $$5.b() + 1 : $$6;
-            int $$8 = $$7 + (int)Math.signum($$3);
-            if ($$8 != 0 && $$8 <= $$5.b() && $$8 >= $$5.d()) {
-               ftc<Integer> $$9 = (ftc<Integer>)this.d.b($$4);
-               if ($$9 != null) {
-                  $$4.a($$8);
-                  $$9.a($$8);
-                  this.d.a(0.0);
-                  return true;
-               }
-            }
-         }
-
-         return false;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public void c(boolean $$0) {
-      if (this.d != null) {
-         fst $$1 = this.d.b(this.c.ad());
-         if ($$1 != null) {
-            ftc<Boolean> $$2 = (ftc<Boolean>)$$1;
-            $$2.a($$0);
-         }
-      }
+   private fta a(wy $$0, Supplier<fys> $$1) {
+      return fta.a($$0, $$1x -> this.m.a($$1.get())).a();
    }
 }

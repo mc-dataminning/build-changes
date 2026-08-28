@@ -1,6 +1,6 @@
 import java.util.EnumSet;
 
-public class cfg<T extends cok & cop & cnx> extends cef {
+public class cfg<T extends coo & cos & coa> extends cef {
    public static final btr a = baq.a(1, 2);
    private final T b;
    private cfg.a c = cfg.a.a;
@@ -23,7 +23,7 @@ public class cfg<T extends cok & cop & cnx> extends cef {
    }
 
    private boolean h() {
-      return this.b.b(czo.xg);
+      return this.b.b(czr.xg);
    }
 
    @Override
@@ -44,7 +44,7 @@ public class cfg<T extends cok & cop & cnx> extends cef {
       if (this.b.fy()) {
          this.b.fE();
          this.b.b(false);
-         this.b.fA().b(kk.P, dbo.a);
+         this.b.fA().b(kk.P, dbr.a);
       }
    }
 
@@ -85,7 +85,7 @@ public class cfg<T extends cok & cop & cnx> extends cef {
          this.b.J().a($$0, 30.0F, 30.0F);
          if (this.c == cfg.a.a) {
             if (!$$4) {
-               this.b.c(csg.a(this.b, czo.xg));
+               this.b.c(csj.a(this.b, czr.xg));
                this.c = cfg.a.b;
                this.b.b(true);
             }
@@ -95,8 +95,8 @@ public class cfg<T extends cok & cop & cnx> extends cef {
             }
 
             int $$5 = this.b.fC();
-            czk $$6 = this.b.fA();
-            if ($$5 >= cyd.b($$6, this.b)) {
+            czn $$6 = this.b.fA();
+            if ($$5 >= cyg.b($$6, this.b)) {
                this.b.fD();
                this.c = cfg.a.c;
                this.g = 20 + this.b.dX().a(20);

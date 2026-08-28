@@ -1,19 +1,28 @@
-public class hag extends hbh<hcm, gfq> {
-   private static final alg a = alg.b("textures/entity/breeze/breeze_wind.png");
-   private final gfq b;
+public class hag extends gxp<cpi, hfw, gjk<hfw>> {
+   private static final alg a = alg.b("textures/entity/zombie_villager/zombie_villager.png");
 
-   public hag(gwt.a $$0, gyq<hcm, gfq> $$1) {
-      super($$1);
-      this.b = new gfq($$0.a(gjn.L));
+   public hag(gwy.a $$0) {
+      super($$0, new gjk<>($$0.a(gjs.es)), new gjk<>($$0.a(gjs.et)), 0.5F, gzu.a);
+      this.a(new hbb<>(this, new gjk($$0.a(gjs.ew)), new gjk($$0.a(gjs.ex)), new gjk($$0.a(gjs.eu)), new gjk($$0.a(gjs.ev)), $$0.h()));
+      this.a(new hbx<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, hcm $$3, float $$4, float $$5) {
-      fkc $$6 = $$1.getBuffer(gqx.a(a, this.a($$3.u) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gvy.a(this.b, this.b.d()).a($$0, $$6, $$2, hja.d);
+   public alg a(hfw $$0) {
+      return a;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public hfw b() {
+      return new hfw();
+   }
+
+   public void a(cpi $$0, hfw $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gA();
+      $$1.c = $$0.gB();
+      $$1.a = $$0.gk();
+   }
+
+   protected boolean b(hfw $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

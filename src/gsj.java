@@ -1,51 +1,32 @@
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class gsj {
-   private static final Splitter a = Splitter.on(',');
-   private static final Splitter b = Splitter.on('=').limit(2);
-
-   public static <O, S extends eaq<O, S>> Predicate<eaq<O, S>> a(eap<O, S> $$0, String $$1) {
-      Map<ebr<?>, Comparable<?>> $$2 = new HashMap<>();
-
-      for (String $$3 : a.split($$1)) {
-         Iterator<String> $$4 = b.split($$3).iterator();
-         if ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            ebr<?> $$6 = $$0.a($$5);
-            if ($$6 != null && $$4.hasNext()) {
-               String $$7 = $$4.next();
-               Comparable<?> $$8 = a((ebr<Comparable<?>>)$$6, $$7);
-               if ($$8 == null) {
-                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
-               }
-
-               $$2.put($$6, $$8);
-            } else if (!$$5.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
-            }
-         }
-      }
-
-      return $$1x -> {
-         for (Entry<ebr<?>, Comparable<?>> $$2x : $$2.entrySet()) {
-            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+public record gsj(hmh a, boolean b, hjq c) implements gsd {
+   public static gsj a(hlz $$0, alg $$1, hmf $$2) {
+      hmj $$3 = $$0.a($$1);
+      gsl $$4 = $$3.g();
+      boolean $$5 = $$3.c();
+      hjq $$6 = $$3.a($$4, $$0);
+      hmh $$7 = $$3.a($$4, $$0, $$2);
+      return new gsj($$7, $$5, $$6);
    }
 
-   @Nullable
-   private static <T extends Comparable<T>> T a(ebr<T> $$0, String $$1) {
-      return $$0.b($$1).orElse(null);
+   @Override
+   public List<grx> a(@Nullable eat $$0, @Nullable jb $$1, azv $$2) {
+      return this.a.a($$1);
+   }
+
+   public hmh c() {
+      return this.a;
+   }
+
+   @Override
+   public boolean a() {
+      return this.b;
+   }
+
+   @Override
+   public hjq b() {
+      return this.c;
    }
 }

@@ -1,60 +1,38 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dvm extends doj {
+public class dvm extends dmd implements dqd {
    public static final MapCodec<dvm> a = b(dvm::new);
-   public static final int b = 1;
-   public static final ebo c = ebe.at;
-   private static final ffr[] g = dmm.a(1, $$0 -> dmm.b(6.0, 0.0, (double)(6 + $$0 * 4)));
-   private static final int h = 1;
 
-   @Override
-   public MapCodec<dvm> a() {
-      return a;
-   }
-
-   public dvm(ean.d $$0) {
+   public dvm(eas.d $$0) {
       super($$0);
    }
 
+   @Nullable
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(c);
+   public dxr a(iv $$0, eat $$1) {
+      return new dzm($$0, $$1);
    }
 
    @Override
-   public ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return g[this.h($$0)];
-   }
+   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
+      if ($$1.c_($$2) instanceof dzm $$6) {
+         if (!$$3.gF()) {
+            return bug.e;
+         } else {
+            if ($$3.cT().C) {
+               $$3.a($$6);
+            }
 
-   @Override
-   protected ebo b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 2;
-   }
-
-   @Override
-   protected djg d() {
-      return czo.wt;
-   }
-
-   @Override
-   public eao b(int $$0) {
-      return $$0 == 2 ? dmo.cc.m() : super.b($$0);
-   }
-
-   @Override
-   public void b(eao $$0, arq $$1, iv $$2, azv $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+            return bug.a;
+         }
+      } else {
+         return bug.e;
       }
    }
 
    @Override
-   protected int a(djh $$0) {
-      return 1;
+   protected MapCodec<dvm> a() {
+      return a;
    }
 }

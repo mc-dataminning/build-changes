@@ -1,58 +1,151 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
 
-public class esk extends esq {
-   public static final MapCodec<esk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eqm.b.fieldOf("feature").forGetter($$0x -> $$0x.b), f()).apply($$0, esk::new)
-   );
-   private final jf<eqm> b;
-   private final tz c;
+public abstract class esk {
+   public static final Codec<esk> b = mg.P.q().dispatch(esk::e, esl::codec);
+   private static final int a = 10387320;
+   private final ka c;
+   private final esk.c d;
+   private final float e;
+   private final int f;
+   private final Optional<esk.a> g;
 
-   protected esk(jf<eqm> $$0, ess.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   protected static <S extends esk> P5<Mu<S>, ka, esk.c, Float, Integer, Optional<esk.a>> a(Instance<S> $$0) {
+      return $$0.group(
+         ka.v(16).optionalFieldOf("locate_offset", ka.i).forGetter(esk::f),
+         esk.c.e.optionalFieldOf("frequency_reduction_method", esk.c.a).forGetter(esk::g),
+         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(esk::h),
+         ayu.l.fieldOf("salt").forGetter(esk::i),
+         esk.a.a.optionalFieldOf("exclusion_zone").forGetter(esk::j)
+      );
    }
 
-   private tz b() {
-      tz $$0 = new tz();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dyq.a.a.c());
-      return $$0;
+   protected esk(ka $$0, esk.c $$1, float $$2, int $$3, Optional<esk.a> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   @Override
-   public ka a(evl $$0, dtg $$1) {
-      return ka.i;
+   protected ka f() {
+      return this.c;
    }
 
-   @Override
-   public List<evk.a> a(evl $$0, iv $$1, dtg $$2, azv $$3) {
-      return List.of(evk.a.a(new evk.d($$1, dmo.pH.m().b(dqt.b, jd.a(jb.a, jb.d)), this.c)));
+   protected esk.c g() {
+      return this.d;
    }
 
-   @Override
-   public era a(evl $$0, iv $$1, dtg $$2) {
-      ka $$3 = this.a($$0, $$2);
-      return new era($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   protected float h() {
+      return this.e;
    }
 
-   @Override
-   public boolean a(evl $$0, dkg $$1, dkd $$2, ecm $$3, iv $$4, iv $$5, dtg $$6, era $$7, azv $$8, euu $$9, boolean $$10) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
+   protected int i() {
+      return this.f;
    }
 
-   @Override
-   public esr<?> a() {
-      return esr.c;
+   protected Optional<esk.a> j() {
+      return this.g;
    }
 
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public boolean b(ecs $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
+   }
+
+   public boolean a(int $$0, int $$1, long $$2) {
+      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
+   }
+
+   public boolean c(ecs $$0, int $$1, int $$2) {
+      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
+   }
+
+   protected abstract boolean a(ecs var1, int var2, int var3);
+
+   public iv a(dir $$0) {
+      return new iv($$0.d(), 0, $$0.e()).a(this.f());
+   }
+
+   public abstract esl<?> e();
+
+   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      ehr $$5 = new ehr(new egt(0L));
+      $$5.a($$0, $$1, $$2, $$3);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      ehr $$5 = new ehr(new egt(0L));
+      $$5.c($$0, $$2, $$3);
+      return $$5.j() < (double)$$4;
+   }
+
+   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      ehr $$5 = new ehr(new egt(0L));
+      $$5.a($$0, $$2, $$3, 10387320);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      int $$5 = $$2 >> 4;
+      int $$6 = $$3 >> 4;
+      ehr $$7 = new ehr(new egt(0L));
+      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
+      $$7.f();
+      return $$7.a((int)(1.0F / $$4)) == 0;
+   }
+
+   @Deprecated
+   public static record a(jf<ert> b, int c) {
+      public static final Codec<esk.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(alc.a(mh.bd, ert.a, false).fieldOf("other_set").forGetter(esk.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(esk.a::b))
+               .apply($$0, esk.a::new)
+      );
+
+      boolean a(ecs $$0, int $$1, int $$2) {
+         return $$0.a(this.b, $$1, $$2, this.c);
+      }
+
+      public jf<ert> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
+   }
+
+   public static enum c implements bak {
+      a("default", esk::a),
+      b("legacy_type_1", esk::d),
+      c("legacy_type_2", esk::c),
+      d("legacy_type_3", esk::b);
+
+      public static final Codec<esk.c> e = bak.a(esk.c::values);
+      private final String f;
+      private final esk.b g;
+
+      private c(final String $$0, final esk.b $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

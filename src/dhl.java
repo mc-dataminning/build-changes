@@ -1,24 +1,41 @@
-public interface dhl {
-   alf<dhf> a = a("mob_spawn_equipment");
-   alf<dhf> b = a("pillager_spawn_crossbow");
-   alf<dhf> c = a("raid/pillager_post_wave_3");
-   alf<dhf> d = a("raid/pillager_post_wave_5");
-   alf<dhf> e = a("raid/vindicator");
-   alf<dhf> f = a("raid/vindicator_post_wave_5");
-   alf<dhf> g = a("enderman_loot_drop");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qh<dhf> $$0) {
-      jg<dfx> $$1 = $$0.a(mh.aR);
-      $$0.a(a, new dhi($$1.b(axe.l), 5, 17));
-      $$0.a(b, new dhj($$1.b(dgc.K), bti.a(1)));
-      $$0.a(c, new dhj($$1.b(dgc.J), bti.a(1)));
-      $$0.a(d, new dhj($$1.b(dgc.J), bti.a(2)));
-      $$0.a(e, new dhj($$1.b(dgc.n), bti.a(1)));
-      $$0.a(f, new dhj($$1.b(dgc.n), bti.a(2)));
-      $$0.a(g, new dhj($$1.b(dgc.v), bti.a(1)));
+public record dhl(jj<dga> d, int e, int f) implements dhi {
+   public static final int b = 10000;
+   public static final MapCodec<dhl> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ju.a(mh.aR).fieldOf("enchantments").forGetter(dhl::b),
+               ayu.a(1, 10000).fieldOf("min_cost").forGetter(dhl::c),
+               ayu.a(0, 10000).fieldOf("max_cost_span").forGetter(dhl::d)
+            )
+            .apply($$0, dhl::new)
+   );
+
+   @Override
+   public void a(czn $$0, dgg.a $$1, azv $$2, bue $$3) {
+      float $$4 = $$3.d();
+      int $$5 = azm.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
+
+      for (dgd $$7 : dgc.b($$2, $$0, $$5, this.d.a())) {
+         $$1.b($$7.b(), $$7.c());
+      }
    }
 
-   static alf<dhf> a(String $$0) {
-      return alf.a(mh.aQ, alg.b($$0));
+   @Override
+   public MapCodec<dhl> a() {
+      return c;
+   }
+
+   public jj<dga> b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
    }
 }

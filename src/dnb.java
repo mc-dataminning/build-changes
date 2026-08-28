@@ -1,61 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dnb extends dtn {
+public class dnb extends dwd implements dmu {
    public static final MapCodec<dnb> a = b(dnb::new);
-   public static final ebm<jb> b = ebe.T;
+   private static final ffw b = dmr.b(16.0, 0.0, 13.0);
 
    @Override
    public MapCodec<dnb> a() {
       return a;
    }
 
-   public dnb(ean.d $$0) {
+   protected dnb(eas.d $$0) {
       super($$0);
-      this.l(this.m().b(b, jb.c));
-   }
-
-   @Nullable
-   @Override
-   public dxm a(iv $$0, eao $$1) {
-      return new dxs($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
-      return !$$0.C ? a($$2, dxo.K, ($$0x, $$1x, $$2x, $$3) -> efx.c.a($$0x, $$3.x(), $$3.gt())) : null;
-   }
-
-   @Nullable
-   @Override
-   public eao a(ddd $$0) {
-      return super.a($$0).b(b, $$0.g());
    }
 
    @Override
-   public int a(eao $$0, din $$1, iv $$2, jb $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return b;
    }
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   public boolean a(djp $$0, iv $$1, eat $$2) {
+      return dmu.a_($$0, $$1, $$2);
    }
 
    @Override
-   public eao a(eao $$0, dtg $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
+      return true;
    }
 
    @Override
-   public eao a(eao $$0, drp $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public int c() {
-      return 10;
+   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
+      dmu.a((djm)$$0, $$2, $$3).ifPresent($$1x -> $$0.b($$1x, this.m()));
    }
 }

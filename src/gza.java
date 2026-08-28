@@ -1,16 +1,21 @@
-public class gza extends gvr<csk, hcf> {
-   public static final alg a = alg.b("textures/entity/projectiles/spectral_arrow.png");
+public class gza extends gye<cov, hef, gik> {
+   private static final alg a = alg.b("textures/entity/silverfish.png");
 
-   public gza(gwt.a $$0) {
-      super($$0);
+   public gza(gwy.a $$0) {
+      super($$0, new gik($$0.a(gjs.cX)), 0.3F);
    }
 
    @Override
-   protected alg a(hcf $$0) {
+   protected float aS_() {
+      return 180.0F;
+   }
+
+   @Override
+   public alg b(hef $$0) {
       return a;
    }
 
-   public hcf a() {
-      return new hcf();
+   public hef b() {
+      return new hef();
    }
 }

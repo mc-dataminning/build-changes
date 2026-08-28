@@ -1,43 +1,39 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class fcd extends fbb {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<fcd> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, fcd::new));
+public class fcd extends fbg {
+   static final MapCodec<fcd> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fdz.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, fcd::new));
+   private final fdy b;
 
-   private fcd(List<fcx> $$0) {
+   private fcd(List<fdc> $$0, fdy $$1) {
       super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public fbd<fcd> b() {
-      return fbe.l;
+   public Set<bax<?>> a() {
+      return this.b.a();
    }
 
    @Override
-   public czk a(czk $$0, ezo $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         deu $$2 = new deu($$0);
-         Optional<deg<dev>> $$3 = $$1.d().t().a(dem.b, $$2, $$1.d());
-         if ($$3.isPresent()) {
-            czk $$4 = $$3.get().b().a($$2, $$1.d().F_());
-            if (!$$4.f()) {
-               return $$4.c($$0.M());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+   public fbi<fcd> b() {
+      return fbj.Q;
    }
 
-   public static fbb.a<?> c() {
-      return a(fcd::new);
+   @Override
+   public czn a(czn $$0, ezt $$1) {
+      int $$2 = azm.a(this.b.a($$1), 0, 4);
+      $$0.b(kk.ad, new dcl($$2));
+      return $$0;
+   }
+
+   public fdy c() {
+      return this.b;
+   }
+
+   public static fbg.a<?> a(fdy $$0) {
+      return a($$1 -> new fcd($$1, $$0));
    }
 }

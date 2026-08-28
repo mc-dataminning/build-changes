@@ -1,110 +1,168 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
 import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class ckm {
-   private static final float a = 1.0F;
-   private static final float b = 2.25F;
-   private static final float c = 1.75F;
-   private static final float d = 2.5F;
-   private static final int e = 4;
-   private static final int f = 16;
-   private static final int g = 6;
-   private static final int h = 30;
-   private static final int i = 60;
-   private static final int j = 600;
-   private static final int k = 32;
-   private static final int l = 20;
+   private static final float a = 2.0F;
+   private static final float b = 1.0F;
+   private static final float c = 1.25F;
+   private static final float d = 1.25F;
+   private static final float e = 1.0F;
+   private static final double f = 2.0;
+   private static final double g = 1.0;
+   private static final btr h = btr.a(5, 16);
+   private static final ImmutableList<chs<? extends chr<? super ckl>>> i = ImmutableList.of(chs.c, chs.f, chs.u, chs.o, chs.k);
+   private static final ImmutableList<cgl<?>> j = ImmutableList.of(
+      cgl.aa, cgl.y, cgl.z, cgl.n, cgl.o, cgl.F, cgl.u, cgl.h, cgl.P, cgl.Q, cgl.R, cgl.S, new cgl[]{cgl.s, cgl.L, cgl.H}
+   );
+   private static final cal<ckl> k = ccn.a(
+      (Function<ccn.b<ckl>, ? extends App<ccn.c<ckl>, ccq<ckl>>>)($$0 -> $$0.group($$0.c(cgl.H)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               if ($$1.t()) {
+                  $$1.gw();
+                  return true;
+               } else {
+                  return false;
+               }
+            }))
+   );
+
+   public static byj.b<ckl> a() {
+      return byj.a(j, i);
+   }
 
    protected static byj<?> a(byj<ckl> $$0) {
       b($$0);
       c($$0);
-      $$0.a(ImmutableSet.of(ctd.a));
-      $$0.b(ctd.b);
+      d($$0);
+      $$0.a(Set.of(ctg.a));
+      $$0.b(ctg.b);
       $$0.f();
       return $$0;
    }
 
    private static void b(byj<ckl> $$0) {
-      $$0.a(ctd.a, 0, ImmutableList.of(new cbu(0.8F), new byv(2.5F), new cag(45, 90), new cak(), new bzg(cgl.aP), new bzg(cgl.aQ)));
+      $$0.a(ctg.a, 0, ImmutableList.of(new cbu(0.8F), new ckm.b(2.0F), new cag(45, 90), new cak() {
+         @Override
+         protected boolean a(arq $$0, bxl $$1) {
+            if ($$1 instanceof ckl $$2 && $$2.t()) {
+               return false;
+            }
+
+            return super.a($$0, $$1);
+         }
+      }, new bzg(cgl.Q), new bzg(cgl.R), k));
    }
 
    private static void c(byj<ckl> $$0) {
       $$0.a(
-         ctd.b,
+         ctg.b,
          ImmutableList.of(
-            Pair.of(0, bzu.a($$0x -> true, 1.75F, true, 32)),
-            Pair.of(1, new bzq(ckm::b, 2.25F, 20)),
-            Pair.of(2, cbo.a(ckm::b, Predicate.not(ckm::c), 4, 16, 2.25F)),
-            Pair.of(3, cba.a(6.0F, btr.a(30, 60))),
-            Pair.of(4, new cax(ImmutableList.of(Pair.of(cas.b(1.0F), 2), Pair.of(cbh.a(1.0F, 3), 2), Pair.of(new bzk(30, 60), 1))))
-         ),
-         ImmutableSet.of()
+            Pair.of(0, cba.a(bwr.bS, 6.0F, btr.a(30, 60))),
+            Pair.of(1, new byu(bwr.e, 1.0F, 1)),
+            Pair.of(2, new cax(ImmutableList.of(Pair.of(new bzn($$0x -> 1.25F, $$0x -> $$0x.n_() ? 1.0 : 2.0), 1), Pair.of(byx.a(h, 1.25F), 1)))),
+            Pair.of(3, new car(btr.a(150, 250), 30.0F, 0.0F, 0.0F)),
+            Pair.of(
+               4, new cax(ImmutableMap.of(cgl.n, cgm.b), ImmutableList.of(Pair.of(cas.a(1.0F), 1), Pair.of(cbh.a(1.0F, 3), 1), Pair.of(new bzk(30, 60), 1)))
+            )
+         )
       );
    }
 
+   private static void d(byj<ckl> $$0) {
+      $$0.a(ctg.g, ImmutableList.of(Pair.of(0, new ckm.a())), Set.of(Pair.of(cgl.H, cgm.a), Pair.of(cgl.aa, cgm.b)));
+   }
+
    public static void a(ckl $$0) {
-      $$0.eb().a(ImmutableList.of(ctd.b));
+      $$0.eb().a(ImmutableList.of(ctg.g, ctg.b));
    }
 
-   public static void a(bxj $$0, iv $$1) {
-      byj<?> $$2 = $$0.eb();
-      je $$3 = je.a($$0.dU().aj(), $$1);
-      Optional<je> $$4 = $$2.c(cgl.aO);
-      if ($$4.isEmpty()) {
-         $$2.a(cgl.aO, $$3);
-         $$2.a(cgl.aP, 600);
-      } else if ($$4.get().equals($$3)) {
-         $$2.a(cgl.aP, 600);
+   public static Predicate<czn> b() {
+      return $$0 -> $$0.a(axk.am);
+   }
+
+   public static class a extends bza<ckl> {
+      static final int c = 5 * baq.e * 20;
+      static final int d = 5;
+      static final int e = 75;
+      int f = 0;
+      boolean g;
+
+      public a() {
+         super(Map.of(), c);
       }
-   }
 
-   private static Optional<cao> b(bxj $$0) {
-      byj<?> $$1 = $$0.eb();
-      Optional<je> $$2 = $$1.c(cgl.aO);
-      if ($$2.isPresent()) {
-         je $$3 = $$2.get();
-         if (a($$0, $$1, $$3)) {
-            return Optional.of(new bzd($$3.b().d()));
+      protected void a(arq $$0, ckl $$1, long $$2) {
+         super.c($$0, $$1, $$2);
+         if (this.f > 0) {
+            this.f--;
          }
 
-         $$1.b(cgl.aO);
-      }
-
-      return d($$0);
-   }
-
-   private static boolean c(bxj $$0) {
-      byj<?> $$1 = $$0.eb();
-      return $$1.a(cgl.M);
-   }
-
-   private static boolean a(bxj $$0, byj<?> $$1, je $$2) {
-      Optional<Integer> $$3 = $$1.c(cgl.aP);
-      djh $$4 = $$0.dU();
-      return $$2.a($$4.aj(), $$0.du(), 1024) && $$4.a_($$2.b()).a(dmo.bf) && $$3.isPresent();
-   }
-
-   private static Optional<cao> d(bxj $$0) {
-      return a($$0).map($$0x -> new bzl($$0x, true));
-   }
-
-   public static Optional<arr> a(bxj $$0) {
-      djh $$1 = $$0.dU();
-      if (!$$1.w_() && $$1 instanceof arq $$2) {
-         Optional<UUID> $$3 = $$0.eb().c(cgl.aN);
-         if ($$3.isPresent()) {
-            if ($$2.b($$3.get()) instanceof arr $$5 && ($$5.h.d() || $$5.h.e()) && $$5.a($$0, 64.0)) {
-               return Optional.of($$5);
+         if ($$1.gt()) {
+            $$1.a(ckl.a.c);
+            if ($$1.aH()) {
+               $$1.a(awn.aj);
+            }
+         } else {
+            ckl.a $$3 = $$1.gu();
+            long $$4 = $$1.eb().e(cgl.H);
+            boolean $$5 = $$4 > 75L;
+            if ($$5 != this.g) {
+               this.f = this.a($$1);
             }
 
-            return Optional.empty();
+            this.g = $$5;
+            if ($$3 == ckl.a.c) {
+               if (this.f == 0 && $$1.aH() && $$5) {
+                  $$0.a($$1, (byte)64);
+                  this.f = this.a($$1);
+               }
+
+               if ($$4 < (long)ckl.a.d.b()) {
+                  $$1.a(awn.an);
+                  $$1.a(ckl.a.d);
+               }
+            } else if ($$3 == ckl.a.d && $$4 > (long)ckl.a.d.b()) {
+               $$1.a(ckl.a.c);
+            }
          }
       }
 
-      return Optional.empty();
+      private int a(ckl $$0) {
+         return ckl.a.c.b() + $$0.dX().a(100, 400);
+      }
+
+      protected boolean a(arq $$0, ckl $$1) {
+         return $$1.aH();
+      }
+
+      protected boolean b(arq $$0, ckl $$1, long $$2) {
+         return $$1.gu().a();
+      }
+
+      protected void c(arq $$0, ckl $$1, long $$2) {
+         $$1.gv();
+      }
+
+      protected void d(arq $$0, ckl $$1, long $$2) {
+         if (!$$1.gF()) {
+            $$1.gw();
+         }
+      }
+   }
+
+   public static class b extends byv<ckl> {
+      public b(float $$0) {
+         super($$0, $$0x -> axd.G);
+      }
+
+      protected void a(arq $$0, ckl $$1, long $$2) {
+         $$1.gw();
+         super.b($$0, $$1, $$2);
+      }
    }
 }

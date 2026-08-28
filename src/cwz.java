@@ -1,159 +1,61 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cwz extends cvf {
+   private static final int m = 27;
+   private final btz n;
 
-public class cwz {
-   private final int a;
-   public final btz c;
-   public int d;
-   public final int e;
-   public final int f;
-
-   public cwz(btz $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.a = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public cwz(int $$0, crl $$1) {
+      this($$0, $$1, new bun(27));
    }
 
-   public void b(czk $$0, czk $$1) {
-      int $$2 = $$1.M() - $$0.M();
-      if ($$2 > 0) {
-         this.a($$1, $$2);
-      }
-   }
+   public cwz(int $$0, crl $$1, btz $$2) {
+      super(cwo.u, $$0);
+      a($$2, 27);
+      this.n = $$2;
+      $$2.c_($$1.h);
+      int $$3 = 3;
+      int $$4 = 9;
 
-   protected void a(czk $$0, int $$1) {
-   }
-
-   protected void b(int $$0) {
-   }
-
-   protected void c_(czk $$0) {
-   }
-
-   public void a(crj $$0, czk $$1) {
-      this.d();
-   }
-
-   public boolean a(czk $$0) {
-      return true;
-   }
-
-   public czk g() {
-      return this.c.a(this.a);
-   }
-
-   public boolean h() {
-      return !this.g().f();
-   }
-
-   public void e(czk $$0) {
-      this.a($$0, this.g());
-   }
-
-   public void a(czk $$0, czk $$1) {
-      this.f($$0);
-   }
-
-   public void f(czk $$0) {
-      this.c.a(this.a, $$0);
-      this.d();
-   }
-
-   public void d() {
-      this.c.e();
-   }
-
-   public int a() {
-      return this.c.ak_();
-   }
-
-   public int b_(czk $$0) {
-      return Math.min(this.a(), $$0.k());
-   }
-
-   @Nullable
-   public alg c() {
-      return null;
-   }
-
-   public czk a(int $$0) {
-      return this.c.a(this.a, $$0);
-   }
-
-   public boolean a(crj $$0) {
-      return true;
-   }
-
-   public boolean b() {
-      return true;
-   }
-
-   public Optional<czk> a(int $$0, int $$1, crj $$2) {
-      if (!this.a($$2)) {
-         return Optional.empty();
-      } else if (!this.b($$2) && $$1 < this.g().M()) {
-         return Optional.empty();
-      } else {
-         $$0 = Math.min($$0, $$1);
-         czk $$3 = this.a($$0);
-         if ($$3.f()) {
-            return Optional.empty();
-         } else {
-            if (this.g().f()) {
-               this.a(czk.k, $$3);
-            }
-
-            return Optional.of($$3);
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cxa($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
          }
       }
+
+      this.c($$1, 8, 84);
    }
 
-   public czk b(int $$0, int $$1, crj $$2) {
-      Optional<czk> $$3 = this.a($$0, $$1, $$2);
-      $$3.ifPresent($$1x -> this.a($$2, $$1x));
-      return $$3.orElse(czk.k);
+   @Override
+   public boolean b(crm $$0) {
+      return this.n.a($$0);
    }
 
-   public czk d(czk $$0) {
-      return this.b($$0, $$0.M());
-   }
-
-   public czk b(czk $$0, int $$1) {
-      if (!$$0.f() && this.a($$0)) {
-         czk $$2 = this.g();
-         int $$3 = Math.min(Math.min($$1, $$0.M()), this.b_($$0) - $$2.M());
-         if ($$3 <= 0) {
-            return $$0;
-         } else {
-            if ($$2.f()) {
-               this.e($$0.a($$3));
-            } else if (czk.c($$2, $$0)) {
-               $$0.h($$3);
-               $$2.g($$3);
-               this.e($$2);
+   @Override
+   public czn b(crm $$0, int $$1) {
+      czn $$2 = czn.k;
+      cxc $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         czn $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < this.n.b()) {
+            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
+               return czn.k;
             }
-
-            return $$0;
+         } else if (!this.a($$4, 0, this.n.b(), false)) {
+            return czn.k;
          }
-      } else {
-         return $$0;
+
+         if ($$4.f()) {
+            $$3.e(czn.k);
+         } else {
+            $$3.d();
+         }
       }
+
+      return $$2;
    }
 
-   public boolean b(crj $$0) {
-      return this.a($$0) && this.a(this.g());
-   }
-
-   public int i() {
-      return this.a;
-   }
-
-   public boolean e() {
-      return true;
-   }
-
-   public boolean f() {
-      return false;
+   @Override
+   public void a(crm $$0) {
+      super.a($$0);
+      this.n.c($$0);
    }
 }

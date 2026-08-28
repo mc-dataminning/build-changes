@@ -1,7 +1,26 @@
-public record fhh(fex b, fex c, fex d) {
-   public static final fhh a = new fhh(fex.c, new fex(0.0, 0.0, -1.0), new fex(0.0, 1.0, 0.0));
+import com.mojang.jtracy.TracyClient;
+import com.mojang.logging.LogListeners;
+import org.slf4j.event.Level;
 
-   public fex a() {
-      return this.c.c(this.d);
+public class fhh {
+   private static boolean a;
+
+   public static void a() {
+      if (!a) {
+         TracyClient.load();
+         if (TracyClient.isAvailable()) {
+            LogListeners.addListener("Tracy", ($$0, $$1) -> TracyClient.message($$0, a($$1)));
+            a = true;
+         }
+      }
+   }
+
+   private static int a(Level $$0) {
+      return switch ($$0) {
+         case DEBUG -> 11184810;
+         case WARN -> 16777130;
+         case ERROR -> 16755370;
+         default -> 16777215;
+      };
    }
 }

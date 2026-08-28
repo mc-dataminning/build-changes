@@ -13,13 +13,13 @@ public class cfn extends cef {
    private double i;
    private double j;
    @Nullable
-   protected crj b;
+   protected crm b;
    private int k;
    private boolean l;
-   private final Predicate<czk> m;
+   private final Predicate<czn> m;
    private final boolean n;
 
-   public cfn(bxr $$0, double $$1, Predicate<czk> $$2, boolean $$3) {
+   public cfn(bxr $$0, double $$1, Predicate<czn> $$2, boolean $$3) {
       this.a = $$0;
       this.e = $$1;
       this.m = $$2;

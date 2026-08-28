@@ -1,20 +1,18 @@
-public enum ebb implements bak {
-   a("head"),
-   b("foot");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class ebb implements Predicate<eat> {
+   private final dmr a;
 
-   private ebb(final String $$0) {
-      this.c = $$0;
+   public ebb(dmr $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static ebb a(dmr $$0) {
+      return new ebb($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable eat $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

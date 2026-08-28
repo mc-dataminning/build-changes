@@ -1,3 +1,3 @@
 public interface bur {
-   buq a(eao var1, dji var2, iv var3);
+   buq a(eat var1, djn var2, iv var3);
 }

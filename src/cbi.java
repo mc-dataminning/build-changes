@@ -3,12 +3,12 @@ import com.google.common.collect.Lists;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class cbi extends bza<cqv> {
+public class cbi extends bza<cqy> {
    private static final int c = 900;
    private static final int d = 40;
    @Nullable
-   private czk e;
-   private final List<czk> f = Lists.newArrayList();
+   private czn e;
+   private final List<czn> f = Lists.newArrayList();
    private int g;
    private int h;
    private int i;
@@ -17,7 +17,7 @@ public class cbi extends bza<cqv> {
       super(ImmutableMap.of(cgl.r, cgm.a), $$0, $$1);
    }
 
-   public boolean a(arq $$0, cqv $$1) {
+   public boolean a(arq $$0, cqy $$1) {
       byj<?> $$2 = $$1.eb();
       if ($$2.c(cgl.r).isEmpty()) {
          return false;
@@ -27,11 +27,11 @@ public class cbi extends bza<cqv> {
       }
    }
 
-   public boolean a(arq $$0, cqv $$1, long $$2) {
+   public boolean a(arq $$0, cqy $$1, long $$2) {
       return this.a($$0, $$1) && this.i > 0 && $$1.eb().c(cgl.r).isPresent();
    }
 
-   public void b(arq $$0, cqv $$1, long $$2) {
+   public void b(arq $$0, cqy $$1, long $$2) {
       super.d($$0, $$1, $$2);
       this.d($$1);
       this.g = 0;
@@ -39,7 +39,7 @@ public class cbi extends bza<cqv> {
       this.i = 40;
    }
 
-   public void c(arq $$0, cqv $$1, long $$2) {
+   public void c(arq $$0, cqy $$1, long $$2) {
       bxj $$3 = this.d($$1);
       this.a($$3, $$1);
       if (!this.f.isEmpty()) {
@@ -52,17 +52,17 @@ public class cbi extends bza<cqv> {
       this.i--;
    }
 
-   public void d(arq $$0, cqv $$1, long $$2) {
+   public void d(arq $$0, cqy $$1, long $$2) {
       super.b($$0, $$1, $$2);
       $$1.eb().b(cgl.r);
       c($$1);
       this.e = null;
    }
 
-   private void a(bxj $$0, cqv $$1) {
+   private void a(bxj $$0, cqy $$1) {
       boolean $$2 = false;
-      czk $$3 = $$0.fa();
-      if (this.e == null || !czk.b(this.e, $$3)) {
+      czn $$3 = $$0.fa();
+      if (this.e == null || !czn.b(this.e, $$3)) {
          this.e = $$3;
          $$2 = true;
          this.f.clear();
@@ -77,40 +77,40 @@ public class cbi extends bza<cqv> {
       }
    }
 
-   private void a(cqv $$0) {
+   private void a(cqy $$0) {
       a($$0, this.f.get(0));
    }
 
-   private void b(cqv $$0) {
-      for (dif $$1 : $$0.gu()) {
+   private void b(cqy $$0) {
+      for (dii $$1 : $$0.gu()) {
          if (!$$1.r() && this.a($$1)) {
             this.f.add($$1.h());
          }
       }
    }
 
-   private boolean a(dif $$0) {
-      return czk.b(this.e, $$0.b()) || czk.b(this.e, $$0.c());
+   private boolean a(dii $$0) {
+      return czn.b(this.e, $$0.b()) || czn.b(this.e, $$0.c());
    }
 
-   private static void c(cqv $$0) {
-      $$0.a(bws.a, czk.k);
+   private static void c(cqy $$0) {
+      $$0.a(bws.a, czn.k);
       $$0.a(bws.a, 0.085F);
    }
 
-   private static void a(cqv $$0, czk $$1) {
+   private static void a(cqy $$0, czn $$1) {
       $$0.a(bws.a, $$1);
       $$0.a(bws.a, 0.0F);
    }
 
-   private bxj d(cqv $$0) {
+   private bxj d(cqy $$0) {
       byj<?> $$1 = $$0.eb();
       bxj $$2 = $$1.c(cgl.r).get();
       $$1.a(cgl.o, new bzl($$2, true));
       return $$2;
    }
 
-   private void e(cqv $$0) {
+   private void e(cqy $$0) {
       if (this.f.size() >= 2 && ++this.g >= 40) {
          this.h++;
          this.g = 0;

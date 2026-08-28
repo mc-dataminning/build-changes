@@ -1,34 +1,73 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public interface fvy {
-   MapCodec<fvy> b = fvz.f.dispatchMap(fvy::a, fvz::a);
+public enum fvy implements fhv {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   fvz a();
+   final fiz c;
 
-   Either<fvy.b, fvy.c> b();
+   private static fiz a(int $$0, int $$1, fvy.a $$2) {
+      fiz $$3 = new fiz(fiz.a.a, $$0, $$1, false);
 
-   public static record a(fvy b, fvm.a c) {
-      public static final Codec<fvy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fvy.b.forGetter(fvy.a::a), fvm.a.a.optionalFieldOf("filter", fvm.a.b).forGetter(fvy.a::b)).apply($$0, fvy.a::new)
-      );
-
-      public fvy a() {
-         return this.b;
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.b($$5, $$4, $$2.getColor($$5, $$4));
+         }
       }
 
-      public fvm.a b() {
-         return this.c;
-      }
+      $$3.g();
+      return $$3;
    }
 
-   public interface b {
-      fhr load(avd var1) throws IOException;
+   private fvy(final Supplier<fiz> $$0) {
+      this.c = $$0.get();
    }
 
-   public static record c(alg a) {
+   @Override
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
+   }
+
+   @Override
+   public fvw bake(Function<fhx, fvw> $$0) {
+      return $$0.apply(new fhx() {
+         @Override
+         public int a() {
+            return fvy.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return fvy.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1, fjw $$2) {
+            $$2.a(fvy.this.c, 0, $$0, $$1, fvy.this.c.a(), fvy.this.c.b(), 0, 0);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

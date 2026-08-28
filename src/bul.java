@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 
-public class bul extends eyh {
-   public static final eyi<bul> a = new eyi<>("random_sequences", $$0 -> new bul($$0.c()), $$0 -> a($$0.c()), bbb.m);
+public class bul extends eym {
+   public static final eyn<bul> a = new eyn<>("random_sequences", $$0 -> new bul($$0.c()), $$0 -> a($$0.c()), bbb.m);
    private final long b;
    private int c;
    private boolean d = true;
@@ -90,7 +90,7 @@ public class bul extends eyh {
       }
 
       @Override
-      public eha e() {
+      public ehf e() {
          bul.this.f();
          return this.c.e();
       }

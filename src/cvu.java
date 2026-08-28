@@ -1,17 +1,9 @@
-import java.util.List;
+public interface cvu {
+   void a(cvf var1, jo<czn> var2, czn var3, int[] var4);
 
-public interface cvu extends btz, cxe {
-   int av_();
+   void a(cvf var1, int var2, czn var3);
 
-   int g();
+   void a(cvf var1, czn var2);
 
-   List<czk> h();
-
-   default ddp ay_() {
-      return this.az_().a();
-   }
-
-   default ddp.a az_() {
-      return ddp.b(this.av_(), this.g(), this.h());
-   }
+   void a(cvf var1, int var2, int var3);
 }

@@ -7,7 +7,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class bvk implements cuq {
+public class bvk implements cut {
    public static final Codec<jf<bvk>> a = mg.d.r();
    public static final yw<wj, jf<bvk>> b = yu.b(mh.W);
    private static final int c = azm.d(38.25F);
@@ -21,7 +21,7 @@ public class bvk implements cuq {
    private int j;
    private int k;
    private Optional<awm> l = Optional.empty();
-   private cut m = cuv.g;
+   private cuw m = cuy.g;
 
    protected bvk(bvl $$0, int $$1) {
       this.e = $$0;
@@ -155,13 +155,13 @@ public class bvk implements cuq {
       return this;
    }
 
-   public bvk a(cur... $$0) {
-      this.m = cuv.e.a($$0);
+   public bvk a(cuu... $$0) {
+      this.m = cuy.e.a($$0);
       return this;
    }
 
    @Override
-   public cut k() {
+   public cuw k() {
       return this.m;
    }
 

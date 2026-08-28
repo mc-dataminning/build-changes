@@ -21,7 +21,7 @@ public record yg(Either<hb, String> d, String e) implements wz {
       return c;
    }
 
-   private fgb a(ej $$0) throws CommandSyntaxException {
+   private fgg a(ej $$0) throws CommandSyntaxException {
       Optional<hb> $$1 = this.d.left();
       if ($$1.isPresent()) {
          List<? extends bwi> $$2 = $$1.get().b().b($$0);
@@ -32,20 +32,20 @@ public record yg(Either<hb, String> d, String e) implements wz {
                return $$2.getFirst();
             }
          } else {
-            return fgb.c($$1.get().a());
+            return fgg.c($$1.get().a());
          }
       } else {
-         return fgb.c((String)this.d.right().orElseThrow());
+         return fgg.c((String)this.d.right().orElseThrow());
       }
    }
 
-   private xm a(fgb $$0, ej $$1) {
+   private xm a(fgg $$0, ej $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         fgc $$3 = $$2.aJ();
-         ffu $$4 = $$3.a(this.e);
+         fgh $$3 = $$2.aJ();
+         ffz $$4 = $$3.a(this.e);
          if ($$4 != null) {
-            ffy $$5 = $$3.d($$0, $$4);
+            fgd $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(yr.b));
             }
@@ -60,8 +60,8 @@ public record yg(Either<hb, String> d, String e) implements wz {
       if ($$0 == null) {
          return wy.i();
       } else {
-         fgb $$3 = this.a($$0);
-         fgb $$4 = (fgb)($$1 != null && $$3.equals(fgb.cp) ? $$1 : $$3);
+         fgg $$3 = this.a($$0);
+         fgg $$4 = (fgg)($$1 != null && $$3.equals(fgg.cp) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

@@ -1,60 +1,63 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class eop extends eos {
-   public static final MapCodec<eop> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eop::new, $$0 -> $$0.b);
-   private final float b;
+public class eop extends eox {
+   public static final MapCodec<eop> a = eod.a.fieldOf("provider").xmap(eop::new, $$0 -> $$0.b);
+   private final eod b;
 
-   @Override
-   protected eot<?> a() {
-      return eot.b;
-   }
-
-   public eop(float $$0) {
+   public eop(eod $$0) {
       this.b = $$0;
    }
 
    @Override
-   public void a(eos.a $$0) {
-      azv $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            iv $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               a($$3, dvz.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            iv $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               a($$4, dvz.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            iv $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               a($$5, dvz.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            iv $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               a($$6, dvz.c, $$0);
-            }
-         }
-      });
+   protected eoy<?> a() {
+      return eoy.g;
    }
 
-   private static void a(iv $$0, ebf $$1, eos.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
+   @Override
+   public void a(eox.a $$0) {
+      List<iv> $$1 = elk.a($$0);
+      if (!$$1.isEmpty()) {
+         int $$2 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
+            this.a($$0, $$1x.h().f());
+            this.a($$0, $$1x.g(2).f());
+            this.a($$0, $$1x.h().e(2));
+            this.a($$0, $$1x.g(2).e(2));
 
-      for (iv var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.e();
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3 = $$0.b().a(64);
+               int $$4 = $$3 % 8;
+               int $$5 = $$3 / 8;
+               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
+               }
+            }
+         });
+      }
+   }
+
+   private void a(eox.a $$0, iv $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
+      }
+   }
+
+   private void b(eox.a $$0, iv $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         iv $$3 = $$1.b($$2);
+         if (ejy.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
       }
    }
 }

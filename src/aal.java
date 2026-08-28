@@ -1,5 +1,5 @@
-public record aal(efs c, int d) implements aai {
-   public static final yw<wj, aal> a = yw.a(efs.d, aal::b, yu.h, aal::c, aal::new);
+public record aal(efx c, int d) implements aai {
+   public static final yw<wj, aal> a = yw.a(efx.d, aal::b, yu.h, aal::c, aal::new);
    public static final aai.b<aal> b = aai.a("debug/game_event_listeners");
 
    @Override
@@ -7,7 +7,7 @@ public record aal(efs c, int d) implements aai {
       return b;
    }
 
-   public efs b() {
+   public efx b() {
       return this.c;
    }
 

@@ -1,6 +1,5 @@
-public class hfm extends hdz {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+public class hfm extends hef {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 }

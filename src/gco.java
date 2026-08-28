@@ -1,81 +1,51 @@
 import java.util.List;
 
-public class gco extends fub {
-   private static final fui c = new fui(alg.b("recipe_book/tab"), alg.b("recipe_book/tab_selected"));
-   private final gcm.a d;
-   private static final float e = 15.0F;
-   private float f;
+public class gco extends gcr<cvh> {
+   private static final fun h = new fun(
+      alg.b("recipe_book/furnace_filter_enabled"),
+      alg.b("recipe_book/furnace_filter_disabled"),
+      alg.b("recipe_book/furnace_filter_enabled_highlighted"),
+      alg.b("recipe_book/furnace_filter_disabled_highlighted")
+   );
+   private final wy i;
 
-   public gco(gcm.a $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
+   public gco(cvh $$0, wy $$1, List<gcr.a> $$2) {
+      super($$0, $$2);
+      this.i = $$1;
    }
 
-   public void a(foz $$0, boolean $$1) {
-      gcq.a $$2 = $$1 ? gcq.a.b : gcq.a.a;
+   @Override
+   protected void a() {
+      this.e.a(h);
+   }
 
-      for (gcq $$4 : $$0.a(this.d.c())) {
-         for (dfi $$5 : $$4.a($$2)) {
-            if ($$0.b($$5.a())) {
-               this.f = 15.0F;
-               return;
-            }
+   @Override
+   protected boolean a(cxc $$0) {
+      return switch ($$0.d) {
+         case 0, 1, 2 -> true;
+         default -> false;
+      };
+   }
+
+   @Override
+   protected void a(gcp $$0, dfk $$1, baz $$2) {
+      $$0.b(this.f.l(), $$2, $$1.d());
+      if ($$1 instanceof dfj $$3) {
+         $$0.a(this.f.k.get(0), $$2, $$3.b());
+         cxc $$4 = this.f.k.get(1);
+         if ($$4.g().f()) {
+            $$0.a($$4, $$2, $$3.c());
          }
       }
    }
 
    @Override
-   public void b(fsh $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.f > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.F() + 8), (float)(this.G() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.F() + 8)), (float)(-(this.G() + 12)), 0.0F);
-         }
-
-         alg $$5 = this.a.a(true, this.b);
-         int $$6 = this.F();
-         if (this.b) {
-            $$6 -= 2;
-         }
-
-         $$0.a(gqx::H, $$5, $$6, this.G(), this.g, this.h);
-         this.a($$0);
-         if (this.f > 0.0F) {
-            $$0.c().b();
-            this.f -= $$3;
-         }
-      }
+   protected wy b() {
+      return this.i;
    }
 
-   private void a(fsh $$0) {
-      int $$1 = this.b ? -2 : 0;
-      if (this.d.b().isPresent()) {
-         $$0.b(this.d.a(), this.F() + 3 + $$1, this.G() + 5);
-         $$0.b(this.d.b().get(), this.F() + 14 + $$1, this.G() + 5);
-      } else {
-         $$0.b(this.d.a(), this.F() + 9 + $$1, this.G() + 5);
-      }
-   }
-
-   public ddt b() {
-      return this.d.c();
-   }
-
-   public boolean a(foz $$0) {
-      List<gcq> $$1 = $$0.a(this.d.c());
-      this.k = false;
-
-      for (gcq $$2 : $$1) {
-         if ($$2.b()) {
-            this.k = true;
-            break;
-         }
-      }
-
-      return this.k;
+   @Override
+   protected void a(gcv $$0, crs $$1) {
+      $$0.a($$1, $$0x -> $$0x instanceof dfj);
    }
 }

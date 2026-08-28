@@ -2,12 +2,12 @@ import java.util.EnumSet;
 import java.util.List;
 
 public class cem extends cef {
-   public final clo a;
+   public final cll a;
    private double b;
    private static final int c = 8;
    private int d;
 
-   public cem(clo $$0, double $$1) {
+   public cem(cll $$0, double $$1) {
       this.a = $$0;
       this.b = $$1;
       this.a(EnumSet.of(cef.a.a));
@@ -20,11 +20,11 @@ public class cem extends cef {
             bwr<?> $$1x = $$0x.an();
             return $$1x == bwr.ax || $$1x == bwr.by;
          });
-         clo $$1 = null;
+         cll $$1 = null;
          double $$2 = Double.MAX_VALUE;
 
          for (bwi $$3 : $$0) {
-            clo $$4 = (clo)$$3;
+            cll $$4 = (cll)$$3;
             if ($$4.hd() && !$$4.gJ()) {
                double $$5 = this.a.g($$4);
                if (!($$5 > $$2)) {
@@ -36,7 +36,7 @@ public class cem extends cef {
 
          if ($$1 == null) {
             for (bwi $$6 : $$0) {
-               clo $$7 = (clo)$$6;
+               cll $$7 = (cll)$$6;
                if ($$7.O_() && !$$7.gJ()) {
                   double $$8 = this.a.g($$7);
                   if (!($$8 > $$2)) {
@@ -97,17 +97,17 @@ public class cem extends cef {
    @Override
    public void a() {
       if (this.a.hd()) {
-         if (!(this.a.C() instanceof cni)) {
-            clo $$0 = this.a.he();
+         if (!(this.a.C() instanceof cnl)) {
+            cll $$0 = this.a.he();
             double $$1 = (double)this.a.f($$0);
             float $$2 = 2.0F;
-            fex $$3 = new fex($$0.dz() - this.a.dz(), $$0.dB() - this.a.dB(), $$0.dF() - this.a.dF()).d().c(Math.max($$1 - 2.0, 0.0));
+            ffc $$3 = new ffc($$0.dz() - this.a.dz(), $$0.dB() - this.a.dB(), $$0.dF() - this.a.dF()).d().c(Math.max($$1 - 2.0, 0.0));
             this.a.O().a(this.a.dz() + $$3.d, this.a.dB() + $$3.e, this.a.dF() + $$3.f, this.b);
          }
       }
    }
 
-   private boolean a(clo $$0, int $$1) {
+   private boolean a(cll $$0, int $$1) {
       if ($$1 > 8) {
          return false;
       } else if ($$0.hd()) {

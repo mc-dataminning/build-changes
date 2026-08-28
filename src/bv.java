@@ -17,8 +17,8 @@ public record bv(Optional<cm> b, Optional<cm> c, Optional<cm> d, Optional<cm> e,
             .apply($$0, bv::new)
    );
 
-   public static bv a(jg<czg> $$0, jg<dxb> $$1) {
-      return bv.a.a().a(cm.a.a().a($$0, czo.wa).a(ke.a(csz.a($$1).a(), kk.am, kk.h))).b();
+   public static bv a(jg<czj> $$0, jg<dxg> $$1) {
+      return bv.a.a().a(cm.a.a().a($$0, czr.wa).a(ke.a(ctc.a($$1).a(), kk.am, kk.h))).b();
    }
 
    public boolean a(@Nullable bwi $$0) {

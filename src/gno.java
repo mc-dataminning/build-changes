@@ -1,76 +1,57 @@
-public class gno extends gnu {
-   private static final int a = 3;
-   private final bwi b;
-   private final bwi D;
-   private int E;
-   private final gwr F;
-   private double G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
+public class gno extends goz {
+   private final gou a;
 
-   public gno(gwr $$0, gkl $$1, bwi $$2, bwi $$3) {
-      this($$0, $$1, $$2, $$3, $$2.dx());
-   }
-
-   private gno(gwr $$0, gkl $$1, bwi $$2, bwi $$3, fex $$4) {
-      super($$1, $$2.dz(), $$2.dB(), $$2.dF(), $$4.d, $$4.e, $$4.f);
-      this.b = this.a($$2);
-      this.D = $$3;
-      this.F = $$0;
-      this.c();
-      this.d();
-   }
-
-   private bwi a(bwi $$0) {
-      return (bwi)(!($$0 instanceof cno) ? $$0 : ((cno)$$0).v());
+   protected gno(gkq $$0, double $$1, double $$2, double $$3, gou $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public gny b() {
-      return gny.d;
+   public god b() {
+      return god.b;
    }
 
    @Override
-   public void a(fjy $$0, gqm $$1, fow $$2, float $$3) {
-      float $$4 = ((float)this.E + $$3) / 3.0F;
-      $$4 *= $$4;
-      double $$5 = azm.d((double)$$3, this.J, this.G);
-      double $$6 = azm.d((double)$$3, this.K, this.H);
-      double $$7 = azm.d((double)$$3, this.L, this.I);
-      double $$8 = azm.d((double)$$4, this.b.dz(), $$5);
-      double $$9 = azm.d((double)$$4, this.b.dB(), $$6);
-      double $$10 = azm.d((double)$$4, this.b.dF(), $$7);
-      fex $$11 = $$2.b();
-      this.F.a(this.b, $$8 - $$11.a(), $$9 - $$11.b(), $$10 - $$11.c(), $$3, new fjy(), $$1, this.F.a(this.b, $$3));
-   }
-
-   @Override
-   public void a(fkc $$0, fow $$1, float $$2) {
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
    public void a() {
-      this.E++;
-      if (this.E == 3) {
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   public static class a implements goc<mc> {
+      private final gou a;
+
+      public a(gou $$0) {
+         this.a = $$0;
       }
 
-      this.d();
-      this.c();
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gno($$1, $$2, $$3, $$4, this.a);
+      }
    }
 
-   private void c() {
-      this.G = this.D.dz();
-      this.H = (this.D.dB() + this.D.dD()) / 2.0;
-      this.I = this.D.dF();
-   }
+   public static class b implements goc<mc> {
+      private final gou a;
 
-   private void d() {
-      this.J = this.G;
-      this.K = this.H;
-      this.L = this.I;
+      public b(gou $$0) {
+         this.a = $$0;
+      }
+
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnz $$8 = new gno($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
+         return $$8;
+      }
    }
 }

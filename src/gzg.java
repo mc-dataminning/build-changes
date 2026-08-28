@@ -1,39 +1,30 @@
-public class gzg<T extends bwi & csb> extends gws<T, hfb> {
-   private final hga a;
-   private final float g;
-   private final boolean h;
+public class gzg<T extends coz> extends gye<T, hef, gir> {
+   private static final alg a = alg.b("textures/entity/spider/spider.png");
 
-   public gzg(gwt.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public gzg(gwy.a $$0) {
+      this($$0, gjs.dm);
    }
 
-   public gzg(gwt.a $$0) {
-      this($$0, 1.0F, false);
+   public gzg(gwy.a $$0, gjr $$1) {
+      super($$0, new gir($$0.a($$1)), 0.8F);
+      this.a(new hbt<>(this));
    }
 
    @Override
-   protected int a(T $$0, iv $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   protected float aS_() {
+      return 180.0F;
    }
 
-   public void a(hfb $$0, fjy $$1, gqm $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.g, this.g, this.g);
-      $$1.a(this.d.b());
-      $$0.a.a($$1, $$2, $$3, hja.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   public alg b(hef $$0) {
+      return a;
    }
 
-   public hfb a() {
-      return new hfb();
+   public hef b() {
+      return new hef();
    }
 
-   public void a(T $$0, hfb $$1, float $$2) {
+   public void a(T $$0, hef $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      this.a.a($$1.a, $$0.f(), czi.h, $$0);
    }
 }

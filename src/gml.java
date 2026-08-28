@@ -1,59 +1,48 @@
-public class gml extends gou {
-   private final gop a;
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
-   protected gml(
-      gkl $$0,
-      double $$1,
-      double $$2,
-      double $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      double $$7,
-      double $$8,
-      double $$9,
-      float $$10,
-      gop $$11,
-      float $$12,
-      int $$13,
-      float $$14,
-      boolean $$15
-   ) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.96F;
-      this.u = $$14;
-      this.C = true;
-      this.a = $$11;
-      this.j *= (double)$$4;
-      this.k *= (double)$$5;
-      this.l *= (double)$$6;
-      this.j += $$7;
-      this.k += $$8;
-      this.l += $$9;
-      float $$16 = $$0.A.i() * $$12;
-      this.v = $$16;
-      this.w = $$16;
-      this.x = $$16;
-      this.D *= 0.75F * $$10;
-      this.t = (int)((double)$$13 / ((double)$$0.A.i() * 0.8 + 0.2) * (double)$$10);
-      this.t = Math.max(this.t, 1);
-      this.b($$11);
-      this.n = $$15;
-   }
+@FunctionalInterface
+public interface gml {
+   Logger a = LogUtils.getLogger();
+   gml b = $$0 -> Optional.empty();
 
-   @Override
-   public gny b() {
-      return gny.b;
-   }
+   Optional<gmi> lookupRedirect(gmi var1);
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   static gml createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
+      }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new gmi($$4x[3], gmi.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
+            }
+         }
+
+         return Optional.empty();
+      };
    }
 }

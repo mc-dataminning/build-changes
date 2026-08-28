@@ -10,7 +10,7 @@ public class br extends dk<br.a> {
    }
 
    public void a(arr $$0, @Nullable bwi $$1) {
-      ezo $$2 = $$1 != null ? by.b($$0, $$1) : null;
+      ezt $$2 = $$1 != null ? by.b($$0, $$1) : null;
       this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
@@ -32,7 +32,7 @@ public class br extends dk<br.a> {
          return aq.B.a(new br.a(Optional.empty(), Optional.empty(), Optional.of(by.a($$0.b()))));
       }
 
-      public boolean a(arr $$0, @Nullable ezo $$1) {
+      public boolean a(arr $$0, @Nullable ezt $$1) {
          return this.c.isPresent() && !this.c.get().a((bxj)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 

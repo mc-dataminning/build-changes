@@ -1,41 +1,53 @@
-public class gtr extends gts<dzi> {
-   private static final alg c = alg.b("textures/entity/end_gateway_beam.png");
+public class gtr implements gtd<dze> {
+   private final gtr.a a;
 
-   public gtr(gsz.a $$0) {
-      super($$0);
+   public gtr(gte.a $$0) {
+      this($$0.f());
    }
 
-   public void a(dzi $$0, float $$1, fjy $$2, gqm $$3, int $$4, int $$5, fex $$6) {
-      if ($$0.a() || $$0.c()) {
-         float $$7 = $$0.a() ? $$0.a($$1) : $$0.b($$1);
-         double $$8 = $$0.a() ? (double)$$0.i().ao() : 50.0;
-         $$7 = azm.a($$7 * (float) Math.PI);
-         int $$9 = azm.a((double)$$7 * $$8);
-         int $$10 = $$0.a() ? cyi.c.d() : cyi.k.d();
-         long $$11 = $$0.i().ae();
-         gsu.a($$2, $$3, c, $$1, $$7, $$11, -$$9, $$9 * 2, $$10, 0.15F, 0.175F);
+   public gtr(gjp $$0) {
+      this.a = new gtr.a($$0.a(gjs.cV));
+   }
+
+   public void a(dze $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
+      jb $$7 = $$0.m().a(dua.c, jb.b);
+      cyl $$8 = $$0.s();
+      hlx $$9;
+      if ($$8 == null) {
+         $$9 = grl.s;
+      } else {
+         $$9 = grl.d($$8);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$11 = $$0.a($$1);
+      this.a($$2, $$3, $$4, $$5, $$7, $$11, $$9);
    }
 
-   @Override
-   protected float b() {
-      return 1.0F;
+   public void a(fkd $$0, gqr $$1, int $$2, int $$3, jb $$4, float $$5, hlx $$6) {
+      $$0.a();
+      $$0.a(0.5F, 0.5F, 0.5F);
+      float $$7 = 0.9995F;
+      $$0.b(0.9995F, 0.9995F, 0.9995F);
+      $$0.a($$4.b());
+      $$0.b(1.0F, -1.0F, -1.0F);
+      $$0.a(0.0F, -1.0F, 0.0F);
+      this.a.a($$5);
+      fkh $$8 = $$6.a($$1, this.a::a);
+      this.a.a($$0, $$8, $$2, $$3);
+      $$0.b();
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
+   static class a extends ghl {
+      private final gjt a;
 
-   @Override
-   protected gqx d() {
-      return gqx.u();
-   }
+      public a(gjt $$0) {
+         super($$0, grc::g);
+         this.a = $$0.b("lid");
+      }
 
-   @Override
-   public int aR_() {
-      return 256;
+      public void a(float $$0) {
+         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
+         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+      }
    }
 }

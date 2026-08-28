@@ -1,48 +1,86 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-class cvg extends cwz {
-   private final bxj a;
-   private final bws b;
-   @Nullable
-   private final alg g;
+public abstract class cvg extends cwu {
+   private final int o;
+   private final int p;
+   protected final cvx m;
+   protected final cwx n = new cwx();
 
-   public cvg(btz $$0, bxj $$1, bws $$2, int $$3, int $$4, int $$5, @Nullable alg $$6) {
-      super($$0, $$3, $$4, $$5);
-      this.a = $$1;
-      this.b = $$2;
-      this.g = $$6;
+   public cvg(cwo<?> $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1);
+      this.o = $$2;
+      this.p = $$3;
+      this.m = new cxj(this, $$2, $$3);
+   }
+
+   protected cxc a(crm $$0, int $$1, int $$2) {
+      return this.a(new cwy($$0, this.m, this.n, 0, $$1, $$2));
    }
 
    @Override
-   public void a(czk $$0, czk $$1) {
-      this.a.a(this.b, $$1, $$0);
-      super.a($$0, $$1);
+   protected void d(int $$0, int $$1) {
+      for (int $$2 = 0; $$2 < this.o; $$2++) {
+         for (int $$3 = 0; $$3 < this.p; $$3++) {
+            this.a(new cxc(this.m, $$3 + $$2 * this.o, $$0 + $$3 * 18, $$1 + $$2 * 18));
+         }
+      }
    }
 
    @Override
-   public int a() {
-      return 1;
+   public cwu.a a(boolean $$0, boolean $$1, dej<?> $$2, arq $$3, crl $$4) {
+      dej<ddt> $$5 = (dej<ddt>)$$2;
+      this.l();
+
+      cwu.a var8;
+      try {
+         List<cxc> $$6 = this.n();
+         var8 = aks.a(new aks.a<ddt>() {
+            @Override
+            public void a(crs $$0) {
+               cvg.this.a($$0);
+            }
+
+            @Override
+            public void a() {
+               cvg.this.n.a();
+               cvg.this.m.a();
+            }
+
+            @Override
+            public boolean a(dej<ddt> $$0) {
+               return $$0.b().a(cvg.this.m.ay_(), cvg.this.q().dU());
+            }
+         }, this.o, this.p, $$6, $$6, $$4, $$5, $$0, $$1);
+      } finally {
+         this.a($$3, (dej<ddt>)$$2);
+      }
+
+      return var8;
    }
 
    @Override
-   public boolean a(czk $$0) {
-      return this.a.a($$0, this.b);
+   protected void l() {
    }
 
-   @Override
-   public boolean b() {
-      return this.a.e(this.b);
+   protected void a(arq $$0, dej<ddt> $$1) {
    }
 
-   @Override
-   public boolean a(crj $$0) {
-      czk $$1 = this.g();
-      return !$$1.f() && !$$0.b() && dfz.a($$1, dfy.E) ? false : super.a($$0);
+   public abstract cxc m();
+
+   public abstract List<cxc> n();
+
+   public int o() {
+      return this.o;
    }
 
-   @Nullable
+   public int p() {
+      return this.p;
+   }
+
+   protected abstract crm q();
+
    @Override
-   public alg c() {
-      return this.g;
+   public void a(crs $$0) {
+      this.m.fillStackedContents($$0);
    }
 }

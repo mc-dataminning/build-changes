@@ -1,33 +1,73 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public record czd(jf<awm> e, float f, float g, wy h) {
-   public static final Codec<czd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awm.b.fieldOf("sound_event").forGetter(czd::a),
-               ayu.o.fieldOf("use_duration").forGetter(czd::b),
-               ayu.o.fieldOf("range").forGetter(czd::c),
-               xa.a.fieldOf("description").forGetter(czd::d)
-            )
-            .apply($$0, czd::new)
+public class czd extends czj {
+   protected static final Map<dmr, Pair<Predicate<ddi>, Consumer<ddi>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dmt.i,
+         Pair.of(czd::b, a(dmt.cN.m())),
+         dmt.lk,
+         Pair.of(czd::b, a(dmt.cN.m())),
+         dmt.j,
+         Pair.of(czd::b, a(dmt.cN.m())),
+         dmt.k,
+         Pair.of(czd::b, a(dmt.j.m())),
+         dmt.tr,
+         Pair.of((Predicate<ddi>)$$0 -> true, a(dmt.j.m(), czr.eg))
+      )
    );
-   public static final yw<wj, czd> b = yw.a(awm.d, czd::a, yu.l, czd::b, yu.l, czd::c, xa.b, czd::d, czd::new);
-   public static final Codec<jf<czd>> c = alc.a(mh.aU, a);
-   public static final yw<wj, jf<czd>> d = yu.a(mh.aU, b);
 
-   public jf<awm> a() {
-      return this.e;
+   public czd(dbb $$0, float $$1, float $$2, czj.a $$3) {
+      super($$3.c($$0, $$1, $$2));
    }
 
-   public float b() {
-      return this.f;
+   @Override
+   public bug a(ddi $$0) {
+      djm $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      Pair<Predicate<ddi>, Consumer<ddi>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bug.e;
+      } else {
+         Predicate<ddi> $$4 = (Predicate<ddi>)$$3.getFirst();
+         Consumer<ddi> $$5 = (Consumer<ddi>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            crm $$6 = $$0.o();
+            $$1.a($$6, $$2, awn.mP, awo.e, 1.0F, 1.0F);
+            if (!$$1.C) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bxj.d($$0.p()));
+               }
+            }
+
+            return bug.a;
+         } else {
+            return bug.e;
+         }
+      }
    }
 
-   public float c() {
-      return this.g;
+   public static Consumer<ddi> a(eat $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(eft.c, $$1.a(), eft.a.a($$1.o(), $$0));
+      };
    }
 
-   public wy d() {
-      return this.h;
+   public static Consumer<ddi> a(eat $$0, djl $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(eft.c, $$2.a(), eft.a.a($$2.o(), $$0));
+         dmr.a($$2.q(), $$2.a(), $$2.k(), new czn($$1));
+      };
+   }
+
+   public static boolean b(ddi $$0) {
+      return $$0.k() != jb.a && $$0.q().a_($$0.a().d()).l();
    }
 }

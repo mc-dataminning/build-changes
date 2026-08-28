@@ -1,71 +1,61 @@
-import javax.annotation.Nullable;
+import java.net.URI;
 
-public class fyk extends fyn implements azu {
-   @Nullable
-   private wy a;
-   @Nullable
-   private wy b;
-   private int c;
-   private boolean d;
-   private final boolean s;
+public class fyk extends fys {
+   private static final wy a = wy.c("symlink_warning.title.world").a(o.r);
+   private static final wy b = wy.a("symlink_warning.message.world", wy.a(ayh.p));
+   private static final wy c = wy.c("symlink_warning.title.pack").a(o.r);
+   private static final wy d = wy.a("symlink_warning.message.pack", wy.a(ayh.p));
+   private final wy s;
+   private final URI u;
+   private final Runnable v;
+   private final fwn w = new fwn().b(10);
 
-   public fyk(boolean $$0) {
-      super(fpf.a);
-      this.s = $$0;
+   public fyk(wy $$0, wy $$1, URI $$2, Runnable $$3) {
+      super($$0);
+      this.s = $$1;
+      this.u = $$2;
+      this.v = $$3;
+   }
+
+   public static fys a(Runnable $$0) {
+      return new fyk(a, b, ayh.p, $$0);
+   }
+
+   public static fys b(Runnable $$0) {
+      return new fyk(c, d, ayh.p, $$0);
    }
 
    @Override
-   public boolean aD_() {
-      return false;
+   protected void aO_() {
+      super.aO_();
+      this.w.c().b();
+      fwn.b $$0 = this.w.d(1);
+      $$0.a(new fuh(this.l, this.p));
+      $$0.a(new ftu(this.s, this.p).d(this.n - 50).b(true));
+      int $$1 = 120;
+      fwn $$2 = new fwn().a(5);
+      fwn.b $$3 = $$2.d(3);
+      $$3.a(fta.a(wx.n, $$0x -> ag.n().a(this.u)).b(120, 20).a());
+      $$3.a(fta.a(wx.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
+      $$3.a(fta.a(wx.k, $$0x -> this.aL_()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.w.a(this::c);
    }
 
    @Override
-   protected boolean aN_() {
-      return false;
+   protected void c() {
+      this.w.a();
+      fwm.a(this.w, this.J());
    }
 
    @Override
-   public void a(wy $$0) {
-      this.b($$0);
+   public wy i() {
+      return wx.a(super.i(), this.s);
    }
 
    @Override
-   public void b(wy $$0) {
-      this.a = $$0;
-      this.c(wy.c("menu.working"));
-   }
-
-   @Override
-   public void c(wy $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.d = true;
-   }
-
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      if (this.d) {
-         if (this.s) {
-            this.m.a(null);
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.p, wy.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
-         }
-      }
+   public void aL_() {
+      this.v.run();
    }
 }

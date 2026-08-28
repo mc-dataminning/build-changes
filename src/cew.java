@@ -4,7 +4,7 @@ public class cew extends cef {
    private static final chy b = chy.b().a(6.0);
    public static final int a = 400;
    private final cjp c;
-   private cqv d;
+   private cqy d;
    private int e;
 
    public cew(cjp $$0) {
@@ -19,7 +19,7 @@ public class cew extends cef {
       } else if (this.c.dX().a(8000) != 0) {
          return false;
       } else {
-         this.d = a(this.c).a(cqv.class, b, this.c, this.c.dz(), this.c.dB(), this.c.dF(), this.c.cQ().c(6.0, 2.0, 6.0));
+         this.d = a(this.c).a(cqy.class, b, this.c, this.c.dz(), this.c.dB(), this.c.dF(), this.c.cQ().c(6.0, 2.0, 6.0));
          return this.d != null;
       }
    }

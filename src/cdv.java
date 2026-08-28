@@ -65,7 +65,7 @@ public class cdv extends cej {
    public void a() {
       boolean $$0 = this.d;
       if (!$$0) {
-         ewv $$1 = this.b.dU().b_(this.b.du());
+         exa $$1 = this.b.dU().b_(this.b.du());
          this.d = $$1.a(axh.a);
       }
 
@@ -73,7 +73,7 @@ public class cdv extends cej {
          this.b.a(awn.hz, 1.0F, 1.0F);
       }
 
-      fex $$2 = this.b.dx();
+      ffc $$2 = this.b.dx();
       if ($$2.e * $$2.e < 0.03F && this.b.dM() != 0.0F) {
          this.b.x(azm.i(0.2F, this.b.dM(), 0.0F));
       } else if ($$2.g() > 1.0E-5F) {

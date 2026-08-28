@@ -1,5 +1,4 @@
-public class hdt extends hdz {
-   public float a;
-   public int b;
-   public bwe.a c = bwe.a.a;
+public class hdt extends hef {
+   public int a;
+   public boolean b;
 }

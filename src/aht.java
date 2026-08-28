@@ -1,5 +1,5 @@
-public record aht(int b, dfj c, boolean d) implements zf<agp> {
-   public static final yw<vu, aht> a = yw.a(yu.x, aht::b, dfj.a, aht::e, yu.b, aht::f, aht::new);
+public record aht(int b, dfm c, boolean d) implements zf<agp> {
+   public static final yw<vu, aht> a = yw.a(yu.x, aht::b, dfm.a, aht::e, yu.b, aht::f, aht::new);
 
    @Override
    public zh<aht> a() {
@@ -10,7 +10,7 @@ public record aht(int b, dfj c, boolean d) implements zf<agp> {
       $$0.a(this);
    }
 
-   public dfj e() {
+   public dfm e() {
       return this.c;
    }
 

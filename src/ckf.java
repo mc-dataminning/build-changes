@@ -6,35 +6,35 @@ import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
 public class ckf extends cix {
-   public static final ckf.d a = new ckf.d(ckf.b.a, cyi.a, cyi.a);
+   public static final ckf.d a = new ckf.d(ckf.b.a, cyl.a, cyl.a);
    private static final akj<Integer> c = akn.a(ckf.class, akl.b);
    public static final List<ckf.d> b = List.of(
-      new ckf.d(ckf.b.h, cyi.b, cyi.h),
-      new ckf.d(ckf.b.g, cyi.h, cyi.h),
-      new ckf.d(ckf.b.g, cyi.h, cyi.l),
-      new ckf.d(ckf.b.l, cyi.a, cyi.h),
-      new ckf.d(ckf.b.b, cyi.l, cyi.h),
-      new ckf.d(ckf.b.a, cyi.b, cyi.a),
-      new ckf.d(ckf.b.f, cyi.g, cyi.d),
-      new ckf.d(ckf.b.j, cyi.k, cyi.e),
-      new ckf.d(ckf.b.l, cyi.a, cyi.o),
-      new ckf.d(ckf.b.f, cyi.a, cyi.e),
-      new ckf.d(ckf.b.i, cyi.a, cyi.h),
-      new ckf.d(ckf.b.l, cyi.a, cyi.b),
-      new ckf.d(ckf.b.d, cyi.j, cyi.g),
-      new ckf.d(ckf.b.e, cyi.f, cyi.d),
-      new ckf.d(ckf.b.k, cyi.o, cyi.a),
-      new ckf.d(ckf.b.c, cyi.h, cyi.o),
-      new ckf.d(ckf.b.j, cyi.o, cyi.a),
-      new ckf.d(ckf.b.g, cyi.a, cyi.e),
-      new ckf.d(ckf.b.a, cyi.o, cyi.a),
-      new ckf.d(ckf.b.b, cyi.h, cyi.a),
-      new ckf.d(ckf.b.d, cyi.j, cyi.e),
-      new ckf.d(ckf.b.g, cyi.e, cyi.e)
+      new ckf.d(ckf.b.h, cyl.b, cyl.h),
+      new ckf.d(ckf.b.g, cyl.h, cyl.h),
+      new ckf.d(ckf.b.g, cyl.h, cyl.l),
+      new ckf.d(ckf.b.l, cyl.a, cyl.h),
+      new ckf.d(ckf.b.b, cyl.l, cyl.h),
+      new ckf.d(ckf.b.a, cyl.b, cyl.a),
+      new ckf.d(ckf.b.f, cyl.g, cyl.d),
+      new ckf.d(ckf.b.j, cyl.k, cyl.e),
+      new ckf.d(ckf.b.l, cyl.a, cyl.o),
+      new ckf.d(ckf.b.f, cyl.a, cyl.e),
+      new ckf.d(ckf.b.i, cyl.a, cyl.h),
+      new ckf.d(ckf.b.l, cyl.a, cyl.b),
+      new ckf.d(ckf.b.d, cyl.j, cyl.g),
+      new ckf.d(ckf.b.e, cyl.f, cyl.d),
+      new ckf.d(ckf.b.k, cyl.o, cyl.a),
+      new ckf.d(ckf.b.c, cyl.h, cyl.o),
+      new ckf.d(ckf.b.j, cyl.o, cyl.a),
+      new ckf.d(ckf.b.g, cyl.a, cyl.e),
+      new ckf.d(ckf.b.a, cyl.o, cyl.a),
+      new ckf.d(ckf.b.b, cyl.h, cyl.a),
+      new ckf.d(ckf.b.d, cyl.j, cyl.e),
+      new ckf.d(ckf.b.g, cyl.e, cyl.e)
    );
    private boolean bG = true;
 
-   public ckf(bwr<? extends ckf> $$0, djh $$1) {
+   public ckf(bwr<? extends ckf> $$0, djm $$1) {
       super($$0, $$1);
    }
 
@@ -42,16 +42,16 @@ public class ckf extends cix {
       return "entity.minecraft.tropical_fish.predefined." + $$0;
    }
 
-   static int a(ckf.b $$0, cyi $$1, cyi $$2) {
+   static int a(ckf.b $$0, cyl $$1, cyl $$2) {
       return $$0.b() & 65535 | ($$1.a() & 0xFF) << 16 | ($$2.a() & 0xFF) << 24;
    }
 
-   public static cyi c(int $$0) {
-      return cyi.a($$0 >> 16 & 0xFF);
+   public static cyl c(int $$0) {
+      return cyl.a($$0 >> 16 & 0xFF);
    }
 
-   public static cyi r(int $$0) {
-      return cyi.a($$0 >> 24 & 0xFF);
+   public static cyl r(int $$0) {
+      return cyl.a($$0 >> 24 & 0xFF);
    }
 
    public static ckf.b s(int $$0) {
@@ -90,11 +90,11 @@ public class ckf extends cix {
       return this.al.a(c);
    }
 
-   public cyi gz() {
+   public cyl gz() {
       return c(this.gC());
    }
 
-   public cyi gA() {
+   public cyl gA() {
       return r(this.gC());
    }
 
@@ -104,55 +104,55 @@ public class ckf extends cix {
 
    private void a(ckf.b $$0) {
       int $$1 = this.gC();
-      cyi $$2 = c($$1);
-      cyi $$3 = r($$1);
+      cyl $$2 = c($$1);
+      cyl $$3 = r($$1);
       this.t(a($$0, $$2, $$3));
    }
 
-   private void a(cyi $$0) {
+   private void a(cyl $$0) {
       int $$1 = this.gC();
       ckf.b $$2 = s($$1);
-      cyi $$3 = r($$1);
+      cyl $$3 = r($$1);
       this.t(a($$2, $$0, $$3));
    }
 
-   private void b(cyi $$0) {
+   private void b(cyl $$0) {
       int $$1 = this.gC();
       ckf.b $$2 = s($$1);
-      cyi $$3 = c($$1);
+      cyl $$3 = c($$1);
       this.t(a($$2, $$3, $$0));
    }
 
    @Nullable
    @Override
    public <T> T a(kj<? extends T> $$0) {
-      if ($$0 == kk.aB) {
+      if ($$0 == kk.aC) {
          return c((kj<T>)$$0, this.gB());
-      } else if ($$0 == kk.aC) {
+      } else if ($$0 == kk.aD) {
          return c((kj<T>)$$0, this.gz());
       } else {
-         return $$0 == kk.aD ? c((kj<T>)$$0, this.gA()) : super.a($$0);
+         return $$0 == kk.aE ? c((kj<T>)$$0, this.gA()) : super.a($$0);
       }
    }
 
    @Override
    protected void a(kf $$0) {
-      this.a($$0, kk.aB);
       this.a($$0, kk.aC);
       this.a($$0, kk.aD);
+      this.a($$0, kk.aE);
       super.a($$0);
    }
 
    @Override
    protected <T> boolean b(kj<T> $$0, T $$1) {
-      if ($$0 == kk.aB) {
-         this.a(c(kk.aB, $$1));
-         return true;
-      } else if ($$0 == kk.aC) {
+      if ($$0 == kk.aC) {
          this.a(c(kk.aC, $$1));
          return true;
       } else if ($$0 == kk.aD) {
-         this.b(c(kk.aD, $$1));
+         this.a(c(kk.aD, $$1));
+         return true;
+      } else if ($$0 == kk.aE) {
+         this.b(c(kk.aE, $$1));
          return true;
       } else {
          return super.b($$0, $$1);
@@ -160,16 +160,16 @@ public class ckf extends cix {
    }
 
    @Override
-   public void a_(czk $$0) {
+   public void a_(czn $$0) {
       super.a_($$0);
-      $$0.a(kk.aB, this);
       $$0.a(kk.aC, this);
       $$0.a(kk.aD, this);
+      $$0.a(kk.aE, this);
    }
 
    @Override
-   public czk S_() {
-      return new czk(czo.ry);
+   public czn S_() {
+      return new czn(czr.ry);
    }
 
    @Override
@@ -194,7 +194,7 @@ public class ckf extends cix {
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       $$3 = super.a($$0, $$1, $$2, $$3);
       azv $$4 = $$0.C_();
       ckf.d $$6;
@@ -206,10 +206,10 @@ public class ckf extends cix {
       } else {
          this.bG = false;
          ckf.b[] $$8 = ckf.b.values();
-         cyi[] $$9 = cyi.values();
+         cyl[] $$9 = cyl.values();
          ckf.b $$10 = ag.a($$8, $$4);
-         cyi $$11 = ag.a($$9, $$4);
-         cyi $$12 = ag.a($$9, $$4);
+         cyl $$11 = ag.a($$9, $$4);
+         cyl $$12 = ag.a($$9, $$4);
          $$6 = new ckf.d($$10, $$11, $$12);
       }
 
@@ -217,8 +217,8 @@ public class ckf extends cix {
       return $$3;
    }
 
-   public static boolean b(bwr<ckf> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
-      return $$1.b_($$3.e()).a(axh.a) && $$1.a_($$3.d()).a(dmo.J) && ($$1.u($$3).a(axb.ap) || ckh.c($$0, $$1, $$2, $$3, $$4));
+   public static boolean b(bwr<ckf> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
+      return $$1.b_($$3.e()).a(axh.a) && $$1.a_($$3.d()).a(dmt.J) && ($$1.u($$3).a(axb.ap) || ckh.c($$0, $$1, $$2, $$3, $$4));
    }
 
    public static enum a {
@@ -232,7 +232,7 @@ public class ckf extends cix {
       }
    }
 
-   public static enum b implements bak, dcp {
+   public static enum b implements bak, dcs {
       a("kob", ckf.a.a, 0),
       b("sunstreak", ckf.a.a, 1),
       c("snooper", ckf.a.a, 2),
@@ -283,9 +283,9 @@ public class ckf extends cix {
       }
 
       @Override
-      public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
-         cyi $$4 = $$3.a(kk.aC, ckf.a.c());
-         cyi $$5 = $$3.a(kk.aD, ckf.a.d());
+      public void a(czj.b $$0, Consumer<wy> $$1, dbc $$2, kf $$3) {
+         cyl $$4 = $$3.a(kk.aD, ckf.a.c());
+         cyl $$5 = $$3.a(kk.aE, ckf.a.d());
          o[] $$6 = new o[]{o.u, o.h};
          int $$7 = ckf.b.indexOf(new ckf.d(this, $$4, $$5));
          if ($$7 != -1) {
@@ -312,7 +312,7 @@ public class ckf extends cix {
       }
    }
 
-   public static record d(ckf.b b, cyi c, cyi d) {
+   public static record d(ckf.b b, cyl c, cyl d) {
       public static final Codec<ckf.d> a = Codec.INT.xmap(ckf.d::new, ckf.d::a);
 
       public d(int $$0) {

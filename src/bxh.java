@@ -60,12 +60,12 @@ public interface bxh {
                return;
             }
          } else if ($$4.isPresent()) {
-            a($$0, cni.b($$2, $$4.get()), true);
+            a($$0, cnl.b($$2, $$4.get()), true);
             return;
          }
 
          if ($$0.af > 100) {
-            $$0.a($$2, czo.vV);
+            $$0.a($$2, czr.vV);
             $$0.a(null);
          }
       }
@@ -89,7 +89,7 @@ public interface bxh {
          $$0.A();
          if ($$0.dU() instanceof arq $$4) {
             if ($$2) {
-               $$0.a($$4, czo.vV);
+               $$0.a($$4, czr.vV);
             }
 
             if ($$1) {
@@ -107,7 +107,7 @@ public interface bxh {
 
       if ($$2 != null && $$2.b != null) {
          if (!$$1.bI() || !$$2.b.bI()) {
-            if ($$0.O().c(djd.j)) {
+            if ($$0.O().c(dji.j)) {
                $$1.y();
             } else {
                $$1.z();
@@ -201,7 +201,7 @@ public interface bxh {
 
    public static final class a {
       public static final Codec<bxh.a> a = Codec.xor(jz.a.fieldOf("UUID").codec(), iv.a).xmap(bxh.a::new, $$0 -> {
-         if ($$0.b instanceof cni $$2) {
+         if ($$0.b instanceof cnl $$2) {
             return Either.right($$2.j());
          } else {
             return $$0.b != null ? Either.left($$0.b.cF()) : Objects.requireNonNull($$0.c, "Invalid LeashData had no attachment");

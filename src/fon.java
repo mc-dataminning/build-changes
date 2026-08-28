@@ -1,36 +1,38 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fon extends foq {
+   private static final wy b = wy.c("mco.connect.connecting");
+   private final hqb c;
+   private final flu d;
+   private final flv e;
 
-public class fon extends fol {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wy c = wy.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
-
-   public fon(long $$0, String $$1, String $$2) {
-      this.f = $$0;
+   public fon(fys $$0, flu $$1, flv $$2) {
       this.d = $$1;
       this.e = $$2;
+      this.c = new hqb($$0);
    }
 
    @Override
    public void run() {
-      fko $$0 = fko.a();
-
-      try {
-         $$0.a(this.f, this.d, this.e);
-      } catch (fmk var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
+      if (this.e.a != null) {
+         this.c.a(this.d, gmi.a(this.e.a));
+      } else {
+         this.b();
       }
    }
 
    @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      fpt.Q().af().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
    public wy a() {
-      return c;
+      return b;
    }
 }

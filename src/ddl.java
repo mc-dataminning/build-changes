@@ -1,9 +1,12 @@
-public class ddl extends ddr {
-   public ddl(ddo $$0) {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ddl extends ddu {
+   public ddl(ddr $$0) {
       super($$0);
    }
 
-   public boolean a(ddp $$0, djh $$1) {
+   public boolean a(dds $$0, djm $$1) {
       if ($$0.e() < 2) {
          return false;
       } else {
@@ -11,20 +14,20 @@ public class ddl extends ddr {
          boolean $$3 = false;
 
          for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czk $$5 = $$0.a($$4);
+            czn $$5 = $$0.a($$4);
             if (!$$5.f()) {
-               if ($$5.c(kk.V)) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(axk.bS)) {
+               if ($$5.a(axk.bP)) {
+                  if ($$2) {
                      return false;
                   }
 
                   $$2 = true;
+               } else {
+                  if (!($$5.h() instanceof cym)) {
+                     return false;
+                  }
+
+                  $$3 = true;
                }
             }
          }
@@ -33,64 +36,34 @@ public class ddl extends ddr {
       }
    }
 
-   public czk a(ddp $$0, jh.a $$1) {
-      int $$2 = 0;
-      czk $$3 = czk.k;
+   public czn a(dds $$0, jh.a $$1) {
+      List<cym> $$2 = new ArrayList<>();
+      czn $$3 = czn.k;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czk $$5 = $$0.a($$4);
+         czn $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if ($$5.c(kk.V)) {
+            if ($$5.a(axk.bP)) {
                if (!$$3.f()) {
-                  return czk.k;
+                  return czn.k;
                }
 
-               $$3 = $$5;
+               $$3 = $$5.v();
             } else {
-               if (!$$5.a(axk.bS)) {
-                  return czk.k;
+               if (!($$5.h() instanceof cym $$6)) {
+                  return czn.k;
                }
 
-               $$2++;
+               $$2.add($$6);
             }
          }
       }
 
-      dcu $$6 = $$3.a(kk.V);
-      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
-         dcu $$7 = $$6.b();
-         if ($$7 == null) {
-            return czk.k;
-         } else {
-            czk $$8 = $$3.c($$2);
-            $$8.b(kk.V, $$7);
-            return $$8;
-         }
-      } else {
-         return czk.k;
-      }
+      return !$$3.f() && !$$2.isEmpty() ? dca.a($$3, $$2) : czn.k;
    }
 
    @Override
-   public jo<czk> a(ddp $$0) {
-      jo<czk> $$1 = jo.a($$0.a(), czk.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         czk $$3 = $$0.a($$2);
-         czk $$4 = $$3.h().i();
-         if (!$$4.f()) {
-            $$1.set($$2, $$4);
-         } else if ($$3.c(kk.V)) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public del<ddl> a() {
-      return del.d;
+   public deo<ddl> a() {
+      return deo.c;
    }
 }

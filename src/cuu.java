@@ -1,12 +1,9 @@
 public class cuu {
-   private final String a;
+   final cux a;
+   final long b;
 
-   public cuu(String $$0) {
+   cuu(cux $$0, int $$1) {
       this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
+      this.b = 1L << $$1;
    }
 }

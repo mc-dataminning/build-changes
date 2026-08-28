@@ -11,42 +11,43 @@ public class ow {
       .a(mh.bc, qp::a)
       .a(mh.bf, qo::a)
       .a(mh.aG, ra::a)
-      .a(mh.aW, dkz::a)
+      .a(mh.aW, dle::a)
       .a(mh.aY, ql::a)
-      .a(mh.aO, egu::a)
-      .a(mh.aX, egs::a)
-      .a(mh.bn, eqy::a)
-      .a(mh.aS, epk::a)
+      .a(mh.aO, egz::a)
+      .a(mh.aX, egx::a)
+      .a(mh.bo, erd::a)
+      .a(mh.aS, epp::a)
       .a(mh.aI, wu::a)
-      .a(mh.bl, dia::a)
-      .a(mh.bk, dhy::a)
-      .a(mh.bi, dzr::a)
-      .a(mh.bm, ckk::a)
-      .a(mh.aZ, cnl::a)
+      .a(mh.bl, did::a)
+      .a(mh.bk, dib::a)
+      .a(mh.bi, dzw::a)
+      .a(mh.bm, cmf::a)
+      .a(mh.bn, cmd::a)
+      .a(mh.aZ, cno::a)
       .a(mh.aN, bva::a)
-      .a(mh.aF, dxd::a)
-      .a(mh.aR, dgc::a)
-      .a(mh.aQ, dhl::a)
-      .a(mh.aV, czs::a)
-      .a(mh.aU, czf::a)
+      .a(mh.aF, dxi::a)
+      .a(mh.aR, dgf::a)
+      .a(mh.aQ, dho::a)
+      .a(mh.aV, czv::a)
+      .a(mh.aU, czi::a)
       .a(mh.ba, cjw::a)
       .a(mh.aM, cjl::a)
       .a(mh.aJ, cjh::a)
       .a(mh.bg, sm::a)
       .a(mh.bh, ss::a)
-      .a(mh.aT, clc::a)
+      .a(mh.aT, ckz::a)
       .a(mh.aH, cje::a);
 
    private static void a(jh.a $$0) {
       a($$0.e(mh.bb), $$0.e(mh.aG));
    }
 
-   public static void a(jg<eqm> $$0, jh<dkk> $$1) {
+   public static void a(jg<eqr> $$0, jh<dkp> $$1) {
       $$1.c().forEach($$1x -> {
          alg $$2 = $$1x.h().a();
-         List<jj<eqm>> $$3 = ((dkk)$$1x.a()).d().c();
+         List<jj<eqr>> $$3 = ((dkp)$$1x.a()).d().c();
          $$3.stream().flatMap(jj::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               jf.c<eqm> $$3xx = $$0.b($$2xx);
+               jf.c<eqr> $$3xx = $$0.b($$2xx);
                if (!a($$3xx.a())) {
                   ag.b("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
                }
@@ -58,8 +59,8 @@ public class ow {
       });
    }
 
-   private static boolean a(eqm $$0) {
-      return $$0.c().contains(eqa.a());
+   private static boolean a(eqr $$0) {
+      return $$0.c().contains(eqf.a());
    }
 
    public static jh.a a() {

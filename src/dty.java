@@ -1,82 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.Map;
+import java.util.function.Function;
 
-public class dty extends dli {
-   public static final MapCodec<dty> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dty.a.b.fieldOf("kind").forGetter(dli::b), t()).apply($$0, dty::new));
-   public static final int d = ebu.a();
-   private static final int b = d + 1;
-   public static final ebo e = ebe.bd;
-   private static final ffr f = dmm.b(8.0, 0.0, 8.0);
-   private static final ffr g = dmm.b(10.0, 0.0, 8.0);
+public interface dty {
+   int d = 1;
+   int e = 4;
+   ebt f = ebj.V;
 
-   @Override
-   public MapCodec<? extends dty> a() {
-      return c;
+   default Function<eat, ffw> a(ebr<jb> $$0, ebt $$1) {
+      Map<jb, ffw> $$2 = fft.c(dmr.a(0.0, 0.0, 0.0, 8.0, this.b(), 8.0));
+      return $$3 -> {
+         ffw $$4 = fft.a();
+         jb $$5 = $$3.c($$0);
+         int $$6 = $$3.c($$1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$4 = fft.a($$4, $$2.get($$5));
+            $$5 = $$5.i();
+         }
+
+         return $$4.b();
+      };
    }
 
-   protected dty(dty.a $$0, ean.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(e, Integer.valueOf(0)));
+   default ebt c() {
+      return f;
    }
 
-   @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return this.b() == dty.b.h ? g : f;
+   default double b() {
+      return 1.0;
    }
 
-   @Override
-   protected ffr d_(eao $$0) {
-      return ffo.a();
+   default boolean a(eat $$0, ddg $$1, ebt $$2) {
+      return !$$1.h() && $$1.n().a($$0.b().h()) && $$0.c($$2) < 4;
    }
 
-   @Override
-   public eao a(ddd $$0) {
-      return super.a($$0).b(e, Integer.valueOf(ebu.a($$0.i())));
-   }
-
-   @Override
-   protected eao a(eao $$0, dtg $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected eao a(eao $$0, drp $$1) {
-      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      super.a($$0);
-      $$0.a(e);
-   }
-
-   public interface a extends bak {
-      Map<String, dty.a> a = new Object2ObjectArrayMap();
-      Codec<dty.a> b = Codec.stringResolver(bak::c, a::get);
-   }
-
-   public static enum b implements dty.a {
-      c("skeleton"),
-      d("wither_skeleton"),
-      e("player"),
-      f("zombie"),
-      g("creeper"),
-      h("piglin"),
-      i("dragon");
-
-      private final String j;
-
-      private b(final String $$0) {
-         this.j = $$0;
-         a.put($$0, this);
-      }
-
-      @Override
-      public String c() {
-         return this.j;
-      }
+   default eat a(ddg $$0, dmr $$1, ebt $$2, ebr<jb> $$3) {
+      eat $$4 = $$0.q().a_($$0.a());
+      return $$4.a($$1) ? $$4.b($$2, Integer.valueOf(Math.min(4, $$4.c($$2) + 1))) : $$1.m().b($$3, $$0.g().g());
    }
 }

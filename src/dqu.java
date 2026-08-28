@@ -1,92 +1,51 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dqu extends dly {
-   public static final MapCodec<dqu> a = b(dqu::new);
-   public static final ebf b = ebe.q;
+public class dqu extends dql {
+   public static final MapCodec<dqu> e = b(dqu::new);
 
    @Override
-   public MapCodec<dqu> a() {
-      return a;
+   public MapCodec<? extends dqu> a() {
+      return e;
    }
 
-   protected dqu(ean.d $$0) {
+   public dqu(eas.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)));
+   }
+
+   public static eat b() {
+      return dmt.J.m();
    }
 
    @Override
-   public void a(djh $$0, iv $$1, eao $$2, @Nullable bxj $$3, czk $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dbs $$5 = $$4.a(kk.aa, dbs.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
+   public void a(djm $$0, crm $$1, iv $$2, eat $$3, @Nullable dxr $$4, czn $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!dgc.a($$5, axe.s)) {
+         if ($$0.B_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         eat $$6 = $$0.a_($$2.e());
+         if ($$6.d() || $$6.n()) {
+            $$0.b($$2, b());
+         }
       }
    }
 
    @Override
-   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dyr $$5) {
-         $$5.s();
-         return bug.a;
+   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
+      if ($$1.a(djv.b, $$2) > 11 - $$0.g()) {
+         this.d($$0, $$1, $$2);
+      }
+   }
+
+   protected void d(eat $$0, djm $$1, iv $$2) {
+      if ($$1.B_().i()) {
+         $$1.a($$2, false);
       } else {
-         return bug.e;
+         $$1.b($$2, b());
+         $$1.b($$2, b().b(), null);
       }
-   }
-
-   @Override
-   protected bug a(czk $$0, eao $$1, djh $$2, iv $$3, crj $$4, buf $$5, fet $$6) {
-      if ($$1.c(b)) {
-         return bug.f;
-      } else {
-         czk $$7 = $$4.b($$5);
-         bug $$8 = czp.a($$2, $$3, $$7, $$4);
-         return (bug)(!$$8.a() ? bug.f : $$8);
-      }
-   }
-
-   @Override
-   protected void a(eao $$0, arq $$1, iv $$2, boolean $$3) {
-      buc.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public dxm a(iv $$0, eao $$1) {
-      return new dyr($$0, $$1);
-   }
-
-   @Override
-   public boolean f_(eao $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(eao $$0, din $$1, iv $$2, jb $$3) {
-      if ($$1.c_($$2) instanceof dyr $$4 && $$4.j().a()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean c_(eao $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(eao $$0, djh $$1, iv $$2) {
-      return $$1.c_($$2) instanceof dyr $$3 ? $$3.u() : 0;
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
-      return $$1.c(b) ? a($$2, dxo.e, dyr::a) : null;
    }
 }

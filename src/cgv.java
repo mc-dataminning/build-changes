@@ -1,16 +1,16 @@
 public class cgv extends cgt {
    private boolean p;
 
-   public cgv(bxl $$0, djh $$1) {
+   public cgv(bxl $$0, djm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected exl a(int $$0) {
+   protected exq a(int $$0) {
       this.p = this.a.an() == bwr.H;
-      this.o = new exp(this.p);
+      this.o = new exu(this.p);
       this.o.a(false);
-      return new exl(this.o, $$0);
+      return new exq(this.o, $$0);
    }
 
    @Override
@@ -19,17 +19,17 @@ public class cgv extends cgt {
    }
 
    @Override
-   protected fex b() {
-      return new fex(this.a.dz(), this.a.e(0.5), this.a.dF());
+   protected ffc b() {
+      return new ffc(this.a.dz(), this.a.e(0.5), this.a.dF());
    }
 
    @Override
-   protected double a(fex $$0) {
+   protected double a(ffc $$0) {
       return $$0.e;
    }
 
    @Override
-   protected boolean a(fex $$0, fex $$1) {
+   protected boolean a(ffc $$0, ffc $$1) {
       return a(this.a, $$0, $$1, false);
    }
 

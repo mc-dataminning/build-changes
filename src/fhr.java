@@ -1,24 +1,21 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+public enum fhr {
+   a(35048, false, true),
+   b(35044, false, true),
+   c(35040, false, true),
+   d(35045, true, false),
+   e(35049, true, false),
+   f(35041, true, false),
+   g(35050, false, false),
+   h(35046, false, false),
+   i(35042, false, false);
 
-public interface fhr extends AutoCloseable {
-   float a = 7.0F;
+   final int j;
+   final boolean k;
+   final boolean l;
 
-   @Override
-   default void close() {
-   }
-
-   @Nullable
-   default fhq a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
-
-   public static record a(fhr a, fvm.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
-      }
+   private fhr(final int $$0, final boolean $$1, final boolean $$2) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
    }
 }

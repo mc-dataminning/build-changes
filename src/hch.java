@@ -1,5 +1,6 @@
-public class hch extends hdz {
+public class hch extends hcj {
    public boolean a;
-   public final bvz b = new bvz();
-   public final bvz c = new bvz();
+   public boolean b;
+   public float c;
+   public float d;
 }

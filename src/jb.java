@@ -40,7 +40,7 @@ public enum jb implements bak {
    private final jb.a q;
    private final jb.b r;
    private final ka s;
-   private final fex t;
+   private final ffc t;
    private final Vector3fc u;
    private static final jb[] v = values();
    private static final jb[] w = Arrays.stream(v).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(jb[]::new);
@@ -54,7 +54,7 @@ public enum jb implements bak {
       this.q = $$5;
       this.r = $$4;
       this.s = $$6;
-      this.t = fex.a($$6);
+      this.t = ffc.a($$6);
       this.u = new Vector3f((float)$$6.u(), (float)$$6.v(), (float)$$6.w());
    }
 
@@ -303,7 +303,7 @@ public enum jb implements bak {
       return $$3;
    }
 
-   public static jb a(fex $$0) {
+   public static jb a(ffc $$0) {
       return a($$0.d, $$0.e, $$0.f);
    }
 
@@ -358,7 +358,7 @@ public enum jb implements bak {
       return this.s;
    }
 
-   public fex r() {
+   public ffc r() {
       return this.t;
    }
 

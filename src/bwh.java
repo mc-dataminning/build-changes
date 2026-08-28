@@ -22,9 +22,9 @@ public class bwh {
       float $$5;
       if (this.i.fI()) {
          float $$0 = 1.0F;
-         fex $$1 = this.i.dx();
+         ffc $$1 = this.i.dx();
          if ($$1.e < 0.0) {
-            fex $$2 = $$1.d();
+            ffc $$2 = $$1.d();
             $$0 = 1.0F - (float)Math.pow(-$$2.e, 1.5);
          }
 

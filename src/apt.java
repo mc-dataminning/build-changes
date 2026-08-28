@@ -51,14 +51,14 @@ public class apt {
    }
 
    public static CompletableFuture<Suggestions> a(ej $$0, SuggestionsBuilder $$1) {
-      fgb $$2 = $$0.f();
+      fgg $$2 = $$0.f();
       List<String> $$3 = Lists.newArrayList();
       if ($$2 != null) {
-         fgc $$4 = $$0.l().aJ();
+         fgh $$4 = $$0.l().aJ();
 
-         for (ffu $$5 : $$4.b()) {
-            if ($$5.d() == fgf.d) {
-               ffy $$6 = $$4.d($$2, $$5);
+         for (ffz $$5 : $$4.b()) {
+            if ($$5.d() == fgk.d) {
+               fgd $$6 = $$4.d($$2, $$5);
                if ($$6 != null && !$$6.b()) {
                   $$3.add($$5.c());
                }
@@ -69,34 +69,34 @@ public class apt {
       return eo.b($$3, $$1);
    }
 
-   private static int a(ej $$0, arr $$1, ffu $$2, int $$3) throws CommandSyntaxException {
-      fga $$4 = a($$0.l().aJ(), $$1, $$2);
+   private static int a(ej $$0, arr $$1, ffz $$2, int $$3) throws CommandSyntaxException {
+      fgf $$4 = a($$0.l().aJ(), $$1, $$2);
       int $$5 = $$4.b($$3);
       $$0.a(() -> wy.a("commands.trigger.add.success", $$2.h(), $$3), true);
       return $$5;
    }
 
-   private static int b(ej $$0, arr $$1, ffu $$2, int $$3) throws CommandSyntaxException {
-      fga $$4 = a($$0.l().aJ(), $$1, $$2);
+   private static int b(ej $$0, arr $$1, ffz $$2, int $$3) throws CommandSyntaxException {
+      fgf $$4 = a($$0.l().aJ(), $$1, $$2);
       $$4.a($$3);
       $$0.a(() -> wy.a("commands.trigger.set.success", $$2.h(), $$3), true);
       return $$3;
    }
 
-   private static int a(ej $$0, arr $$1, ffu $$2) throws CommandSyntaxException {
-      fga $$3 = a($$0.l().aJ(), $$1, $$2);
+   private static int a(ej $$0, arr $$1, ffz $$2) throws CommandSyntaxException {
+      fgf $$3 = a($$0.l().aJ(), $$1, $$2);
       int $$4 = $$3.b(1);
       $$0.a(() -> wy.a("commands.trigger.simple.success", $$2.h()), true);
       return $$4;
    }
 
-   private static fga a(fgc $$0, fgb $$1, ffu $$2) throws CommandSyntaxException {
-      if ($$2.d() != fgf.d) {
+   private static fgf a(fgh $$0, fgg $$1, ffz $$2) throws CommandSyntaxException {
+      if ($$2.d() != fgk.d) {
          throw b.create();
       } else {
-         ffy $$3 = $$0.d($$1, $$2);
+         fgd $$3 = $$0.d($$1, $$2);
          if ($$3 != null && !$$3.b()) {
-            fga $$4 = $$0.c($$1, $$2);
+            fgf $$4 = $$0.c($$1, $$2);
             $$4.f();
             return $$4;
          } else {

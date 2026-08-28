@@ -1,42 +1,49 @@
-public class gnr extends gnu {
-   private final ghg a;
-   private final gqx b = gqx.j(gwm.a);
+public class gnr extends goz {
+   private final gou a;
 
-   gnr(gkl $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new ggt(fpo.Q().aS().a(gjn.aO));
-      this.u = 0.0F;
-      this.t = 30;
+   protected gnr(gkq $$0, double $$1, double $$2, double $$3, double $$4, gou $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
-   public gny b() {
-      return gny.d;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
-   public void a(fjy $$0, gqm $$1, fow $$2, float $$3) {
-      float $$4 = ((float)this.s + $$3) / (float)this.t;
-      float $$5 = 0.05F + 0.5F * azm.a($$4 * (float) Math.PI);
-      int $$6 = axw.a($$5, 1.0F, 1.0F, 1.0F);
-      $$0.a();
-      $$0.a($$2.f());
-      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
-      float $$7 = 0.42553192F;
-      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$0.a(0.0F, -0.56F, 3.5F);
-      fkc $$8 = $$1.getBuffer(this.b);
-      this.a.a($$0, $$8, 15728880, hja.d, $$6);
-      $$0.b();
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
    }
 
    @Override
-   public void a(fkc $$0, fow $$1, float $$2) {
+   public god b() {
+      return god.b;
    }
 
-   public static class a implements gnx<mc> {
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gnr($$1, $$2, $$3, $$4);
+   public static class a implements goc<mc> {
+      private final gou a;
+
+      public a(gou $$0) {
+         this.a = $$0;
+      }
+
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnr($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

@@ -1,28 +1,28 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class hnm<T> extends hnn<T> {
-   private final hnr<T> c;
+public class hnm {
+   private final List<hnl> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-   public hnm(Function<T, Stream<String>> $$0, Function<T, Stream<alg>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = hnr.plainText($$2, $$0);
+   public hnm(List<hnl> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
+   public List<hnl> a() {
+      return this.a;
    }
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new hnp<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new hno<T>($$2.iterator(), $$5, this.a));
+   public boolean b() {
+      return this.b;
+   }
+
+   @Nullable
+   public String c() {
+      return this.c;
    }
 }

@@ -1,83 +1,28 @@
-public abstract class fwe implements fwk {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public fwe(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
+public enum fwe implements bak {
+   a("bitmap", fwb.a.a),
+   b("ttf", fwg.a),
+   c("space", fhy.a.a),
+   d("unihex", fwh.b.a),
+   e("reference", fwf.a);
+
+   public static final Codec<fwe> f = bak.a(fwe::values);
+   private final String g;
+   private final MapCodec<? extends fwd> h;
+
+   private fwe(final String $$0, final MapCodec<? extends fwd> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public void j(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.F() + ($$0 - this.F());
-         $$1.j($$2);
-      });
-      this.c = $$0;
+   public String c() {
+      return this.g;
    }
 
-   @Override
-   public void k(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.G() + ($$0 - this.G());
-         $$1.k($$2);
-      });
-      this.d = $$0;
-   }
-
-   @Override
-   public int F() {
-      return this.c;
-   }
-
-   @Override
-   public int G() {
-      return this.d;
-   }
-
-   @Override
-   public int A() {
-      return this.a;
-   }
-
-   @Override
-   public int y() {
-      return this.b;
-   }
-
-   protected abstract static class a {
-      public final fwl a;
-      public final fwm.a b;
-
-      protected a(fwl $$0, fwm $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
-      }
-
-      public int a() {
-         return this.a.y() + this.b.b + this.b.d;
-      }
-
-      public int b() {
-         return this.a.A() + this.b.a + this.b.c;
-      }
-
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.A() - this.b.c);
-         int $$4 = (int)azm.h(this.b.e, $$2, $$3);
-         this.a.j($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.y() - this.b.d);
-         int $$4 = Math.round(azm.h(this.b.f, $$2, $$3));
-         this.a.k($$4 + $$0);
-      }
+   public MapCodec<? extends fwd> a() {
+      return this.h;
    }
 }

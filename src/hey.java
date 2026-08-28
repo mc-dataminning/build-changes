@@ -1,5 +1,4 @@
-public class hey extends hdz {
+public class hey extends hdf {
    public float a;
    public float b;
-   public float c;
 }

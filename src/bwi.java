@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.jetbrains.annotations.Contract;
 
-public abstract class bwi implements akm, buj, eet, fgb, kf {
+public abstract class bwi implements akm, buj, eey, fgg, kf {
    public static final String v = "id";
    public static final String w = "Passengers";
    private static final AtomicInteger b = new AtomicInteger();
@@ -46,7 +46,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    public static final int E = 140;
    public static final int F = 40;
    public static final int G = 3;
-   private static final fes d = new fes(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+   private static final fex d = new fex(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
    private static final double k = 0.014;
    private static final double l = 0.007;
    private static final double m = 0.0023333333333333335;
@@ -59,26 +59,26 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    protected int J;
    @Nullable
    private bwi r;
-   private djh s;
+   private djm s;
    public double K;
    public double L;
    public double M;
-   private fex t;
+   private ffc t;
    private iv u;
-   private dio ay;
-   private fex az = fex.c;
+   private dir ay;
+   private ffc az = ffc.c;
    private float aA;
    private float aB;
    public float N;
    public float O;
-   private fes aC = d;
+   private fex aC = d;
    private boolean aD;
    public boolean P;
    public boolean Q;
    public boolean R;
    public boolean S;
    public boolean T;
-   protected fex U = fex.c;
+   protected ffc U = ffc.c;
    @Nullable
    private bwi.d aE;
    public static final float V = 0.6F;
@@ -95,9 +95,9 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    public int af;
    private int aG = -this.dm();
    protected boolean ag;
-   protected Object2DoubleMap<axr<ewu>> ah = new Object2DoubleArrayMap(2);
+   protected Object2DoubleMap<axr<ewz>> ah = new Object2DoubleArrayMap(2);
    protected boolean ai;
-   private final Set<axr<ewu>> aH = new HashSet<>();
+   private final Set<axr<ewz>> aH = new HashSet<>();
    public int aj;
    protected boolean ak = true;
    protected final akn al;
@@ -116,7 +116,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    private static final akj<Boolean> aQ = akn.a(bwi.class, akl.k);
    protected static final akj<bxv> aq = akn.a(bwi.class, akl.w);
    private static final akj<Integer> aR = akn.a(bwi.class, akl.b);
-   private eeu aS = eeu.a;
+   private eez aS = eez.a;
    private final ait aT = new ait();
    public boolean ar;
    @Nullable
@@ -139,18 +139,18 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    private int be;
    private boolean bf;
    @Nullable
-   private eao bg = null;
+   private eat bg = null;
    private final List<bwi.b> bh = new ArrayList<>();
    private final LongSet bi = new LongOpenHashSet();
    private final bxb.a bj = new bxb.a();
 
-   public bwi(bwr<?> $$0, djh $$1) {
+   public bwi(bwr<?> $$0, djm $$1) {
       this.o = $$0;
       this.s = $$1;
       this.ba = $$0.n();
-      this.t = fex.c;
+      this.t = ffc.c;
       this.u = iv.c;
-      this.ay = dio.e;
+      this.ay = dir.e;
       akn.a $$2 = new akn.a(this);
       $$2.a(am, (byte)0);
       $$2.a(aM, this.cq());
@@ -166,13 +166,13 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.bb = this.ba.c();
    }
 
-   public boolean a(iv $$0, eao $$1) {
-      ffr $$2 = $$1.b(this.dU(), $$0, ffc.a(this)).a($$0);
-      return ffo.c($$2, ffo.a(this.cQ()), ffb.i);
+   public boolean a(iv $$0, eat $$1) {
+      ffw $$2 = $$1.b(this.dU(), $$0, ffh.a(this)).a($$0);
+      return fft.c($$2, fft.a(this.cQ()), ffg.i);
    }
 
    public int f_() {
-      fge $$0 = this.cp();
+      fgj $$0 = this.cp();
       return $$0 != null && $$0.o().f() != null ? $$0.o().f() : 16777215;
    }
 
@@ -191,7 +191,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    public void e(double $$0, double $$1, double $$2) {
-      this.aT.e(new fex($$0, $$1, $$2));
+      this.aT.e(new ffc($$0, $$1, $$2));
    }
 
    public ait am() {
@@ -225,7 +225,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
    public void c(arq $$0) {
       this.a(bwi.d.a);
-      this.a(efo.p);
+      this.a(eft.p);
    }
 
    public final void aq() {
@@ -286,7 +286,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.x($$1 % 360.0F);
    }
 
-   public final void b(fex $$0) {
+   public final void b(ffc $$0) {
       this.a_($$0.a(), $$0.b(), $$0.c());
    }
 
@@ -295,11 +295,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.a(this.au());
    }
 
-   protected final fes au() {
+   protected final fex au() {
       return this.c(this.t);
    }
 
-   protected fes c(fex $$0) {
+   protected fex c(ffc $$0) {
       return this.ba.a($$0);
    }
 
@@ -465,7 +465,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.b(this.cQ().d($$0, $$1, $$2));
    }
 
-   private boolean b(fes $$0) {
+   private boolean b(fex $$0) {
       return this.dU().a(this, $$0) && !this.dU().d($$0);
    }
 
@@ -474,11 +474,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.b($$0, null);
    }
 
-   public void a(boolean $$0, fex $$1) {
+   public void a(boolean $$0, ffc $$1) {
       this.a($$0, this.P, $$1);
    }
 
-   public void a(boolean $$0, boolean $$1, fex $$2) {
+   public void a(boolean $$0, boolean $$1, ffc $$2) {
       this.aD = $$0;
       this.P = $$1;
       this.b($$0, $$2);
@@ -488,15 +488,15 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.ax.isPresent() && this.ax.get().equals($$0);
    }
 
-   protected void b(boolean $$0, @Nullable fex $$1) {
+   protected void b(boolean $$0, @Nullable ffc $$1) {
       if ($$0) {
-         fes $$2 = this.cQ();
-         fes $$3 = new fes($$2.a, $$2.b - 1.0E-6, $$2.c, $$2.d, $$2.b, $$2.f);
+         fex $$2 = this.cQ();
+         fex $$3 = new fex($$2.a, $$2.b - 1.0E-6, $$2.c, $$2.d, $$2.b, $$2.f);
          Optional<iv> $$4 = this.s.h(this, $$3);
          if ($$4.isPresent() || this.bc) {
             this.ax = $$4;
          } else if ($$1 != null) {
-            fes $$5 = $$3.d(-$$1.d, 0.0, -$$1.f);
+            fex $$5 = $$3.d(-$$1.d, 0.0, -$$1.f);
             $$4 = this.s.h(this, $$5);
             this.ax = $$4;
          }
@@ -514,13 +514,13 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.aD;
    }
 
-   public void a(bxn $$0, fex $$1) {
+   public void a(bxn $$0, ffc $$1) {
       if (this.ad) {
          this.a_(this.dz() + $$1.d, this.dB() + $$1.e, this.dF() + $$1.f);
       } else {
          if ($$0 == bxn.c) {
             $$1 = this.e($$1);
-            if ($$1.equals(fex.c)) {
+            if ($$1.equals(ffc.c)) {
                return;
             }
          }
@@ -529,17 +529,17 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
          $$2.a("move");
          if (this.U.h() > 1.0E-7) {
             $$1 = $$1.h(this.U);
-            this.U = fex.c;
-            this.i(fex.c);
+            this.U = ffc.c;
+            this.i(ffc.c);
          }
 
          $$1 = this.a($$1, $$0);
-         fex $$3 = this.a($$1);
+         ffc $$3 = this.a($$1);
          double $$4 = $$3.h();
          if ($$4 > 1.0E-7 || $$1.h() - $$4 < 1.0E-7) {
             if (this.Z != 0.0 && $$4 >= 1.0) {
-               fet $$5 = this.dU().a(new diq(this.ds(), this.ds().e($$3), diq.a.d, diq.b.d, this));
-               if ($$5.d() != fev.a.a) {
+               fey $$5 = this.dU().a(new dit(this.ds(), this.ds().e($$3), dit.a.d, dit.b.d, this));
+               if ($$5.d() != ffa.a.a) {
                   this.k();
                }
             }
@@ -565,7 +565,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
          }
 
          iv $$8 = this.aN();
-         eao $$9 = this.dU().a_($$8);
+         eat $$9 = this.dU().a_($$8);
          if (this.df()) {
             this.a($$3.e, this.aH(), $$9, $$8);
          }
@@ -574,12 +574,12 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
             $$2.c();
          } else {
             if (this.P) {
-               fex $$10 = this.dx();
+               ffc $$10 = this.dx();
                this.n($$6 ? 0.0 : $$10.d, $$10.e, $$7 ? 0.0 : $$10.f);
             }
 
             if (this.dh()) {
-               dmm $$11 = $$9.b();
+               dmr $$11 = $$9.b();
                if ($$1.e != $$3.e) {
                   $$11.a(this.dU(), this);
                }
@@ -599,12 +599,12 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   private void a(bwi.c $$0, fex $$1, iv $$2, eao $$3) {
+   private void a(bwi.c $$0, ffc $$1, iv $$2, eat $$3) {
       float $$4 = 0.6F;
       float $$5 = (float)($$1.g() * 0.6F);
       float $$6 = (float)($$1.i() * 0.6F);
       iv $$7 = this.aP();
-      eao $$8 = this.dU().a_($$7);
+      eat $$8 = this.dU().a_($$7);
       boolean $$9 = this.c($$8);
       this.X += $$9 ? $$5 : $$6;
       this.Y += $$5;
@@ -624,7 +624,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
             }
 
             if ($$0.b()) {
-               this.a(efo.Q);
+               this.a(eft.Q);
             }
          }
       } else if ($$8.l()) {
@@ -636,11 +636,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.a(this.bz(), this.t);
    }
 
-   public void a(fex $$0, fex $$1) {
+   public void a(ffc $$0, ffc $$1) {
       if (this.aJ()) {
          if (this.aH()) {
             iv $$2 = this.aN();
-            eao $$3 = this.dU().a_($$2);
+            eat $$3 = this.dU().a_($$2);
             $$3.b().a(this.dU(), $$2, $$3, this);
          }
 
@@ -665,11 +665,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return !this.dP() && !this.ad;
    }
 
-   private boolean c(eao $$0) {
-      return $$0.a(axc.aS) || $$0.a(dmo.rx);
+   private boolean c(eat $$0) {
+      return $$0.a(axc.aS) || $$0.a(dmt.rx);
    }
 
-   private boolean a(iv $$0, eao $$1, boolean $$2, boolean $$3, fex $$4) {
+   private boolean a(iv $$0, eat $$1, boolean $$2, boolean $$3, ffc $$4) {
       if ($$1.l()) {
          return false;
       } else {
@@ -680,7 +680,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
             }
 
             if ($$3) {
-               this.dU().a(efo.P, this.ds(), efo.a.a(this, $$1));
+               this.dU().a(eft.P, this.ds(), eft.a.a(this, $$1));
             }
 
             return true;
@@ -690,7 +690,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   protected boolean d(fex $$0) {
+   protected boolean d(ffc $$0) {
       return false;
    }
 
@@ -712,7 +712,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       if (this.aY()) {
          this.aX();
          if (this.be().b()) {
-            this.a(efo.x);
+            this.a(eft.x);
          }
       }
    }
@@ -736,8 +736,8 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
          if (!($$0 > 1.0E-5F)) {
             return $$1;
          } else {
-            eao $$2 = this.dU().a_($$1);
-            return (!((double)$$0 <= 0.5) || !$$2.a(axc.U)) && !$$2.a(axc.N) && !($$2.b() instanceof dpn) ? $$1.h(azm.a(this.t.e - (double)$$0)) : $$1;
+            eat $$2 = this.dU().a_($$1);
+            return (!((double)$$0 <= 0.5) || !$$2.a(axc.U)) && !$$2.a(axc.N) && !($$2.b() instanceof dps) ? $$1.h(azm.a(this.t.e - (double)$$0)) : $$1;
          }
       } else {
          int $$3 = azm.a(this.t.d);
@@ -754,20 +754,20 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    protected float aR() {
-      eao $$0 = this.dU().a_(this.du());
+      eat $$0 = this.dU().a_(this.du());
       float $$1 = $$0.b().i();
-      if (!$$0.a(dmo.J) && !$$0.a(dmo.nJ)) {
+      if (!$$0.a(dmt.J) && !$$0.a(dmt.nJ)) {
          return (double)$$1 == 1.0 ? this.dU().a_(this.aO()).b().i() : $$1;
       } else {
          return $$1;
       }
    }
 
-   protected fex a(fex $$0, bxn $$1) {
+   protected ffc a(ffc $$0, bxn $$1) {
       return $$0;
    }
 
-   protected fex e(fex $$0) {
+   protected ffc e(ffc $$0) {
       if ($$0.h() <= 1.0E-7) {
          return $$0;
       } else {
@@ -779,15 +779,15 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
          if ($$0.d != 0.0) {
             double $$2 = this.a(jb.a.a, $$0.d);
-            return Math.abs($$2) <= 1.0E-5F ? fex.c : new fex($$2, 0.0, 0.0);
+            return Math.abs($$2) <= 1.0E-5F ? ffc.c : new ffc($$2, 0.0, 0.0);
          } else if ($$0.e != 0.0) {
             double $$3 = this.a(jb.a.b, $$0.e);
-            return Math.abs($$3) <= 1.0E-5F ? fex.c : new fex(0.0, $$3, 0.0);
+            return Math.abs($$3) <= 1.0E-5F ? ffc.c : new ffc(0.0, $$3, 0.0);
          } else if ($$0.f != 0.0) {
             double $$4 = this.a(jb.a.c, $$0.f);
-            return Math.abs($$4) <= 1.0E-5F ? fex.c : new fex(0.0, 0.0, $$4);
+            return Math.abs($$4) <= 1.0E-5F ? ffc.c : new ffc(0.0, 0.0, $$4);
          } else {
-            return fex.c;
+            return ffc.c;
          }
       }
    }
@@ -800,27 +800,27 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return $$1;
    }
 
-   private fex a(fex $$0) {
-      fes $$1 = this.cQ();
-      List<ffr> $$2 = this.dU().c(this, $$1.b($$0));
-      fex $$3 = $$0.h() == 0.0 ? $$0 : a(this, $$0, $$1, this.dU(), $$2);
+   private ffc a(ffc $$0) {
+      fex $$1 = this.cQ();
+      List<ffw> $$2 = this.dU().c(this, $$1.b($$0));
+      ffc $$3 = $$0.h() == 0.0 ? $$0 : a(this, $$0, $$1, this.dU(), $$2);
       boolean $$4 = $$0.d != $$3.d;
       boolean $$5 = $$0.e != $$3.e;
       boolean $$6 = $$0.f != $$3.f;
       boolean $$7 = $$5 && $$0.e < 0.0;
       if (this.dO() > 0.0F && ($$7 || this.aH()) && ($$4 || $$6)) {
-         fes $$8 = $$7 ? $$1.d(0.0, $$3.e, 0.0) : $$1;
-         fes $$9 = $$8.b($$0.d, (double)this.dO(), $$0.f);
+         fex $$8 = $$7 ? $$1.d(0.0, $$3.e, 0.0) : $$1;
+         fex $$9 = $$8.b($$0.d, (double)this.dO(), $$0.f);
          if (!$$7) {
             $$9 = $$9.b(0.0, -1.0E-5F, 0.0);
          }
 
-         List<ffr> $$10 = a(this, this.s, $$2, $$9);
+         List<ffw> $$10 = a(this, this.s, $$2, $$9);
          float $$11 = (float)$$3.e;
          float[] $$12 = a($$8, $$10, this.dO(), $$11);
 
          for (float $$13 : $$12) {
-            fex $$14 = a(new fex($$0.d, (double)$$13, $$0.f), $$8, $$10);
+            ffc $$14 = a(new ffc($$0.d, (double)$$13, $$0.f), $$8, $$10);
             if ($$14.j() > $$3.j()) {
                double $$15 = $$1.b - $$8.b;
                return $$14.b(0.0, -$$15, 0.0);
@@ -831,10 +831,10 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return $$3;
    }
 
-   private static float[] a(fes $$0, List<ffr> $$1, float $$2, float $$3) {
+   private static float[] a(fex $$0, List<ffw> $$1, float $$2, float $$3) {
       FloatSet $$4 = new FloatArraySet(4);
 
-      for (ffr $$5 : $$1) {
+      for (ffw $$5 : $$1) {
          DoubleList $$6 = $$5.a(jb.a.b);
          DoubleListIterator var8 = $$6.iterator();
 
@@ -856,18 +856,18 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return $$9;
    }
 
-   public static fex a(@Nullable bwi $$0, fex $$1, fes $$2, djh $$3, List<ffr> $$4) {
-      List<ffr> $$5 = a($$0, $$3, $$4, $$2.b($$1));
+   public static ffc a(@Nullable bwi $$0, ffc $$1, fex $$2, djm $$3, List<ffw> $$4) {
+      List<ffw> $$5 = a($$0, $$3, $$4, $$2.b($$1));
       return a($$1, $$2, $$5);
    }
 
-   private static List<ffr> a(@Nullable bwi $$0, djh $$1, List<ffr> $$2, fes $$3) {
-      Builder<ffr> $$4 = ImmutableList.builderWithExpectedSize($$2.size() + 1);
+   private static List<ffw> a(@Nullable bwi $$0, djm $$1, List<ffw> $$2, fex $$3) {
+      Builder<ffw> $$4 = ImmutableList.builderWithExpectedSize($$2.size() + 1);
       if (!$$2.isEmpty()) {
          $$4.addAll($$2);
       }
 
-      ecg $$5 = $$1.A_();
+      ecl $$5 = $$1.A_();
       boolean $$6 = $$0 != null && $$5.a($$0, $$3);
       if ($$6) {
          $$4.add($$5.c());
@@ -877,7 +877,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return $$4.build();
    }
 
-   private static fex a(fex $$0, fes $$1, List<ffr> $$2) {
+   private static ffc a(ffc $$0, fex $$1, List<ffw> $$2) {
       if ($$2.isEmpty()) {
          return $$0;
       } else {
@@ -885,7 +885,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
          double $$4 = $$0.e;
          double $$5 = $$0.f;
          if ($$4 != 0.0) {
-            $$4 = ffo.a(jb.a.b, $$1, $$2, $$4);
+            $$4 = fft.a(jb.a.b, $$1, $$2, $$4);
             if ($$4 != 0.0) {
                $$1 = $$1.d(0.0, $$4, 0.0);
             }
@@ -893,24 +893,24 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
          boolean $$6 = Math.abs($$3) < Math.abs($$5);
          if ($$6 && $$5 != 0.0) {
-            $$5 = ffo.a(jb.a.c, $$1, $$2, $$5);
+            $$5 = fft.a(jb.a.c, $$1, $$2, $$5);
             if ($$5 != 0.0) {
                $$1 = $$1.d(0.0, 0.0, $$5);
             }
          }
 
          if ($$3 != 0.0) {
-            $$3 = ffo.a(jb.a.a, $$1, $$2, $$3);
+            $$3 = fft.a(jb.a.a, $$1, $$2, $$3);
             if (!$$6 && $$3 != 0.0) {
                $$1 = $$1.d($$3, 0.0, 0.0);
             }
          }
 
          if (!$$6 && $$5 != 0.0) {
-            $$5 = ffo.a(jb.a.c, $$1, $$2, $$5);
+            $$5 = fft.a(jb.a.c, $$1, $$2, $$5);
          }
 
-         return new fex($$3, $$4, $$5);
+         return new ffc($$3, $$4, $$5);
       }
    }
 
@@ -930,7 +930,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return awn.kM;
    }
 
-   public void b(fex $$0, fex $$1) {
+   public void b(ffc $$0, ffc $$1) {
       this.bh.add(new bwi.b($$0, $$1));
    }
 
@@ -939,16 +939,16 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
          LongSet $$2 = this.bi;
 
          for (bwi.b $$3 : $$0) {
-            fex $$4 = $$3.a();
-            fex $$5 = $$3.b();
-            fes $$6 = this.c($$5).h(1.0E-5F);
-            din.a($$4, $$5, $$6, ($$4x, $$5x) -> {
+            ffc $$4 = $$3.a();
+            ffc $$5 = $$3.b();
+            fex $$6 = this.c($$5).h(1.0E-5F);
+            diq.a($$4, $$5, $$6, ($$4x, $$5x) -> {
                if (this.bI()) {
-                  eao $$6x = this.dU().a_($$4x);
+                  eat $$6x = this.dU().a_($$4x);
                   if (!$$6x.l()) {
                      if ($$2.add($$4x.a())) {
-                        ffr $$7 = $$6x.a(this.dU(), $$4x, this);
-                        boolean $$8 = $$7 == ffo.b() || this.a($$4, $$5, $$7.a(new fex($$4x)).e());
+                        ffw $$7 = $$6x.a(this.dU(), $$4x, this);
+                        boolean $$8 = $$7 == fft.b() || this.a($$4, $$5, $$7.a(new ffc($$4x)).e());
                         if ($$8) {
                            try {
                               $$1.a($$5x);
@@ -979,36 +979,36 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   private boolean a(ewv $$0, iv $$1, fex $$2, fex $$3) {
-      fes $$4 = $$0.e(this.dU(), $$1);
+   private boolean a(exa $$0, iv $$1, ffc $$2, ffc $$3) {
+      fex $$4 = $$0.e(this.dU(), $$1);
       return $$4 != null && this.a($$2, $$3, List.of($$4));
    }
 
-   private boolean a(fex $$0, fex $$1, List<fes> $$2) {
-      fes $$3 = this.c($$0);
-      fex $$4 = $$1.d($$0);
+   private boolean a(ffc $$0, ffc $$1, List<fex> $$2) {
+      fex $$3 = this.c($$0);
+      ffc $$4 = $$1.d($$0);
       return $$3.a($$4, $$2);
    }
 
-   protected void a(eao $$0) {
+   protected void a(eat $$0) {
    }
 
    public iv a(arq $$0, iv $$1) {
       iv $$2 = $$0.aa();
-      fex $$3 = $$2.b();
-      int $$4 = $$0.m($$2).a(egn.a.f, $$2.u(), $$2.w()) + 1;
+      ffc $$3 = $$2.b();
+      int $$4 = $$0.m($$2).a(egs.a.f, $$2.u(), $$2.w()) + 1;
       return iv.a($$3.d, (double)$$4, $$3.f);
    }
 
-   public void a(jf<efo> $$0, @Nullable bwi $$1) {
+   public void a(jf<eft> $$0, @Nullable bwi $$1) {
       this.dU().a($$1, $$0, this.t);
    }
 
-   public void a(jf<efo> $$0) {
+   public void a(jf<eft> $$0) {
       this.a($$0, this);
    }
 
-   private void c(iv $$0, eao $$1) {
+   private void c(iv $$0, eat $$1) {
       this.b($$0, $$1);
       if (this.d($$1)) {
          this.j();
@@ -1018,34 +1018,34 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    protected void aW() {
       bwi $$0 = Objects.requireNonNullElse(this.cV(), this);
       float $$1 = $$0 == this ? 0.35F : 0.4F;
-      fex $$2 = $$0.dx();
+      ffc $$2 = $$0.dx();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.d * $$2.d * 0.2F + $$2.e * $$2.e + $$2.f * $$2.f * 0.2F) * $$1);
       this.g($$3);
    }
 
    protected iv e(iv $$0) {
       iv $$1 = $$0.d();
-      eao $$2 = this.dU().a_($$1);
+      eat $$2 = this.dU().a_($$1);
       return !$$2.a(axc.bq) && !$$2.a(axc.br) ? $$0 : $$1;
    }
 
-   protected void a(eao $$0, eao $$1) {
-      duj $$2 = $$0.A();
+   protected void a(eat $$0, eat $$1) {
+      duo $$2 = $$0.A();
       this.a($$2.d(), $$2.a() * 0.15F, $$2.b());
       this.b($$1);
    }
 
-   protected void b(eao $$0) {
-      duj $$1 = $$0.A();
+   protected void b(eat $$0) {
+      duo $$1 = $$0.A();
       this.a($$1.d(), $$1.a() * 0.05F, $$1.b() * 0.8F);
    }
 
-   protected void b(iv $$0, eao $$1) {
-      duj $$2 = $$1.A();
+   protected void b(iv $$0, eat $$1) {
+      duo $$2 = $$1.A();
       this.a($$2.d(), $$2.a() * 0.15F, $$2.b());
    }
 
-   private boolean d(eao $$0) {
+   private boolean d(eat $$0) {
       return $$0.a(axc.bp) && this.af >= this.be + 20;
    }
 
@@ -1122,14 +1122,14 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
    public final void a(double $$0, double $$1, double $$2, boolean $$3) {
       if (!this.dn()) {
-         this.b($$3, new fex($$0, $$1, $$2));
+         this.b($$3, new ffc($$0, $$1, $$2));
          iv $$4 = this.aN();
-         eao $$5 = this.dU().a_($$4);
+         eat $$5 = this.dU().a_($$4);
          this.a($$1, $$3, $$5, $$4);
       }
    }
 
-   protected void a(double $$0, boolean $$1, eao $$2, iv $$3) {
+   protected void a(double $$0, boolean $$1, eat $$2, iv $$3) {
       if (!this.bh() && $$0 < 0.0) {
          this.Z -= (double)((float)$$0);
       }
@@ -1137,7 +1137,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       if ($$1) {
          if (this.Z > 0.0) {
             $$2.b().a(this.dU(), $$2, $$3, this, this.Z);
-            this.dU().a(efo.A, this.t, efo.a.a(this, this.ax.<eao>map($$0x -> this.dU().a_($$0x)).orElse($$2)));
+            this.dU().a(eft.A, this.t, eft.a.a(this, this.ax.<eat>map($$0x -> this.dU().a_($$0x)).orElse($$2)));
          }
 
          this.k();
@@ -1203,7 +1203,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    void bo() {
-      if (this.dj() instanceof ctu $$0 && !$$0.bl()) {
+      if (this.dj() instanceof ctx $$0 && !$$0.bl()) {
          this.ag = false;
          return;
       }
@@ -1224,12 +1224,12 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.ai = this.a(axh.a);
       this.aH.clear();
       double $$0 = this.dD();
-      if (this.dj() instanceof ctu $$2 && !$$2.bl() && $$2.cQ().e >= $$0 && $$2.cQ().b <= $$0) {
+      if (this.dj() instanceof ctx $$2 && !$$2.bl() && $$2.cQ().e >= $$0 && $$2.cQ().b <= $$0) {
          return;
       }
 
       iv $$3 = iv.a(this.dz(), $$0, this.dF());
-      ewv $$4 = this.dU().b_($$3);
+      exa $$4 = this.dU().b_($$3);
       double $$5 = (double)((float)$$3.v() + $$4.a(this.dU(), $$3));
       if ($$5 > $$0) {
          $$4.k().forEach(this.aH::add);
@@ -1239,7 +1239,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    protected void bp() {
       bwi $$0 = Objects.requireNonNullElse(this.cV(), this);
       float $$1 = $$0 == this ? 0.2F : 0.9F;
-      fex $$2 = $$0.dx();
+      ffc $$2 = $$0.dx();
       float $$3 = Math.min(1.0F, (float)Math.sqrt($$2.d * $$2.d * 0.2F + $$2.e * $$2.e + $$2.f * $$2.f * 0.2F) * $$1);
       if ($$3 < 0.25F) {
          this.a(this.aU(), $$3, 1.0F + (this.ae.i() - this.ae.i()) * 0.4F);
@@ -1261,15 +1261,15 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
          this.dU().a(ly.ap, this.dz() + $$9, (double)($$4 + 1.0F), this.dF() + $$10, $$2.d, $$2.e, $$2.f);
       }
 
-      this.a(efo.O);
+      this.a(eft.O);
    }
 
    @Deprecated
-   protected eao bq() {
+   protected eat bq() {
       return this.dU().a_(this.aN());
    }
 
-   public eao br() {
+   public eat br() {
       return this.dU().a_(this.aP());
    }
 
@@ -1279,9 +1279,9 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
    protected void bt() {
       iv $$0 = this.aN();
-      eao $$1 = this.dU().a_($$0);
-      if ($$1.o() != dsz.a) {
-         fex $$2 = this.dx();
+      eat $$1 = this.dU().a_($$0);
+      if ($$1.o() != dte.a) {
+         ffc $$2 = this.dx();
          iv $$3 = this.du();
          double $$4 = this.dz() + (this.ae.j() - 0.5) * (double)this.ba.a();
          double $$5 = this.dF() + (this.ae.j() - 0.5) * (double)this.ba.a();
@@ -1297,7 +1297,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   public boolean a(axr<ewu> $$0) {
+   public boolean a(axr<ewz> $$0) {
       return this.aH.contains($$0);
    }
 
@@ -1305,20 +1305,20 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return !this.ak && this.ah.getDouble(axh.b) > 0.0;
    }
 
-   public void a(float $$0, fex $$1) {
-      fex $$2 = a($$1, $$0, this.dK());
+   public void a(float $$0, ffc $$1) {
+      ffc $$2 = a($$1, $$0, this.dK());
       this.i(this.dx().e($$2));
    }
 
-   protected static fex a(fex $$0, float $$1, float $$2) {
+   protected static ffc a(ffc $$0, float $$1, float $$2) {
       double $$3 = $$0.h();
       if ($$3 < 1.0E-7) {
-         return fex.c;
+         return ffc.c;
       } else {
-         fex $$4 = ($$3 > 1.0 ? $$0.d() : $$0).c((double)$$1);
+         ffc $$4 = ($$3 > 1.0 ? $$0.d() : $$0).c((double)$$1);
          float $$5 = azm.a($$2 * (float) (Math.PI / 180.0));
          float $$6 = azm.b($$2 * (float) (Math.PI / 180.0));
-         return new fex($$4.d * (double)$$6 - $$4.f * (double)$$5, $$4.e, $$4.f * (double)$$6 + $$4.d * (double)$$5);
+         return new ffc($$4.d * (double)$$6 - $$4.f * (double)$$5, $$4.e, $$4.f * (double)$$6 + $$4.d * (double)$$5);
       }
    }
 
@@ -1348,7 +1348,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.a_($$3, $$1, $$4);
    }
 
-   public void f(fex $$0) {
+   public void f(ffc $$0) {
       this.d($$0.d, $$0.e, $$0.f);
    }
 
@@ -1360,7 +1360,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.b($$0.c(), $$1, $$2);
    }
 
-   public void b(fex $$0, float $$1, float $$2) {
+   public void b(ffc $$0, float $$1, float $$2) {
       this.b($$0.d, $$0.e, $$0.f, $$1, $$2);
    }
 
@@ -1377,7 +1377,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.by();
    }
 
-   public final void c(fex $$0, float $$1, float $$2) {
+   public final void c(ffc $$0, float $$1, float $$2) {
       this.k($$0);
       this.f($$1, $$2);
    }
@@ -1390,7 +1390,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.f(this.dK(), this.dM());
    }
 
-   private void k(fex $$0) {
+   private void k(ffc $$0) {
       this.K = this.aa = $$0.d;
       this.L = this.ab = $$0.e;
       this.M = this.ac = $$0.f;
@@ -1401,8 +1401,8 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.O = $$1;
    }
 
-   public final fex bz() {
-      return new fex(this.aa, this.ab, this.ac);
+   public final ffc bz() {
+      return new ffc(this.aa, this.ab, this.ac);
    }
 
    public float f(bwi $$0) {
@@ -1423,14 +1423,14 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.g($$0.ds());
    }
 
-   public double g(fex $$0) {
+   public double g(ffc $$0) {
       double $$1 = this.dz() - $$0.d;
       double $$2 = this.dB() - $$0.e;
       double $$3 = this.dF() - $$0.f;
       return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   public void a_(crj $$0) {
+   public void a_(crm $$0) {
    }
 
    public void h(bwi $$0) {
@@ -1464,7 +1464,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   public void h(fex $$0) {
+   public void h(ffc $$0) {
       this.i($$0.d, $$0.e, $$0.f);
    }
 
@@ -1495,7 +1495,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return false;
    }
 
-   public final fex h(float $$0) {
+   public final ffc h(float $$0) {
       return this.d(this.i($$0), this.j($$0));
    }
 
@@ -1519,51 +1519,51 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return $$0 == 1.0F ? this.dK() : azm.i($$0, this.N, this.dK());
    }
 
-   public final fex d(float $$0, float $$1) {
+   public final ffc d(float $$0, float $$1) {
       float $$2 = $$0 * (float) (Math.PI / 180.0);
       float $$3 = -$$1 * (float) (Math.PI / 180.0);
       float $$4 = azm.b($$3);
       float $$5 = azm.a($$3);
       float $$6 = azm.b($$2);
       float $$7 = azm.a($$2);
-      return new fex((double)($$5 * $$6), (double)(-$$7), (double)($$4 * $$6));
+      return new ffc((double)($$5 * $$6), (double)(-$$7), (double)($$4 * $$6));
    }
 
-   public final fex m(float $$0) {
+   public final ffc m(float $$0) {
       return this.e(this.i($$0), this.j($$0));
    }
 
-   protected final fex e(float $$0, float $$1) {
+   protected final ffc e(float $$0, float $$1) {
       return this.d($$0 - 90.0F, $$1);
    }
 
-   public final fex bC() {
-      return new fex(this.dz(), this.dD(), this.dF());
+   public final ffc bC() {
+      return new ffc(this.dz(), this.dD(), this.dF());
    }
 
-   public final fex n(float $$0) {
+   public final ffc n(float $$0) {
       double $$1 = azm.d((double)$$0, this.K, this.dz());
       double $$2 = azm.d((double)$$0, this.L, this.dB()) + (double)this.cR();
       double $$3 = azm.d((double)$$0, this.M, this.dF());
-      return new fex($$1, $$2, $$3);
+      return new ffc($$1, $$2, $$3);
    }
 
-   public fex o(float $$0) {
+   public ffc o(float $$0) {
       return this.n($$0);
    }
 
-   public final fex p(float $$0) {
+   public final ffc p(float $$0) {
       double $$1 = azm.d((double)$$0, this.K, this.dz());
       double $$2 = azm.d((double)$$0, this.L, this.dB());
       double $$3 = azm.d((double)$$0, this.M, this.dF());
-      return new fex($$1, $$2, $$3);
+      return new ffc($$1, $$2, $$3);
    }
 
-   public fev a(double $$0, float $$1, boolean $$2) {
-      fex $$3 = this.n($$1);
-      fex $$4 = this.h($$1);
-      fex $$5 = $$3.b($$4.d * $$0, $$4.e * $$0, $$4.f * $$0);
-      return this.dU().a(new diq($$3, $$5, diq.a.b, $$2 ? diq.b.c : diq.b.a, this));
+   public ffa a(double $$0, float $$1, boolean $$2) {
+      ffc $$3 = this.n($$1);
+      ffc $$4 = this.h($$1);
+      ffc $$5 = $$3.b($$4.d * $$0, $$4.e * $$0, $$4.f * $$0);
+      return this.dU().a(new dit($$3, $$5, dit.a.b, $$2 ? dit.b.c : dit.b.a, this));
    }
 
    public boolean bD() {
@@ -1624,13 +1624,13 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    public tz f(tz $$0) {
       try {
          if (this.r != null) {
-            $$0.a("Pos", fex.a, new fex(this.r.dz(), this.dB(), this.r.dF()));
+            $$0.a("Pos", ffc.a, new ffc(this.r.dz(), this.dB(), this.r.dF()));
          } else {
-            $$0.a("Pos", fex.a, this.ds());
+            $$0.a("Pos", ffc.a, this.ds());
          }
 
-         $$0.a("Motion", fex.a, this.dx());
-         $$0.a("Rotation", few.i, new few(this.dK(), this.dM()));
+         $$0.a("Motion", ffc.a, this.dx());
+         $$0.a("Rotation", ffb.i, new ffb(this.dK(), this.dM()));
          $$0.a("fall_distance", this.Z);
          $$0.a("Fire", (short)this.aG);
          $$0.a("Air", (short)this.cr());
@@ -1700,9 +1700,9 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
    public void g(tz $$0) {
       try {
-         fex $$1 = $$0.<fex>a("Pos", fex.a).orElse(fex.c);
-         fex $$2 = $$0.<fex>a("Motion", fex.a).orElse(fex.c);
-         few $$3 = $$0.<few>a("Rotation", few.i).orElse(few.a);
+         ffc $$1 = $$0.<ffc>a("Pos", ffc.a).orElse(ffc.c);
+         ffc $$2 = $$0.<ffc>a("Motion", ffc.a).orElse(ffc.c);
+         ffb $$3 = $$0.<ffb>a("Rotation", ffb.i).orElse(ffb.a);
          this.n(Math.abs($$2.d) > 10.0 ? 0.0 : $$2.d, Math.abs($$2.e) > 10.0 ? 0.0 : $$2.e, Math.abs($$2.f) > 10.0 ? 0.0 : $$2.f);
          this.ar = true;
          double $$4 = 3.0000512E7;
@@ -1771,26 +1771,26 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    protected abstract void b(tz var1);
 
    @Nullable
-   public cno a(arq $$0, djg $$1) {
+   public cnr a(arq $$0, djl $$1) {
       return this.a($$0, $$1, 0);
    }
 
    @Nullable
-   public cno a(arq $$0, djg $$1, int $$2) {
-      return this.a($$0, new czk($$1), (float)$$2);
+   public cnr a(arq $$0, djl $$1, int $$2) {
+      return this.a($$0, new czn($$1), (float)$$2);
    }
 
    @Nullable
-   public cno a(arq $$0, czk $$1) {
+   public cnr a(arq $$0, czn $$1) {
       return this.a($$0, $$1, 0.0F);
    }
 
    @Nullable
-   public cno a(arq $$0, czk $$1, float $$2) {
+   public cnr a(arq $$0, czn $$1, float $$2) {
       if ($$1.f()) {
          return null;
       } else {
-         cno $$3 = new cno($$0, this.dz(), this.dB() + (double)$$2, this.dF(), $$1);
+         cnr $$3 = new cnr($$0, this.dz(), this.dB() + (double)$$2, this.dF(), $$1);
          $$3.j();
          $$0.b($$3);
          return $$3;
@@ -1806,15 +1806,15 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
          return false;
       } else {
          float $$0 = this.ba.a() * 0.8F;
-         fes $$1 = fes.a(this.bC(), (double)$$0, 1.0E-6, (double)$$0);
+         fex $$1 = fex.a(this.bC(), (double)$$0, 1.0E-6, (double)$$0);
          return iv.b($$1).anyMatch($$1x -> {
-            eao $$2 = this.dU().a_($$1x);
-            return !$$2.l() && $$2.j(this.dU(), $$1x) && ffo.c($$2.g(this.dU(), $$1x).a($$1x), ffo.a($$1), ffb.i);
+            eat $$2 = this.dU().a_($$1x);
+            return !$$2.l() && $$2.j(this.dU(), $$1x) && fft.c($$2.g(this.dU(), $$1x).a($$1x), fft.a($$1), ffg.i);
          });
       }
    }
 
-   public bug a(crj $$0, buf $$1) {
+   public bug a(crm $$0, buf $$1) {
       if (this.bI() && this instanceof bxh $$2) {
          if ($$2.C() == $$0) {
             if (!this.dU().w_()) {
@@ -1824,14 +1824,14 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
                   $$2.y();
                }
 
-               this.a(efo.r, $$0);
+               this.a(eft.r, $$0);
             }
 
             return bug.a.b();
          }
 
-         czk $$3 = $$0.b($$1);
-         if ($$3.a(czo.vV) && $$2.p()) {
+         czn $$3 = $$0.b($$1);
+         if ($$3.a(czr.vV) && $$2.p()) {
             if (!this.dU().w_()) {
                $$2.a_($$0, true);
             }
@@ -1853,7 +1853,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    public void r() {
-      this.i(fex.c);
+      this.i(ffc.c);
       this.h();
       if (this.bX()) {
          this.dj().j(this);
@@ -1867,27 +1867,27 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    protected void a(bwi $$0, bwi.a $$1) {
-      fex $$2 = this.m($$0);
-      fex $$3 = $$0.l(this);
+      ffc $$2 = this.m($$0);
+      ffc $$3 = $$0.l(this);
       $$1.accept($$0, $$2.d - $$3.d, $$2.e - $$3.e, $$2.f - $$3.f);
    }
 
    public void k(bwi $$0) {
    }
 
-   public fex l(bwi $$0) {
+   public ffc l(bwi $$0) {
       return this.dr().b(bwj.b, 0, this.aA);
    }
 
-   public fex m(bwi $$0) {
+   public ffc m(bwi $$0) {
       return this.ds().e(this.a($$0, this.ba, 1.0F));
    }
 
-   protected fex a(bwi $$0, bwl $$1, float $$2) {
+   protected ffc a(bwi $$0, bwl $$1, float $$2) {
       return a(this, $$0, $$1.d());
    }
 
-   protected static fex a(bwi $$0, bwi $$1, bwk $$2) {
+   protected static ffc a(bwi $$0, bwi $$1, bwk $$2) {
       int $$3 = $$0.cX().indexOf($$1);
       return $$2.c(bwj.a, $$3, $$0.aA);
    }
@@ -1960,7 +1960,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
             this.q = ImmutableList.of($$0);
          } else {
             List<bwi> $$1 = Lists.newArrayList(this.q);
-            if (!this.dU().C && $$0 instanceof crj && !(this.cY() instanceof crj)) {
+            if (!this.dU().C && $$0 instanceof crm && !(this.cY() instanceof crm)) {
                $$1.add(0, $$0);
             } else {
                $$1.add($$0);
@@ -1969,7 +1969,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
             this.q = ImmutableList.copyOf($$1);
          }
 
-         this.a(efo.s, $$0);
+         this.a(eft.s, $$0);
       }
    }
 
@@ -1984,7 +1984,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
          }
 
          $$0.J = 60;
-         this.a(efo.q, $$0);
+         this.a(eft.q, $$0);
       }
    }
 
@@ -2000,7 +2000,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.N_() != null && this.N_().d();
    }
 
-   public final void d(fex $$0, float $$1, float $$2) {
+   public final void d(ffc $$0, float $$1, float $$2) {
       bxe $$3 = this.N_();
       if ($$3 != null) {
          $$3.a($$0, $$1, $$2);
@@ -2023,13 +2023,13 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return 0.0F;
    }
 
-   public fex bR() {
+   public ffc bR() {
       return this.d(this.dM(), this.dK());
    }
 
-   public fex a(czg $$0) {
-      if (!(this instanceof crj $$1)) {
-         return fex.c;
+   public ffc a(czj $$0) {
+      if (!(this instanceof crm $$1)) {
+         return ffc.c;
       } else {
          boolean $$2 = $$1.fb().a($$0) && !$$1.fa().a($$0);
          bxa $$3 = $$2 ? $$1.fx().e() : $$1.fx();
@@ -2037,15 +2037,15 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   public few bS() {
-      return new few(this.dM(), this.dK());
+   public ffb bS() {
+      return new ffb(this.dM(), this.dK());
    }
 
-   public fex bT() {
-      return fex.a(this.bS());
+   public ffc bT() {
+      return ffc.a(this.bS());
    }
 
-   public void a(dsl $$0, iv $$1) {
+   public void a(dsq $$0, iv $$1) {
       if (this.aA()) {
          this.ay();
       } else {
@@ -2066,10 +2066,10 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
                bqq $$2 = bqp.a();
                $$2.a("portal");
                this.ay();
-               exv $$3 = this.as.a($$0, this);
+               eya $$3 = this.as.a($$0, this);
                if ($$3 != null) {
                   arq $$4 = $$3.b();
-                  if ($$0.p().a((djh)$$4) && ($$4.aj() == $$0.aj() || this.a($$0, $$4))) {
+                  if ($$0.p().a((djm)$$4) && ($$4.aj() == $$0.aj() || this.a($$0, $$4))) {
                      this.b($$3);
                   }
                }
@@ -2097,7 +2097,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    public void b(byte $$0) {
       switch ($$0) {
          case 53:
-            dql.a(this);
+            dqq.a(this);
       }
    }
 
@@ -2194,11 +2194,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.i(5);
    }
 
-   public boolean d(crj $$0) {
+   public boolean d(crm $$0) {
       if ($$0.V_()) {
          return false;
       } else {
-         fge $$1 = this.cp();
+         fgj $$1 = this.cp();
          return $$1 != null && $$0 != null && $$0.cp() == $$1 && $$1.j() ? false : this.cn();
       }
    }
@@ -2207,11 +2207,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return false;
    }
 
-   public void a(BiConsumer<efl<?>, arq> $$0) {
+   public void a(BiConsumer<efq<?>, arq> $$0) {
    }
 
    @Nullable
-   public ffx cp() {
+   public fgc cp() {
       return this.dU().R().e(this.cH());
    }
 
@@ -2223,7 +2223,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.a($$0.cp());
    }
 
-   public boolean a(@Nullable fge $$0) {
+   public boolean a(@Nullable fgj $$0) {
       return this.cp() != null ? this.cp().a($$0) : false;
    }
 
@@ -2295,7 +2295,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    protected static void a(bwi $$0, boolean $$1, iv $$2) {
-      fex $$3 = $$0.dx();
+      ffc $$3 = $$0.dx();
       double $$4;
       if ($$1) {
          $$4 = Math.max(-0.9, $$3.e - 0.03);
@@ -2307,7 +2307,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       a($$0.s, $$2);
    }
 
-   protected static void a(djh $$0, iv $$1) {
+   protected static void a(djm $$0, iv $$1) {
       if ($$0 instanceof arq $$2) {
          for (int $$3 = 0; $$3 < 2; $$3++) {
             $$2.a(ly.ap, (double)$$1.u() + $$0.A.j(), (double)($$1.v() + 1), (double)$$1.w() + $$0.A.j(), 1, 0.0, 0.0, 0.0, 1.0);
@@ -2321,7 +2321,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    protected static void b(bwi $$0, boolean $$1) {
-      fex $$2 = $$0.dx();
+      ffc $$2 = $$0.dx();
       double $$3;
       if ($$1) {
          $$3 = Math.max(-0.3, $$2.e - 0.03);
@@ -2349,7 +2349,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
    protected void l(double $$0, double $$1, double $$2) {
       iv $$3 = iv.a($$0, $$1, $$2);
-      fex $$4 = new fex($$0 - (double)$$3.u(), $$1 - (double)$$3.v(), $$2 - (double)$$3.w());
+      ffc $$4 = new ffc($$0 - (double)$$3.u(), $$1 - (double)$$3.v(), $$2 - (double)$$3.w());
       iv.a $$5 = new iv.a();
       jb $$6 = jb.b;
       double $$7 = Double.MAX_VALUE;
@@ -2368,7 +2368,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
       float $$11 = this.ae.i() * 0.2F + 0.1F;
       float $$12 = (float)$$6.f().a();
-      fex $$13 = this.dx().c(0.75);
+      ffc $$13 = this.dx().c(0.75);
       if ($$6.o() == jb.a.a) {
          this.n((double)($$12 * $$11), $$13.e, $$13.f);
       } else if ($$6.o() == jb.a.b) {
@@ -2378,7 +2378,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   public void a(eao $$0, fex $$1) {
+   public void a(eat $$0, ffc $$1) {
       this.k();
       this.U = $$1;
    }
@@ -2479,7 +2479,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    @Nullable
-   public bwi b(exv $$0) {
+   public bwi b(eya $$0) {
       if (this.dU() instanceof arq $$1 && !this.dP()) {
          arq $$3 = $$0.b();
          boolean $$4 = $$3.aj() != $$1.aj();
@@ -2497,7 +2497,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return null;
    }
 
-   private bwi a(arq $$0, exv $$1) {
+   private bwi a(arq $$0, eya $$1) {
       for (bwi $$2 : this.cX()) {
          $$2.b(this.a($$1, $$2));
       }
@@ -2514,7 +2514,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this;
    }
 
-   private bwi b(arq $$0, exv $$1) {
+   private bwi b(arq $$0, eya $$1) {
       List<bwi> $$2 = this.cX();
       List<bwi> $$3 = new ArrayList<>($$2.size());
       this.bM();
@@ -2549,15 +2549,15 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   private exv a(exv $$0, bwi $$1) {
+   private eya a(eya $$0, bwi $$1) {
       float $$2 = $$0.e() + ($$0.i().contains(bxx.d) ? 0.0F : $$1.dK() - this.dK());
       float $$3 = $$0.f() + ($$0.i().contains(bxx.e) ? 0.0F : $$1.dM() - this.dM());
-      fex $$4 = $$1.ds().d(this.ds());
-      fex $$5 = $$0.c().b($$0.i().contains(bxx.a) ? 0.0 : $$4.a(), $$0.i().contains(bxx.b) ? 0.0 : $$4.b(), $$0.i().contains(bxx.c) ? 0.0 : $$4.c());
+      ffc $$4 = $$1.ds().d(this.ds());
+      ffc $$5 = $$0.c().b($$0.i().contains(bxx.a) ? 0.0 : $$4.a(), $$0.i().contains(bxx.b) ? 0.0 : $$4.b(), $$0.i().contains(bxx.c) ? 0.0 : $$4.c());
       return $$0.a($$5).a($$2, $$3).a();
    }
 
-   private void a(exv $$0) {
+   private void a(eya $$0) {
       bwi $$1 = this.cV();
 
       for (bwi $$2 : this.db()) {
@@ -2594,7 +2594,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
    public void f(iv $$0) {
       if (this.dU() instanceof arq $$1) {
-         $$1.m().a(arx.g, new dio($$0), 3);
+         $$1.m().a(arx.g, new dir($$0), 3);
       }
    }
 
@@ -2605,16 +2605,16 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   public fex a(jb.a $$0, m.a $$1) {
-      return exu.a($$1, $$0, this.ds(), this.a(this.at()));
+   public ffc a(jb.a $$0, m.a $$1) {
+      return exz.a($$1, $$0, this.ds(), this.a(this.at()));
    }
 
    public boolean n(boolean $$0) {
       return ($$0 || !this.bX()) && this.bI();
    }
 
-   public boolean a(djh $$0, djh $$1) {
-      if ($$0.aj() == djh.k && $$1.aj() == djh.i) {
+   public boolean a(djm $$0, djm $$1) {
+      if ($$0.aj() == djm.k && $$1.aj() == djm.i) {
          for (bwi $$2 : this.cX()) {
             if ($$2 instanceof arr $$3 && !$$3.i) {
                return false;
@@ -2625,11 +2625,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return true;
    }
 
-   public float a(dja $$0, din $$1, iv $$2, eao $$3, ewv $$4, float $$5) {
+   public float a(djf $$0, diq $$1, iv $$2, eat $$3, exa $$4, float $$5) {
       return $$5;
    }
 
-   public boolean a(dja $$0, din $$1, iv $$2, eao $$3, float $$4) {
+   public boolean a(djf $$0, diq $$1, iv $$2, eat $$3, float $$4) {
       return true;
    }
 
@@ -2647,7 +2647,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       $$0.a("Entity Name", () -> this.ai().getString());
       $$0.a("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.dz(), this.dB(), this.dF()));
       $$0.a("Entity's Block location", q.a(this.dU(), azm.a(this.dz()), azm.a(this.dB()), azm.a(this.dF())));
-      fex $$1 = this.dx();
+      ffc $$1 = this.dx();
       $$0.a("Entity's Momentum", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", $$1.d, $$1.e, $$1.f));
       $$0.a("Entity's Passengers", () -> this.cX().toString());
       $$0.a("Entity's Vehicle", () -> String.valueOf(this.dj()));
@@ -2690,7 +2690,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
    @Override
    public wy m_() {
-      return ffx.a(this.cp(), this.ai()).a($$0 -> $$0.a(this.cP()).a(this.cG()));
+      return fgc.a(this.cp(), this.ai()).a($$0 -> $$0.a(this.cP()).a(this.cG()));
    }
 
    public void b(@Nullable wy $$0) {
@@ -2717,7 +2717,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    public boolean a(arq $$0, double $$1, double $$2, double $$3, Set<bxx> $$4, float $$5, float $$6, boolean $$7) {
-      bwi $$8 = this.b(new exv($$0, new fex($$1, $$2, $$3), fex.c, $$5, $$6, $$4, exv.a));
+      bwi $$8 = this.b(new eya($$0, new ffc($$1, $$2, $$3), ffc.c, $$5, $$6, $$4, eya.a));
       return $$8 != null;
    }
 
@@ -2778,25 +2778,25 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.bb = $$2.c();
       this.av();
       boolean $$3 = $$2.a() <= 4.0F && $$2.b() <= 4.0F;
-      if (!this.s.C && !this.ak && !this.ad && $$3 && ($$2.a() > $$0.a() || $$2.b() > $$0.b()) && !(this instanceof crj)) {
+      if (!this.s.C && !this.ak && !this.ad && $$3 && ($$2.a() > $$0.a() || $$2.b() > $$0.b()) && !(this instanceof crm)) {
          this.a($$0);
       }
    }
 
    public boolean a(bwl $$0) {
       bwl $$1 = this.a(this.at());
-      fex $$2 = this.ds().b(0.0, (double)$$0.b() / 2.0, 0.0);
+      ffc $$2 = this.ds().b(0.0, (double)$$0.b() / 2.0, 0.0);
       double $$3 = (double)Math.max(0.0F, $$1.a() - $$0.a()) + 1.0E-6;
       double $$4 = (double)Math.max(0.0F, $$1.b() - $$0.b()) + 1.0E-6;
-      ffr $$5 = ffo.a(fes.a($$2, $$3, $$4, $$3));
-      Optional<fex> $$6 = this.s.a(this, $$5, $$2, (double)$$1.a(), (double)$$1.b(), (double)$$1.a());
+      ffw $$5 = fft.a(fex.a($$2, $$3, $$4, $$3));
+      Optional<ffc> $$6 = this.s.a(this, $$5, $$2, (double)$$1.a(), (double)$$1.b(), (double)$$1.a());
       if ($$6.isPresent()) {
          this.b($$6.get().b(0.0, (double)(-$$1.b()) / 2.0, 0.0));
          return true;
       } else {
          if ($$1.a() > $$0.a() && $$1.b() > $$0.b()) {
-            ffr $$7 = ffo.a(fes.a($$2, $$3, 1.0E-6, $$3));
-            Optional<fex> $$8 = this.s.a(this, $$7, $$2, (double)$$1.a(), (double)$$0.b(), (double)$$1.a());
+            ffw $$7 = fft.a(fex.a($$2, $$3, 1.0E-6, $$3));
+            Optional<ffc> $$8 = this.s.a(this, $$7, $$2, (double)$$1.a(), (double)$$0.b(), (double)$$1.a());
             if ($$8.isPresent()) {
                this.b($$8.get().b(0.0, (double)(-$$0.b()) / 2.0 + 1.0E-6, 0.0));
                return true;
@@ -2824,11 +2824,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    @Override
-   public final fes cQ() {
+   public final fex cQ() {
       return this.aC;
    }
 
-   public final void a(fes $$0) {
+   public final void a(fex $$0) {
       this.aC = $$0;
    }
 
@@ -2840,19 +2840,19 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.bb;
    }
 
-   public fex t(float $$0) {
+   public ffc t(float $$0) {
       return this.cS();
    }
 
-   protected fex cS() {
-      return new fex(0.0, (double)this.cR(), (double)(this.dp() * 0.4F));
+   protected ffc cS() {
+      return new ffc(0.0, (double)this.cR(), (double)(this.dp() * 0.4F));
    }
 
    public bya a_(int $$0) {
       return bya.a;
    }
 
-   public djh cT() {
+   public djm cT() {
       return this.dU();
    }
 
@@ -2861,11 +2861,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.dU().p();
    }
 
-   public bug a(crj $$0, fex $$1, buf $$2) {
+   public bug a(crm $$0, ffc $$1, buf $$2) {
       return bug.e;
    }
 
-   public boolean a(dja $$0) {
+   public boolean a(djf $$0) {
       return false;
    }
 
@@ -2875,7 +2875,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    public void e(arr $$0) {
    }
 
-   public float a(dtg $$0) {
+   public float a(dtl $$0) {
       float $$1 = azm.h(this.dK());
       switch ($$0) {
          case c:
@@ -2889,7 +2889,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   public float a(drp $$0) {
+   public float a(dru $$0) {
       float $$1 = azm.h(this.dK());
       switch ($$0) {
          case c:
@@ -2901,8 +2901,8 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       }
    }
 
-   public csf a(cse $$0) {
-      return this.an().a(axf.r) ? csf.b : csf.a;
+   public csi a(csh $$0) {
+      return this.an().a(axf.r) ? csi.b : csi.a;
    }
 
    @Nullable
@@ -2959,7 +2959,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    public int dc() {
-      return (int)this.D().filter($$0 -> $$0 instanceof crj).count();
+      return (int)this.D().filter($$0 -> $$0 instanceof crm).count();
    }
 
    public boolean dd() {
@@ -3011,16 +3011,16 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.df();
    }
 
-   protected static fex a(double $$0, double $$1, float $$2) {
+   protected static ffc a(double $$0, double $$1, float $$2) {
       double $$3 = ($$0 + $$1 + 1.0E-5F) / 2.0;
       float $$4 = -azm.a($$2 * (float) (Math.PI / 180.0));
       float $$5 = azm.b($$2 * (float) (Math.PI / 180.0));
       float $$6 = Math.max(Math.abs($$4), Math.abs($$5));
-      return new fex((double)$$4 * $$3 / (double)$$6, 0.0, (double)$$5 * $$3 / (double)$$6);
+      return new ffc((double)$$4 * $$3 / (double)$$6, 0.0, (double)$$5 * $$3 / (double)$$6);
    }
 
-   public fex b(bxj $$0) {
-      return new fex(this.dz(), this.cQ().e, this.dF());
+   public ffc b(bxj $$0) {
+      return new ffc(this.dz(), this.cQ().e, this.dF());
    }
 
    @Nullable
@@ -3033,8 +3033,8 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.r != null && this.r.cV() == this ? this.r : null;
    }
 
-   public exa j_() {
-      return exa.a;
+   public exf j_() {
+      return exf.a;
    }
 
    public awo dl() {
@@ -3049,8 +3049,8 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return new ej(ei.a, this.ds(), this.bS(), $$0, 0, this.ai().getString(), this.m_(), $$0.p(), this);
    }
 
-   public void a(ev.a $$0, fex $$1) {
-      fex $$2 = $$0.a(this);
+   public void a(ev.a $$0, ffc $$1) {
+      ffc $$2 = $$0.a(this);
       double $$3 = $$1.d - $$2.d;
       double $$4 = $$1.e - $$2.e;
       double $$5 = $$1.f - $$2.f;
@@ -3066,11 +3066,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return azm.h($$0, this.N, this.aA);
    }
 
-   public boolean a(axr<ewu> $$0, double $$1) {
+   public boolean a(axr<ewz> $$0, double $$1) {
       if (this.dn()) {
          return false;
       } else {
-         fes $$2 = this.cQ().h(0.001);
+         fex $$2 = this.cQ().h(0.001);
          int $$3 = azm.a($$2.a);
          int $$4 = azm.c($$2.d);
          int $$5 = azm.a($$2.b);
@@ -3080,7 +3080,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
          double $$9 = 0.0;
          boolean $$10 = this.cI();
          boolean $$11 = false;
-         fex $$12 = fex.c;
+         ffc $$12 = ffc.c;
          int $$13 = 0;
          iv.a $$14 = new iv.a();
 
@@ -3088,14 +3088,14 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
             for (int $$16 = $$5; $$16 < $$6; $$16++) {
                for (int $$17 = $$7; $$17 < $$8; $$17++) {
                   $$14.d($$15, $$16, $$17);
-                  ewv $$18 = this.dU().b_($$14);
+                  exa $$18 = this.dU().b_($$14);
                   if ($$18.a($$0)) {
                      double $$19 = (double)((float)$$16 + $$18.a(this.dU(), $$14));
                      if ($$19 >= $$2.b) {
                         $$11 = true;
                         $$9 = Math.max($$19 - $$2.b, $$9);
                         if ($$10) {
-                           fex $$20 = $$18.c(this.dU(), $$14);
+                           ffc $$20 = $$18.c(this.dU(), $$14);
                            if ($$9 < 0.4) {
                               $$20 = $$20.c($$9);
                            }
@@ -3114,11 +3114,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
                $$12 = $$12.c(1.0 / (double)$$13);
             }
 
-            if (!(this instanceof crj)) {
+            if (!(this instanceof crm)) {
                $$12 = $$12.d();
             }
 
-            fex $$21 = this.dx();
+            ffc $$21 = this.dx();
             $$12 = $$12.c($$1);
             double $$22 = 0.003;
             if (Math.abs($$21.d) < 0.003 && Math.abs($$21.f) < 0.003 && $$12.g() < 0.0045000000000000005) {
@@ -3134,7 +3134,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    public boolean dn() {
-      fes $$0 = this.cQ().g(1.0);
+      fex $$0 = this.cQ().g(1.0);
       int $$1 = azm.a($$0.a);
       int $$2 = azm.c($$0.d);
       int $$3 = azm.a($$0.c);
@@ -3142,7 +3142,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return !this.dU().b($$1, $$3, $$2, $$4);
    }
 
-   public double b(axr<ewu> $$0) {
+   public double b(axr<ewz> $$0) {
       return this.ah.getDouble($$0);
    }
 
@@ -3170,11 +3170,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.ba.d();
    }
 
-   public fex ds() {
+   public ffc ds() {
       return this.t;
    }
 
-   public fex dt() {
+   public ffc dt() {
       return this.ds();
    }
 
@@ -3183,7 +3183,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.u;
    }
 
-   public eao dv() {
+   public eat dv() {
       if (this.bg == null) {
          this.bg = this.dU().a_(this.du());
       }
@@ -3191,24 +3191,24 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.bg;
    }
 
-   public dio dw() {
+   public dir dw() {
       return this.ay;
    }
 
-   public fex dx() {
+   public ffc dx() {
       return this.az;
    }
 
-   public void i(fex $$0) {
+   public void i(ffc $$0) {
       this.az = $$0;
    }
 
-   public void j(fex $$0) {
+   public void j(ffc $$0) {
       this.i(this.dx().e($$0));
    }
 
    public void n(double $$0, double $$1, double $$2) {
-      this.i(new fex($$0, $$1, $$2));
+      this.i(new ffc($$0, $$1, $$2));
    }
 
    public final int dy() {
@@ -3265,7 +3265,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
 
    public final void o(double $$0, double $$1, double $$2) {
       if (this.t.d != $$0 || this.t.e != $$1 || this.t.f != $$2) {
-         this.t = new fex($$0, $$1, $$2);
+         this.t = new ffc($$0, $$1, $$2);
          int $$3 = azm.a($$0);
          int $$4 = azm.a($$1);
          int $$5 = azm.a($$2);
@@ -3273,7 +3273,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
             this.u = new iv($$3, $$4, $$5);
             this.bg = null;
             if (jy.a($$3) != this.ay.h || jy.a($$5) != this.ay.i) {
-               this.ay = new dio(this.u);
+               this.ay = new dir(this.u);
             }
          }
 
@@ -3284,7 +3284,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    public void dG() {
    }
 
-   public fex v(float $$0) {
+   public ffc v(float $$0) {
       return this.p($$0).b(0.0, (double)this.bb * 0.7, 0.0);
    }
 
@@ -3297,12 +3297,12 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.b($$2, $$3, $$4, $$0.n(), $$0.m());
       this.e($$1);
       this.a_($$0.e());
-      fex $$5 = new fex($$0.j(), $$0.k(), $$0.l());
+      ffc $$5 = new ffc($$0.j(), $$0.k(), $$0.l());
       this.i($$5);
    }
 
    @Nullable
-   public czk dH() {
+   public czn dH() {
       return null;
    }
 
@@ -3387,7 +3387,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    @Override
-   public void a(eeu $$0) {
+   public void a(eez $$0) {
       this.aS = $$0;
    }
 
@@ -3409,11 +3409,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return true;
    }
 
-   public djh dU() {
+   public djm dU() {
       return this.s;
    }
 
-   protected void a(djh $$0) {
+   protected void a(djm $$0) {
       this.s = $$0;
    }
 
@@ -3440,8 +3440,8 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       return this.ae;
    }
 
-   public fex ae() {
-      if (this.cV() instanceof crj $$0 && this.bI()) {
+   public ffc ae() {
+      if (this.cV() instanceof crm $$0 && this.bI()) {
          return $$0.ae();
       }
 
@@ -3449,11 +3449,11 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
    }
 
    @Nullable
-   public czk dY() {
+   public czn dY() {
       return null;
    }
 
-   public Optional<alf<ezt>> dZ() {
+   public Optional<alf<ezy>> dZ() {
       return this.o.j();
    }
 
@@ -3461,7 +3461,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       this.a($$0, kk.g);
    }
 
-   public final void c(czk $$0) {
+   public final void c(czn $$0) {
       this.a($$0.a());
    }
 
@@ -3500,7 +3500,7 @@ public abstract class bwi implements akm, buj, eet, fgb, kf {
       void accept(bwi var1, double var2, double var4, double var6);
    }
 
-   static record b(fex a, fex b) {
+   static record b(ffc a, ffc b) {
    }
 
    public static enum c {

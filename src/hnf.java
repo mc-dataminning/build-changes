@@ -1,28 +1,29 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class hnf extends hmx {
+   private final bwi n;
 
-public class hnf {
-   private final List<hne> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public hnf(List<hne> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public hnf(awm $$0, awo $$1, float $$2, float $$3, bwi $$4, long $$5) {
+      super($$0, $$1, azv.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dz());
+      this.g = (double)((float)this.n.dB());
+      this.h = (double)((float)this.n.dF());
    }
 
-   public List<hne> a() {
-      return this.a;
+   @Override
+   public boolean s() {
+      return !this.n.aZ();
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   public void q() {
+      if (this.n.dP()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dz());
+         this.g = (double)((float)this.n.dB());
+         this.h = (double)((float)this.n.dF());
+      }
    }
 }

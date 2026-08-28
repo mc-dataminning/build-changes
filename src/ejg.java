@@ -1,57 +1,45 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class ejg extends ejh {
-   public ejg(Codec<eme> $$0) {
+public class ejg extends ejy<elu> {
+   public ejg(Codec<elu> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dji $$0, azv $$1, iv $$2, eao $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
+   public boolean a(eka<elu> $$0) {
+      iv $$1 = $$0.e();
+      dkl $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      elu $$4 = $$0.f();
+      if ($$1.v() < $$2.G_() + 5) {
          return false;
       } else {
-         jb $$4 = jb.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<jb> $$6 = ag.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-         for (jb $$8 : $$6.subList(0, $$5)) {
-            iv.a $$9 = $$2.k();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            jb $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(jb.b);
-               jb[] $$13 = new jb[]{$$8, jb.b};
-               $$11 = ag.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(jb.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(jb.b);
-               }
+         for (iv $$7 : iv.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
 
          return true;
+      }
+   }
+
+   private boolean a(djn $$0, iv $$1, azv $$2) {
+      iv $$3 = $$1.e();
+      eat $$4 = $$0.a_($$3);
+      return $$4.a(dmt.lk) ? $$2.h() : $$4.c($$0, $$3, jb.b);
+   }
+
+   private void a(djn $$0, iv $$1, azv $$2, elu $$3) {
+      if ($$0.v($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 260);
       }
    }
 }

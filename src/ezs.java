@@ -1,146 +1,109 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class ezs {
-   public static final Codec<ezs> a = RecordCodecBuilder.create(
+   private static final Codec<ezs> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               fac.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               fcx.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               fbe.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               fdu.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               fdu.a.fieldOf("bonus_rolls").orElse(fdq.a(0.0F)).forGetter($$0x -> $$0x.h)
+               fdz.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               fdz.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, ezs::new)
    );
-   private final List<fae> b;
-   private final List<fcx> c;
-   private final Predicate<ezo> d;
-   private final List<fbc> e;
-   private final BiFunction<czk, ezo, czk> f;
-   private final fdt g;
-   private final fdt h;
+   public static final Codec<ezs> a = Codec.either(Codec.INT, b).xmap($$0 -> (ezs)$$0.map(ezs::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final fdy c;
+   @Nullable
+   private final fdy d;
+   private final ezs.b e;
+   private final ezs.a f;
 
-   ezs(List<fae> $$0, List<fcx> $$1, List<fbc> $$2, fdt $$3, fdt $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ag.a($$1);
-      this.e = $$2;
-      this.f = fbe.a($$2);
-      this.g = $$3;
-      this.h = $$4;
-   }
-
-   private void b(Consumer<czk> $$0, ezo $$1) {
-      azv $$2 = $$1.b();
-      List<fad> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
-
-      for (fae $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public Set<bax<?>> a() {
+      Builder<bax<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
+   }
+
+   private ezs(Optional<fdy> $$0, Optional<fdy> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
+
+   private ezs(@Nullable fdy $$0, @Nullable fdy $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
          } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (fad $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> azm.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public void a(Consumer<czk> $$0, ezo $$1) {
-      if (this.d.test($$1)) {
-         Consumer<czk> $$2 = fbc.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + azm.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
+   public static ezs a(int $$0) {
+      fdv $$1 = fdv.a((float)$$0);
+      return new ezs(Optional.of($$1), Optional.of($$1));
    }
 
-   public void a(ezu $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
+   public static ezs a(int $$0, int $$1) {
+      return new ezs(Optional.of(fdv.a((float)$$0)), Optional.of(fdv.a((float)$$1)));
    }
 
-   public static ezs.a a() {
-      return new ezs.a();
+   public static ezs b(int $$0) {
+      return new ezs(Optional.of(fdv.a((float)$$0)), Optional.empty());
    }
 
-   public static class a implements fay<ezs.a>, fcp<ezs.a> {
-      private final Builder<fae> a = ImmutableList.builder();
-      private final Builder<fcx> b = ImmutableList.builder();
-      private final Builder<fbc> c = ImmutableList.builder();
-      private fdt d = fdq.a(1.0F);
-      private fdt e = fdq.a(0.0F);
+   public static ezs c(int $$0) {
+      return new ezs(Optional.empty(), Optional.of(fdv.a((float)$$0)));
+   }
 
-      public ezs.a a(fdt $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public int a(ezt $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
 
-      public ezs.a a() {
-         return this;
-      }
+   public boolean b(ezt $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
 
-      public ezs.a b(fdt $$0) {
-         this.e = $$0;
-         return this;
-      }
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof fdv $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
 
-      public ezs.a a(fae.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   @FunctionalInterface
+   interface a {
+      boolean test(ezt var1, int var2);
+   }
 
-      public ezs.a a(fcx.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ezs.a a(fbc.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ezs b() {
-         return new ezs(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   @FunctionalInterface
+   interface b {
+      int apply(ezt var1, int var2);
    }
 }

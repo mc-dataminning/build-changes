@@ -30,11 +30,11 @@ public class bvo {
    public static final jf<bvk> B = a("slow_falling", new bvk(bvl.a, 15978425));
    public static final jf<bvk> C = a("conduit_power", new bvk(bvl.a, 1950417));
    public static final jf<bvk> D = a("dolphins_grace", new bvk(bvl.a, 8954814));
-   public static final jf<bvk> E = a("bad_omen", new bvf(bvl.c, 745784).a(awn.EU));
+   public static final jf<bvk> E = a("bad_omen", new bvf(bvl.c, 745784).a(awn.EO));
    public static final jf<bvk> F = a("hero_of_the_village", new bvk(bvl.a, 4521796));
    public static final jf<bvk> G = a("darkness", new bvk(bvl.b, 2696993).a(22));
-   public static final jf<bvk> H = a("trial_omen", new bvk(bvl.c, 1484454, ly.bh).a(awn.EV));
-   public static final jf<bvk> I = a("raid_omen", new bvr(bvl.c, 14565464, ly.bg).a(awn.EW));
+   public static final jf<bvk> H = a("trial_omen", new bvk(bvl.c, 1484454, ly.bh).a(awn.EP));
+   public static final jf<bvk> I = a("raid_omen", new bvr(bvl.c, 14565464, ly.bg).a(awn.EQ));
    public static final jf<bvk> J = a("wind_charged", new bvv(bvl.b, 12438015));
    public static final jf<bvk> K = a("weaving", new bvu(bvl.b, 7891290, $$0 -> azm.b($$0, 2, 3)));
    public static final jf<bvk> L = a("oozing", new bvp(bvl.b, 10092451, $$0 -> 2));

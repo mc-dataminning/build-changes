@@ -1,135 +1,1244 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
-public class dmt extends dmm implements dmu {
-   public static final MapCodec<dmt> a = b(dmt::new);
-   public static final ebf b = ebe.h;
-   private static final int c = 5;
+public class dmt {
+   private static final eas.f um = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof dze $$4 ? $$4.t() : true;
+   private static final eas.f un = ($$0x, $$1x, $$2) -> !$$0x.c(eal.c);
+   public static final dmr a = a("air", dlo::new, eas.d.a().p().b().g().m());
+   public static final dmr b = a("stone", eas.d.a().a(exe.l).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr c = a("granite", eas.d.a().a(exe.k).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr d = a("polished_granite", eas.d.a().a(exe.k).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr e = a("diorite", eas.d.a().a(exe.o).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr f = a("polished_diorite", eas.d.a().a(exe.o).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr g = a("andesite", eas.d.a().a(exe.l).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr h = a("polished_andesite", eas.d.a().a(exe.l).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr i = a("grass_block", dqg::new, eas.d.a().a(exe.b).e().d(0.6F).a(duo.d));
+   public static final dmr j = a("dirt", eas.d.a().a(exe.k).d(0.5F).a(duo.c));
+   public static final dmr k = a("coarse_dirt", eas.d.a().a(exe.k).d(0.5F).a(duo.c));
+   public static final dmr l = a("podzol", dul::new, eas.d.a().a(exe.I).d(0.5F).a(duo.c));
+   public static final dmr m = a("cobblestone", eas.d.a().a(exe.l).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr n = a("oak_planks", eas.d.a().a(exe.n).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr o = a("spruce_planks", eas.d.a().a(exe.I).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr p = a("birch_planks", eas.d.a().a(exe.c).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr q = a("jungle_planks", eas.d.a().a(exe.k).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr r = a("acacia_planks", eas.d.a().a(exe.p).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr s = a("cherry_planks", eas.d.a().a(exe.K).a(ebu.e).a(2.0F, 3.0F).a(duo.aW).i());
+   public static final dmr t = a("dark_oak_planks", eas.d.a().a(exe.A).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr u = a("pale_oak_wood", dtk::new, eas.d.a().a(exe.l).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr v = a("pale_oak_planks", eas.d.a().a(exe.o).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr w = a("mangrove_planks", eas.d.a().a(exe.C).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr x = a("bamboo_planks", eas.d.a().a(exe.s).a(ebu.e).a(2.0F, 3.0F).a(duo.aU).i());
+   public static final dmr y = a("bamboo_mosaic", eas.d.a().a(exe.s).a(ebu.e).a(2.0F, 3.0F).a(duo.aU).i());
+   public static final dmr z = a("oak_sapling", $$0x -> new dtn(eah.b, $$0x), eas.d.a().a(exe.h).b().e().d().a(duo.d).a(exf.b));
+   public static final dmr A = a("spruce_sapling", $$0x -> new dtn(eah.c, $$0x), eas.d.a().a(exe.h).b().e().d().a(duo.d).a(exf.b));
+   public static final dmr B = a("birch_sapling", $$0x -> new dtn(eah.f, $$0x), eas.d.a().a(exe.h).b().e().d().a(duo.d).a(exf.b));
+   public static final dmr C = a("jungle_sapling", $$0x -> new dtn(eah.g, $$0x), eas.d.a().a(exe.h).b().e().d().a(duo.d).a(exf.b));
+   public static final dmr D = a("acacia_sapling", $$0x -> new dtn(eah.h, $$0x), eas.d.a().a(exe.h).b().e().d().a(duo.d).a(exf.b));
+   public static final dmr E = a("cherry_sapling", $$0x -> new dtn(eah.i, $$0x), eas.d.a().a(exe.u).b().e().d().a(duo.aX).a(exf.b));
+   public static final dmr F = a("dark_oak_sapling", $$0x -> new dtn(eah.j, $$0x), eas.d.a().a(exe.h).b().e().d().a(duo.d).a(exf.b));
+   public static final dmr G = a("pale_oak_sapling", $$0x -> new dtn(eah.k, $$0x), eas.d.a().a(exe.g).b().e().d().a(duo.d).a(exf.b));
+   public static final dmr H = a("mangrove_propagule", $$0x -> new drs(eah.d, $$0x), eas.d.a().a(exe.h).b().e().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr I = a("bedrock", eas.d.a().a(exe.l).a(ebu.b).a(-1.0F, 3600000.0F).g().a(dmt::a));
+   public static final dmr J = a("water", $$0x -> new drn(exb.c, $$0x), eas.d.a().a(exe.m).p().b().d(100.0F).a(exf.b).g().j().a(duo.a));
+   public static final dmr K = a("lava", $$0x -> new drn(exb.e, $$0x), eas.d.a().a(exe.e).p().b().e().d(100.0F).a($$0x -> 15).a(exf.b).g().j().a(duo.a));
+   public static final dmr L = a("sand", $$0x -> new dtm(new ayf(14406560), $$0x), eas.d.a().a(exe.c).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr M = a("suspicious_sand", $$0x -> new dmx(L, awn.cT, awn.cT, $$0x), eas.d.a().a(exe.c).a(ebu.c).d(0.25F).a(duo.bb).a(exf.b));
+   public static final dmr N = a("red_sand", $$0x -> new dtm(new ayf(11098145), $$0x), eas.d.a().a(exe.p).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr O = a("gravel", $$0x -> new doa(new ayf(-8356741), $$0x), eas.d.a().a(exe.l).a(ebu.c).d(0.6F).a(duo.c));
+   public static final dmr P = a("suspicious_gravel", $$0x -> new dmx(O, awn.cU, awn.cU, $$0x), eas.d.a().a(exe.l).a(ebu.c).d(0.25F).a(duo.bc).a(exf.b));
+   public static final dmr Q = a("gold_ore", $$0x -> new dpc(bti.a(0), $$0x), eas.d.a().a(exe.l).a(ebu.b).n().a(3.0F, 3.0F));
+   public static final dmr R = a("deepslate_gold_ore", $$0x -> new dpc(bti.a(0), $$0x), eas.d.b(Q).a(exe.ah).a(4.5F, 3.0F).a(duo.aG));
+   public static final dmr S = a("iron_ore", $$0x -> new dpc(bti.a(0), $$0x), eas.d.a().a(exe.l).a(ebu.b).n().a(3.0F, 3.0F));
+   public static final dmr T = a("deepslate_iron_ore", $$0x -> new dpc(bti.a(0), $$0x), eas.d.b(S).a(exe.ah).a(4.5F, 3.0F).a(duo.aG));
+   public static final dmr U = a("coal_ore", $$0x -> new dpc(btr.a(0, 2), $$0x), eas.d.a().a(exe.l).a(ebu.b).n().a(3.0F, 3.0F));
+   public static final dmr V = a("deepslate_coal_ore", $$0x -> new dpc(btr.a(0, 2), $$0x), eas.d.b(U).a(exe.ah).a(4.5F, 3.0F).a(duo.aG));
+   public static final dmr W = a("nether_gold_ore", $$0x -> new dpc(btr.a(0, 1), $$0x), eas.d.a().a(exe.J).a(ebu.b).n().a(3.0F, 3.0F).a(duo.V));
+   public static final dmr X = a("oak_log", dtk::new, a(exe.n, exe.I, duo.b));
+   public static final dmr Y = a("spruce_log", dtk::new, a(exe.I, exe.A, duo.b));
+   public static final dmr Z = a("birch_log", dtk::new, a(exe.c, exe.o, duo.b));
+   public static final dmr aa = a("jungle_log", dtk::new, a(exe.k, exe.I, duo.b));
+   public static final dmr ab = a("acacia_log", dtk::new, a(exe.p, exe.l, duo.b));
+   public static final dmr ac = a("cherry_log", dtk::new, a(exe.K, exe.R, duo.aW));
+   public static final dmr ad = a("dark_oak_log", dtk::new, a(exe.A, exe.A, duo.b));
+   public static final dmr ae = a("pale_oak_log", dtk::new, a(v.w(), u.w(), duo.b));
+   public static final dmr af = a("mangrove_log", dtk::new, a(exe.C, exe.I, duo.b));
+   public static final dmr ag = a("mangrove_roots", drt::new, eas.d.a().a(exe.I).a(ebu.e).d(0.7F).a(duo.aM).c().b(dmt::b).c(dmt::b).c().i());
+   public static final dmr ah = a("muddy_mangrove_roots", dtk::new, eas.d.a().a(exe.I).d(0.7F).a(duo.aN));
+   public static final dmr ai = a("bamboo_block", dtk::new, a(exe.s, exe.h, duo.aU));
+   public static final dmr aj = a("stripped_spruce_log", dtk::new, a(exe.I, exe.I, duo.b));
+   public static final dmr ak = a("stripped_birch_log", dtk::new, a(exe.c, exe.c, duo.b));
+   public static final dmr al = a("stripped_jungle_log", dtk::new, a(exe.k, exe.k, duo.b));
+   public static final dmr am = a("stripped_acacia_log", dtk::new, a(exe.p, exe.p, duo.b));
+   public static final dmr an = a("stripped_cherry_log", dtk::new, a(exe.K, exe.Q, duo.aW));
+   public static final dmr ao = a("stripped_dark_oak_log", dtk::new, a(exe.A, exe.A, duo.b));
+   public static final dmr ap = a("stripped_pale_oak_log", dtk::new, a(v.w(), v.w(), duo.b));
+   public static final dmr aq = a("stripped_oak_log", dtk::new, a(exe.n, exe.n, duo.b));
+   public static final dmr ar = a("stripped_mangrove_log", dtk::new, a(exe.C, exe.C, duo.b));
+   public static final dmr as = a("stripped_bamboo_block", dtk::new, a(exe.s, exe.s, duo.aU));
+   public static final dmr at = a("oak_wood", dtk::new, eas.d.a().a(exe.n).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr au = a("spruce_wood", dtk::new, eas.d.a().a(exe.I).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr av = a("birch_wood", dtk::new, eas.d.a().a(exe.c).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aw = a("jungle_wood", dtk::new, eas.d.a().a(exe.k).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr ax = a("acacia_wood", dtk::new, eas.d.a().a(exe.v).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr ay = a("cherry_wood", dtk::new, eas.d.a().a(exe.R).a(ebu.e).d(2.0F).a(duo.aW).i());
+   public static final dmr az = a("dark_oak_wood", dtk::new, eas.d.a().a(exe.A).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aA = a("mangrove_wood", dtk::new, eas.d.a().a(exe.C).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aB = a("stripped_oak_wood", dtk::new, eas.d.a().a(exe.n).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aC = a("stripped_spruce_wood", dtk::new, eas.d.a().a(exe.I).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aD = a("stripped_birch_wood", dtk::new, eas.d.a().a(exe.c).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aE = a("stripped_jungle_wood", dtk::new, eas.d.a().a(exe.k).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aF = a("stripped_acacia_wood", dtk::new, eas.d.a().a(exe.p).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aG = a("stripped_cherry_wood", dtk::new, eas.d.a().a(exe.Q).a(ebu.e).d(2.0F).a(duo.aW).i());
+   public static final dmr aH = a("stripped_dark_oak_wood", dtk::new, eas.d.a().a(exe.A).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aI = a("stripped_pale_oak_wood", dtk::new, eas.d.a().a(v.w()).a(ebu.e).d(2.0F).a(duo.b).i());
+   public static final dmr aJ = a("stripped_mangrove_wood", dtk::new, a(exe.C, exe.C, duo.b));
+   public static final dmr aK = a("oak_leaves", $$0x -> new dvo(0.01F, $$0x), a(duo.d));
+   public static final dmr aL = a("spruce_leaves", $$0x -> new dvo(0.01F, $$0x), a(duo.d));
+   public static final dmr aM = a("birch_leaves", $$0x -> new dvo(0.01F, $$0x), a(duo.d));
+   public static final dmr aN = a("jungle_leaves", $$0x -> new dvo(0.01F, $$0x), a(duo.d));
+   public static final dmr aO = a("acacia_leaves", $$0x -> new dvo(0.01F, $$0x), a(duo.d));
+   public static final dmr aP = a(
+      "cherry_leaves", $$0x -> new dwb(0.1F, ly.H, $$0x), eas.d.a().a(exe.u).d(0.2F).e().a(duo.aY).c().a(dmt::c).b(dmt::b).c(dmt::b).i().a(exf.b).a(dmt::b)
+   );
+   public static final dmr aQ = a("dark_oak_leaves", $$0x -> new dvo(0.01F, $$0x), a(duo.d));
+   public static final dmr aR = a(
+      "pale_oak_leaves", $$0x -> new dwb(0.02F, ly.I, $$0x), eas.d.a().a(exe.g).d(0.2F).e().a(duo.d).c().a(dmt::c).b(dmt::b).c(dmt::b).i().a(exf.b).a(dmt::b)
+   );
+   public static final dmr aS = a("mangrove_leaves", $$0x -> new drr(0.01F, $$0x), a(duo.d));
+   public static final dmr aT = a("azalea_leaves", $$0x -> new dwb(0.01F, lr.a(ly.J, -9399763), $$0x), a(duo.az));
+   public static final dmr aU = a("flowering_azalea_leaves", $$0x -> new dwb(0.01F, lr.a(ly.J, -9399763), $$0x), a(duo.az));
+   public static final dmr aV = a("sponge", duq::new, eas.d.a().a(exe.s).d(0.6F).a(duo.bg));
+   public static final dmr aW = a("wet_sponge", dwz::new, eas.d.a().a(exe.s).d(0.6F).a(duo.bh));
+   public static final dmr aX = a("glass", dvs::new, eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c().a(dmt::a).a(dmt::b).b(dmt::b).c(dmt::b));
+   public static final dmr aY = a("lapis_ore", $$0x -> new dpc(btr.a(2, 5), $$0x), eas.d.a().a(exe.l).a(ebu.b).n().a(3.0F, 3.0F));
+   public static final dmr aZ = a("deepslate_lapis_ore", $$0x -> new dpc(btr.a(2, 5), $$0x), eas.d.b(aY).a(exe.ah).a(4.5F, 3.0F).a(duo.aG));
+   public static final dmr ba = a("lapis_block", eas.d.a().a(exe.G).n().a(3.0F, 3.0F));
+   public static final dmr bb = a("dispenser", dox::new, eas.d.a().a(exe.l).a(ebu.b).n().d(3.5F));
+   public static final dmr bc = a("sandstone", eas.d.a().a(exe.c).a(ebu.b).n().d(0.8F));
+   public static final dmr bd = a("chiseled_sandstone", eas.d.a().a(exe.c).a(ebu.b).n().d(0.8F));
+   public static final dmr be = a("cut_sandstone", eas.d.a().a(exe.c).a(ebu.b).n().d(0.8F));
+   public static final dmr bf = a("note_block", dsh::new, eas.d.a().a(exe.n).a(ebu.e).a(duo.b).d(0.8F).i());
+   public static final dmr bg = a("white_bed", cyl.a);
+   public static final dmr bh = a("orange_bed", cyl.b);
+   public static final dmr bi = a("magenta_bed", cyl.c);
+   public static final dmr bj = a("light_blue_bed", cyl.d);
+   public static final dmr bk = a("yellow_bed", cyl.e);
+   public static final dmr bl = a("lime_bed", cyl.f);
+   public static final dmr bm = a("pink_bed", cyl.g);
+   public static final dmr bn = a("gray_bed", cyl.h);
+   public static final dmr bo = a("light_gray_bed", cyl.i);
+   public static final dmr bp = a("cyan_bed", cyl.j);
+   public static final dmr bq = a("purple_bed", cyl.k);
+   public static final dmr br = a("blue_bed", cyl.l);
+   public static final dmr bs = a("brown_bed", cyl.m);
+   public static final dmr bt = a("green_bed", cyl.n);
+   public static final dmr bu = a("red_bed", cyl.o);
+   public static final dmr bv = a("black_bed", cyl.p);
+   public static final dmr bw = a("powered_rail", dsu::new, eas.d.a().b().d(0.7F).a(duo.g));
+   public static final dmr bx = a("detector_rail", dot::new, eas.d.a().b().d(0.7F).a(duo.g));
+   public static final dmr by = a("sticky_piston", $$0x -> new eal(true, $$0x), a());
+   public static final dmr bz = a("cobweb", dwv::new, eas.d.a().a(exe.d).a(duo.bl).k().b().n().d(4.0F).a(exf.b));
+   public static final dmr bA = a("short_grass", dvh::new, eas.d.a().a(exe.h).p().b().d().a(duo.d).a(eas.c.c).i().a(exf.b));
+   public static final dmr bB = a("fern", dvh::new, eas.d.a().a(exe.h).p().b().d().a(duo.d).a(eas.c.c).i().a(exf.b));
+   public static final dmr bC = a("dead_bush", dpe::new, eas.d.a().a(exe.n).p().b().d().a(duo.d).i().a(exf.b));
+   public static final dmr bD = a("bush", dnb::new, eas.d.a().a(exe.h).p().b().d().a(duo.d).i().a(exf.b));
+   public static final dmr bE = a("short_dry_grass", dtz::new, eas.d.a().a(exe.s).p().b().d().a(duo.d).i().a(exf.b));
+   public static final dmr bF = a("tall_dry_grass", dvf::new, eas.d.a().a(exe.s).p().b().d().a(duo.d).i().a(exf.b));
+   public static final dmr bG = a("seagrass", dtx::new, eas.d.a().a(exe.m).p().b().d().a(duo.q).a(exf.b));
+   public static final dmr bH = a("tall_seagrass", dvi::new, eas.d.a().a(exe.m).p().b().d().a(duo.q).a(eas.c.b).a(exf.b));
+   public static final dmr bI = a("piston", $$0x -> new eal(false, $$0x), a());
+   public static final dmr bJ = a("piston_head", eam::new, eas.d.a().a(exe.l).d(1.5F).g().a(exf.c));
+   public static final dmr bK = a("white_wool", eas.d.a().a(exe.i).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bL = a("orange_wool", eas.d.a().a(exe.p).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bM = a("magenta_wool", eas.d.a().a(exe.q).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bN = a("light_blue_wool", eas.d.a().a(exe.r).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bO = a("yellow_wool", eas.d.a().a(exe.s).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bP = a("lime_wool", eas.d.a().a(exe.t).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bQ = a("pink_wool", eas.d.a().a(exe.u).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bR = a("gray_wool", eas.d.a().a(exe.v).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bS = a("light_gray_wool", eas.d.a().a(exe.w).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bT = a("cyan_wool", eas.d.a().a(exe.x).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bU = a("purple_wool", eas.d.a().a(exe.y).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bV = a("blue_wool", eas.d.a().a(exe.z).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bW = a("brown_wool", eas.d.a().a(exe.A).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bX = a("green_wool", eas.d.a().a(exe.B).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bY = a("red_wool", eas.d.a().a(exe.C).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr bZ = a("black_wool", eas.d.a().a(exe.D).a(ebu.h).d(0.8F).a(duo.i).i());
+   public static final dmr ca = a("moving_piston", eak::new, eas.d.a().a(exe.l).k().d(-1.0F).f().g().c().a(dmt::b).b(dmt::b).c(dmt::b).a(exf.c));
+   public static final dmr cb = a("dandelion", $$0x -> new dpx(bvo.w, 0.35F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr cc = a("torchflower", $$0x -> new dpx(bvo.p, 5.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr cd = a("poppy", $$0x -> new dpx(bvo.p, 5.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr ce = a("blue_orchid", $$0x -> new dpx(bvo.w, 0.35F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr cf = a("allium", $$0x -> new dpx(bvo.l, 3.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr cg = a("azure_bluet", $$0x -> new dpx(bvo.o, 11.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr ch = a("red_tulip", $$0x -> new dpx(bvo.r, 7.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr ci = a("orange_tulip", $$0x -> new dpx(bvo.r, 7.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr cj = a("white_tulip", $$0x -> new dpx(bvo.r, 7.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr ck = a("pink_tulip", $$0x -> new dpx(bvo.r, 7.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr cl = a("oxeye_daisy", $$0x -> new dpx(bvo.j, 7.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr cm = a("cornflower", $$0x -> new dpx(bvo.h, 5.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr cn = a("wither_rose", $$0x -> new dxa(bvo.t, 7.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr co = a("lily_of_the_valley", $$0x -> new dpx(bvo.s, 11.0F, $$0x), eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).a(exf.b));
+   public static final dmr cp = a("brown_mushroom", $$0x -> new dsa(rn.e, $$0x), eas.d.a().a(exe.A).b().e().d().a(duo.d).a($$0x -> 1).d(dmt::a).a(exf.b));
+   public static final dmr cq = a("red_mushroom", $$0x -> new dsa(rn.f, $$0x), eas.d.a().a(exe.C).b().e().d().a(duo.d).d(dmt::a).a(exf.b));
+   public static final dmr cr = a("gold_block", eas.d.a().a(exe.E).a(ebu.g).n().a(3.0F, 6.0F).a(duo.g));
+   public static final dmr cs = a("iron_block", eas.d.a().a(exe.g).a(ebu.k).n().a(5.0F, 6.0F).a(duo.bp));
+   public static final dmr ct = a("bricks", eas.d.a().a(exe.C).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr cu = a("tnt", dvp::new, eas.d.a().a(exe.e).d().a(duo.d).i().a(dmt::b));
+   public static final dmr cv = a("bookshelf", eas.d.a().a(exe.n).a(ebu.e).d(1.5F).a(duo.b).i());
+   public static final dmr cw = a("chiseled_bookshelf", dnw::new, eas.d.a().a(exe.n).a(ebu.e).d(1.5F).a(duo.ba).i());
+   public static final dmr cx = a("mossy_cobblestone", eas.d.a().a(exe.l).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr cy = a("obsidian", eas.d.a().a(exe.D).a(ebu.b).n().a(50.0F, 1200.0F));
+   public static final dmr cz = a("torch", $$0x -> new dvq(ly.F, $$0x), eas.d.a().b().d().a($$0x -> 14).a(duo.b).a(exf.b));
+   public static final dmr cA = a("wall_torch", $$0x -> new dwk(ly.F, $$0x), a(cz, true).b().d().a($$0x -> 14).a(duo.b).a(exf.b));
+   public static final dmr cB = a("fire", dpt::new, eas.d.a().a(exe.e).p().b().d().a($$0x -> 15).a(duo.i).a(exf.b));
+   public static final dmr cC = a("soul_fire", dum::new, eas.d.a().a(exe.r).p().b().d().a($$0x -> 10).a(duo.i).a(exf.b));
+   public static final dmr cD = a("spawner", dup::new, eas.d.a().a(exe.l).a(ebu.b).n().d(5.0F).a(duo.bm).c());
+   public static final dmr cE = a("creaking_heart", don::new, eas.d.a().a(exe.p).a(ebu.b).d(10.0F).a(duo.bj));
+   public static final dmr cF = a("oak_stairs", n);
+   public static final dmr cG = a("chest", $$0x -> new dnv(() -> dxt.b, $$0x), eas.d.a().a(exe.n).a(ebu.e).d(2.5F).a(duo.b).i());
+   public static final dmr cH = a("redstone_wire", dta::new, eas.d.a().b().d().a(exf.b));
+   public static final dmr cI = a("diamond_ore", $$0x -> new dpc(btr.a(3, 7), $$0x), eas.d.a().a(exe.l).a(ebu.b).n().a(3.0F, 3.0F));
+   public static final dmr cJ = a("deepslate_diamond_ore", $$0x -> new dpc(btr.a(3, 7), $$0x), eas.d.b(cI).a(exe.ah).a(4.5F, 3.0F).a(duo.aG));
+   public static final dmr cK = a("diamond_block", eas.d.a().a(exe.F).n().a(5.0F, 6.0F).a(duo.g));
+   public static final dmr cL = a("crafting_table", dom::new, eas.d.a().a(exe.n).a(ebu.e).d(2.5F).a(duo.b).i());
+   public static final dmr cM = a("wheat", doo::new, eas.d.a().a($$0x -> $$0x.c(doo.f) >= 6 ? exe.s : exe.h).b().e().d().a(duo.w).a(exf.b));
+   public static final dmr cN = a("farmland", dpq::new, eas.d.a().a(exe.k).e().d(0.6F).a(duo.c).c(dmt::a).b(dmt::a));
+   public static final dmr cO = a("furnace", dqc::new, eas.d.a().a(exe.l).a(ebu.b).n().d(3.5F).a(a(13)));
+   public static final dmr cP = a("oak_sign", $$0x -> new duw(ech.b, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cQ = a("spruce_sign", $$0x -> new duw(ech.c, $$0x), eas.d.a().a(Y.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cR = a("birch_sign", $$0x -> new duw(ech.d, $$0x), eas.d.a().a(exe.c).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cS = a("acacia_sign", $$0x -> new duw(ech.e, $$0x), eas.d.a().a(exe.p).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cT = a("cherry_sign", $$0x -> new duw(ech.f, $$0x), eas.d.a().a(s.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cU = a("jungle_sign", $$0x -> new duw(ech.g, $$0x), eas.d.a().a(aa.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cV = a("dark_oak_sign", $$0x -> new duw(ech.h, $$0x), eas.d.a().a(ad.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cW = a("pale_oak_sign", $$0x -> new duw(ech.i, $$0x), eas.d.a().a(v.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cX = a("mangrove_sign", $$0x -> new duw(ech.l, $$0x), eas.d.a().a(af.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cY = a("bamboo_sign", $$0x -> new duw(ech.m, $$0x), eas.d.a().a(x.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr cZ = a("oak_door", $$0x -> new doy(ebi.g, $$0x), eas.d.a().a(n.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr da = a("ladder", drc::new, eas.d.a().l().d(0.4F).a(duo.m).c().a(exf.b));
+   public static final dmr db = a("rail", dsx::new, eas.d.a().b().d(0.7F).a(duo.g));
+   public static final dmr dc = a("cobblestone_stairs", m);
+   public static final dmr dd = a("oak_wall_sign", $$0x -> new dwi(ech.b, $$0x), a(cP, true).a(exe.n).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr de = a("spruce_wall_sign", $$0x -> new dwi(ech.c, $$0x), a(cQ, true).a(Y.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr df = a("birch_wall_sign", $$0x -> new dwi(ech.d, $$0x), a(cR, true).a(exe.c).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dg = a("acacia_wall_sign", $$0x -> new dwi(ech.e, $$0x), a(cS, true).a(exe.p).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dh = a("cherry_wall_sign", $$0x -> new dwi(ech.f, $$0x), a(cT, true).a(ac.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr di = a("jungle_wall_sign", $$0x -> new dwi(ech.g, $$0x), a(cU, true).a(aa.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dj = a("dark_oak_wall_sign", $$0x -> new dwi(ech.h, $$0x), a(cV, true).a(ad.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dk = a("pale_oak_wall_sign", $$0x -> new dwi(ech.i, $$0x), a(cW, true).a(v.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dl = a("mangrove_wall_sign", $$0x -> new dwi(ech.l, $$0x), a(cX, true).a(af.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dm = a("bamboo_wall_sign", $$0x -> new dwi(ech.m, $$0x), a(cY, true).a(x.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dn = a("oak_hanging_sign", $$0x -> new dns(ech.b, $$0x), eas.d.a().a(X.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr do = a("spruce_hanging_sign", $$0x -> new dns(ech.c, $$0x), eas.d.a().a(Y.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dp = a("birch_hanging_sign", $$0x -> new dns(ech.d, $$0x), eas.d.a().a(exe.c).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dq = a("acacia_hanging_sign", $$0x -> new dns(ech.e, $$0x), eas.d.a().a(exe.p).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dr = a("cherry_hanging_sign", $$0x -> new dns(ech.f, $$0x), eas.d.a().a(exe.Q).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr ds = a("jungle_hanging_sign", $$0x -> new dns(ech.g, $$0x), eas.d.a().a(aa.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dt = a("dark_oak_hanging_sign", $$0x -> new dns(ech.h, $$0x), eas.d.a().a(ad.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr du = a("pale_oak_hanging_sign", $$0x -> new dns(ech.i, $$0x), eas.d.a().a(v.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dv = a("crimson_hanging_sign", $$0x -> new dns(ech.j, $$0x), eas.d.a().a(exe.ab).k().a(ebu.e).b().d(1.0F));
+   public static final dmr dw = a("warped_hanging_sign", $$0x -> new dns(ech.k, $$0x), eas.d.a().a(exe.ae).k().a(ebu.e).b().d(1.0F));
+   public static final dmr dx = a("mangrove_hanging_sign", $$0x -> new dns(ech.l, $$0x), eas.d.a().a(af.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dy = a("bamboo_hanging_sign", $$0x -> new dns(ech.m, $$0x), eas.d.a().a(exe.s).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dz = a("oak_wall_hanging_sign", $$0x -> new dwh(ech.b, $$0x), a(dn, true).a(X.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dA = a("spruce_wall_hanging_sign", $$0x -> new dwh(ech.c, $$0x), a(do, true).a(exe.n).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dB = a("birch_wall_hanging_sign", $$0x -> new dwh(ech.d, $$0x), a(dp, true).a(exe.c).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dC = a("acacia_wall_hanging_sign", $$0x -> new dwh(ech.e, $$0x), a(dq, true).a(exe.p).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dD = a("cherry_wall_hanging_sign", $$0x -> new dwh(ech.f, $$0x), a(dr, true).a(exe.Q).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dE = a("jungle_wall_hanging_sign", $$0x -> new dwh(ech.g, $$0x), a(ds, true).a(aa.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dF = a("dark_oak_wall_hanging_sign", $$0x -> new dwh(ech.h, $$0x), a(dt, true).a(ad.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dG = a("pale_oak_wall_hanging_sign", $$0x -> new dwh(ech.i, $$0x), a(du, true).a(v.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dH = a("mangrove_wall_hanging_sign", $$0x -> new dwh(ech.l, $$0x), a(dx, true).a(af.w()).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dI = a("crimson_wall_hanging_sign", $$0x -> new dwh(ech.j, $$0x), a(dv, true).a(exe.ab).k().a(ebu.e).b().d(1.0F));
+   public static final dmr dJ = a("warped_wall_hanging_sign", $$0x -> new dwh(ech.k, $$0x), a(dw, true).a(exe.ae).k().a(ebu.e).b().d(1.0F));
+   public static final dmr dK = a("bamboo_wall_hanging_sign", $$0x -> new dwh(ech.m, $$0x), a(dy, true).a(exe.s).k().a(ebu.e).b().d(1.0F).i());
+   public static final dmr dL = a("lever", drk::new, eas.d.a().b().d(0.5F).a(duo.f).a(exf.b));
+   public static final dmr dM = a("stone_pressure_plate", $$0x -> new dsv(ebi.e, $$0x), eas.d.a().a(exe.l).k().a(ebu.b).b().d(0.5F).a(exf.b));
+   public static final dmr dN = a("iron_door", $$0x -> new doy(ebi.b, $$0x), eas.d.a().a(exe.g).d(5.0F).c().a(exf.b));
+   public static final dmr dO = a("oak_pressure_plate", $$0x -> new dsv(ebi.g, $$0x), eas.d.a().a(n.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dP = a("spruce_pressure_plate", $$0x -> new dsv(ebi.h, $$0x), eas.d.a().a(o.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dQ = a("birch_pressure_plate", $$0x -> new dsv(ebi.i, $$0x), eas.d.a().a(p.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dR = a("jungle_pressure_plate", $$0x -> new dsv(ebi.l, $$0x), eas.d.a().a(q.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dS = a("acacia_pressure_plate", $$0x -> new dsv(ebi.j, $$0x), eas.d.a().a(r.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dT = a("cherry_pressure_plate", $$0x -> new dsv(ebi.k, $$0x), eas.d.a().a(s.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dU = a("dark_oak_pressure_plate", $$0x -> new dsv(ebi.m, $$0x), eas.d.a().a(t.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dV = a("pale_oak_pressure_plate", $$0x -> new dsv(ebi.n, $$0x), eas.d.a().a(v.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dW = a("mangrove_pressure_plate", $$0x -> new dsv(ebi.q, $$0x), eas.d.a().a(w.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dX = a("bamboo_pressure_plate", $$0x -> new dsv(ebi.r, $$0x), eas.d.a().a(x.w()).k().a(ebu.e).b().d(0.5F).i().a(exf.b));
+   public static final dmr dY = a("redstone_ore", dsz::new, eas.d.a().a(exe.l).a(ebu.b).n().e().a(a(9)).a(3.0F, 3.0F));
+   public static final dmr dZ = a("deepslate_redstone_ore", dsz::new, eas.d.b(dY).a(exe.ah).a(4.5F, 3.0F).a(duo.aG));
+   public static final dmr ea = a("redstone_torch", dtc::new, eas.d.a().b().d().a(a(7)).a(duo.b).a(exf.b));
+   public static final dmr eb = a("redstone_wall_torch", dtd::new, a(ea, true).b().d().a(a(7)).a(duo.b).a(exf.b));
+   public static final dmr ec = a("stone_button", $$0x -> new dnc(ebi.e, 20, $$0x), b());
+   public static final dmr ed = a("snow", duk::new, eas.d.a().a(exe.i).p().l().e().d(0.1F).n().a(duo.k).c(($$0x, $$1x, $$2) -> $$0x.c(duk.c) >= 8).a(exf.b));
+   public static final dmr ee = a("ice", dqu::new, eas.d.a().a(exe.f).a(0.98F).e().d(0.5F).a(duo.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bwr.aU).a(dmt::b));
+   public static final dmr ef = a("snow_block", eas.d.a().a(exe.i).n().d(0.2F).a(duo.k));
+   public static final dmr eg = a("cactus", dnd::new, eas.d.a().a(exe.h).e().d(0.4F).a(duo.i).a(exf.b));
+   public static final dmr eh = a("cactus_flower", dne::new, eas.d.a().a(exe.u).b().d().i().a(duo.ao).a(exf.b));
+   public static final dmr ei = a("clay", eas.d.a().a(exe.j).a(ebu.f).d(0.6F).a(duo.c));
+   public static final dmr ej = a("sugar_cane", dvb::new, eas.d.a().a(exe.h).b().e().d().a(duo.d).a(exf.b));
+   public static final dmr ek = a("jukebox", dqz::new, eas.d.a().a(exe.k).a(ebu.e).a(2.0F, 6.0F).a(duo.b).i());
+   public static final dmr el = a("oak_fence", dpr::new, eas.d.a().a(n.w()).k().a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr em = a("netherrack", dsg::new, eas.d.a().a(exe.J).a(ebu.b).n().d(0.4F).a(duo.M));
+   public static final dmr en = a("soul_sand", dun::new, eas.d.a().a(exe.A).a(ebu.l).d(0.5F).b(0.4F).a(duo.I).a(dmt::b).a(dmt::a).c(dmt::a).b(dmt::a));
+   public static final dmr eo = a("soul_soil", eas.d.a().a(exe.A).d(0.5F).a(duo.J));
+   public static final dmr ep = a("basalt", dtk::new, eas.d.a().a(exe.D).a(ebu.b).n().a(1.25F, 4.2F).a(duo.K));
+   public static final dmr eq = a("polished_basalt", dtk::new, eas.d.a().a(exe.D).a(ebu.b).n().a(1.25F, 4.2F).a(duo.K));
+   public static final dmr er = a("soul_torch", $$0x -> new dvq(ly.N, $$0x), eas.d.a().b().d().a($$0x -> 10).a(duo.b).a(exf.b));
+   public static final dmr es = a("soul_wall_torch", $$0x -> new dwk(ly.N, $$0x), a(er, true).b().d().a($$0x -> 10).a(duo.b).a(exf.b));
+   public static final dmr et = a("glowstone", eas.d.a().a(exe.c).a(ebu.p).d(0.3F).a(duo.h).a($$0x -> 15).a(dmt::b));
+   public static final dmr eu = a("nether_portal", dsc::new, eas.d.a().b().e().d(-1.0F).a(duo.h).a($$0x -> 11).a(exf.c));
+   public static final dmr ev = a("carved_pumpkin", dnn::new, eas.d.a().a(exe.p).d(1.0F).a(duo.b).a(dmt::b).a(exf.b));
+   public static final dmr ew = a("jack_o_lantern", dnn::new, eas.d.a().a(exe.p).d(1.0F).a(duo.b).a($$0x -> 15).a(dmt::b).a(exf.b));
+   public static final dmr ex = a("cake", dnf::new, eas.d.a().k().d(0.5F).a(duo.i).a(exf.b));
+   public static final dmr ey = a("repeater", dtf::new, eas.d.a().d().a(duo.f).a(exf.b));
+   public static final dmr ez = b("white_stained_glass", cyl.a);
+   public static final dmr eA = b("orange_stained_glass", cyl.b);
+   public static final dmr eB = b("magenta_stained_glass", cyl.c);
+   public static final dmr eC = b("light_blue_stained_glass", cyl.d);
+   public static final dmr eD = b("yellow_stained_glass", cyl.e);
+   public static final dmr eE = b("lime_stained_glass", cyl.f);
+   public static final dmr eF = b("pink_stained_glass", cyl.g);
+   public static final dmr eG = b("gray_stained_glass", cyl.h);
+   public static final dmr eH = b("light_gray_stained_glass", cyl.i);
+   public static final dmr eI = b("cyan_stained_glass", cyl.j);
+   public static final dmr eJ = b("purple_stained_glass", cyl.k);
+   public static final dmr eK = b("blue_stained_glass", cyl.l);
+   public static final dmr eL = b("brown_stained_glass", cyl.m);
+   public static final dmr eM = b("green_stained_glass", cyl.n);
+   public static final dmr eN = b("red_stained_glass", cyl.o);
+   public static final dmr eO = b("black_stained_glass", cyl.p);
+   public static final dmr eP = a("oak_trapdoor", $$0x -> new dvt(ebi.g, $$0x), eas.d.a().a(exe.n).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eQ = a("spruce_trapdoor", $$0x -> new dvt(ebi.h, $$0x), eas.d.a().a(exe.I).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eR = a("birch_trapdoor", $$0x -> new dvt(ebi.i, $$0x), eas.d.a().a(exe.c).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eS = a("jungle_trapdoor", $$0x -> new dvt(ebi.l, $$0x), eas.d.a().a(exe.k).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eT = a("acacia_trapdoor", $$0x -> new dvt(ebi.j, $$0x), eas.d.a().a(exe.p).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eU = a("cherry_trapdoor", $$0x -> new dvt(ebi.k, $$0x), eas.d.a().a(exe.K).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eV = a("dark_oak_trapdoor", $$0x -> new dvt(ebi.m, $$0x), eas.d.a().a(exe.A).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eW = a("pale_oak_trapdoor", $$0x -> new dvt(ebi.n, $$0x), eas.d.a().a(v.w()).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eX = a("mangrove_trapdoor", $$0x -> new dvt(ebi.q, $$0x), eas.d.a().a(exe.C).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eY = a("bamboo_trapdoor", $$0x -> new dvt(ebi.r, $$0x), eas.d.a().a(exe.s).a(ebu.e).d(3.0F).c().a(dmt::a).i());
+   public static final dmr eZ = a("stone_bricks", eas.d.a().a(exe.l).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr fa = a("mossy_stone_bricks", eas.d.a().a(exe.l).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr fb = a("cracked_stone_bricks", eas.d.a().a(exe.l).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr fc = a("chiseled_stone_bricks", eas.d.a().a(exe.l).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr fd = a("packed_mud", eas.d.b(j).a(1.0F, 3.0F).a(duo.aQ));
+   public static final dmr fe = a("mud_bricks", eas.d.a().a(exe.S).a(ebu.b).n().a(1.5F, 3.0F).a(duo.aP));
+   public static final dmr ff = a("infested_stone", $$0x -> new dqv(b, $$0x), eas.d.a().a(exe.j));
+   public static final dmr fg = a("infested_cobblestone", $$0x -> new dqv(m, $$0x), eas.d.a().a(exe.j));
+   public static final dmr fh = a("infested_stone_bricks", $$0x -> new dqv(eZ, $$0x), eas.d.a().a(exe.j));
+   public static final dmr fi = a("infested_mossy_stone_bricks", $$0x -> new dqv(fa, $$0x), eas.d.a().a(exe.j));
+   public static final dmr fj = a("infested_cracked_stone_bricks", $$0x -> new dqv(fb, $$0x), eas.d.a().a(exe.j));
+   public static final dmr fk = a("infested_chiseled_stone_bricks", $$0x -> new dqv(fc, $$0x), eas.d.a().a(exe.j));
+   public static final dmr fl = a("brown_mushroom_block", dqt::new, eas.d.a().a(exe.k).a(ebu.e).d(0.2F).a(duo.b).i());
+   public static final dmr fm = a("red_mushroom_block", dqt::new, eas.d.a().a(exe.C).a(ebu.e).d(0.2F).a(duo.b).i());
+   public static final dmr fn = a("mushroom_stem", dqt::new, eas.d.a().a(exe.d).a(ebu.e).d(0.2F).a(duo.b).i());
+   public static final dmr fo = a("iron_bars", dqx::new, eas.d.a().n().a(5.0F, 6.0F).a(duo.bp).c());
+   public static final dmr fp = a("chain", dnt::new, eas.d.a().k().n().a(5.0F, 6.0F).a(duo.U).c());
+   public static final dmr fq = a("glass_pane", dqx::new, eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr fr = a(aku.a, dsw::new, eas.d.a().a(exe.p).a(ebu.m).d(1.0F).a(duo.b).a(exf.b));
+   public static final dmr fs = a(aku.d, eas.d.a().a(exe.t).d(1.0F).a(duo.b).a(exf.b));
+   public static final dmr ft = a(aku.c, $$0x -> new dls(aku.b, aku.a, akv.a, $$0x), eas.d.a().a(exe.h).b().d().a(duo.b).a(exf.b));
+   public static final dmr fu = a(aku.f, $$0x -> new dls(aku.e, aku.d, akv.b, $$0x), eas.d.a().a(exe.h).b().d().a(duo.b).a(exf.b));
+   public static final dmr fv = a(aku.b, $$0x -> new dux(aku.a, aku.c, akv.a, $$0x), eas.d.a().a(exe.h).b().e().d().a(duo.x).a(exf.b));
+   public static final dmr fw = a(aku.e, $$0x -> new dux(aku.d, aku.f, akv.b, $$0x), eas.d.a().a(exe.h).b().e().d().a(duo.x).a(exf.b));
+   public static final dmr fx = a("vine", dwe::new, eas.d.a().a(exe.h).p().b().e().d(0.2F).a(duo.y).i().a(exf.b));
+   public static final dmr fy = a("glow_lichen", dqf::new, eas.d.a().a(exe.aj).p().b().d(0.2F).a(duo.aF).a(dqf.b(7)).i().a(exf.b));
+   public static final dmr fz = a("resin_clump", drx::new, eas.d.a().a(exe.L).p().b().a(duo.bn).i().a(exf.b));
+   public static final dmr fA = a("oak_fence_gate", $$0x -> new dps(ech.b, $$0x), eas.d.a().a(n.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr fB = a("brick_stairs", ct);
+   public static final dmr fC = a("stone_brick_stairs", eZ);
+   public static final dmr fD = a("mud_brick_stairs", fe);
+   public static final dmr fE = a("mycelium", dsb::new, eas.d.a().a(exe.y).e().d(0.6F).a(duo.d));
+   public static final dmr fF = a("lily_pad", dwl::new, eas.d.a().a(exe.h).d().a(duo.e).c().a(exf.b));
+   public static final dmr fG = a("resin_block", eas.d.a().a(exe.L).a(ebu.b).a(duo.bn));
+   public static final dmr fH = a("resin_bricks", eas.d.a().a(exe.L).a(ebu.b).n().a(duo.bo).a(1.5F, 6.0F));
+   public static final dmr fI = a("resin_brick_stairs", fH);
+   public static final dmr fJ = a("resin_brick_slab", $$0x -> new due($$0x), eas.d.a().a(exe.L).a(ebu.b).n().a(duo.bo).a(1.5F, 6.0F));
+   public static final dmr fK = a("resin_brick_wall", $$0x -> new dwg($$0x), eas.d.a().a(exe.L).a(ebu.b).n().a(duo.bo).a(1.5F, 6.0F));
+   public static final dmr fL = a("chiseled_resin_bricks", eas.d.a().a(exe.L).a(ebu.b).n().a(duo.bo).a(1.5F, 6.0F));
+   public static final dmr fM = a("nether_bricks", eas.d.a().a(exe.J).a(ebu.b).n().a(2.0F, 6.0F).a(duo.N));
+   public static final dmr fN = a("nether_brick_fence", dpr::new, eas.d.a().a(exe.J).a(ebu.b).n().a(2.0F, 6.0F).a(duo.N));
+   public static final dmr fO = a("nether_brick_stairs", fM);
+   public static final dmr fP = a("nether_wart", dsf::new, eas.d.a().a(exe.C).b().e().a(duo.z).a(exf.b));
+   public static final dmr fQ = a("enchanting_table", dpf::new, eas.d.a().a(exe.C).a(ebu.b).n().a($$0x -> 7).a(5.0F, 1200.0F));
+   public static final dmr fR = a("brewing_stand", dmw::new, eas.d.a().a(exe.g).d(0.5F).a($$0x -> 1).c());
+   public static final dmr fS = a("cauldron", dno::new, eas.d.a().a(exe.l).n().d(2.0F).c());
+   public static final dmr fT = a("water_cauldron", $$0x -> new drf(dkp.c.b, kc.d, $$0x), eas.d.b(fS));
+   public static final dmr fU = a("lava_cauldron", dre::new, eas.d.b(fS).a($$0x -> 15));
+   public static final dmr fV = a("powder_snow_cauldron", $$0x -> new drf(dkp.c.c, kc.f, $$0x), eas.d.b(fS));
+   public static final dmr fW = a("end_portal", dph::new, eas.d.a().a(exe.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(exf.c));
+   public static final dmr fX = a("end_portal_frame", dpi::new, eas.d.a().a(exe.B).a(ebu.b).a(duo.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g());
+   public static final dmr fY = a("end_stone", eas.d.a().a(exe.c).a(ebu.b).n().a(3.0F, 9.0F));
+   public static final dmr fZ = a("dragon_egg", dpb::new, eas.d.a().a(exe.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(exf.b));
+   public static final dmr ga = a("redstone_lamp", dtb::new, eas.d.a().a(exe.L).a(a(15)).d(0.3F).a(duo.h).a(dmt::b));
+   public static final dmr gb = a("cocoa", dnz::new, eas.d.a().a(exe.h).e().a(0.2F, 3.0F).a(duo.b).c().a(exf.b));
+   public static final dmr gc = a("sandstone_stairs", bc);
+   public static final dmr gd = a("emerald_ore", $$0x -> new dpc(btr.a(3, 7), $$0x), eas.d.a().a(exe.l).a(ebu.b).n().a(3.0F, 3.0F));
+   public static final dmr ge = a("deepslate_emerald_ore", $$0x -> new dpc(btr.a(3, 7), $$0x), eas.d.b(gd).a(exe.ah).a(4.5F, 3.0F).a(duo.aG));
+   public static final dmr gf = a("ender_chest", dpk::new, eas.d.a().a(exe.l).a(ebu.b).a(22.5F, 600.0F).a($$0x -> 7));
+   public static final dmr gg = a("tripwire_hook", dvx::new, eas.d.a().b().a(duo.b).a(exf.b));
+   public static final dmr gh = a("tripwire", $$0x -> new dvw(gg, $$0x), eas.d.a().b().a(exf.b));
+   public static final dmr gi = a("emerald_block", eas.d.a().a(exe.H).a(ebu.n).n().a(5.0F, 6.0F).a(duo.g));
+   public static final dmr gj = a("spruce_stairs", o);
+   public static final dmr gk = a("birch_stairs", p);
+   public static final dmr gl = a("jungle_stairs", q);
+   public static final dmr gm = a("command_block", $$0x -> new dob(false, $$0x), eas.d.a().a(exe.A).n().a(-1.0F, 3600000.0F).g());
+   public static final dmr gn = a("beacon", dmj::new, eas.d.a().a(exe.F).a(ebu.d).d(3.0F).a($$0x -> 15).c().a(dmt::b));
+   public static final dmr go = a("cobblestone_wall", dwg::new, eas.d.b(m).k());
+   public static final dmr gp = a("mossy_cobblestone_wall", dwg::new, eas.d.b(m).k());
+   public static final dmr gq = a("flower_pot", $$0x -> new dpy(a, $$0x), c());
+   public static final dmr gr = a("potted_torchflower", $$0x -> new dpy(cc, $$0x), c());
+   public static final dmr gs = a("potted_oak_sapling", $$0x -> new dpy(z, $$0x), c());
+   public static final dmr gt = a("potted_spruce_sapling", $$0x -> new dpy(A, $$0x), c());
+   public static final dmr gu = a("potted_birch_sapling", $$0x -> new dpy(B, $$0x), c());
+   public static final dmr gv = a("potted_jungle_sapling", $$0x -> new dpy(C, $$0x), c());
+   public static final dmr gw = a("potted_acacia_sapling", $$0x -> new dpy(D, $$0x), c());
+   public static final dmr gx = a("potted_cherry_sapling", $$0x -> new dpy(E, $$0x), c());
+   public static final dmr gy = a("potted_dark_oak_sapling", $$0x -> new dpy(F, $$0x), c());
+   public static final dmr gz = a("potted_pale_oak_sapling", $$0x -> new dpy(G, $$0x), c());
+   public static final dmr gA = a("potted_mangrove_propagule", $$0x -> new dpy(H, $$0x), c());
+   public static final dmr gB = a("potted_fern", $$0x -> new dpy(bB, $$0x), c());
+   public static final dmr gC = a("potted_dandelion", $$0x -> new dpy(cb, $$0x), c());
+   public static final dmr gD = a("potted_poppy", $$0x -> new dpy(cd, $$0x), c());
+   public static final dmr gE = a("potted_blue_orchid", $$0x -> new dpy(ce, $$0x), c());
+   public static final dmr gF = a("potted_allium", $$0x -> new dpy(cf, $$0x), c());
+   public static final dmr gG = a("potted_azure_bluet", $$0x -> new dpy(cg, $$0x), c());
+   public static final dmr gH = a("potted_red_tulip", $$0x -> new dpy(ch, $$0x), c());
+   public static final dmr gI = a("potted_orange_tulip", $$0x -> new dpy(ci, $$0x), c());
+   public static final dmr gJ = a("potted_white_tulip", $$0x -> new dpy(cj, $$0x), c());
+   public static final dmr gK = a("potted_pink_tulip", $$0x -> new dpy(ck, $$0x), c());
+   public static final dmr gL = a("potted_oxeye_daisy", $$0x -> new dpy(cl, $$0x), c());
+   public static final dmr gM = a("potted_cornflower", $$0x -> new dpy(cm, $$0x), c());
+   public static final dmr gN = a("potted_lily_of_the_valley", $$0x -> new dpy(co, $$0x), c());
+   public static final dmr gO = a("potted_wither_rose", $$0x -> new dpy(cn, $$0x), c());
+   public static final dmr gP = a("potted_red_mushroom", $$0x -> new dpy(cq, $$0x), c());
+   public static final dmr gQ = a("potted_brown_mushroom", $$0x -> new dpy(cp, $$0x), c());
+   public static final dmr gR = a("potted_dead_bush", $$0x -> new dpy(bC, $$0x), c());
+   public static final dmr gS = a("potted_cactus", $$0x -> new dpy(eg, $$0x), c());
+   public static final dmr gT = a("carrots", dnl::new, eas.d.a().a(exe.h).b().e().d().a(duo.w).a(exf.b));
+   public static final dmr gU = a("potatoes", dsr::new, eas.d.a().a(exe.h).b().e().d().a(duo.w).a(exf.b));
+   public static final dmr gV = a("oak_button", $$0x -> new dnc(ebi.g, 30, $$0x), b());
+   public static final dmr gW = a("spruce_button", $$0x -> new dnc(ebi.h, 30, $$0x), b());
+   public static final dmr gX = a("birch_button", $$0x -> new dnc(ebi.i, 30, $$0x), b());
+   public static final dmr gY = a("jungle_button", $$0x -> new dnc(ebi.l, 30, $$0x), b());
+   public static final dmr gZ = a("acacia_button", $$0x -> new dnc(ebi.j, 30, $$0x), b());
+   public static final dmr ha = a("cherry_button", $$0x -> new dnc(ebi.k, 30, $$0x), b());
+   public static final dmr hb = a("dark_oak_button", $$0x -> new dnc(ebi.m, 30, $$0x), b());
+   public static final dmr hc = a("pale_oak_button", $$0x -> new dnc(ebi.n, 30, $$0x), b());
+   public static final dmr hd = a("mangrove_button", $$0x -> new dnc(ebi.q, 30, $$0x), b());
+   public static final dmr he = a("bamboo_button", $$0x -> new dnc(ebi.r, 30, $$0x), b());
+   public static final dmr hf = a("skeleton_skull", $$0x -> new dud(dud.b.c, $$0x), eas.d.a().a(ebu.r).d(1.0F).a(exf.b));
+   public static final dmr hg = a("skeleton_wall_skull", $$0x -> new dwj(dud.b.c, $$0x), a(hf, true).d(1.0F).a(exf.b));
+   public static final dmr hh = a("wither_skeleton_skull", dxb::new, eas.d.a().a(ebu.u).d(1.0F).a(exf.b));
+   public static final dmr hi = a("wither_skeleton_wall_skull", dxc::new, a(hh, true).d(1.0F).a(exf.b));
+   public static final dmr hj = a("zombie_head", $$0x -> new dud(dud.b.f, $$0x), eas.d.a().a(ebu.q).d(1.0F).a(exf.b));
+   public static final dmr hk = a("zombie_wall_head", $$0x -> new dwj(dud.b.f, $$0x), a(hj, true).d(1.0F).a(exf.b));
+   public static final dmr hl = a("player_head", dsn::new, eas.d.a().a(ebu.w).d(1.0F).a(exf.b));
+   public static final dmr hm = a("player_wall_head", dso::new, a(hl, true).d(1.0F).a(exf.b));
+   public static final dmr hn = a("creeper_head", $$0x -> new dud(dud.b.g, $$0x), eas.d.a().a(ebu.s).d(1.0F).a(exf.b));
+   public static final dmr ho = a("creeper_wall_head", $$0x -> new dwj(dud.b.g, $$0x), a(hn, true).d(1.0F).a(exf.b));
+   public static final dmr hp = a("dragon_head", $$0x -> new dud(dud.b.i, $$0x), eas.d.a().a(ebu.t).d(1.0F).a(exf.b));
+   public static final dmr hq = a("dragon_wall_head", $$0x -> new dwj(dud.b.i, $$0x), a(hp, true).d(1.0F).a(exf.b));
+   public static final dmr hr = a("piglin_head", $$0x -> new dud(dud.b.h, $$0x), eas.d.a().a(ebu.v).d(1.0F).a(exf.b));
+   public static final dmr hs = a("piglin_wall_head", dsk::new, a(hr, true).d(1.0F).a(exf.b));
+   public static final dmr ht = a("anvil", dlr::new, eas.d.a().a(exe.g).n().a(5.0F, 1200.0F).a(duo.n).a(exf.c));
+   public static final dmr hu = a("chipped_anvil", dlr::new, eas.d.a().a(exe.g).n().a(5.0F, 1200.0F).a(duo.n).a(exf.c));
+   public static final dmr hv = a("damaged_anvil", dlr::new, eas.d.a().a(exe.g).n().a(5.0F, 1200.0F).a(duo.n).a(exf.c));
+   public static final dmr hw = a("trapped_chest", dvu::new, eas.d.a().a(exe.n).a(ebu.e).d(2.5F).a(duo.b).i());
+   public static final dmr hx = a("light_weighted_pressure_plate", $$0x -> new dwy(15, ebi.d, $$0x), eas.d.a().a(exe.E).k().b().d(0.5F).a(exf.b));
+   public static final dmr hy = a("heavy_weighted_pressure_plate", $$0x -> new dwy(150, ebi.b, $$0x), eas.d.a().a(exe.g).k().b().d(0.5F).a(exf.b));
+   public static final dmr hz = a("comparator", doc::new, eas.d.a().d().a(duo.f).a(exf.b));
+   public static final dmr hA = a("daylight_detector", dor::new, eas.d.a().a(exe.n).a(ebu.e).d(0.2F).a(duo.b).i());
+   public static final dmr hB = a("redstone_block", dst::new, eas.d.a().a(exe.e).n().a(5.0F, 6.0F).a(duo.g).a(dmt::b));
+   public static final dmr hC = a("nether_quartz_ore", $$0x -> new dpc(btr.a(2, 5), $$0x), eas.d.a().a(exe.J).a(ebu.b).n().a(3.0F, 3.0F).a(duo.P));
+   public static final dmr hD = a("hopper", dqr::new, eas.d.a().a(exe.l).n().a(3.0F, 4.8F).a(duo.g).c());
+   public static final dmr hE = a("quartz_block", eas.d.a().a(exe.o).a(ebu.b).n().d(0.8F));
+   public static final dmr hF = a("chiseled_quartz_block", eas.d.a().a(exe.o).a(ebu.b).n().d(0.8F));
+   public static final dmr hG = a("quartz_pillar", dtk::new, eas.d.a().a(exe.o).a(ebu.b).n().d(0.8F));
+   public static final dmr hH = a("quartz_stairs", hE);
+   public static final dmr hI = a("activator_rail", dsu::new, eas.d.a().b().d(0.7F).a(duo.g));
+   public static final dmr hJ = a("dropper", dpd::new, eas.d.a().a(exe.l).a(ebu.b).n().d(3.5F));
+   public static final dmr hK = a("white_terracotta", dvk::new, eas.d.a().a(exe.K).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hL = a("orange_terracotta", dvk::new, eas.d.a().a(exe.L).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hM = a("magenta_terracotta", dvk::new, eas.d.a().a(exe.M).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hN = a("light_blue_terracotta", dvk::new, eas.d.a().a(exe.N).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hO = a("yellow_terracotta", dvk::new, eas.d.a().a(exe.O).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hP = a("lime_terracotta", dvk::new, eas.d.a().a(exe.P).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hQ = a("pink_terracotta", dvk::new, eas.d.a().a(exe.Q).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hR = a("gray_terracotta", dvk::new, eas.d.a().a(exe.R).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hS = a("light_gray_terracotta", dvk::new, eas.d.a().a(exe.S).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hT = a("cyan_terracotta", dvk::new, eas.d.a().a(exe.T).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hU = a("purple_terracotta", dvk::new, eas.d.a().a(exe.U).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hV = a("blue_terracotta", dvk::new, eas.d.a().a(exe.V).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hW = a("brown_terracotta", dvk::new, eas.d.a().a(exe.W).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hX = a("green_terracotta", dvk::new, eas.d.a().a(exe.X).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hY = a("red_terracotta", dvk::new, eas.d.a().a(exe.Y).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr hZ = a("black_terracotta", dvk::new, eas.d.a().a(exe.Z).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr ia = a("white_stained_glass_pane", $$0x -> new duu(cyl.a, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr ib = a("orange_stained_glass_pane", $$0x -> new duu(cyl.b, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr ic = a("magenta_stained_glass_pane", $$0x -> new duu(cyl.c, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr id = a("light_blue_stained_glass_pane", $$0x -> new duu(cyl.d, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr ie = a("yellow_stained_glass_pane", $$0x -> new duu(cyl.e, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr if = a("lime_stained_glass_pane", $$0x -> new duu(cyl.f, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr ig = a("pink_stained_glass_pane", $$0x -> new duu(cyl.g, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr ih = a("gray_stained_glass_pane", $$0x -> new duu(cyl.h, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr ii = a("light_gray_stained_glass_pane", $$0x -> new duu(cyl.i, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr ij = a("cyan_stained_glass_pane", $$0x -> new duu(cyl.j, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr ik = a("purple_stained_glass_pane", $$0x -> new duu(cyl.k, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr il = a("blue_stained_glass_pane", $$0x -> new duu(cyl.l, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr im = a("brown_stained_glass_pane", $$0x -> new duu(cyl.m, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr in = a("green_stained_glass_pane", $$0x -> new duu(cyl.n, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr io = a("red_stained_glass_pane", $$0x -> new duu(cyl.o, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr ip = a("black_stained_glass_pane", $$0x -> new duu(cyl.p, $$0x), eas.d.a().a(ebu.d).d(0.3F).a(duo.h).c());
+   public static final dmr iq = a("acacia_stairs", r);
+   public static final dmr ir = a("cherry_stairs", s);
+   public static final dmr is = a("dark_oak_stairs", t);
+   public static final dmr it = a("pale_oak_stairs", v);
+   public static final dmr iu = a("mangrove_stairs", w);
+   public static final dmr iv = a("bamboo_stairs", x);
+   public static final dmr iw = a("bamboo_mosaic_stairs", y);
+   public static final dmr ix = a("slime_block", duf::new, eas.d.a().a(exe.b).a(0.8F).a(duo.o).c());
+   public static final dmr iy = a("barrier", dly::new, eas.d.a().a(-1.0F, 3600000.8F).a(a(exe.a)).g().c().a(dmt::a).o().a(exf.c));
+   public static final dmr iz = a("light", drl::new, eas.d.a().p().a(-1.0F, 3600000.8F).a(a(exe.a)).g().c().a(drl.e));
+   public static final dmr iA = a("iron_trapdoor", $$0x -> new dvt(ebi.b, $$0x), eas.d.a().a(exe.g).n().d(5.0F).c().a(dmt::a));
+   public static final dmr iB = a("prismarine", eas.d.a().a(exe.x).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr iC = a("prismarine_bricks", eas.d.a().a(exe.F).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr iD = a("dark_prismarine", eas.d.a().a(exe.F).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr iE = a("prismarine_stairs", iB);
+   public static final dmr iF = a("prismarine_brick_stairs", iC);
+   public static final dmr iG = a("dark_prismarine_stairs", iD);
+   public static final dmr iH = a("prismarine_slab", due::new, eas.d.a().a(exe.x).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr iI = a("prismarine_brick_slab", due::new, eas.d.a().a(exe.F).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr iJ = a("dark_prismarine_slab", due::new, eas.d.a().a(exe.F).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr iK = a("sea_lantern", eas.d.a().a(exe.o).a(ebu.d).d(0.3F).a(duo.h).a($$0x -> 15).a(dmt::b));
+   public static final dmr iL = a("hay_block", dqo::new, eas.d.a().a(exe.s).a(ebu.o).d(0.5F).a(duo.d));
+   public static final dmr iM = a("white_carpet", $$0x -> new dxd(cyl.a, $$0x), eas.d.a().a(exe.i).d(0.1F).a(duo.i).i());
+   public static final dmr iN = a("orange_carpet", $$0x -> new dxd(cyl.b, $$0x), eas.d.a().a(exe.p).d(0.1F).a(duo.i).i());
+   public static final dmr iO = a("magenta_carpet", $$0x -> new dxd(cyl.c, $$0x), eas.d.a().a(exe.q).d(0.1F).a(duo.i).i());
+   public static final dmr iP = a("light_blue_carpet", $$0x -> new dxd(cyl.d, $$0x), eas.d.a().a(exe.r).d(0.1F).a(duo.i).i());
+   public static final dmr iQ = a("yellow_carpet", $$0x -> new dxd(cyl.e, $$0x), eas.d.a().a(exe.s).d(0.1F).a(duo.i).i());
+   public static final dmr iR = a("lime_carpet", $$0x -> new dxd(cyl.f, $$0x), eas.d.a().a(exe.t).d(0.1F).a(duo.i).i());
+   public static final dmr iS = a("pink_carpet", $$0x -> new dxd(cyl.g, $$0x), eas.d.a().a(exe.u).d(0.1F).a(duo.i).i());
+   public static final dmr iT = a("gray_carpet", $$0x -> new dxd(cyl.h, $$0x), eas.d.a().a(exe.v).d(0.1F).a(duo.i).i());
+   public static final dmr iU = a("light_gray_carpet", $$0x -> new dxd(cyl.i, $$0x), eas.d.a().a(exe.w).d(0.1F).a(duo.i).i());
+   public static final dmr iV = a("cyan_carpet", $$0x -> new dxd(cyl.j, $$0x), eas.d.a().a(exe.x).d(0.1F).a(duo.i).i());
+   public static final dmr iW = a("purple_carpet", $$0x -> new dxd(cyl.k, $$0x), eas.d.a().a(exe.y).d(0.1F).a(duo.i).i());
+   public static final dmr iX = a("blue_carpet", $$0x -> new dxd(cyl.l, $$0x), eas.d.a().a(exe.z).d(0.1F).a(duo.i).i());
+   public static final dmr iY = a("brown_carpet", $$0x -> new dxd(cyl.m, $$0x), eas.d.a().a(exe.A).d(0.1F).a(duo.i).i());
+   public static final dmr iZ = a("green_carpet", $$0x -> new dxd(cyl.n, $$0x), eas.d.a().a(exe.B).d(0.1F).a(duo.i).i());
+   public static final dmr ja = a("red_carpet", $$0x -> new dxd(cyl.o, $$0x), eas.d.a().a(exe.C).d(0.1F).a(duo.i).i());
+   public static final dmr jb = a("black_carpet", $$0x -> new dxd(cyl.p, $$0x), eas.d.a().a(exe.D).d(0.1F).a(duo.i).i());
+   public static final dmr jc = a("terracotta", dvk::new, eas.d.a().a(exe.p).a(ebu.b).n().a(1.25F, 4.2F));
+   public static final dmr jd = a("coal_block", eas.d.a().a(exe.D).a(ebu.b).n().a(5.0F, 6.0F));
+   public static final dmr je = a("packed_ice", eas.d.a().a(exe.f).a(ebu.i).a(0.98F).d(0.5F).a(duo.h));
+   public static final dmr jf = a("sunflower", dvg::new, eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).i().a(exf.b));
+   public static final dmr jg = a("lilac", dvg::new, eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).i().a(exf.b));
+   public static final dmr jh = a("rose_bush", dvg::new, eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).i().a(exf.b));
+   public static final dmr ji = a("peony", dvg::new, eas.d.a().a(exe.h).b().d().a(duo.d).a(eas.c.b).i().a(exf.b));
+   public static final dmr jj = a("tall_grass", dpa::new, eas.d.a().a(exe.h).p().b().d().a(duo.d).a(eas.c.b).i().a(exf.b));
+   public static final dmr jk = a("large_fern", dpa::new, eas.d.a().a(exe.h).p().b().d().a(duo.d).a(eas.c.b).i().a(exf.b));
+   public static final dmr jl = a("white_banner", $$0x -> new dlw(cyl.a, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jm = a("orange_banner", $$0x -> new dlw(cyl.b, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jn = a("magenta_banner", $$0x -> new dlw(cyl.c, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jo = a("light_blue_banner", $$0x -> new dlw(cyl.d, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jp = a("yellow_banner", $$0x -> new dlw(cyl.e, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jq = a("lime_banner", $$0x -> new dlw(cyl.f, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jr = a("pink_banner", $$0x -> new dlw(cyl.g, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr js = a("gray_banner", $$0x -> new dlw(cyl.h, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jt = a("light_gray_banner", $$0x -> new dlw(cyl.i, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr ju = a("cyan_banner", $$0x -> new dlw(cyl.j, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jv = a("purple_banner", $$0x -> new dlw(cyl.k, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jw = a("blue_banner", $$0x -> new dlw(cyl.l, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jx = a("brown_banner", $$0x -> new dlw(cyl.m, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jy = a("green_banner", $$0x -> new dlw(cyl.n, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jz = a("red_banner", $$0x -> new dlw(cyl.o, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jA = a("black_banner", $$0x -> new dlw(cyl.p, $$0x), eas.d.a().a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jB = a("white_wall_banner", $$0x -> new dwf(cyl.a, $$0x), a(jl, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jC = a("orange_wall_banner", $$0x -> new dwf(cyl.b, $$0x), a(jm, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jD = a("magenta_wall_banner", $$0x -> new dwf(cyl.c, $$0x), a(jn, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jE = a("light_blue_wall_banner", $$0x -> new dwf(cyl.d, $$0x), a(jo, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jF = a("yellow_wall_banner", $$0x -> new dwf(cyl.e, $$0x), a(jp, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jG = a("lime_wall_banner", $$0x -> new dwf(cyl.f, $$0x), a(jq, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jH = a("pink_wall_banner", $$0x -> new dwf(cyl.g, $$0x), a(jr, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jI = a("gray_wall_banner", $$0x -> new dwf(cyl.h, $$0x), a(js, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jJ = a("light_gray_wall_banner", $$0x -> new dwf(cyl.i, $$0x), a(jt, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jK = a("cyan_wall_banner", $$0x -> new dwf(cyl.j, $$0x), a(ju, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jL = a("purple_wall_banner", $$0x -> new dwf(cyl.k, $$0x), a(jv, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jM = a("blue_wall_banner", $$0x -> new dwf(cyl.l, $$0x), a(jw, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jN = a("brown_wall_banner", $$0x -> new dwf(cyl.m, $$0x), a(jx, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jO = a("green_wall_banner", $$0x -> new dwf(cyl.n, $$0x), a(jy, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jP = a("red_wall_banner", $$0x -> new dwf(cyl.o, $$0x), a(jz, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jQ = a("black_wall_banner", $$0x -> new dwf(cyl.p, $$0x), a(jA, true).a(exe.n).k().a(ebu.e).b().d(1.0F).a(duo.b).i());
+   public static final dmr jR = a("red_sandstone", eas.d.a().a(exe.p).a(ebu.b).n().d(0.8F));
+   public static final dmr jS = a("chiseled_red_sandstone", eas.d.a().a(exe.p).a(ebu.b).n().d(0.8F));
+   public static final dmr jT = a("cut_red_sandstone", eas.d.a().a(exe.p).a(ebu.b).n().d(0.8F));
+   public static final dmr jU = a("red_sandstone_stairs", jR);
+   public static final dmr jV = a("oak_slab", due::new, eas.d.a().a(exe.n).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr jW = a("spruce_slab", due::new, eas.d.a().a(exe.I).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr jX = a("birch_slab", due::new, eas.d.a().a(exe.c).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr jY = a("jungle_slab", due::new, eas.d.a().a(exe.k).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr jZ = a("acacia_slab", due::new, eas.d.a().a(exe.p).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr ka = a("cherry_slab", due::new, eas.d.a().a(exe.K).a(ebu.e).a(2.0F, 3.0F).a(duo.aW).i());
+   public static final dmr kb = a("dark_oak_slab", due::new, eas.d.a().a(exe.A).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr kc = a("pale_oak_slab", due::new, eas.d.a().a(v.w()).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr kd = a("mangrove_slab", due::new, eas.d.a().a(exe.C).a(ebu.e).a(2.0F, 3.0F).a(duo.b).i());
+   public static final dmr ke = a("bamboo_slab", due::new, eas.d.a().a(exe.s).a(ebu.e).a(2.0F, 3.0F).a(duo.aU).i());
+   public static final dmr kf = a("bamboo_mosaic_slab", due::new, eas.d.a().a(exe.s).a(ebu.e).a(2.0F, 3.0F).a(duo.aU).i());
+   public static final dmr kg = a("stone_slab", due::new, eas.d.a().a(exe.l).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kh = a("smooth_stone_slab", due::new, eas.d.a().a(exe.l).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr ki = a("sandstone_slab", due::new, eas.d.a().a(exe.c).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kj = a("cut_sandstone_slab", due::new, eas.d.a().a(exe.c).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kk = a("petrified_oak_slab", due::new, eas.d.a().a(exe.n).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kl = a("cobblestone_slab", due::new, eas.d.a().a(exe.l).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr km = a("brick_slab", due::new, eas.d.a().a(exe.C).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kn = a("stone_brick_slab", due::new, eas.d.a().a(exe.l).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr ko = a("mud_brick_slab", due::new, eas.d.a().a(exe.S).a(ebu.b).n().a(1.5F, 3.0F).a(duo.aP));
+   public static final dmr kp = a("nether_brick_slab", due::new, eas.d.a().a(exe.J).a(ebu.b).n().a(2.0F, 6.0F).a(duo.N));
+   public static final dmr kq = a("quartz_slab", due::new, eas.d.a().a(exe.o).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kr = a("red_sandstone_slab", due::new, eas.d.a().a(exe.p).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr ks = a("cut_red_sandstone_slab", due::new, eas.d.a().a(exe.p).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kt = a("purpur_slab", due::new, eas.d.a().a(exe.q).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr ku = a("smooth_stone", eas.d.a().a(exe.l).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kv = a("smooth_sandstone", eas.d.a().a(exe.c).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kw = a("smooth_quartz", eas.d.a().a(exe.o).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr kx = a("smooth_red_sandstone", eas.d.a().a(exe.p).a(ebu.b).n().a(2.0F, 6.0F));
+   public static final dmr ky = a("spruce_fence_gate", $$0x -> new dps(ech.c, $$0x), eas.d.a().a(o.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr kz = a("birch_fence_gate", $$0x -> new dps(ech.d, $$0x), eas.d.a().a(p.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr kA = a("jungle_fence_gate", $$0x -> new dps(ech.g, $$0x), eas.d.a().a(q.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr kB = a("acacia_fence_gate", $$0x -> new dps(ech.e, $$0x), eas.d.a().a(r.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr kC = a("cherry_fence_gate", $$0x -> new dps(ech.f, $$0x), eas.d.a().a(s.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr kD = a("dark_oak_fence_gate", $$0x -> new dps(ech.h, $$0x), eas.d.a().a(t.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr kE = a("pale_oak_fence_gate", $$0x -> new dps(ech.i, $$0x), eas.d.a().a(v.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr kF = a("mangrove_fence_gate", $$0x -> new dps(ech.l, $$0x), eas.d.a().a(w.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr kG = a("bamboo_fence_gate", $$0x -> new dps(ech.m, $$0x), eas.d.a().a(x.w()).k().a(ebu.e).a(2.0F, 3.0F).i());
+   public static final dmr kH = a("spruce_fence", dpr::new, eas.d.a().a(o.w()).a(ebu.e).a(2.0F, 3.0F).i().a(duo.b));
+   public static final dmr kI = a("birch_fence", dpr::new, eas.d.a().a(p.w()).a(ebu.e).a(2.0F, 3.0F).i().a(duo.b));
+   public static final dmr kJ = a("jungle_fence", dpr::new, eas.d.a().a(q.w()).a(ebu.e).a(2.0F, 3.0F).i().a(duo.b));
+   public static final dmr kK = a("acacia_fence", dpr::new, eas.d.a().a(r.w()).a(ebu.e).a(2.0F, 3.0F).i().a(duo.b));
+   public static final dmr kL = a("cherry_fence", dpr::new, eas.d.a().a(s.w()).a(ebu.e).a(2.0F, 3.0F).i().a(duo.aW));
+   public static final dmr kM = a("dark_oak_fence", dpr::new, eas.d.a().a(t.w()).a(ebu.e).a(2.0F, 3.0F).i().a(duo.b));
+   public static final dmr kN = a("pale_oak_fence", dpr::new, eas.d.a().a(v.w()).a(ebu.e).a(2.0F, 3.0F).i().a(duo.b));
+   public static final dmr kO = a("mangrove_fence", dpr::new, eas.d.a().a(w.w()).a(ebu.e).a(2.0F, 3.0F).i().a(duo.b));
+   public static final dmr kP = a("bamboo_fence", dpr::new, eas.d.a().a(x.w()).a(ebu.e).a(2.0F, 3.0F).a(duo.aU).i());
+   public static final dmr kQ = a("spruce_door", $$0x -> new doy(ebi.h, $$0x), eas.d.a().a(o.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr kR = a("birch_door", $$0x -> new doy(ebi.i, $$0x), eas.d.a().a(p.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr kS = a("jungle_door", $$0x -> new doy(ebi.l, $$0x), eas.d.a().a(q.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr kT = a("acacia_door", $$0x -> new doy(ebi.j, $$0x), eas.d.a().a(r.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr kU = a("cherry_door", $$0x -> new doy(ebi.k, $$0x), eas.d.a().a(s.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr kV = a("dark_oak_door", $$0x -> new doy(ebi.m, $$0x), eas.d.a().a(t.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr kW = a("pale_oak_door", $$0x -> new doy(ebi.n, $$0x), eas.d.a().a(v.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr kX = a("mangrove_door", $$0x -> new doy(ebi.q, $$0x), eas.d.a().a(w.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr kY = a("bamboo_door", $$0x -> new doy(ebi.r, $$0x), eas.d.a().a(x.w()).a(ebu.e).d(3.0F).c().i().a(exf.b));
+   public static final dmr kZ = a("end_rod", dpj::new, eas.d.a().l().d().a($$0x -> 14).a(duo.b).c());
+   public static final dmr la = a("chorus_plant", dny::new, eas.d.a().a(exe.y).l().d(0.4F).a(duo.b).c().a(exf.b));
+   public static final dmr lb = a("chorus_flower", $$0x -> new dnx(la, $$0x), eas.d.a().a(exe.y).l().e().d(0.4F).a(duo.b).c().a(dmt::a).a(exf.b).a(dmt::b));
+   public static final dmr lc = a("purpur_block", eas.d.a().a(exe.q).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr ld = a("purpur_pillar", dtk::new, eas.d.a().a(exe.q).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr le = a("purpur_stairs", lc);
+   public static final dmr lf = a("end_stone_bricks", eas.d.a().a(exe.c).a(ebu.b).n().a(3.0F, 9.0F));
+   public static final dmr lg = a("torchflower_crop", dvr::new, eas.d.a().a(exe.h).b().e().d().a(duo.w).a(exf.b));
+   public static final dmr lh = a("pitcher_crop", dsm::new, eas.d.a().a(exe.h).b().e().d().a(duo.w).a(exf.b));
+   public static final dmr li = a("pitcher_plant", dpa::new, eas.d.a().a(exe.h).b().d().a(duo.w).a(eas.c.b).i().a(exf.b));
+   public static final dmr lj = a("beetroots", dmm::new, eas.d.a().a(exe.h).b().e().d().a(duo.w).a(exf.b));
+   public static final dmr lk = a("dirt_path", dow::new, eas.d.a().a(exe.k).d(0.65F).a(duo.d).c(dmt::a).b(dmt::a));
+   public static final dmr ll = a("end_gateway", dpg::new, eas.d.a().a(exe.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(exf.c));
+   public static final dmr lm = a("repeating_command_block", $$0x -> new dob(false, $$0x), eas.d.a().a(exe.y).n().a(-1.0F, 3600000.0F).g());
+   public static final dmr ln = a("chain_command_block", $$0x -> new dob(true, $$0x), eas.d.a().a(exe.B).n().a(-1.0F, 3600000.0F).g());
+   public static final dmr lo = a(
+      "frosted_ice", dqa::new, eas.d.a().a(exe.f).a(0.98F).d(0.5F).a(duo.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bwr.aU).a(dmt::b)
+   );
+   public static final dmr lp = a(
+      "magma_block", drq::new, eas.d.a().a(exe.J).a(ebu.b).n().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(dmt::a).e(dmt::a)
+   );
+   public static final dmr lq = a("nether_wart_block", eas.d.a().a(exe.C).d(1.0F).a(duo.L));
+   public static final dmr lr = a("red_nether_bricks", eas.d.a().a(exe.J).a(ebu.b).n().a(2.0F, 6.0F).a(duo.N));
+   public static final dmr ls = a("bone_block", dtk::new, eas.d.a().a(exe.c).a(ebu.j).n().d(2.0F).a(duo.Q));
+   public static final dmr lt = a("structure_void", dva::new, eas.d.a().p().b().g().o().a(exf.b));
+   public static final dmr lu = a("observer", dsj::new, eas.d.a().a(exe.l).a(ebu.b).d(3.0F).n().a(dmt::b));
+   public static final dmr lv = a("shulker_box", $$0x -> new dua(null, $$0x), c(exe.y));
+   public static final dmr lw = a("white_shulker_box", $$0x -> new dua(cyl.a, $$0x), c(exe.i));
+   public static final dmr lx = a("orange_shulker_box", $$0x -> new dua(cyl.b, $$0x), c(exe.p));
+   public static final dmr ly = a("magenta_shulker_box", $$0x -> new dua(cyl.c, $$0x), c(exe.q));
+   public static final dmr lz = a("light_blue_shulker_box", $$0x -> new dua(cyl.d, $$0x), c(exe.r));
+   public static final dmr lA = a("yellow_shulker_box", $$0x -> new dua(cyl.e, $$0x), c(exe.s));
+   public static final dmr lB = a("lime_shulker_box", $$0x -> new dua(cyl.f, $$0x), c(exe.t));
+   public static final dmr lC = a("pink_shulker_box", $$0x -> new dua(cyl.g, $$0x), c(exe.u));
+   public static final dmr lD = a("gray_shulker_box", $$0x -> new dua(cyl.h, $$0x), c(exe.v));
+   public static final dmr lE = a("light_gray_shulker_box", $$0x -> new dua(cyl.i, $$0x), c(exe.w));
+   public static final dmr lF = a("cyan_shulker_box", $$0x -> new dua(cyl.j, $$0x), c(exe.x));
+   public static final dmr lG = a("purple_shulker_box", $$0x -> new dua(cyl.k, $$0x), c(exe.U));
+   public static final dmr lH = a("blue_shulker_box", $$0x -> new dua(cyl.l, $$0x), c(exe.z));
+   public static final dmr lI = a("brown_shulker_box", $$0x -> new dua(cyl.m, $$0x), c(exe.A));
+   public static final dmr lJ = a("green_shulker_box", $$0x -> new dua(cyl.n, $$0x), c(exe.B));
+   public static final dmr lK = a("red_shulker_box", $$0x -> new dua(cyl.o, $$0x), c(exe.C));
+   public static final dmr lL = a("black_shulker_box", $$0x -> new dua(cyl.p, $$0x), c(exe.D));
+   public static final dmr lM = a("white_glazed_terracotta", dqe::new, eas.d.a().a(cyl.a).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lN = a("orange_glazed_terracotta", dqe::new, eas.d.a().a(cyl.b).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lO = a("magenta_glazed_terracotta", dqe::new, eas.d.a().a(cyl.c).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lP = a("light_blue_glazed_terracotta", dqe::new, eas.d.a().a(cyl.d).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lQ = a("yellow_glazed_terracotta", dqe::new, eas.d.a().a(cyl.e).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lR = a("lime_glazed_terracotta", dqe::new, eas.d.a().a(cyl.f).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lS = a("pink_glazed_terracotta", dqe::new, eas.d.a().a(cyl.g).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lT = a("gray_glazed_terracotta", dqe::new, eas.d.a().a(cyl.h).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lU = a("light_gray_glazed_terracotta", dqe::new, eas.d.a().a(cyl.i).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lV = a("cyan_glazed_terracotta", dqe::new, eas.d.a().a(cyl.j).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lW = a("purple_glazed_terracotta", dqe::new, eas.d.a().a(cyl.k).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lX = a("blue_glazed_terracotta", dqe::new, eas.d.a().a(cyl.l).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lY = a("brown_glazed_terracotta", dqe::new, eas.d.a().a(cyl.m).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr lZ = a("green_glazed_terracotta", dqe::new, eas.d.a().a(cyl.n).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr ma = a("red_glazed_terracotta", dqe::new, eas.d.a().a(cyl.o).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr mb = a("black_glazed_terracotta", dqe::new, eas.d.a().a(cyl.p).a(ebu.b).n().d(1.4F).a(exf.e));
+   public static final dmr mc = a("white_concrete", eas.d.a().a(cyl.a).a(ebu.b).n().d(1.8F));
+   public static final dmr md = a("orange_concrete", eas.d.a().a(cyl.b).a(ebu.b).n().d(1.8F));
+   public static final dmr me = a("magenta_concrete", eas.d.a().a(cyl.c).a(ebu.b).n().d(1.8F));
+   public static final dmr mf = a("light_blue_concrete", eas.d.a().a(cyl.d).a(ebu.b).n().d(1.8F));
+   public static final dmr mg = a("yellow_concrete", eas.d.a().a(cyl.e).a(ebu.b).n().d(1.8F));
+   public static final dmr mh = a("lime_concrete", eas.d.a().a(cyl.f).a(ebu.b).n().d(1.8F));
+   public static final dmr mi = a("pink_concrete", eas.d.a().a(cyl.g).a(ebu.b).n().d(1.8F));
+   public static final dmr mj = a("gray_concrete", eas.d.a().a(cyl.h).a(ebu.b).n().d(1.8F));
+   public static final dmr mk = a("light_gray_concrete", eas.d.a().a(cyl.i).a(ebu.b).n().d(1.8F));
+   public static final dmr ml = a("cyan_concrete", eas.d.a().a(cyl.j).a(ebu.b).n().d(1.8F));
+   public static final dmr mm = a("purple_concrete", eas.d.a().a(cyl.k).a(ebu.b).n().d(1.8F));
+   public static final dmr mn = a("blue_concrete", eas.d.a().a(cyl.l).a(ebu.b).n().d(1.8F));
+   public static final dmr mo = a("brown_concrete", eas.d.a().a(cyl.m).a(ebu.b).n().d(1.8F));
+   public static final dmr mp = a("green_concrete", eas.d.a().a(cyl.n).a(ebu.b).n().d(1.8F));
+   public static final dmr mq = a("red_concrete", eas.d.a().a(cyl.o).a(ebu.b).n().d(1.8F));
+   public static final dmr mr = a("black_concrete", eas.d.a().a(cyl.p).a(ebu.b).n().d(1.8F));
+   public static final dmr ms = a("white_concrete_powder", $$0x -> new doe(mc, $$0x), eas.d.a().a(cyl.a).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mt = a("orange_concrete_powder", $$0x -> new doe(md, $$0x), eas.d.a().a(cyl.b).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mu = a("magenta_concrete_powder", $$0x -> new doe(me, $$0x), eas.d.a().a(cyl.c).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mv = a("light_blue_concrete_powder", $$0x -> new doe(mf, $$0x), eas.d.a().a(cyl.d).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mw = a("yellow_concrete_powder", $$0x -> new doe(mg, $$0x), eas.d.a().a(cyl.e).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mx = a("lime_concrete_powder", $$0x -> new doe(mh, $$0x), eas.d.a().a(cyl.f).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr my = a("pink_concrete_powder", $$0x -> new doe(mi, $$0x), eas.d.a().a(cyl.g).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mz = a("gray_concrete_powder", $$0x -> new doe(mj, $$0x), eas.d.a().a(cyl.h).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mA = a("light_gray_concrete_powder", $$0x -> new doe(mk, $$0x), eas.d.a().a(cyl.i).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mB = a("cyan_concrete_powder", $$0x -> new doe(ml, $$0x), eas.d.a().a(cyl.j).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mC = a("purple_concrete_powder", $$0x -> new doe(mm, $$0x), eas.d.a().a(cyl.k).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mD = a("blue_concrete_powder", $$0x -> new doe(mn, $$0x), eas.d.a().a(cyl.l).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mE = a("brown_concrete_powder", $$0x -> new doe(mo, $$0x), eas.d.a().a(cyl.m).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mF = a("green_concrete_powder", $$0x -> new doe(mp, $$0x), eas.d.a().a(cyl.n).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mG = a("red_concrete_powder", $$0x -> new doe(mq, $$0x), eas.d.a().a(cyl.o).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mH = a("black_concrete_powder", $$0x -> new doe(mr, $$0x), eas.d.a().a(cyl.p).a(ebu.c).d(0.5F).a(duo.j));
+   public static final dmr mI = a("kelp", dra::new, eas.d.a().a(exe.m).b().e().d().a(duo.q).a(exf.b));
+   public static final dmr mJ = a("kelp_plant", drb::new, eas.d.a().a(exe.m).b().d().a(duo.q).a(exf.b));
+   public static final dmr mK = a("dried_kelp_block", eas.d.a().a(exe.B).a(0.5F, 2.5F).a(duo.d));
+   public static final dmr mL = a("turtle_egg", dvy::new, eas.d.a().a(exe.c).k().d(0.5F).a(duo.g).e().c().a(exf.b));
+   public static final dmr mM = a("sniffer_egg", duj::new, eas.d.a().a(exe.C).d(0.5F).a(duo.g).c());
+   public static final dmr mN = a("dead_tube_coral_block", eas.d.a().a(exe.v).k().a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr mO = a("dead_brain_coral_block", eas.d.a().a(exe.v).k().a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr mP = a("dead_bubble_coral_block", eas.d.a().a(exe.v).k().a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr mQ = a("dead_fire_coral_block", eas.d.a().a(exe.v).k().a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr mR = a("dead_horn_coral_block", eas.d.a().a(exe.v).k().a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr mS = a("tube_coral_block", $$0x -> new doh(mN, $$0x), eas.d.a().a(exe.z).a(ebu.b).n().a(1.5F, 6.0F).a(duo.r));
+   public static final dmr mT = a("brain_coral_block", $$0x -> new doh(mO, $$0x), eas.d.a().a(exe.u).a(ebu.b).n().a(1.5F, 6.0F).a(duo.r));
+   public static final dmr mU = a("bubble_coral_block", $$0x -> new doh(mP, $$0x), eas.d.a().a(exe.y).a(ebu.b).n().a(1.5F, 6.0F).a(duo.r));
+   public static final dmr mV = a("fire_coral_block", $$0x -> new doh(mQ, $$0x), eas.d.a().a(exe.C).a(ebu.b).n().a(1.5F, 6.0F).a(duo.r));
+   public static final dmr mW = a("horn_coral_block", $$0x -> new doh(mR, $$0x), eas.d.a().a(exe.s).a(ebu.b).n().a(1.5F, 6.0F).a(duo.r));
+   public static final dmr mX = a("dead_tube_coral", dma::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr mY = a("dead_brain_coral", dma::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr mZ = a("dead_bubble_coral", dma::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr na = a("dead_fire_coral", dma::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nb = a("dead_horn_coral", dma::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nc = a("tube_coral", $$0x -> new doj(mX, $$0x), eas.d.a().a(exe.z).b().d().a(duo.q).a(exf.b));
+   public static final dmr nd = a("brain_coral", $$0x -> new doj(mY, $$0x), eas.d.a().a(exe.u).b().d().a(duo.q).a(exf.b));
+   public static final dmr ne = a("bubble_coral", $$0x -> new doj(mZ, $$0x), eas.d.a().a(exe.y).b().d().a(duo.q).a(exf.b));
+   public static final dmr nf = a("fire_coral", $$0x -> new doj(na, $$0x), eas.d.a().a(exe.C).b().d().a(duo.q).a(exf.b));
+   public static final dmr ng = a("horn_coral", $$0x -> new doj(nb, $$0x), eas.d.a().a(exe.s).b().d().a(duo.q).a(exf.b));
+   public static final dmr nh = a("dead_tube_coral_fan", dlz::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr ni = a("dead_brain_coral_fan", dlz::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nj = a("dead_bubble_coral_fan", dlz::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nk = a("dead_fire_coral_fan", dlz::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nl = a("dead_horn_coral_fan", dlz::new, eas.d.a().a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nm = a("tube_coral_fan", $$0x -> new doi(nh, $$0x), eas.d.a().a(exe.z).b().d().a(duo.q).a(exf.b));
+   public static final dmr nn = a("brain_coral_fan", $$0x -> new doi(ni, $$0x), eas.d.a().a(exe.u).b().d().a(duo.q).a(exf.b));
+   public static final dmr no = a("bubble_coral_fan", $$0x -> new doi(nj, $$0x), eas.d.a().a(exe.y).b().d().a(duo.q).a(exf.b));
+   public static final dmr np = a("fire_coral_fan", $$0x -> new doi(nk, $$0x), eas.d.a().a(exe.C).b().d().a(duo.q).a(exf.b));
+   public static final dmr nq = a("horn_coral_fan", $$0x -> new doi(nl, $$0x), eas.d.a().a(exe.s).b().d().a(duo.q).a(exf.b));
+   public static final dmr nr = a("dead_tube_coral_wall_fan", dmc::new, a(nh, false).a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr ns = a("dead_brain_coral_wall_fan", dmc::new, a(ni, false).a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nt = a("dead_bubble_coral_wall_fan", dmc::new, a(nj, false).a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nu = a("dead_fire_coral_wall_fan", dmc::new, a(nk, false).a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nv = a("dead_horn_coral_wall_fan", dmc::new, a(nl, false).a(exe.v).k().a(ebu.b).n().b().d());
+   public static final dmr nw = a("tube_coral_wall_fan", $$0x -> new dok(nr, $$0x), a(nm, false).a(exe.z).b().d().a(duo.q).a(exf.b));
+   public static final dmr nx = a("brain_coral_wall_fan", $$0x -> new dok(ns, $$0x), a(nn, false).a(exe.u).b().d().a(duo.q).a(exf.b));
+   public static final dmr ny = a("bubble_coral_wall_fan", $$0x -> new dok(nt, $$0x), a(no, false).a(exe.y).b().d().a(duo.q).a(exf.b));
+   public static final dmr nz = a("fire_coral_wall_fan", $$0x -> new dok(nu, $$0x), a(np, false).a(exe.C).b().d().a(duo.q).a(exf.b));
+   public static final dmr nA = a("horn_coral_wall_fan", $$0x -> new dok(nv, $$0x), a(nq, false).a(exe.s).b().d().a(duo.q).a(exf.b));
+   public static final dmr nB = a("sea_pickle", dtw::new, eas.d.a().a(exe.B).a($$0x -> dtw.o($$0x) ? 0 : 3 + 3 * $$0x.c(dtw.c)).a(duo.o).c().a(exf.b));
+   public static final dmr nC = a("blue_ice", dql::new, eas.d.a().a(exe.f).d(2.8F).a(0.989F).a(duo.h));
+   public static final dmr nD = a("conduit", dof::new, eas.d.a().a(exe.F).k().a(ebu.d).d(3.0F).a($$0x -> 15).c());
+   public static final dmr nE = a("bamboo_sapling", dlu::new, eas.d.a().a(exe.n).k().e().d().b().d(1.0F).a(duo.t).a(eas.c.b).i().a(exf.b));
+   public static final dmr nF = a("bamboo", dlv::new, eas.d.a().a(exe.h).k().e().d().d(1.0F).a(duo.s).c().f().a(eas.c.b).i().a(exf.b).a(dmt::b));
+   public static final dmr nG = a("potted_bamboo", $$0x -> new dpy(nF, $$0x), c());
+   public static final dmr nH = a("void_air", dlo::new, eas.d.a().p().b().g().m());
+   public static final dmr nI = a("cave_air", dlo::new, eas.d.a().p().b().g().m());
+   public static final dmr nJ = a("bubble_column", dmy::new, eas.d.a().a(exe.m).p().b().g().a(exf.b).j().a(duo.a));
+   public static final dmr nK = a("polished_granite_stairs", d);
+   public static final dmr nL = a("smooth_red_sandstone_stairs", kx);
+   public static final dmr nM = a("mossy_stone_brick_stairs", fa);
+   public static final dmr nN = a("polished_diorite_stairs", f);
+   public static final dmr nO = a("mossy_cobblestone_stairs", cx);
+   public static final dmr nP = a("end_stone_brick_stairs", lf);
+   public static final dmr nQ = a("stone_stairs", b);
+   public static final dmr nR = a("smooth_sandstone_stairs", kv);
+   public static final dmr nS = a("smooth_quartz_stairs", kw);
+   public static final dmr nT = a("granite_stairs", c);
+   public static final dmr nU = a("andesite_stairs", g);
+   public static final dmr nV = a("red_nether_brick_stairs", lr);
+   public static final dmr nW = a("polished_andesite_stairs", h);
+   public static final dmr nX = a("diorite_stairs", e);
+   public static final dmr nY = a("polished_granite_slab", due::new, eas.d.b(d));
+   public static final dmr nZ = a("smooth_red_sandstone_slab", due::new, eas.d.b(kx));
+   public static final dmr oa = a("mossy_stone_brick_slab", due::new, eas.d.b(fa));
+   public static final dmr ob = a("polished_diorite_slab", due::new, eas.d.b(f));
+   public static final dmr oc = a("mossy_cobblestone_slab", due::new, eas.d.b(cx));
+   public static final dmr od = a("end_stone_brick_slab", due::new, eas.d.b(lf));
+   public static final dmr oe = a("smooth_sandstone_slab", due::new, eas.d.b(kv));
+   public static final dmr of = a("smooth_quartz_slab", due::new, eas.d.b(kw));
+   public static final dmr og = a("granite_slab", due::new, eas.d.b(c));
+   public static final dmr oh = a("andesite_slab", due::new, eas.d.b(g));
+   public static final dmr oi = a("red_nether_brick_slab", due::new, eas.d.b(lr));
+   public static final dmr oj = a("polished_andesite_slab", due::new, eas.d.b(h));
+   public static final dmr ok = a("diorite_slab", due::new, eas.d.b(e));
+   public static final dmr ol = a("brick_wall", dwg::new, eas.d.b(ct).k());
+   public static final dmr om = a("prismarine_wall", dwg::new, eas.d.b(iB).k());
+   public static final dmr on = a("red_sandstone_wall", dwg::new, eas.d.b(jR).k());
+   public static final dmr oo = a("mossy_stone_brick_wall", dwg::new, eas.d.b(fa).k());
+   public static final dmr op = a("granite_wall", dwg::new, eas.d.b(c).k());
+   public static final dmr oq = a("stone_brick_wall", dwg::new, eas.d.b(eZ).k());
+   public static final dmr or = a("mud_brick_wall", dwg::new, eas.d.b(fe).k());
+   public static final dmr os = a("nether_brick_wall", dwg::new, eas.d.b(fM).k());
+   public static final dmr ot = a("andesite_wall", dwg::new, eas.d.b(g).k());
+   public static final dmr ou = a("red_nether_brick_wall", dwg::new, eas.d.b(lr).k());
+   public static final dmr ov = a("sandstone_wall", dwg::new, eas.d.b(bc).k());
+   public static final dmr ow = a("end_stone_brick_wall", dwg::new, eas.d.b(lf).k());
+   public static final dmr ox = a("diorite_wall", dwg::new, eas.d.b(e).k());
+   public static final dmr oy = a("scaffolding", dto::new, eas.d.a().a(exe.c).b().a(duo.u).f().a(dmt::a).a(exf.b).a(dmt::b));
+   public static final dmr oz = a("loom", drp::new, eas.d.a().a(exe.n).a(ebu.e).d(2.5F).a(duo.b).i());
+   public static final dmr oA = a("barrel", dlx::new, eas.d.a().a(exe.n).a(ebu.e).d(2.5F).a(duo.b).i());
+   public static final dmr oB = a("smoker", dui::new, eas.d.a().a(exe.l).a(ebu.b).n().d(3.5F).a(a(13)));
+   public static final dmr oC = a("blast_furnace", dmq::new, eas.d.a().a(exe.l).a(ebu.b).n().d(3.5F).a(a(13)));
+   public static final dmr oD = a("cartography_table", dnm::new, eas.d.a().a(exe.n).a(ebu.e).d(2.5F).a(duo.b).i());
+   public static final dmr oE = a("fletching_table", dpv::new, eas.d.a().a(exe.n).a(ebu.e).d(2.5F).a(duo.b).i());
+   public static final dmr oF = a("grindstone", dqh::new, eas.d.a().a(exe.g).n().a(2.0F, 6.0F).a(duo.f).a(exf.c));
+   public static final dmr oG = a("lectern", dri::new, eas.d.a().a(exe.n).a(ebu.e).d(2.5F).a(duo.b).i());
+   public static final dmr oH = a("smithing_table", duh::new, eas.d.a().a(exe.n).a(ebu.e).d(2.5F).a(duo.b).i());
+   public static final dmr oI = a("stonecutter", duy::new, eas.d.a().a(exe.l).a(ebu.b).n().d(3.5F));
+   public static final dmr oJ = a("bell", dmn::new, eas.d.a().a(exe.E).k().d(5.0F).a(duo.n).a(exf.b));
+   public static final dmr oK = a("lantern", drd::new, eas.d.a().a(exe.g).k().d(3.5F).a(duo.A).a($$0x -> 15).c().a(exf.b));
+   public static final dmr oL = a("soul_lantern", drd::new, eas.d.a().a(exe.g).k().d(3.5F).a(duo.A).a($$0x -> 10).c().a(exf.b));
+   public static final dmr oM = a("campfire", $$0x -> new dnh(true, 1, $$0x), eas.d.a().a(exe.I).a(ebu.e).d(2.0F).a(duo.b).a(a(15)).c().i());
+   public static final dmr oN = a("soul_campfire", $$0x -> new dnh(false, 2, $$0x), eas.d.a().a(exe.I).a(ebu.e).d(2.0F).a(duo.b).a(a(10)).c().i());
+   public static final dmr oO = a("sweet_berry_bush", dve::new, eas.d.a().a(exe.h).e().b().a(duo.v).a(exf.b));
+   public static final dmr oP = a("warped_stem", dtk::new, b(exe.ae));
+   public static final dmr oQ = a("stripped_warped_stem", dtk::new, b(exe.ae));
+   public static final dmr oR = a("warped_hyphae", dtk::new, eas.d.a().a(exe.af).a(ebu.e).d(2.0F).a(duo.B));
+   public static final dmr oS = a("stripped_warped_hyphae", dtk::new, eas.d.a().a(exe.af).a(ebu.e).d(2.0F).a(duo.B));
+   public static final dmr oT = a("warped_nylium", dsi::new, eas.d.a().a(exe.ad).a(ebu.b).n().d(0.4F).a(duo.C).e());
+   public static final dmr oU = a("warped_fungus", $$0x -> new dqb(rn.d, oT, $$0x), eas.d.a().a(exe.x).d().b().a(duo.D).a(exf.b));
+   public static final dmr oV = a("warped_wart_block", eas.d.a().a(exe.ag).d(1.0F).a(duo.L));
+   public static final dmr oW = a("warped_roots", dtj::new, eas.d.a().a(exe.x).p().b().d().a(duo.E).a(eas.c.b).a(exf.b));
+   public static final dmr oX = a("nether_sprouts", dsd::new, eas.d.a().a(exe.x).p().b().d().a(duo.O).a(eas.c.b).a(exf.b));
+   public static final dmr oY = a("crimson_stem", dtk::new, b(exe.ab));
+   public static final dmr oZ = a("stripped_crimson_stem", dtk::new, b(exe.ab));
+   public static final dmr pa = a("crimson_hyphae", dtk::new, eas.d.a().a(exe.ac).a(ebu.e).d(2.0F).a(duo.B));
+   public static final dmr pb = a("stripped_crimson_hyphae", dtk::new, eas.d.a().a(exe.ac).a(ebu.e).d(2.0F).a(duo.B));
+   public static final dmr pc = a("crimson_nylium", dsi::new, eas.d.a().a(exe.aa).a(ebu.b).n().d(0.4F).a(duo.C).e());
+   public static final dmr pd = a("crimson_fungus", $$0x -> new dqb(rn.b, pc, $$0x), eas.d.a().a(exe.J).d().b().a(duo.D).a(exf.b));
+   public static final dmr pe = a("shroomlight", eas.d.a().a(exe.C).d(1.0F).a(duo.F).a($$0x -> 15));
+   public static final dmr pf = a("weeping_vines", dww::new, eas.d.a().a(exe.J).e().b().d().a(duo.G).a(exf.b));
+   public static final dmr pg = a("weeping_vines_plant", dwx::new, eas.d.a().a(exe.J).b().d().a(duo.G).a(exf.b));
+   public static final dmr ph = a("twisting_vines", dvz::new, eas.d.a().a(exe.x).e().b().d().a(duo.G).a(exf.b));
+   public static final dmr pi = a("twisting_vines_plant", dwa::new, eas.d.a().a(exe.x).b().d().a(duo.G).a(exf.b));
+   public static final dmr pj = a("crimson_roots", dtj::new, eas.d.a().a(exe.J).p().b().d().a(duo.E).a(eas.c.b).a(exf.b));
+   public static final dmr pk = a("crimson_planks", eas.d.a().a(exe.ab).a(ebu.e).a(2.0F, 3.0F).a(duo.aV));
+   public static final dmr pl = a("warped_planks", eas.d.a().a(exe.ae).a(ebu.e).a(2.0F, 3.0F).a(duo.aV));
+   public static final dmr pm = a("crimson_slab", due::new, eas.d.a().a(pk.w()).a(ebu.e).a(2.0F, 3.0F).a(duo.aV));
+   public static final dmr pn = a("warped_slab", due::new, eas.d.a().a(pl.w()).a(ebu.e).a(2.0F, 3.0F).a(duo.aV));
+   public static final dmr po = a("crimson_pressure_plate", $$0x -> new dsv(ebi.o, $$0x), eas.d.a().a(pk.w()).k().a(ebu.e).b().d(0.5F).a(exf.b));
+   public static final dmr pp = a("warped_pressure_plate", $$0x -> new dsv(ebi.p, $$0x), eas.d.a().a(pl.w()).k().a(ebu.e).b().d(0.5F).a(exf.b));
+   public static final dmr pq = a("crimson_fence", dpr::new, eas.d.a().a(pk.w()).a(ebu.e).a(2.0F, 3.0F).a(duo.aV));
+   public static final dmr pr = a("warped_fence", dpr::new, eas.d.a().a(pl.w()).a(ebu.e).a(2.0F, 3.0F).a(duo.aV));
+   public static final dmr ps = a("crimson_trapdoor", $$0x -> new dvt(ebi.o, $$0x), eas.d.a().a(pk.w()).a(ebu.e).d(3.0F).c().a(dmt::a));
+   public static final dmr pt = a("warped_trapdoor", $$0x -> new dvt(ebi.p, $$0x), eas.d.a().a(pl.w()).a(ebu.e).d(3.0F).c().a(dmt::a));
+   public static final dmr pu = a("crimson_fence_gate", $$0x -> new dps(ech.j, $$0x), eas.d.a().a(pk.w()).k().a(ebu.e).a(2.0F, 3.0F));
+   public static final dmr pv = a("warped_fence_gate", $$0x -> new dps(ech.k, $$0x), eas.d.a().a(pl.w()).k().a(ebu.e).a(2.0F, 3.0F));
+   public static final dmr pw = a("crimson_stairs", pk);
+   public static final dmr px = a("warped_stairs", pl);
+   public static final dmr py = a("crimson_button", $$0x -> new dnc(ebi.o, 30, $$0x), b());
+   public static final dmr pz = a("warped_button", $$0x -> new dnc(ebi.p, 30, $$0x), b());
+   public static final dmr pA = a("crimson_door", $$0x -> new doy(ebi.o, $$0x), eas.d.a().a(pk.w()).a(ebu.e).d(3.0F).c().a(exf.b));
+   public static final dmr pB = a("warped_door", $$0x -> new doy(ebi.p, $$0x), eas.d.a().a(pl.w()).a(ebu.e).d(3.0F).c().a(exf.b));
+   public static final dmr pC = a("crimson_sign", $$0x -> new duw(ech.j, $$0x), eas.d.a().a(pk.w()).a(ebu.e).k().b().d(1.0F));
+   public static final dmr pD = a("warped_sign", $$0x -> new duw(ech.k, $$0x), eas.d.a().a(pl.w()).a(ebu.e).k().b().d(1.0F));
+   public static final dmr pE = a("crimson_wall_sign", $$0x -> new dwi(ech.j, $$0x), a(pC, true).a(pk.w()).a(ebu.e).k().b().d(1.0F));
+   public static final dmr pF = a("warped_wall_sign", $$0x -> new dwi(ech.k, $$0x), a(pD, true).a(pl.w()).a(ebu.e).k().b().d(1.0F));
+   public static final dmr pG = a("structure_block", duz::new, eas.d.a().a(exe.w).n().a(-1.0F, 3600000.0F).g());
+   public static final dmr pH = a("jigsaw", dqy::new, eas.d.a().a(exe.w).n().a(-1.0F, 3600000.0F).g());
+   public static final dmr pI = a("test_block", dvl::new, eas.d.a().a(exe.w).a(-1.0F, 3600000.0F).g());
+   public static final dmr pJ = a("test_instance_block", dvm::new, eas.d.a().c().a(-1.0F, 3600000.0F).g().c(dmt::b));
+   public static final dmr pK = a("composter", dod::new, eas.d.a().a(exe.n).a(ebu.e).d(0.6F).a(duo.b).i());
+   public static final dmr pL = a("target", dvj::new, eas.d.a().a(exe.o).d(0.5F).a(duo.d));
+   public static final dmr pM = a("bee_nest", dml::new, eas.d.a().a(exe.s).a(ebu.e).d(0.3F).a(duo.b).i());
+   public static final dmr pN = a("beehive", dml::new, eas.d.a().a(exe.n).a(ebu.e).d(0.6F).a(duo.b).i());
+   public static final dmr pO = a("honey_block", dqq::new, eas.d.a().a(exe.p).b(0.4F).c(0.5F).c().a(duo.p));
+   public static final dmr pP = a("honeycomb_block", eas.d.a().a(exe.p).d(0.6F).a(duo.r));
+   public static final dmr pQ = a("netherite_block", eas.d.a().a(exe.D).n().a(50.0F, 1200.0F).a(duo.R));
+   public static final dmr pR = a("ancient_debris", eas.d.a().a(exe.D).n().a(30.0F, 1200.0F).a(duo.S));
+   public static final dmr pS = a("crying_obsidian", doq::new, eas.d.a().a(exe.D).a(ebu.b).n().a(50.0F, 1200.0F).a($$0x -> 10));
+   public static final dmr pT = a("respawn_anchor", dtg::new, eas.d.a().a(exe.D).a(ebu.b).n().a(50.0F, 1200.0F).a($$0x -> dtg.a($$0x, 15)));
+   public static final dmr pU = a("potted_crimson_fungus", $$0x -> new dpy(pd, $$0x), c());
+   public static final dmr pV = a("potted_warped_fungus", $$0x -> new dpy(oU, $$0x), c());
+   public static final dmr pW = a("potted_crimson_roots", $$0x -> new dpy(pj, $$0x), c());
+   public static final dmr pX = a("potted_warped_roots", $$0x -> new dpy(oW, $$0x), c());
+   public static final dmr pY = a("lodestone", eas.d.a().a(exe.g).n().d(3.5F).a(duo.T).a(exf.c));
+   public static final dmr pZ = a("blackstone", eas.d.a().a(exe.D).a(ebu.b).n().a(1.5F, 6.0F));
+   public static final dmr qa = a("blackstone_stairs", pZ);
+   public static final dmr qb = a("blackstone_wall", dwg::new, eas.d.b(pZ).k());
+   public static final dmr qc = a("blackstone_slab", due::new, eas.d.b(pZ).a(2.0F, 6.0F));
+   public static final dmr qd = a("polished_blackstone", eas.d.b(pZ).a(2.0F, 6.0F));
+   public static final dmr qe = a("polished_blackstone_bricks", eas.d.b(qd).a(1.5F, 6.0F));
+   public static final dmr qf = a("cracked_polished_blackstone_bricks", eas.d.b(qe));
+   public static final dmr qg = a("chiseled_polished_blackstone", eas.d.b(qd).a(1.5F, 6.0F));
+   public static final dmr qh = a("polished_blackstone_brick_slab", due::new, eas.d.b(qe).a(2.0F, 6.0F));
+   public static final dmr qi = a("polished_blackstone_brick_stairs", qe);
+   public static final dmr qj = a("polished_blackstone_brick_wall", dwg::new, eas.d.b(qe).k());
+   public static final dmr qk = a("gilded_blackstone", eas.d.b(pZ).a(duo.W));
+   public static final dmr ql = a("polished_blackstone_stairs", qd);
+   public static final dmr qm = a("polished_blackstone_slab", due::new, eas.d.b(qd));
+   public static final dmr qn = a("polished_blackstone_pressure_plate", $$0x -> new dsv(ebi.f, $$0x), eas.d.a().a(exe.D).k().a(ebu.b).b().d(0.5F).a(exf.b));
+   public static final dmr qo = a("polished_blackstone_button", $$0x -> new dnc(ebi.e, 20, $$0x), b());
+   public static final dmr qp = a("polished_blackstone_wall", dwg::new, eas.d.b(qd).k());
+   public static final dmr qq = a("chiseled_nether_bricks", eas.d.a().a(exe.J).a(ebu.b).n().a(2.0F, 6.0F).a(duo.N));
+   public static final dmr qr = a("cracked_nether_bricks", eas.d.a().a(exe.J).a(ebu.b).n().a(2.0F, 6.0F).a(duo.N));
+   public static final dmr qs = a("quartz_bricks", eas.d.b(hE));
+   public static final dmr qt = a("candle", dni::new, d(exe.c));
+   public static final dmr qu = a("white_candle", dni::new, d(exe.d));
+   public static final dmr qv = a("orange_candle", dni::new, d(exe.p));
+   public static final dmr qw = a("magenta_candle", dni::new, d(exe.q));
+   public static final dmr qx = a("light_blue_candle", dni::new, d(exe.r));
+   public static final dmr qy = a("yellow_candle", dni::new, d(exe.s));
+   public static final dmr qz = a("lime_candle", dni::new, d(exe.t));
+   public static final dmr qA = a("pink_candle", dni::new, d(exe.u));
+   public static final dmr qB = a("gray_candle", dni::new, d(exe.v));
+   public static final dmr qC = a("light_gray_candle", dni::new, d(exe.w));
+   public static final dmr qD = a("cyan_candle", dni::new, d(exe.x));
+   public static final dmr qE = a("purple_candle", dni::new, d(exe.y));
+   public static final dmr qF = a("blue_candle", dni::new, d(exe.z));
+   public static final dmr qG = a("brown_candle", dni::new, d(exe.A));
+   public static final dmr qH = a("green_candle", dni::new, d(exe.B));
+   public static final dmr qI = a("red_candle", dni::new, d(exe.C));
+   public static final dmr qJ = a("black_candle", dni::new, d(exe.D));
+   public static final dmr qK = a("candle_cake", $$0x -> new dnj(qt, $$0x), eas.d.b(ex).a(a(3)));
+   public static final dmr qL = a("white_candle_cake", $$0x -> new dnj(qu, $$0x), eas.d.b(qK));
+   public static final dmr qM = a("orange_candle_cake", $$0x -> new dnj(qv, $$0x), eas.d.b(qK));
+   public static final dmr qN = a("magenta_candle_cake", $$0x -> new dnj(qw, $$0x), eas.d.b(qK));
+   public static final dmr qO = a("light_blue_candle_cake", $$0x -> new dnj(qx, $$0x), eas.d.b(qK));
+   public static final dmr qP = a("yellow_candle_cake", $$0x -> new dnj(qy, $$0x), eas.d.b(qK));
+   public static final dmr qQ = a("lime_candle_cake", $$0x -> new dnj(qz, $$0x), eas.d.b(qK));
+   public static final dmr qR = a("pink_candle_cake", $$0x -> new dnj(qA, $$0x), eas.d.b(qK));
+   public static final dmr qS = a("gray_candle_cake", $$0x -> new dnj(qB, $$0x), eas.d.b(qK));
+   public static final dmr qT = a("light_gray_candle_cake", $$0x -> new dnj(qC, $$0x), eas.d.b(qK));
+   public static final dmr qU = a("cyan_candle_cake", $$0x -> new dnj(qD, $$0x), eas.d.b(qK));
+   public static final dmr qV = a("purple_candle_cake", $$0x -> new dnj(qE, $$0x), eas.d.b(qK));
+   public static final dmr qW = a("blue_candle_cake", $$0x -> new dnj(qF, $$0x), eas.d.b(qK));
+   public static final dmr qX = a("brown_candle_cake", $$0x -> new dnj(qG, $$0x), eas.d.b(qK));
+   public static final dmr qY = a("green_candle_cake", $$0x -> new dnj(qH, $$0x), eas.d.b(qK));
+   public static final dmr qZ = a("red_candle_cake", $$0x -> new dnj(qI, $$0x), eas.d.b(qK));
+   public static final dmr ra = a("black_candle_cake", $$0x -> new dnj(qJ, $$0x), eas.d.b(qK));
+   public static final dmr rb = a("amethyst_block", dlp::new, eas.d.a().a(exe.y).d(1.5F).a(duo.Y).n());
+   public static final dmr rc = a("budding_amethyst", dna::new, eas.d.a().a(exe.y).e().d(1.5F).a(duo.Y).n().a(exf.b));
+   public static final dmr rd = a("amethyst_cluster", $$0x -> new dlq(7.0F, 10.0F, $$0x), eas.d.a().a(exe.y).k().c().a(duo.Z).d(1.5F).a($$0x -> 5).a(exf.b));
+   public static final dmr re = a("large_amethyst_bud", $$0x -> new dlq(5.0F, 10.0F, $$0x), eas.d.b(rd).a(duo.ab).a($$0x -> 4));
+   public static final dmr rf = a("medium_amethyst_bud", $$0x -> new dlq(4.0F, 10.0F, $$0x), eas.d.b(rd).a(duo.ac).a($$0x -> 2));
+   public static final dmr rg = a("small_amethyst_bud", $$0x -> new dlq(3.0F, 8.0F, $$0x), eas.d.b(rd).a(duo.aa).a($$0x -> 1));
+   public static final dmr rh = a("tuff", eas.d.a().a(exe.R).a(ebu.b).a(duo.ad).n().a(1.5F, 6.0F));
+   public static final dmr ri = a("tuff_slab", due::new, eas.d.b(rh));
+   public static final dmr rj = a("tuff_stairs", $$0x -> new duv(rh.m(), $$0x), eas.d.b(rh));
+   public static final dmr rk = a("tuff_wall", dwg::new, eas.d.b(rh).k());
+   public static final dmr rl = a("polished_tuff", eas.d.b(rh).a(duo.af));
+   public static final dmr rm = a("polished_tuff_slab", due::new, eas.d.b(rl));
+   public static final dmr rn = a("polished_tuff_stairs", $$0x -> new duv(rl.m(), $$0x), eas.d.b(rl));
+   public static final dmr ro = a("polished_tuff_wall", dwg::new, eas.d.b(rl).k());
+   public static final dmr rp = a("chiseled_tuff", eas.d.b(rh));
+   public static final dmr rq = a("tuff_bricks", eas.d.b(rh).a(duo.ae));
+   public static final dmr rr = a("tuff_brick_slab", due::new, eas.d.b(rq));
+   public static final dmr rs = a("tuff_brick_stairs", $$0x -> new duv(rq.m(), $$0x), eas.d.b(rq));
+   public static final dmr rt = a("tuff_brick_wall", dwg::new, eas.d.b(rq).k());
+   public static final dmr ru = a("chiseled_tuff_bricks", eas.d.b(rq));
+   public static final dmr rv = a("calcite", eas.d.a().a(exe.K).a(ebu.b).a(duo.ag).n().d(0.75F));
+   public static final dmr rw = a("tinted_glass", dvn::new, eas.d.b(aX).a(exe.v).c().a(dmt::a).a(dmt::b).b(dmt::b).c(dmt::b));
+   public static final dmr rx = a("powder_snow", dss::new, eas.d.a().a(exe.i).d(0.25F).a(duo.l).f().c().a(dmt::b));
+   public static final dmr ry = a("sculk_sensor", dts::new, eas.d.a().a(exe.x).d(1.5F).a(duo.aA).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dts.o($$0x) == eca.b));
+   public static final dmr rz = a("calibrated_sculk_sensor", dng::new, eas.d.b(ry));
+   public static final dmr rA = a("sculk", dtq::new, eas.d.a().a(exe.D).d(0.2F).a(duo.aC));
+   public static final dmr rB = a("sculk_vein", dtv::new, eas.d.a().a(exe.D).k().b().d(0.2F).a(duo.aD).a(exf.b));
+   public static final dmr rC = a("sculk_catalyst", dtr::new, eas.d.a().a(exe.D).a(3.0F, 3.0F).a(duo.aB).a($$0x -> 6));
+   public static final dmr rD = a("sculk_shrieker", dtt::new, eas.d.a().a(exe.D).a(3.0F, 3.0F).a(duo.aE));
+   public static final dmr rE = a("copper_block", $$0x -> new dwq(dwn.a.a, $$0x), eas.d.a().a(exe.p).n().a(3.0F, 6.0F).a(duo.aj));
+   public static final dmr rF = a("exposed_copper", $$0x -> new dwq(dwn.a.b, $$0x), eas.d.a(rE).a(exe.S));
+   public static final dmr rG = a("weathered_copper", $$0x -> new dwq(dwn.a.c, $$0x), eas.d.a(rE).a(exe.ae));
+   public static final dmr rH = a("oxidized_copper", $$0x -> new dwq(dwn.a.d, $$0x), eas.d.a(rE).a(exe.ad));
+   public static final dmr rI = a("copper_ore", $$0x -> new dpc(bti.a(0), $$0x), eas.d.b(S));
+   public static final dmr rJ = a("deepslate_copper_ore", $$0x -> new dpc(bti.a(0), $$0x), eas.d.b(rI).a(exe.ah).a(4.5F, 3.0F).a(duo.aG));
+   public static final dmr rK = a("oxidized_cut_copper", $$0x -> new dwq(dwn.a.d, $$0x), eas.d.a(rH));
+   public static final dmr rL = a("weathered_cut_copper", $$0x -> new dwq(dwn.a.c, $$0x), eas.d.a(rG));
+   public static final dmr rM = a("exposed_cut_copper", $$0x -> new dwq(dwn.a.b, $$0x), eas.d.a(rF));
+   public static final dmr rN = a("cut_copper", $$0x -> new dwq(dwn.a.a, $$0x), eas.d.a(rE));
+   public static final dmr rO = a("oxidized_chiseled_copper", $$0x -> new dwq(dwn.a.d, $$0x), eas.d.a(rH));
+   public static final dmr rP = a("weathered_chiseled_copper", $$0x -> new dwq(dwn.a.c, $$0x), eas.d.a(rG));
+   public static final dmr rQ = a("exposed_chiseled_copper", $$0x -> new dwq(dwn.a.b, $$0x), eas.d.a(rF));
+   public static final dmr rR = a("chiseled_copper", $$0x -> new dwq(dwn.a.a, $$0x), eas.d.a(rE));
+   public static final dmr rS = a("waxed_oxidized_chiseled_copper", eas.d.a(rO));
+   public static final dmr rT = a("waxed_weathered_chiseled_copper", eas.d.a(rP));
+   public static final dmr rU = a("waxed_exposed_chiseled_copper", eas.d.a(rQ));
+   public static final dmr rV = a("waxed_chiseled_copper", eas.d.a(rR));
+   public static final dmr rW = a("oxidized_cut_copper_stairs", $$0x -> new dwt(dwn.a.d, rK.m(), $$0x), eas.d.a(rK));
+   public static final dmr rX = a("weathered_cut_copper_stairs", $$0x -> new dwt(dwn.a.c, rL.m(), $$0x), eas.d.a(rG));
+   public static final dmr rY = a("exposed_cut_copper_stairs", $$0x -> new dwt(dwn.a.b, rM.m(), $$0x), eas.d.a(rF));
+   public static final dmr rZ = a("cut_copper_stairs", $$0x -> new dwt(dwn.a.a, rN.m(), $$0x), eas.d.a(rE));
+   public static final dmr sa = a("oxidized_cut_copper_slab", $$0x -> new dws(dwn.a.d, $$0x), eas.d.a(rK));
+   public static final dmr sb = a("weathered_cut_copper_slab", $$0x -> new dws(dwn.a.c, $$0x), eas.d.a(rL));
+   public static final dmr sc = a("exposed_cut_copper_slab", $$0x -> new dws(dwn.a.b, $$0x), eas.d.a(rM));
+   public static final dmr sd = a("cut_copper_slab", $$0x -> new dws(dwn.a.a, $$0x), eas.d.a(rN));
+   public static final dmr se = a("waxed_copper_block", eas.d.a(rE));
+   public static final dmr sf = a("waxed_weathered_copper", eas.d.a(rG));
+   public static final dmr sg = a("waxed_exposed_copper", eas.d.a(rF));
+   public static final dmr sh = a("waxed_oxidized_copper", eas.d.a(rH));
+   public static final dmr si = a("waxed_oxidized_cut_copper", eas.d.a(rH));
+   public static final dmr sj = a("waxed_weathered_cut_copper", eas.d.a(rG));
+   public static final dmr sk = a("waxed_exposed_cut_copper", eas.d.a(rF));
+   public static final dmr sl = a("waxed_cut_copper", eas.d.a(rE));
+   public static final dmr sm = b("waxed_oxidized_cut_copper_stairs", si);
+   public static final dmr sn = b("waxed_weathered_cut_copper_stairs", sj);
+   public static final dmr so = b("waxed_exposed_cut_copper_stairs", sk);
+   public static final dmr sp = b("waxed_cut_copper_stairs", sl);
+   public static final dmr sq = a("waxed_oxidized_cut_copper_slab", due::new, eas.d.a(si).n());
+   public static final dmr sr = a("waxed_weathered_cut_copper_slab", due::new, eas.d.a(sj).n());
+   public static final dmr ss = a("waxed_exposed_cut_copper_slab", due::new, eas.d.a(sk).n());
+   public static final dmr st = a("waxed_cut_copper_slab", due::new, eas.d.a(sl).n());
+   public static final dmr su = a("copper_door", $$0x -> new dwp(ebi.c, dwn.a.a, $$0x), eas.d.a().a(rE.w()).a(3.0F, 6.0F).c().a(exf.b));
+   public static final dmr sv = a("exposed_copper_door", $$0x -> new dwp(ebi.c, dwn.a.b, $$0x), eas.d.a(su).a(rF.w()));
+   public static final dmr sw = a("oxidized_copper_door", $$0x -> new dwp(ebi.c, dwn.a.d, $$0x), eas.d.a(su).a(rH.w()));
+   public static final dmr sx = a("weathered_copper_door", $$0x -> new dwp(ebi.c, dwn.a.c, $$0x), eas.d.a(su).a(rG.w()));
+   public static final dmr sy = a("waxed_copper_door", $$0x -> new doy(ebi.c, $$0x), eas.d.a(su));
+   public static final dmr sz = a("waxed_exposed_copper_door", $$0x -> new doy(ebi.c, $$0x), eas.d.a(sv));
+   public static final dmr sA = a("waxed_oxidized_copper_door", $$0x -> new doy(ebi.c, $$0x), eas.d.a(sw));
+   public static final dmr sB = a("waxed_weathered_copper_door", $$0x -> new doy(ebi.c, $$0x), eas.d.a(sx));
+   public static final dmr sC = a("copper_trapdoor", $$0x -> new dwu(ebi.c, dwn.a.a, $$0x), eas.d.a().a(rE.w()).a(3.0F, 6.0F).n().c().a(dmt::a));
+   public static final dmr sD = a("exposed_copper_trapdoor", $$0x -> new dwu(ebi.c, dwn.a.b, $$0x), eas.d.a(sC).a(rF.w()));
+   public static final dmr sE = a("oxidized_copper_trapdoor", $$0x -> new dwu(ebi.c, dwn.a.d, $$0x), eas.d.a(sC).a(rH.w()));
+   public static final dmr sF = a("weathered_copper_trapdoor", $$0x -> new dwu(ebi.c, dwn.a.c, $$0x), eas.d.a(sC).a(rG.w()));
+   public static final dmr sG = a("waxed_copper_trapdoor", $$0x -> new dvt(ebi.c, $$0x), eas.d.a(sC));
+   public static final dmr sH = a("waxed_exposed_copper_trapdoor", $$0x -> new dvt(ebi.c, $$0x), eas.d.a(sD));
+   public static final dmr sI = a("waxed_oxidized_copper_trapdoor", $$0x -> new dvt(ebi.c, $$0x), eas.d.a(sE));
+   public static final dmr sJ = a("waxed_weathered_copper_trapdoor", $$0x -> new dvt(ebi.c, $$0x), eas.d.a(sF));
+   public static final dmr sK = a(
+      "copper_grate", $$0x -> new dwr(dwn.a.a, $$0x), eas.d.a().a(3.0F, 6.0F).a(duo.al).a(exe.p).c().n().a(dmt::a).a(dmt::b).b(dmt::b).c(dmt::b)
+   );
+   public static final dmr sL = a("exposed_copper_grate", $$0x -> new dwr(dwn.a.b, $$0x), eas.d.a(sK).a(exe.S));
+   public static final dmr sM = a("weathered_copper_grate", $$0x -> new dwr(dwn.a.c, $$0x), eas.d.a(sK).a(exe.ae));
+   public static final dmr sN = a("oxidized_copper_grate", $$0x -> new dwr(dwn.a.d, $$0x), eas.d.a(sK).a(exe.ad));
+   public static final dmr sO = a("waxed_copper_grate", dwm::new, eas.d.a(sK));
+   public static final dmr sP = a("waxed_exposed_copper_grate", dwm::new, eas.d.a(sL));
+   public static final dmr sQ = a("waxed_weathered_copper_grate", dwm::new, eas.d.a(sM));
+   public static final dmr sR = a("waxed_oxidized_copper_grate", dwm::new, eas.d.a(sN));
+   public static final dmr sS = a("copper_bulb", $$0x -> new dwo(dwn.a.a, $$0x), eas.d.a().a(rE.w()).a(3.0F, 6.0F).a(duo.ak).n().a(dmt::b).a(a(15)));
+   public static final dmr sT = a("exposed_copper_bulb", $$0x -> new dwo(dwn.a.b, $$0x), eas.d.a(sS).a(exe.S).a(a(12)));
+   public static final dmr sU = a("weathered_copper_bulb", $$0x -> new dwo(dwn.a.c, $$0x), eas.d.a(sS).a(exe.ae).a(a(8)));
+   public static final dmr sV = a("oxidized_copper_bulb", $$0x -> new dwo(dwn.a.d, $$0x), eas.d.a(sS).a(exe.ad).a(a(4)));
+   public static final dmr sW = a("waxed_copper_bulb", dog::new, eas.d.a(sS));
+   public static final dmr sX = a("waxed_exposed_copper_bulb", dog::new, eas.d.a(sT));
+   public static final dmr sY = a("waxed_weathered_copper_bulb", dog::new, eas.d.a(sU));
+   public static final dmr sZ = a("waxed_oxidized_copper_bulb", dog::new, eas.d.a(sV));
+   public static final dmr ta = a("lightning_rod", drm::new, eas.d.a().a(exe.p).k().n().a(3.0F, 6.0F).a(duo.aj).c());
+   public static final dmr tb = a(
+      "pointed_dripstone", dsp::new, eas.d.a().a(exe.W).k().a(ebu.b).c().a(duo.ai).e().a(1.5F, 3.0F).f().a(eas.c.b).a(exf.b).a(dmt::b)
+   );
+   public static final dmr tc = a("dripstone_block", eas.d.a().a(exe.W).a(ebu.b).a(duo.ah).n().a(1.5F, 1.0F));
+   public static final dmr td = a("cave_vines", dnq::new, eas.d.a().a(exe.h).e().b().a(dnp.i_(14)).d().a(duo.am).a(exf.b));
+   public static final dmr te = a("cave_vines_plant", dnr::new, eas.d.a().a(exe.h).b().a(dnp.i_(14)).d().a(duo.am).a(exf.b));
+   public static final dmr tf = a("spore_blossom", dur::new, eas.d.a().a(exe.h).d().b().a(duo.an).a(exf.b));
+   public static final dmr tg = a("azalea", dlt::new, eas.d.a().a(exe.h).l().d().a(duo.ap).c().a(exf.b));
+   public static final dmr th = a("flowering_azalea", dlt::new, eas.d.a().a(exe.h).l().d().a(duo.aq).c().a(exf.b));
+   public static final dmr ti = a("moss_carpet", dnk::new, eas.d.a().a(exe.B).d(0.1F).a(duo.ar).a(exf.b));
+   public static final dmr tj = a("pink_petals", dpw::new, eas.d.a().a(exe.h).b().a(duo.as).a(exf.b));
+   public static final dmr tk = a("wildflowers", dpw::new, eas.d.a().a(exe.h).b().a(duo.as).a(exf.b));
+   public static final dmr tl = a("leaf_litter", drg::new, eas.d.a().a(exe.A).b().a(duo.at).a(exf.b));
+   public static final dmr tm = a("moss_block", $$0x -> new dmv(rg.n, $$0x), eas.d.a().a(exe.B).d(0.1F).a(duo.au).a(exf.b));
+   public static final dmr tn = a("big_dripleaf", dmo::new, eas.d.a().a(exe.h).l().d(0.1F).a(duo.av).a(exf.b));
+   public static final dmr to = a("big_dripleaf_stem", dmp::new, eas.d.a().a(exe.h).b().d(0.1F).a(duo.av).a(exf.b));
+   public static final dmr tp = a("small_dripleaf", dug::new, eas.d.a().a(exe.h).b().d().a(duo.aw).a(eas.c.c).a(exf.b));
+   public static final dmr tq = a("hanging_roots", dqn::new, eas.d.a().a(exe.k).p().b().d().a(duo.ay).a(eas.c.b).i().a(exf.b));
+   public static final dmr tr = a("rooted_dirt", dti::new, eas.d.a().a(exe.k).d(0.5F).a(duo.ax));
+   public static final dmr ts = a("mud", drw::new, eas.d.b(j).a(exe.T).a(dmt::b).a(dmt::a).c(dmt::a).b(dmt::a).a(duo.aO));
+   public static final dmr tt = a("deepslate", dtk::new, eas.d.a().a(exe.ah).a(ebu.b).n().a(3.0F, 6.0F).a(duo.aG));
+   public static final dmr tu = a("cobbled_deepslate", eas.d.b(tt).a(3.5F, 6.0F));
+   public static final dmr tv = a("cobbled_deepslate_stairs", tu);
+   public static final dmr tw = a("cobbled_deepslate_slab", due::new, eas.d.b(tu));
+   public static final dmr tx = a("cobbled_deepslate_wall", dwg::new, eas.d.b(tu).k());
+   public static final dmr ty = a("polished_deepslate", eas.d.b(tu).a(duo.aJ));
+   public static final dmr tz = a("polished_deepslate_stairs", ty);
+   public static final dmr tA = a("polished_deepslate_slab", due::new, eas.d.b(ty));
+   public static final dmr tB = a("polished_deepslate_wall", dwg::new, eas.d.b(ty).k());
+   public static final dmr tC = a("deepslate_tiles", eas.d.b(tu).a(duo.aI));
+   public static final dmr tD = a("deepslate_tile_stairs", tC);
+   public static final dmr tE = a("deepslate_tile_slab", due::new, eas.d.b(tC));
+   public static final dmr tF = a("deepslate_tile_wall", dwg::new, eas.d.b(tC).k());
+   public static final dmr tG = a("deepslate_bricks", eas.d.b(tu).a(duo.aH));
+   public static final dmr tH = a("deepslate_brick_stairs", tG);
+   public static final dmr tI = a("deepslate_brick_slab", due::new, eas.d.b(tG));
+   public static final dmr tJ = a("deepslate_brick_wall", dwg::new, eas.d.b(tG).k());
+   public static final dmr tK = a("chiseled_deepslate", eas.d.b(tu).a(duo.aH));
+   public static final dmr tL = a("cracked_deepslate_bricks", eas.d.b(tG));
+   public static final dmr tM = a("cracked_deepslate_tiles", eas.d.b(tC));
+   public static final dmr tN = a("infested_deepslate", $$0x -> new dqw(tt, $$0x), eas.d.a().a(exe.ah).a(duo.aG));
+   public static final dmr tO = a("smooth_basalt", eas.d.b(ep));
+   public static final dmr tP = a("raw_iron_block", eas.d.a().a(exe.ai).a(ebu.b).n().a(5.0F, 6.0F));
+   public static final dmr tQ = a("raw_copper_block", eas.d.a().a(exe.p).a(ebu.b).n().a(5.0F, 6.0F));
+   public static final dmr tR = a("raw_gold_block", eas.d.a().a(exe.E).a(ebu.b).n().a(5.0F, 6.0F));
+   public static final dmr tS = a("potted_azalea_bush", $$0x -> new dpy(tg, $$0x), c());
+   public static final dmr tT = a("potted_flowering_azalea_bush", $$0x -> new dpy(th, $$0x), c());
+   public static final dmr tU = a("ochre_froglight", dtk::new, eas.d.a().a(exe.c).d(0.3F).a($$0x -> 15).a(duo.aK));
+   public static final dmr tV = a("verdant_froglight", dtk::new, eas.d.a().a(exe.aj).d(0.3F).a($$0x -> 15).a(duo.aK));
+   public static final dmr tW = a("pearlescent_froglight", dtk::new, eas.d.a().a(exe.u).d(0.3F).a($$0x -> 15).a(duo.aK));
+   public static final dmr tX = a("frogspawn", dpz::new, eas.d.a().a(exe.m).d().c().b().a(duo.aL).a(exf.b));
+   public static final dmr tY = a("reinforced_deepslate", eas.d.a().a(exe.ah).a(ebu.b).a(duo.aG).a(55.0F, 1200.0F));
+   public static final dmr tZ = a("decorated_pot", dos::new, eas.d.a().a(exe.Y).a(0.0F, 0.0F).a(exf.b).c());
+   public static final dmr ua = a("crafter", dol::new, eas.d.a().a(exe.l).a(1.5F, 3.5F));
+   public static final dmr ub = a("trial_spawner", dvv::new, eas.d.a().a(exe.l).a(ebu.b).a($$0x -> $$0x.c(dvv.b).a()).d(50.0F).a(duo.bf).c(dmt::b).c());
+   public static final dmr uc = a("vault", dwc::new, eas.d.a().a(exe.l).a(ebu.b).c().a(duo.bi).a($$0x -> $$0x.c(dwc.b).a()).d(50.0F).c(dmt::b));
+   public static final dmr ud = a("heavy_core", dqp::new, eas.d.a().a(exe.g).a(ebu.c).a(duo.bk).d(10.0F).a(exf.a).f(1200.0F));
+   public static final dmr ue = a("pale_moss_block", $$0x -> new dmv(ro.N, $$0x), eas.d.a().i().a(exe.w).d(0.1F).a(duo.au).a(exf.b));
+   public static final dmr uf = a("pale_moss_carpet", drv::new, eas.d.a().i().a(ue.w()).d(0.1F).a(duo.ar).a(exf.b));
+   public static final dmr ug = a("pale_hanging_moss", dqm::new, eas.d.a().i().a(ue.w()).b().a(duo.ar).a(exf.b));
+   public static final dmr uh = a("open_eyeblossom", $$0x -> new dpm(dpm.a.a, $$0x), eas.d.a().a(cE.w()).b().d().a(duo.d).a(eas.c.b).a(exf.b).e());
+   public static final dmr ui = a("closed_eyeblossom", $$0x -> new dpm(dpm.a.b, $$0x), eas.d.a().a(aR.w()).b().d().a(duo.d).a(eas.c.b).a(exf.b).e());
+   public static final dmr uj = a("potted_open_eyeblossom", $$0x -> new dpy(uh, $$0x), c().e());
+   public static final dmr uk = a("potted_closed_eyeblossom", $$0x -> new dpy(ui, $$0x), c().e());
+   public static final dmr ul = a("firefly_bush", dpu::new, eas.d.a().a(exe.h).i().a($$0x -> 2).b().d().a(duo.v).a(exf.b));
 
-   @Override
-   public MapCodec<dmt> a() {
-      return a;
+   private static ToIntFunction<eat> a(int $$0) {
+      return $$1 -> $$1.c(ebj.u) ? $$0 : 0;
    }
 
-   public dmt(ean.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(true)));
+   private static Function<eat, exe> a(exe $$0) {
+      return $$1 -> $$1.c(ebj.I) ? exe.m : $$0;
    }
 
-   @Override
-   protected void a(eao $$0, djh $$1, iv $$2, bwi $$3, bxb $$4) {
-      eao $$5 = $$1.a_($$2.d());
-      boolean $$6 = $$5.g($$1, $$2).c() && $$5.y().c();
-      if ($$6) {
-         $$3.a($$0.c(b), $$2);
-      } else {
-         $$3.l($$0.c(b));
+   private static Boolean a(eat $$0, diq $$1, iv $$2, bwr<?> $$3) {
+      return false;
+   }
+
+   private static Boolean b(eat $$0, diq $$1, iv $$2, bwr<?> $$3) {
+      return true;
+   }
+
+   private static Boolean c(eat $$0, diq $$1, iv $$2, bwr<?> $$3) {
+      return $$3 == bwr.aI || $$3 == bwr.aO;
+   }
+
+   private static dmr a(String $$0, cyl $$1) {
+      return a($$0, $$1x -> new dmk($$1, $$1x), eas.d.a().a($$1x -> $$1x.c(dmk.b) == ebg.b ? $$1.e() : exe.d).a(duo.b).d(0.2F).c().i().a(exf.b));
+   }
+
+   private static eas.d a(exe $$0, exe $$1, duo $$2) {
+      return eas.d.a().a($$2x -> $$2x.c(dtk.d) == jb.a.b ? $$0 : $$1).a(ebu.e).d(2.0F).a($$2).i();
+   }
+
+   private static eas.d b(exe $$0) {
+      return eas.d.a().a($$1 -> $$0).a(ebu.e).d(2.0F).a(duo.B);
+   }
+
+   private static boolean a(eat $$0, diq $$1, iv $$2) {
+      return true;
+   }
+
+   private static boolean b(eat $$0, diq $$1, iv $$2) {
+      return false;
+   }
+
+   private static dmr b(String $$0, cyl $$1) {
+      return a($$0, $$1x -> new dut($$1, $$1x), eas.d.a().a($$1).a(ebu.d).d(0.3F).a(duo.h).c().a(dmt::a).a(dmt::b).b(dmt::b).c(dmt::b));
+   }
+
+   private static eas.d a(duo $$0) {
+      return eas.d.a().a(exe.h).d(0.2F).e().a($$0).c().a(dmt::c).b(dmt::b).c(dmt::b).i().a(exf.b).a(dmt::b);
+   }
+
+   private static eas.d c(exe $$0) {
+      return eas.d.a().a($$0).k().d(2.0F).f().c().b(um).c(um).a(exf.b);
+   }
+
+   private static eas.d a() {
+      return eas.d.a().a(exe.l).d(1.5F).a(dmt::b).b(un).c(un).a(exf.c);
+   }
+
+   private static eas.d b() {
+      return eas.d.a().b().d(0.5F).a(exf.b);
+   }
+
+   private static eas.d c() {
+      return eas.d.a().d().c().a(exf.b);
+   }
+
+   private static eas.d d(exe $$0) {
+      return eas.d.a().a($$0).c().d(0.1F).a(duo.X).a(dni.i).a(exf.b);
+   }
+
+   @Deprecated
+   private static dmr a(String $$0, dmr $$1) {
+      return a($$0, $$1x -> new duv($$1.m(), $$1x), eas.d.b($$1));
+   }
+
+   private static dmr b(String $$0, dmr $$1) {
+      return a($$0, $$1x -> new duv($$1.m(), $$1x), eas.d.a($$1));
+   }
+
+   private static eas.d a(dmr $$0, boolean $$1) {
+      eas.d $$2 = $$0.s();
+      eas.d $$3 = eas.d.a().a($$0.u());
+      if ($$1) {
+         $$3 = $$3.a($$0.v());
       }
+
+      return $$3;
    }
 
-   @Override
-   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
-      a($$1, $$2, $$0, $$1.a_($$2.e()));
+   private static dmr a(alf<dmr> $$0, Function<eas.d, dmr> $$1, eas.d $$2) {
+      dmr $$3 = $$1.apply($$2.a($$0));
+      return js.a(mg.e, $$0, $$3);
    }
 
-   @Override
-   protected ewv b_(eao $$0) {
-      return eww.c.a(false);
+   private static dmr a(alf<dmr> $$0, eas.d $$1) {
+      return a($$0, dmr::new, $$1);
    }
 
-   public static void b(dji $$0, iv $$1, eao $$2) {
-      a($$0, $$1, $$0.a_($$1), $$2);
+   private static alf<dmr> a(String $$0) {
+      return alf.a(mh.i, alg.b($$0));
    }
 
-   public static void a(dji $$0, iv $$1, eao $$2, eao $$3) {
-      if (o($$2)) {
-         eao $$4 = q($$3);
-         $$0.a($$1, $$4, 2);
-         iv.a $$5 = $$1.k().c(jb.b);
+   private static dmr a(String $$0, Function<eas.d, dmr> $$1, eas.d $$2) {
+      return a(a($$0), $$1, $$2);
+   }
 
-         while (o($$0.a_($$5))) {
-            if (!$$0.a($$5, $$4, 2)) {
-               return;
-            }
+   private static dmr a(String $$0, eas.d $$1) {
+      return a($$0, dmr::new, $$1);
+   }
 
-            $$5.c(jb.b);
+   static {
+      for (dmr $$0 : mg.e) {
+         UnmodifiableIterator var2 = $$0.l().a().iterator();
+
+         while (var2.hasNext()) {
+            eat $$1 = (eat)var2.next();
+            dmr.k.b($$1);
+            $$1.a();
          }
       }
-   }
-
-   private static boolean o(eao $$0) {
-      return $$0.a(dmo.nJ) || $$0.a(dmo.J) && $$0.y().e() >= 8 && $$0.y().b();
-   }
-
-   private static eao q(eao $$0) {
-      if ($$0.a(dmo.nJ)) {
-         return $$0;
-      } else if ($$0.a(dmo.en)) {
-         return dmo.nJ.m().b(b, Boolean.valueOf(false));
-      } else {
-         return $$0.a(dmo.lp) ? dmo.nJ.m().b(b, Boolean.valueOf(true)) : dmo.J.m();
-      }
-   }
-
-   @Override
-   public void a(eao $$0, djh $$1, iv $$2, azv $$3) {
-      double $$4 = (double)$$2.u();
-      double $$5 = (double)$$2.v();
-      double $$6 = (double)$$2.w();
-      if ($$0.c(b)) {
-         $$1.b(ly.as, $$4 + 0.5, $$5 + 0.8, $$6, 0.0, 0.0, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, awn.da, awo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      } else {
-         $$1.b(ly.at, $$4 + 0.5, $$5, $$6 + 0.5, 0.0, 0.04, 0.0);
-         $$1.b(ly.at, $$4 + (double)$$3.i(), $$5 + (double)$$3.i(), $$6 + (double)$$3.i(), 0.0, 0.04, 0.0);
-         if ($$3.a(200) == 0) {
-            $$1.a($$4, $$5, $$6, awn.cY, awo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
-      }
-   }
-
-   @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      $$2.a($$3, eww.c, eww.c.a($$1));
-      if (!$$0.a($$1, $$3) || $$4 == jb.a || $$4 == jb.b && !$$6.a(dmo.nJ) && o($$6)) {
-         $$2.a($$3, this, 5);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      eao $$3 = $$1.a_($$2.e());
-      return $$3.a(dmo.nJ) || $$3.a(dmo.lp) || $$3.a(dmo.en);
-   }
-
-   @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return ffo.a();
-   }
-
-   @Override
-   protected dsz a_(eao $$0) {
-      return dsz.a;
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public czk a(@Nullable bxj $$0, dji $$1, iv $$2, eao $$3) {
-      $$1.a($$2, dmo.a.m(), 11);
-      return new czk(czo.rp);
-   }
-
-   @Override
-   public Optional<awm> ap_() {
-      return eww.c.j();
    }
 }

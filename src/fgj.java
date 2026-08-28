@@ -1,59 +1,83 @@
-public interface fgj extends btz {
-   czk f();
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Collection;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-   default czk c(int $$0) {
-      return this.f().a($$0);
+public abstract class fgj {
+   public boolean a(@Nullable fgj $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   void b(czk var1);
+   public abstract String c();
 
-   default czk h() {
-      return this.c(this.ak_());
-   }
+   public abstract xm d(wy var1);
 
-   @Override
-   default int b() {
-      return 1;
-   }
+   public abstract boolean j();
 
-   @Override
-   default boolean c() {
-      return this.f().f();
-   }
+   public abstract boolean i();
 
-   @Override
-   default void a() {
-      this.h();
-   }
+   public abstract fgj.b k();
 
-   @Override
-   default czk b(int $$0) {
-      return this.a($$0, this.ak_());
-   }
+   public abstract o o();
 
-   @Override
-   default czk a(int $$0) {
-      return $$0 == 0 ? this.f() : czk.k;
-   }
+   public abstract Collection<String> h();
 
-   @Override
-   default czk a(int $$0, int $$1) {
-      return $$0 != 0 ? czk.k : this.c($$1);
-   }
+   public abstract fgj.b l();
 
-   @Override
-   default void a(int $$0, czk $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
+   public abstract fgj.a m();
+
+   public static enum a implements bak {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      public static final Codec<fgj.a> e = bak.a(fgj.a::values);
+      private static final IntFunction<fgj.a> i = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
+      public static final yw<ByteBuf, fgj.a> f = yu.a(i, $$0 -> $$0.h);
+      public final String g;
+      public final int h;
+
+      private a(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public wy a() {
+         return wy.c("team.collision." + this.g);
+      }
+
+      @Override
+      public String c() {
+         return this.g;
       }
    }
 
-   public interface a extends fgj {
-      dxm t();
+   public static enum b implements bak {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
+
+      public static final Codec<fgj.b> e = bak.a(fgj.b::values);
+      private static final IntFunction<fgj.b> i = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
+      public static final yw<ByteBuf, fgj.b> f = yu.a(i, $$0 -> $$0.h);
+      public final String g;
+      public final int h;
+
+      private b(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public wy a() {
+         return wy.c("team.visibility." + this.g);
+      }
 
       @Override
-      default boolean a(crj $$0) {
-         return btz.a(this.t(), $$0);
+      public String c() {
+         return this.g;
       }
    }
 }

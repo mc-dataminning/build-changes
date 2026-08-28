@@ -1,61 +1,56 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class dbk {
+   public static final jf<dbh> a = a("water", new dbh("water"));
+   public static final jf<dbh> b = a("mundane", new dbh("mundane"));
+   public static final jf<dbh> c = a("thick", new dbh("thick"));
+   public static final jf<dbh> d = a("awkward", new dbh("awkward"));
+   public static final jf<dbh> e = a("night_vision", new dbh("night_vision", new bvm(bvo.p, 3600)));
+   public static final jf<dbh> f = a("long_night_vision", new dbh("night_vision", new bvm(bvo.p, 9600)));
+   public static final jf<dbh> g = a("invisibility", new dbh("invisibility", new bvm(bvo.n, 3600)));
+   public static final jf<dbh> h = a("long_invisibility", new dbh("invisibility", new bvm(bvo.n, 9600)));
+   public static final jf<dbh> i = a("leaping", new dbh("leaping", new bvm(bvo.h, 3600)));
+   public static final jf<dbh> j = a("long_leaping", new dbh("leaping", new bvm(bvo.h, 9600)));
+   public static final jf<dbh> k = a("strong_leaping", new dbh("leaping", new bvm(bvo.h, 1800, 1)));
+   public static final jf<dbh> l = a("fire_resistance", new dbh("fire_resistance", new bvm(bvo.l, 3600)));
+   public static final jf<dbh> m = a("long_fire_resistance", new dbh("fire_resistance", new bvm(bvo.l, 9600)));
+   public static final jf<dbh> n = a("swiftness", new dbh("swiftness", new bvm(bvo.a, 3600)));
+   public static final jf<dbh> o = a("long_swiftness", new dbh("swiftness", new bvm(bvo.a, 9600)));
+   public static final jf<dbh> p = a("strong_swiftness", new dbh("swiftness", new bvm(bvo.a, 1800, 1)));
+   public static final jf<dbh> q = a("slowness", new dbh("slowness", new bvm(bvo.b, 1800)));
+   public static final jf<dbh> r = a("long_slowness", new dbh("slowness", new bvm(bvo.b, 4800)));
+   public static final jf<dbh> s = a("strong_slowness", new dbh("slowness", new bvm(bvo.b, 400, 3)));
+   public static final jf<dbh> t = a("turtle_master", new dbh("turtle_master", new bvm(bvo.b, 400, 3), new bvm(bvo.k, 400, 2)));
+   public static final jf<dbh> u = a("long_turtle_master", new dbh("turtle_master", new bvm(bvo.b, 800, 3), new bvm(bvo.k, 800, 2)));
+   public static final jf<dbh> v = a("strong_turtle_master", new dbh("turtle_master", new bvm(bvo.b, 400, 5), new bvm(bvo.k, 400, 3)));
+   public static final jf<dbh> w = a("water_breathing", new dbh("water_breathing", new bvm(bvo.m, 3600)));
+   public static final jf<dbh> x = a("long_water_breathing", new dbh("water_breathing", new bvm(bvo.m, 9600)));
+   public static final jf<dbh> y = a("healing", new dbh("healing", new bvm(bvo.f, 1)));
+   public static final jf<dbh> z = a("strong_healing", new dbh("healing", new bvm(bvo.f, 1, 1)));
+   public static final jf<dbh> A = a("harming", new dbh("harming", new bvm(bvo.g, 1)));
+   public static final jf<dbh> B = a("strong_harming", new dbh("harming", new bvm(bvo.g, 1, 1)));
+   public static final jf<dbh> C = a("poison", new dbh("poison", new bvm(bvo.s, 900)));
+   public static final jf<dbh> D = a("long_poison", new dbh("poison", new bvm(bvo.s, 1800)));
+   public static final jf<dbh> E = a("strong_poison", new dbh("poison", new bvm(bvo.s, 432, 1)));
+   public static final jf<dbh> F = a("regeneration", new dbh("regeneration", new bvm(bvo.j, 900)));
+   public static final jf<dbh> G = a("long_regeneration", new dbh("regeneration", new bvm(bvo.j, 1800)));
+   public static final jf<dbh> H = a("strong_regeneration", new dbh("regeneration", new bvm(bvo.j, 450, 1)));
+   public static final jf<dbh> I = a("strength", new dbh("strength", new bvm(bvo.e, 3600)));
+   public static final jf<dbh> J = a("long_strength", new dbh("strength", new bvm(bvo.e, 9600)));
+   public static final jf<dbh> K = a("strong_strength", new dbh("strength", new bvm(bvo.e, 1800, 1)));
+   public static final jf<dbh> L = a("weakness", new dbh("weakness", new bvm(bvo.r, 1800)));
+   public static final jf<dbh> M = a("long_weakness", new dbh("weakness", new bvm(bvo.r, 4800)));
+   public static final jf<dbh> N = a("luck", new dbh("luck", new bvm(bvo.z, 6000)));
+   public static final jf<dbh> O = a("slow_falling", new dbh("slow_falling", new bvm(bvo.B, 1800)));
+   public static final jf<dbh> P = a("long_slow_falling", new dbh("slow_falling", new bvm(bvo.B, 4800)));
+   public static final jf<dbh> Q = a("wind_charged", new dbh("wind_charged", new bvm(bvo.J, 3600)));
+   public static final jf<dbh> R = a("weaving", new dbh("weaving", new bvm(bvo.K, 3600)));
+   public static final jf<dbh> S = a("oozing", new dbh("oozing", new bvm(bvo.L, 3600)));
+   public static final jf<dbh> T = a("infested", new dbh("infested", new bvm(bvo.M, 3600)));
 
-public record dbk(Map<String, String> d) implements dcp {
-   public static final dbk a = new dbk(Map.of());
-   public static final Codec<dbk> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(dbk::new, dbk::b);
-   private static final yw<ByteBuf, Map<String, String>> e = yu.a(Object2ObjectOpenHashMap::new, yu.p, yu.p);
-   public static final yw<ByteBuf, dbk> c = e.a(dbk::new, dbk::b);
-
-   public <T extends Comparable<T>> dbk a(ebr<T> $$0, T $$1) {
-      return new dbk(ag.a(this.d, $$0.f(), $$0.b($$1)));
+   private static jf<dbh> a(String $$0, dbh $$1) {
+      return js.b(mg.h, alg.b($$0), $$1);
    }
 
-   public <T extends Comparable<T>> dbk a(ebr<T> $$0, eao $$1) {
-      return this.a($$0, $$1.c($$0));
-   }
-
-   @Nullable
-   public <T extends Comparable<T>> T a(ebr<T> $$0) {
-      String $$1 = this.d.get($$0.f());
-      return $$1 == null ? null : $$0.b($$1).orElse(null);
-   }
-
-   public eao a(eao $$0) {
-      eap<dmm, eao> $$1 = $$0.b().l();
-
-      for (Entry<String, String> $$2 : this.d.entrySet()) {
-         ebr<?> $$3 = $$1.a($$2.getKey());
-         if ($$3 != null) {
-            $$0 = a($$0, $$3, $$2.getValue());
-         }
-      }
-
-      return $$0;
-   }
-
-   private static <T extends Comparable<T>> eao a(eao $$0, ebr<T> $$1, String $$2) {
-      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
-   }
-
-   public boolean a() {
-      return this.d.isEmpty();
-   }
-
-   @Override
-   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
-      Integer $$4 = this.a(dmg.c);
-      if ($$4 != null) {
-         $$1.accept(wy.a("container.beehive.honey", $$4, 5).a(o.h));
-      }
-   }
-
-   public Map<String, String> b() {
-      return this.d;
+   public static jf<dbh> a(js<dbh> $$0) {
+      return a;
    }
 }

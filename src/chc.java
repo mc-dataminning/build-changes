@@ -7,7 +7,7 @@ public class chc extends chl {
 
    @Override
    protected boolean a(arq $$0, bxj $$1, bxj $$2) {
-      return !$$1.eb().a(cgl.V) && chr.c($$0, $$1, $$2) && ckz.i($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
+      return !$$1.eb().a(cgl.V) && chr.c($$0, $$1, $$2) && ckw.i($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
    }
 
    private boolean a(bxj $$0, bxj $$1) {

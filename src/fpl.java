@@ -1,14 +1,39 @@
-public enum fpl {
-   a,
-   b,
-   c,
-   d;
+import java.util.function.IntFunction;
 
-   public boolean a() {
-      return this == b;
+public enum fpl implements azp {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
+
+   private static final IntFunction<fpl> d = ayc.a(fpl::b, values(), ayc.a.b);
+   private final int e;
+   private final String f;
+
+   private fpl(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public boolean b() {
-      return this == c || this == d;
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.f;
+   }
+
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
+   }
+
+   public static fpl a(int $$0) {
+      return d.apply($$0);
    }
 }

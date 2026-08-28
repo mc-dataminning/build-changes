@@ -1,15 +1,18 @@
-public class hmt extends hmu {
-   public hmt(cja $$0) {
-      super($$0, awn.bR, awo.g);
+import java.nio.file.Path;
+import java.util.List;
+import java.util.UUID;
+
+public interface hmt {
+   void scheduleReload(hmt.a var1);
+
+   public interface a {
+      void a();
+
+      void a(boolean var1);
+
+      List<hmt.b> b();
    }
 
-   @Override
-   protected hmq o() {
-      return new hms(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.X_();
+   public static record b(UUID a, Path b) {
    }
 }

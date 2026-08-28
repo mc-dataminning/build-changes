@@ -1,11 +1,10 @@
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public abstract class eqt extends eqp {
-   protected abstract int a(azv var1, iv var2);
-
+public abstract class eqt extends equ {
    @Override
-   public Stream<iv> a_(eqn $$0, azv $$1, iv $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   public final Stream<iv> a_(eqs $$0, azv $$1, iv $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
    }
+
+   protected abstract boolean a(eqs var1, azv var2, iv var3);
 }

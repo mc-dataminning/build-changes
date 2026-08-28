@@ -1,12 +1,12 @@
 import javax.annotation.Nullable;
 
 public class cfh extends ces {
-   private final dmm g;
+   private final dmr g;
    private final bxl h;
    private int i;
    private static final int j = 20;
 
-   public cfh(dmm $$0, bxr $$1, double $$2, int $$3) {
+   public cfh(dmr $$0, bxr $$1, double $$2, int $$3) {
       super($$1, $$2, 24, $$3);
       this.g = $$0;
       this.h = $$1;
@@ -14,7 +14,7 @@ public class cfh extends ces {
 
    @Override
    public boolean b() {
-      if (!a(this.h).O().c(djd.d)) {
+      if (!a(this.h).O().c(dji.d)) {
          return false;
       } else if (this.c > 0) {
          this.c--;
@@ -40,28 +40,28 @@ public class cfh extends ces {
       this.i = 0;
    }
 
-   public void a(dji $$0, iv $$1) {
+   public void a(djn $$0, iv $$1) {
    }
 
-   public void a(djh $$0, iv $$1) {
+   public void a(djm $$0, iv $$1) {
    }
 
    @Override
    public void a() {
       super.a();
-      djh $$0 = this.h.dU();
+      djm $$0 = this.h.dU();
       iv $$1 = this.h.du();
       iv $$2 = this.a($$1, $$0);
       azv $$3 = this.h.dX();
       if (this.m() && $$2 != null) {
          if (this.i > 0) {
-            fex $$4 = this.h.dx();
+            ffc $$4 = this.h.dx();
             this.h.n($$4.d, 0.3, $$4.f);
             if (!$$0.C) {
                double $$5 = 0.08;
                ((arq)$$0)
                   .a(
-                     new lu(ly.U, new czk(czo.rH)),
+                     new lu(ly.U, new czn(czr.rH)),
                      (double)$$2.u() + 0.5,
                      (double)$$2.v() + 0.7,
                      (double)$$2.w() + 0.5,
@@ -75,10 +75,10 @@ public class cfh extends ces {
          }
 
          if (this.i % 2 == 0) {
-            fex $$6 = this.h.dx();
+            ffc $$6 = this.h.dx();
             this.h.n($$6.d, -0.3, $$6.f);
             if (this.i % 6 == 0) {
-               this.a((dji)$$0, this.e);
+               this.a((djn)$$0, this.e);
             }
          }
 
@@ -101,7 +101,7 @@ public class cfh extends ces {
    }
 
    @Nullable
-   private iv a(iv $$0, din $$1) {
+   private iv a(iv $$0, diq $$1) {
       if ($$1.a_($$0).a(this.g)) {
          return $$0;
       } else {
@@ -118,8 +118,8 @@ public class cfh extends ces {
    }
 
    @Override
-   protected boolean a(djk $$0, iv $$1) {
-      ecl $$2 = $$0.a(jy.a($$1.u()), jy.a($$1.w()), edm.n, false);
+   protected boolean a(djp $$0, iv $$1) {
+      ecq $$2 = $$0.a(jy.a($$1.u()), jy.a($$1.w()), edr.n, false);
       return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.d()).l() && $$2.a_($$1.b(2)).l();
    }
 }

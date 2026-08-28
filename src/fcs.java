@@ -1,85 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record fcs(Map<String, ezn> b, ezo.b c) implements fcx {
-   public static final MapCodec<fcs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, ezn.a).fieldOf("scores").forGetter(fcs::c), ezo.b.e.fieldOf("entity").forGetter(fcs::d))
-            .apply($$0, fcs::new)
-   );
+public abstract class fcs implements fdc {
+   protected final List<fdc> c;
+   private final Predicate<ezt> a;
 
-   @Override
-   public fcy b() {
-      return fcz.h;
+   protected fcs(List<fdc> $$0, Predicate<ezt> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends fcs> MapCodec<T> a(Function<List<fdc>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(fdc.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends fcs> Codec<T> b(Function<List<fdc>, T> $$0) {
+      return fdc.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(ezt $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public void a(ezz $$0) {
+      fdc.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
    }
 
-   public boolean a(ezo $$0) {
-      bwi $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         fgc $$2 = $$0.d().g();
+   public abstract static class a implements fdc.a {
+      private final Builder<fdc> a = ImmutableList.builder();
 
-         for (Entry<String, ezn> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
+      protected a(fdc.a... $$0) {
+         for (fdc.a $$1 : $$0) {
+            this.a.add($$1.build());
          }
-
-         return true;
-      }
-   }
-
-   protected boolean a(ezo $$0, bwi $$1, fgc $$2, String $$3, ezn $$4) {
-      ffu $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         ffy $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
-   }
-
-   public static fcs.a a(ezo.b $$0) {
-      return new fcs.a($$0);
-   }
-
-   public Map<String, ezn> c() {
-      return this.b;
-   }
-
-   public ezo.b d() {
-      return this.c;
-   }
-
-   public static class a implements fcx.a {
-      private final Builder<String, ezn> a = ImmutableMap.builder();
-      private final ezo.b b;
-
-      public a(ezo.b $$0) {
-         this.b = $$0;
       }
 
-      public fcs.a a(String $$0, ezn $$1) {
-         this.a.put($$0, $$1);
-         return this;
+      public void a(fdc.a $$0) {
+         this.a.add($$0.build());
       }
 
       @Override
-      public fcx build() {
-         return new fcs(this.a.build(), this.b);
+      public fdc build() {
+         return this.a(this.a.build());
       }
+
+      protected abstract fdc a(List<fdc> var1);
    }
 }

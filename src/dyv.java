@@ -1,103 +1,137 @@
-import javax.annotation.Nullable;
+public class dyv extends dxr {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private alg h = alg.b("empty");
+   private alg i = alg.b("empty");
+   private alf<esx> j = alf.a(mh.bf, alg.b("empty"));
+   private dyv.a k = dyv.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int q;
 
-public abstract class dyv extends dxf implements bum {
-   @Nullable
-   protected alf<ezt> l;
-   protected long m = 0L;
-
-   protected dyv(dxo<?> $$0, iv $$1, eao $$2) {
-      super($$0, $$1, $$2);
+   public dyv(iv $$0, eat $$1) {
+      super(dxt.G, $$0, $$1);
    }
 
-   @Nullable
-   @Override
-   public alf<ezt> at_() {
+   public alg a() {
+      return this.h;
+   }
+
+   public alg c() {
+      return this.i;
+   }
+
+   public alf<esx> d() {
+      return this.j;
+   }
+
+   public String f() {
       return this.l;
    }
 
-   @Override
-   public void a(@Nullable alf<ezt> $$0) {
-      this.l = $$0;
+   public dyv.a j() {
+      return this.k;
    }
 
-   @Override
-   public long aw_() {
+   public int k() {
       return this.m;
    }
 
-   @Override
-   public void a(long $$0) {
+   public int s() {
+      return this.q;
+   }
+
+   public void a(alg $$0) {
+      this.h = $$0;
+   }
+
+   public void b(alg $$0) {
+      this.i = $$0;
+   }
+
+   public void a(alf<esx> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dyv.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
       this.m = $$0;
    }
 
-   @Override
-   public boolean c() {
-      this.d_(null);
-      return super.c();
+   public void b(int $$0) {
+      this.q = $$0;
    }
 
    @Override
-   public czk a(int $$0) {
-      this.d_(null);
-      return super.a($$0);
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", dyv.a.c, this.k);
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.q);
    }
 
    @Override
-   public czk a(int $$0, int $$1) {
-      this.d_(null);
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public czk b(int $$0) {
-      this.d_(null);
-      return super.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, czk $$1) {
-      this.d_(null);
+   protected void a(tz $$0, jh.a $$1) {
       super.a($$0, $$1);
+      this.h = alg.a($$0.j("name"));
+      this.i = alg.a($$0.j("target"));
+      this.j = alf.a(mh.bf, alg.a($$0.j("pool")));
+      this.l = $$0.j("final_state");
+      this.k = $$0.<dyv.a>a("joint", dyv.a.c).orElseGet(() -> evp.a(this.m()));
+      this.m = $$0.f("placement_priority");
+      this.q = $$0.f("selection_priority");
+   }
+
+   public aca t() {
+      return aca.a(this);
    }
 
    @Override
-   public boolean d(crj $$0) {
-      return super.d($$0) && (this.l == null || !$$0.V_());
+   public tz a(jh.a $$0) {
+      return this.e($$0);
    }
 
-   @Nullable
-   @Override
-   public cvc createMenu(int $$0, cri $$1, crj $$2) {
-      if (this.d($$2)) {
-         this.d_($$1.h);
-         return this.a($$0, $$1);
-      } else {
-         return null;
+   public void a(arq $$0, int $$1, boolean $$2) {
+      iv $$3 = this.ax_().a(this.m().c(dqy.b).a());
+      js<esx> $$4 = $$0.F_().f(mh.bf);
+      jf<esx> $$5 = $$4.b(this.j);
+      esr.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements bak {
+      a("rollable"),
+      b("aligned");
+
+      public static final bak.a<dyv.a> c = bak.a(dyv.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
       }
-   }
 
-   @Override
-   protected void a(kf $$0) {
-      super.a($$0);
-      dcl $$1 = $$0.a(kk.at);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
+      @Override
+      public String c() {
+         return this.d;
       }
-   }
 
-   @Override
-   protected void a(kh.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(kk.at, new dcl(this.l, this.m));
+      public wy a() {
+         return wy.c("jigsaw_block.joint." + this.d);
       }
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      $$0.p("LootTable");
-      $$0.p("LootTableSeed");
    }
 }

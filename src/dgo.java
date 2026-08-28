@@ -1,33 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dgo extends dgp {
-   Codec<dgo> b = mg.as.q().dispatch(dgo::a, Function.identity());
-
-   static MapCodec<? extends dgo> a(js<MapCodec<? extends dgo>> $$0) {
-      js.a($$0, "all_of", dgi.a.a);
-      js.a($$0, "apply_mob_effect", dgj.a);
-      js.a($$0, "change_item_damage", dgk.a);
-      js.a($$0, "damage_entity", dgl.a);
-      js.a($$0, "explode", dgr.a);
-      js.a($$0, "ignite", dgs.a);
-      js.a($$0, "play_sound", dgu.a);
-      js.a($$0, "replace_block", dgw.a);
-      js.a($$0, "replace_disk", dgx.a);
-      js.a($$0, "run_function", dgy.a);
-      js.a($$0, "set_block_properties", dgz.a);
-      js.a($$0, "spawn_particles", dhb.a);
-      return js.a($$0, "summon_entity", dhc.a);
-   }
-
-   void a(arq var1, int var2, dfw var3, bwi var4, fex var5);
+public record dgo(dgh d, dgh e, jf<buz> f) implements dgr {
+   public static final MapCodec<dgo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dgh.b.fieldOf("min_damage").forGetter(dgo::b), dgh.b.fieldOf("max_damage").forGetter(dgo::c), buz.b.fieldOf("damage_type").forGetter(dgo::d)
+            )
+            .apply($$0, dgo::new)
+   );
 
    @Override
-   default void a(arq $$0, int $$1, dfw $$2, bwi $$3, fex $$4, boolean $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public void a(arq $$0, int $$1, dfz $$2, bwi $$3, ffc $$4) {
+      float $$5 = azm.b($$3.dX(), this.d.a($$1), this.e.a($$1));
+      $$3.a($$0, new bux(this.f, $$2.c()), $$5);
    }
 
    @Override
-   MapCodec<? extends dgo> a();
+   public MapCodec<dgo> a() {
+      return a;
+   }
+
+   public dgh b() {
+      return this.d;
+   }
+
+   public dgh c() {
+      return this.e;
+   }
+
+   public jf<buz> d() {
+      return this.f;
+   }
 }

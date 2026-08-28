@@ -1,5 +1,3 @@
-public class hfn extends hcz {
+public class hfn extends hcj {
    public boolean a;
-   public float b;
-   public float c;
 }

@@ -1,36 +1,38 @@
-public class gzs extends gxz<cqm, hfk, giy> {
-   private static final alg a = alg.b("textures/entity/warden/warden.png");
-   private static final alg j = alg.b("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final alg k = alg.b("textures/entity/warden/warden_heart.png");
-   private static final alg l = alg.b("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final alg m = alg.b("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gzs extends gvo<cli, hdg, gey<hdg>> {
+   private final alg a;
 
-   public gzs(gwt.a $$0) {
-      super($$0, new giy($$0.a(gjn.dN)), 0.9F);
-      this.a(new hba<>(this, j, ($$0x, $$1) -> 1.0F, giy::d, gqx::k, false));
-      this.a(new hba<>(this, l, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F) * 0.25F), giy::e, gqx::k, false));
-      this.a(new hba<>(this, m, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F + (float) Math.PI) * 0.25F), giy::e, gqx::k, false));
-      this.a(new hba<>(this, a, ($$0x, $$1) -> $$0x.a, giy::b, gqx::k, false));
-      this.a(new hba<>(this, k, ($$0x, $$1) -> $$0x.b, giy::c, gqx::k, false));
+   public gzs(gwy.a $$0, gzs.a $$1) {
+      super($$0, new ghb($$0.a($$1.d)), new ghb($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new hbp<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new ggq($$0.a($$1.g)), new ggq($$0.a($$1.h))));
    }
 
-   public alg a(hfk $$0) {
-      return a;
+   public alg a(hdg $$0) {
+      return this.a;
    }
 
-   public hfk b() {
-      return new hfk();
+   public hdg b() {
+      return new hdg();
    }
 
-   public void a(cqm $$0, hfk $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.K($$2);
-      $$1.c.a($$0.a);
-      $$1.d.a($$0.b);
-      $$1.e.a($$0.c);
-      $$1.f.a($$0.d);
-      $$1.g.a($$0.bG);
-      $$1.h.a($$0.bH);
+   public static enum a {
+      a(alg.b("textures/entity/horse/horse_skeleton.png"), gjs.cZ, gjs.da, hlw.d.n, gjs.db, gjs.dc),
+      b(alg.b("textures/entity/horse/horse_zombie.png"), gjs.em, gjs.en, hlw.d.m, gjs.eo, gjs.ep);
+
+      final alg c;
+      final gjr d;
+      final gjr e;
+      final hlw.d f;
+      final gjr g;
+      final gjr h;
+
+      private a(final alg $$0, final gjr $$1, final gjr $$2, final hlw.d $$3, final gjr $$4, final gjr $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
+      }
    }
 }

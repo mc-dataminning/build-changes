@@ -1,33 +1,54 @@
 import com.mojang.serialization.Codec;
 
-public class ejr extends ejt<eme> {
-   public ejr(Codec<eme> $$0) {
+public class ejr extends ejy<elz> {
+   public ejr(Codec<elz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<eme> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
-   }
+   public boolean a(eka<elz> $$0) {
+      elz $$1 = $$0.f();
+      iv $$2 = $$0.e();
+      dkl $$3 = $$0.b();
+      azv $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      iv.a $$10 = new iv.a();
 
-   public static void a(djy $$0, iv $$1, boolean $$2) {
-      iv.a $$3 = $$1.k();
-
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               iv $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               dmm $$8 = $$6 == -1 ? dmo.cy : dmo.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
-                  }
-
-                  $$0.a($$7, $$8.m(), 3);
-               }
-            }
+      for (iv $$11 : iv.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
+
+      return $$5;
+   }
+
+   protected boolean a(elz $$0, dkl $$1, azv $$2, int $$3, int $$4, iv.a $$5) {
+      boolean $$6 = false;
+      boolean $$7 = false;
+
+      for (int $$8 = $$3; $$8 > $$4; $$8--) {
+         $$5.q($$8);
+         if ($$0.b().test($$1, $$5)) {
+            eat $$9 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$9, 2);
+            if (!$$7) {
+               this.a($$1, $$5);
+            }
+
+            $$6 = true;
+            $$7 = true;
+         } else {
+            $$7 = false;
+         }
+      }
+
+      return $$6;
    }
 }

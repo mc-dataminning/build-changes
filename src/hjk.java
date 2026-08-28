@@ -1,121 +1,304 @@
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hjk {
-   private final alg a;
-   private final hje b;
+public class hjk implements hjn.a, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final alg b;
    final int c;
    final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
+   private final fiz e;
+   fiz[] f;
+   @Nullable
+   private final hjk.a g;
+   private final avf h;
 
-   protected hjk(alg $$0, hje $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   public hjk(alg $$0, hle $$1, fiz $$2, avf $$3) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$1.b();
+      this.h = $$3;
+      this.g = $$3.a(hld.b).map($$2x -> this.a($$1, $$2.a(), $$2.b(), $$2x)).orElse(null);
+      this.e = $$2;
+      this.f = new fiz[]{this.e};
    }
 
+   public void a(int $$0) {
+      try {
+         this.f = hje.a(this.f, $$0);
+      } catch (Throwable var6) {
+         p $$2 = p.a(var6, "Generating mipmaps for frame");
+         q $$3 = $$2.a("Sprite being mipmapped");
+         $$3.a("First frame", () -> {
+            StringBuilder $$0x = new StringBuilder();
+            if ($$0x.length() > 0) {
+               $$0x.append(", ");
+            }
+
+            $$0x.append(this.e.a()).append("x").append(this.e.b());
+            return $$0x.toString();
+         });
+         q $$4 = $$2.a("Frame being iterated");
+         $$4.a("Sprite name", this.b);
+         $$4.a("Sprite size", () -> this.c + " x " + this.d);
+         $$4.a("Sprite frames", () -> this.g() + " frames");
+         $$4.a("Mipmap levels", $$0);
+         throw new aa($$2);
+      }
+   }
+
+   private int g() {
+      return this.g != null ? this.g.b.size() : 1;
+   }
+
+   @Nullable
+   private hjk.a a(hle $$0, int $$1, int $$2, hld $$3) {
+      int $$4 = $$1 / $$0.a();
+      int $$5 = $$2 / $$0.b();
+      int $$6 = $$4 * $$5;
+      int $$7 = $$3.d();
+      List<hjk.b> $$8;
+      if ($$3.a().isEmpty()) {
+         $$8 = new ArrayList<>($$6);
+
+         for (int $$9 = 0; $$9 < $$6; $$9++) {
+            $$8.add(new hjk.b($$9, $$7));
+         }
+      } else {
+         List<hlc> $$10 = $$3.a().get();
+         $$8 = new ArrayList<>($$10.size());
+
+         for (hlc $$12 : $$10) {
+            $$8.add(new hjk.b($$12.a(), $$12.a($$7)));
+         }
+
+         int $$13 = 0;
+         IntSet $$14 = new IntOpenHashSet();
+
+         for (Iterator<hjk.b> $$15 = $$8.iterator(); $$15.hasNext(); $$13++) {
+            hjk.b $$16 = $$15.next();
+            boolean $$17 = true;
+            if ($$16.b <= 0) {
+               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$13, $$16.b});
+               $$17 = false;
+            }
+
+            if ($$16.a < 0 || $$16.a >= $$6) {
+               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$13, $$16.a});
+               $$17 = false;
+            }
+
+            if ($$17) {
+               $$14.add($$16.a);
+            } else {
+               $$15.remove();
+            }
+         }
+
+         int[] $$18 = IntStream.range(0, $$6).filter($$1x -> !$$14.contains($$1x)).toArray();
+         if ($$18.length > 0) {
+            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$18));
+         }
+      }
+
+      return $$8.size() <= 1 ? null : new hjk.a(List.copyOf($$8), $$4, $$3.e());
+   }
+
+   void a(int $$0, int $$1, int $$2, int $$3, fiz[] $$4, fjw $$5) {
+      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
+         $$5.a($$4[$$6], $$6, $$0 >> $$6, $$1 >> $$6, this.c >> $$6, this.d >> $$6, $$2 >> $$6, $$3 >> $$6);
+      }
+   }
+
+   @Override
    public int a() {
       return this.c;
    }
 
+   @Override
    public int b() {
       return this.d;
    }
 
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public hje e() {
+   @Override
+   public alg c() {
       return this.b;
    }
 
+   public IntStream d() {
+      return this.g != null ? this.g.b() : IntStream.of(1);
+   }
+
    @Nullable
-   public hjk.a f() {
-      final hjg $$0 = this.b.e();
-      return $$0 != null ? new hjk.a() {
-         @Override
-         public void a(fjr $$0x) {
-            $$0.a(hjk.this.c, hjk.this.d, $$0);
-         }
-
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
+   public hjm e() {
+      return this.g != null ? this.g.a() : null;
    }
 
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
-
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
+   public avf f() {
       return this.h;
    }
 
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public alg i() {
-      return this.a;
+   @Override
+   public void close() {
+      for (fiz $$0 : this.f) {
+         $$0.close();
+      }
    }
 
    @Override
    public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
    }
 
-   public void a(fjr $$0) {
-      this.b.a(this.c, this.d, $$0);
+   public boolean a(int $$0, int $$1, int $$2) {
+      int $$3 = $$1;
+      int $$4 = $$2;
+      if (this.g != null) {
+         $$3 = $$1 + this.g.a($$0) * this.c;
+         $$4 = $$2 + this.g.b($$0) * this.d;
+      }
+
+      return axw.a(this.e.a($$3, $$4)) == 0;
    }
 
-   private float k() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
+   public void a(int $$0, int $$1, fjw $$2) {
+      if (this.g != null) {
+         this.g.a($$0, $$1, $$2);
+      } else {
+         this.a($$0, $$1, 0, 0, this.f, $$2);
+      }
    }
 
-   public float j() {
-      return 4.0F / this.k();
+   class a {
+      final List<hjk.b> b;
+      private final int c;
+      private final boolean d;
+
+      a(final List<hjk.b> $$0, final int $$1, final boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      int a(int $$0) {
+         return $$0 % this.c;
+      }
+
+      int b(int $$0) {
+         return $$0 / this.c;
+      }
+
+      void a(int $$0, int $$1, int $$2, fjw $$3) {
+         int $$4 = this.a($$2) * hjk.this.c;
+         int $$5 = this.b($$2) * hjk.this.d;
+         hjk.this.a($$0, $$1, $$4, $$5, hjk.this.f, $$3);
+      }
+
+      public hjm a() {
+         return hjk.this.new d(this, this.d ? hjk.this.new c() : null);
+      }
+
+      public void a(int $$0, int $$1, fjw $$2) {
+         this.a($$0, $$1, this.b.get(0).a, $$2);
+      }
+
+      public IntStream b() {
+         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
+      }
    }
 
-   public fkc a(fkc $$0) {
-      return new grj($$0, this);
+   static record b(int a, int b) {
    }
 
-   public interface a extends AutoCloseable {
-      void a(fjr var1);
+   final class c implements AutoCloseable {
+      private final fiz[] b = new fiz[hjk.this.f.length];
+
+      c() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            int $$1 = hjk.this.c >> $$0;
+            int $$2 = hjk.this.d >> $$0;
+            this.b[$$0] = new fiz($$1, $$2, false);
+         }
+      }
+
+      void a(int $$0, int $$1, hjk.d $$2, fjw $$3) {
+         hjk.a $$4 = $$2.c;
+         List<hjk.b> $$5 = $$4.b;
+         hjk.b $$6 = $$5.get($$2.a);
+         float $$7 = (float)$$2.b / (float)$$6.b;
+         int $$8 = $$6.a;
+         int $$9 = $$5.get(($$2.a + 1) % $$5.size()).a;
+         if ($$8 != $$9) {
+            for (int $$10 = 0; $$10 < this.b.length; $$10++) {
+               int $$11 = hjk.this.c >> $$10;
+               int $$12 = hjk.this.d >> $$10;
+
+               for (int $$13 = 0; $$13 < $$12; $$13++) {
+                  for (int $$14 = 0; $$14 < $$11; $$14++) {
+                     int $$15 = this.a($$4, $$8, $$10, $$14, $$13);
+                     int $$16 = this.a($$4, $$9, $$10, $$14, $$13);
+                     this.b[$$10].b($$14, $$13, axw.a($$7, $$15, $$16));
+                  }
+               }
+            }
+
+            hjk.this.a($$0, $$1, 0, 0, this.b, $$3);
+         }
+      }
+
+      private int a(hjk.a $$0, int $$1, int $$2, int $$3, int $$4) {
+         return hjk.this.f[$$2].a($$3 + ($$0.a($$1) * hjk.this.c >> $$2), $$4 + ($$0.b($$1) * hjk.this.d >> $$2));
+      }
 
       @Override
-      void close();
+      public void close() {
+         for (fiz $$0 : this.b) {
+            $$0.close();
+         }
+      }
+   }
+
+   class d implements hjm {
+      int a;
+      int b;
+      final hjk.a c;
+      @Nullable
+      private final hjk.c d;
+
+      d(final hjk.a $$0, @Nullable final hjk.c $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(int $$0, int $$1, fjw $$2) {
+         this.b++;
+         hjk.b $$3 = this.c.b.get(this.a);
+         if (this.b >= $$3.b) {
+            int $$4 = $$3.a;
+            this.a = (this.a + 1) % this.c.b.size();
+            this.b = 0;
+            int $$5 = this.c.b.get(this.a).a;
+            if ($$4 != $$5) {
+               this.c.a($$0, $$1, $$5, $$2);
+            }
+         } else if (this.d != null) {
+            this.d.a($$0, $$1, this, $$2);
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.d != null) {
+            this.d.close();
+         }
+      }
    }
 }

@@ -1,14 +1,37 @@
-public abstract class gvi<T extends bxl & cpu> extends gvn<T, hdn, ggv> {
-   public gvi(gwt.a $$0, gjm $$1, gjm $$2, float $$3) {
-      super($$0, new ggv($$0.a($$1)), new ggv($$0.a($$2)), $$3);
+import com.google.common.collect.Sets;
+import java.util.Set;
+
+public class gvi implements gut.a {
+   private static final int a = 60;
+   private final Set<jy> b = Sets.newHashSet();
+
+   gvi() {
    }
 
-   public hdn a() {
-      return new hdn();
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public void a(T $$0, hdn $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
+   public void a(jy $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(jy $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
+      iv $$5 = iv.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fkd $$0, gqr $$1, jy $$2) {
+      gut.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

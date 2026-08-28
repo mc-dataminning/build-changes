@@ -1,19 +1,19 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record md(fex c, int d, int e) implements lw {
+public record md(ffc c, int d, int e) implements lw {
    public static final MapCodec<md> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fex.a.fieldOf("target").forGetter(md::b), ayu.i.fieldOf("color").forGetter(md::c), ayu.m.fieldOf("duration").forGetter(md::d))
+      $$0 -> $$0.group(ffc.a.fieldOf("target").forGetter(md::b), ayu.i.fieldOf("color").forGetter(md::c), ayu.m.fieldOf("duration").forGetter(md::d))
             .apply($$0, md::new)
    );
-   public static final yw<wj, md> b = yw.a(fex.b, md::b, yu.g, md::c, yu.h, md::d, md::new);
+   public static final yw<wj, md> b = yw.a(ffc.b, md::b, yu.g, md::c, yu.h, md::d, md::new);
 
    @Override
    public lx<md> a() {
       return ly.W;
    }
 
-   public fex b() {
+   public ffc b() {
       return this.c;
    }
 

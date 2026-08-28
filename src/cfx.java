@@ -23,7 +23,7 @@ public class cfx extends cgf {
       int $$0 = this.e.es();
       bxj $$1 = this.e.eq();
       if ($$0 != this.d && $$1 != null) {
-         if ($$1.an() == bwr.bS && a(this.e).O().c(djd.Q)) {
+         if ($$1.an() == bwr.bS && a(this.e).O().c(dji.Q)) {
             return false;
          } else {
             for (Class<?> $$2 : this.i) {
@@ -60,7 +60,7 @@ public class cfx extends cgf {
 
    protected void h() {
       double $$0 = this.l();
-      fes $$1 = fes.a(this.e.ds()).c($$0, 10.0, $$0);
+      fex $$1 = fex.a(this.e.ds()).c($$0, 10.0, $$0);
       List<? extends bxl> $$2 = this.e.dU().a((Class<? extends bxl>)this.e.getClass(), $$1, bwp.f);
       Iterator var5 = $$2.iterator();
 

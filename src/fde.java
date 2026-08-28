@@ -1,31 +1,27 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record fde(Optional<cm> b) implements fcx {
-   public static final MapCodec<fde> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cm.a.optionalFieldOf("predicate").forGetter(fde::c)).apply($$0, fde::new));
+public class fde {
+   public static final fdd a = a("inverted", fcz.a);
+   public static final fdd b = a("any_of", fcq.a);
+   public static final fdd c = a("all_of", fcp.a);
+   public static final fdd d = a("random_chance", fdh.a);
+   public static final fdd e = a("random_chance_with_enchanted_bonus", fdi.a);
+   public static final fdd f = a("entity_properties", fdf.a);
+   public static final fdd g = a("killed_by_player", fdg.a);
+   public static final fdd h = a("entity_scores", fcx.a);
+   public static final fdd i = a("block_state_property", fdb.a);
+   public static final fdd j = a("match_tool", fdj.a);
+   public static final fdd k = a("table_bonus", fcr.a);
+   public static final fdd l = a("survives_explosion", fcy.a);
+   public static final fdd m = a("damage_source_properties", fcv.a);
+   public static final fdd n = a("location_check", fda.a);
+   public static final fdd o = a("weather_check", fdm.a);
+   public static final fdd p = a("reference", fct.a);
+   public static final fdd q = a("time_check", fdk.a);
+   public static final fdd r = a("value_check", fdl.a);
+   public static final fdd s = a("enchantment_active_check", fcw.a);
 
-   @Override
-   public fcy b() {
-      return fcz.j;
-   }
-
-   @Override
-   public Set<bax<?>> a() {
-      return Set.of(fci.i);
-   }
-
-   public boolean a(ezo $$0) {
-      czk $$1 = $$0.c(fci.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
-   }
-
-   public static fcx.a a(cm.a $$0) {
-      return () -> new fde(Optional.of($$0.b()));
-   }
-
-   public Optional<cm> c() {
-      return this.b;
+   private static fdd a(String $$0, MapCodec<? extends fdc> $$1) {
+      return js.a(mg.F, alg.b($$0), new fdd($$1));
    }
 }

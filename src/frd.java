@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface frd {
+public interface frd {
+   int a(czn var1, @Nullable gkq var2, @Nullable bxj var3);
+
+   MapCodec<? extends frd> a();
 }

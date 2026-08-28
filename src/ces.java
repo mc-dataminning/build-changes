@@ -118,5 +118,5 @@ public abstract class ces extends cef {
       return false;
    }
 
-   protected abstract boolean a(djk var1, iv var2);
+   protected abstract boolean a(djp var1, iv var2);
 }

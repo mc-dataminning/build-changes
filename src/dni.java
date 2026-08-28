@@ -1,130 +1,127 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-public class dni extends dqn {
-   public static final MapCodec<dni> a = b(dni::new);
-   public static final ebm<jb> b = dqn.e;
-   @Nullable
-   private eat c;
-   @Nullable
-   private eat d;
-   @Nullable
-   private eat f;
-   @Nullable
-   private eat g;
-   private static final Predicate<eao> h = $$0 -> $$0 != null && ($$0.a(dmo.ev) || $$0.a(dmo.ew));
+public class dni extends dlj implements duc {
+   public static final MapCodec<dni> c = b(dni::new);
+   public static final int d = 1;
+   public static final int e = 4;
+   public static final ebt f = ebj.aC;
+   public static final ebk g = dlj.b;
+   public static final ebk h = ebj.I;
+   public static final ToIntFunction<eat> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
+   private static final Int2ObjectMap<List<ffc>> D = ag.a(
+      new Int2ObjectOpenHashMap(4),
+      $$0 -> {
+         float $$1 = 0.0625F;
+         $$0.put(1, List.of(new ffc(8.0, 8.0, 8.0).c(0.0625)));
+         $$0.put(2, List.of(new ffc(6.0, 7.0, 8.0).c(0.0625), new ffc(10.0, 8.0, 7.0).c(0.0625)));
+         $$0.put(3, List.of(new ffc(8.0, 5.0, 10.0).c(0.0625), new ffc(6.0, 7.0, 8.0).c(0.0625), new ffc(9.0, 8.0, 7.0).c(0.0625)));
+         $$0.put(
+            4, List.of(new ffc(7.0, 5.0, 9.0).c(0.0625), new ffc(10.0, 7.0, 9.0).c(0.0625), new ffc(6.0, 7.0, 6.0).c(0.0625), new ffc(9.0, 8.0, 6.0).c(0.0625))
+         );
+      }
+   );
+   private static final ffw[] R = new ffw[]{
+      dmr.b(2.0, 0.0, 6.0), dmr.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0), dmr.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0), dmr.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0)
+   };
 
    @Override
-   public MapCodec<? extends dni> a() {
-      return a;
+   public MapCodec<dni> a() {
+      return c;
    }
 
-   protected dni(ean.d $$0) {
+   public dni(eas.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, jb.c));
+      this.l(this.C.b().b(f, Integer.valueOf(1)).b(g, Boolean.valueOf(false)).b(h, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(eao $$0, djh $$1, iv $$2, eao $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
-   }
-
-   public boolean a(djk $$0, iv $$1) {
-      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
-   }
-
-   private void a(djh $$0, iv $$1) {
-      eat.b $$2 = this.q().a($$0, $$1);
-      if ($$2 != null) {
-         ckc $$3 = bwr.bl.a($$0, bwq.k);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
+   protected bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
+      if ($$0.f() && $$4.gj().e && $$1.c(g)) {
+         a($$4, $$1, $$2, $$3);
+         return bug.a;
       } else {
-         eat.b $$4 = this.y().a($$0, $$1);
-         if ($$4 != null) {
-            cjp $$5 = bwr.ap.a($$0, bwq.k);
-            if ($$5 != null) {
-               $$5.x(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
-            }
-         }
-      }
-   }
-
-   private static void a(djh $$0, eat.b $$1, bwi $$2, iv $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (arr $$4 : $$0.a(arr.class, $$2.cQ().g(5.0))) {
-         aq.o.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(djh $$0, eat.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            eas $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), dmo.a.m(), 2);
-            $$0.c(2001, $$4.d(), dmm.j($$4.a()));
-         }
-      }
-   }
-
-   public static void b(djh $$0, eat.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            eas $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), dmo.a);
-         }
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
    @Override
-   public eao a(ddd $$0) {
-      return this.m().b(b, $$0.g().g());
+   protected boolean a(eat $$0, ddg $$1) {
+      return !$$1.h() && $$1.n().h() == this.h() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
    }
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b);
+   public eat a(ddg $$0) {
+      eat $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(f);
+      } else {
+         exa $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == exb.c;
+         return super.a($$0).b(h, Boolean.valueOf($$3));
+      }
    }
 
-   private eat b() {
-      if (this.c == null) {
-         this.c = eau.a().a(" ", "#", "#").a('#', eas.a(eax.a(dmo.ef))).b();
+   @Override
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      if ($$0.c(h)) {
+         $$2.a($$3, exb.c, exb.c.a($$1));
       }
 
-      return this.c;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   private eat q() {
-      if (this.d == null) {
-         this.d = eau.a().a("^", "#", "#").a('^', eas.a(h)).a('#', eas.a(eax.a(dmo.ef))).b();
-      }
-
-      return this.d;
+   @Override
+   protected exa b_(eat $$0) {
+      return $$0.c(h) ? exb.c.a(false) : super.b_($$0);
    }
 
-   private eat r() {
-      if (this.f == null) {
-         this.f = eau.a().a("~ ~", "###", "~#~").a('#', eas.a(eax.a(dmo.cs))).a('~', $$0 -> $$0.a().l()).b();
-      }
-
-      return this.f;
+   @Override
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return R[$$0.c(f) - 1];
    }
 
-   private eat y() {
-      if (this.g == null) {
-         this.g = eau.a().a("~^~", "###", "~#~").a('^', eas.a(h)).a('#', eas.a(eax.a(dmo.cs))).a('~', $$0 -> $$0.a().l()).b();
-      }
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(f, g, h);
+   }
 
-      return this.g;
+   @Override
+   public boolean a(djn $$0, iv $$1, eat $$2, exa $$3) {
+      if (!$$2.c(h) && $$3.a() == exb.c) {
+         eat $$4 = $$2.b(h, Boolean.valueOf(true));
+         if ($$2.c(g)) {
+            a(null, $$4, $$0, $$1);
+         } else {
+            $$0.a($$1, $$4, 3);
+         }
+
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static boolean h(eat $$0) {
+      return $$0.a(axc.ag, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
+   }
+
+   @Override
+   protected Iterable<ffc> b(eat $$0) {
+      return (Iterable<ffc>)D.get($$0.c(f));
+   }
+
+   @Override
+   protected boolean d(eat $$0) {
+      return !$$0.c(h) && super.d($$0);
+   }
+
+   @Override
+   protected boolean a(eat $$0, djp $$1, iv $$2) {
+      return dmr.a($$1, $$2.e(), jb.b);
    }
 }

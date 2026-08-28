@@ -16,7 +16,7 @@ public class amw {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wy.c("commands.clone.failed"));
-   public static final Predicate<eas> a = $$0 -> !$$0.a().l();
+   public static final Predicate<eax> a = $$0 -> !$$0.a().l();
 
    public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
@@ -64,7 +64,7 @@ public class amw {
       ant<CommandContext<ej>, amw.c> $$0,
       ant<CommandContext<ej>, amw.c> $$1,
       ant<CommandContext<ej>, amw.c> $$2,
-      ant<CommandContext<ej>, Predicate<eas>> $$3,
+      ant<CommandContext<ej>, Predicate<eax>> $$3,
       boolean $$4,
       ArgumentBuilder<ej, ?> $$5
    ) {
@@ -74,20 +74,20 @@ public class amw {
          .then(ek.a("normal").executes($$5x -> a((ej)$$5x.getSource(), $$0.apply($$5x), $$1.apply($$5x), $$2.apply($$5x), $$3.apply($$5x), amw.d.c, $$4)));
    }
 
-   private static int a(ej $$0, amw.c $$1, amw.c $$2, amw.c $$3, Predicate<eas> $$4, amw.d $$5, boolean $$6) throws CommandSyntaxException {
+   private static int a(ej $$0, amw.c $$1, amw.c $$2, amw.c $$3, Predicate<eax> $$4, amw.d $$5, boolean $$6) throws CommandSyntaxException {
       iv $$7 = $$1.b();
       iv $$8 = $$2.b();
-      era $$9 = era.a($$7, $$8);
+      erf $$9 = erf.a($$7, $$8);
       iv $$10 = $$3.b();
       iv $$11 = $$10.a($$9.c());
-      era $$12 = era.a($$10, $$11);
+      erf $$12 = erf.a($$10, $$11);
       arq $$13 = $$1.a();
       arq $$14 = $$3.a();
       if (!$$5.a() && $$13 == $$14 && $$12.a($$9)) {
          throw b.create();
       } else {
          int $$15 = $$9.d() * $$9.e() * $$9.f();
-         int $$16 = $$0.e().O().d(djd.B);
+         int $$16 = $$0.e().O().d(dji.B);
          if ($$15 > $$16) {
             throw c.create($$16, $$15);
          } else if ($$13.a($$7, $$8) && $$14.a($$10, $$11)) {
@@ -105,10 +105,10 @@ public class amw {
                      for (int $$24 = $$9.h(); $$24 <= $$9.k(); $$24++) {
                         iv $$25 = new iv($$24, $$23, $$22);
                         iv $$26 = $$25.a((ka)$$21);
-                        eas $$27 = new eas($$13, $$25, false);
-                        eao $$28 = $$27.a();
+                        eax $$27 = new eax($$13, $$25, false);
+                        eat $$28 = $$27.a();
                         if ($$4.test($$27)) {
-                           dxm $$29 = $$13.c_($$25);
+                           dxr $$29 = $$13.c_($$25);
                            if ($$29 != null) {
                               amw.a $$30 = new amw.a($$29.e($$0.u()), $$29.r());
                               $$18.add(new amw.b($$26, $$28, $$30));
@@ -128,13 +128,13 @@ public class amw {
                int $$31 = 2 | ($$6 ? 816 : 0);
                if ($$5 == amw.d.b) {
                   for (iv $$32 : $$20) {
-                     $$13.a($$32, dmo.iy.m(), $$31 | 816);
+                     $$13.a($$32, dmt.iy.m(), $$31 | 816);
                   }
 
                   int $$33 = $$6 ? $$31 : 3;
 
                   for (iv $$34 : $$20) {
-                     $$13.a($$34, dmo.a.m(), $$33);
+                     $$13.a($$34, dmt.a.m(), $$33);
                   }
                }
 
@@ -145,7 +145,7 @@ public class amw {
                List<amw.b> $$36 = Lists.reverse($$35);
 
                for (amw.b $$37 : $$36) {
-                  $$14.a($$37.a, dmo.iy.m(), $$31 | 816);
+                  $$14.a($$37.a, dmt.iy.m(), $$31 | 816);
                }
 
                int $$38 = 0;
@@ -157,7 +157,7 @@ public class amw {
                }
 
                for (amw.b $$40 : $$18) {
-                  dxm $$41 = $$14.c_($$40.a);
+                  dxr $$41 = $$14.c_($$40.a);
                   if ($$40.c != null && $$41 != null) {
                      $$41.d($$40.c.a, $$14.F_());
                      $$41.a($$40.c.b);
@@ -191,7 +191,7 @@ public class amw {
    static record a(tz a, kh b) {
    }
 
-   static record b(iv a, eao b, @Nullable amw.a c) {
+   static record b(iv a, eat b, @Nullable amw.a c) {
    }
 
    static record c(arq a, iv b) {

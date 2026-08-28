@@ -1,81 +1,41 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class ezv extends ezx {
-   public static final MapCodec<ezv> a = a(ezv::new);
+public record ezv<T>(alf<js<T>> d, Codec<T> e, ezv.a<T> f) {
+   public static final ezv<fdc> a = new ezv<>(mh.bt, fdc.e, e());
+   public static final ezv<fbh> b = new ezv<>(mh.bs, fbj.c, e());
+   public static final ezv<ezy> c = new ezv<>(mh.br, ezy.d, f());
 
-   ezv(List<fae> $$0, List<fcx> $$1) {
-      super($$0, $$1);
+   public void a(ezz $$0, alf<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   @Override
-   public faf a() {
-      return fac.g;
+   public static Stream<ezv<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   @Override
-   protected ezw a(List<? extends ezw> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (ezw)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ezw $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
-         }
-
-         return false;
-      };
-      };
+   private static <T extends ezu> ezv.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   @Override
-   public void a(ezu $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
-         }
-      }
+   private static ezv.a<ezy> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public static ezv.a a(fae.a<?>... $$0) {
-      return new ezv.a($$0);
+   public alf<js<T>> b() {
+      return this.d;
    }
 
-   public static <E> ezv.a a(Collection<E> $$0, Function<E, fae.a<?>> $$1) {
-      return new ezv.a($$0.stream().map($$1::apply).toArray(fae.a[]::new));
+   public Codec<T> c() {
+      return this.e;
    }
 
-   public static class a extends fae.a<ezv.a> {
-      private final Builder<fae> a = ImmutableList.builder();
+   public ezv.a<T> d() {
+      return this.f;
+   }
 
-      public a(fae.a<?>... $$0) {
-         for (fae.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ezv.a a() {
-         return this;
-      }
-
-      @Override
-      public ezv.a a(fae.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public fae b() {
-         return new ezv(this.a.build(), this.f());
-      }
+   @FunctionalInterface
+   public interface a<T> {
+      void run(ezz var1, alf<T> var2, T var3);
    }
 }

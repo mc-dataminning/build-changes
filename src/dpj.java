@@ -1,11 +1,39 @@
-public interface dpj {
-   default void a(djh $$0, iv $$1, eao $$2, eao $$3, cnn $$4) {
+import com.mojang.serialization.MapCodec;
+
+public class dpj extends dth {
+   public static final MapCodec<dpj> b = b(dpj::new);
+
+   @Override
+   public MapCodec<dpj> a() {
+      return b;
    }
 
-   default void a(djh $$0, iv $$1, cnn $$2) {
+   protected dpj(eas.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(a, jb.b));
    }
 
-   default bux a(bwi $$0) {
-      return $$0.dV().a($$0);
+   @Override
+   public eat a(ddg $$0) {
+      jb $$1 = $$0.k();
+      eat $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
+   }
+
+   @Override
+   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
+      jb $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(ly.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+      }
+   }
+
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(a);
    }
 }

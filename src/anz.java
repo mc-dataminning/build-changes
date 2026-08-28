@@ -30,17 +30,17 @@ public class anz {
       );
    }
 
-   private static Optional<? extends jj.b<eri>> a(fn.c<eri> $$0, js<eri> $$1) {
-      return (Optional<? extends jj.b<eri>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> jj.a($$0xx)), $$1::a);
+   private static Optional<? extends jj.b<ern>> a(fn.c<ern> $$0, js<ern> $$1) {
+      return (Optional<? extends jj.b<ern>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> jj.a($$0xx)), $$1::a);
    }
 
-   private static int a(ej $$0, fn.c<eri> $$1) throws CommandSyntaxException {
-      js<eri> $$2 = $$0.e().F_().f(mh.be);
-      jj<eri> $$3 = (jj<eri>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(ej $$0, fn.c<ern> $$1) throws CommandSyntaxException {
+      js<ern> $$2 = $$0.e().F_().f(mh.be);
+      jj<ern> $$3 = (jj<ern>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       iv $$4 = iv.a((jp)$$0.d());
       arq $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(ag.d);
-      Pair<iv, jf<eri>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
+      Pair<iv, jf<ern>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class anz {
       }
    }
 
-   private static int a(ej $$0, fm.c<dkk> $$1) throws CommandSyntaxException {
+   private static int a(ej $$0, fm.c<dkp> $$1) throws CommandSyntaxException {
       iv $$2 = iv.a((jp)$$0.d());
       Stopwatch $$3 = Stopwatch.createStarted(ag.d);
-      Pair<iv, jf<dkk>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      Pair<iv, jf<dkp>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());

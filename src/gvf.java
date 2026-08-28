@@ -1,45 +1,81 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import org.joml.Matrix4f;
 
-public class gvf implements guo.a {
-   private final List<iv> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
+public class gvf implements gut.a {
+   private final fpt a;
 
-   public void a(iv $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public gvf(fpt $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
-      fkc $$5 = $$1.getBuffer(gqx.B());
+   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      diq $$6 = this.a.t.dU();
+      iv $$7 = iv.a($$2, $$3, $$4);
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         iv $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         grf.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+      for (iv $$8 : iv.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         eat $$9 = $$6.a_($$8);
+         if (!$$9.a(dmt.a)) {
+            ffw $$10 = $$9.f($$6, $$8);
+
+            for (fex $$11 : $$10.e()) {
+               fex $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               int $$19 = -2130771968;
+               if ($$9.c($$6, $$8, jb.e)) {
+                  fkh $$20 = $$1.getBuffer(grc.B());
+                  $$20.a($$5, $$13, $$14, $$15).a(-2130771968);
+                  $$20.a($$5, $$13, $$14, $$18).a(-2130771968);
+                  $$20.a($$5, $$13, $$17, $$15).a(-2130771968);
+                  $$20.a($$5, $$13, $$17, $$18).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jb.d)) {
+                  fkh $$21 = $$1.getBuffer(grc.B());
+                  $$21.a($$5, $$13, $$17, $$18).a(-2130771968);
+                  $$21.a($$5, $$13, $$14, $$18).a(-2130771968);
+                  $$21.a($$5, $$16, $$17, $$18).a(-2130771968);
+                  $$21.a($$5, $$16, $$14, $$18).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jb.f)) {
+                  fkh $$22 = $$1.getBuffer(grc.B());
+                  $$22.a($$5, $$16, $$14, $$18).a(-2130771968);
+                  $$22.a($$5, $$16, $$14, $$15).a(-2130771968);
+                  $$22.a($$5, $$16, $$17, $$18).a(-2130771968);
+                  $$22.a($$5, $$16, $$17, $$15).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jb.c)) {
+                  fkh $$23 = $$1.getBuffer(grc.B());
+                  $$23.a($$5, $$16, $$17, $$15).a(-2130771968);
+                  $$23.a($$5, $$16, $$14, $$15).a(-2130771968);
+                  $$23.a($$5, $$13, $$17, $$15).a(-2130771968);
+                  $$23.a($$5, $$13, $$14, $$15).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jb.a)) {
+                  fkh $$24 = $$1.getBuffer(grc.B());
+                  $$24.a($$5, $$13, $$14, $$15).a(-2130771968);
+                  $$24.a($$5, $$16, $$14, $$15).a(-2130771968);
+                  $$24.a($$5, $$13, $$14, $$18).a(-2130771968);
+                  $$24.a($$5, $$16, $$14, $$18).a(-2130771968);
+               }
+
+               if ($$9.c($$6, $$8, jb.b)) {
+                  fkh $$25 = $$1.getBuffer(grc.B());
+                  $$25.a($$5, $$13, $$17, $$15).a(-2130771968);
+                  $$25.a($$5, $$13, $$17, $$18).a(-2130771968);
+                  $$25.a($$5, $$16, $$17, $$15).a(-2130771968);
+                  $$25.a($$5, $$16, $$17, $$18).a(-2130771968);
+               }
+            }
+         }
       }
    }
 }

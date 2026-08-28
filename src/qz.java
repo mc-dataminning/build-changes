@@ -1,5 +1,5 @@
 public class qz {
-   public static void a(qh<ess> $$0) {
+   public static void a(qh<esx> $$0) {
       qn.a($$0);
       qr.a($$0);
       qq.a($$0);

@@ -27,14 +27,14 @@ public class asc implements asa {
    }
 
    @Override
-   public void a(dio $$0) {
+   public void a(dir $$0) {
       this.e = ag.c();
       this.d = this.e;
    }
 
    @Override
-   public void a(dio $$0, @Nullable edm $$1) {
-      if ($$1 == edm.n) {
+   public void a(dir $$0, @Nullable edr $$1) {
+      if ($$1 == edr.n) {
          this.c++;
       }
 

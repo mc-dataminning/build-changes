@@ -27,8 +27,8 @@ public class cah {
 
    private static boolean a(bxl $$0) {
       return $$0.b($$1 -> {
-         czg $$2 = $$1.h();
-         return $$2 instanceof daf && $$0.a((daf)$$2);
+         czj $$2 = $$1.h();
+         return $$2 instanceof dai && $$0.a((dai)$$2);
       });
    }
 }

@@ -9,11 +9,11 @@ public class dm extends dk<dm.a> {
       return dm.a.a;
    }
 
-   public void a(arr $$0, eao $$1) {
+   public void a(arr $$0, eat $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bj> b, Optional<jf<dmm>> c, Optional<dr> d) implements dk.a {
+   public static record a(Optional<bj> b, Optional<jf<dmr>> c, Optional<dr> d) implements dk.a {
       public static final Codec<dm.a> a = RecordCodecBuilder.create(
             $$0 -> $$0.group(
                      by.b.optionalFieldOf("player").forGetter(dm.a::a),
@@ -27,16 +27,16 @@ public class dm extends dk<dm.a> {
       private static DataResult<dm.a> a(dm.a $$0) {
          return $$0.c
             .<DataResult<dm.a>>flatMap(
-               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dmm)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dmr)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
             )
             .orElseGet(() -> DataResult.success($$0));
       }
 
-      public static ar<dm.a> a(dmm $$0) {
+      public static ar<dm.a> a(dmr $$0) {
          return aq.K.a(new dm.a(Optional.empty(), Optional.of($$0.p()), Optional.empty()));
       }
 
-      public boolean a(eao $$0) {
+      public boolean a(eat $$0) {
          return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
@@ -45,7 +45,7 @@ public class dm extends dk<dm.a> {
          return this.b;
       }
 
-      public Optional<jf<dmm>> b() {
+      public Optional<jf<dmr>> b() {
          return this.c;
       }
 

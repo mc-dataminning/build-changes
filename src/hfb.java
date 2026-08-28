@@ -1,3 +1,4 @@
-public class hfb extends hcz {
-   public final hgc a = new hgc();
+public class hfb extends hef {
+   public float a;
+   public int b = 1;
 }

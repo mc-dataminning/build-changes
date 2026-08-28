@@ -2,40 +2,40 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qm {
-   public static final alf<ess> a = qo.a("pillager_outpost/base_plates");
+   public static final alf<esx> a = qo.a("pillager_outpost/base_plates");
 
-   public static void a(qh<ess> $$0) {
-      jg<evi> $$1 = $$0.a(mh.bc);
-      jf<evi> $$2 = $$1.b(qp.q);
-      jg<ess> $$3 = $$0.a(mh.bf);
-      jf<ess> $$4 = $$3.b(qo.a);
-      $$0.a(a, new ess($$4, ImmutableList.of(Pair.of(esq.a("pillager_outpost/base_plate"), 1)), ess.a.b));
+   public static void a(qh<esx> $$0) {
+      jg<evn> $$1 = $$0.a(mh.bc);
+      jf<evn> $$2 = $$1.b(qp.q);
+      jg<esx> $$3 = $$0.a(mh.bf);
+      jf<esx> $$4 = $$3.b(qo.a);
+      $$0.a(a, new esx($$4, ImmutableList.of(Pair.of(esv.a("pillager_outpost/base_plate"), 1)), esx.a.b));
       qo.a(
          $$0,
          "pillager_outpost/towers",
-         new ess(
+         new esx(
             $$4,
-            ImmutableList.of(Pair.of(esq.b(ImmutableList.of(esq.a("pillager_outpost/watchtower"), esq.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            ess.a.b
+            ImmutableList.of(Pair.of(esv.b(ImmutableList.of(esv.a("pillager_outpost/watchtower"), esv.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            esx.a.b
          )
       );
-      qo.a($$0, "pillager_outpost/feature_plates", new ess($$4, ImmutableList.of(Pair.of(esq.a("pillager_outpost/feature_plate"), 1)), ess.a.a));
+      qo.a($$0, "pillager_outpost/feature_plates", new esx($$4, ImmutableList.of(Pair.of(esv.a("pillager_outpost/feature_plate"), 1)), esx.a.a));
       qo.a(
          $$0,
          "pillager_outpost/features",
-         new ess(
+         new esx(
             $$4,
             ImmutableList.of(
-               Pair.of(esq.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(esq.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(esq.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(esq.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(esq.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(esq.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(esq.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(esq.i(), 6)
+               Pair.of(esv.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(esv.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(esv.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(esv.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(esv.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(esv.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(esv.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(esv.i(), 6)
             ),
-            ess.a.b
+            esx.a.b
          )
       );
    }

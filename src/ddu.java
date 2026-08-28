@@ -1,70 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ddu extends ddr {
-   private static final ddx d = ddx.a(czo.rE);
-   private static final ddx e = ddx.a(czo.qi);
-   private static final ddx f = ddx.a(czo.vF);
+public abstract class ddu implements ddt {
+   private final ddr d;
 
-   public ddu(ddo $$0) {
-      super($$0);
-   }
-
-   public boolean a(ddp $$0, djh $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czk $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (d.a($$5)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else if (e.a($$5)) {
-                  if (++$$3 > 3) {
-                     return false;
-                  }
-               } else if (!f.a($$5)) {
-                  return false;
-               }
-            }
-         }
-
-         return $$2 && $$3 >= 1;
-      }
-   }
-
-   public czk a(ddp $$0, jh.a $$1) {
-      List<dby> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czk $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (e.a($$5)) {
-               $$3++;
-            } else if (f.a($$5)) {
-               dby $$6 = $$5.a(kk.ai);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      czk $$7 = new czk(czo.vE, 3);
-      $$7.b(kk.aj, new dbz($$3, $$2));
-      return $$7;
+   public ddu(ddr $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public del<ddu> a() {
-      return del.g;
+   public boolean am_() {
+      return true;
+   }
+
+   @Override
+   public ddr c() {
+      return this.d;
+   }
+
+   @Override
+   public ded al_() {
+      return ded.b;
+   }
+
+   @Override
+   public abstract deo<? extends ddu> a();
+
+   public static class a<T extends ddt> implements deo<T> {
+      private final MapCodec<T> w;
+      private final yw<wj, T> x;
+
+      public a(ddu.a.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(ddr.e.fieldOf("category").orElse(ddr.d).forGetter(ddt::c)).apply($$1, $$0::create));
+         this.x = yw.a(ddr.g, ddt::c, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public yw<wj, T> b() {
+         return this.x;
+      }
+
+      @FunctionalInterface
+      public interface a<T extends ddt> {
+         T create(ddr var1);
+      }
    }
 }

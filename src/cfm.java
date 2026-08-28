@@ -2,11 +2,11 @@ import java.util.EnumSet;
 import javax.annotation.Nullable;
 
 public class cfm extends cef {
-   private final cnw a;
+   private final cnz a;
    @Nullable
    private bxj b;
 
-   public cfm(cnw $$0) {
+   public cfm(cnz $$0) {
       this.a = $$0;
       this.a(EnumSet.of(cef.a.a));
    }

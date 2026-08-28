@@ -1,225 +1,32 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.io.IOException;
 
-public class hjh<T extends hjh.a> {
-   private static final Comparator<hjh.b<?>> a = Comparator.<hjh.b<?>, Integer>comparing($$0 -> -$$0.c)
-      .thenComparing($$0 -> -$$0.b)
-      .thenComparing($$0 -> $$0.a.c());
-   private final int b;
-   private final List<hjh.b<T>> c = new ArrayList<>();
-   private final List<hjh.c<T>> d = new ArrayList<>();
-   private int e;
-   private int f;
-   private final int g;
-   private final int h;
+public abstract class hjh extends hjb {
+   private final alg c;
 
-   public hjh(int $$0, int $$1, int $$2) {
+   public hjh(alg $$0) {
+      this.c = $$0;
+   }
+
+   public alg c() {
+      return this.c;
+   }
+
+   public void a(hjr $$0) {
+      boolean $$1 = $$0.c();
+      boolean $$2 = $$0.b();
       this.b = $$2;
-      this.g = $$0;
-      this.h = $$1;
-   }
 
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      hjh.b<T> $$1 = new hjh.b<>($$0, this.b);
-      this.c.add($$1);
-   }
-
-   public void c() {
-      List<hjh.b<T>> $$0 = new ArrayList<>(this.c);
-      $$0.sort(a);
-
-      for (hjh.b<T> $$1 : $$0) {
-         if (!this.a($$1)) {
-            throw new hji($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
-         }
+      try (fiz $$3 = $$0.d()) {
+         this.a($$3, $$2, $$1);
       }
    }
 
-   public void a(hjh.d<T> $$0) {
-      for (hjh.c<T> $$1 : this.d) {
-         $$1.a($$0);
-      }
+   private void a(fiz $$0, boolean $$1, boolean $$2) {
+      this.a = new fjw(this.c::toString, fjx.a, $$0.a(), $$0.b(), 1);
+      this.a($$1, false);
+      this.a($$2);
+      this.a.a($$0);
    }
 
-   static int a(int $$0, int $$1) {
-      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
-   }
-
-   private boolean a(hjh.b<T> $$0) {
-      for (hjh.c<T> $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return this.b($$0);
-   }
-
-   private boolean b(hjh.b<T> $$0) {
-      int $$1 = azm.c(this.e);
-      int $$2 = azm.c(this.f);
-      int $$3 = azm.c(this.e + $$0.b);
-      int $$4 = azm.c(this.f + $$0.c);
-      boolean $$5 = $$3 <= this.g;
-      boolean $$6 = $$4 <= this.h;
-      if (!$$5 && !$$6) {
-         return false;
-      } else {
-         boolean $$7 = $$5 && $$1 != $$3;
-         boolean $$8 = $$6 && $$2 != $$4;
-         boolean $$9;
-         if ($$7 ^ $$8) {
-            $$9 = $$7;
-         } else {
-            $$9 = $$5 && $$1 <= $$2;
-         }
-
-         hjh.c<T> $$11;
-         if ($$9) {
-            if (this.f == 0) {
-               this.f = $$4;
-            }
-
-            $$11 = new hjh.c<>(this.e, 0, $$3 - this.e, this.f);
-            this.e = $$3;
-         } else {
-            $$11 = new hjh.c<>(0, this.f, this.e, $$4 - this.f);
-            this.f = $$4;
-         }
-
-         $$11.a($$0);
-         this.d.add($$11);
-         return true;
-      }
-   }
-
-   public interface a {
-      int a();
-
-      int b();
-
-      alg c();
-   }
-
-   static record b<T extends hjh.a>(T a, int b, int c) {
-
-      public b(T $$0, int $$1) {
-         this($$0, hjh.a($$0.a(), $$1), hjh.a($$0.b(), $$1));
-      }
-   }
-
-   public static class c<T extends hjh.a> {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private List<hjh.c<T>> e;
-      @Nullable
-      private hjh.b<T> f;
-
-      public c(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public boolean a(hjh.b<T> $$0) {
-         if (this.f != null) {
-            return false;
-         } else {
-            int $$1 = $$0.b;
-            int $$2 = $$0.c;
-            if ($$1 <= this.c && $$2 <= this.d) {
-               if ($$1 == this.c && $$2 == this.d) {
-                  this.f = $$0;
-                  return true;
-               } else {
-                  if (this.e == null) {
-                     this.e = new ArrayList<>(1);
-                     this.e.add(new hjh.c<>(this.a, this.b, $$1, $$2));
-                     int $$3 = this.c - $$1;
-                     int $$4 = this.d - $$2;
-                     if ($$4 > 0 && $$3 > 0) {
-                        int $$5 = Math.max(this.d, $$3);
-                        int $$6 = Math.max(this.c, $$4);
-                        if ($$5 >= $$6) {
-                           this.e.add(new hjh.c<>(this.a, this.b + $$2, $$1, $$4));
-                           this.e.add(new hjh.c<>(this.a + $$1, this.b, $$3, this.d));
-                        } else {
-                           this.e.add(new hjh.c<>(this.a + $$1, this.b, $$3, $$2));
-                           this.e.add(new hjh.c<>(this.a, this.b + $$2, this.c, $$4));
-                        }
-                     } else if ($$3 == 0) {
-                        this.e.add(new hjh.c<>(this.a, this.b + $$2, $$1, $$4));
-                     } else if ($$4 == 0) {
-                        this.e.add(new hjh.c<>(this.a + $$1, this.b, $$3, $$2));
-                     }
-                  }
-
-                  for (hjh.c<T> $$7 : this.e) {
-                     if ($$7.a($$0)) {
-                        return true;
-                     }
-                  }
-
-                  return false;
-               }
-            } else {
-               return false;
-            }
-         }
-      }
-
-      public void a(hjh.d<T> $$0) {
-         if (this.f != null) {
-            $$0.load(this.f.a, this.a(), this.b());
-         } else if (this.e != null) {
-            for (hjh.c<T> $$1 : this.e) {
-               $$1.a($$0);
-            }
-         }
-      }
-
-      @Override
-      public String toString() {
-         return "Slot{originX="
-            + this.a
-            + ", originY="
-            + this.b
-            + ", width="
-            + this.c
-            + ", height="
-            + this.d
-            + ", texture="
-            + this.f
-            + ", subSlots="
-            + this.e
-            + "}";
-      }
-   }
-
-   public interface d<T extends hjh.a> {
-      void load(T var1, int var2, int var3);
-   }
+   public abstract hjr a(avd var1) throws IOException;
 }

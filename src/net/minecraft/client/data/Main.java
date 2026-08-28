@@ -26,7 +26,7 @@ public class Main {
          boolean $$8 = $$6.has($$4);
          boolean $$9 = $$8 || $$6.has($$3);
          ali.a();
-         foy.a();
+         fpd.a();
          mm $$10 = new mm($$7, ac.b(), true);
          a($$10, $$9);
          $$10.a();
@@ -37,8 +37,8 @@ public class Main {
 
    public static void a(mm $$0, boolean $$1) {
       mm.a $$2 = $$0.a($$1);
+      $$2.a(fro::new);
+      $$2.a(frl::new);
       $$2.a(frj::new);
-      $$2.a(frg::new);
-      $$2.a(fre::new);
    }
 }

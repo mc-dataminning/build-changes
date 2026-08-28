@@ -1,34 +1,45 @@
-public class gxo extends gxz<cjp, hdt, gha> {
-   private static final alg a = alg.b("textures/entity/iron_golem/iron_golem.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gxo(gwt.a $$0) {
-      super($$0, new gha($$0.a(gjn.bA)), 0.7F);
-      this.a(new hax(this));
-      this.a(new hay(this, $$0.d()));
+public final class gxo extends gvo<clk, hdv, ghb> {
+   private static final Map<clr, alg> a = Maps.newEnumMap(
+      Map.of(
+         clr.a,
+         alg.b("textures/entity/horse/horse_white.png"),
+         clr.b,
+         alg.b("textures/entity/horse/horse_creamy.png"),
+         clr.c,
+         alg.b("textures/entity/horse/horse_chestnut.png"),
+         clr.d,
+         alg.b("textures/entity/horse/horse_brown.png"),
+         clr.e,
+         alg.b("textures/entity/horse/horse_black.png"),
+         clr.f,
+         alg.b("textures/entity/horse/horse_gray.png"),
+         clr.g,
+         alg.b("textures/entity/horse/horse_darkbrown.png")
+      )
+   );
+
+   public gxo(gwy.a $$0) {
+      super($$0, new ghb($$0.a(gjs.bn)), new ghb($$0.a(gjs.bq)));
+      this.a(new hba(this));
+      this.a(new hbp<>(this, $$0.h(), hlw.d.e, $$0x -> $$0x.i, new ghb($$0.a(gjs.bo)), new ghb($$0.a(gjs.br))));
+      this.a(new hbp<>(this, $$0.h(), hlw.d.j, $$0x -> $$0x.b, new ggq($$0.a(gjs.bp)), new ggq($$0.a(gjs.bs))));
    }
 
-   public alg a(hdt $$0) {
-      return a;
+   public alg a(hdv $$0) {
+      return a.get($$0.a);
    }
 
-   public hdt b() {
-      return new hdt();
+   public hdv b() {
+      return new hdv();
    }
 
-   public void a(cjp $$0, hdt $$1, float $$2) {
+   public void a(clk $$0, hdv $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.n() > 0.0F ? (float)$$0.n() - $$2 : 0.0F;
-      $$1.b = $$0.q();
-      $$1.c = $$0.m();
-   }
-
-   protected void a(hdt $$0, fjy $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!((double)$$0.ae < 0.01)) {
-         float $$4 = 13.0F;
-         float $$5 = $$0.ad + 6.0F;
-         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$6));
-      }
+      $$1.a = $$0.q();
+      $$1.h = $$0.t();
+      $$1.i = $$0.fX().v();
    }
 }

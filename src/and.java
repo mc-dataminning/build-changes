@@ -20,7 +20,7 @@ public class and {
          throw a.create();
       } else {
          cgt $$4 = new cgs($$3, $$0.e());
-         exj $$5 = $$4.a($$1, 0);
+         exo $$5 = $$4.a($$1, 0);
          agm.a($$0.e(), $$3, $$5, $$4.p());
          if ($$5 == null) {
             throw b.create();

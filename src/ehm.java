@@ -1,84 +1,93 @@
-import java.util.function.LongFunction;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class ehm extends ego {
-   private final azv d;
-   private int e;
+public interface ehm {
+   Codec<ehm> a = Codec.xor(ehm.b.d, Codec.xor(ehm.a.d, ehm.c.d)).xmap(ehm::a, ehm::a);
+   ehm b = b(0);
+   ehm c = c(0);
 
-   public ehm(azv $$0) {
-      super(0L);
-      this.d = $$0;
+   static ehm a(int $$0) {
+      return new ehm.b($$0);
    }
 
-   public int l() {
-      return this.e;
+   static ehm b(int $$0) {
+      return new ehm.a($$0);
    }
 
-   @Override
-   public azv d() {
-      return this.d.d();
+   static ehm c(int $$0) {
+      return new ehm.c($$0);
    }
 
-   @Override
-   public eha e() {
-      return this.d.e();
+   static ehm a() {
+      return b;
    }
 
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof ego $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   static ehm b() {
+      return c;
    }
 
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
+   private static ehm a(Either<ehm.b, Either<ehm.a, ehm.c>> $$0) {
+      return (ehm)$$0.map(Function.identity(), Either::unwrap);
+   }
+
+   private static Either<ehm.b, Either<ehm.a, ehm.c>> a(ehm $$0) {
+      return $$0 instanceof ehm.b ? Either.left((ehm.b)$$0) : Either.right($$0 instanceof ehm.a ? Either.left((ehm.a)$$0) : Either.right((ehm.c)$$0));
+   }
+
+   int a(ehp var1);
+
+   public static record a(int e) implements ehm {
+      public static final Codec<ehm.a> d = Codec.intRange(eeq.e, eeq.d).fieldOf("above_bottom").xmap(ehm.a::new, ehm.a::c).codec();
+
+      @Override
+      public int a(ehp $$0) {
+         return $$0.a() + this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
+   public static record b(int e) implements ehm {
+      public static final Codec<ehm.b> d = Codec.intRange(eeq.e, eeq.d).fieldOf("absolute").xmap(ehm.b::new, ehm.b::c).codec();
 
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static azv a(int $$0, int $$1, long $$2, long $$3) {
-      return azv.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(ego::new),
-      b(eho::new);
-
-      private final LongFunction<azv> c;
-
-      private a(final LongFunction<azv> $$0) {
-         this.c = $$0;
+      @Override
+      public int a(ehp $$0) {
+         return this.e;
       }
 
-      public azv a(long $$0) {
-         return this.c.apply($$0);
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements ehm {
+      public static final Codec<ehm.c> d = Codec.intRange(eeq.e, eeq.d).fieldOf("below_top").xmap(ehm.c::new, ehm.c::c).codec();
+
+      @Override
+      public int a(ehp $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 }

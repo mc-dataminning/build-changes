@@ -1,179 +1,112 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public class egn {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<eao> b = $$0 -> !$$0.l();
-   static final Predicate<eao> c = ean.a::d;
-   private final aya d;
-   private final Predicate<eao> e;
-   private final ecl f;
+public class egn extends ecr {
+   public static final MapCodec<egn> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(epq.a.fieldOf("settings").forGetter(egn::h)).apply($$0, $$0.stable(egn::new))
+   );
+   private final epq d;
 
-   public egn(ecl $$0, egn.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = azm.e($$0.H_() + 1);
-      this.d = new bad($$2, 256);
+   public egn(epq $$0) {
+      super(new dla($$0.d()), ag.b($$0::a));
+      this.d = $$0;
    }
 
-   public static void a(ecl $$0, Set<egn.a> $$1) {
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.size();
-         ObjectList<egn> $$3 = new ObjectArrayList($$2);
-         ObjectListIterator<egn> $$4 = $$3.iterator();
-         int $$5 = $$0.b() + 16;
-         iv.a $$6 = new iv.a();
+   @Override
+   public ecs a(jh<ert> $$0, ehg $$1, long $$2) {
+      Stream<jf<ert>> $$3 = this.d.c().map(jj::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
+      return ecs.a($$1, $$2, this.b, $$3);
+   }
 
-         for (int $$7 = 0; $$7 < 16; $$7++) {
-            for (int $$8 = 0; $$8 < 16; $$8++) {
-               for (egn.a $$9 : $$1) {
-                  $$3.add($$0.a($$9));
-               }
+   @Override
+   protected MapCodec<? extends ecr> b() {
+      return c;
+   }
 
-               for (int $$10 = $$5 - 1; $$10 >= $$0.G_(); $$10--) {
-                  $$6.d($$7, $$10, $$8);
-                  eao $$11 = $$0.a_($$6);
-                  if (!$$11.a(dmo.a)) {
-                     while ($$4.hasNext()) {
-                        egn $$12 = (egn)$$4.next();
-                        if ($$12.e.test($$11)) {
-                           $$12.a($$7, $$8, $$10 + 1);
-                           $$4.remove();
-                        }
-                     }
+   public epq h() {
+      return this.d;
+   }
 
-                     if ($$3.isEmpty()) {
-                        break;
-                     }
+   @Override
+   public void a(ary $$0, dki $$1, ehg $$2, ecq $$3) {
+   }
 
-                     $$4.back($$2);
-                  }
+   @Override
+   public int a(djo $$0) {
+      return $$0.G_() + Math.min($$0.H_(), this.d.f().size());
+   }
+
+   @Override
+   public CompletableFuture<ecq> a(ehu $$0, ehg $$1, dki $$2, ecq $$3) {
+      List<eat> $$4 = this.d.f();
+      iv.a $$5 = new iv.a();
+      egs $$6 = $$3.a(egs.a.c);
+      egs $$7 = $$3.a(egs.a.a);
+
+      for (int $$8 = 0; $$8 < Math.min($$3.H_(), $$4.size()); $$8++) {
+         eat $$9 = $$4.get($$8);
+         if ($$9 != null) {
+            int $$10 = $$3.G_() + $$8;
+
+            for (int $$11 = 0; $$11 < 16; $$11++) {
+               for (int $$12 = 0; $$12 < 16; $$12++) {
+                  $$3.a($$5.d($$11, $$10, $$12), $$9);
+                  $$6.a($$11, $$10, $$12, $$9);
+                  $$7.a($$11, $$10, $$12, $$9);
                }
             }
          }
       }
+
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public boolean a(int $$0, int $$1, int $$2, eao $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            iv.a $$5 = new iv.a();
+   @Override
+   public int a(int $$0, int $$1, egs.a $$2, djo $$3, ehg $$4) {
+      List<eat> $$5 = this.d.f();
 
-            for (int $$6 = $$1 - 1; $$6 >= this.f.G_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
-
-            this.a($$0, $$2, this.f.G_());
-            return true;
+      for (int $$6 = Math.min($$5.size() - 1, $$3.ao()); $$6 >= 0; $$6--) {
+         eat $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.G_() + $$6 + 1;
          }
-
-         return false;
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
-
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.G_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.G_());
-   }
-
-   public void a(ecl $$0, egn.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements bak {
-      a(0, "WORLD_SURFACE_WG", egn.b.a, egn.b),
-      b(1, "WORLD_SURFACE", egn.b.c, egn.b),
-      c(2, "OCEAN_FLOOR_WG", egn.b.a, egn.c),
-      d(3, "OCEAN_FLOOR", egn.b.b, egn.c),
-      e(4, "MOTION_BLOCKING", egn.b.c, $$0 -> $$0.d() || !$$0.y().c()),
-      f(5, "MOTION_BLOCKING_NO_LEAVES", egn.b.c, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof drc));
-
-      public static final Codec<egn.a> g = bak.a(egn.a::values);
-      private static final IntFunction<egn.a> i = ayc.a($$0 -> $$0.j, values(), ayc.a.a);
-      public static final yw<ByteBuf, egn.a> h = yu.a(i, $$0 -> $$0.j);
-      private final int j;
-      private final String k;
-      private final egn.b l;
-      private final Predicate<eao> m;
-
-      private a(final int $$0, final String $$1, final egn.b $$2, final Predicate<eao> $$3) {
-         this.j = $$0;
-         this.k = $$1;
-         this.l = $$2;
-         this.m = $$3;
       }
 
-      public String a() {
-         return this.k;
-      }
-
-      public boolean b() {
-         return this.l == egn.b.c;
-      }
-
-      public boolean d() {
-         return this.l != egn.b.a;
-      }
-
-      public Predicate<eao> e() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.k;
-      }
+      return $$3.G_();
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   @Override
+   public djy a(int $$0, int $$1, djo $$2, ehg $$3) {
+      return new djy($$2.G_(), this.d.f().stream().limit((long)$$2.H_()).map($$0x -> $$0x == null ? dmt.a.m() : $$0x).toArray(eat[]::new));
+   }
+
+   @Override
+   public void a(List<String> $$0, ehg $$1, iv $$2) {
+   }
+
+   @Override
+   public void a(ary $$0, long $$1, ehg $$2, dkr $$3, dki $$4, ecq $$5) {
+   }
+
+   @Override
+   public void a(ary $$0) {
+   }
+
+   @Override
+   public int g() {
+      return 0;
+   }
+
+   @Override
+   public int e() {
+      return 384;
+   }
+
+   @Override
+   public int f() {
+      return -63;
    }
 }

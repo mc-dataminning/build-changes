@@ -1,49 +1,37 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsw extends dmm {
+public class dsw extends dmr {
    public static final MapCodec<dsw> a = b(dsw::new);
-   public static final ebf b = dsx.b;
 
    @Override
    public MapCodec<dsw> a() {
       return a;
    }
 
-   public dsw(ean.d $$0) {
+   protected dsw(eas.d $$0) {
       super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public eao a(ddd $$0) {
-      return this.m().b(b, Boolean.valueOf($$0.q().D($$0.a())));
    }
 
    @Override
-   protected void a(eao $$0, djh $$1, iv $$2, dmm $$3, @Nullable eyd $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$0.c(b);
-         if ($$6 != $$1.D($$2)) {
-            if ($$6) {
-               $$1.a($$2, this, 4);
-            } else {
-               $$1.a($$2, $$0.a(b), 2);
-            }
-         }
+   protected bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
+      if (!$$0.a(czr.td)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.C) {
+         return bug.a;
+      } else {
+         jb $$7 = $$6.c();
+         jb $$8 = $$7.o() == jb.a.b ? $$4.cN().g() : $$7;
+         $$2.a(null, $$3, awn.vK, awo.e, 1.0F, 1.0F);
+         $$2.a($$3, dmt.ev.m().b(dnn.b, $$8), 11);
+         cnr $$9 = new cnr(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new czn(czr.tg, 4)
+         );
+         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bxj.d($$5));
+         $$2.a($$4, eft.M, $$3);
+         $$4.b(awx.c.b(czr.td));
+         return bug.a;
       }
-   }
-
-   @Override
-   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
-      if ($$0.c(b) && !$$1.D($$2)) {
-         $$1.a($$2, $$0.a(b), 2);
-      }
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b);
    }
 }

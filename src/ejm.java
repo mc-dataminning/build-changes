@@ -1,54 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ejm extends ejt<elu> {
-   public ejm(Codec<elu> $$0) {
+public abstract class ejm extends ejy<emj> {
+   public ejm(Codec<emj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<elu> $$0) {
-      elu $$1 = $$0.f();
-      iv $$2 = $$0.e();
-      dkg $$3 = $$0.b();
-      azv $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      iv.a $$10 = new iv.a();
-
-      for (iv $$11 : iv.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
+   public boolean a(eka<emj> $$0) {
+      azv $$1 = $$0.d();
+      dkl $$2 = $$0.b();
+      iv $$3 = $$0.e();
+      Optional<dmr> $$4 = mg.e.a(axc.at, $$1).map(jf::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
    }
 
-   protected boolean a(elu $$0, dkg $$1, azv $$2, int $$3, int $$4, iv.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
+   protected abstract boolean a(djn var1, azv var2, iv var3, eat var4);
 
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            eao $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
-            }
-
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
+   protected boolean b(djn $$0, azv $$1, iv $$2, eat $$3) {
+      iv $$4 = $$2.d();
+      eat $$5 = $$0.a_($$2);
+      if (($$5.a(dmt.J) || $$5.a(axc.aw)) && $$0.a_($$4).a(dmt.J)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            mg.e.a(axc.aw, $$1).map(jf::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dmt.nB.m().b(dtw.c, Integer.valueOf($$1.a(4) + 1)), 2);
          }
-      }
 
-      return $$6;
+         for (jb $$6 : jb.c.a) {
+            if ($$1.i() < 0.2F) {
+               iv $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dmt.J)) {
+                  mg.e.a(axc.au, $$1).map(jf::a).ifPresent($$3x -> {
+                     eat $$4x = $$3x.m();
+                     if ($$4x.b(dmc.d)) {
+                        $$4x = $$4x.b(dmc.d, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

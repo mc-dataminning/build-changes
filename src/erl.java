@@ -1,51 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongCollection;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public abstract class erl extends err {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public class erl extends eyh {
-   private final LongSet b;
-   private final LongSet c;
-   private static final Codec<LongSet> d = Codec.LONG_STREAM.xmap(LongOpenHashSet::toSet, LongCollection::longStream);
-   public static final Codec<erl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(d.fieldOf("All").forGetter($$0x -> $$0x.b), d.fieldOf("Remaining").forGetter($$0x -> $$0x.c)).apply($$0, erl::new)
-   );
-
-   public static eyi<erl> a(String $$0) {
-      return new eyi<>($$0, erl::new, a, bbb.o);
+   protected erl(ese $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, jb $$7) {
+      super($$0, 0, err.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
    }
 
-   private erl(LongSet $$0, LongSet $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   protected erl(ese $$0, tz $$1) {
+      super($$0, $$1);
+      this.a = $$1.f("Width");
+      this.b = $$1.f("Height");
+      this.c = $$1.f("Depth");
+      this.d = $$1.f("HPos");
    }
 
-   public erl() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
+   @Override
+   protected void a(esd $$0, tz $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
    }
 
-   public void a(long $$0) {
-      this.b.add($$0);
-      this.c.add($$0);
-      this.f();
-   }
+   protected boolean a(djn $$0, erf $$1, int $$2) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$3 = 0;
+         int $$4 = 0;
+         iv.a $$5 = new iv.a();
 
-   public boolean b(long $$0) {
-      return this.b.contains($$0);
-   }
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(egs.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
 
-   public boolean c(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public void d(long $$0) {
-      if (this.c.remove($$0)) {
-         this.f();
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
+         }
       }
    }
 
-   public LongSet a() {
-      return this.b;
+   protected boolean a(djn $$0, int $$1) {
+      if (this.d >= 0) {
+         return true;
+      } else {
+         int $$2 = $$0.ao() + 1;
+         boolean $$3 = false;
+         iv.a $$4 = new iv.a();
+
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(egs.a.f, $$4).v());
+               $$3 = true;
+            }
+         }
+
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
+         }
+      }
    }
 }

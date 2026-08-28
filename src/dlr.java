@@ -1,61 +1,103 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dlr extends dld {
-   public static final MapCodec<dlr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyi.q.fieldOf("color").forGetter(dld::b), t()).apply($$0, dlr::new));
-   public static final ebo b = ebe.bd;
-   private static final Map<cyi, dmm> c = Maps.newHashMap();
-   private static final ffr d = dmm.b(8.0, 0.0, 16.0);
+public class dlr extends dpp {
+   public static final MapCodec<dlr> a = b(dlr::new);
+   public static final ebr<jb> b = dqs.e;
+   private static final Map<jb.a, ffw> c = fft.a(
+      fft.a(dmr.b(12.0, 0.0, 4.0), dmr.a(8.0, 10.0, 4.0, 5.0), dmr.a(4.0, 8.0, 5.0, 10.0), dmr.a(10.0, 16.0, 10.0, 16.0))
+   );
+   private static final wy d = wy.c("container.repair");
+   private static final float e = 2.0F;
+   private static final int f = 40;
 
    @Override
    public MapCodec<dlr> a() {
       return a;
    }
 
-   public dlr(cyi $$0, ean.d $$1) {
-      super($$0, $$1);
-      this.l(this.C.b().b(b, Integer.valueOf(0)));
-      c.put($$0, this);
+   public dlr(eas.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, jb.c));
    }
 
    @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      return $$1.a_($$2.e()).e();
+   public eat a(ddg $$0) {
+      return this.m().b(b, $$0.g().h());
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return d;
+   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awx.aC);
+      }
+
+      return bug.a;
+   }
+
+   @Nullable
+   @Override
+   protected bui b(eat $$0, djm $$1, iv $$2) {
+      return new buo(($$2x, $$3, $$4) -> new cvi($$2x, $$3, cvs.a($$1, $$2)), d);
    }
 
    @Override
-   public eao a(ddd $$0) {
-      return this.m().b(b, Integer.valueOf(ebu.a($$0.i() + 180.0F)));
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return c.get($$0.c(b).o());
    }
 
    @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      return $$4 == jb.a && !$$0.a($$1, $$3) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected void a(cnq $$0) {
+      $$0.b(2.0F, 40);
    }
 
    @Override
-   protected eao a(eao $$0, dtg $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public void a(djm $$0, iv $$1, eat $$2, eat $$3, cnq $$4) {
+      if (!$$4.aZ()) {
+         $$0.c(1031, $$1, 0);
+      }
    }
 
    @Override
-   protected eao a(eao $$0, drp $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public void a(djm $$0, iv $$1, cnq $$2) {
+      if (!$$2.aZ()) {
+         $$0.c(1029, $$1, 0);
+      }
    }
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
+   public bux a(bwi $$0) {
+      return $$0.dV().b($$0);
+   }
+
+   @Nullable
+   public static eat e(eat $$0) {
+      if ($$0.a(dmt.ht)) {
+         return dmt.hu.m().b(b, $$0.c(b));
+      } else {
+         return $$0.a(dmt.hu) ? dmt.hv.m().b(b, $$0.c(b)) : null;
+      }
+   }
+
+   @Override
+   protected eat a(eat $$0, dtl $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
       $$0.a(b);
    }
 
-   public static dmm a(cyi $$0) {
-      return c.getOrDefault($$0, dmo.jl);
+   @Override
+   protected boolean a(eat $$0, exp $$1) {
+      return false;
+   }
+
+   @Override
+   public int b(eat $$0, diq $$1, iv $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

@@ -1,44 +1,25 @@
-import java.util.List;
+public class cyn extends czj implements dah {
+   public static final float a = 1.5F;
 
-public class cyn extends czg {
-   public cyn(czg.a $$0) {
+   public cyn(czj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bug a(ddf $$0) {
-      djh $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      eao $$3 = $$1.a_($$2);
-      if (!$$3.a(dmo.cy) && !$$3.a(dmo.I)) {
-         return bug.d;
-      } else {
-         iv $$4 = $$2.d();
-         if (!$$1.v($$4)) {
-            return bug.d;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<bwi> $$8 = $$1.a_(null, new fes($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bug.d;
-            } else {
-               if ($$1 instanceof arq) {
-                  cmg $$9 = new cmg($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), efo.t, $$4);
-                  eeo $$10 = ((arq)$$1).F();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
-
-               $$0.n().h(1);
-               return bug.a;
-            }
-         }
+   public bug a(djm $$0, crm $$1, buf $$2) {
+      czn $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awn.il, awo.h, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arq $$4) {
+         csh.a(csq::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
+
+      $$1.b(awx.c.b(this));
+      $$3.a(1, $$1);
+      return bug.a;
+   }
+
+   @Override
+   public csh a(djm $$0, jp $$1, czn $$2, jb $$3) {
+      return new csq($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

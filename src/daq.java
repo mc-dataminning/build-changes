@@ -1,41 +1,21 @@
 import javax.annotation.Nullable;
 
-public class daq extends cxs implements cyg {
-   private final awm a;
+public class daq extends day {
+   public daq(dmr $$0, dmr $$1, czj.a $$2) {
+      super($$0, $$1, jb.a, $$2);
+   }
 
-   public daq(dmm $$0, awm $$1, czg.a $$2) {
-      super($$0, $$2);
-      this.a = $$1;
+   public daq(czj.a $$0, dmr $$1, dmr $$2, jb $$3) {
+      super($$1, $$2, $$3, $$0);
    }
 
    @Override
-   public bug a(ddf $$0) {
-      bug $$1 = super.a($$0);
-      crj $$2 = $$0.o();
-      if ($$1.a() && $$2 != null) {
-         $$2.a($$0.p(), cxy.b($$0.n(), $$2));
+   protected boolean a(iv $$0, djm $$1, @Nullable crm $$2, czn $$3, eat $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dzf $$6 && $$1.a_($$0).b() instanceof dub $$7) {
+         $$7.a($$2, $$6, true);
       }
 
-      return $$1;
-   }
-
-   @Override
-   protected awm a(eao $$0) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(@Nullable bxj $$0, djh $$1, iv $$2, @Nullable fet $$3) {
-      if ($$1.k($$2) && $$1.v($$2)) {
-         if (!$$1.C) {
-            $$1.a($$2, this.c().m(), 3);
-         }
-
-         $$1.a($$0, efo.z, $$2);
-         $$1.a($$0, $$2, this.a, awo.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+      return $$5;
    }
 }

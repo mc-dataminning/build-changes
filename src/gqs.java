@@ -1,128 +1,251 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
 public class gqs {
-   private final String a;
-   private final fid b;
-   private final gpv c;
-   private final alg d;
-   private final List<gqr.h> e;
-   private final List<gqs.a> f = new ArrayList<>();
+   private final gqs.b a;
+   final iv b;
 
-   public gqs(fid $$0, gpv $$1, alg $$2, List<gqr.h> $$3) {
-      this.b = $$0;
-      this.a = $$0.d().toString();
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public gqs(jy $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 * 2 + 1;
+      int $$5 = azm.c($$4);
+      int $$6 = $$1 * 16;
+      iv $$7 = $$0.j();
+      this.b = $$0.k();
+      int $$8 = $$7.u() - $$6;
+      int $$9 = $$8 + $$5 * 16 - 1;
+      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
+      int $$11 = $$10 + $$5 * 16 - 1;
+      int $$12 = $$7.w() - $$6;
+      int $$13 = $$12 + $$5 * 16 - 1;
+      this.a = new gqs.b(new erf($$8, $$10, $$12, $$9, $$11, $$13));
    }
 
-   public void a(gqs.a $$0) {
-      this.f.add($$0);
+   public boolean a(gug.b $$0) {
+      return this.a.a($$0);
    }
 
-   public void a(fhw $$0, Map<alg, fjg<fie>> $$1, Matrix4f $$2) {
-      fhx $$3 = $$0.a(this.a);
+   public void a(gqs.e $$0, guk $$1, int $$2) {
+      this.a.a($$0, false, $$1, 0, $$2, true);
+   }
 
-      for (gqs.a $$4 : this.f) {
-         $$4.a($$3, $$1);
+   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
+      int $$7 = this.b.u();
+      int $$8 = this.b.v();
+      int $$9 = this.b.w();
+      return (double)$$7 > $$0 - (double)$$6
+         && (double)$$7 < $$3 + (double)$$6
+         && (double)$$8 > $$1 - (double)$$6
+         && (double)$$8 < $$4 + (double)$$6
+         && (double)$$9 > $$2 - (double)$$6
+         && (double)$$9 < $$5 + (double)$$6;
+   }
+
+   static enum a {
+      a(4, 2, 1),
+      b(4, 1, 2),
+      c(2, 4, 1),
+      d(1, 4, 2),
+      e(2, 1, 4),
+      f(1, 2, 4);
+
+      final int g;
+      final int h;
+      final int i;
+
+      private a(final int $$0, final int $$1, final int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      fjg<fie> $$5 = $$1.computeIfPresent(this.d, ($$1x, $$2x) -> $$3.b($$2x));
-      if ($$5 == null) {
-         throw new IllegalStateException("Missing handle for target " + this.d);
-      } else {
-         $$3.a(() -> {
-            fie $$3x = $$5.get();
-            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
-            $$3x.a(false);
-            RenderSystem.backupProjectionMatrix();
-            RenderSystem.setProjectionMatrix($$2, fhb.b);
-            fkb $$4x = RenderSystem.getQuadVertices();
-            $$4x.a(this.b, $$2xx -> {
-               for (gqs.a $$3xx : this.f) {
-                  $$3xx.a($$2xx, $$1);
-               }
-
-               $$2xx.b("OutSize").a((float)$$3x.c, (float)$$3x.d);
-
-               for (gqr.h $$4xx : this.e) {
-                  if ($$4xx.c().isPresent()) {
-                     fjl $$5x = $$2xx.a($$4xx.a());
-                     if ($$5x != null) {
-                        List<Float> $$6 = $$4xx.c().get();
-                        $$5x.a($$6, $$6.size());
-                     }
-                  }
-               }
-            });
-            RenderSystem.restoreProjectionMatrix();
-            $$3x.d();
-
-            for (gqs.a $$5x : this.f) {
-               $$5x.a($$1);
-            }
-         });
-      }
-   }
-
-   public gpv a() {
-      return this.c;
-   }
-
-   public interface a {
-      void a(fhx var1, Map<alg, fjg<fie>> var2);
-
-      void a(gpv var1, Map<alg, fjg<fie>> var2);
-
-      default void a(Map<alg, fjg<fie>> $$0) {
-      }
-   }
-
-   public static record b(String a, alg b, boolean c, boolean d) implements gqs.a {
-      private fjg<fie> b(Map<alg, fjg<fie>> $$0) {
-         fjg<fie> $$1 = $$0.get(this.b);
-         if ($$1 == null) {
-            throw new IllegalStateException("Missing handle for target " + this.b);
+      public static gqs.a a(int $$0, int $$1, int $$2) {
+         if ($$0 > $$1 && $$0 > $$2) {
+            return $$1 > $$2 ? a : b;
+         } else if ($$1 > $$0 && $$1 > $$2) {
+            return $$0 > $$2 ? c : d;
          } else {
-            return $$1;
-         }
-      }
-
-      @Override
-      public void a(fhx $$0, Map<alg, fjg<fie>> $$1) {
-         $$0.a(this.b($$1));
-      }
-
-      @Override
-      public void a(gpv $$0, Map<alg, fjg<fie>> $$1) {
-         fjg<fie> $$2 = this.b($$1);
-         fie $$3 = $$2.get();
-         $$3.a(this.d ? fjq.b : fjq.a);
-         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
-         $$0.b(this.a + "Size").a((float)$$3.c, (float)$$3.d);
-      }
-
-      @Override
-      public void a(Map<alg, fjg<fie>> $$0) {
-         if (this.d) {
-            this.b($$0).get().a(fjq.a);
+            return $$0 > $$1 ? e : f;
          }
       }
    }
 
-   public static record c(String a, hiv b, int c, int d) implements gqs.a {
-      @Override
-      public void a(fhx $$0, Map<alg, fjg<fie>> $$1) {
+   class b implements gqs.d {
+      private final gqs.d[] b = new gqs.d[8];
+      private final erf c;
+      private final int d;
+      private final int e;
+      private final int f;
+      private final gqs.a g;
+      private final boolean h;
+      private final boolean i;
+      private final boolean j;
+
+      public b(final erf $$0) {
+         this.c = $$0;
+         this.d = this.c.h() + this.c.d() / 2;
+         this.e = this.c.i() + this.c.e() / 2;
+         this.f = this.c.j() + this.c.f() / 2;
+         int $$1 = gqs.this.b.u() - this.d;
+         int $$2 = gqs.this.b.v() - this.e;
+         int $$3 = gqs.this.b.w() - this.f;
+         this.g = gqs.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
+         this.h = $$1 < 0;
+         this.i = $$2 < 0;
+         this.j = $$3 < 0;
+      }
+
+      public boolean a(gug.b $$0) {
+         long $$1 = $$0.g();
+         boolean $$2 = jy.c(jy.b($$1)) - this.d < 0;
+         boolean $$3 = jy.c(jy.c($$1)) - this.e < 0;
+         boolean $$4 = jy.c(jy.d($$1)) - this.f < 0;
+         boolean $$5 = $$2 != this.h;
+         boolean $$6 = $$3 != this.i;
+         boolean $$7 = $$4 != this.j;
+         int $$8 = a(this.g, $$5, $$6, $$7);
+         if (this.c()) {
+            boolean $$9 = this.b[$$8] != null;
+            this.b[$$8] = gqs.this.new c($$0);
+            return !$$9;
+         } else if (this.b[$$8] != null) {
+            gqs.b $$10 = (gqs.b)this.b[$$8];
+            return $$10.a($$0);
+         } else {
+            erf $$11 = this.a($$2, $$3, $$4);
+            gqs.b $$12 = gqs.this.new b($$11);
+            this.b[$$8] = $$12;
+            return $$12.a($$0);
+         }
+      }
+
+      private static int a(gqs.a $$0, boolean $$1, boolean $$2, boolean $$3) {
+         int $$4 = 0;
+         if ($$1) {
+            $$4 += $$0.g;
+         }
+
+         if ($$2) {
+            $$4 += $$0.h;
+         }
+
+         if ($$3) {
+            $$4 += $$0.i;
+         }
+
+         return $$4;
+      }
+
+      private boolean c() {
+         return this.c.d() == 32;
+      }
+
+      private erf a(boolean $$0, boolean $$1, boolean $$2) {
+         int $$3;
+         int $$4;
+         if ($$0) {
+            $$3 = this.c.h();
+            $$4 = this.d - 1;
+         } else {
+            $$3 = this.d;
+            $$4 = this.c.k();
+         }
+
+         int $$7;
+         int $$8;
+         if ($$1) {
+            $$7 = this.c.i();
+            $$8 = this.e - 1;
+         } else {
+            $$7 = this.e;
+            $$8 = this.c.l();
+         }
+
+         int $$11;
+         int $$12;
+         if ($$2) {
+            $$11 = this.c.j();
+            $$12 = this.f - 1;
+         } else {
+            $$11 = this.f;
+            $$12 = this.c.m();
+         }
+
+         return new erf($$3, $$7, $$11, $$4, $$8, $$12);
       }
 
       @Override
-      public void a(gpv $$0, Map<alg, fjg<fie>> $$1) {
-         $$0.a(this.a + "Sampler", this.b.d());
-         $$0.b(this.a + "Size").a((float)this.c, (float)this.d);
+      public void a(gqs.e $$0, boolean $$1, guk $$2, int $$3, int $$4, boolean $$5) {
+         boolean $$6 = $$1;
+         if (!$$1) {
+            int $$7 = $$2.a(this.c);
+            $$1 = $$7 == -2;
+            $$6 = $$7 == -2 || $$7 == -1;
+         }
+
+         if ($$6) {
+            $$5 = $$5
+               && gqs.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+
+            for (gqs.d $$8 : this.b) {
+               if ($$8 != null) {
+                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
+               }
+            }
+         }
       }
+
+      @Nullable
+      @Override
+      public gug.b a() {
+         return null;
+      }
+
+      @Override
+      public fex b() {
+         return new fex(
+            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
+         );
+      }
+   }
+
+   final class c implements gqs.d {
+      private final gug.b b;
+
+      c(final gug.b $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(gqs.e $$0, boolean $$1, guk $$2, int $$3, int $$4, boolean $$5) {
+         fex $$6 = this.b.b();
+         if ($$1 || $$2.a(this.a().b())) {
+            $$5 = $$5 && gqs.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+         }
+      }
+
+      @Override
+      public gug.b a() {
+         return this.b;
+      }
+
+      @Override
+      public fex b() {
+         return this.b.b();
+      }
+   }
+
+   public interface d {
+      void a(gqs.e var1, boolean var2, guk var3, int var4, int var5, boolean var6);
+
+      @Nullable
+      gug.b a();
+
+      fex b();
+   }
+
+   @FunctionalInterface
+   public interface e {
+      void visit(gqs.d var1, boolean var2, int var3, boolean var4);
    }
 }

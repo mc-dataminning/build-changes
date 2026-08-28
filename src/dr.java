@@ -17,7 +17,7 @@ public record dr(List<dr.c> c) {
    public static final Codec<dr> a = d.xmap(dr::new, dr::a);
    public static final yw<ByteBuf, dr> b = dr.c.a.a(yu.a()).a(dr::new, dr::a);
 
-   public <S extends eaq<?, S>> boolean a(eap<?, S> $$0, S $$1) {
+   public <S extends eav<?, S>> boolean a(eau<?, S> $$0, S $$1) {
       for (dr.c $$2 : this.c) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -27,15 +27,15 @@ public record dr(List<dr.c> c) {
       return true;
    }
 
-   public boolean a(eao $$0) {
+   public boolean a(eat $$0) {
       return this.a($$0.b().l(), $$0);
    }
 
-   public boolean a(ewv $$0) {
+   public boolean a(exa $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(eap<?, ?> $$0) {
+   public Optional<String> a(eau<?, ?> $$0) {
       for (dr.c $$1 : this.c) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -60,20 +60,20 @@ public record dr(List<dr.c> c) {
          return new dr.a();
       }
 
-      public dr.a a(ebr<?> $$0, String $$1) {
+      public dr.a a(ebw<?> $$0, String $$1) {
          this.a.add(new dr.c($$0.f(), new dr.b($$1)));
          return this;
       }
 
-      public dr.a a(ebr<Integer> $$0, int $$1) {
+      public dr.a a(ebw<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public dr.a a(ebr<Boolean> $$0, boolean $$1) {
+      public dr.a a(ebw<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & bak> dr.a a(ebr<T> $$0, T $$1) {
+      public <T extends Comparable<T> & bak> dr.a a(ebw<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -87,7 +87,7 @@ public record dr(List<dr.c> c) {
       public static final yw<ByteBuf, dr.b> b = yu.p.a(dr.b::new, dr.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(eaq<?, ?> $$0, ebr<T> $$1) {
+      public <T extends Comparable<T>> boolean a(eav<?, ?> $$0, ebw<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.e);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -101,13 +101,13 @@ public record dr(List<dr.c> c) {
    static record c(String b, dr.e c) {
       public static final yw<ByteBuf, dr.c> a = yw.a(yu.p, dr.c::a, dr.e.d, dr.c::b, dr.c::new);
 
-      public <S extends eaq<?, S>> boolean a(eap<?, S> $$0, S $$1) {
-         ebr<?> $$2 = $$0.a(this.b);
+      public <S extends eav<?, S>> boolean a(eau<?, S> $$0, S $$1) {
+         ebw<?> $$2 = $$0.a(this.b);
          return $$2 != null && this.c.a($$1, $$2);
       }
 
-      public Optional<String> a(eap<?, ?> $$0) {
-         ebr<?> $$1 = $$0.a(this.b);
+      public Optional<String> a(eau<?, ?> $$0) {
+         ebw<?> $$1 = $$0.a(this.b);
          return $$1 != null ? Optional.empty() : Optional.of(this.b);
       }
 
@@ -127,7 +127,7 @@ public record dr(List<dr.c> c) {
       public static final yw<ByteBuf, dr.d> b = yw.a(yu.a(yu.p), dr.d::a, yu.a(yu.p), dr.d::b, dr.d::new);
 
       @Override
-      public <T extends Comparable<T>> boolean a(eaq<?, ?> $$0, ebr<T> $$1) {
+      public <T extends Comparable<T>> boolean a(eav<?, ?> $$0, ebw<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.e.isPresent()) {
             Optional<T> $$3 = $$1.b(this.e.get());
@@ -175,6 +175,6 @@ public record dr(List<dr.c> c) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(eaq<?, ?> var1, ebr<T> var2);
+      <T extends Comparable<T>> boolean a(eav<?, ?> var1, ebw<T> var2);
    }
 }

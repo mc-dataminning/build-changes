@@ -1,69 +1,41 @@
-public class gnh extends gou {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final boolean G;
-   private final gnu.a H;
+public class gnh extends goz {
+   private static final float a = 0.0025F;
+   private static final int b = 300;
+   private static final int F = 300;
+   private float G;
+   private final float H;
+   private final float I;
+   private final float J;
+   private boolean K;
+   private boolean L;
+   private double M;
+   private double N;
+   private double O;
 
-   gnh(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gnu.a.a);
-   }
-
-   gnh(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gnu.a $$8) {
+   protected gnh(gkq $$0, double $$1, double $$2, double $$3, gou $$4, float $$5, float $$6, boolean $$7, boolean $$8, float $$9, float $$10) {
       super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+      this.a($$4.a(this.r.a(12), 12));
+      this.G = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
+      this.H = this.r.i();
+      this.I = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
+      this.J = $$6;
+      this.K = $$7;
+      this.L = $$8;
+      this.t = 300;
+      this.u = $$5 * 1.2F * 0.0025F;
+      float $$11 = $$9 * (this.r.h() ? 0.05F : 0.075F);
+      this.D = $$11;
+      this.b($$11, $$11);
+      this.B = 1.0F;
+      this.k = (double)(-$$10);
+      this.M = Math.cos(Math.toRadians((double)(this.H * 60.0F))) * (double)this.J;
+      this.N = Math.sin(Math.toRadians((double)(this.H * 60.0F))) * (double)this.J;
+      this.O = Math.toRadians((double)(1000.0F + this.H * 3000.0F));
    }
 
    @Override
-   public gny b() {
-      return this.H.a() ? gny.b : gny.c;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public int a(float $$0) {
-      if (this.G) {
-         return 240;
-      } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
-         }
-
-         return $$3 | $$4 << 16;
-      }
+   public god b() {
+      return god.b;
    }
 
    @Override
@@ -71,65 +43,78 @@ public class gnh extends gou {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.t-- <= 0) {
          this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
+      }
+
+      if (!this.o) {
+         float $$0 = (float)(300 - this.t);
+         float $$1 = Math.min($$0 / 300.0F, 1.0F);
+         double $$2 = 0.0;
+         double $$3 = 0.0;
+         if (this.L) {
+            $$2 += this.M * Math.pow((double)$$1, 1.25);
+            $$3 += this.N * Math.pow((double)$$1, 1.25);
+         }
+
+         if (this.K) {
+            $$2 += (double)$$1 * Math.cos((double)$$1 * this.O) * (double)this.J;
+            $$3 += (double)$$1 * Math.sin((double)$$1 * this.O) * (double)this.J;
+         }
+
+         this.j += $$2 * 0.0025F;
+         this.l += $$3 * 0.0025F;
+         this.k = this.k - (double)this.u;
+         this.G = this.G + this.I / 20.0F;
+         this.A = this.z;
+         this.z = this.z + this.G / 20.0F;
+         this.a(this.j, this.k, this.l);
+         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
+            this.k();
+         }
+
+         if (!this.o) {
+            this.j = this.j * (double)this.B;
+            this.k = this.k * (double)this.B;
+            this.l = this.l * (double)this.B;
+         }
       }
    }
 
-   @Override
-   public void a(fkc $$0, fow $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
-   }
+   public static class a implements goc<mc> {
+      private final gou a;
 
-   public static class a implements gnx<mc> {
-      private final gop a;
-
-      public a(gop $$0) {
+      public a(gou $$0) {
          this.a = $$0;
       }
 
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnh $$8 = new gnh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnh($$1, $$2, $$3, $$4, this.a, 0.25F, 2.0F, false, true, 1.0F, 0.0F);
       }
    }
 
-   public static class b implements gnx<mc> {
-      private final gop a;
+   public static class b implements goc<mc> {
+      private final gou a;
 
-      public b(gop $$0) {
+      public b(gou $$0) {
          this.a = $$0;
       }
 
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnh $$8 = new gnh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnh($$1, $$2, $$3, $$4, this.a, 0.07F, 10.0F, true, false, 2.0F, 0.021F);
       }
    }
 
-   public static class c implements gnx<mc> {
-      private final gop a;
+   public static class c implements goc<lr> {
+      private final gou a;
 
-      public c(gop $$0) {
+      public c(gou $$0) {
          this.a = $$0;
       }
 
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnh $$8 = new gnh($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gnu.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
-         $$8.a(this.a);
+      public gnz a(lr $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnz $$8 = new gnh($$1, $$2, $$3, $$4, this.a, 0.07F, 10.0F, true, false, 2.0F, 0.021F);
+         $$8.a($$0.b(), $$0.c(), $$0.d());
          return $$8;
       }
    }

@@ -1,56 +1,46 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
 import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.List;
+import org.lwjgl.BufferUtils;
 
-public class hoj {
-   private final avg a;
-   private final Map<alg, CompletableFuture<fhj>> b = Maps.newHashMap();
+public class hoj implements FloatConsumer {
+   private final List<ByteBuffer> a = Lists.newArrayList();
+   private final int b;
+   private int c;
+   private ByteBuffer d;
 
-   public hoj(avg $$0) {
-      this.a = $$0;
+   public hoj(int $$0) {
+      this.b = $$0 + 1 & -2;
+      this.d = BufferUtils.createByteBuffer($$0);
    }
 
-   public CompletableFuture<fhj> a(alg $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               fhj var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  hod $$2 = new hof($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new fhj($$3, $$2.a());
-               }
+   public void accept(float $$0) {
+      if (this.d.remaining() == 0) {
+         this.d.flip();
+         this.a.add(this.d);
+         this.d = BufferUtils.createByteBuffer(this.b);
+      }
 
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, ag.j()));
+      int $$1 = azm.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
+      this.d.putShort((short)$$1);
+      this.c += 2;
    }
 
-   public CompletableFuture<hoa> a(alg $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (hoa)($$1 ? new hog(hof::new, $$2) : new hof($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
-         }
-      }, ag.j());
+   public ByteBuffer a() {
+      this.d.flip();
+      if (this.a.isEmpty()) {
+         return this.d;
+      } else {
+         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
+         this.a.forEach($$0::put);
+         $$0.put(this.d);
+         $$0.flip();
+         return $$0;
+      }
    }
 
-   public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(fhj::b));
-      this.b.clear();
-   }
-
-   public CompletableFuture<?> a(Collection<hne> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+   public int b() {
+      return this.c;
    }
 }

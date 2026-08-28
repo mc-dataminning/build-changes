@@ -26,7 +26,7 @@ public class aqw implements aqs.a, AutoCloseable {
    }
 
    @Override
-   public void onLevelChange(dio $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+   public void onLevelChange(dir $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
       this.f.a_(new bta.c(0, () -> {
          int $$4 = $$1.getAsInt();
          this.d.a($$4, $$0, $$2);

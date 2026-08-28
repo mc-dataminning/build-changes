@@ -25,12 +25,12 @@ public record bri(
    List<brm> o,
    List<brt> p
 ) {
-   public List<Pair<edm, brx<brm>>> a() {
-      Map<edm, List<brm>> $$0 = this.o.stream().collect(Collectors.groupingBy(brm::d));
+   public List<Pair<edr, brx<brm>>> a() {
+      Map<edr, List<brm>> $$0 = this.o.stream().collect(Collectors.groupingBy(brm::d));
       return $$0.entrySet()
          .stream()
-         .map($$0x -> Pair.of((edm)$$0x.getKey(), brx.a((List)$$0x.getValue())))
-         .sorted(Comparator.<Pair<edm, brx<brm>>, Duration>comparing($$0x -> ((brx)$$0x.getSecond()).f()).reversed())
+         .map($$0x -> Pair.of((edr)$$0x.getKey(), brx.a((List)$$0x.getValue())))
+         .sorted(Comparator.<Pair<edr, brx<brm>>, Duration>comparing($$0x -> ((brx)$$0x.getSecond()).f()).reversed())
          .toList();
    }
 

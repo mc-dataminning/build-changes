@@ -7,7 +7,7 @@ public class bux {
    @Nullable
    private final bwi c;
    @Nullable
-   private final fex d;
+   private final ffc d;
 
    @Override
    public String toString() {
@@ -22,7 +22,7 @@ public class bux {
       return this.b == this.c;
    }
 
-   private bux(jf<buz> $$0, @Nullable bwi $$1, @Nullable bwi $$2, @Nullable fex $$3) {
+   private bux(jf<buz> $$0, @Nullable bwi $$1, @Nullable bwi $$2, @Nullable ffc $$3) {
       this.a = $$0;
       this.b = $$2;
       this.c = $$1;
@@ -33,7 +33,7 @@ public class bux {
       this($$0, $$1, $$2, null);
    }
 
-   public bux(jf<buz> $$0, fex $$1) {
+   public bux(jf<buz> $$0, ffc $$1) {
       this($$0, null, null, $$1);
    }
 
@@ -56,7 +56,7 @@ public class bux {
    }
 
    @Nullable
-   public czk e() {
+   public czn e() {
       return this.c != null ? this.c.dY() : null;
    }
 
@@ -68,7 +68,7 @@ public class bux {
          return $$5 != null ? wy.a($$6, $$0.m_(), $$5.m_()) : wy.a($$1, $$0.m_());
       } else {
          wy $$2 = this.b == null ? this.c.m_() : this.b.m_();
-         czk $$4 = this.b instanceof bxj $$3 ? $$3.fa() : czk.k;
+         czn $$4 = this.b instanceof bxj $$3 ? $$3.fa() : czn.k;
          return !$$4.f() && $$4.c(kk.g) ? wy.a($$1 + ".item", $$0.m_(), $$2, $$4.K()) : wy.a($$1, $$0.m_(), $$2);
       }
    }
@@ -80,13 +80,13 @@ public class bux {
    public boolean g() {
       return switch (this.k().b()) {
          case a -> false;
-         case b -> this.b instanceof bxj && !(this.b instanceof crj);
+         case b -> this.b instanceof bxj && !(this.b instanceof crm);
          case c -> true;
       };
    }
 
    public boolean h() {
-      if (this.d() instanceof crj $$0 && $$0.gj().d) {
+      if (this.d() instanceof crm $$0 && $$0.gj().d) {
          return true;
       }
 
@@ -94,7 +94,7 @@ public class bux {
    }
 
    @Nullable
-   public fex i() {
+   public ffc i() {
       if (this.d != null) {
          return this.d;
       } else {
@@ -103,7 +103,7 @@ public class bux {
    }
 
    @Nullable
-   public fex j() {
+   public ffc j() {
       return this.d;
    }
 

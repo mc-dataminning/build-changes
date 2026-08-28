@@ -2,7 +2,7 @@ import javax.annotation.Nullable;
 
 public class cic {
    @Nullable
-   public static fex a(bxr $$0, int $$1, int $$2) {
+   public static ffc a(bxr $$0, int $$1, int $$2) {
       boolean $$3 = cid.a($$0, $$1);
       return cig.a($$0, () -> {
          iv $$4 = cig.a($$0.dX(), $$1, $$2);
@@ -11,8 +11,8 @@ public class cic {
    }
 
    @Nullable
-   public static fex a(bxr $$0, int $$1, int $$2, fex $$3, double $$4) {
-      fex $$5 = $$3.a($$0.dz(), $$0.dB(), $$0.dF());
+   public static ffc a(bxr $$0, int $$1, int $$2, ffc $$3, double $$4) {
+      ffc $$5 = $$3.a($$0.dz(), $$0.dB(), $$0.dF());
       boolean $$6 = cid.a($$0, $$1);
       return cig.a($$0, () -> {
          iv $$6x = cig.a($$0.dX(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
@@ -21,8 +21,8 @@ public class cic {
    }
 
    @Nullable
-   public static fex a(bxr $$0, int $$1, int $$2, fex $$3) {
-      fex $$4 = $$0.ds().d($$3);
+   public static ffc a(bxr $$0, int $$1, int $$2, ffc $$3) {
+      ffc $$4 = $$0.ds().d($$3);
       boolean $$5 = cid.a($$0, $$1);
       return cig.a($$0, () -> {
          iv $$5x = cig.a($$0.dX(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));

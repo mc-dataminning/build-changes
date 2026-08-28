@@ -1,3 +1,4 @@
-public class hdy extends hcz {
-   public long a;
+public class hdy extends hdx {
+   public ffc[] a = new ffc[0];
+   public boolean n;
 }

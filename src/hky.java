@@ -1,31 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.IllegalFormatException;
 
-public record hky(hky.a c) {
-   public static final Codec<hky> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hky.a.d.optionalFieldOf("hat", hky.a.a).forGetter(hky::a)).apply($$0, hky::new)
-   );
-   public static final auc<hky> b = new auc<>("villager", a);
+public class hky {
+   private static volatile tu a = tu.a();
 
-   public hky.a a() {
-      return this.c;
+   private hky() {
    }
 
-   public static enum a implements bak {
-      a("none"),
-      b("partial"),
-      c("full");
+   static void a(tu $$0) {
+      a = $$0;
+   }
 
-      public static final Codec<hky.a> d = bak.a(hky.a::values);
-      private final String e;
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
 
-      private a(final String $$0) {
-         this.e = $$0;
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
       }
+   }
 
-      @Override
-      public String c() {
-         return this.e;
-      }
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

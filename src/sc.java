@@ -14,27 +14,27 @@ public class sc extends sr {
    @Override
    public void a(sp $$0) {
       iv $$1 = this.b($$0);
-      dzg $$2 = $$0.a($$1, dzg.class);
+      dzl $$2 = $$0.a($$1, dzl.class);
       $$2.j();
       $$0.e(() -> {
-         List<iv> $$1x = this.a($$0, ebz.d);
+         List<iv> $$1x = this.a($$0, ece.d);
          if ($$1x.isEmpty()) {
-            $$0.b(wy.a("test_block.error.missing", ebz.d.a()));
+            $$0.b(wy.a("test_block.error.missing", ece.d.a()));
          }
 
-         boolean $$2x = $$1x.stream().map($$1xx -> $$0.a($$1xx, dzg.class)).anyMatch(dzg::s);
+         boolean $$2x = $$1x.stream().map($$1xx -> $$0.a($$1xx, dzl.class)).anyMatch(dzl::s);
          if ($$2x) {
             $$0.e();
          } else {
-            this.a($$0, ebz.c, $$1xx -> $$0.b(wy.b($$1xx.t())));
-            this.a($$0, ebz.b, dzg::j);
+            this.a($$0, ece.c, $$1xx -> $$0.b(wy.b($$1xx.t())));
+            this.a($$0, ece.b, dzl::j);
          }
       });
    }
 
-   private void a(sp $$0, ebz $$1, Consumer<dzg> $$2) {
+   private void a(sp $$0, ece $$1, Consumer<dzl> $$2) {
       for (iv $$4 : this.a($$0, $$1)) {
-         dzg $$5 = $$0.a($$4, dzg.class);
+         dzl $$5 = $$0.a($$4, dzl.class);
          if ($$5.s()) {
             $$2.accept($$5);
             $$5.f();
@@ -43,23 +43,23 @@ public class sc extends sr {
    }
 
    private iv b(sp $$0) {
-      List<iv> $$1 = this.a($$0, ebz.a);
+      List<iv> $$1 = this.a($$0, ece.a);
       if ($$1.isEmpty()) {
-         $$0.b(wy.a("test_block.error.missing", ebz.a.a()));
+         $$0.b(wy.a("test_block.error.missing", ece.a.a()));
       }
 
       if ($$1.size() != 1) {
-         $$0.b(wy.a("test_block.error.too_many", ebz.a.a()));
+         $$0.b(wy.a("test_block.error.too_many", ece.a.a()));
       }
 
       return $$1.getFirst();
    }
 
-   private List<iv> a(sp $$0, ebz $$1) {
+   private List<iv> a(sp $$0, ece $$1) {
       List<iv> $$2 = new ArrayList<>();
       $$0.a($$3 -> {
-         eao $$4 = $$0.a($$3);
-         if ($$4.a(dmo.pI) && $$4.c(dvg.b) == $$1) {
+         eat $$4 = $$0.a($$3);
+         if ($$4.a(dmt.pI) && $$4.c(dvl.b) == $$1) {
             $$2.add($$3.j());
          }
       });

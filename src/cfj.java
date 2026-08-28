@@ -1,13 +1,13 @@
 import java.util.EnumSet;
 
 public class cfj extends cef {
-   private final cll a;
+   private final cli a;
    private final double b;
    private double c;
    private double d;
    private double e;
 
-   public cfj(cll $$0, double $$1) {
+   public cfj(cli $$0, double $$1) {
       this.a = $$0;
       this.b = $$1;
       this.a(EnumSet.of(cef.a.a));
@@ -16,7 +16,7 @@ public class cfj extends cef {
    @Override
    public boolean b() {
       if (!this.a.gK() && this.a.bY()) {
-         fex $$0 = cic.a(this.a, 5, 4);
+         ffc $$0 = cic.a(this.a, 5, 4);
          if ($$0 == null) {
             return false;
          } else {
@@ -48,7 +48,7 @@ public class cfj extends cef {
             return;
          }
 
-         if ($$0 instanceof crj $$1) {
+         if ($$0 instanceof crm $$1) {
             int $$2 = this.a.gQ();
             int $$3 = this.a.gV();
             if ($$3 > 0 && this.a.dX().a($$3) < $$2) {

@@ -1,157 +1,209 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.logging.LogUtils;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
+import org.slf4j.Logger;
 
-public class gkp implements eo {
-   private final gkm a;
-   private final fpo b;
-   private int d = -1;
+public class gkp implements ajb {
+   private static final Logger a = LogUtils.getLogger();
+   private final fpt b;
    @Nullable
-   private CompletableFuture<Suggestions> e;
-   private final Set<String> f = new HashSet<>();
+   private final glf c;
+   @Nullable
+   private final fys d;
+   private final Consumer<wy> e;
+   private final vr f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+   private final Map<alg, byte[]> j;
+   private final boolean k;
+   private final AtomicReference<gkp.a> l = new AtomicReference<>(gkp.a.a);
 
-   public gkp(gkm $$0, fpo $$1) {
-      this.a = $$0;
+   public gkp(vr $$0, fpt $$1, @Nullable glf $$2, @Nullable fys $$3, boolean $$4, @Nullable Duration $$5, Consumer<wy> $$6, @Nullable glj $$7) {
+      this.f = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
+      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
+      this.k = $$7 != null;
+   }
+
+   private void a(gkp.a $$0) {
+      gkp.a $$1 = this.l.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
+         } else {
+            return $$0;
+         }
+      });
+      this.e.accept($$1.e);
    }
 
    @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
+   public void a(ajd $$0) {
+      this.a(gkp.a.b);
 
-      for (gkx $$1 : this.a.m()) {
-         $$0.add($$1.a().getName());
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      ajm $$7;
+      try {
+         SecretKey $$1 = ayj.a();
+         PublicKey $$2 = $$0.e();
+         $$3 = new BigInteger(ayj.a($$0.b(), $$2, $$1)).toString(16);
+         $$4 = ayj.a(2, $$1);
+         $$5 = ayj.a(1, $$1);
+         byte[] $$6 = $$0.f();
+         $$7 = new ajm($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
       }
 
-      return $$0;
-   }
+      if ($$0.g()) {
+         ag.i().execute(() -> {
+            wy $$4x = this.b($$3);
+            if ($$4x != null) {
+               if (this.c == null || !this.c.d()) {
+                  this.f.a($$4x);
+                  return;
+               }
 
-   @Override
-   public Collection<String> y() {
-      if (this.f.isEmpty()) {
-         return this.q();
+               a.warn($$4x.getString());
+            }
+
+            this.a($$7, $$4, $$5);
+         });
       } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.f);
-         return $$0;
+         this.a($$7, $$4, $$5);
       }
    }
 
-   @Override
-   public Collection<String> z() {
-      return (Collection<String>)(this.b.w != null && this.b.w.d() == fev.a.c ? Collections.singleton(((feu)this.b.w).a().cG()) : Collections.emptyList());
+   private void a(ajm $$0, Cipher $$1, Cipher $$2) {
+      this.a(gkp.a.c);
+      this.f.a($$0, wf.a(() -> this.f.a($$1, $$2)));
    }
 
-   @Override
-   public Collection<String> r() {
-      return this.a.z().e();
-   }
-
-   @Override
-   public Stream<alg> s() {
-      return this.b.ak().c().stream();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      gpj $$1 = this.b.t;
-      return $$1 != null ? $$1.s($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(alf<? extends js<?>> $$0, eo.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.u().a($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.e != null) {
-         this.e.cancel(false);
+   @Nullable
+   private wy b(String $$0) {
+      try {
+         this.d().joinServer(this.b.X().b(), this.b.X().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return wy.a("disconnect.loginFailedInfo", wy.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return wy.a("disconnect.loginFailedInfo", wy.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return wy.a("disconnect.loginFailedInfo", wy.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return wy.a("disconnect.loginFailedInfo", wy.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return wy.a("disconnect.loginFailedInfo", var7.getMessage());
       }
-
-      this.e = new CompletableFuture<>();
-      int $$1 = ++this.d;
-      this.a.b(new ahc($$1, $$0.getInput()));
-      return this.e;
    }
 
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
+   private MinecraftSessionService d() {
+      return this.b.am();
    }
 
    @Override
-   public Collection<eo.b> A() {
-      fev $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == fev.a.b) {
-         iv $$1 = ((fet)$$0).b();
-         return Collections.singleton(new eo.b(a($$1.u()), a($$1.v()), a($$1.w())));
+   public void a(ajg $$0) {
+      this.a(gkp.a.d);
+      GameProfile $$1 = $$0.b();
+      this.f
+         .a(
+            abj.d,
+            new gko(this.b, this.f, new gkv($$1, this.b.u().a(this.g, this.h, this.i), gkt.a().a(), cuy.h, null, this.c, this.d, this.j, null, Map.of(), aly.a))
+         );
+      this.f.a(ajn.a);
+      this.f.a(abj.b);
+      this.f.a(new aaa(new aag(ClientBrandRetriever.getClientModName())));
+      this.f.a(new zz(this.b.n.aA()));
+   }
+
+   @Override
+   public void a(vt $$0) {
+      wy $$1 = this.k ? wx.q : wx.r;
+      if (this.c != null && this.c.e()) {
+         this.b.a(new hqa(this.d, $$1, $$0.a()));
       } else {
-         return eo.super.A();
+         this.b.a(new fxz(this.d, $$1, $$0));
       }
    }
 
    @Override
-   public Collection<eo.b> B() {
-      fev $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == fev.a.b) {
-         fex $$1 = $$0.g();
-         return Collections.singleton(new eo.b(a($$1.d), a($$1.e), a($$1.f)));
-      } else {
-         return eo.super.B();
+   public boolean c() {
+      return this.f.i();
+   }
+
+   @Override
+   public void a(ajf $$0) {
+      this.f.a($$0.b());
+   }
+
+   @Override
+   public void a(aje $$0) {
+      if (!this.f.e()) {
+         this.f.a($$0.b(), false);
       }
    }
 
    @Override
-   public Set<alf<djh>> t() {
-      return this.a.u();
+   public void a(ajc $$0) {
+      this.e.accept(wy.c("connect.negotiating"));
+      this.f.a(new ajk($$0.b(), null));
+   }
+
+   public void a(@Nullable String $$0) {
+      this.i = $$0;
    }
 
    @Override
-   public jt u() {
-      return this.a.v();
+   public void a(abp $$0) {
+      this.f.a(new abs($$0.b(), this.j.get($$0.b())));
    }
 
    @Override
-   public cut v() {
-      return this.a.y();
+   public void a(p $$0, q $$1) {
+      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
+      $$1.a("Login phase", () -> this.l.get().toString());
+      $$1.a("Is Local", () -> String.valueOf(this.f.e()));
    }
 
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.d) {
-         this.e.complete($$1);
-         this.e = null;
-         this.d = -1;
-      }
-   }
+   static enum a {
+      a(wy.c("connect.connecting"), Set.of()),
+      b(wy.c("connect.authorizing"), Set.of(a)),
+      c(wy.c("connect.encrypting"), Set.of(b)),
+      d(wy.c("connect.joining"), Set.of(c, a));
 
-   public void a(acs.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.f.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.f::remove);
-            break;
-         case c:
-            this.f.clear();
-            this.f.addAll($$1);
+      final wy e;
+      final Set<gkp.a> f;
+
+      private a(final wy $$0, final Set<gkp.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
       }
    }
 }

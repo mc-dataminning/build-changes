@@ -1,10 +1,5 @@
-public class hcn extends hdz {
-   public czk a = czk.k;
-   public boolean b;
-   public float c;
-   public final bvz d = new bvz();
-   public final bvz e = new bvz();
-   public final bvz f = new bvz();
-   public final bvz g = new bvz();
-   public final bvz h = new bvz();
+public class hcn extends hef {
+   public boolean a;
+   public final bvz b = new bvz();
+   public final bvz c = new bvz();
 }

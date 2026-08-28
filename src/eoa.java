@@ -1,51 +1,61 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 
-public class eoa extends eoc {
-   public static final MapCodec<eoa> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aze.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               evy.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               ayu.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, eoa::new)
-   );
-   private final aze<Integer> i;
-   private final evy.a j;
-   private final float k;
-   private final evy l;
+public abstract class eoa {
+   public static final Codec<eoa> d = mg.W.q().dispatch(eoa::a, eob::a);
+   protected final btl e;
+   protected final eod f;
+   protected final Optional<enx> g;
 
-   public eoa(aze<Integer> $$0, evy.a $$1, float $$2, long $$3, evy.a $$4, float $$5, List<eao> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = evy.b(new ehm(new ego($$3)), $$1);
+   protected static <P extends eoa> P3<Mu<P>, btl, eod, Optional<enx>> a(Instance<P> $$0) {
+      return $$0.group(
+         btl.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         eod.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         enx.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   @Override
-   protected enz<?> a() {
-      return enz.e;
+   public eoa(btl $$0, eod $$1, Optional<enx> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public eao a(azv $$0, iv $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)azm.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<eao> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected abstract eob<?> a();
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+   public abstract boolean a(djs var1, BiConsumer<iv, eat> var2, azv var3, iv var4, iv var5, emy var6);
+
+   protected boolean a(djs $$0, iv $$1) {
+      return elk.d($$0, $$1);
+   }
+
+   protected void a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, iv $$3, emy $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            enx $$5 = this.g.get();
+            iv $$6 = $$3.d();
+            if ($$2.i() < $$5.b() && $$0.a($$6, eas.a::l)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
+         }
       }
-
-      return this.a($$4, $$1, (double)this.e);
    }
 
-   protected double a(iv $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   protected eat a(djs $$0, iv $$1, eat $$2) {
+      if ($$2.b(ebj.I)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axh.a));
+         return $$2.b(ebj.I, Boolean.valueOf($$3));
+      } else {
+         return $$2;
+      }
+   }
+
+   public iv a(iv $$0, azv $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

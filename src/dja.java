@@ -1,52 +1,12 @@
-import javax.annotation.Nullable;
+public class dja {
+   public static final int a = -10732494;
+   private static int[] b = new int[65536];
 
-public interface dja {
-   static bux a(djh $$0, @Nullable bwi $$1) {
-      return $$0.al().d($$1, a($$1));
+   public static void a(int[] $$0) {
+      b = $$0;
    }
 
-   @Nullable
-   static bxj a(@Nullable bwi $$0) {
-      return switch ($$0) {
-         case null, default -> null;
-         case cnp $$1 -> $$1.f();
-         case bxj $$2 -> $$2;
-         case cse $$3 when $$3.q() instanceof bxj $$4 -> $$4;
-      };
-   }
-
-   arq a();
-
-   dja.a b();
-
-   @Nullable
-   bxj c();
-
-   @Nullable
-   bwi d();
-
-   float e();
-
-   fex f();
-
-   boolean g();
-
-   boolean h();
-
-   public static enum a {
-      a(false),
-      b(true),
-      c(true),
-      d(false);
-
-      private final boolean e;
-
-      private a(final boolean $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a() {
-         return this.e;
-      }
+   public static int a(double $$0, double $$1) {
+      return div.a($$0, $$1, b, -10732494);
    }
 }

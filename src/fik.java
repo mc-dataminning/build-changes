@@ -1,11 +1,10 @@
-import java.util.OptionalInt;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public record fik(int a, int b, OptionalInt c, OptionalInt d, boolean e) {
-   public fik a(int $$0, int $$1) {
-      return new fik($$0, $$1, this.c, this.d, this.e);
-   }
-
-   public fik a(boolean $$0) {
-      return new fik(this.a, this.b, this.c, this.d, $$0);
+public class fik extends fij {
+   public fik(@Nullable String $$0, int $$1, int $$2, boolean $$3) {
+      super($$0, $$3);
+      RenderSystem.assertOnRenderThread();
+      this.a($$1, $$2);
    }
 }

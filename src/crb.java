@@ -1,215 +1,87 @@
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
 
-public class crb extends cqq implements dbp.b {
-   private static final int bI = 5;
-   @Nullable
-   private iv bJ;
-   private int bK;
+public record crb(wy q, Predicate<jf<cio>> r, Predicate<jf<cio>> s, ImmutableSet<czj> t, ImmutableSet<dmr> u, @Nullable awm v) {
+   public static final Predicate<jf<cio>> a = $$0 -> $$0.a(axm.a);
+   public static final alf<crb> b = a("none");
+   public static final alf<crb> c = a("armorer");
+   public static final alf<crb> d = a("butcher");
+   public static final alf<crb> e = a("cartographer");
+   public static final alf<crb> f = a("cleric");
+   public static final alf<crb> g = a("farmer");
+   public static final alf<crb> h = a("fisherman");
+   public static final alf<crb> i = a("fletcher");
+   public static final alf<crb> j = a("leatherworker");
+   public static final alf<crb> k = a("librarian");
+   public static final alf<crb> l = a("mason");
+   public static final alf<crb> m = a("nitwit");
+   public static final alf<crb> n = a("shepherd");
+   public static final alf<crb> o = a("toolsmith");
+   public static final alf<crb> p = a("weaponsmith");
 
-   public crb(bwr<? extends crb> $$0, djh $$1) {
-      super($$0, $$1);
+   private static alf<crb> a(String $$0) {
+      return alf.a(mh.aD, alg.b($$0));
    }
 
-   @Override
-   protected void D() {
-      this.bD.a(0, new cdz(this));
-      this.bD.a(0, new cfq<>(this, dbg.a(czo.tt, dbh.g), awn.CC, $$0 -> this.dU().W() && !$$0.cn()));
-      this.bD.a(0, new cfq<>(this, new czk(czo.ru), awn.CH, $$0 -> this.dU().V() && $$0.cn()));
-      this.bD.a(1, new cfo(this));
-      this.bD.a(1, new cdm<>(this, cpe.class, 8.0F, 0.5, 0.5));
-      this.bD.a(1, new cdm<>(this, cod.class, 12.0F, 0.5, 0.5));
-      this.bD.a(1, new cdm<>(this, cpa.class, 8.0F, 0.5, 0.5));
-      this.bD.a(1, new cdm<>(this, coz.class, 8.0F, 0.5, 0.5));
-      this.bD.a(1, new cdm<>(this, coo.class, 15.0F, 0.5, 0.5));
-      this.bD.a(1, new cdm<>(this, coi.class, 12.0F, 0.5, 0.5));
-      this.bD.a(1, new cdm<>(this, cpd.class, 10.0F, 0.5, 0.5));
-      this.bD.a(1, new cey(this, 0.5));
-      this.bD.a(1, new ceo(this));
-      this.bD.a(2, new crb.a(this, 2.0, 0.35));
-      this.bD.a(4, new cet(this, 0.35));
-      this.bD.a(8, new cfs(this, 0.35));
-      this.bD.a(9, new cei(this, crj.class, 3.0F, 1.0F));
-      this.bD.a(10, new cen(this, bxl.class, 8.0F));
+   private static crb a(js<crb> $$0, alf<crb> $$1, alf<cio> $$2, @Nullable awm $$3) {
+      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3);
    }
 
-   @Nullable
-   @Override
-   public bvy a(arq $$0, bvy $$1) {
-      return null;
+   private static crb a(js<crb> $$0, alf<crb> $$1, Predicate<jf<cio>> $$2, Predicate<jf<cio>> $$3, @Nullable awm $$4) {
+      return a($$0, $$1, $$2, $$3, ImmutableSet.of(), ImmutableSet.of(), $$4);
    }
 
-   @Override
-   public boolean gv() {
-      return false;
+   private static crb a(js<crb> $$0, alf<crb> $$1, alf<cio> $$2, ImmutableSet<czj> $$3, ImmutableSet<dmr> $$4, @Nullable awm $$5) {
+      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3, $$4, $$5);
    }
 
-   @Override
-   public bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
-      if (!$$2.a(czo.uR) && this.bI() && !this.gt() && !this.n_()) {
-         if ($$1 == buf.a) {
-            $$0.a(awx.S);
-         }
-
-         if (!this.dU().C) {
-            if (this.gu().isEmpty()) {
-               return bug.c;
-            }
-
-            this.a($$0);
-            this.a($$0, this.m_(), 1);
-         }
-
-         return bug.a;
-      } else {
-         return super.b($$0, $$1);
-      }
+   private static crb a(
+      js<crb> $$0, alf<crb> $$1, Predicate<jf<cio>> $$2, Predicate<jf<cio>> $$3, ImmutableSet<czj> $$4, ImmutableSet<dmr> $$5, @Nullable awm $$6
+   ) {
+      return js.a($$0, $$1, new crb(wy.c("entity." + $$1.a().b() + ".villager." + $$1.a().a()), $$2, $$3, $$4, $$5, $$6));
    }
 
-   @Override
-   protected void gz() {
-      dig $$0 = this.gu();
-
-      for (Pair<cqz.g[], Integer> $$1 : cqz.b) {
-         cqz.g[] $$2 = (cqz.g[])$$1.getLeft();
-         this.a($$0, $$2, (Integer)$$1.getRight());
-      }
+   public static crb a(js<crb> $$0) {
+      a($$0, b, cio.a, a, null);
+      a($$0, c, cip.a, awn.Cd);
+      a($$0, d, cip.b, awn.Ce);
+      a($$0, e, cip.c, awn.Cf);
+      a($$0, f, cip.d, awn.Cg);
+      a($$0, g, cip.e, ImmutableSet.of(czr.qk, czr.qj, czr.ww, czr.sG), ImmutableSet.of(dmt.cN), awn.Ch);
+      a($$0, h, cip.f, awn.Ci);
+      a($$0, i, cip.g, awn.Cj);
+      a($$0, j, cip.h, awn.Ck);
+      a($$0, k, cip.i, awn.Cl);
+      a($$0, l, cip.j, awn.Cm);
+      a($$0, m, cio.a, cio.a, null);
+      a($$0, n, cip.k, awn.Cn);
+      a($$0, o, cip.l, awn.Co);
+      return a($$0, p, cip.m, awn.Cp);
    }
 
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("DespawnDelay", this.bK);
-      $$0.b("wander_target", iv.a, this.bJ);
+   public wy a() {
+      return this.q;
    }
 
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      if ($$0.b("DespawnDelay", 99)) {
-         this.bK = $$0.f("DespawnDelay");
-      }
-
-      this.bJ = $$0.<iv>a("wander_target", iv.a).orElse(null);
-      this.c_(Math.max(0, this.g()));
+   public Predicate<jf<cio>> b() {
+      return this.r;
    }
 
-   @Override
-   public boolean h(double $$0) {
-      return false;
+   public Predicate<jf<cio>> c() {
+      return this.s;
    }
 
-   @Override
-   protected void b(dif $$0) {
-      if ($$0.u()) {
-         int $$1 = 3 + this.ae.a(4);
-         this.dU().b(new bww(this.dU(), this.dz(), this.dB() + 0.5, this.dF(), $$1));
-      }
+   public ImmutableSet<czj> d() {
+      return this.t;
    }
 
-   @Override
-   protected awm u() {
-      return this.gt() ? awn.CI : awn.CA;
-   }
-
-   @Override
-   protected awm e(bux $$0) {
-      return awn.CF;
-   }
-
-   @Override
-   protected awm l_() {
-      return awn.CB;
-   }
-
-   @Override
-   public awm j(czk $$0) {
-      return $$0.a(czo.ru) ? awn.CD : awn.CE;
-   }
-
-   @Override
-   protected awm w(boolean $$0) {
-      return $$0 ? awn.CJ : awn.CG;
-   }
-
-   @Override
-   public awm gw() {
-      return awn.CJ;
-   }
-
-   public void t(int $$0) {
-      this.bK = $$0;
-   }
-
-   public int gB() {
-      return this.bK;
-   }
-
-   @Override
-   public void k_() {
-      super.k_();
-      if (!this.dU().C) {
-         this.gC();
-      }
-   }
-
-   private void gC() {
-      if (this.bK > 0 && !this.gt() && --this.bK == 0) {
-         this.aq();
-      }
-   }
-
-   public void h(@Nullable iv $$0) {
-      this.bJ = $$0;
+   public ImmutableSet<dmr> e() {
+      return this.u;
    }
 
    @Nullable
-   iv gD() {
-      return this.bJ;
-   }
-
-   class a extends cef {
-      final crb a;
-      final double b;
-      final double c;
-
-      a(final crb $$0, final double $$1, final double $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.a(EnumSet.of(cef.a.a));
-      }
-
-      @Override
-      public void e() {
-         this.a.h(null);
-         crb.this.bC.m();
-      }
-
-      @Override
-      public boolean b() {
-         iv $$0 = this.a.gD();
-         return $$0 != null && this.a($$0, this.b);
-      }
-
-      @Override
-      public void a() {
-         iv $$0 = this.a.gD();
-         if ($$0 != null && crb.this.bC.k()) {
-            if (this.a($$0, 10.0)) {
-               fex $$1 = new fex((double)$$0.u() - this.a.dz(), (double)$$0.v() - this.a.dB(), (double)$$0.w() - this.a.dF()).d();
-               fex $$2 = $$1.c(10.0).b(this.a.dz(), this.a.dB(), this.a.dF());
-               crb.this.bC.a($$2.d, $$2.e, $$2.f, this.c);
-            } else {
-               crb.this.bC.a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), this.c);
-            }
-         }
-      }
-
-      private boolean a(iv $$0, double $$1) {
-         return !$$0.a(this.a.ds(), $$1);
-      }
+   public awm f() {
+      return this.v;
    }
 }

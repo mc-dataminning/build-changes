@@ -1,23 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.function.Consumer;
 
-public record dcl(alf<ezt> b, long c) implements dcp {
-   private static final wy d = wy.c("item.container.loot_table.unknown");
-   public static final Codec<dcl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ezt.a.fieldOf("loot_table").forGetter(dcl::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(dcl::b)).apply($$0, dcl::new)
-   );
+public record dcl(int f) implements dbt, dcs {
+   public static final int a = 120000;
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final Codec<dcl> d = ayu.a(0, 4).xmap(dcl::new, dcl::a);
+   public static final yw<wj, dcl> e = yw.a(yu.h, dcl::a, dcl::new);
 
    @Override
-   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
-      $$1.accept(d);
+   public void a(djm $$0, bxj $$1, czn $$2, dbs $$3) {
+      $$1.a(new bvm(bvo.E, 120000, this.f, false, false, true));
    }
 
-   public alf<ezt> a() {
-      return this.b;
+   @Override
+   public void a(czj.b $$0, Consumer<wy> $$1, dbc $$2, kf $$3) {
+      List<bvm> $$4 = List.of(new bvm(bvo.E, 120000, this.f, false, false, true));
+      dbj.a($$4, $$1, 1.0F, $$0.b());
    }
 
-   public long b() {
-      return this.c;
+   public int a() {
+      return this.f;
    }
 }

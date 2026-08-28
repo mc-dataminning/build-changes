@@ -1,75 +1,12 @@
-public class cud extends ctw {
-   private float b;
-   private float c;
+import java.util.function.Supplier;
 
-   public cud(bwr<?> $$0, djh $$1) {
-      super($$0, $$1);
+public class cud extends cty {
+   public cud(bwr<? extends cud> $$0, djm $$1, Supplier<czj> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public bug a(crj $$0, buf $$1) {
-      if (!$$0.fX() && !this.bY() && (this.dU().C || $$0.n(this))) {
-         this.c = this.b;
-         if (!this.dU().C) {
-            return (bug)($$0.n(this) ? bug.c : bug.e);
-         } else {
-            return bug.a;
-         }
-      } else {
-         return bug.e;
-      }
-   }
-
-   @Override
-   protected czg o() {
-      return czo.ov;
-   }
-
-   @Override
-   public czk dH() {
-      return new czk(czo.ov);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3) {
-         if (this.bY()) {
-            this.bM();
-         }
-
-         if (this.H() == 0) {
-            this.l(-this.I());
-            this.d(10);
-            this.b(50.0F);
-            this.bA();
-         }
-      }
-   }
-
-   @Override
-   public boolean y() {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      double $$0 = (double)this.dK();
-      fex $$1 = this.ds();
-      super.h();
-      double $$2 = ((double)this.dK() - $$0) % 360.0;
-      if (this.dU().C && $$1.f(this.ds()) > 0.01) {
-         this.b += (float)$$2;
-         this.b %= 360.0F;
-      }
-   }
-
-   @Override
-   protected void a(bwi $$0, bwi.a $$1) {
-      super.a($$0, $$1);
-      if (this.dU().C && $$0 instanceof crj $$2 && $$2.gP() && b(this.dU())) {
-         float $$3 = (float)azm.e(0.5, (double)this.c, (double)this.b);
-         $$2.w($$2.dK() - ($$3 - this.c));
-         this.c = $$3;
-      }
+   protected double b(bwl $$0) {
+      return (double)($$0.b() * 0.8888889F);
    }
 }

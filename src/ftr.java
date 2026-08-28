@@ -1,71 +1,35 @@
-import javax.annotation.Nullable;
+public class ftr {
+   public static final alg a = alg.b("textures/gui/title/minecraft.png");
+   public static final alg b = alg.b("textures/gui/title/minceraft.png");
+   public static final alg c = alg.b("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)azv.a().i() < 1.0E-4;
+   private final boolean o;
 
-public abstract class ftr<E extends ftr.a<E>> extends fsp<E> {
-   private static final wy a = wy.c("narration.selection.usage");
-
-   public ftr(fpo $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public ftr(boolean $$0) {
+      this.o = $$0;
    }
 
-   public ftr(fpo $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(fsm $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Nullable
-   @Override
-   public fse a(fwy $$0) {
-      if (this.t() == 0) {
-         return null;
-      } else if (this.aJ_() && $$0 instanceof fwy.a $$1) {
-         E $$2 = this.a($$1.b());
-         if ($$2 != null) {
-            return fse.a(this, fse.a($$2));
-         } else {
-            this.a(null);
-            return null;
-         }
-      } else if (!this.aJ_()) {
-         E $$3 = this.p();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fse.a(this, fse.a($$3));
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(fws $$0) {
-      E $$1 = this.x();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.p();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aJ_()) {
-         $$0.a(fwr.d, a);
-      }
-   }
-
-   public abstract static class a<E extends ftr.a<E>> extends fsp.a<E> implements fwt {
-      public abstract wy a();
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public void b(fws $$0) {
-         $$0.a(fwr.a, this.a());
-      }
+   public void a(fsm $$0, int $$1, float $$2, int $$3) {
+      int $$4 = $$1 / 2 - 128;
+      float $$5 = this.o ? 1.0F : $$2;
+      int $$6 = axw.a($$5);
+      $$0.a(grc::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
+      int $$7 = $$1 / 2 - 64;
+      int $$8 = $$3 + 44 - 7;
+      $$0.a(grc::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
    }
 }

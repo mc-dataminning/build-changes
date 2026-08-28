@@ -29,7 +29,7 @@ public class ne implements mn {
                         $$3x.add(
                            "components",
                            (JsonElement)kh.b
-                              .encodeStart($$4, ((czg)$$2x.a()).f())
+                              .encodeStart($$4, ((czj)$$2x.a()).f())
                               .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
                         );
                         $$3.add($$2x.g(), $$3x);

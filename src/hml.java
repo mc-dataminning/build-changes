@@ -1,20 +1,6 @@
-import java.util.UUID;
-
+@FunctionalInterface
 public interface hml {
-   void a(UUID var1, hml.b var2);
+   hml a = ($$0, $$1, $$2, $$3) -> hmh.a;
 
-   void a(UUID var1, hml.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum b {
-      a,
-      b;
-   }
+   hmh bake(gsl var1, hlz var2, hmf var3, hmb var4);
 }

@@ -1,121 +1,86 @@
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.HashMap;
+import com.mojang.serialization.JsonOps;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
 public class hlt {
-   public static final hlq a = new hlq(hjj.c, alg.b("block/fire_0"));
-   public static final hlq b = new hlq(hjj.c, alg.b("block/fire_1"));
-   public static final hlq c = new hlq(hjj.c, alg.b("block/lava_flow"));
-   public static final hlq d = new hlq(hjj.c, alg.b("block/water_flow"));
-   public static final hlq e = new hlq(hjj.c, alg.b("block/water_overlay"));
-   public static final hlq f = new hlq(grg.c, alg.b("entity/banner_base"));
-   public static final hlq g = new hlq(grg.d, alg.b("entity/shield_base"));
-   public static final hlq h = new hlq(grg.d, alg.b("entity/shield_base_nopattern"));
-   public static final int i = 10;
-   public static final List<alg> j = IntStream.range(0, 10).mapToObj($$0 -> alg.b("block/destroy_stage_" + $$0)).collect(Collectors.toList());
-   public static final List<alg> k = j.stream().map($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).collect(Collectors.toList());
-   public static final List<gqx> l = k.stream().map(gqx::t).collect(Collectors.toList());
-   static final Logger m = LogUtils.getLogger();
-   private final gjk n;
-   private final Map<eao, gry.a> o;
-   private final Map<alg, hfv> p;
-   final Map<alg, hmc> q;
-   final hmc r;
+   private static final Logger a = LogUtils.getLogger();
+   private static final akz b = akz.a("blockstates");
 
-   public hlt(gjk $$0, Map<eao, gry.a> $$1, Map<alg, hfv> $$2, Map<alg, hmc> $$3, hmc $$4) {
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
-      this.q = $$3;
-      this.r = $$4;
-   }
+   public static CompletableFuture<hlt.b> a(avd $$0, Executor $$1) {
+      Function<alg, eau<dmr, eat>> $$2 = hls.a();
+      return CompletableFuture.<Map<alg, List<avb>>>supplyAsync(() -> b.b($$0), $$1).thenCompose($$2x -> {
+         List<CompletableFuture<hlt.b>> $$3 = new ArrayList<>($$2x.size());
 
-   public CompletableFuture<hlt.a> a(hmd $$0, Executor $$1) {
-      hlt.b $$2 = hlt.b.a(this.r, $$0);
-      hlt.c $$3 = new hlt.c($$0);
-      CompletableFuture<Map<eao, gry>> $$4 = bsx.a(this.o, ($$1x, $$2x) -> {
-         try {
-            return $$2x.a($$3);
-         } catch (Exception var4x) {
-            m.warn("Unable to bake model: '{}': {}", $$1x, var4x);
-            return null;
+         for (Entry<alg, List<avb>> $$4 : $$2x.entrySet()) {
+            $$3.add(CompletableFuture.supplyAsync(() -> {
+               alg $$2xx = b.b($$4.getKey());
+               eau<dmr, eat> $$3x = $$2.apply($$2xx);
+               if ($$3x == null) {
+                  a.debug("Discovered unknown block state definition {}, ignoring", $$2xx);
+                  return null;
+               } else {
+                  List<avb> $$4x = $$4.getValue();
+                  List<hlt.a> $$5 = new ArrayList<>($$4x.size());
+
+                  for (avb $$6 : $$4x) {
+                     try (Reader $$7 = $$6.e()) {
+                        JsonElement $$8 = JsonParser.parseReader($$7);
+                        gsc $$9 = (gsc)gsc.a.parse(JsonOps.INSTANCE, $$8).getOrThrow(JsonParseException::new);
+                        $$5.add(new hlt.a($$6.b(), $$9));
+                     } catch (Exception var14) {
+                        a.error("Failed to load blockstate definition {} from pack {}", new Object[]{$$2xx, $$6.b(), var14});
+                     }
+                  }
+
+                  try {
+                     return a($$2xx, $$3x, $$5);
+                  } catch (Exception var11) {
+                     a.error("Failed to load blockstate definition {}", $$2xx, var11);
+                     return null;
+                  }
+               }
+            }, $$1));
          }
-      }, $$1);
-      CompletableFuture<Map<alg, hfz>> $$5 = bsx.a(this.p, ($$2x, $$3x) -> {
-         try {
-            return $$3x.a().a(new hfz.a($$3, this.n, $$2.b, $$3x.c()));
-         } catch (Exception var6x) {
-            m.warn("Unable to bake item model: '{}'", $$2x, var6x);
-            return null;
-         }
-      }, $$1);
-      Map<alg, hfv.a> $$6 = new HashMap<>(this.p.size());
-      this.p.forEach(($$1x, $$2x) -> {
-         hfv.a $$3x = $$2x.b();
-         if (!$$3x.equals(hfv.a.a)) {
-            $$6.put($$1x, $$3x);
-         }
+
+         return ag.d($$3).thenApply($$0xx -> {
+            Map<eat, gsd.a> $$1xx = new IdentityHashMap<>();
+
+            for (hlt.b $$2xx : $$0xx) {
+               if ($$2xx != null) {
+                  $$1xx.putAll($$2xx.a());
+               }
+            }
+
+            return new hlt.b($$1xx);
+         });
       });
-      return $$4.thenCombine($$5, ($$2x, $$3x) -> new hlt.a($$2, $$2x, $$3x, $$6));
    }
 
-   public static record a(hlt.b a, Map<eao, gry> b, Map<alg, hfz> c, Map<alg, hfv.a> d) {
+   private static hlt.b a(alg $$0, eau<dmr, eat> $$1, List<hlt.a> $$2) {
+      Map<eat, gsd.a> $$3 = new IdentityHashMap<>();
+
+      for (hlt.a $$4 : $$2) {
+         $$3.putAll($$4.b.a($$1, () -> $$0 + "/" + $$4.a));
+      }
+
+      return new hlt.b($$3);
    }
 
-   public static record b(gry a, hfz b) {
-
-      public static hlt.b a(hmc $$0, final hmd $$1) {
-         hls $$2 = new hls() {
-            @Override
-            public hmc a(alg $$0) {
-               throw new IllegalStateException("Missing model can't have dependencies, but asked for " + $$0);
-            }
-
-            @Override
-            public hmd a() {
-               return $$1;
-            }
-         };
-         gsg $$3 = $$0.g();
-         boolean $$4 = $$0.c();
-         boolean $$5 = $$0.d().a();
-         gsc $$6 = $$0.e();
-         hma $$7 = $$0.a($$3, $$2, hlk.a);
-         hjk $$8 = $$0.a($$3, $$2);
-         gry $$9 = new gse($$7, $$4, $$8);
-         hfz $$10 = new hgd($$7.a(), new hge($$5, $$8, $$6));
-         return new hlt.b($$9, $$10);
-      }
+   static record a(String a, gsc b) {
    }
 
-   class c implements hls {
-      private final hmd b;
-
-      c(final hmd $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public hmd a() {
-         return this.b;
-      }
-
-      @Override
-      public hmc a(alg $$0) {
-         hmc $$1 = hlt.this.q.get($$0);
-         if ($$1 == null) {
-            hlt.m.warn("Requested a model that was not discovered previously: {}", $$0);
-            return hlt.this.r;
-         } else {
-            return $$1;
-         }
-      }
+   public static record b(Map<eat, gsd.a> a) {
    }
 }

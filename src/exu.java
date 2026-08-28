@@ -1,200 +1,122 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableInt;
 
-public class exu {
-   private static final int c = 2;
-   public static final int a = 21;
-   private static final int d = 3;
-   public static final int b = 21;
-   private static final ean.f e = ($$0, $$1, $$2) -> $$0.a(dmo.cy);
-   private static final float f = 4.0F;
-   private static final double g = 1.0;
-   private final jb.a h;
-   private final jb i;
-   private final int j;
-   private final iv k;
-   private final int l;
-   private final int m;
+public class exu extends exn {
+   private final boolean a;
+   private final Long2ObjectMap<exr> l = new Long2ObjectOpenHashMap();
 
-   private exu(jb.a $$0, int $$1, jb $$2, iv $$3, int $$4, int $$5) {
-      this.h = $$0;
-      this.j = $$1;
-      this.i = $$2;
-      this.k = $$3;
-      this.m = $$4;
-      this.l = $$5;
+   public exu(boolean $$0) {
+      this.a = $$0;
    }
 
-   public static Optional<exu> a(dji $$0, iv $$1, jb.a $$2) {
-      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.j == 0, $$2);
+   @Override
+   public void a(djz $$0, bxl $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
    }
 
-   public static Optional<exu> a(dji $$0, iv $$1, Predicate<exu> $$2, jb.a $$3) {
-      Optional<exu> $$4 = Optional.of(a((din)$$0, $$1, $$3)).filter($$2);
-      if ($$4.isPresent()) {
-         return $$4;
-      } else {
-         jb.a $$5 = $$3 == jb.a.a ? jb.a.c : jb.a.a;
-         return Optional.of(a((din)$$0, $$1, $$5)).filter($$2);
-      }
+   @Override
+   public void b() {
+      super.b();
+      this.l.clear();
    }
 
-   public static exu a(din $$0, iv $$1, jb.a $$2) {
-      jb $$3 = $$2 == jb.a.a ? jb.e : jb.d;
-      iv $$4 = a($$0, $$3, $$1);
-      if ($$4 == null) {
-         return new exu($$2, 0, $$3, $$1, 0, 0);
-      } else {
-         int $$5 = a($$0, $$4, $$3);
-         if ($$5 == 0) {
-            return new exu($$2, 0, $$3, $$4, 0, 0);
-         } else {
-            MutableInt $$6 = new MutableInt();
-            int $$7 = a($$0, $$4, $$3, $$5, $$6);
-            return new exu($$2, $$6.getValue(), $$3, $$4, $$5, $$7);
+   @Override
+   public exm a() {
+      return this.c(azm.a(this.c.cQ().a), azm.a(this.c.cQ().b + 0.5), azm.a(this.c.cQ().c));
+   }
+
+   @Override
+   public exv a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(exm[] $$0, exm $$1) {
+      int $$2 = 0;
+      Map<jb, exm> $$3 = Maps.newEnumMap(jb.class);
+
+      for (jb $$4 : jb.values()) {
+         exm $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.a($$5)) {
+            $$0[$$2++] = $$5;
          }
       }
+
+      for (jb $$6 : jb.c.a) {
+         jb $$7 = $$6.h();
+         if (b($$3.get($$6)) && b($$3.get($$7))) {
+            exm $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+            if (this.a($$8)) {
+               $$0[$$2++] = $$8;
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   protected boolean a(@Nullable exm $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   private static boolean b(@Nullable exm $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
    }
 
    @Nullable
-   private static iv a(din $$0, jb $$1, iv $$2) {
-      int $$3 = Math.max($$0.G_(), $$2.v() - 21);
-
-      while ($$2.v() > $$3 && a($$0.a_($$2.e()))) {
-         $$2 = $$2.e();
-      }
-
-      jb $$4 = $$1.g();
-      int $$5 = b($$0, $$2, $$4) - 1;
-      return $$5 < 0 ? null : $$2.a($$4, $$5);
-   }
-
-   private static int a(din $$0, iv $$1, jb $$2) {
-      int $$3 = b($$0, $$1, $$2);
-      return $$3 >= 2 && $$3 <= 21 ? $$3 : 0;
-   }
-
-   private static int b(din $$0, iv $$1, jb $$2) {
-      iv.a $$3 = new iv.a();
-
-      for (int $$4 = 0; $$4 <= 21; $$4++) {
-         $$3.g($$1).c($$2, $$4);
-         eao $$5 = $$0.a_($$3);
-         if (!a($$5)) {
-            if (e.test($$5, $$0, $$3)) {
-               return $$4;
+   protected exm a(int $$0, int $$1, int $$2) {
+      exm $$3 = null;
+      exr $$4 = this.b($$0, $$1, $$2);
+      if (this.a && $$4 == exr.u || $$4 == exr.j) {
+         float $$5 = this.c.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.c($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.b.a().b_(new iv($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
             }
-            break;
-         }
-
-         eao $$6 = $$0.a_($$3.c(jb.a));
-         if (!e.test($$6, $$0, $$3)) {
-            break;
          }
       }
 
-      return 0;
+      return $$3;
    }
 
-   private static int a(din $$0, iv $$1, jb $$2, int $$3, MutableInt $$4) {
+   protected exr b(int $$0, int $$1, int $$2) {
+      return (exr)this.l.computeIfAbsent(iv.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2));
+   }
+
+   @Override
+   public exr a(ext $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.c);
+   }
+
+   @Override
+   public exr a(ext $$0, int $$1, int $$2, int $$3, bxl $$4) {
       iv.a $$5 = new iv.a();
-      int $$6 = a($$0, $$1, $$2, $$5, $$3, $$4);
-      return $$6 >= 3 && $$6 <= 21 && a($$0, $$1, $$2, $$5, $$3, $$6) ? $$6 : 0;
-   }
 
-   private static boolean a(din $$0, iv $$1, jb $$2, iv.a $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         iv.a $$7 = $$3.g($$1).c(jb.b, $$5).c($$2, $$6);
-         if (!e.test($$0.a_($$7), $$0, $$7)) {
-            return false;
-         }
-      }
+      for (int $$6 = $$1; $$6 < $$1 + this.e; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.f; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.g; $$8++) {
+               eat $$9 = $$0.a($$5.d($$6, $$7, $$8));
+               exa $$10 = $$9.y();
+               if ($$10.c() && $$9.a(exp.b) && $$9.l()) {
+                  return exr.u;
+               }
 
-      return true;
-   }
-
-   private static int a(din $$0, iv $$1, jb $$2, iv.a $$3, int $$4, MutableInt $$5) {
-      for (int $$6 = 0; $$6 < 21; $$6++) {
-         $$3.g($$1).c(jb.b, $$6).c($$2, -1);
-         if (!e.test($$0.a_($$3), $$0, $$3)) {
-            return $$6;
-         }
-
-         $$3.g($$1).c(jb.b, $$6).c($$2, $$4);
-         if (!e.test($$0.a_($$3), $$0, $$3)) {
-            return $$6;
-         }
-
-         for (int $$7 = 0; $$7 < $$4; $$7++) {
-            $$3.g($$1).c(jb.b, $$6).c($$2, $$7);
-            eao $$8 = $$0.a_($$3);
-            if (!a($$8)) {
-               return $$6;
-            }
-
-            if ($$8.a(dmo.eu)) {
-               $$5.increment();
+               if (!$$10.a(axh.a)) {
+                  return exr.a;
+               }
             }
          }
       }
 
-      return 21;
-   }
-
-   private static boolean a(eao $$0) {
-      return $$0.l() || $$0.a(axc.aN) || $$0.a(dmo.eu);
-   }
-
-   public boolean a() {
-      return this.m >= 2 && this.m <= 21 && this.l >= 3 && this.l <= 21;
-   }
-
-   public void a(dji $$0) {
-      eao $$1 = dmo.eu.m().b(drx.b, this.h);
-      iv.c(this.k, this.k.a(jb.b, this.l - 1).a(this.i, this.m - 1)).forEach($$2 -> $$0.a($$2, $$1, 18));
-   }
-
-   public boolean b() {
-      return this.a() && this.j == this.m * this.l;
-   }
-
-   public static fex a(m.a $$0, jb.a $$1, fex $$2, bwl $$3) {
-      double $$4 = (double)$$0.b - (double)$$3.a();
-      double $$5 = (double)$$0.c - (double)$$3.b();
-      iv $$6 = $$0.a;
-      double $$8;
-      if ($$4 > 0.0) {
-         double $$7 = (double)$$6.a($$1) + (double)$$3.a() / 2.0;
-         $$8 = azm.a(azm.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
-      } else {
-         $$8 = 0.5;
-      }
-
-      double $$11;
-      if ($$5 > 0.0) {
-         jb.a $$10 = jb.a.b;
-         $$11 = azm.a(azm.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
-      } else {
-         $$11 = 0.0;
-      }
-
-      jb.a $$13 = $$1 == jb.a.a ? jb.a.c : jb.a.a;
-      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
-      return new fex($$8, $$11, $$14);
-   }
-
-   public static fex a(fex $$0, arq $$1, bwi $$2, bwl $$3) {
-      if (!($$3.a() > 4.0F) && !($$3.b() > 4.0F)) {
-         double $$4 = (double)$$3.b() / 2.0;
-         fex $$5 = $$0.b(0.0, $$4, 0.0);
-         ffr $$6 = ffo.a(fes.a($$5, (double)$$3.a(), 0.0, (double)$$3.a()).b(0.0, 1.0, 0.0).g(1.0E-6));
-         Optional<fex> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a(), (double)$$3.b(), (double)$$3.a());
-         Optional<fex> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
-         return $$8.orElse($$0);
-      } else {
-         return $$0;
-      }
+      eat $$11 = $$0.a($$5);
+      return $$11.a(exp.b) ? exr.j : exr.a;
    }
 }

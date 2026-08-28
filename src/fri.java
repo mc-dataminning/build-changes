@@ -1,5 +1,8 @@
-public interface fri {
-   void a(czg var1, hfz.b var2);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(czg var1, czg var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fri {
 }

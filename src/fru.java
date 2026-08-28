@@ -1,32 +1,30 @@
-import java.util.function.UnaryOperator;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class fru {
-   @Deprecated
-   public static alg a(String $$0) {
-      return alg.b("block/" + $$0);
+public record fru(List<ebw.a<?>> b) {
+   public static final fru a = new fru(List.of());
+   private static final Comparator<ebw.a<?>> c = Comparator.comparing($$0 -> $$0.a().f());
+
+   public fru a(ebw.a<?> $$0) {
+      return new fru(ag.a(this.b, $$0));
    }
 
-   public static alg b(String $$0) {
-      return alg.b("item/" + $$0);
+   public fru a(fru $$0) {
+      return new fru(ImmutableList.builder().addAll(this.b).addAll($$0.b).build());
    }
 
-   public static alg a(dmm $$0, String $$1) {
-      alg $$2 = mg.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   public static fru a(ebw.a<?>... $$0) {
+      return new fru(List.of($$0));
    }
 
-   public static alg a(dmm $$0) {
-      alg $$1 = mg.e.b($$0);
-      return $$1.f("block/");
+   public String a() {
+      return this.b.stream().sorted(c).map(ebw.a::toString).collect(Collectors.joining(","));
    }
 
-   public static alg a(czg $$0) {
-      alg $$1 = mg.g.b($$0);
-      return $$1.f("item/");
-   }
-
-   public static alg a(czg $$0, String $$1) {
-      alg $$2 = mg.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

@@ -1,59 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dqv extends dqf implements drj {
-   public static final MapCodec<dqv> c = b(dqv::new);
-   private static final double g = 0.14;
-   private static final ffr h = dmm.b(16.0, 0.0, 9.0);
-
-   @Override
-   public MapCodec<dqv> a() {
-      return c;
-   }
-
-   protected dqv(ean.d $$0) {
-      super($$0, jb.b, h, true, 0.14);
-   }
+public class dqv extends dmr {
+   public static final MapCodec<dqv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mg.e.q().fieldOf("host").forGetter(dqv::b), t()).apply($$0, dqv::new));
+   private final dmr b;
+   private static final Map<dmr, dmr> c = Maps.newIdentityHashMap();
+   private static final Map<eat, eat> d = Maps.newIdentityHashMap();
+   private static final Map<eat, eat> e = Maps.newIdentityHashMap();
 
    @Override
-   protected boolean h(eao $$0) {
-      return $$0.a(dmo.J);
+   public MapCodec<? extends dqv> a() {
+      return a;
    }
 
-   @Override
-   protected dmm b() {
-      return dmo.mJ;
+   public dqv(dmr $$0, eas.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected boolean o(eao $$0) {
-      return !$$0.a(dmo.lp);
+   public dmr b() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(@Nullable bxj $$0, din $$1, iv $$2, eao $$3, ewu $$4) {
-      return false;
+   public static boolean o(eat $$0) {
+      return c.containsKey($$0.b());
    }
 
-   @Override
-   public boolean a(dji $$0, iv $$1, eao $$2, ewv $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(azv $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public eao a(ddd $$0) {
-      ewv $$1 = $$0.q().b_($$0.a());
-      return $$1.a(axh.a) && $$1.e() == 8 ? super.a($$0) : null;
+   private void a(arq $$0, iv $$1) {
+      cov $$2 = bwr.be.a($$0, bwq.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.U();
+      }
    }
 
    @Override
-   protected ewv b_(eao $$0) {
-      return eww.c.a(false);
+   protected void a(eat $$0, arq $$1, iv $$2, czn $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.O().c(dji.i) && !dgc.a($$3, axe.t)) {
+         this.a($$1, $$2);
+      }
+   }
+
+   public static eat p(eat $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).m());
+   }
+
+   public eat q(eat $$0) {
+      return a(e, $$0, () -> this.b().m());
+   }
+
+   private static eat a(Map<eat, eat> $$0, eat $$1, Supplier<eat> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         eat $$2x = $$2.get();
+
+         for (ebw $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

@@ -1,56 +1,153 @@
-public class fuc extends fsr {
-   private float a = 0.5F;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fuc(wy $$0, fsf $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
-   }
+public class fuc extends fys {
+   private static final alg a = alg.b("popup/background");
+   private static final int b = 12;
+   private static final int c = 18;
+   private static final int d = 6;
+   private static final int s = 130;
+   private static final int u = 64;
+   private static final int v = 250;
+   private final fys w;
+   @Nullable
+   private final alg x;
+   private final wy y;
+   private final List<fuc.b> z;
+   @Nullable
+   private final Runnable A;
+   private final int B;
+   private final fws C = fws.d();
 
-   public fuc(int $$0, int $$1, wy $$2, fsf $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
-
-   public fuc(int $$0, int $$1, int $$2, int $$3, wy $$4, fsf $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
-   }
-
-   public fuc b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private fuc b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public fuc c() {
-      return this.b(0.0F);
-   }
-
-   public fuc e() {
-      return this.b(0.5F);
-   }
-
-   public fuc g() {
-      return this.b(1.0F);
+   fuc(fys $$0, int $$1, @Nullable alg $$2, wy $$3, wy $$4, List<fuc.b> $$5, @Nullable Runnable $$6) {
+      super($$3);
+      this.w = $$0;
+      this.x = $$2;
+      this.y = $$4;
+      this.z = $$5;
+      this.A = $$6;
+      this.B = $$1 - 36;
    }
 
    @Override
-   public void b(fsh $$0, int $$1, int $$2, float $$3) {
-      wy $$4 = this.B();
-      fsf $$5 = this.a();
-      int $$6 = this.A();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.F() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.G() + (this.y() - 9) / 2;
-      ayy $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   public void aG_() {
+      super.aG_();
+      this.w.o();
    }
 
-   private ayy a(wy $$0, int $$1) {
-      fsf $$2 = this.a();
-      xd $$3 = $$2.a($$0, $$1 - $$2.a(wx.u));
-      return tu.a().a(xd.a($$3, wx.u));
+   @Override
+   protected void aO_() {
+      this.w.b(this.m, this.n, this.o);
+      this.C.a(12).c().b();
+      this.C.a(new ftu(this.l.f().a(o.r), this.p).d(this.B).b(true));
+      if (this.x != null) {
+         this.C.a(ftn.a(130, 64, this.x, 130, 64));
+      }
+
+      this.C.a(new ftu(this.y, this.p).d(this.B).b(true));
+      this.C.a(this.m());
+      this.C.a($$1 -> {
+         fsy var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   private fws m() {
+      int $$0 = 6 * (this.z.size() - 1);
+      int $$1 = Math.min((this.B - $$0) / this.z.size(), 150);
+      fws $$2 = fws.e();
+      $$2.a(6);
+
+      for (fuc.b $$3 : this.z) {
+         $$2.a(fta.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected void c() {
+      this.w.a(this.m, this.n, this.o);
+      this.C.a();
+      fwm.a(this.C, this.J());
+   }
+
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+      this.w.a($$0, -1, -1, $$3);
+      $$0.d();
+      RenderSystem.clear(256);
+      this.b($$0);
+      $$0.a(grc::H, a, this.C.F() - 18, this.C.G() - 18, this.C.A() + 36, this.C.y() + 36);
+   }
+
+   @Override
+   public wy i() {
+      return wx.a(this.l, this.y);
+   }
+
+   @Override
+   public void aL_() {
+      if (this.A != null) {
+         this.A.run();
+      }
+
+      this.m.a(this.w);
+   }
+
+   public static class a {
+      private final fys a;
+      private final wy b;
+      private wy c = wx.a;
+      private int d = 250;
+      @Nullable
+      private alg e;
+      private final List<fuc.b> f = new ArrayList<>();
+      @Nullable
+      private Runnable g = null;
+
+      public a(fys $$0, wy $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public fuc.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fuc.a a(alg $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fuc.a a(wy $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fuc.a a(wy $$0, Consumer<fuc> $$1) {
+         this.f.add(new fuc.b($$0, $$1));
+         return this;
+      }
+
+      public fuc.a a(Runnable $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public fuc a() {
+         if (this.f.isEmpty()) {
+            throw new IllegalStateException("Popup must have at least one button");
+         } else {
+            return new fuc(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+         }
+      }
+   }
+
+   static record b(wy a, Consumer<fuc> b) {
    }
 }

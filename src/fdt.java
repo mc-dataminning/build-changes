@@ -1,9 +1,8 @@
-public interface fdt extends ezp {
-   float b(ezo var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   default int a(ezo $$0) {
-      return Math.round(this.b($$0));
-   }
-
-   fds b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fdt {
 }

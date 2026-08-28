@@ -1,60 +1,26 @@
-import java.util.Objects;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+public class gyu extends gye<cot, hev, gid> {
+   private static final alg a = alg.b("textures/entity/illager/ravager.png");
 
-public class gyu extends gxz<cor, het, gie> {
-   private static final alg a = grg.s.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
-   private static final alg[] j = grg.t.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(alg[]::new);
-
-   public gyu(gwt.a $$0) {
-      super($$0, new gie($$0.a(gjn.cS)), 0.0F);
+   public gyu(gwy.a $$0) {
+      super($$0, new gid($$0.a(gjs.cJ)), 1.1F);
    }
 
-   public fex a(het $$0) {
-      return $$0.a;
+   public alg a(hev $$0) {
+      return a;
    }
 
-   public boolean a(cor $$0, guf $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         fex $$5 = $$0.K(0.0F);
-         if ($$5 == null) {
-            return false;
-         } else {
-            bwr<?> $$6 = $$0.an();
-            float $$7 = $$6.m() / 2.0F;
-            float $$8 = $$6.l() / 2.0F;
-            fex $$9 = fex.c($$0.du());
-            return $$1.a(new fes($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
-         }
-      }
+   public hev b() {
+      return new hev();
    }
 
-   public alg b(het $$0) {
-      return a($$0.b);
-   }
-
-   public het b() {
-      return new het();
-   }
-
-   public void a(cor $$0, het $$1, float $$2) {
+   public void a(cot $$0, hev $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = Objects.requireNonNullElse($$0.K($$2), fex.c);
-      $$1.b = $$0.t();
-      $$1.c = $$0.J($$2);
-      $$1.d = $$0.aX;
-      $$1.e = $$0.aV;
-      $$1.f = $$0.n();
-   }
-
-   public static alg a(@Nullable cyi $$0) {
-      return $$0 == null ? a : j[$$0.a()];
-   }
-
-   protected void a(het $$0, fjy $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2 + 180.0F, $$3);
-      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
+      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
+      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
+      if ($$0.gA() > 0) {
+         $$1.c = ((float)(20 - $$0.gA()) + $$2) / 20.0F;
+      } else {
+         $$1.c = 0.0F;
+      }
    }
 }

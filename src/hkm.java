@@ -1,142 +1,45 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.hash.Hashing;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.SignatureState;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftProfileTextures;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-import com.mojang.authlib.properties.Property;
+import com.google.common.base.Splitter;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.Duration;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map.Entry;
 import org.slf4j.Logger;
 
 public class hkm {
-   static final Logger a = LogUtils.getLogger();
-   private final MinecraftSessionService b;
-   private final LoadingCache<hkm.a, CompletableFuture<Optional<hkl>>> c;
-   private final hkm.b d;
-   private final hkm.b e;
-   private final hkm.b f;
+   private static final Logger b = LogUtils.getLogger();
+   public static final Splitter a = Splitter.on('/');
 
-   public hkm(Path $$0, final MinecraftSessionService $$1, final Executor $$2) {
-      this.b = $$1;
-      this.d = new hkm.b($$0, Type.SKIN);
-      this.e = new hkm.b($$0, Type.CAPE);
-      this.f = new hkm.b($$0, Type.ELYTRA);
-      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<hkm.a, CompletableFuture<Optional<hkl>>>() {
-         public CompletableFuture<Optional<hkl>> a(hkm.a $$0) {
-            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
-               Property $$2xx = $$0.b();
-               if ($$2xx == null) {
-                  return MinecraftProfileTextures.EMPTY;
-               } else {
-                  MinecraftProfileTextures $$3 = $$1.unpackTextures($$2xx);
-                  if ($$3.signatureState() == SignatureState.INVALID) {
-                     hkm.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
-                  }
+   public static Path a(Path $$0, String $$1) {
+      Path $$2 = $$0.resolve("objects");
+      atz.a $$3 = atz.c();
+      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
 
-                  return $$3;
-               }
-            }, ag.h().a("unpackSkinTextures")).thenComposeAsync($$1xx -> hkm.this.a($$0.a(), $$1xx), $$2).handle(($$1xx, $$2xx) -> {
-               if ($$2xx != null) {
-                  hkm.a.warn("Failed to load texture for profile {}", $$0.a, $$2xx);
-               }
-
-               return Optional.ofNullable($$1xx);
-            });
+      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
+         JsonObject $$6 = azc.a($$5);
+         JsonObject $$7 = azc.a($$6, "objects", null);
+         if ($$7 != null) {
+            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
+               JsonObject $$9 = (JsonObject)$$8.getValue();
+               String $$10 = $$8.getKey();
+               List<String> $$11 = a.splitToList($$10);
+               String $$12 = azc.i($$9, "hash");
+               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
+               $$3.a($$11, $$13);
+            }
          }
-      });
-   }
-
-   public Supplier<hkl> a(GameProfile $$0) {
-      CompletableFuture<Optional<hkl>> $$1 = this.c($$0);
-      hkl $$2 = hkc.a($$0);
-      return () -> $$1.getNow(Optional.empty()).orElse($$2);
-   }
-
-   public hkl b(GameProfile $$0) {
-      hkl $$1 = this.c($$0).getNow(Optional.empty()).orElse(null);
-      return $$1 != null ? $$1 : hkc.a($$0);
-   }
-
-   public CompletableFuture<Optional<hkl>> c(GameProfile $$0) {
-      Property $$1 = this.b.getPackedTextures($$0);
-      return (CompletableFuture<Optional<hkl>>)this.c.getUnchecked(new hkm.a($$0.getId(), $$1));
-   }
-
-   CompletableFuture<hkl> a(UUID $$0, MinecraftProfileTextures $$1) {
-      MinecraftProfileTexture $$2 = $$1.skin();
-      CompletableFuture<alg> $$3;
-      hkl.a $$4;
-      if ($$2 != null) {
-         $$3 = this.d.a($$2);
-         $$4 = hkl.a.a($$2.getMetadata("model"));
-      } else {
-         hkl $$5 = hkc.a($$0);
-         $$3 = CompletableFuture.completedFuture($$5.a());
-         $$4 = $$5.e();
+      } catch (JsonParseException var17) {
+         b.error("Unable to parse resource index file: {}", $$4);
+      } catch (IOException var18) {
+         b.error("Can't open the resource index file: {}", $$4);
       }
 
-      String $$8 = y.a($$2, MinecraftProfileTexture::getUrl);
-      MinecraftProfileTexture $$9 = $$1.cape();
-      CompletableFuture<alg> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
-      MinecraftProfileTexture $$11 = $$1.elytra();
-      CompletableFuture<alg> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
-      return CompletableFuture.allOf($$3, $$10, $$12)
-         .thenApply($$6x -> new hkl($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
-   }
-
-   static record a(UUID a, @Nullable Property b) {
-   }
-
-   static class b {
-      private final Path a;
-      private final Type b;
-      private final Map<String, CompletableFuture<alg>> c = new Object2ObjectOpenHashMap();
-
-      b(Path $$0, Type $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public CompletableFuture<alg> a(MinecraftProfileTexture $$0) {
-         String $$1 = $$0.getHash();
-         CompletableFuture<alg> $$2 = this.c.get($$1);
-         if ($$2 == null) {
-            $$2 = this.b($$0);
-            this.c.put($$1, $$2);
-         }
-
-         return $$2;
-      }
-
-      private CompletableFuture<alg> b(MinecraftProfileTexture $$0) {
-         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
-         alg $$2 = this.a($$1);
-         Path $$3 = this.a.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
-         return hjd.a($$2, $$3, $$0.getUrl(), this.b == Type.SKIN);
-      }
-
-      private alg a(String $$0) {
-         String $$1 = switch (this.b) {
-            case SKIN -> "skins";
-            case CAPE -> "capes";
-            case ELYTRA -> "elytra";
-            default -> throw new MatchException(null, null);
-         };
-         return alg.b($$1 + "/" + $$0);
-      }
+      return $$3.a("index-" + $$1).getPath("/");
    }
 }

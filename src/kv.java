@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.function.Function;
 
-public abstract class kv implements dl<dgd> {
+public abstract class kv implements dl<dgg> {
    private final List<bt> a;
 
    protected kv(List<bt> $$0) {
@@ -17,7 +17,7 @@ public abstract class kv implements dl<dgd> {
       return this.a;
    }
 
-   public boolean a(dgd $$0) {
+   public boolean a(dgg $$0) {
       for (bt $$1 : this.a) {
          if (!$$1.a($$0)) {
             return false;
@@ -43,7 +43,7 @@ public abstract class kv implements dl<dgd> {
       }
 
       @Override
-      public kj<dgd> a() {
+      public kj<dgg> a() {
          return kk.l;
       }
    }
@@ -56,7 +56,7 @@ public abstract class kv implements dl<dgd> {
       }
 
       @Override
-      public kj<dgd> a() {
+      public kj<dgg> a() {
          return kk.J;
       }
    }

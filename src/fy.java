@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class fy extends fu<dtg> {
+public class fy extends fu<dtl> {
    private fy() {
-      super(dtg.f, dtg::values);
+      super(dtl.f, dtl::values);
    }
 
    public static fy a() {
       return new fy();
    }
 
-   public static dtg a(CommandContext<ej> $$0, String $$1) {
-      return (dtg)$$0.getArgument($$1, dtg.class);
+   public static dtl a(CommandContext<ej> $$0, String $$1) {
+      return (dtl)$$0.getArgument($$1, dtl.class);
    }
 }

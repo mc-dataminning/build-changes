@@ -1,22 +1,96 @@
-public class gab extends fzc<cwd> {
-   private static final alg G = alg.b("textures/gui/container/hopper.png");
+public class gab {
+   private static final alg a = alg.b("alt");
+   private static final xv b = xv.a.a(a);
+   private static final gab c = new gab();
+   private final azv d = azv.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   public gab(cwd $$0, cri $$1, wy $$2) {
-      super($$0, $$1, $$2);
-      this.u = 133;
-      this.y = this.u - 94;
+   private gab() {
    }
 
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public static gab a() {
+      return c;
    }
 
-   @Override
-   protected void a(fsh $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gqx::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   public xd a(fsk $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ag.a(this.e, this.d));
+      }
+
+      return $$0.b().a(wy.b($$2.toString()).c(b), $$1, xv.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

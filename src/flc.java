@@ -1,20 +1,16 @@
-public interface flc {
-   fks b();
+public class flc extends flb {
+   private final wy a;
 
-   void d();
+   public flc(wy $$0) {
+      this.a = $$0;
+   }
 
-   static flc f() {
-      return new flc() {
-         private final fks a = new fks();
+   public flc(String $$0) {
+      this(wy.b($$0));
+   }
 
-         @Override
-         public fks b() {
-            return this.a;
-         }
-
-         @Override
-         public void d() {
-         }
-      };
+   @Override
+   public wy a() {
+      return wy.a("mco.upload.failed", this.a);
    }
 }

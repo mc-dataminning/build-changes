@@ -1,73 +1,110 @@
-import java.util.function.Function;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
 import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public enum fvt implements fhq {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+public class fvt extends hjb implements hjc {
+   private static final int c = 256;
+   private final fvu d;
+   private final boolean e;
+   private final fvt.a f;
 
-   final fiu c;
+   public fvt(Supplier<String> $$0, fvu $$1, boolean $$2) {
+      this.e = $$2;
+      this.f = new fvt.a(0, 0, 256, 256);
+      this.a = new fjw($$0, $$2 ? fjx.a : fjx.b, 256, 256, 1);
+      this.a.a(fjv.a, false);
+      this.d = $$1;
+   }
 
-   private static fiu a(int $$0, int $$1, fvt.a $$2) {
-      fiu $$3 = new fiu(fiu.a.a, $$0, $$1, false);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+   @Nullable
+   public fvw a(fhx $$0) {
+      if ($$0.c() != this.e) {
+         return null;
+      } else {
+         fvt.a $$1 = this.f.a($$0);
+         if ($$1 != null && this.a != null) {
+            this.a.c();
+            $$0.a($$1.a, $$1.b, this.a);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fvw(
+               this.d,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
          }
       }
-
-      $$3.i();
-      return $$3;
-   }
-
-   private fvt(final Supplier<fiu> $$0) {
-      this.c = $$0.get();
    }
 
    @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
+   public void a(alg $$0, Path $$1) {
+      if (this.a != null) {
+         String $$2 = $$0.c();
+         TextureUtil.writeAsPNG($$1, $$2, this.a, 0, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
+      }
    }
 
-   @Override
-   public fvr bake(Function<fhs, fvr> $$0) {
-      return $$0.apply(new fhs() {
-         @Override
-         public int a() {
-            return fvt.this.c.a();
-         }
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private fvt.a e;
+      @Nullable
+      private fvt.a f;
+      private boolean g;
 
-         @Override
-         public int b() {
-            return fvt.this.c.b();
-         }
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
 
-         @Override
-         public float d() {
-            return 1.0F;
-         }
+      @Nullable
+      fvt.a a(fhx $$0) {
+         if (this.e != null && this.f != null) {
+            fvt.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
 
-         @Override
-         public void a(int $$0, int $$1, fjr $$2) {
-            $$2.a(fvt.this.c, 0, $$0, $$1, fvt.this.c.a(), fvt.this.c.b(), 0, 0);
-         }
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new fvt.a(this.a, this.b, $$2, this.d);
+                  this.f = new fvt.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new fvt.a(this.a, this.b, this.c, $$3);
+                  this.f = new fvt.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
 
-         @Override
-         public boolean c() {
-            return true;
+               return this.e.a($$0);
+            }
          }
-      });
-   }
-
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+      }
    }
 }

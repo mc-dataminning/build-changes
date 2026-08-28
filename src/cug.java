@@ -1,109 +1,75 @@
-public class cug extends ctw {
-   static final akj<String> b = akn.a(cug.class, akl.e);
-   static final akj<wy> c = akn.a(cug.class, akl.f);
-   private final dii d = new cug.a();
-   private static final int h = 4;
-   private int i;
+public class cug extends ctz {
+   private float b;
+   private float c;
 
-   public cug(bwr<? extends cug> $$0, djh $$1) {
+   public cug(bwr<?> $$0, djm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected czg o() {
-      return czo.ov;
+   public bug a(crm $$0, buf $$1) {
+      if (!$$0.fX() && !this.bY() && (this.dU().C || $$0.n(this))) {
+         this.c = this.b;
+         if (!this.dU().C) {
+            return (bug)($$0.n(this) ? bug.c : bug.e);
+         } else {
+            return bug.a;
+         }
+      } else {
+         return bug.e;
+      }
    }
 
    @Override
-   public czk dH() {
-      return new czk(czo.vX);
+   protected czj o() {
+      return czr.ov;
    }
 
    @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(b, "");
-      $$0.a(c, wx.a);
-   }
-
-   @Override
-   protected void a(tz $$0) {
-      super.a($$0);
-      this.d.b($$0, this.dW());
-      this.ar().a(b, this.q().m());
-      this.ar().a(c, this.q().l());
-   }
-
-   @Override
-   protected void b(tz $$0) {
-      super.b($$0);
-      this.d.a($$0, this.dW());
-   }
-
-   @Override
-   public eao v() {
-      return dmo.gm.m();
-   }
-
-   public dii q() {
-      return this.d;
+   public czn dH() {
+      return new czn(czr.ov);
    }
 
    @Override
    public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.af - this.i >= 4) {
-         this.q().a(this.dU());
-         this.i = this.af;
-      }
-   }
-
-   @Override
-   public bug a(crj $$0, buf $$1) {
-      return this.d.a($$0);
-   }
-
-   @Override
-   public void a(akj<?> $$0) {
-      super.a($$0);
-      if (c.equals($$0)) {
-         try {
-            this.d.c(this.ar().a(c));
-         } catch (Throwable var3) {
+      if ($$3) {
+         if (this.bY()) {
+            this.bM();
          }
-      } else if (b.equals($$0)) {
-         this.d.a(this.ar().a(b));
+
+         if (this.H() == 0) {
+            this.l(-this.I());
+            this.d(10);
+            this.b(50.0F);
+            this.bA();
+         }
       }
    }
 
-   public class a extends dii {
-      @Override
-      public arq e() {
-         return (arq)cug.this.dU();
-      }
+   @Override
+   public boolean y() {
+      return true;
+   }
 
-      @Override
-      public void f() {
-         cug.this.ar().a(cug.b, this.m());
-         cug.this.ar().a(cug.c, this.l());
+   @Override
+   public void h() {
+      double $$0 = (double)this.dK();
+      ffc $$1 = this.ds();
+      super.h();
+      double $$2 = ((double)this.dK() - $$0) % 360.0;
+      if (this.dU().C && $$1.f(this.ds()) > 0.01) {
+         this.b += (float)$$2;
+         this.b %= 360.0F;
       }
+   }
 
-      @Override
-      public fex g() {
-         return cug.this.ds();
-      }
-
-      public cug h() {
-         return cug.this;
-      }
-
-      @Override
-      public ej i() {
-         return new ej(this, cug.this.ds(), cug.this.bS(), this.e(), 2, this.n().getString(), cug.this.m_(), this.e().p(), cug.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cug.this.dP();
+   @Override
+   protected void a(bwi $$0, bwi.a $$1) {
+      super.a($$0, $$1);
+      if (this.dU().C && $$0 instanceof crm $$2 && $$2.gP() && b(this.dU())) {
+         float $$3 = (float)azm.e(0.5, (double)this.c, (double)this.b);
+         $$2.w($$2.dK() - ($$3 - this.c));
+         this.c = $$3;
       }
    }
 }

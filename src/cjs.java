@@ -23,7 +23,7 @@ public class cjs extends ciz {
    boolean bX;
    boolean bY;
    public int bH;
-   private fex bZ;
+   private ffc bZ;
    private float ca;
    private float cb;
    private float cc;
@@ -32,7 +32,7 @@ public class cjs extends ciz {
    private float cf;
    cjs.g cg;
 
-   public cjs(bwr<? extends cjs> $$0, djh $$1) {
+   public cjs(bwr<? extends cjs> $$0, djm $$1) {
       super($$0, $$1);
       this.bA = new cjs.h(this);
       if (!this.n_()) {
@@ -196,12 +196,12 @@ public class cjs extends ciz {
       this.bD.a(2, new cjs.d(this, 1.0));
       this.bD.a(3, new cjs.b(this, 1.2F, true));
       this.bD.a(4, new cfn(this, 1.0, $$0 -> $$0.a(axk.au), false));
-      this.bD.a(6, new cjs.c<>(this, crj.class, 8.0F, 2.0, 2.0));
-      this.bD.a(6, new cjs.c<>(this, cok.class, 4.0F, 2.0, 2.0));
+      this.bD.a(6, new cjs.c<>(this, crm.class, 8.0F, 2.0, 2.0));
+      this.bD.a(6, new cjs.c<>(this, coo.class, 4.0F, 2.0, 2.0));
       this.bD.a(7, new cjs.k());
       this.bD.a(8, new cjs.f(this));
       this.bD.a(8, new cjs.l(this));
-      this.cg = new cjs.g(this, crj.class, 6.0F);
+      this.cg = new cjs.g(this, crm.class, 6.0F);
       this.bD.a(9, this.cg);
       this.bD.a(10, new cfa(this));
       this.bD.a(12, new cjs.j(this));
@@ -334,8 +334,8 @@ public class cjs extends ciz {
          if (!this.dU().C && this.gQ() > 80 && this.ae.a(20) == 1) {
             if (this.gQ() > 100 && this.a(bws.a).a(axk.av)) {
                if (!this.dU().C) {
-                  this.a(bws.a, czk.k);
-                  this.a(efo.m);
+                  this.a(bws.a, czn.k);
+                  this.a(eft.m);
                }
 
                this.w(false);
@@ -354,11 +354,11 @@ public class cjs extends ciz {
          this.a(awn.tl, 0.5F + 0.5F * (float)this.ae.a(2), (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
 
          for (int $$0 = 0; $$0 < 6; $$0++) {
-            fex $$1 = new fex(((double)this.ae.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, ((double)this.ae.i() - 0.5) * 0.1);
+            ffc $$1 = new ffc(((double)this.ae.i() - 0.5) * 0.1, Math.random() * 0.1 + 0.1, ((double)this.ae.i() - 0.5) * 0.1);
             $$1 = $$1.a(-this.dM() * (float) (Math.PI / 180.0));
             $$1 = $$1.b(-this.dK() * (float) (Math.PI / 180.0));
             double $$2 = (double)(-this.ae.i()) * 0.6 - 0.3;
-            fex $$3 = new fex(((double)this.ae.i() - 0.5) * 0.8, $$2, 1.0 + ((double)this.ae.i() - 0.5) * 0.4);
+            ffc $$3 = new ffc(((double)this.ae.i() - 0.5) * 0.8, $$2, 1.0 + ((double)this.ae.i() - 0.5) * 0.4);
             $$3 = $$3.b(-this.aV * (float) (Math.PI / 180.0));
             $$3 = $$3.b(this.dz(), this.dD() + 1.0, this.dF());
             this.dU().a(new lu(ly.U, this.a(bws.a)), $$3.d, $$3.e, $$3.f, $$1.d, $$1.e + 0.05, $$1.f);
@@ -411,11 +411,11 @@ public class cjs extends ciz {
          this.A(false);
       } else {
          if (!this.dU().C) {
-            fex $$0 = this.dx();
+            ffc $$0 = this.dx();
             if (this.bH == 1) {
                float $$1 = this.dK() * (float) (Math.PI / 180.0);
                float $$2 = this.n_() ? 0.1F : 0.2F;
-               this.bZ = new fex($$0.d + (double)(-azm.a($$1) * $$2), 0.0, $$0.f + (double)(azm.b($$1) * $$2));
+               this.bZ = new ffc($$0.d + (double)(-azm.a($$1) * $$2), 0.0, $$0.f + (double)(azm.b($$1) * $$2));
                this.i(this.bZ.b(0.0, 0.27, 0.0));
             } else if ((float)this.bH != 7.0F && (float)this.bH != 15.0F && (float)this.bH != 23.0F) {
                this.n(this.bZ.d, $$0.e, this.bZ.f);
@@ -427,8 +427,8 @@ public class cjs extends ciz {
    }
 
    private void gX() {
-      fex $$0 = this.dx();
-      djh $$1 = this.dU();
+      ffc $$0 = this.dx();
+      djm $$1 = this.dU();
       $$1.a(
          ly.aj,
          this.dz() - (double)(this.dp() + 1.0F) * 0.5 * (double)azm.a(this.aV * (float) (Math.PI / 180.0)),
@@ -446,16 +446,16 @@ public class cjs extends ciz {
          }
       }
 
-      if (this.dU() instanceof arq $$4 && $$4.O().c(djd.g)) {
-         this.a($$4, ezk.aH, this::a);
+      if (this.dU() instanceof arq $$4 && $$4.O().c(dji.g)) {
+         this.a($$4, ezp.aH, this::a);
       }
    }
 
    @Override
-   protected void a(arq $$0, cno $$1) {
+   protected void a(arq $$0, cnr $$1) {
       if (this.a(bws.a).f() && b($$1)) {
          this.a($$1);
-         czk $$2 = $$1.f();
+         czn $$2 = $$1.f();
          this.a(bws.a, $$2);
          this.g(bws.a);
          this.a($$1, $$2.M());
@@ -471,7 +471,7 @@ public class cjs extends ciz {
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       azv $$4 = $$0.C_();
       this.a(cjs.a.a($$4));
       this.b(cjs.a.a($$4));
@@ -532,8 +532,8 @@ public class cjs extends ciz {
    }
 
    @Override
-   public bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
+   public bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
       if (this.gN()) {
          return bug.e;
       } else if (this.gt()) {
@@ -557,12 +557,12 @@ public class cjs extends ciz {
 
             this.gZ();
             this.y(true);
-            czk $$4 = this.a(bws.a);
+            czn $$4 = this.a(bws.a);
             if (!$$4.f() && !$$0.fU()) {
                this.a($$3, $$4);
             }
 
-            this.a(bws.a, new czk($$2.h(), 1));
+            this.a(bws.a, new czn($$2.h(), 1));
             this.a($$0, $$1, $$2);
          }
 
@@ -583,12 +583,12 @@ public class cjs extends ciz {
    }
 
    @Override
-   protected void b(iv $$0, eao $$1) {
+   protected void b(iv $$0, eat $$1) {
       this.a(awn.tm, 0.15F, 1.0F);
    }
 
    @Override
-   public boolean i(czk $$0) {
+   public boolean i(czn $$0) {
       return $$0.a(axk.au);
    }
 
@@ -613,7 +613,7 @@ public class cjs extends ciz {
       return this.n_() ? bQ : super.e($$0);
    }
 
-   private static boolean b(cno $$0) {
+   private static boolean b(cnr $$0) {
       return $$0.f().a(axk.av) && $$0.bI() && !$$0.o();
    }
 
@@ -728,7 +728,7 @@ public class cjs extends ciz {
                this.d.s(32);
                this.e = this.d.af + 600;
                if (this.d.di()) {
-                  crj $$0 = this.b.a(cjs.bP, this.d);
+                  crm $$0 = this.b.a(cjs.bP, this.d);
                   this.d.cg.a($$0);
                }
             }
@@ -748,7 +748,7 @@ public class cjs extends ciz {
                for (int $$4 = 0; $$4 <= $$3; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
                   for (int $$5 = $$4 < $$3 && $$4 > -$$3 ? $$3 : 0; $$5 <= $$3; $$5 = $$5 > 0 ? -$$5 : 1 - $$5) {
                      $$1.a($$0, $$4, $$2, $$5);
-                     if (this.b.a_($$1).a(dmo.nF)) {
+                     if (this.b.a_($$1).a(dmt.nF)) {
                         return true;
                      }
                   }
@@ -841,7 +841,7 @@ public class cjs extends ciz {
          } else {
             if (this.c == null) {
                arq $$0 = a(this.b);
-               if (this.f == crj.class) {
+               if (this.f == crm.class) {
                   this.c = $$0.a(this.g, this.b, this.b.dz(), this.b.dD(), this.b.dF());
                } else {
                   this.c = $$0.a(
@@ -960,7 +960,7 @@ public class cjs extends ciz {
          if (this.b > cjs.this.af || cjs.this.n_() || cjs.this.bh() || !cjs.this.gP() || cjs.this.q() > 0) {
             return false;
          } else {
-            return !cjs.this.a(bws.a).f() ? true : !cjs.this.dU().a(cno.class, cjs.this.cQ().c(6.0, 6.0, 6.0), cjs::b).isEmpty();
+            return !cjs.this.a(bws.a).f() ? true : !cjs.this.dU().a(cnr.class, cjs.this.cQ().c(6.0, 6.0, 6.0), cjs::b).isEmpty();
          }
       }
 
@@ -979,7 +979,7 @@ public class cjs extends ciz {
       @Override
       public void d() {
          if (cjs.this.a(bws.a).f()) {
-            List<cno> $$0 = cjs.this.dU().a(cno.class, cjs.this.cQ().c(8.0, 8.0, 8.0), cjs::b);
+            List<cnr> $$0 = cjs.this.dU().a(cnr.class, cjs.this.cQ().c(8.0, 8.0, 8.0), cjs::b);
             if (!$$0.isEmpty()) {
                cjs.this.O().a($$0.getFirst(), 1.2F);
             }
@@ -992,10 +992,10 @@ public class cjs extends ciz {
 
       @Override
       public void e() {
-         czk $$0 = cjs.this.a(bws.a);
+         czn $$0 = cjs.this.a(bws.a);
          if (!$$0.f()) {
             cjs.this.a(a(cjs.this.dU()), $$0);
-            cjs.this.a(bws.a, czk.k);
+            cjs.this.a(bws.a, czn.k);
             int $$1 = cjs.this.gI() ? cjs.this.ae.a(50) + 10 : cjs.this.ae.a(150) + 10;
             this.b = cjs.this.af + $$1 * 20;
          }

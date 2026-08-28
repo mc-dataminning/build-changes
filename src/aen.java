@@ -27,7 +27,7 @@ public class aen implements zf<abu> {
       $$0.a(this);
    }
 
-   public bwi a(djh $$0) {
+   public bwi a(djm $$0) {
       return $$0.a(this.b);
    }
 

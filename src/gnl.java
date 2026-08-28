@@ -1,51 +1,74 @@
-public class gnl extends gou {
-   gnl(gkl $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
+public class gnl extends goz {
+   private final double a;
+   private final double b;
+   private final double F;
+   private final int G;
+   private final int H;
+
+   gnl(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.a = $$1;
+      this.b = $$2;
+      this.F = $$3;
+      this.d = $$1 + $$4;
+      this.e = $$2 + $$5;
+      this.f = $$3 + $$6;
+      this.g = this.d;
+      this.h = this.e;
+      this.i = this.f;
+      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
       this.n = false;
+      this.t = (int)(Math.random() * 5.0) + 25;
+      this.G = $$7;
+      this.H = $$8;
    }
 
    @Override
-   public gny b() {
-      return gny.b;
+   public god b() {
+      return god.b;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(double $$0, double $$1, double $$2) {
    }
 
-   public static class a implements gnx<mc> {
-      private final gop a;
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-      public a(gop $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         float $$1 = 1.0F - $$0;
+         this.g = this.a + this.j * (double)$$1;
+         this.h = this.b + this.k * (double)$$1;
+         this.i = this.F + this.l * (double)$$1;
+         int $$2 = axw.a($$0, this.G, this.H);
+         this.a((float)axw.b($$2) / 255.0F, (float)axw.c($$2) / 255.0F, (float)axw.d($$2) / 255.0F);
+         this.e((float)axw.a($$2) / 255.0F);
+      }
+   }
+
+   public static class a implements goc<mc> {
+      private final gou a;
+
+      public a(gou $$0) {
          this.a = $$0;
       }
 
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnl $$8 = new gnl($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements gnx<mc> {
-      private final gop a;
-
-      public b(gop $$0) {
-         this.a = $$0;
-      }
-
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnl $$8 = new gnl($$1, $$2, $$3, $$4);
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnl $$8 = new gnl($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
+         $$8.d(azm.b($$1.C_(), 3.0F, 5.0F));
          $$8.a(this.a);
          return $$8;
       }

@@ -1,65 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dqi extends dmm implements dtx {
-   public static final MapCodec<dqi> a = b(dqi::new);
-   private static final ebf b = ebe.I;
-   private static final ffr c = dmm.b(12.0, 10.0, 16.0);
+public abstract class dqi extends dmr {
+   protected final jb a;
+   protected final boolean b;
+   protected final ffw d;
 
-   @Override
-   public MapCodec<dqi> a() {
-      return a;
-   }
-
-   protected dqi(ean.d $$0) {
+   protected dqi(eas.d $$0, jb $$1, ffw $$2, boolean $$3) {
       super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)));
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected ewv b_(eao $$0) {
-      return $$0.c(b) ? eww.c.a(false) : super.b_($$0);
-   }
+   protected abstract MapCodec<? extends dqi> a();
 
    @Nullable
    @Override
-   public eao a(ddd $$0) {
-      eao $$1 = super.a($$0);
-      if ($$1 != null) {
-         ewv $$2 = $$0.q().b_($$0.a());
-         return $$1.b(b, Boolean.valueOf($$2.a() == eww.c));
-      } else {
-         return null;
+   public eat a(ddg $$0) {
+      eat $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
+   }
+
+   public eat b(azv $$0) {
+      return this.m();
+   }
+
+   @Override
+   protected boolean a(eat $$0, djp $$1, iv $$2) {
+      iv $$3 = $$2.a(this.a.g());
+      eat $$4 = $$1.a_($$3);
+      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   }
+
+   @Override
+   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      iv $$3 = $$2.d();
-      eao $$4 = $$1.a_($$3);
-      return $$4.c($$1, $$3, jb.a);
+   protected boolean o(eat $$0) {
+      return true;
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return c;
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return this.d;
    }
 
-   @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if ($$4 == jb.b && !this.a($$0, $$1, $$3)) {
-         return dmo.a.m();
-      } else {
-         if ($$0.c(b)) {
-            $$2.a($$3, eww.c, eww.c.a($$1));
-         }
+   protected abstract dqk c();
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-   }
+   protected abstract dmr b();
 }

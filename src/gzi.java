@@ -1,21 +1,17 @@
-public class gzi extends gvr<cru, hfd> {
-   public static final alg a = alg.b("textures/entity/projectiles/arrow.png");
-   public static final alg g = alg.b("textures/entity/projectiles/tipped_arrow.png");
+public class gzi extends gvq<cpa, hfa> {
+   private static final alg a = alg.b("textures/entity/skeleton/stray.png");
+   private static final alg j = alg.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gzi(gwt.a $$0) {
-      super($$0);
+   public gzi(gwy.a $$0) {
+      super($$0, gjs.dr, gjs.ds, gjs.dt);
+      this.a(new hbq<>(this, $$0.f(), gjs.du, j));
    }
 
-   protected alg a(hfd $$0) {
-      return $$0.d ? g : a;
+   public alg b(hfa $$0) {
+      return a;
    }
 
-   public hfd a() {
-      return new hfd();
-   }
-
-   public void a(cru $$0, hfd $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.d = $$0.y() > 0;
+   public hfa b() {
+      return new hfa();
    }
 }

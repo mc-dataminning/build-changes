@@ -1,27 +1,25 @@
-import com.mojang.serialization.Codec;
-
 public enum eby implements bak {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+   a("up"),
+   b("side"),
+   c("none");
 
-   @Deprecated
-   public static final Codec<eby> e = ayu.c(eby::valueOf);
-   private final String f;
-   private final wy g;
+   private final String d;
 
    private eby(final String $$0) {
-      this.f = $$0;
-      this.g = wy.c("structure_block.mode_info." + $$0);
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
    }
 
-   public wy a() {
-      return this.g;
+   public boolean a() {
+      return this != c;
    }
 }

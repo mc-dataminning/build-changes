@@ -1,17 +1,49 @@
-public interface ewn {
-   void a(iv var1);
+import javax.annotation.Nullable;
 
-   boolean I_();
+public interface ewn extends ews {
+   @Nullable
+   ecv a(jy var1);
 
-   int a();
+   int b(iv var1);
 
-   default void a(iv $$0, boolean $$1) {
-      this.a(jy.a($$0), $$1);
+   public static enum a implements ewn {
+      a;
+
+      @Nullable
+      @Override
+      public ecv a(jy $$0) {
+         return null;
+      }
+
+      @Override
+      public int b(iv $$0) {
+         return 0;
+      }
+
+      @Override
+      public void a(iv $$0) {
+      }
+
+      @Override
+      public boolean I_() {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public void a(jy $$0, boolean $$1) {
+      }
+
+      @Override
+      public void a(dir $$0, boolean $$1) {
+      }
+
+      @Override
+      public void b(dir $$0) {
+      }
    }
-
-   void a(jy var1, boolean var2);
-
-   void a(dio var1, boolean var2);
-
-   void b(dio var1);
 }

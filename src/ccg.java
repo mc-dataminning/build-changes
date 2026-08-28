@@ -10,7 +10,7 @@ public class ccg {
    public static final int b = 2;
    public static final float c = 0.5F;
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> a(jf<cqy> $$0, float $$1) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> a(jf<crb> $$0, float $$1) {
       return ImmutableList.of(
          Pair.of(0, new cbu(0.8F)),
          Pair.of(0, bzy.a()),
@@ -38,13 +38,13 @@ public class ccg {
    }
 
    private static boolean a(arq $$0, iv $$1) {
-      eao $$2 = $$0.a_($$1);
-      return $$2.a(axc.T) && !$$2.c(dmf.c);
+      eat $$2 = $$0.a_($$1);
+      return $$2.a(axc.T) && !$$2.c(dmk.c);
    }
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> b(jf<cqy> $$0, float $$1) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> b(jf<crb> $$0, float $$1) {
       ccl $$2;
-      if ($$0.a(cqy.g)) {
+      if ($$0.a(crb.g)) {
          $$2 = new cck();
       } else {
          $$2 = new ccl();
@@ -60,8 +60,8 @@ public class ccg {
                   Pair.of(cbr.a(cgl.c, 0.4F, 4), 2),
                   Pair.of(cbs.a(cgl.c, 0.4F, 1, 10), 5),
                   Pair.of(cbt.a(cgl.f, $$1, 1, 6, cgl.c), 5),
-                  Pair.of(new bzv(), $$0.a(cqy.g) ? 2 : 5),
-                  Pair.of(new ccc(), $$0.a(cqy.g) ? 4 : 7)
+                  Pair.of(new bzv(), $$0.a(crb.g) ? 2 : 5),
+                  Pair.of(new ccc(), $$0.a(crb.g) ? 4 : 7)
                )
             )
          ),
@@ -73,7 +73,7 @@ public class ccg {
       );
    }
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> a(float $$0) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> a(float $$0) {
       return ImmutableList.of(
          Pair.of(0, new cak(80, 120)),
          a(),
@@ -96,7 +96,7 @@ public class ccg {
       );
    }
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> c(jf<cqy> $$0, float $$1) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> c(jf<crb> $$0, float $$1) {
       return ImmutableList.of(
          Pair.of(2, cbg.a(cgl.b, $$1, 1, 150, 1200)),
          Pair.of(3, ccd.a($$0x -> $$0x.a(cip.n), cgl.b)),
@@ -113,7 +113,7 @@ public class ccg {
       );
    }
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> d(jf<cqy> $$0, float $$1) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> d(jf<crb> $$0, float $$1) {
       return ImmutableList.of(
          Pair.of(2, cbw.a(ImmutableList.of(Pair.of(cbr.a(cgl.e, 0.4F, 40), 2), Pair.of(cbl.a(), 2)))),
          Pair.of(10, new cbi(400, 1600)),
@@ -127,7 +127,7 @@ public class ccg {
       );
    }
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> e(jf<cqy> $$0, float $$1) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> e(jf<crb> $$0, float $$1) {
       return ImmutableList.of(
          Pair.of(
             2,
@@ -153,14 +153,14 @@ public class ccg {
       );
    }
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> f(jf<cqy> $$0, float $$1) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> f(jf<crb> $$0, float $$1) {
       float $$2 = $$1 * 1.5F;
       return ImmutableList.of(
          Pair.of(0, ccf.a()), Pair.of(1, cbe.b(cgl.B, $$2, 6, false)), Pair.of(1, cbe.b(cgl.z, $$2, 6, false)), Pair.of(3, cce.a($$2, 2, 2)), b()
       );
    }
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> g(jf<cqy> $$0, float $$1) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> g(jf<crb> $$0, float $$1) {
       return ImmutableList.of(
          Pair.of(0, caw.a()),
          Pair.of(0, cbw.a(ImmutableList.of(Pair.of(cbg.a(cgl.e, $$1 * 1.5F, 2, 150, 200), 6), Pair.of(cce.a($$1 * 1.5F), 2)))),
@@ -169,7 +169,7 @@ public class ccg {
       );
    }
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> h(jf<cqy> $$0, float $$1) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> h(jf<crb> $$0, float $$1) {
       return ImmutableList.of(
          Pair.of(0, ccn.a(ccn.a(ccg::b), cbw.a(ImmutableList.of(Pair.of(caj.a($$1), 5), Pair.of(cce.a($$1 * 1.1F), 2))))),
          Pair.of(0, new bze(600, 600)),
@@ -179,7 +179,7 @@ public class ccg {
       );
    }
 
-   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqv>>> i(jf<cqy> $$0, float $$1) {
+   public static ImmutableList<Pair<Integer, ? extends bzb<? super cqy>>> i(jf<crb> $$0, float $$1) {
       int $$2 = 2;
       return ImmutableList.of(Pair.of(0, cbb.a(15, 3)), Pair.of(1, caa.a(32, $$1 * 1.25F, 2)), b());
    }
@@ -209,12 +209,12 @@ public class ccg {
    }
 
    private static boolean a(arq $$0, bxj $$1) {
-      csz $$2 = $$0.d($$1.du());
+      ctc $$2 = $$0.d($$1.du());
       return $$2 != null && $$2.r() && !$$2.e() && !$$2.f();
    }
 
    private static boolean b(arq $$0, bxj $$1) {
-      csz $$2 = $$0.d($$1.du());
+      ctc $$2 = $$0.d($$1.du());
       return $$2 != null && $$2.e();
    }
 }

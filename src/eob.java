@@ -1,30 +1,18 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eob extends eny {
-   protected final long c;
-   protected final evy.a d;
-   protected final float e;
-   protected final evy f;
+public class eob<P extends eoa> {
+   public static final eob<enz> a = a("mangrove_root_placer", enz.c);
+   private final MapCodec<P> b;
 
-   protected static <P extends eob> P3<Mu<P>, Long, evy.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         evy.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         ayu.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   private static <P extends eoa> eob<P> a(String $$0, MapCodec<P> $$1) {
+      return js.a(mg.W, $$0, new eob<>($$1));
    }
 
-   protected eob(long $$0, evy.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = evy.b(new ehm(new ego($$0)), $$1);
+   private eob(MapCodec<P> $$0) {
+      this.b = $$0;
    }
 
-   protected double a(iv $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public MapCodec<P> a() {
+      return this.b;
    }
 }

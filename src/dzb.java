@@ -1,127 +1,98 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public class dzb {
-   private static final Codec<wy[]> c = xa.a
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ag.a($$0, 4).map($$0x -> new wy[]{(wy)$$0x.get(0), (wy)$$0x.get(1), (wy)$$0x.get(2), (wy)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dzb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.lenientOptionalFieldOf("filtered_messages").forGetter(dzb::d),
-               cyi.q.fieldOf("color").orElse(cyi.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dzb::a)
-   );
-   public static final int b = 4;
-   private final wy[] d;
-   private final wy[] e;
-   private final cyi f;
-   private final boolean g;
-   @Nullable
-   private ayy[] h;
-   private boolean i;
+public class dzb extends dxr implements efv.b<dzb.a> {
+   private final dzb.a a;
 
-   public dzb() {
-      this(c(), c(), cyi.p, false);
+   public dzb(iv $$0, eat $$1) {
+      super(dxt.L, $$0, $$1);
+      this.a = new dzb.a($$1, new efp($$0));
    }
 
-   public dzb(wy[] $$0, wy[] $$1, cyi $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public static void a(djm $$0, iv $$1, eat $$2, dzb $$3) {
+      $$3.a.d().a($$0, $$1, $$0.C_(), true);
    }
 
-   private static wy[] c() {
-      return new wy[]{wx.a, wx.a, wx.a, wx.a};
+   @Override
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      this.a.b.a($$0);
    }
 
-   private static dzb a(wy[] $$0, Optional<wy[]> $$1, cyi $$2, boolean $$3) {
-      return new dzb($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      this.a.b.b($$0);
+      super.b($$0, $$1);
    }
 
-   public boolean a() {
-      return this.g;
+   public dzb.a a() {
+      return this.a;
    }
 
-   public dzb a(boolean $$0) {
-      return $$0 == this.g ? this : new dzb(this.d, this.e, this.f, $$0);
-   }
+   public static class a implements efv {
+      public static final int a = 8;
+      final dtu b;
+      private final eat c;
+      private final efx d;
 
-   public cyi b() {
-      return this.f;
-   }
-
-   public dzb a(cyi $$0) {
-      return $$0 == this.b() ? this : new dzb(this.d, this.e, $$0, this.g);
-   }
-
-   public wy a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dzb a(int $$0, wy $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dzb a(int $$0, wy $$1, wy $$2) {
-      wy[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      wy[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dzb($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(crj $$0) {
-      return Arrays.stream(this.b($$0.X())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public wy[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public ayy[] a(boolean $$0, Function<wy, ayy> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new ayy[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
+      public a(eat $$0, efx $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dtu.a();
       }
 
-      return this.h;
-   }
-
-   private Optional<wy[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
+      @Override
+      public efx a() {
+         return this.d;
       }
 
-      return Optional.empty();
-   }
+      @Override
+      public int b() {
+         return 8;
+      }
 
-   public boolean b(crj $$0) {
-      for (wy $$1 : this.b($$0.X())) {
-         xv $$2 = $$1.a();
-         ww $$3 = $$2.i();
-         if ($$3 != null && $$3.a() == ww.a.c) {
+      @Override
+      public efv.a c() {
+         return efv.a.b;
+      }
+
+      @Override
+      public boolean a(arq $$0, jf<eft> $$1, eft.a $$2, ffc $$3) {
+         if ($$1.a(eft.p) && $$2.a() instanceof bxj $$4) {
+            if (!$$4.eK()) {
+               bux $$5 = $$4.eH();
+               int $$6 = $$4.a($$0, y.a($$5, bux::d));
+               if ($$4.en() && $$6 > 0) {
+                  this.b.a(iv.a((jp)$$3.a(jb.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eJ();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, iv.a((jp)$$1x), this.c, $$0.C_()));
+            }
+
             return true;
+         } else {
+            return false;
          }
       }
 
-      return false;
+      @VisibleForTesting
+      public dtu d() {
+         return this.b;
+      }
+
+      private void a(arq $$0, iv $$1, eat $$2, azv $$3) {
+         $$0.a($$1, $$2.b(dtr.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(ly.K, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, awn.wQ, awo.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(djm $$0, bxj $$1) {
+         if ($$1.eq() instanceof arr $$3) {
+            bux $$4 = $$1.eH() == null ? $$0.al().a((crm)$$3) : $$1.eH();
+            aq.Z.a($$3, $$1, $$4);
+         }
+      }
    }
 }

@@ -1,55 +1,117 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record dfg(dfn f, dfn g, dfn h, dfn i, int j, float k) implements dfh {
-   public static final MapCodec<dfg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dfn.a.fieldOf("ingredient").forGetter(dfg::b),
-               dfn.a.fieldOf("fuel").forGetter(dfg::c),
-               dfn.a.fieldOf("result").forGetter(dfg::d),
-               dfn.a.fieldOf("crafting_station").forGetter(dfg::e),
-               Codec.INT.fieldOf("duration").forGetter(dfg::f),
-               Codec.FLOAT.fieldOf("experience").forGetter(dfg::g)
-            )
-            .apply($$0, dfg::new)
-   );
-   public static final yw<wj, dfg> b = yw.a(dfn.b, dfg::b, dfn.b, dfg::c, dfn.b, dfg::d, dfn.b, dfg::e, yu.h, dfg::f, yu.l, dfg::g, dfg::new);
-   public static final dfh.a<dfg> c = new dfh.a<>(a, b);
+public class dfg implements ddt {
+   final String d;
+   final ddr e;
+   final dea f;
+   final dea g;
+   final dfh h;
+   @Nullable
+   private ded i;
 
-   @Override
-   public dfh.a<dfg> a() {
-      return c;
+   public dfg(String $$0, ddr $$1, dea $$2, dea $$3, dfh $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+   }
+
+   public boolean a(dds $$0, djm $$1) {
+      if ($$0.e() != 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            czn $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if (!$$2 && this.f.a($$5)) {
+                  if (this.h.b($$5)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if ($$3 || !this.g.a($$5)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$2 && $$3;
+      }
+   }
+
+   public czn a(dds $$0, jh.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+         czn $$3 = $$0.a($$2);
+         if (!$$3.f() && this.f.a($$3)) {
+            return this.h.a($$3);
+         }
+      }
+
+      return czn.k;
    }
 
    @Override
-   public boolean a(cut $$0) {
-      return this.f.a($$0) && this.c().a($$0) && dfh.super.a($$0);
-   }
-
-   public dfn b() {
-      return this.f;
-   }
-
-   public dfn c() {
-      return this.g;
+   public List<dfk> g() {
+      return List.of(new dfp(List.of(this.f.c(), this.g.c()), this.h.a(), new dfq.d(czr.fi)));
    }
 
    @Override
-   public dfn d() {
-      return this.h;
+   public deo<dfg> a() {
+      return deo.m;
    }
 
    @Override
-   public dfn e() {
+   public String j() {
+      return this.d;
+   }
+
+   @Override
+   public ded al_() {
+      if (this.i == null) {
+         this.i = ded.b(List.of(this.f, this.g));
+      }
+
       return this.i;
    }
 
-   public int f() {
-      return this.j;
+   @Override
+   public ddr c() {
+      return this.e;
    }
 
-   public float g() {
-      return this.k;
+   public static class a implements deo<dfg> {
+      private static final MapCodec<dfg> x = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.d),
+                  ddr.e.fieldOf("category").orElse(ddr.d).forGetter($$0x -> $$0x.e),
+                  dea.d.fieldOf("input").forGetter($$0x -> $$0x.f),
+                  dea.d.fieldOf("material").forGetter($$0x -> $$0x.g),
+                  dfh.a.fieldOf("result").forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, dfg::new)
+      );
+      public static final yw<wj, dfg> w = yw.a(yu.p, $$0 -> $$0.d, ddr.g, $$0 -> $$0.e, dea.a, $$0 -> $$0.f, dea.a, $$0 -> $$0.g, dfh.b, $$0 -> $$0.h, dfg::new);
+
+      @Override
+      public MapCodec<dfg> a() {
+         return x;
+      }
+
+      @Override
+      public yw<wj, dfg> b() {
+         return w;
+      }
    }
 }

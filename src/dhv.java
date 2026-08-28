@@ -1,32 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
+import java.util.Map;
 
-public record dhv(jf<dhx> c, jf<dhz> d) implements dcp {
-   public static final Codec<dhv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dhx.c.fieldOf("material").forGetter(dhv::a), dhz.c.fieldOf("pattern").forGetter(dhv::b)).apply($$0, dhv::new)
-   );
-   public static final yw<wj, dhv> b = yw.a(dhx.d, dhv::a, dhz.d, dhv::b, dhv::new);
-   private static final wy e = wy.c(ag.a("item", alg.b("smithing_template.upgrade"))).a(o.h);
+public interface dhv {
+   alf<? extends js<dhu>> a = alf.a(alg.b("equipment_asset"));
+   alf<dhu> b = a("leather");
+   alf<dhu> c = a("chainmail");
+   alf<dhu> d = a("iron");
+   alf<dhu> e = a("gold");
+   alf<dhu> f = a("diamond");
+   alf<dhu> g = a("turtle_scute");
+   alf<dhu> h = a("netherite");
+   alf<dhu> i = a("armadillo_scute");
+   alf<dhu> j = a("elytra");
+   alf<dhu> k = a("saddle");
+   Map<cyl, alf<dhu>> l = ag.a(cyl.class, $$0 -> a($$0.c() + "_carpet"));
+   alf<dhu> m = a("trader_llama");
 
-   @Override
-   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
-      $$1.accept(e);
-      $$1.accept(wx.a().b(this.d.a().a(this.c)));
-      $$1.accept(wx.a().b(this.c.a().b()));
-   }
-
-   public alg a(String $$0, alf<dhr> $$1) {
-      dhw.a $$2 = this.a().a().a().a($$1);
-      return this.b().a().a().a((UnaryOperator<String>)($$2x -> $$0 + "/" + $$2x + "_" + $$2.a()));
-   }
-
-   public jf<dhx> a() {
-      return this.c;
-   }
-
-   public jf<dhz> b() {
-      return this.d;
+   static alf<dhu> a(String $$0) {
+      return alf.a(a, alg.b($$0));
    }
 }

@@ -1,56 +1,42 @@
-public class gpb extends gou {
-   private float a;
+public class gpb extends gnx {
+   private final bwi a;
+   private int b;
+   private final int D;
+   private final lw E;
 
-   gpb(gkl $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.t = (int)(Math.random() * 60.0) + 30;
-      this.n = false;
-      this.j = 0.0;
-      this.k = -0.05;
-      this.l = 0.0;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.u = 0.002F;
+   public gpb(gkq $$0, bwi $$1, lw $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   @Override
-   public gny b() {
-      return gny.b;
+   public gpb(gkq $$0, bwi $$1, lw $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dx());
+   }
+
+   private gpb(gkq $$0, bwi $$1, lw $$2, int $$3, ffc $$4) {
+      super($$0, $$1.dz(), $$1.e(0.5), $$1.dF(), $$4.d, $$4.e, $$4.f);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = 0.6F;
-         this.j = this.j + (double)(0.6F * azm.b(this.a));
-         this.l = this.l + (double)(0.6F * azm.a(this.a));
-         this.j *= 0.07;
-         this.l *= 0.07;
-         this.a(this.j, this.k, this.l);
-         if (!this.c.b_(iv.a(this.g, this.h, this.i)).a(axh.a) || this.m) {
-            this.k();
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
          }
-
-         this.a += 0.08F;
-      }
-   }
-
-   public static class a implements gnx<mc> {
-      private final gop a;
-
-      public a(gop $$0) {
-         this.a = $$0;
       }
 
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gpb $$8 = new gpb($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
       }
    }
 }

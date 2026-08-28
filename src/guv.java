@@ -1,59 +1,61 @@
 import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 
-public class guv implements guo.a {
-   private final fpo a;
-   private final Map<Long, Map<iv, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class guv implements gut.a {
+   private static final float a = 0.02F;
+   private final Map<iv, guv.a> b = Maps.newHashMap();
 
-   guv(fpo $$0) {
-      this.a = $$0;
-   }
-
-   public void a(long $$0, iv $$1) {
-      Map<iv, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
+   public void a(iv $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new guv.a($$1, $$2, ag.c() + (long)$$3));
    }
 
    @Override
-   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.ae();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<iv> $$8 = Sets.newHashSet();
-      Map<iv, Integer> $$9 = Maps.newHashMap();
-      fkc $$10 = $$1.getBuffer(gqx.y());
-      Iterator<Entry<Long, Map<iv, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a() {
+      this.b.clear();
+   }
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<iv, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<iv, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<iv, Integer> $$16 : $$14.entrySet()) {
-               iv $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  fes $$19 = new fes(iv.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  grf.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
-         }
+   @Override
+   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ag.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((guv.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
+
+   private void a(fkd $$0, gqr $$1, iv $$2, guv.a $$3) {
+      gut.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gut.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
+   }
+
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      for (Entry<iv, Integer> $$20 : $$9.entrySet()) {
-         iv $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         guo.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

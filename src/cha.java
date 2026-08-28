@@ -4,13 +4,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public class cha extends chk<cph> {
+public class cha extends chk<cpk> {
    @Override
    public Set<cgl<?>> a() {
       return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cgl.C)));
    }
 
-   protected void a(arq $$0, cph $$1) {
+   protected void a(arq $$0, cpk $$1) {
       super.a($$0, $$1);
       $$1.eb()
          .c(cgl.g)

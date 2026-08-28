@@ -1,85 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class der implements ddq {
-   final String d;
-   final ddo e;
-   final czk f;
-   final List<ddx> g;
-   @Nullable
-   private dea h;
-
-   public der(String $$0, ddo $$1, czk $$2, List<ddx> $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+public record der<T extends dee<?>>(dfq a, Optional<dej<T>> b) {
+   public static <T extends dee<?>> yw<wj, der<T>> a() {
+      return yw.a(dfq.b, der::b, $$0 -> new der<>($$0, Optional.empty()));
    }
 
-   @Override
-   public del<der> a() {
-      return del.b;
+   public dfq b() {
+      return this.a;
    }
 
-   @Override
-   public String j() {
-      return this.d;
+   public Optional<dej<T>> c() {
+      return this.b;
    }
 
-   @Override
-   public ddo c() {
-      return this.e;
-   }
+   public static record a<T extends dee<?>>(dea a, der<T> b) {
 
-   @Override
-   public dea al_() {
-      if (this.h == null) {
-         this.h = dea.b(this.g);
+      public static <T extends dee<?>> yw<wj, der.a<T>> a() {
+         return yw.a(dea.a, der.a::b, der.a(), der.a::c, der.a::new);
       }
 
-      return this.h;
-   }
+      public dea b() {
+         return this.a;
+      }
 
-   public boolean a(ddp $$0, djh $$1) {
-      if ($$0.e() != this.g.size()) {
-         return false;
-      } else {
-         return $$0.a() == 1 && this.g.size() == 1 ? this.g.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
+      public der<T> c() {
+         return this.b;
       }
    }
 
-   public czk a(ddp $$0, jh.a $$1) {
-      return this.f.v();
-   }
-
-   @Override
-   public List<dfh> g() {
-      return List.of(new dfm(this.g.stream().map(ddx::c).toList(), new dfn.f(this.f), new dfn.d(czo.fi)));
-   }
-
-   public static class a implements del<der> {
-      private static final MapCodec<der> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.d),
-                  ddo.e.fieldOf("category").orElse(ddo.d).forGetter($$0x -> $$0x.e),
-                  czk.d.fieldOf("result").forGetter($$0x -> $$0x.f),
-                  ddx.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, der::new)
-      );
-      public static final yw<wj, der> w = yw.a(yu.p, $$0 -> $$0.d, ddo.g, $$0 -> $$0.e, czk.i, $$0 -> $$0.f, ddx.a.a(yu.a()), $$0 -> $$0.g, der::new);
-
-      @Override
-      public MapCodec<der> a() {
-         return x;
+   public static record b<T extends dee<?>>(List<der.a<T>> a) {
+      public static <T extends dee<?>> der.b<T> a() {
+         return new der.b<>(List.of());
       }
 
-      @Override
-      public yw<wj, der> b() {
-         return w;
+      public static <T extends dee<?>> yw<wj, der.b<T>> b() {
+         return yw.a(der.a.<T>a().a(yu.a()), der.b::e, der.b::new);
+      }
+
+      public boolean a(czn $$0) {
+         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
+      }
+
+      public der.b<T> b(czn $$0) {
+         return new der.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
+      }
+
+      public boolean c() {
+         return this.a.isEmpty();
+      }
+
+      public int d() {
+         return this.a.size();
+      }
+
+      public List<der.a<T>> e() {
+         return this.a;
       }
    }
 }

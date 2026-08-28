@@ -1,21 +1,108 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class gri {
-   public static final gri a = new gri(Map.of());
-   private final Map<dmm, hio<?>> b;
+public record gri(Map<String, String> c, Set<String> d) {
+   public static final gri a = new gri(Map.of(), Set.of());
+   public static final Codec<gri> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gri::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gri::e)
+            )
+            .apply($$0, gri::new)
+   );
 
-   public gri(Map<dmm, hio<?>> $$0) {
-      this.b = $$0;
+   public static gri.a a() {
+      return new gri.a();
    }
 
-   public static gri a(gjk $$0) {
-      return new gri(hip.a($$0));
+   public gri a(gri $$0) {
+      if (this.c()) {
+         return $$0;
+      } else if ($$0.c()) {
+         return this;
+      } else {
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new gri($$1.buildKeepingLast(), $$2.build());
+      }
    }
 
-   public void a(dmm $$0, czi $$1, fjy $$2, gqm $$3, int $$4, int $$5) {
-      hio<?> $$6 = this.b.get($$0);
-      if ($$6 != null) {
-         $$6.a(null, $$1, $$2, $$3, $$4, $$5, false);
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+      }
+
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
+      }
+
+      return $$0.toString();
+   }
+
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
+   }
+
+   public Map<String, String> d() {
+      return this.c;
+   }
+
+   public Set<String> e() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
+
+      a() {
+      }
+
+      public gri.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
+         } else {
+            this.a.put($$0, b($$1));
+            return this;
+         }
+      }
+
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
+      }
+
+      public gri.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
+
+      public gri.a a(String $$0, int $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
+
+      public gri.a a(String $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public gri a() {
+         return new gri(this.a.build(), this.b.build());
       }
    }
 }

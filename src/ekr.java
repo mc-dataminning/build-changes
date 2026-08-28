@@ -1,28 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class ekr extends ejt<emk> {
-   public ekr(Codec<emk> $$0) {
+public class ekr extends ejy<emi> {
+   public ekr(Codec<emi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<emk> $$0) {
-      emk $$1 = $$0.f();
-      azv $$2 = $$0.d();
-      iv $$3 = $$0.e();
-      dkg $$4 = $$0.b();
-      int $$5 = 0;
-      iv.a $$6 = new iv.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public boolean a(eka<emi> $$0) {
+      dkl $$1 = $$0.b();
+      iv $$2 = $$0.e();
+      eat $$3 = $$1.a_($$2.e());
+      emi $$4 = $$0.f();
+      azv $$5 = $$0.d();
+      if (!$$3.a(axc.aO)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.G_() + 1 && $$6 + 1 <= $$1.ao()) {
+            int $$7 = 0;
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               iv $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               eat $$10 = $$4.b.a($$5, $$9);
+               if ($$1.v($$9) && $$9.v() > $$1.G_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
+
+            return $$7 > 0;
+         } else {
+            return false;
          }
       }
-
-      return $$5 > 0;
    }
 }

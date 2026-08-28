@@ -9,7 +9,7 @@ public class du extends dk<du.a> {
    }
 
    public void a(arr $$0, ciz $$1) {
-      ezo $$2 = by.b($$0, $$1);
+      ezt $$2 = by.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -26,7 +26,7 @@ public class du extends dk<du.a> {
          return aq.y.a(new du.a(Optional.empty(), Optional.of(by.a($$0))));
       }
 
-      public boolean a(ezo $$0) {
+      public boolean a(ezt $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

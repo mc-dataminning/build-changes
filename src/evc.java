@@ -1,27 +1,9 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class evc extends eve {
-   public static final MapCodec<evc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eao.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, evc::new)
-   );
-   private final eao b;
-   private final float d;
+public abstract class evc {
+   public static final Codec<evc> c = mg.o.q().dispatch("predicate_type", evc::a, evd::codec);
 
-   public evc(eao $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   public abstract boolean a(iv var1, iv var2, iv var3, azv var4);
 
-   @Override
-   public boolean a(eao $$0, azv $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected evf<?> a() {
-      return evf.f;
-   }
+   protected abstract evd<?> a();
 }

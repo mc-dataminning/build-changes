@@ -1,83 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
+public class crn extends bwm {
+   private final crm b;
 
-public record crn(crn.a d) {
-   public static final wy a = wy.c("multiplayer.disconnect.expired_public_key");
-   private static final wy e = wy.c("multiplayer.disconnect.invalid_public_key_signature");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<crn> c = crn.a.a.xmap(crn::new, crn::b);
-
-   public static crn a(bab $$0, UUID $$1, crn.a $$2) throws crn.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new crn.b(e);
-      } else {
-         return new crn($$2);
-      }
+   public crn(crm $$0) {
+      this.b = $$0;
    }
 
-   public bab a() {
-      return bab.a(this.d.c, "SHA256withRSA");
+   @Override
+   public czn a(bws $$0, czn $$1) {
+      return $$0 == bws.a ? this.b.gi().b($$1) : super.a($$0, $$1);
    }
 
-   public crn.a b() {
-      return this.d;
+   @Override
+   public czn a(bws $$0) {
+      return $$0 == bws.a ? this.b.gi().g() : super.a($$0);
    }
 
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<crn.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ayu.q.fieldOf("expires_at").forGetter(crn.a::b), ayj.f.fieldOf("key").forGetter(crn.a::c), ayu.r.fieldOf("signature_v2").forGetter(crn.a::d)
-               )
-               .apply($$0, crn.a::new)
-      );
-
-      public a(vu $$0) {
-         this($$0.t(), $$0.u(), $$0.a(4096));
-      }
-
-      public void a(vu $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(bab $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof crn.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
-      }
-   }
-
-   public static class b extends xy {
-      public b(wy $$0) {
-         super($$0);
-      }
+   @Override
+   public boolean a() {
+      return this.b.gi().g().f() && super.a();
    }
 }

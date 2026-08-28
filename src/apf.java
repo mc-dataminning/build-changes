@@ -24,7 +24,7 @@ public class apf {
    private static int a(ej $$0, @Nullable bwi $$1, arr $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.h.b() != dje.d) {
+      } else if ($$2.h.b() != djj.d) {
          throw b.create($$2.m_());
       } else {
          $$2.d($$1);

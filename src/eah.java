@@ -1,101 +1,151 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class eah extends doq {
-   public static final MapCodec<eah> b = b(eah::new);
-   public static final ebm<ebq> c = ebe.bj;
-   public static final ebf d = ebe.B;
-   public static final int e = 4;
-   private static final ffr f = dmm.c(16.0, 0.0, 4.0);
-   private static final Map<jb, ffr> g = ffo.d(ffo.a(f, dmm.c(4.0, 4.0, 16.0)));
-   private static final Map<jb, ffr> h = ffo.d(ffo.a(f, dmm.c(4.0, 4.0, 20.0)));
+public final class eah {
+   private static final Map<String, eah> l = new Object2ObjectArrayMap();
+   public static final Codec<eah> a = Codec.stringResolver($$0 -> $$0.m, l::get);
+   public static final eah b = new eah(
+      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rn.g), Optional.of(rn.q), Optional.of(rn.F), Optional.of(rn.M)
+   );
+   public static final eah c = new eah(
+      "spruce", 0.5F, Optional.of(rn.t), Optional.of(rn.u), Optional.of(rn.n), Optional.empty(), Optional.empty(), Optional.empty()
+   );
+   public static final eah d = new eah(
+      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rn.A), Optional.of(rn.B), Optional.empty(), Optional.empty()
+   );
+   public static final eah e = new eah("azalea", Optional.empty(), Optional.of(rn.z), Optional.empty());
+   public static final eah f = new eah("birch", Optional.empty(), Optional.of(rn.l), Optional.of(rn.J));
+   public static final eah g = new eah("jungle", Optional.of(rn.s), Optional.of(rn.r), Optional.empty());
+   public static final eah h = new eah("acacia", Optional.empty(), Optional.of(rn.m), Optional.empty());
+   public static final eah i = new eah("cherry", Optional.empty(), Optional.of(rn.C), Optional.of(rn.O));
+   public static final eah j = new eah("dark_oak", Optional.of(rn.h), Optional.empty(), Optional.empty());
+   public static final eah k = new eah("pale_oak", Optional.of(rn.j), Optional.empty(), Optional.empty());
+   private final String m;
+   private final float n;
+   private final Optional<alf<ejk<?, ?>>> o;
+   private final Optional<alf<ejk<?, ?>>> p;
+   private final Optional<alf<ejk<?, ?>>> q;
+   private final Optional<alf<ejk<?, ?>>> r;
+   private final Optional<alf<ejk<?, ?>>> s;
+   private final Optional<alf<ejk<?, ?>>> t;
 
-   @Override
-   protected MapCodec<eah> a() {
-      return b;
+   public eah(String $$0, Optional<alf<ejk<?, ?>>> $$1, Optional<alf<ejk<?, ?>>> $$2, Optional<alf<ejk<?, ?>>> $$3) {
+      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
    }
 
-   public eah(ean.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(a, jb.c).b(c, ebq.a).b(d, Boolean.valueOf(false)));
+   public eah(
+      String $$0,
+      float $$1,
+      Optional<alf<ejk<?, ?>>> $$2,
+      Optional<alf<ejk<?, ?>>> $$3,
+      Optional<alf<ejk<?, ?>>> $$4,
+      Optional<alf<ejk<?, ?>>> $$5,
+      Optional<alf<ejk<?, ?>>> $$6,
+      Optional<alf<ejk<?, ?>>> $$7
+   ) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
+      this.s = $$6;
+      this.t = $$7;
+      l.put($$0, this);
    }
 
-   @Override
-   protected boolean g_(eao $$0) {
-      return true;
-   }
+   @Nullable
+   private alf<ejk<?, ?>> a(azv $$0, boolean $$1) {
+      if ($$0.i() < this.n) {
+         if ($$1 && this.t.isPresent()) {
+            return this.t.get();
+         }
 
-   @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return ($$0.c(d) ? g : h).get($$0.c(a));
-   }
-
-   private boolean a(eao $$0, eao $$1) {
-      dmm $$2 = $$0.c(c) == ebq.a ? dmo.bI : dmo.by;
-      return $$1.a($$2) && $$1.c(eag.c) && $$1.c(a) == $$0.c(a);
-   }
-
-   @Override
-   public eao a(djh $$0, iv $$1, eao $$2, crj $$3) {
-      if (!$$0.C && $$3.gk()) {
-         iv $$4 = $$1.a($$2.c(a).g());
-         if (this.a($$2, $$0.a_($$4))) {
-            $$0.b($$4, false);
+         if (this.r.isPresent()) {
+            return this.r.get();
          }
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      return $$1 && this.s.isPresent() ? this.s.get() : this.q.orElse(null);
    }
 
-   @Override
-   protected void a(eao $$0, arq $$1, iv $$2, boolean $$3) {
-      iv $$4 = $$2.a($$0.c(a).g());
-      if (this.a($$0, $$1.a_($$4))) {
-         $$1.b($$4, true);
+   @Nullable
+   private alf<ejk<?, ?>> a(azv $$0) {
+      return this.p.isPresent() && $$0.i() < this.n ? this.p.get() : this.o.orElse(null);
+   }
+
+   public boolean a(arq $$0, ecr $$1, iv $$2, eat $$3, azv $$4) {
+      alf<ejk<?, ?>> $$5 = this.a($$4);
+      if ($$5 != null) {
+         jf<ejk<?, ?>> $$6 = $$0.F_().f(mh.aL).a($$5).orElse(null);
+         if ($$6 != null) {
+            for (int $$7 = 0; $$7 >= -1; $$7--) {
+               for (int $$8 = 0; $$8 >= -1; $$8--) {
+                  if (a($$3, $$0, $$2, $$7, $$8)) {
+                     ejk<?, ?> $$9 = $$6.a();
+                     eat $$10 = dmt.a.m();
+                     $$0.a($$2.b($$7, 0, $$8), $$10, 260);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 260);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 260);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 260);
+                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
+                        return true;
+                     }
+
+                     $$0.a($$2.b($$7, 0, $$8), $$3, 260);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 260);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 260);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 260);
+                     return false;
+                  }
+               }
+            }
+         }
+      }
+
+      alf<ejk<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
+      if ($$11 == null) {
+         return false;
+      } else {
+         jf<ejk<?, ?>> $$12 = $$0.F_().f(mh.aL).a($$11).orElse(null);
+         if ($$12 == null) {
+            return false;
+         } else {
+            ejk<?, ?> $$13 = $$12.a();
+            eat $$14 = $$0.b_($$2).g();
+            $$0.a($$2, $$14, 260);
+            if ($$13.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$14) {
+                  $$0.a($$2, $$3, $$14, 2);
+               }
+
+               return true;
+            } else {
+               $$0.a($$2, $$3, 260);
+               return false;
+            }
+         }
       }
    }
 
-   @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      return $$4.g() == $$0.c(a) && !$$0.a($$1, $$3) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   private static boolean a(eat $$0, diq $$1, iv $$2, int $$3, int $$4) {
+      dmr $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
    }
 
-   @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      eao $$3 = $$1.a_($$2.a($$0.c(a).g()));
-      return this.a($$0, $$3) || $$3.a(dmo.ca) && $$3.c(a) == $$0.c(a);
-   }
-
-   @Override
-   protected void a(eao $$0, djh $$1, iv $$2, dmm $$3, @Nullable eyd $$4, boolean $$5) {
-      if ($$0.a((djk)$$1, $$2)) {
-         $$1.b($$2.a($$0.c(a).g()), $$3, exz.a($$4, $$0.c(a).g()));
+   private boolean a(djn $$0, iv $$1) {
+      for (iv $$2 : iv.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
+         if ($$0.a_($$2).a(axc.V)) {
+            return true;
+         }
       }
-   }
 
-   @Override
-   protected czk a(djk $$0, iv $$1, eao $$2, boolean $$3) {
-      return new czk($$2.c(c) == ebq.b ? dmo.by : dmo.bI);
-   }
-
-   @Override
-   protected eao a(eao $$0, dtg $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected eao a(eao $$0, drp $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(a, c, d);
-   }
-
-   @Override
-   protected boolean a(eao $$0, exk $$1) {
       return false;
    }
 }

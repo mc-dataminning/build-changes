@@ -1,48 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class enp extends enj {
-   public static final MapCodec<enp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(btl.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, enp::new)
-   );
-   private final btl b;
+public class enp<P extends eno> {
+   public static final enp<enj> a = a("blob_foliage_placer", enj.a);
+   public static final enp<enu> b = a("spruce_foliage_placer", enu.a);
+   public static final enp<ens> c = a("pine_foliage_placer", ens.a);
+   public static final enp<eni> d = a("acacia_foliage_placer", eni.a);
+   public static final enp<enk> e = a("bush_foliage_placer", enk.c);
+   public static final enp<enn> f = a("fancy_foliage_placer", enn.c);
+   public static final enp<enq> g = a("jungle_foliage_placer", enq.a);
+   public static final enp<enr> h = a("mega_pine_foliage_placer", enr.a);
+   public static final enp<enm> i = a("dark_oak_foliage_placer", enm.a);
+   public static final enp<ent> j = a("random_spread_foliage_placer", ent.a);
+   public static final enp<enl> k = a("cherry_foliage_placer", enl.a);
+   private final MapCodec<P> l;
 
-   public enp(btl $$0, btl $$1, btl $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private static <P extends eno> enp<P> a(String $$0, MapCodec<P> $$1) {
+      return js.a(mg.U, $$0, new enp<>($$1));
    }
 
-   @Override
-   protected enk<?> a() {
-      return enk.b;
+   private enp(MapCodec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   protected void a(djn $$0, enj.b $$1, azv $$2, emt $$3, int $$4, enj.a $$5, int $$6, int $$7, int $$8) {
-      iv $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
-
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
-         } else {
-            $$10++;
-         }
-      }
-   }
-
-   @Override
-   public int a(azv $$0, int $$1, emt $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
-   }
-
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

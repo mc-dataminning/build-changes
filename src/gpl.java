@@ -1,64 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class gpl {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cri.h();
-   public static final Codec<gpl> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ag.a($$0, c)).xmap(gpl::new, $$0 -> $$0.f);
-   private static final DynamicOps<uw> d = un.a;
-   private static final Dynamic<?> e = new Dynamic(d, (uw)czk.f.encodeStart(d, czk.k).getOrThrow());
-   private List<Dynamic<?>> f;
+public abstract class gpl extends crm {
+   @Nullable
+   private glc h;
+   protected ffc a = ffc.c;
+   public float b;
+   public float c;
+   public float d;
+   public final gkq e;
+   public float f;
+   public float g;
 
-   private gpl(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+   public gpl(gkq $$0, GameProfile $$1) {
+      super($$0, $$0.aa(), $$0.ab(), $$1);
+      this.e = $$0;
    }
 
-   public gpl() {
-      this(Collections.nCopies(c, e));
+   @Override
+   public boolean V_() {
+      glc $$0 = this.a();
+      return $$0 != null && $$0.e() == djj.d;
    }
 
-   public List<czk> a(jh.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> czk.f.parse(ale.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(czk.k))
-         .toList();
+   @Override
+   public boolean b() {
+      glc $$0 = this.a();
+      return $$0 != null && $$0.e() == djj.b;
    }
 
-   public void a(cri $$0, jt $$1) {
-      ale<uw> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
-
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         czk $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = czk.f
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+   @Nullable
+   protected glc a() {
+      if (this.h == null) {
+         this.h = fpt.Q().L().a(this.cF());
       }
 
-      this.f = $$3.build();
+      return this.h;
    }
 
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
+   @Override
+   public void h() {
+      this.f = this.g;
+      this.a = this.dx();
+      super.h();
+   }
+
+   public ffc I(float $$0) {
+      return this.a.a(this.dx(), (double)$$0);
+   }
+
+   public hks c() {
+      glc $$0 = this.a();
+      return $$0 == null ? hki.a(this.cF()) : $$0.g();
+   }
+
+   public float a(boolean $$0, float $$1) {
+      float $$2 = 1.0F;
+      if (this.gj().b) {
+         $$2 *= 1.1F;
+      }
+
+      float $$3 = this.gj().b();
+      if ($$3 != 0.0F) {
+         float $$4 = (float)this.h(byp.v) / $$3;
+         $$2 *= ($$4 + 1.0F) / 2.0F;
+      }
+
+      if (this.fy()) {
+         if (this.fA().a(czr.pj)) {
+            float $$5 = Math.min((float)this.fC() / 20.0F, 1.0F);
+            $$2 *= 1.0F - azm.l($$5) * 0.15F;
+         } else if ($$0 && this.gG()) {
+            return 0.1F;
          }
       }
 
-      return true;
-   }
-
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
+      return azm.h($$1, 1.0F, $$2);
    }
 }

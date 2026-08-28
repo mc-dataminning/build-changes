@@ -12,7 +12,7 @@ public class ChunkRegionWriteEvent extends brd {
    public static final String EVENT_NAME = "minecraft.ChunkRegionWrite";
    public static final EventType TYPE = EventType.getEventType(ChunkRegionWriteEvent.class);
 
-   public ChunkRegionWriteEvent(eee $$0, dio $$1, eed $$2, int $$3) {
+   public ChunkRegionWriteEvent(eej $$0, dir $$1, eei $$2, int $$3) {
       super($$0, $$1, $$2, $$3);
    }
 }

@@ -1,63 +1,139 @@
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-public class hlw {
-   static final int a = -1;
-   private static final int b = 0;
+public record hlw(Map<hlw.d, List<hlw.c>> b) {
+   private static final Codec<List<hlw.c>> c = ayu.b(hlw.c.a.listOf());
+   public static final Codec<hlw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayu.d(Codec.unboundedMap(hlw.d.o, c)).fieldOf("layers").forGetter(hlw::b)).apply($$0, hlw::new)
+   );
 
-   public static Object2IntMap<eao> a(fqq $$0, hlm.b $$1) {
-      Map<dmm, List<ebr<?>>> $$2 = new HashMap<>();
-      Map<hlw.a, Set<eao>> $$3 = new HashMap<>();
-      $$1.a().forEach(($$3x, $$4x) -> {
-         List<ebr<?>> $$5x = $$2.computeIfAbsent($$3x.b(), $$1xx -> List.copyOf($$0.a($$1xx)));
-         hlw.a $$6x = hlw.a.a($$3x, $$4x, $$5x);
-         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$3x);
-      });
-      int $$4 = 1;
-      Object2IntMap<eao> $$5 = new Object2IntOpenHashMap();
-      $$5.defaultReturnValue(-1);
-
-      for (Set<eao> $$6 : $$3.values()) {
-         Iterator<eao> $$7 = $$6.iterator();
-
-         while ($$7.hasNext()) {
-            eao $$8 = $$7.next();
-            if ($$8.o() != dsz.b) {
-               $$7.remove();
-               $$5.put($$8, 0);
-            }
-         }
-
-         if ($$6.size() > 1) {
-            int $$9 = $$4++;
-            $$6.forEach($$2x -> $$5.put($$2x, $$9));
-         }
-      }
-
-      return $$5;
+   public static hlw.a a() {
+      return new hlw.a();
    }
 
-   static record a(Object a, List<Object> b) {
-      public static hlw.a a(eao $$0, gry.a $$1, List<ebr<?>> $$2) {
-         List<Object> $$3 = a($$0, $$2);
-         Object $$4 = $$1.a($$0);
-         return new hlw.a($$4, $$3);
+   public List<hlw.c> a(hlw.d $$0) {
+      return this.b.getOrDefault($$0, List.of());
+   }
+
+   public static class a {
+      private final Map<hlw.d, List<hlw.c>> a = new EnumMap<>(hlw.d.class);
+
+      a() {
       }
 
-      private static List<Object> a(eao $$0, List<ebr<?>> $$1) {
-         Object[] $$2 = new Object[$$1.size()];
+      public hlw.a a(alg $$0) {
+         return this.a($$0, false);
+      }
 
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            $$2[$$3] = $$0.c($$1.get($$3));
-         }
+      public hlw.a a(alg $$0, boolean $$1) {
+         this.a(hlw.d.b, hlw.c.a($$0, $$1));
+         this.b($$0, $$1);
+         return this;
+      }
 
-         return List.of($$2);
+      public hlw.a b(alg $$0, boolean $$1) {
+         return this.a(hlw.d.a, hlw.c.a($$0, $$1));
+      }
+
+      public hlw.a a(hlw.d $$0, hlw.c... $$1) {
+         Collections.addAll(this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()), $$1);
+         return this;
+      }
+
+      public hlw a() {
+         return new hlw(this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> List.copyOf((Collection)$$0.getValue()))));
+      }
+   }
+
+   public static record b(Optional<Integer> b) {
+      public static final Codec<hlw.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ayu.i.optionalFieldOf("color_when_undyed").forGetter(hlw.b::a)).apply($$0, hlw.b::new)
+      );
+
+      public Optional<Integer> a() {
+         return this.b;
+      }
+   }
+
+   public static record c(alg b, Optional<hlw.b> c, boolean d) {
+      public static final Codec<hlw.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alg.a.fieldOf("texture").forGetter(hlw.c::a),
+                  hlw.b.a.optionalFieldOf("dyeable").forGetter(hlw.c::b),
+                  Codec.BOOL.optionalFieldOf("use_player_texture", false).forGetter(hlw.c::c)
+               )
+               .apply($$0, hlw.c::new)
+      );
+
+      public c(alg $$0) {
+         this($$0, Optional.empty(), false);
+      }
+
+      public static hlw.c a(alg $$0, boolean $$1) {
+         return new hlw.c($$0, $$1 ? Optional.of(new hlw.b(Optional.of(-6265536))) : Optional.empty(), false);
+      }
+
+      public static hlw.c b(alg $$0, boolean $$1) {
+         return new hlw.c($$0, $$1 ? Optional.of(new hlw.b(Optional.empty())) : Optional.empty(), false);
+      }
+
+      public alg a(hlw.d $$0) {
+         return this.b.a((UnaryOperator<String>)($$1 -> "textures/entity/equipment/" + $$0.c() + "/" + $$1 + ".png"));
+      }
+
+      public alg a() {
+         return this.b;
+      }
+
+      public Optional<hlw.b> b() {
+         return this.c;
+      }
+
+      public boolean c() {
+         return this.d;
+      }
+   }
+
+   public static enum d implements bak {
+      a("humanoid"),
+      b("humanoid_leggings"),
+      c("wings"),
+      d("wolf_body"),
+      e("horse_body"),
+      f("llama_body"),
+      g("pig_saddle"),
+      h("strider_saddle"),
+      i("camel_saddle"),
+      j("horse_saddle"),
+      k("donkey_saddle"),
+      l("mule_saddle"),
+      m("zombie_horse_saddle"),
+      n("skeleton_horse_saddle");
+
+      public static final Codec<hlw.d> o = bak.a(hlw.d::values);
+      private final String p;
+
+      private d(final String $$0) {
+         this.p = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.p;
+      }
+
+      public String a() {
+         return "trims/entity/" + this.p;
       }
    }
 }

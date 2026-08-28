@@ -317,7 +317,7 @@ public class azm {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(fex $$0, fex $$1, fes $$2) {
+   public static boolean a(ffc $$0, ffc $$1, fex $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.d - $$3;
@@ -519,8 +519,8 @@ public class azm {
       return $$1 + $$0 * ($$2 - $$1);
    }
 
-   public static fex a(double $$0, fex $$1, fex $$2) {
-      return new fex(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
+   public static ffc a(double $$0, ffc $$1, ffc $$2) {
+      return new ffc(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
    }
 
    public static double d(double $$0, double $$1, double $$2) {

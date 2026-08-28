@@ -30,7 +30,7 @@ public class anu {
    );
    private static final SuggestionProvider<ej> g = ($$0, $$1) -> {
       alq.a $$2 = ((ej)$$0.getSource()).l().bc();
-      return eo.a($$2.a(mh.br), $$1);
+      return eo.a($$2.a(mh.bs), $$1);
    };
 
    public static void a(CommandDispatcher<ej> $$0, ef $$1) {
@@ -275,10 +275,10 @@ public class anu {
       );
    }
 
-   private static int a(ej $$0, iv $$1, int $$2, jf<fbc> $$3) throws CommandSyntaxException {
+   private static int a(ej $$0, iv $$1, int $$2, jf<fbh> $$3) throws CommandSyntaxException {
       btz $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
-         czk $$5 = a($$0, $$3, $$4.a($$2));
+         czn $$5 = a($$0, $$3, $$4.a($$2));
          $$4.a($$2, $$5);
          $$0.a(() -> wy.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$5.K()), true);
          return 1;
@@ -287,13 +287,13 @@ public class anu {
       }
    }
 
-   private static int a(ej $$0, Collection<? extends bwi> $$1, int $$2, jf<fbc> $$3) throws CommandSyntaxException {
-      Map<bwi, czk> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
+   private static int a(ej $$0, Collection<? extends bwi> $$1, int $$2, jf<fbh> $$3) throws CommandSyntaxException {
+      Map<bwi, czn> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
 
       for (bwi $$5 : $$1) {
          bya $$6 = $$5.a_($$2);
          if ($$6 != bya.a) {
-            czk $$7 = a($$0, $$3, $$6.a().v());
+            czn $$7 = a($$0, $$3, $$6.a().v());
             if ($$6.a($$7)) {
                $$4.put($$5, $$7);
                if ($$5 instanceof arr) {
@@ -307,7 +307,7 @@ public class anu {
          throw e.create($$2);
       } else {
          if ($$4.size() == 1) {
-            Entry<bwi, czk> $$8 = $$4.entrySet().iterator().next();
+            Entry<bwi, czn> $$8 = $$4.entrySet().iterator().next();
             $$0.a(() -> wy.a("commands.item.entity.set.success.single", $$8.getKey().m_(), $$8.getValue().K()), true);
          } else {
             $$0.a(() -> wy.a("commands.item.entity.set.success.multiple", $$4.size()), true);
@@ -317,7 +317,7 @@ public class anu {
       }
    }
 
-   private static int a(ej $$0, iv $$1, int $$2, czk $$3) throws CommandSyntaxException {
+   private static int a(ej $$0, iv $$1, int $$2, czn $$3) throws CommandSyntaxException {
       btz $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
          $$4.a($$2, $$3);
@@ -329,7 +329,7 @@ public class anu {
    }
 
    static btz a(ej $$0, iv $$1, Dynamic3CommandExceptionType $$2) throws CommandSyntaxException {
-      dxm $$3 = $$0.e().c_($$1);
+      dxr $$3 = $$0.e().c_($$1);
       if (!($$3 instanceof btz)) {
          throw $$2.create($$1.u(), $$1.v(), $$1.w());
       } else {
@@ -337,7 +337,7 @@ public class anu {
       }
    }
 
-   private static int a(ej $$0, Collection<? extends bwi> $$1, int $$2, czk $$3) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<? extends bwi> $$1, int $$2, czn $$3) throws CommandSyntaxException {
       List<bwi> $$4 = Lists.newArrayListWithCapacity($$1.size());
 
       for (bwi $$5 : $$1) {
@@ -367,7 +367,7 @@ public class anu {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(ej $$0, iv $$1, int $$2, Collection<? extends bwi> $$3, int $$4, jf<fbc> $$5) throws CommandSyntaxException {
+   private static int a(ej $$0, iv $$1, int $$2, Collection<? extends bwi> $$3, int $$4, jf<fbh> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
@@ -375,7 +375,7 @@ public class anu {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(ej $$0, iv $$1, int $$2, iv $$3, int $$4, jf<fbc> $$5) throws CommandSyntaxException {
+   private static int a(ej $$0, iv $$1, int $$2, iv $$3, int $$4, jf<fbh> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
@@ -383,7 +383,7 @@ public class anu {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(ej $$0, bwi $$1, int $$2, iv $$3, int $$4, jf<fbc> $$5) throws CommandSyntaxException {
+   private static int a(ej $$0, bwi $$1, int $$2, iv $$3, int $$4, jf<fbh> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
@@ -391,21 +391,21 @@ public class anu {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(ej $$0, bwi $$1, int $$2, Collection<? extends bwi> $$3, int $$4, jf<fbc> $$5) throws CommandSyntaxException {
+   private static int a(ej $$0, bwi $$1, int $$2, Collection<? extends bwi> $$3, int $$4, jf<fbh> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
-   private static czk a(ej $$0, jf<fbc> $$1, czk $$2) {
+   private static czn a(ej $$0, jf<fbh> $$1, czn $$2) {
       arq $$3 = $$0.e();
-      ezr $$4 = new ezr.a($$3).a(fci.f, $$0.d()).b(fci.a, $$0.f()).a(fch.d);
-      ezo $$5 = new ezo.a($$4).a(Optional.empty());
-      $$5.b(ezo.a($$1.a()));
-      czk $$6 = $$1.a().apply($$2, $$5);
+      ezw $$4 = new ezw.a($$3).a(fcn.f, $$0.d()).b(fcn.a, $$0.f()).a(fcm.d);
+      ezt $$5 = new ezt.a($$4).a(Optional.empty());
+      $$5.b(ezt.a($$1.a()));
+      czn $$6 = $$1.a().apply($$2, $$5);
       $$6.f($$6.k());
       return $$6;
    }
 
-   private static czk a(bwi $$0, int $$1) throws CommandSyntaxException {
+   private static czn a(bwi $$0, int $$1) throws CommandSyntaxException {
       bya $$2 = $$0.a_($$1);
       if ($$2 == bya.a) {
          throw d.create($$1);
@@ -414,7 +414,7 @@ public class anu {
       }
    }
 
-   private static czk a(ej $$0, iv $$1, int $$2) throws CommandSyntaxException {
+   private static czn a(ej $$0, iv $$1, int $$2) throws CommandSyntaxException {
       btz $$3 = a($$0, $$1, b);
       if ($$2 >= 0 && $$2 < $$3.b()) {
          return $$3.a($$2).v();

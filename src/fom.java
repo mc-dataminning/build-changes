@@ -1,24 +1,20 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fom extends fol {
+public class fom extends foq {
    private static final Logger b = LogUtils.getLogger();
-   private static final wy c = wy.c("mco.configure.world.opening");
-   private final flp d;
-   private final fyn e;
-   private final boolean f;
-   private final fpo g;
+   private static final wy c = wy.c("mco.configure.world.closing");
+   private final flu d;
+   private final fnd e;
 
-   public fom(flp $$0, fyn $$1, boolean $$2, fpo $$3) {
+   public fom(flu $$0, fnd $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
    public void run() {
-      fko $$0 = fko.a();
+      fkt $$0 = fkt.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
          if (this.d()) {
@@ -26,23 +22,14 @@ public class fom extends fol {
          }
 
          try {
-            boolean $$2 = $$0.f(this.d.a);
+            boolean $$2 = $$0.g(this.d.a);
             if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof fmy) {
-                     ((fmy)this.e).f();
-                  }
-
-                  this.d.e = flp.c.b;
-                  if (this.f) {
-                     fkj.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
+               this.e.f();
+               this.d.e = flu.c.a;
+               a(this.e);
                break;
             }
-         } catch (fml var4) {
+         } catch (fmq var4) {
             if (this.d()) {
                return;
             }
@@ -53,7 +40,7 @@ public class fom extends fol {
                return;
             }
 
-            b.error("Failed to open server", var5);
+            b.error("Failed to close server", var5);
             this.a(var5);
          }
       }

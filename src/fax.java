@@ -1,65 +1,65 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.Set;
 
-public class fax extends fbb {
-   private static final Logger b = LogUtils.getLogger();
+public class fax extends fbg {
    public static final MapCodec<fax> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(alf.a(mh.br).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, fax::new)
+      $$0 -> a($$0)
+            .and($$0.group(fdz.a.fieldOf("levels").forGetter($$0x -> $$0x.b), ju.a(mh.aR).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
+            .apply($$0, fax::new)
    );
-   private final alf<fbc> c;
+   private final fdy b;
+   private final Optional<jj<dga>> c;
 
-   private fax(List<fcx> $$0, alf<fbc> $$1) {
+   fax(List<fdc> $$0, fdy $$1, Optional<jj<dga>> $$2) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public fbd<fax> b() {
-      return fbe.H;
+   public fbi<fax> b() {
+      return fbj.g;
    }
 
    @Override
-   public void a(ezu $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .c(this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+   public Set<bax<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public czn a(czn $$0, ezt $$1) {
+      azv $$2 = $$1.b();
+      jt $$3 = $$1.d().F_();
+      return dgc.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   }
+
+   public static fax.a a(jh.a $$0, fdy $$1) {
+      return new fax.a($$1).a($$0.e(mh.aR).b(axe.n));
+   }
+
+   public static class a extends fbg.a<fax.a> {
+      private final fdy a;
+      private Optional<jj<dga>> b = Optional.empty();
+
+      public a(fdy $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   protected czk a(czk $$0, ezo $$1) {
-      fbc $$2 = $$1.a().c(this.c).map(jf::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         ezo.c<?> $$3 = ezo.a($$2);
-         if ($$1.b($$3)) {
-            czk var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
+      protected fax.a a() {
+         return this;
       }
-   }
 
-   public static fbb.a<?> a(alf<fbc> $$0) {
-      return a($$1 -> new fax($$1, $$0));
+      public fax.a a(jj<dga> $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      @Override
+      public fbh b() {
+         return new fax(this.g(), this.a, this.b);
+      }
    }
 }

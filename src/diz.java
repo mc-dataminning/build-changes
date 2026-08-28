@@ -1,114 +1,27 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public interface diz {
-   List<bwi> a(@Nullable bwi var1, fes var2, Predicate<? super bwi> var3);
+public class diz {
+   public static final diz a = new diz(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<diz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, diz::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   <T extends bwi> List<T> a(efa<bwi, T> var1, fes var2, Predicate<? super T> var3);
-
-   default <T extends bwi> List<T> a(Class<T> $$0, fes $$1, Predicate<? super T> $$2) {
-      return this.a(efa.a($$0), $$1, $$2);
+   public diz(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   List<? extends crj> z();
-
-   default List<bwi> a_(@Nullable bwi $$0, fes $$1) {
-      return this.a($$0, $$1, bwp.f);
+   public List<String> a() {
+      return this.c;
    }
 
-   default boolean a(@Nullable bwi $$0, ffr $$1) {
-      if ($$1.c()) {
-         return true;
-      } else {
-         for (bwi $$2 : this.a_($$0, $$1.a())) {
-            if (!$$2.dP() && $$2.I && ($$0 == null || !$$2.z($$0)) && ffo.c($$1, ffo.a($$2.cQ()), ffb.i)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   default <T extends bwi> List<T> a(Class<T> $$0, fes $$1) {
-      return this.a($$0, $$1, bwp.f);
-   }
-
-   default List<ffr> c(@Nullable bwi $$0, fes $$1) {
-      if ($$1.a() < 1.0E-7) {
-         return List.of();
-      } else {
-         Predicate<bwi> $$2 = $$0 == null ? bwp.g : bwp.f.and($$0::i);
-         List<bwi> $$3 = this.a($$0, $$1.g(1.0E-7), $$2);
-         if ($$3.isEmpty()) {
-            return List.of();
-         } else {
-            Builder<ffr> $$4 = ImmutableList.builderWithExpectedSize($$3.size());
-
-            for (bwi $$5 : $$3) {
-               $$4.add(ffo.a($$5.cQ()));
-            }
-
-            return $$4.build();
-         }
-      }
-   }
-
-   @Nullable
-   default crj a(double $$0, double $$1, double $$2, double $$3, @Nullable Predicate<bwi> $$4) {
-      double $$5 = -1.0;
-      crj $$6 = null;
-
-      for (crj $$7 : this.z()) {
-         if ($$4 == null || $$4.test($$7)) {
-            double $$8 = $$7.h($$0, $$1, $$2);
-            if (($$3 < 0.0 || $$8 < $$3 * $$3) && ($$5 == -1.0 || $$8 < $$5)) {
-               $$5 = $$8;
-               $$6 = $$7;
-            }
-         }
-      }
-
-      return $$6;
-   }
-
-   @Nullable
-   default crj a(bwi $$0, double $$1) {
-      return this.a($$0.dz(), $$0.dB(), $$0.dF(), $$1, false);
-   }
-
-   @Nullable
-   default crj a(double $$0, double $$1, double $$2, double $$3, boolean $$4) {
-      Predicate<bwi> $$5 = $$4 ? bwp.e : bwp.f;
-      return this.a($$0, $$1, $$2, $$3, $$5);
-   }
-
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      for (crj $$4 : this.z()) {
-         if (bwp.f.test($$4) && bwp.b.test($$4)) {
-            double $$5 = $$4.h($$0, $$1, $$2);
-            if ($$3 < 0.0 || $$5 < $$3 * $$3) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Nullable
-   default crj a(UUID $$0) {
-      for (int $$1 = 0; $$1 < this.z().size(); $$1++) {
-         crj $$2 = this.z().get($$1);
-         if ($$0.equals($$2.cF())) {
-            return $$2;
-         }
-      }
-
-      return null;
+   public List<String> b() {
+      return this.d;
    }
 }

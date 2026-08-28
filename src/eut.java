@@ -1,42 +1,20 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eut extends eux {
-   public static final MapCodec<eut> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eut::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public class eut extends evj {
+   public static final MapCodec<eut> a = eat.a.fieldOf("block_state").xmap(eut::new, $$0 -> $$0.b);
+   private final eat b;
 
-   public eut(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
+   public eut(eat $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean a(iv $$0, iv $$1, iv $$2, azv $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= azm.b(this.b, this.d, azm.f((float)$$4, (float)this.e, (float)this.f));
+   public boolean a(eat $$0, azv $$1) {
+      return $$0 == this.b;
    }
 
    @Override
-   protected euy<?> a() {
-      return euy.b;
+   protected evk<?> a() {
+      return evk.c;
    }
 }

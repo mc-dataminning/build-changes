@@ -1,9 +1,9 @@
-public record aar(int c, exj d, float e) implements aai {
+public record aar(int c, exo d, float e) implements aai {
    public static final yw<vu, aar> a = aai.a(aar::a, aar::new);
    public static final aai.b<aar> b = aai.a("debug/path");
 
    private aar(vu $$0) {
-      this($$0.readInt(), exj.b($$0), $$0.readFloat());
+      this($$0.readInt(), exo.b($$0), $$0.readFloat());
    }
 
    private void a(vu $$0) {
@@ -21,7 +21,7 @@ public record aar(int c, exj d, float e) implements aai {
       return this.c;
    }
 
-   public exj c() {
+   public exo c() {
       return this.d;
    }
 

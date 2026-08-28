@@ -1,36 +1,58 @@
-public class gti implements gsy<dyj> {
-   public static final hlq a = new hlq(hjj.c, alg.b("entity/enchanting_table_book"));
-   private final gfp b;
+public class gti implements gtd<dxw> {
+   private final gxw a;
 
-   public gti(gsz.a $$0) {
-      this.b = new gfp($$0.a(gjn.J));
+   public gti(gte.a $$0) {
+      this.a = $$0.e();
    }
 
-   public void a(dyj $$0, float $$1, fjy $$2, gqm $$3, int $$4, int $$5, fex $$6) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$7 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + azm.a($$7 * 0.1F) * 0.01F, 0.0F);
-      float $$8 = $$0.h - $$0.i;
+   public void a(dxw $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
+      if ($$0.i() != null) {
+         int $$7 = $$0.m().c(ebj.by);
+         if ($$7 > 0) {
+            jb $$8 = $$0.c();
+            if ($$8 != null) {
+               czn $$9 = $$0.d();
+               if (!$$9.f()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$10 = this.a($$8, $$7);
+                  $$2.a($$10[0], $$10[1], $$10[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$11 = $$8 == jb.f || $$8 == jb.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$11 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$12 = gqm.a($$0.i(), $$0.m(), $$0.ax_().a($$8));
+                  this.a.a($$9, czl.i, $$12, hjg.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
+            }
+         }
+      }
+   }
 
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
+   private float[] a(jb $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
       }
 
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      float $$9 = $$0.i + $$8 * $$1;
-      $$2.a(a.d.rotation(-$$9));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$10 = azm.h($$1, $$0.c, $$0.b);
-      float $$11 = azm.i($$10 + 0.25F) * 1.6F - 0.3F;
-      float $$12 = azm.i($$10 + 0.75F) * 1.6F - 0.3F;
-      float $$13 = azm.h($$1, $$0.g, $$0.f);
-      this.b.a($$7, azm.a($$11, 0.0F, 1.0F), azm.a($$12, 0.0F, 1.0F), $$13);
-      fkc $$14 = a.a($$3, gqx::d);
-      this.b.a($$2, $$14, $$4, $$5);
-      $$2.b();
+      return $$2;
    }
 }

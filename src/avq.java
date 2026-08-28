@@ -40,7 +40,7 @@ public abstract class avq {
    private final avy q = new avy(d);
    private final Map<UUID, awt> r = Maps.newHashMap();
    private final Map<UUID, alo> s = Maps.newHashMap();
-   private final ezf t;
+   private final ezk t;
    private boolean u;
    private final jm<alp> v;
    protected final int g;
@@ -50,7 +50,7 @@ public abstract class avq {
    private static final boolean z = false;
    private int A;
 
-   public avq(MinecraftServer $$0, jm<alp> $$1, ezf $$2, int $$3) {
+   public avq(MinecraftServer $$0, jm<alp> $$1, ezk $$2, int $$3) {
       this.k = $$0;
       this.v = $$1;
       this.g = $$3;
@@ -70,7 +70,7 @@ public abstract class avq {
       }
 
       Optional<tz> $$8 = this.a($$1);
-      alf<djh> $$9 = $$8.<alf<djh>>flatMap($$0x -> eel.a(new Dynamic(un.a, $$0x.a("Dimension"))).resultOrPartial(h::error)).orElse(djh.i);
+      alf<djm> $$9 = $$8.<alf<djm>>flatMap($$0x -> eeq.a(new Dynamic(un.a, $$0x.a("Dimension"))).resultOrPartial(h::error)).orElse(djm.i);
       arq $$10 = this.k.a($$9);
       arq $$11;
       if ($$10 == null) {
@@ -83,19 +83,19 @@ public abstract class avq {
       $$1.a($$11);
       String $$13 = $$0.a(this.k.bl());
       h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ai().getString(), $$13, $$1.ao(), $$1.dz(), $$1.dB(), $$1.dF()});
-      eyy $$14 = $$11.y_();
+      ezd $$14 = $$11.y_();
       $$1.c($$8.orElse(null));
       ast $$15 = new ast(this.k, $$0, $$1, $$2);
       $$0.a(ago.a.a(wj.a(this.k.ba())), $$15);
-      djd $$16 = $$11.O();
-      boolean $$17 = $$16.c(djd.F);
-      boolean $$18 = $$16.c(djd.r);
-      boolean $$19 = $$16.c(djd.y);
+      dji $$16 = $$11.O();
+      boolean $$17 = $$16.c(dji.F);
+      boolean $$18 = $$16.c(dji.r);
+      boolean $$19 = $$16.c(dji.y);
       $$15.b(new adl($$1.ao(), $$14.l(), this.k.K(), this.n(), this.w, this.x, $$18, !$$17, $$19, $$1.b($$11), this.k.aA()));
       $$15.b(new acg($$14.q(), $$14.r()));
       $$15.b(new adv($$1.gj()));
       $$15.b(new afj($$1.gi().f()));
-      dei $$20 = this.k.aI();
+      del $$20 = this.k.aI();
       $$15.b(new agj($$20.b(), $$20.c()));
       this.e($$1);
       $$1.I().c();
@@ -130,14 +130,14 @@ public abstract class avq {
    }
 
    protected void a(alz $$0, arr $$1) {
-      Set<ffu> $$2 = Sets.newHashSet();
+      Set<ffz> $$2 = Sets.newHashSet();
 
-      for (ffx $$3 : $$0.f()) {
+      for (fgc $$3 : $$0.f()) {
          $$1.f.b(afn.a($$3, true));
       }
 
-      for (fft $$4 : fft.values()) {
-         ffu $$5 = $$0.a($$4);
+      for (ffy $$4 : ffy.values()) {
+         ffz $$5 = $$0.a($$4);
          if ($$5 != null && !$$2.contains($$5)) {
             for (zf<?> $$7 : $$0.d($$5)) {
                $$1.f.b($$7);
@@ -149,38 +149,38 @@ public abstract class avq {
    }
 
    public void a(arq $$0) {
-      $$0.A_().a(new ece() {
+      $$0.A_().a(new ecj() {
          @Override
-         public void a(ecg $$0, double $$1) {
+         public void a(ecl $$0, double $$1) {
             avq.this.a(new aeu($$0));
          }
 
          @Override
-         public void a(ecg $$0, double $$1, double $$2, long $$3) {
+         public void a(ecl $$0, double $$1, double $$2, long $$3) {
             avq.this.a(new aet($$0));
          }
 
          @Override
-         public void a(ecg $$0, double $$1, double $$2) {
+         public void a(ecl $$0, double $$1, double $$2) {
             avq.this.a(new aes($$0));
          }
 
          @Override
-         public void a(ecg $$0, int $$1) {
+         public void a(ecl $$0, int $$1) {
             avq.this.a(new aev($$0));
          }
 
          @Override
-         public void b(ecg $$0, int $$1) {
+         public void b(ecl $$0, int $$1) {
             avq.this.a(new aew($$0));
          }
 
          @Override
-         public void b(ecg $$0, double $$1) {
+         public void b(ecl $$0, double $$1) {
          }
 
          @Override
-         public void c(ecg $$0, double $$1) {
+         public void c(ecl $$0, double $$1) {
          }
       });
    }
@@ -227,7 +227,7 @@ public abstract class avq {
 
       $$0.al();
 
-      for (cso $$3 : $$0.ah()) {
+      for (csr $$3 : $$0.ah()) {
          $$3.c(bwi.d.d);
       }
 
@@ -300,7 +300,7 @@ public abstract class avq {
    public arr a(arr $$0, boolean $$1, bwi.d $$2) {
       this.l.remove($$0);
       $$0.y().a($$0, $$2);
-      exv $$3 = $$0.a(!$$1, exv.a);
+      eya $$3 = $$0.a(!$$1, eya.a);
       arq $$4 = $$3.b();
       arr $$5 = new arr(this.k, $$4, $$0.gh(), $$0.C());
       $$5.f = $$0.f;
@@ -315,7 +315,7 @@ public abstract class avq {
          $$5.a($$6);
       }
 
-      fex $$7 = $$3.c();
+      ffc $$7 = $$3.c();
       $$5.b($$7.d, $$7.e, $$7.f, $$3.e(), $$3.f());
       if ($$3.g()) {
          $$5.f.b(new adb(adb.b, 0.0F));
@@ -323,7 +323,7 @@ public abstract class avq {
 
       byte $$8 = (byte)($$1 ? 1 : 0);
       arq $$9 = $$5.y();
-      eyy $$10 = $$9.y_();
+      ezd $$10 = $$9.y_();
       $$5.f.b(new aem($$5.b($$9), $$8));
       $$5.f.a($$5.dz(), $$5.dB(), $$5.dF(), $$5.dK(), $$5.dM());
       $$5.f.b(new afb($$4.aa(), $$4.ab()));
@@ -342,8 +342,8 @@ public abstract class avq {
          arq $$12 = this.k.a($$11.a());
          if ($$12 != null) {
             iv $$13 = $$11.b();
-            eao $$14 = $$12.a_($$13);
-            if ($$14.a(dmo.pT)) {
+            eat $$14 = $$12.a_($$13);
+            if ($$14.a(dmt.pT)) {
                $$5.f.b(new afv(awn.wm, awo.e, (double)$$13.u(), (double)$$13.v(), (double)$$13.w(), 1.0F, 1.0F, $$4.C_().g()));
             }
          }
@@ -381,7 +381,7 @@ public abstract class avq {
       }
    }
 
-   public void a(zf<?> $$0, alf<djh> $$1) {
+   public void a(zf<?> $$0, alf<djm> $$1) {
       for (arr $$2 : this.l) {
          if ($$2.dU().aj() == $$1) {
             $$2.f.b($$0);
@@ -389,8 +389,8 @@ public abstract class avq {
       }
    }
 
-   public void a(crj $$0, wy $$1) {
-      fge $$2 = $$0.cp();
+   public void a(crm $$0, wy $$1) {
+      fgj $$2 = $$0.cp();
       if ($$2 != null) {
          for (String $$4 : $$2.h()) {
             arr $$5 = this.a($$4);
@@ -401,8 +401,8 @@ public abstract class avq {
       }
    }
 
-   public void b(crj $$0, wy $$1) {
-      fge $$2 = $$0.cp();
+   public void b(crm $$0, wy $$1) {
+      fgj $$2 = $$0.cp();
       if ($$2 == null) {
          this.a($$1, false);
       } else {
@@ -488,7 +488,7 @@ public abstract class avq {
       return null;
    }
 
-   public void a(@Nullable crj $$0, double $$1, double $$2, double $$3, double $$4, alf<djh> $$5, zf<?> $$6) {
+   public void a(@Nullable crm $$0, double $$1, double $$2, double $$3, double $$4, alf<djm> $$5, zf<?> $$6) {
       for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
          arr $$8 = this.l.get($$7);
          if ($$8 != $$0 && $$8.dU().aj() == $$5) {
@@ -528,9 +528,9 @@ public abstract class avq {
    }
 
    public void a(arr $$0, arq $$1) {
-      ecg $$2 = this.k.J().A_();
+      ecl $$2 = this.k.J().A_();
       $$0.f.b(new ade($$2));
-      $$0.f.b(new afr($$1.ae(), $$1.af(), $$1.O().c(djd.m)));
+      $$0.f.b(new afr($$1.ae(), $$1.af(), $$1.O().c(dji.m)));
       $$0.f.b(new afb($$1.aa(), $$1.ab()));
       if ($$1.ah()) {
          $$0.f.b(new adb(adb.c, 0.0F));
@@ -647,11 +647,11 @@ public abstract class avq {
       return $$0.i() && !$$0.a(Instant.now());
    }
 
-   public awt a(crj $$0) {
+   public awt a(crm $$0) {
       UUID $$1 = $$0.cF();
       awt $$2 = this.r.get($$1);
       if ($$2 == null) {
-         File $$3 = this.k.a(eza.b).toFile();
+         File $$3 = this.k.a(ezf.b).toFile();
          File $$4 = new File($$3, $$1 + ".json");
          if (!$$4.exists()) {
             File $$5 = new File($$3, $$0.ai().getString() + ".json");
@@ -672,7 +672,7 @@ public abstract class avq {
       UUID $$1 = $$0.cF();
       alo $$2 = this.s.get($$1);
       if ($$2 == null) {
-         Path $$3 = this.k.a(eza.a).resolve($$1 + ".json");
+         Path $$3 = this.k.a(ezf.a).resolve($$1 + ".json");
          $$2 = new alo(this.k.aC(), this, this.k.aD(), $$3, $$0);
          this.s.put($$1, $$2);
       }
@@ -722,7 +722,7 @@ public abstract class avq {
       }
 
       this.a(new zw(axt.a(this.v)));
-      dei $$1 = this.k.aI();
+      del $$1 = this.k.aI();
       agj $$2 = new agj($$1.b(), $$1.c());
 
       for (arr $$3 : this.l) {

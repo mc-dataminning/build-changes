@@ -1,4 +1,4 @@
-public record aak(alf<efo> c, fex d) implements aai {
+public record aak(alf<eft> c, ffc d) implements aai {
    public static final yw<vu, aak> a = aai.a(aak::a, aak::new);
    public static final aai.b<aak> b = aai.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record aak(alf<efo> c, fex d) implements aai {
       return b;
    }
 
-   public alf<efo> b() {
+   public alf<eft> b() {
       return this.c;
    }
 
-   public fex c() {
+   public ffc c() {
       return this.d;
    }
 }

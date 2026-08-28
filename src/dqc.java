@@ -1,82 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dqc extends dpi {
-   public static final MapCodec<dqc> a = b(dqc::new);
-   private static final wy b = wy.c("container.grindstone_title");
-   private final Function<eao, ffr> d;
+public class dqc extends dlm {
+   public static final MapCodec<dqc> c = b(dqc::new);
 
    @Override
    public MapCodec<dqc> a() {
-      return a;
+      return c;
    }
 
-   protected dqc(ean.d $$0) {
+   protected dqc(eas.d $$0) {
       super($$0);
-      this.l(this.C.b().b(e, jb.c).b(c, eaz.b));
-      this.d = this.b();
-   }
-
-   private Function<eao, ffr> b() {
-      ffr $$0 = ffo.a(dmm.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0), dmm.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0));
-      ffr $$1 = ffo.a($$0, h.z);
-      ffr $$2 = ffo.a(dmm.a(8.0, 2.0, 14.0, 0.0, 12.0), $$0, $$1);
-      Map<eaz, Map<jb, ffr>> $$3 = ffo.e($$2);
-      return this.a($$1x -> $$3.get($$1x.c(c)).get($$1x.c(e)));
-   }
-
-   private ffr o(eao $$0) {
-      return this.d.apply($$0);
    }
 
    @Override
-   protected ffr b(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return this.o($$0);
+   public dxr a(iv $$0, eat $$1) {
+      return new dyr($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
+      return a($$0, $$2, dxt.a);
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return this.o($$0);
-   }
-
-   @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      return true;
-   }
-
-   @Override
-   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awx.aD);
+   protected void a(djm $$0, iv $$1, crm $$2) {
+      dxr $$3 = $$0.c_($$1);
+      if ($$3 instanceof dyr) {
+         $$2.a((bui)$$3);
+         $$2.a(awx.am);
       }
-
-      return bug.a;
    }
 
    @Override
-   protected bui b(eao $$0, djh $$1, iv $$2) {
-      return new buo(($$2x, $$3, $$4) -> new cwc($$2x, $$3, cvp.a($$1, $$2)), b);
-   }
+   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awn.kC, awo.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   protected eao a(eao $$0, dtg $$1) {
-      return $$0.b(e, $$1.a($$0.c(e)));
-   }
-
-   @Override
-   protected eao a(eao $$0, drp $$1) {
-      return $$0.a($$1.a($$0.c(e)));
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(e, c);
-   }
-
-   @Override
-   protected boolean a(eao $$0, exk $$1) {
-      return false;
+         jb $$7 = $$0.c(a);
+         jb.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jb.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == jb.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(ly.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(ly.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

@@ -1,23 +1,60 @@
-import java.util.function.UnaryOperator;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-@FunctionalInterface
-public interface gsi extends UnaryOperator<gsh> {
-   gsi.a<i> a = gsh::a;
-   gsi.a<i> b = gsh::b;
-   gsi.a<alg> c = gsh::a;
-   gsi.a<Boolean> d = gsh::a;
-   gsi.a<Integer> e = gsh::a;
+public record gsi(List<gsm> b) implements gsd.a {
+   public static final Codec<gsi> a = ayu.b(ayu.a(gsm.a)).xmap(gsi::new, gsi::a);
 
-   default gsi then(gsi $$0) {
-      return $$1 -> $$0.apply(this.apply($$1));
+   public gsi(List<gsm> b) {
+      if (b.isEmpty()) {
+         throw new IllegalArgumentException("Variant list must contain at least one element");
+      } else {
+         this.b = b;
+      }
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      gsh apply(gsh var1, T var2);
+   @Override
+   public Object a(eat $$0) {
+      return this;
+   }
 
-      default gsi withValue(T $$0) {
-         return $$1 -> this.apply($$1, $$0);
+   @Override
+   public void a(hmi.a $$0) {
+      this.b.forEach($$1 -> $$0.markDependency($$1.a()));
+   }
+
+   private static gsd a(hlz $$0, gsm $$1) {
+      return gsj.a($$0, $$1.a(), $$1.b().a());
+   }
+
+   @Override
+   public gsd a(hlz $$0) {
+      if (this.b.size() == 1) {
+         gsm $$1 = this.b.getFirst();
+         return a($$0, $$1);
+      } else {
+         bsq.a<gsd> $$2 = bsq.b();
+
+         for (gsm $$3 : this.b) {
+            $$2.a(a($$0, $$3), $$3.c());
+         }
+
+         return new hmn($$2.a());
       }
+   }
+
+   public gsi a(gsn $$0) {
+      List<gsm> $$1;
+      if (this.b.size() == 1) {
+         $$1 = List.of($$0.apply(this.b.getFirst()));
+      } else {
+         $$1 = List.copyOf(Lists.transform(this.b, $$0::apply));
+      }
+
+      return new gsi($$1);
+   }
+
+   public List<gsm> a() {
+      return this.b;
    }
 }

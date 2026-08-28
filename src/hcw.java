@@ -1,7 +1,6 @@
 import javax.annotation.Nullable;
 
-public class hcw extends hcz {
-   public boolean a = true;
+public class hcw extends hef {
    @Nullable
-   public fex b;
+   public cjk a;
 }

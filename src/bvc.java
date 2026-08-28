@@ -11,17 +11,17 @@ public record bvc(String i) {
    public static final bvc g = new bvc("other_climbable");
    public static final bvc h = new bvc("water");
 
-   public static bvc a(eao $$0) {
-      if ($$0.a(dmo.da) || $$0.a(axc.R)) {
+   public static bvc a(eat $$0) {
+      if ($$0.a(dmt.da) || $$0.a(axc.R)) {
          return b;
-      } else if ($$0.a(dmo.fx)) {
+      } else if ($$0.a(dmt.fx)) {
          return c;
-      } else if ($$0.a(dmo.pf) || $$0.a(dmo.pg)) {
+      } else if ($$0.a(dmt.pf) || $$0.a(dmt.pg)) {
          return d;
-      } else if ($$0.a(dmo.ph) || $$0.a(dmo.pi)) {
+      } else if ($$0.a(dmt.ph) || $$0.a(dmt.pi)) {
          return e;
       } else {
-         return $$0.a(dmo.oy) ? f : g;
+         return $$0.a(dmt.oy) ? f : g;
       }
    }
 
@@ -29,7 +29,7 @@ public record bvc(String i) {
    public static bvc a(bxj $$0) {
       Optional<iv> $$1 = $$0.eO();
       if ($$1.isPresent()) {
-         eao $$2 = $$0.dU().a_($$1.get());
+         eat $$2 = $$0.dU().a_($$1.get());
          return a($$2);
       } else {
          return $$0.bh() ? h : null;

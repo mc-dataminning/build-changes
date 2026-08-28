@@ -1,14 +1,14 @@
 public abstract class bwx extends bxl {
-   protected bwx(bwr<? extends bwx> $$0, djh $$1) {
+   protected bwx(bwr<? extends bwx> $$0, djm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, eao $$2, iv $$3) {
+   protected void a(double $$0, boolean $$1, eat $$2, iv $$3) {
    }
 
    @Override
-   public void a_(fex $$0) {
+   public void a_(ffc $$0) {
       if (this.bh()) {
          this.a(0.02F, $$0);
          this.a(bxn.a, this.dx());

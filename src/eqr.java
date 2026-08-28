@@ -1,42 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class eqr extends eqp {
-   public static final MapCodec<eqr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(btl.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), btl.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, eqr::new)
+public record eqr(jf<ejk<?, ?>> e, List<equ> f) {
+   public static final Codec<eqr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ejk.b.fieldOf("feature").forGetter($$0x -> $$0x.e), equ.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, eqr::new)
    );
-   private final btl c;
-   private final btl d;
+   public static final Codec<jf<eqr>> b = alc.a(mh.bb, a);
+   public static final Codec<jj<eqr>> c = ju.a(mh.bb, a);
+   public static final Codec<List<jj<eqr>>> d = ju.a(mh.bb, a, true).listOf();
 
-   public static eqr a(btl $$0, btl $$1) {
-      return new eqr($$0, $$1);
+   public boolean a(dkl $$0, ecr $$1, azv $$2, iv $$3) {
+      return this.a(new eqs($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   public static eqr a(btl $$0) {
-      return new eqr(bti.a(0), $$0);
+   public boolean b(dkl $$0, ecr $$1, azv $$2, iv $$3) {
+      return this.a(new eqs($$0, $$1, Optional.of(this)), $$2, $$3);
    }
 
-   public static eqr b(btl $$0) {
-      return new eqr($$0, bti.a(0));
+   private boolean a(eqs $$0, azv $$1, iv $$2) {
+      Stream<iv> $$3 = Stream.of($$2);
+
+      for (equ $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      ejk<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
    }
 
-   private eqr(btl $$0, btl $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public Stream<ejk<?, ?>> a() {
+      return this.e.a().a();
    }
 
    @Override
-   public Stream<iv> a_(eqn $$0, azv $$1, iv $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new iv($$3, $$4, $$5));
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   @Override
-   public eqq<?> b() {
-      return eqq.n;
+   public jf<ejk<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<equ> c() {
+      return this.f;
    }
 }

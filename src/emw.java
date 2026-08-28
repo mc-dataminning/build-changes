@@ -1,43 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class emw implements elx {
+public class emw implements emc {
    public static final Codec<emw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               axr.b(mh.i).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
-               eny.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
-               eqm.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
-               eqc.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
-               btl.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
-               btl.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               eli.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               iv.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, emw::new)
    );
-   public final axr<dmm> b;
-   public final eny c;
-   public final jf<eqm> d;
-   public final eqc e;
-   public final btl f;
-   public final float g;
-   public final int h;
-   public final float i;
-   public final btl j;
-   public final float k;
+   private final boolean b;
+   private final List<eli.a> c;
+   @Nullable
+   private final iv d;
 
-   public emw(axr<dmm> $$0, eny $$1, jf<eqm> $$2, eqc $$3, btl $$4, float $$5, int $$6, float $$7, btl $$8, float $$9) {
+   public emw(boolean $$0, List<eli.a> $$1, @Nullable iv $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
+   }
+
+   private emw(boolean $$0, List<eli.a> $$1, Optional<iv> $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
+      this.d = $$2.orElse(null);
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   public List<eli.a> b() {
+      return this.c;
+   }
+
+   @Nullable
+   public iv c() {
+      return this.d;
    }
 }

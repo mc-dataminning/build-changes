@@ -22,7 +22,7 @@ public class car extends bza<bxl> {
       azv $$3 = $$1.dX();
       float $$4 = azm.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
       float $$5 = azm.h($$1.dK() + 2.0F * $$3.i() * this.d - this.d);
-      fex $$6 = fex.a($$4, $$5);
+      ffc $$6 = ffc.a($$4, $$5);
       $$1.eb().a(cgl.o, new bzd($$1.bC().e($$6)));
       $$1.eb().a(cgl.R, this.c.a($$3));
    }

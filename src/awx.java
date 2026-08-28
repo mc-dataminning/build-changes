@@ -1,10 +1,10 @@
 public class awx {
-   public static final aww<dmm> a = a("mined", mg.e);
-   public static final aww<czg> b = a("crafted", mg.g);
-   public static final aww<czg> c = a("used", mg.g);
-   public static final aww<czg> d = a("broken", mg.g);
-   public static final aww<czg> e = a("picked_up", mg.g);
-   public static final aww<czg> f = a("dropped", mg.g);
+   public static final aww<dmr> a = a("mined", mg.e);
+   public static final aww<czj> b = a("crafted", mg.g);
+   public static final aww<czj> c = a("used", mg.g);
+   public static final aww<czj> d = a("broken", mg.g);
+   public static final aww<czj> e = a("picked_up", mg.g);
+   public static final aww<czj> f = a("dropped", mg.g);
    public static final aww<bwr<?>> g = a("killed", mg.f);
    public static final aww<bwr<?>> h = a("killed_by", mg.f);
    public static final aww<alg> i = a("custom", mg.k);

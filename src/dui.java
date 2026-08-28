@@ -1,60 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dui extends dmm {
-   public static final MapCodec<dui> a = b(dui::new);
-   private static final ffr b = dmm.b(16.0, 0.0, 14.0);
-   private static final int c = 20;
+public class dui extends dlm {
+   public static final MapCodec<dui> c = b(dui::new);
 
    @Override
    public MapCodec<dui> a() {
-      return a;
+      return c;
    }
 
-   public dui(ean.d $$0) {
+   protected dui(eas.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ffr b(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return b;
+   public dxr a(iv $$0, eat $$1) {
+      return new dzi($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
+      return a($$0, $$2, dxt.C);
    }
 
    @Override
-   protected ffr b_(eao $$0, din $$1, iv $$2) {
-      return ffo.b();
-   }
-
-   @Override
-   protected ffr c(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return ffo.b();
-   }
-
-   @Override
-   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
-      dmt.b($$1, $$2.d(), $$0);
-   }
-
-   @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if ($$4 == jb.b && $$6.a(dmo.J)) {
-         $$2.a($$3, this, 20);
+   protected void a(djm $$0, iv $$1, crm $$2) {
+      dxr $$3 = $$0.c_($$1);
+      if ($$3 instanceof dzi) {
+         $$2.a((bui)$$3);
+         $$2.a(awx.at);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(eao $$0, djh $$1, iv $$2, eao $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
+   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awn.zo, awo.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   protected boolean a(eao $$0, exk $$1) {
-      return false;
-   }
-
-   @Override
-   protected float c(eao $$0, din $$1, iv $$2) {
-      return 0.2F;
+         $$1.a(ly.ah, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

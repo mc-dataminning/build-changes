@@ -8,9 +8,9 @@ public class cav {
                return false;
             } else {
                byj<?> $$3 = $$1.eb();
-               csz $$4 = $$0x.d($$1.du());
+               ctc $$4 = $$0x.d($$1.du());
                if ($$4 == null || $$4.d() || $$4.f()) {
-                  $$3.b(ctd.b);
+                  $$3.b(ctg.b);
                   $$3.a($$0x.af(), $$0x.ae());
                }
 

@@ -1,34 +1,98 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public abstract class hpw extends fyn {
-   protected static final int d = 17;
-   protected static final int s = 7;
-   protected static final long u = 5368709120L;
-   protected static final int v = 5000268;
-   protected static final int w = 7105644;
-   protected static final int x = 8388479;
-   protected static final int y = 3368635;
-   protected static final int z = 7107012;
-   protected static final int A = 32;
-   protected static final int B = 8;
-   private final List<hpv> a = Lists.newArrayList();
+public class hpw {
+   private final fpt a;
+   @Nullable
+   private hpx b;
 
-   public hpw(wy $$0) {
-      super($$0);
+   public hpw(fpt $$0, fpx $$1) {
+      this.a = $$0;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public void a(gpm $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
    }
 
-   protected hpv a(hpv $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   public void a(double $$0, double $$1) {
+      if (this.b != null) {
+         this.b.a($$0, $$1);
+      }
    }
 
-   public wy m() {
-      return wx.a(this.a.stream().map(hpv::a).collect(Collectors.toList()));
+   public void a(@Nullable gkq $$0, @Nullable ffa $$1) {
+      if (this.b != null && $$1 != null && $$0 != null) {
+         this.b.a($$0, $$1);
+      }
+   }
+
+   public void a(gkq $$0, iv $$1, eat $$2, float $$3) {
+      if (this.b != null) {
+         this.b.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   public void a() {
+      if (this.b != null) {
+         this.b.c();
+      }
+   }
+
+   public void a(czn $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+   }
+
+   public void b() {
+      if (this.b != null) {
+         this.b.b();
+         this.b = null;
+      }
+   }
+
+   public void c() {
+      if (this.b != null) {
+         this.b();
+      }
+
+      this.b = this.a.n.r.a(this);
+   }
+
+   public void d() {
+      if (this.b != null) {
+         if (this.a.s != null) {
+            this.b.a();
+         } else {
+            this.b();
+         }
+      } else if (this.a.s != null) {
+         this.c();
+      }
+   }
+
+   public void a(hpy $$0) {
+      this.a.n.r = $$0;
+      this.a.n.az();
+      if (this.b != null) {
+         this.b.b();
+         this.b = $$0.a(this);
+      }
+   }
+
+   public fpt e() {
+      return this.a;
+   }
+
+   public boolean f() {
+      return this.a.r == null ? false : this.a.r.i() == djj.a;
+   }
+
+   public static wy a(String $$0) {
+      return wy.d("key." + $$0).a(o.r);
+   }
+
+   public void a(czn $$0, czn $$1, cvp $$2) {
    }
 }

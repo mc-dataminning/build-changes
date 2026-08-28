@@ -1,30 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eqv extends eqo {
-   public static final MapCodec<eqv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, eqv::new)
-   );
-   private final int c;
+public interface eqv<P extends equ> {
+   eqv<eqg> a = a("block_predicate_filter", eqg.a);
+   eqv<eqx> b = a("rarity_filter", eqx.a);
+   eqv<eqz> c = a("surface_relative_threshold_filter", eqz.a);
+   eqv<era> d = a("surface_water_depth_filter", era.a);
+   eqv<eqf> e = a("biome", eqf.a);
+   eqv<eqj> f = a("count", eqj.a);
+   eqv<eqp> g = a("noise_based_count", eqp.a);
+   eqv<eqq> h = a("noise_threshold_count", eqq.a);
+   eqv<eqi> i = a("count_on_every_layer", eqi.a);
+   eqv<eqk> j = a("environment_scan", eqk.a);
+   eqv<eqn> k = a("heightmap", eqn.a);
+   eqv<eqm> l = a("height_range", eqm.a);
+   eqv<eqo> m = a("in_square", eqo.a);
+   eqv<eqw> n = a("random_offset", eqw.a);
+   eqv<eql> o = a("fixed_placement", eql.a);
 
-   private eqv(int $$0) {
-      this.c = $$0;
-   }
+   MapCodec<P> codec();
 
-   public static eqv a(int $$0) {
-      return new eqv($$0);
-   }
-
-   @Override
-   protected boolean a(eqn $$0, azv $$1, iv $$2) {
-      int $$3 = $$0.a(egn.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(egn.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
-   }
-
-   @Override
-   public eqq<?> b() {
-      return eqq.d;
+   private static <P extends equ> eqv<P> a(String $$0, MapCodec<P> $$1) {
+      return js.a(mg.S, $$0, () -> $$1);
    }
 }

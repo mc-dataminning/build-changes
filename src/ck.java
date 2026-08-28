@@ -12,13 +12,13 @@ public class ck extends dk<ck.a> {
       return ck.a.a;
    }
 
-   public void a(arr $$0, cri $$1, czk $$2) {
+   public void a(arr $$0, crl $$1, czn $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         czk $$7 = $$1.a($$6);
+         czn $$7 = $$1.a($$6);
          if ($$7.f()) {
             $$4++;
          } else {
@@ -32,7 +32,7 @@ public class ck extends dk<ck.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(arr $$0, cri $$1, czk $$2, int $$3, int $$4, int $$5) {
+   private void a(arr $$0, crl $$1, czn $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
@@ -54,7 +54,7 @@ public class ck extends dk<ck.a> {
          return aq.f.a(new ck.a(Optional.empty(), ck.a.a.b, List.of($$0)));
       }
 
-      public static ar<ck.a> a(djg... $$0) {
+      public static ar<ck.a> a(djl... $$0) {
          cm[] $$1 = new cm[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
@@ -64,7 +64,7 @@ public class ck extends dk<ck.a> {
          return a($$1);
       }
 
-      public boolean a(cri $$0, czk $$1, int $$2, int $$3, int $$4) {
+      public boolean a(crl $$0, czn $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -78,7 +78,7 @@ public class ck extends dk<ck.a> {
                   return true;
                }
 
-               czk $$8 = $$0.a($$7);
+               czn $$8 = $$0.a($$7);
                if (!$$8.f()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

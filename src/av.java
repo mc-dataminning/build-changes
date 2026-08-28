@@ -5,7 +5,7 @@ import java.util.Optional;
 public class av {
    public static final Codec<av> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               czk.d.fieldOf("icon").forGetter(av::c),
+               czn.d.fieldOf("icon").forGetter(av::c),
                xa.a.fieldOf("title").forGetter(av::a),
                xa.a.fieldOf("description").forGetter(av::b),
                iw.a.optionalFieldOf("background").forGetter(av::d),
@@ -19,7 +19,7 @@ public class av {
    public static final yw<wj, av> b = yw.a(av::a, av::b);
    private final wy c;
    private final wy d;
-   private final czk e;
+   private final czn e;
    private final Optional<iw> f;
    private final ap g;
    private final boolean h;
@@ -28,7 +28,7 @@ public class av {
    private float k;
    private float l;
 
-   public av(czk $$0, wy $$1, wy $$2, Optional<iw> $$3, ap $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public av(czn $$0, wy $$1, wy $$2, Optional<iw> $$3, ap $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -52,7 +52,7 @@ public class av {
       return this.d;
    }
 
-   public czk c() {
+   public czn c() {
       return this.e;
    }
 
@@ -87,7 +87,7 @@ public class av {
    private void a(wj $$0) {
       xa.d.encode($$0, this.c);
       xa.d.encode($$0, this.d);
-      czk.i.encode($$0, this.e);
+      czn.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -111,7 +111,7 @@ public class av {
    private static av b(wj $$0) {
       wy $$1 = xa.d.decode($$0);
       wy $$2 = xa.d.decode($$0);
-      czk $$3 = czk.i.decode($$0);
+      czn $$3 = czn.i.decode($$0);
       ap $$4 = $$0.b(ap.class);
       int $$5 = $$0.readInt();
       Optional<iw> $$6 = ($$5 & 1) != 0 ? Optional.of(new iw($$0.q())) : Optional.empty();

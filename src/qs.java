@@ -2,47 +2,47 @@ import java.util.List;
 import java.util.Optional;
 
 public interface qs {
-   static void a(qh<ero> $$0) {
-      jg<eri> $$1 = $$0.a(mh.be);
-      jg<dkk> $$2 = $$0.a(mh.aG);
-      jf.c<ero> $$3 = $$0.a(
-         erb.a,
-         new ero(
-            List.of(ero.a($$1.b(erc.t)), ero.a($$1.b(erc.u)), ero.a($$1.b(erc.v)), ero.a($$1.b(erc.w)), ero.a($$1.b(erc.x))), new esd(34, 8, ese.a, 10387312)
+   static void a(qh<ert> $$0) {
+      jg<ern> $$1 = $$0.a(mh.be);
+      jg<dkp> $$2 = $$0.a(mh.aG);
+      jf.c<ert> $$3 = $$0.a(
+         erg.a,
+         new ert(
+            List.of(ert.a($$1.b(erh.t)), ert.a($$1.b(erh.u)), ert.a($$1.b(erh.v)), ert.a($$1.b(erh.w)), ert.a($$1.b(erh.x))), new esi(34, 8, esj.a, 10387312)
          )
       );
-      $$0.a(erb.b, new ero($$1.b(erc.f), new esd(32, 8, ese.a, 14357617)));
-      $$0.a(erb.c, new ero($$1.b(erc.g), new esd(32, 8, ese.a, 14357618)));
-      $$0.a(erb.d, new ero($$1.b(erc.e), new esd(32, 8, ese.a, 14357619)));
-      $$0.a(erb.e, new ero($$1.b(erc.j), new esd(32, 8, ese.a, 14357620)));
-      $$0.a(erb.f, new ero($$1.b(erc.a), new esd(ka.i, esf.c.b, 0.2F, 165745296, Optional.of(new esf.a($$3, 10)), 32, 8, ese.a)));
-      $$0.a(erb.q, new ero($$1.b(erc.F), new esd(24, 8, ese.a, 20083232)));
-      $$0.a(erb.g, new ero($$1.b(erc.l), new esd(32, 5, ese.b, 10387313)));
-      $$0.a(erb.h, new ero($$1.b(erc.d), new esd(80, 20, ese.b, 10387319)));
-      $$0.a(erb.i, new ero($$1.b(erc.r), new esd(new ka(9, 0, 9), esf.c.c, 0.01F, 0, Optional.empty(), 1, 0, ese.a)));
-      $$0.a(erb.j, new ero(List.of(ero.a($$1.b(erc.b)), ero.a($$1.b(erc.c))), new esd(ka.i, esf.c.d, 0.004F, 0, Optional.empty(), 1, 0, ese.a)));
+      $$0.a(erg.b, new ert($$1.b(erh.f), new esi(32, 8, esj.a, 14357617)));
+      $$0.a(erg.c, new ert($$1.b(erh.g), new esi(32, 8, esj.a, 14357618)));
+      $$0.a(erg.d, new ert($$1.b(erh.e), new esi(32, 8, esj.a, 14357619)));
+      $$0.a(erg.e, new ert($$1.b(erh.j), new esi(32, 8, esj.a, 14357620)));
+      $$0.a(erg.f, new ert($$1.b(erh.a), new esi(ka.i, esk.c.b, 0.2F, 165745296, Optional.of(new esk.a($$3, 10)), 32, 8, esj.a)));
+      $$0.a(erg.q, new ert($$1.b(erh.F), new esi(24, 8, esj.a, 20083232)));
+      $$0.a(erg.g, new ert($$1.b(erh.l), new esi(32, 5, esj.b, 10387313)));
+      $$0.a(erg.h, new ert($$1.b(erh.d), new esi(80, 20, esj.b, 10387319)));
+      $$0.a(erg.i, new ert($$1.b(erh.r), new esi(new ka(9, 0, 9), esk.c.c, 0.01F, 0, Optional.empty(), 1, 0, esj.a)));
+      $$0.a(erg.j, new ert(List.of(ert.a($$1.b(erh.b)), ert.a($$1.b(erh.c))), new esi(ka.i, esk.c.d, 0.004F, 0, Optional.empty(), 1, 0, esj.a)));
       $$0.a(
-         erb.k,
-         new ero(
+         erg.k,
+         new ert(
             List.of(
-               ero.a($$1.b(erc.y)),
-               ero.a($$1.b(erc.z)),
-               ero.a($$1.b(erc.A)),
-               ero.a($$1.b(erc.B)),
-               ero.a($$1.b(erc.C)),
-               ero.a($$1.b(erc.D)),
-               ero.a($$1.b(erc.E))
+               ert.a($$1.b(erh.y)),
+               ert.a($$1.b(erh.z)),
+               ert.a($$1.b(erh.A)),
+               ert.a($$1.b(erh.B)),
+               ert.a($$1.b(erh.C)),
+               ert.a($$1.b(erh.D)),
+               ert.a($$1.b(erh.E))
             ),
-            new esd(40, 15, ese.a, 34222645)
+            new esi(40, 15, esj.a, 34222645)
          )
       );
-      $$0.a(erb.l, new ero(List.of(ero.a($$1.b(erc.h)), ero.a($$1.b(erc.i))), new esd(24, 4, ese.a, 165745295)));
-      $$0.a(erb.m, new ero(List.of(ero.a($$1.b(erc.m)), ero.a($$1.b(erc.n))), new esd(20, 8, ese.a, 14357621)));
-      $$0.a(erb.n, new ero(List.of(ero.a($$1.b(erc.o), 2), ero.a($$1.b(erc.s), 3)), new esd(27, 4, ese.a, 30084232)));
-      $$0.a(erb.o, new ero($$1.b(erc.p), new esd(2, 1, ese.a, 14357921)));
-      $$0.a(erb.p, new ero($$1.b(erc.q), new esd(20, 11, ese.b, 10387313)));
-      $$0.a(erb.r, new ero($$1.b(erc.k), new esc(32, 3, 128, $$2.b(axb.o))));
-      $$0.a(erb.s, new ero($$1.b(erc.G), new esd(34, 8, ese.a, 83469867)));
-      $$0.a(erb.t, new ero($$1.b(erc.H), new esd(34, 12, ese.a, 94251327)));
+      $$0.a(erg.l, new ert(List.of(ert.a($$1.b(erh.h)), ert.a($$1.b(erh.i))), new esi(24, 4, esj.a, 165745295)));
+      $$0.a(erg.m, new ert(List.of(ert.a($$1.b(erh.m)), ert.a($$1.b(erh.n))), new esi(20, 8, esj.a, 14357621)));
+      $$0.a(erg.n, new ert(List.of(ert.a($$1.b(erh.o), 2), ert.a($$1.b(erh.s), 3)), new esi(27, 4, esj.a, 30084232)));
+      $$0.a(erg.o, new ert($$1.b(erh.p), new esi(2, 1, esj.a, 14357921)));
+      $$0.a(erg.p, new ert($$1.b(erh.q), new esi(20, 11, esj.b, 10387313)));
+      $$0.a(erg.r, new ert($$1.b(erh.k), new esh(32, 3, 128, $$2.b(axb.o))));
+      $$0.a(erg.s, new ert($$1.b(erh.G), new esi(34, 8, esj.a, 83469867)));
+      $$0.a(erg.t, new ert($$1.b(erh.H), new esi(34, 12, esj.a, 94251327)));
    }
 }

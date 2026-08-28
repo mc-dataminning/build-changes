@@ -1,44 +1,31 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekh extends ejt<eme> {
-   public ekh(Codec<eme> $$0) {
-      super($$0);
-   }
+public class ekh implements emc {
+   public static final Codec<ekh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eat.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               eat.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               eat.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               eat.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               ehz.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ekh::new)
+   );
+   public final eat b;
+   public final eat c;
+   public final eat d;
+   public final eat e;
+   public final ehz f;
+   public final boolean g;
 
-   @Override
-   public boolean a(ejv<eme> $$0) {
-      int $$1 = 0;
-      dkg $$2 = $$0.b();
-      iv $$3 = $$0.e();
-      azv $$4 = $$0.d();
-      int $$5 = $$2.a(egn.a.d, $$3.u(), $$3.w());
-      iv $$6 = new iv($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(dmo.J)) {
-         eao $$7 = dmo.mI.m();
-         eao $$8 = dmo.mJ.m();
-         int $$9 = 1 + $$4.a(10);
-
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(dmo.J) && $$2.a_($$6.d()).a(dmo.J) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.b(dqv.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               iv $$11 = $$6.e();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dmo.mI)) {
-                  $$2.a($$11, $$7.b(dqv.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
-            }
-
-            $$6 = $$6.d();
-         }
-      }
-
-      return $$1 > 0;
+   public ekh(eat $$0, eat $$1, eat $$2, eat $$3, ehz $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

@@ -1,451 +1,561 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.shorts.ShortArrayList;
-import it.unimi.dsi.fastutil.shorts.ShortList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumSet;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.DynamicLike;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public abstract class ecl implements dkm.a, ecx, edh {
-   public static final int a = -1;
-   private static final Logger n = LogUtils.getLogger();
-   private static final LongSet o = new LongOpenHashSet();
-   protected final ShortList[] b;
-   private volatile boolean p;
-   private volatile boolean q;
-   protected final dio c;
-   private long r;
-   @Nullable
-   @Deprecated
-   private dkl s;
-   @Nullable
-   protected egr d;
-   protected final edi e;
-   @Nullable
-   protected ehq f;
-   protected final Map<egn.a, egn> h = Maps.newEnumMap(egn.a.class);
-   protected ewf i;
-   private final Map<eri, erq> t = Maps.newHashMap();
-   private final Map<eri, LongSet> u = Maps.newHashMap();
-   protected final Map<iv, tz> j = Maps.newHashMap();
-   protected final Map<iv, dxm> k = new Object2ObjectOpenHashMap();
-   protected final djj l;
-   protected final ecw[] m;
+public class ecl {
+   public static final double b = 5.999997E7F;
+   public static final double c = 2.9999984E7;
+   private final List<ecj> a = Lists.newArrayList();
+   private double e = 0.2;
+   private double f = 5.0;
+   private int g = 15;
+   private int h = 5;
+   private double i;
+   private double j;
+   int k = 29999984;
+   private ecl.a l = new ecl.e(5.999997E7F);
+   public static final ecl.d d = new ecl.d(0.0, 0.0, 0.2, 5.0, 5, 15, 5.999997E7F, 0L, 0.0);
 
-   public ecl(dio $$0, edi $$1, djj $$2, js<dkk> $$3, long $$4, @Nullable ecw[] $$5, @Nullable ehq $$6) {
-      this.c = $$0;
-      this.e = $$1;
-      this.l = $$2;
-      this.m = new ecw[$$2.ap()];
-      this.r = $$4;
-      this.b = new ShortList[$$2.ap()];
-      this.f = $$6;
-      this.i = new ewf($$2);
-      if ($$5 != null) {
-         if (this.m.length == $$5.length) {
-            System.arraycopy($$5, 0, this.m, 0, this.m.length);
-         } else {
-            n.warn("Could not set level chunk sections, array length is {} instead of {}", $$5.length, this.m.length);
-         }
-      }
-
-      a($$3, this.m);
+   public boolean a(iv $$0) {
+      return this.a((double)$$0.u(), (double)$$0.w());
    }
 
-   private static void a(js<dkk> $$0, ecw[] $$1) {
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$1[$$2] == null) {
-            $$1[$$2] = new ecw($$0);
-         }
-      }
+   public boolean a(ffc $$0) {
+      return this.a($$0.d, $$0.f);
    }
 
-   public efr a(int $$0) {
-      return efr.a;
+   public boolean a(dir $$0) {
+      return this.a((double)$$0.d(), (double)$$0.e()) && this.a((double)$$0.f(), (double)$$0.g());
    }
 
-   @Nullable
-   public eao a(iv $$0, eao $$1) {
-      return this.a($$0, $$1, 3);
+   public boolean a(fex $$0) {
+      return this.a($$0.a, $$0.c, $$0.d - 1.0E-5F, $$0.f - 1.0E-5F);
    }
 
-   @Nullable
-   public abstract eao a(iv var1, eao var2, int var3);
-
-   public abstract void a(dxm var1);
-
-   public abstract void a(bwi var1);
-
-   public int a() {
-      ecw[] $$0 = this.d();
-
-      for (int $$1 = $$0.length - 1; $$1 >= 0; $$1--) {
-         ecw $$2 = $$0[$$1];
-         if (!$$2.c()) {
-            return $$1;
-         }
-      }
-
-      return -1;
+   private boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.a($$0, $$1) && this.a($$2, $$3);
    }
 
-   @Deprecated(
-      forRemoval = true
-   )
-   public int b() {
-      int $$0 = this.a();
-      return $$0 == -1 ? this.G_() : jy.c(this.h($$0));
+   public boolean a(double $$0, double $$1) {
+      return this.a($$0, $$1, 0.0);
    }
 
-   public Set<iv> c() {
-      Set<iv> $$0 = Sets.newHashSet(this.j.keySet());
-      $$0.addAll(this.k.keySet());
-      return $$0;
+   public boolean a(double $$0, double $$1, double $$2) {
+      return $$0 >= this.e() - $$2 && $$0 < this.g() + $$2 && $$1 >= this.f() - $$2 && $$1 < this.h() + $$2;
    }
 
-   public ecw[] d() {
-      return this.m;
+   public iv b(iv $$0) {
+      return this.b((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
    }
 
-   public ecw b(int $$0) {
-      return this.d()[$$0];
+   public iv b(ffc $$0) {
+      return this.b($$0.a(), $$0.b(), $$0.c());
    }
 
-   public Collection<Entry<egn.a, egn>> e() {
-      return Collections.unmodifiableSet(this.h.entrySet());
+   public iv b(double $$0, double $$1, double $$2) {
+      return iv.a((jp)this.c($$0, $$1, $$2));
    }
 
-   public void a(egn.a $$0, long[] $$1) {
-      this.a($$0).a(this, $$0, $$1);
+   public ffc c(ffc $$0) {
+      return this.c($$0.d, $$0.e, $$0.f);
    }
 
-   public egn a(egn.a $$0) {
-      return this.h.computeIfAbsent($$0, $$0x -> new egn(this, $$0x));
+   public ffc c(double $$0, double $$1, double $$2) {
+      return new ffc(azm.a($$0, this.e(), this.g() - 1.0E-5F), $$1, azm.a($$2, this.f(), this.h() - 1.0E-5F));
    }
 
-   public boolean b(egn.a $$0) {
-      return this.h.get($$0) != null;
+   public double a(bwi $$0) {
+      return this.b($$0.dz(), $$0.dF());
    }
 
-   public int a(egn.a $$0, int $$1, int $$2) {
-      egn $$3 = this.h.get($$0);
-      if ($$3 == null) {
-         if (ac.aV && this instanceof ecv) {
-            n.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
-         }
-
-         egn.a(this, EnumSet.of($$0));
-         $$3 = this.h.get($$0);
-      }
-
-      return $$3.a($$1 & 15, $$2 & 15) - 1;
+   public ffw c() {
+      return this.l.m();
    }
 
-   public dio f() {
-      return this.c;
+   public double b(double $$0, double $$1) {
+      double $$2 = $$1 - this.f();
+      double $$3 = this.h() - $$1;
+      double $$4 = $$0 - this.e();
+      double $$5 = this.g() - $$0;
+      double $$6 = Math.min($$4, $$5);
+      $$6 = Math.min($$6, $$2);
+      return Math.min($$6, $$3);
    }
 
-   @Nullable
-   @Override
-   public erq a(eri $$0) {
-      return this.t.get($$0);
+   public List<ecl.b> c(double $$0, double $$1) {
+      ecl.b[] $$2 = new ecl.b[]{
+         new ecl.b(jb.c, $$1 - this.f()), new ecl.b(jb.d, this.h() - $$1), new ecl.b(jb.e, $$0 - this.e()), new ecl.b(jb.f, this.g() - $$0)
+      };
+      return Arrays.stream($$2).sorted(Comparator.comparingDouble($$0x -> $$0x.b)).toList();
    }
 
-   @Override
-   public void a(eri $$0, erq $$1) {
-      this.t.put($$0, $$1);
-      this.i();
+   public boolean a(bwi $$0, fex $$1) {
+      double $$2 = Math.max(azm.a($$1.b(), $$1.d()), 1.0);
+      return this.a($$0) < $$2 * 2.0 && this.a($$0.dz(), $$0.dF(), $$2);
    }
 
-   public Map<eri, erq> g() {
-      return Collections.unmodifiableMap(this.t);
+   public eck d() {
+      return this.l.i();
    }
 
-   public void a(Map<eri, erq> $$0) {
-      this.t.clear();
-      this.t.putAll($$0);
-      this.i();
+   public double e() {
+      return this.l.a();
    }
 
-   @Override
-   public LongSet b(eri $$0) {
-      return this.u.getOrDefault($$0, o);
+   public double f() {
+      return this.l.c();
    }
 
-   @Override
-   public void a(eri $$0, long $$1) {
-      this.u.computeIfAbsent($$0, $$0x -> new LongOpenHashSet()).add($$1);
-      this.i();
+   public double g() {
+      return this.l.b();
    }
 
-   @Override
-   public Map<eri, LongSet> h() {
-      return Collections.unmodifiableMap(this.u);
+   public double h() {
+      return this.l.d();
    }
 
-   @Override
-   public void b(Map<eri, LongSet> $$0) {
-      this.u.clear();
-      this.u.putAll($$0);
-      this.i();
-   }
-
-   public boolean a(int $$0, int $$1) {
-      if ($$0 < this.G_()) {
-         $$0 = this.G_();
-      }
-
-      if ($$1 > this.ao()) {
-         $$1 = this.ao();
-      }
-
-      for (int $$2 = $$0; $$2 <= $$1; $$2 += 16) {
-         if (!this.b(this.f($$2)).c()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public boolean c(int $$0) {
-      return this.b(this.g($$0)).c();
-   }
-
-   public void i() {
-      this.p = true;
-   }
-
-   public boolean j() {
-      if (this.p) {
-         this.p = false;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean k() {
-      return this.p;
-   }
-
-   public abstract edm n();
-
-   public edm o() {
-      edm $$0 = this.n();
-      egb $$1 = this.z();
-      if ($$1 != null) {
-         edm $$2 = $$1.a();
-         return edm.a($$2, $$0);
-      } else {
-         return $$0;
-      }
-   }
-
-   public abstract void d(iv var1);
-
-   public void e(iv $$0) {
-      n.warn("Trying to mark a block for PostProcessing @ {}, but this operation is not supported.", $$0);
-   }
-
-   public ShortList[] p() {
-      return this.b;
-   }
-
-   public void a(ShortList $$0, int $$1) {
-      a(this.p(), $$1).addAll($$0);
-   }
-
-   public void a(tz $$0) {
-      iv $$1 = dxm.b($$0);
-      if (!this.k.containsKey($$1)) {
-         this.j.put($$1, $$0);
-      }
-   }
-
-   @Nullable
-   public tz f(iv $$0) {
-      return this.j.get($$0);
-   }
-
-   @Nullable
-   public abstract tz a(iv var1, jh.a var2);
-
-   @Override
-   public final void a(BiConsumer<iv, eao> $$0) {
-      this.a($$0x -> $$0x.k() != 0, $$0);
-   }
-
-   public void a(Predicate<eao> $$0, BiConsumer<iv, eao> $$1) {
-      iv.a $$2 = new iv.a();
-
-      for (int $$3 = this.aq(); $$3 <= this.ar(); $$3++) {
-         ecw $$4 = this.b(this.g($$3));
-         if ($$4.a($$0)) {
-            iv $$5 = jy.a(this.c, $$3).j();
-
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               for (int $$7 = 0; $$7 < 16; $$7++) {
-                  for (int $$8 = 0; $$8 < 16; $$8++) {
-                     eao $$9 = $$4.a($$8, $$6, $$7);
-                     if ($$0.test($$9)) {
-                        $$1.accept($$2.a($$5, $$8, $$6, $$7), $$9);
-                     }
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   public abstract fgs<dmm> q();
-
-   public abstract fgs<ewu> r();
-
-   public boolean s() {
-      return true;
-   }
-
-   public abstract ecl.a a(long var1);
-
-   public edi t() {
-      return this.e;
-   }
-
-   public boolean u() {
-      return this.f != null;
-   }
-
-   @Nullable
-   public ehq v() {
-      return this.f;
-   }
-
-   public long w() {
-      return this.r;
-   }
-
-   public void b(long $$0) {
-      this.r += $$0;
-   }
-
-   public void c(long $$0) {
-      this.r = $$0;
-   }
-
-   public static ShortList a(ShortList[] $$0, int $$1) {
-      if ($$0[$$1] == null) {
-         $$0[$$1] = new ShortArrayList();
-      }
-
-      return $$0[$$1];
-   }
-
-   public boolean x() {
-      return this.q;
-   }
-
-   public void a(boolean $$0) {
-      this.q = $$0;
-      this.i();
-   }
-
-   @Override
-   public int G_() {
-      return this.l.G_();
-   }
-
-   @Override
-   public int H_() {
-      return this.l.H_();
-   }
-
-   public egr a(Function<ecl, egr> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this);
-      }
-
-      return this.d;
-   }
-
-   @Deprecated
-   public dkl a(Supplier<dkl> $$0) {
-      if (this.s == null) {
-         this.s = $$0.get();
-      }
-
-      return this.s;
-   }
-
-   @Override
-   public jf<dkk> getNoiseBiome(int $$0, int $$1, int $$2) {
-      try {
-         int $$3 = jq.a(this.G_());
-         int $$4 = $$3 + jq.a(this.H_()) - 1;
-         int $$5 = azm.a($$1, $$3, $$4);
-         int $$6 = this.f(jq.c($$5));
-         return this.m[$$6].c($$0 & 3, $$5 & 3, $$2 & 3);
-      } catch (Throwable var8) {
-         p $$8 = p.a(var8, "Getting biome");
-         q $$9 = $$8.a("Biome being got");
-         $$9.a("Location", () -> q.a(this, $$0, $$1, $$2));
-         throw new aa($$8);
-      }
-   }
-
-   public void a(dkn $$0, dkt.f $$1) {
-      dio $$2 = this.f();
-      int $$3 = jq.a($$2.d());
-      int $$4 = jq.a($$2.e());
-      djj $$5 = this.B();
-
-      for (int $$6 = $$5.aq(); $$6 <= $$5.ar(); $$6++) {
-         ecw $$7 = this.b(this.g($$6));
-         int $$8 = jq.d($$6);
-         $$7.a($$0, $$1, $$3, $$8, $$4);
-      }
-   }
-
-   public boolean y() {
-      return !this.h().isEmpty();
-   }
-
-   @Nullable
-   public egb z() {
-      return null;
-   }
-
-   public boolean A() {
-      return this.z() != null;
-   }
-
-   public djj B() {
-      return this;
-   }
-
-   public void C() {
-      this.i.a(this);
-   }
-
-   @Override
-   public ewf D() {
+   public double a() {
       return this.i;
    }
 
-   public static record a(List<fgo<dmm>> a, List<fgo<ewu>> b) {
+   public double b() {
+      return this.j;
+   }
+
+   public void d(double $$0, double $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.l.k();
+
+      for (ecj $$2 : this.l()) {
+         $$2.a(this, $$0, $$1);
+      }
+   }
+
+   public double i() {
+      return this.l.e();
+   }
+
+   public long j() {
+      return this.l.g();
+   }
+
+   public double k() {
+      return this.l.h();
+   }
+
+   public void a(double $$0) {
+      this.l = new ecl.e($$0);
+
+      for (ecj $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
+   }
+
+   public void a(double $$0, double $$1, long $$2) {
+      this.l = (ecl.a)($$0 == $$1 ? new ecl.e($$1) : new ecl.c($$0, $$1, $$2));
+
+      for (ecj $$3 : this.l()) {
+         $$3.a(this, $$0, $$1, $$2);
+      }
+   }
+
+   protected List<ecj> l() {
+      return Lists.newArrayList(this.a);
+   }
+
+   public void a(ecj $$0) {
+      this.a.add($$0);
+   }
+
+   public void b(ecj $$0) {
+      this.a.remove($$0);
+   }
+
+   public void a(int $$0) {
+      this.k = $$0;
+      this.l.j();
+   }
+
+   public int m() {
+      return this.k;
+   }
+
+   public double n() {
+      return this.f;
+   }
+
+   public void b(double $$0) {
+      this.f = $$0;
+
+      for (ecj $$1 : this.l()) {
+         $$1.c(this, $$0);
+      }
+   }
+
+   public double o() {
+      return this.e;
+   }
+
+   public void c(double $$0) {
+      this.e = $$0;
+
+      for (ecj $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public double p() {
+      return this.l.f();
+   }
+
+   public int q() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+
+      for (ecj $$1 : this.l()) {
+         $$1.a(this, $$0);
+      }
+   }
+
+   public int r() {
+      return this.h;
+   }
+
+   public void c(int $$0) {
+      this.h = $$0;
+
+      for (ecj $$1 : this.l()) {
+         $$1.b(this, $$0);
+      }
+   }
+
+   public void s() {
+      this.l = this.l.l();
+   }
+
+   public ecl.d t() {
+      return new ecl.d(this);
+   }
+
+   public void a(ecl.d $$0) {
+      this.d($$0.a(), $$0.b());
+      this.c($$0.c());
+      this.b($$0.d());
+      this.c($$0.e());
+      this.b($$0.f());
+      if ($$0.h() > 0L) {
+         this.a($$0.g(), $$0.i(), $$0.h());
+      } else {
+         this.a($$0.g());
+      }
+   }
+
+   interface a {
+      double a();
+
+      double b();
+
+      double c();
+
+      double d();
+
+      double e();
+
+      double f();
+
+      long g();
+
+      double h();
+
+      eck i();
+
+      void j();
+
+      void k();
+
+      ecl.a l();
+
+      ffw m();
+   }
+
+   public static record b(jb a, double b) {
+   }
+
+   class c implements ecl.a {
+      private final double b;
+      private final double c;
+      private final long d;
+      private final long e;
+      private final double f;
+
+      c(final double $$0, final double $$1, final long $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.f = (double)$$2;
+         this.e = ag.c();
+         this.d = this.e + $$2;
+      }
+
+      @Override
+      public double a() {
+         return azm.a(ecl.this.a() - this.e() / 2.0, (double)(-ecl.this.k), (double)ecl.this.k);
+      }
+
+      @Override
+      public double c() {
+         return azm.a(ecl.this.b() - this.e() / 2.0, (double)(-ecl.this.k), (double)ecl.this.k);
+      }
+
+      @Override
+      public double b() {
+         return azm.a(ecl.this.a() + this.e() / 2.0, (double)(-ecl.this.k), (double)ecl.this.k);
+      }
+
+      @Override
+      public double d() {
+         return azm.a(ecl.this.b() + this.e() / 2.0, (double)(-ecl.this.k), (double)ecl.this.k);
+      }
+
+      @Override
+      public double e() {
+         double $$0 = (double)(ag.c() - this.e) / this.f;
+         return $$0 < 1.0 ? azm.d($$0, this.b, this.c) : this.c;
+      }
+
+      @Override
+      public double f() {
+         return Math.abs(this.b - this.c) / (double)(this.d - this.e);
+      }
+
+      @Override
+      public long g() {
+         return this.d - ag.c();
+      }
+
+      @Override
+      public double h() {
+         return this.c;
+      }
+
+      @Override
+      public eck i() {
+         return this.c < this.b ? eck.b : eck.a;
+      }
+
+      @Override
+      public void k() {
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public ecl.a l() {
+         return (ecl.a)(this.g() <= 0L ? ecl.this.new e(this.c) : this);
+      }
+
+      @Override
+      public ffw m() {
+         return fft.a(
+            fft.c,
+            fft.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            ffg.e
+         );
+      }
+   }
+
+   public static class d {
+      private final double a;
+      private final double b;
+      private final double c;
+      private final double d;
+      private final int e;
+      private final int f;
+      private final double g;
+      private final long h;
+      private final double i;
+
+      d(double $$0, double $$1, double $$2, double $$3, int $$4, int $$5, double $$6, long $$7, double $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+      }
+
+      d(ecl $$0) {
+         this.a = $$0.a();
+         this.b = $$0.b();
+         this.c = $$0.o();
+         this.d = $$0.n();
+         this.e = $$0.r();
+         this.f = $$0.q();
+         this.g = $$0.i();
+         this.h = $$0.j();
+         this.i = $$0.k();
+      }
+
+      public double a() {
+         return this.a;
+      }
+
+      public double b() {
+         return this.b;
+      }
+
+      public double c() {
+         return this.c;
+      }
+
+      public double d() {
+         return this.d;
+      }
+
+      public int e() {
+         return this.e;
+      }
+
+      public int f() {
+         return this.f;
+      }
+
+      public double g() {
+         return this.g;
+      }
+
+      public long h() {
+         return this.h;
+      }
+
+      public double i() {
+         return this.i;
+      }
+
+      public static ecl.d a(DynamicLike<?> $$0, ecl.d $$1) {
+         double $$2 = azm.a($$0.get("BorderCenterX").asDouble($$1.a), -2.9999984E7, 2.9999984E7);
+         double $$3 = azm.a($$0.get("BorderCenterZ").asDouble($$1.b), -2.9999984E7, 2.9999984E7);
+         double $$4 = $$0.get("BorderSize").asDouble($$1.g);
+         long $$5 = $$0.get("BorderSizeLerpTime").asLong($$1.h);
+         double $$6 = $$0.get("BorderSizeLerpTarget").asDouble($$1.i);
+         double $$7 = $$0.get("BorderSafeZone").asDouble($$1.d);
+         double $$8 = $$0.get("BorderDamagePerBlock").asDouble($$1.c);
+         int $$9 = $$0.get("BorderWarningBlocks").asInt($$1.e);
+         int $$10 = $$0.get("BorderWarningTime").asInt($$1.f);
+         return new ecl.d($$2, $$3, $$8, $$7, $$9, $$10, $$4, $$5, $$6);
+      }
+
+      public void a(tz $$0) {
+         $$0.a("BorderCenterX", this.a);
+         $$0.a("BorderCenterZ", this.b);
+         $$0.a("BorderSize", this.g);
+         $$0.a("BorderSizeLerpTime", this.h);
+         $$0.a("BorderSafeZone", this.d);
+         $$0.a("BorderDamagePerBlock", this.c);
+         $$0.a("BorderSizeLerpTarget", this.i);
+         $$0.a("BorderWarningBlocks", (double)this.e);
+         $$0.a("BorderWarningTime", (double)this.f);
+      }
+   }
+
+   class e implements ecl.a {
+      private final double b;
+      private double c;
+      private double d;
+      private double e;
+      private double f;
+      private ffw g;
+
+      public e(final double $$0) {
+         this.b = $$0;
+         this.n();
+      }
+
+      @Override
+      public double a() {
+         return this.c;
+      }
+
+      @Override
+      public double b() {
+         return this.e;
+      }
+
+      @Override
+      public double c() {
+         return this.d;
+      }
+
+      @Override
+      public double d() {
+         return this.f;
+      }
+
+      @Override
+      public double e() {
+         return this.b;
+      }
+
+      @Override
+      public eck i() {
+         return eck.c;
+      }
+
+      @Override
+      public double f() {
+         return 0.0;
+      }
+
+      @Override
+      public long g() {
+         return 0L;
+      }
+
+      @Override
+      public double h() {
+         return this.b;
+      }
+
+      private void n() {
+         this.c = azm.a(ecl.this.a() - this.b / 2.0, (double)(-ecl.this.k), (double)ecl.this.k);
+         this.d = azm.a(ecl.this.b() - this.b / 2.0, (double)(-ecl.this.k), (double)ecl.this.k);
+         this.e = azm.a(ecl.this.a() + this.b / 2.0, (double)(-ecl.this.k), (double)ecl.this.k);
+         this.f = azm.a(ecl.this.b() + this.b / 2.0, (double)(-ecl.this.k), (double)ecl.this.k);
+         this.g = fft.a(
+            fft.c,
+            fft.a(Math.floor(this.a()), Double.NEGATIVE_INFINITY, Math.floor(this.c()), Math.ceil(this.b()), Double.POSITIVE_INFINITY, Math.ceil(this.d())),
+            ffg.e
+         );
+      }
+
+      @Override
+      public void j() {
+         this.n();
+      }
+
+      @Override
+      public void k() {
+         this.n();
+      }
+
+      @Override
+      public ecl.a l() {
+         return this;
+      }
+
+      @Override
+      public ffw m() {
+         return this.g;
+      }
    }
 }

@@ -35,11 +35,11 @@ public class jy extends ka {
       return new jy(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static jy a(dio $$0, int $$1) {
+   public static jy a(dir $$0, int $$1) {
       return new jy($$0.h, $$1, $$0.i);
    }
 
-   public static jy a(eet $$0) {
+   public static jy a(eey $$0) {
       return a($$0.du());
    }
 
@@ -51,7 +51,7 @@ public class jy extends ka {
       return new jy(b($$0), c($$0), d($$0));
    }
 
-   public static jy a(ecl $$0) {
+   public static jy a(ecq $$0) {
       return a($$0.f(), $$0.aq());
    }
 
@@ -183,7 +183,7 @@ public class jy extends ka {
    }
 
    public static long g(long $$0) {
-      return dio.c(b($$0), d($$0));
+      return dir.c(b($$0), d($$0));
    }
 
    public iv j() {
@@ -195,8 +195,8 @@ public class jy extends ka {
       return this.j().b(8, 8, 8);
    }
 
-   public dio r() {
-      return new dio(this.a(), this.c());
+   public dir r() {
+      return new dir(this.a(), this.c());
    }
 
    public static long c(iv $$0) {
@@ -229,7 +229,7 @@ public class jy extends ka {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<jy> a(dio $$0, int $$1, int $$2, int $$3) {
+   public static Stream<jy> a(dir $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.h;
       int $$5 = $$0.i;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3, $$5 + $$1);

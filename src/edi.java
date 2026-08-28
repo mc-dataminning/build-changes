@@ -1,401 +1,379 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
-import java.util.Collection;
-import java.util.EnumSet;
-import java.util.IdentityHashMap;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntArraySet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntUnaryOperator;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public class edi {
-   private static final Logger b = LogUtils.getLogger();
-   public static final edi a = new edi(dix.a);
-   private static final String c = "Indices";
-   private static final jc[] d = jc.values();
-   private static final Codec<List<fgo<dmm>>> e = fgo.a(mg.e.q().orElse(dmo.a)).listOf();
-   private static final Codec<List<fgo<ewu>>> f = fgo.a(mg.c.q().orElse(eww.a)).listOf();
-   private final EnumSet<jc> g = EnumSet.noneOf(jc.class);
-   private final List<fgo<dmm>> h = Lists.newArrayList();
-   private final List<fgo<ewu>> i = Lists.newArrayList();
-   private final int[][] j;
-   static final Map<dmm, edi.a> k = new IdentityHashMap<>();
-   static final Set<edi.a> l = Sets.newHashSet();
+public class edi<T> implements edh<T>, edj<T> {
+   private static final int a = 0;
+   private final edh<T> b = ($$0x, $$1x) -> 0;
+   private final jk<T> c;
+   private volatile edi.c<T> d;
+   private final edi.d e;
+   private final ban f = new ban("PalettedContainer");
 
-   private edi(djj $$0) {
-      this.j = new int[$$0.ap()][];
+   public void a() {
+      this.f.a();
    }
 
-   public edi(tz $$0, djj $$1) {
-      this($$1);
-      if ($$0.b("Indices", 10)) {
-         tz $$2 = $$0.n("Indices");
+   public void b() {
+      this.f.b();
+   }
 
-         for (int $$3 = 0; $$3 < this.j.length; $$3++) {
-            String $$4 = String.valueOf($$3);
-            if ($$2.b($$4, 11)) {
-               this.j[$$3] = $$2.l($$4);
+   public static <T> Codec<edi<T>> a(jk<T> $$0, Codec<T> $$1, edi.d $$2, T $$3) {
+      edj.b<T, edi<T>> $$4 = edi::a;
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static <T> Codec<edj<T>> b(jk<T> $$0, Codec<T> $$1, edi.d $$2, T $$3) {
+      edj.b<T, edj<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
+      return a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   private static <T, C extends edj<T>> Codec<C> a(jk<T> $$0, Codec<T> $$1, edi.d $$2, T $$3, edj.b<T, C> $$4) {
+      return RecordCodecBuilder.create(
+            $$2x -> $$2x.group(
+                     $$1.mapResult(ayu.a($$3)).listOf().fieldOf("palette").forGetter(edj.a::a),
+                     Codec.LONG_STREAM.lenientOptionalFieldOf("data").forGetter(edj.a::b)
+                  )
+                  .apply($$2x, edj.a::new)
+         )
+         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
+   }
+
+   public edi(jk<T> $$0, edi.d $$1, edi.a<T> $$2, aya $$3, List<T> $$4) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new edi.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
+   }
+
+   private edi(jk<T> $$0, edi.d $$1, edi.c<T> $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$2;
+   }
+
+   private edi(edi<T> $$0) {
+      this.c = $$0.c;
+      this.e = $$0.e;
+      this.d = $$0.d.a(this);
+   }
+
+   public edi(jk<T> $$0, T $$1, edi.d $$2) {
+      this.e = $$2;
+      this.c = $$0;
+      this.d = this.a(null, 0);
+      this.d.c.a($$1);
+   }
+
+   private edi.c<T> a(@Nullable edi.c<T> $$0, int $$1) {
+      edi.a<T> $$2 = this.e.a(this.c, $$1);
+      return $$0 != null && $$2.equals($$0.b()) ? $$0 : $$2.a(this.c, this, this.e.a());
+   }
+
+   @Override
+   public int onResize(int $$0, T $$1) {
+      edi.c<T> $$2 = this.d;
+      edi.c<T> $$3 = this.a($$2, $$0);
+      $$3.a($$2.c, $$2.b);
+      this.d = $$3;
+      return $$3.c.a($$1);
+   }
+
+   public T a(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      Object var5;
+      try {
+         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+
+      return (T)var5;
+   }
+
+   public T b(int $$0, int $$1, int $$2, T $$3) {
+      return this.a(this.e.a($$0, $$1, $$2), $$3);
+   }
+
+   private T a(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      int $$3 = this.d.b.a($$0, $$2);
+      return this.d.c.a($$3);
+   }
+
+   public void c(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      try {
+         this.b(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+   }
+
+   private void b(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      this.d.b.b($$0, $$2);
+   }
+
+   @Override
+   public T a(int $$0, int $$1, int $$2) {
+      return this.a(this.e.a($$0, $$1, $$2));
+   }
+
+   protected T a(int $$0) {
+      edi.c<T> $$1 = this.d;
+      return $$1.c.a($$1.b.a($$0));
+   }
+
+   @Override
+   public void a(Consumer<T> $$0) {
+      edg<T> $$1 = this.d.d();
+      IntSet $$2 = new IntArraySet();
+      this.d.b.a($$2::add);
+      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
+   }
+
+   public void a(vu $$0) {
+      this.a();
+
+      try {
+         int $$1 = $$0.readByte();
+         edi.c<T> $$2 = this.a(this.d, $$1);
+         $$2.c.a($$0);
+         $$0.c($$2.b.a());
+         this.d = $$2;
+      } finally {
+         this.b();
+      }
+   }
+
+   @Override
+   public void b(vu $$0) {
+      this.a();
+
+      try {
+         this.d.a($$0);
+      } finally {
+         this.b();
+      }
+   }
+
+   private static <T> DataResult<edi<T>> a(jk<T> $$0, edi.d $$1, edj.a<T> $$2) {
+      List<T> $$3 = $$2.a();
+      int $$4 = $$1.a();
+      int $$5 = $$1.b($$0, $$3.size());
+      edi.a<T> $$6 = $$1.a($$0, $$5);
+      aya $$7;
+      if ($$5 == 0) {
+         $$7 = new baw($$4);
+      } else {
+         Optional<LongStream> $$8 = $$2.b();
+         if ($$8.isEmpty()) {
+            return DataResult.error(() -> "Missing values for non-zero storage");
+         }
+
+         long[] $$9 = $$8.get().toArray();
+
+         try {
+            if ($$6.a() == edi.d.f) {
+               edg<T> $$10 = new ecy<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
+               bad $$11 = new bad($$5, $$4, $$9);
+               int[] $$12 = new int[$$4];
+               $$11.a($$12);
+               a($$12, $$2x -> $$0.a($$10.a($$2x)));
+               $$7 = new bad($$6.b(), $$4, $$12);
+            } else {
+               $$7 = new bad($$6.b(), $$4, $$9);
             }
+         } catch (bad.a var13) {
+            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
          }
       }
 
-      int $$5 = $$0.f("Sides");
+      return DataResult.success(new edi<>($$0, $$1, $$6, $$7, $$3));
+   }
 
-      for (jc $$6 : jc.values()) {
-         if (($$5 & 1 << $$6.ordinal()) != 0) {
-            this.g.add($$6);
+   @Override
+   public edj.a<T> a(jk<T> $$0, edi.d $$1) {
+      this.a();
+
+      edj.a var12;
+      try {
+         ecy<T> $$2 = new ecy<>($$0, this.d.b.c(), this.b);
+         int $$3 = $$1.a();
+         int[] $$4 = new int[$$3];
+         this.d.b.a($$4);
+         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
+         int $$5 = $$1.b($$0, $$2.b());
+         Optional<LongStream> $$7;
+         if ($$5 != 0) {
+            bad $$6 = new bad($$5, $$3, $$4);
+            $$7 = Optional.of(Arrays.stream($$6.a()));
+         } else {
+            $$7 = Optional.empty();
+         }
+
+         var12 = new edj.a<>($$2.c(), $$7);
+      } finally {
+         this.b();
+      }
+
+      return var12;
+   }
+
+   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
+      int $$2 = -1;
+      int $$3 = -1;
+
+      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+         int $$5 = $$0[$$4];
+         if ($$5 != $$2) {
+            $$2 = $$5;
+            $$3 = $$1.applyAsInt($$5);
+         }
+
+         $$0[$$4] = $$3;
+      }
+   }
+
+   @Override
+   public int c() {
+      return this.d.a();
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return this.d.c.a($$0);
+   }
+
+   @Override
+   public edi<T> d() {
+      return new edi<>(this);
+   }
+
+   @Override
+   public edi<T> e() {
+      return new edi<>(this.c, this.d.c.a(0), this.e);
+   }
+
+   @Override
+   public void a(edi.b<T> $$0) {
+      if (this.d.c.b() == 1) {
+         $$0.accept(this.d.c.a(0), this.d.b.b());
+      } else {
+         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
+         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
+         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
+      }
+   }
+
+   static record a<T>(edg.a a, int b) {
+      public edi.c<T> a(jk<T> $$0, edh<T> $$1, int $$2) {
+         aya $$3 = (aya)(this.b == 0 ? new baw($$2) : new bad(this.b, $$2));
+         edg<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
+         return new edi.c<>(this, $$3, $$4);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(T var1, int var2);
+   }
+
+   static record c<T>(edi.a<T> a, aya b, edg<T> c) {
+
+      public void a(edg<T> $$0, aya $$1) {
+         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
+            T $$3 = $$0.a($$1.a($$2));
+            this.b.b($$2, this.c.a($$3));
          }
       }
 
-      $$0.<Collection<? extends E>>a("neighbor_block_ticks", e).ifPresent(this.h::addAll);
-      $$0.<Collection<? extends E>>a("neighbor_fluid_ticks", f).ifPresent(this.i::addAll);
-   }
+      public int a() {
+         return 1 + this.c.a() + wp.a(this.b.a().length) + this.b.a().length * 8;
+      }
 
-   private edi(edi $$0) {
-      this.g.addAll($$0.g);
-      this.h.addAll($$0.h);
-      this.i.addAll($$0.i);
-      this.j = new int[$$0.j.length][];
+      public void a(vu $$0) {
+         $$0.l(this.b.c());
+         this.c.b($$0);
+         $$0.b(this.b.a());
+      }
 
-      for (int $$1 = 0; $$1 < $$0.j.length; $$1++) {
-         int[] $$2 = $$0.j[$$1];
-         this.j[$$1] = $$2 != null ? IntArrays.copy($$2) : null;
+      public edi.c<T> a(edh<T> $$0) {
+         return new edi.c<>(this.a, this.b.d(), this.c.a($$0));
+      }
+
+      public edi.a<T> b() {
+         return this.a;
+      }
+
+      public aya c() {
+         return this.b;
+      }
+
+      public edg<T> d() {
+         return this.c;
       }
    }
 
-   public void a(ecv $$0) {
-      this.b($$0);
-
-      for (jc $$1 : d) {
-         a($$0, $$1);
-      }
-
-      djh $$2 = $$0.H();
-      this.h.forEach($$1x -> {
-         dmm $$2x = $$1x.a() == dmo.a ? $$2.a_($$1x.b()).b() : (dmm)$$1x.a();
-         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
-      });
-      this.i.forEach($$1x -> {
-         ewu $$2x = $$1x.a() == eww.a ? $$2.b_($$1x.b()).a() : (ewu)$$1x.a();
-         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
-      });
-      l.forEach($$1x -> $$1x.a($$2));
-   }
-
-   private static void a(ecv $$0, jc $$1) {
-      djh $$2 = $$0.H();
-      if ($$0.t().g.remove($$1)) {
-         Set<jb> $$3 = $$1.a();
-         int $$4 = 0;
-         int $$5 = 15;
-         boolean $$6 = $$3.contains(jb.f);
-         boolean $$7 = $$3.contains(jb.e);
-         boolean $$8 = $$3.contains(jb.d);
-         boolean $$9 = $$3.contains(jb.c);
-         boolean $$10 = $$3.size() == 1;
-         dio $$11 = $$0.f();
-         int $$12 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 1);
-         int $$13 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 14);
-         int $$14 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 1);
-         int $$15 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 14);
-         jb[] $$16 = jb.values();
-         iv.a $$17 = new iv.a();
-
-         for (iv $$18 : iv.b($$12, $$2.G_(), $$14, $$13, $$2.ao(), $$15)) {
-            eao $$19 = $$2.a_($$18);
-            eao $$20 = $$19;
-
-            for (jb $$21 : $$16) {
-               $$17.a($$18, $$21);
-               $$20 = a($$20, $$21, $$2, $$18, $$17);
-            }
-
-            dmm.a($$19, $$20, $$2, $$18, 18);
-         }
-      }
-   }
-
-   private static eao a(eao $$0, jb $$1, dji $$2, iv $$3, iv $$4) {
-      return k.getOrDefault($$0.b(), edi.b.b).a($$0, $$1, $$2.a_($$4), $$2, $$3, $$4);
-   }
-
-   private void b(ecv $$0) {
-      iv.a $$1 = new iv.a();
-      iv.a $$2 = new iv.a();
-      dio $$3 = $$0.f();
-      dji $$4 = $$0.H();
-
-      for (int $$5 = 0; $$5 < this.j.length; $$5++) {
-         ecw $$6 = $$0.b($$5);
-         int[] $$7 = this.j[$$5];
-         this.j[$$5] = null;
-         if ($$7 != null && $$7.length > 0) {
-            jb[] $$8 = jb.values();
-            edd<eao> $$9 = $$6.h();
-            int $$10 = $$0.h($$5);
-            int $$11 = jy.c($$10);
-
-            for (int $$12 : $$7) {
-               int $$13 = $$12 & 15;
-               int $$14 = $$12 >> 8 & 15;
-               int $$15 = $$12 >> 4 & 15;
-               $$1.d($$3.d() + $$13, $$11 + $$14, $$3.e() + $$15);
-               eao $$16 = $$9.a($$12);
-               eao $$17 = $$16;
-
-               for (jb $$18 : $$8) {
-                  $$2.a($$1, $$18);
-                  if (jy.a($$1.u()) == $$3.h && jy.a($$1.w()) == $$3.i) {
-                     $$17 = a($$17, $$18, $$4, $$1, $$2);
-                  }
-               }
-
-               dmm.a($$16, $$17, $$4, $$1, 18);
-            }
-         }
-      }
-
-      for (int $$19 = 0; $$19 < this.j.length; $$19++) {
-         if (this.j[$$19] != null) {
-            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.h($$19), $$3.h, $$3.i});
-         }
-
-         this.j[$$19] = null;
-      }
-   }
-
-   public boolean a() {
-      for (int[] $$0 : this.j) {
-         if ($$0 != null) {
-            return false;
-         }
-      }
-
-      return this.g.isEmpty();
-   }
-
-   public tz b() {
-      tz $$0 = new tz();
-      tz $$1 = new tz();
-
-      for (int $$2 = 0; $$2 < this.j.length; $$2++) {
-         String $$3 = String.valueOf($$2);
-         if (this.j[$$2] != null && this.j[$$2].length != 0) {
-            $$1.a($$3, this.j[$$2]);
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("Indices", $$1);
-      }
-
-      int $$4 = 0;
-
-      for (jc $$5 : this.g) {
-         $$4 |= 1 << $$5.ordinal();
-      }
-
-      $$0.a("Sides", (byte)$$4);
-      if (!this.h.isEmpty()) {
-         $$0.a("neighbor_block_ticks", e, this.h);
-      }
-
-      if (!this.i.isEmpty()) {
-         $$0.a("neighbor_fluid_ticks", f, this.i);
-      }
-
-      return $$0;
-   }
-
-   public edi c() {
-      return this == a ? a : new edi(this);
-   }
-
-   public interface a {
-      eao a(eao var1, jb var2, eao var3, dji var4, iv var5, iv var6);
-
-      default void a(dji $$0) {
-      }
-   }
-
-   static enum b implements edi.a {
-      a(
-         dmo.lu,
-         dmo.eu,
-         dmo.ms,
-         dmo.mt,
-         dmo.mu,
-         dmo.mv,
-         dmo.mw,
-         dmo.mx,
-         dmo.my,
-         dmo.mz,
-         dmo.mA,
-         dmo.mB,
-         dmo.mC,
-         dmo.mD,
-         dmo.mE,
-         dmo.mF,
-         dmo.mG,
-         dmo.mH,
-         dmo.ht,
-         dmo.hu,
-         dmo.hv,
-         dmo.fZ,
-         dmo.O,
-         dmo.L,
-         dmo.N,
-         dmo.cP,
-         dmo.cQ,
-         dmo.cR,
-         dmo.cS,
-         dmo.cT,
-         dmo.cU,
-         dmo.cV,
-         dmo.cW,
-         dmo.dd,
-         dmo.de,
-         dmo.df,
-         dmo.dg,
-         dmo.di,
-         dmo.dj,
-         dmo.dk,
-         dmo.dn,
-         dmo.do,
-         dmo.dp,
-         dmo.dq,
-         dmo.ds,
-         dmo.dt,
-         dmo.du,
-         dmo.dz,
-         dmo.dA,
-         dmo.dB,
-         dmo.dC,
-         dmo.dE,
-         dmo.dF,
-         dmo.dG
-      ) {
+   public abstract static class d {
+      public static final edg.a a = edl::a;
+      public static final edg.a b = ede::a;
+      public static final edg.a c = ecy::a;
+      static final edg.a f = ecx::a;
+      public static final edi.d d = new edi.d(4) {
          @Override
-         public eao a(eao $$0, jb $$1, eao $$2, dji $$3, iv $$4, iv $$5) {
-            return $$0;
-         }
-      },
-      b {
-         @Override
-         public eao a(eao $$0, jb $$1, eao $$2, dji $$3, iv $$4, iv $$5) {
-            return $$0.a($$3, $$3, $$4, $$1, $$5, $$3.a_($$5), $$3.C_());
-         }
-      },
-      c(dmo.cG, dmo.hw) {
-         @Override
-         public eao a(eao $$0, jb $$1, eao $$2, dji $$3, iv $$4, iv $$5) {
-            if ($$2.a($$0.b()) && $$1.o().d() && $$0.c(dnq.d) == ebg.a && $$2.c(dnq.d) == ebg.a) {
-               jb $$6 = $$0.c(dnq.c);
-               if ($$1.o() != $$6.o() && $$6 == $$2.c(dnq.c)) {
-                  ebg $$7 = $$1 == $$6.h() ? ebg.b : ebg.c;
-                  $$3.a($$5, $$2.b(dnq.d, $$7.a()), 18);
-                  if ($$6 == jb.c || $$6 == jb.f) {
-                     dxm $$8 = $$3.c_($$4);
-                     dxm $$9 = $$3.c_($$5);
-                     if ($$8 instanceof dxu && $$9 instanceof dxu) {
-                        dxu.a((dxu)$$8, (dxu)$$9);
-                     }
-                  }
-
-                  return $$0.b(dnq.d, $$7);
-               }
-            }
-
-            return $$0;
-         }
-      },
-      d(true, dmo.aO, dmo.aP, dmo.aM, dmo.aR, dmo.aQ, dmo.aN, dmo.aK, dmo.aL) {
-         private final ThreadLocal<List<ObjectSet<iv>>> g = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
-
-         @Override
-         public eao a(eao $$0, jb $$1, eao $$2, dji $$3, iv $$4, iv $$5) {
-            eao $$6 = $$0.a($$3, $$3, $$4, $$1, $$5, $$3.a_($$5), $$3.C_());
-            if ($$0 != $$6) {
-               int $$7 = $$6.c(ebe.aF);
-               List<ObjectSet<iv>> $$8 = this.g.get();
-               if ($$8.isEmpty()) {
-                  for (int $$9 = 0; $$9 < 7; $$9++) {
-                     $$8.add(new ObjectOpenHashSet());
-                  }
-               }
-
-               $$8.get($$7).add($$4.j());
-            }
-
-            return $$0;
-         }
-
-         @Override
-         public void a(dji $$0) {
-            iv.a $$1 = new iv.a();
-            List<ObjectSet<iv>> $$2 = this.g.get();
-
-            for (int $$3 = 2; $$3 < $$2.size(); $$3++) {
-               int $$4 = $$3 - 1;
-               ObjectSet<iv> $$5 = $$2.get($$4);
-               ObjectSet<iv> $$6 = $$2.get($$3);
-               ObjectIterator var8 = $$5.iterator();
-
-               while (var8.hasNext()) {
-                  iv $$7 = (iv)var8.next();
-                  eao $$8 = $$0.a_($$7);
-                  if ($$8.c(ebe.aF) >= $$4) {
-                     $$0.a($$7, $$8.b(ebe.aF, Integer.valueOf($$4)), 18);
-                     if ($$3 != 7) {
-                        for (jb $$9 : f) {
-                           $$1.a($$7, $$9);
-                           eao $$10 = $$0.a_($$1);
-                           if ($$10.b(ebe.aF) && $$8.c(ebe.aF) > $$3) {
-                              $$6.add($$1.j());
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-
-            $$2.clear();
-         }
-      },
-      e(dmo.fw, dmo.fv) {
-         @Override
-         public eao a(eao $$0, jb $$1, eao $$2, dji $$3, iv $$4, iv $$5) {
-            if ($$0.c(dus.c) == 7) {
-               dmm $$6 = $$0.a(dmo.fv) ? dmo.fr : dmo.fs;
-               if ($$2.a($$6)) {
-                  return ($$0.a(dmo.fv) ? dmo.ft : dmo.fu).m().b(dqn.e, $$1);
-               }
-            }
-
-            return $$0;
+         public <A> edi.a<A> a(jk<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new edi.a(a, $$1);
+               case 1, 2, 3, 4 -> new edi.a(b, 4);
+               case 5, 6, 7, 8 -> new edi.a(c, $$1);
+               default -> new edi.a(edi.d.f, azm.e($$0.d()));
+            };
          }
       };
+      public static final edi.d e = new edi.d(2) {
+         @Override
+         public <A> edi.a<A> a(jk<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new edi.a(a, $$1);
+               case 1, 2, 3 -> new edi.a(b, $$1);
+               default -> new edi.a(edi.d.f, azm.e($$0.d()));
+            };
+         }
+      };
+      private final int g;
 
-      public static final jb[] f = jb.values();
-
-      b(final dmm... $$0) {
-         this(false, $$0);
+      d(int $$0) {
+         this.g = $$0;
       }
 
-      b(final boolean $$0, final dmm... $$1) {
-         for (dmm $$2 : $$1) {
-            edi.k.put($$2, this);
-         }
+      public int a() {
+         return 1 << this.g * 3;
+      }
 
-         if ($$0) {
-            edi.l.add(this);
-         }
+      public int a(int $$0, int $$1, int $$2) {
+         return ($$1 << this.g | $$2) << this.g | $$0;
+      }
+
+      public abstract <A> edi.a<A> a(jk<A> var1, int var2);
+
+      <A> int b(jk<A> $$0, int $$1) {
+         int $$2 = azm.e($$1);
+         edi.a<A> $$3 = this.a($$0, $$2);
+         return $$3.a() == f ? $$2 : $$3.b();
       }
    }
 }

@@ -1,37 +1,44 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-public class gvd implements guo.a {
-   private static final int a = 60;
-   private final Set<jy> b = Sets.newHashSet();
+public class gvd implements gut.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final fpt c;
+   private Collection<iv> d = Lists.newArrayList();
 
-   gvd() {
+   public gvd(fpt $$0) {
+      this.c = $$0;
+   }
+
+   public void a(Collection<iv> $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
+      iv $$5 = this.b().c();
 
-   public void a(jy $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(jy $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
-      iv $$5 = iv.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.k(), 60.0)) {
-            a($$0, $$1, $$3x);
+      for (iv $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
          }
-      });
+      }
    }
 
-   private static void a(fjy $$0, gqm $$1, jy $$2) {
-      guo.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
+   private static void a(fkd $$0, gqr $$1, iv $$2) {
+      gut.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(fkd $$0, gqr $$1, String $$2, iv $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      gut.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private fpb b() {
+      return this.c.j.k();
    }
 }

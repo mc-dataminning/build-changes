@@ -11,7 +11,7 @@ public class adv implements zf<abu> {
    private final float j;
    private final float k;
 
-   public adv(crf $$0) {
+   public adv(cri $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

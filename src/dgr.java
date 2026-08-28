@@ -1,101 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public record dgr(boolean d, Optional<jf<buz>> e, Optional<dge> f, Optional<jj<dmm>> g, fex h, dge i, boolean j, djh.a k, lw l, lw m, jf<awm> n) implements dgo {
-   public static final MapCodec<dgr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(dgr::b),
-               buz.b.optionalFieldOf("damage_type").forGetter(dgr::c),
-               dge.b.optionalFieldOf("knockback_multiplier").forGetter(dgr::d),
-               ju.a(mh.i).optionalFieldOf("immune_blocks").forGetter(dgr::e),
-               fex.a.optionalFieldOf("offset", fex.c).forGetter(dgr::f),
-               dge.b.fieldOf("radius").forGetter(dgr::g),
-               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(dgr::h),
-               djh.a.f.fieldOf("block_interaction").forGetter(dgr::i),
-               ly.bk.fieldOf("small_particle").forGetter(dgr::j),
-               ly.bk.fieldOf("large_particle").forGetter(dgr::k),
-               awm.b.fieldOf("sound").forGetter(dgr::l)
-            )
-            .apply($$0, dgr::new)
-   );
+public interface dgr extends dgs {
+   Codec<dgr> b = mg.as.q().dispatch(dgr::a, Function.identity());
 
-   @Override
-   public void a(arq $$0, int $$1, dfw $$2, bwi $$3, fex $$4) {
-      fex $$5 = $$4.e(this.h);
-      $$0.a(
-         this.d ? $$3 : null,
-         this.a($$3, $$5),
-         new dka(this.k != djh.a.a, this.e.isPresent(), this.f.map($$1x -> $$1x.a($$1)), this.g),
-         $$5.a(),
-         $$5.b(),
-         $$5.c(),
-         Math.max(this.i.a($$1), 0.0F),
-         this.j,
-         this.k,
-         this.l,
-         this.m,
-         this.n
-      );
+   static MapCodec<? extends dgr> a(js<MapCodec<? extends dgr>> $$0) {
+      js.a($$0, "all_of", dgl.a.a);
+      js.a($$0, "apply_mob_effect", dgm.a);
+      js.a($$0, "change_item_damage", dgn.a);
+      js.a($$0, "damage_entity", dgo.a);
+      js.a($$0, "explode", dgu.a);
+      js.a($$0, "ignite", dgv.a);
+      js.a($$0, "play_sound", dgx.a);
+      js.a($$0, "replace_block", dgz.a);
+      js.a($$0, "replace_disk", dha.a);
+      js.a($$0, "run_function", dhb.a);
+      js.a($$0, "set_block_properties", dhc.a);
+      js.a($$0, "spawn_particles", dhe.a);
+      return js.a($$0, "summon_entity", dhf.a);
    }
 
-   @Nullable
-   private bux a(bwi $$0, fex $$1) {
-      if (this.e.isEmpty()) {
-         return null;
-      } else {
-         return this.d ? new bux(this.e.get(), $$0) : new bux(this.e.get(), $$1);
-      }
+   void a(arq var1, int var2, dfz var3, bwi var4, ffc var5);
+
+   @Override
+   default void a(arq $$0, int $$1, dfz $$2, bwi $$3, ffc $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public MapCodec<dgr> a() {
-      return a;
-   }
-
-   public boolean b() {
-      return this.d;
-   }
-
-   public Optional<jf<buz>> c() {
-      return this.e;
-   }
-
-   public Optional<dge> d() {
-      return this.f;
-   }
-
-   public Optional<jj<dmm>> e() {
-      return this.g;
-   }
-
-   public fex f() {
-      return this.h;
-   }
-
-   public dge g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public djh.a i() {
-      return this.k;
-   }
-
-   public lw j() {
-      return this.l;
-   }
-
-   public lw k() {
-      return this.m;
-   }
-
-   public jf<awm> l() {
-      return this.n;
-   }
+   MapCodec<? extends dgr> a();
 }

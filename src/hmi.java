@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface hmi {
+   void a(hmi.a var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface hmi {
+   public interface a {
+      void markDependency(alg var1);
+   }
 }

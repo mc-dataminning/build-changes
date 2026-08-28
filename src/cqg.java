@@ -1,23 +1,17 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
-public class cqg<E extends cpy> {
-   public static bzb<bxj> a(int $$0) {
+public class cqg {
+   public static bzb<bxj> a() {
       return ccn.a(
-         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$1 -> $$1.group($$1.b(cgl.ae), $$1.a(cgl.M))
-               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
-                     if (!$$5.fb().f()) {
-                        return false;
-                     } else {
-                        Optional<cno> $$7 = $$1.a($$3);
-                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
-                           return false;
-                        } else {
-                           $$2.b();
-                           return true;
-                        }
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$0 -> $$0.group($$0.b(cgl.p), $$0.a(cgl.ai))
+               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                     bxj $$6 = $$0.b($$1);
+                     if ($$6.an() == bwr.aj && $$6.eG()) {
+                        $$2.a(true, (long)cqc.d.a($$4.dU().A));
                      }
+
+                     return true;
                   }))
       );
    }

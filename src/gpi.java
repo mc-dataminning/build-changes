@@ -1,23 +1,26 @@
-public class gpi extends gph {
-   private final fps c;
+public class gpi extends gmq {
+   private static final int a = 12235202;
 
-   public gpi(fps $$0) {
-      this.c = $$0;
+   protected gpi(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gou $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)axw.b(12235202) / 255.0F;
+      this.w = (float)axw.c(12235202) / 255.0F;
+      this.x = (float)axw.d(12235202) / 255.0F;
    }
 
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
+   public static class a implements goc<mc> {
+      private final gou a;
+
+      public a(gou $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public void a() {
-      this.a = new crh(this.c.v.e(), this.c.x.e(), this.c.w.e(), this.c.y.e(), this.c.z.e(), this.c.A.e(), this.c.B.e());
-      float $$0 = a(this.a.a(), this.a.b());
-      float $$1 = a(this.a.c(), this.a.d());
-      this.b = new few($$1, $$0).a();
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azv $$8 = $$1.A;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new gpi($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      }
    }
 }

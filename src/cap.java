@@ -73,11 +73,11 @@ public class cap<E extends bxr> extends bza<E> {
       }
    }
 
-   private fex a(iv $$0, iv $$1) {
+   private ffc a(iv $$0, iv $$1) {
       double $$2 = 0.5;
       double $$3 = 0.5 * (double)azm.j((double)($$1.u() - $$0.u()));
       double $$4 = 0.5 * (double)azm.j((double)($$1.w() - $$0.w()));
-      return fex.c($$1).b($$3, 0.0, $$4);
+      return ffc.c($$1).b($$3, 0.0, $$4);
    }
 
    private Optional<iv> a(bxr $$0, bxj $$1) {
@@ -105,14 +105,14 @@ public class cap<E extends bxr> extends bza<E> {
 
          cgt $$7 = $$0.O();
          return $$3.stream().sorted(Comparator.comparingDouble($$0.du()::j)).filter($$1x -> {
-            exj $$2x = $$7.a($$1x, 0);
+            exo $$2x = $$7.a($$1x, 0);
             return $$2x != null && $$2x.j();
          }).findFirst();
       }
    }
 
    private boolean a(bxr $$0, iv $$1) {
-      return $$0.O().a($$1) && $$0.a(exr.b($$0, $$1)) == 0.0F;
+      return $$0.O().a($$1) && $$0.a(exw.b($$0, $$1)) == 0.0F;
    }
 
    private void b(bxr $$0, bxj $$1) {

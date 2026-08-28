@@ -1,27 +1,17 @@
-public class hbu extends har<hfm, gjc> {
-   private static final alg a = alg.b("textures/entity/wither/wither_armor.png");
-   private final gjc b;
+public class hbu extends hbm<her, ghv> {
+   public static final alg a = alg.b("textures/entity/trident_riptide.png");
+   private final gis b;
 
-   public hbu(gyq<hfm, gjc> $$0, gjk $$1) {
+   public hbu(gyv<her, ghv> $$0, gjp $$1) {
       super($$0);
-      this.b = new gjc($$1.a(gjn.dT));
+      this.b = new gis($$1.a(gjs.cB));
    }
 
-   protected boolean a(hfm $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return azm.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected alg a() {
-      return a;
-   }
-
-   protected gjc b() {
-      return this.b;
+   public void a(fkd $$0, gqr $$1, int $$2, her $$3, float $$4, float $$5) {
+      if ($$3.al) {
+         fkh $$6 = $$1.getBuffer(this.b.a(a));
+         this.b.a($$3);
+         this.b.a($$0, $$6, $$2, hjg.d);
+      }
    }
 }

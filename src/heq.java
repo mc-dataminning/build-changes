@@ -1,3 +1,6 @@
-public class heq extends hdz {
-   public cka.a a = cka.a.b;
+public class heq extends hdw {
+   public boolean a;
+   public boolean b;
+   public float c;
+   public cqd d = cqd.f;
 }

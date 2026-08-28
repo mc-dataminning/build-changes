@@ -34,9 +34,9 @@ public class aii implements zf<agp> {
    }
 
    @Nullable
-   public dii a(djh $$0) {
+   public dil a(djm $$0) {
       bwi $$1 = $$0.a(this.b);
-      return $$1 instanceof cug ? ((cug)$$1).q() : null;
+      return $$1 instanceof cuj ? ((cuj)$$1).q() : null;
    }
 
    public String b() {

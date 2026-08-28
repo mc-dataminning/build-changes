@@ -1,22 +1,51 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.base.Splitter;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public record gso(Optional<gsl> b, gsd c) {
-   public static final Codec<gso> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(gsl.a.optionalFieldOf("when").forGetter(gso::a), gsd.a.fieldOf("apply").forGetter(gso::b)).apply($$0, gso::new)
-   );
+public class gso {
+   private static final Splitter a = Splitter.on(',');
+   private static final Splitter b = Splitter.on('=').limit(2);
 
-   public <O, S extends eaq<O, S>> Predicate<S> a(eap<O, S> $$0) {
-      return this.b.<Predicate<S>>map($$1 -> $$1.instantiate($$0)).orElse($$0x -> true);
+   public static <O, S extends eav<O, S>> Predicate<eav<O, S>> a(eau<O, S> $$0, String $$1) {
+      Map<ebw<?>, Comparable<?>> $$2 = new HashMap<>();
+
+      for (String $$3 : a.split($$1)) {
+         Iterator<String> $$4 = b.split($$3).iterator();
+         if ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            ebw<?> $$6 = $$0.a($$5);
+            if ($$6 != null && $$4.hasNext()) {
+               String $$7 = $$4.next();
+               Comparable<?> $$8 = a((ebw<Comparable<?>>)$$6, $$7);
+               if ($$8 == null) {
+                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
+               }
+
+               $$2.put($$6, $$8);
+            } else if (!$$5.isEmpty()) {
+               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
+            }
+         }
+      }
+
+      return $$1x -> {
+         for (Entry<ebw<?>, Comparable<?>> $$2x : $$2.entrySet()) {
+            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   public Optional<gsl> a() {
-      return this.b;
-   }
-
-   public gsd b() {
-      return this.c;
+   @Nullable
+   private static <T extends Comparable<T>> T a(ebw<T> $$0, String $$1) {
+      return $$0.b($$1).orElse(null);
    }
 }

@@ -1,22 +1,26 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eic implements ehu {
+public class eic implements ehz {
+   private final ka e;
+   private final jb f;
    public static final MapCodec<eic> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ehu.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, eic::new)
+      $$0 -> $$0.group(ka.v(16).optionalFieldOf("offset", ka.i).forGetter($$0x -> $$0x.e), jb.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, eic::new)
    );
-   private final ehu e;
 
-   public eic(ehu $$0) {
+   public eic(ka $$0, jb $$1) {
       this.e = $$0;
+      this.f = $$1;
    }
 
-   public boolean a(dkg $$0, iv $$1) {
-      return !this.e.test($$0, $$1);
+   public boolean a(dkl $$0, iv $$1) {
+      iv $$2 = $$1.a(this.e);
+      return $$0.a_($$2).c($$0, $$2, this.f);
    }
 
    @Override
-   public ehv<?> a() {
-      return ehv.k;
+   public eia<?> a() {
+      return eia.d;
    }
 }

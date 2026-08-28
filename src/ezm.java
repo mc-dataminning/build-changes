@@ -1,69 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface ezm {
-   ezl<dcc> a = new ezl<dcc>() {
-      @Override
-      public kj<dcc> a() {
-         return kk.ap;
-      }
+public interface ezm extends ezo {
+   @Override
+   String e();
 
-      public Stream<czk> a(dcc $$0) {
-         return $$0.b();
-      }
+   void a(boolean var1);
 
-      public dcc c() {
-         return dcc.a;
-      }
+   int j();
 
-      public dcc a(dcc $$0, Stream<czk> $$1) {
-         return dcc.a($$1.toList());
-      }
-   };
-   ezl<dbn> b = new ezl<dbn>() {
-      @Override
-      public kj<dbn> a() {
-         return kk.Q;
-      }
+   void c(int var1);
 
-      public dbn c() {
-         return dbn.a;
-      }
+   void b(int var1);
 
-      public Stream<czk> a(dbn $$0) {
-         return $$0.b();
-      }
+   int h();
 
-      public dbn a(dbn $$0, Stream<czk> $$1) {
-         dbn.a $$2 = new dbn.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
-      }
-   };
-   ezl<dbo> c = new ezl<dbo>() {
-      @Override
-      public kj<dbo> a() {
-         return kk.P;
-      }
+   @Override
+   default void a(q $$0, djo $$1) {
+      ezo.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   }
 
-      public dbo c() {
-         return dbo.a;
-      }
+   int f();
 
-      public Stream<czk> a(dbo $$0) {
-         return $$0.a().stream();
-      }
+   void a(int var1);
 
-      public dbo a(dbo $$0, Stream<czk> $$1) {
-         return dbo.a($$1.toList());
-      }
-   };
-   Map<kj<?>, ezl<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(ezl::a, $$0 -> (ezl<?>)$$0));
-   Codec<ezl<?>> e = mg.am.q().comapFlatMap($$0 -> {
-      ezl<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, ezl::a);
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   djj k();
+
+   void a(ecl.d var1);
+
+   ecl.d p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(djj var1);
+
+   fep<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
+
+   dji o();
 }

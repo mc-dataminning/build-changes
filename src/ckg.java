@@ -12,12 +12,12 @@ public class ckg extends ciz {
    iv bO;
    boolean bP;
 
-   public ckg(bwr<? extends ckg> $$0, djh $$1) {
+   public ckg(bwr<? extends ckg> $$0, djm $$1) {
       super($$0, $$1);
-      this.a(exm.j, 0.0F);
-      this.a(exm.t, -1.0F);
-      this.a(exm.s, -1.0F);
-      this.a(exm.r, -1.0F);
+      this.a(exr.j, 0.0F);
+      this.a(exr.t, -1.0F);
+      this.a(exr.s, -1.0F);
+      this.a(exr.r, -1.0F);
       this.bA = new ckg.e(this);
    }
 
@@ -65,13 +65,13 @@ public class ckg extends ciz {
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       this.h(this.du());
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public static boolean c(bwr<ckg> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
-      return $$3.v() < $$1.P() + 4 && dvt.a($$1, $$3) && a($$1, $$3);
+   public static boolean c(bwr<ckg> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
+      return $$3.v() < $$1.P() + 4 && dvy.a($$1, $$3) && a($$1, $$3);
    }
 
    @Override
@@ -83,7 +83,7 @@ public class ckg extends ciz {
       this.bD.a(3, new ckg.c(this, 1.0));
       this.bD.a(4, new ckg.b(this, 1.0));
       this.bD.a(7, new ckg.i(this, 1.0));
-      this.bD.a(8, new cen(this, crj.class, 8.0F));
+      this.bD.a(8, new cen(this, crm.class, 8.0F));
       this.bD.a(9, new ckg.h(this, 1.0, 100));
    }
 
@@ -130,7 +130,7 @@ public class ckg extends ciz {
    }
 
    @Override
-   protected void b(iv $$0, eao $$1) {
+   protected void b(iv $$0, eat $$1) {
       awm $$2 = this.n_() ? awn.Bt : awn.Bs;
       this.a($$2, 0.15F, 1.0F);
    }
@@ -151,7 +151,7 @@ public class ckg extends ciz {
    }
 
    @Override
-   protected cgt b(djh $$0) {
+   protected cgt b(djm $$0) {
       return new ckg.g(this, $$0);
    }
 
@@ -162,16 +162,16 @@ public class ckg extends ciz {
    }
 
    @Override
-   public boolean i(czk $$0) {
+   public boolean i(czn $$0) {
       return $$0.a(axk.aA);
    }
 
    @Override
-   public float a(iv $$0, djk $$1) {
+   public float a(iv $$0, djp $$1) {
       if (!this.bP && $$1.b_($$0).a(axh.a)) {
          return 10.0F;
       } else {
-         return dvt.a($$1, $$0) ? 10.0F : $$1.x($$0);
+         return dvy.a($$1, $$0) ? 10.0F : $$1.x($$0);
       }
    }
 
@@ -180,9 +180,9 @@ public class ckg extends ciz {
       super.k_();
       if (this.bI() && this.t() && this.bM >= 1 && this.bM % 5 == 0) {
          iv $$0 = this.du();
-         if (dvt.a(this.dU(), $$0)) {
-            this.dU().c(2001, $$0, dmm.j(this.dU().a_($$0.e())));
-            this.a(efo.u);
+         if (dvy.a(this.dU(), $$0)) {
+            this.dU().c(2001, $$0, dmr.j(this.dU().a_($$0.e())));
+            this.a(eft.u);
          }
       }
    }
@@ -190,13 +190,13 @@ public class ckg extends ciz {
    @Override
    protected void j() {
       super.j();
-      if (!this.n_() && this.dU() instanceof arq $$0 && $$0.O().c(djd.g)) {
-         this.a($$0, czo.pd, 1);
+      if (!this.n_() && this.dU() instanceof arq $$0 && $$0.O().c(dji.g)) {
+         this.a($$0, czr.pd, 1);
       }
    }
 
    @Override
-   public void a_(fex $$0) {
+   public void a_(ffc $$0) {
       if (this.bh()) {
          this.a(0.1F, $$0);
          this.a(bxn.a, this.dx());
@@ -255,7 +255,7 @@ public class ckg extends ciz {
          this.a.gE();
          this.c.gE();
          azv $$1 = this.a.dX();
-         if (a(this.b).O().c(djd.g)) {
+         if (a(this.b).O().c(dji.g)) {
             this.b.b(new bww(this.b, this.a.dz(), this.a.dB(), this.a.dF(), $$1.a(7) + 1));
          }
       }
@@ -310,13 +310,13 @@ public class ckg extends ciz {
          }
 
          if (this.a.O().k()) {
-            fex $$2 = fex.c($$0);
-            fex $$3 = cic.a(this.a, 16, 3, $$2, (float) (Math.PI / 10));
+            ffc $$2 = ffc.c($$0);
+            ffc $$3 = cic.a(this.a, 16, 3, $$2, (float) (Math.PI / 10));
             if ($$3 == null) {
                $$3 = cic.a(this.a, 8, 7, $$2, (float) (Math.PI / 2));
             }
 
-            if ($$3 != null && !$$1 && !this.a.dU().a_(iv.a((jp)$$3)).a(dmo.J)) {
+            if ($$3 != null && !$$1 && !this.a.dU().a_(iv.a((jp)$$3)).a(dmt.J)) {
                $$3 = cic.a(this.a, 16, 5, $$2, (float) (Math.PI / 2));
             }
 
@@ -360,8 +360,8 @@ public class ckg extends ciz {
       }
 
       @Override
-      protected boolean a(djk $$0, iv $$1) {
-         return $$0.a_($$1).a(dmo.J);
+      protected boolean a(djp $$0, iv $$1) {
+         return $$0.a_($$1).a(dmt.J);
       }
    }
 
@@ -391,12 +391,12 @@ public class ckg extends ciz {
             if (this.g.bM < 1) {
                this.g.x(true);
             } else if (this.g.bM > this.a(200)) {
-               djh $$1 = this.g.dU();
+               djm $$1 = this.g.dU();
                $$1.a(null, $$0, awn.Br, awo.e, 0.3F, 0.9F + $$1.A.i() * 0.2F);
                iv $$2 = this.e.d();
-               eao $$3 = dmo.mL.m().b(dvt.c, Integer.valueOf(this.g.ae.a(4) + 1));
+               eat $$3 = dmt.mL.m().b(dvy.c, Integer.valueOf(this.g.ae.a(4) + 1));
                $$1.a($$2, $$3, 3);
-               $$1.a(efo.i, $$2, efo.a.a(this.g, $$3));
+               $$1.a(eft.i, $$2, eft.a.a(this.g, $$3));
                this.g.w(false);
                this.g.x(false);
                this.g.r(600);
@@ -409,8 +409,8 @@ public class ckg extends ciz {
       }
 
       @Override
-      protected boolean a(djk $$0, iv $$1) {
-         return !$$0.v($$1.d()) ? false : dvt.b($$0, $$1);
+      protected boolean a(djp $$0, iv $$1) {
+         return !$$0.v($$1.d()) ? false : dvy.b($$0, $$1);
       }
    }
 
@@ -486,14 +486,14 @@ public class ckg extends ciz {
    }
 
    static class g extends cgq {
-      g(ckg $$0, djh $$1) {
+      g(ckg $$0, djm $$1) {
          super($$0, $$1);
       }
 
       @Override
       public boolean a(iv $$0) {
          if (this.a instanceof ckg $$1 && $$1.bO != null) {
-            return this.b.a_($$0).a(dmo.J);
+            return this.b.a_($$0).a(dmt.J);
          }
 
          return !this.b.a_($$0.e()).l();
@@ -551,8 +551,8 @@ public class ckg extends ciz {
             this.c = true;
          } else {
             if (this.a.O().k()) {
-               fex $$0 = fex.c(this.a.bO);
-               fex $$1 = cic.a(this.a, 16, 3, $$0, (float) (Math.PI / 10));
+               ffc $$0 = ffc.c(this.a.bO);
+               ffc $$1 = cic.a(this.a, 16, 3, $$0, (float) (Math.PI / 10));
                if ($$1 == null) {
                   $$1 = cic.a(this.a, 8, 7, $$0, (float) (Math.PI / 2));
                }

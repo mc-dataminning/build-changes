@@ -1,83 +1,70 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Collection;
-import java.util.function.IntFunction;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class fge {
-   public boolean a(@Nullable fge $$0) {
-      return $$0 == null ? false : this == $$0;
+public class fge implements fgd {
+   public static final MapCodec<fge> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("Score", 0).forGetter(fge::a),
+               Codec.BOOL.optionalFieldOf("Locked", false).forGetter(fge::b),
+               xa.a.optionalFieldOf("display").forGetter($$0x -> Optional.ofNullable($$0x.d)),
+               yq.b.optionalFieldOf("format").forGetter($$0x -> Optional.ofNullable($$0x.e))
+            )
+            .apply($$0, fge::new)
+   );
+   private int b;
+   private boolean c = true;
+   @Nullable
+   private wy d;
+   @Nullable
+   private yo e;
+
+   public fge() {
    }
 
-   public abstract String c();
-
-   public abstract xm d(wy var1);
-
-   public abstract boolean j();
-
-   public abstract boolean i();
-
-   public abstract fge.b k();
-
-   public abstract o o();
-
-   public abstract Collection<String> h();
-
-   public abstract fge.b l();
-
-   public abstract fge.a m();
-
-   public static enum a implements bak {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      public static final Codec<fge.a> e = bak.a(fge.a::values);
-      private static final IntFunction<fge.a> i = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-      public static final yw<ByteBuf, fge.a> f = yu.a(i, $$0 -> $$0.h);
-      public final String g;
-      public final int h;
-
-      private a(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
-
-      public wy a() {
-         return wy.c("team.collision." + this.g);
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+   private fge(int $$0, boolean $$1, Optional<wy> $$2, Optional<yo> $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
+      this.e = $$3.orElse(null);
    }
 
-   public static enum b implements bak {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   @Override
+   public int a() {
+      return this.b;
+   }
 
-      public static final Codec<fge.b> e = bak.a(fge.b::values);
-      private static final IntFunction<fge.b> i = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-      public static final yw<ByteBuf, fge.b> f = yu.a(i, $$0 -> $$0.h);
-      public final String g;
-      public final int h;
+   public void a(int $$0) {
+      this.b = $$0;
+   }
 
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
+   @Override
+   public boolean b() {
+      return this.c;
+   }
 
-      public wy a() {
-         return wy.c("team.visibility." + this.g);
-      }
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
 
-      @Override
-      public String c() {
-         return this.g;
-      }
+   @Nullable
+   public wy d() {
+      return this.d;
+   }
+
+   public void a(@Nullable wy $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   @Override
+   public yo c() {
+      return this.e;
+   }
+
+   public void b(@Nullable yo $$0) {
+      this.e = $$0;
    }
 }

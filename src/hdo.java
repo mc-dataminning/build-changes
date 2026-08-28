@@ -1,7 +1,10 @@
-public class hdo extends hdz {
-   public final hgc i = new hgc();
-
-   public static void a(bxj $$0, hdo $$1, hga $$2) {
-      $$2.a($$1.i, $$0.fa(), czi.h, $$0);
-   }
+public class hdo extends hdu {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public cjo.v h = cjo.v.a;
 }

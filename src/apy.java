@@ -11,7 +11,7 @@ public class apy implements apz {
          @Override
          public apz a(CommandContext<ej> $$0x) throws CommandSyntaxException {
             iv $$1 = gg.a($$0, $$0 + "Pos");
-            dxm $$2 = ((ej)$$0.getSource()).e().c_($$1);
+            dxr $$2 = ((ej)$$0.getSource()).e().c_($$1);
             if ($$2 == null) {
                throw apy.b.create();
             } else {
@@ -24,17 +24,17 @@ public class apy implements apz {
             return $$0.then(ek.a("block").then($$1.apply(ek.a($$0 + "Pos", gg.a()))));
          }
       };
-   private final dxm c;
+   private final dxr c;
    private final iv d;
 
-   public apy(dxm $$0, iv $$1) {
+   public apy(dxr $$0, iv $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
    public void a(tz $$0) {
-      eao $$1 = this.c.i().a_(this.d);
+      eat $$1 = this.c.i().a_(this.d);
       this.c.c($$0, this.c.i().F_());
       this.c.e();
       this.c.i().a(this.d, $$1, $$1, 3);

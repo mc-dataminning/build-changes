@@ -1,18 +1,20 @@
 import java.util.function.Consumer;
 
-public interface fwk extends fwl {
-   void b(Consumer<fwl> var1);
+public class fwk {
+   private static final int a = 4;
 
-   @Override
-   default void a(Consumer<fst> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   private fwk() {
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof fwk $$1) {
-            $$1.a();
-         }
+   public static fwp a(fsk $$0, fwq $$1, wy $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
       });
+   }
+
+   public static fwp a(fsk $$0, fwq $$1, wy $$2, Consumer<fwr> $$3) {
+      fws $$4 = fws.d().a(4);
+      $$4.a(new fuh($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

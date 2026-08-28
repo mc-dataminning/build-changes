@@ -3,23 +3,23 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record ko(Optional<bg<dcb.b, ko.a>> c) implements dl<dcb> {
+public record ko(Optional<bg<dce.b, ko.a>> c) implements dl<dce> {
    public static final Codec<ko> a = RecordCodecBuilder.create($$0 -> $$0.group(bg.a(ko.a.a).optionalFieldOf("modifiers").forGetter(ko::b)).apply($$0, ko::new));
 
    @Override
-   public kj<dcb> a() {
+   public kj<dce> a() {
       return kk.o;
    }
 
-   public boolean a(dcb $$0) {
+   public boolean a(dce $$0) {
       return !this.c.isPresent() || this.c.get().a($$0.b());
    }
 
-   public Optional<bg<dcb.b, ko.a>> b() {
+   public Optional<bg<dce.b, ko.a>> b() {
       return this.c;
    }
 
-   public static record a(Optional<jj<byk>> b, Optional<alg> c, cw.c d, Optional<byn.a> e, Optional<bwt> f) implements Predicate<dcb.b> {
+   public static record a(Optional<jj<byk>> b, Optional<alg> c, cw.c d, Optional<byn.a> e, Optional<bwt> f) implements Predicate<dce.b> {
       public static final Codec<ko.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   ju.a(mh.c).optionalFieldOf("attribute").forGetter(ko.a::a),
@@ -31,7 +31,7 @@ public record ko(Optional<bg<dcb.b, ko.a>> c) implements dl<dcb> {
                .apply($$0, ko.a::new)
       );
 
-      public boolean a(dcb.b $$0) {
+      public boolean a(dce.b $$0) {
          if (this.b.isPresent() && !this.b.get().a($$0.a())) {
             return false;
          } else if (this.c.isPresent() && !this.c.get().equals($$0.b().a())) {

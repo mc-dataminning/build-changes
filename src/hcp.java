@@ -1,8 +1,11 @@
 import javax.annotation.Nullable;
 
-public class hcp extends hdz {
-   public float a;
-   public float b;
+public class hcp extends hcz {
    @Nullable
-   public cjg c;
+   public bwf.b.a a;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

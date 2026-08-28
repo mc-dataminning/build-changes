@@ -76,20 +76,20 @@ public class Main {
       String $$35 = "Pre-bootstrap";
 
       Logger $$39;
-      gep $$71;
+      geu $$71;
       try {
          if ($$32.has($$2)) {
             bqy.f.a(bqw.a);
          }
 
          if ($$32.has($$3)) {
-            fhc.a();
+            fhh.a();
          }
 
          Stopwatch $$36 = Stopwatch.createStarted(Ticker.systemTicker());
          Stopwatch $$37 = Stopwatch.createStarted(Ticker.systemTicker());
-         hpc.a.a(hoy.z, $$36);
-         hpc.a.a(hoy.A, $$37);
+         hpj.a.a(hpf.z, $$36);
+         hpj.a.a(hpf.A, $$37);
          ac.a();
          TracyClient.reportAppInfo("Minecraft Java Edition " + ac.b().c());
          CompletableFuture<?> $$38 = bbc.a(bbb.t);
@@ -97,8 +97,8 @@ public class Main {
          $$39 = LogUtils.getLogger();
          $$35 = "Bootstrap";
          ali.a();
-         foy.a();
-         hpc.a.a(ali.b.get());
+         fpd.a();
+         hpj.a.a(ali.b.get());
          ali.c();
          $$35 = "Argument parsing";
          List<String> $$40 = $$32.valuesOf($$31);
@@ -107,7 +107,7 @@ public class Main {
          }
 
          String $$41 = (String)$$29.value($$32);
-         fqa.a $$42 = fqa.a.a($$41);
+         fqf.a $$42 = fqf.a.a($$41);
          if ($$42 == null) {
             $$39.warn("Unrecognized user type: {}", $$41);
          }
@@ -155,13 +155,13 @@ public class Main {
          String $$67 = a(a($$32, $$6));
          String $$68 = a(a($$32, $$7));
          String $$69 = a(a($$32, $$8));
-         fqa $$70 = new fqa((String)$$16.value($$32), $$62, (String)$$20.value($$32), b($$64), b($$65), $$42);
-         $$71 = new gep(
-            new gep.d($$70, $$57, $$58, $$44),
-            new fik($$47, $$48, $$49, $$50, $$51),
-            new gep.a($$33, $$61, $$60, $$63),
-            new gep.b($$52, $$34, $$59, $$53, $$54, $$55),
-            new gep.c($$66, $$67, $$68, $$69)
+         fqf $$70 = new fqf((String)$$16.value($$32), $$62, (String)$$20.value($$32), b($$64), b($$65), $$42);
+         $$71 = new geu(
+            new geu.d($$70, $$57, $$58, $$44),
+            new fip($$47, $$48, $$49, $$50, $$51),
+            new geu.a($$33, $$61, $$60, $$63),
+            new geu.b($$52, $$34, $$59, $$53, $$54, $$55),
+            new geu.c($$66, $$67, $$68, $$69)
          );
          ag.p();
          $$38.join();
@@ -169,17 +169,17 @@ public class Main {
          p $$73 = p.a(var82, $$35);
          q $$74 = $$73.a("Initialization");
          azn.a($$74);
-         fpo.a(null, null, $$34, null, $$73);
-         fpo.a(null, $$33, $$73);
+         fpt.a(null, null, $$34, null, $$73);
+         fpt.a(null, $$33, $$73);
          return;
       }
 
       Thread $$77 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fpo $$0 = fpo.Q();
+            fpt $$0 = fpt.Q();
             if ($$0 != null) {
-               hnv $$1 = $$0.V();
+               hoc $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -188,13 +188,13 @@ public class Main {
       };
       $$77.setUncaughtExceptionHandler(new s($$39));
       Runtime.getRuntime().addShutdownHook($$77);
-      fpo $$78 = null;
+      fpt $$78 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
-         $$78 = new fpo($$71);
-      } catch (geq var79) {
+         $$78 = new fpt($$71);
+      } catch (gev var79) {
          ag.k();
          $$39.warn("Failed to create window: ", var79);
          return;
@@ -202,12 +202,12 @@ public class Main {
          p $$81 = p.a(var80, "Initializing game");
          q $$82 = $$81.a("Initialization");
          azn.a($$82);
-         fpo.a($$78, null, $$71.d.b, null, $$81);
-         fpo.a($$78, $$71.c.a, $$81);
+         fpt.a($$78, null, $$71.d.b, null, $$81);
+         fpt.a($$78, $$71.c.a, $$81);
          return;
       }
 
-      fpo $$83 = $$78;
+      fpt $$83 = $$78;
       $$78.f();
 
       try {

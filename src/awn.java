@@ -1,5 +1,8 @@
 import com.google.common.collect.ImmutableList;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class awn {
    public static final awm a = a("entity.allay.ambient_with_item");
@@ -1604,65 +1607,59 @@ public class awn {
    public static final awm DN = a("item.wolf_armor.crack");
    public static final awm DO = a("item.wolf_armor.damage");
    public static final awm DP = a("item.wolf_armor.repair");
-   public static final awm DQ = a("entity.wolf.ambient");
-   public static final awm DR = a("entity.wolf.death");
-   public static final awm DS = a("entity.wolf.growl");
-   public static final awm DT = a("entity.wolf.howl");
-   public static final awm DU = a("entity.wolf.hurt");
-   public static final awm DV = a("entity.wolf.pant");
-   public static final awm DW = a("entity.wolf.shake");
-   public static final awm DX = a("entity.wolf.step");
-   public static final awm DY = a("entity.wolf.whine");
-   public static final awm DZ = a("block.wooden_door.close");
-   public static final awm Ea = a("block.wooden_door.open");
-   public static final awm Eb = a("block.wooden_trapdoor.close");
-   public static final awm Ec = a("block.wooden_trapdoor.open");
-   public static final awm Ed = a("block.wooden_button.click_off");
-   public static final awm Ee = a("block.wooden_button.click_on");
-   public static final awm Ef = a("block.wooden_pressure_plate.click_off");
-   public static final awm Eg = a("block.wooden_pressure_plate.click_on");
-   public static final awm Eh = a("block.wood.break");
-   public static final awm Ei = a("block.wood.fall");
-   public static final awm Ej = a("block.wood.hit");
-   public static final awm Ek = a("block.wood.place");
-   public static final awm El = a("block.wood.step");
-   public static final awm Em = a("block.wool.break");
-   public static final awm En = a("block.wool.fall");
-   public static final awm Eo = a("block.wool.hit");
-   public static final awm Ep = a("block.wool.place");
-   public static final awm Eq = a("block.wool.step");
-   public static final awm Er = a("entity.zoglin.ambient");
-   public static final awm Es = a("entity.zoglin.angry");
-   public static final awm Et = a("entity.zoglin.attack");
-   public static final awm Eu = a("entity.zoglin.death");
-   public static final awm Ev = a("entity.zoglin.hurt");
-   public static final awm Ew = a("entity.zoglin.step");
-   public static final awm Ex = a("entity.zombie.ambient");
-   public static final awm Ey = a("entity.zombie.attack_wooden_door");
-   public static final awm Ez = a("entity.zombie.attack_iron_door");
-   public static final awm EA = a("entity.zombie.break_wooden_door");
-   public static final awm EB = a("entity.zombie.converted_to_drowned");
-   public static final awm EC = a("entity.zombie.death");
-   public static final awm ED = a("entity.zombie.destroy_egg");
-   public static final awm EE = a("entity.zombie_horse.ambient");
-   public static final awm EF = a("entity.zombie_horse.death");
-   public static final awm EG = a("entity.zombie_horse.hurt");
-   public static final awm EH = a("entity.zombie.hurt");
-   public static final awm EI = a("entity.zombie.infect");
-   public static final awm EJ = a("entity.zombified_piglin.ambient");
-   public static final awm EK = a("entity.zombified_piglin.angry");
-   public static final awm EL = a("entity.zombified_piglin.death");
-   public static final awm EM = a("entity.zombified_piglin.hurt");
-   public static final awm EN = a("entity.zombie.step");
-   public static final awm EO = a("entity.zombie_villager.ambient");
-   public static final awm EP = a("entity.zombie_villager.converted");
-   public static final awm EQ = a("entity.zombie_villager.cure");
-   public static final awm ER = a("entity.zombie_villager.death");
-   public static final awm ES = a("entity.zombie_villager.hurt");
-   public static final awm ET = a("entity.zombie_villager.step");
-   public static final awm EU = a("event.mob_effect.bad_omen");
-   public static final awm EV = a("event.mob_effect.trial_omen");
-   public static final awm EW = a("event.mob_effect.raid_omen");
+   public static final awm DQ = a("entity.wolf.shake");
+   public static final awm DR = a("entity.wolf.step");
+   public static final Map<cmd.a, cmc> DS = b();
+   public static final awm DT = a("block.wooden_door.close");
+   public static final awm DU = a("block.wooden_door.open");
+   public static final awm DV = a("block.wooden_trapdoor.close");
+   public static final awm DW = a("block.wooden_trapdoor.open");
+   public static final awm DX = a("block.wooden_button.click_off");
+   public static final awm DY = a("block.wooden_button.click_on");
+   public static final awm DZ = a("block.wooden_pressure_plate.click_off");
+   public static final awm Ea = a("block.wooden_pressure_plate.click_on");
+   public static final awm Eb = a("block.wood.break");
+   public static final awm Ec = a("block.wood.fall");
+   public static final awm Ed = a("block.wood.hit");
+   public static final awm Ee = a("block.wood.place");
+   public static final awm Ef = a("block.wood.step");
+   public static final awm Eg = a("block.wool.break");
+   public static final awm Eh = a("block.wool.fall");
+   public static final awm Ei = a("block.wool.hit");
+   public static final awm Ej = a("block.wool.place");
+   public static final awm Ek = a("block.wool.step");
+   public static final awm El = a("entity.zoglin.ambient");
+   public static final awm Em = a("entity.zoglin.angry");
+   public static final awm En = a("entity.zoglin.attack");
+   public static final awm Eo = a("entity.zoglin.death");
+   public static final awm Ep = a("entity.zoglin.hurt");
+   public static final awm Eq = a("entity.zoglin.step");
+   public static final awm Er = a("entity.zombie.ambient");
+   public static final awm Es = a("entity.zombie.attack_wooden_door");
+   public static final awm Et = a("entity.zombie.attack_iron_door");
+   public static final awm Eu = a("entity.zombie.break_wooden_door");
+   public static final awm Ev = a("entity.zombie.converted_to_drowned");
+   public static final awm Ew = a("entity.zombie.death");
+   public static final awm Ex = a("entity.zombie.destroy_egg");
+   public static final awm Ey = a("entity.zombie_horse.ambient");
+   public static final awm Ez = a("entity.zombie_horse.death");
+   public static final awm EA = a("entity.zombie_horse.hurt");
+   public static final awm EB = a("entity.zombie.hurt");
+   public static final awm EC = a("entity.zombie.infect");
+   public static final awm ED = a("entity.zombified_piglin.ambient");
+   public static final awm EE = a("entity.zombified_piglin.angry");
+   public static final awm EF = a("entity.zombified_piglin.death");
+   public static final awm EG = a("entity.zombified_piglin.hurt");
+   public static final awm EH = a("entity.zombie.step");
+   public static final awm EI = a("entity.zombie_villager.ambient");
+   public static final awm EJ = a("entity.zombie_villager.converted");
+   public static final awm EK = a("entity.zombie_villager.cure");
+   public static final awm EL = a("entity.zombie_villager.death");
+   public static final awm EM = a("entity.zombie_villager.hurt");
+   public static final awm EN = a("entity.zombie_villager.step");
+   public static final awm EO = a("event.mob_effect.bad_omen");
+   public static final awm EP = a("event.mob_effect.trial_omen");
+   public static final awm EQ = a("event.mob_effect.raid_omen");
 
    private static jf<awm> a(alg $$0, alg $$1, float $$2) {
       return js.b(mg.b, $$0, awm.a($$1, $$2));
@@ -1694,5 +1691,25 @@ public class awn {
 
    private static ImmutableList<jf.c<awm>> a() {
       return IntStream.range(0, 8).mapToObj($$0 -> b("item.goat_horn.sound." + $$0)).collect(ImmutableList.toImmutableList());
+   }
+
+   private static Map<cmd.a, cmc> b() {
+      return Stream.of(cmd.a.values())
+         .collect(
+            Collectors.toMap(
+               $$0 -> (cmd.a)$$0,
+               $$0 -> {
+                  String $$1 = $$0.b();
+                  return new cmc(
+                     b("entity.wolf" + $$1 + ".ambient"),
+                     b("entity.wolf" + $$1 + ".death"),
+                     b("entity.wolf" + $$1 + ".growl"),
+                     b("entity.wolf" + $$1 + ".hurt"),
+                     b("entity.wolf" + $$1 + ".pant"),
+                     b("entity.wolf" + $$1 + ".whine")
+                  );
+               }
+            )
+         );
    }
 }

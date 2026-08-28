@@ -31,11 +31,11 @@ public class btu implements AutoCloseable {
    static final wy g = wy.c("optimizeWorld.stage.finished.entities");
    static final wy h = wy.c("optimizeWorld.stage.upgrading.chunks");
    static final wy i = wy.c("optimizeWorld.stage.finished.chunks");
-   final js<eem> j;
-   final Set<alf<djh>> k;
+   final js<eer> j;
+   final Set<alf<djm>> k;
    final boolean l;
    final boolean m;
-   final ezc.c n;
+   final ezh.c n;
    private final Thread o;
    final DataFixer p;
    volatile boolean q = true;
@@ -45,19 +45,19 @@ public class btu implements AutoCloseable {
    volatile int u;
    volatile int v;
    volatile int w;
-   final Reference2FloatMap<alf<djh>> x = Reference2FloatMaps.synchronize(new Reference2FloatOpenHashMap());
+   final Reference2FloatMap<alf<djm>> x = Reference2FloatMaps.synchronize(new Reference2FloatOpenHashMap());
    volatile wy y = wy.c("optimizeWorld.stage.counting");
    static final Pattern z = Pattern.compile("^r\\.(-?[0-9]+)\\.(-?[0-9]+)\\.mca$");
-   final eyw A;
+   final ezb A;
 
-   public btu(ezc.c $$0, DataFixer $$1, ezi $$2, jt $$3, boolean $$4, boolean $$5) {
-      this.j = $$3.f(mh.bp);
+   public btu(ezh.c $$0, DataFixer $$1, ezn $$2, jt $$3, boolean $$4, boolean $$5) {
+      this.j = $$3.f(mh.bq);
       this.k = this.j.j().stream().map(mh::a).collect(Collectors.toUnmodifiableSet());
       this.l = $$4;
       this.p = $$1;
       this.n = $$0;
-      eyh.a $$6 = new eyh.a(null, $$2.y().c());
-      this.A = new eyw($$6, this.n.a(djh.i).resolve("data"), $$1, $$3);
+      eym.a $$6 = new eym.a(null, $$2.y().c());
+      this.A = new ezb($$6, this.n.a(djm.i).resolve("data"), $$1, $$3);
       this.m = $$5;
       this.o = b.newThread(this::i);
       this.o.setUncaughtExceptionHandler(($$0x, $$1x) -> {
@@ -95,11 +95,11 @@ public class btu implements AutoCloseable {
       return this.r;
    }
 
-   public Set<alf<djh>> c() {
+   public Set<alf<djm>> c() {
       return this.k;
    }
 
-   public float a(alf<djh> $$0) {
+   public float a(alf<djm> $$0) {
       return this.x.getFloat($$0);
    }
 
@@ -164,14 +164,14 @@ public class btu implements AutoCloseable {
                float $$3 = 0.0F;
 
                for (btu.c<T> $$4 : $$0) {
-                  alf<djh> $$5 = $$4.a;
+                  alf<djm> $$5 = $$4.a;
                   ListIterator<btu.e> $$6 = $$4.c;
                   T $$7 = $$4.b;
                   if ($$6.hasNext()) {
                      btu.e $$8 = $$6.next();
                      boolean $$9 = true;
 
-                     for (dio $$10 : $$8.b) {
+                     for (dir $$10 : $$8.b) {
                         $$9 = $$9 && this.a($$5, $$7, $$10);
                         $$2 = true;
                      }
@@ -211,8 +211,8 @@ public class btu implements AutoCloseable {
       private List<btu.c<T>> b() {
          List<btu.c<T>> $$0 = Lists.newArrayList();
 
-         for (alf<djh> $$1 : btu.this.k) {
-            eee $$2 = new eee(btu.this.n.f(), $$1, this.f);
+         for (alf<djm> $$1 : btu.this.k) {
+            eej $$2 = new eej(btu.this.n.f(), $$1, this.f);
             Path $$3 = btu.this.n.a($$1).resolve(this.g);
             T $$4 = this.a($$2, $$3);
             ListIterator<btu.e> $$5 = this.b($$2, $$3);
@@ -222,16 +222,16 @@ public class btu implements AutoCloseable {
          return $$0;
       }
 
-      protected abstract T a(eee var1, Path var2);
+      protected abstract T a(eej var1, Path var2);
 
-      private ListIterator<btu.e> b(eee $$0, Path $$1) {
+      private ListIterator<btu.e> b(eej $$0, Path $$1) {
          List<btu.e> $$2 = c($$0, $$1);
          btu.this.u = btu.this.u + $$2.size();
          btu.this.t = btu.this.t + $$2.stream().mapToInt($$0x -> $$0x.b.size()).sum();
          return $$2.listIterator();
       }
 
-      private static List<btu.e> c(eee $$0, Path $$1) {
+      private static List<btu.e> c(eej $$0, Path $$1) {
          File[] $$2 = $$1.toFile().listFiles(($$0x, $$1x) -> $$1x.endsWith(".mca"));
          if ($$2 == null) {
             return List.of();
@@ -243,12 +243,12 @@ public class btu implements AutoCloseable {
                if ($$5.matches()) {
                   int $$6 = Integer.parseInt($$5.group(1)) << 5;
                   int $$7 = Integer.parseInt($$5.group(2)) << 5;
-                  List<dio> $$8 = Lists.newArrayList();
+                  List<dir> $$8 = Lists.newArrayList();
 
-                  try (eeb $$9 = new eeb($$0, $$4.toPath(), $$1, true)) {
+                  try (eeg $$9 = new eeg($$0, $$4.toPath(), $$1, true)) {
                      for (int $$10 = 0; $$10 < 32; $$10++) {
                         for (int $$11 = 0; $$11 < 32; $$11++) {
-                           dio $$12 = new dio($$10 + $$6, $$11 + $$7);
+                           dir $$12 = new dir($$10 + $$6, $$11 + $$7);
                            if ($$9.b($$12)) {
                               $$8.add($$12);
                            }
@@ -268,7 +268,7 @@ public class btu implements AutoCloseable {
          }
       }
 
-      private boolean a(alf<djh> $$0, T $$1, dio $$2) {
+      private boolean a(alf<djm> $$0, T $$1, dir $$2) {
          boolean $$3 = false;
 
          try {
@@ -291,9 +291,9 @@ public class btu implements AutoCloseable {
          return $$3;
       }
 
-      protected abstract boolean a(T var1, dio var2, alf<djh> var3);
+      protected abstract boolean a(T var1, dir var2, alf<djm> var3);
 
-      private void a(eeb $$0) {
+      private void a(eeg $$0) {
          if (btu.this.m) {
             if (this.a != null) {
                this.a.join();
@@ -317,18 +317,18 @@ public class btu implements AutoCloseable {
       }
    }
 
-   class b extends btu.a<edv> {
+   class b extends btu.a<eea> {
       b() {
          super(bbb.c, "chunk", "region", btu.h, btu.i);
       }
 
-      protected boolean a(edv $$0, dio $$1, alf<djh> $$2) {
+      protected boolean a(eea $$0, dir $$1, alf<djm> $$2) {
          tz $$3 = $$0.d($$1).join().orElse(null);
          if ($$3 != null) {
-            int $$4 = edv.a($$3);
-            ecm $$5 = btu.this.j.g(mh.b($$2)).b();
+            int $$4 = eea.a($$3);
+            ecr $$5 = btu.this.j.g(mh.b($$2)).b();
             tz $$6 = $$0.a($$2, () -> btu.this.A, $$3, $$5.c());
-            dio $$7 = new dio($$6.f("xPos"), $$6.f("zPos"));
+            dir $$7 = new dir($$6.f("xPos"), $$6.f("zPos"));
             if (!$$7.equals($$1)) {
                btu.a.warn("Chunk {} has invalid position {}", $$1, $$7);
             }
@@ -363,12 +363,12 @@ public class btu implements AutoCloseable {
          return false;
       }
 
-      protected edv b(eee $$0, Path $$1) {
-         return (edv)(btu.this.m ? new edy($$0.a("source"), $$1, $$0.a("target"), btu.a($$1), btu.this.p, true) : new edv($$0, $$1, btu.this.p, true));
+      protected eea b(eej $$0, Path $$1) {
+         return (eea)(btu.this.m ? new eed($$0.a("source"), $$1, $$0.a("target"), btu.a($$1), btu.this.p, true) : new eea($$0, $$1, btu.this.p, true));
       }
    }
 
-   static record c<T>(alf<djh> a, T b, ListIterator<btu.e> c) {
+   static record c<T>(alf<djm> a, T b, ListIterator<btu.e> c) {
    }
 
    class d extends btu.g {
@@ -377,12 +377,12 @@ public class btu implements AutoCloseable {
       }
 
       @Override
-      protected tz a(eeh $$0, tz $$1) {
+      protected tz a(eem $$0, tz $$1) {
          return $$0.a($$1, -1);
       }
    }
 
-   static record e(eeb a, List<dio> b) {
+   static record e(eeg a, List<dir> b) {
    }
 
    class f extends btu.g {
@@ -391,26 +391,26 @@ public class btu implements AutoCloseable {
       }
 
       @Override
-      protected tz a(eeh $$0, tz $$1) {
+      protected tz a(eem $$0, tz $$1) {
          return $$0.a($$1, 1945);
       }
    }
 
-   abstract class g extends btu.a<eeh> {
+   abstract class g extends btu.a<eem> {
       g(final bbb $$0, final String $$1, final wy $$2, final wy $$3) {
          super($$0, $$1, $$1, $$2, $$3);
       }
 
-      protected eeh b(eee $$0, Path $$1) {
-         return (eeh)(btu.this.m
-            ? new edz($$0.a("source"), $$1, $$0.a("target"), btu.a($$1), btu.this.p, true, this.b)
-            : new eeh($$0, $$1, btu.this.p, true, this.b));
+      protected eem b(eej $$0, Path $$1) {
+         return (eem)(btu.this.m
+            ? new eee($$0.a("source"), $$1, $$0.a("target"), btu.a($$1), btu.this.p, true, this.b)
+            : new eem($$0, $$1, btu.this.p, true, this.b));
       }
 
-      protected boolean a(eeh $$0, dio $$1, alf<djh> $$2) {
+      protected boolean a(eem $$0, dir $$1, alf<djm> $$2) {
          tz $$3 = $$0.a($$1).join().orElse(null);
          if ($$3 != null) {
-            int $$4 = edv.a($$3);
+            int $$4 = eea.a($$3);
             tz $$5 = this.a($$0, $$3);
             boolean $$6 = $$4 < ac.b().d().c();
             if ($$6 || btu.this.m) {
@@ -426,6 +426,6 @@ public class btu implements AutoCloseable {
          return false;
       }
 
-      protected abstract tz a(eeh var1, tz var2);
+      protected abstract tz a(eem var1, tz var2);
    }
 }

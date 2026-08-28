@@ -1,64 +1,63 @@
-public class gik extends ggk<hew> {
-   public static final gjx a = gjx.scaling(0.5F);
-   private static final float b = 9.0F;
-   private static final float c = 100.0F;
-   private final gjo d;
+import java.util.Arrays;
 
-   public gik(gjo $$0) {
+public class gik extends ggp<hdf> {
+   private static final int a = 7;
+   private final gjt[] b = new gjt[7];
+   private final gjt[] c = new gjt[3];
+   private static final int[][] d = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
+   private static final int[][] e = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+
+   public gik(gjt $$0) {
       super($$0);
-      this.d = $$0.b("bone").b("body").b("head");
+      Arrays.setAll(this.b, $$1 -> $$0.b(b($$1)));
+      Arrays.setAll(this.c, $$1 -> $$0.b(a($$1)));
    }
 
-   public static gju a() {
-      gjw $$0 = new gjw();
-      gjy $$1 = $$0.a();
-      gjy $$2 = $$1.a("bone", gjt.c(), gjq.a(0.0F, 5.0F, 0.0F));
-      gjy $$3 = $$2.a(
-         "body",
-         gjt.c()
-            .a(62, 68)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new gjs(0.0F))
-            .a(62, 0)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new gjs(0.5F))
-            .a(87, 68)
-            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new gjs(0.0F)),
-         gjq.a(0.0F, 0.0F, 0.0F)
-      );
-      $$2.a("right_front_leg", gjt.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gjs(0.0F)), gjq.a(-7.5F, 10.0F, -15.0F));
-      $$2.a("right_mid_leg", gjt.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gjs(0.0F)), gjq.a(-7.5F, 10.0F, 0.0F));
-      $$2.a("right_hind_leg", gjt.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gjs(0.0F)), gjq.a(-7.5F, 10.0F, 15.0F));
-      $$2.a("left_front_leg", gjt.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gjs(0.0F)), gjq.a(7.5F, 10.0F, -15.0F));
-      $$2.a("left_mid_leg", gjt.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gjs(0.0F)), gjq.a(7.5F, 10.0F, 0.0F));
-      $$2.a("left_hind_leg", gjt.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new gjs(0.0F)), gjq.a(7.5F, 10.0F, 15.0F));
-      gjy $$4 = $$3.a(
-         "head",
-         gjt.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new gjs(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new gjs(0.0F)),
-         gjq.a(0.0F, 6.5F, -19.48F)
-      );
-      $$4.a("left_ear", gjt.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new gjs(0.0F)), gjq.a(6.51F, -7.5F, -4.51F));
-      $$4.a("right_ear", gjt.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new gjs(0.0F)), gjq.a(-6.51F, -7.5F, -4.51F));
-      $$4.a("nose", gjt.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new gjs(0.0F)), gjq.a(0.0F, -4.5F, -11.5F));
-      $$4.a("lower_beak", gjt.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new gjs(0.0F)), gjq.a(0.0F, 2.5F, -12.5F));
-      return gju.a($$0, 192, 192);
+   private static String a(int $$0) {
+      return "layer" + $$0;
    }
 
-   public void a(hew $$0) {
+   private static String b(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static gjz a() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      float[] $$2 = new float[7];
+      float $$3 = -3.5F;
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         $$1.a(
+            b($$4),
+            gjy.c().a(e[$$4][0], e[$$4][1]).a((float)d[$$4][0] * -0.5F, 0.0F, (float)d[$$4][2] * -0.5F, (float)d[$$4][0], (float)d[$$4][1], (float)d[$$4][2]),
+            gjv.a(0.0F, (float)(24 - d[$$4][1]), $$3)
+         );
+         $$2[$$4] = $$3;
+         if ($$4 < 6) {
+            $$3 += (float)(d[$$4][2] + d[$$4 + 1][2]) * 0.5F;
+         }
+      }
+
+      $$1.a(a(0), gjy.c().a(20, 0).a(-5.0F, 0.0F, (float)d[2][2] * -0.5F, 10.0F, 8.0F, (float)d[2][2]), gjv.a(0.0F, 16.0F, $$2[2]));
+      $$1.a(a(1), gjy.c().a(20, 11).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 4.0F, (float)d[4][2]), gjv.a(0.0F, 20.0F, $$2[4]));
+      $$1.a(a(2), gjy.c().a(20, 18).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 5.0F, (float)d[1][2]), gjv.a(0.0F, 19.0F, $$2[1]));
+      return gjz.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(hdf $$0) {
       super.a($$0);
-      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.f = $$0.aa * (float) (Math.PI / 180.0);
-      if ($$0.a) {
-         this.a(fql.e, $$0.ad, $$0.ae, 9.0F, 100.0F);
-      } else {
-         this.a(fql.d, $$0.ad, $$0.ae, 9.0F, 100.0F);
+
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1].f = azm.b($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$1 - 2));
+         this.b[$$1].b = azm.a($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$1 - 2);
       }
 
-      this.a($$0.b, fql.f, $$0.u);
-      this.a($$0.c, fql.c, $$0.u);
-      this.a($$0.d, fql.g, $$0.u);
-      this.a($$0.e, fql.i, $$0.u);
-      this.a($$0.f, fql.b, $$0.u);
-      if ($$0.aj) {
-         this.a(fql.a);
-      }
+      this.c[0].f = this.b[2].f;
+      this.c[1].f = this.b[4].f;
+      this.c[1].b = this.b[4].b;
+      this.c[2].f = this.b[1].f;
+      this.c[2].b = this.b[1].b;
    }
 }

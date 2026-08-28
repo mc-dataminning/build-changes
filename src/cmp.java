@@ -1,80 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cmp extends cmj {
-   private static final chy b = chy.a().d();
+public class cmp extends cmm {
    @Nullable
-   private exj c;
-   @Nullable
-   private fex d;
+   private ffc b;
+   private int c;
 
-   public cmp(cmh $$0) {
+   public cmp(cmk $$0) {
       super($$0);
    }
 
    @Override
-   public cmx<cmp> h() {
-      return cmx.c;
-   }
-
-   @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.dX().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.dX().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.dX().i() - 0.5F) * 8.0F;
+         this.a.dU().a(ly.v, this.a.dz() + (double)$$0, this.a.dB() + 2.0 + (double)$$1, this.a.dF() + (double)$$2, 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
    public void a(arq $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dz(), this.a.dB(), this.a.dF());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
+      this.c++;
+      if (this.b == null) {
+         iv $$1 = $$0.a(egs.a.e, ejx.a(this.a.j()));
+         this.b = ffc.c($$1);
       }
+
+      double $$2 = this.b.c(this.a.dz(), this.a.dB(), this.a.dF());
+      if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
+         this.a.d(1.0F);
+      } else {
+         this.a.d(0.0F);
+      }
+   }
+
+   @Override
+   public void c() {
+      this.b = null;
+      this.c = 0;
+   }
+
+   @Override
+   public float e() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public fex f() {
-      return this.d;
+   public ffc f() {
+      return this.b;
    }
 
-   private void b(arq $$0) {
-      if (this.c == null || this.c.c()) {
-         int $$1 = this.a.n();
-         iv $$2 = $$0.a(egn.a.f, ejs.a(this.a.j()));
-         crj $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
-         int $$5;
-         if ($$3 != null) {
-            fex $$4 = new fex($$3.dz(), 0.0, $$3.dF()).d();
-            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
-         } else {
-            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
-         }
-
-         exh $$7 = new exh($$2.u(), $$2.v(), $$2.w());
-         this.c = this.a.a($$1, $$5, $$7);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.i();
-      if (this.c != null && this.c.c()) {
-         this.a.t().a(cmx.d);
-      }
-   }
-
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         ka $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dX().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new fex($$1, $$3, $$2);
-      }
+   @Override
+   public cna<cmp> h() {
+      return cna.j;
    }
 }

@@ -42,7 +42,7 @@ public class gg implements ArgumentType<gi> {
 
    public static iv c(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       iv $$2 = b($$0, $$1);
-      if (!djh.l($$2)) {
+      if (!djm.l($$2)) {
          throw c.create();
       } else {
          return $$2;

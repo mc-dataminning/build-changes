@@ -1,70 +1,30 @@
-public class gnd extends gou {
-   private static final float a = 0.3F;
-   private static final float b = 0.1F;
-   private static final float F = 0.5F;
-   private static final float G = 0.3F;
-   private static final int H = 36;
-   private static final int I = 180;
+public class gnd extends gmq {
+   private static final int a = 12235202;
 
-   gnd(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.C = true;
-      this.B = 0.96F;
-      this.D *= 0.75F;
-      this.k *= 0.8F;
-      this.j *= 0.8F;
-      this.l *= 0.8F;
-   }
-
-   @Override
-   public gny b() {
-      return gny.c;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return (int)(255.0F * b(this.f((float)this.s + $$0), 0.1F, 0.3F));
+   protected gnd(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gou $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)axw.b(12235202) / 255.0F - $$9;
+      this.w = (float)axw.c(12235202) / 255.0F - $$9;
+      this.x = (float)axw.d(12235202) / 255.0F - $$9;
    }
 
    @Override
    public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
       super.a();
-      if (!this.c.a_(iv.a(this.g, this.h, this.i)).l()) {
-         this.k();
-      } else {
-         this.e(b(this.f((float)this.s), 0.3F, 0.5F));
-         if (Math.random() > 0.95 || this.s == 1) {
-            this.b(-0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random());
-         }
-      }
    }
 
-   private float f(float $$0) {
-      return azm.a($$0 / (float)this.t, 0.0F, 1.0F);
-   }
+   public static class a implements goc<mc> {
+      private final gou a;
 
-   private static float b(float $$0, float $$1, float $$2) {
-      if ($$0 >= 1.0F - $$1) {
-         return (1.0F - $$0) / $$1;
-      } else {
-         return $$0 <= $$2 ? $$0 / $$2 : 1.0F;
-      }
-   }
-
-   public static class a implements gnx<mc> {
-      private final gop a;
-
-      public a(gop $$0) {
+      public a(gou $$0) {
          this.a = $$0;
       }
 
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnd $$8 = new gnd($$1, $$2, $$3, $$4, 0.5 - $$1.A.j(), $$1.A.h() ? $$6 : -$$6, 0.5 - $$1.A.j());
-         $$8.a($$1.A.a(36, 180));
-         $$8.d(1.5F);
-         $$8.a(this.a);
-         $$8.e(0.0F);
-         return $$8;
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnd($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

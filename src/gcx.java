@@ -1,71 +1,18 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class gcx {
-   private final glg a;
-   private final glo b;
-   private final Predicate<glj.a> c;
-   @Nullable
-   private xt d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private xo g;
+public enum gcx implements ddw {
+   a(deg.c, deg.a, deg.d, deg.b),
+   b(deg.e, deg.f, deg.g),
+   c(deg.h, deg.i),
+   d(deg.j);
 
-   public gcx(glu $$0, Predicate<glj.a> $$1) {
-      this.a = $$0.b();
-      this.b = new glo($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   private final List<deh> e;
+
+   private gcx(final deh... $$0) {
+      this.e = List.of($$0);
    }
 
-   public void a(int $$0, gcx.a $$1) {
-      int $$2 = 0;
-
-      while ($$2 < $$0) {
-         gli $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
-         }
-
-         int $$4 = this.e--;
-         if ($$3 instanceof glj.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(wy.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
-         }
-      }
-   }
-
-   private boolean a(gcx.a $$0, glj.a $$1) {
-      xo $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.k())) {
-            $$0.a(wy.a("gui.chatSelection.join", $$1.f().getName()).a(o.o));
-         }
-
-         this.d = $$2.k();
-         return true;
-      } else {
-         return $$3;
-      }
-   }
-
-   public interface a {
-      void a(int var1, glj.a var2);
-
-      void a(wy var1);
+   public List<deh> a() {
+      return this.e;
    }
 }

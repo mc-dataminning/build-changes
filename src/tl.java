@@ -98,40 +98,40 @@ public interface tl {
       }
    }
 
-   public static record c(List<tl.c.a<Boolean, djd.a>> d, List<tl.c.a<Integer, djd.d>> e) implements tl {
+   public static record c(List<tl.c.a<Boolean, dji.a>> d, List<tl.c.a<Integer, dji.d>> e) implements tl {
       public static final MapCodec<tl.c> c = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  tl.c.a.a(djd.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tl.c::b),
-                  tl.c.a.a(djd.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tl.c::c)
+                  tl.c.a.a(dji.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tl.c::b),
+                  tl.c.a.a(dji.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tl.c::c)
                )
                .apply($$0, tl.c::new)
       );
 
       @Override
       public void a(arq $$0) {
-         djd $$1 = $$0.O();
+         dji $$1 = $$0.O();
          MinecraftServer $$2 = $$0.p();
 
-         for (tl.c.a<Boolean, djd.a> $$3 : this.d) {
+         for (tl.c.a<Boolean, dji.a> $$3 : this.d) {
             $$1.b($$3.a()).a($$3.b(), $$2);
          }
 
-         for (tl.c.a<Integer, djd.d> $$4 : this.e) {
+         for (tl.c.a<Integer, dji.d> $$4 : this.e) {
             $$1.b($$4.a()).a($$4.b(), $$2);
          }
       }
 
       @Override
       public void b(arq $$0) {
-         djd $$1 = $$0.O();
+         dji $$1 = $$0.O();
          MinecraftServer $$2 = $$0.p();
 
-         for (tl.c.a<Boolean, djd.a> $$3 : this.d) {
-            $$1.b($$3.a()).a(djd.a($$3.a()).a(), $$2);
+         for (tl.c.a<Boolean, dji.a> $$3 : this.d) {
+            $$1.b($$3.a()).a(dji.a($$3.a()).a(), $$2);
          }
 
-         for (tl.c.a<Integer, djd.d> $$4 : this.e) {
-            $$1.b($$4.a()).a(djd.a($$4.a()).a(), $$2);
+         for (tl.c.a<Integer, dji.d> $$4 : this.e) {
+            $$1.b($$4.a()).a(dji.a($$4.a()).a(), $$2);
          }
       }
 
@@ -140,22 +140,22 @@ public interface tl {
          return c;
       }
 
-      public static <S, T extends djd.g<T>> tl.c.a<S, T> a(djd.e<T> $$0, S $$1) {
+      public static <S, T extends dji.g<T>> tl.c.a<S, T> a(dji.e<T> $$0, S $$1) {
          return new tl.c.a<>($$0, $$1);
       }
 
-      public List<tl.c.a<Boolean, djd.a>> b() {
+      public List<tl.c.a<Boolean, dji.a>> b() {
          return this.d;
       }
 
-      public List<tl.c.a<Integer, djd.d>> c() {
+      public List<tl.c.a<Integer, dji.d>> c() {
          return this.e;
       }
 
-      public static record a<S, T extends djd.g<T>>(djd.e<T> a, S b) {
-         public static <S, T extends djd.g<T>> Codec<tl.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
+      public static record a<S, T extends dji.g<T>>(dji.e<T> a, S b) {
+         public static <S, T extends dji.g<T>> Codec<tl.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
             return RecordCodecBuilder.create(
-               $$2 -> $$2.group(djd.a($$0).fieldOf("rule").forGetter(tl.c.a::a), $$1.fieldOf("value").forGetter(tl.c.a::b)).apply($$2, tl.c.a::new)
+               $$2 -> $$2.group(dji.a($$0).fieldOf("rule").forGetter(tl.c.a::a), $$1.fieldOf("value").forGetter(tl.c.a::b)).apply($$2, tl.c.a::new)
             );
          }
       }

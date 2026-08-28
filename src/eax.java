@@ -1,51 +1,49 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class eax implements Predicate<eao> {
-   public static final Predicate<eao> a = $$0 -> true;
-   private final eap<dmm, eao> b;
-   private final Map<ebr<?>, Predicate<Object>> c = Maps.newHashMap();
+public class eax {
+   private final djp a;
+   private final iv b;
+   private final boolean c;
+   @Nullable
+   private eat d;
+   @Nullable
+   private dxr e;
+   private boolean f;
 
-   private eax(eap<dmm, eao> $$0) {
-      this.b = $$0;
+   public eax(djp $$0, iv $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.j();
+      this.c = $$2;
    }
 
-   public static eax a(dmm $$0) {
-      return new eax($$0.l());
-   }
-
-   public boolean a(@Nullable eao $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<ebr<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
+   public eat a() {
+      if (this.d == null && (this.c || this.a.C(this.b))) {
+         this.d = this.a.a_(this.b);
       }
+
+      return this.d;
    }
 
-   protected <T extends Comparable<T>> boolean a(eao $$0, ebr<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
-   }
-
-   public <V extends Comparable<V>> eax a(ebr<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
+   @Nullable
+   public dxr b() {
+      if (this.e == null && !this.f) {
+         this.e = this.a.c_(this.b);
+         this.f = true;
       }
+
+      return this.e;
+   }
+
+   public djp c() {
+      return this.a;
+   }
+
+   public iv d() {
+      return this.b;
+   }
+
+   public static Predicate<eax> a(Predicate<eat> $$0) {
+      return $$1 -> $$1 != null && $$0.test($$1.a());
    }
 }

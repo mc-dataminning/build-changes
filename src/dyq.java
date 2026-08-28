@@ -1,137 +1,137 @@
-public class dyq extends dxm {
-   public static final String a = "target";
-   public static final String b = "pool";
-   public static final String c = "joint";
-   public static final String d = "placement_priority";
-   public static final String e = "selection_priority";
-   public static final String f = "name";
-   public static final String g = "final_state";
-   private alg h = alg.b("empty");
-   private alg i = alg.b("empty");
-   private alf<ess> j = alf.a(mh.bf, alg.b("empty"));
-   private dyq.a k = dyq.a.a;
-   private String l = "minecraft:air";
-   private int m;
-   private int q;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
+import java.util.Collections;
+import java.util.SequencedSet;
 
-   public dyq(iv $$0, eao $$1) {
-      super(dxo.G, $$0, $$1);
+public class dyq {
+   private final Object2IntSortedMap<czj> a;
+
+   dyq(Object2IntSortedMap<czj> $$0) {
+      this.a = $$0;
    }
 
-   public alg a() {
-      return this.h;
+   public boolean a(czn $$0) {
+      return this.a.containsKey($$0.h());
    }
 
-   public alg c() {
-      return this.i;
+   public SequencedSet<czj> a() {
+      return Collections.unmodifiableSequencedSet(this.a.keySet());
    }
 
-   public alf<ess> d() {
-      return this.j;
+   public int b(czn $$0) {
+      return $$0.f() ? 0 : this.a.getInt($$0.h());
    }
 
-   public String f() {
-      return this.l;
+   public static dyq a(jh.a $$0, cuw $$1) {
+      return a($$0, $$1, 200);
    }
 
-   public dyq.a j() {
-      return this.k;
+   public static dyq a(jh.a $$0, cuw $$1, int $$2) {
+      return new dyq.a($$0, $$1)
+         .a(czr.rq, $$2 * 100)
+         .a(dmt.jd, $$2 * 8 * 10)
+         .a(czr.to, $$2 * 12)
+         .a(czr.pl, $$2 * 8)
+         .a(czr.pm, $$2 * 8)
+         .a(axk.r, $$2 * 3 / 2)
+         .a(axk.D, $$2 * 3 / 2)
+         .a(axk.b, $$2 * 3 / 2)
+         .a(dmt.y, $$2 * 3 / 2)
+         .a(axk.i, $$2 * 3 / 2)
+         .a(dmt.iw, $$2 * 3 / 2)
+         .a(axk.j, $$2 * 3 / 4)
+         .a(dmt.kf, $$2 * 3 / 4)
+         .a(axk.n, $$2 * 3 / 2)
+         .a(axk.m, $$2 * 3 / 2)
+         .a(axk.k, $$2 * 3 / 2)
+         .a(axk.l, $$2 * 3 / 2)
+         .a(dmt.bf, $$2 * 3 / 2)
+         .a(dmt.cv, $$2 * 3 / 2)
+         .a(dmt.cw, $$2 * 3 / 2)
+         .a(dmt.oG, $$2 * 3 / 2)
+         .a(dmt.ek, $$2 * 3 / 2)
+         .a(dmt.cG, $$2 * 3 / 2)
+         .a(dmt.hw, $$2 * 3 / 2)
+         .a(dmt.cL, $$2 * 3 / 2)
+         .a(dmt.hA, $$2 * 3 / 2)
+         .a(axk.F, $$2 * 3 / 2)
+         .a(czr.pj, $$2 * 3 / 2)
+         .a(czr.sd, $$2 * 3 / 2)
+         .a(dmt.da, $$2 * 3 / 2)
+         .a(axk.aV, $$2)
+         .a(axk.bv, $$2 * 4)
+         .a(czr.pB, $$2)
+         .a(czr.pA, $$2)
+         .a(czr.pE, $$2)
+         .a(czr.pD, $$2)
+         .a(czr.pC, $$2)
+         .a(axk.h, $$2)
+         .a(axk.aS, $$2 * 6)
+         .a(axk.a, $$2 / 2)
+         .a(axk.d, $$2 / 2)
+         .a(czr.qe, $$2 / 2)
+         .a(axk.p, $$2 / 2)
+         .a(czr.ph, $$2 / 2)
+         .a(axk.g, 1 + $$2 / 3)
+         .a(dmt.mK, 1 + $$2 * 20)
+         .a(czr.xg, $$2 * 3 / 2)
+         .a(dmt.nF, $$2 / 4)
+         .a(dmt.bC, $$2 / 2)
+         .a(dmt.bE, $$2 / 2)
+         .a(dmt.bF, $$2 / 2)
+         .a(dmt.oy, $$2 / 4)
+         .a(dmt.oz, $$2 * 3 / 2)
+         .a(dmt.oA, $$2 * 3 / 2)
+         .a(dmt.oD, $$2 * 3 / 2)
+         .a(dmt.oE, $$2 * 3 / 2)
+         .a(dmt.oH, $$2 * 3 / 2)
+         .a(dmt.pK, $$2 * 3 / 2)
+         .a(dmt.tg, $$2 / 2)
+         .a(dmt.th, $$2 / 2)
+         .a(dmt.ag, $$2 * 3 / 2)
+         .a(dmt.tl, $$2 / 2)
+         .a(axk.aM)
+         .a();
    }
 
-   public int k() {
-      return this.m;
-   }
+   public static class a {
+      private final jh<czj> a;
+      private final cuw b;
+      private final Object2IntSortedMap<czj> c = new Object2IntLinkedOpenHashMap();
 
-   public int s() {
-      return this.q;
-   }
-
-   public void a(alg $$0) {
-      this.h = $$0;
-   }
-
-   public void b(alg $$0) {
-      this.i = $$0;
-   }
-
-   public void a(alf<ess> $$0) {
-      this.j = $$0;
-   }
-
-   public void a(String $$0) {
-      this.l = $$0;
-   }
-
-   public void a(dyq.a $$0) {
-      this.k = $$0;
-   }
-
-   public void a(int $$0) {
-      this.m = $$0;
-   }
-
-   public void b(int $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("name", this.h.toString());
-      $$0.a("target", this.i.toString());
-      $$0.a("pool", this.j.a().toString());
-      $$0.a("final_state", this.l);
-      $$0.a("joint", dyq.a.c, this.k);
-      $$0.a("placement_priority", this.m);
-      $$0.a("selection_priority", this.q);
-   }
-
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      this.h = alg.a($$0.j("name"));
-      this.i = alg.a($$0.j("target"));
-      this.j = alf.a(mh.bf, alg.a($$0.j("pool")));
-      this.l = $$0.j("final_state");
-      this.k = $$0.<dyq.a>a("joint", dyq.a.c).orElseGet(() -> evk.a(this.m()));
-      this.m = $$0.f("placement_priority");
-      this.q = $$0.f("selection_priority");
-   }
-
-   public aca t() {
-      return aca.a(this);
-   }
-
-   @Override
-   public tz a(jh.a $$0) {
-      return this.e($$0);
-   }
-
-   public void a(arq $$0, int $$1, boolean $$2) {
-      iv $$3 = this.ax_().a(this.m().c(dqt.b).a());
-      js<ess> $$4 = $$0.F_().f(mh.bf);
-      jf<ess> $$5 = $$4.b(this.j);
-      esm.a($$0, $$5, this.i, $$1, $$3, $$2);
-   }
-
-   public static enum a implements bak {
-      a("rollable"),
-      b("aligned");
-
-      public static final bak.a<dyq.a> c = bak.a(dyq.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
+      public a(jh.a $$0, cuw $$1) {
+         this.a = $$0.e(mh.K);
+         this.b = $$1;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      public dyq a() {
+         return new dyq(this.c);
       }
 
-      public wy a() {
-         return wy.c("jigsaw_block.joint." + this.d);
+      public dyq.a a(axr<czj> $$0) {
+         this.c.keySet().removeIf($$1 -> $$1.e().a($$0));
+         return this;
+      }
+
+      public dyq.a a(axr<czj> $$0, int $$1) {
+         this.a.a($$0).ifPresent($$1x -> {
+            for (jf<czj> $$2 : $$1x) {
+               this.a($$1, $$2.a());
+            }
+         });
+         return this;
+      }
+
+      public dyq.a a(djl $$0, int $$1) {
+         czj $$2 = $$0.h();
+         this.a($$1, $$2);
+         return this;
+      }
+
+      private void a(int $$0, czj $$1) {
+         if ($$1.a(this.b)) {
+            this.c.put($$1, $$0);
+         }
       }
    }
 }

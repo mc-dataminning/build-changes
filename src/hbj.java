@@ -1,32 +1,35 @@
-import java.util.function.Function;
+public class hbj extends hbm<her, ghv> {
+   private final gho a;
+   private final hen b = new hen();
 
-public class hbj<S extends hdz, RM extends ggk<? super S>, EM extends ggk<? super S>> extends hbh<S, RM> {
-   private final has a;
-   private final hlp.d b;
-   private final Function<S, czk> c;
-   private final EM d;
-   private final EM e;
-
-   public hbj(gyq<S, RM> $$0, has $$1, hlp.d $$2, Function<S, czk> $$3, EM $$4, EM $$5) {
+   public hbj(gyv<her, ghv> $$0, gjp $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
+      this.a = new gho($$1.a(gjs.cb));
+      this.b.c = gho.a.e;
    }
 
-   public hbj(gyq<S, RM> $$0, has $$1, EM $$2, hlp.d $$3, Function<S, czk> $$4) {
-      this($$0, $$1, $$3, $$4, $$2, $$2);
-   }
-
-   public void a(fjy $$0, gqm $$1, int $$2, S $$3, float $$4, float $$5) {
-      czk $$6 = this.c.apply($$3);
-      dht $$7 = $$6.a(kk.D);
-      if ($$7 != null && !$$7.d().isEmpty()) {
-         EM $$8 = $$3.aj ? this.e : this.d;
-         $$8.a($$3);
-         this.a.a(this.b, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
+   public void a(fkd $$0, gqr $$1, int $$2, her $$3, float $$4, float $$5) {
+      cjt.b $$6 = $$3.aE;
+      if ($$6 != null) {
+         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
       }
+
+      cjt.b $$7 = $$3.aF;
+      if ($$7 != null) {
+         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+      }
+   }
+
+   private void a(fkd $$0, gqr $$1, int $$2, her $$3, cjt.b $$4, float $$5, float $$6, boolean $$7) {
+      $$0.a();
+      $$0.a($$7 ? 0.4F : -0.4F, $$3.N ? -1.3F : -1.5F, 0.0F);
+      this.b.u = $$3.u;
+      this.b.ad = $$3.ad;
+      this.b.ae = $$3.ae;
+      this.b.aa = $$5;
+      this.b.ab = $$6;
+      this.a.a(this.b);
+      this.a.a($$0, $$1.getBuffer(this.a.a(gyl.a($$4))), $$2, hjg.d);
+      $$0.b();
    }
 }

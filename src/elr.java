@@ -1,23 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elr implements elx {
-   public static final Codec<elr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(btl.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), btl.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, elr::new)
-   );
-   private final btl b;
-   private final btl c;
+public class elr extends ejy<emj> {
+   private static final jb[] a = jb.values();
 
-   public elr(btl $$0, btl $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public elr(Codec<emj> $$0) {
+      super($$0);
    }
 
-   public btl a() {
-      return this.b;
+   @Override
+   public boolean a(eka<emj> $$0) {
+      dkl $$1 = $$0.b();
+      iv $$2 = $$0.e();
+      azv $$3 = $$0.d();
+      if (!$$1.v($$2)) {
+         return false;
+      } else {
+         eat $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dmt.em) && !$$4.a(dmt.lq)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
    }
 
-   public btl b() {
-      return this.c;
+   private void a(djn $$0, azv $$1, iv $$2) {
+      $$0.a($$2, dmt.lq.m(), 2);
+      iv.a $$3 = new iv.a();
+      iv.a $$4 = new iv.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.v($$3)) {
+            int $$6 = 0;
+
+            for (jb $$7 : a) {
+               eat $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dmt.em) || $$8.a(dmt.lq)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dmt.lq.m(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(djn $$0, azv $$1, iv $$2) {
+      iv.a $$3 = new iv.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.v($$3)) {
+            eat $$5 = $$0.a_($$3.d());
+            if ($$5.a(dmt.em) || $$5.a(dmt.lq)) {
+               int $$6 = azm.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(djn $$0, azv $$1, iv.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.v($$2)) {
+            if ($$6 == $$3 || !$$0.v($$2.e())) {
+               $$0.a($$2, dmt.pf.m().b(dqk.e, Integer.valueOf(azm.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dmt.pg.m(), 2);
+         }
+
+         $$2.c(jb.a);
+      }
    }
 }

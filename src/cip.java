@@ -27,20 +27,20 @@ public class cip {
    public static final alf<cio> r = a("nether_portal");
    public static final alf<cio> s = a("lodestone");
    public static final alf<cio> t = a("lightning_rod");
-   private static final Set<eao> u = ImmutableList.of(
-         dmo.bu, dmo.bv, dmo.br, dmo.bs, dmo.bp, dmo.bn, dmo.bt, dmo.bj, dmo.bo, dmo.bl, dmo.bi, dmo.bh, new dmm[]{dmo.bm, dmo.bq, dmo.bg, dmo.bk}
+   private static final Set<eat> u = ImmutableList.of(
+         dmt.bu, dmt.bv, dmt.br, dmt.bs, dmt.bp, dmt.bn, dmt.bt, dmt.bj, dmt.bo, dmt.bl, dmt.bi, dmt.bh, new dmr[]{dmt.bm, dmt.bq, dmt.bg, dmt.bk}
       )
       .stream()
       .flatMap($$0 -> $$0.l().a().stream())
-      .filter($$0 -> $$0.c(dmf.b) == ebb.a)
+      .filter($$0 -> $$0.c(dmk.b) == ebg.a)
       .collect(ImmutableSet.toImmutableSet());
-   private static final Set<eao> v = ImmutableList.of(dmo.fS, dmo.fU, dmo.fT, dmo.fV)
+   private static final Set<eat> v = ImmutableList.of(dmt.fS, dmt.fU, dmt.fT, dmt.fV)
       .stream()
       .flatMap($$0 -> $$0.l().a().stream())
       .collect(ImmutableSet.toImmutableSet());
-   private static final Map<eao, jf<cio>> w = Maps.newHashMap();
+   private static final Map<eat, jf<cio>> w = Maps.newHashMap();
 
-   private static Set<eao> a(dmm $$0) {
+   private static Set<eat> a(dmr $$0) {
       return ImmutableSet.copyOf($$0.l().a());
    }
 
@@ -48,14 +48,14 @@ public class cip {
       return alf.a(mh.aa, alg.b($$0));
    }
 
-   private static cio a(js<cio> $$0, alf<cio> $$1, Set<eao> $$2, int $$3, int $$4) {
+   private static cio a(js<cio> $$0, alf<cio> $$1, Set<eat> $$2, int $$3, int $$4) {
       cio $$5 = new cio($$2, $$3, $$4);
       js.a($$0, $$1, $$5);
       a($$0.b($$1), $$2);
       return $$5;
    }
 
-   private static void a(jf<cio> $$0, Set<eao> $$1) {
+   private static void a(jf<cio> $$0, Set<eat> $$1) {
       $$1.forEach($$1x -> {
          jf<cio> $$2 = w.put($$1x, $$0);
          if ($$2 != null) {
@@ -64,34 +64,34 @@ public class cip {
       });
    }
 
-   public static Optional<jf<cio>> a(eao $$0) {
+   public static Optional<jf<cio>> a(eat $$0) {
       return Optional.ofNullable(w.get($$0));
    }
 
-   public static boolean b(eao $$0) {
+   public static boolean b(eat $$0) {
       return w.containsKey($$0);
    }
 
    public static cio a(js<cio> $$0) {
-      a($$0, a, a(dmo.oC), 1, 1);
-      a($$0, b, a(dmo.oB), 1, 1);
-      a($$0, c, a(dmo.oD), 1, 1);
-      a($$0, d, a(dmo.fR), 1, 1);
-      a($$0, e, a(dmo.pK), 1, 1);
-      a($$0, f, a(dmo.oA), 1, 1);
-      a($$0, g, a(dmo.oE), 1, 1);
+      a($$0, a, a(dmt.oC), 1, 1);
+      a($$0, b, a(dmt.oB), 1, 1);
+      a($$0, c, a(dmt.oD), 1, 1);
+      a($$0, d, a(dmt.fR), 1, 1);
+      a($$0, e, a(dmt.pK), 1, 1);
+      a($$0, f, a(dmt.oA), 1, 1);
+      a($$0, g, a(dmt.oE), 1, 1);
       a($$0, h, v, 1, 1);
-      a($$0, i, a(dmo.oG), 1, 1);
-      a($$0, j, a(dmo.oI), 1, 1);
-      a($$0, k, a(dmo.oz), 1, 1);
-      a($$0, l, a(dmo.oH), 1, 1);
-      a($$0, m, a(dmo.oF), 1, 1);
+      a($$0, i, a(dmt.oG), 1, 1);
+      a($$0, j, a(dmt.oI), 1, 1);
+      a($$0, k, a(dmt.oz), 1, 1);
+      a($$0, l, a(dmt.oH), 1, 1);
+      a($$0, m, a(dmt.oF), 1, 1);
       a($$0, n, u, 1, 1);
-      a($$0, o, a(dmo.oJ), 32, 6);
-      a($$0, p, a(dmo.pN), 0, 1);
-      a($$0, q, a(dmo.pM), 0, 1);
-      a($$0, r, a(dmo.eu), 0, 1);
-      a($$0, s, a(dmo.pY), 0, 1);
-      return a($$0, t, a(dmo.ta), 0, 1);
+      a($$0, o, a(dmt.oJ), 32, 6);
+      a($$0, p, a(dmt.pN), 0, 1);
+      a($$0, q, a(dmt.pM), 0, 1);
+      a($$0, r, a(dmt.eu), 0, 1);
+      a($$0, s, a(dmt.pY), 0, 1);
+      return a($$0, t, a(dmt.ta), 0, 1);
    }
 }

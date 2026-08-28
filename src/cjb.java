@@ -5,18 +5,18 @@ public interface cjb {
 
    void w(boolean var1);
 
-   void a_(czk var1);
+   void a_(czn var1);
 
    void h(tz var1);
 
-   czk S_();
+   czn S_();
 
    awm n();
 
    @Deprecated
-   static void a(bxl $$0, czk $$1) {
+   static void a(bxl $$0, czn $$1) {
       $$1.a(kk.g, $$0);
-      dbs.a(kk.Z, $$1, $$1x -> {
+      dbv.a(kk.Z, $$1, $$1x -> {
          if ($$0.gi()) {
             $$1x.a("NoAI", $$0.gi());
          }
@@ -68,15 +68,15 @@ public interface cjb {
       }
    }
 
-   static <T extends bxj & cjb> Optional<bug> a(crj $$0, buf $$1, T $$2) {
-      czk $$3 = $$0.b($$1);
-      if ($$3.h() == czo.rp && $$2.bI()) {
+   static <T extends bxj & cjb> Optional<bug> a(crm $$0, buf $$1, T $$2) {
+      czn $$3 = $$0.b($$1);
+      if ($$3.h() == czr.rp && $$2.bI()) {
          $$2.a($$2.n(), 1.0F, 1.0F);
-         czk $$4 = $$2.S_();
+         czn $$4 = $$2.S_();
          $$2.a_($$4);
-         czk $$5 = czn.a($$3, $$0, $$4, false);
+         czn $$5 = czq.a($$3, $$0, $$4, false);
          $$0.a($$1, $$5);
-         djh $$6 = $$2.dU();
+         djm $$6 = $$2.dU();
          if (!$$6.C) {
             aq.k.a((arr)$$0, $$4);
          }

@@ -1,6 +1,6 @@
 import java.util.EnumSet;
 
-public class cff<T extends cok & cop> extends cef {
+public class cff<T extends coo & cos> extends cef {
    private final T a;
    private final double b;
    private int c;
@@ -29,7 +29,7 @@ public class cff<T extends cok & cop> extends cef {
    }
 
    protected boolean h() {
-      return this.a.b(czo.pj);
+      return this.a.b(czr.pj);
    }
 
    @Override
@@ -118,12 +118,12 @@ public class cff<T extends cok & cop> extends cef {
                int $$5 = this.a.fC();
                if ($$5 >= 20) {
                   this.a.fE();
-                  this.a.a($$0, cxw.a($$5));
+                  this.a.a($$0, cxz.a($$5));
                   this.e = this.c;
                }
             }
          } else if (--this.e <= 0 && this.f >= -60) {
-            this.a.c(csg.a(this.a, czo.pj));
+            this.a.c(csj.a(this.a, czr.pj));
          }
       }
    }

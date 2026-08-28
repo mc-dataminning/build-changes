@@ -1,15 +1,32 @@
-public enum fhl {
-   a(34962),
-   b(34963),
-   c(35051),
-   d(36662),
-   e(36663),
-   f(35052),
-   g(35345);
+import org.lwjgl.openal.AL10;
 
-   final int h;
+public class fhl {
+   private float a = 1.0F;
+   private fhm b = fhm.a;
 
-   private fhl(final int $$0) {
-      this.h = $$0;
+   public void a(fhm $$0) {
+      this.b = $$0;
+      ffc $$1 = $$0.b();
+      ffc $$2 = $$0.c();
+      ffc $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.d, (float)$$1.e, (float)$$1.f);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.d, (float)$$2.e, (float)$$2.f, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
+   }
+
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
+   }
+
+   public float a() {
+      return this.a;
+   }
+
+   public void b() {
+      this.a(fhm.a);
+   }
+
+   public fhm c() {
+      return this.b;
    }
 }

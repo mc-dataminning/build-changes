@@ -128,12 +128,12 @@ public record ai(Optional<alg> c, Optional<av> d, an e, Map<String, ar<?>> f, am
          return this;
       }
 
-      public ai.a a(czk $$0, wy $$1, wy $$2, @Nullable alg $$3, ap $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ai.a a(czn $$0, wy $$1, wy $$2, @Nullable alg $$3, ap $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new av($$0, $$1, $$2, Optional.ofNullable($$3).map(iw::new), $$4, $$5, $$6, $$7));
       }
 
-      public ai.a a(djg $$0, wy $$1, wy $$2, @Nullable alg $$3, ap $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new av(new czk($$0.h()), $$1, $$2, Optional.ofNullable($$3).map(iw::new), $$4, $$5, $$6, $$7));
+      public ai.a a(djl $$0, wy $$1, wy $$2, @Nullable alg $$3, ap $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new av(new czn($$0.h()), $$1, $$2, Optional.ofNullable($$3).map(iw::new), $$4, $$5, $$6, $$7));
       }
 
       public ai.a a(av $$0) {

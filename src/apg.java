@@ -81,7 +81,7 @@ public class apg {
       );
    }
 
-   private static int a(ej $$0, few $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bwi> $$6) throws CommandSyntaxException {
+   private static int a(ej $$0, ffb $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bwi> $$6) throws CommandSyntaxException {
       arq $$7 = $$0.e();
       int $$8 = $$7.G_();
       if ($$4 < $$8) {
@@ -104,10 +104,10 @@ public class apg {
    }
 
    private static int a(Collection<? extends bwi> $$0) {
-      Set<fge> $$1 = Sets.newHashSet();
+      Set<fgj> $$1 = Sets.newHashSet();
 
       for (bwi $$2 : $$0) {
-         if ($$2 instanceof crj) {
+         if ($$2 instanceof crm) {
             $$1.add($$2.cp());
          } else {
             $$1.add(null);
@@ -117,7 +117,7 @@ public class apg {
       return $$1.size();
    }
 
-   private static void a(few $$0, double $$1, arq $$2, azv $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apg.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(ffb $$0, double $$1, arq $$2, azv $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apg.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -189,12 +189,12 @@ public class apg {
    private static double a(Collection<? extends bwi> $$0, arq $$1, apg.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<fge, apg.a> $$7 = Maps.newHashMap();
+      Map<fgj, apg.a> $$7 = Maps.newHashMap();
 
       for (bwi $$8 : $$0) {
          apg.a $$10;
          if ($$4) {
-            fge $$9 = $$8 instanceof crj ? $$8.cp() : null;
+            fgj $$9 = $$8 instanceof crm ? $$8.cp() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -278,7 +278,7 @@ public class apg {
          return $$4;
       }
 
-      public int a(din $$0, int $$1) {
+      public int a(diq $$0, int $$1) {
          iv.a $$2 = new iv.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).l();
          $$2.c(jb.a);
@@ -298,9 +298,9 @@ public class apg {
          return $$1 + 1;
       }
 
-      public boolean b(din $$0, int $$1) {
+      public boolean b(diq $$0, int $$1) {
          iv $$2 = iv.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         eao $$3 = $$0.a_($$2);
+         eat $$3 = $$0.a_($$2);
          return $$2.v() < $$1 && !$$3.n() && !$$3.a(axc.aN);
       }
 

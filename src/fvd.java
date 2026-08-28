@@ -1,72 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.function.Consumer;
 
-public class fvd implements fvf {
-   private static final alg a = alg.b("toast/recipe");
-   private static final long e = 5000L;
-   private static final wy f = wy.c("recipe.toast.title");
-   private static final wy g = wy.c("recipe.toast.description");
-   private final List<fvd.a> h = new ArrayList<>();
-   private long i;
-   private boolean j;
-   private fvf.a k = fvf.a.b;
-   private int l;
+public interface fvd {
+   wy a();
 
-   private fvd() {
-   }
+   void a(Consumer<fsy> var1);
 
-   @Override
-   public fvf.a a() {
-      return this.k;
-   }
-
-   @Override
-   public void a(fvg $$0, long $$1) {
-      if (this.j) {
-         this.i = $$1;
-         this.j = false;
-      }
-
-      if (this.h.isEmpty()) {
-         this.k = fvf.a.b;
-      } else {
-         this.k = (double)($$1 - this.i) >= 5000.0 * $$0.d() ? fvf.a.b : fvf.a.a;
-      }
-
-      this.l = (int)((double)$$1 / Math.max(1.0, 5000.0 * $$0.d() / (double)this.h.size()) % (double)this.h.size());
-   }
-
-   @Override
-   public void a(fsh $$0, fsf $$1, long $$2) {
-      $$0.a(gqx::H, a, 0, 0, this.c(), this.d());
-      $$0.a($$1, f, 30, 7, -11534256, false);
-      $$0.a($$1, g, 30, 18, -16777216, false);
-      fvd.a $$3 = this.h.get(this.l);
-      $$0.c().a();
-      $$0.c().b(0.6F, 0.6F, 1.0F);
-      $$0.b($$3.a(), 3, 3);
-      $$0.c().b();
-      $$0.b($$3.b(), 8, 8);
-   }
-
-   private void a(czk $$0, czk $$1) {
-      this.h.add(new fvd.a($$0, $$1));
-      this.j = true;
-   }
-
-   public static void a(fvg $$0, dfh $$1) {
-      fvd $$2 = $$0.a(fvd.class, b);
-      if ($$2 == null) {
-         $$2 = new fvd();
-         $$0.a($$2);
-      }
-
-      baz $$3 = dfo.a($$0.c().s);
-      czk $$4 = $$1.e().b($$3);
-      czk $$5 = $$1.d().b($$3);
-      $$2.a($$4, $$5);
-   }
-
-   static record a(czk a, czk b) {
-   }
+   void a(fxh var1);
 }

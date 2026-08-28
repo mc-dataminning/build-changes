@@ -1,99 +1,44 @@
-import javax.annotation.Nullable;
+public class hne extends hmx {
+   public static final int n = 20;
+   private final gpo o;
+   private int p;
 
-public class hne implements hop<hne> {
-   public static final akz a = new akz("sounds", ".ogg");
-   private final alg b;
-   private final bto c;
-   private final bto d;
-   private final int e;
-   private final hne.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
-
-   public hne(alg $$0, bto $$1, bto $$2, int $$3, hne.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public alg a() {
-      return this.b;
-   }
-
-   public alg b() {
-      return a.a(this.b);
-   }
-
-   public bto c() {
-      return this.c;
-   }
-
-   public bto d() {
-      return this.d;
+   public hne(gpo $$0) {
+      super(awn.iu, awo.h, hno.t());
+      this.o = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.1F;
    }
 
    @Override
-   public int e() {
-      return this.e;
-   }
-
-   public hne a(azv $$0) {
-      return this;
-   }
-
-   @Override
-   public void a(hok $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public hne.a f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
-      return this.i;
-   }
-
-   @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      @Nullable
-      public static hne.a a(String $$0) {
-         for (hne.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
+   public void q() {
+      this.p++;
+      if (!this.o.dP() && (this.p <= 20 || this.o.fI())) {
+         this.f = (double)((float)this.o.dz());
+         this.g = (double)((float)this.o.dB());
+         this.h = (double)((float)this.o.dF());
+         float $$0 = (float)this.o.dx().h();
+         if ((double)$$0 >= 1.0E-7) {
+            this.d = azm.a($$0 / 4.0F, 0.0F, 1.0F);
+         } else {
+            this.d = 0.0F;
          }
 
-         return null;
+         if (this.p < 20) {
+            this.d = 0.0F;
+         } else if (this.p < 40) {
+            this.d = this.d * ((float)(this.p - 20) / 20.0F);
+         }
+
+         float $$1 = 0.8F;
+         if (this.d > 0.8F) {
+            this.e = 1.0F + (this.d - 0.8F);
+         } else {
+            this.e = 1.0F;
+         }
+      } else {
+         this.n();
       }
    }
 }

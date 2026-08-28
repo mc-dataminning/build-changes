@@ -1,15 +1,44 @@
-public abstract class gvj<T extends cll, S extends hda, M extends ggk<? super S>> extends gvn<T, S, M> {
-   public gvj(gwt.a $$0, M $$1, M $$2) {
-      super($$0, $$1, $$2, 0.75F);
+public class gvj implements gut.a {
+   private final fpt a;
+
+   public gvj(fpt $$0) {
+      this.a = $$0;
    }
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.a(bws.h).v();
-      $$1.c = $$0.bY();
-      $$1.e = $$0.J($$2);
-      $$1.f = $$0.K($$2);
-      $$1.g = $$0.L($$2);
-      $$1.d = $$0.bV > 0;
+   @Override
+   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
+      iv $$5 = this.a.t.du();
+      djp $$6 = this.a.t.dU();
+
+      for (iv $$7 : iv.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         exa $$8 = $$6.b_($$7);
+         if ($$8.a(axh.a)) {
+            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
+            gut.a(
+               $$0,
+               $$1,
+               new fex(
+                     (double)((float)$$7.u() + 0.01F),
+                     (double)((float)$$7.v() + 0.01F),
+                     (double)((float)$$7.w() + 0.01F),
+                     (double)((float)$$7.u() + 0.99F),
+                     $$9,
+                     (double)((float)$$7.w() + 0.99F)
+                  )
+                  .d(-$$2, -$$3, -$$4),
+               0.0F,
+               1.0F,
+               0.0F,
+               0.15F
+            );
+         }
+      }
+
+      for (iv $$10 : iv.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
+         exa $$11 = $$6.b_($$10);
+         if ($$11.a(axh.a)) {
+            gut.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
+         }
+      }
    }
 }

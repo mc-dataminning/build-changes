@@ -135,7 +135,7 @@ public class amt {
       if ($$1.h().isEmpty()) {
          $$0.a(() -> wy.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> wy.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), xb.b($$1.h(), crj::m_)), true);
+         $$0.a(() -> wy.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), xb.b($$1.h(), crm::m_)), true);
       }
 
       return $$1.h().size();
@@ -219,7 +219,7 @@ public class amt {
          if ($$1.h().isEmpty()) {
             $$0.a(() -> wy.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> wy.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xb.b($$2, crj::m_)), true);
+            $$0.a(() -> wy.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xb.b($$2, crm::m_)), true);
          }
 
          return $$1.h().size();

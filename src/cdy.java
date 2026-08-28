@@ -7,7 +7,7 @@ public class cdy extends cef {
    private double c;
    private double d;
    private final double e;
-   private final djh f;
+   private final djm f;
 
    public cdy(bxr $$0, double $$1) {
       this.a = $$0;
@@ -32,7 +32,7 @@ public class cdy extends cef {
    }
 
    protected boolean h() {
-      fex $$0 = this.i();
+      ffc $$0 = this.i();
       if ($$0 == null) {
          return false;
       } else {
@@ -54,14 +54,14 @@ public class cdy extends cef {
    }
 
    @Nullable
-   protected fex i() {
+   protected ffc i() {
       azv $$0 = this.a.dX();
       iv $$1 = this.a.du();
 
       for (int $$2 = 0; $$2 < 10; $$2++) {
          iv $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
          if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return fex.c($$3);
+            return ffc.c($$3);
          }
       }
 

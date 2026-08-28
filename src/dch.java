@@ -1,19 +1,32 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import java.util.Optional;
 
-public enum dch {
-   a(0),
-   b(1);
+public record dch(Optional<je> c, boolean d) {
+   public static final Codec<dch> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(je.b.optionalFieldOf("target").forGetter(dch::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(dch::b)).apply($$0, dch::new)
+   );
+   public static final yw<ByteBuf, dch> b = yw.a(je.c.a(yu::a), dch::a, yu.b, dch::b, dch::new);
 
-   public static final IntFunction<dch> c = ayc.a(dch::a, values(), ayc.a.a);
-   public static final yw<ByteBuf, dch> d = yu.a(c, dch::a);
-   private final int e;
-
-   private dch(final int $$0) {
-      this.e = $$0;
+   public dch a(arq $$0) {
+      if (this.d && !this.c.isEmpty()) {
+         if (this.c.get().a() != $$0.aj()) {
+            return this;
+         } else {
+            iv $$1 = this.c.get().b();
+            return $$0.k($$1) && $$0.A().a(cip.s, $$1) ? this : new dch(Optional.empty(), true);
+         }
+      } else {
+         return this;
+      }
    }
 
-   public int a() {
-      return this.e;
+   public Optional<je> a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d;
    }
 }

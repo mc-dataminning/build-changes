@@ -1,8 +1,40 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface eqz {
+public class eqz extends eqt {
+   public static final MapCodec<eqz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               egs.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eqz::new)
+   );
+   private final egs.a c;
+   private final int d;
+   private final int e;
+
+   private eqz(egs.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static eqz a(egs.a $$0, int $$1, int $$2) {
+      return new eqz($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(eqs $$0, azv $$1, iv $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public eqv<?> b() {
+      return eqv.c;
+   }
 }

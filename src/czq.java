@@ -1,48 +1,39 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
-public record czq(jf<awm> e, wy f, float g, int h) {
-   public static final Codec<czq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awm.b.fieldOf("sound_event").forGetter(czq::b),
-               xa.a.fieldOf("description").forGetter(czq::c),
-               ayu.o.fieldOf("length_in_seconds").forGetter(czq::d),
-               ayu.a(0, 15).fieldOf("comparator_output").forGetter(czq::e)
-            )
-            .apply($$0, czq::new)
-   );
-   public static final yw<wj, czq> b = yw.a(awm.d, czq::b, xa.b, czq::c, yu.l, czq::d, yu.h, czq::e, czq::new);
-   public static final Codec<jf<czq>> c = ald.a(mh.aV);
-   public static final yw<wj, jf<czq>> d = yu.a(mh.aV, b);
-   private static final int i = 20;
-
-   public int a() {
-      return azm.f(this.g * 20.0F);
+public class czq {
+   public static bug a(djm $$0, crm $$1, buf $$2) {
+      $$1.c($$2);
+      return bug.c;
    }
 
-   public boolean a(long $$0) {
-      return $$0 >= (long)(this.a() + 20);
+   public static czn a(czn $$0, crm $$1, czn $$2, boolean $$3) {
+      boolean $$4 = $$1.fU();
+      if ($$3 && $$4) {
+         if (!$$1.gi().j($$2)) {
+            $$1.gi().g($$2);
+         }
+
+         return $$0;
+      } else {
+         $$0.a(1, $$1);
+         if ($$0.f()) {
+            return $$2;
+         } else {
+            if (!$$1.gi().g($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
+      }
    }
 
-   public static Optional<jf<czq>> a(jh.a $$0, czk $$1) {
-      czp $$2 = $$1.a(kk.ae);
-      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
+   public static czn a(czn $$0, crm $$1, czn $$2) {
+      return a($$0, $$1, $$2, true);
    }
 
-   public jf<awm> b() {
-      return this.e;
-   }
-
-   public wy c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
+   public static void a(cnr $$0, Iterable<czn> $$1) {
+      djm $$2 = $$0.dU();
+      if (!$$2.C) {
+         $$1.forEach($$2x -> $$2.b(new cnr($$2, $$0.dz(), $$0.dB(), $$0.dF(), $$2x)));
+      }
    }
 }

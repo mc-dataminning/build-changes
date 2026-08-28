@@ -5,18 +5,18 @@ import java.util.Objects;
 import java.util.Map.Entry;
 
 public class bwm {
-   public static final Codec<bwm> a = Codec.unboundedMap(bws.l, czk.b).xmap($$0 -> {
-      EnumMap<bws, czk> $$1 = new EnumMap<>(bws.class);
+   public static final Codec<bwm> a = Codec.unboundedMap(bws.l, czn.b).xmap($$0 -> {
+      EnumMap<bws, czn> $$1 = new EnumMap<>(bws.class);
       $$1.putAll($$0);
       return new bwm($$1);
    }, $$0 -> {
-      Map<bws, czk> $$1 = new EnumMap<>($$0.b);
-      $$1.values().removeIf(czk::f);
+      Map<bws, czn> $$1 = new EnumMap<>($$0.b);
+      $$1.values().removeIf(czn::f);
       return $$1;
    });
-   private final EnumMap<bws, czk> b;
+   private final EnumMap<bws, czn> b;
 
-   private bwm(EnumMap<bws, czk> $$0) {
+   private bwm(EnumMap<bws, czn> $$0) {
       this.b = $$0;
    }
 
@@ -24,17 +24,17 @@ public class bwm {
       this(new EnumMap<>(bws.class));
    }
 
-   public czk a(bws $$0, czk $$1) {
+   public czn a(bws $$0, czn $$1) {
       $$1.h().l($$1);
-      return Objects.requireNonNullElse(this.b.put($$0, $$1), czk.k);
+      return Objects.requireNonNullElse(this.b.put($$0, $$1), czn.k);
    }
 
-   public czk a(bws $$0) {
-      return this.b.getOrDefault($$0, czk.k);
+   public czn a(bws $$0) {
+      return this.b.getOrDefault($$0, czn.k);
    }
 
    public boolean a() {
-      for (czk $$0 : this.b.values()) {
+      for (czn $$0 : this.b.values()) {
          if (!$$0.f()) {
             return false;
          }
@@ -44,8 +44,8 @@ public class bwm {
    }
 
    public void a(bwi $$0) {
-      for (Entry<bws, czk> $$1 : this.b.entrySet()) {
-         czk $$2 = $$1.getValue();
+      for (Entry<bws, czn> $$1 : this.b.entrySet()) {
+         czn $$2 = $$1.getValue();
          if (!$$2.f()) {
             $$2.a($$0.dU(), $$0, $$1.getKey());
          }
@@ -58,7 +58,7 @@ public class bwm {
    }
 
    public void a(bxj $$0) {
-      for (czk $$1 : this.b.values()) {
+      for (czn $$1 : this.b.values()) {
          $$0.a($$1, true, false);
       }
 
@@ -66,6 +66,6 @@ public class bwm {
    }
 
    public void b() {
-      this.b.replaceAll(($$0, $$1) -> czk.k);
+      this.b.replaceAll(($$0, $$1) -> czn.k);
    }
 }

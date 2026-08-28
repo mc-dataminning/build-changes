@@ -7,14 +7,14 @@ public record bwl(float a, float b, float c, bwk d, boolean e) {
       return $$0 * 0.85F;
    }
 
-   public fes a(fex $$0) {
+   public fex a(ffc $$0) {
       return this.a($$0.d, $$0.e, $$0.f);
    }
 
-   public fes a(double $$0, double $$1, double $$2) {
+   public fex a(double $$0, double $$1, double $$2) {
       float $$3 = this.a / 2.0F;
       float $$4 = this.b;
-      return new fes($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+      return new fex($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
    }
 
    public bwl a(float $$0) {

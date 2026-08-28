@@ -1,93 +1,55 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class euk extends evh {
-   public static final MapCodec<euk> a = Codec.FLOAT.fieldOf("mossiness").xmap(euk::new, $$0 -> $$0.f);
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final eao[] e = new eao[]{dmo.kg.m(), dmo.kn.m()};
-   private final float f;
+public class euk extends ern {
+   public static final MapCodec<euk> d = a(euk::new);
 
-   public euk(float $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   @Override
-   public evk.d a(djk $$0, iv $$1, iv $$2, evk.d $$3, evk.d $$4, evg $$5) {
-      azv $$6 = $$5.b($$4.a());
-      eao $$7 = $$4.b();
-      iv $$8 = $$4.a();
-      eao $$9 = null;
-      if ($$7.a(dmo.eZ) || $$7.a(dmo.b) || $$7.a(dmo.fc)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(axc.L)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(axc.M)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(axc.N)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(dmo.cy)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new evk.d($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private eao a(azv $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         eao[] $$1 = new eao[]{dmo.fb.m(), a($$0, dmo.fC)};
-         eao[] $$2 = new eao[]{dmo.fa.m(), a($$0, dmo.nM)};
-         return this.a($$0, $$1, $$2);
-      }
-   }
-
-   @Nullable
-   private eao a(azv $$0, eao $$1) {
-      jb $$2 = $$1.c(duq.b);
-      ebn $$3 = $$1.c(duq.c);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         eao[] $$4 = new eao[]{dmo.nM.m().b(duq.b, $$2).b(duq.c, $$3), dmo.oa.m()};
-         return this.a($$0, e, $$4);
-      }
-   }
-
-   @Nullable
-   private eao b(azv $$0) {
-      return $$0.i() < this.f ? dmo.oa.m() : null;
-   }
-
-   @Nullable
-   private eao c(azv $$0) {
-      return $$0.i() < this.f ? dmo.oo.m() : null;
-   }
-
-   @Nullable
-   private eao d(azv $$0) {
-      return $$0.i() < 0.15F ? dmo.pS.m() : null;
-   }
-
-   private static eao a(azv $$0, dmm $$1) {
-      return $$1.m().b(duq.b, jb.c.a.a($$0)).b(duq.c, ag.a(ebn.values(), $$0));
-   }
-
-   private eao a(azv $$0, eao[] $$1, eao[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static eao a(azv $$0, eao[] $$1) {
-      return $$1[$$0.a($$1.length)];
+   public euk(ern.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected evj<?> a() {
-      return evj.k;
+   public Optional<ern.b> a(ern.a $$0) {
+      dtl $$1 = dtl.a($$0.f());
+      iv $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new ern.b($$2, (Consumer<esf>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   }
+
+   private void a(esf $$0, ern.a $$1, iv $$2, dtl $$3) {
+      List<euj.i> $$4 = Lists.newLinkedList();
+      euj.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
+   }
+
+   @Override
+   public void a(dkl $$0, dki $$1, ecr $$2, azv $$3, erf $$4, dir $$5, esc $$6) {
+      iv.a $$7 = new iv.a();
+      int $$8 = $$0.G_();
+      erf $$9 = $$6.b();
+      int $$10 = $$9.i();
+
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.v($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.v($$7) && !$$0.a_($$7).n()) {
+                     break;
+                  }
+
+                  $$0.a($$7, dmt.m.m(), 2);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public erw<?> e() {
+      return erw.p;
    }
 }

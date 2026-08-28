@@ -3,19 +3,19 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-public record esy(alf<ess> c, bsq<alf<ess>> d) implements esu {
+public record esy(alf<esx> c, alf<esx> d) implements esz {
    static MapCodec<esy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alf.a(mh.bf).fieldOf("alias").forGetter(esy::c), bsq.b(alf.a(mh.bf)).fieldOf("targets").forGetter(esy::d)).apply($$0, esy::new)
+      $$0 -> $$0.group(alf.a(mh.bf).fieldOf("alias").forGetter(esy::c), alf.a(mh.bf).fieldOf("target").forGetter(esy::d)).apply($$0, esy::new)
    );
 
    @Override
-   public void a(azv $$0, BiConsumer<alf<ess>, alf<ess>> $$1) {
-      this.d.a($$0).ifPresent($$1x -> $$1.accept(this.c, $$1x));
+   public void a(azv $$0, BiConsumer<alf<esx>, alf<esx>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
    @Override
-   public Stream<alf<ess>> a() {
-      return this.d.d().stream().map(bsp::a);
+   public Stream<alf<esx>> a() {
+      return Stream.of(this.d);
    }
 
    @Override

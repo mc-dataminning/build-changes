@@ -7,7 +7,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
 public class akl {
-   private static final ayi<akk<?>> I = ayi.c(16);
+   private static final ayi<akk<?>> J = ayi.c(16);
    public static final akk<Byte> a = akk.a(yu.c);
    public static final akk<Integer> b = akk.a(yu.h);
    public static final akk<Long> c = akk.a(yu.k);
@@ -15,32 +15,32 @@ public class akl {
    public static final akk<String> e = akk.a(yu.p);
    public static final akk<wy> f = akk.a(xa.d);
    public static final akk<Optional<wy>> g = akk.a(xa.e);
-   public static final akk<czk> h = new akk<czk>() {
+   public static final akk<czn> h = new akk<czn>() {
       @Override
-      public yw<? super wj, czk> codec() {
-         return czk.h;
+      public yw<? super wj, czn> codec() {
+         return czn.h;
       }
 
-      public czk a(czk $$0) {
+      public czn a(czn $$0) {
          return $$0.v();
       }
    };
-   public static final akk<eao> i = akk.a(yu.a(dmm.k));
-   private static final yw<ByteBuf, Optional<eao>> J = new yw<ByteBuf, Optional<eao>>() {
-      public void a(ByteBuf $$0, Optional<eao> $$1) {
+   public static final akk<eat> i = akk.a(yu.a(dmr.k));
+   private static final yw<ByteBuf, Optional<eat>> K = new yw<ByteBuf, Optional<eat>>() {
+      public void a(ByteBuf $$0, Optional<eat> $$1) {
          if ($$1.isPresent()) {
-            wp.a($$0, dmm.j($$1.get()));
+            wp.a($$0, dmr.j($$1.get()));
          } else {
             wp.a($$0, 0);
          }
       }
 
-      public Optional<eao> a(ByteBuf $$0) {
+      public Optional<eat> a(ByteBuf $$0) {
          int $$1 = wp.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dmm.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(dmr.a($$1));
       }
    };
-   public static final akk<Optional<eao>> j = akk.a(J);
+   public static final akk<Optional<eat>> j = akk.a(K);
    public static final akk<Boolean> k = akk.a(yu.b);
    public static final akk<lw> l = akk.a(ly.bl);
    public static final akk<List<lw>> m = akk.a(ly.bl.a(yu.a()));
@@ -60,8 +60,8 @@ public class akl {
          return $$0.i();
       }
    };
-   public static final akk<cqw> u = akk.a(cqw.d);
-   private static final yw<ByteBuf, OptionalInt> K = new yw<ByteBuf, OptionalInt>() {
+   public static final akk<cqz> u = akk.a(cqz.d);
+   private static final yw<ByteBuf, OptionalInt> L = new yw<ByteBuf, OptionalInt>() {
       public OptionalInt a(ByteBuf $$0) {
          int $$1 = wp.a($$0);
          return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
@@ -71,31 +71,32 @@ public class akl {
          wp.a($$0, $$1.orElse(-1) + 1);
       }
    };
-   public static final akk<OptionalInt> v = akk.a(K);
+   public static final akk<OptionalInt> v = akk.a(L);
    public static final akk<bxv> w = akk.a(bxv.t);
    public static final akk<jf<cjd>> x = akk.a(cjd.d);
    public static final akk<jf<cjg>> y = akk.a(cjg.d);
    public static final akk<jf<cjk>> z = akk.a(cjk.d);
-   public static final akk<jf<ckj>> A = akk.a(ckj.d);
-   public static final akk<jf<clb>> B = akk.a(clb.d);
-   public static final akk<jf<cjv>> C = akk.a(cjv.d);
-   public static final akk<jf<cnk>> D = akk.a(cnk.d);
-   public static final akk<cko.a> E = akk.a(cko.a.e);
-   public static final akk<cmb.a> F = akk.a(cmb.a.i);
-   public static final akk<Vector3f> G = akk.a(yu.v);
-   public static final akk<Quaternionf> H = akk.a(yu.w);
+   public static final akk<jf<cme>> A = akk.a(cme.d);
+   public static final akk<jf<cmc>> B = akk.a(cmc.d);
+   public static final akk<jf<cky>> C = akk.a(cky.d);
+   public static final akk<jf<cjv>> D = akk.a(cjv.d);
+   public static final akk<jf<cnn>> E = akk.a(cnn.d);
+   public static final akk<ckl.a> F = akk.a(ckl.a.e);
+   public static final akk<cly.a> G = akk.a(cly.a.i);
+   public static final akk<Vector3f> H = akk.a(yu.v);
+   public static final akk<Quaternionf> I = akk.a(yu.w);
 
    public static void a(akk<?> $$0) {
-      I.d($$0);
+      J.d($$0);
    }
 
    @Nullable
    public static akk<?> a(int $$0) {
-      return I.a($$0);
+      return J.a($$0);
    }
 
    public static int b(akk<?> $$0) {
-      return I.a($$0);
+      return J.a($$0);
    }
 
    private akl() {
@@ -129,12 +130,13 @@ public class akl {
       a(A);
       a(B);
       a(C);
+      a(D);
       a(y);
       a(s);
-      a(D);
-      a(F);
       a(E);
       a(G);
+      a(F);
       a(H);
+      a(I);
    }
 }

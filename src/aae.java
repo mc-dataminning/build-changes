@@ -26,9 +26,9 @@ public record aae(aae.a c) implements aai {
       return this.c;
    }
 
-   public static record a(UUID a, int b, fex c, @Nullable exj d, @Nullable iv e, @Nullable iv f, int g, Set<String> h, List<iv> i) {
+   public static record a(UUID a, int b, ffc c, @Nullable exo d, @Nullable iv e, @Nullable iv f, int g, Set<String> h, List<iv> i) {
       public a(vu $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(exj::b), $$0.c(iv.b), $$0.c(iv.b), $$0.readInt(), $$0.a(HashSet::new, vu::p), $$0.a(iv.b));
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(exo::b), $$0.c(iv.b), $$0.c(iv.b), $$0.readInt(), $$0.a(HashSet::new, vu::p), $$0.a(iv.b));
       }
 
       public void a(vu $$0) {
@@ -64,12 +64,12 @@ public record aae(aae.a c) implements aai {
          return this.b;
       }
 
-      public fex d() {
+      public ffc d() {
          return this.c;
       }
 
       @Nullable
-      public exj e() {
+      public exo e() {
          return this.d;
       }
 

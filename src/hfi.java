@@ -1,6 +1,5 @@
-import javax.annotation.Nullable;
-
-public interface hfi {
-   @Nullable
-   cqw a();
+public class hfi extends hdf {
+   public float a;
+   public float b;
+   public boolean c;
 }

@@ -17,11 +17,11 @@ public class ceq extends cfc {
 
    @Nullable
    @Override
-   protected fex h() {
+   protected ffc h() {
       arq $$0 = (arq)this.b.dU();
       iv $$1 = this.b.du();
       jy $$2 = jy.a($$1);
       jy $$3 = bzc.a($$0, $$2, 2);
-      return $$3 != $$2 ? cic.a(this.b, 10, 7, fex.c($$3.k()), (float) (Math.PI / 2)) : null;
+      return $$3 != $$2 ? cic.a(this.b, 10, 7, ffc.c($$3.k()), (float) (Math.PI / 2)) : null;
    }
 }

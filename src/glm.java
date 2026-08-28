@@ -1,47 +1,60 @@
+import com.mojang.serialization.Codec;
+import java.time.Instant;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public enum glm {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
+public enum glm implements bak {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   private final wy n;
+   public static final Codec<glm> d = bak.a(glm::values);
+   private final String e;
 
    private glm(final String $$0) {
-      this.n = wy.c("gui.banned.reason." + $$0);
+      this.e = $$0;
    }
 
-   public wy a() {
-      return this.n;
+   public static glm a(xo $$0, wy $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
+   }
+
+   private static boolean a(xo $$0, wy $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         wy $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
+   }
+
+   private static boolean a(wy $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xv.a).orElse(false);
+   }
+
+   private static boolean a(xv $$0) {
+      return !$$0.l().equals(xv.b);
+   }
+
+   public boolean a() {
+      return this == c;
    }
 
    @Nullable
-   public static glm a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
+   public fpn a(xo $$0) {
+      return switch (this) {
+         case b -> fpn.a($$0.c());
+         case c -> fpn.c();
          default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
       };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

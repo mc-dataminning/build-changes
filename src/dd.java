@@ -18,14 +18,14 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record dd(cw.d d, ch e, List<dd.e<?>> f, Object2BooleanMap<alf<deb<?>>> g, Map<alg, dd.c> h, Optional<by> i, Optional<cj> j) implements bz {
+public record dd(cw.d d, ch e, List<dd.e<?>> f, Object2BooleanMap<alf<dee<?>>> g, Map<alg, dd.c> h, Optional<by> i, Optional<cj> j) implements bz {
    public static final int b = 100;
    public static final MapCodec<dd> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                cw.d.d.optionalFieldOf("level", cw.d.c).forGetter(dd::b),
                ch.c.optionalFieldOf("gamemode", ch.a).forGetter(dd::c),
                dd.e.a.listOf().optionalFieldOf("stats", List.of()).forGetter(dd::d),
-               ayu.f(deb.b).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dd::e),
+               ayu.f(dee.b).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dd::e),
                Codec.unboundedMap(alg.a, dd.c.b).optionalFieldOf("advancements", Map.of()).forGetter(dd::f),
                by.a.optionalFieldOf("looking_at").forGetter(dd::g),
                cj.a.optionalFieldOf("input").forGetter(dd::h)
@@ -34,7 +34,7 @@ public record dd(cw.d d, ch e, List<dd.e<?>> f, Object2BooleanMap<alf<deb<?>>> g
    );
 
    @Override
-   public boolean a(bwi $$0, arq $$1, @Nullable fex $$2) {
+   public boolean a(bwi $$0, arq $$1, @Nullable ffc $$2) {
       if (!($$0 instanceof arr $$3)) {
          return false;
       } else if (!this.d.d($$3.cf)) {
@@ -54,8 +54,8 @@ public record dd(cw.d d, ch e, List<dd.e<?>> f, Object2BooleanMap<alf<deb<?>>> g
          ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
-            Entry<alf<deb<?>>> $$8 = (Entry<alf<deb<?>>>)var13.next();
-            if ($$7.b((alf<deb<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
+            Entry<alf<dee<?>>> $$8 = (Entry<alf<dee<?>>>)var13.next();
+            if ($$7.b((alf<dee<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
                return false;
             }
          }
@@ -73,11 +73,11 @@ public record dd(cw.d d, ch e, List<dd.e<?>> f, Object2BooleanMap<alf<deb<?>>> g
          }
 
          if (this.i.isPresent()) {
-            fex $$13 = $$3.bC();
-            fex $$14 = $$3.h(1.0F);
-            fex $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
-            feu $$16 = csg.a($$3.dU(), $$3, $$13, $$15, new fes($$13, $$15).g(1.0), $$0x -> !$$0x.V_(), 0.0F);
-            if ($$16 == null || $$16.d() != fev.a.c) {
+            ffc $$13 = $$3.bC();
+            ffc $$14 = $$3.h(1.0F);
+            ffc $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
+            fez $$16 = csj.a($$3.dU(), $$3, $$13, $$15, new fex($$13, $$15).g(1.0), $$0x -> !$$0x.V_(), 0.0F);
+            if ($$16 == null || $$16.d() != ffa.a.c) {
                return false;
             }
 
@@ -108,7 +108,7 @@ public record dd(cw.d d, ch e, List<dd.e<?>> f, Object2BooleanMap<alf<deb<?>>> g
       return this.f;
    }
 
-   public Object2BooleanMap<alf<deb<?>>> e() {
+   public Object2BooleanMap<alf<dee<?>>> e() {
       return this.g;
    }
 
@@ -174,7 +174,7 @@ public record dd(cw.d d, ch e, List<dd.e<?>> f, Object2BooleanMap<alf<deb<?>>> g
       private cw.d a = cw.d.c;
       private ch b = ch.a;
       private final Builder<dd.e<?>> c = ImmutableList.builder();
-      private final Object2BooleanMap<alf<deb<?>>> d = new Object2BooleanOpenHashMap();
+      private final Object2BooleanMap<alf<dee<?>>> d = new Object2BooleanOpenHashMap();
       private final Map<alg, dd.c> e = Maps.newHashMap();
       private Optional<by> f = Optional.empty();
       private Optional<cj> g = Optional.empty();
@@ -193,7 +193,7 @@ public record dd(cw.d d, ch e, List<dd.e<?>> f, Object2BooleanMap<alf<deb<?>>> g
          return this;
       }
 
-      public dd.d a(alf<deb<?>> $$0, boolean $$1) {
+      public dd.d a(alf<dee<?>> $$0, boolean $$1) {
          this.d.put($$0, $$1);
          return this;
       }

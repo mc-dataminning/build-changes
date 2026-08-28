@@ -16,15 +16,15 @@ public class cfw extends cgf {
 
    @Override
    public boolean b() {
-      fes $$0 = this.a.cQ().c(10.0, 8.0, 10.0);
+      fex $$0 = this.a.cQ().c(10.0, 8.0, 10.0);
       arq $$1 = a(this.a);
-      List<? extends bxj> $$2 = $$1.a(cqv.class, this.c, this.a, $$0);
-      List<crj> $$3 = $$1.a(this.c, this.a, $$0);
+      List<? extends bxj> $$2 = $$1.a(cqy.class, this.c, this.a, $$0);
+      List<crm> $$3 = $$1.a(this.c, this.a, $$0);
 
       for (bxj $$4 : $$2) {
-         cqv $$5 = (cqv)$$4;
+         cqy $$5 = (cqy)$$4;
 
-         for (crj $$6 : $$3) {
+         for (crm $$6 : $$3) {
             int $$7 = $$5.f($$6);
             if ($$7 <= -100) {
                this.b = $$6;
@@ -35,7 +35,7 @@ public class cfw extends cgf {
       if (this.b == null) {
          return false;
       } else {
-         if (this.b instanceof crj $$8 && ($$8.V_() || $$8.b())) {
+         if (this.b instanceof crm $$8 && ($$8.V_() || $$8.b())) {
             return false;
          }
 

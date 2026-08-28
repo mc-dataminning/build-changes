@@ -1,41 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class fzd<T extends cve> extends fze<T> {
-   private final alg G;
-   private final alg H;
-   private final alg I;
-
-   public fzd(T $$0, cri $$1, wy $$2, wy $$3, alg $$4, alg $$5, alg $$6, List<gcm.a> $$7) {
-      super($$0, new gcj($$0, $$3, $$7), $$1, $$2);
-      this.G = $$4;
-      this.H = $$5;
-      this.I = $$6;
-   }
-
-   @Override
-   public void aO_() {
-      super.aO_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
-   }
-
-   @Override
-   protected fxb G() {
-      return new fxb(this.C + 20, this.o / 2 - 49);
-   }
-
-   @Override
-   protected void a(fsh $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(gqx::H, this.G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if (this.z.o()) {
-         int $$6 = 14;
-         int $$7 = azm.f(this.z.n() * 13.0F) + 1;
-         $$0.a(gqx::H, this.H, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = azm.f(this.z.m() * 24.0F);
-      $$0.a(gqx::H, this.I, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface fzd {
 }

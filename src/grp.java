@@ -1,78 +1,132 @@
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class grp implements ave {
-   private final gro a;
-   private final grr b;
-   private final Supplier<gri> c;
-   private final grq d;
-   private final azv e = azv.a();
-   private final fqq f;
+public class grp {
+   protected final gqm a;
+   protected final djm b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   private jy h;
+   public gug.b[] f;
 
-   public grp(gro $$0, Supplier<gri> $$1, fqq $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new grr(this.f);
-      this.d = new grq();
+   public grp(gug $$0, djm $$1, int $$2, gqm $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
+      this.h = jy.a(this.g + 1, 0, this.g + 1);
    }
 
-   public gro a() {
-      return this.a;
-   }
+   protected void a(gug $$0) {
+      if (!fpt.Q().bx()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new gug.b[$$1];
 
-   public void a(eao $$0, iv $$1, dik $$2, fjy $$3, fkc $$4) {
-      if ($$0.o() == dsz.b) {
-         gry $$5 = this.a.b($$0);
-         long $$6 = $$0.b($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hja.d);
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, jy.b($$2, $$3 + this.b.aq(), $$4));
+               }
+            }
+         }
       }
    }
 
-   public void a(eao $$0, iv $$1, dik $$2, fjy $$3, fkc $$4, boolean $$5, azv $$6) {
-      try {
-         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hja.d);
-      } catch (Throwable var11) {
-         p $$8 = p.a(var11, "Tesselating block in world");
-         q $$9 = $$8.a("Block being tesselated");
-         q.a($$9, $$2, $$1, $$0);
-         throw new aa($$8);
+   public void a() {
+      for (gug.b $$0 : this.f) {
+         $$0.e();
       }
    }
 
-   public void a(iv $$0, dik $$1, fkc $$2, eao $$3, ewv $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         p $$6 = p.a(var9, "Tesselating liquid in world");
-         q $$7 = $$6.a("Block being tesselated");
-         q.a($$7, $$1, $$0, null);
-         throw new aa($$6);
-      }
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
    }
 
-   public grr b() {
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.ap();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public djo c() {
       return this.b;
    }
 
-   public gry a(eao $$0) {
-      return this.a.b($$0);
+   public void a(jy $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         int $$2 = $$0.a() - this.g;
+         int $$3 = $$2 + Math.floorMod($$1 - $$2, this.d);
+
+         for (int $$4 = 0; $$4 < this.e; $$4++) {
+            int $$5 = $$0.c() - this.g;
+            int $$6 = $$5 + Math.floorMod($$4 - $$5, this.e);
+
+            for (int $$7 = 0; $$7 < this.c; $$7++) {
+               int $$8 = this.b.aq() + $$7;
+               gug.b $$9 = this.f[this.a($$1, $$7, $$4)];
+               long $$10 = $$9.g();
+               if ($$10 != jy.b($$3, $$8, $$6)) {
+                  $$9.a(jy.b($$3, $$8, $$6));
+               }
+            }
+         }
+      }
+
+      this.h = $$0;
+      this.a.w().a();
    }
 
-   public void a(eao $$0, fjy $$1, gqm $$2, int $$3, int $$4) {
-      dsz $$5 = $$0.o();
-      if ($$5 != dsz.a) {
-         gry $$6 = this.a($$0);
-         int $$7 = this.f.a($$0, null, null, 0);
-         float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-         float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-         float $$10 = (float)($$7 & 0xFF) / 255.0F;
-         this.b.a($$1.c(), $$2.getBuffer(gqe.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-         this.c.get().a($$0.b(), czi.a, $$1, $$2, $$3, $$4);
+   public jy d() {
+      return this.h;
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      gug.b $$4 = this.b($$0, $$1, $$2);
+      if ($$4 != null) {
+         $$4.a($$3);
       }
    }
 
-   @Override
-   public void a(avd $$0) {
-      this.d.a();
+   @Nullable
+   protected gug.b a(iv $$0) {
+      return this.a(jy.c($$0));
+   }
+
+   @Nullable
+   protected gug.b a(long $$0) {
+      int $$1 = jy.b($$0);
+      int $$2 = jy.c($$0);
+      int $$3 = jy.d($$0);
+      return this.b($$1, $$2, $$3);
+   }
+
+   @Nullable
+   private gug.b b(int $$0, int $$1, int $$2) {
+      if (!this.c($$0, $$1, $$2)) {
+         return null;
+      } else {
+         int $$3 = $$1 - this.b.aq();
+         int $$4 = Math.floorMod($$0, this.d);
+         int $$5 = Math.floorMod($$2, this.e);
+         return this.f[this.a($$4, $$3, $$5)];
+      }
+   }
+
+   private boolean c(int $$0, int $$1, int $$2) {
+      if ($$1 >= this.b.aq() && $$1 <= this.b.ar()) {
+         return $$0 < this.h.a() - this.g || $$0 > this.h.a() + this.g ? false : $$2 >= this.h.c() - this.g && $$2 <= this.h.c() + this.g;
+      } else {
+         return false;
+      }
    }
 }

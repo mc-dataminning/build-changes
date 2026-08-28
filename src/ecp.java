@@ -1,55 +1,51 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import java.util.BitSet;
+import java.util.stream.Stream;
 
-public abstract class ecp implements ecy, AutoCloseable {
-   @Nullable
-   public ecv a(int $$0, int $$1, boolean $$2) {
-      return (ecv)this.a($$0, $$1, edm.n, $$2);
+public class ecp {
+   private final int a;
+   private final BitSet b;
+   private ecp.a c = ($$0x, $$1x, $$2) -> false;
+
+   public ecp(int $$0, int $$1) {
+      this.a = $$1;
+      this.b = new BitSet(256 * $$0);
    }
 
-   @Nullable
-   public ecv a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
+   public void a(ecp.a $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   @Override
-   public ecx c(int $$0, int $$1) {
-      return this.a($$0, $$1, edm.c, false);
+   public ecp(long[] $$0, int $$1) {
+      this.a = $$1;
+      this.b = BitSet.valueOf($$0);
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, edm.n, false) != null;
+   private int c(int $$0, int $$1, int $$2) {
+      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
    }
 
-   @Nullable
-   public abstract ecl a(int var1, int var2, edm var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+   public void a(int $$0, int $$1, int $$2) {
+      this.b.set(this.c($$0, $$1, $$2));
    }
 
-   public abstract String e();
-
-   public abstract int j();
-
-   @Override
-   public void close() throws IOException {
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
    }
 
-   public abstract ewk q();
-
-   public void b(boolean $$0) {
+   public Stream<iv> a(dir $$0) {
+      return this.b.stream().mapToObj($$1 -> {
+         int $$2 = $$1 & 15;
+         int $$3 = $$1 >> 4 & 15;
+         int $$4 = $$1 >> 8;
+         return $$0.a($$2, $$4 + this.a, $$3);
+      });
    }
 
-   public boolean a(dio $$0, boolean $$1) {
-      return false;
+   public long[] a() {
+      return this.b.toLongArray();
    }
 
-   public LongSet k() {
-      return LongSet.of();
+   public interface a {
+      boolean test(int var1, int var2, int var3);
    }
 }

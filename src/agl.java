@@ -70,7 +70,7 @@ public class agl {
    };
 
    public static String a(bwi $$0) {
-      if ($$0 instanceof crj) {
+      if ($$0 instanceof crm) {
          return $$0.ai().getString();
       } else {
          wy $$1 = $$0.ak();

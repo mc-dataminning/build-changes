@@ -1,40 +1,40 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import com.mojang.blaze3d.platform.GLX;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodHandles.Lookup;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import javax.annotation.Nullable;
+import org.lwjgl.system.Pointer;
 
-public enum fio {
-   a("icons"),
-   b("icons", "snapshot");
-
-   private final String[] c;
-
-   private fio(final String... $$0) {
-      this.c = $$0;
-   }
-
-   public List<auu<InputStream>> a(atp $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
-      );
-   }
-
-   public auu<InputStream> b(atp $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
-   }
-
-   private auu<InputStream> a(atp $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      auu<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
-      } else {
-         return $$3;
+public class fio {
+   @Nullable
+   private static final MethodHandle a = GLX.make(() -> {
+      try {
+         Lookup $$0 = MethodHandles.lookup();
+         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
+         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
+         $$2.setAccessible(true);
+         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
+         $$3.setAccessible(true);
+         Object $$4 = $$3.get(null);
+         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
+      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
+         throw new RuntimeException(var5);
       }
+   });
+
+   public static void a(long $$0) {
+      if (a != null) {
+         try {
+            a.invoke((long)$$0);
+         } catch (Throwable var3) {
+            throw new RuntimeException(var3);
+         }
+      }
+   }
+
+   public static void a(Pointer $$0) {
+      a($$0.address());
    }
 }

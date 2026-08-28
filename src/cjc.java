@@ -10,9 +10,9 @@ public class cjc extends byf {
    private static final akj<Boolean> bP = akn.a(cjc.class, akl.k);
    private static final akj<Integer> bQ = akn.a(cjc.class, akl.b);
    private static final alf<cjd> bR = cje.b;
-   private static final cyi bS = cyi.o;
+   private static final cyl bS = cyl.o;
    @Nullable
-   private cjc.a<crj> bT;
+   private cjc.a<crm> bT;
    @Nullable
    private cfn bU;
    private float bV;
@@ -23,7 +23,7 @@ public class cjc extends byf {
    private float ca;
    private float cb;
 
-   public cjc(bwr<? extends cjc> $$0, djh $$1) {
+   public cjc(bwr<? extends cjc> $$0, djm $$1) {
       super($$0, $$1);
       this.gL();
    }
@@ -43,7 +43,7 @@ public class cjc extends byf {
       this.bD.a(9, new cev(this));
       this.bD.a(10, new cdr(this, 0.8));
       this.bD.a(11, new cfs(this, 0.8, 1.0000001E-5F));
-      this.bD.a(12, new cen(this, crj.class, 10.0F));
+      this.bD.a(12, new cen(this, crm.class, 10.0F));
       this.bE.a(1, new cgb<>(this, cjz.class, false, null));
       this.bE.a(1, new cgb<>(this, ckg.class, false, ckg.bG));
    }
@@ -59,27 +59,27 @@ public class cjc extends byf {
    @Nullable
    @Override
    public <T> T a(kj<? extends T> $$0) {
-      if ($$0 == kk.aO) {
+      if ($$0 == kk.aP) {
          return c((kj<T>)$$0, this.gF());
       } else {
-         return $$0 == kk.aP ? c((kj<T>)$$0, this.gH()) : super.a($$0);
+         return $$0 == kk.aQ ? c((kj<T>)$$0, this.gH()) : super.a($$0);
       }
    }
 
    @Override
    protected void a(kf $$0) {
-      this.a($$0, kk.aO);
       this.a($$0, kk.aP);
+      this.a($$0, kk.aQ);
       super.a($$0);
    }
 
    @Override
    protected <T> boolean b(kj<T> $$0, T $$1) {
-      if ($$0 == kk.aO) {
-         this.j(c(kk.aO, $$1));
+      if ($$0 == kk.aP) {
+         this.j(c(kk.aP, $$1));
          return true;
-      } else if ($$0 == kk.aP) {
-         this.a(c(kk.aP, $$1));
+      } else if ($$0 == kk.aQ) {
+         this.a(c(kk.aQ, $$1));
          return true;
       } else {
          return super.b($$0, $$1);
@@ -102,18 +102,18 @@ public class cjc extends byf {
       return this.al.a(bP);
    }
 
-   public cyi gH() {
-      return cyi.a(this.al.a(bQ));
+   public cyl gH() {
+      return cyl.a(this.al.a(bQ));
    }
 
-   private void a(cyi $$0) {
+   private void a(cyl $$0) {
       this.al.a(bQ, $$0.a());
    }
 
    @Override
    protected void a(akn.a $$0) {
       super.a($$0);
-      $$0.a(bN, cts.a(this.dW(), bR));
+      $$0.a(bN, ctv.a(this.dW(), bR));
       $$0.a(bO, false);
       $$0.a(bP, false);
       $$0.a(bQ, bS.a());
@@ -122,15 +122,15 @@ public class cjc extends byf {
    @Override
    public void b(tz $$0) {
       super.b($$0);
-      cts.a($$0, this.gF());
-      $$0.a("CollarColor", cyi.s, this.gH());
+      ctv.a($$0, this.gF());
+      $$0.a("CollarColor", cyl.s, this.gH());
    }
 
    @Override
    public void a(tz $$0) {
       super.a($$0);
-      cts.a($$0, this.dW(), mh.aH).ifPresent(this::j);
-      this.a($$0.<cyi>a("CollarColor", cyi.s).orElse(bS));
+      ctv.a($$0, this.dW(), mh.aH).ifPresent(this::j);
+      this.a($$0.<cyl>a("CollarColor", cyl.s).orElse(bS));
    }
 
    @Override
@@ -216,7 +216,7 @@ public class cjc extends byf {
       if (this.gG()) {
          iv $$0 = this.du();
 
-         for (crj $$2 : this.dU().a(crj.class, new fes($$0).c(2.0, 2.0, 2.0))) {
+         for (crm $$2 : this.dU().a(crm.class, new fex($$0).c(2.0, 2.0, 2.0))) {
             if ($$2.fQ()) {
                this.bZ = true;
                break;
@@ -275,9 +275,9 @@ public class cjc extends byf {
          if (this.q()) {
             $$2.a(this.d());
             $$2.a(true, true);
-            cyi $$4 = this.gH();
-            cyi $$5 = $$3.gH();
-            $$2.a(cyi.a($$0, $$4, $$5));
+            cyl $$4 = this.gH();
+            cyl $$5 = $$3.gH();
+            $$2.a(cyl.a($$0, $$4, $$5));
          }
       }
 
@@ -295,20 +295,20 @@ public class cjc extends byf {
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       $$3 = super.a($$0, $$1, $$2, $$3);
-      cje.a(this.ae, this.dW(), ctp.a($$0, this.du())).ifPresent(this::j);
+      cje.a(this.ae, this.dW(), cts.a($$0, this.du())).ifPresent(this::j);
       return $$3;
    }
 
    @Override
-   public bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
-      czg $$3 = $$2.h();
+   public bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
+      czj $$3 = $$2.h();
       if (this.q()) {
          if (this.j($$0)) {
-            if ($$3 instanceof cyj $$4) {
-               cyi $$5 = $$4.a();
+            if ($$3 instanceof cym $$4) {
+               cyl $$5 = $$4.a();
                if ($$5 != this.gH()) {
                   if (!this.dU().w_()) {
                      this.a($$5);
@@ -321,7 +321,7 @@ public class cjc extends byf {
             } else if (this.i($$2) && this.eF() < this.eT()) {
                if (!this.dU().w_()) {
                   this.a($$0, $$1, $$2);
-                  cuz $$6 = $$2.a(kk.v);
+                  cvc $$6 = $$2.a(kk.v);
                   this.c($$6 != null ? (float)$$6.a() : 1.0F);
                   this.gz();
                }
@@ -357,7 +357,7 @@ public class cjc extends byf {
    }
 
    @Override
-   public boolean i(czk $$0) {
+   public boolean i(czn $$0) {
       return $$0.a(axk.ai);
    }
 
@@ -374,7 +374,7 @@ public class cjc extends byf {
 
    protected void gL() {
       if (this.bT == null) {
-         this.bT = new cjc.a<>(this, crj.class, 16.0F, 0.8, 1.33);
+         this.bT = new cjc.a<>(this, crm.class, 16.0F, 0.8, 1.33);
       }
 
       this.bD.a(this.bT);
@@ -383,7 +383,7 @@ public class cjc extends byf {
       }
    }
 
-   private void f(crj $$0) {
+   private void f(crm $$0) {
       if (this.ae.a(3) == 0) {
          this.a($$0);
          this.y(true);
@@ -420,7 +420,7 @@ public class cjc extends byf {
    static class b extends cef {
       private final cjc a;
       @Nullable
-      private crj b;
+      private crm b;
       @Nullable
       private iv c;
       private int d;
@@ -437,7 +437,7 @@ public class cjc extends byf {
             return false;
          } else {
             bxj $$0 = this.a.e();
-            if ($$0 instanceof crj $$1) {
+            if ($$0 instanceof crm $$1) {
                this.b = $$1;
                if (!$$0.fQ()) {
                   return false;
@@ -448,9 +448,9 @@ public class cjc extends byf {
                }
 
                iv $$2 = this.b.du();
-               eao $$3 = this.a.dU().a_($$2);
+               eat $$3 = this.a.dU().a_($$2);
                if ($$3.a(axc.T)) {
-                  this.c = $$3.d(dmf.e).map($$1x -> $$2.a($$1x.g())).orElseGet(() -> new iv($$2));
+                  this.c = $$3.d(dmk.e).map($$1x -> $$2.a($$1x.g())).orElseGet(() -> new iv($$2));
                   return !this.h();
                }
             }
@@ -460,7 +460,7 @@ public class cjc extends byf {
       }
 
       private boolean h() {
-         for (cjc $$1 : this.a.dU().a(cjc.class, new fes(this.c).g(2.0))) {
+         for (cjc $$1 : this.a.dU().a(cjc.class, new fex(this.c).g(2.0))) {
             if ($$1 != this.a && ($$1.gG() || $$1.gM())) {
                return true;
             }
@@ -504,9 +504,9 @@ public class cjc extends byf {
          this.a
             .a(
                a(this.a),
-               ezk.aq,
+               ezp.aq,
                ($$1x, $$2) -> $$1x.b(
-                     new cno(
+                     new cnr(
                         $$1x,
                         (double)$$1.u() - (double)azm.a(this.a.aV * (float) (Math.PI / 180.0)),
                         (double)$$1.v(),
@@ -540,10 +540,10 @@ public class cjc extends byf {
 
    static class c extends cfn {
       @Nullable
-      private crj c;
+      private crm c;
       private final cjc d;
 
-      public c(cjc $$0, double $$1, Predicate<czk> $$2, boolean $$3) {
+      public c(cjc $$0, double $$1, Predicate<czn> $$2, boolean $$3) {
          super($$0, $$1, $$2, $$3);
          this.d = $$0;
       }

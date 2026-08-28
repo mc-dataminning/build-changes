@@ -51,12 +51,12 @@ public class cdq extends cef {
    @Override
    public void a() {
       this.h();
-      this.a.a(0.02F, new fex((double)this.a.bg, (double)this.a.bh, (double)this.a.bi));
+      this.a.a(0.02F, new ffc((double)this.a.bg, (double)this.a.bh, (double)this.a.bi));
       this.a.a(bxn.a, this.a.dx());
    }
 
-   private boolean a(djk $$0, iv $$1) {
-      eao $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(dmo.nJ)) && $$2.a(exk.a);
+   private boolean a(djp $$0, iv $$1) {
+      eat $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(dmt.nJ)) && $$2.a(exp.a);
    }
 }

@@ -1,49 +1,54 @@
+import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Multiset;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class hig implements hik {
-   public static final alg a = alg.b("christmas");
-   public static final alg b = alg.b("normal");
-   public static final alg c = alg.b("trapped");
-   public static final alg d = alg.b("ender");
-   private final gfu e;
-   private final hlq f;
-   private final float g;
+public interface hig<T> {
+   @Nullable
+   T b(czn var1, @Nullable gkq var2, @Nullable bxj var3, int var4, czl var5);
 
-   public hig(gfu $$0, hlq $$1, float $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
+   Codec<T> b();
 
-   @Override
-   public void a(czi $$0, fjy $$1, gqm $$2, int $$3, int $$4, boolean $$5) {
-      fkc $$6 = this.f.a($$2, gqx::d);
-      this.e.a(this.g);
-      this.e.a($$1, $$6, $$3, $$4);
-   }
+   hig.a<? extends hig<T>, T> a();
 
-   public static record a(alg b, float c) implements hio.a {
-      public static final MapCodec<hig.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(alg.a.fieldOf("texture").forGetter(hig.a::b), Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(hig.a::c))
-               .apply($$0, hig.a::new)
-      );
-
-      public a(alg $$0) {
-         this($$0, 0.0F);
+   public static record a<P extends hig<T>, T>(MapCodec<hgm.d<P, T>> a) {
+      public static <P extends hig<T>, T> hig.a<P, T> a(MapCodec<P> $$0, Codec<T> $$1) {
+         MapCodec<hgm.d<P, T>> $$2 = RecordCodecBuilder.mapCodec(
+            $$2x -> $$2x.group($$0.forGetter(hgm.d::a), a($$1).forGetter(hgm.d::b)).apply($$2x, hgm.d::new)
+         );
+         return new hig.a<>($$2);
       }
 
-      @Override
-      public MapCodec<hig.a> a() {
-         return a;
+      public static <T> MapCodec<List<hgm.b<T>>> a(Codec<T> $$0) {
+         return hgm.b.a($$0).listOf().validate(hig.a::a).fieldOf("cases");
       }
 
-      @Override
-      public hio<?> a(gjk $$0) {
-         gfu $$1 = new gfu($$0.a(gjn.X));
-         hlq $$2 = grg.m.a(this.b);
-         return new hig($$1, $$2, this.c);
+      private static <T> DataResult<List<hgm.b<T>>> a(List<hgm.b<T>> $$0) {
+         if ($$0.isEmpty()) {
+            return DataResult.error(() -> "Empty case list");
+         } else {
+            Multiset<T> $$1 = HashMultiset.create();
+
+            for (hgm.b<T> $$2 : $$0) {
+               $$1.addAll($$2.a());
+            }
+
+            return $$1.size() != $$1.entrySet().size()
+               ? DataResult.error(
+                  () -> "Duplicate case conditions: "
+                        + $$1.entrySet()
+                           .stream()
+                           .filter($$0xx -> $$0xx.getCount() > 1)
+                           .map($$0xx -> $$0xx.getElement().toString())
+                           .collect(Collectors.joining(", "))
+               )
+               : DataResult.success($$0);
+         }
       }
    }
 }

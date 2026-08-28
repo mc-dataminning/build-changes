@@ -1,36 +1,22 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class gke {
+   private final float a;
+   private final float b;
 
-public class gke<C extends gke.a<C>, D> {
-   private final Function<C, D> a;
-   @Nullable
-   private C b;
-   @Nullable
-   private D c;
-
-   public gke(Function<C, D> $$0) {
+   public gke(float $$0, float $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public D a(C $$0) {
-      if ($$0 == this.b && this.c != null) {
-         return this.c;
-      } else {
-         D $$1 = this.a.apply($$0);
-         this.c = $$1;
-         this.b = $$0;
-         $$0.registerForCleaning(this);
-         return $$1;
-      }
+   public float a() {
+      return this.a;
    }
 
-   public void a() {
-      this.c = null;
-      this.b = null;
+   public float b() {
+      return this.b;
    }
 
-   @FunctionalInterface
-   public interface a<C extends gke.a<C>> {
-      void registerForCleaning(gke<C, ?> var1);
+   @Override
+   public String toString() {
+      return "(" + this.a + "," + this.b + ")";
    }
 }

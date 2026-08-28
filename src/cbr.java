@@ -18,7 +18,7 @@ public class cbr {
                   } else if ($$8 <= $$3.getValue()) {
                      return true;
                   } else {
-                     Optional<fex> $$10 = Optional.ofNullable(cif.a($$7, 8, 6));
+                     Optional<ffc> $$10 = Optional.ofNullable(cif.a($$7, 8, 6));
                      $$4x.a($$10.map($$1xxxx -> new cgo($$1xxxx, $$1, 1)));
                      $$3.setValue($$8 + 180L);
                      return true;

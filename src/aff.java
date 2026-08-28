@@ -9,7 +9,7 @@ public class aff implements zf<abu> {
       this($$0.ao(), $$0.dx());
    }
 
-   public aff(int $$0, fex $$1) {
+   public aff(int $$0, ffc $$1) {
       this.b = $$0;
       double $$2 = 3.9;
       double $$3 = azm.a($$1.d, -3.9, 3.9);

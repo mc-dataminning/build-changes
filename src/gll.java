@@ -1,85 +1,67 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface gll {
-   static gll a(glr $$0, UserApiService $$1) {
-      return new gll.b($$0, $$1);
+public class gll {
+   private final gln[] a;
+   private int b;
+
+   public static Codec<gll> a(int $$0) {
+      return Codec.list(gln.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new gll($$0, $$1));
+            },
+            gll::c
+         );
    }
 
-   CompletableFuture<Unit> a(UUID var1, glt var2, AbuseReport var3);
-
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
+   public gll(int $$0) {
+      this.a = new gln[$$0];
    }
 
-   public static class a extends xy {
-      public a(wy $$0, Throwable $$1) {
-         super($$0, $$1);
-      }
+   private gll(int $$0, List<gln> $$1) {
+      this.a = $$1.toArray(gln[]::new);
+      this.b = $$1.size();
    }
 
-   public static record b(glr a, UserApiService b) implements gll {
-      private static final wy c = wy.c("gui.abuseReport.send.service_unavailable");
-      private static final wy d = wy.c("gui.abuseReport.send.http_error");
-      private static final wy e = wy.c("gui.abuseReport.send.json_error");
+   private List<gln> c() {
+      List<gln> $$0 = new ArrayList<>(this.d());
 
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, glt $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
-
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               wy $$5 = this.a(var7);
-               throw new CompletionException(new gll.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               wy $$7 = this.a(var8);
-               throw new CompletionException(new gll.a($$7, var8));
-            }
-         }, ag.i());
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
+      return $$0;
+   }
 
-      private wy a(MinecraftClientHttpException $$0) {
-         return wy.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
+   public void a(gln $$0) {
+      this.a[this.c(this.b++)] = $$0;
+   }
 
-      private wy a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new MatchException(null, null);
-         };
-      }
+   @Nullable
+   public gln b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
-      }
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
 
-      public glr c() {
-         return this.a;
-      }
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
 
-      public UserApiService d() {
-         return this.b;
-      }
+   public int b() {
+      return this.b - 1;
+   }
+
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

@@ -1,33 +1,21 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record dgx(dge d, dge e, ka f, Optional<ehu> g, eny h, Optional<jf<efo>> i) implements dgo {
+public record dgx(jf<awm> d, btj e, btj f) implements dgr {
    public static final MapCodec<dgx> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               dge.b.fieldOf("radius").forGetter(dgx::b),
-               dge.b.fieldOf("height").forGetter(dgx::c),
-               ka.g.optionalFieldOf("offset", ka.i).forGetter(dgx::d),
-               ehu.b.optionalFieldOf("predicate").forGetter(dgx::e),
-               eny.a.fieldOf("block_state").forGetter(dgx::f),
-               efo.aj.optionalFieldOf("trigger_game_event").forGetter(dgx::g)
+               awm.b.fieldOf("sound").forGetter(dgx::b),
+               btj.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dgx::c),
+               btj.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dgx::d)
             )
             .apply($$0, dgx::new)
    );
 
    @Override
-   public void a(arq $$0, int $$1, dfw $$2, bwi $$3, fex $$4) {
-      iv $$5 = iv.a((jp)$$4).a(this.f);
-      azv $$6 = $$3.dX();
-      int $$7 = (int)this.d.a($$1);
-      int $$8 = (int)this.e.a($$1);
-
-      for (iv $$9 : iv.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
-         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azm.h($$7)
-            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
-            && $$0.b($$9, this.h.a($$6, $$9))) {
-            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
-         }
+   public void a(arq $$0, int $$1, dfz $$2, bwi $$3, ffc $$4) {
+      azv $$5 = $$3.dX();
+      if (!$$3.aZ()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dl(), this.e.a($$5), this.f.a($$5));
       }
    }
 
@@ -36,27 +24,15 @@ public record dgx(dge d, dge e, ka f, Optional<ehu> g, eny h, Optional<jf<efo>> 
       return a;
    }
 
-   public dge b() {
+   public jf<awm> b() {
       return this.d;
    }
 
-   public dge c() {
+   public btj c() {
       return this.e;
    }
 
-   public ka d() {
+   public btj d() {
       return this.f;
-   }
-
-   public Optional<ehu> e() {
-      return this.g;
-   }
-
-   public eny f() {
-      return this.h;
-   }
-
-   public Optional<jf<efo>> g() {
-      return this.i;
    }
 }

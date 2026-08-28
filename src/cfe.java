@@ -3,7 +3,7 @@ import javax.annotation.Nullable;
 
 public class cfe extends cef {
    private final bxl a;
-   private final cop b;
+   private final cos b;
    @Nullable
    private bxj c;
    private int d = -1;
@@ -14,11 +14,11 @@ public class cfe extends cef {
    private final float i;
    private final float j;
 
-   public cfe(cop $$0, double $$1, int $$2, float $$3) {
+   public cfe(cos $$0, double $$1, int $$2, float $$3) {
       this($$0, $$1, $$2, $$2, $$3);
    }
 
-   public cfe(cop $$0, double $$1, int $$2, int $$3, float $$4) {
+   public cfe(cos $$0, double $$1, int $$2, int $$3, float $$4) {
       if (!($$0 instanceof bxj)) {
          throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
       } else {

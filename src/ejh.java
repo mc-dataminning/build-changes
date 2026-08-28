@@ -1,52 +1,58 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public abstract class ejh extends ejt<eme> {
-   public ejh(Codec<eme> $$0) {
+public class ejh extends ejy<emj> {
+   public ejh(Codec<emj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<eme> $$0) {
-      azv $$1 = $$0.d();
-      dkg $$2 = $$0.b();
-      iv $$3 = $$0.e();
-      Optional<dmm> $$4 = mg.e.a(axc.at, $$1).map(jf::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
-   }
+   public boolean a(eka<emj> $$0) {
+      iv $$1 = $$0.e();
+      dkl $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      if ($$1.v() > $$2.P() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(dmt.J) && !$$2.a_($$1.e()).a(dmt.J)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-   protected abstract boolean a(dji var1, azv var2, iv var3, eao var4);
-
-   protected boolean b(dji $$0, azv $$1, iv $$2, eao $$3) {
-      iv $$4 = $$2.d();
-      eao $$5 = $$0.a_($$2);
-      if (($$5.a(dmo.J) || $$5.a(axc.aw)) && $$0.a_($$4).a(dmo.J)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            mg.e.a(axc.aw, $$1).map(jf::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dmo.nB.m().b(dtr.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
-
-         for (jb $$6 : jb.c.a) {
-            if ($$1.i() < 0.2F) {
-               iv $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dmo.J)) {
-                  mg.e.a(axc.au, $$1).map(jf::a).ifPresent($$3x -> {
-                     eao $$4x = $$3x.m();
-                     if ($$4x.b(dlx.d)) {
-                        $$4x = $$4x.b(dlx.d, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
+         for (jb $$5 : jb.values()) {
+            if ($$5 != jb.a && $$2.a_($$1.a($$5)).a(dmt.je)) {
+               $$4 = true;
+               break;
             }
          }
 
-         return true;
-      } else {
-         return false;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, dmt.nC.m(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  iv $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  eat $$10 = $$2.a_($$9);
+                  if ($$10.l() || $$10.a(dmt.J) || $$10.a(dmt.je) || $$10.a(dmt.ee)) {
+                     for (jb $$11 : jb.values()) {
+                        eat $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(dmt.nC)) {
+                           $$2.a($$9, dmt.nC.m(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
       }
    }
 }

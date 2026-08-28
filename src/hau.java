@@ -1,42 +1,16 @@
-public class hau extends hbh<hdi, ggo> {
-   public hau(gyq<hdi, ggo> $$0) {
+public class hau extends hbm<hfv, ggk> {
+   private static final alg a = alg.b("textures/entity/zombie/drowned_outer_layer.png");
+   private final ggk b;
+   private final ggk c;
+
+   public hau(gyv<hfv, ggk> $$0, gjp $$1) {
       super($$0);
+      this.b = new ggk($$1.a(gjs.aN));
+      this.c = new ggk($$1.a(gjs.aK));
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, hdi $$3, float $$4, float $$5) {
-      hgc $$6 = $$3.i;
-      if (!$$6.c()) {
-         boolean $$7 = $$3.d;
-         boolean $$8 = $$3.aj;
-         $$0.a();
-         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
-         if ($$8) {
-            float $$9 = 0.75F;
-            $$0.b(0.75F, 0.75F, 0.75F);
-         }
-
-         $$0.a(a.f.rotation($$3.a));
-         $$0.a(a.d.rotationDegrees($$4));
-         $$0.a(a.b.rotationDegrees($$5));
-         if ($$3.aj) {
-            if ($$7) {
-               $$0.a(0.4F, 0.26F, 0.15F);
-            } else {
-               $$0.a(0.06F, 0.26F, -0.5F);
-            }
-         } else if ($$7) {
-            $$0.a(0.46F, 0.26F, 0.22F);
-         } else {
-            $$0.a(0.06F, 0.27F, -0.5F);
-         }
-
-         $$0.a(a.b.rotationDegrees(90.0F));
-         if ($$7) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         $$6.a($$0, $$1, $$2, hja.d);
-         $$0.b();
-      }
+   public void a(fkd $$0, gqr $$1, int $$2, hfv $$3, float $$4, float $$5) {
+      ggk $$6 = $$3.aj ? this.c : this.b;
+      a($$6, a, $$0, $$1, $$2, $$3, -1);
    }
 }

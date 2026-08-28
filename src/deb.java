@@ -1,36 +1,66 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-
-public interface deb<T extends deh> {
-   Codec<deb<?>> a = mg.r.q().dispatch(deb::a, del::a);
-   Codec<alf<deb<?>>> b = alf.a(mh.bu);
-   yw<wj, deb<?>> c = yu.a(mh.ah).b(deb::a, del::b);
-
-   boolean a(T var1, djh var2);
-
-   czk a(T var1, jh.a var2);
-
-   default boolean am_() {
-      return false;
+public class deb extends ddu {
+   public deb(ddr $$0) {
+      super($$0);
    }
 
-   default boolean i() {
-      return true;
+   public boolean a(dds $$0, djm $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            czn $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.c(kk.M)) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(czr.vt)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
    }
 
-   default String j() {
-      return "";
+   public czn a(dds $$0, jh.a $$1) {
+      int $$2 = 0;
+      czn $$3 = czn.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         czn $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.c(kk.M)) {
+               if (!$$3.f()) {
+                  return czn.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(czr.vt)) {
+                  return czn.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : czn.k;
    }
 
-   del<? extends deb<T>> a();
-
-   dem<? extends deb<T>> b();
-
-   dea al_();
-
-   default List<dfh> g() {
-      return List.of();
+   @Override
+   public deo<deb> a() {
+      return deo.e;
    }
-
-   dee h();
 }

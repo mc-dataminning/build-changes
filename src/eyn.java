@@ -1,17 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record eyn(iv b, int c, int d) {
-   public static final Codec<eyn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iv.a.fieldOf("pos").forGetter(eyn::b), Codec.INT.fieldOf("rotation").forGetter(eyn::c), Codec.INT.fieldOf("entity_id").forGetter(eyn::d))
-            .apply($$0, eyn::new)
-   );
-
-   public String a() {
-      return a(this.b);
+public record eyn<T extends eym>(String a, Function<eym.a, T> b, Function<eym.a, Codec<T>> c, bbb d) {
+   public eyn(String $$0, Supplier<T> $$1, Codec<T> $$2, bbb $$3) {
+      this($$0, $$1x -> $$1.get(), $$1x -> $$2, $$3);
    }
 
-   public static String a(iv $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 instanceof eyn<?> $$1 && this.a.equals($$1.a)) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "SavedDataType[" + this.a + "]";
    }
 }

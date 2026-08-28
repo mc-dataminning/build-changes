@@ -1,32 +1,26 @@
-import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class hfu implements hfz {
-   static final hfz a = new hfu();
+public class hfu extends hef {
+   private static final alg j = alg.b("textures/entity/wolf/wolf.png");
+   public boolean a;
+   public boolean b;
+   public float c = (float) (Math.PI / 5);
+   public float d;
+   public float e;
+   public float f = 1.0F;
+   public alg g = j;
+   @Nullable
+   public cyl h;
+   public czn i = czn.k;
 
-   @Override
-   public void a(hgc $$0, czk $$1, hga $$2, czi $$3, @Nullable gkl $$4, @Nullable bxj $$5, int $$6) {
-      czk $$7 = cxz.i($$1);
-      if (!$$7.f()) {
-         $$2.b($$0, $$7, $$3, $$4, $$5, $$6);
-      }
-   }
-
-   public static record a() implements hfz.b {
-      public static final MapCodec<hfu.a> a = MapCodec.unit(new hfu.a());
-
-      @Override
-      public MapCodec<hfu.a> a() {
-         return a;
-      }
-
-      @Override
-      public hfz a(hfz.a $$0) {
-         return hfu.a;
+   public float a(float $$0) {
+      float $$1 = (this.e + $$0) / 1.8F;
+      if ($$1 < 0.0F) {
+         $$1 = 0.0F;
+      } else if ($$1 > 1.0F) {
+         $$1 = 1.0F;
       }
 
-      @Override
-      public void a(hmb.a $$0) {
-      }
+      return azm.a($$1 * (float) Math.PI) * azm.a($$1 * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
    }
 }

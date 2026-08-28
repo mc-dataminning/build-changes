@@ -1,87 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class ehl {
-   public static final MapCodec<ehl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(ehl::c),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(ehl::d),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(ehl::e),
-               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(ehl::new))
-   );
-   public static final ehl b = new ehl((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
+@Deprecated
+public class ehl implements egh {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final egu i = new egu(this);
 
-   public ehl(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   public ehl(long $$0) {
+      this.b($$0);
    }
 
-   public static ehl a() {
-      return new ehl(g(), true, false);
+   @Override
+   public azv d() {
+      return new ehl(this.g());
    }
 
-   public static ehl b() {
-      return new ehl(g(), false, false);
+   @Override
+   public ehf e() {
+      return new egt.a(this.g());
    }
 
-   private ehl(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
    }
 
-   public long c() {
-      return this.c;
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
    }
 
-   public boolean d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f.isPresent();
-   }
-
-   public ehl a(boolean $$0) {
-      return new ehl(this.c, this.d, $$0, this.f);
-   }
-
-   public ehl b(boolean $$0) {
-      return new ehl(this.c, $$0, this.e, this.f);
-   }
-
-   public ehl a(OptionalLong $$0) {
-      return new ehl($$0.orElse(g()), this.d, this.e, this.f);
-   }
-
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
-         }
-      }
-   }
-
-   public static long g() {
-      return azv.a().g();
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

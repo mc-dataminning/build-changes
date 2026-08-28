@@ -1,3 +1,5 @@
-public class hfr extends hdq {
-   public boolean a;
+public class hfr extends hdu {
+   public int a;
+   public boolean b;
+   public boolean c;
 }

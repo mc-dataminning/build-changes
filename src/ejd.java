@@ -1,48 +1,83 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class ejd extends ejt<eme> {
-   public ejd(Codec<eme> $$0) {
+public class ejd extends ejy<emj> {
+   public ejd(Codec<emj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<eme> $$0) {
-      azv $$1 = $$0.d();
-      dkg $$2 = $$0.b();
-      dio $$3 = new dio($$0.e());
-      IntArrayList $$4 = ag.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ag.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      iv.a $$6 = new iv.a();
-      IntListIterator var8 = $$4.iterator();
+   public boolean a(eka<emj> $$0) {
+      iv $$1 = $$0.e();
+      dkl $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      if ($$2.v($$1) && !$$2.v($$1.d())) {
+         iv.a $$4 = $$1.k();
+         iv.a $$5 = $$1.k();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            iv $$9 = $$2.a(egn.a.f, $$6);
-            if ($$2.v($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, dmo.cG.m(), 2);
-               bum.a($$2, $$1, $$9, ezk.a);
-               eao $$10 = dmo.cz.m();
-
-               for (jb $$11 : jb.c.a) {
-                  iv $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
+         while ($$2.v($$4)) {
+            if ($$2.t($$4)) {
                return true;
             }
-         }
-      }
 
-      return false;
+            $$2.a($$4, dmt.ep.m(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, jb.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, jb.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, jb.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, jb.f));
+            $$4.c(jb.a);
+         }
+
+         $$4.c(jb.b);
+         this.a($$2, $$3, $$5.a($$4, jb.c));
+         this.a($$2, $$3, $$5.a($$4, jb.d));
+         this.a($$2, $$3, $$5.a($$4, jb.e));
+         this.a($$2, $$3, $$5.a($$4, jb.f));
+         $$4.c(jb.a);
+         iv.a $$10 = new iv.a();
+
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = azm.a($$11) * azm.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
+
+                  while ($$2.v($$5.a($$10, jb.a))) {
+                     $$10.c(jb.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
+
+                  if (!$$2.v($$5.a($$10, jb.a))) {
+                     $$2.a($$10, dmt.ep.m(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(djn $$0, azv $$1, iv $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, dmt.ep.m(), 2);
+      }
+   }
+
+   private boolean b(djn $$0, azv $$1, iv $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, dmt.ep.m(), 2);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

@@ -1,199 +1,114 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class coo extends cnr implements cnx, cqt {
-   private static final akj<Boolean> a = akn.a(coo.class, akl.k);
-   private static final int b = 5;
-   private static final int bG = 300;
-   private final bun bH = new bun(5);
-
-   public coo(bwr<? extends coo> $$0, djh $$1) {
+public abstract class coo extends bxr implements cof {
+   protected coo(bwr<? extends coo> $$0, djm $$1) {
       super($$0, $$1);
+      this.by = 5;
    }
 
    @Override
-   protected void D() {
-      super.D();
-      this.bD.a(0, new cdz(this));
-      this.bD.a(1, new cdm<>(this, cpp.class, 8.0F, 1.0, 1.2));
-      this.bD.a(2, new cta.a(this, 10.0F));
-      this.bD.a(3, new cfg<>(this, 1.0, 8.0F));
-      this.bD.a(8, new cfc(this, 0.6));
-      this.bD.a(9, new cen(this, crj.class, 15.0F, 1.0F));
-      this.bD.a(10, new cen(this, bxl.class, 15.0F));
-      this.bE.a(1, new cfx(this, cta.class).a());
-      this.bE.a(2, new cfy<>(this, crj.class, true));
-      this.bE.a(3, new cfy<>(this, cqq.class, false));
-      this.bE.a(3, new cfy<>(this, cjp.class, true));
-   }
-
-   public static byo.a m() {
-      return cok.gw().a(byp.v, 0.35F).a(byp.s, 24.0).a(byp.c, 5.0).a(byp.m, 32.0);
+   public awo dl() {
+      return awo.f;
    }
 
    @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(a, false);
+   public void k_() {
+      this.eY();
+      this.gv();
+      super.k_();
    }
 
-   @Override
-   public boolean a(daf $$0) {
-      return $$0 == czo.xg;
-   }
-
-   public boolean q() {
-      return this.al.a(a);
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.al.a(a, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.bd = 0;
-   }
-
-   @Override
-   public axr<czg> Y() {
-      return axk.bW;
-   }
-
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      this.b($$0, this.dW());
-   }
-
-   @Override
-   public cnr.a j() {
-      if (this.q()) {
-         return cnr.a.f;
-      } else if (this.b(czo.xg)) {
-         return cnr.a.e;
-      } else {
-         return this.gk() ? cnr.a.b : cnr.a.h;
+   protected void gv() {
+      float $$0 = this.bv();
+      if ($$0 > 0.5F) {
+         this.bd += 2;
       }
    }
 
    @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      this.a($$0, this.dW());
-      this.a_(true);
+   protected boolean aa() {
+      return true;
    }
 
    @Override
-   public float a(iv $$0, djk $$1) {
-      return 0.0F;
+   protected awm aT() {
+      return awn.nA;
    }
 
    @Override
-   public int fW() {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
-      azv $$4 = $$0.C_();
-      this.a($$4, $$1);
-      this.a($$0, $$4, $$1);
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(azv $$0, bue $$1) {
-      this.a(bws.a, new czk(czo.xg));
-   }
-
-   @Override
-   protected void b(djy $$0, azv $$1, bue $$2) {
-      super.b($$0, $$1, $$2);
-      if ($$1.a(300) == 0) {
-         czk $$3 = this.fa();
-         if ($$3.a(czo.xg)) {
-            dfz.a($$3, $$0.F_(), dhl.b, $$2, $$1);
-         }
-      }
-   }
-
-   @Override
-   protected awm u() {
-      return awn.uJ;
-   }
-
-   @Override
-   protected awm l_() {
-      return awn.uL;
+   protected awm aU() {
+      return awn.nz;
    }
 
    @Override
    protected awm e(bux $$0) {
-      return awn.uM;
+      return awn.nx;
    }
 
    @Override
-   public void a(bxj $$0, float $$1) {
-      this.b(this, 1.6F);
+   protected awm l_() {
+      return awn.nw;
    }
 
    @Override
-   public bun n() {
-      return this.bH;
+   public bxj.a eN() {
+      return new bxj.a(awn.ny, awn.nv);
    }
 
    @Override
-   protected void a(arq $$0, cno $$1) {
-      czk $$2 = $$1.f();
-      if ($$2.h() instanceof cxq) {
-         super.a($$0, $$1);
-      } else if (this.i($$2)) {
-         this.a($$1);
-         czk $$3 = this.bH.b($$2);
-         if ($$3.f()) {
-            $$1.aq();
+   public float a(iv $$0, djp $$1) {
+      return -$$1.x($$0);
+   }
+
+   public static boolean a(dkd $$0, iv $$1, azv $$2) {
+      if ($$0.a(djv.a, $$1) > $$2.a(32)) {
+         return false;
+      } else {
+         eeq $$3 = $$0.B_();
+         int $$4 = $$3.e();
+         if ($$4 < 15 && $$0.a(djv.b, $$1) > $$4) {
+            return false;
          } else {
-            $$2.e($$3.M());
+            int $$5 = $$0.a().ag() ? $$0.c($$1, 10) : $$0.B($$1);
+            return $$5 <= $$3.d().a($$2);
          }
       }
    }
 
-   private boolean i(czk $$0) {
-      return this.gH() && $$0.a(czo.wa);
+   public static boolean b(bwr<? extends coo> $$0, dkd $$1, bwq $$2, iv $$3, azv $$4) {
+      return $$1.an() != bud.a && (bwq.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static boolean c(bwr<? extends coo> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
+      return $$1.an() != bud.a && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static byo.a gw() {
+      return bxl.E().a(byp.c);
    }
 
    @Override
-   public bya a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.bH.b() ? bya.a(this.bH, $$1) : super.a_($$0);
+   public boolean en() {
+      return true;
    }
 
    @Override
-   public void a(arq $$0, int $$1, boolean $$2) {
-      csz $$3 = this.gE();
-      boolean $$4 = this.ae.i() <= $$3.s();
-      if ($$4) {
-         czk $$5 = new czk(czo.xg);
-         alf<dhf> $$6;
-         if ($$1 > $$3.a(bud.c)) {
-            $$6 = dhl.d;
-         } else if ($$1 > $$3.a(bud.b)) {
-            $$6 = dhl.c;
-         } else {
-            $$6 = null;
-         }
+   protected boolean eo() {
+      return true;
+   }
 
-         if ($$6 != null) {
-            dfz.a($$5, $$0.F_(), $$6, $$0.d_(this.du()), this.dX());
-            this.a(bws.a, $$5);
-         }
+   public boolean a(arq $$0, crm $$1) {
+      return true;
+   }
+
+   @Override
+   public czn d(czn $$0) {
+      if ($$0.h() instanceof dai) {
+         Predicate<czn> $$1 = ((dai)$$0.h()).c();
+         czn $$2 = dai.a(this, $$1);
+         return $$2.f() ? new czn(czr.pk) : $$2;
+      } else {
+         return czn.k;
       }
-   }
-
-   @Override
-   public awm ae_() {
-      return awn.uK;
    }
 }

@@ -1,173 +1,161 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class dbs implements dcp {
-   private static final Logger e = LogUtils.getLogger();
-   public static final dbs a = new dbs(new tz());
-   private static final String f = "id";
-   public static final Codec<dbs> b = Codec.withAlternative(tz.a, ux.i).xmap(dbs::new, $$0 -> $$0.i);
-   public static final Codec<dbs> c = b.validate(
-      $$0 -> $$0.e().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
+public record dbs(float d, czp e, jf<awm> f, boolean g, List<ddb> h) {
+   public static final float a = 1.6F;
+   private static final int i = 4;
+   private static final float j = 0.21875F;
+   public static final Codec<dbs> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayu.n.optionalFieldOf("consume_seconds", 1.6F).forGetter(dbs::c),
+               czp.l.optionalFieldOf("animation", czp.b).forGetter(dbs::d),
+               awm.b.optionalFieldOf("sound", awn.kH).forGetter(dbs::e),
+               Codec.BOOL.optionalFieldOf("has_consume_particles", true).forGetter(dbs::f),
+               ddb.d.listOf().optionalFieldOf("on_consume_effects", List.of()).forGetter(dbs::g)
+            )
+            .apply($$0, dbs::new)
    );
-   @Deprecated
-   public static final yw<ByteBuf, dbs> d = yu.s.a(dbs::new, $$0 -> $$0.i);
-   private static final alg g = dxo.j.a().h().a();
-   private static final alg h = dxo.R.a().h().a();
-   private final tz i;
+   public static final yw<wj, dbs> c = yw.a(yu.l, dbs::c, czp.m, dbs::d, awm.d, dbs::e, yu.b, dbs::f, ddb.e.a(yu.a()), dbs::g, dbs::new);
 
-   private dbs(tz $$0) {
-      this.i = $$0;
-   }
-
-   public static dbs a(tz $$0) {
-      return new dbs($$0.i());
-   }
-
-   public static Predicate<czk> a(kj<dbs> $$0, tz $$1) {
-      return $$2 -> {
-         dbs $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
-   }
-
-   public boolean b(tz $$0) {
-      return uo.a($$0, this.i, true);
-   }
-
-   public static void a(kj<dbs> $$0, czk $$1, Consumer<tz> $$2) {
-      dbs $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.i.g()) {
-         $$1.e($$0);
+   public bug a(bxj $$0, czn $$1, buf $$2) {
+      if (!this.a($$0, $$1)) {
+         return bug.d;
       } else {
-         $$1.b($$0, $$3);
-      }
-   }
-
-   public static void a(kj<dbs> $$0, czk $$1, tz $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.e($$0);
-      }
-   }
-
-   public dbs a(Consumer<tz> $$0) {
-      tz $$1 = this.i.i();
-      $$0.accept($$1);
-      return new dbs($$1);
-   }
-
-   @Nullable
-   public alg a() {
-      return this.i.<alg>a("id", alg.a).orElse(null);
-   }
-
-   @Nullable
-   public <T> T a(jh.a $$0, alf<? extends js<T>> $$1) {
-      alg $$2 = this.a();
-      return $$2 == null ? null : $$0.a($$1).flatMap($$2x -> $$2x.a(alf.a($$1, $$2))).map(jf::a).orElse(null);
-   }
-
-   public void a(bwi $$0) {
-      tz $$1 = $$0.f(new tz());
-      UUID $$2 = $$0.cF();
-      $$1.a(this.i);
-      $$0.g($$1);
-      $$0.a_($$2);
-   }
-
-   public boolean a(dxm $$0, jh.a $$1) {
-      tz $$2 = $$0.e($$1);
-      tz $$3 = $$2.i();
-      $$2.a(this.i);
-      if (!$$2.equals($$3)) {
-         try {
-            $$0.d($$2, $$1);
-            $$0.e();
-            return true;
-         } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.ax_(), var8);
-
-            try {
-               $$0.d($$3, $$1);
-            } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.ax_(), var7);
-            }
+         boolean $$3 = this.a() > 0;
+         if ($$3) {
+            $$0.c($$2);
+            return bug.c;
+         } else {
+            czn $$4 = this.a($$0.dU(), $$0, $$1);
+            return bug.c.a($$4);
          }
       }
-
-      return false;
    }
 
-   public <T> DataResult<dbs> a(DynamicOps<uw> $$0, MapEncoder<T> $$1, T $$2) {
-      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.i).map($$0x -> new dbs((tz)$$0x));
+   public czn a(djm $$0, bxj $$1, czn $$2) {
+      azv $$3 = $$1.dX();
+      this.a($$3, $$1, $$2, 16);
+      if ($$1 instanceof arr $$4) {
+         $$4.b(awx.c.b($$2.h()));
+         aq.A.a($$4, $$2);
+      }
+
+      $$2.a(dbt.class).forEach($$3x -> $$3x.a($$0, $$1, $$2, this));
+      if (!$$0.C) {
+         this.h.forEach($$3x -> $$3x.a($$0, $$2, $$1));
+      }
+
+      $$1.a(this.e == czp.c ? eft.l : eft.m);
+      $$2.a(1, $$1);
+      return $$2;
    }
 
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      return this.a(un.a, $$0);
+   public boolean a(bxj $$0, czn $$1) {
+      cvc $$2 = $$1.a(kk.v);
+      return $$2 != null && $$0 instanceof crm $$3 ? $$3.t($$2.c()) : true;
    }
 
-   public <T> DataResult<T> a(DynamicOps<uw> $$0, MapDecoder<T> $$1) {
-      MapLike<uw> $$2 = (MapLike<uw>)$$0.getMap(this.i).getOrThrow();
-      return $$1.decode($$0, $$2);
+   public int a() {
+      return (int)(this.d * 20.0F);
    }
 
-   public int b() {
-      return this.i.f();
+   public void a(azv $$0, bxj $$1, czn $$2, int $$3) {
+      float $$4 = $$0.h() ? 0.5F : 1.0F;
+      float $$5 = $$0.a(1.0F, 0.2F);
+      float $$6 = 0.5F;
+      float $$7 = azm.b($$0, 0.9F, 1.0F);
+      float $$8 = this.e == czp.c ? 0.5F : $$4;
+      float $$9 = this.e == czp.c ? $$7 : $$5;
+      if (this.g) {
+         $$1.b($$2, $$3);
+      }
+
+      awm $$11 = $$1 instanceof dbs.b $$10 ? $$10.j($$2) : this.f.a();
+      $$1.a($$11, $$8, $$9);
    }
 
-   public boolean c() {
-      return this.i.g();
+   public boolean a(int $$0) {
+      int $$1 = this.a() - $$0;
+      int $$2 = (int)((float)this.a() * 0.21875F);
+      boolean $$3 = $$1 > $$2;
+      return $$3 && $$0 % 4 == 0;
    }
 
-   public tz d() {
-      return this.i.i();
+   public static dbs.a b() {
+      return new dbs.a();
    }
 
-   public boolean a(String $$0) {
-      return this.i.c($$0);
+   public float c() {
+      return this.d;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return $$0 instanceof dbs $$1 ? this.i.equals($$1.i) : false;
+   public czp d() {
+      return this.e;
+   }
+
+   public jf<awm> e() {
+      return this.f;
+   }
+
+   public boolean f() {
+      return this.g;
+   }
+
+   public List<ddb> g() {
+      return this.h;
+   }
+
+   public static class a {
+      private float a = 1.6F;
+      private czp b;
+      private jf<awm> c;
+      private boolean d;
+      private final List<ddb> e;
+
+      a() {
+         this.b = czp.b;
+         this.c = awn.kH;
+         this.d = true;
+         this.e = new ArrayList<>();
+      }
+
+      public dbs.a a(float $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public dbs.a a(czp $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public dbs.a a(jf<awm> $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dbs.a b(jf<awm> $$0) {
+         return this.a(new ddc($$0));
+      }
+
+      public dbs.a a(boolean $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public dbs.a a(ddb $$0) {
+         this.e.add($$0);
+         return this;
+      }
+
+      public dbs a() {
+         return new dbs(this.a, this.b, this.c, this.d, this.e);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.i.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.i.toString();
-   }
-
-   @Deprecated
-   public tz e() {
-      return this.i;
-   }
-
-   @Override
-   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
-      alg $$4 = alg.c(this.i.j("id"));
-      if (g.equals($$4) || h.equals($$4)) {
-         dkc.a(this, $$1, "SpawnData");
-      }
+   public interface b {
+      awm j(czn var1);
    }
 }

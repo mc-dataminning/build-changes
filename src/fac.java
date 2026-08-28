@@ -1,18 +1,45 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fac {
-   public static final Codec<fae> a = mg.D.q().dispatch(fae::a, faf::a);
-   public static final faf b = a("empty", ezz.a);
-   public static final faf c = a("item", fab.a);
-   public static final faf d = a("loot_table", fah.a);
-   public static final faf e = a("dynamic", ezy.a);
-   public static final faf f = a("tag", faj.a);
-   public static final faf g = a("alternatives", ezv.a);
-   public static final faf h = a("sequence", fai.a);
-   public static final faf i = a("group", faa.a);
+public abstract class fac extends faj {
+   protected final List<faj> d;
+   private final fab a;
 
-   private static faf a(String $$0, MapCodec<? extends fae> $$1) {
-      return js.a(mg.D, alg.b($$0), new faf($$1));
+   protected fac(List<faj> $$0, List<fdc> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
+   }
+
+   @Override
+   public void a(ezz $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
+   }
+
+   protected abstract fab a(List<? extends fab> var1);
+
+   @Override
+   public final boolean expand(ezt $$0, Consumer<fai> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
+   }
+
+   public static <T extends fac> MapCodec<T> a(fac.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(fah.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
+
+   @FunctionalInterface
+   public interface a<T extends fac> {
+      T create(List<faj> var1, List<fdc> var2);
    }
 }

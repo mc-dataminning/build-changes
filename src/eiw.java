@@ -1,59 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class eiw extends ejt<emh> {
-   private static final eao a = dmo.nF.m().b(dlq.b, Integer.valueOf(1)).b(dlq.c, eba.a).b(dlq.d, Integer.valueOf(0));
-   private static final eao b = a.b(dlq.c, eba.c).b(dlq.d, Integer.valueOf(1));
-   private static final eao c = a.b(dlq.c, eba.c);
-   private static final eao d = a.b(dlq.c, eba.b);
+public record eiw<WC extends eir>(eiy<WC> d, WC e) {
+   public static final Codec<eiw<?>> a = mg.N.q().dispatch($$0 -> $$0.d, eiy::c);
+   public static final Codec<jf<eiw<?>>> b = alc.a(mh.aK, a);
+   public static final Codec<jj<eiw<?>>> c = ju.a(mh.aK, a);
 
-   public eiw(Codec<emh> $$0) {
-      super($$0);
+   public boolean a(azv $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(ejv<emh> $$0) {
-      int $$1 = 0;
-      iv $$2 = $$0.e();
-      dkg $$3 = $$0.b();
-      azv $$4 = $$0.d();
-      emh $$5 = $$0.f();
-      iv.a $$6 = $$2.k();
-      iv.a $$7 = $$2.k();
-      if ($$3.v($$6)) {
-         if (dmo.nF.m().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public boolean a(eit $$0, ecq $$1, Function<iv, jf<dkp>> $$2, azv $$3, ege $$4, dir $$5, ecp $$6) {
+      return ac.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(egn.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dmo.l.m(), 2);
-                        }
-                     }
-                  }
-               }
-            }
+   public eiy<WC> a() {
+      return this.d;
+   }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.v($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(jb.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(jb.a, 1), c, 2);
-               $$3.a($$6.c(jb.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
-      }
-
-      return $$1 > 0;
+   public WC b() {
+      return this.e;
    }
 }

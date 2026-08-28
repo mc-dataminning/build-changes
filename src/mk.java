@@ -4,8 +4,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class mk {
-   private final dmm a;
-   final Map<mk.b, dmm> b = Maps.newHashMap();
+   private final dmr a;
+   final Map<mk.b, dmr> b = Maps.newHashMap();
    boolean c = true;
    boolean d = true;
    @Nullable
@@ -13,19 +13,19 @@ public class mk {
    @Nullable
    String f;
 
-   mk(dmm $$0) {
+   mk(dmr $$0) {
       this.a = $$0;
    }
 
-   public dmm a() {
+   public dmr a() {
       return this.a;
    }
 
-   public Map<mk.b, dmm> b() {
+   public Map<mk.b, dmr> b() {
       return this.b;
    }
 
-   public dmm a(mk.b $$0) {
+   public dmr a(mk.b $$0) {
       return this.b.get($$0);
    }
 
@@ -48,7 +48,7 @@ public class mk {
    public static class a {
       private final mk a;
 
-      public a(dmm $$0) {
+      public a(dmr $$0) {
          this.a = new mk($$0);
       }
 
@@ -56,88 +56,88 @@ public class mk {
          return this.a;
       }
 
-      public mk.a a(dmm $$0) {
+      public mk.a a(dmr $$0) {
          this.a.b.put(mk.b.a, $$0);
          return this;
       }
 
-      public mk.a b(dmm $$0) {
+      public mk.a b(dmr $$0) {
          this.a.b.put(mk.b.b, $$0);
          return this;
       }
 
-      public mk.a c(dmm $$0) {
+      public mk.a c(dmr $$0) {
          this.a.b.put(mk.b.j, $$0);
          return this;
       }
 
-      public mk.a d(dmm $$0) {
+      public mk.a d(dmr $$0) {
          this.a.b.put(mk.b.c, $$0);
          return this;
       }
 
-      public mk.a e(dmm $$0) {
+      public mk.a e(dmr $$0) {
          this.a.b.put(mk.b.d, $$0);
          return this;
       }
 
-      public mk.a f(dmm $$0) {
+      public mk.a f(dmr $$0) {
          this.a.b.put(mk.b.e, $$0);
          return this;
       }
 
-      public mk.a g(dmm $$0) {
+      public mk.a g(dmr $$0) {
          this.a.b.put(mk.b.f, $$0);
          return this;
       }
 
-      public mk.a h(dmm $$0) {
+      public mk.a h(dmr $$0) {
          this.a.b.put(mk.b.g, $$0);
          return this;
       }
 
-      public mk.a i(dmm $$0) {
+      public mk.a i(dmr $$0) {
          this.a.b.put(mk.b.h, $$0);
          return this;
       }
 
-      public mk.a j(dmm $$0) {
+      public mk.a j(dmr $$0) {
          this.a.b.put(mk.b.i, $$0);
          return this;
       }
 
-      public mk.a a(dmm $$0, dmm $$1) {
+      public mk.a a(dmr $$0, dmr $$1) {
          this.a.b.put(mk.b.k, $$0);
          this.a.b.put(mk.b.r, $$1);
          return this;
       }
 
-      public mk.a k(dmm $$0) {
+      public mk.a k(dmr $$0) {
          this.a.b.put(mk.b.l, $$0);
          return this;
       }
 
-      public mk.a l(dmm $$0) {
+      public mk.a l(dmr $$0) {
          this.a.b.put(mk.b.m, $$0);
          return this;
       }
 
-      public mk.a m(dmm $$0) {
+      public mk.a m(dmr $$0) {
          this.a.b.put(mk.b.n, $$0);
          return this;
       }
 
-      public mk.a n(dmm $$0) {
+      public mk.a n(dmr $$0) {
          this.a.b.put(mk.b.o, $$0);
          return this;
       }
 
-      public mk.a o(dmm $$0) {
+      public mk.a o(dmr $$0) {
          this.a.b.put(mk.b.p, $$0);
          return this;
       }
 
-      public mk.a p(dmm $$0) {
+      public mk.a p(dmr $$0) {
          this.a.b.put(mk.b.q, $$0);
          return this;
       }

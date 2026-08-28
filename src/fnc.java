@@ -1,62 +1,38 @@
-public class fnc extends hpw {
-   private final fyn a;
-   private final fnc.a b;
-   private fto c = fto.a;
+public class fnc extends hqd {
+   private static final wy a = wy.c("mco.client.incompatible.title").b(-65536);
+   private static final wy b = wy.b(ac.b().c()).b(-65536);
+   private static final wy c = wy.a("mco.client.unsupported.snapshot.version", b);
+   private static final wy C = wy.a("mco.client.outdated.stable.version", b);
+   private final fys D;
+   private final fwo E = new fwo(this);
 
-   public fnc(fmk $$0, fyn $$1) {
-      super(fpf.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public fnc(wy $$0, fyn $$1) {
-      super(fpf.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public fnc(wy $$0, wy $$1, fyn $$2) {
-      super(fpf.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static fnc.a a(fmk $$0) {
-      fkq $$1 = $$0.a;
-      return a(wy.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static fnc.a a(wy $$0) {
-      return a(wy.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static fnc.a a(wy $$0, wy $$1) {
-      return new fnc.a($$0, $$1);
+   public fnc(fys $$0) {
+      super(a);
+      this.D = $$0;
    }
 
    @Override
    public void aO_() {
-      this.c(fsv.a(wx.h, $$0 -> this.aL_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = fto.a(this.p, this.b.b, this.n * 3 / 4);
+      this.E.a(a, this.p);
+      this.E.c(new ftu(this.E(), this.p).b(true));
+      this.E.b(fta.a(wx.k, $$0 -> this.aL_()).a(200).a());
+      this.E.a($$1 -> {
+         fsy var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.E.a();
    }
 
    @Override
    public void aL_() {
-      this.m.a(this.a);
+      this.m.a(this.D);
    }
 
-   @Override
-   public wy i() {
-      return wy.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(wy a, wy b) {
+   private wy E() {
+      return ac.b().g() ? C : c;
    }
 }

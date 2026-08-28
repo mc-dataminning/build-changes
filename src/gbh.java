@@ -1,86 +1,39 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class gbh extends fyn {
-   private static final int a = 310;
-   private static final int b = 25;
-   private static final wy c = wy.c("menu.server_links.title");
-   private final fyn d;
-   @Nullable
-   private gbh.a s;
-   final fwj u = new fwj(this);
-   final aly v;
+public class gbh implements gbf {
+   private static final int c = 5;
+   private static final int d = 12;
+   public static final int a = 3;
+   public static final int b = 5;
+   private final fxh e;
 
-   public gbh(fyn $$0, aly $$1) {
-      super(c);
-      this.d = $$0;
-      this.v = $$1;
+   public gbh(fxh $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected void aO_() {
-      this.u.a(this.l, this.p);
-      this.s = this.u.c(new gbh.a(this.m, this.n, this));
-      this.u.b(fsv.a(wx.k, $$0 -> this.aL_()).a(200).a());
-      this.u.a($$1 -> {
-         fst var10000 = this.c($$1);
-      });
-      this.c();
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
+      if ($$6.x + $$4 > $$0 - 5) {
+         $$6.x = Math.max($$2 - 12 - $$4, 9);
+      }
+
+      $$6.y += 3;
+      int $$7 = $$5 + 3 + 3;
+      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
+      int $$9 = $$1 - 5;
+      if ($$8 + $$7 <= $$9) {
+         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
+      } else {
+         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
+      }
+
+      return $$6;
    }
 
-   @Override
-   protected void c() {
-      this.u.a();
-      if (this.s != null) {
-         this.s.a(this.n, this.u);
-      }
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.d);
-   }
-
-   static class a extends ftb<gbh.b> {
-      public a(fpo $$0, int $$1, gbh $$2) {
-         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
-         $$2.v.c().forEach($$1x -> this.b(new gbh.b($$2, $$1x)));
-      }
-
-      @Override
-      public int a() {
-         return 310;
-      }
-
-      @Override
-      public void a(int $$0, fwj $$1) {
-         super.a($$0, $$1);
-         int $$2 = $$0 / 2 - 155;
-         this.aE_().forEach($$1x -> $$1x.a.j($$2));
-      }
-   }
-
-   static class b extends ftb.a<gbh.b> {
-      final fst a;
-
-      b(fyn $$0, aly.a $$1) {
-         this.a = fsv.a($$1.a(), fxk.b($$0, $$1.c(), false)).a(310).a();
-      }
-
-      @Override
-      public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a.k($$2);
-         this.a.a($$0, $$6, $$7, $$9);
-      }
-
-      @Override
-      public List<? extends fus> aE_() {
-         return List.of(this.a);
-      }
-
-      @Override
-      public List<? extends fwq> b() {
-         return List.of(this.a);
-      }
+   private static int a(int $$0, int $$1, int $$2) {
+      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
+      return Math.round(azm.h((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
    }
 }

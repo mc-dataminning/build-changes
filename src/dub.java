@@ -1,112 +1,142 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class dub extends dov implements dmp, dtx {
-   public static final MapCodec<dub> c = b(dub::new);
-   private static final ebf e = ebe.I;
-   public static final ebm<jb> d = ebe.T;
-   private static final ffr f = dmm.b(12.0, 0.0, 13.0);
+public abstract class dub extends dmd implements duc {
+   public static final ebk d = ebj.I;
+   private static final ffw a = dmr.b(8.0, 0.0, 16.0);
+   private final ech b;
 
-   @Override
-   public MapCodec<dub> a() {
-      return c;
-   }
-
-   public dub(ean.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, ebk.b).b(e, Boolean.valueOf(false)).b(d, jb.c));
+   protected dub(ech $$0, eas.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return f;
-   }
+   protected abstract MapCodec<? extends dub> a();
 
    @Override
-   protected boolean b(eao $$0, din $$1, iv $$2) {
-      return $$0.a(axc.bA) || $$1.b_($$2.d()).a(eww.c) && super.b($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public eao a(ddd $$0) {
-      eao $$1 = super.a($$0);
-      return $$1 != null ? b($$0.q(), $$0.a(), $$1.b(d, $$0.g().g())) : null;
-   }
-
-   @Override
-   public void a(djh $$0, iv $$1, eao $$2, bxj $$3, czk $$4) {
-      if (!$$0.w_()) {
-         iv $$5 = $$1.d();
-         eao $$6 = dov.b($$0, $$5, this.m().b(b, ebk.a).b(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
-      }
-   }
-
-   @Override
-   protected ewv b_(eao $$0) {
-      return $$0.c(e) ? eww.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      if ($$0.c(b) == ebk.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         iv $$3 = $$2.e();
-         eao $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
-      }
-   }
-
-   @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, eww.c, eww.c.a($$1));
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, exb.c, exb.c.a($$1));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b, e, d);
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return a;
    }
 
    @Override
-   public boolean a(djk $$0, iv $$1, eao $$2) {
+   public boolean a(eat $$0) {
       return true;
    }
 
    @Override
-   public boolean a(djh $$0, azv $$1, iv $$2, eao $$3) {
-      return true;
+   public dxr a(iv $$0, eat $$1) {
+      return new dzf($$0, $$1);
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iv $$2, eao $$3) {
-      if ($$3.c(dov.b) == ebk.b) {
-         iv $$4 = $$2.d();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         dmj.a($$0, $$1, $$2, $$3.c(d));
+   protected bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
+      if ($$2.c_($$3) instanceof dzf $$7) {
+         dap $$10 = $$0.h() instanceof dap $$9 ? $$9 : null;
+         boolean $$11 = $$10 != null && $$4.gv();
+         if (!$$2.C) {
+            if ($$11 && !$$7.u() && !this.a($$4, $$7)) {
+               boolean $$12 = $$7.a($$4);
+               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
+                  $$7.a($$4, $$2, $$3, $$12);
+                  $$4.b(awx.c.b($$0.h()));
+                  $$2.a(eft.c, $$7.ax_(), eft.a.a($$4, $$7.m()));
+                  $$0.a(1, $$4);
+                  return bug.a;
+               } else {
+                  return bug.f;
+               }
+            } else {
+               return bug.f;
+            }
+         } else {
+            return !$$11 && !$$7.u() ? bug.c : bug.a;
+         }
       } else {
-         iv $$5 = $$2.e();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+         return bug.e;
       }
    }
 
    @Override
-   protected eao a(eao $$0, dtg $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
+      if ($$1.c_($$2) instanceof dzf $$5) {
+         if ($$1.C) {
+            ag.b(new IllegalStateException("Expected to only call this on server"));
+         }
+
+         boolean $$7 = $$5.a($$3);
+         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
+         if ($$5.u()) {
+            $$1.a(null, $$5.ax_(), $$5.d(), awo.e);
+            return bug.b;
+         } else if ($$8) {
+            return bug.b;
+         } else if (!this.a($$3, $$5) && $$3.gv() && this.b($$3, $$5, $$7)) {
+            this.a($$3, $$5, $$7);
+            return bug.b;
+         } else {
+            return bug.e;
+         }
+      } else {
+         return bug.e;
+      }
+   }
+
+   private boolean b(crm $$0, dzf $$1, boolean $$2) {
+      dzg $$3 = $$1.a($$2);
+      return Arrays.stream($$3.b($$0.X())).allMatch($$0x -> $$0x.equals(wx.a) || $$0x.b() instanceof yf);
+   }
+
+   public abstract float h(eat var1);
+
+   public ffc o(eat $$0) {
+      return new ffc(0.5, 0.5, 0.5);
    }
 
    @Override
-   protected eao a(eao $$0, drp $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   protected exa b_(eat $$0) {
+      return $$0.c(d) ? exb.c.a(false) : super.b_($$0);
    }
 
+   public ech d() {
+      return this.b;
+   }
+
+   public static ech a(dmr $$0) {
+      ech $$1;
+      if ($$0 instanceof dub) {
+         $$1 = ((dub)$$0).d();
+      } else {
+         $$1 = ech.b;
+      }
+
+      return $$1;
+   }
+
+   public void a(crm $$0, dzf $$1, boolean $$2) {
+      $$1.a($$0.cF());
+      $$0.a($$1, $$2);
+   }
+
+   private boolean a(crm $$0, dzf $$1) {
+      UUID $$2 = $$1.t();
+      return $$2 != null && !$$2.equals($$0.cF());
+   }
+
+   @Nullable
    @Override
-   protected float aq_() {
-      return 0.1F;
+   public <T extends dxr> dxs<T> a(djm $$0, eat $$1, dxt<T> $$2) {
+      return a($$2, dxt.h, dzf::a);
    }
 }

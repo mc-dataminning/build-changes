@@ -1,47 +1,36 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fug implements fwt {
-   private static final int a = 170;
-   private final wy b;
+public class fug extends fsy {
    @Nullable
-   private List<ayy> c;
-   @Nullable
-   private tu d;
-   @Nullable
-   private final wy e;
+   protected fun a;
+   protected boolean b;
 
-   private fug(wy $$0, @Nullable wy $$1) {
+   public fug(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, wx.a);
+      this.b = $$4;
+   }
+
+   public void a(fun $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
       this.b = $$0;
-      this.e = $$1;
    }
 
-   public static fug a(wy $$0, @Nullable wy $$1) {
-      return new fug($$0, $$1);
-   }
-
-   public static fug a(wy $$0) {
-      return new fug($$0, $$0);
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   public void b(fws $$0) {
-      if (this.e != null) {
-         $$0.a(fwr.c, this.e);
-      }
+   public void a(fwx $$0) {
+      this.c($$0);
    }
 
-   public List<ayy> a(fpo $$0) {
-      tu $$1 = tu.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(grc::H, this.a.a(this.b, this.D()), this.F(), this.G(), this.g, this.h);
       }
-
-      return this.c;
-   }
-
-   public static List<ayy> a(fpo $$0, wy $$1) {
-      return $$0.h.c($$1, 170);
    }
 }

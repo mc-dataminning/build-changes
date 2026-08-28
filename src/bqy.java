@@ -21,18 +21,18 @@ public interface bqy {
 
    void b(vs var1, zh<?> var2, SocketAddress var3, int var4);
 
-   void a(eee var1, dio var2, eed var3, int var4);
+   void a(eej var1, dir var2, eei var3, int var4);
 
-   void b(eee var1, dio var2, eed var3, int var4);
+   void b(eej var1, dir var2, eei var3, int var4);
 
    @Nullable
    brb e();
 
    @Nullable
-   brb a(dio var1, alf<djh> var2, String var3);
+   brb a(dir var1, alf<djm> var2, String var3);
 
    @Nullable
-   brb a(dio var1, alf<djh> var2, jf<eri> var3);
+   brb a(dir var1, alf<djm> var2, jf<ern> var3);
 
    public static class a implements bqy {
       private static final Logger b = LogUtils.getLogger();
@@ -69,11 +69,11 @@ public interface bqy {
       }
 
       @Override
-      public void a(eee $$0, dio $$1, eed $$2, int $$3) {
+      public void a(eej $$0, dir $$1, eei $$2, int $$3) {
       }
 
       @Override
-      public void b(eee $$0, dio $$1, eed $$2, int $$3) {
+      public void b(eej $$0, dir $$1, eei $$2, int $$3) {
       }
 
       @Override
@@ -87,12 +87,12 @@ public interface bqy {
 
       @Nullable
       @Override
-      public brb a(dio $$0, alf<djh> $$1, String $$2) {
+      public brb a(dir $$0, alf<djm> $$1, String $$2) {
          return null;
       }
 
       @Override
-      public brb a(dio $$0, alf<djh> $$1, jf<eri> $$2) {
+      public brb a(dir $$0, alf<djm> $$1, jf<ern> $$2) {
          return a;
       }
    }

@@ -33,7 +33,7 @@ public record bw(
          if (this.g.isPresent()) {
             boolean var10000;
             label53: {
-               if ($$0 instanceof bxj $$1 && ($$1.fI() || $$1 instanceof crj $$2 && $$2.gj().b)) {
+               if ($$0 instanceof bxj $$1 && ($$1.fI() || $$1 instanceof crm $$2 && $$2.gj().b)) {
                   var10000 = true;
                   break label53;
                }

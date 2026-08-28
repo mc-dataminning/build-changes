@@ -1,44 +1,28 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gwe extends gvs<ckt, hct, gfw> {
+   private static final alg a = alg.b("textures/entity/camel/camel.png");
 
-public class gwe extends gxz<cjj, hcq, gga> {
-   private final Map<cjk.a, gew<gga>> a;
-
-   public gwe(gwt.a $$0) {
-      super($$0, new gga($$0.a(gjn.an)), 0.7F);
-      this.a = a($$0);
+   public gwe(gwy.a $$0) {
+      super($$0, new gfw($$0.a(gjs.M)), new gfw($$0.a(gjs.N)), 0.7F);
+      this.a(new hbp<>(this, $$0.h(), hlw.d.i, $$0x -> $$0x.a, new gfx($$0.a(gjs.O)), new gfx($$0.a(gjs.P))));
    }
 
-   private static Map<cjk.a, gew<gga>> a(gwt.a $$0) {
-      return Maps.newEnumMap(
-         Map.of(
-            cjk.a.a,
-            new gew<>(new gga($$0.a(gjn.an)), new gga($$0.a(gjn.ao))),
-            cjk.a.c,
-            new gew<>(new gga($$0.a(gjn.dO)), new gga($$0.a(gjn.dP))),
-            cjk.a.b,
-            new gew<>(new gga($$0.a(gjn.ae)), new gga($$0.a(gjn.af)))
-         )
-      );
+   public alg a(hct $$0) {
+      return a;
    }
 
-   public alg a(hcq $$0) {
-      return $$0.a == null ? hiz.c() : $$0.a.b().b().b();
+   public hct a() {
+      return new hct();
    }
 
-   public hcq a() {
-      return new hcq();
-   }
-
-   public void a(cjj $$0, hcq $$1, float $$2) {
+   public void a(ckt $$0, hct $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t().a();
-   }
-
-   public void a(hcq $$0, fjy $$1, gqm $$2, int $$3) {
-      if ($$0.a != null) {
-         this.g = this.a.get($$0.a.b().a()).a($$0.aj);
-         super.a($$0, $$1, $$2, $$3);
-      }
+      $$1.a = $$0.a(bws.h).v();
+      $$1.b = $$0.bY();
+      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.d.a($$0.bM);
+      $$1.e.a($$0.bN);
+      $$1.f.a($$0.bO);
+      $$1.g.a($$0.bP);
+      $$1.h.a($$0.bQ);
    }
 }

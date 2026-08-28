@@ -1,12 +1,28 @@
-public record hge(boolean a, hjk b, gsc c) {
-   public static hge a(hls $$0, hmc $$1, gsg $$2) {
-      hjk $$3 = $$1.a($$2, $$0);
-      return new hge($$1.d().a(), $$3, $$1.e());
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public class hge implements hgf {
+   public static final hgf a = new hge();
+
+   @Override
+   public void a(hgi $$0, czn $$1, hgg $$2, czl $$3, @Nullable gkq $$4, @Nullable bxj $$5, int $$6) {
    }
 
-   public void a(hgc.b $$0, czi $$1) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c.a($$1));
+   public static record a() implements hgf.b {
+      public static final MapCodec<hge.a> a = MapCodec.unit(hge.a::new);
+
+      @Override
+      public void a(hmi.a $$0) {
+      }
+
+      @Override
+      public hgf a(hgf.a $$0) {
+         return hge.a;
+      }
+
+      @Override
+      public MapCodec<hge.a> a() {
+         return a;
+      }
    }
 }

@@ -21,7 +21,7 @@ public class bwe {
       }
    }
 
-   public bwe.a a(czk $$0) {
+   public bwe.a a(czn $$0) {
       return !$$0.m() ? bwe.a.a : this.a($$0.o(), $$0.p());
    }
 

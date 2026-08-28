@@ -18,14 +18,14 @@ public record aaw(long c, List<aaw.a> d) implements aai {
       return this.d;
    }
 
-   public static record a(iv b, eyd c) {
-      public static final yw<ByteBuf, aaw.a> a = yw.a(iv.b, aaw.a::a, eyd.a, aaw.a::b, aaw.a::new);
+   public static record a(iv b, eyi c) {
+      public static final yw<ByteBuf, aaw.a> a = yw.a(iv.b, aaw.a::a, eyi.a, aaw.a::b, aaw.a::new);
 
       public iv a() {
          return this.b;
       }
 
-      public eyd b() {
+      public eyi b() {
          return this.c;
       }
    }

@@ -1,25 +1,79 @@
+import org.joml.Matrix4f;
+
 public class gqp {
-   public static final alg a = alg.b("textures/gui/title/background/panorama_overlay.png");
-   private final fpo b;
-   private final gpw c;
-   private float d;
+   private static final float a = -0.01F;
+   private static final float b = -0.001F;
+   private static final int c = 128;
+   private static final int d = 128;
+   private final hkp e;
+   private final hko f;
 
-   public gqp(gpw $$0) {
-      this.c = $$0;
-      this.b = fpo.Q();
+   public gqp(hko $$0, hkp $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public void a(fsh $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = this.b.av().b();
-      float $$6 = (float)((double)$$5 * this.b.n.t().c());
-      this.d = a(this.d + $$6 * 0.1F, 360.0F);
-      $$0.d();
-      this.c.a(this.b, 10.0F, -this.d, $$3);
-      $$0.d();
-      $$0.a(gqx::H, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, axw.a($$3));
+   public void a(hiz $$0, fkd $$1, gqr $$2, boolean $$3, int $$4) {
+      Matrix4f $$5 = $$1.c().a();
+      fkh $$6 = $$2.getBuffer(grc.u($$0.a));
+      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
+      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
+      int $$7 = 0;
+
+      for (hiz.a $$8 : $$0.b) {
+         if (!$$3 || $$8.e) {
+            $$1.a();
+            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
+            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
+            $$1.b(4.0F, 4.0F, 3.0F);
+            $$1.a(-0.125F, 0.125F, 0.0F);
+            Matrix4f $$9 = $$1.c().a();
+            hjq $$10 = $$8.a;
+            if ($$10 != null) {
+               fkh $$11 = $$2.getBuffer(grc.u($$10.i()));
+               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
+               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
+               $$1.b();
+            }
+
+            if ($$8.f != null) {
+               fsk $$12 = fpt.Q().h;
+               float $$13 = (float)$$12.a($$8.f);
+               float $$14 = azm.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
+               $$1.a();
+               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
+               $$1.b($$14, $$14, 1.0F);
+               $$1.a(0.0F, 0.0F, -0.1F);
+               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, fsk.a.a, Integer.MIN_VALUE, $$4, false);
+               $$1.b();
+            }
+
+            $$7++;
+         }
+      }
    }
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   public void a(eyt $$0, eyv $$1, hiz $$2) {
+      $$2.a = this.e.b($$0, $$1);
+      $$2.b.clear();
+
+      for (eyp $$3 : $$1.e()) {
+         $$2.b.add(this.a($$3));
+      }
+   }
+
+   private hiz.a a(eyp $$0) {
+      hiz.a $$1 = new hiz.a();
+      $$1.a = this.f.a($$0);
+      $$1.b = $$0.d();
+      $$1.c = $$0.e();
+      $$1.d = $$0.f();
+      $$1.f = $$0.g().orElse(null);
+      $$1.e = $$0.b();
+      return $$1;
    }
 }

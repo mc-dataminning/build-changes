@@ -1,25 +1,25 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class etc extends eri {
-   public static final MapCodec<etc> d = a(etc::new);
+public record etc(bsq<List<esz>> c) implements esz {
+   static MapCodec<etc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bsq.b(Codec.list(esz.b)).fieldOf("groups").forGetter(etc::c)).apply($$0, etc::new));
 
-   public etc(eri.c $$0) {
-      super($$0);
+   @Override
+   public void a(azv $$0, BiConsumer<alf<esx>, alf<esx>> $$1) {
+      this.c.a($$0).ifPresent($$2 -> $$2.forEach($$2x -> $$2x.a($$0, $$1)));
    }
 
    @Override
-   public Optional<eri.b> a(eri.a $$0) {
-      return a($$0, egn.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(esa $$0, eri.a $$1) {
-      iv $$2 = new iv($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new etb.a($$2));
+   public Stream<alf<esx>> a() {
+      return this.c.d().stream().flatMap($$0 -> $$0.a().stream()).flatMap(esz::a);
    }
 
    @Override
-   public err<?> e() {
-      return err.a;
+   public MapCodec<etc> b() {
+      return a;
    }
 }

@@ -1,9 +1,17 @@
-public class hkj extends hko {
-   public hkj(hjm $$0) {
-      super($$0, alg.b("textures/atlas/mob_effects.png"), hli.i);
+import java.io.IOException;
+
+public class hkj extends avi<int[]> {
+   private static final alg a = alg.b("textures/colormap/dry_foliage.png");
+
+   protected int[] a(avd $$0, bqq $$1) {
+      try {
+         return hkn.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load dry foliage color texture", var4);
+      }
    }
 
-   public hjk a(jf<bvk> $$0) {
-      return this.a($$0.e().map(alf::a).orElseGet(hiz::c));
+   protected void a(int[] $$0, avd $$1, bqq $$2) {
+      dja.a($$0);
    }
 }

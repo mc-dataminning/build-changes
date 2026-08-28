@@ -2,8 +2,8 @@ public record arb(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public dio a() {
-      return new dio(jy.a(this.a), jy.a(this.b));
+   public dir a() {
+      return new dir(jy.a(this.a), jy.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record arb(int a, int b) {
 
    @Override
    public int hashCode() {
-      return dio.d(this.a, this.b);
+      return dir.d(this.a, this.b);
    }
 
    public int c() {

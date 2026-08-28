@@ -1,63 +1,48 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cme extends bwi {
-   public final cmh a;
-   public final String b;
-   private final bwl c;
+public record cme(cme.a e, ctt f) implements ctp<cts, ctq> {
+   public static final Codec<cme> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cme.a.a.fieldOf("assets").forGetter(cme::b), ctt.b.fieldOf("spawn_conditions").forGetter(cme::c)).apply($$0, cme::new)
+   );
+   public static final Codec<cme> b = RecordCodecBuilder.create($$0 -> $$0.group(cme.a.a.fieldOf("assets").forGetter(cme::b)).apply($$0, cme::new));
+   public static final Codec<jf<cme>> c = ald.a(mh.bm);
+   public static final yw<wj, jf<cme>> d = yu.b(mh.bm);
 
-   public cme(cmh $$0, String $$1, float $$2, float $$3) {
-      super($$0.an(), $$0.dU());
-      this.c = bwl.b($$2, $$3);
-      this.i_();
-      this.a = $$0;
-      this.b = $$1;
+   private cme(cme.a $$0) {
+      this($$0, ctt.a);
    }
 
    @Override
-   protected void a(akn.a $$0) {
+   public List<ctp.a<cts, ctq>> a() {
+      return this.f.a();
    }
 
-   @Override
-   protected void a(tz $$0) {
+   public cme.a b() {
+      return this.e;
    }
 
-   @Override
-   protected void b(tz $$0) {
+   public ctt c() {
+      return this.f;
    }
 
-   @Override
-   public boolean bE() {
-      return true;
-   }
+   public static record a(iw b, iw c, iw d) {
+      public static final Codec<cme.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(iw.a.fieldOf("wild").forGetter(cme.a::a), iw.a.fieldOf("tame").forGetter(cme.a::b), iw.a.fieldOf("angry").forGetter(cme.a::c))
+               .apply($$0, cme.a::new)
+      );
 
-   @Nullable
-   @Override
-   public czk dH() {
-      return this.a.dH();
-   }
+      public iw a() {
+         return this.b;
+      }
 
-   @Override
-   public final boolean a(arq $$0, bux $$1, float $$2) {
-      return this.d($$1) ? false : this.a.a($$0, this, $$1, $$2);
-   }
+      public iw b() {
+         return this.c;
+      }
 
-   @Override
-   public boolean u(bwi $$0) {
-      return this == $$0 || this.a == $$0;
-   }
-
-   @Override
-   public zf<abu> a(aro $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public bwl a(bxv $$0) {
-      return this.c;
-   }
-
-   @Override
-   public boolean dS() {
-      return false;
+      public iw c() {
+         return this.d;
+      }
    }
 }

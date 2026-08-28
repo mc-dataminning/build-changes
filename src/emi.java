@@ -1,21 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class emi implements elx {
-   public static final Codec<emi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eqm.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eqm.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, emi::new)
+public class emi extends elu {
+   public static final Codec<emi> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eod.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               ayu.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               ayu.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, emi::new)
    );
-   public final jf<eqm> b;
-   public final jf<eqm> c;
+   public final int d;
+   public final int e;
 
-   public emi(jf<eqm> $$0, jf<eqm> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<ejf<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public emi(eod $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

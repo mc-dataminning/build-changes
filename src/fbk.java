@@ -2,29 +2,39 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class fbk extends fbb {
+public class fbk extends fbg {
    public static final MapCodec<fbk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ki.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, fbk::new)
+      $$0 -> a($$0)
+            .and($$0.group(ezr.e.fieldOf("component").forGetter($$0x -> $$0x.b), fbj.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, fbk::new)
    );
-   private final ki b;
+   private final ezq<?> b;
+   private final fbh c;
 
-   private fbk(List<fcx> $$0, ki $$1) {
+   private fbk(List<fdc> $$0, ezq<?> $$1, fbh $$2) {
       super($$0);
       this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public fbd<fbk> b() {
-      return fbe.k;
+   public fbi<fbk> b() {
+      return fbj.u;
    }
 
    @Override
-   public czk a(czk $$0, ezo $$1) {
-      $$0.a(this.b);
-      return $$0;
+   public czn a(czn $$0, ezt $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
+      }
    }
 
-   public static <T> fbb.a<?> a(kj<T> $$0, T $$1) {
-      return a($$2 -> new fbk($$2, ki.a().a($$0, $$1).a()));
+   @Override
+   public void a(ezz $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

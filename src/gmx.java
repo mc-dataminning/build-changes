@@ -1,27 +1,22 @@
-public class gmx<T extends lz> extends gou {
-   private final gop a;
-
-   protected gmx(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gop $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
+public class gmx extends goz {
+   gmx(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.7F;
+      this.u = 0.5F;
       this.j *= 0.1F;
       this.k *= 0.1F;
       this.l *= 0.1F;
-      this.D = this.D * 0.75F * $$7.d();
-      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
-      this.b($$8);
-   }
-
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
-   }
-
-   @Override
-   public gny b() {
-      return gny.b;
+      this.j += $$4 * 0.4;
+      this.k += $$5 * 0.4;
+      this.l += $$6 * 0.4;
+      float $$7 = (float)(Math.random() * 0.3F + 0.6F);
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.D *= 0.75F;
+      this.t = Math.max((int)(6.0 / (Math.random() * 0.8 + 0.6)), 1);
+      this.n = false;
+      this.a();
    }
 
    @Override
@@ -32,6 +27,57 @@ public class gmx<T extends lz> extends gou {
    @Override
    public void a() {
       super.a();
-      this.b(this.a);
+      this.w *= 0.96F;
+      this.x *= 0.9F;
+   }
+
+   @Override
+   public god b() {
+      return god.b;
+   }
+
+   public static class a implements goc<mc> {
+      private final gou a;
+
+      public a(gou $$0) {
+         this.a = $$0;
+      }
+
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gmx $$8 = new gmx($$1, $$2, $$3, $$4, $$5, $$6 + 1.0, $$7);
+         $$8.a(20);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements goc<mc> {
+      private final gou a;
+
+      public b(gou $$0) {
+         this.a = $$0;
+      }
+
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gmx $$8 = new gmx($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.v *= 0.3F;
+         $$8.w *= 0.8F;
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class c implements goc<mc> {
+      private final gou a;
+
+      public c(gou $$0) {
+         this.a = $$0;
+      }
+
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gmx $$8 = new gmx($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

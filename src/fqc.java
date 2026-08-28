@@ -1,34 +1,44 @@
-import com.google.common.collect.Maps;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import org.joml.Vector2i;
 
-public record fqc(float a, boolean b, Map<String, List<fqb>> c) {
-   public static class a {
-      private final float a;
-      private final Map<String, List<fqb>> b = Maps.newHashMap();
-      private boolean c;
+public class fqc {
+   private double a;
+   private double b;
 
-      public static fqc.a a(float $$0) {
-         return new fqc.a($$0);
+   public Vector2i a(double $$0, double $$1) {
+      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
+         this.a = 0.0;
       }
 
-      private a(float $$0) {
-         this.a = $$0;
+      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
+         this.b = 0.0;
       }
 
-      public fqc.a a() {
-         this.c = true;
-         return this;
+      this.a += $$0;
+      this.b += $$1;
+      int $$2 = (int)this.a;
+      int $$3 = (int)this.b;
+      if ($$2 == 0 && $$3 == 0) {
+         return new Vector2i(0, 0);
+      } else {
+         this.a -= (double)$$2;
+         this.b -= (double)$$3;
+         return new Vector2i($$2, $$3);
+      }
+   }
+
+   public static int a(double $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.signum($$0);
+      $$1 -= $$3;
+      $$1 = Math.max(-1, $$1);
+
+      while ($$1 < 0) {
+         $$1 += $$2;
       }
 
-      public fqc.a a(String $$0, fqb $$1) {
-         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
-         return this;
+      while ($$1 >= $$2) {
+         $$1 -= $$2;
       }
 
-      public fqc b() {
-         return new fqc(this.a, this.c, this.b);
-      }
+      return $$1;
    }
 }

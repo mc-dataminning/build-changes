@@ -1,115 +1,89 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
 
-public class ekk extends ejt<eme> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bwr<?>[] b = new bwr[]{bwr.bf, bwr.bO, bwr.bO, bwr.bo};
-   private static final eao c = dmo.nI.m();
-
-   public ekk(Codec<eme> $$0) {
+public class ekk extends ejy<emj> {
+   public ekk(Codec<emj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<eme> $$0) {
-      Predicate<eao> $$1 = ejt.a(axc.bS);
-      iv $$2 = $$0.e();
-      azv $$3 = $$0.d();
-      dkg $$4 = $$0.b();
-      int $$5 = 3;
-      int $$6 = $$3.a(2) + 2;
-      int $$7 = -$$6 - 1;
-      int $$8 = $$6 + 1;
-      int $$9 = -1;
-      int $$10 = 4;
-      int $$11 = $$3.a(2) + 2;
-      int $$12 = -$$11 - 1;
-      int $$13 = $$11 + 1;
-      int $$14 = 0;
+   public boolean a(eka<emj> $$0) {
+      iv $$1 = $$0.e();
+      azv $$2 = $$0.d();
+      dkl $$3 = $$0.b();
 
-      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
-         for (int $$16 = -1; $$16 <= 4; $$16++) {
-            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
-               iv $$18 = $$2.b($$15, $$16, $$17);
-               boolean $$19 = $$4.a_($$18).e();
-               if ($$16 == -1 && !$$19) {
-                  return false;
-               }
-
-               if ($$16 == 4 && !$$19) {
-                  return false;
-               }
-
-               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.v($$18) && $$4.v($$18.d())) {
-                  $$14++;
-               }
-            }
-         }
+      while ($$3.v($$1) && $$1.v() > $$3.G_() + 2) {
+         $$1 = $$1.e();
       }
 
-      if ($$14 >= 1 && $$14 <= 5) {
-         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
-            for (int $$21 = 3; $$21 >= -1; $$21--) {
-               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
-                  iv $$23 = $$2.b($$20, $$21, $$22);
-                  eao $$24 = $$4.a_($$23);
-                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
-                     if ($$23.v() >= $$4.G_() && !$$4.a_($$23.e()).e()) {
-                        $$4.a($$23, c, 2);
-                     } else if ($$24.e() && !$$24.a(dmo.cG)) {
-                        if ($$21 == -1 && $$3.a(4) != 0) {
-                           this.a($$4, $$23, dmo.cx.m(), $$1);
-                        } else {
-                           this.a($$4, $$23, dmo.m.m(), $$1);
+      if (!$$3.a_($$1).a(dmt.ef)) {
+         return false;
+      } else {
+         $$1 = $$1.b($$2.a(4));
+         int $$4 = $$2.a(4) + 7;
+         int $$5 = $$4 / 4 + $$2.a(2);
+         if ($$5 > 1 && $$2.a(60) == 0) {
+            $$1 = $$1.b(10 + $$2.a(30));
+         }
+
+         for (int $$6 = 0; $$6 < $$4; $$6++) {
+            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
+            int $$8 = azm.f($$7);
+
+            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+               float $$10 = (float)azm.a($$9) - 0.25F;
+
+               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
+                  float $$12 = (float)azm.a($$11) - 0.25F;
+                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
+                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
+                     eat $$13 = $$3.a_($$1.b($$9, $$6, $$11));
+                     if ($$13.l() || b($$13) || $$13.a(dmt.ef) || $$13.a(dmt.ee)) {
+                        this.a($$3, $$1.b($$9, $$6, $$11), dmt.je.m());
+                     }
+
+                     if ($$6 != 0 && $$8 > 1) {
+                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
+                        if ($$13.l() || b($$13) || $$13.a(dmt.ef) || $$13.a(dmt.ee)) {
+                           this.a($$3, $$1.b($$9, -$$6, $$11), dmt.je.m());
                         }
                      }
-                  } else if (!$$24.a(dmo.cG) && !$$24.a(dmo.cD)) {
-                     this.a($$4, $$23, c, $$1);
                   }
                }
             }
          }
 
-         for (int $$25 = 0; $$25 < 2; $$25++) {
-            for (int $$26 = 0; $$26 < 3; $$26++) {
-               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
-               int $$28 = $$2.v();
-               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
-               iv $$30 = new iv($$27, $$28, $$29);
-               if ($$4.v($$30)) {
-                  int $$31 = 0;
+         int $$14 = $$5 - 1;
+         if ($$14 < 0) {
+            $$14 = 0;
+         } else if ($$14 > 1) {
+            $$14 = 1;
+         }
 
-                  for (jb $$32 : jb.c.a) {
-                     if ($$4.a_($$30.a($$32)).e()) {
-                        $$31++;
-                     }
-                  }
+         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
+            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
+               iv $$17 = $$1.b($$15, -1, $$16);
+               int $$18 = 50;
+               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
+                  $$18 = $$2.a(5);
+               }
 
-                  if ($$31 == 1) {
-                     this.a($$4, $$30, erm.a($$4, $$30, dmo.cG.m()), $$1);
-                     bum.a($$4, $$3, $$30, ezk.c);
+               while ($$17.v() > 50) {
+                  eat $$19 = $$3.a_($$17);
+                  if (!$$19.l() && !b($$19) && !$$19.a(dmt.ef) && !$$19.a(dmt.ee) && !$$19.a(dmt.je)) {
                      break;
                   }
+
+                  this.a($$3, $$17, dmt.je.m());
+                  $$17 = $$17.e();
+                  if (--$$18 <= 0) {
+                     $$17 = $$17.c($$2.a(5) + 1);
+                     $$18 = $$2.a(5);
+                  }
                }
             }
-         }
-
-         this.a($$4, $$2, dmo.cD.m(), $$1);
-         if ($$4.c_($$2) instanceof dze $$34) {
-            $$34.a(this.a($$3), $$3);
-         } else {
-            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
          }
 
          return true;
-      } else {
-         return false;
       }
-   }
-
-   private bwr<?> a(azv $$0) {
-      return ag.a(b, $$0);
    }
 }

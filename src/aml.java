@@ -110,7 +110,7 @@ public class aml {
    }
 
    private Optional<aml.a> b(Scanner $$0) {
-      alf<djh> $$1 = (alf<djh>)amu.a.get($$0.next());
+      alf<djm> $$1 = (alf<djm>)amu.a.get($$0.next());
       if ($$1 == null) {
          return Optional.empty();
       } else {
@@ -119,7 +119,7 @@ public class aml {
          float $$4 = $$0.nextFloat();
          float $$5 = $$0.nextFloat();
          float $$6 = $$0.nextFloat();
-         return Optional.of(new aml.a($$1, new fex((double)$$2, (double)$$3, (double)$$4), new few($$6, $$5)));
+         return Optional.of(new aml.a($$1, new ffc((double)$$2, (double)$$3, (double)$$4), new ffb($$6, $$5)));
       }
    }
 
@@ -129,13 +129,13 @@ public class aml {
          if (!$$1.isEmpty()) {
             arr $$2 = $$1.get(0);
             arq $$3 = this.e.J();
-            ej $$4 = new ej($$2.z(), fex.a($$3.aa()), few.a, $$3, 4, "", wx.a, this.e, $$2);
+            ej $$4 = new ej($$2.z(), ffc.a($$3.aa()), ffb.a, $$3, 4, "", wx.a, this.e, $$2);
             ek $$5 = this.e.aG();
             $$5.a($$4, $$0);
          }
       });
    }
 
-   static record a(alf<djh> a, fex b, few c) {
+   static record a(alf<djm> a, ffc b, ffb c) {
    }
 }

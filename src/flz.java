@@ -1,22 +1,54 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class flz extends fmd {
+public class flz {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
    @Nullable
-   public String a;
-   public long b;
-   public long c;
+   private final String[] d;
+
+   private flz(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public wy a(wy $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public wy a() {
+      if (!hky.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? wy.c(this.c) : wy.a(this.c, this.d);
+      }
+   }
 
    public static flz a(JsonObject $$0) {
-      flz $$1 = new flz();
+      String $$1 = foe.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
 
-      try {
-         $$1.a = fnz.b("profileUuid", $$0, null);
-         $$1.b = fnz.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fnz.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
       }
 
-      return $$1;
+      return new flz($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

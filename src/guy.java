@@ -1,44 +1,41 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class guy implements guo.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final fpo c;
-   private Collection<iv> d = Lists.newArrayList();
+public class guy implements gut.a {
+   private final fpt a;
+   private static final int b = 10;
 
-   public guy(fpo $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<iv> $$0) {
-      this.d = $$0;
+   public guy(fpt $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
-      iv $$5 = this.b().c();
+   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
+      djm $$5 = this.a.s;
+      iv $$6 = iv.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      for (iv $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+      for (iv $$8 : iv.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(djv.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azm.g($$10, 0.9F, 0.9F);
+         long $$12 = jy.e($$8.a());
+         if ($$7.add($$12)) {
+            gut.a(
+               $$0,
+               $$1,
+               $$5.S().q().a(djv.a, jy.a($$12)),
+               (double)jy.a(jy.b($$12), 8),
+               (double)jy.a(jy.c($$12), 8),
+               (double)jy.a(jy.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            gut.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
          }
       }
-   }
-
-   private static void a(fjy $$0, gqm $$1, iv $$2) {
-      guo.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(fjy $$0, gqm $$1, String $$2, iv $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      guo.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private fow b() {
-      return this.c.j.k();
    }
 }

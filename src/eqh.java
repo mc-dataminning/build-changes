@@ -1,34 +1,30 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class eqh extends eqp {
-   public static final MapCodec<eqh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(epp.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eqh::new));
-   private final epp c;
+public enum eqh implements bak {
+   a(jb.b, 1, "ceiling"),
+   b(jb.a, -1, "floor");
 
-   private eqh(epp $$0) {
-      this.c = $$0;
+   public static final Codec<eqh> c = bak.a(eqh::values);
+   private final jb d;
+   private final int e;
+   private final String f;
+
+   private eqh(final jb $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static eqh a(epp $$0) {
-      return new eqh($$0);
+   public jb a() {
+      return this.d;
    }
 
-   public static eqh a(ehh $$0, ehh $$1) {
-      return a(eps.a($$0, $$1));
-   }
-
-   public static eqh b(ehh $$0, ehh $$1) {
-      return a(epr.a($$0, $$1));
-   }
-
-   @Override
-   public Stream<iv> a_(eqn $$0, azv $$1, iv $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public eqq<?> b() {
-      return eqq.l;
+   public String c() {
+      return this.f;
    }
 }

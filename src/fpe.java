@@ -1,120 +1,91 @@
-import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.OptionalInt;
+import java.util.Set;
 
-public interface fpe {
-   fpe a = new fpe.a(0.0F);
-   fpe b = new fpe.a(1.0F);
+public class fpe extends awq {
+   private final Map<dfm, dfl> b = new HashMap<>();
+   private final Set<dfm> c = new HashSet<>();
+   private Map<ddw, List<gcv>> d = Map.of();
+   private List<gcv> e = List.of();
 
-   float a();
-
-   float a(boolean var1);
-
-   float b();
-
-   public static class a implements fpe {
-      private final float c;
-
-      a(float $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         return this.c;
-      }
-
-      @Override
-      public float b() {
-         return this.c;
-      }
+   public void a(dfl $$0) {
+      this.b.put($$0.a(), $$0);
    }
 
-   public static class b implements fpe {
-      private float c;
-      private float d;
-      private float e;
-      private float f;
-      private long g;
-      private long h;
-      private final float i;
-      private final FloatUnaryOperator j;
-      private boolean k;
-      private boolean l;
+   public void a(dfm $$0) {
+      this.b.remove($$0);
+      this.c.remove($$0);
+   }
 
-      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
-         this.i = 1000.0F / $$0;
-         this.h = this.g = $$1;
-         this.j = $$2;
+   public void b() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   public boolean b(dfm $$0) {
+      return this.c.contains($$0);
+   }
+
+   public void c(dfm $$0) {
+      this.c.remove($$0);
+   }
+
+   public void d(dfm $$0) {
+      this.c.add($$0);
+   }
+
+   public void c() {
+      Map<deh, List<List<dfl>>> $$0 = a(this.b.values());
+      Map<ddw, List<gcv>> $$1 = new HashMap<>();
+      Builder<gcv> $$2 = ImmutableList.builder();
+      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(gcv::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
+
+      for (gcx $$3 : gcx.values()) {
+         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
       }
 
-      public int a(long $$0, boolean $$1) {
-         this.b($$0);
-         return $$1 ? this.a($$0) : 0;
-      }
+      this.d = Map.copyOf($$1);
+      this.e = $$2.build();
+   }
 
-      private int a(long $$0) {
-         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
-         this.g = $$0;
-         this.d = this.d + this.c;
-         int $$1 = (int)this.d;
-         this.d -= (float)$$1;
-         return $$1;
-      }
+   private static Map<deh, List<List<dfl>>> a(Iterable<dfl> $$0) {
+      Map<deh, List<List<dfl>>> $$1 = new HashMap<>();
+      Table<deh, Integer, List<dfl>> $$2 = HashBasedTable.create();
 
-      private void b(long $$0) {
-         this.e = (float)($$0 - this.h) / this.i;
-         this.h = $$0;
-      }
-
-      public void b(boolean $$0) {
-         if ($$0) {
-            this.c();
+      for (dfl $$3 : $$0) {
+         deh $$4 = $$3.d();
+         OptionalInt $$5 = $$3.c();
+         if ($$5.isEmpty()) {
+            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
          } else {
-            this.d();
+            List<dfl> $$6 = (List<dfl>)$$2.get($$4, $$5.getAsInt());
+            if ($$6 == null) {
+               $$6 = new ArrayList<>();
+               $$2.put($$4, $$5.getAsInt(), $$6);
+               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
+            }
+
+            $$6.add($$3);
          }
       }
 
-      private void c() {
-         if (!this.k) {
-            this.f = this.d;
-         }
+      return $$1;
+   }
 
-         this.k = true;
-      }
+   public List<gcv> d() {
+      return this.e;
+   }
 
-      private void d() {
-         if (this.k) {
-            this.d = this.f;
-         }
-
-         this.k = false;
-      }
-
-      public void c(boolean $$0) {
-         this.l = $$0;
-      }
-
-      @Override
-      public float a() {
-         return this.c;
-      }
-
-      @Override
-      public float a(boolean $$0) {
-         if (!$$0 && this.l) {
-            return 1.0F;
-         } else {
-            return this.k ? this.f : this.d;
-         }
-      }
-
-      @Override
-      public float b() {
-         return this.e > 7.0F ? 0.5F : this.e;
-      }
+   public List<gcv> a(ddw $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

@@ -1,38 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dvh extends dly implements dpy {
+public class dvh extends dwd implements dmu {
    public static final MapCodec<dvh> a = b(dvh::new);
+   private static final ffw b = dmr.b(12.0, 0.0, 13.0);
 
-   public dvh(ean.d $$0) {
+   @Override
+   public MapCodec<dvh> a() {
+      return a;
+   }
+
+   protected dvh(eas.d $$0) {
       super($$0);
    }
 
-   @Nullable
    @Override
-   public dxm a(iv $$0, eao $$1) {
-      return new dzh($$0, $$1);
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return b;
    }
 
    @Override
-   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
-      if ($$1.c_($$2) instanceof dzh $$6) {
-         if (!$$3.gF()) {
-            return bug.e;
-         } else {
-            if ($$3.cT().C) {
-               $$3.a($$6);
-            }
-
-            return bug.a;
-         }
-      } else {
-         return bug.e;
-      }
+   public boolean a(djp $$0, iv $$1, eat $$2) {
+      return o($$2).m().a($$0, $$1) && $$0.v($$1.d());
    }
 
    @Override
-   protected MapCodec<dvh> a() {
-      return a;
+   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
+      dpa.a($$0, o($$3).m(), $$2, 2);
+   }
+
+   private static dpa o(eat $$0) {
+      return (dpa)($$0.a(dmt.bB) ? dmt.jk : dmt.jj);
    }
 }

@@ -85,7 +85,7 @@ public class aoj {
       return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(ej $$0, Collection<arr> $$1, alg $$2, awo $$3, fex $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<arr> $$1, alg $$2, awo $$3, ffc $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
       jf<awm> $$8 = jf.a(awm.a($$2));
       double $$9 = (double)azm.l($$8.a().a($$5));
       int $$10 = 0;
@@ -96,7 +96,7 @@ public class aoj {
          double $$14 = $$4.e - $$12.dB();
          double $$15 = $$4.f - $$12.dF();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         fex $$17 = $$4;
+         ffc $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -104,7 +104,7 @@ public class aoj {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new fex($$12.dz() + $$13 / $$19 * 2.0, $$12.dB() + $$14 / $$19 * 2.0, $$12.dF() + $$15 / $$19 * 2.0);
+            $$17 = new ffc($$12.dz() + $$13 / $$19 * 2.0, $$12.dB() + $$14 / $$19 * 2.0, $$12.dF() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

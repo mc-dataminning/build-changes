@@ -2,7 +2,7 @@ public class bxk extends bwi {
    private static final String a = "data";
    private tz b = new tz();
 
-   public bxk(bwr<?> $$0, djh $$1) {
+   public bxk(bwr<?> $$0, djm $$1) {
       super($$0, $$1);
       this.ad = true;
    }
@@ -46,8 +46,8 @@ public class bxk extends bwi {
    }
 
    @Override
-   public exa j_() {
-      return exa.d;
+   public exf j_() {
+      return exf.d;
    }
 
    @Override

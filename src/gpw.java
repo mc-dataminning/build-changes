@@ -1,114 +1,125 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
 import java.util.List;
-import java.util.stream.IntStream;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gpw {
-   private static final int a = 6;
-   private final List<alg> b;
-   private final fkb[] c = new fkb[6];
-
-   public gpw(alg $$0) {
-      this.b = IntStream.range(0, 6).mapToObj($$1 -> $$0.e($$0.a() + "_" + $$1 + ".png")).toList();
-   }
-
-   public void a(fpo $$0, float $$1, float $$2, float $$3) {
-      if (this.c[0] == null) {
-         this.a();
+   private static final gpw a = new gpw("") {
+      @Override
+      public void a(fpt $$0) {
       }
 
-      Matrix4f $$4 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().k() / (float)$$0.aO().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$4, fhb.a);
-      Matrix4fStack $$5 = RenderSystem.getModelViewStack();
-      $$5.pushMatrix();
-      $$5.rotationX((float) Math.PI);
-      int $$6 = 2;
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         $$5.pushMatrix();
-         float $$8 = ((float)($$7 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$9 = ((float)($$7 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$10 = 0.0F;
-         $$5.translate($$8, $$9, 0.0F);
-         $$5.rotateX($$1 * (float) (Math.PI / 180.0));
-         $$5.rotateY($$2 * (float) (Math.PI / 180.0));
-         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$3 / (float)($$7 + 1));
-
-         for (int $$11 = 0; $$11 < 6; $$11++) {
-            this.c[$$11].a();
-            this.c[$$11].a(gqx.I(this.b.get($$11)));
-         }
-
-         fkb.b();
-         $$5.popMatrix();
-         RenderSystem.colorMask(true, true, true, false);
+      @Override
+      public void a(gpw.c $$0, String $$1, String $$2) {
       }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
+   @Nullable
+   private gpw.b e;
 
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.restoreProjectionMatrix();
-      $$5.popMatrix();
+   gpw(String $$0) {
+      this.d = fpt.Q().q.toPath().resolve($$0);
    }
 
-   private void a() {
-      try (fjv $$0 = new fjv(fjw.i.b() * 4)) {
-         for (int $$1 = 0; $$1 < 6; $$1++) {
-            fju $$2 = new fju($$0, fkd.c.h, fjw.i);
-            if ($$1 == 0) {
-               $$2.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F);
-               $$2.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F);
-               $$2.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F);
-               $$2.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F);
+   public static gpw a(@Nullable String $$0) {
+      return $$0 == null ? a : new gpw($$0);
+   }
+
+   public void a(gpw.c $$0, String $$1, String $$2) {
+      this.e = new gpw.b($$0, $$1, $$2);
+   }
+
+   public void a(fpt $$0) {
+      if ($$0.r != null && this.e != null) {
+         ag.i().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
             }
 
-            if ($$1 == 1) {
-               $$2.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F);
-               $$2.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F);
-               $$2.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F);
-               $$2.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F);
-            }
-
-            if ($$1 == 2) {
-               $$2.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F);
-               $$2.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F);
-               $$2.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F);
-               $$2.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F);
-            }
-
-            if ($$1 == 3) {
-               $$2.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F);
-               $$2.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F);
-               $$2.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F);
-               $$2.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F);
-            }
-
-            if ($$1 == 4) {
-               $$2.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F);
-               $$2.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F);
-               $$2.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F);
-               $$2.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F);
-            }
-
-            if ($$1 == 5) {
-               $$2.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F);
-               $$2.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F);
-               $$2.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F);
-               $$2.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F);
-            }
-
-            this.c[$$1] = new fkb(fhm.b);
-            this.c[$$1].a();
-            this.c[$$1].a($$2.b());
-            fkb.b();
-         }
+            gpw.a $$2 = new gpw.a(this.e, Instant.now(), $$0.r.i());
+            Codec.list(gpw.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ag.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
+      } else {
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
       }
    }
 
-   public void a(hjm $$0) {
-      for (alg $$1 : this.b) {
-         $$0.a($$1);
+   static record a(gpw.b b, Instant c, djj d) {
+      public static final Codec<gpw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gpw.b.a.forGetter(gpw.a::a), ayu.q.fieldOf("lastPlayedTime").forGetter(gpw.a::b), djj.f.fieldOf("gamemode").forGetter(gpw.a::c))
+               .apply($$0, gpw.a::new)
+      );
+
+      public gpw.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public djj c() {
+         return this.d;
+      }
+   }
+
+   static record b(gpw.c b, String c, String d) {
+      public static final MapCodec<gpw.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  gpw.c.d.fieldOf("type").forGetter(gpw.b::a), ayu.s.fieldOf("id").forGetter(gpw.b::b), Codec.STRING.fieldOf("name").forGetter(gpw.b::c)
+               )
+               .apply($$0, gpw.b::new)
+      );
+
+      public gpw.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements bak {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<gpw.c> d = bak.a(gpw.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

@@ -1,317 +1,138 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
 import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class gki implements zl {
-   private static final wy k = wy.c("disconnect.lost");
-   private static final Logger l = LogUtils.getLogger();
-   protected final fpo a;
-   protected final vr b;
-   @Nullable
-   protected final gla c;
-   @Nullable
-   protected String d;
-   protected final hpa e;
-   @Nullable
-   protected final fyn f;
-   protected boolean g;
-   private final List<gki.a> m = new ArrayList<>();
-   protected final Map<alg, byte[]> h;
-   protected Map<String, String> i;
-   protected aly j;
+public class gki implements gld {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<crp>> g = CompletableFuture.completedFuture(Optional.empty());
+   private Instant h = Instant.EPOCH;
 
-   protected gki(fpo $$0, vr $$1, gkq $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
-      this.h = $$2.h();
-      this.i = $$2.j();
-      this.j = $$2.k();
+   public gki(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
    }
 
    @Override
-   public void a(zf $$0, Exception $$1) {
-      l.error("Failed to handle packet {}, disconnecting", $$0, $$1);
-      zl.super.a($$0, $$1);
-      Optional<Path> $$2 = this.a($$0, (Throwable)$$1);
-      Optional<URI> $$3 = this.j.a(aly.b.a).map(aly.a::c);
-      this.b.a(new vt(wy.c("disconnect.packetError"), $$2, $$3));
+   public CompletableFuture<Optional<crp>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
    }
 
    @Override
-   public vt a(wy $$0, Throwable $$1) {
-      Optional<Path> $$2 = this.a(null, $$1);
-      Optional<URI> $$3 = this.j.a(aly.b.a).map(aly.a::c);
-      return new vt($$0, $$2, $$3);
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(crp::a).orElse(true) : false;
    }
 
-   private Optional<Path> a(@Nullable zf $$0, Throwable $$1) {
-      p $$2 = p.a($$1, "Packet handling error");
-      zi.a($$2, this, $$0);
-      Path $$3 = this.a.q.toPath().resolve("debug");
-      Path $$4 = $$3.resolve("disconnect-" + ag.f() + "-client.txt");
-      Optional<aly.a> $$5 = this.j.a(aly.b.a);
-      List<String> $$6 = $$5.<List<String>>map($$0x -> List.of("Server bug reporting link: " + $$0x.c())).orElse(List.of());
-      return $$2.a($$4, z.d, $$6) ? Optional.of($$4) : Optional.empty();
-   }
+   private CompletableFuture<Optional<crp>> a(Optional<crp> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!ac.aV) {
+               this.a(null);
+            }
 
-   @Override
-   public boolean a(zf<?> $$0) {
-      return zl.super.a($$0) ? true : this.g && ($$0 instanceof zu || $$0 instanceof zv);
-   }
-
-   @Override
-   public void a(zp $$0) {
-      this.a(new aab($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
-   }
-
-   @Override
-   public void a(zq $$0) {
-      zi.a($$0, this, this.a);
-      this.b(new aac($$0.b()));
-   }
-
-   @Override
-   public void a(zm $$0) {
-      aai $$1 = $$0.b();
-      if (!($$1 instanceof aaj)) {
-         zi.a($$0, this, this.a);
-         if ($$1 instanceof aag $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
+            return $$0;
          } else {
-            this.a($$1);
+            try {
+               crp $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.ofNullable($$1);
+            } catch (ayk | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
+            }
          }
-      }
+      }, ag.j());
    }
 
-   protected abstract void a(aai var1);
-
-   @Override
-   public void a(zs $$0) {
-      zi.a($$0, this, this.a);
-      UUID $$1 = $$0.b();
-      URL $$2 = a($$0.e());
-      if ($$2 == null) {
-         this.b.a(new aad($$1, aad.a.f));
+   private Optional<crp> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
       } else {
-         String $$3 = $$0.f();
-         boolean $$4 = $$0.g();
-         gla.a $$5 = this.c != null ? this.c.b() : gla.a.c;
-         if ($$5 != gla.a.c && (!$$4 || $$5 != gla.a.b)) {
-            this.a.af().a($$1, $$2, $$3);
-         } else {
-            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = crp.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
          }
       }
    }
 
-   @Override
-   public void a(zr $$0) {
-      zi.a($$0, this, this.a);
-      $$0.b().ifPresentOrElse($$0x -> this.a.af().a($$0x), () -> this.a.af().e());
-   }
+   private void a(@Nullable crp $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
 
-   static wy a(wy $$0, @Nullable wy $$1) {
-      return (wy)($$1 == null ? $$0 : wy.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
+      if ($$0 != null) {
+         if (ac.aV) {
+            crp.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
+         }
+      }
    }
 
    @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
+   private crp a(UserApiService $$0) throws ayk, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         crq.a $$2 = a($$1);
+         return new crp(ayj.a($$1.keyPair().privateKey()), new crq($$2), Instant.parse($$1.refreshedAfter()));
+      } else {
          return null;
       }
    }
 
-   @Override
-   public void a(abp $$0) {
-      zi.a($$0, this, this.a);
-      this.b.a(new abs($$0.b(), this.h.get($$0.b())));
-   }
-
-   @Override
-   public void a(zu $$0) {
-      zi.a($$0, this, this.a);
-      this.h.put($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(zn $$0) {
-      zi.a($$0, this, this.a);
-      this.i = $$0.b();
-   }
-
-   @Override
-   public void a(zt $$0) {
-      zi.a($$0, this, this.a);
-      List<aly.c> $$1 = $$0.b();
-      Builder<aly.a> $$2 = ImmutableList.builderWithExpectedSize($$1.size());
-
-      for (aly.c $$3 : $$1) {
+   private static crq.a a(KeyPairResponse $$0) throws ayk {
+      KeyPair $$1 = $$0.keyPair();
+      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
          try {
-            URI $$4 = ag.a($$3.b());
-            $$2.add(new aly.a($$3.a(), $$4));
-         } catch (Exception var7) {
-            l.warn("Received invalid link for type {}:{}", new Object[]{$$3.a(), $$3.b(), var7});
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = ayj.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new crq.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new ayk(var5);
          }
-      }
-
-      this.j = new aly($$2.build());
-   }
-
-   @Override
-   public void a(zv $$0) {
-      this.g = true;
-      zi.a($$0, this, this.a);
-      if (this.c == null) {
-         throw new IllegalStateException("Cannot transfer to server from singleplayer");
       } else {
-         this.b.a(wy.c("disconnect.transfer"));
-         this.b.m();
-         this.b.n();
-         gmd $$1 = new gmd($$0.b(), $$0.e());
-         fxm.a(Objects.requireNonNullElseGet(this.f, fyp::new), this.a, $$1, this.c, false, new gle(this.h));
-      }
-   }
-
-   @Override
-   public void a(zo $$0) {
-      this.b.a($$0.b());
-   }
-
-   protected void e() {
-      Iterator<gki.a> $$0 = this.m.iterator();
-
-      while ($$0.hasNext()) {
-         gki.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ag.c()) {
-            $$0.remove();
-         }
-      }
-   }
-
-   public void b(zf<?> $$0) {
-      this.b.a($$0);
-   }
-
-   @Override
-   public void a(vt $$0) {
-      this.e.c();
-      this.a.a(this.b($$0), this.g);
-      l.warn("Client disconnected with reason: {}", $$0.a().getString());
-   }
-
-   @Override
-   public void a(p $$0, q $$1) {
-      $$1.a("Is Local", () -> String.valueOf(this.b.e()));
-      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
-      $$1.a("Server brand", () -> this.d);
-      if (!this.i.isEmpty()) {
-         q $$2 = $$0.a("Custom Server Details");
-         this.i.forEach($$2::a);
-      }
-   }
-
-   protected fyn b(vt $$0) {
-      fyn $$1 = Objects.requireNonNullElseGet(this.f, () -> new gbf(new fyp()));
-      return (fyn)(this.c != null && this.c.e() ? new hpt($$1, k, $$0.a()) : new fxu($$1, k, $$0));
-   }
-
-   @Nullable
-   public String f() {
-      return this.d;
-   }
-
-   private void a(zf<? extends wk> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.m.add(new gki.a($$0, $$1, ag.c() + $$2.toMillis()));
-      }
-   }
-
-   private fyn a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable wy $$4) {
-      fyn $$5 = this.a.z;
-      return $$5 instanceof gki.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new gki.b(this.a, $$5, List.of(new gki.b.a($$0, $$1, $$2)), $$3, $$4);
-   }
-
-   static record a(zf<? extends wk> a, BooleanSupplier b, long c) {
-   }
-
-   class b extends fxl {
-      private final List<gki.b.a> s;
-      @Nullable
-      private final fyn u;
-
-      b(final fpo $$0, @Nullable final fyn $$1, final List<gki.b.a> $$2, final boolean $$3, @Nullable final wy $$4) {
-         super(
-            $$5 -> {
-               $$0.a($$1);
-               hmj $$6 = $$0.af();
-               if ($$5) {
-                  if (gki.this.c != null) {
-                     gki.this.c.a(gla.a.a);
-                  }
-
-                  $$6.g();
-               } else {
-                  $$6.h();
-                  if ($$3) {
-                     gki.this.b.a(wy.c("multiplayer.requiredTexturePrompt.disconnect"));
-                  } else if (gki.this.c != null) {
-                     gki.this.c.a(gla.a.b);
-                  }
-               }
-
-               for (gki.b.a $$7 : $$2) {
-                  $$6.a($$7.a, $$7.b, $$7.c);
-               }
-
-               if (gki.this.c != null) {
-                  glb.b(gki.this.c);
-               }
-            },
-            $$3 ? wy.c("multiplayer.requiredTexturePrompt.line1") : wy.c("multiplayer.texturePrompt.line1"),
-            gki.a($$3 ? wy.c("multiplayer.requiredTexturePrompt.line2").a(o.o, o.r) : wy.c("multiplayer.texturePrompt.line2"), $$4),
-            $$3 ? wx.i : wx.f,
-            $$3 ? wx.p : wx.g
-         );
-         this.s = $$2;
-         this.u = $$1;
-      }
-
-      public gki.b a(fpo $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable wy $$5) {
-         List<gki.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.s.size() + 1).addAll(this.s).add(new gki.b.a($$1, $$2, $$3)).build();
-         return gki.this.new b($$0, this.u, $$6, $$4, $$5);
-      }
-
-      static record a(UUID a, URL b, String c) {
+         throw new ayk(new MissingException("Missing public key"));
       }
    }
 }

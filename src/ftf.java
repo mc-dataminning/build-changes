@@ -1,59 +1,25 @@
-public class ftf extends fss {
-   private final fsf a;
-   private final ftp c;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public ftf(int $$0, int $$1, int $$2, int $$3, wy $$4, fsf $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.c = new ftp($$4, $$5).d(this.A() - this.b());
+public class ftf {
+   private static final ayy a = ayy.codepoint(32, xv.a);
+
+   private static String a(String $$0) {
+      return fpt.Q().n.N().c() ? $$0 : o.a($$0);
    }
 
-   public ftf a(int $$0) {
-      this.c.c($$0);
-      return this;
-   }
-
-   @Override
-   public void h(int $$0) {
-      super.h($$0);
-      this.c.d(this.A() - this.b());
-   }
-
-   @Override
-   protected int c() {
-      return this.c.y();
-   }
-
-   @Override
-   protected double o() {
-      return 9.0;
-   }
-
-   @Override
-   protected void c(fsh $$0) {
-      super.c($$0);
-   }
-
-   public boolean q() {
-      return super.j();
-   }
-
-   @Override
-   protected void c(fsh $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)this.e(), (float)this.p(), 0.0F);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(fws $$0) {
-      $$0.a(fwr.a, this.B());
-   }
-
-   @Override
-   public void b(wy $$0) {
-      super.b($$0);
-      this.c.b($$0);
+   public static List<ayy> a(xd $$0, int $$1, fsk $$2) {
+      fph $$3 = new fph();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(xd.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, xv.a);
+      List<ayy> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, xv.a, ($$1x, $$2x) -> {
+         ayy $$3x = tu.a().a($$1x);
+         $$4.add($$2x ? ayy.composite(a, $$3x) : $$3x);
+      });
+      return (List<ayy>)($$4.isEmpty() ? Lists.newArrayList(new ayy[]{ayy.a}) : $$4);
    }
 }

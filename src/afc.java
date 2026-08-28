@@ -3,10 +3,10 @@ import javax.annotation.Nullable;
 
 public class afc implements zf<abu> {
    public static final yw<vu, afc> a = zf.a(afc::a, afc::new);
-   private final fft b;
+   private final ffy b;
    private final String c;
 
-   public afc(fft $$0, @Nullable ffu $$1) {
+   public afc(ffy $$0, @Nullable ffz $$1) {
       this.b = $$0;
       if ($$1 == null) {
          this.c = "";
@@ -16,12 +16,12 @@ public class afc implements zf<abu> {
    }
 
    private afc(vu $$0) {
-      this.b = $$0.a(fft.u);
+      this.b = $$0.a(ffy.u);
       this.c = $$0.p();
    }
 
    private void a(vu $$0) {
-      $$0.a(fft::a, this.b);
+      $$0.a(ffy::a, this.b);
       $$0.a(this.c);
    }
 
@@ -34,7 +34,7 @@ public class afc implements zf<abu> {
       $$0.a(this);
    }
 
-   public fft b() {
+   public ffy b() {
       return this.b;
    }
 

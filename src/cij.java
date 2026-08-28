@@ -2,7 +2,7 @@ import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class cij implements diu {
+public class cij implements diy {
    private static final Logger a = LogUtils.getLogger();
    private boolean b;
    private cij.a c;
@@ -52,7 +52,7 @@ public class cij implements diu {
    }
 
    private boolean a(arq $$0) {
-      for (crj $$1 : $$0.z()) {
+      for (crm $$1 : $$0.z()) {
          if (!$$1.V_()) {
             iv $$2 = $$1.du();
             if ($$0.c($$2) && !$$0.u($$2).a(axb.af)) {
@@ -77,11 +77,11 @@ public class cij implements diu {
    }
 
    private void b(arq $$0) {
-      fex $$1 = this.a($$0, new iv(this.f, this.g, this.h));
+      ffc $$1 = this.a($$0, new iv(this.f, this.g, this.h));
       if ($$1 != null) {
-         cpe $$2;
+         cph $$2;
          try {
-            $$2 = new cpe($$0);
+            $$2 = new cph($$0);
             $$2.a($$0, $$0.d_($$2.du()), bwq.h, null);
          } catch (Exception var5) {
             a.warn("Failed to create zombie for village siege at {}", $$1, var5);
@@ -94,14 +94,14 @@ public class cij implements diu {
    }
 
    @Nullable
-   private fex a(arq $$0, iv $$1) {
+   private ffc a(arq $$0, iv $$1) {
       for (int $$2 = 0; $$2 < 10; $$2++) {
          int $$3 = $$1.u() + $$0.A.a(16) - 8;
          int $$4 = $$1.w() + $$0.A.a(16) - 8;
-         int $$5 = $$0.a(egn.a.b, $$3, $$4);
+         int $$5 = $$0.a(egs.a.b, $$3, $$4);
          iv $$6 = new iv($$3, $$5, $$4);
-         if ($$0.c($$6) && cok.b(bwr.bO, $$0, bwq.h, $$6, $$0.A)) {
-            return fex.c($$6);
+         if ($$0.c($$6) && coo.b(bwr.bO, $$0, bwq.h, $$6, $$0.A)) {
+            return ffc.c($$6);
          }
       }
 

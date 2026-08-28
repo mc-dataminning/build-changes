@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class arq extends djh implements arp, dkg {
+public class arq extends djm implements arp, dkl {
    public static final iv a = new iv(100, 50, 0);
    public static final btl b = btr.a(12000, 180000);
    public static final btl c = btr.a(12000, 24000);
@@ -47,44 +47,44 @@ public class arq extends djh implements arp, dkg {
    final List<arr> I = Lists.newArrayList();
    private final arn J;
    private final MinecraftServer K;
-   private final ezh L;
+   private final ezm L;
    private int M;
-   final eez N = new eez();
-   private final efe<bwi> O;
-   private final efp P;
+   final efe N = new efe();
+   private final efj<bwi> O;
+   private final efu P;
    public boolean e;
    private final avt Q;
    private int R;
-   private final ext S;
-   private final fgm<dmm> T = new fgm<>(this::d);
-   private final fgm<ewu> U = new fgm<>(this::d);
-   private final exn V = new exn();
+   private final exy S;
+   private final fgr<dmr> T = new fgr<>(this::d);
+   private final fgr<ewz> U = new fgr<>(this::d);
+   private final exs V = new exs();
    final Set<bxl> W = new ObjectOpenHashSet();
    volatile boolean X;
-   protected final ctb f;
-   private final ObjectLinkedOpenHashSet<dim> Y = new ObjectLinkedOpenHashSet();
-   private final List<dim> Z = new ArrayList<>(64);
+   protected final cte f;
+   private final ObjectLinkedOpenHashSet<dip> Y = new ObjectLinkedOpenHashSet();
+   private final List<dip> Z = new ArrayList<>(64);
    private boolean aa;
-   private final List<diu> ab;
+   private final List<diy> ab;
    @Nullable
-   private eeo ac;
-   final Int2ObjectMap<cme> ad = new Int2ObjectOpenHashMap();
-   private final dkd ae;
-   private final erj af;
+   private eet ac;
+   final Int2ObjectMap<cmh> ad = new Int2ObjectOpenHashMap();
+   private final dki ae;
+   private final ero af;
    private final boolean ag;
    private final bul ah;
 
    public arq(
       MinecraftServer $$0,
       Executor $$1,
-      ezc.c $$2,
-      ezh $$3,
-      alf<djh> $$4,
-      eem $$5,
+      ezh.c $$2,
+      ezm $$3,
+      alf<djm> $$4,
+      eer $$5,
       asa $$6,
       boolean $$7,
       long $$8,
-      List<diu> $$9,
+      List<diy> $$9,
       boolean $$10,
       @Nullable bul $$11
    ) {
@@ -93,39 +93,39 @@ public class arq extends djh implements arp, dkg {
       this.K = $$0;
       this.ab = $$9;
       this.L = $$3;
-      ecm $$12 = $$5.b();
+      ecr $$12 = $$5.b();
       boolean $$13 = $$0.aX();
       DataFixer $$14 = $$0.aC();
-      eew<bwi> $$15 = new edw(new eeh(new eee($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, bbb.s), this, $$0);
-      this.O = new efe<>(bwi.class, new arq.a(), $$15);
+      efb<bwi> $$15 = new eeb(new eem(new eej($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, bbb.s), this, $$0);
+      this.O = new efj<>(bwi.class, new arq.a(), $$15);
       this.J = new arn(this, $$2, $$14, $$0.aY(), $$1, $$12, $$0.ag().p(), $$0.ag().q(), $$13, $$6, this.O::a, () -> $$0.J().w());
       this.J.h().b();
-      this.S = new ext(this);
+      this.S = new exy(this);
       this.Z();
       this.ac();
       this.A_().a($$0.aw());
-      this.f = this.w().a(ctb.a(this.ai()));
+      this.f = this.w().a(cte.a(this.ai()));
       if (!$$0.U()) {
          $$3.a($$0.u());
       }
 
       long $$16 = $$0.aZ().y().c();
-      this.af = new erj(this.J.n(), this.F_(), $$0.aY(), $$4, $$12, this.J.i(), this, $$12.d(), $$16, $$14);
-      this.ae = new dkd(this, $$0.aZ().y(), this.af);
-      if (this.aj() == djh.k && this.ai().a(eej.c)) {
-         this.ac = new eeo(this, $$16, $$0.aZ().C());
+      this.af = new ero(this.J.n(), this.F_(), $$0.aY(), $$4, $$12, this.J.i(), this, $$12.d(), $$16, $$14);
+      this.ae = new dki(this, $$0.aZ().y(), this.af);
+      if (this.aj() == djm.k && this.ai().a(eeo.c)) {
+         this.ac = new eet(this, $$16, $$0.aZ().C());
       } else {
          this.ac = null;
       }
 
       this.Q = new avt();
-      this.P = new efp(this);
+      this.P = new efu(this);
       this.ah = Objects.requireNonNullElseGet($$11, () -> this.w().a(bul.a));
    }
 
    @Deprecated
    @VisibleForTesting
-   public void a(@Nullable eeo $$0) {
+   public void a(@Nullable eet $$0) {
       this.ac = $$0;
    }
 
@@ -138,11 +138,11 @@ public class arq extends djh implements arp, dkg {
    }
 
    @Override
-   public jf<dkk> a(int $$0, int $$1, int $$2) {
+   public jf<dkp> a(int $$0, int $$1, int $$2) {
       return this.m().g().d().getNoiseBiome($$0, $$1, $$2, this.m().i().b());
    }
 
-   public dkd b() {
+   public dki b() {
       return this.ae;
    }
 
@@ -159,15 +159,15 @@ public class arq extends djh implements arp, dkg {
          $$1.c();
       }
 
-      int $$4 = this.O().d(djd.R);
+      int $$4 = this.O().d(dji.R);
       if (this.Q.a($$4) && this.Q.a($$4, this.I)) {
-         if (this.O().c(djd.m)) {
+         if (this.O().c(dji.m)) {
             long $$5 = this.B.d() + 24000L;
             this.b($$5 - $$5 % 24000L);
          }
 
          this.au();
-         if (this.O().c(djd.x) && this.ah()) {
+         if (this.O().c(dji.x) && this.ah()) {
             this.h();
          }
       }
@@ -258,7 +258,7 @@ public class arq extends djh implements arp, dkg {
          bqp.a().a("scheduledFunctions");
          this.L.s().a(this.K, $$0);
          bqp.a().c();
-         if (this.L.o().c(djd.m)) {
+         if (this.L.o().c(dji.m)) {
             this.b(this.B.d() + 1L);
          }
       }
@@ -269,7 +269,7 @@ public class arq extends djh implements arp, dkg {
    }
 
    public void a(boolean $$0, boolean $$1) {
-      for (diu $$2 : this.ab) {
+      for (diy $$2 : this.ab) {
          $$2.a(this, $$0, $$1);
       }
    }
@@ -279,8 +279,8 @@ public class arq extends djh implements arp, dkg {
       this.I.stream().filter(bxj::fQ).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
    }
 
-   public void a(ecv $$0, int $$1) {
-      dio $$2 = $$0.f();
+   public void a(eda $$0, int $$1) {
+      dir $$2 = $$0.f();
       int $$3 = $$2.d();
       int $$4 = $$2.e();
       bqq $$5 = bqp.a();
@@ -294,10 +294,10 @@ public class arq extends djh implements arp, dkg {
 
       $$5.b("tickBlocks");
       if ($$1 > 0) {
-         ecw[] $$7 = $$0.d();
+         edb[] $$7 = $$0.d();
 
          for (int $$8 = 0; $$8 < $$7.length; $$8++) {
-            ecw $$9 = $$7[$$8];
+            edb $$9 = $$7[$$8];
             if ($$9.d()) {
                int $$10 = $$0.h($$8);
                int $$11 = jy.c($$10);
@@ -305,12 +305,12 @@ public class arq extends djh implements arp, dkg {
                for (int $$12 = 0; $$12 < $$1; $$12++) {
                   iv $$13 = this.a($$3, $$11, $$4, 15);
                   $$5.a("randomTick");
-                  eao $$14 = $$9.a($$13.u() - $$3, $$13.v() - $$11, $$13.w() - $$4);
+                  eat $$14 = $$9.a($$13.u() - $$3, $$13.v() - $$11, $$13.w() - $$4);
                   if ($$14.z()) {
                      $$14.b(this, $$13, this.A);
                   }
 
-                  ewv $$15 = $$14.y();
+                  exa $$15 = $$14.y();
                   if ($$15.f()) {
                      $$15.a(this, $$13, this.A);
                   }
@@ -324,8 +324,8 @@ public class arq extends djh implements arp, dkg {
       $$5.c();
    }
 
-   public void a(ecv $$0) {
-      dio $$1 = $$0.f();
+   public void a(eda $$0) {
+      dir $$1 = $$0.f();
       boolean $$2 = this.ah();
       int $$3 = $$1.d();
       int $$4 = $$1.e();
@@ -335,9 +335,9 @@ public class arq extends djh implements arp, dkg {
          iv $$6 = this.b(this.a($$3, 0, $$4, 15));
          if (this.r($$6)) {
             bue $$7 = this.d_($$6);
-            boolean $$8 = this.O().c(djd.f) && this.A.j() < (double)$$7.b() * 0.01 && !this.a_($$6.e()).a(dmo.ta);
+            boolean $$8 = this.O().c(dji.f) && this.A.j() < (double)$$7.b() * 0.01 && !this.a_($$6.e()).a(dmt.ta);
             if ($$8) {
-               clr $$9 = bwr.bg.a(this, bwq.h);
+               clo $$9 = bwr.bg.a(this, bwq.h);
                if ($$9 != null) {
                   $$9.w(true);
                   $$9.c_(0);
@@ -348,7 +348,7 @@ public class arq extends djh implements arp, dkg {
 
             bxi $$10 = bwr.aw.a(this, bwq.h);
             if ($$10 != null) {
-               $$10.f(fex.c($$6));
+               $$10.f(ffc.c($$6));
                $$10.a($$8);
                this.b($$10);
             }
@@ -360,49 +360,49 @@ public class arq extends djh implements arp, dkg {
 
    @VisibleForTesting
    public void a(iv $$0) {
-      iv $$1 = this.a(egn.a.e, $$0);
+      iv $$1 = this.a(egs.a.e, $$0);
       iv $$2 = $$1.e();
-      dkk $$3 = this.u($$1).a();
+      dkp $$3 = this.u($$1).a();
       if ($$3.a(this, $$2)) {
-         this.b($$2, dmo.ee.m());
+         this.b($$2, dmt.ee.m());
       }
 
       if (this.ah()) {
-         int $$4 = this.O().d(djd.V);
+         int $$4 = this.O().d(dji.V);
          if ($$4 > 0 && $$3.b(this, $$1)) {
-            eao $$5 = this.a_($$1);
-            if ($$5.a(dmo.ed)) {
-               int $$6 = $$5.c(duf.c);
+            eat $$5 = this.a_($$1);
+            if ($$5.a(dmt.ed)) {
+               int $$6 = $$5.c(duk.c);
                if ($$6 < Math.min($$4, 8)) {
-                  eao $$7 = $$5.b(duf.c, Integer.valueOf($$6 + 1));
-                  dmm.a($$5, $$7, this, $$1);
+                  eat $$7 = $$5.b(duk.c, Integer.valueOf($$6 + 1));
+                  dmr.a($$5, $$7, this, $$1);
                   this.b($$1, $$7);
                }
             } else {
-               this.b($$1, dmo.ed.m());
+               this.b($$1, dmt.ed.m());
             }
          }
 
-         dkk.c $$8 = $$3.a($$2, this.P());
-         if ($$8 != dkk.c.a) {
-            eao $$9 = this.a_($$2);
+         dkp.c $$8 = $$3.a($$2, this.P());
+         if ($$8 != dkp.c.a) {
+            eat $$9 = this.a_($$2);
             $$9.b().a($$9, this, $$2, $$8);
          }
       }
    }
 
    private Optional<iv> F(iv $$0) {
-      Optional<iv> $$1 = this.A().e($$0x -> $$0x.a(cip.t), $$0x -> $$0x.v() == this.a(egn.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, cil.b.c);
+      Optional<iv> $$1 = this.A().e($$0x -> $$0x.a(cip.t), $$0x -> $$0x.v() == this.a(egs.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, cil.b.c);
       return $$1.map($$0x -> $$0x.b(1));
    }
 
    protected iv b(iv $$0) {
-      iv $$1 = this.a(egn.a.e, $$0);
+      iv $$1 = this.a(egs.a.e, $$0);
       Optional<iv> $$2 = this.F($$1);
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         fes $$3 = fes.a($$1, $$1.h(this.ao() + 1)).g(3.0);
+         fex $$3 = fex.a($$1, $$1.h(this.ao() + 1)).g(3.0);
          List<bxj> $$4 = this.a(bxj.class, $$3, $$0x -> $$0x != null && $$0x.bI() && this.h($$0x.du()));
          if (!$$4.isEmpty()) {
             return $$4.get(this.A.a($$4.size())).du();
@@ -421,13 +421,13 @@ public class arq extends djh implements arp, dkg {
    }
 
    public boolean e() {
-      return this.O().d(djd.R) <= 100;
+      return this.O().d(dji.R) <= 100;
    }
 
    private void av() {
       if (this.e()) {
          if (!this.p().U() || this.p().r()) {
-            int $$0 = this.O().d(djd.R);
+            int $$0 = this.O().d(dji.R);
             wy $$1;
             if (this.Q.a($$0)) {
                $$1 = wy.c("sleep.skipping_night");
@@ -455,7 +455,7 @@ public class arq extends djh implements arp, dkg {
    private void aw() {
       boolean $$0 = this.ah();
       if (this.B_().g()) {
-         if (this.O().c(djd.x)) {
+         if (this.O().c(dji.x)) {
             int $$1 = this.L.f();
             int $$2 = this.L.h();
             int $$3 = this.L.j();
@@ -546,16 +546,16 @@ public class arq extends djh implements arp, dkg {
       this.R = 0;
    }
 
-   private void a(iv $$0, ewu $$1) {
-      eao $$2 = this.a_($$0);
-      ewv $$3 = $$2.y();
+   private void a(iv $$0, ewz $$1) {
+      eat $$2 = this.a_($$0);
+      exa $$3 = $$2.y();
       if ($$3.b($$1)) {
          $$3.a(this, $$0, $$2);
       }
    }
 
-   private void c(iv $$0, dmm $$1) {
-      eao $$2 = this.a_($$0);
+   private void c(iv $$0, dmr $$1) {
+      eat $$2 = this.a_($$0);
       if ($$2.a($$1)) {
          $$2.a(this, $$0, this.A);
       }
@@ -578,7 +578,7 @@ public class arq extends djh implements arp, dkg {
    private void a(bwi $$0, bwi $$1) {
       if ($$1.dP() || $$1.dj() != $$0) {
          $$1.bN();
-      } else if ($$1 instanceof crj || this.N.c($$1)) {
+      } else if ($$1 instanceof crm || this.N.c($$1)) {
          $$1.bw();
          $$1.af++;
          bqq $$2 = bqp.a();
@@ -595,7 +595,7 @@ public class arq extends djh implements arp, dkg {
 
    @Override
    public boolean a(bwi $$0, iv $$1) {
-      if ($$0 instanceof crj $$2 && (this.K.a(this, $$1, $$2) || !this.A_().a($$1))) {
+      if ($$0 instanceof crm $$2 && (this.K.a(this, $$1, $$2) || !this.A_().a($$1))) {
          return false;
       }
 
@@ -628,7 +628,7 @@ public class arq extends djh implements arp, dkg {
          this.K.aZ().a(this.ac.b());
       }
 
-      eyw $$1 = this.m().l();
+      ezb $$1 = this.m().l();
       if ($$0) {
          $$1.b();
       } else {
@@ -636,17 +636,17 @@ public class arq extends djh implements arp, dkg {
       }
    }
 
-   public <T extends bwi> List<? extends T> a(efa<bwi, T> $$0, Predicate<? super T> $$1) {
+   public <T extends bwi> List<? extends T> a(eff<bwi, T> $$0, Predicate<? super T> $$1) {
       List<T> $$2 = Lists.newArrayList();
       this.a($$0, $$1, $$2);
       return $$2;
    }
 
-   public <T extends bwi> void a(efa<bwi, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
+   public <T extends bwi> void a(eff<bwi, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
       this.a($$0, $$1, $$2, Integer.MAX_VALUE);
    }
 
-   public <T extends bwi> void a(efa<bwi, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
+   public <T extends bwi> void a(eff<bwi, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
       this.H().a($$0, $$3x -> {
          if ($$1.test((T)$$3x)) {
             $$2.add((T)$$3x);
@@ -659,7 +659,7 @@ public class arq extends djh implements arp, dkg {
       });
    }
 
-   public List<? extends cmh> j() {
+   public List<? extends cmk> j() {
       return this.a(bwr.P, bxj::bI);
    }
 
@@ -742,7 +742,7 @@ public class arq extends djh implements arp, dkg {
       }
    }
 
-   public void b(ecv $$0) {
+   public void b(eda $$0) {
       $$0.J();
       $$0.c(this);
    }
@@ -767,27 +767,27 @@ public class arq extends djh implements arp, dkg {
 
    @Override
    public void a(@Nullable bwi $$0, double $$1, double $$2, double $$3, jf<awm> $$4, awo $$5, float $$6, float $$7, long $$8) {
-      this.K.ag().a($$0 instanceof crj $$9 ? $$9 : null, $$1, $$2, $$3, (double)$$4.a().a($$6), this.aj(), new afv($$4, $$5, $$1, $$2, $$3, $$6, $$7, $$8));
+      this.K.ag().a($$0 instanceof crm $$9 ? $$9 : null, $$1, $$2, $$3, (double)$$4.a().a($$6), this.aj(), new afv($$4, $$5, $$1, $$2, $$3, $$6, $$7, $$8));
    }
 
    @Override
    public void a(@Nullable bwi $$0, bwi $$1, jf<awm> $$2, awo $$3, float $$4, float $$5, long $$6) {
       this.K
          .ag()
-         .a($$0 instanceof crj $$7 ? $$7 : null, $$1.dz(), $$1.dB(), $$1.dF(), (double)$$2.a().a($$4), this.aj(), new afu($$2, $$3, $$1, $$4, $$5, $$6));
+         .a($$0 instanceof crm $$7 ? $$7 : null, $$1.dz(), $$1.dB(), $$1.dF(), (double)$$2.a().a($$4), this.aj(), new afu($$2, $$3, $$1, $$4, $$5, $$6));
    }
 
    @Override
    public void b(int $$0, iv $$1, int $$2) {
-      if (this.O().c(djd.Y)) {
+      if (this.O().c(dji.Y)) {
          this.K.ag().t().forEach($$3 -> {
-            fex $$5;
+            ffc $$5;
             if ($$3.dU() == this) {
-               fex $$4 = fex.b($$1);
+               ffc $$4 = ffc.b($$1);
                if ($$3.g($$4) < (double)azm.h(32)) {
                   $$5 = $$4;
                } else {
-                  fex $$6 = $$4.d($$3.ds()).d();
+                  ffc $$6 = $$4.d($$3.ds()).d();
                   $$5 = $$3.ds().e($$6.c(32.0));
                }
             } else {
@@ -803,7 +803,7 @@ public class arq extends djh implements arp, dkg {
 
    @Override
    public void a(@Nullable bwi $$0, int $$1, iv $$2, int $$3) {
-      this.K.ag().a($$0 instanceof crj $$4 ? $$4 : null, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 64.0, this.aj(), new adh($$1, $$2, $$3, false));
+      this.K.ag().a($$0 instanceof crm $$4 ? $$4 : null, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 64.0, this.aj(), new adh($$1, $$2, $$3, false));
    }
 
    public int l() {
@@ -811,12 +811,12 @@ public class arq extends djh implements arp, dkg {
    }
 
    @Override
-   public void a(jf<efo> $$0, fex $$1, efo.a $$2) {
+   public void a(jf<eft> $$0, ffc $$1, eft.a $$2) {
       this.P.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(iv $$0, eao $$1, eao $$2, int $$3) {
+   public void a(iv $$0, eat $$1, eat $$2, int $$3) {
       if (this.X) {
          String $$4 = "recursive call to sendBlockUpdated";
          ag.a("recursive call to sendBlockUpdated", new IllegalStateException("recursive call to sendBlockUpdated"));
@@ -824,9 +824,9 @@ public class arq extends djh implements arp, dkg {
 
       this.m().a($$0);
       this.V.a($$0);
-      ffr $$5 = $$1.g(this, $$0);
-      ffr $$6 = $$2.g(this, $$0);
-      if (ffo.c($$5, $$6, ffb.g)) {
+      ffw $$5 = $$1.g(this, $$0);
+      ffw $$6 = $$2.g(this, $$0);
+      if (fft.c($$5, $$6, ffg.g)) {
          List<cgt> $$7 = new ObjectArrayList();
 
          for (bxl $$8 : this.W) {
@@ -849,27 +849,27 @@ public class arq extends djh implements arp, dkg {
    }
 
    @Override
-   public void a(iv $$0, dmm $$1) {
-      this.a($$0, $$1, exz.a(this, null, null));
+   public void a(iv $$0, dmr $$1) {
+      this.a($$0, $$1, eye.a(this, null, null));
    }
 
    @Override
-   public void a(iv $$0, dmm $$1, @Nullable eyd $$2) {
+   public void a(iv $$0, dmr $$1, @Nullable eyi $$2) {
       this.t.a($$0, $$1, null, $$2);
    }
 
    @Override
-   public void a(iv $$0, dmm $$1, jb $$2, @Nullable eyd $$3) {
+   public void a(iv $$0, dmr $$1, jb $$2, @Nullable eyi $$3) {
       this.t.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void b(iv $$0, dmm $$1, @Nullable eyd $$2) {
+   public void b(iv $$0, dmr $$1, @Nullable eyi $$2) {
       this.t.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(eao $$0, iv $$1, dmm $$2, @Nullable eyd $$3, boolean $$4) {
+   public void a(eat $$0, iv $$1, dmr $$2, @Nullable eyi $$3, boolean $$4) {
       this.t.a($$0, $$1, $$2, $$3, $$4);
    }
 
@@ -891,51 +891,51 @@ public class arq extends djh implements arp, dkg {
    public void a(
       @Nullable bwi $$0,
       @Nullable bux $$1,
-      @Nullable djb $$2,
+      @Nullable djg $$2,
       double $$3,
       double $$4,
       double $$5,
       float $$6,
       boolean $$7,
-      djh.a $$8,
+      djm.a $$8,
       lw $$9,
       lw $$10,
       jf<awm> $$11
    ) {
-      dja.a $$12 = switch ($$8) {
-         case a -> dja.a.a;
-         case b -> this.a(djd.S);
-         case c -> this.O().c(djd.d) ? this.a(djd.T) : dja.a.a;
-         case d -> this.a(djd.U);
-         case e -> dja.a.d;
+      djf.a $$12 = switch ($$8) {
+         case a -> djf.a.a;
+         case b -> this.a(dji.S);
+         case c -> this.O().c(dji.d) ? this.a(dji.T) : djf.a.a;
+         case d -> this.a(dji.U);
+         case e -> djf.a.d;
       };
-      fex $$13 = new fex($$3, $$4, $$5);
-      djx $$14 = new djx(this, $$0, $$1, $$2, $$13, $$6, $$7, $$12);
+      ffc $$13 = new ffc($$3, $$4, $$5);
+      dkc $$14 = new dkc(this, $$0, $$1, $$2, $$13, $$6, $$7, $$12);
       $$14.i();
       lw $$15 = $$14.l() ? $$9 : $$10;
 
       for (arr $$16 : this.I) {
          if ($$16.g($$13) < 4096.0) {
-            Optional<fex> $$17 = Optional.ofNullable($$14.j().get($$16));
+            Optional<ffc> $$17 = Optional.ofNullable($$14.j().get($$16));
             $$16.f.b(new acz($$13, $$17, $$15, $$11));
          }
       }
    }
 
-   private dja.a a(djd.e<djd.a> $$0) {
-      return this.O().c($$0) ? dja.a.c : dja.a.b;
+   private djf.a a(dji.e<dji.a> $$0) {
+      return this.O().c($$0) ? djf.a.c : djf.a.b;
    }
 
    @Override
-   public void a(iv $$0, dmm $$1, int $$2, int $$3) {
-      this.Y.add(new dim($$0, $$1, $$2, $$3));
+   public void a(iv $$0, dmr $$1, int $$2, int $$3) {
+      this.Y.add(new dip($$0, $$1, $$2, $$3));
    }
 
    private void ax() {
       this.Z.clear();
 
       while (!this.Y.isEmpty()) {
-         dim $$0 = (dim)this.Y.removeFirst();
+         dip $$0 = (dip)this.Y.removeFirst();
          if (this.n($$0.a())) {
             if (this.a($$0)) {
                this.K.ag().a(null, (double)$$0.a().u(), (double)$$0.a().v(), (double)$$0.a().w(), 64.0, this.aj(), new acb($$0.a(), $$0.b(), $$0.c(), $$0.d()));
@@ -948,16 +948,16 @@ public class arq extends djh implements arp, dkg {
       this.Y.addAll(this.Z);
    }
 
-   private boolean a(dim $$0) {
-      eao $$1 = this.a_($$0.a());
+   private boolean a(dip $$0) {
+      eat $$1 = this.a_($$0.a());
       return $$1.a($$0.b()) ? $$1.a(this, $$0.a(), $$0.c(), $$0.d()) : false;
    }
 
-   public fgm<dmm> n() {
+   public fgr<dmr> n() {
       return this.T;
    }
 
-   public fgm<ewu> o() {
+   public fgr<ewz> o() {
       return this.U;
    }
 
@@ -967,11 +967,11 @@ public class arq extends djh implements arp, dkg {
       return this.K;
    }
 
-   public ext q() {
+   public exy q() {
       return this.S;
    }
 
-   public evl r() {
+   public evq r() {
       return this.K.aY();
    }
 
@@ -1005,7 +1005,7 @@ public class arq extends djh implements arp, dkg {
          return false;
       } else {
          iv $$6 = $$0.du();
-         if ($$6.a(new fex($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
+         if ($$6.a(new ffc($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
             $$0.f.b($$5);
             return true;
          } else {
@@ -1028,31 +1028,31 @@ public class arq extends djh implements arp, dkg {
    }
 
    @Override
-   public Collection<cme> s() {
+   public Collection<cmh> s() {
       return this.ad.values();
    }
 
    @Nullable
-   public iv a(axr<eri> $$0, iv $$1, int $$2, boolean $$3) {
+   public iv a(axr<ern> $$0, iv $$1, int $$2, boolean $$3) {
       if (!this.K.aZ().y().d()) {
          return null;
       } else {
-         Optional<jj.c<eri>> $$4 = this.F_().f(mh.be).a($$0);
+         Optional<jj.c<ern>> $$4 = this.F_().f(mh.be).a($$0);
          if ($$4.isEmpty()) {
             return null;
          } else {
-            Pair<iv, jf<eri>> $$5 = this.m().g().a(this, $$4.get(), $$1, $$2, $$3);
+            Pair<iv, jf<ern>> $$5 = this.m().g().a(this, $$4.get(), $$1, $$2, $$3);
             return $$5 != null ? (iv)$$5.getFirst() : null;
          }
       }
    }
 
    @Nullable
-   public Pair<iv, jf<dkk>> a(Predicate<jf<dkk>> $$0, iv $$1, int $$2, int $$3, int $$4) {
+   public Pair<iv, jf<dkp>> a(Predicate<jf<dkp>> $$0, iv $$1, int $$2, int $$3, int $$4) {
       return this.m().g().d().a($$1, $$2, $$3, $$4, $$0, this.m().i().b(), this);
    }
 
-   public dei t() {
+   public del t() {
       return this.K.aI();
    }
 
@@ -1066,24 +1066,24 @@ public class arq extends djh implements arp, dkg {
       return this.e;
    }
 
-   public eyw w() {
+   public ezb w() {
       return this.m().l();
    }
 
    @Nullable
    @Override
-   public eyq a(eyo $$0) {
-      return this.p().J().w().b(eyq.a($$0));
+   public eyv a(eyt $$0) {
+      return this.p().J().w().b(eyv.a($$0));
    }
 
    @Override
-   public void a(eyo $$0, eyq $$1) {
-      this.p().J().w().a(eyq.a($$0), $$1);
+   public void a(eyt $$0, eyv $$1) {
+      this.p().J().w().a(eyv.a($$0), $$1);
    }
 
    @Override
-   public eyo x() {
-      return this.p().J().w().a(eyp.b).a();
+   public eyt x() {
+      return this.p().J().w().a(eyu.b).a();
    }
 
    public void a(iv $$0, float $$1) {
@@ -1095,12 +1095,12 @@ public class arq extends djh implements arp, dkg {
       }
 
       if (this.M > 1) {
-         this.m().b(arx.b, new dio($$2), this.M);
+         this.m().b(arx.b, new dir($$2), this.M);
       }
 
-      int $$4 = this.O().d(djd.ac) + 1;
+      int $$4 = this.O().d(dji.ac) + 1;
       if ($$4 > 1) {
-         this.m().a(arx.b, new dio($$0), $$4);
+         this.m().a(arx.b, new dir($$0), $$4);
       }
 
       this.M = $$4;
@@ -1111,7 +1111,7 @@ public class arq extends djh implements arp, dkg {
    }
 
    public boolean a(int $$0, int $$1, boolean $$2) {
-      boolean $$3 = this.J.a(new dio($$0, $$1), $$2);
+      boolean $$3 = this.J.a(new dir($$0, $$1), $$2);
       if ($$2 && $$3) {
          this.d($$0, $$1);
       }
@@ -1125,7 +1125,7 @@ public class arq extends djh implements arp, dkg {
    }
 
    @Override
-   public void a(iv $$0, eao $$1, eao $$2) {
+   public void a(iv $$0, eat $$1, eat $$2) {
       Optional<jf<cio>> $$3 = cip.a($$1);
       Optional<jf<cio>> $$4 = cip.a($$2);
       if (!Objects.equals($$3, $$4)) {
@@ -1161,12 +1161,12 @@ public class arq extends djh implements arp, dkg {
       return this.A().a($$0);
    }
 
-   public ctb B() {
+   public cte B() {
       return this.f;
    }
 
    @Nullable
-   public csz d(iv $$0) {
+   public ctc d(iv $$0) {
       return this.f.a($$0, 9216);
    }
 
@@ -1183,7 +1183,7 @@ public class arq extends djh implements arp, dkg {
 
       try (Writer $$2 = Files.newBufferedWriter($$0.resolve("stats.txt"))) {
          $$2.write(String.format(Locale.ROOT, "spawning_chunks: %d\n", $$1.j().a()));
-         djs.d $$3 = this.m().o();
+         djx.d $$3 = this.m().o();
          if ($$3 != null) {
             ObjectIterator $$9 = $$3.b().object2IntEntrySet().iterator();
 
@@ -1246,14 +1246,14 @@ public class arq extends djh implements arp, dkg {
    private void a(Writer $$0) throws IOException {
       ayl $$1 = ayl.a().a("x").a("y").a("z").a("type").a($$0);
 
-      for (dzk $$2 : this.s) {
+      for (dzp $$2 : this.s) {
          iv $$3 = $$2.c();
          $$1.a($$3.u(), $$3.v(), $$3.w(), $$2.d());
       }
    }
 
    @VisibleForTesting
-   public void a(era $$0) {
+   public void a(erf $$0) {
       this.Y.removeIf($$1 -> $$0.b($$1.a()));
    }
 
@@ -1281,7 +1281,7 @@ public class arq extends djh implements arp, dkg {
    }
 
    @Nullable
-   public eeo F() {
+   public eet F() {
       return this.ac;
    }
 
@@ -1299,7 +1299,7 @@ public class arq extends djh implements arp, dkg {
          this.O.e(),
          a(this.O.d().a(), $$0 -> mg.f.b($$0.an()).toString()),
          this.s.size(),
-         a(this.s, dzk::d),
+         a(this.s, dzp::d),
          this.n().a(),
          this.o().a(),
          this.J()
@@ -1327,7 +1327,7 @@ public class arq extends djh implements arp, dkg {
    }
 
    @Override
-   protected efc<bwi> H() {
+   protected efh<bwi> H() {
       return this.O.d();
    }
 
@@ -1339,15 +1339,15 @@ public class arq extends djh implements arp, dkg {
       this.O.b($$0);
    }
 
-   public void c(ecv $$0) {
+   public void c(eda $$0) {
       $$0.d(this.y_().c());
    }
 
-   public void a(ecl $$0) {
+   public void a(ecq $$0) {
       this.K.execute(() -> this.af.a($$0.f(), $$0.g()));
    }
 
-   public exn I() {
+   public exs I() {
       return this.V;
    }
 
@@ -1371,37 +1371,37 @@ public class arq extends djh implements arp, dkg {
    }
 
    public boolean f(iv $$0) {
-      return this.O.a($$0) && this.J.a.j().c(dio.a($$0));
+      return this.O.a($$0) && this.J.a.j().c(dir.a($$0));
    }
 
-   public boolean a(dio $$0) {
+   public boolean a(dir $$0) {
       return this.O.a($$0);
    }
 
    public boolean g(iv $$0) {
-      return this.b(new dio($$0));
+      return this.b(new dir($$0));
    }
 
-   public boolean b(dio $$0) {
+   public boolean b(dir $$0) {
       return this.J.a.b($$0);
    }
 
-   public boolean c(dio $$0) {
+   public boolean c(dir $$0) {
       return this.O.b($$0) && this.A_().a($$0);
    }
 
    @Override
-   public cut K() {
+   public cuw K() {
       return this.K.aZ().K();
    }
 
    @Override
-   public dbf L() {
+   public dbi L() {
       return this.K.bn();
    }
 
    @Override
-   public dyl M() {
+   public dyq M() {
       return this.K.bo();
    }
 
@@ -1413,7 +1413,7 @@ public class arq extends djh implements arp, dkg {
       return this.ah;
    }
 
-   public djd O() {
+   public dji O() {
       return this.L.o();
    }
 
@@ -1429,7 +1429,7 @@ public class arq extends djh implements arp, dkg {
       return this.J.g().f();
    }
 
-   final class a implements efb<bwi> {
+   final class a implements efg<bwi> {
       public void a(bwi $$0) {
       }
 
@@ -1461,13 +1461,13 @@ public class arq extends djh implements arp, dkg {
             arq.this.W.add($$2);
          }
 
-         if ($$0 instanceof cmh $$4) {
-            for (cme $$5 : $$4.q()) {
+         if ($$0 instanceof cmk $$4) {
+            for (cmh $$5 : $$4.q()) {
                arq.this.ad.put($$5.ao(), $$5);
             }
          }
 
-         $$0.a(efl::a);
+         $$0.a(efq::a);
       }
 
       public void f(bwi $$0) {
@@ -1486,17 +1486,17 @@ public class arq extends djh implements arp, dkg {
             arq.this.W.remove($$2);
          }
 
-         if ($$0 instanceof cmh $$4) {
-            for (cme $$5 : $$4.q()) {
+         if ($$0 instanceof cmk $$4) {
+            for (cmh $$5 : $$4.q()) {
                arq.this.ad.remove($$5.ao());
             }
          }
 
-         $$0.a(efl::b);
+         $$0.a(efq::b);
       }
 
       public void g(bwi $$0) {
-         $$0.a(efl::c);
+         $$0.a(efq::c);
       }
    }
 }

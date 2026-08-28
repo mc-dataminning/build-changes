@@ -1,69 +1,24 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class eoe extends eny {
-   public static final MapCodec<eoe> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eny.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               btl.c.fieldOf("values").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eoe::new)
-   );
-   private final eny c;
-   private final String d;
-   @Nullable
-   private ebo e;
-   private final btl f;
+public class eoe<P extends eod> {
+   public static final eoe<eom> a = a("simple_state_provider", eom.b);
+   public static final eoe<eon> b = a("weighted_state_provider", eon.b);
+   public static final eoe<eoi> c = a("noise_threshold_provider", eoi.b);
+   public static final eoe<eoh> d = a("noise_provider", eoh.g);
+   public static final eoe<eof> e = a("dual_noise_provider", eof.b);
+   public static final eoe<eok> f = a("rotated_block_provider", eok.b);
+   public static final eoe<eoj> g = a("randomized_int_state_provider", eoj.b);
+   private final MapCodec<P> h;
 
-   public eoe(eny $$0, ebo $$1, btl $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
+   private static <P extends eod> eoe<P> a(String $$0, MapCodec<P> $$1) {
+      return js.a(mg.T, $$0, new eoe<>($$1));
    }
 
-   public eoe(eny $$0, String $$1, btl $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   private eoe(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   protected enz<?> a() {
-      return enz.g;
-   }
-
-   @Override
-   public eao a(azv $$0, iv $$1) {
-      eao $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         ebo $$3 = a($$2, this.d);
-         if ($$3 == null) {
-            return $$2;
-         }
-
-         this.e = $$3;
-      }
-
-      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
-   }
-
-   @Nullable
-   private static ebo a(eao $$0, String $$1) {
-      Collection<ebr<?>> $$2 = $$0.F();
-      Optional<ebo> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof ebo).map($$0x -> (ebo)$$0x).findAny();
-      return $$3.orElse(null);
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

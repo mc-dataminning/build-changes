@@ -1,37 +1,31 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvq extends dly {
-   public static final MapCodec<dvq> a = b(dvq::new);
-   public static final ebm<dzt> b = ebe.bB;
-   public static final ebf c = ebe.bE;
-
-   @Override
-   public MapCodec<dvq> a() {
-      return a;
-   }
-
-   public dvq(ean.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, dzt.a).b(c, Boolean.valueOf(false)));
-   }
+public class dvq extends dmh {
+   protected static final MapCodec<mc> a = mg.i
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof mc $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dvq> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, dvq::new));
+   protected final mc c;
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b, c);
+   public MapCodec<? extends dvq> a() {
+      return b;
    }
 
-   @Nullable
-   @Override
-   public dxm a(iv $$0, eao $$1) {
-      return new dzm($$0, $$1);
+   protected dvq(mc $$0, eas.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
-   @Nullable
    @Override
-   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
-      return $$0 instanceof arq $$3
-         ? a($$2, dxo.R, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(ebe.bE).orElse(false)))
-         : a($$2, dxo.R, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(ebe.bE).orElse(false)));
+   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(ly.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.c, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

@@ -1,106 +1,36 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
 import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gkj extends gki implements abc, wm {
-   private static final Logger l = LogUtils.getLogger();
-   private final GameProfile m;
-   private cut n;
-   private final jt.b o;
-   private final gkz p = new gkz();
+public class gkj<C extends gkj.a<C>, D> {
+   private final Function<C, D> a;
    @Nullable
-   private gks q;
+   private C b;
    @Nullable
-   protected fsw.b k;
+   private D c;
 
-   public gkj(fpo $$0, vr $$1, gkq $$2) {
-      super($$0, $$1, $$2);
-      this.m = $$2.a();
-      this.o = $$2.c();
-      this.n = $$2.d();
-      this.k = $$2.i();
+   public gkj(Function<C, D> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public boolean c() {
-      return this.b.i();
-   }
-
-   @Override
-   protected void a(aai $$0) {
-      this.b($$0);
-   }
-
-   private void b(aai $$0) {
-      l.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(abe $$0) {
-      zi.a($$0, this, this.a);
-      this.p.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(zw $$0) {
-      zi.a($$0, this, this.a);
-      this.p.a($$0.b());
-   }
-
-   @Override
-   public void a(abh $$0) {
-      this.n = cuv.e.a($$0.b());
-   }
-
-   @Override
-   public void a(abg $$0) {
-      zi.a($$0, this, this.a);
-      if (this.q == null) {
-         this.q = new gks();
-      }
-
-      List<auj> $$1 = this.q.a($$0.b());
-      this.b(new abm($$1));
-   }
-
-   @Override
-   public void a(abf $$0) {
-      this.k = null;
-   }
-
-   private <T> T a(Function<avg, T> $$0) {
-      if (this.q == null) {
-         return $$0.apply(avg.b);
+   public D a(C $$0) {
+      if ($$0 == this.b && this.c != null) {
+         return this.c;
       } else {
-         Object var3;
-         try (aus $$1 = this.q.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
+         D $$1 = this.a.apply($$0);
+         this.c = $$1;
+         this.b = $$0;
+         $$0.registerForCleaning(this);
+         return $$1;
       }
    }
 
-   @Override
-   public void a(abd $$0) {
-      zi.a($$0, this, this.a);
-      jt.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
-      this.b.a(ago.b.a(wj.a($$1)), new gkm(this.a, this.b, new gkq(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
-      this.b.a(abl.a);
-      this.b.a(ago.a.a(wj.a($$1)));
+   public void a() {
+      this.c = null;
+      this.b = null;
    }
 
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   @Override
-   public void a(vt $$0) {
-      super.a($$0);
-      this.a.z();
+   @FunctionalInterface
+   public interface a<C extends gkj.a<C>> {
+      void registerForCleaning(gkj<C, ?> var1);
    }
 }

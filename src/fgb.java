@@ -1,53 +1,46 @@
-import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface fgb {
-   String co = "*";
-   fgb cp = new fgb() {
-      @Override
-      public String cH() {
-         return "*";
-      }
-   };
-
-   String cH();
+class fgb {
+   private final Reference2ObjectOpenHashMap<ffz, fge> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
    @Nullable
-   default wy m_() {
-      return null;
+   public fge a(ffz $$0) {
+      return (fge)this.a.get($$0);
    }
 
-   default wy hf() {
-      wy $$0 = this.m_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xe.e(wy.b(this.cH())))) : wy.b(this.cH());
+   public fge a(ffz $$0, Consumer<fge> $$1) {
+      return (fge)this.a.computeIfAbsent($$0, $$1x -> {
+         fge $$2 = new fge();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   static fgb c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cp;
-      } else {
-         final wy $$1 = wy.b($$0);
-         return new fgb() {
-            @Override
-            public String cH() {
-               return $$0;
-            }
-
-            @Override
-            public wy hf() {
-               return $$1;
-            }
-         };
-      }
+   public boolean b(ffz $$0) {
+      return this.a.remove($$0) != null;
    }
 
-   static fgb a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new fgb() {
-         @Override
-         public String cH() {
-            return $$1;
-         }
-      };
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<ffz> b() {
+      Object2IntMap<ffz> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(ffz $$0, fge $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<ffz, fge> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

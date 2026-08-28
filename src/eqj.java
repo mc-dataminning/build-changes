@@ -1,23 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
 
-public class eqj extends eqp {
-   private static final eqj c = new eqj();
-   public static final MapCodec<eqj> a = MapCodec.unit(() -> c);
+public class eqj extends eqy {
+   public static final MapCodec<eqj> a = btl.b(0, 256).fieldOf("count").xmap(eqj::new, $$0 -> $$0.c);
+   private final btl c;
 
-   public static eqj a() {
-      return c;
+   private eqj(btl $$0) {
+      this.c = $$0;
+   }
+
+   public static eqj a(btl $$0) {
+      return new eqj($$0);
+   }
+
+   public static eqj a(int $$0) {
+      return a(bti.a($$0));
    }
 
    @Override
-   public Stream<iv> a_(eqn $$0, azv $$1, iv $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new iv($$3, $$2.v(), $$4));
+   protected int a(azv $$0, iv $$1) {
+      return this.c.a($$0);
    }
 
    @Override
-   public eqq<?> b() {
-      return eqq.m;
+   public eqv<?> b() {
+      return eqv.f;
    }
 }

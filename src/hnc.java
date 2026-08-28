@@ -1,58 +1,123 @@
-public class hnc extends hmp {
-   public hnc(awm $$0, awo $$1, float $$2, float $$3, azv $$4, iv $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class hnc implements hmy {
+   private static final int a = 40;
+   private static final float b = 0.001F;
+   private final gpo c;
+   private final hou d;
+   private final dkr e;
+   private final azv f;
+   private final Object2ObjectArrayMap<dkp, hnc.a> g = new Object2ObjectArrayMap();
+   private Optional<dkn> h = Optional.empty();
+   private Optional<dkm> i = Optional.empty();
+   private float j;
+   @Nullable
+   private dkp k;
+
+   public hnc(gpo $$0, hou $$1, dkr $$2) {
+      this.f = $$0.dU().C_();
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static hnc a(awm $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   public float b() {
+      return this.j;
    }
 
-   public static hnc a(jf<awm> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public void a() {
+      this.g.values().removeIf(hmx::m);
+      dkp $$0 = this.e.a(this.c.dz(), this.c.dB(), this.c.dF()).a();
+      if ($$0 != this.k) {
+         this.k = $$0;
+         this.h = $$0.n();
+         this.i = $$0.o();
+         this.g.values().forEach(hnc.a::o);
+         $$0.m().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
+               if ($$2 == null) {
+                  $$2 = new hnc.a((awm)$$1.a());
+                  this.d.a((hno)$$2);
+               }
+
+               $$2.p();
+               return $$2;
+            }));
+      }
+
+      this.i.ifPresent($$0x -> {
+         if (this.f.j() < $$0x.b()) {
+            this.d.a(hnj.b($$0x.a().a()));
+         }
+      });
+      this.h
+         .ifPresent(
+            $$0x -> {
+               djm $$1 = this.c.dU();
+               int $$2 = $$0x.c() * 2 + 1;
+               iv $$3 = iv.a(
+                  this.c.dz() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dD() + (double)this.f.a($$2) - (double)$$0x.c(),
+                  this.c.dF() + (double)this.f.a($$2) - (double)$$0x.c()
+               );
+               int $$4 = $$1.a(djv.a, $$3);
+               if ($$4 > 0) {
+                  this.j -= (float)$$4 / 15.0F * 0.001F;
+               } else {
+                  this.j = this.j - (float)($$1.a(djv.b, $$3) - 1) / (float)$$0x.b();
+               }
+
+               if (this.j >= 1.0F) {
+                  double $$5 = (double)$$3.u() + 0.5;
+                  double $$6 = (double)$$3.v() + 0.5;
+                  double $$7 = (double)$$3.w() + 0.5;
+                  double $$8 = $$5 - this.c.dz();
+                  double $$9 = $$6 - this.c.dD();
+                  double $$10 = $$7 - this.c.dF();
+                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
+                  double $$12 = $$11 + $$0x.d();
+                  hnj $$13 = hnj.a($$0x.a().a(), this.f, this.c.dz() + $$8 / $$11 * $$12, this.c.dD() + $$9 / $$11 * $$12, this.c.dF() + $$10 / $$11 * $$12);
+                  this.d.a($$13);
+                  this.j = 0.0F;
+               } else {
+                  this.j = Math.max(this.j, 0.0F);
+               }
+            }
+         );
    }
 
-   public static hnc a(awm $$0, float $$1, float $$2) {
-      return new hnc($$0.a(), awo.a, $$2, $$1, hnh.t(), false, 0, hnh.a.a, 0.0, 0.0, 0.0, true);
-   }
+   public static class a extends hmx {
+      private int n;
+      private int o;
 
-   public static hnc a(awm $$0) {
-      return new hnc($$0.a(), awo.b, 1.0F, 1.0F, hnh.t(), false, 0, hnh.a.a, 0.0, 0.0, 0.0, true);
-   }
+      public a(awm $$0) {
+         super($$0, awo.i, hno.t());
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public static hnc a(awm $$0, fex $$1) {
-      return new hnc($$0, awo.c, 4.0F, 1.0F, hnh.t(), false, 0, hnh.a.b, $$1.d, $$1.e, $$1.f);
-   }
+      @Override
+      public void q() {
+         if (this.o < 0) {
+            this.n();
+         }
 
-   public static hnc b(awm $$0, float $$1, float $$2) {
-      return new hnc($$0.a(), awo.i, $$2, $$1, hnh.t(), false, 0, hnh.a.a, 0.0, 0.0, 0.0, true);
-   }
+         this.o = this.o + this.n;
+         this.d = azm.a((float)this.o / 40.0F, 0.0F, 1.0F);
+      }
 
-   public static hnc b(awm $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
+      public void o() {
+         this.o = Math.min(this.o, 40);
+         this.n = -1;
+      }
 
-   public static hnc a(awm $$0, azv $$1, double $$2, double $$3, double $$4) {
-      return new hnc($$0, awo.i, 1.0F, 1.0F, $$1, false, 0, hnh.a.b, $$2, $$3, $$4);
-   }
-
-   public hnc(awm $$0, awo $$1, float $$2, float $$3, azv $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, hnh.a.b, $$5, $$6, $$7);
-   }
-
-   private hnc(awm $$0, awo $$1, float $$2, float $$3, azv $$4, boolean $$5, int $$6, hnh.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public hnc(alg $$0, awo $$1, float $$2, float $$3, azv $$4, boolean $$5, int $$6, hnh.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+      public void p() {
+         this.o = Math.max(0, this.o);
+         this.n = 1;
+      }
    }
 }

@@ -1,35 +1,23 @@
-public class hbe extends hbh<hel, ghq> {
-   private final ghj a;
-   private final heh b = new heh();
-
-   public hbe(gyq<hel, ghq> $$0, gjk $$1) {
+public class hbe<S extends hcj, M extends ggp<S> & gff> extends hbm<S, M> {
+   public hbe(gyv<S, M> $$0) {
       super($$0);
-      this.a = new ghj($$1.a(gjn.cb));
-      this.b.c = ghj.a.e;
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, hel $$3, float $$4, float $$5) {
-      cjt.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
-      }
-
-      cjt.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
-      }
+   public void a(fkd $$0, gqr $$1, int $$2, S $$3, float $$4, float $$5) {
+      this.a($$3, $$3.g, bxa.b, $$0, $$1, $$2);
+      this.a($$3, $$3.i, bxa.a, $$0, $$1, $$2);
    }
 
-   private void a(fjy $$0, gqm $$1, int $$2, hel $$3, cjt.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.N ? -1.3F : -1.5F, 0.0F);
-      this.b.u = $$3.u;
-      this.b.ad = $$3.ad;
-      this.b.ae = $$3.ae;
-      this.b.aa = $$5;
-      this.b.ab = $$6;
-      this.a.a(this.b);
-      this.a.a($$0, $$1.getBuffer(this.a.a(gyg.a($$4))), $$2, hja.d);
-      $$0.b();
+   protected void a(S $$0, hgi $$1, bxa $$2, fkd $$3, gqr $$4, int $$5) {
+      if (!$$1.c()) {
+         $$3.a();
+         this.d().a($$2, $$3);
+         $$3.a(a.b.rotationDegrees(-90.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         boolean $$6 = $$2 == bxa.a;
+         $$3.a((float)($$6 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         $$1.a($$3, $$4, $$5, hjg.d);
+         $$3.b();
+      }
    }
 }

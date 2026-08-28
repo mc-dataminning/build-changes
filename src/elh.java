@@ -1,56 +1,39 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
 
-public class elh extends ejt<emv> {
-   public elh(Codec<emv> $$0) {
+public class elh extends ejy<emj> {
+   public elh(Codec<emj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<emv> $$0) {
-      dkg $$1 = $$0.b();
+   public boolean a(eka<emj> $$0) {
+      dkl $$1 = $$0.b();
       iv $$2 = $$0.e();
-      emv $$3 = $$0.f();
-      azv $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         iv $$6 = $$2.h($$5.getAsInt());
-         ka $$7 = new ka($$3.c, $$3.c, $$3.c);
-         era $$8 = era.a($$6.b($$7), $$6.a($$7));
-         return iv.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dmo.lp.m(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+      iv.a $$3 = new iv.a();
+      iv.a $$4 = new iv.a();
 
-   private static OptionalInt a(dkg $$0, iv $$1, emv $$2) {
-      Predicate<eao> $$3 = $$0x -> $$0x.a(dmo.J);
-      Predicate<eao> $$4 = $$0x -> !$$0x.a(dmo.J);
-      Optional<egd> $$5 = egd.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(egd::c).orElseGet(OptionalInt::empty);
-   }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(egs.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(jb.a, 1);
+            dkp $$10 = $$1.u($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dmt.ee.m(), 2);
+            }
 
-   private boolean b(dkg $$0, iv $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
-         for (jb $$2 : jb.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dmt.ed.m(), 2);
+               eat $$11 = $$1.a_($$4);
+               if ($$11.b(dul.c)) {
+                  $$1.a($$4, $$11.b(dul.c, Boolean.valueOf(true)), 2);
+               }
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
-   }
 
-   private boolean a(dji $$0, iv $$1) {
-      eao $$2 = $$0.a_($$1);
-      return $$2.a(dmo.J) || $$2.l();
+      return true;
    }
 }

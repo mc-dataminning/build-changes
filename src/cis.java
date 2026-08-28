@@ -13,7 +13,7 @@ public class cis extends cir {
    @Nullable
    private iv bI;
 
-   public cis(bwr<? extends cis> $$0, djh $$1) {
+   public cis(bwr<? extends cis> $$0, djm $$1) {
       super($$0, $$1);
       if (!$$1.C) {
          this.w(true);
@@ -91,7 +91,7 @@ public class cis extends cir {
    public void h() {
       super.h();
       if (this.m()) {
-         this.i(fex.c);
+         this.i(ffc.c);
          this.o(this.dz(), (double)azm.a(this.dB()) + 1.0 - (double)this.dq(), this.dF());
       } else {
          this.i(this.dx().d(1.0, 0.6, 1.0));
@@ -140,8 +140,8 @@ public class cis extends cir {
          double $$4 = (double)this.bI.u() + 0.5 - this.dz();
          double $$5 = (double)this.bI.v() + 0.1 - this.dB();
          double $$6 = (double)this.bI.w() + 0.5 - this.dF();
-         fex $$7 = this.dx();
-         fex $$8 = $$7.b((Math.signum($$4) * 0.5 - $$7.d) * 0.1F, (Math.signum($$5) * 0.7F - $$7.e) * 0.1F, (Math.signum($$6) * 0.5 - $$7.f) * 0.1F);
+         ffc $$7 = this.dx();
+         ffc $$8 = $$7.b((Math.signum($$4) * 0.5 - $$7.d) * 0.1F, (Math.signum($$5) * 0.7F - $$7.e) * 0.1F, (Math.signum($$6) * 0.5 - $$7.f) * 0.1F);
          this.i($$8);
          float $$9 = (float)(azm.d($$8.f, $$8.d) * 180.0F / (float)Math.PI) - 90.0F;
          float $$10 = azm.h($$9 - this.dK());
@@ -159,7 +159,7 @@ public class cis extends cir {
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, eao $$2, iv $$3) {
+   protected void a(double $$0, boolean $$1, eat $$2, iv $$3) {
    }
 
    @Override
@@ -192,8 +192,8 @@ public class cis extends cir {
       $$0.a("BatFlags", this.al.a(bF).byteValue());
    }
 
-   public static boolean b(bwr<cis> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
-      if ($$3.v() >= $$1.a(egn.a.b, $$3).v()) {
+   public static boolean b(bwr<cis> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
+      if ($$3.v() >= $$1.a(egs.a.b, $$3).v()) {
          return false;
       } else {
          int $$5 = $$1.B($$3);

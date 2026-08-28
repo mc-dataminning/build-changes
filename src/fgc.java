@@ -1,383 +1,215 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.Optional;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.slf4j.Logger;
 
-public class fgc {
-   public static final String b = "#";
-   private static final Logger a = LogUtils.getLogger();
-   private final Object2ObjectMap<String, ffu> c = new Object2ObjectOpenHashMap(16, 0.5F);
-   private final Reference2ObjectMap<fgf, List<ffu>> d = new Reference2ObjectOpenHashMap();
-   private final Map<String, ffw> e = new Object2ObjectOpenHashMap(16, 0.5F);
-   private final Map<fft, ffu> f = new EnumMap<>(fft.class);
-   private final Object2ObjectMap<String, ffx> g = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<String, ffx> h = new Object2ObjectOpenHashMap();
+public class fgc extends fgj {
+   private static final int a = 0;
+   private static final int b = 1;
+   private final fgh c;
+   private final String d;
+   private final Set<String> e = Sets.newHashSet();
+   private wy f;
+   private wy g = wx.a;
+   private wy h = wx.a;
+   private boolean i = true;
+   private boolean j = true;
+   private fgj.b k = fgj.b.a;
+   private fgj.b l = fgj.b.a;
+   private o m = o.v;
+   private fgj.a n = fgj.a.a;
+   private final xv o;
 
-   @Nullable
-   public ffu a(@Nullable String $$0) {
-      return (ffu)this.c.get($$0);
+   public fgc(fgh $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = wy.b($$1);
+      this.o = xv.a.a($$1).a(new xe.e(wy.b($$1)));
    }
 
-   public ffu a(String $$0, fgf $$1, wy $$2, fgf.a $$3, boolean $$4, @Nullable yo $$5) {
-      if (this.c.containsKey($$0)) {
-         throw new IllegalArgumentException("An objective with the name '" + $$0 + "' already exists!");
+   public fgc.a a() {
+      return new fgc.a(
+         this.d,
+         Optional.of(this.f),
+         this.m != o.v ? Optional.of(this.m) : Optional.empty(),
+         this.i,
+         this.j,
+         this.g,
+         this.h,
+         this.k,
+         this.l,
+         this.n,
+         List.copyOf(this.e)
+      );
+   }
+
+   public fgh b() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public wy d() {
+      return this.f;
+   }
+
+   public xm e() {
+      xm $$0 = xb.a((wy)this.f.f().c(this.o));
+      o $$1 = this.o();
+      if ($$1 != o.v) {
+         $$0.a($$1);
+      }
+
+      return $$0;
+   }
+
+   public void a(wy $$0) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Name cannot be null");
       } else {
-         ffu $$6 = new ffu(this, $$0, $$1, $$2, $$3, $$4, $$5);
-         ((List)this.d.computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$6);
-         this.c.put($$0, $$6);
-         this.a($$6);
-         return $$6;
+         this.f = $$0;
+         this.c.b(this);
       }
    }
 
-   public final void a(fgf $$0, fgb $$1, Consumer<fga> $$2) {
-      ((List)this.d.getOrDefault($$0, Collections.emptyList())).forEach($$2x -> $$2.accept(this.a($$1, $$2x, true)));
+   public void b(@Nullable wy $$0) {
+      this.g = $$0 == null ? wx.a : $$0;
+      this.c.b(this);
    }
 
-   private ffw f(String $$0) {
-      return this.e.computeIfAbsent($$0, $$0x -> new ffw());
+   public wy f() {
+      return this.g;
    }
 
-   public fga c(fgb $$0, ffu $$1) {
-      return this.a($$0, $$1, false);
+   public void c(@Nullable wy $$0) {
+      this.h = $$0 == null ? wx.a : $$0;
+      this.c.b(this);
    }
 
-   public fga a(final fgb $$0, final ffu $$1, boolean $$2) {
-      final boolean $$3 = $$2 || !$$1.d().e();
-      ffw $$4 = this.f($$0.cH());
-      final MutableBoolean $$5 = new MutableBoolean();
-      final ffz $$6 = $$4.a($$1, $$1x -> $$5.setTrue());
-      return new fga() {
-         @Override
-         public int a() {
-            return $$6.a();
-         }
-
-         @Override
-         public void a(int $$0x) {
-            if (!$$3) {
-               throw new IllegalStateException("Cannot modify read-only score");
-            } else {
-               boolean $$1 = $$5.isTrue();
-               if ($$1.f()) {
-                  wy $$2 = $$0.m_();
-                  if ($$2 != null && !$$2.equals($$6.d())) {
-                     $$6.a($$2);
-                     $$1 = true;
-                  }
-               }
-
-               if ($$0 != $$6.a()) {
-                  $$6.a($$0);
-                  $$1 = true;
-               }
-
-               if ($$1) {
-                  this.h();
-               }
-            }
-         }
-
-         @Nullable
-         @Override
-         public wy g() {
-            return $$6.d();
-         }
-
-         @Override
-         public void a(@Nullable wy $$0x) {
-            if ($$5.isTrue() || !Objects.equals($$0, $$6.d())) {
-               $$6.a($$0);
-               this.h();
-            }
-         }
-
-         @Override
-         public void a(@Nullable yo $$0x) {
-            $$6.b($$0);
-            this.h();
-         }
-
-         @Override
-         public boolean d() {
-            return $$6.b();
-         }
-
-         @Override
-         public void e() {
-            this.a(false);
-         }
-
-         @Override
-         public void f() {
-            this.a(true);
-         }
-
-         private void a(boolean $$0x) {
-            $$6.a($$0);
-            if ($$5.isTrue()) {
-               this.h();
-            }
-
-            fgc.this.a($$0, $$1);
-         }
-
-         private void h() {
-            fgc.this.a($$0, $$1, $$6);
-            $$5.setFalse();
-         }
-      };
+   public wy g() {
+      return this.h;
    }
 
-   @Nullable
-   public ffy d(fgb $$0, ffu $$1) {
-      ffw $$2 = this.e.get($$0.cH());
-      return $$2 != null ? $$2.a($$1) : null;
+   @Override
+   public Collection<String> h() {
+      return this.e;
    }
 
-   public Collection<ffv> i(ffu $$0) {
-      List<ffv> $$1 = new ArrayList<>();
-      this.e.forEach(($$2, $$3) -> {
-         ffz $$4 = $$3.a($$0);
-         if ($$4 != null) {
-            $$1.add(new ffv($$2, $$4.a(), $$4.d(), $$4.c()));
-         }
-      });
+   @Override
+   public xm d(wy $$0) {
+      xm $$1 = wy.i().b(this.g).b($$0).b(this.h);
+      o $$2 = this.o();
+      if ($$2 != o.v) {
+         $$1.a($$2);
+      }
+
       return $$1;
    }
 
-   public Collection<ffu> b() {
-      return this.c.values();
+   public static xm a(@Nullable fgj $$0, wy $$1) {
+      return $$0 == null ? $$1.f() : $$0.d($$1);
    }
 
-   public Collection<String> c() {
-      return this.c.keySet();
+   @Override
+   public boolean i() {
+      return this.i;
    }
 
-   public Collection<fgb> d() {
-      return this.e.keySet().stream().map(fgb::c).toList();
+   public void a(boolean $$0) {
+      this.i = $$0;
+      this.c.b(this);
    }
 
-   public void b(fgb $$0) {
-      ffw $$1 = this.e.remove($$0.cH());
-      if ($$1 != null) {
-         this.a($$0);
-      }
+   @Override
+   public boolean j() {
+      return this.j;
    }
 
-   public void e(fgb $$0, ffu $$1) {
-      ffw $$2 = this.e.get($$0.cH());
-      if ($$2 != null) {
-         boolean $$3 = $$2.b($$1);
-         if (!$$2.a()) {
-            ffw $$4 = this.e.remove($$0.cH());
-            if ($$4 != null) {
-               this.a($$0);
-            }
-         } else if ($$3) {
-            this.b($$0, $$1);
-         }
-      }
+   public void b(boolean $$0) {
+      this.j = $$0;
+      this.c.b(this);
    }
 
-   public Object2IntMap<ffu> c(fgb $$0) {
-      ffw $$1 = this.e.get($$0.cH());
-      return $$1 != null ? $$1.b() : Object2IntMaps.emptyMap();
+   @Override
+   public fgj.b k() {
+      return this.k;
    }
 
-   public void j(ffu $$0) {
-      this.c.remove($$0.c());
-
-      for (fft $$1 : fft.values()) {
-         if (this.a($$1) == $$0) {
-            this.a($$1, null);
-         }
-      }
-
-      List<ffu> $$2 = (List<ffu>)this.d.get($$0.d());
-      if ($$2 != null) {
-         $$2.remove($$0);
-      }
-
-      for (ffw $$3 : this.e.values()) {
-         $$3.b($$0);
-      }
-
-      this.c($$0);
+   @Override
+   public fgj.b l() {
+      return this.l;
    }
 
-   public void a(fft $$0, @Nullable ffu $$1) {
-      this.f.put($$0, $$1);
+   public void a(fgj.b $$0) {
+      this.k = $$0;
+      this.c.b(this);
    }
 
-   @Nullable
-   public ffu a(fft $$0) {
-      return this.f.get($$0);
+   public void b(fgj.b $$0) {
+      this.l = $$0;
+      this.c.b(this);
    }
 
-   @Nullable
-   public ffx b(String $$0) {
-      return (ffx)this.g.get($$0);
+   @Override
+   public fgj.a m() {
+      return this.n;
    }
 
-   public ffx c(String $$0) {
-      ffx $$1 = this.b($$0);
-      if ($$1 != null) {
-         a.warn("Requested creation of existing team '{}'", $$0);
-         return $$1;
-      } else {
-         $$1 = new ffx(this, $$0);
-         this.g.put($$0, $$1);
-         this.a($$1);
-         return $$1;
-      }
+   public void a(fgj.a $$0) {
+      this.n = $$0;
+      this.c.b(this);
    }
 
-   public void d(ffx $$0) {
-      this.g.remove($$0.c());
-
-      for (String $$1 : $$0.h()) {
-         this.h.remove($$1);
+   public int n() {
+      int $$0 = 0;
+      if (this.i()) {
+         $$0 |= 1;
       }
 
-      this.c($$0);
-   }
-
-   public boolean a(String $$0, ffx $$1) {
-      if (this.e($$0) != null) {
-         this.d($$0);
+      if (this.j()) {
+         $$0 |= 2;
       }
 
-      this.h.put($$0, $$1);
-      return $$1.h().add($$0);
+      return $$0;
    }
 
-   public boolean d(String $$0) {
-      ffx $$1 = this.e($$0);
-      if ($$1 != null) {
-         this.b($$0, $$1);
-         return true;
-      } else {
-         return false;
-      }
+   public void a(int $$0) {
+      this.a(($$0 & 1) > 0);
+      this.b(($$0 & 2) > 0);
    }
 
-   public void b(String $$0, ffx $$1) {
-      if (this.e($$0) != $$1) {
-         throw new IllegalStateException("Player is either on another team or not on any team. Cannot remove from team '" + $$1.c() + "'.");
-      } else {
-         this.h.remove($$0);
-         $$1.h().remove($$0);
-      }
+   public void a(o $$0) {
+      this.m = $$0;
+      this.c.b(this);
    }
 
-   public Collection<String> e() {
-      return this.g.keySet();
+   @Override
+   public o o() {
+      return this.m;
    }
 
-   public Collection<ffx> f() {
-      return this.g.values();
-   }
-
-   @Nullable
-   public ffx e(String $$0) {
-      return (ffx)this.h.get($$0);
-   }
-
-   public void a(ffu $$0) {
-   }
-
-   public void b(ffu $$0) {
-   }
-
-   public void c(ffu $$0) {
-   }
-
-   protected void a(fgb $$0, ffu $$1, ffz $$2) {
-   }
-
-   protected void a(fgb $$0, ffu $$1) {
-   }
-
-   public void a(fgb $$0) {
-   }
-
-   public void b(fgb $$0, ffu $$1) {
-   }
-
-   public void a(ffx $$0) {
-   }
-
-   public void b(ffx $$0) {
-   }
-
-   public void c(ffx $$0) {
-   }
-
-   public void a(bwi $$0) {
-      if (!($$0 instanceof crj) && !$$0.bI()) {
-         this.b($$0);
-         this.d($$0.cH());
-      }
-   }
-
-   protected List<fgc.a> g() {
-      return this.e.entrySet().stream().flatMap($$0 -> {
-         String $$1 = $$0.getKey();
-         return $$0.getValue().c().entrySet().stream().map($$1x -> new fgc.a($$1, ((ffu)$$1x.getKey()).c(), (ffz)$$1x.getValue()));
-      }).toList();
-   }
-
-   protected void a(fgc.a $$0) {
-      ffu $$1 = this.a($$0.c);
-      if ($$1 == null) {
-         a.error("Unknown objective {} for name {}, ignoring", $$0.c, $$0.b);
-      } else {
-         this.f($$0.b).a($$1, $$0.d);
-      }
-   }
-
-   protected void a(ffx.a $$0) {
-      ffx $$1 = this.c($$0.a());
-      $$0.b().ifPresent($$1::a);
-      $$0.c().ifPresent($$1::a);
-      $$1.a($$0.d());
-      $$1.b($$0.e());
-      $$1.b($$0.f());
-      $$1.c($$0.g());
-      $$1.a($$0.h());
-      $$1.b($$0.i());
-      $$1.a($$0.j());
-
-      for (String $$2 : $$0.k()) {
-         this.a($$2, $$1);
-      }
-   }
-
-   protected void a(ffu.a $$0) {
-      this.a($$0.a(), $$0.b(), $$0.c(), $$0.d(), $$0.e(), $$0.f().orElse(null));
-   }
-
-   public static record a(String b, String c, ffz d) {
+   public static record a(String b, Optional<wy> c, Optional<o> d, boolean e, boolean f, wy g, wy h, fgj.b i, fgj.b j, fgj.a k, List<String> l) {
       public static final Codec<fgc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("Name").forGetter(fgc.a::a), Codec.STRING.fieldOf("Objective").forGetter(fgc.a::b), ffz.a.forGetter(fgc.a::c))
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("Name").forGetter(fgc.a::a),
+                  xa.a.optionalFieldOf("DisplayName").forGetter(fgc.a::b),
+                  o.x.optionalFieldOf("TeamColor").forGetter(fgc.a::c),
+                  Codec.BOOL.optionalFieldOf("AllowFriendlyFire", true).forGetter(fgc.a::d),
+                  Codec.BOOL.optionalFieldOf("SeeFriendlyInvisibles", true).forGetter(fgc.a::e),
+                  xa.a.optionalFieldOf("MemberNamePrefix", wx.a).forGetter(fgc.a::f),
+                  xa.a.optionalFieldOf("MemberNameSuffix", wx.a).forGetter(fgc.a::g),
+                  fgj.b.e.optionalFieldOf("NameTagVisibility", fgj.b.a).forGetter(fgc.a::h),
+                  fgj.b.e.optionalFieldOf("DeathMessageVisibility", fgj.b.a).forGetter(fgc.a::i),
+                  fgj.a.e.optionalFieldOf("CollisionRule", fgj.a.a).forGetter(fgc.a::j),
+                  Codec.STRING.listOf().optionalFieldOf("Players", List.of()).forGetter(fgc.a::k)
+               )
                .apply($$0, fgc.a::new)
       );
 
@@ -385,12 +217,44 @@ public class fgc {
          return this.b;
       }
 
-      public String b() {
+      public Optional<wy> b() {
          return this.c;
       }
 
-      public ffz c() {
+      public Optional<o> c() {
          return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public wy f() {
+         return this.g;
+      }
+
+      public wy g() {
+         return this.h;
+      }
+
+      public fgj.b h() {
+         return this.i;
+      }
+
+      public fgj.b i() {
+         return this.j;
+      }
+
+      public fgj.a j() {
+         return this.k;
+      }
+
+      public List<String> k() {
+         return this.l;
       }
    }
 }

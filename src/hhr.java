@@ -1,40 +1,69 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record hhr<T>(kj<T> a) implements hia<T> {
-   private static final hia.a<? extends hhr<?>, ?> b = e();
+public class hhr extends hho implements hhq {
+   public static final MapCodec<hhr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("wobble", true).forGetter(hho::b), hhr.a.d.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, hhr::new)
+   );
+   private final hhr.a b;
+   private final azv c = azv.a();
+   private final hho.a d;
 
-   private static <T> hia.a<hhr<T>, T> e() {
-      Codec<? extends kj<?>> $$0 = mg.am.q().validate($$0x -> $$0x.d() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success($$0x));
-      MapCodec<hgg.d<hhr<T>, T>> $$2 = $$0.dispatchMap(
-         "component", $$0x -> ((hhr)$$0x.a()).a, $$0x -> hia.a.a($$0x.c()).xmap($$1 -> new hgg.d<>(new hhr($$0x), $$1), hgg.d::b)
-      );
-      return new hia.a<>($$2);
-   }
-
-   public static <T> hia.a<hhr<T>, T> c() {
-      return (hia.a<hhr<T>, T>)b;
-   }
-
-   @Nullable
-   @Override
-   public T b(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
-      return $$0.a(this.a);
+   public hhr(boolean $$0, hhr.a $$1) {
+      super($$0);
+      this.b = $$1;
+      this.d = this.a(0.9F);
    }
 
    @Override
-   public hia.a<hhr<T>, T> a() {
-      return c();
+   protected float a(czn $$0, gkq $$1, int $$2, bwi $$3) {
+      float $$4 = this.b.a($$1, $$0, $$3, this.c);
+      long $$5 = $$1.ae();
+      if (this.d.a($$5)) {
+         this.d.a($$5, $$4);
+      }
+
+      return this.d.a();
    }
 
    @Override
-   public Codec<T> b() {
-      return this.a.c();
+   public MapCodec<hhr> a() {
+      return a;
    }
 
-   public kj<T> d() {
-      return this.a;
+   public static enum a implements bak {
+      a("random") {
+         @Override
+         public float a(gkq $$0, czn $$1, bwi $$2, azv $$3) {
+            return $$3.i();
+         }
+      },
+      b("daytime") {
+         @Override
+         public float a(gkq $$0, czn $$1, bwi $$2, azv $$3) {
+            return $$0.f(1.0F);
+         }
+      },
+      c("moon_phase") {
+         @Override
+         public float a(gkq $$0, czn $$1, bwi $$2, azv $$3) {
+            return (float)$$0.at() / 8.0F;
+         }
+      };
+
+      public static final Codec<hhr.a> d = bak.a(hhr.a::values);
+      private final String e;
+
+      a(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+
+      abstract float a(gkq var1, czn var2, bwi var3, azv var4);
    }
 }

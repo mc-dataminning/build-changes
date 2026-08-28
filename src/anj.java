@@ -41,7 +41,7 @@ public class anj {
    );
    private static final SuggestionProvider<ej> f = ($$0, $$1) -> {
       alq.a $$2 = ((ej)$$0.getSource()).l().bc();
-      return eo.a($$2.a(mh.bs), $$1);
+      return eo.a($$2.a(mh.bt), $$1);
    };
 
    public static void a(CommandDispatcher<ej> $$0, ef $$1) {
@@ -86,7 +86,7 @@ public class anj {
                                              return $$1x;
                                           }))))
                                        .then(ek.a("over").then(ek.a("heightmap", ez.a()).redirect($$2, $$0x -> {
-                                          fex $$1x = ((ej)$$0x.getSource()).d();
+                                          ffc $$1x = ((ej)$$0x.getSource()).d();
                                           arq $$2x = ((ej)$$0x.getSource()).e();
                                           double $$3 = $$1x.a();
                                           double $$4 = $$1x.c();
@@ -94,7 +94,7 @@ public class anj {
                                              throw gg.a.create();
                                           } else {
                                              int $$5 = $$2x.a(ez.a($$0x, "heightmap"), azm.a($$3), azm.a($$4));
-                                             return ((ej)$$0x.getSource()).a(new fex($$3, (double)$$5, $$4));
+                                             return ((ej)$$0x.getSource()).a(new ffc($$3, (double)$$5, $$4));
                                           }
                                        })))
                                  ))
@@ -265,11 +265,11 @@ public class anj {
       return $$1;
    }
 
-   private static ej a(ej $$0, Collection<fgb> $$1, ffu $$2, boolean $$3) {
-      fgc $$4 = $$0.l().aJ();
+   private static ej a(ej $$0, Collection<fgg> $$1, ffz $$2, boolean $$3) {
+      fgh $$4 = $$0.l().aJ();
       return $$0.a(($$4x, $$5) -> {
-         for (fgb $$6 : $$1) {
-            fga $$7 = $$4.c($$6, $$2);
+         for (fgg $$6 : $$1) {
+            fgf $$7 = $$4.c($$6, $$2);
             int $$8 = $$3 ? $$5 : ($$4x ? 1 : 0);
             $$7.a($$8);
          }
@@ -300,8 +300,8 @@ public class anj {
    }
 
    private static boolean a(arq $$0, iv $$1) {
-      dio $$2 = new dio($$1);
-      ecv $$3 = $$0.m().a($$2.h, $$2.i);
+      dir $$2 = new dir($$1);
+      eda $$3 = $$0.m().a($$2.h, $$2.i);
       return $$3 == null ? false : $$3.F() == are.d && $$0.c($$2.a());
    }
 
@@ -315,7 +315,7 @@ public class anj {
                                                    $$0,
                                                    ek.a("block", gc.a($$3)),
                                                    $$2,
-                                                   $$0x -> gc.a($$0x, "block").test(new eas(((ej)$$0x.getSource()).e(), gg.a($$0x, "pos"), true))
+                                                   $$0x -> gc.a($$0x, "block").test(new eax(((ej)$$0x.getSource()).e(), gg.a($$0x, "pos"), true))
                                                 )
                                              )
                                        )
@@ -500,7 +500,7 @@ public class anj {
       return $$1;
    }
 
-   private static int a(Iterable<? extends bwi> $$0, cxa $$1, Predicate<czk> $$2) {
+   private static int a(Iterable<? extends bwi> $$0, cxd $$1, Predicate<czn> $$2) {
       int $$3 = 0;
 
       for (bwi $$4 : $$0) {
@@ -509,7 +509,7 @@ public class anj {
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
             int $$7 = $$5.getInt($$6);
             bya $$8 = $$4.a_($$7);
-            czk $$9 = $$8.a();
+            czn $$9 = $$8.a();
             if ($$2.test($$9)) {
                $$3 += $$9.M();
             }
@@ -519,7 +519,7 @@ public class anj {
       return $$3;
    }
 
-   private static int a(ej $$0, iv $$1, cxa $$2, Predicate<czk> $$3) throws CommandSyntaxException {
+   private static int a(ej $$0, iv $$1, cxd $$2, Predicate<czn> $$3) throws CommandSyntaxException {
       int $$4 = 0;
       btz $$5 = anu.a($$0, $$1, anu.b);
       int $$6 = $$5.b();
@@ -528,7 +528,7 @@ public class anj {
       for (int $$8 = 0; $$8 < $$7.size(); $$8++) {
          int $$9 = $$7.getInt($$8);
          if ($$9 >= 0 && $$9 < $$6) {
-            czk $$10 = $$5.a($$9);
+            czn $$10 = $$5.a($$9);
             if ($$3.test($$10)) {
                $$4 += $$10.M();
             }
@@ -563,29 +563,29 @@ public class anj {
    }
 
    private static boolean a(CommandContext<ej> $$0, anj.d $$1) throws CommandSyntaxException {
-      fgb $$2 = fp.a($$0, "target");
-      ffu $$3 = fd.a($$0, "targetObjective");
-      fgb $$4 = fp.a($$0, "source");
-      ffu $$5 = fd.a($$0, "sourceObjective");
-      fgc $$6 = ((ej)$$0.getSource()).l().aJ();
-      ffy $$7 = $$6.d($$2, $$3);
-      ffy $$8 = $$6.d($$4, $$5);
+      fgg $$2 = fp.a($$0, "target");
+      ffz $$3 = fd.a($$0, "targetObjective");
+      fgg $$4 = fp.a($$0, "source");
+      ffz $$5 = fd.a($$0, "sourceObjective");
+      fgh $$6 = ((ej)$$0.getSource()).l().aJ();
+      fgd $$7 = $$6.d($$2, $$3);
+      fgd $$8 = $$6.d($$4, $$5);
       return $$7 != null && $$8 != null ? $$1.test($$7.a(), $$8.a()) : false;
    }
 
    private static boolean a(CommandContext<ej> $$0, cw.d $$1) throws CommandSyntaxException {
-      fgb $$2 = fp.a($$0, "target");
-      ffu $$3 = fd.a($$0, "targetObjective");
-      fgc $$4 = ((ej)$$0.getSource()).l().aJ();
-      ffy $$5 = $$4.d($$2, $$3);
+      fgg $$2 = fp.a($$0, "target");
+      ffz $$3 = fd.a($$0, "targetObjective");
+      fgh $$4 = ((ej)$$0.getSource()).l().aJ();
+      fgd $$5 = $$4.d($$2, $$3);
       return $$5 == null ? false : $$1.d($$5.a());
    }
 
-   private static boolean a(ej $$0, jf<fcx> $$1) {
+   private static boolean a(ej $$0, jf<fdc> $$1) {
       arq $$2 = $$0.e();
-      ezr $$3 = new ezr.a($$2).a(fci.f, $$0.d()).b(fci.a, $$0.f()).a(fch.d);
-      ezo $$4 = new ezo.a($$3).a(Optional.empty());
-      $$4.b(ezo.a($$1.a()));
+      ezw $$3 = new ezw.a($$2).a(fcn.f, $$0.d()).b(fcn.a, $$0.f()).a(fcm.d);
+      ezt $$4 = new ezt.a($$3).a(Optional.empty());
+      $$4.b(ezt.a($$1.a()));
       return $$1.a().test($$4);
    }
 
@@ -633,8 +633,8 @@ public class anj {
    }
 
    private static OptionalInt a(arq $$0, iv $$1, iv $$2, iv $$3, boolean $$4) throws CommandSyntaxException {
-      era $$5 = era.a($$1, $$2);
-      era $$6 = era.a($$3, $$3.a($$5.c()));
+      erf $$5 = erf.a($$1, $$2);
+      erf $$6 = erf.a($$3, $$3.a($$5.c()));
       iv $$7 = new iv($$6.h() - $$5.h(), $$6.i() - $$5.i(), $$6.j() - $$5.j());
       int $$8 = $$5.d() * $$5.e() * $$5.f();
       if ($$8 > 32768) {
@@ -648,14 +648,14 @@ public class anj {
                for (int $$13 = $$5.h(); $$13 <= $$5.k(); $$13++) {
                   iv $$14 = new iv($$13, $$12, $$11);
                   iv $$15 = $$14.a((ka)$$7);
-                  eao $$16 = $$0.a_($$14);
-                  if (!$$4 || !$$16.a(dmo.a)) {
+                  eat $$16 = $$0.a_($$14);
+                  if (!$$4 || !$$16.a(dmt.a)) {
                      if ($$16 != $$0.a_($$15)) {
                         return OptionalInt.empty();
                      }
 
-                     dxm $$17 = $$0.c_($$14);
-                     dxm $$18 = $$0.c_($$15);
+                     dxr $$17 = $$0.c_($$14);
+                     dxr $$18 = $$0.c_($$15);
                      if ($$17 != null) {
                         if ($$18 == null) {
                            return OptionalInt.empty();

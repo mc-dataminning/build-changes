@@ -1,91 +1,145 @@
-public abstract class cue {
-   protected final ctw a;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   protected cue(ctw $$0) {
-      this.a = $$0;
+public interface cue extends btz, bui {
+   ffc ds();
+
+   fex cQ();
+
+   @Nullable
+   alf<ezy> q();
+
+   void a(@Nullable alf<ezy> var1);
+
+   long s();
+
+   void a(long var1);
+
+   jo<czn> t();
+
+   void u();
+
+   djm dU();
+
+   boolean dP();
+
+   @Override
+   default boolean c() {
+      return this.ah_();
    }
 
-   public bxe a() {
-      return null;
+   default void a(tz $$0, jh.a $$1) {
+      if (this.q() != null) {
+         $$0.a("LootTable", this.q().a().toString());
+         if (this.s() != 0L) {
+            $$0.a("LootTableSeed", this.s());
+         }
+      } else {
+         bua.a($$0, this.t(), $$1);
+      }
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2);
+   default void b(tz $$0, jh.a $$1) {
+      this.u();
+      alf<ezy> $$2 = $$0.<alf<ezy>>a("LootTable", ezy.a).orElse(null);
+      this.a($$2);
+      this.a($$0.b("LootTableSeed", 0L));
+      if ($$2 == null) {
+         bua.b($$0, this.t(), $$1);
+      }
    }
 
-   public abstract void b();
-
-   public djh c() {
-      return this.a.dU();
+   default void a(bux $$0, arq $$1, bwi $$2) {
+      if ($$1.O().c(dji.j)) {
+         buc.a($$1, $$2, this);
+         bwi $$3 = $$0.c();
+         if ($$3 != null && $$3.an() == bwr.bS) {
+            cqc.a($$1, (crm)$$3, true);
+         }
+      }
    }
 
-   public abstract void a(arq var1);
-
-   public abstract double a(iv var1, ebs var2, double var3);
-
-   public abstract boolean d();
-
-   public fex e() {
-      return this.a.dx();
+   default bug b_(crm $$0) {
+      $$0.a(this);
+      return bug.a;
    }
 
-   public void a(fex $$0) {
-      this.a.i($$0);
+   default void f(@Nullable crm $$0) {
+      MinecraftServer $$1 = this.dU().p();
+      if (this.q() != null && $$1 != null) {
+         ezy $$2 = $$1.bc().b(this.q());
+         if ($$0 != null) {
+            aq.Q.a((arr)$$0, this.q());
+         }
+
+         this.a(null);
+         ezw.a $$3 = new ezw.a((arq)this.dU()).a(fcn.f, this.ds());
+         if ($$0 != null) {
+            $$3.a($$0.eg()).a(fcn.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(fcm.c), this.s());
+      }
    }
 
-   public void b(double $$0, double $$1, double $$2) {
-      this.a.n($$0, $$1, $$2);
+   default void ag_() {
+      this.f(null);
+      this.t().clear();
    }
 
-   public fex f() {
-      return this.a.ds();
+   default boolean ah_() {
+      for (czn $$0 : this.t()) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public double g() {
-      return this.a.dz();
+   default czn f_(int $$0) {
+      this.f(null);
+      czn $$1 = this.t().get($$0);
+      if ($$1.f()) {
+         return czn.k;
+      } else {
+         this.t().set($$0, czn.k);
+         return $$1;
+      }
    }
 
-   public double h() {
-      return this.a.dB();
+   default czn g_(int $$0) {
+      this.f(null);
+      return this.t().get($$0);
    }
 
-   public double i() {
-      return this.a.dF();
+   default czn b(int $$0, int $$1) {
+      this.f(null);
+      return bua.a(this.t(), $$0, $$1);
    }
 
-   public void b(fex $$0) {
-      this.a.b($$0);
+   default void c(int $$0, czn $$1) {
+      this.f(null);
+      this.t().set($$0, $$1);
+      $$1.f(this.f_($$1));
    }
 
-   public void c(double $$0, double $$1, double $$2) {
-      this.a.a_($$0, $$1, $$2);
+   default bya h_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bya() {
+         @Override
+         public czn a() {
+            return cue.this.g_($$0);
+         }
+
+         @Override
+         public boolean a(czn $$0x) {
+            cue.this.c($$0, $$0);
+            return true;
+         }
+      } : bya.a;
    }
 
-   public float j() {
-      return this.a.dM();
+   default boolean g(crm $$0) {
+      return !this.dP() && $$0.a(this.cQ(), 4.0);
    }
-
-   public void a(float $$0) {
-      this.a.x($$0);
-   }
-
-   public float k() {
-      return this.a.dK();
-   }
-
-   public void b(float $$0) {
-      this.a.w($$0);
-   }
-
-   public jb l() {
-      return this.a.cN();
-   }
-
-   public fex c(fex $$0) {
-      return $$0;
-   }
-
-   public abstract double b(arq var1);
-
-   public abstract double m();
 }

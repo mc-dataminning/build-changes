@@ -1,64 +1,119 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class cqr implements diu {
-   private static final int a = 1200;
-   private int b;
+public class cqr {
+   public static final Codec<cqr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayu.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               ayu.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               ayu.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, cqr::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   @Override
-   public void a(arq $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.O().c(djd.f)) {
-         this.b--;
-         if (this.b <= 0) {
-            this.b = 1200;
-            crj $$3 = $$0.k();
-            if ($$3 != null) {
-               azv $$4 = $$0.A;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               iv $$7 = $$3.du().b($$5, 0, $$6);
-               int $$8 = 10;
-               if ($$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  if (bye.a(bwr.u, $$0, $$7)) {
-                     if ($$0.a($$7, 2)) {
-                        this.a($$0, $$7);
-                     } else if ($$0.b().a($$7, axn.n).b()) {
-                        this.b($$0, $$7);
-                     }
-                  }
-               }
+   public cqr(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+   }
+
+   public cqr() {
+      this(0, 0, 0);
+   }
+
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
+      } else {
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
+      }
+   }
+
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
+   }
+
+   public static OptionalInt a(arq $$0, iv $$1, arr $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<arr> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
+
+         if ($$3.stream().anyMatch($$0x -> $$0x.Z().map(cqr::d).orElse(false))) {
+            return OptionalInt.empty();
+         } else {
+            Optional<cqr> $$4 = $$3.stream().flatMap($$0x -> $$0x.Z().stream()).max(Comparator.comparingInt(cqr::c));
+            if ($$4.isPresent()) {
+               cqr $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.Z().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
+            } else {
+               return OptionalInt.empty();
             }
          }
       }
    }
 
-   private void a(arq $$0, iv $$1) {
-      int $$2 = 48;
-      if ($$0.A().a($$0x -> $$0x.a(cip.n), $$1, 48, cil.b.b) > 4L) {
-         List<cjc> $$3 = $$0.a(cjc.class, new fes($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            this.a($$1, $$0, false);
-         }
+   private boolean d() {
+      return this.i > 0;
+   }
+
+   private static boolean a(arq $$0, iv $$1) {
+      fex $$2 = fex.a(ffc.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(cqp.class, $$2).isEmpty();
+   }
+
+   private static List<arr> b(arq $$0, iv $$1) {
+      ffc $$2 = ffc.b($$1);
+      return $$0.a($$1x -> !$$1x.V_() && $$1x.ds().a((jp)$$2, 16.0) && $$1x.bI());
+   }
+
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
       }
    }
 
-   private void b(arq $$0, iv $$1) {
-      int $$2 = 16;
-      List<cjc> $$3 = $$0.a(cjc.class, new fes($$1).c(16.0, 8.0, 16.0));
-      if ($$3.isEmpty()) {
-         this.a($$1, $$0, true);
-      }
+   private void f() {
+      this.a(this.c() - 1);
    }
 
-   private void a(iv $$0, arq $$1, boolean $$2) {
-      cjc $$3 = bwr.u.a($$1, bwq.a);
-      if ($$3 != null) {
-         $$3.a($$1, $$1.d_($$0), bwq.a, null);
-         if ($$2) {
-            $$3.gb();
-         }
+   public void a(int $$0) {
+      this.h = azm.a($$0, 0, 4);
+   }
 
-         $$3.a($$0, 0.0F, 0.0F);
-         $$1.a_($$3);
-      }
+   public int c() {
+      return this.h;
+   }
+
+   private void a(cqr $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

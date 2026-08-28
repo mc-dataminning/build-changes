@@ -2,7 +2,7 @@ public class aev implements zf<abu> {
    public static final yw<vu, aev> a = zf.a(aev::a, aev::new);
    private final int b;
 
-   public aev(ecg $$0) {
+   public aev(ecl $$0) {
       this.b = $$0.q();
    }
 

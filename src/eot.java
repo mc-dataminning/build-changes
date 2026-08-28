@@ -1,26 +1,43 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-public class eot<P extends eos> {
-   public static final eot<eou> a = a("trunk_vine", eou.a);
-   public static final eot<eop> b = a("leave_vine", eop.a);
-   public static final eot<eoq> c = a("pale_moss", eoq.a);
-   public static final eot<eoo> d = a("creaking_heart", eoo.a);
-   public static final eot<eon> e = a("cocoa", eon.a);
-   public static final eot<eom> f = a("beehive", eom.a);
-   public static final eot<eok> g = a("alter_ground", eok.a);
-   public static final eot<eol> h = a("attached_to_leaves", eol.a);
-   public static final eot<eor> i = a("place_on_ground", eor.a);
-   private final MapCodec<P> j;
+public class eot extends eox {
+   public static final MapCodec<eot> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eot::new, $$0 -> $$0.b);
+   private final float b;
 
-   private static <P extends eos> eot<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.X, $$0, new eot<>($$1));
+   public eot(float $$0) {
+      this.b = $$0;
    }
 
-   private eot(MapCodec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected eoy<?> a() {
+      return eoy.d;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   @Override
+   public void a(eox.a $$0) {
+      azv $$1 = $$0.b();
+      List<iv> $$2 = $$0.c();
+      if (!$$2.isEmpty()) {
+         if (!($$1.i() >= this.b)) {
+            List<iv> $$3 = new ArrayList<>($$2);
+            ag.c($$3, $$1);
+            Optional<iv> $$4 = $$3.stream().filter($$1x -> {
+               for (jb $$2x : jb.values()) {
+                  if (!$$0.a($$1x.a($$2x), $$0xx -> $$0xx.a(axc.u))) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }).findFirst();
+            if (!$$4.isEmpty()) {
+               $$0.a($$4.get(), dmt.cE.m().b(don.c, ebn.b).b(don.d, Boolean.valueOf(true)));
+            }
+         }
+      }
    }
 }

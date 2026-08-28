@@ -1,32 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dhc(jj<bwr<?>> d, boolean e) implements dgo {
+public record dhc(dbn d, ka e, Optional<jf<eft>> f) implements dgr {
    public static final MapCodec<dhc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ju.a(mh.B).fieldOf("entity").forGetter(dhc::b), Codec.BOOL.optionalFieldOf("join_team", false).forGetter(dhc::c)).apply($$0, dhc::new)
+      $$0 -> $$0.group(
+               dbn.b.fieldOf("properties").forGetter(dhc::b),
+               ka.g.optionalFieldOf("offset", ka.i).forGetter(dhc::c),
+               eft.aj.optionalFieldOf("trigger_game_event").forGetter(dhc::d)
+            )
+            .apply($$0, dhc::new)
    );
 
+   public dhc(dbn $$0) {
+      this($$0, ka.i, Optional.of(eft.c));
+   }
+
    @Override
-   public void a(arq $$0, int $$1, dfw $$2, bwi $$3, fex $$4) {
-      iv $$5 = iv.a((jp)$$4);
-      if (djh.l($$5)) {
-         Optional<jf<bwr<?>>> $$6 = this.b().a($$0.C_());
-         if (!$$6.isEmpty()) {
-            bwi $$7 = $$6.get().a().a($$0, $$5, bwq.k);
-            if ($$7 != null) {
-               if ($$7 instanceof bxi $$8 && $$2.c() instanceof arr $$9) {
-                  $$8.b($$9);
-               }
-
-               if (this.e && $$3.cp() != null) {
-                  $$0.g().a($$7.cH(), $$3.cp());
-               }
-
-               $$7.b($$4.d, $$4.e, $$4.f, $$7.dK(), $$7.dM());
-            }
-         }
+   public void a(arq $$0, int $$1, dfz $$2, bwi $$3, ffc $$4) {
+      iv $$5 = iv.a((jp)$$4).a(this.e);
+      eat $$6 = $$3.dU().a_($$5);
+      eat $$7 = this.d.a($$6);
+      if ($$6 != $$7 && $$3.dU().a($$5, $$7, 3)) {
+         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }
 
@@ -35,11 +31,15 @@ public record dhc(jj<bwr<?>> d, boolean e) implements dgo {
       return a;
    }
 
-   public jj<bwr<?>> b() {
+   public dbn b() {
       return this.d;
    }
 
-   public boolean c() {
+   public ka c() {
       return this.e;
+   }
+
+   public Optional<jf<eft>> d() {
+      return this.f;
    }
 }

@@ -1,54 +1,27 @@
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.PrimitiveCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public interface hia<T> {
+public record hia(int c) implements hig<String> {
+   public static final PrimitiveCodec<String> a = Codec.STRING;
+   public static final hig.a<hia, String> b = hig.a.a(
+      RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(hia::c)).apply($$0, hia::new)), a
+   );
+
    @Nullable
-   T b(czk var1, @Nullable gkl var2, @Nullable bxj var3, int var4, czi var5);
+   public String a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3, czl $$4) {
+      dbw $$5 = $$0.a(kk.p);
+      return $$5 != null ? $$5.c(this.c) : null;
+   }
 
-   Codec<T> b();
+   @Override
+   public hig.a<hia, String> a() {
+      return b;
+   }
 
-   hia.a<? extends hia<T>, T> a();
-
-   public static record a<P extends hia<T>, T>(MapCodec<hgg.d<P, T>> a) {
-      public static <P extends hia<T>, T> hia.a<P, T> a(MapCodec<P> $$0, Codec<T> $$1) {
-         MapCodec<hgg.d<P, T>> $$2 = RecordCodecBuilder.mapCodec(
-            $$2x -> $$2x.group($$0.forGetter(hgg.d::a), a($$1).forGetter(hgg.d::b)).apply($$2x, hgg.d::new)
-         );
-         return new hia.a<>($$2);
-      }
-
-      public static <T> MapCodec<List<hgg.b<T>>> a(Codec<T> $$0) {
-         return hgg.b.a($$0).listOf().validate(hia.a::a).fieldOf("cases");
-      }
-
-      private static <T> DataResult<List<hgg.b<T>>> a(List<hgg.b<T>> $$0) {
-         if ($$0.isEmpty()) {
-            return DataResult.error(() -> "Empty case list");
-         } else {
-            Multiset<T> $$1 = HashMultiset.create();
-
-            for (hgg.b<T> $$2 : $$0) {
-               $$1.addAll($$2.a());
-            }
-
-            return $$1.size() != $$1.entrySet().size()
-               ? DataResult.error(
-                  () -> "Duplicate case conditions: "
-                        + $$1.entrySet()
-                           .stream()
-                           .filter($$0xx -> $$0xx.getCount() > 1)
-                           .map($$0xx -> $$0xx.getElement().toString())
-                           .collect(Collectors.joining(", "))
-               )
-               : DataResult.success($$0);
-         }
-      }
+   @Override
+   public Codec<String> b() {
+      return a;
    }
 }

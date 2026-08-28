@@ -1,7 +1,7 @@
 import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class bzs extends bza<cqv> {
+public class bzs extends bza<cqy> {
    private static final int d = 1200;
    final float c;
 
@@ -10,19 +10,19 @@ public class bzs extends bza<cqv> {
       this.c = $$0;
    }
 
-   protected boolean a(arq $$0, cqv $$1) {
-      return $$1.eb().g().map($$0x -> $$0x == ctd.b || $$0x == ctd.c || $$0x == ctd.d).orElse(true);
+   protected boolean a(arq $$0, cqy $$1) {
+      return $$1.eb().g().map($$0x -> $$0x == ctg.b || $$0x == ctg.c || $$0x == ctg.d).orElse(true);
    }
 
-   protected boolean a(arq $$0, cqv $$1, long $$2) {
+   protected boolean a(arq $$0, cqy $$1, long $$2) {
       return $$1.eb().a(cgl.d);
    }
 
-   protected void b(arq $$0, cqv $$1, long $$2) {
+   protected void b(arq $$0, cqy $$1, long $$2) {
       bzc.a($$1, $$1.eb().c(cgl.d).get().b(), this.c, 1);
    }
 
-   protected void c(arq $$0, cqv $$1, long $$2) {
+   protected void c(arq $$0, cqy $$1, long $$2) {
       Optional<je> $$3 = $$1.eb().c(cgl.d);
       $$3.ifPresent($$1x -> {
          iv $$2x = $$1x.b();

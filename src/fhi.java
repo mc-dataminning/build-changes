@@ -1,91 +1,97 @@
-import com.mojang.logging.LogUtils;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioFormat.Encoding;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC10;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.jtracy.TracyClient;
+import javax.annotation.Nullable;
 
-public class fhi {
-   private static final Logger a = LogUtils.getLogger();
+public class fhi implements AutoCloseable {
+   private static final int a = 320;
+   private static final int b = 180;
+   private static final int c = 4;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private final fij h = new fik("Tracy Frame Capture", 320, 180, false);
+   private final fhs i = new fhs(fhq.c, fhr.f, 0);
+   @Nullable
+   private fht j;
+   private int k;
+   private boolean l;
 
-   private static String a(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid name parameter.";
-         case 40962:
-            return "Invalid enumerated parameter value.";
-         case 40963:
-            return "Invalid parameter parameter value.";
-         case 40964:
-            return "Invalid operation.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
+   private void a(int $$0, int $$1) {
+      float $$2 = (float)$$0 / (float)$$1;
+      if ($$0 > 320) {
+         $$0 = 320;
+         $$1 = (int)(320.0F / $$2);
+      }
+
+      if ($$1 > 180) {
+         $$0 = (int)(180.0F * $$2);
+         $$1 = 180;
+      }
+
+      $$0 = $$0 / 4 * 4;
+      $$1 = $$1 / 4 * 4;
+      if (this.f != $$0 || this.g != $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         this.h.a($$0, $$1);
+         this.i.a($$0 * $$1 * 4);
+         if (this.j != null) {
+            this.j.close();
+            this.j = null;
+         }
       }
    }
 
-   static boolean a(String $$0) {
-      int $$1 = AL10.alGetError();
-      if ($$1 != 0) {
-         a.error("{}: {}", $$0, a($$1));
-         return true;
-      } else {
-         return false;
+   public void a(fij $$0) {
+      if (this.j == null && !this.l) {
+         this.l = true;
+         if ($$0.c != this.d || $$0.d != this.e) {
+            this.d = $$0.c;
+            this.e = $$0.d;
+            this.a(this.d, this.e);
+         }
+
+         GlStateManager._glBindFramebuffer(36009, this.h.i);
+         GlStateManager._glBindFramebuffer(36008, $$0.i);
+         GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.f, this.g, 16384, 9729);
+         GlStateManager._glBindFramebuffer(36008, 0);
+         GlStateManager._glBindFramebuffer(36009, 0);
+         this.i.b();
+         GlStateManager._glBindFramebuffer(36008, this.h.i);
+         GlStateManager._readPixels(0, 0, this.f, this.g, 6408, 5121, 0L);
+         GlStateManager._glBindFramebuffer(36008, 0);
+         this.j = new fht();
+         this.k = 0;
       }
    }
 
-   private static String b(int $$0) {
-      switch ($$0) {
-         case 40961:
-            return "Invalid device.";
-         case 40962:
-            return "Invalid context.";
-         case 40963:
-            return "Illegal enum.";
-         case 40964:
-            return "Invalid value.";
-         case 40965:
-            return "Unable to allocate memory.";
-         default:
-            return "An unrecognized error occurred.";
-      }
-   }
+   public void a() {
+      if (this.j != null) {
+         if (this.j.a(0L)) {
+            this.j = null;
 
-   static boolean a(long $$0, String $$1) {
-      int $$2 = ALC10.alcGetError($$0);
-      if ($$2 != 0) {
-         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   static int a(AudioFormat $$0) {
-      Encoding $$1 = $$0.getEncoding();
-      int $$2 = $$0.getChannels();
-      int $$3 = $$0.getSampleSizeInBits();
-      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
-         if ($$2 == 1) {
-            if ($$3 == 8) {
-               return 4352;
-            }
-
-            if ($$3 == 16) {
-               return 4353;
-            }
-         } else if ($$2 == 2) {
-            if ($$3 == 8) {
-               return 4354;
-            }
-
-            if ($$3 == 16) {
-               return 4355;
+            try (fhs.a $$0 = this.i.a()) {
+               TracyClient.frameImage($$0.a(), this.f, this.g, this.k, true);
             }
          }
       }
+   }
 
-      throw new IllegalArgumentException("Invalid audio format: " + $$0);
+   public void b() {
+      this.k++;
+      this.l = false;
+      TracyClient.markFrame();
+   }
+
+   @Override
+   public void close() {
+      if (this.j != null) {
+         this.j.close();
+         this.j = null;
+      }
+
+      this.i.close();
+      this.h.a();
    }
 }

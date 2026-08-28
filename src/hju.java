@@ -1,46 +1,50 @@
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hju {
-   private final alg a;
-   private final avb b;
-   private final AtomicReference<fiu> c = new AtomicReference<>();
-   private final AtomicInteger d;
+@FunctionalInterface
+public interface hju {
+   Logger a = LogUtils.getLogger();
 
-   public hju(alg $$0, avb $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
-   }
+   static hju create(Collection<auc<?>> $$0) {
+      return ($$1, $$2) -> {
+         avf $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
 
-   public fiu a() throws IOException {
-      fiu $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = fiu.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
+         fiz $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = fiz.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         Optional<hld> $$11 = $$3.a(hld.b);
+         hle $$12;
+         if ($$11.isPresent()) {
+            $$12 = $$11.get().a($$7.a(), $$7.b());
+            if (!azm.c($$7.a(), $$12.a()) || !azm.c($$7.b(), $$12.b())) {
+               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+               $$7.close();
+               return null;
             }
+         } else {
+            $$12 = new hle($$7.a(), $$7.b());
          }
-      }
 
-      return $$0;
+         return new hjk($$1, $$12, $$7, $$3);
+      };
    }
 
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         fiu $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
-         }
-      }
-   }
+   @Nullable
+   hjk loadSprite(alg var1, avb var2);
 }

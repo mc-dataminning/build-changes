@@ -1,34 +1,34 @@
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public interface fga {
-   int a();
-
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
+public record fga(String a, int b, @Nullable wy c, @Nullable yo d) {
+   public boolean a() {
+      return this.a.startsWith("#");
    }
 
-   default int b() {
-      return this.b(1);
+   public wy b() {
+      return (wy)(this.c != null ? this.c : wy.b(this.c()));
    }
 
-   default void c() {
-      this.a(0);
+   public xm a(yo $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
    }
 
-   boolean d();
+   public String c() {
+      return this.a;
+   }
 
-   void e();
-
-   void f();
+   public int d() {
+      return this.b;
+   }
 
    @Nullable
-   wy g();
+   public wy e() {
+      return this.c;
+   }
 
-   void a(@Nullable wy var1);
-
-   void a(@Nullable yo var1);
+   @Nullable
+   public yo f() {
+      return this.d;
+   }
 }

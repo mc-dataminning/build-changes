@@ -1,42 +1,61 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eis extends eiq {
-   public eis(Codec<eip> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(eww.e, eww.c);
+public class eis {
+   public static final eis a = new eis(false, dmt.gZ.m(), dmt.qt.m(), dmt.eA.m(), dmt.aX.m());
+   public static final Codec<eis> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(eis::a),
+               eat.a.optionalFieldOf("air_state", a.b()).forGetter(eis::b),
+               eat.a.optionalFieldOf("water_state", a.b()).forGetter(eis::c),
+               eat.a.optionalFieldOf("lava_state", a.b()).forGetter(eis::d),
+               eat.a.optionalFieldOf("barrier_state", a.b()).forGetter(eis::e)
+            )
+            .apply($$0, eis::new)
+   );
+   private final boolean c;
+   private final eat d;
+   private final eat e;
+   private final eat f;
+   private final eat g;
+
+   public static eis a(boolean $$0, eat $$1, eat $$2, eat $$3, eat $$4) {
+      return new eis($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   protected int a() {
-      return 10;
+   public static eis a(eat $$0, eat $$1, eat $$2, eat $$3) {
+      return new eis(false, $$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected float a(azv $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   public static eis a(boolean $$0, eat $$1) {
+      return new eis($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   @Override
-   protected double b() {
-      return 5.0;
+   private eis(boolean $$0, eat $$1, eat $$2, eat $$3, eat $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   protected boolean a(eio $$0, eip $$1, ecl $$2, Function<iv, jf<dkk>> $$3, eck $$4, iv.a $$5, iv.a $$6, efz $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         eao $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
+   public boolean a() {
+      return this.c;
+   }
 
-         $$2.a($$5, $$9);
-         return true;
-      } else {
-         return false;
-      }
+   public eat b() {
+      return this.d;
+   }
+
+   public eat c() {
+      return this.e;
+   }
+
+   public eat d() {
+      return this.f;
+   }
+
+   public eat e() {
+      return this.g;
    }
 }

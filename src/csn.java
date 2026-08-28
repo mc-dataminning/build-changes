@@ -1,78 +1,51 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class csn extends csl {
-   private static final bwl a = bwl.c(0.0F, 0.0F);
+public class csn extends cru {
+   private int d = 200;
 
-   public csn(bwr<? extends csn> $$0, djh $$1) {
+   public csn(bwr<? extends csn> $$0, djm $$1) {
       super($$0, $$1);
    }
 
-   public csn(djh $$0, bxj $$1, czk $$2) {
-      super(bwr.L, $$1, $$0, $$2);
+   public csn(djm $$0, bxj $$1, czn $$2, @Nullable czn $$3) {
+      super(bwr.bn, $$1, $$0, $$2, $$3);
    }
 
-   public csn(djh $$0, double $$1, double $$2, double $$3, czk $$4) {
-      super(bwr.L, $$1, $$2, $$3, $$0, $$4);
+   public csn(djm $$0, double $$1, double $$2, double $$3, czn $$4, @Nullable czn $$5) {
+      super(bwr.bn, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dU()
-               .a(
-                  new lu(ly.U, this.f()),
-                  this.dz(),
-                  this.dB(),
-                  this.dF(),
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08
-               );
-         }
+   public void h() {
+      super.h();
+      if (this.dU().C && !this.f()) {
+         this.dU().a(ly.T, this.dz(), this.dB(), this.dF(), 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected void a(feu $$0) {
+   protected void a(bxj $$0) {
       super.a($$0);
-      $$0.a().a(this.dV().b(this, this.q()), 0.0F);
+      bvm $$1 = new bvm(bvo.x, this.d, 0);
+      $$0.b($$1, this.z());
    }
 
    @Override
-   protected void a(fev $$0) {
+   public void a(tz $$0) {
       super.a($$0);
-      if (!this.dU().C) {
-         if (this.ae.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ae.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cjf $$3 = bwr.z.a(this.dU(), bwq.k);
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dz(), this.dB(), this.dF(), this.dK(), 0.0F);
-                  Optional.ofNullable(this.f().a(kk.aI)).flatMap($$0x -> $$0x.a(this.dW())).ifPresent($$3::j);
-                  if (!$$3.a(a)) {
-                     break;
-                  }
-
-                  this.dU().b($$3);
-               }
-            }
-         }
-
-         this.dU().a(this, (byte)3);
-         this.aq();
+      if ($$0.c("Duration")) {
+         this.d = $$0.f("Duration");
       }
    }
 
    @Override
-   protected czg g() {
-      return czo.rH;
+   public void b(tz $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.d);
+   }
+
+   @Override
+   protected czn o() {
+      return new czn(czr.wA);
    }
 }

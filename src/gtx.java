@@ -1,71 +1,46 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-class gtx {
-   private final Map<iv, dxm> a;
-   @Nullable
-   private final List<edd<eao>> b;
-   private final boolean c;
-   private final ecv d;
+public class gtx<T extends dzo> implements gtd<T> {
+   public static final alg a = alg.b("textures/environment/end_sky.png");
+   public static final alg b = alg.b("textures/entity/end_portal.png");
 
-   gtx(ecv $$0) {
-      this.d = $$0;
-      this.c = $$0.H().ak();
-      this.a = ImmutableMap.copyOf($$0.I());
-      if ($$0 instanceof ecr) {
-         this.b = null;
-      } else {
-         ecw[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
+   public gtx(gte.a $$0) {
+   }
 
-         for (ecw $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
+   public void a(T $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
+      Matrix4f $$7 = $$2.c().a();
+      this.a($$0, $$7, $$3.getBuffer(this.d()));
+   }
+
+   private void a(T $$0, Matrix4f $$1, fkh $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jb.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jb.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jb.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jb.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jb.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jb.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, fkh $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jb $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7);
+         $$2.a($$1, $$4, $$5, $$8);
+         $$2.a($$1, $$4, $$6, $$9);
+         $$2.a($$1, $$3, $$6, $$10);
       }
    }
 
-   @Nullable
-   public dxm a(iv $$0) {
-      return this.a.get($$0);
+   protected float b() {
+      return 0.75F;
    }
 
-   public eao b(iv $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         eao $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dmo.iy.m();
-         }
+   protected float c() {
+      return 0.375F;
+   }
 
-         if ($$2 == 70) {
-            $$4 = ege.a($$1, $$3);
-         }
-
-         return $$4 == null ? dmo.a.m() : $$4;
-      } else if (this.b == null) {
-         return dmo.a.m();
-      } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               edd<eao> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return dmo.a.m();
-         } catch (Throwable var8) {
-            p $$8 = p.a(var8, "Getting block state");
-            q $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> q.a(this.d, $$1, $$2, $$3));
-            throw new aa($$8);
-         }
-      }
+   protected grc d() {
+      return grc.t();
    }
 }

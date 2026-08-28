@@ -1,119 +1,130 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dnn extends dtw {
-   public static final MapCodec<dnn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ecc.a.fieldOf("wood_type").forGetter(dtw::d), t()).apply($$0, dnn::new));
-   public static final ebo b = ebe.bd;
-   public static final ebf c = ebe.a;
-   private static final ffr e = dmm.b(10.0, 0.0, 16.0);
-   private static final Map<Integer, ffr> f = ffo.c(dmm.a(14.0, 2.0, 0.0, 10.0))
-      .entrySet()
-      .stream()
-      .collect(Collectors.toMap($$0 -> ebu.a($$0.getKey()), Entry::getValue));
+public class dnn extends dqs {
+   public static final MapCodec<dnn> a = b(dnn::new);
+   public static final ebr<jb> b = dqs.e;
+   @Nullable
+   private eay c;
+   @Nullable
+   private eay d;
+   @Nullable
+   private eay f;
+   @Nullable
+   private eay g;
+   private static final Predicate<eat> h = $$0 -> $$0 != null && ($$0.a(dmt.ev) || $$0.a(dmt.ew));
 
    @Override
-   public MapCodec<dnn> a() {
+   public MapCodec<? extends dnn> a() {
       return a;
    }
 
-   public dnn(ecc $$0, ean.d $$1) {
-      super($$0, $$1.a($$0.e()));
-      this.l(this.C.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+   protected dnn(eas.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, jb.c));
    }
 
    @Override
-   protected bug a(czk $$0, eao $$1, djh $$2, iv $$3, crj $$4, buf $$5, fet $$6) {
-      if ($$2.c_($$3) instanceof dza $$7 && this.a($$4, $$6, $$7, $$0)) {
-         return bug.e;
+   protected void a(eat $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   private boolean a(crj $$0, fet $$1, dza $$2, czk $$3) {
-      return !$$2.a($$2.a($$0), $$0) && $$3.h() instanceof cyz && $$1.c().equals(jb.a);
+   public boolean a(djp $$0, iv $$1) {
+      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
    }
 
-   @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      return $$1.a_($$2.d()).a($$1, $$2.d(), jb.a, dux.b);
-   }
-
-   @Override
-   public eao a(ddd $$0) {
-      djh $$1 = $$0.q();
-      ewv $$2 = $$1.b_($$0.a());
-      iv $$3 = $$0.a().d();
-      eao $$4 = $$1.a_($$3);
-      boolean $$5 = $$4.a(axc.aD);
-      jb $$6 = jb.a((double)$$0.i());
-      boolean $$7 = !dmm.a($$4.g($$1, $$3), jb.a) || $$0.h();
-      if ($$5 && !$$0.h()) {
-         if ($$4.b(dwc.b)) {
-            jb $$8 = $$4.c(dwc.b);
-            if ($$8.o().a($$6)) {
-               $$7 = false;
-            }
-         } else if ($$4.b(b)) {
-            Optional<jb> $$9 = ebu.a($$4.c(b));
-            if ($$9.isPresent() && $$9.get().o().a($$6)) {
-               $$7 = false;
+   private void a(djm $$0, iv $$1) {
+      eay.b $$2 = this.q().a($$0, $$1);
+      if ($$2 != null) {
+         ckc $$3 = bwr.bl.a($$0, bwq.k);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
+      } else {
+         eay.b $$4 = this.y().a($$0, $$1);
+         if ($$4 != null) {
+            cjp $$5 = bwr.ap.a($$0, bwq.k);
+            if ($$5 != null) {
+               $$5.x(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
             }
          }
       }
+   }
 
-      int $$10 = !$$7 ? ebu.a($$6.g()) : ebu.a($$0.i() + 180.0F);
-      return this.m().b(c, Boolean.valueOf($$7)).b(b, Integer.valueOf($$10)).b(d, Boolean.valueOf($$2.a() == eww.c));
+   private static void a(djm $$0, eay.b $$1, bwi $$2, iv $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (arr $$4 : $$0.a(arr.class, $$2.cQ().g(5.0))) {
+         aq.o.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(djm $$0, eay.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            eax $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dmt.a.m(), 2);
+            $$0.c(2001, $$4.d(), dmr.j($$4.a()));
+         }
+      }
+   }
+
+   public static void b(djm $$0, eay.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            eax $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dmt.a);
+         }
+      }
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return f.getOrDefault($$0.c(b), e);
+   public eat a(ddg $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   protected ffr b_(eao $$0, din $$1, iv $$2) {
-      return this.a($$0, $$1, $$2, ffc.a());
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      return $$4 == jb.b && !this.a($$0, $$1, $$3) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   private eay b() {
+      if (this.c == null) {
+         this.c = eaz.a().a(" ", "#", "#").a('#', eax.a(ebc.a(dmt.ef))).b();
+      }
+
+      return this.c;
    }
 
-   @Override
-   public float h(eao $$0) {
-      return ebu.b($$0.c(b));
+   private eay q() {
+      if (this.d == null) {
+         this.d = eaz.a().a("^", "#", "#").a('^', eax.a(h)).a('#', eax.a(ebc.a(dmt.ef))).b();
+      }
+
+      return this.d;
    }
 
-   @Override
-   protected eao a(eao $$0, dtg $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   private eay r() {
+      if (this.f == null) {
+         this.f = eaz.a().a("~ ~", "###", "~#~").a('#', eax.a(ebc.a(dmt.cs))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.f;
    }
 
-   @Override
-   protected eao a(eao $$0, drp $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
+   private eay y() {
+      if (this.g == null) {
+         this.g = eaz.a().a("~^~", "###", "~#~").a('^', eax.a(h)).a('#', eax.a(ebc.a(dmt.cs))).a('~', $$0 -> $$0.a().l()).b();
+      }
 
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b, c, d);
-   }
-
-   @Override
-   public dxm a(iv $$0, eao $$1) {
-      return new dyn($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
-      return a($$2, dxo.i, dza::a);
+      return this.g;
    }
 }

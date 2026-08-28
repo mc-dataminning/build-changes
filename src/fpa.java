@@ -1,24 +1,17 @@
-import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public enum fpa implements azp, bak {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+public enum fpa implements azp {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public static final Codec<fpa> d = bak.a(fpa::values);
+   private static final IntFunction<fpa> d = ayc.a(fpa::b, values(), ayc.a.b);
    private final int e;
    private final String f;
-   private final String g;
 
-   private fpa(final int $$0, final String $$1, final String $$2) {
+   private fpa(final int $$0, final String $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
    }
 
    @Override
@@ -28,6 +21,10 @@ public enum fpa implements azp, bak {
 
    @Override
    public String a() {
-      return this.g;
+      return this.f;
+   }
+
+   public static fpa a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -3,12 +3,12 @@ import javax.annotation.Nullable;
 
 public class cfq<T extends bxl> extends cef {
    private final T a;
-   private final czk b;
+   private final czn b;
    private final Predicate<? super T> c;
    @Nullable
    private final awm d;
 
-   public cfq(T $$0, czk $$1, @Nullable awm $$2, Predicate<? super T> $$3) {
+   public cfq(T $$0, czn $$1, @Nullable awm $$2, Predicate<? super T> $$3) {
       this.a = $$0;
       this.b = $$1;
       this.d = $$2;
@@ -33,7 +33,7 @@ public class cfq<T extends bxl> extends cef {
 
    @Override
    public void e() {
-      this.a.a(bws.a, czk.k);
+      this.a.a(bws.a, czn.k);
       if (this.d != null) {
          this.a.a(this.d, 1.0F, this.a.dX().i() * 0.2F + 0.9F);
       }

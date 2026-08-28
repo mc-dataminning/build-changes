@@ -1,63 +1,65 @@
-public class gfs extends gfr {
-   private static final String c = "saddle";
-   private static final String d = "bridle";
-   private static final String e = "reins";
-   private final gjo f = this.b.b("reins");
+public class gfs extends gex {
+   private static final int a = 28;
+   private static final int b = 32;
+   private static final int c = 6;
+   private static final int d = 20;
+   private static final int e = 4;
+   private static final String f = "water_patch";
+   private static final String g = "back";
+   private static final String i = "front";
+   private static final String j = "right";
+   private static final String k = "left";
 
-   public gfs(gjo $$0) {
+   public gfs(gjt $$0) {
       super($$0);
    }
 
-   public static gju c() {
-      gjw $$0 = b();
-      gjy $$1 = $$0.a();
-      gjy $$2 = $$1.b("body");
-      gjy $$3 = $$2.b("head");
-      gjs $$4 = new gjs(0.05F);
-      $$2.a(
-         "saddle",
-         gjt.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$4)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$4)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$4),
-         gjq.a(0.0F, 0.0F, 0.0F)
+   private static void a(gkd $$0) {
+      int $$1 = 16;
+      int $$2 = 14;
+      int $$3 = 10;
+      $$0.a("bottom", gjy.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gjv.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$0.a("back", gjy.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), gjv.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$0.a("front", gjy.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), gjv.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$0.a("right", gjy.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gjv.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$0.a("left", gjy.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gjv.a(0.0F, 4.0F, 9.0F));
+      int $$4 = 20;
+      int $$5 = 7;
+      int $$6 = 6;
+      float $$7 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         gjy.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gjv.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
       );
-      $$3.a(
-         "reins",
-         gjt.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         gjq.a(0.0F, 0.0F, 0.0F)
+      $$0.a(
+         "right_paddle",
+         gjy.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gjv.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
       );
-      $$3.a(
-         "bridle",
-         gjt.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$4)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$4)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$4)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         gjq.a(0.0F, 0.0F, 0.0F)
-      );
-      return gju.a($$0, 128, 128);
    }
 
-   @Override
-   public void a(hcn $$0) {
-      super.a($$0);
-      this.f.k = $$0.b;
+   public static gjz a() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      a($$1);
+      return gjz.a($$0, 128, 64);
+   }
+
+   public static gjz b() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      a($$1);
+      $$1.a("chest_bottom", gjy.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gjv.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", gjy.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gjv.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", gjy.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gjv.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return gjz.a($$0, 128, 128);
+   }
+
+   public static gjz c() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      $$1.a("water_patch", gjy.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gjv.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gjz.a($$0, 0, 0);
    }
 }

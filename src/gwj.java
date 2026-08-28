@@ -1,43 +1,44 @@
-public class gwj<T extends clk> extends gvj<T, hcv, gge> {
-   private final alg a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gwj(gwt.a $$0, gwj.a $$1) {
-      super($$0, new gge($$0.a($$1.d)), new gge($$0.a($$1.e)));
-      this.a = $$1.c;
-      this.a(new hbj<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new ggl($$0.a($$1.g)), new ggl($$0.a($$1.h))));
+public class gwj extends gye<cjj, hcw, ggf> {
+   private final Map<cjk.a, gfb<ggf>> a;
+
+   public gwj(gwy.a $$0) {
+      super($$0, new ggf($$0.a(gjs.an)), 0.7F);
+      this.a = a($$0);
    }
 
-   public alg a(hcv $$0) {
-      return this.a;
+   private static Map<cjk.a, gfb<ggf>> a(gwy.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(
+            cjk.a.a,
+            new gfb<>(new ggf($$0.a(gjs.an)), new ggf($$0.a(gjs.ao))),
+            cjk.a.c,
+            new gfb<>(new ggf($$0.a(gjs.dQ)), new ggf($$0.a(gjs.dR))),
+            cjk.a.b,
+            new gfb<>(new ggf($$0.a(gjs.ae)), new ggf($$0.a(gjs.af)))
+         )
+      );
    }
 
-   public hcv a() {
-      return new hcv();
+   public alg a(hcw $$0) {
+      return $$0.a == null ? hjf.c() : $$0.a.b().b().b();
    }
 
-   public void a(T $$0, hcv $$1, float $$2) {
+   public hcw a() {
+      return new hcw();
+   }
+
+   public void a(cjj $$0, hcw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.t().a();
    }
 
-   public static enum a {
-      a(alg.b("textures/entity/horse/donkey.png"), gjn.az, gjn.aA, hlp.d.k, gjn.aB, gjn.aC),
-      b(alg.b("textures/entity/horse/mule.png"), gjn.bP, gjn.bQ, hlp.d.l, gjn.bR, gjn.bS);
-
-      final alg c;
-      final gjm d;
-      final gjm e;
-      final hlp.d f;
-      final gjm g;
-      final gjm h;
-
-      private a(final alg $$0, final gjm $$1, final gjm $$2, final hlp.d $$3, final gjm $$4, final gjm $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
+   public void a(hcw $$0, fkd $$1, gqr $$2, int $$3) {
+      if ($$0.a != null) {
+         this.g = this.a.get($$0.a.b().a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
       }
    }
 }

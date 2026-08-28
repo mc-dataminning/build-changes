@@ -1,30 +1,47 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
 
-public interface clc {
-   alf<clb> a = a(cke.a);
-   alf<clb> b = a(cke.b);
-   alf<clb> c = a(cke.c);
+public class clc {
+   private static final float a = 2.0F;
+   private static final float b = 0.5F;
+   private static final float c = 1.25F;
 
-   private static alf<clb> a(alg $$0) {
-      return alf.a(mh.aT, $$0);
+   protected static byj<?> a(byj<clb> $$0) {
+      b($$0);
+      c($$0);
+      $$0.a(ImmutableSet.of(ctg.a));
+      $$0.b(ctg.b);
+      $$0.f();
+      return $$0;
    }
 
-   static void a(qh<clb> $$0) {
-      a($$0, a, "entity/frog/temperate_frog", ctq.a(0));
-      a($$0, b, "entity/frog/warm_frog", axb.aj);
-      a($$0, c, "entity/frog/cold_frog", axb.ai);
+   private static void b(byj<clb> $$0) {
+      $$0.a(ctg.a, 0, ImmutableList.of(new byv(2.0F), new cag(45, 90), new cak(), new bzg(cgl.Q)));
    }
 
-   private static void a(qh<clb> $$0, alf<clb> $$1, String $$2, axr<dkk> $$3) {
-      jj<dkk> $$4 = $$0.a(mh.aG).b($$3);
-      a($$0, $$1, $$2, ctq.a(new ctj($$4), 1));
+   private static void c(byj<clb> $$0) {
+      $$0.a(
+         ctg.b,
+         ImmutableList.of(
+            Pair.of(0, cba.a(bwr.bS, 6.0F, btr.a(30, 60))),
+            Pair.of(1, new bzn($$0x -> 1.25F)),
+            Pair.of(
+               2,
+               new bzo(
+                  ImmutableMap.of(cgl.n, cgm.b),
+                  ImmutableSet.of(),
+                  bzo.a.a,
+                  bzo.b.b,
+                  ImmutableList.of(Pair.of(cas.c(0.5F), 2), Pair.of(cbh.a(0.5F, 3), 3), Pair.of(ccn.a(bwi::bh), 5))
+               )
+            )
+         )
+      );
    }
 
-   private static void a(qh<clb> $$0, alf<clb> $$1, String $$2, ctq $$3) {
-      $$0.a($$1, new clb(new iw(alg.b($$2)), $$3));
-   }
-
-   static Optional<jf.c<clb>> a(azv $$0, jt $$1, ctp $$2) {
-      return ctm.a($$1.f(mh.aT).c(), jf::a, $$0, $$2);
+   public static void a(clb $$0) {
+      $$0.eb().a(ImmutableList.of(ctg.b));
    }
 }

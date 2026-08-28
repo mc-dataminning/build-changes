@@ -1,144 +1,145 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
 
-public class dxk extends dxm {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public jb c;
-   private List<bxj> m;
-   private boolean q;
-   private int r;
+public abstract class dxk extends dxr implements btz, bui, buj {
+   private buh d = buh.a;
+   @Nullable
+   private wy e;
 
-   public dxk(iv $$0, eao $$1) {
-      super(dxo.F, $$0, $$1);
+   protected dxk(dxt<?> $$0, iv $$1, eat $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a();
-         this.r = 0;
-         this.c = jb.a($$1);
-         this.a = 0;
-         this.b = true;
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      this.d = buh.b($$0, $$1);
+      this.e = a($$0.a("CustomName"), $$1);
+   }
+
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      this.d.a($$0, $$1);
+      if (this.e != null) {
+         $$0.a("CustomName", (uw)xa.a.encodeStart($$1.a(un.a), this.e).getOrThrow());
+      }
+   }
+
+   @Override
+   public wy ai() {
+      return this.e != null ? this.e : this.j();
+   }
+
+   @Override
+   public wy m_() {
+      return this.ai();
+   }
+
+   @Nullable
+   @Override
+   public wy ak() {
+      return this.e;
+   }
+
+   protected abstract wy j();
+
+   public boolean d(crm $$0) {
+      return a($$0, this.d, this.m_());
+   }
+
+   public static boolean a(crm $$0, buh $$1, wy $$2) {
+      if (!$$0.V_() && !$$1.a($$0.fa())) {
+         $$0.a(wy.a("container.isLocked", $$2), true);
+         $$0.a(awn.eT, awo.e, 1.0F, 1.0F);
+         return false;
+      } else {
          return true;
-      } else {
-         return super.a_($$0, $$1);
       }
    }
 
-   private static void a(djh $$0, iv $$1, eao $$2, dxk $$3, dxk.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
+   protected abstract jo<czn> f();
 
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
+   protected abstract void a(jo<czn> var1);
 
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.q = true;
-         $$0.a(null, $$1, awn.ca, awo.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.q) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.q = false;
-         }
-      }
-   }
-
-   public static void a(djh $$0, iv $$1, eao $$2, dxk $$3) {
-      a($$0, $$1, $$2, $$3, dxk::b);
-   }
-
-   public static void b(djh $$0, iv $$1, eao $$2, dxk $$3) {
-      a($$0, $$1, $$2, $$3, dxk::a);
-   }
-
-   public void a(jb $$0) {
-      iv $$1 = this.ax_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.n.a($$1, this.m().b(), 1, $$0.d());
-   }
-
-   private void a() {
-      iv $$0 = this.ax_();
-      if (this.n.ae() > this.l + 60L || this.m == null) {
-         this.l = this.n.ae();
-         fes $$1 = new fes($$0).g(48.0);
-         this.m = this.n.a(bxj.class, $$1);
-      }
-
-      if (!this.n.C) {
-         for (bxj $$2 : this.m) {
-            if ($$2.bI() && !$$2.dP() && $$0.a($$2.ds(), 32.0)) {
-               $$2.eb().a(cgl.E, this.n.ae());
-            }
-         }
-      }
-   }
-
-   private static boolean a(iv $$0, List<bxj> $$1) {
-      for (bxj $$2 : $$1) {
-         if ($$2.bI() && !$$2.dP() && $$0.a($$2.ds(), 32.0) && $$2.an().a(axf.c)) {
-            return true;
+   @Override
+   public boolean c() {
+      for (czn $$0 : this.f()) {
+         if (!$$0.f()) {
+            return false;
          }
       }
 
-      return false;
+      return true;
    }
 
-   private static void a(djh $$0, iv $$1, List<bxj> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dxk::a);
+   @Override
+   public czn a(int $$0) {
+      return this.f().get($$0);
    }
 
-   private static void b(djh $$0, iv $$1, List<bxj> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.ds(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dz() - (double)$$1.u()) * ($$4x.dz() - (double)$$1.u()) + ($$4x.dF() - (double)$$1.w()) * ($$4x.dF() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dz() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dF() - (double)$$1.w());
-         int $$9 = azm.a(($$4 - 21) / -2, 3, 15);
+   @Override
+   public czn a(int $$0, int $$1) {
+      czn $$2 = bua.a(this.f(), $$0, $$1);
+      if (!$$2.f()) {
+         this.e();
+      }
 
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            $$0.a(lr.a(ly.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
-         }
-      });
+      return $$2;
    }
 
-   private static boolean a(iv $$0, bxj $$1) {
-      return $$1.bI() && !$$1.dP() && $$0.a($$1.ds(), 48.0) && $$1.an().a(axf.c);
+   @Override
+   public czn b(int $$0) {
+      return bua.a(this.f(), $$0);
    }
 
-   private static void a(bxj $$0) {
-      $$0.a(new bvm(bvo.x, 60));
+   @Override
+   public void a(int $$0, czn $$1) {
+      this.f().set($$0, $$1);
+      $$1.f(this.f_($$1));
+      this.e();
    }
 
-   @FunctionalInterface
-   interface a {
-      void run(djh var1, iv var2, List<bxj> var3);
+   @Override
+   public boolean a(crm $$0) {
+      return btz.a(this, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.f().clear();
+   }
+
+   @Nullable
+   @Override
+   public cvf createMenu(int $$0, crl $$1, crm $$2) {
+      return this.d($$2) ? this.a($$0, $$1) : null;
+   }
+
+   protected abstract cvf a(int var1, crl var2);
+
+   @Override
+   protected void a(kf $$0) {
+      super.a($$0);
+      this.e = $$0.a(kk.g);
+      this.d = $$0.a(kk.as, buh.a);
+      $$0.a(kk.ap, dcf.a).a(this.f());
+   }
+
+   @Override
+   protected void a(kh.a $$0) {
+      super.a($$0);
+      $$0.a(kk.g, this.e);
+      if (!this.d.equals(buh.a)) {
+         $$0.a(kk.as, this.d);
+      }
+
+      $$0.a(kk.ap, dcf.a(this.f()));
+   }
+
+   @Override
+   public void a(tz $$0) {
+      $$0.p("CustomName");
+      $$0.p("lock");
+      $$0.p("Items");
    }
 }

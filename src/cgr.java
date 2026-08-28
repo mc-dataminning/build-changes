@@ -1,16 +1,16 @@
 public class cgr extends cgt {
-   public cgr(bxl $$0, djh $$1) {
+   public cgr(bxl $$0, djm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected exl a(int $$0) {
-      this.o = new exg();
-      return new exl(this.o, $$0);
+   protected exq a(int $$0) {
+      this.o = new exl();
+      return new exq(this.o, $$0);
    }
 
    @Override
-   protected boolean a(fex $$0, fex $$1) {
+   protected boolean a(ffc $$0, ffc $$1) {
       return a(this.a, $$0, $$1, true);
    }
 
@@ -20,12 +20,12 @@ public class cgr extends cgt {
    }
 
    @Override
-   protected fex b() {
+   protected ffc b() {
       return this.a.ds();
    }
 
    @Override
-   public exj a(bwi $$0, int $$1) {
+   public exo a(bwi $$0, int $$1) {
       return this.a($$0.du(), $$1);
    }
 
@@ -40,7 +40,7 @@ public class cgr extends cgt {
          if (this.a()) {
             this.j();
          } else if (this.c != null && !this.c.c()) {
-            fex $$0 = this.c.a(this.a);
+            ffc $$0 = this.c.a(this.a);
             if (this.a.dy() == azm.a($$0.d) && this.a.dA() == azm.a($$0.e) && this.a.dE() == azm.a($$0.f)) {
                this.c.a();
             }
@@ -48,7 +48,7 @@ public class cgr extends cgt {
 
          agm.a(this.b, this.a, this.c, this.l);
          if (!this.k()) {
-            fex $$1 = this.c.a(this.a);
+            ffc $$1 = this.c.a(this.a);
             this.a.L().a($$1.d, $$1.e, $$1.f, this.d);
          }
       }

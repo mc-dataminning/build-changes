@@ -1,29 +1,36 @@
-public class gtu implements gsy<dzv> {
-   private final hga a;
-   private final azv b = azv.a();
-   private final hdu c = new hdu();
+public class gtu implements gtd<dzj> {
+   private final gww a;
 
-   public gtu(gsz.a $$0) {
-      this.a = $$0.d();
+   public gtu(gte.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(dzv $$0, float $$1, fjy $$2, gqm $$3, int $$4, int $$5, fex $$6) {
-      if (dzv.a.a($$0.c())) {
-         djh $$7 = $$0.i();
-         if ($$7 != null) {
-            czk $$8 = $$0.c().a();
-            if (!$$8.f()) {
-               this.a.a(this.c.a, $$8, czi.h, $$7, null, 0);
-               this.c.b = hdu.a($$8.M());
-               this.c.c = hdu.a($$8);
-               dzw $$9 = $$0.d();
-               $$2.a();
-               $$2.a(0.5F, 0.4F, 0.5F);
-               $$2.a(a.d.rotationDegrees(azm.i($$1, $$9.b(), $$9.a())));
-               gxp.a($$2, $$3, $$4, this.c, this.b);
-               $$2.b();
-            }
+   public void a(dzj $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
+      djm $$7 = $$0.i();
+      if ($$7 != null) {
+         dim $$8 = $$0.c();
+         bwi $$9 = $$8.b($$7, $$0.ax_());
+         if ($$9 != null) {
+            a($$1, $$2, $$3, $$4, $$9, this.a, $$8.b(), $$8.a());
          }
       }
+   }
+
+   public static void a(float $$0, fkd $$1, gqr $$2, int $$3, bwi $$4, gww $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dp(), $$4.dq());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
+
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)azm.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

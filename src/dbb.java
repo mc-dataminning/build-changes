@@ -1,41 +1,62 @@
-public class dbb extends czg implements dae {
-   public static float a = 1.5F;
+import java.util.List;
 
-   public dbb(czg.a $$0) {
-      super($$0);
+public record dbb(axr<dmr> g, int h, float i, float j, int k, axr<czj> l) {
+   public static final dbb a = new dbb(axc.bR, 59, 2.0F, 0.0F, 15, axk.bc);
+   public static final dbb b = new dbb(axc.bP, 131, 4.0F, 1.0F, 5, axk.bd);
+   public static final dbb c = new dbb(axc.bO, 250, 6.0F, 2.0F, 14, axk.be);
+   public static final dbb d = new dbb(axc.bN, 1561, 8.0F, 3.0F, 10, axk.bg);
+   public static final dbb e = new dbb(axc.bQ, 32, 12.0F, 0.0F, 22, axk.bf);
+   public static final dbb f = new dbb(axc.bM, 2031, 9.0F, 4.0F, 15, axk.bh);
+
+   private czj.a a(czj.a $$0) {
+      return $$0.b(this.h).a(this.l).c(this.k);
    }
 
-   @Override
-   public bug a(djh $$0, crj $$1, buf $$2) {
-      czk $$3 = $$1.b($$2);
-      if ($$0 instanceof arq $$4) {
-         cse.a(($$2x, $$3x, $$4x) -> new csx($$1, $$0, $$1.ds().a(), $$1.bC().b(), $$1.ds().c()), $$4, $$3, $$1, 0.0F, a, 1.0F);
-      }
-
-      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awn.Dv, awo.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      $$1.b(awx.c.b(this));
-      $$3.a(1, $$1);
-      return bug.a;
+   public czj.a a(czj.a $$0, axr<dmr> $$1, float $$2, float $$3, float $$4) {
+      jg<dmr> $$5 = mg.a(mg.e);
+      return this.a($$0)
+         .a(kk.A, new dcq(List.of(dcq.a.a($$5.b(this.g)), dcq.a.a($$5.b($$1), this.i)), 1.0F, 1, true))
+         .a(this.a($$2, $$3))
+         .a(kk.B, new dcv(2, $$4));
    }
 
-   @Override
-   public cse a(djh $$0, jp $$1, czk $$2, jb $$3) {
-      azv $$4 = $$0.C_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      fex $$8 = new fex($$5, $$6, $$7);
-      csx $$9 = new csx($$0, $$1.a(), $$1.b(), $$1.c(), $$8);
-      $$9.i($$8);
-      return $$9;
+   private dce a(float $$0, float $$1) {
+      return dce.a().a(byp.c, new byn(czj.h, (double)($$0 + this.j), byn.a.a), bwt.b).a(byp.e, new byn(czj.i, (double)$$1, byn.a.a), bwt.b).a();
    }
 
-   @Override
-   public void a(cse $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+   public czj.a a(czj.a $$0, float $$1, float $$2) {
+      jg<dmr> $$3 = mg.a(mg.e);
+      return this.a($$0)
+         .a(kk.A, new dcq(List.of(dcq.a.a(jj.a(dmt.bz.p()), 15.0F), dcq.a.b($$3.b(axc.bI), Float.MAX_VALUE), dcq.a.b($$3.b(axc.bH), 1.5F)), 1.0F, 2, false))
+         .a(this.b($$1, $$2))
+         .a(kk.B, new dcv(1));
    }
 
-   @Override
-   public dae.a a() {
-      return dae.a.a().a(($$0, $$1) -> dos.a($$0, 1.0, fex.c)).a(6.6666665F).b(1.0F).a(1051).a();
+   private dce b(float $$0, float $$1) {
+      return dce.a().a(byp.c, new byn(czj.h, (double)($$0 + this.j), byn.a.a), bwt.b).a(byp.e, new byn(czj.i, (double)$$1, byn.a.a), bwt.b).a();
+   }
+
+   public axr<dmr> a() {
+      return this.g;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public float c() {
+      return this.i;
+   }
+
+   public float d() {
+      return this.j;
+   }
+
+   public int e() {
+      return this.k;
+   }
+
+   public axr<czj> f() {
+      return this.l;
    }
 }

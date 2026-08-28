@@ -1,20 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dws extends dqe {
-   public static final MapCodec<dws> c = b(dws::new);
-   private static final ffr e = dmm.b(14.0, 0.0, 16.0);
+public class dws extends due implements dwn {
+   public static final MapCodec<dws> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwn.a.e.fieldOf("weathering_state").forGetter(dnu::c), t()).apply($$0, dws::new)
+   );
+   private final dwn.a e;
 
    @Override
    public MapCodec<dws> a() {
-      return c;
+      return d;
    }
 
-   public dws(ean.d $$0) {
-      super($$0, jb.a, e, false);
+   public dws(dwn.a $$0, eas.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected dqf c() {
-      return (dqf)dmo.pf;
+   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(eat $$0) {
+      return dwn.c($$0.b()).isPresent();
+   }
+
+   public dwn.a q() {
+      return this.e;
    }
 }

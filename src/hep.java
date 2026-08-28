@@ -1,5 +1,7 @@
-public class hep extends hdz {
-   public float a;
-   public float b;
-   public float c;
+import javax.annotation.Nullable;
+
+public class hep extends hef {
+   public czn a = czn.k;
+   @Nullable
+   public cjv b;
 }

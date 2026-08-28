@@ -1,29 +1,15 @@
-public class gvo extends gxz<ckl, hcb, gex> {
-   private static final alg a = alg.b("textures/entity/allay/allay.png");
-
-   public gvo(gwt.a $$0) {
-      super($$0, new gex($$0.a(gjn.c)), 0.4F);
-      this.a(new haz<>(this));
+public abstract class gvo<T extends cli, S extends hdg, M extends ggp<? super S>> extends gvs<T, S, M> {
+   public gvo(gwy.a $$0, M $$1, M $$2) {
+      super($$0, $$1, $$2, 0.75F);
    }
 
-   public alg a(hcb $$0) {
-      return a;
-   }
-
-   public hcb a() {
-      return new hcb();
-   }
-
-   public void a(ckl $$0, hcb $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hcd.a($$0, $$1, this.h);
-      $$1.a = $$0.q();
-      $$1.b = $$0.t();
-      $$1.c = $$0.K($$2);
-      $$1.d = $$0.J($$2);
-   }
-
-   protected int a(ckl $$0, iv $$1) {
-      return 15;
+      $$1.b = $$0.a(bws.h).v();
+      $$1.c = $$0.bY();
+      $$1.e = $$0.J($$2);
+      $$1.f = $$0.K($$2);
+      $$1.g = $$0.L($$2);
+      $$1.d = $$0.bV > 0;
    }
 }

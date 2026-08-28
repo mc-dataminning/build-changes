@@ -1,66 +1,34 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+public class hng extends hmx {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final coj r;
 
-public class hng implements JsonDeserializer<hnf> {
-   private static final btj a = bth.a(1.0F);
-
-   public hnf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = azc.m($$0, "entry");
-      boolean $$4 = azc.a($$3, "replace", false);
-      String $$5 = azc.a($$3, "subtitle", null);
-      List<hne> $$6 = this.a($$3);
-      return new hnf($$6, $$4, $$5);
+   public hng(coj $$0) {
+      super(awn.lU, awo.f, hno.t());
+      this.r = $$0;
+      this.k = hno.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   private List<hne> a(JsonObject $$0) {
-      List<hne> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = azc.v($$0, "sounds");
+   @Override
+   public boolean s() {
+      return !this.r.aZ();
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (azc.a($$4)) {
-               alg $$5 = alg.a(azc.a($$4, "sound"));
-               $$1.add(new hne($$5, a, a, 1, hne.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(azc.m($$4, "sound")));
-            }
-         }
+   @Override
+   public void q() {
+      if (!this.r.dP() && this.r.f() == null) {
+         this.f = (double)((float)this.r.dz());
+         this.g = (double)((float)this.r.dB());
+         this.h = (double)((float)this.r.dF());
+         float $$0 = this.r.L(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
-
-      return $$1;
-   }
-
-   private hne b(JsonObject $$0) {
-      alg $$1 = alg.a(azc.i($$0, "name"));
-      hne.a $$2 = this.a($$0, hne.a.a);
-      float $$3 = azc.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = azc.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = azc.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = azc.a($$0, "preload", false);
-      boolean $$7 = azc.a($$0, "stream", false);
-      int $$8 = azc.a($$0, "attenuation_distance", 16);
-      return new hne($$1, bth.a($$3), bth.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private hne.a a(JsonObject $$0, hne.a $$1) {
-      hne.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = hne.a.a(azc.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
-
-      return $$2;
    }
 }

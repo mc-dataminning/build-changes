@@ -29,8 +29,8 @@ public class cbk extends bza<bxj> {
                }
             }
 
-            eao $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.ds(), 2.0) && $$6.a(axc.T) && !$$6.c(dmf.c);
+            eat $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.ds(), 2.0) && $$6.a(axc.T) && !$$6.c(dmk.c);
          }
       }
    }
@@ -42,7 +42,7 @@ public class cbk extends bza<bxj> {
          return false;
       } else {
          iv $$4 = $$3.get().b();
-         return $$1.eb().c(ctd.e) && $$1.dB() > (double)$$4.v() + 0.4 && $$4.a($$1.ds(), 1.14);
+         return $$1.eb().c(ctg.e) && $$1.dB() > (double)$$4.v() + 0.4 && $$4.a($$1.ds(), 1.14);
       }
    }
 

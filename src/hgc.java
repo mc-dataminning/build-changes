@@ -1,184 +1,44 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
 
-public class hgc {
-   czi a;
-   private int b;
-   private hgc.b[] c;
+public class hgc implements hgf {
+   private final List<hgf> a;
 
-   public hgc() {
-      this.a = czi.a;
-      this.c = new hgc.b[]{new hgc.b()};
+   public hgc(List<hgf> $$0) {
+      this.a = $$0;
    }
 
-   public void a(int $$0) {
-      int $$1 = this.c.length;
-      int $$2 = this.b + $$0;
-      if ($$2 > $$1) {
-         this.c = Arrays.copyOf(this.c, $$2);
+   @Override
+   public void a(hgi $$0, czn $$1, hgg $$2, czl $$3, @Nullable gkq $$4, @Nullable bxj $$5, int $$6) {
+      $$0.a(this.a.size());
 
-         for (int $$3 = $$1; $$3 < $$2; $$3++) {
-            this.c[$$3] = new hgc.b();
+      for (hgf $$7 : this.a) {
+         $$7.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+   }
+
+   public static record a(List<hgf.b> b) implements hgf.b {
+      public static final MapCodec<hgc.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(hgh.a.listOf().fieldOf("models").forGetter(hgc.a::b)).apply($$0, hgc.a::new)
+      );
+
+      @Override
+      public MapCodec<hgc.a> a() {
+         return a;
+      }
+
+      @Override
+      public void a(hmi.a $$0) {
+         for (hgf.b $$1 : this.b) {
+            $$1.a($$0);
          }
       }
-   }
 
-   public hgc.b a() {
-      this.a(1);
-      return this.c[this.b++];
-   }
-
-   public void b() {
-      this.a = czi.a;
-
-      for (int $$0 = 0; $$0 < this.b; $$0++) {
-         this.c[$$0].a();
-      }
-
-      this.b = 0;
-   }
-
-   private hgc.b e() {
-      return this.c[0];
-   }
-
-   public boolean c() {
-      return this.b == 0;
-   }
-
-   public boolean d() {
-      return this.e().e;
-   }
-
-   @Nullable
-   public hjk a(azv $$0) {
-      return this.b == 0 ? null : this.c[$$0.a(this.b)].f;
-   }
-
-   public void a(Consumer<Vector3fc> $$0) {
-      Vector3f $$1 = new Vector3f();
-      fjy.a $$2 = new fjy.a();
-
-      for (int $$3 = 0; $$3 < this.b; $$3++) {
-         hgc.b $$4 = this.c[$$3];
-         $$4.g.a(this.a.d(), $$2);
-         Matrix4f $$5 = $$2.a();
-         Vector3f[] $$6 = $$4.m.get();
-
-         for (Vector3f $$7 : $$6) {
-            $$0.accept($$1.set($$7).mulPosition($$5));
-         }
-
-         $$2.c();
-      }
-   }
-
-   public void a(fjy $$0, gqm $$1, int $$2, int $$3) {
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         this.c[$$4].a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
-
-   public class b {
-      private static final Vector3f[] c = new Vector3f[0];
-      public static final Supplier<Vector3f[]> a = () -> c;
-      private final List<grs> d = new ArrayList<>();
-      boolean e;
-      @Nullable
-      hjk f;
-      gsb g = gsb.a;
-      @Nullable
-      private gqx h;
-      private hgc.a i = hgc.a.a;
-      private int[] j = new int[0];
-      @Nullable
-      private hio<Object> k;
-      @Nullable
-      private Object l;
-      Supplier<Vector3f[]> m = a;
-
-      public void a() {
-         this.d.clear();
-         this.h = null;
-         this.i = hgc.a.a;
-         this.k = null;
-         this.l = null;
-         Arrays.fill(this.j, -1);
-         this.e = false;
-         this.f = null;
-         this.g = gsb.a;
-         this.m = a;
-      }
-
-      public List<grs> b() {
-         return this.d;
-      }
-
-      public void a(gqx $$0) {
-         this.h = $$0;
-      }
-
-      public void a(boolean $$0) {
-         this.e = $$0;
-      }
-
-      public void a(Supplier<Vector3f[]> $$0) {
-         this.m = $$0;
-      }
-
-      public void a(hjk $$0) {
-         this.f = $$0;
-      }
-
-      public void a(gsb $$0) {
-         this.g = $$0;
-      }
-
-      public <T> void a(hio<T> $$0, @Nullable T $$1) {
-         this.k = a($$0);
-         this.l = $$1;
-      }
-
-      private static hio<Object> a(hio<?> $$0) {
-         return (hio<Object>)$$0;
-      }
-
-      public void a(hgc.a $$0) {
-         this.i = $$0;
-      }
-
-      public int[] a(int $$0) {
-         if ($$0 > this.j.length) {
-            this.j = new int[$$0];
-            Arrays.fill(this.j, -1);
-         }
-
-         return this.j;
-      }
-
-      void a(fjy $$0, gqm $$1, int $$2, int $$3) {
-         $$0.a();
-         this.g.a(hgc.this.a.d(), $$0.c());
-         if (this.k != null) {
-            this.k.a(this.l, hgc.this.a, $$0, $$1, $$2, $$3, this.i != hgc.a.a);
-         } else if (this.h != null) {
-            gxr.a(hgc.this.a, $$0, $$1, $$2, $$3, this.j, this.d, this.h, this.i);
-         }
-
-         $$0.b();
+      @Override
+      public hgf a(hgf.a $$0) {
+         return new hgc(this.b.stream().map($$1 -> $$1.a($$0)).toList());
       }
    }
 }

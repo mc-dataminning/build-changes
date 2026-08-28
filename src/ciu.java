@@ -1,7 +1,7 @@
 public abstract class ciu extends ciz {
    private static final bwl bG = bwr.C.n().a(0.5F).b(0.665F);
 
-   public ciu(bwr<? extends ciu> $$0, djh $$1) {
+   public ciu(bwr<? extends ciu> $$0, djm $$1) {
       super($$0, $$1);
    }
 
@@ -13,12 +13,12 @@ public abstract class ciu extends ciz {
       this.bD.a(3, new cfn(this, 1.25, $$0 -> $$0.a(axk.ae), false));
       this.bD.a(4, new cee(this, 1.25));
       this.bD.a(5, new cfs(this, 1.0));
-      this.bD.a(6, new cen(this, crj.class, 6.0F));
+      this.bD.a(6, new cen(this, crm.class, 6.0F));
       this.bD.a(7, new cfa(this));
    }
 
    @Override
-   public boolean i(czk $$0) {
+   public boolean i(czn $$0) {
       return $$0.a(axk.ae);
    }
 
@@ -42,7 +42,7 @@ public abstract class ciu extends ciz {
    }
 
    @Override
-   protected void b(iv $$0, eao $$1) {
+   protected void b(iv $$0, eat $$1) {
       this.a(awn.gj, 0.15F, 1.0F);
    }
 
@@ -52,11 +52,11 @@ public abstract class ciu extends ciz {
    }
 
    @Override
-   public bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
-      if ($$2.a(czo.ro) && !this.n_()) {
+   public bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
+      if ($$2.a(czr.ro) && !this.n_()) {
          $$0.a(awn.gi, 1.0F, 1.0F);
-         czk $$3 = czn.a($$2, $$0, czo.ru.m());
+         czn $$3 = czq.a($$2, $$0, czr.ru.m());
          $$0.a($$1, $$3);
          return bug.a;
       } else {

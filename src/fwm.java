@@ -1,143 +1,111 @@
-public interface fwm {
-   fwm a(int var1);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-   fwm a(int var1, int var2);
+public class fwm extends fwj {
+   private final List<fwm.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final fwr f = fwr.i().a(0.5F, 0.5F);
 
-   fwm a(int var1, int var2, int var3, int var4);
-
-   fwm b(int var1);
-
-   fwm c(int var1);
-
-   fwm d(int var1);
-
-   fwm e(int var1);
-
-   fwm f(int var1);
-
-   fwm g(int var1);
-
-   fwm a(float var1, float var2);
-
-   fwm a(float var1);
-
-   fwm b(float var1);
-
-   default fwm a() {
-      return this.a(0.0F);
+   public fwm() {
+      this(0, 0, 0, 0);
    }
 
-   default fwm b() {
-      return this.a(0.5F);
+   public fwm(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   default fwm c() {
-      return this.a(1.0F);
+   public fwm(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
    }
 
-   default fwm d() {
-      return this.b(0.0F);
+   public fwm a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
-   default fwm e() {
-      return this.b(0.5F);
+   public fwm a(int $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   default fwm f() {
-      return this.b(1.0F);
+   public fwm b(int $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   fwm g();
-
-   fwm.a h();
-
-   static fwm i() {
-      return new fwm.a();
+   public fwr b() {
+      return this.f.g();
    }
 
-   public static class a implements fwm {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   public fwr c() {
+      return this.f;
+   }
 
-      public a() {
+   @Override
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (fwm.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
 
-      public a(fwm.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
+      for (fwm.a $$3 : this.c) {
+         $$3.a(this.F(), $$0);
+         $$3.b(this.G(), $$1);
       }
 
-      public fwm.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      public fwm.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
+   public <T extends fwq> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
 
-      public fwm.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
+   public <T extends fwq> T a(T $$0, fwr $$1) {
+      this.c.add(new fwm.a($$0, $$1));
+      return $$0;
+   }
 
-      public fwm.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public <T extends fwq> T a(T $$0, Consumer<fwr> $$1) {
+      return this.a($$0, ag.a(this.b(), $$1));
+   }
 
-      public fwm.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   public void b(Consumer<fwq> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
+   }
 
-      public fwm.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
+   public static void a(fwq $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   }
 
-      public fwm.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public static void a(fwq $$0, fxh $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   }
 
-      public fwm.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
+   public static void a(fwq $$0, fxh $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
 
-      public fwm.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
+   public static void a(fwq $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.A(), $$0::j, $$5);
+      a($$2, $$4, $$0.y(), $$0::k, $$6);
+   }
 
-      public fwm.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)azm.h($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
 
-      public fwm.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fwm.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fwm.a j() {
-         return new fwm.a(this);
-      }
-
-      @Override
-      public fwm.a h() {
-         return this;
+   static class a extends fwj.a {
+      protected a(fwq $$0, fwr $$1) {
+         super($$0, $$1);
       }
    }
 }

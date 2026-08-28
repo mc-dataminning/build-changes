@@ -22,7 +22,7 @@ public class cjz extends ciz {
    private int bW;
    int bX;
 
-   public cjz(bwr<? extends cjz> $$0, djh $$1) {
+   public cjz(bwr<? extends cjz> $$0, djm $$1) {
       super($$0, $$1);
       this.bB = new cjz.c(this);
       this.bA = new cjz.d(this);
@@ -36,12 +36,12 @@ public class cjz extends ciz {
       this.bD.a(1, new cjz.e(this, 2.2));
       this.bD.a(2, new cdr(this, 0.8));
       this.bD.a(3, new cfn(this, 1.0, $$0 -> $$0.a(axk.ax), false));
-      this.bD.a(4, new cjz.a<>(this, crj.class, 8.0F, 2.2, 2.2));
-      this.bD.a(4, new cjz.a<>(this, cki.class, 10.0F, 2.2, 2.2));
-      this.bD.a(4, new cjz.a<>(this, cok.class, 4.0F, 2.2, 2.2));
+      this.bD.a(4, new cjz.a<>(this, crm.class, 8.0F, 2.2, 2.2));
+      this.bD.a(4, new cjz.a<>(this, cmb.class, 10.0F, 2.2, 2.2));
+      this.bD.a(4, new cjz.a<>(this, coo.class, 4.0F, 2.2, 2.2));
       this.bD.a(5, new cjz.f(this));
       this.bD.a(6, new cfs(this, 0.6));
-      this.bD.a(11, new cen(this, crj.class, 10.0F));
+      this.bD.a(11, new cen(this, crm.class, 10.0F));
    }
 
    @Override
@@ -51,9 +51,9 @@ public class cjz extends ciz {
          $$0 = 0.2F;
       }
 
-      exj $$1 = this.bC.i();
+      exo $$1 = this.bC.i();
       if ($$1 != null && !$$1.c()) {
-         fex $$2 = $$1.a(this);
+         ffc $$2 = $$1.a(this);
          if ($$2.e > this.dB() + 0.5) {
             $$0 = 0.5F;
          }
@@ -73,7 +73,7 @@ public class cjz extends ciz {
       if ($$0 > 0.0) {
          double $$1 = this.dx().j();
          if ($$1 < 0.01) {
-            this.a(0.1F, new fex(0.0, 0.0, 1.0));
+            this.a(0.1F, new ffc(0.0, 0.0, 1.0));
          }
       }
 
@@ -144,8 +144,8 @@ public class cjz extends ciz {
          cjz.c $$2 = (cjz.c)this.bB;
          if (!$$2.c()) {
             if (this.bA.b() && this.bW == 0) {
-               exj $$3 = this.bC.i();
-               fex $$4 = new fex(this.bA.d(), this.bA.e(), this.bA.f());
+               exo $$3 = this.bC.i();
+               ffc $$4 = new ffc(this.bA.d(), this.bA.e(), this.bA.f());
                if ($$3 != null && !$$3.c()) {
                   $$4 = $$3.a(this);
                }
@@ -275,7 +275,7 @@ public class cjz extends ciz {
    }
 
    @Override
-   public boolean i(czk $$0) {
+   public boolean i(czn $$0) {
       return $$0.a(axk.ax);
    }
 
@@ -288,8 +288,8 @@ public class cjz extends ciz {
          this.g(byp.a).a(8.0);
          this.bD.a(4, new cep(this, 1.4, true));
          this.bE.a(1, new cfx(this).a());
-         this.bE.a(2, new cfy<>(this, crj.class, true));
-         this.bE.a(2, new cfy<>(this, cki.class, true));
+         this.bE.a(2, new cfy<>(this, crm.class, true));
+         this.bE.a(2, new cfy<>(this, cmb.class, true));
          this.g(byp.c).a(new byn(bQ, 5.0, byn.a.a));
          if (!this.h_()) {
             this.b(wy.c(ag.a("entity", bN)));
@@ -304,19 +304,19 @@ public class cjz extends ciz {
    @Nullable
    @Override
    public <T> T a(kj<? extends T> $$0) {
-      return $$0 == kk.aF ? c((kj<T>)$$0, this.gt()) : super.a($$0);
+      return $$0 == kk.aG ? c((kj<T>)$$0, this.gt()) : super.a($$0);
    }
 
    @Override
    protected void a(kf $$0) {
-      this.a($$0, kk.aF);
+      this.a($$0, kk.aG);
       super.a($$0);
    }
 
    @Override
    protected <T> boolean b(kj<T> $$0, T $$1) {
-      if ($$0 == kk.aF) {
-         this.a(c(kk.aF, $$1));
+      if ($$0 == kk.aG) {
+         this.a(c(kk.aG, $$1));
          return true;
       } else {
          return super.b($$0, $$1);
@@ -325,7 +325,7 @@ public class cjz extends ciz {
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       cjz.g $$4 = a($$0, this.du());
       if ($$3 instanceof cjz.b) {
          $$4 = ((cjz.b)$$3).a;
@@ -337,8 +337,8 @@ public class cjz extends ciz {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   private static cjz.g a(dji $$0, iv $$1) {
-      jf<dkk> $$2 = $$0.u($$1);
+   private static cjz.g a(djn $$0, iv $$1) {
+      jf<dkp> $$2 = $$0.u($$1);
       int $$3 = $$0.C_().a(100);
       if ($$2.a(axb.an)) {
          return $$3 < 80 ? cjz.g.b : cjz.g.d;
@@ -349,8 +349,8 @@ public class cjz extends ciz {
       }
    }
 
-   public static boolean c(bwr<cjz> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
-      return $$1.a_($$3.e()).a(axc.ch) && a((dik)$$1, $$3);
+   public static boolean c(bwr<cjz> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
+      return $$1.a_($$3.e()).a(axc.ch) && a((din)$$1, $$3);
    }
 
    boolean gF() {
@@ -369,8 +369,8 @@ public class cjz extends ciz {
    }
 
    @Override
-   public fex cS() {
-      return new fex(0.0, (double)(0.6F * this.cR()), (double)(this.dp() * 0.4F));
+   public ffc cS() {
+      return new ffc(0.0, (double)(0.6F * this.cR()), (double)(this.dp() * 0.4F));
    }
 
    static class a<T extends bxj> extends cdm<T> {
@@ -487,7 +487,7 @@ public class cjz extends ciz {
       @Override
       public boolean b() {
          if (this.c <= 0) {
-            if (!a(this.g).O().c(djd.d)) {
+            if (!a(this.g).O().c(dji.d)) {
                return false;
             }
 
@@ -508,19 +508,19 @@ public class cjz extends ciz {
          super.a();
          this.g.J().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, 10.0F, (float)this.g.ad());
          if (this.m()) {
-            djh $$0 = this.g.dU();
+            djm $$0 = this.g.dU();
             iv $$1 = this.e.d();
-            eao $$2 = $$0.a_($$1);
-            dmm $$3 = $$2.b();
-            if (this.i && $$3 instanceof dng) {
-               int $$4 = $$2.c(dng.f);
+            eat $$2 = $$0.a_($$1);
+            dmr $$3 = $$2.b();
+            if (this.i && $$3 instanceof dnl) {
+               int $$4 = $$2.c(dnl.f);
                if ($$4 == 0) {
-                  $$0.a($$1, dmo.a.m(), 2);
+                  $$0.a($$1, dmt.a.m(), 2);
                   $$0.a($$1, true, this.g);
                } else {
-                  $$0.a($$1, $$2.b(dng.f, Integer.valueOf($$4 - 1)), 2);
-                  $$0.a(efo.c, $$1, efo.a.a(this.g));
-                  $$0.c(2001, $$1, dmm.j($$2));
+                  $$0.a($$1, $$2.b(dnl.f, Integer.valueOf($$4 - 1)), 2);
+                  $$0.a(eft.c, $$1, eft.a.a(this.g));
+                  $$0.c(2001, $$1, dmr.j($$2));
                }
 
                this.g.bX = 40;
@@ -532,11 +532,11 @@ public class cjz extends ciz {
       }
 
       @Override
-      protected boolean a(djk $$0, iv $$1) {
-         eao $$2 = $$0.a_($$1);
-         if ($$2.a(dmo.cN) && this.h && !this.i) {
+      protected boolean a(djp $$0, iv $$1) {
+         eat $$2 = $$0.a_($$1);
+         if ($$2.a(dmt.cN) && this.h && !this.i) {
             $$2 = $$0.a_($$1.d());
-            if ($$2.b() instanceof dng && ((dng)$$2.b()).i($$2)) {
+            if ($$2.b() instanceof dnl && ((dnl)$$2.b()).i($$2)) {
                this.i = true;
                return true;
             }

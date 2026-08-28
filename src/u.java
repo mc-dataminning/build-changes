@@ -15,7 +15,7 @@ public class u implements ah {
    private final String c;
    private final String d;
    private final boolean e;
-   private final eyu f;
+   private final eyz f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,12 +23,12 @@ public class u implements ah {
 
    private u() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "25w07a";
+      this.d = "25w08a";
       this.e = false;
-      this.f = new eyu(4315, "main");
+      this.f = new eyz(4316, "main");
       this.g = ac.c();
-      this.h = 52;
-      this.i = 67;
+      this.h = 53;
+      this.i = 68;
       this.j = new Date();
    }
 
@@ -36,7 +36,7 @@ public class u implements ah {
       this.c = azc.i($$0, "id");
       this.d = azc.i($$0, "name");
       this.e = azc.k($$0, "stable");
-      this.f = new eyu(azc.o($$0, "world_version"), azc.a($$0, "series_id", eyu.a));
+      this.f = new eyz(azc.o($$0, "world_version"), azc.a($$0, "series_id", eyz.a));
       this.g = azc.o($$0, "protocol_version");
       JsonObject $$1 = azc.u($$0, "pack_version");
       this.h = azc.o($$1, "resource");
@@ -75,7 +75,7 @@ public class u implements ah {
    }
 
    @Override
-   public eyu d() {
+   public eyz d() {
       return this.f;
    }
 

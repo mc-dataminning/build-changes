@@ -22,22 +22,22 @@ public class bty implements btz {
    }
 
    @Override
-   public czk a(int $$0) {
+   public czn a(int $$0) {
       return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
    }
 
    @Override
-   public czk a(int $$0, int $$1) {
+   public czn a(int $$0, int $$1) {
       return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
    }
 
    @Override
-   public czk b(int $$0) {
+   public czn b(int $$0) {
       return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
    }
 
    @Override
-   public void a(int $$0, czk $$1) {
+   public void a(int $$0, czn $$1) {
       if ($$0 >= this.b.b()) {
          this.c.a($$0 - this.b.b(), $$1);
       } else {
@@ -57,24 +57,24 @@ public class bty implements btz {
    }
 
    @Override
-   public boolean a(crj $$0) {
+   public boolean a(crm $$0) {
       return this.b.a($$0) && this.c.a($$0);
    }
 
    @Override
-   public void c_(crj $$0) {
+   public void c_(crm $$0) {
       this.b.c_($$0);
       this.c.c_($$0);
    }
 
    @Override
-   public void c(crj $$0) {
+   public void c(crm $$0) {
       this.b.c($$0);
       this.c.c($$0);
    }
 
    @Override
-   public boolean b(int $$0, czk $$1) {
+   public boolean b(int $$0, czn $$1) {
       return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
    }
 

@@ -39,13 +39,13 @@ public class cfy<T extends bxj> extends cgf {
       }
    }
 
-   protected fes a(double $$0) {
+   protected fex a(double $$0) {
       return this.e.cQ().c($$0, $$0, $$0);
    }
 
    protected void h() {
       arq $$0 = a(this.e);
-      if (this.a != crj.class && this.a != arr.class) {
+      if (this.a != crm.class && this.a != arr.class) {
          this.c = $$0.a(this.e.dU().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dz(), this.e.dD(), this.e.dF());
       } else {
          this.c = $$0.a(this.i(), this.e, this.e.dz(), this.e.dD(), this.e.dF());

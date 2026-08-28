@@ -43,7 +43,7 @@ public abstract class brd extends Event {
    @Label("Bytes")
    public final int bytes;
 
-   public brd(eee $$0, dio $$1, eed $$2, int $$3) {
+   public brd(eej $$0, dir $$1, eei $$2, int $$3) {
       this.regionPosX = $$1.h();
       this.regionPosZ = $$1.i();
       this.localChunkPosX = $$1.j();

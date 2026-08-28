@@ -1,232 +1,162 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fmv extends hpw {
-   static final Logger a = LogUtils.getLogger();
-   private static final wy b = wy.c("mco.configure.world.backup");
-   static final wy c = wy.c("mco.backup.button.restore");
-   static final wy C = wy.c("mco.backup.changes.tooltip");
-   private static final wy D = wy.c("mco.backup.nobackups");
-   private static final wy E = wy.c("mco.backup.button.download");
-   private static final String F = "uploaded";
-   private static final int G = 8;
-   final fmy H;
-   List<fle> I = Collections.emptyList();
+public class fmv extends fta {
+   private static final alg u = alg.b("widget/slot_frame");
+   private static final alg v = alg.b("icon/checkmark");
+   public static final alg a = alg.b("textures/gui/realms/empty_frame.png");
+   public static final alg b = alg.b("textures/gui/title/background/panorama_0.png");
+   public static final alg c = alg.b("textures/gui/title/background/panorama_2.png");
+   public static final alg d = alg.b("textures/gui/title/background/panorama_3.png");
+   private static final wy w = wy.c("mco.configure.world.slot.tooltip.active");
+   private static final wy x = wy.c("mco.configure.world.slot.tooltip.minigame");
+   private static final wy y = wy.c("mco.configure.world.slot.tooltip");
+   static final wy z = wy.c("mco.worldSlot.minigame");
+   private static final int A = 64;
+   private static final String B = "...";
+   private final int C;
    @Nullable
-   fmv.a J;
-   final fwj K = new fwj(this);
-   private final int L;
+   private fmv.b D;
+
+   public fmv(int $$0, int $$1, int $$2, int $$3, int $$4, fta.c $$5) {
+      super($$0, $$1, $$2, $$3, wx.a, $$5, q);
+      this.C = $$4;
+   }
+
    @Nullable
-   fsv M;
-   final flp N;
-   boolean O = false;
-
-   public fmv(fmy $$0, flp $$1, int $$2) {
-      super(b);
-      this.H = $$0;
-      this.N = $$1;
-      this.L = $$2;
+   public fmv.b a() {
+      return this.D;
    }
 
-   @Override
-   public void aO_() {
-      this.K.a(b, this.p);
-      this.J = this.K.c(new fmv.a());
-      fwn $$0 = this.K.b(fwn.e().a(8));
-      this.M = $$0.a(fsv.a(E, $$0x -> this.F()).a());
-      this.M.j = false;
-      $$0.a(fsv.a(wx.k, $$0x -> this.aL_()).a());
-      this.K.a($$1 -> {
-         fst var10000 = this.c($$1);
-      });
-      this.c();
-      this.E();
+   public void a(flu $$0) {
+      this.D = new fmv.b($$0, this.C);
+      this.a(this.D, $$0.q);
    }
 
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.O && this.J != null) {
-         $$0.b(this.p, D, this.n / 2 - this.p.a(D) / 2, this.J.G() + this.J.y() / 2 - 9 / 2, -1);
+   private void a(fmv.b $$0, @Nullable String $$1) {
+      wy $$2 = switch ($$0.c) {
+         case b -> $$0.b ? x : y;
+         case c -> w;
+         default -> null;
+      };
+      if ($$2 != null) {
+         this.a(ful.a($$2));
+      }
+
+      xm $$3 = wy.b($$0.f);
+      if ($$0.b && $$1 != null) {
+         $$3 = $$3.b(wx.v).f($$1);
+      }
+
+      this.b($$3);
+   }
+
+   static fmv.a a(flu $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != flu.c.c) {
+         return fmv.a.c;
+      } else {
+         return $$1 || $$2 && $$0.j ? fmv.a.a : fmv.a.b;
       }
    }
 
    @Override
-   protected void c() {
-      this.K.a();
-      if (this.J != null) {
-         this.J.a(this.n, this.K);
-      }
-   }
-
-   private void E() {
-      (new Thread("Realms-fetch-backups") {
-         @Override
-         public void run() {
-            fko $$0 = fko.a();
-
-            try {
-               List<fle> $$1 = $$0.e(fmv.this.N.a).a;
-               fmv.this.m.execute(() -> {
-                  fmv.this.I = $$1;
-                  fmv.this.O = fmv.this.I.isEmpty();
-                  if (!fmv.this.O && fmv.this.M != null) {
-                     fmv.this.M.j = true;
-                  }
-
-                  if (fmv.this.J != null) {
-                     fmv.this.J.a(fmv.this.I.stream().map($$0xx -> fmv.this.new b($$0xx)).toList());
-                  }
-               });
-            } catch (fmk var3) {
-               fmv.a.error("Couldn't request backups", var3);
-            }
-         }
-      }).start();
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.H);
-   }
-
-   private void F() {
-      this.m
-         .a(
-            fnk.a(
-               this,
-               wy.c("mco.configure.world.restore.download.question.line1"),
-               $$0 -> this.m
-                     .a(
-                        new fne(
-                           this.H.g(),
-                           new foj(this.N.a, this.L, Objects.requireNonNullElse(this.N.c, "") + " (" + this.N.i.get(this.N.p).a(this.N.p) + ")", this)
-                        )
-                     )
-            )
-         );
-   }
-
-   class a extends ftb<fmv.b> {
-      private static final int a = 36;
-
-      public a() {
-         super(fpo.Q(), fmv.this.n, fmv.this.K.d(), fmv.this.K.c(), 36);
-      }
-
-      @Override
-      public int a() {
-         return 300;
-      }
-   }
-
-   class b extends ftb.a<fmv.b> {
-      private static final int b = 2;
-      private final fle c;
-      @Nullable
-      private fsv d;
-      @Nullable
-      private fsv e;
-      private final List<fst> f = new ArrayList<>();
-
-      public b(final fle $$0) {
-         this.c = $$0;
-         this.a($$0);
-         if (!$$0.e.isEmpty()) {
-            this.e = fsv.a(fmv.C, $$0x -> fmv.this.m.a(new fmu(fmv.this, this.c)))
-               .a(8 + fmv.this.p.a(fmv.C))
-               .a($$0x -> wx.a(wy.a("mco.backup.narration", this.c()), (wy)$$0x.get()))
-               .a();
-            this.f.add(this.e);
-         }
-
-         if (!fmv.this.N.j) {
-            this.d = fsv.a(fmv.c, $$0x -> this.g()).a(8 + fmv.this.p.a(fmv.C)).a($$0x -> wx.a(wy.a("mco.backup.narration", this.c()), (wy)$$0x.get())).a();
-            this.f.add(this.d);
-         }
-      }
-
-      private void a(fle $$0) {
-         int $$1 = fmv.this.I.indexOf($$0);
-         if ($$1 != fmv.this.I.size() - 1) {
-            fle $$2 = fmv.this.I.get($$1 + 1);
-
-            for (String $$3 : $$0.d.keySet()) {
-               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
-                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
-                     this.a($$3);
-                  }
-               } else {
-                  this.a($$3);
-               }
-            }
-         }
-      }
-
-      private void a(String $$0) {
-         if ($$0.contains("uploaded")) {
-            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
-            this.c.e.put($$0, $$1);
-            this.c.a(true);
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+      if (this.D != null) {
+         int $$4 = this.F();
+         int $$5 = this.G();
+         boolean $$6 = this.D();
+         alg $$7;
+         if (this.D.b) {
+            $$7 = foh.a(String.valueOf(this.D.i), this.D.j);
+         } else if (this.D.a) {
+            $$7 = a;
+         } else if (this.D.j != null && this.D.i != -1L) {
+            $$7 = foh.a(String.valueOf(this.D.i), this.D.j);
+         } else if (this.C == 1) {
+            $$7 = b;
+         } else if (this.C == 2) {
+            $$7 = c;
+         } else if (this.C == 3) {
+            $$7 = d;
          } else {
-            this.c.e.put($$0, this.c.d.get($$0));
-         }
-      }
-
-      private String c() {
-         return DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
-      }
-
-      private void g() {
-         wy $$0 = fod.a(this.c.b);
-         wy $$1 = wy.a("mco.configure.world.restore.question.line1", this.c(), $$0);
-         fmv.this.m.a(fnk.b(fmv.this, $$1, $$0x -> fmv.this.m.a(new fne(fmv.this.H.g(), new foq(this.c, fmv.this.N.a, fmv.this.H)))));
-      }
-
-      @Override
-      public List<? extends fus> aE_() {
-         return this.f;
-      }
-
-      @Override
-      public List<? extends fwq> b() {
-         return this.f;
-      }
-
-      @Override
-      public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = $$2 + $$5 / 2;
-         int $$11 = $$10 - 9 - 2;
-         int $$12 = $$10 + 2;
-         int $$13 = this.c.a() ? -8388737 : -1;
-         $$0.b(fmv.this.p, wy.a("mco.backup.entry", fod.a(this.c.b)), $$3, $$11, $$13);
-         $$0.b(fmv.this.p, this.a(this.c.b), $$3, $$12, 5000268);
-         int $$14 = 0;
-         int $$15 = $$2 + $$5 / 2 - 10;
-         if (this.d != null) {
-            $$14 += this.d.A() + 8;
-            this.d.j($$3 + $$4 - $$14);
-            this.d.k($$15);
-            this.d.a($$0, $$6, $$7, $$9);
+            $$7 = a;
          }
 
-         if (this.e != null) {
-            $$14 += this.e.A() + 8;
-            this.e.j($$3 + $$4 - $$14);
-            this.e.k($$15);
-            this.e.a($$0, $$6, $$7, $$9);
+         int $$14 = -1;
+         if (this.D.e) {
+            $$14 = axw.a(1.0F, 0.56F, 0.56F, 0.56F);
          }
-      }
 
-      private String a(Date $$0) {
-         return DateFormat.getDateTimeInstance(3, 3).format($$0);
+         $$0.a(grc::H, $$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$14);
+         if ($$6 && this.D.c != fmv.a.a) {
+            $$0.a(grc::H, u, $$4, $$5, 80, 80);
+         } else if (this.D.e) {
+            $$0.a(grc::H, u, $$4, $$5, 80, 80, axw.a(1.0F, 0.8F, 0.8F, 0.8F));
+         } else {
+            $$0.a(grc::H, u, $$4, $$5, 80, 80, axw.a(1.0F, 0.56F, 0.56F, 0.56F));
+         }
+
+         if (this.D.e) {
+            $$0.a(grc::H, v, $$4 + 67, $$5 + 4, 9, 8);
+         }
+
+         if (this.D.d) {
+            $$0.a(grc::H, fko.a, $$4 + 3, $$5 + 4, 9, 8);
+         }
+
+         fsk $$15 = fpt.Q().h;
+         String $$16 = this.D.f;
+         if ($$15.b($$16) > 64) {
+            $$16 = $$15.a($$16, 64 - $$15.b("...")) + "...";
+         }
+
+         $$0.a($$15, $$16, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, fko.a(this.D.g, this.D.h.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static class b {
+      final boolean e;
+      final String f;
+      final String g;
+      final flu.a h;
+      final long i;
+      @Nullable
+      final String j;
+      public final boolean a;
+      public final boolean b;
+      public final fmv.a c;
+      public final boolean d;
+
+      public b(flu $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.e = $$0.i();
+            this.f = fmv.z.getString();
+            this.i = (long)$$0.r;
+            this.j = $$0.s;
+            this.a = $$0.r == -1;
+            this.g = "";
+            this.h = flu.a.a;
+            this.d = false;
+         } else {
+            fma $$2 = $$0.i.get($$1);
+            this.e = $$0.p == $$1 && !$$0.i();
+            this.f = $$2.a($$1);
+            this.i = $$2.k;
+            this.j = $$2.l;
+            this.a = $$2.m;
+            this.g = $$2.i;
+            this.h = $$2.j;
+            this.d = $$2.h;
+         }
+
+         this.c = fmv.a($$0, this.e, this.b);
       }
    }
 }

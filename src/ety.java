@@ -1,124 +1,60 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import java.util.Objects;
+import java.util.Optional;
 
-public class ety {
-   private static final int a = 32;
-   static final iv b = new iv(4, 0, 15);
-   private static final alg[] c = new alg[]{
-      alg.b("shipwreck/with_mast"),
-      alg.b("shipwreck/sideways_full"),
-      alg.b("shipwreck/sideways_fronthalf"),
-      alg.b("shipwreck/sideways_backhalf"),
-      alg.b("shipwreck/rightsideup_full"),
-      alg.b("shipwreck/rightsideup_fronthalf"),
-      alg.b("shipwreck/rightsideup_backhalf"),
-      alg.b("shipwreck/with_mast_degraded"),
-      alg.b("shipwreck/rightsideup_full_degraded"),
-      alg.b("shipwreck/rightsideup_fronthalf_degraded"),
-      alg.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   private static final alg[] d = new alg[]{
-      alg.b("shipwreck/with_mast"),
-      alg.b("shipwreck/upsidedown_full"),
-      alg.b("shipwreck/upsidedown_fronthalf"),
-      alg.b("shipwreck/upsidedown_backhalf"),
-      alg.b("shipwreck/sideways_full"),
-      alg.b("shipwreck/sideways_fronthalf"),
-      alg.b("shipwreck/sideways_backhalf"),
-      alg.b("shipwreck/rightsideup_full"),
-      alg.b("shipwreck/rightsideup_fronthalf"),
-      alg.b("shipwreck/rightsideup_backhalf"),
-      alg.b("shipwreck/with_mast_degraded"),
-      alg.b("shipwreck/upsidedown_full_degraded"),
-      alg.b("shipwreck/upsidedown_fronthalf_degraded"),
-      alg.b("shipwreck/upsidedown_backhalf_degraded"),
-      alg.b("shipwreck/sideways_full_degraded"),
-      alg.b("shipwreck/sideways_fronthalf_degraded"),
-      alg.b("shipwreck/sideways_backhalf_degraded"),
-      alg.b("shipwreck/rightsideup_full_degraded"),
-      alg.b("shipwreck/rightsideup_fronthalf_degraded"),
-      alg.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   static final Map<String, alf<ezt>> e = Map.of("map_chest", ezk.G, "treasure_chest", ezk.I, "supply_chest", ezk.H);
+public class ety extends ern {
+   public static final MapCodec<ety> d = a(ety::new);
 
-   public static ety.a a(evl $$0, iv $$1, dtg $$2, ern $$3, azv $$4, boolean $$5) {
-      alg $$6 = ag.a($$5 ? c : d, $$4);
-      ety.a $$7 = new ety.a($$0, $$6, $$1, $$2, $$5);
-      $$3.a($$7);
-      return $$7;
+   public ety(ern.c $$0) {
+      super($$0);
    }
 
-   public static class a extends ers {
-      private final boolean h;
+   @Override
+   public Optional<ern.b> a(ern.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
 
-      public a(evl $$0, alg $$1, iv $$2, dtg $$3, boolean $$4) {
-         super(erz.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-         this.h = $$4;
-      }
-
-      public a(evl $$0, tz $$1) {
-         super(erz.ab, $$1, $$0, $$1x -> a($$1.<dtg>a("Rot", dtg.h).orElseThrow()));
-         this.h = $$1.o("isBeached");
-      }
-
-      @Override
-      protected void a(ery $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("isBeached", this.h);
-         $$1.a("Rot", dtg.h, this.c.d());
-      }
-
-      private static evg a(dtg $$0) {
-         return new evg().a($$0).a(drp.a).a(ety.b).a(eul.d);
-      }
-
-      @Override
-      protected void a(String $$0, iv $$1, djy $$2, azv $$3, era $$4) {
-         alf<ezt> $$5 = ety.e.get($$0);
-         if ($$5 != null) {
-            bum.a($$2, $$3, $$1.e(), $$5);
+      for (jf<dkp> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(axb.X)) {
+            return Optional.empty();
          }
       }
 
-      @Override
-      public void a(dkg $$0, dkd $$1, ecm $$2, azv $$3, era $$4, dio $$5, iv $$6) {
-         if (this.l()) {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         } else {
-            int $$7 = $$0.ao() + 1;
-            int $$8 = 0;
-            ka $$9 = this.b.a();
-            egn.a $$10 = this.h ? egn.a.a : egn.a.c;
-            int $$11 = $$9.u() * $$9.w();
-            if ($$11 == 0) {
-               $$8 = $$0.a($$10, this.d.u(), this.d.w());
-            } else {
-               iv $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
+      return a($$0, egs.a.c, $$1x -> a($$1x, $$0));
+   }
 
-               for (iv $$13 : iv.c(this.d, $$12)) {
-                  int $$14 = $$0.a($$10, $$13.u(), $$13.w());
-                  $$8 += $$14;
-                  $$7 = Math.min($$7, $$14);
-               }
+   private static err a(dir $$0, ehr $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      jb $$4 = jb.c.a.a($$1);
+      return new etx.h($$1, $$2, $$3, $$4);
+   }
 
-               $$8 /= $$11;
-            }
+   private static void a(esf $$0, ern.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
 
-            this.c(this.h ? this.a($$7, $$3) : $$8);
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         }
+   public static esc a(dir $$0, long $$1, esc $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         ehr $$3 = new ehr(new egt(ehh.a()));
+         $$3.c($$1, $$0.h, $$0.i);
+         err $$4 = $$2.c().get(0);
+         erf $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         jb $$8 = jb.c.a.a($$3);
+         jb $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         err $$10 = new etx.h($$3, $$6, $$7, $$9);
+         esf $$11 = new esf();
+         $$11.a($$10);
+         return $$11.a();
       }
+   }
 
-      public boolean l() {
-         ka $$0 = this.b.a();
-         return $$0.u() > 32 || $$0.v() > 32;
-      }
-
-      public int a(int $$0, azv $$1) {
-         return $$0 - this.b.a().v() / 2 - $$1.a(3);
-      }
-
-      public void c(int $$0) {
-         this.d = new iv(this.d.u(), $$0, this.d.w());
-      }
+   @Override
+   public erw<?> e() {
+      return erw.j;
    }
 }

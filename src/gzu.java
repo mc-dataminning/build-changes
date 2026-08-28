@@ -1,25 +1,31 @@
-public class gzu extends gxz<cpb, hfl, gjb> {
-   private static final alg a = alg.b("textures/entity/witch.png");
+public class gzu extends gvs<cqy, hfp, gjc> {
+   private static final alg j = alg.b("textures/entity/villager/villager.png");
+   public static final har.a a = new har.a(-0.1171875F, -0.07421875F, 1.0F);
 
-   public gzu(gwt.a $$0) {
-      super($$0, new gjb($$0.a(gjn.dR)), 0.5F);
-      this.a(new hbt(this));
+   public gzu(gwy.a $$0) {
+      super($$0, new gjc($$0.a(gjs.dL)), new gjc($$0.a(gjs.dM)), 0.5F);
+      this.a(new har<>(this, $$0.f(), a));
+      this.a(new hbx<>(this, $$0.e(), "villager"));
+      this.a(new haq<>(this));
    }
 
-   public alg a(hfl $$0) {
-      return a;
+   public alg a(hfp $$0) {
+      return j;
    }
 
-   public hfl b() {
-      return new hfl();
+   protected float b(hfp $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
    }
 
-   public void a(cpb $$0, hfl $$1, float $$2) {
+   public hfp b() {
+      return new hfp();
+   }
+
+   public void a(cqy $$0, hfp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hdo.a($$0, $$1, this.h);
-      $$1.a = $$0.ao();
-      czk $$3 = $$0.fa();
-      $$1.b = !$$3.f();
-      $$1.c = $$3.a(czo.tt);
+      hdu.a($$0, $$1, this.h);
+      $$1.a = $$0.q() > 0;
+      $$1.b = $$0.gB();
    }
 }

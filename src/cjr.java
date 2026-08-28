@@ -7,11 +7,11 @@ public class cjr extends ciz {
    public static final double bI = 1.33;
    private static final akj<Boolean> bK = akn.a(cjr.class, akl.k);
    @Nullable
-   private cjr.a<crj> bL;
+   private cjr.a<crm> bL;
    @Nullable
    private cjr.b bM;
 
-   public cjr(bwr<? extends cjr> $$0, djh $$1) {
+   public cjr(bwr<? extends cjr> $$0, djm $$1) {
       super($$0, $$1);
       this.t();
    }
@@ -52,7 +52,7 @@ public class cjr extends ciz {
       this.bD.a(8, new cev(this));
       this.bD.a(9, new cdr(this, 0.8));
       this.bD.a(10, new cfs(this, 0.8, 1.0000001E-5F));
-      this.bD.a(11, new cen(this, crj.class, 10.0F));
+      this.bD.a(11, new cen(this, crm.class, 10.0F));
       this.bE.a(1, new cfy<>(this, cjf.class, false));
       this.bE.a(1, new cfy<>(this, ckg.class, 10, false, false, ckg.bG));
    }
@@ -108,8 +108,8 @@ public class cjr extends ciz {
    }
 
    @Override
-   public bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
+   public bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
       if ((this.bM == null || this.bM.i()) && !this.x() && this.i($$2) && $$0.g(this) < 9.0) {
          this.a($$0, $$1, $$2);
          if (!this.dU().C) {
@@ -156,7 +156,7 @@ public class cjr extends ciz {
 
    protected void t() {
       if (this.bL == null) {
-         this.bL = new cjr.a<>(this, crj.class, 16.0F, 0.8, 1.33);
+         this.bL = new cjr.a<>(this, crm.class, 16.0F, 0.8, 1.33);
       }
 
       this.bD.a(this.bL);
@@ -171,24 +171,24 @@ public class cjr extends ciz {
    }
 
    @Override
-   public boolean i(czk $$0) {
+   public boolean i(czn $$0) {
       return $$0.a(axk.at);
    }
 
-   public static boolean c(bwr<cjr> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
+   public static boolean c(bwr<cjr> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
       return $$4.a(3) != 0;
    }
 
    @Override
-   public boolean a(djk $$0) {
+   public boolean a(djp $$0) {
       if ($$0.f(this) && !$$0.d(this.cQ())) {
          iv $$1 = this.du();
          if ($$1.v() < $$0.P()) {
             return false;
          }
 
-         eao $$2 = $$0.a_($$1.e());
-         if ($$2.a(dmo.i) || $$2.a(axc.Q)) {
+         eat $$2 = $$0.a_($$1.e());
+         if ($$2.a(dmt.i) || $$2.a(axc.Q)) {
             return true;
          }
       }
@@ -198,7 +198,7 @@ public class cjr extends ciz {
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       if ($$3 == null) {
          $$3 = new bvy.a(1.0F);
       }
@@ -207,8 +207,8 @@ public class cjr extends ciz {
    }
 
    @Override
-   public fex cS() {
-      return new fex(0.0, (double)(0.5F * this.cR()), (double)(this.dp() * 0.4F));
+   public ffc cS() {
+      return new ffc(0.0, (double)(0.5F * this.cR()), (double)(this.dp() * 0.4F));
    }
 
    @Override
@@ -238,7 +238,7 @@ public class cjr extends ciz {
    static class b extends cfn {
       private final cjr c;
 
-      public b(cjr $$0, double $$1, Predicate<czk> $$2, boolean $$3) {
+      public b(cjr $$0, double $$1, Predicate<czn> $$2, boolean $$3) {
          super($$0, $$1, $$2, $$3);
          this.c = $$0;
       }

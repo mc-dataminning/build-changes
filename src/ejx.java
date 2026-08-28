@@ -1,58 +1,71 @@
-import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
+public class ejx extends ejy<emj> {
+   public static final int a = 4;
+   public static final int b = 4;
+   public static final int c = 1;
+   public static final float d = 0.5F;
+   private static final iv ao = iv.c;
+   private final boolean ap;
 
-public class ejx extends ejt<ejy> {
-   public ejx(Codec<ejy> $$0) {
-      super($$0);
+   public static iv a(iv $$0) {
+      return ao.a((ka)$$0);
+   }
+
+   public ejx(boolean $$0) {
+      super(emj.a);
+      this.ap = $$0;
    }
 
    @Override
-   public boolean a(ejv<ejy> $$0) {
-      azv $$1 = $$0.d();
-      dkg $$2 = $$0.b();
-      iv $$3 = $$0.e();
-      dtg $$4 = dtg.a($$1);
-      ejy $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      evl $$7 = $$2.a().p().aY();
-      evk $$8 = $$7.a($$5.b.get($$6));
-      evk $$9 = $$7.a($$5.c.get($$6));
-      dio $$10 = new dio($$3);
-      era $$11 = new era($$10.d() - 16, $$2.G_(), $$10.e() - 16, $$10.f() + 16, $$2.ao(), $$10.g() + 16);
-      evg $$12 = new evg().a($$4).a($$11).a($$1);
-      ka $$13 = $$8.a($$4);
-      iv $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
+   public boolean a(eka<emj> $$0) {
+      iv $$1 = $$0.e();
+      dkl $$2 = $$0.b();
 
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(egn.a.c, $$14.u() + $$16, $$14.w() + $$17));
+      for (iv $$3 : iv.c(new iv($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new iv($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
+         boolean $$4 = $$3.a($$1, 2.5);
+         if ($$4 || $$3.a($$1, 3.5)) {
+            if ($$3.v() < $$1.v()) {
+               if ($$4) {
+                  this.a($$2, $$3, dmt.I.m());
+               } else if ($$3.v() < $$1.v()) {
+                  if (this.ap) {
+                     this.a($$2, $$3, dmt.fY);
+                  } else {
+                     this.a($$2, $$3, dmt.fY.m());
+                  }
+               }
+            } else if ($$3.v() > $$1.v()) {
+               if (this.ap) {
+                  this.a($$2, $$3, dmt.a);
+               } else {
+                  this.a($$2, $$3, dmt.a.m());
+               }
+            } else if (!$$4) {
+               this.a($$2, $$3, dmt.I.m());
+            } else if (this.ap) {
+               this.a($$2, new iv($$3), dmt.fW);
+            } else {
+               this.a($$2, new iv($$3), dmt.a.m());
+            }
          }
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.G_() + 10);
-      iv $$19 = $$8.a($$14.h($$18), drp.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 260);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 260);
-         return true;
+      for (int $$5 = 0; $$5 < 4; $$5++) {
+         this.a($$2, $$1.b($$5), dmt.I.m());
       }
+
+      iv $$6 = $$1.b(2);
+
+      for (jb $$7 : jb.c.a) {
+         this.a($$2, $$6.a($$7), dmt.cA.m().b(dwk.e, $$7));
+      }
+
+      return true;
    }
 
-   private static int a(dkg $$0, era $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         eao $$3 = $$0.a_($$2x);
-         if ($$3.l() || $$3.a(dmo.K) || $$3.a(dmo.J)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
+   private void a(dkl $$0, iv $$1, dmr $$2) {
+      if (!$$0.a_($$1).a($$2)) {
+         $$0.a($$1, true, null);
+         this.a($$0, $$1, $$2.m());
+      }
    }
 }

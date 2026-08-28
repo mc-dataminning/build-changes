@@ -1,25 +1,33 @@
-public class dfa extends ddh {
-   public dfa(String $$0, ddn $$1, ddx $$2, czk $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public record dfa(czn a, czn b, czn c) implements dek {
+   @Override
+   public czn a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
    @Override
-   protected czg f() {
-      return czo.xw;
+   public int a() {
+      return 3;
    }
 
    @Override
-   public dem<dfa> b() {
-      return dem.d;
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
    }
 
-   @Override
-   public del<dfa> a() {
-      return del.q;
+   public czn c() {
+      return this.a;
    }
 
-   @Override
-   public dee h() {
-      return ded.j;
+   public czn d() {
+      return this.b;
+   }
+
+   public czn e() {
+      return this.c;
    }
 }

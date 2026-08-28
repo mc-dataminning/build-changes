@@ -1,29 +1,33 @@
 import com.mojang.serialization.Codec;
 
-public class ejw extends ejt<emb> {
-   public ejw(Codec<emb> $$0) {
+public class ejw extends ejy<emj> {
+   public ejw(Codec<emj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<emb> $$0) {
-      iv $$1 = $$0.e();
-      emb $$2 = $$0.f();
-      dkg $$3 = $$0.b();
-      iv.a $$4 = new iv.a();
+   public boolean a(eka<emj> $$0) {
+      a($$0.b(), $$0.e(), false);
+      return true;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.G_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).l()) {
-               $$3.a($$4, $$2.c, 2);
+   public static void a(dkd $$0, iv $$1, boolean $$2) {
+      iv.a $$3 = $$1.k();
+
+      for (int $$4 = -2; $$4 <= 2; $$4++) {
+         for (int $$5 = -2; $$5 <= 2; $$5++) {
+            for (int $$6 = -1; $$6 < 3; $$6++) {
+               iv $$7 = $$3.g($$1).e($$5, $$6, $$4);
+               dmr $$8 = $$6 == -1 ? dmt.cy : dmt.a;
+               if (!$$0.a_($$7).a($$8)) {
+                  if ($$2) {
+                     $$0.a($$7, true, null);
+                  }
+
+                  $$0.a($$7, $$8.m(), 3);
+               }
             }
          }
       }
-
-      return true;
    }
 }

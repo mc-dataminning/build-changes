@@ -1,5 +1,8 @@
-public interface eci {
-   eao a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, eao var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface eci {
 }

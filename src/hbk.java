@@ -1,14 +1,12 @@
-public class hbk<S extends heu, M extends ggk<S>> extends hbh<S, M> {
-   private final gig<S> a;
-   private final alg b;
+public class hbk extends hay<heo, ghp> {
+   private static final grc a = grc.q(alg.b("textures/entity/phantom_eyes.png"));
 
-   public hbk(gyq<S, M> $$0, gjk $$1, gjm $$2, alg $$3) {
+   public hbk(gyv<heo, ghp> $$0) {
       super($$0);
-      this.b = $$3;
-      this.a = new gig<>($$1.a($$2));
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   @Override
+   public grc a() {
+      return a;
    }
 }

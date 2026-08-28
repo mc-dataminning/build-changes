@@ -1,27 +1,46 @@
-public class cym extends czg {
-   public cym(czg.a $$0) {
-      super($$0);
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class cym extends czj implements dap {
+   private static final Map<cyl, cym> a = Maps.newEnumMap(cyl.class);
+   private final cyl b;
+
+   public cym(cyl $$0, czj.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bug a(djh $$0, crj $$1, buf $$2) {
-      czk $$3 = $$1.b($$2);
-      if ($$0.C) {
-         return bug.a;
-      } else {
-         $$3.a(1, $$1);
-         $$1.b(awx.c.b(this));
-         $$1.dU().a(null, $$1, awn.By, $$1.dl(), 1.0F, 1.0F);
-         czk $$4 = czx.a($$0, $$1.dy(), $$1.dE(), (byte)0, true, false);
-         if ($$3.f()) {
-            return bug.a.a($$4);
-         } else {
-            if (!$$1.gi().g($$4.v())) {
-               $$1.a($$4, false);
-            }
-
-            return bug.a;
+   public bug a(czn $$0, crm $$1, bxj $$2, buf $$3) {
+      if ($$2 instanceof clv $$4 && $$4.bI() && !$$4.x() && $$4.t() != this.b) {
+         $$4.dU().a($$1, $$4, awn.ik, awo.h, 1.0F, 1.0F);
+         if (!$$1.dU().C) {
+            $$4.b(this.b);
+            $$0.h(1);
          }
+
+         return bug.a;
+      }
+
+      return bug.e;
+   }
+
+   public cyl a() {
+      return this.b;
+   }
+
+   public static cym a(cyl $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(djm $$0, dzf $$1, boolean $$2, crm $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.a()), $$2)) {
+         $$0.a(null, $$1.ax_(), awn.ik, awo.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
       }
    }
 }

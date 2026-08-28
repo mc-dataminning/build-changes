@@ -1,9 +1,8 @@
-public interface gei {
-   void a(geg var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   wy aP_();
-
-   void a(fsh var1, float var2, float var3);
-
-   boolean aQ_();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface gei {
 }

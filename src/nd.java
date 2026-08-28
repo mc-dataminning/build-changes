@@ -14,7 +14,7 @@ public class nd implements mn {
    private static final nd.b f = new nd.b(true, true, true);
    private static final nd.b g = new nd.b(true, true, false);
    private static final nd.b h = new nd.b(false, true, true);
-   private static final Map<alf<? extends js<?>>, nd.b> i = Map.of(mh.bu, e, mh.bt, e, mh.bq, f, mh.br, f, mh.bs, f);
+   private static final Map<alf<? extends js<?>>, nd.b> i = Map.of(mh.bv, e, mh.bu, e, mh.br, f, mh.bs, f, mh.bt, f);
    private static final Map<String, nd.a> j = Map.of(
       "structure", new nd.a(nd.c.a, new nd.b(true, false, true)), "function", new nd.a(nd.c.b, new nd.b(true, true, true))
    );

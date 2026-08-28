@@ -5,7 +5,7 @@ public record buh(cm d) {
    public static final Codec<buh> b = cm.a.xmap(buh::new, buh::a);
    public static final String c = "lock";
 
-   public boolean a(czk $$0) {
+   public boolean a(czn $$0) {
       return this.d.a($$0);
    }
 

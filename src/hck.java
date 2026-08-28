@@ -1,10 +1,14 @@
-public class hck extends hcz {
+public class hck extends hdw {
    public float a;
-   public int b;
-   public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean j;
+   public boolean k = true;
+   public jx l = cng.b;
+   public jx m = cng.c;
+   public jx n = cng.d;
+   public jx o = cng.e;
+   public jx p = cng.f;
+   public jx q = cng.g;
 }

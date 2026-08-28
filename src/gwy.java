@@ -1,38 +1,72 @@
-public class gwy extends gws<cnn, hde> {
-   private final grp a;
+@FunctionalInterface
+public interface gwy<T extends bwi> {
+   gwx<T, ?> create(gwy.a var1);
 
-   public gwy(gwt.a $$0) {
-      super($$0);
-      this.e = 0.5F;
-      this.a = $$0.d();
-   }
+   public static class a {
+      private final gww a;
+      private final hgg b;
+      private final gqp c;
+      private final gru d;
+      private final avd e;
+      private final gjp f;
+      private final hlv g;
+      private final fsk h;
+      private final hax i;
 
-   public boolean a(cnn $$0, guf $$1, double $$2, double $$3, double $$4) {
-      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.j() != $$0.dU().a_($$0.du());
-   }
-
-   public void a(hde $$0, fjy $$1, gqm $$2, int $$3) {
-      eao $$4 = $$0.c;
-      if ($$4.o() == dsz.b) {
-         $$1.a();
-         $$1.a(-0.5, 0.0, -0.5);
-         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gqe.b($$4)), false, azv.a(), $$4.b($$0.a), hja.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
+      public a(gww $$0, hgg $$1, gqp $$2, gru $$3, avd $$4, gjp $$5, hlv $$6, fsk $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new hax($$6, this.i().c(grl.g));
       }
-   }
 
-   public hde a() {
-      return new hde();
-   }
+      public gww a() {
+         return this.a;
+      }
 
-   public void a(cnn $$0, hde $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      iv $$3 = iv.a($$0.dz(), $$0.cQ().e, $$0.dF());
-      $$1.a = $$0.f();
-      $$1.b = $$3;
-      $$1.c = $$0.j();
-      $$1.d = $$0.dU().u($$3);
-      $$1.e = $$0.dU();
+      public hgg b() {
+         return this.b;
+      }
+
+      public gqp c() {
+         return this.c;
+      }
+
+      public gru d() {
+         return this.d;
+      }
+
+      public avd e() {
+         return this.e;
+      }
+
+      public gjp f() {
+         return this.f;
+      }
+
+      public hlv g() {
+         return this.g;
+      }
+
+      public hax h() {
+         return this.i;
+      }
+
+      public hme i() {
+         return this.d.a().a();
+      }
+
+      public gjt a(gjr $$0) {
+         return this.f.a($$0);
+      }
+
+      public fsk j() {
+         return this.h;
+      }
    }
 }

@@ -55,6 +55,6 @@ public class bup {
    }
 
    public boolean a(bwi $$0) {
-      return !this.i() && !($$0 instanceof crj) && $$0.dc() <= 0;
+      return !this.i() && !($$0 instanceof crm) && $$0.dc() <= 0;
    }
 }

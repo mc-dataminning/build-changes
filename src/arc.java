@@ -64,7 +64,7 @@ public class arc extends ars {
    }
 
    @Override
-   public bug a(arr $$0, djh $$1, czk $$2, buf $$3) {
+   public bug a(arr $$0, djm $$1, czn $$2, buf $$3) {
       if (this.f) {
          this.f();
          return bug.e;
@@ -74,7 +74,7 @@ public class arc extends ars {
    }
 
    @Override
-   public bug a(arr $$0, djh $$1, czk $$2, buf $$3, fet $$4) {
+   public bug a(arr $$0, djm $$1, czn $$2, buf $$3, fey $$4) {
       if (this.f) {
          this.f();
          return bug.e;

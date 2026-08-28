@@ -18,7 +18,7 @@ public record cj(
             .apply($$0, cj::new)
    );
 
-   public boolean a(crh $$0) {
+   public boolean a(crk $$0) {
       return this.a(this.b, $$0.a())
          && this.a(this.c, $$0.b())
          && this.a(this.d, $$0.c())

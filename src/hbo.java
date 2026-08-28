@@ -1,17 +1,18 @@
-public class hbo extends hbh<hel, ghq> {
-   public static final alg a = alg.b("textures/entity/trident_riptide.png");
-   private final gin b;
+public class hbo extends hbm<hex, gig> {
+   private static final alg a = alg.b("textures/entity/sheep/sheep_wool_undercoat.png");
+   private final ggp<hex> b;
+   private final ggp<hex> c;
 
-   public hbo(gyq<hel, ghq> $$0, gjk $$1) {
+   public hbo(gyv<hex, gig> $$0, gjp $$1) {
       super($$0);
-      this.b = new gin($$1.a(gjn.cB));
+      this.b = new gif($$1.a(gjs.cR));
+      this.c = new gif($$1.a(gjs.cS));
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, hel $$3, float $$4, float $$5) {
-      if ($$3.al) {
-         fkc $$6 = $$1.getBuffer(this.b.a(a));
-         this.b.a($$3);
-         this.b.a($$0, $$6, $$2, hja.d);
+   public void a(fkd $$0, gqr $$1, int $$2, hex $$3, float $$4, float $$5) {
+      if (!$$3.z && ($$3.b() || $$3.d != cyl.a)) {
+         ggp<hex> $$6 = $$3.aj ? this.c : this.b;
+         a($$6, a, $$0, $$1, $$2, $$3, $$3.a());
       }
    }
 }

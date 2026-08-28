@@ -27,9 +27,9 @@ public class gm implements ArgumentType<gi> {
       return new gm($$0);
    }
 
-   public static few a(CommandContext<ej> $$0, String $$1) {
-      fex $$2 = ((gi)$$0.getArgument($$1, gi.class)).a((ej)$$0.getSource());
-      return new few((float)$$2.d, (float)$$2.f);
+   public static ffb a(CommandContext<ej> $$0, String $$1) {
+      ffc $$2 = ((gi)$$0.getArgument($$1, gi.class)).a((ej)$$0.getSource());
+      return new ffb((float)$$2.d, (float)$$2.f);
    }
 
    public gi a(StringReader $$0) throws CommandSyntaxException {

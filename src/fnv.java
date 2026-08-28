@@ -1,167 +1,135 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fnv {
+public class fnv extends hqd {
    static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final bap d;
+   private static final wy b = wy.c("mco.configure.world.subscription.title");
+   private static final wy c = wy.c("mco.configure.world.subscription.start");
+   private static final wy C = wy.c("mco.configure.world.subscription.timeleft");
+   private static final wy D = wy.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final wy E = wy.c("mco.configure.world.subscription.expired");
+   private static final wy F = wy.c("mco.configure.world.subscription.less_than_a_day");
+   private static final wy G = wy.c("mco.configure.world.subscription.unknown");
+   private static final wy H = wy.c("mco.configure.world.subscription.recurring.info");
+   private final fys I;
+   final flu J;
+   final fys K;
+   private wy L = G;
+   private wy M = G;
+   @Nullable
+   private fmg.a N;
 
-   public fnv(Executor $$0, TimeUnit $$1, bap $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fnv(fys $$0, flu $$1, fys $$2) {
+      super(fpk.a);
+      this.I = $$0;
+      this.J = $$1;
+      this.K = $$2;
    }
 
-   public <T> fnv.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fnw $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aO_() {
+      this.a(this.J.a);
+      this.c(fta.a(wy.c("mco.configure.world.subscription.extend"), $$0 -> fxp.a(this, ayh.a(this.J.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
+      if (this.J.j) {
+         this.c(
+            fta.a(wy.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fnp.b(this, wy.c("mco.configure.world.delete.question.line1"), $$0x -> this.E())))
+               .a(this.n / 2 - 100, g(10), 200, 20)
+               .a()
+         );
+      } else if (fko.b() && this.J.u != null) {
+         this.c(new ftk(this.n / 2 - 100, g(8), 200, 46, wy.a("mco.snapshot.subscription.info", this.J.u), this.p));
       } else {
-         return new fnv.e<>($$0, $$1, $$4, $$3);
+         this.c(new ftk(this.n / 2 - 100, g(8), 200, 46, H, this.p));
       }
+
+      this.c(fta.a(wx.k, $$0 -> this.aL_()).a(this.n / 2 - 100, g(12), 200, 20).a());
    }
 
-   public fnv.c a() {
-      return new fnv.c();
+   @Override
+   public wy i() {
+      return wx.b(b, c, this.M, C, this.L);
    }
 
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fnv.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fnv.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fnv.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fnv.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fnv.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fnv.e<T> $$0, Consumer<T> $$1) {
-         fnv.b<T> $$2 = fnv.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fnv.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fnv.b<?> $$0 : this.b) {
-            $$0.a(fnv.this.d.get(fnv.this.c));
-         }
-      }
-
-      public void c() {
-         for (fnv.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fnw e;
-      @Nullable
-      private CompletableFuture<fnv.a<T>> f;
-      @Nullable
-      fnv.d<T> g;
-      private long h = -1L;
-
-      e(final String $$1, final Callable<T> $$2, final long $$3, final fnw $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fnv.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
+   private void E() {
+      (new Thread("Realms-delete-realm") {
+         @Override
+         public void run() {
+            try {
+               fkt $$0 = fkt.a();
+               $$0.j(fnv.this.J.a);
+            } catch (fmp var2) {
+               fnv.a.error("Couldn't delete world", var2);
             }
 
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fnv.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fnv.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
+            fnv.this.m.execute(() -> fnv.this.m.a(fnv.this.K));
          }
+      }).start();
+      this.m.a(this);
+   }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fnv.this.d.get(fnv.this.c);
-                  return new fnv.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fnv.this.d.get(fnv.this.c);
-                  return new fnv.a<>(Either.right(var4x), $$3);
-               }
-            }, fnv.this.b);
-         }
+   private void a(long $$0) {
+      fkt $$1 = fkt.a();
+
+      try {
+         fmg $$2 = $$1.h($$0);
+         this.L = this.a($$2.b);
+         this.M = b($$2.a);
+         this.N = $$2.c;
+      } catch (fmp var5) {
+         a.error("Couldn't get subscription", var5);
+         this.m.a(new fnh(var5, this.I));
+      }
+   }
+
+   private static wy b(long $$0) {
+      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
+      $$1.setTimeInMillis($$0);
+      return wy.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   }
+
+   @Override
+   public void aL_() {
+      this.m.a(this.I);
+   }
+
+   @Override
+   public void a(fsm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = this.n / 2 - 100;
+      $$0.a(this.p, b, this.n / 2, 17, -1);
+      $$0.b(this.p, c, $$4, g(0), -6250336);
+      $$0.b(this.p, this.M, $$4, g(1), -1);
+      if (this.N == fmg.a.a) {
+         $$0.b(this.p, C, $$4, g(3), -6250336);
+      } else if (this.N == fmg.a.b) {
+         $$0.b(this.p, D, $$4, g(3), -6250336);
       }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
+      $$0.b(this.p, this.L, $$4, g(4), -1);
+   }
+
+   private wy a(int $$0) {
+      if ($$0 < 0 && this.J.j) {
+         return E;
+      } else if ($$0 <= 1) {
+         return F;
+      } else {
+         int $$1 = $$0 / 30;
+         int $$2 = $$0 % 30;
+         boolean $$3 = $$1 > 0;
+         boolean $$4 = $$2 > 0;
+         if ($$3 && $$4) {
+            return wy.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+         } else if ($$3) {
+            return wy.a("mco.configure.world.subscription.remaining.months", $$1);
+         } else {
+            return $$4 ? wy.a("mco.configure.world.subscription.remaining.days", $$2) : wy.i();
+         }
       }
    }
 }

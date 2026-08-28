@@ -15,10 +15,10 @@ public abstract class bwf extends bwi {
    private static final akj<Integer> p = akn.a(bwf.class, akl.b);
    private static final akj<Integer> q = akn.a(bwf.class, akl.b);
    private static final akj<Integer> r = akn.a(bwf.class, akl.b);
-   private static final akj<Vector3f> s = akn.a(bwf.class, akl.G);
-   private static final akj<Vector3f> t = akn.a(bwf.class, akl.G);
-   private static final akj<Quaternionf> u = akn.a(bwf.class, akl.H);
-   private static final akj<Quaternionf> ay = akn.a(bwf.class, akl.H);
+   private static final akj<Vector3f> s = akn.a(bwf.class, akl.H);
+   private static final akj<Vector3f> t = akn.a(bwf.class, akl.H);
+   private static final akj<Quaternionf> u = akn.a(bwf.class, akl.I);
+   private static final akj<Quaternionf> ay = akn.a(bwf.class, akl.I);
    private static final akj<Byte> az = akn.a(bwf.class, akl.a);
    private static final akj<Integer> aA = akn.a(bwf.class, akl.b);
    private static final akj<Float> aB = akn.a(bwf.class, akl.d);
@@ -47,7 +47,7 @@ public abstract class bwf extends bwi {
    private long aM = -2147483648L;
    private int aN;
    private float aO;
-   private fes aP;
+   private fex aP;
    private boolean aQ = true;
    protected boolean n;
    private boolean aR;
@@ -56,7 +56,7 @@ public abstract class bwf extends bwi {
    private bwf.j aT;
    private final bxe aU = new bxe(this, 0);
 
-   public bwf(bwr<?> $$0, djh $$1) {
+   public bwf(bwr<?> $$0, djm $$1) {
       super($$0, $$1);
       this.ad = true;
       this.aP = this.cQ();
@@ -228,7 +228,7 @@ public abstract class bwf extends bwi {
       $$0.b("brightness", ayb.b, this.s());
    }
 
-   public fes f() {
+   public fex f() {
       return this.aP;
    }
 
@@ -237,8 +237,8 @@ public abstract class bwf extends bwi {
    }
 
    @Override
-   public exa j_() {
-      return exa.d;
+   public exf j_() {
+      return exf.d;
    }
 
    @Override
@@ -372,7 +372,7 @@ public abstract class bwf extends bwi {
       double $$3 = this.dz();
       double $$4 = this.dB();
       double $$5 = this.dF();
-      this.aP = new fes($$3 - (double)$$2, $$4, $$5 - (double)$$2, $$3 + (double)$$2, $$4 + (double)$$1, $$5 + (double)$$2);
+      this.aP = new fex($$3 - (double)$$2, $$4, $$5 - (double)$$2, $$3 + (double)$$2, $$4 + (double)$$1, $$5 + (double)$$2);
    }
 
    @Override
@@ -425,18 +425,18 @@ public abstract class bwf extends bwi {
 
    public static class b extends bwf {
       public static final String o = "block_state";
-      private static final akj<eao> p = akn.a(bwf.b.class, akl.i);
+      private static final akj<eat> p = akn.a(bwf.b.class, akl.i);
       @Nullable
       private bwf.b.a q;
 
-      public b(bwr<?> $$0, djh $$1) {
+      public b(bwr<?> $$0, djm $$1) {
          super($$0, $$1);
       }
 
       @Override
       protected void a(akn.a $$0) {
          super.a($$0);
-         $$0.a(p, dmo.a.m());
+         $$0.a(p, dmt.a.m());
       }
 
       @Override
@@ -447,11 +447,11 @@ public abstract class bwf extends bwi {
          }
       }
 
-      private eao n() {
+      private eat n() {
          return this.al.a(p);
       }
 
-      private void c(eao $$0) {
+      private void c(eat $$0) {
          this.al.a(p, $$0);
       }
 
@@ -459,14 +459,14 @@ public abstract class bwf extends bwi {
       protected void a(tz $$0) {
          super.a($$0);
          ale<uw> $$1 = this.dW().a(un.a);
-         this.c($$0.<eao>a("block_state", eao.a, $$1).orElse(dmo.a.m()));
+         this.c($$0.<eat>a("block_state", eat.a, $$1).orElse(dmt.a.m()));
       }
 
       @Override
       protected void b(tz $$0) {
          super.b($$0);
          ale<uw> $$1 = this.dW().a(un.a);
-         $$0.a("block_state", eao.a, $$1, this.n());
+         $$0.a("block_state", eat.a, $$1, this.n());
       }
 
       @Nullable
@@ -479,7 +479,7 @@ public abstract class bwf extends bwi {
          this.q = new bwf.b.a(this.n());
       }
 
-      public static record a(eao a) {
+      public static record a(eat a) {
       }
    }
 
@@ -520,21 +520,21 @@ public abstract class bwf extends bwi {
    public static class g extends bwf {
       private static final String o = "item";
       private static final String p = "item_display";
-      private static final akj<czk> q = akn.a(bwf.g.class, akl.h);
+      private static final akj<czn> q = akn.a(bwf.g.class, akl.h);
       private static final akj<Byte> r = akn.a(bwf.g.class, akl.a);
       private final bya s = bya.a(this::n, this::a);
       @Nullable
       private bwf.g.a t;
 
-      public g(bwr<?> $$0, djh $$1) {
+      public g(bwr<?> $$0, djm $$1) {
          super($$0, $$1);
       }
 
       @Override
       protected void a(akn.a $$0) {
          super.a($$0);
-         $$0.a(q, czk.k);
-         $$0.a(r, czi.a.a());
+         $$0.a(q, czn.k);
+         $$0.a(r, czl.a.a());
       }
 
       @Override
@@ -545,38 +545,38 @@ public abstract class bwf extends bwi {
          }
       }
 
-      private czk n() {
+      private czn n() {
          return this.al.a(q);
       }
 
-      private void a(czk $$0) {
+      private void a(czn $$0) {
          this.al.a(q, $$0);
       }
 
-      private void a(czi $$0) {
+      private void a(czl $$0) {
          this.al.a(r, $$0.a());
       }
 
-      private czi o() {
-         return czi.k.apply(this.al.a(r));
+      private czl o() {
+         return czl.k.apply(this.al.a(r));
       }
 
       @Override
       protected void a(tz $$0) {
          super.a($$0);
          ale<uw> $$1 = this.dW().a(un.a);
-         this.a($$0.<czk>a("item", czk.b, $$1).orElse(czk.k));
-         this.a($$0.<czi>a("item_display", czi.j).orElse(czi.a));
+         this.a($$0.<czn>a("item", czn.b, $$1).orElse(czn.k));
+         this.a($$0.<czl>a("item_display", czl.j).orElse(czl.a));
       }
 
       @Override
       protected void b(tz $$0) {
          super.b($$0);
          if (!this.n().f()) {
-            $$0.a("item", czk.b, this.dW().a(un.a), this.n());
+            $$0.a("item", czn.b, this.dW().a(un.a), this.n());
          }
 
-         $$0.a("item_display", czi.j, this.o());
+         $$0.a("item_display", czl.j, this.o());
       }
 
       @Override
@@ -591,12 +591,12 @@ public abstract class bwf extends bwi {
 
       @Override
       protected void a(boolean $$0, float $$1) {
-         czk $$2 = this.n();
+         czn $$2 = this.n();
          $$2.a(this);
          this.t = new bwf.g.a($$2, this.o());
       }
 
-      public static record a(czk a, czi b) {
+      public static record a(czn a, czl b) {
       }
    }
 
@@ -644,7 +644,7 @@ public abstract class bwf extends bwi {
       @Nullable
       private bwf.k.e aN;
 
-      public k(bwr<?> $$0, djh $$1) {
+      public k(bwr<?> $$0, djm $$1) {
          super($$0, $$1);
       }
 

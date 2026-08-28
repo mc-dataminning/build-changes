@@ -45,11 +45,11 @@ public class fi<T> implements ArgumentType<jf.c<T>> {
       return a($$0, $$1, mh.c);
    }
 
-   public static jf.c<ejf<?, ?>> b(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static jf.c<ejk<?, ?>> b(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mh.aL);
    }
 
-   public static jf.c<eri> c(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static jf.c<ern> c(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mh.be);
    }
 
@@ -70,7 +70,7 @@ public class fi<T> implements ArgumentType<jf.c<T>> {
       return a($$0, $$1, mh.W);
    }
 
-   public static jf.c<dfx> g(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static jf.c<dga> g(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mh.aR);
    }
 

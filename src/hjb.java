@@ -1,32 +1,51 @@
-import java.io.IOException;
+import javax.annotation.Nullable;
 
-public abstract class hjb extends hiv {
-   private final alg c;
+public abstract class hjb implements AutoCloseable {
+   @Nullable
+   protected fjw a;
+   protected boolean b;
 
-   public hjb(alg $$0) {
-      this.c = $$0;
-   }
-
-   public alg e() {
-      return this.c;
-   }
-
-   public void a(hjl $$0) {
-      boolean $$1 = $$0.c();
-      boolean $$2 = $$0.b();
-      this.b = $$2;
-
-      try (fiu $$3 = $$0.d()) {
-         this.a($$3, $$2, $$1);
+   public void a(boolean $$0) {
+      if (this.a == null) {
+         throw new IllegalStateException("Texture does not exist, can't change its clamp before something initializes it");
+      } else {
+         this.a.a($$0 ? fju.b : fju.a);
       }
    }
 
-   private void a(fiu $$0, boolean $$1, boolean $$2) {
-      this.a = new fjr(this.c::toString, fjs.a, $$0.a(), $$0.b(), 1);
-      this.a($$1, false);
-      this.a($$2);
-      this.a.a($$0);
+   public void a(bas $$0, boolean $$1) {
+      this.a($$0.a(this.b), $$1);
    }
 
-   public abstract hjl a(avd var1) throws IOException;
+   public void a(boolean $$0, boolean $$1) {
+      if (this.a == null) {
+         throw new IllegalStateException("Texture does not exist, can't get change its filter before something initializes it");
+      } else {
+         this.a.a($$0 ? fjv.b : fjv.a, $$1);
+      }
+   }
+
+   public void a() {
+      if (this.a == null) {
+         throw new IllegalStateException("Texture does not exist, can't bind it before something initializes it");
+      } else {
+         this.a.c();
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.a != null) {
+         this.a.close();
+         this.a = null;
+      }
+   }
+
+   public fjw b() {
+      if (this.a == null) {
+         throw new IllegalStateException("Texture does not exist, can't get it before something initializes it");
+      } else {
+         return this.a;
+      }
+   }
 }

@@ -1,62 +1,62 @@
-public class dde extends ddd {
-   private final jb b;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dde(djh $$0, iv $$1, jb $$2, czk $$3, jb $$4) {
-      super($$0, null, buf.a, $$3, new fet(fex.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public record dde(float c) implements ddb {
+   private static final float f = 16.0F;
+   public static final MapCodec<dde> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayu.o.optionalFieldOf("diameter", 16.0F).forGetter(dde::b)).apply($$0, dde::new)
+   );
+   public static final yw<wj, dde> b = yw.a(yu.l, dde::b, dde::new);
+
+   public dde() {
+      this(16.0F);
    }
 
    @Override
-   public iv a() {
-      return this.j().b();
+   public ddb.a<dde> a() {
+      return ddb.a.d;
    }
 
    @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
-   }
+   public boolean a(djm $$0, czn $$1, bxj $$2) {
+      boolean $$3 = false;
 
-   @Override
-   public boolean c() {
-      return this.b();
-   }
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         double $$5 = $$2.dz() + ($$2.dX().j() - 0.5) * (double)this.c;
+         double $$6 = azm.a($$2.dB() + ($$2.dX().j() - 0.5) * (double)this.c, (double)$$0.G_(), (double)($$0.G_() + ((arq)$$0).l() - 1));
+         double $$7 = $$2.dF() + ($$2.dX().j() - 0.5) * (double)this.c;
+         if ($$2.bX()) {
+            $$2.bN();
+         }
 
-   @Override
-   public jb d() {
-      return jb.a;
-   }
+         ffc $$8 = $$2.ds();
+         if ($$2.b($$5, $$6, $$7, true)) {
+            $$0.a(eft.R, $$8, eft.a.a($$2));
+            awo $$10;
+            awm $$9;
+            if ($$2 instanceof cjo) {
+               $$9 = awn.jT;
+               $$10 = awo.g;
+            } else {
+               $$9 = awn.fl;
+               $$10 = awo.h;
+            }
 
-   @Override
-   public jb[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jb[]{jb.a, jb.c, jb.f, jb.d, jb.e, jb.b};
-         case b:
-            return new jb[]{jb.a, jb.b, jb.c, jb.f, jb.d, jb.e};
-         case c:
-            return new jb[]{jb.a, jb.c, jb.f, jb.e, jb.b, jb.d};
-         case d:
-            return new jb[]{jb.a, jb.d, jb.f, jb.e, jb.b, jb.c};
-         case e:
-            return new jb[]{jb.a, jb.e, jb.d, jb.b, jb.c, jb.f};
-         case f:
-            return new jb[]{jb.a, jb.f, jb.d, jb.b, jb.c, jb.e};
+            $$0.a(null, $$2.dz(), $$2.dB(), $$2.dF(), $$9, $$10);
+            $$2.k();
+            $$3 = true;
+            break;
+         }
       }
+
+      if ($$3 && $$2 instanceof crm $$13) {
+         $$13.gO();
+      }
+
+      return $$3;
    }
 
-   @Override
-   public jb g() {
-      return this.b.o() == jb.a.b ? jb.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public float b() {
+      return this.c;
    }
 }

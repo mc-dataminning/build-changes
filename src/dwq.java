@@ -1,24 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwq extends dmm {
-   public static final MapCodec<dwq> a = b(dwq::new);
+public class dwq extends dmr implements dwn {
+   public static final MapCodec<dwq> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwn.a.e.fieldOf("weathering_state").forGetter(dnu::c), t()).apply($$0, dwq::new)
+   );
+   private final dwn.a e;
 
    @Override
    public MapCodec<dwq> a() {
-      return a;
+      return d;
    }
 
-   public dwq(ean.d $$0) {
-      super($$0);
+   public dwq(dwn.a $$0, eas.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected void a(eao $$0, djh $$1, iv $$2, bwi $$3, bxb $$4) {
-      fex $$5 = new fex(0.25, 0.05F, 0.25);
-      if ($$3 instanceof bxj $$6 && $$6.b(bvo.K)) {
-         $$5 = new fex(0.5, 0.25, 0.5);
-      }
+   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
 
-      $$3.a($$0, $$5);
+   @Override
+   protected boolean f(eat $$0) {
+      return dwn.c($$0.b()).isPresent();
+   }
+
+   public dwn.a q() {
+      return this.e;
    }
 }

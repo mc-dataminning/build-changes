@@ -28,7 +28,7 @@ public class gn implements ArgumentType<gi> {
       return new gn($$0);
    }
 
-   public static fex a(CommandContext<ej> $$0, String $$1) {
+   public static ffc a(CommandContext<ej> $$0, String $$1) {
       return ((gi)$$0.getArgument($$1, gi.class)).a((ej)$$0.getSource());
    }
 

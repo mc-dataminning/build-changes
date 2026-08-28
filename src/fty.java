@@ -1,3 +1,18 @@
-public interface fty {
-   void a(fsh var1, int var2, int var3, float var4);
+public class fty extends fta {
+   private final fsk a;
+   private final wy b;
+   private final wy c;
+
+   public fty(int $$0, int $$1, int $$2, int $$3, wy $$4, fta.c $$5, fsk $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, q);
+      this.a = $$6;
+      this.b = $$4;
+      this.c = xb.a($$4.f(), xv.a.c(true));
+   }
+
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+      wy $$4 = this.D() ? this.c : this.b;
+      $$0.b(this.a, $$4, this.F(), this.G(), 16777215 | azm.f(this.l * 255.0F) << 24);
+   }
 }

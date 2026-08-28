@@ -1,27 +1,44 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.List;
 
-public class gbb implements gba {
-   public static final gba a = new gbb();
+public class gbb implements gbe {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
 
-   private gbb() {
+   public gbb(gbb.a $$0) {
+      this.c = $$0.a();
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   public int a(fsk $$0) {
+      return this.c.size() * 12 + 2;
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+   @Override
+   public int b(fsk $$0) {
+      int $$1 = 0;
+
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
       }
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
+      return $$1 + 10 + 6;
+   }
+
+   @Override
+   public void a(fsk $$0, int $$1, int $$2, int $$3, int $$4, fsm $$5) {
+      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
+         ProfileResult $$7 = this.c.get($$6);
+         int $$8 = $$2 + 2 + $$6 * 12;
+         ftz.a($$5, fpt.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
+         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
       }
+   }
+
+   public static record a(List<ProfileResult> a) implements cxm {
    }
 }

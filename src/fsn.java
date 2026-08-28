@@ -1,8 +1,22 @@
-public abstract class fsn extends fsq {
-   protected final fps a;
+import java.util.Set;
 
-   protected fsn(fps $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
-      super($$1, $$2, $$3, $$4, wx.a, $$5);
-      this.a = $$0;
+public class fsn extends hkv {
+   private static final Set<auc<?>> a = Set.of(hld.b, hlh.c);
+
+   public fsn(hjs $$0) {
+      super($$0, alg.b("textures/atlas/gui.png"), hlp.g, a);
+   }
+
+   @Override
+   public hjq a(alg $$0) {
+      return super.a($$0);
+   }
+
+   public hli a(hjq $$0) {
+      return this.b($$0).a();
+   }
+
+   private hlh b(hjq $$0) {
+      return $$0.e().f().a(hlh.c).orElse(hlh.a);
    }
 }

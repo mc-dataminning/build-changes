@@ -1,65 +1,42 @@
-public class fxu extends fyn {
-   private static final wy a = wy.c("gui.toMenu");
-   private static final wy b = wy.c("gui.toTitle");
-   private static final wy c = wy.c("gui.report_to_server");
-   private static final wy d = wy.c("gui.open_report_dir");
-   private final fyn s;
-   private final vt u;
-   private final wy v;
-   private final fwn w = fwn.d();
+public class fxu extends fys {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final wy c = wy.c("credits_and_attribution.screen.title");
+   private static final wy d = wy.c("credits_and_attribution.button.credits");
+   private static final wy s = wy.c("credits_and_attribution.button.attribution");
+   private static final wy u = wy.c("credits_and_attribution.button.licenses");
+   private final fys v;
+   private final fwo w = new fwo(this);
 
-   public fxu(fyn $$0, wy $$1, wy $$2) {
-      this($$0, $$1, new vt($$2));
-   }
-
-   public fxu(fyn $$0, wy $$1, wy $$2, wy $$3) {
-      this($$0, $$1, new vt($$2), $$3);
-   }
-
-   public fxu(fyn $$0, wy $$1, vt $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public fxu(fyn $$0, wy $$1, vt $$2, wy $$3) {
-      super($$1);
-      this.s = $$0;
-      this.u = $$2;
-      this.v = $$3;
+   public fxu(fys $$0) {
+      super(c);
+      this.v = $$0;
    }
 
    @Override
    protected void aO_() {
-      this.w.c().b().a(10);
-      this.w.a(new fuc(this.l, this.p));
-      this.w.a(new ftp(this.u.a(), this.p).d(this.n - 50).b(true));
-      this.w.c().a(2);
-      this.u.c().ifPresent($$0 -> this.w.a(fsv.a(c, fxk.b(this, $$0, false)).a(200).a()));
-      this.u.b().ifPresent($$0 -> this.w.a(fsv.a(d, $$1x -> ag.n().a($$0.getParent())).a(200).a()));
-      fsv $$0;
-      if (this.m.F()) {
-         $$0 = fsv.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
-      } else {
-         $$0 = fsv.a(b, $$0x -> this.m.a(new fyp())).a(200).a();
-      }
-
-      this.w.a($$0);
+      this.w.a(c, this.p);
+      fws $$0 = this.w.c(fws.d()).a(8);
+      $$0.c().b();
+      $$0.a(fta.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(fta.a(s, fxp.b(this, ayh.d)).a(210).a());
+      $$0.a(fta.a(u, fxp.b(this, ayh.e)).a(210).a());
+      this.w.b(fta.a(wx.d, $$0x -> this.aL_()).a(200).a());
       this.w.a();
       this.w.a(this::c);
-      this.c();
    }
 
    @Override
    protected void c() {
-      fwh.a(this.w, this.J());
+      this.w.a();
+   }
+
+   private void m() {
+      this.m.a(new fyv(false, () -> this.m.a(this)));
    }
 
    @Override
-   public wy i() {
-      return wx.a(this.l, this.u.a());
-   }
-
-   @Override
-   public boolean aD_() {
-      return false;
+   public void aL_() {
+      this.m.a(this.v);
    }
 }

@@ -2,28 +2,28 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public record cjv(ctk<cjv.a> e, ctq f) implements ctm<ctp, ctn> {
+public record cjv(ctn<cjv.a> e, ctt f) implements ctp<cts, ctq> {
    public static final Codec<cjv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ctk.a(cjv.a.c, cjv.a.a).forGetter(cjv::b), ctq.b.fieldOf("spawn_conditions").forGetter(cjv::c)).apply($$0, cjv::new)
+      $$0 -> $$0.group(ctn.a(cjv.a.c, cjv.a.a).forGetter(cjv::b), ctt.b.fieldOf("spawn_conditions").forGetter(cjv::c)).apply($$0, cjv::new)
    );
-   public static final Codec<cjv> b = RecordCodecBuilder.create($$0 -> $$0.group(ctk.a(cjv.a.c, cjv.a.a).forGetter(cjv::b)).apply($$0, cjv::new));
+   public static final Codec<cjv> b = RecordCodecBuilder.create($$0 -> $$0.group(ctn.a(cjv.a.c, cjv.a.a).forGetter(cjv::b)).apply($$0, cjv::new));
    public static final Codec<jf<cjv>> c = ald.a(mh.ba);
    public static final yw<wj, jf<cjv>> d = yu.b(mh.ba);
 
-   private cjv(ctk<cjv.a> $$0) {
-      this($$0, ctq.a);
+   private cjv(ctn<cjv.a> $$0) {
+      this($$0, ctt.a);
    }
 
    @Override
-   public List<ctm.a<ctp, ctn>> a() {
+   public List<ctp.a<cts, ctq>> a() {
       return this.f.a();
    }
 
-   public ctk<cjv.a> b() {
+   public ctn<cjv.a> b() {
       return this.e;
    }
 
-   public ctq c() {
+   public ctt c() {
       return this.f;
    }
 

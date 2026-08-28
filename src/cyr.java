@@ -1,60 +1,78 @@
-public class cyr extends czg implements dae {
-   public cyr(czg.a $$0) {
+public class cyr extends czj {
+   public cyr(czj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bug a(ddf $$0) {
-      djh $$1 = $$0.q();
+   public bug a(ddi $$0) {
+      djm $$1 = $$0.q();
       iv $$2 = $$0.a();
-      eao $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!dnc.i($$3) && !dnd.h($$3) && !dne.h($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (dlz.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, dlz.a($$1, $$2));
-            $$1.a($$0.o(), efo.i, $$2);
-            $$4 = true;
-         }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.b(ebe.u, Boolean.valueOf(true)));
-         $$1.a($$0.o(), efo.c, $$2);
-         $$4 = true;
-      }
-
-      if ($$4) {
-         $$0.n().h(1);
+      eat $$3 = $$1.a_($$2);
+      if (!$$3.a(dmt.fX) || $$3.c(dpi.c)) {
+         return bug.e;
+      } else if ($$1.C) {
          return bug.a;
       } else {
-         return bug.d;
+         eat $$4 = $$3.b(dpi.c, Boolean.valueOf(true));
+         dmr.a($$3, $$4, $$1, $$2);
+         $$1.a($$2, $$4, 2);
+         $$1.b($$2, dmt.fX);
+         $$0.n().h(1);
+         $$1.c(1503, $$2, 0);
+         eay.b $$5 = dpi.b().a($$1, $$2);
+         if ($$5 != null) {
+            iv $$6 = $$5.a().b(-3, 0, -3);
+
+            for (int $$7 = 0; $$7 < 3; $$7++) {
+               for (int $$8 = 0; $$8 < 3; $$8++) {
+                  iv $$9 = $$6.b($$7, 0, $$8);
+                  $$1.a($$9, true, null);
+                  $$1.a($$9, dmt.fW.m(), 2);
+               }
+            }
+
+            $$1.b(1038, $$6.b(1, 0, 1), 0);
+         }
+
+         return bug.a;
       }
    }
 
-   private void a(djh $$0, iv $$1) {
-      azv $$2 = $$0.C_();
-      $$0.a(null, $$1, awn.jn, awo.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+   @Override
+   public int a(czn $$0, bxj $$1) {
+      return 0;
    }
 
    @Override
-   public cse a(djh $$0, jp $$1, czk $$2, jb $$3) {
-      azv $$4 = $$0.C_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      fex $$8 = new fex($$5, $$6, $$7);
-      csi $$9 = new csi($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
-      $$9.a($$2);
-      return $$9;
-   }
+   public bug a(djm $$0, crm $$1, buf $$2) {
+      czn $$3 = $$1.b($$2);
+      fey $$4 = a($$0, $$1, dit.b.a);
+      if ($$4.d() == ffa.a.b && $$0.a_($$4.b()).a(dmt.fX)) {
+         return bug.e;
+      } else {
+         $$1.c($$2);
+         if ($$0 instanceof arq $$5) {
+            iv $$6 = $$5.a(axn.a, $$1.du(), 100, false);
+            if ($$6 == null) {
+               return bug.c;
+            }
 
-   @Override
-   public void a(cse $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
+            csa $$7 = new csa($$0, $$1.dz(), $$1.e(0.5), $$1.dF());
+            $$7.a($$3);
+            $$7.a($$6);
+            $$0.a(eft.K, $$7.ds(), eft.a.a($$1));
+            $$0.b($$7);
+            if ($$1 instanceof arr $$8) {
+               aq.n.a($$8, $$6);
+            }
 
-   @Override
-   public dae.a a() {
-      return dae.a.a().a(($$0, $$1) -> dos.a($$0, 1.0, fex.c)).a(6.6666665F).b(1.0F).a(1018).a();
+            float $$9 = azm.h($$0.A.i(), 0.33F, 0.5F);
+            $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awn.iG, awo.g, 1.0F, $$9);
+            $$3.a(1, $$1);
+            $$1.b(awx.c.b(this));
+         }
+
+         return bug.b;
+      }
    }
 }

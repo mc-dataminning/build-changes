@@ -5,7 +5,7 @@ public class cjy extends civ {
    int bH;
    int bI;
    private static final chy.a bJ = ($$0, $$1) -> {
-      if ($$0 instanceof crj $$2 && $$2.b()) {
+      if ($$0 instanceof crm $$2 && $$2.b()) {
          return false;
       }
 
@@ -16,7 +16,7 @@ public class cjy extends civ {
    public static final int b = 1;
    public static final int c = 2;
 
-   public cjy(bwr<? extends cjy> $$0, djh $$1) {
+   public cjy(bwr<? extends cjy> $$0, djm $$1) {
       super($$0, $$1);
       this.i_();
    }
@@ -57,8 +57,8 @@ public class cjy extends civ {
    }
 
    @Override
-   public czk S_() {
-      return new czk(czo.rv);
+   public czn S_() {
+      return new czn(czr.rv);
    }
 
    @Override
@@ -117,7 +117,7 @@ public class cjy extends civ {
    }
 
    @Override
-   public void a_(crj $$0) {
+   public void a_(crm $$0) {
       int $$1 = this.x();
       if ($$0 instanceof arr $$2 && $$1 > 0 && $$0.a($$2.y(), this.dV().b((bxj)this), (float)(1 + $$1))) {
          if (!this.aZ()) {

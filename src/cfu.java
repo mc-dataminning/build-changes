@@ -1,8 +1,8 @@
 public class cfu extends cep {
-   private final cpe b;
+   private final cph b;
    private int c;
 
-   public cfu(cpe $$0, double $$1, boolean $$2) {
+   public cfu(cph $$0, double $$1, boolean $$2) {
       super($$0, $$1, $$2);
       this.b = $$0;
    }

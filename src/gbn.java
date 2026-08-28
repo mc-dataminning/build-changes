@@ -1,34 +1,50 @@
-public class gbn extends gbt {
-   private static final wy a = wy.c("options.chat.title");
+public class gbn extends fys {
+   private static final int a = 600;
+   private final vr b;
+   private fta c;
+   private int d;
+   private final fws s = fws.d();
 
-   private static fpr<?>[] a(fps $$0) {
-      return new fpr[]{
-         $$0.n(),
-         $$0.N(),
-         $$0.O(),
-         $$0.P(),
-         $$0.o(),
-         $$0.s(),
-         $$0.y(),
-         $$0.p(),
-         $$0.C(),
-         $$0.z(),
-         $$0.B(),
-         $$0.A(),
-         $$0.av(),
-         $$0.M(),
-         $$0.ah(),
-         $$0.Y(),
-         $$0.aj()
-      };
-   }
-
-   public gbn(fyn $$0, fps $$1) {
-      super($$0, $$1, a);
+   public gbn(wy $$0, vr $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   protected void m() {
-      this.d.a(a(this.c));
+   public boolean aD_() {
+      return false;
+   }
+
+   @Override
+   protected void aO_() {
+      this.s.c().b().a(10);
+      this.s.a(new fuh(this.l, this.p));
+      this.c = this.s.a(fta.a(wx.p, $$0 -> this.b.a(fxr.a)).a());
+      this.c.j = false;
+      this.s.a();
+      this.s.a($$1 -> {
+         fsy var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fwm.a(this.s, this.J());
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.d++;
+      if (this.d == 600) {
+         this.c.j = true;
+      }
+
+      if (this.b.i()) {
+         this.b.b();
+      } else {
+         this.b.n();
+      }
    }
 }

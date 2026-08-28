@@ -1,13 +1,49 @@
 import java.util.List;
 
-public class fzy extends fzd<cwa> {
-   private static final alg G = alg.b("container/furnace/lit_progress");
-   private static final alg H = alg.b("container/furnace/burn_progress");
-   private static final alg I = alg.b("textures/gui/container/furnace.png");
-   private static final wy J = wy.c("gui.recipebook.toggleRecipes.smeltable");
-   private static final List<gcm.a> K = List.of(new gcm.a(gcs.b), new gcm.a(czo.qL, ded.e), new gcm.a(czo.b, ded.f), new gcm.a(czo.rq, czo.po, ded.g));
+public class fzy {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<alg> e = List.of();
+   private int f;
+   private int g;
 
-   public fzy(cwa $$0, cri $$1, wy $$2) {
-      super($$0, $$1, $$2, J, I, G, H, K);
+   public fzy(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(List<alg> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
+
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
+   }
+
+   public void a(cvf $$0, fsm $$1, float $$2, int $$3, int $$4) {
+      cxc $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
+   }
+
+   private void a(cxc $$0, alg $$1, float $$2, fsm $$3, int $$4, int $$5) {
+      $$3.a(grc::H, $$1, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axw.a($$2));
+   }
+
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

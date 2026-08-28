@@ -1,40 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class ejp extends ejt<elw> {
-   public ejp(Codec<elw> $$0) {
+public class ejp extends ejy<ely> {
+   private static final ImmutableList<dmr> a = ImmutableList.of(dmt.I, dmt.fM, dmt.fN, dmt.fO, dmt.fP, dmt.cG, dmt.cD);
+   private static final jb[] b = jb.values();
+   private static final double c = 0.9;
+
+   public ejp(Codec<ely> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<elw> $$0) {
-      iv $$1 = $$0.e();
-      dkg $$2 = $$0.b();
-      elw $$3 = $$0.f();
+   public boolean a(eka<ely> $$0) {
+      boolean $$1 = false;
+      azv $$2 = $$0.d();
+      dkl $$3 = $$0.b();
+      ely $$4 = $$0.f();
+      iv $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-      for (iv $$4 : iv.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            iv $$9 = $$4.j();
-            this.a($$2, $$9, dmo.ll.m());
-            $$3.b().ifPresent($$3x -> {
-               if ($$2.c_($$9) instanceof dzi $$5x) {
-                  $$5x.a($$3x, $$3.c());
-               }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, dmo.a.m());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, dmo.I.m());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, dmo.I.m());
-         } else {
-            this.a($$2, $$4, dmo.a.m());
+      for (iv $$13 : iv.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
+
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
+
+            iv $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
+            }
          }
       }
 
-      return true;
+      return $$1;
+   }
+
+   private static boolean a(djn $$0, iv $$1, ely $$2) {
+      eat $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (jb $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).l();
+            if ($$5 && $$4 != jb.b || !$$5 && $$4 == jb.b) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 }

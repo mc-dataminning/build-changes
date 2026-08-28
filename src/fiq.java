@@ -1,36 +1,69 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
 public class fiq {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+   private static final int a = 60;
+   private static final int b = 10;
+   private static final int c = 30;
+   private static final int d = 10;
+   private static final long e = 60000L;
+   private static final long f = 600000L;
+   private final fpx g;
+   private final fpt h;
+   private int i;
+   private long j;
 
-   public static void a() {
-      RenderSystem.setupLevelDiffuseLighting(c, d);
+   public fiq(fpx $$0, fpt $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$0.h().c();
    }
 
-   public static void b() {
-      RenderSystem.setupLevelDiffuseLighting(a, b);
+   public int a() {
+      return switch (this.b()) {
+         case a -> this.i;
+         case b -> 10;
+         case c -> 10;
+         case d -> Math.min(this.i, 30);
+         case e -> 60;
+      };
    }
 
-   public static void c() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   public fiq.a b() {
+      fpp $$0 = this.g.i().c();
+      if (this.h.aO().j()) {
+         return fiq.a.b;
+      } else {
+         if ($$0 == fpp.b) {
+            long $$1 = ag.c() - this.j;
+            if ($$1 > 600000L) {
+               return fiq.a.c;
+            }
+
+            if ($$1 > 60000L) {
+               return fiq.a.d;
+            }
+         }
+
+         return this.h.s != null || this.h.z == null && this.h.aM() == null ? fiq.a.a : fiq.a.e;
+      }
    }
 
-   public static void d() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
+   public boolean c() {
+      fiq.a $$0 = this.b();
+      return $$0 == fiq.a.b || $$0 == fiq.a.c;
    }
 
-   public static void e() {
-      RenderSystem.setShaderLights(e, f);
+   public void a(int $$0) {
+      this.i = $$0;
    }
 
-   public static void a(Quaternionf $$0) {
-      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   public void d() {
+      this.j = ag.c();
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

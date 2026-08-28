@@ -1,13 +1,42 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface euy<P extends eux> {
-   euy<euw> a = a("always_true", euw.a);
-   euy<eut> b = a("linear_pos", eut.a);
-   euy<eui> c = a("axis_aligned_linear_pos", eui.a);
+public class euy extends evc {
+   public static final MapCodec<euy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, euy::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   MapCodec<P> codec();
+   public euy(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+   }
 
-   static <P extends eux> euy<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.o, $$0, () -> $$1);
+   @Override
+   public boolean a(iv $$0, iv $$1, iv $$2, azv $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= azm.b(this.b, this.d, azm.f((float)$$4, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected evd<?> a() {
+      return evd.b;
    }
 }

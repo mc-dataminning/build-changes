@@ -1,84 +1,62 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import org.slf4j.Logger;
 
-public record gsc(gsb b, gsb c, gsb d, gsb e, gsb f, gsb g, gsb h, gsb i) {
-   public static final gsc a = new gsc(gsb.a, gsb.a, gsb.a, gsb.a, gsb.a, gsb.a, gsb.a, gsb.a);
+public record gsc(Map<String, gsi> b, Optional<gss.b> c) {
+   private static final Logger d = LogUtils.getLogger();
+   public static final Codec<gsc> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.unboundedMap(Codec.STRING, gsi.a).optionalFieldOf("variants", Map.of()).forGetter(gsc::a),
+                  gss.b.a.optionalFieldOf("multipart").forGetter(gsc::b)
+               )
+               .apply($$0, gsc::new)
+      )
+      .validate($$0 -> $$0.a().isEmpty() && $$0.b().isEmpty() ? DataResult.error(() -> "Neither 'variants' nor 'multipart' found") : DataResult.success($$0));
 
-   public gsb a(czi $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> gsb.a;
-      };
+   public Map<eat, gsd.a> a(eau<dmr, eat> $$0, Supplier<String> $$1) {
+      Map<eat, gsd.a> $$2 = new IdentityHashMap<>();
+      List<eat> $$3 = $$0.a();
+      gss $$4;
+      if (this.c.isPresent()) {
+         $$4 = this.c.get().a($$0);
+         $$3.forEach($$2x -> $$2.put($$2x, $$4));
+      } else {
+         $$4 = null;
+      }
+
+      this.b.forEach(($$5x, $$6) -> {
+         try {
+            Predicate<eav<dmr, eat>> $$7 = gso.a($$0, $$5x);
+
+            for (eat $$8 : $$3) {
+               if ($$7.test($$8)) {
+                  gsd.a $$9 = $$2.put($$8, $$6);
+                  if ($$9 != null && $$9 != $$4) {
+                     String $$10 = this.b.entrySet().stream().filter($$1xx -> $$1xx.getValue() == $$9).findFirst().get().getKey();
+                     throw new IllegalArgumentException("Overlapping definition with: " + $$10);
+                  }
+               }
+            }
+         } catch (Exception var13) {
+            d.warn("Exception loading blockstate definition: '{}' for variant: '{}': {}", new Object[]{$$1.get(), $$5x, var13.getMessage()});
+         }
+      });
+      return $$2;
    }
 
-   public gsb a() {
+   public Map<String, gsi> a() {
       return this.b;
    }
 
-   public gsb b() {
+   public Optional<gss.b> b() {
       return this.c;
-   }
-
-   public gsb c() {
-      return this.d;
-   }
-
-   public gsb d() {
-      return this.e;
-   }
-
-   public gsb e() {
-      return this.f;
-   }
-
-   public gsb f() {
-      return this.g;
-   }
-
-   public gsb g() {
-      return this.h;
-   }
-
-   public gsb h() {
-      return this.i;
-   }
-
-   protected static class a implements JsonDeserializer<gsc> {
-      public gsc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         gsb $$4 = this.a($$2, $$3, czi.c);
-         gsb $$5 = this.a($$2, $$3, czi.b);
-         if ($$5 == gsb.a) {
-            $$5 = $$4;
-         }
-
-         gsb $$6 = this.a($$2, $$3, czi.e);
-         gsb $$7 = this.a($$2, $$3, czi.d);
-         if ($$7 == gsb.a) {
-            $$7 = $$6;
-         }
-
-         gsb $$8 = this.a($$2, $$3, czi.f);
-         gsb $$9 = this.a($$2, $$3, czi.g);
-         gsb $$10 = this.a($$2, $$3, czi.h);
-         gsb $$11 = this.a($$2, $$3, czi.i);
-         return new gsc($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
-      }
-
-      private gsb a(JsonDeserializationContext $$0, JsonObject $$1, czi $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (gsb)$$0.deserialize($$1.get($$3), gsb.class) : gsb.a;
-      }
    }
 }

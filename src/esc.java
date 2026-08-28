@@ -1,68 +1,78 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Optional;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class esc extends esf {
-   public static final MapCodec<esc> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, esc::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final jj<dkk> f;
+public record esc(List<err> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final alg c = alg.b("jigsaw");
+   private static final Map<alg, alg> d = ImmutableMap.builder()
+      .put(alg.b("nvi"), c)
+      .put(alg.b("pcp"), c)
+      .put(alg.b("bastionremnant"), c)
+      .put(alg.b("runtime"), c)
+      .build();
 
-   private static P9<Mu<esc>, ka, esf.c, Float, Integer, Optional<esf.a>, Integer, Integer, Integer, jj<dkk>> b(Instance<esc> $$0) {
-      P5<Mu<esc>, ka, esf.c, Float, Integer, Optional<esf.a>> $$1 = a($$0);
-      P4<Mu<esc>, Integer, Integer, Integer, jj<dkk>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(esc::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(esc::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(esc::c),
-         ju.a(mh.aG).fieldOf("preferred_biomes").forGetter(esc::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   public esc(final List<err> a) {
+      this.a = List.copyOf(a);
    }
 
-   public esc(ka $$0, esf.c $$1, float $$2, int $$3, Optional<esf.a> $$4, int $$5, int $$6, int $$7, jj<dkk> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   public esc(int $$0, int $$1, int $$2, jj<dkk> $$3) {
-      this(ka.i, esf.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
+   public boolean a(iv $$0) {
+      for (err $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public int a() {
-      return this.c;
+   public uw a(esd $$0) {
+      uf $$1 = new uf();
+
+      for (err $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public int b() {
-      return this.d;
+   public static esc a(uf $$0, esd $$1) {
+      List<err> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         tz $$4 = $$0.a($$3);
+         String $$5 = $$4.j("id").toLowerCase(Locale.ROOT);
+         alg $$6 = alg.a($$5);
+         alg $$7 = d.getOrDefault($$6, $$6);
+         ese $$8 = mg.Q.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               err $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new esc($$2);
    }
 
-   public int c() {
-      return this.e;
+   public erf b() {
+      return err.a(this.a.stream());
    }
 
-   public jj<dkk> d() {
-      return this.f;
-   }
-
-   @Override
-   protected boolean a(ecn $$0, int $$1, int $$2) {
-      List<dio> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new dio($$1, $$2));
-   }
-
-   @Override
-   public esg<?> e() {
-      return esg.b;
+   public List<err> c() {
+      return this.a;
    }
 }

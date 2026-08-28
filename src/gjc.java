@@ -1,69 +1,80 @@
-public class gjc extends ggk<hfm> {
-   private static final String a = "ribcage";
-   private static final String b = "center_head";
-   private static final String c = "right_head";
-   private static final String d = "left_head";
-   private static final float e = 0.065F;
-   private static final float f = 0.265F;
-   private final gjo g;
-   private final gjo i;
-   private final gjo j;
-   private final gjo k;
-   private final gjo l;
+public class gjc extends ggp<hfp> implements ggz, gjb {
+   public static final gkc a = gkc.scaling(0.5F);
+   private final gjt b;
+   private final gjt c;
+   private final gjt d;
+   private final gjt e;
+   private final gjt f;
+   private final gjt g;
 
-   public gjc(gjo $$0) {
+   public gjc(gjt $$0) {
       super($$0);
-      this.k = $$0.b("ribcage");
-      this.l = $$0.b("tail");
-      this.g = $$0.b("center_head");
-      this.i = $$0.b("right_head");
-      this.j = $$0.b("left_head");
+      this.b = $$0.b("head");
+      this.c = this.b.b("hat");
+      this.d = this.c.b("hat_rim");
+      this.e = $$0.b("right_leg");
+      this.f = $$0.b("left_leg");
+      this.g = $$0.b("arms");
    }
 
-   public static gju a(gjs $$0) {
-      gjw $$1 = new gjw();
-      gjy $$2 = $$1.a();
-      $$2.a("shoulders", gjt.c().a(0, 16).a(-10.0F, 3.9F, -0.5F, 20.0F, 3.0F, 3.0F, $$0), gjq.a);
-      float $$3 = 0.20420352F;
-      $$2.a(
-         "ribcage",
-         gjt.c()
-            .a(0, 22)
-            .a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 1.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 4.0F, 0.5F, 11.0F, 2.0F, 2.0F, $$0)
-            .a(24, 22)
-            .a(-4.0F, 6.5F, 0.5F, 11.0F, 2.0F, 2.0F, $$0),
-         gjq.a(-2.0F, 6.9F, -0.5F, 0.20420352F, 0.0F, 0.0F)
+   public static gkb a() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      float $$2 = 0.5F;
+      gkd $$3 = $$1.a("head", gjy.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), gjv.a);
+      gkd $$4 = $$3.a("hat", gjy.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new gjx(0.51F)), gjv.a);
+      $$4.a("hat_rim", gjy.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), gjv.b((float) (-Math.PI / 2), 0.0F, 0.0F));
+      $$3.a("nose", gjy.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), gjv.a(0.0F, -2.0F, 0.0F));
+      gkd $$5 = $$1.a("body", gjy.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), gjv.a);
+      $$5.a("jacket", gjy.c().a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new gjx(0.5F)), gjv.a);
+      $$1.a(
+         "arms",
+         gjy.c()
+            .a(44, 22)
+            .a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F)
+            .a(44, 22)
+            .a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, true)
+            .a(40, 38)
+            .a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
+         gjv.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
       );
-      $$2.a(
-         "tail",
-         gjt.c().a(12, 22).a(0.0F, 0.0F, 0.0F, 3.0F, 6.0F, 3.0F, $$0),
-         gjq.a(-2.0F, 6.9F + azm.b(0.20420352F) * 10.0F, -0.5F + azm.a(0.20420352F) * 10.0F, 0.83252203F, 0.0F, 0.0F)
-      );
-      $$2.a("center_head", gjt.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gjq.a);
-      gjt $$4 = gjt.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, $$0);
-      $$2.a("right_head", $$4, gjq.a(-8.0F, 4.0F, 0.0F));
-      $$2.a("left_head", $$4, gjq.a(10.0F, 4.0F, 0.0F));
-      return gju.a($$1, 64, 64);
+      $$1.a("right_leg", gjy.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gjv.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", gjy.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gjv.a(2.0F, 12.0F, 0.0F));
+      return $$0;
    }
 
-   public void a(hfm $$0) {
+   public void a(hfp $$0) {
       super.a($$0);
-      a($$0, this.i, 0);
-      a($$0, this.j, 1);
-      float $$1 = azm.b($$0.u * 0.1F);
-      this.k.e = (0.065F + 0.05F * $$1) * (float) Math.PI;
-      this.l.a(-2.0F, 6.9F + azm.b(this.k.e) * 10.0F, -0.5F + azm.a(this.k.e) * 10.0F);
-      this.l.e = (0.265F + 0.1F * $$1) * (float) Math.PI;
-      this.g.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.g.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      if ($$0.a) {
+         this.b.g = 0.3F * azm.a(0.45F * $$0.u);
+         this.b.e = 0.4F;
+      } else {
+         this.b.g = 0.0F;
+      }
+
+      this.e.e = azm.b($$0.ad * 0.6662F) * 1.4F * $$0.ae * 0.5F;
+      this.f.e = azm.b($$0.ad * 0.6662F + (float) Math.PI) * 1.4F * $$0.ae * 0.5F;
+      this.e.f = 0.0F;
+      this.f.f = 0.0F;
    }
 
-   private static void a(hfm $$0, gjo $$1, int $$2) {
-      $$1.f = ($$0.b[$$2] - $$0.Z) * (float) (Math.PI / 180.0);
-      $$1.e = $$0.a[$$2] * (float) (Math.PI / 180.0);
+   @Override
+   public gjt b() {
+      return this.b;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+   }
+
+   @Override
+   public void a(fkd $$0) {
+      this.v.a($$0);
+      this.g.a($$0);
    }
 }

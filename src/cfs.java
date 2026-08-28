@@ -15,9 +15,9 @@ public class cfs extends cfc {
 
    @Nullable
    @Override
-   protected fex h() {
+   protected ffc h() {
       if (this.b.bh()) {
-         fex $$0 = cif.a(this.b, 15, 7);
+         ffc $$0 = cif.a(this.b, 15, 7);
          return $$0 == null ? super.h() : $$0;
       } else {
          return this.b.dX().i() >= this.j ? cif.a(this.b, 10, 7) : super.h();

@@ -1,60 +1,59 @@
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hpe {
-   private boolean a;
+public class hpe implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final bph d;
    @Nullable
-   private hoy.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   private CompletableFuture<Optional<hpa>> e;
 
-   public hpe(@Nullable String $$0) {
+   private hpe(bph $$0) {
       this.d = $$0;
    }
 
-   public void a(hoz.a $$0) {
-      if (this.c != null) {
-         $$0.a(hoy.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(hoy.k, this.a());
+   public static CompletableFuture<Optional<hpe>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            bph $$1 = bph.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new hpe($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ag.h());
    }
 
-   private hoy.c a() {
-      gla $$0 = fpo.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return hoy.c.a;
-      } else {
-         return fpo.Q().U() ? hoy.c.b : hoy.c.c;
-      }
-   }
-
-   public boolean a(hov $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(how.b, $$0x -> {
-            $$0x.a(hoy.n, this.b);
-            if (this.d != null) {
-               $$0x.a(hoy.o, this.d);
+   public CompletableFuture<Optional<hpb>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               bph.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new hpa($$1, ag.h()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
             }
-         });
-         return true;
-      } else {
-         return false;
+         }, ag.h());
       }
+
+      return this.e.thenApply($$0 -> $$0.map(hpa::a));
    }
 
-   public void a(dje $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? hoy.b.e : hoy.b.a;
-         case b -> hoy.b.b;
-         case c -> hoy.b.c;
-         case d -> hoy.b.d;
-      };
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.thenAccept($$0 -> $$0.ifPresent(hpa::close));
+      }
    }
 }

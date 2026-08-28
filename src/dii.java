@@ -1,190 +1,221 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public abstract class dii implements ei {
-   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
-   private static final wy c = wy.b("@");
-   private long d = -1L;
-   private boolean e = true;
+public class dii {
+   public static final Codec<dii> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dig.a.fieldOf("buy").forGetter($$0x -> $$0x.c),
+               dig.a.lenientOptionalFieldOf("buyB").forGetter($$0x -> $$0x.d),
+               czn.b.fieldOf("sell").forGetter($$0x -> $$0x.e),
+               Codec.INT.lenientOptionalFieldOf("uses", 0).forGetter($$0x -> $$0x.f),
+               Codec.INT.lenientOptionalFieldOf("maxUses", 4).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.lenientOptionalFieldOf("rewardExp", true).forGetter($$0x -> $$0x.h),
+               Codec.INT.lenientOptionalFieldOf("specialPrice", 0).forGetter($$0x -> $$0x.i),
+               Codec.INT.lenientOptionalFieldOf("demand", 0).forGetter($$0x -> $$0x.j),
+               Codec.FLOAT.lenientOptionalFieldOf("priceMultiplier", 0.0F).forGetter($$0x -> $$0x.k),
+               Codec.INT.lenientOptionalFieldOf("xp", 1).forGetter($$0x -> $$0x.l)
+            )
+            .apply($$0, dii::new)
+   );
+   public static final yw<wj, dii> b = yw.a(dii::a, dii::a);
+   private final dig c;
+   private final Optional<dig> d;
+   private final czn e;
    private int f;
-   private boolean g = true;
-   @Nullable
-   private wy h;
-   private String i = "";
-   @Nullable
-   private wy j;
+   private final int g;
+   private final boolean h;
+   private int i;
+   private int j;
+   private final float k;
+   private final int l;
 
-   public int k() {
+   private dii(dig $$0, Optional<dig> $$1, czn $$2, int $$3, int $$4, boolean $$5, int $$6, int $$7, float $$8, int $$9) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+   }
+
+   public dii(dig $$0, czn $$1, int $$2, int $$3, float $$4) {
+      this($$0, Optional.empty(), $$1, $$2, $$3, $$4);
+   }
+
+   public dii(dig $$0, Optional<dig> $$1, czn $$2, int $$3, int $$4, float $$5) {
+      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
+   }
+
+   public dii(dig $$0, Optional<dig> $$1, czn $$2, int $$3, int $$4, int $$5, float $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
+   }
+
+   public dii(dig $$0, Optional<dig> $$1, czn $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
+      this($$0, $$1, $$2, $$3, $$4, true, 0, $$7, $$6, $$5);
+   }
+
+   private dii(dii $$0) {
+      this($$0.c, $$0.d, $$0.e.v(), $$0.f, $$0.g, $$0.h, $$0.i, $$0.j, $$0.k, $$0.l);
+   }
+
+   public czn a() {
+      return this.c.d();
+   }
+
+   public czn b() {
+      return this.c.d().c(this.a(this.c));
+   }
+
+   private int a(dig $$0) {
+      int $$1 = $$0.b();
+      int $$2 = Math.max(0, azm.d((float)($$1 * this.j) * this.k));
+      return azm.a($$1 + $$2 + this.i, 1, $$0.d().k());
+   }
+
+   public czn c() {
+      return this.d.map(dig::d).orElse(czn.k);
+   }
+
+   public dig d() {
+      return this.c;
+   }
+
+   public Optional<dig> e() {
+      return this.d;
+   }
+
+   public czn f() {
+      return this.e;
+   }
+
+   public void g() {
+      this.j = this.j + this.f - (this.g - this.f);
+   }
+
+   public czn h() {
+      return this.e.v();
+   }
+
+   public int i() {
       return this.f;
    }
 
-   public void a(int $$0) {
-      this.f = $$0;
-   }
-
-   public wy l() {
-      return this.h == null ? wx.a : this.h;
-   }
-
-   public tz a(tz $$0, jh.a $$1) {
-      $$0.a("Command", this.i);
-      $$0.a("SuccessCount", this.f);
-      ale<uw> $$2 = $$1.a(un.a);
-      $$0.b("CustomName", xa.a, $$2, this.j);
-      $$0.a("TrackOutput", this.g);
-      if (this.g) {
-         $$0.b("LastOutput", xa.a, $$2, this.h);
-      }
-
-      $$0.a("UpdateLastExecution", this.e);
-      if (this.e && this.d > 0L) {
-         $$0.a("LastExecution", this.d);
-      }
-
-      return $$0;
-   }
-
-   public void b(tz $$0, jh.a $$1) {
-      this.i = $$0.j("Command");
-      this.f = $$0.f("SuccessCount");
-      this.b(dxm.a($$0.a("CustomName"), $$1));
-      if ($$0.b("TrackOutput", 1)) {
-         this.g = $$0.o("TrackOutput");
-      }
-
-      if ($$0.c("LastOutput") && this.g) {
-         this.h = dxm.a($$0.a("LastOutput"), $$1);
-      } else {
-         this.h = null;
-      }
-
-      if ($$0.c("UpdateLastExecution")) {
-         this.e = $$0.o("UpdateLastExecution");
-      }
-
-      if (this.e && $$0.c("LastExecution")) {
-         this.d = $$0.g("LastExecution");
-      } else {
-         this.d = -1L;
-      }
-   }
-
-   public void a(String $$0) {
-      this.i = $$0;
+   public void j() {
       this.f = 0;
    }
 
-   public String m() {
-      return this.i;
+   public int k() {
+      return this.g;
    }
 
-   public boolean a(djh $$0) {
-      if ($$0.C || $$0.ae() == this.d) {
-         return false;
-      } else if ("Searge".equalsIgnoreCase(this.i)) {
-         this.h = wy.b("#itzlipofutzli");
-         this.f = 1;
-         return true;
-      } else {
-         this.f = 0;
-         MinecraftServer $$1 = this.e().p();
-         if ($$1.q() && !bal.b(this.i)) {
-            try {
-               this.h = null;
-               ej $$2 = this.i().a((eg)(($$0x, $$1x) -> {
-                  if ($$0x) {
-                     this.f++;
-                  }
-               }));
-               $$1.aG().a($$2, this.i);
-            } catch (Throwable var6) {
-               p $$4 = p.a(var6, "Executing command block");
-               q $$5 = $$4.a("Command to be executed");
-               $$5.a("Command", this::m);
-               $$5.a("Name", () -> this.n().getString());
-               throw new aa($$4);
-            }
-         }
-
-         if (this.e) {
-            this.d = $$0.ae();
-         } else {
-            this.d = -1L;
-         }
-
-         return true;
-      }
+   public void l() {
+      this.f++;
    }
 
-   public wy n() {
-      return this.j != null ? this.j : c;
-   }
-
-   @Nullable
-   public wy o() {
+   public int m() {
       return this.j;
    }
 
-   public void b(@Nullable wy $$0) {
-      this.j = $$0;
+   public void a(int $$0) {
+      this.i += $$0;
    }
 
-   @Override
-   public void a(wy $$0) {
-      if (this.g) {
-         this.h = wy.b("[" + b.format(new Date()) + "] ").b($$0);
-         this.f();
+   public void n() {
+      this.i = 0;
+   }
+
+   public int o() {
+      return this.i;
+   }
+
+   public void b(int $$0) {
+      this.i = $$0;
+   }
+
+   public float p() {
+      return this.k;
+   }
+
+   public int q() {
+      return this.l;
+   }
+
+   public boolean r() {
+      return this.f >= this.g;
+   }
+
+   public void s() {
+      this.f = this.g;
+   }
+
+   public boolean t() {
+      return this.f > 0;
+   }
+
+   public boolean u() {
+      return this.h;
+   }
+
+   public boolean a(czn $$0, czn $$1) {
+      if (!this.c.a($$0) || $$0.M() < this.a(this.c)) {
+         return false;
+      } else {
+         return !this.d.isPresent() ? $$1.f() : this.d.get().a($$1) && $$1.M() >= this.d.get().b();
       }
    }
 
-   public abstract arq e();
-
-   public abstract void f();
-
-   public void c(@Nullable wy $$0) {
-      this.h = $$0;
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public boolean p() {
-      return this.g;
-   }
-
-   public bug a(crj $$0) {
-      if (!$$0.gF()) {
-         return bug.e;
+   public boolean b(czn $$0, czn $$1) {
+      if (!this.a($$0, $$1)) {
+         return false;
       } else {
-         if ($$0.cT().C) {
-            $$0.a(this);
+         $$0.h(this.b().M());
+         if (!this.c().f()) {
+            $$1.h(this.c().M());
          }
 
-         return bug.a;
+         return true;
       }
    }
 
-   public abstract fex g();
-
-   public abstract ej i();
-
-   @Override
-   public boolean t_() {
-      return this.e().O().c(djd.q) && this.g;
+   public dii v() {
+      return new dii(this);
    }
 
-   @Override
-   public boolean u_() {
-      return this.g;
+   private static void a(wj $$0, dii $$1) {
+      dig.b.encode($$0, $$1.d());
+      czn.i.encode($$0, $$1.f());
+      dig.c.encode($$0, $$1.e());
+      $$0.a($$1.r());
+      $$0.q($$1.i());
+      $$0.q($$1.k());
+      $$0.q($$1.q());
+      $$0.q($$1.o());
+      $$0.a($$1.p());
+      $$0.q($$1.m());
    }
 
-   @Override
-   public boolean c() {
-      return this.e().O().c(djd.k);
-   }
+   public static dii a(wj $$0) {
+      dig $$1 = dig.b.decode($$0);
+      czn $$2 = czn.i.decode($$0);
+      Optional<dig> $$3 = dig.c.decode($$0);
+      boolean $$4 = $$0.readBoolean();
+      int $$5 = $$0.readInt();
+      int $$6 = $$0.readInt();
+      int $$7 = $$0.readInt();
+      int $$8 = $$0.readInt();
+      float $$9 = $$0.readFloat();
+      int $$10 = $$0.readInt();
+      dii $$11 = new dii($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
+      if ($$4) {
+         $$11.s();
+      }
 
-   public abstract boolean j();
+      $$11.b($$8);
+      return $$11;
+   }
 }

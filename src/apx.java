@@ -104,7 +104,7 @@ public class apx {
    }
 
    private static int a(ej $$0, float $$1) throws CommandSyntaxException {
-      ecg $$2 = $$0.l().J().A_();
+      ecl $$2 = $$0.l().J().A_();
       if ($$2.n() == (double)$$1) {
          throw h.create();
       } else {
@@ -115,7 +115,7 @@ public class apx {
    }
 
    private static int b(ej $$0, float $$1) throws CommandSyntaxException {
-      ecg $$2 = $$0.l().J().A_();
+      ecl $$2 = $$0.l().J().A_();
       if ($$2.o() == (double)$$1) {
          throw i.create();
       } else {
@@ -126,7 +126,7 @@ public class apx {
    }
 
    private static int a(ej $$0, int $$1) throws CommandSyntaxException {
-      ecg $$2 = $$0.l().J().A_();
+      ecl $$2 = $$0.l().J().A_();
       if ($$2.q() == $$1) {
          throw f.create();
       } else {
@@ -137,7 +137,7 @@ public class apx {
    }
 
    private static int b(ej $$0, int $$1) throws CommandSyntaxException {
-      ecg $$2 = $$0.l().J().A_();
+      ecl $$2 = $$0.l().J().A_();
       if ($$2.r() == $$1) {
          throw g.create();
       } else {
@@ -153,8 +153,8 @@ public class apx {
       return azm.a($$1 + 0.5);
    }
 
-   private static int a(ej $$0, few $$1) throws CommandSyntaxException {
-      ecg $$2 = $$0.l().J().A_();
+   private static int a(ej $$0, ffb $$1) throws CommandSyntaxException {
+      ecl $$2 = $$0.l().J().A_();
       if ($$2.a() == (double)$$1.j && $$2.b() == (double)$$1.k) {
          throw a.create();
       } else if (!((double)Math.abs($$1.j) > 2.9999984E7) && !((double)Math.abs($$1.k) > 2.9999984E7)) {
@@ -167,7 +167,7 @@ public class apx {
    }
 
    private static int a(ej $$0, double $$1, long $$2) throws CommandSyntaxException {
-      ecg $$3 = $$0.l().J().A_();
+      ecl $$3 = $$0.l().J().A_();
       double $$4 = $$3.i();
       if ($$4 == $$1) {
          throw b.create();

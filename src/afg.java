@@ -6,9 +6,9 @@ public class afg implements zf<abu> {
    public static final yw<wj, afg> a = zf.a(afg::a, afg::new);
    private static final byte b = -128;
    private final int c;
-   private final List<Pair<bws, czk>> d;
+   private final List<Pair<bws, czn>> d;
 
-   public afg(int $$0, List<Pair<bws, czk>> $$1) {
+   public afg(int $$0, List<Pair<bws, czn>> $$1) {
       this.c = $$0;
       this.d = $$1;
    }
@@ -21,7 +21,7 @@ public class afg implements zf<abu> {
       do {
          $$1 = $$0.readByte();
          bws $$2 = bws.j.get($$1 & 127);
-         czk $$3 = czk.h.decode($$0);
+         czn $$3 = czn.h.decode($$0);
          this.d.add(Pair.of($$2, $$3));
       } while (($$1 & -128) != 0);
    }
@@ -31,12 +31,12 @@ public class afg implements zf<abu> {
       int $$1 = this.d.size();
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bws, czk> $$3 = this.d.get($$2);
+         Pair<bws, czn> $$3 = this.d.get($$2);
          bws $$4 = (bws)$$3.getFirst();
          boolean $$5 = $$2 != $$1 - 1;
          int $$6 = $$4.ordinal();
          $$0.l($$5 ? $$6 | -128 : $$6);
-         czk.h.encode($$0, (czk)$$3.getSecond());
+         czn.h.encode($$0, (czn)$$3.getSecond());
       }
    }
 
@@ -53,7 +53,7 @@ public class afg implements zf<abu> {
       return this.c;
    }
 
-   public List<Pair<bws, czk>> e() {
+   public List<Pair<bws, czn>> e() {
       return this.d;
    }
 }

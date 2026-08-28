@@ -1,153 +1,143 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ftx extends fyn {
-   private static final alg a = alg.b("popup/background");
-   private static final int b = 12;
-   private static final int c = 18;
-   private static final int d = 6;
-   private static final int s = 130;
-   private static final int u = 64;
-   private static final int v = 250;
-   private final fyn w;
+public class ftx extends ftg<ftx.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final gby n;
+
+   public ftx(fpt $$0, int $$1, gby $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
+   }
+
+   public void a(fpw<?> $$0) {
+      this.b(ftx.b.a(this.c.n, $$0, this.n));
+   }
+
+   public void a(fpw<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         fpw<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(ftx.b.a(this.c.n, $$0[$$1], $$2, this.n));
+      }
+   }
+
+   public void a(List<fsy> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
+   }
+
+   public void a(fsy $$0, @Nullable fsy $$1) {
+      this.b(ftx.a.a($$0, $$1, this.n));
+   }
+
+   @Override
+   public int a() {
+      return 310;
+   }
+
    @Nullable
-   private final alg x;
-   private final wy y;
-   private final List<ftx.b> z;
-   @Nullable
-   private final Runnable A;
-   private final int B;
-   private final fwn C = fwn.d();
+   public fsy b(fpw<?> $$0) {
+      for (ftx.a $$1 : this.aE_()) {
+         if ($$1 instanceof ftx.b $$2) {
+            fsy $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
+            }
+         }
+      }
 
-   ftx(fyn $$0, int $$1, @Nullable alg $$2, wy $$3, wy $$4, List<ftx.b> $$5, @Nullable Runnable $$6) {
-      super($$3);
-      this.w = $$0;
-      this.x = $$2;
-      this.y = $$4;
-      this.z = $$5;
-      this.A = $$6;
-      this.B = $$1 - 36;
+      return null;
    }
 
-   @Override
-   public void aG_() {
-      super.aG_();
-      this.w.o();
-   }
+   public void b() {
+      for (ftx.a $$0 : this.aE_()) {
+         if ($$0 instanceof ftx.b) {
+            ftx.b $$1 = (ftx.b)$$0;
 
-   @Override
-   protected void aO_() {
-      this.w.b(this.m, this.n, this.o);
-      this.C.a(12).c().b();
-      this.C.a(new ftp(this.l.f().a(o.r), this.p).d(this.B).b(true));
-      if (this.x != null) {
-         this.C.a(fti.a(130, 64, this.x, 130, 64));
-      }
-
-      this.C.a(new ftp(this.y, this.p).d(this.B).b(true));
-      this.C.a(this.m());
-      this.C.a($$1 -> {
-         fst var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   private fwn m() {
-      int $$0 = 6 * (this.z.size() - 1);
-      int $$1 = Math.min((this.B - $$0) / this.z.size(), 150);
-      fwn $$2 = fwn.e();
-      $$2.a(6);
-
-      for (ftx.b $$3 : this.z) {
-         $$2.a(fsv.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
-      }
-
-      return $$2;
-   }
-
-   @Override
-   protected void c() {
-      this.w.a(this.m, this.n, this.o);
-      this.C.a();
-      fwh.a(this.C, this.J());
-   }
-
-   @Override
-   public void b(fsh $$0, int $$1, int $$2, float $$3) {
-      this.w.a($$0, -1, -1, $$3);
-      $$0.d();
-      RenderSystem.clear(256);
-      this.b($$0);
-      $$0.a(gqx::H, a, this.C.F() - 18, this.C.G() - 18, this.C.A() + 36, this.C.y() + 36);
-   }
-
-   @Override
-   public wy i() {
-      return wx.a(this.l, this.y);
-   }
-
-   @Override
-   public void aL_() {
-      if (this.A != null) {
-         this.A.run();
-      }
-
-      this.m.a(this.w);
-   }
-
-   public static class a {
-      private final fyn a;
-      private final wy b;
-      private wy c = wx.a;
-      private int d = 250;
-      @Nullable
-      private alg e;
-      private final List<ftx.b> f = new ArrayList<>();
-      @Nullable
-      private Runnable g = null;
-
-      public a(fyn $$0, wy $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public ftx.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ftx.a a(alg $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ftx.a a(wy $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ftx.a a(wy $$0, Consumer<ftx> $$1) {
-         this.f.add(new ftx.b($$0, $$1));
-         return this;
-      }
-
-      public ftx.a a(Runnable $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public ftx a() {
-         if (this.f.isEmpty()) {
-            throw new IllegalStateException("Popup must have at least one button");
-         } else {
-            return new ftx(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+            for (fsy $$2 : $$1.a.values()) {
+               if ($$2 instanceof fpw.i<?> $$3) {
+                  $$3.c();
+               }
+            }
          }
       }
    }
 
-   static record b(wy a, Consumer<ftx> b) {
+   public Optional<fux> e(double $$0, double $$1) {
+      for (ftx.a $$2 : this.aE_()) {
+         for (fux $$3 : $$2.aE_()) {
+            if ($$3.a_($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
+      }
+
+      return Optional.empty();
+   }
+
+   protected static class a extends ftg.a<ftx.a> {
+      private final List<fsy> a;
+      private final fys b;
+      private static final int c = 160;
+
+      a(List<fsy> $$0, fys $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
+      }
+
+      public static ftx.a a(List<fsy> $$0, fys $$1) {
+         return new ftx.a($$0, $$1);
+      }
+
+      public static ftx.a a(fsy $$0, @Nullable fsy $$1, fys $$2) {
+         return $$1 == null ? new ftx.a(ImmutableList.of($$0), $$2) : new ftx.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fsy $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
+      }
+
+      @Override
+      public List<? extends fux> aE_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fwv> b() {
+         return this.a;
+      }
+   }
+
+   protected static class b extends ftx.a {
+      final Map<fpw<?>, fsy> a;
+
+      private b(Map<fpw<?>, fsy> $$0, gby $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
+
+      public static ftx.b a(fpx $$0, fpw<?> $$1, gby $$2) {
+         return new ftx.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
+
+      public static ftx.b a(fpx $$0, fpw<?> $$1, @Nullable fpw<?> $$2, gby $$3) {
+         fsy $$4 = $$1.a($$0);
+         return $$2 == null ? new ftx.b(ImmutableMap.of($$1, $$4), $$3) : new ftx.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
+      }
    }
 }

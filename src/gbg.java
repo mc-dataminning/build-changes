@@ -1,32 +1,27 @@
-public class gbg extends gbk {
-   private static final wy b = wy.c("multiplayerWarning.header").a(o.r);
-   private static final wy c = wy.c("multiplayerWarning.message");
-   private static final wy d = wy.c("multiplayerWarning.check");
-   private static final wy s = b.f().f("\n").b(c);
-   private final fyn u;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public gbg(fyn $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+public class gbg implements gbf {
+   public static final gbf a = new gbg();
+
+   private gbg() {
    }
 
    @Override
-   protected fwk m() {
-      fwn $$0 = fwn.e().a(8);
-      $$0.a(fsv.a(wx.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.az();
-         }
-
-         this.m.a(new gbf(this.u));
-      }).a());
-      $$0.a(fsv.a(wx.k, $$0x -> this.aL_()).a());
-      return $$0;
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
    }
 
-   @Override
-   public void aL_() {
-      this.m.a(this.u);
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+      }
+
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
+      }
    }
 }

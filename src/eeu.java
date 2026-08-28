@@ -1,15 +1,8 @@
-public interface eeu {
-   eeu a = new eeu() {
-      @Override
-      public void a() {
-      }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-      @Override
-      public void a(bwi.d $$0) {
-      }
-   };
-
-   void a();
-
-   void a(bwi.d var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface eeu {
 }

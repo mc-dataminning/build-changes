@@ -2,14 +2,20 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hhm(float b) implements hhk {
-   public static final MapCodec<hhm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayu.o.optionalFieldOf("period", 1.0F).forGetter(hhm::b)).apply($$0, hhm::new)
-   );
+public record hhm(int b) implements hhq {
+   public static final MapCodec<hhm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(hhm::b)).apply($$0, hhm::new));
 
    @Override
-   public float a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3) {
-      return $$2 != null && $$2.fA() == $$0 ? (float)$$2.fB() % this.b : 0.0F;
+   public float a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3) {
+      dbw $$4 = $$0.a(kk.p);
+      if ($$4 != null) {
+         Float $$5 = $$4.a(this.b);
+         if ($$5 != null) {
+            return $$5;
+         }
+      }
+
+      return 0.0F;
    }
 
    @Override

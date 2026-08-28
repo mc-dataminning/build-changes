@@ -1,278 +1,142 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dzv extends dxm {
-   private final dzy a = new dzy();
-   private final dzz b = new dzz();
-   private final dzw c = new dzw();
-   private dzx d = dzx.b;
+public record dzv(int d, float e, float f, float g, float h, int i, bsq<dkg> j, bsq<alf<ezy>> k, alf<ezy> l) {
+   public static final dzv a = b().a();
+   public static final Codec<dzv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dzv::c),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dzv::d),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dzv::e),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dzv::f),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dzv::g),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dzv::h),
+               dkg.c.optionalFieldOf("spawn_potentials", bsq.a()).forGetter(dzv::i),
+               bsq.a(ezy.a).optionalFieldOf("loot_tables_to_eject", a.k).forGetter(dzv::j),
+               ezy.a.optionalFieldOf("items_to_drop_when_ominous", a.l).forGetter(dzv::k)
+            )
+            .apply($$0, dzv::new)
+   );
+   public static final Codec<jf<dzv>> c = alc.a(mh.bi, b);
 
-   public dzv(iv $$0, eao $$1) {
-      super(dxo.S, $$0, $$1);
+   public int a(int $$0) {
+      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
    }
 
-   @Nullable
-   @Override
-   public zf<abu> au_() {
-      return aca.a(this);
+   public int b(int $$0) {
+      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
    }
 
-   @Override
-   public tz a(jh.a $$0) {
-      return ag.a(new tz(), $$1 -> $$1.a("shared_data", dzz.b, $$0.a(un.a), this.b));
+   public long a() {
+      return 160L;
    }
 
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      ale<uw> $$2 = $$1.a(un.a);
-      $$0.a("config", dzx.c, $$2, this.d);
-      $$0.a("shared_data", dzz.b, $$2, this.b);
-      $$0.a("server_data", dzy.b, $$2, this.a);
+   public static dzv.a b() {
+      return new dzv.a();
    }
 
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      DynamicOps<uw> $$2 = $$1.a(un.a);
-      $$0.<dzy>a("server_data", dzy.b, $$2).ifPresent(this.a::a);
-      this.d = $$0.<dzx>a("config", dzx.c, $$2).orElse(dzx.b);
-      $$0.<dzz>a("shared_data", dzz.b, $$2).ifPresent(this.b::a);
+   public dzv a(bwr<?> $$0) {
+      tz $$1 = new tz();
+      $$1.a("id", mg.f.b($$0).toString());
+      dkg $$2 = new dkg($$1, Optional.empty(), Optional.empty());
+      return new dzv(this.d, this.e, this.f, this.g, this.h, this.i, bsq.a($$2), this.k, this.l);
    }
 
-   @Nullable
-   public dzy a() {
-      return this.n != null && !this.n.C ? this.a : null;
-   }
-
-   public dzz c() {
-      return this.b;
-   }
-
-   public dzw d() {
-      return this.c;
-   }
-
-   public dzx f() {
+   public int c() {
       return this.d;
    }
 
-   @VisibleForTesting
-   public void a(dzx $$0) {
-      this.d = $$0;
+   public float d() {
+      return this.e;
    }
 
-   public static final class a {
-      private static final int a = 20;
-      private static final float b = 0.5F;
-      private static final float c = 0.02F;
-      private static final int d = 20;
-      private static final int e = 20;
-
-      public static void a(djh $$0, iv $$1, eao $$2, dzw $$3, dzz $$4) {
-         $$3.c();
-         if ($$0.ae() % 20L == 0L) {
-            a($$0, $$1, $$2, $$4);
-         }
-
-         a($$0, $$1, $$4, $$2.c(dvx.d) ? ly.N : ly.aM);
-         a($$0, $$1, $$4);
-      }
-
-      public static void a(djh $$0, iv $$1, eao $$2, dzz $$3, lw $$4) {
-         a($$0, $$1, $$2, $$3);
-         azv $$5 = $$0.A;
-
-         for (int $$6 = 0; $$6 < 20; $$6++) {
-            fex $$7 = b($$1, $$5);
-            $$0.a(ly.ah, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
-            $$0.a($$4, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
-         }
-      }
-
-      public static void a(djh $$0, iv $$1, lw $$2) {
-         azv $$3 = $$0.A;
-
-         for (int $$4 = 0; $$4 < 20; $$4++) {
-            fex $$5 = a($$1, $$3);
-            fex $$6 = new fex($$3.k() * 0.02, $$3.k() * 0.02, $$3.k() * 0.02);
-            $$0.a($$2, $$5.a(), $$5.b(), $$5.c(), $$6.a(), $$6.b(), $$6.c());
-         }
-      }
-
-      private static void a(djh $$0, iv $$1, dzz $$2, lw $$3) {
-         azv $$4 = $$0.C_();
-         if ($$4.i() <= 0.5F) {
-            fex $$5 = b($$1, $$4);
-            $$0.a(ly.ah, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
-            if (a($$2)) {
-               $$0.a($$3, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
-            }
-         }
-      }
-
-      private static void a(djh $$0, fex $$1, crj $$2) {
-         azv $$3 = $$0.A;
-         fex $$4 = $$1.a($$2.ds().b(0.0, (double)($$2.dq() / 2.0F), 0.0));
-         int $$5 = azm.a($$3, 2, 5);
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            fex $$7 = $$4.a($$3, 1.0F);
-            $$0.a(ly.bd, $$1.a(), $$1.b(), $$1.c(), $$7.a(), $$7.b(), $$7.c());
-         }
-      }
-
-      private static void a(djh $$0, iv $$1, eao $$2, dzz $$3) {
-         Set<UUID> $$4 = $$3.d();
-         if (!$$4.isEmpty()) {
-            fex $$5 = a($$1, $$2.c(dvx.c));
-
-            for (UUID $$6 : $$4) {
-               crj $$7 = $$0.a($$6);
-               if ($$7 != null && a($$1, $$3, $$7)) {
-                  a($$0, $$5, $$7);
-               }
-            }
-         }
-      }
-
-      private static boolean a(iv $$0, dzz $$1, crj $$2) {
-         return $$2.du().j($$0) <= azm.k($$1.e());
-      }
-
-      private static void a(djh $$0, iv $$1, dzz $$2) {
-         if (a($$2)) {
-            azv $$3 = $$0.C_();
-            if ($$3.i() <= 0.02F) {
-               $$0.a($$1, awn.BF, awo.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
-            }
-         }
-      }
-
-      public static boolean a(dzz $$0) {
-         return $$0.b();
-      }
-
-      private static fex a(iv $$0, azv $$1) {
-         return fex.a($$0).b(azm.a($$1, 0.4, 0.6), azm.a($$1, 0.4, 0.6), azm.a($$1, 0.4, 0.6));
-      }
-
-      private static fex b(iv $$0, azv $$1) {
-         return fex.a($$0).b(azm.a($$1, 0.1, 0.9), azm.a($$1, 0.25, 0.75), azm.a($$1, 0.1, 0.9));
-      }
-
-      private static fex a(iv $$0, jb $$1) {
-         return fex.c($$0).b((double)$$1.j() * 0.5, 1.75, (double)$$1.l() * 0.5);
-      }
+   public float e() {
+      return this.f;
    }
 
-   public static final class b {
-      private static final int a = 14;
-      private static final int b = 20;
-      private static final int c = 15;
+   public float f() {
+      return this.g;
+   }
 
-      public static void a(arq $$0, iv $$1, eao $$2, dzx $$3, dzy $$4, dzz $$5) {
-         eaa $$6 = $$2.c(dvx.b);
-         if (a($$0.ae(), $$6)) {
-            a($$0, $$6, $$3, $$5, $$1);
-         }
+   public float g() {
+      return this.h;
+   }
 
-         eao $$7 = $$2;
-         if ($$0.ae() >= $$4.c()) {
-            $$7 = $$2.b(dvx.b, $$6.a($$0, $$1, $$3, $$4, $$5));
-            if ($$2 != $$7) {
-               a($$0, $$1, $$2, $$7, $$3, $$5);
-            }
-         }
+   public int h() {
+      return this.i;
+   }
 
-         if ($$4.c || $$5.c) {
-            dzv.a($$0, $$1, $$2);
-            if ($$5.c) {
-               $$0.a($$1, $$2, $$7, 2);
-            }
+   public bsq<dkg> i() {
+      return this.j;
+   }
 
-            $$4.c = false;
-            $$5.c = false;
-         }
+   public bsq<alf<ezy>> j() {
+      return this.k;
+   }
+
+   public alf<ezy> k() {
+      return this.l;
+   }
+
+   public static class a {
+      private int a = 4;
+      private float b = 6.0F;
+      private float c = 2.0F;
+      private float d = 2.0F;
+      private float e = 1.0F;
+      private int f = 40;
+      private bsq<dkg> g = bsq.a();
+      private bsq<alf<ezy>> h = bsq.<alf<ezy>>b().a(ezp.aM).a(ezp.aL).a();
+      private alf<ezy> i = ezp.aP;
+
+      public dzv.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      public static void a(arq $$0, iv $$1, eao $$2, dzx $$3, dzy $$4, dzz $$5, crj $$6, czk $$7) {
-         eaa $$8 = $$2.c(dvx.b);
-         if (a($$3, $$8)) {
-            if (!a($$3, $$7)) {
-               a($$0, $$4, $$1, awn.BO);
-            } else if ($$4.a($$6)) {
-               a($$0, $$4, $$1, awn.BK);
-            } else {
-               List<czk> $$9 = a($$0, $$3, $$1, $$6, $$7);
-               if (!$$9.isEmpty()) {
-                  $$6.b(awx.c.b($$7.h()));
-                  $$7.a($$3.e().M(), (bxj)$$6);
-                  a($$0, $$2, $$1, $$3, $$4, $$5, $$9);
-                  $$4.b($$6);
-                  $$5.a($$0, $$1, $$4, $$3, $$3.d());
-               }
-            }
-         }
+      public dzv.a a(float $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      static void a(arq $$0, iv $$1, eao $$2, eao $$3, dzx $$4, dzz $$5) {
-         eaa $$6 = $$2.c(dvx.b);
-         eaa $$7 = $$3.c(dvx.b);
-         $$0.a($$1, $$3, 3);
-         $$6.a($$0, $$1, $$7, $$4, $$5, $$3.c(dvx.d));
+      public dzv.a b(float $$0) {
+         this.c = $$0;
+         return this;
       }
 
-      static void a(arq $$0, eaa $$1, dzx $$2, dzz $$3, iv $$4) {
-         if (!a($$2, $$1)) {
-            $$3.a(czk.k);
-         } else {
-            czk $$5 = a($$0, $$4, $$2.f().orElse($$2.b()));
-            $$3.a($$5);
-         }
+      public dzv.a c(float $$0) {
+         this.d = $$0;
+         return this;
       }
 
-      private static czk a(arq $$0, iv $$1, alf<ezt> $$2) {
-         ezt $$3 = $$0.p().bc().b($$2);
-         ezr $$4 = new ezr.a($$0).a(fci.f, fex.b($$1)).a(fch.l);
-         List<czk> $$5 = $$3.a($$4, $$0.C_());
-         return $$5.isEmpty() ? czk.k : ag.a($$5, $$0.C_());
+      public dzv.a d(float $$0) {
+         this.e = $$0;
+         return this;
       }
 
-      private static void a(arq $$0, eao $$1, iv $$2, dzx $$3, dzy $$4, dzz $$5, List<czk> $$6) {
-         $$4.a($$6);
-         $$5.a($$4.f());
-         $$4.b($$0.ae() + 14L);
-         a($$0, $$2, $$1, $$1.b(dvx.b, eaa.c), $$3, $$5);
+      public dzv.a b(int $$0) {
+         this.f = $$0;
+         return this;
       }
 
-      private static List<czk> a(arq $$0, dzx $$1, iv $$2, crj $$3, czk $$4) {
-         ezt $$5 = $$0.p().bc().b($$1.b());
-         ezr $$6 = new ezr.a($$0).a(fci.f, fex.b($$2)).a($$3.eg()).a(fci.a, $$3).a(fci.i, $$4).a(fch.l);
-         return $$5.a($$6);
+      public dzv.a a(bsq<dkg> $$0) {
+         this.g = $$0;
+         return this;
       }
 
-      private static boolean a(dzx $$0, eaa $$1) {
-         return !$$0.e().f() && $$1 != eaa.a;
+      public dzv.a b(bsq<alf<ezy>> $$0) {
+         this.h = $$0;
+         return this;
       }
 
-      private static boolean a(dzx $$0, czk $$1) {
-         return czk.c($$1, $$0.e()) && $$1.M() >= $$0.e().M();
+      public dzv.a a(alf<ezy> $$0) {
+         this.i = $$0;
+         return this;
       }
 
-      private static boolean a(long $$0, eaa $$1) {
-         return $$0 % 20L == 0L && $$1 == eaa.b;
-      }
-
-      private static void a(arq $$0, dzy $$1, iv $$2, awm $$3) {
-         if ($$0.ae() >= $$1.a() + 15L) {
-            $$0.a(null, $$2, $$3, awo.e);
-            $$1.a($$0.ae());
-         }
+      public dzv a() {
+         return new dzv(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
       }
    }
 }

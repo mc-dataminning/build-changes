@@ -1,42 +1,39 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record eyk(jf<eyl> b, byte c, byte d, byte e, Optional<wy> f) {
-   public static final yw<wj, eyk> a = yw.a(eyl.c, eyk::c, yu.c, eyk::d, yu.c, eyk::e, yu.c, eyk::f, xa.c, eyk::g, eyk::new);
+public abstract class eyk {
+   protected final dta a;
 
-   public eyk(jf<eyl> b, byte c, byte d, byte e, Optional<wy> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   protected eyk(dta $$0) {
+      this.a = $$0;
    }
 
-   public alg a() {
-      return this.b.a().b();
+   public abstract void a(djm var1, iv var2, eat var3, @Nullable eyi var4, boolean var5);
+
+   protected int a(djm $$0, iv $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public boolean b() {
-      return this.b.a().c();
+   protected int a(iv $$0, eat $$1) {
+      return $$1.a(this.a) ? $$1.c(dta.f) : 0;
    }
 
-   public jf<eyl> c() {
-      return this.b;
-   }
+   protected int b(djm $$0, iv $$1) {
+      int $$2 = 0;
 
-   public byte d() {
-      return this.c;
-   }
+      for (jb $$3 : jb.c.a) {
+         iv $$4 = $$1.a($$3);
+         eat $$5 = $$0.a_($$4);
+         $$2 = Math.max($$2, this.a($$4, $$5));
+         iv $$6 = $$1.d();
+         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
+            iv $$7 = $$4.d();
+            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
+         } else if (!$$5.d($$0, $$4)) {
+            iv $$8 = $$4.e();
+            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
+         }
+      }
 
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<wy> g() {
-      return this.f;
+      return Math.max(0, $$2 - 1);
    }
 }

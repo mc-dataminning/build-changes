@@ -1,29 +1,29 @@
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public record fph(int a, wy b, @Nullable xk c, @Nullable fpi d) {
-   @Nullable
-   public fpi.a a() {
-      return this.d != null ? this.d.f() : null;
-   }
+public class fph {
+   private final List<xd> a = Lists.newArrayList();
 
-   public int b() {
-      return this.a;
-   }
-
-   public wy c() {
-      return this.b;
+   public void a(xd $$0) {
+      this.a.add($$0);
    }
 
    @Nullable
-   public xk d() {
-      return this.c;
+   public xd a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : xd.a(this.a);
+      }
    }
 
-   @Nullable
-   public fpi e() {
-      return this.d;
+   public xd b() {
+      xd $$0 = this.a();
+      return $$0 != null ? $$0 : xd.b;
    }
 
-   public static record a(int a, ayy b, @Nullable fpi c, boolean d) {
+   public void c() {
+      this.a.clear();
    }
 }

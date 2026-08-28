@@ -18,7 +18,7 @@ public class cet extends cef {
       if (this.a.gd()) {
          return false;
       } else {
-         fex $$0 = cic.a(this.a, 16, 7, fex.c(this.a.ge()), (float) (Math.PI / 2));
+         ffc $$0 = cic.a(this.a, 16, 7, ffc.c(this.a.ge()), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {

@@ -9,12 +9,12 @@ public abstract class bvy extends bxr {
    protected int c;
    protected int d;
 
-   protected bvy(bwr<? extends bvy> $$0, djh $$1) {
+   protected bvy(bwr<? extends bvy> $$0, djm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       if ($$3 == null) {
          $$3 = new bvy.a(true);
       }
@@ -129,7 +129,7 @@ public abstract class bvy extends bxr {
 
    @Override
    protected void j() {
-      if (!this.n_() && this.bX() && this.dj() instanceof ctu $$0 && !$$0.b((bwi)this)) {
+      if (!this.n_() && this.bX() && this.dj() instanceof ctx $$0 && !$$0.b((bwi)this)) {
          this.bN();
       }
    }
@@ -149,12 +149,12 @@ public abstract class bvy extends bxr {
    }
 
    @VisibleForTesting
-   public int Z_() {
+   public int X_() {
       return this.c;
    }
 
    @VisibleForTesting
-   public int aa_() {
+   public int Y_() {
       return this.d;
    }
 

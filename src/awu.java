@@ -1,7 +1,7 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class awu<T> extends fgf {
+public class awu<T> extends fgk {
    public static final yw<wj, awu<?>> a = yu.a(mh.ar).b(awu::a, aww::a);
    private final awv p;
    private final T q;

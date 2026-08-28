@@ -2,7 +2,7 @@ import javax.annotation.Nullable;
 
 public class cie {
    @Nullable
-   public static fex a(bxr $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
+   public static ffc a(bxr $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
       boolean $$8 = cid.a($$0, $$1);
       return cig.a($$0, () -> {
          iv $$9 = cig.a($$0.dX(), $$1, $$2, 0, $$3, $$4, (double)$$5);

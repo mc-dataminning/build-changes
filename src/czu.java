@@ -1,59 +1,85 @@
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class czu extends czg {
-   public czu(czg.a $$0) {
-      super($$0);
+public class czu {
+   public static final int a = 20;
+   private long b;
+   @Nullable
+   private jf<czt> c;
+   private final iv d;
+   private final czu.a e;
+
+   public czu(czu.a $$0, iv $$1) {
+      this.e = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public bug a(ddf $$0) {
-      djh $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      eao $$3 = $$1.a_($$2);
-      if ($$3.a(axc.U)) {
-         crj $$4 = $$0.o();
-         if (!$$1.C && $$4 != null) {
-            return a($$4, $$1, $$2);
-         }
-      }
-
-      return bug.e;
+   public boolean a() {
+      return this.c != null;
    }
 
-   public static bug a(crj $$0, djh $$1, iv $$2) {
-      cni $$3 = null;
-      List<bxh> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
+   @Nullable
+   public czt b() {
+      return this.c == null ? null : this.c.a();
+   }
 
-      for (bxh $$5 : $$4) {
-         if ($$3 == null) {
-            $$3 = cni.b($$1, $$2);
-            $$3.m();
-         }
+   public long c() {
+      return this.b;
+   }
 
-         $$5.a_($$3, true);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.a(efo.b, $$2, efo.a.a($$0));
-         return bug.b;
-      } else {
-         return bug.e;
+   public void a(jf<czt> $$0, long $$1) {
+      if (!$$0.a().a($$1)) {
+         this.c = $$0;
+         this.b = $$1;
       }
    }
 
-   public static List<bxh> a(djh $$0, iv $$1, Predicate<bxh> $$2) {
-      double $$3 = 7.0;
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      fes $$7 = new fes((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
-      return $$0.a(bwi.class, $$7, $$1x -> {
-         if ($$1x instanceof bxh $$2x && $$2.test($$2x)) {
-            return true;
-         }
+   public void a(djn $$0, jf<czt> $$1) {
+      this.c = $$1;
+      this.b = 0L;
+      int $$2 = $$0.F_().f(mh.aV).a(this.c.a());
+      $$0.a(null, 1010, this.d, $$2);
+      this.e.notifyChange();
+   }
 
-         return false;
-      }).stream().map(bxh.class::cast).toList();
+   public void a(djn $$0, @Nullable eat $$1) {
+      if (this.c != null) {
+         this.c = null;
+         this.b = 0L;
+         $$0.a(eft.F, this.d, eft.a.a($$1));
+         $$0.c(1011, this.d, 0);
+         this.e.notifyChange();
+      }
+   }
+
+   public void b(djn $$0, @Nullable eat $$1) {
+      if (this.c != null) {
+         if (this.c.a().a(this.b)) {
+            this.a($$0, $$1);
+         } else {
+            if (this.d()) {
+               $$0.a(eft.E, this.d, eft.a.a($$1));
+               a($$0, this.d);
+            }
+
+            this.b++;
+         }
+      }
+   }
+
+   private boolean d() {
+      return this.b % 20L == 0L;
+   }
+
+   private static void a(djn $$0, iv $$1) {
+      if ($$0 instanceof arq $$2) {
+         ffc $$3 = ffc.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.C_().a(4) / 24.0F;
+         $$2.a(ly.ad, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void notifyChange();
    }
 }

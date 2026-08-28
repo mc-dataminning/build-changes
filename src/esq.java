@@ -1,90 +1,102 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 
-public abstract class esq {
-   public static final Codec<esq> f = mg.ag.q().dispatch("element_type", esq::a, esr::codec);
-   private static final jf<evi> a = jf.a(new evi(List.of()));
-   @Nullable
-   private volatile ess.a b;
+public class esq {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final esx.a e;
 
-   protected static <E extends esq> RecordCodecBuilder<E, ess.a> f() {
-      return ess.a.c.fieldOf("projection").forGetter(esq::g);
+   public esq(int $$0, int $$1, int $$2, int $$3, esx.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   protected esq(ess.a $$0) {
-      this.b = $$0;
+   public int a() {
+      return this.a;
    }
 
-   public abstract ka a(evl var1, dtg var2);
-
-   public abstract List<evk.a> a(evl var1, iv var2, dtg var3, azv var4);
-
-   public abstract era a(evl var1, iv var2, dtg var3);
-
-   public abstract boolean a(evl var1, dkg var2, dkd var3, ecm var4, iv var5, iv var6, dtg var7, era var8, azv var9, euu var10, boolean var11);
-
-   public abstract esr<?> a();
-
-   public void a(dji $$0, evk.d $$1, iv $$2, dtg $$3, azv $$4, era $$5) {
+   public int b() {
+      return this.b;
    }
 
-   public esq a(ess.a $$0) {
-      this.b = $$0;
-      return this;
+   public int c() {
+      return this.c;
    }
 
-   public ess.a g() {
-      ess.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
+   public int d() {
+      return this.d;
+   }
+
+   public esx.a e() {
+      return this.e;
+   }
+
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
+
+   public static <T> esq a(Dynamic<T> $$0) {
+      return new esq(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         esx.a.a($$0.get("dest_proj").asString(""))
+      );
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         esq $$1 = (esq)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
+         }
       } else {
-         return $$0;
+         return false;
       }
    }
 
-   public int h() {
-      return 1;
+   @Override
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
    }
 
-   public static Function<ess.a, esj> i() {
-      return $$0 -> esj.b;
-   }
-
-   public static Function<ess.a, esn> a(String $$0) {
-      return $$1 -> new esn(Either.left(alg.a($$0)), a, $$1, Optional.empty());
-   }
-
-   public static Function<ess.a, esn> a(String $$0, jf<evi> $$1) {
-      return $$2 -> new esn(Either.left(alg.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<ess.a, esp> b(String $$0) {
-      return $$1 -> new esp(Either.left(alg.a($$0)), a, $$1, Optional.empty());
-   }
-
-   public static Function<ess.a, esp> b(String $$0, jf<evi> $$1) {
-      return $$2 -> new esp(Either.left(alg.a($$0)), $$1, $$2, Optional.empty());
-   }
-
-   public static Function<ess.a, esp> a(String $$0, euu $$1) {
-      return $$2 -> new esp(Either.left(alg.a($$0)), a, $$2, Optional.of($$1));
-   }
-
-   public static Function<ess.a, esp> a(String $$0, jf<evi> $$1, euu $$2) {
-      return $$3 -> new esp(Either.left(alg.a($$0)), $$1, $$3, Optional.of($$2));
-   }
-
-   public static Function<ess.a, esk> a(jf<eqm> $$0) {
-      return $$1 -> new esk($$0, $$1);
-   }
-
-   public static Function<ess.a, eso> b(List<Function<ess.a, ? extends esq>> $$0) {
-      return $$1 -> new eso($$0.stream().map($$1x -> (esq)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   @Override
+   public String toString() {
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
    }
 }

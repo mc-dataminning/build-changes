@@ -10,7 +10,7 @@ public record acj(List<acj.a> b) implements zf<abu> {
       this($$0.a(acj.a::new));
    }
 
-   public static acj a(List<ecv> $$0) {
+   public static acj a(List<eda> $$0) {
       return new acj($$0.stream().map(acj.a::new).toList());
    }
 
@@ -27,8 +27,8 @@ public record acj(List<acj.a> b) implements zf<abu> {
       $$0.a(this);
    }
 
-   public static record a(dio a, byte[] b) {
-      public a(ecv $$0) {
+   public static record a(dir a, byte[] b) {
+      public a(eda $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new vu(this.d()), $$0);
       }
@@ -37,10 +37,10 @@ public record acj(List<acj.a> b) implements zf<abu> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(ecv $$0) {
+      private static int a(eda $$0) {
          int $$1 = 0;
 
-         for (ecw $$2 : $$0.d()) {
+         for (edb $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -57,8 +57,8 @@ public record acj(List<acj.a> b) implements zf<abu> {
          return $$0;
       }
 
-      public static void a(vu $$0, ecv $$1) {
-         for (ecw $$2 : $$1.d()) {
+      public static void a(vu $$0, eda $$1) {
+         for (edb $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -68,7 +68,7 @@ public record acj(List<acj.a> b) implements zf<abu> {
          $$0.a(this.b);
       }
 
-      public dio b() {
+      public dir b() {
          return this.a;
       }
 

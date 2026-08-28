@@ -1,38 +1,52 @@
-import org.apache.commons.lang3.mutable.MutableInt;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class guw {
-   private final fpo a;
+public class guw implements gut.a {
+   private static final int a = 160;
+   private final fpt b;
+   private final Int2ObjectMap<guw.a> c = new Int2ObjectOpenHashMap();
 
-   public guw(fpo $$0) {
-      this.a = $$0;
+   @Override
+   public void a() {
+      this.c.clear();
    }
 
-   public void a(fjy $$0, guf $$1, gqm $$2, double $$3, double $$4, double $$5) {
-      gqn $$6 = this.a.f.w().c();
-      MutableInt $$7 = new MutableInt(0);
-      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
+   public void a(int $$0, iv $$1, List<aao.a> $$2) {
+      this.c.put($$0, new guw.a($$1, $$2));
    }
 
-   private void a(gqn.d $$0, fjy $$1, gqm $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
-      fes $$10 = $$0.b();
-      double $$11 = $$10.b();
-      long $$12 = Math.round($$11 / 16.0);
-      if ($$12 == 1L) {
-         $$8.add(1);
-         double $$13 = $$10.f().d;
-         double $$14 = $$10.f().e;
-         double $$15 = $$10.f().f;
-         int $$16 = $$9 ? -16711936 : -1;
-         guo.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public guw(fpt $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
+      fpb $$5 = this.b.j.k();
+      iv $$6 = iv.a($$5.b().d, 0.0, $$5.b().f);
+      ObjectIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         guw.a $$7 = (guw.a)var11.next();
+         iv $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               aao.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               gut.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
+         }
       }
-
-      fkc $$17 = $$2.getBuffer(gqx.y());
-      long $$18 = $$12 + 5L;
-      grf.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
    }
 
-   private static float a(long $$0, float $$1) {
-      float $$2 = 0.1F;
-      return azm.i($$1 * (float)$$0) * 0.9F + 0.1F;
+   static record a(iv a, List<aao.a> b) {
    }
 }

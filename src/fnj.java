@@ -1,38 +1,72 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
+import java.time.Duration;
 import java.util.List;
-import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fnj extends hpw {
-   static final Logger a = LogUtils.getLogger();
-   private static final wy b = wy.c("mco.configure.world.players.title");
-   static final wy c = wy.c("mco.question");
-   private static final int C = 8;
-   final fwj D = new fwj(this);
-   private final fmy E;
-   final flp F;
+public class fnj extends hqd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final hqe b = new hqe(Duration.ofSeconds(5L));
+   private final List<foq> c;
+   private final fys C;
+   private final fws D = fws.d();
+   private volatile wy E;
    @Nullable
-   private fnj.b G;
-   boolean H;
+   private ftp F;
 
-   public fnj(fmy $$0, flp $$1) {
-      super(b);
-      this.E = $$0;
-      this.F = $$1;
+   public fnj(fys $$0, foq... $$1) {
+      super(fpk.a);
+      this.C = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.E = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (foq $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
+
+               $$1x.run();
+               if ($$1x.d()) {
+                  return;
+               }
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new fmn(a));
+         $$3.start();
+      }
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      if (this.F != null) {
+         b.a(this.m.aY(), this.F.B());
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
    public void aO_() {
-      this.D.a(b, this.p);
-      this.G = this.D.c(new fnj.b());
-      this.E();
-      fwn $$0 = this.D.b(fwn.e().a(8));
-      $$0.a(fsv.a(wy.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fnd(this.E, this, this.F))).a());
-      $$0.a(fsv.a(wx.k, $$0x -> this.aL_()).a());
+      this.D.c().b();
+      this.F = new ftp(this.p, this.E);
+      this.D.a(this.F, $$0 -> $$0.e(30));
+      this.D.a(fta.a(wx.e, $$0 -> this.f()).a());
       this.D.a($$1 -> {
-         fst var10000 = this.c($$1);
+         fsy var10000 = this.c($$1);
       });
       this.c();
    }
@@ -40,188 +74,22 @@ public class fnj extends hpw {
    @Override
    protected void c() {
       this.D.a();
-      if (this.G != null) {
-         this.G.a(this.n, this.D);
-      }
+      fwm.a(this.D, this.J());
    }
 
-   void E() {
-      if (this.G != null) {
-         this.G.aE_().clear();
-
-         for (fll $$0 : this.F.h) {
-            this.G.aE_().add(new fnj.a($$0));
-         }
+   protected void f() {
+      for (foq $$0 : this.c) {
+         $$0.b();
       }
+
+      this.m.a(this.C);
    }
 
-   @Override
-   public void aL_() {
-      this.F();
-   }
-
-   private void F() {
-      if (this.H) {
-         this.m.a(this.E.g());
-      } else {
-         this.m.a(this.E);
-      }
-   }
-
-   class a extends ftb.a<fnj.a> {
-      private static final wy b = wy.c("mco.configure.world.invites.normal.tooltip");
-      private static final wy c = wy.c("mco.configure.world.invites.ops.tooltip");
-      private static final wy d = wy.c("mco.configure.world.invites.remove.tooltip");
-      private static final alg e = alg.b("player_list/make_operator");
-      private static final alg f = alg.b("player_list/remove_operator");
-      private static final alg g = alg.b("player_list/remove_player");
-      private static final int h = 8;
-      private static final int i = 7;
-      private final fll j;
-      private final fsv k;
-      private final fsv l;
-      private final fsv m;
-
-      public a(final fll $$0) {
-         this.j = $$0;
-         int $$1 = fnj.this.F.h.indexOf(this.j);
-         this.l = fua.a(b, $$1x -> this.a($$1), false)
-            .a(e, 8, 7)
-            .a(16 + fnj.this.p.a(b))
-            .a($$1x -> wx.a(wy.a("mco.invited.player.narration", $$0.a()), (wy)$$1x.get(), wy.a("narration.cycle_button.usage.focused", c)))
-            .a();
-         this.m = fua.a(c, $$1x -> this.b($$1), false)
-            .a(f, 8, 7)
-            .a(16 + fnj.this.p.a(c))
-            .a($$1x -> wx.a(wy.a("mco.invited.player.narration", $$0.a()), (wy)$$1x.get(), wy.a("narration.cycle_button.usage.focused", b)))
-            .a();
-         this.k = fua.a(d, $$1x -> this.c($$1), false)
-            .a(g, 8, 7)
-            .a(16 + fnj.this.p.a(d))
-            .a($$1x -> wx.a(wy.a("mco.invited.player.narration", $$0.a()), (wy)$$1x.get()))
-            .a();
-         this.c();
+   public void a(wy $$0) {
+      if (this.F != null) {
+         this.F.b($$0);
       }
 
-      private void a(int $$0) {
-         fko $$1 = fko.a();
-         UUID $$2 = fnj.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.b(fnj.this.F.a, $$2));
-         } catch (fmk var5) {
-            fnj.a.error("Couldn't op the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void b(int $$0) {
-         fko $$1 = fko.a();
-         UUID $$2 = fnj.this.F.h.get($$0).b();
-
-         try {
-            this.a($$1.c(fnj.this.F.a, $$2));
-         } catch (fmk var5) {
-            fnj.a.error("Couldn't deop the user", var5);
-         }
-
-         this.c();
-      }
-
-      private void c(int $$0) {
-         if ($$0 >= 0 && $$0 < fnj.this.F.h.size()) {
-            fll $$1 = fnj.this.F.h.get($$0);
-            fmz $$2 = new fmz($$2x -> {
-               if ($$2x) {
-                  fko $$3 = fko.a();
-
-                  try {
-                     $$3.a(fnj.this.F.a, $$1.b());
-                  } catch (fmk var6) {
-                     fnj.a.error("Couldn't uninvite user", var6);
-                  }
-
-                  fnj.this.F.h.remove($$0);
-                  fnj.this.E();
-               }
-
-               fnj.this.H = true;
-               fnj.this.m.a(fnj.this);
-            }, fnj.c, wy.a("mco.configure.world.uninvite.player", $$1.a()));
-            fnj.this.m.a($$2);
-         }
-      }
-
-      private void a(flh $$0) {
-         for (fll $$1 : fnj.this.F.h) {
-            $$1.a($$0.a.contains($$1.a()));
-         }
-      }
-
-      private void c() {
-         this.l.k = !this.j.c();
-         this.m.k = !this.l.k;
-      }
-
-      private fsv g() {
-         return this.l.k ? this.l : this.m;
-      }
-
-      @Override
-      public List<? extends fus> aE_() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public List<? extends fwq> b() {
-         return ImmutableList.of(this.g(), this.k);
-      }
-
-      @Override
-      public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10;
-         if (!this.j.d()) {
-            $$10 = -6250336;
-         } else if (this.j.e()) {
-            $$10 = 8388479;
-         } else {
-            $$10 = -1;
-         }
-
-         int $$13 = $$2 + $$5 / 2 - 16;
-         fod.a($$0, $$3, $$13, 32, this.j.b());
-         int $$14 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.b(fnj.this.p, this.j.a(), $$3 + 8 + 32, $$14, $$10);
-         int $$15 = $$2 + $$5 / 2 - 10;
-         int $$16 = $$3 + $$4 - this.k.A();
-         this.k.c($$16, $$15);
-         this.k.a($$0, $$6, $$7, $$9);
-         int $$17 = $$16 - this.g().A() - 8;
-         this.l.c($$17, $$15);
-         this.l.a($$0, $$6, $$7, $$9);
-         this.m.c($$17, $$15);
-         this.m.a($$0, $$6, $$7, $$9);
-      }
-   }
-
-   class b extends ftb<fnj.a> {
-      private static final int m = 36;
-
-      public b() {
-         super(fpo.Q(), fnj.this.n, fnj.this.D.d(), fnj.this.D.c(), 36, (int)(9.0F * 1.5F));
-      }
-
-      @Override
-      protected void a(fsh $$0, int $$1, int $$2) {
-         String $$3 = fnj.this.F.h != null ? Integer.toString(fnj.this.F.h.size()) : "0";
-         wy $$4 = wy.a("mco.configure.world.invited.number", $$3).a(o.t);
-         $$0.b(fnj.this.p, $$4, $$1 + this.a() / 2 - fnj.this.p.a($$4) / 2, $$2, -1);
-      }
-
-      @Override
-      public int a() {
-         return 300;
-      }
+      this.E = $$0;
    }
 }

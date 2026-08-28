@@ -1,86 +1,228 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.chars.CharArraySet;
+import it.unimi.dsi.fastutil.chars.CharSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 
-public abstract class det implements deb<deu> {
-   private final ddx d;
-   private final czk e;
-   private final String f;
-   @Nullable
-   private dea g;
+public final class det {
+   private static final int d = 3;
+   public static final char a = ' ';
+   public static final MapCodec<det> b = det.a.a
+      .flatXmap(det::a, $$0 -> $$0.h.<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe")));
+   public static final yw<wj, det> c = yw.a(yu.h, $$0 -> $$0.e, yu.h, $$0 -> $$0.f, dea.b.a(yu.a()), $$0 -> $$0.g, det::a);
+   private final int e;
+   private final int f;
+   private final List<Optional<dea>> g;
+   private final Optional<det.a> h;
+   private final int i;
+   private final boolean j;
 
-   public det(String $$0, ddx $$1, czk $$2) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public det(int $$0, int $$1, List<Optional<dea>> $$2, Optional<det.a> $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = (int)$$2.stream().flatMap(Optional::stream).count();
+      this.j = ag.a($$0, $$1, $$2);
    }
 
-   @Override
-   public abstract del<? extends det> a();
-
-   @Override
-   public abstract dem<? extends det> b();
-
-   public boolean a(deu $$0, djh $$1) {
-      return this.d.a($$0.c());
+   private static det a(Integer $$0, Integer $$1, List<Optional<dea>> $$2) {
+      return new det($$0, $$1, $$2, Optional.empty());
    }
 
-   @Override
-   public String j() {
-      return this.f;
+   public static det a(Map<Character, dea> $$0, String... $$1) {
+      return a($$0, List.of($$1));
    }
 
-   public ddx k() {
-      return this.d;
+   public static det a(Map<Character, dea> $$0, List<String> $$1) {
+      det.a $$2 = new det.a($$0, $$1);
+      return (det)a($$2).getOrThrow();
    }
 
-   protected czk l() {
+   private static DataResult<det> a(det.a $$0) {
+      String[] $$1 = a($$0.c);
+      int $$2 = $$1[0].length();
+      int $$3 = $$1.length;
+      List<Optional<dea>> $$4 = new ArrayList<>($$2 * $$3);
+      CharSet $$5 = new CharArraySet($$0.b.keySet());
+
+      for (String $$6 : $$1) {
+         for (int $$7 = 0; $$7 < $$6.length(); $$7++) {
+            char $$8 = $$6.charAt($$7);
+            Optional<dea> $$9;
+            if ($$8 == ' ') {
+               $$9 = Optional.empty();
+            } else {
+               dea $$10 = $$0.b.get($$8);
+               if ($$10 == null) {
+                  return DataResult.error(() -> "Pattern references symbol '" + $$8 + "' but it's not defined in the key");
+               }
+
+               $$9 = Optional.of($$10);
+            }
+
+            $$5.remove($$8);
+            $$4.add($$9);
+         }
+      }
+
+      return !$$5.isEmpty()
+         ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + $$5)
+         : DataResult.success(new det($$2, $$3, $$4, Optional.of($$0)));
+   }
+
+   @VisibleForTesting
+   static String[] a(List<String> $$0) {
+      int $$1 = Integer.MAX_VALUE;
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+         String $$6 = $$0.get($$5);
+         $$1 = Math.min($$1, a($$6));
+         int $$7 = b($$6);
+         $$2 = Math.max($$2, $$7);
+         if ($$7 < 0) {
+            if ($$3 == $$5) {
+               $$3++;
+            }
+
+            $$4++;
+         } else {
+            $$4 = 0;
+         }
+      }
+
+      if ($$0.size() == $$4) {
+         return new String[0];
+      } else {
+         String[] $$8 = new String[$$0.size() - $$4 - $$3];
+
+         for (int $$9 = 0; $$9 < $$8.length; $$9++) {
+            $$8[$$9] = $$0.get($$9 + $$3).substring($$1, $$2 + 1);
+         }
+
+         return $$8;
+      }
+   }
+
+   private static int a(String $$0) {
+      int $$1 = 0;
+
+      while ($$1 < $$0.length() && $$0.charAt($$1) == ' ') {
+         $$1++;
+      }
+
+      return $$1;
+   }
+
+   private static int b(String $$0) {
+      int $$1 = $$0.length() - 1;
+
+      while ($$1 >= 0 && $$0.charAt($$1) == ' ') {
+         $$1--;
+      }
+
+      return $$1;
+   }
+
+   public boolean a(dds $$0) {
+      if ($$0.e() != this.i) {
+         return false;
+      } else {
+         if ($$0.f() == this.e && $$0.g() == this.f) {
+            if (!this.j && this.a($$0, true)) {
+               return true;
+            }
+
+            if (this.a($$0, false)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private boolean a(dds $$0, boolean $$1) {
+      for (int $$2 = 0; $$2 < this.f; $$2++) {
+         for (int $$3 = 0; $$3 < this.e; $$3++) {
+            Optional<dea> $$4;
+            if ($$1) {
+               $$4 = this.g.get(this.e - $$3 - 1 + $$2 * this.e);
+            } else {
+               $$4 = this.g.get($$3 + $$2 * this.e);
+            }
+
+            czn $$6 = $$0.a($$3, $$2);
+            if (!dea.a($$4, $$6)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   public int a() {
       return this.e;
    }
 
-   @Override
-   public dea al_() {
-      if (this.g == null) {
-         this.g = dea.a(this.d);
-      }
+   public int b() {
+      return this.f;
+   }
 
+   public List<Optional<dea>> c() {
       return this.g;
    }
 
-   public czk a(deu $$0, jh.a $$1) {
-      return this.e.v();
-   }
+   public static record a(Map<Character, dea> b, List<String> c) {
+      private static final Codec<List<String>> d = Codec.STRING.listOf().comapFlatMap($$0 -> {
+         if ($$0.size() > 3) {
+            return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
+         } else if ($$0.isEmpty()) {
+            return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
+         } else {
+            int $$1 = ((String)$$0.getFirst()).length();
 
-   @FunctionalInterface
-   public interface a<T extends det> {
-      T create(String var1, ddx var2, czk var3);
-   }
+            for (String $$2 : $$0) {
+               if ($$2.length() > 3) {
+                  return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
+               }
 
-   public static class b<T extends det> implements del<T> {
-      private final MapCodec<T> w;
-      private final yw<wj, T> x;
+               if ($$1 != $$2.length()) {
+                  return DataResult.error(() -> "Invalid pattern: each row must be the same width");
+               }
+            }
 
-      protected b(det.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(det::j),
-                     ddx.d.fieldOf("ingredient").forGetter(det::k),
-                     czk.d.fieldOf("result").forGetter(det::l)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.x = yw.a(yu.p, det::j, ddx.a, det::k, czk.i, det::l, $$0::create);
+            return DataResult.success($$0);
+         }
+      }, Function.identity());
+      private static final Codec<Character> e = Codec.STRING.comapFlatMap($$0 -> {
+         if ($$0.length() != 1) {
+            return DataResult.error(() -> "Invalid key entry: '" + $$0 + "' is an invalid symbol (must be 1 character only).");
+         } else {
+            return " ".equals($$0) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success($$0.charAt(0));
+         }
+      }, String::valueOf);
+      public static final MapCodec<det.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayu.b(e, dea.d).fieldOf("key").forGetter($$0x -> $$0x.b), d.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, det.a::new)
+      );
+
+      public Map<Character, dea> a() {
+         return this.b;
       }
 
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yw<wj, T> b() {
-         return this.x;
+      public List<String> b() {
+         return this.c;
       }
    }
 }

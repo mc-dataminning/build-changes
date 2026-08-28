@@ -1,197 +1,98 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class eya extends eyf {
-   private final Deque<iv> b = new ArrayDeque<>();
-   private final Deque<iv> c = new ArrayDeque<>();
-   private final Object2IntMap<iv> d = new Object2IntLinkedOpenHashMap();
+public record eya(arq d, ffc e, ffc f, float g, float h, boolean i, boolean j, Set<bxx> k, eya.a l) {
+   public static final eya.a a = $$0 -> {
+   };
+   public static final eya.a b = eya::a;
+   public static final eya.a c = eya::b;
 
-   public eya(dsv $$0) {
-      super($$0);
+   public eya(arq $$0, ffc $$1, ffc $$2, float $$3, float $$4, eya.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
    }
 
-   @Override
-   public void a(djh $$0, iv $$1, eao $$2, @Nullable eyd $$3, boolean $$4) {
-      eyd $$5 = a($$0, $$3);
-      this.a($$0, $$1, $$5);
-      ObjectIterator<Entry<iv>> $$6 = this.d.object2IntEntrySet().iterator();
-
-      for (boolean $$7 = true; $$6.hasNext(); $$7 = false) {
-         Entry<iv> $$8 = (Entry<iv>)$$6.next();
-         iv $$9 = (iv)$$8.getKey();
-         int $$10 = $$8.getIntValue();
-         int $$11 = b($$10);
-         eao $$12 = $$0.a_($$9);
-         if ($$12.a(this.a) && !$$12.c(dsv.f).equals($$11)) {
-            int $$13 = 2;
-            if (!$$4 || !$$7) {
-               $$13 |= 128;
-            }
-
-            $$0.a($$9, $$12.b(dsv.f, Integer.valueOf($$11)), $$13);
-         } else {
-            $$6.remove();
-         }
-      }
-
-      this.a($$0);
+   public eya(arq $$0, ffc $$1, ffc $$2, float $$3, float $$4, Set<bxx> $$5, eya.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
    }
 
-   private void a(djh $$0) {
-      this.d.forEach(($$1, $$2) -> {
-         eyd $$3 = a($$2);
-         eao $$4 = $$0.a_($$1);
-
-         for (jb $$5 : $$3.f()) {
-            if (a($$4, $$5)) {
-               iv $$6 = $$1.a($$5);
-               eao $$7 = $$0.a_($$6);
-               eyd $$8 = $$3.c($$5);
-               $$0.a($$7, $$6, this.a, $$8, false);
-               if ($$7.d($$0, $$6)) {
-                  for (jb $$9 : $$8.f()) {
-                     if ($$9 != $$5.g()) {
-                        $$0.b($$6.a($$9), this.a, $$8.c($$9));
-                     }
-                  }
-               }
-            }
-         }
-      });
+   public eya(arq $$0, bwi $$1, eya.a $$2) {
+      this($$0, a($$0, $$1), ffc.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
    }
 
-   private static boolean a(eao $$0, jb $$1) {
-      ebm<ebt> $$2 = dsv.g.get($$1);
-      return $$2 == null ? $$1 == jb.a : $$0.c($$2).a();
-   }
-
-   private static eyd a(djh $$0, @Nullable eyd $$1) {
-      eyd $$2;
-      if ($$1 != null) {
-         $$2 = $$1;
-      } else {
-         $$2 = eyd.a($$0.A);
-      }
-
-      return $$2.a(jb.b).a(eyd.a.a);
-   }
-
-   private void a(djh $$0, iv $$1, eyd $$2) {
-      eao $$3 = $$0.a_($$1);
-      if ($$3.a(this.a)) {
-         this.a($$1, $$3.c(dsv.f), $$2);
-         this.b.add($$1);
-      } else {
-         this.a($$0, $$1, 0, $$2, true);
-      }
-
-      while (!this.b.isEmpty()) {
-         iv $$4 = this.b.removeFirst();
-         int $$5 = this.d.getInt($$4);
-         eyd $$6 = a($$5);
-         int $$7 = b($$5);
-         int $$8 = this.a($$0, $$4);
-         int $$9 = this.b($$0, $$4);
-         int $$10 = Math.max($$8, $$9);
-         int $$11;
-         if ($$10 < $$7) {
-            if ($$8 > 0 && !this.c.contains($$4)) {
-               this.c.add($$4);
-            }
-
-            $$11 = 0;
-         } else {
-            $$11 = $$10;
-         }
-
-         if ($$11 != $$7) {
-            this.a($$4, $$11, $$6);
-         }
-
-         this.a($$0, $$4, $$11, $$6, $$7 > $$10);
-      }
-
-      while (!this.c.isEmpty()) {
-         iv $$13 = this.c.removeFirst();
-         int $$14 = this.d.getInt($$13);
-         int $$15 = b($$14);
-         int $$16 = this.a($$0, $$13);
-         int $$17 = this.b($$0, $$13);
-         int $$18 = Math.max($$16, $$17);
-         eyd $$19 = a($$14);
-         if ($$18 > $$15) {
-            this.a($$13, $$18, $$19);
-         } else if ($$18 < $$15) {
-            throw new IllegalStateException("Turning off wire while trying to turn it on. Should not happen.");
-         }
-
-         this.a($$0, $$13, $$18, $$19, false);
+   private static void a(bwi $$0) {
+      if ($$0 instanceof arr $$1) {
+         $$1.f.b(new adh(1032, iv.c, 0, false));
       }
    }
 
-   private static int a(eyd $$0, int $$1) {
-      return $$0.i() << 4 | $$1;
+   private static void b(bwi $$0) {
+      $$0.f(iv.a((jp)$$0.ds()));
    }
 
-   private static eyd a(int $$0) {
-      return eyd.a($$0 >> 4);
+   public static eya a(arq $$0, bwi $$1, eya.a $$2) {
+      return new eya($$0, a($$0, $$1), ffc.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
    }
 
-   private static int b(int $$0) {
-      return $$0 & 15;
+   private static ffc a(arq $$0, bwi $$1) {
+      return $$1.a($$0, $$0.aa()).c();
    }
 
-   private void a(iv $$0, int $$1, eyd $$2) {
-      this.d.compute($$0, ($$2x, $$3) -> $$3 == null ? a($$2, $$1) : a(a($$3), $$1));
+   public eya a(float $$0, float $$1) {
+      return new eya(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
    }
 
-   private void a(djh $$0, iv $$1, int $$2, eyd $$3, boolean $$4) {
-      for (jb $$5 : $$3.g()) {
-         iv $$6 = $$1.a($$5);
-         this.b($$0, $$6, $$2, $$3.b($$5), $$4);
+   public eya a(ffc $$0) {
+      return new eya(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   }
+
+   public eya a() {
+      return new eya(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   }
+
+   public arq b() {
+      return this.d;
+   }
+
+   public ffc c() {
+      return this.e;
+   }
+
+   public ffc d() {
+      return this.f;
+   }
+
+   public float e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public Set<bxx> i() {
+      return this.k;
+   }
+
+   public eya.a j() {
+      return this.l;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onTransition(bwi var1);
+
+      default eya.a then(eya.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
       }
-
-      for (jb $$7 : $$3.h()) {
-         iv $$8 = $$1.a($$7);
-         boolean $$9 = $$0.a_($$8).d($$0, $$8);
-
-         for (jb $$10 : $$3.g()) {
-            iv $$11 = $$1.a($$10);
-            if ($$7 == jb.b && !$$9) {
-               iv $$12 = $$8.a($$10);
-               this.b($$0, $$12, $$2, $$3.b($$10), $$4);
-            } else if ($$7 == jb.a && !$$0.a_($$11).d($$0, $$11)) {
-               iv $$13 = $$8.a($$10);
-               this.b($$0, $$13, $$2, $$3.b($$10), $$4);
-            }
-         }
-      }
-   }
-
-   private void b(djh $$0, iv $$1, int $$2, eyd $$3, boolean $$4) {
-      eao $$5 = $$0.a_($$1);
-      if ($$5.a(this.a)) {
-         int $$6 = this.a($$1, $$5);
-         if ($$6 < $$2 - 1 && !this.c.contains($$1)) {
-            this.c.add($$1);
-            this.a($$1, $$6, $$3);
-         }
-
-         if ($$4 && $$6 > $$2 && !this.b.contains($$1)) {
-            this.b.add($$1);
-            this.a($$1, $$6, $$3);
-         }
-      }
-   }
-
-   @Override
-   protected int a(iv $$0, eao $$1) {
-      int $$2 = this.d.getOrDefault($$0, -1);
-      return $$2 != -1 ? b($$2) : super.a($$0, $$1);
    }
 }

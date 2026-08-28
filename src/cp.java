@@ -9,7 +9,7 @@ public class cp extends dk<cp.a> {
    }
 
    public void a(arr $$0, bwi $$1, bux $$2) {
-      ezo $$3 = by.b($$0, $$1);
+      ezt $$3 = by.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
@@ -83,7 +83,7 @@ public class cp extends dk<cp.a> {
          return aq.d.a(new cp.a(Optional.empty(), Optional.of(by.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(arr $$0, ezo $$1, bux $$2) {
+      public boolean a(arr $$0, ezt $$1, bux $$2) {
          return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
       }
 

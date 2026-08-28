@@ -1,51 +1,68 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
 
-public abstract class dsg extends dmm {
-   public static final ebf b = ebe.N;
-   public static final ebf c = ebe.O;
-   public static final ebf d = ebe.P;
-   public static final ebf e = ebe.Q;
-   public static final ebf f = ebe.L;
-   public static final ebf g = ebe.M;
-   public static final Map<jb, ebf> h = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(jb.c, b, jb.f, c, jb.d, d, jb.e, e, jb.b, f, jb.a, g)));
-   private final Function<eao, ffr> a;
+public class dsg extends dmr implements dmu {
+   public static final MapCodec<dsg> a = b(dsg::new);
 
-   protected dsg(float $$0, ean.d $$1) {
-      super($$1);
-      this.a = this.a($$0);
+   @Override
+   public MapCodec<dsg> a() {
+      return a;
+   }
+
+   public dsg(eas.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dsg> a();
-
-   private Function<eao, ffr> a(float $$0) {
-      ffr $$1 = dmm.a((double)$$0);
-      Map<jb, ffr> $$2 = ffo.d(dmm.c((double)$$0, 0.0, 8.0));
-      return this.a($$2x -> {
-         ffr $$3 = $$1;
-
-         for (Entry<jb, ebf> $$4 : h.entrySet()) {
-            if ($$2x.c($$4.getValue())) {
-               $$3 = ffo.a($$2.get($$4.getKey()), $$3);
+   public boolean a(djp $$0, iv $$1, eat $$2) {
+      if (!$$0.a_($$1.d()).f()) {
+         return false;
+      } else {
+         for (iv $$3 : iv.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(axc.aO)) {
+               return true;
             }
          }
 
-         return $$3;
-      });
+         return false;
+      }
    }
 
    @Override
-   protected boolean e_(eao $$0) {
-      return false;
+   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
+      return true;
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return this.a.apply($$0);
+   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (iv $$6 : iv.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         eat $$7 = $$0.a_($$6);
+         if ($$7.a(dmt.oT)) {
+            $$5 = true;
+         }
+
+         if ($$7.a(dmt.pc)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
+      }
+
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? dmt.oT.m() : dmt.pc.m(), 3);
+      } else if ($$5) {
+         $$0.a($$2, dmt.oT.m(), 3);
+      } else if ($$4) {
+         $$0.a($$2, dmt.pc.m(), 3);
+      }
+   }
+
+   @Override
+   public dmu.a an_() {
+      return dmu.a.a;
    }
 }

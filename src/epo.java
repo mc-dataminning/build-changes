@@ -1,34 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class epo extends epp {
-   public static final epo a = new epo(ehh.a(0));
-   public static final MapCodec<epo> b = ehh.a.fieldOf("value").xmap(epo::new, epo::b);
-   private final ehh d;
+public record epo(jf<czj> c, epq d) {
+   public static final Codec<epo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(czj.e.fieldOf("display").forGetter($$0x -> $$0x.c), epq.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, epo::new)
+   );
+   public static final Codec<jf<epo>> b = alc.a(mh.aS, a);
 
-   public static epo a(ehh $$0) {
-      return new epo($$0);
+   public jf<czj> a() {
+      return this.c;
    }
 
-   private epo(ehh $$0) {
-      this.d = $$0;
-   }
-
-   public ehh b() {
+   public epq b() {
       return this.d;
-   }
-
-   @Override
-   public int a(azv $$0, ehk $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public epq<?> a() {
-      return epq.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
    }
 }

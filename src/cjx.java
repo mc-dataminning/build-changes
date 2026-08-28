@@ -12,7 +12,7 @@ public class cjx extends ciz implements bxo {
    @Nullable
    private UUID bO;
 
-   public cjx(bwr<? extends cjx> $$0, djh $$1) {
+   public cjx(bwr<? extends cjx> $$0, djm $$1) {
       super($$0, $$1);
    }
 
@@ -23,7 +23,7 @@ public class cjx extends ciz implements bxo {
    }
 
    @Override
-   public boolean i(czk $$0) {
+   public boolean i(czn $$0) {
       return false;
    }
 
@@ -35,11 +35,11 @@ public class cjx extends ciz implements bxo {
       this.bD.a(1, new cey(this, 2.0, $$0 -> $$0.n_() ? axd.F : axd.G));
       this.bD.a(4, new cee(this, 1.25));
       this.bD.a(5, new cfc(this, 1.0));
-      this.bD.a(6, new cen(this, crj.class, 6.0F));
+      this.bD.a(6, new cen(this, crm.class, 6.0F));
       this.bD.a(7, new cfa(this));
       this.bE.a(1, new cjx.b());
       this.bE.a(2, new cjx.a());
-      this.bE.a(3, new cfy<>(this, crj.class, 10, true, false, this::a));
+      this.bE.a(3, new cfy<>(this, crm.class, 10, true, false, this::a));
       this.bE.a(4, new cfy<>(this, cjo.class, 10, true, true, null));
       this.bE.a(5, new cge<>(this, false));
    }
@@ -48,8 +48,8 @@ public class cjx extends ciz implements bxo {
       return ciz.gy().a(byp.s, 30.0).a(byp.m, 20.0).a(byp.v, 0.25).a(byp.c, 6.0);
    }
 
-   public static boolean c(bwr<cjx> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
-      jf<dkk> $$5 = $$1.u($$3);
+   public static boolean c(bwr<cjx> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
+      jf<dkp> $$5 = $$1.u($$3);
       return !$$5.a(axb.aq) ? b($$0, $$1, $$2, $$3, $$4) : a($$1, $$3) && $$1.a_($$3.e()).a(axc.cg);
    }
 
@@ -107,7 +107,7 @@ public class cjx extends ciz implements bxo {
    }
 
    @Override
-   protected void b(iv $$0, eao $$1) {
+   protected void b(iv $$0, eat $$1) {
       this.a(awn.vo, 0.15F, 1.0F);
    }
 
@@ -178,7 +178,7 @@ public class cjx extends ciz implements bxo {
    }
 
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       if ($$3 == null) {
          $$3 = new bvy.a(1.0F);
       }
@@ -186,9 +186,9 @@ public class cjx extends ciz implements bxo {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   class a extends cfy<crj> {
+   class a extends cfy<crm> {
       public a() {
-         super(cjx.this, crj.class, 20, true, true, null);
+         super(cjx.this, crm.class, 20, true, true, null);
       }
 
       @Override

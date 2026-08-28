@@ -1,13 +1,30 @@
-import java.util.List;
+public class gap extends fzg {
+   private final dil u;
 
-public class gap extends fzd<cxd> {
-   private static final alg G = alg.b("container/smoker/lit_progress");
-   private static final alg H = alg.b("container/smoker/burn_progress");
-   private static final alg I = alg.b("textures/gui/container/smoker.png");
-   private static final wy J = wy.c("gui.recipebook.toggleRecipes.smokable");
-   private static final List<gcm.a> K = List.of(new gcm.a(gcs.d), new gcm.a(czo.qL, ded.j));
+   public gap(dil $$0) {
+      this.u = $$0;
+   }
 
-   public gap(cxd $$0, cri $$1, wy $$2) {
-      super($$0, $$1, $$2, J, I, G, H, K);
+   @Override
+   public dil m() {
+      return this.u;
+   }
+
+   @Override
+   int E() {
+      return 150;
+   }
+
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(dil $$0) {
+      if ($$0 instanceof cuj.a $$1) {
+         this.m.L().b(new aii($$1.h().ao(), this.a.a(), $$0.p()));
+      }
    }
 }

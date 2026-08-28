@@ -1,19 +1,19 @@
 public class awq {
    protected final awr a = new awr();
 
-   public boolean a(cws $$0) {
+   public boolean a(cwv $$0) {
       return this.a.a($$0);
    }
 
-   public void a(cws $$0, boolean $$1) {
+   public void a(cwv $$0, boolean $$1) {
       this.a.a($$0, $$1);
    }
 
-   public boolean b(cws $$0) {
+   public boolean b(cwv $$0) {
       return this.a.b($$0);
    }
 
-   public void b(cws $$0, boolean $$1) {
+   public void b(cwv $$0, boolean $$1) {
       this.a.b($$0, $$1);
    }
 
@@ -25,7 +25,7 @@ public class awq {
       return this.a.a();
    }
 
-   public void a(cws $$0, boolean $$1, boolean $$2) {
+   public void a(cwv $$0, boolean $$1, boolean $$2) {
       this.a.a($$0, $$1);
       this.a.b($$0, $$2);
    }

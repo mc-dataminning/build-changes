@@ -8,20 +8,20 @@ public class dh extends dk<dh.a> {
       return dh.a.a;
    }
 
-   public void a(arr $$0, deg<?> $$1) {
+   public void a(arr $$0, dej<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static ar<dh.a> a(alf<deb<?>> $$0) {
+   public static ar<dh.a> a(alf<dee<?>> $$0) {
       return aq.g.a(new dh.a(Optional.empty(), $$0));
    }
 
-   public static record a(Optional<bj> b, alf<deb<?>> c) implements dk.a {
+   public static record a(Optional<bj> b, alf<dee<?>> c) implements dk.a {
       public static final Codec<dh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(by.b.optionalFieldOf("player").forGetter(dh.a::a), deb.b.fieldOf("recipe").forGetter(dh.a::b)).apply($$0, dh.a::new)
+         $$0 -> $$0.group(by.b.optionalFieldOf("player").forGetter(dh.a::a), dee.b.fieldOf("recipe").forGetter(dh.a::b)).apply($$0, dh.a::new)
       );
 
-      public boolean a(deg<?> $$0) {
+      public boolean a(dej<?> $$0) {
          return this.c == $$0.a();
       }
 
@@ -30,7 +30,7 @@ public class dh extends dk<dh.a> {
          return this.b;
       }
 
-      public alf<deb<?>> b() {
+      public alf<dee<?>> b() {
          return this.c;
       }
    }

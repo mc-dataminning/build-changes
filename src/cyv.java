@@ -1,28 +1,52 @@
-public class cyv<T extends bwi & bxg> extends czg {
-   private final bwr<T> a;
-   private final int b;
+public class cyv extends czj implements dah {
+   public static final byte[] a = new byte[]{1, 2, 3};
+   public static final double b = 0.15;
 
-   public cyv(bwr<T> $$0, int $$1, czg.a $$2) {
-      super($$2);
-      this.a = $$0;
-      this.b = $$1;
+   public cyv(czj.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bug a(djh $$0, crj $$1, buf $$2) {
-      czk $$3 = $$1.b($$2);
-      if ($$0.C) {
-         return bug.e;
-      } else {
-         bwi $$4 = $$1.dk();
-         if ($$1.bX() && $$4 instanceof bxg $$5 && $$4.an() == this.a && $$5.a()) {
-            bws $$6 = bxj.d($$2);
-            czk $$7 = $$3.a(this.b, czo.sd, $$1, $$6);
-            return bug.b.a($$7);
+   public bug a(ddi $$0) {
+      djm $$1 = $$0.q();
+      if ($$1 instanceof arq $$2) {
+         czn $$3 = $$0.n();
+         ffc $$4 = $$0.l();
+         jb $$5 = $$0.k();
+         csh.a(new csc($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
+         $$3.h(1);
+      }
+
+      return bug.a;
+   }
+
+   @Override
+   public bug a(djm $$0, crm $$1, buf $$2) {
+      if ($$1.fI()) {
+         czn $$3 = $$1.b($$2);
+         if ($$0 instanceof arq $$4) {
+            csh.a(new csc($$0, $$3, $$1), $$4, $$3);
+            $$3.a(1, $$1);
+            $$1.b(awx.c.b(this));
          }
 
-         $$1.b(awx.c.b(this));
+         return bug.a;
+      } else {
          return bug.e;
       }
+   }
+
+   @Override
+   public csh a(djm $$0, jp $$1, czn $$2, jb $$3) {
+      return new csc($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   }
+
+   @Override
+   public dah.a a() {
+      return dah.a.a().a(cyv::a).a(1.0F).b(0.5F).a(1004).a();
+   }
+
+   private static ffc a(le $$0, jb $$1) {
+      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
    }
 }

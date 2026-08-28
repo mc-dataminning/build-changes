@@ -1,18 +1,24 @@
-public class han extends hbh<hel, ghq> {
-   private final ggy<hel> a;
+public class han extends hbm<hde, ggn<hde>> {
+   private final gru a;
 
-   public han(gyq<hel, ghq> $$0, gjk $$1) {
+   public han(gyv<hde, ggn<hde>> $$0, gru $$1) {
       super($$0);
-      this.a = new ghp($$1.a(gjn.cu));
+      this.a = $$1;
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, hel $$3, float $$4, float $$5) {
-      if ("deadmau5".equals($$3.aH) && !$$3.z) {
-         fkc $$6 = $$1.getBuffer(gqx.d($$3.a.a()));
-         int $$7 = gxu.a($$3, 0.0F);
-         this.d().a(this.a);
-         this.a.a($$3);
-         this.a.a($$0, $$6, $$2, $$7);
+   public void a(fkd $$0, gqr $$1, int $$2, hde $$3, float $$4, float $$5) {
+      eat $$6 = $$3.b;
+      if ($$6 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$7 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$6, $$0, $$1, $$2, hjg.d);
+         $$0.b();
       }
    }
 }

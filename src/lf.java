@@ -1,16 +1,16 @@
 public class lf extends lg {
    private final lg c = new lg();
-   private final bwr<? extends ctu> d;
+   private final bwr<? extends ctx> d;
 
-   public lf(bwr<? extends ctu> $$0) {
+   public lf(bwr<? extends ctx> $$0) {
       this.d = $$0;
    }
 
    @Override
-   public czk a(le $$0, czk $$1) {
-      jb $$2 = $$0.d().c(dos.b);
+   public czn a(le $$0, czn $$1) {
+      jb $$2 = $$0.d().c(dox.b);
       arq $$3 = $$0.b();
-      fex $$4 = $$0.a();
+      ffc $$4 = $$0.a();
       double $$5 = 0.5625 + (double)this.d.l() / 2.0;
       double $$6 = $$4.a() + (double)$$2.j() * $$5;
       double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
@@ -27,10 +27,10 @@ public class lf extends lg {
          $$10 = 0.0;
       }
 
-      ctu $$13 = this.d.a($$3, bwq.o);
+      ctx $$13 = this.d.a($$3, bwq.o);
       if ($$13 != null) {
          $$13.p($$6, $$7 + $$10, $$8);
-         bwr.<ctu>a($$3, $$1, null).accept($$13);
+         bwr.<ctx>a($$3, $$1, null).accept($$13);
          $$13.w($$2.p());
          $$3.b($$13);
          $$1.h(1);

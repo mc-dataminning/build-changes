@@ -1,108 +1,240 @@
-import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.ByteBuffer;
+import java.util.ArrayList;
 import java.util.List;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FreeType;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record fwb(alg c, float d, float e, fwb.a f, String g) implements fvy {
-   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
-   public static final MapCodec<fwb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alg.a.fieldOf("file").forGetter(fwb::c),
-               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fwb::d),
-               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fwb::e),
-               fwb.a.b.optionalFieldOf("shift", fwb.a.a).forGetter(fwb::f),
-               h.optionalFieldOf("skip", "").forGetter(fwb::g)
-            )
-            .apply($$0, fwb::new)
-   );
+public class fwb implements fhw {
+   static final Logger b = LogUtils.getLogger();
+   private final fiz c;
+   private final fvp<fwb.b> d;
 
-   @Override
-   public fvz a() {
-      return fvz.b;
+   fwb(fiz $$0, fvp<fwb.b> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public Either<fvy.b, fvy.c> b() {
-      return Either.left(this::a);
+   public void close() {
+      this.c.close();
    }
 
-   private fhr a(avd $$0) throws IOException {
-      FT_Face $$1 = null;
-      ByteBuffer $$2 = null;
+   @Nullable
+   @Override
+   public fhv a(int $$0) {
+      return this.d.a($$0);
+   }
 
-      try {
-         fhu var20;
-         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
-            $$2 = TextureUtil.readResource($$3);
-            $$2.flip();
-            synchronized (fvx.a) {
-               MemoryStack $$4 = MemoryStack.stackPush();
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.d.b());
+   }
 
-               try {
-                  PointerBuffer $$5 = $$4.mallocPointer(1);
-                  fvx.a(FreeType.FT_New_Memory_Face(fvx.a(), $$2, 0L, $$5), "Initializing font face");
-                  $$1 = FT_Face.create($$5.get());
-               } catch (Throwable var14) {
-                  if ($$4 != null) {
-                     try {
-                        $$4.close();
-                     } catch (Throwable var12) {
-                        var14.addSuppressed(var12);
+   public static record a(alg c, int d, int e, int[][] f) implements fwd {
+      private static final Codec<int[][]> g = Codec.STRING.listOf().xmap($$0 -> {
+         int $$1 = $$0.size();
+         int[][] $$2 = new int[$$1][];
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
+         }
+
+         return $$2;
+      }, $$0 -> {
+         List<String> $$1 = new ArrayList<>($$0.length);
+
+         for (int[] $$2 : $$0) {
+            $$1.add(new String($$2, 0, $$2.length));
+         }
+
+         return $$1;
+      }).validate(fwb.a::a);
+      public static final MapCodec<fwb.a> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     alg.a.fieldOf("file").forGetter(fwb.a::c),
+                     Codec.INT.optionalFieldOf("height", 8).forGetter(fwb.a::d),
+                     Codec.INT.fieldOf("ascent").forGetter(fwb.a::e),
+                     g.fieldOf("chars").forGetter(fwb.a::f)
+                  )
+                  .apply($$0, fwb.a::new)
+         )
+         .validate(fwb.a::a);
+
+      private static DataResult<int[][]> a(int[][] $$0) {
+         int $$1 = $$0.length;
+         if ($$1 == 0) {
+            return DataResult.error(() -> "Expected to find data in codepoint grid");
+         } else {
+            int[] $$2 = $$0[0];
+            int $$3 = $$2.length;
+            if ($$3 == 0) {
+               return DataResult.error(() -> "Expected to find data in codepoint grid");
+            } else {
+               for (int $$4 = 1; $$4 < $$1; $$4++) {
+                  int[] $$5 = $$0[$$4];
+                  if ($$5.length != $$3) {
+                     return DataResult.error(
+                        () -> "Lines in codepoint grid have to be the same length (found: "
+                              + $$5.length
+                              + " codepoints, expected: "
+                              + $$3
+                              + "), pad with \\u0000"
+                     );
+                  }
+               }
+
+               return DataResult.success($$0);
+            }
+         }
+      }
+
+      private static DataResult<fwb.a> a(fwb.a $$0) {
+         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
+      }
+
+      @Override
+      public fwe a() {
+         return fwe.a;
+      }
+
+      @Override
+      public Either<fwd.b, fwd.c> b() {
+         return Either.left(this::a);
+      }
+
+      private fhw a(avd $$0) throws IOException {
+         alg $$1 = this.c.f("textures/");
+
+         fwb var22;
+         try (InputStream $$2 = $$0.open($$1)) {
+            fiz $$3 = fiz.a(fiz.a.a, $$2);
+            int $$4 = $$3.a();
+            int $$5 = $$3.b();
+            int $$6 = $$4 / this.f[0].length;
+            int $$7 = $$5 / this.f.length;
+            float $$8 = (float)this.d / (float)$$7;
+            fvp<fwb.b> $$9 = new fvp<>(fwb.b[]::new, fwb.b[][]::new);
+
+            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
+               int $$11 = 0;
+
+               for (int $$12 : this.f[$$10]) {
+                  int $$13 = $$11++;
+                  if ($$12 != 0) {
+                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
+                     fwb.b $$15 = $$9.a($$12, new fwb.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
+                     if ($$15 != null) {
+                        fwb.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
                      }
                   }
-
-                  throw var14;
                }
+            }
 
-               if ($$4 != null) {
-                  $$4.close();
+            var22 = new fwb($$3, $$9);
+         }
+
+         return var22;
+      }
+
+      private int a(fiz $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5;
+         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
+            int $$6 = $$3 * $$1 + $$5;
+
+            for (int $$7 = 0; $$7 < $$2; $$7++) {
+               int $$8 = $$4 * $$2 + $$7;
+               if ($$0.b($$6, $$8) != 0) {
+                  return $$5 + 1;
                }
-
-               String $$6 = FreeType.FT_Get_Font_Format($$1);
-               if (!"TrueType".equals($$6)) {
-                  throw new IOException("Font is not in TTF format, was " + $$6);
-               }
-
-               fvx.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
-               var20 = new fhu($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
             }
          }
 
-         return var20;
-      } catch (Exception var17) {
-         synchronized (fvx.a) {
-            if ($$1 != null) {
-               FreeType.FT_Done_Face($$1);
-            }
-         }
-
-         MemoryUtil.memFree($$2);
-         throw var17;
+         return $$5 + 1;
       }
    }
 
-   public static record a(float c, float d) {
-      public static final fwb.a a = new fwb.a(0.0F, 0.0F);
-      public static final Codec<fwb.a> b = Codec.floatRange(-512.0F, 512.0F)
-         .listOf()
-         .comapFlatMap($$0 -> ag.a($$0, 2).map($$0x -> new fwb.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+   static record b(float a, fiz b, int c, int d, int e, int f, int g, int h) implements fhv {
 
-      public float a() {
+      @Override
+      public float getAdvance() {
+         return (float)this.g;
+      }
+
+      @Override
+      public fvw bake(Function<fhx, fvw> $$0) {
+         return $$0.apply(new fhx() {
+            @Override
+            public float d() {
+               return 1.0F / b.this.a;
+            }
+
+            @Override
+            public int a() {
+               return b.this.e;
+            }
+
+            @Override
+            public int b() {
+               return b.this.f;
+            }
+
+            @Override
+            public float j() {
+               return (float)b.this.h;
+            }
+
+            @Override
+            public void a(int $$0, int $$1, fjw $$2) {
+               $$2.a(b.this.b, 0, $$0, $$1, b.this.e, b.this.f, b.this.c, b.this.d);
+            }
+
+            @Override
+            public boolean c() {
+               return b.this.b.c().a() > 1;
+            }
+         });
+      }
+
+      public float c() {
+         return this.a;
+      }
+
+      public fiz d() {
+         return this.b;
+      }
+
+      public int e() {
          return this.c;
       }
 
-      public float b() {
+      public int f() {
          return this.d;
+      }
+
+      public int g() {
+         return this.e;
+      }
+
+      public int h() {
+         return this.f;
+      }
+
+      public int i() {
+         return this.g;
+      }
+
+      public int j() {
+         return this.h;
       }
    }
 }

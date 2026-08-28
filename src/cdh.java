@@ -13,7 +13,7 @@ public class cdh implements cde {
       this.a = $$0;
    }
 
-   public void a(fex $$0) {
+   public void a(ffc $$0) {
       this.a($$0.d, $$0.e, $$0.f);
    }
 

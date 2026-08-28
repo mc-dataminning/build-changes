@@ -30,7 +30,7 @@ public class abv implements zf<abu> {
       this($$0.ao(), $$0.cF(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dM(), $$0.dK(), $$0.an(), $$1, $$0.dx(), (double)$$0.cz());
    }
 
-   public abv(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bwr<?> $$7, int $$8, fex $$9, double $$10) {
+   public abv(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bwr<?> $$7, int $$8, ffc $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;

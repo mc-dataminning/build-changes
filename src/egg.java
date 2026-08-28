@@ -1,105 +1,97 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
 import javax.annotation.Nullable;
 
-public interface egg {
-   Codec<egg> b = egh.b;
-   Codec<jf<egg>> c = alc.a(mh.aO, b);
-   Codec<egg> d = c.xmap(egh.j::new, $$0 -> (jf)($$0 instanceof egh.j $$1 ? $$1.j() : new jf.a<>($$0)));
-
-   double a(egg.b var1);
-
-   void a(double[] var1, egg.a var2);
-
-   egg a(egg.f var1);
-
-   double a();
-
-   double b();
-
-   azf<? extends egg> c();
-
-   default egg a(double $$0, double $$1) {
-      return new egh.g(this, $$0, $$1);
-   }
-
-   default egg d() {
-      return egh.a(this, egh.k.a.a);
-   }
-
-   default egg e() {
-      return egh.a(this, egh.k.a.b);
-   }
-
-   default egg f() {
-      return egh.a(this, egh.k.a.c);
-   }
-
-   default egg g() {
-      return egh.a(this, egh.k.a.d);
-   }
-
-   default egg h() {
-      return egh.a(this, egh.k.a.e);
-   }
-
-   default egg i() {
-      return egh.a(this, egh.k.a.f);
-   }
-
-   public interface a {
-      egg.b a(int var1);
-
-      void a(double[] var1, egg var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default ehp d() {
-         return ehp.a();
-      }
-   }
-
-   public static record c(jf<evy.a> b, @Nullable evy c) {
-      public static final Codec<egg.c> a = evy.a.b.xmap($$0 -> new egg.c($$0, null), egg.c::b);
-
-      public c(jf<evy.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
-   }
-
-   public interface d extends egg {
+public final class egg {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<edr> e = mg.l
+      .q()
+      .comapFlatMap($$0 -> $$0 == edr.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<egg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(egg::a),
+               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, egg::new)
+   );
+   private static final Set<alf<dkp>> f = Set.of(dkw.ab, dkw.aa, dkw.ac);
+   public static final djo b = new djo() {
       @Override
-      default void a(double[] $$0, egg.a $$1) {
-         $$1.a($$0, this);
+      public int H_() {
+         return 64;
       }
 
       @Override
-      default egg a(egg.f $$0) {
-         return $$0.apply(this);
+      public int G_() {
+         return -64;
+      }
+   };
+   private final edr g;
+   private final BitSet h;
+
+   private egg(edr $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
+   }
+
+   @Nullable
+   public static egg a(tz $$0) {
+      edr $$1 = edr.a($$0.j("target_status"));
+      return $$1 == edr.c ? null : new egg($$1, Optional.of(BitSet.valueOf($$0.m("missing_bedrock"))));
+   }
+
+   public static void a(edk $$0) {
+      int $$1 = 4;
+      iv.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dmt.I)) {
+            $$0.a($$1x, dmt.tt.m());
+         }
+      });
+   }
+
+   public void b(edk $$0) {
+      djo $$1 = $$0.B();
+      int $$2 = $$1.G_();
+      int $$3 = $$1.ao();
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               iv.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dmt.a.m()));
+            }
+         }
       }
    }
 
-   public static record e(int a, int b, int c) implements egg.b {
+   public edr a() {
+      return this.g;
    }
 
-   public interface f {
-      egg apply(egg var1);
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
 
-      default egg.c a(egg.c $$0) {
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static dks a(dks $$0, ecq $$1) {
+      if (!$$1.A()) {
          return $$0;
+      } else {
+         Predicate<alf<dkp>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            jf<dkp> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
    }
 }

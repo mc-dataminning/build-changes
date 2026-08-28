@@ -1,92 +1,45 @@
-import java.util.Optional;
-import org.joml.Quaternionf;
+public abstract class goz extends gom {
+   protected hjq E;
 
-public class goz extends gou {
-   private final efs a;
-   private float b;
-   private float F;
-   private float G;
-   private float H;
+   protected goz(gkq $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-   goz(gkl $$0, double $$1, double $$2, double $$3, efs $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.3F;
-      this.a = $$4;
-      this.t = $$5;
-      Optional<fex> $$6 = $$4.a($$0);
-      if ($$6.isPresent()) {
-         fex $$7 = $$6.get();
-         double $$8 = $$1 - $$7.a();
-         double $$9 = $$2 - $$7.b();
-         double $$10 = $$3 - $$7.c();
-         this.F = this.b = (float)azm.d($$8, $$10);
-         this.H = this.G = (float)azm.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
-      }
+   protected goz(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   protected void a(hjq $$0) {
+      this.E = $$0;
    }
 
    @Override
-   public void a(fkc $$0, fow $$1, float $$2) {
-      float $$3 = azm.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
-      float $$4 = azm.h($$2, this.F, this.b);
-      float $$5 = azm.h($$2, this.H, this.G) + (float) (Math.PI / 2);
-      Quaternionf $$6 = new Quaternionf();
-      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
-      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
+   protected float c() {
+      return this.E.c();
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
+   protected float d() {
+      return this.E.d();
    }
 
    @Override
-   public gny b() {
-      return gny.c;
+   protected float e() {
+      return this.E.g();
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         Optional<fex> $$0 = this.a.a(this.c);
-         if ($$0.isEmpty()) {
-            this.k();
-         } else {
-            int $$1 = this.t - this.s;
-            double $$2 = 1.0 / (double)$$1;
-            fex $$3 = $$0.get();
-            this.g = azm.d($$2, this.g, $$3.a());
-            this.h = azm.d($$2, this.h, $$3.b());
-            this.i = azm.d($$2, this.i, $$3.c());
-            double $$4 = this.g - $$3.a();
-            double $$5 = this.h - $$3.b();
-            double $$6 = this.i - $$3.c();
-            this.F = this.b;
-            this.b = (float)azm.d($$4, $$6);
-            this.H = this.G;
-            this.G = (float)azm.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
-         }
-      }
+   protected float f() {
+      return this.E.h();
    }
 
-   public static class a implements gnx<me> {
-      private final gop a;
+   public void a(gou $$0) {
+      this.a($$0.a(this.r));
+   }
 
-      public a(gop $$0) {
-         this.a = $$0;
-      }
-
-      public gnu a(me $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         goz $$8 = new goz($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
-         $$8.a(this.a);
-         $$8.e(1.0F);
-         return $$8;
+   public void b(gou $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

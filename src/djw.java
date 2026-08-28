@@ -1,25 +1,50 @@
-public interface djw {
-   <T> fgp<T> a(iv var1, T var2, int var3, fgt var4);
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
-   <T> fgp<T> a(iv var1, T var2, int var3);
+public class djw {
+   private final Long2ObjectMap<List<arr>> a = new Long2ObjectOpenHashMap();
+   private final Map<arr, djw.a> b = Maps.newHashMap();
+   private final aqu c;
 
-   fgl<dmm> U();
-
-   default void a(iv $$0, dmm $$1, int $$2, fgt $$3) {
-      this.U().a(this.a($$0, $$1, $$2, $$3));
+   public djw(aqu $$0) {
+      this.c = $$0;
    }
 
-   default void a(iv $$0, dmm $$1, int $$2) {
-      this.U().a(this.a($$0, $$1, $$2));
+   private List<arr> a(dir $$0) {
+      return (List<arr>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
    }
 
-   fgl<ewu> T();
-
-   default void a(iv $$0, ewu $$1, int $$2, fgt $$3) {
-      this.T().a(this.a($$0, $$1, $$2, $$3));
+   public void a(dir $$0, bxm $$1) {
+      for (arr $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new djw.a()).a($$1);
+      }
    }
 
-   default void a(iv $$0, ewu $$1, int $$2) {
-      this.T().a(this.a($$0, $$1, $$2));
+   public boolean a(bxm $$0, dir $$1) {
+      for (arr $$2 : this.a($$1)) {
+         djw.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static class a {
+      private final Object2IntMap<bxm> a = new Object2IntOpenHashMap(bxm.values().length);
+
+      public void a(bxm $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(bxm $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

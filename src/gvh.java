@@ -1,55 +1,62 @@
-import org.joml.Quaternionf;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
 
-public abstract class gvh extends gws<ctu, hck> {
-   public gvh(gwt.a $$0) {
-      super($$0);
-      this.e = 0.8F;
+public class gvh implements gut.a {
+   private final fpt a;
+   private double b = Double.MIN_VALUE;
+   private List<bwi> c = Collections.emptyList();
+
+   public gvh(fpt $$0) {
+      this.a = $$0;
    }
 
-   public void a(hck $$0, fjy $$1, gqm $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.375F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$0.a));
-      float $$4 = $$0.c;
-      if ($$4 > 0.0F) {
-         $$1.a(a.b.rotationDegrees(azm.a($$4) * $$4 * $$0.d / 10.0F * (float)$$0.b));
+   @Override
+   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ag.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bwi $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dU().a_($$6, $$6.cQ().g(16.0)));
       }
 
-      if (!$$0.f && !azm.a($$0.e, 0.0F)) {
-         $$1.a(new Quaternionf().setAngleAxis($$0.e * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
+      crm $$7 = this.a.t;
+      if ($$7 != null && $$7.ax.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
       }
 
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      $$1.a(a.d.rotationDegrees(90.0F));
-      ggk<hck> $$5 = this.a();
-      $$5.a($$0);
-      fkc $$6 = $$2.getBuffer(this.b());
-      $$5.a($$1, $$6, $$3, hja.d);
-      this.b($$0, $$1, $$2, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+      for (bwi $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+         }
+      }
    }
 
-   protected void b(hck $$0, fjy $$1, gqm $$2, int $$3) {
+   private void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4, bwi $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.ax.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         iv $$12 = $$5.aP();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         iv $$13 = $$5.aN();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
    }
 
-   protected abstract ggk<hck> a();
-
-   protected abstract gqx b();
-
-   public hck c() {
-      return new hck();
+   private double a(bwi $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.ao() + 0.132453657).hashCode() % 1000) / 1000.0;
    }
 
-   public void a(ctu $$0, hck $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.l($$2);
-      $$1.c = (float)$$0.H() - $$2;
-      $$1.b = $$0.I();
-      $$1.d = Math.max($$0.G() - $$2, 0.0F);
-      $$1.e = $$0.a($$2);
-      $$1.f = $$0.bl();
-      $$1.g = $$0.a(0, $$2);
-      $$1.h = $$0.a(1, $$2);
+   private void a(iv $$0, fkd $$1, double $$2, double $$3, double $$4, gqr $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      grk.a($$1, $$5.getBuffer(grc.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      gut.a($$1, $$5.getBuffer(grc.y()), this.a.s.a_($$0).b(this.a.s, $$0, ffh.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
    }
 }

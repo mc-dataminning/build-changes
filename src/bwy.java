@@ -3,7 +3,7 @@ import javax.annotation.Nullable;
 public class bwy extends ckd {
    private static final akj<Integer> bO = akn.a(bwy.class, akl.b);
 
-   public bwy(bwr<? extends bwy> $$0, djh $$1) {
+   public bwy(bwr<? extends bwy> $$0, djm $$1) {
       super($$0, $$1);
    }
 
@@ -85,7 +85,7 @@ public class bwy extends ckd {
       return this.al.a(bO);
    }
 
-   public static boolean a(bwr<? extends bxj> $$0, djy $$1, bwq $$2, iv $$3, azv $$4) {
-      return $$3.v() <= $$1.P() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dmo.J);
+   public static boolean a(bwr<? extends bxj> $$0, dkd $$1, bwq $$2, iv $$3, azv $$4) {
+      return $$3.v() <= $$1.P() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dmt.J);
    }
 }

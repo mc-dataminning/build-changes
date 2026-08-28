@@ -18,10 +18,10 @@ public class fd implements ArgumentType<String> {
       return new fd();
    }
 
-   public static ffu a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static ffz a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      fgc $$3 = ((ej)$$0.getSource()).l().aJ();
-      ffu $$4 = $$3.a($$2);
+      fgh $$3 = ((ej)$$0.getSource()).l().aJ();
+      ffz $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class fd implements ArgumentType<String> {
       }
    }
 
-   public static ffu b(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
-      ffu $$2 = a($$0, $$1);
+   public static ffz b(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+      ffz $$2 = a($$0, $$1);
       if ($$2.d().e()) {
          throw c.create($$2.c());
       } else {

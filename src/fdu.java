@@ -1,21 +1,53 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fdu {
-   private static final Codec<fdt> h = mg.G.q().dispatch(fdt::b, fds::a);
-   public static final Codec<fdt> a = Codec.lazyInitialized(() -> {
-      Codec<fdt> $$0 = Codec.withAlternative(h, fdx.a.codec());
-      return Codec.either(fdq.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof fdq $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final fds b = a("constant", fdq.a);
-   public static final fds c = a("uniform", fdx.a);
-   public static final fds d = a("binomial", fdp.a);
-   public static final fds e = a("score", fdv.a);
-   public static final fds f = a("storage", fdw.a);
-   public static final fds g = a("enchantment_level", fdr.a);
+public record fdu(fdy b, fdy c) implements fdy {
+   public static final MapCodec<fdu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fdz.a.fieldOf("n").forGetter(fdu::c), fdz.a.fieldOf("p").forGetter(fdu::d)).apply($$0, fdu::new)
+   );
 
-   private static fds a(String $$0, MapCodec<? extends fdt> $$1) {
-      return js.a(mg.G, alg.b($$0), new fds($$1));
+   @Override
+   public fdx b() {
+      return fdz.d;
+   }
+
+   @Override
+   public int a(ezt $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      azv $$3 = $$0.b();
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   public float b(ezt $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static fdu a(int $$0, float $$1) {
+      return new fdu(fdv.a((float)$$0), fdv.a($$1));
+   }
+
+   @Override
+   public Set<bax<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public fdy c() {
+      return this.b;
+   }
+
+   public fdy d() {
+      return this.c;
    }
 }

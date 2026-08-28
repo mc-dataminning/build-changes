@@ -1,84 +1,190 @@
-import com.google.common.collect.AbstractIterator;
-import java.util.function.BiFunction;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class dil<T> extends AbstractIterator<T> {
-   private final fes a;
-   private final ffc b;
-   private final iy c;
-   private final iv.a d;
-   private final ffr e;
-   private final dir f;
-   private final boolean g;
+public abstract class dil implements ei {
+   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
+   private static final wy c = wy.b("@");
+   private long d = -1L;
+   private boolean e = true;
+   private int f;
+   private boolean g = true;
    @Nullable
-   private din h;
-   private long i;
-   private final BiFunction<iv.a, ffr, T> j;
+   private wy h;
+   private String i = "";
+   @Nullable
+   private wy j;
 
-   public dil(dir $$0, @Nullable bwi $$1, fes $$2, boolean $$3, BiFunction<iv.a, ffr, T> $$4) {
-      this($$0, $$1 == null ? ffc.a() : ffc.a($$1), $$2, $$3, $$4);
+   public int k() {
+      return this.f;
    }
 
-   public dil(dir $$0, ffc $$1, fes $$2, boolean $$3, BiFunction<iv.a, ffr, T> $$4) {
-      this.b = $$1;
-      this.d = new iv.a();
-      this.e = ffo.a($$2);
+   public void a(int $$0) {
       this.f = $$0;
-      this.a = $$2;
-      this.g = $$3;
-      this.j = $$4;
-      int $$5 = azm.a($$2.a - 1.0E-7) - 1;
-      int $$6 = azm.a($$2.d + 1.0E-7) + 1;
-      int $$7 = azm.a($$2.b - 1.0E-7) - 1;
-      int $$8 = azm.a($$2.e + 1.0E-7) + 1;
-      int $$9 = azm.a($$2.c - 1.0E-7) - 1;
-      int $$10 = azm.a($$2.f + 1.0E-7) + 1;
-      this.c = new iy($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   @Nullable
-   private din a(int $$0, int $$1) {
-      int $$2 = jy.a($$0);
-      int $$3 = jy.a($$1);
-      long $$4 = dio.c($$2, $$3);
-      if (this.h != null && this.i == $$4) {
-         return this.h;
+   public wy l() {
+      return this.h == null ? wx.a : this.h;
+   }
+
+   public tz a(tz $$0, jh.a $$1) {
+      $$0.a("Command", this.i);
+      $$0.a("SuccessCount", this.f);
+      ale<uw> $$2 = $$1.a(un.a);
+      $$0.b("CustomName", xa.a, $$2, this.j);
+      $$0.a("TrackOutput", this.g);
+      if (this.g) {
+         $$0.b("LastOutput", xa.a, $$2, this.h);
+      }
+
+      $$0.a("UpdateLastExecution", this.e);
+      if (this.e && this.d > 0L) {
+         $$0.a("LastExecution", this.d);
+      }
+
+      return $$0;
+   }
+
+   public void b(tz $$0, jh.a $$1) {
+      this.i = $$0.j("Command");
+      this.f = $$0.f("SuccessCount");
+      this.b(dxr.a($$0.a("CustomName"), $$1));
+      if ($$0.b("TrackOutput", 1)) {
+         this.g = $$0.o("TrackOutput");
+      }
+
+      if ($$0.c("LastOutput") && this.g) {
+         this.h = dxr.a($$0.a("LastOutput"), $$1);
       } else {
-         din $$5 = this.f.c($$2, $$3);
-         this.h = $$5;
-         this.i = $$4;
-         return $$5;
+         this.h = null;
+      }
+
+      if ($$0.c("UpdateLastExecution")) {
+         this.e = $$0.o("UpdateLastExecution");
+      }
+
+      if (this.e && $$0.c("LastExecution")) {
+         this.d = $$0.g("LastExecution");
+      } else {
+         this.d = -1L;
       }
    }
 
-   protected T computeNext() {
-      while (this.c.a()) {
-         int $$0 = this.c.b();
-         int $$1 = this.c.c();
-         int $$2 = this.c.d();
-         int $$3 = this.c.e();
-         if ($$3 != 3) {
-            din $$4 = this.a($$0, $$2);
-            if ($$4 != null) {
-               this.d.d($$0, $$1, $$2);
-               eao $$5 = $$4.a_(this.d);
-               if ((!this.g || $$5.j($$4, this.d)) && ($$3 != 1 || $$5.i()) && ($$3 != 2 || $$5.a(dmo.ca))) {
-                  ffr $$6 = this.b.a($$5, this.f, this.d);
-                  if ($$6 == ffo.b()) {
-                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
-                        return this.j.apply(this.d, $$6.a(this.d));
-                     }
-                  } else {
-                     ffr $$7 = $$6.a(this.d);
-                     if (!$$7.c() && ffo.c($$7, this.e, ffb.i)) {
-                        return this.j.apply(this.d, $$7);
-                     }
+   public void a(String $$0) {
+      this.i = $$0;
+      this.f = 0;
+   }
+
+   public String m() {
+      return this.i;
+   }
+
+   public boolean a(djm $$0) {
+      if ($$0.C || $$0.ae() == this.d) {
+         return false;
+      } else if ("Searge".equalsIgnoreCase(this.i)) {
+         this.h = wy.b("#itzlipofutzli");
+         this.f = 1;
+         return true;
+      } else {
+         this.f = 0;
+         MinecraftServer $$1 = this.e().p();
+         if ($$1.q() && !bal.b(this.i)) {
+            try {
+               this.h = null;
+               ej $$2 = this.i().a((eg)(($$0x, $$1x) -> {
+                  if ($$0x) {
+                     this.f++;
                   }
-               }
+               }));
+               $$1.aG().a($$2, this.i);
+            } catch (Throwable var6) {
+               p $$4 = p.a(var6, "Executing command block");
+               q $$5 = $$4.a("Command to be executed");
+               $$5.a("Command", this::m);
+               $$5.a("Name", () -> this.n().getString());
+               throw new aa($$4);
             }
          }
-      }
 
-      return (T)this.endOfData();
+         if (this.e) {
+            this.d = $$0.ae();
+         } else {
+            this.d = -1L;
+         }
+
+         return true;
+      }
    }
+
+   public wy n() {
+      return this.j != null ? this.j : c;
+   }
+
+   @Nullable
+   public wy o() {
+      return this.j;
+   }
+
+   public void b(@Nullable wy $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public void a(wy $$0) {
+      if (this.g) {
+         this.h = wy.b("[" + b.format(new Date()) + "] ").b($$0);
+         this.f();
+      }
+   }
+
+   public abstract arq e();
+
+   public abstract void f();
+
+   public void c(@Nullable wy $$0) {
+      this.h = $$0;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public bug a(crm $$0) {
+      if (!$$0.gF()) {
+         return bug.e;
+      } else {
+         if ($$0.cT().C) {
+            $$0.a(this);
+         }
+
+         return bug.a;
+      }
+   }
+
+   public abstract ffc g();
+
+   public abstract ej i();
+
+   @Override
+   public boolean t_() {
+      return this.e().O().c(dji.q) && this.g;
+   }
+
+   @Override
+   public boolean u_() {
+      return this.g;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e().O().c(dji.k);
+   }
+
+   public abstract boolean j();
 }

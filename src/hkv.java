@@ -1,28 +1,40 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public record hkv(int c, Optional<Integer> d) {
-   public static final Codec<hkv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayu.l.fieldOf("index").forGetter(hkv::a), ayu.m.optionalFieldOf("time").forGetter(hkv::b)).apply($$0, hkv::new)
-   );
-   public static final Codec<hkv> b = Codec.either(ayu.l, a)
-      .xmap($$0 -> (hkv)$$0.map(hkv::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
+public abstract class hkv implements auw, AutoCloseable {
+   private final hjp a;
+   private final alg b;
+   private final Set<auc<?>> c;
 
-   public hkv(int $$0) {
-      this($$0, Optional.empty());
+   public hkv(hjs $$0, alg $$1, alg $$2) {
+      this($$0, $$1, $$2, hjl.a);
    }
 
-   public int a(int $$0) {
-      return this.d.orElse($$0);
+   public hkv(hjs $$0, alg $$1, alg $$2, Set<auc<?>> $$3) {
+      this.b = $$2;
+      this.a = new hjp($$1);
+      $$0.a(this.a.f(), this.a);
+      this.c = $$3;
    }
 
-   public int a() {
-      return this.c;
+   protected hjq a(alg $$0) {
+      return this.a.a($$0);
    }
 
-   public Optional<Integer> b() {
-      return this.d;
+   @Override
+   public final CompletableFuture<Void> reload(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
+      return hjl.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(hjl.a::a).thenCompose($$0::wait).thenAcceptAsync(this::a, $$3);
+   }
+
+   private void a(hjl.a $$0) {
+      try (bqv $$1 = bqp.a().d("upload")) {
+         this.a.a($$0);
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a.e();
    }
 }

@@ -1,83 +1,122 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class gsx implements ave {
-   private Map<dxo<?>, gsy<?>> d = ImmutableMap.of();
-   private final fsf e;
-   private final Supplier<gjk> f;
-   public djh a;
-   public fow b;
-   public fev c;
-   private final grp g;
-   private final hga h;
-   private final gxr i;
-   private final gwr j;
+public abstract class gsx implements gtd<dzf> {
+   private static final int a = -988212;
+   private static final int b = azm.h(16);
+   private final fsk c;
 
-   public gsx(fsf $$0, Supplier<gjk> $$1, grp $$2, hga $$3, gxr $$4, gwr $$5) {
-      this.i = $$4;
-      this.h = $$3;
-      this.j = $$5;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public gsx(gte.a $$0) {
+      this.c = $$0.g();
    }
 
-   @Nullable
-   public <E extends dxm> gsy<E> a(E $$0) {
-      return (gsy<E>)this.d.get($$0.p());
+   protected abstract ghl a(eat var1, ech var2);
+
+   protected abstract hlx a(ech var1);
+
+   protected abstract float a();
+
+   protected abstract float b();
+
+   protected abstract ffc c();
+
+   protected abstract void a(fkd var1, float var2, eat var3);
+
+   public void a(dzf $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
+      eat $$7 = $$0.m();
+      dub $$8 = (dub)$$7.b();
+      ghl $$9 = this.a($$7, $$8.d());
+      this.a($$0, $$2, $$3, $$4, $$5, $$7, $$8, $$8.d(), $$9);
    }
 
-   public void a(djh $$0, fow $$1, fev $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
+   private void a(dzf $$0, fkd $$1, gqr $$2, int $$3, int $$4, eat $$5, dub $$6, ech $$7, ghl $$8) {
+      $$1.a();
+      this.a($$1, -$$6.h($$5), $$5);
+      this.a($$1, $$2, $$3, $$4, $$7, $$8);
+      this.a($$0.ax_(), $$0.j(), $$1, $$2, $$3, $$0.a(), $$0.c(), true);
+      this.a($$0.ax_(), $$0.k(), $$1, $$2, $$3, $$0.a(), $$0.c(), false);
+      $$1.b();
+   }
+
+   protected void a(fkd $$0, gqr $$1, int $$2, int $$3, ech $$4, ghl $$5) {
+      $$0.a();
+      float $$6 = this.a();
+      $$0.b($$6, -$$6, -$$6);
+      hlx $$7 = this.a($$4);
+      fkh $$8 = $$7.a($$1, $$5::a);
+      $$5.a($$0, $$8, $$2, $$3);
+      $$0.b();
+   }
+
+   private void a(iv $$0, dzg $$1, fkd $$2, gqr $$3, int $$4, int $$5, int $$6, boolean $$7) {
+      $$2.a();
+      this.a($$2, $$7, this.c());
+      int $$8 = a($$1);
+      int $$9 = 4 * $$5 / 2;
+      ayy[] $$10 = $$1.a(fpt.Q().aT(), $$1x -> {
+         List<ayy> $$2x = this.c.c($$1x, $$6);
+         return $$2x.isEmpty() ? ayy.a : $$2x.get(0);
+      });
+      int $$11;
+      boolean $$12;
+      int $$13;
+      if ($$1.a()) {
+         $$11 = $$1.b().g();
+         $$12 = a($$0, $$11);
+         $$13 = 15728880;
+      } else {
+         $$11 = $$8;
+         $$12 = false;
+         $$13 = $$4;
       }
 
-      this.b = $$1;
-      this.c = $$2;
+      for (int $$17 = 0; $$17 < 4; $$17++) {
+         ayy $$18 = $$10[$$17];
+         float $$19 = (float)(-this.c.a($$18) / 2);
+         if ($$12) {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
+         } else {
+            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, fsk.a.c, 0, $$13);
+         }
+      }
+
+      $$2.b();
    }
 
-   public <E extends dxm> void a(E $$0, float $$1, fjy $$2, gqm $$3) {
-      gsy<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.l() && $$0.p().a($$0.m())) {
-            if ($$4.a($$0, this.b.b())) {
-               try {
-                  a($$4, $$0, $$1, $$2, $$3, this.b.b());
-               } catch (Throwable var9) {
-                  p $$6 = p.a(var9, "Rendering Block Entity");
-                  q $$7 = $$6.a("Block Entity Details");
-                  $$0.a($$7);
-                  throw new aa($$6);
-               }
-            }
+   private void a(fkd $$0, boolean $$1, ffc $$2) {
+      if (!$$1) {
+         $$0.a(a.d.rotationDegrees(180.0F));
+      }
+
+      float $$3 = 0.015625F * this.b();
+      $$0.a($$2);
+      $$0.b($$3, -$$3, $$3);
+   }
+
+   private static boolean a(iv $$0, int $$1) {
+      if ($$1 == cyl.p.g()) {
+         return true;
+      } else {
+         fpt $$2 = fpt.Q();
+         gpo $$3 = $$2.t;
+         if ($$3 != null && $$2.n.aE().a() && $$3.gG()) {
+            return true;
+         } else {
+            bwi $$4 = $$2.ao();
+            return $$4 != null && $$4.g(ffc.b($$0)) < (double)b;
          }
       }
    }
 
-   private static <T extends dxm> void a(gsy<T> $$0, T $$1, float $$2, fjy $$3, gqm $$4, fex $$5) {
-      djh $$6 = $$1.i();
-      int $$7;
-      if ($$6 != null) {
-         $$7 = gqh.a($$6, $$1.ax_());
+   public static int a(dzg $$0) {
+      int $$1 = $$0.b().g();
+      if ($$1 == cyl.p.g() && $$0.a()) {
+         return -988212;
       } else {
-         $$7 = 15728880;
+         double $$2 = 0.4;
+         int $$3 = (int)((double)axw.b($$1) * 0.4);
+         int $$4 = (int)((double)axw.c($$1) * 0.4);
+         int $$5 = (int)((double)axw.d($$1) * 0.4);
+         return axw.a(0, $$3, $$4, $$5);
       }
-
-      $$0.a($$1, $$2, $$3, $$4, $$7, hja.d, $$5);
-   }
-
-   public void a(@Nullable djh $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(avd $$0) {
-      gsz.a $$1 = new gsz.a(this, this.g, this.h, this.i, this.j, this.f.get(), this.e);
-      this.d = gta.a($$1);
    }
 }

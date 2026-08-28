@@ -1,54 +1,36 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
+import java.util.stream.Stream;
 
-public record dcw(List<bvm> c, float f) implements dcy {
-   public static final MapCodec<dcw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bvm.d.listOf().fieldOf("effects").forGetter(dcw::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(dcw::c))
-            .apply($$0, dcw::new)
-   );
-   public static final yw<wj, dcw> b = yw.a(bvm.e.a(yu.a()), dcw::b, yu.l, dcw::c, dcw::new);
+public record dcw(List<asi<String>> g) implements dbp<String, dcw> {
+   public static final dcw a = new dcw(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<asi<String>> h = asi.a(Codec.string(0, 1024));
+   public static final Codec<List<asi<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<dcw> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dcw::a)).apply($$0, dcw::new));
+   public static final yw<ByteBuf, dcw> f = asi.a(yu.b(1024)).a(yu.c(100)).a(dcw::new, dcw::a);
 
-   public dcw(bvm $$0, float $$1) {
-      this(List.of($$0), $$1);
-   }
-
-   public dcw(List<bvm> $$0) {
-      this($$0, 1.0F);
-   }
-
-   public dcw(bvm $$0) {
-      this($$0, 1.0F);
-   }
-
-   @Override
-   public dcy.a<dcw> a() {
-      return dcy.a.a;
-   }
-
-   @Override
-   public boolean a(djh $$0, czk $$1, bxj $$2) {
-      if ($$2.dX().i() >= this.f) {
-         return false;
+   public dcw(List<asi<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
       } else {
-         boolean $$3 = false;
-
-         for (bvm $$4 : this.c) {
-            if ($$2.a(new bvm($$4))) {
-               $$3 = true;
-            }
-         }
-
-         return $$3;
+         this.g = g;
       }
    }
 
-   public List<bvm> b() {
-      return this.c;
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
    }
 
-   public float c() {
-      return this.f;
+   public dcw b(List<asi<String>> $$0) {
+      return new dcw($$0);
+   }
+
+   @Override
+   public List<asi<String>> a() {
+      return this.g;
    }
 }

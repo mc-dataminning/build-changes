@@ -1,27 +1,22 @@
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fme extends fmd {
-   private static final Logger d = LogUtils.getLogger();
+public class fme extends fmi {
+   @Nullable
    public String a;
-   public String b;
-   public String c;
+   public long b;
+   public long c;
 
-   public static fme a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      fme $$3 = new fme();
+   public static fme a(JsonObject $$0) {
+      fme $$1 = new fme();
 
       try {
-         $$3.a = fnz.b("downloadLink", $$2, "");
-         $$3.b = fnz.b("resourcePackUrl", $$2, "");
-         $$3.c = fnz.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+         $$1.a = foe.b("profileUuid", $$0, null);
+         $$1.b = foe.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = foe.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
       }
 
-      return $$3;
+      return $$1;
    }
 }

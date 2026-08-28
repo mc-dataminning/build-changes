@@ -38,8 +38,8 @@ public record it(iv b, iv c) implements Iterable<iv> {
       return $$0.u() >= this.b.u() && $$0.v() >= this.b.v() && $$0.w() >= this.b.w() && $$0.u() <= this.c.u() && $$0.v() <= this.c.v() && $$0.w() <= this.c.w();
    }
 
-   public fes b() {
-      return fes.a(this.b, this.c);
+   public fex b() {
+      return fex.a(this.b, this.c);
    }
 
    @Override

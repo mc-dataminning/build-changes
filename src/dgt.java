@@ -1,20 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dgt(dge c) implements dgq {
-   public static final MapCodec<dgt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dge.b.fieldOf("factor").forGetter(dgt::b)).apply($$0, dgt::new));
+public interface dgt {
+   Codec<dgt> b = mg.au.q().dispatch(dgt::a, Function.identity());
 
-   @Override
-   public float a(int $$0, azv $$1, float $$2) {
-      return $$2 * this.c.a($$0);
+   static MapCodec<? extends dgt> a(js<MapCodec<? extends dgt>> $$0) {
+      js.a($$0, "add", dgk.a);
+      js.a($$0, "all_of", dgl.c.a);
+      js.a($$0, "multiply", dgw.a);
+      js.a($$0, "remove_binomial", dgy.a);
+      return js.a($$0, "set", dhd.a);
    }
 
-   @Override
-   public MapCodec<dgt> a() {
-      return a;
-   }
+   float a(int var1, azv var2, float var3);
 
-   public dge b() {
-      return this.c;
-   }
+   MapCodec<? extends dgt> a();
 }

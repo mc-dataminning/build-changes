@@ -1,82 +1,65 @@
-import javax.annotation.Nullable;
+public class fxz extends fys {
+   private static final wy a = wy.c("gui.toMenu");
+   private static final wy b = wy.c("gui.toTitle");
+   private static final wy c = wy.c("gui.report_to_server");
+   private static final wy d = wy.c("gui.open_report_dir");
+   private final fys s;
+   private final vt u;
+   private final wy v;
+   private final fws w = fws.d();
 
-public class fxz extends fyn {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final wy d;
-   private final wy s;
-   private final Runnable u;
-   @Nullable
-   private fto v;
-   private fsv w;
-   private int x;
-
-   public static fxz a(wy $$0, wy $$1, Runnable $$2) {
-      return new fxz($$0, null, $$1, $$2, 0);
+   public fxz(fys $$0, wy $$1, wy $$2) {
+      this($$0, $$1, new vt($$2));
    }
 
-   public static fxz a(wy $$0, wy $$1, wy $$2, Runnable $$3) {
-      return new fxz($$0, $$1, $$2, $$3, 20);
+   public fxz(fys $$0, wy $$1, wy $$2, wy $$3) {
+      this($$0, $$1, new vt($$2), $$3);
    }
 
-   protected fxz(wy $$0, @Nullable wy $$1, wy $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.d = $$1;
-      this.s = $$2;
-      this.u = $$3;
-      this.x = $$4;
+   public fxz(fys $$0, wy $$1, vt $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fxz(fys $$0, wy $$1, vt $$2, wy $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
    }
 
    @Override
    protected void aO_() {
-      super.aO_();
-      if (this.d != null) {
-         this.v = fto.a(this.p, this.d, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.v != null ? this.v.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.w = this.c(fsv.a(this.s, $$0x -> this.aL_()).a((this.n - 150) / 2, $$4, 150, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.x > 0) {
-         this.x--;
-      }
-
-      this.w.j = this.x == 0;
-   }
-
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.v == null) {
-         String $$4 = fyc.a(ag.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+      this.w.c().b().a(10);
+      this.w.a(new fuh(this.l, this.p));
+      this.w.a(new ftu(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(fta.a(c, fxp.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(fta.a(d, $$1x -> ag.n().a($$0.getParent())).a(200).a()));
+      fta $$0;
+      if (this.m.F()) {
+         $$0 = fta.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
       } else {
-         this.v.a($$0, this.n / 2, 120);
+         $$0 = fta.a(b, $$0x -> this.m.a(new fyu())).a(200).a();
       }
+
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
+      this.c();
    }
 
    @Override
-   public boolean aD_() {
-      return this.v != null && this.w.j;
-   }
-
-   @Override
-   public void aL_() {
-      this.u.run();
+   protected void c() {
+      fwm.a(this.w, this.J());
    }
 
    @Override
    public wy i() {
-      return wx.a(this.l, this.d != null ? this.d : wx.a);
+      return wx.a(this.l, this.u.a());
+   }
+
+   @Override
+   public boolean aD_() {
+      return false;
    }
 }

@@ -1,133 +1,392 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Vector3f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class gqj implements AutoCloseable {
-   public static final int a = 15728880;
-   public static final int b = 15728640;
-   public static final int c = 240;
-   private static final int d = 16;
-   private final fif e;
-   private boolean f;
-   private float g;
-   private final gqc h;
-   private final fpo i;
+public class gqj {
+   private static final Map<dmr, grc> a = ag.a(Maps.newHashMap(), $$0 -> {
+      grc $$1 = grc.s();
+      $$0.put(dmt.gh, $$1);
+      grc $$2 = grc.d();
+      $$0.put(dmt.i, $$2);
+      $$0.put(dmt.fo, $$2);
+      $$0.put(dmt.fq, $$2);
+      $$0.put(dmt.gg, $$2);
+      $$0.put(dmt.hD, $$2);
+      $$0.put(dmt.fp, $$2);
+      $$0.put(dmt.aN, $$2);
+      $$0.put(dmt.aK, $$2);
+      $$0.put(dmt.aL, $$2);
+      $$0.put(dmt.aO, $$2);
+      $$0.put(dmt.aP, $$2);
+      $$0.put(dmt.aM, $$2);
+      $$0.put(dmt.aQ, $$2);
+      $$0.put(dmt.aR, $$2);
+      $$0.put(dmt.aT, $$2);
+      $$0.put(dmt.aU, $$2);
+      $$0.put(dmt.ag, $$2);
+      $$0.put(dmt.aS, $$2);
+      grc $$3 = grc.e();
+      $$0.put(dmt.z, $$3);
+      $$0.put(dmt.A, $$3);
+      $$0.put(dmt.B, $$3);
+      $$0.put(dmt.C, $$3);
+      $$0.put(dmt.D, $$3);
+      $$0.put(dmt.E, $$3);
+      $$0.put(dmt.F, $$3);
+      $$0.put(dmt.G, $$3);
+      $$0.put(dmt.aX, $$3);
+      $$0.put(dmt.bg, $$3);
+      $$0.put(dmt.bh, $$3);
+      $$0.put(dmt.bi, $$3);
+      $$0.put(dmt.bj, $$3);
+      $$0.put(dmt.bk, $$3);
+      $$0.put(dmt.bl, $$3);
+      $$0.put(dmt.bm, $$3);
+      $$0.put(dmt.bn, $$3);
+      $$0.put(dmt.bo, $$3);
+      $$0.put(dmt.bp, $$3);
+      $$0.put(dmt.bq, $$3);
+      $$0.put(dmt.br, $$3);
+      $$0.put(dmt.bs, $$3);
+      $$0.put(dmt.bt, $$3);
+      $$0.put(dmt.bu, $$3);
+      $$0.put(dmt.bv, $$3);
+      $$0.put(dmt.bw, $$3);
+      $$0.put(dmt.bx, $$3);
+      $$0.put(dmt.bz, $$3);
+      $$0.put(dmt.bA, $$3);
+      $$0.put(dmt.bB, $$3);
+      $$0.put(dmt.bD, $$3);
+      $$0.put(dmt.bC, $$3);
+      $$0.put(dmt.bE, $$3);
+      $$0.put(dmt.bF, $$3);
+      $$0.put(dmt.bG, $$3);
+      $$0.put(dmt.bH, $$3);
+      $$0.put(dmt.cb, $$3);
+      $$0.put(dmt.uh, $$3);
+      $$0.put(dmt.ui, $$3);
+      $$0.put(dmt.cd, $$3);
+      $$0.put(dmt.ce, $$3);
+      $$0.put(dmt.cf, $$3);
+      $$0.put(dmt.cg, $$3);
+      $$0.put(dmt.ch, $$3);
+      $$0.put(dmt.ci, $$3);
+      $$0.put(dmt.cj, $$3);
+      $$0.put(dmt.ck, $$3);
+      $$0.put(dmt.cl, $$3);
+      $$0.put(dmt.cm, $$3);
+      $$0.put(dmt.cn, $$3);
+      $$0.put(dmt.co, $$3);
+      $$0.put(dmt.cp, $$3);
+      $$0.put(dmt.cq, $$3);
+      $$0.put(dmt.cz, $$3);
+      $$0.put(dmt.cA, $$3);
+      $$0.put(dmt.er, $$3);
+      $$0.put(dmt.es, $$3);
+      $$0.put(dmt.cB, $$3);
+      $$0.put(dmt.cC, $$3);
+      $$0.put(dmt.cD, $$3);
+      $$0.put(dmt.ub, $$3);
+      $$0.put(dmt.uc, $$3);
+      $$0.put(dmt.cH, $$3);
+      $$0.put(dmt.cM, $$3);
+      $$0.put(dmt.cZ, $$3);
+      $$0.put(dmt.da, $$3);
+      $$0.put(dmt.db, $$3);
+      $$0.put(dmt.dN, $$3);
+      $$0.put(dmt.ea, $$3);
+      $$0.put(dmt.eb, $$3);
+      $$0.put(dmt.eg, $$3);
+      $$0.put(dmt.ej, $$3);
+      $$0.put(dmt.ey, $$3);
+      $$0.put(dmt.eP, $$3);
+      $$0.put(dmt.eQ, $$3);
+      $$0.put(dmt.eR, $$3);
+      $$0.put(dmt.eS, $$3);
+      $$0.put(dmt.eT, $$3);
+      $$0.put(dmt.eU, $$3);
+      $$0.put(dmt.eV, $$3);
+      $$0.put(dmt.eW, $$3);
+      $$0.put(dmt.ps, $$3);
+      $$0.put(dmt.pt, $$3);
+      $$0.put(dmt.eX, $$3);
+      $$0.put(dmt.eY, $$3);
+      $$0.put(dmt.sC, $$3);
+      $$0.put(dmt.sD, $$3);
+      $$0.put(dmt.sF, $$3);
+      $$0.put(dmt.sE, $$3);
+      $$0.put(dmt.sG, $$3);
+      $$0.put(dmt.sH, $$3);
+      $$0.put(dmt.sJ, $$3);
+      $$0.put(dmt.sI, $$3);
+      $$0.put(dmt.ft, $$3);
+      $$0.put(dmt.fu, $$3);
+      $$0.put(dmt.fv, $$3);
+      $$0.put(dmt.fw, $$3);
+      $$0.put(dmt.fx, $$3);
+      $$0.put(dmt.uf, $$3);
+      $$0.put(dmt.ug, $$3);
+      $$0.put(dmt.fy, $$3);
+      $$0.put(dmt.fz, $$3);
+      $$0.put(dmt.fF, $$3);
+      $$0.put(dmt.fP, $$3);
+      $$0.put(dmt.fR, $$3);
+      $$0.put(dmt.gb, $$3);
+      $$0.put(dmt.gn, $$3);
+      $$0.put(dmt.gq, $$3);
+      $$0.put(dmt.gs, $$3);
+      $$0.put(dmt.gt, $$3);
+      $$0.put(dmt.gu, $$3);
+      $$0.put(dmt.gv, $$3);
+      $$0.put(dmt.gw, $$3);
+      $$0.put(dmt.gx, $$3);
+      $$0.put(dmt.gy, $$3);
+      $$0.put(dmt.gz, $$3);
+      $$0.put(dmt.gA, $$3);
+      $$0.put(dmt.gB, $$3);
+      $$0.put(dmt.gC, $$3);
+      $$0.put(dmt.gD, $$3);
+      $$0.put(dmt.uj, $$3);
+      $$0.put(dmt.uk, $$3);
+      $$0.put(dmt.gE, $$3);
+      $$0.put(dmt.gF, $$3);
+      $$0.put(dmt.gG, $$3);
+      $$0.put(dmt.gH, $$3);
+      $$0.put(dmt.gI, $$3);
+      $$0.put(dmt.gJ, $$3);
+      $$0.put(dmt.gK, $$3);
+      $$0.put(dmt.gL, $$3);
+      $$0.put(dmt.gM, $$3);
+      $$0.put(dmt.gN, $$3);
+      $$0.put(dmt.gO, $$3);
+      $$0.put(dmt.gP, $$3);
+      $$0.put(dmt.gQ, $$3);
+      $$0.put(dmt.gR, $$3);
+      $$0.put(dmt.gS, $$3);
+      $$0.put(dmt.tS, $$3);
+      $$0.put(dmt.tT, $$3);
+      $$0.put(dmt.gr, $$3);
+      $$0.put(dmt.gT, $$3);
+      $$0.put(dmt.gU, $$3);
+      $$0.put(dmt.hz, $$3);
+      $$0.put(dmt.hI, $$3);
+      $$0.put(dmt.iA, $$3);
+      $$0.put(dmt.jf, $$3);
+      $$0.put(dmt.jg, $$3);
+      $$0.put(dmt.jh, $$3);
+      $$0.put(dmt.ji, $$3);
+      $$0.put(dmt.jj, $$3);
+      $$0.put(dmt.jk, $$3);
+      $$0.put(dmt.kQ, $$3);
+      $$0.put(dmt.kR, $$3);
+      $$0.put(dmt.kS, $$3);
+      $$0.put(dmt.kT, $$3);
+      $$0.put(dmt.kU, $$3);
+      $$0.put(dmt.kV, $$3);
+      $$0.put(dmt.kW, $$3);
+      $$0.put(dmt.kX, $$3);
+      $$0.put(dmt.kY, $$3);
+      $$0.put(dmt.su, $$3);
+      $$0.put(dmt.sv, $$3);
+      $$0.put(dmt.sx, $$3);
+      $$0.put(dmt.sw, $$3);
+      $$0.put(dmt.sy, $$3);
+      $$0.put(dmt.sz, $$3);
+      $$0.put(dmt.sB, $$3);
+      $$0.put(dmt.sA, $$3);
+      $$0.put(dmt.kZ, $$3);
+      $$0.put(dmt.la, $$3);
+      $$0.put(dmt.lb, $$3);
+      $$0.put(dmt.cc, $$3);
+      $$0.put(dmt.lg, $$3);
+      $$0.put(dmt.li, $$3);
+      $$0.put(dmt.lh, $$3);
+      $$0.put(dmt.lj, $$3);
+      $$0.put(dmt.mI, $$3);
+      $$0.put(dmt.mJ, $$3);
+      $$0.put(dmt.mL, $$3);
+      $$0.put(dmt.mX, $$3);
+      $$0.put(dmt.mY, $$3);
+      $$0.put(dmt.mZ, $$3);
+      $$0.put(dmt.na, $$3);
+      $$0.put(dmt.nb, $$3);
+      $$0.put(dmt.nc, $$3);
+      $$0.put(dmt.nd, $$3);
+      $$0.put(dmt.ne, $$3);
+      $$0.put(dmt.nf, $$3);
+      $$0.put(dmt.ng, $$3);
+      $$0.put(dmt.nh, $$3);
+      $$0.put(dmt.ni, $$3);
+      $$0.put(dmt.nj, $$3);
+      $$0.put(dmt.nk, $$3);
+      $$0.put(dmt.nl, $$3);
+      $$0.put(dmt.nm, $$3);
+      $$0.put(dmt.nn, $$3);
+      $$0.put(dmt.no, $$3);
+      $$0.put(dmt.np, $$3);
+      $$0.put(dmt.nq, $$3);
+      $$0.put(dmt.nr, $$3);
+      $$0.put(dmt.ns, $$3);
+      $$0.put(dmt.nt, $$3);
+      $$0.put(dmt.nu, $$3);
+      $$0.put(dmt.nv, $$3);
+      $$0.put(dmt.nw, $$3);
+      $$0.put(dmt.nx, $$3);
+      $$0.put(dmt.ny, $$3);
+      $$0.put(dmt.nz, $$3);
+      $$0.put(dmt.nA, $$3);
+      $$0.put(dmt.nB, $$3);
+      $$0.put(dmt.nD, $$3);
+      $$0.put(dmt.nE, $$3);
+      $$0.put(dmt.nF, $$3);
+      $$0.put(dmt.nG, $$3);
+      $$0.put(dmt.oy, $$3);
+      $$0.put(dmt.oI, $$3);
+      $$0.put(dmt.oK, $$3);
+      $$0.put(dmt.oL, $$3);
+      $$0.put(dmt.oM, $$3);
+      $$0.put(dmt.oN, $$3);
+      $$0.put(dmt.oO, $$3);
+      $$0.put(dmt.pf, $$3);
+      $$0.put(dmt.pg, $$3);
+      $$0.put(dmt.ph, $$3);
+      $$0.put(dmt.pi, $$3);
+      $$0.put(dmt.oX, $$3);
+      $$0.put(dmt.pd, $$3);
+      $$0.put(dmt.oU, $$3);
+      $$0.put(dmt.pj, $$3);
+      $$0.put(dmt.oW, $$3);
+      $$0.put(dmt.pU, $$3);
+      $$0.put(dmt.pV, $$3);
+      $$0.put(dmt.pW, $$3);
+      $$0.put(dmt.pX, $$3);
+      $$0.put(dmt.pA, $$3);
+      $$0.put(dmt.pB, $$3);
+      $$0.put(dmt.tb, $$3);
+      $$0.put(dmt.rg, $$3);
+      $$0.put(dmt.rf, $$3);
+      $$0.put(dmt.re, $$3);
+      $$0.put(dmt.rd, $$3);
+      $$0.put(dmt.ta, $$3);
+      $$0.put(dmt.td, $$3);
+      $$0.put(dmt.te, $$3);
+      $$0.put(dmt.tf, $$3);
+      $$0.put(dmt.th, $$3);
+      $$0.put(dmt.tg, $$3);
+      $$0.put(dmt.tj, $$3);
+      $$0.put(dmt.tk, $$3);
+      $$0.put(dmt.tl, $$3);
+      $$0.put(dmt.tn, $$3);
+      $$0.put(dmt.to, $$3);
+      $$0.put(dmt.tp, $$3);
+      $$0.put(dmt.tq, $$3);
+      $$0.put(dmt.ry, $$3);
+      $$0.put(dmt.rz, $$3);
+      $$0.put(dmt.rB, $$3);
+      $$0.put(dmt.rD, $$3);
+      $$0.put(dmt.H, $$3);
+      $$0.put(dmt.tX, $$3);
+      $$0.put(dmt.sK, $$3);
+      $$0.put(dmt.sL, $$3);
+      $$0.put(dmt.sM, $$3);
+      $$0.put(dmt.sN, $$3);
+      $$0.put(dmt.sO, $$3);
+      $$0.put(dmt.sP, $$3);
+      $$0.put(dmt.sQ, $$3);
+      $$0.put(dmt.sR, $$3);
+      $$0.put(dmt.ul, $$3);
+      $$0.put(dmt.eh, $$3);
+      grc $$4 = grc.f();
+      $$0.put(dmt.ee, $$4);
+      $$0.put(dmt.eu, $$4);
+      $$0.put(dmt.ez, $$4);
+      $$0.put(dmt.eA, $$4);
+      $$0.put(dmt.eB, $$4);
+      $$0.put(dmt.eC, $$4);
+      $$0.put(dmt.eD, $$4);
+      $$0.put(dmt.eE, $$4);
+      $$0.put(dmt.eF, $$4);
+      $$0.put(dmt.eG, $$4);
+      $$0.put(dmt.eH, $$4);
+      $$0.put(dmt.eI, $$4);
+      $$0.put(dmt.eJ, $$4);
+      $$0.put(dmt.eK, $$4);
+      $$0.put(dmt.eL, $$4);
+      $$0.put(dmt.eM, $$4);
+      $$0.put(dmt.eN, $$4);
+      $$0.put(dmt.eO, $$4);
+      $$0.put(dmt.ia, $$4);
+      $$0.put(dmt.ib, $$4);
+      $$0.put(dmt.ic, $$4);
+      $$0.put(dmt.id, $$4);
+      $$0.put(dmt.ie, $$4);
+      $$0.put(dmt.if, $$4);
+      $$0.put(dmt.ig, $$4);
+      $$0.put(dmt.ih, $$4);
+      $$0.put(dmt.ii, $$4);
+      $$0.put(dmt.ij, $$4);
+      $$0.put(dmt.ik, $$4);
+      $$0.put(dmt.il, $$4);
+      $$0.put(dmt.im, $$4);
+      $$0.put(dmt.in, $$4);
+      $$0.put(dmt.io, $$4);
+      $$0.put(dmt.ip, $$4);
+      $$0.put(dmt.ix, $$4);
+      $$0.put(dmt.pO, $$4);
+      $$0.put(dmt.lo, $$4);
+      $$0.put(dmt.nJ, $$4);
+      $$0.put(dmt.rw, $$4);
+   });
+   private static final Map<ewz, grc> b = ag.a(Maps.newHashMap(), $$0 -> {
+      grc $$1 = grc.f();
+      $$0.put(exb.b, $$1);
+      $$0.put(exb.c, $$1);
+   });
+   private static boolean c;
 
-   public gqj(gqc $$0, fpo $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.e = new fif("Light Texture", 16, 16, false);
-      this.e.a(fjq.b);
-      this.e.a(1.0F, 1.0F, 1.0F, 1.0F);
-      this.e.f();
+   public static grc a(eat $$0) {
+      dmr $$1 = $$0.b();
+      if ($$1 instanceof drh) {
+         return c ? grc.d() : grc.c();
+      } else {
+         grc $$2 = a.get($$1);
+         return $$2 != null ? $$2 : grc.c();
+      }
    }
 
-   public fif a() {
-      return this.e;
-   }
-
-   @Override
-   public void close() {
-      this.e.a();
-   }
-
-   public void b() {
-      this.g = this.g + (float)((Math.random() - Math.random()) * Math.random() * Math.random() * 0.1);
-      this.g *= 0.9F;
-      this.f = true;
-   }
-
-   public void c() {
-      RenderSystem.setShaderTexture(2, (fjr)null);
-   }
-
-   public void d() {
-      RenderSystem.setShaderTexture(2, this.e.g());
-   }
-
-   private float a(bxj $$0, float $$1, float $$2) {
-      float $$3 = 0.45F * $$1;
-      return Math.max(0.0F, azm.b(((float)$$0.af - $$2) * (float) Math.PI * 0.025F) * $$3);
-   }
-
-   public void a(float $$0) {
-      if (this.f) {
-         this.f = false;
-         bqq $$1 = bqp.a();
-         $$1.a("lightTex");
-         gkl $$2 = this.i.s;
+   public static grc b(eat $$0) {
+      dmr $$1 = $$0.b();
+      if ($$1 instanceof drh) {
+         return c ? grc.d() : grc.c();
+      } else {
+         grc $$2 = a.get($$1);
          if ($$2 != null) {
-            float $$3 = $$2.g(1.0F);
-            float $$4;
-            if ($$2.j() > 0) {
-               $$4 = 1.0F;
-            } else {
-               $$4 = $$3 * 0.95F + 0.05F;
-            }
-
-            float $$6 = this.i.n.ao().c().floatValue();
-            float $$7 = this.i.t.a(bvo.G, $$0) * $$6;
-            float $$8 = this.a(this.i.t, $$7, $$0) * $$6;
-            float $$9 = this.i.t.D();
-            float $$10;
-            if (this.i.t.b(bvo.p)) {
-               $$10 = gqc.a(this.i.t, $$0);
-            } else if ($$9 > 0.0F && this.i.t.b(bvo.C)) {
-               $$10 = $$9;
-            } else {
-               $$10 = 0.0F;
-            }
-
-            Vector3f $$13 = new Vector3f($$3, $$3, 1.0F).lerp(new Vector3f(1.0F, 1.0F, 1.0F), 0.35F);
-            float $$14 = this.g + 1.5F;
-            float $$15 = $$2.B_().s();
-            boolean $$16 = $$2.c().d();
-            float $$17 = this.i.n.as().c().floatValue();
-            fkb $$18 = RenderSystem.getQuadVertices();
-            $$18.a(gqx.S(), $$10x -> {
-               $$10x.a("AmbientLightFactor").a($$15);
-               $$10x.a("SkyFactor").a($$4);
-               $$10x.a("BlockFactor").a($$14);
-               $$10x.a("UseBrightLightmap").a($$16 ? 1 : 0);
-               $$10x.a("SkyLightColor").a($$13);
-               $$10x.a("NightVisionFactor").a($$10);
-               $$10x.a("DarknessScale").a($$8);
-               $$10x.a("DarkenWorldFactor").a(this.h.c($$0));
-               $$10x.a("BrightnessFactor").a(Math.max(0.0F, $$17 - $$7));
-            });
-            $$1.c();
+            return $$2 == grc.f() ? grc.g() : $$2;
+         } else {
+            return grc.c();
          }
       }
    }
 
-   public static float a(eel $$0, int $$1) {
-      return a($$0.s(), $$1);
+   public static grc c(eat $$0) {
+      grc $$1 = a($$0);
+      return $$1 == grc.f() ? grl.j() : grl.i();
    }
 
-   public static float a(float $$0, int $$1) {
-      float $$2 = (float)$$1 / 15.0F;
-      float $$3 = $$2 / (4.0F - 3.0F * $$2);
-      return azm.h($$0, $$3, 1.0F);
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 << 4 | $$1 << 20;
-   }
-
-   public static int a(int $$0) {
-      return $$0 >>> 4 & 15;
-   }
-
-   public static int b(int $$0) {
-      return $$0 >>> 20 & 15;
-   }
-
-   public static int b(int $$0, int $$1) {
-      if ($$1 == 0) {
-         return $$0;
+   public static grc a(czn $$0) {
+      if ($$0.h() instanceof cxv $$2) {
+         dmr $$3 = $$2.c();
+         return c($$3.m());
       } else {
-         int $$2 = Math.max(b($$0), $$1);
-         int $$3 = Math.max(a($$0), $$1);
-         return a($$3, $$2);
+         return grl.j();
       }
+   }
+
+   public static grc a(exa $$0) {
+      grc $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : grc.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

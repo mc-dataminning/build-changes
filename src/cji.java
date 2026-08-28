@@ -1,11 +1,11 @@
 public class cji extends cix {
-   public cji(bwr<? extends cji> $$0, djh $$1) {
+   public cji(bwr<? extends cji> $$0, djm $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public czk S_() {
-      return new czk(czo.rx);
+   public czn S_() {
+      return new czn(czr.rx);
    }
 
    @Override

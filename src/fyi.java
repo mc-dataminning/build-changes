@@ -1,168 +1,150 @@
-import java.net.URI;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class fyi extends fyn {
-   private static final alg a = alg.b("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int d = 4;
-   private static final int s = 204;
-   private static final int u = 98;
-   private static final wy v = wy.c("menu.returnToGame");
-   private static final wy w = wy.c("gui.advancements");
-   private static final wy x = wy.c("gui.stats");
-   private static final wy y = wy.c("menu.sendFeedback");
-   private static final wy z = wy.c("menu.reportBugs");
-   private static final wy A = wy.c("menu.feedback");
-   private static final wy B = wy.c("menu.server_links");
-   private static final wy C = wy.c("menu.options");
-   private static final wy D = wy.c("menu.shareToLan");
-   private static final wy E = wy.c("menu.playerReporting");
-   private static final wy F = wy.c("menu.returnToMenu");
-   private static final wy G = wy.c("menu.savingLevel");
-   private static final wy H = wy.c("menu.game");
-   private static final wy I = wy.c("menu.paused");
-   private final boolean J;
-   @Nullable
-   private fsv K;
+public class fyi extends fym {
+   public static final alg a = alg.b("textures/gui/title/mojangstudios.png");
+   private static final int d = axw.a(255, 239, 50, 61);
+   private static final int e = axw.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> fpt.Q().n.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long b = 1000L;
+   public static final long c = 500L;
+   private final fpt m;
+   private final auz n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
 
-   public fyi(boolean $$0) {
-      super($$0 ? H : I);
-      this.J = $$0;
+   public fyi(fpt $$0, auz $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
    }
 
-   public boolean m() {
-      return this.J;
+   public static void a(hjs $$0) {
+      $$0.a(a, (hjh)(new fyi.a()));
+   }
+
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
    }
 
    @Override
-   protected void aO_() {
-      if (this.J) {
-         this.E();
+   public void a(fsm $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ag.c();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
       }
 
-      this.c(new fuc(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
-   }
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.z != null) {
+            this.m.z.a($$0, 0, 0, $$3);
+         }
 
-   private void E() {
-      fwi $$0 = new fwi();
-      $$0.c().a(4, 4, 4, 0);
-      fwi.b $$1 = $$0.d(2);
-      $$1.a(fsv.a(v, $$0x -> {
+         int $$9 = azm.f((1.0F - azm.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(grc.M(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - azm.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.z != null && $$8 < 1.0F) {
+            this.m.z.a($$0, $$1, $$2, $$3);
+         }
+
+         int $$11 = azm.c(azm.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(grc.M(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = azm.a($$8, 0.0F, 1.0F);
+      } else {
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384);
+         $$10 = 1.0F;
+      }
+
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      int $$24 = axw.a($$10);
+      $$0.a($$0x -> grc.R(), a, $$18 - $$23, $$19 - $$21, -0.0625F, 0.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
+      $$0.a($$0x -> grc.R(), a, $$18, $$19 - $$21, 0.0625F, 60.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
+      int $$25 = (int)((double)$$0.b() * 0.8325);
+      float $$26 = this.n.b();
+      this.q = azm.a(this.q * 0.95F + $$26 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$25 - 5, $$4 / 2 + $$23, $$25 + 5, 1.0F - azm.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
          this.m.a(null);
-         this.m.o.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(w, () -> new fyx(this.m.t.j.p(), this)));
-      $$1.a(this.a(x, () -> new fyr(this, this.m.t.l())));
-      aly $$2 = this.m.t.j.E();
-      if ($$2.a()) {
-         a(this, $$1);
-      } else {
-         $$1.a(this.a(A, () -> new fyi.a(this)));
-         $$1.a(this.a(B, () -> new gbh(this, $$2)));
       }
 
-      $$1.a(this.a(C, () -> new gbs(this, this.m.n)));
-      if (this.m.U() && !this.m.V().r()) {
-         $$1.a(this.a(D, () -> new fyo(this)));
-      } else {
-         $$1.a(this.a(E, () -> new gdh(this)));
-      }
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var24) {
+            this.o.accept(Optional.of(var24));
+         }
 
-      wy $$3 = this.m.T() ? F : wx.p;
-      this.K = $$1.a(fsv.a($$3, $$0x -> {
-         $$0x.j = false;
-         this.m.ba().a(this.m, this, this::F, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      fwh.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
-      $$0.a(this::c);
+         this.r = ag.c();
+         if (this.m.z != null) {
+            this.m.z.b(this.m, $$0.a(), $$0.b());
+         }
+      }
    }
 
-   static void a(fyn $$0, fwi.b $$1) {
-      $$1.a(a($$0, y, ac.b().g() ? ayh.i : ayh.h));
-      $$1.a(a($$0, z, ayh.j)).j = !ac.b().d().a();
-   }
-
-   private void F() {
-      boolean $$0 = this.m.T();
-      gla $$1 = this.m.S();
-      this.m.s.ad();
-      if ($$0) {
-         this.m.b(new fxy(G));
-      } else {
-         this.m.y();
-      }
-
-      fyp $$2 = new fyp();
-      if ($$0) {
-         this.m.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.m.a(new fkj($$2));
-      } else {
-         this.m.a(new gbf($$2));
-      }
+   private void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = azm.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = axw.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
    }
 
    @Override
-   public void e() {
-      super.e();
+   public boolean a() {
+      return true;
    }
 
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.J && this.m != null && this.m.ba().c() && this.K != null) {
-         $$0.a(gqx::H, a, this.K.F() + this.K.A() - 17, this.K.G() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(fsh $$0, int $$1, int $$2, float $$3) {
-      if (this.J) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private fsv a(wy $$0, Supplier<fyn> $$1) {
-      return fsv.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
-   }
-
-   private static fsv a(fyn $$0, wy $$1, URI $$2) {
-      return fsv.a($$1, fxk.b($$0, $$2)).a(98).a();
-   }
-
-   static class a extends fyn {
-      private static final wy b = wy.c("menu.feedback.title");
-      public final fyn a;
-      private final fwj c = new fwj(this);
-
-      protected a(fyn $$0) {
-         super(b);
-         this.a = $$0;
+   static class a extends hjh {
+      public a() {
+         super(fyi.a);
       }
 
       @Override
-      protected void aO_() {
-         this.c.a(b, this.p);
-         fwi $$0 = this.c.c(new fwi());
-         $$0.c().a(4, 4, 4, 0);
-         fwi.b $$1 = $$0.d(2);
-         fyi.a(this, $$1);
-         this.c.b(fsv.a(wx.k, $$0x -> this.aL_()).a(200).a());
-         this.c.a(this::c);
-         this.c();
-      }
+      public hjr a(avd $$0) throws IOException {
+         avg $$1 = fpt.Q().ae().d();
 
-      @Override
-      protected void c() {
-         this.c.a();
-      }
+         hjr var4;
+         try (InputStream $$2 = $$1.open(fyi.a)) {
+            var4 = new hjr(fiz.a($$2), new hln(true, true));
+         }
 
-      @Override
-      public void aL_() {
-         this.m.a(this.a);
+         return var4;
       }
    }
 }

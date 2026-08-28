@@ -5,25 +5,25 @@ import javax.annotation.Nullable;
 
 public class aqr {
    private final arf b;
-   private final dio c;
+   private final dir c;
    @Nullable
-   private edm d = null;
-   public final edm a;
+   private edr d = null;
+   public final edr a;
    private volatile boolean e;
-   private final List<CompletableFuture<aqv<ecl>>> f = new ArrayList<>();
+   private final List<CompletableFuture<aqv<ecq>>> f = new ArrayList<>();
    private final bai<arg> g;
    private boolean h;
 
-   private aqr(arf $$0, edm $$1, dio $$2, bai<arg> $$3) {
+   private aqr(arf $$0, edr $$1, dir $$2, bai<arg> $$3) {
       this.b = $$0;
       this.a = $$1;
       this.c = $$2;
       this.g = $$3;
    }
 
-   public static aqr a(arf $$0, edm $$1, dio $$2) {
-      int $$3 = edl.a.a($$1).a(edm.c);
-      bai<arg> $$4 = bai.a($$2.h, $$2.i, $$3, ($$1x, $$2x) -> $$0.d(dio.c($$1x, $$2x)));
+   public static aqr a(arf $$0, edr $$1, dir $$2) {
+      int $$3 = edq.a.a($$1).a(edr.c);
+      bai<arg> $$4 = bai.a($$2.h, $$2.i, $$3, ($$1x, $$2x) -> $$0.d(dir.c($$1x, $$2x)));
       return new aqr($$0, $$1, $$2, $$4);
    }
 
@@ -45,14 +45,14 @@ public class aqr {
    }
 
    private void d() {
-      edm $$0;
+      edr $$0;
       if (this.d == null) {
-         $$0 = edm.c;
-      } else if (!this.h && this.d == edm.c && !this.f()) {
+         $$0 = edr.c;
+      } else if (!this.h && this.d == edr.c && !this.f()) {
          this.h = true;
-         $$0 = edm.c;
+         $$0 = edr.c;
       } else {
-         $$0 = edm.a().get(this.d.b() + 1);
+         $$0 = edr.a().get(this.d.b() + 1);
       }
 
       this.a($$0, this.h);
@@ -70,19 +70,19 @@ public class aqr {
    }
 
    private boolean f() {
-      if (this.a == edm.c) {
+      if (this.a == edr.c) {
          return true;
       } else {
-         edm $$0 = this.g.a(this.c.h, this.c.i).q();
+         edr $$0 = this.g.a(this.c.h, this.c.i).q();
          if ($$0 != null && !$$0.d(this.a)) {
-            edk $$1 = edl.b.a(this.a).c();
+            edp $$1 = edq.b.a(this.a).c();
             int $$2 = $$1.c();
 
             for (int $$3 = this.c.h - $$2; $$3 <= this.c.h + $$2; $$3++) {
                for (int $$4 = this.c.i - $$2; $$4 <= this.c.i + $$2; $$4++) {
                   int $$5 = this.c.e($$3, $$4);
-                  edm $$6 = $$1.a($$5);
-                  edm $$7 = this.g.a($$3, $$4).q();
+                  edr $$6 = $$1.a($$5);
+                  edr $$7 = this.g.a($$3, $$4).q();
                   if ($$7 == null || $$7.d($$6)) {
                      return false;
                   }
@@ -100,7 +100,7 @@ public class aqr {
       return this.g.a(this.c.h, this.c.i);
    }
 
-   private void a(edm $$0, boolean $$1) {
+   private void a(edr $$0, boolean $$1) {
       try (bqv $$2 = bqp.a().d("scheduleLayer")) {
          $$2.a($$0::f);
          int $$3 = this.b($$0, $$1);
@@ -116,20 +116,20 @@ public class aqr {
       }
    }
 
-   private int b(edm $$0, boolean $$1) {
-      edl $$2 = $$1 ? edl.a : edl.b;
+   private int b(edr $$0, boolean $$1) {
+      edq $$2 = $$1 ? edq.a : edq.b;
       return $$2.a(this.a).a($$0);
    }
 
-   private boolean a(edm $$0, boolean $$1, arg $$2) {
-      edm $$3 = $$2.q();
+   private boolean a(edr $$0, boolean $$1, arg $$2) {
+      edr $$3 = $$2.q();
       boolean $$4 = $$3 != null && $$0.b($$3);
-      edl $$5 = $$4 ? edl.a : edl.b;
+      edq $$5 = $$4 ? edq.a : edq.b;
       if ($$4 && !$$1) {
          throw new IllegalStateException("Can't load chunk, but didn't expect to need to generate");
       } else {
-         CompletableFuture<aqv<ecl>> $$6 = $$2.a($$5.a($$0), this.b, this.g);
-         aqv<ecl> $$7 = $$6.getNow(null);
+         CompletableFuture<aqv<ecq>> $$6 = $$2.a($$5.a($$0), this.b, this.g);
+         aqv<ecq> $$7 = $$6.getNow(null);
          if ($$7 == null) {
             this.f.add($$6);
             return true;
@@ -145,8 +145,8 @@ public class aqr {
    @Nullable
    private CompletableFuture<?> g() {
       while (!this.f.isEmpty()) {
-         CompletableFuture<aqv<ecl>> $$0 = this.f.getLast();
-         aqv<ecl> $$1 = $$0.getNow(null);
+         CompletableFuture<aqv<ecq>> $$0 = this.f.getLast();
+         aqv<ecq> $$1 = $$0.getNow(null);
          if ($$1 == null) {
             return $$0;
          }

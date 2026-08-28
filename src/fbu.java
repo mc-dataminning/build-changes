@@ -1,56 +1,83 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import org.slf4j.Logger;
 
-public class fbu extends fbb {
-   private static final Logger b = LogUtils.getLogger();
+public class fbu extends fbg {
    public static final MapCodec<fbu> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(fdu.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and(
+               $$0.group(
+                  Codec.unboundedMap(dga.c, fdz.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
             .apply($$0, fbu::new)
    );
-   private final fdt c;
-   private final boolean d;
+   private final Map<jf<dga>, fdy> b;
+   private final boolean c;
 
-   private fbu(List<fcx> $$0, fdt $$1, boolean $$2) {
+   fbu(List<fdc> $$0, Map<jf<dga>, fdy> $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public fbd<fbu> b() {
-      return fbe.n;
+   public fbi<fbu> b() {
+      return fbj.i;
    }
 
    @Override
    public Set<bax<?>> a() {
-      return this.c.a();
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
    }
 
    @Override
-   public czk a(czk $$0, ezo $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - azm.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(azm.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+   public czn a(czn $$0, ezt $$1) {
+      if ($$0.a(czr.rF)) {
+         $$0 = $$0.a((djl)czr.vG);
       }
 
+      dgc.a($$0, $$1x -> {
+         if (this.c) {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jf<dga>)$$2, azm.a($$1x.a((jf<dga>)$$2) + $$3.a($$1), 0, 255)));
+         } else {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jf<dga>)$$2, azm.a($$3.a($$1), 0, 255)));
+         }
+      });
       return $$0;
    }
 
-   public static fbb.a<?> a(fdt $$0) {
-      return a($$1 -> new fbu($$1, $$0, false));
-   }
+   public static class a extends fbg.a<fbu.a> {
+      private final Builder<jf<dga>, fdy> a = ImmutableMap.builder();
+      private final boolean b;
 
-   public static fbb.a<?> a(fdt $$0, boolean $$1) {
-      return a($$2 -> new fbu($$2, $$0, $$1));
+      public a() {
+         this(false);
+      }
+
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected fbu.a a() {
+         return this;
+      }
+
+      public fbu.a a(jf<dga> $$0, fdy $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fbh b() {
+         return new fbu(this.g(), this.a.build(), this.b);
+      }
    }
 }

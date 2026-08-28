@@ -1,3 +1,4 @@
-public class hdh extends hcz {
-   public fex a = fex.c;
+public class hdh extends hdf {
+   public float a;
+   public float b;
 }

@@ -42,7 +42,7 @@ public class byv<E extends bxr> extends bza<E> {
 
    protected void d(arq $$0, E $$1, long $$2) {
       if ($$1.O().k()) {
-         fex $$3 = this.a($$1, $$0);
+         ffc $$3 = this.a($$1, $$0);
          if ($$3 != null) {
             $$1.eb().a(cgl.n, new cgo($$3, this.g, 0));
          }
@@ -50,9 +50,9 @@ public class byv<E extends bxr> extends bza<E> {
    }
 
    @Nullable
-   private fex a(E $$0, arq $$1) {
+   private ffc a(E $$0, arq $$1) {
       if ($$0.bW()) {
-         Optional<fex> $$2 = this.a((din)$$1, $$0).map(fex::c);
+         Optional<ffc> $$2 = this.a((diq)$$1, $$0).map(ffc::c);
          if ($$2.isPresent()) {
             return $$2.get();
          }
@@ -61,7 +61,7 @@ public class byv<E extends bxr> extends bza<E> {
       return cif.a($$0, 5, 4);
    }
 
-   private Optional<iv> a(din $$0, bwi $$1) {
+   private Optional<iv> a(diq $$0, bwi $$1) {
       iv $$2 = $$1.du();
       if (!$$0.a_($$2).g($$0, $$2).c()) {
          return Optional.empty();

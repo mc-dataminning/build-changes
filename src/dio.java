@@ -1,226 +1,84 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 
-public class dio {
-   public static final Codec<dio> a = Codec.INT_STREAM
-      .comapFlatMap($$0 -> ag.a($$0, 2).map($$0x -> new dio($$0x[0], $$0x[1])), $$0 -> IntStream.of($$0.h, $$0.i))
-      .stable();
-   public static final yw<ByteBuf, dio> b = new yw<ByteBuf, dio>() {
-      public dio a(ByteBuf $$0) {
-         return vu.d($$0);
-      }
+public class dio<T> extends AbstractIterator<T> {
+   private final fex a;
+   private final ffh b;
+   private final iy c;
+   private final iv.a d;
+   private final ffw e;
+   private final diu f;
+   private final boolean g;
+   @Nullable
+   private diq h;
+   private long i;
+   private final BiFunction<iv.a, ffw, T> j;
 
-      public void a(ByteBuf $$0, dio $$1) {
-         vu.a($$0, $$1);
-      }
-   };
-   private static final int j = 1056;
-   public static final long c = c(1875066, 1875066);
-   private static final int k = (32 + edl.a.a(edm.n).c().b() + 1) * 2;
-   public static final int d = jy.a(iv.f) - k;
-   public static final dio e = new dio(0, 0);
-   private static final long l = 32L;
-   private static final long m = 4294967295L;
-   private static final int n = 5;
-   public static final int f = 32;
-   private static final int o = 31;
-   public static final int g = 31;
-   public final int h;
-   public final int i;
-   private static final int p = 1664525;
-   private static final int q = 1013904223;
-   private static final int r = -559038737;
-
-   public dio(int $$0, int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public dio(diu $$0, @Nullable bwi $$1, fex $$2, boolean $$3, BiFunction<iv.a, ffw, T> $$4) {
+      this($$0, $$1 == null ? ffh.a() : ffh.a($$1), $$2, $$3, $$4);
    }
 
-   public dio(iv $$0) {
-      this.h = jy.a($$0.u());
-      this.i = jy.a($$0.w());
+   public dio(diu $$0, ffh $$1, fex $$2, boolean $$3, BiFunction<iv.a, ffw, T> $$4) {
+      this.b = $$1;
+      this.d = new iv.a();
+      this.e = fft.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = azm.a($$2.a - 1.0E-7) - 1;
+      int $$6 = azm.a($$2.d + 1.0E-7) + 1;
+      int $$7 = azm.a($$2.b - 1.0E-7) - 1;
+      int $$8 = azm.a($$2.e + 1.0E-7) + 1;
+      int $$9 = azm.a($$2.c - 1.0E-7) - 1;
+      int $$10 = azm.a($$2.f + 1.0E-7) + 1;
+      this.c = new iy($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   public dio(long $$0) {
-      this.h = (int)$$0;
-      this.i = (int)($$0 >> 32);
-   }
-
-   public static dio a(int $$0, int $$1) {
-      return new dio($$0 << 5, $$1 << 5);
-   }
-
-   public static dio b(int $$0, int $$1) {
-      return new dio(($$0 << 5) + 31, ($$1 << 5) + 31);
-   }
-
-   public long a() {
-      return c(this.h, this.i);
-   }
-
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static long a(iv $$0) {
-      return c(jy.a($$0.u()), jy.a($$0.w()));
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public int hashCode() {
-      return d(this.h, this.i);
-   }
-
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   @Nullable
+   private diq a(int $$0, int $$1) {
+      int $$2 = jy.a($$0);
+      int $$3 = jy.a($$1);
+      long $$4 = dir.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
       } else {
-         return !($$0 instanceof dio $$1) ? false : this.h == $$1.h && this.i == $$1.i;
+         diq $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
       }
    }
 
-   public int b() {
-      return this.a(8);
-   }
-
-   public int c() {
-      return this.b(8);
-   }
-
-   public int d() {
-      return jy.c(this.h);
-   }
-
-   public int e() {
-      return jy.c(this.i);
-   }
-
-   public int f() {
-      return this.a(15);
-   }
-
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.h >> 5;
-   }
-
-   public int i() {
-      return this.i >> 5;
-   }
-
-   public int j() {
-      return this.h & 31;
-   }
-
-   public int k() {
-      return this.i & 31;
-   }
-
-   public iv a(int $$0, int $$1, int $$2) {
-      return new iv(this.a($$0), $$1, this.b($$2));
-   }
-
-   public int a(int $$0) {
-      return jy.a(this.h, $$0);
-   }
-
-   public int b(int $$0) {
-      return jy.a(this.i, $$0);
-   }
-
-   public iv c(int $$0) {
-      return new iv(this.b(), $$0, this.c());
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.h + ", " + this.i + "]";
-   }
-
-   public iv l() {
-      return new iv(this.d(), 0, this.e());
-   }
-
-   public int a(dio $$0) {
-      return this.e($$0.h, $$0.i);
-   }
-
-   public int e(int $$0, int $$1) {
-      return Math.max(Math.abs(this.h - $$0), Math.abs(this.i - $$1));
-   }
-
-   public int b(dio $$0) {
-      return this.f($$0.h, $$0.i);
-   }
-
-   public int c(long $$0) {
-      return this.f(a($$0), b($$0));
-   }
-
-   private int f(int $$0, int $$1) {
-      int $$2 = $$0 - this.h;
-      int $$3 = $$1 - this.i;
-      return $$2 * $$2 + $$3 * $$3;
-   }
-
-   public static Stream<dio> a(dio $$0, int $$1) {
-      return a(new dio($$0.h - $$1, $$0.i - $$1), new dio($$0.h + $$1, $$0.i + $$1));
-   }
-
-   public static Stream<dio> a(final dio $$0, final dio $$1) {
-      int $$2 = Math.abs($$0.h - $$1.h) + 1;
-      int $$3 = Math.abs($$0.i - $$1.i) + 1;
-      final int $$4 = $$0.h < $$1.h ? 1 : -1;
-      final int $$5 = $$0.i < $$1.i ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<dio>((long)($$2 * $$3), 64) {
-         @Nullable
-         private dio e;
-
-         @Override
-         public boolean tryAdvance(Consumer<? super dio> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.h;
-               int $$2 = this.e.i;
-               if ($$1 == $$1.h) {
-                  if ($$2 == $$1.i) {
-                     return false;
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            diq $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               eat $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.j($$4, this.d)) && ($$3 != 1 || $$5.i()) && ($$3 != 2 || $$5.a(dmt.ca))) {
+                  ffw $$6 = this.b.a($$5, this.f, this.d);
+                  if ($$6 == fft.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a(this.d));
+                     }
+                  } else {
+                     ffw $$7 = $$6.a(this.d);
+                     if (!$$7.c() && fft.c($$7, this.e, ffg.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
                   }
-
-                  this.e = new dio($$0.h, $$2 + $$5);
-               } else {
-                  this.e = new dio($$1 + $$4, $$2);
                }
             }
-
-            $$0.accept(this.e);
-            return true;
          }
-      }, false);
+      }
+
+      return (T)this.endOfData();
    }
 }

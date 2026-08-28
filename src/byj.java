@@ -33,13 +33,13 @@ public class byj<E extends bxj> {
    private static final int c = 20;
    private final Map<cgl<?>, Optional<? extends cgk<?>>> d = Maps.newHashMap();
    private final Map<chs<? extends chr<? super E>>, chr<? super E>> e = Maps.newLinkedHashMap();
-   private final Map<Integer, Map<ctd, Set<bzb<? super E>>>> f = Maps.newTreeMap();
-   private ctf g = ctf.c;
-   private final Map<ctd, Set<Pair<cgl<?>, cgm>>> h = Maps.newHashMap();
-   private final Map<ctd, Set<cgl<?>>> i = Maps.newHashMap();
-   private Set<ctd> j = Sets.newHashSet();
-   private final Set<ctd> k = Sets.newHashSet();
-   private ctd l = ctd.b;
+   private final Map<Integer, Map<ctg, Set<bzb<? super E>>>> f = Maps.newTreeMap();
+   private cti g = cti.c;
+   private final Map<ctg, Set<Pair<cgl<?>, cgm>>> h = Maps.newHashMap();
+   private final Map<ctg, Set<cgl<?>>> i = Maps.newHashMap();
+   private Set<ctg> j = Sets.newHashSet();
+   private final Set<ctg> k = Sets.newHashSet();
+   private ctg l = ctg.b;
    private long m = -9999L;
 
    public static <E extends bxj> byj.b<E> a(Collection<? extends cgl<?>> $$0, Collection<? extends chs<? extends chr<? super E>>> $$1) {
@@ -191,21 +191,21 @@ public class byj<E extends bxj> {
       return $$2 == null ? false : $$1 == cgm.c || $$1 == cgm.a && $$2.isPresent() || $$1 == cgm.b && $$2.isEmpty();
    }
 
-   public ctf c() {
+   public cti c() {
       return this.g;
    }
 
-   public void a(ctf $$0) {
+   public void a(cti $$0) {
       this.g = $$0;
    }
 
-   public void a(Set<ctd> $$0) {
+   public void a(Set<ctg> $$0) {
       this.j = $$0;
    }
 
    @Deprecated
    @bav
-   public Set<ctd> d() {
+   public Set<ctg> d() {
       return this.k;
    }
 
@@ -214,7 +214,7 @@ public class byj<E extends bxj> {
    public List<bzb<? super E>> e() {
       List<bzb<? super E>> $$0 = new ObjectArrayList();
 
-      for (Map<ctd, Set<bzb<? super E>>> $$1 : this.f.values()) {
+      for (Map<ctg, Set<bzb<? super E>>> $$1 : this.f.values()) {
          for (Set<bzb<? super E>> $$2 : $$1.values()) {
             for (bzb<? super E> $$3 : $$2) {
                if ($$3.a() == bza.a.b) {
@@ -231,8 +231,8 @@ public class byj<E extends bxj> {
       this.d(this.l);
    }
 
-   public Optional<ctd> g() {
-      for (ctd $$0 : this.k) {
+   public Optional<ctg> g() {
+      for (ctg $$0 : this.k) {
          if (!this.j.contains($$0)) {
             return Optional.of($$0);
          }
@@ -241,7 +241,7 @@ public class byj<E extends bxj> {
       return Optional.empty();
    }
 
-   public void a(ctd $$0) {
+   public void a(ctg $$0) {
       if (this.f($$0)) {
          this.d($$0);
       } else {
@@ -249,7 +249,7 @@ public class byj<E extends bxj> {
       }
    }
 
-   private void d(ctd $$0) {
+   private void d(ctg $$0) {
       if (!this.c($$0)) {
          this.e($$0);
          this.k.clear();
@@ -258,8 +258,8 @@ public class byj<E extends bxj> {
       }
    }
 
-   private void e(ctd $$0) {
-      for (ctd $$1 : this.k) {
+   private void e(ctg $$0) {
+      for (ctg $$1 : this.k) {
          if ($$1 != $$0) {
             Set<cgl<?>> $$2 = this.i.get($$1);
             if ($$2 != null) {
@@ -274,15 +274,15 @@ public class byj<E extends bxj> {
    public void a(long $$0, long $$1) {
       if ($$1 - this.m > 20L) {
          this.m = $$1;
-         ctd $$2 = this.c().a((int)($$0 % 24000L));
+         ctg $$2 = this.c().a((int)($$0 % 24000L));
          if (!this.k.contains($$2)) {
             this.a($$2);
          }
       }
    }
 
-   public void a(List<ctd> $$0) {
-      for (ctd $$1 : $$0) {
+   public void a(List<ctg> $$0) {
+      for (ctg $$1 : $$0) {
          if (this.f($$1)) {
             this.d($$1);
             break;
@@ -290,33 +290,33 @@ public class byj<E extends bxj> {
       }
    }
 
-   public void b(ctd $$0) {
+   public void b(ctg $$0) {
       this.l = $$0;
    }
 
-   public void a(ctd $$0, int $$1, ImmutableList<? extends bzb<? super E>> $$2) {
+   public void a(ctg $$0, int $$1, ImmutableList<? extends bzb<? super E>> $$2) {
       this.a($$0, this.a($$1, $$2));
    }
 
-   public void a(ctd $$0, int $$1, ImmutableList<? extends bzb<? super E>> $$2, cgl<?> $$3) {
+   public void a(ctg $$0, int $$1, ImmutableList<? extends bzb<? super E>> $$2, cgl<?> $$3) {
       Set<Pair<cgl<?>, cgm>> $$4 = ImmutableSet.of(Pair.of($$3, cgm.a));
       Set<cgl<?>> $$5 = ImmutableSet.of($$3);
       this.a($$0, this.a($$1, $$2), $$4, $$5);
    }
 
-   public void a(ctd $$0, ImmutableList<? extends Pair<Integer, ? extends bzb<? super E>>> $$1) {
+   public void a(ctg $$0, ImmutableList<? extends Pair<Integer, ? extends bzb<? super E>>> $$1) {
       this.a($$0, $$1, ImmutableSet.of(), Sets.newHashSet());
    }
 
-   public void a(ctd $$0, int $$1, ImmutableList<? extends bzb<? super E>> $$2, Set<Pair<cgl<?>, cgm>> $$3) {
+   public void a(ctg $$0, int $$1, ImmutableList<? extends bzb<? super E>> $$2, Set<Pair<cgl<?>, cgm>> $$3) {
       this.a($$0, this.a($$1, $$2), $$3);
    }
 
-   public void a(ctd $$0, ImmutableList<? extends Pair<Integer, ? extends bzb<? super E>>> $$1, Set<Pair<cgl<?>, cgm>> $$2) {
+   public void a(ctg $$0, ImmutableList<? extends Pair<Integer, ? extends bzb<? super E>>> $$1, Set<Pair<cgl<?>, cgm>> $$2) {
       this.a($$0, $$1, $$2, Sets.newHashSet());
    }
 
-   public void a(ctd $$0, ImmutableList<? extends Pair<Integer, ? extends bzb<? super E>>> $$1, Set<Pair<cgl<?>, cgm>> $$2, Set<cgl<?>> $$3) {
+   public void a(ctg $$0, ImmutableList<? extends Pair<Integer, ? extends bzb<? super E>>> $$1, Set<Pair<cgl<?>, cgm>> $$2, Set<cgl<?>> $$3) {
       this.h.put($$0, $$2);
       if (!$$3.isEmpty()) {
          this.i.put($$0, $$3);
@@ -338,7 +338,7 @@ public class byj<E extends bxj> {
       this.f.clear();
    }
 
-   public boolean c(ctd $$0) {
+   public boolean c(ctg $$0) {
       return this.k.contains($$0);
    }
 
@@ -392,9 +392,9 @@ public class byj<E extends bxj> {
    private void d(arq $$0, E $$1) {
       long $$2 = $$0.ae();
 
-      for (Map<ctd, Set<bzb<? super E>>> $$3 : this.f.values()) {
-         for (Entry<ctd, Set<bzb<? super E>>> $$4 : $$3.entrySet()) {
-            ctd $$5 = $$4.getKey();
+      for (Map<ctg, Set<bzb<? super E>>> $$3 : this.f.values()) {
+         for (Entry<ctg, Set<bzb<? super E>>> $$4 : $$3.entrySet()) {
+            ctg $$5 = $$4.getKey();
             if (this.k.contains($$5)) {
                for (bzb<? super E> $$7 : $$4.getValue()) {
                   if ($$7.a() == bza.a.a) {
@@ -414,7 +414,7 @@ public class byj<E extends bxj> {
       }
    }
 
-   private boolean f(ctd $$0) {
+   private boolean f(ctg $$0) {
       if (!this.h.containsKey($$0)) {
          return false;
       } else {

@@ -36,7 +36,7 @@ public class ob implements mn {
       return new ob($$0).a(aud.b, new aud($$1, u.a.a(atr.b), Optional.empty()));
    }
 
-   public static ob a(mp $$0, wy $$1, cut $$2) {
+   public static ob a(mp $$0, wy $$1, cuw $$2) {
       return a($$0, $$1).a(atl.a, new atl($$2));
    }
 }

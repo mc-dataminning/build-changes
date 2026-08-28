@@ -35,7 +35,7 @@ public class cam {
                            }
                         } else {
                            for (int $$10 = 0; $$10 < 10; $$10++) {
-                              fex $$11 = cif.a($$6, 20, 8);
+                              ffc $$11 = cif.a($$6, 20, 8);
                               if ($$11 != null && $$5.c(iv.a((jp)$$11))) {
                                  $$2.a(new cgo($$11, 0.6F, 0));
                                  break;

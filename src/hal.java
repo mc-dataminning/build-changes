@@ -1,23 +1,19 @@
-public class hal<S extends hdo, M extends ggk<S> & giw> extends hbh<S, M> {
-   public hal(gyq<S, M> $$0) {
-      super($$0);
+public class hal extends hbm<hcs, gfv> {
+   private static final alg a = alg.b("textures/entity/breeze/breeze_wind.png");
+   private final gfv b;
+
+   public hal(gwy.a $$0, gyv<hcs, gfv> $$1) {
+      super($$1);
+      this.b = new gfv($$0.a(gjs.L));
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, S $$3, float $$4, float $$5) {
-      hgc $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         this.a($$3, $$0);
-         $$6.a($$0, $$1, $$2, hja.d);
-         $$0.b();
-      }
+   public void a(fkd $$0, gqr $$1, int $$2, hcs $$3, float $$4, float $$5) {
+      fkh $$6 = $$1.getBuffer(grc.a(a, this.a($$3.u) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gwd.a(this.b, this.b.d()).a($$0, $$6, $$2, hjg.d);
    }
 
-   protected void a(S $$0, fjy $$1) {
-      this.d().a($$1);
-      $$1.a(a.b.rotation(0.75F));
-      $$1.b(1.07F, 1.07F, 1.07F);
-      $$1.a(0.0F, 0.13F, -0.34F);
-      $$1.a(a.b.rotation((float) Math.PI));
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

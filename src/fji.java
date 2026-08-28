@@ -1,41 +1,19 @@
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+public interface fji {
+   fji a = new fji() {
+      @Override
+      public <T> T a(fjk<T> $$0) {
+         T $$1 = $$0.f();
+         $$0.b($$1);
+         return $$1;
+      }
 
-public class fji {
-   public void a(float $$0) {
-   }
+      @Override
+      public <T> void a(fjk<T> $$0, T $$1) {
+         $$0.a($$1);
+      }
+   };
 
-   public void a(float $$0, float $$1) {
-   }
+   <T> T a(fjk<T> var1);
 
-   public void a(float $$0, float $$1, float $$2) {
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-   }
-
-   public void a(int $$0) {
-   }
-
-   public void a(int $$0, int $$1) {
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-   }
-
-   public void a(float[] $$0) {
-   }
-
-   public void a(Vector3f $$0) {
-   }
-
-   public void a(Vector4f $$0) {
-   }
-
-   public void a(Matrix4f $$0) {
-   }
+   <T> void a(fjk<T> var1, T var2);
 }

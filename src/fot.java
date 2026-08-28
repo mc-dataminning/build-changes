@@ -1,47 +1,31 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class fot extends fol {
+public class fot extends foq {
    private static final Logger b = LogUtils.getLogger();
-   private static final wy c = wy.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private static final wy c = wy.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   public fot(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fot(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
    public void run() {
-      fko $$0 = fko.a();
+      fkt $$0 = fkt.a();
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (fml var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
-         }
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (fmp var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
       }
    }
 

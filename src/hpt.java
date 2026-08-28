@@ -1,37 +1,115 @@
-public class hpt extends hpw {
-   private final wy a;
-   private fto b = fto.a;
-   private final fyn c;
-   private int C;
+import javax.annotation.Nullable;
 
-   public hpt(fyn $$0, wy $$1, wy $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class hpt implements hpx {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final wy f = wy.a("tutorial.move.title", hpw.a("forward"), hpw.a("left"), hpw.a("back"), hpw.a("right"));
+   private static final wy g = wy.a("tutorial.move.description", hpw.a("jump"));
+   private static final wy h = wy.c("tutorial.look.title");
+   private static final wy i = wy.c("tutorial.look.description");
+   private final hpw j;
+   @Nullable
+   private fvm k;
+   @Nullable
+   private fvm l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
+
+   public hpt(hpw $$0) {
+      this.j = $$0;
    }
 
    @Override
-   public void aO_() {
-      this.m.af().i();
-      this.b = fto.a(this.p, this.a, this.n - 50);
-      this.C = this.b.a() * 9;
-      this.c(fsv.a(wx.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.C / 2 + 9, 200, 20).a());
+   public void a() {
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
+
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
+
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.e();
+            this.k = null;
+         }
+
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.e();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(hpy.b);
+         } else {
+            this.j.a(hpy.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         fpt $$0 = this.j.e();
+         if (this.r == -1 && this.k == null) {
+            this.k = new fvm($$0.h, fvm.a.a, f, g, true);
+            $$0.aA().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new fvm($$0.h, fvm.a.b, h, i, true);
+            $$0.aA().a(this.l);
+         }
+      }
    }
 
    @Override
-   public wy i() {
-      return wy.i().b(this.l).f(": ").b(this.a);
+   public void b() {
+      if (this.k != null) {
+         this.k.e();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.e();
+         this.l = null;
+      }
    }
 
    @Override
-   public void aL_() {
-      fpo.Q().a(this.c);
+   public void a(gpm $$0) {
+      if ($$0.a.a() || $$0.a.b() || $$0.a.c() || $$0.a.d() || $$0.a.e()) {
+         this.p = true;
+      }
    }
 
    @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.C / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.C / 2);
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
+      }
    }
 }

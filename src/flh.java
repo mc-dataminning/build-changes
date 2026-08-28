@@ -1,28 +1,20 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.Set;
+public interface flh {
+   fkx b();
 
-public class flh extends fmd {
-   public Set<String> a = Sets.newHashSet();
+   void d();
 
-   public static flh a(String $$0) {
-      flh $$1 = new flh();
-      JsonParser $$2 = new JsonParser();
+   static flh f() {
+      return new flh() {
+         private final fkx a = new fkx();
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
+         @Override
+         public fkx b() {
+            return this.a;
          }
-      } catch (Exception var8) {
-      }
 
-      return $$1;
+         @Override
+         public void d() {
+         }
+      };
    }
 }

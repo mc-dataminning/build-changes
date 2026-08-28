@@ -1,62 +1,31 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ddb(float c) implements dcy {
-   private static final float f = 16.0F;
-   public static final MapCodec<ddb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayu.o.optionalFieldOf("diameter", 16.0F).forGetter(ddb::b)).apply($$0, ddb::new)
-   );
-   public static final yw<wj, ddb> b = yw.a(yu.l, ddb::b, ddb::new);
+public interface ddb {
+   Codec<ddb> d = mg.aw.q().dispatch(ddb::a, ddb.a::a);
+   yw<wj, ddb> e = yu.a(mh.n).b(ddb::a, ddb.a::b);
 
-   public ddb() {
-      this(16.0F);
-   }
+   ddb.a<? extends ddb> a();
 
-   @Override
-   public dcy.a<ddb> a() {
-      return dcy.a.d;
-   }
+   boolean a(djm var1, czn var2, bxj var3);
 
-   @Override
-   public boolean a(djh $$0, czk $$1, bxj $$2) {
-      boolean $$3 = false;
+   public static record a<T extends ddb>(MapCodec<T> f, yw<wj, T> g) {
+      public static final ddb.a<dcz> a = a("apply_effects", dcz.a, dcz.b);
+      public static final ddb.a<ddd> b = a("remove_effects", ddd.a, ddd.b);
+      public static final ddb.a<dda> c = a("clear_all_effects", dda.b, dda.c);
+      public static final ddb.a<dde> d = a("teleport_randomly", dde.a, dde.b);
+      public static final ddb.a<ddc> e = a("play_sound", ddc.a, ddc.b);
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         double $$5 = $$2.dz() + ($$2.dX().j() - 0.5) * (double)this.c;
-         double $$6 = azm.a($$2.dB() + ($$2.dX().j() - 0.5) * (double)this.c, (double)$$0.G_(), (double)($$0.G_() + ((arq)$$0).l() - 1));
-         double $$7 = $$2.dF() + ($$2.dX().j() - 0.5) * (double)this.c;
-         if ($$2.bX()) {
-            $$2.bN();
-         }
-
-         fex $$8 = $$2.ds();
-         if ($$2.b($$5, $$6, $$7, true)) {
-            $$0.a(efo.R, $$8, efo.a.a($$2));
-            awo $$10;
-            awm $$9;
-            if ($$2 instanceof cjo) {
-               $$9 = awn.jT;
-               $$10 = awo.g;
-            } else {
-               $$9 = awn.fl;
-               $$10 = awo.h;
-            }
-
-            $$0.a(null, $$2.dz(), $$2.dB(), $$2.dF(), $$9, $$10);
-            $$2.k();
-            $$3 = true;
-            break;
-         }
+      private static <T extends ddb> ddb.a<T> a(String $$0, MapCodec<T> $$1, yw<wj, T> $$2) {
+         return js.a(mg.aw, $$0, new ddb.a<>($$1, $$2));
       }
 
-      if ($$3 && $$2 instanceof crj $$13) {
-         $$13.gO();
+      public MapCodec<T> a() {
+         return this.f;
       }
 
-      return $$3;
-   }
-
-   public float b() {
-      return this.c;
+      public yw<wj, T> b() {
+         return this.g;
+      }
    }
 }

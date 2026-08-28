@@ -29,12 +29,12 @@ public class cas {
       return a($$0, cas::a, bwi::bh);
    }
 
-   private static cal<bxr> a(float $$0, Function<bxr, fex> $$1, Predicate<bxr> $$2) {
+   private static cal<bxr> a(float $$0, Function<bxr, ffc> $$1, Predicate<bxr> $$2) {
       return ccn.a((Function<ccn.b<bxr>, ? extends App<ccn.c<bxr>, ccq<bxr>>>)($$3 -> $$3.group($$3.c(cgl.n)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
                if (!$$2.test($$5)) {
                   return false;
                } else {
-                  Optional<fex> $$7 = Optional.ofNullable($$1.apply($$5));
+                  Optional<ffc> $$7 = Optional.ofNullable($$1.apply($$5));
                   $$3x.a($$7.map($$1xxxx -> new cgo($$1xxxx, $$0, 0)));
                   return true;
                }
@@ -42,9 +42,9 @@ public class cas {
    }
 
    @Nullable
-   private static fex a(bxr $$0) {
-      fex $$1 = null;
-      fex $$2 = null;
+   private static ffc a(bxr $$0) {
+      ffc $$1 = null;
+      ffc $$2 = null;
 
       for (int[] $$3 : c) {
          if ($$1 == null) {
@@ -64,8 +64,8 @@ public class cas {
    }
 
    @Nullable
-   private static fex a(bxr $$0, int $$1, int $$2) {
-      fex $$3 = $$0.h(0.0F);
+   private static ffc a(bxr $$0, int $$1, int $$2) {
+      ffc $$3 = $$0.h(0.0F);
       return cia.a($$0, $$1, $$2, -2, $$3.d, $$3.f, (float) (Math.PI / 2));
    }
 }

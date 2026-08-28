@@ -2,7 +2,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public interface ef extends jh.a {
-   static ef a(final jh.a $$0, final cut $$1) {
+   static ef a(final jh.a $$0, final cuw $$1) {
       return new ef() {
          @Override
          public Stream<alf<? extends js<?>>> b() {
@@ -15,11 +15,11 @@ public interface ef extends jh.a {
          }
 
          @Override
-         public cut a() {
+         public cuw a() {
             return $$1;
          }
       };
    }
 
-   cut a();
+   cuw a();
 }

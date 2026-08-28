@@ -9,9 +9,9 @@ public class cc extends dk<cc.a> {
       return cc.a.a;
    }
 
-   public void a(arr $$0, fex $$1, @Nullable bwi $$2) {
-      fex $$3 = $$0.ds();
-      ezo $$4 = $$2 != null ? by.b($$0, $$2) : null;
+   public void a(arr $$0, ffc $$1, @Nullable bwi $$2) {
+      ffc $$3 = $$0.ds();
+      ezt $$4 = $$2 != null ? by.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.y(), $$1, $$3, $$4));
    }
 
@@ -36,7 +36,7 @@ public class cc extends dk<cc.a> {
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(arq $$0, fex $$1, fex $$2, @Nullable ezo $$3) {
+      public boolean a(arq $$0, ffc $$1, ffc $$2, @Nullable ezt $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
             return false;
          } else {

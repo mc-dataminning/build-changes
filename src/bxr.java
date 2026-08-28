@@ -1,7 +1,7 @@
 public abstract class bxr extends bxl {
    protected static final float bF = 0.0F;
 
-   protected bxr(bwr<? extends bxr> $$0, djh $$1) {
+   protected bxr(bwr<? extends bxr> $$0, djm $$1) {
       super($$0, $$1);
    }
 
@@ -9,12 +9,12 @@ public abstract class bxr extends bxl {
       return this.a($$0, this.dU());
    }
 
-   public float a(iv $$0, djk $$1) {
+   public float a(iv $$0, djp $$1) {
       return 0.0F;
    }
 
    @Override
-   public boolean a(dji $$0, bwq $$1) {
+   public boolean a(djn $$0, bwq $$1) {
       return this.a(this.du(), $$0) >= 0.0F;
    }
 
@@ -47,7 +47,7 @@ public abstract class bxr extends bxl {
          this.bD.b(cef.a.a);
          float $$1 = 2.0F;
          float $$2 = this.f($$0);
-         fex $$3 = new fex($$0.dz() - this.dz(), $$0.dB() - this.dB(), $$0.dF() - this.dF()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
+         ffc $$3 = new ffc($$0.dz() - this.dz(), $$0.dB() - this.dB(), $$0.dF() - this.dF()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
          this.O().a(this.dz() + $$3.d, this.dB() + $$3.e, this.dF() + $$3.f, this.gs());
       }
    }

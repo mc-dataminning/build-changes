@@ -26,7 +26,7 @@ public class cdp extends cdw {
       if (!super.b()) {
          return false;
       } else {
-         return !a(this.d).O().c(djd.d) ? false : this.a(this.d.dU().an()) && !this.h();
+         return !a(this.d).O().c(dji.d) ? false : this.a(this.d.dU().an()) && !this.h();
       }
    }
 
@@ -67,7 +67,7 @@ public class cdp extends cdw {
       if (this.a == this.f() && this.a(this.d.dU().an())) {
          this.d.dU().a(this.e, false);
          this.d.dU().c(1021, this.e, 0);
-         this.d.dU().c(2001, this.e, dmm.j(this.d.dU().a_(this.e)));
+         this.d.dU().c(2001, this.e, dmr.j(this.d.dU().a_(this.e)));
       }
    }
 

@@ -1,35 +1,69 @@
-public class ftu {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+import java.util.OptionalInt;
 
-   public static void a(fsh $$0, hkl $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, -1);
+public class ftu extends fsw {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final bae<ftu.a, ftt> c;
+   private boolean d = false;
+
+   public ftu(wy $$0, fsk $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public static void a(fsh $$0, hkl $$1, int $$2, int $$3, int $$4, int $$5) {
-      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
+   public ftu(int $$0, int $$1, wy $$2, fsk $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ag.a($$1x -> $$1x.c.isPresent() ? ftt.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : ftt.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
    }
 
-   public static void a(fsh $$0, alg $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
-      int $$8 = 8 + ($$6 ? 8 : 0);
-      int $$9 = 8 * ($$6 ? -1 : 1);
-      $$0.a(gqx::H, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
+   public ftu c(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public ftu d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public ftu e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public ftu b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   @Override
+   public int A() {
+      return this.c.a(this.c()).b();
+   }
+
+   @Override
+   public int y() {
+      return this.c.a(this.c()).a() * 9;
+   }
+
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+      ftt $$4 = this.c.a(this.c());
+      int $$5 = this.F();
+      int $$6 = this.G();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.A() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   private static void a(fsh $$0, alg $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
-      int $$7 = 8 + ($$5 ? 8 : 0);
-      int $$8 = 8 * ($$5 ? -1 : 1);
-      $$0.a(gqx::H, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
+   private ftu.a c() {
+      return new ftu.a(this.B(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
+
+   static record a(wy a, int b, OptionalInt c) {
    }
 }

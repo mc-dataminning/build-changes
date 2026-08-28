@@ -1,127 +1,108 @@
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
-import java.util.function.ToIntFunction;
 
-public class dnd extends dle implements dtx {
-   public static final MapCodec<dnd> c = b(dnd::new);
-   public static final int d = 1;
-   public static final int e = 4;
-   public static final ebo f = ebe.aC;
-   public static final ebf g = dle.b;
-   public static final ebf h = ebe.I;
-   public static final ToIntFunction<eao> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
-   private static final Int2ObjectMap<List<fex>> D = ag.a(
-      new Int2ObjectOpenHashMap(4),
-      $$0 -> {
-         float $$1 = 0.0625F;
-         $$0.put(1, List.of(new fex(8.0, 8.0, 8.0).c(0.0625)));
-         $$0.put(2, List.of(new fex(6.0, 7.0, 8.0).c(0.0625), new fex(10.0, 8.0, 7.0).c(0.0625)));
-         $$0.put(3, List.of(new fex(8.0, 5.0, 10.0).c(0.0625), new fex(6.0, 7.0, 8.0).c(0.0625), new fex(9.0, 8.0, 7.0).c(0.0625)));
-         $$0.put(
-            4, List.of(new fex(7.0, 5.0, 9.0).c(0.0625), new fex(10.0, 7.0, 9.0).c(0.0625), new fex(6.0, 7.0, 6.0).c(0.0625), new fex(9.0, 8.0, 6.0).c(0.0625))
-         );
-      }
-   );
-   private static final ffr[] R = new ffr[]{
-      dmm.b(2.0, 0.0, 6.0), dmm.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0), dmm.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0), dmm.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0)
-   };
+public class dnd extends dmr {
+   public static final MapCodec<dnd> a = b(dnd::new);
+   public static final ebt b = ebj.az;
+   public static final int c = 15;
+   private static final ffw d = dmr.b(14.0, 0.0, 16.0);
+   private static final ffw e = dmr.b(14.0, 0.0, 15.0);
+   private static final int f = 3;
+   private static final int g = 8;
+   private static final double h = 0.1;
+   private static final double i = 0.25;
 
    @Override
    public MapCodec<dnd> a() {
-      return c;
+      return a;
    }
 
-   public dnd(ean.d $$0) {
+   protected dnd(eas.d $$0) {
       super($$0);
-      this.l(this.C.b().b(f, Integer.valueOf(1)).b(g, Boolean.valueOf(false)).b(h, Boolean.valueOf(false)));
+      this.l(this.C.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected bug a(czk $$0, eao $$1, djh $$2, iv $$3, crj $$4, buf $$5, fet $$6) {
-      if ($$0.f() && $$4.gj().e && $$1.c(g)) {
-         a($$4, $$1, $$2, $$3);
-         return bug.a;
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   protected boolean a(eao $$0, ddd $$1) {
-      return !$$1.h() && $$1.n().h() == this.h() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
-   }
+   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
+      iv $$4 = $$2.d();
+      if ($$1.v($$4)) {
+         int $$5 = 1;
+         int $$6 = $$0.c(b);
 
-   @Override
-   public eao a(ddd $$0) {
-      eao $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         return $$1.a(f);
-      } else {
-         ewv $$2 = $$0.q().b_($$0.a());
-         boolean $$3 = $$2.a() == eww.c;
-         return super.a($$0).b(h, Boolean.valueOf($$3));
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            if (++$$5 == 3 && $$6 == 15) {
+               return;
+            }
+         }
+
+         if ($$6 == 8 && this.a(this.m(), $$1, $$2.d())) {
+            double $$7 = $$5 >= 3 ? 0.25 : 0.1;
+            if ($$3.j() <= $$7) {
+               $$1.b($$4, dmt.eh.m());
+            }
+         } else if ($$6 == 15 && $$5 < 3) {
+            $$1.b($$4, this.m());
+            eat $$8 = $$0.b(b, Integer.valueOf(0));
+            $$1.a($$2, $$8, 260);
+            $$1.a($$8, $$4, this, null, false);
+         }
+
+         if ($$6 < 15) {
+            $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 260);
+         }
       }
    }
 
    @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if ($$0.c(h)) {
-         $$2.a($$3, eww.c, eww.c.a($$1));
+   protected ffw b(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return e;
+   }
+
+   @Override
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return d;
+   }
+
+   @Override
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected ewv b_(eao $$0) {
-      return $$0.c(h) ? eww.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return R[$$0.c(f) - 1];
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(f, g, h);
-   }
-
-   @Override
-   public boolean a(dji $$0, iv $$1, eao $$2, ewv $$3) {
-      if (!$$2.c(h) && $$3.a() == eww.c) {
-         eao $$4 = $$2.b(h, Boolean.valueOf(true));
-         if ($$2.c(g)) {
-            a(null, $$4, $$0, $$1);
-         } else {
-            $$0.a($$1, $$4, 3);
+   protected boolean a(eat $$0, djp $$1, iv $$2) {
+      for (jb $$3 : jb.c.a) {
+         eat $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(axh.b)) {
+            return false;
          }
-
-         $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         return true;
-      } else {
-         return false;
       }
-   }
 
-   public static boolean h(eao $$0) {
-      return $$0.a(axc.ag, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
-   }
-
-   @Override
-   protected Iterable<fex> b(eao $$0) {
-      return (Iterable<fex>)D.get($$0.c(f));
+      eat $$5 = $$1.a_($$2.e());
+      return ($$5.a(dmt.eg) || $$5.a(axc.J)) && !$$1.a_($$2.d()).n();
    }
 
    @Override
-   protected boolean d(eao $$0) {
-      return !$$0.c(h) && super.d($$0);
+   protected void a(eat $$0, djm $$1, iv $$2, bwi $$3, bxb $$4) {
+      $$3.a($$1.al().k(), 1.0F);
    }
 
    @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      return dmm.a($$1, $$2.e(), jb.b);
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(eat $$0, exp $$1) {
+      return false;
    }
 }

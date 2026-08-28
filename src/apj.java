@@ -25,9 +25,9 @@ public class apj {
       );
    }
 
-   public static bwi a(ej $$0, jf.c<bwr<?>> $$1, fex $$2, tz $$3, boolean $$4) throws CommandSyntaxException {
+   public static bwi a(ej $$0, jf.c<bwr<?>> $$1, ffc $$2, tz $$3, boolean $$4) throws CommandSyntaxException {
       iv $$5 = iv.a((jp)$$2);
-      if (!djh.l($$5)) {
+      if (!djm.l($$5)) {
          throw c.create();
       } else {
          tz $$6 = $$3.i();
@@ -53,7 +53,7 @@ public class apj {
       }
    }
 
-   private static int b(ej $$0, jf.c<bwr<?>> $$1, fex $$2, tz $$3, boolean $$4) throws CommandSyntaxException {
+   private static int b(ej $$0, jf.c<bwr<?>> $$1, ffc $$2, tz $$3, boolean $$4) throws CommandSyntaxException {
       bwi $$5 = a($$0, $$1, $$2, $$3, $$4);
       $$0.a(() -> wy.a("commands.summon.success", $$5.m_()), true);
       return 1;

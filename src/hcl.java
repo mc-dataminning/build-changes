@@ -1,3 +1,5 @@
-public class hcl extends heu {
-   public boolean a;
+public class hcl extends hdf {
+   public float a;
+   public float b;
+   public float c;
 }

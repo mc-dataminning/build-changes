@@ -1,15 +1,17 @@
-public class hkk extends hko {
-   private static final alg a = alg.b("back");
+import java.io.IOException;
 
-   public hkk(hjm $$0) {
-      super($$0, alg.b("textures/atlas/paintings.png"), hli.j);
+public class hkk extends avi<int[]> {
+   private static final alg a = alg.b("textures/colormap/foliage.png");
+
+   protected int[] a(avd $$0, bqq $$1) {
+      try {
+         return hkn.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
    }
 
-   public hjk a(cnk $$0) {
-      return this.a($$0.d());
-   }
-
-   public hjk a() {
-      return this.a(a);
+   protected void a(int[] $$0, avd $$1, bqq $$2) {
+      djh.a($$0);
    }
 }

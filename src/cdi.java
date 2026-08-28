@@ -82,8 +82,8 @@ public class cdi implements cde {
          this.d.w(this.b(this.d.dK(), $$13, 90.0F));
          this.d.B((float)(this.h * this.d.h(byp.v)));
          iv $$14 = this.d.du();
-         eao $$15 = this.d.dU().a_($$14);
-         ffr $$16 = $$15.g(this.d.dU(), $$14);
+         eat $$15 = this.d.dU().a_($$14);
+         ffw $$16 = $$15.g(this.d.dU(), $$14);
          if ($$11 > (double)this.d.dO() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dp())
             || !$$16.c() && this.d.dB() < $$16.c(jb.a.b) + (double)$$14.v() && !$$15.a(axc.q) && !$$15.a(axc.U)) {
             this.d.N().a();
@@ -102,8 +102,8 @@ public class cdi implements cde {
    private boolean b(float $$0, float $$1) {
       cgt $$2 = this.d.O();
       if ($$2 != null) {
-         exi $$3 = $$2.n();
-         if ($$3 != null && $$3.a(this.d, iv.a(this.d.dz() + (double)$$0, (double)this.d.dA(), this.d.dF() + (double)$$1)) != exm.c) {
+         exn $$3 = $$2.n();
+         if ($$3 != null && $$3.a(this.d, iv.a(this.d.dz() + (double)$$0, (double)this.d.dA(), this.d.dF() + (double)$$1)) != exr.c) {
             return false;
          }
       }

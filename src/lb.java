@@ -3,15 +3,15 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record lb(Optional<bg<asi<String>, lb.a>> c) implements dl<dct> {
+public record lb(Optional<bg<asi<String>, lb.a>> c) implements dl<dcw> {
    public static final Codec<lb> a = RecordCodecBuilder.create($$0 -> $$0.group(bg.a(lb.a.a).optionalFieldOf("pages").forGetter(lb::b)).apply($$0, lb::new));
 
    @Override
-   public kj<dct> a() {
+   public kj<dcw> a() {
       return kk.U;
    }
 
-   public boolean a(dct $$0) {
+   public boolean a(dcw $$0) {
       return !this.c.isPresent() || this.c.get().a($$0.a());
    }
 

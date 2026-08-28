@@ -4,9 +4,9 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class can {
-   public static bzb<cqv> a() {
+   public static bzb<cqy> a() {
       return ccn.a(
-         (Function<ccn.b<cqv>, ? extends App<ccn.c<cqv>, ccq<cqv>>>)($$0 -> $$0.group($$0.b(cgl.c), $$0.b(cgl.g))
+         (Function<ccn.b<cqy>, ? extends App<ccn.c<cqy>, ccq<cqy>>>)($$0 -> $$0.group($$0.b(cgl.c), $$0.b(cgl.g))
                .apply(
                   $$0,
                   ($$1, $$2) -> ($$3, $$4, $$5) -> {
@@ -16,8 +16,8 @@ public class can {
                            .ifPresent(
                               $$4x -> $$0.<List<bxj>>b($$2)
                                     .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cqv && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cqv)$$0xxxx)
+                                    .filter($$1xxx -> $$1xxx instanceof cqy && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cqy)$$0xxxx)
                                     .filter(bxj::bI)
                                     .filter($$2xxx -> a($$6, $$4x, $$2xxx))
                                     .reduce($$4, can::a)
@@ -28,9 +28,9 @@ public class can {
       );
    }
 
-   private static cqv a(cqv $$0, cqv $$1) {
-      cqv $$2;
-      cqv $$3;
+   private static cqy a(cqy $$0, cqy $$1) {
+      cqy $$2;
+      cqy $$3;
       if ($$0.t() > $$1.t()) {
          $$2 = $$0;
          $$3 = $$1;
@@ -43,12 +43,12 @@ public class can {
       return $$2;
    }
 
-   private static boolean a(je $$0, jf<cio> $$1, cqv $$2) {
+   private static boolean a(je $$0, jf<cio> $$1, cqy $$2) {
       Optional<je> $$3 = $$2.eb().c(cgl.c);
       return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gB().b());
    }
 
-   private static boolean a(jf<cio> $$0, jf<cqy> $$1) {
+   private static boolean a(jf<cio> $$0, jf<crb> $$1) {
       return $$1.a().b().test($$0);
    }
 }

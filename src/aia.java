@@ -1,5 +1,5 @@
-public record aia(dfj b) implements zf<agp> {
-   public static final yw<vu, aia> a = yw.a(dfj.a, aia::b, aia::new);
+public record aia(dfm b) implements zf<agp> {
+   public static final yw<vu, aia> a = yw.a(dfm.a, aia::b, aia::new);
 
    @Override
    public zh<aia> a() {

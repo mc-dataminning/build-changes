@@ -1,86 +1,34 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-
-public class fjj implements AutoCloseable {
-   private static final int a = -1;
-   private final alg b;
-   private int c;
-
-   private fjj(int $$0, alg $$1) {
-      this.b = $$1;
-      this.c = $$0;
+public record fjj(int a, int b, boolean c, int d) implements fjk<fij> {
+   public fij a() {
+      return new fik(null, this.a, this.b, this.c);
    }
 
-   public static fjj a(alg $$0, fjj.a $$1, String $$2) throws gre.b {
-      RenderSystem.assertOnRenderThread();
-      int $$3 = GlStateManager.glCreateShader($$1.b());
-      GlStateManager.glShaderSource($$3, $$2);
-      GlStateManager.glCompileShader($$3);
-      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
-         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
-         throw new gre.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
-      } else {
-         return new fjj($$3, $$0);
-      }
+   public void a(fij $$0) {
+      $$0.b(axw.j(this.d), axw.k(this.d), axw.l(this.d), axw.i(this.d));
+   }
+
+   public void b(fij $$0) {
+      $$0.a();
    }
 
    @Override
-   public void close() {
-      if (this.c == -1) {
-         throw new IllegalStateException("Already closed");
-      } else {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager.glDeleteShader(this.c);
-         this.c = -1;
-      }
-   }
-
-   public alg a() {
-      return this.b;
+   public boolean a(fjk<?> $$0) {
+      return !($$0 instanceof fjj $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
    }
 
    public int b() {
+      return this.a;
+   }
+
+   public int c() {
+      return this.b;
+   }
+
+   public boolean d() {
       return this.c;
    }
 
-   public static enum a {
-      a("vertex", ".vsh", 35633),
-      b("fragment", ".fsh", 35632);
-
-      private static final fjj.a[] c = values();
-      private final String d;
-      private final String e;
-      private final int f;
-
-      private a(final String $$0, final String $$1, final int $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
-
-      @Nullable
-      public static fjj.a a(alg $$0) {
-         for (fjj.a $$1 : c) {
-            if ($$0.a().endsWith($$1.e)) {
-               return $$1;
-            }
-         }
-
-         return null;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public int b() {
-         return this.f;
-      }
-
-      public akz c() {
-         return new akz("shaders", this.e);
-      }
+   public int e() {
+      return this.d;
    }
 }

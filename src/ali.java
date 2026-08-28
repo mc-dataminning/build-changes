@@ -25,8 +25,8 @@ public class ali {
          if (mg.aF.i().isEmpty()) {
             throw new IllegalStateException("Unable to load registries");
          } else {
-            dpo.b();
-            dny.b();
+            dpt.b();
+            dod.b();
             if (bwr.a(bwr.bS) == null) {
                throw new IllegalStateException("Failed loading EntityTypes");
             } else {
@@ -34,7 +34,7 @@ public class ali {
                lh.a();
                kc.a();
                mg.a();
-               cyc.a();
+               cyf.a();
                d();
                b.set(Duration.between($$0, Instant.now()).toMillis());
             }
@@ -54,10 +54,10 @@ public class ali {
 
    private static void a(final Set<String> $$0) {
       final tu $$1 = tu.a();
-      djd $$2 = new djd(cuv.e.a());
-      $$2.a(new djd.c() {
+      dji $$2 = new dji(cuy.e.a());
+      $$2.a(new dji.c() {
          @Override
-         public <T extends djd.g<T>> void a(djd.e<T> $$0x, djd.f<T> $$1x) {
+         public <T extends dji.g<T>> void a(dji.e<T> $$0x, dji.f<T> $$1x) {
             if (!$$1.b($$0.b())) {
                $$0.add($$0.a());
             }
@@ -70,8 +70,8 @@ public class ali {
       a(mg.s, byk::c, $$0);
       a(mg.f, bwr::g, $$0);
       a(mg.d, bvk::f, $$0);
-      a(mg.g, czg::j, $$0);
-      a(mg.e, ean::v, $$0);
+      a(mg.g, czj::j, $$0);
+      a(mg.e, eas::v, $$0);
       a(mg.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
       a($$0);
       return $$0;

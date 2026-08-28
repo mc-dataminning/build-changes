@@ -1,241 +1,221 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class eri {
-   public static final Codec<eri> a = mg.R.q().dispatch(eri::e, err::codec);
-   public static final Codec<jf<eri>> b = alc.a(mh.be, a);
-   protected final eri.c c;
+public class eri {
+   private static final Map<String, String> a = ag.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("Village", "Village");
+      $$0.put("Mineshaft", "Mineshaft");
+      $$0.put("Mansion", "Mansion");
+      $$0.put("Igloo", "Temple");
+      $$0.put("Desert_Pyramid", "Temple");
+      $$0.put("Jungle_Pyramid", "Temple");
+      $$0.put("Swamp_Hut", "Temple");
+      $$0.put("Stronghold", "Stronghold");
+      $$0.put("Monument", "Monument");
+      $$0.put("Fortress", "Fortress");
+      $$0.put("EndCity", "EndCity");
+   });
+   private static final Map<String, String> b = ag.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("Iglu", "Igloo");
+      $$0.put("TeDP", "Desert_Pyramid");
+      $$0.put("TeJP", "Jungle_Pyramid");
+      $$0.put("TeSH", "Swamp_Hut");
+   });
+   private static final Set<String> c = Set.of(
+      "pillager_outpost",
+      "mineshaft",
+      "mansion",
+      "jungle_pyramid",
+      "desert_pyramid",
+      "igloo",
+      "ruined_portal",
+      "shipwreck",
+      "swamp_hut",
+      "stronghold",
+      "monument",
+      "ocean_ruin",
+      "fortress",
+      "endcity",
+      "buried_treasure",
+      "village",
+      "nether_fossil",
+      "bastion_remnant"
+   );
+   private final boolean d;
+   private final Map<String, Long2ObjectMap<tz>> e = Maps.newHashMap();
+   private final Map<String, erq> f = Maps.newHashMap();
+   private final List<String> g;
+   private final List<String> h;
 
-   public static <S extends eri> RecordCodecBuilder<S, eri.c> a(Instance<S> $$0) {
-      return eri.c.a.forGetter($$0x -> $$0x.c);
+   public eri(@Nullable ezb $$0, List<String> $$1, List<String> $$2) {
+      this.g = $$1;
+      this.h = $$2;
+      this.a($$0);
+      boolean $$3 = false;
+
+      for (String $$4 : this.h) {
+         $$3 |= this.e.get($$4) != null;
+      }
+
+      this.d = $$3;
    }
 
-   public static <S extends eri> MapCodec<S> a(Function<eri.c, S> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(a($$1)).apply($$1, $$0));
+   public void a(long $$0) {
+      for (String $$1 : this.g) {
+         erq $$2 = this.f.get($$1);
+         if ($$2 != null && $$2.c($$0)) {
+            $$2.d($$0);
+         }
+      }
    }
 
-   protected eri(eri.c $$0) {
-      this.c = $$0;
-   }
+   public tz a(tz $$0) {
+      tz $$1 = $$0.n("Level");
+      dir $$2 = new dir($$1.f("xPos"), $$1.f("zPos"));
+      if (this.a($$2.h, $$2.i)) {
+         $$0 = this.a($$0, $$2);
+      }
 
-   public jj<dkk> a() {
-      return this.c.b;
-   }
+      tz $$3 = $$1.n("Structures");
+      tz $$4 = $$3.n("References");
 
-   public Map<bxm, erp> b() {
-      return this.c.c;
-   }
+      for (String $$5 : this.h) {
+         boolean $$6 = c.contains($$5.toLowerCase(Locale.ROOT));
+         if (!$$4.b($$5, 12) && $$6) {
+            int $$7 = 8;
+            LongList $$8 = new LongArrayList();
 
-   public egj.a c() {
-      return this.c.d;
-   }
-
-   public ert d() {
-      return this.c.e;
-   }
-
-   public era a(era $$0) {
-      return this.d() != ert.a ? $$0.a(12) : $$0;
-   }
-
-   public erq a(jf<eri> $$0, alf<djh> $$1, jt $$2, ecm $$3, dko $$4, ehb $$5, evl $$6, long $$7, dio $$8, int $$9, djj $$10, Predicate<jf<dkk>> $$11) {
-      brb $$12 = bqy.f.a($$8, $$1, $$0);
-      eri.a $$13 = new eri.a($$2, $$3, $$4, $$5, $$6, $$7, $$8, $$10, $$11);
-      Optional<eri.b> $$14 = this.b($$13);
-      if ($$14.isPresent()) {
-         esa $$15 = $$14.get().a();
-         erq $$16 = new erq(this, $$8, $$9, $$15.a());
-         if ($$16.b()) {
-            if ($$12 != null) {
-               $$12.finish(true);
+            for (int $$9 = $$2.h - 8; $$9 <= $$2.h + 8; $$9++) {
+               for (int $$10 = $$2.i - 8; $$10 <= $$2.i + 8; $$10++) {
+                  if (this.a($$9, $$10, $$5)) {
+                     $$8.add(dir.c($$9, $$10));
+                  }
+               }
             }
 
-            return $$16;
+            $$4.c($$5, $$8);
          }
       }
 
-      if ($$12 != null) {
-         $$12.finish(false);
-      }
-
-      return erq.b;
+      $$3.a("References", $$4);
+      $$1.a("Structures", $$3);
+      $$0.a("Level", $$1);
+      return $$0;
    }
 
-   protected static Optional<eri.b> a(eri.a $$0, egn.a $$1, Consumer<esa> $$2) {
-      dio $$3 = $$0.h();
-      int $$4 = $$3.b();
-      int $$5 = $$3.c();
-      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
-      return Optional.of(new eri.b(new iv($$4, $$6, $$5), $$2));
+   private boolean a(int $$0, int $$1, String $$2) {
+      return !this.d ? false : this.e.get($$2) != null && this.f.get(a.get($$2)).b(dir.c($$0, $$1));
    }
 
-   private static boolean a(eri.b $$0, eri.a $$1) {
-      iv $$2 = $$0.b();
-      return $$1.j.test($$1.b.d().getNoiseBiome(jq.a($$2.u()), jq.a($$2.v()), jq.a($$2.w()), $$1.d.b()));
-   }
-
-   public void a(dkg $$0, dkd $$1, ecm $$2, azv $$3, era $$4, dio $$5, erx $$6) {
-   }
-
-   private static int[] c(eri.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      ecm $$5 = $$0.b();
-      djj $$6 = $$0.i();
-      ehb $$7 = $$0.d();
-      return new int[]{
-         $$5.c($$1, $$3, egn.a.a, $$6, $$7),
-         $$5.c($$1, $$3 + $$4, egn.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3, egn.a.a, $$6, $$7),
-         $$5.c($$1 + $$2, $$3 + $$4, egn.a.a, $$6, $$7)
-      };
-   }
-
-   public static int a(eri.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      int[] $$5 = c($$0, $$1, $$2, $$3, $$4);
-      return ($$5[0] + $$5[1] + $$5[2] + $$5[3]) / 4;
-   }
-
-   protected static int a(eri.a $$0, int $$1, int $$2) {
-      dio $$3 = $$0.h();
-      int $$4 = $$3.d();
-      int $$5 = $$3.e();
-      return b($$0, $$4, $$5, $$1, $$2);
-   }
-
-   protected static int b(eri.a $$0, int $$1, int $$2, int $$3, int $$4) {
-      int[] $$5 = c($$0, $$1, $$3, $$2, $$4);
-      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
-   }
-
-   @Deprecated
-   protected iv a(eri.a $$0, dtg $$1) {
-      int $$2 = 5;
-      int $$3 = 5;
-      if ($$1 == dtg.b) {
-         $$2 = -5;
-      } else if ($$1 == dtg.c) {
-         $$2 = -5;
-         $$3 = -5;
-      } else if ($$1 == dtg.d) {
-         $$3 = -5;
-      }
-
-      dio $$4 = $$0.h();
-      int $$5 = $$4.a(7);
-      int $$6 = $$4.b(7);
-      return new iv($$5, b($$0, $$5, $$6, $$2, $$3), $$6);
-   }
-
-   protected abstract Optional<eri.b> a(eri.a var1);
-
-   public Optional<eri.b> b(eri.a $$0) {
-      return this.a($$0).filter($$1 -> a($$1, $$0));
-   }
-
-   public abstract err<?> e();
-
-   public static record a(jt a, ecm b, dko c, ehb d, evl e, ehm f, long g, dio h, djj i, Predicate<jf<dkk>> j) {
-
-      public a(jt $$0, ecm $$1, dko $$2, ehb $$3, evl $$4, long $$5, dio $$6, djj $$7, Predicate<jf<dkk>> $$8) {
-         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
-      }
-
-      private static ehm a(long $$0, dio $$1) {
-         ehm $$2 = new ehm(new ego(0L));
-         $$2.c($$0, $$1.h, $$1.i);
-         return $$2;
-      }
-   }
-
-   public static record b(iv a, Either<Consumer<esa>, esa> b) {
-      public b(iv $$0, Consumer<esa> $$1) {
-         this($$0, Either.left($$1));
-      }
-
-      public esa a() {
-         return (esa)this.b.map($$0 -> {
-            esa $$1 = new esa();
-            $$0.accept($$1);
-            return $$1;
-         }, $$0 -> $$0);
-      }
-
-      public iv b() {
-         return this.a;
-      }
-
-      public Either<Consumer<esa>, esa> c() {
-         return this.b;
-      }
-   }
-
-   public static record c(jj<dkk> b, Map<bxm, erp> c, egj.a d, ert e) {
-      static final eri.c f = new eri.c(jj.a(), Map.of(), egj.a.e, ert.a);
-      public static final MapCodec<eri.c> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ju.a(mh.aG).fieldOf("biomes").forGetter(eri.c::a),
-                  Codec.simpleMap(bxm.i, erp.a, bak.a(bxm.values())).fieldOf("spawn_overrides").forGetter(eri.c::b),
-                  egj.a.l.fieldOf("step").forGetter(eri.c::c),
-                  ert.f.optionalFieldOf("terrain_adaptation", f.e).forGetter(eri.c::d)
-               )
-               .apply($$0, eri.c::new)
-      );
-
-      public c(jj<dkk> $$0) {
-         this($$0, f.c, f.d, f.e);
-      }
-
-      public jj<dkk> a() {
-         return this.b;
-      }
-
-      public Map<bxm, erp> b() {
-         return this.c;
-      }
-
-      public egj.a c() {
-         return this.d;
-      }
-
-      public ert d() {
-         return this.e;
-      }
-
-      public static class a {
-         private final jj<dkk> a;
-         private Map<bxm, erp> b = eri.c.f.c;
-         private egj.a c = eri.c.f.d;
-         private ert d = eri.c.f.e;
-
-         public a(jj<dkk> $$0) {
-            this.a = $$0;
+   private boolean a(int $$0, int $$1) {
+      if (!this.d) {
+         return false;
+      } else {
+         for (String $$2 : this.h) {
+            if (this.e.get($$2) != null && this.f.get(a.get($$2)).c(dir.c($$0, $$1))) {
+               return true;
+            }
          }
 
-         public eri.c.a a(Map<bxm, erp> $$0) {
-            this.b = $$0;
-            return this;
-         }
+         return false;
+      }
+   }
 
-         public eri.c.a a(egj.a $$0) {
-            this.c = $$0;
-            return this;
-         }
+   private tz a(tz $$0, dir $$1) {
+      tz $$2 = $$0.n("Level");
+      tz $$3 = $$2.n("Structures");
+      tz $$4 = $$3.n("Starts");
 
-         public eri.c.a a(ert $$0) {
-            this.d = $$0;
-            return this;
+      for (String $$5 : this.h) {
+         Long2ObjectMap<tz> $$6 = this.e.get($$5);
+         if ($$6 != null) {
+            long $$7 = $$1.a();
+            if (this.f.get(a.get($$5)).c($$7)) {
+               tz $$8 = (tz)$$6.get($$7);
+               if ($$8 != null) {
+                  $$4.a($$5, $$8);
+               }
+            }
          }
+      }
 
-         public eri.c a() {
-            return new eri.c(this.a, this.b, this.c, this.d);
+      $$3.a("Starts", $$4);
+      $$2.a("Structures", $$3);
+      $$0.a("Level", $$2);
+      return $$0;
+   }
+
+   private void a(@Nullable ezb $$0) {
+      if ($$0 != null) {
+         for (String $$1 : this.g) {
+            tz $$2 = new tz();
+
+            try {
+               $$2 = $$0.a($$1, bbb.o, 1493).n("data").n("Features");
+               if ($$2.g()) {
+                  continue;
+               }
+            } catch (IOException var13) {
+            }
+
+            for (String $$3 : $$2.e()) {
+               tz $$4 = $$2.n($$3);
+               long $$5 = dir.c($$4.f("ChunkX"), $$4.f("ChunkZ"));
+               uf $$6 = $$4.d("Children", 10);
+               if (!$$6.isEmpty()) {
+                  String $$7 = $$6.a(0).j("id");
+                  String $$8 = b.get($$7);
+                  if ($$8 != null) {
+                     $$4.a("id", $$8);
+                  }
+               }
+
+               String $$9 = $$4.j("id");
+               this.e.computeIfAbsent($$9, $$0x -> new Long2ObjectOpenHashMap()).put($$5, $$4);
+            }
+
+            String $$10 = $$1 + "_index";
+            erq $$11 = $$0.a(erq.a($$10));
+            if ($$11.a().isEmpty()) {
+               erq $$12 = new erq();
+               this.f.put($$1, $$12);
+
+               for (String $$13 : $$2.e()) {
+                  tz $$14 = $$2.n($$13);
+                  $$12.a(dir.c($$14.f("ChunkX"), $$14.f("ChunkZ")));
+               }
+            } else {
+               this.f.put($$1, $$11);
+            }
          }
+      }
+   }
+
+   public static eri a(alf<djm> $$0, @Nullable ezb $$1) {
+      if ($$0 == djm.i) {
+         return new eri(
+            $$1,
+            ImmutableList.of("Monument", "Stronghold", "Village", "Mineshaft", "Temple", "Mansion"),
+            ImmutableList.of("Village", "Mineshaft", "Mansion", "Igloo", "Desert_Pyramid", "Jungle_Pyramid", "Swamp_Hut", "Stronghold", "Monument")
+         );
+      } else if ($$0 == djm.j) {
+         List<String> $$2 = ImmutableList.of("Fortress");
+         return new eri($$1, $$2, $$2);
+      } else if ($$0 == djm.k) {
+         List<String> $$3 = ImmutableList.of("EndCity");
+         return new eri($$1, $$3, $$3);
+      } else {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown dimension type : %s", $$0));
       }
    }
 }

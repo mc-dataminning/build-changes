@@ -51,7 +51,7 @@ public class cey extends cef {
    }
 
    protected boolean i() {
-      fex $$0 = cic.a(this.c, 5, 4);
+      ffc $$0 = cic.a(this.c, 5, 4);
       if ($$0 == null) {
          return false;
       } else {
@@ -83,7 +83,7 @@ public class cey extends cef {
    }
 
    @Nullable
-   protected iv a(din $$0, bwi $$1, int $$2) {
+   protected iv a(diq $$0, bwi $$1, int $$2) {
       iv $$3 = $$1.du();
       return !$$0.a_($$3).g($$0, $$3).c() ? null : iv.a($$1.du(), $$2, 1, $$1x -> $$0.b_($$1x).a(axh.a)).orElse(null);
    }

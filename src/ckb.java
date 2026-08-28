@@ -2,7 +2,7 @@ public abstract class ckb extends byf {
    private static final int bK = 100;
    private int bL;
 
-   protected ckb(bwr<? extends ckb> $$0, djh $$1) {
+   protected ckb(bwr<? extends ckb> $$0, djm $$1) {
       super($$0, $$1);
    }
 

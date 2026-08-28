@@ -1,48 +1,26 @@
-public class ggd extends ggk<hcu> {
-   public static final gjx a = gjx.scaling(0.5F);
-   private final gjo b;
-   private final gjo c;
-   private final gjo d;
-
-   public ggd(gjo $$0) {
+public class ggd extends ggf {
+   public ggd(gjt $$0) {
       super($$0);
-      this.b = $$0.b("body");
-      this.c = this.b.b("tail");
-      this.d = this.c.b("tail_fin");
    }
 
-   public static gju a() {
-      gjw $$0 = new gjw();
-      gjy $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      gjy $$4 = $$1.a("body", gjt.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), gjq.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", gjt.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), gjq.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         gjt.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         gjq.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      $$4.a(
-         "right_fin",
-         gjt.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         gjq.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      gjy $$5 = $$4.a("tail", gjt.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), gjq.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", gjt.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), gjq.a(0.0F, 0.0F, 9.0F));
-      gjy $$6 = $$4.a("head", gjt.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), gjq.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", gjt.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), gjq.a);
-      return gju.a($$0, 64, 64);
-   }
-
-   public void a(hcu $$0) {
-      super.a($$0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      if ($$0.a) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * azm.b($$0.u * 0.3F));
-         this.c.e = -0.1F * azm.b($$0.u * 0.3F);
-         this.d.e = -0.2F * azm.b($$0.u * 0.3F);
-      }
+   public static gjz a() {
+      gkb $$0 = c();
+      $$0.a()
+         .a(
+            "body",
+            gjy.c()
+               .a(20, 32)
+               .a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, new gjx(0.5F))
+               .a(18, 4)
+               .a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F)
+               .a(52, 0)
+               .a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+            gjv.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+         );
+      gkd $$1 = $$0.a()
+         .a("head", gjy.c().a(0, 0).a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F).a(8, 32).a(-3.0F, 0.99F, -7.0F, 6.0F, 3.0F, 2.0F), gjv.a(0.0F, 4.0F, -8.0F));
+      $$1.a("right_horn", gjy.c().a(0, 32).a(-1.5F, -4.5F, -0.5F, 2.0F, 6.0F, 2.0F), gjv.a(-4.5F, -2.5F, -3.5F, 1.5708F, 0.0F, 0.0F));
+      $$1.a("left_horn", gjy.c().a().a(0, 32).a(-1.5F, -3.0F, -0.5F, 2.0F, 6.0F, 2.0F), gjv.a(5.5F, -2.5F, -5.0F, 1.5708F, 0.0F, 0.0F));
+      return gjz.a($$0, 64, 64);
    }
 }

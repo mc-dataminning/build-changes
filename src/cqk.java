@@ -1,44 +1,32 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public enum cqk {
-   a(0, awn.CL, awn.CT),
-   b(40, awn.CK, awn.CU),
-   c(80, awn.CM, awn.CU);
+public class cqk {
+   public static bzb<bxj> a(int $$0, int $$1) {
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$2 -> $$2.group($$2.b(cgl.ae), $$2.b(cgl.M), $$2.a(cgl.af), $$2.a(cgl.ag))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.fb().f()) {
+                        return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
 
-   private static final cqk[] d = ag.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final awm f;
-   private final awm g;
-
-   private cqk(final int $$0, final awm $$1, final awm $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public awm b() {
-      return this.f;
-   }
-
-   public awm c() {
-      return this.g;
-   }
-
-   public static cqk a(int $$0) {
-      for (cqk $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+                        return true;
+                     }
+                  }))
+      );
    }
 }

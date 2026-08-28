@@ -1,30 +1,25 @@
-public class eyu {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public class eyu extends eym {
+   private static final int c = -1;
+   public static final Codec<eyu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.optionalFieldOf("map", -1).forGetter($$0x -> $$0x.d)).apply($$0, eyu::new)
+   );
+   public static final eyn<eyu> b = new eyn<>("idcounts", eyu::new, a, bbb.k);
+   private int d;
+
+   public eyu() {
+      this(-1);
+   }
 
    public eyu(int $$0) {
-      this($$0, a);
+      this.d = $$0;
    }
 
-   public eyu(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public boolean a() {
-      return !this.c.equals(a);
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(eyu $$0) {
-      return this.b().equals($$0.b());
+   public eyt a() {
+      eyt $$0 = new eyt(++this.d);
+      this.f();
+      return $$0;
    }
 }

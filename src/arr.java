@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class arr extends crj {
+public class arr extends crm {
    private static final Logger cq = LogUtils.getLogger();
    private static final int cr = 32;
    private static final int cs = 10;
@@ -45,7 +45,7 @@ public class arr extends crj {
    private int cG = -99999999;
    private boolean cH = true;
    private int cI = -99999999;
-   private crg cJ = crg.a;
+   private crj cJ = crj.a;
    private ari cK = ari.a;
    private boolean cL = true;
    private long cM = ag.c();
@@ -55,17 +55,17 @@ public class arr extends crj {
    public boolean i;
    private final aws cP;
    @Nullable
-   private fex cQ;
+   private ffc cQ;
    private int cR;
    private boolean cS;
    private int cT = 2;
    private String cU = "en_us";
    @Nullable
-   private fex cV;
+   private ffc cV;
    @Nullable
-   private fex cW;
+   private ffc cW;
    @Nullable
-   private fex cX;
+   private ffc cX;
    private jy cY = jy.a(0, 0, 0);
    private aqz cZ = aqz.a;
    @Nullable
@@ -74,15 +74,15 @@ public class arr extends crj {
    private boolean dc;
    private boolean dd;
    private boolean de;
-   private cqo df = new cqo();
+   private cqr df = new cqr();
    @Nullable
    private iv dg;
-   private fex dh = fex.c;
-   private crh di = crh.b;
-   private final Set<cso> dj = new HashSet<>();
-   private final cvr dk = new cvr() {
+   private ffc dh = ffc.c;
+   private crk di = crk.b;
+   private final Set<csr> dj = new HashSet<>();
+   private final cvu dk = new cvu() {
       @Override
-      public void a(cvc $$0, jo<czk> $$1, czk $$2, int[] $$3) {
+      public void a(cvf $$0, jo<czn> $$1, czn $$2, int[] $$3) {
          arr.this.f.b(new aco($$0.l, $$0.k(), $$1, $$2));
 
          for (int $$4 = 0; $$4 < $$3.length; $$4++) {
@@ -91,29 +91,29 @@ public class arr extends crj {
       }
 
       @Override
-      public void a(cvc $$0, int $$1, czk $$2) {
+      public void a(cvf $$0, int $$1, czn $$2) {
          arr.this.f.b(new acq($$0.l, $$0.k(), $$1, $$2));
       }
 
       @Override
-      public void a(cvc $$0, czk $$1) {
+      public void a(cvf $$0, czn $$1) {
          arr.this.f.b(new afa($$1.v()));
       }
 
       @Override
-      public void a(cvc $$0, int $$1, int $$2) {
+      public void a(cvf $$0, int $$1, int $$2) {
          this.b($$0, $$1, $$2);
       }
 
-      private void b(cvc $$0, int $$1, int $$2) {
+      private void b(cvf $$0, int $$1, int $$2) {
          arr.this.f.b(new acp($$0.l, $$1, $$2));
       }
    };
-   private final cvq dl = new cvq() {
+   private final cvt dl = new cvt() {
       @Override
-      public void a(cvc $$0, int $$1, czk $$2) {
-         cwz $$3 = $$0.b($$1);
-         if (!($$3 instanceof cwv)) {
+      public void a(cvf $$0, int $$1, czn $$2) {
+         cxc $$3 = $$0.b($$1);
+         if (!($$3 instanceof cwy)) {
             if ($$3.c == arr.this.gi()) {
                aq.f.a(arr.this, arr.this.gi(), $$2);
             }
@@ -121,7 +121,7 @@ public class arr extends crj {
       }
 
       @Override
-      public void a(cvc $$0, int $$1, int $$2) {
+      public void a(cvf $$0, int $$1, int $$2) {
       }
    };
    @Nullable
@@ -131,7 +131,7 @@ public class arr extends crj {
    private final ei dn = new ei() {
       @Override
       public boolean t_() {
-         return arr.this.y().O().c(djd.q);
+         return arr.this.y().O().c(dji.q);
       }
 
       @Override
@@ -158,7 +158,7 @@ public class arr extends crj {
       this.h = $$0.b(this);
       this.cP = new aws(($$1x, $$2x) -> $$0.aI().a($$1x, $$2x));
       this.g = $$0;
-      this.cy = $$0.ag().a((crj)this);
+      this.cy = $$0.ag().a((crm)this);
       this.cx = $$0.ag().g(this);
       this.b(this.a($$1, $$1.aa()).c(), 0.0F, 0.0F);
       this.a($$3);
@@ -167,9 +167,9 @@ public class arr extends crj {
 
    @Override
    public iv a(arq $$0, iv $$1) {
-      fes $$2 = this.a(bxv.a).a(fex.c);
+      fex $$2 = this.a(bxv.a).a(ffc.c);
       iv $$3 = $$1;
-      if ($$0.B_().g() && $$0.p().aZ().k() != dje.c) {
+      if ($$0.B_().g() && $$0.p().aZ().k() != djj.c) {
          int $$4 = Math.max(0, this.g.a($$0));
          int $$5 = azm.a($$0.A_().b((double)$$1.u(), (double)$$1.w()));
          if ($$5 < $$4) {
@@ -225,7 +225,7 @@ public class arr extends crj {
       return $$3;
    }
 
-   private boolean a(arq $$0, fes $$1) {
+   private boolean a(arq $$0, fex $$1) {
       return $$0.a(this, $$1, true);
    }
 
@@ -236,8 +236,8 @@ public class arr extends crj {
    @Override
    public void a(tz $$0) {
       super.a($$0);
-      this.df = $$0.<cqo>a("warden_spawn_tracker", cqo.a).orElseGet(cqo::new);
-      this.cW = $$0.<fex>a("entered_nether_pos", fex.a).orElse(null);
+      this.df = $$0.<cqr>a("warden_spawn_tracker", cqr.a).orElseGet(cqr::new);
+      this.cW = $$0.<ffc>a("entered_nether_pos", ffc.a).orElse(null);
       this.i = $$0.o("seenCredits");
       if ($$0.b("recipeBook", 10)) {
          this.cP.a($$0.n("recipeBook"), $$0x -> this.g.aI().b($$0x).isPresent());
@@ -255,10 +255,10 @@ public class arr extends crj {
    @Override
    public void b(tz $$0) {
       super.b($$0);
-      $$0.a("warden_spawn_tracker", cqo.a, this.df);
+      $$0.a("warden_spawn_tracker", cqr.a, this.df);
       this.m($$0);
       $$0.a("seenCredits", this.i);
-      $$0.b("entered_nether_pos", fex.a, this.cW);
+      $$0.b("entered_nether_pos", ffc.a, this.cW);
       this.k($$0);
       $$0.a("recipeBook", this.cP.b());
       $$0.a("Dimension", this.dU().aj().a().toString());
@@ -316,13 +316,13 @@ public class arr extends crj {
       if (!this.dj.isEmpty()) {
          uf $$1 = new uf();
 
-         for (cso $$2 : this.dj) {
+         for (csr $$2 : this.dj) {
             if ($$2.dP()) {
                cq.warn("Trying to save removed ender pearl, skipping");
             } else {
                tz $$3 = new tz();
                $$2.e($$3);
-               $$3.a("ender_pearl_dimension", djh.h, $$2.dU().aj());
+               $$3.a("ender_pearl_dimension", djm.h, $$2.dU().aj());
                $$1.add($$3);
             }
          }
@@ -335,7 +335,7 @@ public class arr extends crj {
       if ($$0.isPresent() && $$0.get().b("ender_pearls", 9) && $$0.get().a("ender_pearls") instanceof uf $$2) {
          $$2.forEach($$0x -> {
             if ($$0x instanceof tz $$1 && $$1.c("ender_pearl_dimension")) {
-               Optional<alf<djh>> $$2x = $$1.a("ender_pearl_dimension", djh.h);
+               Optional<alf<djm>> $$2x = $$1.a("ender_pearl_dimension", djm.h);
                if ($$2x.isEmpty()) {
                   cq.warn("No dimension defined for ender pearl, skipping");
                   return;
@@ -376,12 +376,12 @@ public class arr extends crj {
    }
 
    @Override
-   public void a(czk $$0, int $$1) {
+   public void a(czn $$0, int $$1) {
       super.a($$0, $$1);
       this.cI = -1;
    }
 
-   private void a(cvc $$0) {
+   private void a(cvf $$0) {
       $$0.a(this.dl);
       $$0.a(this.dk);
    }
@@ -403,13 +403,13 @@ public class arr extends crj {
    }
 
    @Override
-   public void a(eao $$0) {
+   public void a(eat $$0) {
       aq.e.a(this, $$0);
    }
 
    @Override
-   protected czh g() {
-      return new dai(this);
+   protected czk g() {
+      return new dal(this);
    }
 
    @Override
@@ -478,7 +478,7 @@ public class arr extends crj {
          }
 
          for (int $$0 = 0; $$0 < this.gi().b(); $$0++) {
-            czk $$1 = this.gi().a($$0);
+            czn $$1 = this.gi().a($$0);
             if (!$$1.f()) {
                this.i($$1);
             }
@@ -493,32 +493,32 @@ public class arr extends crj {
 
          if (this.eF() + this.fv() != this.cz) {
             this.cz = this.eF() + this.fv();
-            this.a(fgf.h, azm.f(this.cz));
+            this.a(fgk.h, azm.f(this.cz));
          }
 
          if (this.bS.a() != this.cA) {
             this.cA = this.bS.a();
-            this.a(fgf.i, azm.f((float)this.cA));
+            this.a(fgk.i, azm.f((float)this.cA));
          }
 
          if (this.cr() != this.cB) {
             this.cB = this.cr();
-            this.a(fgf.j, azm.f((float)this.cB));
+            this.a(fgk.j, azm.f((float)this.cB));
          }
 
          if (this.eQ() != this.cC) {
             this.cC = this.eQ();
-            this.a(fgf.k, azm.f((float)this.cC));
+            this.a(fgk.k, azm.f((float)this.cC));
          }
 
          if (this.cg != this.cE) {
             this.cE = this.cg;
-            this.a(fgf.l, azm.f((float)this.cE));
+            this.a(fgk.l, azm.f((float)this.cE));
          }
 
          if (this.cf != this.cD) {
             this.cD = this.cf;
-            this.a(fgf.m, azm.f((float)this.cD));
+            this.a(fgk.m, azm.f((float)this.cD));
          }
 
          if (this.cg != this.cI) {
@@ -537,9 +537,9 @@ public class arr extends crj {
       }
    }
 
-   private void i(czk $$0) {
-      eyo $$1 = $$0.a(kk.M);
-      eyq $$2 = czx.a($$1, this.dU());
+   private void i(czn $$0) {
+      eyt $$1 = $$0.a(kk.M);
+      eyv $$2 = daa.a($$1, this.dU());
       if ($$2 != null) {
          zf<?> $$3 = $$2.a($$1, this);
          if ($$3 != null) {
@@ -550,7 +550,7 @@ public class arr extends crj {
 
    @Override
    protected void j() {
-      if (this.dU().an() == bud.a && this.y().O().c(djd.l)) {
+      if (this.dU().an() == bud.a && this.y().O().c(dji.l)) {
          if (this.af % 20 == 0) {
             if (this.eF() < this.eT()) {
                this.c(1.0F);
@@ -602,14 +602,14 @@ public class arr extends crj {
       }
    }
 
-   private void a(fgf $$0, int $$1) {
+   private void a(fgk $$0, int $$1) {
       this.gy().a($$0, this, $$1x -> $$1x.a($$1));
    }
 
    @Override
    public void a(bux $$0) {
-      this.a(efo.p);
-      boolean $$1 = this.y().O().c(djd.o);
+      this.a(eft.p);
+      boolean $$1 = this.y().O().c(dji.o);
       if ($$1) {
          wy $$2 = this.eR().a();
          this.f.a(new adz(this.ao(), $$2), wf.a(() -> {
@@ -619,12 +619,12 @@ public class arr extends crj {
             wy $$4x = wy.a("death.attack.even_more_magic", this.m_()).a($$1xx -> $$1xx.a(new xe.e($$3x)));
             return new adz(this.ao(), $$4x);
          }));
-         fge $$3 = this.cp();
-         if ($$3 == null || $$3.l() == fge.b.a) {
+         fgj $$3 = this.cp();
+         if ($$3 == null || $$3.l() == fgj.b.a) {
             this.g.ag().a($$2, false);
-         } else if ($$3.l() == fge.b.c) {
+         } else if ($$3.l() == fgj.b.c) {
             this.g.ag().a(this, $$2);
-         } else if ($$3.l() == fge.b.d) {
+         } else if ($$3.l() == fgj.b.d) {
             this.g.ag().b(this, $$2);
          }
       } else {
@@ -632,7 +632,7 @@ public class arr extends crj {
       }
 
       this.gx();
-      if (this.y().O().c(djd.P)) {
+      if (this.y().O().c(dji.P)) {
          this.gR();
       }
 
@@ -640,7 +640,7 @@ public class arr extends crj {
          this.b(this.y(), $$0);
       }
 
-      this.gy().a(fgf.e, this, fga::b);
+      this.gy().a(fgk.e, this, fgf::b);
       bxj $$4 = this.eS();
       if ($$4 != null) {
          this.b(awx.h.b($$4.an()));
@@ -661,7 +661,7 @@ public class arr extends crj {
    }
 
    private void gR() {
-      fes $$0 = new fes(this.du()).c(32.0, 10.0, 32.0);
+      fex $$0 = new fex(this.du()).c(32.0, 10.0, 32.0);
       this.dU().a(bxl.class, $$0, bwp.f).stream().filter($$0x -> $$0x instanceof bxo).forEach($$0x -> ((bxo)$$0x).a_(this.y(), this));
    }
 
@@ -669,26 +669,26 @@ public class arr extends crj {
    public void a(bwi $$0, bux $$1) {
       if ($$0 != this) {
          super.a($$0, $$1);
-         this.gy().a(fgf.g, this, fga::b);
-         if ($$0 instanceof crj) {
+         this.gy().a(fgk.g, this, fgf::b);
+         if ($$0 instanceof crm) {
             this.a(awx.Q);
-            this.gy().a(fgf.f, this, fga::b);
+            this.gy().a(fgk.f, this, fgf::b);
          } else {
             this.a(awx.O);
          }
 
-         this.a(this, $$0, fgf.n);
-         this.a($$0, this, fgf.o);
+         this.a(this, $$0, fgk.n);
+         this.a($$0, this, fgk.o);
          aq.c.a(this, $$0, $$1);
       }
    }
 
-   private void a(fgb $$0, fgb $$1, fgf[] $$2) {
-      ffx $$3 = this.gy().e($$1.cH());
+   private void a(fgg $$0, fgg $$1, fgk[] $$2) {
+      fgc $$3 = this.gy().e($$1.cH());
       if ($$3 != null) {
          int $$4 = $$3.o().b();
          if ($$4 >= 0 && $$4 < $$2.length) {
-            this.gy().a($$2[$$4], $$0, fga::b);
+            this.gy().a($$2[$$4], $$0, fgf::b);
          }
       }
    }
@@ -699,11 +699,11 @@ public class arr extends crj {
          return false;
       } else {
          bwi $$3 = $$1.d();
-         if ($$3 instanceof crj $$4 && !this.a($$4)) {
+         if ($$3 instanceof crm $$4 && !this.a($$4)) {
             return false;
          }
 
-         if ($$3 instanceof crr $$5 && $$5.q() instanceof crj $$7 && !this.a($$7)) {
+         if ($$3 instanceof cru $$5 && $$5.q() instanceof crm $$7 && !this.a($$7)) {
             return false;
          }
 
@@ -712,7 +712,7 @@ public class arr extends crj {
    }
 
    @Override
-   public boolean a(crj $$0) {
+   public boolean a(crm $$0) {
       return !this.gS() ? false : super.a($$0);
    }
 
@@ -720,19 +720,19 @@ public class arr extends crj {
       return this.g.ac();
    }
 
-   public exv a(boolean $$0, exv.a $$1) {
+   public eya a(boolean $$0, eya.a $$1) {
       arr.a $$2 = this.T();
       arq $$3 = this.g.a(arr.a.b($$2));
       if ($$3 != null && $$2 != null) {
          Optional<arr.b> $$4 = a($$3, $$2, $$0);
          if ($$4.isPresent()) {
             arr.b $$5 = $$4.get();
-            return new exv($$3, $$5.a(), fex.c, $$5.b(), 0.0F, $$1);
+            return new eya($$3, $$5.a(), ffc.c, $$5.b(), 0.0F, $$1);
          } else {
-            return exv.a(this.g.J(), this, $$1);
+            return eya.a(this.g.J(), this, $$1);
          }
       } else {
-         return new exv(this.g.J(), this, $$1);
+         return new eya(this.g.J(), this, $$1);
       }
    }
 
@@ -740,24 +740,24 @@ public class arr extends crj {
       iv $$3 = $$1.c;
       float $$4 = $$1.d;
       boolean $$5 = $$1.e;
-      eao $$6 = $$0.a_($$3);
-      dmm $$7 = $$6.b();
-      if ($$7 instanceof dtb && ($$5 || $$6.c(dtb.d) > 0) && dtb.a($$0)) {
-         Optional<fex> $$8 = dtb.a(bwr.bS, $$0, $$3);
+      eat $$6 = $$0.a_($$3);
+      dmr $$7 = $$6.b();
+      if ($$7 instanceof dtg && ($$5 || $$6.c(dtg.d) > 0) && dtg.a($$0)) {
+         Optional<ffc> $$8 = dtg.a(bwr.bS, $$0, $$3);
          if (!$$5 && $$2 && $$8.isPresent()) {
-            $$0.a($$3, $$6.b(dtb.d, Integer.valueOf($$6.c(dtb.d) - 1)), 3);
+            $$0.a($$3, $$6.b(dtg.d, Integer.valueOf($$6.c(dtg.d) - 1)), 3);
          }
 
          return $$8.map($$1x -> arr.b.a($$1x, $$3));
-      } else if ($$7 instanceof dmf && dmf.a($$0)) {
-         return dmf.a(bwr.bS, $$0, $$3, $$6.c(dmf.e), $$4).map($$1x -> arr.b.a($$1x, $$3));
+      } else if ($$7 instanceof dmk && dmk.a($$0)) {
+         return dmk.a(bwr.bS, $$0, $$3, $$6.c(dmk.e), $$4).map($$1x -> arr.b.a($$1x, $$3));
       } else if (!$$5) {
          return Optional.empty();
       } else {
          boolean $$9 = $$7.a($$6);
-         eao $$10 = $$0.a_($$3.d());
+         eat $$10 = $$0.a_($$3.d());
          boolean $$11 = $$10.b().a($$10);
-         return $$9 && $$11 ? Optional.of(new arr.b(new fex((double)$$3.u() + 0.5, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5), $$4)) : Optional.empty();
+         return $$9 && $$11 ? Optional.of(new arr.b(new ffc((double)$$3.u() + 0.5, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5), $$4)) : Optional.empty();
       }
    }
 
@@ -773,7 +773,7 @@ public class arr extends crj {
    }
 
    @Nullable
-   public arr a(exv $$0) {
+   public arr a(eya $$0) {
       if (this.dP()) {
          return null;
       } else {
@@ -783,7 +783,7 @@ public class arr extends crj {
 
          arq $$1 = $$0.b();
          arq $$2 = this.y();
-         alf<djh> $$3 = $$2.aj();
+         alf<djm> $$3 = $$2.aj();
          if (!$$0.h()) {
             this.ab();
          }
@@ -795,7 +795,7 @@ public class arr extends crj {
             return this;
          } else {
             this.cO = true;
-            eyy $$4 = $$1.y_();
+            ezd $$4 = $$1.y_();
             this.f.b(new aem(this.b($$1), (byte)3));
             this.f.b(new acg($$4.q(), $$4.r()));
             avq $$5 = this.g.ag();
@@ -804,7 +804,7 @@ public class arr extends crj {
             this.dR();
             bqq $$6 = bqp.a();
             $$6.a("moving");
-            if ($$3 == djh.i && $$1.aj() == djh.j) {
+            if ($$3 == djm.i && $$1.aj() == djm.j) {
                this.cW = this.ds();
             }
 
@@ -836,14 +836,14 @@ public class arr extends crj {
    }
 
    private void g(arq $$0) {
-      alf<djh> $$1 = $$0.aj();
-      alf<djh> $$2 = this.dU().aj();
+      alf<djm> $$1 = $$0.aj();
+      alf<djm> $$2 = this.dU().aj();
       aq.w.a(this, $$1, $$2);
-      if ($$1 == djh.j && $$2 == djh.i && this.cW != null) {
+      if ($$1 == djm.j && $$2 == djm.i && this.cW != null) {
          aq.D.a(this, this.cW);
       }
 
-      if ($$2 != djh.j) {
+      if ($$2 != djm.j) {
          this.cW = null;
       }
    }
@@ -864,37 +864,37 @@ public class arr extends crj {
    }
 
    @Override
-   public Either<crj.a, bau> a(iv $$0) {
-      jb $$1 = this.dU().a_($$0).c(dqn.e);
+   public Either<crm.a, bau> a(iv $$0) {
+      jb $$1 = this.dU().a_($$0).c(dqs.e);
       if (this.fQ() || !this.bI()) {
-         return Either.left(crj.a.e);
+         return Either.left(crm.a.e);
       } else if (!this.dU().B_().j()) {
-         return Either.left(crj.a.a);
+         return Either.left(crm.a.a);
       } else if (!this.a($$0, $$1)) {
-         return Either.left(crj.a.c);
+         return Either.left(crm.a.c);
       } else if (this.b($$0, $$1)) {
-         return Either.left(crj.a.d);
+         return Either.left(crm.a.d);
       } else {
          this.a(new arr.a(this.dU().aj(), $$0, this.dK(), false), true);
          if (this.dU().V()) {
-            return Either.left(crj.a.b);
+            return Either.left(crm.a.b);
          } else {
             if (!this.b()) {
                double $$2 = 8.0;
                double $$3 = 5.0;
-               fex $$4 = fex.c($$0);
-               List<cok> $$5 = this.dU()
+               ffc $$4 = ffc.c($$0);
+               List<coo> $$5 = this.dU()
                   .a(
-                     cok.class,
-                     new fes($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0),
+                     coo.class,
+                     new fex($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0),
                      $$0x -> $$0x.a(this.y(), this)
                   );
                if (!$$5.isEmpty()) {
-                  return Either.left(crj.a.f);
+                  return Either.left(crm.a.f);
                }
             }
 
-            Either<crj.a, bau> $$6 = super.a($$0).ifRight($$0x -> {
+            Either<crm.a, bau> $$6 = super.a($$0).ifRight($$0x -> {
                this.a(awx.ap);
                aq.r.a(this);
             });
@@ -919,7 +919,7 @@ public class arr extends crj {
    }
 
    private boolean i(iv $$0) {
-      fex $$1 = fex.c($$0);
+      ffc $$1 = ffc.c($$0);
       return Math.abs(this.dz() - $$1.a()) <= 3.0 && Math.abs(this.dB() - $$1.b()) <= 2.0 && Math.abs(this.dF() - $$1.c()) <= 3.0;
    }
 
@@ -953,9 +953,9 @@ public class arr extends crj {
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, eao $$2, iv $$3) {
+   protected void a(double $$0, boolean $$1, eat $$2, iv $$3) {
       if (this.de && $$1 && this.Z > 0.0) {
-         fex $$4 = $$3.b().b(0.0, 0.5, 0.0);
+         ffc $$4 = $$3.b().b(0.0, 0.5, 0.0);
          int $$5 = (int)azm.a(50.0 * this.Z, 0.0, 200.0);
          this.y().a(new lq(ly.b, $$2), $$4.d, $$4.e, $$4.f, $$5, 0.3F, 0.3F, 0.3F, 0.15F);
          this.de = false;
@@ -980,7 +980,7 @@ public class arr extends crj {
    }
 
    @Override
-   public void a(dza $$0, boolean $$1) {
+   public void a(dzf $$0, boolean $$1) {
       this.f.b(new acc(this.dU(), $$0.ax_()));
       this.f.b(new adt($$0.ax_(), $$1));
    }
@@ -999,7 +999,7 @@ public class arr extends crj {
          }
 
          this.gT();
-         cvc $$1 = $$0.createMenu(this.do, this.gi(), this);
+         cvf $$1 = $$0.createMenu(this.do, this.gi(), this);
          if ($$1 == null) {
             if (this.V_()) {
                this.a(wy.c("container.spectatorCantOpen").a(o.m), true);
@@ -1016,27 +1016,27 @@ public class arr extends crj {
    }
 
    @Override
-   public void a(int $$0, dig $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public void a(int $$0, dij $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.f.b(new adn($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
    @Override
-   public void a(cll $$0, btz $$1) {
+   public void a(cli $$0, btz $$1) {
       if (this.bR != this.bQ) {
          this.p();
       }
 
       this.gT();
-      int $$2 = $$0.ab_();
+      int $$2 = $$0.Z_();
       this.f.b(new adc(this.do, $$2, $$0.ao()));
-      this.bR = new cwe(this.do, this.gi(), $$1, $$0, $$2);
+      this.bR = new cwh(this.do, this.gi(), $$1, $$0, $$2);
       this.a(this.bR);
    }
 
    @Override
-   public void a(czk $$0, buf $$1) {
+   public void a(czn $$0, buf $$1) {
       if ($$0.c(kk.V)) {
-         if (dcu.a($$0, this.A(), this)) {
+         if (dcx.a($$0, this.A(), this)) {
             this.bR.d();
          }
 
@@ -1045,8 +1045,8 @@ public class arr extends crj {
    }
 
    @Override
-   public void a(dxx $$0) {
-      this.f.b(aca.a($$0, dxm::e));
+   public void a(dyc $$0) {
+      this.f.b(aca.a($$0, dxr::e));
    }
 
    @Override
@@ -1125,15 +1125,15 @@ public class arr extends crj {
       if (this.bX() && !r($$0, $$1, $$2)) {
          int $$3 = Math.round((float)Math.sqrt($$0 * $$0 + $$1 * $$1 + $$2 * $$2) * 100.0F);
          bwi $$4 = this.dj();
-         if ($$4 instanceof ctw) {
+         if ($$4 instanceof ctz) {
             this.a(awx.x, $$3);
-         } else if ($$4 instanceof ctu) {
+         } else if ($$4 instanceof ctx) {
             this.a(awx.y, $$3);
          } else if ($$4 instanceof cju) {
             this.a(awx.z, $$3);
-         } else if ($$4 instanceof cll) {
+         } else if ($$4 instanceof cli) {
             this.a(awx.A, $$3);
-         } else if ($$4 instanceof coy) {
+         } else if ($$4 instanceof cpb) {
             this.a(awx.D, $$3);
          }
       }
@@ -1152,27 +1152,27 @@ public class arr extends crj {
    @Override
    public void a(awu<?> $$0) {
       this.cy.a(this, $$0, 0);
-      this.gy().a($$0, this, fga::c);
+      this.gy().a($$0, this, fgf::c);
    }
 
    @Override
-   public int a(Collection<deg<?>> $$0) {
+   public int a(Collection<dej<?>> $$0) {
       return this.cP.a($$0, this);
    }
 
    @Override
-   public void a(deg<?> $$0, List<czk> $$1) {
+   public void a(dej<?> $$0, List<czn> $$1) {
       aq.ac.a(this, $$0.a(), $$1);
    }
 
    @Override
-   public void b(List<alf<deb<?>>> $$0) {
-      List<deg<?>> $$1 = $$0.stream().flatMap($$0x -> this.g.aI().b($$0x).stream()).collect(Collectors.toList());
+   public void b(List<alf<dee<?>>> $$0) {
+      List<dej<?>> $$1 = $$0.stream().flatMap($$0x -> this.g.aI().b($$0x).stream()).collect(Collectors.toList());
       this.a($$1);
    }
 
    @Override
-   public int b(Collection<deg<?>> $$0) {
+   public int b(Collection<dej<?>> $$0) {
       return this.cP.b($$0, this);
    }
 
@@ -1224,13 +1224,13 @@ public class arr extends crj {
    }
 
    @Override
-   public void a(ev.a $$0, fex $$1) {
+   public void a(ev.a $$0, ffc $$1) {
       super.a($$0, $$1);
       this.f.b(new aec($$0, $$1.d, $$1.e, $$1.f));
    }
 
    public void a(ev.a $$0, bwi $$1, ev.a $$2) {
-      fex $$3 = $$2.a($$1);
+      ffc $$3 = $$2.a($$1);
       super.a($$0, $$3);
       this.f.b(new aec($$0, $$1, $$2));
    }
@@ -1259,7 +1259,7 @@ public class arr extends crj {
       } else {
          this.eZ().b($$0.eZ());
          this.d(this.eT());
-         if (this.y().O().c(djd.e) || $$0.V_()) {
+         if (this.y().O().c(dji.e) || $$0.V_()) {
             this.gi().a($$0.gi());
             this.cf = $$0.cf;
             this.cg = $$0.cg;
@@ -1318,12 +1318,12 @@ public class arr extends crj {
 
    @Override
    public void b(double $$0, double $$1, double $$2) {
-      this.f.a(new bxw(new fex($$0, $$1, $$2), fex.c, 0.0F, 0.0F), bxx.a(bxx.l, bxx.k));
+      this.f.a(new bxw(new ffc($$0, $$1, $$2), ffc.c, 0.0F, 0.0F), bxx.a(bxx.l, bxx.k));
    }
 
    @Override
    public void c(double $$0, double $$1, double $$2) {
-      this.f.a(new bxw(new fex($$0, $$1, $$2), fex.c, 0.0F, 0.0F), bxx.j);
+      this.f.a(new bxw(new ffc($$0, $$1, $$2), ffc.c, 0.0F, 0.0F), bxx.j);
    }
 
    @Override
@@ -1372,20 +1372,20 @@ public class arr extends crj {
       return (arq)this.dU();
    }
 
-   public boolean a(dje $$0) {
+   public boolean a(djj $$0) {
       boolean $$1 = this.V_();
       if (!this.h.a($$0)) {
          return false;
       } else {
          this.f.b(new adb(adb.e, (float)$$0.a()));
-         if ($$0 == dje.d) {
+         if ($$0 == djj.d) {
             this.gx();
             this.bN();
-            dfz.a(this);
+            dgc.a(this);
          } else {
             this.d(this);
             if ($$1) {
-               dfz.a(this.y(), this);
+               dgc.a(this.y(), this);
             }
          }
 
@@ -1397,12 +1397,12 @@ public class arr extends crj {
 
    @Override
    public boolean V_() {
-      return this.h.b() == dje.d;
+      return this.h.b() == djj.d;
    }
 
    @Override
    public boolean b() {
-      return this.h.b() == dje.b;
+      return this.h.b() == djj.b;
    }
 
    public ei z() {
@@ -1464,16 +1464,16 @@ public class arr extends crj {
       return this.cL;
    }
 
-   public crg E() {
+   public crj E() {
       return this.cJ;
    }
 
    private boolean x(boolean $$0) {
-      return this.cJ == crg.c ? $$0 : true;
+      return this.cJ == crj.c ? $$0 : true;
    }
 
    private boolean gU() {
-      return this.cJ == crg.a;
+      return this.cJ == crj.a;
    }
 
    public int F() {
@@ -1542,7 +1542,7 @@ public class arr extends crj {
 
    @Override
    public void e(bwi $$0) {
-      if (this.h.b() == dje.d) {
+      if (this.h.b() == djj.d) {
          this.d($$0);
       } else {
          super.e($$0);
@@ -1619,10 +1619,10 @@ public class arr extends crj {
    }
 
    @Override
-   public cno a(czk $$0, boolean $$1, boolean $$2) {
-      cno $$3 = super.a($$0, $$1, $$2);
+   public cnr a(czn $$0, boolean $$1, boolean $$2) {
+      cnr $$3 = super.a($$0, $$1, $$2);
       if ($$2) {
-         czk $$4 = $$3 != null ? $$3.f() : czk.k;
+         czn $$4 = $$3 != null ? $$3.f() : czn.k;
          if (!$$4.f()) {
             this.a(awx.f.b($$4.h()), $$0.M());
             this.a(awx.F);
@@ -1637,17 +1637,17 @@ public class arr extends crj {
    }
 
    public void a(arq $$0) {
-      this.a((djh)$$0);
+      this.a((djm)$$0);
       this.h.a($$0);
    }
 
    @Nullable
-   private static dje a(@Nullable tz $$0, String $$1) {
-      return $$0 != null ? $$0.<dje>a($$1, dje.g).orElse(null) : null;
+   private static djj a(@Nullable tz $$0, String $$1) {
+      return $$0 != null ? $$0.<djj>a($$1, djj.g).orElse(null) : null;
    }
 
-   private dje b(@Nullable dje $$0) {
-      dje $$1 = this.g.bd();
+   private djj b(@Nullable djj $$0) {
+      djj $$1 = this.g.bd();
       if ($$1 != null) {
          return $$1;
       } else {
@@ -1661,9 +1661,9 @@ public class arr extends crj {
    }
 
    private void m(tz $$0) {
-      $$0.a("playerGameType", dje.g, this.h.b());
-      dje $$1 = this.h.c();
-      $$0.b("previousPlayerGameType", dje.g, $$1);
+      $$0.a("playerGameType", djj.g, this.h.b());
+      djj $$1 = this.h.c();
+      $$0.b("previousPlayerGameType", djj.g, $$1);
    }
 
    @Override
@@ -1681,20 +1681,20 @@ public class arr extends crj {
    }
 
    @Override
-   protected void a(czk $$0) {
+   protected void a(czn $$0) {
       aq.W.a(this, $$0);
       super.a($$0);
    }
 
    public boolean a(boolean $$0) {
-      cri $$1 = this.gi();
-      czk $$2 = $$1.a($$0);
+      crl $$1 = this.gi();
+      czn $$2 = $$1.a($$0);
       this.bR.b($$1, $$1.f()).ifPresent($$1x -> this.bR.a($$1x, $$1.g()));
       return this.a($$2, false, true) != null;
    }
 
    @Override
-   public void b(czk $$0) {
+   public void b(czn $$0) {
       if (!this.gi().g($$0)) {
          this.a($$0, false);
       }
@@ -1705,7 +1705,7 @@ public class arr extends crj {
    }
 
    @Override
-   public Optional<cqo> Z() {
+   public Optional<cqr> Z() {
       return Optional.of(this.df);
    }
 
@@ -1714,7 +1714,7 @@ public class arr extends crj {
    }
 
    @Override
-   public void a(cno $$0) {
+   public void a(cnr $$0) {
       super.a($$0);
       bwi $$1 = $$0.q();
       if ($$1 != null) {
@@ -1741,7 +1741,7 @@ public class arr extends crj {
    public boolean a(bwi $$0, boolean $$1) {
       if (super.a($$0, $$1)) {
          $$0.j(this);
-         this.f.a(new bxw(this.ds(), fex.c, 0.0F, 0.0F), bxx.k);
+         this.f.a(new bxw(this.ds(), ffc.c, 0.0F, 0.0F), bxx.k);
          if ($$0 instanceof bxj $$2) {
             this.g.ag().a($$2, this.f);
          }
@@ -1769,7 +1769,7 @@ public class arr extends crj {
    }
 
    public agk b(arq $$0) {
-      return new agk($$0.ai(), $$0.aj(), dkm.a($$0.E()), this.h.b(), this.h.c(), $$0.ak(), $$0.D(), this.gH(), this.az(), $$0.P());
+      return new agk($$0.ai(), $$0.aj(), dkr.a($$0.E()), this.h.b(), this.h.c(), $$0.ak(), $$0.D(), this.gH(), this.az(), $$0.P());
    }
 
    @Override
@@ -1787,55 +1787,55 @@ public class arr extends crj {
    }
 
    @Override
-   public fex ae() {
+   public ffc ae() {
       bwi $$0 = this.dj();
       return $$0 != null && $$0.cV() != this ? $$0.ae() : this.dh;
    }
 
-   public void a(fex $$0) {
+   public void a(ffc $$0) {
       this.dh = $$0;
    }
 
    @Override
    protected float a(bwi $$0, float $$1, bux $$2) {
-      return dfz.a(this.y(), this.dY(), $$0, $$2, $$1);
+      return dgc.a(this.y(), this.dY(), $$0, $$2, $$1);
    }
 
    @Override
-   public void a(czg $$0, bws $$1) {
+   public void a(czj $$0, bws $$1) {
       super.a($$0, $$1);
       this.b(awx.d.b($$0));
    }
 
-   public crh af() {
+   public crk af() {
       return this.di;
    }
 
-   public void a(crh $$0) {
+   public void a(crk $$0) {
       this.di = $$0;
    }
 
-   public fex ag() {
+   public ffc ag() {
       float $$0 = this.di.c() == this.di.d() ? 0.0F : (this.di.c() ? 1.0F : -1.0F);
       float $$1 = this.di.a() == this.di.b() ? 0.0F : (this.di.a() ? 1.0F : -1.0F);
-      return a(new fex((double)$$0, 0.0, (double)$$1), 1.0F, this.dK());
+      return a(new ffc((double)$$0, 0.0, (double)$$1), 1.0F, this.dK());
    }
 
-   public void a(cso $$0) {
+   public void a(csr $$0) {
       this.dj.add($$0);
    }
 
-   public void b(cso $$0) {
+   public void b(csr $$0) {
       this.dj.remove($$0);
    }
 
-   public Set<cso> ah() {
+   public Set<csr> ah() {
       return this.dj;
    }
 
-   public long c(cso $$0) {
+   public long c(csr $$0) {
       if ($$0.dU() instanceof arq $$1) {
-         dio $$2 = $$0.dw();
+         dir $$2 = $$0.dw();
          this.a($$0);
          $$1.i();
          return a($$1, $$2) - 1L;
@@ -1844,15 +1844,15 @@ public class arr extends crj {
       }
    }
 
-   public static long a(arq $$0, dio $$1) {
+   public static long a(arq $$0, dir $$1) {
       $$0.m().a(arx.h, $$1, 2);
       return arx.h.d();
    }
 
-   public static record a(alf<djh> b, iv c, float d, boolean e) {
+   public static record a(alf<djm> b, iv c, float d, boolean e) {
       public static final Codec<arr.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  djh.h.optionalFieldOf("dimension", djh.i).forGetter(arr.a::a),
+                  djm.h.optionalFieldOf("dimension", djm.i).forGetter(arr.a::a),
                   iv.a.fieldOf("pos").forGetter(arr.a::b),
                   Codec.FLOAT.optionalFieldOf("angle", 0.0F).forGetter(arr.a::c),
                   Codec.BOOL.optionalFieldOf("forced", false).forGetter(arr.a::d)
@@ -1860,15 +1860,15 @@ public class arr extends crj {
                .apply($$0, arr.a::new)
       );
 
-      static alf<djh> b(@Nullable arr.a $$0) {
-         return $$0 != null ? $$0.a() : djh.i;
+      static alf<djm> b(@Nullable arr.a $$0) {
+         return $$0 != null ? $$0.a() : djm.i;
       }
 
       public boolean a(@Nullable arr.a $$0) {
          return $$0 != null && this.b == $$0.b && this.c.equals($$0.c);
       }
 
-      public alf<djh> a() {
+      public alf<djm> a() {
          return this.b;
       }
 
@@ -1885,13 +1885,13 @@ public class arr extends crj {
       }
    }
 
-   static record b(fex a, float b) {
-      public static arr.b a(fex $$0, iv $$1) {
+   static record b(ffc a, float b) {
+      public static arr.b a(ffc $$0, iv $$1) {
          return new arr.b($$0, b($$0, $$1));
       }
 
-      private static float b(fex $$0, iv $$1) {
-         fex $$2 = fex.c($$1).d($$0).d();
+      private static float b(ffc $$0, iv $$1) {
+         ffc $$2 = ffc.c($$1).d($$0).d();
          return (float)azm.d(azm.d($$2.f, $$2.d) * 180.0F / (float)Math.PI - 90.0);
       }
    }

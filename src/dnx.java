@@ -1,161 +1,223 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dnx extends dop implements dpg {
-   public static final MapCodec<dnx> a = b(dnx::new);
-   public static final ebm<ebh> b = ebe.bg;
+public class dnx extends dmr {
+   public static final MapCodec<dnx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mg.e.q().fieldOf("plant").forGetter($$0x -> $$0x.e), t()).apply($$0, dnx::new)
+   );
+   public static final int b = 5;
+   public static final ebt c = ebj.ax;
+   private static final ffw d = dmr.b(14.0, 0.0, 15.0);
+   private final dmr e;
 
    @Override
    public MapCodec<dnx> a() {
       return a;
    }
 
-   public dnx(ean.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(e, jb.c).b(c, Boolean.valueOf(false)).b(b, ebh.a));
+   protected dnx(dmr $$0, eas.d $$1) {
+      super($$1);
+      this.e = $$0;
+      this.l(this.C.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected int h(eao $$0) {
-      return 2;
+   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   public eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      return $$4 == jb.a && !this.a($$1, $$5, $$6) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected boolean f(eat $$0) {
+      return $$0.c(c) < 5;
    }
 
    @Override
-   protected int a(din $$0, iv $$1, eao $$2) {
-      dxm $$3 = $$0.c_($$1);
-      return $$3 instanceof dxy ? ((dxy)$$3).a() : 0;
+   public ffw b_(eat $$0, diq $$1, iv $$2) {
+      return d;
    }
 
-   private int e(djh $$0, iv $$1, eao $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
-         return 0;
-      } else {
-         int $$4 = this.a((djz)$$0, $$1, $$2);
-         if ($$4 > $$3) {
-            return 0;
+   @Override
+   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
+      iv $$4 = $$2.d();
+      if ($$1.v($$4) && $$4.v() <= $$1.ao()) {
+         int $$5 = $$0.c(c);
+         if ($$5 < 5) {
+            boolean $$6 = false;
+            boolean $$7 = false;
+            eat $$8 = $$1.a_($$2.e());
+            if ($$8.a(dmt.fY)) {
+               $$6 = true;
+            } else if ($$8.a(this.e)) {
+               int $$9 = 1;
+
+               for (int $$10 = 0; $$10 < 4; $$10++) {
+                  eat $$11 = $$1.a_($$2.c($$9 + 1));
+                  if (!$$11.a(this.e)) {
+                     if ($$11.a(dmt.fY)) {
+                        $$7 = true;
+                     }
+                     break;
+                  }
+
+                  $$9++;
+               }
+
+               if ($$9 < 2 || $$9 <= $$3.a($$7 ? 5 : 4)) {
+                  $$6 = true;
+               }
+            } else if ($$8.l()) {
+               $$6 = true;
+            }
+
+            if ($$6 && b($$1, $$4, null) && $$1.v($$2.b(2))) {
+               $$1.a($$2, dny.a($$1, $$2, this.e.m()), 2);
+               this.a($$1, $$4, $$5);
+            } else if ($$5 < 4) {
+               int $$12 = $$3.a(4);
+               if ($$7) {
+                  $$12++;
+               }
+
+               boolean $$13 = false;
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  jb $$15 = jb.c.a.a($$3);
+                  iv $$16 = $$2.a($$15);
+                  if ($$1.v($$16) && $$1.v($$16.e()) && b($$1, $$16, $$15.g())) {
+                     this.a($$1, $$16, $$5 + 1);
+                     $$13 = true;
+                  }
+               }
+
+               if ($$13) {
+                  $$1.a($$2, dny.a($$1, $$2, this.e.m()), 2);
+               } else {
+                  this.a($$1, $$2);
+               }
+            } else {
+               this.a($$1, $$2);
+            }
+         }
+      }
+   }
+
+   private void a(djm $$0, iv $$1, int $$2) {
+      $$0.a($$1, this.m().b(c, Integer.valueOf($$2)), 2);
+      $$0.c(1033, $$1, 0);
+   }
+
+   private void a(djm $$0, iv $$1) {
+      $$0.a($$1, this.m().b(c, Integer.valueOf(5)), 2);
+      $$0.c(1034, $$1, 0);
+   }
+
+   private static boolean b(djp $$0, iv $$1, @Nullable jb $$2) {
+      for (jb $$3 : jb.c.a) {
+         if ($$3 != $$2 && !$$0.v($$1.a($$3))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      if ($$4 != jb.b && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(eat $$0, djp $$1, iv $$2) {
+      eat $$3 = $$1.a_($$2.e());
+      if (!$$3.a(this.e) && !$$3.a(dmt.fY)) {
+         if (!$$3.l()) {
+            return false;
          } else {
-            return $$2.c(b) == ebh.b ? $$3 - $$4 : $$3;
-         }
-      }
-   }
+            boolean $$4 = false;
 
-   @Override
-   protected boolean a(djh $$0, iv $$1, eao $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
-         return false;
+            for (jb $$5 : jb.c.a) {
+               eat $$6 = $$1.a_($$2.a($$5));
+               if ($$6.a(this.e)) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else if (!$$6.l()) {
+                  return false;
+               }
+            }
+
+            return $$4;
+         }
       } else {
-         int $$4 = this.a((djz)$$0, $$1, $$2);
-         return $$3 > $$4 ? true : $$3 == $$4 && $$2.c(b) == ebh.a;
+         return true;
       }
    }
 
    @Override
-   protected int b(djh $$0, iv $$1, eao $$2) {
-      int $$3 = super.b($$0, $$1, $$2);
-      jb $$4 = $$2.c(e);
-      iv $$5 = $$1.a($$4);
-      eao $$6 = $$0.a_($$5);
-      if ($$6.q()) {
-         $$3 = $$6.a($$0, $$5);
-      } else if ($$3 < 15 && $$6.d($$0, $$5)) {
-         $$5 = $$5.a($$4);
-         $$6 = $$0.a_($$5);
-         cnh $$7 = this.a($$0, $$4, $$5);
-         int $$8 = Math.max($$7 == null ? Integer.MIN_VALUE : $$7.z(), $$6.q() ? $$6.a($$0, $$5) : Integer.MIN_VALUE);
-         if ($$8 != Integer.MIN_VALUE) {
-            $$3 = $$8;
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(c);
+   }
+
+   public static void a(djn $$0, iv $$1, azv $$2, int $$3) {
+      $$0.a($$1, dny.a($$0, $$1, dmt.la.m()), 2);
+      a($$0, $$1, $$2, $$1, $$3, 0);
+   }
+
+   private static void a(djn $$0, iv $$1, azv $$2, iv $$3, int $$4, int $$5) {
+      dmr $$6 = dmt.la;
+      int $$7 = $$2.a(4) + 1;
+      if ($$5 == 0) {
+         $$7++;
+      }
+
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         iv $$9 = $$1.b($$8 + 1);
+         if (!b($$0, $$9, null)) {
+            return;
+         }
+
+         $$0.a($$9, dny.a($$0, $$9, $$6.m()), 2);
+         $$0.a($$9.e(), dny.a($$0, $$9.e(), $$6.m()), 2);
+      }
+
+      boolean $$10 = false;
+      if ($$5 < 4) {
+         int $$11 = $$2.a(4);
+         if ($$5 == 0) {
+            $$11++;
+         }
+
+         for (int $$12 = 0; $$12 < $$11; $$12++) {
+            jb $$13 = jb.c.a.a($$2);
+            iv $$14 = $$1.b($$7).a($$13);
+            if (Math.abs($$14.u() - $$3.u()) < $$4 && Math.abs($$14.w() - $$3.w()) < $$4 && $$0.v($$14) && $$0.v($$14.e()) && b($$0, $$14, $$13.g())) {
+               $$10 = true;
+               $$0.a($$14, dny.a($$0, $$14, $$6.m()), 2);
+               $$0.a($$14.a($$13.g()), dny.a($$0, $$14.a($$13.g()), $$6.m()), 2);
+               a($$0, $$14, $$2, $$3, $$4, $$5 + 1);
+            }
          }
       }
 
-      return $$3;
-   }
-
-   @Nullable
-   private cnh a(djh $$0, jb $$1, iv $$2) {
-      List<cnh> $$3 = $$0.a(
-         cnh.class,
-         new fes((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)($$2.u() + 1), (double)($$2.v() + 1), (double)($$2.w() + 1)),
-         $$1x -> $$1x != null && $$1x.cN() == $$1
-      );
-      return $$3.size() == 1 ? $$3.get(0) : null;
-   }
-
-   @Override
-   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
-      if (!$$3.gj().e) {
-         return bug.e;
-      } else {
-         $$0 = $$0.a(b);
-         float $$5 = $$0.c(b) == ebh.b ? 0.55F : 0.5F;
-         $$1.a($$3, $$2, awn.fv, awo.e, 0.3F, $$5);
-         $$1.a($$2, $$0, 2);
-         this.f($$1, $$2, $$0);
-         return bug.a;
+      if (!$$10) {
+         $$0.a($$1.b($$7), dmt.lb.m().b(c, Integer.valueOf(5)), 2);
       }
    }
 
    @Override
-   protected void c(djh $$0, iv $$1, eao $$2) {
-      if (!$$0.U().b($$1, this)) {
-         int $$3 = this.e($$0, $$1, $$2);
-         dxm $$4 = $$0.c_($$1);
-         int $$5 = $$4 instanceof dxy ? ((dxy)$$4).a() : 0;
-         if ($$3 != $$5 || $$2.c(c) != this.a($$0, $$1, $$2)) {
-            fgt $$6 = this.b($$0, $$1, $$2) ? fgt.c : fgt.d;
-            $$0.a($$1, this, 2, $$6);
-         }
+   protected void a(djm $$0, eat $$1, fey $$2, csh $$3) {
+      iv $$4 = $$2.b();
+      if ($$0 instanceof arq $$5 && $$3.c($$5, $$4) && $$3.a($$5)) {
+         $$0.a($$4, true, $$3);
       }
-   }
-
-   private void f(djh $$0, iv $$1, eao $$2) {
-      int $$3 = this.e($$0, $$1, $$2);
-      dxm $$4 = $$0.c_($$1);
-      int $$5 = 0;
-      if ($$4 instanceof dxy $$6) {
-         $$5 = $$6.a();
-         $$6.a($$3);
-      }
-
-      if ($$5 != $$3 || $$2.c(b) == ebh.a) {
-         boolean $$7 = this.a($$0, $$1, $$2);
-         boolean $$8 = $$2.c(c);
-         if ($$8 && !$$7) {
-            $$0.a($$1, $$2.b(c, Boolean.valueOf(false)), 2);
-         } else if (!$$8 && $$7) {
-            $$0.a($$1, $$2.b(c, Boolean.valueOf(true)), 2);
-         }
-
-         this.d($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
-      this.f($$1, $$2, $$0);
-   }
-
-   @Override
-   protected boolean a(eao $$0, djh $$1, iv $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dxm $$5 = $$1.c_($$2);
-      return $$5 != null && $$5.a_($$3, $$4);
-   }
-
-   @Override
-   public dxm a(iv $$0, eao $$1) {
-      return new dxy($$0, $$1);
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(e, b, c);
    }
 }

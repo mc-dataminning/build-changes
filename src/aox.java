@@ -280,23 +280,23 @@ public class aox {
    private static LiteralArgumentBuilder<ej> a() {
       LiteralArgumentBuilder<ej> $$0 = ek.a("rendertype");
 
-      for (fgf.a $$1 : fgf.a.values()) {
+      for (fgk.a $$1 : fgk.a.values()) {
          $$0.then(ek.a($$1.a()).executes($$1x -> a((ej)$$1x.getSource(), fd.a($$1x, "objective"), $$1)));
       }
 
       return $$0;
    }
 
-   private static CompletableFuture<Suggestions> a(ej $$0, Collection<fgb> $$1, SuggestionsBuilder $$2) {
+   private static CompletableFuture<Suggestions> a(ej $$0, Collection<fgg> $$1, SuggestionsBuilder $$2) {
       List<String> $$3 = Lists.newArrayList();
-      fgc $$4 = $$0.l().aJ();
+      fgh $$4 = $$0.l().aJ();
 
-      for (ffu $$5 : $$4.b()) {
-         if ($$5.d() == fgf.d) {
+      for (ffz $$5 : $$4.b()) {
+         if ($$5.d() == fgk.d) {
             boolean $$6 = false;
 
-            for (fgb $$7 : $$1) {
-               ffy $$8 = $$4.d($$7, $$5);
+            for (fgg $$7 : $$1) {
+               fgd $$8 = $$4.d($$7, $$5);
                if ($$8 == null || $$8.b()) {
                   $$6 = true;
                   break;
@@ -312,9 +312,9 @@ public class aox {
       return eo.b($$3, $$2);
    }
 
-   private static int a(ej $$0, fgb $$1, ffu $$2) throws CommandSyntaxException {
-      fgc $$3 = $$0.l().aJ();
-      ffy $$4 = $$3.d($$1, $$2);
+   private static int a(ej $$0, fgg $$1, ffz $$2) throws CommandSyntaxException {
+      fgh $$3 = $$0.l().aJ();
+      fgd $$4 = $$3.d($$1, $$2);
       if ($$4 == null) {
          throw f.create($$2.c(), $$1.hf());
       } else {
@@ -323,19 +323,19 @@ public class aox {
       }
    }
 
-   private static wy a(Collection<fgb> $$0) {
+   private static wy a(Collection<fgg> $$0) {
       return $$0.iterator().next().hf();
    }
 
-   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2, ff.a $$3, Collection<fgb> $$4, ffu $$5) throws CommandSyntaxException {
-      fgc $$6 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgg> $$1, ffz $$2, ff.a $$3, Collection<fgg> $$4, ffz $$5) throws CommandSyntaxException {
+      fgh $$6 = $$0.l().aJ();
       int $$7 = 0;
 
-      for (fgb $$8 : $$1) {
-         fga $$9 = $$6.c($$8, $$2);
+      for (fgg $$8 : $$1) {
+         fgf $$9 = $$6.c($$8, $$2);
 
-         for (fgb $$10 : $$4) {
-            fga $$11 = $$6.c($$10, $$5);
+         for (fgg $$10 : $$4) {
+            fgf $$11 = $$6.c($$10, $$5);
             $$3.apply($$9, $$11);
          }
 
@@ -352,15 +352,15 @@ public class aox {
       return $$7;
    }
 
-   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2) throws CommandSyntaxException {
-      if ($$2.d() != fgf.d) {
+   private static int a(ej $$0, Collection<fgg> $$1, ffz $$2) throws CommandSyntaxException {
+      if ($$2.d() != fgk.d) {
          throw e.create();
       } else {
-         fgc $$3 = $$0.l().aJ();
+         fgh $$3 = $$0.l().aJ();
          int $$4 = 0;
 
-         for (fgb $$5 : $$1) {
-            fga $$6 = $$3.c($$5, $$2);
+         for (fgg $$5 : $$1) {
+            fgf $$6 = $$3.c($$5, $$2);
             if ($$6.d()) {
                $$6.e();
                $$4++;
@@ -381,10 +381,10 @@ public class aox {
       }
    }
 
-   private static int a(ej $$0, Collection<fgb> $$1) {
-      fgc $$2 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgg> $$1) {
+      fgh $$2 = $$0.l().aJ();
 
-      for (fgb $$3 : $$1) {
+      for (fgg $$3 : $$1) {
          $$2.b($$3);
       }
 
@@ -397,10 +397,10 @@ public class aox {
       return $$1.size();
    }
 
-   private static int b(ej $$0, Collection<fgb> $$1, ffu $$2) {
-      fgc $$3 = $$0.l().aJ();
+   private static int b(ej $$0, Collection<fgg> $$1, ffz $$2) {
+      fgh $$3 = $$0.l().aJ();
 
-      for (fgb $$4 : $$1) {
+      for (fgg $$4 : $$1) {
          $$3.e($$4, $$2);
       }
 
@@ -413,10 +413,10 @@ public class aox {
       return $$1.size();
    }
 
-   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2, int $$3) {
-      fgc $$4 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgg> $$1, ffz $$2, int $$3) {
+      fgh $$4 = $$0.l().aJ();
 
-      for (fgb $$5 : $$1) {
+      for (fgg $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -429,10 +429,10 @@ public class aox {
       return $$3 * $$1.size();
    }
 
-   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2, @Nullable wy $$3) {
-      fgc $$4 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgg> $$1, ffz $$2, @Nullable wy $$3) {
+      fgh $$4 = $$0.l().aJ();
 
-      for (fgb $$5 : $$1) {
+      for (fgg $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -451,10 +451,10 @@ public class aox {
       return $$1.size();
    }
 
-   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2, @Nullable yo $$3) {
-      fgc $$4 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgg> $$1, ffz $$2, @Nullable yo $$3) {
+      fgh $$4 = $$0.l().aJ();
 
-      for (fgb $$5 : $$1) {
+      for (fgg $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -473,12 +473,12 @@ public class aox {
       return $$1.size();
    }
 
-   private static int b(ej $$0, Collection<fgb> $$1, ffu $$2, int $$3) {
-      fgc $$4 = $$0.l().aJ();
+   private static int b(ej $$0, Collection<fgg> $$1, ffz $$2, int $$3) {
+      fgh $$4 = $$0.l().aJ();
       int $$5 = 0;
 
-      for (fgb $$6 : $$1) {
-         fga $$7 = $$4.c($$6, $$2);
+      for (fgg $$6 : $$1) {
+         fgf $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() + $$3);
          $$5 += $$7.a();
       }
@@ -493,12 +493,12 @@ public class aox {
       return $$5;
    }
 
-   private static int c(ej $$0, Collection<fgb> $$1, ffu $$2, int $$3) {
-      fgc $$4 = $$0.l().aJ();
+   private static int c(ej $$0, Collection<fgg> $$1, ffz $$2, int $$3) {
+      fgh $$4 = $$0.l().aJ();
       int $$5 = 0;
 
-      for (fgb $$6 : $$1) {
-         fga $$7 = $$4.c($$6, $$2);
+      for (fgg $$6 : $$1) {
+         fgf $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() - $$3);
          $$5 += $$7.a();
       }
@@ -514,32 +514,32 @@ public class aox {
    }
 
    private static int a(ej $$0) {
-      Collection<fgb> $$1 = $$0.l().aJ().d();
+      Collection<fgg> $$1 = $$0.l().aJ().d();
       if ($$1.isEmpty()) {
          $$0.a(() -> wy.c("commands.scoreboard.players.list.empty"), false);
       } else {
-         $$0.a(() -> wy.a("commands.scoreboard.players.list.success", $$1.size(), xb.b($$1, fgb::hf)), false);
+         $$0.a(() -> wy.a("commands.scoreboard.players.list.success", $$1.size(), xb.b($$1, fgg::hf)), false);
       }
 
       return $$1.size();
    }
 
-   private static int a(ej $$0, fgb $$1) {
-      Object2IntMap<ffu> $$2 = $$0.l().aJ().c($$1);
+   private static int a(ej $$0, fgg $$1) {
+      Object2IntMap<ffz> $$2 = $$0.l().aJ().c($$1);
       if ($$2.isEmpty()) {
          $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.empty", $$1.hf()), false);
       } else {
          $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.success", $$1.hf(), $$2.size()), false);
          Object2IntMaps.fastForEach(
-            $$2, $$1x -> $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.entry", ((ffu)$$1x.getKey()).h(), $$1x.getIntValue()), false)
+            $$2, $$1x -> $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.entry", ((ffz)$$1x.getKey()).h(), $$1x.getIntValue()), false)
          );
       }
 
       return $$2.size();
    }
 
-   private static int a(ej $$0, fft $$1) throws CommandSyntaxException {
-      fgc $$2 = $$0.l().aJ();
+   private static int a(ej $$0, ffy $$1) throws CommandSyntaxException {
+      fgh $$2 = $$0.l().aJ();
       if ($$2.a($$1) == null) {
          throw b.create();
       } else {
@@ -549,8 +549,8 @@ public class aox {
       }
    }
 
-   private static int a(ej $$0, fft $$1, ffu $$2) throws CommandSyntaxException {
-      fgc $$3 = $$0.l().aJ();
+   private static int a(ej $$0, ffy $$1, ffz $$2) throws CommandSyntaxException {
+      fgh $$3 = $$0.l().aJ();
       if ($$3.a($$1) == $$2) {
          throw c.create();
       } else {
@@ -560,7 +560,7 @@ public class aox {
       }
    }
 
-   private static int a(ej $$0, ffu $$1, wy $$2) {
+   private static int a(ej $$0, ffz $$1, wy $$2) {
       if (!$$1.e().equals($$2)) {
          $$1.a($$2);
          $$0.a(() -> wy.a("commands.scoreboard.objectives.modify.displayname", $$1.c(), $$1.h()), true);
@@ -569,7 +569,7 @@ public class aox {
       return 0;
    }
 
-   private static int a(ej $$0, ffu $$1, boolean $$2) {
+   private static int a(ej $$0, ffz $$1, boolean $$2) {
       if ($$1.f() != $$2) {
          $$1.a($$2);
          if ($$2) {
@@ -582,7 +582,7 @@ public class aox {
       return 0;
    }
 
-   private static int a(ej $$0, ffu $$1, @Nullable yo $$2) {
+   private static int a(ej $$0, ffz $$1, @Nullable yo $$2) {
       $$1.b($$2);
       if ($$2 != null) {
          $$0.a(() -> wy.a("commands.scoreboard.objectives.modify.objectiveFormat.set", $$1.c()), true);
@@ -593,7 +593,7 @@ public class aox {
       return 0;
    }
 
-   private static int a(ej $$0, ffu $$1, fgf.a $$2) {
+   private static int a(ej $$0, ffz $$1, fgk.a $$2) {
       if ($$1.i() != $$2) {
          $$1.a($$2);
          $$0.a(() -> wy.a("commands.scoreboard.objectives.modify.rendertype", $$1.h()), true);
@@ -602,31 +602,31 @@ public class aox {
       return 0;
    }
 
-   private static int a(ej $$0, ffu $$1) {
-      fgc $$2 = $$0.l().aJ();
+   private static int a(ej $$0, ffz $$1) {
+      fgh $$2 = $$0.l().aJ();
       $$2.j($$1);
       $$0.a(() -> wy.a("commands.scoreboard.objectives.remove.success", $$1.h()), true);
       return $$2.b().size();
    }
 
-   private static int a(ej $$0, String $$1, fgf $$2, wy $$3) throws CommandSyntaxException {
-      fgc $$4 = $$0.l().aJ();
+   private static int a(ej $$0, String $$1, fgk $$2, wy $$3) throws CommandSyntaxException {
+      fgh $$4 = $$0.l().aJ();
       if ($$4.a($$1) != null) {
          throw a.create();
       } else {
          $$4.a($$1, $$2, $$3, $$2.f(), false, null);
-         ffu $$5 = $$4.a($$1);
+         ffz $$5 = $$4.a($$1);
          $$0.a(() -> wy.a("commands.scoreboard.objectives.add.success", $$5.h()), true);
          return $$4.b().size();
       }
    }
 
    private static int b(ej $$0) {
-      Collection<ffu> $$1 = $$0.l().aJ().b();
+      Collection<ffz> $$1 = $$0.l().aJ().b();
       if ($$1.isEmpty()) {
          $$0.a(() -> wy.c("commands.scoreboard.objectives.list.empty"), false);
       } else {
-         $$0.a(() -> wy.a("commands.scoreboard.objectives.list.success", $$1.size(), xb.b($$1, ffu::h)), false);
+         $$0.a(() -> wy.a("commands.scoreboard.objectives.list.success", $$1.size(), xb.b($$1, ffz::h)), false);
       }
 
       return $$1.size();

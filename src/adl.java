@@ -1,14 +1,14 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record adl(int b, boolean c, Set<alf<djh>> d, int e, int f, int g, boolean h, boolean i, boolean j, agk k, boolean l) implements zf<abu> {
+public record adl(int b, boolean c, Set<alf<djm>> d, int e, int f, int g, boolean h, boolean i, boolean j, agk k, boolean l) implements zf<abu> {
    public static final yw<wj, adl> a = zf.a(adl::a, adl::new);
 
    private adl(wj $$0) {
       this(
          $$0.readInt(),
          $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(mh.bo)),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(mh.bp)),
          $$0.l(),
          $$0.l(),
          $$0.l(),
@@ -47,7 +47,7 @@ public record adl(int b, boolean c, Set<alf<djh>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<alf<djh>> f() {
+   public Set<alf<djm>> f() {
       return this.d;
    }
 

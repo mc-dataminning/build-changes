@@ -1,52 +1,19 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.PrivateKey;
+import java.time.Instant;
 
-public class crp {
-   private final cro<jf<czg>> a = new cro<>();
+public record crp(PrivateKey b, crq c, Instant d) {
+   public static final Codec<crp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayj.g.fieldOf("private_key").forGetter(crp::b),
+               crq.c.fieldOf("public_key").forGetter(crp::c),
+               ayu.q.fieldOf("refreshed_after").forGetter(crp::d)
+            )
+            .apply($$0, crp::new)
+   );
 
-   public void a(czk $$0) {
-      if (cri.e($$0)) {
-         this.b($$0);
-      }
-   }
-
-   public void b(czk $$0) {
-      this.a($$0, $$0.k());
-   }
-
-   public void a(czk $$0, int $$1) {
-      if (!$$0.f()) {
-         int $$2 = Math.min($$1, $$0.M());
-         this.a.a($$0.i(), $$2);
-      }
-   }
-
-   public boolean a(deb<?> $$0, @Nullable cro.b<jf<czg>> $$1) {
-      return this.a($$0, 1, $$1);
-   }
-
-   public boolean a(deb<?> $$0, int $$1, @Nullable cro.b<jf<czg>> $$2) {
-      dea $$3 = $$0.al_();
-      return $$3.c() ? false : this.a($$3.b(), $$1, $$2);
-   }
-
-   public boolean a(List<? extends cro.a<jf<czg>>> $$0, @Nullable cro.b<jf<czg>> $$1) {
-      return this.a($$0, 1, $$1);
-   }
-
-   private boolean a(List<? extends cro.a<jf<czg>>> $$0, int $$1, @Nullable cro.b<jf<czg>> $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   public int b(deb<?> $$0, @Nullable cro.b<jf<czg>> $$1) {
-      return this.b($$0, Integer.MAX_VALUE, $$1);
-   }
-
-   public int b(deb<?> $$0, int $$1, @Nullable cro.b<jf<czg>> $$2) {
-      return this.a.b($$0.al_().b(), $$1, $$2);
-   }
-
-   public void a() {
-      this.a.a();
+   public boolean a() {
+      return this.d.isBefore(Instant.now());
    }
 }

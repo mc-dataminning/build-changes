@@ -1,43 +1,43 @@
-public class gna extends gou {
-   private final gop a;
+import org.joml.Vector3f;
 
-   protected gna(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gop $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.1F;
-      this.B = 0.9F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      float $$8 = this.r.i() * 0.3F + 0.7F;
-      this.v = $$8;
-      this.w = $$8;
-      this.x = $$8;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
+public class gna extends gnc<ls> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected gna(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ls $$7, gou $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public gny b() {
-      return gny.b;
+   public void a(fkh $$0, fpb $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
+   public static class a implements goc<ls> {
+      private final gou a;
 
-   public static class a implements gnx<mc> {
-      private final gop a;
-
-      public a(gop $$0) {
+      public a(gou $$0) {
          this.a = $$0;
       }
 
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gna($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gnz a(ls $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gna($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

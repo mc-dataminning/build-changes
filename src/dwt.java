@@ -1,54 +1,33 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwt extends dma {
-   public static final MapCodec<dwt> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.e), ebd.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.b), t())
-            .apply($$0, dwt::new)
+public class dwt extends duv implements dwn {
+   public static final MapCodec<dwt> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwn.a.e.fieldOf("weathering_state").forGetter(dnu::c), eat.a.fieldOf("base_state").forGetter($$0x -> $$0x.f), t()).apply($$0, dwt::new)
    );
-   public static final ebo d = ebe.aW;
-   private final int e;
+   private final dwn.a h;
 
    @Override
    public MapCodec<dwt> a() {
-      return c;
+      return g;
    }
 
-   protected dwt(int $$0, ebd $$1, ean.d $$2) {
-      super($$2, $$1);
-      this.l(this.C.b().b(d, Integer.valueOf(0)));
-      this.e = $$0;
-   }
-
-   @Override
-   protected int b(djh $$0, iv $$1) {
-      int $$2 = Math.min(a($$0, a.a($$1), bwi.class), this.e);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.e, $$2) / (float)this.e;
-         return azm.f($$3 * 15.0F);
-      } else {
-         return 0;
-      }
+   public dwt(dwn.a $$0, eat $$1, eas.d $$2) {
+      super($$1, $$2);
+      this.h = $$0;
    }
 
    @Override
-   protected int h(eao $$0) {
-      return $$0.c(d);
+   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected eao a(eao $$0, int $$1) {
-      return $$0.b(d, Integer.valueOf($$1));
+   protected boolean f(eat $$0) {
+      return dwn.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected int b() {
-      return 10;
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(d);
+   public dwn.a q() {
+      return this.h;
    }
 }

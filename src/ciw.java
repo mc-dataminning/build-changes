@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
 public abstract class ciw extends bxr {
-   protected ciw(bwr<? extends ciw> $$0, djh $$1) {
+   protected ciw(bwr<? extends ciw> $$0, djm $$1) {
       super($$0, $$1);
    }
 

@@ -1,274 +1,103 @@
-import com.mojang.serialization.Codec;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
 public class dkq {
-   public static final Codec<dkq> a = RecordCodecBuilder.create(
+   private static final Logger c = LogUtils.getLogger();
+   public static final dkq a = new dkq(jj.a(), List.of());
+   public static final MapCodec<dkq> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               dkq.b.d.optionalFieldOf("grass_color_modifier", dkq.b.a).forGetter($$0x -> $$0x.h),
-               dkj.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               awm.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               dki.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               dkh.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               bsq.a(awk.a).optionalFieldOf("music").forGetter($$0x -> $$0x.m),
-               Codec.FLOAT.fieldOf("music_volume").orElse(1.0F).forGetter($$0x -> $$0x.n)
+               eiw.c.promotePartial(ag.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               eqr.d.promotePartial(ag.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, dkq::new)
    );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final dkq.b h;
-   private final Optional<dkj> i;
-   private final Optional<jf<awm>> j;
-   private final Optional<dki> k;
-   private final Optional<dkh> l;
-   private final Optional<bsq<awk>> m;
-   private final float n;
+   private final jj<eiw<?>> d;
+   private final List<jj<eqr>> e;
+   private final Supplier<List<ejk<?, ?>>> f;
+   private final Supplier<Set<eqr>> g;
 
-   dkq(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      dkq.b $$6,
-      Optional<dkj> $$7,
-      Optional<jf<awm>> $$8,
-      Optional<dki> $$9,
-      Optional<dkh> $$10,
-      Optional<bsq<awk>> $$11,
-      float $$12
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
-      this.n = $$12;
+   dkq(jj<eiw<?>> $$0, List<jj<eqr>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(jj::a).map(jf::a).flatMap(eqr::a).filter($$0xx -> $$0xx.b() == ejy.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jj::a).map(jf::a).collect(Collectors.toSet()));
    }
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
+   public Iterable<jf<eiw<?>>> a() {
       return this.d;
    }
 
-   public int d() {
+   public List<ejk<?, ?>> b() {
+      return this.f.get();
+   }
+
+   public List<jj<eqr>> c() {
       return this.e;
    }
 
-   public Optional<Integer> e() {
-      return this.f;
+   public boolean a(eqr $$0) {
+      return this.g.get().contains($$0);
    }
 
-   public Optional<Integer> f() {
-      return this.g;
+   public static class a extends dkq.b {
+      private final jg<eqr> a;
+      private final jg<eiw<?>> b;
+
+      public a(jg<eqr> $$0, jg<eiw<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public dkq.a a(ego.a $$0, alf<eqr> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public dkq.a a(alf<eiw<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
    }
 
-   public dkq.b g() {
-      return this.h;
-   }
+   public static class b {
+      private final List<jf<eiw<?>>> a = new ArrayList<>();
+      private final List<List<jf<eqr>>> b = new ArrayList<>();
 
-   public Optional<dkj> h() {
-      return this.i;
-   }
+      public dkq.b a(ego.a $$0, jf<eqr> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
 
-   public Optional<jf<awm>> i() {
-      return this.j;
-   }
-
-   public Optional<dki> j() {
-      return this.k;
-   }
-
-   public Optional<dkh> k() {
-      return this.l;
-   }
-
-   public Optional<bsq<awk>> l() {
-      return this.m;
-   }
-
-   public float m() {
-      return this.n;
-   }
-
-   public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private dkq.b g = dkq.b.a;
-      private Optional<dkj> h = Optional.empty();
-      private Optional<jf<awm>> i = Optional.empty();
-      private Optional<dki> j = Optional.empty();
-      private Optional<dkh> k = Optional.empty();
-      private Optional<bsq<awk>> l = Optional.empty();
-      private float m = 1.0F;
-
-      public dkq.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
+      public dkq.b a(int $$0, jf<eqr> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
          return this;
       }
 
-      public dkq.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
+      public dkq.b a(jf<eiw<?>> $$0) {
+         this.a.add($$0);
          return this;
       }
 
-      public dkq.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dkq.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
-         return this;
-      }
-
-      public dkq.a e(int $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public dkq.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public dkq.a a(dkq.b $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public dkq.a a(dkj $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public dkq.a a(jf<awm> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public dkq.a a(dki $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public dkq.a a(dkh $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public dkq.a a(@Nullable awk $$0) {
-         if ($$0 == null) {
-            this.l = Optional.empty();
-            return this;
-         } else {
-            this.l = Optional.of(bsq.a($$0));
-            return this;
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
          }
       }
 
-      public dkq.a a() {
-         return this.a(bsq.a()).a(0.0F);
-      }
-
-      public dkq.a a(bsq<awk> $$0) {
-         this.l = Optional.of($$0);
-         return this;
-      }
-
-      public dkq.a a(float $$0) {
-         this.m = $$0;
-         return this;
-      }
-
-      public dkq b() {
-         return new dkq(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l,
-            this.m
-         );
-      }
-   }
-
-   public static enum b implements bak {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
-         }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
-         }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = dkk.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
-         }
-      };
-
-      private final String e;
-      public static final Codec<dkq.b> d = bak.a(dkq.b::values);
-
-      public abstract int a(double var1, double var3, int var5);
-
-      b(final String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
+      public dkq a() {
+         return new dkq(jj.a(this.a), this.b.stream().map(jj::a).collect(ImmutableList.toImmutableList()));
       }
    }
 }

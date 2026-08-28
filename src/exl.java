@@ -1,138 +1,276 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class exl {
-   private static final float a = 1.5F;
-   private final exh[] b = new exh[32];
-   private int c;
-   private final exi d;
-   private static final boolean e = false;
-   private final exf f = new exf();
+public class exl extends exw {
+   private final Long2ObjectMap<exr> a = new Long2ObjectOpenHashMap();
+   private static final float m = 1.0F;
+   private static final float n = 1.1F;
+   private static final int o = 10;
 
-   public exl(exi $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
+   @Override
+   public void a(djz $$0, bxl $$1) {
+      super.a($$0, $$1);
+      this.a.clear();
+      $$1.G();
    }
 
-   public void a(int $$0) {
-      this.c = $$0;
+   @Override
+   public void b() {
+      this.c.H();
+      this.a.clear();
+      super.b();
    }
 
-   @Nullable
-   public exj a(dju $$0, bxl $$1, Set<iv> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      exh $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
+   @Override
+   public exm a() {
+      int $$0;
+      if (this.f() && this.c.bh()) {
+         $$0 = this.c.dA();
+         iv.a $$1 = new iv.a(this.c.dz(), (double)$$0, this.c.dF());
+
+         for (eat $$2 = this.b.a($$1); $$2.a(dmt.J); $$2 = this.b.a($$1)) {
+            $$1.b(this.c.dz(), (double)(++$$0), this.c.dF());
+         }
       } else {
-         Map<exq, iv> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         exj $$8 = this.a($$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
+         $$0 = azm.a(this.c.dB() + 0.5);
       }
-   }
 
-   @Nullable
-   private exj a(exh $$0, Map<exq, iv> $$1, float $$2, int $$3, float $$4) {
-      bqq $$5 = bqp.a();
-      $$5.a("find_path");
-      $$5.a(brz.a);
-      Set<exq> $$6 = $$1.keySet();
-      $$0.e = 0.0F;
-      $$0.f = this.a($$0, $$6);
-      $$0.g = $$0.f;
-      this.f.a();
-      this.f.a($$0);
-      Set<exh> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<exq> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$4);
-
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
-         }
-
-         exh $$11 = this.f.c();
-         $$11.i = true;
-
-         for (exq $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$3) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
-
-         if (!$$9.isEmpty()) {
-            break;
-         }
-
-         if (!($$11.a($$0) >= $$2)) {
-            int $$13 = this.d.a(this.b, $$11);
-
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               exh $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$2 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
-               }
+      iv $$4 = iv.a(this.c.dz(), (double)$$0, this.c.dF());
+      if (!this.a($$4)) {
+         for (iv $$5 : this.a(this.c)) {
+            if (this.a($$5)) {
+               return super.c($$5);
             }
          }
       }
 
-      Optional<exj> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), true)).min(Comparator.comparingInt(exj::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), false)).min(Comparator.comparingDouble(exj::m).thenComparingInt(exj::e));
-      $$5.c();
-      return $$18.isEmpty() ? null : $$18.get();
+      return super.c($$4);
    }
 
-   protected float a(exh $$0, exh $$1) {
-      return $$0.a($$1);
+   @Override
+   protected boolean a(iv $$0) {
+      exr $$1 = this.b($$0.u(), $$0.v(), $$0.w());
+      return this.c.a($$1) >= 0.0F;
    }
 
-   private float a(exh $$0, Set<exq> $$1) {
-      float $$2 = Float.MAX_VALUE;
+   @Override
+   public exv a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
+   }
 
-      for (exq $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
+   @Override
+   public int a(exm[] $$0, exm $$1) {
+      int $$2 = 0;
+      exm $$3 = this.a($$1.a, $$1.b, $$1.c + 1);
+      if (this.c($$3)) {
+         $$0[$$2++] = $$3;
+      }
+
+      exm $$4 = this.a($$1.a - 1, $$1.b, $$1.c);
+      if (this.c($$4)) {
+         $$0[$$2++] = $$4;
+      }
+
+      exm $$5 = this.a($$1.a + 1, $$1.b, $$1.c);
+      if (this.c($$5)) {
+         $$0[$$2++] = $$5;
+      }
+
+      exm $$6 = this.a($$1.a, $$1.b, $$1.c - 1);
+      if (this.c($$6)) {
+         $$0[$$2++] = $$6;
+      }
+
+      exm $$7 = this.a($$1.a, $$1.b + 1, $$1.c);
+      if (this.c($$7)) {
+         $$0[$$2++] = $$7;
+      }
+
+      exm $$8 = this.a($$1.a, $$1.b - 1, $$1.c);
+      if (this.c($$8)) {
+         $$0[$$2++] = $$8;
+      }
+
+      exm $$9 = this.a($$1.a, $$1.b + 1, $$1.c + 1);
+      if (this.c($$9) && this.b($$3) && this.b($$7)) {
+         $$0[$$2++] = $$9;
+      }
+
+      exm $$10 = this.a($$1.a - 1, $$1.b + 1, $$1.c);
+      if (this.c($$10) && this.b($$4) && this.b($$7)) {
+         $$0[$$2++] = $$10;
+      }
+
+      exm $$11 = this.a($$1.a + 1, $$1.b + 1, $$1.c);
+      if (this.c($$11) && this.b($$5) && this.b($$7)) {
+         $$0[$$2++] = $$11;
+      }
+
+      exm $$12 = this.a($$1.a, $$1.b + 1, $$1.c - 1);
+      if (this.c($$12) && this.b($$6) && this.b($$7)) {
+         $$0[$$2++] = $$12;
+      }
+
+      exm $$13 = this.a($$1.a, $$1.b - 1, $$1.c + 1);
+      if (this.c($$13) && this.b($$3) && this.b($$8)) {
+         $$0[$$2++] = $$13;
+      }
+
+      exm $$14 = this.a($$1.a - 1, $$1.b - 1, $$1.c);
+      if (this.c($$14) && this.b($$4) && this.b($$8)) {
+         $$0[$$2++] = $$14;
+      }
+
+      exm $$15 = this.a($$1.a + 1, $$1.b - 1, $$1.c);
+      if (this.c($$15) && this.b($$5) && this.b($$8)) {
+         $$0[$$2++] = $$15;
+      }
+
+      exm $$16 = this.a($$1.a, $$1.b - 1, $$1.c - 1);
+      if (this.c($$16) && this.b($$6) && this.b($$8)) {
+         $$0[$$2++] = $$16;
+      }
+
+      exm $$17 = this.a($$1.a + 1, $$1.b, $$1.c - 1);
+      if (this.c($$17) && this.b($$6) && this.b($$5)) {
+         $$0[$$2++] = $$17;
+      }
+
+      exm $$18 = this.a($$1.a + 1, $$1.b, $$1.c + 1);
+      if (this.c($$18) && this.b($$3) && this.b($$5)) {
+         $$0[$$2++] = $$18;
+      }
+
+      exm $$19 = this.a($$1.a - 1, $$1.b, $$1.c - 1);
+      if (this.c($$19) && this.b($$6) && this.b($$4)) {
+         $$0[$$2++] = $$19;
+      }
+
+      exm $$20 = this.a($$1.a - 1, $$1.b, $$1.c + 1);
+      if (this.c($$20) && this.b($$3) && this.b($$4)) {
+         $$0[$$2++] = $$20;
+      }
+
+      exm $$21 = this.a($$1.a + 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$21) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$7) && this.b($$12) && this.b($$11)) {
+         $$0[$$2++] = $$21;
+      }
+
+      exm $$22 = this.a($$1.a + 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$22) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$7) && this.b($$9) && this.b($$11)) {
+         $$0[$$2++] = $$22;
+      }
+
+      exm $$23 = this.a($$1.a - 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$23) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$7) && this.b($$12) && this.b($$10)) {
+         $$0[$$2++] = $$23;
+      }
+
+      exm $$24 = this.a($$1.a - 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$24) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$7) && this.b($$9) && this.b($$10)) {
+         $$0[$$2++] = $$24;
+      }
+
+      exm $$25 = this.a($$1.a + 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$25) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$8) && this.b($$16) && this.b($$15)) {
+         $$0[$$2++] = $$25;
+      }
+
+      exm $$26 = this.a($$1.a + 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$26) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$8) && this.b($$13) && this.b($$15)) {
+         $$0[$$2++] = $$26;
+      }
+
+      exm $$27 = this.a($$1.a - 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$27) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$8) && this.b($$16) && this.b($$14)) {
+         $$0[$$2++] = $$27;
+      }
+
+      exm $$28 = this.a($$1.a - 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$28) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$8) && this.b($$13) && this.b($$14)) {
+         $$0[$$2++] = $$28;
       }
 
       return $$2;
    }
 
-   private exj a(exh $$0, iv $$1, boolean $$2) {
-      List<exh> $$3 = Lists.newArrayList();
-      exh $$4 = $$0;
-      $$3.add(0, $$0);
+   private boolean b(@Nullable exm $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
+   private boolean c(@Nullable exm $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   @Nullable
+   @Override
+   protected exm a(int $$0, int $$1, int $$2) {
+      exm $$3 = null;
+      exr $$4 = this.b($$0, $$1, $$2);
+      float $$5 = this.c.a($$4);
+      if ($$5 >= 0.0F) {
+         $$3 = this.c($$0, $$1, $$2);
+         $$3.l = $$4;
+         $$3.k = Math.max($$3.k, $$5);
+         if ($$4 == exr.c) {
+            $$3.k++;
+         }
       }
 
-      return new exj($$3, $$1, $$2);
+      return $$3;
+   }
+
+   @Override
+   protected exr b(int $$0, int $$1, int $$2) {
+      return (exr)this.a.computeIfAbsent(iv.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2, this.c));
+   }
+
+   @Override
+   public exr a(ext $$0, int $$1, int $$2, int $$3) {
+      exr $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == exr.b && $$2 >= $$0.a().G_() + 1) {
+         iv $$5 = new iv($$1, $$2 - 1, $$3);
+         exr $$6 = $$0.a($$5.u(), $$5.v(), $$5.w());
+         if ($$6 == exr.o || $$6 == exr.i) {
+            $$4 = exr.o;
+         } else if ($$6 == exr.q) {
+            $$4 = exr.q;
+         } else if ($$6 == exr.x) {
+            $$4 = exr.x;
+         } else if ($$6 == exr.h) {
+            if (!$$5.equals($$0.b())) {
+               $$4 = exr.h;
+            }
+         } else {
+            $$4 = $$6 != exr.c && $$6 != exr.b && $$6 != exr.j ? exr.c : exr.b;
+         }
+      }
+
+      if ($$4 == exr.c || $$4 == exr.b) {
+         $$4 = a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      return $$4;
+   }
+
+   private Iterable<iv> a(bxl $$0) {
+      fex $$1 = $$0.cQ();
+      boolean $$2 = $$1.a() < 1.0;
+      if (!$$2) {
+         return List.of(
+            iv.a($$1.a, (double)$$0.dA(), $$1.c),
+            iv.a($$1.a, (double)$$0.dA(), $$1.f),
+            iv.a($$1.d, (double)$$0.dA(), $$1.c),
+            iv.a($$1.d, (double)$$0.dA(), $$1.f)
+         );
+      } else {
+         double $$3 = Math.max(0.0, 1.1F - $$1.d());
+         double $$4 = Math.max(0.0, 1.1F - $$1.b());
+         double $$5 = Math.max(0.0, 1.1F - $$1.c());
+         fex $$6 = $$1.c($$4, $$5, $$3);
+         return iv.a($$0.dX(), 10, azm.a($$6.a), azm.a($$6.b), azm.a($$6.c), azm.a($$6.d), azm.a($$6.e), azm.a($$6.f));
+      }
    }
 }

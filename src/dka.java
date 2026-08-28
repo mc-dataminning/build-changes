@@ -1,50 +1,41 @@
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class dka extends djb {
-   private final boolean a;
-   private final boolean b;
-   private final Optional<Float> c;
-   private final Optional<jj<dmm>> d;
+public class dka {
+   private final List<dka.a> a = Lists.newArrayList();
 
-   public dka(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jj<dmm>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   @Override
-   public Optional<Float> a(dja $$0, din $$1, iv $$2, eao $$3, ewv $$4) {
-      if (this.d.isPresent()) {
-         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+   public void a(iv $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new dka.a($$0, $$1));
       }
    }
 
-   @Override
-   public boolean a(dja $$0, din $$1, iv $$2, eao $$3, float $$4) {
-      return this.a;
-   }
+   public double b(iv $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
 
-   @Override
-   public boolean a(dja $$0, bwi $$1) {
-      return this.b;
-   }
-
-   @Override
-   public float a(bwi $$0) {
-      boolean var10000;
-      label17: {
-         if ($$0 instanceof crj $$1 && $$1.gj().b) {
-            var10000 = true;
-            break label17;
+         for (dka.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
          }
 
-         var10000 = false;
+         return $$2 * $$1;
+      }
+   }
+
+   static class a {
+      private final iv a;
+      private final double b;
+
+      public a(iv $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      boolean $$2 = var10000;
-      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
+      public double a(iv $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

@@ -18,12 +18,12 @@ public class asd implements asa {
    }
 
    @Override
-   public void a(dio $$0) {
+   public void a(dir $$0) {
       this.b.a_(() -> this.a.a($$0));
    }
 
    @Override
-   public void a(dio $$0, @Nullable edm $$1) {
+   public void a(dir $$0, @Nullable edr $$1) {
       if (this.c) {
          this.b.a_(() -> this.a.a($$0, $$1));
       }

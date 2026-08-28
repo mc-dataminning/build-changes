@@ -1,43 +1,33 @@
-public class gym extends gxz<cjy, hen, ggk<hcz>> {
-   private static final alg a = alg.b("textures/entity/fish/pufferfish.png");
-   private final ggk<hcz> j;
-   private final ggk<hcz> k;
-   private final ggk<hcz> l = this.c();
+public class gym extends gye<coq, heo, ghp> {
+   private static final alg a = alg.b("textures/entity/phantom.png");
 
-   public gym(gwt.a $$0) {
-      super($$0, new ghs($$0.a(gjn.cE)), 0.2F);
-      this.k = new ght($$0.a(gjn.cF));
-      this.j = new ghu($$0.a(gjn.cG));
+   public gym(gwy.a $$0) {
+      super($$0, new ghp($$0.a(gjs.cc)), 0.75F);
+      this.a(new hbk(this));
    }
 
-   public alg a(hen $$0) {
+   public alg a(heo $$0) {
       return a;
    }
 
-   public hen b() {
-      return new hen();
+   public heo b() {
+      return new heo();
    }
 
-   protected float b(hen $$0) {
-      return 0.1F + 0.1F * (float)$$0.a;
-   }
-
-   public void a(hen $$0, fjy $$1, gqm $$2, int $$3) {
-      this.g = switch ($$0.a) {
-         case 0 -> this.j;
-         case 1 -> this.k;
-         default -> this.l;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(cjy $$0, hen $$1, float $$2) {
+   public void a(coq $$0, heo $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
+      $$1.a = (float)$$0.m() + $$1.u;
+      $$1.b = $$0.j();
    }
 
-   protected void a(hen $$0, fjy $$1, float $$2, float $$3) {
-      $$1.a(0.0F, azm.b($$0.u * 0.05F) * 0.08F, 0.0F);
+   protected void a(heo $$0, fkd $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(heo $$0, fkd $$1, float $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.ab));
    }
 }

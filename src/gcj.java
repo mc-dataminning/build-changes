@@ -1,51 +1,255 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gcj extends gcm<cve> {
-   private static final fui h = new fui(
-      alg.b("recipe_book/furnace_filter_enabled"),
-      alg.b("recipe_book/furnace_filter_disabled"),
-      alg.b("recipe_book/furnace_filter_enabled_highlighted"),
-      alg.b("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   private final wy i;
+public class gcj {
+   private final aun a;
+   final List<auk> b;
+   final List<auk> c;
+   final Function<auk, alg> d;
+   final Runnable e;
+   private final Consumer<aun> f;
 
-   public gcj(cve $$0, wy $$1, List<gcm.a> $$2) {
-      super($$0, $$2);
-      this.i = $$1;
+   public gcj(Runnable $$0, Function<auk, alg> $$1, aun $$2, Consumer<aun> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.g());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.d());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   @Override
-   protected void a() {
-      this.e.a(h);
+   public Stream<gcj.a> a() {
+      return this.c.stream().map($$0 -> new gcj.d($$0));
    }
 
-   @Override
-   protected boolean a(cwz $$0) {
-      return switch ($$0.d) {
-         case 0, 1, 2 -> true;
-         default -> false;
-      };
+   public Stream<gcj.a> b() {
+      return this.b.stream().map($$0 -> new gcj.c($$0));
    }
 
-   @Override
-   protected void a(gck $$0, dfh $$1, baz $$2) {
-      $$0.b(this.f.l(), $$2, $$1.d());
-      if ($$1 instanceof dfg $$3) {
-         $$0.a(this.f.k.get(0), $$2, $$3.b());
-         cwz $$4 = this.f.k.get(1);
-         if ($$4.g().f()) {
-            $$0.a($$4, $$2, $$3.c());
+   void e() {
+      this.a.b(Lists.reverse(this.b).stream().map(auk::g).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.d());
+      this.c.clear();
+      this.c.addAll(this.a.d());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      alg a();
+
+      aul b();
+
+      String c();
+
+      wy d();
+
+      wy e();
+
+      auo f();
+
+      default wy g() {
+         return this.f().a(this.e());
+      }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements gcj.a {
+      private final auk b;
+
+      public b(final auk $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<auk> s();
+
+      protected abstract List<auk> t();
+
+      @Override
+      public alg a() {
+         return gcj.this.d.apply(this.b);
+      }
+
+      @Override
+      public aul b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public wy d() {
+         return this.b.b();
+      }
+
+      @Override
+      public wy e() {
+         return this.b.c();
+      }
+
+      @Override
+      public auo f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, auk::h, true);
+         gcj.this.e.run();
+         gcj.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fpw<Boolean> $$0 = fpt.Q().n.u();
+            $$0.a(!$$0.c());
          }
+      }
+
+      protected void a(int $$0) {
+         List<auk> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         gcj.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<auk> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<auk> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   @Override
-   protected wy b() {
-      return this.i;
+   class c extends gcj.b {
+      public c(final auk $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<auk> s() {
+         return gcj.this.b;
+      }
+
+      @Override
+      protected List<auk> t() {
+         return gcj.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
    }
 
-   @Override
-   protected void a(gcq $$0, crp $$1) {
-      $$0.a($$1, $$0x -> $$0x instanceof dfg);
+   class d extends gcj.b {
+      public d(final auk $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<auk> s() {
+         return gcj.this.c;
+      }
+
+      @Override
+      protected List<auk> t() {
+         return gcj.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
+      }
    }
 }

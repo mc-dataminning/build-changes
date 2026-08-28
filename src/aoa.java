@@ -13,7 +13,7 @@ public interface aoa {
       }
    }
 
-   public static record b(fex a) implements aoa {
+   public static record b(ffc a) implements aoa {
       @Override
       public void perform(ej $$0, bwi $$1) {
          $$1.a($$0.m(), this.a);

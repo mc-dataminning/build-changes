@@ -1,50 +1,15 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Locale;
 
-@FunctionalInterface
-public interface hjo {
-   Logger a = LogUtils.getLogger();
+public class hjo extends RuntimeException {
+   private final Collection<hjn.a> a;
 
-   static hjo create(Collection<auc<?>> $$0) {
-      return ($$1, $$2) -> {
-         avf $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         fiu $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = fiu.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         Optional<hkw> $$11 = $$3.a(hkw.b);
-         hkx $$12;
-         if ($$11.isPresent()) {
-            $$12 = $$11.get().a($$7.a(), $$7.b());
-            if (!azm.c($$7.a(), $$12.a()) || !azm.c($$7.b(), $$12.b())) {
-               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-               $$7.close();
-               return null;
-            }
-         } else {
-            $$12 = new hkx($$7.a(), $$7.b());
-         }
-
-         return new hje($$1, $$12, $$7, $$3);
-      };
+   public hjo(hjn.a $$0, Collection<hjn.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   @Nullable
-   hje loadSprite(alg var1, avb var2);
+   public Collection<hjn.a> a() {
+      return this.a;
+   }
 }

@@ -1,26 +1,15 @@
-import java.util.function.Function;
+public enum fhq {
+   a(34962),
+   b(34963),
+   c(35051),
+   d(36662),
+   e(36663),
+   f(35052),
+   g(35345);
 
-public interface fhq {
-   float getAdvance();
+   final int h;
 
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
-   }
-
-   default float a() {
-      return 1.0F;
-   }
-
-   default float b() {
-      return 1.0F;
-   }
-
-   fvr bake(Function<fhs, fvr> var1);
-
-   public interface a extends fhq {
-      @Override
-      default fvr bake(Function<fhs, fvr> $$0) {
-         return fvs.b;
-      }
+   private fhq(final int $$0) {
+      this.h = $$0;
    }
 }

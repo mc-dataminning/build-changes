@@ -5,13 +5,13 @@ public class ail implements zf<agp> {
    private static final int d = 4;
    private static final int e = 8;
    private final iv f;
-   private final dzf.a g;
-   private final eby h;
+   private final dzk.a g;
+   private final ecd h;
    private final String i;
    private final iv j;
    private final ka k;
-   private final drp l;
-   private final dtg m;
+   private final dru l;
+   private final dtl m;
    private final String n;
    private final boolean o;
    private final boolean p;
@@ -22,13 +22,13 @@ public class ail implements zf<agp> {
 
    public ail(
       iv $$0,
-      dzf.a $$1,
-      eby $$2,
+      dzk.a $$1,
+      ecd $$2,
       String $$3,
       iv $$4,
       ka $$5,
-      drp $$6,
-      dtg $$7,
+      dru $$6,
+      dtl $$7,
       String $$8,
       boolean $$9,
       boolean $$10,
@@ -56,15 +56,15 @@ public class ail implements zf<agp> {
 
    private ail(vu $$0) {
       this.f = $$0.e();
-      this.g = $$0.b(dzf.a.class);
-      this.h = $$0.b(eby.class);
+      this.g = $$0.b(dzk.a.class);
+      this.h = $$0.b(ecd.class);
       this.i = $$0.p();
       int $$1 = 48;
       this.j = new iv(azm.a($$0.readByte(), -48, 48), azm.a($$0.readByte(), -48, 48), azm.a($$0.readByte(), -48, 48));
       int $$2 = 48;
       this.k = new ka(azm.a($$0.readByte(), 0, 48), azm.a($$0.readByte(), 0, 48), azm.a($$0.readByte(), 0, 48));
-      this.l = $$0.b(drp.class);
-      this.m = $$0.b(dtg.class);
+      this.l = $$0.b(dru.class);
+      this.m = $$0.b(dtl.class);
       this.n = $$0.d(128);
       this.s = azm.a($$0.readFloat(), 0.0F, 1.0F);
       this.t = $$0.m();
@@ -124,11 +124,11 @@ public class ail implements zf<agp> {
       return this.f;
    }
 
-   public dzf.a e() {
+   public dzk.a e() {
       return this.g;
    }
 
-   public eby f() {
+   public ecd f() {
       return this.h;
    }
 
@@ -144,11 +144,11 @@ public class ail implements zf<agp> {
       return this.k;
    }
 
-   public drp j() {
+   public dru j() {
       return this.l;
    }
 
-   public dtg k() {
+   public dtl k() {
       return this.m;
    }
 

@@ -3,9 +3,9 @@ public class acq implements zf<abu> {
    private final int b;
    private final int c;
    private final int d;
-   private final czk e;
+   private final czn e;
 
-   public acq(int $$0, int $$1, int $$2, czk $$3) {
+   public acq(int $$0, int $$1, int $$2, czn $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -16,14 +16,14 @@ public class acq implements zf<abu> {
       this.b = $$0.x();
       this.c = $$0.l();
       this.d = $$0.readShort();
-      this.e = czk.h.decode($$0);
+      this.e = czn.h.decode($$0);
    }
 
    private void a(wj $$0) {
       $$0.f(this.b);
       $$0.c(this.c);
       $$0.m(this.d);
-      czk.h.encode($$0, this.e);
+      czn.h.encode($$0, this.e);
    }
 
    @Override
@@ -43,7 +43,7 @@ public class acq implements zf<abu> {
       return this.d;
    }
 
-   public czk f() {
+   public czn f() {
       return this.e;
    }
 

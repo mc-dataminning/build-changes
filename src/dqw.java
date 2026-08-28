@@ -1,40 +1,31 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqw extends dqe implements drj {
-   public static final MapCodec<dqw> c = b(dqw::new);
+public class dqw extends dqv {
+   public static final MapCodec<dqw> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mg.e.q().fieldOf("host").forGetter(dqv::b), t()).apply($$0, dqw::new));
 
    @Override
    public MapCodec<dqw> a() {
-      return c;
+      return b;
    }
 
-   protected dqw(ean.d $$0) {
-      super($$0, jb.b, ffo.b(), true);
-   }
-
-   @Override
-   protected dqf c() {
-      return (dqf)dmo.mI;
+   public dqw(dmr $$0, eas.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(dtk.d, jb.a.b));
    }
 
    @Override
-   protected ewv b_(eao $$0) {
-      return eww.c.a(false);
+   protected eat a(eat $$0, dtl $$1) {
+      return dtk.b($$0, $$1);
    }
 
    @Override
-   protected boolean o(eao $$0) {
-      return this.c().o($$0);
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(dtk.d);
    }
 
    @Override
-   public boolean a(@Nullable bxj $$0, din $$1, iv $$2, eao $$3, ewu $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dji $$0, iv $$1, eao $$2, ewv $$3) {
-      return false;
+   public eat a(ddg $$0) {
+      return this.m().b(dtk.d, $$0.k().o());
    }
 }

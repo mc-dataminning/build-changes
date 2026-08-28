@@ -1,26 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record dci(int f) implements dbq, dcp {
-   public static final int a = 120000;
-   public static final int b = 0;
-   public static final int c = 4;
-   public static final Codec<dci> d = ayu.a(0, 4).xmap(dci::new, dci::a);
-   public static final yw<wj, dci> e = yw.a(yu.h, dci::a, dci::new);
+public record dci(Map<String, dci.a> c) {
+   public static final dci a = new dci(Map.of());
+   public static final Codec<dci> b = Codec.unboundedMap(Codec.STRING, dci.a.a).xmap(dci::new, dci::a);
 
-   @Override
-   public void a(djh $$0, bxj $$1, czk $$2, dbp $$3) {
-      $$1.a(new bvm(bvo.E, 120000, this.f, false, false, true));
+   public dci a(String $$0, dci.a $$1) {
+      return new dci(ag.a(this.c, $$0, $$1));
    }
 
-   @Override
-   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
-      List<bvm> $$4 = List.of(new bvm(bvo.E, 120000, this.f, false, false, true));
-      dbg.a($$4, $$1, 1.0F, $$0.b());
+   public Map<String, dci.a> a() {
+      return this.c;
    }
 
-   public int a() {
-      return this.f;
+   public static record a(jf<eyq> b, double c, double d, float e) {
+      public static final Codec<dci.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  eyq.b.fieldOf("type").forGetter(dci.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(dci.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(dci.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(dci.a::d)
+               )
+               .apply($$0, dci.a::new)
+      );
+
+      public jf<eyq> a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public float d() {
+         return this.e;
+      }
    }
 }

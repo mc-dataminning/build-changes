@@ -1,104 +1,78 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public record gru(@Nullable jb b, int c, String d, @Nullable gru.b e, i f) {
-   public static final int a = -1;
+public class gru implements ave {
+   private final grt a;
+   private final grw b;
+   private final Supplier<grn> c;
+   private final grv d;
+   private final azv e = azv.a();
+   private final fqv f;
 
-   public static float a(gru.b $$0, i $$1, int $$2) {
-      return $$0.a($$1.b($$2)) / 16.0F;
+   public gru(grt $$0, Supplier<grn> $$1, fqv $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new grw(this.f);
+      this.d = new grv();
    }
 
-   public static float b(gru.b $$0, i $$1, int $$2) {
-      return $$0.b($$1.b($$2)) / 16.0F;
+   public grt a() {
+      return this.a;
    }
 
-   @Nullable
-   public jb a() {
+   public void a(eat $$0, iv $$1, din $$2, fkd $$3, fkh $$4) {
+      if ($$0.o() == dte.b) {
+         gsd $$5 = this.a.b($$0);
+         long $$6 = $$0.b($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hjg.d);
+      }
+   }
+
+   public void a(eat $$0, iv $$1, din $$2, fkd $$3, fkh $$4, boolean $$5, azv $$6) {
+      try {
+         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hjg.d);
+      } catch (Throwable var11) {
+         p $$8 = p.a(var11, "Tesselating block in world");
+         q $$9 = $$8.a("Block being tesselated");
+         q.a($$9, $$2, $$1, $$0);
+         throw new aa($$8);
+      }
+   }
+
+   public void a(iv $$0, din $$1, fkh $$2, eat $$3, exa $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         p $$6 = p.a(var9, "Tesselating liquid in world");
+         q $$7 = $$6.a("Block being tesselated");
+         q.a($$7, $$1, $$0, null);
+         throw new aa($$6);
+      }
+   }
+
+   public grw b() {
       return this.b;
    }
 
-   public int b() {
-      return this.c;
+   public gsd a(eat $$0) {
+      return this.a.b($$0);
    }
 
-   public String c() {
-      return this.d;
-   }
-
-   @Nullable
-   public gru.b d() {
-      return this.e;
-   }
-
-   public i e() {
-      return this.f;
-   }
-
-   protected static class a implements JsonDeserializer<gru> {
-      private static final int a = -1;
-      private static final int b = 0;
-
-      public gru a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         jb $$4 = c($$3);
-         int $$5 = a($$3);
-         String $$6 = b($$3);
-         gru.b $$7 = e($$3);
-         i $$8 = d($$3);
-         return new gru($$4, $$5, $$6, $$7, $$8);
-      }
-
-      private static int a(JsonObject $$0) {
-         return azc.a($$0, "tintindex", -1);
-      }
-
-      private static String b(JsonObject $$0) {
-         return azc.i($$0, "texture");
-      }
-
-      @Nullable
-      private static jb c(JsonObject $$0) {
-         String $$1 = azc.a($$0, "cullface", "");
-         return jb.a($$1);
-      }
-
-      private static i d(JsonObject $$0) {
-         int $$1 = azc.a($$0, "rotation", 0);
-         return i.a($$1);
-      }
-
-      @Nullable
-      private static gru.b e(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = azc.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float $$2 = azc.e($$1.get(0), "minU");
-               float $$3 = azc.e($$1.get(1), "minV");
-               float $$4 = azc.e($$1.get(2), "maxU");
-               float $$5 = azc.e($$1.get(3), "maxV");
-               return new gru.b($$2, $$3, $$4, $$5);
-            }
-         }
+   public void a(eat $$0, fkd $$1, gqr $$2, int $$3, int $$4) {
+      dte $$5 = $$0.o();
+      if ($$5 != dte.a) {
+         gsd $$6 = this.a($$0);
+         int $$7 = this.f.a($$0, null, null, 0);
+         float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+         float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+         float $$10 = (float)($$7 & 0xFF) / 255.0F;
+         this.b.a($$1.c(), $$2.getBuffer(gqj.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+         this.c.get().a($$0.b(), czl.a, $$1, $$2, $$3, $$4);
       }
    }
 
-   public static record b(float a, float b, float c, float d) {
-      public float a(int $$0) {
-         return $$0 != 0 && $$0 != 1 ? this.c : this.a;
-      }
-
-      public float b(int $$0) {
-         return $$0 != 0 && $$0 != 3 ? this.d : this.b;
-      }
+   @Override
+   public void a(avd $$0) {
+      this.d.a();
    }
 }

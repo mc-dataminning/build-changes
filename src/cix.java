@@ -7,7 +7,7 @@ public abstract class cix extends civ {
    private cix a;
    private int b = 1;
 
-   public cix(bwr<? extends cix> $$0, djh $$1) {
+   public cix(bwr<? extends cix> $$0, djm $$1) {
       super($$0, $$1);
    }
 
@@ -89,7 +89,7 @@ public abstract class cix extends civ {
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       super.a($$0, $$1, $$2, $$3);
       if ($$3 == null) {
          $$3 = new cix.a(this);

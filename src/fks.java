@@ -1,50 +1,73 @@
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
+
 public class fks {
-   private volatile long a;
-   private volatile long b;
-   private long c = ag.c();
-   private long d;
-   private long e;
-
-   public void a(long $$0) {
-      this.b = $$0;
-   }
-
-   public long a() {
-      return this.b;
-   }
-
-   public long b() {
-      return this.a;
-   }
-
-   public void b(long $$0) {
-      this.a += $$0;
-   }
-
-   public boolean c() {
-      return this.a != 0L;
-   }
-
-   public boolean d() {
-      return this.a == this.a();
-   }
-
-   public double e() {
-      return Math.min((double)this.b() / (double)this.a(), 1.0);
-   }
-
-   public void f() {
-      long $$0 = ag.c();
-      long $$1 = $$0 - this.c;
-      if ($$1 >= 1000L) {
-         long $$2 = this.a;
-         this.e = 1000L * ($$2 - this.d) / $$1;
-         this.d = $$2;
-         this.c = $$0;
+   public static List<fmd> a(fks.a... $$0) {
+      for (fks.a $$1 : $$0) {
+         a($$1.j);
       }
+
+      List<fmd> $$2 = Lists.newArrayList();
+
+      for (fks.a $$3 : $$0) {
+         $$2.add(new fmd($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(fmd::a));
+      return $$2;
    }
 
-   public long g() {
-      return this.e;
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
+
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
+         }
+      }
+
+      return (int)((double)$$2 / 5.0);
+   }
+
+   private static long b() {
+      return ag.c();
+   }
+
+   public static List<fmd> a() {
+      return a(fks.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(final String $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
    }
 }

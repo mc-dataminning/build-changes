@@ -1,110 +1,82 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public record egt(egg b, egg c, egg d, egg e, egg f, egg g, egg h, egg i, egg j, egg k, egg l, egg m, egg n, egg o, egg p) {
-   public static final Codec<egt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", egt::a),
-               a("fluid_level_floodedness", egt::b),
-               a("fluid_level_spread", egt::c),
-               a("lava", egt::d),
-               a("temperature", egt::e),
-               a("vegetation", egt::f),
-               a("continents", egt::g),
-               a("erosion", egt::h),
-               a("depth", egt::i),
-               a("ridges", egt::j),
-               a("initial_density_without_jaggedness", egt::k),
-               a("final_density", egt::l),
-               a("vein_toggle", egt::m),
-               a("vein_ridged", egt::n),
-               a("vein_gap", egt::o)
-            )
-            .apply($$0, egt::new)
-   );
+public class egt implements egh {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final egu i = new egu(this);
 
-   private static RecordCodecBuilder<egt, egg> a(String $$0, Function<egt, egg> $$1) {
-      return egg.d.fieldOf($$0).forGetter($$1);
+   public egt(long $$0) {
+      this.b($$0);
    }
 
-   public egt a(egg.f $$0) {
-      return new egt(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
+   @Override
+   public azv d() {
+      return new egt(this.g());
    }
 
-   public egg a() {
-      return this.b;
+   @Override
+   public ehf e() {
+      return new egt.a(this.g());
    }
 
-   public egg b() {
-      return this.c;
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw ban.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
    }
 
-   public egg c() {
-      return this.d;
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw ban.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
    }
 
-   public egg d() {
-      return this.e;
+   @Override
+   public double k() {
+      return this.i.b();
    }
 
-   public egg e() {
-      return this.f;
-   }
+   public static class a implements ehf {
+      private final long a;
 
-   public egg f() {
-      return this.g;
-   }
+      public a(long $$0) {
+         this.a = $$0;
+      }
 
-   public egg g() {
-      return this.h;
-   }
+      @Override
+      public azv a(int $$0, int $$1, int $$2) {
+         long $$3 = azm.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new egt($$4);
+      }
 
-   public egg h() {
-      return this.i;
-   }
+      @Override
+      public azv a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new egt((long)$$1 ^ this.a);
+      }
 
-   public egg i() {
-      return this.j;
-   }
+      @Override
+      public azv a(long $$0) {
+         return new egt($$0);
+      }
 
-   public egg j() {
-      return this.k;
-   }
-
-   public egg k() {
-      return this.l;
-   }
-
-   public egg l() {
-      return this.m;
-   }
-
-   public egg m() {
-      return this.n;
-   }
-
-   public egg n() {
-      return this.o;
-   }
-
-   public egg o() {
-      return this.p;
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

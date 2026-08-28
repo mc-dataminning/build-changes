@@ -1,49 +1,27 @@
-import java.util.List;
+public class fzt extends fzh<cvo> {
+   private static final alg G = alg.b("textures/gui/container/generic_54.png");
+   private final int H;
 
-public class fzt {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<alg> e = List.of();
-   private int f;
-   private int g;
-
-   public fzt(int $$0) {
-      this.d = $$0;
+   public fzt(cvo $$0, crl $$1, wy $$2) {
+      super($$0, $$1, $$2);
+      int $$3 = 222;
+      int $$4 = 114;
+      this.H = $$0.m();
+      this.u = 114 + this.H * 18;
+      this.y = this.u - 94;
    }
 
-   public void a(List<alg> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
+   @Override
+   public void a(fsm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   public void a(cvc $$0, fsh $$1, float $$2, int $$3, int $$4) {
-      cwz $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
-         }
-
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
-      }
-   }
-
-   private void a(cwz $$0, alg $$1, float $$2, fsh $$3, int $$4, int $$5) {
-      $$3.a(gqx::H, $$1, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axw.a($$2));
-   }
-
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   @Override
+   protected void a(fsm $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(grc::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.H * 18 + 17, 256, 256);
+      $$0.a(grc::H, G, $$4, $$5 + this.H * 18 + 17, 0.0F, 126.0F, this.s, 96, 256, 256);
    }
 }

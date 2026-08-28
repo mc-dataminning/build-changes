@@ -12,9 +12,9 @@ public class caw {
                } else {
                   iv $$5 = $$0.<je>b($$1).b();
                   if ($$5.a($$3.du(), 3.0)) {
-                     eao $$6 = $$2.a_($$5);
-                     if ($$6.a(dmo.oJ)) {
-                        dmi $$7 = (dmi)$$6.b();
+                     eat $$6 = $$2.a_($$5);
+                     if ($$6.a(dmt.oJ)) {
+                        dmn $$7 = (dmn)$$6.b();
                         $$7.a($$3, $$2, $$5, null);
                      }
                   }

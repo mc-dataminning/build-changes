@@ -1,89 +1,53 @@
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public record dcn(List<dcn.a> c, float d, int e, boolean f) {
-   public static final Codec<dcn> a = RecordCodecBuilder.create(
+public record dcn(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<dcn> g = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dcn.a.a.listOf().fieldOf("rules").forGetter(dcn::a),
-               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(dcn::b),
-               ayu.l.optionalFieldOf("damage_per_block", 1).forGetter(dcn::c),
-               Codec.BOOL.optionalFieldOf("can_destroy_blocks_in_creative", true).forGetter(dcn::d)
+               ayu.y.optionalFieldOf("name").forGetter(dcn::c),
+               jz.a.optionalFieldOf("id").forGetter(dcn::d),
+               ayu.x.optionalFieldOf("properties", new PropertyMap()).forGetter(dcn::e)
             )
             .apply($$0, dcn::new)
    );
-   public static final yw<wj, dcn> b = yw.a(dcn.a.b.a(yu.a()), dcn::a, yu.l, dcn::b, yu.h, dcn::c, yu.b, dcn::d, dcn::new);
+   public static final Codec<dcn> a = Codec.withAlternative(g, ayu.y, $$0 -> new dcn(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final yw<ByteBuf, dcn> b = yw.a(yu.b(16).a(yu::a), dcn::c, jz.g.a(yu::a), dcn::d, yu.y, dcn::e, dcn::new);
 
-   public float a(eao $$0) {
-      for (dcn.a $$1 : this.c) {
-         if ($$1.d.isPresent() && $$0.a($$1.c)) {
-            return $$1.d.get();
-         }
-      }
-
-      return this.d;
+   public dcn(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   public boolean b(eao $$0) {
-      for (dcn.a $$1 : this.c) {
-         if ($$1.e.isPresent() && $$0.a($$1.c)) {
-            return $$1.e.get();
-         }
-      }
-
-      return false;
+   public dcn(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
    }
 
-   public List<dcn.a> a() {
-      return this.c;
+   public CompletableFuture<dcn> a() {
+      if (this.b()) {
+         return CompletableFuture.completedFuture(this);
+      } else {
+         return this.d.isPresent() ? dzh.a(this.d.get()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
+            return new dcn($$1);
+         }) : dzh.a(this.c.orElseThrow()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ag.e, this.c.get()));
+            return new dcn($$1);
+         });
+      }
    }
 
-   public float b() {
-      return this.d;
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ag.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
    }
 
-   public int c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public static record a(jj<dmm> c, Optional<Float> d, Optional<Boolean> e) {
-      public static final Codec<dcn.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ju.a(mh.i).fieldOf("blocks").forGetter(dcn.a::a),
-                  ayu.o.optionalFieldOf("speed").forGetter(dcn.a::b),
-                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(dcn.a::c)
-               )
-               .apply($$0, dcn.a::new)
-      );
-      public static final yw<wj, dcn.a> b = yw.a(yu.c(mh.i), dcn.a::a, yu.l.a(yu::a), dcn.a::b, yu.b.a(yu::a), dcn.a::c, dcn.a::new);
-
-      public static dcn.a a(jj<dmm> $$0, float $$1) {
-         return new dcn.a($$0, Optional.of($$1), Optional.of(true));
-      }
-
-      public static dcn.a a(jj<dmm> $$0) {
-         return new dcn.a($$0, Optional.empty(), Optional.of(false));
-      }
-
-      public static dcn.a b(jj<dmm> $$0, float $$1) {
-         return new dcn.a($$0, Optional.of($$1), Optional.empty());
-      }
-
-      public jj<dmm> a() {
-         return this.c;
-      }
-
-      public Optional<Float> b() {
-         return this.d;
-      }
-
-      public Optional<Boolean> c() {
-         return this.e;
-      }
+   public boolean b() {
+      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
    }
 }

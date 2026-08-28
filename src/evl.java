@@ -1,290 +1,157 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class evl {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "structure";
-   private static final String c = "structures";
-   private static final String d = ".nbt";
-   private static final String e = ".snbt";
-   private final Map<alg, Optional<evk>> f = Maps.newConcurrentMap();
-   private final DataFixer g;
-   private avd h;
-   private final Path i;
-   private final List<evl.b> j;
-   private final jg<dmm> k;
-   private static final akz l = new akz("structure", ".nbt");
+   private dru a;
+   private dtl b;
+   private iv c;
+   private boolean d;
+   @Nullable
+   private erf e;
+   private euz f;
+   @Nullable
+   private azv g;
+   private int h;
+   private final List<evm> i;
+   private boolean j;
+   private boolean k;
 
-   public evl(avd $$0, ezc.c $$1, DataFixer $$2, jg<dmm> $$3) {
-      this.h = $$0;
-      this.g = $$2;
-      this.i = $$1.a(eza.i).normalize();
-      this.k = $$3;
-      Builder<evl.b> $$4 = ImmutableList.builder();
-      $$4.add(new evl.b(this::h, this::d));
-      if (ac.aV) {
-         $$4.add(new evl.b(this::g, this::c));
-      }
-
-      $$4.add(new evl.b(this::f, this::b));
-      this.j = $$4.build();
+   public evl() {
+      this.a = dru.a;
+      this.b = dtl.a;
+      this.c = iv.c;
+      this.f = euz.b;
+      this.i = Lists.newArrayList();
    }
 
-   public evk a(alg $$0) {
-      Optional<evk> $$1 = this.b($$0);
-      if ($$1.isPresent()) {
-         return $$1.get();
+   public evl a() {
+      evl $$0 = new evl();
+      $$0.a = this.a;
+      $$0.b = this.b;
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      $$0.h = this.h;
+      $$0.i.addAll(this.i);
+      $$0.j = this.j;
+      $$0.k = this.k;
+      return $$0;
+   }
+
+   public evl a(dru $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public evl a(dtl $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public evl a(iv $$0) {
+      this.c = $$0;
+      return this;
+   }
+
+   public evl a(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public evl a(erf $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public evl a(@Nullable azv $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public evl a(euz $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public evl b(boolean $$0) {
+      this.j = $$0;
+      return this;
+   }
+
+   public evl b() {
+      this.i.clear();
+      return this;
+   }
+
+   public evl a(evm $$0) {
+      this.i.add($$0);
+      return this;
+   }
+
+   public evl b(evm $$0) {
+      this.i.remove($$0);
+      return this;
+   }
+
+   public dru c() {
+      return this.a;
+   }
+
+   public dtl d() {
+      return this.b;
+   }
+
+   public iv e() {
+      return this.c;
+   }
+
+   public azv b(@Nullable iv $$0) {
+      if (this.g != null) {
+         return this.g;
       } else {
-         evk $$2 = new evk();
-         this.f.put($$0, Optional.of($$2));
-         return $$2;
+         return $$0 == null ? azv.a(ag.c()) : azv.a(azm.a($$0));
       }
    }
 
-   public Optional<evk> b(alg $$0) {
-      return this.f.computeIfAbsent($$0, this::e);
+   public boolean f() {
+      return this.d;
    }
 
-   public Stream<alg> a() {
-      return this.j.stream().flatMap($$0 -> $$0.b().get()).distinct();
+   @Nullable
+   public erf g() {
+      return this.e;
    }
 
-   private Optional<evk> e(alg $$0) {
-      for (evl.b $$1 : this.j) {
-         try {
-            Optional<evk> $$2 = $$1.a().apply($$0);
-            if ($$2.isPresent()) {
-               return $$2;
-            }
-         } catch (Exception var5) {
-         }
-      }
-
-      return Optional.empty();
+   public boolean h() {
+      return this.j;
    }
 
-   public void a(avd $$0) {
-      this.h = $$0;
-      this.f.clear();
+   public List<evm> i() {
+      return this.i;
    }
 
-   private Optional<evk> f(alg $$0) {
-      alg $$1 = l.a($$0);
-      return this.a(() -> this.h.open($$1), $$1x -> b.error("Couldn't load structure {}", $$0, $$1x));
+   public boolean j() {
+      return this.f == euz.b;
    }
 
-   private Stream<alg> b() {
-      return l.a(this.h).keySet().stream().map(l::b);
-   }
-
-   private Optional<evk> g(alg $$0) {
-      return this.a($$0, ti.c);
-   }
-
-   private Stream<alg> c() {
-      if (!Files.isDirectory(ti.c)) {
-         return Stream.empty();
+   public evp.b a(List<evp.b> $$0, @Nullable iv $$1) {
+      int $$2 = $$0.size();
+      if ($$2 == 0) {
+         throw new IllegalStateException("No palettes");
       } else {
-         List<alg> $$0 = new ArrayList<>();
-         this.a(ti.c, "minecraft", ".snbt", $$0::add);
-         return $$0.stream();
+         return $$0.get(this.b($$1).a($$2));
       }
    }
 
-   private Optional<evk> h(alg $$0) {
-      if (!Files.isDirectory(this.i)) {
-         return Optional.empty();
-      } else {
-         Path $$1 = this.a($$0, ".nbt");
-         return this.a(() -> new FileInputStream($$1.toFile()), $$1x -> b.error("Couldn't load structure from {}", $$1, $$1x));
-      }
+   public evl c(boolean $$0) {
+      this.k = $$0;
+      return this;
    }
 
-   private Stream<alg> d() {
-      if (!Files.isDirectory(this.i)) {
-         return Stream.empty();
-      } else {
-         try {
-            List<alg> $$0 = new ArrayList<>();
-
-            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream(this.i, $$0x -> Files.isDirectory($$0x))) {
-               for (Path $$2 : $$1) {
-                  String $$3 = $$2.getFileName().toString();
-                  Path $$4 = $$2.resolve("structures");
-                  this.a($$4, $$3, ".nbt", $$0::add);
-               }
-            }
-
-            return $$0.stream();
-         } catch (IOException var9) {
-            return Stream.empty();
-         }
-      }
-   }
-
-   private void a(Path $$0, String $$1, String $$2, Consumer<alg> $$3) {
-      int $$4 = $$2.length();
-      Function<String, String> $$5 = $$1x -> $$1x.substring(0, $$1x.length() - $$4);
-
-      try (Stream<Path> $$6 = Files.find($$0, Integer.MAX_VALUE, ($$1x, $$2x) -> $$2x.isRegularFile() && $$1x.toString().endsWith($$2))) {
-         $$6.forEach($$4x -> {
-            try {
-               $$3.accept(alg.a($$1, $$5.apply(this.a($$0, $$4x))));
-            } catch (ab var7x) {
-               b.error("Invalid location while listing folder {} contents", $$0, var7x);
-            }
-         });
-      } catch (IOException var12) {
-         b.error("Failed to list folder {} contents", $$0, var12);
-      }
-   }
-
-   private String a(Path $$0, Path $$1) {
-      return $$0.relativize($$1).toString().replace(File.separator, "/");
-   }
-
-   private Optional<evk> a(alg $$0, Path $$1) {
-      if (!Files.isDirectory($$1)) {
-         return Optional.empty();
-      } else {
-         Path $$2 = w.b($$1, $$0.a(), ".snbt");
-
-         try {
-            Optional var6;
-            try (BufferedReader $$3 = Files.newBufferedReader($$2)) {
-               String $$4 = IOUtils.toString($$3);
-               var6 = Optional.of(this.a(uo.a($$4)));
-            }
-
-            return var6;
-         } catch (NoSuchFileException var9) {
-            return Optional.empty();
-         } catch (CommandSyntaxException | IOException var10) {
-            b.error("Couldn't load structure from {}", $$2, var10);
-            return Optional.empty();
-         }
-      }
-   }
-
-   private Optional<evk> a(evl.a $$0, Consumer<Throwable> $$1) {
-      try {
-         Optional var5;
-         try (
-            InputStream $$2 = $$0.open();
-            InputStream $$3 = new ayv($$2);
-         ) {
-            var5 = Optional.of(this.a($$3));
-         }
-
-         return var5;
-      } catch (FileNotFoundException var11) {
-         return Optional.empty();
-      } catch (Throwable var12) {
-         $$1.accept(var12);
-         return Optional.empty();
-      }
-   }
-
-   private evk a(InputStream $$0) throws IOException {
-      tz $$1 = um.a($$0, ui.a());
-      return this.a($$1);
-   }
-
-   public evk a(tz $$0) {
-      evk $$1 = new evk();
-      int $$2 = uo.b($$0, 500);
-      $$1.a(this.k, bbb.f.a(this.g, $$0, $$2));
-      return $$1;
-   }
-
-   public boolean c(alg $$0) {
-      Optional<evk> $$1 = this.f.get($$0);
-      if ($$1.isEmpty()) {
-         return false;
-      } else {
-         evk $$2 = $$1.get();
-         Path $$3 = this.a($$0, ".nbt");
-         Path $$4 = $$3.getParent();
-         if ($$4 == null) {
-            return false;
-         } else {
-            try {
-               Files.createDirectories(Files.exists($$4) ? $$4.toRealPath() : $$4);
-            } catch (IOException var13) {
-               b.error("Failed to create parent directory: {}", $$4);
-               return false;
-            }
-
-            tz $$6 = $$2.a(new tz());
-
-            try {
-               try (OutputStream $$7 = new FileOutputStream($$3.toFile())) {
-                  um.a($$6, $$7);
-               }
-
-               return true;
-            } catch (Throwable var12) {
-               return false;
-            }
-         }
-      }
-   }
-
-   public Path a(alg $$0, String $$1) {
-      if ($$0.a().contains("//")) {
-         throw new ab("Invalid resource path: " + $$0);
-      } else {
-         try {
-            Path $$2 = this.i.resolve($$0.b());
-            Path $$3 = $$2.resolve("structures");
-            Path $$4 = w.b($$3, $$0.a(), $$1);
-            if ($$4.startsWith(this.i) && w.a($$4) && w.b($$4)) {
-               return $$4;
-            } else {
-               throw new ab("Invalid resource path: " + $$4);
-            }
-         } catch (InvalidPathException var6) {
-            throw new ab("Invalid resource path: " + $$0, var6);
-         }
-      }
-   }
-
-   public void d(alg $$0) {
-      this.f.remove($$0);
-   }
-
-   @FunctionalInterface
-   interface a {
-      InputStream open() throws IOException;
-   }
-
-   static record b(Function<alg, Optional<evk>> a, Supplier<Stream<alg>> b) {
+   public boolean k() {
+      return this.k;
    }
 }

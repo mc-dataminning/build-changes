@@ -1,97 +1,41 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-public class eyt {
-   private static final String a = "command_storage_";
-   private final Map<String, eyt.a> b = new HashMap<>();
-   private final eyw c;
+public record eyt(int c) implements dcs {
+   public static final Codec<eyt> a = Codec.INT.xmap(eyt::new, eyt::b);
+   public static final yw<ByteBuf, eyt> b = yu.h.a(eyt::new, eyt::b);
+   private static final wy d = wy.c("filled_map.locked").a(o.h);
 
-   public eyt(eyw $$0) {
-      this.c = $$0;
+   public String a() {
+      return "map_" + this.c;
    }
 
-   public tz a(alg $$0) {
-      eyt.a $$1 = this.a($$0.b());
-      return $$1 != null ? $$1.b($$0.a()) : new tz();
-   }
-
-   @Nullable
-   private eyt.a a(String $$0) {
-      eyt.a $$1 = this.b.get($$0);
-      if ($$1 != null) {
-         return $$1;
+   @Override
+   public void a(czj.b $$0, Consumer<wy> $$1, dbc $$2, kf $$3) {
+      eyv $$4 = $$0.a(this);
+      if ($$4 == null) {
+         $$1.accept(wy.c("filled_map.unknown").a(o.h));
       } else {
-         eyt.a $$2 = this.c.b(eyt.a.a($$0));
-         if ($$2 != null) {
-            this.b.put($$0, $$2);
+         dck $$5 = $$3.a(kk.O);
+         if ($$3.a(kk.g) == null && $$5 == null) {
+            $$1.accept(wy.a("filled_map.id", this.c).a(o.h));
          }
 
-         return $$2;
-      }
-   }
-
-   private eyt.a b(String $$0) {
-      eyt.a $$1 = this.b.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         eyt.a $$2 = this.c.a(eyt.a.a($$0));
-         this.b.put($$0, $$2);
-         return $$2;
-      }
-   }
-
-   public void a(alg $$0, tz $$1) {
-      this.b($$0.b()).a($$0.a(), $$1);
-   }
-
-   public Stream<alg> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().c($$0.getKey()));
-   }
-
-   static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends eyh {
-      public static final Codec<eyt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(ayu.C, tz.a).fieldOf("contents").forGetter($$0x -> $$0x.b)).apply($$0, eyt.a::new)
-      );
-      private final Map<String, tz> b;
-
-      private a(Map<String, tz> $$0) {
-         this.b = new HashMap<>($$0);
-      }
-
-      private a() {
-         this(new HashMap<>());
-      }
-
-      public static eyi<eyt.a> a(String $$0) {
-         return new eyi<>(eyt.c($$0), eyt.a::new, a, bbb.h);
-      }
-
-      public tz b(String $$0) {
-         tz $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new tz();
-      }
-
-      public void a(String $$0, tz $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
+         if ($$4.i || $$5 == dck.a) {
+            $$1.accept(d);
          }
 
-         this.f();
+         if ($$2.a()) {
+            int $$6 = $$5 == dck.b ? 1 : 0;
+            int $$7 = Math.min($$4.g + $$6, 4);
+            $$1.accept(wy.a("filled_map.scale", 1 << $$7).a(o.h));
+            $$1.accept(wy.a("filled_map.level", $$7, 4).a(o.h));
+         }
       }
+   }
 
-      public Stream<alg> c(String $$0) {
-         return this.b.keySet().stream().map($$1 -> alg.a($$0, $$1));
-      }
+   public int b() {
+      return this.c;
    }
 }

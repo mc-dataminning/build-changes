@@ -30,7 +30,7 @@ public class acx implements zf<abu> {
    }
 
    @Nullable
-   public bwi a(djh $$0) {
+   public bwi a(djm $$0) {
       return $$0.a(this.b);
    }
 

@@ -1,30 +1,57 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
+import com.google.gson.annotations.SerializedName;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class flq extends fmd {
-   private static final Logger d = LogUtils.getLogger();
+public class flq extends fmi implements fmc {
+   @SerializedName("name")
    @Nullable
-   public String a;
-   @Nullable
-   public String b;
-   @Nullable
-   public String c;
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   public static flq a(String $$0) {
-      flq $$1 = new flq();
+   public String a() {
+      return this.a == null ? "" : this.a;
+   }
 
-      try {
-         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
-         $$1.a = fnz.b("address", $$2, null);
-         $$1.b = fnz.b("resourcePackUrl", $$2, null);
-         $$1.c = fnz.b("resourcePackHash", $$2, null);
-      } catch (Exception var3) {
-         d.error("Could not parse RealmsServerAddress: {}", var3.getMessage());
-      }
+   public void a(String $$0) {
+      this.a = $$0;
+   }
 
-      return $$1;
+   public UUID b() {
+      return this.b;
+   }
+
+   public void a(UUID $$0) {
+      this.b = $$0;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public void b(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

@@ -1,26 +1,43 @@
 import javax.annotation.Nullable;
 
-public interface cmr {
-   boolean a();
+public class cmr extends cmm {
+   @Nullable
+   private ffc b;
 
-   void b();
+   public cmr(cmk $$0) {
+      super($$0);
+   }
 
-   void a(arq var1);
+   @Override
+   public void a(arq $$0) {
+      if (this.b == null) {
+         this.b = this.a.ds();
+      }
+   }
 
-   void a(cmg var1, iv var2, bux var3, @Nullable crj var4);
+   @Override
+   public boolean a() {
+      return true;
+   }
 
-   void c();
+   @Override
+   public void c() {
+      this.b = null;
+   }
 
-   void d();
-
-   float e();
-
-   float g();
-
-   cmx<? extends cmr> h();
+   @Override
+   public float e() {
+      return 1.0F;
+   }
 
    @Nullable
-   fex f();
+   @Override
+   public ffc f() {
+      return this.b;
+   }
 
-   float a(bux var1, float var2);
+   @Override
+   public cna<cmr> h() {
+      return cna.k;
+   }
 }

@@ -8,20 +8,20 @@ public class bb extends dk<bb.a> {
       return bb.a.a;
    }
 
-   public void a(arr $$0, jf<dbe> $$1) {
+   public void a(arr $$0, jf<dbh> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bj> b, Optional<jf<dbe>> c) implements dk.a {
+   public static record a(Optional<bj> b, Optional<jf<dbh>> c) implements dk.a {
       public static final Codec<bb.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(by.b.optionalFieldOf("player").forGetter(bb.a::a), dbe.a.optionalFieldOf("potion").forGetter(bb.a::c)).apply($$0, bb.a::new)
+         $$0 -> $$0.group(by.b.optionalFieldOf("player").forGetter(bb.a::a), dbh.a.optionalFieldOf("potion").forGetter(bb.a::c)).apply($$0, bb.a::new)
       );
 
       public static ar<bb.a> b() {
          return aq.l.a(new bb.a(Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(jf<dbe> $$0) {
+      public boolean a(jf<dbh> $$0) {
          return !this.c.isPresent() || this.c.get().equals($$0);
       }
 

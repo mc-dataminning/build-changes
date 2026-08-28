@@ -1,77 +1,60 @@
 import javax.annotation.Nullable;
 
-public class hpl implements hpq {
-   private static final int a = 6000;
-   private static final wy b = wy.c("tutorial.find_tree.title");
-   private static final wy c = wy.c("tutorial.find_tree.description");
-   private final hpp d;
+public class hpl {
+   private boolean a;
    @Nullable
-   private fvh e;
-   private int f;
+   private hpf.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
 
-   public hpl(hpp $$0) {
+   public hpl(@Nullable String $$0) {
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hpr.f);
+   public void a(hpg.a $$0) {
+      if (this.c != null) {
+         $$0.a(hpf.j, !this.c.equals("vanilla"));
+      }
+
+      $$0.a(hpf.k, this.a());
+   }
+
+   private hpf.c a() {
+      glf $$0 = fpt.Q().S();
+      if ($$0 != null && $$0.e()) {
+         return hpf.c.a;
       } else {
-         fpo $$0 = this.d.e();
-         if (this.f == 1) {
-            gpj $$1 = $$0.t;
-            if ($$1 != null && (b($$1) || a($$1))) {
-               this.d.a(hpr.e);
-               return;
+         return fpt.Q().U() ? hpf.c.b : hpf.c.c;
+      }
+   }
+
+   public boolean a(hpc $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(hpd.b, $$0x -> {
+            $$0x.a(hpf.n, this.b);
+            if (this.d != null) {
+               $$0x.a(hpf.o, this.d);
             }
-         }
-
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fvh($$0.h, fvh.a.c, b, c, false);
-            $$0.aA().a(this.e);
-         }
+         });
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
-      }
+   public void a(djj $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? hpf.b.e : hpf.b.a;
+         case b -> hpf.b.b;
+         case c -> hpf.b.c;
+         case d -> hpf.b.d;
+      };
    }
 
-   @Override
-   public void a(gkl $$0, fev $$1) {
-      if ($$1.d() == fev.a.b) {
-         eao $$2 = $$0.a_(((fet)$$1).b());
-         if ($$2.a(axc.al)) {
-            this.d.a(hpr.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(czk $$0) {
-      if ($$0.a(axk.aR)) {
-         this.d.a(hpr.e);
-      }
-   }
-
-   private static boolean b(gpj $$0) {
-      return $$0.gi().a_($$0x -> $$0x.a(axk.aR));
-   }
-
-   public static boolean a(gpj $$0) {
-      for (jf<dmm> $$1 : mg.e.c(axc.al)) {
-         dmm $$2 = $$1.a();
-         if ($$0.l().a(awx.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

@@ -16,7 +16,7 @@ public class bwa extends bwi implements byh {
    public static final float a = 6.0F;
    public static final float b = 0.5F;
    private static final lr j = lr.a(ly.u, -1);
-   private dbg k = dbg.a;
+   private dbj k = dbj.a;
    private float l = 1.0F;
    private final Map<bwi, Integer> m = Maps.newHashMap();
    private int n = 600;
@@ -30,12 +30,12 @@ public class bwa extends bwi implements byh {
    @Nullable
    private UUID u;
 
-   public bwa(bwr<? extends bwa> $$0, djh $$1) {
+   public bwa(bwr<? extends bwa> $$0, djm $$1) {
       super($$0, $$1);
       this.ad = true;
    }
 
-   public bwa(djh $$0, double $$1, double $$2, double $$3) {
+   public bwa(djm $$0, double $$1, double $$2, double $$3) {
       this(bwr.d, $$0);
       this.a_($$1, $$2, $$3);
    }
@@ -66,7 +66,7 @@ public class bwa extends bwi implements byh {
       return this.ar().a(d);
    }
 
-   public void a(dbg $$0) {
+   public void a(dbj $$0) {
       this.k = $$0;
       this.s();
    }
@@ -78,7 +78,7 @@ public class bwa extends bwi implements byh {
    private void s() {
       lw $$0 = this.al.a(f);
       if ($$0 instanceof lr $$1) {
-         int $$2 = this.k.equals(dbg.a) ? 0 : this.k.b();
+         int $$2 = this.k.equals(dbj.a) ? 0 : this.k.b();
          this.al.a(f, lr.a($$1.a(), axw.f($$2)));
       }
    }
@@ -294,7 +294,7 @@ public class bwa extends bwi implements byh {
       this.u = $$0.<UUID>a("Owner", jz.a).orElse(null);
       ale<uw> $$1 = this.dW().a(un.a);
       this.a($$0.<lw>a("Particle", ly.bk, $$1).orElse(j));
-      this.a($$0.<dbg>a("potion_contents", dbg.c, $$1).orElse(dbg.a));
+      this.a($$0.<dbj>a("potion_contents", dbj.c, $$1).orElse(dbj.a));
       this.l = $$0.b("potion_duration_scale", 1.0F);
    }
 
@@ -311,8 +311,8 @@ public class bwa extends bwi implements byh {
       ale<uw> $$1 = this.dW().a(un.a);
       $$0.a("Particle", ly.bk, $$1, this.f());
       $$0.b("Owner", jz.a, this.u);
-      if (!this.k.equals(dbg.a)) {
-         $$0.a("potion_contents", dbg.c, $$1, this.k);
+      if (!this.k.equals(dbj.a)) {
+         $$0.a("potion_contents", dbj.c, $$1, this.k);
       }
 
       if (this.l != 1.0F) {
@@ -330,8 +330,8 @@ public class bwa extends bwi implements byh {
    }
 
    @Override
-   public exa j_() {
-      return exa.d;
+   public exf j_() {
+      return exf.d;
    }
 
    @Override

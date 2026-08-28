@@ -1,5 +1,8 @@
-public class hdl extends hdz {
-   public boolean a = true;
-   public boolean b = true;
-   public float c;
+public class hdl extends hef {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

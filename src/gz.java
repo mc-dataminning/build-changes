@@ -9,9 +9,9 @@ import javax.annotation.Nullable;
 
 public class gz {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<fex, List<? extends bwi>> b = ($$0, $$1) -> {
+   public static final BiConsumer<ffc, List<? extends bwi>> b = ($$0, $$1) -> {
    };
-   private static final efa<bwi, ?> c = new efa<bwi, bwi>() {
+   private static final eff<bwi, ?> c = new eff<bwi, bwi>() {
       public bwi a(bwi $$0) {
          return $$0;
       }
@@ -26,16 +26,16 @@ public class gz {
    private final boolean f;
    private final List<Predicate<bwi>> g;
    private final cw.c h;
-   private final Function<fex, fex> i;
+   private final Function<ffc, ffc> i;
    @Nullable
-   private final fes j;
-   private final BiConsumer<fex, List<? extends bwi>> k;
+   private final fex j;
+   private final BiConsumer<ffc, List<? extends bwi>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final efa<bwi, ?> o;
+   private final eff<bwi, ?> o;
    private final boolean p;
 
    public gz(
@@ -44,9 +44,9 @@ public class gz {
       boolean $$2,
       List<Predicate<bwi>> $$3,
       cw.c $$4,
-      Function<fex, fex> $$5,
-      @Nullable fes $$6,
-      BiConsumer<fex, List<? extends bwi>> $$7,
+      Function<ffc, ffc> $$5,
+      @Nullable fex $$6,
+      BiConsumer<ffc, List<? extends bwi>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
@@ -64,7 +64,7 @@ public class gz {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (efa<bwi, ?>)($$11 == null ? c : $$11);
+      this.o = (eff<bwi, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -126,8 +126,8 @@ public class gz {
 
          return List.of();
       } else {
-         fex $$4 = this.i.apply($$0.d());
-         fes $$5 = this.a($$4);
+         ffc $$4 = this.i.apply($$0.d());
+         fex $$5 = this.a($$4);
          if (this.l) {
             Predicate<bwi> $$6 = this.a($$4, $$5, null);
             return $$0.f() != null && $$6.test($$0.f()) ? List.of($$0.f()) : List.of();
@@ -147,7 +147,7 @@ public class gz {
       }
    }
 
-   private void a(List<bwi> $$0, arq $$1, @Nullable fes $$2, Predicate<bwi> $$3) {
+   private void a(List<bwi> $$0, arq $$1, @Nullable fex $$2, Predicate<bwi> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if ($$2 != null) {
@@ -181,8 +181,8 @@ public class gz {
          arr $$2 = $$0.l().ag().a(this.n);
          return $$2 == null ? List.of() : List.of($$2);
       } else {
-         fex $$3 = this.i.apply($$0.d());
-         fes $$4 = this.a($$3);
+         ffc $$3 = this.i.apply($$0.d());
+         fex $$4 = this.a($$3);
          Predicate<bwi> $$5 = this.a($$3, $$4, null);
          if (this.l) {
             if ($$0.f() instanceof arr $$6 && $$5.test($$6)) {
@@ -214,11 +214,11 @@ public class gz {
    }
 
    @Nullable
-   private fes a(fex $$0) {
+   private fex a(ffc $$0) {
       return this.j != null ? this.j.c($$0) : null;
    }
 
-   private Predicate<bwi> a(fex $$0, @Nullable fes $$1, @Nullable cut $$2) {
+   private Predicate<bwi> a(ffc $$0, @Nullable fex $$1, @Nullable cuw $$2) {
       boolean $$3 = $$2 != null;
       boolean $$4 = $$1 != null;
       boolean $$5 = !this.h.c();
@@ -247,7 +247,7 @@ public class gz {
       return ag.a($$7);
    }
 
-   private <T extends bwi> List<T> a(fex $$0, List<T> $$1) {
+   private <T extends bwi> List<T> a(ffc $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }

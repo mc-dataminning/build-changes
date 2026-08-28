@@ -36,8 +36,8 @@ public abstract class cgf extends cef {
       } else if (!this.e.c($$0)) {
          return false;
       } else {
-         fge $$1 = this.e.cp();
-         fge $$2 = $$0.cp();
+         fgj $$1 = this.e.cp();
+         fgj $$2 = $$0.cp();
          if ($$1 != null && $$2 == $$1) {
             return false;
          } else {
@@ -105,11 +105,11 @@ public abstract class cgf extends cef {
 
    private boolean a(bxj $$0) {
       this.j = b(10 + this.e.dX().a(5));
-      exj $$1 = this.e.O().a($$0, 0);
+      exo $$1 = this.e.O().a($$0, 0);
       if ($$1 == null) {
          return false;
       } else {
-         exh $$2 = $$1.d();
+         exm $$2 = $$1.d();
          if ($$2 == null) {
             return false;
          } else {

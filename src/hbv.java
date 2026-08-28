@@ -1,42 +1,66 @@
-import java.util.Map;
+public abstract class hbv<M extends ghv> extends hbm<her, M> {
+   private final ghl a;
+   private final alg b;
+   private final hbv.a c;
 
-public class hbv extends hbh<hfo, gjd> {
-   private final gjd a;
-   private final gjd b;
-   private final has c;
-   private static final Map<bwe.a, alg> d = Map.of(
-      bwe.a.b,
-      alg.b("textures/entity/wolf/wolf_armor_crackiness_low.png"),
-      bwe.a.c,
-      alg.b("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
-      bwe.a.d,
-      alg.b("textures/entity/wolf/wolf_armor_crackiness_high.png")
-   );
-
-   public hbv(gyq<hfo, gjd> $$0, gjk $$1, has $$2) {
+   public hbv(gxz<?, her, M> $$0, ghl $$1, alg $$2, hbv.a $$3) {
       super($$0);
-      this.a = new gjd($$1.a(gjn.ea));
-      this.b = new gjd($$1.a(gjn.ec));
-      this.c = $$2;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, hfo $$3, float $$4, float $$5) {
-      czk $$6 = $$3.i;
-      dht $$7 = $$6.a(kk.D);
-      if ($$7 != null && !$$7.d().isEmpty()) {
-         gjd $$8 = $$3.aj ? this.b : this.a;
-         $$8.a($$3);
-         this.c.a(hlp.d.d, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
-         this.a($$0, $$1, $$2, $$6, $$8);
+   protected abstract int a(her var1);
+
+   private void a(fkd $$0, gqr $$1, int $$2, float $$3, float $$4, float $$5) {
+      float $$6 = azm.c($$3 * $$3 + $$5 * $$5);
+      float $$7 = (float)(Math.atan2((double)$$3, (double)$$5) * 180.0F / (float)Math.PI);
+      float $$8 = (float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI);
+      $$0.a(a.d.rotationDegrees($$7 - 90.0F));
+      $$0.a(a.f.rotationDegrees($$8));
+      this.a.a($$0, $$1.getBuffer(this.a.a(this.b)), $$2, hjg.d);
+   }
+
+   public void a(fkd $$0, gqr $$1, int $$2, her $$3, float $$4, float $$5) {
+      int $$6 = this.a($$3);
+      if ($$6 > 0) {
+         azv $$7 = azv.a((long)$$3.aG);
+
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            $$0.a();
+            gjt $$9 = this.d().a($$7);
+            gjt.a $$10 = $$9.a($$7);
+            $$9.a($$0);
+            float $$11 = $$7.i();
+            float $$12 = $$7.i();
+            float $$13 = $$7.i();
+            if (this.c == hbv.a.b) {
+               int $$14 = $$7.a(3);
+               switch ($$14) {
+                  case 0:
+                     $$11 = a($$11);
+                     break;
+                  case 1:
+                     $$12 = a($$12);
+                     break;
+                  default:
+                     $$13 = a($$13);
+               }
+            }
+
+            $$0.a(azm.h($$11, $$10.b, $$10.e) / 16.0F, azm.h($$12, $$10.c, $$10.f) / 16.0F, azm.h($$13, $$10.d, $$10.g) / 16.0F);
+            this.a($$0, $$1, $$2, -($$11 * 2.0F - 1.0F), -($$12 * 2.0F - 1.0F), -($$13 * 2.0F - 1.0F));
+            $$0.b();
+         }
       }
    }
 
-   private void a(fjy $$0, gqm $$1, int $$2, czk $$3, ghg $$4) {
-      bwe.a $$5 = bwe.b.a($$3);
-      if ($$5 != bwe.a.a) {
-         alg $$6 = d.get($$5);
-         fkc $$7 = $$1.getBuffer(gqx.c($$6));
-         $$4.a($$0, $$7, $$2, hja.d);
-      }
+   private static float a(float $$0) {
+      return $$0 > 0.5F ? 1.0F : 0.5F;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

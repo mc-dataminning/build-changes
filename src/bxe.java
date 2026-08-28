@@ -5,11 +5,11 @@ public class bxe {
    public static final int a = 3;
    private final bwi b;
    private int c;
-   private final bxe.a d = new bxe.a(0, fex.c, 0.0F, 0.0F);
+   private final bxe.a d = new bxe.a(0, ffc.c, 0.0F, 0.0F);
    @Nullable
-   private fex e;
+   private ffc e;
    @Nullable
-   private few f;
+   private ffb f;
    @Nullable
    private final Consumer<bxe> g;
 
@@ -31,7 +31,7 @@ public class bxe {
       this.g = $$2;
    }
 
-   public fex a() {
+   public ffc a() {
       return this.d.a > 0 ? this.d.b : this.b.ds();
    }
 
@@ -43,7 +43,7 @@ public class bxe {
       return this.d.a > 0 ? this.d.d : this.b.dM();
    }
 
-   public void a(fex $$0, float $$1, float $$2) {
+   public void a(ffc $$0, float $$1, float $$2) {
       if (this.c == 0) {
          this.b.b($$0, $$1, $$2);
          this.f();
@@ -53,7 +53,7 @@ public class bxe {
          this.d.c = $$1;
          this.d.d = $$2;
          this.e = this.b.ds();
-         this.f = new few(this.b.dM(), this.b.dK());
+         this.f = new ffb(this.b.dM(), this.b.dK());
          if (this.g != null) {
             this.g.accept(this);
          }
@@ -74,7 +74,7 @@ public class bxe {
       } else {
          double $$0 = 1.0 / (double)this.d.a;
          if (this.e != null) {
-            fex $$1 = this.b.ds().d(this.e);
+            ffc $$1 = this.b.ds().d(this.e);
             if (this.b.dU().a(this.b, this.b.au().c(this.d.b.e($$1)))) {
                this.d.a($$1);
             }
@@ -89,14 +89,14 @@ public class bxe {
          double $$4 = azm.d($$0, this.b.dz(), this.d.b.d);
          double $$5 = azm.d($$0, this.b.dB(), this.d.b.e);
          double $$6 = azm.d($$0, this.b.dF(), this.d.b.f);
-         fex $$7 = new fex($$4, $$5, $$6);
+         ffc $$7 = new ffc($$4, $$5, $$6);
          float $$8 = (float)azm.e($$0, (double)this.b.dK(), (double)this.d.c);
          float $$9 = (float)azm.d($$0, (double)this.b.dM(), (double)this.d.d);
          this.b.b($$7);
          this.b.b($$8, $$9);
          this.d.a();
          this.e = $$7;
-         this.f = new few(this.b.dM(), this.b.dK());
+         this.f = new ffb(this.b.dM(), this.b.dK());
       }
    }
 
@@ -108,11 +108,11 @@ public class bxe {
 
    static class a {
       protected int a;
-      fex b;
+      ffc b;
       float c;
       float d;
 
-      a(int $$0, fex $$1, float $$2, float $$3) {
+      a(int $$0, ffc $$1, float $$2, float $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -123,7 +123,7 @@ public class bxe {
          this.a--;
       }
 
-      public void a(fex $$0) {
+      public void a(ffc $$0) {
          this.b = this.b.e($$0);
       }
 

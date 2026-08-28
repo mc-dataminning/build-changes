@@ -1,74 +1,16 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class hpc {
-   public static final hpc a = new hpc(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<hoy<hpc.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+@FunctionalInterface
+public interface hpc {
+   hpc a = ($$0, $$1) -> {
+   };
 
-   protected hpc(Ticker $$0) {
-      this.c = $$0;
+   default hpc decorate(Consumer<hpg.a> $$0) {
+      return ($$1, $$2) -> this.send($$1, $$2x -> {
+            $$2.accept($$2x);
+            $$0.accept($$2x);
+         });
    }
 
-   public synchronized void a(hoy<hpc.a> $$0) {
-      this.a($$0, (Function<hoy<hpc.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
-
-   public synchronized void a(hoy<hpc.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<hoy<hpc.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(hoy<hpc.a> $$0, Function<hoy<hpc.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(hoy<hpc.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
-      }
-   }
-
-   public void a(hov $$0) {
-      $$0.send(how.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((hoy<hpc.a>)$$1, new hpc.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), how.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(hoy.B, new hpc.a((int)$$1)));
-            this.d.clear();
-         }
-      });
-   }
-
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<hpc.a> a = Codec.INT.xmap(hpc.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
-      }
-   }
+   void send(hpd var1, Consumer<hpg.a> var2);
 }

@@ -1,51 +1,47 @@
-public interface czs {
-   alf<czq> a = a("13");
-   alf<czq> b = a("cat");
-   alf<czq> c = a("blocks");
-   alf<czq> d = a("chirp");
-   alf<czq> e = a("far");
-   alf<czq> f = a("mall");
-   alf<czq> g = a("mellohi");
-   alf<czq> h = a("stal");
-   alf<czq> i = a("strad");
-   alf<czq> j = a("ward");
-   alf<czq> k = a("11");
-   alf<czq> l = a("wait");
-   alf<czq> m = a("pigstep");
-   alf<czq> n = a("otherside");
-   alf<czq> o = a("5");
-   alf<czq> p = a("relic");
-   alf<czq> q = a("precipice");
-   alf<czq> r = a("creator");
-   alf<czq> s = a("creator_music_box");
+import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
 
-   private static alf<czq> a(String $$0) {
-      return alf.a(mh.aV, alg.b($$0));
+public record czs(cyo<czt> c) implements dcs {
+   public static final Codec<czs> a = cyo.a(mh.aV, czt.c).xmap(czs::new, czs::a);
+   public static final yw<wj, czs> b = yw.a(cyo.a(mh.aV, czt.d), czs::a, czs::new);
+
+   @Override
+   public void a(czj.b $$0, Consumer<wy> $$1, dbc $$2, kf $$3) {
+      jh.a $$4 = $$0.a();
+      if ($$4 != null) {
+         this.c.a($$4).ifPresent($$1x -> {
+            xm $$2x = ((czt)$$1x.a()).c().f();
+            xb.a($$2x, xv.a.a(o.h));
+            $$1.accept($$2x);
+         });
+      }
    }
 
-   private static void a(qh<czq> $$0, alf<czq> $$1, jf.c<awm> $$2, int $$3, int $$4) {
-      $$0.a($$1, new czq($$2, wy.c(ag.a("jukebox_song", $$1.a())), (float)$$3, $$4));
+   public static bug a(djm $$0, iv $$1, czn $$2, crm $$3) {
+      czs $$4 = $$2.a(kk.ae);
+      if ($$4 == null) {
+         return bug.f;
+      } else {
+         eat $$5 = $$0.a_($$1);
+         if ($$5.a(dmt.ek) && !$$5.c(dqz.b)) {
+            if (!$$0.C) {
+               czn $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof dyw $$7) {
+                  $$7.b($$6);
+                  $$0.a(eft.c, $$1, eft.a.a($$3, $$5));
+               }
+
+               $$3.a(awx.al);
+            }
+
+            return bug.a;
+         } else {
+            return bug.f;
+         }
+      }
    }
 
-   static void a(qh<czq> $$0) {
-      a($$0, a, awn.qu, 178, 1);
-      a($$0, b, awn.qw, 185, 2);
-      a($$0, c, awn.qv, 345, 3);
-      a($$0, d, awn.qx, 185, 4);
-      a($$0, e, awn.qy, 174, 5);
-      a($$0, f, awn.qz, 197, 6);
-      a($$0, g, awn.qA, 96, 7);
-      a($$0, h, awn.qC, 150, 8);
-      a($$0, i, awn.qD, 188, 9);
-      a($$0, j, awn.qF, 251, 10);
-      a($$0, k, awn.qt, 71, 11);
-      a($$0, l, awn.qE, 238, 12);
-      a($$0, m, awn.qB, 149, 13);
-      a($$0, n, awn.qG, 195, 14);
-      a($$0, o, awn.qs, 178, 15);
-      a($$0, p, awn.qH, 218, 14);
-      a($$0, q, awn.qK, 299, 13);
-      a($$0, r, awn.qI, 176, 12);
-      a($$0, s, awn.qJ, 73, 11);
+   public cyo<czt> a() {
+      return this.c;
    }
 }

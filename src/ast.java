@@ -58,7 +58,7 @@ public class ast extends asq implements agp, asw, wm {
    private double D;
    private double E;
    @Nullable
-   private fex F;
+   private ffc F;
    private int G;
    private int H;
    private boolean I;
@@ -253,7 +253,7 @@ public class ast extends asq implements agp, asw, wm {
                $$18.k();
             }
 
-            $$1.a(bxn.b, new fex($$11, $$12, $$13));
+            $$1.a(bxn.b, new ffc($$11, $$12, $$13));
             $$11 = $$6 - $$1.dz();
             $$12 = $$7 - $$1.dB();
             if ($$12 > -0.5 || $$12 < 0.5) {
@@ -277,8 +277,8 @@ public class ast extends asq implements agp, asw, wm {
             }
 
             this.f.y().m().a(this.f);
-            $$1.b(new fex($$3, $$4, $$5), $$1.ds());
-            fex $$22 = new fex($$1.dz() - $$3, $$1.dB() - $$4, $$1.dF() - $$5);
+            $$1.b(new ffc($$3, $$4, $$5), $$1.ds());
+            ffc $$22 = new ffc($$1.dz() - $$3, $$1.dB() - $$4, $$1.dF() - $$5);
             this.a($$22);
             $$1.a($$0.g(), $$22);
             $$1.a($$22.d, $$22.e, $$22.f, $$0.g());
@@ -292,7 +292,7 @@ public class ast extends asq implements agp, asw, wm {
    }
 
    private boolean b(bwi $$0) {
-      return $$0.dU().a($$0.cQ().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(ean.a::l);
+      return $$0.dU().a($$0.cQ().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(eas.a::l);
    }
 
    @Override
@@ -322,7 +322,7 @@ public class ast extends asq implements agp, asw, wm {
    @Override
    public void a(aia $$0) {
       zi.a($$0, this, this.f.y());
-      dei.d $$1 = this.d.aI().a($$0.b());
+      del.d $$1 = this.d.aI().a($$0.b());
       if ($$1 != null) {
          this.f.J().d($$1.b().a());
       }
@@ -375,28 +375,28 @@ public class ast extends asq implements agp, asw, wm {
       } else if (!this.f.gF()) {
          this.f.a(wy.c("advMode.notAllowed"));
       } else {
-         dii $$1 = null;
-         dxx $$2 = null;
+         dil $$1 = null;
+         dyc $$2 = null;
          iv $$3 = $$0.b();
-         dxm $$4 = this.f.dU().c_($$3);
-         if ($$4 instanceof dxx) {
-            $$2 = (dxx)$$4;
+         dxr $$4 = this.f.dU().c_($$3);
+         if ($$4 instanceof dyc) {
+            $$2 = (dyc)$$4;
             $$1 = $$2.a();
          }
 
          String $$5 = $$0.e();
          boolean $$6 = $$0.f();
          if ($$1 != null) {
-            dxx.a $$7 = $$2.s();
-            eao $$8 = this.f.dU().a_($$3);
-            jb $$9 = $$8.c(dnw.b);
+            dyc.a $$7 = $$2.s();
+            eat $$8 = this.f.dU().a_($$3);
+            jb $$9 = $$8.c(dob.b);
 
-            eao $$10 = switch ($$0.i()) {
-               case a -> dmo.ln.m();
-               case b -> dmo.lm.m();
-               default -> dmo.gm.m();
+            eat $$10 = switch ($$0.i()) {
+               case a -> dmt.ln.m();
+               case b -> dmt.lm.m();
+               default -> dmt.gm.m();
             };
-            eao $$11 = $$10.b(dnw.b, $$9).b(dnw.c, Boolean.valueOf($$0.g()));
+            eat $$11 = $$10.b(dob.b, $$9).b(dob.c, Boolean.valueOf($$0.g()));
             if ($$11 != $$8) {
                this.f.dU().a($$3, $$11, 2);
                $$4.c($$11);
@@ -430,7 +430,7 @@ public class ast extends asq implements agp, asw, wm {
       } else if (!this.f.gF()) {
          this.f.a(wy.c("advMode.notAllowed"));
       } else {
-         dii $$1 = $$0.a(this.f.dU());
+         dil $$1 = $$0.a(this.f.dU());
          if ($$1 != null) {
             $$1.a($$0.b());
             $$1.a($$0.e());
@@ -451,9 +451,9 @@ public class ast extends asq implements agp, asw, wm {
       iv $$2 = $$0.b();
       if (this.f.a($$2, 1.0)) {
          if ($$1.p($$2)) {
-            eao $$3 = $$1.a_($$2);
+            eat $$3 = $$1.a_($$2);
             boolean $$4 = this.f.fU() && $$0.e();
-            czk $$5 = $$3.a((djk)$$1, $$2, $$4);
+            czn $$5 = $$3.a((djp)$$1, $$2, $$4);
             if (!$$5.f()) {
                if ($$4) {
                   a($$3, $$1, $$2, $$5);
@@ -465,12 +465,12 @@ public class ast extends asq implements agp, asw, wm {
       }
    }
 
-   private static void a(eao $$0, arq $$1, iv $$2, czk $$3) {
-      dxm $$4 = $$0.x() ? $$1.c_($$2) : null;
+   private static void a(eat $$0, arq $$1, iv $$2, czn $$3) {
+      dxr $$4 = $$0.x() ? $$1.c_($$2) : null;
       if ($$4 != null) {
          tz $$5 = $$4.e($$1.F_());
          $$4.a($$5);
-         cxs.a($$3, $$4.p(), $$5);
+         cxv.a($$3, $$4.p(), $$5);
          $$3.b($$4.q());
       }
    }
@@ -481,19 +481,19 @@ public class ast extends asq implements agp, asw, wm {
       zi.a($$0, this, $$1);
       bwi $$2 = $$1.b($$0.b());
       if ($$2 != null && this.f.b($$2, 3.0)) {
-         czk $$3 = $$2.dH();
+         czn $$3 = $$2.dH();
          if ($$3 != null && !$$3.f()) {
             this.a($$3);
          }
       }
    }
 
-   private void a(czk $$0) {
+   private void a(czn $$0) {
       if ($$0.a(this.f.dU().K())) {
-         cri $$1 = this.f.gi();
+         crl $$1 = this.f.gi();
          int $$2 = $$1.d($$0);
          if ($$2 != -1) {
-            if (cri.e($$2)) {
+            if (crl.e($$2)) {
                $$1.c($$2);
             } else {
                $$1.d($$2);
@@ -510,7 +510,7 @@ public class ast extends asq implements agp, asw, wm {
    @Override
    public void a(aib $$0) {
       zi.a($$0, this, this.f.y());
-      if (this.f.bR instanceof cvf $$1) {
+      if (this.f.bR instanceof cvi $$1) {
          if (!$$1.b(this.f)) {
             h.debug("Player {} interacted with invalid menu {}", this.f, $$1);
             return;
@@ -523,7 +523,7 @@ public class ast extends asq implements agp, asw, wm {
    @Override
    public void a(aif $$0) {
       zi.a($$0, this, this.f.y());
-      if (this.f.bR instanceof cvh $$1) {
+      if (this.f.bR instanceof cvk $$1) {
          if (!this.f.bR.b(this.f)) {
             h.debug("Player {} interacted with invalid menu {}", this.f, this.f.bR);
             return;
@@ -538,8 +538,8 @@ public class ast extends asq implements agp, asw, wm {
       zi.a($$0, this, this.f.y());
       if (this.f.gF()) {
          iv $$1 = $$0.b();
-         eao $$2 = this.f.dU().a_($$1);
-         if (this.f.dU().c_($$1) instanceof dzf $$4) {
+         eat $$2 = this.f.dU().a_($$1);
+         if (this.f.dU().c_($$1) instanceof dzk $$4) {
             $$4.a($$0.f());
             $$4.a($$0.g());
             $$4.a($$0.h());
@@ -555,13 +555,13 @@ public class ast extends asq implements agp, asw, wm {
             $$4.a($$0.r());
             if ($$4.f()) {
                String $$5 = $$4.d();
-               if ($$0.e() == dzf.a.b) {
+               if ($$0.e() == dzk.a.b) {
                   if ($$4.B()) {
                      this.f.a(wy.a("structure_block.save_success", $$5), false);
                   } else {
                      this.f.a(wy.a("structure_block.save_failure", $$5), false);
                   }
-               } else if ($$0.e() == dzf.a.c) {
+               } else if ($$0.e() == dzk.a.c) {
                   if (!$$4.D()) {
                      this.f.a(wy.a("structure_block.load_not_found", $$5), false);
                   } else if ($$4.a(this.f.y())) {
@@ -569,7 +569,7 @@ public class ast extends asq implements agp, asw, wm {
                   } else {
                      this.f.a(wy.a("structure_block.load_prepare", $$5), false);
                   }
-               } else if ($$0.e() == dzf.a.d) {
+               } else if ($$0.e() == dzk.a.d) {
                   if ($$4.A()) {
                      this.f.a(wy.a("structure_block.size_success", $$5), false);
                   } else {
@@ -591,8 +591,8 @@ public class ast extends asq implements agp, asw, wm {
       zi.a($$0, this, this.f.y());
       if (this.f.gF()) {
          iv $$1 = $$0.b();
-         eao $$2 = this.f.dU().a_($$1);
-         if (this.f.dU().c_($$1) instanceof dzg $$4) {
+         eat $$2 = this.f.dU().a_($$1);
+         if (this.f.dU().c_($$1) instanceof dzl $$4) {
             $$4.a($$0.e());
             $$4.a($$0.f());
             $$4.e();
@@ -605,7 +605,7 @@ public class ast extends asq implements agp, asw, wm {
    public void a(aiq $$0) {
       zi.a($$0, this, this.f.y());
       iv $$1 = $$0.b();
-      if (this.f.gF() && this.f.dU().c_($$1) instanceof dzh $$2) {
+      if (this.f.gF() && this.f.dU().c_($$1) instanceof dzm $$2) {
          if ($$0.e() != aiq.a.b && $$0.e() != aiq.a.a) {
             $$2.a($$0.f());
             if ($$0.e() == aiq.a.d) {
@@ -618,8 +618,8 @@ public class ast extends asq implements agp, asw, wm {
                $$2.d(this.f::a);
             }
 
-            eao $$10 = this.f.dU().a_($$1);
-            this.f.dU().a($$1, dmo.a.m(), $$10, 3);
+            eat $$10 = this.f.dU().a_($$1);
+            this.f.dU().a($$1, dmt.a.m(), $$10, 3);
          } else {
             js<sr> $$4 = this.f.dW().f(mh.bh);
             Optional<jf.c<sr>> $$5 = $$0.f().a().flatMap($$4::a);
@@ -632,7 +632,7 @@ public class ast extends asq implements agp, asw, wm {
 
             Optional<ka> $$8;
             if ($$0.e() == aiq.a.b) {
-               $$8 = $$0.f().a().flatMap($$0x -> dzh.a(this.f.y(), $$0x));
+               $$8 = $$0.f().a().flatMap($$0x -> dzm.a(this.f.y(), $$0x));
             } else {
                $$8 = Optional.empty();
             }
@@ -647,8 +647,8 @@ public class ast extends asq implements agp, asw, wm {
       zi.a($$0, this, this.f.y());
       if (this.f.gF()) {
          iv $$1 = $$0.b();
-         eao $$2 = this.f.dU().a_($$1);
-         if (this.f.dU().c_($$1) instanceof dyq $$4) {
+         eat $$2 = this.f.dU().a_($$1);
+         if (this.f.dU().c_($$1) instanceof dyv $$4) {
             $$4.a($$0.e());
             $$4.b($$0.f());
             $$4.a(alf.a(mh.bf, $$0.g()));
@@ -667,7 +667,7 @@ public class ast extends asq implements agp, asw, wm {
       zi.a($$0, this, this.f.y());
       if (this.f.gF()) {
          iv $$1 = $$0.b();
-         if (this.f.dU().c_($$1) instanceof dyq $$3) {
+         if (this.f.dU().c_($$1) instanceof dyv $$3) {
             $$3.a(this.f.y(), $$0.e(), $$0.f());
          }
       }
@@ -677,7 +677,7 @@ public class ast extends asq implements agp, asw, wm {
    public void a(aie $$0) {
       zi.a($$0, this, this.f.y());
       int $$1 = $$0.b();
-      if (this.f.bR instanceof cwn $$2) {
+      if (this.f.bR instanceof cwq $$2) {
          if (!$$2.b(this.f)) {
             h.debug("Player {} interacted with invalid menu {}", this.f, $$2);
             return;
@@ -691,7 +691,7 @@ public class ast extends asq implements agp, asw, wm {
    @Override
    public void a(ahj $$0) {
       int $$1 = $$0.b();
-      if (cri.e($$1) || $$1 == 40) {
+      if (crl.e($$1) || $$1 == 40) {
          List<String> $$2 = Lists.newArrayList();
          Optional<String> $$3 = $$0.f();
          $$3.ifPresent($$2::add);
@@ -702,20 +702,20 @@ public class ast extends asq implements agp, asw, wm {
    }
 
    private void a(List<asj> $$0, int $$1) {
-      czk $$2 = this.f.gi().a($$1);
+      czn $$2 = this.f.gi().a($$1);
       if ($$2.c(kk.U)) {
          List<asi<String>> $$3 = $$0.stream().map(this::a).toList();
-         $$2.b(kk.U, new dct($$3));
+         $$2.b(kk.U, new dcw($$3));
       }
    }
 
    private void a(asj $$0, List<asj> $$1, int $$2) {
-      czk $$3 = this.f.gi().a($$2);
+      czn $$3 = this.f.gi().a($$2);
       if ($$3.c(kk.U)) {
-         czk $$4 = $$3.a((djg)czo.vj);
+         czn $$4 = $$3.a((djl)czr.vj);
          $$4.e(kk.U);
          List<asi<wy>> $$5 = $$1.stream().map($$0x -> this.a($$0x).a(wy::b)).toList();
-         $$4.b(kk.V, new dcu(this.a($$0), this.f.ai().getString(), 0, $$5, true));
+         $$4.b(kk.V, new dcx(this.a($$0), this.f.ai().getString(), 0, $$5, true));
          this.f.gi().a($$2, $$4);
       }
    }
@@ -740,7 +740,7 @@ public class ast extends asq implements agp, asw, wm {
    public void a(ahh $$0) {
       zi.a($$0, this, this.f.y());
       if (!this.f.V_() && $$0.e() == this.f.bR.l) {
-         if (this.f.bR instanceof cvs $$1 && $$1.m() instanceof dyb $$2) {
+         if (this.f.bR instanceof cvv $$1 && $$1.m() instanceof dyg $$2) {
             $$2.a($$0.b(), $$0.f());
          }
       }
@@ -750,7 +750,7 @@ public class ast extends asq implements agp, asw, wm {
    public void a(ags $$0) {
       zi.a($$0, this, this.f.y());
       if (this.f.s(2)) {
-         dxm $$1 = this.f.dU().c_($$0.e());
+         dxr $$1 = this.f.dU().c_($$0.e());
          tz $$2 = $$1 != null ? $$1.d(this.f.dW()) : null;
          this.f.f.b(new aga($$0.b(), $$2));
       }
@@ -813,7 +813,7 @@ public class ast extends asq implements agp, asw, wm {
                            }
                         }
 
-                        fes $$18 = this.f.cQ();
+                        fex $$18 = this.f.cQ();
                         $$10 = $$4 - this.v;
                         $$11 = $$5 - this.w;
                         $$12 = $$6 - this.x;
@@ -823,7 +823,7 @@ public class ast extends asq implements agp, asw, wm {
                         }
 
                         boolean $$20 = this.f.R;
-                        this.f.a(bxn.b, new fex($$10, $$11, $$12));
+                        this.f.a(bxn.b, new ffc($$10, $$11, $$12));
                         $$10 = $$4 - this.f.dz();
                         $$11 = $$5 - this.f.dB();
                         if ($$11 > -0.5 || $$11 < 0.5) {
@@ -833,7 +833,7 @@ public class ast extends asq implements agp, asw, wm {
                         $$12 = $$6 - this.f.dF();
                         $$14 = $$10 * $$10 + $$11 * $$11 + $$12 * $$12;
                         boolean $$22 = false;
-                        if (!this.f.Q() && $$14 > 0.0625 && !this.f.fQ() && !this.f.h.e() && this.f.h.b() != dje.d) {
+                        if (!this.f.Q() && $$14 > 0.0625 && !this.f.fQ() && !this.f.h.e() && this.f.h.b() != djj.d) {
                            $$22 = true;
                            h.warn("{} moved wrongly!", this.f.ai().getString());
                         }
@@ -843,7 +843,7 @@ public class ast extends asq implements agp, asw, wm {
                            boolean $$23 = this.f.fu();
                            this.I = $$11 >= -0.03125
                               && !$$20
-                              && this.f.h.b() != dje.d
+                              && this.f.h.b() != djj.d
                               && !this.d.ad()
                               && !this.f.gj().c
                               && !this.f.b(bvo.y)
@@ -851,10 +851,10 @@ public class ast extends asq implements agp, asw, wm {
                               && !$$23
                               && this.b(this.f);
                            this.f.y().m().a(this.f);
-                           fex $$24 = new fex(this.f.dz() - $$7, this.f.dB() - $$8, this.f.dF() - $$9);
+                           ffc $$24 = new ffc(this.f.dz() - $$7, this.f.dB() - $$8, this.f.dF() - $$9);
                            this.f.a($$0.b(), $$0.e(), $$24);
                            this.f.a($$24.d, $$24.e, $$24.f, $$0.b());
-                           this.f.b(new fex($$7, $$8, $$9), this.f.ds());
+                           this.f.b(new ffc($$7, $$8, $$9), this.f.ds());
                            this.a($$24);
                            if ($$19) {
                               this.f.k();
@@ -886,8 +886,8 @@ public class ast extends asq implements agp, asw, wm {
       } else if (this.f.Q()) {
          return false;
       } else {
-         djd $$1 = this.f.y().O();
-         return $$1.c(djd.u) ? false : !$$0 || !$$1.c(djd.v);
+         dji $$1 = this.f.y().O();
+         return $$1.c(dji.u) ? false : !$$0 || !$$1.c(dji.v);
       }
    }
 
@@ -905,13 +905,13 @@ public class ast extends asq implements agp, asw, wm {
       }
    }
 
-   private boolean a(djk $$0, fes $$1, double $$2, double $$3, double $$4) {
-      fes $$5 = this.f.cQ().d($$2 - this.f.dz(), $$3 - this.f.dB(), $$4 - this.f.dF());
-      Iterable<ffr> $$6 = $$0.d(this.f, $$5.h(1.0E-5F));
-      ffr $$7 = ffo.a($$1.h(1.0E-5F));
+   private boolean a(djp $$0, fex $$1, double $$2, double $$3, double $$4) {
+      fex $$5 = this.f.cQ().d($$2 - this.f.dz(), $$3 - this.f.dB(), $$4 - this.f.dF());
+      Iterable<ffw> $$6 = $$0.d(this.f, $$5.h(1.0E-5F));
+      ffw $$7 = fft.a($$1.h(1.0E-5F));
 
-      for (ffr $$8 : $$6) {
-         if (!ffo.c($$8, $$7, ffb.i)) {
+      for (ffw $$8 : $$6) {
+         if (!fft.c($$8, $$7, ffg.i)) {
             return true;
          }
       }
@@ -920,7 +920,7 @@ public class ast extends asq implements agp, asw, wm {
    }
 
    public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.a(new bxw(new fex($$0, $$1, $$2), fex.c, $$3, $$4), Collections.emptySet());
+      this.a(new bxw(new ffc($$0, $$1, $$2), ffc.c, $$3, $$4), Collections.emptySet());
    }
 
    public void a(bxw $$0, Set<bxx> $$1) {
@@ -944,7 +944,7 @@ public class ast extends asq implements agp, asw, wm {
          switch ($$2) {
             case g:
                if (!this.f.V_()) {
-                  czk $$3 = this.f.b(buf.b);
+                  czn $$3 = this.f.b(buf.b);
                   this.f.a(buf.b, this.f.b(buf.a));
                   this.f.a(buf.a, $$3);
                   this.f.fE();
@@ -978,12 +978,12 @@ public class ast extends asq implements agp, asw, wm {
       }
    }
 
-   private static boolean a(arr $$0, czk $$1) {
+   private static boolean a(arr $$0, czn $$1) {
       if ($$1.f()) {
          return false;
       } else {
-         czg $$2 = $$1.h();
-         return ($$2 instanceof cxs || $$2 instanceof cxy) && !$$0.gE().a($$1);
+         czj $$2 = $$1.h();
+         return ($$2 instanceof cxv || $$2 instanceof cyb) && !$$0.gE().a($$1);
       }
    }
 
@@ -994,13 +994,13 @@ public class ast extends asq implements agp, asw, wm {
          this.f.f.a($$0.f());
          arq $$1 = this.f.y();
          buf $$2 = $$0.b();
-         czk $$3 = this.f.b($$2);
+         czn $$3 = this.f.b($$2);
          if ($$3.a($$1.K())) {
-            fet $$4 = $$0.e();
-            fex $$5 = $$4.g();
+            fey $$4 = $$0.e();
+            ffc $$5 = $$4.g();
             iv $$6 = $$4.b();
             if (this.f.a($$6, 1.0)) {
-               fex $$7 = $$5.d(fex.b($$6));
+               ffc $$7 = $$5.d(ffc.b($$6));
                double $$8 = 1.0000001;
                if (Math.abs($$7.a()) < 1.0000001 && Math.abs($$7.b()) < 1.0000001 && Math.abs($$7.c()) < 1.0000001) {
                   jb $$9 = $$4.c();
@@ -1042,7 +1042,7 @@ public class ast extends asq implements agp, asw, wm {
          this.a($$0.e());
          arq $$1 = this.f.y();
          buf $$2 = $$0.b();
-         czk $$3 = this.f.b($$2);
+         czn $$3 = this.f.b($$2);
          this.f.H();
          if (!$$3.f() && $$3.a($$1.K())) {
             float $$4 = azm.h($$0.f());
@@ -1075,7 +1075,7 @@ public class ast extends asq implements agp, asw, wm {
    @Override
    public void a(ahq $$0) {
       zi.a($$0, this, this.f.y());
-      if (this.f.dk() instanceof ctu $$2) {
+      if (this.f.dk() instanceof ctx $$2) {
          $$2.a($$0.b(), $$0.e());
       }
    }
@@ -1107,7 +1107,7 @@ public class ast extends asq implements agp, asw, wm {
    @Override
    public void a(aig $$0) {
       zi.a($$0, this, this.f.y());
-      if ($$0.b() >= 0 && $$0.b() < cri.h()) {
+      if ($$0.b() >= 0 && $$0.b() < crl.h()) {
          if (this.f.gi().f() != $$0.b() && this.f.fz() == buf.a) {
             this.f.fE();
          }
@@ -1247,7 +1247,7 @@ public class ast extends asq implements agp, asw, wm {
    private void a(String $$0, Runnable $$1) {
       if (d($$0)) {
          this.a(wy.c("multiplayer.disconnect.illegal_characters"));
-      } else if (this.f.E() == crg.c) {
+      } else if (this.f.E() == crj.c) {
          this.b(new afy(wy.c("chat.disabled.options").a(o.m), false));
       } else {
          this.f.H();
@@ -1418,15 +1418,15 @@ public class ast extends asq implements agp, asw, wm {
                return;
             }
 
-            fes $$3 = $$2.cQ();
+            fex $$3 = $$2.cQ();
             if (this.f.a($$3, 3.0)) {
                $$0.a(new ahl.c() {
                   private void a(buf $$0, ast.a $$1x) {
-                     czk $$2 = ast.this.f.b($$0);
+                     czn $$2 = ast.this.f.b($$0);
                      if ($$2.a($$1.K())) {
-                        czk $$3 = $$2.v();
+                        czn $$3 = $$2.v();
                         if ($$1.run(ast.this.f, $$2, $$0) instanceof bug.d $$5) {
-                           czk $$6 = $$5.c() ? $$3 : czk.k;
+                           czn $$6 = $$5.c() ? $$3 : czn.k;
                            aq.T.a(ast.this.f, $$6, $$2);
                            if ($$5.e() == bug.e.c) {
                               ast.this.f.a($$0, true);
@@ -1437,23 +1437,23 @@ public class ast extends asq implements agp, asw, wm {
 
                   @Override
                   public void a(buf $$0) {
-                     this.a($$0, crj::a);
+                     this.a($$0, crm::a);
                   }
 
                   @Override
-                  public void a(buf $$0, fex $$1x) {
+                  public void a(buf $$0, ffc $$1x) {
                      this.a($$0, ($$1xxx, $$2xx, $$3) -> $$2xx.a($$1xxx, $$1, $$3));
                   }
 
                   @Override
                   public void a() {
                      label23:
-                     if (!($$2 instanceof cno) && !($$2 instanceof bww) && $$2 != ast.this.f) {
-                        if ($$2 instanceof crr $$0 && !$$0.cA()) {
+                     if (!($$2 instanceof cnr) && !($$2 instanceof bww) && $$2 != ast.this.f) {
+                        if ($$2 instanceof cru $$0 && !$$0.cA()) {
                            break label23;
                         }
 
-                        czk $$1 = ast.this.f.b(buf.a);
+                        czn $$1 = ast.this.f.b(buf.a);
                         if (!$$1.a($$1.K())) {
                            return;
                         }
@@ -1482,7 +1482,7 @@ public class ast extends asq implements agp, asw, wm {
                this.f.k = false;
                this.f = this.d.ag().a(this.f, true, bwi.d.e);
                this.l();
-               aq.w.a(this.f, djh.k, djh.i);
+               aq.w.a(this.f, djm.k, djm.i);
             } else {
                if (this.f.eF() > 0.0F) {
                   return;
@@ -1491,8 +1491,8 @@ public class ast extends asq implements agp, asw, wm {
                this.f = this.d.ag().a(this.f, false, bwi.d.a);
                this.l();
                if (this.d.r_()) {
-                  this.f.a(dje.d);
-                  this.f.y().O().b(djd.s).a(false, this.d);
+                  this.f.a(djj.d);
+                  this.f.y().O().b(dji.s).a(false, this.d);
                }
             }
             break;
@@ -1527,8 +1527,8 @@ public class ast extends asq implements agp, asw, wm {
                ObjectIterator var4 = Int2ObjectMaps.fastIterable($$0.h()).iterator();
 
                while (var4.hasNext()) {
-                  Entry<czk> $$3 = (Entry<czk>)var4.next();
-                  this.f.bR.b($$3.getIntKey(), (czk)$$3.getValue());
+                  Entry<czn> $$3 = (Entry<czn>)var4.next();
+                  this.f.bR.b($$3.getIntKey(), (czn)$$3.getValue());
                }
 
                this.f.bR.a($$0.g());
@@ -1551,18 +1551,18 @@ public class ast extends asq implements agp, asw, wm {
          if (!this.f.bR.b(this.f)) {
             h.debug("Player {} interacted with invalid menu {}", this.f, this.f.bR);
          } else {
-            dei.d $$1 = this.d.aI().a($$0.e());
+            del.d $$1 = this.d.aI().a($$0.e());
             if ($$1 != null) {
-               deg<?> $$2 = $$1.b();
+               dej<?> $$2 = $$1.b();
                if (this.f.J().b($$2.a())) {
-                  if (this.f.bR instanceof cwr $$3) {
+                  if (this.f.bR instanceof cwu $$3) {
                      if ($$2.b().al_().c()) {
                         h.debug("Player {} tried to place impossible recipe {}", this.f, $$2.a().a());
                         return;
                      }
 
-                     cwr.a $$4 = $$3.a($$0.f(), this.f.b(), $$2, this.f.y(), this.f.gi());
-                     if ($$4 == cwr.a.b) {
+                     cwu.a $$4 = $$3.a($$0.f(), this.f.b(), $$2, this.f.y(), this.f.gi());
+                     if ($$4 == cwu.a.b) {
                         this.f.f.b(new adu(this.f.bR.l, $$1.a().b()));
                      }
                   }
@@ -1593,7 +1593,7 @@ public class ast extends asq implements agp, asw, wm {
       zi.a($$0, this, this.f.y());
       if (this.f.fU()) {
          boolean $$1 = $$0.b() < 0;
-         czk $$2 = $$0.e();
+         czn $$2 = $$0.e();
          if (!$$2.a(this.f.dU().K())) {
             return;
          }
@@ -1626,7 +1626,7 @@ public class ast extends asq implements agp, asw, wm {
       arq $$2 = this.f.y();
       iv $$3 = $$0.b();
       if ($$2.C($$3)) {
-         if (!($$2.c_($$3) instanceof dza $$5)) {
+         if (!($$2.c_($$3) instanceof dzf $$5)) {
             return;
          }
 
@@ -1643,9 +1643,9 @@ public class ast extends asq implements agp, asw, wm {
    @Override
    public void a(zz $$0) {
       zi.a($$0, this, this.f.y());
-      boolean $$1 = this.f.a(crl.g);
+      boolean $$1 = this.f.a(cro.g);
       this.f.a($$0.b());
-      if (this.f.a(crl.g) != $$1) {
+      if (this.f.a(cro.g) != $$1) {
          this.d.ag().a(new aeb(aeb.a.h, this.f));
       }
    }
@@ -1670,11 +1670,11 @@ public class ast extends asq implements agp, asw, wm {
    public void a(agy $$0) {
       zi.a($$0, this, this.f.y());
       xp.a $$1 = $$0.b();
-      crn.a $$2 = this.P != null ? this.P.d().b() : null;
-      crn.a $$3 = $$1.b();
+      crq.a $$2 = this.P != null ? this.P.d().b() : null;
+      crq.a $$3 = $$1.b();
       if (!Objects.equals($$2, $$3)) {
          if ($$2 != null && $$3.b().isBefore($$2.b())) {
-            this.a(crn.a);
+            this.a(crq.a);
          } else {
             try {
                bab $$4 = this.d.ar();
@@ -1684,7 +1684,7 @@ public class ast extends asq implements agp, asw, wm {
                }
 
                this.a($$1.a(this.f.gh(), $$4));
-            } catch (crn.b var6) {
+            } catch (crq.b var6) {
                h.error("Failed to validate profile key: {}", var6.getMessage());
                this.a(var6.a());
             }
@@ -1730,13 +1730,13 @@ public class ast extends asq implements agp, asw, wm {
    public void a(ahb $$0) {
       zi.a($$0, this, this.f.y());
       if (!this.O) {
-         this.f.a(fex.c);
+         this.f.a(ffc.c);
       }
 
       this.O = false;
    }
 
-   private void a(fex $$0) {
+   private void a(ffc $$0) {
       if ($$0.h() > 1.0E-5F) {
          this.f.H();
       }

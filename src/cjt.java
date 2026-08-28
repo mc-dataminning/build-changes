@@ -64,17 +64,17 @@ public class cjt extends ckb implements cjn {
    @Nullable
    private iv bU;
 
-   public cjt(bwr<? extends cjt> $$0, djh $$1) {
+   public cjt(bwr<? extends cjt> $$0, djm $$1) {
       super($$0, $$1);
       this.bA = new cdf(this, 10, false);
-      this.a(exm.n, -1.0F);
-      this.a(exm.o, -1.0F);
-      this.a(exm.x, -1.0F);
+      this.a(exr.n, -1.0F);
+      this.a(exr.o, -1.0F);
+      this.a(exr.x, -1.0F);
    }
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       this.a(ag.a(cjt.b.values(), $$0.C_()));
       if ($$3 == null) {
          $$3 = new bvy.a(false);
@@ -92,7 +92,7 @@ public class cjt extends ckb implements cjn {
    protected void D() {
       this.bD.a(0, new byf.a(1.25));
       this.bD.a(0, new cdz(this));
-      this.bD.a(1, new cen(this, crj.class, 8.0F));
+      this.bD.a(1, new cen(this, crm.class, 8.0F));
       this.bD.a(2, new cfk(this));
       this.bD.a(2, new ced(this, 1.0, 5.0F, 1.0F));
       this.bD.a(2, new cjt.a(this, 1.0));
@@ -105,7 +105,7 @@ public class cjt extends ckb implements cjn {
    }
 
    @Override
-   protected cgt b(djh $$0) {
+   protected cgt b(djm $$0) {
       cgr $$1 = new cgr(this, $$0);
       $$1.b(false);
       $$1.a(true);
@@ -114,7 +114,7 @@ public class cjt extends ckb implements cjn {
 
    @Override
    public void k_() {
-      if (this.bU == null || !this.bU.a(this.ds(), 3.46) || !this.dU().a_(this.bU).a(dmo.ek)) {
+      if (this.bU == null || !this.bU.a(this.ds(), 3.46) || !this.dU().a_(this.bU).a(dmt.ek)) {
          this.bT = false;
          this.bU = null;
       }
@@ -147,7 +147,7 @@ public class cjt extends ckb implements cjn {
       }
 
       this.bR *= 0.9F;
-      fex $$0 = this.dx();
+      ffc $$0 = this.dx();
       if (!this.aH() && $$0.e < 0.0) {
          this.i($$0.d(1.0, 0.6, 1.0));
       }
@@ -155,7 +155,7 @@ public class cjt extends ckb implements cjn {
       this.bK = this.bK + this.bR * 2.0F;
    }
 
-   public static boolean a(djh $$0, bwi $$1) {
+   public static boolean a(djm $$0, bwi $$1) {
       if ($$1.bI() && !$$1.aZ() && $$0.A.a(2) == 0) {
          List<bxl> $$2 = $$0.a(bxl.class, $$1.cQ().g(20.0), bP);
          if (!$$2.isEmpty()) {
@@ -174,8 +174,8 @@ public class cjt extends ckb implements cjn {
    }
 
    @Override
-   public bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
+   public bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
       if (!this.q() && $$2.a(axk.aB)) {
          this.a($$0, $$1, $$2);
          if (!this.aZ()) {
@@ -214,16 +214,16 @@ public class cjt extends ckb implements cjn {
    }
 
    @Override
-   public boolean i(czk $$0) {
+   public boolean i(czn $$0) {
       return false;
    }
 
-   public static boolean c(bwr<cjt> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
+   public static boolean c(bwr<cjt> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
       return $$1.a_($$3.e()).a(axc.cf) && a($$1, $$3);
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, eao $$2, iv $$3) {
+   protected void a(double $$0, boolean $$1, eat $$2, iv $$3) {
    }
 
    @Override
@@ -243,7 +243,7 @@ public class cjt extends ckb implements cjn {
       return a(this.dU(), this.dU().A);
    }
 
-   public static awm a(djh $$0, azv $$1) {
+   public static awm a(djm $$0, azv $$1) {
       if ($$0.an() != bud.a && $$1.a(1000) == 0) {
          List<bwr<?>> $$2 = Lists.newArrayList(bQ.keySet());
          return b($$2.get($$1.a($$2.size())));
@@ -267,7 +267,7 @@ public class cjt extends ckb implements cjn {
    }
 
    @Override
-   protected void b(iv $$0, eao $$1) {
+   protected void b(iv $$0, eat $$1) {
       this.a(awn.uh, 0.15F, 1.0F);
    }
 
@@ -303,7 +303,7 @@ public class cjt extends ckb implements cjn {
 
    @Override
    protected void D(bwi $$0) {
-      if (!($$0 instanceof crj)) {
+      if (!($$0 instanceof crm)) {
          super.D($$0);
       }
    }
@@ -329,19 +329,19 @@ public class cjt extends ckb implements cjn {
    @Nullable
    @Override
    public <T> T a(kj<? extends T> $$0) {
-      return $$0 == kk.aA ? c((kj<T>)$$0, this.gH()) : super.a($$0);
+      return $$0 == kk.aB ? c((kj<T>)$$0, this.gH()) : super.a($$0);
    }
 
    @Override
    protected void a(kf $$0) {
-      this.a($$0, kk.aA);
+      this.a($$0, kk.aB);
       super.a($$0);
    }
 
    @Override
    protected <T> boolean b(kj<T> $$0, T $$1) {
-      if ($$0 == kk.aA) {
-         this.a(c(kk.aA, $$1));
+      if ($$0 == kk.aB) {
+         this.a(c(kk.aB, $$1));
          return true;
       } else {
          return super.b($$0, $$1);
@@ -377,8 +377,8 @@ public class cjt extends ckb implements cjn {
    }
 
    @Override
-   public fex cS() {
-      return new fex(0.0, (double)(0.5F * this.cR()), (double)(this.dp() * 0.4F));
+   public ffc cS() {
+      return new ffc(0.0, (double)(0.5F * this.cR()), (double)(this.dp() * 0.4F));
    }
 
    static class a extends cfr {
@@ -388,8 +388,8 @@ public class cjt extends ckb implements cjn {
 
       @Nullable
       @Override
-      protected fex h() {
-         fex $$0 = null;
+      protected ffc h() {
+         ffc $$0 = null;
          if (this.b.bh()) {
             $$0 = cif.a(this.b, 15, 15);
          }
@@ -402,7 +402,7 @@ public class cjt extends ckb implements cjn {
       }
 
       @Nullable
-      private fex k() {
+      private ffc k() {
          iv $$0 = this.b.du();
          iv.a $$1 = new iv.a();
          iv.a $$2 = new iv.a();
@@ -416,10 +416,10 @@ public class cjt extends ckb implements cjn {
             azm.a(this.b.dF() + 3.0)
          )) {
             if (!$$0.equals($$4)) {
-               eao $$5 = this.b.dU().a_($$2.a($$4, jb.a));
-               boolean $$6 = $$5.b() instanceof drc || $$5.a(axc.u);
+               eat $$5 = this.b.dU().a_($$2.a($$4, jb.a));
+               boolean $$6 = $$5.b() instanceof drh || $$5.a(axc.u);
                if ($$6 && this.b.dU().v($$4) && this.b.dU().v($$1.a($$4, jb.b))) {
-                  return fex.c($$4);
+                  return ffc.c($$4);
                }
             }
          }

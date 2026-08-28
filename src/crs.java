@@ -1,167 +1,52 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class crs extends cse {
-   public static final double a = 0.1;
-   public static final double b = 0.5;
-   public double c = 0.1;
+public class crs {
+   private final crr<jf<czj>> a = new crr<>();
 
-   protected crs(bwr<? extends crs> $$0, djh $$1) {
-      super($$0, $$1);
-   }
-
-   protected crs(bwr<? extends crs> $$0, double $$1, double $$2, double $$3, djh $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
-   }
-
-   public crs(bwr<? extends crs> $$0, double $$1, double $$2, double $$3, fex $$4, djh $$5) {
-      this($$0, $$5);
-      this.b($$1, $$2, $$3, this.dK(), this.dM());
-      this.av();
-      this.a($$4, this.c);
-   }
-
-   public crs(bwr<? extends crs> $$0, bxj $$1, fex $$2, djh $$3) {
-      this($$0, $$1.dz(), $$1.dB(), $$1.dF(), $$2, $$3);
-      this.c($$1);
-      this.b($$1.dK(), $$1.dM());
-   }
-
-   @Override
-   protected void a(akn.a $$0) {
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cQ().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
-      }
-
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
-   }
-
-   protected diq.a af_() {
-      return diq.a.a;
-   }
-
-   @Override
-   public void h() {
-      bwi $$0 = this.q();
-      this.o();
-      if (this.dU().C || ($$0 == null || !$$0.dP()) && this.dU().C(this.du())) {
-         fev $$1 = csg.a(this, this::b, this.af_());
-         fex $$2;
-         if ($$1.d() != fev.a.a) {
-            $$2 = $$1.g();
-         } else {
-            $$2 = this.ds().e(this.dx());
-         }
-
-         csg.a(this, 0.2F);
-         this.b($$2);
-         this.aI();
-         super.h();
-         if (this.g()) {
-            this.e(1.0F);
-         }
-
-         if ($$1.d() != fev.a.a && this.bI()) {
-            this.b($$1);
-         }
-
-         this.s();
-      } else {
-         this.aq();
+   public void a(czn $$0) {
+      if (crl.e($$0)) {
+         this.b($$0);
       }
    }
 
-   private void o() {
-      fex $$0 = this.dx();
-      fex $$1 = this.ds();
-      float $$4;
-      if (this.bh()) {
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            float $$3 = 0.25F;
-            this.dU().a(ly.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
-         }
-
-         $$4 = this.n();
-      } else {
-         $$4 = this.m();
-      }
-
-      this.i($$0.e($$0.d().c(this.c)).c((double)$$4));
+   public void b(czn $$0) {
+      this.a($$0, $$0.k());
    }
 
-   private void s() {
-      lw $$0 = this.j();
-      fex $$1 = this.ds();
-      if ($$0 != null) {
-         this.dU().a($$0, $$1.d, $$1.e + 0.5, $$1.f, 0.0, 0.0, 0.0);
+   public void a(czn $$0, int $$1) {
+      if (!$$0.f()) {
+         int $$2 = Math.min($$1, $$0.M());
+         this.a.a($$0.i(), $$2);
       }
    }
 
-   @Override
-   public boolean a(arq $$0, bux $$1, float $$2) {
-      return false;
+   public boolean a(dee<?> $$0, @Nullable crr.b<jf<czj>> $$1) {
+      return this.a($$0, 1, $$1);
    }
 
-   @Override
-   protected boolean b(bwi $$0) {
-      return super.b($$0) && !$$0.ad;
+   public boolean a(dee<?> $$0, int $$1, @Nullable crr.b<jf<czj>> $$2) {
+      ded $$3 = $$0.al_();
+      return $$3.c() ? false : this.a($$3.b(), $$1, $$2);
    }
 
-   @Override
-   protected boolean g() {
-      return true;
+   public boolean a(List<? extends crr.a<jf<czj>>> $$0, @Nullable crr.b<jf<czj>> $$1) {
+      return this.a($$0, 1, $$1);
    }
 
-   @Nullable
-   protected lw j() {
-      return ly.ah;
+   private boolean a(List<? extends crr.a<jf<czj>>> $$0, int $$1, @Nullable crr.b<jf<czj>> $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   protected float m() {
-      return 0.95F;
+   public int b(dee<?> $$0, @Nullable crr.b<jf<czj>> $$1) {
+      return this.b($$0, Integer.MAX_VALUE, $$1);
    }
 
-   protected float n() {
-      return 0.8F;
+   public int b(dee<?> $$0, int $$1, @Nullable crr.b<jf<czj>> $$2) {
+      return this.a.b($$0.al_().b(), $$1, $$2);
    }
 
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("acceleration_power", this.c);
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      if ($$0.b("acceleration_power", 6)) {
-         this.c = $$0.i("acceleration_power");
-      }
-   }
-
-   @Override
-   public float bv() {
-      return 1.0F;
-   }
-
-   private void a(fex $$0, double $$1) {
-      this.i($$0.d().c($$1));
-      this.ar = true;
-   }
-
-   @Override
-   protected void c(@Nullable bwi $$0, boolean $$1) {
-      super.c($$0, $$1);
-      if ($$1) {
-         this.c = 0.1;
-      } else {
-         this.c *= 0.5;
-      }
+   public void a() {
+      this.a.a();
    }
 }

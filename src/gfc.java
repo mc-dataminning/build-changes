@@ -1,62 +1,86 @@
-public class gfc extends gfb {
-   private static final String a = "right_body_stick";
-   private static final String b = "left_body_stick";
-   private static final String c = "shoulder_stick";
-   private static final String d = "base_plate";
-   private final gjo e;
-   private final gjo f;
-   private final gjo g;
-   private final gjo x;
+public class gfc extends ggp<hch> implements gff {
+   private final gjt a = this.v.b("head");
+   private final gjt b = this.v.b("body");
+   private final gjt c = this.b.b("right_arm");
+   private final gjt d = this.b.b("left_arm");
+   private final gjt e = this.b.b("right_wing");
+   private final gjt f = this.b.b("left_wing");
+   private static final float g = (float) (Math.PI / 4);
+   private static final float i = -1.134464F;
+   private static final float j = (float) (-Math.PI / 3);
 
-   public gfc(gjo $$0) {
-      super($$0);
-      this.e = $$0.b("right_body_stick");
-      this.f = $$0.b("left_body_stick");
-      this.g = $$0.b("shoulder_stick");
-      this.x = $$0.b("base_plate");
-      this.p.k = false;
+   public gfc(gjt $$0) {
+      super($$0.b("root"), grc::j);
    }
 
-   public static gju a() {
-      gjw $$0 = ggy.a(gjs.a, 0.0F);
-      gjy $$1 = $$0.a();
-      $$1.a("head", gjt.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), gjq.a(0.0F, 1.0F, 0.0F));
-      $$1.a("body", gjt.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), gjq.a);
-      $$1.a("right_arm", gjt.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gjq.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", gjt.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gjq.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", gjt.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gjq.a(-1.9F, 12.0F, 0.0F));
-      $$1.a("left_leg", gjt.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gjq.a(1.9F, 12.0F, 0.0F));
-      $$1.a("right_body_stick", gjt.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gjq.a);
-      $$1.a("left_body_stick", gjt.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gjq.a);
-      $$1.a("shoulder_stick", gjt.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), gjq.a);
-      $$1.a("base_plate", gjt.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), gjq.a(0.0F, 12.0F, 0.0F));
-      return gju.a($$0, 64, 64);
+   public static gjz a() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      gkd $$2 = $$1.a("root", gjy.c(), gjv.a(0.0F, 23.5F, 0.0F));
+      $$2.a("head", gjy.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new gjx(0.0F)), gjv.a(0.0F, -3.99F, 0.0F));
+      gkd $$3 = $$2.a(
+         "body",
+         gjy.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new gjx(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new gjx(-0.2F)),
+         gjv.a(0.0F, -4.0F, 0.0F)
+      );
+      $$3.a("right_arm", gjy.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new gjx(-0.01F)), gjv.a(-1.75F, 0.5F, 0.0F));
+      $$3.a("left_arm", gjy.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new gjx(-0.01F)), gjv.a(1.75F, 0.5F, 0.0F));
+      $$3.a("right_wing", gjy.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gjx(0.0F)), gjv.a(-0.5F, 0.0F, 0.6F));
+      $$3.a("left_wing", gjy.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gjx(0.0F)), gjv.a(0.5F, 0.0F, 0.6F));
+      return gjz.a($$0, 32, 32);
    }
 
-   @Override
-   public void a(hce $$0) {
+   public void a(hch $$0) {
       super.a($$0);
-      this.x.f = (float) (Math.PI / 180.0) * -$$0.a;
-      this.s.k = $$0.j;
-      this.r.k = $$0.j;
-      this.x.k = $$0.k;
-      this.e.e = (float) (Math.PI / 180.0) * $$0.m.a();
-      this.e.f = (float) (Math.PI / 180.0) * $$0.m.b();
-      this.e.g = (float) (Math.PI / 180.0) * $$0.m.c();
-      this.f.e = (float) (Math.PI / 180.0) * $$0.m.a();
-      this.f.f = (float) (Math.PI / 180.0) * $$0.m.b();
-      this.f.g = (float) (Math.PI / 180.0) * $$0.m.c();
-      this.g.e = (float) (Math.PI / 180.0) * $$0.m.a();
-      this.g.f = (float) (Math.PI / 180.0) * $$0.m.b();
-      this.g.g = (float) (Math.PI / 180.0) * $$0.m.c();
+      float $$1 = $$0.ae;
+      float $$2 = $$0.ad;
+      float $$3 = $$0.u * 20.0F * (float) (Math.PI / 180.0) + $$2;
+      float $$4 = azm.b($$3) * (float) Math.PI * 0.15F + $$1;
+      float $$5 = $$0.u * 9.0F * (float) (Math.PI / 180.0);
+      float $$6 = Math.min($$1 / 0.3F, 1.0F);
+      float $$7 = 1.0F - $$6;
+      float $$8 = $$0.d;
+      if ($$0.a) {
+         float $$9 = $$0.u * 8.0F * (float) (Math.PI / 180.0) + $$1;
+         float $$10 = azm.b($$9) * 16.0F * (float) (Math.PI / 180.0);
+         float $$11 = $$0.c;
+         float $$12 = azm.b($$9) * 14.0F * (float) (Math.PI / 180.0);
+         float $$13 = azm.b($$9) * 30.0F * (float) (Math.PI / 180.0);
+         this.v.f = $$0.b ? (float) (Math.PI * 4) * $$11 : this.v.f;
+         this.v.g = $$10 * (1.0F - $$11);
+         this.a.f = $$13 * (1.0F - $$11);
+         this.a.g = $$12 * (1.0F - $$11);
+      } else {
+         this.a.e = $$0.ab * (float) (Math.PI / 180.0);
+         this.a.f = $$0.aa * (float) (Math.PI / 180.0);
+      }
+
+      this.e.e = 0.43633232F * (1.0F - $$6);
+      this.e.f = (float) (-Math.PI / 4) + $$4;
+      this.f.e = 0.43633232F * (1.0F - $$6);
+      this.f.f = (float) (Math.PI / 4) - $$4;
+      this.b.e = $$6 * (float) (Math.PI / 4);
+      float $$14 = $$8 * azm.h($$6, (float) (-Math.PI / 3), -1.134464F);
+      this.v.c = this.v.c + (float)Math.cos((double)$$5) * 0.25F * $$7;
+      this.c.e = $$14;
+      this.d.e = $$14;
+      float $$15 = $$7 * (1.0F - $$8);
+      float $$16 = 0.43633232F - azm.b($$5 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$15;
+      this.d.g = -$$16;
+      this.c.g = $$16;
+      this.c.f = 0.27925268F * $$8;
+      this.d.f = -0.27925268F * $$8;
    }
 
    @Override
-   public void a(bxa $$0, fjy $$1) {
-      gjo $$2 = this.a($$0);
-      boolean $$3 = $$2.k;
-      $$2.k = true;
-      super.a($$0, $$1);
-      $$2.k = $$3;
+   public void a(bxa $$0, fkd $$1) {
+      float $$2 = 1.0F;
+      float $$3 = 3.0F;
+      this.v.a($$1);
+      this.b.a($$1);
+      $$1.a(0.0F, 0.0625F, 0.1875F);
+      $$1.a(a.b.rotation(this.c.e));
+      $$1.b(0.7F, 0.7F, 0.7F);
+      $$1.a(0.0625F, 0.0F, 0.0F);
    }
 }

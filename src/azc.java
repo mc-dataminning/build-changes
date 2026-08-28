@@ -101,7 +101,7 @@ public class azc {
       return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   public static jf<czg> b(JsonElement $$0, String $$1) {
+   public static jf<czj> b(JsonElement $$0, String $$1) {
       if ($$0.isJsonPrimitive()) {
          String $$2 = $$0.getAsString();
          return mg.g.c(alg.a($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
@@ -110,7 +110,7 @@ public class azc {
       }
    }
 
-   public static jf<czg> j(JsonObject $$0, String $$1) {
+   public static jf<czj> j(JsonObject $$0, String $$1) {
       if ($$0.has($$1)) {
          return b($$0.get($$1), $$1);
       } else {
@@ -120,7 +120,7 @@ public class azc {
 
    @Nullable
    @Contract("_,_,!null->!null;_,_,null->_")
-   public static jf<czg> a(JsonObject $$0, String $$1, @Nullable jf<czg> $$2) {
+   public static jf<czj> a(JsonObject $$0, String $$1, @Nullable jf<czj> $$2) {
       return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 

@@ -1,76 +1,101 @@
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
 import com.mojang.datafixers.util.Either;
 import java.time.Instant;
-import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class glv extends glq {
-   final Supplier<hkl> g;
+public abstract class glv {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected glx e;
+   protected boolean f;
 
-   glv(UUID $$0, Instant $$1, UUID $$2, Supplier<hkl> $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   public glv(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public Supplier<hkl> a() {
-      return this.g;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   public glv c() {
-      glv $$0 = new glv(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
-   }
+   public abstract glv b();
 
-   @Override
-   public fyn a(fyn $$0, glu $$1) {
-      return new gdc($$0, $$1, this);
-   }
+   public abstract fys a(fys var1, glz var2);
 
-   public static class a extends glq.a<glv> {
-      public a(glv $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   public abstract static class a<R extends glv> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public a(UUID $$0, Supplier<hkl> $$1, AbuseReportLimits $$2) {
-         super(new glv(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      public R e() {
+         return this.a;
       }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
       }
 
       @Nullable
-      @Override
-      public glq.b c() {
-         if (this.a.e == null) {
-            return glq.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? glq.b.d : super.c();
-         }
+      public glx i() {
+         return this.a.e;
       }
 
-      @Override
-      public Either<glq.c, glq.b> a(glu $$0) {
-         glq.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            hkl $$4 = this.a.g.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new glq.c(this.a.a, glt.b, $$6));
-         }
+      public void a(glx $$0) {
+         this.a.e = $$0;
       }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public glv.b c() {
+         return !this.e().f ? glv.b.e : null;
+      }
+
+      public abstract Either<glv.c, glv.b> a(glz var1);
+   }
+
+   public static record b(wy f) {
+      public static final glv.b a = new glv.b(wy.c("gui.abuseReport.send.no_reason"));
+      public static final glv.b b = new glv.b(wy.c("gui.chatReport.send.no_reported_messages"));
+      public static final glv.b c = new glv.b(wy.c("gui.chatReport.send.too_many_messages"));
+      public static final glv.b d = new glv.b(wy.c("gui.abuseReport.send.comment_too_long"));
+      public static final glv.b e = new glv.b(wy.c("gui.abuseReport.send.not_attested"));
+
+      public ful a() {
+         return ful.a(this.f);
+      }
+
+      public wy b() {
+         return this.f;
+      }
+   }
+
+   public static record c(UUID a, gly b, AbuseReport c) {
    }
 }

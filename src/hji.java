@@ -1,15 +1,12 @@
-import java.util.Collection;
-import java.util.Locale;
+import java.io.IOException;
 
-public class hji extends RuntimeException {
-   private final Collection<hjh.a> a;
-
-   public hji(hjh.a $$0, Collection<hjh.a> $$1) {
-      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
-      this.a = $$1;
+public class hji extends hjh {
+   public hji(alg $$0) {
+      super($$0);
    }
 
-   public Collection<hjh.a> a() {
-      return this.a;
+   @Override
+   public hjr a(avd $$0) throws IOException {
+      return hjr.a($$0, this.c());
    }
 }

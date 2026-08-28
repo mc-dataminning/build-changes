@@ -1,48 +1,33 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.function.Predicate;
 
-public record gsk(gsk.a b, List<gsl> c) implements gsl {
+public record gsk(List<gry> b) implements hml {
    @Override
-   public <O, S extends eaq<O, S>> Predicate<S> instantiate(eap<O, S> $$0) {
-      return this.b.a(Lists.transform(this.c, $$1 -> $$1.instantiate($$0)));
+   public hmh bake(gsl $$0, hlz $$1, hmf $$2, hmb $$3) {
+      return a(this.b, $$0, $$1.a(), $$2, $$3);
    }
 
-   public gsk.a a() {
+   public static hmh a(List<gry> $$0, gsl $$1, hmk $$2, hmf $$3, hmb $$4) {
+      hmh.a $$5 = new hmh.a();
+
+      for (gry $$6 : $$0) {
+         $$6.c().forEach(($$6x, $$7) -> {
+            hjq $$8 = $$2.a($$1, $$7.c(), $$4);
+            if ($$7.a() == null) {
+               $$5.a(a($$6, $$7, $$8, $$6x, $$3));
+            } else {
+               $$5.a(jb.a($$3.a().c(), $$7.a()), a($$6, $$7, $$8, $$6x, $$3));
+            }
+         });
+      }
+
+      return $$5.a();
+   }
+
+   private static grx a(gry $$0, grz $$1, hjq $$2, jb $$3, hmf $$4) {
+      return gse.a($$0.a(), $$0.b(), $$1, $$2, $$3, $$4, $$0.d(), $$0.e(), $$0.f());
+   }
+
+   public List<gry> a() {
       return this.b;
-   }
-
-   public List<gsl> b() {
-      return this.c;
-   }
-
-   public static enum a implements bak {
-      a("AND") {
-         @Override
-         public <V> Predicate<V> a(List<Predicate<V>> $$0) {
-            return ag.a($$0);
-         }
-      },
-      b("OR") {
-         @Override
-         public <V> Predicate<V> a(List<Predicate<V>> $$0) {
-            return ag.b($$0);
-         }
-      };
-
-      public static final Codec<gsk.a> c = bak.a(gsk.a::values);
-      private final String d;
-
-      a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      public abstract <V> Predicate<V> a(List<Predicate<V>> var1);
    }
 }

@@ -1,5 +1,5 @@
-public class hff extends hdz {
-   public ckf.b a = ckf.b.g;
-   public int b = -1;
-   public int c = -1;
+public class hff extends hef {
+   public czn a = czn.k;
+   public boolean b;
+   public boolean c;
 }

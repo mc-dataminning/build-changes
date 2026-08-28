@@ -1,7 +1,3 @@
-import javax.annotation.Nullable;
-
-public class hej extends hdz {
-   public czk a = czk.k;
-   @Nullable
-   public cjv b;
+public class hej extends hei {
+   public float n = -1.0F;
 }

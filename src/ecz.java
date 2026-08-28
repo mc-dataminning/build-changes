@@ -1,114 +1,262 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class ecz<T> implements edb<T> {
-   private final jk<T> a;
-   private final T[] b;
-   private final edc<T> c;
-   private final int d;
-   private int e;
+public class ecz extends edk {
+   private final eda n;
+   private final boolean o;
 
-   private ecz(jk<T> $$0, int $$1, edc<T> $$2, List<T> $$3) {
-      this.a = $$0;
-      this.b = (T[])(new Object[1 << $$1]);
-      this.d = $$1;
-      this.c = $$2;
-      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         this.b[$$4] = $$3.get($$4);
-      }
-
-      this.e = $$3.size();
+   public ecz(eda $$0, boolean $$1) {
+      super($$0.f(), edn.a, $$0.l, $$0.H().F_().f(mh.aG), $$0.v());
+      this.n = $$0;
+      this.o = $$1;
    }
 
-   private ecz(jk<T> $$0, T[] $$1, edc<T> $$2, int $$3, int $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
-
-   public static <A> edb<A> a(int $$0, jk<A> $$1, edc<A> $$2, List<A> $$3) {
-      return new ecz<>($$1, $$0, $$2, $$3);
+   @Nullable
+   @Override
+   public dxr c_(iv $$0) {
+      return this.n.c_($$0);
    }
 
    @Override
-   public int a(T $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if (this.b[$$1] == $$0) {
-            return $$1;
-         }
-      }
+   public eat a_(iv $$0) {
+      return this.n.a_($$0);
+   }
 
-      int $$2 = this.e;
-      if ($$2 < this.b.length) {
-         this.b[$$2] = $$0;
-         this.e++;
-         return $$2;
+   @Override
+   public exa b_(iv $$0) {
+      return this.n.b_($$0);
+   }
+
+   @Override
+   public edb b(int $$0) {
+      return this.o ? this.n.b($$0) : super.b($$0);
+   }
+
+   @Nullable
+   @Override
+   public eat a(iv $$0, eat $$1, int $$2) {
+      return this.o ? this.n.a($$0, $$1, $$2) : null;
+   }
+
+   @Override
+   public void a(dxr $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
+   }
+
+   @Override
+   public void a(bwi $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
+   }
+
+   @Override
+   public void a(edr $$0) {
+      if (this.o) {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public edb[] d() {
+      return this.n.d();
+   }
+
+   @Override
+   public void a(egs.a $$0, long[] $$1) {
+   }
+
+   private egs.a c(egs.a $$0) {
+      if ($$0 == egs.a.a) {
+         return egs.a.b;
       } else {
-         return this.c.onResize(this.d + 1, $$0);
+         return $$0 == egs.a.c ? egs.a.d : $$0;
       }
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if ($$0.test(this.b[$$1])) {
-            return true;
-         }
-      }
+   public egs a(egs.a $$0) {
+      return this.n.a($$0);
+   }
 
+   @Override
+   public int a(egs.a $$0, int $$1, int $$2) {
+      return this.n.a(this.c($$0), $$1, $$2);
+   }
+
+   @Override
+   public jf<dkp> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   @Override
+   public dir f() {
+      return this.n.f();
+   }
+
+   @Nullable
+   @Override
+   public erv a(ern $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public void a(ern $$0, erv $$1) {
+   }
+
+   @Override
+   public Map<ern, erv> g() {
+      return this.n.g();
+   }
+
+   @Override
+   public void a(Map<ern, erv> $$0) {
+   }
+
+   @Override
+   public LongSet b(ern $$0) {
+      return this.n.b($$0);
+   }
+
+   @Override
+   public void a(ern $$0, long $$1) {
+   }
+
+   @Override
+   public Map<ern, LongSet> h() {
+      return this.n.h();
+   }
+
+   @Override
+   public void b(Map<ern, LongSet> $$0) {
+   }
+
+   @Override
+   public void i() {
+      this.n.i();
+   }
+
+   @Override
+   public boolean s() {
       return false;
    }
 
    @Override
-   public T a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.e) {
-         return this.b[$$0];
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public edr n() {
+      return this.n.n();
+   }
+
+   @Override
+   public void d(iv $$0) {
+   }
+
+   @Override
+   public void e(iv $$0) {
+   }
+
+   @Override
+   public void a(tz $$0) {
+   }
+
+   @Nullable
+   @Override
+   public tz f(iv $$0) {
+      return this.n.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public tz a(iv $$0, jh.a $$1) {
+      return this.n.a($$0, $$1);
+   }
+
+   @Override
+   public void a(Predicate<eat> $$0, BiConsumer<iv, eat> $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   @Override
+   public fgx<dmr> q() {
+      return this.o ? this.n.q() : fgn.a();
+   }
+
+   @Override
+   public fgx<ewz> r() {
+      return this.o ? this.n.r() : fgn.a();
+   }
+
+   @Override
+   public ecq.a a(long $$0) {
+      return this.n.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public ehv v() {
+      return this.n.v();
+   }
+
+   @Override
+   public ecp E() {
+      if (this.o) {
+         return super.E();
       } else {
-         throw new eda($$0);
+         throw (UnsupportedOperationException)ag.b(new UnsupportedOperationException("Meaningless in this context"));
       }
    }
 
    @Override
-   public void a(vu $$0) {
-      this.e = $$0.l();
+   public ecp F() {
+      if (this.o) {
+         return super.F();
+      } else {
+         throw (UnsupportedOperationException)ag.b(new UnsupportedOperationException("Meaningless in this context"));
+      }
+   }
 
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         this.b[$$1] = this.a.b($$0.l());
+   public eda G() {
+      return this.n;
+   }
+
+   @Override
+   public boolean x() {
+      return this.n.x();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public void a(dks $$0, dky.f $$1) {
+      if (this.o) {
+         this.n.a($$0, $$1);
       }
    }
 
    @Override
-   public void b(vu $$0) {
-      $$0.c(this.e);
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         $$0.c(this.a.a(this.b[$$1]));
-      }
+   public void C() {
+      this.n.C();
    }
 
    @Override
-   public int a() {
-      int $$0 = wp.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += wp.a(this.a.a(this.b[$$1]));
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public edb<T> a(edc<T> $$0) {
-      return new ecz<>(this.a, (T[])((Object[])this.b.clone()), $$0, this.d, this.e);
+   public ewk D() {
+      return this.n.D();
    }
 }

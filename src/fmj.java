@@ -1,5 +1,27 @@
-public class fmj extends RuntimeException {
-   public fmj(String $$0, Exception $$1) {
-      super($$0, $$1);
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
+
+public class fmj extends fmi {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+
+   public static fmj a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      fmj $$3 = new fmj();
+
+      try {
+         $$3.a = foe.b("downloadLink", $$2, "");
+         $$3.b = foe.b("resourcePackUrl", $$2, "");
+         $$3.c = foe.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+      }
+
+      return $$3;
    }
 }

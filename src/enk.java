@@ -1,28 +1,28 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class enk<P extends enj> {
-   public static final enk<ene> a = a("blob_foliage_placer", ene.a);
-   public static final enk<enp> b = a("spruce_foliage_placer", enp.a);
-   public static final enk<enn> c = a("pine_foliage_placer", enn.a);
-   public static final enk<end> d = a("acacia_foliage_placer", end.a);
-   public static final enk<enf> e = a("bush_foliage_placer", enf.c);
-   public static final enk<eni> f = a("fancy_foliage_placer", eni.c);
-   public static final enk<enl> g = a("jungle_foliage_placer", enl.a);
-   public static final enk<enm> h = a("mega_pine_foliage_placer", enm.a);
-   public static final enk<enh> i = a("dark_oak_foliage_placer", enh.a);
-   public static final enk<eno> j = a("random_spread_foliage_placer", eno.a);
-   public static final enk<eng> k = a("cherry_foliage_placer", eng.a);
-   private final MapCodec<P> l;
+public class enk extends enj {
+   public static final MapCodec<enk> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, enk::new));
 
-   private static <P extends enj> enk<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.U, $$0, new enk<>($$1));
+   public enk(btl $$0, btl $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private enk(MapCodec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected enp<?> a() {
+      return enp.e;
    }
 
-   public MapCodec<P> a() {
-      return this.l;
+   @Override
+   protected void a(djs $$0, eno.b $$1, azv $$2, emy $$3, int $$4, eno.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

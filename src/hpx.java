@@ -1,29 +1,25 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
-
-public class hpx {
-   private final float a;
-   private final AtomicReference<hpx.a> b = new AtomicReference<>();
-
-   public hpx(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+public interface hpx {
+   default void b() {
    }
 
-   public void a(fpf $$0, wy $$1) {
-      hpx.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new hpx.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   default void a() {
    }
 
-   static class a {
-      final wy a;
-      final RateLimiter b;
+   default void a(gpm $$0) {
+   }
 
-      a(wy $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   default void a(double $$0, double $$1) {
+   }
+
+   default void a(gkq $$0, ffa $$1) {
+   }
+
+   default void a(gkq $$0, iv $$1, eat $$2, float $$3) {
+   }
+
+   default void c() {
+   }
+
+   default void a(czn $$0) {
    }
 }

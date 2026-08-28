@@ -1,53 +1,30 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public abstract class ddr implements ddq {
-   private final ddo d;
+public enum ddr implements bak {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-   public ddr(ddo $$0) {
-      this.d = $$0;
+   public static final Codec<ddr> e = bak.a(ddr::values);
+   public static final IntFunction<ddr> f = ayc.a(ddr::a, values(), ayc.a.a);
+   public static final yw<ByteBuf, ddr> g = yu.a(f, ddr::a);
+   private final String h;
+   private final int i;
+
+   private ddr(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean am_() {
-      return true;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public ddo c() {
-      return this.d;
-   }
-
-   @Override
-   public dea al_() {
-      return dea.b;
-   }
-
-   @Override
-   public abstract del<? extends ddr> a();
-
-   public static class a<T extends ddq> implements del<T> {
-      private final MapCodec<T> w;
-      private final yw<wj, T> x;
-
-      public a(ddr.a.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(ddo.e.fieldOf("category").orElse(ddo.d).forGetter(ddq::c)).apply($$1, $$0::create));
-         this.x = yw.a(ddo.g, ddq::c, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yw<wj, T> b() {
-         return this.x;
-      }
-
-      @FunctionalInterface
-      public interface a<T extends ddq> {
-         T create(ddo var1);
-      }
+   private int a() {
+      return this.i;
    }
 }

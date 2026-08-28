@@ -1,205 +1,153 @@
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
 public class glf {
-   private static final wy a = wy.c("chat.validation_error").a(o.m, o.u);
-   private final fpo b;
-   private final Deque<glf.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public wy c;
+   public wy d;
+   @Nullable
+   public akd.b e;
+   public long f;
+   public int g = ac.b().e();
+   public wy h = wy.b(ac.b().c());
+   public List<wy> i = Collections.emptyList();
+   private glf.a l = glf.a.c;
+   @Nullable
+   private byte[] m;
+   private glf.c n;
+   private glf.b o = glf.b.a;
 
-   public glf(fpo $$0) {
-      this.b = $$0;
+   public glf(String $$0, String $$1, glf.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   public void a() {
-      if (this.d != 0L) {
-         if (ag.c() >= this.e + this.d) {
-            glf.a $$0 = this.c.poll();
+   public tz a() {
+      tz $$0 = new tz();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      $$0.b("icon", ayu.r, this.m);
+      $$0.a(glf.a.d, this.l);
+      return $$0;
+   }
 
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
+   public glf.a b() {
+      return this.l;
+   }
+
+   public void a(glf.a $$0) {
+      this.l = $$0;
+   }
+
+   public static glf a(tz $$0) {
+      glf $$1 = new glf($$0.j("name"), $$0.j("ip"), glf.c.c);
+      $$1.a($$0.<byte[]>a("icon", ayu.r).orElse(null));
+      $$1.a($$0.<glf.a>a(glf.a.d).orElse(glf.a.c));
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == glf.c.a;
+   }
+
+   public boolean e() {
+      return this.n == glf.c.b;
+   }
+
+   public glf.c f() {
+      return this.n;
+   }
+
+   public void a(glf $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(glf $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public glf.b g() {
+      return this.o;
+   }
+
+   public void a(glf.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            azs $$1 = azs.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
             }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
          }
       }
+
+      return null;
    }
 
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(glf.a::a);
-         this.c.clear();
-      }
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
 
-      this.d = $$1;
-   }
-
-   public void b() {
-      this.c.remove().a();
-   }
-
-   public long c() {
-      return (long)this.c.size();
-   }
-
-   public void d() {
-      this.c.forEach(glf.a::a);
-      this.c.clear();
-   }
-
-   public boolean a(xk $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && ag.c() < this.e + this.d;
-   }
-
-   private void a(@Nullable xk $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new glf.a($$0, $$1));
-      } else {
-         $$1.getAsBoolean();
-      }
-   }
-
-   public void a(xo $$0, GameProfile $$1, wu.a $$2) {
-      boolean $$3 = this.b.n.aj().c();
-      xo $$4 = $$3 ? $$0.a() : $$0;
-      wy $$5 = $$2.a($$4.d());
-      Instant $$6 = Instant.now();
-      this.a($$0.l(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         gkm $$7 = this.b.L();
-         if ($$7 != null && $$0.l() != null) {
-            $$7.a($$0.l(), $$6x);
-         }
-
-         return $$6x;
+      public static final MapCodec<glf.a> d = Codec.BOOL.optionalFieldOf("acceptTextures").xmap($$0 -> $$0.<glf.a>map($$0x -> $$0x ? a : b).orElse(c), $$0 -> {
+         return switch ($$0) {
+            case a -> Optional.of(true);
+            case b -> Optional.of(false);
+            case c -> Optional.empty();
+         };
       });
-   }
+      private final wy e;
 
-   public void a(UUID $$0, @Nullable xk $$1, wu.a $$2) {
-      this.a(null, () -> {
-         gkm $$3 = this.b.L();
-         if ($$3 != null && $$1 != null) {
-            $$3.a($$1, false);
-         }
+      private a(final String $$0) {
+         this.e = wy.c("addServer.resourcePack." + $$0);
+      }
 
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            wy $$4 = $$2.a(a);
-            this.b.m.d().a($$4, null, fpi.d());
-            this.e = ag.c();
-            return true;
-         }
-      });
-   }
-
-   public void a(wy $$0, wu.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         wy $$3 = $$1.a($$0);
-         this.b.m.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = ag.c();
-         return true;
-      });
-   }
-
-   private boolean a(wu.a $$0, xo $$1, wy $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      glh $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.g()) && !$$1.j()) {
-         fpi $$7 = $$6.a($$1);
-         xk $$8 = $$1.l();
-         xc $$9 = $$1.o();
-         if ($$9.a()) {
-            this.b.m.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.d());
-         } else {
-            wy $$10 = $$9.b($$1.c());
-            if ($$10 != null) {
-               this.b.m.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
-            }
-         }
-
-         this.a($$1, $$0, $$3, $$6);
-         this.e = ag.c();
-         return true;
-      } else {
-         return false;
+      public wy a() {
+         return this.e;
       }
    }
 
-   private void a(wu.a $$0, wy $$1) {
-      this.b.aY().a($$0.b($$1));
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   private glh a(xo $$0, wy $$1, Instant $$2) {
-      return this.a($$0.g()) ? glh.a : glh.a($$0, $$1, $$2);
-   }
-
-   private void a(xo $$0, wu.a $$1, GameProfile $$2, glh $$3) {
-      glg $$4 = this.b.ba().b();
-      $$4.a(glj.a($$2, $$0, $$3));
-   }
-
-   private void a(wy $$0, Instant $$1) {
-      glg $$2 = this.b.ba().b();
-      $$2.a(glj.a($$0, $$1));
-   }
-
-   public void a(wy $$0, boolean $$1) {
-      if (!this.b.n.ah().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.m.a($$0, false);
-         } else {
-            this.b.m.d().a($$0);
-            this.a($$0, Instant.now());
-         }
-
-         this.b.aY().b($$0);
-      }
-   }
-
-   private UUID a(wy $$0) {
-      String $$1 = baj.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? ag.e : this.b.aN().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.T() && this.b.t != null) {
-         UUID $$1 = this.b.t.gh().getId();
-         return $$1.equals($$0);
-      } else {
-         return false;
-      }
-   }
-
-   static record a(@Nullable xk a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
-      }
-
-      @Nullable
-      public xk b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

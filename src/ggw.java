@@ -1,5 +1,5 @@
-public class ggw extends get<hda> {
-   public ggw(gjo $$0) {
+public class ggw extends gfa<hfv> {
+   public ggw(gjt $$0) {
       super($$0);
    }
 }

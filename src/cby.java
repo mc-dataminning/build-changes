@@ -16,7 +16,7 @@ public class cby {
                            $$2.setValue($$7 + 40L);
                            return true;
                         } else {
-                           ffc $$8 = ffc.a($$6);
+                           ffh $$8 = ffh.a($$6);
                            iv $$9 = $$6.du();
                            iv.a $$10 = new iv.a();
 
@@ -27,7 +27,7 @@ public class cby {
                                  && !$$5x.a_($$10.a($$11, jb.a)).b($$5x, $$11, $$8).c()) {
                                  for (jb $$12 : jb.c.a) {
                                     $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jb.a)).a(dmo.J)) {
+                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jb.a)).a(dmt.J)) {
                                        $$5.a(new bzd($$11));
                                        $$4.a(new cgo(new bzd($$11), $$1, 0));
                                        break label45;

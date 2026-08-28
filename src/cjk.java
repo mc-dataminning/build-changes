@@ -2,28 +2,28 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public record cjk(ctk<cjk.a> e, ctq f) implements ctm<ctp, ctn> {
+public record cjk(ctn<cjk.a> e, ctt f) implements ctp<cts, ctq> {
    public static final Codec<cjk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ctk.a(cjk.a.d, cjk.a.a).forGetter(cjk::b), ctq.b.fieldOf("spawn_conditions").forGetter(cjk::c)).apply($$0, cjk::new)
+      $$0 -> $$0.group(ctn.a(cjk.a.d, cjk.a.a).forGetter(cjk::b), ctt.b.fieldOf("spawn_conditions").forGetter(cjk::c)).apply($$0, cjk::new)
    );
-   public static final Codec<cjk> b = RecordCodecBuilder.create($$0 -> $$0.group(ctk.a(cjk.a.d, cjk.a.a).forGetter(cjk::b)).apply($$0, cjk::new));
+   public static final Codec<cjk> b = RecordCodecBuilder.create($$0 -> $$0.group(ctn.a(cjk.a.d, cjk.a.a).forGetter(cjk::b)).apply($$0, cjk::new));
    public static final Codec<jf<cjk>> c = ald.a(mh.aM);
    public static final yw<wj, jf<cjk>> d = yu.b(mh.aM);
 
-   private cjk(ctk<cjk.a> $$0) {
-      this($$0, ctq.a);
+   private cjk(ctn<cjk.a> $$0) {
+      this($$0, ctt.a);
    }
 
    @Override
-   public List<ctm.a<ctp, ctn>> a() {
+   public List<ctp.a<cts, ctq>> a() {
       return this.f.a();
    }
 
-   public ctk<cjk.a> b() {
+   public ctn<cjk.a> b() {
       return this.e;
    }
 
-   public ctq c() {
+   public ctt c() {
       return this.f;
    }
 

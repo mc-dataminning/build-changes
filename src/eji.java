@@ -1,34 +1,48 @@
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class eji extends ejh {
-   public eji(Codec<eme> $$0) {
+public class eji extends ejy<emj> {
+   public eji(Codec<emj> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dji $$0, azv $$1, iv $$2, eao $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      iv.a $$8 = $$2.k();
+   public boolean a(eka<emj> $$0) {
+      azv $$1 = $$0.d();
+      dkl $$2 = $$0.b();
+      dir $$3 = new dir($$0.e());
+      IntArrayList $$4 = ag.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ag.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      iv.a $$6 = new iv.a();
+      IntListIterator var8 = $$4.iterator();
 
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(jb.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            iv $$9 = $$2.a(egs.a.f, $$6);
+            if ($$2.v($$9) || $$2.a_($$9).g($$2, $$9).c()) {
+               $$2.a($$9, dmt.cG.m(), 2);
+               bum.a($$2, $$1, $$9, ezp.a);
+               eat $$10 = dmt.cz.m();
+
+               for (jb $$11 : jb.c.a) {
+                  iv $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
                }
+
+               return true;
             }
          }
       }
 
-      return true;
+      return false;
    }
 }

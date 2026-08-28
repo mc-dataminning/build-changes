@@ -1,77 +1,28 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.slf4j.Logger;
-
 public class ezf {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = eyx.a();
+   public static final ezf a = new ezf("advancements");
+   public static final ezf b = new ezf("stats");
+   public static final ezf c = new ezf("playerdata");
+   public static final ezf d = new ezf("players");
+   public static final ezf e = new ezf("level.dat");
+   public static final ezf f = new ezf("level.dat_old");
+   public static final ezf g = new ezf("icon.png");
+   public static final ezf h = new ezf("session.lock");
+   public static final ezf i = new ezf("generated");
+   public static final ezf j = new ezf("datapacks");
+   public static final ezf k = new ezf("resources.zip");
+   public static final ezf l = new ezf(".");
+   private final String m;
 
-   public ezf(ezc.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(eza.c).toFile();
-      this.c.mkdirs();
+   private ezf(String $$0) {
+      this.m = $$0;
    }
 
-   public void a(crj $$0) {
-      try {
-         tz $$1 = $$0.f(new tz());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cG() + "-", ".dat");
-         um.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cG() + ".dat");
-         Path $$5 = $$2.resolve($$0.cG() + ".dat_old");
-         ag.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ai().getString());
-      }
+   public String a() {
+      return this.m;
    }
 
-   private void a(crj $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cG() + $$1);
-      Path $$4 = $$2.resolve($$0.cG() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.ai().getString(), var7);
-         }
-      }
-   }
-
-   private Optional<tz> b(crj $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cG() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(um.a($$2.toPath(), ui.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.ai().getString());
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public Optional<tz> b(crj $$0) {
-      Optional<tz> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
-      }
-
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = uo.b($$1x, -1);
-         $$1x = bbb.b.a(this.a, $$1x, $$2);
-         $$0.g($$1x);
-         return $$1x;
-      });
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

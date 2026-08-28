@@ -1,9 +1,9 @@
 import javax.annotation.Nullable;
 
 public interface asa {
-   void a(dio var1);
+   void a(dir var1);
 
-   void a(dio var1, @Nullable edm var2);
+   void a(dir var1, @Nullable edr var2);
 
    void a();
 

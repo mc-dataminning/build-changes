@@ -1,69 +1,124 @@
 import javax.annotation.Nullable;
 
-public class cmq extends cmj {
+public class cmq extends cmm {
+   private static final chy b = chy.a().d();
    @Nullable
-   private fex b;
+   private exo c;
+   @Nullable
+   private ffc d;
+   private boolean e;
 
-   public cmq(cmh $$0) {
+   public cmq(cmk $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      fex $$0 = this.a.J(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.c.dz();
-      double $$2 = this.a.c.e(0.5);
-      double $$3 = this.a.c.dF();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         azv $$5 = this.a.dX();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         fex $$9 = this.a.dx();
-         this.a.dU().a(ly.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
-         $$0.b((float) (Math.PI / 16));
-      }
+   public cna<cmq> h() {
+      return cna.a;
    }
 
    @Override
    public void a(arq $$0) {
-      if (this.b == null) {
-         this.b = fex.c($$0.a(egn.a.f, ejs.a(this.a.j())));
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dz(), this.a.dB(), this.a.dF());
+      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+         this.b($$0);
       }
-
-      if (this.b.c(this.a.dz(), this.a.dB(), this.a.dF()) < 1.0) {
-         this.a.t().b(cmx.f).i();
-         this.a.t().a(cmx.g);
-      }
-   }
-
-   @Override
-   public float e() {
-      return 1.5F;
-   }
-
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dx().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
    }
 
    @Override
    public void c() {
-      this.b = null;
+      this.c = null;
+      this.d = null;
    }
 
    @Nullable
    @Override
-   public fex f() {
-      return this.b;
+   public ffc f() {
+      return this.d;
+   }
+
+   private void b(arq $$0) {
+      if (this.c != null && this.c.c()) {
+         iv $$1 = $$0.a(egs.a.f, ejx.a(this.a.j()));
+         int $$2 = this.a.x() == null ? 0 : this.a.x().e();
+         if (this.a.dX().a($$2 + 3) == 0) {
+            this.a.t().a(cna.c);
+            return;
+         }
+
+         crm $$3 = $$0.a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         double $$4;
+         if ($$3 != null) {
+            $$4 = $$1.b($$3.ds()) / 512.0;
+         } else {
+            $$4 = 64.0;
+         }
+
+         if ($$3 != null && (this.a.dX().a((int)($$4 + 2.0)) == 0 || this.a.dX().a($$2 + 2) == 0)) {
+            this.a($$3);
+            return;
+         }
+      }
+
+      if (this.c == null || this.c.c()) {
+         int $$6 = this.a.n();
+         int $$7 = $$6;
+         if (this.a.dX().a(8) == 0) {
+            this.e = !this.e;
+            $$7 = $$6 + 6;
+         }
+
+         if (this.e) {
+            $$7++;
+         } else {
+            $$7--;
+         }
+
+         if (this.a.x() != null && this.a.x().e() >= 0) {
+            $$7 %= 12;
+            if ($$7 < 0) {
+               $$7 += 12;
+            }
+         } else {
+            $$7 -= 12;
+            $$7 &= 7;
+            $$7 += 12;
+         }
+
+         this.c = this.a.a($$6, $$7, null);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.i();
+   }
+
+   private void a(crm $$0) {
+      this.a.t().a(cna.b);
+      this.a.t().b(cna.b).a($$0);
+   }
+
+   private void i() {
+      if (this.c != null && !this.c.c()) {
+         ka $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dX().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new ffc($$1, $$3, $$2);
+      }
    }
 
    @Override
-   public cmx<cmq> h() {
-      return cmx.d;
+   public void a(cmj $$0, iv $$1, bux $$2, @Nullable crm $$3) {
+      if ($$3 != null && this.a.c($$3)) {
+         this.a($$3);
+      }
    }
 }

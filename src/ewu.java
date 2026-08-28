@@ -1,106 +1,140 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public abstract class ewu {
-   public static final jl<ewv> c = new jl<>();
-   protected final eap<ewu, ewv> d;
-   private ewv a;
-   private final jf.c<ewu> b = mg.c.f(this);
-
-   protected ewu() {
-      eap.a<ewu, ewv> $$0 = new eap.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(ewu::g, ewv::new);
-      this.f(this.d.b());
+public class ewu extends ewo<ewu.a> {
+   protected ewu(edd $$0) {
+      super(djv.a, $$0, new ewu.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
-   protected void a(eap.a<ewu, ewv> $$0) {
+   @Override
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   public eap<ewu, ewv> f() {
-      return this.d;
-   }
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = jy.e($$0);
+      int $$3 = jy.c($$2);
+      ewu.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(jy.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         ecv $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = iv.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
 
-   protected final void f(ewv $$0) {
-      this.a = $$0;
-   }
+               $$2 = jy.a($$2, jb.b);
+            }
+         }
 
-   public final ewv g() {
-      return this.a;
-   }
-
-   public abstract czg a();
-
-   protected void a(djh $$0, iv $$1, ewv $$2, azv $$3) {
-   }
-
-   protected void b(arq $$0, iv $$1, eao $$2, ewv $$3) {
-   }
-
-   protected void a(arq $$0, iv $$1, ewv $$2, azv $$3) {
-   }
-
-   protected void a(djh $$0, iv $$1, bwi $$2, bxb $$3) {
-   }
-
-   @Nullable
-   protected lw h() {
-      return null;
-   }
-
-   protected abstract boolean a(ewv var1, din var2, iv var3, ewu var4, jb var5);
-
-   protected abstract fex a(din var1, iv var2, ewv var3);
-
-   public abstract int a(djk var1);
-
-   protected boolean i() {
-      return false;
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected abstract float c();
-
-   public abstract float a(ewv var1, din var2, iv var3);
-
-   public abstract float a(ewv var1);
-
-   protected abstract eao b(ewv var1);
-
-   public abstract boolean c(ewv var1);
-
-   public abstract int d(ewv var1);
-
-   public boolean a(ewu $$0) {
-      return $$0 == this;
-   }
-
-   @Deprecated
-   public boolean a(axr<ewu> $$0) {
-      return this.b.a($$0);
-   }
-
-   public abstract ffr b(ewv var1, din var2, iv var3);
-
-   @Nullable
-   public fes c(ewv $$0, din $$1, iv $$2) {
-      if (this.b()) {
-         return null;
+         return $$6.a(jy.b(iv.a($$0)), jy.b(iv.b($$0)), jy.b(iv.c($$0)));
       } else {
-         float $$3 = $$0.a($$1, $$2);
-         return new fes((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)$$2.u() + 1.0, (double)((float)$$2.v() + $$3), (double)$$2.w() + 1.0);
+         return $$1 && !this.j($$2) ? 0 : 15;
       }
    }
 
-   public Optional<awm> j() {
-      return Optional.empty();
+   @Override
+   protected void h(long $$0) {
+      int $$1 = jy.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
+      }
+
+      long $$2 = jy.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
    }
 
-   @Deprecated
-   public jf.c<ewu> k() {
-      return this.b;
+   @Override
+   protected void i(long $$0) {
+      long $$1 = jy.f($$0);
+      int $$2 = jy.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = jy.a($$3, jb.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
+   }
+
+   @Override
+   protected ecv g(long $$0) {
+      ecv $$1 = (ecv)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(jy.f($$0));
+         if ($$2 != this.d.b && jy.c($$0) < $$2) {
+            long $$3 = jy.a($$0, jb.b);
+
+            ecv $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = jy.a($$3, jb.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new ecv(15) : new ecv();
+         }
+      }
+   }
+
+   private static ecv a(ecv $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new ecv($$2);
+      }
+   }
+
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
+   }
+
+   protected boolean m(long $$0) {
+      long $$1 = jy.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || jy.c($$0) >= $$2;
+   }
+
+   protected int n(long $$0) {
+      return this.d.c.get($$0);
+   }
+
+   protected int c() {
+      return this.d.b;
+   }
+
+   protected static final class a extends ewl<ewu.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<ecv> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
+      }
+
+      public ewu.a a() {
+         return new ewu.a(this.a.clone(), this.c.clone(), this.b);
+      }
    }
 }

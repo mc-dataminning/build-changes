@@ -1,18 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class evr implements evs {
-   public static final evr a = new evr();
-   public static final MapCodec<evr> b = MapCodec.unit(a);
+public class evr extends evj {
+   public static final MapCodec<evr> a = axr.a(mh.i).fieldOf("tag").xmap(evr::new, $$0 -> $$0.b);
+   private final axr<dmr> b;
 
-   @Nullable
-   @Override
-   public tz a(azv $$0, @Nullable tz $$1) {
-      return $$1;
+   public evr(axr<dmr> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public evt<?> a() {
-      return evt.b;
+   public boolean a(eat $$0, azv $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected evk<?> a() {
+      return evk.d;
    }
 }

@@ -1,77 +1,62 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class ddh extends ddg {
+   private final jb b;
 
-public abstract class ddh extends det {
-   private final ddn d;
-   private final float e;
-   private final int f;
-
-   public ddh(String $$0, ddn $$1, ddx $$2, czk $$3, float $$4, int $$5) {
-      super($$0, $$2, $$3);
-      this.d = $$1;
-      this.e = $$4;
-      this.f = $$5;
+   public ddh(djm $$0, iv $$1, jb $$2, czn $$3, jb $$4) {
+      super($$0, null, buf.a, $$3, new fey(ffc.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
-   public abstract del<? extends ddh> a();
+   public iv a() {
+      return this.j().b();
+   }
 
    @Override
-   public abstract dem<? extends ddh> b();
-
-   public float c() {
-      return this.e;
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
    }
-
-   public int d() {
-      return this.f;
-   }
-
-   public ddn e() {
-      return this.d;
-   }
-
-   protected abstract czg f();
 
    @Override
-   public List<dfh> g() {
-      return List.of(new dfg(this.k().c(), dfn.a.c, new dfn.f(this.l()), new dfn.d(this.f()), this.f, this.e));
+   public boolean c() {
+      return this.b();
    }
 
-   @FunctionalInterface
-   public interface a<T extends ddh> {
-      T create(String var1, ddn var2, ddx var3, czk var4, float var5, int var6);
+   @Override
+   public jb d() {
+      return jb.a;
    }
 
-   public static class b<T extends ddh> implements del<T> {
-      private final MapCodec<T> w;
-      private final yw<wj, T> x;
-
-      public b(ddh.a<T> $$0, int $$1) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$2 -> $$2.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(det::j),
-                     ddn.d.fieldOf("category").orElse(ddn.c).forGetter(ddh::e),
-                     ddx.d.fieldOf("ingredient").forGetter(det::k),
-                     czk.e.fieldOf("result").forGetter(det::l),
-                     Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(ddh::c),
-                     Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter(ddh::d)
-                  )
-                  .apply($$2, $$0::create)
-         );
-         this.x = yw.a(yu.p, det::j, ddn.e, ddh::e, ddx.a, det::k, czk.i, det::l, yu.l, ddh::c, yu.g, ddh::d, $$0::create);
+   @Override
+   public jb[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jb[]{jb.a, jb.c, jb.f, jb.d, jb.e, jb.b};
+         case b:
+            return new jb[]{jb.a, jb.b, jb.c, jb.f, jb.d, jb.e};
+         case c:
+            return new jb[]{jb.a, jb.c, jb.f, jb.e, jb.b, jb.d};
+         case d:
+            return new jb[]{jb.a, jb.d, jb.f, jb.e, jb.b, jb.c};
+         case e:
+            return new jb[]{jb.a, jb.e, jb.d, jb.b, jb.c, jb.f};
+         case f:
+            return new jb[]{jb.a, jb.f, jb.d, jb.b, jb.c, jb.e};
       }
+   }
 
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
+   @Override
+   public jb g() {
+      return this.b.o() == jb.a.b ? jb.c : this.b;
+   }
 
-      @Override
-      public yw<wj, T> b() {
-         return this.x;
-      }
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

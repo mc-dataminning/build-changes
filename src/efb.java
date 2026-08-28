@@ -1,15 +1,14 @@
-public interface efb<T> {
-   void g(T var1);
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-   void f(T var1);
+public interface efb<T> extends AutoCloseable {
+   CompletableFuture<eew<T>> a(dir var1);
 
-   void e(T var1);
+   void a(eew<T> var1);
 
-   void d(T var1);
+   void a(boolean var1);
 
-   void c(T var1);
-
-   void b(T var1);
-
-   void a(T var1);
+   @Override
+   default void close() throws IOException {
+   }
 }

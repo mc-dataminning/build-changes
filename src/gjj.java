@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface gjj {
+public class gjj<S extends hfv> extends gfa<S> {
+   public gjj(gjt $$0) {
+      super($$0);
+   }
 }

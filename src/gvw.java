@@ -1,31 +1,28 @@
-import java.util.function.UnaryOperator;
+public abstract class gvw<T extends cru, S extends hcl> extends gwx<T, S> {
+   private final gfi a;
 
-public class gvw extends gvh {
-   private final ghg a;
-   private final alg g;
-   private final ggk<hck> h;
-
-   public gvw(gwt.a $$0, gjm $$1) {
+   public gvw(gwy.a $$0) {
       super($$0);
-      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new ghg.a($$0.a(gjn.E), $$0x -> gqx.i());
-      this.h = new gfn($$0.a($$1));
+      this.a = new gfi($$0.a(gjs.l));
    }
 
-   @Override
-   protected ggk<hck> a() {
-      return this.h;
+   public void a(S $$0, fkd $$1, gqr $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a));
+      fkh $$4 = $$2.getBuffer(grc.f(this.a($$0)));
+      this.a.a($$0);
+      this.a.a($$1, $$4, $$3, hjg.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected gqx b() {
-      return this.h.a(this.g);
-   }
+   protected abstract alg a(S var1);
 
-   @Override
-   protected void b(hck $$0, fjy $$1, gqm $$2, int $$3) {
-      if (!$$0.f) {
-         this.a.a($$1, $$2.getBuffer(this.a.a(this.g)), $$3, hja.d);
-      }
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.k($$2);
+      $$1.b = $$0.l($$2);
+      $$1.c = (float)$$0.c - $$2;
    }
 }

@@ -1,7 +1,3 @@
-public class hee extends hdz {
-   public cjq.a a;
-
-   public hee() {
-      this.a = cjq.a.a;
-   }
+public class hee extends hdf {
+   public long a;
 }

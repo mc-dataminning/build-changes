@@ -1,100 +1,120 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public abstract class fsv extends fsy {
+   private static final alg a = alg.b("widget/slider");
+   private static final alg d = alg.b("widget/slider_highlighted");
+   private static final alg e = alg.b("widget/slider_handle");
+   private static final alg f = alg.b("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
+   private boolean o;
 
-public class fsv extends fsl {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fsv.b q = $$0 -> $$0.get();
-   protected final fsv.c r;
-   protected final fsv.b s;
-
-   public static fsv.a a(wy $$0, fsv.c $$1) {
-      return new fsv.a($$0, $$1);
-   }
-
-   protected fsv(int $$0, int $$1, int $$2, int $$3, wy $$4, fsv.c $$5, fsv.b $$6) {
+   public fsv(int $$0, int $$1, int $$2, int $$3, wy $$4, double $$5) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
+      this.c = $$5;
    }
 
-   @Override
-   public void b() {
-      this.r.onPress(this);
+   private alg c() {
+      return this.E() && this.aJ_() && !this.o ? d : a;
+   }
+
+   private alg e() {
+      return !this.E() || !this.i && !this.o ? e : f;
    }
 
    @Override
    protected xm d() {
-      return this.s.createNarrationMessage(() -> super.d());
+      return wy.a("gui.narrate.slider", this.B());
    }
 
    @Override
-   public void a(fws $$0) {
-      this.c($$0);
-   }
-
-   public static class a {
-      private final wy a;
-      private final fsv.c b;
-      @Nullable
-      private fug c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fsv.b h = fsv.q;
-
-      public a(wy $$0, fsv.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fsv.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fsv.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fsv.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fsv.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fsv.a a(@Nullable fug $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fsv.a a(fsv.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fsv a() {
-         fsv $$0 = new fsv(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+   public void a(fwx $$0) {
+      $$0.a(fww.a, this.d());
+      if (this.j) {
+         if (this.aJ_()) {
+            $$0.a(fww.d, wy.c("narration.slider.usage.focused"));
+         } else {
+            $$0.a(fww.d, wy.c("narration.slider.usage.hovered"));
+         }
       }
    }
 
-   public interface b {
-      xm createNarrationMessage(Supplier<xm> var1);
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+      fpt $$4 = fpt.Q();
+      $$0.a(grc::H, this.c(), this.F(), this.G(), this.A(), this.y(), axw.a(this.l));
+      $$0.a(grc::H, this.e(), this.F() + (int)(this.c * (double)(this.g - 8)), this.G(), 8, this.y(), axw.a(this.l));
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | azm.f(this.l * 255.0F) << 24);
    }
 
-   public interface c {
-      void onPress(fsv var1);
+   @Override
+   public void a(double $$0, double $$1) {
+      this.a($$0);
    }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (!$$0) {
+         this.o = false;
+      } else {
+         fpq $$1 = fpt.Q().aX();
+         if ($$1 == fpq.b || $$1 == fpq.d) {
+            this.o = true;
+         }
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fxc.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.F() + 4)) / (double)(this.g - 8));
+   }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = azm.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
+      }
+
+      this.b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.a($$0);
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(hou $$0) {
+   }
+
+   @Override
+   public void b(double $$0, double $$1) {
+      super.a(fpt.Q().ak());
+   }
+
+   protected abstract void b();
+
+   protected abstract void a();
 }

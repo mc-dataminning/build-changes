@@ -1,60 +1,57 @@
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public class dah extends cxs {
-   public dah(dmm $$0, czg.a $$1) {
-      super($$0, $$1);
+public interface dah {
+   csh a(djm var1, jp var2, czn var3, jb var4);
+
+   default dah.a a() {
+      return dah.a.a;
    }
 
-   @Nullable
-   @Override
-   public ddd b(ddd $$0) {
-      iv $$1 = $$0.a();
-      djh $$2 = $$0.q();
-      eao $$3 = $$2.a_($$1);
-      dmm $$4 = this.c();
-      if (!$$3.a($$4)) {
-         return dtj.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         jb $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == jb.b ? $$0.g() : jb.b;
+   default void a(csh $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+      $$0.c($$1, $$2, $$3, $$4, $$5);
+   }
+
+   public static record a(dah.b b, float c, float d, OptionalInt e) {
+      public static final dah.a a = a().a();
+
+      public static dah.a.a a() {
+         return new dah.a.a();
+      }
+
+      public static class a {
+         private dah.b a = ($$0, $$1) -> dox.a($$0, 0.7, new ffc(0.0, 0.1, 0.0));
+         private float b = 6.0F;
+         private float c = 1.1F;
+         private OptionalInt d = OptionalInt.empty();
+
+         public dah.a.a a(dah.b $$0) {
+            this.a = $$0;
+            return this;
          }
 
-         int $$7 = 0;
-         iv.a $$8 = $$1.k().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.C && !$$2.k($$8)) {
-               crj $$9 = $$0.o();
-               int $$10 = $$2.ao();
-               if ($$9 instanceof arr && $$8.v() > $$10) {
-                  ((arr)$$9).b(wy.a("build.tooHigh", $$10).a(o.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.c())) {
-               if ($$3.a($$0)) {
-                  return ddd.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
+         public dah.a.a a(float $$0) {
+            this.b = $$0;
+            return this;
          }
 
-         return null;
+         public dah.a.a b(float $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public dah.a.a a(int $$0) {
+            this.d = OptionalInt.of($$0);
+            return this;
+         }
+
+         public dah.a a() {
+            return new dah.a(this.a, this.b, this.c, this.d);
+         }
       }
    }
 
-   @Override
-   protected boolean b() {
-      return false;
+   @FunctionalInterface
+   public interface b {
+      jp getDispensePosition(le var1, jb var2);
    }
 }

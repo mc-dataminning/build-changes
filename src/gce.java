@@ -1,255 +1,181 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class gce {
-   private final aun a;
-   final List<auk> b;
-   final List<auk> c;
-   final Function<auk, alg> d;
-   final Runnable e;
-   private final Consumer<aun> f;
+public class gce extends ftg<gce.b> {
+   private static final int a = 20;
+   final gcf m;
+   private int n;
 
-   public gce(Runnable $$0, Function<auk, alg> $$1, aun $$2, Consumer<aun> $$3) {
-      this.e = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = Lists.newArrayList($$2.g());
-      Collections.reverse(this.b);
-      this.c = Lists.newArrayList($$2.d());
-      this.c.removeAll(this.b);
-      this.f = $$3;
+   public gce(gcf $$0, fpt $$1) {
+      super($$1, $$0.n, $$0.s.d(), $$0.s.c(), 20);
+      this.m = $$0;
+      fpr[] $$2 = (fpr[])ArrayUtils.clone($$1.n.V);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
+
+      for (fpr $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new gce.a(wy.c($$5)));
+         }
+
+         wy $$6 = wy.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.n) {
+            this.n = $$7;
+         }
+
+         this.b(new gce.c($$4, $$6));
+      }
    }
 
-   public Stream<gce.a> a() {
-      return this.c.stream().map($$0 -> new gce.d($$0));
-   }
-
-   public Stream<gce.a> b() {
-      return this.b.stream().map($$0 -> new gce.c($$0));
-   }
-
-   void e() {
-      this.a.b(Lists.reverse(this.b).stream().map(auk::g).collect(ImmutableList.toImmutableList()));
+   public void b() {
+      fpr.d();
+      this.c();
    }
 
    public void c() {
-      this.e();
-      this.f.accept(this.a);
+      this.aE_().forEach(gce.b::c);
    }
 
-   public void d() {
-      this.a.a();
-      this.b.retainAll(this.a.d());
-      this.c.clear();
-      this.c.addAll(this.a.d());
-      this.c.removeAll(this.b);
+   @Override
+   public int a() {
+      return 340;
    }
 
-   public interface a {
-      alg a();
+   public class a extends gce.b {
+      final wy b;
+      private final int c;
 
-      aul b();
-
-      String c();
-
-      wy d();
-
-      wy e();
-
-      auo f();
-
-      default wy g() {
-         return this.f().a(this.e());
+      public a(final wy $$1) {
+         this.b = $$1;
+         this.c = gce.this.c.h.a(this.b);
       }
 
-      boolean h();
-
-      boolean i();
-
-      void j();
-
-      void k();
-
-      void l();
-
-      void m();
-
-      boolean n();
-
-      default boolean o() {
-         return !this.n();
+      @Override
+      public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(gce.this.c.h, this.b, gce.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1);
       }
 
-      default boolean p() {
-         return this.n() && !this.i();
+      @Nullable
+      @Override
+      public fsj a(fxd $$0) {
+         return null;
       }
 
-      boolean q();
+      @Override
+      public List<? extends fux> aE_() {
+         return Collections.emptyList();
+      }
 
-      boolean r();
+      @Override
+      public List<? extends fwv> b() {
+         return ImmutableList.of(new fwv() {
+            @Override
+            public fwv.a w() {
+               return fwv.a.b;
+            }
+
+            @Override
+            public void b(fwx $$0) {
+               $$0.a(fww.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void c() {
+      }
    }
 
-   abstract class b implements gce.a {
-      private final auk b;
+   public abstract static class b extends ftg.a<gce.b> {
+      abstract void c();
+   }
 
-      public b(final auk $$0) {
-         this.b = $$0;
-      }
+   public class c extends gce.b {
+      private static final wy b = wy.c("controls.reset");
+      private static final int c = 10;
+      private final fpr d;
+      private final wy e;
+      private final fta f;
+      private final fta g;
+      private boolean h = false;
 
-      protected abstract List<auk> s();
-
-      protected abstract List<auk> t();
-
-      @Override
-      public alg a() {
-         return gce.this.d.apply(this.b);
-      }
-
-      @Override
-      public aul b() {
-         return this.b.d();
-      }
-
-      @Override
-      public String c() {
-         return this.b.g();
-      }
-
-      @Override
-      public wy d() {
-         return this.b.b();
+      c(final fpr $$1, final wy $$2) {
+         this.d = $$1;
+         this.e = $$2;
+         this.f = fta.a($$2, $$1x -> {
+            gce.this.m.a = $$1;
+            gce.this.b();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? wy.a("narrator.controls.unbound", $$2) : wy.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.g = fta.a(b, $$1x -> {
+            $$1.b($$1.i());
+            gce.this.b();
+         }).a(0, 0, 50, 20).a($$1x -> wy.a("narrator.controls.reset", $$2)).a();
+         this.c();
       }
 
       @Override
-      public wy e() {
-         return this.b.c();
-      }
-
-      @Override
-      public auo f() {
-         return this.b.l();
-      }
-
-      @Override
-      public boolean h() {
-         return this.b.j();
-      }
-
-      @Override
-      public boolean i() {
-         return this.b.i();
-      }
-
-      protected void u() {
-         this.s().remove(this.b);
-         this.b.k().a(this.t(), this.b, auk::h, true);
-         gce.this.e.run();
-         gce.this.e();
-         this.v();
-      }
-
-      private void v() {
-         if (this.b.g().equals("high_contrast")) {
-            fpr<Boolean> $$0 = fpo.Q().n.u();
-            $$0.a(!$$0.c());
+      public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = gce.this.l() - this.g.A() - 10;
+         int $$11 = $$2 - 2;
+         this.g.c($$10, $$11);
+         this.g.a($$0, $$6, $$7, $$9);
+         int $$12 = $$10 - 5 - this.f.A();
+         this.f.c($$12, $$11);
+         this.f.a($$0, $$6, $$7, $$9);
+         $$0.b(gce.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
+         if (this.h) {
+            int $$13 = 3;
+            int $$14 = this.f.F() - 6;
+            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
          }
       }
 
-      protected void a(int $$0) {
-         List<auk> $$1 = this.s();
-         int $$2 = $$1.indexOf(this.b);
-         $$1.remove($$2);
-         $$1.add($$2 + $$0, this.b);
-         gce.this.e.run();
+      @Override
+      public List<? extends fux> aE_() {
+         return ImmutableList.of(this.f, this.g);
       }
 
       @Override
-      public boolean q() {
-         List<auk> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      public List<? extends fwv> b() {
+         return ImmutableList.of(this.f, this.g);
       }
 
       @Override
-      public void l() {
-         this.a(-1);
-      }
+      protected void c() {
+         this.f.b(this.d.k());
+         this.g.j = !this.d.l();
+         this.h = false;
+         xm $$0 = wy.i();
+         if (!this.d.j()) {
+            for (fpr $$1 : gce.this.c.n.V) {
+               if ($$1 != this.d && this.d.b($$1)) {
+                  if (this.h) {
+                     $$0.f(", ");
+                  }
 
-      @Override
-      public boolean r() {
-         List<auk> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
-      }
+                  this.h = true;
+                  $$0.b(wy.c($$1.h()));
+               }
+            }
+         }
 
-      @Override
-      public void m() {
-         this.a(1);
-      }
-   }
+         if (this.h) {
+            this.f.b(wy.b("[ ").b(this.f.B().f().a(o.p)).f(" ]").a(o.m));
+            this.f.a(ful.a(wy.a("controls.keybinds.duplicateKeybinds", $$0)));
+         } else {
+            this.f.a(null);
+         }
 
-   class c extends gce.b {
-      public c(final auk $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected List<auk> s() {
-         return gce.this.b;
-      }
-
-      @Override
-      protected List<auk> t() {
-         return gce.this.c;
-      }
-
-      @Override
-      public boolean n() {
-         return true;
-      }
-
-      @Override
-      public void j() {
-      }
-
-      @Override
-      public void k() {
-         this.u();
-      }
-   }
-
-   class d extends gce.b {
-      public d(final auk $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected List<auk> s() {
-         return gce.this.c;
-      }
-
-      @Override
-      protected List<auk> t() {
-         return gce.this.b;
-      }
-
-      @Override
-      public boolean n() {
-         return false;
-      }
-
-      @Override
-      public void j() {
-         this.u();
-      }
-
-      @Override
-      public void k() {
+         if (gce.this.m.a == this.d) {
+            this.f.b(wy.b("> ").b(this.f.B().f().a(o.p, o.t)).f(" <").a(o.o));
+         }
       }
    }
 }

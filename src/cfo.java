@@ -1,9 +1,9 @@
 import java.util.EnumSet;
 
 public class cfo extends cef {
-   private final cqq a;
+   private final cqt a;
 
-   public cfo(cqq $$0) {
+   public cfo(cqt $$0) {
       this.a = $$0;
       this.a(EnumSet.of(cef.a.c, cef.a.a));
    }
@@ -19,7 +19,7 @@ public class cfo extends cef {
       } else if (this.a.T) {
          return false;
       } else {
-         crj $$0 = this.a.x();
+         crm $$0 = this.a.x();
          if ($$0 == null) {
             return false;
          } else {

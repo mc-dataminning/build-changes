@@ -1,202 +1,226 @@
-import java.util.List;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class fxo extends fyn {
-   private static final wy b = wy.c("createWorld.customize.flat.title");
-   static final alg c = alg.b("container/slot");
-   private static final int d = 18;
-   private static final int s = 20;
-   private static final int u = 1;
-   private static final int v = 1;
-   private static final int w = 2;
-   private static final int x = 2;
-   private final fwj y = new fwj(this, 33, 64);
-   protected final gdo a;
-   private final Consumer<epl> z;
-   epl A;
-   @Nullable
-   private fxo.a B;
-   @Nullable
-   private fsv C;
+public class fxo extends fys {
+   public static final double a = 7.0;
+   private static final wy c = wy.c("chat_screen.usage");
+   private static final int d = 210;
+   private String s = "";
+   private int u = -1;
+   protected ftj b;
+   private String v;
+   ftd w;
 
-   public fxo(gdo $$0, Consumer<epl> $$1, epl $$2) {
-      super(b);
-      this.a = $$0;
-      this.z = $$1;
-      this.A = $$2;
-   }
-
-   public epl l() {
-      return this.A;
-   }
-
-   public void a(epl $$0) {
-      this.A = $$0;
-      if (this.B != null) {
-         this.B.b();
-         this.m();
-      }
+   public fxo(String $$0) {
+      super(wy.c("chat_screen.title"));
+      this.v = $$0;
    }
 
    @Override
    protected void aO_() {
-      this.y.a(this.l, this.p);
-      this.B = this.y.c(new fxo.a());
-      fwn $$0 = this.y.b(fwn.d().a(4));
-      $$0.c().e();
-      fwn $$1 = $$0.a(fwn.e().a(8));
-      fwn $$2 = $$0.a(fwn.e().a(8));
-      this.C = $$1.a(fsv.a(wy.c("createWorld.customize.flat.removeLayer"), $$0x -> {
-         if (this.E()) {
-            List<epi> $$1x = this.A.e();
-            int $$2x = this.B.aE_().indexOf(this.B.p());
-            int $$3 = $$1x.size() - $$2x - 1;
-            $$1x.remove($$3);
-            this.B.a($$1x.isEmpty() ? null : this.B.aE_().get(Math.min($$2x, $$1x.size() - 1)));
-            this.A.g();
-            this.B.b();
-            this.m();
+      this.u = this.m.m.d().c().size();
+      this.b = new ftj(this.m.i, 4, this.o - 12, this.n - 4, 12, wy.c("chat.editBox")) {
+         @Override
+         protected xm d() {
+            return super.d().b(fxo.this.w.e());
          }
-      }).a());
-      $$1.a(fsv.a(wy.c("createWorld.customize.presets"), $$0x -> {
-         this.m.a(new fyj(this));
-         this.A.g();
-         this.m();
-      }).a());
-      $$2.a(fsv.a(wx.d, $$0x -> {
-         this.z.accept(this.A);
-         this.aL_();
-         this.A.g();
-      }).a());
-      $$2.a(fsv.a(wx.e, $$0x -> {
-         this.aL_();
-         this.A.g();
-      }).a());
-      this.A.g();
-      this.m();
-      this.y.a(this::c);
-      this.c();
+      };
+      this.b.f(256);
+      this.b.d(false);
+      this.b.a(this.v);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.d(this.b);
+      this.w = new ftd(this.m, this, this.b, this.p, false, false, 1, 10, true, -805306368);
+      this.w.b(false);
+      this.w.d();
    }
 
    @Override
-   protected void c() {
-      if (this.B != null) {
-         this.B.a(this.n, this.y);
-      }
-
-      this.y.a();
-   }
-
-   void m() {
-      if (this.C != null) {
-         this.C.j = this.E();
-      }
-   }
-
-   private boolean E() {
-      return this.B != null && this.B.p() != null;
+   protected void aC_() {
+      this.b(this.b);
    }
 
    @Override
-   public void aL_() {
-      this.m.a(this.a);
+   public void a(fpt $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.w.d();
    }
 
-   class a extends ftr<fxo.a.a> {
-      private static final wy m = wy.c("createWorld.customize.flat.tile").a(o.t);
-      private static final wy n = wy.c("createWorld.customize.flat.height").a(o.t);
+   @Override
+   public void aF_() {
+      this.m.m.d().d();
+   }
 
-      public a() {
-         super(fxo.this.m, fxo.this.n, fxo.this.o - 103, 43, 24, (int)(9.0 * 1.5));
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.w.a(!$$1.equals(this.v));
+      this.w.d();
+   }
 
-         for (int $$0 = 0; $$0 < fxo.this.A.e().size(); $$0++) {
-            this.b(new fxo.a.a());
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.w.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         this.b(this.b.a(), true);
+         this.m.a(null);
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.m.m.d().a(this.m.m.d().j() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.m.m.d().a(-this.m.m.d().j() + 1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = azm.a($$3, -1.0, 1.0);
+      if (this.w.a($$3)) {
+         return true;
+      } else {
+         if (!t()) {
+            $$3 *= 7.0;
          }
+
+         this.m.m.d().a((int)$$3);
+         return true;
       }
+   }
 
-      public void a(@Nullable fxo.a.a $$0) {
-         super.a($$0);
-         fxo.this.m();
-      }
-
-      public void b() {
-         int $$0 = this.aE_().indexOf(this.p());
-         this.s();
-
-         for (int $$1 = 0; $$1 < fxo.this.A.e().size(); $$1++) {
-            this.b(new fxo.a.a());
-         }
-
-         List<fxo.a.a> $$2 = this.aE_();
-         if ($$0 >= 0 && $$0 < $$2.size()) {
-            this.a($$2.get($$0));
-         }
-      }
-
-      @Override
-      protected void a(fsh $$0, int $$1, int $$2) {
-         $$0.b(fxo.this.p, m, $$1, $$2, -1);
-         $$0.b(fxo.this.p, n, $$1 + this.a() - fxo.this.p.a(n) - 8, $$2, -1);
-      }
-
-      class a extends ftr.a<fxo.a.a> {
-         @Override
-         public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            epi $$10 = fxo.this.A.e().get(fxo.this.A.e().size() - $$1 - 1);
-            eao $$11 = $$10.b();
-            czk $$12 = this.a($$11);
-            this.a($$0, $$3, $$2, $$12);
-            int $$13 = $$2 + $$5 / 2 - 9 / 2;
-            $$0.b(fxo.this.p, $$12.y(), $$3 + 18 + 5, $$13, -1);
-            wy $$14;
-            if ($$1 == 0) {
-               $$14 = wy.a("createWorld.customize.flat.layer.top", $$10.a());
-            } else if ($$1 == fxo.this.A.e().size() - 1) {
-               $$14 = wy.a("createWorld.customize.flat.layer.bottom", $$10.a());
-            } else {
-               $$14 = wy.a("createWorld.customize.flat.layer", $$10.a());
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.w.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            ftb $$3 = this.m.m.d();
+            if ($$3.a($$0, $$1)) {
+               return true;
             }
 
-            $$0.b(fxo.this.p, $$14, $$3 + $$4 - fxo.this.p.a($$14) - 8, $$13, -1);
-         }
-
-         private czk a(eao $$0) {
-            czg $$1 = $$0.b().h();
-            if ($$1 == czo.a) {
-               if ($$0.a(dmo.J)) {
-                  $$1 = czo.rp;
-               } else if ($$0.a(dmo.K)) {
-                  $$1 = czo.rq;
-               }
-            }
-
-            return new czk($$1);
-         }
-
-         @Override
-         public wy a() {
-            epi $$0 = fxo.this.A.e().get(fxo.this.A.e().size() - a.this.aE_().indexOf(this) - 1);
-            czk $$1 = this.a($$0.b());
-            return (wy)(!$$1.f() ? wy.a("narrator.select", $$1.y()) : wx.a);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void a(fsh $$0, int $$1, int $$2, czk $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            if (!$$3.f()) {
-               $$0.b($$3, $$1 + 2, $$2 + 2);
+            xv $$4 = this.b($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.v = this.b.a();
+               return true;
             }
          }
 
-         private void a(fsh $$0, int $$1, int $$2) {
-            $$0.a(gqx::H, fxo.c, $$1, $$2, 18, 18);
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected void a_(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.u + $$0;
+      int $$2 = this.m.m.d().c().size();
+      $$1 = azm.a($$1, 0, $$2);
+      if ($$1 != this.u) {
+         if ($$1 == $$2) {
+            this.u = $$2;
+            this.b.a(this.s);
+         } else {
+            if (this.u == $$2) {
+               this.s = this.b.a();
+            }
+
+            this.b.a(this.m.m.d().c().get($$1));
+            this.w.a(false);
+            this.u = $$1;
          }
       }
+   }
+
+   @Override
+   public void a(fsm $$0, int $$1, int $$2, float $$3) {
+      this.m.m.d().a($$0, this.m.m.e(), $$1, $$2, true);
+      $$0.a(2, this.o - 14, this.n - 2, this.o - 2, this.m.n.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 200.0F);
+      this.w.a($$0, $$1, $$2);
+      $$0.c().b();
+      fpn $$4 = this.m.m.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.p, this.p.c($$4.g(), 210), $$1, $$2);
+      } else {
+         xv $$5 = this.b((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.j() != null) {
+            $$0.a(this.p, $$5, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   private void c(String $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   protected void a(fwx $$0) {
+      $$0.a(fww.a, this.n());
+      $$0.a(fww.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(fww.a, wy.a("chat_screen.message", $$1));
+      }
+   }
+
+   @Nullable
+   private xv b(double $$0, double $$1) {
+      return this.m.m.d().b($$0, $$1);
+   }
+
+   public void b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if (!$$0.isEmpty()) {
+         if ($$1) {
+            this.m.m.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.m.t.j.c($$0.substring(1));
+         } else {
+            this.m.t.j.b($$0);
+         }
+      }
+   }
+
+   public String a(String $$0) {
+      return bal.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

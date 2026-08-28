@@ -17,10 +17,10 @@ public class fw implements ArgumentType<String> {
       return new fw();
    }
 
-   public static ffx a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static fgc a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      fgc $$3 = ((ej)$$0.getSource()).l().aJ();
-      ffx $$4 = $$3.b($$2);
+      fgh $$3 = ((ej)$$0.getSource()).l().aJ();
+      fgc $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

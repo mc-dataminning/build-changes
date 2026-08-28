@@ -22,7 +22,7 @@ public interface bxo {
       $$0.b("AngryAt", jz.a, this.b());
    }
 
-   default void a(djh $$0, tz $$1) {
+   default void a(djm $$0, tz $$1) {
       this.a($$1.f("AngerTime"));
       if ($$0 instanceof arq $$2) {
          UUID $$4 = $$1.<UUID>a("AngryAt", jz.a).orElse(null);
@@ -62,22 +62,22 @@ public interface bxo {
    }
 
    default boolean a_(arq $$0) {
-      return $$0.O().c(djd.Q) && this.X_() && this.b() == null;
+      return $$0.O().c(dji.Q) && this.aa_() && this.b() == null;
    }
 
-   default boolean X_() {
+   default boolean aa_() {
       return this.a() > 0;
    }
 
-   default void a_(arq $$0, crj $$1) {
-      if ($$0.O().c(djd.P)) {
+   default void a_(arq $$0, crm $$1) {
+      if ($$0.O().c(dji.P)) {
          if ($$1.cF().equals(this.b())) {
             this.W_();
          }
       }
    }
 
-   default void Y_() {
+   default void ab_() {
       this.W_();
       this.c();
    }

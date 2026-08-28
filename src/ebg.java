@@ -1,24 +1,20 @@
 public enum ebg implements bak {
-   a("single"),
-   b("left"),
-   c("right");
+   a("head"),
+   b("foot");
 
-   private final String d;
+   private final String c;
 
    private ebg(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
-   }
-
-   public ebg a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
+      return this.c;
    }
 }

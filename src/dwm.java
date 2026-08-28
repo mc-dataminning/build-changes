@@ -1,33 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dwm extends dwh implements dwi {
-   public static final MapCodec<dwm> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dwi.a.e.fieldOf("weathering_state").forGetter(dwm::q), t()).apply($$0, dwm::new)
-   );
-   private final dwi.a f;
+public class dwm extends dvs implements duc {
+   public static final MapCodec<dwm> a = b(dwm::new);
+   public static final ebk c = ebj.I;
 
    @Override
-   protected MapCodec<dwm> a() {
-      return e;
+   protected MapCodec<? extends dwm> a() {
+      return a;
    }
 
-   protected dwm(dwi.a $$0, ean.d $$1) {
-      super($$1);
-      this.f = $$0;
+   protected dwm(eas.d $$0) {
+      super($$0);
+      this.l(this.m().b(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public eat a(ddg $$0) {
+      exa $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).b(c, Boolean.valueOf($$1.b(exb.c)));
    }
 
    @Override
-   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, exb.c, exb.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean f(eao $$0) {
-      return dwi.c($$0.b()).isPresent();
+   protected exa b_(eat $$0) {
+      return $$0.c(c) ? exb.c.a(true) : super.b_($$0);
    }
 
-   public dwi.a q() {
-      return this.f;
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(c);
    }
 }

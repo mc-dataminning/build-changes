@@ -1,70 +1,57 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public abstract class ebr<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::b
-      );
-   private final Codec<ebr.a<T>> e = this.d.xmap(this::c, ebr.a::b);
+public final class ebr<T extends Enum<T> & bak> extends ebw<T> {
+   private final List<T> a;
+   private final Map<String, T> b;
+   private final int[] c;
 
-   protected ebr(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   private ebr(String $$0, Class<T> $$1, List<T> $$2) {
+      super($$0, $$1);
+      if ($$2.isEmpty()) {
+         throw new IllegalArgumentException("Trying to make empty EnumProperty '" + $$0 + "'");
+      } else {
+         this.a = List.copyOf($$2);
+         T[] $$3 = $$1.getEnumConstants();
+         this.c = new int[$$3.length];
+
+         for (T $$4 : $$3) {
+            this.c[$$4.ordinal()] = $$2.indexOf($$4);
+         }
+
+         Builder<String, T> $$5 = ImmutableMap.builder();
+
+         for (T $$6 : $$2) {
+            String $$7 = $$6.c();
+            $$5.put($$7, $$6);
+         }
+
+         this.b = $$5.buildOrThrow();
+      }
    }
 
-   public ebr.a<T> c(T $$0) {
-      return new ebr.a<>(this, $$0);
-   }
-
-   public ebr.a<T> a(eaq<?, ?> $$0) {
-      return new ebr.a<>(this, $$0.c(this));
-   }
-
-   public Stream<ebr.a<T>> c() {
-      return this.a().stream().map(this::c);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<ebr.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
+   @Override
+   public List<T> a() {
       return this.a;
    }
 
-   public abstract List<T> a();
-
-   public abstract String b(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   public abstract int a(T var1);
-
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
+   }
+
+   public String a(T $$0) {
+      return $$0.c();
+   }
+
+   public int b(T $$0) {
+      return this.c[$$0.ordinal()];
    }
 
    @Override
@@ -72,41 +59,34 @@ public abstract class ebr<T extends Comparable<T>> {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof ebr<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+         if ($$0 instanceof ebr<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
       }
    }
 
    @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
-   }
-
    public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
+      int $$0 = super.b();
+      return 31 * $$0 + this.a.hashCode();
    }
 
-   public <U, S extends eaq<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
+   public static <T extends Enum<T> & bak> ebr<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public static record a<T extends Comparable<T>>(ebr<T> a, T b) {
-      public a(ebr<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
+   public static <T extends Enum<T> & bak> ebr<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.b(this.b);
-      }
+   @SafeVarargs
+   public static <T extends Enum<T> & bak> ebr<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, List.of($$2));
+   }
+
+   public static <T extends Enum<T> & bak> ebr<T> a(String $$0, Class<T> $$1, List<T> $$2) {
+      return new ebr<>($$0, $$1, $$2);
    }
 }

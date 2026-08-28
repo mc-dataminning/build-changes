@@ -112,12 +112,12 @@ public class iv extends ka {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new iv(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public fex b() {
-      return fex.b(this);
+   public ffc b() {
+      return ffc.b(this);
    }
 
-   public fex c() {
-      return fex.c(this);
+   public ffc c() {
+      return ffc.c(this);
    }
 
    public iv a(ka $$0) {
@@ -203,7 +203,7 @@ public class iv extends ka {
       }
    }
 
-   public iv a(dtg $$0) {
+   public iv a(dtl $$0) {
       switch ($$0) {
          case a:
          default:
@@ -233,8 +233,8 @@ public class iv extends ka {
       return new iv.a(this.u(), this.v(), this.w());
    }
 
-   public fex a(fex $$0) {
-      return new fex(
+   public ffc a(ffc $$0) {
+      return new ffc(
          azm.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
          azm.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
          azm.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
@@ -337,7 +337,7 @@ public class iv extends ka {
       return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
    }
 
-   public static Iterable<iv> a(fes $$0) {
+   public static Iterable<iv> a(fex $$0) {
       iv $$1 = a($$0.a, $$0.b, $$0.c);
       iv $$2 = a($$0.d, $$0.e, $$0.f);
       return c($$1, $$2);
@@ -358,7 +358,7 @@ public class iv extends ka {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<iv> a(era $$0) {
+   public static Stream<iv> a(erf $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -369,7 +369,7 @@ public class iv extends ka {
       );
    }
 
-   public static Stream<iv> b(fes $$0) {
+   public static Stream<iv> b(fex $$0) {
       return a(azm.a($$0.a), azm.a($$0.b), azm.a($$0.c), azm.a($$0.d), azm.a($$0.e), azm.a($$0.f));
    }
 
@@ -501,7 +501,7 @@ public class iv extends ka {
       }
 
       @Override
-      public iv a(dtg $$0) {
+      public iv a(dtl $$0) {
          return super.a($$0).j();
       }
 

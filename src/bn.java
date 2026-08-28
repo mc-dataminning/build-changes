@@ -20,7 +20,7 @@ public record bn(List<dt<buz>> b, Optional<by> c, Optional<by> d, Optional<Boole
       return this.a($$0.y(), $$0.ds(), $$1);
    }
 
-   public boolean a(arq $$0, fex $$1, bux $$2) {
+   public boolean a(arq $$0, ffc $$1, bux $$2) {
       for (dt<buz> $$3 : this.b) {
          if (!$$3.a($$2.l())) {
             return false;

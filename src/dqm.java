@@ -1,132 +1,104 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class dqm extends dly {
+public class dqm extends dmr implements dmu {
    public static final MapCodec<dqm> a = b(dqm::new);
-   public static final ebm<jb> b = ebe.S;
-   public static final ebf c = ebe.i;
-   private final Function<eao, ffr> d;
-   private final Map<jb, ffr> e;
+   private static final ffw c = dmr.b(14.0, 0.0, 16.0);
+   private static final ffw d = dmr.b(14.0, 2.0, 16.0);
+   public static final ebk b = ebj.F;
 
    @Override
    public MapCodec<dqm> a() {
       return a;
    }
 
-   public dqm(ean.d $$0) {
+   public dqm(eas.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, jb.a).b(c, Boolean.valueOf(true)));
-      ffr $$1 = dmm.b(12.0, 11.0, 16.0);
-      this.d = this.b($$1);
-      this.e = ImmutableMap.builderWithExpectedSize(5).putAll(ffo.c(ffo.a($$1, dmm.a(4.0, 8.0, 10.0, 0.0, 4.0)))).put(jb.a, $$1).build();
-   }
-
-   private Function<eao, ffr> b(ffr $$0) {
-      ffr $$1 = ffo.a(dmm.b(16.0, 10.0, 16.0), dmm.b(8.0, 4.0, 10.0));
-      ffr $$2 = ffo.a($$1, $$0, ffb.e);
-      Map<jb, ffr> $$3 = ffo.d(dmm.a(4.0, 4.0, 8.0, 0.0, 8.0), new fex(8.0, 6.0, 8.0).c(0.0625));
-      return this.a($$2x -> ffo.a($$2, ffo.a($$3.get($$2x.c(b)), ffo.b(), ffb.i)), new ebr[]{c});
+      this.l(this.C.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return this.d.apply($$0);
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return $$0.c(b) ? d : c;
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2) {
-      return this.e.get($$0.c(b));
-   }
-
-   @Override
-   public eao a(ddd $$0) {
-      jb $$1 = $$0.k().g();
-      return this.m().b(b, $$1.o() == jb.a.b ? jb.a : $$1).b(c, Boolean.valueOf(true));
-   }
-
-   @Override
-   public dxm a(iv $$0, eao $$1) {
-      return new dyp($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
-      return $$0.C ? null : a($$2, dxo.s, dyp::a);
-   }
-
-   @Override
-   protected void a(eao $$0, djh $$1, iv $$2, eao $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
+   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
+      if ($$3.a(500) == 0) {
+         eat $$4 = $$1.a_($$2.d());
+         if ($$4.a(axc.w) || $$4.a(dmt.aR)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.tg, awo.i, 1.0F, 1.0F, false);
+         }
       }
    }
 
    @Override
-   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dyp $$5) {
-         $$3.a($$5);
-         $$3.a(awx.ad);
-      }
-
-      return bug.a;
-   }
-
-   @Override
-   protected void a(eao $$0, djh $$1, iv $$2, dmm $$3, @Nullable eyd $$4, boolean $$5) {
-      this.a($$1, $$2, $$0);
-   }
-
-   private void a(djh $$0, iv $$1, eao $$2) {
-      boolean $$3 = !$$0.D($$1);
-      if ($$3 != $$2.c(c)) {
-         $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 2);
-      }
-   }
-
-   @Override
-   protected void a(eao $$0, arq $$1, iv $$2, boolean $$3) {
-      buc.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean c_(eao $$0) {
+   protected boolean e_(eat $$0) {
       return true;
    }
 
    @Override
-   protected int a(eao $$0, djh $$1, iv $$2) {
-      return cvc.a($$1.c_($$2));
+   protected boolean a(eat $$0, djp $$1, iv $$2) {
+      return this.b($$1, $$2);
+   }
+
+   private boolean b(diq $$0, iv $$1) {
+      iv $$2 = $$1.a(jb.b);
+      eat $$3 = $$0.a_($$2);
+      return drx.a($$0, jb.b, $$2, $$3) || $$3.a(dmt.ug);
    }
 
    @Override
-   protected eao a(eao $$0, dtg $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      if (!this.b($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$0.b(b, Boolean.valueOf(!$$1.a_($$3.e()).a(this)));
    }
 
    @Override
-   protected eao a(eao $$0, drp $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected void a(eao $$0, djh $$1, iv $$2, bwi $$3, bxb $$4) {
-      dxm $$5 = $$1.c_($$2);
-      if ($$5 instanceof dyp) {
-         dyp.a($$1, $$2, $$0, $$3, (dyp)$$5);
+   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
+      if (!this.b($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   protected boolean a(eao $$0, exk $$1) {
-      return false;
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean a(djp $$0, iv $$1, eat $$2) {
+      return this.o($$0.a_(this.a($$0, $$1).e()));
+   }
+
+   private boolean o(eat $$0) {
+      return $$0.l();
+   }
+
+   public iv a(diq $$0, iv $$1) {
+      iv.a $$2 = $$1.k();
+
+      eat $$3;
+      do {
+         $$2.c(jb.a);
+         $$3 = $$0.a_($$2);
+      } while ($$3.a(this));
+
+      return $$2.a(jb.b).j();
+   }
+
+   @Override
+   public boolean a(djm $$0, azv $$1, iv $$2, eat $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iv $$2, eat $$3) {
+      iv $$4 = this.a($$0, $$2).e();
+      if (this.o($$0.a_($$4))) {
+         $$0.b($$4, $$3.b(b, Boolean.valueOf(true)));
+      }
    }
 }

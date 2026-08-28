@@ -5,7 +5,7 @@ public class cea extends cef {
    private int a;
    private final bxr b;
    @Nullable
-   private crj c;
+   private crm c;
    private cdo d;
 
    public cea(bxr $$0) {
@@ -14,12 +14,12 @@ public class cea extends cef {
 
    @Override
    public boolean b() {
-      List<ctu> $$0 = this.b.dU().a(ctu.class, this.b.cQ().g(5.0));
+      List<ctx> $$0 = this.b.dU().a(ctx.class, this.b.cQ().g(5.0));
       boolean $$1 = false;
 
-      for (ctu $$2 : $$0) {
+      for (ctx $$2 : $$0) {
          bwi $$3 = $$2.cV();
-         if ($$3 instanceof crj $$4 && (azm.e($$4.bg) > 0.0F || azm.e($$4.bi) > 0.0F)) {
+         if ($$3 instanceof crm $$4 && (azm.e($$4.bg) > 0.0F || azm.e($$4.bi) > 0.0F)) {
             $$1 = true;
             break;
          }
@@ -40,8 +40,8 @@ public class cea extends cef {
 
    @Override
    public void d() {
-      for (ctu $$1 : this.b.dU().a(ctu.class, this.b.cQ().g(5.0))) {
-         if ($$1.cV() instanceof crj $$2) {
+      for (ctx $$1 : this.b.dU().a(ctx.class, this.b.cQ().g(5.0))) {
+         if ($$1.cV() instanceof crm $$2) {
             this.c = $$2;
             break;
          }
@@ -60,7 +60,7 @@ public class cea extends cef {
    public void a() {
       boolean $$0 = azm.e(this.c.bg) > 0.0F || azm.e(this.c.bi) > 0.0F;
       float $$1 = this.d == cdo.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new fex((double)this.b.bg, (double)this.b.bh, (double)this.b.bi));
+      this.b.a($$1, new ffc((double)this.b.bg, (double)this.b.bh, (double)this.b.bi));
       this.b.a(bxn.a, this.b.dx());
       if (--this.a <= 0) {
          this.a = this.a(10);

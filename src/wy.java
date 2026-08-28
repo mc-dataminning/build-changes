@@ -204,7 +204,7 @@ public interface wy extends Message, xd {
       return b($$0.toString());
    }
 
-   static wy a(dio $$0) {
+   static wy a(dir $$0) {
       return b($$0.toString());
    }
 

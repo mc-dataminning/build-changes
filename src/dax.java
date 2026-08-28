@@ -1,18 +1,41 @@
-public class dax extends cxo {
-   public dax(czg.a $$0) {
+public class dax extends czj {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
+
+   public dax(czj.a $$0) {
       super($$0);
    }
 
    @Override
-   public czk m() {
-      czk $$0 = super.m();
-      $$0.b(kk.R, new dbg(dbh.C));
+   public int a(czn $$0, bxj $$1) {
+      return 1200;
+   }
+
+   @Override
+   public czp b(czn $$0) {
+      return czp.h;
+   }
+
+   @Override
+   public bug a(djm $$0, crm $$1, buf $$2) {
+      $$1.a(awn.Ab, 1.0F, 1.0F);
+      $$1.b(awx.c.b(this));
+      return czq.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public czn a(czn $$0, djm $$1, bxj $$2) {
+      this.b($$2);
       return $$0;
    }
 
    @Override
-   public wy a(czk $$0) {
-      dbg $$1 = $$0.a(kk.R);
-      return $$1 != null ? $$1.a(this.n + ".effect.") : super.a($$0);
+   public boolean a(czn $$0, djm $$1, bxj $$2, int $$3) {
+      this.b($$2);
+      return true;
+   }
+
+   private void b(bxj $$0) {
+      $$0.a(awn.Ac, 1.0F, 1.0F);
    }
 }

@@ -1,37 +1,17 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
 
-public record hkl(alg a, @Nullable String b, @Nullable alg c, @Nullable alg d, hkl.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+public class hkl extends avi<int[]> {
+   private static final alg a = alg.b("textures/colormap/grass.png");
 
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
+   protected int[] a(avd $$0, bqq $$1) {
+      try {
+         return hkn.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
       }
+   }
 
-      public static hkl.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   protected void a(int[] $$0, avd $$1, bqq $$2) {
+      djk.a($$0);
    }
 }

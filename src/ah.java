@@ -1,7 +1,7 @@
 import java.util.Date;
 
 public interface ah {
-   eyu d();
+   eyz d();
 
    String b();
 

@@ -1,52 +1,79 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class ell extends eli {
-   public ell(Codec<emw> $$0) {
+public class ell extends ejy<emz> {
+   public ell(Codec<emz> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<iv> a(dkg $$0, emw $$1, azv $$2, iv $$3, Predicate<eao> $$4, int $$5, int $$6) {
-      Set<iv> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<iv> $$8 = new HashSet<>();
-      iv.a $$9 = new iv.a();
+   public boolean a(eka<emz> $$0) {
+      dkl $$1 = $$0.b();
+      iv $$2 = $$0.e();
+      if (a($$1, $$2)) {
+         return false;
+      } else {
+         azv $$3 = $$0.d();
+         emz $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         iv.a $$8 = new iv.a();
 
-      for (iv $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
-         }
-      }
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(azm.a($$3, -$$5, $$5), azm.a($$3, -$$6, $$6), azm.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (iv)$$8)) {
+               int $$10 = azm.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
+               }
 
-      for (iv $$11 : $$8) {
-         $$0.a($$11, dmo.J.m(), 2);
-      }
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
 
-      return $$8;
-   }
-
-   private static boolean a(dkg $$0, Set<iv> $$1, iv $$2, iv.a $$3) {
-      return a($$0, $$2, $$3, jb.c) || a($$0, $$2, $$3, jb.f) || a($$0, $$2, $$3, jb.d) || a($$0, $$2, $$3, jb.e) || a($$0, $$2, $$3, jb.a);
-   }
-
-   private static boolean a(dkg $$0, iv $$1, iv.a $$2, jb $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).c($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(dkg $$0, emw $$1, ecm $$2, azv $$3, iv $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
-         eao $$5 = $$0.a_($$4);
-         if ($$5.b(ebe.I) && !$$5.c(ebe.I)) {
-            $$0.a($$4, $$5.b(ebe.I, Boolean.valueOf(true)), 2);
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
+            }
          }
 
          return true;
+      }
+   }
+
+   private static boolean a(djn $$0, iv.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.t($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).l());
+
+      $$1.e(0, 1, 0);
+      return true;
+   }
+
+   public static void a(djn $$0, azv $$1, iv.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.v($$2)) {
+            if ($$6 == $$3 || !$$0.v($$2.d())) {
+               $$0.a($$2, dmt.ph.m().b(dqk.e, Integer.valueOf(azm.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dmt.pi.m(), 2);
+         }
+
+         $$2.c(jb.b);
+      }
+   }
+
+   private static boolean a(djn $$0, iv $$1) {
+      if (!$$0.v($$1)) {
+         return true;
       } else {
-         return false;
+         eat $$2 = $$0.a_($$1.e());
+         return !$$2.a(dmt.em) && !$$2.a(dmt.oT) && !$$2.a(dmt.oV);
       }
    }
 }

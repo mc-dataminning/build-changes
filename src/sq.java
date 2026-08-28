@@ -28,13 +28,13 @@ public class sq {
    private final tg l;
    private final Stopwatch m = Stopwatch.createUnstarted();
    private boolean n;
-   private final dtg o;
+   private final dtl o;
    @Nullable
    private so p;
    @Nullable
-   private dzh q;
+   private dzm q;
 
-   public sq(jf.c<sr> $$0, dtg $$1, arq $$2, tg $$3) {
+   public sq(jf.c<sr> $$0, dtl $$1, arq $$2, tg $$3) {
       this.a = $$0;
       this.c = $$2;
       this.l = $$3;
@@ -53,14 +53,14 @@ public class sq {
 
    public void a() {
       if (!this.h) {
-         dzh $$0 = this.f();
+         dzm $$0 = this.f();
          if (!$$0.A()) {
             this.a(wy.a("test.error.structure.failure", $$0.k().getString()));
          }
 
          this.h = true;
          $$0.C();
-         era $$1 = $$0.d();
+         erf $$1 = $$0.d();
          this.c.n().a($$1);
          this.c.a($$1);
          this.d.forEach($$0x -> $$0x.a(this));
@@ -166,18 +166,18 @@ public class sq {
       return this.q.B();
    }
 
-   public fes e() {
-      dzh $$0 = this.f();
+   public fex e() {
+      dzm $$0 = this.f();
       return $$0.f();
    }
 
-   public dzh f() {
+   public dzm f() {
       if (this.q == null) {
          if (this.b == null) {
             throw new IllegalStateException("This GameTestInfo has no position");
          }
 
-         if (this.c.c_(this.b) instanceof dzh $$0) {
+         if (this.c.c_(this.b) instanceof dzm $$0) {
             this.q = $$0;
          }
 
@@ -225,8 +225,8 @@ public class sq {
    public void m() {
       if (this.p == null) {
          this.G();
-         fes $$0 = this.e();
-         List<bwi> $$1 = this.g().a(bwi.class, $$0.g(1.0), $$0x -> !($$0x instanceof crj));
+         fex $$0 = this.e();
+         List<bwi> $$1 = this.g().a(bwi.class, $$0.g(1.0), $$0x -> !($$0x instanceof crm));
          $$1.forEach($$0x -> $$0x.a(bwi.d.b));
       }
    }
@@ -259,12 +259,12 @@ public class sq {
       return this;
    }
 
-   private dzh a(iv $$0, dtg $$1, arq $$2) {
-      $$2.b($$0, dmo.pJ.m());
-      dzh $$3 = Objects.requireNonNull((dzh)$$2.c_($$0));
+   private dzm a(iv $$0, dtl $$1, arq $$2) {
+      $$2.b($$0, dmt.pJ.m());
+      dzm $$3 = Objects.requireNonNull((dzm)$$2.c_($$0));
       alf<sr> $$4 = this.w().h();
-      ka $$5 = dzh.a($$2, $$4).orElse(new ka(1, 1, 1));
-      $$3.a(new dzh.a(Optional.of($$4), $$5, $$1, false, dzh.b.a, Optional.empty()));
+      ka $$5 = dzm.a($$2, $$4).orElse(new ka(1, 1, 1));
+      $$3.a(new dzm.a(Optional.of($$4), $$5, $$1, false, dzm.b.a, Optional.empty()));
       return $$3;
    }
 
@@ -290,7 +290,7 @@ public class sq {
       return this.a.a().e();
    }
 
-   public dtg u() {
+   public dtl u() {
       return this.a.a().n().f().a(this.o);
    }
 

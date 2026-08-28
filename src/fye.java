@@ -1,82 +1,82 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fye {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cwl<?>, fye.a<?, ?>> b = Maps.newHashMap();
-
-   public static <T extends cvc> void a(cwl<T> $$0, fpo $$1, int $$2, wy $$3) {
-      fye.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", mg.p.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
-      }
-   }
-
+public class fye extends fys {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
    @Nullable
-   private static <T extends cvc> fye.a<T, ?> a(cwl<T> $$0) {
-      return (fye.a<T, ?>)b.get($$0);
+   private final wy d;
+   private final wy s;
+   private final Runnable u;
+   @Nullable
+   private ftt v;
+   private fta w;
+   private int x;
+
+   public static fye a(wy $$0, wy $$1, Runnable $$2) {
+      return new fye($$0, null, $$1, $$2, 0);
    }
 
-   private static <M extends cvc, U extends fyn & gai<M>> void a(cwl<? extends M> $$0, fye.a<M, U> $$1) {
-      fye.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + mg.p.b($$0));
+   public static fye a(wy $$0, wy $$1, wy $$2, Runnable $$3) {
+      return new fye($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected fye(wy $$0, @Nullable wy $$1, wy $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.d = $$1;
+      this.s = $$2;
+      this.u = $$3;
+      this.x = $$4;
+   }
+
+   @Override
+   protected void aO_() {
+      super.aO_();
+      if (this.d != null) {
+         this.v = ftt.a(this.p, this.d, 360);
+      }
+
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.v != null ? this.v.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.o - 40);
+      this.w = this.c(fta.a(this.s, $$0x -> this.aL_()).a((this.n - 150) / 2, $$4, 150, 20).a());
+   }
+
+   @Override
+   public void e() {
+      if (this.x > 0) {
+         this.x--;
+      }
+
+      this.w.j = this.x == 0;
+   }
+
+   @Override
+   public void a(fsm $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
+      if (this.v == null) {
+         String $$4 = fyh.a(ag.c());
+         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+      } else {
+         this.v.a($$0, this.n / 2, 120);
       }
    }
 
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cwl<?> $$1 : mg.p) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", mg.p.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
+   @Override
+   public boolean aD_() {
+      return this.v != null && this.w.j;
    }
 
-   static {
-      a(cwl.a, fzo::new);
-      a(cwl.b, fzo::new);
-      a(cwl.c, fzo::new);
-      a(cwl.d, fzo::new);
-      a(cwl.e, fzo::new);
-      a(cwl.f, fzo::new);
-      a(cwl.g, fzu::new);
-      a(cwl.h, fzp::new);
-      a(cwl.i, fzg::new);
-      a(cwl.j, fzh::new);
-      a(cwl.k, fzi::new);
-      a(cwl.l, fzl::new);
-      a(cwl.m, fzq::new);
-      a(cwl.n, fzx::new);
-      a(cwl.o, fzy::new);
-      a(cwl.p, fzz::new);
-      a(cwl.q, gab::new);
-      a(cwl.r, gag::new);
-      a(cwl.s, gah::new);
-      a(cwl.t, gaj::new);
-      a(cwl.u, gam::new);
-      a(cwl.v, gao::new);
-      a(cwl.w, gap::new);
-      a(cwl.x, fzm::new);
-      a(cwl.y, gaq::new);
+   @Override
+   public void aL_() {
+      this.u.run();
    }
 
-   interface a<T extends cvc, U extends fyn & gai<T>> {
-      default void a(wy $$0, cwl<T> $$1, fpo $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.gi()), $$2.t.gi(), $$0);
-         $$2.t.bR = $$4.F();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cri var2, wy var3);
+   @Override
+   public wy i() {
+      return wx.a(this.l, this.d != null ? this.d : wx.a);
    }
 }

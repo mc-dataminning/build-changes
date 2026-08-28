@@ -1,142 +1,132 @@
-import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class gdr extends fyn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wy b = wy.c("selectWorld.enterName").a(o.h);
-   private static final wy c = wy.c("selectWorld.edit.resetIcon");
-   private static final wy d = wy.c("selectWorld.edit.openFolder");
-   private static final wy s = wy.c("selectWorld.edit.backup");
-   private static final wy u = wy.c("selectWorld.edit.backupFolder");
-   private static final wy v = wy.c("selectWorld.edit.optimize");
-   private static final wy w = wy.c("optimizeWorld.confirm.title");
-   private static final wy x = wy.c("optimizeWorld.confirm.description");
-   private static final wy y = wy.c("optimizeWorld.confirm.proceed");
-   private static final wy z = wy.c("selectWorld.edit.save");
-   private static final int A = 200;
-   private static final int B = 4;
-   private static final int C = 98;
-   private final fwn D = fwn.d().a(5);
-   private final BooleanConsumer E;
-   private final ezc.c F;
-   private final fte G;
+public class gdr extends fys {
+   private static final wy a = wy.c("selectWorld.experimental.title");
+   private static final wy b = wy.c("selectWorld.experimental.message");
+   private static final wy c = wy.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int s = 100;
+   private final BooleanConsumer u;
+   final Collection<auk> v;
+   private final fwn w = new fwn().a(10).b(20);
 
-   public static gdr a(fpo $$0, ezc.c $$1, BooleanConsumer $$2) throws IOException {
-      ezd $$3 = $$1.a($$1.h());
-      return new gdr($$0, $$1, $$3.b(), $$2);
-   }
-
-   private gdr(fpo $$0, ezc.c $$1, String $$2, BooleanConsumer $$3) {
-      super(wy.c("selectWorld.edit.title"));
-      this.E = $$3;
-      this.F = $$1;
-      fsf $$4 = $$0.h;
-      this.D.a(new fwo(200, 20));
-      this.D.a(new fuc(b, $$4));
-      this.G = this.D.a(new fte($$4, 200, 20, b));
-      this.G.a($$2);
-      fwn $$5 = fwn.e().a(4);
-      fsv $$6 = $$5.a(fsv.a(z, $$0x -> this.a(this.G.a())).a(98).a());
-      $$5.a(fsv.a(wx.e, $$0x -> this.aL_()).a(98).a());
-      this.G.b($$1x -> $$6.j = !bal.h($$1x));
-      this.D.a(fsv.a(c, $$1x -> {
-         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$1x.j = false;
-      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.D.a(fsv.a(d, $$1x -> ag.n().a($$1.a(eza.l))).a(200).a());
-      this.D.a(fsv.a(s, $$1x -> {
-         boolean $$2x = a($$1);
-         this.E.accept(!$$2x);
-      }).a(200).a());
-      this.D.a(fsv.a(u, $$1x -> {
-         ezc $$2x = $$0.m();
-         Path $$3x = $$2x.d();
-
-         try {
-            w.c($$3x);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
-         }
-
-         ag.n().a($$3x);
-      }).a(200).a());
-      this.D.a(fsv.a(v, $$2x -> $$0.a(new fxh(() -> $$0.a(this), ($$2xx, $$3x) -> {
-            if ($$2xx) {
-               a($$1);
-            }
-
-            $$0.a(gdu.a($$0, this.E, $$0.au(), $$1, $$3x));
-         }, w, x, y, true))).a(200).a());
-      this.D.a(new fwo(200, 20));
-      this.D.a($$5);
-      this.D.a($$1x -> {
-         fst var10000 = this.c($$1x);
-      });
+   public gdr(Collection<auk> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.v = $$0;
+      this.u = $$1;
    }
 
    @Override
-   protected void aC_() {
-      this.b(this.G);
+   public wy i() {
+      return wx.a(super.i(), b);
    }
 
    @Override
    protected void aO_() {
+      super.aO_();
+      fwn.b $$0 = this.w.d(2);
+      fwr $$1 = $$0.b().b();
+      $$0.a(new fuh(this.l, this.p), 2, $$1);
+      ftu $$2 = $$0.a(new ftu(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(fta.a(c, $$0x -> this.m.a(new gdr.a())).a(100).a(), 2, $$1);
+      $$0.a(fta.a(wx.i, $$0x -> this.u.accept(true)).a());
+      $$0.a(fta.a(wx.k, $$0x -> this.u.accept(false)).a());
+      this.w.a($$1x -> {
+         fsy var10000 = this.c($$1x);
+      });
+      this.w.a();
       this.c();
    }
 
    @Override
    protected void c() {
-      this.D.a();
-      fwh.a(this.D, this.J());
+      fwm.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
    }
 
    @Override
    public void aL_() {
-      this.E.accept(false);
+      this.u.accept(false);
    }
 
-   private void a(String $$0) {
-      try {
-         this.F.a($$0);
-      } catch (uk | uq | IOException var3) {
-         a.error("Failed to access world '{}'", this.F.f(), var3);
-         fve.a(this.m, this.F.f());
+   class a extends fys {
+      private static final wy b = wy.c("selectWorld.experimental.details.title");
+      final fwo c = new fwo(this);
+      @Nullable
+      private gdr.a.a d;
+
+      a() {
+         super(b);
       }
 
-      this.E.accept(true);
-   }
-
-   public static boolean a(ezc.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
-
-      try {
-         $$1 = $$0.l();
-      } catch (IOException var6) {
-         $$2 = var6;
+      @Override
+      protected void aO_() {
+         this.c.a(b, this.p);
+         this.d = this.c.c(new gdr.a.a(this.m, gdr.this.v));
+         this.c.b(fta.a(wx.k, $$0 -> this.aL_()).a());
+         this.c.a($$1 -> {
+            fsy var10000 = this.c($$1);
+         });
+         this.c();
       }
 
-      if ($$2 != null) {
-         wy $$4 = wy.c("selectWorld.edit.backupFailed");
-         wy $$5 = wy.b($$2.getMessage());
-         fpo.Q().aA().a(new fve(fve.a.b, $$4, $$5));
-         return false;
-      } else {
-         wy $$6 = wy.a("selectWorld.edit.backupCreated", $$0.f());
-         wy $$7 = wy.a("selectWorld.edit.backupSize", azm.c((double)$$1 / 1048576.0));
-         fpo.Q().aA().a(new fve(fve.a.b, $$6, $$7));
-         return true;
-      }
-   }
+      @Override
+      protected void c() {
+         if (this.d != null) {
+            this.d.a(this.n, this.c);
+         }
 
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 15, 16777215);
+         this.c.a();
+      }
+
+      @Override
+      public void aL_() {
+         this.m.a(gdr.this);
+      }
+
+      class a extends ftw<gdr.a.b> {
+         public a(final fpt $$0, final Collection<auk> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
+
+            for (auk $$2 : $$1) {
+               String $$3 = cuy.a(cuy.g, $$2.e());
+               if (!$$3.isEmpty()) {
+                  wy $$4 = xb.a($$2.b().f(), xv.a.a(true));
+                  wy $$5 = wy.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, ftt.a(a.this.p, $$5, this.a())));
+               }
+            }
+         }
+
+         @Override
+         public int a() {
+            return this.g * 3 / 4;
+         }
+      }
+
+      class b extends ftw.a<gdr.a.b> {
+         private final wy b;
+         private final wy c;
+         private final ftt d;
+
+         b(final wy $$0, final wy $$1, final ftt $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
+
+         @Override
+         public wy a() {
+            return wy.a("narrator.select", wx.a(this.b, this.c));
+         }
+      }
    }
 }

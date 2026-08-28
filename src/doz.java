@@ -1,41 +1,87 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class doz extends dvy {
-   public static final MapCodec<doz> a = b(doz::new);
-   private static final ffr b = dmm.b(12.0, 0.0, 13.0);
-   private static final int c = 150;
-   private static final int d = 5;
+public class doz {
+   public static <S extends dxr> doz.c<S> a(
+      dxt<S> $$0, Function<eat, doz.a> $$1, Function<eat, jb> $$2, ebw<jb> $$3, eat $$4, djn $$5, iv $$6, BiPredicate<djn, iv> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return doz.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return doz.b::b;
+      } else {
+         doz.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == doz.a.a;
+         boolean $$11 = $$9 == doz.a.b;
+         if ($$10) {
+            return new doz.c.b<>($$8);
+         } else {
+            iv $$12 = $$6.a($$2.apply($$4));
+            eat $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               doz.a $$14 = $$1.apply($$13);
+               if ($$14 != doz.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return doz.b::b;
+                  }
 
-   @Override
-   public MapCodec<? extends doz> a() {
-      return a;
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new doz.c.a<>($$16, $$17);
+                  }
+               }
+            }
+
+            return new doz.c.b<>($$8);
+         }
+      }
    }
 
-   protected doz(ean.d $$0) {
-      super($$0);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return b;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Override
-   protected boolean b(eao $$0, din $$1, iv $$2) {
-      return $$0.a(axc.cr);
-   }
+   public interface c<S> {
+      <T> T apply(doz.b<? super S, T> var1);
 
-   @Override
-   public void a(eao $$0, djh $$1, iv $$2, azv $$3) {
-      if ($$3.a(150) == 0) {
-         eao $$4 = $$1.a_($$2.e());
-         if (($$4.a(dmo.N) || $$4.a(axc.ai)) && $$3.a(5) != 0) {
-            return;
+      public static final class a<S> implements doz.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
          }
 
-         eao $$5 = $$1.a_($$2.c(2));
-         if ($$4.a(axc.cH) && $$5.a(axc.cH)) {
-            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.gS, awo.i, 1.0F, 1.0F, false);
+         @Override
+         public <T> T apply(doz.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
+
+      public static final class b<S> implements doz.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(doz.b<? super S, T> $$0) {
+            return $$0.a(this.a);
          }
       }
    }

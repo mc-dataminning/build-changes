@@ -42,9 +42,9 @@ public class ann {
    }
 
    private static int a(ej $$0, arb $$1) throws CommandSyntaxException {
-      dio $$2 = $$1.a();
+      dir $$2 = $$1.a();
       arq $$3 = $$0.e();
-      alf<djh> $$4 = $$3.aj();
+      alf<djm> $$4 = $$3.aj();
       boolean $$5 = $$3.y().contains($$2.a());
       if ($$5) {
          $$0.a(() -> wy.a("commands.forceload.query.success", wy.a($$2), wy.a($$4.a())), false);
@@ -56,11 +56,11 @@ public class ann {
 
    private static int a(ej $$0) {
       arq $$1 = $$0.e();
-      alf<djh> $$2 = $$1.aj();
+      alf<djm> $$2 = $$1.aj();
       LongSet $$3 = $$1.y();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dio::new).map(dio::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dir::new).map(dir::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> wy.a("commands.forceload.list.single", wy.a($$2.a()), $$5), false);
          } else {
@@ -75,9 +75,9 @@ public class ann {
 
    private static int b(ej $$0) {
       arq $$1 = $$0.e();
-      alf<djh> $$2 = $$1.aj();
+      alf<djm> $$2 = $$1.aj();
       LongSet $$3 = $$1.y();
-      $$3.forEach($$1x -> $$1.a(dio.a($$1x), dio.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(dir.a($$1x), dir.b($$1x), false));
       $$0.a(() -> wy.a("commands.forceload.removed.all", wy.a($$2.a())), true);
       return 0;
    }
@@ -97,8 +97,8 @@ public class ann {
             throw b.create(256, $$12);
          } else {
             arq $$13 = $$0.e();
-            alf<djh> $$14 = $$13.aj();
-            dio $$15 = null;
+            alf<djm> $$14 = $$13.aj();
+            dir $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,13 +107,13 @@ public class ann {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new dio($$17, $$18);
+                        $$15 = new dir($$17, $$18);
                      }
                   }
                }
             }
 
-            dio $$20 = $$15;
+            dir $$20 = $$15;
             int $$21 = $$16;
             if ($$21 == 0) {
                throw ($$3 ? d : e).create();
@@ -121,8 +121,8 @@ public class ann {
                if ($$21 == 1) {
                   $$0.a(() -> wy.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", wy.a($$20), wy.a($$14.a())), true);
                } else {
-                  dio $$22 = new dio($$8, $$9);
-                  dio $$23 = new dio($$10, $$11);
+                  dir $$22 = new dir($$8, $$9);
+                  dir $$23 = new dir($$10, $$11);
                   $$0.a(() -> wy.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, wy.a($$14.a()), wy.a($$22), wy.a($$23)), true);
                }
 

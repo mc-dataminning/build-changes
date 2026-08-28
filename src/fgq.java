@@ -1,5 +1,3 @@
-import java.util.List;
-
-public interface fgq<T> {
-   List<fgo<T>> a(long var1);
+public interface fgq<T> extends fgw<T> {
+   boolean b(iv var1, T var2);
 }

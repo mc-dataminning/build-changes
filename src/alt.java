@@ -13,7 +13,7 @@ public class alt extends avh<ai> {
    private final jh.a d;
 
    public alt(jh.a $$0) {
-      super($$0, ai.a, mh.bt);
+      super($$0, ai.a, mh.bu);
       this.d = $$0;
    }
 

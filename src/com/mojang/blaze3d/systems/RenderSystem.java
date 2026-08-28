@@ -20,7 +20,7 @@ import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-@fgx
+@fhc
 public class RenderSystem {
    static final Logger LOGGER = LogUtils.getLogger();
    private static final int MINIMUM_ATLAS_TEXTURE_SIZE = 1024;
@@ -47,14 +47,14 @@ public class RenderSystem {
    });
    private static Matrix4f projectionMatrix = new Matrix4f();
    private static Matrix4f savedProjectionMatrix = new Matrix4f();
-   private static fhb projectionType = fhb.a;
-   private static fhb savedProjectionType = fhb.a;
+   private static fhg projectionType = fhg.a;
+   private static fhg savedProjectionType = fhg.a;
    private static final Matrix4fStack modelViewStack = new Matrix4fStack(16);
    private static Matrix4f textureMatrix = new Matrix4f();
-   private static final fjr[] shaderTextures = new fjr[12];
+   private static final fjw[] shaderTextures = new fjw[12];
    private static final float[] shaderColor = new float[]{1.0F, 1.0F, 1.0F, 1.0F};
    private static float shaderGlintAlpha = 1.0F;
-   private static gqa shaderFog = gqa.a;
+   private static gqf shaderFog = gqf.a;
    private static final Vector3f[] shaderLightDirections = new Vector3f[2];
    private static float shaderGameTime;
    private static final Vector3f modelOffset = new Vector3f();
@@ -63,7 +63,8 @@ public class RenderSystem {
    private static final AtomicLong pollEventsWaitStart = new AtomicLong();
    private static final AtomicBoolean pollingEvents = new AtomicBoolean(false);
    @Nullable
-   private static fkb QUAD_VERTICES;
+   private static fkg QUAD_VERTICES;
+   private static final axy<RenderSystem.b> PENDING_FENCES = new axy<>();
 
    public static void initRenderThread() {
       if (renderThread != null) {
@@ -98,9 +99,9 @@ public class RenderSystem {
       return pollingEvents.get() && ag.c() - pollEventsWaitStart.get() > 200L;
    }
 
-   public static void flipFrame(long $$0, @Nullable fhd $$1) {
+   public static void flipFrame(long $$0, @Nullable fhi $$1) {
       pollEvents();
-      fka.b().c();
+      fkf.b().c();
       GLFW.glfwSwapBuffers($$0);
       if ($$1 != null) {
          $$1.b();
@@ -236,12 +237,12 @@ public class RenderSystem {
       GlStateManager._clear($$0);
    }
 
-   public static void setShaderFog(gqa $$0) {
+   public static void setShaderFog(gqf $$0) {
       assertOnRenderThread();
       shaderFog = $$0;
    }
 
-   public static gqa getShaderFog() {
+   public static gqf getShaderFog() {
       assertOnRenderThread();
       return shaderFog;
    }
@@ -266,7 +267,7 @@ public class RenderSystem {
       shaderLightDirections[1] = $$1;
    }
 
-   public static void setupShaderLights(gpv $$0) {
+   public static void setupShaderLights(gqa $$0) {
       assertOnRenderThread();
       if ($$0.f != null) {
          $$0.f.a(shaderLightDirections[0]);
@@ -303,15 +304,6 @@ public class RenderSystem {
    public static float getShaderLineWidth() {
       assertOnRenderThread();
       return shaderLineWidth;
-   }
-
-   public static void pixelStore(int $$0, int $$1) {
-      GlStateManager._pixelStore($$0, $$1);
-   }
-
-   public static void readPixels(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, ByteBuffer $$6) {
-      assertOnRenderThread();
-      GlStateManager._readPixels($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    public static void getString(int $$0, Consumer<String> $$1) {
@@ -422,14 +414,14 @@ public class RenderSystem {
       GlStateManager._glUniformMatrix4($$0, $$1);
    }
 
-   public static void setupOverlayColor(@Nullable fjr $$0) {
+   public static void setupOverlayColor(@Nullable fjw $$0) {
       assertOnRenderThread();
       setShaderTexture(1, $$0);
    }
 
    public static void teardownOverlayColor() {
       assertOnRenderThread();
-      setShaderTexture(1, (fjr)null);
+      setShaderTexture(1, (fjw)null);
    }
 
    public static void setupLevelDiffuseLighting(Vector3f $$0, Vector3f $$1) {
@@ -456,13 +448,13 @@ public class RenderSystem {
    public static void setShaderTexture(int $$0, alg $$1) {
       assertOnRenderThread();
       if ($$0 >= 0 && $$0 < shaderTextures.length) {
-         hjm $$2 = fpo.Q().aa();
-         hiv $$3 = $$2.b($$1);
-         shaderTextures[$$0] = $$3.d();
+         hjs $$2 = fpt.Q().aa();
+         hjb $$3 = $$2.b($$1);
+         shaderTextures[$$0] = $$3.b();
       }
    }
 
-   public static void setShaderTexture(int $$0, @Nullable fjr $$1) {
+   public static void setShaderTexture(int $$0, @Nullable fjw $$1) {
       assertOnRenderThread();
       if ($$0 >= 0 && $$0 < shaderTextures.length) {
          shaderTextures[$$0] = $$1;
@@ -470,12 +462,12 @@ public class RenderSystem {
    }
 
    @Nullable
-   public static fjr getShaderTexture(int $$0) {
+   public static fjw getShaderTexture(int $$0) {
       assertOnRenderThread();
       return $$0 >= 0 && $$0 < shaderTextures.length ? shaderTextures[$$0] : null;
    }
 
-   public static void setProjectionMatrix(Matrix4f $$0, fhb $$1) {
+   public static void setProjectionMatrix(Matrix4f $$0, fhg $$1) {
       assertOnRenderThread();
       projectionMatrix = new Matrix4f($$0);
       projectionType = $$1;
@@ -523,7 +515,7 @@ public class RenderSystem {
       return textureMatrix;
    }
 
-   public static RenderSystem.a getSequentialBuffer(fkd.c $$0) {
+   public static RenderSystem.a getSequentialBuffer(fki.c $$0) {
       assertOnRenderThread();
 
       return switch ($$0) {
@@ -543,23 +535,23 @@ public class RenderSystem {
       return shaderGameTime;
    }
 
-   public static fhb getProjectionType() {
+   public static fhg getProjectionType() {
       assertOnRenderThread();
       return projectionType;
    }
 
-   public static fkb getQuadVertices() {
+   public static fkg getQuadVertices() {
       if (QUAD_VERTICES == null) {
-         try (fjv $$0 = new fjv(fjw.e.b() * 4)) {
-            fju $$1 = new fju($$0, fkd.c.h, fjw.e);
+         try (fka $$0 = new fka(fkb.e.b() * 4)) {
+            fjz $$1 = new fjz($$0, fki.c.h, fkb.e);
             $$1.a(0.0F, 0.0F, 0.0F);
             $$1.a(1.0F, 0.0F, 0.0F);
             $$1.a(1.0F, 1.0F, 0.0F);
             $$1.a(0.0F, 1.0F, 0.0F);
-            QUAD_VERTICES = new fkb(fhm.b);
+            QUAD_VERTICES = new fkg(fhr.b);
             QUAD_VERTICES.a();
             QUAD_VERTICES.a($$1.b());
-            fkb.b();
+            fkg.b();
          }
       }
 
@@ -581,13 +573,33 @@ public class RenderSystem {
       return modelOffset;
    }
 
+   public static void queueFencedTask(Runnable $$0) {
+      PENDING_FENCES.addLast(new RenderSystem.b($$0, new fht()));
+   }
+
+   public static void executePendingTasks() {
+      for (RenderSystem.b $$0 = PENDING_FENCES.peekFirst(); $$0 != null; $$0 = PENDING_FENCES.peekFirst()) {
+         if (!$$0.b.a(0L)) {
+            return;
+         }
+
+         try {
+            $$0.a.run();
+         } finally {
+            $$0.b.close();
+         }
+
+         PENDING_FENCES.removeFirst();
+      }
+   }
+
    public static final class a {
       private final int a;
       private final int b;
       private final RenderSystem.a.a c;
       @Nullable
-      private fhn d;
-      private fkd.b e = fkd.b.a;
+      private fhs d;
+      private fki.b e = fki.b.a;
       private int f;
 
       a(int $$0, int $$1, RenderSystem.a.a $$2) {
@@ -602,7 +614,7 @@ public class RenderSystem {
 
       public void b(int $$0) {
          if (this.d == null) {
-            this.d = new fhn(fhl.b, fhm.a, 0);
+            this.d = new fhs(fhq.b, fhr.a, 0);
          }
 
          this.d.b();
@@ -615,7 +627,7 @@ public class RenderSystem {
             RenderSystem.LOGGER.debug("Growing IndexBuffer: Old limit {}, new limit {}.", this.f, $$0);
             int $$1 = $$0 / this.b;
             int $$2 = $$1 * this.a;
-            fkd.b $$3 = fkd.b.a($$2);
+            fki.b $$3 = fki.b.a($$2);
             int $$4 = azm.d($$0 * $$3.d, 4);
             ByteBuffer $$5 = MemoryUtil.memAlloc($$4);
 
@@ -648,12 +660,15 @@ public class RenderSystem {
          }
       }
 
-      public fkd.b a() {
+      public fki.b a() {
          return this.e;
       }
 
       interface a {
          void accept(it.unimi.dsi.fastutil.ints.IntConsumer var1, int var2);
       }
+   }
+
+   static record b(Runnable a, fht b) {
    }
 }

@@ -3,7 +3,7 @@ public class ahu implements zf<agp> {
    private static final int b = 2;
    private final boolean c;
 
-   public ahu(crf $$0) {
+   public ahu(cri $$0) {
       this.c = $$0.b;
    }
 

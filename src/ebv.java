@@ -1,21 +1,20 @@
 public enum ebv implements bak {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+   a("normal"),
+   b("sticky");
 
-   private final String d;
+   private final String c;
 
    private ebv(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

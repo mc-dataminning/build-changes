@@ -1,52 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eik extends eim {
-   public static final Codec<eik> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eim.d.forGetter($$0x -> $$0x), btj.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), eik.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, eik::new)
-   );
-   public final btj b;
-   public final eik.a c;
+public abstract class eik implements ehz {
+   protected final ka f;
 
-   public eik(float $$0, epp $$1, btj $$2, ehh $$3, ein $$4, jj<dmm> $$5, btj $$6, eik.a $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
+   protected static <P extends eik> P1<Mu<P>, ka> a(Instance<P> $$0) {
+      return $$0.group(ka.v(16).optionalFieldOf("offset", ka.i).forGetter($$0x -> $$0x.f));
    }
 
-   public eik(eim $$0, btj $$1, eik.a $$2) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   protected eik(ka $$0) {
+      this.f = $$0;
    }
 
-   public static class a {
-      public static final Codec<eik.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  btj.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
-                  btj.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  ayu.l.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
-                  btj.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
-                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, eik.a::new)
-      );
-      public final btj b;
-      public final btj c;
-      public final int d;
-      public final btj e;
-      public final float f;
-      public final float g;
-
-      public a(btj $$0, btj $$1, int $$2, btj $$3, float $$4, float $$5) {
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-         this.b = $$0;
-         this.c = $$1;
-      }
+   public final boolean a(dkl $$0, iv $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
    }
+
+   protected abstract boolean a(eat var1);
 }

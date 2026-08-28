@@ -99,15 +99,15 @@ public class brk {
       return $$1;
    }
 
-   private JsonElement b(List<Pair<edm, brx<brm>>> $$0) {
+   private JsonElement b(List<Pair<edr, brx<brm>>> $$0) {
       JsonObject $$1 = new JsonObject();
       $$1.addProperty("durationNanosTotal", $$0.stream().mapToDouble($$0x -> (double)((brx)$$0x.getSecond()).f().toNanos()).sum());
       JsonArray $$2 = ag.a(new JsonArray(), $$1x -> $$1.add("status", $$1x));
 
-      for (Pair<edm, brx<brm>> $$3 : $$0) {
+      for (Pair<edr, brx<brm>> $$3 : $$0) {
          brx<brm> $$4 = (brx<brm>)$$3.getSecond();
          JsonObject $$5 = ag.a(new JsonObject(), $$2::add);
-         $$5.addProperty("state", ((edm)$$3.getFirst()).toString());
+         $$5.addProperty("state", ((edr)$$3.getFirst()).toString());
          $$5.addProperty("count", $$4.d());
          $$5.addProperty("durationNanosTotal", $$4.f().toNanos());
          $$5.addProperty("durationNanosAvg", $$4.f().toNanos() / (long)$$4.d());

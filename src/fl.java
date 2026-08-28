@@ -31,7 +31,7 @@ public class fl<T> implements ArgumentType<jf<T>> {
       return new fl.c($$0);
    }
 
-   public static jf<ezt> a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+   public static jf<ezy> a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -39,7 +39,7 @@ public class fl<T> implements ArgumentType<jf<T>> {
       return new fl.a($$0);
    }
 
-   public static jf<fbc> b(CommandContext<ej> $$0, String $$1) {
+   public static jf<fbh> b(CommandContext<ej> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -47,7 +47,7 @@ public class fl<T> implements ArgumentType<jf<T>> {
       return new fl.b($$0);
    }
 
-   public static jf<fcx> c(CommandContext<ej> $$0, String $$1) {
+   public static jf<fdc> c(CommandContext<ej> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -88,21 +88,21 @@ public class fl<T> implements ArgumentType<jf<T>> {
       return b;
    }
 
-   public static class a extends fl<fbc> {
+   public static class a extends fl<fbh> {
       protected a(ef $$0) {
-         super($$0, mh.br, fbe.d);
+         super($$0, mh.bs, fbj.d);
       }
    }
 
-   public static class b extends fl<fcx> {
+   public static class b extends fl<fdc> {
       protected b(ef $$0) {
-         super($$0, mh.bs, fcx.f);
+         super($$0, mh.bt, fdc.f);
       }
    }
 
-   public static class c extends fl<ezt> {
+   public static class c extends fl<ezy> {
       protected c(ef $$0) {
-         super($$0, mh.bq, ezt.e);
+         super($$0, mh.br, ezy.e);
       }
    }
 }

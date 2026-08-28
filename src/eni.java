@@ -1,28 +1,34 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eni extends ene {
-   public static final MapCodec<eni> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eni::new));
+public class eni extends eno {
+   public static final MapCodec<eni> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eni::new));
 
-   public eni(btl $$0, btl $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public eni(btl $$0, btl $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected enk<?> a() {
-      return enk.f;
+   protected enp<?> a() {
+      return enp.d;
    }
 
    @Override
-   protected void a(djn $$0, enj.b $$1, azv $$2, emt $$3, int $$4, enj.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
+   protected void a(djs $$0, eno.b $$1, azv $$2, emy $$3, int $$4, eno.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      iv $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
+
+   @Override
+   public int a(azv $$0, int $$1, emy $$2) {
+      return 0;
    }
 
    @Override
    protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return azm.l((float)$$1 + 0.5F) + azm.l((float)$$3 + 0.5F) > (float)($$4 * $$4);
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

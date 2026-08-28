@@ -1,37 +1,67 @@
-public class ghs extends ggk<hcz> {
-   private final gjo a;
-   private final gjo b;
-
-   public ghs(gjo $$0) {
+public class ghs extends gez<heq> {
+   public ghs(gjt $$0) {
       super($$0);
-      this.a = $$0.b("left_blue_fin");
-      this.b = $$0.b("right_blue_fin");
    }
 
-   public static gju a() {
-      gjw $$0 = new gjw();
-      gjy $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", gjt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gjq.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", gjt.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gjq.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", gjt.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gjq.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", gjt.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", gjt.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gjq.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", gjt.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", gjt.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gjq.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", gjt.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gjq.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", gjt.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", gjt.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", gjt.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", gjt.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gjq.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", gjt.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gjq.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return gju.a($$0, 32, 32);
+   public void a(heq $$0) {
+      super.a($$0);
+      float $$1 = (float) (Math.PI / 6);
+      float $$2 = $$0.H;
+      cqd $$3 = $$0.d;
+      if ($$3 == cqd.e) {
+         float $$4 = $$0.u / 60.0F;
+         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * azm.a($$4 * 30.0F) * 10.0F;
+         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * azm.b($$4 * 30.0F) * 10.0F;
+         this.o.b = this.o.b + azm.a($$4 * 10.0F);
+         this.o.c = this.o.c + azm.a($$4 * 40.0F) + 0.4F;
+         this.r.g = (float) (Math.PI / 180.0) * (70.0F + azm.b($$4 * 40.0F) * 10.0F);
+         this.s.g = this.r.g * -1.0F;
+         this.r.c = this.r.c + (azm.a($$4 * 40.0F) * 0.5F - 0.5F);
+         this.s.c = this.s.c + azm.a($$4 * 40.0F) * 0.5F + 0.5F;
+         this.q.c = this.q.c + azm.a($$4 * 40.0F) * 0.35F;
+      } else if ($$3 == cqd.a && $$2 == 0.0F) {
+         this.b($$0);
+      } else if ($$3 == cqd.b) {
+         gfd.a(this.r, this.s, this.o, $$0.e == bxa.b);
+      } else if ($$3 == cqd.c) {
+         gfd.a(this.r, this.s, $$0.c, $$0.K, $$0.e == bxa.b);
+      } else if ($$3 == cqd.d) {
+         this.o.e = 0.5F;
+         this.o.f = 0.0F;
+         if ($$0.e == bxa.a) {
+            this.r.f = -0.5F;
+            this.r.e = -0.9F;
+         } else {
+            this.s.f = 0.5F;
+            this.s.e = -0.9F;
+         }
+      }
+   }
+
+   protected void a(heq $$0, float $$1) {
+      float $$2 = $$0.H;
+      if ($$2 > 0.0F && $$0.d == cqd.a) {
+         gfd.a(this.r, this.s, $$0.e, $$2, $$0.u);
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   private void b(heq $$0) {
+      if ($$0.e == bxa.a) {
+         this.s.e = -1.8F;
+      } else {
+         this.r.e = -1.8F;
+      }
    }
 
    @Override
-   public void a(hcz $$0) {
-      super.a($$0);
-      this.b.g = -0.2F + 0.4F * azm.a($$0.u * 0.2F);
-      this.a.g = 0.2F - 0.4F * azm.a($$0.u * 0.2F);
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

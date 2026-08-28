@@ -1,24 +1,26 @@
-public class fzz extends fzc<cwc> {
-   private static final alg G = alg.b("container/grindstone/error");
-   private static final alg H = alg.b("textures/gui/container/grindstone.png");
+public class fzz extends fzh<cwa> {
+   private static final alg G = alg.b("textures/gui/container/dispenser.png");
 
-   public fzz(cwc $$0, cri $$1, wy $$2) {
+   public fzz(cwa $$0, crl $$1, wy $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+   protected void aO_() {
+      super.aO_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
+   }
+
+   @Override
+   public void a(fsm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fsh $$0, float $$1, int $$2, int $$3) {
+   protected void a(fsm $$0, float $$1, int $$2, int $$3) {
       int $$4 = (this.n - this.s) / 2;
       int $$5 = (this.o - this.u) / 2;
-      $$0.a(gqx::H, H, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(2).h()) {
-         $$0.a(gqx::H, G, $$4 + 92, $$5 + 31, 28, 21);
-      }
+      $$0.a(grc::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

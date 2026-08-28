@@ -1,42 +1,18 @@
-public class ggc extends ggk<hcs> {
-   private final gjo a;
-   private final gjo b;
-   private final gjo c;
-   private final gjo d;
-   private final gjo e;
-   private static final int f = 6;
-
-   public ggc(gjo $$0) {
+public class ggc extends gga {
+   public ggc(gjt $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.c = $$0.b("right_hind_leg");
-      this.b = $$0.b("left_hind_leg");
-      this.e = $$0.b("right_front_leg");
-      this.d = $$0.b("left_front_leg");
    }
 
-   public static gju a(gjs $$0) {
-      gjw $$1 = new gjw();
-      gjy $$2 = $$1.a();
-      $$2.a("head", gjt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gjq.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", gjt.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gjq.a(0.0F, 6.0F, 0.0F));
-      gjt $$3 = gjt.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, gjq.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, gjq.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, gjq.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, gjq.a(2.0F, 18.0F, -4.0F));
-      return gju.a($$1, 64, 32);
-   }
-
-   public void a(hcs $$0) {
-      super.a($$0);
-      this.a.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.a.e = $$0.ab * (float) (Math.PI / 180.0);
-      float $$1 = $$0.ae;
-      float $$2 = $$0.ad;
-      this.b.e = azm.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.c.e = azm.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.d.e = azm.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.e.e = azm.b($$2 * 0.6662F) * 1.4F * $$1;
+   public static gjz c() {
+      gkb $$0 = b();
+      $$0.a()
+         .a(
+            "body",
+            gjy.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F).a(38, 9).a(0.0F, 3.0F, -1.0F, 0.0F, 3.0F, 5.0F),
+            gjv.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+         );
+      $$0.a()
+         .a("head", gjy.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F).a(44, 0).a(-3.0F, -7.0F, -2.015F, 6.0F, 3.0F, 4.0F), gjv.a(0.0F, 15.0F, -4.0F));
+      return gjz.a($$0, 64, 32);
    }
 }

@@ -1,69 +1,52 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
 
-public class czh {
-   private final Map<alg, czh.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(czk $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+public class czh extends czj {
+   public czh(czj.a $$0) {
+      super($$0);
    }
 
-   public float a(czk $$0, float $$1) {
-      alg $$2 = this.b($$0);
-      czh.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azm.a($$5 / $$4, 0.0F, 1.0F);
+   public static czn a(czj $$0, jf<czg> $$1) {
+      czn $$2 = new czn($$0);
+      $$2.b(kk.ab, new dcd($$1));
+      return $$2;
+   }
+
+   @Override
+   public bug a(djm $$0, crm $$1, buf $$2) {
+      czn $$3 = $$1.b($$2);
+      Optional<? extends jf<czg>> $$4 = this.a($$3, $$1.dW());
+      if ($$4.isPresent()) {
+         czg $$5 = $$4.get().a();
+         $$1.c($$2);
+         a($$0, $$1, $$5);
+         $$1.gE().a($$3, azm.d($$5.b() * 20.0F));
+         $$1.b(awx.c.b(this));
+         return bug.c;
       } else {
-         return 0.0F;
+         return bug.d;
       }
    }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<alg, czh.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<alg, czh.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
-            }
-         }
-      }
+   @Override
+   public int a(czn $$0, bxj $$1) {
+      Optional<jf<czg>> $$2 = this.a($$0, $$1.dW());
+      return $$2.<Integer>map($$0x -> azm.d(((czg)$$0x.a()).b() * 20.0F)).orElse(0);
    }
 
-   public alg b(czk $$0) {
-      dcq $$1 = $$0.a(kk.y);
-      alg $$2 = mg.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   private Optional<jf<czg>> a(czn $$0, jh.a $$1) {
+      dcd $$2 = $$0.a(kk.ab);
+      return $$2 != null ? $$2.a($$1) : Optional.empty();
    }
 
-   public void a(czk $$0, int $$1) {
-      this.a(this.b($$0), $$1);
+   @Override
+   public czp b(czn $$0) {
+      return czp.i;
    }
 
-   public void a(alg $$0, int $$1) {
-      this.a.put($$0, new czh.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void a(alg $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(alg $$0, int $$1) {
-   }
-
-   protected void b(alg $$0) {
-   }
-
-   static record a(int a, int b) {
+   private static void a(djm $$0, crm $$1, czg $$2) {
+      awm $$3 = $$2.a().a();
+      float $$4 = $$2.c() / 16.0F;
+      $$0.a($$1, $$1, $$3, awo.c, $$4, 1.0F);
+      $$0.a(eft.B, $$1.ds(), eft.a.a($$1));
    }
 }

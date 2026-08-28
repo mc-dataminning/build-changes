@@ -1,70 +1,81 @@
-public class gqt {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+import java.util.Optional;
 
-   public gqt(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+public class gqt implements gqr {
+   private final gqr.a a;
+   private final gqr.a b = gqr.a(new fka(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public gqt a(gqt $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
+   public gqt(gqr.a $$0) {
       this.a = $$0;
    }
 
-   public void b(int $$0) {
-      this.b = $$0;
+   @Override
+   public fkh getBuffer(grc $$0) {
+      if ($$0.Z()) {
+         fkh $$1 = this.b.getBuffer($$0);
+         return new gqt.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         fkh $$2 = this.a.getBuffer($$0);
+         Optional<grc> $$3 = $$0.Y();
+         if ($$3.isPresent()) {
+            fkh $$4 = this.b.getBuffer($$3.get());
+            gqt.a $$5 = new gqt.a($$4, this.c, this.d, this.e, this.f);
+            return fkk.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
    }
 
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
+   public void a(int $$0, int $$1, int $$2, int $$3) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public void d(int $$0) {
-      this.d = $$0;
+   public void a() {
+      this.b.b();
    }
 
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   static record a(fkh a, int b) implements fkh {
+      public a(fkh $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axw.a($$4, $$1, $$2, $$3));
+      }
 
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+      @Override
+      public fkh a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
+
+      @Override
+      public fkh a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public fkh a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fkh a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fkh b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fkh b(float $$0, float $$1, float $$2) {
+         return this;
+      }
    }
 }

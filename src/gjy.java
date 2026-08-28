@@ -1,68 +1,83 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 
 public class gjy {
-   private final List<gjr> a;
-   private final gjq b;
-   private final Map<String, gjy> c = Maps.newHashMap();
+   private static final Set<jb> a = EnumSet.allOf(jb.class);
+   private final List<gjw> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   gjy(List<gjr> $$0, gjq $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gjy a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   public gjy a(String $$0, gjt $$1, gjq $$2) {
-      gjy $$3 = new gjy($$1.b(), $$2);
-      return this.a($$0, $$3);
+   public gjy a() {
+      return this.a(true);
    }
 
-   public gjy a(String $$0, gjy $$1) {
-      gjy $$2 = this.c.put($$0, $$1);
-      if ($$2 != null) {
-         $$1.c.putAll($$2.c);
-      }
-
-      return $$1;
+   public gjy a(boolean $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   public gjy a(String $$0) {
-      gjy $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No child with name: " + $$0);
-      } else {
-         return this.a($$0, gjt.c(), $$1.b);
-      }
+   public gjy a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, gjx $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new gjw($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public gjo a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, gjo> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((gjy)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<gjo.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).toList();
-      gjo $$4 = new gjo($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
+   public gjy a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new gjw($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, gjx.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public gjy b(String $$0) {
-      return this.c.get($$0);
+   public gjy a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new gjw(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gjx.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public Set<Entry<String, gjy>> a() {
-      return this.c.entrySet();
+   public gjy a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<jb> $$6) {
+      this.b.add(new gjw(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gjx.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
    }
 
-   public gjy a(UnaryOperator<gjq> $$0) {
-      gjy $$1 = new gjy(this.a, $$0.apply(this.b));
-      $$1.c.putAll(this.c);
-      return $$1;
+   public gjy a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new gjw($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, gjx.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gjy a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, gjx $$7) {
+      this.b.add(new gjw($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gjy a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new gjw(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gjx.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gjy a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gjx $$6, float $$7, float $$8) {
+      this.b.add(new gjw(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public gjy a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gjx $$6) {
+      this.b.add(new gjw(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<gjw> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static gjy c() {
+      return new gjy();
    }
 }

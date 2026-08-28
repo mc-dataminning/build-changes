@@ -1,28 +1,27 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public record fdc(fdt b) implements fcx {
-   public static final MapCodec<fdc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fdu.a.fieldOf("chance").forGetter(fdc::c)).apply($$0, fdc::new));
+public interface fdc extends ezu, Predicate<ezt> {
+   Codec<fdc> d = mg.F.q().dispatch("condition", fdc::b, fdd::a);
+   Codec<fdc> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, fcp.b));
+   Codec<jf<fdc>> f = alc.a(mh.bt, e);
 
-   @Override
-   public fcy b() {
-      return fcz.d;
-   }
+   fdd b();
 
-   public boolean a(ezo $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
-   }
+   @FunctionalInterface
+   public interface a {
+      fdc build();
 
-   public static fcx.a a(float $$0) {
-      return () -> new fdc(fdq.a($$0));
-   }
+      default fdc.a invert() {
+         return fcz.a(this);
+      }
 
-   public static fcx.a a(fdt $$0) {
-      return () -> new fdc($$0);
-   }
+      default fcq.a or(fdc.a $$0) {
+         return fcq.a(this, $$0);
+      }
 
-   public fdt c() {
-      return this.b;
+      default fcp.a and(fdc.a $$0) {
+         return fcp.a(this, $$0);
+      }
    }
 }

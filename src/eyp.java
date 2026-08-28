@@ -1,25 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eyp extends eyh {
-   private static final int c = -1;
-   public static final Codec<eyp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.optionalFieldOf("map", -1).forGetter($$0x -> $$0x.d)).apply($$0, eyp::new)
-   );
-   public static final eyi<eyp> b = new eyi<>("idcounts", eyp::new, a, bbb.k);
-   private int d;
+public record eyp(jf<eyq> b, byte c, byte d, byte e, Optional<wy> f) {
+   public static final yw<wj, eyp> a = yw.a(eyq.c, eyp::c, yu.c, eyp::d, yu.c, eyp::e, yu.c, eyp::f, xa.c, eyp::g, eyp::new);
 
-   public eyp() {
-      this(-1);
+   public eyp(jf<eyq> b, byte c, byte d, byte e, Optional<wy> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
    }
 
-   public eyp(int $$0) {
-      this.d = $$0;
+   public alg a() {
+      return this.b.a().b();
    }
 
-   public eyo a() {
-      eyo $$0 = new eyo(++this.d);
-      this.f();
-      return $$0;
+   public boolean b() {
+      return this.b.a().c();
+   }
+
+   public jf<eyq> c() {
+      return this.b;
+   }
+
+   public byte d() {
+      return this.c;
+   }
+
+   public byte e() {
+      return this.d;
+   }
+
+   public byte f() {
+      return this.e;
+   }
+
+   public Optional<wy> g() {
+      return this.f;
    }
 }

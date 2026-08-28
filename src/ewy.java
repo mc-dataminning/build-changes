@@ -1,221 +1,477 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.Short2BooleanMap;
+import it.unimi.dsi.fastutil.shorts.Short2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public abstract class ewy extends ewt {
-   public static final float e = 0.44444445F;
+public abstract class ewy extends ewz {
+   public static final ebk a = ebj.l;
+   public static final ebt b = ebj.aP;
+   private static final int e = 200;
+   private static final ThreadLocal<Object2ByteLinkedOpenHashMap<ewy.a>> f = ThreadLocal.withInitial(() -> {
+      Object2ByteLinkedOpenHashMap<ewy.a> $$0 = new Object2ByteLinkedOpenHashMap<ewy.a>(200) {
+         protected void rehash(int $$0) {
+         }
+      };
+      $$0.defaultReturnValue((byte)127);
+      return $$0;
+   });
+   private final Map<exa, ffw> g = Maps.newIdentityHashMap();
 
    @Override
-   public ewu d() {
-      return eww.d;
+   protected void a(eau.a<ewz, exa> $$0) {
+      $$0.a(a);
    }
 
    @Override
-   public ewu e() {
-      return eww.e;
+   public ffc a(diq $$0, iv $$1, exa $$2) {
+      double $$3 = 0.0;
+      double $$4 = 0.0;
+      iv.a $$5 = new iv.a();
+
+      for (jb $$6 : jb.c.a) {
+         $$5.a($$1, $$6);
+         exa $$7 = $$0.b_($$5);
+         if (this.g($$7)) {
+            float $$8 = $$7.d();
+            float $$9 = 0.0F;
+            if ($$8 == 0.0F) {
+               if (!$$0.a_($$5).d()) {
+                  iv $$10 = $$5.e();
+                  exa $$11 = $$0.b_($$10);
+                  if (this.g($$11)) {
+                     $$8 = $$11.d();
+                     if ($$8 > 0.0F) {
+                        $$9 = $$2.d() - ($$8 - 0.8888889F);
+                     }
+                  }
+               }
+            } else if ($$8 > 0.0F) {
+               $$9 = $$2.d() - $$8;
+            }
+
+            if ($$9 != 0.0F) {
+               $$3 += (double)((float)$$6.j() * $$9);
+               $$4 += (double)((float)$$6.l() * $$9);
+            }
+         }
+      }
+
+      ffc $$12 = new ffc($$3, 0.0, $$4);
+      if ($$2.c(a)) {
+         for (jb $$13 : jb.c.a) {
+            $$5.a($$1, $$13);
+            if (this.a($$0, $$5, $$13) || this.a($$0, $$5.d(), $$13)) {
+               $$12 = $$12.d().b(0.0, -6.0, 0.0);
+               break;
+            }
+         }
+      }
+
+      return $$12.d();
    }
 
-   @Override
-   public czg a() {
-      return czo.rq;
+   private boolean g(exa $$0) {
+      return $$0.c() || $$0.a().a(this);
    }
 
-   @Override
-   public void a(djh $$0, iv $$1, ewv $$2, azv $$3) {
-      iv $$4 = $$1.d();
-      if ($$0.a_($$4).l() && !$$0.a_($$4).s()) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(ly.ab, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, awn.oy, awo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+   protected boolean a(diq $$0, iv $$1, jb $$2) {
+      eat $$3 = $$0.a_($$1);
+      exa $$4 = $$0.b_($$1);
+      if ($$4.a().a(this)) {
+         return false;
+      } else if ($$2 == jb.b) {
+         return true;
+      } else {
+         return $$3.b() instanceof dqu ? false : $$3.c($$0, $$1, $$2);
+      }
+   }
+
+   protected void a(arq $$0, iv $$1, eat $$2, exa $$3) {
+      if (!$$3.c()) {
+         iv $$4 = $$1.e();
+         eat $$5 = $$0.a_($$4);
+         exa $$6 = $$5.y();
+         if (this.a($$0, $$1, $$2, jb.a, $$4, $$5, $$6)) {
+            exa $$7 = this.a($$0, $$4, $$5);
+            ewz $$8 = $$7.a();
+            if ($$6.a($$0, $$4, $$8, jb.a) && b($$0, $$4, $$5, $$8)) {
+               this.a($$0, $$4, $$5, jb.a, $$7);
+               if (this.a($$0, $$1) >= 3) {
+                  this.a($$0, $$1, $$3, $$2);
+               }
+
+               return;
+            }
          }
 
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awn.ow, awo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         if ($$3.b() || !this.a($$0, $$1, $$2, $$4, $$5)) {
+            this.a($$0, $$1, $$3, $$2);
          }
       }
    }
 
-   @Override
-   public void a(arq $$0, iv $$1, ewv $$2, azv $$3) {
-      if ($$0.O().c(djd.b)) {
-         if ($$0.O().c(djd.c) || $$0.g($$1)) {
-            int $$4 = $$3.a(3);
-            if ($$4 > 0) {
-               iv $$5 = $$1;
+   private void a(arq $$0, iv $$1, exa $$2, eat $$3) {
+      int $$4 = $$2.e() - this.c($$0);
+      if ($$2.c(a)) {
+         $$4 = 7;
+      }
 
-               for (int $$6 = 0; $$6 < $$4; $$6++) {
-                  $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-                  if (!$$0.p($$5)) {
-                     return;
-                  }
+      if ($$4 > 0) {
+         Map<jb, exa> $$5 = this.b($$0, $$1, $$3);
 
-                  eao $$7 = $$0.a_($$5);
-                  if ($$7.l()) {
-                     if (this.a((djk)$$0, $$5)) {
-                        $$0.b($$5, dlz.a($$0, $$5));
-                        return;
-                     }
-                  } else if ($$7.d()) {
-                     return;
-                  }
+         for (Entry<jb, exa> $$6 : $$5.entrySet()) {
+            jb $$7 = $$6.getKey();
+            exa $$8 = $$6.getValue();
+            iv $$9 = $$1.a($$7);
+            this.a($$0, $$9, $$0.a_($$9), $$7, $$8);
+         }
+      }
+   }
+
+   protected exa a(arq $$0, iv $$1, eat $$2) {
+      int $$3 = 0;
+      int $$4 = 0;
+      iv.a $$5 = new iv.a();
+
+      for (jb $$6 : jb.c.a) {
+         iv $$7 = $$5.a($$1, $$6);
+         eat $$8 = $$0.a_($$7);
+         exa $$9 = $$8.y();
+         if ($$9.a().a(this) && a($$6, $$0, $$1, $$2, $$7, $$8)) {
+            if ($$9.b()) {
+               $$4++;
+            }
+
+            $$3 = Math.max($$3, $$9.e());
+         }
+      }
+
+      if ($$4 >= 2 && this.a($$0)) {
+         eat $$10 = $$0.a_($$5.a($$1, jb.a));
+         exa $$11 = $$10.y();
+         if ($$10.e() || this.h($$11)) {
+            return this.a(false);
+         }
+      }
+
+      iv $$12 = $$5.a($$1, jb.b);
+      eat $$13 = $$0.a_($$12);
+      exa $$14 = $$13.y();
+      if (!$$14.c() && $$14.a().a(this) && a(jb.b, $$0, $$1, $$2, $$12, $$13)) {
+         return this.a(8, true);
+      } else {
+         int $$15 = $$3 - this.c($$0);
+         return $$15 <= 0 ? exb.a.g() : this.a($$15, false);
+      }
+   }
+
+   private static boolean a(jb $$0, diq $$1, iv $$2, eat $$3, iv $$4, eat $$5) {
+      ffw $$6 = $$5.g($$1, $$4);
+      if ($$6 == fft.b()) {
+         return false;
+      } else {
+         ffw $$7 = $$3.g($$1, $$2);
+         if ($$7 == fft.b()) {
+            return false;
+         } else if ($$7 == fft.a() && $$6 == fft.a()) {
+            return true;
+         } else {
+            Object2ByteLinkedOpenHashMap<ewy.a> $$9;
+            if (!$$3.b().n() && !$$5.b().n()) {
+               $$9 = f.get();
+            } else {
+               $$9 = null;
+            }
+
+            ewy.a $$10;
+            if ($$9 != null) {
+               $$10 = new ewy.a($$3, $$5, $$0);
+               byte $$11 = $$9.getAndMoveToFirst($$10);
+               if ($$11 != 127) {
+                  return $$11 != 0;
                }
             } else {
-               for (int $$8 = 0; $$8 < 3; $$8++) {
-                  iv $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-                  if (!$$0.p($$9)) {
-                     return;
-                  }
+               $$10 = null;
+            }
 
-                  if ($$0.v($$9.d()) && this.b($$0, $$9)) {
-                     $$0.b($$9.d(), dlz.a($$0, $$9));
+            boolean $$13 = !fft.b($$7, $$6, $$0);
+            if ($$9 != null) {
+               if ($$9.size() == 200) {
+                  $$9.removeLastByte();
+               }
+
+               $$9.putAndMoveToFirst($$10, (byte)($$13 ? 1 : 0));
+            }
+
+            return $$13;
+         }
+      }
+   }
+
+   public abstract ewz d();
+
+   public exa a(int $$0, boolean $$1) {
+      return this.d().g().b(b, $$0).b(a, $$1);
+   }
+
+   public abstract ewz e();
+
+   public exa a(boolean $$0) {
+      return this.e().g().b(a, $$0);
+   }
+
+   protected abstract boolean a(arq var1);
+
+   protected void a(djn $$0, iv $$1, eat $$2, jb $$3, exa $$4) {
+      if ($$2.b() instanceof dro $$5) {
+         $$5.a($$0, $$1, $$2, $$4);
+      } else {
+         if (!$$2.l()) {
+            this.a($$0, $$1, $$2);
+         }
+
+         $$0.a($$1, $$4.g(), 3);
+      }
+   }
+
+   protected abstract void a(djn var1, iv var2, eat var3);
+
+   protected int a(djp $$0, iv $$1, int $$2, jb $$3, eat $$4, ewy.b $$5) {
+      int $$6 = 1000;
+
+      for (jb $$7 : jb.c.a) {
+         if ($$7 != $$3) {
+            iv $$8 = $$1.a($$7);
+            eat $$9 = $$5.a($$8);
+            exa $$10 = $$9.y();
+            if (this.a($$0, this.d(), $$1, $$4, $$7, $$8, $$9, $$10)) {
+               if ($$5.b($$8)) {
+                  return $$2;
+               }
+
+               if ($$2 < this.b($$0)) {
+                  int $$11 = this.a($$0, $$8, $$2 + 1, $$7.g(), $$9, $$5);
+                  if ($$11 < $$6) {
+                     $$6 = $$11;
                   }
                }
             }
          }
       }
+
+      return $$6;
    }
 
-   @Override
-   protected void a(djh $$0, iv $$1, bwi $$2, bxb $$3) {
-      $$3.a(bxc.c);
-      $$3.b(bxc.c, bwi::aC);
+   boolean a(diq $$0, iv $$1, eat $$2, iv $$3, eat $$4) {
+      if (!a(jb.a, $$0, $$1, $$2, $$3, $$4)) {
+         return false;
+      } else {
+         return $$4.y().a().a(this) ? true : a($$0, $$3, $$4, this.d());
+      }
    }
 
-   private boolean a(djk $$0, iv $$1) {
-      for (jb $$2 : jb.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
+   private boolean a(diq $$0, ewz $$1, iv $$2, eat $$3, jb $$4, iv $$5, eat $$6, exa $$7) {
+      return this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7) && b($$0, $$5, $$6, $$1);
+   }
+
+   private boolean a(diq $$0, iv $$1, eat $$2, jb $$3, iv $$4, eat $$5, exa $$6) {
+      return !this.h($$6) && a($$5) && a($$3, $$0, $$1, $$2, $$4, $$5);
+   }
+
+   private boolean h(exa $$0) {
+      return $$0.a().a(this) && $$0.b();
+   }
+
+   protected abstract int b(djp var1);
+
+   private int a(djp $$0, iv $$1) {
+      int $$2 = 0;
+
+      for (jb $$3 : jb.c.a) {
+         iv $$4 = $$1.a($$3);
+         exa $$5 = $$0.b_($$4);
+         if (this.h($$5)) {
+            $$2++;
          }
       }
 
-      return false;
+      return $$2;
    }
 
-   private boolean b(djk $$0, iv $$1) {
-      return $$0.d($$1.v()) && !$$0.C($$1) ? false : $$0.a_($$1).m();
-   }
+   protected Map<jb, exa> b(arq $$0, iv $$1, eat $$2) {
+      int $$3 = 1000;
+      Map<jb, exa> $$4 = Maps.newEnumMap(jb.class);
+      ewy.b $$5 = null;
 
-   @Nullable
-   @Override
-   public lw h() {
-      return ly.i;
-   }
+      for (jb $$6 : jb.c.a) {
+         iv $$7 = $$1.a($$6);
+         eat $$8 = $$0.a_($$7);
+         exa $$9 = $$8.y();
+         if (this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9)) {
+            exa $$10 = this.a($$0, $$7, $$8);
+            if (b($$0, $$7, $$8, $$10.a())) {
+               if ($$5 == null) {
+                  $$5 = new ewy.b($$0, $$1);
+               }
 
-   @Override
-   protected void a(dji $$0, iv $$1, eao $$2) {
-      this.a($$0, $$1);
-   }
+               int $$11;
+               if ($$5.b($$7)) {
+                  $$11 = 0;
+               } else {
+                  $$11 = this.a($$0, $$7, 1, $$6.g(), $$8, $$5);
+               }
 
-   @Override
-   public int b(djk $$0) {
-      return $$0.B_().i() ? 4 : 2;
-   }
+               if ($$11 < $$3) {
+                  $$4.clear();
+               }
 
-   @Override
-   public eao b(ewv $$0) {
-      return dmo.K.m().b(dri.b, Integer.valueOf(e($$0)));
-   }
+               if ($$11 <= $$3) {
+                  if ($$9.a($$0, $$7, $$10.a(), $$6)) {
+                     $$4.put($$6, $$10);
+                  }
 
-   @Override
-   public boolean a(ewu $$0) {
-      return $$0 == eww.e || $$0 == eww.d;
-   }
-
-   @Override
-   public int c(djk $$0) {
-      return $$0.B_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(ewv $$0, din $$1, iv $$2, ewu $$3, jb $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(axh.a);
-   }
-
-   @Override
-   public int a(djk $$0) {
-      return $$0.B_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(djh $$0, iv $$1, ewv $$2, ewv $$3) {
-      int $$4 = this.a($$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a($$0, $$1) > $$2.a($$0, $$1) && $$0.C_().a(4) != 0) {
-         $$4 *= 4;
+                  $$3 = $$11;
+               }
+            }
+         }
       }
 
       return $$4;
    }
 
-   private void a(dji $$0, iv $$1) {
-      $$0.c(1501, $$1, 0);
+   private static boolean a(eat $$0) {
+      dmr $$1 = $$0.b();
+      if ($$1 instanceof dro) {
+         return true;
+      } else {
+         return $$0.d()
+            ? false
+            : !($$1 instanceof doy)
+               && !$$0.a(axc.aA)
+               && !$$0.a(dmt.da)
+               && !$$0.a(dmt.ej)
+               && !$$0.a(dmt.nJ)
+               && !$$0.a(dmt.eu)
+               && !$$0.a(dmt.fW)
+               && !$$0.a(dmt.ll)
+               && !$$0.a(dmt.lt);
+      }
+   }
+
+   private static boolean a(diq $$0, iv $$1, eat $$2, ewz $$3) {
+      return a($$2) && b($$0, $$1, $$2, $$3);
+   }
+
+   private static boolean b(diq $$0, iv $$1, eat $$2, ewz $$3) {
+      return $$2.b() instanceof dro $$5 ? $$5.a(null, $$0, $$1, $$2, $$3) : true;
+   }
+
+   protected abstract int c(djp var1);
+
+   protected int a(djm $$0, iv $$1, exa $$2, exa $$3) {
+      return this.a($$0);
    }
 
    @Override
-   protected boolean a(arq $$0) {
-      return $$0.O().c(djd.X);
-   }
-
-   @Override
-   protected void a(dji $$0, iv $$1, eao $$2, jb $$3, ewv $$4) {
-      if ($$3 == jb.a) {
-         ewv $$5 = $$0.b_($$1);
-         if (this.a(axh.b) && $$5.a(axh.a)) {
-            if ($$2.b() instanceof dri) {
-               $$0.a($$1, dmo.b.m(), 3);
-            }
-
-            this.a($$0, $$1);
-            return;
+   public void b(arq $$0, iv $$1, eat $$2, exa $$3) {
+      if (!$$3.b()) {
+         exa $$4 = this.a($$0, $$1, $$0.a_($$1));
+         int $$5 = this.a($$0, $$1, $$3, $$4);
+         if ($$4.c()) {
+            $$3 = $$4;
+            $$2 = dmt.a.m();
+            $$0.a($$1, $$2, 3);
+         } else if ($$4 != $$3) {
+            $$3 = $$4;
+            $$2 = $$4.g();
+            $$0.a($$1, $$2, 3);
+            $$0.a($$1, $$4.a(), $$5);
          }
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+      this.a($$0, $$1, $$2, $$3);
+   }
+
+   protected static int e(exa $$0) {
+      return $$0.b() ? 0 : 8 - Math.min($$0.e(), 8) + ($$0.c(a) ? 8 : 0);
+   }
+
+   private static boolean d(exa $$0, diq $$1, iv $$2) {
+      return $$0.a().a($$1.b_($$2.d()).a());
    }
 
    @Override
-   protected boolean i() {
-      return true;
+   public float a(exa $$0, diq $$1, iv $$2) {
+      return d($$0, $$1, $$2) ? 1.0F : $$0.d();
    }
 
    @Override
-   protected float c() {
-      return 100.0F;
+   public float a(exa $$0) {
+      return (float)$$0.e() / 9.0F;
    }
 
    @Override
-   public Optional<awm> j() {
-      return Optional.of(awn.dm);
+   public abstract int d(exa var1);
+
+   @Override
+   public ffw b(exa $$0, diq $$1, iv $$2) {
+      return $$0.e() == 9 && d($$0, $$1, $$2) ? fft.b() : this.g.computeIfAbsent($$0, $$2x -> fft.a(0.0, 0.0, 0.0, 1.0, (double)$$2x.a($$1, $$2), 1.0));
    }
 
-   public static class a extends ewy {
+   static record a(eat a, eat b, jb c) {
       @Override
-      protected void a(eap.a<ewu, ewv> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
+      public boolean equals(Object $$0) {
+         if ($$0 instanceof ewy.a $$1 && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c) {
+            return true;
+         }
 
-      @Override
-      public int d(ewv $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(ewv $$0) {
          return false;
       }
+
+      @Override
+      public int hashCode() {
+         int $$0 = System.identityHashCode(this.a);
+         $$0 = 31 * $$0 + System.identityHashCode(this.b);
+         return 31 * $$0 + this.c.hashCode();
+      }
    }
 
-   public static class b extends ewy {
-      @Override
-      public int d(ewv $$0) {
-         return 8;
+   protected class b {
+      private final diq b;
+      private final iv c;
+      private final Short2ObjectMap<eat> d = new Short2ObjectOpenHashMap();
+      private final Short2BooleanMap e = new Short2BooleanOpenHashMap();
+
+      b(final diq $$1, final iv $$2) {
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      @Override
-      public boolean c(ewv $$0) {
-         return true;
+      public eat a(iv $$0) {
+         return this.a($$0, this.c($$0));
+      }
+
+      private eat a(iv $$0, short $$1) {
+         return (eat)this.d.computeIfAbsent($$1, $$1x -> this.b.a_($$0));
+      }
+
+      public boolean b(iv $$0) {
+         return this.e.computeIfAbsent(this.c($$0), $$1 -> {
+            eat $$2 = this.a($$0, $$1);
+            iv $$3 = $$0.e();
+            eat $$4 = this.b.a_($$3);
+            return ewy.this.a(this.b, $$0, $$2, $$3, $$4);
+         });
+      }
+
+      private short c(iv $$0) {
+         int $$1 = $$0.u() - this.c.u();
+         int $$2 = $$0.w() - this.c.w();
+         return (short)(($$1 + 128 & 0xFF) << 8 | $$2 + 128 & 0xFF);
       }
    }
 }

@@ -16,7 +16,7 @@ public class aoi {
    private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wy.b("commands.place.template.invalid", $$0));
    private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wy.c("commands.place.template.failed"));
    private static final SuggestionProvider<ej> f = ($$0, $$1) -> {
-      evl $$2 = ((ej)$$0.getSource()).e().r();
+      evq $$2 = ((ej)$$0.getSource()).e().r();
       return eo.a($$2.a(), $$1);
    };
 
@@ -79,16 +79,16 @@ public class aoi {
                      ((RequiredArgumentBuilder)ek.a("template", fk.a())
                            .suggests(f)
                            .executes(
-                              $$0x -> a((ej)$$0x.getSource(), fk.a($$0x, "template"), iv.a((jp)((ej)$$0x.getSource()).d()), dtg.a, drp.a, 1.0F, 0, false)
+                              $$0x -> a((ej)$$0x.getSource(), fk.a($$0x, "template"), iv.a((jp)((ej)$$0x.getSource()).d()), dtl.a, dru.a, 1.0F, 0, false)
                            ))
                         .then(
                            ((RequiredArgumentBuilder)ek.a("pos", gg.a())
-                                 .executes($$0x -> a((ej)$$0x.getSource(), fk.a($$0x, "template"), gg.a($$0x, "pos"), dtg.a, drp.a, 1.0F, 0, false)))
+                                 .executes($$0x -> a((ej)$$0x.getSource(), fk.a($$0x, "template"), gg.a($$0x, "pos"), dtl.a, dru.a, 1.0F, 0, false)))
                               .then(
                                  ((RequiredArgumentBuilder)ek.a("rotation", fy.a())
                                        .executes(
                                           $$0x -> a(
-                                                (ej)$$0x.getSource(), fk.a($$0x, "template"), gg.a($$0x, "pos"), fy.a($$0x, "rotation"), drp.a, 1.0F, 0, false
+                                                (ej)$$0x.getSource(), fk.a($$0x, "template"), gg.a($$0x, "pos"), fy.a($$0x, "rotation"), dru.a, 1.0F, 0, false
                                              )
                                        ))
                                     .then(
@@ -158,11 +158,11 @@ public class aoi {
       );
    }
 
-   public static int a(ej $$0, jf.c<ejf<?, ?>> $$1, iv $$2) throws CommandSyntaxException {
+   public static int a(ej $$0, jf.c<ejk<?, ?>> $$1, iv $$2) throws CommandSyntaxException {
       arq $$3 = $$0.e();
-      ejf<?, ?> $$4 = $$1.a();
-      dio $$5 = new dio($$2);
-      a($$3, new dio($$5.h - 1, $$5.i - 1), new dio($$5.h + 1, $$5.i + 1));
+      ejk<?, ?> $$4 = $$1.a();
+      dir $$5 = new dir($$2);
+      a($$3, new dir($$5.h - 1, $$5.i - 1), new dir($$5.h + 1, $$5.i + 1));
       if (!$$4.a($$3, $$3.m().g(), $$3.C_(), $$2)) {
          throw a.create();
       } else {
@@ -172,11 +172,11 @@ public class aoi {
       }
    }
 
-   public static int a(ej $$0, jf<ess> $$1, alg $$2, int $$3, iv $$4) throws CommandSyntaxException {
+   public static int a(ej $$0, jf<esx> $$1, alg $$2, int $$3, iv $$4) throws CommandSyntaxException {
       arq $$5 = $$0.e();
-      dio $$6 = new dio($$4);
+      dir $$6 = new dir($$4);
       a($$5, $$6, $$6);
-      if (!esm.a($$5, $$1, $$2, $$3, $$4, false)) {
+      if (!esr.a($$5, $$1, $$2, $$3, $$4, false)) {
          throw b.create();
       } else {
          $$0.a(() -> wy.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
@@ -184,30 +184,30 @@ public class aoi {
       }
    }
 
-   public static int b(ej $$0, jf.c<eri> $$1, iv $$2) throws CommandSyntaxException {
+   public static int b(ej $$0, jf.c<ern> $$1, iv $$2) throws CommandSyntaxException {
       arq $$3 = $$0.e();
-      eri $$4 = $$1.a();
-      ecm $$5 = $$3.m().g();
-      erq $$6 = $$4.a($$1, $$3.aj(), $$0.u(), $$5, $$5.d(), $$3.m().i(), $$3.r(), $$3.E(), new dio($$2), 0, $$3, $$0x -> true);
+      ern $$4 = $$1.a();
+      ecr $$5 = $$3.m().g();
+      erv $$6 = $$4.a($$1, $$3.aj(), $$0.u(), $$5, $$5.d(), $$3.m().i(), $$3.r(), $$3.E(), new dir($$2), 0, $$3, $$0x -> true);
       if (!$$6.b()) {
          throw c.create();
       } else {
-         era $$7 = $$6.a();
-         dio $$8 = new dio(jy.a($$7.h()), jy.a($$7.j()));
-         dio $$9 = new dio(jy.a($$7.k()), jy.a($$7.m()));
+         erf $$7 = $$6.a();
+         dir $$8 = new dir(jy.a($$7.h()), jy.a($$7.j()));
+         dir $$9 = new dir(jy.a($$7.k()), jy.a($$7.m()));
          a($$3, $$8, $$9);
-         dio.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.b(), $$5, $$3.C_(), new era($$3x.d(), $$3.G_(), $$3x.e(), $$3x.f(), $$3.ao() + 1, $$3x.g()), $$3x));
+         dir.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.b(), $$5, $$3.C_(), new erf($$3x.d(), $$3.G_(), $$3x.e(), $$3x.f(), $$3.ao() + 1, $$3x.g()), $$3x));
          String $$10 = $$1.h().a().toString();
          $$0.a(() -> wy.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
          return 1;
       }
    }
 
-   public static int a(ej $$0, alg $$1, iv $$2, dtg $$3, drp $$4, float $$5, int $$6, boolean $$7) throws CommandSyntaxException {
+   public static int a(ej $$0, alg $$1, iv $$2, dtl $$3, dru $$4, float $$5, int $$6, boolean $$7) throws CommandSyntaxException {
       arq $$8 = $$0.e();
-      evl $$9 = $$8.r();
+      evq $$9 = $$8.r();
 
-      Optional<evk> $$10;
+      Optional<evp> $$10;
       try {
          $$10 = $$9.b($$1);
       } catch (ab var14) {
@@ -217,14 +217,14 @@ public class aoi {
       if ($$10.isEmpty()) {
          throw d.create($$1);
       } else {
-         evk $$13 = $$10.get();
-         a($$8, new dio($$2), new dio($$2.a($$13.a())));
-         evg $$14 = new evg().a($$4).a($$3).b($$7);
+         evp $$13 = $$10.get();
+         a($$8, new dir($$2), new dir($$2.a($$13.a())));
+         evl $$14 = new evl().a($$4).a($$3).b($$7);
          if ($$5 < 1.0F) {
-            $$14.b().a(new eun($$5)).a(dzf.b((long)$$6));
+            $$14.b().a(new eus($$5)).a(dzk.b((long)$$6));
          }
 
-         boolean $$15 = $$13.a($$8, $$2, $$2, $$14, dzf.b((long)$$6), 2 | ($$7 ? 816 : 0));
+         boolean $$15 = $$13.a($$8, $$2, $$2, $$14, dzk.b((long)$$6), 2 | ($$7 ? 816 : 0));
          if (!$$15) {
             throw e.create();
          } else {
@@ -234,8 +234,8 @@ public class aoi {
       }
    }
 
-   private static void a(arq $$0, dio $$1, dio $$2) throws CommandSyntaxException {
-      if (dio.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
+   private static void a(arq $$0, dir $$1, dir $$2) throws CommandSyntaxException {
+      if (dir.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
          throw gg.a.create();
       }
    }

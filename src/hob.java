@@ -1,87 +1,37 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 import javax.annotation.Nullable;
 
-public class hob {
-   private final Set<hob.a> a = Sets.newIdentityHashSet();
-   final fhf b;
-   final Executor c;
+public class hob extends avq {
+   @Nullable
+   private tz h;
 
-   public hob(fhf $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public hob(hoc $$0, jm<alp> $$1, ezk $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
-   public CompletableFuture<hob.a> a(fhf.c $$0) {
-      CompletableFuture<hob.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         fhe $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            hob.a $$3 = new hob.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
-      return $$1;
-   }
-
-   public void a(Consumer<Stream<fhe>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
-   }
-
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<hob.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            hob.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
-   }
-
-   public void b() {
-      this.a.forEach(hob.a::b);
-      this.a.clear();
-   }
-
-   public class a {
-      @Nullable
-      fhe b;
-      private boolean c;
-
-      public boolean a() {
-         return this.c;
+   @Override
+   protected void b(arr $$0) {
+      if (this.b().a($$0.gh())) {
+         this.h = $$0.f(new tz());
       }
 
-      public a(final fhe $$1) {
-         this.b = $$1;
-      }
+      super.b($$0);
+   }
 
-      public void a(Consumer<fhe> $$0) {
-         hob.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
+   @Override
+   public wy a(SocketAddress $$0, GameProfile $$1) {
+      return (wy)(this.b().a($$1) && this.a($$1.getName()) != null ? wy.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
+   }
 
-      public void b() {
-         this.c = true;
-         hob.this.b.a(this.b);
-         this.b = null;
-      }
+   public hoc b() {
+      return (hoc)super.c();
+   }
+
+   @Nullable
+   @Override
+   public tz r() {
+      return this.h;
    }
 }

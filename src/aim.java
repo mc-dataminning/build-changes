@@ -1,5 +1,5 @@
-public record aim(iv b, ebz c, String d) implements zf<agp> {
-   public static final yw<vu, aim> a = yw.a(iv.b, aim::b, ebz.f, aim::e, yu.p, aim::f, aim::new);
+public record aim(iv b, ece c, String d) implements zf<agp> {
+   public static final yw<vu, aim> a = yw.a(iv.b, aim::b, ece.f, aim::e, yu.p, aim::f, aim::new);
 
    @Override
    public zh<aim> a() {
@@ -10,7 +10,7 @@ public record aim(iv b, ebz c, String d) implements zf<agp> {
       $$0.a(this);
    }
 
-   public ebz e() {
+   public ece e() {
       return this.c;
    }
 

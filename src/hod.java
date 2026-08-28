@@ -1,6 +1,23 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
+public class hod {
+   private final String a;
+   private final String b;
+   private long c;
 
-public interface hod extends hoa {
-   ByteBuffer b() throws IOException;
+   public hod(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = ag.c();
+   }
+
+   public String a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.b;
+   }
+
+   public void c() {
+      this.c = ag.c();
+   }
 }

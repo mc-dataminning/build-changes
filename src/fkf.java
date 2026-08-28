@@ -1,142 +1,40 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class fkf {
-   public static fkc a() {
-      throw new IllegalArgumentException();
-   }
+   private static final int a = 786432;
+   private final fka b;
+   @Nullable
+   private static fkf c;
 
-   public static fkc a(fkc $$0) {
-      return $$0;
-   }
-
-   public static fkc a(fkc $$0, fkc $$1) {
-      return new fkf.a($$0, $$1);
-   }
-
-   public static fkc a(fkc... $$0) {
-      return new fkf.b($$0);
-   }
-
-   static class a implements fkc {
-      private final fkc a;
-      private final fkc b;
-
-      public a(fkc $$0, fkc $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
-
-      @Override
-      public fkc a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public fkc a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public fkc a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fkc a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fkc b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fkc b(float $$0, float $$1, float $$2) {
-         this.a.b($$0, $$1, $$2);
-         this.b.b($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+   public static void a() {
+      if (c != null) {
+         throw new IllegalStateException("Tesselator has already been initialized");
+      } else {
+         c = new fkf();
       }
    }
 
-   static record b(fkc[] a) implements fkc {
-      b(fkc[] a) {
-         for (int $$1 = 0; $$1 < a.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
-               if (a[$$1] == a[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
-            }
-         }
-
-         this.a = a;
+   public static fkf b() {
+      if (c == null) {
+         throw new IllegalStateException("Tesselator has not been initialized");
+      } else {
+         return c;
       }
+   }
 
-      private void a(Consumer<fkc> $$0) {
-         for (fkc $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
+   public fkf(int $$0) {
+      this.b = new fka($$0);
+   }
 
-      @Override
-      public fkc a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
+   public fkf() {
+      this(786432);
+   }
 
-      @Override
-      public fkc a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
+   public fjz a(fki.c $$0, fki $$1) {
+      return new fjz(this.b, $$0, $$1);
+   }
 
-      @Override
-      public fkc a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fkc a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fkc b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fkc b(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.b($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
-      }
+   public void c() {
+      this.b.b();
    }
 }

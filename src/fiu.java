@@ -1,719 +1,468 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import java.nio.channels.WritableByteChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.EnumSet;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
+import java.lang.invoke.MethodHandles.Lookup;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
-import java.util.function.IntUnaryOperator;
+import java.util.OptionalInt;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.lwjgl.stb.STBIWriteCallback;
-import org.lwjgl.stb.STBImage;
-import org.lwjgl.stb.STBImageResize;
-import org.lwjgl.stb.STBImageWrite;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Bitmap;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FT_GlyphSlot;
-import org.lwjgl.util.freetype.FreeType;
-import org.slf4j.Logger;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWCharModsCallbackI;
+import org.lwjgl.glfw.GLFWCursorPosCallbackI;
+import org.lwjgl.glfw.GLFWDropCallbackI;
+import org.lwjgl.glfw.GLFWKeyCallbackI;
+import org.lwjgl.glfw.GLFWMouseButtonCallbackI;
+import org.lwjgl.glfw.GLFWScrollCallbackI;
 
-public final class fiu implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final MemoryPool b = TracyClient.createMemoryPool("NativeImage");
-   private static final Set<StandardOpenOption> c = EnumSet.of(StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-   private final fiu.a d;
-   private final int e;
-   private final int f;
-   private final boolean g;
-   private long h;
-   private final long i;
+public class fiu {
+   @Nullable
+   private static final MethodHandle bw;
+   private static final int bx;
+   public static final int a = 48;
+   public static final int b = 49;
+   public static final int c = 50;
+   public static final int d = 51;
+   public static final int e = 52;
+   public static final int f = 53;
+   public static final int g = 54;
+   public static final int h = 55;
+   public static final int i = 56;
+   public static final int j = 57;
+   public static final int k = 65;
+   public static final int l = 66;
+   public static final int m = 67;
+   public static final int n = 68;
+   public static final int o = 69;
+   public static final int p = 70;
+   public static final int q = 71;
+   public static final int r = 72;
+   public static final int s = 73;
+   public static final int t = 74;
+   public static final int u = 75;
+   public static final int v = 76;
+   public static final int w = 77;
+   public static final int x = 78;
+   public static final int y = 79;
+   public static final int z = 80;
+   public static final int A = 81;
+   public static final int B = 82;
+   public static final int C = 83;
+   public static final int D = 84;
+   public static final int E = 85;
+   public static final int F = 86;
+   public static final int G = 87;
+   public static final int H = 88;
+   public static final int I = 89;
+   public static final int J = 90;
+   public static final int K = 290;
+   public static final int L = 291;
+   public static final int M = 292;
+   public static final int N = 293;
+   public static final int O = 294;
+   public static final int P = 295;
+   public static final int Q = 296;
+   public static final int R = 297;
+   public static final int S = 298;
+   public static final int T = 299;
+   public static final int U = 300;
+   public static final int V = 301;
+   public static final int W = 302;
+   public static final int X = 303;
+   public static final int Y = 304;
+   public static final int Z = 305;
+   public static final int aa = 306;
+   public static final int ab = 307;
+   public static final int ac = 308;
+   public static final int ad = 309;
+   public static final int ae = 310;
+   public static final int af = 311;
+   public static final int ag = 312;
+   public static final int ah = 313;
+   public static final int ai = 314;
+   public static final int aj = 282;
+   public static final int ak = 320;
+   public static final int al = 321;
+   public static final int am = 322;
+   public static final int an = 323;
+   public static final int ao = 324;
+   public static final int ap = 325;
+   public static final int aq = 326;
+   public static final int ar = 327;
+   public static final int as = 328;
+   public static final int at = 329;
+   public static final int au = 330;
+   public static final int av = 335;
+   public static final int aw = 336;
+   public static final int ax = 264;
+   public static final int ay = 263;
+   public static final int az = 262;
+   public static final int aA = 265;
+   public static final int aB = 334;
+   public static final int aC = 39;
+   public static final int aD = 92;
+   public static final int aE = 44;
+   public static final int aF = 61;
+   public static final int aG = 96;
+   public static final int aH = 91;
+   public static final int aI = 45;
+   public static final int aJ = 332;
+   public static final int aK = 46;
+   public static final int aL = 93;
+   public static final int aM = 59;
+   public static final int aN = 47;
+   public static final int aO = 32;
+   public static final int aP = 258;
+   public static final int aQ = 342;
+   public static final int aR = 341;
+   public static final int aS = 340;
+   public static final int aT = 343;
+   public static final int aU = 346;
+   public static final int aV = 345;
+   public static final int aW = 344;
+   public static final int aX = 347;
+   public static final int aY = 257;
+   public static final int aZ = 256;
+   public static final int ba = 259;
+   public static final int bb = 261;
+   public static final int bc = 269;
+   public static final int bd = 268;
+   public static final int be = 260;
+   public static final int bf = 267;
+   public static final int bg = 266;
+   public static final int bh = 280;
+   public static final int bi = 284;
+   public static final int bj = 281;
+   public static final int bk = 283;
+   public static final int bl = 1;
+   public static final int bm = 0;
+   public static final int bn = 2;
+   public static final int bo = 0;
+   public static final int bp = 2;
+   public static final int bq = 1;
+   public static final int br = 2;
+   public static final int bs = 208897;
+   public static final int bt = 212995;
+   public static final int bu = 212993;
+   public static final fiu.a bv;
 
-   public fiu(int $$0, int $$1, boolean $$2) {
-      this(fiu.a.a, $$0, $$1, $$2);
+   public static fiu.a a(int $$0, int $$1) {
+      return $$0 == -1 ? fiu.b.b.a($$1) : fiu.b.a.a($$0);
    }
 
-   public fiu(fiu.a $$0, int $$1, int $$2, boolean $$3) {
-      if ($$1 > 0 && $$2 > 0) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-         this.i = (long)$$1 * (long)$$2 * (long)$$0.a();
-         this.g = false;
-         if ($$3) {
-            this.h = MemoryUtil.nmemCalloc(1L, this.i);
-         } else {
-            this.h = MemoryUtil.nmemAlloc(this.i);
-         }
-
-         b.malloc(this.h, (int)this.i);
-         if (this.h == 0L) {
-            throw new IllegalStateException("Unable to allocate texture of size " + $$1 + "x" + $$2 + " (" + $$0.a() + " channels)");
-         }
+   public static fiu.a a(String $$0) {
+      if (fiu.a.e.containsKey($$0)) {
+         return fiu.a.e.get($$0);
       } else {
-         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
-      }
-   }
-
-   private fiu(fiu.a $$0, int $$1, int $$2, boolean $$3, long $$4) {
-      if ($$1 > 0 && $$2 > 0) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-         this.g = $$3;
-         this.h = $$4;
-         this.i = (long)$$1 * (long)$$2 * (long)$$0.a();
-      } else {
-         throw new IllegalArgumentException("Invalid texture size: " + $$1 + "x" + $$2);
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "NativeImage[" + this.d + " " + this.e + "x" + this.f + "@" + this.h + (this.g ? "S" : "N") + "]";
-   }
-
-   private boolean c(int $$0, int $$1) {
-      return $$0 < 0 || $$0 >= this.e || $$1 < 0 || $$1 >= this.f;
-   }
-
-   public static fiu a(InputStream $$0) throws IOException {
-      return a(fiu.a.a, $$0);
-   }
-
-   public static fiu a(@Nullable fiu.a $$0, InputStream $$1) throws IOException {
-      ByteBuffer $$2 = null;
-
-      fiu var3;
-      try {
-         $$2 = TextureUtil.readResource($$1);
-         $$2.rewind();
-         var3 = a($$0, $$2);
-      } finally {
-         MemoryUtil.memFree($$2);
-         IOUtils.closeQuietly($$1);
-      }
-
-      return var3;
-   }
-
-   public static fiu a(ByteBuffer $$0) throws IOException {
-      return a(fiu.a.a, $$0);
-   }
-
-   public static fiu a(byte[] $$0) throws IOException {
-      MemoryStack $$1 = MemoryStack.stackGet();
-      int $$2 = $$1.getPointer();
-      if ($$2 < $$0.length) {
-         ByteBuffer $$3 = MemoryUtil.memAlloc($$0.length);
-
-         fiu var13;
-         try {
-            var13 = a($$3, $$0);
-         } finally {
-            MemoryUtil.memFree($$3);
-         }
-
-         return var13;
-      } else {
-         MemoryStack $$4 = MemoryStack.stackPush();
-
-         fiu var5;
-         try {
-            ByteBuffer $$5 = $$4.malloc($$0.length);
-            var5 = a($$5, $$0);
-         } catch (Throwable var11) {
-            if ($$4 != null) {
-               try {
-                  $$4.close();
-               } catch (Throwable var9) {
-                  var11.addSuppressed(var9);
+         for (fiu.b $$1 : fiu.b.values()) {
+            if ($$0.startsWith($$1.f)) {
+               String $$2 = $$0.substring($$1.f.length() + 1);
+               int $$3 = Integer.parseInt($$2);
+               if ($$1 == fiu.b.c) {
+                  $$3--;
                }
-            }
 
-            throw var11;
-         }
-
-         if ($$4 != null) {
-            $$4.close();
-         }
-
-         return var5;
-      }
-   }
-
-   private static fiu a(ByteBuffer $$0, byte[] $$1) throws IOException {
-      $$0.put($$1);
-      $$0.rewind();
-      return a($$0);
-   }
-
-   public static fiu a(@Nullable fiu.a $$0, ByteBuffer $$1) throws IOException {
-      if ($$0 != null && !$$0.w()) {
-         throw new UnsupportedOperationException("Don't know how to read format " + $$0);
-      } else if (MemoryUtil.memAddress($$1) == 0L) {
-         throw new IllegalArgumentException("Invalid buffer");
-      } else {
-         azs.a($$1);
-         MemoryStack $$2 = MemoryStack.stackPush();
-
-         fiu var9;
-         try {
-            IntBuffer $$3 = $$2.mallocInt(1);
-            IntBuffer $$4 = $$2.mallocInt(1);
-            IntBuffer $$5 = $$2.mallocInt(1);
-            ByteBuffer $$6 = STBImage.stbi_load_from_memory($$1, $$3, $$4, $$5, $$0 == null ? 0 : $$0.e);
-            if ($$6 == null) {
-               throw new IOException("Could not load image: " + STBImage.stbi_failure_reason());
-            }
-
-            long $$7 = MemoryUtil.memAddress($$6);
-            b.malloc($$7, $$6.limit());
-            var9 = new fiu($$0 == null ? fiu.a.a($$5.get(0)) : $$0, $$3.get(0), $$4.get(0), true, $$7);
-         } catch (Throwable var11) {
-            if ($$2 != null) {
-               try {
-                  $$2.close();
-               } catch (Throwable var10) {
-                  var11.addSuppressed(var10);
-               }
-            }
-
-            throw var11;
-         }
-
-         if ($$2 != null) {
-            $$2.close();
-         }
-
-         return var9;
-      }
-   }
-
-   private void k() {
-      if (this.h == 0L) {
-         throw new IllegalStateException("Image is not allocated.");
-      }
-   }
-
-   @Override
-   public void close() {
-      if (this.h != 0L) {
-         if (this.g) {
-            STBImage.nstbi_image_free(this.h);
-         } else {
-            MemoryUtil.nmemFree(this.h);
-         }
-
-         b.free(this.h);
-      }
-
-      this.h = 0L;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public fiu.a c() {
-      return this.d;
-   }
-
-   private int d(int $$0, int $$1) {
-      if (this.d != fiu.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixelRGBA only works on RGBA images; have %s", this.d));
-      } else if (this.c($$0, $$1)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.e, this.f));
-      } else {
-         this.k();
-         long $$2 = ((long)$$0 + (long)$$1 * (long)this.e) * 4L;
-         return MemoryUtil.memGetInt(this.h + $$2);
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return axw.n(this.d($$0, $$1));
-   }
-
-   private void b(int $$0, int $$1, int $$2) {
-      if (this.d != fiu.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "setPixelRGBA only works on RGBA images; have %s", this.d));
-      } else if (this.c($$0, $$1)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.e, this.f));
-      } else {
-         this.k();
-         long $$3 = ((long)$$0 + (long)$$1 * (long)this.e) * 4L;
-         MemoryUtil.memPutInt(this.h + $$3, $$2);
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-      this.b($$0, $$1, axw.m($$2));
-   }
-
-   public fiu a(IntUnaryOperator $$0) {
-      if (this.d != fiu.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "function application only works on RGBA images; have %s", this.d));
-      } else {
-         this.k();
-         fiu $$1 = new fiu(this.e, this.f, false);
-         int $$2 = this.e * this.f;
-         IntBuffer $$3 = MemoryUtil.memIntBuffer(this.h, $$2);
-         IntBuffer $$4 = MemoryUtil.memIntBuffer($$1.h, $$2);
-
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            int $$6 = axw.n($$3.get($$5));
-            int $$7 = $$0.applyAsInt($$6);
-            $$4.put($$5, axw.m($$7));
-         }
-
-         return $$1;
-      }
-   }
-
-   public void b(IntUnaryOperator $$0) {
-      if (this.d != fiu.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "function application only works on RGBA images; have %s", this.d));
-      } else {
-         this.k();
-         int $$1 = this.e * this.f;
-         IntBuffer $$2 = MemoryUtil.memIntBuffer(this.h, $$1);
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            int $$4 = axw.n($$2.get($$3));
-            int $$5 = $$0.applyAsInt($$4);
-            $$2.put($$3, axw.m($$5));
-         }
-      }
-   }
-
-   public int[] d() {
-      if (this.d != fiu.a.a) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "getPixels only works on RGBA images; have %s", this.d));
-      } else {
-         this.k();
-         int[] $$0 = new int[this.e * this.f];
-         MemoryUtil.memIntBuffer(this.h, this.e * this.f).get($$0);
-         return $$0;
-      }
-   }
-
-   public int[] e() {
-      int[] $$0 = this.d();
-
-      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-         $$0[$$1] = axw.n($$0[$$1]);
-      }
-
-      return $$0;
-   }
-
-   public byte b(int $$0, int $$1) {
-      if (!this.d.r()) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "no luminance or alpha in %s", this.d));
-      } else if (this.c($$0, $$1)) {
-         throw new IllegalArgumentException(String.format(Locale.ROOT, "(%s, %s) outside of image bounds (%s, %s)", $$0, $$1, this.e, this.f));
-      } else {
-         int $$2 = ($$0 + $$1 * this.e) * this.d.a() + this.d.v() / 8;
-         return MemoryUtil.memGetByte(this.h + (long)$$2);
-      }
-   }
-
-   @Deprecated
-   public int[] f() {
-      if (this.d != fiu.a.a) {
-         throw new UnsupportedOperationException("can only call makePixelArray for RGBA images.");
-      } else {
-         this.k();
-         int[] $$0 = new int[this.a() * this.b()];
-
-         for (int $$1 = 0; $$1 < this.b(); $$1++) {
-            for (int $$2 = 0; $$2 < this.a(); $$2++) {
-               $$0[$$2 + $$1 * this.a()] = this.a($$2, $$1);
+               return $$1.a($$3);
             }
          }
 
-         return $$0;
+         throw new IllegalArgumentException("Unknown key name: " + $$0);
       }
    }
 
-   public void a(int $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThread();
-      this.k();
-      this.d.b();
-      GlStateManager._getTexImage(3553, $$0, this.d.d(), 5121, this.h);
-      if ($$1 && this.d.i()) {
-         for (int $$2 = 0; $$2 < this.b(); $$2++) {
-            for (int $$3 = 0; $$3 < this.a(); $$3++) {
-               this.b($$3, $$2, this.d($$3, $$2) | 255 << this.d.n());
-            }
-         }
-      }
+   public static boolean a(long $$0, int $$1) {
+      return GLFW.glfwGetKey($$0, $$1) == 1;
    }
 
-   public void a(float $$0) {
-      RenderSystem.assertOnRenderThread();
-      if (this.d.a() != 1) {
-         throw new IllegalStateException("Depth buffer must be stored in NativeImage with 1 component.");
-      } else {
-         this.k();
-         this.d.b();
-         GlStateManager._readPixels(0, 0, this.e, this.f, 6402, 5121, this.h);
-      }
+   public static void a(long $$0, GLFWKeyCallbackI $$1, GLFWCharModsCallbackI $$2) {
+      GLFW.glfwSetKeyCallback($$0, $$1);
+      GLFW.glfwSetCharModsCallback($$0, $$2);
    }
 
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      this.d.c();
-      GlStateManager._glDrawPixels(this.e, this.f, this.d.d(), 5121, this.h);
+   public static void a(long $$0, GLFWCursorPosCallbackI $$1, GLFWMouseButtonCallbackI $$2, GLFWScrollCallbackI $$3, GLFWDropCallbackI $$4) {
+      GLFW.glfwSetCursorPosCallback($$0, $$1);
+      GLFW.glfwSetMouseButtonCallback($$0, $$2);
+      GLFW.glfwSetScrollCallback($$0, $$3);
+      GLFW.glfwSetDropCallback($$0, $$4);
    }
 
-   public void a(File $$0) throws IOException {
-      this.a($$0.toPath());
+   public static void a(long $$0, int $$1, double $$2, double $$3) {
+      GLFW.glfwSetCursorPos($$0, $$2, $$3);
+      GLFW.glfwSetInputMode($$0, 208897, $$1);
    }
 
-   public boolean a(FT_Face $$0, int $$1) {
-      if (this.d.a() != 1) {
-         throw new IllegalArgumentException("Can only write fonts into 1-component images.");
-      } else if (fvx.b(FreeType.FT_Load_Glyph($$0, $$1, 4), "Loading glyph")) {
-         return false;
-      } else {
-         FT_GlyphSlot $$2 = Objects.requireNonNull($$0.glyph(), "Glyph not initialized");
-         FT_Bitmap $$3 = $$2.bitmap();
-         if ($$3.pixel_mode() != 2) {
-            throw new IllegalStateException("Rendered glyph was not 8-bit grayscale");
-         } else if ($$3.width() == this.a() && $$3.rows() == this.b()) {
-            int $$4 = $$3.width() * $$3.rows();
-            ByteBuffer $$5 = Objects.requireNonNull($$3.buffer($$4), "Glyph has no bitmap");
-            MemoryUtil.memCopy(MemoryUtil.memAddress($$5), this.h, (long)$$4);
-            return true;
-         } else {
-            throw new IllegalArgumentException(
-               String.format(Locale.ROOT, "Glyph bitmap of size %sx%s does not match image of size: %sx%s", $$3.width(), $$3.rows(), this.a(), this.b())
-            );
-         }
-      }
-   }
-
-   public void a(Path $$0) throws IOException {
-      if (!this.d.w()) {
-         throw new UnsupportedOperationException("Don't know how to write format " + this.d);
-      } else {
-         this.k();
-
-         try (WritableByteChannel $$1 = Files.newByteChannel($$0, c)) {
-            if (!this.a($$1)) {
-               throw new IOException("Could not write image to the PNG file \"" + $$0.toAbsolutePath() + "\": " + STBImage.stbi_failure_reason());
-            }
-         }
-      }
-   }
-
-   private boolean a(WritableByteChannel $$0) throws IOException {
-      fiu.b $$1 = new fiu.b($$0);
-
-      boolean var4;
+   public static boolean a() {
       try {
-         int $$2 = Math.min(this.b(), Integer.MAX_VALUE / this.a() / this.d.a());
-         if ($$2 < this.b()) {
-            a.warn("Dropping image height from {} to {} to fit the size into 32-bit signed int", this.b(), $$2);
-         }
-
-         if (STBImageWrite.nstbi_write_png_to_func($$1.address(), 0L, this.a(), $$2, this.d.a(), this.h, 0) != 0) {
-            $$1.a();
-            return true;
-         }
-
-         var4 = false;
-      } finally {
-         $$1.free();
-      }
-
-      return var4;
-   }
-
-   public void a(fiu $$0) {
-      if ($$0.c() != this.d) {
-         throw new UnsupportedOperationException("Image formats don't match.");
-      } else {
-         int $$1 = this.d.a();
-         this.k();
-         $$0.k();
-         if (this.e == $$0.e) {
-            MemoryUtil.memCopy($$0.h, this.h, Math.min(this.i, $$0.i));
-         } else {
-            int $$2 = Math.min(this.a(), $$0.a());
-            int $$3 = Math.min(this.b(), $$0.b());
-
-            for (int $$4 = 0; $$4 < $$3; $$4++) {
-               int $$5 = $$4 * $$0.a() * $$1;
-               int $$6 = $$4 * this.a() * $$1;
-               MemoryUtil.memCopy($$0.h + (long)$$5, this.h + (long)$$6, (long)$$2);
-            }
-         }
+         return bw != null && (boolean)bw.invokeExact();
+      } catch (Throwable var1) {
+         throw new RuntimeException(var1);
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$1; $$5 < $$1 + $$3; $$5++) {
-         for (int $$6 = $$0; $$6 < $$0 + $$2; $$6++) {
-            this.a($$6, $$5, $$4);
-         }
+   public static void a(long $$0, boolean $$1) {
+      if (a()) {
+         GLFW.glfwSetInputMode($$0, bx, $$1 ? 1 : 0);
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, boolean $$6, boolean $$7) {
-      this.a(this, $$0, $$1, $$0 + $$2, $$1 + $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public void a(fiu $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, boolean $$7, boolean $$8) {
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         for (int $$10 = 0; $$10 < $$5; $$10++) {
-            int $$11 = $$7 ? $$5 - 1 - $$10 : $$10;
-            int $$12 = $$8 ? $$6 - 1 - $$9 : $$9;
-            int $$13 = this.d($$1 + $$10, $$2 + $$9);
-            $$0.b($$3 + $$11, $$4 + $$12, $$13);
-         }
-      }
-   }
-
-   public void h() {
-      this.k();
-      int $$0 = this.d.a();
-      int $$1 = this.a() * $$0;
-      long $$2 = MemoryUtil.nmemAlloc((long)$$1);
+   static {
+      Lookup $$0 = MethodHandles.lookup();
+      MethodType $$1 = MethodType.methodType(boolean.class);
+      MethodHandle $$2 = null;
+      int $$3 = 0;
 
       try {
-         for (int $$3 = 0; $$3 < this.b() / 2; $$3++) {
-            int $$4 = $$3 * this.a() * $$0;
-            int $$5 = (this.b() - 1 - $$3) * this.a() * $$0;
-            MemoryUtil.memCopy(this.h + (long)$$4, $$2, (long)$$1);
-            MemoryUtil.memCopy(this.h + (long)$$5, this.h + (long)$$4, (long)$$1);
-            MemoryUtil.memCopy($$2, this.h + (long)$$5, (long)$$1);
-         }
-      } finally {
-         MemoryUtil.nmemFree($$2);
+         $$2 = $$0.findStatic(GLFW.class, "glfwRawMouseMotionSupported", $$1);
+         MethodHandle $$4 = $$0.findStaticGetter(GLFW.class, "GLFW_RAW_MOUSE_MOTION", int.class);
+         $$3 = (int)$$4.invokeExact();
+      } catch (NoSuchFieldException | NoSuchMethodException var5) {
+      } catch (Throwable var6) {
+         throw new RuntimeException(var6);
       }
+
+      bw = $$2;
+      bx = $$3;
+      bv = fiu.b.a.a(-1);
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3, fiu $$4) {
-      this.k();
-      if ($$4.c() != this.d) {
-         throw new UnsupportedOperationException("resizeSubRectTo only works for images of the same format.");
-      } else {
-         int $$5 = this.d.a();
-         STBImageResize.nstbir_resize_uint8(this.h + (long)(($$0 + $$1 * this.a()) * $$5), $$2, $$3, this.a() * $$5, $$4.h, $$4.a(), $$4.b(), 0, $$5);
-      }
-   }
+   public static final class a {
+      private final String a;
+      private final fiu.b b;
+      private final int c;
+      private final azg<wy> d;
+      static final Map<String, fiu.a> e = Maps.newHashMap();
 
-   public void i() {
-      fij.a(this.h);
-   }
-
-   public long j() {
-      return this.h;
-   }
-
-   public static enum a {
-      a(4, 6408, true, true, true, false, true, 0, 8, 16, 255, 24, true),
-      b(3, 6407, true, true, true, false, false, 0, 8, 16, 255, 255, true),
-      c(2, 33319, false, false, false, true, true, 255, 255, 255, 0, 8, true),
-      d(1, 6403, false, false, false, true, false, 0, 0, 0, 0, 255, true);
-
-      final int e;
-      private final int f;
-      private final boolean g;
-      private final boolean h;
-      private final boolean i;
-      private final boolean j;
-      private final boolean k;
-      private final int l;
-      private final int m;
-      private final int n;
-      private final int o;
-      private final int p;
-      private final boolean q;
-
-      private a(
-         final int $$0,
-         final int $$1,
-         final boolean $$2,
-         final boolean $$3,
-         final boolean $$4,
-         final boolean $$5,
-         final boolean $$6,
-         final int $$7,
-         final int $$8,
-         final int $$9,
-         final int $$10,
-         final int $$11,
-         final boolean $$12
-      ) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.h = $$3;
-         this.i = $$4;
-         this.j = $$5;
-         this.k = $$6;
-         this.l = $$7;
-         this.m = $$8;
-         this.n = $$9;
-         this.o = $$10;
-         this.p = $$11;
-         this.q = $$12;
-      }
-
-      public int a() {
-         return this.e;
-      }
-
-      public void b() {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager._pixelStore(3333, this.a());
-      }
-
-      public void c() {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager._pixelStore(3317, this.a());
-      }
-
-      public int d() {
-         return this.f;
-      }
-
-      public boolean e() {
-         return this.g;
-      }
-
-      public boolean f() {
-         return this.h;
-      }
-
-      public boolean g() {
-         return this.i;
-      }
-
-      public boolean h() {
-         return this.j;
-      }
-
-      public boolean i() {
-         return this.k;
-      }
-
-      public int j() {
-         return this.l;
-      }
-
-      public int k() {
-         return this.m;
-      }
-
-      public int l() {
-         return this.n;
-      }
-
-      public int m() {
-         return this.o;
-      }
-
-      public int n() {
-         return this.p;
-      }
-
-      public boolean o() {
-         return this.j || this.g;
-      }
-
-      public boolean p() {
-         return this.j || this.h;
-      }
-
-      public boolean q() {
-         return this.j || this.i;
-      }
-
-      public boolean r() {
-         return this.j || this.k;
-      }
-
-      public int s() {
-         return this.j ? this.o : this.l;
-      }
-
-      public int t() {
-         return this.j ? this.o : this.m;
-      }
-
-      public int u() {
-         return this.j ? this.o : this.n;
-      }
-
-      public int v() {
-         return this.j ? this.o : this.p;
-      }
-
-      public boolean w() {
-         return this.q;
-      }
-
-      static fiu.a a(int $$0) {
-         switch ($$0) {
-            case 1:
-               return d;
-            case 2:
-               return c;
-            case 3:
-               return b;
-            case 4:
-            default:
-               return a;
-         }
-      }
-   }
-
-   static class b extends STBIWriteCallback {
-      private final WritableByteChannel a;
-      @Nullable
-      private IOException b;
-
-      b(WritableByteChannel $$0) {
+      a(String $$0, fiu.b $$1, int $$2) {
          this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = new azg<>(() -> $$1.g.apply($$2, $$0));
+         e.put($$0, this);
       }
 
-      public void invoke(long $$0, long $$1, int $$2) {
-         ByteBuffer $$3 = getData($$1, $$2);
+      public fiu.b a() {
+         return this.b;
+      }
 
-         try {
-            this.a.write($$3);
-         } catch (IOException var8) {
-            this.b = var8;
+      public int b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.a;
+      }
+
+      public wy d() {
+         return this.d.a();
+      }
+
+      public OptionalInt e() {
+         if (this.c >= 48 && this.c <= 57) {
+            return OptionalInt.of(this.c - 48);
+         } else {
+            return this.c >= 320 && this.c <= 329 ? OptionalInt.of(this.c - 320) : OptionalInt.empty();
          }
       }
 
-      public void a() throws IOException {
-         if (this.b != null) {
-            throw this.b;
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fiu.a $$1 = (fiu.a)$$0;
+            return this.c == $$1.c && this.b == $$1.b;
+         } else {
+            return false;
          }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.b, this.c);
+      }
+
+      @Override
+      public String toString() {
+         return this.a;
+      }
+   }
+
+   public static enum b {
+      a("key.keyboard", ($$0, $$1) -> {
+         if ("key.keyboard.unknown".equals($$1)) {
+            return wy.c($$1);
+         } else {
+            String $$2 = GLFW.glfwGetKeyName($$0, -1);
+            return $$2 != null ? wy.b($$2.toUpperCase(Locale.ROOT)) : wy.c($$1);
+         }
+      }),
+      b("scancode", ($$0, $$1) -> {
+         String $$2 = GLFW.glfwGetKeyName(-1, $$0);
+         return $$2 != null ? wy.b($$2) : wy.c($$1);
+      }),
+      c("key.mouse", ($$0, $$1) -> tu.a().b($$1) ? wy.c($$1) : wy.a("key.mouse", $$0 + 1));
+
+      private static final String d = "key.keyboard.unknown";
+      private final Int2ObjectMap<fiu.a> e = new Int2ObjectOpenHashMap();
+      final String f;
+      final BiFunction<Integer, String, wy> g;
+
+      private static void a(fiu.b $$0, String $$1, int $$2) {
+         fiu.a $$3 = new fiu.a($$1, $$0, $$2);
+         $$0.e.put($$2, $$3);
+      }
+
+      private b(final String $$0, final BiFunction<Integer, String, wy> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public fiu.a a(int $$0) {
+         return (fiu.a)this.e.computeIfAbsent($$0, $$0x -> {
+            int $$1 = $$0x;
+            if (this == c) {
+               $$1 = $$0x + 1;
+            }
+
+            String $$2 = this.f + "." + $$1;
+            return new fiu.a($$2, this, $$0x);
+         });
+      }
+
+      static {
+         a(a, "key.keyboard.unknown", -1);
+         a(c, "key.mouse.left", 0);
+         a(c, "key.mouse.right", 1);
+         a(c, "key.mouse.middle", 2);
+         a(c, "key.mouse.4", 3);
+         a(c, "key.mouse.5", 4);
+         a(c, "key.mouse.6", 5);
+         a(c, "key.mouse.7", 6);
+         a(c, "key.mouse.8", 7);
+         a(a, "key.keyboard.0", 48);
+         a(a, "key.keyboard.1", 49);
+         a(a, "key.keyboard.2", 50);
+         a(a, "key.keyboard.3", 51);
+         a(a, "key.keyboard.4", 52);
+         a(a, "key.keyboard.5", 53);
+         a(a, "key.keyboard.6", 54);
+         a(a, "key.keyboard.7", 55);
+         a(a, "key.keyboard.8", 56);
+         a(a, "key.keyboard.9", 57);
+         a(a, "key.keyboard.a", 65);
+         a(a, "key.keyboard.b", 66);
+         a(a, "key.keyboard.c", 67);
+         a(a, "key.keyboard.d", 68);
+         a(a, "key.keyboard.e", 69);
+         a(a, "key.keyboard.f", 70);
+         a(a, "key.keyboard.g", 71);
+         a(a, "key.keyboard.h", 72);
+         a(a, "key.keyboard.i", 73);
+         a(a, "key.keyboard.j", 74);
+         a(a, "key.keyboard.k", 75);
+         a(a, "key.keyboard.l", 76);
+         a(a, "key.keyboard.m", 77);
+         a(a, "key.keyboard.n", 78);
+         a(a, "key.keyboard.o", 79);
+         a(a, "key.keyboard.p", 80);
+         a(a, "key.keyboard.q", 81);
+         a(a, "key.keyboard.r", 82);
+         a(a, "key.keyboard.s", 83);
+         a(a, "key.keyboard.t", 84);
+         a(a, "key.keyboard.u", 85);
+         a(a, "key.keyboard.v", 86);
+         a(a, "key.keyboard.w", 87);
+         a(a, "key.keyboard.x", 88);
+         a(a, "key.keyboard.y", 89);
+         a(a, "key.keyboard.z", 90);
+         a(a, "key.keyboard.f1", 290);
+         a(a, "key.keyboard.f2", 291);
+         a(a, "key.keyboard.f3", 292);
+         a(a, "key.keyboard.f4", 293);
+         a(a, "key.keyboard.f5", 294);
+         a(a, "key.keyboard.f6", 295);
+         a(a, "key.keyboard.f7", 296);
+         a(a, "key.keyboard.f8", 297);
+         a(a, "key.keyboard.f9", 298);
+         a(a, "key.keyboard.f10", 299);
+         a(a, "key.keyboard.f11", 300);
+         a(a, "key.keyboard.f12", 301);
+         a(a, "key.keyboard.f13", 302);
+         a(a, "key.keyboard.f14", 303);
+         a(a, "key.keyboard.f15", 304);
+         a(a, "key.keyboard.f16", 305);
+         a(a, "key.keyboard.f17", 306);
+         a(a, "key.keyboard.f18", 307);
+         a(a, "key.keyboard.f19", 308);
+         a(a, "key.keyboard.f20", 309);
+         a(a, "key.keyboard.f21", 310);
+         a(a, "key.keyboard.f22", 311);
+         a(a, "key.keyboard.f23", 312);
+         a(a, "key.keyboard.f24", 313);
+         a(a, "key.keyboard.f25", 314);
+         a(a, "key.keyboard.num.lock", 282);
+         a(a, "key.keyboard.keypad.0", 320);
+         a(a, "key.keyboard.keypad.1", 321);
+         a(a, "key.keyboard.keypad.2", 322);
+         a(a, "key.keyboard.keypad.3", 323);
+         a(a, "key.keyboard.keypad.4", 324);
+         a(a, "key.keyboard.keypad.5", 325);
+         a(a, "key.keyboard.keypad.6", 326);
+         a(a, "key.keyboard.keypad.7", 327);
+         a(a, "key.keyboard.keypad.8", 328);
+         a(a, "key.keyboard.keypad.9", 329);
+         a(a, "key.keyboard.keypad.add", 334);
+         a(a, "key.keyboard.keypad.decimal", 330);
+         a(a, "key.keyboard.keypad.enter", 335);
+         a(a, "key.keyboard.keypad.equal", 336);
+         a(a, "key.keyboard.keypad.multiply", 332);
+         a(a, "key.keyboard.keypad.divide", 331);
+         a(a, "key.keyboard.keypad.subtract", 333);
+         a(a, "key.keyboard.down", 264);
+         a(a, "key.keyboard.left", 263);
+         a(a, "key.keyboard.right", 262);
+         a(a, "key.keyboard.up", 265);
+         a(a, "key.keyboard.apostrophe", 39);
+         a(a, "key.keyboard.backslash", 92);
+         a(a, "key.keyboard.comma", 44);
+         a(a, "key.keyboard.equal", 61);
+         a(a, "key.keyboard.grave.accent", 96);
+         a(a, "key.keyboard.left.bracket", 91);
+         a(a, "key.keyboard.minus", 45);
+         a(a, "key.keyboard.period", 46);
+         a(a, "key.keyboard.right.bracket", 93);
+         a(a, "key.keyboard.semicolon", 59);
+         a(a, "key.keyboard.slash", 47);
+         a(a, "key.keyboard.space", 32);
+         a(a, "key.keyboard.tab", 258);
+         a(a, "key.keyboard.left.alt", 342);
+         a(a, "key.keyboard.left.control", 341);
+         a(a, "key.keyboard.left.shift", 340);
+         a(a, "key.keyboard.left.win", 343);
+         a(a, "key.keyboard.right.alt", 346);
+         a(a, "key.keyboard.right.control", 345);
+         a(a, "key.keyboard.right.shift", 344);
+         a(a, "key.keyboard.right.win", 347);
+         a(a, "key.keyboard.enter", 257);
+         a(a, "key.keyboard.escape", 256);
+         a(a, "key.keyboard.backspace", 259);
+         a(a, "key.keyboard.delete", 261);
+         a(a, "key.keyboard.end", 269);
+         a(a, "key.keyboard.home", 268);
+         a(a, "key.keyboard.insert", 260);
+         a(a, "key.keyboard.page.down", 267);
+         a(a, "key.keyboard.page.up", 266);
+         a(a, "key.keyboard.caps.lock", 280);
+         a(a, "key.keyboard.pause", 284);
+         a(a, "key.keyboard.scroll.lock", 281);
+         a(a, "key.keyboard.menu", 348);
+         a(a, "key.keyboard.print.screen", 283);
+         a(a, "key.keyboard.world.1", 161);
+         a(a, "key.keyboard.world.2", 162);
       }
    }
 }

@@ -1,16 +1,16 @@
-public class gzf extends gxz<cle, hdz, giq> {
-   private static final alg a = alg.b("textures/entity/tadpole/tadpole.png");
+public class gzf extends gvw<csn, hcl> {
+   public static final alg a = alg.b("textures/entity/projectiles/spectral_arrow.png");
 
-   public gzf(gwt.a $$0) {
-      super($$0, new giq($$0.a(gjn.dx)), 0.14F);
+   public gzf(gwy.a $$0) {
+      super($$0);
    }
 
    @Override
-   public alg b(hdz $$0) {
+   protected alg a(hcl $$0) {
       return a;
    }
 
-   public hdz b() {
-      return new hdz();
+   public hcl a() {
+      return new hcl();
    }
 }

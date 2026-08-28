@@ -1,46 +1,103 @@
-public class dfc extends ddr {
-   public dfc(ddo $$0) {
-      super($$0);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class dfc implements dez {
+   final dea d;
+   final dea e;
+   final dea f;
+   final jf<dic> g;
+   @Nullable
+   private ded h;
+
+   public dfc(dea $$0, dea $$1, dea $$2, jf<dic> $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public boolean a(ddp $$0, djh $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               czk $$4 = $$0.a($$3, $$2);
-               if ($$4.f()) {
-                  return false;
-               }
+   public czn a(dfa $$0, jh.a $$1) {
+      return a($$1, $$0.d(), $$0.e(), this.g);
+   }
 
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(czo.wC)) {
-                     return false;
-                  }
-               } else if (!$$4.a(czo.pk)) {
-                  return false;
-               }
-            }
+   public static czn a(jh.a $$0, czn $$1, czn $$2, jf<dic> $$3) {
+      Optional<jf<dia>> $$4 = dib.a($$0, $$2);
+      if ($$4.isPresent()) {
+         dhy $$5 = $$1.a(kk.W);
+         dhy $$6 = new dhy($$4.get(), $$3);
+         if (Objects.equals($$5, $$6)) {
+            return czn.k;
+         } else {
+            czn $$7 = $$1.c(1);
+            $$7.b(kk.W, $$6);
+            return $$7;
          }
-
-         return true;
       } else {
-         return false;
-      }
-   }
-
-   public czk a(ddp $$0, jh.a $$1) {
-      czk $$2 = $$0.a(1, 1);
-      if (!$$2.a(czo.wC)) {
-         return czk.k;
-      } else {
-         czk $$3 = new czk(czo.wB, 8);
-         $$3.b(kk.R, $$2.a(kk.R));
-         return $$3;
+         return czn.k;
       }
    }
 
    @Override
-   public del<dfc> a() {
-      return del.j;
+   public Optional<dea> c() {
+      return Optional.of(this.d);
+   }
+
+   @Override
+   public dea f() {
+      return this.e;
+   }
+
+   @Override
+   public Optional<dea> k() {
+      return Optional.of(this.f);
+   }
+
+   @Override
+   public deo<dfc> a() {
+      return deo.u;
+   }
+
+   @Override
+   public ded al_() {
+      if (this.h == null) {
+         this.h = ded.b(List.of(this.d, this.e, this.f));
+      }
+
+      return this.h;
+   }
+
+   @Override
+   public List<dfk> g() {
+      dfq $$0 = this.e.c();
+      dfq $$1 = this.f.c();
+      dfq $$2 = this.d.c();
+      return List.of(new dft($$2, $$0, $$1, new dfq.g($$0, $$1, this.g), new dfq.d(czr.xB)));
+   }
+
+   public static class a implements deo<dfc> {
+      private static final MapCodec<dfc> x = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dea.d.fieldOf("template").forGetter($$0x -> $$0x.d),
+                  dea.d.fieldOf("base").forGetter($$0x -> $$0x.e),
+                  dea.d.fieldOf("addition").forGetter($$0x -> $$0x.f),
+                  dic.c.fieldOf("pattern").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, dfc::new)
+      );
+      public static final yw<wj, dfc> w = yw.a(dea.a, $$0 -> $$0.d, dea.a, $$0 -> $$0.e, dea.a, $$0 -> $$0.f, dic.d, $$0 -> $$0.g, dfc::new);
+
+      @Override
+      public MapCodec<dfc> a() {
+         return x;
+      }
+
+      @Override
+      public yw<wj, dfc> b() {
+         return w;
+      }
    }
 }

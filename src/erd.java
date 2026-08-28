@@ -1,221 +1,113 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.Optional;
 
 public class erd {
-   private static final Map<String, String> a = ag.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("Village", "Village");
-      $$0.put("Mineshaft", "Mineshaft");
-      $$0.put("Mansion", "Mansion");
-      $$0.put("Igloo", "Temple");
-      $$0.put("Desert_Pyramid", "Temple");
-      $$0.put("Jungle_Pyramid", "Temple");
-      $$0.put("Swamp_Hut", "Temple");
-      $$0.put("Stronghold", "Stronghold");
-      $$0.put("Monument", "Monument");
-      $$0.put("Fortress", "Fortress");
-      $$0.put("EndCity", "EndCity");
-   });
-   private static final Map<String, String> b = ag.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("Iglu", "Igloo");
-      $$0.put("TeDP", "Desert_Pyramid");
-      $$0.put("TeJP", "Jungle_Pyramid");
-      $$0.put("TeSH", "Swamp_Hut");
-   });
-   private static final Set<String> c = Set.of(
-      "pillager_outpost",
-      "mineshaft",
-      "mansion",
-      "jungle_pyramid",
-      "desert_pyramid",
-      "igloo",
-      "ruined_portal",
-      "shipwreck",
-      "swamp_hut",
-      "stronghold",
-      "monument",
-      "ocean_ruin",
-      "fortress",
-      "endcity",
-      "buried_treasure",
-      "village",
-      "nether_fossil",
-      "bastion_remnant"
-   );
-   private final boolean d;
-   private final Map<String, Long2ObjectMap<tz>> e = Maps.newHashMap();
-   private final Map<String, erl> f = Maps.newHashMap();
-   private final List<String> g;
-   private final List<String> h;
+   public static final alf<erc> a = a("normal");
+   public static final alf<erc> b = a("flat");
+   public static final alf<erc> c = a("large_biomes");
+   public static final alf<erc> d = a("amplified");
+   public static final alf<erc> e = a("single_biome_surface");
+   public static final alf<erc> f = a("debug_all_block_states");
 
-   public erd(@Nullable eyw $$0, List<String> $$1, List<String> $$2) {
-      this.g = $$1;
-      this.h = $$2;
-      this.a($$0);
-      boolean $$3 = false;
-
-      for (String $$4 : this.h) {
-         $$3 |= this.e.get($$4) != null;
-      }
-
-      this.d = $$3;
+   public static void a(qh<erc> $$0) {
+      new erd.a($$0).a();
    }
 
-   public void a(long $$0) {
-      for (String $$1 : this.g) {
-         erl $$2 = this.f.get($$1);
-         if ($$2 != null && $$2.c($$0)) {
-            $$2.d($$0);
-         }
-      }
+   private static alf<erc> a(String $$0) {
+      return alf.a(mh.bo, alg.b($$0));
    }
 
-   public tz a(tz $$0) {
-      tz $$1 = $$0.n("Level");
-      dio $$2 = new dio($$1.f("xPos"), $$1.f("zPos"));
-      if (this.a($$2.h, $$2.i)) {
-         $$0 = this.a($$0, $$2);
-      }
+   public static Optional<alf<erc>> a(ehn $$0) {
+      return $$0.a(eer.b).flatMap($$0x -> {
+         Object var10000;
+         Objects.requireNonNull(var10000);
+         ecr $$1 = (ecr)var10000;
 
-      tz $$3 = $$1.n("Structures");
-      tz $$4 = $$3.n("References");
-
-      for (String $$5 : this.h) {
-         boolean $$6 = c.contains($$5.toLowerCase(Locale.ROOT));
-         if (!$$4.b($$5, 12) && $$6) {
-            int $$7 = 8;
-            LongList $$8 = new LongArrayList();
-
-            for (int $$9 = $$2.h - 8; $$9 <= $$2.h + 8; $$9++) {
-               for (int $$10 = $$2.i - 8; $$10 <= $$2.i + 8; $$10++) {
-                  if (this.a($$9, $$10, $$5)) {
-                     $$8.add(dio.c($$9, $$10));
-                  }
-               }
-            }
-
-            $$4.c($$5, $$8);
-         }
-      }
-
-      $$3.a("References", $$4);
-      $$1.a("Structures", $$3);
-      $$0.a("Level", $$1);
-      return $$0;
+         $$0x.b();
+         return switch ($$1) {
+            case egn $$3 -> Optional.of(b);
+            case egj $$4 -> Optional.of(f);
+            case egv $$5 -> Optional.of(a);
+            default -> Optional.empty();
+         };
+      });
    }
 
-   private boolean a(int $$0, int $$1, String $$2) {
-      return !this.d ? false : this.e.get($$2) != null && this.f.get(a.get($$2)).b(dio.c($$0, $$1));
+   public static ehn a(jh.a $$0) {
+      return $$0.e(mh.bo).b(a).a().a();
    }
 
-   private boolean a(int $$0, int $$1) {
-      if (!this.d) {
-         return false;
-      } else {
-         for (String $$2 : this.h) {
-            if (this.e.get($$2) != null && this.f.get(a.get($$2)).c(dio.c($$0, $$1))) {
-               return true;
-            }
-         }
+   public static eer b(jh.a $$0) {
+      return $$0.e(mh.bo).b(a).a().b().orElseThrow();
+   }
 
-         return false;
+   public static ehn c(jh.a $$0) {
+      return $$0.e(mh.bo).b(b).a().a();
+   }
+
+   static class a {
+      private final qh<erc> a;
+      private final jg<egx> b;
+      private final jg<dkp> c;
+      private final jg<eqr> d;
+      private final jg<ert> e;
+      private final jg<dld> f;
+      private final jf<eeq> g;
+      private final eer h;
+      private final eer i;
+
+      a(qh<erc> $$0) {
+         this.a = $$0;
+         jg<eeq> $$1 = $$0.a(mh.aP);
+         this.b = $$0.a(mh.aX);
+         this.c = $$0.a(mh.aG);
+         this.d = $$0.a(mh.bb);
+         this.e = $$0.a(mh.bd);
+         this.f = $$0.a(mh.aW);
+         this.g = $$1.b(eeo.a);
+         jf<eeq> $$2 = $$1.b(eeo.b);
+         jf<egx> $$3 = this.b.b(egx.f);
+         jf.c<dld> $$4 = this.f.b(dle.a);
+         this.h = new eer($$2, new egv(dlc.a($$4), $$3));
+         jf<eeq> $$5 = $$1.b(eeo.c);
+         jf<egx> $$6 = this.b.b(egx.g);
+         this.i = new eer($$5, new egv(dlg.a(this.c), $$6));
       }
-   }
 
-   private tz a(tz $$0, dio $$1) {
-      tz $$2 = $$0.n("Level");
-      tz $$3 = $$2.n("Structures");
-      tz $$4 = $$3.n("Starts");
-
-      for (String $$5 : this.h) {
-         Long2ObjectMap<tz> $$6 = this.e.get($$5);
-         if ($$6 != null) {
-            long $$7 = $$1.a();
-            if (this.f.get(a.get($$5)).c($$7)) {
-               tz $$8 = (tz)$$6.get($$7);
-               if ($$8 != null) {
-                  $$4.a($$5, $$8);
-               }
-            }
-         }
+      private eer a(ecr $$0) {
+         return new eer(this.g, $$0);
       }
 
-      $$3.a("Starts", $$4);
-      $$2.a("Structures", $$3);
-      $$0.a("Level", $$2);
-      return $$0;
-   }
-
-   private void a(@Nullable eyw $$0) {
-      if ($$0 != null) {
-         for (String $$1 : this.g) {
-            tz $$2 = new tz();
-
-            try {
-               $$2 = $$0.a($$1, bbb.o, 1493).n("data").n("Features");
-               if ($$2.g()) {
-                  continue;
-               }
-            } catch (IOException var13) {
-            }
-
-            for (String $$3 : $$2.e()) {
-               tz $$4 = $$2.n($$3);
-               long $$5 = dio.c($$4.f("ChunkX"), $$4.f("ChunkZ"));
-               uf $$6 = $$4.d("Children", 10);
-               if (!$$6.isEmpty()) {
-                  String $$7 = $$6.a(0).j("id");
-                  String $$8 = b.get($$7);
-                  if ($$8 != null) {
-                     $$4.a("id", $$8);
-                  }
-               }
-
-               String $$9 = $$4.j("id");
-               this.e.computeIfAbsent($$9, $$0x -> new Long2ObjectOpenHashMap()).put($$5, $$4);
-            }
-
-            String $$10 = $$1 + "_index";
-            erl $$11 = $$0.a(erl.a($$10));
-            if ($$11.a().isEmpty()) {
-               erl $$12 = new erl();
-               this.f.put($$1, $$12);
-
-               for (String $$13 : $$2.e()) {
-                  tz $$14 = $$2.n($$13);
-                  $$12.a(dio.c($$14.f("ChunkX"), $$14.f("ChunkZ")));
-               }
-            } else {
-               this.f.put($$1, $$11);
-            }
-         }
+      private eer a(dkt $$0, jf<egx> $$1) {
+         return this.a(new egv($$0, $$1));
       }
-   }
 
-   public static erd a(alf<djh> $$0, @Nullable eyw $$1) {
-      if ($$0 == djh.i) {
-         return new erd(
-            $$1,
-            ImmutableList.of("Monument", "Stronghold", "Village", "Mineshaft", "Temple", "Mansion"),
-            ImmutableList.of("Village", "Mineshaft", "Mansion", "Igloo", "Desert_Pyramid", "Jungle_Pyramid", "Swamp_Hut", "Stronghold", "Monument")
-         );
-      } else if ($$0 == djh.j) {
-         List<String> $$2 = ImmutableList.of("Fortress");
-         return new erd($$1, $$2, $$2);
-      } else if ($$0 == djh.k) {
-         List<String> $$3 = ImmutableList.of("EndCity");
-         return new erd($$1, $$3, $$3);
-      } else {
-         throw new RuntimeException(String.format(Locale.ROOT, "Unknown dimension type : %s", $$0));
+      private erc a(eer $$0) {
+         return new erc(Map.of(eer.b, $$0, eer.c, this.h, eer.d, this.i));
+      }
+
+      private void a(alf<erc> $$0, eer $$1) {
+         this.a.a($$0, this.a($$1));
+      }
+
+      private void a(dkt $$0) {
+         jf<egx> $$1 = this.b.b(egx.c);
+         this.a(erd.a, this.a($$0, $$1));
+         jf<egx> $$2 = this.b.b(egx.d);
+         this.a(erd.c, this.a($$0, $$2));
+         jf<egx> $$3 = this.b.b(egx.e);
+         this.a(erd.d, this.a($$0, $$3));
+      }
+
+      public void a() {
+         jf.c<dld> $$0 = this.f.b(dle.b);
+         this.a(dlc.a($$0));
+         jf<egx> $$1 = this.b.b(egx.c);
+         jf.c<dkp> $$2 = this.c.b(dkw.b);
+         this.a(erd.e, this.a(new dla($$2), $$1));
+         this.a(erd.b, this.a(new egn(epq.a(this.c, this.e, this.d))));
+         this.a(erd.f, this.a(new egj($$2)));
       }
    }
 }

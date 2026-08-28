@@ -1,6 +1,6 @@
 import com.google.common.collect.ImmutableMap;
 
-public class cda extends bza<cqm> {
+public class cda extends bza<cqp> {
    private static final int d = 15;
    private static final int e = 20;
    private static final double f = 0.5;
@@ -13,33 +13,33 @@ public class cda extends bza<cqm> {
       super(ImmutableMap.of(cgl.p, cgm.a, cgl.aK, cgm.b, cgl.aL, cgm.c, cgl.aM, cgm.c), i);
    }
 
-   protected boolean a(arq $$0, cqm $$1) {
+   protected boolean a(arq $$0, cqp $$1) {
       return $$1.a($$1.eb().c(cgl.p).get(), 15.0, 20.0);
    }
 
-   protected boolean a(arq $$0, cqm $$1, long $$2) {
+   protected boolean a(arq $$0, cqp $$1, long $$2) {
       return true;
    }
 
-   protected void b(arq $$0, cqm $$1, long $$2) {
+   protected void b(arq $$0, cqp $$1, long $$2) {
       $$1.eb().a(cgl.q, true, (long)i);
       $$1.eb().a(cgl.aM, bau.a, (long)h);
       $$0.a($$1, (byte)62);
       $$1.a(awn.Db, 3.0F, 1.0F);
    }
 
-   protected void c(arq $$0, cqm $$1, long $$2) {
+   protected void c(arq $$0, cqp $$1, long $$2) {
       $$1.eb().c(cgl.p).ifPresent($$1x -> $$1.J().a($$1x.ds()));
       if (!$$1.eb().a(cgl.aM) && !$$1.eb().a(cgl.aL)) {
          $$1.eb().a(cgl.aL, bau.a, (long)(i - h));
          $$1.eb().c(cgl.p).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            fex $$3 = $$1.ds().e($$1.dr().b(bwj.d, 0, $$1.dK()));
-            fex $$4 = $$2x.bC().d($$3);
-            fex $$5 = $$4.d();
+            ffc $$3 = $$1.ds().e($$1.dr().b(bwj.d, 0, $$1.dK()));
+            ffc $$4 = $$2x.bC().d($$3);
+            ffc $$5 = $$4.d();
             int $$6 = azm.a($$4.g()) + 7;
 
             for (int $$7 = 1; $$7 < $$6; $$7++) {
-               fex $$8 = $$3.e($$5.c((double)$$7));
+               ffc $$8 = $$3.e($$5.c((double)$$7));
                $$0.a(ly.B, $$8.d, $$8.e, $$8.f, 1, 0.0, 0.0, 0.0, 0.0);
             }
 
@@ -53,7 +53,7 @@ public class cda extends bza<cqm> {
       }
    }
 
-   protected void d(arq $$0, cqm $$1, long $$2) {
+   protected void d(arq $$0, cqp $$1, long $$2) {
       a($$1, 40);
    }
 

@@ -1,76 +1,165 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class epe {
-   public static final Codec<epe> c = mg.V.q().dispatch(epe::a, epf::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
-
-   protected static <P extends epe> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
-   }
+public class epe extends epj {
+   public static final MapCodec<epe> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, epe::new));
+   private static final double b = 0.618;
+   private static final double h = 1.382;
+   private static final double i = 0.381;
+   private static final double j = 0.328;
 
    public epe(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+      super($$0, $$1, $$2);
    }
 
-   protected abstract epf<?> a();
-
-   public abstract List<enj.a> a(djn var1, BiConsumer<iv, eao> var2, azv var3, int var4, iv var5, emt var6);
-
-   public int a(azv $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   @Override
+   protected epk<?> a() {
+      return epk.f;
    }
 
-   private static boolean c(djn $$0, iv $$1) {
-      return $$0.a($$1, $$0x -> ejt.b($$0x) && !$$0x.a(dmo.i) && !$$0x.a(dmo.fE));
-   }
+   @Override
+   public List<eno.a> a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, iv $$4, emy $$5) {
+      int $$6 = 5;
+      int $$7 = $$3 + 2;
+      int $$8 = azm.a((double)$$7 * 0.618);
+      a($$0, $$1, $$2, $$4.e(), $$5);
+      double $$9 = 1.0;
+      int $$10 = Math.min(1, azm.a(1.382 + Math.pow(1.0 * (double)$$7 / 13.0, 2.0)));
+      int $$11 = $$4.v() + $$8;
+      int $$12 = $$7 - 5;
+      List<epe.a> $$13 = Lists.newArrayList();
+      $$13.add(new epe.a($$4.b($$12), $$11));
 
-   protected static void a(djn $$0, BiConsumer<iv, eao> $$1, azv $$2, iv $$3, emt $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      for (; $$12 >= 0; $$12--) {
+         float $$14 = b($$7, $$12);
+         if (!($$14 < 0.0F)) {
+            for (int $$15 = 0; $$15 < $$10; $$15++) {
+               double $$16 = 1.0;
+               double $$17 = 1.0 * (double)$$14 * ((double)$$2.i() + 0.328);
+               double $$18 = (double)($$2.i() * 2.0F) * Math.PI;
+               double $$19 = $$17 * Math.sin($$18) + 0.5;
+               double $$20 = $$17 * Math.cos($$18) + 0.5;
+               iv $$21 = $$4.b(azm.a($$19), $$12 - 1, azm.a($$20));
+               iv $$22 = $$21.b(5);
+               if (this.a($$0, $$1, $$2, $$21, $$22, false, $$5)) {
+                  int $$23 = $$4.u() - $$21.u();
+                  int $$24 = $$4.w() - $$21.w();
+                  double $$25 = (double)$$21.v() - Math.sqrt((double)($$23 * $$23 + $$24 * $$24)) * 0.381;
+                  int $$26 = $$25 > (double)$$11 ? $$11 : (int)$$25;
+                  iv $$27 = new iv($$4.u(), $$26, $$4.w());
+                  if (this.a($$0, $$1, $$2, $$27, $$21, false, $$5)) {
+                     $$13.add(new epe.a($$21, $$27.v()));
+                  }
+               }
+            }
+         }
       }
+
+      this.a($$0, $$1, $$2, $$4, $$4.b($$8), true, $$5);
+      this.a($$0, $$1, $$2, $$7, $$4, $$13, $$5);
+      List<eno.a> $$28 = Lists.newArrayList();
+
+      for (epe.a $$29 : $$13) {
+         if (this.a($$7, $$29.a() - $$4.v())) {
+            $$28.add($$29.a);
+         }
+      }
+
+      return $$28;
    }
 
-   protected boolean b(djn $$0, BiConsumer<iv, eao> $$1, azv $$2, iv $$3, emt $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(djn $$0, BiConsumer<iv, eao> $$1, azv $$2, iv $$3, emt $$4, Function<eao, eao> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+   private boolean a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, iv $$3, iv $$4, boolean $$5, emy $$6) {
+      if (!$$5 && Objects.equals($$3, $$4)) {
          return true;
       } else {
-         return false;
+         iv $$7 = $$4.b(-$$3.u(), -$$3.v(), -$$3.w());
+         int $$8 = this.a($$7);
+         float $$9 = (float)$$7.u() / (float)$$8;
+         float $$10 = (float)$$7.v() / (float)$$8;
+         float $$11 = (float)$$7.w() / (float)$$8;
+
+         for (int $$12 = 0; $$12 <= $$8; $$12++) {
+            iv $$13 = $$3.b(azm.d(0.5F + (float)$$12 * $$9), azm.d(0.5F + (float)$$12 * $$10), azm.d(0.5F + (float)$$12 * $$11));
+            if ($$5) {
+               this.a($$0, $$1, $$2, $$13, $$6, $$2x -> $$2x.c(dtk.d, this.a($$3, $$13)));
+            } else if (!this.b($$0, $$13)) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 
-   protected void a(djn $$0, BiConsumer<iv, eao> $$1, azv $$2, iv.a $$3, emt $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
+   private int a(iv $$0) {
+      int $$1 = azm.a($$0.u());
+      int $$2 = azm.a($$0.v());
+      int $$3 = azm.a($$0.w());
+      return Math.max($$1, Math.max($$2, $$3));
+   }
+
+   private jb.a a(iv $$0, iv $$1) {
+      jb.a $$2 = jb.a.b;
+      int $$3 = Math.abs($$1.u() - $$0.u());
+      int $$4 = Math.abs($$1.w() - $$0.w());
+      int $$5 = Math.max($$3, $$4);
+      if ($$5 > 0) {
+         if ($$3 == $$5) {
+            $$2 = jb.a.a;
+         } else {
+            $$2 = jb.a.c;
+         }
+      }
+
+      return $$2;
+   }
+
+   private boolean a(int $$0, int $$1) {
+      return (double)$$1 >= (double)$$0 * 0.2;
+   }
+
+   private void a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, iv $$4, List<epe.a> $$5, emy $$6) {
+      for (epe.a $$7 : $$5) {
+         int $$8 = $$7.a();
+         iv $$9 = new iv($$4.u(), $$8, $$4.w());
+         if (!$$9.equals($$7.a.a()) && this.a($$3, $$8 - $$4.v())) {
+            this.a($$0, $$1, $$2, $$9, $$7.a.a(), true, $$6);
+         }
       }
    }
 
-   protected boolean a(djn $$0, iv $$1) {
-      return elf.d($$0, $$1);
+   private static float b(int $$0, int $$1) {
+      if ((float)$$1 < (float)$$0 * 0.3F) {
+         return -1.0F;
+      } else {
+         float $$2 = (float)$$0 / 2.0F;
+         float $$3 = $$2 - (float)$$1;
+         float $$4 = azm.c($$2 * $$2 - $$3 * $$3);
+         if ($$3 == 0.0F) {
+            $$4 = $$2;
+         } else if (Math.abs($$3) >= $$2) {
+            return 0.0F;
+         }
+
+         return $$4 * 0.5F;
+      }
    }
 
-   public boolean b(djn $$0, iv $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(axc.u));
+   static class a {
+      final eno.a a;
+      private final int b;
+
+      public a(iv $$0, int $$1) {
+         this.a = new eno.a($$0, 0, false);
+         this.b = $$1;
+      }
+
+      public int a() {
+         return this.b;
+      }
    }
 }

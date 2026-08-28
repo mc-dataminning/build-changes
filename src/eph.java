@@ -1,8 +1,41 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface eph {
+public class eph extends epg {
+   public static final MapCodec<eph> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eph::new));
+
+   public eph(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   @Override
+   protected epk<?> a() {
+      return epk.d;
+   }
+
+   @Override
+   public List<eno.a> a(djs $$0, BiConsumer<iv, eat> $$1, azv $$2, int $$3, iv $$4, emy $$5) {
+      List<eno.a> $$6 = Lists.newArrayList();
+      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
+
+      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
+         float $$8 = $$2.i() * (float) (Math.PI * 2);
+         int $$9 = 0;
+         int $$10 = 0;
+
+         for (int $$11 = 0; $$11 < 5; $$11++) {
+            $$9 = (int)(1.5F + azm.b($$8) * (float)$$11);
+            $$10 = (int)(1.5F + azm.a($$8) * (float)$$11);
+            iv $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
+            this.b($$0, $$1, $$2, $$12, $$5);
+         }
+
+         $$6.add(new eno.a($$4.b($$9, $$7, $$10), -2, false));
+      }
+
+      return $$6;
+   }
 }

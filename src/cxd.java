@@ -1,9 +1,28 @@
-public class cxd extends cve {
-   public cxd(int $$0, cri $$1) {
-      super(cwl.w, dem.d, dek.g, cws.d, $$0, $$1);
+import it.unimi.dsi.fastutil.ints.IntList;
+
+public interface cxd extends bak {
+   IntList a();
+
+   default int b() {
+      return this.a().size();
    }
 
-   public cxd(int $$0, cri $$1, btz $$2, cvo $$3) {
-      super(cwl.w, dem.d, dek.g, cws.d, $$0, $$1, $$2, $$3);
+   static cxd a(final String $$0, final IntList $$1) {
+      return new cxd() {
+         @Override
+         public IntList a() {
+            return $$1;
+         }
+
+         @Override
+         public String c() {
+            return $$0;
+         }
+
+         @Override
+         public String toString() {
+            return $$0;
+         }
+      };
    }
 }

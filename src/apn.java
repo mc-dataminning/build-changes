@@ -121,8 +121,8 @@ public class apn {
    }
 
    private static int a(ej $$0, Collection<? extends bwi> $$1, arq $$2, gi $$3, @Nullable gi $$4, @Nullable aoa $$5) throws CommandSyntaxException {
-      fex $$6 = $$3.a($$0);
-      few $$7 = $$4 == null ? null : $$4.b($$0);
+      ffc $$6 = $$3.a($$0);
+      ffb $$7 = $$4 == null ? null : $$4.b($$0);
 
       for (bwi $$8 : $$1) {
          Set<bxx> $$9 = a($$3, $$4, $$8.dU().aj() == $$2.aj());
@@ -182,7 +182,7 @@ public class apn {
 
    private static void a(ej $$0, bwi $$1, arq $$2, double $$3, double $$4, double $$5, Set<bxx> $$6, float $$7, float $$8, @Nullable aoa $$9) throws CommandSyntaxException {
       iv $$10 = iv.a($$3, $$4, $$5);
-      if (!djh.l($$10)) {
+      if (!djm.l($$10)) {
          throw a.create();
       } else {
          double $$11 = $$6.contains(bxx.a) ? $$3 - $$1.dz() : $$3;

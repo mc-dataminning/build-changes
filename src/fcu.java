@@ -1,36 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Function;
 
-public record fcu(fcx b) implements fcx {
-   public static final MapCodec<fcu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fcx.e.fieldOf("term").forGetter(fcu::c)).apply($$0, fcu::new));
+public interface fcu<T extends fcu<T>> {
+   T b(fdc.a var1);
 
-   @Override
-   public fcy b() {
-      return fcz.a;
+   default <E> T a_(Iterable<E> $$0, Function<E, fdc.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   public boolean a(ezo $$0) {
-      return !this.b.test($$0);
-   }
-
-   @Override
-   public Set<bax<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public void a(ezu $$0) {
-      fcx.super.a($$0);
-      this.b.a($$0);
-   }
-
-   public static fcx.a a(fcx.a $$0) {
-      fcu $$1 = new fcu($$0.build());
-      return () -> $$1;
-   }
-
-   public fcx c() {
-      return this.b;
-   }
+   T d();
 }

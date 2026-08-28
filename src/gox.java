@@ -1,19 +1,27 @@
-public class gox extends gou {
-   private final fex a;
-
-   gox(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fex $$7, int $$8) {
+public class gox extends goz {
+   gox(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      $$8 = axw.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
-      this.v = (float)axw.b($$8) / 255.0F;
-      this.w = (float)axw.c($$8) / 255.0F;
-      this.x = (float)axw.d($$8) / 255.0F;
-      this.D = 0.26F;
-      this.a = $$7;
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public gny b() {
-      return gny.b;
+   public god b() {
+      return god.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
@@ -21,33 +29,89 @@ public class gox extends gou {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.t-- <= 0) {
          this.k();
       } else {
-         int $$0 = this.t - this.s;
-         double $$1 = 1.0 / (double)$$0;
-         this.g = azm.d($$1, this.g, this.a.a());
-         this.h = azm.d($$1, this.h, this.a.b());
-         this.i = azm.d($$1, this.i, this.a.c());
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
       }
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public static class a implements goc<mc> {
+      private final gou a;
 
-   public static class a implements gnx<md> {
-      private final gop a;
-
-      public a(gop $$0) {
+      public a(gou $$0) {
          this.a = $$0;
       }
 
-      public gnu a(md $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gox $$8 = new gox($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gox $$8 = new gox($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
-         $$8.a($$0.d());
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.C_().a(5));
+         return $$8;
+      }
+   }
+
+   public static class b implements goc<mc> {
+      private final gou a;
+
+      public b(gou $$0) {
+         this.a = $$0;
+      }
+
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gox $$8 = new gox($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.A.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
+   }
+
+   public static class c implements goc<mc> {
+      private final gou a;
+
+      public c(gou $$0) {
+         this.a = $$0;
+      }
+
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gox $$8 = new gox($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements goc<mc> {
+      private final gou a;
+
+      public d(gou $$0) {
+         this.a = $$0;
+      }
+
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gox $$8 = new gox($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements goc<mc> {
+      private final gou a;
+
+      public e(gou $$0) {
+         this.a = $$0;
+      }
+
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gox $$8 = new gox($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
          return $$8;
       }
    }

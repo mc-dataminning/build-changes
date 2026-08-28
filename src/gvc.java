@@ -1,62 +1,179 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-public class gvc implements guo.a {
-   private final fpo a;
-   private double b = Double.MIN_VALUE;
-   private List<bwi> c = Collections.emptyList();
+public class gvc implements gut.a {
+   private final Map<Integer, exo> a = Maps.newHashMap();
+   private final Map<Integer, Float> b = Maps.newHashMap();
+   private final Map<Integer, Long> c = Maps.newHashMap();
+   private static final long d = 5000L;
+   private static final float e = 80.0F;
+   private static final boolean f = true;
+   private static final boolean g = false;
+   private static final boolean h = false;
+   private static final boolean i = true;
+   private static final boolean j = true;
+   private static final float k = 0.02F;
 
-   public gvc(fpo $$0) {
-      this.a = $$0;
+   public void a(int $$0, exo $$1, float $$2) {
+      this.a.put($$0, $$1);
+      this.c.put($$0, ag.c());
+      this.b.put($$0, $$2);
    }
 
    @Override
-   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ag.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bwi $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dU().a_($$6, $$6.cQ().g(16.0)));
-      }
+   public void a(fkd $$0, gqr $$1, double $$2, double $$3, double $$4) {
+      if (!this.a.isEmpty()) {
+         long $$5 = ag.c();
 
-      crj $$7 = this.a.t;
-      if ($$7 != null && $$7.ax.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
+         for (Integer $$6 : this.a.keySet()) {
+            exo $$7 = this.a.get($$6);
+            float $$8 = this.b.get($$6);
+            a($$0, $$1, $$7, $$8, true, true, $$2, $$3, $$4);
+         }
 
-      for (bwi $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+         for (Integer $$9 : this.c.keySet().toArray(new Integer[0])) {
+            if ($$5 - this.c.get($$9) > 5000L) {
+               this.a.remove($$9);
+               this.c.remove($$9);
+            }
          }
       }
    }
 
-   private void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4, bwi $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.ax.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         iv $$12 = $$5.aP();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         iv $$13 = $$5.aN();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+   public static void a(fkd $$0, gqr $$1, exo $$2, float $$3, boolean $$4, boolean $$5, double $$6, double $$7, double $$8) {
+      a($$0, $$1.getBuffer(grc.a(6.0)), $$2, $$6, $$7, $$8);
+      iv $$9 = $$2.l();
+      if (a($$9, $$6, $$7, $$8) <= 80.0F) {
+         gut.a(
+            $$0,
+            $$1,
+            new fex(
+                  (double)((float)$$9.u() + 0.25F),
+                  (double)((float)$$9.v() + 0.25F),
+                  (double)$$9.w() + 0.25,
+                  (double)((float)$$9.u() + 0.75F),
+                  (double)((float)$$9.v() + 0.75F),
+                  (double)((float)$$9.w() + 0.75F)
+               )
+               .d(-$$6, -$$7, -$$8),
+            0.0F,
+            1.0F,
+            0.0F,
+            0.5F
+         );
+
+         for (int $$10 = 0; $$10 < $$2.e(); $$10++) {
+            exm $$11 = $$2.a($$10);
+            if (a($$11.a(), $$6, $$7, $$8) <= 80.0F) {
+               float $$12 = $$10 == $$2.f() ? 1.0F : 0.0F;
+               float $$13 = $$10 == $$2.f() ? 0.0F : 1.0F;
+               gut.a(
+                  $$0,
+                  $$1,
+                  new fex(
+                        (double)((float)$$11.a + 0.5F - $$3),
+                        (double)((float)$$11.b + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F - $$3),
+                        (double)((float)$$11.a + 0.5F + $$3),
+                        (double)((float)$$11.b + 0.25F + 0.01F * (float)$$10),
+                        (double)((float)$$11.c + 0.5F + $$3)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  $$12,
+                  0.0F,
+                  $$13,
+                  0.5F
+               );
+            }
          }
-      });
+      }
+
+      exo.a $$14 = $$2.k();
+      if ($$4 && $$14 != null) {
+         for (exm $$15 : $$14.b()) {
+            if (a($$15.a(), $$6, $$7, $$8) <= 80.0F) {
+               gut.a(
+                  $$0,
+                  $$1,
+                  new fex(
+                        (double)((float)$$15.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.b + 0.01F),
+                        (double)((float)$$15.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$15.a + 0.5F + $$3 / 2.0F),
+                        (double)$$15.b + 0.1,
+                        (double)((float)$$15.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  1.0F,
+                  0.8F,
+                  0.8F,
+                  0.5F
+               );
+            }
+         }
+
+         for (exm $$16 : $$14.a()) {
+            if (a($$16.a(), $$6, $$7, $$8) <= 80.0F) {
+               gut.a(
+                  $$0,
+                  $$1,
+                  new fex(
+                        (double)((float)$$16.a + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.b + 0.01F),
+                        (double)((float)$$16.c + 0.5F - $$3 / 2.0F),
+                        (double)((float)$$16.a + 0.5F + $$3 / 2.0F),
+                        (double)$$16.b + 0.1,
+                        (double)((float)$$16.c + 0.5F + $$3 / 2.0F)
+                     )
+                     .d(-$$6, -$$7, -$$8),
+                  0.8F,
+                  1.0F,
+                  1.0F,
+                  0.5F
+               );
+            }
+         }
+      }
+
+      if ($$5) {
+         for (int $$17 = 0; $$17 < $$2.e(); $$17++) {
+            exm $$18 = $$2.a($$17);
+            if (a($$18.a(), $$6, $$7, $$8) <= 80.0F) {
+               gut.a($$0, $$1, String.valueOf($$18.l), (double)$$18.a + 0.5, (double)$$18.b + 0.75, (double)$$18.c + 0.5, -1, 0.02F, true, 0.0F, true);
+               gut.a(
+                  $$0,
+                  $$1,
+                  String.format(Locale.ROOT, "%.2f", $$18.k),
+                  (double)$$18.a + 0.5,
+                  (double)$$18.b + 0.25,
+                  (double)$$18.c + 0.5,
+                  -1,
+                  0.02F,
+                  true,
+                  0.0F,
+                  true
+               );
+            }
+         }
+      }
    }
 
-   private double a(bwi $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ao() + 0.132453657).hashCode() % 1000) / 1000.0;
+   public static void a(fkd $$0, fkh $$1, exo $$2, double $$3, double $$4, double $$5) {
+      for (int $$6 = 0; $$6 < $$2.e(); $$6++) {
+         exm $$7 = $$2.a($$6);
+         if (!(a($$7.a(), $$3, $$4, $$5) > 80.0F)) {
+            float $$8 = (float)$$6 / (float)$$2.e() * 0.33F;
+            int $$9 = $$6 == 0 ? 0 : azm.g($$8, 0.9F, 0.9F);
+            int $$10 = $$9 >> 16 & 0xFF;
+            int $$11 = $$9 >> 8 & 0xFF;
+            int $$12 = $$9 & 0xFF;
+            $$1.a($$0.c(), (float)((double)$$7.a - $$3 + 0.5), (float)((double)$$7.b - $$4 + 0.5), (float)((double)$$7.c - $$5 + 0.5)).a($$10, $$11, $$12, 255);
+         }
+      }
    }
 
-   private void a(iv $$0, fjy $$1, double $$2, double $$3, double $$4, gqm $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      grf.a($$1, $$5.getBuffer(gqx.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      guo.a($$1, $$5.getBuffer(gqx.y()), this.a.s.a_($$0).b(this.a.s, $$0, ffc.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
+   private static float a(iv $$0, double $$1, double $$2, double $$3) {
+      return (float)(Math.abs((double)$$0.u() - $$1) + Math.abs((double)$$0.v() - $$2) + Math.abs((double)$$0.w() - $$3));
    }
 }

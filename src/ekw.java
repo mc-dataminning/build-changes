@@ -1,44 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public class ekw extends ejt<emf> {
-   private static final int a = 7;
-
-   ekw(Codec<emf> $$0) {
+public class ekw extends ejy<emp> {
+   public ekw(Codec<emp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<emf> $$0) {
-      dkg $$1 = $$0.b();
+   public boolean a(eka<emp> $$0) {
+      emp $$1 = $$0.f();
       azv $$2 = $$0.d();
-      emf $$3 = $$0.f();
-      iv $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
+      iv $$3 = $$0.e();
+      dkl $$4 = $$0.b();
+      int $$5 = 0;
       iv.a $$6 = new iv.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         eao $$8 = $$1.a_($$6);
-
-         for (emf.a $$9 : $$3.b) {
-            if (eko.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
          }
       }
 
-      return true;
-   }
-
-   private void a(iv.a $$0, azv $$1, iv $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(azv $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+      return $$5 > 0;
    }
 }

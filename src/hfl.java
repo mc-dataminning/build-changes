@@ -1,5 +1,5 @@
-public class hfl extends hdo {
-   public int a;
-   public boolean b;
-   public boolean c;
+public class hfl extends hef {
+   public ckf.b a = ckf.b.g;
+   public int b = -1;
+   public int c = -1;
 }

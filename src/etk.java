@@ -1,218 +1,264 @@
-public class etk extends erg {
-   public static final int h = 12;
-   public static final int i = 15;
-   private boolean j;
-   private boolean k;
-   private boolean l;
-   private boolean m;
-   private static final etk.a n = new etk.a();
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public etk(azv $$0, int $$1, int $$2) {
-      super(erz.G, $$1, 64, $$2, 12, 10, 15, a($$0));
-   }
+public class etk {
+   private static final int a = 8;
+   static final etk.b b = new etk.b() {
+      @Override
+      public void a() {
+      }
 
-   public etk(tz $$0) {
-      super(erz.G, $$0);
-      this.j = $$0.o("placedMainChest");
-      this.k = $$0.o("placedHiddenChest");
-      this.l = $$0.o("placedTrap1");
-      this.m = $$0.o("placedTrap2");
-   }
-
-   @Override
-   protected void a(ery $$0, tz $$1) {
-      super.a($$0, $$1);
-      $$1.a("placedMainChest", this.j);
-      $$1.a("placedHiddenChest", this.k);
-      $$1.a("placedTrap1", this.l);
-      $$1.a("placedTrap2", this.m);
-   }
-
-   @Override
-   public void a(dkg $$0, dkd $$1, ecm $$2, azv $$3, era $$4, dio $$5, iv $$6) {
-      if (this.a($$0, $$4, 0)) {
-         this.a($$0, $$4, 0, -4, 0, this.a - 1, 0, this.c - 1, false, $$3, n);
-         this.a($$0, $$4, 2, 1, 2, 9, 2, 2, false, $$3, n);
-         this.a($$0, $$4, 2, 1, 12, 9, 2, 12, false, $$3, n);
-         this.a($$0, $$4, 2, 1, 3, 2, 2, 11, false, $$3, n);
-         this.a($$0, $$4, 9, 1, 3, 9, 2, 11, false, $$3, n);
-         this.a($$0, $$4, 1, 3, 1, 10, 6, 1, false, $$3, n);
-         this.a($$0, $$4, 1, 3, 13, 10, 6, 13, false, $$3, n);
-         this.a($$0, $$4, 1, 3, 2, 1, 6, 12, false, $$3, n);
-         this.a($$0, $$4, 10, 3, 2, 10, 6, 12, false, $$3, n);
-         this.a($$0, $$4, 2, 3, 2, 9, 3, 12, false, $$3, n);
-         this.a($$0, $$4, 2, 6, 2, 9, 6, 12, false, $$3, n);
-         this.a($$0, $$4, 3, 7, 3, 8, 7, 11, false, $$3, n);
-         this.a($$0, $$4, 4, 8, 4, 7, 8, 10, false, $$3, n);
-         this.a($$0, $$4, 3, 1, 3, 8, 2, 11);
-         this.a($$0, $$4, 4, 3, 6, 7, 3, 9);
-         this.a($$0, $$4, 2, 4, 2, 9, 5, 12);
-         this.a($$0, $$4, 4, 6, 5, 7, 6, 9);
-         this.a($$0, $$4, 5, 7, 6, 6, 7, 8);
-         this.a($$0, $$4, 5, 1, 2, 6, 2, 2);
-         this.a($$0, $$4, 5, 2, 12, 6, 2, 12);
-         this.a($$0, $$4, 5, 5, 1, 6, 5, 1);
-         this.a($$0, $$4, 5, 5, 13, 6, 5, 13);
-         this.a($$0, dmo.a.m(), 1, 5, 5, $$4);
-         this.a($$0, dmo.a.m(), 10, 5, 5, $$4);
-         this.a($$0, dmo.a.m(), 1, 5, 9, $$4);
-         this.a($$0, dmo.a.m(), 10, 5, 9, $$4);
-
-         for (int $$7 = 0; $$7 <= 14; $$7 += 14) {
-            this.a($$0, $$4, 2, 4, $$7, 2, 5, $$7, false, $$3, n);
-            this.a($$0, $$4, 4, 4, $$7, 4, 5, $$7, false, $$3, n);
-            this.a($$0, $$4, 7, 4, $$7, 7, 5, $$7, false, $$3, n);
-            this.a($$0, $$4, 9, 4, $$7, 9, 5, $$7, false, $$3, n);
-         }
-
-         this.a($$0, $$4, 5, 6, 0, 6, 6, 0, false, $$3, n);
-
-         for (int $$8 = 0; $$8 <= 11; $$8 += 11) {
-            for (int $$9 = 2; $$9 <= 12; $$9 += 2) {
-               this.a($$0, $$4, $$8, 4, $$9, $$8, 5, $$9, false, $$3, n);
+      @Override
+      public boolean a(evq $$0, int $$1, etk.a $$2, iv $$3, List<err> $$4, azv $$5) {
+         if ($$1 > 8) {
+            return false;
+         } else {
+            dtl $$6 = $$2.e().d();
+            etk.a $$7 = etk.a($$4, etk.a($$0, $$2, $$3, "base_floor", $$6, true));
+            int $$8 = $$5.a(3);
+            if ($$8 == 0) {
+               $$7 = etk.a($$4, etk.a($$0, $$7, new iv(-1, 4, -1), "base_roof", $$6, true));
+            } else if ($$8 == 1) {
+               $$7 = etk.a($$4, etk.a($$0, $$7, new iv(-1, 0, -1), "second_floor_2", $$6, false));
+               $$7 = etk.a($$4, etk.a($$0, $$7, new iv(-1, 8, -1), "second_roof", $$6, false));
+               etk.a($$0, etk.d, $$1 + 1, $$7, null, $$4, $$5);
+            } else if ($$8 == 2) {
+               $$7 = etk.a($$4, etk.a($$0, $$7, new iv(-1, 0, -1), "second_floor_2", $$6, false));
+               $$7 = etk.a($$4, etk.a($$0, $$7, new iv(-1, 4, -1), "third_floor_2", $$6, false));
+               $$7 = etk.a($$4, etk.a($$0, $$7, new iv(-1, 8, -1), "third_roof", $$6, true));
+               etk.a($$0, etk.d, $$1 + 1, $$7, null, $$4, $$5);
             }
 
-            this.a($$0, $$4, $$8, 6, 5, $$8, 6, 5, false, $$3, n);
-            this.a($$0, $$4, $$8, 6, 9, $$8, 6, 9, false, $$3, n);
+            return true;
+         }
+      }
+   };
+   static final List<bat<dtl, iv>> c = Lists.newArrayList(
+      new bat[]{new bat<>(dtl.a, new iv(1, -1, 0)), new bat<>(dtl.b, new iv(6, -1, 1)), new bat<>(dtl.d, new iv(0, -1, 5)), new bat<>(dtl.c, new iv(5, -1, 6))}
+   );
+   static final etk.b d = new etk.b() {
+      @Override
+      public void a() {
+      }
+
+      @Override
+      public boolean a(evq $$0, int $$1, etk.a $$2, iv $$3, List<err> $$4, azv $$5) {
+         dtl $$6 = $$2.e().d();
+         etk.a $$7 = etk.a($$4, etk.a($$0, $$2, new iv(3 + $$5.a(2), -3, 3 + $$5.a(2)), "tower_base", $$6, true));
+         $$7 = etk.a($$4, etk.a($$0, $$7, new iv(0, 7, 0), "tower_piece", $$6, true));
+         etk.a $$8 = $$5.a(3) == 0 ? $$7 : null;
+         int $$9 = 1 + $$5.a(3);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            $$7 = etk.a($$4, etk.a($$0, $$7, new iv(0, 4, 0), "tower_piece", $$6, true));
+            if ($$10 < $$9 - 1 && $$5.h()) {
+               $$8 = $$7;
+            }
          }
 
-         this.a($$0, $$4, 2, 7, 2, 2, 9, 2, false, $$3, n);
-         this.a($$0, $$4, 9, 7, 2, 9, 9, 2, false, $$3, n);
-         this.a($$0, $$4, 2, 7, 12, 2, 9, 12, false, $$3, n);
-         this.a($$0, $$4, 9, 7, 12, 9, 9, 12, false, $$3, n);
-         this.a($$0, $$4, 4, 9, 4, 4, 9, 4, false, $$3, n);
-         this.a($$0, $$4, 7, 9, 4, 7, 9, 4, false, $$3, n);
-         this.a($$0, $$4, 4, 9, 10, 4, 9, 10, false, $$3, n);
-         this.a($$0, $$4, 7, 9, 10, 7, 9, 10, false, $$3, n);
-         this.a($$0, $$4, 5, 9, 7, 6, 9, 7, false, $$3, n);
-         eao $$10 = dmo.dc.m().b(duq.b, jb.f);
-         eao $$11 = dmo.dc.m().b(duq.b, jb.e);
-         eao $$12 = dmo.dc.m().b(duq.b, jb.d);
-         eao $$13 = dmo.dc.m().b(duq.b, jb.c);
-         this.a($$0, $$13, 5, 9, 6, $$4);
-         this.a($$0, $$13, 6, 9, 6, $$4);
-         this.a($$0, $$12, 5, 9, 8, $$4);
-         this.a($$0, $$12, 6, 9, 8, $$4);
-         this.a($$0, $$13, 4, 0, 0, $$4);
-         this.a($$0, $$13, 5, 0, 0, $$4);
-         this.a($$0, $$13, 6, 0, 0, $$4);
-         this.a($$0, $$13, 7, 0, 0, $$4);
-         this.a($$0, $$13, 4, 1, 8, $$4);
-         this.a($$0, $$13, 4, 2, 9, $$4);
-         this.a($$0, $$13, 4, 3, 10, $$4);
-         this.a($$0, $$13, 7, 1, 8, $$4);
-         this.a($$0, $$13, 7, 2, 9, $$4);
-         this.a($$0, $$13, 7, 3, 10, $$4);
-         this.a($$0, $$4, 4, 1, 9, 4, 1, 9, false, $$3, n);
-         this.a($$0, $$4, 7, 1, 9, 7, 1, 9, false, $$3, n);
-         this.a($$0, $$4, 4, 1, 10, 7, 2, 10, false, $$3, n);
-         this.a($$0, $$4, 5, 4, 5, 6, 4, 5, false, $$3, n);
-         this.a($$0, $$10, 4, 4, 5, $$4);
-         this.a($$0, $$11, 7, 4, 5, $$4);
+         if ($$8 != null) {
+            for (bat<dtl, iv> $$11 : etk.c) {
+               if ($$5.h()) {
+                  etk.a $$12 = etk.a($$4, etk.a($$0, $$8, $$11.b(), "bridge_end", $$6.a($$11.a()), true));
+                  etk.a($$0, etk.e, $$1 + 1, $$12, null, $$4, $$5);
+               }
+            }
 
-         for (int $$14 = 0; $$14 < 4; $$14++) {
-            this.a($$0, $$12, 5, 0 - $$14, 6 + $$14, $$4);
-            this.a($$0, $$12, 6, 0 - $$14, 6 + $$14, $$4);
-            this.a($$0, $$4, 5, 0 - $$14, 7 + $$14, 6, 0 - $$14, 9 + $$14);
+            $$7 = etk.a($$4, etk.a($$0, $$7, new iv(-1, 4, -1), "tower_top", $$6, true));
+         } else {
+            if ($$1 != 7) {
+               return etk.a($$0, etk.g, $$1 + 1, $$7, null, $$4, $$5);
+            }
+
+            $$7 = etk.a($$4, etk.a($$0, $$7, new iv(-1, 4, -1), "tower_top", $$6, true));
          }
 
-         this.a($$0, $$4, 1, -3, 12, 10, -1, 13);
-         this.a($$0, $$4, 1, -3, 1, 3, -1, 13);
-         this.a($$0, $$4, 1, -3, 1, 9, -1, 5);
+         return true;
+      }
+   };
+   static final etk.b e = new etk.b() {
+      public boolean a;
 
-         for (int $$15 = 1; $$15 <= 13; $$15 += 2) {
-            this.a($$0, $$4, 1, -3, $$15, 1, -2, $$15, false, $$3, n);
+      @Override
+      public void a() {
+         this.a = false;
+      }
+
+      @Override
+      public boolean a(evq $$0, int $$1, etk.a $$2, iv $$3, List<err> $$4, azv $$5) {
+         dtl $$6 = $$2.e().d();
+         int $$7 = $$5.a(4) + 1;
+         etk.a $$8 = etk.a($$4, etk.a($$0, $$2, new iv(0, 0, -4), "bridge_piece", $$6, true));
+         $$8.a(-1);
+         int $$9 = 0;
+
+         for (int $$10 = 0; $$10 < $$7; $$10++) {
+            if ($$5.h()) {
+               $$8 = etk.a($$4, etk.a($$0, $$8, new iv(0, $$9, -4), "bridge_piece", $$6, true));
+               $$9 = 0;
+            } else {
+               if ($$5.h()) {
+                  $$8 = etk.a($$4, etk.a($$0, $$8, new iv(0, $$9, -4), "bridge_steep_stairs", $$6, true));
+               } else {
+                  $$8 = etk.a($$4, etk.a($$0, $$8, new iv(0, $$9, -8), "bridge_gentle_stairs", $$6, true));
+               }
+
+               $$9 = 4;
+            }
          }
 
-         for (int $$16 = 2; $$16 <= 12; $$16 += 2) {
-            this.a($$0, $$4, 1, -1, $$16, 3, -1, $$16, false, $$3, n);
+         if (!this.a && $$5.a(10 - $$1) == 0) {
+            etk.a($$4, etk.a($$0, $$8, new iv(-8 + $$5.a(8), $$9, -70 + $$5.a(10)), "ship", $$6, true));
+            this.a = true;
+         } else if (!etk.a($$0, etk.b, $$1 + 1, $$8, new iv(-3, $$9 + 1, -11), $$4, $$5)) {
+            return false;
          }
 
-         this.a($$0, $$4, 2, -2, 1, 5, -2, 1, false, $$3, n);
-         this.a($$0, $$4, 7, -2, 1, 9, -2, 1, false, $$3, n);
-         this.a($$0, $$4, 6, -3, 1, 6, -3, 1, false, $$3, n);
-         this.a($$0, $$4, 6, -1, 1, 6, -1, 1, false, $$3, n);
-         this.a($$0, dmo.gg.m().b(dvs.b, jb.f).b(dvs.d, Boolean.valueOf(true)), 1, -3, 8, $$4);
-         this.a($$0, dmo.gg.m().b(dvs.b, jb.e).b(dvs.d, Boolean.valueOf(true)), 4, -3, 8, $$4);
-         this.a($$0, dmo.gh.m().b(dvr.f, Boolean.valueOf(true)).b(dvr.h, Boolean.valueOf(true)).b(dvr.c, Boolean.valueOf(true)), 2, -3, 8, $$4);
-         this.a($$0, dmo.gh.m().b(dvr.f, Boolean.valueOf(true)).b(dvr.h, Boolean.valueOf(true)).b(dvr.c, Boolean.valueOf(true)), 3, -3, 8, $$4);
-         eao $$17 = dmo.cH.m().b(dsv.b, ebt.b).b(dsv.d, ebt.b);
-         this.a($$0, $$17, 5, -3, 7, $$4);
-         this.a($$0, $$17, 5, -3, 6, $$4);
-         this.a($$0, $$17, 5, -3, 5, $$4);
-         this.a($$0, $$17, 5, -3, 4, $$4);
-         this.a($$0, $$17, 5, -3, 3, $$4);
-         this.a($$0, $$17, 5, -3, 2, $$4);
-         this.a($$0, dmo.cH.m().b(dsv.b, ebt.b).b(dsv.e, ebt.b), 5, -3, 1, $$4);
-         this.a($$0, dmo.cH.m().b(dsv.c, ebt.b).b(dsv.e, ebt.b), 4, -3, 1, $$4);
-         this.a($$0, dmo.cx.m(), 3, -3, 1, $$4);
-         if (!this.l) {
-            this.l = this.a($$0, $$4, $$3, 3, -2, 1, jb.c, ezk.A);
+         $$8 = etk.a($$4, etk.a($$0, $$8, new iv(4, $$9, 0), "bridge_end", $$6.a(dtl.c), true));
+         $$8.a(-1);
+         return true;
+      }
+   };
+   static final List<bat<dtl, iv>> f = Lists.newArrayList(
+      new bat[]{
+         new bat<>(dtl.a, new iv(4, -1, 0)), new bat<>(dtl.b, new iv(12, -1, 4)), new bat<>(dtl.d, new iv(0, -1, 8)), new bat<>(dtl.c, new iv(8, -1, 12))
+      }
+   );
+   static final etk.b g = new etk.b() {
+      @Override
+      public void a() {
+      }
+
+      @Override
+      public boolean a(evq $$0, int $$1, etk.a $$2, iv $$3, List<err> $$4, azv $$5) {
+         dtl $$6 = $$2.e().d();
+         etk.a $$7 = etk.a($$4, etk.a($$0, $$2, new iv(-3, 4, -3), "fat_tower_base", $$6, true));
+         $$7 = etk.a($$4, etk.a($$0, $$7, new iv(0, 4, 0), "fat_tower_middle", $$6, true));
+
+         for (int $$8 = 0; $$8 < 2 && $$5.a(3) != 0; $$8++) {
+            $$7 = etk.a($$4, etk.a($$0, $$7, new iv(0, 8, 0), "fat_tower_middle", $$6, true));
+
+            for (bat<dtl, iv> $$9 : etk.f) {
+               if ($$5.h()) {
+                  etk.a $$10 = etk.a($$4, etk.a($$0, $$7, $$9.b(), "bridge_end", $$6.a($$9.a()), true));
+                  etk.a($$0, etk.e, $$1 + 1, $$10, null, $$4, $$5);
+               }
+            }
          }
 
-         this.a($$0, dmo.fx.m().b(dvz.e, Boolean.valueOf(true)), 3, -2, 2, $$4);
-         this.a($$0, dmo.gg.m().b(dvs.b, jb.c).b(dvs.d, Boolean.valueOf(true)), 7, -3, 1, $$4);
-         this.a($$0, dmo.gg.m().b(dvs.b, jb.d).b(dvs.d, Boolean.valueOf(true)), 7, -3, 5, $$4);
-         this.a($$0, dmo.gh.m().b(dvr.e, Boolean.valueOf(true)).b(dvr.g, Boolean.valueOf(true)).b(dvr.c, Boolean.valueOf(true)), 7, -3, 2, $$4);
-         this.a($$0, dmo.gh.m().b(dvr.e, Boolean.valueOf(true)).b(dvr.g, Boolean.valueOf(true)).b(dvr.c, Boolean.valueOf(true)), 7, -3, 3, $$4);
-         this.a($$0, dmo.gh.m().b(dvr.e, Boolean.valueOf(true)).b(dvr.g, Boolean.valueOf(true)).b(dvr.c, Boolean.valueOf(true)), 7, -3, 4, $$4);
-         this.a($$0, dmo.cH.m().b(dsv.c, ebt.b).b(dsv.e, ebt.b), 8, -3, 6, $$4);
-         this.a($$0, dmo.cH.m().b(dsv.e, ebt.b).b(dsv.d, ebt.b), 9, -3, 6, $$4);
-         this.a($$0, dmo.cH.m().b(dsv.b, ebt.b).b(dsv.d, ebt.a), 9, -3, 5, $$4);
-         this.a($$0, dmo.cx.m(), 9, -3, 4, $$4);
-         this.a($$0, $$17, 9, -2, 4, $$4);
-         if (!this.m) {
-            this.m = this.a($$0, $$4, $$3, 9, -2, 3, jb.e, ezk.A);
+         $$7 = etk.a($$4, etk.a($$0, $$7, new iv(-2, 8, -2), "fat_tower_top", $$6, true));
+         return true;
+      }
+   };
+
+   static etk.a a(evq $$0, etk.a $$1, iv $$2, String $$3, dtl $$4, boolean $$5) {
+      etk.a $$6 = new etk.a($$0, $$3, $$1.d(), $$4, $$5);
+      iv $$7 = $$1.c().a($$1.e(), $$2, $$6.e(), iv.c);
+      $$6.a($$7.u(), $$7.v(), $$7.w());
+      return $$6;
+   }
+
+   public static void a(evq $$0, iv $$1, dtl $$2, List<err> $$3, azv $$4) {
+      g.a();
+      b.a();
+      e.a();
+      d.a();
+      etk.a $$5 = a($$3, new etk.a($$0, "base_floor", $$1, $$2, true));
+      $$5 = a($$3, a($$0, $$5, new iv(-1, 0, -1), "second_floor_1", $$2, false));
+      $$5 = a($$3, a($$0, $$5, new iv(-1, 4, -1), "third_floor_1", $$2, false));
+      $$5 = a($$3, a($$0, $$5, new iv(-1, 8, -1), "third_roof", $$2, true));
+      a($$0, d, 1, $$5, null, $$3, $$4);
+   }
+
+   static etk.a a(List<err> $$0, etk.a $$1) {
+      $$0.add($$1);
+      return $$1;
+   }
+
+   static boolean a(evq $$0, etk.b $$1, int $$2, etk.a $$3, iv $$4, List<err> $$5, azv $$6) {
+      if ($$2 > 8) {
+         return false;
+      } else {
+         List<err> $$7 = Lists.newArrayList();
+         if ($$1.a($$0, $$2, $$3, $$4, $$7, $$6)) {
+            boolean $$8 = false;
+            int $$9 = $$6.f();
+
+            for (err $$10 : $$7) {
+               $$10.a($$9);
+               err $$11 = err.a($$5, $$10.f());
+               if ($$11 != null && $$11.g() != $$3.g()) {
+                  $$8 = true;
+                  break;
+               }
+            }
+
+            if (!$$8) {
+               $$5.addAll($$7);
+               return true;
+            }
          }
 
-         this.a($$0, dmo.fx.m().b(dvz.d, Boolean.valueOf(true)), 8, -1, 3, $$4);
-         this.a($$0, dmo.fx.m().b(dvz.d, Boolean.valueOf(true)), 8, -2, 3, $$4);
-         if (!this.j) {
-            this.j = this.a($$0, $$4, $$3, 8, -3, 3, ezk.z);
-         }
+         return false;
+      }
+   }
 
-         this.a($$0, dmo.cx.m(), 9, -3, 2, $$4);
-         this.a($$0, dmo.cx.m(), 8, -3, 1, $$4);
-         this.a($$0, dmo.cx.m(), 4, -3, 5, $$4);
-         this.a($$0, dmo.cx.m(), 5, -2, 5, $$4);
-         this.a($$0, dmo.cx.m(), 5, -1, 5, $$4);
-         this.a($$0, dmo.cx.m(), 6, -3, 5, $$4);
-         this.a($$0, dmo.cx.m(), 7, -2, 5, $$4);
-         this.a($$0, dmo.cx.m(), 7, -1, 5, $$4);
-         this.a($$0, dmo.cx.m(), 8, -3, 5, $$4);
-         this.a($$0, $$4, 9, -1, 1, 9, -1, 5, false, $$3, n);
-         this.a($$0, $$4, 8, -3, 8, 10, -1, 10);
-         this.a($$0, dmo.fc.m(), 8, -2, 11, $$4);
-         this.a($$0, dmo.fc.m(), 9, -2, 11, $$4);
-         this.a($$0, dmo.fc.m(), 10, -2, 11, $$4);
-         eao $$18 = dmo.dL.m().b(drf.e, jb.c).b(drf.c, eaz.b);
-         this.a($$0, $$18, 8, -2, 12, $$4);
-         this.a($$0, $$18, 9, -2, 12, $$4);
-         this.a($$0, $$18, 10, -2, 12, $$4);
-         this.a($$0, $$4, 8, -3, 8, 8, -3, 10, false, $$3, n);
-         this.a($$0, $$4, 10, -3, 8, 10, -3, 10, false, $$3, n);
-         this.a($$0, dmo.cx.m(), 10, -2, 9, $$4);
-         this.a($$0, $$17, 8, -2, 9, $$4);
-         this.a($$0, $$17, 8, -2, 10, $$4);
-         this.a($$0, dmo.cH.m().b(dsv.b, ebt.b).b(dsv.d, ebt.b).b(dsv.c, ebt.b).b(dsv.e, ebt.b), 10, -1, 9, $$4);
-         this.a($$0, dmo.by.m().b(eag.a, jb.b), 9, -2, 8, $$4);
-         this.a($$0, dmo.by.m().b(eag.a, jb.e), 10, -2, 8, $$4);
-         this.a($$0, dmo.by.m().b(eag.a, jb.e), 10, -1, 8, $$4);
-         this.a($$0, dmo.ey.m().b(dta.e, jb.c), 10, -2, 10, $$4);
-         if (!this.k) {
-            this.k = this.a($$0, $$4, $$3, 9, -3, 10, ezk.z);
+   public static class a extends erx {
+      public a(evq $$0, String $$1, iv $$2, dtl $$3, boolean $$4) {
+         super(ese.Y, 0, $$0, a($$1), $$1, a($$4, $$3), $$2);
+      }
+
+      public a(evq $$0, tz $$1) {
+         super(ese.Y, $$1, $$0, $$1x -> a($$1.o("OW"), $$1.<dtl>a("Rot", dtl.h).orElseThrow()));
+      }
+
+      private static evl a(boolean $$0, dtl $$1) {
+         euq $$2 = $$0 ? euq.b : euq.d;
+         return new evl().a(true).a($$2).a($$1);
+      }
+
+      @Override
+      protected alg b() {
+         return a(this.a);
+      }
+
+      private static alg a(String $$0) {
+         return alg.b("end_city/" + $$0);
+      }
+
+      @Override
+      protected void a(esd $$0, tz $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", dtl.h, this.c.d());
+         $$1.a("OW", this.c.i().get(0) == euq.b);
+      }
+
+      @Override
+      protected void a(String $$0, iv $$1, dkd $$2, azv $$3, erf $$4) {
+         if ($$0.startsWith("Chest")) {
+            iv $$5 = $$1.e();
+            if ($$4.b($$5)) {
+               bum.a($$2, $$3, $$5, ezp.b);
+            }
+         } else if ($$4.b($$1) && djm.l($$1)) {
+            if ($$0.startsWith("Sentry")) {
+               cou $$6 = bwr.bc.a($$2.a(), bwq.d);
+               if ($$6 != null) {
+                  $$6.a_((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5);
+                  $$2.b($$6);
+               }
+            } else if ($$0.startsWith("Elytra")) {
+               cnk $$7 = new cnk($$2.a(), $$1, this.c.d().a(jb.d));
+               $$7.a(new czn(czr.oD), false);
+               $$2.b($$7);
+            }
          }
       }
    }
 
-   static class a extends erm.a {
-      @Override
-      public void a(azv $$0, int $$1, int $$2, int $$3, boolean $$4) {
-         if ($$0.i() < 0.4F) {
-            this.a = dmo.m.m();
-         } else {
-            this.a = dmo.cx.m();
-         }
-      }
+   interface b {
+      void a();
+
+      boolean a(evq var1, int var2, etk.a var3, iv var4, List<err> var5, azv var6);
    }
 }

@@ -1,77 +1,101 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+public class cwh extends cvf {
+   private static final alg m = alg.b("container/slot/saddle");
+   private static final alg n = alg.b("container/slot/llama_armor");
+   private static final alg o = alg.b("container/slot/horse_armor");
+   private final btz p;
+   private final cli q;
+   private static final int r = 0;
+   private static final int s = 1;
+   private static final int t = 2;
 
-public class cwh {
-   private final List<cwh.b> a;
-   private final cwh.b b;
-
-   cwh(List<cwh.b> $$0, cwh.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cwh.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
-      }
-   }
-
-   public static cwh.a a() {
-      return new cwh.a();
-   }
-
-   public cwh.b a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public cwh.b b() {
-      return this.b;
-   }
-
-   public List<cwh.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public static class a {
-      private final List<cwh.b> a = new ArrayList<>();
-      private cwh.b b = cwh.b.e;
-
-      public cwh.a a(int $$0, int $$1, int $$2, Predicate<czk> $$3) {
-         this.a.add(new cwh.b($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      public cwh.a a(int $$0, int $$1, int $$2) {
-         this.b = new cwh.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cwh a() {
-         int $$0 = this.a.size();
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            cwh.b $$2 = this.a.get($$1);
-            if ($$2.a != $$1) {
-               throw new IllegalArgumentException("Expected input slots to have continous indexes");
+   public cwh(int $$0, crl $$1, btz $$2, final cli $$3, int $$4) {
+      super(null, $$0);
+      this.p = $$2;
+      this.q = $$3;
+      $$2.c_($$1.h);
+      btz $$5 = $$3.h(bws.h);
+      this.a(new cvj($$5, $$3, bws.h, 0, 8, 18, m) {
+         @Override
+         public boolean b() {
+            return $$3.e(bws.h) && $$3.an().a(axf.J);
+         }
+      });
+      final boolean $$6 = $$3 instanceof cll;
+      alg $$7 = $$6 ? n : o;
+      btz $$8 = $$3.h(bws.g);
+      this.a(new cvj($$8, $$3, bws.g, 0, 8, 36, $$7) {
+         @Override
+         public boolean b() {
+            return $$3.e(bws.g) && ($$3.an().a(axf.K) || $$6);
+         }
+      });
+      if ($$4 > 0) {
+         for (int $$9 = 0; $$9 < 3; $$9++) {
+            for (int $$10 = 0; $$10 < $$4; $$10++) {
+               this.a(new cxc($$2, $$10 + $$9 * $$4, 80 + $$10 * 18, 18 + $$9 * 18));
             }
          }
-
-         if (this.b.a != $$0) {
-            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
-         } else {
-            return new cwh(this.a, this.b);
-         }
       }
+
+      this.c($$1, 8, 84);
    }
 
-   public static record b(int a, int b, int c, Predicate<czk> d) {
-      static final cwh.b e = new cwh.b(0, 0, 0, $$0 -> true);
+   @Override
+   public boolean b(crm $$0) {
+      return !this.q.a(this.p) && this.p.a($$0) && this.q.bI() && $$0.b(this.q, 4.0);
+   }
+
+   @Override
+   public czn b(crm $$0, int $$1) {
+      czn $$2 = czn.k;
+      cxc $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         czn $$4 = $$3.g();
+         $$2 = $$4.v();
+         int $$5 = 2 + this.p.b();
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.k.size(), true)) {
+               return czn.k;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).h()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return czn.k;
+            }
+         } else if (this.b(0).a($$4) && !this.b(0).h()) {
+            if (!this.a($$4, 0, 1, false)) {
+               return czn.k;
+            }
+         } else if (this.p.b() == 0 || !this.a($$4, 2, $$5, false)) {
+            int $$6 = $$5 + 27;
+            int $$8 = $$6 + 9;
+            if ($$1 >= $$6 && $$1 < $$8) {
+               if (!this.a($$4, $$5, $$6, false)) {
+                  return czn.k;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$6) {
+               if (!this.a($$4, $$6, $$8, false)) {
+                  return czn.k;
+               }
+            } else if (!this.a($$4, $$6, $$6, false)) {
+               return czn.k;
+            }
+
+            return czn.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(czn.k);
+         } else {
+            $$3.d();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(crm $$0) {
+      super.a($$0);
+      this.p.c($$0);
    }
 }

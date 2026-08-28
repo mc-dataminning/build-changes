@@ -24,7 +24,7 @@ public class aec implements zf<abu> {
       this.f = $$0;
       this.e = $$1.ao();
       this.g = $$2;
-      fex $$3 = $$2.a($$1);
+      ffc $$3 = $$2.a($$1);
       this.b = $$3.d;
       this.c = $$3.e;
       this.d = $$3.f;
@@ -72,12 +72,12 @@ public class aec implements zf<abu> {
    }
 
    @Nullable
-   public fex a(djh $$0) {
+   public ffc a(djm $$0) {
       if (this.h) {
          bwi $$1 = $$0.a(this.e);
-         return $$1 == null ? new fex(this.b, this.c, this.d) : this.g.a($$1);
+         return $$1 == null ? new ffc(this.b, this.c, this.d) : this.g.a($$1);
       } else {
-         return new fex(this.b, this.c, this.d);
+         return new ffc(this.b, this.c, this.d);
       }
    }
 }

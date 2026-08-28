@@ -7,7 +7,7 @@ public class cfd extends cfc {
 
    @Nullable
    @Override
-   protected fex h() {
+   protected ffc h() {
       return bzc.a(this.b, 10, 7);
    }
 }

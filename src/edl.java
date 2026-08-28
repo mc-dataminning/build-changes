@@ -1,62 +1,88 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.UnaryOperator;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public record edl(ImmutableList<edp> c) {
-   public static final edl a = new edl.a()
-      .a(edm.c, $$0 -> $$0)
-      .a(edm.d, $$0 -> $$0.a(edo::b))
-      .a(edm.e, $$0 -> $$0.a(edm.d, 8).a(edo::d))
-      .a(edm.f, $$0 -> $$0.a(edm.d, 8).a(edo::e))
-      .a(edm.g, $$0 -> $$0.a(edm.d, 8).a(edm.f, 1).a(0).a(edo::f))
-      .a(edm.h, $$0 -> $$0.a(edm.d, 8).a(edm.f, 1).a(0).a(edo::g))
-      .a(edm.i, $$0 -> $$0.a(edm.d, 8).a(0).a(edo::h))
-      .a(edm.j, $$0 -> $$0.a(edm.d, 8).a(edm.i, 1).a(1).a(edo::i))
-      .a(edm.k, $$0 -> $$0.a(edo::j))
-      .a(edm.l, $$0 -> $$0.a(edm.k, 1).a(edo::k))
-      .a(edm.m, $$0 -> $$0.a(edm.f, 1).a(edo::l))
-      .a(edm.n, $$0 -> $$0.a(edo::m))
-      .a();
-   public static final edl b = new edl.a()
-      .a(edm.c, $$0 -> $$0)
-      .a(edm.d, $$0 -> $$0.a(edo::c))
-      .a(edm.e, $$0 -> $$0)
-      .a(edm.f, $$0 -> $$0)
-      .a(edm.g, $$0 -> $$0)
-      .a(edm.h, $$0 -> $$0)
-      .a(edm.i, $$0 -> $$0)
-      .a(edm.j, $$0 -> $$0)
-      .a(edm.k, $$0 -> $$0.a(edo::j))
-      .a(edm.l, $$0 -> $$0.a(edm.k, 1).a(edo::k))
-      .a(edm.m, $$0 -> $$0)
-      .a(edm.n, $$0 -> $$0.a(edo::m))
-      .a();
+public class edl<T> implements edg<T> {
+   private final jk<T> a;
+   @Nullable
+   private T b;
+   private final edh<T> c;
 
-   public edp a(edm $$0) {
-      return (edp)this.c.get($$0.b());
-   }
-
-   public ImmutableList<edp> a() {
-      return this.c;
-   }
-
-   public static class a {
-      private final List<edp> a = new ArrayList<>();
-
-      public edl a() {
-         return new edl(ImmutableList.copyOf(this.a));
+   public edl(jk<T> $$0, edh<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
+   }
 
-      public edl.a a(edm $$0, UnaryOperator<edp.a> $$1) {
-         edp.a $$2;
-         if (this.a.isEmpty()) {
-            $$2 = new edp.a($$0);
-         } else {
-            $$2 = new edp.a($$0, this.a.getLast());
-         }
+   public static <A> edg<A> a(int $$0, jk<A> $$1, edh<A> $$2, List<A> $$3) {
+      return new edl<>($$1, $$2, $$3);
+   }
 
-         this.a.add($$1.apply($$2).a());
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
+
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(vu $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(vu $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return wp.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public edg<T> a(edh<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
          return this;
       }
    }

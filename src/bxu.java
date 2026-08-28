@@ -1,12 +1,12 @@
 import javax.annotation.Nullable;
 
 public class bxu {
-   private final dsl a;
+   private final dsq a;
    private iv b;
    private int c;
    private boolean d;
 
-   public bxu(dsl $$0, iv $$1) {
+   public bxu(dsq $$0, iv $$1) {
       this.a = $$0;
       this.b = $$1;
       this.d = true;
@@ -23,11 +23,11 @@ public class bxu {
    }
 
    @Nullable
-   public exv a(arq $$0, bwi $$1) {
+   public eya a(arq $$0, bwi $$1) {
       return this.a.a($$0, $$1, this.b);
    }
 
-   public dsl.a a() {
+   public dsq.a a() {
       return this.a.b();
    }
 
@@ -59,7 +59,7 @@ public class bxu {
       this.d = $$0;
    }
 
-   public boolean a(dsl $$0) {
+   public boolean a(dsq $$0) {
       return this.a == $$0;
    }
 }

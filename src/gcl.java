@@ -1,280 +1,251 @@
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class gcl extends ftw<gcl.a> {
+   static final alg a = alg.b("transferable_list/select_highlighted");
+   static final alg m = alg.b("transferable_list/select");
+   static final alg n = alg.b("transferable_list/unselect_highlighted");
+   static final alg o = alg.b("transferable_list/unselect");
+   static final alg p = alg.b("transferable_list/move_up_highlighted");
+   static final alg q = alg.b("transferable_list/move_up");
+   static final alg r = alg.b("transferable_list/move_down_highlighted");
+   static final alg s = alg.b("transferable_list/move_down");
+   static final wy u = wy.c("pack.incompatible");
+   static final wy v = wy.c("pack.incompatible.confirm.title");
+   private final wy w;
+   final gck x;
 
-public class gcl implements fty, fus {
-   private static final alg b = alg.b("recipe_book/overlay_recipe");
-   private static final int c = 4;
-   private static final int d = 5;
-   private static final float e = 0.375F;
-   public static final int a = 25;
-   private final List<gcl.b> f = Lists.newArrayList();
-   private boolean g;
-   private int h;
-   private int i;
-   private gcq j = gcq.a;
-   @Nullable
-   private dfj k;
-   final gct l;
-   private final boolean m;
-
-   public gcl(gct $$0, boolean $$1) {
-      this.l = $$0;
-      this.m = $$1;
-   }
-
-   public void a(gcq $$0, baz $$1, boolean $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      this.j = $$0;
-      List<dfi> $$8 = $$0.a(gcq.a.b);
-      List<dfi> $$9 = $$2 ? Collections.emptyList() : $$0.a(gcq.a.c);
-      int $$10 = $$8.size();
-      int $$11 = $$10 + $$9.size();
-      int $$12 = $$11 <= 16 ? 4 : 5;
-      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
-      this.h = $$3;
-      this.i = $$4;
-      float $$14 = (float)(this.h + Math.min($$11, $$12) * 25);
-      float $$15 = (float)($$5 + 50);
-      if ($$14 > $$15) {
-         this.h = (int)((float)this.h - $$7 * (float)((int)(($$14 - $$15) / $$7)));
-      }
-
-      float $$16 = (float)(this.i + $$13 * 25);
-      float $$17 = (float)($$6 + 50);
-      if ($$16 > $$17) {
-         this.i = (int)((float)this.i - $$7 * (float)azm.f(($$16 - $$17) / $$7));
-      }
-
-      float $$18 = (float)this.i;
-      float $$19 = (float)($$6 - 100);
-      if ($$18 < $$19) {
-         this.i = (int)((float)this.i - $$7 * (float)azm.f(($$18 - $$19) / $$7));
-      }
-
-      this.g = true;
-      this.f.clear();
-
-      for (int $$20 = 0; $$20 < $$11; $$20++) {
-         boolean $$21 = $$20 < $$10;
-         dfi $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
-         int $$23 = this.h + 4 + 25 * ($$20 % $$12);
-         int $$24 = this.i + 5 + 25 * ($$20 / $$12);
-         if (this.m) {
-            this.f.add(new gcl.c($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
-         } else {
-            this.f.add(new gcl.a($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
-         }
-      }
-
-      this.k = null;
-   }
-
-   public gcq a() {
-      return this.j;
-   }
-
-   @Nullable
-   public dfj b() {
-      return this.k;
+   public gcl(fpt $$0, gck $$1, int $$2, int $$3, wy $$4) {
+      super($$0, $$2, $$3, 33, 36, (int)(9.0F * 1.5F));
+      this.x = $$1;
+      this.w = $$4;
+      this.e = false;
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 != 0) {
-         return false;
-      } else {
-         for (gcl.b $$3 : this.f) {
-            if ($$3.a($$0, $$1, $$2)) {
-               this.k = $$3.b;
-               return true;
-            }
-         }
-
-         return false;
-      }
+   protected void a(fsm $$0, int $$1, int $$2) {
+      wy $$3 = wy.i().b(this.w).a(o.t, o.r);
+      $$0.b(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.G() + 3, $$2), -1);
    }
 
    @Override
-   public boolean a_(double $$0, double $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
-      if (this.g) {
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1000.0F);
-         int $$4 = this.f.size() <= 16 ? 4 : 5;
-         int $$5 = Math.min(this.f.size(), $$4);
-         int $$6 = azm.f((float)this.f.size() / (float)$$4);
-         int $$7 = 4;
-         $$0.a(gqx::H, b, this.h, this.i, $$5 * 25 + 8, $$6 * 25 + 8);
-
-         for (gcl.b $$8 : this.f) {
-            $$8.a($$0, $$1, $$2, $$3);
-         }
-
-         $$0.c().b();
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public boolean c() {
+   public int a() {
       return this.g;
    }
 
    @Override
-   public void a(boolean $$0) {
+   protected int l() {
+      return this.H() - 6;
    }
 
    @Override
-   public boolean aJ_() {
-      return false;
+   protected void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      if (this.j()) {
+         int $$6 = 2;
+         int $$7 = this.u() - 2;
+         int $$8 = this.H() - 6 - 1;
+         int $$9 = $$1 - 2;
+         int $$10 = $$1 + $$3 + 2;
+         $$0.a($$7, $$9, $$8, $$10, $$4);
+         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
-   class a extends gcl.b {
-      private static final alg b = alg.b("recipe_book/crafting_overlay");
-      private static final alg c = alg.b("recipe_book/crafting_overlay_highlighted");
-      private static final alg d = alg.b("recipe_book/crafting_overlay_disabled");
-      private static final alg e = alg.b("recipe_book/crafting_overlay_disabled_highlighted");
-      private static final int f = 3;
-      private static final int m = 3;
-
-      public a(final int $$0, final int $$1, final dfj $$2, final dfh $$3, final baz $$4, final boolean $$5) {
-         super($$0, $$1, $$2, $$5, a($$3, $$4));
-      }
-
-      private static List<gcl.b.a> a(dfh $$0, baz $$1) {
-         List<gcl.b.a> $$2 = new ArrayList<>();
-         Objects.requireNonNull($$0);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.p() != null) {
          switch ($$0) {
-            case dfl $$3:
-               akr.a(3, 3, $$3.b(), $$3.c(), $$3.f(), ($$2x, $$3x, $$4x, $$5x) -> {
-                  List<czk> $$6x = $$2x.a($$1);
-                  if (!$$6x.isEmpty()) {
-                     $$2.add(a($$4x, $$5x, $$6x));
+            case 32:
+            case 257:
+               this.p().c();
+               return true;
+            default:
+               if (fys.t()) {
+                  switch ($$0) {
+                     case 264:
+                        this.p().g();
+                        return true;
+                     case 265:
+                        this.p().e();
+                        return true;
                   }
-               });
-               break;
-            case dfm $$4:
-               label19: {
-                  List<dfn> $$5 = $$4.b();
-
-                  for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-                     List<czk> $$7 = $$5.get($$6).a($$1);
-                     if (!$$7.isEmpty()) {
-                        $$2.add(a($$6 % 3, $$6 / 3, $$7));
-                     }
-                  }
-                  break label19;
                }
          }
-
-         return $$2;
       }
 
-      @Override
-      protected alg b(boolean $$0) {
-         if ($$0) {
-            return this.D() ? c : b;
-         } else {
-            return this.D() ? e : d;
-         }
-      }
+      return super.a($$0, $$1, $$2);
    }
 
-   abstract class b extends fst {
-      final dfj b;
-      private final boolean c;
-      private final List<gcl.b.a> d;
+   public static class a extends ftw.a<gcl.a> {
+      private static final int b = 157;
+      private static final int c = 157;
+      private static final String d = "...";
+      private final gcl e;
+      protected final fpt a;
+      private final gcj.a f;
+      private final ayy g;
+      private final ftt h;
+      private final ayy i;
+      private final ftt j;
 
-      public b(final int $$0, final int $$1, final dfj $$2, final boolean $$3, final List<gcl.b.a> $$4) {
-         super($$0, $$1, 24, 24, wx.a);
-         this.d = $$4;
-         this.b = $$2;
-         this.c = $$3;
+      public a(fpt $$0, gcl $$1, gcj.a $$2) {
+         this.a = $$0;
+         this.f = $$2;
+         this.e = $$1;
+         this.g = a($$0, $$2.d());
+         this.h = b($$0, $$2.g());
+         this.i = a($$0, gcl.u);
+         this.j = b($$0, $$2.b().b());
       }
 
-      protected static gcl.b.a a(int $$0, int $$1, List<czk> $$2) {
-         return new gcl.b.a(3 + $$0 * 7, 3 + $$1 * 7, $$2);
-      }
-
-      protected abstract alg b(boolean var1);
-
-      @Override
-      public void a(fws $$0) {
-         this.c($$0);
-      }
-
-      @Override
-      public void b(fsh $$0, int $$1, int $$2, float $$3) {
-         $$0.a(gqx::H, this.b(this.c), this.F(), this.G(), this.g, this.h);
-         float $$4 = (float)(this.F() + 2);
-         float $$5 = (float)(this.G() + 2);
-         float $$6 = 150.0F;
-
-         for (gcl.b.a $$7 : this.d) {
-            $$0.c().a();
-            $$0.c().a($$4 + (float)$$7.a, $$5 + (float)$$7.b, 150.0F);
-            $$0.c().b(0.375F, 0.375F, 1.0F);
-            $$0.c().a(-8.0F, -8.0F, 0.0F);
-            $$0.a($$7.a(gcl.this.l.currentIndex()), 0, 0);
-            $$0.c().b();
+      private static ayy a(fpt $$0, wy $$1) {
+         int $$2 = $$0.h.a($$1);
+         if ($$2 > 157) {
+            xd $$3 = xd.a($$0.h.a($$1, 157 - $$0.h.b("...")), xd.e("..."));
+            return tu.a().a($$3);
+         } else {
+            return $$1.g();
          }
       }
 
-      protected static record a(int a, int b, List<czk> c) {
+      private static ftt b(fpt $$0, wy $$1) {
+         return ftt.a($$0.h, 157, 2, $$1);
+      }
 
-         public a(int a, int b, List<czk> c) {
-            if (c.isEmpty()) {
-               throw new IllegalArgumentException("Ingredient list must be non-empty");
+      @Override
+      public wy a() {
+         return wy.a("narrator.select", this.f.d());
+      }
+
+      @Override
+      public void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         aul $$10 = this.f.b();
+         if (!$$10.a()) {
+            int $$11 = $$3 + $$4 - 3 - (this.e.j() ? 7 : 0);
+            $$0.a($$3 - 1, $$2 - 1, $$11, $$2 + $$5 + 1, -8978432);
+         }
+
+         $$0.a(grc::H, this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+         ayy $$12 = this.g;
+         ftt $$13 = this.h;
+         if (this.d() && (this.a.n.ac().c() || $$8 || this.e.p() == this && this.e.aJ_())) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$14 = $$6 - $$3;
+            int $$15 = $$7 - $$2;
+            if (!this.f.b().a()) {
+               $$12 = this.i;
+               $$13 = this.j;
+            }
+
+            if (this.f.o()) {
+               if ($$14 < 32) {
+                  $$0.a(grc::H, gcl.a, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(grc::H, gcl.m, $$3, $$2, 32, 32);
+               }
             } else {
-               this.a = a;
-               this.b = b;
-               this.c = c;
+               if (this.f.p()) {
+                  if ($$14 < 16) {
+                     $$0.a(grc::H, gcl.n, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(grc::H, gcl.o, $$3, $$2, 32, 32);
+                  }
+               }
+
+               if (this.f.q()) {
+                  if ($$14 < 32 && $$14 > 16 && $$15 < 16) {
+                     $$0.a(grc::H, gcl.p, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(grc::H, gcl.q, $$3, $$2, 32, 32);
+                  }
+               }
+
+               if (this.f.r()) {
+                  if ($$14 < 32 && $$14 > 16 && $$15 > 16) {
+                     $$0.a(grc::H, gcl.r, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(grc::H, gcl.s, $$3, $$2, 32, 32);
+                  }
+               }
             }
          }
 
-         public czk a(int $$0) {
-            return this.c.get($$0 % this.c.size());
-         }
-      }
-   }
-
-   class c extends gcl.b {
-      private static final alg b = alg.b("recipe_book/furnace_overlay");
-      private static final alg c = alg.b("recipe_book/furnace_overlay_highlighted");
-      private static final alg d = alg.b("recipe_book/furnace_overlay_disabled");
-      private static final alg e = alg.b("recipe_book/furnace_overlay_disabled_highlighted");
-
-      public c(final int $$0, final int $$1, final dfj $$2, final dfh $$3, final baz $$4, final boolean $$5) {
-         super($$0, $$1, $$2, $$5, a($$3, $$4));
+         $$0.b(this.a.h, $$12, $$3 + 32 + 2, $$2 + 1, 16777215);
+         $$13.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
       }
 
-      private static List<gcl.b.a> a(dfh $$0, baz $$1) {
-         if ($$0 instanceof dfg $$2) {
-            List<czk> $$3 = $$2.b().a($$1);
-            if (!$$3.isEmpty()) {
-               return List.of(a(1, 1, $$3));
-            }
-         }
+      public String b() {
+         return this.f.c();
+      }
 
-         return List.of();
+      private boolean d() {
+         return !this.f.h() || !this.f.i();
+      }
+
+      public void c() {
+         if (this.f.o() && this.h()) {
+            this.e.x.a(this.e);
+         } else if (this.f.p()) {
+            this.f.k();
+            this.e.x.a(this.e);
+         }
+      }
+
+      void e() {
+         if (this.f.q()) {
+            this.f.l();
+         }
+      }
+
+      void g() {
+         if (this.f.r()) {
+            this.f.m();
+         }
+      }
+
+      private boolean h() {
+         if (this.f.b().a()) {
+            this.f.j();
+            return true;
+         } else {
+            wy $$0 = this.f.b().c();
+            this.a.a(new fxq($$0x -> {
+               this.a.a(this.e.x);
+               if ($$0x) {
+                  this.f.j();
+               }
+            }, gcl.v, $$0));
+            return false;
+         }
       }
 
       @Override
-      protected alg b(boolean $$0) {
-         if ($$0) {
-            return this.D() ? c : b;
-         } else {
-            return this.D() ? e : d;
+      public boolean a(double $$0, double $$1, int $$2) {
+         double $$3 = $$0 - (double)this.e.u();
+         double $$4 = $$1 - (double)this.e.d(this.e.aE_().indexOf(this));
+         if (this.d() && $$3 <= 32.0) {
+            this.e.x.m();
+            if (this.f.o()) {
+               this.h();
+               return true;
+            }
+
+            if ($$3 < 16.0 && this.f.p()) {
+               this.f.k();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
+               this.f.l();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
+               this.f.m();
+               return true;
+            }
          }
+
+         return super.a($$0, $$1, $$2);
       }
    }
 }

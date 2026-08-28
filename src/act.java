@@ -1,6 +1,6 @@
 import java.util.Optional;
 
-public record act(int b, jf<buz> c, int d, int e, Optional<fex> f) implements zf<abu> {
+public record act(int b, jf<buz> c, int d, int e, Optional<ffc> f) implements zf<abu> {
    public static final yw<wj, act> a = zf.a(act::a, act::new);
 
    public act(bwi $$0, bux $$1) {
@@ -8,7 +8,7 @@ public record act(int b, jf<buz> c, int d, int e, Optional<fex> f) implements zf
    }
 
    private act(wj $$0) {
-      this($$0.l(), buz.c.decode($$0), a((vu)$$0), a((vu)$$0), $$0.b($$0x -> new fex($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
+      this($$0.l(), buz.c.decode($$0), a((vu)$$0), a((vu)$$0), $$0.b($$0x -> new ffc($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
    private static void a(vu $$0, int $$1) {
@@ -40,7 +40,7 @@ public record act(int b, jf<buz> c, int d, int e, Optional<fex> f) implements zf
       $$0.a(this);
    }
 
-   public bux a(djh $$0) {
+   public bux a(djm $$0) {
       if (this.f.isPresent()) {
          return new bux(this.c, this.f.get());
       } else {
@@ -62,7 +62,7 @@ public record act(int b, jf<buz> c, int d, int e, Optional<fex> f) implements zf
       return this.e;
    }
 
-   public Optional<fex> h() {
+   public Optional<ffc> h() {
       return this.f;
    }
 }

@@ -1,45 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class ejb extends ejt<elp> {
-   public ejb(Codec<elp> $$0) {
+public class ejb extends ejy<emm> {
+   private static final eat a = dmt.nF.m().b(dlv.b, Integer.valueOf(1)).b(dlv.c, ebf.a).b(dlv.d, Integer.valueOf(0));
+   private static final eat b = a.b(dlv.c, ebf.c).b(dlv.d, Integer.valueOf(1));
+   private static final eat c = a.b(dlv.c, ebf.c);
+   private static final eat d = a.b(dlv.c, ebf.b);
+
+   public ejb(Codec<emm> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<elp> $$0) {
-      iv $$1 = $$0.e();
-      dkg $$2 = $$0.b();
-      azv $$3 = $$0.d();
-      elp $$4 = $$0.f();
-      if ($$1.v() < $$2.G_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
+   public boolean a(eka<emm> $$0) {
+      int $$1 = 0;
+      iv $$2 = $$0.e();
+      dkl $$3 = $$0.b();
+      azv $$4 = $$0.d();
+      emm $$5 = $$0.f();
+      iv.a $$6 = $$2.k();
+      iv.a $$7 = $$2.k();
+      if ($$3.v($$6)) {
+         if (dmt.nF.m().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-         for (iv $$7 : iv.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(egs.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dmt.l.m(), 2);
+                        }
+                     }
+                  }
+               }
+            }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.v($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jb.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jb.a, 1), c, 2);
+               $$3.a($$6.c(jb.a, 1), d, 2);
             }
          }
 
-         return true;
+         $$1++;
       }
-   }
 
-   private boolean a(dji $$0, iv $$1, azv $$2) {
-      iv $$3 = $$1.e();
-      eao $$4 = $$0.a_($$3);
-      return $$4.a(dmo.lk) ? $$2.h() : $$4.c($$0, $$3, jb.b);
-   }
-
-   private void a(dji $$0, iv $$1, azv $$2, elp $$3) {
-      if ($$0.v($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 260);
-      }
+      return $$1 > 0;
    }
 }

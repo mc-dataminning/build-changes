@@ -1,450 +1,158 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableFloat;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
+import org.slf4j.Logger;
 
-public class fpy {
-   final fpy.f a;
+public class fpy extends avi<Map<String, List<fpy.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<fpy.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fpy.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(fpy.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(fpy.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(fpy.a::d)
+                  )
+                  .apply($$0, fpy.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final alg c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private fpy.b f;
 
-   public fpy(fpy.f $$0) {
-      this.a = $$0;
+   public fpy(alg $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public float a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return 0.0F;
+   protected Map<String, List<fpy.a>> a(avd $$0, bqq $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+         }
+
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
+      }
+   }
+
+   protected void a(Map<String, List<fpy.a>> $$0, avd $$1, bqq $$2) {
+      List<fpy.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ag.b("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
       } else {
-         MutableFloat $$1 = new MutableFloat();
-         baj.c($$0, xv.a, ($$1x, $$2, $$3) -> {
-            $$1.add(this.a.getWidth($$3, $$2));
-            return true;
-         });
-         return $$1.floatValue();
-      }
-   }
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
 
-   public float a(xd $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      baj.a($$0, xv.a, ($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
-         return true;
-      });
-      return $$1.floatValue();
-   }
-
-   public float a(ayy $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      $$0.accept(($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
-         return true;
-      });
-      return $$1.floatValue();
-   }
-
-   public int a(String $$0, int $$1, xv $$2) {
-      fpy.e $$3 = new fpy.e((float)$$1);
-      baj.a($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   public String b(String $$0, int $$1, xv $$2) {
-      return $$0.substring(0, this.a($$0, $$1, $$2));
-   }
-
-   public String c(String $$0, int $$1, xv $$2) {
-      MutableFloat $$3 = new MutableFloat();
-      MutableInt $$4 = new MutableInt($$0.length());
-      baj.b($$0, $$2, ($$3x, $$4x, $$5) -> {
-         float $$6 = $$3.addAndGet(this.a.getWidth($$5, $$4x));
-         if ($$6 > (float)$$1) {
-            return false;
+         if (this.f == null) {
+            this.f = new fpy.b($$3, $$4, $$5);
          } else {
-            $$4.setValue($$3x);
-            return true;
-         }
-      });
-      return $$0.substring($$4.intValue());
-   }
-
-   public int d(String $$0, int $$1, xv $$2) {
-      fpy.e $$3 = new fpy.e((float)$$1);
-      baj.c($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   @Nullable
-   public xv a(xd $$0, int $$1) {
-      fpy.e $$2 = new fpy.e((float)$$1);
-      return $$0.<xv>a(($$1x, $$2x) -> baj.c($$2x, $$1x, $$2) ? Optional.empty() : Optional.of($$1x), xv.a).orElse(null);
-   }
-
-   @Nullable
-   public xv a(ayy $$0, int $$1) {
-      fpy.e $$2 = new fpy.e((float)$$1);
-      MutableObject<xv> $$3 = new MutableObject();
-      $$0.accept(($$2x, $$3x, $$4) -> {
-         if (!$$2.accept($$2x, $$3x, $$4)) {
-            $$3.setValue($$3x);
-            return false;
-         } else {
-            return true;
-         }
-      });
-      return (xv)$$3.getValue();
-   }
-
-   public String e(String $$0, int $$1, xv $$2) {
-      return $$0.substring(0, this.d($$0, $$1, $$2));
-   }
-
-   public xd a(xd $$0, int $$1, xv $$2) {
-      final fpy.e $$3 = new fpy.e((float)$$1);
-      return $$0.a(new xd.b<xd>() {
-         private final fpc b = new fpc();
-
-         @Override
-         public Optional<xd> accept(xv $$0, String $$1) {
-            $$3.b();
-            if (!baj.c($$1, $$0, $$3)) {
-               String $$2 = $$1.substring(0, $$3.a());
-               if (!$$2.isEmpty()) {
-                  this.b.a(xd.a($$2, $$0));
-               }
-
-               return Optional.of(this.b.b());
-            } else {
-               if (!$$1.isEmpty()) {
-                  this.b.a(xd.a($$1, $$0));
-               }
-
-               return Optional.empty();
-            }
-         }
-      }, $$2).orElse($$0);
-   }
-
-   public int f(String $$0, int $$1, xv $$2) {
-      fpy.b $$3 = new fpy.b((float)$$1);
-      baj.c($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   public static int a(String $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$2;
-      boolean $$5 = $$1 < 0;
-      int $$6 = Math.abs($$1);
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         if ($$5) {
-            while ($$3 && $$4 > 0 && ($$0.charAt($$4 - 1) == ' ' || $$0.charAt($$4 - 1) == '\n')) {
-               $$4--;
-            }
-
-            while ($$4 > 0 && $$0.charAt($$4 - 1) != ' ' && $$0.charAt($$4 - 1) != '\n') {
-               $$4--;
-            }
-         } else {
-            int $$8 = $$0.length();
-            int $$9 = $$0.indexOf(32, $$4);
-            int $$10 = $$0.indexOf(10, $$4);
-            if ($$9 == -1 && $$10 == -1) {
-               $$4 = -1;
-            } else if ($$9 != -1 && $$10 != -1) {
-               $$4 = Math.min($$9, $$10);
-            } else if ($$9 != -1) {
-               $$4 = $$9;
-            } else {
-               $$4 = $$10;
-            }
-
-            if ($$4 == -1) {
-               $$4 = $$8;
-            } else {
-               while ($$3 && $$4 < $$8 && ($$0.charAt($$4) == ' ' || $$0.charAt($$4) == '\n')) {
-                  $$4++;
-               }
-            }
-         }
-      }
-
-      return $$4;
-   }
-
-   public void a(String $$0, int $$1, xv $$2, boolean $$3, fpy.d $$4) {
-      int $$5 = 0;
-      int $$6 = $$0.length();
-      xv $$7 = $$2;
-
-      while ($$5 < $$6) {
-         fpy.b $$8 = new fpy.b((float)$$1);
-         boolean $$9 = baj.a($$0, $$5, $$7, $$2, $$8);
-         if ($$9) {
-            $$4.accept($$7, $$5, $$6);
-            break;
+            this.f = this.f.a($$3, $$5);
          }
 
-         int $$10 = $$8.a();
-         char $$11 = $$0.charAt($$10);
-         int $$12 = $$11 != '\n' && $$11 != ' ' ? $$10 : $$10 + 1;
-         $$4.accept($$7, $$5, $$3 ? $$12 : $$10);
-         $$5 = $$12;
-         $$7 = $$8.b();
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
       }
    }
 
-   public List<xd> g(String $$0, int $$1, xv $$2) {
-      List<xd> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, false, ($$2x, $$3x, $$4) -> $$3.add(xd.a($$0.substring($$3x, $$4), $$2x)));
-      return $$3;
+   @Override
+   public void close() {
+      this.a();
    }
 
-   public List<xd> b(xd $$0, int $$1, xv $$2) {
-      List<xd> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$1x, $$2x) -> $$3.add($$1x));
-      return $$3;
-   }
-
-   public List<xd> a(xd $$0, int $$1, xv $$2, xd $$3) {
-      List<xd> $$4 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$2x, $$3x) -> $$4.add($$3x ? xd.a($$3, $$2x) : $$2x));
-      return $$4;
-   }
-
-   public void a(xd $$0, int $$1, xv $$2, BiConsumer<xd, Boolean> $$3) {
-      List<fpy.c> $$4 = Lists.newArrayList();
-      $$0.a(($$1x, $$2x) -> {
-         if (!$$2x.isEmpty()) {
-            $$4.add(new fpy.c($$2x, $$1x));
-         }
-
-         return Optional.empty();
-      }, $$2);
-      fpy.a $$5 = new fpy.a($$4);
-      boolean $$6 = true;
-      boolean $$7 = false;
-      boolean $$8 = false;
-
-      while ($$6) {
-         $$6 = false;
-         fpy.b $$9 = new fpy.b((float)$$1);
-
-         for (fpy.c $$10 : $$5.a) {
-            boolean $$11 = baj.a($$10.c, 0, $$10.d, $$2, $$9);
-            if (!$$11) {
-               int $$12 = $$9.a();
-               xv $$13 = $$9.b();
-               char $$14 = $$5.a($$12);
-               boolean $$15 = $$14 == '\n';
-               boolean $$16 = $$15 || $$14 == ' ';
-               $$7 = $$15;
-               xd $$17 = $$5.a($$12, $$16 ? 1 : 0, $$13);
-               $$3.accept($$17, $$8);
-               $$8 = !$$15;
-               $$6 = true;
-               break;
-            }
-
-            $$9.a($$10.c.length());
-         }
-      }
-
-      xd $$18 = $$5.a();
-      if ($$18 != null) {
-         $$3.accept($$18, $$8);
-      } else if ($$7) {
-         $$3.accept(xd.b, false);
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
       }
    }
 
-   static class a {
-      final List<fpy.c> a;
-      private String b;
+   private long a(List<fpy.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
 
-      public a(List<fpy.c> $$0) {
-         this.a = $$0;
-         this.b = $$0.stream().map($$0x -> $$0x.c).collect(Collectors.joining());
-      }
+   private long a(List<fpy.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
 
-      public char a(int $$0) {
-         return this.b.charAt($$0);
-      }
+   public static record a(long a, long b, String c, String d) {
 
-      public xd a(int $$0, int $$1, xv $$2) {
-         fpc $$3 = new fpc();
-         ListIterator<fpy.c> $$4 = this.a.listIterator();
-         int $$5 = $$0;
-         boolean $$6 = false;
-
-         while ($$4.hasNext()) {
-            fpy.c $$7 = $$4.next();
-            String $$8 = $$7.c;
-            int $$9 = $$8.length();
-            if (!$$6) {
-               if ($$5 > $$9) {
-                  $$3.a($$7);
-                  $$4.remove();
-                  $$5 -= $$9;
-               } else {
-                  String $$10 = $$8.substring(0, $$5);
-                  if (!$$10.isEmpty()) {
-                     $$3.a(xd.a($$10, $$7.d));
-                  }
-
-                  $$5 += $$1;
-                  $$6 = true;
-               }
-            }
-
-            if ($$6) {
-               if ($$5 <= $$9) {
-                  String $$11 = $$8.substring($$5);
-                  if ($$11.isEmpty()) {
-                     $$4.remove();
-                  } else {
-                     $$4.set(new fpy.c($$11, $$2));
-                  }
-                  break;
-               }
-
-               $$4.remove();
-               $$5 -= $$9;
-            }
-         }
-
-         this.b = this.b.substring($$0 + $$1);
-         return $$3.b();
-      }
-
-      @Nullable
-      public xd a() {
-         fpc $$0 = new fpc();
-         this.a.forEach($$0::a);
-         this.a.clear();
-         return $$0.a();
+      public a(final long a, final long b, final String c, final String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
       }
    }
 
-   class b implements ayz {
-      private final float b;
-      private int c = -1;
-      private xv d = xv.a;
-      private boolean e;
-      private float f;
-      private int g = -1;
-      private xv h = xv.a;
-      private int i;
-      private int j;
+   static class b extends TimerTask {
+      private final fpt a = fpt.Q();
+      private final List<fpy.a> b;
+      private final long c;
+      private final AtomicLong d;
 
-      public b(final float $$0) {
-         this.b = Math.max($$0, 1.0F);
-      }
-
-      @Override
-      public boolean accept(int $$0, xv $$1, int $$2) {
-         int $$3 = $$0 + this.j;
-         switch ($$2) {
-            case 10:
-               return this.a($$3, $$1);
-            case 32:
-               this.g = $$3;
-               this.h = $$1;
-            default:
-               float $$4 = fpy.this.a.getWidth($$2, $$1);
-               this.f += $$4;
-               if (!this.e || !(this.f > this.b)) {
-                  this.e |= $$4 != 0.0F;
-                  this.i = $$3 + Character.charCount($$2);
-                  return true;
-               } else {
-                  return this.g != -1 ? this.a(this.g, this.h) : this.a($$3, $$1);
-               }
-         }
-      }
-
-      private boolean a(int $$0, xv $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return false;
-      }
-
-      private boolean c() {
-         return this.c != -1;
-      }
-
-      public int a() {
-         return this.c() ? this.c : this.i;
-      }
-
-      public xv b() {
-         return this.d;
-      }
-
-      public void a(int $$0) {
-         this.j += $$0;
-      }
-   }
-
-   static class c implements xd {
-      final String c;
-      final xv d;
-
-      public c(String $$0, xv $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public <T> Optional<T> a(xd.a<T> $$0) {
-         return $$0.accept(this.c);
-      }
-
-      @Override
-      public <T> Optional<T> a(xd.b<T> $$0, xv $$1) {
-         return $$0.accept(this.d.a($$1), this.c);
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void accept(xv var1, int var2, int var3);
-   }
-
-   class e implements ayz {
-      private float b;
-      private int c;
-
-      public e(final float $$0) {
+      public b(List<fpy.a> $$0, long $$1, long $$2) {
          this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
+      }
+
+      public fpy.b a(List<fpy.a> $$0, long $$1) {
+         this.cancel();
+         return new fpy.b($$0, this.d.get(), $$1);
       }
 
       @Override
-      public boolean accept(int $$0, xv $$1, int $$2) {
-         this.b = this.b - fpy.this.a.getWidth($$2, $$1);
-         if (this.b >= 0.0F) {
-            this.c = $$0 + Character.charCount($$2);
-            return true;
-         } else {
-            return false;
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
+
+         for (fpy.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fvj.a(fpt.Q().aA(), fvj.a.g, wy.a($$2.c, $$3), wy.a($$2.d, $$3)));
+                  return;
+               }
+            }
          }
       }
-
-      public int a() {
-         return this.c;
-      }
-
-      public void b() {
-         this.c = 0;
-      }
-   }
-
-   @FunctionalInterface
-   public interface f {
-      float getWidth(int var1, xv var2);
    }
 }

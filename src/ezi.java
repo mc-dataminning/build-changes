@@ -1,94 +1,313 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public interface ezi {
-   int d = 19133;
-   int e = 19132;
+public class ezi implements Comparable<ezi> {
+   public static final wy a = wy.c("selectWorld.select");
+   private final djq b;
+   private final ezj c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
+   @Nullable
+   private wy i;
 
-   dkf D();
-
-   void a(dkf var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(q $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   public ezi(djq $$0, ezj $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   public String a() {
+      return this.d;
+   }
+
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
+   }
+
+   public Path c() {
+      return this.h;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public long f() {
+      return this.c.b();
+   }
+
+   public int a(ezi $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
+      } else {
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
       }
    }
 
-   @Nullable
-   tz E();
+   public djq g() {
+      return this.b;
+   }
 
-   void a(@Nullable tz var1);
+   public djj h() {
+      return this.b.b();
+   }
 
-   ezh I();
+   public boolean i() {
+      return this.b.c();
+   }
 
-   djl J();
+   public boolean j() {
+      return this.b.e();
+   }
 
-   tz a(jt var1, @Nullable tz var2);
+   public xm k() {
+      return bal.b(this.c.c()) ? wy.c("selectWorld.versionUnknown") : wy.b(this.c.c());
+   }
 
-   boolean l();
+   public ezj l() {
+      return this.c;
+   }
 
-   int x();
+   public boolean m() {
+      return this.o().a();
+   }
 
-   String e();
+   public boolean n() {
+      return this.o() == ezi.a.b;
+   }
 
-   dje k();
+   public ezi.a o() {
+      ah $$0 = ac.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return ezi.a.c;
+      } else {
+         return $$2 > $$1 ? ezi.a.b : ezi.a.a;
+      }
+   }
 
-   void a(dje var1);
+   public boolean p() {
+      return this.f;
+   }
 
-   boolean m();
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
 
-   bud q();
+   public boolean r() {
+      return ac.b().d().a(this.c.d());
+   }
 
-   void a(bud var1);
+   public wy s() {
+      if (this.i == null) {
+         this.i = this.z();
+      }
 
-   boolean r();
+      return this.i;
+   }
 
-   void d(boolean var1);
+   private wy z() {
+      if (this.p()) {
+         return wy.c("selectWorld.locked").a(o.m);
+      } else if (this.d()) {
+         return wy.c("selectWorld.conversion").a(o.m);
+      } else if (!this.r()) {
+         return wy.a("selectWorld.incompatible.info", this.k()).a(o.m);
+      } else {
+         xm $$0 = this.i() ? wy.i().b(wy.c("gameMode.hardcore").b(-65536)) : wy.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(wy.c("selectWorld.commands"));
+         }
 
-   djd o();
+         if (this.e()) {
+            $$0.f(", ").b(wy.c("selectWorld.experimental").a(o.o));
+         }
 
-   @Nullable
-   tz w();
+         xm $$1 = this.k();
+         xm $$2 = wy.b(", ").b(wy.c("selectWorld.version")).b(wx.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? o.m : o.u));
+         } else {
+            $$2.b($$1);
+         }
 
-   eeo.a C();
+         $$0.b($$2);
+         return $$0;
+      }
+   }
 
-   void a(eeo.a var1);
+   public wy t() {
+      return a;
+   }
 
-   ehl y();
+   public boolean u() {
+      return !this.q();
+   }
 
-   boolean z();
+   public boolean v() {
+      return !this.d() && !this.p();
+   }
 
-   boolean A();
+   public boolean w() {
+      return !this.q();
+   }
 
-   Lifecycle B();
+   public boolean x() {
+      return !this.q();
+   }
 
-   default cut K() {
-      return this.D().b();
+   public boolean y() {
+      return true;
+   }
+
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(final boolean $$0, final boolean $$1, final String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends ezi {
+      private static final wy b = wy.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final wy c = wy.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wy s() {
+         return b;
+      }
+
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wy t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends ezi {
+      private static final wy b = wy.c("symlink_warning.more_info");
+      private static final wy c = wy.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wy s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wy t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
    }
 }

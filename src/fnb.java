@@ -1,261 +1,213 @@
 import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fnb extends hpw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ReentrantLock b = new ReentrantLock();
-   private static final int c = 200;
-   private static final int C = 80;
-   private static final int D = 95;
-   private static final int E = 1;
-   private final fyn F;
-   private final fme G;
-   private final wy H;
-   private final RateLimiter I;
-   private fsv J;
-   private final String K;
-   private final fnb.a L;
+public class fnb extends hqd {
+   private static final alg a = alg.b("widget/slot_frame");
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 80;
+   private final fys C;
    @Nullable
-   private volatile wy M;
-   private volatile wy N = wy.c("mco.download.preparing");
-   @Nullable
-   private volatile String O;
-   private volatile boolean P;
-   private volatile boolean Q = true;
-   private volatile boolean R;
-   private volatile boolean S;
-   @Nullable
-   private Long T;
-   @Nullable
-   private Long U;
-   private long V;
-   private int W;
-   private static final String[] X = new String[]{"", ".", ". .", ". . ."};
-   private int Y;
-   private boolean Z;
-   private final BooleanConsumer aa;
+   private flu D;
+   private final long E;
+   private final wy[] F = new wy[]{wy.c("mco.brokenworld.message.line1"), wy.c("mco.brokenworld.message.line2")};
+   private int G;
+   private final List<Integer> H = Lists.newArrayList();
+   private int I;
 
-   public fnb(fyn $$0, fme $$1, String $$2, BooleanConsumer $$3) {
-      super(fpf.a);
-      this.aa = $$3;
-      this.F = $$0;
-      this.K = $$2;
-      this.G = $$1;
-      this.L = new fnb.a();
-      this.H = wy.c("mco.download.title");
-      this.I = RateLimiter.create(0.1F);
+   public fnb(fys $$0, long $$1, boolean $$2) {
+      super($$2 ? wy.c("mco.brokenworld.minigame.title") : wy.c("mco.brokenworld.title"));
+      this.C = $$0;
+      this.E = $$1;
    }
 
    @Override
    public void aO_() {
-      this.J = this.c(fsv.a(wx.e, $$0 -> this.aL_()).a((this.n - 200) / 2, this.o - 42, 200, 20).a());
-      this.E();
-   }
-
-   private void E() {
-      if (!this.R && !this.Z) {
-         this.Z = true;
-         if (this.a(this.G.a) >= 5368709120L) {
-            wy $$0 = wy.a("mco.download.confirmation.oversized", fkk.b(5368709120L));
-            this.m.a(fnk.c(this, $$0, $$0x -> {
-               this.m.a(this);
-               this.G();
-            }));
-         } else {
-            this.G();
-         }
+      this.G = this.n / 2 - 150;
+      this.c(fta.a(wx.k, $$0 -> this.aL_()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
+      if (this.D == null) {
+         this.a(this.E);
+      } else {
+         this.E();
       }
    }
 
-   private long a(String $$0) {
-      fkl $$1 = new fkl();
-      return $$1.a($$0);
+   @Override
+   public wy i() {
+      return xb.a(Stream.concat(Stream.of(this.l), Stream.of(this.F)).collect(Collectors.toList()), wx.v);
+   }
+
+   private void E() {
+      for (Entry<Integer, fma> $$0 : this.D.i.entrySet()) {
+         int $$1 = $$0.getKey();
+         boolean $$2 = $$1 != this.D.p || this.D.i();
+         fta $$3;
+         if ($$2) {
+            $$3 = fta.a(wy.c("mco.brokenworld.play"), $$1x -> this.m.a(new fnj(this.C, new foy(this.D.a, $$1, this::b)))).a(this.a($$1), g(8), 80, 20).a();
+            $$3.j = !this.D.i.get($$1).m;
+         } else {
+            $$3 = fta.a(
+                  wy.c("mco.brokenworld.download"),
+                  $$1x -> this.m.a(fnp.a(this, wy.c("mco.configure.world.restore.download.question.line1"), $$1xx -> this.b($$1)))
+               )
+               .a(this.a($$1), g(8), 80, 20)
+               .a();
+         }
+
+         if (this.H.contains($$1)) {
+            $$3.j = false;
+            $$3.b(wy.c("mco.brokenworld.downloaded"));
+         }
+
+         this.c($$3);
+      }
    }
 
    @Override
    public void e() {
-      super.e();
-      this.W++;
-      if (this.N != null && this.I.tryAcquire(1)) {
-         wy $$0 = this.F();
-         this.m.aY().c($$0);
-      }
-   }
-
-   private wy F() {
-      List<wy> $$0 = Lists.newArrayList();
-      $$0.add(this.H);
-      $$0.add(this.N);
-      if (this.O != null) {
-         $$0.add(wy.a("mco.download.percent", this.O));
-         $$0.add(wy.a("mco.download.speed.narration", fkk.b(this.V)));
-      }
-
-      if (this.M != null) {
-         $$0.add(this.M);
-      }
-
-      return wx.a($$0);
+      this.I++;
    }
 
    @Override
-   public void aL_() {
-      this.P = true;
-      if (this.R && this.aa != null && this.M == null) {
-         this.aa.accept(true);
-      }
-
-      this.m.a(this.F);
-   }
-
-   @Override
-   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+   public void a(fsm $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.H, this.n / 2, 20, -1);
-      $$0.a(this.p, this.N, this.n / 2, 50, -1);
-      if (this.Q) {
-         this.c($$0);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+
+      for (int $$4 = 0; $$4 < this.F.length; $$4++) {
+         $$0.a(this.p, this.F[$$4], this.n / 2, g(-1) + 3 + $$4 * 12, -6250336);
       }
 
-      if (this.L.a != 0L && !this.P) {
-         this.d($$0);
-         this.e($$0);
-      }
-
-      if (this.M != null) {
-         $$0.a(this.p, this.M, this.n / 2, 110, -65536);
-      }
-   }
-
-   private void c(fsh $$0) {
-      int $$1 = this.p.a(this.N);
-      if (this.W != 0 && this.W % 10 == 0) {
-         this.Y++;
-      }
-
-      $$0.b(this.p, X[this.Y % X.length], this.n / 2 + $$1 / 2 + 5, 50, -1);
-   }
-
-   private void d(fsh $$0) {
-      double $$1 = Math.min((double)this.L.a / (double)this.L.b, 1.0);
-      this.O = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.n - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.p, wy.a("mco.download.percent", this.O), this.n / 2, 84, -1);
-   }
-
-   private void e(fsh $$0) {
-      if (this.W % 20 == 0) {
-         if (this.T != null) {
-            long $$1 = ag.c() - this.U;
-            if ($$1 == 0L) {
-               $$1 = 1L;
-            }
-
-            this.V = 1000L * (this.L.a - this.T) / $$1;
-            this.a($$0, this.V);
-         }
-
-         this.T = this.L.a;
-         this.U = ag.c();
-      } else {
-         this.a($$0, this.V);
-      }
-   }
-
-   private void a(fsh $$0, long $$1) {
-      if ($$1 > 0L) {
-         int $$2 = this.p.b(this.O);
-         $$0.b(this.p, wy.a("mco.download.speed", fkk.b($$1)), this.n / 2 + $$2 / 2 + 15, 84, -1);
-      }
-   }
-
-   private void G() {
-      new Thread(() -> {
-         try {
-            try {
-               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                  this.N = wy.c("mco.download.failed");
-                  return;
-               }
-
-               if (this.P) {
-                  this.H();
-                  return;
-               }
-
-               this.N = wy.a("mco.download.downloading", this.K);
-               fkl $$0 = new fkl();
-               $$0.a(this.G.a);
-               $$0.a(this.G, this.K, this.L, this.m.m());
-
-               while (!$$0.b()) {
-                  if ($$0.c()) {
-                     $$0.a();
-                     this.M = wy.c("mco.download.failed");
-                     this.J.b(wx.d);
-                     return;
-                  }
-
-                  if ($$0.d()) {
-                     if (!this.S) {
-                        this.N = wy.c("mco.download.extracting");
-                     }
-
-                     this.S = true;
-                  }
-
-                  if (this.P) {
-                     $$0.a();
-                     this.H();
-                     return;
-                  }
-
-                  try {
-                     Thread.sleep(500L);
-                  } catch (InterruptedException var8) {
-                     a.error("Failed to check Realms backup download status");
-                  }
-               }
-
-               this.R = true;
-               this.N = wy.c("mco.download.done");
-               this.J.b(wx.d);
-               return;
-            } catch (InterruptedException var9) {
-               a.error("Could not acquire upload lock");
-            } catch (Exception var10) {
-               this.M = wy.c("mco.download.failed");
-               a.info("Exception while downloading world", var10);
-            }
-         } finally {
-            if (!b.isHeldByCurrentThread()) {
-               return;
+      if (this.D != null) {
+         for (Entry<Integer, fma> $$5 : this.D.i.entrySet()) {
+            if ($$5.getValue().l != null && $$5.getValue().k != -1L) {
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.D.p == $$5.getKey() && !this.F(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  $$5.getValue().k,
+                  $$5.getValue().l,
+                  $$5.getValue().m
+               );
             } else {
-               b.unlock();
-               this.Q = false;
-               this.R = true;
+               this.a(
+                  $$0,
+                  this.a($$5.getKey()),
+                  g(1) + 5,
+                  $$1,
+                  $$2,
+                  this.D.p == $$5.getKey() && !this.F(),
+                  $$5.getValue().a($$5.getKey()),
+                  $$5.getKey(),
+                  -1L,
+                  null,
+                  $$5.getValue().m
+               );
+            }
+         }
+      }
+   }
+
+   private int a(int $$0) {
+      return this.G + ($$0 - 1) * 110;
+   }
+
+   private void a(long $$0) {
+      new Thread(() -> {
+         fkt $$1 = fkt.a();
+
+         try {
+            this.D = $$1.a($$0);
+            this.E();
+         } catch (fmp var5) {
+            b.error("Couldn't get own world", var5);
+            this.m.a(new fnh(var5, this.C));
+         }
+      }).start();
+   }
+
+   public void b() {
+      new Thread(() -> {
+         fkt $$0 = fkt.a();
+         if (this.D.e == flu.c.a) {
+            this.m.execute(() -> this.m.a(new fnj(this, new fos(this.D, this, true, this.m))));
+         } else {
+            try {
+               flu $$1 = $$0.a(this.E);
+               this.m.execute(() -> fko.a($$1, this));
+            } catch (fmp var3) {
+               b.error("Couldn't get own world", var3);
+               this.m.execute(() -> this.m.a(this.C));
             }
          }
       }).start();
    }
 
-   private void H() {
-      this.N = wy.c("mco.download.cancelled");
+   private void b(int $$0) {
+      fkt $$1 = fkt.a();
+
+      try {
+         fmj $$2 = $$1.b(this.D.a, $$0);
+         fng $$3 = new fng(this, $$2, this.D.a($$0), $$1x -> {
+            if ($$1x) {
+               this.H.add($$0);
+               this.p();
+               this.E();
+            } else {
+               this.m.a(this);
+            }
+         });
+         this.m.a($$3);
+      } catch (fmp var5) {
+         b.error("Couldn't download world data", var5);
+         this.m.a(new fnh(var5, this));
+      }
    }
 
-   public static class a {
-      public volatile long a;
-      public volatile long b;
+   @Override
+   public void aL_() {
+      this.m.a(this.C);
+   }
+
+   private boolean F() {
+      return this.D != null && this.D.i();
+   }
+
+   private void a(fsm $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5, String $$6, int $$7, long $$8, @Nullable String $$9, boolean $$10) {
+      alg $$11;
+      if ($$10) {
+         $$11 = fmv.a;
+      } else if ($$9 != null && $$8 != -1L) {
+         $$11 = foh.a(String.valueOf($$8), $$9);
+      } else if ($$7 == 1) {
+         $$11 = fmv.b;
+      } else if ($$7 == 2) {
+         $$11 = fmv.c;
+      } else if ($$7 == 3) {
+         $$11 = fmv.d;
+      } else {
+         $$11 = foh.a(String.valueOf(this.D.r), this.D.s);
+      }
+
+      if ($$5) {
+         float $$17 = 0.9F + 0.1F * azm.b((float)this.I * 0.2F);
+         $$0.a(grc::H, $$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, axw.a(1.0F, $$17, $$17, $$17));
+         $$0.a(grc::H, a, $$1, $$2, 80, 80);
+      } else {
+         int $$18 = axw.a(1.0F, 0.56F, 0.56F, 0.56F);
+         $$0.a(grc::H, $$11, $$1 + 3, $$2 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$18);
+         $$0.a(grc::H, a, $$1, $$2, 80, 80, $$18);
+      }
+
+      $$0.a(this.p, $$6, $$1 + 40, $$2 + 66, -1);
    }
 }

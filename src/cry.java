@@ -1,64 +1,58 @@
-public abstract class cry extends crs implements csb {
-   private static final float d = 12.25F;
-   private static final akj<czk> e = akn.a(cry.class, akl.h);
+import java.util.List;
 
-   public cry(bwr<? extends cry> $$0, djh $$1) {
+public class cry extends crv {
+   public static final float d = 4.0F;
+
+   public cry(bwr<? extends cry> $$0, djm $$1) {
       super($$0, $$1);
    }
 
-   public cry(bwr<? extends cry> $$0, double $$1, double $$2, double $$3, fex $$4, djh $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   public cry(djm $$0, bxj $$1, ffc $$2) {
+      super(bwr.J, $$1, $$2, $$0);
    }
 
-   public cry(bwr<? extends cry> $$0, bxj $$1, fex $$2, djh $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
+   @Override
+   protected void a(ffa $$0) {
+      super.a($$0);
+      if ($$0.d() != ffa.a.c || !this.e(((fez)$$0).a())) {
+         if (!this.dU().C) {
+            List<bxj> $$1 = this.dU().a(bxj.class, this.cQ().c(4.0, 2.0, 4.0));
+            bwa $$2 = new bwa(this.dU(), this.dz(), this.dB(), this.dF());
+            bwi $$3 = this.q();
+            if ($$3 instanceof bxj) {
+               $$2.a((bxj)$$3);
+            }
 
-   public void a(czk $$0) {
-      if ($$0.f()) {
-         this.ar().a(e, this.o());
-      } else {
-         this.ar().a(e, $$0.c(1));
+            $$2.a(ly.h);
+            $$2.a(3.0F);
+            $$2.a(600);
+            $$2.d((7.0F - $$2.e()) / (float)$$2.i());
+            $$2.b(0.25F);
+            $$2.a(new bvm(bvo.g, 1, 1));
+            if (!$$1.isEmpty()) {
+               for (bxj $$4 : $$1) {
+                  double $$5 = this.g($$4);
+                  if ($$5 < 16.0) {
+                     $$2.a_($$4.dz(), $$4.dB(), $$4.dF());
+                     break;
+                  }
+               }
+            }
+
+            this.dU().c(2006, this.du(), this.aZ() ? -1 : 1);
+            this.dU().b($$2);
+            this.aq();
+         }
       }
    }
 
    @Override
-   protected void aK() {
+   protected lw j() {
+      return ly.h;
    }
 
    @Override
-   public czk f() {
-      return this.ar().a(e);
-   }
-
-   @Override
-   protected void a(akn.a $$0) {
-      $$0.a(e, this.o());
-   }
-
-   @Override
-   public void b(tz $$0) {
-      ale<uw> $$1 = this.dW().a(un.a);
-      $$0.a("Item", czk.b, $$1, this.f());
-   }
-
-   @Override
-   public void a(tz $$0) {
-      ale<uw> $$1 = this.dW().a(un.a);
-      this.a($$0.<czk>a("Item", czk.b, $$1).orElse(this.o()));
-   }
-
-   private czk o() {
-      return new czk(czo.vg);
-   }
-
-   @Override
-   public bya a_(int $$0) {
-      return $$0 == 0 ? bya.a(this::f, this::a) : super.a_($$0);
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return this.af < 2 && $$0 < 12.25 ? false : super.a($$0);
+   protected boolean g() {
+      return false;
    }
 }

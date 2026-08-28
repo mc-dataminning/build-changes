@@ -1,65 +1,33 @@
-import java.time.Duration;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class hpa {
-   private final UUID a = UUID.randomUUID();
-   private final hov b;
-   private final hpe c;
-   private final hpg d = new hpg();
-   private final hpd e;
-   private final hpf f;
+public class hpa implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final bpi<hoz> b;
+   private final bsv c;
 
-   public hpa(hov $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new hpe($$3);
-      this.e = new hpd();
-      this.f = new hpf($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(hoy.i, this.a);
-      });
+   public hpa(FileChannel $$0, Executor $$1) {
+      this.b = new bpi<>(hoz.a, $$0);
+      this.c = new bsv($$1, "telemetry-event-log");
    }
 
-   public void a() {
-      this.e.a(this.b);
-   }
-
-   public void a(dje $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
-   }
-
-   public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
-   }
-
-   public void a(long $$0) {
-      this.d.a($$0);
-   }
-
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
-      }
-   }
-
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
-   }
-
-   public void a(djh $$0, aj $$1) {
-      alg $$2 = $$1.a();
-      if ($$1.b().g() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.ae();
-         this.b.send(how.f, $$2x -> {
-            $$2x.a(hoy.D, $$2.toString());
-            $$2x.a(hoy.E, $$3);
+   public hpb a() {
+      return $$0 -> this.c.a_(() -> {
+            try {
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
+            }
          });
-      }
+   }
+
+   @Override
+   public void close() {
+      this.c.a_(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

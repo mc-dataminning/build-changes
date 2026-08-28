@@ -1,49 +1,71 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class doe extends dlw {
-   public static final MapCodec<doe> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(doc.a.forGetter($$0x -> $$0x.c), t()).apply($$0, doe::new));
-   private final dmm c;
-   private static final ffr d = dmm.b(12.0, 0.0, 15.0);
+public class doe extends dpp {
+   public static final MapCodec<doe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mg.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, doe::new)
+   );
+   private final dmr b;
 
    @Override
    public MapCodec<doe> a() {
       return a;
    }
 
-   protected doe(dmm $$0, ean.d $$1) {
+   public doe(dmr $$0, eas.d $$1) {
       super($$1);
-      this.c = $$0;
+      this.b = $$0;
    }
 
    @Override
-   protected void a(eao $$0, djh $$1, iv $$2, eao $$3, boolean $$4) {
-      this.a($$0, $$1, $$1, $$1.A, $$2);
-   }
-
-   @Override
-   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.m().b(b, Boolean.valueOf(false)), 2);
+   public void a(djm $$0, iv $$1, eat $$2, eat $$3, cnq $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.m(), 3);
       }
    }
 
    @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if ($$4 == jb.a && !$$0.a($$1, $$3)) {
-         return dmo.a.m();
-      } else {
-         this.a($$0, $$1, $$2, $$7, $$3);
-         if ($$0.c(b)) {
-            $$2.a($$3, eww.c, eww.c.a($$1));
+   public eat a(ddg $$0) {
+      diq $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      eat $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.m() : super.a($$0);
+   }
+
+   private static boolean a(diq $$0, iv $$1, eat $$2) {
+      return o($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(diq $$0, iv $$1) {
+      boolean $$2 = false;
+      iv.a $$3 = $$1.k();
+
+      for (jb $$4 : jb.values()) {
+         eat $$5 = $$0.a_($$3);
+         if ($$4 != jb.a || o($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
+
+      return $$2;
+   }
+
+   private static boolean o(eat $$0) {
+      return $$0.y().a(axh.a);
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return d;
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      return a($$1, $$3) ? this.b.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public int b(eat $$0, diq $$1, iv $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

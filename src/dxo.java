@@ -1,220 +1,378 @@
-import com.mojang.logging.LogUtils;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dxo<T extends dxm> {
-   private static final Logger V = LogUtils.getLogger();
-   public static final dxo<dym> a = a("furnace", dym::new, dmo.cO);
-   public static final dxo<dxu> b = a("chest", dxu::new, dmo.cG);
-   public static final dxo<dzl> c = a("trapped_chest", dzl::new, dmo.hw);
-   public static final dxo<dyk> d = a("ender_chest", dyk::new, dmo.gf);
-   public static final dxo<dyr> e = a("jukebox", dyr::new, dmo.ek);
-   public static final dxo<dyh> f = a("dispenser", dyh::new, dmo.bb);
-   public static final dxo<dyi> g = a("dropper", dyi::new, dmo.hJ);
-   public static final dxo<dza> h = a(
-      "sign",
-      dza::new,
-      dmo.cP,
-      dmo.cQ,
-      dmo.cR,
-      dmo.cS,
-      dmo.cT,
-      dmo.cU,
-      dmo.cV,
-      dmo.cW,
-      dmo.dd,
-      dmo.de,
-      dmo.df,
-      dmo.dg,
-      dmo.dh,
-      dmo.di,
-      dmo.dj,
-      dmo.dk,
-      dmo.pC,
-      dmo.pE,
-      dmo.pD,
-      dmo.pF,
-      dmo.cX,
-      dmo.dl,
-      dmo.cY,
-      dmo.dm
+public class dxo extends dxr {
+   private static final String c = "flower_pos";
+   private static final String d = "bees";
+   static final List<String> e = Arrays.asList(
+      "Air",
+      "drop_chances",
+      "ArmorItems",
+      "Brain",
+      "CanPickUpLoot",
+      "DeathTime",
+      "fall_distance",
+      "FallFlying",
+      "Fire",
+      "HandItems",
+      "HurtByTimestamp",
+      "HurtTime",
+      "LeftHanded",
+      "Motion",
+      "NoGravity",
+      "OnGround",
+      "PortalCooldown",
+      "Pos",
+      "Rotation",
+      "SleepingX",
+      "SleepingY",
+      "SleepingZ",
+      "CannotEnterHiveTicks",
+      "TicksSincePollination",
+      "CropsGrownSincePollination",
+      "hive_pos",
+      "Passengers",
+      "leash",
+      "UUID"
    );
-   public static final dxo<dyn> i = a(
-      "hanging_sign",
-      dyn::new,
-      dmo.dn,
-      dmo.do,
-      dmo.dp,
-      dmo.dq,
-      dmo.dr,
-      dmo.ds,
-      dmo.dt,
-      dmo.du,
-      dmo.dv,
-      dmo.dw,
-      dmo.dx,
-      dmo.dy,
-      dmo.dz,
-      dmo.dA,
-      dmo.dB,
-      dmo.dC,
-      dmo.dD,
-      dmo.dE,
-      dmo.dF,
-      dmo.dG,
-      dmo.dI,
-      dmo.dJ,
-      dmo.dH,
-      dmo.dK
-   );
-   public static final dxo<dze> j = a("mob_spawner", dze::new, dmo.cD);
-   public static final dxo<dyc> k = a("creaking_heart", dyc::new, dmo.cE);
-   public static final dxo<eaj> l = a("piston", eaj::new, dmo.ca);
-   public static final dxo<dxq> m = a("brewing_stand", dxq::new, dmo.fR);
-   public static final dxo<dyj> n = a("enchanting_table", dyj::new, dmo.fQ);
-   public static final dxo<dzj> o = a("end_portal", dzj::new, dmo.fW);
-   public static final dxo<dxh> p = a("beacon", dxh::new, dmo.gn);
-   public static final dxo<dzc> q = a(
-      "skull", dzc::new, dmo.hf, dmo.hg, dmo.hn, dmo.ho, dmo.hp, dmo.hq, dmo.hj, dmo.hk, dmo.hh, dmo.hi, dmo.hl, dmo.hm, dmo.hr, dmo.hs
-   );
-   public static final dxo<dyd> r = a("daylight_detector", dyd::new, dmo.hA);
-   public static final dxo<dyp> s = a("hopper", dyp::new, dmo.hD);
-   public static final dxo<dxy> t = a("comparator", dxy::new, dmo.hz);
-   public static final dxo<dxa> u = a(
-      "banner",
-      dxa::new,
-      dmo.jl,
-      dmo.jm,
-      dmo.jn,
-      dmo.jo,
-      dmo.jp,
-      dmo.jq,
-      dmo.jr,
-      dmo.js,
-      dmo.jt,
-      dmo.ju,
-      dmo.jv,
-      dmo.jw,
-      dmo.jx,
-      dmo.jy,
-      dmo.jz,
-      dmo.jA,
-      dmo.jB,
-      dmo.jC,
-      dmo.jD,
-      dmo.jE,
-      dmo.jF,
-      dmo.jG,
-      dmo.jH,
-      dmo.jI,
-      dmo.jJ,
-      dmo.jK,
-      dmo.jL,
-      dmo.jM,
-      dmo.jN,
-      dmo.jO,
-      dmo.jP,
-      dmo.jQ
-   );
-   public static final dxo<dzf> v = a("structure_block", dzf::new, dmo.pG);
-   public static final dxo<dzi> w = a("end_gateway", dzi::new, dmo.ll);
-   public static final dxo<dxx> x = a("command_block", dxx::new, dmo.gm, dmo.ln, dmo.lm);
-   public static final dxo<dyz> y = a(
-      "shulker_box",
-      dyz::new,
-      dmo.lv,
-      dmo.lL,
-      dmo.lH,
-      dmo.lI,
-      dmo.lF,
-      dmo.lD,
-      dmo.lJ,
-      dmo.lz,
-      dmo.lE,
-      dmo.lB,
-      dmo.ly,
-      dmo.lx,
-      dmo.lC,
-      dmo.lG,
-      dmo.lK,
-      dmo.lw,
-      dmo.lA
-   );
-   public static final dxo<dxi> z = a(
-      "bed", dxi::new, dmo.bu, dmo.bv, dmo.br, dmo.bs, dmo.bp, dmo.bn, dmo.bt, dmo.bj, dmo.bo, dmo.bl, dmo.bi, dmo.bh, dmo.bm, dmo.bq, dmo.bg, dmo.bk
-   );
-   public static final dxo<dxz> A = a("conduit", dxz::new, dmo.nD);
-   public static final dxo<dxe> B = a("barrel", dxe::new, dmo.oA);
-   public static final dxo<dzd> C = a("smoker", dzd::new, dmo.oB);
-   public static final dxo<dxl> D = a("blast_furnace", dxl::new, dmo.oC);
-   public static final dxo<dys> E = a("lectern", dys::new, dmo.oG);
-   public static final dxo<dxk> F = a("bell", dxk::new, dmo.oJ);
-   public static final dxo<dyq> G = a("jigsaw", dyq::new, dmo.pH);
-   public static final dxo<dxt> H = a("campfire", dxt::new, dmo.oM, dmo.oN);
-   public static final dxo<dxj> I = a("beehive", dxj::new, dmo.pM, dmo.pN);
-   public static final dxo<dyx> J = a("sculk_sensor", dyx::new, dmo.ry);
-   public static final dxo<dxs> K = a("calibrated_sculk_sensor", dxs::new, dmo.rz);
-   public static final dxo<dyw> L = a("sculk_catalyst", dyw::new, dmo.rC);
-   public static final dxo<dyy> M = a("sculk_shrieker", dyy::new, dmo.rD);
-   public static final dxo<dxw> N = a("chiseled_bookshelf", dxw::new, dmo.cw);
-   public static final dxo<dxr> O = a("brushable_block", dxr::new, dmo.M, dmo.P);
-   public static final dxo<dye> P = a("decorated_pot", dye::new, dmo.tZ);
-   public static final dxo<dyb> Q = a("crafter", dyb::new, dmo.ua);
-   public static final dxo<dzm> R = a("trial_spawner", dzm::new, dmo.ub);
-   public static final dxo<dzv> S = a("vault", dzv::new, dmo.uc);
-   public static final dxo<dzg> T = a("test_block", dzg::new, dmo.pI);
-   public static final dxo<dzh> U = a("test_instance_block", dzh::new, dmo.pJ);
-   private static final Set<dxo<?>> W = Set.of(x, E, h, i, j, R);
-   private final dxo.a<? extends T> X;
-   private final Set<dmm> Y;
-   private final jf.c<dxo<?>> Z = mg.j.f(this);
-
+   public static final int a = 3;
+   private static final int f = 400;
+   private static final int g = 2400;
+   public static final int b = 600;
+   private final List<dxo.a> h = Lists.newArrayList();
    @Nullable
-   public static alg a(dxo<?> $$0) {
-      return mg.j.b($$0);
+   private iv i;
+
+   public dxo(iv $$0, eat $$1) {
+      super(dxt.I, $$0, $$1);
    }
 
-   private static <T extends dxm> dxo<T> a(String $$0, dxo.a<? extends T> $$1, dmm... $$2) {
-      if ($$2.length == 0) {
-         V.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
+   @Override
+   public void e() {
+      if (this.a()) {
+         this.a(null, this.n.a_(this.ax_()), dxo.b.c);
       }
 
-      ag.a(biz.s, $$0);
-      return js.a(mg.j, $$0, new dxo<>($$1, Set.of($$2)));
+      super.e();
    }
 
-   private dxo(dxo.a<? extends T> $$0, Set<dmm> $$1) {
-      this.X = $$0;
-      this.Y = $$1;
+   public boolean a() {
+      if (this.n == null) {
+         return false;
+      } else {
+         for (iv $$0 : iv.c(this.o.b(-1, -1, -1), this.o.b(1, 1, 1))) {
+            if (this.n.a_($$0).b() instanceof dpt) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   @Nullable
-   public T a(iv $$0, eao $$1) {
-      return (T)this.X.create($$0, $$1);
+   public boolean c() {
+      return this.h.isEmpty();
    }
 
-   public boolean a(eao $$0) {
-      return this.Y.contains($$0.b());
+   public boolean d() {
+      return this.h.size() == 3;
    }
 
-   @Deprecated
-   public jf.c<dxo<?>> a() {
-      return this.Z;
+   public void a(@Nullable crm $$0, eat $$1, dxo.b $$2) {
+      List<bwi> $$3 = this.a($$1, $$2);
+      if ($$0 != null) {
+         for (bwi $$4 : $$3) {
+            if ($$4 instanceof cja) {
+               cja $$5 = (cja)$$4;
+               if ($$0.ds().g($$4.ds()) <= 16.0) {
+                  if (!this.j()) {
+                     $$5.g($$0);
+                  } else {
+                     $$5.s(400);
+                  }
+               }
+            }
+         }
+      }
    }
 
-   @Nullable
-   public T a(din $$0, iv $$1) {
-      dxm $$2 = $$0.c_($$1);
-      return (T)($$2 != null && $$2.p() == this ? $$2 : null);
+   private List<bwi> a(eat $$0, dxo.b $$1) {
+      List<bwi> $$2 = Lists.newArrayList();
+      this.h.removeIf($$3 -> a(this.n, this.o, $$0, $$3.b(), $$2, $$1, this.i));
+      if (!$$2.isEmpty()) {
+         super.e();
+      }
+
+      return $$2;
    }
 
-   public boolean b() {
-      return W.contains(this);
+   @bav
+   public int f() {
+      return this.h.size();
    }
 
-   @FunctionalInterface
-   interface a<T extends dxm> {
-      T create(iv var1, eao var2);
+   public static int a(eat $$0) {
+      return $$0.c(dml.c);
+   }
+
+   @bav
+   public boolean j() {
+      return dnh.a(this.n, this.ax_());
+   }
+
+   public void a(cja $$0) {
+      if (this.h.size() < 3) {
+         $$0.bN();
+         $$0.bM();
+         $$0.y();
+         this.a(dxo.c.a($$0));
+         if (this.n != null) {
+            if ($$0.t() && (!this.k() || this.n.A.h())) {
+               this.i = $$0.q();
+            }
+
+            iv $$1 = this.ax_();
+            this.n.a(null, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awn.bV, awo.e, 1.0F, 1.0F);
+            this.n.a(eft.c, $$1, eft.a.a($$0, this.m()));
+         }
+
+         $$0.aq();
+         super.e();
+      }
+   }
+
+   public void a(dxo.c $$0) {
+      this.h.add(new dxo.a($$0));
+   }
+
+   private static boolean a(djm $$0, iv $$1, eat $$2, dxo.c $$3, @Nullable List<bwi> $$4, dxo.b $$5, @Nullable iv $$6) {
+      if (cja.c($$0) && $$5 != dxo.b.c) {
+         return false;
+      } else {
+         jb $$7 = $$2.c(dml.b);
+         iv $$8 = $$1.a($$7);
+         boolean $$9 = !$$0.a_($$8).g($$0, $$8).c();
+         if ($$9 && $$5 != dxo.b.c) {
+            return false;
+         } else {
+            bwi $$10 = $$3.a($$0, $$1);
+            if ($$10 != null) {
+               if ($$10 instanceof cja $$11) {
+                  if ($$6 != null && !$$11.t() && $$0.A.i() < 0.9F) {
+                     $$11.h($$6);
+                  }
+
+                  if ($$5 == dxo.b.a) {
+                     $$11.gJ();
+                     if ($$2.a(axc.aJ, $$0x -> $$0x.b(dml.c))) {
+                        int $$12 = a($$2);
+                        if ($$12 < 5) {
+                           int $$13 = $$0.A.a(100) == 0 ? 2 : 1;
+                           if ($$12 + $$13 > 5) {
+                              $$13--;
+                           }
+
+                           $$0.b($$1, $$2.b(dml.c, Integer.valueOf($$12 + $$13)));
+                        }
+                     }
+                  }
+
+                  if ($$4 != null) {
+                     $$4.add($$11);
+                  }
+
+                  float $$14 = $$10.dp();
+                  double $$15 = $$9 ? 0.0 : 0.55 + (double)($$14 / 2.0F);
+                  double $$16 = (double)$$1.u() + 0.5 + $$15 * (double)$$7.j();
+                  double $$17 = (double)$$1.v() + 0.5 - (double)($$10.dq() / 2.0F);
+                  double $$18 = (double)$$1.w() + 0.5 + $$15 * (double)$$7.l();
+                  $$10.b($$16, $$17, $$18, $$10.dK(), $$10.dM());
+               }
+
+               $$0.a(null, $$1, awn.bW, awo.e, 1.0F, 1.0F);
+               $$0.a(eft.c, $$1, eft.a.a($$10, $$0.a_($$1)));
+               return $$0.b($$10);
+            } else {
+               return false;
+            }
+         }
+      }
+   }
+
+   private boolean k() {
+      return this.i != null;
+   }
+
+   private static void a(djm $$0, iv $$1, eat $$2, List<dxo.a> $$3, @Nullable iv $$4) {
+      boolean $$5 = false;
+      Iterator<dxo.a> $$6 = $$3.iterator();
+
+      while ($$6.hasNext()) {
+         dxo.a $$7 = $$6.next();
+         if ($$7.a()) {
+            dxo.b $$8 = $$7.c() ? dxo.b.a : dxo.b.b;
+            if (a($$0, $$1, $$2, $$7.b(), null, $$8, $$4)) {
+               $$5 = true;
+               $$6.remove();
+            }
+         }
+      }
+
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(djm $$0, iv $$1, eat $$2, dxo $$3) {
+      a($$0, $$1, $$2, $$3.h, $$3.i);
+      if (!$$3.h.isEmpty() && $$0.C_().j() < 0.005) {
+         double $$4 = (double)$$1.u() + 0.5;
+         double $$5 = (double)$$1.v();
+         double $$6 = (double)$$1.w() + 0.5;
+         $$0.a(null, $$4, $$5, $$6, awn.bY, awo.e, 1.0F, 1.0F);
+      }
+
+      agm.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      this.h.clear();
+      $$0.<List>a("bees", dxo.c.b).orElse(List.of()).forEach(this::a);
+      this.i = $$0.<iv>a("flower_pos", iv.a).orElse(null);
+   }
+
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("bees", dxo.c.b, this.s());
+      $$0.b("flower_pos", iv.a, this.i);
+   }
+
+   @Override
+   protected void a(kf $$0) {
+      super.a($$0);
+      this.h.clear();
+      List<dxo.c> $$1 = $$0.a(kk.ar, dbm.c).a();
+      $$1.forEach(this::a);
+   }
+
+   @Override
+   protected void a(kh.a $$0) {
+      super.a($$0);
+      $$0.a(kk.ar, new dbm(this.s()));
+   }
+
+   @Override
+   public void a(tz $$0) {
+      super.a($$0);
+      $$0.p("bees");
+   }
+
+   private List<dxo.c> s() {
+      return this.h.stream().map(dxo.a::b).toList();
+   }
+
+   static class a {
+      private final dxo.c a;
+      private int b;
+
+      a(dxo.c $$0) {
+         this.a = $$0;
+         this.b = $$0.b();
+      }
+
+      public boolean a() {
+         return this.b++ > this.a.f;
+      }
+
+      public dxo.c b() {
+         return new dxo.c(this.a.d, this.b, this.a.f);
+      }
+
+      public boolean c() {
+         return this.a.d.e().o("HasNectar");
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
+   }
+
+   public static record c(dbv d, int e, int f) {
+      public static final Codec<dxo.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dbv.b.optionalFieldOf("entity_data", dbv.a).forGetter(dxo.c::a),
+                  Codec.INT.fieldOf("ticks_in_hive").forGetter(dxo.c::b),
+                  Codec.INT.fieldOf("min_ticks_in_hive").forGetter(dxo.c::c)
+               )
+               .apply($$0, dxo.c::new)
+      );
+      public static final Codec<List<dxo.c>> b = a.listOf();
+      public static final yw<ByteBuf, dxo.c> c = yw.a(dbv.d, dxo.c::a, yu.h, dxo.c::b, yu.h, dxo.c::c, dxo.c::new);
+
+      public static dxo.c a(bwi $$0) {
+         tz $$1 = new tz();
+         $$0.e($$1);
+         dxo.e.forEach($$1::p);
+         boolean $$2 = $$1.o("HasNectar");
+         return new dxo.c(dbv.a($$1), 0, $$2 ? 2400 : 600);
+      }
+
+      public static dxo.c a(int $$0) {
+         tz $$1 = new tz();
+         $$1.a("id", mg.f.b(bwr.l).toString());
+         return new dxo.c(dbv.a($$1), $$0, 600);
+      }
+
+      @Nullable
+      public bwi a(djm $$0, iv $$1) {
+         tz $$2 = this.d.d();
+         dxo.e.forEach($$2::p);
+         bwi $$3 = bwr.a($$2, $$0, bwq.r, $$0x -> $$0x);
+         if ($$3 != null && $$3.an().a(axf.e)) {
+            $$3.f(true);
+            if ($$3 instanceof cja $$4) {
+               $$4.i($$1);
+               a(this.e, $$4);
+            }
+
+            return $$3;
+         } else {
+            return null;
+         }
+      }
+
+      private static void a(int $$0, cja $$1) {
+         int $$2 = $$1.g();
+         if ($$2 < 0) {
+            $$1.c_(Math.min(0, $$2 + $$0));
+         } else if ($$2 > 0) {
+            $$1.c_(Math.max(0, $$2 - $$0));
+         }
+
+         $$1.r(Math.max(0, $$1.gB() - $$0));
+      }
+
+      public dbv a() {
+         return this.d;
+      }
+
+      public int b() {
+         return this.e;
+      }
+
+      public int c() {
+         return this.f;
+      }
    }
 }

@@ -9,25 +9,25 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ary implements dkg {
+public class ary implements dkl {
    private static final Logger a = LogUtils.getLogger();
    private final bai<arg> b;
-   private final ecl c;
+   private final ecq c;
    private final arq d;
    private final long e;
-   private final eyy f;
+   private final ezd f;
    private final azv h;
-   private final eel i;
-   private final fgu<dmm> j = new fgu<>($$0x -> this.z($$0x).q());
-   private final fgu<ewu> k = new fgu<>($$0x -> this.z($$0x).r());
-   private final dkm l;
-   private final edp m;
+   private final eeq i;
+   private final fgz<dmr> j = new fgz<>($$0x -> this.z($$0x).q());
+   private final fgz<ewz> k = new fgz<>($$0x -> this.z($$0x).r());
+   private final dkr l;
+   private final edu m;
    @Nullable
    private Supplier<String> n;
    private final AtomicLong o = new AtomicLong();
    private static final alg p = alg.b("worldgen_region_random");
 
-   public ary(arq $$0, bai<arg> $$1, edp $$2, ecl $$3) {
+   public ary(arq $$0, bai<arg> $$1, edu $$2, ecq $$3) {
       this.m = $$2;
       this.b = $$1;
       this.c = $$3;
@@ -36,14 +36,14 @@ public class ary implements dkg {
       this.f = $$0.y_();
       this.h = $$0.m().i().a(p).a(this.c.f().l());
       this.i = $$0.B_();
-      this.l = new dkm(this, dkm.a(this.e));
+      this.l = new dkr(this, dkr.a(this.e));
    }
 
-   public boolean a(dio $$0, int $$1) {
+   public boolean a(dir $$0, int $$1) {
       return this.d.m().a.b($$0, $$1);
    }
 
-   public dio b() {
+   public dir b() {
       return this.c.f();
    }
 
@@ -53,20 +53,20 @@ public class ary implements dkg {
    }
 
    @Override
-   public ecl a(int $$0, int $$1) {
-      return this.a($$0, $$1, edm.c);
+   public ecq a(int $$0, int $$1) {
+      return this.a($$0, $$1, edr.c);
    }
 
    @Nullable
    @Override
-   public ecl a(int $$0, int $$1, edm $$2, boolean $$3) {
+   public ecq a(int $$0, int $$1, edr $$2, boolean $$3) {
       int $$4 = this.c.f().e($$0, $$1);
-      edm $$5 = $$4 >= this.m.b().b() ? null : this.m.b().a($$4);
+      edr $$5 = $$4 >= this.m.b().b() ? null : this.m.b().a($$4);
       arg $$6;
       if ($$5 != null) {
          $$6 = this.b.a($$0, $$1);
          if ($$2.c($$5)) {
-            ecl $$7 = $$6.a($$5);
+            ecq $$7 = $$6.a($$5);
             if ($$7 != null) {
                return $$7;
             }
@@ -95,18 +95,18 @@ public class ary implements dkg {
    }
 
    @Override
-   public eao a_(iv $$0) {
+   public eat a_(iv $$0) {
       return this.a(jy.a($$0.u()), jy.a($$0.w())).a_($$0);
    }
 
    @Override
-   public ewv b_(iv $$0) {
+   public exa b_(iv $$0) {
       return this.z($$0).b_($$0);
    }
 
    @Nullable
    @Override
-   public crj a(double $$0, double $$1, double $$2, double $$3, Predicate<bwi> $$4) {
+   public crm a(double $$0, double $$1, double $$2, double $$3, Predicate<bwi> $$4) {
       return null;
    }
 
@@ -116,12 +116,12 @@ public class ary implements dkg {
    }
 
    @Override
-   public dkm D_() {
+   public dkr D_() {
       return this.l;
    }
 
    @Override
-   public jf<dkk> a(int $$0, int $$1, int $$2) {
+   public jf<dkp> a(int $$0, int $$1, int $$2) {
       return this.d.a($$0, $$1, $$2);
    }
 
@@ -131,44 +131,44 @@ public class ary implements dkg {
    }
 
    @Override
-   public ewk x_() {
+   public ewp x_() {
       return this.d.x_();
    }
 
    @Override
    public boolean a(iv $$0, boolean $$1, @Nullable bwi $$2, int $$3) {
-      eao $$4 = this.a_($$0);
+      eat $$4 = this.a_($$0);
       if ($$4.l()) {
          return false;
       } else {
          if ($$1) {
-            dxm $$5 = $$4.x() ? this.c_($$0) : null;
-            dmm.a($$4, (djh)this.d, $$0, $$5, $$2, czk.k);
+            dxr $$5 = $$4.x() ? this.c_($$0) : null;
+            dmr.a($$4, (djm)this.d, $$0, $$5, $$2, czn.k);
          }
 
-         return this.a($$0, dmo.a.m(), 3, $$3);
+         return this.a($$0, dmt.a.m(), 3, $$3);
       }
    }
 
    @Nullable
    @Override
-   public dxm c_(iv $$0) {
-      ecl $$1 = this.z($$0);
-      dxm $$2 = $$1.c_($$0);
+   public dxr c_(iv $$0) {
+      ecq $$1 = this.z($$0);
+      dxr $$2 = $$1.c_($$0);
       if ($$2 != null) {
          return $$2;
       } else {
          tz $$3 = $$1.f($$0);
-         eao $$4 = $$1.a_($$0);
+         eat $$4 = $$1.a_($$0);
          if ($$3 != null) {
             if ("DUMMY".equals($$3.j("id"))) {
                if (!$$4.x()) {
                   return null;
                }
 
-               $$2 = ((dpg)$$4.b()).a($$0, $$4);
+               $$2 = ((dpl)$$4.b()).a($$0, $$4);
             } else {
-               $$2 = dxm.a($$0, $$4, $$3, this.d.F_());
+               $$2 = dxr.a($$0, $$4, $$3, this.d.F_());
             }
 
             if ($$2 != null) {
@@ -189,12 +189,12 @@ public class ary implements dkg {
    public boolean f_(iv $$0) {
       int $$1 = jy.a($$0.u());
       int $$2 = jy.a($$0.w());
-      dio $$3 = this.b();
+      dir $$3 = this.b();
       int $$4 = Math.abs($$3.h - $$1);
       int $$5 = Math.abs($$3.i - $$2);
       if ($$4 <= this.m.d() && $$5 <= this.m.d()) {
          if (this.c.A()) {
-            djj $$6 = this.c.B();
+            djo $$6 = this.c.B();
             if ($$6.e($$0.v())) {
                return false;
             }
@@ -218,19 +218,19 @@ public class ary implements dkg {
    }
 
    @Override
-   public boolean a(iv $$0, eao $$1, int $$2, int $$3) {
+   public boolean a(iv $$0, eat $$1, int $$2, int $$3) {
       if (!this.f_($$0)) {
          return false;
       } else {
-         ecl $$4 = this.z($$0);
-         eao $$5 = $$4.a($$0, $$1, $$2);
+         ecq $$4 = this.z($$0);
+         eat $$5 = $$4.a($$0, $$1, $$2);
          if ($$5 != null) {
             this.d.a($$0, $$5, $$1);
          }
 
          if ($$1.x()) {
-            if ($$4.n().d() == edq.b) {
-               dxm $$6 = ((dpg)$$1.b()).a($$0, $$1);
+            if ($$4.n().d() == edv.b) {
+               dxr $$6 = ((dpl)$$1.b()).a($$0, $$1);
                if ($$6 != null) {
                   $$4.a($$6);
                } else {
@@ -270,11 +270,11 @@ public class ary implements dkg {
 
    @Override
    public boolean a(iv $$0, boolean $$1) {
-      return this.a($$0, dmo.a.m(), 3);
+      return this.a($$0, dmt.a.m(), 3);
    }
 
    @Override
-   public ecg A_() {
+   public ecl A_() {
       return this.d.A_();
    }
 
@@ -295,12 +295,12 @@ public class ary implements dkg {
    }
 
    @Override
-   public cut K() {
+   public cuw K() {
       return this.d.K();
    }
 
    @Override
-   public eyy y_() {
+   public ezd y_() {
       return this.f;
    }
 
@@ -320,7 +320,7 @@ public class ary implements dkg {
    }
 
    @Override
-   public ecp S() {
+   public ecu S() {
       return this.d.m();
    }
 
@@ -330,12 +330,12 @@ public class ary implements dkg {
    }
 
    @Override
-   public fgl<dmm> U() {
+   public fgq<dmr> U() {
       return this.j;
    }
 
    @Override
-   public fgl<ewu> T() {
+   public fgq<ewz> T() {
       return this.k;
    }
 
@@ -350,7 +350,7 @@ public class ary implements dkg {
    }
 
    @Override
-   public int a(egn.a $$0, int $$1, int $$2) {
+   public int a(egs.a $$0, int $$1, int $$2) {
       return this.a(jy.a($$1), jy.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
    }
 
@@ -367,36 +367,36 @@ public class ary implements dkg {
    }
 
    @Override
-   public void a(jf<efo> $$0, fex $$1, efo.a $$2) {
+   public void a(jf<eft> $$0, ffc $$1, eft.a $$2) {
    }
 
    @Override
-   public eel B_() {
+   public eeq B_() {
       return this.i;
    }
 
    @Override
-   public boolean a(iv $$0, Predicate<eao> $$1) {
+   public boolean a(iv $$0, Predicate<eat> $$1) {
       return $$1.test(this.a_($$0));
    }
 
    @Override
-   public boolean b(iv $$0, Predicate<ewv> $$1) {
+   public boolean b(iv $$0, Predicate<exa> $$1) {
       return $$1.test(this.b_($$0));
    }
 
    @Override
-   public <T extends bwi> List<T> a(efa<bwi, T> $$0, fes $$1, Predicate<? super T> $$2) {
+   public <T extends bwi> List<T> a(eff<bwi, T> $$0, fex $$1, Predicate<? super T> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<bwi> a(@Nullable bwi $$0, fes $$1, @Nullable Predicate<? super bwi> $$2) {
+   public List<bwi> a(@Nullable bwi $$0, fex $$1, @Nullable Predicate<? super bwi> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<crj> z() {
+   public List<crm> z() {
       return Collections.emptyList();
    }
 

@@ -41,7 +41,7 @@ public class aqg extends MinecraftServer implements alx {
    private boz w;
    private final aly x;
 
-   public aqg(Thread $$0, ezc.c $$1, aun $$2, amf $$3, aqi $$4, DataFixer $$5, amb $$6, asb $$7) {
+   public aqg(Thread $$0, ezh.c $$1, aun $$2, amf $$3, aqi $$4, DataFixer $$5, amb $$6, asb $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.s = $$4;
       this.q = new awd(this);
@@ -132,7 +132,7 @@ public class aqg extends MinecraftServer implements alx {
          this.w = new boz(this.bs());
          this.v = new bpc(bpf.values().length, this.w, bpb.a);
          long $$4 = ag.d();
-         dzc.a(this.i, this);
+         dzh.a(this.i, this);
          avm.a(this.aa());
          l.info("Preparing level \"{}\"", this.j());
          this.q_();
@@ -140,7 +140,7 @@ public class aqg extends MinecraftServer implements alx {
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          l.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.n != null) {
-            this.aL().b(djd.C).a($$1.n, this);
+            this.aL().b(dji.C).a($$1.n, this);
          }
 
          if ($$1.o) {
@@ -236,8 +236,8 @@ public class aqg extends MinecraftServer implements alx {
    }
 
    @Override
-   public boolean a(djh $$0) {
-      return $$0.aj() == djh.j ? this.a().u : true;
+   public boolean a(djm $$0) {
+      return $$0.aj() == djm.j ? this.a().u : true;
    }
 
    public void a(String $$0, ej $$1) {
@@ -314,8 +314,8 @@ public class aqg extends MinecraftServer implements alx {
    }
 
    @Override
-   public boolean a(arq $$0, iv $$1, crj $$2) {
-      if ($$0.aj() != djh.i) {
+   public boolean a(arq $$0, iv $$1, crm $$2) {
+      if ($$0.aj() != djm.i) {
          return false;
       } else if (this.bs().k().c()) {
          return false;
@@ -485,7 +485,7 @@ public class aqg extends MinecraftServer implements alx {
    public void v() {
       super.v();
       ag.k();
-      dzc.a();
+      dzh.a();
    }
 
    @Override
@@ -515,7 +515,7 @@ public class aqg extends MinecraftServer implements alx {
 
    @Nullable
    @Override
-   public dje bd() {
+   public djj bd() {
       return this.s.a().h ? this.j.k() : null;
    }
 

@@ -10,11 +10,11 @@ public class ane {
       );
    }
 
-   private static int a(ej $$0, dje $$1) {
+   private static int a(ej $$0, djj $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      dje $$4 = $$3.bd();
+      djj $$4 = $$3.bd();
       if ($$4 != null) {
          for (arr $$5 : $$3.ag().t()) {
             if ($$5.a($$4)) {

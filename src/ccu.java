@@ -1,6 +1,6 @@
 import com.google.common.collect.ImmutableMap;
 
-public class ccu<E extends cqm> extends bza<E> {
+public class ccu<E extends cqp> extends bza<E> {
    public ccu(int $$0) {
       super(ImmutableMap.of(cgl.aD, cgm.a, cgl.n, cgm.b, cgl.o, cgm.c), $$0);
    }

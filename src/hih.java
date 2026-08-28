@@ -1,32 +1,24 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hih implements hik {
-   private final gjo a;
+public record hih() implements hig<alf<dia>> {
+   public static final Codec<alf<dia>> a = alf.a(mh.bk);
+   public static final hig.a<hih, alf<dia>> b = hig.a.a(MapCodec.unit(new hih()), a);
 
-   public hih(gjo $$0) {
-      this.a = $$0;
+   @Nullable
+   public alf<dia> a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3, czl $$4) {
+      dhy $$5 = $$0.a(kk.W);
+      return $$5 == null ? null : $$5.a().e().orElse(null);
    }
 
    @Override
-   public void a(czi $$0, fjy $$1, gqm $$2, int $$3, int $$4, boolean $$5) {
-      fkc $$6 = gtg.b.a($$2, gqx::d);
-      $$1.a();
-      $$1.a(0.5F, 0.5F, 0.5F);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
+   public hig.a<hih, alf<dia>> a() {
+      return b;
    }
 
-   public static record a() implements hio.a {
-      public static final MapCodec<hih.a> a = MapCodec.unit(new hih.a());
-
-      @Override
-      public MapCodec<hih.a> a() {
-         return a;
-      }
-
-      @Override
-      public hio<?> a(gjk $$0) {
-         return new hih($$0.a(gjn.al));
-      }
+   @Override
+   public Codec<alf<dia>> b() {
+      return a;
    }
 }

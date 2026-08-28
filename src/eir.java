@@ -1,24 +1,31 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eir<WC extends eim>(eit<WC> d, WC e) {
-   public static final Codec<eir<?>> a = mg.N.q().dispatch($$0 -> $$0.d, eit::c);
-   public static final Codec<jf<eir<?>>> b = alc.a(mh.aK, a);
-   public static final Codec<jj<eir<?>>> c = ju.a(mh.aK, a);
+public class eir extends emm {
+   public static final MapCodec<eir> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               epu.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               btj.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               ehm.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               eis.b.optionalFieldOf("debug_settings", eis.a).forGetter($$0x -> $$0x.h),
+               ju.a(mh.i).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, eir::new)
+   );
+   public final epu e;
+   public final btj f;
+   public final ehm g;
+   public final eis h;
+   public final jj<dmr> i;
 
-   public boolean a(azv $$0) {
-      return this.d.a(this.e, $$0);
-   }
-
-   public boolean a(eio $$0, ecl $$1, Function<iv, jf<dkk>> $$2, azv $$3, efz $$4, dio $$5, eck $$6) {
-      return ac.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public eit<WC> a() {
-      return this.d;
-   }
-
-   public WC b() {
-      return this.e;
+   public eir(float $$0, epu $$1, btj $$2, ehm $$3, eis $$4, jj<dmr> $$5) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

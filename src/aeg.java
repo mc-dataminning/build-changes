@@ -16,12 +16,12 @@ public record aeg(List<aeg.a> b, boolean c) implements zf<abu> {
       return this.c;
    }
 
-   public static record a(dfi d, byte e) {
+   public static record a(dfl d, byte e) {
       public static final byte a = 1;
       public static final byte b = 2;
-      public static final yw<wj, aeg.a> c = yw.a(dfi.a, aeg.a::c, yu.c, aeg.a::d, aeg.a::new);
+      public static final yw<wj, aeg.a> c = yw.a(dfl.a, aeg.a::c, yu.c, aeg.a::d, aeg.a::new);
 
-      public a(dfi $$0, boolean $$1, boolean $$2) {
+      public a(dfl $$0, boolean $$1, boolean $$2) {
          this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
       }
 
@@ -33,7 +33,7 @@ public record aeg(List<aeg.a> b, boolean c) implements zf<abu> {
          return (this.e & 2) != 0;
       }
 
-      public dfi c() {
+      public dfl c() {
          return this.d;
       }
 

@@ -1,49 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dud extends dlh {
-   public static final MapCodec<dud> c = b(dud::new);
+public class dud extends dln {
+   public static final MapCodec<dud> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dud.a.b.fieldOf("kind").forGetter(dln::b), t()).apply($$0, dud::new));
+   public static final int d = ebz.a();
+   private static final int b = d + 1;
+   public static final ebt e = ebj.bd;
+   private static final ffw f = dmr.b(8.0, 0.0, 8.0);
+   private static final ffw g = dmr.b(10.0, 0.0, 8.0);
 
    @Override
-   public MapCodec<dud> a() {
+   public MapCodec<? extends dud> a() {
       return c;
    }
 
-   protected dud(ean.d $$0) {
-      super($$0);
+   protected dud(dud.a $$0, eas.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   public dxm a(iv $$0, eao $$1) {
-      return new dzd($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
-      return a($$0, $$2, dxo.C);
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return this.b() == dud.b.h ? g : f;
    }
 
    @Override
-   protected void a(djh $$0, iv $$1, crj $$2) {
-      dxm $$3 = $$0.c_($$1);
-      if ($$3 instanceof dzd) {
-         $$2.a((bui)$$3);
-         $$2.a(awx.at);
+   protected ffw d_(eat $$0) {
+      return fft.a();
+   }
+
+   @Override
+   public eat a(ddg $$0) {
+      return super.a($$0).b(e, Integer.valueOf(ebz.a($$0.i())));
+   }
+
+   @Override
+   protected eat a(eat $$0, dtl $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected eat a(eat $$0, dru $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends bak {
+      Map<String, dud.a> a = new Object2ObjectArrayMap();
+      Codec<dud.a> b = Codec.stringResolver(bak::c, a::get);
+   }
+
+   public static enum b implements dud.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   public void a(eao $$0, djh $$1, iv $$2, azv $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awn.zo, awo.e, 1.0F, 1.0F, false);
-         }
-
-         $$1.a(ly.ah, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      @Override
+      public String c() {
+         return this.j;
       }
    }
 }

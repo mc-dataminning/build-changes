@@ -1,49 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hil implements hio<kh> {
-   private final gic a;
+public class hil implements hiq {
+   private final gta a;
+   private final hlx b;
 
-   public hil(gic $$0) {
+   public hil(gta $$0, hlx $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
-   public kh a(czk $$0) {
-      return $$0.e();
+   @Override
+   public void a(czl $$0, fkd $$1, gqr $$2, int $$3, int $$4, boolean $$5) {
+      this.a.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   public void a(@Nullable kh $$0, czi $$1, fjy $$2, gqm $$3, int $$4, int $$5, boolean $$6) {
-      dxc $$7 = $$0 != null ? $$0.a(kk.am, dxc.a) : dxc.a;
-      cyi $$8 = $$0 != null ? $$0.a(kk.an) : null;
-      boolean $$9 = !$$7.b().isEmpty() || $$8 != null;
-      $$2.a();
-      $$2.b(1.0F, -1.0F, -1.0F);
-      hlq $$10 = $$9 ? hlt.g : hlt.h;
-      fkc $$11 = $$10.c().a(gxr.a($$3, this.a.a($$10.a()), $$1 == czi.g, $$6));
-      this.a.c().a($$2, $$11, $$4, $$5);
-      if ($$9) {
-         gst.a($$2, $$3, $$4, $$5, this.a.b(), $$10, false, Objects.requireNonNullElse($$8, cyi.a), $$7, $$6, false);
-      } else {
-         this.a.b().a($$2, $$11, $$4, $$5);
+   public static record a(alg b) implements hiu.a {
+      public static final MapCodec<hil.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alg.a.fieldOf("texture").forGetter(hil.a::b)).apply($$0, hil.a::new));
+
+      public a(cyl $$0) {
+         this(grl.b($$0));
       }
-
-      $$2.b();
-   }
-
-   public static record a() implements hio.a {
-      public static final hil.a a = new hil.a();
-      public static final MapCodec<hil.a> b = MapCodec.unit(a);
 
       @Override
       public MapCodec<hil.a> a() {
-         return b;
+         return a;
       }
 
       @Override
-      public hio<?> a(gjk $$0) {
-         return new hil(new gic($$0.a(gjn.cR)));
+      public hiu<?> a(gjp $$0) {
+         return new hil(new gta($$0), grl.o.a(this.b));
       }
    }
 }

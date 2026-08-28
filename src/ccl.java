@@ -1,7 +1,7 @@
 import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class ccl extends bza<cqv> {
+public class ccl extends bza<cqy> {
    private static final int c = 300;
    private static final double d = 1.73;
    private long e;
@@ -10,7 +10,7 @@ public class ccl extends bza<cqv> {
       super(ImmutableMap.of(cgl.c, cgm.a, cgl.o, cgm.c));
    }
 
-   protected boolean b(arq $$0, cqv $$1) {
+   protected boolean b(arq $$0, cqy $$1) {
       if ($$0.ae() - this.e < 300L) {
          return false;
       } else if ($$0.A.a(2) != 0) {
@@ -22,8 +22,8 @@ public class ccl extends bza<cqv> {
       }
    }
 
-   protected void a(arq $$0, cqv $$1, long $$2) {
-      byj<cqv> $$3 = $$1.eb();
+   protected void a(arq $$0, cqy $$1, long $$2) {
+      byj<cqy> $$3 = $$1.eb();
       $$3.a(cgl.K, $$2);
       $$3.c(cgl.c).ifPresent($$1x -> $$3.a(cgl.o, new bzd($$1x.b())));
       $$1.gI();
@@ -33,10 +33,10 @@ public class ccl extends bza<cqv> {
       }
    }
 
-   protected void a(arq $$0, cqv $$1) {
+   protected void a(arq $$0, cqy $$1) {
    }
 
-   protected boolean b(arq $$0, cqv $$1, long $$2) {
+   protected boolean b(arq $$0, cqy $$1, long $$2) {
       Optional<je> $$3 = $$1.eb().c(cgl.c);
       if ($$3.isEmpty()) {
          return false;

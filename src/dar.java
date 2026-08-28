@@ -1,153 +1,100 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class dar extends czg {
-   private static final Map<bwr<? extends bxl>, dar> a = Maps.newIdentityHashMap();
-   private final bwr<?> b;
+public class dar extends czj {
+   private static final o a = o.h;
+   private static final o b = o.j;
+   private static final wy c = wy.c(ag.a("item", alg.b("smithing_template.ingredients"))).a(a);
+   private static final wy d = wy.c(ag.a("item", alg.b("smithing_template.applies_to"))).a(a);
+   private static final wy o = wy.c(ag.a("item", alg.b("smithing_template"))).a(a);
+   private static final wy p = wy.c(ag.a("item", alg.b("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final wy q = wy.c(ag.a("item", alg.b("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final wy r = wy.c(ag.a("item", alg.b("smithing_template.armor_trim.base_slot_description")));
+   private static final wy s = wy.c(ag.a("item", alg.b("smithing_template.armor_trim.additions_slot_description")));
+   private static final wy t = wy.c(ag.a("item", alg.b("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final wy u = wy.c(ag.a("item", alg.b("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final wy v = wy.c(ag.a("item", alg.b("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final wy w = wy.c(ag.a("item", alg.b("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final alg x = alg.b("container/slot/helmet");
+   private static final alg y = alg.b("container/slot/chestplate");
+   private static final alg z = alg.b("container/slot/leggings");
+   private static final alg A = alg.b("container/slot/boots");
+   private static final alg B = alg.b("container/slot/hoe");
+   private static final alg C = alg.b("container/slot/axe");
+   private static final alg D = alg.b("container/slot/sword");
+   private static final alg E = alg.b("container/slot/shovel");
+   private static final alg F = alg.b("container/slot/pickaxe");
+   private static final alg G = alg.b("container/slot/ingot");
+   private static final alg H = alg.b("container/slot/redstone_dust");
+   private static final alg I = alg.b("container/slot/quartz");
+   private static final alg J = alg.b("container/slot/emerald");
+   private static final alg K = alg.b("container/slot/diamond");
+   private static final alg L = alg.b("container/slot/lapis_lazuli");
+   private static final alg M = alg.b("container/slot/amethyst_shard");
+   private final wy N;
+   private final wy O;
+   private final wy P;
+   private final wy Q;
+   private final List<alg> R;
+   private final List<alg> S;
 
-   public dar(bwr<? extends bxl> $$0, czg.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+   public dar(wy $$0, wy $$1, wy $$2, wy $$3, List<alg> $$4, List<alg> $$5, czj.a $$6) {
+      super($$6);
+      this.N = $$0;
+      this.O = $$1;
+      this.P = $$2;
+      this.Q = $$3;
+      this.R = $$4;
+      this.S = $$5;
+   }
+
+   public static dar a(czj.a $$0) {
+      return new dar(p, q, r, s, o(), p(), $$0);
+   }
+
+   public static dar b(czj.a $$0) {
+      return new dar(t, u, v, w, q(), r(), $$0);
+   }
+
+   private static List<alg> o() {
+      return List.of(x, y, z, A);
+   }
+
+   private static List<alg> p() {
+      return List.of(G, H, L, I, K, J, M);
+   }
+
+   private static List<alg> q() {
+      return List.of(x, D, y, F, z, C, A, B, E);
+   }
+
+   private static List<alg> r() {
+      return List.of(G);
    }
 
    @Override
-   public bug a(ddf $$0) {
-      djh $$1 = $$0.q();
-      if ($$1.C) {
-         return bug.a;
-      } else {
-         czk $$2 = $$0.n();
-         iv $$3 = $$0.a();
-         jb $$4 = $$0.k();
-         eao $$5 = $$1.a_($$3);
-         if ($$1.c_($$3) instanceof dkc $$6) {
-            bwr<?> $$7 = this.a($$1.F_(), $$2);
-            $$6.a($$7, $$1.C_());
-            $$1.a($$3, $$5, $$5, 3);
-            $$1.a($$0.o(), efo.c, $$3);
-            $$2.h(1);
-            return bug.a;
-         } else {
-            iv $$8;
-            if ($$5.g($$1, $$3).c()) {
-               $$8 = $$3;
-            } else {
-               $$8 = $$3.a($$4);
-            }
-
-            bwr<?> $$10 = this.a($$1.F_(), $$2);
-            if ($$10.a((arq)$$1, $$2, $$0.o(), $$8, bwq.m, true, !Objects.equals($$3, $$8) && $$4 == jb.b) != null) {
-               $$2.h(1);
-               $$1.a($$0.o(), efo.t, $$3);
-            }
-
-            return bug.a;
-         }
-      }
+   public void a(czn $$0, czj.b $$1, dcr $$2, Consumer<wy> $$3, dbc $$4) {
+      $$3.accept(o);
+      $$3.accept(wx.a);
+      $$3.accept(d);
+      $$3.accept(wx.a().b(this.N));
+      $$3.accept(c);
+      $$3.accept(wx.a().b(this.O));
    }
 
-   @Override
-   public bug a(djh $$0, crj $$1, buf $$2) {
-      czk $$3 = $$1.b($$2);
-      fet $$4 = a($$0, $$1, diq.b.b);
-      if ($$4.d() != fev.a.b) {
-         return bug.e;
-      } else if ($$0 instanceof arq $$5) {
-         iv $$8 = $$4.b();
-         if (!($$0.a_($$8).b() instanceof dri)) {
-            return bug.e;
-         } else if ($$0.a($$1, $$8) && $$1.a($$8, $$4.c(), $$3)) {
-            bwr<?> $$9 = this.a($$5.F_(), $$3);
-            bwi $$10 = $$9.a($$5, $$3, $$1, $$8, bwq.m, false, false);
-            if ($$10 == null) {
-               return bug.e;
-            } else {
-               $$3.a(1, $$1);
-               $$1.b(awx.c.b(this));
-               $$0.a($$1, efo.t, $$10.ds());
-               return bug.a;
-            }
-         } else {
-            return bug.d;
-         }
-      } else {
-         return bug.a;
-      }
+   public wy a() {
+      return this.P;
    }
 
-   public boolean a(jh.a $$0, czk $$1, bwr<?> $$2) {
-      return Objects.equals(this.a($$0, $$1), $$2);
+   public wy b() {
+      return this.Q;
    }
 
-   @Nullable
-   public static dar a(@Nullable bwr<?> $$0) {
-      return a.get($$0);
+   public List<alg> c() {
+      return this.R;
    }
 
-   public static Iterable<dar> a() {
-      return Iterables.unmodifiableIterable(a.values());
-   }
-
-   public bwr<?> a(jh.a $$0, czk $$1) {
-      dbs $$2 = $$1.a(kk.Y, dbs.a);
-      if (!$$2.c()) {
-         bwr<?> $$3 = $$2.a($$0, mh.B);
-         if ($$3 != null) {
-            return $$3;
-         }
-      }
-
-      return this.b;
-   }
-
-   @Override
-   public cut k() {
-      return this.b.k();
-   }
-
-   public Optional<bxl> a(crj $$0, bxl $$1, bwr<? extends bxl> $$2, arq $$3, fex $$4, czk $$5) {
-      if (!this.a($$3.F_(), $$5, $$2)) {
-         return Optional.empty();
-      } else {
-         bxl $$6;
-         if ($$1 instanceof bvy) {
-            $$6 = ((bvy)$$1).a($$3, (bvy)$$1);
-         } else {
-            $$6 = $$2.a($$3, bwq.m);
-         }
-
-         if ($$6 == null) {
-            return Optional.empty();
-         } else {
-            $$6.a(true);
-            if (!$$6.n_()) {
-               return Optional.empty();
-            } else {
-               $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
-               $$3.a_($$6);
-               $$6.c($$5);
-               $$5.a(1, $$0);
-               return Optional.of($$6);
-            }
-         }
-      }
-   }
-
-   @Override
-   public boolean a(czk $$0, @Nullable crj $$1) {
-      if ($$1 != null && $$1.G() >= 2) {
-         dbs $$2 = $$0.a(kk.Y);
-         if ($$2 != null) {
-            bwr<?> $$3 = $$2.a($$1.dU().F_(), mh.B);
-            return $$3 != null && $$3.s();
-         }
-      }
-
-      return false;
+   public List<alg> n() {
+      return this.S;
    }
 }

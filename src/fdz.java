@@ -1,30 +1,21 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
 
-public record fdz(ezo.b c) implements fec {
-   public static final MapCodec<fdz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezo.b.e.fieldOf("target").forGetter(fdz::c)).apply($$0, fdz::new));
-   public static final Codec<fdz> b = ezo.b.e.xmap(fdz::new, fdz::c);
+public class fdz {
+   private static final Codec<fdy> h = mg.G.q().dispatch(fdy::b, fdx::a);
+   public static final Codec<fdy> a = Codec.lazyInitialized(() -> {
+      Codec<fdy> $$0 = Codec.withAlternative(h, fec.a.codec());
+      return Codec.either(fdv.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof fdv $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final fdx b = a("constant", fdv.a);
+   public static final fdx c = a("uniform", fec.a);
+   public static final fdx d = a("binomial", fdu.a);
+   public static final fdx e = a("score", fea.a);
+   public static final fdx f = a("storage", feb.a);
+   public static final fdx g = a("enchantment_level", fdw.a);
 
-   public static fec a(ezo.b $$0) {
-      return new fdz($$0);
-   }
-
-   @Override
-   public feb a() {
-      return fed.c;
-   }
-
-   @Nullable
-   @Override
-   public fgb a(ezo $$0) {
-      return $$0.c(this.c.a());
-   }
-
-   @Override
-   public Set<bax<?>> b() {
-      return Set.of(this.c.a());
+   private static fdx a(String $$0, MapCodec<? extends fdy> $$1) {
+      return js.a(mg.G, alg.b($$0), new fdx($$1));
    }
 }

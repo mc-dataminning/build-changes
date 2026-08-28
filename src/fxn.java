@@ -1,109 +1,92 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class fxn extends fyn {
-   private static final wy a = wy.c("createWorld.customize.buffet.biome").b(-8355712);
-   private static final int b = 8;
-   private final fwj c = new fwj(this);
-   private final fyn d;
-   private final Consumer<jf<dkk>> s;
-   final js<dkk> u;
-   private fxn.a v;
-   jf<dkk> w;
-   private fsv x;
+public class fxn {
+   private static final wy b = wy.c("gui.banned.title.temporary").a(o.r);
+   private static final wy c = wy.c("gui.banned.title.permanent").a(o.r);
+   public static final wy a = wy.c("gui.banned.name.title").a(o.r);
+   private static final wy d = wy.c("gui.banned.skin.title").a(o.r);
+   private static final wy e = wy.a("gui.banned.skin.description", wy.a(ayh.n));
 
-   public fxn(fyn $$0, gdy $$1, Consumer<jf<dkk>> $$2) {
-      super(wy.c("createWorld.customize.buffet.title"));
-      this.d = $$0;
-      this.s = $$2;
-      this.u = $$1.a().f(mh.aG);
-      jf<dkk> $$3 = this.u.a(dkr.b).or(() -> this.u.c().findAny()).orElseThrow();
-      this.w = $$1.e().a().d().c().stream().findFirst().orElse($$3);
+   public static fxp a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fxp($$0, a($$1), b($$1), ayh.n, wx.m, true);
    }
 
-   @Override
-   public void aL_() {
-      this.m.a(this.d);
+   public static fxp a(Runnable $$0) {
+      URI $$1 = ayh.n;
+      return new fxp($$2 -> {
+         if ($$2) {
+            ag.n().a($$1);
+         }
+
+         $$0.run();
+      }, d, e, $$1, wx.m, true);
    }
 
-   @Override
-   protected void aO_() {
-      fwn $$0 = this.c.a(fwn.d().a(8));
-      $$0.c().b();
-      $$0.a(new fuc(this.n(), this.p));
-      $$0.a(new fuc(a, this.p));
-      this.v = this.c.c(new fxn.a());
-      fwn $$1 = this.c.b(fwn.e().a(8));
-      this.x = $$1.a(fsv.a(wx.d, $$0x -> {
-         this.s.accept(this.w);
-         this.aL_();
-      }).a());
-      $$1.a(fsv.a(wx.e, $$0x -> this.aL_()).a());
-      this.v.a(this.v.aE_().stream().filter($$0x -> Objects.equals($$0x.b, this.w)).findFirst().orElse(null));
-      this.c.a(this::c);
-      this.c();
+   public static fxp a(String $$0, Runnable $$1) {
+      URI $$2 = ayh.n;
+      return new fxp($$2x -> {
+         if ($$2x) {
+            ag.n().a($$2);
+         }
+
+         $$1.run();
+      }, a, wy.a("gui.banned.name.description", wy.b($$0).a(o.o), wy.a(ayh.n)), $$2, wx.m, true);
    }
 
-   @Override
-   protected void c() {
-      this.c.a();
-      this.v.a(this.n, this.c);
+   private static wy a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   void m() {
-      this.x.j = this.v.p() != null;
+   private static wy b(BanDetails $$0) {
+      return wy.a("gui.banned.description", c($$0), d($$0), wy.a(ayh.n));
    }
 
-   class a extends ftr<fxn.a.a> {
-      a() {
-         super(fxn.this.m, fxn.this.n, fxn.this.o - 77, 40, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         fxn.this.u.c().map($$0x -> new fxn.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
+   private static wy c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         glr $$4 = glr.a($$3);
+         wy $$5;
+         if ($$4 != null) {
+            $$5 = xb.a($$4.a().f(), xv.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = wy.a("gui.banned.description.reason_id_message", $$3, $$2).a(o.r);
+         } else {
+            $$5 = wy.a("gui.banned.description.reason_id", $$3).a(o.r);
+         }
+
+         return wy.a("gui.banned.description.reason", $$5);
+      } else {
+         return wy.c("gui.banned.description.unknownreason");
       }
+   }
 
-      public void a(@Nullable fxn.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            fxn.this.w = $$0.b;
-         }
-
-         fxn.this.m();
+   private static wy d(BanDetails $$0) {
+      if (f($$0)) {
+         wy $$1 = e($$0);
+         return wy.a("gui.banned.description.temporary", wy.a("gui.banned.description.temporary.duration", $$1).a(o.r));
+      } else {
+         return wy.c("gui.banned.description.permanent").a(o.r);
       }
+   }
 
-      class a extends ftr.a<fxn.a.a> {
-         final jf.c<dkk> b;
-         final wy c;
-
-         public a(final jf.c<dkk> $$0) {
-            this.b = $$0;
-            alg $$1 = $$0.h().a();
-            String $$2 = $$1.h("biome");
-            if (tu.a().b($$2)) {
-               this.c = wy.c($$2);
-            } else {
-               this.c = wy.b($$1.toString());
-            }
-         }
-
-         @Override
-         public wy a() {
-            return wy.a("narrator.select", this.c);
-         }
-
-         @Override
-         public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(fxn.this.p, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
+   private static wy e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return wx.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? wx.c($$1.toMinutes()) : wx.b($$1.toHours());
       }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

@@ -17,7 +17,7 @@ public class bxd extends bwi implements bwb, byg {
    @Nullable
    private bxd.a j;
 
-   public bxd(bwr<?> $$0, djh $$1) {
+   public bxd(bwr<?> $$0, djm $$1) {
       super($$0, $$1);
       this.ad = true;
    }
@@ -73,8 +73,8 @@ public class bxd extends bwi implements bwb, byg {
    }
 
    @Override
-   public exa j_() {
-      return exa.d;
+   public exf j_() {
+      return exf.d;
    }
 
    @Override
@@ -84,7 +84,7 @@ public class bxd extends bwi implements bwb, byg {
 
    @Override
    public boolean v(bwi $$0) {
-      if ($$0 instanceof crj $$1) {
+      if ($$0 instanceof crm $$1) {
          this.i = new bxd.a($$1.cF(), this.dU().ae());
          if ($$1 instanceof arr $$2) {
             aq.h.a($$2, this, $$1.dV().p(), 1.0F, 1.0F, false);
@@ -102,7 +102,7 @@ public class bxd extends bwi implements bwb, byg {
    }
 
    @Override
-   public bug a(crj $$0, buf $$1) {
+   public bug a(crm $$0, buf $$1) {
       if (this.dU().C) {
          return this.m() ? bug.a : bug.c;
       } else {
@@ -161,7 +161,7 @@ public class bxd extends bwi implements bwb, byg {
    }
 
    @Override
-   protected fes c(fex $$0) {
+   protected fex c(ffc $$0) {
       return this.n().a($$0);
    }
 

@@ -1,69 +1,41 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import javax.annotation.Nullable;
+public class gtw extends gtx<dzn> {
+   private static final alg c = alg.b("textures/entity/end_gateway_beam.png");
 
-public class gtw {
-   private static final int a = 2;
-   private int b = 2;
-   private final List<gub.b.a> c = new ObjectArrayList();
-
-   public synchronized void a(gub.b.a $$0) {
-      this.c.add($$0);
+   public gtw(gte.a $$0) {
+      super($$0);
    }
 
-   @Nullable
-   public synchronized gub.b.a a(fex $$0) {
-      int $$1 = -1;
-      int $$2 = -1;
-      double $$3 = Double.MAX_VALUE;
-      double $$4 = Double.MAX_VALUE;
-      ListIterator<gub.b.a> $$5 = this.c.listIterator();
-
-      while ($$5.hasNext()) {
-         int $$6 = $$5.nextIndex();
-         gub.b.a $$7 = $$5.next();
-         if ($$7.a.get()) {
-            $$5.remove();
-         } else {
-            double $$8 = $$7.d().b($$0);
-            if (!$$7.c() && $$8 < $$3) {
-               $$3 = $$8;
-               $$1 = $$6;
-            }
-
-            if ($$7.c() && $$8 < $$4) {
-               $$4 = $$8;
-               $$2 = $$6;
-            }
-         }
+   public void a(dzn $$0, float $$1, fkd $$2, gqr $$3, int $$4, int $$5, ffc $$6) {
+      if ($$0.a() || $$0.c()) {
+         float $$7 = $$0.a() ? $$0.a($$1) : $$0.b($$1);
+         double $$8 = $$0.a() ? (double)$$0.i().ao() : 50.0;
+         $$7 = azm.a($$7 * (float) Math.PI);
+         int $$9 = azm.a((double)$$7 * $$8);
+         int $$10 = $$0.a() ? cyl.c.d() : cyl.k.d();
+         long $$11 = $$0.i().ae();
+         gsz.a($$2, $$3, c, $$1, $$7, $$11, -$$9, $$9 * 2, $$10, 0.15F, 0.175F);
       }
 
-      boolean $$9 = $$2 >= 0;
-      boolean $$10 = $$1 >= 0;
-      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
-         this.b = 2;
-         return this.a($$1);
-      } else {
-         this.b--;
-         return this.a($$2);
-      }
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public int a() {
-      return this.c.size();
+   @Override
+   protected float b() {
+      return 1.0F;
    }
 
-   @Nullable
-   private gub.b.a a(int $$0) {
-      return $$0 >= 0 ? this.c.remove($$0) : null;
+   @Override
+   protected float c() {
+      return 0.0F;
    }
 
-   public synchronized void b() {
-      for (gub.b.a $$0 : this.c) {
-         $$0.a();
-      }
+   @Override
+   protected grc d() {
+      return grc.u();
+   }
 
-      this.c.clear();
+   @Override
+   public int aR_() {
+      return 256;
    }
 }

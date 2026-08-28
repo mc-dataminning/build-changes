@@ -14,12 +14,12 @@ public class ceh extends cfc {
 
    @Nullable
    @Override
-   protected fex h() {
+   protected ffc h() {
       float $$0 = this.b.dU().A.i();
       if (this.b.dU().A.i() < 0.3F) {
          return this.k();
       } else {
-         fex $$1;
+         ffc $$1;
          if ($$0 < 0.7F) {
             $$1 = this.l();
             if ($$1 == null) {
@@ -37,31 +37,31 @@ public class ceh extends cfc {
    }
 
    @Nullable
-   private fex k() {
+   private ffc k() {
       return cif.a(this.b, 10, 7);
    }
 
    @Nullable
-   private fex l() {
+   private ffc l() {
       arq $$0 = (arq)this.b.dU();
-      List<cqv> $$1 = $$0.a(bwr.bD, this.b.cQ().g(32.0), this::a);
+      List<cqy> $$1 = $$0.a(bwr.bD, this.b.cQ().g(32.0), this::a);
       if ($$1.isEmpty()) {
          return null;
       } else {
-         cqv $$2 = $$1.get(this.b.dU().A.a($$1.size()));
-         fex $$3 = $$2.ds();
+         cqy $$2 = $$1.get(this.b.dU().A.a($$1.size()));
+         ffc $$3 = $$2.ds();
          return cif.a(this.b, 10, 7, $$3);
       }
    }
 
    @Nullable
-   private fex m() {
+   private ffc m() {
       jy $$0 = this.n();
       if ($$0 == null) {
          return null;
       } else {
          iv $$1 = this.a($$0);
-         return $$1 == null ? null : cif.a(this.b, 10, 7, fex.c($$1));
+         return $$1 == null ? null : cif.a(this.b, 10, 7, ffc.c($$1));
       }
    }
 
@@ -80,7 +80,7 @@ public class ceh extends cfc {
       return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
    }
 
-   private boolean a(cqv $$0) {
+   private boolean a(cqy $$0) {
       return $$0.a(this.b.dU().ae());
    }
 }

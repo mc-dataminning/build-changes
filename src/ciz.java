@@ -8,10 +8,10 @@ public abstract class ciz extends bvy {
    @Nullable
    private UUID bH;
 
-   protected ciz(bwr<? extends ciz> $$0, djh $$1) {
+   protected ciz(bwr<? extends ciz> $$0, djm $$1) {
       super($$0, $$1);
-      this.a(exm.n, 16.0F);
-      this.a(exm.o, -1.0F);
+      this.a(exr.n, 16.0F);
+      this.a(exr.o, -1.0F);
    }
 
    public static byo.a gy() {
@@ -52,8 +52,8 @@ public abstract class ciz extends bvy {
    }
 
    @Override
-   public float a(iv $$0, djk $$1) {
-      return $$1.a_($$0.e()).a(dmo.i) ? 10.0F : $$1.x($$0);
+   public float a(iv $$0, djp $$1) {
+      return $$1.a_($$0.e()).a(dmt.i) ? 10.0F : $$1.x($$0);
    }
 
    @Override
@@ -70,12 +70,12 @@ public abstract class ciz extends bvy {
       this.bH = $$0.<UUID>a("LoveCause", jz.a).orElse(null);
    }
 
-   public static boolean b(bwr<? extends ciz> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
+   public static boolean b(bwr<? extends ciz> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
       boolean $$5 = bwq.b($$2) || a($$1, $$3);
       return $$1.a_($$3.e()).a(axc.ca) && $$5;
    }
 
-   protected static boolean a(dik $$0, iv $$1) {
+   protected static boolean a(din $$0, iv $$1) {
       return $$0.b($$1, 0) > 8;
    }
 
@@ -94,11 +94,11 @@ public abstract class ciz extends bvy {
       return 1 + this.ae.a(3);
    }
 
-   public abstract boolean i(czk var1);
+   public abstract boolean i(czn var1);
 
    @Override
-   public bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
+   public bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
       if (this.i($$2)) {
          int $$3 = this.g();
          if (!this.dU().C && $$3 == 0 && this.gA()) {
@@ -126,12 +126,12 @@ public abstract class ciz extends bvy {
    protected void gz() {
    }
 
-   protected void a(crj $$0, buf $$1, czk $$2) {
+   protected void a(crm $$0, buf $$1, czn $$2) {
       int $$3 = $$2.M();
-      dcr $$4 = $$2.a(kk.x);
+      dcu $$4 = $$2.a(kk.x);
       $$2.a(1, $$0);
       if ($$4 != null) {
-         czk $$5 = $$4.a($$2, $$3, $$0.fU(), $$0::b);
+         czn $$5 = $$4.a($$2, $$3, $$0.fU(), $$0::b);
          $$0.a($$1, $$5);
       }
    }
@@ -140,7 +140,7 @@ public abstract class ciz extends bvy {
       return this.bG <= 0;
    }
 
-   public void e(@Nullable crj $$0) {
+   public void e(@Nullable crm $$0) {
       this.bG = 600;
       if ($$0 != null) {
          this.bH = $$0.cF();
@@ -162,7 +162,7 @@ public abstract class ciz extends bvy {
       if (this.bH == null) {
          return null;
       } else {
-         crj $$0 = this.dU().a(this.bH);
+         crm $$0 = this.dU().a(this.bH);
          return $$0 instanceof arr ? (arr)$$0 : null;
       }
    }
@@ -203,7 +203,7 @@ public abstract class ciz extends bvy {
       this.gE();
       $$1.gE();
       $$0.a(this, (byte)18);
-      if ($$0.O().c(djd.g)) {
+      if ($$0.O().c(dji.g)) {
          $$0.b(new bww($$0, this.dz(), this.dB(), this.dF(), this.dX().a(7) + 1));
       }
    }

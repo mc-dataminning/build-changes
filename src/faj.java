@@ -1,61 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class faj extends fag {
-   public static final MapCodec<faj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axr.a(mh.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, faj::new)
-   );
-   private final axr<czg> j;
-   private final boolean k;
+public abstract class faj implements fab {
+   protected final List<fdc> e;
+   private final Predicate<ezt> a;
 
-   private faj(axr<czg> $$0, boolean $$1, int $$2, int $$3, List<fcx> $$4, List<fbc> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   protected faj(List<fdc> $$0) {
+      this.e = $$0;
+      this.a = ag.a($$0);
    }
 
-   @Override
-   public faf a() {
-      return fac.f;
+   protected static <T extends faj> P1<Mu<T>, List<fdc>> a(Instance<T> $$0) {
+      return $$0.group(fdc.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public void a(Consumer<czk> $$0, ezo $$1) {
-      mg.g.c(this.j).forEach($$1x -> $$0.accept(new czk($$1x)));
-   }
-
-   private boolean a(ezo $$0, Consumer<fad> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jf<czg> $$2 : mg.g.c(this.j)) {
-            $$1.accept(new fag.c() {
-               @Override
-               public void a(Consumer<czk> $$0, ezo $$1) {
-                  $$0.accept(new czk($$2));
-               }
-            });
-         }
-
-         return true;
+   public void a(ezz $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
    }
 
-   @Override
-   public boolean expand(ezo $$0, Consumer<fad> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   protected final boolean a(ezt $$0) {
+      return this.a.test($$0);
    }
 
-   public static fag.a<?> a(axr<czg> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new faj($$0, false, $$1, $$2, $$3, $$4));
-   }
+   public abstract fak a();
 
-   public static fag.a<?> b(axr<czg> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new faj($$0, true, $$1, $$2, $$3, $$4));
+   public abstract static class a<T extends faj.a<T>> implements fcu<T> {
+      private final Builder<fdc> a = ImmutableList.builder();
+
+      protected abstract T aB_();
+
+      public T a(fdc.a $$0) {
+         this.a.add($$0.build());
+         return this.aB_();
+      }
+
+      public final T e() {
+         return this.aB_();
+      }
+
+      protected List<fdc> f() {
+         return this.a.build();
+      }
+
+      public faa.a a(faj.a<?> $$0) {
+         return new faa.a(this, $$0);
+      }
+
+      public faf.a b(faj.a<?> $$0) {
+         return new faf.a(this, $$0);
+      }
+
+      public fan.a c(faj.a<?> $$0) {
+         return new fan.a(this, $$0);
+      }
+
+      public abstract faj b();
    }
 }

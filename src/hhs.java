@@ -1,23 +1,19 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hhs() implements hia<alf<djh>> {
-   public static final Codec<alf<djh>> a = alf.a(mh.bo);
-   public static final hia.a<hhs, alf<djh>> b = hia.a.a(MapCodec.unit(new hhs()), a);
+public record hhs(float b) implements hhq {
+   public static final MapCodec<hhs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayu.o.optionalFieldOf("period", 1.0F).forGetter(hhs::b)).apply($$0, hhs::new)
+   );
 
-   @Nullable
-   public alf<djh> a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
-      return $$1 != null ? $$1.aj() : null;
+   @Override
+   public float a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2, int $$3) {
+      return $$2 != null && $$2.fA() == $$0 ? (float)$$2.fB() % this.b : 0.0F;
    }
 
    @Override
-   public hia.a<hhs, alf<djh>> a() {
-      return b;
-   }
-
-   @Override
-   public Codec<alf<djh>> b() {
+   public MapCodec<hhs> a() {
       return a;
    }
 }

@@ -1,119 +1,192 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.UUID;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class cqo {
-   public static final Codec<cqo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayu.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               ayu.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               ayu.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cqo::new)
+   @VisibleForTesting
+   protected static final int a = 2;
+   @VisibleForTesting
+   protected static final int b = 150;
+   private static final int f = 1;
+   private int g = azm.b(azv.a(), 0, 2);
+   int h;
+   private static final Codec<Pair<UUID, Integer>> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jz.a.fieldOf("uuid").forGetter(Pair::getFirst), ayu.l.fieldOf("anger").forGetter(Pair::getSecond)).apply($$0, Pair::of)
    );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
+   private final Predicate<bwi> j;
+   @VisibleForTesting
+   protected final ArrayList<bwi> c;
+   private final cqo.a k;
+   @VisibleForTesting
+   protected final Object2IntMap<bwi> d;
+   @VisibleForTesting
+   protected final Object2IntMap<UUID> e;
 
-   public cqo(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
+   public static Codec<cqo> a(Predicate<bwi> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(i.listOf().fieldOf("suspects").orElse(Collections.emptyList()).forGetter(cqo::b)).apply($$1, $$1x -> new cqo($$0, $$1x))
+      );
    }
 
-   public cqo() {
-      this(0, 0, 0);
+   public cqo(Predicate<bwi> $$0, List<Pair<UUID, Integer>> $$1) {
+      this.j = $$0;
+      this.c = new ArrayList<>();
+      this.k = new cqo.a(this);
+      this.d = new Object2IntOpenHashMap();
+      this.e = new Object2IntOpenHashMap($$1.size());
+      $$1.forEach($$0x -> this.e.put((UUID)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
-      } else {
-         this.g++;
+   private List<Pair<UUID, Integer>> b() {
+      return Streams.concat(
+            new Stream[]{
+               this.c.stream().map($$0 -> Pair.of($$0.cF(), this.d.getInt($$0))),
+               this.e.object2IntEntrySet().stream().map($$0 -> Pair.of((UUID)$$0.getKey(), $$0.getIntValue()))
+            }
+         )
+         .collect(Collectors.toList());
+   }
+
+   public void a(arq $$0, Predicate<bwi> $$1) {
+      this.g--;
+      if (this.g <= 0) {
+         this.a($$0);
+         this.g = 2;
       }
 
-      if (this.i > 0) {
-         this.i--;
-      }
-   }
+      ObjectIterator<Entry<UUID>> $$2 = this.e.object2IntEntrySet().iterator();
 
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(arq $$0, iv $$1, arr $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<arr> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.Z().map(cqo::d).orElse(false))) {
-            return OptionalInt.empty();
+      while ($$2.hasNext()) {
+         Entry<UUID> $$3 = (Entry<UUID>)$$2.next();
+         int $$4 = $$3.getIntValue();
+         if ($$4 <= 1) {
+            $$2.remove();
          } else {
-            Optional<cqo> $$4 = $$3.stream().flatMap($$0x -> $$0x.Z().stream()).max(Comparator.comparingInt(cqo::c));
-            if ($$4.isPresent()) {
-               cqo $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.Z().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
+            $$3.setValue($$4 - 1);
+         }
+      }
+
+      ObjectIterator<Entry<bwi>> $$5 = this.d.object2IntEntrySet().iterator();
+
+      while ($$5.hasNext()) {
+         Entry<bwi> $$6 = (Entry<bwi>)$$5.next();
+         int $$7 = $$6.getIntValue();
+         bwi $$8 = (bwi)$$6.getKey();
+         bwi.d $$9 = $$8.dQ();
+         if ($$7 > 1 && $$1.test($$8) && $$9 == null) {
+            $$6.setValue($$7 - 1);
+         } else {
+            this.c.remove($$8);
+            $$5.remove();
+            if ($$7 > 1 && $$9 != null) {
+               switch ($$9) {
+                  case e:
+                  case c:
+                  case d:
+                     this.e.put($$8.cF(), $$7 - 1);
+               }
             }
          }
       }
+
+      this.c();
    }
 
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(arq $$0, iv $$1) {
-      fes $$2 = fes.a(fex.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(cqm.class, $$2).isEmpty();
-   }
-
-   private static List<arr> b(arq $$0, iv $$1) {
-      fex $$2 = fex.b($$1);
-      return $$0.a($$1x -> !$$1x.V_() && $$1x.ds().a((jp)$$2, 16.0) && $$1x.bI());
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
+   private void c() {
+      this.h = 0;
+      this.c.sort(this.k);
+      if (this.c.size() == 1) {
+         this.h = this.d.getInt(this.c.get(0));
       }
    }
 
-   private void f() {
-      this.a(this.c() - 1);
+   private void a(arq $$0) {
+      ObjectIterator<Entry<UUID>> $$1 = this.e.object2IntEntrySet().iterator();
+
+      while ($$1.hasNext()) {
+         Entry<UUID> $$2 = (Entry<UUID>)$$1.next();
+         int $$3 = $$2.getIntValue();
+         bwi $$4 = $$0.b((UUID)$$2.getKey());
+         if ($$4 != null) {
+            this.d.put($$4, $$3);
+            this.c.add($$4);
+            $$1.remove();
+         }
+      }
    }
 
-   public void a(int $$0) {
-      this.h = azm.a($$0, 0, 4);
+   public int a(bwi $$0, int $$1) {
+      boolean $$2 = !this.d.containsKey($$0);
+      int $$3 = this.d.computeInt($$0, ($$1x, $$2x) -> Math.min(150, ($$2x == null ? 0 : $$2x) + $$1));
+      if ($$2) {
+         int $$4 = this.e.removeInt($$0.cF());
+         $$3 += $$4;
+         this.d.put($$0, $$3);
+         this.c.add($$0);
+      }
+
+      this.c();
+      return $$3;
    }
 
-   public int c() {
-      return this.h;
+   public void a(bwi $$0) {
+      this.d.removeInt($$0);
+      this.c.remove($$0);
+      this.c();
    }
 
-   private void a(cqo $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
+   @Nullable
+   private bwi d() {
+      return this.c.stream().filter(this.j).findFirst().orElse(null);
+   }
+
+   public int b(@Nullable bwi $$0) {
+      return $$0 == null ? this.h : this.d.getInt($$0);
+   }
+
+   public Optional<bxj> a() {
+      return Optional.ofNullable(this.d()).filter($$0 -> $$0 instanceof bxj).map($$0 -> (bxj)$$0);
+   }
+
+   @VisibleForTesting
+   protected static record a(cqo a) implements Comparator<bwi> {
+      public int a(bwi $$0, bwi $$1) {
+         if ($$0.equals($$1)) {
+            return 0;
+         } else {
+            int $$2 = this.a.d.getOrDefault($$0, 0);
+            int $$3 = this.a.d.getOrDefault($$1, 0);
+            this.a.h = Math.max(this.a.h, Math.max($$2, $$3));
+            boolean $$4 = cqn.a($$2).d();
+            boolean $$5 = cqn.a($$3).d();
+            if ($$4 != $$5) {
+               return $$4 ? -1 : 1;
+            } else {
+               boolean $$6 = $$0 instanceof crm;
+               boolean $$7 = $$1 instanceof crm;
+               if ($$6 != $$7) {
+                  return $$6 ? -1 : 1;
+               } else {
+                  return Integer.compare($$3, $$2);
+               }
+            }
+         }
+      }
    }
 }

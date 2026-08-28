@@ -1,21 +1,46 @@
-public class hac extends gxk<cpg, hfr, gjg> {
-   private static final alg a = alg.b("textures/entity/piglin/zombified_piglin.png");
+public class hac extends gwx<csw, hft> {
+   private static final alg a = alg.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alg g = alg.b("textures/entity/wither/wither.png");
+   private final gim h;
 
-   public hac(gwt.a $$0, gjm $$1, gjm $$2, gjm $$3, gjm $$4, gjm $$5, gjm $$6) {
-      super($$0, new gjg($$0.a($$1)), new gjg($$0.a($$2)), 0.5F, gyj.a);
-      this.a(new haw<>(this, new ggx($$0.a($$3)), new ggx($$0.a($$4)), new ggx($$0.a($$5)), new ggx($$0.a($$6)), $$0.h()));
+   public hac(gwy.a $$0) {
+      super($$0);
+      this.h = new gim($$0.a(gjs.ea));
    }
 
-   public alg a(hfr $$0) {
-      return a;
+   public static gjz a() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      $$1.a("head", gjy.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gjv.a);
+      return gjz.a($$0, 64, 64);
    }
 
-   public hfr b() {
-      return new hfr();
+   protected int a(csw $$0, iv $$1) {
+      return 15;
    }
 
-   public void a(cpg $$0, hfr $$1, float $$2) {
+   public void a(hft $$0, fkd $$1, gqr $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      fkh $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
+      this.h.a(0.0F, $$0.c, $$0.b);
+      this.h.a($$1, $$4, $$3, hjg.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private alg a(hft $$0) {
+      return $$0.a ? a : g;
+   }
+
+   public hft b() {
+      return new hft();
+   }
+
+   public void a(csw $$0, hft $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gk();
+      $$1.a = $$0.o();
+      $$1.c = $$0.l($$2);
+      $$1.b = $$0.k($$2);
    }
 }

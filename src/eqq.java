@@ -1,25 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eqq<P extends eqp> {
-   eqq<eqb> a = a("block_predicate_filter", eqb.a);
-   eqq<eqs> b = a("rarity_filter", eqs.a);
-   eqq<equ> c = a("surface_relative_threshold_filter", equ.a);
-   eqq<eqv> d = a("surface_water_depth_filter", eqv.a);
-   eqq<eqa> e = a("biome", eqa.a);
-   eqq<eqe> f = a("count", eqe.a);
-   eqq<eqk> g = a("noise_based_count", eqk.a);
-   eqq<eql> h = a("noise_threshold_count", eql.a);
-   eqq<eqd> i = a("count_on_every_layer", eqd.a);
-   eqq<eqf> j = a("environment_scan", eqf.a);
-   eqq<eqi> k = a("heightmap", eqi.a);
-   eqq<eqh> l = a("height_range", eqh.a);
-   eqq<eqj> m = a("in_square", eqj.a);
-   eqq<eqr> n = a("random_offset", eqr.a);
-   eqq<eqg> o = a("fixed_placement", eqg.a);
+public class eqq extends eqy {
+   public static final MapCodec<eqq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eqq::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   MapCodec<P> codec();
+   private eqq(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private static <P extends eqp> eqq<P> a(String $$0, MapCodec<P> $$1) {
-      return js.a(mg.S, $$0, () -> $$1);
+   public static eqq a(double $$0, int $$1, int $$2) {
+      return new eqq($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(azv $$0, iv $$1) {
+      double $$2 = dkp.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public eqv<?> b() {
+      return eqv.h;
    }
 }

@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface cxh {
+@FunctionalInterface
+public interface cxh {
+   void fillStackedContents(crs var1);
 }

@@ -1,53 +1,64 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
-public class faa extends ezx {
+public class faa extends fac {
    public static final MapCodec<faa> a = a(faa::new);
 
-   faa(List<fae> $$0, List<fcx> $$1) {
+   faa(List<faj> $$0, List<fdc> $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public faf a() {
-      return fac.i;
+   public fak a() {
+      return fah.g;
    }
 
    @Override
-   protected ezw a(List<? extends ezw> $$0) {
+   protected fab a(List<? extends fab> $$0) {
       return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ezw)$$0.get(0);
-         case 2 -> {
-            ezw $$1 = $$0.get(0);
-            ezw $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
+         case 0 -> b;
+         case 1 -> (fab)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (fab $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
                return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (ezw $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
+            }
          }
 
-         return true;
+         return false;
       };
       };
    }
 
-   public static faa.a a(fae.a<?>... $$0) {
+   @Override
+   public void a(ezz $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static faa.a a(faj.a<?>... $$0) {
       return new faa.a($$0);
    }
 
-   public static class a extends fae.a<faa.a> {
-      private final Builder<fae> a = ImmutableList.builder();
+   public static <E> faa.a a(Collection<E> $$0, Function<E, faj.a<?>> $$1) {
+      return new faa.a($$0.stream().map($$1::apply).toArray(faj.a[]::new));
+   }
 
-      public a(fae.a<?>... $$0) {
-         for (fae.a<?> $$1 : $$0) {
+   public static class a extends faj.a<faa.a> {
+      private final Builder<faj> a = ImmutableList.builder();
+
+      public a(faj.a<?>... $$0) {
+         for (faj.a<?> $$1 : $$0) {
             this.a.add($$1.b());
          }
       }
@@ -57,13 +68,13 @@ public class faa extends ezx {
       }
 
       @Override
-      public faa.a b(fae.a<?> $$0) {
+      public faa.a a(faj.a<?> $$0) {
          this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public fae b() {
+      public faj b() {
          return new faa(this.a.build(), this.f());
       }
    }

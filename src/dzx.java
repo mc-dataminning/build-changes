@@ -1,62 +1,278 @@
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record dzx(alf<ezt> d, double e, double f, czk g, Optional<alf<ezt>> h, dzo i, dzo.a j) {
-   static final String a = "config";
-   static dzx b = new dzx();
-   static Codec<dzx> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ezt.a.lenientOptionalFieldOf("loot_table", b.b()).forGetter(dzx::b),
-                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dzx::c),
-                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dzx::d),
-                  czk.a("key_item").forGetter(dzx::e),
-                  ezt.a.lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dzx::f)
-               )
-               .apply($$0, dzx::new)
-      )
-      .validate(dzx::h);
+public class dzx {
+   public static final String a = "spawn_data";
+   private static final String m = "next_mob_spawns_at";
+   private static final int n = 20;
+   private static final int o = 18000;
+   public static MapCodec<dzx> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jz.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
+               jz.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
+               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
+               dkg.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
+               ezy.a.lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dzx::new)
+   );
+   protected final Set<UUID> c = new HashSet<>();
+   protected final Set<UUID> d = new HashSet<>();
+   protected long e;
+   protected long f;
+   protected int g;
+   protected Optional<dkg> h;
+   protected Optional<alf<ezy>> i;
+   @Nullable
+   protected bwi j;
+   @Nullable
+   private bsq<czn> p;
+   protected double k;
+   protected double l;
 
-   private dzx() {
-      this(ezk.R, 4.0, 4.5, new czk(czo.zO), Optional.empty(), dzo.b, dzo.a.a);
+   public dzx() {
+      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
    }
 
-   public dzx(alf<ezt> $$0, double $$1, double $$2, czk $$3, Optional<alf<ezt>> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   public dzx(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<dkg> $$5, Optional<alf<ezy>> $$6) {
+      this.c.addAll($$0);
+      this.d.addAll($$1);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
-   public dzo a() {
-      return this.i;
+   public void a() {
+      this.d.clear();
+      this.h = Optional.empty();
+      this.b();
    }
 
-   private DataResult<dzx> h() {
-      return this.e > this.f
-         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
-         : DataResult.success(this);
+   public void b() {
+      this.c.clear();
+      this.g = 0;
+      this.f = 0L;
+      this.e = 0L;
    }
 
-   public alf<ezt> b() {
-      return this.d;
+   public boolean a(dzu $$0, azv $$1) {
+      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
+      return $$2 || !$$0.b().i().c();
    }
 
-   public double c() {
-      return this.e;
+   public boolean a(dzv $$0, int $$1) {
+      return this.g >= $$0.a($$1);
+   }
+
+   public boolean c() {
+      return this.d.isEmpty();
+   }
+
+   public boolean a(arq $$0, dzv $$1, int $$2) {
+      return $$0.ae() >= this.f && this.d.size() < $$1.b($$2);
+   }
+
+   public int a(iv $$0) {
+      if (this.c.isEmpty()) {
+         ag.b("Trial Spawner at " + $$0 + " has no detected players");
+      }
+
+      return Math.max(0, this.c.size() - 1);
+   }
+
+   public void a(arq $$0, iv $$1, dzu $$2) {
+      boolean $$3 = ($$1.a() + $$0.ae()) % 20L != 0L;
+      if (!$$3) {
+         if (!$$2.i().equals(dzy.f) || !$$2.e()) {
+            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
+            boolean $$7;
+            if (!$$2.e() && !$$4.isEmpty()) {
+               Optional<Pair<crm, jf<bvk>>> $$6 = a($$0, $$4);
+               $$6.ifPresent($$3x -> {
+                  crm $$4x = (crm)$$3x.getFirst();
+                  if ($$3x.getSecond() == bvo.E) {
+                     a($$4x);
+                  }
+
+                  $$0.c(3020, iv.a((jp)$$4x.bC()), 0);
+                  $$2.a($$0, $$1);
+               });
+               $$7 = $$6.isPresent();
+            } else {
+               $$7 = false;
+            }
+
+            if (!$$2.i().equals(dzy.f) || $$7) {
+               boolean $$8 = $$2.f().c.isEmpty();
+               List<UUID> $$9 = $$8 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
+               if (this.c.addAll($$9)) {
+                  this.f = Math.max($$0.ae() + 40L, this.f);
+                  if (!$$7) {
+                     int $$10 = $$2.e() ? 3019 : 3013;
+                     $$0.c($$10, $$1, this.c.size());
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private static Optional<Pair<crm, jf<bvk>>> a(arq $$0, List<UUID> $$1) {
+      crm $$2 = null;
+
+      for (UUID $$3 : $$1) {
+         crm $$4 = $$0.a($$3);
+         if ($$4 != null) {
+            jf<bvk> $$5 = bvo.H;
+            if ($$4.b($$5)) {
+               return Optional.of(Pair.of($$4, $$5));
+            }
+
+            if ($$4.b(bvo.E)) {
+               $$2 = $$4;
+            }
+         }
+      }
+
+      return Optional.ofNullable($$2).map($$0x -> Pair.of($$0x, bvo.E));
+   }
+
+   public void a(dzu $$0, arq $$1) {
+      this.d.stream().map($$1::b).forEach($$1x -> {
+         if ($$1x != null) {
+            $$1.c(3012, $$1x.du(), dzu.a.a.a());
+            if ($$1x instanceof bxl $$2) {
+               $$2.b($$1);
+            }
+
+            $$1x.a(bwi.d.b);
+         }
+      });
+      if (!$$0.d().i().c()) {
+         this.h = Optional.empty();
+      }
+
+      this.g = 0;
+      this.d.clear();
+      this.f = $$1.ae() + (long)$$0.d().h();
+      $$0.j();
+      this.e = $$1.ae() + $$0.d().a();
+   }
+
+   private static void a(crm $$0) {
+      bvm $$1 = $$0.c(bvo.E);
+      if ($$1 != null) {
+         int $$2 = $$1.e() + 1;
+         int $$3 = 18000 * $$2;
+         $$0.e(bvo.E);
+         $$0.a(new bvm(bvo.H, $$3, 0));
+      }
+   }
+
+   public boolean a(arq $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)$$0.ae() >= (float)$$3 + $$1;
+   }
+
+   public boolean b(arq $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)($$0.ae() - $$3) % $$1 == 0.0F;
+   }
+
+   public boolean a(arq $$0) {
+      return $$0.ae() >= this.e;
+   }
+
+   protected dkg b(dzu $$0, azv $$1) {
+      if (this.h.isPresent()) {
+         return this.h.get();
+      } else {
+         bsq<dkg> $$2 = $$0.b().i();
+         Optional<dkg> $$3 = $$2.c() ? this.h : $$2.a($$1);
+         this.h = Optional.of($$3.orElseGet(dkg::new));
+         $$0.j();
+         return this.h.get();
+      }
+   }
+
+   @Nullable
+   public bwi a(dzu $$0, djm $$1, dzy $$2) {
+      if (!$$2.d()) {
+         return null;
+      } else {
+         if (this.j == null) {
+            tz $$3 = this.b($$0, $$1.C_()).a();
+            if ($$3.b("id", 8)) {
+               this.j = bwr.a($$3, $$1, bwq.q, Function.identity());
+            }
+         }
+
+         return this.j;
+      }
+   }
+
+   public tz a(dzy $$0) {
+      tz $$1 = new tz();
+      if ($$0 == dzy.c) {
+         $$1.a("next_mob_spawns_at", this.f);
+      }
+
+      this.h.ifPresent($$1x -> $$1.a("spawn_data", dkg.b, $$1x));
+      return $$1;
    }
 
    public double d() {
-      return this.f;
+      return this.k;
    }
 
-   public czk e() {
-      return this.g;
+   public double e() {
+      return this.l;
    }
 
-   public Optional<alf<ezt>> f() {
-      return this.h;
+   bsq<czn> a(arq $$0, dzv $$1, iv $$2) {
+      if (this.p != null) {
+         return this.p;
+      } else {
+         ezy $$3 = $$0.p().bc().b($$1.k());
+         ezw $$4 = new ezw.a($$0).a(fcm.b);
+         long $$5 = a($$0, $$2);
+         ObjectArrayList<czn> $$6 = $$3.a($$4, $$5);
+         if ($$6.isEmpty()) {
+            return bsq.a();
+         } else {
+            bsq.a<czn> $$7 = bsq.b();
+            ObjectListIterator var10 = $$6.iterator();
+
+            while (var10.hasNext()) {
+               czn $$8 = (czn)var10.next();
+               $$7.a($$8.c(1), $$8.M());
+            }
+
+            this.p = $$7.a();
+            return this.p;
+         }
+      }
    }
 
-   public dzo.a g() {
-      return this.j;
+   private static long a(arq $$0, iv $$1) {
+      iv $$2 = new iv(azm.d((float)$$1.u() / 30.0F), azm.d((float)$$1.v() / 20.0F), azm.d((float)$$1.w() / 30.0F));
+      return $$0.E() + $$2.a();
    }
 }

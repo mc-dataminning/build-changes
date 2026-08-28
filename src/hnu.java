@@ -1,37 +1,33 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 
-public class hnu extends avq {
-   @Nullable
-   private tz h;
+public class hnu<T> implements hny<T> {
+   protected final Comparator<T> a;
+   protected final hnx<T> b;
 
-   public hnu(hnv $$0, jm<alp> $$1, ezf $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public hnu(Function<T, Stream<alg>> $$0, List<T> $$1) {
+      ToIntFunction<T> $$2 = ag.g($$1);
+      this.a = Comparator.comparingInt($$2);
+      this.b = hnx.a($$1, $$0);
    }
 
    @Override
-   protected void b(arr $$0) {
-      if (this.b().a($$0.gh())) {
-         this.h = $$0.f(new tz());
-      }
-
-      super.b($$0);
+   public List<T> search(String $$0) {
+      int $$1 = $$0.indexOf(58);
+      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
    }
 
-   @Override
-   public wy a(SocketAddress $$0, GameProfile $$1) {
-      return (wy)(this.b().a($$1) && this.a($$1.getName()) != null ? wy.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
+   protected List<T> a(String $$0) {
+      return this.b.b($$0);
    }
 
-   public hnv b() {
-      return (hnv)super.c();
-   }
-
-   @Nullable
-   @Override
-   public tz r() {
-      return this.h;
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      return ImmutableList.copyOf(new hnv<T>($$2.iterator(), $$3.iterator(), this.a));
    }
 }

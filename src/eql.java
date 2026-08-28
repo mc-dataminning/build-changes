@@ -1,38 +1,44 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class eql extends eqt {
+public class eql extends equ {
    public static final MapCodec<eql> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eql::new)
+      $$0 -> $$0.group(iv.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eql::new)
    );
-   private final double c;
-   private final int d;
-   private final int e;
+   private final List<iv> c;
 
-   private eql(double $$0, int $$1, int $$2) {
+   public static eql a(iv... $$0) {
+      return new eql(List.of($$0));
+   }
+
+   private eql(List<iv> $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static eql a(double $$0, int $$1, int $$2) {
-      return new eql($$0, $$1, $$2);
    }
 
    @Override
-   protected int a(azv $$0, iv $$1) {
-      double $$2 = dkk.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public Stream<iv> a_(eqs $$0, azv $$1, iv $$2) {
+      int $$3 = jy.a($$2.u());
+      int $$4 = jy.a($$2.w());
+      boolean $$5 = false;
+
+      for (iv $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+   }
+
+   private static boolean a(int $$0, int $$1, iv $$2) {
+      return $$0 == jy.a($$2.u()) && $$1 == jy.a($$2.w());
    }
 
    @Override
-   public eqq<?> b() {
-      return eqq.h;
+   public eqv<?> b() {
+      return eqv.o;
    }
 }

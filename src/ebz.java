@@ -1,38 +1,37 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import java.util.Optional;
 
-public enum ebz implements bak {
-   a(0, "start"),
-   b(1, "log"),
-   c(2, "fail"),
-   d(3, "accept");
+public class ebz {
+   private static final azy a = new azy(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   private static final IntFunction<ebz> g = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-   public static final Codec<ebz> e = bak.a(ebz::values);
-   public static final yw<ByteBuf, ebz> f = yu.a(g, $$0 -> $$0.h);
-   private final int h;
-   private final String i;
-   private final wy j;
-   private final wy k;
-
-   private ebz(final int $$0, final String $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = wy.c("test_block.mode." + $$1);
-      this.k = wy.c("test_block.mode_info." + $$1);
+   public static int a() {
+      return b;
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   public static int a(jb $$0) {
+      return a.a($$0);
    }
 
-   public wy a() {
-      return this.j;
+   public static int a(float $$0) {
+      return a.b($$0);
    }
 
-   public wy b() {
-      return this.k;
+   public static Optional<jb> a(int $$0) {
+      jb $$1 = switch ($$0) {
+         case 0 -> jb.c;
+         case 4 -> jb.f;
+         case 8 -> jb.d;
+         case 12 -> jb.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
+   }
+
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

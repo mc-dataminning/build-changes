@@ -4,18 +4,18 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
 
-public class caq extends bza<clh> {
+public class caq extends bza<cle> {
    public static final int c = 200;
    public static final float d = 1.65F;
-   private final Function<clh, btr> e;
+   private final Function<cle, btr> e;
    private final chy f;
    private final float g;
-   private final ToDoubleFunction<clh> h;
-   private fex i;
-   private final Function<clh, awm> j;
-   private final Function<clh, awm> k;
+   private final ToDoubleFunction<cle> h;
+   private ffc i;
+   private final Function<cle, awm> j;
+   private final Function<cle, awm> k;
 
-   public caq(Function<clh, btr> $$0, chy $$1, float $$2, ToDoubleFunction<clh> $$3, Function<clh, awm> $$4, Function<clh, awm> $$5) {
+   public caq(Function<cle, btr> $$0, chy $$1, float $$2, ToDoubleFunction<cle> $$3, Function<cle, awm> $$4, Function<cle, awm> $$5) {
       super(ImmutableMap.of(cgl.W, cgm.b, cgl.X, cgm.a), 200);
       this.e = $$0;
       this.f = $$1;
@@ -23,26 +23,26 @@ public class caq extends bza<clh> {
       this.h = $$3;
       this.j = $$4;
       this.k = $$5;
-      this.i = fex.c;
+      this.i = ffc.c;
    }
 
-   protected boolean a(arq $$0, clh $$1) {
+   protected boolean a(arq $$0, cle $$1) {
       return $$1.eb().a(cgl.X);
    }
 
-   protected boolean a(arq $$0, clh $$1, long $$2) {
+   protected boolean a(arq $$0, cle $$1, long $$2) {
       return $$1.eb().a(cgl.X);
    }
 
-   protected void b(arq $$0, clh $$1, long $$2) {
+   protected void b(arq $$0, cle $$1, long $$2) {
       iv $$3 = $$1.du();
       byj<?> $$4 = $$1.eb();
-      fex $$5 = $$4.c(cgl.X).get();
-      this.i = new fex((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
+      ffc $$5 = $$4.c(cgl.X).get();
+      this.i = new ffc((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
       $$4.a(cgl.n, new cgo($$5, this.g, 0));
    }
 
-   protected void c(arq $$0, clh $$1, long $$2) {
+   protected void c(arq $$0, cle $$1, long $$2) {
       List<bxj> $$3 = $$0.a(bxj.class, this.f, $$1, $$1.cQ());
       byj<?> $$4 = $$1.eb();
       if (!$$3.isEmpty()) {
@@ -50,7 +50,7 @@ public class caq extends bza<clh> {
          bux $$6 = $$0.al().c((bxj)$$1);
          float $$7 = (float)$$1.h(byp.c);
          if ($$5.a($$0, $$6, $$7)) {
-            dfz.a($$0, (bwi)$$5, $$6);
+            dgc.a($$0, (bwi)$$5, $$6);
          }
 
          int $$8 = $$1.b(bvo.a) ? $$1.c(bvo.a).e() + 1 : 0;
@@ -73,7 +73,7 @@ public class caq extends bza<clh> {
          this.b($$0, $$1);
       } else {
          Optional<cgo> $$16 = $$4.c(cgl.n);
-         Optional<fex> $$17 = $$4.c(cgl.X);
+         Optional<ffc> $$17 = $$4.c(cgl.X);
          boolean $$18 = $$16.isEmpty() || $$17.isEmpty() || $$16.get().a().a().a($$17.get(), 0.25);
          if ($$18) {
             this.b($$0, $$1);
@@ -81,13 +81,13 @@ public class caq extends bza<clh> {
       }
    }
 
-   private boolean c(arq $$0, clh $$1) {
-      fex $$2 = $$1.dx().d(1.0, 0.0, 1.0).d();
+   private boolean c(arq $$0, cle $$1) {
+      ffc $$2 = $$1.dx().d(1.0, 0.0, 1.0).d();
       iv $$3 = iv.a((jp)$$1.ds().e($$2));
       return $$0.a_($$3).a(axc.cs) || $$0.a_($$3.d()).a(axc.cs);
    }
 
-   protected void b(arq $$0, clh $$1) {
+   protected void b(arq $$0, cle $$1) {
       $$0.a($$1, (byte)59);
       $$1.eb().a(cgl.W, this.e.apply($$1).a($$0.A));
       $$1.eb().b(cgl.X);

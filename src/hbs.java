@@ -1,44 +1,28 @@
-import javax.annotation.Nullable;
+public class hbs extends hbm<hfd, giq> {
+   private final gru a;
 
-public class hbs<S extends hdq, M extends ggk<S>> extends hbh<S, M> {
-   private final ggg a;
-   private final ggg b;
-   private final has c;
-
-   public hbs(gyq<S, M> $$0, gjk $$1, has $$2) {
+   public hbs(gyv<hfd, giq> $$0, gru $$1) {
       super($$0);
-      this.a = new ggg($$1.a(gjn.aP));
-      this.b = new ggg($$1.a(gjn.aQ));
-      this.c = $$2;
+      this.a = $$1;
    }
 
-   public void a(fjy $$0, gqm $$1, int $$2, S $$3, float $$4, float $$5) {
-      czk $$6 = $$3.W;
-      dht $$7 = $$6.a(kk.D);
-      if ($$7 != null && !$$7.d().isEmpty()) {
-         alg $$8 = a($$3);
-         ggg $$9 = $$3.aj ? this.b : this.a;
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         $$9.a($$3);
-         this.c.a(hlp.d.c, $$7.d().get(), $$9, $$6, $$0, $$1, $$2, $$8);
-         $$0.b();
-      }
-   }
-
-   @Nullable
-   private static alg a(hdq $$0) {
-      if ($$0 instanceof hel $$1) {
-         hkl $$2 = $$1.a;
-         if ($$2.d() != null) {
-            return $$2.d();
-         }
-
-         if ($$2.c() != null && $$1.ay) {
-            return $$2.c();
+   public void a(fkd $$0, gqr $$1, int $$2, hfd $$3, float $$4, float $$5) {
+      if ($$3.a) {
+         if (!$$3.z || $$3.ao) {
+            $$0.a();
+            this.d().b().a($$0);
+            float $$6 = 0.625F;
+            $$0.a(0.0F, -0.34375F, 0.0F);
+            $$0.a(a.d.rotationDegrees(180.0F));
+            $$0.b(0.625F, -0.625F, -0.625F);
+            eat $$7 = dmt.ev.m();
+            gsd $$8 = this.a.a($$7);
+            int $$9 = gxz.a($$3, 0.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            fkh $$10 = $$3.ao && $$3.z ? $$1.getBuffer(grc.s(hjp.c)) : $$1.getBuffer(gqj.c($$7));
+            this.a.b().a($$0.c(), $$10, $$7, $$8, 0.0F, 0.0F, 0.0F, $$2, $$9);
+            $$0.b();
          }
       }
-
-      return null;
    }
 }

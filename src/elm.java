@@ -1,96 +1,56 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class elm extends ejt<eme> {
-   private static final jb[] a = jb.values();
-
-   public elm(Codec<eme> $$0) {
+public class elm extends ejy<ena> {
+   public elm(Codec<ena> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejv<eme> $$0) {
-      dkg $$1 = $$0.b();
+   public boolean a(eka<ena> $$0) {
+      dkl $$1 = $$0.b();
       iv $$2 = $$0.e();
-      azv $$3 = $$0.d();
-      if (!$$1.v($$2)) {
+      ena $$3 = $$0.f();
+      azv $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         eao $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dmo.em) && !$$4.a(dmo.lq)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
-         }
+         iv $$6 = $$2.h($$5.getAsInt());
+         ka $$7 = new ka($$3.c, $$3.c, $$3.c);
+         erf $$8 = erf.a($$6.b($$7), $$6.a($$7));
+         return iv.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dmt.lp.m(), 2);
+            return 1;
+         }).sum() > 0;
       }
    }
 
-   private void a(dji $$0, azv $$1, iv $$2) {
-      $$0.a($$2, dmo.lq.m(), 2);
-      iv.a $$3 = new iv.a();
-      iv.a $$4 = new iv.a();
+   private static OptionalInt a(dkl $$0, iv $$1, ena $$2) {
+      Predicate<eat> $$3 = $$0x -> $$0x.a(dmt.J);
+      Predicate<eat> $$4 = $$0x -> !$$0x.a(dmt.J);
+      Optional<egi> $$5 = egi.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(egi::c).orElseGet(OptionalInt::empty);
+   }
 
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.v($$3)) {
-            int $$6 = 0;
-
-            for (jb $$7 : a) {
-               eao $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(dmo.em) || $$8.a(dmo.lq)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
-               }
-            }
-
-            if ($$6 == 1) {
-               $$0.a($$3, dmo.lq.m(), 2);
+   private boolean b(dkl $$0, iv $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
+         for (jb $$2 : jb.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
             }
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void b(dji $$0, azv $$1, iv $$2) {
-      iv.a $$3 = new iv.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.v($$3)) {
-            eao $$5 = $$0.a_($$3.d());
-            if ($$5.a(dmo.em) || $$5.a(dmo.lq)) {
-               int $$6 = azm.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
-   }
-
-   public static void a(dji $$0, azv $$1, iv.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.v($$2)) {
-            if ($$6 == $$3 || !$$0.v($$2.e())) {
-               $$0.a($$2, dmo.pf.m().b(dqf.e, Integer.valueOf(azm.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, dmo.pg.m(), 2);
-         }
-
-         $$2.c(jb.a);
-      }
+   private boolean a(djn $$0, iv $$1) {
+      eat $$2 = $$0.a_($$1);
+      return $$2.a(dmt.J) || $$2.l();
    }
 }

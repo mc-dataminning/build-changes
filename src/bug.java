@@ -15,7 +15,7 @@ public sealed interface bug permits bug.d, bug.a, bug.c, bug.f {
    public static record a() implements bug {
    }
 
-   public static record b(boolean c, @Nullable czk d) {
+   public static record b(boolean c, @Nullable czn d) {
       static bug.b a = new bug.b(false, null);
       static bug.b b = new bug.b(true, null);
 
@@ -24,7 +24,7 @@ public sealed interface bug permits bug.d, bug.a, bug.c, bug.f {
       }
 
       @Nullable
-      public czk b() {
+      public czn b() {
          return this.d;
       }
    }
@@ -38,7 +38,7 @@ public sealed interface bug permits bug.d, bug.a, bug.c, bug.f {
          return true;
       }
 
-      public bug.d a(czk $$0) {
+      public bug.d a(czn $$0) {
          return new bug.d(this.g, new bug.b(true, $$0));
       }
 
@@ -51,7 +51,7 @@ public sealed interface bug permits bug.d, bug.a, bug.c, bug.f {
       }
 
       @Nullable
-      public czk d() {
+      public czn d() {
          return this.h.d;
       }
 

@@ -1,35 +1,22 @@
-public class ftm {
-   public static final alg a = alg.b("textures/gui/title/minecraft.png");
-   public static final alg b = alg.b("textures/gui/title/minceraft.png");
-   public static final alg c = alg.b("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)azv.a().i() < 1.0E-4;
-   private final boolean o;
+public class ftm extends fta {
+   protected final fun a;
 
-   public ftm(boolean $$0) {
-      this.o = $$0;
+   public ftm(int $$0, int $$1, int $$2, int $$3, fun $$4, fta.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, wx.a);
    }
 
-   public void a(fsh $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   public ftm(int $$0, int $$1, int $$2, int $$3, fun $$4, fta.c $$5, wy $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
    }
 
-   public void a(fsh $$0, int $$1, float $$2, int $$3) {
-      int $$4 = $$1 / 2 - 128;
-      float $$5 = this.o ? 1.0F : $$2;
-      int $$6 = axw.a($$5);
-      $$0.a(gqx::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
-      int $$7 = $$1 / 2 - 64;
-      int $$8 = $$3 + 44 - 7;
-      $$0.a(gqx::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
+   public ftm(int $$0, int $$1, fun $$2, fta.c $$3, wy $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+      alg $$4 = this.a.a(this.E(), this.D());
+      $$0.a(grc::H, $$4, this.F(), this.G(), this.g, this.h);
    }
 }

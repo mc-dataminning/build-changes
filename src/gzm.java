@@ -1,27 +1,30 @@
-public class gzm extends gvn<ckg, hfg, giu> {
-   private static final alg a = alg.b("textures/entity/turtle/big_sea_turtle.png");
+public class gzm extends gwx<csv, hfi> {
+   public static final alg a = alg.b("textures/entity/trident.png");
+   private final giw g;
 
-   public gzm(gwt.a $$0) {
-      super($$0, new giu($$0.a(gjn.dG)), new giu($$0.a(gjn.dH)), 0.7F);
+   public gzm(gwy.a $$0) {
+      super($$0);
+      this.g = new giw($$0.a(gjs.dD));
    }
 
-   protected float a(hfg $$0) {
-      float $$1 = super.g($$0);
-      return $$0.aj ? $$1 * 0.83F : $$1;
+   public void a(hfi $$0, fkd $$1, gqr $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
+      fkh $$4 = gxw.a($$2, this.g.a(a), false, $$0.c);
+      this.g.a($$1, $$4, $$3, hjg.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hfg b() {
-      return new hfg();
+   public hfi a() {
+      return new hfi();
    }
 
-   public void a(ckg $$0, hfg $$1, float $$2) {
+   public void a(csv $$0, hfi $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = !$$0.bh() && $$0.aH();
-      $$1.b = $$0.t();
-      $$1.c = !$$0.n_() && $$0.q();
-   }
-
-   public alg b(hfg $$0) {
-      return a;
+      $$1.b = $$0.l($$2);
+      $$1.a = $$0.k($$2);
+      $$1.c = $$0.y();
    }
 }

@@ -1,16 +1,20 @@
-public class hms extends hmu {
-   public hms(cja $$0) {
-      super($$0, awn.bQ, awo.g);
-      this.j = 0;
+import java.util.UUID;
+
+public interface hms {
+   void a(UUID var1, hms.b var2);
+
+   void a(UUID var1, hms.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   protected hmq o() {
-      return new hmt(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return !this.n.X_();
+   public static enum b {
+      a,
+      b;
    }
 }

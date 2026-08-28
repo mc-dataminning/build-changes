@@ -1,337 +1,504 @@
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.apache.commons.lang3.mutable.MutableFloat;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 public class dgc {
-   public static final alf<dfx> a = a("protection");
-   public static final alf<dfx> b = a("fire_protection");
-   public static final alf<dfx> c = a("feather_falling");
-   public static final alf<dfx> d = a("blast_protection");
-   public static final alf<dfx> e = a("projectile_protection");
-   public static final alf<dfx> f = a("respiration");
-   public static final alf<dfx> g = a("aqua_affinity");
-   public static final alf<dfx> h = a("thorns");
-   public static final alf<dfx> i = a("depth_strider");
-   public static final alf<dfx> j = a("frost_walker");
-   public static final alf<dfx> k = a("binding_curse");
-   public static final alf<dfx> l = a("soul_speed");
-   public static final alf<dfx> m = a("swift_sneak");
-   public static final alf<dfx> n = a("sharpness");
-   public static final alf<dfx> o = a("smite");
-   public static final alf<dfx> p = a("bane_of_arthropods");
-   public static final alf<dfx> q = a("knockback");
-   public static final alf<dfx> r = a("fire_aspect");
-   public static final alf<dfx> s = a("looting");
-   public static final alf<dfx> t = a("sweeping_edge");
-   public static final alf<dfx> u = a("efficiency");
-   public static final alf<dfx> v = a("silk_touch");
-   public static final alf<dfx> w = a("unbreaking");
-   public static final alf<dfx> x = a("fortune");
-   public static final alf<dfx> y = a("power");
-   public static final alf<dfx> z = a("punch");
-   public static final alf<dfx> A = a("flame");
-   public static final alf<dfx> B = a("infinity");
-   public static final alf<dfx> C = a("luck_of_the_sea");
-   public static final alf<dfx> D = a("lure");
-   public static final alf<dfx> E = a("loyalty");
-   public static final alf<dfx> F = a("impaling");
-   public static final alf<dfx> G = a("riptide");
-   public static final alf<dfx> H = a("channeling");
-   public static final alf<dfx> I = a("multishot");
-   public static final alf<dfx> J = a("quick_charge");
-   public static final alf<dfx> K = a("piercing");
-   public static final alf<dfx> L = a("density");
-   public static final alf<dfx> M = a("breach");
-   public static final alf<dfx> N = a("wind_burst");
-   public static final alf<dfx> O = a("mending");
-   public static final alf<dfx> P = a("vanishing_curse");
-
-   public static void a(qh<dfx> $$0) {
-      jg<buz> $$1 = $$0.a(mh.aN);
-      jg<dfx> $$2 = $$0.a(mh.aR);
-      jg<czg> $$3 = $$0.a(mh.K);
-      jg<dmm> $$4 = $$0.a(mh.i);
-      jg<bwr<?>> $$5 = $$0.a(mh.B);
-      a(
-         $$0,
-         a,
-         dfx.a(dfx.a($$3.b(axk.cc), 10, 4, dfx.a(1, 11), dfx.a(12, 11), 1, bwt.i))
-            .a($$2.b(axe.b))
-            .a(dfy.c, new dgh(dge.b(1.0F)), fcq.a(bn.a.a().a(dt.b(axd.d))))
-      );
-      a(
-         $$0,
-         b,
-         dfx.a(dfx.a($$3.b(axk.cc), 5, 4, dfx.a(10, 8), dfx.a(18, 8), 2, bwt.i))
-            .a($$2.b(axe.b))
-            .a(dfy.c, new dgh(dge.b(2.0F)), fck.a(fcq.a(bn.a.a().a(dt.a(axd.i)).a(dt.b(axd.d)))))
-            .a(dfy.l, new dgn(alg.b("enchantment.fire_protection"), byp.h, dge.b(-0.15F), byn.a.b))
-      );
-      a(
-         $$0,
-         c,
-         dfx.a(dfx.a($$3.b(axk.bY), 5, 4, dfx.a(5, 6), dfx.a(11, 6), 2, bwt.i)).a(dfy.c, new dgh(dge.b(3.0F)), fcq.a(bn.a.a().a(dt.a(axd.m)).a(dt.b(axd.d))))
-      );
-      a(
-         $$0,
-         d,
-         dfx.a(dfx.a($$3.b(axk.cc), 2, 4, dfx.a(5, 8), dfx.a(13, 8), 4, bwt.i))
-            .a($$2.b(axe.b))
-            .a(dfy.c, new dgh(dge.b(2.0F)), fcq.a(bn.a.a().a(dt.a(axd.l)).a(dt.b(axd.d))))
-            .a(dfy.l, new dgn(alg.b("enchantment.blast_protection"), byp.i, dge.b(0.15F), byn.a.a))
-      );
-      a(
-         $$0,
-         e,
-         dfx.a(dfx.a($$3.b(axk.cc), 5, 4, dfx.a(3, 6), dfx.a(9, 6), 2, bwt.i))
-            .a($$2.b(axe.b))
-            .a(dfy.c, new dgh(dge.b(2.0F)), fcq.a(bn.a.a().a(dt.a(axd.j)).a(dt.b(axd.d))))
-      );
-      a(
-         $$0,
-         f,
-         dfx.a(dfx.a($$3.b(axk.cb), 2, 3, dfx.a(10, 10), dfx.a(40, 10), 4, bwt.h))
-            .a(dfy.l, new dgn(alg.b("enchantment.respiration"), byp.w, dge.b(1.0F), byn.a.a))
-      );
-      a(
-         $$0,
-         g,
-         dfx.a(dfx.a($$3.b(axk.cb), 2, 1, dfx.a(1), dfx.a(41), 4, bwt.h)).a(dfy.l, new dgn(alg.b("enchantment.aqua_affinity"), byp.C, dge.b(4.0F), byn.a.c))
-      );
-      a(
-         $$0,
-         h,
-         dfx.a(dfx.a($$3.b(axk.cc), $$3.b(axk.ca), 1, 3, dfx.a(10, 20), dfx.a(60, 20), 8, bwt.a))
-            .a(dfy.i, dgb.c, dgb.a, dgi.a(new dgl(dge.a(1.0F), dge.a(5.0F), $$1.b(bva.P)), new dgk(dge.a(2.0F))), fdc.a(fdr.a(dge.b(0.15F))))
-      );
-      a(
-         $$0,
-         i,
-         dfx.a(dfx.a($$3.b(axk.bY), 2, 3, dfx.a(10, 10), dfx.a(25, 10), 4, bwt.e))
-            .a($$2.b(axe.c))
-            .a(dfy.l, new dgn(alg.b("enchantment.depth_strider"), byp.F, dge.b(0.33333334F), byn.a.a))
-      );
-      a(
-         $$0,
-         j,
-         dfx.a(dfx.a($$3.b(axk.bY), 2, 2, dfx.a(10, 10), dfx.a(25, 10), 4, bwt.e))
-            .a($$2.b(axe.c))
-            .a(dfy.d, dgm.a, fcq.a(bn.a.a().a(dt.a(axd.E)).a(dt.b(axd.d))))
-            .a(
-               dfy.n,
-               new dgx(
-                  new dge.a(dge.a(3.0F, 1.0F), 0.0F, 16.0F),
-                  dge.a(1.0F),
-                  new ka(0, -1, 0),
-                  Optional.of(ehu.a(ehu.a(new ka(0, 1, 0), axc.cI), ehu.a(dmo.J), ehu.a(eww.c), ehu.f())),
-                  eny.a(dmo.lo),
-                  Optional.of(efo.i)
-               ),
-               fck.a(fda.a(ezo.b.a, by.a.a().a(bw.a.a().a(true))), fcu.a(fda.a(ezo.b.a, by.a.a().a(by.a.a()))))
-            )
-      );
-      a($$0, k, dfx.a(dfx.a($$3.b(axk.cn), 1, 1, dfx.a(25), dfx.a(50), 8, bwt.i)).a(dfy.E));
-      by.a $$6 = by.a.a().a(5).a(bw.a.a().f(false).a(true)).a(cy.b(cw.c.b(1.0E-5F))).c(cu.a.a().a(az.a.a().a($$4, axc.aQ)));
-      fck.a $$7 = fck.a(
-         fcu.a(fda.a(ezo.b.a, by.a.a().a(by.a.a()))),
-         fcl.a(
-            fck.a(
-               fcr.c(),
-               fda.a(ezo.b.a, by.a.a().a(bw.a.a().f(false))),
-               fcl.a(fda.a(ezo.b.a, by.a.a().c(cu.a.a().a(az.a.a().a($$4, axc.aQ)))), fda.a(ezo.b.a, by.a.a().a(bw.a.a().a(false)).b()))
-            ),
-            fck.a(fcr.d(), fda.a(ezo.b.a, by.a.a().c(cu.a.a().a(az.a.a().a($$4, axc.aQ))).a(bw.a.a().f(false))))
-         )
-      );
-      a(
-         $$0,
-         l,
-         dfx.a(dfx.a($$3.b(axk.bY), 1, 3, dfx.a(10, 10), dfx.a(25, 10), 8, bwt.e))
-            .a(
-               dfy.n,
-               dgi.a(
-                  new dgn(alg.b("enchantment.soul_speed"), byp.v, dge.a(0.0405F, 0.0105F), byn.a.a),
-                  new dgn(alg.b("enchantment.soul_speed"), byp.u, dge.a(1.0F), byn.a.a)
-               ),
-               $$7
-            )
-            .a(
-               dfy.n,
-               new dgk(dge.a(1.0F)),
-               fck.a(fdc.a(fdr.a(dge.a(0.04F))), fda.a(ezo.b.a, by.a.a().a(bw.a.a().a(true)).c(cu.a.a().a(az.a.a().a($$4, axc.aQ)))))
-            )
-            .a(dfy.o, new dhb(ly.O, dhb.b(), dhb.a(0.1F), dhb.b(-0.2F), dhb.a(bth.a(0.1F)), bth.a(1.0F)), fda.a(ezo.b.a, $$6))
-            .a(dfy.o, new dgu(awn.yG, bth.a(0.6F), btq.b(0.6F, 1.0F)), fck.a(fdc.a(0.35F), fda.a(ezo.b.a, $$6)))
-      );
-      a(
-         $$0,
-         m,
-         dfx.a(dfx.a($$3.b(axk.bZ), 1, 3, dfx.a(25, 25), dfx.a(75, 25), 8, bwt.f))
-            .a(dfy.l, new dgn(alg.b("enchantment.swift_sneak"), byp.z, dge.b(0.15F), byn.a.a))
-      );
-      a($$0, n, dfx.a(dfx.a($$3.b(axk.cf), $$3.b(axk.cd), 10, 5, dfx.a(1, 11), dfx.a(21, 11), 1, bwt.b)).a($$2.b(axe.f)).a(dfy.e, new dgh(dge.a(1.0F, 0.5F))));
-      a(
-         $$0,
-         o,
-         dfx.a(dfx.a($$3.b(axk.cg), $$3.b(axk.cd), 5, 5, dfx.a(5, 8), dfx.a(25, 8), 2, bwt.b))
-            .a($$2.b(axe.f))
-            .a(dfy.e, new dgh(dge.b(2.5F)), fda.a(ezo.b.a, by.a.a().a(cb.a($$5, axf.D))))
-      );
-      a(
-         $$0,
-         p,
-         dfx.a(dfx.a($$3.b(axk.cg), $$3.b(axk.cd), 5, 5, dfx.a(5, 8), dfx.a(25, 8), 2, bwt.b))
-            .a($$2.b(axe.f))
-            .a(dfy.e, new dgh(dge.b(2.5F)), fda.a(ezo.b.a, by.a.a().a(cb.a($$5, axf.C))))
-            .a(
-               dfy.i,
-               dgb.a,
-               dgb.c,
-               new dgj(jj.a(bvo.b), dge.a(1.5F), dge.a(1.5F, 0.5F), dge.a(3.0F), dge.a(3.0F)),
-               fda.a(ezo.b.a, by.a.a().a(cb.a($$5, axf.C))).and(fcq.a(bn.a.a().a(true)))
-            )
-      );
-      a($$0, q, dfx.a(dfx.a($$3.b(axk.cd), 5, 2, dfx.a(5, 20), dfx.a(55, 20), 2, bwt.b)).a(dfy.g, new dgh(dge.b(1.0F))));
-      a(
-         $$0,
-         r,
-         dfx.a(dfx.a($$3.b(axk.ce), $$3.b(axk.cd), 2, 2, dfx.a(10, 20), dfx.a(60, 20), 4, bwt.b))
-            .a(dfy.i, dgb.a, dgb.c, new dgs(dge.b(4.0F)), fcq.a(bn.a.a().a(true)))
-      );
-      a(
-         $$0,
-         s,
-         dfx.a(dfx.a($$3.b(axk.cd), 2, 3, dfx.a(15, 9), dfx.a(65, 9), 4, bwt.b))
-            .a(dfy.m, dgb.a, dgb.c, new dgh(dge.b(0.01F)), fda.a(ezo.b.b, by.a.a().a(cb.a($$5, bwr.bS))))
-      );
-      a(
-         $$0,
-         t,
-         dfx.a(dfx.a($$3.b(axk.cd), 2, 3, dfx.a(5, 9), dfx.a(20, 9), 4, bwt.b))
-            .a(dfy.l, new dgn(alg.b("enchantment.sweeping_edge"), byp.D, new dge.c(dge.b(1.0F), dge.a(2.0F, 1.0F)), byn.a.a))
-      );
-      a(
-         $$0,
-         u,
-         dfx.a(dfx.a($$3.b(axk.ch), 10, 5, dfx.a(1, 10), dfx.a(51, 10), 1, bwt.b))
-            .a(dfy.l, new dgn(alg.b("enchantment.efficiency"), byp.t, new dge.d(1.0F), byn.a.a))
-      );
-      a($$0, v, dfx.a(dfx.a($$3.b(axk.ci), 1, 1, dfx.a(15), dfx.a(65), 8, bwt.b)).a($$2.b(axe.g)).a(dfy.x, new dha(dge.a(0.0F))));
-      a(
-         $$0,
-         w,
-         dfx.a(dfx.a($$3.b(axk.cl), 5, 3, dfx.a(5, 8), dfx.a(55, 8), 2, bwt.a))
-            .a(dfy.k, new dgv(new dge.c(dge.b(2.0F), dge.a(10.0F, 5.0F))), fde.a(cm.a.a().a($$3, axk.cc)))
-            .a(dfy.k, new dgv(new dge.c(dge.b(1.0F), dge.a(2.0F, 1.0F))), fcu.a(fde.a(cm.a.a().a($$3, axk.cc))))
-      );
-      a($$0, x, dfx.a(dfx.a($$3.b(axk.ci), 2, 3, dfx.a(15, 9), dfx.a(65, 9), 4, bwt.b)).a($$2.b(axe.g)));
-      a(
-         $$0,
-         y,
-         dfx.a(dfx.a($$3.b(axk.cm), 10, 5, dfx.a(1, 10), dfx.a(16, 10), 1, bwt.b))
-            .a(dfy.e, new dgh(dge.a(1.0F, 0.5F)), fda.a(ezo.b.c, by.a.a().a($$5, axf.f).b()))
-      );
-      a(
-         $$0,
-         z,
-         dfx.a(dfx.a($$3.b(axk.cm), 2, 2, dfx.a(12, 20), dfx.a(37, 20), 4, bwt.b)).a(dfy.g, new dgh(dge.b(1.0F)), fda.a(ezo.b.c, by.a.a().a($$5, axf.f).b()))
-      );
-      a($$0, A, dfx.a(dfx.a($$3.b(axk.cm), 2, 1, dfx.a(20), dfx.a(50), 4, bwt.b)).a(dfy.r, new dgs(dge.a(100.0F))));
-      a(
-         $$0,
-         B,
-         dfx.a(dfx.a($$3.b(axk.cm), 1, 1, dfx.a(20), dfx.a(50), 8, bwt.b)).a($$2.b(axe.d)).a(dfy.p, new dha(dge.a(0.0F)), fde.a(cm.a.a().a($$3, czo.pk)))
-      );
-      a($$0, C, dfx.a(dfx.a($$3.b(axk.cj), 2, 3, dfx.a(15, 9), dfx.a(65, 9), 4, bwt.b)).a(dfy.w, new dgh(dge.b(1.0F))));
-      a($$0, D, dfx.a(dfx.a($$3.b(axk.cj), 2, 3, dfx.a(15, 9), dfx.a(65, 9), 4, bwt.b)).a(dfy.v, new dgh(dge.b(5.0F))));
-      a($$0, E, dfx.a(dfx.a($$3.b(axk.ck), 5, 3, dfx.a(12, 7), dfx.a(50), 2, bwt.b)).a(dfy.u, new dgh(dge.b(1.0F))));
-      a(
-         $$0,
-         F,
-         dfx.a(dfx.a($$3.b(axk.ck), 2, 5, dfx.a(1, 8), dfx.a(21, 8), 4, bwt.b))
-            .a($$2.b(axe.f))
-            .a(dfy.e, new dgh(dge.b(2.5F)), fda.a(ezo.b.a, by.a.a().a(cb.a($$5, axf.B)).b()))
-      );
-      a(
-         $$0,
-         G,
-         dfx.a(dfx.a($$3.b(axk.ck), 2, 3, dfx.a(17, 7), dfx.a(50), 4, bwt.d))
-            .a($$2.b(axe.h))
-            .b(dfy.F, new dgh(dge.a(1.5F, 0.75F)))
-            .b(dfy.C, List.of(awn.AH, awn.AI, awn.AJ))
-      );
-      a(
-         $$0,
-         H,
-         dfx.a(dfx.a($$3.b(axk.ck), 1, 1, dfx.a(25), dfx.a(50), 8, bwt.b))
-            .a(
-               dfy.i,
-               dgb.a,
-               dgb.c,
-               dgi.a(new dhc(jj.a(bwr.aw.r()), false), new dgu(awn.AL, bth.a(5.0F), bth.a(1.0F))),
-               fck.a(fdh.c().b(true), fda.a(ezo.b.a, by.a.a().a(cu.a.a().b(true))), fda.a(ezo.b.c, by.a.a().a($$5, bwr.bz)))
-            )
-            .a(
-               dfy.j,
-               dgi.a(new dhc(jj.a(bwr.aw.r()), false), new dgu(awn.AL, bth.a(5.0F), bth.a(1.0F))),
-               fck.a(fdh.c().b(true), fda.a(ezo.b.a, by.a.a().a($$5, bwr.bz)), fcv.a(cu.a.a().b(true)), fcw.a(dmo.ta))
-            )
-      );
-      a(
-         $$0,
-         I,
-         dfx.a(dfx.a($$3.b(axk.co), 2, 1, dfx.a(20), dfx.a(50), 4, bwt.b)).a($$2.b(axe.e)).a(dfy.t, new dgh(dge.b(2.0F))).a(dfy.s, new dgh(dge.b(10.0F)))
-      );
-      a(
-         $$0,
-         J,
-         dfx.a(dfx.a($$3.b(axk.co), 5, 3, dfx.a(12, 20), dfx.a(50), 2, bwt.b, bwt.c))
-            .b(dfy.A, new dgh(dge.b(-0.25F)))
-            .b(
-               dfy.B,
-               List.of(
-                  new cyd.b(Optional.of(awn.gO), Optional.empty(), Optional.of(awn.gL)),
-                  new cyd.b(Optional.of(awn.gP), Optional.empty(), Optional.of(awn.gL)),
-                  new cyd.b(Optional.of(awn.gQ), Optional.empty(), Optional.of(awn.gL))
-               )
-            )
-      );
-      a($$0, K, dfx.a(dfx.a($$3.b(axk.co), 10, 4, dfx.a(1, 10), dfx.a(50), 1, bwt.b)).a($$2.b(axe.e)).a(dfy.q, new dgh(dge.b(1.0F))));
-      a($$0, L, dfx.a(dfx.a($$3.b(axk.cq), 5, 5, dfx.a(5, 8), dfx.a(25, 8), 2, bwt.b)).a($$2.b(axe.f)).a(dfy.f, new dgh(dge.b(0.5F))));
-      a($$0, M, dfx.a(dfx.a($$3.b(axk.cq), 2, 4, dfx.a(15, 9), dfx.a(65, 9), 4, bwt.b)).a($$2.b(axe.f)).a(dfy.h, new dgh(dge.b(-0.15F))));
-      a(
-         $$0,
-         N,
-         dfx.a(dfx.a($$3.b(axk.cq), 2, 3, dfx.a(15, 9), dfx.a(65, 9), 4, bwt.b))
-            .a(
-               dfy.i,
-               dgb.a,
-               dgb.a,
-               new dgr(
-                  false,
-                  Optional.empty(),
-                  Optional.of(dge.a(List.of(1.2F, 1.75F, 2.2F), dge.a(1.5F, 0.35F))),
-                  $$4.a(axc.cF).map(Function.identity()),
-                  fex.c,
-                  dge.a(3.5F),
-                  false,
-                  djh.a.e,
-                  ly.A,
-                  ly.z,
-                  awn.Du
-               ),
-               fda.a(ezo.b.c, by.a.a().a(bw.a.a().f(false)).a(cy.d(cw.c.b(1.5))))
-            )
-      );
-      a($$0, O, dfx.a(dfx.a($$3.b(axk.cl), 2, 1, dfx.a(25, 25), dfx.a(75, 25), 4, bwt.a)).a(dfy.z, new dgt(dge.a(2.0F))));
-      a($$0, P, dfx.a(dfx.a($$3.b(axk.cp), 1, 1, dfx.a(25), dfx.a(50), 8, bwt.a)).a(dfy.D));
+   public static int a(jf<dga> $$0, czn $$1) {
+      dgg $$2 = $$1.a(kk.l, dgg.a);
+      return $$2.a($$0);
    }
 
-   private static void a(qh<dfx> $$0, alf<dfx> $$1, dfx.a $$2) {
-      $$0.a($$1, $$2.a($$1.a()));
+   public static dgg a(czn $$0, Consumer<dgg.a> $$1) {
+      kj<dgg> $$2 = d($$0);
+      dgg $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         return dgg.a;
+      } else {
+         dgg.a $$4 = new dgg.a($$3);
+         $$1.accept($$4);
+         dgg $$5 = $$4.b();
+         $$0.b($$2, $$5);
+         return $$5;
+      }
    }
 
-   private static alf<dfx> a(String $$0) {
-      return alf.a(mh.aR, alg.b($$0));
+   public static boolean a(czn $$0) {
+      return $$0.c(d($$0));
+   }
+
+   public static void a(czn $$0, dgg $$1) {
+      $$0.b(d($$0), $$1);
+   }
+
+   public static dgg b(czn $$0) {
+      return $$0.a(d($$0), dgg.a);
+   }
+
+   private static kj<dgg> d(czn $$0) {
+      return $$0.a(czr.vG) ? kk.J : kk.l;
+   }
+
+   public static boolean c(czn $$0) {
+      return !$$0.a(kk.l, dgg.a).d() || !$$0.a(kk.J, dgg.a).d();
+   }
+
+   public static int a(arq $$0, czn $$1, int $$2) {
+      MutableFloat $$3 = new MutableFloat((float)$$2);
+      a($$1, ($$3x, $$4) -> ((dga)$$3x.a()).a($$0, $$4, $$1, $$3));
+      return $$3.intValue();
+   }
+
+   public static int a(arq $$0, czn $$1, czn $$2, int $$3) {
+      MutableFloat $$4 = new MutableFloat((float)$$3);
+      a($$1, ($$3x, $$4x) -> ((dga)$$3x.a()).b($$0, $$4x, $$2, $$4));
+      return $$4.intValue();
+   }
+
+   public static int b(arq $$0, czn $$1, int $$2) {
+      MutableFloat $$3 = new MutableFloat((float)$$2);
+      a($$1, ($$3x, $$4) -> ((dga)$$3x.a()).d($$0, $$4, $$1, $$3));
+      return $$3.intValue();
+   }
+
+   public static int a(arq $$0, @Nullable bwi $$1, bwi $$2, int $$3) {
+      if ($$1 instanceof bxj $$4) {
+         MutableFloat $$5 = new MutableFloat((float)$$3);
+         a($$4, ($$3x, $$4x, $$5x) -> ((dga)$$3x.a()).a($$0, $$4x, $$5x.a(), $$2, $$5));
+         return $$5.intValue();
+      } else {
+         return $$3;
+      }
+   }
+
+   public static czn a(dgd $$0) {
+      czn $$1 = new czn(czr.vG);
+      $$1.a($$0.b(), $$0.c());
+      return $$1;
+   }
+
+   private static void a(czn $$0, dgc.b $$1) {
+      dgg $$2 = $$0.a(kk.l, dgg.a);
+
+      for (Entry<jf<dga>> $$3 : $$2.b()) {
+         $$1.accept((jf<dga>)$$3.getKey(), $$3.getIntValue());
+      }
+   }
+
+   private static void a(czn $$0, bws $$1, bxj $$2, dgc.a $$3) {
+      if (!$$0.f()) {
+         dgg $$4 = $$0.a(kk.l);
+         if ($$4 != null && !$$4.d()) {
+            dfz $$5 = new dfz($$0, $$1, $$2);
+
+            for (Entry<jf<dga>> $$6 : $$4.b()) {
+               jf<dga> $$7 = (jf<dga>)$$6.getKey();
+               if ($$7.a().a($$1)) {
+                  $$3.accept($$7, $$6.getIntValue(), $$5);
+               }
+            }
+         }
+      }
+   }
+
+   private static void a(bxj $$0, dgc.a $$1) {
+      for (bws $$2 : bws.j) {
+         a($$0.a($$2), $$2, $$0, $$1);
+      }
+   }
+
+   public static boolean a(arq $$0, bxj $$1, bux $$2) {
+      MutableBoolean $$3 = new MutableBoolean();
+      a($$1, ($$4, $$5, $$6) -> $$3.setValue($$3.isTrue() || $$4.a().a($$0, $$5, $$1, $$2)));
+      return $$3.isTrue();
+   }
+
+   public static float b(arq $$0, bxj $$1, bux $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$4, $$5, $$6) -> $$4.a().a($$0, $$5, $$6.a(), $$1, $$2, $$3));
+      return $$3.floatValue();
+   }
+
+   public static float a(arq $$0, czn $$1, bwi $$2, bux $$3, float $$4) {
+      MutableFloat $$5 = new MutableFloat($$4);
+      a($$1, ($$5x, $$6) -> ((dga)$$5x.a()).b($$0, $$6, $$1, $$2, $$3, $$5));
+      return $$5.floatValue();
+   }
+
+   public static float b(arq $$0, czn $$1, bwi $$2, bux $$3, float $$4) {
+      MutableFloat $$5 = new MutableFloat($$4);
+      a($$1, ($$5x, $$6) -> ((dga)$$5x.a()).c($$0, $$6, $$1, $$2, $$3, $$5));
+      return $$5.floatValue();
+   }
+
+   public static float c(arq $$0, czn $$1, bwi $$2, bux $$3, float $$4) {
+      MutableFloat $$5 = new MutableFloat($$4);
+      a($$1, ($$5x, $$6) -> ((dga)$$5x.a()).e($$0, $$6, $$1, $$2, $$3, $$5));
+      return $$5.floatValue();
+   }
+
+   public static float d(arq $$0, czn $$1, bwi $$2, bux $$3, float $$4) {
+      MutableFloat $$5 = new MutableFloat($$4);
+      a($$1, ($$5x, $$6) -> ((dga)$$5x.a()).d($$0, $$6, $$1, $$2, $$3, $$5));
+      return $$5.floatValue();
+   }
+
+   public static void a(arq $$0, bwi $$1, bux $$2) {
+      if ($$2.d() instanceof bxj $$3) {
+         a($$0, $$1, $$2, $$3.dY());
+      } else {
+         a($$0, $$1, $$2, null);
+      }
+   }
+
+   public static void a(arq $$0, bwi $$1, bux $$2, @Nullable czn $$3) {
+      a($$0, $$1, $$2, $$3, null);
+   }
+
+   public static void a(arq $$0, bwi $$1, bux $$2, @Nullable czn $$3, @Nullable Consumer<czj> $$4) {
+      if ($$1 instanceof bxj $$5) {
+         a($$5, ($$3x, $$4x, $$5x) -> ((dga)$$3x.a()).a($$0, $$4x, $$5x, dge.c, $$1, $$2));
+      }
+
+      if ($$3 != null) {
+         if ($$2.d() instanceof bxj $$6) {
+            a($$3, bws.a, $$6, ($$3x, $$4x, $$5) -> ((dga)$$3x.a()).a($$0, $$4x, $$5, dge.a, $$1, $$2));
+         } else if ($$4 != null) {
+            dfz $$7 = new dfz($$3, null, null, $$4);
+            a($$3, ($$4x, $$5) -> ((dga)$$4x.a()).a($$0, $$5, $$7, dge.a, $$1, $$2));
+         }
+      }
+   }
+
+   public static void a(arq $$0, bxj $$1) {
+      a($$1, ($$2, $$3, $$4) -> $$2.a().a($$0, $$3, $$4, $$1));
+   }
+
+   public static void a(arq $$0, czn $$1, bxj $$2, bws $$3) {
+      a($$1, $$3, $$2, ($$2x, $$3x, $$4) -> ((dga)$$2x.a()).a($$0, $$3x, $$4, $$2));
+   }
+
+   public static void a(bxj $$0) {
+      a($$0, ($$1, $$2, $$3) -> $$1.a().a($$2, $$3, $$0));
+   }
+
+   public static void a(czn $$0, bxj $$1, bws $$2) {
+      a($$0, $$2, $$1, ($$1x, $$2x, $$3) -> ((dga)$$1x.a()).a($$2x, $$3, $$1));
+   }
+
+   public static void b(arq $$0, bxj $$1) {
+      a($$1, ($$2, $$3, $$4) -> $$2.a().a($$0, $$3, $$4, (bwi)$$1));
+   }
+
+   public static int a(jf<dga> $$0, bxj $$1) {
+      Iterable<czn> $$2 = $$0.a().a($$1).values();
+      int $$3 = 0;
+
+      for (czn $$4 : $$2) {
+         int $$5 = a($$0, $$4);
+         if ($$5 > $$3) {
+            $$3 = $$5;
+         }
+      }
+
+      return $$3;
+   }
+
+   public static int a(arq $$0, czn $$1, bwi $$2, int $$3) {
+      MutableFloat $$4 = new MutableFloat((float)$$3);
+      a($$1, ($$4x, $$5) -> ((dga)$$4x.a()).e($$0, $$5, $$1, $$2, $$4));
+      return Math.max(0, $$4.intValue());
+   }
+
+   public static float a(arq $$0, czn $$1, bwi $$2, float $$3) {
+      MutableFloat $$4 = new MutableFloat($$3);
+      a($$1, ($$4x, $$5) -> ((dga)$$4x.a()).f($$0, $$5, $$1, $$2, $$4));
+      return Math.max(0.0F, $$4.floatValue());
+   }
+
+   public static int a(arq $$0, czn $$1, czn $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$3x, $$4) -> ((dga)$$3x.a()).c($$0, $$4, $$2, $$3));
+      return Math.max(0, $$3.intValue());
+   }
+
+   public static void a(arq $$0, czn $$1, csh $$2, Consumer<czj> $$3) {
+      bxj $$5 = $$2.q() instanceof bxj $$4 ? $$4 : null;
+      dfz $$6 = new dfz($$1, null, $$5, $$3);
+      a($$1, ($$3x, $$4x) -> ((dga)$$3x.a()).b($$0, $$4x, $$6, $$2));
+   }
+
+   public static void a(arq $$0, czn $$1, @Nullable bxj $$2, bwi $$3, @Nullable bws $$4, ffc $$5, eat $$6, Consumer<czj> $$7) {
+      dfz $$8 = new dfz($$1, $$4, $$2, $$7);
+      a($$1, ($$5x, $$6x) -> ((dga)$$5x.a()).a($$0, $$6x, $$8, $$3, $$5, $$6));
+   }
+
+   public static int c(arq $$0, czn $$1, int $$2) {
+      MutableFloat $$3 = new MutableFloat((float)$$2);
+      a($$1, ($$3x, $$4) -> ((dga)$$3x.a()).e($$0, $$4, $$1, $$3));
+      return Math.max(0, $$3.intValue());
+   }
+
+   public static float a(arq $$0, bxj $$1, bux $$2, float $$3) {
+      MutableFloat $$4 = new MutableFloat($$3);
+      azv $$5 = $$1.dX();
+      a($$1, ($$5x, $$6, $$7x) -> {
+         ezt $$8 = dga.b($$0, $$6, $$1, $$2);
+         ((dga)$$5x.a()).a(dgb.m).forEach($$4xx -> {
+            if ($$4xx.a() == dge.c && $$4xx.b() == dge.c && $$4xx.a($$8)) {
+               $$4.setValue(((dgt)$$4xx.c()).a($$6, $$5, $$4.floatValue()));
+            }
+         });
+      });
+      if ($$2.d() instanceof bxj $$7) {
+         a($$7, ($$5x, $$6, $$7x) -> {
+            ezt $$8 = dga.b($$0, $$6, $$1, $$2);
+            ((dga)$$5x.a()).a(dgb.m).forEach($$4xx -> {
+               if ($$4xx.a() == dge.a && $$4xx.b() == dge.c && $$4xx.a($$8)) {
+                  $$4.setValue(((dgt)$$4xx.c()).a($$6, $$5, $$4.floatValue()));
+               }
+            });
+         });
+      }
+
+      return $$4.floatValue();
+   }
+
+   public static void a(czn $$0, bwt $$1, BiConsumer<jf<byk>, byn> $$2) {
+      a($$0, ($$2x, $$3) -> ((dga)$$2x.a()).a(dgb.l).forEach($$4 -> {
+            if (((dga)$$2x.a()).g().h().contains($$1)) {
+               $$2.accept($$4.c(), $$4.a($$3, $$1));
+            }
+         }));
+   }
+
+   public static void a(czn $$0, bws $$1, BiConsumer<jf<byk>, byn> $$2) {
+      a($$0, ($$2x, $$3) -> ((dga)$$2x.a()).a(dgb.l).forEach($$4 -> {
+            if (((dga)$$2x.a()).a($$1)) {
+               $$2.accept($$4.c(), $$4.a($$3, $$1));
+            }
+         }));
+   }
+
+   public static int a(arq $$0, czn $$1, bwi $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$4, $$5) -> $$4.a().d($$0, $$5, $$1, $$2, $$3));
+      return Math.max(0, $$3.intValue());
+   }
+
+   public static float b(arq $$0, czn $$1, bwi $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$4, $$5) -> $$4.a().c($$0, $$5, $$1, $$2, $$3));
+      return Math.max(0.0F, $$3.floatValue());
+   }
+
+   public static int c(arq $$0, czn $$1, bwi $$2) {
+      MutableFloat $$3 = new MutableFloat(0.0F);
+      a($$1, ($$4, $$5) -> $$4.a().b($$0, $$5, $$1, $$2, $$3));
+      return Math.max(0, $$3.intValue());
+   }
+
+   public static float a(czn $$0, bxj $$1, float $$2) {
+      MutableFloat $$3 = new MutableFloat($$2);
+      a($$0, ($$2x, $$3x) -> ((dga)$$2x.a()).b($$1.dX(), $$3x, $$3));
+      return Math.max(0.0F, $$3.floatValue());
+   }
+
+   public static float a(czn $$0, bxj $$1) {
+      MutableFloat $$2 = new MutableFloat(0.0F);
+      a($$0, ($$2x, $$3) -> ((dga)$$2x.a()).a($$1.dX(), $$3, $$2));
+      return $$2.floatValue();
+   }
+
+   public static boolean a(czn $$0, axr<dga> $$1) {
+      dgg $$2 = $$0.a(kk.l, dgg.a);
+
+      for (Entry<jf<dga>> $$3 : $$2.b()) {
+         jf<dga> $$4 = (jf<dga>)$$3.getKey();
+         if ($$4.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(czn $$0, kj<?> $$1) {
+      MutableBoolean $$2 = new MutableBoolean(false);
+      a($$0, ($$2x, $$3) -> {
+         if (((dga)$$2x.a()).i().c($$1)) {
+            $$2.setTrue();
+         }
+      });
+      return $$2.booleanValue();
+   }
+
+   public static <T> Optional<T> b(czn $$0, kj<List<T>> $$1) {
+      Pair<List<T>, Integer> $$2 = c($$0, $$1);
+      if ($$2 != null) {
+         List<T> $$3 = (List<T>)$$2.getFirst();
+         int $$4 = (Integer)$$2.getSecond();
+         return Optional.of($$3.get(Math.min($$4, $$3.size()) - 1));
+      } else {
+         return Optional.empty();
+      }
+   }
+
+   @Nullable
+   public static <T> Pair<T, Integer> c(czn $$0, kj<T> $$1) {
+      MutableObject<Pair<T, Integer>> $$2 = new MutableObject();
+      a($$0, ($$2x, $$3) -> {
+         if ($$2.getValue() == null || (Integer)((Pair)$$2.getValue()).getSecond() < $$3) {
+            T $$4 = ((dga)$$2x.a()).i().a($$1);
+            if ($$4 != null) {
+               $$2.setValue(Pair.of($$4, $$3));
+            }
+         }
+      });
+      return (Pair<T, Integer>)$$2.getValue();
+   }
+
+   public static Optional<dfz> a(kj<?> $$0, bxj $$1, Predicate<czn> $$2) {
+      List<dfz> $$3 = new ArrayList<>();
+
+      for (bws $$4 : bws.j) {
+         czn $$5 = $$1.a($$4);
+         if ($$2.test($$5)) {
+            dgg $$6 = $$5.a(kk.l, dgg.a);
+
+            for (Entry<jf<dga>> $$7 : $$6.b()) {
+               jf<dga> $$8 = (jf<dga>)$$7.getKey();
+               if ($$8.a().i().c($$0) && $$8.a().a($$4)) {
+                  $$3.add(new dfz($$5, $$4, $$1));
+               }
+            }
+         }
+      }
+
+      return ag.b($$3, $$1.dX());
+   }
+
+   public static int a(azv $$0, int $$1, int $$2, czn $$3) {
+      dfy $$4 = $$3.a(kk.C);
+      if ($$4 == null) {
+         return 0;
+      } else {
+         if ($$2 > 15) {
+            $$2 = 15;
+         }
+
+         int $$5 = $$0.a(8) + 1 + ($$2 >> 1) + $$0.a($$2 + 1);
+         if ($$1 == 0) {
+            return Math.max($$5 / 3, 1);
+         } else {
+            return $$1 == 1 ? $$5 * 2 / 3 + 1 : Math.max($$5, $$2 * 2);
+         }
+      }
+   }
+
+   public static czn a(azv $$0, czn $$1, int $$2, jt $$3, Optional<? extends jj<dga>> $$4) {
+      return a($$0, $$1, $$2, $$4.<Stream<jf<dga>>>map(jj::a).orElseGet(() -> $$3.f(mh.aR).c().map($$0xx -> $$0xx)));
+   }
+
+   public static czn a(azv $$0, czn $$1, int $$2, Stream<jf<dga>> $$3) {
+      List<dgd> $$4 = b($$0, $$1, $$2, $$3);
+      if ($$1.a(czr.rF)) {
+         $$1 = new czn(czr.vG);
+      }
+
+      for (dgd $$5 : $$4) {
+         $$1.a($$5.b(), $$5.c());
+      }
+
+      return $$1;
+   }
+
+   public static List<dgd> b(azv $$0, czn $$1, int $$2, Stream<jf<dga>> $$3) {
+      List<dgd> $$4 = Lists.newArrayList();
+      dfy $$5 = $$1.a(kk.C);
+      if ($$5 == null) {
+         return $$4;
+      } else {
+         $$2 += 1 + $$0.a($$5.a() / 4 + 1) + $$0.a($$5.a() / 4 + 1);
+         float $$6 = ($$0.i() + $$0.i() - 1.0F) * 0.15F;
+         $$2 = azm.a(Math.round((float)$$2 + (float)$$2 * $$6), 1, Integer.MAX_VALUE);
+         List<dgd> $$7 = a($$2, $$1, $$3);
+         if (!$$7.isEmpty()) {
+            bsr.a($$0, $$7, dgd::a).ifPresent($$4::add);
+
+            while ($$0.a(50) <= $$2) {
+               if (!$$4.isEmpty()) {
+                  a($$7, ag.c($$4));
+               }
+
+               if ($$7.isEmpty()) {
+                  break;
+               }
+
+               bsr.a($$0, $$7, dgd::a).ifPresent($$4::add);
+               $$2 /= 2;
+            }
+         }
+
+         return $$4;
+      }
+   }
+
+   public static void a(List<dgd> $$0, dgd $$1) {
+      $$0.removeIf($$1x -> !dga.a($$1.b(), $$1x.b()));
+   }
+
+   public static boolean a(Collection<jf<dga>> $$0, jf<dga> $$1) {
+      for (jf<dga> $$2 : $$0) {
+         if (!dga.a($$2, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static List<dgd> a(int $$0, czn $$1, Stream<jf<dga>> $$2) {
+      List<dgd> $$3 = Lists.newArrayList();
+      boolean $$4 = $$1.a(czr.rF);
+      $$2.filter($$2x -> ((dga)$$2x.a()).a($$1) || $$4).forEach($$2x -> {
+         dga $$3x = (dga)$$2x.a();
+
+         for (int $$4x = $$3x.e(); $$4x >= $$3x.d(); $$4x--) {
+            if ($$0 >= $$3x.b($$4x) && $$0 <= $$3x.c($$4x)) {
+               $$3.add(new dgd($$2x, $$4x));
+               break;
+            }
+         }
+      });
+      return $$3;
+   }
+
+   public static void a(czn $$0, jt $$1, alf<dhi> $$2, bue $$3, azv $$4) {
+      dhi $$5 = $$1.f(mh.aQ).c($$2);
+      if ($$5 != null) {
+         a($$0, $$4x -> $$5.a($$0, $$4x, $$4, $$3));
+      }
+   }
+
+   @FunctionalInterface
+   interface a {
+      void accept(jf<dga> var1, int var2, dfz var3);
+   }
+
+   @FunctionalInterface
+   interface b {
+      void accept(jf<dga> var1, int var2);
    }
 }

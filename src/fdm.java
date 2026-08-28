@@ -1,16 +1,52 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class fdm {
-   private static final Codec<fdl> d = mg.H.q().dispatch(fdl::a, fdk::a);
-   public static final Codec<fdl> a = Codec.lazyInitialized(
-      () -> Codec.either(fdj.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fdj $$1 ? Either.left($$1) : Either.right($$0))
+public record fdm(Optional<Boolean> b, Optional<Boolean> c) implements fdc {
+   public static final MapCodec<fdm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(fdm::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(fdm::e))
+            .apply($$0, fdm::new)
    );
-   public static final fdk b = a("storage", fdn.a);
-   public static final fdk c = a("context", fdj.b);
 
-   private static fdk a(String $$0, MapCodec<? extends fdl> $$1) {
-      return js.a(mg.H, alg.b($$0), new fdk($$1));
+   @Override
+   public fdd b() {
+      return fde.o;
+   }
+
+   public boolean a(ezt $$0) {
+      arq $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ah() ? false : !this.c.isPresent() || this.c.get() == $$1.ag();
+   }
+
+   public static fdm.a c() {
+      return new fdm.a();
+   }
+
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements fdc.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public fdm.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public fdm.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public fdm a() {
+         return new fdm(this.a, this.b);
+      }
    }
 }

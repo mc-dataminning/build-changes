@@ -1,74 +1,36 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dul extends dmm {
-   public static final MapCodec<dul> a = b(dul::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final jb[] d = jb.values();
+public class dul extends dmr {
+   public static final MapCodec<dul> b = b(dul::new);
+   public static final ebk c = ebj.E;
 
    @Override
-   public MapCodec<dul> a() {
-      return a;
+   protected MapCodec<? extends dul> a() {
+      return b;
    }
 
-   protected dul(ean.d $$0) {
+   protected dul(eas.d $$0) {
       super($$0);
+      this.l(this.C.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(eao $$0, djh $$1, iv $$2, eao $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      return $$4 == jb.b ? $$0.b(c, Boolean.valueOf(o($$6))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(eao $$0, djh $$1, iv $$2, dmm $$3, @Nullable eyd $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public eat a(ddg $$0) {
+      eat $$1 = $$0.q().a_($$0.a().d());
+      return this.m().b(c, Boolean.valueOf(o($$1)));
    }
 
-   protected void a(djh $$0, iv $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dmo.aW.m(), 2);
-         $$0.a(null, $$1, awn.Aa, awo.e, 1.0F, 1.0F);
-      }
+   protected static boolean o(eat $$0) {
+      return $$0.a(axc.bC);
    }
 
-   private boolean b(djh $$0, iv $$1) {
-      return iv.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (jb $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return iv.b.a;
-         } else {
-            eao $$3 = $$0.a_($$2);
-            ewv $$4 = $$0.b_($$2);
-            if (!$$4.a(axh.a)) {
-               return iv.b.b;
-            } else {
-               if ($$3.b() instanceof dmu $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
-                  return iv.b.a;
-               }
-
-               if ($$3.b() instanceof dri) {
-                  $$0.a($$2, dmo.a.m(), 3);
-               } else {
-                  if (!$$3.a(dmo.mI) && !$$3.a(dmo.mJ) && !$$3.a(dmo.bG) && !$$3.a(dmo.bH)) {
-                     return iv.b.b;
-                  }
-
-                  dxm $$7 = $$3.x() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dmo.a.m(), 3);
-               }
-
-               return iv.b.a;
-            }
-         }
-      }) > 1;
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(c);
    }
 }

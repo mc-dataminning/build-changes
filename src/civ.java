@@ -1,7 +1,7 @@
 public abstract class civ extends ckh implements cjb {
    private static final akj<Boolean> a = akn.a(civ.class, akl.k);
 
-   public civ(bwr<? extends civ> $$0, djh $$1) {
+   public civ(bwr<? extends civ> $$0, djm $$1) {
       super($$0, $$1);
       this.bA = new civ.a(this);
    }
@@ -57,17 +57,17 @@ public abstract class civ extends ckh implements cjb {
    protected void D() {
       super.D();
       this.bD.a(0, new cey(this, 1.25));
-      this.bD.a(2, new cdm<>(this, crj.class, 8.0F, 1.6, 1.4, bwp.f::test));
+      this.bD.a(2, new cdm<>(this, crm.class, 8.0F, 1.6, 1.4, bwp.f::test));
       this.bD.a(4, new civ.b(this));
    }
 
    @Override
-   protected cgt b(djh $$0) {
+   protected cgt b(djm $$0) {
       return new cgv(this, $$0);
    }
 
    @Override
-   public void a_(fex $$0) {
+   public void a_(ffc $$0) {
       if (this.bh()) {
          this.a(0.01F, $$0);
          this.a(bxn.a, this.dx());
@@ -93,12 +93,12 @@ public abstract class civ extends ckh implements cjb {
    }
 
    @Override
-   protected bug b(crj $$0, buf $$1) {
+   protected bug b(crm $$0, buf $$1) {
       return cjb.a($$0, $$1, this).orElse(super.b($$0, $$1));
    }
 
    @Override
-   public void a_(czk $$0) {
+   public void a_(czn $$0) {
       cjb.a(this, $$0);
    }
 
@@ -124,7 +124,7 @@ public abstract class civ extends ckh implements cjb {
    }
 
    @Override
-   protected void b(iv $$0, eao $$1) {
+   protected void b(iv $$0, eat $$1) {
    }
 
    static class a extends cdi {

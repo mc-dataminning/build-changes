@@ -1,21 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class eie extends eif {
-   public static final MapCodec<eie> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eie::new));
+public class eie extends eik {
+   final axr<dmr> a;
+   public static final MapCodec<eie> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axr.a(mh.i).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, eie::new)
+   );
 
-   public eie(ka $$0) {
+   protected eie(ka $$0, axr<dmr> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(eao $$0) {
-      return $$0.e();
+   protected boolean a(eat $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public ehv<?> a() {
-      return ehv.e;
+   public eia<?> a() {
+      return eia.b;
    }
 }

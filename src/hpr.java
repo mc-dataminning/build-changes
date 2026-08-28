@@ -1,36 +1,69 @@
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum hpr {
-   a("movement", hpm::new),
-   b("find_tree", hpl::new),
-   c("punch_tree", hpo::new),
-   d("open_inventory", hpn::new),
-   e("craft_planks", hpk::new),
-   f("none", hpj::new);
+public class hpr implements hpx {
+   private static final int a = 1200;
+   private static final wy b = wy.c("tutorial.craft_planks.title");
+   private static final wy c = wy.c("tutorial.craft_planks.description");
+   private final hpw d;
+   @Nullable
+   private fvm e;
+   private int f;
 
-   private final String g;
-   private final Function<hpp, ? extends hpq> h;
-
-   private <T extends hpq> hpr(final String $$0, final Function<hpp, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public hpr(hpw $$0) {
+      this.d = $$0;
    }
 
-   public hpq a(hpp $$0) {
-      return this.h.apply($$0);
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hpy.f);
+      } else {
+         fpt $$0 = this.d.e();
+         if (this.f == 1) {
+            gpo $$1 = $$0.t;
+            if ($$1 != null) {
+               if ($$1.gi().a(axk.b)) {
+                  this.d.a(hpy.f);
+                  return;
+               }
+
+               if (a($$1, axk.b)) {
+                  this.d.a(hpy.f);
+                  return;
+               }
+            }
+         }
+
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new fvm($$0.h, fvm.a.e, b, c, false);
+            $$0.aA().a(this.e);
+         }
+      }
    }
 
-   public String a() {
-      return this.g;
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.e();
+         this.e = null;
+      }
    }
 
-   public static hpr a(String $$0) {
-      for (hpr $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
+   @Override
+   public void a(czn $$0) {
+      if ($$0.a(axk.b)) {
+         this.d.a(hpy.f);
+      }
+   }
+
+   public static boolean a(gpo $$0, axr<czj> $$1) {
+      for (jf<czj> $$2 : mg.g.c($$1)) {
+         if ($$0.l().a(awx.b.b($$2.a())) > 0) {
+            return true;
          }
       }
 
-      return f;
+      return false;
    }
 }

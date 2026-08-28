@@ -1,47 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class eka extends ejt<eme> {
-   public eka(Codec<eme> $$0) {
-      super($$0);
+public class eka<FC extends emc> {
+   private final Optional<ejk<?, ?>> a;
+   private final dkl b;
+   private final ecr c;
+   private final azv d;
+   private final iv e;
+   private final FC f;
+
+   public eka(Optional<ejk<?, ?>> $$0, dkl $$1, ecr $$2, azv $$3, iv $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(ejv<eme> $$0) {
-      dkg $$1 = $$0.b();
-      iv $$2 = $$0.e();
-      azv $$3 = $$0.d();
-      if (!$$1.v($$2)) {
-         return false;
-      } else {
-         eao $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dmo.em) && !$$4.a(dmo.ep) && !$$4.a(dmo.pZ)) {
-            return false;
-         } else {
-            $$1.a($$2, dmo.et.m(), 2);
+   public Optional<ejk<?, ?>> a() {
+      return this.a;
+   }
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               iv $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
+   public dkl b() {
+      return this.b;
+   }
 
-                  for (jb $$8 : jb.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dmo.et)) {
-                        $$7++;
-                     }
+   public ecr c() {
+      return this.c;
+   }
 
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
+   public azv d() {
+      return this.d;
+   }
 
-                  if ($$7 == 1) {
-                     $$1.a($$6, dmo.et.m(), 2);
-                  }
-               }
-            }
+   public iv e() {
+      return this.e;
+   }
 
-            return true;
-         }
-      }
+   public FC f() {
+      return this.f;
    }
 }

@@ -1,160 +1,166 @@
-import javax.annotation.Nullable;
+public class ewk {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final aya d;
+   private final iv.a e = new iv.a();
+   private final iv.a f = new iv.a();
 
-public class ewk implements ewn {
-   public static final int b = 1;
-   public static final ewk c = new ewk();
-   protected final djj d;
-   @Nullable
-   private final ewm<?, ?> a;
-   @Nullable
-   private final ewm<?, ?> e;
-
-   public ewk(ecy $$0, boolean $$1, boolean $$2) {
-      this.d = $$0.r();
-      this.a = $$1 ? new ewd($$0) : null;
-      this.e = $$2 ? new ewo($$0) : null;
+   public ewk(djo $$0) {
+      this.c = $$0.G_() - 1;
+      int $$1 = $$0.ao() + 1;
+      int $$2 = azm.e($$1 - this.c + 1);
+      this.d = new bad($$2, 256);
    }
 
-   private ewk() {
-      this.d = djj.e(0, 0);
-      this.a = null;
-      this.e = null;
-   }
-
-   @Override
-   public void a(iv $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
-   }
-
-   @Override
-   public boolean I_() {
-      return this.e != null && this.e.I_() ? true : this.a != null && this.a.I_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.e != null) {
-         $$0 += this.e.a();
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(jy $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(dio $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(dio $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.e != null) {
-         this.e.b($$0);
-      }
-   }
-
-   public ewi a(djq $$0) {
-      if ($$0 == djq.b) {
-         return (ewi)(this.a == null ? ewi.a.a : this.a);
+   public void a(ecq $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
       } else {
-         return (ewi)(this.e == null ? ewi.a.a : this.e);
-      }
-   }
-
-   public String a(djq $$0, jy $$1) {
-      if ($$0 == djq.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
          }
-      } else if (this.e != null) {
-         return this.e.b($$1.s());
       }
-
-      return "n/a";
    }
 
-   public ewj.b b(djq $$0, jy $$1) {
-      if ($$0 == djq.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
+   private int a(ecq $$0, int $$1, int $$2, int $$3) {
+      int $$4 = jy.c($$0.h($$1) + 1);
+      iv.a $$5 = this.e.d($$2, $$4, $$3);
+      iv.a $$6 = this.f.a($$5, jb.a);
+      eat $$7 = dmt.a.m();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         edb $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = dmt.a.m();
+            int $$10 = $$0.h($$8);
+            $$5.q(jy.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               eat $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$7, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(jb.a);
+            }
          }
-      } else if (this.e != null) {
-         return this.e.c($$1.s());
       }
 
-      return ewj.b.a;
+      return this.c;
    }
 
-   public void a(djq $$0, jy $$1, @Nullable ecq $$2) {
-      if ($$0 == djq.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
+   public boolean a(diq $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         iv $$7 = this.e.d($$1, $$2 + 1, $$3);
+         eat $$8 = $$0.a_($$7);
+         iv $$9 = this.f.d($$1, $$2, $$3);
+         eat $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            iv $$11 = this.e.d($$1, $$2 - 1, $$3);
+            eat $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
          }
-      } else if (this.e != null) {
-         this.e.a($$1.s(), $$2);
       }
    }
 
-   public void b(dio $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
+   private boolean a(diq $$0, int $$1, int $$2, iv $$3, eat $$4, iv $$5, eat $$6) {
+      int $$7 = $$3.v();
+      if (a($$4, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
       }
 
-      if (this.e != null) {
-         this.e.b($$0, $$1);
+      return false;
+   }
+
+   private int a(diq $$0, iv $$1, eat $$2) {
+      iv.a $$3 = this.e.g($$1);
+      iv.a $$4 = this.f.a($$1, jb.a);
+      eat $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         eat $$6 = $$0.a_($$4);
+         if (a($$5, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(jb.a);
+      }
+
+      return this.c;
+   }
+
+   private static boolean a(eat $$0, eat $$1) {
+      if ($$1.g() != 0) {
+         return true;
+      } else {
+         ffw $$2 = ewr.a($$0, jb.a);
+         ffw $$3 = ewr.a($$1, jb.b);
+         return fft.b($$2, $$3);
       }
    }
 
-   public int a(iv $$0, int $$1) {
-      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
    }
 
-   public boolean a(long $$0) {
-      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
    }
 
-   public int c() {
-      return this.d.ap() + 2;
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
+      }
    }
 
-   public int d() {
-      return this.d.aq() - 1;
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
    }
 
-   public int e() {
-      return this.d() + this.c();
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

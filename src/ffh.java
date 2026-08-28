@@ -1,74 +1,46 @@
-import java.util.function.Predicate;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class ffh implements ffc {
-   protected static final ffc a = new ffh(false, false, -Double.MAX_VALUE, czk.k, $$0 -> false, null) {
-      @Override
-      public boolean a(ffr $$0, iv $$1, boolean $$2) {
-         return $$2;
-      }
-   };
-   private final boolean b;
-   private final double c;
-   private final boolean d;
-   private final czk e;
-   private final Predicate<ewv> f;
-   @Nullable
-   private final bwi g;
-
-   protected ffh(boolean $$0, boolean $$1, double $$2, czk $$3, Predicate<ewv> $$4, @Nullable bwi $$5) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public interface ffh {
+   static ffh a() {
+      return ffm.a;
    }
 
-   @Deprecated
-   protected ffh(bwi $$0, boolean $$1, boolean $$2) {
-      this(
-         $$0.cf(),
-         $$2,
-         $$0.dB(),
-         $$0 instanceof bxj $$3 ? $$3.fa() : czk.k,
-         $$1 ? $$0x -> true : ($$0 instanceof bxj $$4 ? $$1x -> $$4.a($$1x) : $$0x -> false),
+   static ffh a(bwi $$0) {
+      Objects.requireNonNull($$0);
+
+      return (ffh)(switch ($$0) {
+         case ctz $$1 -> ctz.b($$1.dU()) ? new ffq($$1, false) : new ffm($$0, false, false);
+         default -> new ffm($$0, false, false);
+      });
+   }
+
+   static ffh a(bwi $$0, boolean $$1) {
+      return new ffm($$0, $$1, false);
+   }
+
+   static ffh b(@Nullable bwi $$0) {
+      return new ffm(
+         $$0 != null ? $$0.cf() : false,
+         true,
+         $$0 != null ? $$0.dB() : -Double.MAX_VALUE,
+         $$0 instanceof bxj $$1 ? $$1.fa() : czn.k,
+         $$0 instanceof bxj $$2 ? $$1 -> $$2.a($$1) : $$0x -> false,
          $$0
       );
    }
 
-   @Override
-   public boolean a(czg $$0) {
-      return this.e.a($$0);
-   }
+   boolean b();
 
-   @Override
-   public boolean a(ewv $$0, ewv $$1) {
-      return this.f.test($$1) && !$$0.a().a($$1.a());
-   }
+   boolean a(ffw var1, iv var2, boolean var3);
 
-   @Override
-   public ffr a(eao $$0, dir $$1, iv $$2) {
-      return $$0.b($$1, $$2, this);
-   }
+   boolean a(czj var1);
 
-   @Override
-   public boolean b() {
-      return this.b;
-   }
+   boolean a(exa var1, exa var2);
 
-   @Override
-   public boolean a(ffr $$0, iv $$1, boolean $$2) {
-      return this.c > (double)$$1.v() + $$0.c(jb.a.b) - 1.0E-5F;
-   }
+   ffw a(eat var1, diu var2, iv var3);
 
-   @Nullable
-   public bwi d() {
-      return this.g;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d;
+   default boolean c() {
+      return false;
    }
 }

@@ -1,47 +1,50 @@
-import javax.annotation.Nullable;
+public class hnh extends hmx {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final ctz s;
+   private float t = 0.0F;
 
-public interface hnh {
-   alg a();
-
-   @Nullable
-   hoo a(hon var1);
-
-   hne b();
-
-   awo c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hnh.a k();
-
-   default boolean r() {
-      return false;
+   public hnh(ctz $$0) {
+      super(awn.pz, awo.g, hno.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dz());
+      this.g = (double)((float)$$0.dB());
+      this.h = (double)((float)$$0.dF());
    }
 
-   default boolean s() {
+   @Override
+   public boolean s() {
+      return !this.s.aZ();
+   }
+
+   @Override
+   public boolean r() {
       return true;
    }
 
-   static azv t() {
-      return azv.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   public void q() {
+      if (this.s.dP()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dz());
+         this.g = (double)((float)this.s.dB());
+         this.h = (double)((float)this.s.dF());
+         float $$0 = (float)this.s.dx().i();
+         boolean $$1 = !this.s.co() && this.s.f() instanceof cuo;
+         if ($$0 >= 0.01F && this.s.dU().u().i() && !$$1) {
+            this.t = azm.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = azm.h(azm.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
+         }
+      }
    }
 }

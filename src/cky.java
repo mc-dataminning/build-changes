@@ -1,8 +1,29 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@x
-@v
-interface cky {
+public record cky(iw e, ctt f) implements ctp<cts, ctq> {
+   public static final Codec<cky> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iw.b.forGetter(cky::b), ctt.b.fieldOf("spawn_conditions").forGetter(cky::c)).apply($$0, cky::new)
+   );
+   public static final Codec<cky> b = RecordCodecBuilder.create($$0 -> $$0.group(iw.b.forGetter(cky::b)).apply($$0, cky::new));
+   public static final Codec<jf<cky>> c = ald.a(mh.aT);
+   public static final yw<wj, jf<cky>> d = yu.b(mh.aT);
+
+   private cky(iw $$0) {
+      this($$0, ctt.a);
+   }
+
+   @Override
+   public List<ctp.a<cts, ctq>> a() {
+      return this.f.a();
+   }
+
+   public iw b() {
+      return this.e;
+   }
+
+   public ctt c() {
+      return this.f;
+   }
 }

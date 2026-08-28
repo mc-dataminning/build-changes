@@ -201,14 +201,14 @@ public class bqx implements bqy {
    }
 
    @Override
-   public void a(eee $$0, dio $$1, eed $$2, int $$3) {
+   public void a(eej $$0, dir $$1, eei $$2, int $$3) {
       if (ChunkRegionReadEvent.TYPE.isEnabled()) {
          new ChunkRegionReadEvent($$0, $$1, $$2, $$3).commit();
       }
    }
 
    @Override
-   public void b(eee $$0, dio $$1, eed $$2, int $$3) {
+   public void b(eej $$0, dir $$1, eei $$2, int $$3) {
       if (ChunkRegionWriteEvent.TYPE.isEnabled()) {
          new ChunkRegionWriteEvent($$0, $$1, $$2, $$3).commit();
       }
@@ -228,7 +228,7 @@ public class bqx implements bqy {
 
    @Nullable
    @Override
-   public brb a(dio $$0, alf<djh> $$1, String $$2) {
+   public brb a(dir $$0, alf<djm> $$1, String $$2) {
       if (!ChunkGenerationEvent.TYPE.isEnabled()) {
          return null;
       } else {
@@ -240,7 +240,7 @@ public class bqx implements bqy {
 
    @Nullable
    @Override
-   public brb a(dio $$0, alf<djh> $$1, jf<eri> $$2) {
+   public brb a(dir $$0, alf<djm> $$1, jf<ern> $$2) {
       if (!StructureGenerationEvent.TYPE.isEnabled()) {
          return null;
       } else {

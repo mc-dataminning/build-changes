@@ -1,26 +1,26 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
 
-@FunctionalInterface
-public interface erw<C extends elx> {
-   Optional<erv<C>> createGenerator(erw.a<C> var1);
+public interface erw<S extends ern> {
+   erw<eth> a = a("buried_treasure", eth.d);
+   erw<etj> b = a("desert_pyramid", etj.d);
+   erw<etl> c = a("end_city", etl.d);
+   erw<etu> d = a("fortress", etu.e);
+   erw<etn> e = a("igloo", etn.d);
+   erw<eto> f = a("jigsaw", eto.i);
+   erw<etq> g = a("jungle_temple", etq.d);
+   erw<ets> h = a("mineshaft", ets.d);
+   erw<etw> i = a("nether_fossil", etw.d);
+   erw<ety> j = a("ocean_monument", ety.d);
+   erw<eua> k = a("ocean_ruin", eua.d);
+   erw<euc> l = a("ruined_portal", euc.d);
+   erw<eue> m = a("shipwreck", eue.d);
+   erw<eug> n = a("stronghold", eug.d);
+   erw<eui> o = a("swamp_hut", eui.d);
+   erw<euk> p = a("woodland_mansion", euk.d);
 
-   static <C extends elx> erw<C> simple(Predicate<erw.a<C>> $$0, erv<C> $$1) {
-      Optional<erv<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
-   }
+   MapCodec<S> codec();
 
-   static <C extends elx> Predicate<erw.a<C>> checkForBiomeOnTop(egn.a $$0) {
-      return $$1 -> $$1.a($$0);
-   }
-
-   public static record a<C extends elx>(ecm a, dko b, ehb c, long d, dio e, C f, djj g, Predicate<jf<dkk>> h, evl i, jt j) {
-      public boolean a(egn.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         jf<dkk> $$4 = this.a.d().getNoiseBiome(jq.a($$1), jq.a($$3), jq.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   private static <S extends ern> erw<S> a(String $$0, MapCodec<S> $$1) {
+      return js.a(mg.R, $$0, () -> $$1);
    }
 }

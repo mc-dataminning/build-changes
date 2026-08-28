@@ -354,20 +354,20 @@ public class vu extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public dio f() {
-      return new dio(this.readLong());
+   public dir f() {
+      return new dir(this.readLong());
    }
 
-   public vu a(dio $$0) {
+   public vu a(dir $$0) {
       this.b($$0.a());
       return this;
    }
 
-   public static dio d(ByteBuf $$0) {
-      return new dio($$0.readLong());
+   public static dir d(ByteBuf $$0) {
+      return new dir($$0.readLong());
    }
 
-   public static void a(ByteBuf $$0, dio $$1) {
+   public static void a(ByteBuf $$0, dir $$1) {
       $$0.writeLong($$1.a());
    }
 
@@ -381,7 +381,7 @@ public class vu extends ByteBuf {
    }
 
    public je h() {
-      alf<djh> $$0 = this.a(mh.bo);
+      alf<djm> $$0 = this.a(mh.bp);
       iv $$1 = this.e();
       return je.a($$0, $$1);
    }
@@ -428,21 +428,21 @@ public class vu extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public static fex g(ByteBuf $$0) {
-      return new fex($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
+   public static ffc g(ByteBuf $$0) {
+      return new ffc($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
    }
 
-   public fex k() {
+   public ffc k() {
       return g(this);
    }
 
-   public static void a(ByteBuf $$0, fex $$1) {
+   public static void a(ByteBuf $$0, ffc $$1) {
       $$0.writeDouble($$1.a());
       $$0.writeDouble($$1.b());
       $$0.writeDouble($$1.c());
    }
 
-   public void a(fex $$0) {
+   public void a(ffc $$0) {
       a(this, $$0);
    }
 
@@ -617,7 +617,7 @@ public class vu extends ByteBuf {
       return this;
    }
 
-   public fet v() {
+   public fey v() {
       iv $$0 = this.e();
       jb $$1 = this.b(jb.class);
       float $$2 = this.readFloat();
@@ -625,14 +625,14 @@ public class vu extends ByteBuf {
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
       boolean $$6 = this.readBoolean();
-      return new fet(new fex((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
+      return new fey(new ffc((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
    }
 
-   public void a(fet $$0) {
+   public void a(fey $$0) {
       iv $$1 = $$0.b();
       this.a($$1);
       this.a($$0.c());
-      fex $$2 = $$0.g();
+      ffc $$2 = $$0.g();
       this.a((float)($$2.d - (double)$$1.u()));
       this.a((float)($$2.e - (double)$$1.v()));
       this.a((float)($$2.f - (double)$$1.w()));

@@ -1,6 +1,6 @@
 import com.google.common.collect.ImmutableMap;
 
-public class ccz<E extends cqm> extends bza<E> {
+public class ccz<E extends cqp> extends bza<E> {
    private static final double c = 6.0;
    private static final double d = 20.0;
 
@@ -28,7 +28,7 @@ public class ccz<E extends cqm> extends bza<E> {
          }
 
          if (!$$1.eb().a(cgl.aA)) {
-            cqn.a($$1, $$1x.du());
+            cqq.a($$1, $$1x.du());
          }
       });
    }

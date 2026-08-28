@@ -40,15 +40,15 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
    private bwg bL = bwg.d;
    private boolean bM;
    private boolean bN;
-   private final Map<exm, Float> bO = Maps.newEnumMap(exm.class);
-   private Optional<alf<ezt>> bP = Optional.empty();
+   private final Map<exr, Float> bO = Maps.newEnumMap(exr.class);
+   private Optional<alf<ezy>> bP = Optional.empty();
    private long bQ;
    @Nullable
    private bxh.a bR;
    private iv bS = iv.c;
    private float bT = -1.0F;
 
-   protected bxl(bwr<? extends bxl> $$0, djh $$1) {
+   protected bxl(bwr<? extends bxl> $$0, djm $$1) {
       super($$0, $$1);
       this.bD = new ceg();
       this.bE = new ceg();
@@ -70,7 +70,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return bxj.ed().a(byp.m, 16.0);
    }
 
-   protected cgt b(djh $$0) {
+   protected cgt b(djm $$0) {
       return new cgs(this, $$0);
    }
 
@@ -78,7 +78,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return false;
    }
 
-   public float a(exm $$0) {
+   public float a(exr $$0) {
       bxl $$2;
       label17: {
          if (this.dk() instanceof bxl $$1 && $$1.F()) {
@@ -93,7 +93,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return $$4 == null ? $$0.a() : $$4;
    }
 
-   public void a(exm $$0, float $$1) {
+   public void a(exr $$0, float $$1) {
       this.bO.put($$0, $$1);
    }
 
@@ -159,12 +159,12 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return $$0 != bwr.ad;
    }
 
-   public boolean a(daf $$0) {
+   public boolean a(dai $$0) {
       return false;
    }
 
    public void R() {
-      this.a(efo.m);
+      this.a(eft.m);
    }
 
    @Override
@@ -211,7 +211,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
 
          for (bws $$2 : bws.j) {
             if ($$2.g()) {
-               czk $$3 = this.a($$2);
+               czn $$3 = this.a($$2);
                if (!$$3.f() && this.bL.b($$2) <= 1.0F) {
                   $$1 += 1 + this.ae.a(3);
                }
@@ -251,7 +251,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
 
    protected void V() {
       boolean $$0 = !(this.cV() instanceof bxl);
-      boolean $$1 = !(this.dj() instanceof ctu);
+      boolean $$1 = !(this.dj() instanceof ctx);
       this.bD.a(cef.a.a, $$0);
       this.bD.a(cef.a.c, $$0 && $$1);
       this.bD.a(cef.a.b, $$0);
@@ -279,7 +279,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
 
       this.a($$0, this.bR);
       $$0.a("LeftHanded", this.gj());
-      this.bP.ifPresent($$1x -> $$0.a("DeathLootTable", ezt.a, $$1x));
+      this.bP.ifPresent($$1x -> $$0.a("DeathLootTable", ezy.a, $$1x));
       if (this.bQ != 0L) {
          $$0.a("DeathLootTableSeed", this.bQ);
       }
@@ -298,7 +298,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       this.bL = $$0.<bwg>a("drop_chances", bwg.e, $$1).orElse(bwg.d);
       this.c($$0);
       this.u($$0.o("LeftHanded"));
-      this.bP = $$0.a("DeathLoothTable", ezt.a);
+      this.bP = $$0.a("DeathLootTable", ezy.a);
       this.bQ = $$0.b("DeathLootTableSeed", 0L);
       this.t($$0.o("NoAI"));
    }
@@ -310,7 +310,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
    }
 
    @Override
-   public final Optional<alf<ezt>> dZ() {
+   public final Optional<alf<ezy>> dZ() {
       return this.bP.isPresent() ? this.bP : super.dZ();
    }
 
@@ -349,10 +349,10 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       super.k_();
       bqq $$0 = bqp.a();
       $$0.a("looting");
-      if (this.dU() instanceof arq $$1 && this.fM() && this.bI() && !this.bc && $$1.O().c(djd.d)) {
+      if (this.dU() instanceof arq $$1 && this.fM() && this.bI() && !this.bc && $$1.O().c(dji.d)) {
          ka $$2 = this.X();
 
-         for (cno $$4 : this.dU().a(cno.class, this.cQ().c((double)$$2.u(), (double)$$2.v(), (double)$$2.w()))) {
+         for (cnr $$4 : this.dU().a(cnr.class, this.cQ().c((double)$$2.u(), (double)$$2.v(), (double)$$2.w()))) {
             if (!$$4.dP() && !$$4.f().f() && !$$4.o() && this.c($$1, $$4.f())) {
                this.a($$1, $$4);
             }
@@ -366,9 +366,9 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return bF;
    }
 
-   protected void a(arq $$0, cno $$1) {
-      czk $$2 = $$1.f();
-      czk $$3 = this.b($$0, $$2.v());
+   protected void a(arq $$0, cnr $$1) {
+      czn $$2 = $$1.f();
+      czn $$3 = this.b($$0, $$2.v());
       if (!$$3.f()) {
          this.a($$1);
          this.a($$1, $$3.M());
@@ -379,12 +379,12 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       }
    }
 
-   public czk b(arq $$0, czk $$1) {
+   public czn b(arq $$0, czn $$1) {
       bws $$2 = this.f($$1);
       if (!this.a($$1, $$2)) {
-         return czk.k;
+         return czn.k;
       } else {
-         czk $$3 = this.a($$2);
+         czn $$3 = this.a($$2);
          boolean $$4 = this.a($$1, $$3, $$2);
          if ($$2.f() && !$$4) {
             $$2 = bws.a;
@@ -398,16 +398,16 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
                this.a($$0, $$3);
             }
 
-            czk $$6 = $$2.a($$1);
+            czn $$6 = $$2.a($$1);
             this.b($$2, $$6);
             return $$6;
          } else {
-            return czk.k;
+            return czn.k;
          }
       }
    }
 
-   protected void b(bws $$0, czk $$1) {
+   protected void b(bws $$0, czn $$1) {
       this.a($$0, $$1);
       this.g($$0);
       this.bN = true;
@@ -417,7 +417,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       this.bL = this.bL.a($$0);
    }
 
-   protected boolean a(czk $$0, czk $$1, bws $$2) {
+   protected boolean a(czn $$0, czn $$1, bws $$2) {
       if ($$1.f()) {
          return true;
       } else if ($$2.f()) {
@@ -427,8 +427,8 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       }
    }
 
-   private boolean b(czk $$0, czk $$1, bws $$2) {
-      if (dfz.a($$1, dfy.E)) {
+   private boolean b(czn $$0, czn $$1, bws $$2) {
+      if (dgc.a($$1, dgb.E)) {
          return false;
       } else {
          double $$3 = this.a($$0, byp.a, $$2);
@@ -443,8 +443,8 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       }
    }
 
-   private boolean c(czk $$0, czk $$1, bws $$2) {
-      axr<czg> $$3 = this.Y();
+   private boolean c(czn $$0, czn $$1, bws $$2) {
+      axr<czj> $$3 = this.Y();
       if ($$3 != null) {
          if ($$1.a($$3) && !$$0.a($$3)) {
             return false;
@@ -460,15 +460,15 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return $$4 != $$5 ? $$4 > $$5 : this.b($$0, $$1);
    }
 
-   private double a(czk $$0, jf<byk> $$1, bws $$2) {
+   private double a(czn $$0, jf<byk> $$1, bws $$2) {
       double $$3 = this.eZ().b($$1) ? this.i($$1) : 0.0;
-      dcb $$4 = $$0.a(kk.o, dcb.a);
+      dce $$4 = $$0.a(kk.o, dce.a);
       return $$4.a($$3, $$2);
    }
 
-   public boolean b(czk $$0, czk $$1) {
-      Set<Entry<jf<dfx>>> $$2 = $$1.a(kk.l, dgd.a).b();
-      Set<Entry<jf<dfx>>> $$3 = $$0.a(kk.l, dgd.a).b();
+   public boolean b(czn $$0, czn $$1) {
+      Set<Entry<jf<dga>>> $$2 = $$1.a(kk.l, dgg.a).b();
+      Set<Entry<jf<dga>>> $$3 = $$0.a(kk.l, dgg.a).b();
       if ($$3.size() != $$2.size()) {
          return $$3.size() > $$2.size();
       } else {
@@ -478,16 +478,16 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       }
    }
 
-   public boolean g(czk $$0) {
+   public boolean g(czn $$0) {
       return true;
    }
 
-   public boolean c(arq $$0, czk $$1) {
+   public boolean c(arq $$0, czn $$1) {
       return this.g($$1);
    }
 
    @Nullable
-   public axr<czg> Y() {
+   public axr<czj> Y() {
       return null;
    }
 
@@ -630,16 +630,16 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return $$0 + $$3;
    }
 
-   public static boolean a(bwr<? extends bxl> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
+   public static boolean a(bwr<? extends bxl> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
       iv $$5 = $$3.e();
       return bwq.a($$2) || $$1.a_($$5).a($$1, $$5, $$0);
    }
 
-   public boolean a(dji $$0, bwq $$1) {
+   public boolean a(djn $$0, bwq $$1) {
       return true;
    }
 
-   public boolean a(djk $$0) {
+   public boolean a(djp $$0) {
       return !$$0.d(this.cQ()) && $$0.f(this);
    }
 
@@ -666,7 +666,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       }
    }
 
-   public czk fX() {
+   public czn fX() {
       return this.a(bws.g);
    }
 
@@ -678,19 +678,19 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return this.d(bws.g);
    }
 
-   public void h(czk $$0) {
+   public void h(czn $$0) {
       this.b(bws.g, $$0);
    }
 
    public btz h(final bws $$0) {
-      return new fgj() {
+      return new fgo() {
          @Override
-         public czk f() {
+         public czn f() {
             return bxl.this.a($$0);
          }
 
          @Override
-         public void b(czk $$0x) {
+         public void b(czn $$0x) {
             bxl.this.a($$0, $$0);
             if (!$$0.f()) {
                bxl.this.g($$0);
@@ -703,7 +703,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
          }
 
          @Override
-         public boolean a(crj $$0x) {
+         public boolean a(crm $$0x) {
             return $$0.dj() == bxl.this || $$0.b(bxl.this, 4.0);
          }
       };
@@ -714,7 +714,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       super.a($$0, $$1, $$2);
 
       for (bws $$3 : bws.j) {
-         czk $$4 = this.a($$3);
+         czn $$4 = this.a($$3);
          float $$5 = this.bL.b($$3);
          if ($$5 != 0.0F) {
             boolean $$6 = this.bL.c($$3);
@@ -722,17 +722,17 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
             if (var11 instanceof bxj) {
                bxj $$7 = (bxj)var11;
                if (this.dU() instanceof arq $$8) {
-                  $$5 = dfz.a($$8, $$7, $$1, $$5);
+                  $$5 = dgc.a($$8, $$7, $$1, $$5);
                }
             }
 
-            if (!$$4.f() && !dfz.a($$4, dfy.D) && ($$2 || $$6) && this.ae.i() < $$5) {
+            if (!$$4.f() && !dgc.a($$4, dgb.D) && ($$2 || $$6) && this.ae.i() < $$5) {
                if (!$$6 && $$4.m()) {
                   $$4.b($$4.p() - this.ae.a(1 + this.ae.a(Math.max($$4.p() - 3, 1))));
                }
 
                this.a($$0, $$4);
-               this.a($$3, czk.k);
+               this.a($$3, czn.k);
             }
          }
       }
@@ -746,16 +746,16 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       this.a($$0, $$0x -> true);
    }
 
-   public Set<bws> a(arq $$0, Predicate<czk> $$1) {
+   public Set<bws> a(arq $$0, Predicate<czn> $$1) {
       Set<bws> $$2 = new HashSet<>();
 
       for (bws $$3 : bws.j) {
-         czk $$4 = this.a($$3);
+         czn $$4 = this.a($$3);
          if (!$$4.f()) {
             if (!$$1.test($$4)) {
                $$2.add($$3);
             } else if (this.bL.c($$3)) {
-               this.a($$3, czk.k);
+               this.a($$3, czn.k);
                this.a($$0, $$4);
             }
          }
@@ -764,15 +764,15 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return $$2;
    }
 
-   private ezr g(arq $$0) {
-      return new ezr.a($$0).a(fci.f, this.ds()).a(fci.a, this).a(fch.h);
+   private ezw g(arq $$0) {
+      return new ezw.a($$0).a(fcn.f, this.ds()).a(fcn.a, this).a(fcm.h);
    }
 
    public void a(bwu $$0) {
       this.a($$0.a(), $$0.b());
    }
 
-   public void a(alf<ezt> $$0, Map<bws, Float> $$1) {
+   public void a(alf<ezy> $$0, Map<bws, Float> $$1) {
       if (this.dU() instanceof arq $$2) {
          this.a($$0, this.g($$2), $$1);
       }
@@ -797,16 +797,16 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
          boolean $$4 = true;
 
          for (bws $$5 : bG) {
-            czk $$6 = this.a($$5);
+            czn $$6 = this.a($$5);
             if (!$$4 && $$0.i() < $$3) {
                break;
             }
 
             $$4 = false;
             if ($$6.f()) {
-               czg $$7 = a($$5, $$2);
+               czj $$7 = a($$5, $$2);
                if ($$7 != null) {
-                  this.a($$5, new czk($$7));
+                  this.a($$5, new czn($$7));
                }
             }
          }
@@ -814,62 +814,62 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
    }
 
    @Nullable
-   public static czg a(bws $$0, int $$1) {
+   public static czj a(bws $$0, int $$1) {
       switch ($$0) {
          case f:
             if ($$1 == 0) {
-               return czo.qm;
+               return czr.qm;
             } else if ($$1 == 1) {
-               return czo.qC;
+               return czr.qC;
             } else if ($$1 == 2) {
-               return czo.qq;
+               return czr.qq;
             } else if ($$1 == 3) {
-               return czo.qu;
+               return czr.qu;
             } else if ($$1 == 4) {
-               return czo.qy;
+               return czr.qy;
             }
          case e:
             if ($$1 == 0) {
-               return czo.qn;
+               return czr.qn;
             } else if ($$1 == 1) {
-               return czo.qD;
+               return czr.qD;
             } else if ($$1 == 2) {
-               return czo.qr;
+               return czr.qr;
             } else if ($$1 == 3) {
-               return czo.qv;
+               return czr.qv;
             } else if ($$1 == 4) {
-               return czo.qz;
+               return czr.qz;
             }
          case d:
             if ($$1 == 0) {
-               return czo.qo;
+               return czr.qo;
             } else if ($$1 == 1) {
-               return czo.qE;
+               return czr.qE;
             } else if ($$1 == 2) {
-               return czo.qs;
+               return czr.qs;
             } else if ($$1 == 3) {
-               return czo.qw;
+               return czr.qw;
             } else if ($$1 == 4) {
-               return czo.qA;
+               return czr.qA;
             }
          case c:
             if ($$1 == 0) {
-               return czo.qp;
+               return czr.qp;
             } else if ($$1 == 1) {
-               return czo.qF;
+               return czr.qF;
             } else if ($$1 == 2) {
-               return czo.qt;
+               return czr.qt;
             } else if ($$1 == 3) {
-               return czo.qx;
+               return czr.qx;
             } else if ($$1 == 4) {
-               return czo.qB;
+               return czr.qB;
             }
          default:
             return null;
       }
    }
 
-   protected void a(djy $$0, azv $$1, bue $$2) {
+   protected void a(dkd $$0, azv $$1, bue $$2) {
       this.b($$0, $$1, $$2);
 
       for (bws $$3 : bws.j) {
@@ -879,24 +879,24 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       }
    }
 
-   protected void b(djy $$0, azv $$1, bue $$2) {
+   protected void b(dkd $$0, azv $$1, bue $$2) {
       this.a($$0, bws.a, $$1, 0.25F, $$2);
    }
 
-   protected void a(djy $$0, azv $$1, bws $$2, bue $$3) {
+   protected void a(dkd $$0, azv $$1, bws $$2, bue $$3) {
       this.a($$0, $$2, $$1, 0.5F, $$3);
    }
 
-   private void a(djy $$0, bws $$1, azv $$2, float $$3, bue $$4) {
-      czk $$5 = this.a($$1);
+   private void a(dkd $$0, bws $$1, azv $$2, float $$3, bue $$4) {
+      czn $$5 = this.a($$1);
       if (!$$5.f() && $$2.i() < $$3 * $$4.d()) {
-         dfz.a($$5, $$0.F_(), dhl.a, $$4, $$2);
+         dgc.a($$5, $$0.F_(), dho.a, $$4, $$2);
          this.a($$1, $$5);
       }
    }
 
    @Nullable
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       azv $$4 = $$0.C_();
       byl $$5 = Objects.requireNonNull(this.g(byp.m));
       if (!$$5.b(bw)) {
@@ -935,13 +935,13 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
    }
 
    @Override
-   public final bug a(crj $$0, buf $$1) {
+   public final bug a(crm $$0, buf $$1) {
       if (!this.bI()) {
          return bug.e;
       } else {
          bug $$2 = this.c($$0, $$1);
          if ($$2.a()) {
-            this.a(efo.r, $$0);
+            this.a(eft.r, $$0);
             return $$2;
          } else {
             bug $$3 = super.a($$0, $$1);
@@ -950,7 +950,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
             } else {
                $$2 = this.b($$0, $$1);
                if ($$2.a()) {
-                  this.a(efo.r, $$0);
+                  this.a(eft.r, $$0);
                   return $$2;
                } else {
                   return bug.e;
@@ -960,18 +960,18 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       }
    }
 
-   private bug c(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
-      if ($$2.a(czo.vW)) {
+   private bug c(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
+      if ($$2.a(czr.vW)) {
          bug $$3 = $$2.a($$0, this, $$1);
          if ($$3.a()) {
             return $$3;
          }
       }
 
-      if ($$2.h() instanceof dar) {
+      if ($$2.h() instanceof dau) {
          if (this.dU() instanceof arq) {
-            dar $$4 = (dar)$$2.h();
+            dau $$4 = (dau)$$2.h();
             Optional<bxl> $$5 = $$4.a($$0, this, (bwr<? extends bxl>)this.an(), (arq)this.dU(), this.ds(), $$2);
             $$5.ifPresent($$1x -> this.a($$0, $$1x));
             if ($$5.isEmpty()) {
@@ -985,10 +985,10 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       }
    }
 
-   protected void a(crj $$0, bxl $$1) {
+   protected void a(crm $$0, bxl $$1) {
    }
 
-   protected bug b(crj $$0, buf $$1) {
+   protected bug b(crm $$0, buf $$1) {
       return bug.e;
    }
 
@@ -1076,7 +1076,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
 
    @Override
    public boolean w() {
-      return !(this instanceof coc);
+      return !(this instanceof cof);
    }
 
    @Override
@@ -1138,13 +1138,13 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       return this.gl().c($$0.eM());
    }
 
-   protected fes gl() {
+   protected fex gl() {
       bwi $$0 = this.dj();
-      fes $$3;
+      fex $$3;
       if ($$0 != null) {
-         fes $$1 = $$0.cQ();
-         fes $$2 = this.cQ();
-         $$3 = new fes(Math.min($$2.a, $$1.a), $$2.b, Math.min($$2.c, $$1.c), Math.max($$2.d, $$1.d), $$2.e, Math.max($$2.f, $$1.f));
+         fex $$1 = $$0.cQ();
+         fex $$2 = this.cQ();
+         $$3 = new fex(Math.min($$2.a, $$1.a), $$2.b, Math.min($$2.c, $$1.c), Math.max($$2.d, $$1.d), $$2.e, Math.max($$2.f, $$1.f));
       } else {
          $$3 = this.cQ();
       }
@@ -1155,9 +1155,9 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
    @Override
    public boolean c(arq $$0, bwi $$1) {
       float $$2 = (float)this.h(byp.c);
-      czk $$3 = this.dY();
+      czn $$3 = this.dY();
       bux $$4 = Optional.ofNullable($$3.h().a(this)).orElse(this.dV().b((bxj)this));
-      $$2 = dfz.a($$0, $$3, $$1, $$4, $$2);
+      $$2 = dgc.a($$0, $$3, $$1, $$4, $$2);
       $$2 += $$3.h().a($$1, $$2, $$4);
       boolean $$5 = $$1.a($$0, $$4, $$2);
       if ($$5) {
@@ -1171,7 +1171,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
             $$3.a($$8, this);
          }
 
-         dfz.a($$0, $$1, $$4);
+         dgc.a($$0, $$1, $$4);
          this.B($$1);
          this.gm();
       }
@@ -1196,7 +1196,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
    }
 
    @Override
-   protected void c(axr<ewu> $$0) {
+   protected void c(axr<ewz> $$0) {
       if (this.O().o()) {
          super.c($$0);
       } else {
@@ -1219,7 +1219,7 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
       super.cC();
 
       for (bws $$0 : bws.j) {
-         czk $$1 = this.a($$0);
+         czn $$1 = this.a($$0);
          if (!$$1.f()) {
             $$1.e(0);
          }
@@ -1228,9 +1228,9 @@ public abstract class bxl extends bxj implements bwv, bxh, byg {
 
    @Nullable
    @Override
-   public czk dH() {
-      dar $$0 = dar.a(this.an());
-      return $$0 == null ? null : new czk($$0);
+   public czn dH() {
+      dau $$0 = dau.a(this.an());
+      return $$0 == null ? null : new czn($$0);
    }
 
    @Override

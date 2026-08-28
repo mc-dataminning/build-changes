@@ -1,11 +1,10 @@
-import javax.annotation.Nullable;
+import java.io.Closeable;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public record hoh(@Nullable awk a, float b) {
-   public hoh(awk $$0) {
-      this($$0, 1.0F);
-   }
+public interface hoh extends Closeable {
+   AudioFormat a();
 
-   public boolean a(hnh $$0) {
-      return this.a == null ? false : this.a.d() && !this.a.a().a().a().equals($$0.a());
-   }
+   ByteBuffer a(int var1) throws IOException;
 }

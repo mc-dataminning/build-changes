@@ -7,7 +7,7 @@ public class cgo {
       this(new bzd($$0), $$1, $$2);
    }
 
-   public cgo(fex $$0, float $$1, int $$2) {
+   public cgo(ffc $$0, float $$1, int $$2) {
       this(new bzd(iv.a((jp)$$0)), $$1, $$2);
    }
 

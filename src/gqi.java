@@ -1,81 +1,169 @@
-import java.util.Set;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gqi implements gqq.a {
-   public static final alg a = gqq.a;
-   public static final alg b = alg.b("translucent");
-   public static final alg c = alg.b("item_entity");
-   public static final alg d = alg.b("particles");
-   public static final alg e = alg.b("weather");
-   public static final alg f = alg.b("clouds");
-   public static final alg g = alg.b("entity_outline");
-   public static final Set<alg> h = Set.of(a);
-   public static final Set<alg> i = Set.of(a, g);
-   public static final Set<alg> j = Set.of(a, b, c, d, e, f);
-   public fjg<fie> k = fjg.a();
-   @Nullable
-   public fjg<fie> l;
-   @Nullable
-   public fjg<fie> m;
-   @Nullable
-   public fjg<fie> n;
-   @Nullable
-   public fjg<fie> o;
-   @Nullable
-   public fjg<fie> p;
-   @Nullable
-   public fjg<fie> q;
+public class gqi extends avi<gqi.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final alg b = alg.b("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
 
-   @Override
-   public void a(alg $$0, fjg<fie> $$1) {
-      if ($$0.equals(a)) {
-         this.k = $$1;
-      } else if ($$0.equals(b)) {
-         this.l = $$1;
-      } else if ($$0.equals(c)) {
-         this.m = $$1;
-      } else if ($$0.equals(d)) {
-         this.n = $$1;
-      } else if ($$0.equals(e)) {
-         this.o = $$1;
-      } else if ($$0.equals(f)) {
-         this.p = $$1;
-      } else {
-         if (!$$0.equals(g)) {
-            throw new IllegalArgumentException("No target with id " + $$0);
+   public boolean a() {
+      return !this.c.isEmpty();
+   }
+
+   public boolean b() {
+      return this.a() && !this.e;
+   }
+
+   public void c() {
+      this.d = true;
+   }
+
+   public void d() {
+      this.e = true;
+   }
+
+   public void e() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean f() {
+      return this.d && !this.e;
+   }
+
+   public boolean g() {
+      return this.f;
+   }
+
+   public void h() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String i() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String l() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected gqi.a a(avd $$0, bqq $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         try (bqv $$6 = $$1.d("compile_regex")) {
+            a($$5.getAsJsonArray("renderer"), $$2);
+            a($$5.getAsJsonArray("version"), $$3);
+            a($$5.getAsJsonArray("vendor"), $$4);
+         }
+      }
+
+      return new gqi.a($$2, $$3, $$4);
+   }
+
+   protected void a(gqi.a $$0, avd $$1, bqq $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(avd $$0, bqq $$1) {
+      try {
+         JsonObject var4;
+         try (
+            bqv $$2 = $$1.d("parse_json");
+            Reader $$3 = $$0.openAsReader(b);
+         ) {
+            var4 = JsonParser.parseReader($$3).getAsJsonObject();
          }
 
-         this.q = $$1;
+         return var4;
+      } catch (JsonSyntaxException | IOException var10) {
+         a.warn("Failed to load GPU warnlist");
+         return null;
       }
    }
 
-   @Nullable
-   @Override
-   public fjg<fie> a(alg $$0) {
-      if ($$0.equals(a)) {
-         return this.k;
-      } else if ($$0.equals(b)) {
-         return this.l;
-      } else if ($$0.equals(c)) {
-         return this.m;
-      } else if ($$0.equals(d)) {
-         return this.n;
-      } else if ($$0.equals(e)) {
-         return this.o;
-      } else if ($$0.equals(f)) {
-         return this.p;
-      } else {
-         return $$0.equals(g) ? this.q : null;
-      }
-   }
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
 
-   public void a() {
-      this.k = fjg.a();
-      this.l = null;
-      this.m = null;
-      this.n = null;
-      this.o = null;
-      this.p = null;
-      this.q = null;
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
+
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
+
+            while ($$4.find()) {
+               $$2.add($$4.group());
+            }
+         }
+
+         return String.join(", ", $$2);
+      }
+
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, fis.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
+
+         String $$2 = a(this.b, fis.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, fis.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
+      }
    }
 }

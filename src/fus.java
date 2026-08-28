@@ -1,62 +1,29 @@
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public interface fus extends fuf {
-   long t = 250L;
+public class fus extends fup {
+   private static final int f = 500;
 
-   default void f(double $$0, double $$1) {
+   public fus(fsk $$0, bpe $$1) {
+      super($$0, $$1);
    }
 
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
+   @Override
+   protected void d(fsm $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
    }
 
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
    }
 
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round($$0 * 60.0 / 500.0);
    }
 
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
-   }
-
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean c(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(char $$0, int $$1) {
-      return false;
-   }
-
-   @Nullable
-   default fse a(fwy $$0) {
-      return null;
-   }
-
-   default boolean a_(double $$0, double $$1) {
-      return false;
-   }
-
-   void a(boolean var1);
-
-   boolean aJ_();
-
-   @Nullable
-   default fse aK_() {
-      return this.aJ_() ? fse.a(this) : null;
-   }
-
-   default fxc J() {
-      return fxc.a();
-   }
-
-   default fxc b(fxa $$0) {
-      return this.J().c($$0);
+   @Override
+   protected int a(long $$0) {
+      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
    }
 }

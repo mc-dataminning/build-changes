@@ -1,23 +1,27 @@
-public class gzr extends gxz<crb, hfj, gix> {
-   private static final alg a = alg.b("textures/entity/wandering_trader.png");
+public class gzr extends gvs<ckg, hfm, giz> {
+   private static final alg a = alg.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public gzr(gwt.a $$0) {
-      super($$0, new gix($$0.a(gjn.dM)), 0.5F);
-      this.a(new ham<>(this, $$0.f()));
-      this.a(new hal<>(this));
+   public gzr(gwy.a $$0) {
+      super($$0, new giz($$0.a(gjs.dI)), new giz($$0.a(gjs.dJ)), 0.7F);
    }
 
-   public alg a(hfj $$0) {
-      return a;
+   protected float a(hfm $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
    }
 
-   public hfj b() {
-      return new hfj();
+   public hfm b() {
+      return new hfm();
    }
 
-   public void a(crb $$0, hfj $$1, float $$2) {
+   public void a(ckg $$0, hfm $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hdo.a($$0, $$1, this.h);
-      $$1.a = $$0.q() > 0;
+      $$1.a = !$$0.bh() && $$0.aH();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.n_() && $$0.q();
+   }
+
+   public alg b(hfm $$0) {
+      return a;
    }
 }

@@ -1,29 +1,101 @@
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.nio.ByteBuffer;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.SocketTimeoutException;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface hoe extends hod {
-   int a = 8192;
+public class hoe {
+   static final AtomicInteger a = new AtomicInteger(0);
+   static final Logger b = LogUtils.getLogger();
 
-   boolean a(FloatConsumer var1) throws IOException;
+   public static class a extends Thread {
+      private final hoe.b a;
+      private final InetAddress b;
+      private final MulticastSocket c;
 
-   @Override
-   default ByteBuffer a(int $$0) throws IOException {
-      hoc $$1 = new hoc($$0 + 8192);
-
-      while (this.a($$1) && $$1.b() < $$0) {
+      public a(hoe.b $$0) throws IOException {
+         super("LanServerDetector #" + hoe.a.incrementAndGet());
+         this.a = $$0;
+         this.setDaemon(true);
+         this.setUncaughtExceptionHandler(new s(hoe.b));
+         this.c = new MulticastSocket(4445);
+         this.b = InetAddress.getByName("224.0.2.60");
+         this.c.setSoTimeout(5000);
+         this.c.joinGroup(this.b);
       }
 
-      return $$1.a();
+      @Override
+      public void run() {
+         byte[] $$0 = new byte[1024];
+
+         while (!this.isInterrupted()) {
+            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
+
+            try {
+               this.c.receive($$1);
+            } catch (SocketTimeoutException var5) {
+               continue;
+            } catch (IOException var6) {
+               hoe.b.error("Couldn't ping server", var6);
+               break;
+            }
+
+            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
+            hoe.b.debug("{}: {}", $$1.getAddress(), $$4);
+            this.a.a($$4, $$1.getAddress());
+         }
+
+         try {
+            this.c.leaveGroup(this.b);
+         } catch (IOException var4) {
+         }
+
+         this.c.close();
+      }
    }
 
-   @Override
-   default ByteBuffer b() throws IOException {
-      hoc $$0 = new hoc(16384);
+   public static class b {
+      private final List<hod> a = Lists.newArrayList();
+      private boolean b;
 
-      while (this.a($$0)) {
+      @Nullable
+      public synchronized List<hod> a() {
+         if (this.b) {
+            List<hod> $$0 = List.copyOf(this.a);
+            this.b = false;
+            return $$0;
+         } else {
+            return null;
+         }
       }
 
-      return $$0.a();
+      public synchronized void a(String $$0, InetAddress $$1) {
+         String $$2 = hof.a($$0);
+         String $$3 = hof.b($$0);
+         if ($$3 != null) {
+            $$3 = $$1.getHostAddress() + ":" + $$3;
+            boolean $$4 = false;
+
+            for (hod $$5 : this.a) {
+               if ($$5.b().equals($$3)) {
+                  $$5.c();
+                  $$4 = true;
+                  break;
+               }
+            }
+
+            if (!$$4) {
+               this.a.add(new hod($$2, $$3));
+               this.b = true;
+            }
+         }
+      }
    }
 }

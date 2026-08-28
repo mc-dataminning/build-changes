@@ -15,8 +15,8 @@ public record di(Optional<Boolean> c) implements bz {
    }
 
    @Override
-   public boolean a(bwi $$0, arq $$1, @Nullable fex $$2) {
-      return $$0 instanceof cly $$3 ? !this.c.isPresent() || $$3.x() == this.c.get() : false;
+   public boolean a(bwi $$0, arq $$1, @Nullable ffc $$2) {
+      return $$0 instanceof clv $$3 ? !this.c.isPresent() || $$3.x() == this.c.get() : false;
    }
 
    public static di b() {

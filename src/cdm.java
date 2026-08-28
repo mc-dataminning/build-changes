@@ -10,7 +10,7 @@ public class cdm<T extends bxj> extends cef {
    protected T b;
    protected final float c;
    @Nullable
-   protected exj d;
+   protected exo d;
    protected final cgt e;
    protected final Class<T> f;
    protected final Predicate<bxj> g;
@@ -45,7 +45,7 @@ public class cdm<T extends bxj> extends cef {
       if (this.b == null) {
          return false;
       } else {
-         fex $$0 = cic.a(this.a, 16, 7, this.b.ds());
+         ffc $$0 = cic.a(this.a, 16, 7, this.b.ds());
          if ($$0 == null) {
             return false;
          } else if (this.b.h($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {

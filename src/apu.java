@@ -21,8 +21,8 @@ public class apu {
       );
    }
 
-   private static int a(ej $$0, Collection<? extends crj> $$1, int $$2) {
-      for (crj $$3 : $$1) {
+   private static int a(ej $$0, Collection<? extends crm> $$1, int $$2) {
+      for (crm $$3 : $$1) {
          $$3.Z().ifPresent($$1x -> $$1x.a($$2));
       }
 
@@ -35,9 +35,9 @@ public class apu {
       return $$1.size();
    }
 
-   private static int a(ej $$0, Collection<? extends crj> $$1) {
-      for (crj $$2 : $$1) {
-         $$2.Z().ifPresent(cqo::b);
+   private static int a(ej $$0, Collection<? extends crm> $$1) {
+      for (crm $$2 : $$1) {
+         $$2.Z().ifPresent(cqr::b);
       }
 
       if ($$1.size() == 1) {

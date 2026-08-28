@@ -1,169 +1,132 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 
-public class gqd extends avi<gqd.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alg b = alg.b("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
+public abstract class gqd {
+   private static final Object2ObjectMap<alg, gqd> a = ag.a(new Object2ObjectArrayMap(), $$0 -> {
+      gqd.c $$1 = new gqd.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(eeo.e, $$1);
+      $$0.put(eeo.f, new gqd.b());
+      $$0.put(eeo.g, new gqd.a());
+   });
+   private final float b;
+   private final boolean c;
+   private final gqd.d d;
+   private final boolean e;
+   private final boolean f;
 
-   public boolean a() {
-      return !this.c.isEmpty();
+   public gqd(float $$0, boolean $$1, gqd.d $$2, boolean $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+   }
+
+   public static gqd a(eeq $$0) {
+      return (gqd)a.get($$0.r());
+   }
+
+   public boolean a(float $$0) {
+      return false;
+   }
+
+   public int b(float $$0) {
+      return 0;
+   }
+
+   public float a() {
+      return this.b;
    }
 
    public boolean b() {
-      return this.a() && !this.e;
+      return this.c;
    }
 
-   public void c() {
-      this.d = true;
+   public abstract ffc a(ffc var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public gqd.d c() {
+      return this.d;
    }
 
-   public void d() {
-      this.e = true;
+   public boolean d() {
+      return this.e;
    }
 
-   public void e() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean f() {
-      return this.d && !this.e;
-   }
-
-   public boolean g() {
+   public boolean e() {
       return this.f;
    }
 
-   public void h() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String i() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String l() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected gqd.a a(avd $$0, bqq $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         try (bqv $$6 = $$1.d("compile_regex")) {
-            a($$5.getAsJsonArray("renderer"), $$2);
-            a($$5.getAsJsonArray("version"), $$3);
-            a($$5.getAsJsonArray("vendor"), $$4);
-         }
+   public static class a extends gqd {
+      public a() {
+         super(Float.NaN, false, gqd.d.c, true, false);
       }
 
-      return new gqd.a($$2, $$3, $$4);
-   }
+      @Override
+      public ffc a(ffc $$0, float $$1) {
+         return $$0.c(0.15F);
+      }
 
-   protected void a(gqd.a $$0, avd $$1, bqq $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
-
-   @Nullable
-   private static JsonObject c(avd $$0, bqq $$1) {
-      try {
-         JsonObject var4;
-         try (
-            bqv $$2 = $$1.d("parse_json");
-            Reader $$3 = $$0.openAsReader(b);
-         ) {
-            var4 = JsonParser.parseReader($$3).getAsJsonObject();
-         }
-
-         return var4;
-      } catch (JsonSyntaxException | IOException var10) {
-         a.warn("Failed to load GPU warnlist");
-         return null;
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
       }
    }
 
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
-
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public static class b extends gqd {
+      public b() {
+         super(Float.NaN, true, gqd.d.a, false, true);
       }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
-
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
-
-            while ($$4.find()) {
-               $$2.add($$4.group());
-            }
-         }
-
-         return String.join(", ", $$2);
+      @Override
+      public ffc a(ffc $$0, float $$1) {
+         return $$0;
       }
 
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, fin.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
-         }
-
-         String $$2 = a(this.b, fin.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
-         }
-
-         String $$3 = a(this.c, fin.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
-
-         return $$0.build();
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
       }
+   }
+
+   public static class c extends gqd {
+      public static final int a = 192;
+      private static final float b = 0.4F;
+
+      public c() {
+         super(192.0F, true, gqd.d.b, false, false);
+      }
+
+      @Override
+      public boolean a(float $$0) {
+         float $$1 = azm.b($$0 * (float) (Math.PI * 2));
+         return $$1 >= -0.4F && $$1 <= 0.4F;
+      }
+
+      @Override
+      public int b(float $$0) {
+         float $$1 = azm.b($$0 * (float) (Math.PI * 2));
+         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
+         float $$3 = azm.l(1.0F - (1.0F - azm.a($$2 * (float) Math.PI)) * 0.99F);
+         return axw.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
+      }
+
+      @Override
+      public ffc a(ffc $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

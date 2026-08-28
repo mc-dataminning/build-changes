@@ -12,8 +12,8 @@ public record dn(cw.d c) implements bz {
    }
 
    @Override
-   public boolean a(bwi $$0, arq $$1, @Nullable fex $$2) {
-      return $$0 instanceof cou $$3 ? this.c.d($$3.gr()) : false;
+   public boolean a(bwi $$0, arq $$1, @Nullable ffc $$2) {
+      return $$0 instanceof cox $$3 ? this.c.d($$3.gr()) : false;
    }
 
    @Override

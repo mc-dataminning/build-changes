@@ -1,41 +1,63 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record eyo(int c) implements dcp {
-   public static final Codec<eyo> a = Codec.INT.xmap(eyo::new, eyo::b);
-   public static final yw<ByteBuf, eyo> b = yu.h.a(eyo::new, eyo::b);
-   private static final wy d = wy.c("filled_map.locked").a(o.h);
+public record eyo(iv b, cyl c, Optional<wy> d) {
+   public static final Codec<eyo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               iv.a.fieldOf("pos").forGetter(eyo::c),
+               cyl.q.lenientOptionalFieldOf("color", cyl.a).forGetter(eyo::d),
+               xa.a.lenientOptionalFieldOf("name").forGetter(eyo::e)
+            )
+            .apply($$0, eyo::new)
+   );
 
-   public String a() {
-      return "map_" + this.c;
-   }
-
-   @Override
-   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
-      eyq $$4 = $$0.a(this);
-      if ($$4 == null) {
-         $$1.accept(wy.c("filled_map.unknown").a(o.h));
+   @Nullable
+   public static eyo a(diq $$0, iv $$1) {
+      if ($$0.c_($$1) instanceof dxf $$3) {
+         cyl $$4 = $$3.f();
+         Optional<wy> $$5 = Optional.ofNullable($$3.ak());
+         return new eyo($$1, $$4, $$5);
       } else {
-         dch $$5 = $$3.a(kk.O);
-         if ($$3.a(kk.g) == null && $$5 == null) {
-            $$1.accept(wy.a("filled_map.id", this.c).a(o.h));
-         }
-
-         if ($$4.i || $$5 == dch.a) {
-            $$1.accept(d);
-         }
-
-         if ($$2.a()) {
-            int $$6 = $$5 == dch.b ? 1 : 0;
-            int $$7 = Math.min($$4.g + $$6, 4);
-            $$1.accept(wy.a("filled_map.scale", 1 << $$7).a(o.h));
-            $$1.accept(wy.a("filled_map.level", $$7, 4).a(o.h));
-         }
+         return null;
       }
    }
 
-   public int b() {
+   public jf<eyq> a() {
+      return switch (this.c) {
+         case a -> eyr.k;
+         case b -> eyr.l;
+         case c -> eyr.m;
+         case d -> eyr.n;
+         case e -> eyr.o;
+         case f -> eyr.p;
+         case g -> eyr.q;
+         case h -> eyr.r;
+         case i -> eyr.s;
+         case j -> eyr.t;
+         case k -> eyr.u;
+         case l -> eyr.v;
+         case m -> eyr.w;
+         case n -> eyr.x;
+         case o -> eyr.y;
+         case p -> eyr.z;
+      };
+   }
+
+   public String b() {
+      return "banner-" + this.b.u() + "," + this.b.v() + "," + this.b.w();
+   }
+
+   public iv c() {
+      return this.b;
+   }
+
+   public cyl d() {
       return this.c;
+   }
+
+   public Optional<wy> e() {
+      return this.d;
    }
 }

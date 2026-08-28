@@ -9,7 +9,7 @@ public class pf extends pr<buz> {
    protected void a(jh.a $$0) {
       this.b(axd.a).a(bva.y, bva.x, bva.z);
       this.b(axd.b).a(bva.d, bva.g, bva.h, bva.i, bva.n, bva.p, bva.r, bva.s, bva.j, bva.l, bva.m, bva.v, bva.w, bva.q, bva.O, bva.o, bva.V, bva.S, bva.U);
-      this.b(axd.c).b(axd.b).a(bva.y, bva.z);
+      this.b(axd.c).b(axd.b).a(bva.k, bva.b, bva.t, bva.y, bva.z, bva.f, bva.a, bva.e, bva.c, bva.u);
       this.b(axd.d).a(bva.o, bva.V);
       this.b(axd.f).a(bva.j);
       this.b(axd.g).a(bva.o, bva.V);

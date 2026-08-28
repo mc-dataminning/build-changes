@@ -1,38 +1,138 @@
-public class exq extends exh {
-   private float m = Float.MAX_VALUE;
-   private exh n;
-   private boolean o;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-   public exq(exh $$0) {
-      super($$0.a, $$0.b, $$0.c);
+public class exq {
+   private static final float a = 1.5F;
+   private final exm[] b = new exm[32];
+   private int c;
+   private final exn d;
+   private static final boolean e = false;
+   private final exk f = new exk();
+
+   public exq(exn $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
    }
 
-   public exq(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public void a(int $$0) {
+      this.c = $$0;
    }
 
-   public void a(float $$0, exh $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+   @Nullable
+   public exo a(djz $$0, bxl $$1, Set<iv> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      exm $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<exv, iv> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         exo $$8 = this.a($$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
       }
    }
 
-   public exh d() {
-      return this.n;
+   @Nullable
+   private exo a(exm $$0, Map<exv, iv> $$1, float $$2, int $$3, float $$4) {
+      bqq $$5 = bqp.a();
+      $$5.a("find_path");
+      $$5.a(brz.a);
+      Set<exv> $$6 = $$1.keySet();
+      $$0.e = 0.0F;
+      $$0.f = this.a($$0, $$6);
+      $$0.g = $$0.f;
+      this.f.a();
+      this.f.a($$0);
+      Set<exm> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<exv> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$4);
+
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
+
+         exm $$11 = this.f.c();
+         $$11.i = true;
+
+         for (exv $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$3) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
+
+         if (!$$9.isEmpty()) {
+            break;
+         }
+
+         if (!($$11.a($$0) >= $$2)) {
+            int $$13 = this.d.a(this.b, $$11);
+
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               exm $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$2 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
+                  }
+               }
+            }
+         }
+      }
+
+      Optional<exo> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), true)).min(Comparator.comparingInt(exo::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), false)).min(Comparator.comparingDouble(exo::m).thenComparingInt(exo::e));
+      $$5.c();
+      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   public void e() {
-      this.o = true;
+   protected float a(exm $$0, exm $$1) {
+      return $$0.a($$1);
    }
 
-   public boolean f() {
-      return this.o;
+   private float a(exm $$0, Set<exv> $$1) {
+      float $$2 = Float.MAX_VALUE;
+
+      for (exv $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
+      }
+
+      return $$2;
    }
 
-   public static exq c(vu $$0) {
-      exq $$1 = new exq($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   private exo a(exm $$0, iv $$1, boolean $$2) {
+      List<exm> $$3 = Lists.newArrayList();
+      exm $$4 = $$0;
+      $$3.add(0, $$0);
+
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
+      }
+
+      return new exo($$3, $$1, $$2);
    }
 }

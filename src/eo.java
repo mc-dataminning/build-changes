@@ -43,11 +43,11 @@ public interface eo {
       return Collections.singleton(eo.b.b);
    }
 
-   Set<alf<djh>> t();
+   Set<alf<djm>> t();
 
    jt u();
 
-   cut v();
+   cuw v();
 
    default void a(js<?> $$0, eo.a $$1, SuggestionsBuilder $$2) {
       if ($$1.a()) {

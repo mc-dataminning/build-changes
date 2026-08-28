@@ -1,313 +1,84 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class dxh extends dxm implements bui, buj, dxg {
-   private static final int f = 4;
-   public static final List<List<jf<bvk>>> a = List.of(List.of(bvo.a, bvo.c), List.of(bvo.k, bvo.h), List.of(bvo.e), List.of(bvo.j));
-   private static final Set<jf<bvk>> g = a.stream().flatMap(Collection::stream).collect(Collectors.toSet());
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   public static final int e = 3;
-   private static final int h = 10;
-   private static final wy i = wy.c("container.beacon");
-   private static final String j = "primary_effect";
-   private static final String k = "secondary_effect";
-   List<dxg.a> l = new ArrayList<>();
-   private List<dxg.a> m = new ArrayList<>();
-   int q;
-   private int r;
-   @Nullable
-   jf<bvk> s;
-   @Nullable
-   jf<bvk> t;
-   @Nullable
-   private wy u;
-   private buh v = buh.a;
-   private final cvo w = new cvo() {
-      @Override
-      public int a(int $$0) {
-         return switch ($$0) {
-            case 0 -> dxh.this.q;
-            case 1 -> cvh.a(dxh.this.s);
-            case 2 -> cvh.a(dxh.this.t);
-            default -> 0;
-         };
-      }
+public record dxh(List<dxh.b> d) implements dcs {
+   static final Logger e = LogUtils.getLogger();
+   public static final dxh a = new dxh(List.of());
+   public static final Codec<dxh> b = dxh.b.a.listOf().xmap(dxh::new, dxh::b);
+   public static final yw<wj, dxh> c = dxh.b.b.a(yu.a()).a(dxh::new, dxh::b);
 
-      @Override
-      public void a(int $$0, int $$1) {
-         switch ($$0) {
-            case 0:
-               dxh.this.q = $$1;
-               break;
-            case 1:
-               if (!dxh.this.n.C && !dxh.this.l.isEmpty()) {
-                  dxh.a(dxh.this.n, dxh.this.o, awn.bN);
-               }
-
-               dxh.this.s = dxh.a(cvh.e($$1));
-               break;
-            case 2:
-               dxh.this.t = dxh.a(cvh.e($$1));
-         }
-      }
-
-      @Override
-      public int a() {
-         return 3;
-      }
-   };
-
-   @Nullable
-   static jf<bvk> a(@Nullable jf<bvk> $$0) {
-      return g.contains($$0) ? $$0 : null;
+   public dxh a() {
+      return new dxh(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   public dxh(iv $$0, eao $$1) {
-      super(dxo.p, $$0, $$1);
+   @Override
+   public void a(czj.b $$0, Consumer<wy> $$1, dbc $$2, kf $$3) {
+      for (int $$4 = 0; $$4 < Math.min(this.b().size(), 6); $$4++) {
+         $$1.accept(this.b().get($$4).a().a(o.h));
+      }
    }
 
-   public static void a(djh $$0, iv $$1, eao $$2, dxh $$3) {
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      iv $$7;
-      if ($$3.r < $$5) {
-         $$7 = $$1;
-         $$3.m = Lists.newArrayList();
-         $$3.r = $$1.v() - 1;
-      } else {
-         $$7 = new iv($$4, $$3.r + 1, $$6);
-      }
+   public List<dxh.b> b() {
+      return this.d;
+   }
 
-      dxg.a $$9 = $$3.m.isEmpty() ? null : $$3.m.get($$3.m.size() - 1);
-      int $$10 = $$0.a(egn.a.b, $$4, $$6);
+   public static class a {
+      private final Builder<dxh.b> a = ImmutableList.builder();
 
-      for (int $$11 = 0; $$11 < 10 && $$7.v() <= $$10; $$11++) {
-         eao $$12 = $$0.a_($$7);
-         if ($$12.b() instanceof dmd $$14) {
-            int $$15 = $$14.b().d();
-            if ($$3.m.size() <= 1) {
-               $$9 = new dxg.a($$15);
-               $$3.m.add($$9);
-            } else if ($$9 != null) {
-               if ($$15 == $$9.b()) {
-                  $$9.a();
-               } else {
-                  $$9 = new dxg.a(axw.d($$9.b(), $$15));
-                  $$3.m.add($$9);
-               }
-            }
+      @Deprecated
+      public dxh.a a(jg<dxg> $$0, alf<dxg> $$1, cyl $$2) {
+         Optional<jf.c<dxg>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dxh.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
          } else {
-            if ($$9 == null || $$12.g() >= 15 && !$$12.a(dmo.I)) {
-               $$3.m.clear();
-               $$3.r = $$10;
-               break;
-            }
-
-            $$9.a();
-         }
-
-         $$7 = $$7.d();
-         $$3.r++;
-      }
-
-      int $$16 = $$3.q;
-      if ($$0.ae() % 80L == 0L) {
-         if (!$$3.l.isEmpty()) {
-            $$3.q = a($$0, $$4, $$5, $$6);
-         }
-
-         if ($$3.q > 0 && !$$3.l.isEmpty()) {
-            a($$0, $$1, $$3.q, $$3.s, $$3.t);
-            a($$0, $$1, awn.bL);
+            return this.a($$3.get(), $$2);
          }
       }
 
-      if ($$3.r >= $$10) {
-         $$3.r = $$0.G_() - 1;
-         boolean $$17 = $$16 > 0;
-         $$3.l = $$3.m;
-         if (!$$0.C) {
-            boolean $$18 = $$3.q > 0;
-            if (!$$17 && $$18) {
-               a($$0, $$1, awn.bK);
+      public dxh.a a(jf<dxg> $$0, cyl $$1) {
+         return this.a(new dxh.b($$0, $$1));
+      }
 
-               for (arr $$19 : $$0.a(arr.class, new fes((double)$$4, (double)$$5, (double)$$6, (double)$$4, (double)($$5 - 4), (double)$$6).c(10.0, 5.0, 10.0))) {
-                  aq.m.a($$19, $$3.q);
-               }
-            } else if ($$17 && !$$18) {
-               a($$0, $$1, awn.bM);
-            }
-         }
+      public dxh.a a(dxh.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dxh.a a(dxh $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dxh a() {
+         return new dxh(this.a.build());
       }
    }
 
-   private static int a(djh $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
+   public static record b(jf<dxg> c, cyl d) {
+      public static final Codec<dxh.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dxg.c.fieldOf("pattern").forGetter(dxh.b::b), cyl.q.fieldOf("color").forGetter(dxh.b::c)).apply($$0, dxh.b::new)
+      );
+      public static final yw<wj, dxh.b> b = yw.a(dxg.d, dxh.b::b, cyl.r, dxh.b::c, dxh.b::new);
 
-      for (int $$5 = 1; $$5 <= 4; $$4 = $$5++) {
-         int $$6 = $$2 - $$5;
-         if ($$6 < $$0.G_()) {
-            break;
-         }
-
-         boolean $$7 = true;
-
-         for (int $$8 = $$1 - $$5; $$8 <= $$1 + $$5 && $$7; $$8++) {
-            for (int $$9 = $$3 - $$5; $$9 <= $$3 + $$5; $$9++) {
-               if (!$$0.a_(new iv($$8, $$6, $$9)).a(axc.aP)) {
-                  $$7 = false;
-                  break;
-               }
-            }
-         }
-
-         if (!$$7) {
-            break;
-         }
+      public xm a() {
+         String $$0 = this.c.a().b();
+         return wy.c($$0 + "." + this.d.b());
       }
 
-      return $$4;
-   }
-
-   @Override
-   public void as_() {
-      a(this.n, this.o, awn.bM);
-      super.as_();
-   }
-
-   private static void a(djh $$0, iv $$1, int $$2, @Nullable jf<bvk> $$3, @Nullable jf<bvk> $$4) {
-      if (!$$0.C && $$3 != null) {
-         double $$5 = (double)($$2 * 10 + 10);
-         int $$6 = 0;
-         if ($$2 >= 4 && Objects.equals($$3, $$4)) {
-            $$6 = 1;
-         }
-
-         int $$7 = (9 + $$2 * 2) * 20;
-         fes $$8 = new fes($$1).g($$5).b(0.0, (double)$$0.H_(), 0.0);
-         List<crj> $$9 = $$0.a(crj.class, $$8);
-
-         for (crj $$10 : $$9) {
-            $$10.a(new bvm($$3, $$7, $$6, true, true));
-         }
-
-         if ($$2 >= 4 && !Objects.equals($$3, $$4) && $$4 != null) {
-            for (crj $$11 : $$9) {
-               $$11.a(new bvm($$4, $$7, 0, true, true));
-            }
-         }
+      public jf<dxg> b() {
+         return this.c;
       }
-   }
 
-   public static void a(djh $$0, iv $$1, awm $$2) {
-      $$0.a(null, $$1, $$2, awo.e, 1.0F, 1.0F);
-   }
-
-   @Override
-   public List<dxg.a> a() {
-      return (List<dxg.a>)(this.q == 0 ? ImmutableList.of() : this.l);
-   }
-
-   public aca c() {
-      return aca.a(this);
-   }
-
-   @Override
-   public tz a(jh.a $$0) {
-      return this.e($$0);
-   }
-
-   private static void a(tz $$0, String $$1, @Nullable jf<bvk> $$2) {
-      if ($$2 != null) {
-         $$2.e().ifPresent($$2x -> $$0.a($$1, $$2x.a().toString()));
+      public cyl c() {
+         return this.d;
       }
-   }
-
-   @Nullable
-   private static jf<bvk> a(tz $$0, String $$1) {
-      return $$0.<jf<bvk>>a($$1, mg.d.r()).filter(g::contains).orElse(null);
-   }
-
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      this.s = a($$0, "primary_effect");
-      this.t = a($$0, "secondary_effect");
-      this.u = a($$0.a("CustomName"), $$1);
-      this.v = buh.b($$0, $$1);
-   }
-
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      a($$0, "primary_effect", this.s);
-      a($$0, "secondary_effect", this.t);
-      $$0.a("Levels", this.q);
-      $$0.b("CustomName", xa.a, $$1.a(un.a), this.u);
-      this.v.a($$0, $$1);
-   }
-
-   public void a(@Nullable wy $$0) {
-      this.u = $$0;
-   }
-
-   @Nullable
-   @Override
-   public wy ak() {
-      return this.u;
-   }
-
-   @Nullable
-   @Override
-   public cvc createMenu(int $$0, cri $$1, crj $$2) {
-      return dxf.a($$2, this.v, this.m_()) ? new cvh($$0, $$1, this.w, cvp.a(this.n, this.ax_())) : null;
-   }
-
-   @Override
-   public wy m_() {
-      return this.ai();
-   }
-
-   @Override
-   public wy ai() {
-      return this.u != null ? this.u : i;
-   }
-
-   @Override
-   protected void a(kf $$0) {
-      super.a($$0);
-      this.u = $$0.a(kk.g);
-      this.v = $$0.a(kk.as, buh.a);
-   }
-
-   @Override
-   protected void a(kh.a $$0) {
-      super.a($$0);
-      $$0.a(kk.g, this.u);
-      if (!this.v.equals(buh.a)) {
-         $$0.a(kk.as, this.v);
-      }
-   }
-
-   @Override
-   public void a(tz $$0) {
-      $$0.p("CustomName");
-      $$0.p("lock");
-   }
-
-   @Override
-   public void a(djh $$0) {
-      super.a($$0);
-      this.r = $$0.G_() - 1;
    }
 }

@@ -1,125 +1,294 @@
-enum fyu {
-   a(
-      new fyu.a(alg.b("advancements/tab_above_left_selected"), alg.b("advancements/tab_above_middle_selected"), alg.b("advancements/tab_above_right_selected")),
-      new fyu.a(alg.b("advancements/tab_above_left"), alg.b("advancements/tab_above_middle"), alg.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fyu.a(alg.b("advancements/tab_below_left_selected"), alg.b("advancements/tab_below_middle_selected"), alg.b("advancements/tab_below_right_selected")),
-      new fyu.a(alg.b("advancements/tab_below_left"), alg.b("advancements/tab_below_middle"), alg.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fyu.a(alg.b("advancements/tab_left_top_selected"), alg.b("advancements/tab_left_middle_selected"), alg.b("advancements/tab_left_bottom_selected")),
-      new fyu.a(alg.b("advancements/tab_left_top"), alg.b("advancements/tab_left_middle"), alg.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fyu.a(alg.b("advancements/tab_right_top_selected"), alg.b("advancements/tab_right_middle_selected"), alg.b("advancements/tab_right_bottom_selected")),
-      new fyu.a(alg.b("advancements/tab_right_top"), alg.b("advancements/tab_right_middle"), alg.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import com.mojang.authlib.minecraft.BanDetails;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-   private final fyu.a e;
-   private final fyu.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fyu extends fys {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wy b = wy.c("narrator.screen.title");
+   private static final wy c = wy.c("title.credits");
+   private static final String d = "Demo_World";
+   private static final float s = 2000.0F;
+   @Nullable
+   private fue u;
+   private fta v;
+   @Nullable
+   private fnl w;
+   private float x = 1.0F;
+   private boolean y;
+   private long z;
+   private final ftr A;
 
-   private fyu(final fyu.a $$0, final fyu.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fyu() {
+      this(false);
    }
 
-   public int a() {
-      return this.i;
+   public fyu(boolean $$0) {
+      this($$0, null);
    }
 
-   public void a(fsh $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fyu.a $$5 = $$3 ? this.e : this.f;
-      alg $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   public fyu(boolean $$0, @Nullable ftr $$1) {
+      super(b);
+      this.y = $$0;
+      this.A = Objects.requireNonNullElseGet($$1, () -> new ftr(false));
+   }
+
+   private boolean m() {
+      return this.w != null;
+   }
+
+   @Override
+   public void e() {
+      if (this.m()) {
+         this.w.e();
+      }
+   }
+
+   public static void a(hjs $$0) {
+      $$0.a(ftr.a);
+      $$0.a(ftr.c);
+      $$0.a(gqu.a);
+      e.a($$0);
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public boolean aD_() {
+      return false;
+   }
+
+   @Override
+   protected void aO_() {
+      if (this.u == null) {
+         this.u = this.m.aL().a();
+      }
+
+      int $$0 = this.p.a(c);
+      int $$1 = this.n - $$0 - 2;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      if (this.m.K()) {
+         $$3 = this.c($$3, 24);
       } else {
-         $$6 = $$5.b();
+         $$3 = this.b($$3, 24);
       }
 
-      $$0.a(gqx::H, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fsh $$0, int $$1, int $$2, int $$3, czk $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
+      $$3 = this.a($$3, 24);
+      fuf $$4 = this.c(fte.a(20, $$0x -> this.m.a(new gbu(this, this.m.n, this.m.ah())), true));
+      int var10001 = this.n / 2 - 124;
+      $$3 += 36;
+      $$4.c(var10001, $$3);
+      this.c(fta.a(wy.c("menu.options"), $$0x -> this.m.a(new gbx(this, this.m.n))).a(this.n / 2 - 100, $$3, 98, 20).a());
+      this.c(fta.a(wy.c("menu.quit"), $$0x -> this.m.q()).a(this.n / 2 + 2, $$3, 98, 20).a());
+      fuf $$5 = this.c(fte.b(20, $$0x -> this.m.a(new gbr(this, this.m.n)), true));
+      $$5.c(this.n / 2 + 104, $$3);
+      this.c(new fty($$1, this.o - 10, $$0, 10, c, $$0x -> this.m.a(new fxu(this)), this.p));
+      if (this.w == null) {
+         this.w = new fnl();
       }
 
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      if (this.m()) {
+         this.w.b(this.m, this.n, this.o);
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   private int a(int $$0, int $$1) {
+      if (ac.aV) {
+         this.c(fta.a(wy.b("Create Test World"), $$0x -> gdt.b(this.m, this)).a(this.n / 2 - 100, $$0 += $$1, 200, 20).a());
+      }
+
+      return $$0;
+   }
+
+   private int b(int $$0, int $$1) {
+      this.c(fta.a(wy.c("menu.singleplayer"), $$0x -> this.m.a(new geb(this))).a(this.n / 2 - 100, $$0, 200, 20).a());
+      wy $$2 = this.E();
+      boolean $$3 = $$2 == null;
+      ful $$4 = $$2 != null ? ful.a($$2) : null;
+      int var6;
+      this.c(fta.a(wy.c("menu.multiplayer"), $$0x -> {
+         fys $$1x = (fys)(this.m.n.u ? new gbk(this) : new gbl(this));
+         this.m.a($$1x);
+      }).a(this.n / 2 - 100, var6 = $$0 + $$1, 200, 20).a($$4).a()).j = $$3;
+      this.c(fta.a(wy.c("menu.online"), $$0x -> this.m.a(new fko(this))).a(this.n / 2 - 100, $$0 = var6 + $$1, 200, 20).a($$4).a()).j = $$3;
+      return $$0;
+   }
+
+   @Nullable
+   private wy E() {
+      if (this.m.F()) {
+         return null;
+      } else if (this.m.I()) {
+         return wy.c("title.multiplayer.disabled.banned.name");
+      } else {
+         BanDetails $$0 = this.m.H();
+         if ($$0 != null) {
+            return $$0.expires() != null ? wy.c("title.multiplayer.disabled.banned.temporary") : wy.c("title.multiplayer.disabled.banned.permanent");
+         } else {
+            return wy.c("title.multiplayer.disabled");
+         }
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   private int c(int $$0, int $$1) {
+      boolean $$2 = this.F();
+      this.c(fta.a(wy.c("menu.playdemo"), $$1x -> {
+         if ($$2) {
+            this.m.x().a("Demo_World", () -> this.m.a(this));
+         } else {
+            this.m.x().a("Demo_World", MinecraftServer.d, ehq.b, erd::a, this);
+         }
+      }).a(this.n / 2 - 100, $$0, 200, 20).a());
+      int var4;
+      this.v = this.c(
+         fta.a(
+               wy.c("menu.resetdemo"),
+               $$0x -> {
+                  ezh $$1x = this.m.m();
+
+                  try (ezh.c $$2x = $$1x.e("Demo_World")) {
+                     if ($$2x.m()) {
+                        this.m
+                           .a(
+                              new fxq(
+                                 this::c,
+                                 wy.c("selectWorld.deleteQuestion"),
+                                 wy.a("selectWorld.deleteWarning", MinecraftServer.d.a()),
+                                 wy.c("selectWorld.deleteButton"),
+                                 wx.e
+                              )
+                           );
+                     }
+                  } catch (IOException var8) {
+                     fvj.a(this.m, "Demo_World");
+                     a.warn("Failed to access demo world", var8);
+                  }
+               }
+            )
+            .a(this.n / 2 - 100, var4 = $$0 + $$1, 200, 20)
+            .a()
+      );
+      this.v.j = $$2;
+      return var4;
    }
 
-   static record a(alg a, alg b, alg c) {
+   private boolean F() {
+      try {
+         boolean var2;
+         try (ezh.c $$0 = this.m.m().e("Demo_World")) {
+            var2 = $$0.m();
+         }
+
+         return var2;
+      } catch (IOException var6) {
+         fvj.a(this.m, "Demo_World");
+         a.warn("Failed to read demo world data", var6);
+         return false;
+      }
+   }
+
+   @Override
+   public void a(fsm $$0, int $$1, int $$2, float $$3) {
+      if (this.z == 0L && this.y) {
+         this.z = ag.c();
+      }
+
+      float $$4 = 1.0F;
+      if (this.y) {
+         float $$5 = (float)(ag.c() - this.z) / 2000.0F;
+         if ($$5 > 1.0F) {
+            this.y = false;
+            this.x = 1.0F;
+         } else {
+            $$5 = azm.a($$5, 0.0F, 1.0F);
+            $$4 = azm.b($$5, 0.5F, 1.0F, 0.0F, 1.0F);
+            this.x = azm.b($$5, 0.0F, 0.5F, 0.0F, 1.0F);
+         }
+
+         this.a($$4);
+      }
+
+      this.a($$0, $$3);
+      int $$6 = azm.f($$4 * 255.0F) << 24;
+      if (($$6 & -67108864) != 0) {
+         super.a($$0, $$1, $$2, $$3);
+         this.A.a($$0, this.n, $$4);
+         if (this.u != null && !this.m.n.c().c()) {
+            this.u.a($$0, this.n, this.p, $$6);
+         }
+
+         String $$7 = "Minecraft " + ac.b().c();
+         if (this.m.K()) {
+            $$7 = $$7 + " Demo";
+         } else {
+            $$7 = $$7 + ("release".equalsIgnoreCase(this.m.j()) ? "" : "/" + this.m.j());
+         }
+
+         if (fpt.e().a()) {
+            $$7 = $$7 + hky.a("menu.modded");
+         }
+
+         $$0.b(this.p, $$7, 2, this.o - 10, 16777215 | $$6);
+         if (this.m() && $$4 >= 1.0F) {
+            this.w.a($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   private void a(float $$0) {
+      for (fux $$1 : this.aE_()) {
+         if ($$1 instanceof fsy $$2) {
+            $$2.a($$0);
+         }
+      }
+   }
+
+   @Override
+   public void b(fsm $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(fsm $$0, float $$1) {
+      f.a($$0, this.n, this.o, this.x, $$1);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return super.a($$0, $$1, $$2) ? true : this.m() && this.w.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void aF_() {
+      if (this.w != null) {
+         this.w.aF_();
+      }
+   }
+
+   @Override
+   public void aG_() {
+      super.aG_();
+      if (this.w != null) {
+         this.w.aG_();
+      }
+   }
+
+   private void c(boolean $$0) {
+      if ($$0) {
+         try (ezh.c $$1 = this.m.m().e("Demo_World")) {
+            $$1.k();
+         } catch (IOException var7) {
+            fvj.b(this.m, "Demo_World");
+            a.warn("Failed to delete demo world", var7);
+         }
+      }
+
+      this.m.a(this);
    }
 }

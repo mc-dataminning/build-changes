@@ -1,21 +1,24 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eif implements ehu {
-   protected final ka f;
+class eif extends eik {
+   private final jj<dmr> e;
+   public static final MapCodec<eif> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(ju.a(mh.i).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, eif::new)
+   );
 
-   protected static <P extends eif> P1<Mu<P>, ka> a(Instance<P> $$0) {
-      return $$0.group(ka.v(16).optionalFieldOf("offset", ka.i).forGetter($$0x -> $$0x.f));
+   public eif(ka $$0, jj<dmr> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   protected eif(ka $$0) {
-      this.f = $$0;
+   @Override
+   protected boolean a(eat $$0) {
+      return $$0.a(this.e);
    }
 
-   public final boolean a(dkg $$0, iv $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public eia<?> a() {
+      return eia.a;
    }
-
-   protected abstract boolean a(eao var1);
 }

@@ -1,110 +1,266 @@
+import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.BitSet;
+import java.util.LinkedHashMap;
+import java.util.Optional;
+import java.util.SequencedMap;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class eec implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<eeb> c = new Long2ObjectLinkedOpenHashMap();
-   private final eee d;
-   private final Path e;
-   private final boolean f;
+public class eec implements edz, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bsy c;
+   private final eeh d;
+   private final SequencedMap<dir, eec.a> e = new LinkedHashMap<>();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
 
-   eec(eee $$0, Path $$1, boolean $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.d = $$0;
+   protected eec(eej $$0, Path $$1, boolean $$2) {
+      this.d = new eeh($$0, $$1, $$2);
+      this.c = new bsy(eec.b.values().length, ag.i(), "IOWorker-" + $$0.c());
    }
 
-   private eeb b(dio $$0) throws IOException {
-      long $$1 = dio.c($$0.h(), $$0.i());
-      eeb $$2 = (eeb)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         if (this.c.size() >= 256) {
-            ((eeb)this.c.removeLast()).close();
+   public boolean a(dir $$0, int $$1) {
+      dir $$2 = new dir($$0.h - $$1, $$0.i - $$1);
+      dir $$3 = new dir($$0.h + $$1, $$0.i + $$1);
+
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               dir $$7 = dir.a($$4, $$5);
+               int $$8 = Math.max($$2.h - $$7.h, 0);
+               int $$9 = Math.max($$2.i - $$7.i, 0);
+               int $$10 = Math.min($$3.h - $$7.h, 31);
+               int $$11 = Math.min($$3.i - $$7.i, 31);
+
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = dir.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
+            }
          }
 
-         w.c(this.e);
-         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         eeb $$4 = new eeb(this.d, $$3, this.e, this.f);
-         this.c.putAndMoveToFirst($$1, $$4);
+         return $$3;
+      }
+   }
+
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         dir $$2 = dir.a($$0, $$1);
+         dir $$3 = dir.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         dir.a($$2, $$3).forEach($$1xx -> {
+            vd $$2x = new vd(new vf(ue.a, "DataVersion"), new vf(tz.b, "blending_data"));
+
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
+            }
+
+            if ($$2x.d() instanceof tz $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
+         });
          return $$4;
-      }
+      }, ag.h());
    }
 
-   @Nullable
-   public tz a(dio $$0) throws IOException {
-      eeb $$1 = this.b($$0);
+   private boolean a(tz $$0) {
+      return $$0.b("DataVersion", 99) && $$0.f("DataVersion") >= 4295 ? $$0.b("blending_data", 10) : true;
+   }
 
-      tz var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
+   public CompletableFuture<Void> a(dir $$0, @Nullable tz $$1) {
+      return this.a($$0, () -> $$1);
+   }
+
+   public CompletableFuture<Void> a(dir $$0, Supplier<tz> $$1) {
+      return this.<CompletableFuture<Void>>a((Supplier<CompletableFuture<Void>>)(() -> {
+         tz $$2 = $$1.get();
+         eec.a $$3 = this.e.computeIfAbsent($$0, $$1xx -> new eec.a($$2));
+         $$3.a = $$2;
+         return $$3.b;
+      })).thenCompose(Function.identity());
+   }
+
+   public CompletableFuture<Optional<tz>> a(dir $$0) {
+      return this.a((eec.c<Optional<tz>>)(() -> {
+         eec.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Optional.ofNullable($$1.a());
+         } else {
+            try {
+               tz $$2 = this.d.a($$0);
+               return Optional.ofNullable($$2);
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               throw var4;
+            }
+         }
+      }));
+   }
+
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.<CompletableFuture<Void>>a(
+            (Supplier<CompletableFuture<Void>>)(() -> CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a((eec.c<Void>)(() -> {
+            try {
+               this.d.a();
+               return null;
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               throw var2x;
+            }
+         }))) : $$1.thenCompose($$0x -> this.a((Supplier<Void>)(() -> null)));
+   }
+
+   @Override
+   public CompletableFuture<Void> a(dir $$0, ut $$1) {
+      return this.a((eec.c<Void>)(() -> {
+         try {
+            eec.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
+            }
+
             return null;
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            throw var4;
          }
-
-         var4 = um.a($$2);
-      }
-
-      return var4;
+      }));
    }
 
-   public void a(dio $$0, ut $$1) throws IOException {
-      eeb $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            um.a((DataInput)$$3, $$1, ui.a());
+   private <T> CompletableFuture<T> a(eec.c<T> $$0) {
+      return this.c.a(eec.b.a.ordinal(), $$1 -> {
+         if (!this.b.get()) {
+            try {
+               $$1.complete($$0.get());
+            } catch (Exception var4) {
+               $$1.completeExceptionally(var4);
+            }
          }
+
+         this.c();
+      });
+   }
+
+   private <T> CompletableFuture<T> a(Supplier<T> $$0) {
+      return this.c.a(eec.b.a.ordinal(), $$1 -> {
+         if (!this.b.get()) {
+            $$1.complete($$0.get());
+         }
+
+         this.c();
+      });
+   }
+
+   private void b() {
+      Entry<dir, eec.a> $$0 = this.e.pollFirstEntry();
+      if ($$0 != null) {
+         this.a($$0.getKey(), $$0.getValue());
+         this.c();
       }
    }
 
-   protected void a(dio $$0, @Nullable tz $$1) throws IOException {
-      eeb $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
-      } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            um.a($$1, (DataOutput)$$3);
-         }
+   private void c() {
+      this.c.a_(new bta.c(eec.b.b.ordinal(), this::b));
+   }
+
+   private void a(dir $$0, eec.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
       }
    }
 
    @Override
    public void close() throws IOException {
-      ayt<IOException> $$0 = new ayt<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         eeb $$1 = (eeb)var2.next();
+      if (this.b.compareAndSet(false, true)) {
+         this.d();
+         this.c.close();
 
          try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
          }
       }
-
-      $$0.a();
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
+   private void d() {
+      this.c.a(eec.b.c.ordinal(), $$0 -> $$0.complete(bau.a)).join();
+   }
 
-      while (var1.hasNext()) {
-         eeb $$0 = (eeb)var1.next();
-         $$0.b();
+   public eej a() {
+      return this.d.b();
+   }
+
+   static class a {
+      @Nullable
+      tz a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
+
+      public a(@Nullable tz $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      tz a() {
+         tz $$0 = this.a;
+         return $$0 == null ? null : $$0.i();
       }
    }
 
-   public eee b() {
-      return this.d;
+   static enum b {
+      a,
+      b,
+      c;
+   }
+
+   @FunctionalInterface
+   interface c<T> {
+      @Nullable
+      T get() throws Exception;
    }
 }

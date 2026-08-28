@@ -1,43 +1,29 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class ejv<FC extends elx> {
-   private final Optional<ejf<?, ?>> a;
-   private final dkg b;
-   private final ecm c;
-   private final azv d;
-   private final iv e;
-   private final FC f;
-
-   public ejv(Optional<ejf<?, ?>> $$0, dkg $$1, ecm $$2, azv $$3, iv $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class ejv extends ejy<emj> {
+   public ejv(Codec<emj> $$0) {
+      super($$0);
    }
 
-   public Optional<ejf<?, ?>> a() {
-      return this.a;
-   }
+   @Override
+   public boolean a(eka<emj> $$0) {
+      dkl $$1 = $$0.b();
+      azv $$2 = $$0.d();
+      iv $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-   public dkg b() {
-      return this.b;
-   }
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = azm.d(-$$4); $$6 <= azm.f($$4); $$6++) {
+            for (int $$7 = azm.d(-$$4); $$7 <= azm.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dmt.fY.m());
+               }
+            }
+         }
 
-   public ecm c() {
-      return this.c;
-   }
+         $$4 -= (float)$$2.a(2) + 0.5F;
+      }
 
-   public azv d() {
-      return this.d;
-   }
-
-   public iv e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
+      return true;
    }
 }

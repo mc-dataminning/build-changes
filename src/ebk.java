@@ -1,28 +1,38 @@
-public enum ebk implements bak {
-   a(jb.a),
-   b(jb.b);
+import java.util.List;
+import java.util.Optional;
 
-   private final jb c;
+public final class ebk extends ebw<Boolean> {
+   private static final List<Boolean> a = List.of(true, false);
+   private static final int b = 0;
+   private static final int c = 1;
 
-   private ebk(final jb $$0) {
-      this.c = $$0;
-   }
-
-   public jb a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+   private ebk(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
+   public List<Boolean> a() {
+      return a;
    }
 
-   public ebk b() {
-      return this == a ? b : a;
+   public static ebk a(String $$0) {
+      return new ebk($$0);
+   }
+
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return switch ($$0) {
+         case "true" -> Optional.of(true);
+         case "false" -> Optional.of(false);
+         default -> Optional.empty();
+      };
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   public int b(Boolean $$0) {
+      return $$0 ? 0 : 1;
    }
 }

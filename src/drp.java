@@ -1,59 +1,40 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum drp implements bak {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class drp extends dqs {
+   public static final MapCodec<drp> a = b(drp::new);
+   private static final wy b = wy.c("container.loom");
 
-   public static final Codec<drp> d = bak.a(drp::values);
-   @Deprecated
-   public static final Codec<drp> e = ayu.c(drp::valueOf);
-   private final String f;
-   private final wy g;
-   private final h h;
-
-   private drp(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = wy.c("mirror." + $$0);
-      this.h = $$1;
+   @Override
+   public MapCodec<drp> a() {
+      return a;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         case c:
-            return ($$1 - $$3) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dtg a(jb $$0) {
-      jb.a $$1 = $$0.o();
-      return (this != b || $$1 != jb.a.c) && (this != c || $$1 != jb.a.a) ? dtg.a : dtg.c;
-   }
-
-   public jb b(jb $$0) {
-      if (this == c && $$0.o() == jb.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == jb.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.h;
-   }
-
-   public wy b() {
-      return this.g;
+   protected drp(eas.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awx.ax);
+      }
+
+      return bug.a;
+   }
+
+   @Override
+   protected bui b(eat $$0, djm $$1, iv $$2) {
+      return new buo(($$2x, $$3, $$4) -> new cwm($$2x, $$3, cvs.a($$1, $$2)), b);
+   }
+
+   @Override
+   public eat a(ddg $$0) {
+      return this.m().b(e, $$0.g().g());
+   }
+
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(e);
    }
 }

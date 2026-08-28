@@ -1,30 +1,72 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.Optional;
 
-public record esi(int c, int d) {
-   private static final Codec<esi> e = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayu.l.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), ayu.l.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
-            .apply($$0, esi::new)
-   );
-   public static final Codec<esi> a = Codec.either(ayu.l, e)
-      .xmap($$0 -> (esi)$$0.map(esi::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
-   public static final esi b = new esi(0);
+public class esi extends esk {
+   public static final MapCodec<esi> a = RecordCodecBuilder.mapCodec(
+         $$0 -> a($$0)
+               .and(
+                  $$0.group(
+                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(esi::a),
+                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(esi::b),
+                     esj.c.optionalFieldOf("spread_type", esj.a).forGetter(esi::c)
+                  )
+               )
+               .apply($$0, esi::new)
+      )
+      .validate(esi::a);
+   private final int c;
+   private final int d;
+   private final esj e;
 
-   public esi(int $$0) {
-      this($$0, $$0);
+   private static DataResult<esi> a(esi $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
    }
 
-   public boolean a() {
-      return this.d == this.c;
+   public esi(ka $$0, esk.c $$1, float $$2, int $$3, Optional<esk.a> $$4, int $$5, int $$6, esj $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
    }
 
-   public int b() {
+   public esi(int $$0, int $$1, esj $$2, int $$3) {
+      this(ka.i, esk.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
+
+   public int a() {
       return this.c;
    }
 
-   public int c() {
+   public int b() {
       return this.d;
+   }
+
+   public esj c() {
+      return this.e;
+   }
+
+   public dir a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      ehr $$5 = new ehr(new egt(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new dir($$3 * this.c + $$7, $$4 * this.c + $$8);
+   }
+
+   @Override
+   protected boolean a(ecs $$0, int $$1, int $$2) {
+      dir $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.h == $$1 && $$3.i == $$2;
+   }
+
+   @Override
+   public esl<?> e() {
+      return esl.a;
    }
 }

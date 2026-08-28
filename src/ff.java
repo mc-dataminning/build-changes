@@ -80,7 +80,7 @@ public class ff implements ArgumentType<ff.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(fga var1, fga var2) throws CommandSyntaxException;
+      void apply(fgf var1, fgf var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class ff implements ArgumentType<ff.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(fga $$0, fga $$1) throws CommandSyntaxException {
+      default void apply(fgf $$0, fgf $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

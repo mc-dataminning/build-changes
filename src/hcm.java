@@ -1,8 +1,12 @@
-public class hcm extends hdz {
-   public final bvz a = new bvz();
-   public final bvz b = new bvz();
-   public final bvz c = new bvz();
-   public final bvz d = new bvz();
-   public final bvz e = new bvz();
-   public final bvz f = new bvz();
+public class hcm extends hef {
+   public cko.e a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+
+   public hcm() {
+      this.a = cko.e.a;
+      this.d = 1.0F;
+   }
 }

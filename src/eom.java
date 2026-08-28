@@ -1,51 +1,20 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class eom extends eos {
-   public static final MapCodec<eom> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eom::new, $$0 -> $$0.d);
-   private static final jb b = jb.d;
-   private static final jb[] c = jb.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jb[]::new);
-   private final float d;
+public class eom extends eod {
+   public static final MapCodec<eom> b = eat.a.fieldOf("state").xmap(eom::new, $$0 -> $$0.c);
+   private final eat c;
 
-   public eom(float $$0) {
-      this.d = $$0;
+   protected eom(eat $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected eot<?> a() {
-      return eot.f;
+   protected eoe<?> a() {
+      return eoe.a;
    }
 
    @Override
-   public void a(eos.a $$0) {
-      List<iv> $$1 = $$0.d();
-      List<iv> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         azv $$3 = $$0.b();
-         if (!($$3.i() >= this.d)) {
-            int $$4 = !$$1.isEmpty()
-               ? Math.max($$1.getFirst().v() - 1, $$2.getFirst().v() + 1)
-               : Math.min($$2.getFirst().v() + 1 + $$3.a(3), $$2.getLast().v());
-            List<iv> $$5 = $$2.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-            if (!$$5.isEmpty()) {
-               ag.c($$5, $$3);
-               Optional<iv> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-               if (!$$6.isEmpty()) {
-                  $$0.a($$6.get(), dmo.pM.m().b(dmg.b, b));
-                  $$0.a().a($$6.get(), dxo.I).ifPresent($$1x -> {
-                     int $$2x = 2 + $$3.a(2);
-
-                     for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                        $$1x.a(dxj.c.a($$3.a(599)));
-                     }
-                  });
-               }
-            }
-         }
-      }
+   public eat a(azv $$0, iv $$1) {
+      return this.c;
    }
 }

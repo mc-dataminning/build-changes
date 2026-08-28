@@ -1,95 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-public record gsh(alg b, gsh.a c, int d) {
-   public static final Codec<gsh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alg.a.fieldOf("model").forGetter(gsh::a), gsh.a.a.forGetter(gsh::b), ayu.m.optionalFieldOf("weight", 1).forGetter(gsh::c))
-            .apply($$0, gsh::new)
-   );
+public record gsh(gsg b, gsg c, gsg d, gsg e, gsg f, gsg g, gsg h, gsg i) {
+   public static final gsh a = new gsh(gsg.a, gsg.a, gsg.a, gsg.a, gsg.a, gsg.a, gsg.a, gsg.a);
 
-   public gsh(alg $$0) {
-      this($$0, gsh.a.b, 1);
+   public gsg a(czl $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gsg.a;
+      };
    }
 
-   public gsh a(i $$0) {
-      return this.a(this.c.a($$0));
-   }
-
-   public gsh b(i $$0) {
-      return this.a(this.c.b($$0));
-   }
-
-   public gsh a(boolean $$0) {
-      return this.a(this.c.a($$0));
-   }
-
-   public gsh a(alg $$0) {
-      return new gsh($$0, this.c, this.d);
-   }
-
-   public gsh a(gsh.a $$0) {
-      return new gsh(this.b, $$0, this.d);
-   }
-
-   public gsh a(int $$0) {
-      return new gsh(this.b, this.c, $$0);
-   }
-
-   public gsh a(gsi $$0) {
-      return $$0.apply(this);
-   }
-
-   public alg a() {
+   public gsg a() {
       return this.b;
    }
 
-   public gsh.a b() {
+   public gsg b() {
       return this.c;
    }
 
-   public int c() {
+   public gsg c() {
       return this.d;
    }
 
-   public static record a(i c, i d, boolean e) {
-      public static final MapCodec<gsh.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  i.e.optionalFieldOf("x", i.a).forGetter(gsh.a::b),
-                  i.e.optionalFieldOf("y", i.a).forGetter(gsh.a::c),
-                  Codec.BOOL.optionalFieldOf("uvlock", false).forGetter(gsh.a::d)
-               )
-               .apply($$0, gsh.a::new)
-      );
-      public static final gsh.a b = new gsh.a(i.a, i.a, false);
+   public gsg d() {
+      return this.e;
+   }
 
-      public hly a() {
-         hlk $$0 = hlk.a(this.c, this.d);
-         return (hly)(this.e ? $$0.c() : $$0);
+   public gsg e() {
+      return this.f;
+   }
+
+   public gsg f() {
+      return this.g;
+   }
+
+   public gsg g() {
+      return this.h;
+   }
+
+   public gsg h() {
+      return this.i;
+   }
+
+   protected static class a implements JsonDeserializer<gsh> {
+      public gsh a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gsg $$4 = this.a($$2, $$3, czl.c);
+         gsg $$5 = this.a($$2, $$3, czl.b);
+         if ($$5 == gsg.a) {
+            $$5 = $$4;
+         }
+
+         gsg $$6 = this.a($$2, $$3, czl.e);
+         gsg $$7 = this.a($$2, $$3, czl.d);
+         if ($$7 == gsg.a) {
+            $$7 = $$6;
+         }
+
+         gsg $$8 = this.a($$2, $$3, czl.f);
+         gsg $$9 = this.a($$2, $$3, czl.g);
+         gsg $$10 = this.a($$2, $$3, czl.h);
+         gsg $$11 = this.a($$2, $$3, czl.i);
+         return new gsh($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      public gsh.a a(i $$0) {
-         return new gsh.a($$0, this.d, this.e);
-      }
-
-      public gsh.a b(i $$0) {
-         return new gsh.a(this.c, $$0, this.e);
-      }
-
-      public gsh.a a(boolean $$0) {
-         return new gsh.a(this.c, this.d, $$0);
-      }
-
-      public i b() {
-         return this.c;
-      }
-
-      public i c() {
-         return this.d;
-      }
-
-      public boolean d() {
-         return this.e;
+      private gsg a(JsonDeserializationContext $$0, JsonObject $$1, czl $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gsg)$$0.deserialize($$1.get($$3), gsg.class) : gsg.a;
       }
    }
 }

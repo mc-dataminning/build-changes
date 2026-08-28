@@ -1,32 +1,16 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import org.apache.commons.io.FileUtils;
+public interface edy {
+   void a(Throwable var1, eej var2, dir var3);
 
-public class edy extends edv {
-   private final edx a;
-   private final Path b;
+   void b(Throwable var1, eej var2, dir var3);
 
-   public edy(eee $$0, Path $$1, eee $$2, Path $$3, DataFixer $$4, boolean $$5) {
-      super($$0, $$1, $$4, $$5);
-      this.b = $$3;
-      this.a = new edx($$2, $$3, $$5);
+   static aa a(dir $$0, dir $$1) {
+      p $$2 = p.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
+      q $$3 = $$2.a("Misplaced Chunk");
+      $$3.a("Stored Position", $$0::toString);
+      return new aa($$2);
    }
 
-   @Override
-   public CompletableFuture<Void> a(dio $$0, Supplier<tz> $$1) {
-      this.e($$0);
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
+   default void a(dir $$0, dir $$1, eej $$2) {
+      this.a(a($$0, $$1), $$2, $$1);
    }
 }

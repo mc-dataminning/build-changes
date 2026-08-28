@@ -1,25 +1,28 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum ddn implements bak {
-   a(0, "food"),
-   b(1, "blocks"),
-   c(2, "misc");
-
-   private static final IntFunction<ddn> f = ayc.a($$0 -> $$0.g, values(), ayc.a.a);
-   public static final Codec<ddn> d = bak.a(ddn::values);
-   public static final yw<ByteBuf, ddn> e = yu.a(f, $$0 -> $$0.g);
-   private final int g;
-   private final String h;
-
-   private ddn(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+public class ddn extends ddk {
+   public ddn(String $$0, ddq $$1, dea $$2, czn $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.h;
+   protected czj f() {
+      return czr.xx;
+   }
+
+   @Override
+   public deo<ddn> a() {
+      return deo.p;
+   }
+
+   @Override
+   public dep<ddn> b() {
+      return dep.c;
+   }
+
+   @Override
+   public deh h() {
+      return switch (this.e()) {
+         case b -> deg.h;
+         case a, c -> deg.i;
+      };
    }
 }

@@ -1,191 +1,174 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dnw extends dly implements dpy {
-   public static final MapCodec<dnw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), t()).apply($$0, dnw::new)
-   );
-   private static final Logger d = LogUtils.getLogger();
-   public static final ebm<jb> b = doq.a;
-   public static final ebf c = ebe.f;
-   private final boolean e;
+public class dnw extends dmd {
+   public static final MapCodec<dnw> a = b(dnw::new);
+   private static final int d = 6;
+   public static final int b = 3;
+   public static final List<ebk> c = List.of(ebj.bs, ebj.bt, ebj.bu, ebj.bv, ebj.bw, ebj.bx);
 
    @Override
    public MapCodec<dnw> a() {
       return a;
    }
 
-   public dnw(boolean $$0, ean.d $$1) {
-      super($$1);
-      this.l(this.C.b().b(b, jb.c).b(c, Boolean.valueOf(false)));
-      this.e = $$0;
-   }
+   public dnw(eas.d $$0) {
+      super($$0);
+      eat $$1 = this.C.b().b(dqs.e, jb.c);
 
-   @Override
-   public dxm a(iv $$0, eao $$1) {
-      dxx $$2 = new dxx($$0, $$1);
-      $$2.b(this.e);
-      return $$2;
-   }
-
-   @Override
-   protected void a(eao $$0, djh $$1, iv $$2, dmm $$3, @Nullable eyd $$4, boolean $$5) {
-      if (!$$1.C) {
-         if ($$1.c_($$2) instanceof dxx $$7) {
-            this.a($$1, $$2, $$7, $$1.D($$2));
-         }
+      for (ebk $$2 : c) {
+         $$1 = $$1.b($$2, Boolean.valueOf(false));
       }
-   }
 
-   private void a(djh $$0, iv $$1, dxx $$2, boolean $$3) {
-      boolean $$4 = $$2.c();
-      if ($$3 != $$4) {
-         $$2.a($$3);
-         if ($$3) {
-            if ($$2.d() || $$2.s() == dxx.a.a) {
-               return;
-            }
-
-            $$2.k();
-            $$0.a($$1, this, 1);
-         }
-      }
+      this.l($$1);
    }
 
    @Override
-   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
-      if ($$1.c_($$2) instanceof dxx $$5) {
-         dii $$6 = $$5.a();
-         boolean $$7 = !bal.b($$6.m());
-         dxx.a $$8 = $$5.s();
-         boolean $$9 = $$5.j();
-         if ($$8 == dxx.a.b) {
-            $$5.k();
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.t()) {
-               $$6.a(0);
-            }
-
-            if ($$5.c() || $$5.d()) {
-               $$1.a($$2, this, 1);
-            }
-         } else if ($$8 == dxx.a.c) {
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.t()) {
-               $$6.a(0);
+   protected bug a(czn $$0, eat $$1, djm $$2, iv $$3, crm $$4, buf $$5, fey $$6) {
+      if ($$2.c_($$3) instanceof dyb $$7) {
+         if (!$$0.a(axk.ba)) {
+            return bug.f;
+         } else {
+            OptionalInt $$9 = this.a($$6, $$1);
+            if ($$9.isEmpty()) {
+               return bug.e;
+            } else if ($$1.c(c.get($$9.getAsInt()))) {
+               return bug.f;
+            } else {
+               a($$2, $$3, $$4, $$7, $$0, $$9.getAsInt());
+               return bug.a;
             }
          }
-
-         $$1.b($$2, this);
-      }
-   }
-
-   private void a(eao $$0, arq $$1, iv $$2, dii $$3, boolean $$4) {
-      if ($$4) {
-         $$3.a($$1);
-      } else {
-         $$3.a(0);
-      }
-
-      a($$1, $$2, $$0.c(b));
-   }
-
-   @Override
-   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
-      dxm $$5 = $$1.c_($$2);
-      if ($$5 instanceof dxx && $$3.gF()) {
-         $$3.a((dxx)$$5);
-         return bug.a;
       } else {
          return bug.e;
       }
    }
 
    @Override
-   protected boolean c_(eao $$0) {
+   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
+      if ($$1.c_($$2) instanceof dyb $$5) {
+         OptionalInt $$7 = this.a($$4, $$0);
+         if ($$7.isEmpty()) {
+            return bug.e;
+         } else if (!$$0.c(c.get($$7.getAsInt()))) {
+            return bug.c;
+         } else {
+            a($$1, $$2, $$3, $$5, $$7.getAsInt());
+            return bug.a;
+         }
+      } else {
+         return bug.e;
+      }
+   }
+
+   private OptionalInt a(fey $$0, eat $$1) {
+      return a($$0, $$1.c(dqs.e)).map($$0x -> {
+         int $$1x = $$0x.k >= 0.5F ? 0 : 1;
+         int $$2 = a($$0x.j);
+         return OptionalInt.of($$2 + $$1x * 3);
+      }).orElseGet(OptionalInt::empty);
+   }
+
+   private static Optional<ffb> a(fey $$0, jb $$1) {
+      jb $$2 = $$0.c();
+      if ($$1 != $$2) {
+         return Optional.empty();
+      } else {
+         iv $$3 = $$0.b().a($$2);
+         ffc $$4 = $$0.g().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
+         double $$5 = $$4.a();
+         double $$6 = $$4.b();
+         double $$7 = $$4.c();
+
+         return switch ($$2) {
+            case c -> Optional.of(new ffb((float)(1.0 - $$5), (float)$$6));
+            case d -> Optional.of(new ffb((float)$$5, (float)$$6));
+            case e -> Optional.of(new ffb((float)$$7, (float)$$6));
+            case f -> Optional.of(new ffb((float)(1.0 - $$7), (float)$$6));
+            case a, b -> Optional.empty();
+         };
+      }
+   }
+
+   private static int a(float $$0) {
+      float $$1 = 0.0625F;
+      float $$2 = 0.375F;
+      if ($$0 < 0.375F) {
+         return 0;
+      } else {
+         float $$3 = 0.6875F;
+         return $$0 < 0.6875F ? 1 : 2;
+      }
+   }
+
+   private static void a(djm $$0, iv $$1, crm $$2, dyb $$3, czn $$4, int $$5) {
+      if (!$$0.C) {
+         $$2.b(awx.c.b($$4.h()));
+         awm $$6 = $$4.a(czr.vG) ? awn.fe : awn.fd;
+         $$3.a($$5, $$4.b(1, $$2));
+         $$0.a(null, $$1, $$6, awo.e, 1.0F, 1.0F);
+      }
+   }
+
+   private static void a(djm $$0, iv $$1, crm $$2, dyb $$3, int $$4) {
+      if (!$$0.C) {
+         czn $$5 = $$3.a($$4, 1);
+         awm $$6 = $$5.a(czr.vG) ? awn.fh : awn.fg;
+         $$0.a(null, $$1, $$6, awo.e, 1.0F, 1.0F);
+         if (!$$2.gi().g($$5)) {
+            $$2.a($$5, false);
+         }
+
+         $$0.a($$2, eft.c, $$1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public dxr a(iv $$0, eat $$1) {
+      return new dyb($$0, $$1);
+   }
+
+   @Override
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(dqs.e);
+      c.forEach($$1 -> $$0.a($$1));
+   }
+
+   @Override
+   protected void a(eat $$0, arq $$1, iv $$2, boolean $$3) {
+      buc.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public eat a(ddg $$0) {
+      return this.m().b(dqs.e, $$0.g().g());
+   }
+
+   @Override
+   public eat a(eat $$0, dtl $$1) {
+      return $$0.b(dqs.e, $$1.a($$0.c(dqs.e)));
+   }
+
+   @Override
+   public eat a(eat $$0, dru $$1) {
+      return $$0.a($$1.a($$0.c(dqs.e)));
+   }
+
+   @Override
+   protected boolean c_(eat $$0) {
       return true;
    }
 
    @Override
-   protected int a(eao $$0, djh $$1, iv $$2) {
-      dxm $$3 = $$1.c_($$2);
-      return $$3 instanceof dxx ? ((dxx)$$3).a().k() : 0;
-   }
-
-   @Override
-   public void a(djh $$0, iv $$1, eao $$2, bxj $$3, czk $$4) {
-      if ($$0.c_($$1) instanceof dxx $$6) {
-         dii $$8 = $$6.a();
-         if ($$0 instanceof arq $$9) {
-            if (!$$4.c(kk.aa)) {
-               $$8.a($$9.O().c(djd.q));
-               $$6.b(this.e);
-            }
-
-            boolean $$10 = $$0.D($$1);
-            this.a($$0, $$1, $$6, $$10);
-         }
-      }
-   }
-
-   @Override
-   protected eao a(eao $$0, dtg $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected eao a(eao $$0, drp $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public eao a(ddd $$0) {
-      return this.m().b(b, $$0.d().g());
-   }
-
-   private static void a(arq $$0, iv $$1, jb $$2) {
-      iv.a $$3 = $$1.k();
-      djd $$4 = $$0.O();
-      int $$5 = $$4.d(djd.z);
-
-      while ($$5-- > 0) {
-         $$3.c($$2);
-         eao $$6 = $$0.a_($$3);
-         dmm $$7 = $$6.b();
-         if (!$$6.a(dmo.ln) || !($$0.c_($$3) instanceof dxx $$9) || $$9.s() != dxx.a.a) {
-            break;
-         }
-
-         if ($$9.c() || $$9.d()) {
-            dii $$10 = $$9.a();
-            if ($$9.k()) {
-               if (!$$10.a($$0)) {
-                  break;
-               }
-
-               $$0.b($$3, $$7);
-            } else if ($$9.t()) {
-               $$10.a(0);
-            }
-         }
-
-         $$2 = $$6.c(b);
-      }
-
-      if ($$5 <= 0) {
-         int $$11 = Math.max($$4.d(djd.z), 0);
-         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
+   protected int a(eat $$0, djm $$1, iv $$2) {
+      if ($$1.w_()) {
+         return 0;
+      } else {
+         return $$1.c_($$2) instanceof dyb $$3 ? $$3.j() + 1 : 0;
       }
    }
 }

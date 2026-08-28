@@ -1,16 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class emq implements elx {
-   public static final Codec<emq> a = ayu.c(eqm.c).fieldOf("features").xmap(emq::new, $$0 -> $$0.b).codec();
-   public final jj<eqm> b;
+public class emq implements emc {
+   public static final Codec<emq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(emk.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, emq::new)
+   );
+   public final List<emk.a> b;
 
-   public emq(jj<eqm> $$0) {
-      this.b = $$0;
+   public emq(eat $$0, eat $$1) {
+      this(ImmutableList.of(emk.a(new eut($$0), $$1)));
    }
 
-   @Override
-   public Stream<ejf<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public emq(List<emk.a> $$0) {
+      this.b = $$0;
    }
 }

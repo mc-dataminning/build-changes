@@ -1,40 +1,87 @@
-public class ggg extends ggk<hdq> {
-   public static final gjx a = gjx.scaling(0.5F);
-   private final gjo b;
-   private final gjo c;
+import java.util.List;
 
-   public ggg(gjo $$0) {
+public class ggg extends ggp<hcx> {
+   public static final List<gjt> a = List.of();
+   private final gjt b;
+   private final List<gjt> c;
+
+   public ggg(gjt $$0) {
       super($$0);
-      this.c = $$0.b("left_wing");
-      this.b = $$0.b("right_wing");
+      gjt $$1 = $$0.b("root");
+      gjt $$2 = $$1.b("upper_body");
+      this.b = $$2.b("head");
+      this.c = List.of(this.b);
    }
 
-   public static gju a() {
-      gjw $$0 = new gjw();
-      gjy $$1 = $$0.a();
-      gjs $$2 = new gjs(1.0F);
-      $$1.a(
-         "left_wing",
-         gjt.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gjq.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
+   private static gkb b() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      gkd $$2 = $$1.a("root", gjy.c(), gjv.a(0.0F, 24.0F, 0.0F));
+      gkd $$3 = $$2.a("upper_body", gjy.c(), gjv.a(-1.0F, -19.0F, 0.0F));
+      $$3.a(
+         "head",
+         gjy.c()
+            .a(0, 0)
+            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
+            .a(28, 31)
+            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
+            .a(12, 40)
+            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
+            .a(34, 12)
+            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
+         gjv.a(-3.0F, -11.0F, 0.0F)
       );
-      $$1.a(
-         "right_wing",
-         gjt.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gjq.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      $$3.a("body", gjy.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), gjv.a(0.0F, -7.0F, 1.0F));
+      $$3.a(
+         "right_arm", gjy.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), gjv.a(-7.0F, -9.5F, 1.5F)
       );
-      return gju.a($$0, 64, 32);
+      $$3.a(
+         "left_arm",
+         gjy.c()
+            .a(30, 40)
+            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
+            .a(52, 12)
+            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
+            .a(52, 19)
+            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+         gjv.a(6.0F, -9.0F, 0.5F)
+      );
+      $$2.a(
+         "left_leg", gjy.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), gjv.a(1.5F, -16.0F, 0.5F)
+      );
+      $$2.a(
+         "right_leg",
+         gjy.c()
+            .a(0, 34)
+            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
+            .a(45, 46)
+            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
+            .a(12, 34)
+            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
+         gjv.a(-1.0F, -17.5F, 0.5F)
+      );
+      return $$0;
    }
 
-   public void a(hdq $$0) {
+   public static gjz a() {
+      gkb $$0 = b();
+      return gjz.a($$0, 64, 64);
+   }
+
+   public void a(hcx $$0) {
       super.a($$0);
-      this.c.c = $$0.N ? 3.0F : 0.0F;
-      this.c.e = $$0.S;
-      this.c.g = $$0.U;
-      this.c.f = $$0.T;
-      this.b.f = -this.c.f;
-      this.b.c = this.c.c;
-      this.b.e = this.c.e;
-      this.b.g = -this.c.g;
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      if ($$0.e) {
+         this.a(fqo.a, $$0.ad, $$0.ae, 1.0F, 1.0F);
+      }
+
+      this.a($$0.b, fqo.b, $$0.u);
+      this.a($$0.a, fqo.c, $$0.u);
+      this.a($$0.c, fqo.d, $$0.u);
+   }
+
+   public List<gjt> b(hcx $$0) {
+      return !$$0.d ? a : this.c;
    }
 }

@@ -1,51 +1,32 @@
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class hga {
-   private final Function<alg, hfz> a;
-   private final Function<alg, hfv.a> b;
+public class hga implements hgf {
+   static final hgf a = new hga();
 
-   public hga(hlx $$0) {
-      this.a = $$0::a;
-      this.b = $$0::b;
-   }
-
-   public void a(hgc $$0, czk $$1, czi $$2, bxj $$3) {
-      this.a($$0, $$1, $$2, $$3.dU(), $$3, $$3.ao() + $$2.ordinal());
-   }
-
-   public void a(hgc $$0, czk $$1, czi $$2, bwi $$3) {
-      this.a($$0, $$1, $$2, $$3.dU(), null, $$3.ao());
-   }
-
-   public void a(hgc $$0, czk $$1, czi $$2, @Nullable djh $$3, @Nullable bxj $$4, int $$5) {
-      $$0.b();
-      if (!$$1.f()) {
-         $$0.a = $$2;
-         this.b($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public void a(hgi $$0, czn $$1, hgg $$2, czl $$3, @Nullable gkq $$4, @Nullable bxj $$5, int $$6) {
+      czn $$7 = cyc.i($$1);
+      if (!$$7.f()) {
+         $$2.b($$0, $$7, $$3, $$4, $$5, $$6);
       }
    }
 
-   private static void b(czk $$0) {
-      if ($$0.h() instanceof cxs $$1 && $$1.c() instanceof dli) {
-         dck $$2 = $$0.a(kk.ak);
-         if ($$2 != null && !$$2.b()) {
-            $$0.e(kk.ak);
-            $$2.a().thenAcceptAsync($$1x -> $$0.b(kk.ak, $$1x), fpo.Q());
-         }
-      }
-   }
+   public static record a() implements hgf.b {
+      public static final MapCodec<hga.a> a = MapCodec.unit(new hga.a());
 
-   public void b(hgc $$0, czk $$1, czi $$2, @Nullable djh $$3, @Nullable bxj $$4, int $$5) {
-      b($$1);
-      alg $$6 = $$1.a(kk.i);
-      if ($$6 != null) {
-         this.a.apply($$6).a($$0, $$1, this, $$2, $$3 instanceof gkl $$7 ? $$7 : null, $$4, $$5);
+      @Override
+      public MapCodec<hga.a> a() {
+         return a;
       }
-   }
 
-   public boolean a(czk $$0) {
-      alg $$1 = $$0.a(kk.i);
-      return $$1 == null ? true : this.b.apply($$1).a();
+      @Override
+      public hgf a(hgf.a $$0) {
+         return hga.a;
+      }
+
+      @Override
+      public void a(hmi.a $$0) {
+      }
    }
 }

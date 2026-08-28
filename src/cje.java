@@ -19,7 +19,7 @@ public interface cje {
    }
 
    static void a(qh<cjd> $$0) {
-      jg<eri> $$1 = $$0.a(mh.be);
+      jg<ern> $$1 = $$0.a(mh.be);
       a($$0, a, "entity/cat/tabby");
       a($$0, b, "entity/cat/black");
       a($$0, c, "entity/cat/red");
@@ -30,18 +30,18 @@ public interface cje {
       a($$0, h, "entity/cat/ragdoll");
       a($$0, i, "entity/cat/white");
       a($$0, j, "entity/cat/jellie");
-      a($$0, k, "entity/cat/all_black", new ctq(List.of(new ctm.a<>(new ctr($$1.b(axn.o)), 1), new ctm.a<>(new ctl(cw.c.b(0.9)), 0))));
+      a($$0, k, "entity/cat/all_black", new ctt(List.of(new ctp.a<>(new ctu($$1.b(axn.o)), 1), new ctp.a<>(new cto(cw.c.b(0.9)), 0))));
    }
 
    private static void a(qh<cjd> $$0, alf<cjd> $$1, String $$2) {
-      a($$0, $$1, $$2, ctq.a(0));
+      a($$0, $$1, $$2, ctt.a(0));
    }
 
-   private static void a(qh<cjd> $$0, alf<cjd> $$1, String $$2, ctq $$3) {
+   private static void a(qh<cjd> $$0, alf<cjd> $$1, String $$2, ctt $$3) {
       $$0.a($$1, new cjd(new iw(alg.b($$2)), $$3));
    }
 
-   static Optional<jf.c<cjd>> a(azv $$0, jt $$1, ctp $$2) {
-      return ctm.a($$1.f(mh.aH).c(), jf::a, $$0, $$2);
+   static Optional<jf.c<cjd>> a(azv $$0, jt $$1, cts $$2) {
+      return ctp.a($$1.f(mh.aH).c(), jf::a, $$0, $$2);
    }
 }

@@ -1,87 +1,57 @@
 import javax.annotation.Nullable;
 
-public class cls extends cef {
-   private final clr a;
+public class cls extends cli {
+   private static final bwl bG = bwr.bP.n().a(bwk.a().a(bwj.a, 0.0F, bwr.bP.m() - 0.03125F, 0.0F)).a(0.5F);
 
-   public cls(clr $$0) {
-      this.a = $$0;
+   public cls(bwr<? extends cls> $$0, djm $$1) {
+      super($$0, $$1);
+   }
+
+   public static byo.a q() {
+      return gU().a(byp.s, 15.0).a(byp.v, 0.2F);
+   }
+
+   public static boolean c(bwr<? extends ciz> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
+      return !bwq.a($$2) ? ciz.b($$0, $$1, $$2, $$3, $$4) : bwq.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public boolean b() {
-      return this.a.dU().a(this.a.dz(), this.a.dB(), this.a.dF(), 10.0);
+   protected void a(azv $$0) {
+      this.g(byp.o).a(a($$0::j));
    }
 
    @Override
-   public void a() {
-      arq $$0 = (arq)this.a.dU();
-      bue $$1 = $$0.d_(this.a.du());
-      this.a.w(false);
-      this.a.x(true);
-      this.a.c_(0);
-      bxi $$2 = bwr.aw.a($$0, bwq.k);
-      if ($$2 != null) {
-         $$2.d(this.a.dz(), this.a.dB(), this.a.dF());
-         $$2.a(true);
-         $$0.b($$2);
-         cot $$3 = this.a($$1, this.a);
-         if ($$3 != null) {
-            $$3.n(this.a);
-            $$0.a_($$3);
+   protected awm u() {
+      return awn.Ey;
+   }
 
-            for (int $$4 = 0; $$4 < 3; $$4++) {
-               cll $$5 = this.a($$1);
-               if ($$5 != null) {
-                  cot $$6 = this.a($$1, $$5);
-                  if ($$6 != null) {
-                     $$6.n($$5);
-                     $$5.i(this.a.dX().a(0.0, 1.1485), 0.0, this.a.dX().a(0.0, 1.1485));
-                     $$0.a_($$5);
-                  }
-               }
-            }
-         }
-      }
+   @Override
+   protected awm l_() {
+      return awn.Ez;
+   }
+
+   @Override
+   protected awm e(bux $$0) {
+      return awn.EA;
    }
 
    @Nullable
-   private cll a(bue $$0) {
-      clr $$1 = bwr.bg.a(this.a.dU(), bwq.k);
-      if ($$1 != null) {
-         $$1.a((arq)this.a.dU(), $$0, bwq.k, null);
-         $$1.a_(this.a.dz(), this.a.dB(), this.a.dF());
-         $$1.aj = 60;
-         $$1.gb();
-         $$1.x(true);
-         $$1.c_(0);
-      }
-
-      return $$1;
+   @Override
+   public bvy a(arq $$0, bvy $$1) {
+      return bwr.bP.a($$0, bwq.e);
    }
 
-   @Nullable
-   private cot a(bue $$0, cll $$1) {
-      cot $$2 = bwr.bf.a($$1.dU(), bwq.k);
-      if ($$2 != null) {
-         $$2.a((arq)$$1.dU(), $$0, bwq.k, null);
-         $$2.a_($$1.dz(), $$1.dB(), $$1.dF());
-         $$2.aj = 60;
-         $$2.gb();
-         if ($$2.a(bws.f).f()) {
-            $$2.a(bws.f, new czk(czo.qu));
-         }
-
-         this.a($$2, bws.a, $$0);
-         this.a($$2, bws.f, $$0);
-      }
-
-      return $$2;
+   @Override
+   public bug b(crm $$0, buf $$1) {
+      return (bug)(!this.gK() ? bug.e : super.b($$0, $$1));
    }
 
-   private void a(cot $$0, bws $$1, bue $$2) {
-      czk $$3 = $$0.a($$1);
-      $$3.b(kk.l, dgd.a);
-      dfz.a($$3, $$0.dU().F_(), dhl.a, $$2, $$0.dX());
-      $$0.a($$1, $$3);
+   @Override
+   protected void gL() {
+   }
+
+   @Override
+   public bwl e(bxv $$0) {
+      return this.n_() ? bG : super.e($$0);
    }
 }

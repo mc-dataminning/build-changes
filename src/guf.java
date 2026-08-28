@@ -1,112 +1,107 @@
-import org.joml.FrustumIntersection;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
 public class guf {
-   public static final int a = 4;
-   private final FrustumIntersection b = new FrustumIntersection();
-   private final Matrix4f c = new Matrix4f();
-   private Vector4f d;
-   private double e;
-   private double f;
-   private double g;
+   private final gru a;
+   private final gtc b;
 
-   public guf(Matrix4f $$0, Matrix4f $$1) {
-      this.a($$0, $$1);
+   public guf(gru $$0, gtc $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public guf(guf $$0) {
-      this.b.set($$0.c);
-      this.c.set($$0.c);
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.d = $$0.d;
-   }
+   public guf.a a(jy $$0, gud $$1, fkl $$2, grf $$3) {
+      guf.a $$4 = new guf.a();
+      iv $$5 = $$0.j();
+      iv $$6 = $$5.b(15, 15, 15);
+      guh $$7 = new guh();
+      fkd $$8 = new fkd();
+      grw.a();
+      Map<grc, fjz> $$9 = new Reference2ObjectArrayMap(grc.U().size());
+      azv $$10 = azv.a();
 
-   public guf a(int $$0) {
-      double $$1 = Math.floor(this.e / (double)$$0) * (double)$$0;
-      double $$2 = Math.floor(this.f / (double)$$0) * (double)$$0;
-      double $$3 = Math.floor(this.g / (double)$$0) * (double)$$0;
-      double $$4 = Math.ceil(this.e / (double)$$0) * (double)$$0;
-      double $$5 = Math.ceil(this.f / (double)$$0) * (double)$$0;
+      for (iv $$11 : iv.c($$5, $$6)) {
+         eat $$12 = $$1.a_($$11);
+         if ($$12.s()) {
+            $$7.a($$11);
+         }
 
-      for (double $$6 = Math.ceil(this.g / (double)$$0) * (double)$$0;
-         this.b
-               .intersectAab(
-                  (float)($$1 - this.e), (float)($$2 - this.f), (float)($$3 - this.g), (float)($$4 - this.e), (float)($$5 - this.f), (float)($$6 - this.g)
-               )
-            != -2;
-         this.g = this.g - (double)(this.d.z() * 4.0F)
-      ) {
-         this.e = this.e - (double)(this.d.x() * 4.0F);
-         this.f = this.f - (double)(this.d.y() * 4.0F);
+         if ($$12.x()) {
+            dxr $$13 = $$1.c_($$11);
+            if ($$13 != null) {
+               this.a($$4, $$13);
+            }
+         }
+
+         exa $$14 = $$12.y();
+         if (!$$14.c()) {
+            grc $$15 = gqj.a($$14);
+            fjz $$16 = this.a($$9, $$3, $$15);
+            this.a.a($$11, $$1, $$16, $$12, $$14);
+         }
+
+         if ($$12.o() == dte.b) {
+            grc $$17 = gqj.a($$12);
+            fjz $$18 = this.a($$9, $$3, $$17);
+            $$8.a();
+            $$8.a((float)jy.b($$11.u()), (float)jy.b($$11.v()), (float)jy.b($$11.w()));
+            this.a.a($$12, $$11, $$1, $$8, $$18, true, $$10);
+            $$8.b();
+         }
       }
 
-      return this;
-   }
+      for (Entry<grc, fjz> $$19 : $$9.entrySet()) {
+         grc $$20 = $$19.getKey();
+         fkc $$21 = $$19.getValue().a();
+         if ($$21 != null) {
+            if ($$20 == grc.f()) {
+               $$4.e = $$21.a($$3.a(grc.f()), $$2);
+            }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   private void a(Matrix4f $$0, Matrix4f $$1) {
-      $$1.mul($$0, this.c);
-      this.b.set(this.c);
-      this.d = this.c.transformTranspose(new Vector4f(0.0F, 0.0F, 1.0F, 0.0F));
-   }
-
-   public boolean a(fes $$0) {
-      int $$1 = this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
-      return $$1 == -2 || $$1 == -1;
-   }
-
-   public int a(era $$0) {
-      return this.a((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
-   }
-
-   private int a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      float $$6 = (float)($$0 - this.e);
-      float $$7 = (float)($$1 - this.f);
-      float $$8 = (float)($$2 - this.g);
-      float $$9 = (float)($$3 - this.e);
-      float $$10 = (float)($$4 - this.f);
-      float $$11 = (float)($$5 - this.g);
-      return this.b.intersectAab($$6, $$7, $$8, $$9, $$10, $$11);
-   }
-
-   public Vector4f[] a() {
-      Vector4f[] $$0 = new Vector4f[]{
-         new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F),
-         new Vector4f(1.0F, -1.0F, -1.0F, 1.0F),
-         new Vector4f(1.0F, 1.0F, -1.0F, 1.0F),
-         new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F),
-         new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F),
-         new Vector4f(1.0F, -1.0F, 1.0F, 1.0F),
-         new Vector4f(1.0F, 1.0F, 1.0F, 1.0F),
-         new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F)
-      };
-      Matrix4f $$1 = this.c.invert(new Matrix4f());
-
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         $$1.transform($$0[$$2]);
-         $$0[$$2].div($$0[$$2].w());
+            $$4.c.put($$20, $$21);
+         }
       }
 
-      return $$0;
+      grw.b();
+      $$4.d = $$7.a();
+      return $$4;
    }
 
-   public double b() {
-      return this.e;
+   private fjz a(Map<grc, fjz> $$0, grf $$1, grc $$2) {
+      fjz $$3 = $$0.get($$2);
+      if ($$3 == null) {
+         fka $$4 = $$1.a($$2);
+         $$3 = new fjz($$4, fki.c.h, fkb.b);
+         $$0.put($$2, $$3);
+      }
+
+      return $$3;
    }
 
-   public double c() {
-      return this.f;
+   private <E extends dxr> void a(guf.a $$0, E $$1) {
+      gtd<E> $$2 = this.b.a($$1);
+      if ($$2 != null) {
+         $$0.b.add($$1);
+         if ($$2.a($$1)) {
+            $$0.a.add($$1);
+         }
+      }
    }
 
-   public double d() {
-      return this.g;
+   public static final class a {
+      public final List<dxr> a = new ArrayList<>();
+      public final List<dxr> b = new ArrayList<>();
+      public final Map<grc, fkc> c = new Reference2ObjectArrayMap();
+      public gui d = new gui();
+      @Nullable
+      public fkc.b e;
+
+      public void a() {
+         this.c.values().forEach(fkc::close);
+      }
    }
 }

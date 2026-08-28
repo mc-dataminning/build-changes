@@ -1,20 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class evm extends eve {
-   public static final MapCodec<evm> a = axr.a(mh.i).fieldOf("tag").xmap(evm::new, $$0 -> $$0.b);
-   private final axr<dmm> b;
-
-   public evm(axr<dmm> $$0) {
-      this.b = $$0;
+public abstract class evm {
+   @Nullable
+   public evp.d a(djp $$0, iv $$1, iv $$2, evp.d $$3, evp.d $$4, evl $$5) {
+      return $$4;
    }
 
-   @Override
-   public boolean a(eao $$0, azv $$1) {
-      return $$0.a(this.b);
-   }
+   protected abstract evo<?> a();
 
-   @Override
-   protected evf<?> a() {
-      return evf.d;
+   public List<evp.d> a(dkd $$0, iv $$1, iv $$2, List<evp.d> $$3, List<evp.d> $$4, evl $$5) {
+      return $$4;
    }
 }

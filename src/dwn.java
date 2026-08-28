@@ -1,33 +1,96 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Supplier;
 
-public class dwn extends dtz implements dwi {
-   public static final MapCodec<dwn> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dwi.a.e.fieldOf("weathering_state").forGetter(dnp::c), t()).apply($$0, dwn::new)
+public interface dwn extends dnu<dwn.a> {
+   Supplier<BiMap<dmr, dmr>> v_ = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dmt.rE, dmt.rF)
+            .put(dmt.rF, dmt.rG)
+            .put(dmt.rG, dmt.rH)
+            .put(dmt.rN, dmt.rM)
+            .put(dmt.rM, dmt.rL)
+            .put(dmt.rL, dmt.rK)
+            .put(dmt.rR, dmt.rQ)
+            .put(dmt.rQ, dmt.rP)
+            .put(dmt.rP, dmt.rO)
+            .put(dmt.sd, dmt.sc)
+            .put(dmt.sc, dmt.sb)
+            .put(dmt.sb, dmt.sa)
+            .put(dmt.rZ, dmt.rY)
+            .put(dmt.rY, dmt.rX)
+            .put(dmt.rX, dmt.rW)
+            .put(dmt.su, dmt.sv)
+            .put(dmt.sv, dmt.sx)
+            .put(dmt.sx, dmt.sw)
+            .put(dmt.sC, dmt.sD)
+            .put(dmt.sD, dmt.sF)
+            .put(dmt.sF, dmt.sE)
+            .put(dmt.sK, dmt.sL)
+            .put(dmt.sL, dmt.sM)
+            .put(dmt.sM, dmt.sN)
+            .put(dmt.sS, dmt.sT)
+            .put(dmt.sT, dmt.sU)
+            .put(dmt.sU, dmt.sV)
+            .build()
    );
-   private final dwi.a e;
+   Supplier<BiMap<dmr, dmr>> w_ = Suppliers.memoize(() -> v_.get().inverse());
+
+   static Optional<dmr> a(dmr $$0) {
+      return Optional.ofNullable((dmr)w_.get().get($$0));
+   }
+
+   static dmr b(dmr $$0) {
+      dmr $$1 = $$0;
+
+      for (dmr $$2 = (dmr)w_.get().get($$0); $$2 != null; $$2 = (dmr)w_.get().get($$2)) {
+         $$1 = $$2;
+      }
+
+      return $$1;
+   }
+
+   static Optional<eat> b(eat $$0) {
+      return a($$0.b()).map($$1 -> $$1.m($$0));
+   }
+
+   static Optional<dmr> c(dmr $$0) {
+      return Optional.ofNullable((dmr)v_.get().get($$0));
+   }
+
+   static eat c(eat $$0) {
+      return b($$0.b()).m($$0);
+   }
 
    @Override
-   public MapCodec<dwn> a() {
-      return d;
-   }
-
-   public dwn(dwi.a $$0, ean.d $$1) {
-      super($$1);
-      this.e = $$0;
+   default Optional<eat> k_(eat $$0) {
+      return c($$0.b()).map($$1 -> $$1.m($$0));
    }
 
    @Override
-   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   default float ar_() {
+      return this.c() == dwn.a.a ? 0.75F : 1.0F;
    }
 
-   @Override
-   protected boolean f(eao $$0) {
-      return dwi.c($$0.b()).isPresent();
-   }
+   public static enum a implements bak {
+      a("unaffected"),
+      b("exposed"),
+      c("weathered"),
+      d("oxidized");
 
-   public dwi.a q() {
-      return this.e;
+      public static final Codec<dwn.a> e = bak.a(dwn.a::values);
+      private final String f;
+
+      private a(final String $$0) {
+         this.f = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

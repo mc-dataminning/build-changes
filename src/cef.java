@@ -52,7 +52,7 @@ public abstract class cef {
       return (arq)$$0.dU();
    }
 
-   protected static arq a(djh $$0) {
+   protected static arq a(djm $$0) {
       return (arq)$$0;
    }
 

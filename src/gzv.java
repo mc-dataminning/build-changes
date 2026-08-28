@@ -1,40 +1,22 @@
-public class gzv extends gxz<cnb, hfm, gjc> {
-   private static final alg a = alg.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alg j = alg.b("textures/entity/wither/wither.png");
+public class gzv extends gxr<cpd, hdx> {
+   private static final alg a = alg.b("textures/entity/illager/vindicator.png");
 
-   public gzv(gwt.a $$0) {
-      super($$0, new gjc($$0.a(gjn.dS)), 1.0F);
-      this.a(new hbu(this, $$0.f()));
+   public gzv(gwy.a $$0) {
+      super($$0, new ghe<>($$0.a(gjs.dN)), 0.5F);
+      this.a(new hbe<hdx, ghe<hdx>>(this) {
+         public void a(fkd $$0, gqr $$1, int $$2, hdx $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   protected int a(cnb $$0, iv $$1) {
-      return 15;
+   public alg a(hdx $$0) {
+      return a;
    }
 
-   public alg a(hfm $$0) {
-      int $$1 = azm.d($$0.c);
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : j;
-   }
-
-   public hfm b() {
-      return new hfm();
-   }
-
-   protected void a(hfm $$0, fjy $$1) {
-      float $$2 = 2.0F;
-      if ($$0.c > 0.0F) {
-         $$2 -= $$0.c / 220.0F * 0.5F;
-      }
-
-      $$1.b($$2, $$2, $$2);
-   }
-
-   public void a(cnb $$0, hfm $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      int $$3 = $$0.t();
-      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.x();
+   public hdx b() {
+      return new hdx();
    }
 }

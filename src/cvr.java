@@ -1,9 +1,7 @@
 public interface cvr {
-   void a(cvc var1, jo<czk> var2, czk var3, int[] var4);
+   int a(int var1);
 
-   void a(cvc var1, int var2, czk var3);
+   void a(int var1, int var2);
 
-   void a(cvc var1, czk var2);
-
-   void a(cvc var1, int var2, int var3);
+   int a();
 }

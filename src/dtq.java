@@ -1,167 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Collection;
 
-public class dtq extends drt implements dtk {
-   public static final MapCodec<dtq> e = b(dtq::new);
-   private final dru f = new dru(new dtq.a(dru.a));
-   private final dru g = new dru(new dtq.a(dru.e.a));
+public class dtq extends dpc implements dtp {
+   public static final MapCodec<dtq> b = b(dtq::new);
 
    @Override
    public MapCodec<dtq> a() {
-      return e;
+      return b;
    }
 
-   public dtq(ean.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dru c() {
-      return this.f;
-   }
-
-   public dru q() {
-      return this.g;
-   }
-
-   public static boolean a(dji $$0, iv $$1, eao $$2, Collection<jb> $$3) {
-      boolean $$4 = false;
-      eao $$5 = dmo.rB.m();
-
-      for (jb $$6 : $$3) {
-         if (a($$0, $$1, $$6)) {
-            $$5 = $$5.b(b($$6), Boolean.valueOf(true));
-            $$4 = true;
-         }
-      }
-
-      if (!$$4) {
-         return false;
-      } else {
-         if (!$$2.y().c()) {
-            $$5 = $$5.b(drs.c, Boolean.valueOf(true));
-         }
-
-         $$0.a($$1, $$5, 3);
-         return true;
-      }
+   public dtq(eas.d $$0) {
+      super(bti.a(1), $$0);
    }
 
    @Override
-   public void a(dji $$0, eao $$1, iv $$2, azv $$3) {
-      if ($$1.a(this)) {
-         for (jb $$4 : d) {
-            ebf $$5 = b($$4);
-            if ($$1.c($$5) && $$0.a_($$2.a($$4)).a(dmo.rA)) {
-               $$1 = $$1.b($$5, Boolean.valueOf(false));
-            }
-         }
-
-         if (!q($$1)) {
-            ewv $$6 = $$0.b_($$2);
-            $$1 = ($$6.c() ? dmo.a : dmo.J).m();
-         }
-
-         $$0.a($$2, $$1, 3);
-         dtk.super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public int a(dtp.a $$0, dji $$1, iv $$2, azv $$3, dtp $$4, boolean $$5) {
-      if ($$5 && this.a($$4, $$1, $$0.a(), $$3)) {
-         return $$0.b() - 1;
-      } else {
-         return $$3.a($$4.f()) == 0 ? azm.d((float)$$0.b() * 0.5F) : $$0.b();
-      }
-   }
-
-   private boolean a(dtp $$0, dji $$1, iv $$2, azv $$3) {
-      eao $$4 = $$1.a_($$2);
-      axr<dmm> $$5 = $$0.c();
-
-      for (jb $$6 : jb.a($$3)) {
-         if (a($$4, $$6)) {
-            iv $$7 = $$2.a($$6);
-            eao $$8 = $$1.a_($$7);
-            if ($$8.a($$5)) {
-               eao $$9 = dmo.rA.m();
-               $$1.a($$7, $$9, 3);
-               dmm.a($$8, $$9, $$1, $$7);
-               $$1.a(null, $$7, awn.wJ, awo.e, 1.0F, 1.0F);
-               this.f.a($$9, $$1, $$7, $$0.h());
-               jb $$10 = $$6.g();
-
-               for (jb $$11 : d) {
-                  if ($$11 != $$10) {
-                     iv $$12 = $$7.a($$11);
-                     eao $$13 = $$1.a_($$12);
-                     if ($$13.a(this)) {
-                        this.a($$1, $$13, $$12, $$3);
-                     }
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(dji $$0, eao $$1, iv $$2) {
-      if (!$$1.a(dmo.rB)) {
-         return false;
-      } else {
-         for (jb $$3 : d) {
-            if (a($$1, $$3) && $$0.a_($$2.a($$3)).a(axc.bW)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   class a extends dru.a {
-      private final dru.e[] b;
-
-      public a(final dru.e... $$0) {
-         super(dtq.this);
-         this.b = $$0;
-      }
-
-      @Override
-      public boolean a(din $$0, iv $$1, iv $$2, jb $$3, eao $$4) {
-         eao $$5 = $$0.a_($$2.a($$3));
-         if (!$$5.a(dmo.rA) && !$$5.a(dmo.rC) && !$$5.a(dmo.ca)) {
-            if ($$1.k($$2) == 2) {
-               iv $$6 = $$1.a($$3.g());
-               if ($$0.a_($$6).c($$0, $$6, $$3)) {
-                  return false;
-               }
+   public int a(dtu.a $$0, djn $$1, iv $$2, azv $$3, dtu $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         iv $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               iv $$10 = $$7.d();
+               eat $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.A().e(), awo.e, 1.0F, 1.0F);
             }
 
-            ewv $$7 = $$4.y();
-            if (!$$7.c() && !$$7.b(eww.c)) {
-               return false;
-            } else {
-               return $$4.a(axc.aN) ? false : $$4.v() || super.a($$0, $$1, $$2, $$3, $$4);
-            }
+            return Math.max(0, $$6 - $$9);
          } else {
-            return false;
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
+      } else {
+         return $$6;
+      }
+   }
+
+   private static int a(dtu $$0, iv $$1, iv $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = azm.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = azm.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private eat a(djn $$0, iv $$1, azv $$2, boolean $$3) {
+      eat $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dmt.rD.m().b(dtt.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dmt.ry.m();
       }
 
-      @Override
-      public dru.e[] a() {
-         return this.b;
-      }
+      return $$4.b(ebj.I) && !$$0.b_($$1).c() ? $$4.b(ebj.I, Boolean.valueOf(true)) : $$4;
+   }
 
-      @Override
-      public boolean a(eao $$0) {
-         return !$$0.a(dmo.rB);
+   private static boolean a(djn $$0, iv $$1) {
+      eat $$2 = $$0.a_($$1.d());
+      if ($$2.l() || $$2.a(dmt.J) && $$2.y().b(exb.c)) {
+         int $$3 = 0;
+
+         for (iv $$4 : iv.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            eat $$5 = $$0.a_($$4);
+            if ($$5.a(dmt.ry) || $$5.a(dmt.rD)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public boolean d() {
+      return false;
    }
 }

@@ -1,8 +1,8 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public record adp(int b, List<cul.a> c) implements zf<abu> {
-   public static final yw<vu, adp> a = yw.a(yu.h, adp::b, cul.a.a.a(yu.a()), adp::e, adp::new);
+public record adp(int b, List<cuo.a> c) implements zf<abu> {
+   public static final yw<vu, adp> a = yw.a(yu.h, adp::b, cuo.a.a.a(yu.a()), adp::e, adp::new);
 
    @Override
    public zh<adp> a() {
@@ -14,11 +14,11 @@ public record adp(int b, List<cul.a> c) implements zf<abu> {
    }
 
    @Nullable
-   public bwi a(djh $$0) {
+   public bwi a(djm $$0) {
       return $$0.a(this.b);
    }
 
-   public List<cul.a> e() {
+   public List<cuo.a> e() {
       return this.c;
    }
 }

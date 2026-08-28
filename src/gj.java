@@ -15,27 +15,27 @@ public class gj implements gi {
    }
 
    @Override
-   public fex a(ej $$0) {
-      few $$1 = $$0.k();
-      fex $$2 = $$0.m().a($$0);
+   public ffc a(ej $$0) {
+      ffb $$1 = $$0.k();
+      ffc $$2 = $$0.m().a($$0);
       float $$3 = azm.b(($$1.k + 90.0F) * (float) (Math.PI / 180.0));
       float $$4 = azm.a(($$1.k + 90.0F) * (float) (Math.PI / 180.0));
       float $$5 = azm.b(-$$1.j * (float) (Math.PI / 180.0));
       float $$6 = azm.a(-$$1.j * (float) (Math.PI / 180.0));
       float $$7 = azm.b((-$$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$8 = azm.a((-$$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      fex $$9 = new fex((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      fex $$10 = new fex((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      fex $$11 = $$9.c($$10).c(-1.0);
+      ffc $$9 = new ffc((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      ffc $$10 = new ffc((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      ffc $$11 = $$9.c($$10).c(-1.0);
       double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
       double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
-      return new fex($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
+      return new ffc($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
    @Override
-   public few b(ej $$0) {
-      return few.a;
+   public ffb b(ej $$0) {
+      return ffb.a;
    }
 
    @Override

@@ -1,89 +1,24 @@
 import java.util.List;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 
-public class edg<T> implements edb<T> {
-   private final jk<T> a;
-   @Nullable
-   private T b;
-   private final edc<T> c;
+public interface edg<T> {
+   int a(T var1);
 
-   public edg(jk<T> $$0, edc<T> $$1, List<T> $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
-      }
-   }
+   boolean a(Predicate<T> var1);
 
-   public static <A> edb<A> a(int $$0, jk<A> $$1, edc<A> $$2, List<A> $$3) {
-      return new edg<>($$1, $$2, $$3);
-   }
+   T a(int var1);
 
-   @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
-      } else {
-         this.b = $$0;
-         return 0;
-      }
-   }
+   void a(vu var1);
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
-      }
-   }
+   void b(vu var1);
 
-   @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
-      }
-   }
+   int a();
 
-   @Override
-   public void a(vu $$0) {
-      this.b = this.a.b($$0.l());
-   }
+   int b();
 
-   @Override
-   public void b(vu $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
-   }
+   edg<T> a(edh<T> var1);
 
-   @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return wp.a(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public edb<T> a(edc<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
-      }
+   public interface a {
+      <A> edg<A> create(int var1, jk<A> var2, edh<A> var3, List<A> var4);
    }
 }

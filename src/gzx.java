@@ -1,46 +1,36 @@
-public class gzx extends gws<cst, hfn> {
-   private static final alg a = alg.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alg g = alg.b("textures/entity/wither/wither.png");
-   private final gih h;
+public class gzx extends gye<cqp, hfq, gjd> {
+   private static final alg a = alg.b("textures/entity/warden/warden.png");
+   private static final alg j = alg.b("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final alg k = alg.b("textures/entity/warden/warden_heart.png");
+   private static final alg l = alg.b("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final alg m = alg.b("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public gzx(gwt.a $$0) {
-      super($$0);
-      this.h = new gih($$0.a(gjn.dY));
+   public gzx(gwy.a $$0) {
+      super($$0, new gjd($$0.a(gjs.dP)), 0.9F);
+      this.a(new hbf<>(this, j, ($$0x, $$1) -> 1.0F, gjd::d, grc::k, false));
+      this.a(new hbf<>(this, l, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F) * 0.25F), gjd::e, grc::k, false));
+      this.a(new hbf<>(this, m, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gjd::e, grc::k, false));
+      this.a(new hbf<>(this, a, ($$0x, $$1) -> $$0x.a, gjd::b, grc::k, false));
+      this.a(new hbf<>(this, k, ($$0x, $$1) -> $$0x.b, gjd::c, grc::k, false));
    }
 
-   public static gju a() {
-      gjw $$0 = new gjw();
-      gjy $$1 = $$0.a();
-      $$1.a("head", gjt.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gjq.a);
-      return gju.a($$0, 64, 64);
+   public alg a(hfq $$0) {
+      return a;
    }
 
-   protected int a(cst $$0, iv $$1) {
-      return 15;
+   public hfq b() {
+      return new hfq();
    }
 
-   public void a(hfn $$0, fjy $$1, gqm $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      fkc $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$0.c, $$0.b);
-      this.h.a($$1, $$4, $$3, hja.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private alg a(hfn $$0) {
-      return $$0.a ? a : g;
-   }
-
-   public hfn b() {
-      return new hfn();
-   }
-
-   public void a(cst $$0, hfn $$1, float $$2) {
+   public void a(cqp $$0, hfq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.o();
-      $$1.c = $$0.l($$2);
-      $$1.b = $$0.k($$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = $$0.K($$2);
+      $$1.c.a($$0.a);
+      $$1.d.a($$0.b);
+      $$1.e.a($$0.c);
+      $$1.f.a($$0.d);
+      $$1.g.a($$0.bG);
+      $$1.h.a($$0.bH);
    }
 }

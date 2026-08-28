@@ -17,7 +17,7 @@ public class aoo {
       });
    }
 
-   private static Collection<String> a(aun $$0, ezi $$1, Collection<String> $$2) {
+   private static Collection<String> a(aun $$0, ezn $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.D().a().b();
@@ -36,7 +36,7 @@ public class aoo {
          ej $$1 = (ej)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
          aun $$3 = $$2.aF();
-         ezi $$4 = $$2.aZ();
+         ezn $$4 = $$2.aZ();
          Collection<String> $$5 = $$3.e();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> wy.c("commands.reload.success"), true);

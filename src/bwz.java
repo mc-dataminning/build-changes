@@ -1,3 +1,3 @@
 public interface bwz {
-   void b(crj var1);
+   void b(crm var1);
 }

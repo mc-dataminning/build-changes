@@ -1,52 +1,31 @@
-public class hnk {
-   public static class a extends hmq {
-      private final gpj n;
+public class hnk extends hmx {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final cly p;
 
-      protected a(gpj $$0, awm $$1) {
-         super($$1, awo.i, hnh.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dP() || !this.n.bl()) {
-            this.n();
-         }
-      }
+   public hnk(cly $$0) {
+      super(awn.zy, awo.g, hno.t());
+      this.p = $$0;
+      this.k = hno.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
-   public static class b extends hmq {
-      public static final int n = 40;
-      private final gpj o;
-      private int p;
+   @Override
+   public boolean s() {
+      return !this.p.aZ();
+   }
 
-      public b(gpj $$0) {
-         super(awn.z, awo.i, hnh.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
+   @Override
+   public void q() {
+      if (!this.p.dP() && this.p.f() == null && this.p.gu()) {
+         this.f = (double)((float)this.p.dz());
+         this.g = (double)((float)this.p.dB());
+         this.h = (double)((float)this.p.dF());
          this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (!this.o.dP() && this.p >= 0) {
-            if (this.o.bl()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
+         this.e = 1.0F;
+      } else {
+         this.n();
       }
    }
 }

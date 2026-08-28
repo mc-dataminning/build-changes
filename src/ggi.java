@@ -1,45 +1,48 @@
-public class ggi<T extends hcy> extends ggy<T> {
-   public ggi(gjo $$0) {
+public class ggi extends ggp<hda> {
+   public static final gkc a = gkc.scaling(0.5F);
+   private final gjt b;
+   private final gjt c;
+   private final gjt d;
+
+   public ggi(gjt $$0) {
       super($$0);
+      this.b = $$0.b("body");
+      this.c = this.b.b("tail");
+      this.d = this.c.b("tail_fin");
    }
 
-   public static gju a() {
-      float $$0 = -14.0F;
-      gjw $$1 = ggy.a(gjs.a, -14.0F);
-      gjy $$2 = $$1.a();
-      gjy $$3 = $$2.a("head", gjt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gjq.a(0.0F, -13.0F, 0.0F));
-      $$3.a("hat", gjt.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gjs(-0.5F)), gjq.a);
-      $$2.a("body", gjt.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), gjq.a(0.0F, -14.0F, 0.0F));
-      $$2.a("right_arm", gjt.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gjq.a(-5.0F, -12.0F, 0.0F));
-      $$2.a("left_arm", gjt.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gjq.a(5.0F, -12.0F, 0.0F));
-      $$2.a("right_leg", gjt.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gjq.a(-2.0F, -5.0F, 0.0F));
-      $$2.a("left_leg", gjt.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gjq.a(2.0F, -5.0F, 0.0F));
-      return gju.a($$1, 64, 32);
+   public static gjz a() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      gkd $$4 = $$1.a("body", gjy.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), gjv.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", gjy.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), gjv.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         gjy.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gjv.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         gjy.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gjv.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      gkd $$5 = $$4.a("tail", gjy.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), gjv.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", gjy.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), gjv.a(0.0F, 0.0F, 9.0F));
+      gkd $$6 = $$4.a("head", gjy.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), gjv.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", gjy.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), gjv.a);
+      return gjz.a($$0, 64, 64);
    }
 
-   public void a(T $$0) {
+   public void a(hda $$0) {
       super.a($$0);
-      this.o.k = true;
-      this.r.e *= 0.5F;
-      this.s.e *= 0.5F;
-      this.t.e *= 0.5F;
-      this.u.e *= 0.5F;
-      float $$1 = 0.4F;
-      this.r.e = azm.a(this.r.e, -0.4F, 0.4F);
-      this.s.e = azm.a(this.s.e, -0.4F, 0.4F);
-      this.t.e = azm.a(this.t.e, -0.4F, 0.4F);
-      this.u.e = azm.a(this.u.e, -0.4F, 0.4F);
-      if ($$0.b != null) {
-         this.r.e = -0.5F;
-         this.s.e = -0.5F;
-         this.r.g = 0.05F;
-         this.s.g = -0.05F;
-      }
-
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
       if ($$0.a) {
-         float $$2 = 5.0F;
-         this.o.c -= 5.0F;
-         this.p.c += 5.0F;
+         this.b.e = this.b.e + (-0.05F - 0.05F * azm.b($$0.u * 0.3F));
+         this.c.e = -0.1F * azm.b($$0.u * 0.3F);
+         this.d.e = -0.2F * azm.b($$0.u * 0.3F);
       }
    }
 }

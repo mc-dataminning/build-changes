@@ -1,181 +1,120 @@
-import com.google.common.collect.Lists;
+import com.google.common.base.Suppliers;
 import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
 public class glc {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wy b = wy.c("multiplayer.status.cannot_connect").b(-65536);
-   private final List<vr> c = Collections.synchronizedList(Lists.newArrayList());
+   private final GameProfile a;
+   private final Supplier<hks> b;
+   private djj c = djj.e;
+   private int d;
+   @Nullable
+   private wy e;
+   private boolean f = true;
+   @Nullable
+   private xp g;
+   private xu h;
+   private int i;
 
-   public void a(final gla $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
-      final gmd $$3 = gmd.a($$0.b);
-      Optional<InetSocketAddress> $$4 = gmf.a.a($$3).map(gmc::d);
-      if ($$4.isEmpty()) {
-         this.a(fxm.b, $$0);
-      } else {
-         final InetSocketAddress $$5 = $$4.get();
-         final vr $$6 = vr.a($$5, false, null);
-         this.c.add($$6);
-         $$0.d = wy.c("multiplayer.status.pinging");
-         $$0.i = Collections.emptyList();
-         akb $$7 = new akb() {
-            private boolean h;
-            private boolean i;
-            private long j;
-
-            @Override
-            public void a(akc $$0x) {
-               if (this.i) {
-                  $$6.a(wy.c("multiplayer.status.unrequested"));
-               } else {
-                  this.i = true;
-                  akd $$1 = $$0.b();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = wy.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = wy.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = glc.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<wy> $$2xx = new ArrayList<>($$1xxx.c().size());
-
-                        for (GameProfile $$3xx : $$1xxx.c()) {
-                           $$2xx.add(wy.b($$3xx.getName()));
-                        }
-
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(wy.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
-
-                        $$0.i = $$2xx;
-                     } else {
-                        $$0.i = List.of();
-                     }
-                  }, () -> $$0.c = wy.c("multiplayer.status.unknown").a(o.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a(gla.b($$2xx.a()));
-                        $$1.run();
-                     }
-                  });
-                  this.j = ag.c();
-                  $$6.a(new ajz(this.j));
-                  this.h = true;
-               }
-            }
-
-            @Override
-            public void a(ajw $$0x) {
-               long $$1 = this.j;
-               long $$2 = ag.c();
-               $$0.f = $$2 - $$1;
-               $$6.a(wy.c("multiplayer.status.finished"));
-               $$2.run();
-            }
-
-            @Override
-            public void a(vt $$0x) {
-               if (!this.h) {
-                  glc.this.a($$0.a(), $$0);
-                  glc.this.a($$5, $$3, $$0);
-               }
-            }
-
-            @Override
-            public boolean c() {
-               return $$6.i();
-            }
-         };
-
-         try {
-            $$6.a($$3.a(), $$3.b(), $$7);
-            $$6.a(akf.a);
-         } catch (Throwable var10) {
-            a.error("Failed to ping server {}", $$3, var10);
-         }
-      }
+   public glc(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.h = c($$1);
+      Supplier<Supplier<hks>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   void a(wy $$0, gla $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = wx.a;
+   private static Supplier<hks> a(GameProfile $$0) {
+      fpt $$1 = fpt.Q();
+      hkt $$2 = $$1.an();
+      CompletableFuture<Optional<hks>> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      hks $$5 = hki.a($$0);
+      return () -> {
+         hks $$3x = $$3.getNow(Optional.empty()).orElse($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   void a(InetSocketAddress $$0, final gmd $$1, final gla $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)vr.e.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
-            try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
-            }
-
-            $$0.pipeline().addLast(new ChannelHandler[]{new gkt($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.a(gla.b.d);
-               $$2.h = wy.b($$2xx);
-               $$2.d = wy.b($$3);
-               $$2.c = glc.a($$4, $$5);
-               $$2.e = new akd.b($$5, $$4, List.of());
-            })});
-         }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
+   public GameProfile a() {
+      return this.a;
    }
 
-   public static wy a(int $$0, int $$1) {
-      wy $$2 = wy.b(Integer.toString($$0)).a(o.h);
-      wy $$3 = wy.b(Integer.toString($$1)).a(o.h);
-      return wy.a("multiplayer.status.player_count", $$2, $$3).a(o.i);
+   @Nullable
+   public xp b() {
+      return this.g;
    }
 
-   public void a() {
-      synchronized (this.c) {
-         Iterator<vr> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            vr $$1 = $$0.next();
-            if ($$1.i()) {
-               $$1.b();
-            } else {
-               $$0.remove();
-               $$1.n();
-            }
-         }
-      }
+   public xu c() {
+      return this.h;
    }
 
-   public void b() {
-      synchronized (this.c) {
-         Iterator<vr> $$0 = this.c.iterator();
+   public boolean d() {
+      return this.g != null;
+   }
 
-         while ($$0.hasNext()) {
-            vr $$1 = $$0.next();
-            if ($$1.i()) {
-               $$0.remove();
-               $$1.a(wy.c("multiplayer.status.cancelled"));
-            }
-         }
-      }
+   protected void a(xp $$0) {
+      this.g = $$0;
+      this.h = $$0.a(crq.b);
+   }
+
+   protected void a(boolean $$0) {
+      this.g = null;
+      this.h = c($$0);
+   }
+
+   private static xu c(boolean $$0) {
+      return $$0 ? xu.c : xu.b;
+   }
+
+   public djj e() {
+      return this.c;
+   }
+
+   protected void a(djj $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public hks g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public fgc h() {
+      return fpt.Q().s.R().e(this.a().getName());
+   }
+
+   public void a(@Nullable wy $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wy i() {
+      return this.e;
+   }
+
+   public void b(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public void b(int $$0) {
+      this.i = $$0;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

@@ -5,40 +5,40 @@ import java.util.function.Supplier;
 public interface bya {
    bya a = new bya() {
       @Override
-      public czk a() {
-         return czk.k;
+      public czn a() {
+         return czn.k;
       }
 
       @Override
-      public boolean a(czk $$0) {
+      public boolean a(czn $$0) {
          return false;
       }
    };
 
-   static bya a(final Supplier<czk> $$0, final Consumer<czk> $$1) {
+   static bya a(final Supplier<czn> $$0, final Consumer<czn> $$1) {
       return new bya() {
          @Override
-         public czk a() {
+         public czn a() {
             return $$0.get();
          }
 
          @Override
-         public boolean a(czk $$0x) {
+         public boolean a(czn $$0x) {
             $$1.accept($$0);
             return true;
          }
       };
    }
 
-   static bya a(final btz $$0, final int $$1, final Predicate<czk> $$2) {
+   static bya a(final btz $$0, final int $$1, final Predicate<czn> $$2) {
       return new bya() {
          @Override
-         public czk a() {
+         public czn a() {
             return $$0.a($$1);
          }
 
          @Override
-         public boolean a(czk $$0x) {
+         public boolean a(czn $$0x) {
             if (!$$2.test($$0)) {
                return false;
             } else {
@@ -53,15 +53,15 @@ public interface bya {
       return a($$0, $$1, $$0x -> true);
    }
 
-   static bya a(final bxj $$0, final bws $$1, final Predicate<czk> $$2) {
+   static bya a(final bxj $$0, final bws $$1, final Predicate<czn> $$2) {
       return new bya() {
          @Override
-         public czk a() {
+         public czn a() {
             return $$0.a($$1);
          }
 
          @Override
-         public boolean a(czk $$0x) {
+         public boolean a(czn $$0x) {
             if (!$$2.test($$0)) {
                return false;
             } else {
@@ -76,7 +76,7 @@ public interface bya {
       return a($$0, $$1, $$0x -> true);
    }
 
-   czk a();
+   czn a();
 
-   boolean a(czk var1);
+   boolean a(czn var1);
 }

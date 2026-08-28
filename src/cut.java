@@ -1,112 +1,11 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public final class cut {
-   private static final cut b = new cut(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cuu c;
-   private final long d;
+public interface cut {
+   Set<alf<? extends js<? extends cut>>> bU = Set.of(mh.K, mh.i, mh.B, mh.V, mh.ae, mh.W);
 
-   private cut(@Nullable cuu $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   cuw k();
 
-   static cut a(cuu $$0, Collection<cur> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cut($$0, $$2);
-      }
-   }
-
-   public static cut a() {
-      return b;
-   }
-
-   public static cut a(cur $$0) {
-      return new cut($$0.a, $$0.b);
-   }
-
-   public static cut a(cur $$0, cur... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cut($$0.a, $$2);
-   }
-
-   private static long a(cuu $$0, long $$1, Iterable<cur> $$2) {
-      for (cur $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cur $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean b() {
-      return this.equals(b);
-   }
-
-   public boolean a(cut $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public boolean b(cut $$0) {
-      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
-   }
-
-   public cut c(cut $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cut(this.c, this.d | $$0.d);
-      }
-   }
-
-   public cut d(cut $$0) {
-      if (this.c == null || $$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         long $$1 = this.d & ~$$0.d;
-         return $$1 == 0L ? b : new cut(this.c, $$1);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cut $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   default boolean a(cuw $$0) {
+      return this.k().a($$0);
    }
 }

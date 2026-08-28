@@ -27,7 +27,7 @@ public class anr {
    }
 
    private static int a(ej $$0, gu $$1, Collection<arr> $$2, int $$3) throws CommandSyntaxException {
-      czk $$4 = $$1.a(1, false);
+      czn $$4 = $$1.a(1, false);
       int $$5 = $$4.k();
       int $$6 = $$5 * 100;
       if ($$3 > $$6) {
@@ -40,10 +40,10 @@ public class anr {
             while ($$8 > 0) {
                int $$9 = Math.min($$5, $$8);
                $$8 -= $$9;
-               czk $$10 = $$1.a($$9, false);
+               czn $$10 = $$1.a($$9, false);
                boolean $$11 = $$7.gi().g($$10);
                if ($$11 && $$10.f()) {
-                  cno $$13 = $$7.a($$4, false);
+                  cnr $$13 = $$7.a($$4, false);
                   if ($$13 != null) {
                      $$13.u();
                   }
@@ -51,7 +51,7 @@ public class anr {
                   $$7.dU().a(null, $$7.dz(), $$7.dB(), $$7.dF(), awn.oj, awo.h, 0.2F, (($$7.dX().i() - $$7.dX().i()) * 0.7F + 1.0F) * 2.0F);
                   $$7.bR.d();
                } else {
-                  cno $$12 = $$7.a($$10, false);
+                  cnr $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.m();
                      $$12.b($$7.cF());

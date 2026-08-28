@@ -1,7 +1,4 @@
-import javax.annotation.Nullable;
-
-public class hcy extends hdq {
-   public boolean a;
-   @Nullable
-   public eao b;
+public class hcy extends hef {
+   public float a;
+   public boolean b;
 }

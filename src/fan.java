@@ -1,83 +1,48 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-public class fan extends fbb {
-   public static final MapCodec<fan> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  mg.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(ebr::f).toList())
-               )
-            )
-            .apply($$0, fan::new)
-   );
-   private final jf<dmm> b;
-   private final Set<ebr<?>> c;
+public class fan extends fac {
+   public static final MapCodec<fan> a = a(fan::new);
 
-   fan(List<fcx> $$0, jf<dmm> $$1, Set<ebr<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   private fan(List<fcx> $$0, jf<dmm> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   fan(List<faj> $$0, List<fdc> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public fbd<fan> b() {
-      return fbe.D;
+   public fak a() {
+      return fah.h;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return Set.of(fci.g);
-   }
-
-   @Override
-   protected czk a(czk $$0, ezo $$1) {
-      eao $$2 = $$1.c(fci.g);
-      if ($$2 != null) {
-         $$0.a(kk.aq, dbk.a, $$1x -> {
-            for (ebr<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
+   protected fab a(List<? extends fab> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (fab)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (fab $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
             }
+         }
 
-            return $$1x;
-         });
-      }
-
-      return $$0;
+         return true;
+      };
+      };
    }
 
-   public static fan.a a(dmm $$0) {
+   public static fan.a a(faj.a<?>... $$0) {
       return new fan.a($$0);
    }
 
-   public static class a extends fbb.a<fan.a> {
-      private final jf<dmm> a;
-      private final Builder<ebr<?>> b = ImmutableSet.builder();
+   public static class a extends faj.a<fan.a> {
+      private final Builder<faj> a = ImmutableList.builder();
 
-      a(dmm $$0) {
-         this.a = $$0.p();
-      }
-
-      public fan.a a(ebr<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
+      public a(faj.a<?>... $$0) {
+         for (faj.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
       }
 
@@ -86,8 +51,14 @@ public class fan extends fbb {
       }
 
       @Override
-      public fbc b() {
-         return new fan(this.g(), this.a, this.b.build());
+      public fan.a c(faj.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public faj b() {
+         return new fan(this.a.build(), this.f());
       }
    }
 }

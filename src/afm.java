@@ -1,5 +1,5 @@
-public record afm(int b, czk c) implements zf<abu> {
-   public static final yw<wj, afm> a = yw.a(yu.h, afm::b, czk.h, afm::e, afm::new);
+public record afm(int b, czn c) implements zf<abu> {
+   public static final yw<wj, afm> a = yw.a(yu.h, afm::b, czn.h, afm::e, afm::new);
 
    @Override
    public zh<afm> a() {
@@ -10,7 +10,7 @@ public record afm(int b, czk c) implements zf<abu> {
       $$0.a(this);
    }
 
-   public czk e() {
+   public czn e() {
       return this.c;
    }
 }

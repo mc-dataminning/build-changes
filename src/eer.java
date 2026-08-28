@@ -1,24 +1,19 @@
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eer<T> {
-   private final dio a;
-   private final List<T> b;
+public record eer(jf<eeq> e, ecr f) {
+   public static final Codec<eer> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eeq.l.fieldOf("type").forGetter(eer::a), ecr.a.fieldOf("generator").forGetter(eer::b)).apply($$0, $$0.stable(eer::new))
+   );
+   public static final alf<eer> b = alf.a(mh.bq, alg.b("overworld"));
+   public static final alf<eer> c = alf.a(mh.bq, alg.b("the_nether"));
+   public static final alf<eer> d = alf.a(mh.bq, alg.b("the_end"));
 
-   public eer(dio $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public jf<eeq> a() {
+      return this.e;
    }
 
-   public dio a() {
-      return this.a;
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public boolean c() {
-      return this.b.isEmpty();
+   public ecr b() {
+      return this.f;
    }
 }

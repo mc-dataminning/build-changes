@@ -3,16 +3,16 @@ public class bxp extends bwi {
    private static final int c = 120;
    private static final String d = "spawn_item_after_ticks";
    private static final String e = "item";
-   private static final akj<czk> f = akn.a(bxp.class, akl.h);
+   private static final akj<czn> f = akn.a(bxp.class, akl.h);
    public static final int a = 36;
    private long g;
 
-   public bxp(bwr<? extends bxp> $$0, djh $$1) {
+   public bxp(bwr<? extends bxp> $$0, djm $$1) {
       super($$0, $$1);
       this.ad = true;
    }
 
-   public static bxp a(djh $$0, czk $$1) {
+   public static bxp a(djm $$0, czn $$1) {
       bxp $$2 = new bxp(bwr.aJ, $$0);
       $$2.g = (long)$$0.A.a(60, 120);
       $$2.a($$1);
@@ -48,41 +48,41 @@ public class bxp extends bwi {
 
    private void m() {
       if (this.dU() instanceof arq $$0) {
-         czk $$2 = this.g();
+         czn $$2 = this.g();
          if (!$$2.f()) {
             bwi $$4;
-            if ($$2.h() instanceof dae $$3) {
+            if ($$2.h() instanceof dah $$3) {
                $$4 = this.a($$0, $$3, $$2);
             } else {
-               $$4 = new cno($$0, this.dz(), this.dB(), this.dF(), $$2);
+               $$4 = new cnr($$0, this.dz(), this.dB(), this.dF(), $$2);
                $$0.b($$4);
             }
 
             $$0.c(3021, this.du(), 1);
-            $$0.a($$4, efo.t, this.ds());
-            this.a(czk.k);
+            $$0.a($$4, eft.t, this.ds());
+            this.a(czn.k);
          }
       }
    }
 
-   private bwi a(arq $$0, dae $$1, czk $$2) {
-      dae.a $$3 = $$1.a();
+   private bwi a(arq $$0, dah $$1, czn $$2) {
+      dah.a $$3 = $$1.a();
       $$3.e().ifPresent($$1x -> $$0.c($$1x, this.du(), 0));
       jb $$4 = jb.a;
-      cse $$5 = cse.a($$1.a($$0, this.ds(), $$2, $$4), $$0, $$2, (double)$$4.j(), (double)$$4.k(), (double)$$4.l(), $$3.d(), $$3.c());
+      csh $$5 = csh.a($$1.a($$0, this.ds(), $$2, $$4), $$0, $$2, (double)$$4.j(), (double)$$4.k(), (double)$$4.l(), $$3.d(), $$3.c());
       $$5.c(this);
       return $$5;
    }
 
    @Override
    protected void a(akn.a $$0) {
-      $$0.a(f, czk.k);
+      $$0.a(f, czn.k);
    }
 
    @Override
    protected void a(tz $$0) {
       ale<uw> $$1 = this.dW().a(un.a);
-      this.a($$0.<czk>a("item", czk.b, $$1).orElse(czk.k));
+      this.a($$0.<czn>a("item", czn.b, $$1).orElse(czn.k));
       this.g = $$0.g("spawn_item_after_ticks");
    }
 
@@ -90,7 +90,7 @@ public class bxp extends bwi {
    protected void b(tz $$0) {
       if (!this.g().f()) {
          ale<uw> $$1 = this.dW().a(un.a);
-         $$0.a("item", czk.b, $$1, this.g());
+         $$0.a("item", czn.b, $$1, this.g());
       }
 
       $$0.a("spawn_item_after_ticks", this.g);
@@ -112,8 +112,8 @@ public class bxp extends bwi {
    }
 
    @Override
-   public exa j_() {
-      return exa.d;
+   public exf j_() {
+      return exf.d;
    }
 
    @Override
@@ -122,24 +122,24 @@ public class bxp extends bwi {
    }
 
    public void f() {
-      fex $$0 = this.ds();
+      ffc $$0 = this.ds();
       int $$1 = this.ae.a(1, 3);
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          double $$3 = 0.4;
-         fex $$4 = new fex(
+         ffc $$4 = new ffc(
             this.dz() + 0.4 * (this.ae.k() - this.ae.k()), this.dB() + 0.4 * (this.ae.k() - this.ae.k()), this.dF() + 0.4 * (this.ae.k() - this.ae.k())
          );
-         fex $$5 = $$0.a($$4);
+         ffc $$5 = $$0.a($$4);
          this.dU().a(ly.bf, $$0.a(), $$0.b(), $$0.c(), $$5.a(), $$5.b(), $$5.c());
       }
    }
 
-   public czk g() {
+   public czn g() {
       return this.ar().a(f);
    }
 
-   private void a(czk $$0) {
+   private void a(czn $$0) {
       this.ar().a(f, $$0);
    }
 

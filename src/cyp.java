@@ -1,20 +1,27 @@
-public class cyp extends czg {
-   public static float a = 1.5F;
-
-   public cyp(czg.a $$0) {
+public class cyp extends czj {
+   public cyp(czj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bug a(djh $$0, crj $$1, buf $$2) {
-      czk $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awn.iR, awo.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arq $$4) {
-         cse.a(cso::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
-      }
+   public bug a(djm $$0, crm $$1, buf $$2) {
+      czn $$3 = $$1.b($$2);
+      if ($$0.C) {
+         return bug.a;
+      } else {
+         $$3.a(1, $$1);
+         $$1.b(awx.c.b(this));
+         $$1.dU().a(null, $$1, awn.By, $$1.dl(), 1.0F, 1.0F);
+         czn $$4 = daa.a($$0, $$1.dy(), $$1.dE(), (byte)0, true, false);
+         if ($$3.f()) {
+            return bug.a.a($$4);
+         } else {
+            if (!$$1.gi().g($$4.v())) {
+               $$1.a($$4, false);
+            }
 
-      $$1.b(awx.c.b(this));
-      $$3.a(1, $$1);
-      return bug.a;
+            return bug.a;
+         }
+      }
    }
 }

@@ -1,44 +1,43 @@
-public class ggm extends ggk<hdb> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final gjo d;
-   private final gjo e;
-   private final gjo f;
+import org.joml.Quaternionf;
 
-   public ggm(gjo $$0) {
+public class ggm extends ggp<hdc> {
+   private static final String e = "outer_glass";
+   private static final String f = "inner_glass";
+   private static final String g = "base";
+   private static final float i = (float)Math.sin(Math.PI / 4);
+   public final gjt a;
+   public final gjt b;
+   public final gjt c;
+   public final gjt d;
+
+   public ggm(gjt $$0) {
       super($$0);
-      this.d = $$0.b("base");
-      this.e = this.d.b("upper_jaw");
-      this.f = this.d.b("lower_jaw");
+      this.a = $$0.b("base");
+      this.b = $$0.b("outer_glass");
+      this.c = this.b.b("inner_glass");
+      this.d = this.c.b("cube");
    }
 
-   public static gju a() {
-      gjw $$0 = new gjw();
-      gjy $$1 = $$0.a();
-      gjy $$2 = $$1.a("base", gjt.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gjq.a(-5.0F, 24.0F, -5.0F));
-      gjt $$3 = gjt.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, gjq.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, gjq.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return gju.a($$0, 64, 32);
+   public static gjz a() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
+      float $$2 = 0.875F;
+      gjy $$3 = gjy.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
+      gkd $$4 = $$1.a("outer_glass", $$3, gjv.a(0.0F, 24.0F, 0.0F));
+      gkd $$5 = $$4.a("inner_glass", $$3, gjv.a.a(0.875F));
+      $$5.a("cube", gjy.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gjv.a.a(0.765625F));
+      $$1.a("base", gjy.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gjv.a);
+      return gjz.a($$0, 64, 32);
    }
 
-   public void a(hdb $$0) {
+   public void a(hdc $$0) {
       super.a($$0);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.d.c = this.d.c - ($$1 + azm.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
-      }
-
-      this.v.c = 24.0F - 20.0F * $$3;
-      this.v.h = $$3;
-      this.v.i = $$3;
-      this.v.j = $$3;
+      this.a.k = $$0.a;
+      float $$1 = $$0.u * 3.0F;
+      float $$2 = gws.a($$0.u) * 16.0F;
+      this.b.c += $$2 / 2.0F;
+      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
+      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
    }
 }

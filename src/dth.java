@@ -1,22 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dth extends dnv {
-   public static final MapCodec<dth> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayf.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), t()).apply($$0, dth::new)
-   );
+public abstract class dth extends dov {
+   private static final Map<jb.a, ffw> b = fft.b(dmr.a(4.0, 4.0, 16.0));
 
-   @Override
-   public MapCodec<dth> a() {
-      return c;
-   }
-
-   public dth(ayf $$0, ean.d $$1) {
-      super($$0, $$1);
+   protected dth(eas.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(eao $$0, djh $$1, iv $$2, azv $$3) {
-      eam.a($$0, $$1, $$2, $$3);
+   protected abstract MapCodec<? extends dth> a();
+
+   @Override
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return b.get($$0.c(a).o());
+   }
+
+   @Override
+   protected eat a(eat $$0, dtl $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected eat a(eat $$0, dru $$1) {
+      return $$0.b(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(eat $$0, exp $$1) {
+      return false;
    }
 }

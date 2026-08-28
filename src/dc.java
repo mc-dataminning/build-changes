@@ -8,8 +8,8 @@ public class dc extends dk<dc.a> {
       return dc.a.a;
    }
 
-   public void a(arr $$0, czk $$1, bwi $$2) {
-      ezo $$3 = by.b($$0, $$2);
+   public void a(arr $$0, czn $$1, bwi $$2) {
+      ezt $$3 = by.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
@@ -31,7 +31,7 @@ public class dc extends dk<dc.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(czk $$0, ezo $$1) {
+      public boolean a(czn $$0, ezt $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 

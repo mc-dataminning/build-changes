@@ -13,10 +13,10 @@ public class bww extends bwi {
    private int h = 5;
    private int i = 1;
    @Nullable
-   private crj j;
+   private crm j;
    private final bxe k = new bxe(this);
 
-   public bww(djh $$0, double $$1, double $$2, double $$3, int $$4) {
+   public bww(djm $$0, double $$1, double $$2, double $$3, int $$4) {
       this(bwr.V, $$0);
       this.a_($$1, $$2, $$3);
       if (!this.dU().C) {
@@ -27,7 +27,7 @@ public class bww extends bwi {
       this.c($$4);
    }
 
-   public bww(bwr<? extends bww> $$0, djh $$1) {
+   public bww(bwr<? extends bww> $$0, djm $$1) {
       super($$0, $$1);
    }
 
@@ -84,7 +84,7 @@ public class bww extends bwi {
 
          this.i(this.dx().c((double)$$2));
          if (this.R && $$1 < -this.bc()) {
-            this.i(new fex(this.dx().d, -$$1 * 0.4, this.dx().f));
+            this.i(new ffc(this.dx().d, -$$1 * 0.4, this.dx().f));
          }
 
          this.g++;
@@ -96,7 +96,7 @@ public class bww extends bwi {
 
    private void j() {
       if (this.j == null || this.j.g(this) > 64.0) {
-         crj $$0 = this.dU().a(this, 8.0);
+         crm $$0 = this.dU().a(this, 8.0);
          if ($$0 != null && !$$0.V_() && !$$0.eG()) {
             this.j = $$0;
          } else {
@@ -105,7 +105,7 @@ public class bww extends bwi {
       }
 
       if (this.j != null) {
-         fex $$1 = new fex(this.j.dz() - this.dz(), this.j.dB() + (double)this.j.cR() / 2.0 - this.dB(), this.j.dF() - this.dF());
+         ffc $$1 = new ffc(this.j.dz() - this.dz(), this.j.dB() + (double)this.j.cR() / 2.0 - this.dB(), this.j.dF() - this.dF());
          double $$2 = $$1.h();
          double $$3 = 1.0 - Math.sqrt($$2) / 8.0;
          this.i(this.dx().e($$1.d().c($$3 * $$3 * 0.1)));
@@ -119,13 +119,13 @@ public class bww extends bwi {
 
    private void m() {
       if (this.dU() instanceof arq) {
-         for (bww $$1 : this.dU().a(efa.a(bww.class), this.cQ().g(0.5), this::a)) {
+         for (bww $$1 : this.dU().a(eff.a(bww.class), this.cQ().g(0.5), this::a)) {
             this.b($$1);
          }
       }
    }
 
-   public static void a(arq $$0, fex $$1, int $$2) {
+   public static void a(arq $$0, ffc $$1, int $$2) {
       while ($$2 > 0) {
          int $$3 = b($$2);
          $$2 -= $$3;
@@ -135,10 +135,10 @@ public class bww extends bwi {
       }
    }
 
-   private static boolean b(arq $$0, fex $$1, int $$2) {
-      fes $$3 = fes.a($$1, 1.0, 1.0, 1.0);
+   private static boolean b(arq $$0, ffc $$1, int $$2) {
+      fex $$3 = fex.a($$1, 1.0, 1.0, 1.0);
       int $$4 = $$0.C_().a(40);
-      List<bww> $$5 = $$0.a(efa.a(bww.class), $$3, $$2x -> a($$2x, $$4, $$2));
+      List<bww> $$5 = $$0.a(eff.a(bww.class), $$3, $$2x -> a($$2x, $$4, $$2));
       if (!$$5.isEmpty()) {
          bww $$6 = $$5.get(0);
          $$6.i++;
@@ -164,7 +164,7 @@ public class bww extends bwi {
    }
 
    private void n() {
-      fex $$0 = this.dx();
+      ffc $$0 = this.dx();
       this.n($$0.d * 0.99F, Math.min($$0.e + 5.0E-4F, 0.06F), $$0.f * 0.99F);
    }
 
@@ -209,7 +209,7 @@ public class bww extends bwi {
    }
 
    @Override
-   public void a_(crj $$0) {
+   public void a_(crm $$0) {
       if ($$0 instanceof arr $$1) {
          if ($$0.bX == 0) {
             $$0.bX = 2;
@@ -228,10 +228,10 @@ public class bww extends bwi {
    }
 
    private int a(arr $$0, int $$1) {
-      Optional<dfw> $$2 = dfz.a(dfy.z, $$0, czk::n);
+      Optional<dfz> $$2 = dgc.a(dgb.z, $$0, czn::n);
       if ($$2.isPresent()) {
-         czk $$3 = $$2.get().a();
-         int $$4 = dfz.c($$0.y(), $$3, $$1);
+         czn $$3 = $$2.get().a();
+         int $$4 = dgc.c($$0.y(), $$3, $$1);
          int $$5 = Math.min($$4, $$3.o());
          $$3.b($$3.o() - $$5);
          if ($$5 > 0) {

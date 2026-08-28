@@ -1,87 +1,70 @@
-public class gxp extends gws<cno, hdw> {
-   private static final float a = 0.0625F;
-   private static final float g = 0.15F;
-   private static final float h = 0.0625F;
-   private final hga i;
-   private final azv j = azv.a();
-
-   public gxp(gwt.a $$0) {
-      super($$0);
-      this.i = $$0.b();
-      this.e = 0.15F;
-      this.f = 0.75F;
+public abstract class gxp<T extends bxl, S extends hdw, M extends ghd<S>> extends gvs<T, S, M> {
+   public gxp(gwy.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$1, $$2);
    }
 
-   public hdw a() {
-      return new hdw();
+   public gxp(gwy.a $$0, M $$1, M $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, har.a.a);
    }
 
-   public void a(cno $$0, hdw $$1, float $$2) {
+   public gxp(gwy.a $$0, M $$1, M $$2, float $$3, har.a $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(new har<>(this, $$0.f(), $$4));
+      this.a(new hby<>(this, $$0.f(), $$0.h()));
+      this.a(new hbe<>(this));
+   }
+
+   protected ghd.a a(T $$0, bxa $$1) {
+      return ghd.a.a;
+   }
+
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.u = (float)$$0.g() + $$2;
-      $$1.d = $$0.b;
-      $$1.a($$0, $$0.f(), this.i);
+      a($$0, $$1, $$2, this.h);
+      $$1.h = this.a($$0, bxa.a);
+      $$1.f = this.a($$0, bxa.b);
    }
 
-   private static fes a(hgc $$0) {
-      fes.a $$1 = new fes.a();
-      $$0.a($$1::a);
-      return $$1.a();
-   }
-
-   public void a(hdw $$0, fjy $$1, gqm $$2, int $$3) {
-      if (!$$0.a.c()) {
-         $$1.a();
-         fes $$4 = a($$0.a);
-         float $$5 = -((float)$$4.b) + 0.0625F;
-         float $$6 = azm.a($$0.u / 10.0F + $$0.d) * 0.1F + 0.1F;
-         $$1.a(0.0F, $$6 + $$5, 0.0F);
-         float $$7 = cno.f($$0.u, $$0.d);
-         $$1.a(a.d.rotation($$7));
-         a($$1, $$2, $$3, $$0, this.j, $$4);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
+   public static void a(bxj $$0, hdw $$1, float $$2, hgg $$3) {
+      hcj.a($$0, $$1, $$3);
+      $$1.N = $$0.cg();
+      $$1.O = $$0.fI();
+      $$1.P = $$0.cj();
+      $$1.Q = $$0.bX();
+      $$1.I = 1.0F;
+      if ($$1.O) {
+         $$1.I = (float)$$0.dx().h();
+         $$1.I /= 0.2F;
+         $$1.I = $$1.I * $$1.I * $$1.I;
       }
-   }
 
-   public static void a(fjy $$0, gqm $$1, int $$2, hdu $$3, azv $$4) {
-      a($$0, $$1, $$2, $$3, $$4, a($$3.a));
-   }
-
-   public static void a(fjy $$0, gqm $$1, int $$2, hdu $$3, azv $$4, fes $$5) {
-      int $$6 = $$3.b;
-      if ($$6 != 0) {
-         $$4.b((long)$$3.c);
-         hgc $$7 = $$3.a;
-         float $$8 = (float)$$5.d();
-         if ($$8 > 0.0625F) {
-            $$7.a($$0, $$1, $$2, hja.d);
-
-            for (int $$9 = 1; $$9 < $$6; $$9++) {
-               $$0.a();
-               float $$10 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
-               float $$11 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
-               float $$12 = ($$4.i() * 2.0F - 1.0F) * 0.15F;
-               $$0.a($$10, $$11, $$12);
-               $$7.a($$0, $$1, $$2, hja.d);
-               $$0.b();
-            }
-         } else {
-            float $$13 = $$8 * 1.5F;
-            $$0.a(0.0F, 0.0F, -($$13 * (float)($$6 - 1) / 2.0F));
-            $$7.a($$0, $$1, $$2, hja.d);
-            $$0.a(0.0F, 0.0F, $$13);
-
-            for (int $$14 = 1; $$14 < $$6; $$14++) {
-               $$0.a();
-               float $$15 = ($$4.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float $$16 = ($$4.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               $$0.a($$15, $$16, 0.0F);
-               $$7.a($$0, $$1, $$2, hja.d);
-               $$0.b();
-               $$0.a(0.0F, 0.0F, $$13);
-            }
-         }
+      if ($$1.I < 1.0F) {
+         $$1.I = 1.0F;
       }
+
+      $$1.H = $$0.D($$2);
+      $$1.G = $$0.a($$2);
+      $$1.L = c($$0);
+      $$1.M = $$0.fz();
+      $$1.J = (float)cyg.b($$0.fA(), $$0);
+      $$1.K = $$0.fC();
+      $$1.R = $$0.fy();
+      $$1.S = $$0.aZ.a($$2);
+      $$1.T = $$0.aZ.b($$2);
+      $$1.U = $$0.aZ.c($$2);
+      $$1.V = a($$0, bws.f);
+      $$1.W = a($$0, bws.e);
+      $$1.X = a($$0, bws.d);
+      $$1.Y = a($$0, bws.c);
+   }
+
+   private static czn a(bxj $$0, bws $$1) {
+      czn $$2 = $$0.a($$1);
+      return hbb.a($$2, $$1) ? $$2.v() : czn.k;
+   }
+
+   private static bxa c(bxj $$0) {
+      bxa $$1 = $$0.fx();
+      return $$0.aJ == buf.a ? $$1 : $$1.e();
    }
 }

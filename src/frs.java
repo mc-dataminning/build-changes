@@ -1,104 +1,97 @@
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
+import java.util.Set;
+import java.util.stream.Stream;
 
-public class frs {
-   public static hfz.b a(alg $$0) {
-      return new hft.a($$0, List.of());
+public class frs implements frp {
+   private final dmr a;
+   private final List<frs.b> b;
+   private final Set<ebw<?>> c;
+
+   frs(dmr $$0, List<frs.b> $$1, Set<ebw<?>> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static hfz.b a(alg $$0, fqy... $$1) {
-      return new hft.a($$0, List.of($$1));
+   static Set<ebw<?>> a(Set<ebw<?>> $$0, dmr $$1, frt<?> $$2) {
+      List<ebw<?>> $$3 = $$2.b();
+      $$3.forEach($$2x -> {
+         if ($$1.l().a($$2x.f()) != $$2x) {
+            throw new IllegalStateException("Property " + $$2x + " is not defined for block " + $$1);
+         } else if ($$0.contains($$2x)) {
+            throw new IllegalStateException("Values of property " + $$2x + " already defined for block " + $$1);
+         }
+      });
+      Set<ebw<?>> $$4 = new HashSet<>($$0);
+      $$4.addAll($$3);
+      return $$4;
    }
 
-   public static fqy a(int $$0) {
-      return new fqt($$0);
+   public frs a(frt<gsn> $$0) {
+      Set<ebw<?>> $$1 = a(this.c, this.a, $$0);
+      List<frs.b> $$2 = this.b.stream().flatMap($$1x -> $$1x.a($$0)).toList();
+      return new frs(this.a, $$2, $$1);
    }
 
-   public static hfz.b a(hfz.b... $$0) {
-      return new hfw.a(List.of($$0));
+   public frs a(gsn $$0) {
+      List<frs.b> $$1 = this.b.stream().flatMap($$1x -> $$1x.a($$0)).toList();
+      return new frs(this.a, $$1, this.c);
    }
 
-   public static hfz.b a(alg $$0, hio.a $$1) {
-      return new hgh.a($$0, $$1);
+   @Override
+   public gsc b() {
+      Map<String, gsi> $$0 = new HashMap<>();
+
+      for (frs.b $$1 : this.b) {
+         $$0.put($$1.a.a(), $$1.b);
+      }
+
+      return new gsc($$0, Optional.empty());
    }
 
-   public static hgf.a a(hfz.b $$0, float $$1) {
-      return new hgf.a($$1, $$0);
+   @Override
+   public dmr a() {
+      return this.a;
    }
 
-   public static hfz.b a(hhk $$0, hfz.b $$1, hgf.a... $$2) {
-      return new hgf.b($$0, 1.0F, List.of($$2), Optional.of($$1));
+   public static frs.a a(dmr $$0) {
+      return new frs.a($$0);
    }
 
-   public static hfz.b a(hhk $$0, float $$1, hfz.b $$2, hgf.a... $$3) {
-      return new hgf.b($$0, $$1, List.of($$3), Optional.of($$2));
+   public static frs a(dmr $$0, gsi $$1) {
+      return new frs($$0, List.of(new frs.b(fru.a, $$1)), Set.of());
    }
 
-   public static hfz.b a(hhk $$0, hfz.b $$1, List<hgf.a> $$2) {
-      return new hgf.b($$0, 1.0F, $$2, Optional.of($$1));
+   public static class a {
+      private final dmr a;
+
+      public a(dmr $$0) {
+         this.a = $$0;
+      }
+
+      public frs a(frt<gsi> $$0) {
+         Set<ebw<?>> $$1 = frs.a(Set.of(), this.a, $$0);
+         List<frs.b> $$2 = $$0.a().entrySet().stream().map($$0x -> new frs.b((fru)$$0x.getKey(), (gsi)$$0x.getValue())).toList();
+         return new frs(this.a, $$2, $$1);
+      }
    }
 
-   public static hfz.b a(hhk $$0, List<hgf.a> $$1) {
-      return new hgf.b($$0, 1.0F, $$1, Optional.empty());
-   }
+   static record b(fru a, gsi b) {
 
-   public static hfz.b a(hhk $$0, float $$1, List<hgf.a> $$2) {
-      return new hgf.b($$0, $$1, $$2, Optional.empty());
-   }
+      public Stream<frs.b> a(frt<gsn> $$0) {
+         return $$0.a().entrySet().stream().map($$0x -> {
+            fru $$1 = this.a.a((fru)$$0x.getKey());
+            gsi $$2 = this.b.a((gsn)$$0x.getValue());
+            return new frs.b($$1, $$2);
+         });
+      }
 
-   public static hfz.b a(hgn $$0, hfz.b $$1, hfz.b $$2) {
-      return new hfx.a($$0, $$1, $$2);
-   }
-
-   public static <T> hgg.b<T> a(T $$0, hfz.b $$1) {
-      return new hgg.b<>(List.of($$0), $$1);
-   }
-
-   public static <T> hgg.b<T> a(List<T> $$0, hfz.b $$1) {
-      return new hgg.b<>($$0, $$1);
-   }
-
-   @SafeVarargs
-   public static <T> hfz.b a(hia<T> $$0, hfz.b $$1, hgg.b<T>... $$2) {
-      return a($$0, $$1, List.of($$2));
-   }
-
-   public static <T> hfz.b a(hia<T> $$0, hfz.b $$1, List<hgg.b<T>> $$2) {
-      return new hgg.c(new hgg.d<>($$0, $$2), Optional.of($$1));
-   }
-
-   @SafeVarargs
-   public static <T> hfz.b a(hia<T> $$0, hgg.b<T>... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   public static <T> hfz.b a(hia<T> $$0, List<hgg.b<T>> $$1) {
-      return new hgg.c(new hgg.d<>($$0, $$1), Optional.empty());
-   }
-
-   public static hgn a() {
-      return new hgw();
-   }
-
-   public static hgn a(kj<?> $$0) {
-      return new hgs($$0, false);
-   }
-
-   public static hfz.b a(hfz.b $$0, hfz.b $$1) {
-      return a(new hhs(), $$1, a(djh.i, $$0));
-   }
-
-   public static <T extends Comparable<T>> hfz.b a(ebr<T> $$0, hfz.b $$1, Map<T, hfz.b> $$2) {
-      List<hgg.b<String>> $$3 = $$2.entrySet().stream().sorted(Entry.comparingByKey()).map($$1x -> {
-         String $$2x = $$0.b((T)$$1x.getKey());
-         return new hgg.b<>(List.of($$2x), (hfz.b)$$1x.getValue());
-      }).toList();
-      return a(new hhw($$0.f()), $$1, $$3);
-   }
-
-   public static hfz.b b(hfz.b $$0, hfz.b $$1) {
-      return a(hhx.a("MM-dd", "", Optional.empty()), $$1, List.of(a(List.of("12-24", "12-25", "12-26"), $$0)));
+      public Stream<frs.b> a(gsn $$0) {
+         return Stream.of(new frs.b(this.a, this.b.a($$0)));
+      }
    }
 }

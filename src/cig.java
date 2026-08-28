@@ -72,12 +72,12 @@ public class cig {
    }
 
    @Nullable
-   public static fex a(bxr $$0, Supplier<iv> $$1) {
+   public static ffc a(bxr $$0, Supplier<iv> $$1) {
       return a($$1, $$0::c);
    }
 
    @Nullable
-   public static fex a(Supplier<iv> $$0, ToDoubleFunction<iv> $$1) {
+   public static ffc a(Supplier<iv> $$0, ToDoubleFunction<iv> $$1) {
       double $$2 = Double.NEGATIVE_INFINITY;
       iv $$3 = null;
 
@@ -92,7 +92,7 @@ public class cig {
          }
       }
 
-      return $$3 != null ? fex.c($$3) : null;
+      return $$3 != null ? ffc.c($$3) : null;
    }
 
    public static iv a(bxr $$0, int $$1, azv $$2, iv $$3) {

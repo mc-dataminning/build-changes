@@ -26,7 +26,7 @@ public class ceu extends cef {
       } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
          return false;
       } else {
-         fex $$0 = cic.a(this.a, 16, 7, this.b.ds(), (float) (Math.PI / 2));
+         ffc $$0 = cic.a(this.a, 16, 7, this.b.ds(), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {

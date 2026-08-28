@@ -1,46 +1,60 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dun extends dug {
-   protected dun(ean.d $$0) {
+public class dun extends dmr {
+   public static final MapCodec<dun> a = b(dun::new);
+   private static final ffw b = dmr.b(16.0, 0.0, 14.0);
+   private static final int c = 20;
+
+   @Override
+   public MapCodec<dun> a() {
+      return a;
+   }
+
+   public dun(eas.d $$0) {
       super($$0);
    }
 
-   private static boolean b(eao $$0, djk $$1, iv $$2) {
-      iv $$3 = $$2.d();
-      eao $$4 = $$1.a_($$3);
-      if ($$4.a(dmo.ed) && $$4.c(duf.c) == 1) {
-         return true;
-      } else if ($$4.y().e() == 8) {
-         return false;
-      } else {
-         int $$5 = ewm.a($$0, $$4, jb.b, $$4.g());
-         return $$5 < 15;
-      }
+   @Override
+   protected ffw b(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return b;
    }
 
    @Override
-   protected abstract MapCodec<? extends dun> a();
-
-   private static boolean c(eao $$0, djk $$1, iv $$2) {
-      iv $$3 = $$2.d();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(axh.a);
+   protected ffw b_(eat $$0, diq $$1, iv $$2) {
+      return fft.b();
    }
 
    @Override
-   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dmo.j.m());
-      } else {
-         if ($$1.B($$2.d()) >= 9) {
-            eao $$4 = this.m();
+   protected ffw c(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return fft.b();
+   }
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               iv $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dmo.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.b(c, Boolean.valueOf(o($$1.a_($$6.d())))));
-               }
-            }
-         }
+   @Override
+   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
+      dmy.b($$1, $$2.d(), $$0);
+   }
+
+   @Override
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      if ($$4 == jb.b && $$6.a(dmt.J)) {
+         $$2.a($$3, this, 20);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(eat $$0, djm $$1, iv $$2, eat $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
+   }
+
+   @Override
+   protected boolean a(eat $$0, exp $$1) {
+      return false;
+   }
+
+   @Override
+   protected float c(eat $$0, diq $$1, iv $$2) {
+      return 0.2F;
    }
 }

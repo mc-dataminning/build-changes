@@ -11,7 +11,7 @@ public class cjp extends ciw implements bxo {
    @Nullable
    private UUID bK;
 
-   public cjp(bwr<? extends cjp> $$0, djh $$1) {
+   public cjp(bwr<? extends cjp> $$0, djm $$1) {
       super($$0, $$1);
    }
 
@@ -22,12 +22,12 @@ public class cjp extends ciw implements bxo {
       this.bD.a(2, new ceq(this, 0.6, false));
       this.bD.a(4, new ceh(this, 0.6));
       this.bD.a(5, new cew(this));
-      this.bD.a(7, new cen(this, crj.class, 6.0F));
+      this.bD.a(7, new cen(this, crm.class, 6.0F));
       this.bD.a(8, new cfa(this));
       this.bE.a(1, new cfw(this));
       this.bE.a(2, new cfx(this));
-      this.bE.a(3, new cfy<>(this, crj.class, 10, true, false, this::a));
-      this.bE.a(3, new cfy<>(this, bxl.class, 5, false, false, ($$0, $$1) -> $$0 instanceof coc && !($$0 instanceof cnw)));
+      this.bE.a(3, new cfy<>(this, crm.class, 10, true, false, this::a));
+      this.bE.a(3, new cfy<>(this, bxl.class, 5, false, false, ($$0, $$1) -> $$0 instanceof cof && !($$0 instanceof cnz)));
       this.bE.a(4, new cge<>(this, false));
    }
 
@@ -48,7 +48,7 @@ public class cjp extends ciw implements bxo {
 
    @Override
    protected void D(bwi $$0) {
-      if ($$0 instanceof coc && !($$0 instanceof cnw) && this.dX().a(20) == 0) {
+      if ($$0 instanceof cof && !($$0 instanceof cnz) && this.dX().a(20) == 0) {
          this.g((bxj)$$0);
       }
 
@@ -141,7 +141,7 @@ public class cjp extends ciw implements bxo {
          double $$7 = $$1 instanceof bxj $$6 ? $$6.h(byp.p) : 0.0;
          double $$8 = Math.max(0.0, 1.0 - $$7);
          $$1.i($$1.dx().b(0.0, 0.4F * $$8, 0.0));
-         dfz.a($$0, $$1, $$4);
+         dgc.a($$0, $$1, $$4);
       }
 
       this.a(awn.nV, 1.0F, 1.0F);
@@ -202,9 +202,9 @@ public class cjp extends ciw implements bxo {
    }
 
    @Override
-   protected bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
-      if (!$$2.a(czo.pt)) {
+   protected bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
+      if (!$$2.a(czr.pt)) {
          return bug.e;
       } else {
          float $$3 = this.eF();
@@ -221,7 +221,7 @@ public class cjp extends ciw implements bxo {
    }
 
    @Override
-   protected void b(iv $$0, eao $$1) {
+   protected void b(iv $$0, eat $$1) {
       this.a(awn.oa, 1.0F, 1.0F);
    }
 
@@ -248,27 +248,27 @@ public class cjp extends ciw implements bxo {
    }
 
    @Override
-   public boolean a(djk $$0) {
+   public boolean a(djp $$0) {
       iv $$1 = this.du();
       iv $$2 = $$1.e();
-      eao $$3 = $$0.a_($$2);
+      eat $$3 = $$0.a_($$2);
       if (!$$3.b($$0, $$2, this)) {
          return false;
       } else {
          for (int $$4 = 1; $$4 < 3; $$4++) {
             iv $$5 = $$1.b($$4);
-            eao $$6 = $$0.a_($$5);
-            if (!djs.a($$0, $$5, $$6, $$6.y(), bwr.ap)) {
+            eat $$6 = $$0.a_($$5);
+            if (!djx.a($$0, $$5, $$6, $$6.y(), bwr.ap)) {
                return false;
             }
          }
 
-         return djs.a($$0, $$1, $$0.a_($$1), eww.a.g(), bwr.ap) && $$0.f(this);
+         return djx.a($$0, $$1, $$0.a_($$1), exb.a.g(), bwr.ap) && $$0.f(this);
       }
    }
 
    @Override
-   public fex cS() {
-      return new fex(0.0, (double)(0.875F * this.cR()), (double)(this.dp() * 0.4F));
+   public ffc cS() {
+      return new ffc(0.0, (double)(0.875F * this.cR()), (double)(this.dp() * 0.4F));
    }
 }

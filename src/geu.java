@@ -1,68 +1,98 @@
-public class geu<S extends hdq> extends ggy<S> {
-   private static final String x = "left_sleeve";
-   private static final String y = "right_sleeve";
-   private static final String z = "left_pants";
-   private static final String A = "right_pants";
-   public final gjo a = this.s.b("left_sleeve");
-   public final gjo b = this.r.b("right_sleeve");
-   public final gjo c = this.u.b("left_pants");
-   public final gjo d = this.t.b("right_pants");
-   public final gjo e = this.q.b("jacket");
-   public final gjo f = this.o.b("right_ear");
-   public final gjo g = this.o.b("left_ear");
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-   public geu(gjo $$0) {
-      super($$0, gqx::j);
+public class geu {
+   public final geu.d a;
+   public final fip b;
+   public final geu.a c;
+   public final geu.b d;
+   public final geu.c e;
+
+   public geu(geu.d $$0, fip $$1, geu.a $$2, geu.b $$3, geu.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static gjw a(gjs $$0) {
-      gjw $$1 = ghq.a($$0, false);
-      gjy $$2 = $$1.a();
-      $$2.a("body", gjt.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gjq.a);
-      gjy $$3 = a($$0, $$1);
-      $$3.a("hat");
-      return $$1;
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : hkm.a(this.c.toPath(), this.d);
+      }
    }
 
-   public static gjy a(gjs $$0, gjw $$1) {
-      gjy $$2 = $$1.a();
-      gjy $$3 = $$2.a(
-         "head",
-         gjt.c()
-            .a(0, 0)
-            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
-            .a(31, 1)
-            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
-            .a(2, 4)
-            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
-            .a(2, 0)
-            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
-         gjq.a
-      );
-      $$3.a("left_ear", gjt.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gjq.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
-      $$3.a("right_ear", gjt.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gjq.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
-      return $$3;
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+      public final boolean f;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4, boolean $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
    }
 
-   @Override
-   public void a(S $$0) {
-      super.a($$0);
-      float $$1 = $$0.ad;
-      float $$2 = $$0.ae;
-      float $$3 = (float) (Math.PI / 6);
-      float $$4 = $$0.u * 0.1F + $$1 * 0.5F;
-      float $$5 = 0.08F + $$2 * 0.4F;
-      this.g.g = (float) (-Math.PI / 6) - azm.b($$4 * 1.2F) * $$5;
-      this.f.g = (float) (Math.PI / 6) + azm.b($$4) * $$5;
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !bal.h(this.b) || !bal.h(this.c) || !bal.h(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
    }
 
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
+   public static class d {
+      public final fqf a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(fqf $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

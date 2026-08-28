@@ -1,92 +1,143 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpm extends dok {
-   public static final MapCodec<dpm> g = b(dpm::new);
-   private final Function<eao, ffr> h;
-
-   @Override
-   public MapCodec<dpm> a() {
-      return g;
-   }
-
-   public dpm(ean.d $$0) {
-      super(4.0F, 16.0F, 4.0F, 16.0F, 24.0F, $$0);
-      this.l(
-         this.C
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
-      this.h = this.a(4.0F, 16.0F, 2.0F, 6.0F, 15.0F);
-   }
+public class dpm extends dpx {
+   public static final MapCodec<dpm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.fieldOf("open").forGetter($$0x -> $$0x.f.c), t()).apply($$0, dpm::new)
+   );
+   private static final int d = 3;
+   private static final int e = 2;
+   private final dpm.a f;
 
    @Override
-   protected ffr d_(eao $$0) {
-      return this.h.apply($$0);
+   public MapCodec<? extends dpm> a() {
+      return a;
+   }
+
+   public dpm(dpm.a $$0, eas.d $$1) {
+      super($$0.d, $$0.e, $$1);
+      this.f = $$0;
+   }
+
+   public dpm(boolean $$0, eas.d $$1) {
+      super(dpm.a.a($$0).d, dpm.a.a($$0).e, $$1);
+      this.f = dpm.a.a($$0);
    }
 
    @Override
-   protected ffr c(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return this.a($$0, $$1, $$2, $$3);
+   public void a(eat $$0, djm $$1, iv $$2, azv $$3) {
+      if (this.f.d() && $$3.a(700) == 0) {
+         eat $$4 = $$1.a_($$2.e());
+         if ($$4.a(dmt.ue)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.jk, awo.i, 1.0F, 1.0F, false);
+         }
+      }
    }
 
    @Override
-   protected boolean a(eao $$0, exk $$1) {
-      return false;
-   }
-
-   public boolean a(eao $$0, boolean $$1, jb $$2) {
-      dmm $$3 = $$0.b();
-      boolean $$4 = this.o($$0);
-      boolean $$5 = $$3 instanceof dpn && dpn.a($$0, $$2);
-      return !k($$0) && $$1 || $$4 || $$5;
-   }
-
-   private boolean o(eao $$0) {
-      return $$0.a(axc.U) && $$0.a(axc.l) == this.m().a(axc.l);
-   }
-
-   @Override
-   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
-      return (bug)(!$$1.w_() ? czu.a($$3, $$1, $$2) : bug.e);
-   }
-
-   @Override
-   public eao a(ddd $$0) {
-      din $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      ewv $$3 = $$0.q().b_($$0.a());
-      iv $$4 = $$2.f();
-      iv $$5 = $$2.i();
-      iv $$6 = $$2.g();
-      iv $$7 = $$2.h();
-      eao $$8 = $$1.a_($$4);
-      eao $$9 = $$1.a_($$5);
-      eao $$10 = $$1.a_($$6);
-      eao $$11 = $$1.a_($$7);
-      return super.a($$0)
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jb.d), jb.d)))
-         .b(b, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jb.e), jb.e)))
-         .b(c, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jb.c), jb.c)))
-         .b(d, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jb.f), jb.f)))
-         .b(e, Boolean.valueOf($$3.a() == eww.c));
-   }
-
-   @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, eww.c, eww.c.a($$1));
+   protected void b(eat $$0, arq $$1, iv $$2, azv $$3) {
+      if (this.c($$0, $$1, $$2, $$3)) {
+         $$1.a(null, $$2, this.f.c().f, awo.e, 1.0F, 1.0F);
       }
 
-      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g()), $$4.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected void a(eat $$0, arq $$1, iv $$2, azv $$3) {
+      if (this.c($$0, $$1, $$2, $$3)) {
+         $$1.a(null, $$2, this.f.c().g, awo.e, 1.0F, 1.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private boolean c(eat $$0, arq $$1, iv $$2, azv $$3) {
+      if (!$$1.B_().j()) {
+         return false;
+      } else if (don.a($$1) == this.f.c) {
+         return false;
+      } else {
+         dpm.a $$4 = this.f.c();
+         $$1.a($$2, $$4.b(), 3);
+         $$1.a(eft.c, $$2, eft.a.a($$0));
+         $$4.a($$1, $$2, $$3);
+         iv.c($$2.b(-3, -2, -3), $$2.b(3, 2, 3)).forEach($$4x -> {
+            eat $$5 = $$1.a_($$4x);
+            if ($$5 == $$0) {
+               double $$6 = Math.sqrt($$2.j($$4x));
+               int $$7 = $$3.a((int)($$6 * 5.0), (int)($$6 * 10.0));
+               $$1.a($$4x, $$0.b(), $$7);
+            }
+         });
+         return true;
+      }
+   }
+
+   @Override
+   protected void a(eat $$0, djm $$1, iv $$2, bwi $$3, bxb $$4) {
+      if (!$$1.w_() && $$1.an() != bud.a && $$3 instanceof cja $$5 && cja.c($$0) && !$$5.b(bvo.s)) {
+         $$5.a(this.b());
+      }
+   }
+
+   @Override
+   public bvm b() {
+      return new bvm(bvo.s, 25);
+   }
+
+   public static enum a {
+      a(true, bvo.o, 11.0F, awn.jg, awn.jh, 16545810),
+      b(false, bvo.i, 7.0F, awn.ji, awn.jj, 6250335);
+
+      final boolean c;
+      final jf<bvk> d;
+      final float e;
+      final awm f;
+      final awm g;
+      private final int h;
+
+      private a(final boolean $$0, final jf<bvk> $$1, final float $$2, final awm $$3, final awm $$4, final int $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
+      }
+
+      public dmr a() {
+         return this.c ? dmt.uh : dmt.ui;
+      }
+
+      public eat b() {
+         return this.a().m();
+      }
+
+      public dpm.a c() {
+         return a(!this.c);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public static dpm.a a(boolean $$0) {
+         return $$0 ? a : b;
+      }
+
+      public void a(arq $$0, iv $$1, azv $$2) {
+         ffc $$3 = $$1.b();
+         double $$4 = 0.5 + $$2.j();
+         ffc $$5 = new ffc($$2.j() - 0.5, $$2.j() + 1.0, $$2.j() - 0.5);
+         ffc $$6 = $$3.e($$5.c($$4));
+         md $$7 = new md($$6, this.h, (int)(20.0 * $$4));
+         $$0.a($$7, $$3.d, $$3.e, $$3.f, 1, 0.0, 0.0, 0.0, 0.0);
+      }
+
+      public awm e() {
+         return this.f;
+      }
    }
 }

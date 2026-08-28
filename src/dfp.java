@@ -1,12 +1,40 @@
-public class dfp {
-   public static dfn.i<?> a(js<dfn.i<?>> $$0) {
-      js.a($$0, "empty", dfn.c.f);
-      js.a($$0, "any_fuel", dfn.a.f);
-      js.a($$0, "item", dfn.d.e);
-      js.a($$0, "item_stack", dfn.f.e);
-      js.a($$0, "tag", dfn.h.e);
-      js.a($$0, "smithing_trim", dfn.g.e);
-      js.a($$0, "with_remainder", dfn.j.e);
-      return js.a($$0, "composite", dfn.b.e);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+
+public record dfp(List<dfq> f, dfq g, dfq h) implements dfk {
+   public static final MapCodec<dfp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dfq.a.listOf().fieldOf("ingredients").forGetter(dfp::b),
+               dfq.a.fieldOf("result").forGetter(dfp::d),
+               dfq.a.fieldOf("crafting_station").forGetter(dfp::e)
+            )
+            .apply($$0, dfp::new)
+   );
+   public static final yw<wj, dfp> b = yw.a(dfq.b.a(yu.a()), dfp::b, dfq.b, dfp::d, dfq.b, dfp::e, dfp::new);
+   public static final dfk.a<dfp> c = new dfk.a<>(a, b);
+
+   @Override
+   public dfk.a<dfp> a() {
+      return c;
+   }
+
+   @Override
+   public boolean a(cuw $$0) {
+      return this.f.stream().allMatch($$1 -> $$1.a($$0)) && dfk.super.a($$0);
+   }
+
+   public List<dfq> b() {
+      return this.f;
+   }
+
+   @Override
+   public dfq d() {
+      return this.g;
+   }
+
+   @Override
+   public dfq e() {
+      return this.h;
    }
 }

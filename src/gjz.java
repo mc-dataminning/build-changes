@@ -1,22 +1,21 @@
 public class gjz {
-   private final float a;
-   private final float b;
+   private final gkb a;
+   private final gka b;
 
-   public gjz(float $$0, float $$1) {
+   private gjz(gkb $$0, gka $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public float a() {
-      return this.a;
+   public gjz a(gkc $$0) {
+      return new gjz($$0.apply(this.a), this.b);
    }
 
-   public float b() {
-      return this.b;
+   public gjt a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public static gjz a(gkb $$0, int $$1, int $$2) {
+      return new gjz($$0, new gka($$1, $$2));
    }
 }

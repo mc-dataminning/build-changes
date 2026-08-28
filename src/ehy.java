@@ -1,22 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ehy implements ehu {
-   public static final MapCodec<ehy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ka.v(16).optionalFieldOf("offset", iv.c).forGetter($$0x -> $$0x.e)).apply($$0, ehy::new)
-   );
-   private final ka e;
+class ehy extends eib {
+   public static final MapCodec<ehy> a = a(ehy::new);
 
-   public ehy(ka $$0) {
-      this.e = $$0;
+   public ehy(List<ehz> $$0) {
+      super($$0);
    }
 
-   public boolean a(dkg $$0, iv $$1) {
-      return !$$0.t($$1.a(this.e));
+   public boolean a(dkl $$0, iv $$1) {
+      for (ehz $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public ehv<?> a() {
-      return ehv.h;
+   public eia<?> a() {
+      return eia.i;
    }
 }

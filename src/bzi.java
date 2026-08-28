@@ -1,6 +1,6 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bzi<E extends bxl & cnx, T extends bxj> extends bza<E> {
+public class bzi<E extends bxl & coa, T extends bxj> extends bza<E> {
    private static final int c = 1200;
    private int d;
    private bzi.a e = bzi.a.a;
@@ -11,7 +11,7 @@ public class bzi<E extends bxl & cnx, T extends bxj> extends bza<E> {
 
    protected boolean a(arq $$0, E $$1) {
       bxj $$2 = b($$1);
-      return $$1.b(czo.xg) && bzc.b($$1, $$2) && bzc.a($$1, $$2, 0);
+      return $$1.b(czr.xg) && bzc.b($$1, $$2) && bzc.a($$1, $$2, 0);
    }
 
    protected boolean a(arq $$0, E $$1, long $$2) {
@@ -29,15 +29,15 @@ public class bzi<E extends bxl & cnx, T extends bxj> extends bza<E> {
          $$1.fE();
       }
 
-      if ($$1.b(czo.xg)) {
+      if ($$1.b(czr.xg)) {
          $$1.b(false);
-         $$1.fA().b(kk.P, dbo.a);
+         $$1.fA().b(kk.P, dbr.a);
       }
    }
 
    private void a(E $$0, bxj $$1) {
       if (this.e == bzi.a.a) {
-         $$0.c(csg.a($$0, czo.xg));
+         $$0.c(csj.a($$0, czr.xg));
          this.e = bzi.a.b;
          $$0.b(true);
       } else if (this.e == bzi.a.b) {
@@ -46,8 +46,8 @@ public class bzi<E extends bxl & cnx, T extends bxj> extends bza<E> {
          }
 
          int $$2 = $$0.fC();
-         czk $$3 = $$0.fA();
-         if ($$2 >= cyd.b($$3, $$0)) {
+         czn $$3 = $$0.fA();
+         if ($$2 >= cyg.b($$3, $$0)) {
             $$0.fD();
             this.e = bzi.a.c;
             this.d = 20 + $$0.dX().a(20);

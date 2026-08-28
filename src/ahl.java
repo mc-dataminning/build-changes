@@ -36,7 +36,7 @@ public class ahl implements zf<agp> {
       return new ahl($$0.ao(), $$1, new ahl.d($$2));
    }
 
-   public static ahl a(bwi $$0, boolean $$1, buf $$2, fex $$3) {
+   public static ahl a(bwi $$0, boolean $$1, buf $$2, ffc $$3) {
       return new ahl($$0.ao(), $$1, new ahl.e($$2, $$3));
    }
 
@@ -99,7 +99,7 @@ public class ahl implements zf<agp> {
    public interface c {
       void a(buf var1);
 
-      void a(buf var1, fex var2);
+      void a(buf var1, ffc var2);
 
       void a();
    }
@@ -133,15 +133,15 @@ public class ahl implements zf<agp> {
 
    static class e implements ahl.a {
       private final buf a;
-      private final fex b;
+      private final ffc b;
 
-      e(buf $$0, fex $$1) {
+      e(buf $$0, ffc $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(vu $$0) {
-         this.b = new fex((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.b = new ffc((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
          this.a = $$0.b(buf.class);
       }
 

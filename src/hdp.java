@@ -1,11 +1,9 @@
-public class hdp extends hda {
-   public clu a;
-   public clp h;
-   public czk i;
-
-   public hdp() {
-      this.a = clu.a;
-      this.h = clp.a;
-      this.i = czk.k;
-   }
+public class hdp extends hef {
+   private static final alg g = alg.b("textures/entity/frog/temperate_frog.png");
+   public boolean a;
+   public final bvz b = new bvz();
+   public final bvz c = new bvz();
+   public final bvz d = new bvz();
+   public final bvz e = new bvz();
+   public alg f = g;
 }

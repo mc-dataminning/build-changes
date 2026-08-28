@@ -21,7 +21,7 @@ public class ej implements el<ej>, eo {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("permissions.requires.entity"));
    private final ei d;
-   private final fex e;
+   private final ffc e;
    private final arq f;
    private final int g;
    private final String h;
@@ -32,18 +32,18 @@ public class ej implements el<ej>, eo {
    private final bwi l;
    private final eg m;
    private final ev.a n;
-   private final few o;
+   private final ffb o;
    private final eh p;
    private final bam q;
 
-   public ej(ei $$0, fex $$1, few $$2, arq $$3, int $$4, String $$5, wy $$6, MinecraftServer $$7, @Nullable bwi $$8) {
+   public ej(ei $$0, ffc $$1, ffb $$2, arq $$3, int $$4, String $$5, wy $$6, MinecraftServer $$7, @Nullable bwi $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, eg.a, ev.a.a, eh.a, bam.immediate($$7));
    }
 
    protected ej(
       ei $$0,
-      fex $$1,
-      few $$2,
+      ffc $$1,
+      ffb $$2,
       arq $$3,
       int $$4,
       String $$5,
@@ -82,11 +82,11 @@ public class ej implements el<ej>, eo {
          : new ej(this.d, this.e, this.o, this.f, this.g, $$0.ai().getString(), $$0.m_(), this.j, $$0, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ej a(fex $$0) {
+   public ej a(ffc $$0) {
       return this.e.equals($$0) ? this : new ej(this.d, $$0, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ej a(few $$0) {
+   public ej a(ffb $$0) {
       return this.o.c($$0) ? this : new ej(this.d, this.e, $$0, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
@@ -123,8 +123,8 @@ public class ej implements el<ej>, eo {
       if ($$0 == this.f) {
          return this;
       } else {
-         double $$1 = eel.a(this.f.B_(), $$0.B_());
-         fex $$2 = new fex(this.e.d * $$1, this.e.e, this.e.f * $$1);
+         double $$1 = eeq.a(this.f.B_(), $$0.B_());
+         ffc $$2 = new ffc(this.e.d * $$1, this.e.e, this.e.f * $$1);
          return new ej(this.d, $$2, this.o, $$0, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
       }
    }
@@ -133,15 +133,15 @@ public class ej implements el<ej>, eo {
       return this.b($$1.a($$0));
    }
 
-   public ej b(fex $$0) {
-      fex $$1 = this.n.a(this);
+   public ej b(ffc $$0) {
+      ffc $$1 = this.n.a(this);
       double $$2 = $$0.d - $$1.d;
       double $$3 = $$0.e - $$1.e;
       double $$4 = $$0.f - $$1.f;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
       float $$6 = azm.h((float)(-(azm.d($$3, $$5) * 180.0F / (float)Math.PI)));
       float $$7 = azm.h((float)(azm.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new few($$6, $$7));
+      return this.a(new ffb($$6, $$7));
    }
 
    public ej a(eh $$0, bam $$1) {
@@ -163,7 +163,7 @@ public class ej implements el<ej>, eo {
       return this.g >= $$0;
    }
 
-   public fex d() {
+   public ffc d() {
       return this.e;
    }
 
@@ -202,7 +202,7 @@ public class ej implements el<ej>, eo {
       return this.l instanceof arr;
    }
 
-   public few k() {
+   public ffb k() {
       return this.o;
    }
 
@@ -266,7 +266,7 @@ public class ej implements el<ej>, eo {
 
    private void c(wy $$0) {
       wy $$1 = wy.a("chat.type.admin", this.b(), $$0).a(o.h, o.u);
-      if (this.j.aL().c(djd.q)) {
+      if (this.j.aL().c(dji.q)) {
          for (arr $$2 : this.j.ag().t()) {
             if ($$2.z() != this.d && this.j.ag().f($$2.gh())) {
                $$2.a($$1);
@@ -274,7 +274,7 @@ public class ej implements el<ej>, eo {
          }
       }
 
-      if (this.d != this.j && this.j.aL().c(djd.n)) {
+      if (this.d != this.j && this.j.aL().c(dji.n)) {
          this.j.a($$1);
       }
    }
@@ -312,9 +312,9 @@ public class ej implements el<ej>, eo {
 
    @Override
    public CompletableFuture<Suggestions> a(alf<? extends js<?>> $$0, eo.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      if ($$0 == mh.bu) {
+      if ($$0 == mh.bv) {
          return eo.a(this.j.aI().d().stream().map($$0x -> $$0x.a().a()), $$2);
-      } else if ($$0 == mh.bt) {
+      } else if ($$0 == mh.bu) {
          Collection<aj> $$4 = this.j.aD().b();
          return eo.a($$4.stream().map(aj::a), $$2);
       } else {
@@ -326,7 +326,7 @@ public class ej implements el<ej>, eo {
    }
 
    @Override
-   public Set<alf<djh>> t() {
+   public Set<alf<djm>> t() {
       return this.j.K();
    }
 
@@ -336,7 +336,7 @@ public class ej implements el<ej>, eo {
    }
 
    @Override
-   public cut v() {
+   public cuw v() {
       return this.f.K();
    }
 

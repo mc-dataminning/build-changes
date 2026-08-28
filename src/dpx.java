@@ -1,57 +1,44 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class dpx extends dlh {
-   public static final MapCodec<dpx> c = b(dpx::new);
+public class dpx extends dwd implements dvd {
+   protected static final MapCodec<dcp> b = dcp.c.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<dpx> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dpx::c), t()).apply($$0, dpx::new));
+   private static final ffw a = dmr.b(6.0, 0.0, 10.0);
+   private final dcp d;
 
    @Override
-   public MapCodec<dpx> a() {
+   public MapCodec<? extends dpx> a() {
       return c;
    }
 
-   protected dpx(ean.d $$0) {
-      super($$0);
+   public dpx(jf<bvk> $$0, float $$1, eas.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dpx(dcp $$0, eas.d $$1) {
+      super($$1);
+      this.d = $$0;
+   }
+
+   protected static dcp a(jf<bvk> $$0, float $$1) {
+      return new dcp(List.of(new dcp.a($$0, azm.d($$1 * 20.0F))));
    }
 
    @Override
-   public dxm a(iv $$0, eao $$1) {
-      return new dym($$0, $$1);
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return a.a($$0.a($$2));
+   }
+
+   @Override
+   public dcp c() {
+      return this.d;
    }
 
    @Nullable
-   @Override
-   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
-      return a($$0, $$2, dxo.a);
-   }
-
-   @Override
-   protected void a(djh $$0, iv $$1, crj $$2) {
-      dxm $$3 = $$0.c_($$1);
-      if ($$3 instanceof dym) {
-         $$2.a((bui)$$3);
-         $$2.a(awx.am);
-      }
-   }
-
-   @Override
-   public void a(eao $$0, djh $$1, iv $$2, azv $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awn.kC, awo.e, 1.0F, 1.0F, false);
-         }
-
-         jb $$7 = $$0.c(a);
-         jb.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jb.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == jb.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(ly.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(ly.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   public bvm b() {
+      return null;
    }
 }

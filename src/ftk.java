@@ -1,39 +1,59 @@
-import javax.annotation.Nullable;
+public class ftk extends fsx {
+   private final fsk a;
+   private final ftu c;
 
-public class ftk extends fst {
-   private final fsf a;
+   public ftk(int $$0, int $$1, int $$2, int $$3, wy $$4, fsk $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.c = new ftu($$4, $$5).d(this.A() - this.b());
+   }
 
-   public ftk(fsf $$0, wy $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public ftk a(int $$0) {
+      this.c.c($$0);
+      return this;
    }
 
    @Override
-   protected void b(fsh $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.F() + this.A() / 2;
-      int $$5 = this.G() + this.y() / 2;
-      wy $$6 = this.B();
-      $$0.b(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1);
-      String $$7 = fyc.a(ag.c());
-      $$0.b(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712);
+   public void h(int $$0) {
+      super.h($$0);
+      this.c.d(this.A() - this.b());
    }
 
    @Override
-   protected void a(fws $$0) {
+   protected int c() {
+      return this.c.y();
    }
 
    @Override
-   public void a(hon $$0) {
+   protected double o() {
+      return 9.0;
    }
 
    @Override
-   public boolean E() {
-      return false;
+   protected void c(fsm $$0) {
+      super.c($$0);
    }
 
-   @Nullable
+   public boolean q() {
+      return super.j();
+   }
+
    @Override
-   public fse a(fwy $$0) {
-      return null;
+   protected void c(fsm $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.e(), (float)this.p(), 0.0F);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fwx $$0) {
+      $$0.a(fww.a, this.B());
+   }
+
+   @Override
+   public void b(wy $$0) {
+      super.b($$0);
+      this.c.b($$0);
    }
 }

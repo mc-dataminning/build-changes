@@ -7,10 +7,10 @@ public class cfr extends cfs {
 
    @Nullable
    @Override
-   protected fex h() {
-      fex $$0 = this.b.h(0.0F);
+   protected ffc h() {
+      ffc $$0 = this.b.h(0.0F);
       int $$1 = 8;
-      fex $$2 = cie.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      ffc $$2 = cie.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
       return $$2 != null ? $$2 : cia.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

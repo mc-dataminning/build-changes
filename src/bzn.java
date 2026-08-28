@@ -34,7 +34,7 @@ public class bzn extends bza<bxr> {
       return this.f.apply($$0);
    }
 
-   private Optional<crj> b(bxr $$0) {
+   private Optional<crm> b(bxr $$0) {
       return $$0.eb().c(cgl.P);
    }
 
@@ -60,7 +60,7 @@ public class bzn extends bza<bxr> {
    }
 
    protected void d(arq $$0, bxr $$1, long $$2) {
-      crj $$3 = this.b($$1).get();
+      crm $$3 = this.b($$1).get();
       byj<?> $$4 = $$1.eb();
       $$4.a(cgl.o, new bzl($$3, true));
       double $$5 = this.g.apply($$1);

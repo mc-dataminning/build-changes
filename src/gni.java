@@ -1,146 +1,69 @@
-public class gni extends gou {
-   static final azv a = azv.a();
-   private final gop b;
+public class gni extends goz {
+   private static final float a = 0.3F;
+   private static final float b = 0.1F;
+   private static final float F = 0.5F;
+   private static final float G = 0.3F;
+   private static final int H = 36;
+   private static final int I = 180;
 
-   gni(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gop $$7) {
+   gni(gkq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
       this.C = true;
-      this.b = $$7;
+      this.B = 0.96F;
       this.D *= 0.75F;
-      this.n = false;
-      this.b($$7);
+      this.k *= 0.8F;
+      this.j *= 0.8F;
+      this.l *= 0.8F;
    }
 
    @Override
-   public gny b() {
-      return gny.c;
+   public god b() {
+      return god.c;
    }
 
    @Override
    public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = azm.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+      return (int)(255.0F * b(this.f((float)this.s + $$0), 0.1F, 0.3F));
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements gnx<mc> {
-      private final double a = 0.25;
-      private final gop b;
-
-      public a(gop $$0) {
-         this.b = $$0;
-      }
-
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gni $$8 = new gni($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.A.a(2) + 2);
-         return $$8;
+      if (!this.c.a_(iv.a(this.g, this.h, this.i)).l()) {
+         this.k();
+      } else {
+         this.e(b(this.f((float)this.s), 0.3F, 0.5F));
+         if (Math.random() > 0.95 || this.s == 1) {
+            this.b(-0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random());
+         }
       }
    }
 
-   public static class b implements gnx<mc> {
-      private final gop a;
+   private float f(float $$0) {
+      return azm.a($$0 / (float)this.t, 0.0F, 1.0F);
+   }
 
-      public b(gop $$0) {
+   private static float b(float $$0, float $$1, float $$2) {
+      if ($$0 >= 1.0F - $$1) {
+         return (1.0F - $$0) / $$1;
+      } else {
+         return $$0 <= $$2 ? $$0 / $$2 : 1.0F;
+      }
+   }
+
+   public static class a implements goc<mc> {
+      private final gou a;
+
+      public a(gou $$0) {
          this.a = $$0;
       }
 
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gni $$8 = new gni($$1, $$2, $$3, $$4, 0.5 - gni.a.j(), $$6, 0.5 - gni.a.j(), this.a);
-         if ($$1.A.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
-         } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
-         }
-
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
-
-         $$8.a((int)(8.0 / ($$1.A.j() * 0.8 + 0.2)));
-         return $$8;
-      }
-   }
-
-   public static class c implements gnx<mc> {
-      private final double a = 0.01;
-      private final gop b;
-
-      public c(gop $$0) {
-         this.b = $$0;
-      }
-
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gni $$8 = new gni($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.A.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
-         } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
-         }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class d implements gnx<mc> {
-      private final double a = 0.01;
-      private final gop b;
-
-      public d(gop $$0) {
-         this.b = $$0;
-      }
-
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gni $$8 = new gni($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class e implements gnx<mc> {
-      private final double a = 0.01;
-      private final gop b;
-
-      public e(gop $$0) {
-         this.b = $$0;
-      }
-
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gni $$8 = new gni($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
+      public gnz a(mc $$0, gkq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gni $$8 = new gni($$1, $$2, $$3, $$4, 0.5 - $$1.A.j(), $$1.A.h() ? $$6 : -$$6, 0.5 - $$1.A.j());
+         $$8.a($$1.A.a(36, 180));
+         $$8.d(1.5F);
+         $$8.a(this.a);
+         $$8.e(0.0F);
          return $$8;
       }
    }

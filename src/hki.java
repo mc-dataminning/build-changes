@@ -1,95 +1,45 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class hki implements AutoCloseable {
-   private final Int2ObjectMap<hki.a> a = new Int2ObjectOpenHashMap();
-   final hjm b;
+public class hki {
+   private static final hks[] a = new hks[]{
+      a("textures/entity/player/slim/alex.png", hks.a.a),
+      a("textures/entity/player/slim/ari.png", hks.a.a),
+      a("textures/entity/player/slim/efe.png", hks.a.a),
+      a("textures/entity/player/slim/kai.png", hks.a.a),
+      a("textures/entity/player/slim/makena.png", hks.a.a),
+      a("textures/entity/player/slim/noor.png", hks.a.a),
+      a("textures/entity/player/slim/steve.png", hks.a.a),
+      a("textures/entity/player/slim/sunny.png", hks.a.a),
+      a("textures/entity/player/slim/zuri.png", hks.a.a),
+      a("textures/entity/player/wide/alex.png", hks.a.b),
+      a("textures/entity/player/wide/ari.png", hks.a.b),
+      a("textures/entity/player/wide/efe.png", hks.a.b),
+      a("textures/entity/player/wide/kai.png", hks.a.b),
+      a("textures/entity/player/wide/makena.png", hks.a.b),
+      a("textures/entity/player/wide/noor.png", hks.a.b),
+      a("textures/entity/player/wide/steve.png", hks.a.b),
+      a("textures/entity/player/wide/sunny.png", hks.a.b),
+      a("textures/entity/player/wide/zuri.png", hks.a.b)
+   };
 
-   public hki(hjm $$0) {
-      this.b = $$0;
+   public static alg a() {
+      return b().a();
    }
 
-   public void a(eyo $$0, eyq $$1) {
-      this.c($$0, $$1).a();
+   public static hks b() {
+      return a[6];
    }
 
-   public alg b(eyo $$0, eyq $$1) {
-      hki.a $$2 = this.c($$0, $$1);
-      $$2.b();
-      return $$2.d;
+   public static hks a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
    }
 
-   public void a() {
-      ObjectIterator var1 = this.a.values().iterator();
-
-      while (var1.hasNext()) {
-         hki.a $$0 = (hki.a)var1.next();
-         $$0.close();
-      }
-
-      this.a.clear();
+   public static hks a(GameProfile $$0) {
+      return a($$0.getId());
    }
 
-   private hki.a c(eyo $$0, eyq $$1) {
-      return (hki.a)this.a.compute($$0.b(), ($$1x, $$2) -> {
-         if ($$2 == null) {
-            return new hki.a($$1x, $$1);
-         } else {
-            $$2.a($$1);
-            return $$2;
-         }
-      });
-   }
-
-   @Override
-   public void close() {
-      this.a();
-   }
-
-   class a implements AutoCloseable {
-      private eyq a;
-      private final hix b;
-      private boolean c = true;
-      final alg d;
-
-      a(final int $$0, final eyq $$1) {
-         this.a = $$1;
-         this.b = new hix(() -> "Map " + $$0, 128, 128, true);
-         this.d = alg.b("map/" + $$0);
-         hki.this.b.a(this.d, this.b);
-      }
-
-      void a(eyq $$0) {
-         boolean $$1 = this.a != $$0;
-         this.a = $$0;
-         this.c |= $$1;
-      }
-
-      public void a() {
-         this.c = true;
-      }
-
-      void b() {
-         if (this.c) {
-            fiu $$0 = this.b.f();
-            if ($$0 != null) {
-               for (int $$1 = 0; $$1 < 128; $$1++) {
-                  for (int $$2 = 0; $$2 < 128; $$2++) {
-                     int $$3 = $$2 + $$1 * 128;
-                     $$0.a($$2, $$1, ewz.b(this.a.h[$$3]));
-                  }
-               }
-            }
-
-            this.b.e();
-            this.c = false;
-         }
-      }
-
-      @Override
-      public void close() {
-         this.b.close();
-      }
+   private static hks a(String $$0, hks.a $$1) {
+      return new hks(alg.b($$0), null, null, null, $$1, true);
    }
 }

@@ -1,77 +1,110 @@
-public class egy implements diu {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   @Override
-   public void a(arq $$0, boolean $$1, boolean $$2) {
-      if ($$1) {
-         if ($$0.O().c(djd.M)) {
-            azv $$3 = $$0.A;
-            this.a--;
-            if (this.a <= 0) {
-               this.a = this.a + 12000 + $$3.a(1200);
-               long $$4 = $$0.af() / 24000L;
-               if ($$4 >= 5L && $$0.V()) {
-                  if ($$3.a(5) == 0) {
-                     int $$5 = $$0.z().size();
-                     if ($$5 >= 1) {
-                        crj $$6 = $$0.z().get($$3.a($$5));
-                        if (!$$6.V_()) {
-                           if (!$$0.a($$6.du(), 2)) {
-                              int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                              int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                              iv.a $$9 = $$6.du().k().e($$7, 0, $$8);
-                              int $$10 = 10;
-                              if ($$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                                 jf<dkk> $$11 = $$0.u($$9);
-                                 if (!$$11.a(axb.ag)) {
-                                    int $$12 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public record egy(egl b, egl c, egl d, egl e, egl f, egl g, egl h, egl i, egl j, egl k, egl l, egl m, egl n, egl o, egl p) {
+   public static final Codec<egy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", egy::a),
+               a("fluid_level_floodedness", egy::b),
+               a("fluid_level_spread", egy::c),
+               a("lava", egy::d),
+               a("temperature", egy::e),
+               a("vegetation", egy::f),
+               a("continents", egy::g),
+               a("erosion", egy::h),
+               a("depth", egy::i),
+               a("ridges", egy::j),
+               a("initial_density_without_jaggedness", egy::k),
+               a("final_density", egy::l),
+               a("vein_toggle", egy::m),
+               a("vein_ridged", egy::n),
+               a("vein_gap", egy::o)
+            )
+            .apply($$0, egy::new)
+   );
 
-                                    for (int $$13 = 0; $$13 < $$12; $$13++) {
-                                       $$9.q($$0.a(egn.a.f, $$9).v());
-                                       if ($$13 == 0) {
-                                          if (!this.a($$0, $$9, $$3, true)) {
-                                             break;
-                                          }
-                                       } else {
-                                          this.a($$0, $$9, $$3, false);
-                                       }
-
-                                       $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                                       $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   private static RecordCodecBuilder<egy, egl> a(String $$0, Function<egy, egl> $$1) {
+      return egl.d.fieldOf($$0).forGetter($$1);
    }
 
-   private boolean a(arq $$0, iv $$1, azv $$2, boolean $$3) {
-      eao $$4 = $$0.a_($$1);
-      if (!djs.a($$0, $$1, $$4, $$4.y(), bwr.aT)) {
-         return false;
-      } else if (!col.b(bwr.aT, $$0, bwq.p, $$1, $$2)) {
-         return false;
-      } else {
-         col $$5 = bwr.aT.a($$0, bwq.p);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gy();
-            }
+   public egy a(egl.f $$0) {
+      return new egy(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
+   }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bwq.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
-      }
+   public egl a() {
+      return this.b;
+   }
+
+   public egl b() {
+      return this.c;
+   }
+
+   public egl c() {
+      return this.d;
+   }
+
+   public egl d() {
+      return this.e;
+   }
+
+   public egl e() {
+      return this.f;
+   }
+
+   public egl f() {
+      return this.g;
+   }
+
+   public egl g() {
+      return this.h;
+   }
+
+   public egl h() {
+      return this.i;
+   }
+
+   public egl i() {
+      return this.j;
+   }
+
+   public egl j() {
+      return this.k;
+   }
+
+   public egl k() {
+      return this.l;
+   }
+
+   public egl l() {
+      return this.m;
+   }
+
+   public egl m() {
+      return this.n;
+   }
+
+   public egl n() {
+      return this.o;
+   }
+
+   public egl o() {
+      return this.p;
    }
 }

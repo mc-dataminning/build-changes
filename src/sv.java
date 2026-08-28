@@ -90,7 +90,7 @@ public class sv {
                if ($$3.i()) {
                   sv.this.g.forEach($$1xx -> $$1xx.b($$1));
                   LongSet $$0 = new LongArraySet(sv.this.c.y());
-                  $$0.forEach($$0xxx -> sv.this.c.a(dio.a($$0xxx), dio.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> sv.this.c.a(dir.a($$0xxx), dir.b($$0xxx), false));
                   sv.this.a($$0 + 1);
                }
             }
@@ -109,7 +109,7 @@ public class sv {
                if (sv.this.n) {
                   sv.this.d();
                   LongSet $$2 = new LongArraySet(sv.this.c.y());
-                  $$2.forEach($$0xxx -> sv.this.c.a(dio.a($$0xxx), dio.b($$0xxx), false));
+                  $$2.forEach($$0xxx -> sv.this.c.a(dir.a($$0xxx), dir.b($$0xxx), false));
                   sy.a.a();
                } else {
                   this.a();

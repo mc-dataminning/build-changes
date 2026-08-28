@@ -1,18 +1,59 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
 public interface hmm {
-   void scheduleReload(hmm.a var1);
+   String c = "particle";
 
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<hmm.b> b();
+   @Nullable
+   default Boolean c() {
+      return null;
    }
 
-   public static record b(UUID a, Path b) {
+   @Nullable
+   default hmm.a b() {
+      return null;
+   }
+
+   @Nullable
+   default gsh d() {
+      return null;
+   }
+
+   default gsl.a e() {
+      return gsl.a.a;
+   }
+
+   @Nullable
+   default hml a() {
+      return null;
+   }
+
+   @Nullable
+   default alg f() {
+      return null;
+   }
+
+   public static enum a {
+      a("front"),
+      b("side");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      public static hmm.a a(String $$0) {
+         for (hmm.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         throw new IllegalArgumentException("Invalid gui light: " + $$0);
+      }
+
+      public boolean a() {
+         return this == b;
+      }
    }
 }

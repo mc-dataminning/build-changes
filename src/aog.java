@@ -17,13 +17,13 @@ public class aog {
                ((RequiredArgumentBuilder)ek.a("name", fg.a($$1))
                      .executes(
                         $$0x -> a(
-                              (ej)$$0x.getSource(), fg.a($$0x, "name"), ((ej)$$0x.getSource()).d(), fex.c, 0.0F, 0, false, ((ej)$$0x.getSource()).l().ag().t()
+                              (ej)$$0x.getSource(), fg.a($$0x, "name"), ((ej)$$0x.getSource()).d(), ffc.c, 0.0F, 0, false, ((ej)$$0x.getSource()).l().ag().t()
                            )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)ek.a("pos", gn.a())
                            .executes(
-                              $$0x -> a((ej)$$0x.getSource(), fg.a($$0x, "name"), gn.a($$0x, "pos"), fex.c, 0.0F, 0, false, ((ej)$$0x.getSource()).l().ag().t())
+                              $$0x -> a((ej)$$0x.getSource(), fg.a($$0x, "name"), gn.a($$0x, "pos"), ffc.c, 0.0F, 0, false, ((ej)$$0x.getSource()).l().ag().t())
                            ))
                         .then(
                            ek.a("delta", gn.a(false))
@@ -111,7 +111,7 @@ public class aog {
       );
    }
 
-   private static int a(ej $$0, lw $$1, fex $$2, fex $$3, float $$4, int $$5, boolean $$6, Collection<arr> $$7) throws CommandSyntaxException {
+   private static int a(ej $$0, lw $$1, ffc $$2, ffc $$3, float $$4, int $$5, boolean $$6, Collection<arr> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
       for (arr $$9 : $$7) {

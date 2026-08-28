@@ -1,49 +1,30 @@
-public class gmk extends gou {
-   private final gop a;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   gmk(gkl $$0, double $$1, double $$2, double $$3, double $$4, gop $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public class gmk {
+   public static final gmk a = new gmk(gmj.b, gml.createDnsSrvRedirectHandler(), gmg.a());
+   private final gmj b;
+   private final gml c;
+   private final gmg d;
+
+   @VisibleForTesting
+   gmk(gmj $$0, gml $$1, gmg $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public Optional<gmh> a(gmi $$0) {
+      Optional<gmh> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<gmi> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+         return $$1;
       } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public gny b() {
-      return gny.b;
-   }
-
-   public static class a implements gnx<mc> {
-      private final gop a;
-
-      public a(gop $$0) {
-         this.a = $$0;
-      }
-
-      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmk($$1, $$2, $$3, $$4, $$5, this.a);
+         return Optional.empty();
       }
    }
 }

@@ -119,10 +119,10 @@ public interface xe {
       }
    }
 
-   public static record d(czk c) implements xe {
-      public static final MapCodec<xe.d> b = czk.a.xmap(xe.d::new, xe.d::b);
+   public static record d(czn c) implements xe {
+      public static final MapCodec<xe.d> b = czn.a.xmap(xe.d::new, xe.d::b);
 
-      public d(czk c) {
+      public d(czn c) {
          c = c.v();
          this.c = c;
       }
@@ -134,7 +134,7 @@ public interface xe {
 
       @Override
       public boolean equals(Object $$0) {
-         if ($$0 instanceof xe.d $$1 && czk.a(this.c, $$1.c)) {
+         if ($$0 instanceof xe.d $$1 && czn.a(this.c, $$1.c)) {
             return true;
          }
 
@@ -143,10 +143,10 @@ public interface xe {
 
       @Override
       public int hashCode() {
-         return czk.b(this.c);
+         return czn.b(this.c);
       }
 
-      public czk b() {
+      public czn b() {
          return this.c;
       }
    }

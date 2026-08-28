@@ -60,7 +60,7 @@ public class aow {
       } else {
          long $$4 = $$0.e().ae() + (long)$$2;
          alg $$5 = (alg)$$1.getFirst();
-         fek<MinecraftServer> $$6 = $$0.l().aZ().I().s();
+         fep<MinecraftServer> $$6 = $$0.l().aZ().I().s();
          Optional<hx<ej>> $$7 = ((Either)$$1.getSecond()).left();
          if ($$7.isPresent()) {
             if ($$7.get() instanceof ia) {
@@ -72,7 +72,7 @@ public class aow {
                $$6.a($$8);
             }
 
-            $$6.a($$8, $$4, new feg($$5));
+            $$6.a($$8, $$4, new fel($$5));
             $$0.a(() -> wy.a("commands.schedule.created.function", wy.a($$5), $$2, $$4), true);
          } else {
             String $$9 = "#" + $$5;
@@ -80,7 +80,7 @@ public class aow {
                $$6.a($$9);
             }
 
-            $$6.a($$9, $$4, new feh($$5));
+            $$6.a($$9, $$4, new fem($$5));
             $$0.a(() -> wy.a("commands.schedule.created.tag", wy.a($$5), $$2, $$4), true);
          }
 

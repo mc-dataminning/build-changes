@@ -1,20 +1,27 @@
-public class dxl extends dwz {
-   public dxl(iv $$0, eao $$1) {
-      super(dxo.D, $$0, $$1, dem.c);
-   }
+import java.util.List;
 
-   @Override
-   protected wy j() {
-      return wy.c("container.blast_furnace");
-   }
+public interface dxl {
+   List<dxl.a> a();
 
-   @Override
-   protected int a(dyl $$0, czk $$1) {
-      return super.a($$0, $$1) / 2;
-   }
+   public static class a {
+      private final int a;
+      private int b;
 
-   @Override
-   protected cvc a(int $$0, cri $$1) {
-      return new cvi($$0, $$1, this, this.m);
+      public a(int $$0) {
+         this.a = $$0;
+         this.b = 1;
+      }
+
+      public void a() {
+         this.b++;
+      }
+
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
    }
 }

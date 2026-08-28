@@ -2,15 +2,15 @@ import java.util.EnumSet;
 import javax.annotation.Nullable;
 
 public class cdn extends cef {
-   private final cki a;
+   private final cmb a;
    @Nullable
-   private crj b;
+   private crm b;
    private final arq c;
    private final float d;
    private int e;
    private final chy f;
 
-   public cdn(cki $$0, float $$1) {
+   public cdn(cmb $$0, float $$1) {
       this.a = $$0;
       this.c = a($$0);
       this.d = $$1;
@@ -51,10 +51,10 @@ public class cdn extends cef {
       this.e--;
    }
 
-   private boolean a(crj $$0) {
+   private boolean a(crm $$0) {
       for (buf $$1 : buf.values()) {
-         czk $$2 = $$0.b($$1);
-         if ($$2.a(czo.sH) || this.a.i($$2)) {
+         czn $$2 = $$0.b($$1);
+         if ($$2.a(czr.sH) || this.a.i($$2)) {
             return true;
          }
       }

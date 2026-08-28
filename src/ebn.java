@@ -1,20 +1,21 @@
 public enum ebn implements bak {
-   a("top"),
-   b("bottom");
+   a("uprooted"),
+   b("dormant"),
+   c("awake");
 
-   private final String c;
+   private final String d;
 
    private ebn(final String $$0) {
-      this.c = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.d;
    }
 }

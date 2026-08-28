@@ -61,15 +61,15 @@ public class cja extends ciz implements bxo, cjn {
    private cja.f cC;
    private int cD;
 
-   public cja(bwr<? extends cja> $$0, djh $$1) {
+   public cja(bwr<? extends cja> $$0, djm $$1) {
       super($$0, $$1);
       this.bA = new cdf(this, 20, true);
       this.bz = new cja.j(this);
-      this.a(exm.n, -1.0F);
-      this.a(exm.j, -1.0F);
-      this.a(exm.k, 16.0F);
-      this.a(exm.x, -1.0F);
-      this.a(exm.h, -1.0F);
+      this.a(exr.n, -1.0F);
+      this.a(exr.j, -1.0F);
+      this.a(exr.k, 16.0F);
+      this.a(exr.x, -1.0F);
+      this.a(exr.h, -1.0F);
    }
 
    @Override
@@ -80,7 +80,7 @@ public class cja extends ciz implements bxo, cjn {
    }
 
    @Override
-   public float a(iv $$0, djk $$1) {
+   public float a(iv $$0, djp $$1) {
       return $$1.a_($$0).l() ? 10.0F : 0.0F;
    }
 
@@ -139,7 +139,7 @@ public class cja extends ciz implements bxo, cjn {
       bux $$2 = this.dV().a((bxj)this);
       boolean $$3 = $$1.a($$0, $$2, (float)((int)this.h(byp.c)));
       if ($$3) {
-         dfz.a($$0, $$1, $$2);
+         dgc.a($$0, $$1, $$2);
          if ($$1 instanceof bxj $$4) {
             $$4.p($$4.eW() + 1);
             int $$5 = 0;
@@ -174,13 +174,13 @@ public class cja extends ciz implements bxo, cjn {
       this.gO();
    }
 
-   private void a(djh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, lw $$6) {
+   private void a(djm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, lw $$6) {
       $$0.a($$6, azm.d($$0.A.j(), $$1, $$2), $$5, azm.d($$0.A.j(), $$3, $$4), 0.0, 0.0, 0.0);
    }
 
    @Override
    void j(iv $$0) {
-      fex $$1 = fex.c($$0);
+      ffc $$1 = ffc.c($$0);
       int $$2 = 0;
       iv $$3 = this.du();
       int $$4 = (int)$$1.e - $$3.v();
@@ -198,7 +198,7 @@ public class cja extends ciz implements bxo, cjn {
          $$6 = $$7 / 2;
       }
 
-      fex $$8 = cib.a(this, $$5, $$6, $$2, $$1, (float) (Math.PI / 10));
+      ffc $$8 = cib.a(this, $$5, $$6, $$2, $$1, (float) (Math.PI / 10));
       if ($$8 != null) {
          this.bC.b(0.5F);
          this.bC.a($$8.d, $$8.e, $$8.f, 1.0);
@@ -251,7 +251,7 @@ public class cja extends ciz implements bxo, cjn {
       }
    }
 
-   public static boolean c(djh $$0) {
+   public static boolean c(djm $$0) {
       return $$0.B_().g() && ($$0.W() || $$0.ah());
    }
 
@@ -304,7 +304,7 @@ public class cja extends ciz implements bxo, cjn {
    }
 
    private boolean gP() {
-      dxj $$0 = this.gT();
+      dxo $$0 = this.gT();
       return $$0 != null && $$0.a();
    }
 
@@ -335,8 +335,8 @@ public class cja extends ciz implements bxo, cjn {
    }
 
    private boolean k(iv $$0) {
-      dxm $$1 = this.dU().c_($$0);
-      return $$1 instanceof dxj ? !((dxj)$$1).d() : false;
+      dxr $$1 = this.dU().c_($$0);
+      return $$1 instanceof dxo ? !((dxo)$$1).d() : false;
    }
 
    @bav
@@ -389,7 +389,7 @@ public class cja extends ciz implements bxo, cjn {
             this.cx--;
          }
 
-         boolean $$0 = this.X_() && !this.gG() && this.f() != null && this.f().g(this) < 4.0;
+         boolean $$0 = this.aa_() && !this.gG() && this.f() != null && this.f().g(this) < 4.0;
          this.y($$0);
          if (this.af % 20 == 0 && !this.gU()) {
             this.cz = null;
@@ -398,11 +398,11 @@ public class cja extends ciz implements bxo, cjn {
    }
 
    @Nullable
-   dxj gT() {
+   dxo gT() {
       if (this.cz == null) {
          return null;
       } else {
-         return this.l(this.cz) ? null : this.dU().a(this.cz, dxo.I).orElse(null);
+         return this.l(this.cz) ? null : this.dU().a(this.cz, dxt.I).orElse(null);
       }
    }
 
@@ -459,7 +459,7 @@ public class cja extends ciz implements bxo, cjn {
    }
 
    @Override
-   protected cgt b(djh $$0) {
+   protected cgt b(djm $$0) {
       cgr $$1 = new cgr(this, $$0) {
          @Override
          public boolean a(iv $$0) {
@@ -480,9 +480,9 @@ public class cja extends ciz implements bxo, cjn {
    }
 
    @Override
-   public bug b(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
-      if (this.i($$2) && $$2.h() instanceof cxs $$3 && $$3.c() instanceof dps $$4) {
+   public bug b(crm $$0, buf $$1) {
+      czn $$2 = $$0.b($$1);
+      if (this.i($$2) && $$2.h() instanceof cxv $$3 && $$3.c() instanceof dpx $$4) {
          bvm $$5 = $$4.b();
          if ($$5 != null) {
             this.a($$0, $$1, $$2);
@@ -498,12 +498,12 @@ public class cja extends ciz implements bxo, cjn {
    }
 
    @Override
-   public boolean i(czk $$0) {
+   public boolean i(czn $$0) {
       return $$0.a(axk.an);
    }
 
    @Override
-   protected void b(iv $$0, eao $$1) {
+   protected void b(iv $$0, eat $$1) {
    }
 
    @Override
@@ -532,7 +532,7 @@ public class cja extends ciz implements bxo, cjn {
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, eao $$2, iv $$3) {
+   protected void a(double $$0, boolean $$1, eat $$2, iv $$3) {
    }
 
    @Override
@@ -561,13 +561,13 @@ public class cja extends ciz implements bxo, cjn {
    }
 
    @Override
-   protected void c(axr<ewu> $$0) {
+   protected void c(axr<ewz> $$0) {
       this.i(this.dx().b(0.0, 0.01, 0.0));
    }
 
    @Override
-   public fex cS() {
-      return new fex(0.0, (double)(0.5F * this.cR()), (double)(this.dp() * 0.2F));
+   public ffc cS() {
+      return new ffc(0.0, (double)(0.5F * this.cR()), (double)(this.dp() * 0.2F));
    }
 
    boolean b(iv $$0, int $$1) {
@@ -578,12 +578,12 @@ public class cja extends ciz implements bxo, cjn {
       this.cz = $$0;
    }
 
-   public static boolean c(eao $$0) {
+   public static boolean c(eat $$0) {
       if ($$0.a(axc.W)) {
-         if ($$0.a(ebe.I, Boolean.valueOf(false))) {
+         if ($$0.a(ebj.I, Boolean.valueOf(false))) {
             return false;
          } else {
-            return $$0.a(dmo.jf) ? $$0.c(dov.b) == ebk.a : true;
+            return $$0.a(dmt.jf) ? $$0.c(dpa.b) == ebp.a : true;
          }
       } else {
          return false;
@@ -597,12 +597,12 @@ public class cja extends ciz implements bxo, cjn {
 
       @Override
       public boolean b() {
-         return this.h() && !cja.this.X_();
+         return this.h() && !cja.this.aa_();
       }
 
       @Override
       public boolean c() {
-         return this.i() && !cja.this.X_();
+         return this.i() && !cja.this.aa_();
       }
    }
 
@@ -613,18 +613,18 @@ public class cja extends ciz implements bxo, cjn {
 
       @Override
       public boolean b() {
-         return super.b() && cja.this.X_() && !cja.this.gG();
+         return super.b() && cja.this.aa_() && !cja.this.gG();
       }
 
       @Override
       public boolean c() {
-         return super.c() && cja.this.X_() && !cja.this.gG();
+         return super.c() && cja.this.aa_() && !cja.this.gG();
       }
    }
 
-   static class c extends cfy<crj> {
+   static class c extends cfy<crm> {
       c(cja $$0) {
-         super($$0, crj.class, 10, true, false, $$0::a);
+         super($$0, crm.class, 10, true, false, $$0::a);
       }
 
       @Override
@@ -645,7 +645,7 @@ public class cja extends ciz implements bxo, cjn {
 
       private boolean i() {
          cja $$0 = (cja)this.e;
-         return $$0.X_() && !$$0.gG();
+         return $$0.aa_() && !$$0.gG();
       }
    }
 
@@ -653,7 +653,7 @@ public class cja extends ciz implements bxo, cjn {
       @Override
       public boolean h() {
          if (cja.this.cz != null && cja.this.gN() && cja.this.cz.a(cja.this.ds(), 2.0)) {
-            dxj $$0 = cja.this.gT();
+            dxo $$0 = cja.this.gT();
             if ($$0 != null) {
                if (!$$0.d()) {
                   return true;
@@ -673,7 +673,7 @@ public class cja extends ciz implements bxo, cjn {
 
       @Override
       public void d() {
-         dxj $$0 = cja.this.gT();
+         dxo $$0 = cja.this.gT();
          if ($$0 != null) {
             $$0.a(cja.this);
          }
@@ -687,7 +687,7 @@ public class cja extends ciz implements bxo, cjn {
       private static final int e = 3;
       final List<iv> f = Lists.newArrayList();
       @Nullable
-      private exj g;
+      private exo g;
       private static final int h = 60;
       private int i;
 
@@ -791,7 +791,7 @@ public class cja extends ciz implements bxo, cjn {
          if (cja.this.b($$0, 2)) {
             return true;
          } else {
-            exj $$1 = cja.this.bC.i();
+            exo $$1 = cja.this.bC.i();
             return $$1 != null && $$1.l().equals($$0) && $$1.j() && $$1.c();
          }
       }
@@ -871,28 +871,28 @@ public class cja extends ciz implements bxo, cjn {
          if (cja.this.ae.a(this.a(30)) == 0) {
             for (int $$0 = 1; $$0 <= 2; $$0++) {
                iv $$1 = cja.this.du().c($$0);
-               eao $$2 = cja.this.dU().a_($$1);
-               dmm $$3 = $$2.b();
-               eao $$4 = null;
+               eat $$2 = cja.this.dU().a_($$1);
+               dmr $$3 = $$2.b();
+               eat $$4 = null;
                if ($$2.a(axc.aL)) {
-                  if ($$3 instanceof doj) {
-                     doj $$5 = (doj)$$3;
+                  if ($$3 instanceof doo) {
+                     doo $$5 = (doo)$$3;
                      if (!$$5.i($$2)) {
                         $$4 = $$5.b($$5.h($$2) + 1);
                      }
-                  } else if ($$3 instanceof dus) {
-                     int $$6 = $$2.c(dus.c);
+                  } else if ($$3 instanceof dux) {
+                     int $$6 = $$2.c(dux.c);
                      if ($$6 < 7) {
-                        $$4 = $$2.b(dus.c, Integer.valueOf($$6 + 1));
+                        $$4 = $$2.b(dux.c, Integer.valueOf($$6 + 1));
                      }
-                  } else if ($$2.a(dmo.oO)) {
-                     int $$7 = $$2.c(duz.c);
+                  } else if ($$2.a(dmt.oO)) {
+                     int $$7 = $$2.c(dve.c);
                      if ($$7 < 3) {
-                        $$4 = $$2.b(duz.c, Integer.valueOf($$7 + 1));
+                        $$4 = $$2.b(dve.c, Integer.valueOf($$7 + 1));
                      }
-                  } else if ($$2.a(dmo.td) || $$2.a(dmo.te)) {
-                     dmp $$8 = (dmp)$$2.b();
-                     if ($$8.a((djk)cja.this.dU(), $$1, $$2)) {
+                  } else if ($$2.a(dmt.td) || $$2.a(dmt.te)) {
+                     dmu $$8 = (dmu)$$2.b();
+                     if ($$8.a((djp)cja.this.dU(), $$1, $$2)) {
                         $$8.a((arq)cja.this.dU(), cja.this.ae, $$1, $$2);
                         $$4 = cja.this.dU().a_($$1);
                      }
@@ -916,7 +916,7 @@ public class cja extends ciz implements bxo, cjn {
 
       @Override
       public boolean c() {
-         return cja.this.X_() && super.c();
+         return cja.this.aa_() && super.c();
       }
 
       @Override
@@ -970,7 +970,7 @@ public class cja extends ciz implements bxo, cjn {
 
       @Override
       public void a() {
-         if (!cja.this.X_()) {
+         if (!cja.this.aa_()) {
             super.a();
          }
       }
@@ -993,7 +993,7 @@ public class cja extends ciz implements bxo, cjn {
       private int k;
       private boolean l;
       @Nullable
-      private fex m;
+      private ffc m;
       private int n;
       private static final int o = 600;
       private Long2LongOpenHashMap p = new Long2LongOpenHashMap();
@@ -1082,7 +1082,7 @@ public class cja extends ciz implements bxo, cjn {
                this.l = false;
                cja.this.cx = 200;
             } else {
-               fex $$0 = fex.c(cja.this.cy).b(0.0, 0.6F, 0.0);
+               ffc $$0 = ffc.c(cja.this.cy).b(0.0, 0.6F, 0.0);
                if ($$0.f(cja.this.ds()) > 1.0) {
                   this.m = $$0;
                   this.n();
@@ -1099,7 +1099,7 @@ public class cja extends ciz implements bxo, cjn {
                      if ($$1) {
                         boolean $$3 = cja.this.ae.a(25) == 0;
                         if ($$3) {
-                           this.m = new fex($$0.a() + (double)this.o(), $$0.b(), $$0.c() + (double)this.o());
+                           this.m = new ffc($$0.a() + (double)this.o(), $$0.b(), $$0.c() + (double)this.o());
                            cja.this.bC.m();
                         } else {
                            $$2 = false;
@@ -1140,7 +1140,7 @@ public class cja extends ciz implements bxo, cjn {
             if (cja.this.dU().ae() < $$3) {
                $$1.put($$2.a(), $$3);
             } else if (cja.c(cja.this.dU().a_($$2))) {
-               exj $$4 = cja.this.bC.a($$2, 1);
+               exo $$4 = cja.this.bC.a($$2, 1);
                if ($$4 != null && $$4.j()) {
                   return Optional.of($$2);
                }
@@ -1171,24 +1171,24 @@ public class cja extends ciz implements bxo, cjn {
 
       @Override
       public void d() {
-         fex $$0 = this.h();
+         ffc $$0 = this.h();
          if ($$0 != null) {
             cja.this.bC.a(cja.this.bC.a(iv.a((jp)$$0), 1), 1.0);
          }
       }
 
       @Nullable
-      private fex h() {
-         fex $$1;
+      private ffc h() {
+         ffc $$1;
          if (cja.this.gU() && !cja.this.b(cja.this.cz, this.i())) {
-            fex $$0 = fex.b(cja.this.cz);
+            ffc $$0 = ffc.b(cja.this.cz);
             $$1 = $$0.d(cja.this.ds()).d();
          } else {
             $$1 = cja.this.h(0.0F);
          }
 
          int $$3 = 8;
-         fex $$4 = cie.a(cja.this, 8, 7, $$1.d, $$1.f, (float) (Math.PI / 2), 3, 1);
+         ffc $$4 = cie.a(cja.this, 8, 7, $$1.d, $$1.f, (float) (Math.PI / 2), 3, 1);
          return $$4 != null ? $$4 : cia.a(cja.this, 8, 4, -2, $$1.d, $$1.f, (float) (Math.PI / 2));
       }
 

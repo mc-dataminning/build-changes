@@ -1,46 +1,51 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record fda(Optional<by> b, ezo.b c) implements fcx {
+public record fda(Optional<cu> b, iv c) implements fdc {
+   private static final MapCodec<iv> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(ka::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(ka::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(ka::w)
+            )
+            .apply($$0, iv::new)
+   );
    public static final MapCodec<fda> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(by.a.optionalFieldOf("predicate").forGetter(fda::c), ezo.b.e.fieldOf("entity").forGetter(fda::d)).apply($$0, fda::new)
+      $$0 -> $$0.group(cu.a.optionalFieldOf("predicate").forGetter(fda::c), g.forGetter(fda::d)).apply($$0, fda::new)
    );
 
    @Override
-   public fcy b() {
-      return fcz.f;
+   public fdd b() {
+      return fde.n;
+   }
+
+   public boolean a(ezt $$0) {
+      ffc $$1 = $$0.c(fcn.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
    @Override
    public Set<bax<?>> a() {
-      return Set.of(fci.f, this.c.a());
+      return Set.of(fcn.f);
    }
 
-   public boolean a(ezo $$0) {
-      bwi $$1 = $$0.c(this.c.a());
-      fex $$2 = $$0.c(fci.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public static fdc.a a(cu.a $$0) {
+      return () -> new fda(Optional.of($$0.b()), iv.c);
    }
 
-   public static fcx.a a(ezo.b $$0) {
-      return a($$0, by.a.a());
+   public static fdc.a a(cu.a $$0, iv $$1) {
+      return () -> new fda(Optional.of($$0.b()), $$1);
    }
 
-   public static fcx.a a(ezo.b $$0, by.a $$1) {
-      return () -> new fda(Optional.of($$1.b()), $$0);
-   }
-
-   public static fcx.a a(ezo.b $$0, by $$1) {
-      return () -> new fda(Optional.of($$1), $$0);
-   }
-
-   public Optional<by> c() {
+   public Optional<cu> c() {
       return this.b;
    }
 
-   public ezo.b d() {
+   public iv d() {
       return this.c;
    }
 }

@@ -1,112 +1,127 @@
-public class cxx extends czg {
-   public static final int a = 10;
-   private static final int b = 200;
+import javax.annotation.Nullable;
 
-   public cxx(czg.a $$0) {
+public class cxx extends czj {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
+
+   public cxx(czj.a $$0) {
       super($$0);
    }
 
    @Override
-   public bug a(ddf $$0) {
-      crj $$1 = $$0.o();
-      if ($$1 != null && this.a($$1).d() == fev.a.b) {
-         $$1.c($$0.p());
+   public bug a(ddi $$0) {
+      djm $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      iv $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.C) {
+            $$0.o().a(eft.C);
+            $$1.c(1505, $$2, 15);
+         }
+
+         return bug.a;
+      } else {
+         eat $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.c($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.C) {
+               $$0.o().a(eft.C);
+               $$1.c(1505, $$3, 15);
+            }
+
+            return bug.a;
+         } else {
+            return bug.e;
+         }
+      }
+   }
+
+   public static boolean a(czn $$0, djm $$1, iv $$2) {
+      eat $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dmu $$4 && $$4.a((djp)$$1, $$2, $$3)) {
+         if ($$1 instanceof arq) {
+            if ($$4.a($$1, $$1.A, $$2, $$3)) {
+               $$4.a((arq)$$1, $$1.A, $$2, $$3);
+            }
+
+            $$0.h(1);
+         }
+
+         return true;
       }
 
-      return bug.c;
+      return false;
    }
 
-   @Override
-   public czm b(czk $$0) {
-      return czm.j;
-   }
+   public static boolean a(czn $$0, djm $$1, iv $$2, @Nullable jb $$3) {
+      if ($$1.a_($$2).a(dmt.J) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof arq)) {
+            return true;
+         } else {
+            azv $$4 = $$1.C_();
 
-   @Override
-   public int a(czk $$0, bxj $$1) {
-      return 200;
-   }
+            label80:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               iv $$6 = $$2;
+               eat $$7 = dmt.bG.m();
 
-   @Override
-   public void a(djh $$0, bxj $$1, czk $$2, int $$3) {
-      if ($$3 >= 0 && $$1 instanceof crj $$4) {
-         fev $$6 = this.a($$4);
-         if ($$6 instanceof fet $$7 && $$6.d() == fev.a.b) {
-            int $$9 = this.a($$2, $$1) - $$3 + 1;
-            boolean $$10 = $$9 % 10 == 5;
-            if ($$10) {
-               iv $$11 = $$7.b();
-               eao $$12 = $$0.a_($$11);
-               bxa $$13 = $$1.fz() == buf.a ? $$4.fx() : $$4.fx().e();
-               if ($$12.D() && $$12.o() != dsz.a) {
-                  this.a($$0, $$7, $$12, $$1.h(0.0F), $$13);
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).m($$1, $$6)) {
+                     continue label80;
+                  }
                }
 
-               awm $$15;
-               if ($$12.b() instanceof dms $$14) {
-                  $$15 = $$14.c();
-               } else {
-                  $$15 = awn.cS;
+               jf<dkp> $$9 = $$1.u($$6);
+               if ($$9.a(axb.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = mg.e.a(axc.au, $$1.A).map($$0x -> ((dmr)$$0x.a()).m()).orElse($$7);
+                     if ($$7.b(dmc.d)) {
+                        $$7 = $$7.b(dmc.d, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = mg.e.a(axc.as, $$1.A).map($$0x -> ((dmr)$$0x.a()).m()).orElse($$7);
+                  }
                }
 
-               $$0.a($$4, $$11, $$15, awo.e);
-               if ($$0 instanceof arq $$17 && $$0.c_($$11) instanceof dxr $$18) {
-                  boolean $$19 = $$18.a($$0.ae(), $$17, $$4, $$7.c(), $$2);
-                  if ($$19) {
-                     bws $$20 = $$2.equals($$4.a(bws.b)) ? bws.b : bws.a;
-                     $$2.a(1, $$4, $$20);
+               if ($$7.a(axc.au, $$0x -> $$0x.b(dmc.d))) {
+                  for (int $$10 = 0; !$$7.a((djp)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.b(dmc.d, jb.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((djp)$$1, $$6)) {
+                  eat $$11 = $$1.a_($$6);
+                  if ($$11.a(dmt.J) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(dmt.bG) && ((dmu)dmt.bG).a((djp)$$1, $$6, $$11) && $$4.a(10) == 0) {
+                     ((dmu)dmt.bG).a((arq)$$1, $$4, $$6, $$11);
                   }
                }
             }
 
-            return;
+            $$0.h(1);
+            return true;
          }
-
-         $$1.fD();
       } else {
-         $$1.fD();
+         return false;
       }
    }
 
-   private fev a(crj $$0) {
-      return csg.a($$0, bwp.h, $$0.gK());
-   }
-
-   private void a(djh $$0, fet $$1, eao $$2, fex $$3, bxa $$4) {
-      double $$5 = 3.0;
-      int $$6 = $$4 == bxa.b ? 1 : -1;
-      int $$7 = $$0.C_().b(7, 12);
-      lq $$8 = new lq(ly.b, $$2);
-      jb $$9 = $$1.c();
-      cxx.a $$10 = cxx.a.a($$3, $$9);
-      fex $$11 = $$1.g();
-
-      for (int $$12 = 0; $$12 < $$7; $$12++) {
-         $$0.a(
-            $$8,
-            $$11.d - (double)($$9 == jb.e ? 1.0E-6F : 0.0F),
-            $$11.e,
-            $$11.f - (double)($$9 == jb.c ? 1.0E-6F : 0.0F),
-            $$10.a() * (double)$$6 * 3.0 * $$0.C_().j(),
-            0.0,
-            $$10.c() * (double)$$6 * 3.0 * $$0.C_().j()
-         );
-      }
-   }
-
-   static record a(double a, double b, double c) {
-      private static final double d = 1.0;
-      private static final double e = 0.1;
-
-      public static cxx.a a(fex $$0, jb $$1) {
-         double $$2 = 0.0;
-
-         return switch ($$1) {
-            case a, b -> new cxx.a($$0.c(), 0.0, -$$0.a());
-            case c -> new cxx.a(1.0, 0.0, -0.1);
-            case d -> new cxx.a(-1.0, 0.0, 0.1);
-            case e -> new cxx.a(-0.1, 0.0, -1.0);
-            case f -> new cxx.a(0.1, 0.0, 1.0);
-         };
+   public static void a(djn $$0, iv $$1, int $$2) {
+      eat $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof dmu $$4) {
+         iv $$5 = $$4.a($$1);
+         switch ($$4.an_()) {
+            case a:
+               azq.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, ly.Q);
+               break;
+            case b:
+               azq.a($$0, $$5, $$2, ly.Q);
+         }
+      } else if ($$3.a(dmt.J)) {
+         azq.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, ly.Q);
       }
    }
 }

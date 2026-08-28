@@ -1,42 +1,34 @@
-public class gzj extends gvk<cuk, hed> {
-   private final grp g;
+public class gzj extends gvs<cpb, hff, giu> {
+   private static final alg a = alg.b("textures/entity/strider/strider.png");
+   private static final alg j = alg.b("textures/entity/strider/strider_cold.png");
+   private static final float k = 0.5F;
 
-   public gzj(gwt.a $$0) {
-      super($$0, gjn.dy);
-      this.g = $$0.d();
+   public gzj(gwy.a $$0) {
+      super($$0, new giu($$0.a(gjs.dv)), new giu($$0.a(gjs.dx)), 0.5F);
+      this.a(new hbp<>(this, $$0.h(), hlw.d.h, $$0x -> $$0x.a, new giu($$0.a(gjs.dw)), new giu($$0.a(gjs.dy))));
    }
 
-   protected void a(hed $$0, eao $$1, fjy $$2, gqm $$3, int $$4) {
-      float $$5 = $$0.n;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = azm.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.g, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   public alg a(hff $$0) {
+      return $$0.b ? j : a;
    }
 
-   public static void a(grp $$0, eao $$1, fjy $$2, gqm $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = hja.a(hja.a(1.0F), 10);
-      } else {
-         $$6 = hja.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected float b(hff $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
    }
 
-   public hed a() {
-      return new hed();
+   public hff b() {
+      return new hff();
    }
 
-   public void a(cuk $$0, hed $$1, float $$2) {
+   public void a(cpb $$0, hff $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.n = $$0.q() > -1 ? (float)$$0.q() - $$2 + 1.0F : -1.0F;
+      $$1.a = $$0.a(bws.h).v();
+      $$1.b = $$0.q();
+      $$1.c = $$0.bY();
+   }
+
+   protected boolean c(hff $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

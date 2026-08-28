@@ -1,18 +1,27 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class fqz {
-   private static final ayu.b<alg, MapCodec<? extends fqy>> b = new ayu.b<>();
-   public static final Codec<fqy> a = b.a(alg.a).dispatch(fqy::a, $$0 -> $$0);
+public record fqz(int b, int c) implements frd {
+   public static final MapCodec<fqz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(fqz::b), ayu.i.fieldOf("default").forGetter(fqz::c)).apply($$0, fqz::new)
+   );
 
-   public static void a() {
-      b.a(alg.b("custom_model_data"), fqu.a);
-      b.a(alg.b("constant"), fqt.a);
-      b.a(alg.b("dye"), fqv.a);
-      b.a(alg.b("grass"), fqx.a);
-      b.a(alg.b("firework"), fqw.a);
-      b.a(alg.b("potion"), frb.a);
-      b.a(alg.b("map_color"), fra.a);
-      b.a(alg.b("team"), frc.a);
+   @Override
+   public int a(czn $$0, @Nullable gkq $$1, @Nullable bxj $$2) {
+      dbw $$3 = $$0.a(kk.p);
+      if ($$3 != null) {
+         Integer $$4 = $$3.d(this.b);
+         if ($$4 != null) {
+            return axw.f($$4);
+         }
+      }
+
+      return axw.f(this.c);
+   }
+
+   @Override
+   public MapCodec<fqz> a() {
+      return a;
    }
 }

@@ -1,31 +1,44 @@
-import java.util.Map;
+public class gro implements fkh {
+   private final fkh a;
+   private final hjq b;
 
-public class gro {
-   private Map<eao, gry> a = Map.of();
-   private final hlx b;
-
-   public gro(hlx $$0) {
-      this.b = $$0;
-   }
-
-   public hjk a(eao $$0) {
-      return this.b($$0).b();
-   }
-
-   public gry b(eao $$0) {
-      gry $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
-   }
-
-   public hlx a() {
-      return this.b;
-   }
-
-   public void a(Map<eao, gry> $$0) {
+   public gro(fkh $$0, hjq $$1) {
       this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public fkh a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public fkh a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public fkh a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
+   }
+
+   @Override
+   public fkh a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public fkh b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public fkh b(float $$0, float $$1, float $$2) {
+      return this.a.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
    }
 }

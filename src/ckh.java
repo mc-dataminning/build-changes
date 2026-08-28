@@ -1,13 +1,13 @@
 public abstract class ckh extends bxr {
    public static final int d = 120;
 
-   protected ckh(bwr<? extends ckh> $$0, djh $$1) {
+   protected ckh(bwr<? extends ckh> $$0, djm $$1) {
       super($$0, $$1);
-      this.a(exm.j, 0.0F);
+      this.a(exr.j, 0.0F);
    }
 
    @Override
-   public boolean a(djk $$0) {
+   public boolean a(djp $$0) {
       return $$0.f(this);
    }
 
@@ -52,9 +52,9 @@ public abstract class ckh extends bxr {
       return false;
    }
 
-   public static boolean c(bwr<? extends ckh> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
+   public static boolean c(bwr<? extends ckh> $$0, djn $$1, bwq $$2, iv $$3, azv $$4) {
       int $$5 = $$1.P();
       int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axh.a) && $$1.a_($$3.d()).a(dmo.J);
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axh.a) && $$1.a_($$3.d()).a(dmt.J);
    }
 }

@@ -5,7 +5,7 @@ class bvh extends bvk {
 
    @Override
    public boolean a(arq $$0, bxj $$1, int $$2) {
-      if ($$1 instanceof crj $$3) {
+      if ($$1 instanceof crm $$3) {
          $$3.G(0.005F * (float)($$2 + 1));
       }
 

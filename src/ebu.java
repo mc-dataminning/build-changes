@@ -1,37 +1,62 @@
-import java.util.Optional;
+public enum ebu implements bak {
+   a("harp", awn.sK, ebu.a.a),
+   b("basedrum", awn.sE, ebu.a.a),
+   c("snare", awn.sN, ebu.a.a),
+   d("hat", awn.sL, ebu.a.a),
+   e("bass", awn.sF, ebu.a.a),
+   f("flute", awn.sI, ebu.a.a),
+   g("bell", awn.sG, ebu.a.a),
+   h("guitar", awn.sJ, ebu.a.a),
+   i("chime", awn.sH, ebu.a.a),
+   j("xylophone", awn.sO, ebu.a.a),
+   k("iron_xylophone", awn.sP, ebu.a.a),
+   l("cow_bell", awn.sQ, ebu.a.a),
+   m("didgeridoo", awn.sR, ebu.a.a),
+   n("bit", awn.sS, ebu.a.a),
+   o("banjo", awn.sT, ebu.a.a),
+   p("pling", awn.sM, ebu.a.a),
+   q("zombie", awn.sU, ebu.a.b),
+   r("skeleton", awn.sV, ebu.a.b),
+   s("creeper", awn.sW, ebu.a.b),
+   t("dragon", awn.sX, ebu.a.b),
+   u("wither_skeleton", awn.sY, ebu.a.b),
+   v("piglin", awn.sZ, ebu.a.b),
+   w("custom_head", awn.Bv, ebu.a.c);
 
-public class ebu {
-   private static final azy a = new azy(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+   private final String x;
+   private final jf<awm> y;
+   private final ebu.a z;
 
-   public static int a() {
-      return b;
+   private ebu(final String $$0, final jf<awm> $$1, final ebu.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
-   public static int a(jb $$0) {
-      return a.a($$0);
+   @Override
+   public String c() {
+      return this.x;
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
+   public jf<awm> a() {
+      return this.y;
    }
 
-   public static Optional<jb> a(int $$0) {
-      jb $$1 = switch ($$0) {
-         case 0 -> jb.c;
-         case 4 -> jb.f;
-         case 8 -> jb.d;
-         case 12 -> jb.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
+   public boolean b() {
+      return this.z == ebu.a.a;
    }
 
-   public static float b(int $$0) {
-      return a.b($$0);
+   public boolean d() {
+      return this.z == ebu.a.c;
+   }
+
+   public boolean e() {
+      return this.z != ebu.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

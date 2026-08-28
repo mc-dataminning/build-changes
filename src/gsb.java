@@ -1,87 +1,118 @@
-import com.google.gson.JsonArray;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import java.io.Reader;
 import java.lang.reflect.Type;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-import org.joml.Vector3fc;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record gsb(Vector3fc b, Vector3fc c, Vector3fc d) {
-   public static final gsb a = new gsb(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+public record gsb(@Nullable hml b, @Nullable hmm.a d, @Nullable Boolean e, @Nullable gsh f, gsl.a g, @Nullable alg h) implements hmm {
+   @VisibleForTesting
+   static final Gson a = new GsonBuilder()
+      .registerTypeAdapter(gsb.class, new gsb.a())
+      .registerTypeAdapter(gry.class, new gry.a())
+      .registerTypeAdapter(grz.class, new grz.a())
+      .registerTypeAdapter(gsg.class, new gsg.a())
+      .registerTypeAdapter(gsh.class, new gsh.a())
+      .create();
 
-   public void a(boolean $$0, fjy.a $$1) {
-      if (this == a) {
-         $$1.a(-0.5F, -0.5F, -0.5F);
-      } else {
-         float $$2;
-         float $$3;
-         float $$4;
-         if ($$0) {
-            $$2 = -this.c.x();
-            $$3 = -this.b.y();
-            $$4 = -this.b.z();
-         } else {
-            $$2 = this.c.x();
-            $$3 = this.b.y();
-            $$4 = this.b.z();
-         }
-
-         $$1.a($$2, this.c.y(), this.c.z());
-         $$1.a(new Quaternionf().rotationXYZ(this.b.x() * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
-         $$1.b(this.d.x(), this.d.y(), this.d.z());
-         $$1.a(-0.5F, -0.5F, -0.5F);
-      }
+   public static gsb a(Reader $$0) {
+      return azc.a(a, $$0, gsb.class);
    }
 
-   public Vector3fc a() {
+   @Nullable
+   @Override
+   public hml a() {
       return this.b;
    }
 
-   public Vector3fc b() {
-      return this.c;
-   }
-
-   public Vector3fc c() {
+   @Nullable
+   @Override
+   public hmm.a b() {
       return this.d;
    }
 
-   protected static class a implements JsonDeserializer<gsb> {
-      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
-      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
-      public static final float a = 5.0F;
-      public static final float b = 4.0F;
+   @Nullable
+   @Override
+   public Boolean c() {
+      return this.e;
+   }
 
+   @Nullable
+   @Override
+   public gsh d() {
+      return this.f;
+   }
+
+   @Override
+   public gsl.a e() {
+      return this.g;
+   }
+
+   @Nullable
+   @Override
+   public alg f() {
+      return this.h;
+   }
+
+   public static class a implements JsonDeserializer<gsb> {
       public gsb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         Vector3f $$4 = this.a($$3, "rotation", c);
-         Vector3f $$5 = this.a($$3, "translation", d);
-         $$5.mul(0.0625F);
-         $$5.set(azm.a($$5.x, -5.0F, 5.0F), azm.a($$5.y, -5.0F, 5.0F), azm.a($$5.z, -5.0F, 5.0F));
-         Vector3f $$6 = this.a($$3, "scale", e);
-         $$6.set(azm.a($$6.x, -4.0F, 4.0F), azm.a($$6.y, -4.0F, 4.0F), azm.a($$6.z, -4.0F, 4.0F));
-         return new gsb($$4, $$5, $$6);
+         hml $$4 = this.a($$2, $$3);
+         String $$5 = this.c($$3);
+         gsl.a $$6 = this.b($$3);
+         Boolean $$7 = this.a($$3);
+         gsh $$8 = null;
+         if ($$3.has("display")) {
+            JsonObject $$9 = azc.u($$3, "display");
+            $$8 = (gsh)$$2.deserialize($$9, gsh.class);
+         }
+
+         hmm.a $$10 = null;
+         if ($$3.has("gui_light")) {
+            $$10 = hmm.a.a(azc.i($$3, "gui_light"));
+         }
+
+         alg $$11 = $$5.isEmpty() ? null : alg.a($$5);
+         return new gsb($$4, $$10, $$7, $$8, $$6, $$11);
       }
 
-      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
-         if (!$$0.has($$1)) {
-            return $$2;
+      private gsl.a b(JsonObject $$0) {
+         if ($$0.has("textures")) {
+            JsonObject $$1 = azc.u($$0, "textures");
+            return gsl.a($$1, hjp.c);
          } else {
-            JsonArray $$3 = azc.v($$0, $$1);
-            if ($$3.size() != 3) {
-               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
-            } else {
-               float[] $$4 = new float[3];
+            return gsl.a.a;
+         }
+      }
 
-               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-                  $$4[$$5] = azc.e($$3.get($$5), $$1 + "[" + $$5 + "]");
-               }
+      private String c(JsonObject $$0) {
+         return azc.a($$0, "parent", "");
+      }
 
-               return new Vector3f($$4[0], $$4[1], $$4[2]);
+      @Nullable
+      protected Boolean a(JsonObject $$0) {
+         return $$0.has("ambientocclusion") ? azc.k($$0, "ambientocclusion") : null;
+      }
+
+      @Nullable
+      protected hml a(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("elements")) {
+            return null;
+         } else {
+            List<gry> $$2 = new ArrayList<>();
+
+            for (JsonElement $$3 : azc.v($$1, "elements")) {
+               $$2.add((gry)$$0.deserialize($$3, gry.class));
             }
+
+            return new gsk($$2);
          }
       }
    }

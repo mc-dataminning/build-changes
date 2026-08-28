@@ -12,7 +12,7 @@ public class any {
    }
 
    private static int a(ej $$0) {
-      return a($$0, crj::m_);
+      return a($$0, crm::m_);
    }
 
    private static int b(ej $$0) {

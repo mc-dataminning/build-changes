@@ -1,33 +1,39 @@
-public class gwf<T extends cpp> extends gxz<T, hcr, ggb> {
-   private static final alg a = alg.b("textures/entity/creaking/creaking.png");
-   private static final alg j = alg.b("textures/entity/creaking/creaking_eyes.png");
-
-   public gwf(gwt.a $$0) {
-      super($$0, new ggb($$0.a(gjn.ap)), 0.6F);
-      this.a(new hba<>(this, j, ($$0x, $$1) -> 1.0F, ggb::b, gqx::q, true));
+public class gwf extends gvs<cjc, hcu, gfy> {
+   public gwf(gwy.a $$0) {
+      super($$0, new gfy($$0.a(gjs.Q)), new gfy($$0.a(gjs.R)), 0.4F);
+      this.a(new hao(this, $$0.f()));
    }
 
-   public alg a(hcr $$0) {
-      return a;
+   public alg a(hcu $$0) {
+      return $$0.a;
    }
 
-   public hcr a() {
-      return new hcr();
+   public hcu a() {
+      return new hcu();
    }
 
-   public void a(T $$0, hcr $$1, float $$2) {
+   public void a(cjc $$0, hcu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b.a($$0.bI);
-      $$1.a.a($$0.bJ);
-      $$1.c.a($$0.bK);
-      if ($$0.gu()) {
-         $$1.ac = 0.0F;
-         $$1.am = false;
-         $$1.d = $$0.gx();
-      } else {
-         $$1.d = $$0.gB();
-      }
+      $$1.a = $$0.gF().a().b().b();
+      $$1.d = $$0.cg();
+      $$1.e = $$0.ch();
+      $$1.f = $$0.x();
+      $$1.g = $$0.J($$2);
+      $$1.h = $$0.K($$2);
+      $$1.i = $$0.L($$2);
+      $$1.b = $$0.gK();
+      $$1.c = $$0.q() ? $$0.gH() : null;
+   }
 
-      $$1.e = $$0.n();
+   protected void a(hcu $$0, fkd $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = $$0.g;
+      if ($$4 > 0.0F) {
+         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
+         $$1.a(a.f.rotationDegrees(azm.i($$4, 0.0F, 90.0F)));
+         if ($$0.b) {
+            $$1.a(0.15F * $$4, 0.0F, 0.0F);
+         }
+      }
    }
 }

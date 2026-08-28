@@ -1,29 +1,59 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import java.util.concurrent.locks.LockSupport;
 
-public record hos(how b, hoz c) {
-   public static final Codec<hos> a = how.a.dispatchStable(hos::a, how::c);
+public class hos extends bsu<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
 
-   public hos(how b, hoz c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
-         }
-      });
-      this.b = b;
-      this.c = c;
+   public hos() {
+      super("Sound executor");
    }
 
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
+      return $$0;
    }
 
-   public how a() {
-      return this.b;
+   @Override
+   public Runnable f(Runnable $$0) {
+      return $$0;
    }
 
-   public hoz b() {
-      return this.c;
+   @Override
+   protected boolean e(Runnable $$0) {
+      return !this.b;
+   }
+
+   @Override
+   protected Thread ay() {
+      return this.a;
+   }
+
+   private void c() {
+      while (!this.b) {
+         this.b(() -> this.b);
+      }
+   }
+
+   @Override
+   protected void A() {
+      LockSupport.park("waiting for tasks");
+   }
+
+   public void a() {
+      this.b = true;
+      this.a.interrupt();
+
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
+      }
+
+      this.bz();
+      this.b = false;
+      this.a = this.b();
    }
 }

@@ -1,4 +1,13 @@
-public class hfp extends hdq {
+import javax.annotation.Nullable;
+
+public class hfp extends hdu implements hfo {
    public boolean a;
-   public boolean b;
+   @Nullable
+   public cqz b;
+
+   @Nullable
+   @Override
+   public cqz a() {
+      return this.b;
+   }
 }

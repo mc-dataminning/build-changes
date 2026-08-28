@@ -1,71 +1,101 @@
-public abstract class dkr {
-   public static final alf<dkk> a = a("the_void");
-   public static final alf<dkk> b = a("plains");
-   public static final alf<dkk> c = a("sunflower_plains");
-   public static final alf<dkk> d = a("snowy_plains");
-   public static final alf<dkk> e = a("ice_spikes");
-   public static final alf<dkk> f = a("desert");
-   public static final alf<dkk> g = a("swamp");
-   public static final alf<dkk> h = a("mangrove_swamp");
-   public static final alf<dkk> i = a("forest");
-   public static final alf<dkk> j = a("flower_forest");
-   public static final alf<dkk> k = a("birch_forest");
-   public static final alf<dkk> l = a("dark_forest");
-   public static final alf<dkk> m = a("pale_garden");
-   public static final alf<dkk> n = a("old_growth_birch_forest");
-   public static final alf<dkk> o = a("old_growth_pine_taiga");
-   public static final alf<dkk> p = a("old_growth_spruce_taiga");
-   public static final alf<dkk> q = a("taiga");
-   public static final alf<dkk> r = a("snowy_taiga");
-   public static final alf<dkk> s = a("savanna");
-   public static final alf<dkk> t = a("savanna_plateau");
-   public static final alf<dkk> u = a("windswept_hills");
-   public static final alf<dkk> v = a("windswept_gravelly_hills");
-   public static final alf<dkk> w = a("windswept_forest");
-   public static final alf<dkk> x = a("windswept_savanna");
-   public static final alf<dkk> y = a("jungle");
-   public static final alf<dkk> z = a("sparse_jungle");
-   public static final alf<dkk> A = a("bamboo_jungle");
-   public static final alf<dkk> B = a("badlands");
-   public static final alf<dkk> C = a("eroded_badlands");
-   public static final alf<dkk> D = a("wooded_badlands");
-   public static final alf<dkk> E = a("meadow");
-   public static final alf<dkk> F = a("cherry_grove");
-   public static final alf<dkk> G = a("grove");
-   public static final alf<dkk> H = a("snowy_slopes");
-   public static final alf<dkk> I = a("frozen_peaks");
-   public static final alf<dkk> J = a("jagged_peaks");
-   public static final alf<dkk> K = a("stony_peaks");
-   public static final alf<dkk> L = a("river");
-   public static final alf<dkk> M = a("frozen_river");
-   public static final alf<dkk> N = a("beach");
-   public static final alf<dkk> O = a("snowy_beach");
-   public static final alf<dkk> P = a("stony_shore");
-   public static final alf<dkk> Q = a("warm_ocean");
-   public static final alf<dkk> R = a("lukewarm_ocean");
-   public static final alf<dkk> S = a("deep_lukewarm_ocean");
-   public static final alf<dkk> T = a("ocean");
-   public static final alf<dkk> U = a("deep_ocean");
-   public static final alf<dkk> V = a("cold_ocean");
-   public static final alf<dkk> W = a("deep_cold_ocean");
-   public static final alf<dkk> X = a("frozen_ocean");
-   public static final alf<dkk> Y = a("deep_frozen_ocean");
-   public static final alf<dkk> Z = a("mushroom_fields");
-   public static final alf<dkk> aa = a("dripstone_caves");
-   public static final alf<dkk> ab = a("lush_caves");
-   public static final alf<dkk> ac = a("deep_dark");
-   public static final alf<dkk> ad = a("nether_wastes");
-   public static final alf<dkk> ae = a("warped_forest");
-   public static final alf<dkk> af = a("crimson_forest");
-   public static final alf<dkk> ag = a("soul_sand_valley");
-   public static final alf<dkk> ah = a("basalt_deltas");
-   public static final alf<dkk> ai = a("the_end");
-   public static final alf<dkk> aj = a("end_highlands");
-   public static final alf<dkk> ak = a("end_midlands");
-   public static final alf<dkk> al = a("small_end_islands");
-   public static final alf<dkk> am = a("end_barrens");
+import com.google.common.hash.Hashing;
 
-   private static alf<dkk> a(String $$0) {
-      return alf.a(mh.aG, alg.b($$0));
+public class dkr {
+   public static final int a = jq.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final dkr.a e;
+   private final long f;
+
+   public dkr(dkr.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
+   }
+
+   public dkr a(dkr.a $$0) {
+      return new dkr($$0, this.f);
+   }
+
+   public jf<dkp> a(iv $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
+      }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
+   }
+
+   public jf<dkp> a(double $$0, double $$1, double $$2) {
+      int $$3 = jq.a(azm.a($$0));
+      int $$4 = jq.a(azm.a($$1));
+      int $$5 = jq.a(azm.a($$2));
+      return this.a($$3, $$4, $$5);
+   }
+
+   public jf<dkp> b(iv $$0) {
+      int $$1 = jq.a($$0.u());
+      int $$2 = jq.a($$0.v());
+      int $$3 = jq.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
+
+   public jf<dkp> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = azh.a($$0, (long)$$1);
+      $$7 = azh.a($$7, (long)$$2);
+      $$7 = azh.a($$7, (long)$$3);
+      $$7 = azh.a($$7, (long)$$1);
+      $$7 = azh.a($$7, (long)$$2);
+      $$7 = azh.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = azh.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = azh.a($$7, $$0);
+      double $$10 = b($$7);
+      return azm.k($$6 + $$10) + azm.k($$5 + $$9) + azm.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      jf<dkp> getNoiseBiome(int var1, int var2, int var3);
    }
 }

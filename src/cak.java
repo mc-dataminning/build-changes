@@ -6,7 +6,7 @@ public class cak extends bza<bxl> {
    private static final int c = 40;
    private int d;
    @Nullable
-   private exj e;
+   private exo e;
    @Nullable
    private iv f;
    private float g;
@@ -69,7 +69,7 @@ public class cak extends bza<bxl> {
    }
 
    protected void d(arq $$0, bxl $$1, long $$2) {
-      exj $$3 = $$1.O().i();
+      exo $$3 = $$1.O().i();
       byj<?> $$4 = $$1.eb();
       if (this.e != $$3) {
          this.e = $$3;
@@ -104,7 +104,7 @@ public class cak extends bza<bxl> {
             return true;
          }
 
-         fex $$6 = cic.a((bxr)$$0, 10, 7, fex.c($$3), (float) (Math.PI / 2));
+         ffc $$6 = cic.a((bxr)$$0, 10, 7, ffc.c($$3), (float) (Math.PI / 2));
          if ($$6 != null) {
             this.e = $$0.O().a($$6.d, $$6.e, $$6.f, 0);
             return this.e != null;

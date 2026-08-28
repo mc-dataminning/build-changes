@@ -1,69 +1,53 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-public class hpk implements hpq {
-   private static final int a = 1200;
-   private static final wy b = wy.c("tutorial.craft_planks.title");
-   private static final wy c = wy.c("tutorial.craft_planks.description");
-   private final hpp d;
-   @Nullable
-   private fvh e;
-   private int f;
+public final class hpk extends hpi {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
-   public hpk(hpp $$0) {
-      this.d = $$0;
+   @Override
+   public void a(hpc $$0) {
+      if (fpt.Q().C()) {
+         super.a($$0);
+      }
+   }
+
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hpr.f);
-      } else {
-         fpo $$0 = this.d.e();
-         if (this.f == 1) {
-            gpj $$1 = $$0.t;
-            if ($$1 != null) {
-               if ($$1.gi().a(axk.b)) {
-                  this.d.a(hpr.f);
-                  return;
-               }
+   public void f() {
+      this.b.add((long)fpt.Q().o());
+      this.h();
+      this.c.add(fpt.Q().p());
+   }
 
-               if (a($$1, axk.b)) {
-                  this.d.a(hpr.f);
-                  return;
-               }
-            }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fvh($$0.h, fvh.a.e, b, c, false);
-            $$0.aA().a(this.e);
-         }
-      }
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
-      }
+   public void b(hpc $$0) {
+      $$0.send(hpd.c, $$0x -> {
+         $$0x.a(hpf.r, new LongArrayList(this.b));
+         $$0x.a(hpf.s, new LongArrayList(this.c));
+         $$0x.a(hpf.t, new LongArrayList(this.d));
+         $$0x.a(hpf.u, this.e());
+         $$0x.a(hpf.v, fpt.Q().n.aH());
+         $$0x.a(hpf.w, (int)a);
+      });
+      this.g();
    }
 
-   @Override
-   public void a(czk $$0) {
-      if ($$0.a(axk.b)) {
-         this.d.a(hpr.f);
-      }
-   }
-
-   public static boolean a(gpj $$0, axr<czg> $$1) {
-      for (jf<czg> $$2 : mg.g.c($$1)) {
-         if ($$0.l().a(awx.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

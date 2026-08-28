@@ -1,11 +1,24 @@
-@FunctionalInterface
-public interface gjx {
-   gjx a = $$0 -> $$0;
+public class gjx {
+   public static final gjx a = new gjx(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   static gjx scaling(float $$0) {
-      float $$1 = 24.016F * (1.0F - $$0);
-      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
+   public gjx(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   gjw apply(gjw var1);
+   public gjx(float $$0) {
+      this($$0, $$0, $$0);
+   }
+
+   public gjx a(float $$0) {
+      return new gjx(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
+
+   public gjx a(float $$0, float $$1, float $$2) {
+      return new gjx(this.b + $$0, this.c + $$1, this.d + $$2);
+   }
 }

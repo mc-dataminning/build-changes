@@ -1,45 +1,40 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class hkc {
-   private static final hkl[] a = new hkl[]{
-      a("textures/entity/player/slim/alex.png", hkl.a.a),
-      a("textures/entity/player/slim/ari.png", hkl.a.a),
-      a("textures/entity/player/slim/efe.png", hkl.a.a),
-      a("textures/entity/player/slim/kai.png", hkl.a.a),
-      a("textures/entity/player/slim/makena.png", hkl.a.a),
-      a("textures/entity/player/slim/noor.png", hkl.a.a),
-      a("textures/entity/player/slim/steve.png", hkl.a.a),
-      a("textures/entity/player/slim/sunny.png", hkl.a.a),
-      a("textures/entity/player/slim/zuri.png", hkl.a.a),
-      a("textures/entity/player/wide/alex.png", hkl.a.b),
-      a("textures/entity/player/wide/ari.png", hkl.a.b),
-      a("textures/entity/player/wide/efe.png", hkl.a.b),
-      a("textures/entity/player/wide/kai.png", hkl.a.b),
-      a("textures/entity/player/wide/makena.png", hkl.a.b),
-      a("textures/entity/player/wide/noor.png", hkl.a.b),
-      a("textures/entity/player/wide/steve.png", hkl.a.b),
-      a("textures/entity/player/wide/sunny.png", hkl.a.b),
-      a("textures/entity/player/wide/zuri.png", hkl.a.b)
-   };
+public record hkc(alg c, Optional<alg> d) implements hjv {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<hkc> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alg.a.fieldOf("resource").forGetter(hkc::b), alg.a.optionalFieldOf("sprite").forGetter(hkc::c)).apply($$0, hkc::new)
+   );
 
-   public static alg a() {
-      return b().a();
+   public hkc(alg $$0) {
+      this($$0, Optional.empty());
    }
 
-   public static hkl b() {
-      return a[6];
+   @Override
+   public void a(avd $$0, hjv.a $$1) {
+      alg $$2 = a.a(this.c);
+      Optional<avb> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.d.orElse(this.c), $$3.get());
+      } else {
+         e.warn("Missing sprite: {}", $$2);
+      }
    }
 
-   public static hkl a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Override
+   public MapCodec<hkc> a() {
+      return b;
    }
 
-   public static hkl a(GameProfile $$0) {
-      return a($$0.getId());
+   public alg b() {
+      return this.c;
    }
 
-   private static hkl a(String $$0, hkl.a $$1) {
-      return new hkl(alg.b($$0), null, null, null, $$1, true);
+   public Optional<alg> c() {
+      return this.d;
    }
 }

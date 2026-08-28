@@ -1,4 +1,4 @@
-// 25w07a	2026-08-28T03:38:36.253917592	vanilla/Tags for minecraft:block
+// 25w08a	2026-08-28T03:40:52.530405414	vanilla/Tags for minecraft:block
 620fc7b39fd41c75ee966f17103bf6b9debc80c9 data/minecraft/tags/block/bee_attractive.json
 1b34690c952fb0cae947d85b752e19a7a83a453b data/minecraft/tags/block/oak_logs.json
 e58f5fa3c4fe3090b27304fa8f3c92e23594f085 data/minecraft/tags/block/flower_pots.json
@@ -102,8 +102,8 @@ f28dc9f2c7d071fef84fb760a59427d564938731 data/minecraft/tags/block/diamond_ores.
 96c9cbfdf01e0868f405b9ffb5aac3fa6e8b2b38 data/minecraft/tags/block/unstable_bottom_center.json
 a50dcf5915e98c7c6616f3b34f657c2f14d6d173 data/minecraft/tags/block/lush_ground_replaceable.json
 2f6f453e3ae95b8921ba5b843b704a77117e01a7 data/minecraft/tags/block/climbable.json
-2d97a7b26d2a65b8dab30789033841371c7361d4 data/minecraft/tags/block/enchantment_power_transmitter.json
 51d8bf3885db56e8d2baea74147e7db3db031d51 data/minecraft/tags/block/maintains_farmland.json
+2d97a7b26d2a65b8dab30789033841371c7361d4 data/minecraft/tags/block/enchantment_power_transmitter.json
 f5d73120ea1f55d3d12d51ade52c0d39eb6a758b data/minecraft/tags/block/infiniburn_end.json
 0f244217291b57180a2e4cd1c2385dcab32dead4 data/minecraft/tags/block/banners.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data/minecraft/tags/block/frogs_spawnable_on.json
@@ -160,7 +160,7 @@ c48bbed46970bff31dd0e696398a3e105fa0fa1f data/minecraft/tags/block/stairs.json
 9eaa40cdc7d24db027be3eac878536ce597e2b3a data/minecraft/tags/block/badlands_terracotta.json
 21826e6d8baefa69712a8a9b5ccdd0ca304ab3d7 data/minecraft/tags/block/sculk_replaceable.json
 1d06a2ee122e3edcd98600fe98e131c26392d4bf data/minecraft/tags/block/coral_blocks.json
-1014e4d4e20e0874281a6028282c8b9a236f95c5 data/minecraft/tags/block/edible_for_sheep.json
+5dd31802db86a7a667ea7c511e002fe34f572850 data/minecraft/tags/block/edible_for_sheep.json
 19f48b0aa7f4f0432b1625d6afe2e73994b2e6ca data/minecraft/tags/block/mangrove_logs.json
 e395b02c1ea8040c23269be0d37b137cbe42f27d data/minecraft/tags/block/dry_vegetation_may_place_on.json
 274c899ecd90e93185a6b2d7bf84123a67af63db data/minecraft/tags/block/enderman_holdable.json
@@ -174,8 +174,8 @@ ec1e5e186c92959fded287ecc70517d940073a3d data/minecraft/tags/block/wooden_trapdo
 f729e414f251f498f99f18ca92e3ff59de1b98d7 data/minecraft/tags/block/sniffer_diggable_block.json
 8f756b6bb97bd87b831f683f85e42cabb7f86cd3 data/minecraft/tags/block/ice.json
 afd862ebc333a8df53174530faee5f54c15a71a7 data/minecraft/tags/block/nether_carver_replaceables.json
-f8bcce6657c34cb191d37bc195f0cae478d00bed data/minecraft/tags/block/small_flowers.json
 45aac43b276cae0f4b4ca7dccad68ee2cf4f1ca9 data/minecraft/tags/block/sand.json
+f8bcce6657c34cb191d37bc195f0cae478d00bed data/minecraft/tags/block/small_flowers.json
 d325dafefb521ba257286a3f3c66d9d6cd3bd320 data/minecraft/tags/block/cave_vines.json
 8dd9194492a51b40153c68f2381b0eaa8f09a217 data/minecraft/tags/block/bats_spawnable_on.json
 f835cdeac806ff176e388bdfc26f543b95288939 data/minecraft/tags/block/invalid_spawn_inside.json

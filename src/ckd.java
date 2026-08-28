@@ -13,9 +13,9 @@ public class ckd extends ciy {
    private float bO;
    private float bP;
    private float bQ;
-   fex bR = fex.c;
+   ffc bR = ffc.c;
 
-   public ckd(bwr<? extends ckd> $$0, djh $$1) {
+   public ckd(bwr<? extends ckd> $$0, djm $$1) {
       super($$0, $$1);
       this.ae.b((long)this.ao());
       this.bP = 1.0F / (this.ae.i() + 1.0F) * 0.2F;
@@ -119,7 +119,7 @@ public class ckd extends ciy {
             this.bQ *= 0.99F;
          }
 
-         fex $$1 = this.dx();
+         ffc $$1 = this.dx();
          double $$2 = $$1.i();
          this.aV = this.aV + (-((float)azm.d($$1.d, $$1.f)) * (180.0F / (float)Math.PI) - this.aV) * 0.1F;
          this.w(this.aV);
@@ -152,19 +152,19 @@ public class ckd extends ciy {
       }
    }
 
-   private fex l(fex $$0) {
-      fex $$1 = $$0.a(this.bH * (float) (Math.PI / 180.0));
+   private ffc l(ffc $$0) {
+      ffc $$1 = $$0.a(this.bH * (float) (Math.PI / 180.0));
       return $$1.b(-this.aW * (float) (Math.PI / 180.0));
    }
 
    private void x() {
       this.b(this.t());
-      fex $$0 = this.l(new fex(0.0, -1.0, 0.0)).b(this.dz(), this.dB(), this.dF());
+      ffc $$0 = this.l(new ffc(0.0, -1.0, 0.0)).b(this.dz(), this.dB(), this.dF());
 
       for (int $$1 = 0; $$1 < 30; $$1++) {
-         fex $$2 = this.l(new fex((double)this.ae.i() * 0.6 - 0.3, -1.0, (double)this.ae.i() * 0.6 - 0.3));
+         ffc $$2 = this.l(new ffc((double)this.ae.i() * 0.6 - 0.3, -1.0, (double)this.ae.i() * 0.6 - 0.3));
          float $$3 = this.n_() ? 0.1F : 0.3F;
-         fex $$4 = $$2.c((double)($$3 + this.ae.i() * 2.0F));
+         ffc $$4 = $$2.c((double)($$3 + this.ae.i() * 2.0F));
          ((arq)this.dU()).a(this.q(), $$0.d, $$0.e + 0.5, $$0.f, 0, $$4.d, $$4.e, $$4.f, 0.1F);
       }
    }
@@ -174,7 +174,7 @@ public class ckd extends ciy {
    }
 
    @Override
-   public void a_(fex $$0) {
+   public void a_(ffc $$0) {
       this.a(bxn.a, this.dx());
    }
 
@@ -193,7 +193,7 @@ public class ckd extends ciy {
 
    @Nullable
    @Override
-   public byb a(djy $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
+   public byb a(dkd $$0, bue $$1, bwq $$2, @Nullable byb $$3) {
       byb $$4 = Objects.requireNonNullElseGet($$3, () -> new bvy.a(0.05F));
       return super.a($$0, $$1, $$2, $$4);
    }
@@ -225,9 +225,9 @@ public class ckd extends ciy {
          this.e++;
          bxj $$0 = ckd.this.eq();
          if ($$0 != null) {
-            fex $$1 = new fex(ckd.this.dz() - $$0.dz(), ckd.this.dB() - $$0.dB(), ckd.this.dF() - $$0.dF());
-            eao $$2 = ckd.this.dU().a_(iv.a(ckd.this.dz() + $$1.d, ckd.this.dB() + $$1.e, ckd.this.dF() + $$1.f));
-            ewv $$3 = ckd.this.dU().b_(iv.a(ckd.this.dz() + $$1.d, ckd.this.dB() + $$1.e, ckd.this.dF() + $$1.f));
+            ffc $$1 = new ffc(ckd.this.dz() - $$0.dz(), ckd.this.dB() - $$0.dB(), ckd.this.dF() - $$0.dF());
+            eat $$2 = ckd.this.dU().a_(iv.a(ckd.this.dz() + $$1.d, ckd.this.dB() + $$1.e, ckd.this.dF() + $$1.f));
+            exa $$3 = ckd.this.dU().b_(iv.a(ckd.this.dz() + $$1.d, ckd.this.dB() + $$1.e, ckd.this.dF() + $$1.f));
             if ($$3.a(axh.a) || $$2.l()) {
                double $$4 = $$1.g();
                if ($$4 > 0.0) {
@@ -246,7 +246,7 @@ public class ckd extends ciy {
                   $$1 = $$1.a(0.0, $$1.e, 0.0);
                }
 
-               ckd.this.bR = new fex($$1.d / 20.0, $$1.e / 20.0, $$1.f / 20.0);
+               ckd.this.bR = new ffc($$1.d / 20.0, $$1.e / 20.0, $$1.f / 20.0);
             }
 
             if (this.e % 10 == 5) {
@@ -272,10 +272,10 @@ public class ckd extends ciy {
       public void a() {
          int $$0 = this.a.ev();
          if ($$0 > 100) {
-            this.a.bR = fex.c;
+            this.a.bR = ffc.c;
          } else if (this.a.dX().a(b(50)) == 0 || !this.a.ag || !this.a.gu()) {
             float $$1 = this.a.dX().i() * (float) (Math.PI * 2);
-            this.a.bR = new fex((double)(azm.b($$1) * 0.2F), (double)(-0.1F + this.a.dX().i() * 0.2F), (double)(azm.a($$1) * 0.2F));
+            this.a.bR = new ffc((double)(azm.b($$1) * 0.2F), (double)(-0.1F + this.a.dX().i() * 0.2F), (double)(azm.a($$1) * 0.2F));
          }
       }
    }

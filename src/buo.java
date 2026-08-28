@@ -1,8 +1,8 @@
 public final class buo implements bui {
    private final wy a;
-   private final cwk b;
+   private final cwn b;
 
-   public buo(cwk $$0, wy $$1) {
+   public buo(cwn $$0, wy $$1) {
       this.b = $$0;
       this.a = $$1;
    }
@@ -13,7 +13,7 @@ public final class buo implements bui {
    }
 
    @Override
-   public cvc createMenu(int $$0, cri $$1, crj $$2) {
+   public cvf createMenu(int $$0, crl $$1, crm $$2) {
       return this.b.createMenu($$0, $$1, $$2);
    }
 }

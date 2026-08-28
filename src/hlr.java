@@ -1,15 +1,91 @@
-import java.util.List;
+import java.util.EnumMap;
 import java.util.Map;
-import org.joml.Vector3f;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 
-public class hlr {
-   private static final String b = "missingno";
-   public static final alg a = alg.b("builtin/missing");
+public enum hlr implements hmf {
+   a(i.a, i.a),
+   b(i.a, i.b),
+   c(i.a, i.c),
+   d(i.a, i.d),
+   e(i.b, i.a),
+   f(i.b, i.b),
+   g(i.b, i.c),
+   h(i.b, i.d),
+   i(i.c, i.a),
+   j(i.c, i.b),
+   k(i.c, i.c),
+   l(i.c, i.d),
+   m(i.d, i.a),
+   n(i.d, i.b),
+   o(i.d, i.c),
+   p(i.d, i.d);
 
-   public static hmf a() {
-      gru.b $$0 = new gru.b(0.0F, 0.0F, 16.0F, 16.0F);
-      Map<jb, gru> $$1 = ag.a(jb.class, $$1x -> new gru($$1x, -1, "missingno", $$0, i.a));
-      grt $$2 = new grt(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
-      return new grw(new gsf(List.of($$2)), null, null, gsc.a, new gsg.a.a().a("particle", "missingno").a("missingno", new hlq(hjj.c, hiz.c())).a(), null);
+   private static final hlr[][] r = ag.a(new hlr[i.values().length][i.values().length], $$0 -> {
+      for (hlr $$1 : values()) {
+         $$0[$$1.s.ordinal()][$$1.t.ordinal()] = $$1;
+      }
+   });
+   private final i s;
+   private final i t;
+   final k u;
+   private final h v;
+   final Map<jb, Matrix4fc> w = new EnumMap<>(jb.class);
+   final Map<jb, Matrix4fc> x = new EnumMap<>(jb.class);
+   private final hlr.a y = new hlr.a(this);
+
+   private hlr(final i $$0, final i $$1) {
+      this.s = $$0;
+      this.t = $$1;
+      this.v = h.a($$0, $$1);
+      if (this.v != h.a) {
+         this.u = new k(new Matrix4f(this.v.b()));
+      } else {
+         this.u = k.a();
+      }
+
+      for (jb $$2 : jb.values()) {
+         Matrix4fc $$3 = iu.a(this.u, $$2).c();
+         this.w.put($$2, $$3);
+         this.x.put($$2, $$3.invertAffine(new Matrix4f()));
+      }
+   }
+
+   @Override
+   public k a() {
+      return this.u;
+   }
+
+   public static hlr a(i $$0, i $$1) {
+      return r[$$0.ordinal()][$$1.ordinal()];
+   }
+
+   public h b() {
+      return this.v;
+   }
+
+   public hmf c() {
+      return this.y;
+   }
+
+   static record a(hlr a) implements hmf {
+      @Override
+      public k a() {
+         return this.a.u;
+      }
+
+      @Override
+      public Matrix4fc a(jb $$0) {
+         return this.a.w.getOrDefault($$0, q);
+      }
+
+      @Override
+      public Matrix4fc b(jb $$0) {
+         return this.a.x.getOrDefault($$0, q);
+      }
+
+      public hlr b() {
+         return this.a;
+      }
    }
 }

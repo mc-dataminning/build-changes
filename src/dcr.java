@@ -1,48 +1,46 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ReferenceSortedSets;
+import java.util.List;
+import java.util.SequencedSet;
 
-public record dcr(czk c) {
-   public static final Codec<dcr> a = czk.b.xmap(dcr::new, dcr::a);
-   public static final yw<wj, dcr> b = yw.a(czk.i, dcr::a, dcr::new);
+public record dcr(boolean d, SequencedSet<kj<?>> e) {
+   private static final Codec<SequencedSet<kj<?>>> f = kj.a.listOf().xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
+   public static final Codec<dcr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(dcr::a),
+               f.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(dcr::b)
+            )
+            .apply($$0, dcr::new)
+   );
+   public static final yw<wj, dcr> b = yw.a(yu.b, dcr::a, kj.b.a(yu.a(ReferenceLinkedOpenHashSet::new)), dcr::b, dcr::new);
+   public static final dcr c = new dcr(false, ReferenceSortedSets.emptySet());
 
-   public czk a(czk $$0, int $$1, boolean $$2, dcr.a $$3) {
-      if ($$2) {
-         return $$0;
-      } else if ($$0.M() >= $$1) {
-         return $$0;
+   public dcr a(kj<?> $$0, boolean $$1) {
+      if (this.e.contains($$0) == $$1) {
+         return this;
       } else {
-         czk $$4 = this.c.v();
-         if ($$0.f()) {
-            return $$4;
+         SequencedSet<kj<?>> $$2 = new ReferenceLinkedOpenHashSet(this.e);
+         if ($$1) {
+            $$2.add($$0);
          } else {
-            $$3.apply($$4);
-            return $$0;
+            $$2.remove($$0);
          }
+
+         return new dcr(this.d, $$2);
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         dcr $$1 = (dcr)$$0;
-         return czk.a(this.c, $$1.c);
-      } else {
-         return false;
-      }
+   public boolean a(kj<?> $$0) {
+      return !this.d && !this.e.contains($$0);
    }
 
-   @Override
-   public int hashCode() {
-      return czk.b(this.c);
+   public boolean a() {
+      return this.d;
    }
 
-   public czk a() {
-      return this.c;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(czk var1);
+   public SequencedSet<kj<?>> b() {
+      return this.e;
    }
 }

@@ -22,7 +22,7 @@ class bvp extends bvk {
    public void a(arq $$0, bxj $$1, int $$2, bwi.d $$3) {
       if ($$3 == bwi.d.a) {
          int $$4 = this.e.applyAsInt($$1.dX());
-         int $$5 = $$0.O().d(djd.w);
+         int $$5 = $$0.O().d(dji.w);
          int $$6 = a($$5, bvp.a.a($$1), $$4);
 
          for (int $$7 = 0; $$7 < $$6; $$7++) {
@@ -31,8 +31,8 @@ class bvp extends bvk {
       }
    }
 
-   private void a(djh $$0, double $$1, double $$2, double $$3) {
-      cou $$4 = bwr.bh.a($$0, bwq.k);
+   private void a(djm $$0, double $$1, double $$2, double $$3) {
+      cox $$4 = bwr.bh.a($$0, bwq.k);
       if ($$4 != null) {
          $$4.a(2, true);
          $$4.b($$1, $$2, $$3, $$0.C_().i() * 360.0F, 0.0F);
@@ -46,7 +46,7 @@ class bvp extends bvk {
 
       static bvp.a a(bxj $$0) {
          return $$1 -> {
-            List<cou> $$2 = new ArrayList<>();
+            List<cox> $$2 = new ArrayList<>();
             $$0.dU().a(bwr.bh, $$0.cQ().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
             return $$2.size();
          };

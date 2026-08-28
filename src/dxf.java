@@ -1,145 +1,92 @@
 import javax.annotation.Nullable;
 
-public abstract class dxf extends dxm implements btz, bui, buj {
-   private buh d = buh.a;
+public class dxf extends dxr implements buj {
+   public static final int a = 6;
+   private static final String b = "patterns";
    @Nullable
-   private wy e;
+   private wy c;
+   private final cyl d;
+   private dxh e = dxh.a;
 
-   protected dxf(dxo<?> $$0, iv $$1, eao $$2) {
-      super($$0, $$1, $$2);
+   public dxf(iv $$0, eat $$1) {
+      this($$0, $$1, ((dli)$$1.b()).b());
    }
 
-   @Override
-   protected void a(tz $$0, jh.a $$1) {
-      super.a($$0, $$1);
-      this.d = buh.b($$0, $$1);
-      this.e = a($$0.a("CustomName"), $$1);
-   }
-
-   @Override
-   protected void b(tz $$0, jh.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0, $$1);
-      if (this.e != null) {
-         $$0.a("CustomName", (uw)xa.a.encodeStart($$1.a(un.a), this.e).getOrThrow());
-      }
+   public dxf(iv $$0, eat $$1, cyl $$2) {
+      super(dxt.u, $$0, $$1);
+      this.d = $$2;
    }
 
    @Override
    public wy ai() {
-      return this.e != null ? this.e : this.j();
-   }
-
-   @Override
-   public wy m_() {
-      return this.ai();
+      return (wy)(this.c != null ? this.c : wy.c("block.minecraft.banner"));
    }
 
    @Nullable
    @Override
    public wy ak() {
+      return this.c;
+   }
+
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      ale<uw> $$2 = $$1.a(un.a);
+      if (!this.e.equals(dxh.a)) {
+         $$0.a("patterns", dxh.b, $$2, this.e);
+      }
+
+      $$0.b("CustomName", xa.a, $$2, this.c);
+   }
+
+   @Override
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      this.c = a($$0.a("CustomName"), $$1);
+      ale<uw> $$2 = $$1.a(un.a);
+      this.e = $$0.<dxh>a("patterns", dxh.b, $$2).orElse(dxh.a);
+   }
+
+   public aca a() {
+      return aca.a(this);
+   }
+
+   @Override
+   public tz a(jh.a $$0) {
+      return this.d($$0);
+   }
+
+   public dxh b() {
       return this.e;
    }
 
-   protected abstract wy j();
-
-   public boolean d(crj $$0) {
-      return a($$0, this.d, this.m_());
+   public czn c() {
+      czn $$0 = new czn(dlw.a(this.d));
+      $$0.b(this.q());
+      return $$0;
    }
 
-   public static boolean a(crj $$0, buh $$1, wy $$2) {
-      if (!$$0.V_() && !$$1.a($$0.fa())) {
-         $$0.a(wy.a("container.isLocked", $$2), true);
-         $$0.a(awn.eT, awo.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
+   public cyl f() {
+      return this.d;
    }
-
-   protected abstract jo<czk> f();
-
-   protected abstract void a(jo<czk> var1);
-
-   @Override
-   public boolean c() {
-      for (czk $$0 : this.f()) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public czk a(int $$0) {
-      return this.f().get($$0);
-   }
-
-   @Override
-   public czk a(int $$0, int $$1) {
-      czk $$2 = bua.a(this.f(), $$0, $$1);
-      if (!$$2.f()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public czk b(int $$0) {
-      return bua.a(this.f(), $$0);
-   }
-
-   @Override
-   public void a(int $$0, czk $$1) {
-      this.f().set($$0, $$1);
-      $$1.f(this.f_($$1));
-      this.e();
-   }
-
-   @Override
-   public boolean a(crj $$0) {
-      return btz.a(this, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.f().clear();
-   }
-
-   @Nullable
-   @Override
-   public cvc createMenu(int $$0, cri $$1, crj $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract cvc a(int var1, cri var2);
 
    @Override
    protected void a(kf $$0) {
       super.a($$0);
-      this.e = $$0.a(kk.g);
-      this.d = $$0.a(kk.as, buh.a);
-      $$0.a(kk.ap, dcc.a).a(this.f());
+      this.e = $$0.a(kk.am, dxh.a);
+      this.c = $$0.a(kk.g);
    }
 
    @Override
    protected void a(kh.a $$0) {
       super.a($$0);
-      $$0.a(kk.g, this.e);
-      if (!this.d.equals(buh.a)) {
-         $$0.a(kk.as, this.d);
-      }
-
-      $$0.a(kk.ap, dcc.a(this.f()));
+      $$0.a(kk.am, this.e);
+      $$0.a(kk.g, this.c);
    }
 
    @Override
    public void a(tz $$0) {
+      $$0.p("patterns");
       $$0.p("CustomName");
-      $$0.p("lock");
-      $$0.p("Items");
    }
 }

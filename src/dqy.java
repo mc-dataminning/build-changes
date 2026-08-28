@@ -1,76 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dqy extends dmm implements dtx {
+public class dqy extends dmr implements dpl, dqd {
    public static final MapCodec<dqy> a = b(dqy::new);
-   public static final ebf b = ebe.m;
-   public static final ebf c = ebe.I;
-   private static final ffr d = ffo.a(dmm.b(4.0, 7.0, 9.0), dmm.b(6.0, 0.0, 7.0));
-   private static final ffr e = d.a(0.0, 0.0625, 0.0).d();
+   public static final ebr<jd> b = ebj.W;
 
    @Override
    public MapCodec<dqy> a() {
       return a;
    }
 
-   public dqy(ean.d $$0) {
+   protected dqy(eas.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)));
+      this.l(this.C.b().b(b, jd.k));
    }
 
-   @Nullable
    @Override
-   public eao a(ddd $$0) {
-      ewv $$1 = $$0.q().b_($$0.a());
+   protected void a(eau.a<dmr, eat> $$0) {
+      $$0.a(b);
+   }
 
-      for (jb $$2 : $$0.f()) {
-         if ($$2.o() == jb.a.b) {
-            eao $$3 = this.m().b(b, Boolean.valueOf($$2 == jb.b));
-            if ($$3.a((djk)$$0.q(), $$0.a())) {
-               return $$3.b(c, Boolean.valueOf($$1.a() == eww.c));
-            }
-         }
+   @Override
+   protected eat a(eat $$0, dtl $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   protected eat a(eat $$0, dru $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
+   }
+
+   @Override
+   public eat a(ddg $$0) {
+      jb $$1 = $$0.k();
+      jb $$2;
+      if ($$1.o() == jb.a.b) {
+         $$2 = $$0.g().g();
+      } else {
+         $$2 = jb.b;
       }
 
-      return null;
+      return this.m().b(b, jd.a($$1, $$2));
    }
 
    @Override
-   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
-      return $$0.c(b) ? e : d;
+   public dxr a(iv $$0, eat $$1) {
+      return new dyv($$0, $$1);
    }
 
    @Override
-   protected void a(eap.a<dmm, eao> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(eao $$0, djk $$1, iv $$2) {
-      jb $$3 = o($$0).g();
-      return dmm.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static jb o(eao $$0) {
-      return $$0.c(b) ? jb.a : jb.b;
-   }
-
-   @Override
-   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, eww.c, eww.c.a($$1));
+   protected bug a(eat $$0, djm $$1, iv $$2, crm $$3, fey $$4) {
+      dxr $$5 = $$1.c_($$2);
+      if ($$5 instanceof dyv && $$3.gF()) {
+         $$3.a((dyv)$$5);
+         return bug.a;
+      } else {
+         return bug.e;
       }
-
-      return o($$0).g() == $$4 && !$$0.a($$1, $$3) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   @Override
-   protected ewv b_(eao $$0) {
-      return $$0.c(c) ? eww.c.a(false) : super.b_($$0);
+   public static boolean a(evp.a $$0, evp.a $$1) {
+      jb $$2 = o($$0.a().b());
+      jb $$3 = o($$1.a().b());
+      jb $$4 = p($$0.a().b());
+      jb $$5 = p($$1.a().b());
+      dyv.a $$6 = $$0.b();
+      boolean $$7 = $$6 == dyv.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.e().equals($$1.c());
    }
 
-   @Override
-   protected boolean a(eao $$0, exk $$1) {
-      return false;
+   public static jb o(eat $$0) {
+      return $$0.c(b).a();
+   }
+
+   public static jb p(eat $$0) {
+      return $$0.c(b).b();
    }
 }

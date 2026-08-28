@@ -23,14 +23,14 @@ class bvi extends bvk {
    }
 
    private void a(arq $$0, bxj $$1, double $$2, double $$3, double $$4) {
-      cos $$5 = bwr.be.a($$0, bwq.k);
+      cov $$5 = bwr.be.a($$0, bwq.k);
       if ($$5 != null) {
          azv $$6 = $$1.dX();
          float $$7 = (float) (Math.PI / 2);
          float $$8 = azm.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
          Vector3f $$9 = $$1.bR().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
          $$5.b($$2, $$3, $$4, $$0.C_().i() * 360.0F, 0.0F);
-         $$5.i(new fex($$9));
+         $$5.i(new ffc($$9));
          $$0.b($$5);
          $$5.a(awn.xP);
       }

@@ -1,29 +1,30 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dnk {
-   ffr s_ = dmm.b(14.0, 0.0, 16.0);
-   ebf t_ = ebe.b;
+public class dnk extends dmr {
+   public static final MapCodec<dnk> a = b(dnk::new);
+   private static final ffw b = dmr.b(16.0, 0.0, 1.0);
 
-   static bug a(@Nullable bwi $$0, eao $$1, djh $$2, iv $$3) {
-      if ($$1.c(t_)) {
-         dmm.a($$2, $$3, new czk(czo.xH, 1));
-         float $$4 = azm.b($$2.A, 0.8F, 1.2F);
-         $$2.a(null, $$3, awn.ei, awo.e, 1.0F, $$4);
-         eao $$5 = $$1.b(t_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(efo.c, $$3, efo.a.a($$0, $$5));
-         return bug.a;
-      } else {
-         return bug.e;
-      }
+   @Override
+   public MapCodec<? extends dnk> a() {
+      return a;
    }
 
-   static boolean j_(eao $$0) {
-      return $$0.b(t_) && $$0.c(t_);
+   public dnk(eas.d $$0) {
+      super($$0);
    }
 
-   static ToIntFunction<eao> i_(int $$0) {
-      return $$1 -> $$1.c(ebe.b) ? $$0 : 0;
+   @Override
+   protected ffw a(eat $$0, diq $$1, iv $$2, ffh $$3) {
+      return b;
+   }
+
+   @Override
+   protected eat a(eat $$0, djp $$1, dkb $$2, iv $$3, jb $$4, iv $$5, eat $$6, azv $$7) {
+      return !$$0.a($$1, $$3) ? dmt.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(eat $$0, djp $$1, iv $$2) {
+      return !$$1.v($$2.e());
    }
 }

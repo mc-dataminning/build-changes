@@ -1,43 +1,32 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class daj extends czg {
-   public daj(czg.a $$0) {
-      super($$0);
+public enum daj implements bak {
+   a(0, "common", o.p),
+   b(1, "uncommon", o.o),
+   c(2, "rare", o.l),
+   d(3, "epic", o.n);
+
+   public static final Codec<daj> e = bak.b(daj::values);
+   public static final IntFunction<daj> f = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
+   public static final yw<ByteBuf, daj> g = yu.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final o j;
+
+   private daj(final int $$0, final String $$1, final o $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   public static dcn a() {
-      jg<dmm> $$0 = mg.a(mg.e);
-      return new dcn(
-         List.of(dcn.a.a(jj.a(dmo.bz.p()), 15.0F), dcn.a.b($$0.b(axc.Q), 15.0F), dcn.a.b($$0.b(axc.a), 5.0F), dcn.a.b(jj.a(dmo.fx.p(), dmo.fy.p()), 2.0F)),
-         1.0F,
-         1,
-         true
-      );
+   public o a() {
+      return this.j;
    }
 
    @Override
-   public bug a(ddf $$0) {
-      djh $$1 = $$0.q();
-      iv $$2 = $$0.a();
-      eao $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dqf $$5 && !$$5.q($$3)) {
-         crj $$6 = $$0.o();
-         czk $$7 = $$0.n();
-         if ($$6 instanceof arr) {
-            aq.N.a((arr)$$6, $$2, $$7);
-         }
-
-         $$1.a($$6, $$2, awn.lR, awo.e, 1.0F, 1.0F);
-         eao $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(efo.c, $$2, efo.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bxj.d($$0.p()));
-         }
-
-         return bug.a;
-      }
-
-      return super.a($$0);
+   public String c() {
+      return this.i;
    }
 }

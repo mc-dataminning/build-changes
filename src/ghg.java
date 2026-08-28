@@ -1,71 +1,45 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
+import java.util.Arrays;
 
-public abstract class ghg {
-   private static final Vector3f a = new Vector3f();
-   protected final gjo v;
-   protected final Function<alg, gqx> w;
-   private final List<gjo> b;
+public class ghg extends ggp<hfb> {
+   private static final int a = 8;
+   private final gjt[] b = new gjt[8];
 
-   public ghg(gjo $$0, Function<alg, gqx> $$1) {
-      this.v = $$0;
-      this.w = $$1;
-      this.b = $$0.e().toList();
+   public ghg(gjt $$0) {
+      super($$0);
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public final gqx a(alg $$0) {
-      return this.w.apply($$0);
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   public final void a(fjy $$0, fkc $$1, int $$2, int $$3, int $$4) {
-      this.e().a($$0, $$1, $$2, $$3, $$4);
-   }
+   public static gjz a() {
+      gkb $$0 = new gkb();
+      gkd $$1 = $$0.a();
 
-   public final void a(fjy $$0, fkc $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, -1);
-   }
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = 0;
+         if ($$2 > 0 && $$2 < 4) {
+            $$4 += 9 * $$2;
+         } else if ($$2 > 3) {
+            $$3 = 32;
+            $$4 += 9 * $$2 - 36;
+         }
 
-   public final gjo e() {
-      return this.v;
-   }
-
-   public Optional<gjo> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   public final List<gjo> f() {
-      return this.b;
-   }
-
-   public final void g() {
-      for (gjo $$0 : this.b) {
-         $$0.c();
+         $$1.a(a($$2), gjy.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gjv.a);
       }
+
+      $$1.a("inside_cube", gjy.c().a(24, 40).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gjv.a);
+      return gjz.a($$0, 64, 64);
    }
 
-   protected void a(bvz $$0, fqc $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
+   public void a(hfb $$0) {
+      super.a($$0);
+      float $$1 = Math.max(0.0F, $$0.a);
 
-   protected void a(fqc $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fqe.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bvz $$0, fqc $$1, float $$2, float $$3) {
-      $$0.a($$3x -> fqe.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
-   }
-
-   protected void a(fqc $$0) {
-      fqe.a(this, $$0, 0L, 1.0F, a);
-   }
-
-   public static class a extends ghg {
-      public a(gjo $$0, Function<alg, gqx> $$1) {
-         super($$0, $$1);
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
       }
    }
 }

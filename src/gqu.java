@@ -1,59 +1,25 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SequencedMap;
-
 public class gqu {
-   private final gra a = new gra();
-   private final grb b;
-   private final gqm.a c;
-   private final gqm.a d;
-   private final gqo e;
+   public static final alg a = alg.b("textures/gui/title/background/panorama_overlay.png");
+   private final fpt b;
+   private final gqb c;
+   private float d;
 
-   public gqu(int $$0) {
-      this.b = grb.a($$0);
-      SequencedMap<gqx, fjv> $$1 = ag.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(grg.h(), this.a.a(gqx.c()));
-         $$0x.put(grg.i(), this.a.a(gqx.e()));
-         $$0x.put(grg.a(), this.a.a(gqx.d()));
-         $$0x.put(grg.j(), this.a.a(gqx.f()));
-         a($$0x, grg.b());
-         a($$0x, grg.c());
-         a($$0x, grg.d());
-         a($$0x, grg.e());
-         a($$0x, grg.f());
-         $$0x.put(grg.g(), new fjv(786432));
-         a($$0x, gqx.j());
-         a($$0x, gqx.l());
-         a($$0x, gqx.k());
-         a($$0x, gqx.m());
-         a($$0x, gqx.i());
-      });
-      this.c = gqm.a($$1, new fjv(786432));
-      this.e = new gqo(this.c);
-      SequencedMap<gqx, fjv> $$2 = ag.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hlt.l.forEach($$1x -> a($$0x, $$1x)));
-      this.d = gqm.a($$2, new fjv(0));
+   public gqu(gqb $$0) {
+      this.c = $$0;
+      this.b = fpt.Q();
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gqx, fjv> $$0, gqx $$1) {
-      $$0.put($$1, new fjv($$1.V()));
+   public void a(fsm $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = this.b.av().b();
+      float $$6 = (float)((double)$$5 * this.b.n.t().c());
+      this.d = a(this.d + $$6 * 0.1F, 360.0F);
+      $$0.d();
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      $$0.d();
+      $$0.a(grc::H, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, axw.a($$3));
    }
 
-   public gra a() {
-      return this.a;
-   }
-
-   public grb b() {
-      return this.b;
-   }
-
-   public gqm.a c() {
-      return this.c;
-   }
-
-   public gqm.a d() {
-      return this.d;
-   }
-
-   public gqo e() {
-      return this.e;
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

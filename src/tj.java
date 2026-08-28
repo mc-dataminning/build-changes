@@ -61,7 +61,7 @@ public class tj {
       ej $$1 = $$0.b();
       arq $$2 = $$1.e();
       sv.a($$2);
-      List<era> $$3 = $$0.findTestPos().flatMap($$1x -> $$2.a($$1x, dxo.U).stream()).map(dzh::d).toList();
+      List<erf> $$3 = $$0.findTestPos().flatMap($$1x -> $$2.a($$1x, dxt.U).stream()).map(dzm::d).toList();
       $$3.forEach($$1x -> ti.a($$1x, $$2));
       if ($$3.isEmpty()) {
          throw l.create();
@@ -79,7 +79,7 @@ public class tj {
 
       for (Iterator<iv> $$5 = $$0.findTestPos().iterator(); $$5.hasNext(); $$3++) {
          iv $$6 = $$5.next();
-         if (!($$2.c_($$6) instanceof dzh $$7)) {
+         if (!($$2.c_($$6) instanceof dzm $$7)) {
             throw n.create();
          }
 
@@ -108,7 +108,7 @@ public class tj {
       Collection<sj> $$5 = new ArrayList<>();
 
       for (sq $$6 : $$4) {
-         for (dtg $$7 : dtg.values()) {
+         for (dtl $$7 : dtl.values()) {
             Collection<sq> $$8 = new ArrayList<>();
 
             for (int $$9 = 0; $$9 < 100; $$9++) {
@@ -152,7 +152,7 @@ public class tj {
       $$0.findTestPos()
          .forEach(
             $$3x -> {
-               if ($$0.b().e().c_($$3x) instanceof dzh $$5) {
+               if ($$0.b().e().c_($$3x) instanceof dzm $$5) {
                   jb var13 = $$5.u().a(jb.c);
                   iv $$8 = $$5.ax_().a(var13, 2);
                   int $$9 = (int)var13.g().p();
@@ -340,7 +340,7 @@ public class tj {
    }
 
    private static int a(ej $$0, sq $$1) {
-      dzh $$2 = $$1.f();
+      dzm $$2 = $$1.f();
       $$2.a($$0::a);
       return 1;
    }
@@ -355,7 +355,7 @@ public class tj {
 
    private static Optional<sq> a(iv $$0, ej $$1, tg $$2) {
       arq $$3 = $$1.e();
-      if ($$3.c_($$0) instanceof dzh $$4) {
+      if ($$3.c_($$0) instanceof dzm $$4) {
          Optional<jf.c<sr>> $$6 = $$4.j().flatMap($$1.u().f(mh.bh)::a);
          if ($$6.isEmpty()) {
             $$1.b(wy.a("commands.test.error.non_existant_test", $$4.k()));
@@ -376,10 +376,10 @@ public class tj {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          arq $$5 = $$0.e();
          iv $$6 = a($$0);
-         dzh $$7 = ti.a($$1, $$6, new ka($$2, $$3, $$4), dtg.a, $$5);
+         dzm $$7 = ti.a($$1, $$6, new ka($$2, $$3, $$4), dtl.a, $$5);
          iv $$8 = $$7.z();
          iv $$9 = $$8.b($$2 - 1, 0, $$4 - 1);
-         iv.d($$8, $$9).forEach($$1x -> $$5.b($$1x, dmo.I.m()));
+         iv.d($$8, $$9).forEach($$1x -> $$5.b($$1x, dmt.I.m()));
          $$0.a(() -> wy.a("commands.test.create.success", $$7.k()), true);
          return 1;
       } else {
@@ -388,7 +388,7 @@ public class tj {
    }
 
    private static int a(ej $$0, String $$1) throws CommandSyntaxException {
-      fet $$2 = (fet)$$0.h().a(10.0, 1.0F, false);
+      fey $$2 = (fey)$$0.h().a(10.0, 1.0F, false);
       iv $$3 = $$2.b();
       arq $$4 = $$0.e();
       Optional<iv> $$5 = ti.a($$3, 15, $$4);
@@ -398,7 +398,7 @@ public class tj {
 
       if ($$5.isEmpty()) {
          throw q.create($$3.u(), $$3.v(), $$3.w());
-      } else if ($$4.c_($$5.get()) instanceof dzh $$6) {
+      } else if ($$4.c_($$5.get()) instanceof dzm $$6) {
          iv var12 = $$6.z();
          iv $$9 = $$3.b(var12);
          String $$10 = $$9.u() + ", " + $$9.v() + ", " + $$9.w();
@@ -428,7 +428,7 @@ public class tj {
    }
 
    private static int a(ej $$0, jf<sr> $$1) {
-      return !dzh.a($$0.e(), $$1.a().e(), $$0::a) ? 0 : 1;
+      return !dzm.a($$0.e(), $$1.a().e(), $$0::a) ? 0 : 1;
    }
 
    private static boolean a(ej $$0, alg $$1) {
@@ -442,7 +442,7 @@ public class tj {
 
    private static iv a(ej $$0) {
       iv $$1 = iv.a((jp)$$0.d());
-      int $$2 = $$0.e().a(egn.a.b, $$1).v();
+      int $$2 = $$0.e().a(egs.a.b, $$1).v();
       return new iv($$1.u(), $$2, $$1.w() + 3);
    }
 

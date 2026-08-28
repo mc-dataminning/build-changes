@@ -1,15 +1,7 @@
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+public interface fgw<T> {
+   void a(fgu<T> var1);
 
-public class fgw {
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
-   }
+   boolean a(iv var1, T var2);
 
-   public static double b() {
-      return GLFW.glfwGetTime();
-   }
-
-   private fgw() {
-   }
+   int a();
 }

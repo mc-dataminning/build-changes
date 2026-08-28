@@ -1,124 +1,91 @@
-public class cuh extends ctw {
-   private static final akj<Boolean> c = akn.a(cuh.class, akl.k);
-   private static final int d = 3600;
-   private static final int h = 32000;
-   private int i;
-   public fex b = fex.c;
+public abstract class cuh {
+   protected final ctz a;
 
-   public cuh(bwr<? extends cuh> $$0, djh $$1) {
-      super($$0, $$1);
+   protected cuh(ctz $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public boolean z() {
-      return true;
+   public bxe a() {
+      return null;
    }
 
-   @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(c, false);
+   public void a(double $$0, double $$1, double $$2) {
+      this.b($$0, $$1, $$2);
    }
 
-   @Override
-   public void h() {
-      super.h();
-      if (!this.dU().w_()) {
-         if (this.i > 0) {
-            this.i--;
-         }
+   public abstract void b();
 
-         if (this.i <= 0) {
-            this.b = fex.c;
-         }
-
-         this.q(this.i > 0);
-      }
-
-      if (this.q() && this.ae.a(4) == 0) {
-         this.dU().a(ly.aa, this.dz(), this.dB() + 0.8, this.dF(), 0.0, 0.0, 0.0);
-      }
+   public djm c() {
+      return this.a.dU();
    }
 
-   @Override
-   protected double a(arq $$0) {
-      return this.bh() ? super.a($$0) * 0.75 : super.a($$0) * 0.5;
+   public abstract void a(arq var1);
+
+   public abstract double a(iv var1, ebx var2, double var3);
+
+   public abstract boolean d();
+
+   public ffc e() {
+      return this.a.dx();
    }
 
-   @Override
-   protected czg o() {
-      return czo.ox;
+   public void a(ffc $$0) {
+      this.a.i($$0);
    }
 
-   @Override
-   public czk dH() {
-      return new czk(czo.ox);
+   public void b(double $$0, double $$1, double $$2) {
+      this.a.n($$0, $$1, $$2);
    }
 
-   @Override
-   protected fex a(fex $$0) {
-      fex $$1;
-      if (this.b.h() > 1.0E-7) {
-         this.b = this.k($$0);
-         $$1 = $$0.d(0.8, 0.0, 0.8).e(this.b);
-         if (this.bh()) {
-            $$1 = $$1.c(0.1);
-         }
-      } else {
-         $$1 = $$0.d(0.98, 0.0, 0.98);
-      }
-
-      return super.a($$1);
+   public ffc f() {
+      return this.a.ds();
    }
 
-   private fex k(fex $$0) {
-      double $$1 = 1.0E-4;
-      double $$2 = 0.001;
-      return this.b.j() > 1.0E-4 && $$0.j() > 0.001 ? this.b.i($$0).d().c(this.b.g()) : this.b;
+   public double g() {
+      return this.a.dz();
    }
 
-   @Override
-   public bug a(crj $$0, buf $$1) {
-      czk $$2 = $$0.b($$1);
-      if ($$2.a(axk.bQ) && this.i + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.i += 3600;
-      }
-
-      if (this.i > 0) {
-         this.b = this.ds().d($$0.ds()).f();
-      }
-
-      return bug.a;
+   public double h() {
+      return this.a.dB();
    }
 
-   @Override
-   protected void b(tz $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.b.d);
-      $$0.a("PushZ", this.b.f);
-      $$0.a("Fuel", (short)this.i);
+   public double i() {
+      return this.a.dF();
    }
 
-   @Override
-   protected void a(tz $$0) {
-      super.a($$0);
-      double $$1 = $$0.i("PushX");
-      double $$2 = $$0.i("PushZ");
-      this.b = new fex($$1, 0.0, $$2);
-      this.i = $$0.e("Fuel");
+   public void b(ffc $$0) {
+      this.a.b($$0);
    }
 
-   protected boolean q() {
-      return this.al.a(c);
+   public void c(double $$0, double $$1, double $$2) {
+      this.a.a_($$0, $$1, $$2);
    }
 
-   protected void q(boolean $$0) {
-      this.al.a(c, $$0);
+   public float j() {
+      return this.a.dM();
    }
 
-   @Override
-   public eao v() {
-      return dmo.cO.m().b(dpx.a, jb.c).b(dpx.b, Boolean.valueOf(this.q()));
+   public void a(float $$0) {
+      this.a.x($$0);
    }
+
+   public float k() {
+      return this.a.dK();
+   }
+
+   public void b(float $$0) {
+      this.a.w($$0);
+   }
+
+   public jb l() {
+      return this.a.cN();
+   }
+
+   public ffc c(ffc $$0) {
+      return $$0;
+   }
+
+   public abstract double b(arq var1);
+
+   public abstract double m();
 }
