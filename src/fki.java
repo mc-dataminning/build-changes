@@ -1,167 +1,135 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fki {
+public class fki extends hhu {
    static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final bbf d;
+   private static final xv b = xv.c("mco.configure.world.subscription.title");
+   private static final xv c = xv.c("mco.configure.world.subscription.start");
+   private static final xv C = xv.c("mco.configure.world.subscription.timeleft");
+   private static final xv D = xv.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final xv E = xv.c("mco.configure.world.subscription.expired");
+   private static final xv F = xv.c("mco.configure.world.subscription.less_than_a_day");
+   private static final xv G = xv.c("mco.configure.world.subscription.unknown");
+   private static final xv H = xv.c("mco.configure.world.subscription.recurring.info");
+   private final ftw I;
+   final fih J;
+   final ftw K;
+   private xv L = G;
+   private xv M = G;
+   @Nullable
+   private fit.a N;
 
-   public fki(Executor $$0, TimeUnit $$1, bbf $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fki(ftw $$0, fih $$1, ftw $$2) {
+      super(flv.a);
+      this.I = $$0;
+      this.J = $$1;
+      this.K = $$2;
    }
 
-   public <T> fki.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fkj $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aT_() {
+      this.a(this.J.a);
+      this.c(fod.a(xv.c("mco.configure.world.subscription.extend"), $$0 -> fst.a(this, aza.a(this.J.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
+      if (this.J.j) {
+         this.c(
+            fod.a(xv.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fkc.b(this, xv.c("mco.configure.world.delete.question.line1"), $$0x -> this.E())))
+               .a(this.n / 2 - 100, g(10), 200, 20)
+               .a()
+         );
+      } else if (fhb.b() && this.J.u != null) {
+         this.c(new fon(this.n / 2 - 100, g(8), 200, 46, xv.a("mco.snapshot.subscription.info", this.J.u), this.p));
       } else {
-         return new fki.e<>($$0, $$1, $$4, $$3);
+         this.c(new fon(this.n / 2 - 100, g(8), 200, 46, H, this.p));
       }
+
+      this.c(fod.a(xu.k, $$0 -> this.aP_()).a(this.n / 2 - 100, g(12), 200, 20).a());
    }
 
-   public fki.c a() {
-      return new fki.c();
+   @Override
+   public xv i() {
+      return xu.b(b, c, this.M, C, this.L);
    }
 
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fki.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fki.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fki.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fki.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fki.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fki.e<T> $$0, Consumer<T> $$1) {
-         fki.b<T> $$2 = fki.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fki.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fki.b<?> $$0 : this.b) {
-            $$0.a(fki.this.d.get(fki.this.c));
-         }
-      }
-
-      public void c() {
-         for (fki.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fkj e;
-      @Nullable
-      private CompletableFuture<fki.a<T>> f;
-      @Nullable
-      fki.d<T> g;
-      private long h = -1L;
-
-      e(final String $$1, final Callable<T> $$2, final long $$3, final fkj $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fki.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
+   private void E() {
+      (new Thread("Realms-delete-realm") {
+         @Override
+         public void run() {
+            try {
+               fhg $$0 = fhg.a();
+               $$0.j(fki.this.J.a);
+            } catch (fjc var2) {
+               fki.a.error("Couldn't delete world", var2);
             }
 
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fki.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fki.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
+            fki.this.m.execute(() -> fki.this.m.a(fki.this.K));
          }
+      }).start();
+      this.m.a(this);
+   }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fki.this.d.get(fki.this.c);
-                  return new fki.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fki.this.d.get(fki.this.c);
-                  return new fki.a<>(Either.right(var4x), $$3);
-               }
-            }, fki.this.b);
-         }
+   private void a(long $$0) {
+      fhg $$1 = fhg.a();
+
+      try {
+         fit $$2 = $$1.h($$0);
+         this.L = this.a($$2.b);
+         this.M = b($$2.a);
+         this.N = $$2.c;
+      } catch (fjc var5) {
+         a.error("Couldn't get subscription", var5);
+         this.m.a(new fju(var5, this.I));
+      }
+   }
+
+   private static xv b(long $$0) {
+      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
+      $$1.setTimeInMillis($$0);
+      return xv.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.I);
+   }
+
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = this.n / 2 - 100;
+      $$0.a(this.p, b, this.n / 2, 17, -1);
+      $$0.a(this.p, c, $$4, g(0), -6250336, false);
+      $$0.a(this.p, this.M, $$4, g(1), -1, false);
+      if (this.N == fit.a.a) {
+         $$0.a(this.p, C, $$4, g(3), -6250336, false);
+      } else if (this.N == fit.a.b) {
+         $$0.a(this.p, D, $$4, g(3), -6250336, false);
       }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
+      $$0.a(this.p, this.L, $$4, g(4), -1, false);
+   }
+
+   private xv a(int $$0) {
+      if ($$0 < 0 && this.J.j) {
+         return E;
+      } else if ($$0 <= 1) {
+         return F;
+      } else {
+         int $$1 = $$0 / 30;
+         int $$2 = $$0 % 30;
+         boolean $$3 = $$1 > 0;
+         boolean $$4 = $$2 > 0;
+         if ($$3 && $$4) {
+            return xv.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+         } else if ($$3) {
+            return xv.a("mco.configure.world.subscription.remaining.months", $$1);
+         } else {
+            return $$4 ? xv.a("mco.configure.world.subscription.remaining.days", $$2) : xv.i();
+         }
       }
    }
 }

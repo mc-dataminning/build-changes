@@ -1,18 +1,26 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class esc {
-   private final List<esb> a;
+public class esc extends esf {
+   public static final MapCodec<esc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ma.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, esc::new)
+   );
+   private final dkl b;
+   private final float d;
 
-   public esc(List<esb> $$0) {
-      this.a = $$0;
-   }
-
-   public List<esb> a() {
-      return this.a;
+   public esc(dkl $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
+   public boolean a(dxu $$0, bam $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
+
+   @Override
+   protected esg<?> a() {
+      return esg.e;
    }
 }

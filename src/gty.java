@@ -1,21 +1,17 @@
-public class gty extends gqh<cqb, gzr> {
-   public static final alz a = alz.b("textures/entity/projectiles/arrow.png");
-   public static final alz b = alz.b("textures/entity/projectiles/tipped_arrow.png");
+public class gty extends gqg<cni, gzo> {
+   private static final alz a = alz.b("textures/entity/skeleton/stray.png");
+   private static final alz b = alz.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gty(grj.a $$0) {
-      super($$0);
+   public gty(gro.a $$0) {
+      super($$0, gel.cW, gel.cX, gel.cY);
+      this.a(new gwg<>(this, $$0.f(), gel.cZ, b));
    }
 
-   protected alz a(gzr $$0) {
-      return $$0.d ? b : a;
+   public alz b(gzo $$0) {
+      return a;
    }
 
-   public gzr a() {
-      return new gzr();
-   }
-
-   public void a(cqb $$0, gzr $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.d = $$0.C() > 0;
+   public gzo b() {
+      return new gzo();
    }
 }

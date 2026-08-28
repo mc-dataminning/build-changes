@@ -1,152 +1,304 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class hbd extends hap implements haq, hbg {
-   private static final Logger f = LogUtils.getLogger();
-   @Deprecated
-   public static final alz d = cua.B;
-   @Deprecated
-   public static final alz e = alz.b("textures/atlas/particles.png");
-   private List<hay> g = List.of();
-   private List<hbe.a> h = List.of();
-   private Map<alz, hbe> i = Map.of();
+public class hbd implements hbg.a, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final alz b;
+   final int c;
+   final int d;
+   private final ffq e;
+   ffq[] f;
    @Nullable
-   private hbe j;
-   private final alz k;
-   private final int l;
-   private int m;
-   private int n;
-   private int o;
+   private final hbd.a g;
+   private final avx h;
 
-   public hbd(alz $$0) {
-      this.k = $$0;
-      this.l = RenderSystem.maxSupportedTextureSize();
+   public hbd(alz $$0, hcx $$1, ffq $$2, avx $$3) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$1.b();
+      this.h = $$3;
+      hcv $$4 = $$3.a(hcv.a).orElse(hcv.e);
+      this.g = this.a($$1, $$2.a(), $$2.b(), $$4);
+      this.e = $$2;
+      this.f = new ffq[]{this.e};
    }
 
-   @Override
-   public void a(avv $$0) {
-   }
-
-   public void a(haz.a $$0) {
-      f.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.k});
-      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
-      this.m = $$0.b();
-      this.n = $$0.c();
-      this.o = $$0.d();
-      this.g();
-      this.i = Map.copyOf($$0.f());
-      this.j = this.i.get(hau.b());
-      if (this.j == null) {
-         throw new IllegalStateException("Atlas '" + this.k + "' (" + this.i.size() + " sprites) has no missing texture sprite");
-      } else {
-         List<hay> $$1 = new ArrayList<>();
-         List<hbe.a> $$2 = new ArrayList<>();
-
-         for (hbe $$3 : $$0.f().values()) {
-            $$1.add($$3.e());
-
-            try {
-               $$3.j();
-            } catch (Throwable var9) {
-               o $$5 = o.a(var9, "Stitching texture atlas");
-               p $$6 = $$5.a("Texture being stitched together");
-               $$6.a("Atlas path", this.k);
-               $$6.a("Sprite", $$3);
-               throw new z($$5);
+   public void a(int $$0) {
+      try {
+         this.f = hay.a(this.f, $$0);
+      } catch (Throwable var6) {
+         o $$2 = o.a(var6, "Generating mipmaps for frame");
+         p $$3 = $$2.a("Sprite being mipmapped");
+         $$3.a("First frame", () -> {
+            StringBuilder $$0x = new StringBuilder();
+            if ($$0x.length() > 0) {
+               $$0x.append(", ");
             }
 
-            hbe.a $$7 = $$3.f();
-            if ($$7 != null) {
-               $$2.add($$7);
+            $$0x.append(this.e.a()).append("x").append(this.e.b());
+            return $$0x.toString();
+         });
+         p $$4 = $$2.a("Frame being iterated");
+         $$4.a("Sprite name", this.b);
+         $$4.a("Sprite size", () -> this.c + " x " + this.d);
+         $$4.a("Sprite frames", () -> this.g() + " frames");
+         $$4.a("Mipmap levels", $$0);
+         throw new z($$2);
+      }
+   }
+
+   private int g() {
+      return this.g != null ? this.g.b.size() : 1;
+   }
+
+   @Nullable
+   private hbd.a a(hcx $$0, int $$1, int $$2, hcv $$3) {
+      int $$4 = $$1 / $$0.a();
+      int $$5 = $$2 / $$0.b();
+      int $$6 = $$4 * $$5;
+      List<hbd.b> $$7 = new ArrayList<>();
+      $$3.a(($$1x, $$2x) -> $$7.add(new hbd.b($$1x, $$2x)));
+      if ($$7.isEmpty()) {
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            $$7.add(new hbd.b($$8, $$3.a()));
+         }
+      } else {
+         int $$9 = 0;
+         IntSet $$10 = new IntOpenHashSet();
+
+         for (Iterator<hbd.b> $$11 = $$7.iterator(); $$11.hasNext(); $$9++) {
+            hbd.b $$12 = $$11.next();
+            boolean $$13 = true;
+            if ($$12.b <= 0) {
+               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.b});
+               $$13 = false;
+            }
+
+            if ($$12.a < 0 || $$12.a >= $$6) {
+               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$9, $$12.a});
+               $$13 = false;
+            }
+
+            if ($$13) {
+               $$10.add($$12.a);
+            } else {
+               $$11.remove();
             }
          }
 
-         this.g = List.copyOf($$1);
-         this.h = List.copyOf($$2);
-      }
-   }
-
-   @Override
-   public void a(alz $$0, Path $$1) throws IOException {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.o, this.m, this.n);
-      a($$1, $$2, this.i);
-   }
-
-   private static void a(Path $$0, String $$1, Map<alz, hbe> $$2) {
-      Path $$3 = $$0.resolve($$1 + ".txt");
-
-      try (Writer $$4 = Files.newBufferedWriter($$3)) {
-         for (Entry<alz, hbe> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
-            hbe $$6 = $$5.getValue();
-            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
+         int[] $$14 = IntStream.range(0, $$6).filter($$1x -> !$$10.contains($$1x)).toArray();
+         if ($$14.length > 0) {
+            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$14));
          }
-      } catch (IOException var10) {
-         f.warn("Failed to write file {}", $$3, var10);
+      }
+
+      return $$7.size() <= 1 ? null : new hbd.a(ImmutableList.copyOf($$7), $$4, $$3.b());
+   }
+
+   void a(int $$0, int $$1, int $$2, int $$3, ffq[] $$4) {
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, this.f.length > 1, false);
       }
    }
 
    @Override
-   public void e() {
-      this.d();
+   public int a() {
+      return this.c;
+   }
 
-      for (hbe.a $$0 : this.h) {
-         $$0.a();
+   @Override
+   public int b() {
+      return this.d;
+   }
+
+   @Override
+   public alz c() {
+      return this.b;
+   }
+
+   public IntStream d() {
+      return this.g != null ? this.g.b() : IntStream.of(1);
+   }
+
+   @Nullable
+   public hbf e() {
+      return this.g != null ? this.g.a() : null;
+   }
+
+   public avx f() {
+      return this.h;
+   }
+
+   @Override
+   public void close() {
+      for (ffq $$0 : this.f) {
+         $$0.close();
       }
    }
 
    @Override
-   public void f() {
-      this.e();
+   public String toString() {
+      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
    }
 
-   public hbe a(alz $$0) {
-      hbe $$1 = this.i.getOrDefault($$0, this.j);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
+   public boolean a(int $$0, int $$1, int $$2) {
+      int $$3 = $$1;
+      int $$4 = $$2;
+      if (this.g != null) {
+         $$3 = $$1 + this.g.a($$0) * this.c;
+         $$4 = $$2 + this.g.b($$0) * this.d;
+      }
+
+      return ayp.a(this.e.a($$3, $$4)) == 0;
+   }
+
+   public void a(int $$0, int $$1) {
+      if (this.g != null) {
+         this.g.a($$0, $$1);
       } else {
-         return $$1;
+         this.a($$0, $$1, 0, 0, this.f);
       }
    }
 
-   public void g() {
-      this.g.forEach(hay::close);
-      this.h.forEach(hbe.a::close);
-      this.g = List.of();
-      this.h = List.of();
-      this.i = Map.of();
-      this.j = null;
+   class a {
+      final List<hbd.b> b;
+      private final int c;
+      private final boolean d;
+
+      a(final List<hbd.b> $$0, final int $$1, final boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      int a(int $$0) {
+         return $$0 % this.c;
+      }
+
+      int b(int $$0) {
+         return $$0 / this.c;
+      }
+
+      void a(int $$0, int $$1, int $$2) {
+         int $$3 = this.a($$2) * hbd.this.c;
+         int $$4 = this.b($$2) * hbd.this.d;
+         hbd.this.a($$0, $$1, $$3, $$4, hbd.this.f);
+      }
+
+      public hbf a() {
+         return hbd.this.new d(this, this.d ? hbd.this.new c() : null);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.a($$0, $$1, this.b.get(0).a);
+      }
+
+      public IntStream b() {
+         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
+      }
    }
 
-   public alz h() {
-      return this.k;
+   static class b {
+      final int a;
+      final int b;
+
+      b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   public int i() {
-      return this.l;
+   final class c implements AutoCloseable {
+      private final ffq[] b = new ffq[hbd.this.f.length];
+
+      c() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            int $$1 = hbd.this.c >> $$0;
+            int $$2 = hbd.this.d >> $$0;
+            this.b[$$0] = new ffq($$1, $$2, false);
+         }
+      }
+
+      void a(int $$0, int $$1, hbd.d $$2) {
+         hbd.a $$3 = $$2.c;
+         List<hbd.b> $$4 = $$3.b;
+         hbd.b $$5 = $$4.get($$2.a);
+         float $$6 = (float)$$2.b / (float)$$5.b;
+         int $$7 = $$5.a;
+         int $$8 = $$4.get(($$2.a + 1) % $$4.size()).a;
+         if ($$7 != $$8) {
+            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+               int $$10 = hbd.this.c >> $$9;
+               int $$11 = hbd.this.d >> $$9;
+
+               for (int $$12 = 0; $$12 < $$11; $$12++) {
+                  for (int $$13 = 0; $$13 < $$10; $$13++) {
+                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
+                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
+                     this.b[$$9].a($$13, $$12, ayp.a($$6, $$14, $$15));
+                  }
+               }
+            }
+
+            hbd.this.a($$0, $$1, 0, 0, this.b);
+         }
+      }
+
+      private int a(hbd.a $$0, int $$1, int $$2, int $$3, int $$4) {
+         return hbd.this.f[$$2].a($$3 + ($$0.a($$1) * hbd.this.c >> $$2), $$4 + ($$0.b($$1) * hbd.this.d >> $$2));
+      }
+
+      @Override
+      public void close() {
+         for (ffq $$0 : this.b) {
+            $$0.close();
+         }
+      }
    }
 
-   int j() {
-      return this.m;
-   }
+   class d implements hbf {
+      int a;
+      int b;
+      final hbd.a c;
+      @Nullable
+      private final hbd.c d;
 
-   int k() {
-      return this.n;
-   }
+      d(final hbd.a $$0, @Nullable final hbd.c $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
 
-   public void b(haz.a $$0) {
-      this.a(false, $$0.d() > 0);
+      @Override
+      public void a(int $$0, int $$1) {
+         this.b++;
+         hbd.b $$2 = this.c.b.get(this.a);
+         if (this.b >= $$2.b) {
+            int $$3 = $$2.a;
+            this.a = (this.a + 1) % this.c.b.size();
+            this.b = 0;
+            int $$4 = this.c.b.get(this.a).a;
+            if ($$3 != $$4) {
+               this.c.a($$0, $$1, $$4);
+            }
+         } else if (this.d != null) {
+            this.d.a($$0, $$1, this);
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.d != null) {
+            this.d.close();
+         }
+      }
    }
 }

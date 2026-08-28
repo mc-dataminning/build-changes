@@ -1,67 +1,48 @@
-import org.joml.Matrix4f;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class fqv {
-   private final fqt a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public enum fqv implements bba {
+   a("uniform"),
+   b("jp");
 
-   public fqv(fqt $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public static final Codec<fqv> c = bba.a(fqv::values);
+   private final String d;
+
+   private fqv(final String $$0) {
+      this.d = $$0;
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fgp $$4, int $$5, int $$6) {
-      float $$7 = $$1 + this.f;
-      float $$8 = $$1 + this.g;
-      float $$9 = $$2 + this.h;
-      float $$10 = $$2 + this.i;
-      float $$11 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
-      float $$12 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
-      $$4.a($$3, $$7 + $$11, $$9, 0.0F).a($$5).a(this.b, this.d).c($$6);
-      $$4.a($$3, $$7 + $$12, $$10, 0.0F).a($$5).a(this.b, this.e).c($$6);
-      $$4.a($$3, $$8 + $$12, $$10, 0.0F).a($$5).a(this.c, this.e).c($$6);
-      $$4.a($$3, $$8 + $$11, $$9, 0.0F).a($$5).a(this.c, this.d).c($$6);
-   }
-
-   public void a(fqv.a $$0, Matrix4f $$1, fgp $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f).a(this.b, this.d).c($$3);
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f).a(this.b, this.e).c($$3);
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f).a(this.c, this.e).c($$3);
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f).a(this.c, this.d).c($$3);
-   }
-
-   public glo a(fnj.a $$0) {
-      return this.a.a($$0);
+   @Override
+   public String c() {
+      return this.d;
    }
 
    public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final int f;
+      private final Map<fqv, Boolean> c;
+      public static final Codec<fqv.a> a = Codec.unboundedMap(fqv.c, Codec.BOOL).xmap(fqv.a::new, $$0 -> $$0.c);
+      public static final fqv.a b = new fqv.a(Map.of());
 
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, int $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
+      public a(Map<fqv, Boolean> $$0) {
+         this.c = $$0;
+      }
+
+      public boolean a(Set<fqv> $$0) {
+         for (Entry<fqv, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      public fqv.a a(fqv.a $$0) {
+         Map<fqv, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new fqv.a(Map.copyOf($$1));
       }
    }
 }

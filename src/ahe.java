@@ -9,11 +9,11 @@ public class ahe implements aac<acr> {
    private final int b;
    private final List<ahe.a> c;
 
-   public ahe(int $$0, Collection<bxf> $$1) {
+   public ahe(int $$0, Collection<bxj> $$1) {
       this.b = $$0;
       this.c = Lists.newArrayList();
 
-      for (bxf $$2 : $$1) {
+      for (bxj $$2 : $$1) {
          this.c.add(new ahe.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
@@ -40,11 +40,11 @@ public class ahe implements aac<acr> {
       return this.c;
    }
 
-   public static record a(jq<bxe> c, double d, Collection<bxh> e) {
-      public static final zt<ByteBuf, bxh> a = zt.a(alz.b, bxh::b, zr.m, bxh::c, bxh.a.e, bxh::d, bxh::new);
-      public static final zt<xg, ahe.a> b = zt.a(bxe.b, ahe.a::a, zr.m, ahe.a::b, a.a(zr.a(ArrayList::new)), ahe.a::c, ahe.a::new);
+   public static record a(jq<bxi> c, double d, Collection<bxl> e) {
+      public static final zt<ByteBuf, bxl> a = zt.a(alz.b, bxl::b, zr.m, bxl::c, bxl.a.e, bxl::d, bxl::new);
+      public static final zt<xg, ahe.a> b = zt.a(bxi.b, ahe.a::a, zr.m, ahe.a::b, a.a(zr.a(ArrayList::new)), ahe.a::c, ahe.a::new);
 
-      public jq<bxe> a() {
+      public jq<bxi> a() {
          return this.c;
       }
 
@@ -52,7 +52,7 @@ public class ahe implements aac<acr> {
          return this.d;
       }
 
-      public Collection<bxh> c() {
+      public Collection<bxl> c() {
          return this.e;
       }
    }

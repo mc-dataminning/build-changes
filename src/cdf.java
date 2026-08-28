@@ -1,48 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cdf extends ccz {
-   private final bwd a;
-   private bwb b;
-   private final float c;
+public class cdf extends cea {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public cdf(bwd $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(ccz.a.c, ccz.a.a));
+   public cdf(bwn $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      if (this.a.cY()) {
-         return false;
+   protected fbx h() {
+      float $$0 = this.b.dV().A.i();
+      if (this.b.dV().A.i() < 0.3F) {
+         return this.k();
       } else {
-         this.b = this.a.O_();
-         if (this.b == null) {
-            return false;
+         fbx $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
          } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aJ() ? false : this.a.dY().a(b(5)) == 0;
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
             }
          }
+
+         return $$1 == null ? this.k() : $$1;
       }
    }
 
-   @Override
-   public boolean c() {
-      return !this.a.aJ();
+   @Nullable
+   private fbx k() {
+      return chd.a(this.b, 10, 7);
    }
 
-   @Override
-   public void d() {
-      fbs $$0 = this.a.dy();
-      fbs $$1 = new fbs(this.b.dA() - this.a.dA(), 0.0, this.b.dG() - this.a.dG());
-      if ($$1.h() > 1.0E-7) {
-         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
+   @Nullable
+   private fbx l() {
+      ash $$0 = (ash)this.b.dV();
+      List<cpi> $$1 = $$0.a(bvq.bD, this.b.cR().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         cpi $$2 = $$1.get(this.b.dV().A.a($$1.size()));
+         fbx $$3 = $$2.dt();
+         return chd.a(this.b, 10, 7, $$3);
       }
+   }
 
-      this.a.n($$1.d, (double)this.c, $$1.f);
+   @Nullable
+   private fbx m() {
+      kj $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         jh $$1 = this.a($$0);
+         return $$1 == null ? null : chd.a(this.b, 10, 7, fbx.c($$1));
+      }
+   }
+
+   @Nullable
+   private kj n() {
+      ash $$0 = (ash)this.b.dV();
+      List<kj> $$1 = kj.a(kj.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   }
+
+   @Nullable
+   private jh a(kj $$0) {
+      ash $$1 = (ash)this.b.dV();
+      chj $$2 = $$1.z();
+      List<jh> $$3 = $$2.c($$0x -> true, $$0.k(), 8, chj.b.b).map(chk::g).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
+   }
+
+   private boolean a(cpi $$0) {
+      return $$0.a(this.b.dV().ac());
    }
 }

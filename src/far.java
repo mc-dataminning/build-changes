@@ -1,48 +1,25 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 
-public record far(alz b, fo.g c) implements fao {
-   public static final MapCodec<far> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alz.a.fieldOf("storage").forGetter(far::c), fo.g.a.fieldOf("path").forGetter(far::d)).apply($$0, far::new)
-   );
+public record far(def b) implements fat {
+   public static final MapCodec<far> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(def.b.fieldOf("amount").forGetter(far::c)).apply($$0, far::new));
 
    @Override
-   public fan b() {
-      return fap.f;
-   }
-
-   private Optional<vn> c(ewh $$0) {
-      ux $$1 = $$0.d().p().aK().a(this.b);
-
-      try {
-         List<vu> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof vn $$3) {
-            return Optional.of($$3);
-         }
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return Optional.empty();
+   public float b(ewo $$0) {
+      int $$1 = $$0.b(ezi.k);
+      return this.b.a($$1);
    }
 
    @Override
-   public float b(ewh $$0) {
-      return this.c($$0).map(vn::k).orElse(0.0F);
+   public fas b() {
+      return fau.g;
    }
 
-   @Override
-   public int a(ewh $$0) {
-      return this.c($$0).map(vn::g).orElse(0);
+   public static far a(def $$0) {
+      return new far($$0);
    }
 
-   public alz c() {
+   public def c() {
       return this.b;
-   }
-
-   public fo.g d() {
-      return this.c;
    }
 }

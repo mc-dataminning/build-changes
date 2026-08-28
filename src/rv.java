@@ -2,47 +2,47 @@ import java.util.List;
 import java.util.Optional;
 
 public interface rv {
-   static void a(rk<eoi> $$0) {
-      jr<eoc> $$1 = $$0.a(mb.aT);
-      jr<dic> $$2 = $$0.a(mb.aH);
-      jq.c<eoi> $$3 = $$0.a(
-         env.a,
-         new eoi(
-            List.of(eoi.a($$1.b(enw.t)), eoi.a($$1.b(enw.u)), eoi.a($$1.b(enw.v)), eoi.a($$1.b(enw.w)), eoi.a($$1.b(enw.x))), new eox(34, 8, eoy.a, 10387312)
+   static void a(rk<eop> $$0) {
+      jr<eoj> $$1 = $$0.a(mb.aU);
+      jr<dij> $$2 = $$0.a(mb.aI);
+      jq.c<eop> $$3 = $$0.a(
+         eoc.a,
+         new eop(
+            List.of(eop.a($$1.b(eod.t)), eop.a($$1.b(eod.u)), eop.a($$1.b(eod.v)), eop.a($$1.b(eod.w)), eop.a($$1.b(eod.x))), new epe(34, 8, epf.a, 10387312)
          )
       );
-      $$0.a(env.b, new eoi($$1.b(enw.f), new eox(32, 8, eoy.a, 14357617)));
-      $$0.a(env.c, new eoi($$1.b(enw.g), new eox(32, 8, eoy.a, 14357618)));
-      $$0.a(env.d, new eoi($$1.b(enw.e), new eox(32, 8, eoy.a, 14357619)));
-      $$0.a(env.e, new eoi($$1.b(enw.j), new eox(32, 8, eoy.a, 14357620)));
-      $$0.a(env.f, new eoi($$1.b(enw.a), new eox(kl.g, eoz.c.b, 0.2F, 165745296, Optional.of(new eoz.a($$3, 10)), 32, 8, eoy.a)));
-      $$0.a(env.q, new eoi($$1.b(enw.F), new eox(24, 8, eoy.a, 20083232)));
-      $$0.a(env.g, new eoi($$1.b(enw.l), new eox(32, 5, eoy.b, 10387313)));
-      $$0.a(env.h, new eoi($$1.b(enw.d), new eox(80, 20, eoy.b, 10387319)));
-      $$0.a(env.i, new eoi($$1.b(enw.r), new eox(new kl(9, 0, 9), eoz.c.c, 0.01F, 0, Optional.empty(), 1, 0, eoy.a)));
-      $$0.a(env.j, new eoi(List.of(eoi.a($$1.b(enw.b)), eoi.a($$1.b(enw.c))), new eox(kl.g, eoz.c.d, 0.004F, 0, Optional.empty(), 1, 0, eoy.a)));
+      $$0.a(eoc.b, new eop($$1.b(eod.f), new epe(32, 8, epf.a, 14357617)));
+      $$0.a(eoc.c, new eop($$1.b(eod.g), new epe(32, 8, epf.a, 14357618)));
+      $$0.a(eoc.d, new eop($$1.b(eod.e), new epe(32, 8, epf.a, 14357619)));
+      $$0.a(eoc.e, new eop($$1.b(eod.j), new epe(32, 8, epf.a, 14357620)));
+      $$0.a(eoc.f, new eop($$1.b(eod.a), new epe(kl.g, epg.c.b, 0.2F, 165745296, Optional.of(new epg.a($$3, 10)), 32, 8, epf.a)));
+      $$0.a(eoc.q, new eop($$1.b(eod.F), new epe(24, 8, epf.a, 20083232)));
+      $$0.a(eoc.g, new eop($$1.b(eod.l), new epe(32, 5, epf.b, 10387313)));
+      $$0.a(eoc.h, new eop($$1.b(eod.d), new epe(80, 20, epf.b, 10387319)));
+      $$0.a(eoc.i, new eop($$1.b(eod.r), new epe(new kl(9, 0, 9), epg.c.c, 0.01F, 0, Optional.empty(), 1, 0, epf.a)));
+      $$0.a(eoc.j, new eop(List.of(eop.a($$1.b(eod.b)), eop.a($$1.b(eod.c))), new epe(kl.g, epg.c.d, 0.004F, 0, Optional.empty(), 1, 0, epf.a)));
       $$0.a(
-         env.k,
-         new eoi(
+         eoc.k,
+         new eop(
             List.of(
-               eoi.a($$1.b(enw.y)),
-               eoi.a($$1.b(enw.z)),
-               eoi.a($$1.b(enw.A)),
-               eoi.a($$1.b(enw.B)),
-               eoi.a($$1.b(enw.C)),
-               eoi.a($$1.b(enw.D)),
-               eoi.a($$1.b(enw.E))
+               eop.a($$1.b(eod.y)),
+               eop.a($$1.b(eod.z)),
+               eop.a($$1.b(eod.A)),
+               eop.a($$1.b(eod.B)),
+               eop.a($$1.b(eod.C)),
+               eop.a($$1.b(eod.D)),
+               eop.a($$1.b(eod.E))
             ),
-            new eox(40, 15, eoy.a, 34222645)
+            new epe(40, 15, epf.a, 34222645)
          )
       );
-      $$0.a(env.l, new eoi(List.of(eoi.a($$1.b(enw.h)), eoi.a($$1.b(enw.i))), new eox(24, 4, eoy.a, 165745295)));
-      $$0.a(env.m, new eoi(List.of(eoi.a($$1.b(enw.m)), eoi.a($$1.b(enw.n))), new eox(20, 8, eoy.a, 14357621)));
-      $$0.a(env.n, new eoi(List.of(eoi.a($$1.b(enw.o), 2), eoi.a($$1.b(enw.s), 3)), new eox(27, 4, eoy.a, 30084232)));
-      $$0.a(env.o, new eoi($$1.b(enw.p), new eox(2, 1, eoy.a, 14357921)));
-      $$0.a(env.p, new eoi($$1.b(enw.q), new eox(20, 11, eoy.b, 10387313)));
-      $$0.a(env.r, new eoi($$1.b(enw.k), new eow(32, 3, 128, $$2.b(axt.o))));
-      $$0.a(env.s, new eoi($$1.b(enw.G), new eox(34, 8, eoy.a, 83469867)));
-      $$0.a(env.t, new eoi($$1.b(enw.H), new eox(34, 12, eoy.a, 94251327)));
+      $$0.a(eoc.l, new eop(List.of(eop.a($$1.b(eod.h)), eop.a($$1.b(eod.i))), new epe(24, 4, epf.a, 165745295)));
+      $$0.a(eoc.m, new eop(List.of(eop.a($$1.b(eod.m)), eop.a($$1.b(eod.n))), new epe(20, 8, epf.a, 14357621)));
+      $$0.a(eoc.n, new eop(List.of(eop.a($$1.b(eod.o), 2), eop.a($$1.b(eod.s), 3)), new epe(27, 4, epf.a, 30084232)));
+      $$0.a(eoc.o, new eop($$1.b(eod.p), new epe(2, 1, epf.a, 14357921)));
+      $$0.a(eoc.p, new eop($$1.b(eod.q), new epe(20, 11, epf.b, 10387313)));
+      $$0.a(eoc.r, new eop($$1.b(eod.k), new epd(32, 3, 128, $$2.b(axt.o))));
+      $$0.a(eoc.s, new eop($$1.b(eod.G), new epe(34, 8, epf.a, 83469867)));
+      $$0.a(eoc.t, new eop($$1.b(eod.H), new epe(34, 12, epf.a, 94251327)));
    }
 }

@@ -1,51 +1,40 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ekv extends ekx {
-   public static final MapCodec<ekv> b = RecordCodecBuilder.mapCodec(
+public record ekv(ju<dkl> b, ju<dkl> c, ela d, int e, int f, float g) {
+   public static final Codec<ekv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               azw.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               ess.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               azn.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+               kf.a(mb.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               kf.a(mb.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               ela.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
             )
-            .and(b($$0))
             .apply($$0, ekv::new)
    );
-   private final azw<Integer> i;
-   private final ess.a j;
-   private final float k;
-   private final ess l;
 
-   public ekv(azw<Integer> $$0, ess.a $$1, float $$2, long $$3, ess.a $$4, float $$5, List<dxn> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = ess.b(new eeh(new edj($$3)), $$1);
+   public ju<dkl> a() {
+      return this.b;
    }
 
-   @Override
-   protected eku<?> a() {
-      return eku.e;
+   public ju<dkl> b() {
+      return this.c;
    }
 
-   @Override
-   public dxn a(bam $$0, jh $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)bae.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dxn> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
+   public ela c() {
+      return this.d;
    }
 
-   protected double a(jh $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

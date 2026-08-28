@@ -1,65 +1,61 @@
-import java.util.EnumSet;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public abstract class ccz {
-   private final EnumSet<ccz.a> a = EnumSet.noneOf(ccz.a.class);
+public class ccz extends cdd {
+   private static final int a = 200;
+   private final chu b;
+   private int c;
+   private int d;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
+   public ccz(chu $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
    }
 
-   public boolean U_() {
-      return true;
-   }
-
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean V_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<ccz.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   protected int a(chu $$0) {
+      return b(200 + $$0.dY().a(200) % 20);
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean b() {
+      if (this.b.gr()) {
+         return false;
+      } else if (this.b.go()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         this.d = this.a(this.b);
+         Predicate<chu> $$0 = $$0x -> $$0x.gq() || !$$0x.go();
+         List<? extends chu> $$1 = this.b.dV().a((Class<? extends chu>)this.b.getClass(), this.b.cR().c(8.0, 8.0, 8.0), $$0);
+         chu $$2 = (chu)DataFixUtils.orElse($$1.stream().filter(chu::gq).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.go()));
+         return this.b.go();
+      }
    }
 
-   public EnumSet<ccz.a> j() {
-      return this.a;
+   @Override
+   public boolean c() {
+      return this.b.go() && this.b.gs();
    }
 
-   protected int a(int $$0) {
-      return this.V_() ? $$0 : b($$0);
+   @Override
+   public void d() {
+      this.c = 0;
    }
 
-   protected static int b(int $$0) {
-      return bae.e($$0, 2);
+   @Override
+   public void e() {
+      this.b.gp();
    }
 
-   protected static ash a(bvf $$0) {
-      return (ash)$$0.dV();
-   }
-
-   protected static ash a(dha $$0) {
-      return (ash)$$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a() {
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gt();
+      }
    }
 }

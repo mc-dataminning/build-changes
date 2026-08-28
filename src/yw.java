@@ -29,7 +29,7 @@ public record yw(String d, @Nullable gu e) implements yx {
          ash $$1 = $$0.e();
          jh $$2 = this.e.c($$0);
          if ($$1.p($$2)) {
-            dup $$3 = $$1.c_($$2);
+            duw $$3 = $$1.c_($$2);
             if ($$3 != null) {
                return Stream.of($$3.b($$0.u()));
             }

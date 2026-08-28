@@ -11,7 +11,7 @@ public class aet implements aac<acr> {
    private final float j;
    private final float k;
 
-   public aet(cpo $$0) {
+   public aet(cps $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

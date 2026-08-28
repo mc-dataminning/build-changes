@@ -46,17 +46,17 @@ public class aso extends arq {
       this.b($$0, this.a($$2), false);
    }
 
-   public <T> void a(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+   public <T> void a(asn<T> $$0, dgn $$1, int $$2, T $$3) {
       this.a($$1.a(), new asm<>($$0, $$2, $$3));
    }
 
-   public <T> void b(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+   public <T> void b(asn<T> $$0, dgn $$1, int $$2, T $$3) {
       asm<T> $$4 = new asm<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
    public void a(int $$0) {
-      List<Pair<asm<dgg>, Long>> $$1 = new ArrayList<>();
+      List<Pair<asm<dgn>, Long>> $$1 = new ArrayList<>();
       ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
 
       while (var3.hasNext()) {
@@ -69,12 +69,12 @@ public class aso extends arq {
          }
       }
 
-      for (Pair<asm<dgg>, Long> $$4 : $$1) {
+      for (Pair<asm<dgn>, Long> $$4 : $$1) {
          Long $$5 = (Long)$$4.getSecond();
-         asm<dgg> $$6 = (asm<dgg>)$$4.getFirst();
+         asm<dgn> $$6 = (asm<dgn>)$$4.getFirst();
          this.b($$5, $$6);
-         dgg $$7 = new dgg($$5);
-         asn<dgg> $$8 = $$6.a();
+         dgn $$7 = new dgn($$5);
+         asn<dgn> $$8 = $$6.a();
          this.a($$8, $$7, $$0, $$7);
       }
    }
@@ -85,7 +85,7 @@ public class aso extends arq {
       return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
    }
 
-   public int a(dgg $$0) {
+   public int a(dgn $$0) {
       return this.c($$0.a());
    }
 

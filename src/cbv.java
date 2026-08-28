@@ -1,18 +1,20 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class cbv {
-   private static final bsj a = bsp.a(100, 200);
-
-   public static bxv<bwb> a() {
-      return cbh.a(
-         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$0 -> $$0.group($$0.a(cff.aB), $$0.a(cff.m), $$0.c(cff.aG), $$0.b(cff.B), $$0.c(cff.az))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(bbk.a);
-                     $$2.a(bbk.a, (long)a.a($$3x.H_()));
-                     $$1.b();
-                     $$4x.b(bwn.m);
-                     return true;
+   public static <E extends coz> bxz<E> a(Function<E, Optional<? extends bwf>> $$0) {
+      return cbl.a(
+         (Function<cbl.b<E>, ? extends App<cbl.c<E>, cbo<E>>>)($$1 -> $$1.group($$1.c(cfj.ay), $$1.c(cfj.o), $$1.a(cfj.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bwf> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::b).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
                   }))
       );
    }

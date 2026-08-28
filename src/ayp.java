@@ -1,3 +1,5 @@
+import org.joml.Vector3f;
+
 public class ayp {
    public static int a(int $$0) {
       return $$0 >>> 24;
@@ -23,7 +25,7 @@ public class ayp {
       return a(255, $$0, $$1, $$2);
    }
 
-   public static int a(fbs $$0) {
+   public static int a(fbx $$0) {
       return a(b((float)$$0.a()), b((float)$$0.b()), b((float)$$0.c()));
    }
 
@@ -90,6 +92,13 @@ public class ayp {
       return a(b($$0), b($$1), b($$2), b($$3));
    }
 
+   public static Vector3f h(int $$0) {
+      float $$1 = (float)b($$0) / 255.0F;
+      float $$2 = (float)c($$0) / 255.0F;
+      float $$3 = (float)d($$0) / 255.0F;
+      return new Vector3f($$1, $$2, $$3);
+   }
+
    public static int d(int $$0, int $$1) {
       return a((a($$0) + a($$1)) / 2, (b($$0) + b($$1)) / 2, (c($$0) + c($$1)) / 2, (d($$0) + d($$1)) / 2);
    }
@@ -98,15 +107,15 @@ public class ayp {
       return bae.d($$0 * 255.0F);
    }
 
-   public static float h(int $$0) {
+   public static float i(int $$0) {
       return (float)$$0 / 255.0F;
    }
 
-   public static int i(int $$0) {
+   public static int j(int $$0) {
       return $$0 & -16711936 | ($$0 & 0xFF0000) >> 16 | ($$0 & 0xFF) << 16;
    }
 
-   public static int j(int $$0) {
-      return i($$0);
+   public static int k(int $$0) {
+      return j($$0);
    }
 }

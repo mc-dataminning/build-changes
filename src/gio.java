@@ -1,11 +1,18 @@
-import javax.annotation.Nullable;
+public class gio extends giq {
+   protected gio(gfi $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-public interface gio<T extends lq> {
-   @Nullable
-   gil createParticle(T var1, gfd var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   protected gio(gfi $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-   public interface a<T extends lq> {
-      @Nullable
-      gjl createParticle(T var1, gfd var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public final void a(fgu $$0, fln $$1, float $$2) {
+   }
+
+   @Override
+   public giu b() {
+      return giu.e;
    }
 }

@@ -1,55 +1,27 @@
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
+import java.util.List;
 
-public final class bvk {
-   public static final Predicate<bvf> a = bvf::bL;
-   public static final Predicate<bvf> b = $$0 -> $$0.bL() && $$0 instanceof bwb;
-   public static final Predicate<bvf> c = $$0 -> $$0.bL() && !$$0.ca() && !$$0.bZ();
-   public static final Predicate<bvf> d = $$0 -> $$0 instanceof bsx && $$0.bL();
-   public static final Predicate<bvf> e = $$0 -> !($$0 instanceof cps) || !$$0.aa_() && !((cps)$$0).b();
-   public static final Predicate<bvf> f = $$0 -> !$$0.aa_();
-   public static final Predicate<bvf> g = f.and(bvf::bN);
-   public static final Predicate<bvf> h = f.and(bvf::bH);
+public enum bvk {
+   a(bvk.a.c),
+   b(bvk.a.b),
+   c(bvk.a.c),
+   d(bvk.a.d);
 
-   private bvk() {
+   private final bvk.a e;
+
+   private bvk(final bvk.a $$0) {
+      this.e = $$0;
    }
 
-   public static Predicate<bvf> a(double $$0, double $$1, double $$2, double $$3) {
-      double $$4 = $$3 * $$3;
-      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
+   public List<fbx> a(float $$0, float $$1) {
+      return this.e.create($$0, $$1);
    }
 
-   public static Predicate<bvf> a(bvf $$0) {
-      fcz $$1 = $$0.cr();
-      fcz.a $$2 = $$1 == null ? fcz.a.a : $$1.l();
-      return (Predicate<bvf>)($$2 == fcz.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bI()) {
-            return false;
-         } else if (!$$0.dV().C || $$3 instanceof cps && ((cps)$$3).c()) {
-            fcz $$4 = $$3.cr();
-            fcz.a $$5 = $$4 == null ? fcz.a.a : $$4.l();
-            if ($$5 == fcz.a.b) {
-               return false;
-            } else {
-               boolean $$6 = $$1 != null && $$1.a($$4);
-               return ($$2 == fcz.a.d || $$5 == fcz.a.d) && $$6 ? false : $$2 != fcz.a.c && $$5 != fcz.a.c || $$6;
-            }
-         } else {
-            return false;
-         }
-      }));
-   }
+   public interface a {
+      List<fbx> a = List.of(fbx.c);
+      bvk.a b = ($$0, $$1) -> a;
+      bvk.a c = ($$0, $$1) -> List.of(new fbx(0.0, (double)$$1, 0.0));
+      bvk.a d = ($$0, $$1) -> List.of(new fbx(0.0, (double)$$1 / 2.0, 0.0));
 
-   public static Predicate<bvf> b(bvf $$0) {
-      return $$1 -> {
-         while ($$1.bZ()) {
-            $$1 = $$1.dk();
-            if ($$1 == $$0) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+      List<fbx> create(float var1, float var2);
    }
 }

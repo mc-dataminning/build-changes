@@ -1,137 +1,93 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class eej implements bam {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<eej> b = eei.a.xmap($$0 -> new eej($$0), $$0 -> $$0.e);
-   private eei e;
-   private final edk f = new edk(this);
+public interface eej {
+   Codec<eej> a = Codec.xor(eej.b.d, Codec.xor(eej.a.d, eej.c.d)).xmap(eej::a, eej::a);
+   eej b = b(0);
+   eej c = c(0);
 
-   public eej(long $$0) {
-      this.e = new eei(edx.c($$0));
+   static eej a(int $$0) {
+      return new eej.b($$0);
    }
 
-   public eej(edx.a $$0) {
-      this.e = new eei($$0);
+   static eej b(int $$0) {
+      return new eej.a($$0);
    }
 
-   public eej(long $$0, long $$1) {
-      this.e = new eei($$0, $$1);
+   static eej c(int $$0) {
+      return new eej.c($$0);
    }
 
-   private eej(eei $$0) {
-      this.e = $$0;
+   static eej a() {
+      return b;
    }
 
-   @Override
-   public bam d() {
-      return new eej(this.e.a(), this.e.a());
+   static eej b() {
+      return c;
    }
 
-   @Override
-   public edv e() {
-      return new eej.a(this.e.a(), this.e.a());
+   private static eej a(Either<eej.b, Either<eej.a, eej.c>> $$0) {
+      return (eej)$$0.map(Function.identity(), Either::unwrap);
    }
 
-   @Override
-   public void b(long $$0) {
-      this.e = new eei(edx.c($$0));
-      this.f.a();
+   private static Either<eej.b, Either<eej.a, eej.c>> a(eej $$0) {
+      return $$0 instanceof eej.b ? Either.left((eej.b)$$0) : Either.right($$0 instanceof eej.a ? Either.left((eej.a)$$0) : Either.right((eej.c)$$0));
    }
 
-   @Override
-   public int f() {
-      return (int)this.e.a();
-   }
+   int a(eem var1);
 
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
+   public static record a(int e) implements eej {
+      public static final Codec<eej.a> d = Codec.intRange(ebp.e, ebp.d).fieldOf("above_bottom").xmap(eej.a::new, eej.a::c).codec();
 
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
-      }
-   }
-
-   @Override
-   public long g() {
-      return this.e.a();
-   }
-
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
-   }
-
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
-   }
-
-   @Override
-   public double k() {
-      return this.f.b();
-   }
-
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
-   }
-
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
-   }
-
-   public static class a implements edv {
-      private final long a;
-      private final long b;
-
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      @Override
+      public int a(eem $$0) {
+         return $$0.a() + this.e;
       }
 
       @Override
-      public bam a(int $$0, int $$1, int $$2) {
-         long $$3 = bae.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new eej($$4, this.b);
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record b(int e) implements eej {
+      public static final Codec<eej.b> d = Codec.intRange(ebp.e, ebp.d).fieldOf("absolute").xmap(eej.b::new, eej.b::c).codec();
+
+      @Override
+      public int a(eem $$0) {
+         return this.e;
       }
 
       @Override
-      public bam a(String $$0) {
-         edx.a $$1 = edx.a($$0);
-         return new eej($$1.a(this.a, this.b));
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements eej {
+      public static final Codec<eej.c> d = Codec.intRange(ebp.e, ebp.d).fieldOf("below_top").xmap(eej.c::new, eej.c::c).codec();
+
+      @Override
+      public int a(eem $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
       }
 
       @Override
-      public bam a(long $$0) {
-         return new eej($$0 ^ this.a, $$0 ^ this.b);
+      public String toString() {
+         return this.e + " below top";
       }
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      public int c() {
+         return this.e;
       }
    }
 }

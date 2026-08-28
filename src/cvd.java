@@ -1,2 +1,4 @@
-public record cvd(czo a) implements cve {
+@FunctionalInterface
+public interface cvd {
+   void fillStackedContents(cqb var1);
 }

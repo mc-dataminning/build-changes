@@ -1,56 +1,43 @@
 import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cgc extends cgl<bwd> {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final Long2LongMap d = new Long2LongOpenHashMap();
-   private int e;
-   private long f;
-
-   public cgc() {
-      super(20);
-   }
-
+public class cgc extends cgp<coe> {
    @Override
-   public Set<cff<?>> a() {
-      return ImmutableSet.of(cff.w);
+   public Set<cfj<?>> a() {
+      return ImmutableSet.of(cfj.h, cfj.aw, cfj.aq, cfj.ap, cfj.as, cfj.at, new cfj[0]);
    }
 
-   protected void a(ash $$0, bwd $$1) {
-      if ($$1.e_()) {
-         this.e = 0;
-         this.f = $$0.ac() + (long)$$0.H_().a(20);
-         chf $$2 = $$0.z();
-         Predicate<jh> $$3 = $$0x -> {
-            long $$1x = $$0x.a();
-            if (this.d.containsKey($$1x)) {
-               return false;
-            } else if (++this.e >= 5) {
-               return false;
-            } else {
-               this.d.put($$1x, this.f + 40L);
-               return true;
+   protected void a(ash $$0, coe $$1) {
+      bxh<?> $$2 = $$1.eb();
+      $$2.a(cfj.aw, this.b($$0, $$1));
+      Optional<cok> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<coe> $$5 = Lists.newArrayList();
+      cfl $$6 = $$2.c(cfj.h).orElse(cfl.a());
+
+      for (bwf $$7 : $$6.b($$0x -> !$$0x.e_() && ($$0x instanceof cok || $$0x instanceof coe))) {
+         if ($$7 instanceof cok $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
             }
-         };
-         Set<Pair<jq<chi>, jh>> $$4 = $$2.b($$0x -> $$0x.a(chj.n), $$3, $$1.dv(), 48, chf.b.c).collect(Collectors.toSet());
-         eud $$5 = bxn.a($$1, $$4);
-         if ($$5 != null && $$5.j()) {
-            jh $$6 = $$5.l();
-            Optional<jq<chi>> $$7 = $$2.c($$6);
-            if ($$7.isPresent()) {
-               $$1.eb().a(cff.w, $$6);
-            }
-         } else if (this.e < 5) {
-            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
+         }
+
+         if ($$7 instanceof coe $$9) {
+            $$5.add($$9);
          }
       }
+
+      $$2.a(cfj.aq, $$3);
+      $$2.a(cfj.ap, $$5);
+      $$2.a(cfj.as, $$4);
+      $$2.a(cfj.at, $$5.size());
+   }
+
+   private Optional<jh> b(ash $$0, coe $$1) {
+      return jh.a($$1.dv(), 8, 4, $$1x -> $$0.a_($$1x).a(axu.aU));
    }
 }

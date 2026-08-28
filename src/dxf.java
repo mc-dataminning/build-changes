@@ -1,113 +1,124 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Iterator;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
 
-public class dxf extends djq {
-   public static final MapCodec<dxf> a = b(dxf::new);
-   public static final dyk<jm> b = dxh.a;
-   public static final dyk<dyo> c = dxh.c;
+public class dxf {
+   static final String a = "server_data";
+   static Codec<dxf> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kk.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
+               cxo.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
+               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dxf::new)
+   );
+   private static final int d = 128;
+   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
+   private long f;
+   private final List<cxo> g = new ObjectArrayList();
+   private long h;
+   private int i;
+   boolean c;
 
-   @Override
-   public MapCodec<dxf> a() {
-      return a;
+   dxf(Set<UUID> $$0, long $$1, List<cxo> $$2, int $$3) {
+      this.e.addAll($$0);
+      this.f = $$1;
+      this.g.addAll($$2);
+      this.i = $$3;
    }
 
-   public dxf(dxm.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jm.c).b(c, dyo.a));
+   dxf() {
    }
 
-   @Nullable
-   @Override
-   public dup a(jh $$0, dxn $$1) {
-      return null;
+   void a(long $$0) {
+      this.h = $$0;
    }
 
-   public static dup a(jh $$0, dxn $$1, dxn $$2, jm $$3, boolean $$4, boolean $$5) {
-      return new dxj($$0, $$1, $$2, $$3, $$4, $$5);
+   long a() {
+      return this.h;
    }
 
-   @Nullable
-   @Override
-   public <T extends dup> duq<T> a(dha $$0, dxn $$1, dur<T> $$2) {
-      return a($$2, dur.l, dxj::a);
+   Set<UUID> b() {
+      return this.e;
    }
 
-   @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dup $$5 = $$1.c_($$2);
-         if ($$5 instanceof dxj) {
-            ((dxj)$$5).k();
+   boolean a(cpw $$0) {
+      return this.e.contains($$0.cG());
+   }
+
+   @VisibleForTesting
+   public void b(cpw $$0) {
+      this.e.add($$0.cG());
+      if (this.e.size() > 128) {
+         Iterator<UUID> $$1 = this.e.iterator();
+         if ($$1.hasNext()) {
+            $$1.next();
+            $$1.remove();
          }
       }
+
+      this.i();
    }
 
-   @Override
-   public void a(dhb $$0, jh $$1, dxn $$2) {
-      jh $$3 = $$1.a($$2.c(b).g());
-      dxn $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dxg && $$4.c(dxg.c)) {
-         $$0.a($$3, false);
-      }
+   long c() {
+      return this.f;
    }
 
-   @Override
-   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
-      if (!$$1.C && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bte.c;
+   void b(long $$0) {
+      this.f = $$0;
+      this.i();
+   }
+
+   List<cxo> d() {
+      return this.g;
+   }
+
+   void e() {
+      this.i = 0;
+      this.i();
+   }
+
+   void a(List<cxo> $$0) {
+      this.g.clear();
+      this.g.addAll($$0);
+      this.i = this.g.size();
+      this.i();
+   }
+
+   cxo f() {
+      return this.g.isEmpty() ? cxo.k : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cxo.k);
+   }
+
+   cxo g() {
+      if (this.g.isEmpty()) {
+         return cxo.k;
       } else {
-         return bte.e;
+         this.i();
+         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cxo.k);
       }
    }
 
-   @Override
-   protected List<cxk> a(dxn $$0, ewk.a $$1) {
-      dxj $$2 = this.a($$1.a(), jh.a($$1.a(ezd.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
+   void a(dxf $$0) {
+      this.f = $$0.c();
+      this.g.clear();
+      this.g.addAll($$0.g);
+      this.e.clear();
+      this.e.addAll($$0.e);
    }
 
-   @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return fcj.a();
+   private void i() {
+      this.c = true;
    }
 
-   @Override
-   protected fcm b(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      dxj $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : fcj.a();
-   }
-
-   @Nullable
-   private dxj a(dgf $$0, jh $$1) {
-      dup $$2 = $$0.c_($$1);
-      return $$2 instanceof dxj ? (dxj)$$2 : null;
-   }
-
-   @Override
-   public cxk a(dhd $$0, jh $$1, dxn $$2) {
-      return cxk.k;
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dqu $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dpd $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dxn $$0, eue $$1) {
-      return false;
+   public float h() {
+      return this.i == 1 ? 1.0F : 1.0F - bae.f((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

@@ -1,78 +1,60 @@
-public class cfl extends cfn {
-   public cfl(bwd $$0, dha $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+
+public class cfl {
+   private static final cfl a = new cfl();
+   private final List<bwf> b;
+   private final Predicate<bwf> c;
+
+   private cfl() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   @Override
-   protected euf a(int $$0) {
-      this.o = new eua();
-      this.o.a(true);
-      return new euf(this.o, $$0);
+   public cfl(ash $$0, bwf $$1, List<bwf> $$2) {
+      this.b = $$2;
+      Object2BooleanOpenHashMap<bwf> $$3 = new Object2BooleanOpenHashMap($$2.size());
+      Predicate<bwf> $$4 = $$2x -> cgp.b($$0, $$1, $$2x);
+      this.c = $$2x -> $$3.computeIfAbsent($$2x, $$4);
    }
 
-   @Override
-   protected boolean a(fbs $$0, fbs $$1) {
-      return a(this.a, $$0, $$1, true);
+   public static cfl a() {
+      return a;
    }
 
-   @Override
-   protected boolean a() {
-      return this.q() && this.a.bn() || !this.a.bZ();
-   }
-
-   @Override
-   protected fbs b() {
-      return this.a.dt();
-   }
-
-   @Override
-   public eud a(bvf $$0, int $$1) {
-      return this.a($$0.dv(), $$1);
-   }
-
-   @Override
-   public void c() {
-      this.e++;
-      if (this.m) {
-         this.j();
-      }
-
-      if (!this.m()) {
-         if (this.a()) {
-            this.l();
-         } else if (this.c != null && !this.c.c()) {
-            fbs $$0 = this.c.a(this.a);
-            if (this.a.dz() == bae.a($$0.d) && this.a.dB() == bae.a($$0.e) && this.a.dF() == bae.a($$0.f)) {
-               this.c.a();
-            }
-         }
-
-         ahj.a(this.b, this.a, this.c, this.l);
-         if (!this.m()) {
-            fbs $$1 = this.c.a(this.a);
-            this.a.I().a($$1.d, $$1.e, $$1.f, this.d);
+   public Optional<bwf> a(Predicate<bwf> $$0) {
+      for (bwf $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
          }
       }
+
+      return Optional.empty();
    }
 
-   public void b(boolean $$0) {
-      this.o.b($$0);
+   public Iterable<bwf> b(Predicate<bwf> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
    }
 
-   public boolean d() {
-      return this.o.d();
+   public Stream<bwf> c(Predicate<bwf> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
    }
 
-   public void c(boolean $$0) {
-      this.o.a($$0);
+   public boolean a(bwf $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
    }
 
-   public boolean e() {
-      return this.o.d();
-   }
+   public boolean d(Predicate<bwf> $$0) {
+      for (bwf $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
 
-   @Override
-   public boolean a(jh $$0) {
-      return this.b.a_($$0).a(this.b, $$0, this.a);
+      return false;
    }
 }

@@ -3,7 +3,7 @@ public class afl implements aac<acr> {
    private final int b;
    private final byte c;
 
-   public afl(bvf $$0, byte $$1) {
+   public afl(bvj $$0, byte $$1) {
       this.b = $$0.ar();
       this.c = $$1;
    }
@@ -27,7 +27,7 @@ public class afl implements aac<acr> {
       $$0.a(this);
    }
 
-   public bvf a(dha $$0) {
+   public bvj a(dhh $$0) {
       return $$0.a(this.b);
    }
 

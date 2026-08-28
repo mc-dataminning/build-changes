@@ -1,33 +1,36 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record ezl(Optional<bl> b) implements ezs {
-   public static final MapCodec<ezl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bl.a.optionalFieldOf("predicate").forGetter(ezl::c)).apply($$0, ezl::new));
+public class ezl extends ezn {
+   public static final MapCodec<ezl> a = a(ezl::new);
 
-   @Override
-   public ezt b() {
-      return ezu.m;
+   ezl(List<ezx> $$0) {
+      super($$0, ae.b($$0));
    }
 
    @Override
-   public Set<eza<?>> a() {
-      return ImmutableSet.of(ezd.f, ezd.c);
+   public ezy b() {
+      return ezz.b;
    }
 
-   public boolean a(ewh $$0) {
-      btv $$1 = $$0.c(ezd.c);
-      fbs $$2 = $$0.c(ezd.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   public static ezl.a a(ezx.a... $$0) {
+      return new ezl.a($$0);
    }
 
-   public static ezs.a a(bl.a $$0) {
-      return () -> new ezl(Optional.of($$0.b()));
-   }
+   public static class a extends ezn.a {
+      public a(ezx.a... $$0) {
+         super($$0);
+      }
 
-   public Optional<bl> c() {
-      return this.b;
+      @Override
+      public ezl.a or(ezx.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected ezx a(List<ezx> $$0) {
+         return new ezl($$0);
+      }
    }
 }

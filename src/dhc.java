@@ -1,59 +1,34 @@
-public interface dhc {
-   int M_();
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   int L_();
+public class dhc extends evi {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
 
-   default int am() {
-      return this.L_() + this.M_() - 1;
+   public static evi.a<dhc> a() {
+      return new evi.a<>(dhc::new, dhc::b, bbs.i);
    }
 
-   default int an() {
-      return this.ap() - this.ao() + 1;
+   private dhc(LongSet $$0) {
+      this.c = $$0;
    }
 
-   default int ao() {
-      return kj.a(this.L_());
+   public dhc() {
+      this(new LongOpenHashSet());
    }
 
-   default int ap() {
-      return kj.a(this.am());
+   public static dhc b(ux $$0, js.a $$1) {
+      return new dhc(new LongOpenHashSet($$0.o("Forced")));
    }
 
-   default boolean d(int $$0) {
-      return $$0 >= this.L_() && $$0 <= this.am();
+   @Override
+   public ux a(ux $$0, js.a $$1) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
    }
 
-   default boolean s(jh $$0) {
-      return this.e($$0.v());
-   }
-
-   default boolean e(int $$0) {
-      return $$0 < this.L_() || $$0 > this.am();
-   }
-
-   default int f(int $$0) {
-      return this.g(kj.a($$0));
-   }
-
-   default int g(int $$0) {
-      return $$0 - this.ao();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.ao();
-   }
-
-   static dhc e(final int $$0, final int $$1) {
-      return new dhc() {
-         @Override
-         public int M_() {
-            return $$1;
-         }
-
-         @Override
-         public int L_() {
-            return $$0;
-         }
-      };
+   public LongSet b() {
+      return this.c;
    }
 }

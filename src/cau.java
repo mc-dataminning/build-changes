@@ -1,34 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.function.Function;
 
 public class cau {
-   public static bxv<bwb> a(dke $$0) {
-      return cbh.a(
-         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$1 -> $$1.group($$1.c(cff.o), $$1.b(cff.m), $$1.b(cff.Y))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.bj() && $$3x.aJ()) {
-                        jh $$5 = $$3x.dv().e();
+   public static <E extends bwf> bzj<E> a(List<Pair<? extends cbo<? super E>, Integer>> $$0) {
+      return a($$0, bym.a.b, bym.b.a);
+   }
 
-                        for (jm $$6 : jm.c.a) {
-                           jh $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).g($$2x, $$7).a(jm.b).c() && $$2x.b_($$7).b(etq.c)) {
-                              jh $$8 = $$7.d();
-                              if ($$2x.a_($$8).l()) {
-                                 dxn $$9 = $$0.m();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(ecj.i, $$8, ecj.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, axf.ki, axg.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
-                        }
+   public static <E extends bwf> bzj<E> a(List<Pair<? extends cbo<? super E>, Integer>> $$0, bym.a $$1, bym.b $$2) {
+      cah<cbo<? super E>> $$3 = new cah<>();
+      $$0.forEach($$1x -> $$3.a((cbo<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return cbl.a((Function<cbl.b<E>, ? extends App<cbl.c<E>, cbo<E>>>)($$3x -> $$3x.a((cbo<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == bym.a.b) {
+               $$3.a();
+            }
 
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+            for (cbo<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bym.b.a) {
+                  break;
+               }
+            }
+
+            return true;
+         }))));
    }
 }

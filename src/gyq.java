@@ -1,3 +1,3 @@
-public class gyq extends gyp {
-   public float C = -1.0F;
+public class gyq extends gxt {
+   public long a;
 }

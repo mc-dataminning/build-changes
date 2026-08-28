@@ -1,21 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public record czw(List<daw> d) {
-   public static final Codec<czw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(daw.d.listOf().optionalFieldOf("death_effects", List.of()).forGetter(czw::a)).apply($$0, czw::new)
-   );
-   public static final zt<xg, czw> b = zt.a(daw.e.a(zr.a()), czw::a, czw::new);
-   public static final czw c = new czw(List.of(new dav(), new dau(List.of(new buk(bum.j, 900, 1), new buk(bum.v, 100, 1), new buk(bum.l, 800, 0)))));
+public class czw {
+   public static final czu a = a().a();
+   public static final czu b = b().a();
+   public static final czu c = b().a(2.0F).a(axf.mV).a(new dbc(buq.s)).a();
+   public static final czu d = b().b(axf.sJ).a();
+   public static final czu e = a().a(0.8F).a();
+   public static final czu f = a().a(new day(new buo(buq.q, 600, 0), 0.3F)).a();
+   public static final czu g = a().a(new day(List.of(new buo(buq.j, 400, 1), new buo(buq.k, 6000, 0), new buo(buq.l, 6000, 0), new buo(buq.v, 2400, 3)))).a();
+   public static final czu h = a().a(new day(List.of(new buo(buq.j, 100, 1), new buo(buq.v, 2400, 0)))).a();
+   public static final czu i = a().a(new day(new buo(buq.s, 100, 0), 0.6F)).a();
+   public static final czu j = a().a(new day(List.of(new buo(buq.s, 1200, 1), new buo(buq.q, 300, 2), new buo(buq.i, 300, 0)))).a();
+   public static final czu k = a().a(new day(new buo(buq.q, 600, 0), 0.8F)).a();
+   public static final czu l = a().a(new day(new buo(buq.s, 100, 0))).a();
+   public static final czu m = b().a(daz.a).a();
+   public static final czu n = a().a(new dbd()).a();
 
-   public void a(cxk $$0, bwb $$1) {
-      for (daw $$2 : this.d) {
-         $$2.a($$1.dV(), $$0, $$1);
-      }
+   public static czu.a a() {
+      return czu.b().a(1.6F).a(cxq.b).a(axf.kx).a(true);
    }
 
-   public List<daw> a() {
-      return this.d;
+   public static czu.a b() {
+      return czu.b().a(1.6F).a(cxq.c).a(axf.kw).a(false);
    }
 }

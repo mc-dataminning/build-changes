@@ -1,17 +1,40 @@
-public class eef {
-   private final int a;
-   private final int b;
+public class eef implements ede {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final edr i = new edr(this);
 
-   public eef(dzj $$0, dhc $$1) {
-      this.a = Math.max($$1.L_(), $$0.g());
-      this.b = Math.min($$1.M_(), $$0.e());
+   public eef(long $$0) {
+      this.b($$0);
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public bam d() {
+      return new eef(this.g());
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public eec e() {
+      return new edq.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

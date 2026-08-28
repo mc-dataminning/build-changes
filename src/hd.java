@@ -8,23 +8,23 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public class hd {
-   public static <T, C, P> box<List<T>> a(hd.b<T, C, P> $$0) {
-      bon<List<T>> $$1 = bon.a("top");
-      bon<Optional<T>> $$2 = bon.a("type");
-      bon<bbk> $$3 = bon.a("any_type");
-      bon<T> $$4 = bon.a("element_type");
-      bon<T> $$5 = bon.a("tag_type");
-      bon<List<T>> $$6 = bon.a("conditions");
-      bon<List<T>> $$7 = bon.a("alternatives");
-      bon<T> $$8 = bon.a("term");
-      bon<T> $$9 = bon.a("negation");
-      bon<T> $$10 = bon.a("test");
-      bon<C> $$11 = bon.a("component_type");
-      bon<P> $$12 = bon.a("predicate_type");
-      bon<alz> $$13 = bon.a("id");
-      bon<vu> $$14 = bon.a("tag");
-      bop<StringReader> $$15 = new bop<>();
-      $$15.a($$1, bow.b(bow.a(bow.a($$2), bpc.a('['), bow.a(), bow.a(bow.a($$6)), bpc.a(']')), bow.a($$2)), $$2x -> {
+   public static <T, C, P> bpb<List<T>> a(hd.b<T, C, P> $$0) {
+      bor<List<T>> $$1 = bor.a("top");
+      bor<Optional<T>> $$2 = bor.a("type");
+      bor<bbk> $$3 = bor.a("any_type");
+      bor<T> $$4 = bor.a("element_type");
+      bor<T> $$5 = bor.a("tag_type");
+      bor<List<T>> $$6 = bor.a("conditions");
+      bor<List<T>> $$7 = bor.a("alternatives");
+      bor<T> $$8 = bor.a("term");
+      bor<T> $$9 = bor.a("negation");
+      bor<T> $$10 = bor.a("test");
+      bor<C> $$11 = bor.a("component_type");
+      bor<P> $$12 = bor.a("predicate_type");
+      bor<alz> $$13 = bor.a("id");
+      bor<vu> $$14 = bor.a("tag");
+      bot<StringReader> $$15 = new bot<>();
+      $$15.a($$1, bpa.b(bpa.a(bpa.a($$2), bpg.a('['), bpa.a(), bpa.a(bpa.a($$6)), bpg.a(']')), bpa.a($$2)), $$2x -> {
          Builder<T> $$3x = ImmutableList.builder();
          $$2x.b($$2).ifPresent($$3x::add);
          List<T> $$4x = $$2x.a($$6);
@@ -34,23 +34,23 @@ public class hd {
 
          return $$3x.build();
       });
-      $$15.a($$2, bow.b(bow.a($$4), bow.a(bpc.a('#'), bow.a(), bow.a($$5)), bow.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
-      $$15.a($$3, bpc.a('*'), $$0x -> bbk.a);
+      $$15.a($$2, bpa.b(bpa.a($$4), bpa.a(bpg.a('#'), bpa.a(), bpa.a($$5)), bpa.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
+      $$15.a($$3, bpg.a('*'), $$0x -> bbk.a);
       $$15.a($$4, new hd.c<>($$13, $$0));
       $$15.a($$5, new hd.e<>($$13, $$0));
-      $$15.a($$6, bow.a(bow.a($$7), bow.a(bow.a(bpc.a(','), bow.a($$6)))), $$3x -> {
+      $$15.a($$6, bpa.a(bpa.a($$7), bpa.a(bpa.a(bpg.a(','), bpa.a($$6)))), $$3x -> {
          T $$4x = $$0.a($$3x.b($$7));
          return Optional.ofNullable($$3x.a($$6)).map($$1xx -> ae.a($$4x, $$1xx)).orElse(List.of($$4x));
       });
-      $$15.a($$7, bow.a(bow.a($$8), bow.a(bow.a(bpc.a('|'), bow.a($$7)))), $$2x -> {
+      $$15.a($$7, bpa.a(bpa.a($$8), bpa.a(bpa.a(bpg.a('|'), bpa.a($$7)))), $$2x -> {
          T $$3x = $$2x.b($$8);
          return Optional.ofNullable($$2x.a($$7)).map($$1xx -> ae.a($$3x, $$1xx)).orElse(List.of($$3x));
       });
-      $$15.a($$8, bow.b(bow.a($$10), bow.a(bpc.a('!'), bow.a($$9))), $$2x -> $$2x.b($$10, $$9));
-      $$15.a($$9, bow.a($$10), $$2x -> $$0.a($$2x.b($$10)));
+      $$15.a($$8, bpa.b(bpa.a($$10), bpa.a(bpg.a('!'), bpa.a($$9))), $$2x -> $$2x.b($$10, $$9));
+      $$15.a($$9, bpa.a($$10), $$2x -> $$0.a($$2x.b($$10)));
       $$15.a(
          $$10,
-         bow.b(bow.a(bow.a($$11), bpc.a('='), bow.a(), bow.a($$14)), bow.a(bow.a($$12), bpc.a('~'), bow.a(), bow.a($$14)), bow.a($$11)),
+         bpa.b(bpa.a(bpa.a($$11), bpg.a('='), bpa.a(), bpa.a($$14)), bpa.a(bpa.a($$12), bpg.a('~'), bpa.a(), bpa.a($$14)), bpa.a($$11)),
          ($$4x, $$5x) -> {
             P $$6x = $$5x.a($$12);
 
@@ -71,13 +71,13 @@ public class hd {
       );
       $$15.a($$11, new hd.a<>($$13, $$0));
       $$15.a($$12, new hd.d<>($$13, $$0));
-      $$15.a($$14, bpd.a);
-      $$15.a($$13, boy.a);
-      return new box<>($$15, $$1);
+      $$15.a($$14, bph.a);
+      $$15.a($$13, bpc.a);
+      return new bpb<>($$15, $$1);
    }
 
-   static class a<T, C, P> extends boz<hd.b<T, C, P>, C> {
-      a(bon<alz> $$0, hd.b<T, C, P> $$1) {
+   static class a<T, C, P> extends bpd<hd.b<T, C, P>, C> {
+      a(bor<alz> $$0, hd.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
@@ -120,8 +120,8 @@ public class hd {
       T a(List<T> var1);
    }
 
-   static class c<T, C, P> extends boz<hd.b<T, C, P>, T> {
-      c(bon<alz> $$0, hd.b<T, C, P> $$1) {
+   static class c<T, C, P> extends bpd<hd.b<T, C, P>, T> {
+      c(bor<alz> $$0, hd.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
@@ -136,8 +136,8 @@ public class hd {
       }
    }
 
-   static class d<T, C, P> extends boz<hd.b<T, C, P>, P> {
-      d(bon<alz> $$0, hd.b<T, C, P> $$1) {
+   static class d<T, C, P> extends bpd<hd.b<T, C, P>, P> {
+      d(bor<alz> $$0, hd.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
@@ -152,8 +152,8 @@ public class hd {
       }
    }
 
-   static class e<T, C, P> extends boz<hd.b<T, C, P>, T> {
-      e(bon<alz> $$0, hd.b<T, C, P> $$1) {
+   static class e<T, C, P> extends bpd<hd.b<T, C, P>, T> {
+      e(bor<alz> $$0, hd.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 

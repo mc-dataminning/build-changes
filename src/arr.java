@@ -9,15 +9,15 @@ public interface arr {
       }
 
       @Override
-      public void a(Consumer<dgg> $$0) {
+      public void a(Consumer<dgn> $$0) {
       }
    };
 
-   static arr a(dgg $$0, int $$1) {
+   static arr a(dgn $$0, int $$1) {
       return new arr.a($$0, $$1);
    }
 
-   static void a(arr $$0, arr $$1, Consumer<dgg> $$2, Consumer<dgg> $$3) {
+   static void a(arr $$0, arr $$1, Consumer<dgn> $$2, Consumer<dgn> $$3) {
       if (!$$0.equals($$1)) {
          if ($$0 instanceof arr.a $$4 && $$1 instanceof arr.a $$5 && $$4.a($$5)) {
             int $$6 = Math.min($$4.c(), $$5.c());
@@ -31,9 +31,9 @@ public interface arr {
                   boolean $$13 = $$5.a($$10, $$11);
                   if ($$12 != $$13) {
                      if ($$13) {
-                        $$2.accept(new dgg($$10, $$11));
+                        $$2.accept(new dgn($$10, $$11));
                      } else {
-                        $$3.accept(new dgg($$10, $$11));
+                        $$3.accept(new dgn($$10, $$11));
                      }
                   }
                }
@@ -47,7 +47,7 @@ public interface arr {
       }
    }
 
-   default boolean a(dgg $$0) {
+   default boolean a(dgn $$0) {
       return this.a($$0.g, $$0.h);
    }
 
@@ -57,7 +57,7 @@ public interface arr {
 
    boolean a(int var1, int var2, boolean var3);
 
-   void a(Consumer<dgg> var1);
+   void a(Consumer<dgn> var1);
 
    default boolean b(int $$0, int $$1) {
       return this.a($$0, $$1, false);
@@ -77,7 +77,7 @@ public interface arr {
       return $$10 < (long)$$11;
    }
 
-   public static record a(dgg b, int c) implements arr {
+   public static record a(dgn b, int c) implements arr {
       int c() {
          return this.b.g - this.c - 1;
       }
@@ -105,17 +105,17 @@ public interface arr {
       }
 
       @Override
-      public void a(Consumer<dgg> $$0) {
+      public void a(Consumer<dgn> $$0) {
          for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
             for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
                if (this.a($$1, $$2)) {
-                  $$0.accept(new dgg($$1, $$2));
+                  $$0.accept(new dgn($$1, $$2));
                }
             }
          }
       }
 
-      public dgg a() {
+      public dgn a() {
          return this.b;
       }
 

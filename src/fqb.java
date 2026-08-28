@@ -1,26 +1,58 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fqb implements fqc {
-   private final xv b;
-   protected final frm a = new frm();
+public interface fqb extends fpo {
+   long t = 250L;
 
-   public fqb(xv $$0) {
-      this.b = $$0;
+   default void f(double $$0, double $$1) {
    }
 
-   @Override
-   public xv a() {
-      return this.b;
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   @Override
-   public void a(Consumer<fnw> $$0) {
-      this.a.a($$0);
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   @Override
-   public void a(fsg $$0) {
-      this.a.a();
-      frl.a(this.a, $$0, 0.5F, 0.16666667F);
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
+
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
+   @Nullable
+   default fnn a(fsh $$0) {
+      return null;
+   }
+
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aN_();
+
+   @Nullable
+   default fnn aO_() {
+      return this.aN_() ? fnn.a(this) : null;
+   }
+
+   default fsl H() {
+      return fsl.a();
    }
 }

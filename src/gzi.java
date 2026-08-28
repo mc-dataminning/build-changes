@@ -1,11 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gzi extends gym {
-   public fbs a = fbs.c;
-   @Nullable
-   public cwh b;
+public class gzi extends gyr {
+   public float a;
+   public float b;
    public float c;
-   public float d;
-   public float e;
-   public jm f = jm.a;
 }

@@ -1,40 +1,18 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cex extends cez {
-   private final bwy a;
-   private bwb b;
-   private int c;
+public class cex<T extends bwf> extends cew<T> {
+   private boolean i = true;
 
-   public cex(bwy $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(ccz.a.d));
+   public cex(crk $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cgw.a $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.a.p() && !this.a.gm()) {
-         bwb $$0 = this.a.ah_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.er();
-            int $$1 = $$0.es();
-            return $$1 != this.c && this.a(this.b, cgs.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void d() {
-      this.e.h(this.b);
-      bwb $$0 = this.a.ah_();
-      if ($$0 != null) {
-         this.c = $$0.es();
-      }
-
-      super.d();
+      return this.i && super.b();
    }
 }

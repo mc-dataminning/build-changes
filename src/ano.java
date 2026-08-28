@@ -31,11 +31,11 @@ public class ano {
       );
    }
 
-   private static int a(ew $$0, Collection<asi> $$1, Predicate<cxk> $$2) throws CommandSyntaxException {
+   private static int a(ew $$0, Collection<asi> $$1, Predicate<cxo> $$2) throws CommandSyntaxException {
       return a($$0, $$1, $$2, -1);
    }
 
-   private static int a(ew $$0, Collection<asi> $$1, Predicate<cxk> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(ew $$0, Collection<asi> $$1, Predicate<cxo> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
       for (asi $$5 : $$1) {

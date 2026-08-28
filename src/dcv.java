@@ -1,84 +1,86 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dcv implements dct {
-   final Optional<dbv> c;
-   final Optional<dbv> d;
-   final Optional<dbv> e;
-   final cxk f;
+public abstract class dcv implements dcd<dcw> {
+   private final dbz c;
+   private final cxo d;
+   private final String e;
    @Nullable
-   private dby g;
+   private dcc f;
 
-   public dcv(Optional<dbv> $$0, Optional<dbv> $$1, Optional<dbv> $$2, cxk $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public cxk a(dcu $$0, js.a $$1) {
-      cxk $$2 = $$0.d().a(this.f.h(), this.f.L());
-      $$2.b(this.f.e());
-      return $$2;
+   public dcv(String $$0, dbz $$1, cxo $$2) {
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public Optional<dbv> c() {
+   public abstract dcn<? extends dcv> a();
+
+   @Override
+   public abstract dco<? extends dcv> b();
+
+   public boolean a(dcw $$0, dhh $$1) {
+      return this.c.a($$0.c());
+   }
+
+   @Override
+   public String j() {
+      return this.e;
+   }
+
+   public dbz k() {
       return this.c;
    }
 
-   @Override
-   public Optional<dbv> f() {
+   protected cxo l() {
       return this.d;
    }
 
    @Override
-   public Optional<dbv> k() {
-      return this.e;
-   }
-
-   @Override
-   public dci<dcv> a() {
-      return dci.t;
-   }
-
-   @Override
-   public dby ap_() {
-      if (this.g == null) {
-         this.g = dby.a(List.of(this.c, this.d, this.e));
+   public dcc ap_() {
+      if (this.f == null) {
+         this.f = dcc.b(this.c);
       }
 
-      return this.g;
+      return this.f;
    }
 
-   @Override
-   public List<ddc> g() {
-      return List.of(new ddk(new ddi.e(this.f), new ddi.d(cxo.xg)));
+   public cxo a(dcw $$0, js.a $$1) {
+      return this.d.v();
    }
 
-   public static class a implements dci<dcv> {
-      private static final MapCodec<dcv> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  dbv.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
-                  dbv.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
-                  dbv.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
-                  cxk.d.fieldOf("result").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, dcv::new)
-      );
-      public static final zt<xg, dcv> w = zt.a(dbv.b, $$0 -> $$0.c, dbv.b, $$0 -> $$0.d, dbv.b, $$0 -> $$0.e, cxk.i, $$0 -> $$0.f, dcv::new);
+   @FunctionalInterface
+   public interface a<T extends dcv> {
+      T create(String var1, dbz var2, cxo var3);
+   }
 
-      @Override
-      public MapCodec<dcv> a() {
-         return x;
+   public static class b<T extends dcv> implements dcn<T> {
+      private final MapCodec<T> w;
+      private final zt<xg, T> x;
+
+      protected b(dcv.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec(
+            $$1 -> $$1.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter(dcv::j),
+                     dbz.d.fieldOf("ingredient").forGetter(dcv::k),
+                     cxo.d.fieldOf("result").forGetter(dcv::l)
+                  )
+                  .apply($$1, $$0::create)
+         );
+         this.x = zt.a(zr.o, dcv::j, dbz.a, dcv::k, cxo.i, dcv::l, $$0::create);
       }
 
       @Override
-      public zt<xg, dcv> b() {
-         return w;
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public zt<xg, T> b() {
+         return this.x;
       }
    }
 }

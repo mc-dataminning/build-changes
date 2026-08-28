@@ -54,7 +54,7 @@ import javax.imageio.ImageIO;
 import net.minecraft.obfuscate.DontObfuscate;
 import org.slf4j.Logger;
 
-public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
+public abstract class MinecraftServer extends bsb<amw> implements amp, eax, ev {
    private static final Logger l = LogUtils.getLogger();
    public static final String b = "vanilla";
    private static final float m = 0.8F;
@@ -71,13 +71,13 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    private static final int x = 100;
    private static final int y = 3;
    public static final int c = 29999984;
-   public static final dhe d = new dhe("Demo World", dgx.a, false, btb.c, false, new dgw(csq.i), dhx.c);
+   public static final dhl d = new dhl("Demo World", dhe.a, false, btf.c, false, new dhd(csu.i), die.c);
    public static final GameProfile e = new GameProfile(ae.e, "Anonymous Player");
-   protected final evv.c f;
-   protected final evy g;
+   protected final ewc.c f;
+   protected final ewf g;
    private final List<Runnable> z = Lists.newArrayList();
-   private bre A = brd.a;
-   private Consumer<bpm> B = $$0x -> this.aU();
+   private bri A = brh.a;
+   private Consumer<bpq> B = $$0x -> this.aU();
    private Consumer<Path> C = $$0x -> {
    };
    private boolean D;
@@ -95,7 +95,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    private String M;
    private int N = -1;
    private final jx<ami> O;
-   private final Map<aly<dha>, ash> P = Maps.newLinkedHashMap();
+   private final Map<aly<dhh>, ash> P = Maps.newLinkedHashMap();
    private awi Q;
    private volatile boolean R = true;
    private boolean S;
@@ -131,7 +131,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    private final avg ar;
    private final ams as = new ams(this);
    @Nullable
-   private evm at;
+   private evt at;
    private final anc au = new anc();
    private final amo av;
    private boolean aw;
@@ -140,11 +140,11 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    @Nullable
    private String az;
    private MinecraftServer.a aA;
-   private final esf aB;
+   private final esm aB;
    private final amt aC;
-   protected final ewb j;
-   private final czi aD;
-   private dvn aE;
+   protected final ewi j;
+   private final czm aD;
+   private dvu aE;
    private int aF;
    private volatile boolean aG;
    private static final AtomicReference<RuntimeException> aH = new AtomicReference<>();
@@ -165,11 +165,11 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       return $$3;
    }
 
-   public MinecraftServer(Thread $$0, evv.c $$1, avg $$2, amy $$3, Proxy $$4, DataFixer $$5, amu $$6, ass $$7) {
+   public MinecraftServer(Thread $$0, ewc.c $$1, avg $$2, amy $$3, Proxy $$4, DataFixer $$5, amu $$6, ass $$7) {
       super("Server");
       this.O = $$3.c();
       this.j = $$3.d();
-      if (!this.O.a().e(mb.be).e(ebj.b)) {
+      if (!this.O.a().e(mb.bf).e(ebq.b)) {
          throw new IllegalStateException("Missing Overworld dimension data");
       } else {
          this.h = $$4;
@@ -187,31 +187,31 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
          this.g = $$1.g();
          this.L = $$5;
          this.av = new amo(this, this.aA.b.a());
-         jr<dke> $$8 = this.O.a().e(mb.f).a(this.j.K());
-         this.aB = new esf($$3.a(), $$1, $$5, $$8);
+         jr<dkl> $$8 = this.O.a().e(mb.f).a(this.j.K());
+         this.aB = new esm($$3.a(), $$1, $$5, $$8);
          this.aj = $$0;
          this.ay = ae.g();
-         this.aD = czi.a(this.j.K());
+         this.aD = czm.a(this.j.K());
          this.aA.b.c().a(this.j.K());
-         this.aE = dvn.a(this.O.a(), this.j.K());
+         this.aE = dvu.a(this.O.a(), this.j.K());
          this.aJ = TracyClient.createDiscontinuousFrame("Server Tick");
       }
    }
 
-   private void a(evp $$0) {
+   private void a(evw $$0) {
       $$0.a(this.aJ().b(), "scoreboard");
    }
 
    protected abstract boolean e() throws IOException;
 
    protected void v_() {
-      if (!bpw.f.c()) {
+      if (!bqa.f.c()) {
       }
 
       boolean $$0 = false;
-      bpz $$1 = bpw.f.e();
+      bqd $$1 = bqa.f.e();
       this.j.a(this.getServerModName(), this.Q().a());
-      asr $$2 = this.H.create(this.j.o().c(dgw.aa));
+      asr $$2 = this.H.create(this.j.o().c(dhd.ab));
       this.a($$2);
       this.t();
       this.b($$2);
@@ -221,7 +221,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
 
       if ($$0) {
          try {
-            bpw.f.b();
+            bqa.f.b();
          } catch (Throwable var5) {
             l.warn("Failed to stop JFR profiling", var5);
          }
@@ -232,20 +232,20 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    protected void a(asr $$0) {
-      ewa $$1 = this.j.I();
+      ewh $$1 = this.j.I();
       boolean $$2 = this.j.A();
-      kd<ebj> $$3 = this.O.a().e(mb.be);
-      eeg $$4 = this.j.y();
+      kd<ebq> $$3 = this.O.a().e(mb.bf);
+      een $$4 = this.j.y();
       long $$5 = $$4.c();
-      long $$6 = die.a($$5);
-      List<dgm> $$7 = ImmutableList.of(new edu(), new edt(), new cpa(), new chd(), new cpl($$1));
-      ebj $$8 = $$3.c(ebj.b);
-      ash $$9 = new ash(this, this.ay, this.f, $$1, dha.i, $$8, $$0, $$2, $$6, $$7, true, null);
-      this.P.put(dha.i, $$9);
-      evp $$10 = $$9.v();
+      long $$6 = dil.a($$5);
+      List<dgt> $$7 = ImmutableList.of(new eeb(), new eea(), new cpe(), new chh(), new cpp($$1));
+      ebq $$8 = $$3.c(ebq.b);
+      ash $$9 = new ash(this, this.ay, this.f, $$1, dhh.i, $$8, $$0, $$2, $$6, $$7, true, null);
+      this.P.put(dhh.i, $$9);
+      evw $$10 = $$9.v();
       this.a($$10);
-      this.at = new evm($$10);
-      dzd $$11 = $$9.F_();
+      this.at = new evt($$10);
+      dzk $$11 = $$9.F_();
       if (!$$1.n()) {
          try {
             a($$9, $$1, $$4.e(), $$2);
@@ -272,15 +272,15 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
          this.aM().a(this.j.E(), this.ba());
       }
 
-      btj $$14 = $$9.M();
+      btn $$14 = $$9.M();
 
-      for (Entry<aly<ebj>, ebj> $$15 : $$3.k()) {
-         aly<ebj> $$16 = $$15.getKey();
-         if ($$16 != ebj.b) {
-            aly<dha> $$17 = aly.a(mb.bd, $$16.a());
-            evo $$18 = new evo(this.j, $$1);
+      for (Entry<aly<ebq>, ebq> $$15 : $$3.k()) {
+         aly<ebq> $$16 = $$15.getKey();
+         if ($$16 != ebq.b) {
+            aly<dhh> $$17 = aly.a(mb.be, $$16.a());
+            evv $$18 = new evv(this.j, $$1);
             ash $$19 = new ash(this, this.ay, this.f, $$18, $$17, $$15.getValue(), $$0, $$2, $$6, ImmutableList.of(), false, $$14);
-            $$11.a(new dzb.a($$19.F_()));
+            $$11.a(new dzi.a($$19.F_()));
             this.P.put($$17, $$19);
          }
       }
@@ -288,16 +288,16 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       $$11.a($$1.p());
    }
 
-   private static void a(ash $$0, ewa $$1, boolean $$2, boolean $$3) {
+   private static void a(ash $$0, ewh $$1, boolean $$2, boolean $$3) {
       if ($$3) {
          $$1.a(jh.c.b(80), 0.0F);
       } else {
          ase $$4 = $$0.m();
-         dgg $$5 = new dgg($$4.i().b().a());
+         dgn $$5 = new dgn($$4.i().b().a());
          int $$6 = $$4.g().a($$0);
          if ($$6 < $$0.L_()) {
             jh $$7 = $$5.l();
-            $$6 = $$0.a(edi.a.b, $$7.u() + 8, $$7.w() + 8);
+            $$6 = $$0.a(edp.a.b, $$7.u() + 8, $$7.w() + 8);
          }
 
          $$1.a($$5.l().b(8, $$6, 8), 0.0F);
@@ -308,7 +308,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
 
          for (int $$12 = 0; $$12 < bae.h(11); $$12++) {
             if ($$8 >= -5 && $$8 <= 5 && $$9 >= -5 && $$9 <= 5) {
-               jh $$13 = asb.a($$0, new dgg($$5.g + $$8, $$5.h + $$9));
+               jh $$13 = asb.a($$0, new dgn($$5.g + $$8, $$5.h + $$9));
                if ($$13 != null) {
                   $$1.a($$13, 0.0F);
                   break;
@@ -326,31 +326,31 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
          }
 
          if ($$2) {
-            $$0.K_().a(mb.aK).flatMap($$0x -> $$0x.a(sn.m)).ifPresent($$3x -> ((ega)$$3x.a()).a($$0, $$4.g(), $$0.A, $$1.a()));
+            $$0.K_().a(mb.aL).flatMap($$0x -> $$0x.a(sn.m)).ifPresent($$3x -> ((egh)$$3x.a()).a($$0, $$4.g(), $$0.A, $$1.a()));
          }
       }
    }
 
-   private void a(ewb $$0) {
-      $$0.a(btb.a);
+   private void a(ewi $$0) {
+      $$0.a(btf.a);
       $$0.d(true);
-      ewa $$1 = $$0.I();
+      ewh $$1 = $$0.I();
       $$1.b(false);
       $$1.a(false);
       $$1.a(1000000000);
       $$1.b(6000L);
-      $$1.a(dgx.d);
+      $$1.a(dhe.d);
    }
 
    private void b(asr $$0) {
       ash $$1 = this.J();
       l.info("Preparing start region for dimension {}", $$1.ah().a());
       jh $$2 = $$1.Y();
-      $$0.a(new dgg($$2));
+      $$0.a(new dgn($$2));
       ase $$3 = $$1.m();
       this.an = ae.d();
       $$1.a($$2, $$1.Z());
-      int $$4 = this.aL().c(dgw.aa);
+      int $$4 = this.aL().c(dhd.ab);
       int $$5 = $$4 > 0 ? bae.h(asr.a($$4)) : 0;
 
       while ($$3.b() < $$5) {
@@ -362,13 +362,13 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       this.x_();
 
       for (ash $$6 : this.P.values()) {
-         dgv $$7 = $$6.v().b(dgv.a(), "chunks");
+         dhc $$7 = $$6.v().b(dhc.a(), "chunks");
          if ($$7 != null) {
             LongIterator $$8 = $$7.b().iterator();
 
             while ($$8.hasNext()) {
                long $$9 = $$8.nextLong();
-               dgg $$10 = new dgg($$9);
+               dgn $$10 = new dgn($$9);
                $$6.m().a($$10, true);
             }
          }
@@ -380,7 +380,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       this.bH();
    }
 
-   public dgx u() {
+   public dhe u() {
       return this.j.k();
    }
 
@@ -407,7 +407,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       }
 
       ash $$5 = this.J();
-      ewa $$6 = this.j.I();
+      ewh $$6 = this.j.I();
       $$6.a($$5.F_().t());
       this.j.a(this.aM().a(this.ba()));
       this.f.a(this.ba(), this.j, this.ag().r());
@@ -553,8 +553,8 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
 
             this.an += $$0;
 
-            try (bpn.a $$5 = bpn.a(this.bI())) {
-               bpo $$6 = bpn.a();
+            try (bpr.a $$5 = bpr.a(this.bI())) {
+               bps $$6 = bpr.a();
                $$6.a("tick");
                this.aJ.start();
                this.a($$4 ? () -> false : this::bu);
@@ -576,7 +576,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
             }
 
             this.ag = true;
-            bpw.f.a(this.ax);
+            bqa.f.a(this.ax);
          }
       } catch (Throwable var69) {
          l.error("Encountered an unexpected exception", var69);
@@ -624,9 +624,9 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
 
    private void bt() {
       if (this.g()) {
-         bob $$0 = this.f();
-         $$0.a(ae.d() - this.al - this.am, bod.c.ordinal());
-         $$0.a(this.am, bod.d.ordinal());
+         bof $$0 = this.f();
+         $$0.a(ae.d() - this.al - this.am, boh.c.ordinal());
+         $$0.a(this.am, boh.d.ordinal());
       }
    }
 
@@ -728,7 +728,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    protected void b(amw $$0) {
-      bpn.a().f("runTask");
+      bpr.a().f("runTask");
       super.d($$0);
    }
 
@@ -803,7 +803,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
          this.bD();
       }
 
-      bpo $$3 = bpn.a();
+      bps $$3 = bpr.a();
       $$3.a("tallying");
       long $$4 = ae.d() - $$1;
       int $$5 = this.T % 100;
@@ -818,7 +818,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    private void bD() {
       this.U = this.bE();
       l.debug("Autosave started");
-      bpo $$0 = bpn.a();
+      bps $$0 = bpr.a();
       $$0.a("save");
       this.b(true, false, false);
       $$0.c();
@@ -827,7 +827,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
 
    private void a(long $$0) {
       if (this.g()) {
-         this.f().a(ae.d() - $$0, bod.b.ordinal());
+         this.f().a(ae.d() - $$0, boh.b.ordinal());
       }
    }
 
@@ -851,7 +851,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       }
    }
 
-   protected abstract bob f();
+   protected abstract bof f();
 
    public abstract boolean g();
 
@@ -881,7 +881,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    protected void c(BooleanSupplier $$0) {
-      bpo $$1 = bpn.a();
+      bps $$1 = bpr.a();
       this.ag().t().forEach($$0x -> $$0x.f.f());
       $$1.a("commandFunctions");
       this.aE().b();
@@ -938,11 +938,11 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    private void b(ash $$0) {
-      this.Q.a(new agp($$0.ac(), $$0.ad(), $$0.N().b(dgw.l)), $$0.ah());
+      this.Q.a(new agp($$0.ac(), $$0.ad(), $$0.N().b(dhd.l)), $$0.ah());
    }
 
    public void H() {
-      bpo $$0 = bpn.a();
+      bps $$0 = bpr.a();
       $$0.a("timeSync");
 
       for (ash $$1 : this.L()) {
@@ -952,7 +952,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       $$0.c();
    }
 
-   public boolean a(dha $$0) {
+   public boolean a(dhh $$0) {
       return true;
    }
 
@@ -973,15 +973,15 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    public final ash J() {
-      return this.P.get(dha.i);
+      return this.P.get(dhh.i);
    }
 
    @Nullable
-   public ash a(aly<dha> $$0) {
+   public ash a(aly<dhh> $$0) {
       return this.P.get($$0);
    }
 
-   public Set<aly<dha>> K() {
+   public Set<aly<dhh>> K() {
       return this.P.keySet();
    }
 
@@ -1021,7 +1021,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
 
       $$0.a("Active Data Packs", () -> avg.a(this.ar.g()));
       $$0.a("Available Data Packs", () -> avg.a(this.ar.d()));
-      $$0.a("Enabled Feature Flags", () -> csq.f.b(this.j.K()).stream().map(alz::toString).collect(Collectors.joining(", ")));
+      $$0.a("Enabled Feature Flags", () -> csu.f.b(this.j.K()).stream().map(alz::toString).collect(Collectors.joining(", ")));
       $$0.a("World Generation", () -> this.j.B().toString());
       $$0.a("World Seed", () -> String.valueOf(this.j.y().c()));
       $$0.a("Suppressed Exceptions", this.aI::a);
@@ -1078,9 +1078,9 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       }
    }
 
-   public void a(btb $$0, boolean $$1) {
+   public void a(btf $$0, boolean $$1) {
       if ($$1 || !this.j.r()) {
-         this.j.a(this.j.l() ? btb.d : $$0);
+         this.j.a(this.j.l() ? btf.d : $$0);
          this.bH();
          this.ag().t().forEach(this::c);
       }
@@ -1102,12 +1102,12 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    private void c(asi $$0) {
-      evr $$1 = $$0.dV().D_();
+      evy $$1 = $$0.dV().D_();
       $$0.f.b(new ade($$1.q(), $$1.r()));
    }
 
    public boolean W() {
-      return this.j.q() != btb.a;
+      return this.j.q() != btf.a;
    }
 
    public boolean X() {
@@ -1189,7 +1189,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
 
    public abstract boolean r();
 
-   public void a(dgx $$0) {
+   public void a(dhe $$0) {
       this.j.a($$0);
    }
 
@@ -1205,7 +1205,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       return false;
    }
 
-   public boolean a(@Nullable dgx $$0, boolean $$1, int $$2) {
+   public boolean a(@Nullable dhe $$0, boolean $$1, int $$2) {
       return false;
    }
 
@@ -1217,7 +1217,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       return 16;
    }
 
-   public boolean a(ash $$0, jh $$1, cps $$2) {
+   public boolean a(ash $$0, jh $$1, cpw $$2) {
       return false;
    }
 
@@ -1308,7 +1308,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    public int a(@Nullable ash $$0) {
-      return $$0 != null ? $$0.N().c(dgw.s) : 10;
+      return $$0 != null ? $$0.N().c(dhd.s) : 10;
    }
 
    public amm aD() {
@@ -1336,7 +1336,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
             this.aA.close();
             this.aA = $$1x;
             this.ar.b($$0);
-            dhx $$2 = new dhx(a(this.ar, true), this.j.K());
+            die $$2 = new die(a(this.ar, true), this.j.K());
             this.j.a($$2);
             this.aA.b.g();
             this.aA.b.c().a(this.j.K());
@@ -1344,7 +1344,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
             this.ag().u();
             this.av.a(this.aA.b.a());
             this.aB.a(this.aA.a);
-            this.aE = dvn.a(this.O.a(), this.j.K());
+            this.aE = dvu.a(this.O.a(), this.j.K());
          }, this);
       if (this.bx()) {
          this.b($$1::isDone);
@@ -1353,10 +1353,10 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       return $$1;
    }
 
-   public static dhx a(avg $$0, dhx $$1, boolean $$2, boolean $$3) {
-      dgn $$4 = $$1.a();
-      cso $$5 = $$2 ? cso.a() : $$1.b();
-      cso $$6 = $$2 ? csq.f.a() : $$1.b();
+   public static die a(avg $$0, die $$1, boolean $$2, boolean $$3) {
+      dgu $$4 = $$1.a();
+      css $$5 = $$2 ? css.a() : $$1.b();
+      css $$6 = $$2 ? csu.f.a() : $$1.b();
       $$0.a();
       if ($$3) {
          return a($$0, List.of("vanilla"), $$5, false);
@@ -1374,19 +1374,19 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
          for (avd $$9 : $$0.d()) {
             String $$10 = $$9.g();
             if (!$$4.b().contains($$10)) {
-               cso $$11 = $$9.e();
+               css $$11 = $$9.e();
                boolean $$12 = $$7.contains($$10);
                if (!$$12 && $$9.l().a()) {
                   if ($$11.a($$6)) {
                      l.info("Found new data pack {}, loading it automatically", $$10);
                      $$7.add($$10);
                   } else {
-                     l.info("Found new data pack {}, but can't load it due to missing features {}", $$10, csq.a($$6, $$11));
+                     l.info("Found new data pack {}, but can't load it due to missing features {}", $$10, csu.a($$6, $$11));
                   }
                }
 
                if ($$12 && !$$11.a($$6)) {
-                  l.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$10, csq.a($$6, $$11));
+                  l.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$10, csu.a($$6, $$11));
                   $$7.remove($$10);
                }
             }
@@ -1401,17 +1401,17 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       }
    }
 
-   private static dhx a(avg $$0, Collection<String> $$1, cso $$2, boolean $$3) {
+   private static die a(avg $$0, Collection<String> $$1, css $$2, boolean $$3) {
       $$0.b($$1);
       a($$0, $$2);
-      dgn $$4 = a($$0, $$3);
-      cso $$5 = $$0.f().c($$2);
-      return new dhx($$4, $$5);
+      dgu $$4 = a($$0, $$3);
+      css $$5 = $$0.f().c($$2);
+      return new die($$4, $$5);
    }
 
-   private static void a(avg $$0, cso $$1) {
-      cso $$2 = $$0.f();
-      cso $$3 = $$1.d($$2);
+   private static void a(avg $$0, css $$1) {
+      css $$2 = $$0.f();
+      css $$3 = $$1.d($$2);
       if (!$$3.b()) {
          Set<String> $$4 = new ObjectArraySet($$0.e());
 
@@ -1422,7 +1422,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
 
             if ($$5.l() == avh.d) {
                String $$6 = $$5.g();
-               cso $$7 = $$5.e();
+               css $$7 = $$5.e();
                if (!$$7.b() && $$7.b($$3) && $$7.a($$1)) {
                   if (!$$4.add($$6)) {
                      throw new IllegalStateException("Tried to force '" + $$6 + "', but it was already enabled");
@@ -1438,11 +1438,11 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       }
    }
 
-   private static dgn a(avg $$0, boolean $$1) {
+   private static dgu a(avg $$0, boolean $$1) {
       Collection<String> $$2 = $$0.e();
       List<String> $$3 = ImmutableList.copyOf($$2);
       List<String> $$4 = $$1 ? $$0.c().stream().filter($$1x -> !$$2.contains($$1x)).toList() : List.of();
-      return new dgn($$3, $$4);
+      return new dgu($$3, $$4);
    }
 
    public void a(ew $$0) {
@@ -1468,7 +1468,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
 
    public ew aH() {
       ash $$0 = this.J();
-      return new ew(this, $$0 == null ? fbs.c : fbs.a($$0.Y()), fbr.a, $$0, 4, "Server", xv.b("Server"), this, null);
+      return new ew(this, $$0 == null ? fbx.c : fbx.a($$0.Y()), fbw.a, $$0, 4, "Server", xv.b("Server"), this, null);
    }
 
    @Override
@@ -1484,7 +1484,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    @Override
    public abstract boolean c();
 
-   public dcf aI() {
+   public dck aI() {
       return this.aA.b.c();
    }
 
@@ -1492,7 +1492,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       return this.as;
    }
 
-   public evm aK() {
+   public evt aK() {
       if (this.at == null) {
          throw new NullPointerException("Called before server init");
       } else {
@@ -1500,7 +1500,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       }
    }
 
-   public dgw aL() {
+   public dhd aL() {
       return this.J().N();
    }
 
@@ -1558,7 +1558,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       Path $$1 = $$0.resolve("levels");
 
       try {
-         for (Entry<aly<dha>, ash> $$2 : this.P.entrySet()) {
+         for (Entry<aly<dhh>, ash> $$2 : this.P.entrySet()) {
             alz $$3 = $$2.getKey().a();
             Path $$4 = $$1.resolve($$3.b()).resolve($$3.a());
             Files.createDirectories($$4);
@@ -1588,10 +1588,10 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    private void d(Path $$0) throws IOException {
       try (Writer $$1 = Files.newBufferedWriter($$0)) {
          final List<String> $$2 = Lists.newArrayList();
-         final dgw $$3 = this.aL();
-         $$3.a(new dgw.c() {
+         final dhd $$3 = this.aL();
+         $$3.a(new dhd.c() {
             @Override
-            public <T extends dgw.g<T>> void a(dgw.e<T> $$0, dgw.f<T> $$1) {
+            public <T extends dhd.g<T>> void a(dhd.e<T> $$0, dhd.f<T> $$1) {
                $$2.add(String.format(Locale.ROOT, "%s=%s\n", $$0.a(), $$3.a($$0)));
             }
          });
@@ -1646,9 +1646,9 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       }
    }
 
-   private bpo bI() {
+   private bps bI() {
       if (this.D) {
-         this.A = brc.a(new brg(ae.c, this.n()), ae.c, ae.h(), new bri("server"), this.B, $$0 -> {
+         this.A = brg.a(new brk(ae.c, this.n()), ae.c, ae.h(), new brm("server"), this.B, $$0 -> {
             this.h(() -> this.b($$0.resolve("server")));
             this.C.accept($$0);
          });
@@ -1656,7 +1656,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       }
 
       this.A.c();
-      return bpr.a(this.A.f(), bpr.a("Server"));
+      return bpv.a(this.A.f(), bpv.a("Server"));
    }
 
    public void aS() {
@@ -1667,7 +1667,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       return this.A.e();
    }
 
-   public void a(Consumer<bpm> $$0, Consumer<Path> $$1) {
+   public void a(Consumer<bpq> $$0, Consumer<Path> $$1) {
       this.B = $$1x -> {
          this.aU();
          $$0.accept($$1x);
@@ -1677,7 +1677,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    public void aU() {
-      this.A = brd.a;
+      this.A = brh.a;
    }
 
    public void aV() {
@@ -1688,7 +1688,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       this.A.b();
    }
 
-   public Path a(evt $$0) {
+   public Path a(ewa $$0) {
       return this.f.a($$0);
    }
 
@@ -1696,11 +1696,11 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       return true;
    }
 
-   public esf aY() {
+   public esm aY() {
       return this.aB;
    }
 
-   public ewb aZ() {
+   public ewi aZ() {
       return this.j;
    }
 
@@ -1725,7 +1725,7 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    @Nullable
-   public dgx bd() {
+   public dhe bd() {
       return null;
    }
 
@@ -1745,11 +1745,11 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       this.F = true;
    }
 
-   public bpm bi() {
+   public bpq bi() {
       if (this.E == null) {
-         return bpi.a;
+         return bpm.a;
       } else {
-         bpm $$0 = this.E.a(ae.d(), this.T);
+         bpq $$0 = this.E.a(ae.d(), this.T);
          this.E = null;
          return $$0;
       }
@@ -1776,14 +1776,14 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       return true;
    }
 
-   public void a(asi $$0, bnz $$1) {
+   public void a(asi $$0, bod $$1) {
    }
 
    public boolean bm() {
       return false;
    }
 
-   private void a(o $$0, dgg $$1, ebb $$2) {
+   private void a(o $$0, dgn $$1, ebi $$2) {
       ae.h().execute(() -> {
          try {
             Path $$3 = this.c("debug");
@@ -1811,14 +1811,14 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
    }
 
    @Override
-   public void a(Throwable $$0, ebb $$1, dgg $$2) {
+   public void a(Throwable $$0, ebi $$1, dgn $$2) {
       l.error("Failed to load chunk {},{}", new Object[]{$$2.g, $$2.h, $$0});
       this.aI.a("chunk/load", $$0);
       this.a(o.a($$0, "Chunk load failure"), $$2, $$1);
    }
 
    @Override
-   public void b(Throwable $$0, ebb $$1, dgg $$2) {
+   public void b(Throwable $$0, ebi $$1, dgn $$2) {
       l.error("Failed to save chunk {},{}", new Object[]{$$2.g, $$2.h, $$0});
       this.aI.a("chunk/save", $$0);
       this.a(o.a($$0, "Chunk save failure"), $$2, $$1);
@@ -1828,11 +1828,11 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
       this.aI.a("packet/" + $$1.toString(), $$0);
    }
 
-   public czi bn() {
+   public czm bn() {
       return this.aD;
    }
 
-   public dvn bo() {
+   public dvu bo() {
       return this.aE;
    }
 
@@ -1864,10 +1864,10 @@ public abstract class MinecraftServer extends brx<amw> implements amp, eaq, ev {
          this.b = $$1;
       }
 
-      bpm a(final long $$0, final int $$1) {
-         return new bpm() {
+      bpq a(final long $$0, final int $$1) {
+         return new bpq() {
             @Override
-            public List<bpq> a(String $$0x) {
+            public List<bpu> a(String $$0x) {
                return Collections.emptyList();
             }
 

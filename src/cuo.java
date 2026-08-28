@@ -1,30 +1,65 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface cuo {
-   void a(@Nullable dcd<?> var1);
-
-   @Nullable
-   dcd<?> d();
-
-   default void a(cps $$0, List<cxk> $$1) {
-      dcd<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.b().aq_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
-         }
-      }
+public class cuo extends cuy {
+   public cuo(btb $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   default boolean a(asi $$0, dcd<?> $$1) {
-      if (!$$1.b().aq_() && $$0.y().N().b(dgw.w) && !$$0.J().b($$1.a())) {
-         return false;
-      } else {
-         this.a($$1);
-         return true;
-      }
+   @Override
+   public void b(cxo $$0, cxo $$1) {
+   }
+
+   @Override
+   public boolean a(cpw $$0) {
+      return false;
+   }
+
+   @Override
+   public Optional<cxo> a(int $$0, int $$1, cpw $$2) {
+      return Optional.empty();
+   }
+
+   @Override
+   public cxo b(int $$0, int $$1, cpw $$2) {
+      return cxo.k;
+   }
+
+   @Override
+   public cxo d(cxo $$0) {
+      return $$0;
+   }
+
+   @Override
+   public cxo b(cxo $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(cpw $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cxo $$0) {
+      return false;
+   }
+
+   @Override
+   public cxo a(int $$0) {
+      return cxo.k;
+   }
+
+   @Override
+   public void a(cpw $$0, cxo $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

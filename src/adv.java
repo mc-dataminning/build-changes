@@ -5,7 +5,7 @@ public class adv implements aac<acr> {
    private final int b;
    private final byte c;
 
-   public adv(bvf $$0, byte $$1) {
+   public adv(bvj $$0, byte $$1) {
       this.b = $$0.ar();
       this.c = $$1;
    }
@@ -30,7 +30,7 @@ public class adv implements aac<acr> {
    }
 
    @Nullable
-   public bvf a(dha $$0) {
+   public bvj a(dhh $$0) {
       return $$0.a(this.b);
    }
 

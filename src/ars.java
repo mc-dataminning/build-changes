@@ -1,14 +1,14 @@
-public record ars(String b, int c, cpp d, boolean e, int f, bvv g, boolean h, boolean i, arz j) {
+public record ars(String b, int c, cpt d, boolean e, int f, bvz g, boolean h, boolean i, arz j) {
    public static final int a = 16;
 
    public ars(ws $$0) {
       this(
          $$0.d(16),
          $$0.readByte(),
-         $$0.b(cpp.class),
+         $$0.b(cpt.class),
          $$0.readBoolean(),
          $$0.readUnsignedByte(),
-         $$0.b(bvv.class),
+         $$0.b(bvz.class),
          $$0.readBoolean(),
          $$0.readBoolean(),
          $$0.b(arz.class)
@@ -28,6 +28,6 @@ public record ars(String b, int c, cpp d, boolean e, int f, bvv g, boolean h, bo
    }
 
    public static ars a() {
-      return new ars("en_us", 2, cpp.a, true, 0, cps.bH, false, false, arz.a);
+      return new ars("en_us", 2, cpt.a, true, 0, cpw.bH, false, false, arz.a);
    }
 }

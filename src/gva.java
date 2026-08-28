@@ -1,27 +1,13 @@
-public class gva extends gvh<gxh, gax> {
-   private static final alz a = alz.b("textures/entity/creeper/creeper_armor.png");
-   private final gax b;
+public class gva extends gwd<gxh, gau> {
+   private static final glt a = glt.q(alz.b("textures/entity/breeze/breeze_eyes.png"));
 
-   public gva(gtg<gxh, gax> $$0, ged $$1) {
+   public gva(gtl<gxh, gau> $$0) {
       super($$0);
-      this.b = new gax($$1.a(geg.ag));
    }
 
-   protected boolean a(gxh $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected alz a() {
-      return a;
-   }
-
-   protected gax b() {
-      return this.b;
+   public void a(fgq $$0, glj $$1, int $$2, gxh $$3, float $$4, float $$5) {
+      fgu $$6 = $$1.getBuffer(a);
+      gau $$7 = this.d();
+      gqt.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hba.d);
    }
 }

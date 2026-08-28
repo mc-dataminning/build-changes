@@ -1,9 +1,9 @@
 import javax.annotation.Nullable;
 
 public interface asr {
-   void a(dgg var1);
+   void a(dgn var1);
 
-   void a(dgg var1, @Nullable eaj var2);
+   void a(dgn var1, @Nullable eaq var2);
 
    void a();
 

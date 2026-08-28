@@ -1,34 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class enb extends enj {
-   public static final MapCodec<enb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(emj.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, enb::new));
-   private final emj c;
+public class enb extends enp {
+   private static final enb c = new enb();
+   public static MapCodec<enb> a = MapCodec.unit(() -> c);
 
-   private enb(emj $$0) {
-      this.c = $$0;
+   private enb() {
    }
 
-   public static enb a(emj $$0) {
-      return new enb($$0);
-   }
-
-   public static enb a(eec $$0, eec $$1) {
-      return a(emm.a($$0, $$1));
-   }
-
-   public static enb b(eec $$0, eec $$1) {
-      return a(eml.a($$0, $$1));
+   public static enb a() {
+      return c;
    }
 
    @Override
-   public Stream<jh> a_(enh $$0, bam $$1, jh $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   protected boolean a(eno $$0, bam $$1, jh $$2) {
+      enn $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jq<dij> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public enk<?> b() {
-      return enk.l;
+   public enr<?> b() {
+      return enr.e;
    }
 }

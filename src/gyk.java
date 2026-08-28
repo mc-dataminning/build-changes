@@ -1,13 +1,9 @@
-import javax.annotation.Nullable;
-
-public class gyk extends gxo {
-   public jm a = jm.c;
-   public cxk b = cxk.k;
-   public int c;
-   public boolean d;
-   @Nullable
-   public hdg e;
-   @Nullable
-   public evh f;
-   public final han g = new han();
+public class gyk extends gyr {
+   public boolean b;
+   public boolean c;
+   public bvz d = bvz.b;
+   public cmd.a e = cmd.a.h;
+   public int f;
+   public int g;
+   public float h;
 }

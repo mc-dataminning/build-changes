@@ -1,35 +1,28 @@
-public class gvv extends gvy<gyz, gck> {
-   private final gcd a;
-   private final gyv b = new gyv();
+import javax.annotation.Nullable;
 
-   public gvv(gtg<gyz, gck> $$0, ged $$1) {
+public class gvv<S extends gyr, M extends gbk<S> & gag> extends gwd<S, M> {
+   private final gsm a;
+
+   public gvv(gtl<S, M> $$0, gsm $$1) {
       super($$0);
-      this.a = new gcd($$1.a(geg.bK));
-      this.b.c = gcd.a.e;
+      this.a = $$1;
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, gyz $$3, float $$4, float $$5) {
-      cii.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
-      }
-
-      cii.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
-      }
+   public void a(fgq $$0, glj $$1, int $$2, S $$3, float $$4, float $$5) {
+      this.a($$3, $$3.aq, $$3.ar, cxm.c, bvz.b, $$0, $$1, $$2);
+      this.a($$3, $$3.as, $$3.at, cxm.b, bvz.a, $$0, $$1, $$2);
    }
 
-   private void a(fgl $$0, gle $$1, int $$2, gyz $$3, cii.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.I ? -1.3F : -1.5F, 0.0F);
-      this.b.p = $$3.p;
-      this.b.X = $$3.X;
-      this.b.Y = $$3.Y;
-      this.b.U = $$5;
-      this.b.V = $$6;
-      this.a.a(this.b);
-      this.a.a($$0, $$1.getBuffer(this.a.a(gsw.a($$4))), $$2, hav.d);
-      $$0.b();
+   protected void a(S $$0, @Nullable hdl $$1, cxo $$2, cxm $$3, bvz $$4, fgq $$5, glj $$6, int $$7) {
+      if ($$1 != null && !$$2.f()) {
+         $$5.a();
+         this.d().a($$4, $$5);
+         $$5.a(a.b.rotationDegrees(-90.0F));
+         $$5.a(a.d.rotationDegrees(180.0F));
+         boolean $$8 = $$4 == bvz.a;
+         $$5.a((float)($$8 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$2, $$3, $$8, $$5, $$6, $$7, hba.d, $$1);
+         $$5.b();
+      }
    }
 }

@@ -1,48 +1,24 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class ceg extends cdd {
+   private final bwn a;
 
-public class ceg extends ccz {
-   private final cme a;
-   @Nullable
-   private bwb b;
-
-   public ceg(cme $$0) {
+   public ceg(bwn $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(ccz.a.a));
    }
 
    @Override
    public boolean b() {
-      bwb $$0 = this.a.O_();
-      return this.a.t() > 0 || $$0 != null && this.a.g((bvf)$$0) < 9.0;
+      return this.a.dV().U() && this.a.a(bvr.f).f() && chb.a(this.a);
    }
 
    @Override
    public void d() {
-      this.a.L().o();
-      this.b = this.a.O_();
+      ((cfq)this.a.L()).d(true);
    }
 
    @Override
    public void e() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.g((bvf)this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.N().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
+      if (chb.a(this.a)) {
+         ((cfq)this.a.L()).d(false);
       }
    }
 }

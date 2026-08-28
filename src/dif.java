@@ -1,3 +1,13 @@
-public interface dif {
-   jq<dic> getNoiseBiome(int var1, int var2, int var3, dil.f var4);
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+
+public interface dif extends dhy {
+   long D();
+
+   default boolean f_(jh $$0) {
+      return true;
+   }
+
+   default void a(@Nullable Supplier<String> $$0) {
+   }
 }

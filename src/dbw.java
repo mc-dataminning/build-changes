@@ -1,62 +1,70 @@
-public class dbw extends dbq {
-   public dbw(dbn $$0) {
+import java.util.ArrayList;
+import java.util.List;
+
+public class dbw extends dbt {
+   private static final dbz c = dbz.a(cxs.rm);
+   private static final dbz d = dbz.a(cxs.pQ);
+   private static final dbz e = dbz.a(cxs.vl);
+
+   public dbw(dbq $$0) {
       super($$0);
    }
 
-   public boolean a(dbo $$0, dha $$1) {
-      int $$2 = 0;
-      cxk $$3 = cxk.k;
+   public boolean a(dbr $$0, dhh $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         int $$3 = 0;
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxk $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.b(ku.L)) {
-               if (!$$3.f()) {
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxo $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if (c.a($$5)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else if (d.a($$5)) {
+                  if (++$$3 > 3) {
+                     return false;
+                  }
+               } else if (!e.a($$5)) {
                   return false;
                }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cxo.uZ)) {
-                  return false;
-               }
-
-               $$2++;
             }
          }
-      }
 
-      return !$$3.f() && $$2 > 0;
+         return $$2 && $$3 >= 1;
+      }
    }
 
-   public cxk a(dbo $$0, js.a $$1) {
-      int $$2 = 0;
-      cxk $$3 = cxk.k;
+   public cxo a(dbr $$0, js.a $$1) {
+      List<dad> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxk $$5 = $$0.a($$4);
+         cxo $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if ($$5.b(ku.L)) {
-               if (!$$3.f()) {
-                  return cxk.k;
+            if (d.a($$5)) {
+               $$3++;
+            } else if (e.a($$5)) {
+               dad $$6 = $$5.a(ku.ae);
+               if ($$6 != null) {
+                  $$2.add($$6);
                }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cxo.uZ)) {
-                  return cxk.k;
-               }
-
-               $$2++;
             }
          }
       }
 
-      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cxk.k;
+      cxo $$7 = new cxo(cxs.vk, 3);
+      $$7.b(ku.af, new dae($$3, $$2));
+      return $$7;
    }
 
    @Override
-   public dci<dbw> a() {
-      return dci.e;
+   public dcn<dbw> a() {
+      return dcn.g;
    }
 }

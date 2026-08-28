@@ -1,67 +1,47 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
 import javax.annotation.Nullable;
 
-public record ggj(String a, @Nullable ggj.a b) {
-   public static ggj a() {
-      return a(null);
+public enum ggj {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
+
+   private final xv n;
+
+   private ggj(final String $$0) {
+      this.n = xv.c("gui.banned.reason." + $$0);
    }
 
-   public static ggj a(String $$0) {
-      return a(new ggj.a.b($$0));
-   }
-
-   public static ggj a(fic $$0) {
-      return a(new ggj.a.a($$0));
-   }
-
-   public static ggj a(@Nullable ggj.a $$0) {
-      return new ggj(g(), $$0);
-   }
-
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof ggj.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof ggj.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w40a");
-      if (flz.e().a()) {
-         $$0.append(" (modded)");
-      }
-
-      return $$0.toString();
-   }
-
-   public String e() {
-      return this.a;
+   public xv a() {
+      return this.n;
    }
 
    @Nullable
-   public ggj.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements ggj.a {
-         public a(fic $$0) {
-            this($$0.a, $$0.p);
-         }
-      }
-
-      public static record b(String a) implements ggj.a {
-      }
+   public static ggj a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

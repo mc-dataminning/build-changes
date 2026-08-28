@@ -1,16 +1,24 @@
-class but extends bui {
-   protected but(buj $$0, int $$1) {
-      super($$0, $$1, ls.y);
+class but extends bum {
+   protected but(bun $$0, int $$1, lq $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(ash $$0, bwb $$1, int $$2, bvf.c $$3) {
-      if ($$3 == bvf.c.a) {
-         double $$4 = $$1.dA();
-         double $$5 = $$1.dC() + (double)($$1.dr() / 2.0F);
-         double $$6 = $$1.dG();
-         float $$7 = 3.0F + $$1.dY().i() * 2.0F;
-         $$0.a($$1, null, crb.d, $$4, $$5, $$6, $$7, false, dha.a.e, ls.A, ls.z, axf.cQ);
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 1;
+   }
+
+   @Override
+   public boolean a(ash $$0, bwf $$1, int $$2) {
+      if ($$1 instanceof asi $$3 && !$$1.aa_()) {
+         jh $$4 = $$3.ag();
+         if ($$4 != null) {
+            $$0.A().a($$3, $$4);
+            $$3.af();
+            return false;
+         }
       }
+
+      return true;
    }
 }

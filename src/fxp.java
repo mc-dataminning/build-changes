@@ -1,182 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Objects;
 
-public class fxp {
-   public static final int a = 20;
-   private static final fpm b = new fpm(alz.b("recipe_book/page_forward"), alz.b("recipe_book/page_forward_highlighted"));
-   private static final fpm c = new fpm(alz.b("recipe_book/page_backward"), alz.b("recipe_book/page_backward_highlighted"));
-   private final List<fxr> d = Lists.newArrayListWithCapacity(20);
-   @Nullable
-   private fxr e;
-   private final fxn f;
-   private flz g;
-   private final fxo<?> h;
-   private List<fxs> i = ImmutableList.of();
-   private fpf j;
-   private fpf k;
-   private int l;
-   private int m;
-   private flk n;
-   @Nullable
-   private dde o;
-   @Nullable
-   private fxs p;
-   private boolean q;
+public class fxp extends fxt<ctc> {
+   private static final fpr h = new fpr(
+      alz.b("recipe_book/filter_enabled"),
+      alz.b("recipe_book/filter_disabled"),
+      alz.b("recipe_book/filter_enabled_highlighted"),
+      alz.b("recipe_book/filter_disabled_highlighted")
+   );
+   private static final xv i = xv.c("gui.recipebook.toggleRecipes.craftable");
+   private static final List<fxt.a> j = List.of(
+      new fxt.a(fxz.a), new fxt.a(cxs.pA, cxs.ps, dcf.c), new fxt.a(cxs.eK, dcf.a), new fxt.a(cxs.qY, cxs.oQ, dcf.d), new fxt.a(cxs.lV, dcf.b)
+   );
 
-   public fxp(fxo<?> $$0, fxv $$1, boolean $$2) {
-      this.h = $$0;
-      this.f = new fxn($$1, $$2);
-
-      for (int $$3 = 0; $$3 < 20; $$3++) {
-         this.d.add(new fxr($$1));
-      }
+   public fxp(ctc $$0) {
+      super($$0, j);
    }
 
-   public void a(flz $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.t.n();
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
-      }
-
-      this.j = new fpf($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new fpf($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
+   @Override
+   protected boolean a(cuy $$0) {
+      return this.f.m() == $$0 || this.f.n().contains($$0);
    }
 
-   public void a(List<fxs> $$0, boolean $$1, boolean $$2) {
-      this.i = $$0;
-      this.q = $$2;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
-      }
+   private boolean b(ddi $$0) {
+      int $$1 = this.f.o();
+      int $$2 = this.f.p();
+      Objects.requireNonNull($$0);
 
-      this.e();
+      return switch ($$0) {
+         case ddm $$3 -> $$1 >= $$3.b() && $$2 >= $$3.c();
+         case ddn $$4 -> $$1 * $$2 >= $$4.b().size();
+         default -> false;
+      };
    }
 
-   private void e() {
-      int $$0 = 20 * this.m;
-      ddi.f $$1 = ddi.f.a(this.g.s);
+   @Override
+   protected void a(fxr $$0, ddi $$1, bbp $$2) {
+      $$0.b(this.f.m(), $$2, $$1.d());
+      Objects.requireNonNull($$1);
+      switch ($$1) {
+         case ddm $$3:
+            List<cuy> $$4 = this.f.n();
+            alk.a(this.f.o(), this.f.p(), $$3.b(), $$3.c(), $$3.f(), ($$3x, $$4x, $$5x, $$6x) -> {
+               cuy $$7x = $$4.get($$4x);
+               $$0.a($$7x, $$2, $$3x);
+            });
+            break;
+         case ddn $$5:
+            label15: {
+               List<cuy> $$6 = this.f.n();
+               int $$7 = Math.min($$5.b().size(), $$6.size());
 
-      for (int $$2 = 0; $$2 < this.d.size(); $$2++) {
-         fxr $$3 = this.d.get($$2);
-         if ($$0 + $$2 < this.i.size()) {
-            fxs $$4 = this.i.get($$0 + $$2);
-            $$3.a($$4, this.q, this, $$1);
-            $$3.k = true;
-         } else {
-            $$3.k = false;
-         }
-      }
-
-      this.f();
-   }
-
-   private void f() {
-      this.j.k = this.l > 1 && this.m < this.l - 1;
-      this.k.k = this.l > 1 && this.m > 0;
-   }
-
-   public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         xv $$6 = xv.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
-      }
-
-      this.e = null;
-
-      for (fxr $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.k && $$8.B()) {
-            this.e = $$8;
-         }
-      }
-
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
-   }
-
-   public void a(fnl $$0, int $$1, int $$2) {
-      if (this.g.z != null && this.e != null && !this.f.c()) {
-         cxk $$3 = this.e.e();
-         alz $$4 = $$3.a(ku.G);
-         $$0.a(this.g.h, this.e.a($$3), $$1, $$2, $$4);
-      }
-   }
-
-   @Nullable
-   public dde a() {
-      return this.o;
-   }
-
-   @Nullable
-   public fxs b() {
-      return this.p;
-   }
-
-   public void c() {
-      this.f.b(false);
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
-         }
-
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.e();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.e();
-         return true;
-      } else {
-         ddi.f $$7 = ddi.f.a(this.g.s);
-
-         for (fxr $$8 : this.d) {
-            if ($$8.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$8.c();
-                  this.p = $$8.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$8.b()) {
-                  this.f.a($$8.a(), $$7, this.q, $$8.D(), $$8.E(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$8.y());
+               for (int $$8 = 0; $$8 < $$7; $$8++) {
+                  $$0.a($$6.get($$8), $$2, $$5.b().get($$8));
                }
-
-               return true;
+               break label15;
             }
-         }
-
-         return false;
       }
    }
 
-   public void a(dde $$0) {
-      this.h.a($$0);
+   @Override
+   protected void a() {
+      this.e.a(h);
    }
 
-   public flk d() {
-      return this.n;
+   @Override
+   protected xv b() {
+      return i;
    }
 
-   protected void a(Consumer<fnw> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
+   @Override
+   protected void a(fxx $$0, cqb $$1) {
+      $$0.a($$1, this::b);
    }
 }

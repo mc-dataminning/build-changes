@@ -1,47 +1,42 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class cgn extends cgl<bwj> {
-   private static final cgs a = cgs.b().d();
-   private final Predicate<cxk> b;
+public class cgn extends cgp<cpi> {
+   private static final int a = 40;
 
-   public cgn(Predicate<cxk> $$0) {
-      this.b = $$0;
+   public cgn() {
+      super(40);
    }
 
-   protected void a(ash $$0, bwj $$1) {
-      bxd<?> $$2 = $$1.eb();
-      cgs $$3 = a.c().a((double)((float)$$1.h(bxj.E)));
-      List<cps> $$4 = $$0.y()
-         .stream()
-         .filter(bvk.f)
-         .filter($$3x -> $$3.a($$0, $$1, $$3x))
-         .filter(this::a)
-         .filter($$1x -> !$$1.y($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
+   protected void a(ash $$0, cpi $$1) {
+      aly<dhh> $$2 = $$0.ah();
+      jh $$3 = $$1.dv();
+      List<jp> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               jh $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gw().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(jp.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bxh<?> $$10 = $$1.eb();
       if (!$$4.isEmpty()) {
-         cps $$5 = $$4.get(0);
-         $$2.a(cff.O, $$5);
+         $$10.a(cfj.f, $$4);
       } else {
-         $$2.b(cff.O);
+         $$10.b(cfj.f);
       }
    }
 
-   private boolean a(cps $$0) {
-      return this.a($$0.eX()) || this.a($$0.eY());
-   }
-
-   private boolean a(cxk $$0) {
-      return this.b.test($$0);
-   }
-
    @Override
-   public Set<cff<?>> a() {
-      return ImmutableSet.of(cff.O);
+   public Set<cfj<?>> a() {
+      return ImmutableSet.of(cfj.f);
    }
 }

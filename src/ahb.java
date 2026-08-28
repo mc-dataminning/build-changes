@@ -5,7 +5,7 @@ public record ahb(float b, boolean c) implements aac<acr> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static ahb a(btn $$0) {
+   public static ahb a(btr $$0) {
       return new ahb($$0.f(), $$0.l());
    }
 

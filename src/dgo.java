@@ -1,46 +1,25 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public enum dgo implements dgc {
-   a;
+public class dgo {
+   private final fbx a;
+   private final fbx b;
+   private final Predicate<dxu> c;
 
-   @Override
-   public float a(jm $$0, boolean $$1) {
-      return 1.0F;
+   public dgo(fbx $$0, fbx $$1, Predicate<dxu> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public ete C_() {
-      return ete.c;
+   public fbx a() {
+      return this.b;
    }
 
-   @Override
-   public int a(jh $$0, dgk $$1) {
-      return -1;
+   public fbx b() {
+      return this.a;
    }
 
-   @Nullable
-   @Override
-   public dup c_(jh $$0) {
-      return null;
-   }
-
-   @Override
-   public dxn a_(jh $$0) {
-      return dkg.a.m();
-   }
-
-   @Override
-   public etp b_(jh $$0) {
-      return etq.a.g();
-   }
-
-   @Override
-   public int M_() {
-      return 0;
-   }
-
-   @Override
-   public int L_() {
-      return 0;
+   public Predicate<dxu> c() {
+      return this.c;
    }
 }

@@ -1,64 +1,32 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class cch extends ccf {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class cch extends ccz {
-   private final civ a;
-   @Nullable
-   private cps b;
-   private final ash c;
-   private final float d;
-   private int e;
-   private final cgs f;
-
-   public cch(civ $$0, float $$1) {
-      this.a = $$0;
-      this.c = a($$0);
-      this.d = $$1;
-      this.f = cgs.b().a((double)$$1);
-      this.a(EnumSet.of(ccz.a.b));
-   }
-
-   @Override
-   public boolean b() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
-   }
-
-   @Override
-   public boolean c() {
-      if (!this.b.bL()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.a.A(true);
-      this.e = this.a(40 + this.a.dY().a(40));
-   }
-
-   @Override
-   public void e() {
-      this.a.A(false);
-      this.b = null;
+   public cch(bwh $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
    public void a() {
-      this.a.H().a(this.b.dA(), this.b.dE(), this.b.dG(), 10.0F, (float)this.a.Z());
-      this.e--;
-   }
-
-   private boolean a(cps $$0) {
-      for (btd $$1 : btd.values()) {
-         cxk $$2 = $$0.b($$1);
-         if ($$2.a(cxo.sn) || this.a.j($$2)) {
-            return true;
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aZ = this.a(this.a.aZ, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
+      } else {
+         if (this.a.L().m()) {
+            this.a.w(this.a(this.a.dN(), 0.0F, 5.0F));
          }
+
+         this.a.aZ = this.a(this.a.aZ, this.a.aX, this.b);
       }
 
-      return false;
+      float $$0 = bae.h(this.a.aZ - this.a.aX);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aX -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aX += 4.0F;
+      }
    }
 }

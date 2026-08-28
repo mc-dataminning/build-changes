@@ -1,16 +1,13 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-public record emq(edm.c[] a) implements edm.c {
-   @Nullable
-   @Override
-   public dxn calculate(edb.b $$0) {
-      for (edm.c $$1 : this.a) {
-         dxn $$2 = $$1.calculate($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
+public abstract class emq {
+   private static final Codec<Either<eej, emq>> a = Codec.either(eej.a, ma.L.q().dispatch(emq::a, emr::codec));
+   public static final Codec<emq> c = a.xmap(
+      $$0 -> (emq)$$0.map(emp::a, $$0x -> $$0x), $$0 -> $$0.a() == emr.a ? Either.left(((emp)$$0).b()) : Either.right($$0)
+   );
 
-      return null;
-   }
+   public abstract int a(bam var1, eem var2);
+
+   public abstract emr<?> a();
 }

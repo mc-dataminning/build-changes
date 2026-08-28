@@ -1,40 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dsm extends dko implements dkh {
+public class dsm extends djx implements dnu {
    public static final MapCodec<dsm> a = b(dsm::new);
-   protected static final float b = 6.0F;
-   protected static final fcm c = dke.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+   public static final dyr<dzd> b = dyk.bk;
 
    @Override
    public MapCodec<dsm> a() {
       return a;
    }
 
-   protected dsm(dxm.d $$0) {
+   protected dsm(dxt.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, dzd.b));
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return c;
+   public duw a(jh $$0, dxu $$1) {
+      return new dwo($$0, $$1);
    }
 
    @Override
-   public boolean b(dhd $$0, jh $$1, dxn $$2) {
-      return o($$2).m().a($$0, $$1) && $$0.u($$1.d());
+   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
+      duw $$5 = $$1.c_($$2);
+      if ($$5 instanceof dwo) {
+         return (bti)(((dwo)$$5).a($$3) ? bti.a : bti.e);
+      } else {
+         return bti.e;
+      }
    }
 
    @Override
-   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
-      return true;
+   public void a(dhh $$0, jh $$1, dxu $$2, @Nullable bwf $$3, cxo $$4) {
+      if (!$$0.C) {
+         if ($$3 != null) {
+            duw $$5 = $$0.c_($$1);
+            if ($$5 instanceof dwo) {
+               ((dwo)$$5).a($$3);
+            }
+         }
+      }
    }
 
    @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
-      dmo.a($$0, o($$3).m(), $$2, 2);
+   protected dqu a_(dxu $$0) {
+      return dqu.c;
    }
 
-   private static dmo o(dxn $$0) {
-      return (dmo)($$0.a(dkg.bB) ? dkg.iZ : dkg.iY);
+   @Override
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void a(dxu $$0, dhh $$1, jh $$2, dkl $$3, @Nullable eve $$4, boolean $$5) {
+      if ($$1 instanceof ash) {
+         if ($$1.c_($$2) instanceof dwo $$7) {
+            boolean $$8 = $$1.C($$2);
+            boolean $$9 = $$7.D();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((ash)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
+            }
+         }
+      }
+   }
+
+   private void a(ash $$0, dwo $$1) {
+      switch ($$1.v()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.B();
+         case d:
+      }
    }
 }

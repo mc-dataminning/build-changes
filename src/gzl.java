@@ -1,8 +1,7 @@
-public class gzl extends gym {
-   public boolean a;
-   public final bux b = new bux();
-   public final bux c = new bux();
-   public final bux d = new bux();
-   public final bux e = new bux();
-   public final bux f = new bux();
+public class gzl extends gyr {
+   public float a;
+   public float b;
+   public boolean c;
+   public cwl d = cwl.a;
+   public int e;
 }

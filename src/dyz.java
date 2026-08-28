@@ -1,58 +1,37 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public record dyz(String n, dyc o, dru p, dru q, axe r, axe s) {
-   private static final Map<String, dyz> t = new Object2ObjectArrayMap();
-   public static final Codec<dyz> a = Codec.stringResolver(dyz::b, t::get);
-   public static final dyz b = a(new dyz("oak", dyc.g));
-   public static final dyz c = a(new dyz("spruce", dyc.h));
-   public static final dyz d = a(new dyz("birch", dyc.i));
-   public static final dyz e = a(new dyz("acacia", dyc.j));
-   public static final dyz f = a(new dyz("cherry", dyc.k, dru.aU, dru.aX, axf.eN, axf.eO));
-   public static final dyz g = a(new dyz("jungle", dyc.l));
-   public static final dyz h = a(new dyz("dark_oak", dyc.m));
-   public static final dyz i = a(new dyz("pale_oak", dyc.n));
-   public static final dyz j = a(new dyz("crimson", dyc.o, dru.aT, dru.aQ, axf.rn, axf.ro));
-   public static final dyz k = a(new dyz("warped", dyc.p, dru.aT, dru.aQ, axf.rn, axf.ro));
-   public static final dyz l = a(new dyz("mangrove", dyc.q));
-   public static final dyz m = a(new dyz("bamboo", dyc.r, dru.aS, dru.aR, axf.bw, axf.bx));
+public class dyz {
+   private static final bao a = new bao(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   public dyz(String $$0, dyc $$1) {
-      this($$0, $$1, dru.b, dru.aP, axf.jb, axf.jc);
+   public static int a() {
+      return b;
    }
 
-   private static dyz a(dyz $$0) {
-      t.put($$0.b(), $$0);
-      return $$0;
+   public static int a(jm $$0) {
+      return a.a($$0);
    }
 
-   public static Stream<dyz> a() {
-      return t.values().stream();
+   public static int a(float $$0) {
+      return a.b($$0);
    }
 
-   public String b() {
-      return this.n;
+   public static Optional<jm> a(int $$0) {
+      jm $$1 = switch ($$0) {
+         case 0 -> jm.c;
+         case 4 -> jm.f;
+         case 8 -> jm.d;
+         case 12 -> jm.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
    }
 
-   public dyc c() {
-      return this.o;
-   }
-
-   public dru d() {
-      return this.p;
-   }
-
-   public dru e() {
-      return this.q;
-   }
-
-   public axe f() {
-      return this.r;
-   }
-
-   public axe g() {
-      return this.s;
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

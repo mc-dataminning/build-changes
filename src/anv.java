@@ -5,15 +5,15 @@ public class anv {
    public static void a(CommandDispatcher<ew> $$0) {
       LiteralArgumentBuilder<ew> $$1 = (LiteralArgumentBuilder<ew>)ex.a("debugmobspawning").requires($$0x -> $$0x.c(2));
 
-      for (bwe $$2 : bwe.values()) {
+      for (bwi $$2 : bwi.values()) {
          $$1.then(ex.a($$2.a()).then(ex.a("at", gs.a()).executes($$1x -> a((ew)$$1x.getSource(), $$2, gs.a($$1x, "at")))));
       }
 
       $$0.register($$1);
    }
 
-   private static int a(ew $$0, bwe $$1, jh $$2) {
-      dhl.a($$1, $$0.e(), $$2);
+   private static int a(ew $$0, bwi $$1, jh $$2) {
+      dhs.a($$1, $$0.e(), $$2);
       return 1;
    }
 }

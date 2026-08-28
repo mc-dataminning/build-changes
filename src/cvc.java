@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cvc extends ctd {
+   public cvc(int $$0, cpv $$1) {
+      super(cuk.w, dco.d, dcm.g, cur.d, $$0, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cvc {
+   public cvc(int $$0, cpv $$1, btb $$2, ctn $$3) {
+      super(cuk.w, dco.d, dcm.g, cur.d, $$0, $$1, $$2, $$3);
+   }
 }

@@ -1,27 +1,13 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class gvo extends gvy<gyh, gbu> {
-   private static final Map<bvc.a, alz> a = ImmutableMap.of(
-      bvc.a.b,
-      alz.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bvc.a.c,
-      alz.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bvc.a.d,
-      alz.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gvo(gtg<gyh, gbu> $$0) {
+public abstract class gvo<S extends gxt, M extends gbk<S>> extends gwd<S, M> {
+   public gvo(gtl<S, M> $$0) {
       super($$0);
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, gyh $$3, float $$4, float $$5) {
-      if (!$$3.u) {
-         bvc.a $$6 = $$3.c;
-         if ($$6 != bvc.a.a) {
-            alz $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
-      }
+   @Override
+   public void a(fgq $$0, glj $$1, int $$2, S $$3, float $$4, float $$5) {
+      fgu $$6 = $$1.getBuffer(this.a());
+      this.d().a($$0, $$6, $$2, hba.d);
    }
+
+   public abstract glt a();
 }

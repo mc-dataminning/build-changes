@@ -1,20 +1,27 @@
-public class gqu extends gqd<chz, gym, gav> {
-   private static final alz a = alz.b("textures/entity/cow/cow.png");
+public class gqu extends gqi<cjn, gxi, gav> {
+   private static final alz a = alz.b("textures/entity/camel/camel.png");
 
-   public gqu(grj.a $$0) {
-      super($$0, new gav($$0.a(geg.ac)), new gav($$0.a(geg.ad)), 0.7F);
+   public gqu(gro.a $$0) {
+      super($$0, new gav($$0.a(gel.J)), new gav($$0.a(gel.K)), 0.7F);
    }
 
-   @Override
-   public alz b(gym $$0) {
+   public alz a(gxi $$0) {
       return a;
    }
 
-   public gym a() {
-      return new gym();
+   public gxi a() {
+      return new gxi();
    }
 
-   public void a(chz $$0, gym $$1, float $$2) {
+   public void a(cjn $$0, gxi $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.a = $$0.j();
+      $$1.b = $$0.ca();
+      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
+      $$1.d.a($$0.cf);
+      $$1.e.a($$0.cg);
+      $$1.f.a($$0.ch);
+      $$1.g.a($$0.ci);
+      $$1.h.a($$0.cj);
    }
 }

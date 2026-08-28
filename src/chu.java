@@ -1,90 +1,110 @@
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface chu {
-   boolean p();
+public abstract class chu extends chs {
+   @Nullable
+   private chu a;
+   private int b = 1;
 
-   void x(boolean var1);
-
-   void i(cxk var1);
-
-   void h(ux var1);
-
-   cxk X_();
-
-   axe t();
-
-   @Deprecated
-   static void a(bwd $$0, cxk $$1) {
-      $$1.b(ku.g, $$0.an());
-      czt.a(ku.X, $$1, $$1x -> {
-         if ($$0.fZ()) {
-            $$1x.a("NoAI", $$0.fZ());
-         }
-
-         if ($$0.bb()) {
-            $$1x.a("Silent", $$0.bb());
-         }
-
-         if ($$0.bc()) {
-            $$1x.a("NoGravity", $$0.bc());
-         }
-
-         if ($$0.cn()) {
-            $$1x.a("Glowing", $$0.cn());
-         }
-
-         if ($$0.cC()) {
-            $$1x.a("Invulnerable", $$0.cC());
-         }
-
-         $$1x.a("Health", $$0.eD());
-      });
+   public chu(bvq<? extends chu> $$0, dhh $$1) {
+      super($$0, $$1);
    }
 
-   @Deprecated
-   static void a(bwd $$0, ux $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.u($$1.q("NoAI"));
-      }
+   @Override
+   protected void B() {
+      super.B();
+      this.bT.a(5, new ccz(this));
+   }
 
-      if ($$1.e("Silent")) {
-         $$0.e($$1.q("Silent"));
-      }
+   @Override
+   public int ad() {
+      return this.gn();
+   }
 
-      if ($$1.e("NoGravity")) {
-         $$0.f($$1.q("NoGravity"));
-      }
+   public int gn() {
+      return super.ad();
+   }
 
-      if ($$1.e("Glowing")) {
-         $$0.j($$1.q("Glowing"));
-      }
+   @Override
+   protected boolean x() {
+      return !this.go();
+   }
 
-      if ($$1.e("Invulnerable")) {
-         $$0.n($$1.q("Invulnerable"));
-      }
+   public boolean go() {
+      return this.a != null && this.a.bL();
+   }
 
-      if ($$1.b("Health", 99)) {
-         $$0.x($$1.j("Health"));
+   public chu a(chu $$0) {
+      this.a = $$0;
+      $$0.gu();
+      return $$0;
+   }
+
+   public void gp() {
+      this.a.gv();
+      this.a = null;
+   }
+
+   private void gu() {
+      this.b++;
+   }
+
+   private void gv() {
+      this.b--;
+   }
+
+   public boolean gq() {
+      return this.gr() && this.b < this.gn();
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      if (this.gr() && this.dV().A.a(200) == 1) {
+         List<? extends chs> $$0 = this.dV().a((Class<? extends chs>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.b = 1;
+         }
       }
    }
 
-   static <T extends bwb & chu> Optional<bte> a(cps $$0, btd $$1, T $$2) {
-      cxk $$3 = $$0.b($$1);
-      if ($$3.h() == cxo.qX && $$2.bL()) {
-         $$2.a($$2.t(), 1.0F, 1.0F);
-         cxk $$4 = $$2.X_();
-         $$2.i($$4);
-         cxk $$5 = cxn.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         dha $$6 = $$2.dV();
-         if (!$$6.C) {
-            ao.k.a((asi)$$0, $$4);
-         }
+   public boolean gr() {
+      return this.b > 1;
+   }
 
-         $$2.at();
-         return Optional.of(bte.a);
+   public boolean gs() {
+      return this.g(this.a) <= 121.0;
+   }
+
+   public void gt() {
+      if (this.go()) {
+         this.L().a(this.a, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends chu> $$0) {
+      $$0.limit((long)(this.gn() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
+   }
+
+   @Nullable
+   @Override
+   public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3 == null) {
+         $$3 = new chu.a(this);
       } else {
-         return Optional.empty();
+         this.a(((chu.a)$$3).a);
+      }
+
+      return $$3;
+   }
+
+   public static class a implements bwy {
+      public final chu a;
+
+      public a(chu $$0) {
+         this.a = $$0;
       }
    }
 }

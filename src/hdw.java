@@ -1,61 +1,120 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class hdw extends hdk {
-   private final List<hdw.a> b;
-   private final Map<dxn, BitSet> c = new Reference2ObjectOpenHashMap();
+public class hdw {
+   static final Logger b = LogUtils.getLogger();
+   public static final String a = "item/";
+   private final Map<alz, hee> c;
+   final hee d;
+   private final Map<hdz, hee> e = new HashMap<>();
+   private final Map<alz, hee> f = new HashMap<>();
 
-   private static hdg a(List<hdw.a> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Model must have at least one selector");
-      } else {
-         return $$0.getFirst().b();
+   public hdw(Map<alz, hee> $$0, hee $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a(hdt.c, $$1);
+      this.f.put(hdt.b, $$1);
+   }
+
+   private static Set<hdz> d() {
+      Set<hdz> $$0 = new HashSet<>();
+      ma.g.c().forEach($$1 -> {
+         alz $$2 = $$1.a().g().a(ku.i);
+         if ($$2 != null) {
+            $$0.add(hdz.a($$2));
+         }
+
+         if ($$1.a() instanceof cwb $$4) {
+            $$0.add(hdz.a($$4.b()));
+            $$0.add(hdz.a($$4.c()));
+         }
+      });
+      $$0.add(gsm.i);
+      $$0.add(gsm.j);
+      return $$0;
+   }
+
+   private void a(hdz $$0, hee $$1) {
+      this.e.put($$0, $$1);
+   }
+
+   public void a(hdn.c $$0) {
+      this.f.put(hed.a, hed.c);
+      this.f.put(hed.b, hed.d);
+      Set<hdz> $$1 = d();
+      $$0.a().forEach(($$1x, $$2) -> {
+         this.a($$1x, $$2.b());
+         $$1.remove($$1x);
+      });
+      this.c.keySet().forEach($$1x -> {
+         if ($$1x.a().startsWith("item/")) {
+            hdz $$2 = hdz.a($$1x.a((UnaryOperator<String>)($$0xx -> $$0xx.substring("item/".length()))));
+            this.a($$2, new hdr($$1x));
+            $$1.remove($$2);
+         }
+      });
+      if (!$$1.isEmpty()) {
+         b.warn("Missing mandatory models: {}", $$1.stream().map($$0x -> "\n\t" + $$0x).collect(Collectors.joining()));
       }
    }
 
-   public hdw(List<hdw.a> $$0) {
-      super(a($$0));
-      this.b = $$0;
+   public void a() {
+      this.e.values().forEach($$0 -> $$0.a(new hdw.a()));
    }
 
-   @Override
-   public List<gml> a(@Nullable dxn $$0, @Nullable jm $$1, bam $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
+   public Map<hdz, hee> b() {
+      return this.e;
+   }
+
+   public Map<alz, hee> c() {
+      return this.f;
+   }
+
+   hee a(alz $$0) {
+      return this.f.computeIfAbsent($$0, this::b);
+   }
+
+   private hee b(alz $$0) {
+      hee $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         b.warn("Missing block model: '{}'", $$0);
+         return this.d;
       } else {
-         BitSet $$3 = this.c.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
-
-            for (int $$4 = 0; $$4 < this.b.size(); $$4++) {
-               if (this.b.get($$4).a.test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.c.put($$0, $$3);
-         }
-
-         List<gml> $$5 = new ArrayList<>();
-         long $$6 = $$2.g();
-
-         for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
-            if ($$3.get($$7)) {
-               $$2.b($$6);
-               $$5.addAll(this.b.get($$7).b.a($$0, $$1, $$2));
-            }
-         }
-
-         return $$5;
+         return $$1;
       }
    }
 
-   public static record a(Predicate<dxn> a, hdg b) {
+   class a implements hee.a {
+      private final List<alz> b = new ArrayList<>();
+      private final Set<alz> c = new HashSet<>();
+
+      @Override
+      public hee a(alz $$0) {
+         if (this.b.contains($$0)) {
+            hdw.b.warn("Detected model loading loop: {}->{}", this.a(), $$0);
+            return hdw.this.d;
+         } else {
+            hee $$1 = hdw.this.a($$0);
+            if (this.c.add($$0)) {
+               this.b.add($$0);
+               $$1.a(this);
+               this.b.remove($$0);
+            }
+
+            return $$1;
+         }
+      }
+
+      private String a() {
+         return this.b.stream().map(alz::toString).collect(Collectors.joining("->"));
+      }
    }
 }

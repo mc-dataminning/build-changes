@@ -1,157 +1,51 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
 public class esa {
-   private dpd a;
-   private dqu b;
-   private jh c;
-   private boolean d;
-   @Nullable
-   private enu e;
-   private ero f;
-   @Nullable
-   private bam g;
-   private int h;
-   private final List<esb> i;
-   private boolean j;
-   private boolean k;
+   public static final ess a = ess.a;
+   public static final Codec<esa> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               esf.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               esf.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               ery.c.lenientOptionalFieldOf("position_predicate", erx.b).forGetter($$0x -> $$0x.e),
+               dxu.a.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               est.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, esa::new)
+   );
+   private final esf c;
+   private final esf d;
+   private final ery e;
+   private final dxu f;
+   private final est g;
 
-   public esa() {
-      this.a = dpd.a;
-      this.b = dqu.a;
-      this.c = jh.c;
-      this.f = ero.b;
-      this.i = Lists.newArrayList();
+   public esa(esf $$0, esf $$1, dxu $$2) {
+      this($$0, $$1, erx.b, $$2);
    }
 
-   public esa a() {
-      esa $$0 = new esa();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      $$0.h = this.h;
-      $$0.i.addAll(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      return $$0;
+   public esa(esf $$0, esf $$1, ery $$2, dxu $$3) {
+      this($$0, $$1, $$2, $$3, a);
    }
 
-   public esa a(dpd $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public esa a(dqu $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public esa a(jh $$0) {
+   public esa(esf $$0, esf $$1, ery $$2, dxu $$3, est $$4) {
       this.c = $$0;
-      return this;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public esa a(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public boolean a(dxu $$0, dxu $$1, jh $$2, jh $$3, jh $$4, bam $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
    }
 
-   public esa a(enu $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public esa a(@Nullable bam $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public esa a(ero $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public esa b(boolean $$0) {
-      this.j = $$0;
-      return this;
-   }
-
-   public esa b() {
-      this.i.clear();
-      return this;
-   }
-
-   public esa a(esb $$0) {
-      this.i.add($$0);
-      return this;
-   }
-
-   public esa b(esb $$0) {
-      this.i.remove($$0);
-      return this;
-   }
-
-   public dpd c() {
-      return this.a;
-   }
-
-   public dqu d() {
-      return this.b;
-   }
-
-   public jh e() {
-      return this.c;
-   }
-
-   public bam b(@Nullable jh $$0) {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return $$0 == null ? bam.a(ae.c()) : bam.a(bae.a($$0));
-      }
-   }
-
-   public boolean f() {
-      return this.d;
+   public dxu a() {
+      return this.f;
    }
 
    @Nullable
-   public enu g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public List<esb> i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.f == ero.b;
-   }
-
-   public ese.b a(List<ese.b> $$0, @Nullable jh $$1) {
-      int $$2 = $$0.size();
-      if ($$2 == 0) {
-         throw new IllegalStateException("No palettes");
-      } else {
-         return $$0.get(this.b($$1).a($$2));
-      }
-   }
-
-   public esa c(boolean $$0) {
-      this.k = $$0;
-      return this;
-   }
-
-   public boolean k() {
-      return this.k;
+   public ux a(bam $$0, @Nullable ux $$1) {
+      return this.g.a($$0, $$1);
    }
 }

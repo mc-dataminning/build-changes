@@ -1,41 +1,46 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 
-public interface dfw {
-   void a(@Nullable cps var1);
+public record dfw(String e, jq<cxk> f, float g, Map<alz, String> h, xv i) {
+   public static final Codec<dfw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azn.C.fieldOf("asset_name").forGetter(dfw::a),
+               alw.a(mb.K).fieldOf("ingredient").forGetter(dfw::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(dfw::c),
+               Codec.unboundedMap(alz.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(dfw::d),
+               xx.a.fieldOf("description").forGetter(dfw::e)
+            )
+            .apply($$0, dfw::new)
+   );
+   public static final zt<xg, dfw> b = zt.a(
+      zr.o, dfw::a, zr.b(mb.K), dfw::b, zr.l, dfw::c, zr.a(Object2ObjectOpenHashMap::new, alz.b, zr.o), dfw::d, xx.b, dfw::e, dfw::new
+   );
+   public static final Codec<jq<dfw>> c = alv.a(mb.aZ, a);
+   public static final zt<xg, jq<dfw>> d = zr.a(mb.aZ, b);
 
-   @Nullable
-   cps gm();
-
-   dfy go();
-
-   void a(dfy var1);
-
-   void a(dfx var1);
-
-   void i(cxk var1);
-
-   int x();
-
-   void s(int var1);
-
-   boolean gp();
-
-   axe gq();
-
-   default boolean gy() {
-      return false;
+   public static dfw a(String $$0, cxk $$1, float $$2, xv $$3, Map<alz, String> $$4) {
+      return new dfw($$0, ma.g.e($$1), $$2, $$4, $$3);
    }
 
-   default void a(cps $$0, xv $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new btm(($$0x, $$1x, $$2x) -> new cui($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         dfy $$4 = this.go();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.x(), this.gp(), this.gy());
-         }
-      }
+   public String a() {
+      return this.e;
    }
 
-   boolean gu();
+   public jq<cxk> b() {
+      return this.f;
+   }
+
+   public float c() {
+      return this.g;
+   }
+
+   public Map<alz, String> d() {
+      return this.h;
+   }
+
+   public xv e() {
+      return this.i;
+   }
 }

@@ -45,7 +45,7 @@ public abstract class arv {
    private int o = 10;
 
    protected arv(Executor $$0, Executor $$1) {
-      brz<Runnable> $$2 = brz.a("player ticket throttler", $$1);
+      bsd<Runnable> $$2 = bsd.a("player ticket throttler", $$1);
       this.k = new asl($$2, $$0, 4);
       this.m = $$1;
    }
@@ -122,7 +122,7 @@ public abstract class arv {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<arn<dzs>> $$8 = $$7.b();
+                  CompletableFuture<arn<dzz>> $$8 = $$7.b();
                   $$8.thenAccept($$1x -> this.m.execute(() -> this.k.a($$6, () -> {
                         }, false)));
                }
@@ -157,23 +157,23 @@ public abstract class arv {
       this.f.b($$0, a($$2), false);
    }
 
-   public <T> void a(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+   public <T> void a(asn<T> $$0, dgn $$1, int $$2, T $$3) {
       this.a($$1.a(), new asm<>($$0, $$2, $$3));
    }
 
-   public <T> void b(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+   public <T> void b(asn<T> $$0, dgn $$1, int $$2, T $$3) {
       asm<T> $$4 = new asm<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
-   public <T> void c(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+   public <T> void c(asn<T> $$0, dgn $$1, int $$2, T $$3) {
       asm<T> $$4 = new asm<>($$0, arl.a(arw.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.a($$5, $$4);
       this.h.a($$5, $$4);
    }
 
-   public <T> void d(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+   public <T> void d(asn<T> $$0, dgn $$1, int $$2, T $$3) {
       asm<T> $$4 = new asm<>($$0, arl.a(arw.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.b($$5, $$4);
@@ -184,8 +184,8 @@ public abstract class arv {
       return (baw<asm<?>>)this.e.computeIfAbsent($$0, $$0x -> baw.a(4));
    }
 
-   protected void a(dgg $$0, boolean $$1) {
-      asm<dgg> $$2 = new asm<>(asn.d, arm.c, $$0);
+   protected void a(dgn $$0, boolean $$1) {
+      asm<dgn> $$2 = new asm<>(asn.d, arm.c, $$0);
       long $$3 = $$0.a();
       if ($$1) {
          this.a($$3, $$2);
@@ -197,7 +197,7 @@ public abstract class arv {
    }
 
    public void a(kj $$0, asi $$1) {
-      dgg $$2 = $$0.r();
+      dgn $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.g.b($$3, 0, true);
@@ -206,7 +206,7 @@ public abstract class arv {
    }
 
    public void b(kj $$0, asi $$1) {
-      dgg $$2 = $$0.r();
+      dgn $$2 = $$0.r();
       long $$3 = $$2.a();
       ObjectSet<asi> $$4 = (ObjectSet<asi>)this.d.get($$3);
       $$4.remove($$1);
@@ -271,7 +271,7 @@ public abstract class arv {
 
          while (var3.hasNext()) {
             Entry<baw<asm<?>>> $$2 = (Entry<baw<asm<?>>>)var3.next();
-            dgg $$3 = new dgg($$2.getLongKey());
+            dgn $$3 = new dgn($$2.getLongKey());
 
             for (asm<?> $$4 : (baw)$$2.getValue()) {
                $$1.write(($$3.g + "\t" + $$3.h + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
@@ -419,7 +419,7 @@ public abstract class arv {
 
             while (var3.hasNext()) {
                it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               dgg $$3 = new dgg($$2.getLongKey());
+               dgn $$3 = new dgn($$2.getLongKey());
                String $$4 = Byte.toString($$2.getByteValue());
                $$1.write(($$3.g + "\t" + $$3.h + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
             }
@@ -460,7 +460,7 @@ public abstract class arv {
 
       private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
          if ($$2 != $$3) {
-            asm<?> $$4 = new asm<>(asn.c, arv.b, new dgg($$0));
+            asm<?> $$4 = new asm<>(asn.c, arv.b, new dgn($$0));
             if ($$3) {
                arv.this.k.a(() -> arv.this.m.execute(() -> {
                      if (this.c(this.c($$0))) {
@@ -488,7 +488,7 @@ public abstract class arv {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  arv.this.k.onLevelChange(new dgg($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  arv.this.k.onLevelChange(new dgn($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

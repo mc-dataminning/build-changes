@@ -1,4 +1,7 @@
-public class gyw extends gym {
-   public float a;
-   public int b;
+public class gyw extends gyr {
+   public cij.a a;
+
+   public gyw() {
+      this.a = cij.a.a;
+   }
 }

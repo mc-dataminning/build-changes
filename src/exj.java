@@ -1,62 +1,61 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class exj extends exu {
+public class exj extends exg {
    public static final MapCodec<exj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(exj.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, exj::new)
+      $$0 -> $$0.group(ayk.a(mb.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, exj::new)
    );
-   private final exj.a b;
+   private final ayk<cxk> j;
+   private final boolean k;
 
-   private exj(List<ezs> $$0, exj.a $$1) {
-      super($$0);
-      this.b = $$1;
+   private exj(ayk<cxk> $$0, boolean $$1, int $$2, int $$3, List<ezx> $$4, List<eyc> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public exw<exj> b() {
-      return exx.s;
+   public exf a() {
+      return exc.f;
    }
 
    @Override
-   public Set<eza<?>> a() {
-      return ImmutableSet.of(this.b.g);
+   public void a(Consumer<cxo> $$0, ewo $$1) {
+      ma.g.c(this.j).forEach($$1x -> $$0.accept(new cxo($$1x)));
+   }
+
+   private boolean a(ewo $$0, Consumer<exd> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final jq<cxk> $$2 : ma.g.c(this.j)) {
+            $$1.accept(new exg.c() {
+               @Override
+               public void a(Consumer<cxo> $$0, ewo $$1) {
+                  $$0.accept(new cxo($$2));
+               }
+            });
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public cxk a(cxk $$0, ewh $$1) {
-      if ($$1.c(this.b.g) instanceof bth $$3) {
-         $$0.b(ku.g, $$3.an());
-      }
-
-      return $$0;
+   public boolean expand(ewo $$0, Consumer<exd> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
    }
 
-   public static exu.a<?> a(exj.a $$0) {
-      return a($$1 -> new exj($$1, $$0));
+   public static exg.a<?> a(ayk<cxk> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new exj($$0, false, $$1, $$2, $$3, $$4));
    }
 
-   public static enum a implements bba {
-      a("this", ezd.a),
-      b("attacking_entity", ezd.d),
-      c("last_damage_player", ezd.b),
-      d("block_entity", ezd.h);
-
-      public static final Codec<exj.a> e = bba.a(exj.a::values);
-      private final String f;
-      final eza<?> g;
-
-      private a(final String $$0, final eza<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static exg.a<?> b(ayk<cxk> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new exj($$0, true, $$1, $$2, $$3, $$4));
    }
 }

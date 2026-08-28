@@ -1,73 +1,71 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import org.apache.commons.io.IOUtils;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fha {
-   public static List<fil> a(fha.a... $$0) {
-      for (fha.a $$1 : $$0) {
-         a($$1.j);
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<fha.a> b;
+
+   public static CompletableFuture<fha.a> a() {
+      if (b == null || a(b)) {
+         b = b();
       }
 
-      List<fil> $$2 = Lists.newArrayList();
-
-      for (fha.a $$3 : $$0) {
-         $$2.add(new fil($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(fil::a));
-      return $$2;
+      return b;
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   private static boolean a(CompletableFuture<fha.a> $$0) {
+      fha.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
+   private static CompletableFuture<fha.a> b() {
+      fmq $$0 = fme.Q().X();
+      return $$0.g() != fmq.a.c ? CompletableFuture.completedFuture(new fha.a(fha.b.d)) : CompletableFuture.supplyAsync(() -> {
+         fhg $$0x = fhg.a();
+
          try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
+            if ($$0x.g() != fhg.a.a) {
+               return new fha.a(fha.b.b);
+            } else {
+               return !$$0x.f() ? new fha.a(fha.b.c) : new fha.a(fha.b.a);
+            }
+         } catch (fjc var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new fha.a(fha.b.d) : new fha.a(var2);
          }
+      }, ae.h());
+   }
+
+   public static record a(fha.b a, @Nullable fjc b) {
+      public a(fha.b $$0) {
+         this($$0, null);
       }
 
-      return (int)((double)$$2 / 5.0);
-   }
-
-   private static long b() {
-      return ae.c();
-   }
-
-   public static List<fil> a() {
-      return a(fha.a.values());
-   }
-
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(final String $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+      public a(fjc $$0) {
+         this(fha.b.e, $$0);
       }
+
+      @Nullable
+      public ftw a(ftw $$0) {
+         return (ftw)(switch (this.a) {
+            case a -> null;
+            case b -> new fjp($$0);
+            case c -> new fjz($$0);
+            case d -> new fju(xv.c("mco.error.invalid.session.title"), xv.c("mco.error.invalid.session.message"), $$0);
+            case e -> new fju(Objects.requireNonNull(this.b), $$0);
+         });
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

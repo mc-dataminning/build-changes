@@ -1,39 +1,36 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cey<T extends bwd & bwg> extends ccz {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class cey<T extends bwf> extends cew<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cey(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cey(crk $$0, Class<T> $$1, boolean $$2, @Nullable cgw.a $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean b() {
-      return a(this.b).N().b(dgw.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ep() != null && this.b.ep().aq() == bvm.bS && this.b.eq() > this.d;
+      if (this.j > 0 || !this.e.dY().h()) {
+         return false;
+      } else if (!((crk)this.e).gC()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
    @Override
    public void d() {
-      this.d = this.b.eq();
-      this.b.ae_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bwg)$$0).forEach(bwg::ae_);
-      }
-
+      this.j = b(200);
       super.d();
-   }
-
-   private List<? extends bwd> i() {
-      double $$0 = this.b.h(bxj.m);
-      fbn $$1 = fbn.a(this.b.dt()).c($$0, 10.0, $$0);
-      return this.b.dV().a((Class<? extends bwd>)this.b.getClass(), $$1, bvk.f);
    }
 }

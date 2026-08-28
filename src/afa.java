@@ -20,11 +20,11 @@ public class afa implements aac<acr> {
       this.g = null;
    }
 
-   public afa(fi.a $$0, bvf $$1, fi.a $$2) {
+   public afa(fi.a $$0, bvj $$1, fi.a $$2) {
       this.f = $$0;
       this.e = $$1.ar();
       this.g = $$2;
-      fbs $$3 = $$2.a($$1);
+      fbx $$3 = $$2.a($$1);
       this.b = $$3.d;
       this.c = $$3.e;
       this.d = $$3.f;
@@ -72,12 +72,12 @@ public class afa implements aac<acr> {
    }
 
    @Nullable
-   public fbs a(dha $$0) {
+   public fbx a(dhh $$0) {
       if (this.h) {
-         bvf $$1 = $$0.a(this.e);
-         return $$1 == null ? new fbs(this.b, this.c, this.d) : this.g.a($$1);
+         bvj $$1 = $$0.a(this.e);
+         return $$1 == null ? new fbx(this.b, this.c, this.d) : this.g.a($$1);
       } else {
-         return new fbs(this.b, this.c, this.d);
+         return new fbx(this.b, this.c, this.d);
       }
    }
 }

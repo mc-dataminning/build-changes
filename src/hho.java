@@ -1,22 +1,25 @@
-public class hho implements fpc {
-   private final xv a;
-   private final int b;
-   private final int c;
-   private final int d;
-
-   public hho(xv $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public interface hho {
+   default void b() {
    }
 
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      $$0.a(flz.Q().h, this.a, this.b, this.c, this.d);
+   default void a() {
    }
 
-   public xv a() {
-      return this.a;
+   default void a(gkd $$0) {
+   }
+
+   default void a(double $$0, double $$1) {
+   }
+
+   default void a(gfi $$0, fbv $$1) {
+   }
+
+   default void a(gfi $$0, jh $$1, dxu $$2, float $$3) {
+   }
+
+   default void c() {
+   }
+
+   default void a(cxo $$0) {
    }
 }

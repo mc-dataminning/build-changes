@@ -1,3 +1,4 @@
-public class gxk extends gxp {
-   public boolean a;
+public class gxk extends gyr {
+   public float a;
+   public float b;
 }

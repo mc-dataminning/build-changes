@@ -1,38 +1,30 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface epo {
-   Codec<epo> b = ma.ah.q().dispatch(epo::b, Function.identity());
+public class epo extends epq {
+   public static final MapCodec<epo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, epo::new));
 
-   void a(bam var1, BiConsumer<aly<epm>, aly<epm>> var2);
-
-   Stream<aly<epm>> a();
-
-   static epn a(String $$0, String $$1) {
-      return a(rr.a($$0), rr.a($$1));
+   protected epo(Either<alz, esl> $$0, jq<esj> $$1, ept.a $$2, Optional<erv> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   static epn a(aly<epm> $$0, aly<epm> $$1) {
-      return new epn($$0, $$1);
+   @Override
+   protected esh a(drb $$0, eob $$1, erv $$2, boolean $$3) {
+      esh $$4 = super.a($$0, $$1, $$2, $$3);
+      $$4.b(erm.b);
+      $$4.a(erm.d);
+      return $$4;
    }
 
-   static epr a(String $$0, brm<String> $$1) {
-      brm.a<aly<epm>> $$2 = brm.a();
-      $$1.e().forEach($$1x -> $$2.a(rr.a((String)$$1x.b()), $$1x.a().a()));
-      return a(rr.a($$0), $$2.a());
+   @Override
+   public eps<?> a() {
+      return eps.e;
    }
 
-   static epr a(aly<epm> $$0, brm<aly<epm>> $$1) {
-      return new epr($$0, $$1);
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
-
-   static eps a(brm<List<epo>> $$0) {
-      return new eps($$0);
-   }
-
-   MapCodec<? extends epo> b();
 }

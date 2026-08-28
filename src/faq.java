@@ -1,62 +1,36 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record faq(fax b, String c, float d) implements fao {
-   public static final MapCodec<faq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               fay.a.fieldOf("target").forGetter(faq::c),
-               Codec.STRING.fieldOf("score").forGetter(faq::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(faq::e)
-            )
-            .apply($$0, faq::new)
-   );
+public record faq(float c) implements fat {
+   public static final MapCodec<faq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(faq::c)).apply($$0, faq::new));
+   public static final Codec<faq> b = Codec.FLOAT.xmap(faq::new, faq::c);
 
    @Override
-   public fan b() {
-      return fap.e;
+   public fas b() {
+      return fau.b;
    }
 
    @Override
-   public Set<eza<?>> a() {
-      return this.b.b();
-   }
-
-   public static faq a(ewh.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static faq a(ewh.b $$0, String $$1, float $$2) {
-      return new faq(fau.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(ewh $$0) {
-      fcw $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         fcx $$2 = $$0.d().g();
-         fcp $$3 = $$2.a(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            fct $$4 = $$2.d($$1, $$3);
-            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
-         }
-      }
-   }
-
-   public fax c() {
-      return this.b;
-   }
-
-   public String d() {
+   public float b(ewo $$0) {
       return this.c;
    }
 
-   public float e() {
-      return this.d;
+   public static faq a(float $$0) {
+      return new faq($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((faq)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

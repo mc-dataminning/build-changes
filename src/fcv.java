@@ -1,34 +1,34 @@
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public interface fcv {
-   int a();
-
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
+public record fcv(String a, int b, @Nullable xv c, @Nullable zl d) {
+   public boolean a() {
+      return this.a.startsWith("#");
    }
 
-   default int b() {
-      return this.b(1);
+   public xv b() {
+      return (xv)(this.c != null ? this.c : xv.b(this.c()));
    }
 
-   default void c() {
-      this.a(0);
+   public yj a(zl $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
    }
 
-   boolean d();
+   public String c() {
+      return this.a;
+   }
 
-   void e();
-
-   void f();
+   public int d() {
+      return this.b;
+   }
 
    @Nullable
-   xv g();
+   public xv e() {
+      return this.c;
+   }
 
-   void a(@Nullable xv var1);
-
-   void a(@Nullable zl var1);
+   @Nullable
+   public zl f() {
+      return this.d;
+   }
 }

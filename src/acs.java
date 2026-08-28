@@ -6,7 +6,7 @@ public class acs implements aac<acr> {
    private static final double c = 3.9;
    private final int d;
    private final UUID e;
-   private final bvm<?> f;
+   private final bvq<?> f;
    private final double g;
    private final double h;
    private final double i;
@@ -18,19 +18,19 @@ public class acs implements aac<acr> {
    private final byte o;
    private final int p;
 
-   public acs(bvf $$0, asf $$1) {
+   public acs(bvj $$0, asf $$1) {
       this($$0, $$1, 0);
    }
 
-   public acs(bvf $$0, asf $$1, int $$2) {
+   public acs(bvj $$0, asf $$1, int $$2) {
       this($$0.ar(), $$0.cG(), $$1.b().a(), $$1.b().b(), $$1.b().c(), $$1.d(), $$1.e(), $$0.aq(), $$2, $$1.c(), (double)$$1.f());
    }
 
-   public acs(bvf $$0, int $$1, jh $$2) {
+   public acs(bvj $$0, int $$1, jh $$2) {
       this($$0.ar(), $$0.cG(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dN(), $$0.dL(), $$0.aq(), $$1, $$0.dy(), (double)$$0.cA());
    }
 
-   public acs(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bvm<?> $$7, int $$8, fbs $$9, double $$10) {
+   public acs(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bvq<?> $$7, int $$8, fbx $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;
@@ -95,7 +95,7 @@ public class acs implements aac<acr> {
       return this.e;
    }
 
-   public bvm<?> f() {
+   public bvq<?> f() {
       return this.f;
    }
 

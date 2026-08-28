@@ -1,69 +1,39 @@
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class fot extends fnv {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final bau<fot.a, fos> c;
-   private boolean d = false;
+public class fot extends fob {
+   private final fno a;
 
-   public fot(xv $$0, fnj $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fot(int $$0, int $$1, xv $$2, fnj $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ae.a($$1x -> $$1x.c.isPresent() ? fos.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fos.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public fot c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fot d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fot e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fot b(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public fot(fno $$0, xv $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
    @Override
-   public int y() {
-      return this.c.a(this.c()).b();
+   protected void b(fnq $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.y() / 2;
+      int $$5 = this.E() + this.w() / 2;
+      xv $$6 = this.z();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = ftl.a(ae.c());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
    @Override
-   public int w() {
-      return this.c.a(this.c()).a() * 9;
+   protected void a(fsb $$0) {
    }
 
    @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      fos $$4 = this.c.a(this.c());
-      int $$5 = this.D();
-      int $$6 = this.E();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.y() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
-      }
+   public void a(hgl $$0) {
    }
 
-   private fot.a c() {
-      return new fot.a(this.z(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   @Override
+   public boolean C() {
+      return false;
    }
 
-   static record a(xv a, int b, OptionalInt c) {
+   @Nullable
+   @Override
+   public fnn a(fsh $$0) {
+      return null;
    }
 }

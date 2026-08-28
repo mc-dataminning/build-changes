@@ -1,132 +1,91 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import java.nio.ByteBuffer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC10;
+import org.slf4j.Logger;
 
-public class feg implements AutoCloseable {
-   private static final MemoryPool c = TracyClient.createMemoryPool("GPU Buffers");
-   private final fee d;
-   private final fef e;
-   private boolean f;
-   private boolean g = false;
-   public final int a;
-   public int b;
+public class feg {
+   private static final Logger a = LogUtils.getLogger();
 
-   public feg(fee $$0, fef $$1, int $$2) {
-      this.d = $$0;
-      this.b = $$2;
-      this.e = $$1;
-      this.a = GlStateManager._glGenBuffers();
-   }
-
-   public feg(fee $$0, fef $$1, ByteBuffer $$2) {
-      this($$0, $$1, $$2.remaining());
-      this.a($$2, 0);
-   }
-
-   public void a(int $$0) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else {
-         if (this.g) {
-            c.free((long)this.a);
-         }
-
-         this.b = $$0;
-         if (this.e.l) {
-            this.g = false;
-         } else {
-            this.b();
-            GlStateManager._glBufferData(this.d.h, (long)$$0, this.e.j);
-            c.malloc((long)this.a, $$0);
-            this.g = true;
-         }
+   private static String a(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid name parameter.";
+         case 40962:
+            return "Invalid enumerated parameter value.";
+         case 40963:
+            return "Invalid parameter parameter value.";
+         case 40964:
+            return "Invalid operation.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
       }
    }
 
-   public void a(ByteBuffer $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.l) {
-         throw new IllegalStateException("Buffer is not writable");
+   static boolean a(String $$0) {
+      int $$1 = AL10.alGetError();
+      if ($$1 != 0) {
+         a.error("{}: {}", $$0, a($$1));
+         return true;
       } else {
-         int $$2 = $$0.remaining();
-         if ($$2 + $$1 > this.b) {
-            throw new IllegalArgumentException(
-               "Cannot write more data than this buffer can hold (attempting to write " + $$2 + " bytes at offset " + $$1 + " to " + this.b + " size buffer)"
-            );
-         } else {
-            this.b();
-            if (this.g) {
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-            } else if ($$1 == 0 && $$2 == this.b) {
-               GlStateManager._glBufferData(this.d.h, $$0, this.e.j);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
-            } else {
-               GlStateManager._glBufferData(this.d.h, (long)this.b, this.e.j);
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
+         return false;
+      }
+   }
+
+   private static String b(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid device.";
+         case 40962:
+            return "Invalid context.";
+         case 40963:
+            return "Illegal enum.";
+         case 40964:
+            return "Invalid value.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
+   }
+
+   static boolean a(long $$0, String $$1) {
+      int $$2 = ALC10.alcGetError($$0);
+      if ($$2 != 0) {
+         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   static int a(AudioFormat $$0) {
+      Encoding $$1 = $$0.getEncoding();
+      int $$2 = $$0.getChannels();
+      int $$3 = $$0.getSampleSizeInBits();
+      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
+         if ($$2 == 1) {
+            if ($$3 == 8) {
+               return 4352;
+            }
+
+            if ($$3 == 16) {
+               return 4353;
+            }
+         } else if ($$2 == 2) {
+            if ($$3 == 8) {
+               return 4354;
+            }
+
+            if ($$3 == 16) {
+               return 4355;
             }
          }
       }
-   }
 
-   @Nullable
-   public feg.a a() {
-      return this.a(0, this.b);
-   }
-
-   @Nullable
-   public feg.a a(int $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.k) {
-         throw new IllegalStateException("Buffer is not readable");
-      } else if ($$0 + $$1 > this.b) {
-         throw new IllegalArgumentException(
-            "Cannot read more data than this buffer can hold (attempting to read " + $$1 + " bytes at offset " + $$0 + " from " + this.b + " size buffer)"
-         );
-      } else {
-         this.b();
-         ByteBuffer $$2 = GlStateManager._glMapBufferRange(this.d.h, $$0, $$1, 1);
-         return $$2 == null ? null : new feg.a(this.d.h, $$2);
-      }
-   }
-
-   @Override
-   public void close() {
-      if (!this.f) {
-         this.f = true;
-         GlStateManager._glDeleteBuffers(this.a);
-         if (this.g) {
-            c.free((long)this.a);
-         }
-      }
-   }
-
-   public void b() {
-      GlStateManager._glBindBuffer(this.d.h, this.a);
-   }
-
-   public static class a implements AutoCloseable {
-      private final int a;
-      private final ByteBuffer b;
-
-      protected a(int $$0, ByteBuffer $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public ByteBuffer a() {
-         return this.b;
-      }
-
-      @Override
-      public void close() {
-         GlStateManager._glUnmapBuffer(this.a);
-      }
+      throw new IllegalArgumentException("Invalid audio format: " + $$0);
    }
 }

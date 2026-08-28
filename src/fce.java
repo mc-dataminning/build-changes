@@ -1,13 +1,18 @@
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-interface fce {
-   DoubleList a();
+public final class fce extends fcr {
+   protected fce(fcg $$0) {
+      super($$0);
+   }
 
-   boolean a(fce.a var1);
+   @Override
+   public DoubleList a(jm.a $$0) {
+      return new fcd(this.a.c($$0));
+   }
 
-   int size();
-
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
+   @Override
+   protected int a(jm.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return bae.a(bae.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
 }

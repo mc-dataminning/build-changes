@@ -1,8 +1,22 @@
-public abstract class fnr extends fnu {
-   protected final fmd a;
+import java.util.Set;
 
-   protected fnr(fmd $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
-      super($$1, $$2, $$3, $$4, xu.a, $$5);
-      this.a = $$0;
+public class fnr extends hcn {
+   private static final Set<aut<?>> a = Set.of(hcv.a, hdb.c);
+
+   public fnr(hbk $$0) {
+      super($$0, alz.b("textures/atlas/gui.png"), alz.b("gui"), a);
+   }
+
+   @Override
+   public hbj a(alz $$0) {
+      return super.a($$0);
+   }
+
+   public hdc a(hbj $$0) {
+      return this.b($$0).a();
+   }
+
+   private hdb b(hbj $$0) {
+      return $$0.e().f().a(hdb.c).orElse(hdb.a);
    }
 }

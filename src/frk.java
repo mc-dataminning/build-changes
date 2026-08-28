@@ -1,163 +1,108 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.function.Consumer;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class frk extends fri {
-   private final frk.b c;
-   private final List<frk.a> d = new ArrayList<>();
-   private final frq e = frq.i();
+public record frk(alz c, float d, float e, frk.a f, String g) implements frh {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<frk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alz.a.fieldOf("file").forGetter(frk::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(frk::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(frk::e),
+               frk.a.b.optionalFieldOf("shift", frk.a.a).forGetter(frk::f),
+               h.optionalFieldOf("skip", "").forGetter(frk::g)
+            )
+            .apply($$0, frk::new)
+   );
 
-   public frk(int $$0, int $$1, frk.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
-
-   public frk(int $$0, int $$1, int $$2, int $$3, frk.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
+   @Override
+   public fri a() {
+      return fri.b;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
+   public Either<frh.b, frh.c> b() {
+      return Either.left(this::a);
+   }
 
-         for (frk.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
-         }
+   private fep a(avv $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
 
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<frk.a> $$5 = this.d.iterator();
-         frk.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
+      try {
+         fes var20;
+         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (frg.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
 
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               frk.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  frg.a(FreeType.FT_New_Memory_Face(frg.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
+                  }
+
+                  throw var14;
+               }
+
+               if ($$4 != null) {
+                  $$4.close();
+               }
+
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
+               }
+
+               frg.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new fes($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
             }
          }
 
-         int $$9 = this.c.d(this);
-
-         for (frk.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
+         return var20;
+      } catch (Exception var17) {
+         synchronized (frg.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
          }
 
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
+         MemoryUtil.memFree($$2);
+         throw var17;
       }
    }
 
-   @Override
-   public void b(Consumer<frp> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
-   }
+   public static record a(float c, float d) {
+      public static final frk.a a = new frk.a(0.0F, 0.0F);
+      public static final Codec<frk.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> ae.a($$0, 2).map($$0x -> new frk.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   public frq b() {
-      return this.e.g();
-   }
-
-   public frq c() {
-      return this.e;
-   }
-
-   public <T extends frp> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends frp> T a(T $$0, frq $$1) {
-      this.d.add(new frk.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends frp> T a(T $$0, Consumer<frq> $$1) {
-      return this.a($$0, ae.a(this.b(), $$1));
-   }
-
-   static class a extends fri.a {
-      protected a(frp $$0, frq $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(frp $$0) {
-         return switch (this) {
-            case a -> $$0.y();
-            case b -> $$0.w();
-         };
+      public float a() {
+         return this.c;
       }
 
-      int a(frk.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
-      }
-
-      int b(frp $$0) {
-         return switch (this) {
-            case a -> $$0.w();
-            case b -> $$0.y();
-         };
-      }
-
-      int b(frk.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
-      }
-
-      void a(frk.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
-         }
-      }
-
-      void a(frk.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
-      }
-
-      int c(frp $$0) {
-         return switch (this) {
-            case a -> $$0.D();
-            case b -> $$0.E();
-         };
-      }
-
-      int d(frp $$0) {
-         return switch (this) {
-            case a -> $$0.E();
-            case b -> $$0.D();
-         };
+      public float b() {
+         return this.d;
       }
    }
 }

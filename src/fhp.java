@@ -1,20 +1,16 @@
-public interface fhp {
-   fhf b();
+public class fhp extends fho {
+   private final xv a;
 
-   void d();
+   public fhp(xv $$0) {
+      this.a = $$0;
+   }
 
-   static fhp f() {
-      return new fhp() {
-         private final fhf a = new fhf();
+   public fhp(String $$0) {
+      this(xv.b($$0));
+   }
 
-         @Override
-         public fhf b() {
-            return this.a;
-         }
-
-         @Override
-         public void d() {
-         }
-      };
+   @Override
+   public xv a() {
+      return xv.a("mco.upload.failed", this.a);
    }
 }

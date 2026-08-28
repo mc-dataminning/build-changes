@@ -3,8 +3,8 @@ import javax.annotation.Nullable;
 
 public class asv implements asr {
    private final ast a;
-   private final Long2ObjectOpenHashMap<eaj> b = new Long2ObjectOpenHashMap();
-   private dgg c = new dgg(0, 0);
+   private final Long2ObjectOpenHashMap<eaq> b = new Long2ObjectOpenHashMap();
+   private dgn c = new dgn(0, 0);
    private final int d;
    private final int e;
    private final int f;
@@ -34,7 +34,7 @@ public class asv implements asr {
    }
 
    @Override
-   public void a(dgg $$0) {
+   public void a(dgn $$0) {
       if (this.g) {
          this.a.a($$0);
          this.c = $$0;
@@ -42,7 +42,7 @@ public class asv implements asr {
    }
 
    @Override
-   public void a(dgg $$0, @Nullable eaj $$1) {
+   public void a(dgn $$0, @Nullable eaq $$1) {
       if (this.g) {
          this.a.a($$0, $$1);
          if ($$1 == null) {
@@ -79,7 +79,7 @@ public class asv implements asr {
    }
 
    @Nullable
-   public eaj a(int $$0, int $$1) {
-      return (eaj)this.b.get(dgg.c($$0 + this.c.g - this.e, $$1 + this.c.h - this.e));
+   public eaq a(int $$0, int $$1) {
+      return (eaq)this.b.get(dgn.c($$0 + this.c.g - this.e, $$1 + this.c.h - this.e));
    }
 }

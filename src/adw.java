@@ -1,8 +1,8 @@
-public record adw(int b, bwo c, boolean d) implements aac<acr> {
-   public static final zt<ws, adw> a = zt.a(zr.h, adw::b, bwo.a, adw::e, zr.b, adw::f, adw::new);
+public record adw(int b, bws c, boolean d) implements aac<acr> {
+   public static final zt<ws, adw> a = zt.a(zr.h, adw::b, bws.a, adw::e, zr.b, adw::f, adw::new);
 
-   public static adw a(bvf $$0) {
-      return new adw($$0.ar(), new bwo($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
+   public static adw a(bvj $$0) {
+      return new adw($$0.ar(), new bws($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
    }
 
    @Override
@@ -14,7 +14,7 @@ public record adw(int b, bwo c, boolean d) implements aac<acr> {
       $$0.a(this);
    }
 
-   public bwo e() {
+   public bws e() {
       return this.c;
    }
 

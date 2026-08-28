@@ -18,7 +18,7 @@ public class apf {
                      .then(
                         ((RequiredArgumentBuilder)ex.a("targets", fj.d())
                               .then(
-                                 ex.a("recipe", fw.a(mb.bj))
+                                 ex.a("recipe", fw.a(mb.bk))
                                     .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), Collections.singleton(fw.d($$0x, "recipe"))))
                               ))
                            .then(ex.a("*").executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ((ew)$$0x.getSource()).l().aI().e())))
@@ -29,7 +29,7 @@ public class apf {
                   .then(
                      ((RequiredArgumentBuilder)ex.a("targets", fj.d())
                            .then(
-                              ex.a("recipe", fw.a(mb.bj))
+                              ex.a("recipe", fw.a(mb.bk))
                                  .executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "targets"), Collections.singleton(fw.d($$0x, "recipe"))))
                            ))
                         .then(ex.a("*").executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "targets"), ((ew)$$0x.getSource()).l().aI().e())))
@@ -38,7 +38,7 @@ public class apf {
       );
    }
 
-   private static int a(ew $$0, Collection<asi> $$1, Collection<dcd<?>> $$2) throws CommandSyntaxException {
+   private static int a(ew $$0, Collection<asi> $$1, Collection<dci<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (asi $$4 : $$1) {
@@ -58,7 +58,7 @@ public class apf {
       }
    }
 
-   private static int b(ew $$0, Collection<asi> $$1, Collection<dcd<?>> $$2) throws CommandSyntaxException {
+   private static int b(ew $$0, Collection<asi> $$1, Collection<dci<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (asi $$4 : $$1) {

@@ -1,17 +1,17 @@
 public class aiu implements aac<ahm> {
    public static final zt<ws, aiu> a = aac.a(aiu::a, aiu::new);
-   private final cun b;
+   private final cur b;
    private final boolean c;
    private final boolean d;
 
-   public aiu(cun $$0, boolean $$1, boolean $$2) {
+   public aiu(cur $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
    private aiu(ws $$0) {
-      this.b = $$0.b(cun.class);
+      this.b = $$0.b(cur.class);
       this.c = $$0.readBoolean();
       this.d = $$0.readBoolean();
    }
@@ -31,7 +31,7 @@ public class aiu implements aac<ahm> {
       $$0.a(this);
    }
 
-   public cun b() {
+   public cur b() {
       return this.b;
    }
 

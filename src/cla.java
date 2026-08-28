@@ -1,30 +1,43 @@
-public class cla extends cks {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cla(ckp $$0) {
+public class cla extends ckv {
+   @Nullable
+   private fbx b;
+
+   public cla(ckt $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), axf.ix, this.a.dm(), 2.5F, 0.8F + this.a.dY().i() * 0.3F, false);
-   }
-
-   @Override
    public void a(ash $$0) {
-      if (this.c++ >= 40) {
-         this.a.gi().a(clf.f);
+      if (this.b == null) {
+         this.b = this.a.dt();
       }
    }
 
    @Override
-   public void c() {
-      this.c = 0;
+   public boolean a() {
+      return true;
    }
 
    @Override
-   public clf<cla> h() {
-      return clf.h;
+   public void c() {
+      this.b = null;
+   }
+
+   @Override
+   public float e() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   public fbx f() {
+      return this.b;
+   }
+
+   @Override
+   public clj<cla> h() {
+      return clj.k;
    }
 }

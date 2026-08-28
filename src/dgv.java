@@ -1,34 +1,46 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import javax.annotation.Nullable;
 
-public class dgv extends evb {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public enum dgv implements dgj {
+   a;
 
-   public static evb.a<dgv> a() {
-      return new evb.a<>(dgv::new, dgv::b, bbo.i);
-   }
-
-   private dgv(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public dgv() {
-      this(new LongOpenHashSet());
-   }
-
-   public static dgv b(ux $$0, js.a $$1) {
-      return new dgv(new LongOpenHashSet($$0.o("Forced")));
+   @Override
+   public float a(jm $$0, boolean $$1) {
+      return 1.0F;
    }
 
    @Override
-   public ux a(ux $$0, js.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public etl C_() {
+      return etl.c;
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   public int a(jh $$0, dgr $$1) {
+      return -1;
+   }
+
+   @Nullable
+   @Override
+   public duw c_(jh $$0) {
+      return null;
+   }
+
+   @Override
+   public dxu a_(jh $$0) {
+      return dkn.a.m();
+   }
+
+   @Override
+   public etw b_(jh $$0) {
+      return etx.a.g();
+   }
+
+   @Override
+   public int M_() {
+      return 0;
+   }
+
+   @Override
+   public int L_() {
+      return 0;
    }
 }

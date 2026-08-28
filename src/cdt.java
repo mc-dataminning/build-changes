@@ -1,55 +1,64 @@
-import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
 
-public class cdt<T extends crg> extends ccz {
-   private static final int a = 20;
-   private static final float b = 1.0F;
-   private final T c;
-   private int d;
+public class cdt extends cdd {
+   private final bwh a;
+   private bwf b;
+   private int c;
 
-   public cdt(T $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(ccz.a.a));
+   public cdt(bwh $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cdd.a.a, cdd.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.c.O_() == null && !this.c.cY() && this.c.gC() && !this.c.gz().a() && !((ash)this.c.dV()).c(this.c.dv());
+      bwf $$0 = this.a.O_();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.c.gC() && !this.c.gz().a() && this.c.dV() instanceof ash && !((ash)this.c.dV()).c(this.c.dv());
+      if (!this.b.bL()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.L().m() || this.b();
+      }
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.L().o();
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (this.c.gC()) {
-         crf $$0 = this.c.gz();
-         if (this.c.af > this.d) {
-            this.d = this.c.af + 20;
-            this.a($$0);
-         }
-
-         if (!this.c.gi()) {
-            fbs $$1 = cgw.a(this.c, 15, 4, fbs.c($$0.s()), (float) (Math.PI / 2));
-            if ($$1 != null) {
-               this.c.L().a($$1.d, $$1.e, $$1.f, 1.0);
-            }
-         }
+      this.a.H().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dq() * 2.0F * this.a.dq() * 2.0F);
+      double $$1 = this.a.i(this.b.dA(), this.b.dC(), this.b.dG());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
       }
-   }
 
-   private void a(crf $$0) {
-      if ($$0.u()) {
-         Set<crg> $$1 = Sets.newHashSet();
-         List<crg> $$2 = this.c.dV().a(crg.class, this.c.cR().g(16.0), $$1x -> !$$1x.gC() && crh.a($$1x, $$0));
-         $$1.addAll($$2);
-
-         for (crg $$3 : $$1) {
-            $$0.a($$0.k(), $$3, null, true);
+      this.a.L().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.c(a(this.a), this.b);
          }
       }
    }

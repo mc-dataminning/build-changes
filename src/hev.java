@@ -1,45 +1,31 @@
-public class hev extends hek {
-   private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cps p;
-   private final crr q;
-   private final boolean r;
+public class hev implements heq {
+   private final gkf a;
+   private boolean b;
+   private boolean c = true;
 
-   public hev(cps $$0, crr $$1, boolean $$2) {
-      super($$2 ? axf.pc : axf.pd, axg.g, hfb.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = hfb.a.a;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   public hev(gkf $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean s() {
-      return !this.q.bb();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.q.dQ() || !this.p.bZ() || this.p.dk() != this.q) {
-         this.n();
-      } else if (this.r != this.p.bo()) {
-         this.d = 0.0F;
-      } else {
-         float $$0 = (float)this.q.dy().i();
-         boolean $$1 = !this.q.cq() && this.q.l() instanceof csg;
-         if ($$0 >= 0.01F && !$$1) {
-            this.d = bae.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
+   public void a() {
+      dhh $$0 = this.a.dV();
+      dxu $$1 = $$0.c(this.a.cR().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dkn.ny)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dkn.ny) && !this.a.aa_()) {
+            boolean $$2 = $$1.c(dks.b);
+            if ($$2) {
+               this.a.a(axf.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(axf.cZ, 1.0F, 1.0F);
+            }
          }
+
+         this.b = true;
+      } else {
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

@@ -1,25 +1,23 @@
 import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public interface enk<P extends enj> {
-   enk<emv> a = a("block_predicate_filter", emv.a);
-   enk<enm> b = a("rarity_filter", enm.a);
-   enk<eno> c = a("surface_relative_threshold_filter", eno.a);
-   enk<enp> d = a("surface_water_depth_filter", enp.a);
-   enk<emu> e = a("biome", emu.a);
-   enk<emy> f = a("count", emy.a);
-   enk<ene> g = a("noise_based_count", ene.a);
-   enk<enf> h = a("noise_threshold_count", enf.a);
-   enk<emx> i = a("count_on_every_layer", emx.a);
-   enk<emz> j = a("environment_scan", emz.a);
-   enk<enc> k = a("heightmap", enc.a);
-   enk<enb> l = a("height_range", enb.a);
-   enk<end> m = a("in_square", end.a);
-   enk<enl> n = a("random_offset", enl.a);
-   enk<ena> o = a("fixed_placement", ena.a);
+public class enk extends enq {
+   private static final enk c = new enk();
+   public static final MapCodec<enk> a = MapCodec.unit(() -> c);
 
-   MapCodec<P> codec();
+   public static enk a() {
+      return c;
+   }
 
-   private static <P extends enj> enk<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.S, $$0, () -> $$1);
+   @Override
+   public Stream<jh> a_(eno $$0, bam $$1, jh $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new jh($$3, $$2.v(), $$4));
+   }
+
+   @Override
+   public enr<?> b() {
+      return enr.m;
    }
 }

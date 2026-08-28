@@ -1,137 +1,69 @@
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class fxr extends fnw {
-   private static final alz a = alz.b("recipe_book/slot_many_craftable");
-   private static final alz b = alz.b("recipe_book/slot_craftable");
-   private static final alz c = alz.b("recipe_book/slot_many_uncraftable");
-   private static final alz d = alz.b("recipe_book/slot_uncraftable");
-   private static final float e = 15.0F;
-   private static final int f = 25;
-   private static final xv m = xv.c("gui.recipebook.moreRecipes");
-   private fxs n;
-   private List<fxr.a> o = List.of();
-   private final fxv p;
-   private float q;
+public class fxr {
+   private final Reference2ObjectMap<cuy, fxr.a> a = new Reference2ObjectArrayMap();
+   private final fya b;
 
-   public fxr(fxv $$0) {
-      super(0, 0, 25, 25, xu.a);
-      this.p = $$0;
+   public fxr(fya $$0) {
+      this.b = $$0;
    }
 
-   public void a(fxs $$0, boolean $$1, fxp $$2, ddi.f $$3) {
-      this.n = $$0;
-      List<ddd> $$4 = $$0.a($$1 ? fxs.a.b : fxs.a.a);
-      this.o = $$4.stream().map($$1x -> new fxr.a($$1x.a(), $$1x.a($$3))).toList();
-      List<dde> $$5 = $$4.stream().map(ddd::a).filter($$2.d()::b).toList();
-      if (!$$5.isEmpty()) {
-         $$5.forEach($$2::a);
-         this.q = 15.0F;
+   public void a() {
+      this.a.clear();
+   }
+
+   private void a(cuy $$0, bbp $$1, ddo $$2, boolean $$3) {
+      List<cxo> $$4 = $$2.a($$1);
+      if (!$$4.isEmpty()) {
+         this.a.put($$0, new fxr.a($$4, $$3));
       }
    }
 
-   public fxs a() {
-      return this.n;
+   protected void a(cuy $$0, bbp $$1, ddo $$2) {
+      this.a($$0, $$1, $$2, false);
    }
 
-   @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      alz $$4;
-      if (this.n.a()) {
-         if (this.g()) {
-            $$4 = a;
+   protected void b(cuy $$0, bbp $$1, ddo $$2) {
+      this.a($$0, $$1, $$2, true);
+   }
+
+   public void a(fnq $$0, fme $$1, boolean $$2) {
+      this.a.forEach(($$3, $$4) -> {
+         int $$5 = $$3.e;
+         int $$6 = $$3.f;
+         if ($$4.b && $$2) {
+            $$0.a($$5 - 4, $$6 - 4, $$5 + 20, $$6 + 20, 822018048);
          } else {
-            $$4 = b;
+            $$0.a($$5, $$6, $$5 + 16, $$6 + 16, 822018048);
          }
-      } else if (this.g()) {
-         $$4 = c;
-      } else {
-         $$4 = d;
-      }
 
-      boolean $$8 = this.q > 0.0F;
-      if ($$8) {
-         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.q / 15.0F * (float) Math.PI));
-         $$0.c().a();
-         $$0.c().a((float)(this.D() + 8), (float)(this.E() + 12), 0.0F);
-         $$0.c().b($$9, $$9, 1.0F);
-         $$0.c().a((float)(-(this.D() + 8)), (float)(-(this.E() + 12)), 0.0F);
-         this.q -= $$3;
-      }
-
-      $$0.a(glo::B, $$4, this.D(), this.E(), this.g, this.h);
-      cxk $$10 = this.e();
-      int $$11 = 4;
-      if (this.n.d() && this.g()) {
-         $$0.a($$10, this.D() + $$11 + 1, this.E() + $$11 + 1, 0, 10);
-         $$11--;
-      }
-
-      $$0.b($$10, this.D() + $$11, this.E() + $$11);
-      if ($$8) {
-         $$0.c().b();
-      }
-   }
-
-   private boolean g() {
-      return this.o.size() > 1;
-   }
-
-   public boolean b() {
-      return this.o.size() == 1;
-   }
-
-   public dde c() {
-      int $$0 = this.p.currentIndex() % this.o.size();
-      return this.o.get($$0).a;
-   }
-
-   public cxk e() {
-      int $$0 = this.p.currentIndex();
-      int $$1 = this.o.size();
-      int $$2 = $$0 / $$1;
-      int $$3 = $$0 - $$1 * $$2;
-      return this.o.get($$3).a($$2);
-   }
-
-   public List<xv> a(cxk $$0) {
-      List<xv> $$1 = new ArrayList<>(ftr.a(flz.Q(), $$0));
-      if (this.g()) {
-         $$1.add(m);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void a(frw $$0) {
-      $$0.a(frv.a, xv.a("narration.recipe", this.e().y()));
-      if (this.g()) {
-         $$0.a(frv.d, xv.c("narration.button.usage.hovered"), xv.c("narration.recipe.usage.more"));
-      } else {
-         $$0.a(frv.d, xv.c("narration.button.usage.hovered"));
-      }
-   }
-
-   @Override
-   public int y() {
-      return 25;
-   }
-
-   @Override
-   protected boolean j(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   static record a(dde a, List<cxk> b) {
-
-      public cxk a(int $$0) {
-         if (this.b.isEmpty()) {
-            return cxk.k;
-         } else {
-            int $$1 = $$0 % this.b.size();
-            return this.b.get($$1);
+         cxo $$7 = $$4.a(this.b.currentIndex());
+         $$0.b($$7, $$5, $$6);
+         $$0.a(glt.K(), $$5, $$6, $$5 + 16, $$6 + 16, 822083583);
+         if ($$4.b) {
+            $$0.a($$1.h, $$7, $$5, $$6);
          }
+      });
+   }
+
+   public void a(fnq $$0, fme $$1, int $$2, int $$3, @Nullable cuy $$4) {
+      if ($$4 != null) {
+         fxr.a $$5 = (fxr.a)this.a.get($$4);
+         if ($$5 != null) {
+            cxo $$6 = $$5.a(this.b.currentIndex());
+            $$0.a($$1.h, ftw.a($$1, $$6), $$2, $$3, $$6.a(ku.G));
+         }
+      }
+   }
+
+   static record a(List<cxo> a, boolean b) {
+
+      public cxo a(int $$0) {
+         int $$1 = this.a.size();
+         return $$1 == 0 ? cxo.k : this.a.get($$0 % $$1);
       }
    }
 }

@@ -1,66 +1,26 @@
-import java.util.List;
+import java.util.function.Consumer;
 
-public class fqg implements fqj {
-   private static final alz e = alz.b("toast/advancement");
-   public static final int a = 5000;
-   private final ah f;
-   private boolean g;
-   private fqj.a h = fqj.a.b;
+public class fqg implements fqh {
+   private final xv b;
+   protected final frr a = new frr();
 
-   public fqg(ah $$0) {
-      this.f = $$0;
+   public fqg(xv $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public fqj.a a() {
-      return this.h;
+   public xv a() {
+      return this.b;
    }
 
    @Override
-   public void a(fqk $$0, long $$1) {
-      at $$2 = this.f.b().c().orElse(null);
-      if ($$2 == null) {
-         this.h = fqj.a.b;
-      } else {
-         if (!this.g && $$1 > 0L) {
-            this.g = true;
-            if ($$2.e() == an.b) {
-               $$0.c().ak().a(hew.a(axf.AV, 1.0F, 1.0F));
-            }
-         }
-
-         this.h = (double)$$1 >= 5000.0 * $$0.d() ? fqj.a.b : fqj.a.a;
-      }
+   public void a(Consumer<fob> $$0) {
+      this.a.a($$0);
    }
 
    @Override
-   public void a(fnl $$0, fnj $$1, long $$2) {
-      at $$3 = this.f.b().c().orElse(null);
-      $$0.a(glo::B, e, 0, 0, this.b(), this.c());
-      if ($$3 != null) {
-         List<azq> $$4 = $$1.c($$3.a(), 125);
-         int $$5 = $$3.e() == an.b ? -30465 : -256;
-         if ($$4.size() == 1) {
-            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
-            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = bae.d(bae.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = bae.d(bae.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
-
-               for (azq $$11 : $$4) {
-                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
-
-         $$0.b($$3.c(), 8, 8);
-      }
+   public void a(fsl $$0) {
+      this.a.a();
+      frq.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

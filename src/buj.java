@@ -1,15 +1,19 @@
-public enum buj {
-   a(n.j),
-   b(n.m),
-   c(n.j);
-
-   private final n d;
-
-   private buj(final n $$0) {
-      this.d = $$0;
+class buj extends bum {
+   protected buj(bun $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public boolean a(ash $$0, bwf $$1, int $$2) {
+      if ($$1 instanceof cpw $$3) {
+         $$3.G(0.005F * (float)($$2 + 1));
+      }
+
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 }

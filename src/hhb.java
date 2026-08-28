@@ -1,8 +1,53 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hhb {
+public final class hhb extends hgz {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
+
+   @Override
+   public void a(hgt $$0) {
+      if (fme.Q().C()) {
+         super.a($$0);
+      }
+   }
+
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
+   }
+
+   @Override
+   public void f() {
+      this.b.add((long)fme.Q().o());
+      this.h();
+      this.c.add(fme.Q().p());
+   }
+
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
+   }
+
+   @Override
+   public void b(hgt $$0) {
+      $$0.send(hgu.c, $$0x -> {
+         $$0x.a(hgw.r, new LongArrayList(this.b));
+         $$0x.a(hgw.s, new LongArrayList(this.c));
+         $$0x.a(hgw.t, new LongArrayList(this.d));
+         $$0x.a(hgw.u, this.e());
+         $$0x.a(hgw.v, fme.Q().n.aH());
+         $$0x.a(hgw.w, (int)a);
+      });
+      this.g();
+   }
+
+   private static long a(long $$0) {
+      return $$0 / 1000L;
+   }
 }

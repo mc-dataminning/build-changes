@@ -1,30 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dta extends dnu {
-   public static final MapCodec<dta> c = b(dta::new);
-   public static final fcm g = dke.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
+public class dta extends doc {
+   public static final MapCodec<dta> b = b(dta::new);
 
-   @Override
-   public MapCodec<dta> a() {
-      return c;
-   }
-
-   public dta(dxm.d $$0) {
-      super($$0, jm.b, g, false, 0.1);
+   protected dta(dxt.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int a(bam $$0) {
-      return dpm.a($$0);
+   protected MapCodec<? extends dta> a() {
+      return b;
    }
 
    @Override
-   protected dke b() {
-      return dkg.oX;
+   protected fcr c(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return fco.a();
    }
 
    @Override
-   protected boolean h(dxn $$0) {
-      return dpm.a($$0);
+   protected float c(dxu $$0, dgm $$1, jh $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean e_(dxu $$0) {
+      return true;
    }
 }

@@ -1,37 +1,73 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Optional;
 import java.util.function.Function;
 
-public class byl {
-   public static bxv<cpe> a(float $$0, int $$1) {
-      return cbh.a((Function<cbh.b<cpe>, ? extends App<cbh.c<cpe>, cbk<cpe>>>)($$2 -> $$2.group($$2.c(cff.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.dv())) {
-                  return false;
-               } else {
-                  chf $$6 = $$3.z();
-                  int $$7 = $$6.a(kj.a($$4.dv()));
-                  fbs $$8 = null;
+public class byl extends bxy<bwn> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<bwf, Float> f;
+   private final Function<bwf, Double> g;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     fbs $$10 = cgz.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kj.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(kj.a(jh.a((ka)$$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
+   public byl(Function<bwf, Float> $$0) {
+      this($$0, $$0x -> 2.5);
+   }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
+   public byl(Function<bwf, Float> $$0, Function<bwf, Double> $$1) {
+      super(ae.a(() -> {
+         Builder<cfj<?>, cfk> $$0x = ImmutableMap.builder();
+         $$0x.put(cfj.n, cfk.c);
+         $$0x.put(cfj.m, cfk.c);
+         $$0x.put(cfj.P, cfk.b);
+         $$0x.put(cfj.R, cfk.c);
+         $$0x.put(cfj.O, cfk.a);
+         $$0x.put(cfj.r, cfk.b);
+         $$0x.put(cfj.Z, cfk.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
+   }
 
-                  if ($$8 != null) {
-                     $$2x.a(new cfi($$8, $$0, $$1));
-                  }
+   protected float a(bwn $$0) {
+      return this.f.apply($$0);
+   }
 
-                  return true;
-               }
-            })));
+   private Optional<cpw> b(bwn $$0) {
+      return $$0.eb().c(cfj.O);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected boolean a(ash $$0, bwn $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.eb().a(cfj.r) && !$$1.eb().a(cfj.Z);
+   }
+
+   protected void b(ash $$0, bwn $$1, long $$2) {
+      $$1.eb().a(cfj.R, true);
+   }
+
+   protected void c(ash $$0, bwn $$1, long $$2) {
+      bxh<?> $$3 = $$1.eb();
+      $$3.a(cfj.P, 100);
+      $$3.a(cfj.R, false);
+      $$3.b(cfj.m);
+      $$3.b(cfj.n);
+   }
+
+   protected void d(ash $$0, bwn $$1, long $$2) {
+      cpw $$3 = this.b($$1).get();
+      bxh<?> $$4 = $$1.eb();
+      $$4.a(cfj.n, new byj($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.g($$3) < bae.k($$5)) {
+         $$4.b(cfj.m);
+      } else {
+         $$4.a(cfj.m, new cfm(new byj($$3, false), this.a($$1), 2));
+      }
    }
 }

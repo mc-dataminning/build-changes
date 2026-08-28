@@ -1,53 +1,46 @@
-import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public interface fcw {
-   String cA = "*";
-   fcw cB = new fcw() {
-      @Override
-      public String cI() {
-         return "*";
-      }
-   };
-
-   String cI();
+class fcw {
+   private final Reference2ObjectOpenHashMap<fcu, fcz> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
    @Nullable
-   default xv p_() {
-      return null;
+   public fcz a(fcu $$0) {
+      return (fcz)this.a.get($$0);
    }
 
-   default xv ha() {
-      xv $$0 = this.p_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new yb(yb.a.a, xv.b(this.cI())))) : xv.b(this.cI());
+   public fcz a(fcu $$0, Consumer<fcz> $$1) {
+      return (fcz)this.a.computeIfAbsent($$0, $$1x -> {
+         fcz $$2 = new fcz();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   static fcw c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cB;
-      } else {
-         final xv $$1 = xv.b($$0);
-         return new fcw() {
-            @Override
-            public String cI() {
-               return $$0;
-            }
-
-            @Override
-            public xv ha() {
-               return $$1;
-            }
-         };
-      }
+   public boolean b(fcu $$0) {
+      return this.a.remove($$0) != null;
    }
 
-   static fcw a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new fcw() {
-         @Override
-         public String cI() {
-            return $$1;
-         }
-      };
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<fcu> b() {
+      Object2IntMap<fcu> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(fcu $$0, fcz $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<fcu, fcz> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

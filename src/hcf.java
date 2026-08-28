@@ -1,37 +1,17 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
 
-public record hcf(alz a, @Nullable String b, @Nullable alz c, @Nullable alz d, hcf.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
+public class hcf {
+   @Deprecated
+   public static int[] a(avv $$0, alz $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         ffq $$3 = ffq.a($$2);
+      ) {
+         var4 = $$3.f();
       }
 
-      public static hcf.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+      return var4;
    }
 }

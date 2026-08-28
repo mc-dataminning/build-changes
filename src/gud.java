@@ -1,18 +1,21 @@
-public class gud extends gpz<cjw, gxp, fzv<gxp>> {
-   private static final alz a = alz.b("textures/entity/horse/horse_zombie.png");
-   private static final alz b = alz.b("textures/entity/horse/horse_skeleton.png");
-   private final alz k;
+public class gud extends gqm<cqf, gzw> {
+   public static final alz a = alz.b("textures/entity/projectiles/arrow.png");
+   public static final alz b = alz.b("textures/entity/projectiles/tipped_arrow.png");
 
-   public gud(grj.a $$0, gef $$1, gef $$2, boolean $$3) {
-      super($$0, new gbq($$0.a($$1)), new gbq($$0.a($$2)), 1.0F);
-      this.k = $$3 ? b : a;
+   public gud(gro.a $$0) {
+      super($$0);
    }
 
-   public alz a(gxp $$0) {
-      return this.k;
+   protected alz a(gzw $$0) {
+      return $$0.d ? b : a;
    }
 
-   public gxp b() {
-      return new gxp();
+   public gzw a() {
+      return new gzw();
+   }
+
+   public void a(cqf $$0, gzw $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.d = $$0.C() > 0;
    }
 }

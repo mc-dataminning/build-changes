@@ -1,28 +1,27 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public record ezx(fao b) implements ezs {
-   public static final MapCodec<ezx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fap.a.fieldOf("chance").forGetter(ezx::c)).apply($$0, ezx::new));
+public interface ezx extends ewp, Predicate<ewo> {
+   Codec<ezx> d = ma.F.q().dispatch("condition", ezx::b, ezy::a);
+   Codec<ezx> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, ezk.b));
+   Codec<jq<ezx>> f = alv.a(mb.bi, e);
 
-   @Override
-   public ezt b() {
-      return ezu.d;
-   }
+   ezy b();
 
-   public boolean a(ewh $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
-   }
+   @FunctionalInterface
+   public interface a {
+      ezx build();
 
-   public static ezs.a a(float $$0) {
-      return () -> new ezx(fal.a($$0));
-   }
+      default ezx.a invert() {
+         return ezu.a(this);
+      }
 
-   public static ezs.a a(fao $$0) {
-      return () -> new ezx($$0);
-   }
+      default ezl.a or(ezx.a $$0) {
+         return ezl.a(this, $$0);
+      }
 
-   public fao c() {
-      return this.b;
+      default ezk.a and(ezx.a $$0) {
+         return ezk.a(this, $$0);
+      }
    }
 }

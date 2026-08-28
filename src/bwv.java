@@ -1,9 +1,13 @@
 import javax.annotation.Nullable;
 
 public interface bwv {
-   boolean isSpawnPositionOk(dhd var1, jh var2, @Nullable bvm<?> var3);
+   boolean f();
 
-   default jh a(dhd $$0, jh $$1) {
-      return $$1;
+   void a(cxo var1, @Nullable axg var2);
+
+   default axe ac_() {
+      return axf.ni;
    }
+
+   boolean j();
 }

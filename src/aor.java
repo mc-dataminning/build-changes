@@ -24,23 +24,23 @@ public class aor {
    public static void a(CommandDispatcher<ew> $$0, es $$1) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("locate").requires($$0x -> $$0x.c(2)))
-                  .then(ex.a("structure").then(ex.a("structure", ga.a(mb.aT)).executes($$0x -> a((ew)$$0x.getSource(), ga.a($$0x, "structure", mb.aT, c))))))
-               .then(ex.a("biome").then(ex.a("biome", fz.a($$1, mb.aH)).executes($$0x -> a((ew)$$0x.getSource(), fz.a($$0x, "biome", mb.aH))))))
+                  .then(ex.a("structure").then(ex.a("structure", ga.a(mb.aU)).executes($$0x -> a((ew)$$0x.getSource(), ga.a($$0x, "structure", mb.aU, c))))))
+               .then(ex.a("biome").then(ex.a("biome", fz.a($$1, mb.aI)).executes($$0x -> a((ew)$$0x.getSource(), fz.a($$0x, "biome", mb.aI))))))
             .then(ex.a("poi").then(ex.a("poi", fz.a($$1, mb.aa)).executes($$0x -> b((ew)$$0x.getSource(), fz.a($$0x, "poi", mb.aa)))))
       );
    }
 
-   private static Optional<? extends ju.b<eoc>> a(ga.c<eoc> $$0, kd<eoc> $$1) {
-      return (Optional<? extends ju.b<eoc>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> ju.a($$0xx)), $$1::a);
+   private static Optional<? extends ju.b<eoj>> a(ga.c<eoj> $$0, kd<eoj> $$1) {
+      return (Optional<? extends ju.b<eoj>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> ju.a($$0xx)), $$1::a);
    }
 
-   private static int a(ew $$0, ga.c<eoc> $$1) throws CommandSyntaxException {
-      kd<eoc> $$2 = $$0.e().K_().e(mb.aT);
-      ju<eoc> $$3 = (ju<eoc>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(ew $$0, ga.c<eoj> $$1) throws CommandSyntaxException {
+      kd<eoj> $$2 = $$0.e().K_().e(mb.aU);
+      ju<eoj> $$3 = (ju<eoj>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       jh $$4 = jh.a((ka)$$0.d());
       ash $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(ae.d);
-      Pair<jh, jq<eoc>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
+      Pair<jh, jq<eoj>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class aor {
       }
    }
 
-   private static int a(ew $$0, fz.c<dic> $$1) throws CommandSyntaxException {
+   private static int a(ew $$0, fz.c<dij> $$1) throws CommandSyntaxException {
       jh $$2 = jh.a((ka)$$0.d());
       Stopwatch $$3 = Stopwatch.createStarted(ae.d);
-      Pair<jh, jq<dic>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      Pair<jh, jq<dij>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());
@@ -61,11 +61,11 @@ public class aor {
       }
    }
 
-   private static int b(ew $$0, fz.c<chi> $$1) throws CommandSyntaxException {
+   private static int b(ew $$0, fz.c<chm> $$1) throws CommandSyntaxException {
       jh $$2 = jh.a((ka)$$0.d());
       ash $$3 = $$0.e();
       Stopwatch $$4 = Stopwatch.createStarted(ae.d);
-      Optional<Pair<jq<chi>, jh>> $$5 = $$3.z().e($$1, $$2, 256, chf.b.c);
+      Optional<Pair<jq<chm>, jh>> $$5 = $$3.z().e($$1, $$2, 256, chj.b.c);
       $$4.stop();
       if ($$5.isEmpty()) {
          throw e.create($$1.b());

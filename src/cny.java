@@ -1,147 +1,38 @@
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class cny extends cnw {
-   public static final int cb = 8;
-   private int cc;
-   @Nullable
-   jh cd;
-
-   public cny(bvm<? extends cnw> $$0, dha $$1) {
-      super($$0, $$1);
+public class cny extends bxy<cns> {
+   public cny() {
+      super(Map.of(cfj.o, cfk.a, cfj.m, cfk.b, cfj.aU, cfk.b, cfj.aV, cfk.b));
    }
 
-   public void h(jh $$0) {
-      this.cd = $$0;
+   protected boolean a(ash $$0, cns $$1) {
+      return $$1.aJ() && !$$1.bj() && $$1.aw() == bwr.a;
    }
 
-   @Override
-   public boolean a(ash $$0, btv $$1, float $$2) {
-      if (this.dV().C) {
-         return super.a($$0, $$1, $$2);
-      } else if ($$1.a(axw.d)) {
-         return super.a($$0, $$1, $$2);
-      } else if (!this.a($$0, $$1) && this.cc <= 0 && $$1.d() instanceof cps) {
-         this.cc = 8;
-         this.dV().a(this, (byte)66);
-         if (this.dV().c_(this.cd) instanceof dve $$3 && $$3.a(this)) {
-            $$3.c();
-            this.f($$1);
+   protected void a(ash $$0, cns $$1, long $$2) {
+      bwf $$3 = $$1.eb().c(cfj.o).orElse(null);
+      if ($$3 != null) {
+         boolean $$4 = $$1.k($$3.dt());
+         fbx $$5 = null;
+         if ($$4) {
+            fbx $$6 = cha.a($$1, 5, 5, $$3.dt());
+            if ($$6 != null && cnu.a($$1, $$6) && $$3.i($$6.d, $$6.e, $$6.f) > $$3.g($$1)) {
+               $$5 = $$6;
+            }
          }
 
-         return true;
-      } else {
-         return true;
-      }
-   }
-
-   @Override
-   public void d_() {
-      if (this.cc > 0) {
-         this.cc--;
-      }
-
-      super.d_();
-   }
-
-   @Override
-   public void h() {
-      if (this.dV().C || this.cd != null && this.dV().c_(this.cd) instanceof dve $$0 && $$0.a(this)) {
-         super.h();
-         if (this.dV().C) {
-            this.gm();
+         if ($$5 == null) {
+            $$5 = $$1.dY().h() ? cnu.a($$3, $$1.dY()) : a($$1, $$3);
          }
-      } else {
-         this.c(bvf.c.b);
+
+         $$1.eb().a(cfj.m, new cfm(jh.a((ka)$$5), 0.6F, 1));
       }
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 66) {
-         this.cc = 8;
-         this.f(this.dW().p());
-      } else {
-         super.b($$0);
-      }
-   }
-
-   private void gm() {
-      this.ca.a(this.cc > 0, this.af);
-   }
-
-   public void h(@Nullable btv $$0) {
-      if (this.dV() instanceof ash $$1) {
-         fbn $$2 = this.cR();
-         fbs $$3 = $$2.f();
-         double $$4 = $$2.b() * 0.3;
-         double $$5 = $$2.c() * 0.3;
-         double $$6 = $$2.d() * 0.3;
-         $$1.a(new lk(ls.bg, dkg.u.m()), $$3.d, $$3.e, $$3.f, 100, $$4, $$5, $$6, 0.0);
-         $$1.a(new lk(ls.bg, dkg.cB.m().b(dma.c, dma.a.c)), $$3.d, $$3.e, $$3.f, 10, $$4, $$5, $$6, 0.0);
-      }
-
-      this.b(this.o_());
-      if (this.bl >= 0 && $$0 != null && $$0.d() instanceof bwb $$7) {
-         $$7.a(this, this.bl, $$0);
-      }
-
-      this.a(bvf.c.b);
-   }
-
-   @Override
-   protected boolean r(bvf $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bR() {
-      return false;
-   }
-
-   @Override
-   protected void p(bvf $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public boolean o(boolean $$0) {
-      return false;
-   }
-
-   @Override
-   protected cfn b(dha $$0) {
-      return new cny.a(this, $$0);
-   }
-
-   class a extends cfm {
-      a(final cnw $$0, final dha $$1) {
-         super($$0, $$1);
-      }
-
-      @Override
-      public void c() {
-         if (cny.this.p()) {
-            super.c();
-         }
-      }
-
-      @Override
-      protected euf a(int $$0) {
-         this.o = cny.this.new b();
-         return new euf(this.o, $$0);
-      }
-   }
-
-   class b extends eul {
-      @Override
-      public eug a(eui $$0, int $$1, int $$2, int $$3) {
-         jh $$4 = cny.this.cd;
-         if ($$4 == null) {
-            return super.a($$0, $$1, $$2, $$3);
-         } else {
-            double $$5 = $$4.j(new kl($$1, $$2, $$3));
-            return $$5 > 1024.0 && $$5 >= $$4.j($$0.b()) ? eug.a : super.a($$0, $$1, $$2, $$3);
-         }
-      }
+   private static fbx a(cns $$0, bwf $$1) {
+      fbx $$2 = $$1.dt().d($$0.dt());
+      double $$3 = $$2.g() - bae.d($$0.dY().j(), 8.0, 4.0);
+      fbx $$4 = $$2.d().d($$3, $$3, $$3);
+      return $$0.dt().e($$4);
    }
 }

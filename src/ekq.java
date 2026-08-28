@@ -1,61 +1,50 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ekq {
-   public static final Codec<ekq> d = ma.W.q().dispatch(ekq::a, ekr::a);
-   protected final bsj e;
-   protected final ekt f;
-   protected final Optional<ekn> g;
+public class ekq extends ekl {
+   public static final MapCodec<ekq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bsn.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, ekq::new)
+   );
+   private final bsn b;
+   private final int c;
 
-   protected static <P extends ekq> P3<Mu<P>, bsj, ekt, Optional<ekn>> a(Instance<P> $$0) {
-      return $$0.group(
-         bsj.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         ekt.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         ekn.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public ekq(bsn $$0, bsn $$1, bsn $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public ekq(bsj $$0, ekt $$1, Optional<ekn> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected ekm<?> a() {
+      return ekm.j;
    }
 
-   protected abstract ekr<?> a();
+   @Override
+   protected void a(dhn $$0, ekl.b $$1, bam $$2, ejv $$3, int $$4, ekl.a $$5, int $$6, int $$7, int $$8) {
+      jh $$9 = $$5.a();
+      jh.a $$10 = $$9.k();
 
-   public abstract boolean a(dhg var1, BiConsumer<jh, dxn> var2, bam var3, jh var4, jh var5, ejo var6);
-
-   protected boolean a(dhg $$0, jh $$1) {
-      return eia.c($$0, $$1);
-   }
-
-   protected void a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, jh $$3, ejo $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            ekn $$5 = this.g.get();
-            jh $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dxm.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
-            }
-         }
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
       }
    }
 
-   protected dxn a(dhg $$0, jh $$1, dxn $$2) {
-      if ($$2.b(dyd.D)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(aya.a));
-         return $$2.b(dyd.D, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
+   @Override
+   public int a(bam $$0, int $$1, ejv $$2) {
+      return this.b.a($$0);
    }
 
-   public jh a(jh $$0, bam $$1) {
-      return $$0.b(this.e.a($$1));
+   @Override
+   protected boolean a(bam $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

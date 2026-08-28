@@ -1,29 +1,6 @@
-public class brd implements bre {
-   public static final bre a = new brd();
+import java.util.Set;
+import java.util.function.Supplier;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bpo f() {
-      return bpk.a;
-   }
-
-   @Override
-   public void d() {
-   }
+public interface brd {
+   Set<brb> a(Supplier<bpp> var1);
 }

@@ -1,22 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class doc extends dke {
-   public static final dyk<jm> aF = dyd.S;
+public class doc extends dkl {
+   public static final MapCodec<doc> d = b(doc::new);
 
-   protected doc(dxm.d $$0) {
+   @Override
+   protected MapCodec<? extends doc> a() {
+      return d;
+   }
+
+   protected doc(dxt.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends doc> a();
-
-   @Override
-   protected dxn a(dxn $$0, dqu $$1) {
-      return $$0.b(aF, $$1.a($$0.c(aF)));
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dpd $$1) {
-      return $$0.a($$1.a($$0.c(aF)));
+   protected boolean b(dxu $$0, dxu $$1, jm $$2) {
+      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
    }
 }

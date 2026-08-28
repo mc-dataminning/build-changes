@@ -1,1230 +1,810 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.function.BiPredicate;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class cpi {
-   private static final int e = 12;
-   private static final int f = 16;
-   private static final int g = 3;
-   private static final int h = 1;
-   private static final int i = 2;
-   private static final int j = 5;
-   private static final int k = 10;
-   private static final int l = 10;
-   private static final int m = 20;
-   private static final int n = 15;
-   private static final int o = 30;
-   private static final int p = 30;
-   private static final float q = 0.05F;
-   private static final float r = 0.2F;
-   public static final Map<cph, Int2ObjectMap<cpi.g[]>> a = ae.a(
-      Maps.newHashMap(),
-      $$0 -> {
-         $$0.put(
-            cph.g,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{
-                     new cpi.b(cxo.pS, 20, 16, 2),
-                     new cpi.b(cxo.uW, 26, 16, 2),
-                     new cpi.b(cxo.uV, 22, 16, 2),
-                     new cpi.b(cxo.wa, 15, 16, 2),
-                     new cpi.i(cxo.pT, 1, 6, 16, 1)
-                  },
-                  2,
-                  new cpi.g[]{new cpi.b(dkg.fn, 6, 12, 10), new cpi.i(cxo.vj, 1, 4, 5), new cpi.i(cxo.oQ, 1, 4, 16, 5)},
-                  3,
-                  new cpi.g[]{new cpi.i(cxo.sG, 3, 18, 10), new cpi.b(dkg.fo, 4, 12, 20)},
-                  4,
-                  new cpi.g[]{
-                     new cpi.i(dkg.et, 1, 1, 12, 15),
-                     new cpi.j(bum.p, 100, 15),
-                     new cpi.j(bum.h, 160, 15),
-                     new cpi.j(bum.r, 140, 15),
-                     new cpi.j(bum.o, 120, 15),
-                     new cpi.j(bum.s, 280, 15),
-                     new cpi.j(bum.w, 7, 15)
-                  },
-                  5,
-                  new cpi.g[]{new cpi.i(cxo.va, 3, 3, 30), new cpi.i(cxo.th, 4, 3, 30)}
-               )
-            )
-         );
-         $$0.put(
-            cph.h,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{
-                     new cpi.b(cxo.pO, 20, 16, 2),
-                     new cpi.b(cxo.oT, 10, 16, 2),
-                     new cpi.h(cxo.rN, 6, 1, cxo.rR, 6, 16, 1, 0.05F),
-                     new cpi.i(cxo.rf, 3, 1, 16, 1)
-                  },
-                  2,
-                  new cpi.g[]{new cpi.b(cxo.rN, 15, 16, 10), new cpi.h(cxo.rO, 6, 1, cxo.rS, 6, 16, 5, 0.05F), new cpi.i(cxo.xn, 2, 1, 5)},
-                  3,
-                  new cpi.g[]{new cpi.b(cxo.rO, 13, 16, 20), new cpi.e(cxo.rJ, 3, 3, 10, 0.2F)},
-                  4,
-                  new cpi.g[]{new cpi.b(cxo.rP, 6, 12, 30)},
-                  5,
-                  new cpi.g[]{
-                     new cpi.b(cxo.rQ, 4, 12, 30),
-                     new cpi.c(
-                        1,
-                        12,
-                        30,
-                        ImmutableMap.builder()
-                           .put(cpj.c, cxo.oo)
-                           .put(cpj.g, cxo.oq)
-                           .put(cpj.e, cxo.oq)
-                           .put(cpj.a, cxo.ou)
-                           .put(cpj.b, cxo.ou)
-                           .put(cpj.d, cxo.ow)
-                           .put(cpj.f, cxo.oA)
-                           .build()
-                     )
-                  }
-               )
-            )
-         );
-         $$0.put(
-            cph.n,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{
-                     new cpi.b(dkg.bH, 18, 16, 2),
-                     new cpi.b(dkg.bT, 18, 16, 2),
-                     new cpi.b(dkg.bW, 18, 16, 2),
-                     new cpi.b(dkg.bO, 18, 16, 2),
-                     new cpi.i(cxo.sJ, 2, 1, 1)
-                  },
-                  2,
-                  new cpi.g[]{
-                     new cpi.b(cxo.rW, 12, 16, 10),
-                     new cpi.b(cxo.sd, 12, 16, 10),
-                     new cpi.b(cxo.sl, 12, 16, 10),
-                     new cpi.b(cxo.rZ, 12, 16, 10),
-                     new cpi.b(cxo.sb, 12, 16, 10),
-                     new cpi.i(dkg.bH, 1, 1, 16, 5),
-                     new cpi.i(dkg.bI, 1, 1, 16, 5),
-                     new cpi.i(dkg.bJ, 1, 1, 16, 5),
-                     new cpi.i(dkg.bK, 1, 1, 16, 5),
-                     new cpi.i(dkg.bL, 1, 1, 16, 5),
-                     new cpi.i(dkg.bM, 1, 1, 16, 5),
-                     new cpi.i(dkg.bN, 1, 1, 16, 5),
-                     new cpi.i(dkg.bO, 1, 1, 16, 5),
-                     new cpi.i(dkg.bP, 1, 1, 16, 5),
-                     new cpi.i(dkg.bQ, 1, 1, 16, 5),
-                     new cpi.i(dkg.bR, 1, 1, 16, 5),
-                     new cpi.i(dkg.bS, 1, 1, 16, 5),
-                     new cpi.i(dkg.bT, 1, 1, 16, 5),
-                     new cpi.i(dkg.bU, 1, 1, 16, 5),
-                     new cpi.i(dkg.bV, 1, 1, 16, 5),
-                     new cpi.i(dkg.bW, 1, 1, 16, 5),
-                     new cpi.i(dkg.iB, 1, 4, 16, 5),
-                     new cpi.i(dkg.iC, 1, 4, 16, 5),
-                     new cpi.i(dkg.iD, 1, 4, 16, 5),
-                     new cpi.i(dkg.iE, 1, 4, 16, 5),
-                     new cpi.i(dkg.iF, 1, 4, 16, 5),
-                     new cpi.i(dkg.iG, 1, 4, 16, 5),
-                     new cpi.i(dkg.iH, 1, 4, 16, 5),
-                     new cpi.i(dkg.iI, 1, 4, 16, 5),
-                     new cpi.i(dkg.iJ, 1, 4, 16, 5),
-                     new cpi.i(dkg.iK, 1, 4, 16, 5),
-                     new cpi.i(dkg.iL, 1, 4, 16, 5),
-                     new cpi.i(dkg.iM, 1, 4, 16, 5),
-                     new cpi.i(dkg.iN, 1, 4, 16, 5),
-                     new cpi.i(dkg.iO, 1, 4, 16, 5),
-                     new cpi.i(dkg.iP, 1, 4, 16, 5),
-                     new cpi.i(dkg.iQ, 1, 4, 16, 5)
-                  },
-                  3,
-                  new cpi.g[]{
-                     new cpi.b(cxo.sa, 12, 16, 20),
-                     new cpi.b(cxo.se, 12, 16, 20),
-                     new cpi.b(cxo.rX, 12, 16, 20),
-                     new cpi.b(cxo.sk, 12, 16, 20),
-                     new cpi.b(cxo.sc, 12, 16, 20),
-                     new cpi.i(dkg.bg, 3, 1, 12, 10),
-                     new cpi.i(dkg.bk, 3, 1, 12, 10),
-                     new cpi.i(dkg.bu, 3, 1, 12, 10),
-                     new cpi.i(dkg.bv, 3, 1, 12, 10),
-                     new cpi.i(dkg.br, 3, 1, 12, 10),
-                     new cpi.i(dkg.bs, 3, 1, 12, 10),
-                     new cpi.i(dkg.bp, 3, 1, 12, 10),
-                     new cpi.i(dkg.bn, 3, 1, 12, 10),
-                     new cpi.i(dkg.bt, 3, 1, 12, 10),
-                     new cpi.i(dkg.bj, 3, 1, 12, 10),
-                     new cpi.i(dkg.bo, 3, 1, 12, 10),
-                     new cpi.i(dkg.bl, 3, 1, 12, 10),
-                     new cpi.i(dkg.bi, 3, 1, 12, 10),
-                     new cpi.i(dkg.bh, 3, 1, 12, 10),
-                     new cpi.i(dkg.bm, 3, 1, 12, 10),
-                     new cpi.i(dkg.bq, 3, 1, 12, 10)
-                  },
-                  4,
-                  new cpi.g[]{
-                     new cpi.b(cxo.si, 12, 16, 30),
-                     new cpi.b(cxo.sg, 12, 16, 30),
-                     new cpi.b(cxo.sh, 12, 16, 30),
-                     new cpi.b(cxo.sj, 12, 16, 30),
-                     new cpi.b(cxo.rY, 12, 16, 30),
-                     new cpi.b(cxo.sf, 12, 16, 30),
-                     new cpi.i(cxo.vF, 3, 1, 12, 15),
-                     new cpi.i(cxo.vQ, 3, 1, 12, 15),
-                     new cpi.i(cxo.vI, 3, 1, 12, 15),
-                     new cpi.i(cxo.vT, 3, 1, 12, 15),
-                     new cpi.i(cxo.vL, 3, 1, 12, 15),
-                     new cpi.i(cxo.vS, 3, 1, 12, 15),
-                     new cpi.i(cxo.vK, 3, 1, 12, 15),
-                     new cpi.i(cxo.vM, 3, 1, 12, 15),
-                     new cpi.i(cxo.vU, 3, 1, 12, 15),
-                     new cpi.i(cxo.vP, 3, 1, 12, 15),
-                     new cpi.i(cxo.vH, 3, 1, 12, 15),
-                     new cpi.i(cxo.vO, 3, 1, 12, 15),
-                     new cpi.i(cxo.vR, 3, 1, 12, 15),
-                     new cpi.i(cxo.vJ, 3, 1, 12, 15),
-                     new cpi.i(cxo.vG, 3, 1, 12, 15),
-                     new cpi.i(cxo.vN, 3, 1, 12, 15)
-                  },
-                  5,
-                  new cpi.g[]{new cpi.i(cxo.qv, 2, 3, 30)}
-               )
-            )
-         );
-         $$0.put(
-            cph.i,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{new cpi.b(cxo.pM, 32, 16, 2), new cpi.i(cxo.oS, 1, 16, 1), new cpi.h(dkg.O, 10, 1, cxo.qs, 10, 12, 1, 0.05F)},
-                  2,
-                  new cpi.g[]{new cpi.b(cxo.qs, 26, 12, 10), new cpi.i(cxo.oR, 2, 1, 5)},
-                  3,
-                  new cpi.g[]{new cpi.b(cxo.pO, 14, 16, 20), new cpi.i(cxo.wL, 3, 1, 10)},
-                  4,
-                  new cpi.g[]{new cpi.b(cxo.pP, 24, 16, 30), new cpi.e(cxo.oR, 2, 3, 15)},
-                  5,
-                  new cpi.g[]{new cpi.b(cxo.mp, 8, 12, 30), new cpi.e(cxo.wL, 3, 3, 15), new cpi.k(cxo.oS, 5, cxo.wg, 5, 2, 12, 30)}
-               )
-            )
-         );
-         $$0.put(
-            cph.k,
-            a(
-               ImmutableMap.builder()
-                  .put(1, new cpi.g[]{new cpi.b(cxo.rm, 24, 16, 2), new cpi.d(1, axx.i), new cpi.i(dkg.cs, 9, 1, 12, 1)})
-                  .put(2, new cpi.g[]{new cpi.b(cxo.rn, 4, 12, 10), new cpi.d(5, axx.i), new cpi.i(cxo.xj, 1, 1, 5)})
-                  .put(3, new cpi.g[]{new cpi.b(cxo.rT, 5, 12, 20), new cpi.d(10, axx.i), new cpi.i(cxo.cN, 1, 4, 10)})
-                  .put(4, new cpi.g[]{new cpi.b(cxo.uO, 2, 12, 30), new cpi.d(15, axx.i), new cpi.i(cxo.rK, 5, 1, 15), new cpi.i(cxo.rq, 4, 1, 15)})
-                  .put(5, new cpi.g[]{new cpi.i(cxo.vB, 20, 1, 30)})
-                  .build()
-            )
-         );
-         $$0.put(
-            cph.e,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{new cpi.b(cxo.rm, 24, 16, 2), new cpi.i(cxo.uZ, 7, 1, 1)},
-                  2,
-                  new cpi.g[]{new cpi.b(cxo.gg, 11, 16, 10), new cpi.l(13, ayg.d, "filled_map.monument", evf.j, 12, 5)},
-                  3,
-                  new cpi.g[]{
-                     new cpi.b(cxo.rq, 1, 12, 20),
-                     new cpi.l(14, ayg.c, "filled_map.mansion", evf.i, 12, 10),
-                     new cpi.l(12, ayg.m, "filled_map.trial_chambers", evf.I, 12, 10)
-                  },
-                  4,
-                  new cpi.g[]{
-                     new cpi.i(cxo.uS, 7, 1, 15),
-                     new cpi.i(cxo.vF, 3, 1, 15),
-                     new cpi.i(cxo.vQ, 3, 1, 15),
-                     new cpi.i(cxo.vI, 3, 1, 15),
-                     new cpi.i(cxo.vT, 3, 1, 15),
-                     new cpi.i(cxo.vL, 3, 1, 15),
-                     new cpi.i(cxo.vS, 3, 1, 15),
-                     new cpi.i(cxo.vK, 3, 1, 15),
-                     new cpi.i(cxo.vM, 3, 1, 15),
-                     new cpi.i(cxo.vU, 3, 1, 15),
-                     new cpi.i(cxo.vP, 3, 1, 15),
-                     new cpi.i(cxo.vH, 3, 1, 15),
-                     new cpi.i(cxo.vO, 3, 1, 15),
-                     new cpi.i(cxo.vR, 3, 1, 15),
-                     new cpi.i(cxo.vJ, 3, 1, 15),
-                     new cpi.i(cxo.vG, 3, 1, 15),
-                     new cpi.i(cxo.vN, 3, 1, 15)
-                  },
-                  5,
-                  new cpi.g[]{new cpi.i(cxo.wS, 8, 1, 30)}
-               )
-            )
-         );
-         $$0.put(
-            cph.f,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{new cpi.b(cxo.sS, 32, 16, 2), new cpi.i(cxo.lV, 1, 2, 1)},
-                  2,
-                  new cpi.g[]{new cpi.b(cxo.pf, 3, 12, 10), new cpi.i(cxo.oX, 1, 1, 5)},
-                  3,
-                  new cpi.g[]{new cpi.b(cxo.vt, 2, 12, 20), new cpi.i(dkg.ep, 4, 1, 12, 10)},
-                  4,
-                  new cpi.g[]{new cpi.b(cxo.oL, 4, 12, 30), new cpi.b(cxo.sY, 9, 12, 30), new cpi.i(cxo.sT, 5, 1, 15)},
-                  5,
-                  new cpi.g[]{new cpi.b(cxo.sX, 22, 12, 30), new cpi.i(cxo.uL, 3, 1, 30)}
-               )
-            )
-         );
-         $$0.put(
-            cph.c,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{
-                     new cpi.b(cxo.oT, 15, 16, 2),
-                     new cpi.i(new cxk(cxo.qe), 7, 1, 12, 1, 0.2F),
-                     new cpi.i(new cxk(cxo.qf), 4, 1, 12, 1, 0.2F),
-                     new cpi.i(new cxk(cxo.qc), 5, 1, 12, 1, 0.2F),
-                     new cpi.i(new cxk(cxo.qd), 9, 1, 12, 1, 0.2F)
-                  },
-                  2,
-                  new cpi.g[]{
-                     new cpi.b(cxo.pb, 4, 12, 10),
-                     new cpi.i(new cxk(cxo.xi), 36, 1, 12, 5, 0.2F),
-                     new cpi.i(new cxk(cxo.qb), 1, 1, 12, 5, 0.2F),
-                     new cpi.i(new cxk(cxo.qa), 3, 1, 12, 5, 0.2F)
-                  },
-                  3,
-                  new cpi.g[]{
-                     new cpi.b(cxo.qY, 1, 12, 20),
-                     new cpi.b(cxo.oV, 1, 12, 20),
-                     new cpi.i(new cxk(cxo.pY), 1, 1, 12, 10, 0.2F),
-                     new cpi.i(new cxk(cxo.pZ), 4, 1, 12, 10, 0.2F),
-                     new cpi.i(new cxk(cxo.wi), 5, 1, 12, 10, 0.2F)
-                  },
-                  4,
-                  new cpi.g[]{new cpi.e(cxo.qi, 14, 3, 15, 0.2F), new cpi.e(cxo.qj, 8, 3, 15, 0.2F)},
-                  5,
-                  new cpi.g[]{new cpi.e(cxo.qg, 8, 3, 30, 0.2F), new cpi.e(cxo.qh, 16, 3, 30, 0.2F)}
-               )
-            )
-         );
-         $$0.put(
-            cph.p,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{new cpi.b(cxo.oT, 15, 16, 2), new cpi.i(new cxk(cxo.pA), 3, 1, 12, 1, 0.2F), new cpi.e(cxo.px, 2, 3, 1)},
-                  2,
-                  new cpi.g[]{new cpi.b(cxo.pb, 4, 12, 10), new cpi.i(new cxk(cxo.xi), 36, 1, 12, 5, 0.2F)},
-                  3,
-                  new cpi.g[]{new cpi.b(cxo.qs, 24, 12, 20)},
-                  4,
-                  new cpi.g[]{new cpi.b(cxo.oV, 1, 12, 30), new cpi.e(cxo.pF, 12, 3, 15, 0.2F)},
-                  5,
-                  new cpi.g[]{new cpi.e(cxo.pC, 8, 3, 30, 0.2F)}
-               )
-            )
-         );
-         $$0.put(
-            cph.o,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{
-                     new cpi.b(cxo.oT, 15, 16, 2),
-                     new cpi.i(new cxk(cxo.pq), 1, 1, 12, 1, 0.2F),
-                     new cpi.i(new cxk(cxo.po), 1, 1, 12, 1, 0.2F),
-                     new cpi.i(new cxk(cxo.pp), 1, 1, 12, 1, 0.2F),
-                     new cpi.i(new cxk(cxo.pr), 1, 1, 12, 1, 0.2F)
-                  },
-                  2,
-                  new cpi.g[]{new cpi.b(cxo.pb, 4, 12, 10), new cpi.i(new cxk(cxo.xi), 36, 1, 12, 5, 0.2F)},
-                  3,
-                  new cpi.g[]{
-                     new cpi.b(cxo.qs, 30, 12, 20),
-                     new cpi.e(cxo.pA, 1, 3, 10, 0.2F),
-                     new cpi.e(cxo.py, 2, 3, 10, 0.2F),
-                     new cpi.e(cxo.pz, 3, 3, 10, 0.2F),
-                     new cpi.i(new cxk(cxo.pG), 4, 1, 3, 10, 0.2F)
-                  },
-                  4,
-                  new cpi.g[]{new cpi.b(cxo.oV, 1, 12, 30), new cpi.e(cxo.pF, 12, 3, 15, 0.2F), new cpi.e(cxo.pD, 5, 3, 15, 0.2F)},
-                  5,
-                  new cpi.g[]{new cpi.e(cxo.pE, 13, 3, 30, 0.2F)}
-               )
-            )
-         );
-         $$0.put(
-            cph.d,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{new cpi.b(cxo.sQ, 14, 16, 2), new cpi.b(cxo.qt, 7, 16, 2), new cpi.b(cxo.vq, 4, 16, 2), new cpi.i(cxo.vs, 1, 1, 1)},
-                  2,
-                  new cpi.g[]{new cpi.b(cxo.oT, 15, 16, 2), new cpi.i(cxo.qu, 1, 5, 16, 5), new cpi.i(cxo.sR, 1, 8, 16, 5)},
-                  3,
-                  new cpi.g[]{new cpi.b(cxo.vD, 7, 16, 20), new cpi.b(cxo.sO, 10, 16, 20)},
-                  4,
-                  new cpi.g[]{new cpi.b(cxo.rl, 10, 12, 30)},
-                  5,
-                  new cpi.g[]{new cpi.b(cxo.xl, 10, 12, 30)}
-               )
-            )
-         );
-         $$0.put(
-            cph.j,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{new cpi.b(cxo.rb, 6, 16, 2), new cpi.a(cxo.pW, 3), new cpi.a(cxo.pV, 7)},
-                  2,
-                  new cpi.g[]{new cpi.b(cxo.qs, 26, 12, 10), new cpi.a(cxo.pU, 5, 12, 5), new cpi.a(cxo.pX, 4, 12, 5)},
-                  3,
-                  new cpi.g[]{new cpi.b(cxo.vu, 9, 12, 20), new cpi.a(cxo.pV, 7)},
-                  4,
-                  new cpi.g[]{new cpi.b(cxo.oL, 4, 12, 30), new cpi.a(cxo.vz, 6, 12, 15)},
-                  5,
-                  new cpi.g[]{new cpi.i(new cxk(cxo.oe), 6, 1, 12, 30, 0.2F), new cpi.a(cxo.pU, 5, 12, 30)}
-               )
-            )
-         );
-         $$0.put(
-            cph.l,
-            a(
-               ImmutableMap.of(
-                  1,
-                  new cpi.g[]{new cpi.b(cxo.rk, 10, 16, 2), new cpi.i(cxo.rj, 1, 10, 16, 1)},
-                  2,
-                  new cpi.g[]{new cpi.b(dkg.b, 20, 16, 10), new cpi.i(dkg.eY, 1, 4, 16, 5)},
-                  3,
-                  new cpi.g[]{
-                     new cpi.b(dkg.c, 16, 16, 20),
-                     new cpi.b(dkg.g, 16, 16, 20),
-                     new cpi.b(dkg.e, 16, 16, 20),
-                     new cpi.i(dkg.sP, 1, 4, 16, 10),
-                     new cpi.i(dkg.h, 1, 4, 16, 10),
-                     new cpi.i(dkg.f, 1, 4, 16, 10),
-                     new cpi.i(dkg.d, 1, 4, 16, 10)
-                  },
-                  4,
-                  new cpi.g[]{
-                     new cpi.b(cxo.oY, 12, 12, 30),
-                     new cpi.i(dkg.hA, 1, 1, 12, 15),
-                     new cpi.i(dkg.hz, 1, 1, 12, 15),
-                     new cpi.i(dkg.hK, 1, 1, 12, 15),
-                     new cpi.i(dkg.hC, 1, 1, 12, 15),
-                     new cpi.i(dkg.hG, 1, 1, 12, 15),
-                     new cpi.i(dkg.hH, 1, 1, 12, 15),
-                     new cpi.i(dkg.hO, 1, 1, 12, 15),
-                     new cpi.i(dkg.hN, 1, 1, 12, 15),
-                     new cpi.i(dkg.hF, 1, 1, 12, 15),
-                     new cpi.i(dkg.hB, 1, 1, 12, 15),
-                     new cpi.i(dkg.hE, 1, 1, 12, 15),
-                     new cpi.i(dkg.hM, 1, 1, 12, 15),
-                     new cpi.i(dkg.hI, 1, 1, 12, 15),
-                     new cpi.i(dkg.hJ, 1, 1, 12, 15),
-                     new cpi.i(dkg.hD, 1, 1, 12, 15),
-                     new cpi.i(dkg.hL, 1, 1, 12, 15),
-                     new cpi.i(dkg.lC, 1, 1, 12, 15),
-                     new cpi.i(dkg.lB, 1, 1, 12, 15),
-                     new cpi.i(dkg.lM, 1, 1, 12, 15),
-                     new cpi.i(dkg.lE, 1, 1, 12, 15),
-                     new cpi.i(dkg.lI, 1, 1, 12, 15),
-                     new cpi.i(dkg.lJ, 1, 1, 12, 15),
-                     new cpi.i(dkg.lQ, 1, 1, 12, 15),
-                     new cpi.i(dkg.lP, 1, 1, 12, 15),
-                     new cpi.i(dkg.lH, 1, 1, 12, 15),
-                     new cpi.i(dkg.lD, 1, 1, 12, 15),
-                     new cpi.i(dkg.lG, 1, 1, 12, 15),
-                     new cpi.i(dkg.lO, 1, 1, 12, 15),
-                     new cpi.i(dkg.lK, 1, 1, 12, 15),
-                     new cpi.i(dkg.lL, 1, 1, 12, 15),
-                     new cpi.i(dkg.lF, 1, 1, 12, 15),
-                     new cpi.i(dkg.lN, 1, 1, 12, 15)
-                  },
-                  5,
-                  new cpi.g[]{new cpi.i(dkg.hv, 1, 1, 12, 30), new cpi.i(dkg.ht, 1, 1, 12, 30)}
-               )
-            )
-         );
-      }
+public class cpi extends cpd implements bwu, cpk {
+   private static final Logger cf = LogUtils.getLogger();
+   private static final alc<cpj> cg = alg.a(cpi.class, ale.u);
+   public static final int cb = 12;
+   public static final Map<cxk, Integer> cc = ImmutableMap.of(cxs.pT, 4, cxs.uW, 1, cxs.uV, 1, cxs.wa, 1);
+   private static final int ch = 2;
+   private static final int ci = 10;
+   private static final int cj = 1200;
+   private static final int ck = 24000;
+   private static final int cl = 10;
+   private static final int cm = 5;
+   private static final long cn = 24000L;
+   @VisibleForTesting
+   public static final float cd = 0.5F;
+   private int co;
+   private boolean cp;
+   @Nullable
+   private cpw cq;
+   private boolean cr;
+   private int cs;
+   private final cff ct = new cff();
+   private long cu;
+   private long cv;
+   private int cw;
+   private long cx;
+   private int cy;
+   private long cz;
+   private boolean cC;
+   private static final ImmutableList<cfj<?>> cD = ImmutableList.of(
+      cfj.b,
+      cfj.c,
+      cfj.d,
+      cfj.e,
+      cfj.g,
+      cfj.h,
+      cfj.i,
+      cfj.j,
+      cfj.k,
+      cfj.l,
+      cfj.L,
+      cfj.aP,
+      new cfj[]{cfj.m, cfj.n, cfj.q, cfj.r, cfj.t, cfj.v, cfj.w, cfj.x, cfj.y, cfj.A, cfj.f, cfj.C, cfj.D, cfj.E, cfj.H, cfj.I, cfj.J, cfj.F}
    );
-   public static final Int2ObjectMap<cpi.g[]> b = a(
-      ImmutableMap.of(
-         1,
-         new cpi.g[]{
-            new cpi.i(cxo.da, 2, 1, 5, 1),
-            new cpi.i(cxo.ro, 4, 1, 5, 1),
-            new cpi.i(cxo.fH, 2, 1, 5, 1),
-            new cpi.i(cxo.wJ, 5, 1, 5, 1),
-            new cpi.i(cxo.cV, 1, 1, 12, 1),
-            new cpi.i(cxo.dQ, 1, 1, 8, 1),
-            new cpi.i(cxo.fx, 1, 1, 4, 1),
-            new cpi.i(cxo.dR, 3, 1, 12, 1),
-            new cpi.i(cxo.fi, 3, 1, 8, 1),
-            new cpi.i(cxo.dr, 1, 1, 12, 1),
-            new cpi.i(cxo.ds, 1, 1, 12, 1),
-            new cpi.i(cxo.dt, 1, 1, 8, 1),
-            new cpi.i(cxo.du, 1, 1, 12, 1),
-            new cpi.i(cxo.dv, 1, 1, 12, 1),
-            new cpi.i(cxo.dw, 1, 1, 12, 1),
-            new cpi.i(cxo.dx, 1, 1, 12, 1),
-            new cpi.i(cxo.dy, 1, 1, 12, 1),
-            new cpi.i(cxo.dz, 1, 1, 12, 1),
-            new cpi.i(cxo.dA, 1, 1, 12, 1),
-            new cpi.i(cxo.dB, 1, 1, 12, 1),
-            new cpi.i(cxo.dC, 1, 1, 7, 1),
-            new cpi.i(cxo.pR, 1, 1, 12, 1),
-            new cpi.i(cxo.wb, 1, 1, 12, 1),
-            new cpi.i(cxo.sM, 1, 1, 12, 1),
-            new cpi.i(cxo.sN, 1, 1, 12, 1),
-            new cpi.i(cxo.ab, 5, 1, 8, 1),
-            new cpi.i(cxo.Z, 5, 1, 8, 1),
-            new cpi.i(cxo.ad, 5, 1, 8, 1),
-            new cpi.i(cxo.ae, 5, 1, 8, 1),
-            new cpi.i(cxo.aa, 5, 1, 8, 1),
-            new cpi.i(cxo.X, 5, 1, 8, 1),
-            new cpi.i(cxo.Y, 5, 1, 8, 1),
-            new cpi.i(cxo.ac, 5, 1, 8, 1),
-            new cpi.i(cxo.af, 5, 1, 8, 1),
-            new cpi.i(cxo.sk, 1, 3, 12, 1),
-            new cpi.i(cxo.rW, 1, 3, 12, 1),
-            new cpi.i(cxo.sh, 1, 3, 12, 1),
-            new cpi.i(cxo.sc, 1, 3, 12, 1),
-            new cpi.i(cxo.sl, 1, 3, 12, 1),
-            new cpi.i(cxo.sj, 1, 3, 12, 1),
-            new cpi.i(cxo.se, 1, 3, 12, 1),
-            new cpi.i(cxo.rY, 1, 3, 12, 1),
-            new cpi.i(cxo.sa, 1, 3, 12, 1),
-            new cpi.i(cxo.sd, 1, 3, 12, 1),
-            new cpi.i(cxo.sg, 1, 3, 12, 1),
-            new cpi.i(cxo.rZ, 1, 3, 12, 1),
-            new cpi.i(cxo.sb, 1, 3, 12, 1),
-            new cpi.i(cxo.rX, 1, 3, 12, 1),
-            new cpi.i(cxo.si, 1, 3, 12, 1),
-            new cpi.i(cxo.sf, 1, 3, 12, 1),
-            new cpi.i(cxo.kL, 3, 1, 8, 1),
-            new cpi.i(cxo.kM, 3, 1, 8, 1),
-            new cpi.i(cxo.kN, 3, 1, 8, 1),
-            new cpi.i(cxo.kO, 3, 1, 8, 1),
-            new cpi.i(cxo.kK, 3, 1, 8, 1),
-            new cpi.i(cxo.gi, 1, 1, 12, 1),
-            new cpi.i(cxo.dH, 1, 1, 12, 1),
-            new cpi.i(cxo.dI, 1, 1, 12, 1),
-            new cpi.i(cxo.go, 1, 2, 5, 1),
-            new cpi.i(cxo.ea, 1, 2, 5, 1),
-            new cpi.i(cxo.ah, 1, 8, 8, 1),
-            new cpi.i(cxo.ak, 1, 4, 6, 1),
-            new cpi.i(cxo.yf, 1, 2, 5, 1),
-            new cpi.i(cxo.F, 1, 2, 5, 1),
-            new cpi.i(cxo.dU, 1, 2, 5, 1)
-         },
-         2,
-         new cpi.g[]{
-            new cpi.i(cxo.rg, 5, 1, 4, 1),
-            new cpi.i(cxo.rd, 5, 1, 4, 1),
-            new cpi.i(cxo.ij, 3, 1, 6, 1),
-            new cpi.i(cxo.lj, 6, 1, 6, 1),
-            new cpi.i(cxo.pQ, 1, 1, 8, 1),
-            new cpi.i(cxo.E, 3, 3, 6, 1)
-         }
-      )
+   private static final ImmutableList<cgq<? extends cgp<? super cpi>>> cE = ImmutableList.of(cgq.c, cgq.d, cgq.b, cgq.e, cgq.f, cgq.g, cgq.h, cgq.i, cgq.j);
+   public static final Map<cfj<jp>, BiPredicate<cpi, jq<chm>>> ce = ImmutableMap.of(
+      cfj.b,
+      (BiPredicate<cpi, jq>)($$0, $$1) -> $$1.a(chn.n),
+      cfj.c,
+      (BiPredicate<cpi, jq>)($$0, $$1) -> $$0.gw().b().b().test($$1),
+      cfj.d,
+      (BiPredicate<cpi, jq>)($$0, $$1) -> cpl.a.test($$1),
+      cfj.e,
+      (BiPredicate<cpi, jq>)($$0, $$1) -> $$1.a(chn.o)
    );
-   private static final cpi.l s = new cpi.l(8, ayg.f, "filled_map.village_desert", evf.B, 12, 5);
-   private static final cpi.l t = new cpi.l(8, ayg.e, "filled_map.village_savanna", evf.D, 12, 5);
-   private static final cpi.l u = new cpi.l(8, ayg.g, "filled_map.village_plains", evf.C, 12, 5);
-   private static final cpi.l v = new cpi.l(8, ayg.h, "filled_map.village_taiga", evf.F, 12, 5);
-   private static final cpi.l w = new cpi.l(8, ayg.i, "filled_map.village_snowy", evf.E, 12, 5);
-   private static final cpi.l x = new cpi.l(8, ayg.j, "filled_map.explorer_jungle", evf.G, 12, 5);
-   private static final cpi.l y = new cpi.l(8, ayg.k, "filled_map.explorer_swamp", evf.H, 12, 5);
-   public static final Map<cph, Int2ObjectMap<cpi.g[]>> c = Map.of(
-      cph.k,
-      a(
-         ImmutableMap.builder()
-            .put(1, new cpi.g[]{new cpi.b(cxo.rm, 24, 16, 2), a(1), new cpi.i(dkg.cs, 9, 1, 12, 1)})
-            .put(2, new cpi.g[]{new cpi.b(cxo.rn, 4, 12, 10), a(5), new cpi.i(cxo.xj, 1, 1, 5)})
-            .put(3, new cpi.g[]{new cpi.b(cxo.rT, 5, 12, 20), a(10), new cpi.i(cxo.cN, 1, 4, 10)})
-            .put(4, new cpi.g[]{new cpi.b(cxo.uO, 2, 12, 30), new cpi.i(cxo.rK, 5, 1, 15), new cpi.i(cxo.rq, 4, 1, 15)})
-            .put(5, new cpi.g[]{a(), new cpi.i(cxo.vB, 20, 1, 30)})
-            .build()
-      ),
-      cph.c,
-      a(
-         ImmutableMap.builder()
-            .put(1, new cpi.g[]{new cpi.b(cxo.oT, 15, 12, 2), new cpi.b(cxo.pb, 5, 12, 2)})
-            .put(
-               2,
-               new cpi.g[]{
-                  cpi.m.a(new cpi.i(cxo.qf, 4, 1, 12, 5, 0.05F), cpj.a, cpj.c, cpj.d, cpj.e, cpj.g),
-                  cpi.m.a(new cpi.i(cxo.qb, 4, 1, 12, 5, 0.05F), cpj.b, cpj.f),
-                  cpi.m.a(new cpi.i(cxo.qc, 5, 1, 12, 5, 0.05F), cpj.a, cpj.c, cpj.d, cpj.e, cpj.g),
-                  cpi.m.a(new cpi.i(cxo.pY, 5, 1, 12, 5, 0.05F), cpj.b, cpj.f),
-                  cpi.m.a(new cpi.i(cxo.qe, 7, 1, 12, 5, 0.05F), cpj.a, cpj.c, cpj.d, cpj.e, cpj.g),
-                  cpi.m.a(new cpi.i(cxo.qa, 7, 1, 12, 5, 0.05F), cpj.b, cpj.f),
-                  cpi.m.a(new cpi.i(cxo.qd, 9, 1, 12, 5, 0.05F), cpj.a, cpj.c, cpj.d, cpj.e, cpj.g),
-                  cpi.m.a(new cpi.i(cxo.pZ, 9, 1, 12, 5, 0.05F), cpj.b, cpj.f)
-               }
-            )
-            .put(3, new cpi.g[]{new cpi.b(cxo.qY, 1, 12, 20), new cpi.i(cxo.wi, 5, 1, 12, 10, 0.05F), new cpi.i(cxo.xi, 36, 1, 12, 10, 0.2F)})
-            .put(
-               4,
-               new cpi.g[]{
-                  cpi.m.a(new cpi.i(cxo.qf, 8, 1, 3, 15, 0.05F, dfe.a), cpj.a),
-                  cpi.m.a(new cpi.i(cxo.qc, 9, 1, 3, 15, 0.05F, dfe.d), cpj.a),
-                  cpi.m.a(new cpi.i(cxo.qe, 11, 1, 3, 15, 0.05F, dfe.b), cpj.a),
-                  cpi.m.a(new cpi.i(cxo.qd, 13, 1, 3, 15, 0.05F, dfe.c), cpj.a),
-                  cpi.m.a(new cpi.i(cxo.qf, 8, 1, 3, 15, 0.05F, dfe.g), cpj.c),
-                  cpi.m.a(new cpi.i(cxo.qc, 9, 1, 3, 15, 0.05F, dfe.j), cpj.c),
-                  cpi.m.a(new cpi.i(cxo.qe, 11, 1, 3, 15, 0.05F, dfe.h), cpj.c),
-                  cpi.m.a(new cpi.i(cxo.qd, 13, 1, 3, 15, 0.05F, dfe.i), cpj.c),
-                  cpi.m.a(new cpi.i(cxo.qf, 2, 1, 3, 15, 0.05F, dfe.m), cpj.d),
-                  cpi.m.a(new cpi.i(cxo.qc, 3, 1, 3, 15, 0.05F, dfe.p), cpj.d),
-                  cpi.m.a(new cpi.i(cxo.qe, 5, 1, 3, 15, 0.05F, dfe.n), cpj.d),
-                  cpi.m.a(new cpi.i(cxo.qd, 7, 1, 3, 15, 0.05F, dfe.o), cpj.d),
-                  cpi.m.a(new cpi.i(cxo.qf, 8, 1, 3, 15, 0.05F, dfe.s), cpj.e),
-                  cpi.m.a(new cpi.i(cxo.qc, 9, 1, 3, 15, 0.05F, dfe.t), cpj.e),
-                  cpi.m.a(new cpi.i(cxo.qb, 8, 1, 3, 15, 0.05F, dfe.w), cpj.b),
-                  cpi.m.a(new cpi.i(cxo.pY, 9, 1, 3, 15, 0.05F, dfe.z), cpj.b),
-                  cpi.m.a(new cpi.i(cxo.qa, 11, 1, 3, 15, 0.05F, dfe.x), cpj.b),
-                  cpi.m.a(new cpi.i(cxo.pZ, 13, 1, 3, 15, 0.05F, dfe.y), cpj.b),
-                  cpi.m.a(new cpi.i(cxo.qb, 8, 1, 3, 15, 0.05F, dfe.C), cpj.f),
-                  cpi.m.a(new cpi.i(cxo.pY, 9, 1, 3, 15, 0.05F, dfe.F), cpj.f),
-                  cpi.m.a(new cpi.i(cxo.qa, 11, 1, 3, 15, 0.05F, dfe.D), cpj.f),
-                  cpi.m.a(new cpi.i(cxo.pZ, 13, 1, 3, 15, 0.05F, dfe.E), cpj.f),
-                  cpi.m.a(new cpi.h(cxo.qj, 1, 4, cxo.qi, 1, 3, 15, 0.05F), cpj.g),
-                  cpi.m.a(new cpi.h(cxo.qi, 1, 4, cxo.qh, 1, 3, 15, 0.05F), cpj.g),
-                  cpi.m.a(new cpi.h(cxo.qg, 1, 4, cxo.qj, 1, 3, 15, 0.05F), cpj.g),
-                  cpi.m.a(new cpi.h(cxo.qh, 1, 2, cxo.qg, 1, 3, 15, 0.05F), cpj.g)
-               }
-            )
-            .put(
-               5,
-               new cpi.g[]{
-                  cpi.m.a(new cpi.h(cxo.oV, 4, 16, cxo.qh, 1, 3, 30, 0.05F, dfe.f), cpj.a),
-                  cpi.m.a(new cpi.h(cxo.oV, 3, 16, cxo.qi, 1, 3, 30, 0.05F, dfe.e), cpj.a),
-                  cpi.m.a(new cpi.h(cxo.oV, 3, 16, cxo.qi, 1, 3, 30, 0.05F, dfe.l), cpj.c),
-                  cpi.m.a(new cpi.h(cxo.oV, 2, 12, cxo.qj, 1, 3, 30, 0.05F, dfe.k), cpj.c),
-                  cpi.m.a(new cpi.h(cxo.oV, 2, 6, cxo.qg, 1, 3, 30, 0.05F, dfe.r), cpj.d),
-                  cpi.m.a(new cpi.h(cxo.oV, 3, 8, cxo.qh, 1, 3, 30, 0.05F, dfe.q), cpj.d),
-                  cpi.m.a(new cpi.h(cxo.oV, 2, 12, cxo.qj, 1, 3, 30, 0.05F, dfe.u), cpj.e),
-                  cpi.m.a(new cpi.h(cxo.oV, 3, 12, cxo.qg, 1, 3, 30, 0.05F, dfe.v), cpj.e),
-                  cpi.m.a(new cpi.i(cxo.pY, 9, 1, 3, 30, 0.05F, dfe.B), cpj.b),
-                  cpi.m.a(new cpi.i(cxo.qb, 8, 1, 3, 30, 0.05F, dfe.A), cpj.b),
-                  cpi.m.a(new cpi.i(cxo.pY, 9, 1, 3, 30, 0.05F, dfe.H), cpj.f),
-                  cpi.m.a(new cpi.i(cxo.qb, 8, 1, 3, 30, 0.05F, dfe.G), cpj.f),
-                  cpi.m.a(new cpi.h(cxo.oV, 4, 18, cxo.qh, 1, 3, 30, 0.05F, dfe.J), cpj.g),
-                  cpi.m.a(new cpi.h(cxo.oV, 3, 18, cxo.qi, 1, 3, 30, 0.05F, dfe.I), cpj.g),
-                  cpi.m.a(new cpi.b(cxo.aP, 1, 12, 30, 42), cpj.g),
-                  cpi.m.a(new cpi.b(cxo.aM, 1, 12, 30, 4), cpj.a, cpj.b, cpj.c, cpj.d, cpj.e, cpj.f)
-               }
-            )
-            .build()
-      ),
-      cph.e,
-      a(
-         ImmutableMap.of(
-            1,
-            new cpi.g[]{new cpi.b(cxo.rm, 24, 16, 2), new cpi.i(cxo.uZ, 7, 1, 1)},
-            2,
-            new cpi.g[]{
-               new cpi.b(cxo.gg, 11, 16, 10),
-               new cpi.m(ImmutableMap.builder().put(cpj.a, t).put(cpj.d, u).put(cpj.c, v).put(cpj.g, w).put(cpj.e, u).put(cpj.b, t).put(cpj.f, w).build()),
-               new cpi.m(ImmutableMap.builder().put(cpj.a, u).put(cpj.d, s).put(cpj.c, t).put(cpj.g, u).put(cpj.e, v).put(cpj.b, s).put(cpj.f, v).build()),
-               new cpi.m(
-                  ImmutableMap.builder().put(cpj.a, x).put(cpj.d, x).put(cpj.c, new cpi.f()).put(cpj.g, y).put(cpj.e, y).put(cpj.b, y).put(cpj.f, x).build()
-               )
-            },
-            3,
-            new cpi.g[]{
-               new cpi.b(cxo.rq, 1, 12, 20),
-               new cpi.l(13, ayg.d, "filled_map.monument", evf.j, 12, 10),
-               new cpi.l(12, ayg.m, "filled_map.trial_chambers", evf.I, 12, 10)
-            },
-            4,
-            new cpi.g[]{
-               new cpi.i(cxo.uS, 7, 1, 15),
-               new cpi.i(cxo.vF, 3, 1, 15),
-               new cpi.i(cxo.vQ, 3, 1, 15),
-               new cpi.i(cxo.vI, 3, 1, 15),
-               new cpi.i(cxo.vT, 3, 1, 15),
-               new cpi.i(cxo.vL, 3, 1, 15),
-               new cpi.i(cxo.vS, 3, 1, 15),
-               new cpi.i(cxo.vK, 3, 1, 15),
-               new cpi.i(cxo.vM, 3, 1, 15),
-               new cpi.i(cxo.vU, 3, 1, 15),
-               new cpi.i(cxo.vP, 3, 1, 15),
-               new cpi.i(cxo.vH, 3, 1, 15),
-               new cpi.i(cxo.vO, 3, 1, 15),
-               new cpi.i(cxo.vR, 3, 1, 15),
-               new cpi.i(cxo.vJ, 3, 1, 15),
-               new cpi.i(cxo.vG, 3, 1, 15),
-               new cpi.i(cxo.vN, 3, 1, 15)
-            },
-            5,
-            new cpi.g[]{new cpi.i(cxo.wS, 8, 1, 30), new cpi.l(14, ayg.c, "filled_map.mansion", evf.i, 1, 30)}
-         )
-      )
-   );
-   public static final List<Pair<cpi.g[], Integer>> d = ImmutableList.builder()
-      .add(
-         Pair.of(
-            new cpi.g[]{
-               new cpi.b(a(czk.a), 1, 1, 1),
-               new cpi.b(cxo.qX, 1, 1, 1, 2),
-               new cpi.b(cxo.rc, 1, 1, 1, 2),
-               new cpi.b(cxo.tb, 1, 1, 1, 3),
-               new cpi.b(cxo.uX, 4, 1, 1),
-               new cpi.b(cxo.hR, 1, 1, 1)
-            },
-            2
-         )
-      )
-      .add(
-         Pair.of(
-            new cpi.g[]{
-               new cpi.i(cxo.ij, 1, 1, 6, 1),
-               new cpi.i(cxo.lj, 6, 1, 6, 1),
-               new cpi.i(cxo.pQ, 1, 4, 2, 1),
-               new cpi.i(cxo.E, 3, 3, 6, 1),
-               new cpi.i(dkg.ab, 1, 8, 4, 1),
-               new cpi.i(dkg.Z, 1, 8, 4, 1),
-               new cpi.i(dkg.ad, 1, 8, 4, 1),
-               new cpi.i(dkg.aa, 1, 8, 4, 1),
-               new cpi.i(dkg.X, 1, 8, 4, 1),
-               new cpi.i(dkg.Y, 1, 8, 4, 1),
-               new cpi.i(dkg.ac, 1, 8, 4, 1),
-               new cpi.e(cxo.pz, 1, 1, 1, 0.2F),
-               new cpi.i(b(czk.h), 5, 1, 1, 1)
-            },
-            2
-         )
-      )
-      .add(
-         Pair.of(
-            new cpi.g[]{
-               new cpi.i(cxo.rg, 3, 1, 4, 1),
-               new cpi.i(cxo.rd, 3, 1, 4, 1),
-               new cpi.i(cxo.da, 2, 1, 5, 1),
-               new cpi.i(cxo.ro, 4, 1, 5, 1),
-               new cpi.i(cxo.fH, 2, 1, 5, 1),
-               new cpi.i(cxo.wJ, 5, 1, 5, 1),
-               new cpi.i(cxo.cV, 1, 1, 12, 1),
-               new cpi.i(cxo.dQ, 1, 1, 8, 1),
-               new cpi.i(cxo.fx, 1, 1, 4, 1),
-               new cpi.i(cxo.dR, 3, 1, 12, 1),
-               new cpi.i(cxo.fi, 3, 1, 8, 1),
-               new cpi.i(cxo.dr, 1, 1, 12, 1),
-               new cpi.i(cxo.ds, 1, 1, 12, 1),
-               new cpi.i(cxo.dt, 1, 1, 8, 1),
-               new cpi.i(cxo.du, 1, 1, 12, 1),
-               new cpi.i(cxo.dv, 1, 1, 12, 1),
-               new cpi.i(cxo.dw, 1, 1, 12, 1),
-               new cpi.i(cxo.dx, 1, 1, 12, 1),
-               new cpi.i(cxo.dy, 1, 1, 12, 1),
-               new cpi.i(cxo.dz, 1, 1, 12, 1),
-               new cpi.i(cxo.dA, 1, 1, 12, 1),
-               new cpi.i(cxo.dB, 1, 1, 12, 1),
-               new cpi.i(cxo.dC, 1, 1, 7, 1),
-               new cpi.i(cxo.pR, 1, 1, 12, 1),
-               new cpi.i(cxo.wb, 1, 1, 12, 1),
-               new cpi.i(cxo.sM, 1, 1, 12, 1),
-               new cpi.i(cxo.sN, 1, 1, 12, 1),
-               new cpi.i(cxo.ab, 5, 1, 8, 1),
-               new cpi.i(cxo.Z, 5, 1, 8, 1),
-               new cpi.i(cxo.ad, 5, 1, 8, 1),
-               new cpi.i(cxo.ae, 5, 1, 8, 1),
-               new cpi.i(cxo.aa, 5, 1, 8, 1),
-               new cpi.i(cxo.X, 5, 1, 8, 1),
-               new cpi.i(cxo.Y, 5, 1, 8, 1),
-               new cpi.i(cxo.ac, 5, 1, 8, 1),
-               new cpi.i(cxo.af, 5, 1, 8, 1),
-               new cpi.i(cxo.sk, 1, 3, 12, 1),
-               new cpi.i(cxo.rW, 1, 3, 12, 1),
-               new cpi.i(cxo.sh, 1, 3, 12, 1),
-               new cpi.i(cxo.sc, 1, 3, 12, 1),
-               new cpi.i(cxo.sl, 1, 3, 12, 1),
-               new cpi.i(cxo.sj, 1, 3, 12, 1),
-               new cpi.i(cxo.se, 1, 3, 12, 1),
-               new cpi.i(cxo.rY, 1, 3, 12, 1),
-               new cpi.i(cxo.sa, 1, 3, 12, 1),
-               new cpi.i(cxo.sd, 1, 3, 12, 1),
-               new cpi.i(cxo.sg, 1, 3, 12, 1),
-               new cpi.i(cxo.rZ, 1, 3, 12, 1),
-               new cpi.i(cxo.sb, 1, 3, 12, 1),
-               new cpi.i(cxo.rX, 1, 3, 12, 1),
-               new cpi.i(cxo.si, 1, 3, 12, 1),
-               new cpi.i(cxo.sf, 1, 3, 12, 1),
-               new cpi.i(cxo.kL, 3, 1, 8, 1),
-               new cpi.i(cxo.kM, 3, 1, 8, 1),
-               new cpi.i(cxo.kN, 3, 1, 8, 1),
-               new cpi.i(cxo.kO, 3, 1, 8, 1),
-               new cpi.i(cxo.kK, 3, 1, 8, 1),
-               new cpi.i(cxo.gi, 1, 3, 4, 1),
-               new cpi.i(cxo.dH, 1, 3, 4, 1),
-               new cpi.i(cxo.dI, 1, 3, 4, 1),
-               new cpi.i(cxo.go, 1, 5, 2, 1),
-               new cpi.i(cxo.ea, 1, 2, 5, 1),
-               new cpi.i(cxo.ah, 1, 8, 8, 1),
-               new cpi.i(cxo.ak, 1, 4, 6, 1),
-               new cpi.i(cxo.yf, 1, 2, 5, 1),
-               new cpi.i(cxo.F, 1, 2, 5, 1),
-               new cpi.i(cxo.dU, 1, 2, 5, 1)
-            },
-            5
-         )
-      )
-      .build();
 
-   private static cpi.g a(int $$0) {
-      return new cpi.m(
-         ImmutableMap.builder()
-            .put(cpj.a, new cpi.d($$0, axx.w))
-            .put(cpj.b, new cpi.d($$0, axx.x))
-            .put(cpj.c, new cpi.d($$0, axx.y))
-            .put(cpj.d, new cpi.d($$0, axx.z))
-            .put(cpj.e, new cpi.d($$0, axx.A))
-            .put(cpj.f, new cpi.d($$0, axx.B))
-            .put(cpj.g, new cpi.d($$0, axx.C))
-            .build()
-      );
+   public cpi(bvq<? extends cpi> $$0, dhh $$1) {
+      this($$0, $$1, cpn.c);
    }
 
-   private static cpi.g a() {
-      return new cpi.m(
-         ImmutableMap.builder()
-            .put(cpj.a, new cpi.d(30, 3, 3, axx.D))
-            .put(cpj.b, new cpi.d(30, 2, 2, axx.E))
-            .put(cpj.c, new cpi.d(30, 3, 3, axx.F))
-            .put(cpj.d, new cpi.d(30, 3, 3, axx.G))
-            .put(cpj.e, new cpi.d(30, axx.H))
-            .put(cpj.f, new cpi.d(30, axx.I))
-            .put(cpj.g, new cpi.d(30, 2, 2, axx.J))
-            .build()
-      );
+   public cpi(bvq<? extends cpi> $$0, dhh $$1, cpn $$2) {
+      super($$0, $$1);
+      ((cfq)this.L()).b(true);
+      this.L().a(true);
+      this.L().a(48.0F);
+      this.a_(true);
+      this.a(this.gw().a($$2).a(cpl.b));
    }
 
-   private static Int2ObjectMap<cpi.g[]> a(ImmutableMap<Integer, cpi.g[]> $$0) {
-      return new Int2ObjectOpenHashMap($$0);
+   @Override
+   public bxh<cpi> eb() {
+      return (bxh<cpi>)super.eb();
    }
 
-   private static dfv a(jq<czh> $$0) {
-      return new dfv(cxo.sZ).a($$1 -> $$1.a(ku.Q, new czj($$0)));
+   @Override
+   protected bxh.b<cpi> ec() {
+      return bxh.a(cD, cE);
    }
 
-   private static cxk b(jq<czh> $$0) {
-      return czj.a(cxo.sZ, $$0);
+   @Override
+   protected bxh<?> a(Dynamic<?> $$0) {
+      bxh<cpi> $$1 = this.ec().a($$0);
+      this.a($$1);
+      return $$1;
    }
 
-   static class a implements cpi.g {
-      private final cxg a;
-      private final int b;
-      private final int c;
-      private final int d;
+   public void g(ash $$0) {
+      bxh<cpi> $$1 = this.eb();
+      $$1.b($$0, this);
+      this.bF = $$1.i();
+      this.a(this.eb());
+   }
 
-      public a(cxg $$0, int $$1) {
-         this($$0, $$1, 12, 1);
+   private void a(bxh<cpi> $$0) {
+      cpl $$1 = this.gw().b();
+      if (this.e_()) {
+         $$0.a(crp.e);
+         $$0.a(crn.d, cbe.a(0.5F));
+      } else {
+         $$0.a(crp.f);
+         $$0.a(crn.c, cbe.b($$1, 0.5F), ImmutableSet.of(Pair.of(cfj.c, cfk.a)));
       }
 
-      public a(cxg $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      $$0.a(crn.a, cbe.a($$1, 0.5F));
+      $$0.a(crn.f, cbe.d($$1, 0.5F), ImmutableSet.of(Pair.of(cfj.e, cfk.a)));
+      $$0.a(crn.e, cbe.c($$1, 0.5F));
+      $$0.a(crn.b, cbe.e($$1, 0.5F));
+      $$0.a(crn.g, cbe.f($$1, 0.5F));
+      $$0.a(crn.i, cbe.g($$1, 0.5F));
+      $$0.a(crn.h, cbe.h($$1, 0.5F));
+      $$0.a(crn.j, cbe.i($$1, 0.5F));
+      $$0.a(ImmutableSet.of(crn.a));
+      $$0.b(crn.b);
+      $$0.a(crn.b);
+      $$0.a(this.dV().ad(), this.dV().ac());
+   }
+
+   @Override
+   protected void i() {
+      super.i();
+      if (this.dV() instanceof ash) {
+         this.g((ash)this.dV());
+      }
+   }
+
+   public static bxm.a gv() {
+      return bwh.C().a(bxn.v, 0.5);
+   }
+
+   public boolean gx() {
+      return this.cC;
+   }
+
+   @Override
+   protected void a(ash $$0) {
+      bps $$1 = bpr.a();
+      $$1.a("villagerBrain");
+      this.eb().a($$0, this);
+      $$1.c();
+      if (this.cC) {
+         this.cC = false;
       }
 
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         dfv $$2 = new dfv(cxo.oW, this.b);
-         cxk $$3 = new cxk(this.a);
-         if ($$3.a(ayd.bR)) {
-            List<cwi> $$4 = Lists.newArrayList();
-            $$4.add(a($$1));
-            if ($$1.i() > 0.7F) {
-               $$4.add(a($$1));
+      if (!this.gn() && this.co > 0) {
+         this.co--;
+         if (this.co <= 0) {
+            if (this.cp) {
+               this.gS();
+               this.cp = false;
             }
 
-            if ($$1.i() > 0.8F) {
-               $$4.add(a($$1));
+            this.a(new buo(buq.j, 200, 0));
+         }
+      }
+
+      if (this.cq != null) {
+         $$0.a(chg.e, this.cq, this);
+         $$0.a(this, (byte)14);
+         this.cq = null;
+      }
+
+      if (!this.fZ() && this.ae.a(100) == 0) {
+         crj $$2 = $$0.d(this.dv());
+         if ($$2 != null && $$2.u() && !$$2.a()) {
+            $$0.a(this, (byte)42);
+         }
+      }
+
+      if (this.gw().b() == cpl.b && this.gn()) {
+         this.gs();
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      if (this.p() > 0) {
+         this.r(this.p() - 1);
+      }
+
+      this.gU();
+   }
+
+   @Override
+   public bti b(cpw $$0, bth $$1) {
+      cxo $$2 = $$0.b($$1);
+      if ($$2.a(cxs.ux) || !this.bL() || this.gn() || this.fP()) {
+         return super.b($$0, $$1);
+      } else if (this.e_()) {
+         this.gH();
+         return bti.a;
+      } else {
+         if (!this.dV().C) {
+            boolean $$3 = this.go().isEmpty();
+            if ($$1 == bth.a) {
+               if ($$3) {
+                  this.gH();
+               }
+
+               $$0.a(axp.S);
             }
 
-            $$3 = czy.a($$3, $$4);
+            if ($$3) {
+               return bti.c;
+            }
+
+            this.g($$0);
          }
 
-         return new dfx($$2, $$3, this.c, this.d, 0.2F);
-      }
-
-      private static cwi a(bam $$0) {
-         return cwi.a(cwh.a($$0.a(16)));
+         return bti.a;
       }
    }
 
-   static class b implements cpi.g {
-      private final dfv a;
-      private final int b;
-      private final int c;
-      private final int d;
-      private final float e;
-
-      public b(dgz $$0, int $$1, int $$2, int $$3) {
-         this($$0, $$1, $$2, $$3, 1);
-      }
-
-      public b(dgz $$0, int $$1, int $$2, int $$3, int $$4) {
-         this(new dfv($$0.j(), $$1), $$2, $$3, $$4);
-      }
-
-      public b(dfv $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = 0.05F;
-      }
-
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         return new dfx(this.a, new cxk(cxo.oW, this.d), this.b, this.c, this.e);
+   private void gH() {
+      this.r(40);
+      if (!this.dV().B_()) {
+         this.b(axf.Bv);
       }
    }
 
-   static class c implements cpi.g {
-      private final Map<cpj, cxg> a;
-      private final int b;
-      private final int c;
-      private final int d;
+   private void g(cpw $$0) {
+      this.h($$0);
+      this.a($$0);
+      this.a($$0, this.p_(), this.gw().c());
+   }
 
-      public c(int $$0, int $$1, int $$2, Map<cpj, cxg> $$3) {
-         ma.w.s().filter($$1x -> !$$3.containsKey($$1x)).findAny().ifPresent($$0x -> {
-            throw new IllegalStateException("Missing trade for villager type: " + ma.w.b($$0x));
-         });
-         this.a = $$3;
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   @Override
+   public void a(@Nullable cpw $$0) {
+      boolean $$1 = this.gm() != null && $$0 == null;
+      super.a($$0);
+      if ($$1) {
+         this.gs();
       }
+   }
 
-      @Nullable
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         if ($$0 instanceof cpg $$2) {
-            dfv $$3 = new dfv(this.a.get($$2.gw().a()), this.b);
-            return new dfx($$3, new cxk(cxo.oW), this.c, this.d, 0.05F);
-         } else {
-            return null;
+   @Override
+   protected void gs() {
+      super.gs();
+      this.gI();
+   }
+
+   private void gI() {
+      if (!this.dV().B_()) {
+         for (dge $$0 : this.go()) {
+            $$0.n();
          }
       }
    }
 
-   static class d implements cpi.g {
-      private final int a;
-      private final ayk<ddr> b;
-      private final int c;
-      private final int d;
+   @Override
+   public boolean gy() {
+      return true;
+   }
 
-      public d(int $$0, ayk<ddr> $$1) {
-         this($$0, 0, Integer.MAX_VALUE, $$1);
+   public void gz() {
+      this.gN();
+
+      for (dge $$0 : this.go()) {
+         $$0.j();
       }
 
-      public d(int $$0, int $$1, int $$2, ayk<ddr> $$3) {
-         this.c = $$1;
-         this.d = $$2;
-         this.a = $$0;
-         this.b = $$3;
+      this.gJ();
+      this.cx = this.dV().ac();
+      this.cy++;
+   }
+
+   private void gJ() {
+      dgf $$0 = this.go();
+      cpw $$1 = this.gm();
+      if ($$1 != null && !$$0.isEmpty()) {
+         $$1.a($$1.cd.l, $$0, this.gw().c(), this.x(), this.gp(), this.gy());
       }
+   }
 
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         Optional<jq<ddr>> $$2 = $$0.dV().K_().e(mb.aN).a(this.b, $$1);
-         int $$9;
-         cxk $$8;
-         if (!$$2.isEmpty()) {
-            jq<ddr> $$3 = $$2.get();
-            ddr $$4 = $$3.a();
-            int $$5 = Math.max($$4.d(), this.c);
-            int $$6 = Math.min($$4.e(), this.d);
-            int $$7 = bae.a($$1, $$5, $$6);
-            $$8 = ddt.a(new ddu($$3, $$7));
-            $$9 = 2 + $$1.a(5 + $$7 * 10) + 3 * $$7;
-            if ($$3.a(axx.j)) {
-               $$9 *= 2;
-            }
-
-            if ($$9 > 64) {
-               $$9 = 64;
-            }
-         } else {
-            $$9 = 1;
-            $$8 = new cxk(cxo.rn);
+   private boolean gK() {
+      for (dge $$0 : this.go()) {
+         if ($$0.t()) {
+            return true;
          }
+      }
 
-         return new dfx(new dfv(cxo.oW, $$9), Optional.of(new dfv(cxo.rn)), $$8, 12, this.a, 0.2F);
+      return false;
+   }
+
+   private boolean gL() {
+      return this.cy == 0 || this.cy < 2 && this.dV().ac() > this.cx + 2400L;
+   }
+
+   public boolean gA() {
+      long $$0 = this.cx + 12000L;
+      long $$1 = this.dV().ac();
+      boolean $$2 = $$1 > $$0;
+      long $$3 = this.dV().ad();
+      if (this.cz > 0L) {
+         long $$4 = this.cz / 24000L;
+         long $$5 = $$3 / 24000L;
+         $$2 |= $$5 > $$4;
+      }
+
+      this.cz = $$3;
+      if ($$2) {
+         this.cx = $$1;
+         this.gV();
+      }
+
+      return this.gL() && this.gK();
+   }
+
+   private void gM() {
+      int $$0 = 2 - this.cy;
+      if ($$0 > 0) {
+         for (dge $$1 : this.go()) {
+            $$1.j();
+         }
+      }
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.gN();
+      }
+
+      this.gJ();
+   }
+
+   private void gN() {
+      for (dge $$0 : this.go()) {
+         $$0.g();
       }
    }
 
-   static class e implements cpi.g {
-      private final cxk a;
-      private final int b;
-      private final int c;
-      private final int d;
-      private final float e;
-
-      public e(cxg $$0, int $$1, int $$2, int $$3) {
-         this($$0, $$1, $$2, $$3, 0.05F);
+   private void h(cpw $$0) {
+      int $$1 = this.f($$0);
+      if ($$1 != 0) {
+         for (dge $$2 : this.go()) {
+            $$2.a(-bae.d((float)$$1 * $$2.p()));
+         }
       }
 
-      public e(cxg $$0, int $$1, int $$2, int $$3, float $$4) {
-         this.a = new cxk($$0);
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
+      if ($$0.b(buq.F)) {
+         buo $$3 = $$0.c(buq.F);
+         int $$4 = $$3.e();
 
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         int $$2 = 5 + $$1.a(15);
-         ke $$3 = $$0.dV().K_();
-         Optional<ju.c<ddr>> $$4 = $$3.e(mb.aN).a(axx.m);
-         cxk $$5 = ddt.a($$1, new cxk(this.a.h()), $$2, $$3, $$4);
-         int $$6 = Math.min(this.b + $$2, 64);
-         dfv $$7 = new dfv(cxo.oW, $$6);
-         return new dfx($$7, $$5, this.c, this.d, this.e);
+         for (dge $$5 : this.go()) {
+            double $$6 = 0.3 + 0.0625 * (double)$$4;
+            int $$7 = (int)Math.floor($$6 * (double)$$5.a().L());
+            $$5.a(-Math.max($$7, 1));
+         }
       }
    }
 
-   static class f implements cpi.g {
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
+   @Override
+   protected void a(alg.a $$0) {
+      super.a($$0);
+      $$0.a(cg, new cpj(cpn.c, cpl.b, 1));
+   }
+
+   @Override
+   public void b(ux $$0) {
+      super.b($$0);
+      cpj.c.encodeStart(vl.a, this.gw()).resultOrPartial(cf::error).ifPresent($$1 -> $$0.a("VillagerData", $$1));
+      $$0.a("FoodLevel", (byte)this.cs);
+      $$0.a("Gossips", this.ct.a(vl.a));
+      $$0.a("Xp", this.cw);
+      $$0.a("LastRestock", this.cx);
+      $$0.a("LastGossipDecay", this.cv);
+      $$0.a("RestocksToday", this.cy);
+      if (this.cC) {
+         $$0.a("AssignProfessionWhenSpawned", true);
+      }
+   }
+
+   @Override
+   public void a(ux $$0) {
+      super.a($$0);
+      if ($$0.b("VillagerData", 10)) {
+         cpj.c.parse(vl.a, $$0.c("VillagerData")).resultOrPartial(cf::error).ifPresent($$0x -> this.al.a(cg, $$0x));
+      }
+
+      if ($$0.b("FoodLevel", 1)) {
+         this.cs = $$0.f("FoodLevel");
+      }
+
+      vd $$1 = $$0.c("Gossips", 10);
+      this.ct.a(new Dynamic(vl.a, $$1));
+      if ($$0.b("Xp", 3)) {
+         this.cw = $$0.h("Xp");
+      }
+
+      this.cx = $$0.i("LastRestock");
+      this.cv = $$0.i("LastGossipDecay");
+      if (this.dV() instanceof ash) {
+         this.g((ash)this.dV());
+      }
+
+      this.cy = $$0.h("RestocksToday");
+      if ($$0.e("AssignProfessionWhenSpawned")) {
+         this.cC = $$0.q("AssignProfessionWhenSpawned");
+      }
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   protected axe u() {
+      if (this.fP()) {
          return null;
+      } else {
+         return this.gn() ? axf.Bw : axf.Br;
       }
    }
 
-   public interface g {
-      @Nullable
-      dfx a(bvf var1, bam var2);
+   @Override
+   protected axe e(btz $$0) {
+      return axf.Bu;
    }
 
-   static class h implements cpi.g {
-      private final dfv a;
-      private final int b;
-      private final cxk c;
-      private final int d;
-      private final int e;
-      private final float f;
-      private final Optional<aly<dez>> g;
-
-      public h(dgz $$0, int $$1, int $$2, cxg $$3, int $$4, int $$5, int $$6, float $$7) {
-         this($$0, $$1, $$2, new cxk($$3), $$4, $$5, $$6, $$7);
-      }
-
-      private h(dgz $$0, int $$1, int $$2, cxk $$3, int $$4, int $$5, int $$6, float $$7) {
-         this(new dfv($$0, $$1), $$2, $$3.c($$4), $$5, $$6, $$7, Optional.empty());
-      }
-
-      h(dgz $$0, int $$1, int $$2, dgz $$3, int $$4, int $$5, int $$6, float $$7, aly<dez> $$8) {
-         this(new dfv($$0, $$1), $$2, new cxk($$3, $$4), $$5, $$6, $$7, Optional.of($$8));
-      }
-
-      public h(dfv $$0, int $$1, cxk $$2, int $$3, int $$4, float $$5, Optional<aly<dez>> $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      @Nullable
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         cxk $$2 = this.c.v();
-         dha $$3 = $$0.dV();
-         this.g.ifPresent($$4 -> ddt.a($$2, $$3.K_(), (aly<dez>)$$4, $$3.d_($$0.dv()), $$1));
-         return new dfx(new dfv(cxo.oW, this.b), Optional.of(this.a), $$2, 0, this.d, this.e, this.f);
-      }
+   @Override
+   protected axe o_() {
+      return axf.Bt;
    }
 
-   static class i implements cpi.g {
-      private final cxk a;
-      private final int b;
-      private final int c;
-      private final int d;
-      private final float e;
-      private final Optional<aly<dez>> f;
+   public void gB() {
+      this.b(this.gw().b().f());
+   }
 
-      public i(dke $$0, int $$1, int $$2, int $$3, int $$4) {
-         this(new cxk($$0), $$1, $$2, $$3, $$4);
+   @Override
+   public void a(cpj $$0) {
+      cpj $$1 = this.gw();
+      if ($$1.b() != $$0.b()) {
+         this.ca = null;
       }
 
-      public i(cxg $$0, int $$1, int $$2, int $$3) {
-         this(new cxk($$0), $$1, $$2, 12, $$3);
+      this.al.a(cg, $$0);
+   }
+
+   @Override
+   public cpj gw() {
+      return this.al.a(cg);
+   }
+
+   @Override
+   protected void b(dge $$0) {
+      int $$1 = 3 + this.ae.a(4);
+      this.cw = this.cw + $$0.q();
+      this.cq = this.gm();
+      if (this.gR()) {
+         this.co = 40;
+         this.cp = true;
+         $$1 += 5;
       }
 
-      public i(cxg $$0, int $$1, int $$2, int $$3, int $$4) {
-         this(new cxk($$0), $$1, $$2, $$3, $$4);
-      }
-
-      public i(cxk $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, $$1, $$2, $$3, $$4, 0.05F);
-      }
-
-      public i(cxg $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-         this(new cxk($$0), $$1, $$2, $$3, $$4, $$5);
-      }
-
-      public i(cxg $$0, int $$1, int $$2, int $$3, int $$4, float $$5, aly<dez> $$6) {
-         this(new cxk($$0), $$1, $$2, $$3, $$4, $$5, Optional.of($$6));
-      }
-
-      public i(cxk $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-         this($$0, $$1, $$2, $$3, $$4, $$5, Optional.empty());
-      }
-
-      public i(cxk $$0, int $$1, int $$2, int $$3, int $$4, float $$5, Optional<aly<dez>> $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.a.e($$2);
-         this.c = $$3;
-         this.d = $$4;
-         this.e = $$5;
-         this.f = $$6;
-      }
-
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         cxk $$2 = this.a.v();
-         dha $$3 = $$0.dV();
-         this.f.ifPresent($$4 -> ddt.a($$2, $$3.K_(), (aly<dez>)$$4, $$3.d_($$0.dv()), $$1));
-         return new dfx(new dfv(cxo.oW, this.b), $$2, this.c, this.d, this.e);
+      if ($$0.u()) {
+         this.dV().b(new bvv(this.dV(), this.dA(), this.dC() + 0.5, this.dG(), $$1));
       }
    }
 
-   static class j implements cpi.g {
-      private final dal a;
-      private final int b;
-      private final float c;
-
-      public j(jq<bui> $$0, int $$1, int $$2) {
-         this(new dal(List.of(new dal.a($$0, $$1))), $$2, 0.05F);
+   @Override
+   public void a(@Nullable bwf $$0) {
+      if ($$0 != null && this.dV() instanceof ash) {
+         ((ash)this.dV()).a(chg.c, $$0, this);
+         if (this.bL() && $$0 instanceof cpw) {
+            this.dV().a(this, (byte)13);
+         }
       }
 
-      public j(dal $$0, int $$1, float $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      super.a($$0);
+   }
+
+   @Override
+   public void a(btz $$0) {
+      cf.info("Villager {} died, message: '{}'", this, $$0.a(this).getString());
+      bvj $$1 = $$0.d();
+      if ($$1 != null) {
+         this.b($$1);
       }
 
-      @Nullable
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         cxk $$2 = new cxk(cxo.wM, 1);
-         $$2.b(ku.R, this.a);
-         return new dfx(new dfv(cxo.oW), $$2, 12, this.b, this.c);
+      this.gO();
+      super.a($$0);
+   }
+
+   private void gO() {
+      this.a(cfj.b);
+      this.a(cfj.c);
+      this.a(cfj.d);
+      this.a(cfj.e);
+   }
+
+   private void b(bvj $$0) {
+      if (this.dV() instanceof ash $$1) {
+         Optional<cfl> $$3 = this.bF.c(cfj.h);
+         if (!$$3.isEmpty()) {
+            $$3.get().b(bwu.class::isInstance).forEach($$2x -> $$1.a(chg.d, $$0, (bwu)$$2x));
+         }
       }
    }
 
-   static class k implements cpi.g {
-      private final cxk a;
-      private final int b;
-      private final int c;
-      private final int d;
-      private final int e;
-      private final cxg f;
-      private final int g;
-      private final float h;
-
-      public k(cxg $$0, int $$1, cxg $$2, int $$3, int $$4, int $$5, int $$6) {
-         this.a = new cxk($$2);
-         this.c = $$4;
-         this.d = $$5;
-         this.e = $$6;
-         this.f = $$0;
-         this.g = $$1;
-         this.b = $$3;
-         this.h = 0.05F;
-      }
-
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         dfv $$2 = new dfv(cxo.oW, this.c);
-         List<jq<czh>> $$3 = ma.h.c().filter($$1x -> !((czh)$$1x.a()).a().isEmpty() && $$0.dV().K().a($$1x)).collect(Collectors.toList());
-         jq<czh> $$4 = ae.a($$3, $$1);
-         cxk $$5 = new cxk(this.a.h(), this.b);
-         $$5.b(ku.Q, new czj($$4));
-         return new dfx($$2, Optional.of(new dfv(this.f, this.g)), $$5, this.d, this.e, this.h);
-      }
-   }
-
-   static class l implements cpi.g {
-      private final int a;
-      private final ayk<eoc> b;
-      private final String c;
-      private final jq<eve> d;
-      private final int e;
-      private final int f;
-
-      public l(int $$0, ayk<eoc> $$1, String $$2, jq<eve> $$3, int $$4, int $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-      }
-
-      @Nullable
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         if (!($$0.dV() instanceof ash)) {
-            return null;
-         } else {
-            ash $$2 = (ash)$$0.dV();
-            jh $$3 = $$2.a(this.b, $$0.dv(), 100, true);
+   public void a(cfj<jp> $$0) {
+      if (this.dV() instanceof ash) {
+         MinecraftServer $$1 = ((ash)this.dV()).p();
+         this.bF.c($$0).ifPresent($$2 -> {
+            ash $$3 = $$1.a($$2.a());
             if ($$3 != null) {
-               cxk $$4 = cxx.a($$2, $$3.u(), $$3.w(), (byte)2, true, true);
-               cxx.a($$2, $$4);
-               evj.a($$4, $$3, "+", this.d);
-               $$4.b(ku.h, xv.c(this.c));
-               return new dfx(new dfv(cxo.oW, this.a), Optional.of(new dfv(cxo.rq)), $$4, this.e, this.f, 0.2F);
-            } else {
-               return null;
+               chj $$4 = $$3.z();
+               Optional<jq<chm>> $$5 = $$4.c($$2.b());
+               BiPredicate<cpi, jq<chm>> $$6 = ce.get($$0);
+               if ($$5.isPresent() && $$6.test(this, $$5.get())) {
+                  $$4.b($$2.b());
+                  ahj.c($$3, $$2.b());
+               }
+            }
+         });
+      }
+   }
+
+   @Override
+   public boolean Y_() {
+      return this.cs + this.gT() >= 12 && !this.fP() && this.Z_() == 0;
+   }
+
+   private boolean gP() {
+      return this.cs < 12;
+   }
+
+   private void gQ() {
+      if (this.gP() && this.gT() != 0) {
+         for (int $$0 = 0; $$0 < this.t().b(); $$0++) {
+            cxo $$1 = this.t().a($$0);
+            if (!$$1.f()) {
+               Integer $$2 = cc.get($$1.h());
+               if ($$2 != null) {
+                  int $$3 = $$1.L();
+
+                  for (int $$4 = $$3; $$4 > 0; $$4--) {
+                     this.cs = this.cs + $$2;
+                     this.t().a($$0, 1);
+                     if (!this.gP()) {
+                        return;
+                     }
+                  }
+               }
             }
          }
       }
    }
 
-   static record m(Map<cpj, cpi.g> a) implements cpi.g {
-      public static cpi.m a(cpi.g $$0, cpj... $$1) {
-         return new cpi.m(Arrays.stream($$1).collect(Collectors.toMap($$0x -> $$0x, $$1x -> $$0)));
+   public int f(cpw $$0) {
+      return this.ct.a($$0.cG(), $$0x -> true);
+   }
+
+   private void u(int $$0) {
+      this.cs -= $$0;
+   }
+
+   public void gC() {
+      this.gQ();
+      this.u(12);
+   }
+
+   @Override
+   public void b(dgf $$0) {
+      this.ca = $$0;
+   }
+
+   private boolean gR() {
+      int $$0 = this.gw().c();
+      return cpj.d($$0) && this.cw >= cpj.c($$0);
+   }
+
+   private void gS() {
+      this.a(this.gw().a(this.gw().c() + 1));
+      this.gt();
+   }
+
+   @Override
+   protected xv cz() {
+      return xv.c(this.aq().g() + "." + ma.x.b(this.gw().b()).a());
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 12) {
+         this.a(ls.Q);
+      } else if ($$0 == 13) {
+         this.a(ls.a);
+      } else if ($$0 == 14) {
+         this.a(ls.O);
+      } else if ($$0 == 42) {
+         this.a(ls.an);
+      } else {
+         super.b($$0);
+      }
+   }
+
+   @Nullable
+   @Override
+   public bwy a(dhy $$0, btg $$1, bvp $$2, @Nullable bwy $$3) {
+      if ($$2 == bvp.e) {
+         this.a(this.gw().a(cpl.b));
       }
 
-      @Nullable
-      @Override
-      public dfx a(bvf $$0, bam $$1) {
-         if ($$0 instanceof cpg $$2) {
-            cpj $$3 = $$2.gw().a();
-            cpi.g $$4 = this.a.get($$3);
-            return $$4 == null ? null : $$4.a($$0, $$1);
-         } else {
-            return null;
+      if ($$2 == bvp.n || $$2 == bvp.m || bvp.a($$2) || $$2 == bvp.o) {
+         this.a(this.gw().a(cpn.a($$0.t(this.dv()))));
+      }
+
+      if ($$2 == bvp.d) {
+         this.cC = true;
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   public cpi b(ash $$0, bva $$1) {
+      double $$2 = this.ae.j();
+      cpn $$3;
+      if ($$2 < 0.5) {
+         $$3 = cpn.a($$0.t(this.dv()));
+      } else if ($$2 < 0.75) {
+         $$3 = this.gw().a();
+      } else {
+         $$3 = ((cpi)$$1).gw().a();
+      }
+
+      cpi $$6 = new cpi(bvq.bD, $$0, $$3);
+      $$6.a($$0, $$0.d_($$6.dv()), bvp.e, null);
+      return $$6;
+   }
+
+   @Override
+   public void a(ash $$0, bwe $$1) {
+      if ($$0.al() != btf.a) {
+         cf.info("Villager {} was struck by lightning {}.", this, $$1);
+         cnm $$2 = this.a(bvq.bI, bve.a(this, false, false), $$1x -> {
+            $$1x.a($$0, $$0.d_($$1x.dv()), bvp.i, null);
+            $$1x.ai();
+            this.gO();
+         });
+         if ($$2 == null) {
+            super.a($$0, $$1);
+         }
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   @Override
+   protected void a(ash $$0, cma $$1) {
+      cpg.a($$0, this, this, $$1);
+   }
+
+   @Override
+   public boolean c(ash $$0, cxo $$1) {
+      cxk $$2 = $$1.h();
+      return ($$1.a(ayd.bQ) || this.gw().b().d().contains($$2)) && this.t().c($$1);
+   }
+
+   public boolean gD() {
+      return this.gT() >= 24;
+   }
+
+   public boolean gE() {
+      return this.gT() < 12;
+   }
+
+   private int gT() {
+      btp $$0 = this.t();
+      return cc.entrySet().stream().mapToInt($$1 -> $$0.a_($$1.getKey()) * $$1.getValue()).sum();
+   }
+
+   public boolean gF() {
+      return this.t().a_($$0 -> $$0.a(ayd.bP));
+   }
+
+   @Override
+   protected void gt() {
+      cpj $$0 = this.gw();
+      Int2ObjectMap<cpm.g[]> $$2;
+      if (this.dV().J().b(csu.c)) {
+         Int2ObjectMap<cpm.g[]> $$1 = cpm.c.get($$0.b());
+         $$2 = $$1 != null ? $$1 : cpm.a.get($$0.b());
+      } else {
+         $$2 = cpm.a.get($$0.b());
+      }
+
+      if ($$2 != null && !$$2.isEmpty()) {
+         cpm.g[] $$4 = (cpm.g[])$$2.get($$0.c());
+         if ($$4 != null) {
+            dgf $$5 = this.go();
+            this.a($$5, $$4, 2);
          }
       }
+   }
+
+   public void a(ash $$0, cpi $$1, long $$2) {
+      if (($$2 < this.cu || $$2 >= this.cu + 1200L) && ($$2 < $$1.cu || $$2 >= $$1.cu + 1200L)) {
+         this.ct.a($$1.ct, this.ae, 10);
+         this.cu = $$2;
+         $$1.cu = $$2;
+         this.a($$0, $$2, 5);
+      }
+   }
+
+   private void gU() {
+      long $$0 = this.dV().ac();
+      if (this.cv == 0L) {
+         this.cv = $$0;
+      } else if ($$0 >= this.cv + 24000L) {
+         this.ct.b();
+         this.cv = $$0;
+      }
+   }
+
+   public void a(ash $$0, long $$1, int $$2) {
+      if (this.a($$1)) {
+         fbs $$3 = this.cR().c(10.0, 10.0, 10.0);
+         List<cpi> $$4 = $$0.a(cpi.class, $$3);
+         List<cpi> $$5 = $$4.stream().filter($$1x -> $$1x.a($$1)).limit(5L).toList();
+         if ($$5.size() >= $$2) {
+            if (!bax.a(bvq.aq, bvp.f, $$0, this.dv(), 10, 8, 6, bax.a.a).isEmpty()) {
+               $$4.forEach(cgb::b);
+            }
+         }
+      }
+   }
+
+   public boolean a(long $$0) {
+      return !this.b(this.dV().ac()) ? false : !this.bF.a(cfj.F);
+   }
+
+   @Override
+   public void a(chg $$0, bvj $$1) {
+      if ($$0 == chg.a) {
+         this.ct.a($$1.cG(), cfg.d, 20);
+         this.ct.a($$1.cG(), cfg.c, 25);
+      } else if ($$0 == chg.e) {
+         this.ct.a($$1.cG(), cfg.e, 2);
+      } else if ($$0 == chg.c) {
+         this.ct.a($$1.cG(), cfg.b, 25);
+      } else if ($$0 == chg.d) {
+         this.ct.a($$1.cG(), cfg.a, 25);
+      }
+   }
+
+   @Override
+   public int x() {
+      return this.cw;
+   }
+
+   public void t(int $$0) {
+      this.cw = $$0;
+   }
+
+   private void gV() {
+      this.gM();
+      this.cy = 0;
+   }
+
+   public cff gG() {
+      return this.ct;
+   }
+
+   public void a(vu $$0) {
+      this.ct.a(new Dynamic(vl.a, $$0));
+   }
+
+   @Override
+   protected void Y() {
+      super.Y();
+      ahj.a(this);
+   }
+
+   @Override
+   public void b(jh $$0) {
+      super.b($$0);
+      this.bF.a(cfj.H, this.dV().ac());
+      this.bF.b(cfj.m);
+      this.bF.b(cfj.E);
+   }
+
+   @Override
+   public void fQ() {
+      super.fQ();
+      this.bF.a(cfj.I, this.dV().ac());
+   }
+
+   private boolean b(long $$0) {
+      Optional<Long> $$1 = this.bF.c(cfj.H);
+      return $$1.filter($$1x -> $$0 - $$1x < 24000L).isPresent();
    }
 }

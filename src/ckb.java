@@ -1,49 +1,59 @@
 import javax.annotation.Nullable;
 
-public class ckb extends cjv {
-   public ckb(bvm<? extends ckb> $$0, dha $$1) {
+public class ckb extends cjz {
+   public ckb(bvq<? extends ckb> $$0, dhh $$1) {
       super($$0, $$1);
    }
 
    @Override
    protected axe u() {
-      return axf.pO;
+      return axf.hz;
    }
 
    @Override
    protected axe gN() {
-      return axf.pP;
+      return axf.hA;
    }
 
    @Override
    protected axe o_() {
-      return axf.pR;
+      return axf.hC;
    }
 
    @Nullable
    @Override
    protected axe go() {
-      return axf.pS;
+      return axf.hD;
    }
 
    @Override
-   protected axe e(btv $$0) {
-      return axf.pT;
+   protected axe e(btz $$0) {
+      return axf.hE;
+   }
+
+   @Override
+   public boolean a(chw $$0) {
+      if ($$0 == this) {
+         return false;
+      } else {
+         return !($$0 instanceof ckb) && !($$0 instanceof ckc) ? false : this.gV() && ((cka)$$0).gV();
+      }
    }
 
    @Override
    protected void gU() {
-      this.a(axf.pU, 0.4F, 1.0F);
-   }
-
-   @Override
-   protected void x() {
-      this.a(axf.pQ, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+      this.a(axf.hF, 0.4F, 1.0F);
    }
 
    @Nullable
    @Override
-   public buw a(ash $$0, buw $$1) {
-      return bvm.aG.a($$0, bvl.e);
+   public bva a(ash $$0, bva $$1) {
+      bvq<? extends cka> $$2 = $$1 instanceof ckc ? bvq.aG : bvq.J;
+      cka $$3 = $$2.a($$0, bvp.e);
+      if ($$3 != null) {
+         this.a($$1, $$3);
+      }
+
+      return $$3;
    }
 }

@@ -1,37 +1,30 @@
-public enum cpt {
-   a(0, "cape"),
-   b(1, "jacket"),
-   c(2, "left_sleeve"),
-   d(3, "right_sleeve"),
-   e(4, "left_pants_leg"),
-   f(5, "right_pants_leg"),
-   g(6, "hat");
+import java.util.function.IntFunction;
 
-   private final int h;
-   private final int i;
-   private final String j;
-   private final xv k;
+public enum cpt implements bah {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
+
+   private static final IntFunction<cpt> d = ayv.a(cpt::b, values(), ayv.a.b);
+   private final int e;
+   private final String f;
 
    private cpt(final int $$0, final String $$1) {
-      this.h = $$0;
-      this.i = 1 << $$0;
-      this.j = $$1;
-      this.k = xv.c("options.modelPart." + $$1);
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public int a() {
-      return this.i;
-   }
-
+   @Override
    public int b() {
-      return this.h;
+      return this.e;
    }
 
-   public String c() {
-      return this.j;
+   @Override
+   public String a() {
+      return this.f;
    }
 
-   public xv d() {
-      return this.k;
+   public static cpt a(int $$0) {
+      return d.apply($$0);
    }
 }

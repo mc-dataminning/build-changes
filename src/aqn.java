@@ -23,7 +23,7 @@ public class aqn {
       );
    }
 
-   private static int a(ew $$0, int $$1, bsj $$2) {
+   private static int a(ew $$0, int $$1, bsn $$2) {
       return $$1 == -1 ? $$2.a($$0.l().J().H_()) : $$1;
    }
 

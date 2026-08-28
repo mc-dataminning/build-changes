@@ -1,45 +1,100 @@
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class crd extends cqe {
+   private static final alc<Boolean> d = alg.a(crd.class, ale.k);
 
-public class crd extends crb {
-   private static final dgt f = new dht(true, false, Optional.of(1.22F), ma.e.a(axu.cB).map(Function.identity()));
-   private static final float g = 1.2F;
-   private static final float h = bae.l(3.5F);
-   private int i = 5;
-
-   public crd(bvm<? extends crb> $$0, dha $$1) {
+   public crd(bvq<? extends crd> $$0, dhh $$1) {
       super($$0, $$1);
    }
 
-   public crd(cps $$0, dha $$1, double $$2, double $$3, double $$4) {
-      super(bvm.bH, $$1, $$0, $$2, $$3, $$4);
-   }
-
-   public crd(dha $$0, double $$1, double $$2, double $$3, fbs $$4) {
-      super(bvm.bH, $$1, $$2, $$3, $$4, $$0);
+   public crd(dhh $$0, bwf $$1, fbx $$2) {
+      super(bvq.bL, $$1, $$2, $$0);
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.i > 0) {
-         this.i--;
+   protected float t() {
+      return this.v() ? 0.73F : super.t();
+   }
+
+   @Override
+   public boolean bY() {
+      return false;
+   }
+
+   @Override
+   public float a(dgz $$0, dgm $$1, jh $$2, dxu $$3, etw $$4, float $$5) {
+      return this.v() && cln.c($$3) ? Math.min(0.8F, $$5) : $$5;
+   }
+
+   @Override
+   protected void a(fbu $$0) {
+      super.a($$0);
+      if (this.dV() instanceof ash $$1) {
+         bvj var8 = $$0.a();
+         boolean $$7;
+         if (this.p() instanceof bwf $$5) {
+            btz $$6 = this.dW().a(this, $$5);
+            $$7 = var8.a($$1, $$6, 8.0F);
+            if ($$7) {
+               if (var8.bL()) {
+                  dea.a($$1, var8, $$6);
+               } else {
+                  $$5.c(5.0F);
+               }
+            }
+         } else {
+            $$7 = var8.a($$1, this.dW().q(), 5.0F);
+         }
+
+         if ($$7 && var8 instanceof bwf $$9) {
+            int $$10 = 0;
+            if (this.dV().al() == btf.c) {
+               $$10 = 10;
+            } else if (this.dV().al() == btf.d) {
+               $$10 = 40;
+            }
+
+            if ($$10 > 0) {
+               $$9.b(new buo(buq.t, 20 * $$10, 1), this.D());
+            }
+         }
       }
    }
 
    @Override
-   public boolean a(cqm $$0, @Nullable bvf $$1, @Nullable bvf $$2, boolean $$3) {
-      return this.i > 0 ? false : super.a($$0, $$1, $$2, $$3);
+   protected void a(fbv $$0) {
+      super.a($$0);
+      if (!this.dV().C) {
+         this.dV().a(this, this.dA(), this.dC(), this.dG(), 1.0F, false, dhh.a.c);
+         this.at();
+      }
    }
 
    @Override
-   protected void a(fbs $$0) {
-      this.dV().a(this, null, f, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dha.a.e, ls.A, ls.z, axf.CO);
+   protected void a(alg.a $$0) {
+      $$0.a(d, false);
+   }
+
+   public boolean v() {
+      return this.al.a(d);
+   }
+
+   public void a(boolean $$0) {
+      this.al.a(d, $$0);
    }
 
    @Override
-   public boolean a(double $$0) {
-      return this.af < 2 && $$0 < (double)h ? false : super.a($$0);
+   protected boolean m() {
+      return false;
+   }
+
+   @Override
+   public void b(ux $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.v());
+   }
+
+   @Override
+   public void a(ux $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

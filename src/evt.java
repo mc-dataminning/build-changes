@@ -1,28 +1,84 @@
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
+
 public class evt {
-   public static final evt a = new evt("advancements");
-   public static final evt b = new evt("stats");
-   public static final evt c = new evt("playerdata");
-   public static final evt d = new evt("players");
-   public static final evt e = new evt("level.dat");
-   public static final evt f = new evt("level.dat_old");
-   public static final evt g = new evt("icon.png");
-   public static final evt h = new evt("session.lock");
-   public static final evt i = new evt("generated");
-   public static final evt j = new evt("datapacks");
-   public static final evt k = new evt("resources.zip");
-   public static final evt l = new evt(".");
-   private final String m;
+   private static final String a = "command_storage_";
+   private final Map<String, evt.a> b = Maps.newHashMap();
+   private final evw c;
 
-   private evt(String $$0) {
-      this.m = $$0;
+   public evt(evw $$0) {
+      this.c = $$0;
    }
 
-   public String a() {
-      return this.m;
+   private evt.a a(String $$0) {
+      evt.a $$1 = new evt.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   @Override
-   public String toString() {
-      return "/" + this.m;
+   private evi.a<evt.a> b(String $$0) {
+      return new evi.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), bbs.h);
+   }
+
+   public ux a(alz $$0) {
+      String $$1 = $$0.b();
+      evt.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new ux();
+   }
+
+   public void a(alz $$0, ux $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   }
+
+   public Stream<alz> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
+
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
+
+   static class a extends evi {
+      private static final String a = "contents";
+      private final Map<String, ux> b = Maps.newHashMap();
+
+      evt.a a(ux $$0) {
+         ux $$1 = $$0.p("contents");
+
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
+
+         return this;
+      }
+
+      @Override
+      public ux a(ux $$0, js.a $$1) {
+         ux $$2 = new ux();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
+
+      public ux a(String $$0) {
+         ux $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new ux();
+      }
+
+      public void a(String $$0, ux $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         this.c();
+      }
+
+      public Stream<alz> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> alz.a($$0, $$1));
+      }
    }
 }

@@ -1,83 +1,115 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class gmk {
-   public static final gmk a = new gmk();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final gmk.a[] c;
-   private final alz[] d;
+   private static final alz a = alz.b("textures/misc/forcefield.png");
 
-   private gmk() {
-      this.c = new gmk.a[0];
-      this.d = new alz[0];
-   }
+   public void a(dzk $$0, fbx $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = bae.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         RenderSystem.enableBlend();
+         RenderSystem.enableDepthTest();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+         RenderSystem.setShaderTexture(0, a);
+         RenderSystem.depthMask(fme.O());
+         int $$12 = $$0.d().a();
+         float $$13 = (float)ayp.b($$12) / 255.0F;
+         float $$14 = (float)ayp.c($$12) / 255.0F;
+         float $$15 = (float)ayp.d($$12) / 255.0F;
+         RenderSystem.setShaderColor($$13, $$14, $$15, (float)$$8);
+         RenderSystem.setShader(gkt.h);
+         RenderSystem.polygonOffset(-3.0F, -3.0F);
+         RenderSystem.enablePolygonOffset();
+         RenderSystem.disableCull();
+         float $$16 = (float)(ae.c() % 3000L) / 3000.0F;
+         float $$17 = (float)(-bae.e($$1.e * 0.5));
+         float $$18 = $$17 + $$11;
+         fgl $$19 = fgs.b().a(fgv.c.h, fgo.i);
+         double $$20 = Math.max((double)bae.a($$10 - $$2), $$6);
+         double $$21 = Math.min((double)bae.c($$10 + $$2), $$7);
+         float $$22 = (float)(bae.a($$20) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$23 = $$22;
 
-   public gmk(hdp $$0, List<gmu> $$1) {
-      this.d = $$1.stream().flatMap($$0x -> $$0x.b().stream()).map(gmu.b::a).distinct().toArray(alz[]::new);
-      Object2IntMap<alz> $$2 = new Object2IntOpenHashMap();
-
-      for (int $$3 = 0; $$3 < this.d.length; $$3++) {
-         $$2.put(this.d[$$3], $$3);
-      }
-
-      List<gmk.a> $$4 = Lists.newArrayList();
-
-      for (int $$5 = $$1.size() - 1; $$5 >= 0; $$5--) {
-         gmu $$6 = $$1.get($$5);
-         hdg $$7 = $$0.a($$6.a(), hdh.a);
-         gmk.b[] $$8 = $$6.b().stream().map($$1x -> {
-            int $$2x = $$2.getInt($$1x.a());
-            return new gmk.b($$2x, $$1x.b());
-         }).toArray(gmk.b[]::new);
-         $$4.add(new gmk.a($$8, $$7));
-      }
-
-      this.c = $$4.toArray(new gmk.a[0]);
-   }
-
-   @Nullable
-   public hdg a(cxk $$0, @Nullable gfd $$1, @Nullable bwb $$2, int $$3) {
-      int $$4 = this.d.length;
-      if ($$4 != 0) {
-         float[] $$5 = new float[$$4];
-
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            alz $$7 = this.d[$$6];
-            hak $$8 = haj.a($$0, $$7);
-            if ($$8 != null) {
-               $$5[$$6] = $$8.call($$0, $$1, $$2, $$3);
-            } else {
-               $$5[$$6] = Float.NEGATIVE_INFINITY;
+            for (double $$24 = $$20; $$24 < $$21; $$23 += 0.5F) {
+               double $$25 = Math.min(1.0, $$21 - $$24);
+               float $$26 = (float)$$25 * 0.5F;
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$18);
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$18);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$17);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$17);
+               $$24++;
             }
          }
 
-         for (gmk.a $$9 : this.c) {
-            if ($$9.a($$5)) {
-               return $$9.b;
-            }
-         }
-      }
+         if ($$9 < $$4 + $$2) {
+            float $$27 = $$22;
 
-      return null;
-   }
-
-   static record a(gmk.b[] a, @Nullable hdg b) {
-
-      boolean a(float[] $$0) {
-         for (gmk.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
+            for (double $$28 = $$20; $$28 < $$21; $$27 += 0.5F) {
+               double $$29 = Math.min(1.0, $$21 - $$28);
+               float $$30 = (float)$$29 * 0.5F;
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$17);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$17);
+               $$28++;
             }
          }
 
-         return true;
-      }
-   }
+         $$20 = Math.max((double)bae.a($$9 - $$2), $$4);
+         $$21 = Math.min((double)bae.c($$9 + $$2), $$5);
+         $$22 = (float)(bae.a($$20) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$31 = $$22;
 
-   static record b(int a, float b) {
+            for (double $$32 = $$20; $$32 < $$21; $$31 += 0.5F) {
+               double $$33 = Math.min(1.0, $$21 - $$32);
+               float $$34 = (float)$$33 * 0.5F;
+               $$19.a((float)($$32 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$17);
+               $$19.a((float)($$32 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$17);
+               $$32++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$35 = $$22;
+
+            for (double $$36 = $$20; $$36 < $$21; $$35 += 0.5F) {
+               double $$37 = Math.min(1.0, $$21 - $$36);
+               float $$38 = (float)$$37 * 0.5F;
+               $$19.a((float)($$36 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), $$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$17);
+               $$19.a((float)($$36 - $$9), $$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$17);
+               $$36++;
+            }
+         }
+
+         fgp $$39 = $$19.a();
+         if ($$39 != null) {
+            fgm.a($$39);
+         }
+
+         RenderSystem.enableCull();
+         RenderSystem.polygonOffset(0.0F, 0.0F);
+         RenderSystem.disablePolygonOffset();
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+         RenderSystem.depthMask(true);
+      }
    }
 }

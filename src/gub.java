@@ -1,52 +1,44 @@
-public class gub extends gsp<cis, gzt, gbf<gzt>> {
-   private final gbf<gzt> a = this.c();
-   private final gbf<gzt> b;
-   private static final alz k = alz.b("textures/entity/fish/tropical_a.png");
-   private static final alz l = alz.b("textures/entity/fish/tropical_b.png");
+public class gub<T extends bvj & cqm> extends grn<T, gzu> {
+   private final gsm a;
+   private final float b;
+   private final boolean h;
 
-   public gub(grj.a $$0) {
-      super($$0, new gdm($$0.a(geg.dj)), 0.15F);
-      this.b = new gdn($$0.a(geg.dh));
-      this.a(new gwh(this, $$0.f()));
+   public gub(gro.a $$0, float $$1, boolean $$2) {
+      super($$0);
+      this.a = $$0.b();
+      this.b = $$1;
+      this.h = $$2;
    }
 
-   public alz a(gzt $$0) {
-      return switch ($$0.a.a()) {
-         case a -> k;
-         case b -> l;
-      };
+   public gub(gro.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   public gzt b() {
-      return new gzt();
+   @Override
+   protected int a(T $$0, jh $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
-   public void a(cis $$0, gzt $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gw();
-      $$1.b = $$0.gu().d();
-      $$1.c = $$0.gv().d();
-   }
-
-   public void a(gzt $$0, fgl $$1, gle $$2, int $$3) {
-      this.h = switch ($$0.a.a()) {
-         case a -> this.a;
-         case b -> this.b;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected int b(gzt $$0) {
-      return $$0.b;
-   }
-
-   protected void a(gzt $$0, fgl $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * bae.a(0.6F * $$0.p);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.af) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+   public void a(gzu $$0, fgq $$1, glj $$2, int $$3) {
+      $$1.a();
+      $$1.b(this.b, this.b, this.b);
+      $$1.a(this.e.b());
+      if ($$0.a != null) {
+         this.a.a($$0.b, cxm.h, false, $$1, $$2, $$3, hba.d, $$0.a);
       }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public gzu a() {
+      return new gzu();
+   }
+
+   public void a(T $$0, gzu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      cxo $$3 = $$0.l();
+      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dV(), null, $$0.ar()) : null;
+      $$1.b = $$3.v();
    }
 }

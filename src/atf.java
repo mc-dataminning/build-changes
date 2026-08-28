@@ -24,11 +24,11 @@ public class atf {
       this.g = $$0;
    }
 
-   public void a(dzs $$0) {
+   public void a(dzz $$0) {
       this.f.add($$0.f().a());
    }
 
-   public void a(asi $$0, dgg $$1) {
+   public void a(asi $$0, dgn $$1) {
       if (!this.f.remove($$1.a()) && $$0.bL()) {
          $$0.f.b(new ady($$1));
       }
@@ -42,13 +42,13 @@ public class atf {
             if (!this.f.isEmpty()) {
                ash $$2 = $$0.y();
                arm $$3 = $$2.m().a;
-               List<dzs> $$4 = this.a($$3, $$0.dx());
+               List<dzz> $$4 = this.a($$3, $$0.dx());
                if (!$$4.isEmpty()) {
                   atk $$5 = $$0.f;
                   this.j++;
                   $$5.b(adg.a);
 
-                  for (dzs $$6 : $$4) {
+                  for (dzz $$6 : $$4) {
                      a($$5, $$2, $$6);
                   }
 
@@ -60,15 +60,15 @@ public class atf {
       }
    }
 
-   private static void a(atk $$0, ash $$1, dzs $$2) {
+   private static void a(atk $$0, ash $$1, dzz $$2) {
       $$0.b(new aee($$2, $$1.C_(), null, null));
-      dgg $$3 = $$2.f();
+      dgn $$3 = $$2.f();
       ahj.a($$1, $$3);
    }
 
-   private List<dzs> a(arm $$0, dgg $$1) {
+   private List<dzz> a(arm $$0, dgn $$1) {
       int $$2 = bae.d(this.i);
-      List<dzs> $$4;
+      List<dzz> $$4;
       if (!this.g && this.f.size() > $$2) {
          $$4 = this.f
             .stream()
@@ -82,7 +82,7 @@ public class atf {
          $$4 = this.f.longStream().mapToObj($$0::e).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
 
-      for (dzs $$5 : $$4) {
+      for (dzz $$5 : $$4) {
          this.f.remove($$5.f().a());
       }
 

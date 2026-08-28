@@ -1,15 +1,90 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
+
 public class fgj {
-   public static final fgq a = fgq.a().a("Position", fgr.b).a();
-   public static final fgq b = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV0", fgr.d).a("UV2", fgr.g).a("Normal", fgr.h).a(1).a();
-   public static final fgq c = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV0", fgr.d).a("UV1", fgr.f).a("UV2", fgr.g).a("Normal", fgr.h).a(1).a();
-   public static final fgq d = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("Color", fgr.c).a("UV2", fgr.g).a();
-   public static final fgq e = fgq.a().a("Position", fgr.b).a();
-   public static final fgq f = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a();
-   public static final fgq g = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("Normal", fgr.h).a(1).a();
-   public static final fgq h = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV2", fgr.g).a();
-   public static final fgq i = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a();
-   public static final fgq j = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("Color", fgr.c).a();
-   public static final fgq k = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV0", fgr.d).a("UV2", fgr.g).a();
-   public static final fgq l = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("UV2", fgr.g).a("Color", fgr.c).a();
-   public static final fgq m = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("Color", fgr.c).a("Normal", fgr.h).a(1).a();
+   private int a;
+
+   public static Optional<fgj> a() {
+      return fgj.b.a;
+   }
+
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
+      }
+   }
+
+   public fgj.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         fgj.a $$0 = new fgj.a(this.a);
+         this.a = 0;
+         return $$0;
+      }
+   }
+
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
+
+      a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
+   }
+
+   static class b {
+      static final Optional<fgj> a = Optional.ofNullable(a());
+
+      private b() {
+      }
+
+      @Nullable
+      private static fgj a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fgj();
+      }
+   }
 }

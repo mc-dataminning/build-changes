@@ -1,24 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class cgd extends cgl<bwd> {
-   private static final long b = 32L;
-   private static final long c = 16L;
-   public static final int a = 32;
-
+public class cgd extends cgp<bwf> {
    @Override
-   public Set<cff<?>> a() {
-      return ImmutableSet.of(cff.L);
+   public Set<cfj<?>> a() {
+      return ImmutableSet.of(cfj.x, cfj.y);
    }
 
-   protected void a(ash $$0, bwd $$1) {
-      bxd<?> $$2 = $$1.eb();
-      List<clw> $$3 = $$0.a(clw.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<clw> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.l())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(cff.L, $$4);
+   @Override
+   protected void a(ash $$0, bwf $$1) {
+      bxh<?> $$2 = $$1.eb();
+      btz $$3 = $$1.eF();
+      if ($$3 != null) {
+         $$2.a(cfj.x, $$1.eF());
+         bvj $$4 = $$3.d();
+         if ($$4 instanceof bwf) {
+            $$2.a(cfj.y, (bwf)$$4);
+         }
+      } else {
+         $$2.b(cfj.x);
+      }
+
+      $$2.c(cfj.y).ifPresent($$2x -> {
+         if (!$$2x.bL() || $$2x.dV() != $$0) {
+            $$2.b(cfj.y);
+         }
+      });
    }
 }

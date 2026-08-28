@@ -1,45 +1,41 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public abstract class ewq extends ewx {
-   protected final List<ewx> d;
-   private final ewp a;
+public record ewq<T>(aly<kd<T>> d, Codec<T> e, ewq.a<T> f) {
+   public static final ewq<ezx> a = new ewq<>(mb.bi, ezx.e, e());
+   public static final ewq<eyc> b = new ewq<>(mb.bh, eye.c, e());
+   public static final ewq<ewt> c = new ewq<>(mb.bg, ewt.d, f());
 
-   protected ewq(List<ewx> $$0, List<ezs> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   public void a(ewu $$0, aly<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   @Override
-   public void a(ewn $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
-      }
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
+   public static Stream<ewq<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   protected abstract ewp a(List<? extends ewp> var1);
-
-   @Override
-   public final boolean expand(ewh $$0, Consumer<eww> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
+   private static <T extends ewp> ewq.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public static <T extends ewq> MapCodec<T> a(ewq.a<T> $$0) {
-      return RecordCodecBuilder.mapCodec(
-         $$1 -> $$1.group(ewv.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
+   private static ewq.a<ewt> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   public aly<kd<T>> b() {
+      return this.d;
+   }
+
+   public Codec<T> c() {
+      return this.e;
+   }
+
+   public ewq.a<T> d() {
+      return this.f;
    }
 
    @FunctionalInterface
-   public interface a<T extends ewq> {
-      T create(List<ewx> var1, List<ezs> var2);
+   public interface a<T> {
+      void run(ewu var1, aly<T> var2, T var3);
    }
 }

@@ -1,19 +1,28 @@
-public class guw extends gvy<gxc, gap> {
-   private static final alz a = alz.b("textures/entity/breeze/breeze_wind.png");
-   private final gap b;
+public class guw extends gsf<cnq, haj, ged<haj>> {
+   private static final alz a = alz.b("textures/entity/zombie_villager/zombie_villager.png");
 
-   public guw(grj.a $$0, gtg<gxc, gap> $$1) {
-      super($$1);
-      this.b = new gap($$0.a(geg.I));
+   public guw(gro.a $$0) {
+      super($$0, new ged<>($$0.a(gel.dQ)), new ged<>($$0.a(gel.dR)), 0.5F, guk.a);
+      this.a(new gvs<>(this, new ged($$0.a(gel.dU)), new ged($$0.a(gel.dV)), new ged($$0.a(gel.dS)), new ged($$0.a(gel.dT)), $$0.h()));
+      this.a(new gwn<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, gxc $$3, float $$4, float $$5) {
-      fgp $$6 = $$1.getBuffer(glo.a(a, this.a($$3.p) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gqo.a(this.b, this.b.d()).a($$0, $$6, $$2, hav.d);
+   public alz a(haj $$0) {
+      return a;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public haj b() {
+      return new haj();
+   }
+
+   public void a(cnq $$0, haj $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gv();
+      $$1.c = $$0.gw();
+      $$1.a = $$0.gb();
+   }
+
+   protected boolean b(haj $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

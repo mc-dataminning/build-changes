@@ -1,41 +1,41 @@
-public class cyw extends cxg {
-   public static final int a = 1200;
-   public static final float b = 0.1F;
+import javax.annotation.Nullable;
 
-   public cyw(cxg.a $$0) {
-      super($$0);
+public class cyw extends cvu implements cwj {
+   private final axe a;
+
+   public cyw(dkl $$0, axe $$1, cxk.a $$2) {
+      super($$0, $$2);
+      this.a = $$1;
    }
 
    @Override
-   public int a(cxk $$0, bwb $$1) {
-      return 1200;
+   public bti a(dbh $$0) {
+      bti $$1 = super.a($$0);
+      cpw $$2 = $$0.o();
+      if ($$1.a() && $$2 != null) {
+         $$2.a($$0.p(), cwa.a($$0.n(), $$2));
+      }
+
+      return $$1;
    }
 
    @Override
-   public cxm b(cxk $$0) {
-      return cxm.h;
+   protected axe a(dxu $$0) {
+      return this.a;
    }
 
    @Override
-   public bte a(dha $$0, cps $$1, btd $$2) {
-      $$1.a(axf.zv, 1.0F, 1.0F);
-      $$1.b(axp.c.b(this));
-      return cxn.a($$0, $$1, $$2);
-   }
+   public boolean a(@Nullable cpw $$0, dhh $$1, jh $$2, @Nullable fbt $$3) {
+      if ($$1.k($$2) && $$1.u($$2)) {
+         if (!$$1.C) {
+            $$1.a($$2, this.d().m(), 3);
+         }
 
-   @Override
-   public cxk a(cxk $$0, dha $$1, bwb $$2) {
-      this.b($$2);
-      return $$0;
-   }
-
-   @Override
-   public boolean a(cxk $$0, dha $$1, bwb $$2, int $$3) {
-      this.b($$2);
-      return true;
-   }
-
-   private void b(bwb $$0) {
-      $$0.a(axf.zw, 1.0F, 1.0F);
+         $$1.a($$0, ecq.z, $$2);
+         $$1.a($$0, $$2, this.a, axg.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

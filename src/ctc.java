@@ -1,161 +1,86 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ctc extends csx {
-   private static final int m = 0;
-   private static final int n = 1;
-   private static final int o = 3;
-   private static final int p = 1;
-   private static final int q = 28;
-   private static final int r = 28;
-   private static final int s = 37;
-   private static final int t = 0;
-   private final bsx u = new btl(1) {
-      @Override
-      public boolean b(int $$0, cxk $$1) {
-         return $$1.a(ayd.bc);
-      }
+public abstract class ctc extends cuq {
+   private final int o;
+   private final int p;
+   protected final ctt m;
+   protected final cut n = new cut();
 
-      @Override
-      public int ao_() {
-         return 1;
-      }
-   };
-   private final ctc.a v;
-   private final ctk w;
-   private final ctj x;
-
-   public ctc(int $$0, bsx $$1) {
-      this($$0, $$1, new cut(3), ctk.a);
+   public ctc(cuk<?> $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1);
+      this.o = $$2;
+      this.p = $$3;
+      this.m = new cvf(this, $$2, $$3);
    }
 
-   public ctc(int $$0, bsx $$1, ctj $$2, ctk $$3) {
-      super(cug.j, $$0);
-      a($$2, 3);
-      this.x = $$2;
-      this.w = $$3;
-      this.v = new ctc.a(this.u, 0, 136, 110);
-      this.a(this.v);
-      this.a($$2);
-      this.c($$1, 36, 137);
+   protected cuy a(cpw $$0, int $$1, int $$2) {
+      return this.a(new cuu($$0, this.m, this.n, 0, $$1, $$2));
    }
 
    @Override
-   public void a(cps $$0) {
-      super.a($$0);
-      if (!$$0.dV().C) {
-         cxk $$1 = this.v.a(this.v.a());
-         if (!$$1.f()) {
-            $$0.a($$1, false);
+   protected void d(int $$0, int $$1) {
+      for (int $$2 = 0; $$2 < this.o; $$2++) {
+         for (int $$3 = 0; $$3 < this.p; $$3++) {
+            this.a(new cuy(this.m, $$3 + $$2 * this.o, $$0 + $$3 * 18, $$1 + $$2 * 18));
          }
       }
    }
 
    @Override
-   public boolean b(cps $$0) {
-      return a(this.w, $$0, dkg.gc);
+   public cuq.a a(boolean $$0, boolean $$1, dci<?> $$2, ash $$3, cpv $$4) {
+      dci<dbs> $$5 = (dci<dbs>)$$2;
+      this.l();
+
+      cuq.a var8;
+      try {
+         List<cuy> $$6 = this.n();
+         var8 = all.a(new all.a<dbs>() {
+            @Override
+            public void a(cqb $$0) {
+               ctc.this.a($$0);
+            }
+
+            @Override
+            public void a() {
+               ctc.this.n.a();
+               ctc.this.m.a();
+            }
+
+            @Override
+            public boolean a(dci<dbs> $$0) {
+               return $$0.b().a(ctc.this.m.aC_(), ctc.this.q().dV());
+            }
+         }, this.o, this.p, $$6, $$6, $$4, $$5, $$0, $$1);
+      } finally {
+         this.a($$3, (dci<dbs>)$$2);
+      }
+
+      return var8;
    }
 
    @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
+   protected void l() {
    }
+
+   protected void a(ash $$0, dci<dbs> $$1) {
+   }
+
+   public abstract cuy m();
+
+   public abstract List<cuy> n();
+
+   public int o() {
+      return this.o;
+   }
+
+   public int p() {
+      return this.p;
+   }
+
+   protected abstract cpw q();
 
    @Override
-   public cxk b(cps $$0, int $$1) {
-      cxk $$2 = cxk.k;
-      cuu $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cxk $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 0) {
-            if (!this.a($$4, 1, 37, true)) {
-               return cxk.k;
-            }
-
-            $$3.b($$4, $$2);
-         } else if (!this.v.h() && this.v.a($$4) && $$4.L() == 1) {
-            if (!this.a($$4, 0, 1, false)) {
-               return cxk.k;
-            }
-         } else if ($$1 >= 1 && $$1 < 28) {
-            if (!this.a($$4, 28, 37, false)) {
-               return cxk.k;
-            }
-         } else if ($$1 >= 28 && $$1 < 37) {
-            if (!this.a($$4, 1, 28, false)) {
-               return cxk.k;
-            }
-         } else if (!this.a($$4, 1, 37, false)) {
-            return cxk.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cxk.k);
-         } else {
-            $$3.c();
-         }
-
-         if ($$4.L() == $$2.L()) {
-            return cxk.k;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   public int l() {
-      return this.x.a(0);
-   }
-
-   public static int a(@Nullable jq<bui> $$0) {
-      return $$0 == null ? 0 : ma.d.t().a($$0) + 1;
-   }
-
-   @Nullable
-   public static jq<bui> e(int $$0) {
-      return $$0 == 0 ? null : ma.d.t().a($$0 - 1);
-   }
-
-   @Nullable
-   public jq<bui> m() {
-      return e(this.x.a(1));
-   }
-
-   @Nullable
-   public jq<bui> n() {
-      return e(this.x.a(2));
-   }
-
-   public void a(Optional<jq<bui>> $$0, Optional<jq<bui>> $$1) {
-      if (this.v.h()) {
-         this.x.a(1, a($$0.orElse(null)));
-         this.x.a(2, a($$1.orElse(null)));
-         this.v.a(1);
-         this.w.a(dha::q);
-      }
-   }
-
-   public boolean o() {
-      return !this.u.a(0).f();
-   }
-
-   class a extends cuu {
-      public a(final bsx $$0, final int $$1, final int $$2, final int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cxk $$0) {
-         return $$0.a(ayd.bc);
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
+   public void a(cqb $$0) {
+      this.m.fillStackedContents($$0);
    }
 }

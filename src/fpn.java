@@ -1,55 +1,66 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+public class fpn extends fob {
+   private static final fpr a = new fpr(
+      alz.b("widget/tab_selected"), alz.b("widget/tab"), alz.b("widget/tab_selected_highlighted"), alz.b("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final fqi m;
+   private final fqh n;
 
-public class fpn {
-   @Nullable
-   private fpk a;
-   private Duration b = Duration.ZERO;
-   private long c;
-   private boolean d;
-
-   public void a(Duration $$0) {
-      this.b = $$0;
+   public fpn(fqi $$0, fqh $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public void a(@Nullable fpk $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   public fpk a() {
-      return this.a;
-   }
-
-   public void a(boolean $$0, boolean $$1, fsg $$2) {
-      if (this.a == null) {
-         this.d = false;
-      } else {
-         boolean $$3 = $$0 || $$1 && flz.Q().aY().b();
-         if ($$3 != this.d) {
-            if ($$3) {
-               this.c = ae.c();
-            }
-
-            this.d = $$3;
-         }
-
-         if ($$3 && ae.c() - this.c > this.b.toMillis()) {
-            ftr $$4 = flz.Q().z;
-            if ($$4 != null) {
-               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
-            }
-         }
+   @Override
+   public void b(fnq $$0, int $$1, int $$2, float $$3) {
+      $$0.a(glt::B, a.a(this.b(), this.B()), this.D(), this.E(), this.g, this.h);
+      fno $$4 = fme.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.a($$0, this.D() + 2, this.E() + 2, this.F() - 2, this.G());
+         this.b($$0, $$4, $$5);
       }
    }
 
-   private fwc a(fsg $$0, boolean $$1, boolean $$2) {
-      return (fwc)(!$$1 && $$2 && flz.Q().aY().b() ? new fvx($$0) : new fwe($$0));
+   protected void a(fnq $$0, int $$1, int $$2, int $$3, int $$4) {
+      ftw.a($$0, ftw.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
    }
 
-   public void a(frw $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
+   public void a(fnq $$0, fno $$1, int $$2) {
+      int $$3 = this.D() + 1;
+      int $$4 = this.E() + (this.b() ? 0 : 3);
+      int $$5 = this.D() + this.y() - 1;
+      int $$6 = this.E() + this.w();
+      a($$0, $$1, this.z(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(fnq $$0, fno $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.z()), this.y() - 4);
+      int $$4 = this.D() + (this.y() - $$3) / 2;
+      int $$5 = this.E() + this.w() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
+   }
+
+   @Override
+   protected void a(fsb $$0) {
+      $$0.a(fsa.a, xv.a("gui.narrate.tab", this.n.a()));
+   }
+
+   @Override
+   public void a(hgl $$0) {
+   }
+
+   public fqh a() {
+      return this.n;
+   }
+
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

@@ -1,34 +1,65 @@
-public class het extends hek {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cmo r;
+public abstract class het extends hep {
+   private static final float o = 0.0F;
+   private static final float p = 1.2F;
+   private static final float q = 0.0F;
+   protected final chx n;
+   private boolean r;
 
-   public het(cmo $$0) {
-      super(axf.lJ, axg.f, hfb.t());
-      this.r = $$0;
-      this.k = hfb.a.a;
+   public het(chx $$0, axe $$1, axg $$2) {
+      super($$1, $$2, hfg.t());
+      this.n = $$0;
+      this.f = (double)((float)$$0.dA());
+      this.g = (double)((float)$$0.dC());
+      this.h = (double)((float)$$0.dG());
       this.i = true;
       this.j = 0;
-   }
-
-   @Override
-   public boolean s() {
-      return !this.r.bb();
+      this.d = 0.0F;
    }
 
    @Override
    public void q() {
-      if (!this.r.dQ() && this.r.O_() == null) {
-         this.f = (double)((float)this.r.dA());
-         this.g = (double)((float)this.r.dC());
-         this.h = (double)((float)this.r.dG());
-         float $$0 = this.r.L(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
+      boolean $$0 = this.p();
+      if ($$0 && !this.m()) {
+         fme.Q().ak().a((hfh)this.o());
+         this.r = true;
+      }
+
+      if (!this.n.dQ() && !this.r) {
+         this.f = (double)((float)this.n.dA());
+         this.g = (double)((float)this.n.dC());
+         this.h = (double)((float)this.n.dG());
+         float $$1 = (float)this.n.dy().i();
+         if ($$1 >= 0.01F) {
+            this.e = bae.h(bae.a($$1, this.u(), this.v()), this.u(), this.v());
+            this.d = bae.h(bae.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
+         } else {
+            this.e = 0.0F;
+            this.d = 0.0F;
+         }
       } else {
          this.n();
       }
    }
+
+   private float u() {
+      return this.n.e_() ? 1.1F : 0.7F;
+   }
+
+   private float v() {
+      return this.n.e_() ? 1.5F : 1.1F;
+   }
+
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public boolean s() {
+      return !this.n.bb();
+   }
+
+   protected abstract hep o();
+
+   protected abstract boolean p();
 }

@@ -1,25 +1,26 @@
-public class gvz<S extends gym & gze, M extends gbf<? super S>> extends gvy<S, M> {
-   private final alz a;
-   private final M b;
-   private final M c;
+public class gvz extends gwd<gyz, gch> {
+   private final gsm a;
 
-   public gvz(gtg<S, M> $$0, M $$1, M $$2, alz $$3) {
+   public gvz(gtl<gyz, gch> $$0, gsm $$1) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.a = $$3;
+      this.a = $$1;
    }
 
-   public gvz(gtg<S, M> $$0, M $$1, alz $$2) {
-      this($$0, $$1, $$1, $$2);
-   }
+   public void a(fgq $$0, glj $$1, int $$2, gyz $$3, float $$4, float $$5) {
+      hdl $$6 = $$3.b();
+      if ($$6 != null && $$3.g && !$$3.f) {
+         float $$7 = -0.6F;
+         float $$8 = 1.4F;
+         if ($$3.e) {
+            $$7 -= 0.2F * bae.a($$3.p * 0.6F) + 0.2F;
+            $$8 -= 0.09F * bae.a($$3.p * 0.6F);
+         }
 
-   public void a(fgl $$0, gle $$1, int $$2, S $$3, float $$4, float $$5) {
-      if ($$3.c()) {
-         M $$6 = $$3.ae ? this.c : this.b;
-         $$6.a($$3);
-         fgp $$7 = $$1.getBuffer(glo.f(this.a));
-         $$6.a($$0, $$7, $$2, hav.d);
+         $$0.a();
+         $$0.a(0.1F, $$8, $$7);
+         cxo $$9 = $$3.aY_();
+         this.a.a($$9, cxm.h, false, $$0, $$1, $$2, hba.d, $$6);
+         $$0.b();
       }
    }
 }

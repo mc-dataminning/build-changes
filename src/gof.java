@@ -1,36 +1,23 @@
-public class gof implements gnp<dwg> {
-   private final grh a;
+public class gof implements gnu<dwb> {
+   private final gat a;
 
-   public gof(gnq.a $$0) {
-      this.a = $$0.c();
+   public gof(gnv.a $$0) {
+      this.a = new gat($$0.a(gel.G));
    }
 
-   public void a(dwg $$0, float $$1, fgl $$2, gle $$3, int $$4, int $$5) {
-      dha $$6 = $$0.i();
-      if ($$6 != null) {
-         dgb $$7 = $$0.c();
-         bvf $$8 = $$7.b($$6, $$0.aB_());
-         if ($$8 != null) {
-            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
-         }
+   public void a(dwb $$0, float $$1, fgq $$2, glj $$3, int $$4, int $$5) {
+      dxu $$6 = $$0.m();
+      if ($$6.c(doy.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(doy.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         fgu $$8 = god.a.a($$3, glt::c);
+         this.a.a($$2, $$8, $$4, $$5);
+         $$2.b();
       }
-   }
-
-   public static void a(float $$0, fgl $$1, gle $$2, int $$3, bvf $$4, grh $$5, double $$6, double $$7) {
-      $$1.a();
-      $$1.a(0.5F, 0.0F, 0.5F);
-      float $$8 = 0.53125F;
-      float $$9 = Math.max($$4.dq(), $$4.dr());
-      if ((double)$$9 > 1.0) {
-         $$8 /= $$9;
-      }
-
-      $$1.a(0.0F, 0.4F, 0.0F);
-      $$1.a(a.d.rotationDegrees((float)bae.d((double)$$0, $$6, $$7) * 10.0F));
-      $$1.a(0.0F, -0.2F, 0.0F);
-      $$1.a(a.b.rotationDegrees(-30.0F));
-      $$1.b($$8, $$8, $$8);
-      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
-      $$1.b();
    }
 }

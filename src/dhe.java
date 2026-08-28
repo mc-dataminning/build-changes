@@ -1,78 +1,108 @@
-import com.mojang.serialization.Dynamic;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public final class dhe {
-   private final String a;
-   private final dgx b;
-   private final boolean c;
-   private final btb d;
-   private final boolean e;
-   private final dgw f;
-   private final dhx g;
+public enum dhe implements bba {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public dhe(String $$0, dgx $$1, boolean $$2, btb $$3, boolean $$4, dgw $$5, dhx $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   public static final dhe e = a;
+   public static final bba.a<dhe> f = bba.a(dhe::values);
+   private static final IntFunction<dhe> g = ayv.a(dhe::a, values(), ayv.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final xv k;
+   private final xv l;
+
+   private dhe(final int $$0, final String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = xv.c("selectWorld.gameMode." + $$1);
+      this.l = xv.c("gameMode." + $$1);
    }
 
-   public static dhe a(Dynamic<?> $$0, dhx $$1) {
-      dgx $$2 = dgx.a($$0.get("GameType").asInt(0));
-      return new dhe(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> btb.a($$0x.byteValue())).result().orElse(btb.c),
-         $$0.get("allowCommands").asBoolean($$2 == dgx.b),
-         new dgw($$1.b(), $$0.get("GameRules")),
-         $$1
-      );
+   public int a() {
+      return this.i;
    }
 
-   public String a() {
-      return this.a;
+   public String b() {
+      return this.j;
    }
 
-   public dgx b() {
-      return this.b;
+   @Override
+   public String c() {
+      return this.j;
    }
 
-   public boolean c() {
-      return this.c;
+   public xv d() {
+      return this.l;
    }
 
-   public btb d() {
-      return this.d;
+   public xv e() {
+      return this.k;
    }
 
-   public boolean e() {
-      return this.e;
+   public void a(cps $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
+      }
+
+      $$0.e = !this.f();
    }
 
-   public dgw f() {
-      return this.f;
+   public boolean f() {
+      return this == c || this == d;
    }
 
-   public dhx g() {
-      return this.g;
+   public boolean g() {
+      return this == b;
    }
 
-   public dhe a(dgx $$0) {
-      return new dhe(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   public boolean h() {
+      return this == a || this == c;
    }
 
-   public dhe a(btb $$0) {
-      return new dhe(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   public static dhe a(int $$0) {
+      return g.apply($$0);
    }
 
-   public dhe a(dhx $$0) {
-      return new dhe(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   public static dhe a(String $$0) {
+      return a($$0, a);
    }
 
-   public dhe h() {
-      return new dhe(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static dhe a(String $$0, @Nullable dhe $$1) {
+      dhe $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable dhe $$0) {
+      return $$0 != null ? $$0.i : -1;
+   }
+
+   @Nullable
+   public static dhe b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
+   }
+
+   public static boolean c(int $$0) {
+      return Arrays.stream(values()).anyMatch($$1 -> $$1.i == $$0);
    }
 }

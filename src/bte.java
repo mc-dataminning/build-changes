@@ -1,75 +1,44 @@
-import javax.annotation.Nullable;
-
-public sealed interface bte permits bte.d, bte.a, bte.c, bte.f {
-   bte.d a = new bte.d(bte.e.b, bte.b.b);
-   bte.d b = new bte.d(bte.e.c, bte.b.b);
-   bte.d c = new bte.d(bte.e.a, bte.b.b);
-   bte.a d = new bte.a();
-   bte.c e = new bte.c();
-   bte.f f = new bte.f();
-
-   default boolean a() {
-      return false;
+public class bte {
+   public static void a(dhh $$0, jh $$1, btb $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public static record a() implements bte {
+   public static void a(dhh $$0, bvj $$1, btb $$2) {
+      a($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2);
    }
 
-   public static record b(boolean c, @Nullable cxk d) {
-      static bte.b a = new bte.b(false, null);
-      static bte.b b = new bte.b(true, null);
-
-      public boolean a() {
-         return this.c;
-      }
-
-      @Nullable
-      public cxk b() {
-         return this.d;
+   private static void a(dhh $$0, double $$1, double $$2, double $$3, btb $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
    }
 
-   public static record c() implements bte {
+   public static void a(dhh $$0, jh $$1, jz<cxo> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
    }
 
-   public static record d(bte.e g, bte.b h) implements bte {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   public static void a(dhh $$0, double $$1, double $$2, double $$3, cxo $$4) {
+      double $$5 = (double)bvq.ar.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
 
-      public bte.d a(cxk $$0) {
-         return new bte.d(this.g, new bte.b(true, $$0));
-      }
-
-      public bte.d b() {
-         return new bte.d(this.g, bte.b.a);
-      }
-
-      public boolean c() {
-         return this.h.c;
-      }
-
-      @Nullable
-      public cxk d() {
-         return this.h.d;
-      }
-
-      public bte.e e() {
-         return this.g;
-      }
-
-      public bte.b f() {
-         return this.h;
+      while (!$$4.f()) {
+         cma $$11 = new cma($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
       }
    }
 
-   public static enum e {
-      a,
-      b,
-      c;
-   }
-
-   public static record f() implements bte {
+   public static void a(dxu $$0, dxu $$1, dhh $$2, jh $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof btb $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
    }
 }

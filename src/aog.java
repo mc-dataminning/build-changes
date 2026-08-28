@@ -42,9 +42,9 @@ public class aog {
    }
 
    private static int a(ew $$0, art $$1) throws CommandSyntaxException {
-      dgg $$2 = $$1.a();
+      dgn $$2 = $$1.a();
       ash $$3 = $$0.e();
-      aly<dha> $$4 = $$3.ah();
+      aly<dhh> $$4 = $$3.ah();
       boolean $$5 = $$3.x().contains($$2.a());
       if ($$5) {
          $$0.a(() -> xv.a("commands.forceload.query.success", xv.a($$2), xv.a($$4.a())), false);
@@ -56,11 +56,11 @@ public class aog {
 
    private static int a(ew $$0) {
       ash $$1 = $$0.e();
-      aly<dha> $$2 = $$1.ah();
+      aly<dhh> $$2 = $$1.ah();
       LongSet $$3 = $$1.x();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dgg::new).map(dgg::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dgn::new).map(dgn::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> xv.a("commands.forceload.list.single", xv.a($$2.a()), $$5), false);
          } else {
@@ -75,9 +75,9 @@ public class aog {
 
    private static int b(ew $$0) {
       ash $$1 = $$0.e();
-      aly<dha> $$2 = $$1.ah();
+      aly<dhh> $$2 = $$1.ah();
       LongSet $$3 = $$1.x();
-      $$3.forEach($$1x -> $$1.a(dgg.a($$1x), dgg.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(dgn.a($$1x), dgn.b($$1x), false));
       $$0.a(() -> xv.a("commands.forceload.removed.all", xv.a($$2.a())), true);
       return 0;
    }
@@ -97,8 +97,8 @@ public class aog {
             throw b.create(256, $$12);
          } else {
             ash $$13 = $$0.e();
-            aly<dha> $$14 = $$13.ah();
-            dgg $$15 = null;
+            aly<dhh> $$14 = $$13.ah();
+            dgn $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,13 +107,13 @@ public class aog {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new dgg($$17, $$18);
+                        $$15 = new dgn($$17, $$18);
                      }
                   }
                }
             }
 
-            dgg $$20 = $$15;
+            dgn $$20 = $$15;
             int $$21 = $$16;
             if ($$21 == 0) {
                throw ($$3 ? d : e).create();
@@ -121,8 +121,8 @@ public class aog {
                if ($$21 == 1) {
                   $$0.a(() -> xv.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", xv.a($$20), xv.a($$14.a())), true);
                } else {
-                  dgg $$22 = new dgg($$8, $$9);
-                  dgg $$23 = new dgg($$10, $$11);
+                  dgn $$22 = new dgn($$8, $$9);
+                  dgn $$23 = new dgn($$10, $$11);
                   $$0.a(() -> xv.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, xv.a($$14.a()), xv.a($$22), xv.a($$23)), true);
                }
 

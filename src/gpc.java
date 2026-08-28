@@ -1,104 +1,284 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class gpc implements gpe.a {
-   final flz a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
+public class gpc implements gpj.a {
+   private static final boolean a = true;
+   private static final boolean b = true;
+   private static final boolean c = true;
+   private static final boolean d = true;
+   private static final boolean e = true;
+   private static final boolean f = false;
+   private static final boolean g = true;
+   private static final boolean h = true;
+   private static final boolean i = true;
+   private static final boolean j = true;
+   private static final boolean k = true;
+   private static final boolean l = true;
+   private static final boolean m = true;
+   private static final boolean n = true;
+   private static final int o = 30;
+   private static final int p = 30;
+   private static final int q = 8;
+   private static final int r = 20;
+   private static final float s = 0.02F;
+   private static final int t = -23296;
+   private static final int u = -3355444;
+   private static final int v = -98404;
+   private final fme w;
+   private final Map<jh, gpc.a> x = new HashMap<>();
+   private final Map<UUID, abb.a> y = new HashMap<>();
    @Nullable
-   private gpc.a d;
+   private UUID z;
 
-   public gpc(flz $$0) {
-      this.a = $$0;
+   public gpc(fme $$0) {
+      this.w = $$0;
    }
 
    @Override
-   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ae.d();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         hfp $$6 = this.a.V();
-         if ($$6 != null) {
-            this.d = new gpc.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
-         }
-      }
+   public void a() {
+      this.x.clear();
+      this.y.clear();
+      this.z = null;
+   }
 
-      if (this.d != null) {
-         Map<dgg, String> $$7 = this.d.b.getNow(null);
-         double $$8 = this.a.j.k().b().e * 0.85;
+   public void a(abm.a $$0, long $$1) {
+      this.x.put($$0.a(), new gpc.a($$0, $$1));
+   }
 
-         for (Entry<dgg, String> $$9 : this.d.a.entrySet()) {
-            dgg $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
+   public void a(abb.a $$0) {
+      this.y.put($$0.b(), $$0);
+   }
 
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
+   public void a(int $$0) {
+      this.y.values().removeIf($$1 -> $$1.c() == $$0);
+   }
 
-            for (String $$14 : $$12) {
-               gpe.a($$0, $$1, $$14, (double)kj.a($$10.g, 8), $$8 + (double)$$13, (double)kj.a($$10.h, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
-         }
+   @Override
+   public void a(fgq $$0, glj $$1, double $$2, double $$3, double $$4) {
+      this.c();
+      this.b();
+      this.a($$0, $$1);
+      if (!this.w.t.aa_()) {
+         this.g();
       }
    }
 
-   final class a {
-      final Map<dgg, String> a;
-      final CompletableFuture<Map<dgg, String>> b;
+   private void b() {
+      this.y.entrySet().removeIf($$0 -> this.w.s.a($$0.getValue().c()) == null);
+   }
 
-      a(final hfp $$0, final double $$1, final double $$2) {
-         gfd $$3 = gpc.this.a.s;
-         aly<dha> $$4 = $$3.ah();
-         int $$5 = kj.a($$1);
-         int $$6 = kj.a($$2);
-         Builder<dgg, String> $$7 = ImmutableMap.builder();
-         gez $$8 = $$3.h();
+   private void c() {
+      long $$0 = this.w.s.ac() - 20L;
+      this.x.entrySet().removeIf($$1 -> $$1.getValue().b() < $$0);
+   }
 
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               dgg $$11 = new dgg($$9, $$10);
-               String $$12 = "";
-               dzs $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.B() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
-
-               $$7.put($$11, $$12);
-            }
+   private void a(fgq $$0, glj $$1) {
+      jh $$2 = this.e().c();
+      this.y.values().forEach($$2x -> {
+         if (this.c($$2x)) {
+            this.b($$0, $$1, $$2x);
          }
+      });
+      this.b($$0, $$1);
 
-         this.a = $$7.build();
-         this.b = $$0.a(() -> {
-            ash $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<dgg, String> $$5x = ImmutableMap.builder();
-               ase $$6x = $$4x.m();
-
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     dgg $$9x = new dgg($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
-
-               return $$5x.build();
-            }
-         });
+      for (jh $$3 : this.x.keySet()) {
+         if ($$2.a($$3, 30.0)) {
+            a($$0, $$1, $$3);
+         }
       }
+
+      Map<jh, Set<UUID>> $$4 = this.d();
+      this.x.values().forEach($$4x -> {
+         if ($$2.a($$4x.a.a(), 30.0)) {
+            Set<UUID> $$5 = $$4.get($$4x.a.a());
+            this.a($$0, $$1, $$4x.a, (Collection<UUID>)($$5 == null ? Sets.newHashSet() : $$5));
+         }
+      });
+      this.f().forEach(($$3x, $$4x) -> {
+         if ($$2.a($$3x, 30.0)) {
+            this.a($$0, $$1, $$3x, (List<String>)$$4x);
+         }
+      });
+   }
+
+   private Map<jh, Set<UUID>> d() {
+      Map<jh, Set<UUID>> $$0 = Maps.newHashMap();
+      this.y.values().forEach($$1 -> $$1.j().forEach($$2 -> $$0.computeIfAbsent($$2, $$0xxx -> Sets.newHashSet()).add($$1.b())));
+      return $$0;
+   }
+
+   private void b(fgq $$0, glj $$1) {
+      Map<jh, Set<UUID>> $$2 = Maps.newHashMap();
+      this.y.values().forEach($$1x -> {
+         if ($$1x.g() != null) {
+            $$2.computeIfAbsent($$1x.g(), $$0xx -> new HashSet<>()).add($$1x.b());
+         }
+      });
+      $$2.forEach(($$2x, $$3) -> {
+         Set<String> $$4 = $$3.stream().map(ahi::a).collect(Collectors.toSet());
+         int $$5 = 1;
+         a($$0, $$1, $$4.toString(), $$2x, $$5++, -256);
+         a($$0, $$1, "Flower", $$2x, $$5++, -1);
+         float $$6 = 0.05F;
+         gpj.a($$0, $$1, $$2x, 0.05F, 0.8F, 0.8F, 0.0F, 0.3F);
+      });
+   }
+
+   private static String a(Collection<UUID> $$0) {
+      if ($$0.isEmpty()) {
+         return "-";
+      } else {
+         return $$0.size() > 3 ? $$0.size() + " bees" : $$0.stream().map(ahi::a).collect(Collectors.toSet()).toString();
+      }
+   }
+
+   private static void a(fgq $$0, glj $$1, jh $$2) {
+      float $$3 = 0.05F;
+      gpj.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+   }
+
+   private void a(fgq $$0, glj $$1, jh $$2, List<String> $$3) {
+      float $$4 = 0.05F;
+      gpj.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+      a($$0, $$1, $$3 + "", $$2, 0, -256);
+      a($$0, $$1, "Ghost Hive", $$2, 1, -65536);
+   }
+
+   private void a(fgq $$0, glj $$1, abm.a $$2, Collection<UUID> $$3) {
+      int $$4 = 0;
+      if (!$$3.isEmpty()) {
+         a($$0, $$1, "Blacklisted by " + a($$3), $$2, $$4++, -65536);
+      }
+
+      a($$0, $$1, "Out: " + a(this.a($$2.a())), $$2, $$4++, -3355444);
+      if ($$2.c() == 0) {
+         a($$0, $$1, "In: -", $$2, $$4++, -256);
+      } else if ($$2.c() == 1) {
+         a($$0, $$1, "In: 1 bee", $$2, $$4++, -256);
+      } else {
+         a($$0, $$1, "In: " + $$2.c() + " bees", $$2, $$4++, -256);
+      }
+
+      a($$0, $$1, "Honey: " + $$2.d(), $$2, $$4++, -23296);
+      a($$0, $$1, $$2.b() + ($$2.e() ? " (sedated)" : ""), $$2, $$4++, -1);
+   }
+
+   private void a(fgq $$0, glj $$1, abb.a $$2) {
+      if ($$2.e() != null) {
+         gps.a($$0, $$1, $$2.e(), 0.5F, false, false, this.e().b().a(), this.e().b().b(), this.e().b().c());
+      }
+   }
+
+   private void b(fgq $$0, glj $$1, abb.a $$2) {
+      boolean $$3 = this.b($$2);
+      int $$4 = 0;
+      a($$0, $$1, $$2.d(), $$4++, $$2.toString(), -1, 0.03F);
+      if ($$2.f() == null) {
+         a($$0, $$1, $$2.d(), $$4++, "No hive", -98404, 0.02F);
+      } else {
+         a($$0, $$1, $$2.d(), $$4++, "Hive: " + this.a($$2, $$2.f()), -256, 0.02F);
+      }
+
+      if ($$2.g() == null) {
+         a($$0, $$1, $$2.d(), $$4++, "No flower", -98404, 0.02F);
+      } else {
+         a($$0, $$1, $$2.d(), $$4++, "Flower: " + this.a($$2, $$2.g()), -256, 0.02F);
+      }
+
+      for (String $$5 : $$2.i()) {
+         a($$0, $$1, $$2.d(), $$4++, $$5, -16711936, 0.02F);
+      }
+
+      if ($$3) {
+         this.a($$0, $$1, $$2);
+      }
+
+      if ($$2.h() > 0) {
+         int $$6 = $$2.h() < 2400 ? -3355444 : -23296;
+         a($$0, $$1, $$2.d(), $$4++, "Travelling: " + $$2.h() + " ticks", $$6, 0.02F);
+      }
+   }
+
+   private static void a(fgq $$0, glj $$1, String $$2, abm.a $$3, int $$4, int $$5) {
+      a($$0, $$1, $$2, $$3.a(), $$4, $$5);
+   }
+
+   private static void a(fgq $$0, glj $$1, String $$2, jh $$3, int $$4, int $$5) {
+      double $$6 = 1.3;
+      double $$7 = 0.2;
+      double $$8 = (double)$$3.u() + 0.5;
+      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
+      double $$10 = (double)$$3.w() + 0.5;
+      gpj.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
+   }
+
+   private static void a(fgq $$0, glj $$1, ka $$2, int $$3, String $$4, int $$5, float $$6) {
+      double $$7 = 2.4;
+      double $$8 = 0.25;
+      jh $$9 = jh.a($$2);
+      double $$10 = (double)$$9.u() + 0.5;
+      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
+      double $$12 = (double)$$9.w() + 0.5;
+      float $$13 = 0.5F;
+      gpj.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
+   }
+
+   private fln e() {
+      return this.w.j.k();
+   }
+
+   private Set<String> a(abm.a $$0) {
+      return this.a($$0.a()).stream().map(ahi::a).collect(Collectors.toSet());
+   }
+
+   private String a(abb.a $$0, jh $$1) {
+      double $$2 = Math.sqrt($$1.b($$0.d()));
+      double $$3 = (double)Math.round($$2 * 10.0) / 10.0;
+      return $$1.x() + " (dist " + $$3 + ")";
+   }
+
+   private boolean b(abb.a $$0) {
+      return Objects.equals(this.z, $$0.b());
+   }
+
+   private boolean c(abb.a $$0) {
+      cpw $$1 = this.w.t;
+      jh $$2 = jh.a($$1.dA(), $$0.d().b(), $$1.dG());
+      jh $$3 = jh.a((ka)$$0.d());
+      return $$2.a($$3, 30.0);
+   }
+
+   private Collection<UUID> a(jh $$0) {
+      return this.y.values().stream().filter($$1 -> $$1.a($$0)).map(abb.a::b).collect(Collectors.toSet());
+   }
+
+   private Map<jh, List<String>> f() {
+      Map<jh, List<String>> $$0 = Maps.newHashMap();
+
+      for (abb.a $$1 : this.y.values()) {
+         if ($$1.f() != null && !this.x.containsKey($$1.f())) {
+            $$0.computeIfAbsent($$1.f(), $$0x -> Lists.newArrayList()).add($$1.a());
+         }
+      }
+
+      return $$0;
+   }
+
+   private void g() {
+      gpj.a(this.w.ao(), 8).ifPresent($$0 -> this.z = $$0.cG());
+   }
+
+   static record a(abm.a a, long b) {
    }
 }

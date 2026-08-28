@@ -1,45 +1,52 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bsf extends bsh {
-   public static final bsf a = new bsf(0.0F);
-   public static final MapCodec<bsf> b = Codec.FLOAT.fieldOf("value").xmap(bsf::a, bsf::d);
-   private final float d;
+public class bsf extends bsn {
+   public static final MapCodec<bsf> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bsf::new)
+      )
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   public static bsf a(float $$0) {
-      return $$0 == 0.0F ? a : new bsf($$0);
+   private bsf(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   private bsf(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
-   }
-
-   @Override
-   public float a(bam $$0) {
-      return this.d;
-   }
-
-   @Override
-   public float a() {
-      return this.d;
+   public static bsf a(int $$0, int $$1) {
+      return new bsf($$0, $$1);
    }
 
    @Override
-   public float b() {
-      return this.d;
+   public int a(bam $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
    @Override
-   public bsi<?> c() {
-      return bsi.a;
+   public int a() {
+      return this.b;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bso<?> c() {
+      return bso.c;
    }
 
    @Override
    public String toString() {
-      return Float.toString(this.d);
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

@@ -1,174 +1,166 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class dvg extends duw {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final dgh d = new dgh() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dvg.this.e();
+      }
 
-public class dvg extends dup implements btk, fde.a {
-   public static final String d = "sherds";
-   public static final String e = "item";
-   public static final int f = 1;
-   public long g;
-   @Nullable
-   public dvg.a h;
-   private dvw k;
-   private cxk l = cxk.k;
-   @Nullable
-   protected aly<ewm> i;
-   protected long j;
+      @Override
+      public ash e() {
+         return (ash)dvg.this.o;
+      }
 
-   public dvg(jh $$0, dxn $$1) {
-      super(dur.P, $$0, $$1);
-      this.k = dvw.a;
+      @Override
+      public void f() {
+         dxu $$0 = dvg.this.o.a_(dvg.this.p);
+         this.e().a(dvg.this.p, $$0, $$0, 3);
+      }
+
+      @Override
+      public fbx g() {
+         return fbx.b(dvg.this.p);
+      }
+
+      @Override
+      public ew i() {
+         jm $$0 = dvg.this.m().c(dlv.b);
+         return new ew(this, fbx.b(dvg.this.p), new fbw(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().p(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dvg.this.n();
+      }
+   };
+
+   public dvg(jh $$0, dxu $$1) {
+      super(duy.x, $$0, $$1);
    }
 
    @Override
    protected void b(ux $$0, js.a $$1) {
       super.b($$0, $$1);
-      this.k.a($$0);
-      if (!this.c_($$0) && !this.l.f()) {
-         $$0.a("item", this.l.a($$1));
-      }
+      this.d.a($$0, $$1);
+      $$0.a("powered", this.c());
+      $$0.a("conditionMet", this.j());
+      $$0.a("auto", this.d());
    }
 
    @Override
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
-      this.k = dvw.b($$0);
-      if (!this.b_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.l = cxk.a($$1, (vu)$$0.p("item")).orElse(cxk.k);
-         } else {
-            this.l = cxk.k;
-         }
+      this.d.b($$0, $$1);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
+   }
+
+   @Override
+   public boolean p() {
+      return true;
+   }
+
+   public dgh b() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.t() != dvg.a.a) {
+         this.v();
       }
    }
 
-   public acy j() {
-      return acy.a(this);
+   public void f() {
+      dvg.a $$0 = this.t();
+      if ($$0 == dvg.a.b && (this.a || this.b) && this.o != null) {
+         this.v();
+      }
+   }
+
+   private void v() {
+      dkl $$0 = this.m().b();
+      if ($$0 instanceof dlv) {
+         this.k();
+         this.o.a(this.p, $$0, 1);
+      }
+   }
+
+   public boolean j() {
+      return this.c;
+   }
+
+   public boolean k() {
+      this.c = true;
+      if (this.u()) {
+         jh $$0 = this.p.a(this.o.a_(this.p).c(dlv.b).g());
+         if (this.o.a_($$0).b() instanceof dlv) {
+            duw $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dvg && ((dvg)$$1).b().k() > 0;
+         } else {
+            this.c = false;
+         }
+      }
+
+      return this.c;
+   }
+
+   public dvg.a t() {
+      dxu $$0 = this.m();
+      if ($$0.a(dkn.gb)) {
+         return dvg.a.c;
+      } else if ($$0.a(dkn.lb)) {
+         return dvg.a.b;
+      } else {
+         return $$0.a(dkn.lc) ? dvg.a.a : dvg.a.c;
+      }
+   }
+
+   public boolean u() {
+      dxu $$0 = this.o.a_(this.aB_());
+      return $$0.b() instanceof dlv ? $$0.c(dlv.c) : false;
    }
 
    @Override
-   public ux a(js.a $$0) {
-      return this.e($$0);
-   }
-
-   public jm k() {
-      return this.m().c(dyd.S);
-   }
-
-   public dvw t() {
-      return this.k;
-   }
-
-   public void c(cxk $$0) {
-      this.a($$0);
-   }
-
-   public cxk u() {
-      cxk $$0 = cxo.eN.n();
-      $$0.b(this.r());
-      return $$0;
-   }
-
-   public static cxk a(dvw $$0) {
-      cxk $$1 = cxo.eN.n();
-      $$1.b(ku.ak, $$0);
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public aly<ewm> ax_() {
-      return this.i;
-   }
-
-   @Override
-   public void a(@Nullable aly<ewm> $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public long aA_() {
-      return this.j;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.j = $$0;
+   protected void a(duw.b $$0) {
+      super.a($$0);
+      this.d.b($$0.a(ku.g));
    }
 
    @Override
    protected void a(kq.a $$0) {
       super.a($$0);
-      $$0.a(ku.ak, this.k);
-      $$0.a(ku.al, dac.a(List.of(this.l)));
-   }
-
-   @Override
-   protected void a(dup.b $$0) {
-      super.a($$0);
-      this.k = $$0.a(ku.ak, dvw.a);
-      this.l = $$0.a(ku.al, dac.a).a();
+      $$0.a(ku.g, this.d.o());
    }
 
    @Override
    public void a(ux $$0) {
       super.a($$0);
-      $$0.r("sherds");
-      $$0.r("item");
-   }
-
-   @Override
-   public cxk f() {
-      this.d_(null);
-      return this.l;
-   }
-
-   @Override
-   public cxk c(int $$0) {
-      this.d_(null);
-      cxk $$1 = this.l.a($$0);
-      if (this.l.f()) {
-         this.l = cxk.k;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void b(cxk $$0) {
-      this.d_(null);
-      this.l = $$0;
-   }
-
-   @Override
-   public dup v() {
-      return this;
-   }
-
-   public void a(dvg.a $$0) {
-      if (this.o != null && !this.o.B_()) {
-         this.o.a(this.aB_(), this.m().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dvg.a.values().length) {
-         this.g = this.o.ac();
-         this.h = dvg.a.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
+      $$0.r("CustomName");
+      $$0.r("conditionMet");
+      $$0.r("powered");
    }
 
    public static enum a {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+      a,
+      b,
+      c;
    }
 }

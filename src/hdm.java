@@ -1,44 +1,63 @@
-import java.util.List;
-import java.util.function.Function;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class hdm implements hdz {
-   private final alz a;
-   private List<gmu> b = List.of();
+public enum hdm implements hea {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public hdm(alz $$0) {
-      this.a = $$0;
+   private static final int q = 360;
+   private static final Map<Integer, hdm> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hdm)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
+   }
+
+   private hdm(final int $$0, final int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
+
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
+      }
+
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
+      }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
    @Override
-   public void a(hdz.a $$0) {
-      if ($$0.a(this.a) instanceof gmq $$2) {
-         this.b = $$2.e();
-         this.b.forEach($$1 -> $$0.a($$1.a()));
-      }
+   public j b() {
+      return this.s;
    }
 
-   @Override
-   public hdg a(hdp $$0, Function<hdn, hbe> $$1, hdv $$2) {
-      hdg $$3 = $$0.a(this.a, $$2);
-      if (this.b.isEmpty()) {
-         return $$3;
-      } else {
-         gmk $$4 = new gmk($$0, this.b);
-         return new hdm.a($$3, $$4);
-      }
+   public static hdm a(int $$0, int $$1) {
+      return r.get(b(bae.b($$0, 360), bae.b($$1, 360)));
    }
 
-   static class a extends hdk {
-      private final gmk b;
-
-      public a(hdg $$0, gmk $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-
-      @Override
-      public gmk g() {
-         return this.b;
-      }
+   public h a() {
+      return this.t;
    }
 }

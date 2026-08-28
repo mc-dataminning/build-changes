@@ -1,16 +1,12 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public record dak(aly<ewm> b, long c) {
-   public static final Codec<dak> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aly.a(mb.bf).fieldOf("loot_table").forGetter(dak::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(dak::b)).apply($$0, dak::new)
-   );
+public record dak(int d) {
+   public static final Codec<dak> a = Codec.INT.xmap(dak::new, dak::a);
+   public static final zt<ByteBuf, dak> b = zr.g.a(dak::new, dak::a);
+   public static final dak c = new dak(4603950);
 
-   public aly<ewm> a() {
-      return this.b;
-   }
-
-   public long b() {
-      return this.c;
+   public int a() {
+      return this.d;
    }
 }

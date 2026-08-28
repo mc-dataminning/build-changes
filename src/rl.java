@@ -1,65 +1,65 @@
 public class rl {
-   public static final aly<efm<?>> a = a("cave");
-   public static final aly<efm<?>> b = a("cave_extra_underground");
-   public static final aly<efm<?>> c = a("canyon");
-   public static final aly<efm<?>> d = a("nether_cave");
+   public static final aly<eft<?>> a = a("cave");
+   public static final aly<eft<?>> b = a("cave_extra_underground");
+   public static final aly<eft<?>> c = a("canyon");
+   public static final aly<eft<?>> d = a("nether_cave");
 
-   private static aly<efm<?>> a(String $$0) {
-      return aly.a(mb.aJ, alz.b($$0));
+   private static aly<eft<?>> a(String $$0) {
+      return aly.a(mb.aK, alz.b($$0));
    }
 
-   public static void a(rk<efm<?>> $$0) {
-      jr<dke> $$1 = $$0.a(mb.f);
+   public static void a(rk<eft<?>> $$0) {
+      jr<dkl> $$1 = $$0.a(mb.f);
       $$0.a(
          a,
-         efo.a
+         efv.a
             .a(
-               new efk(
+               new efr(
                   0.15F,
-                  emm.a(eec.b(8), eec.a(180)),
-                  bso.b(0.1F, 0.9F),
-                  eec.b(8),
-                  efi.a(false, dkg.pn.m()),
+                  emt.a(eej.b(8), eej.a(180)),
+                  bss.b(0.1F, 0.9F),
+                  eej.b(8),
+                  efp.a(false, dkn.pn.m()),
                   $$1.b(axu.bk),
-                  bso.b(0.7F, 1.4F),
-                  bso.b(0.8F, 1.3F),
-                  bso.b(-1.0F, -0.4F)
+                  bss.b(0.7F, 1.4F),
+                  bss.b(0.8F, 1.3F),
+                  bss.b(-1.0F, -0.4F)
                )
             )
       );
       $$0.a(
          b,
-         efo.a
+         efv.a
             .a(
-               new efk(
+               new efr(
                   0.07F,
-                  emm.a(eec.b(8), eec.a(47)),
-                  bso.b(0.1F, 0.9F),
-                  eec.b(8),
-                  efi.a(false, dkg.gK.m()),
+                  emt.a(eej.b(8), eej.a(47)),
+                  bss.b(0.1F, 0.9F),
+                  eej.b(8),
+                  efp.a(false, dkn.gK.m()),
                   $$1.b(axu.bk),
-                  bso.b(0.7F, 1.4F),
-                  bso.b(0.8F, 1.3F),
-                  bso.b(-1.0F, -0.4F)
+                  bss.b(0.7F, 1.4F),
+                  bss.b(0.8F, 1.3F),
+                  bss.b(-1.0F, -0.4F)
                )
             )
       );
       $$0.a(
          c,
-         efo.c
+         efv.c
             .a(
-               new eff(
+               new efm(
                   0.01F,
-                  emm.a(eec.a(10), eec.a(67)),
-                  bsf.a(3.0F),
-                  eec.b(8),
-                  efi.a(false, dkg.po.m()),
+                  emt.a(eej.a(10), eej.a(67)),
+                  bsj.a(3.0F),
+                  eej.b(8),
+                  efp.a(false, dkn.po.m()),
                   $$1.b(axu.bk),
-                  bso.b(-0.125F, 0.125F),
-                  new eff.a(bso.b(0.75F, 1.0F), bsn.a(0.0F, 6.0F, 2.0F), 3, bso.b(0.75F, 1.0F), 1.0F, 0.0F)
+                  bss.b(-0.125F, 0.125F),
+                  new efm.a(bss.b(0.75F, 1.0F), bsr.a(0.0F, 6.0F, 2.0F), 3, bss.b(0.75F, 1.0F), 1.0F, 0.0F)
                )
             )
       );
-      $$0.a(d, efo.b.a(new efk(0.2F, emm.a(eec.a(0), eec.c(1)), bsf.a(0.5F), eec.b(10), $$1.b(axu.bl), bsf.a(1.0F), bsf.a(1.0F), bsf.a(-0.7F))));
+      $$0.a(d, efv.b.a(new efr(0.2F, emt.a(eej.a(0), eej.c(1)), bsj.a(0.5F), eej.b(10), $$1.b(axu.bl), bsj.a(1.0F), bsj.a(1.0F), bsj.a(-0.7F))));
    }
 }

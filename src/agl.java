@@ -24,15 +24,15 @@ public class agl implements aac<acr> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static agl a(fcs $$0, boolean $$1) {
+   public static agl a(fcx $$0, boolean $$1) {
       return new agl($$0.b(), $$1 ? 0 : 2, Optional.of(new agl.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static agl a(fcs $$0) {
+   public static agl a(fcx $$0) {
       return new agl($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static agl a(fcs $$0, String $$1, agl.a $$2) {
+   public static agl a(fcx $$0, String $$1, agl.a $$2) {
       return new agl($$0.b(), $$2 == agl.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -125,7 +125,7 @@ public class agl implements aac<acr> {
       private final n f;
       private final int g;
 
-      public b(fcs $$0) {
+      public b(fcx $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

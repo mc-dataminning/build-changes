@@ -1,7 +1,44 @@
-@FunctionalInterface
-public interface eop<C extends eis> {
-   void generatePieces(eou var1, eop.a<C> var2);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   public static record a<C extends eis>(C a, dzj b, esf c, dgg d, dhc e, eeh f, long g) {
+public record eop(List<eop.a> c, epg d) {
+   public static final Codec<eop> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eop.a.a.listOf().fieldOf("structures").forGetter(eop::a), epg.b.fieldOf("placement").forGetter(eop::b)).apply($$0, eop::new)
+   );
+   public static final Codec<jq<eop>> b = alv.a(mb.aW, a);
+
+   public eop(jq<eoj> $$0, epg $$1) {
+      this(List.of(new eop.a($$0, 1)), $$1);
+   }
+
+   public static eop.a a(jq<eoj> $$0, int $$1) {
+      return new eop.a($$0, $$1);
+   }
+
+   public static eop.a a(jq<eoj> $$0) {
+      return new eop.a($$0, 1);
+   }
+
+   public List<eop.a> a() {
+      return this.c;
+   }
+
+   public epg b() {
+      return this.d;
+   }
+
+   public static record a(jq<eoj> b, int c) {
+      public static final Codec<eop.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eoj.b.fieldOf("structure").forGetter(eop.a::a), azn.m.fieldOf("weight").forGetter(eop.a::b)).apply($$0, eop.a::new)
+      );
+
+      public jq<eoj> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
    }
 }

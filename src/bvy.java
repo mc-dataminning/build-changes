@@ -1,3 +1,3 @@
 public interface bvy {
-   boolean a();
+   void b(cpw var1);
 }

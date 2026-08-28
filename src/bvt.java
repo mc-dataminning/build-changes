@@ -1,91 +1,46 @@
-import org.jetbrains.annotations.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-public class bvt extends cir {
-   private static final alc<Integer> ch = alg.a(bvt.class, ale.b);
+public record bvt(aly<ewt> c, Map<bvr, Float> d) {
+   public static final Codec<Map<bvr, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bvr.k, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bvt::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(bvr.i);
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bvt> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aly.a(mb.bg).fieldOf("loot_table").forGetter(bvt::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bvt::b))
+            .apply($$0, bvt::new)
+   );
 
-   public bvt(bvm<? extends bvt> $$0, dha $$1) {
-      super($$0, $$1);
+   public bvt(aly<ewt> $$0, float $$1) {
+      this($$0, a($$1));
    }
 
-   @Override
-   protected lq p() {
-      return ls.aQ;
+   private static Map<bvr, Float> a(float $$0) {
+      return a(List.of(bvr.values()), $$0);
    }
 
-   @Override
-   protected void a(alg.a $$0) {
-      super.a($$0);
-      $$0.a(ch, 0);
-   }
+   private static Map<bvr, Float> a(List<bvr> $$0, float $$1) {
+      Map<bvr, Float> $$2 = Maps.newHashMap();
 
-   @Nullable
-   @Override
-   public buw a(ash $$0, buw $$1) {
-      return bvm.ah.a($$0, bvl.e);
-   }
-
-   @Override
-   protected axe t() {
-      return axf.lc;
-   }
-
-   @Override
-   protected axe u() {
-      return axf.kZ;
-   }
-
-   @Override
-   protected axe e(btv $$0) {
-      return axf.lb;
-   }
-
-   @Override
-   protected axe o_() {
-      return axf.la;
-   }
-
-   @Override
-   public void b(ux $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.x());
-   }
-
-   @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      this.s($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      int $$0 = this.x();
-      if ($$0 > 0) {
-         this.s($$0 - 1);
+      for (bvr $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
 
-      this.dV().a(ls.aR, this.d(0.6), this.dD(), this.g(0.6), 0.0, 0.0, 0.0);
+      return $$2;
    }
 
-   @Override
-   public boolean a(ash $$0, btv $$1, float $$2) {
-      boolean $$3 = super.a($$0, $$1, $$2);
-      if ($$3) {
-         this.s(100);
-      }
-
-      return $$3;
+   public aly<ewt> a() {
+      return this.c;
    }
 
-   private void s(int $$0) {
-      this.al.a(ch, $$0);
-   }
-
-   public int x() {
-      return this.al.a(ch);
-   }
-
-   public static boolean a(bvm<? extends bwb> $$0, dhr $$1, bvl $$2, jh $$3, bam $$4) {
-      return $$3.v() <= $$1.O() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dkg.J);
+   public Map<bvr, Float> b() {
+      return this.d;
    }
 }

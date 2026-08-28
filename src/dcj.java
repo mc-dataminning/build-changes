@@ -1,18 +1,15 @@
-public interface dcj<T extends dbz<?>> {
-   dcj<dbp> a = a("crafting");
-   dcj<dcs> b = a("smelting");
-   dcj<dbj> c = a("blasting");
-   dcj<dcx> d = a("smoking");
-   dcj<dbl> e = a("campfire_cooking");
-   dcj<dcy> f = a("stonecutting");
-   dcj<dct> g = a("smithing");
+public interface dcj {
+   cxo a(int var1);
 
-   static <T extends dbz<?>> dcj<T> a(final String $$0) {
-      return kd.a(ma.q, alz.b($$0), new dcj<T>() {
-         @Override
-         public String toString() {
-            return $$0;
+   int a();
+
+   default boolean b() {
+      for (int $$0 = 0; $$0 < this.a(); $$0++) {
+         if (!this.a($$0).f()) {
+            return false;
          }
-      });
+      }
+
+      return true;
    }
 }

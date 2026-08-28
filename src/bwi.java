@@ -1,15 +1,57 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public interface bwi {
-   @Nullable
-   UUID ab_();
+public enum bwi implements bba {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
 
-   dgr e();
+   public static final Codec<bwi> i = bba.a(bwi::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
 
-   @Nullable
-   default bwb ah_() {
-      UUID $$0 = this.ab_();
-      return $$0 == null ? null : this.e().b($$0);
+   private bwi(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
+   }
+
+   public String a() {
+      return this.m;
+   }
+
+   @Override
+   public String c() {
+      return this.m;
+   }
+
+   public int b() {
+      return this.j;
+   }
+
+   public boolean d() {
+      return this.k;
+   }
+
+   public boolean e() {
+      return this.l;
+   }
+
+   public int f() {
+      return this.o;
+   }
+
+   public int g() {
+      return 32;
    }
 }

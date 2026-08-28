@@ -1,200 +1,136 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-public class dwa extends dup implements ecl.b<ecs.b>, ecs {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 10;
-   private static final int c = 20;
-   private static final int d = 5;
-   private static final int h = 6;
-   private static final int i = 40;
-   private static final int j = 90;
-   private static final Int2ObjectMap<axe> k = ae.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, axf.Cp);
-      $$0.put(2, axf.Cq);
-      $$0.put(3, axf.Cr);
-      $$0.put(4, axf.Co);
-   });
-   private int l;
-   private final ecs.d m = new dwa.a();
-   private ecs.a n = new ecs.a();
-   private final ecs.b r = new ecs.b(this);
+public class dwa extends duw implements fdj.a {
+   public static final String b = "RecordItem";
+   public static final String c = "ticks_since_song_started";
+   private cxo d = cxo.k;
+   private final cxv e = new cxv(this::k, this.aB_());
 
-   public dwa(jh $$0, dxn $$1) {
-      super(dur.M, $$0, $$1);
+   public dwa(jh $$0, dxu $$1) {
+      super(duy.e, $$0, $$1);
    }
 
-   @Override
-   public ecs.a gn() {
-      return this.n;
+   public cxv j() {
+      return this.e;
    }
 
-   @Override
-   public ecs.d go() {
-      return this.m;
+   public void k() {
+      this.o.a(this.aB_(), this.m().b());
+      this.e();
+   }
+
+   private void a(boolean $$0) {
+      if (this.o != null && this.o.a_(this.aB_()) == this.m()) {
+         this.o.a(this.aB_(), this.m().b(doq.b, Boolean.valueOf($$0)), 2);
+         this.o.a(ecq.c, this.aB_(), ecq.a.a(this.m()));
+      }
+   }
+
+   public void t() {
+      if (this.o != null && !this.o.C) {
+         jh $$0 = this.aB_();
+         cxo $$1 = this.f();
+         if (!$$1.f()) {
+            this.h();
+            fbx $$2 = fbx.a($$0, 0.5, 1.01, 0.5).a(this.o.A, 0.7F);
+            cxo $$3 = $$1.v();
+            cma $$4 = new cma(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.s();
+            this.o.b($$4);
+         }
+      }
+   }
+
+   public static void a(dhh $$0, jh $$1, dxu $$2, dwa $$3) {
+      $$3.e.b($$0, $$2);
+   }
+
+   public int u() {
+      return cxu.a(this.o.K_(), this.d).map(jq::a).map(cxu::e).orElse(0);
    }
 
    @Override
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("warning_level", 99)) {
-         this.l = $$0.h("warning_level");
+      if ($$0.b("RecordItem", 10)) {
+         this.d = cxo.a($$1, (vu)$$0.p("RecordItem")).orElse(cxo.k);
+      } else {
+         this.d = cxo.k;
       }
 
-      alx<vu> $$2 = $$1.a(vl.a);
-      if ($$0.b("listener", 10)) {
-         ecs.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Shrieker: '{}'", $$0x))
-            .ifPresent($$0x -> this.n = $$0x);
+      if ($$0.b("ticks_since_song_started", 4)) {
+         cxu.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.i("ticks_since_song_started")));
       }
    }
 
    @Override
    protected void b(ux $$0, js.a $$1) {
       super.b($$0, $$1);
-      $$0.a("warning_level", this.l);
-      alx<vu> $$2 = $$1.a(vl.a);
-      ecs.a.a
-         .encodeStart($$2, this.n)
-         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Shrieker: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
+      if (!this.f().f()) {
+         $$0.a("RecordItem", this.f().a($$1));
+      }
+
+      if (this.e.b() != null) {
+         $$0.a("ticks_since_song_started", this.e.c());
+      }
    }
 
-   @Nullable
-   public static asi a(@Nullable bvf $$0) {
-      if ($$0 instanceof asi) {
-         return (asi)$$0;
+   @Override
+   public cxo f() {
+      return this.d;
+   }
+
+   @Override
+   public cxo c(int $$0) {
+      cxo $$1 = this.d;
+      this.b(cxo.k);
+      return $$1;
+   }
+
+   @Override
+   public void b(cxo $$0) {
+      this.d = $$0;
+      boolean $$1 = !this.d.f();
+      Optional<jq<cxu>> $$2 = cxu.a(this.o.K_(), this.d);
+      this.a($$1);
+      if ($$1 && $$2.isPresent()) {
+         this.e.a(this.o, $$2.get());
       } else {
-         if ($$0 != null) {
-            bwb $$6 = $$0.cX();
-            if ($$6 instanceof asi) {
-               return (asi)$$6;
-            }
-         }
-
-         if ($$0 instanceof cql $$3) {
-            bvf var3 = $$3.p();
-            if (var3 instanceof asi) {
-               return (asi)var3;
-            }
-         }
-
-         if ($$0 instanceof clw $$5) {
-            bvf var9 = $$5.p();
-            if (var9 instanceof asi) {
-               return (asi)var9;
-            }
-         }
-
-         return null;
+         this.e.a(this.o, this.m());
       }
    }
 
-   public void a(ash $$0, @Nullable asi $$1) {
-      if ($$1 != null) {
-         dxn $$2 = this.m();
-         if (!$$2.c(drb.b)) {
-            this.l = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (bvf)$$1);
-            }
-         }
-      }
+   @Override
+   public int ao_() {
+      return 1;
    }
 
-   private boolean b(ash $$0, asi $$1) {
-      OptionalInt $$2 = cox.a($$0, this.aB_(), $$1);
-      $$2.ifPresent($$0x -> this.l = $$0x);
-      return $$2.isPresent();
+   @Override
+   public duw v() {
+      return this;
    }
 
-   private void a(ash $$0, @Nullable bvf $$1) {
-      jh $$2 = this.aB_();
-      dxn $$3 = this.m();
-      $$0.a($$2, $$3.b(drb.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(ecj.N, $$2, ecj.a.a($$1));
+   @Override
+   public boolean b(int $$0, cxo $$1) {
+      return $$1.b(ku.ab) && this.a($$0).f();
    }
 
-   private boolean b(ash $$0) {
-      return this.m().c(drb.d) && $$0.al() != btb.a && $$0.N().b(dgw.M);
+   @Override
+   public boolean a(btb $$0, int $$1, cxo $$2) {
+      return $$0.a_(cxo::f);
    }
 
-   public void a(ash $$0) {
-      if (this.b($$0) && this.l > 0) {
-         if (!this.c($$0)) {
-            this.b((dha)$$0);
-         }
-
-         cov.a($$0, fbs.b(this.aB_()), null, 40);
-      }
+   @VisibleForTesting
+   public void c(cxo $$0) {
+      this.d = $$0;
+      cxu.a(this.o.K_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
+      this.o.a(this.aB_(), this.m().b());
+      this.e();
    }
 
-   private void b(dha $$0) {
-      axe $$1 = (axe)k.get(this.l);
-      if ($$1 != null) {
-         jh $$2 = this.aB_();
-         int $$3 = $$2.u() + bae.b($$0.A, -10, 10);
-         int $$4 = $$2.v() + bae.b($$0.A, -10, 10);
-         int $$5 = $$2.w() + bae.b($$0.A, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, axg.f, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean c(ash $$0) {
-      return this.l < 4 ? false : bax.a(bvm.bG, bvl.k, $$0, this.aB_(), 20, 5, 6, bax.a.b).isPresent();
-   }
-
-   public ecs.b b() {
-      return this.r;
-   }
-
-   class a implements ecs.d {
-      private static final int b = 8;
-      private final ecn c = new ecf(dwa.this.p);
-
-      public a() {
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public ecn b() {
-         return this.c;
-      }
-
-      @Override
-      public ayk<ecj> c() {
-         return ayb.c;
-      }
-
-      @Override
-      public boolean a(ash $$0, jh $$1, jq<ecj> $$2, ecj.a $$3) {
-         return !dwa.this.m().c(drb.b) && dwa.a($$3.a()) != null;
-      }
-
-      @Override
-      public void a(ash $$0, jh $$1, jq<ecj> $$2, @Nullable bvf $$3, @Nullable bvf $$4, float $$5) {
-         dwa.this.a($$0, dwa.a($$4 != null ? $$4 : $$3));
-      }
-
-      @Override
-      public void e() {
-         dwa.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
-      }
+   @VisibleForTesting
+   public void w() {
+      cxu.a(this.o.K_(), this.f()).ifPresent($$0 -> this.e.a(this.o, (jq<cxu>)$$0));
    }
 }

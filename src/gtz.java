@@ -1,42 +1,39 @@
-public class gtz extends gqa<csf, gyq> {
-   private final gmh b;
+public class gtz extends gsu<cnj, gzs, gdo> {
+   private static final alz a = alz.b("textures/entity/strider/strider.png");
+   private static final alz b = alz.b("textures/entity/strider/strider_cold.png");
+   private static final float k = 0.5F;
 
-   public gtz(grj.a $$0) {
-      super($$0, geg.dd);
-      this.b = $$0.d();
+   public gtz(gro.a $$0) {
+      super($$0, new gdo($$0.a(gel.da)), 0.5F);
+      this.a(new gwe<>(this, new gdo($$0.a(gel.db)), alz.b("textures/entity/strider/strider_saddle.png")));
    }
 
-   protected void a(gyq $$0, dxn $$1, fgl $$2, gle $$3, int $$4) {
-      float $$5 = $$0.C;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = bae.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   public alz a(gzs $$0) {
+      return $$0.b ? b : a;
    }
 
-   public static void a(gmh $$0, dxn $$1, fgl $$2, gle $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = hav.a(hav.a(1.0F), 10);
-      } else {
-         $$6 = hav.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected float b(gzs $$0) {
+      float $$1 = super.g($$0);
+      return $$0.ae ? $$1 * 0.5F : $$1;
    }
 
-   public gyq a() {
-      return new gyq();
+   public gzs b() {
+      return new gzs();
    }
 
-   public void a(csf $$0, gyq $$1, float $$2) {
+   public void a(cnj $$0, gzs $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.C = $$0.x() > -1 ? (float)$$0.x() - $$2 + 1.0F : -1.0F;
+      $$1.a = $$0.j();
+      $$1.b = $$0.p();
+      $$1.c = $$0.ca();
+   }
+
+   protected void a(gzs $$0, fgq $$1) {
+      float $$2 = $$0.ab;
+      $$1.b($$2, $$2, $$2);
+   }
+
+   protected boolean c(gzs $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

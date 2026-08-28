@@ -1,27 +1,23 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emv extends eni {
+public class emv extends emq {
    public static final MapCodec<emv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eep.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, emv::new)
+      $$0 -> $$0.group(brq.b(emq.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, emv::new)
    );
-   private final eep c;
+   private final brq<emq> b;
 
-   private emv(eep $$0) {
-      this.c = $$0;
-   }
-
-   public static emv a(eep $$0) {
-      return new emv($$0);
+   public emv(brq<emq> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(enh $$0, bam $$1, jh $$2) {
-      return this.c.test($$0.d(), $$2);
+   public int a(bam $$0, eem $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
    }
 
    @Override
-   public enk<?> b() {
-      return enk.a;
+   public emr<?> a() {
+      return emr.f;
    }
 }

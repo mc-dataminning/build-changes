@@ -1,57 +1,154 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehk extends ego<ejb> {
-   public ehk(Codec<ejb> $$0) {
+@Deprecated
+public class ehk extends egv<ehk.a> {
+   private static final dxu a = dkn.nx.m();
+
+   public ehk(Codec<ehk.a> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egq<ejb> $$0) {
-      dhb $$1 = $$0.b();
-      jh $$2 = $$0.e();
+   public boolean a(egx<ehk.a> $$0) {
+      jh $$1 = $$0.e();
+      dif $$2 = $$0.b();
       bam $$3 = $$0.d();
-      ejb $$4 = $$0.f();
-      Optional<jm> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+      ehk.a $$4 = $$0.f();
+      if ($$1.v() <= $$2.L_() + 4) {
          return false;
       } else {
-         jh $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && egj.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         egj.a($$1, $$2, $$5.get(), $$7, false);
+         $$1 = $$1.c(4);
+         boolean[] $$5 = new boolean[2048];
+         int $$6 = $$3.a(4) + 4;
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            double $$8 = $$3.j() * 6.0 + 3.0;
+            double $$9 = $$3.j() * 4.0 + 2.0;
+            double $$10 = $$3.j() * 6.0 + 3.0;
+            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
+            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
+            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
+
+            for (int $$14 = 1; $$14 < 15; $$14++) {
+               for (int $$15 = 1; $$15 < 15; $$15++) {
+                  for (int $$16 = 1; $$16 < 7; $$16++) {
+                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
+                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
+                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
+                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
+                     if ($$20 < 1.0) {
+                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
+                     }
+                  }
+               }
+            }
+         }
+
+         dxu $$21 = $$4.a().a($$3, $$1);
+
+         for (int $$22 = 0; $$22 < 16; $$22++) {
+            for (int $$23 = 0; $$23 < 16; $$23++) {
+               for (int $$24 = 0; $$24 < 8; $$24++) {
+                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
+                     && (
+                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
+                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
+                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
+                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
+                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
+                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
+                     );
+                  if ($$25) {
+                     dxu $$26 = $$2.a_($$1.b($$22, $$24, $$23));
+                     if ($$24 >= 4 && $$26.n()) {
+                        return false;
+                     }
+
+                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
+                        return false;
+                     }
+                  }
+               }
+            }
+         }
+
+         for (int $$27 = 0; $$27 < 16; $$27++) {
+            for (int $$28 = 0; $$28 < 16; $$28++) {
+               for (int $$29 = 0; $$29 < 8; $$29++) {
+                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
+                     jh $$30 = $$1.b($$27, $$29, $$28);
+                     if (this.c($$2.a_($$30))) {
+                        boolean $$31 = $$29 >= 4;
+                        $$2.a($$30, $$31 ? a : $$21, 2);
+                        if ($$31) {
+                           $$2.a($$30, a.b(), 0);
+                           this.a($$2, $$30);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         dxu $$32 = $$4.b().a($$3, $$1);
+         if (!$$32.l()) {
+            for (int $$33 = 0; $$33 < 16; $$33++) {
+               for (int $$34 = 0; $$34 < 16; $$34++) {
+                  for (int $$35 = 0; $$35 < 8; $$35++) {
+                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
+                        && (
+                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
+                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
+                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
+                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
+                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
+                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
+                        );
+                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
+                        dxu $$37 = $$2.a_($$1.b($$33, $$35, $$34));
+                        if ($$37.e() && !$$37.a(axu.bR)) {
+                           jh $$38 = $$1.b($$33, $$35, $$34);
+                           $$2.a($$38, $$32, 2);
+                           this.a($$2, $$38);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         if ($$21.y().a(aya.a)) {
+            for (int $$39 = 0; $$39 < 16; $$39++) {
+               for (int $$40 = 0; $$40 < 16; $$40++) {
+                  int $$41 = 4;
+                  jh $$42 = $$1.b($$39, 4, $$40);
+                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
+                     $$2.a($$42, dkn.eb.m(), 2);
+                  }
+               }
+            }
+         }
+
          return true;
       }
    }
 
-   private static Optional<jm> a(dhb $$0, jh $$1, bam $$2) {
-      boolean $$3 = egj.b($$0.a_($$1.d()));
-      boolean $$4 = egj.b($$0.a_($$1.e()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? jm.a : jm.b);
-      } else if ($$3) {
-         return Optional.of(jm.a);
-      } else {
-         return $$4 ? Optional.of(jm.b) : Optional.empty();
-      }
+   private boolean c(dxu $$0) {
+      return !$$0.a(axu.bQ);
    }
 
-   private static void a(dhb $$0, bam $$1, jh $$2, ejb $$3) {
-      egj.c($$0, $$2);
+   public static record a(ela b, ela c) implements eiz {
+      public static final Codec<ehk.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ela.a.fieldOf("fluid").forGetter(ehk.a::a), ela.a.fieldOf("barrier").forGetter(ehk.a::b)).apply($$0, ehk.a::new)
+      );
 
-      for (jm $$4 : jm.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            jh $$5 = $$2.a($$4);
-            egj.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               jh $$6 = $$5.a(jm.b($$1));
-               egj.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  jh $$7 = $$6.a(jm.b($$1));
-                  egj.c($$0, $$7);
-               }
-            }
-         }
+      public ela a() {
+         return this.b;
+      }
+
+      public ela b() {
+         return this.c;
       }
    }
 }

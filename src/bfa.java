@@ -1,35 +1,36 @@
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
 
-public class bfa extends DataFix {
-   private static final Codec<List<Float>> a = Codec.FLOAT.listOf();
+public class bfa extends bhr {
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("donkeykong", "donkey_kong");
+      $$0.put("burningskull", "burning_skull");
+      $$0.put("skullandroses", "skull_and_roses");
+   });
 
    public bfa(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityPaintingMotiveFix", biw.B, "minecraft:painting");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityRedundantChanceTagsFix", this.getInputSchema().getType(bis.B), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               if (a($$0x.get("HandDropChances"), 2)) {
-                  $$0x = $$0x.remove("HandDropChances");
-               }
-
-               if (a($$0x.get("ArmorDropChances"), 4)) {
-                  $$0x = $$0x.remove("ArmorDropChances");
-               }
-
-               return $$0x;
-            })
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Motive").asString().result();
+      if ($$1.isPresent()) {
+         String $$2 = $$1.get().toLowerCase(Locale.ROOT);
+         return $$0.set("Motive", $$0.createString(bkk.a(a.getOrDefault($$2, $$2))));
+      } else {
+         return $$0;
+      }
    }
 
-   private static boolean a(OptionalDynamic<?> $$0, int $$1) {
-      return $$0.flatMap(a::parse).map($$1x -> $$1x.size() == $$1 && $$1x.stream().allMatch($$0xx -> $$0xx == 0.0F)).result().orElse(false);
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

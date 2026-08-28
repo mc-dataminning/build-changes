@@ -1,111 +1,82 @@
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public abstract class fpe extends fny {
-   protected final alz a;
-   protected final int b;
-   protected final int c;
+public class fpe extends fob {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fpe.a n;
+   private final Supplier<hck> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   fpe(int $$0, int $$1, xv $$2, int $$3, int $$4, alz $$5, fny.c $$6, @Nullable fny.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public fpe(int $$0, int $$1, gei $$2, Supplier<hck> $$3) {
+      super(0, 0, $$0, $$1, xu.a);
+      this.n = fpe.a.a($$2);
+      this.o = $$3;
    }
 
-   public static fpe.a a(xv $$0, fny.c $$1, boolean $$2) {
-      return new fpe.a($$0, $$1, $$2);
+   @Override
+   protected void b(fnq $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.D() + (float)this.y() / 2.0F, (float)(this.E() + this.w()), 100.0F);
+      float $$4 = (float)this.w() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      $$0.d();
+      ffm.a(a.b.rotationDegrees(this.p));
+      this.n.a($$0, this.o.get());
+      $$0.d();
+      ffm.d();
+      $$0.c().b();
    }
 
-   public static class a {
-      private final xv b;
-      private final fny.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private alz g;
-      private int h;
-      private int i;
-      @Nullable
-      fny.b a;
-
-      public a(xv $$0, fny.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public fpe.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fpe.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fpe.a a(alz $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public fpe.a a(fny.b $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fpe a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (fpe)(this.d
-               ? new fpe.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new fpe.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
-         }
-      }
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = bae.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
    }
 
-   public static class b extends fpe {
-      protected b(int $$0, int $$1, xv $$2, int $$3, int $$4, alz $$5, fny.c $$6, @Nullable fny.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fnl $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() / 2 - this.b / 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(glo::B, this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fnl $$0, fnj $$1, int $$2) {
-      }
+   @Override
+   public void a(hgl $$0) {
    }
 
-   public static class c extends fpe {
-      protected c(int $$0, int $$1, xv $$2, int $$3, int $$4, alz $$5, fny.c $$6, @Nullable fny.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   @Override
+   protected void a(fsb $$0) {
+   }
+
+   @Override
+   public boolean C() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fnn a(fsh $$0) {
+      return null;
+   }
+
+   static record a(gcp a, gcp b) {
+      public static fpe.a a(gei $$0) {
+         gcp $$1 = new gcp($$0.a(gel.cb), false);
+         gcp $$2 = new gcp($$0.a(gel.ch), true);
+         return new fpe.a($$1, $$2);
       }
 
-      @Override
-      public void b(fnl $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() - this.b - 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(glo::B, this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fnl $$0, fnj $$1, int $$2) {
-         int $$3 = this.D() + 2;
-         int $$4 = this.D() + this.y() - this.b - 4;
-         int $$5 = this.D() + this.y() / 2;
-         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
+      public void a(fnq $$0, hck $$1) {
+         $$0.c().a();
+         $$0.c().b(1.0F, 1.0F, -1.0F);
+         $$0.c().a(0.0F, -1.501F, 0.0F);
+         gcp $$2 = $$1.e() == hck.a.a ? this.b : this.a;
+         glt $$3 = $$2.a($$1.a());
+         $$0.a($$3x -> $$2.a($$0.c(), $$3x.getBuffer($$3), 15728880, hba.d));
+         $$0.c().b();
       }
    }
 }

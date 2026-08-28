@@ -28,15 +28,15 @@ public class aii implements aac<ahm> {
       this.d = $$1;
    }
 
-   public static aii a(bvf $$0, boolean $$1) {
+   public static aii a(bvj $$0, boolean $$1) {
       return new aii($$0.ar(), $$1, e);
    }
 
-   public static aii a(bvf $$0, boolean $$1, btd $$2) {
+   public static aii a(bvj $$0, boolean $$1, bth $$2) {
       return new aii($$0.ar(), $$1, new aii.d($$2));
    }
 
-   public static aii a(bvf $$0, boolean $$1, btd $$2, fbs $$3) {
+   public static aii a(bvj $$0, boolean $$1, bth $$2, fbx $$3) {
       return new aii($$0.ar(), $$1, new aii.e($$2, $$3));
    }
 
@@ -64,7 +64,7 @@ public class aii implements aac<ahm> {
    }
 
    @Nullable
-   public bvf a(ash $$0) {
+   public bvj a(ash $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class aii implements aac<ahm> {
    }
 
    public interface c {
-      void a(btd var1);
+      void a(bth var1);
 
-      void a(btd var1, fbs var2);
+      void a(bth var1, fbx var2);
 
       void a();
    }
 
    static class d implements aii.a {
-      private final btd a;
+      private final bth a;
 
-      d(btd $$0) {
+      d(bth $$0) {
          this.a = $$0;
       }
 
       private d(ws $$0) {
-         this.a = $$0.b(btd.class);
+         this.a = $$0.b(bth.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class aii implements aac<ahm> {
    }
 
    static class e implements aii.a {
-      private final btd a;
-      private final fbs b;
+      private final bth a;
+      private final fbx b;
 
-      e(btd $$0, fbs $$1) {
+      e(bth $$0, fbx $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(ws $$0) {
-         this.b = new fbs((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(btd.class);
+         this.b = new fbx((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bth.class);
       }
 
       @Override

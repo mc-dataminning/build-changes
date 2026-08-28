@@ -8,8 +8,8 @@ public class dc extends dy<dc.a> {
       return dc.a.a;
    }
 
-   public void a(asi $$0, bvf $$1, btv $$2) {
-      ewh $$3 = bw.b($$0, $$1);
+   public void a(asi $$0, bvj $$1, btz $$2) {
+      ewo $$3 = bw.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
@@ -83,7 +83,7 @@ public class dc extends dy<dc.a> {
          return ao.d.a(new dc.a(Optional.empty(), Optional.of(bw.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(asi $$0, ewh $$1, btv $$2) {
+      public boolean a(asi $$0, ewo $$1, btz $$2) {
          return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
       }
 

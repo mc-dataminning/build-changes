@@ -1,86 +1,62 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class csy extends cum {
-   private final int o;
-   private final int p;
-   protected final ctp m;
-   protected final cup n = new cup();
-
-   public csy(cug<?> $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1);
-      this.o = $$2;
-      this.p = $$3;
-      this.m = new cvb(this, $$2, $$3);
-   }
-
-   protected cuu a(cps $$0, int $$1, int $$2) {
-      return this.a(new cuq($$0, this.m, this.n, 0, $$1, $$2));
-   }
+public record csy(int c, float d, boolean e) implements czv {
+   public static final Codec<csy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azn.l.fieldOf("nutrition").forGetter(csy::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(csy::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(csy::c)
+            )
+            .apply($$0, csy::new)
+   );
+   public static final zt<xg, csy> b = zt.a(zr.h, csy::a, zr.l, csy::b, zr.b, csy::c, csy::new);
 
    @Override
-   protected void d(int $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.o; $$2++) {
-         for (int $$3 = 0; $$3 < this.p; $$3++) {
-            this.a(new cuu(this.m, $$3 + $$2 * this.o, $$0 + $$3 * 18, $$1 + $$2 * 18));
-         }
+   public void a(dhh $$0, bwf $$1, cxo $$2, czu $$3) {
+      bam $$4 = $$1.dY();
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), axg.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof cpw $$5) {
+         $$5.gr().a(this);
+         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), axf.uD, axg.h, 0.5F, bae.b($$4, 0.9F, 1.0F));
       }
    }
 
-   @Override
-   public cum.a a(boolean $$0, boolean $$1, dcd<?> $$2, ash $$3, cpr $$4) {
-      dcd<dbp> $$5 = (dcd<dbp>)$$2;
-      this.l();
+   public int a() {
+      return this.c;
+   }
 
-      cum.a var8;
-      try {
-         List<cuu> $$6 = this.n();
-         var8 = all.a(new all.a<dbp>() {
-            @Override
-            public void a(cpx $$0) {
-               csy.this.a($$0);
-            }
+   public float b() {
+      return this.d;
+   }
 
-            @Override
-            public void a() {
-               csy.this.n.a();
-               csy.this.m.a();
-            }
+   public boolean c() {
+      return this.e;
+   }
 
-            @Override
-            public boolean a(dcd<dbp> $$0) {
-               return $$0.b().a(csy.this.m.aC_(), csy.this.q().dV());
-            }
-         }, this.o, this.p, $$6, $$6, $$4, $$5, $$0, $$1);
-      } finally {
-         this.a($$3, (dcd<dbp>)$$2);
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+
+      public csy.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      return var8;
-   }
+      public csy.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   @Override
-   protected void l() {
-   }
+      public csy.a a() {
+         this.c = true;
+         return this;
+      }
 
-   protected void a(ash $$0, dcd<dbp> $$1) {
-   }
-
-   public abstract cuu m();
-
-   public abstract List<cuu> n();
-
-   public int o() {
-      return this.o;
-   }
-
-   public int p() {
-      return this.p;
-   }
-
-   protected abstract cps q();
-
-   @Override
-   public void a(cpx $$0) {
-      this.m.fillStackedContents($$0);
+      public csy b() {
+         float $$0 = csw.a(this.a, this.b);
+         return new csy(this.a, $$0, this.c);
+      }
    }
 }

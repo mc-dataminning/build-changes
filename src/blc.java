@@ -1,27 +1,29 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class blc extends bkg {
+public class blc extends bkk {
    public blc(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> bkl.a($$0));
+   }
+
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.put("minecraft:command_block_minecart", $$1.remove("minecraft:commandblock_minecart"));
-      $$1.put("minecraft:end_crystal", $$1.remove("minecraft:ender_crystal"));
-      $$1.put("minecraft:snow_golem", $$1.remove("minecraft:snowman"));
-      $$1.put("minecraft:evoker", $$1.remove("minecraft:evocation_illager"));
-      $$1.put("minecraft:evoker_fangs", $$1.remove("minecraft:evocation_fangs"));
-      $$1.put("minecraft:illusioner", $$1.remove("minecraft:illusion_illager"));
-      $$1.put("minecraft:vindicator", $$1.remove("minecraft:vindication_illager"));
-      $$1.put("minecraft:iron_golem", $$1.remove("minecraft:villager_golem"));
-      $$1.put("minecraft:experience_orb", $$1.remove("minecraft:xp_orb"));
-      $$1.put("minecraft:experience_bottle", $$1.remove("minecraft:xp_bottle"));
-      $$1.put("minecraft:eye_of_ender", $$1.remove("minecraft:eye_of_ender_signal"));
-      $$1.put("minecraft:firework_rocket", $$1.remove("minecraft:fireworks_rocket"));
+      a($$0, $$1, "minecraft:turtle");
+      a($$0, $$1, "minecraft:cod_mob");
+      a($$0, $$1, "minecraft:tropical_fish");
+      a($$0, $$1, "minecraft:salmon_mob");
+      a($$0, $$1, "minecraft:puffer_fish");
+      a($$0, $$1, "minecraft:phantom");
+      a($$0, $$1, "minecraft:dolphin");
+      a($$0, $$1, "minecraft:drowned");
+      $$0.register($$1, "minecraft:trident", $$1x -> DSL.optionalFields("inBlockState", biw.u.in($$0), "Trident", biw.t.in($$0)));
       return $$1;
    }
 }

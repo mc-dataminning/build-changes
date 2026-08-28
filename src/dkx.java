@@ -1,34 +1,98 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkx extends dmb {
+public class dkx extends dkl {
    public static final MapCodec<dkx> a = b(dkx::new);
-   private static final fcm[] b = new fcm[]{
-      dke.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dke.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      dke.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dke.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dke.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dke.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      dke.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dke.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+   public static final dyt b = dyk.ax;
+   public static final int c = 15;
+   protected static final int d = 1;
+   protected static final fcr e = dkl.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+   protected static final fcr f = dkl.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dkx> a() {
       return a;
    }
 
-   public dkx(dxm.d $$0) {
+   protected dkx(dxt.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected dgz d() {
-      return cxo.uV;
+   protected void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return b[this.h($$0)];
+   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      jh $$4 = $$2.d();
+      if ($$1.u($$4)) {
+         int $$5 = 1;
+
+         while ($$1.a_($$2.c($$5)).a(this)) {
+            $$5++;
+         }
+
+         if ($$5 < 3) {
+            int $$6 = $$0.c(b);
+            if ($$6 == 15) {
+               $$1.b($$4, this.m());
+               dxu $$7 = $$0.b(b, Integer.valueOf(0));
+               $$1.a($$2, $$7, 4);
+               $$1.a($$7, $$4, this, null, false);
+            } else {
+               $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 4);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected fcr b(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return e;
+   }
+
+   @Override
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return f;
+   }
+
+   @Override
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      for (jm $$3 : jm.c.a) {
+         dxu $$4 = $$1.a_($$2.a($$3));
+         if ($$4.e() || $$1.b_($$2.a($$3)).a(aya.b)) {
+            return false;
+         }
+      }
+
+      dxu $$5 = $$1.a_($$2.e());
+      return ($$5.a(dkn.ed) || $$5.a(axu.J)) && !$$1.a_($$2.d()).n();
+   }
+
+   @Override
+   protected void a(dxu $$0, dhh $$1, jh $$2, bvj $$3) {
+      $$3.a($$1.aj().k(), 1.0F);
+   }
+
+   @Override
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(dxu $$0, eul $$1) {
+      return false;
    }
 }

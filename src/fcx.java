@@ -1,364 +1,177 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.ArrayList;
+import com.google.common.collect.Sets;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
-import org.slf4j.Logger;
 
-public class fcx {
-   public static final String a = "#";
-   private static final Logger b = LogUtils.getLogger();
-   private final Object2ObjectMap<String, fcp> c = new Object2ObjectOpenHashMap(16, 0.5F);
-   private final Reference2ObjectMap<fda, List<fcp>> d = new Reference2ObjectOpenHashMap();
-   private final Map<String, fcr> e = new Object2ObjectOpenHashMap(16, 0.5F);
-   private final Map<fco, fcp> f = new EnumMap<>(fco.class);
-   private final Object2ObjectMap<String, fcs> g = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<String, fcs> h = new Object2ObjectOpenHashMap();
+public class fcx extends fde {
+   private static final int a = 0;
+   private static final int b = 1;
+   private final fdc c;
+   private final String d;
+   private final Set<String> e = Sets.newHashSet();
+   private xv f;
+   private xv g = xu.a;
+   private xv h = xu.a;
+   private boolean i = true;
+   private boolean j = true;
+   private fde.b k = fde.b.a;
+   private fde.b l = fde.b.a;
+   private n m = n.v;
+   private fde.a n = fde.a.a;
+   private final ys o;
 
-   @Nullable
-   public fcp a(@Nullable String $$0) {
-      return (fcp)this.c.get($$0);
+   public fcx(fdc $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = xv.b($$1);
+      this.o = ys.a.a($$1).a(new yb(yb.a.a, xv.b($$1)));
    }
 
-   public fcp a(String $$0, fda $$1, xv $$2, fda.a $$3, boolean $$4, @Nullable zl $$5) {
-      if (this.c.containsKey($$0)) {
-         throw new IllegalArgumentException("An objective with the name '" + $$0 + "' already exists!");
+   public fdc a() {
+      return this.c;
+   }
+
+   @Override
+   public String b() {
+      return this.d;
+   }
+
+   public xv c() {
+      return this.f;
+   }
+
+   public yj d() {
+      yj $$0 = xy.a((xv)this.f.f().c(this.o));
+      n $$1 = this.n();
+      if ($$1 != n.v) {
+         $$0.a($$1);
+      }
+
+      return $$0;
+   }
+
+   public void a(xv $$0) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Name cannot be null");
       } else {
-         fcp $$6 = new fcp(this, $$0, $$1, $$2, $$3, $$4, $$5);
-         ((List)this.d.computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$6);
-         this.c.put($$0, $$6);
-         this.a($$6);
-         return $$6;
+         this.f = $$0;
+         this.c.b(this);
       }
    }
 
-   public final void a(fda $$0, fcw $$1, Consumer<fcv> $$2) {
-      ((List)this.d.getOrDefault($$0, Collections.emptyList())).forEach($$2x -> $$2.accept(this.a($$1, $$2x, true)));
+   public void b(@Nullable xv $$0) {
+      this.g = $$0 == null ? xu.a : $$0;
+      this.c.b(this);
    }
 
-   private fcr f(String $$0) {
-      return this.e.computeIfAbsent($$0, $$0x -> new fcr());
+   public xv e() {
+      return this.g;
    }
 
-   public fcv c(fcw $$0, fcp $$1) {
-      return this.a($$0, $$1, false);
+   public void c(@Nullable xv $$0) {
+      this.h = $$0 == null ? xu.a : $$0;
+      this.c.b(this);
    }
 
-   public fcv a(final fcw $$0, final fcp $$1, boolean $$2) {
-      final boolean $$3 = $$2 || !$$1.c().e();
-      fcr $$4 = this.f($$0.cI());
-      final MutableBoolean $$5 = new MutableBoolean();
-      final fcu $$6 = $$4.a($$1, $$1x -> $$5.setTrue());
-      return new fcv() {
-         @Override
-         public int a() {
-            return $$6.a();
-         }
-
-         @Override
-         public void a(int $$0x) {
-            if (!$$3) {
-               throw new IllegalStateException("Cannot modify read-only score");
-            } else {
-               boolean $$1 = $$5.isTrue();
-               if ($$1.e()) {
-                  xv $$2 = $$0.p_();
-                  if ($$2 != null && !$$2.equals($$6.d())) {
-                     $$6.a($$2);
-                     $$1 = true;
-                  }
-               }
-
-               if ($$0 != $$6.a()) {
-                  $$6.a($$0);
-                  $$1 = true;
-               }
-
-               if ($$1) {
-                  this.h();
-               }
-            }
-         }
-
-         @Nullable
-         @Override
-         public xv g() {
-            return $$6.d();
-         }
-
-         @Override
-         public void a(@Nullable xv $$0x) {
-            if ($$5.isTrue() || !Objects.equals($$0, $$6.d())) {
-               $$6.a($$0);
-               this.h();
-            }
-         }
-
-         @Override
-         public void a(@Nullable zl $$0x) {
-            $$6.b($$0);
-            this.h();
-         }
-
-         @Override
-         public boolean d() {
-            return $$6.b();
-         }
-
-         @Override
-         public void e() {
-            this.a(false);
-         }
-
-         @Override
-         public void f() {
-            this.a(true);
-         }
-
-         private void a(boolean $$0x) {
-            $$6.a($$0);
-            if ($$5.isTrue()) {
-               this.h();
-            }
-
-            fcx.this.a($$0, $$1);
-         }
-
-         private void h() {
-            fcx.this.a($$0, $$1, $$6);
-            $$5.setFalse();
-         }
-      };
+   public xv f() {
+      return this.h;
    }
 
-   @Nullable
-   public fct d(fcw $$0, fcp $$1) {
-      fcr $$2 = this.e.get($$0.cI());
-      return $$2 != null ? $$2.a($$1) : null;
+   @Override
+   public Collection<String> g() {
+      return this.e;
    }
 
-   public Collection<fcq> i(fcp $$0) {
-      List<fcq> $$1 = new ArrayList<>();
-      this.e.forEach(($$2, $$3) -> {
-         fcu $$4 = $$3.a($$0);
-         if ($$4 != null) {
-            $$1.add(new fcq($$2, $$4.a(), $$4.d(), $$4.c()));
-         }
-      });
+   @Override
+   public yj d(xv $$0) {
+      yj $$1 = xv.i().b(this.g).b($$0).b(this.h);
+      n $$2 = this.n();
+      if ($$2 != n.v) {
+         $$1.a($$2);
+      }
+
       return $$1;
    }
 
-   public Collection<fcp> c() {
-      return this.c.values();
+   public static yj a(@Nullable fde $$0, xv $$1) {
+      return $$0 == null ? $$1.f() : $$0.d($$1);
    }
 
-   public Collection<String> d() {
-      return this.c.keySet();
+   @Override
+   public boolean h() {
+      return this.i;
    }
 
-   public Collection<fcw> e() {
-      return this.e.keySet().stream().map(fcw::c).toList();
+   public void a(boolean $$0) {
+      this.i = $$0;
+      this.c.b(this);
    }
 
-   public void b(fcw $$0) {
-      fcr $$1 = this.e.remove($$0.cI());
-      if ($$1 != null) {
-         this.a($$0);
-      }
+   @Override
+   public boolean i() {
+      return this.j;
    }
 
-   public void e(fcw $$0, fcp $$1) {
-      fcr $$2 = this.e.get($$0.cI());
-      if ($$2 != null) {
-         boolean $$3 = $$2.b($$1);
-         if (!$$2.a()) {
-            fcr $$4 = this.e.remove($$0.cI());
-            if ($$4 != null) {
-               this.a($$0);
-            }
-         } else if ($$3) {
-            this.b($$0, $$1);
-         }
-      }
+   public void b(boolean $$0) {
+      this.j = $$0;
+      this.c.b(this);
    }
 
-   public Object2IntMap<fcp> c(fcw $$0) {
-      fcr $$1 = this.e.get($$0.cI());
-      return $$1 != null ? $$1.b() : Object2IntMaps.emptyMap();
+   @Override
+   public fde.b j() {
+      return this.k;
    }
 
-   public void j(fcp $$0) {
-      this.c.remove($$0.b());
-
-      for (fco $$1 : fco.values()) {
-         if (this.a($$1) == $$0) {
-            this.a($$1, null);
-         }
-      }
-
-      List<fcp> $$2 = (List<fcp>)this.d.get($$0.c());
-      if ($$2 != null) {
-         $$2.remove($$0);
-      }
-
-      for (fcr $$3 : this.e.values()) {
-         $$3.b($$0);
-      }
-
-      this.c($$0);
+   @Override
+   public fde.b k() {
+      return this.l;
    }
 
-   public void a(fco $$0, @Nullable fcp $$1) {
-      this.f.put($$0, $$1);
+   public void a(fde.b $$0) {
+      this.k = $$0;
+      this.c.b(this);
    }
 
-   @Nullable
-   public fcp a(fco $$0) {
-      return this.f.get($$0);
+   public void b(fde.b $$0) {
+      this.l = $$0;
+      this.c.b(this);
    }
 
-   @Nullable
-   public fcs b(String $$0) {
-      return (fcs)this.g.get($$0);
+   @Override
+   public fde.a l() {
+      return this.n;
    }
 
-   public fcs c(String $$0) {
-      fcs $$1 = this.b($$0);
-      if ($$1 != null) {
-         b.warn("Requested creation of existing team '{}'", $$0);
-         return $$1;
-      } else {
-         $$1 = new fcs(this, $$0);
-         this.g.put($$0, $$1);
-         this.a($$1);
-         return $$1;
-      }
+   public void a(fde.a $$0) {
+      this.n = $$0;
+      this.c.b(this);
    }
 
-   public void d(fcs $$0) {
-      this.g.remove($$0.b());
-
-      for (String $$1 : $$0.g()) {
-         this.h.remove($$1);
+   public int m() {
+      int $$0 = 0;
+      if (this.h()) {
+         $$0 |= 1;
       }
 
-      this.c($$0);
-   }
-
-   public boolean a(String $$0, fcs $$1) {
-      if (this.e($$0) != null) {
-         this.d($$0);
+      if (this.i()) {
+         $$0 |= 2;
       }
 
-      this.h.put($$0, $$1);
-      return $$1.g().add($$0);
+      return $$0;
    }
 
-   public boolean d(String $$0) {
-      fcs $$1 = this.e($$0);
-      if ($$1 != null) {
-         this.b($$0, $$1);
-         return true;
-      } else {
-         return false;
-      }
+   public void a(int $$0) {
+      this.a(($$0 & 1) > 0);
+      this.b(($$0 & 2) > 0);
    }
 
-   public void b(String $$0, fcs $$1) {
-      if (this.e($$0) != $$1) {
-         throw new IllegalStateException("Player is either on another team or not on any team. Cannot remove from team '" + $$1.b() + "'.");
-      } else {
-         this.h.remove($$0);
-         $$1.g().remove($$0);
-      }
+   public void a(n $$0) {
+      this.m = $$0;
+      this.c.b(this);
    }
 
-   public Collection<String> f() {
-      return this.g.keySet();
-   }
-
-   public Collection<fcs> g() {
-      return this.g.values();
-   }
-
-   @Nullable
-   public fcs e(String $$0) {
-      return (fcs)this.h.get($$0);
-   }
-
-   public void a(fcp $$0) {
-   }
-
-   public void b(fcp $$0) {
-   }
-
-   public void c(fcp $$0) {
-   }
-
-   protected void a(fcw $$0, fcp $$1, fcu $$2) {
-   }
-
-   protected void a(fcw $$0, fcp $$1) {
-   }
-
-   public void a(fcw $$0) {
-   }
-
-   public void b(fcw $$0, fcp $$1) {
-   }
-
-   public void a(fcs $$0) {
-   }
-
-   public void b(fcs $$0) {
-   }
-
-   public void c(fcs $$0) {
-   }
-
-   public void a(bvf $$0) {
-      if (!($$0 instanceof cps) && !$$0.bL()) {
-         this.b($$0);
-         this.d($$0.cI());
-      }
-   }
-
-   protected vd a(js.a $$0) {
-      vd $$1 = new vd();
-      this.e.forEach(($$2, $$3) -> $$3.c().forEach(($$3x, $$4) -> {
-            ux $$5 = $$4.a($$0);
-            $$5.a("Name", $$2);
-            $$5.a("Objective", $$3x.b());
-            $$1.add($$5);
-         }));
-      return $$1;
-   }
-
-   protected void a(vd $$0, js.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         ux $$3 = $$0.a($$2);
-         fcu $$4 = fcu.a($$3, $$1);
-         String $$5 = $$3.l("Name");
-         String $$6 = $$3.l("Objective");
-         fcp $$7 = this.a($$6);
-         if ($$7 == null) {
-            b.error("Unknown objective {} for name {}, ignoring", $$6, $$5);
-         } else {
-            this.f($$5).a($$7, $$4);
-         }
-      }
+   @Override
+   public n n() {
+      return this.m;
    }
 }

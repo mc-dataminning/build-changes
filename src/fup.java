@@ -1,48 +1,121 @@
-public class fup extends fug<cte> {
-   private static final alz G = alz.b("container/brewing_stand/fuel_length");
-   private static final alz H = alz.b("container/brewing_stand/brew_progress");
-   private static final alz I = alz.b("container/brewing_stand/bubbles");
-   private static final alz J = alz.b("textures/gui/container/brewing_stand.png");
-   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
+public class fup extends fvn<cte> {
+   private static final alz G = alz.b("container/anvil/text_field");
+   private static final alz H = alz.b("container/anvil/text_field_disabled");
+   private static final alz I = alz.b("container/anvil/error");
+   private static final alz J = alz.b("textures/gui/container/anvil.png");
+   private static final xv K = xv.c("container.repair.expensive");
+   private fom L;
+   private final cpw M;
 
-   public fup(cte $$0, cpr $$1, xv $$2) {
-      super($$0, $$1, $$2);
+   public fup(cte $$0, cpv $$1, xv $$2) {
+      super($$0, $$1, $$2, J);
+      this.M = $$1.k;
+      this.v = 60;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+   protected void G() {
+      int $$0 = (this.n - this.s) / 2;
+      int $$1 = (this.o - this.u) / 2;
+      this.L = new fom(this.p, $$0 + 62, $$1 + 24, 103, 12, xv.c("container.repair"));
+      this.L.f(false);
+      this.L.g(-1);
+      this.L.n(-1);
+      this.L.d(false);
+      this.L.f(50);
+      this.L.b(this::a);
+      this.L.a("");
+      this.d(this.L);
+      this.L.e(this.z.b(0).h());
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   protected void aG_() {
+      this.b(this.L);
    }
 
    @Override
-   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(glo::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      int $$6 = this.z.l();
-      int $$7 = bae.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(glo::B, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+   public void a(fme $$0, int $$1, int $$2) {
+      String $$3 = this.L.a();
+      this.b($$0, $$1, $$2);
+      this.L.a($$3);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.t.p();
       }
 
-      int $$8 = this.z.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(glo::B, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cuy $$1 = this.z.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().b(ku.g) && $$0.equals($$1.g().y().getString())) {
+            $$2 = "";
          }
 
-         $$9 = K[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(glo::B, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         if (this.z.a($$2)) {
+            this.m.t.i.b(new aiw($$2));
          }
+      }
+   }
+
+   @Override
+   protected void b(fnq $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.z.m();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         xv $$5;
+         if ($$3 >= 40 && !this.m.t.gh().d) {
+            $$5 = K;
+            $$4 = 16736352;
+         } else if (!this.z.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = xv.a("container.repair.cost", $$3);
+            if (!this.z.b(2).a(this.M)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.s - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
+         }
+      }
+   }
+
+   @Override
+   protected void a(fnq $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(glt::B, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
+   }
+
+   @Override
+   public void d(fnq $$0, int $$1, int $$2, float $$3) {
+      this.L.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void c(fnq $$0, int $$1, int $$2) {
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
+         $$0.a(glt::B, I, $$1 + 99, $$2 + 45, 28, 21);
+      }
+   }
+
+   @Override
+   public void a(ctb $$0, int $$1, cxo $$2) {
+      if ($$1 == 0) {
+         this.L.a($$2.f() ? "" : $$2.y().getString());
+         this.L.e(!$$2.f());
+         this.a(this.L);
       }
    }
 }

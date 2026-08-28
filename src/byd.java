@@ -1,28 +1,18 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class byd {
-   public static <E extends bwb> bxv<E> a(int $$0, BiPredicate<E, bvf> $$1) {
-      return cbh.a((Function<cbh.b<E>, ? extends App<cbh.c<E>, cbk<E>>>)($$2 -> $$2.group($$2.a(cff.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bvf $$7 = $$5.dk();
-               bvf $$8 = $$2.<bvf>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bvf $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
+   public static <E extends bwf, T> bxz<E> a(Predicate<E> $$0, cfj<? extends T> $$1, cfj<T> $$2, bst $$3) {
+      return cbl.a(
+         (Function<cbl.b<E>, ? extends App<cbl.c<E>, cbo<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
                      return false;
                   } else {
-                     $$5.ae();
-                     $$3.b();
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
                      return true;
                   }
-               }
-            })));
-   }
-
-   private static boolean a(bwb $$0, bvf $$1, int $$2) {
-      return $$1.bL() && $$1.a($$0, (double)$$2) && $$1.dV() == $$0.dV();
+               }))
+      );
    }
 }

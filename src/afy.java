@@ -1,5 +1,5 @@
-public record afy(cxk b) implements aac<acr> {
-   public static final zt<xg, afy> a = zt.a(cxk.h, afy::b, afy::new);
+public record afy(cxo b) implements aac<acr> {
+   public static final zt<xg, afy> a = zt.a(cxo.h, afy::b, afy::new);
 
    @Override
    public aae<afy> a() {

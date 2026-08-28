@@ -1,11 +1,40 @@
-public class ddj {
-   public static ddi.j<?> a(kd<ddi.j<?>> $$0) {
-      kd.a($$0, "empty", ddi.c.f);
-      kd.a($$0, "any_fuel", ddi.a.f);
-      kd.a($$0, "item", ddi.d.e);
-      kd.a($$0, "item_stack", ddi.e.e);
-      kd.a($$0, "tag", ddi.i.e);
-      kd.a($$0, "smithing_trim", ddi.h.f);
-      return kd.a($$0, "composite", ddi.b.e);
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+
+public record ddj(ddk b, ddi c, OptionalInt d, dcg e, Optional<List<dbz>> f) {
+   public static final zt<xg, ddj> a = zt.a(ddk.a, ddj::a, ddi.e, ddj::b, zr.i, ddj::c, zr.a(mb.aH), ddj::d, dbz.a.a(zr.a()).a(zr::a), ddj::e, ddj::new);
+
+   public List<cxo> a(bbp $$0) {
+      return this.c.d().a($$0);
+   }
+
+   public boolean a(cqb $$0) {
+      if (this.f.isEmpty()) {
+         return false;
+      } else {
+         List<cqa.a<jq<cxk>>> $$1 = this.f.get().stream().map(dcc::a).toList();
+         return $$0.a($$1, null);
+      }
+   }
+
+   public ddk a() {
+      return this.b;
+   }
+
+   public ddi b() {
+      return this.c;
+   }
+
+   public OptionalInt c() {
+      return this.d;
+   }
+
+   public dcg d() {
+      return this.e;
+   }
+
+   public Optional<List<dbz>> e() {
+      return this.f;
    }
 }

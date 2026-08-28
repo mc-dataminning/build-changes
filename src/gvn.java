@@ -1,82 +1,65 @@
-public class gvn<S extends gye, M extends gbs<S>, A extends gbs<S>> extends gvy<S, M> {
-   private final A a;
-   private final A b;
-   private final A c;
-   private final A d;
-   private final gvi e;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public gvn(gtg<S, M> $$0, A $$1, A $$2, gvi $$3) {
-      this($$0, $$1, $$2, $$1, $$2, $$3);
+public class gvn {
+   private static final int a = 0;
+   private final hdq b;
+   private final Function<gvn.a, alz> c;
+   private final Function<gvn.b, hbj> d;
+
+   public gvn(hdq $$0, hbi $$1) {
+      this.b = $$0;
+      this.c = ae.b($$0x -> $$0x.b.a($$0x.a));
+      this.d = ae.b($$1x -> {
+         alz $$2 = $$1x.a.a($$1x.b, $$1x.c);
+         return $$1.a($$2);
+      });
    }
 
-   public gvn(gtg<S, M> $$0, A $$1, A $$2, A $$3, A $$4, gvi $$5) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
+   public void a(dfr.d $$0, alz $$1, gcf $$2, cxo $$3, fgq $$4, glj $$5, int $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, null);
    }
 
-   public static boolean a(cxk $$0, bvn $$1) {
-      dfm $$2 = $$0.a(ku.D);
-      return $$2 != null && a($$2, $$1);
-   }
+   public void a(dfr.d $$0, alz $$1, gcf $$2, cxo $$3, fgq $$4, glj $$5, int $$6, @Nullable alz $$7) {
+      List<dfr.c> $$8 = this.b.a($$1).a($$0);
+      if (!$$8.isEmpty()) {
+         int $$9 = $$3.a(ayd.bR) ? dac.a($$3, 0) : 0;
+         boolean $$10 = $$3.B();
 
-   private static boolean a(dfm $$0, bvn $$1) {
-      return $$0.c().isPresent() && $$0.a() == $$1;
-   }
+         for (dfr.c $$11 : $$8) {
+            int $$12 = a($$11, $$9);
+            if ($$12 != 0) {
+               alz $$13 = $$11.c() && $$7 != null ? $$7 : this.c.apply(new gvn.a($$0, $$11));
+               fgu $$14 = gsm.a($$5, glt.a($$13), $$10);
+               $$2.a($$4, $$14, $$6, hba.d, $$12);
+               $$10 = false;
+            }
+         }
 
-   public void a(fgl $$0, gle $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$0, $$1, $$3.Q, bvn.e, $$2, this.a($$3, bvn.e));
-      this.a($$0, $$1, $$3.R, bvn.d, $$2, this.a($$3, bvn.d));
-      this.a($$0, $$1, $$3.S, bvn.c, $$2, this.a($$3, bvn.c));
-      this.a($$0, $$1, $$3.ao, bvn.f, $$2, this.a($$3, bvn.f));
-   }
-
-   private void a(fgl $$0, gle $$1, cxk $$2, bvn $$3, int $$4, A $$5) {
-      dfm $$6 = $$2.a(ku.D);
-      if ($$6 != null && a($$6, $$3)) {
-         this.d().a($$5);
-         this.a($$5, $$3);
-         alz $$7 = $$6.c().orElseThrow();
-         dfk.d $$8 = this.a($$3) ? dfk.d.b : dfk.d.a;
-         this.e.a($$8, $$7, $$5, $$2, glo::a, $$0, $$1, $$4);
+         dfv $$15 = $$3.a(ku.U);
+         if ($$15 != null) {
+            hbj $$16 = this.d.apply(new gvn.b($$15, $$0, $$1));
+            fgu $$17 = $$16.a($$5.getBuffer(gme.a($$15.b().a().d())));
+            $$2.a($$4, $$17, $$6, hba.d);
+         }
       }
    }
 
-   protected void a(A $$0, bvn $$1) {
-      $$0.c_(false);
-      switch ($$1) {
-         case f:
-            $$0.o.k = true;
-            $$0.p.k = true;
-            break;
-         case e:
-            $$0.q.k = true;
-            $$0.r.k = true;
-            $$0.s.k = true;
-            break;
-         case d:
-            $$0.q.k = true;
-            $$0.t.k = true;
-            $$0.u.k = true;
-            break;
-         case c:
-            $$0.t.k = true;
-            $$0.u.k = true;
-      }
-   }
-
-   private A a(S $$0, bvn $$1) {
-      if (this.a($$1)) {
-         return $$0.ae ? this.c : this.a;
+   private static int a(dfr.c $$0, int $$1) {
+      Optional<dfr.b> $$2 = $$0.b();
+      if ($$2.isPresent()) {
+         int $$3 = $$2.get().a().map(ayp::f).orElse(0);
+         return $$1 != 0 ? $$1 : $$3;
       } else {
-         return $$0.ae ? this.d : this.b;
+         return -1;
       }
    }
 
-   private boolean a(bvn $$0) {
-      return $$0 == bvn.d;
+   static record a(dfr.d a, dfr.c b) {
+   }
+
+   static record b(dfv a, dfr.d b, alz c) {
    }
 }

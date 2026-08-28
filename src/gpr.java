@@ -1,107 +1,38 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class gpr implements gpe.a {
-   private final flz a;
-   private final Map<aly<dha>, Map<String, enu>> b = Maps.newIdentityHashMap();
-   private final Map<aly<dha>, Map<String, abu.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class gpr {
+   private final fme a;
 
-   public gpr(flz $$0) {
+   public gpr(fme $$0) {
       this.a = $$0;
    }
 
-   @Override
-   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
-      fli $$5 = this.a.j.k();
-      aly<dha> $$6 = this.a.s.ah();
-      jh $$7 = jh.a($$5.b().d, 0.0, $$5.b().f);
-      fgp $$8 = $$1.getBuffer(glo.y());
-      if (this.b.containsKey($$6)) {
-         for (enu $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               gly.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
-         }
-      }
-
-      Map<String, abu.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (abu.a $$11 : $$10.values()) {
-            enu $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  gly.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  gly.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
-         }
-      }
+   public void a(fgq $$0, gpa $$1, glj $$2, double $$3, double $$4, double $$5) {
+      glk $$6 = this.a.f.x().c();
+      MutableInt $$7 = new MutableInt(0);
+      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
    }
 
-   public void a(enu $$0, List<abu.a> $$1, aly<dha> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, abu.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (abu.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
+   private void a(glk.d $$0, fgq $$1, glj $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
+      fbs $$10 = $$0.b();
+      double $$11 = $$10.b();
+      long $$12 = Math.round($$11 / 16.0);
+      if ($$12 == 1L) {
+         $$8.add(1);
+         double $$13 = $$10.f().d;
+         double $$14 = $$10.f().e;
+         double $$15 = $$10.f().f;
+         int $$16 = $$9 ? -16711936 : -1;
+         gpj.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
       }
+
+      fgu $$17 = $$2.getBuffer(glt.y());
+      long $$18 = $$12 + 5L;
+      gmd.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   private static float a(long $$0, float $$1) {
+      float $$2 = 0.1F;
+      return bae.i($$1 * (float)$$0) * 0.9F + 0.1F;
    }
 }

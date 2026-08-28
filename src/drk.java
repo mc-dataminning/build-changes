@@ -1,111 +1,195 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Collection;
 
-public class drk extends dke implements dri {
-   public static final MapCodec<drk> a = b(drk::new);
-   public static final dyk<dyu> b = dyd.bi;
-   public static final dye c = dyd.D;
-   protected static final fcm d = dke.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final fcm e = dke.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+public class drk extends dpn implements dre, drp {
+   public static final MapCodec<drk> c = b(drk::new);
+   private static final dyl d = dyk.D;
+   private final dpo e = new dpo(new drk.a(dpo.a));
+   private final dpo f = new dpo(new drk.a(dpo.e.a));
 
    @Override
-   public MapCodec<? extends drk> a() {
-      return a;
+   public MapCodec<drk> a() {
+      return c;
    }
 
-   public drk(dxm.d $$0) {
+   public drk(dxt.d $$0) {
       super($$0);
-      this.l(this.m().b(b, dyu.b).b(c, Boolean.valueOf(false)));
+      this.l(this.m().b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dxn $$0) {
-      return $$0.c(b) != dyu.c;
+   public dpo c() {
+      return this.e;
    }
 
-   @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(b, c);
+   public dpo q() {
+      return this.f;
    }
 
-   @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      dyu $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return fcj.b();
-         case a:
-            return e;
-         default:
-            return d;
+   public static boolean a(dhi $$0, jh $$1, dxu $$2, Collection<jm> $$3) {
+      boolean $$4 = false;
+      dxu $$5 = dkn.ro.m();
+
+      for (jm $$6 : $$3) {
+         jh $$7 = $$1.a($$6);
+         if (a($$0, $$6, $$7, $$0.a_($$7))) {
+            $$5 = $$5.b(b($$6), Boolean.valueOf(true));
+            $$4 = true;
+         }
       }
-   }
 
-   @Nullable
-   @Override
-   public dxn a(dbb $$0) {
-      jh $$1 = $$0.a();
-      dxn $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.b(b, dyu.c).b(c, Boolean.valueOf(false));
-      } else {
-         etp $$3 = $$0.q().b_($$1);
-         dxn $$4 = this.m().b(b, dyu.b).b(c, Boolean.valueOf($$3.a() == etq.c));
-         jm $$5 = $$0.k();
-         return $$5 != jm.a && ($$5 == jm.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dyu.a);
-      }
-   }
-
-   @Override
-   protected boolean a(dxn $$0, dbb $$1) {
-      cxk $$2 = $$1.n();
-      dyu $$3 = $$0.c(b);
-      if ($$3 == dyu.c || !$$2.a(this.j())) {
+      if (!$$4) {
          return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
-         jm $$5 = $$1.k();
-         return $$3 == dyu.b ? $$5 == jm.b || $$4 && $$5.o().d() : $$5 == jm.a || !$$4 && $$5.o().d();
       } else {
+         if (!$$2.y().c()) {
+            $$5 = $$5.b(d, Boolean.valueOf(true));
+         }
+
+         $$0.a($$1, $$5, 3);
          return true;
       }
    }
 
    @Override
-   protected etp b_(dxn $$0) {
-      return $$0.c(c) ? etq.c.a(false) : super.b_($$0);
+   public void a(dhi $$0, dxu $$1, jh $$2, bam $$3) {
+      if ($$1.a(this)) {
+         for (jm $$4 : b) {
+            dyl $$5 = b($$4);
+            if ($$1.c($$5) && $$0.a_($$2.a($$4)).a(dkn.rn)) {
+               $$1 = $$1.b($$5, Boolean.valueOf(false));
+            }
+         }
+
+         if (!q($$1)) {
+            etw $$6 = $$0.b_($$2);
+            $$1 = ($$6.c() ? dkn.a : dkn.J).m();
+         }
+
+         $$0.a($$2, $$1, 3);
+         dre.super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   public boolean a(dhb $$0, jh $$1, dxn $$2, etp $$3) {
-      return $$2.c(b) != dyu.c ? dri.super.a($$0, $$1, $$2, $$3) : false;
+   public int a(drj.a $$0, dhi $$1, jh $$2, bam $$3, drj $$4, boolean $$5) {
+      if ($$5 && this.a($$4, $$1, $$0.a(), $$3)) {
+         return $$0.b() - 1;
+      } else {
+         return $$3.a($$4.f()) == 0 ? bae.d((float)$$0.b() * 0.5F) : $$0.b();
+      }
+   }
+
+   private boolean a(drj $$0, dhi $$1, jh $$2, bam $$3) {
+      dxu $$4 = $$1.a_($$2);
+      ayk<dkl> $$5 = $$0.c();
+
+      for (jm $$6 : jm.a($$3)) {
+         if (a($$4, $$6)) {
+            jh $$7 = $$2.a($$6);
+            dxu $$8 = $$1.a_($$7);
+            if ($$8.a($$5)) {
+               dxu $$9 = dkn.rn.m();
+               $$1.a($$7, $$9, 3);
+               dkl.a($$8, $$9, $$1, $$7);
+               $$1.a(null, $$7, axf.wn, axg.e, 1.0F, 1.0F);
+               this.e.a($$9, $$1, $$7, $$0.h());
+               jm $$10 = $$6.g();
+
+               for (jm $$11 : b) {
+                  if ($$11 != $$10) {
+                     jh $$12 = $$7.a($$11);
+                     dxu $$13 = $$1.a_($$12);
+                     if ($$13.a(this)) {
+                        this.a($$1, $$13, $$12, $$3);
+                     }
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public static boolean a(dhi $$0, dxu $$1, jh $$2) {
+      if (!$$1.a(dkn.ro)) {
+         return false;
+      } else {
+         for (jm $$3 : b) {
+            if (a($$1, $$3) && $$0.a_($$2.a($$3)).a(axu.bU)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
    @Override
-   public boolean a(@Nullable cps $$0, dgf $$1, jh $$2, dxn $$3, eto $$4) {
-      return $$3.c(b) != dyu.c ? dri.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, etq.c, etq.c.a($$1));
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, etx.c, etx.c.a($$1));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dxn $$0, eue $$1) {
-      switch ($$1) {
-         case a:
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      super.a($$0);
+      $$0.a(d);
+   }
+
+   @Override
+   protected boolean a(dxu $$0, dbf $$1) {
+      return !$$1.n().a(cxs.gv) || super.a($$0, $$1);
+   }
+
+   @Override
+   protected etw b_(dxu $$0) {
+      return $$0.c(d) ? etx.c.a(false) : super.b_($$0);
+   }
+
+   class a extends dpo.a {
+      private final dpo.e[] b;
+
+      public a(final dpo.e... $$0) {
+         super(drk.this);
+         this.b = $$0;
+      }
+
+      @Override
+      public boolean a(dgm $$0, jh $$1, jh $$2, jm $$3, dxu $$4) {
+         dxu $$5 = $$0.a_($$2.a($$3));
+         if (!$$5.a(dkn.rn) && !$$5.a(dkn.rp) && !$$5.a(dkn.bX)) {
+            if ($$1.k($$2) == 2) {
+               jh $$6 = $$1.a($$3.g());
+               if ($$0.a_($$6).c($$0, $$6, $$3)) {
+                  return false;
+               }
+            }
+
+            etw $$7 = $$4.y();
+            if (!$$7.c() && !$$7.b(etx.c)) {
+               return false;
+            } else {
+               return $$4.a(axu.aN) ? false : $$4.v() || super.a($$0, $$1, $$2, $$3, $$4);
+            }
+         } else {
             return false;
-         case b:
-            return $$0.y().a(aya.a);
-         case c:
-            return false;
-         default:
-            return false;
+         }
+      }
+
+      @Override
+      public dpo.e[] a() {
+         return this.b;
+      }
+
+      @Override
+      public boolean a(dxu $$0) {
+         return !$$0.a(dkn.ro);
       }
    }
 }

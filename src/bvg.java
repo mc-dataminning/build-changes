@@ -1,27 +1,38 @@
-import java.util.List;
+public class bvg {
+   public static final bvg a = new bvg(0.75F, 0.5F, 0.25F);
+   public static final bvg b = new bvg(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-public enum bvg {
-   a(bvg.a.c),
-   b(bvg.a.b),
-   c(bvg.a.c),
-   d(bvg.a.d);
-
-   private final bvg.a e;
-
-   private bvg(final bvg.a $$0) {
-      this.e = $$0;
+   private bvg(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public List<fbs> a(float $$0, float $$1) {
-      return this.e.create($$0, $$1);
+   public bvg.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bvg.a.d;
+      } else if ($$0 < this.d) {
+         return bvg.a.c;
+      } else {
+         return $$0 < this.c ? bvg.a.b : bvg.a.a;
+      }
    }
 
-   public interface a {
-      List<fbs> a = List.of(fbs.c);
-      bvg.a b = ($$0, $$1) -> a;
-      bvg.a c = ($$0, $$1) -> List.of(new fbs(0.0, (double)$$1, 0.0));
-      bvg.a d = ($$0, $$1) -> List.of(new fbs(0.0, (double)$$1 / 2.0, 0.0));
+   public bvg.a a(cxo $$0) {
+      return !$$0.m() ? bvg.a.a : this.a($$0.o(), $$0.p());
+   }
 
-      List<fbs> create(float var1, float var2);
+   public bvg.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

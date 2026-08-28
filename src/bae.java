@@ -317,7 +317,7 @@ public class bae {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(fbs $$0, fbs $$1, fbn $$2) {
+   public static boolean a(fbx $$0, fbx $$1, fbs $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.d - $$3;
@@ -519,8 +519,8 @@ public class bae {
       return $$1 + $$0 * ($$2 - $$1);
    }
 
-   public static fbs a(double $$0, fbs $$1, fbs $$2) {
-      return new fbs(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
+   public static fbx a(double $$0, fbx $$1, fbx $$2) {
+      return new fbx(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
    }
 
    public static double d(double $$0, double $$1, double $$2) {

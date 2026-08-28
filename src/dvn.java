@@ -1,134 +1,174 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dvn {
-   private final Object2IntSortedMap<cxg> a;
+public class dvn extends duw implements bto, fdj.a {
+   public static final String d = "sherds";
+   public static final String e = "item";
+   public static final int f = 1;
+   public long g;
+   @Nullable
+   public dvn.a h;
+   private dwd k;
+   private cxo l = cxo.k;
+   @Nullable
+   protected aly<ewt> i;
+   protected long j;
 
-   dvn(Object2IntSortedMap<cxg> $$0) {
-      this.a = $$0;
+   public dvn(jh $$0, dxu $$1) {
+      super(duy.P, $$0, $$1);
+      this.k = dwd.a;
    }
 
-   public boolean a(cxk $$0) {
-      return this.a.containsKey($$0.h());
-   }
-
-   public SequencedSet<cxg> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(cxk $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static dvn a(js.a $$0, cso $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static dvn a(js.a $$0, cso $$1, int $$2) {
-      return new dvn.a($$0, $$1)
-         .a(cxo.qY, $$2 * 100)
-         .a(dkg.iS, $$2 * 8 * 10)
-         .a(cxo.sU, $$2 * 12)
-         .a(cxo.oT, $$2 * 8)
-         .a(cxo.oU, $$2 * 8)
-         .a(ayd.r, $$2 * 3 / 2)
-         .a(ayd.D, $$2 * 3 / 2)
-         .a(ayd.b, $$2 * 3 / 2)
-         .a(dkg.y, $$2 * 3 / 2)
-         .a(ayd.i, $$2 * 3 / 2)
-         .a(dkg.il, $$2 * 3 / 2)
-         .a(ayd.j, $$2 * 3 / 4)
-         .a(dkg.jU, $$2 * 3 / 4)
-         .a(ayd.n, $$2 * 3 / 2)
-         .a(ayd.m, $$2 * 3 / 2)
-         .a(ayd.k, $$2 * 3 / 2)
-         .a(ayd.l, $$2 * 3 / 2)
-         .a(dkg.bf, $$2 * 3 / 2)
-         .a(dkg.cs, $$2 * 3 / 2)
-         .a(dkg.ct, $$2 * 3 / 2)
-         .a(dkg.ov, $$2 * 3 / 2)
-         .a(dkg.eg, $$2 * 3 / 2)
-         .a(dkg.cD, $$2 * 3 / 2)
-         .a(dkg.hl, $$2 * 3 / 2)
-         .a(dkg.cI, $$2 * 3 / 2)
-         .a(dkg.hp, $$2 * 3 / 2)
-         .a(ayd.F, $$2 * 3 / 2)
-         .a(cxo.oR, $$2 * 3 / 2)
-         .a(cxo.rJ, $$2 * 3 / 2)
-         .a(dkg.cX, $$2 * 3 / 2)
-         .a(ayd.aW, $$2)
-         .a(ayd.bw, $$2 * 4)
-         .a(cxo.pj, $$2)
-         .a(cxo.pi, $$2)
-         .a(cxo.pm, $$2)
-         .a(cxo.pl, $$2)
-         .a(cxo.pk, $$2)
-         .a(ayd.h, $$2)
-         .a(ayd.aT, $$2 * 6)
-         .a(ayd.a, $$2 / 2)
-         .a(ayd.d, $$2 / 2)
-         .a(cxo.pM, $$2 / 2)
-         .a(ayd.p, $$2 / 2)
-         .a(cxo.oP, $$2 / 2)
-         .a(ayd.g, 1 + $$2 / 3)
-         .a(dkg.mz, 1 + $$2 * 20)
-         .a(cxo.wL, $$2 * 3 / 2)
-         .a(dkg.nu, $$2 / 4)
-         .a(dkg.bC, $$2 / 2)
-         .a(dkg.on, $$2 / 4)
-         .a(dkg.oo, $$2 * 3 / 2)
-         .a(dkg.op, $$2 * 3 / 2)
-         .a(dkg.os, $$2 * 3 / 2)
-         .a(dkg.ot, $$2 * 3 / 2)
-         .a(dkg.ow, $$2 * 3 / 2)
-         .a(dkg.px, $$2 * 3 / 2)
-         .a(dkg.sT, $$2 / 2)
-         .a(dkg.sU, $$2 / 2)
-         .a(dkg.ag, $$2 * 3 / 2)
-         .a(ayd.aN)
-         .a();
-   }
-
-   public static class a {
-      private final js<cxg> a;
-      private final cso b;
-      private final Object2IntSortedMap<cxg> c = new Object2IntLinkedOpenHashMap();
-
-      public a(js.a $$0, cso $$1) {
-         this.a = $$0.d(mb.K);
-         this.b = $$1;
+   @Override
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      this.k.a($$0);
+      if (!this.c_($$0) && !this.l.f()) {
+         $$0.a("item", this.l.a($$1));
       }
+   }
 
-      public dvn a() {
-         return new dvn(this.c);
-      }
-
-      public dvn.a a(ayk<cxg> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
-         return this;
-      }
-
-      public dvn.a a(ayk<cxg> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (jq<cxg> $$2 : $$1x) {
-               this.a($$1, $$2.a());
-            }
-         });
-         return this;
-      }
-
-      public dvn.a a(dgz $$0, int $$1) {
-         cxg $$2 = $$0.j();
-         this.a($$1, $$2);
-         return this;
-      }
-
-      private void a(int $$0, cxg $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.k = dwd.b($$0);
+      if (!this.b_($$0)) {
+         if ($$0.b("item", 10)) {
+            this.l = cxo.a($$1, (vu)$$0.p("item")).orElse(cxo.k);
+         } else {
+            this.l = cxo.k;
          }
+      }
+   }
+
+   public acy j() {
+      return acy.a(this);
+   }
+
+   @Override
+   public ux a(js.a $$0) {
+      return this.e($$0);
+   }
+
+   public jm k() {
+      return this.m().c(dyk.S);
+   }
+
+   public dwd t() {
+      return this.k;
+   }
+
+   public void c(cxo $$0) {
+      this.a($$0);
+   }
+
+   public cxo u() {
+      cxo $$0 = cxs.eN.n();
+      $$0.b(this.r());
+      return $$0;
+   }
+
+   public static cxo a(dwd $$0) {
+      cxo $$1 = cxs.eN.n();
+      $$1.b(ku.ak, $$0);
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public aly<ewt> ax_() {
+      return this.i;
+   }
+
+   @Override
+   public void a(@Nullable aly<ewt> $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public long aA_() {
+      return this.j;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   protected void a(kq.a $$0) {
+      super.a($$0);
+      $$0.a(ku.ak, this.k);
+      $$0.a(ku.al, dag.a(List.of(this.l)));
+   }
+
+   @Override
+   protected void a(duw.b $$0) {
+      super.a($$0);
+      this.k = $$0.a(ku.ak, dwd.a);
+      this.l = $$0.a(ku.al, dag.a).a();
+   }
+
+   @Override
+   public void a(ux $$0) {
+      super.a($$0);
+      $$0.r("sherds");
+      $$0.r("item");
+   }
+
+   @Override
+   public cxo f() {
+      this.d_(null);
+      return this.l;
+   }
+
+   @Override
+   public cxo c(int $$0) {
+      this.d_(null);
+      cxo $$1 = this.l.a($$0);
+      if (this.l.f()) {
+         this.l = cxo.k;
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(cxo $$0) {
+      this.d_(null);
+      this.l = $$0;
+   }
+
+   @Override
+   public duw v() {
+      return this;
+   }
+
+   public void a(dvn.a $$0) {
+      if (this.o != null && !this.o.B_()) {
+         this.o.a(this.aB_(), this.m().b(), 1, $$0.ordinal());
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dvn.a.values().length) {
+         this.g = this.o.ac();
+         this.h = dvn.a.values()[$$1];
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public static enum a {
+      a(7),
+      b(10);
+
+      public final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 }

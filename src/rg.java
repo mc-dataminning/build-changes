@@ -2,24 +2,24 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class rg {
-   public static final aly<epm> a = rr.a("bastion/starts");
+   public static final aly<ept> a = rr.a("bastion/starts");
 
-   public static void a(rk<epm> $$0) {
-      jr<esc> $$1 = $$0.a(mb.aU);
-      jq<esc> $$2 = $$1.b(rs.w);
-      jr<epm> $$3 = $$0.a(mb.aW);
-      jq<epm> $$4 = $$3.b(rr.a);
+   public static void a(rk<ept> $$0) {
+      jr<esj> $$1 = $$0.a(mb.aV);
+      jq<esj> $$2 = $$1.b(rs.w);
+      jr<ept> $$3 = $$0.a(mb.aX);
+      jq<ept> $$4 = $$3.b(rr.a);
       $$0.a(
          a,
-         new epm(
+         new ept(
             $$4,
             ImmutableList.of(
-               Pair.of(epk.b("bastion/units/air_base", $$2), 1),
-               Pair.of(epk.b("bastion/hoglin_stable/air_base", $$2), 1),
-               Pair.of(epk.b("bastion/treasure/big_air_full", $$2), 1),
-               Pair.of(epk.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+               Pair.of(epr.b("bastion/units/air_base", $$2), 1),
+               Pair.of(epr.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(epr.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(epr.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
             ),
-            epm.a.b
+            ept.a.b
          )
       );
       rf.a($$0);

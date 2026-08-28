@@ -1,57 +1,21 @@
-public class grd extends gri<cko, gxl> {
-   private static final alz a = alz.b("textures/entity/end_crystal/end_crystal.png");
-   private static final glo b = glo.f(a);
-   private final gbc h;
+public class grd extends gqi<cie, gxo, gbd> {
+   private static final alz a = alz.b("textures/entity/dolphin.png");
 
-   public grd(grj.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.h = new gbc($$0.a(geg.aH));
+   public grd(gro.a $$0) {
+      super($$0, new gbd($$0.a(gel.am)), new gbd($$0.a(gel.an)), 0.7F);
+      this.a(new gvj(this, $$0.b()));
    }
 
-   public void a(gxl $$0, fgl $$1, gle $$2, int $$3) {
-      $$1.a();
-      $$1.b(2.0F, 2.0F, 2.0F);
-      $$1.a(0.0F, -0.5F, 0.0F);
-      this.h.a($$0);
-      this.h.a($$1, $$2.getBuffer(b), $$3, hav.d);
-      $$1.b();
-      fbs $$4 = $$0.b;
-      if ($$4 != null) {
-         float $$5 = a($$0.p);
-         float $$6 = (float)$$4.d;
-         float $$7 = (float)$$4.e;
-         float $$8 = (float)$$4.f;
-         $$1.a($$4);
-         gre.a(-$$6, -$$7 + $$5, -$$8, $$0.p, $$1, $$2, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public alz a(gxo $$0) {
+      return a;
    }
 
-   public static float a(float $$0) {
-      float $$1 = bae.a($$0 * 0.2F) / 2.0F + 0.5F;
-      $$1 = ($$1 * $$1 + $$1) * 0.4F;
-      return $$1 - 1.4F;
+   public gxo a() {
+      return new gxo();
    }
 
-   public gxl a() {
-      return new gxl();
-   }
-
-   public void a(cko $$0, gxl $$1, float $$2) {
+   public void a(cie $$0, gxo $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.p = (float)$$0.a + $$2;
-      $$1.a = $$0.m();
-      jh $$3 = $$0.l();
-      if ($$3 != null) {
-         $$1.b = fbs.b($$3).d($$0.o($$2));
-      } else {
-         $$1.b = null;
-      }
-   }
-
-   public boolean a(cko $$0, gov $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.l() != null;
+      $$1.a = $$0.dy().j() > 1.0E-7;
    }
 }

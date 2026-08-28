@@ -19,7 +19,7 @@ public class wz<T extends xb> extends ByteToMessageDecoder implements xe {
       if ($$3 != 0) {
          aac<? super T> $$4 = this.b.c().decode($$1);
          aae<? extends aac<? super T>> $$5 = $$4.a();
-         bpw.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         bqa.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
          if ($$1.readableBytes() > 0) {
             throw new IOException(
                "Packet "

@@ -1,9 +1,8 @@
-public interface fao extends ewi {
-   float b(ewh var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   default int a(ewh $$0) {
-      return Math.round(this.b($$0));
-   }
-
-   fan b();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fao {
 }

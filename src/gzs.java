@@ -1,7 +1,10 @@
-import javax.annotation.Nullable;
+public class gzs extends gyr implements gzj {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 
-public class gzs extends gxo {
-   public float a;
-   @Nullable
-   public dxn b;
+   @Override
+   public boolean c() {
+      return this.a;
+   }
 }

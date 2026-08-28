@@ -1,25 +1,25 @@
+import javax.annotation.Nullable;
+
 public interface dhp {
-   <T> fdk<T> a(jh var1, T var2, int var3, fdo var4);
+   boolean a(jh var1, dxu var2, int var3, int var4);
 
-   <T> fdk<T> a(jh var1, T var2, int var3);
-
-   fdg<dke> T();
-
-   default void a(jh $$0, dke $$1, int $$2, fdo $$3) {
-      this.T().a(this.a($$0, $$1, $$2, $$3));
+   default boolean a(jh $$0, dxu $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   default void a(jh $$0, dke $$1, int $$2) {
-      this.T().a(this.a($$0, $$1, $$2));
+   boolean a(jh var1, boolean var2);
+
+   default boolean b(jh $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   fdg<eto> S();
-
-   default void a(jh $$0, eto $$1, int $$2, fdo $$3) {
-      this.S().a(this.a($$0, $$1, $$2, $$3));
+   default boolean a(jh $$0, boolean $$1, @Nullable bvj $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   default void a(jh $$0, eto $$1, int $$2) {
-      this.S().a(this.a($$0, $$1, $$2));
+   boolean a(jh var1, boolean var2, @Nullable bvj var3, int var4);
+
+   default boolean b(bvj $$0) {
+      return false;
    }
 }

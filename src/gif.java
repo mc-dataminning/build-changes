@@ -1,76 +1,57 @@
-public class gif extends gil {
-   private static final int a = 3;
-   private final glm b;
-   private final bvf D;
-   private final bvf E;
-   private int F;
-   private final grh G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-   private double M;
+public class gif extends gjq {
+   private final gjl a;
 
-   public gif(grh $$0, glm $$1, gfd $$2, bvf $$3, bvf $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dy());
-   }
-
-   private gif(grh $$0, glm $$1, gfd $$2, bvf $$3, bvf $$4, fbs $$5) {
-      super($$2, $$3.dA(), $$3.dC(), $$3.dG(), $$5.d, $$5.e, $$5.f);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-      this.c();
-      this.d();
-   }
-
-   private bvf a(bvf $$0) {
-      return (bvf)(!($$0 instanceof clw) ? $$0 : ((clw)$$0).z());
+   protected gif(gfi $$0, double $$1, double $$2, double $$3, gjl $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public gip b() {
-      return gip.d;
+   public giu b() {
+      return giu.b;
    }
 
    @Override
-   public void a(fgp $$0, fli $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = bae.d((double)$$2, this.K, this.H);
-      double $$5 = bae.d((double)$$2, this.L, this.I);
-      double $$6 = bae.d((double)$$2, this.M, this.J);
-      double $$7 = bae.d((double)$$3, this.D.dA(), $$4);
-      double $$8 = bae.d((double)$$3, this.D.dC(), $$5);
-      double $$9 = bae.d((double)$$3, this.D.dG(), $$6);
-      gle.a $$10 = this.b.c();
-      fbs $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), $$2, new fgl(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
    public void a() {
-      this.F++;
-      if (this.F == 3) {
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   public static class a implements git<lw> {
+      private final gjl a;
+
+      public a(gjl $$0) {
+         this.a = $$0;
       }
 
-      this.d();
-      this.c();
+      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gif($$1, $$2, $$3, $$4, this.a);
+      }
    }
 
-   private void c() {
-      this.H = this.E.dA();
-      this.I = (this.E.dC() + this.E.dE()) / 2.0;
-      this.J = this.E.dG();
-   }
+   public static class b implements git<lw> {
+      private final gjl a;
 
-   private void d() {
-      this.K = this.H;
-      this.L = this.I;
-      this.M = this.J;
+      public b(gjl $$0) {
+         this.a = $$0;
+      }
+
+      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         giq $$8 = new gif($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
+         return $$8;
+      }
    }
 }

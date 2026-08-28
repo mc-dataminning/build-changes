@@ -1,21 +1,53 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fap {
-   private static final Codec<fao> h = ma.G.q().dispatch(fao::b, fan::a);
-   public static final Codec<fao> a = Codec.lazyInitialized(() -> {
-      Codec<fao> $$0 = Codec.withAlternative(h, fas.a.codec());
-      return Codec.either(fal.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof fal $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final fan b = a("constant", fal.a);
-   public static final fan c = a("uniform", fas.a);
-   public static final fan d = a("binomial", fak.a);
-   public static final fan e = a("score", faq.a);
-   public static final fan f = a("storage", far.a);
-   public static final fan g = a("enchantment_level", fam.a);
+public record fap(fat b, fat c) implements fat {
+   public static final MapCodec<fap> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(fau.a.fieldOf("n").forGetter(fap::c), fau.a.fieldOf("p").forGetter(fap::d)).apply($$0, fap::new)
+   );
 
-   private static fan a(String $$0, MapCodec<? extends fao> $$1) {
-      return kd.a(ma.G, alz.b($$0), new fan($$1));
+   @Override
+   public fas b() {
+      return fau.d;
+   }
+
+   @Override
+   public int a(ewo $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      bam $$3 = $$0.b();
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   public float b(ewo $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static fap a(int $$0, float $$1) {
+      return new fap(faq.a((float)$$0), faq.a($$1));
+   }
+
+   @Override
+   public Set<bbn<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public fat c() {
+      return this.b;
+   }
+
+   public fat d() {
+      return this.c;
    }
 }

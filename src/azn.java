@@ -81,7 +81,7 @@ public class azn {
             .apply($$0, AxisAngle4f::new)
    );
    public static final Codec<Quaternionf> g = Codec.withAlternative(e, f.xmap(Quaternionf::new, AxisAngle4f::new));
-   public static Codec<Matrix4f> h = Codec.FLOAT.listOf().comapFlatMap($$0 -> ae.a($$0, 16).map($$0x -> {
+   public static final Codec<Matrix4f> h = Codec.FLOAT.listOf().comapFlatMap($$0 -> ae.a($$0, 16).map($$0x -> {
          Matrix4f $$1 = new Matrix4f();
 
          for (int $$2 = 0; $$2 < $$0x.size(); $$2++) {
@@ -172,7 +172,7 @@ public class azn {
       int[] $$1 = $$0.codePoints().toArray();
       return $$1.length != 1 ? DataResult.error(() -> "Expected one codepoint, got: " + $$0) : DataResult.success($$1[0]);
    }, Character::toString);
-   public static Codec<String> C = Codec.STRING
+   public static final Codec<String> C = Codec.STRING
       .validate($$0 -> !alz.i($$0) ? DataResult.error(() -> "Invalid string to use as a resource path element: " + $$0) : DataResult.success($$0));
 
    public static <T> Codec<T> a(DynamicOps<T> $$0) {

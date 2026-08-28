@@ -1,88 +1,105 @@
-public class cud extends csx {
-   private static final int q = 1;
-   private static final int r = 1;
-   public static final int m = 1;
-   public static final int n = 2;
-   public static final int o = 3;
-   public static final int p = 100;
-   private final bsx s;
-   private final ctj t;
+public class cud extends ctb {
+   private final btb m;
+   private final btb n;
+   private final cka o;
+   private static final int p = 1;
+   private static final int q = 2;
 
-   public cud(int $$0) {
-      this($$0, new btl(1), new cut(1));
-   }
-
-   public cud(int $$0, bsx $$1, ctj $$2) {
-      super(cug.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.s = $$1;
-      this.t = $$2;
-      this.a(new cuu($$1, 0, 0, 0) {
+   public cud(int $$0, cpv $$1, btb $$2, final cka $$3, int $$4) {
+      super(null, $$0);
+      this.m = $$2;
+      this.n = $$3.gX();
+      this.o = $$3;
+      $$2.c_($$1.k);
+      this.a(new cuy($$2, 0, 8, 18) {
          @Override
-         public void c() {
-            super.c();
-            cud.this.a(this.c);
+         public boolean a(cxo $$0) {
+            return $$0.a(cxs.oe) && !this.h() && $$3.f();
+         }
+
+         @Override
+         public boolean d() {
+            return $$3.f();
          }
       });
-      this.a($$2);
-   }
+      this.a(new ctf(this.n, $$3, bvr.g, 0, 8, 36, null) {
+         @Override
+         public boolean a(cxo $$0) {
+            return $$3.a($$0, bvr.g);
+         }
 
-   @Override
-   public boolean a(cps $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.b(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.t.a(0);
-               this.b(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.t.a(0);
-               this.b(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gt()) {
-                  return false;
-               }
-
-               cxk $$5 = this.s.b(0);
-               this.s.e();
-               if (!$$0.gg().f($$5)) {
-                  $$0.a($$5, false);
-               }
-
-               return true;
-            default:
-               return false;
+         @Override
+         public boolean d() {
+            return $$3.e(bvr.g);
+         }
+      });
+      if ($$4 > 0) {
+         for (int $$5 = 0; $$5 < 3; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               this.a(new cuy($$2, 1 + $$6 + $$5 * $$4, 80 + $$6 * 18, 18 + $$5 * 18));
+            }
          }
       }
+
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public cxk b(cps $$0, int $$1) {
-      return cxk.k;
+   public boolean b(cpw $$0) {
+      return !this.o.b(this.m) && this.m.a($$0) && this.n.a($$0) && this.o.bL() && $$0.b(this.o, 4.0);
    }
 
    @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
+   public cxo b(cpw $$0, int $$1) {
+      cxo $$2 = cxo.k;
+      cuy $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxo $$4 = $$3.g();
+         $$2 = $$4.v();
+         int $$5 = this.m.b() + 1;
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.k.size(), true)) {
+               return cxo.k;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).h()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return cxo.k;
+            }
+         } else if (this.b(0).a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cxo.k;
+            }
+         } else if ($$5 <= 1 || !this.a($$4, 2, $$5, false)) {
+            int $$7 = $$5 + 27;
+            int $$9 = $$7 + 9;
+            if ($$1 >= $$7 && $$1 < $$9) {
+               if (!this.a($$4, $$5, $$7, false)) {
+                  return cxo.k;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$7) {
+               if (!this.a($$4, $$7, $$9, false)) {
+                  return cxo.k;
+               }
+            } else if (!this.a($$4, $$7, $$7, false)) {
+               return cxo.k;
+            }
+
+            return cxo.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cxo.k);
+         } else {
+            $$3.c();
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public boolean b(cps $$0) {
-      return this.s.a($$0);
-   }
-
-   public cxk l() {
-      return this.s.a(0);
-   }
-
-   public int m() {
-      return this.t.a(0);
+   public void a(cpw $$0) {
+      super.a($$0);
+      this.m.c($$0);
    }
 }

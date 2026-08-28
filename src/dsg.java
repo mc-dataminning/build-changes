@@ -1,31 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsg extends dke {
-   public static final MapCodec<dsg> a = b(dsg::new);
-   private static final double b = 5.0;
-   private static final fcm c = dke.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public class dsg extends dta implements dkc {
+   public static final MapCodec<dsg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwl.q.fieldOf("color").forGetter(dsg::b), t()).apply($$0, dsg::new));
+   private final cwl c;
 
    @Override
    public MapCodec<dsg> a() {
       return a;
    }
 
-   protected dsg(dxm.d $$0) {
-      super($$0);
+   public dsg(cwl $$0, dxt.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected dqn a_(dxn $$0) {
-      return dqn.a;
-   }
-
-   @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return c;
-   }
-
-   @Override
-   protected float c(dxn $$0, dgf $$1, jh $$2) {
-      return 1.0F;
+   public cwl b() {
+      return this.c;
    }
 }

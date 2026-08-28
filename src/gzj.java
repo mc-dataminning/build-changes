@@ -1,4 +1,3 @@
-public class gzj extends gye {
-   public boolean b;
-   public boolean c;
+public interface gzj {
+   boolean c();
 }

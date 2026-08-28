@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class gp implements ArgumentType<gn> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
-   private final js<dke> b;
+   private final js<dkl> b;
 
    public gp(es $$0) {
       this.b = $$0.d(mb.f);

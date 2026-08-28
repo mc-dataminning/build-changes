@@ -1,56 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public abstract class dns extends dke {
-   protected final jm a;
-   protected final boolean b;
-   protected final fcm d;
+public class dns extends dkv implements dko {
+   public static final MapCodec<dns> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aly.a(mb.aL).fieldOf("feature").forGetter($$0x -> $$0x.e), ma.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dns::new)
+   );
+   protected static final fcr b = dkl.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final dkl d;
+   private final aly<egh<?, ?>> e;
 
-   protected dns(dxm.d $$0, jm $$1, fcm $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+   @Override
+   public MapCodec<dns> a() {
+      return a;
+   }
+
+   protected dns(aly<egh<?, ?>> $$0, dkl $$1, dxt.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected abstract MapCodec<? extends dns> a();
-
-   @Nullable
-   @Override
-   public dxn a(dbb $$0) {
-      dxn $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
-   }
-
-   public dxn b(bam $$0) {
-      return this.m();
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return b;
    }
 
    @Override
-   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
-      jh $$3 = $$2.a(this.a.g());
-      dxn $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
+   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
+      return $$0.a(axu.aO) || $$0.a(dkn.fz) || $$0.a(dkn.ek) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends jq<egh<?, ?>>> a(dhk $$0) {
+      return $$0.K_().e(mb.aL).a(this.e);
    }
 
    @Override
-   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   protected boolean o(dxn $$0) {
-      return true;
+   public boolean b(dhk $$0, jh $$1, dxu $$2) {
+      dxu $$3 = $$0.a_($$1.e());
+      return $$3.a(this.d);
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return this.d;
+   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
-   protected abstract dnu c();
-
-   protected abstract dke b();
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
+      this.a($$0).ifPresent($$3x -> ((egh)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
+   }
 }

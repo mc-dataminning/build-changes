@@ -1,5 +1,7 @@
-public class gzu extends gym {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+import javax.annotation.Nullable;
+
+public class gzu extends gxt {
+   @Nullable
+   public hdl a;
+   public cxo b = cxo.k;
 }

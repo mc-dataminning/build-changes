@@ -1,18 +1,21 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cvl extends cxg implements cyf {
-   public cvl(cxg.a $$0) {
-      super($$0);
-   }
+public class cvl extends cxk {
+   private final dkl a;
 
-   public cpz a(dha $$0, cxk $$1, bwb $$2, @Nullable cxk $$3) {
-      return new cqb($$0, $$2, $$1.c(1), $$3);
+   public cvl(dkl $$0, cxk.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public cql a(dha $$0, ka $$1, cxk $$2, jm $$3) {
-      cqb $$4 = new cqb($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.c = cpz.a.b;
-      return $$4;
+   public void a(cxo $$0, cxk.b $$1, List<xv> $$2, czg $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public xv a(cxo $$0) {
+      return this.m();
    }
 }

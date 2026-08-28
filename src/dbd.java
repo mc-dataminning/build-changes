@@ -1,71 +1,62 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbd {
-   @Nullable
-   private final cps a;
-   private final btd b;
-   private final fbo c;
-   private final dha d;
-   private final cxk e;
+public record dbd(float c) implements dba {
+   private static final float f = 16.0F;
+   public static final MapCodec<dbd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(azn.o.optionalFieldOf("diameter", 16.0F).forGetter(dbd::b)).apply($$0, dbd::new)
+   );
+   public static final zt<xg, dbd> b = zt.a(zr.l, dbd::b, dbd::new);
 
-   public dbd(cps $$0, btd $$1, fbo $$2) {
-      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
+   public dbd() {
+      this(16.0F);
    }
 
-   protected dbd(dha $$0, @Nullable cps $$1, btd $$2, cxk $$3, fbo $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   @Override
+   public dba.a<dbd> a() {
+      return dba.a.d;
    }
 
-   protected final fbo j() {
+   @Override
+   public boolean a(dhh $$0, cxo $$1, bwf $$2) {
+      boolean $$3 = false;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         double $$5 = $$2.dA() + ($$2.dY().j() - 0.5) * (double)this.c;
+         double $$6 = bae.a($$2.dC() + ($$2.dY().j() - 0.5) * (double)this.c, (double)$$0.L_(), (double)($$0.L_() + ((ash)$$0).l() - 1));
+         double $$7 = $$2.dG() + ($$2.dY().j() - 0.5) * (double)this.c;
+         if ($$2.bZ()) {
+            $$2.ae();
+         }
+
+         fbx $$8 = $$2.dt();
+         if ($$2.b($$5, $$6, $$7, true)) {
+            $$0.a(ecq.R, $$8, ecq.a.a($$2));
+            axg $$10;
+            axe $$9;
+            if ($$2 instanceof cig) {
+               $$9 = axf.jJ;
+               $$10 = axg.g;
+            } else {
+               $$9 = axf.fj;
+               $$10 = axg.h;
+            }
+
+            $$0.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$9, $$10);
+            $$2.k();
+            $$3 = true;
+            break;
+         }
+      }
+
+      if ($$3 && $$2 instanceof cpw $$13) {
+         $$13.gL();
+      }
+
+      return $$3;
+   }
+
+   public float b() {
       return this.c;
-   }
-
-   public jh a() {
-      return this.c.b();
-   }
-
-   public jm k() {
-      return this.c.c();
-   }
-
-   public fbs l() {
-      return this.c.g();
-   }
-
-   public boolean m() {
-      return this.c.e();
-   }
-
-   public cxk n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cps o() {
-      return this.a;
-   }
-
-   public btd p() {
-      return this.b;
-   }
-
-   public dha q() {
-      return this.d;
-   }
-
-   public jm g() {
-      return this.a == null ? jm.c : this.a.cO();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fW();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dL();
    }
 }

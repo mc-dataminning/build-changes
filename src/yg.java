@@ -1,7 +1,7 @@
 import java.util.UUID;
 
-public record yg(UUID a, cpu b) {
-   public static yg a(cpu $$0) {
+public record yg(UUID a, cpy b) {
+   public static yg a(cpy $$0) {
       return new yg(UUID.randomUUID(), $$0);
    }
 
@@ -17,7 +17,7 @@ public record yg(UUID a, cpu b) {
       return this.a;
    }
 
-   public cpu c() {
+   public cpy c() {
       return this.b;
    }
 }

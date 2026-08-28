@@ -1,47 +1,36 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class fpk implements frx {
-   private static final int a = 170;
-   private final xv b;
+public class fpk extends fob {
    @Nullable
-   private List<azq> c;
-   @Nullable
-   private us d;
-   @Nullable
-   private final xv e;
+   protected fpr a;
+   protected boolean b;
 
-   private fpk(xv $$0, @Nullable xv $$1) {
+   public fpk(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, xu.a);
+      this.b = $$4;
+   }
+
+   public void a(fpr $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
       this.b = $$0;
-      this.e = $$1;
    }
 
-   public static fpk a(xv $$0, @Nullable xv $$1) {
-      return new fpk($$0, $$1);
-   }
-
-   public static fpk a(xv $$0) {
-      return new fpk($$0, $$0);
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   public void b(frw $$0) {
-      if (this.e != null) {
-         $$0.a(frv.c, this.e);
-      }
+   public void a(fsb $$0) {
+      this.c($$0);
    }
 
-   public List<azq> a(flz $$0) {
-      us $$1 = us.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
+   @Override
+   public void b(fnq $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(glt::B, this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
       }
-
-      return this.c;
-   }
-
-   public static List<azq> a(flz $$0, xv $$1) {
-      return $$0.h.c($$1, 170);
    }
 }

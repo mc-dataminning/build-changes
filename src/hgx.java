@@ -1,60 +1,109 @@
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class hgx {
-   private boolean a;
-   @Nullable
-   private hgr.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   final Map<hgw<?>, Object> a;
 
-   public hgx(@Nullable String $$0) {
-      this.d = $$0;
+   hgx(Map<hgw<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public void a(hgs.a $$0) {
-      if (this.c != null) {
-         $$0.a(hgr.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(hgr.k, this.a());
+   public static hgx.a a() {
+      return new hgx.a();
    }
 
-   private hgr.c a() {
-      gfs $$0 = flz.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return hgr.c.a;
-      } else {
-         return flz.Q().U() ? hgr.c.b : hgr.c.c;
-      }
-   }
+   public static MapCodec<hgx> a(final List<hgw<?>> $$0) {
+      return new MapCodec<hgx>() {
+         public <T> RecordBuilder<T> a(hgx $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
 
-   public boolean a(hgo $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(hgp.b, $$0x -> {
-            $$0x.a(hgr.n, this.b);
-            if (this.d != null) {
-               $$0x.a(hgr.o, this.d);
+            for (hgw<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
             }
-         });
-         return true;
-      } else {
-         return false;
-      }
-   }
 
-   public void a(dgx $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? hgr.b.e : hgr.b.a;
-         case b -> hgr.b.b;
-         case c -> hgr.b.c;
-         case d -> hgr.b.d;
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(hgx $$0x, RecordBuilder<T> $$1, hgw<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<hgx> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<hgx.a> $$2 = DataResult.success(new hgx.a());
+
+            for (hgw<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(hgx.a::a);
+         }
+
+         private <T, V> DataResult<hgx.a> a(DataResult<hgx.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, hgw<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(hgw::b).map($$0::createString);
+         }
       };
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
+   @Nullable
+   public <T> T a(hgw<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public Set<hgw<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<hgw<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
+      }
+
+      public <T> hgx.a a(hgw<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> hgx.a b(hgw<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public hgx.a a(hgx $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public hgx a() {
+         return new hgx(this.a);
+      }
    }
 }

@@ -1,22 +1,117 @@
-import java.util.ArrayList;
-import java.util.List;
+public class fww extends fxa {
+   private static final xv a = xv.c("options.languageAccuracyWarning").b(-4539718);
+   private static final int u = 53;
+   private fww.a v;
+   final hcs w;
 
-public class fww extends fwv {
-   private static final xv a = xv.c("options.skinCustomisation.title");
+   public fww(ftw $$0, fmi $$1, hcs $$2) {
+      super($$0, $$1, xv.c("options.language.title"));
+      this.w = $$2;
+      this.s.a(53);
+   }
 
-   public fww(ftr $$0, fmd $$1) {
-      super($$0, $$1, a);
+   @Override
+   protected void F() {
+      this.v = this.s.c(new fww.a(this.m));
    }
 
    @Override
    protected void l() {
-      List<fnw> $$0 = new ArrayList<>();
+   }
 
-      for (cpt $$1 : cpt.values()) {
-         $$0.add(fof.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+   @Override
+   protected void E() {
+      frw $$0 = this.s.b(frw.d()).a(8);
+      $$0.c().b();
+      $$0.a(new fpl(a, this.p));
+      frw $$1 = $$0.a(frw.e().a(8));
+      $$1.a(fod.a(xv.c("options.font"), $$0x -> this.m.a(new fwv(this, this.c))).a());
+      $$1.a(fod.a(xu.d, $$0x -> this.J()).a());
+   }
+
+   @Override
+   protected void c() {
+      super.c();
+      this.v.a(this.n, this.s);
+   }
+
+   void J() {
+      fww.a.a $$0 = this.v.g();
+      if ($$0 != null && !$$0.b.equals(this.w.a())) {
+         this.w.a($$0.b);
+         this.c.ab = $$0.b;
+         this.m.l();
       }
 
-      $$0.add(this.c.x().a(this.c));
-      this.d.a($$0);
+      this.m.a(this.b);
+   }
+
+   class a extends fpa<fww.a.a> {
+      public a(final fme $$0) {
+         super($$0, fww.this.n, fww.this.o - 33 - 53, 33, 18);
+         String $$1 = fww.this.w.a();
+         fww.this.w.b().forEach(($$1x, $$2) -> {
+            fww.a.a $$3 = new fww.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.g() != null) {
+            this.e(this.g());
+         }
+      }
+
+      @Override
+      public int a() {
+         return super.a() + 50;
+      }
+
+      public class a extends fpa.a<fww.a.a> {
+         final String b;
+         private final xv c;
+         private long d;
+
+         public a(final String $$1, final hcr $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(fnq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fww.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (fsg.a($$0)) {
+               this.b();
+               fww.this.J();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
+            }
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ae.c() - this.d < 250L) {
+               fww.this.J();
+            }
+
+            this.d = ae.c();
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public xv a() {
+            return xv.a("narrator.select", this.c);
+         }
+      }
    }
 }

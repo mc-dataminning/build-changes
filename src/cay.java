@@ -1,33 +1,34 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class cay {
-   private static final int a = 10;
-   private static final int b = 7;
+   public static bxz<bwf> a(dkl $$0) {
+      return cbl.a(
+         (Function<cbl.b<bwf>, ? extends App<cbl.c<bwf>, cbo<bwf>>>)($$1 -> $$1.group($$1.c(cfj.o), $$1.b(cfj.m), $$1.b(cfj.Y))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
+                     if (!$$3x.bj() && $$3x.aJ()) {
+                        jh $$5 = $$3x.dv().e();
 
-   public static bzf<bwj> a(float $$0) {
-      return a($$0, 10, 7);
-   }
+                        for (jm $$6 : jm.c.a) {
+                           jh $$7 = $$5.a($$6);
+                           if ($$2x.a_($$7).g($$2x, $$7).a(jm.b).c() && $$2x.b_($$7).b(etx.c)) {
+                              jh $$8 = $$7.d();
+                              if ($$2x.a_($$8).l()) {
+                                 dxu $$9 = $$0.m();
+                                 $$2x.a($$8, $$9, 3);
+                                 $$2x.a(ecq.i, $$8, ecq.a.a($$3x, $$9));
+                                 $$2x.a(null, $$3x, axf.kj, axg.e, 1.0F, 1.0F);
+                                 $$3.b();
+                                 return true;
+                              }
+                           }
+                        }
 
-   public static bzf<bwj> a(float $$0, int $$1, int $$2) {
-      return cbh.a((Function<cbh.b<bwj>, ? extends App<cbh.c<bwj>, cbk<bwj>>>)($$3 -> $$3.group($$3.c(cff.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               jh $$7 = $$5.dv();
-               fbs $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cgz.a($$5, $$1, $$2);
-               } else {
-                  kj $$9 = kj.a($$7);
-                  kj $$10 = bxw.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cgw.a($$5, $$1, $$2, fbs.c($$10.k()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cgz.a($$5, $$1, $$2);
-                  }
-               }
-
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cfi($$1xxxx, $$0, 0)));
-               return true;
-            })));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

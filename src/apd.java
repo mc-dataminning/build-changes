@@ -33,10 +33,10 @@ public class apd {
    }
 
    private static int a(ew $$0) throws CommandSyntaxException {
-      crf $$1 = a($$0.h());
+      crj $$1 = a($$0.h());
       if ($$1 != null) {
-         for (crg $$3 : $$1.h()) {
-            $$3.a(new buk(bum.x, 1000, 1));
+         for (crk $$3 : $$1.h()) {
+            $$3.a(new buo(buq.x, 1000, 1));
          }
       }
 
@@ -44,7 +44,7 @@ public class apd {
    }
 
    private static int a(ew $$0, int $$1) throws CommandSyntaxException {
-      crf $$2 = a($$0.h());
+      crj $$2 = a($$0.h());
       if ($$2 != null) {
          int $$3 = $$2.l();
          if ($$1 > $$3) {
@@ -63,15 +63,15 @@ public class apd {
 
    private static int b(ew $$0) {
       $$0.a(() -> xv.b("Spawned a raid captain"), false);
-      crg $$1 = bvm.aU.a($$0.e(), bvl.n);
+      crk $$1 = bvq.aU.a($$0.e(), bvp.n);
       if ($$1 == null) {
          $$0.b(xv.b("Pillager failed to spawn"));
          return 0;
       } else {
          $$1.x(true);
-         $$1.a(bvn.f, crf.a($$0.u().e(mb.d)));
+         $$1.a(bvr.f, crj.a($$0.u().e(mb.d)));
          $$1.a_($$0.d().d, $$0.d().e, $$0.d().f);
-         $$1.a($$0.e(), $$0.e().d_(jh.a((ka)$$0.d())), bvl.n, null);
+         $$1.a($$0.e(), $$0.e().d_(jh.a((ka)$$0.d())), bvp.n, null);
          $$0.e().a_($$1);
          return 1;
       }
@@ -80,8 +80,8 @@ public class apd {
    private static int a(ew $$0, @Nullable xv $$1) {
       if ($$1 != null && $$1.getString().equals("local")) {
          ash $$2 = $$0.e();
-         fbs $$3 = $$0.d().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.d, $$3.e, $$3.f, axf.vv, axg.g, 2.0F, 1.0F, $$2.A.g());
+         fbx $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         $$2.a(null, $$3.d, $$3.e, $$3.f, axf.vw, axg.g, 2.0F, 1.0F, $$2.A.g());
       }
 
       return 1;
@@ -94,8 +94,8 @@ public class apd {
          $$0.b(xv.b("Raid already started close by"));
          return -1;
       } else {
-         crh $$4 = $$2.y().A();
-         crf $$5 = $$4.a($$2, $$2.dv());
+         crl $$4 = $$2.y().A();
+         crj $$5 = $$4.a($$2, $$2.dv());
          if ($$5 != null) {
             $$5.a($$1);
             $$4.c();
@@ -111,7 +111,7 @@ public class apd {
    private static int c(ew $$0) throws CommandSyntaxException {
       asi $$1 = $$0.h();
       jh $$2 = $$1.dv();
-      crf $$3 = $$1.y().d($$2);
+      crj $$3 = $$1.y().d($$2);
       if ($$3 != null) {
          $$3.n();
          $$0.a(() -> xv.b("Stopped raid"), false);
@@ -123,7 +123,7 @@ public class apd {
    }
 
    private static int d(ew $$0) throws CommandSyntaxException {
-      crf $$1 = a($$0.h());
+      crj $$1 = a($$0.h());
       if ($$1 != null) {
          StringBuilder $$2 = new StringBuilder();
          $$2.append("Found a started raid! ");
@@ -148,7 +148,7 @@ public class apd {
    }
 
    @Nullable
-   private static crf a(asi $$0) {
+   private static crj a(asi $$0) {
       return $$0.y().d($$0.dv());
    }
 }

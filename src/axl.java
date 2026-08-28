@@ -52,7 +52,7 @@ public class axl extends axq {
    }
 
    @Override
-   public void a(cps $$0, axm<?> $$1, int $$2) {
+   public void a(cpw $$0, axm<?> $$1, int $$2) {
       super.a($$0, $$1, $$2);
       this.e.add($$1);
    }
@@ -73,7 +73,7 @@ public class axl extends axq {
                JsonElement $$3 = Streams.parse($$2);
                if (!$$3.isJsonNull()) {
                   ux $$4 = a($$3.getAsJsonObject());
-                  $$4 = bbo.g.a($$0, $$4, vm.b($$4, 1343));
+                  $$4 = bbs.g.a($$0, $$4, vm.b($$4, 1343));
                   if (!$$4.b("stats", 10)) {
                      break label47;
                   }

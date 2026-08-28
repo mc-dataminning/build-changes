@@ -1,15 +1,23 @@
-public enum dzc {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dzc implements bba {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-   private final int d;
+   private final String f;
 
-   private dzc(final int $$0) {
-      this.d = $$0;
+   private dzc(final String $$0) {
+      this.f = $$0;
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

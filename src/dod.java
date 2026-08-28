@@ -1,75 +1,105 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class dod extends dke {
+public class dod extends dkl implements dko {
    public static final MapCodec<dod> a = b(dod::new);
-   public static final dye b = dpu.b;
-   public static final dye c = dpu.c;
-   public static final dye d = dpu.d;
-   public static final dye e = dpu.e;
-   public static final dye f = dpu.f;
-   public static final dye g = dpu.g;
-   private static final Map<jm, dye> h = dpu.h;
+   private static final int c = 1;
+   private static final fcr d = dkl.a(1.0, 2.0, 1.0, 15.0, 16.0, 15.0);
+   private static final fcr e = dkl.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   public static final dyl b = dyk.s;
 
    @Override
    public MapCodec<dod> a() {
       return a;
    }
 
-   public dod(dxm.d $$0) {
+   public dod(dxt.d $$0) {
       super($$0);
-      this.l(
-         this.F
-            .b()
-            .b(b, Boolean.valueOf(true))
-            .b(c, Boolean.valueOf(true))
-            .b(d, Boolean.valueOf(true))
-            .b(e, Boolean.valueOf(true))
-            .b(f, Boolean.valueOf(true))
-            .b(g, Boolean.valueOf(true))
-      );
+      this.l(this.F.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public dxn a(dbb $$0) {
-      dgf $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      return this.m()
-         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
-         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
-         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return $$0.c(b) ? d : e;
    }
 
    @Override
-   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
-      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(dxu $$0, dhh $$1, jh $$2, bam $$3) {
+      if ($$3.a(500) == 0) {
+         dxu $$4 = $$1.a_($$2.d());
+         if ($$4.a(dkn.ae) || $$4.a(dkn.aR)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), axf.sM, axg.e, 1.0F, 1.0F, false);
+         }
+      }
    }
 
    @Override
-   protected dxn a(dxn $$0, dqu $$1) {
-      return $$0.b(h.get($$1.a(jm.c)), $$0.c(b))
-         .b(h.get($$1.a(jm.d)), $$0.c(d))
-         .b(h.get($$1.a(jm.f)), $$0.c(c))
-         .b(h.get($$1.a(jm.e)), $$0.c(e))
-         .b(h.get($$1.a(jm.b)), $$0.c(f))
-         .b(h.get($$1.a(jm.a)), $$0.c(g));
+   protected boolean e_(dxu $$0) {
+      return true;
    }
 
    @Override
-   protected dxn a(dxn $$0, dpd $$1) {
-      return $$0.b(h.get($$1.b(jm.c)), $$0.c(b))
-         .b(h.get($$1.b(jm.d)), $$0.c(d))
-         .b(h.get($$1.b(jm.f)), $$0.c(c))
-         .b(h.get($$1.b(jm.e)), $$0.c(e))
-         .b(h.get($$1.b(jm.b)), $$0.c(f))
-         .b(h.get($$1.b(jm.a)), $$0.c(g));
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      return this.b($$1, $$2);
+   }
+
+   private boolean b(dgm $$0, jh $$1) {
+      jh $$2 = $$1.a(jm.b);
+      dxu $$3 = $$0.a_($$2);
+      return dpn.a($$0, jm.b, $$2, $$3) || $$3.a(dkn.tR);
    }
 
    @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(f, g, b, c, d, e);
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if (!this.b($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return $$0.b(b, Boolean.valueOf(!$$1.a_($$3.e()).a(this)));
+   }
+
+   @Override
+   protected void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if (!this.b($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean b(dhk $$0, jh $$1, dxu $$2) {
+      return this.o($$0.a_(this.a($$0, $$1).e()));
+   }
+
+   private boolean o(dxu $$0) {
+      return $$0.l();
+   }
+
+   public jh a(dgm $$0, jh $$1) {
+      jh.a $$2 = $$1.k();
+
+      dxu $$3;
+      do {
+         $$2.c(jm.a);
+         $$3 = $$0.a_($$2);
+      } while ($$3.a(this));
+
+      return $$2.a(jm.b).j();
+   }
+
+   @Override
+   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
+      jh $$4 = this.a($$0, $$2).e();
+      if (this.o($$0.a_($$4))) {
+         $$0.b($$4, $$3.b(b, Boolean.valueOf(true)));
+      }
    }
 }

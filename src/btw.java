@@ -1,263 +1,142 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class btw {
-   private final kd<btx> a;
-   private final btv b;
-   private final btv c;
-   private final btv d;
-   private final btv e;
-   private final btv f;
-   private final btv g;
-   private final btv h;
-   private final btv i;
-   private final btv j;
-   private final btv k;
-   private final btv l;
-   private final btv m;
-   private final btv n;
-   private final btv o;
-   private final btv p;
-   private final btv q;
-   private final btv r;
-   private final btv s;
-   private final btv t;
-   private final btv u;
-   private final btv v;
-   private final btv w;
-   private final btv x;
-   private final btv y;
-   private final btv z;
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final ys c = ys.a.a(new xt(xt.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new yb(yb.a.a, xv.b("MCPE-28723")));
+   private final List<btu> d = Lists.newArrayList();
+   private final bwf e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
 
-   public btw(ke $$0) {
-      this.a = $$0.e(mb.s);
-      this.b = this.a(bty.a);
-      this.c = this.a(bty.b);
-      this.d = this.a(bty.c);
-      this.e = this.a(bty.d);
-      this.f = this.a(bty.e);
-      this.g = this.a(bty.f);
-      this.h = this.a(bty.g);
-      this.i = this.a(bty.h);
-      this.j = this.a(bty.i);
-      this.k = this.a(bty.j);
-      this.l = this.a(bty.k);
-      this.m = this.a(bty.l);
-      this.n = this.a(bty.m);
-      this.o = this.a(bty.n);
-      this.p = this.a(bty.o);
-      this.q = this.a(bty.p);
-      this.r = this.a(bty.q);
-      this.s = this.a(bty.r);
-      this.t = this.a(bty.s);
-      this.u = this.a(bty.t);
-      this.v = this.a(bty.u);
-      this.w = this.a(bty.v);
-      this.x = this.a(bty.w);
-      this.y = this.a(bty.U);
-      this.z = this.a(bty.V);
+   public btw(bwf $$0) {
+      this.e = $$0;
    }
 
-   private btv a(aly<btx> $$0) {
-      return new btv(this.a.b($$0));
+   public void a(btz $$0, float $$1) {
+      this.c();
+      bue $$2 = bue.a(this.e);
+      btu $$3 = new btu($$0, $$1, $$2, this.e.Z);
+      this.d.add($$3);
+      this.f = this.e.af;
+      this.j = true;
+      if (!this.i && this.e.bL() && a($$0)) {
+         this.i = true;
+         this.g = this.e.af;
+         this.h = this.g;
+         this.e.i_();
+      }
    }
 
-   private btv a(aly<btx> $$0, @Nullable bvf $$1) {
-      return new btv(this.a.b($$0), $$1);
+   private static boolean a(btz $$0) {
+      return $$0.d() instanceof bwf;
    }
 
-   private btv a(aly<btx> $$0, @Nullable bvf $$1, @Nullable bvf $$2) {
-      return new btv(this.a.b($$0), $$1, $$2);
+   private xv a(bvj $$0, xv $$1, String $$2, String $$3) {
+      cxo $$5 = $$0 instanceof bwf $$4 ? $$4.eX() : cxo.k;
+      return !$$5.f() && $$5.b(ku.g) ? xv.a($$2, this.e.p_(), $$1, $$5.J()) : xv.a($$3, this.e.p_(), $$1);
    }
 
-   public btv a() {
-      return this.b;
+   private xv a(btu $$0, @Nullable bvj $$1) {
+      btz $$2 = $$0.a();
+      if (!$$2.a(axw.m) && !$$2.a(axw.s)) {
+         xv $$4 = a($$1);
+         bvj $$5 = $$2.d();
+         xv $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (xv)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : xv.a("death.fell.killer", this.e.p_()));
+         }
+      } else {
+         bue $$3 = Objects.requireNonNullElse($$0.c(), bue.a);
+         return xv.a($$3.a(), this.e.p_());
+      }
    }
 
-   public btv b() {
-      return this.c;
+   @Nullable
+   private static xv a(@Nullable bvj $$0) {
+      return $$0 == null ? null : $$0.p_();
    }
 
-   public btv c() {
-      return this.d;
+   public xv a() {
+      if (this.d.isEmpty()) {
+         return xv.a("death.attack.generic", this.e.p_());
+      } else {
+         btu $$0 = this.d.get(this.d.size() - 1);
+         btz $$1 = $$0.a();
+         btu $$2 = this.d();
+         bud $$3 = $$1.k().e();
+         if ($$3 == bud.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == bud.c) {
+            String $$4 = "death.attack." + $$1.f();
+            xv $$5 = xy.a((xv)xv.c($$4 + ".link")).c(c);
+            return xv.a($$4 + ".message", this.e.p_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
+      }
    }
 
-   public btv d() {
-      return this.e;
+   @Nullable
+   private btu d() {
+      btu $$0 = null;
+      btu $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         btu $$5 = this.d.get($$4);
+         btu $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         btz $$7 = $$5.a();
+         boolean $$8 = $$7.a(axw.s);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(axw.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
    }
 
-   public btv e() {
-      return this.f;
+   public int b() {
+      return this.i ? this.e.af - this.g : this.h - this.g;
    }
 
-   public btv f() {
-      return this.g;
-   }
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bL() || this.e.af - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.af;
+         if ($$1) {
+            this.e.j_();
+         }
 
-   public btv g() {
-      return this.h;
-   }
-
-   public btv h() {
-      return this.i;
-   }
-
-   public btv i() {
-      return this.j;
-   }
-
-   public btv j() {
-      return this.k;
-   }
-
-   public btv k() {
-      return this.l;
-   }
-
-   public btv l() {
-      return this.m;
-   }
-
-   public btv m() {
-      return this.n;
-   }
-
-   public btv n() {
-      return this.o;
-   }
-
-   public btv o() {
-      return this.p;
-   }
-
-   public btv p() {
-      return this.q;
-   }
-
-   public btv q() {
-      return this.r;
-   }
-
-   public btv r() {
-      return this.s;
-   }
-
-   public btv s() {
-      return this.t;
-   }
-
-   public btv t() {
-      return this.u;
-   }
-
-   public btv u() {
-      return this.v;
-   }
-
-   public btv v() {
-      return this.w;
-   }
-
-   public btv w() {
-      return this.x;
-   }
-
-   public btv a(bvf $$0) {
-      return this.a(bty.x, $$0);
-   }
-
-   public btv b(bvf $$0) {
-      return this.a(bty.y, $$0);
-   }
-
-   public btv c(bvf $$0) {
-      return this.a(bty.z, $$0);
-   }
-
-   public btv a(bwb $$0) {
-      return this.a(bty.A, $$0);
-   }
-
-   public btv b(bwb $$0) {
-      return this.a(bty.B, $$0);
-   }
-
-   public btv c(bwb $$0) {
-      return this.a(bty.C, $$0);
-   }
-
-   public btv a(cps $$0) {
-      return this.a(bty.D, $$0);
-   }
-
-   public btv a(cpz $$0, @Nullable bvf $$1) {
-      return this.a(bty.E, $$0, $$1);
-   }
-
-   public btv a(bvf $$0, @Nullable bvf $$1) {
-      return this.a(bty.F, $$0, $$1);
-   }
-
-   public btv a(bvf $$0, @Nullable bwb $$1) {
-      return this.a(bty.G, $$0, $$1);
-   }
-
-   public btv b(bvf $$0, @Nullable bwb $$1) {
-      return this.a(bty.H, $$0, $$1);
-   }
-
-   public btv c(bvf $$0, @Nullable bwb $$1) {
-      return this.a(bty.I, $$0, $$1);
-   }
-
-   public btv a(cqg $$0, @Nullable bvf $$1) {
-      return this.a(bty.J, $$0, $$1);
-   }
-
-   public btv a(cqf $$0, @Nullable bvf $$1) {
-      return $$1 == null ? this.a(bty.L, $$0) : this.a(bty.K, $$0, $$1);
-   }
-
-   public btv a(cqz $$0, bvf $$1) {
-      return this.a(bty.M, $$0, $$1);
-   }
-
-   public btv b(bvf $$0, @Nullable bvf $$1) {
-      return this.a(bty.N, $$0, $$1);
-   }
-
-   public btv c(bvf $$0, @Nullable bvf $$1) {
-      return this.a(bty.O, $$0, $$1);
-   }
-
-   public btv d(bvf $$0) {
-      return this.a(bty.P, $$0);
-   }
-
-   public btv a(@Nullable dgs $$0) {
-      return $$0 != null ? this.d($$0.d(), $$0.c()) : this.d(null, null);
-   }
-
-   public btv d(@Nullable bvf $$0, @Nullable bvf $$1) {
-      return this.a($$1 != null && $$0 != null ? bty.R : bty.Q, $$0, $$1);
-   }
-
-   public btv e(bvf $$0) {
-      return this.a(bty.S, $$0);
-   }
-
-   public btv a(fbs $$0) {
-      return new btv(this.a.b(bty.T), $$0);
-   }
-
-   public btv x() {
-      return this.y;
-   }
-
-   public btv y() {
-      return this.z;
-   }
-
-   public btv f(bvf $$0) {
-      return this.a(bty.W, $$0);
+         this.d.clear();
+      }
    }
 }

@@ -26,7 +26,7 @@ public class anh {
                                        .then(
                                           ex.a("only")
                                              .then(
-                                                ((RequiredArgumentBuilder)ex.a("advancement", fw.a(mb.bi))
+                                                ((RequiredArgumentBuilder)ex.a("advancement", fw.a(mb.bj))
                                                       .executes(
                                                          $$0x -> a(
                                                                (ew)$$0x.getSource(),
@@ -53,7 +53,7 @@ public class anh {
                                     .then(
                                        ex.a("from")
                                           .then(
-                                             ex.a("advancement", fw.a(mb.bi))
+                                             ex.a("advancement", fw.a(mb.bj))
                                                 .executes(
                                                    $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), anh.a.a, a($$0x, fw.e($$0x, "advancement"), anh.b.c))
                                                 )
@@ -62,7 +62,7 @@ public class anh {
                                  .then(
                                     ex.a("until")
                                        .then(
-                                          ex.a("advancement", fw.a(mb.bi))
+                                          ex.a("advancement", fw.a(mb.bj))
                                              .executes(
                                                 $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), anh.a.a, a($$0x, fw.e($$0x, "advancement"), anh.b.d))
                                              )
@@ -71,7 +71,7 @@ public class anh {
                               .then(
                                  ex.a("through")
                                     .then(
-                                       ex.a("advancement", fw.a(mb.bi))
+                                       ex.a("advancement", fw.a(mb.bj))
                                           .executes(
                                              $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), anh.a.a, a($$0x, fw.e($$0x, "advancement"), anh.b.b))
                                           )
@@ -89,7 +89,7 @@ public class anh {
                                     .then(
                                        ex.a("only")
                                           .then(
-                                             ((RequiredArgumentBuilder)ex.a("advancement", fw.a(mb.bi))
+                                             ((RequiredArgumentBuilder)ex.a("advancement", fw.a(mb.bj))
                                                    .executes(
                                                       $$0x -> a(
                                                             (ew)$$0x.getSource(), fj.f($$0x, "targets"), anh.a.b, a($$0x, fw.e($$0x, "advancement"), anh.b.a)
@@ -113,7 +113,7 @@ public class anh {
                                  .then(
                                     ex.a("from")
                                        .then(
-                                          ex.a("advancement", fw.a(mb.bi))
+                                          ex.a("advancement", fw.a(mb.bj))
                                              .executes(
                                                 $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), anh.a.b, a($$0x, fw.e($$0x, "advancement"), anh.b.c))
                                              )
@@ -122,7 +122,7 @@ public class anh {
                               .then(
                                  ex.a("until")
                                     .then(
-                                       ex.a("advancement", fw.a(mb.bi))
+                                       ex.a("advancement", fw.a(mb.bj))
                                           .executes(
                                              $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), anh.a.b, a($$0x, fw.e($$0x, "advancement"), anh.b.d))
                                           )
@@ -131,7 +131,7 @@ public class anh {
                            .then(
                               ex.a("through")
                                  .then(
-                                    ex.a("advancement", fw.a(mb.bi))
+                                    ex.a("advancement", fw.a(mb.bj))
                                        .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), anh.a.b, a($$0x, fw.e($$0x, "advancement"), anh.b.b)))
                                  )
                            ))

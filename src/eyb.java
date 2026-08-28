@@ -1,63 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class eyb extends exu {
-   public static final MapCodec<eyb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(dug.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eyb::new)
-   );
-   private final dug b;
-   private final boolean c;
+public abstract class eyb implements eyc {
+   protected final List<ezx> g;
+   private final Predicate<ewo> a;
 
-   eyb(List<ezs> $$0, dug $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected eyb(List<ezx> $$0) {
+      this.g = $$0;
+      this.a = ae.a($$0);
    }
 
    @Override
-   protected cxk a(cxk $$0, ewh $$1) {
-      if (this.c) {
-         $$0.a(ku.ai, dug.a, this.b, ($$0x, $$1x) -> new dug.a().a($$0x).a($$1x).a());
-      } else {
-         $$0.b(ku.ai, this.b);
-      }
+   public abstract eyd<? extends eyb> b();
 
-      return $$0;
+   protected static <T extends eyb> P1<Mu<T>, List<ezx>> a(Instance<T> $$0) {
+      return $$0.group(ezx.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
+
+   public final cxo b(cxo $$0, ewo $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cxo a(cxo var1, ewo var2);
 
    @Override
-   public exw<eyb> b() {
-      return exx.E;
+   public void a(ewu $$0) {
+      eyc.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+      }
    }
 
-   public static eyb.a a(boolean $$0) {
-      return new eyb.a($$0);
+   protected static eyb.a<?> a(Function<List<ezx>, eyc> $$0) {
+      return new eyb.b($$0);
    }
 
-   public static class a extends exu.a<eyb.a> {
-      private final dug.a a = new dug.a();
-      private final boolean b;
+   public abstract static class a<T extends eyb.a<T>> implements eyc.a, ezp<T> {
+      private final Builder<ezx> a = ImmutableList.builder();
 
-      a(boolean $$0) {
-         this.b = $$0;
+      public T a(ezx.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
       }
 
-      protected eyb.a a() {
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<ezx> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends eyb.a<eyb.b> {
+      private final Function<List<ezx>, eyc> a;
+
+      public b(Function<List<ezx>, eyc> $$0) {
+         this.a = $$0;
+      }
+
+      protected eyb.b a() {
          return this;
       }
 
       @Override
-      public exv b() {
-         return new eyb(this.g(), this.a.a(), this.b);
-      }
-
-      public eyb.a a(jq<duf> $$0, cwh $$1) {
-         this.a.a($$0, $$1);
-         return this;
+      public eyc b() {
+         return this.a.apply(this.g());
       }
    }
 }

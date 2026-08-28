@@ -1,61 +1,65 @@
-public class etm extends eto {
-   @Override
-   public cxg a() {
-      return cxo.a;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+
+public class etm {
+   private final int a;
+   private final LongLinkedOpenHashSet[] b;
+   private int c;
+
+   public etm(int $$0, final int $$1) {
+      this.a = $$0;
+      this.b = new LongLinkedOpenHashSet[$$0];
+
+      for (int $$2 = 0; $$2 < $$0; $$2++) {
+         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
+            protected void rehash(int $$0) {
+               if ($$0 > $$1) {
+                  super.rehash($$0);
+               }
+            }
+         };
+      }
+
+      this.c = $$0;
    }
 
-   @Override
-   public boolean a(etp $$0, dgf $$1, jh $$2, eto $$3, jm $$4) {
-      return true;
+   public long a() {
+      LongLinkedOpenHashSet $$0 = this.b[this.c];
+      long $$1 = $$0.removeFirstLong();
+      if ($$0.isEmpty()) {
+         this.a(this.a);
+      }
+
+      return $$1;
    }
 
-   @Override
-   public fbs a(dgf $$0, jh $$1, etp $$2) {
-      return fbs.c;
+   public boolean b() {
+      return this.c >= this.a;
    }
 
-   @Override
-   public int a(dhd $$0) {
-      return 0;
+   public void a(long $$0, int $$1, int $$2) {
+      LongLinkedOpenHashSet $$3 = this.b[$$1];
+      $$3.remove($$0);
+      if ($$3.isEmpty() && this.c == $$1) {
+         this.a($$2);
+      }
    }
 
-   @Override
-   protected boolean b() {
-      return true;
+   public void a(long $$0, int $$1) {
+      this.b[$$1].add($$0);
+      if (this.c > $$1) {
+         this.c = $$1;
+      }
    }
 
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
+   private void a(int $$0) {
+      int $$1 = this.c;
+      this.c = $$0;
 
-   @Override
-   public float a(etp $$0, dgf $$1, jh $$2) {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(etp $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected dxn b(etp $$0) {
-      return dkg.a.m();
-   }
-
-   @Override
-   public boolean c(etp $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(etp $$0) {
-      return 0;
-   }
-
-   @Override
-   public fcm b(etp $$0, dgf $$1, jh $$2) {
-      return fcj.a();
+      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
+         if (!this.b[$$2].isEmpty()) {
+            this.c = $$2;
+            break;
+         }
+      }
    }
 }

@@ -1,25 +1,15 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.List;
 
-public class epw extends eoc {
-   public static final MapCodec<epw> d = a(epw::new);
-
-   public epw(eoc.c $$0) {
-      super($$0);
+public class epw {
+   public static MapCodec<? extends epv> a(kd<MapCodec<? extends epv>> $$0) {
+      kd.a($$0, "random", epy.a);
+      kd.a($$0, "random_group", epz.a);
+      return kd.a($$0, "direct", epu.a);
    }
 
-   @Override
-   public Optional<eoc.b> a(eoc.a $$0) {
-      return a($$0, edi.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(eou $$0, eoc.a $$1) {
-      jh $$2 = new jh($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new epv.a($$2));
-   }
-
-   @Override
-   public eol<?> e() {
-      return eol.a;
+   public static void a(rk<ept> $$0, jq<ept> $$1, List<epv> $$2) {
+      $$2.stream().flatMap(epv::a).map($$0x -> $$0x.a().a()).forEach($$2x -> rr.a($$0, $$2x, new ept($$1, List.of(Pair.of(epr.b($$2x), 1)), ept.a.b)));
    }
 }

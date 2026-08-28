@@ -1,14 +1,15 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cww extends cvq {
-   public cww(dke $$0, cxg.a $$1) {
-      super($$0, $$1);
+public class cww extends cxk {
+   public cww(cxk.a $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   protected dxn c(dbb $$0) {
-      cps $$1 = $$0.o();
-      return $$1 != null && !$$1.gE() ? null : super.c($$0);
+   public void a(cxo $$0, cxk.b $$1, List<xv> $$2, czg $$3) {
+      dad $$4 = $$0.a(ku.ae);
+      if ($$4 != null) {
+         $$4.a($$1, $$2::add, $$3);
+      }
    }
 }

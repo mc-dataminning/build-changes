@@ -1,62 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public record csu(int c, float d, boolean e) implements czr {
-   public static final Codec<csu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               azn.l.fieldOf("nutrition").forGetter(csu::a),
-               Codec.FLOAT.fieldOf("saturation").forGetter(csu::b),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(csu::c)
-            )
-            .apply($$0, csu::new)
-   );
-   public static final zt<xg, csu> b = zt.a(zr.h, csu::a, zr.l, csu::b, zr.b, csu::c, csu::new);
+public class csu {
+   public static final csq a;
+   public static final csq b;
+   public static final csq c;
+   public static final csq d;
+   public static final csq e;
+   public static final csr f;
+   public static final Codec<css> g;
+   public static final css h;
+   public static final css i;
 
-   @Override
-   public void a(dha $$0, bwb $$1, cxk $$2, czq $$3) {
-      bam $$4 = $$1.dY();
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), axg.g, 1.0F, $$4.a(1.0F, 0.4F));
-      if ($$1 instanceof cps $$5) {
-         $$5.gr().a(this);
-         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), axf.uC, axg.h, 0.5F, bae.b($$4, 0.9F, 1.0F));
-      }
+   public static String a(css $$0, css $$1) {
+      return a(f, $$0, $$1);
    }
 
-   public int a() {
-      return this.c;
+   public static String a(csr $$0, css $$1, css $$2) {
+      Set<alz> $$3 = $$0.b($$2);
+      Set<alz> $$4 = $$0.b($$1);
+      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(alz::toString).collect(Collectors.joining(", "));
    }
 
-   public float b() {
-      return this.d;
+   public static boolean a(css $$0) {
+      return !$$0.a(h);
    }
 
-   public boolean c() {
-      return this.e;
-   }
-
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-
-      public csu.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public csu.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public csu.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public csu b() {
-         float $$0 = css.a(this.a, this.b);
-         return new csu(this.a, $$0, this.c);
-      }
+   static {
+      csr.a $$0 = new csr.a("main");
+      a = $$0.a("vanilla");
+      b = $$0.a("winter_drop");
+      c = $$0.a("trade_rebalance");
+      d = $$0.a("redstone_experiments");
+      e = $$0.a("minecart_improvements");
+      f = $$0.a();
+      g = f.b();
+      h = css.a(a);
+      i = h;
    }
 }

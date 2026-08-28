@@ -1,11 +1,13 @@
-public class gyn extends gym {
-   public cjz.d a;
-   public boolean b;
-   public cxk c;
-   public boolean d;
+import javax.annotation.Nullable;
 
-   public gyn() {
-      this.a = cjz.d.a;
-      this.c = cxk.k;
+public class gyn extends gxn {
+   @Nullable
+   public bvh.g.a a;
+   @Nullable
+   public hdl f;
+
+   @Override
+   public boolean a() {
+      return this.a != null && this.f != null;
    }
 }

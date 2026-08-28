@@ -10,17 +10,17 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ask extends ete implements AutoCloseable {
+public class ask extends etl implements AutoCloseable {
    public static final int a = 1000;
    private static final Logger e = LogUtils.getLogger();
-   private final bru f;
+   private final bry f;
    private final ObjectList<Pair<ask.a, Runnable>> g = new ObjectArrayList();
    private final arm h;
    private final aro i;
    private final int j = 1000;
    private final AtomicBoolean k = new AtomicBoolean();
 
-   public ask(dzv $$0, arm $$1, boolean $$2, bru $$3, aro $$4) {
+   public ask(eac $$0, arm $$1, boolean $$2, bry $$3, aro $$4) {
       super($$0, true, $$2);
       this.h = $$1;
       this.i = $$4;
@@ -42,14 +42,14 @@ public class ask extends ete implements AutoCloseable {
       this.a(kj.a($$0.u()), kj.a($$0.w()), ask.a.a, ae.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
    }
 
-   protected void a(dgg $$0) {
+   protected void a(dgn $$0) {
       this.a($$0.g, $$0.h, () -> 0, ask.a.a, ae.a((Runnable)(() -> {
          super.b($$0, false);
          super.a($$0, false);
 
          for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
-            super.a(dhj.b, kj.a($$0, $$1), null);
-            super.a(dhj.a, kj.a($$0, $$1), null);
+            super.a(dhq.b, kj.a($$0, $$1), null);
+            super.a(dhq.a, kj.a($$0, $$1), null);
          }
 
          for (int $$2 = this.d.ao(); $$2 <= this.d.ap(); $$2++) {
@@ -64,22 +64,22 @@ public class ask extends ete implements AutoCloseable {
    }
 
    @Override
-   public void b(dgg $$0) {
+   public void b(dgn $$0) {
       this.a($$0.g, $$0.h, ask.a.a, ae.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
    }
 
    @Override
-   public void a(dgg $$0, boolean $$1) {
+   public void a(dgn $$0, boolean $$1) {
       this.a($$0.g, $$0.h, ask.a.a, ae.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
    }
 
    @Override
-   public void a(dhj $$0, kj $$1, @Nullable dzn $$2) {
+   public void a(dhq $$0, kj $$1, @Nullable dzu $$2) {
       this.a($$1.a(), $$1.c(), () -> 0, ask.a.a, ae.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
    }
 
    private void a(int $$0, int $$1, ask.a $$2, Runnable $$3) {
-      this.a($$0, $$1, this.h.c(dgg.c($$0, $$1)), $$2, $$3);
+      this.a($$0, $$1, this.h.c(dgn.c($$0, $$1)), $$2, $$3);
    }
 
    private void a(int $$0, int $$1, IntSupplier $$2, ask.a $$3, Runnable $$4) {
@@ -88,21 +88,21 @@ public class ask extends ete implements AutoCloseable {
          if (this.g.size() >= 1000) {
             this.f();
          }
-      }, dgg.c($$0, $$1), $$2);
+      }, dgn.c($$0, $$1), $$2);
    }
 
    @Override
-   public void b(dgg $$0, boolean $$1) {
+   public void b(dgn $$0, boolean $$1) {
       this.a($$0.g, $$0.h, () -> 0, ask.a.a, ae.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
    }
 
-   public CompletableFuture<dzi> a(dzi $$0, boolean $$1) {
-      dgg $$2 = $$0.f();
+   public CompletableFuture<dzp> a(dzp $$0, boolean $$1) {
+      dgn $$2 = $$0.f();
       this.a($$2.g, $$2.h, ask.a.a, ae.a((Runnable)(() -> {
-         dzt[] $$2x = $$0.d();
+         eaa[] $$2x = $$0.d();
 
          for (int $$3 = 0; $$3 < $$0.an(); $$3++) {
-            dzt $$4 = $$2x[$$3];
+            eaa $$4 = $$2x[$$3];
             if (!$$4.c()) {
                int $$5 = this.d.h($$3);
                super.a(kj.a($$2, $$5), false);
@@ -116,8 +116,8 @@ public class ask extends ete implements AutoCloseable {
       }, $$1x -> this.a($$2.g, $$2.h, ask.a.b, $$1x));
    }
 
-   public CompletableFuture<dzi> b(dzi $$0, boolean $$1) {
-      dgg $$2 = $$0.f();
+   public CompletableFuture<dzp> b(dzp $$0, boolean $$1) {
+      dgn $$2 = $$0.f();
       $$0.b(false);
       this.a($$2.g, $$2.h, ask.a.a, ae.a((Runnable)(() -> {
          if (!$$1) {

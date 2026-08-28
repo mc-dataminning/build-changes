@@ -1,19 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.PrivateKey;
-import java.time.Instant;
+public record cpu(boolean c, boolean d, boolean e, boolean f, boolean g, boolean h, boolean i) {
+   private static final byte j = 1;
+   private static final byte k = 2;
+   private static final byte l = 4;
+   private static final byte m = 8;
+   private static final byte n = 16;
+   private static final byte o = 32;
+   private static final byte p = 64;
+   public static final zt<ws, cpu> a = new zt<ws, cpu>() {
+      public void a(ws $$0, cpu $$1) {
+         byte $$2 = 0;
+         $$2 = (byte)($$2 | ($$1.a() ? 1 : 0));
+         $$2 = (byte)($$2 | ($$1.b() ? 2 : 0));
+         $$2 = (byte)($$2 | ($$1.c() ? 4 : 0));
+         $$2 = (byte)($$2 | ($$1.d() ? 8 : 0));
+         $$2 = (byte)($$2 | ($$1.e() ? 16 : 0));
+         $$2 = (byte)($$2 | ($$1.f() ? 32 : 0));
+         $$2 = (byte)($$2 | ($$1.g() ? 64 : 0));
+         $$0.l($$2);
+      }
 
-public record cpu(PrivateKey b, cpv c, Instant d) {
-   public static final Codec<cpu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               azc.g.fieldOf("private_key").forGetter(cpu::b),
-               cpv.c.fieldOf("public_key").forGetter(cpu::c),
-               azn.q.fieldOf("refreshed_after").forGetter(cpu::d)
-            )
-            .apply($$0, cpu::new)
-   );
+      public cpu a(ws $$0) {
+         byte $$1 = $$0.readByte();
+         boolean $$2 = ($$1 & 1) != 0;
+         boolean $$3 = ($$1 & 2) != 0;
+         boolean $$4 = ($$1 & 4) != 0;
+         boolean $$5 = ($$1 & 8) != 0;
+         boolean $$6 = ($$1 & 16) != 0;
+         boolean $$7 = ($$1 & 32) != 0;
+         boolean $$8 = ($$1 & 64) != 0;
+         return new cpu($$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      }
+   };
+   public static cpu b = new cpu(false, false, false, false, false, false, false);
 
    public boolean a() {
-      return this.d.isBefore(Instant.now());
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d;
+   }
+
+   public boolean c() {
+      return this.e;
+   }
+
+   public boolean d() {
+      return this.f;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
    }
 }

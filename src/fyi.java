@@ -1,166 +1,168 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fyi extends foe<fyg> {
-   private final fyj a;
-   private final List<fyg> m = Lists.newArrayList();
+public class fyi extends ftw {
+   private static final xv a = xv.c("gui.abuseReport.reason.title");
+   private static final xv b = xv.c("gui.abuseReport.reason.description");
+   private static final xv c = xv.c("gui.abuseReport.read_info");
+   private static final int d = 320;
+   private static final int s = 62;
+   private static final int u = 4;
    @Nullable
-   private String n;
+   private final ftw v;
+   @Nullable
+   private fyi.a w;
+   @Nullable
+   ggp x;
+   private final Consumer<ggp> y;
+   final frs z = new frs(this);
+   final ggq A;
 
-   public fyi(fyj $$0, flz $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.a = $$0;
+   public fyi(@Nullable ftw $$0, @Nullable ggp $$1, ggq $$2, Consumer<ggp> $$3) {
+      super(a);
+      this.v = $$0;
+      this.x = $$1;
+      this.y = $$3;
+      this.A = $$2;
    }
 
    @Override
-   protected void b(fnl $$0) {
-   }
-
-   @Override
-   protected void a(fnl $$0) {
-   }
-
-   @Override
-   protected void c(fnl $$0) {
-      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
-   }
-
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, fyg> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
-   }
-
-   private void a(Collection<UUID> $$0, Map<UUID, fyg> $$1) {
-      gfe $$2 = this.c.t.i;
-
-      for (UUID $$3 : $$0) {
-         gfp $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new fyg(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
-      }
-   }
-
-   private void a(Map<UUID, fyg> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.bb().b())) {
-         fyg $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               fyg $$2 = new fyg(this.c, this.a, $$3.getId(), $$3.getName(), this.c.an().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
-         } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
-            }
+   protected void aT_() {
+      this.z.a(a, this.p);
+      frw $$0 = this.z.c(frw.d().a(4));
+      this.w = $$0.a(new fyi.a(this.m));
+      fyi.a.a $$1 = x.a(this.x, this.w::a);
+      this.w.a($$1);
+      $$0.a(frx.b(this.K()));
+      frw $$2 = this.z.b(frw.e().a(8));
+      $$2.a(fod.a(c, fst.b(this, aza.m)).a());
+      $$2.a(fod.a(xu.d, $$0x -> {
+         fyi.a.a $$1x = this.w.g();
+         if ($$1x != null) {
+            this.y.accept($$1x.b());
          }
 
-         $$4.d(true);
-      }
-   }
-
-   private static Collection<GameProfile> a(gfy $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         gga $$3 = $$0.b($$2);
-         if ($$3 instanceof ggb.a) {
-            ggb.a $$4 = (ggb.a)$$3;
-            if ($$4.g().i()) {
-               $$1.add($$4.f());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void c() {
-      this.m.sort(Comparator.<fyg, Integer>comparing($$0 -> {
-         if (this.c.b($$0.g())) {
-            return 0;
-         } else if (this.c.bb().a($$0.g())) {
-            return 1;
-         } else if ($$0.g().version() == 2) {
-            return 4;
-         } else {
-            return $$0.j() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.c().isBlank()) {
-            int $$1 = $$0.c().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(fyg::c, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<fyg> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
+         this.m.a(this.v);
+      }).a());
+      this.z.a($$1x -> {
+         fob var10000 = this.c($$1x);
+      });
       this.c();
-      this.J();
-      this.a(this.m);
-      this.b($$1);
    }
 
-   private void J() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
+   @Override
+   protected void c() {
+      this.z.a();
+      if (this.w != null) {
+         this.w.b(this.n, this.L(), this.z.c());
       }
    }
 
-   public void a(String $$0) {
-      this.n = $$0;
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.l(), this.F(), this.E(), this.G(), -16777216);
+      $$0.b(this.l(), this.F(), this.J(), this.K(), -1);
+      $$0.b(this.p, b, this.l() + 4, this.F() + 4, -1);
+      fyi.a.a $$4 = this.w.g();
+      if ($$4 != null) {
+         int $$5 = this.l() + 4 + 16;
+         int $$6 = this.E() - 4;
+         int $$7 = this.F() + 4 + 9 + 2;
+         int $$8 = this.G() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.p.b($$4.b.c(), $$9);
+         $$0.a(this.p, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+      }
    }
 
-   public boolean b() {
-      return this.m.isEmpty();
+   private int l() {
+      return (this.n - 320) / 2;
    }
 
-   public void a(gfp $$0, fyj.a $$1) {
-      UUID $$2 = $$0.a().getId();
+   private int E() {
+      return (this.n + 320) / 2;
+   }
 
-      for (fyg $$3 : this.m) {
-         if ($$3.g().equals($$2)) {
-            $$3.c(false);
-            return;
+   private int F() {
+      return this.G() - this.K();
+   }
+
+   private int G() {
+      return this.o - this.z.b() - 4;
+   }
+
+   private int J() {
+      return 320;
+   }
+
+   private int K() {
+      return 62;
+   }
+
+   int L() {
+      return this.z.d() - this.K() - 8;
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.v);
+   }
+
+   public class a extends fpa<fyi.a.a> {
+      public a(final fme $$1) {
+         super($$1, fyi.this.n, fyi.this.L(), fyi.this.z.c(), 18);
+
+         for (ggp $$2 : ggp.values()) {
+            if (!ggp.a(fyi.this.A).contains($$2)) {
+               this.b(new fyi.a.a($$2));
+            }
          }
       }
 
-      if (($$1 == fyj.a.a || this.c.aN().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         fyg $$5 = new fyg(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b((fyg)$$5);
-         this.m.add($$5);
+      @Nullable
+      public fyi.a.a a(ggp $$0) {
+         return this.aI_().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
       }
-   }
 
-   public void a(UUID $$0) {
-      for (fyg $$1 : this.m) {
-         if ($$1.g().equals($$0)) {
-            $$1.c(true);
-            return;
+      @Override
+      public int a() {
+         return 320;
+      }
+
+      public void a(@Nullable fyi.a.a $$0) {
+         super.a($$0);
+         fyi.this.x = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends fpa.a<fyi.a.a> {
+         final ggp b;
+
+         public a(final ggp $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(fnq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fyi.this.p, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public xv a() {
+            return xv.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         public ggp b() {
+            return this.b;
          }
       }
    }

@@ -1,4 +1,7 @@
-public class gxq extends gxo {
-   public float a;
-   public float b;
+import javax.annotation.Nullable;
+
+public class gxq extends gxt {
+   public boolean a = true;
+   @Nullable
+   public fbx b;
 }

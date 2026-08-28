@@ -1,19 +1,22 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public enum fks {
+   a(0, enz.a),
+   b(1, enz.b),
+   c(2, enz.c),
+   d(3, enz.d);
 
-public class fks {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+   private final int e;
+   private final xv f;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   private fks(final int $$0, final aly<eny> $$1) {
+      this.e = $$0;
+      this.f = xv.c($$1.a().h("generator"));
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
+   public xv a() {
+      return this.f;
    }
 
-   public static void a(long $$0, @Nullable String $$1) {
-      a.put($$0, $$1);
+   public int b() {
+      return this.e;
    }
 }

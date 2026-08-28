@@ -7,11 +7,11 @@ public class agi implements aac<acr> {
    public static final int d = 2;
    private final String e;
    private final xv f;
-   private final fda.a g;
+   private final fdf.a g;
    private final Optional<zl> h;
    private final int i;
 
-   public agi(fcp $$0, int $$1) {
+   public agi(fcu $$0, int $$1) {
       this.e = $$0.b();
       this.f = $$0.d();
       this.g = $$0.h();
@@ -24,11 +24,11 @@ public class agi implements aac<acr> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = xu.a;
-         this.g = fda.a.a;
+         this.g = fdf.a.a;
          this.h = Optional.empty();
       } else {
          this.f = xx.d.decode($$0);
-         this.g = $$0.b(fda.a.class);
+         this.g = $$0.b(fdf.a.class);
          this.h = zn.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class agi implements aac<acr> {
       return this.i;
    }
 
-   public fda.a g() {
+   public fdf.a g() {
       return this.g;
    }
 

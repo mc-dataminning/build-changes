@@ -1,20 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
-public class esg extends ery {
-   public static final MapCodec<esg> a = ayk.a(mb.f).fieldOf("tag").xmap(esg::new, $$0 -> $$0.b);
-   private final ayk<dke> b;
+public interface esg<P extends esf> {
+   esg<eri> a = a("always_true", eri.a);
+   esg<ern> b = a("block_match", ern.a);
+   esg<erp> c = a("blockstate_match", erp.a);
+   esg<esn> d = a("tag_match", esn.a);
+   esg<esc> e = a("random_block_match", esc.a);
+   esg<esd> f = a("random_blockstate_match", esd.a);
 
-   public esg(ayk<dke> $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(dxn $$0, bam $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected erz<?> a() {
-      return erz.d;
+   static <P extends esf> esg<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.m, $$0, () -> $$1);
    }
 }

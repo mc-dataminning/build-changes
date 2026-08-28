@@ -1,66 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public abstract class ewx implements ewp {
-   protected final List<ezs> e;
-   private final Predicate<ewh> a;
+public abstract class ewx extends exe {
+   protected final List<exe> d;
+   private final eww a;
 
-   protected ewx(List<ezs> $$0) {
-      this.e = $$0;
-      this.a = ae.a($$0);
+   protected ewx(List<exe> $$0, List<ezx> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
-   protected static <T extends ewx> P1<Mu<T>, List<ezs>> a(Instance<T> $$0) {
-      return $$0.group(ezs.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
-   }
+   @Override
+   public void a(ewu $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
 
-   public void a(ewn $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
    }
 
-   protected final boolean a(ewh $$0) {
-      return this.a.test($$0);
+   protected abstract eww a(List<? extends eww> var1);
+
+   @Override
+   public final boolean expand(ewo $$0, Consumer<exd> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   public abstract ewy a();
+   public static <T extends ewx> MapCodec<T> a(ewx.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(exc.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
+   }
 
-   public abstract static class a<T extends ewx.a<T>> implements ezk<T> {
-      private final Builder<ezs> a = ImmutableList.builder();
-
-      protected abstract T aF_();
-
-      public T a(ezs.a $$0) {
-         this.a.add($$0.build());
-         return this.aF_();
-      }
-
-      public final T e() {
-         return this.aF_();
-      }
-
-      protected List<ezs> f() {
-         return this.a.build();
-      }
-
-      public ewo.a a(ewx.a<?> $$0) {
-         return new ewo.a(this, $$0);
-      }
-
-      public ewt.a b(ewx.a<?> $$0) {
-         return new ewt.a(this, $$0);
-      }
-
-      public exb.a c(ewx.a<?> $$0) {
-         return new exb.a(this, $$0);
-      }
-
-      public abstract ewx b();
+   @FunctionalInterface
+   public interface a<T extends ewx> {
+      T create(List<exe> var1, List<ezx> var2);
    }
 }

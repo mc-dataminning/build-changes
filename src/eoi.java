@@ -1,44 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public record eoi(List<eoi.a> c, eoz d) {
-   public static final Codec<eoi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eoi.a.a.listOf().fieldOf("structures").forGetter(eoi::a), eoz.b.fieldOf("placement").forGetter(eoi::b)).apply($$0, eoi::new)
-   );
-   public static final Codec<jq<eoi>> b = alv.a(mb.aV, a);
+public abstract class eoi extends eoj {
+   private final eoi.a d;
+   private final int e;
+   private final int f;
 
-   public eoi(jq<eoc> $$0, eoz $$1) {
-      this(List.of(new eoi.a($$0, 1)), $$1);
+   protected eoi(eoi.a $$0, int $$1, int $$2, eoj.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static eoi.a a(jq<eoc> $$0, int $$1) {
-      return new eoi.a($$0, $$1);
+   @Override
+   public Optional<eoj.b> a(eoj.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, edp.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   public static eoi.a a(jq<eoc> $$0) {
-      return new eoi.a($$0, 1);
+   private void a(epb $$0, eoj.a $$1) {
+      dgn $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
    }
 
-   public List<eoi.a> a() {
-      return this.c;
-   }
-
-   public eoz b() {
-      return this.d;
-   }
-
-   public static record a(jq<eoc> b, int c) {
-      public static final Codec<eoi.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eoc.b.fieldOf("structure").forGetter(eoi.a::a), azn.m.fieldOf("weight").forGetter(eoi.a::b)).apply($$0, eoi.a::new)
-      );
-
-      public jq<eoc> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   protected interface a {
+      eon construct(eeo var1, int var2, int var3);
    }
 }

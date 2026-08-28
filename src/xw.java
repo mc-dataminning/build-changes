@@ -12,7 +12,7 @@ public interface xw {
       return Optional.empty();
    }
 
-   default yj a(@Nullable ew $$0, @Nullable bvf $$1, int $$2) throws CommandSyntaxException {
+   default yj a(@Nullable ew $$0, @Nullable bvj $$1, int $$2) throws CommandSyntaxException {
       return yj.a(this);
    }
 

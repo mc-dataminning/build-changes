@@ -1,29 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public abstract class ejt {
-   public static final Codec<ejt> a = ma.Y.q().dispatch(ejt::b, eju::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class ejt implements eiz {
+   public static final Codec<ejt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               eif.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               jh.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, ejt::new)
+   );
+   private final boolean b;
+   private final List<eif.a> c;
+   @Nullable
+   private final jh d;
 
-   protected static <S extends ejt> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public ejt(boolean $$0, List<eif.a> $$1, @Nullable jh $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   public ejt(OptionalInt $$0) {
-      this.c = $$0;
+   private ejt(boolean $$0, List<eif.a> $$1, Optional<jh> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   protected abstract eju<?> b();
+   public boolean a() {
+      return this.b;
+   }
 
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
+   public List<eif.a> b() {
       return this.c;
+   }
+
+   @Nullable
+   public jh c() {
+      return this.d;
    }
 }

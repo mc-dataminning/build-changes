@@ -1,35 +1,49 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum ckf implements bba {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
-
-   public static final Codec<ckf> h = bba.a(ckf::values);
-   private static final IntFunction<ckf> i = ayv.a(ckf::a, values(), ayv.a.b);
-   private final int j;
-   private final String k;
-
-   private ckf(final int $$0, final String $$1) {
-      this.j = $$0;
-      this.k = $$1;
-   }
-
-   public int a() {
-      return this.j;
-   }
-
-   public static ckf a(int $$0) {
-      return i.apply($$0);
+public class ckf extends cjz {
+   public ckf(bvq<? extends ckf> $$0, dhh $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.k;
+   protected axe u() {
+      return axf.pP;
+   }
+
+   @Override
+   protected axe gN() {
+      return axf.pQ;
+   }
+
+   @Override
+   protected axe o_() {
+      return axf.pS;
+   }
+
+   @Nullable
+   @Override
+   protected axe go() {
+      return axf.pT;
+   }
+
+   @Override
+   protected axe e(btz $$0) {
+      return axf.pU;
+   }
+
+   @Override
+   protected void gU() {
+      this.a(axf.pV, 0.4F, 1.0F);
+   }
+
+   @Override
+   protected void x() {
+      this.a(axf.pR, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bva a(ash $$0, bva $$1) {
+      return bvq.aG.a($$0, bvp.e);
    }
 }

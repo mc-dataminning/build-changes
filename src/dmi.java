@@ -1,177 +1,177 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dmi extends doc {
-   protected static final fcm c = dke.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   public static final dye d = dyd.x;
+public class dmi extends dkv implements dko {
+   public static final MapCodec<dmi> d = b(dmi::new);
+   public static final int e = 7;
+   public static final dyt f = dyk.aw;
+   private static final fcr[] a = new fcr[]{
+      dkl.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dkl.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dkl.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dkl.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dkl.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      dkl.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      dkl.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      dkl.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
 
-   protected dmi(dxm.d $$0) {
+   @Override
+   public MapCodec<? extends dmi> a() {
+      return d;
+   }
+
+   protected dmi(dxt.d $$0) {
       super($$0);
+      this.l(this.F.b().b(this.b(), Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dmi> a();
-
-   @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return c;
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return a[this.h($$0)];
    }
 
    @Override
-   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      return this.b($$1, $$3, $$1.a_($$3));
+   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
+      return $$0.a(dkn.cK);
    }
 
-   protected boolean b(dhd $$0, jh $$1, dxn $$2) {
-      return $$2.a($$0, $$1, jm.b, dsi.c);
+   protected dyt b() {
+      return f;
+   }
+
+   public int c() {
+      return 7;
+   }
+
+   public int h(dxu $$0) {
+      return $$0.c(this.b());
+   }
+
+   public dxu b(int $$0) {
+      return this.m().b(this.b(), Integer.valueOf($$0));
+   }
+
+   public final boolean i(dxu $$0) {
+      return this.h($$0) >= this.c();
    }
 
    @Override
-   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      if (!this.c((dhd)$$1, $$2, $$0)) {
-         boolean $$4 = $$0.c(d);
-         boolean $$5 = this.a((dha)$$1, $$2, $$0);
-         if ($$4 && !$$5) {
-            $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 2);
-         } else if (!$$4) {
-            $$1.a($$2, $$0.b(d, Boolean.valueOf(true)), 2);
-            if (!$$5) {
-               $$1.a($$2, this, this.h($$0), fdo.b);
+   protected boolean f(dxu $$0) {
+      return !this.i($$0);
+   }
+
+   @Override
+   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         int $$4 = this.h($$0);
+         if ($$4 < this.c()) {
+            float $$5 = a(this, $$1, $$2);
+            if ($$3.a((int)(25.0F / $$5) + 1) == 0) {
+               $$1.a($$2, this.b($$4 + 1), 2);
             }
          }
       }
    }
 
-   @Override
-   protected int b(dxn $$0, dgf $$1, jh $$2, jm $$3) {
-      return $$0.a($$1, $$2, $$3);
-   }
-
-   @Override
-   protected int a(dxn $$0, dgf $$1, jh $$2, jm $$3) {
-      if (!$$0.c(d)) {
-         return 0;
-      } else {
-         return $$0.c(aF) == $$3 ? this.a($$1, $$2, $$0) : 0;
+   public void a(dhh $$0, jh $$1, dxu $$2) {
+      int $$3 = this.h($$2) + this.a($$0);
+      int $$4 = this.c();
+      if ($$3 > $$4) {
+         $$3 = $$4;
       }
+
+      $$0.a($$1, this.b($$3), 2);
    }
 
-   @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dke $$3, @Nullable eux $$4, boolean $$5) {
-      if ($$0.a((dhd)$$1, $$2)) {
-         this.c($$1, $$2, $$0);
-      } else {
-         dup $$6 = $$0.x() ? $$1.c_($$2) : null;
-         a($$0, $$1, $$2, $$6);
-         $$1.a($$2, false);
-
-         for (jm $$7 : jm.values()) {
-            $$1.a($$2.a($$7), this);
-         }
-      }
+   protected int a(dhh $$0) {
+      return bae.a($$0.A, 2, 5);
    }
 
-   protected void c(dha $$0, jh $$1, dxn $$2) {
-      if (!this.c((dhd)$$0, $$1, $$2)) {
-         boolean $$3 = $$2.c(d);
-         boolean $$4 = this.a($$0, $$1, $$2);
-         if ($$3 != $$4 && !$$0.T().b($$1, this)) {
-            fdo $$5 = fdo.c;
-            if (this.b((dgf)$$0, $$1, $$2)) {
-               $$5 = fdo.a;
-            } else if ($$3) {
-               $$5 = fdo.b;
+   protected static float a(dkl $$0, dgm $$1, jh $$2) {
+      float $$3 = 1.0F;
+      jh $$4 = $$2.e();
+
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            float $$7 = 0.0F;
+            dxu $$8 = $$1.a_($$4.b($$5, 0, $$6));
+            if ($$8.a(dkn.cK)) {
+               $$7 = 1.0F;
+               if ($$8.c(dnj.b) > 0) {
+                  $$7 = 3.0F;
+               }
             }
 
-            $$0.a($$1, this, this.h($$2), $$5);
+            if ($$5 != 0 || $$6 != 0) {
+               $$7 /= 4.0F;
+            }
+
+            $$3 += $$7;
          }
       }
-   }
 
-   public boolean c(dhd $$0, jh $$1, dxn $$2) {
-      return false;
-   }
-
-   protected boolean a(dha $$0, jh $$1, dxn $$2) {
-      return this.b($$0, $$1, $$2) > 0;
-   }
-
-   protected int b(dha $$0, jh $$1, dxn $$2) {
-      jm $$3 = $$2.c(aF);
-      jh $$4 = $$1.a($$3);
-      int $$5 = $$0.c($$4, $$3);
-      if ($$5 >= 15) {
-         return $$5;
+      jh $$9 = $$2.f();
+      jh $$10 = $$2.g();
+      jh $$11 = $$2.h();
+      jh $$12 = $$2.i();
+      boolean $$13 = $$1.a_($$11).a($$0) || $$1.a_($$12).a($$0);
+      boolean $$14 = $$1.a_($$9).a($$0) || $$1.a_($$10).a($$0);
+      if ($$13 && $$14) {
+         $$3 /= 2.0F;
       } else {
-         dxn $$6 = $$0.a_($$4);
-         return Math.max($$5, $$6.a(dkg.cE) ? $$6.c(dqj.f) : 0);
+         boolean $$15 = $$1.a_($$11.f()).a($$0) || $$1.a_($$12.f()).a($$0) || $$1.a_($$12.g()).a($$0) || $$1.a_($$11.g()).a($$0);
+         if ($$15) {
+            $$3 /= 2.0F;
+         }
       }
-   }
 
-   protected int a(dhs $$0, jh $$1, dxn $$2) {
-      jm $$3 = $$2.c(aF);
-      jm $$4 = $$3.h();
-      jm $$5 = $$3.i();
-      boolean $$6 = this.b();
-      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
+      return $$3;
    }
 
    @Override
-   protected boolean f_(dxn $$0) {
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      return a($$1, $$2) && super.a($$0, $$1, $$2);
+   }
+
+   protected static boolean a(dhk $$0, jh $$1) {
+      return $$0.b($$1, 0) >= 8;
+   }
+
+   @Override
+   protected void a(dxu $$0, dhh $$1, jh $$2, bvj $$3) {
+      if ($$1 instanceof ash $$4 && $$3 instanceof cnb && $$4.N().b(dhd.c)) {
+         $$4.a($$2, true, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected dhg d() {
+      return cxs.pR;
+   }
+
+   @Override
+   public cxo a(dhk $$0, jh $$1, dxu $$2) {
+      return new cxo(this.d());
+   }
+
+   @Override
+   public boolean b(dhk $$0, jh $$1, dxu $$2) {
+      return !this.i($$2);
+   }
+
+   @Override
+   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
       return true;
    }
 
    @Override
-   public dxn a(dbb $$0) {
-      return this.m().b(aF, $$0.g().g());
+   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
+      this.a((dhh)$$0, $$2, $$3);
    }
 
    @Override
-   public void a(dha $$0, jh $$1, dxn $$2, bwb $$3, cxk $$4) {
-      if (this.a($$0, $$1, $$2)) {
-         $$0.a($$1, this, 1);
-      }
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(f);
    }
-
-   @Override
-   protected void b(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
-      this.d($$1, $$2, $$0);
-   }
-
-   @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         this.d($$1, $$2, $$0);
-      }
-   }
-
-   protected void d(dha $$0, jh $$1, dxn $$2) {
-      jm $$3 = $$2.c(aF);
-      jh $$4 = $$1.a($$3.g());
-      eux $$5 = eut.a($$0, $$3.g(), jm.b);
-      $$0.b($$4, this, $$5);
-      $$0.a($$4, this, $$3, $$5);
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected int a(dgf $$0, jh $$1, dxn $$2) {
-      return 15;
-   }
-
-   public static boolean n(dxn $$0) {
-      return $$0.b() instanceof dmi;
-   }
-
-   public boolean b(dgf $$0, jh $$1, dxn $$2) {
-      jm $$3 = $$2.c(aF).g();
-      dxn $$4 = $$0.a_($$1.a($$3));
-      return n($$4) && $$4.c(aF) != $$3;
-   }
-
-   protected abstract int h(dxn var1);
 }

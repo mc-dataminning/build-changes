@@ -1,28 +1,17 @@
 public enum dyi implements bba {
-   a(jm.a),
-   b(jm.b);
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final jm c;
+   private final String e;
 
-   private dyi(final jm $$0) {
-      this.c = $$0;
-   }
-
-   public jm a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+   private dyi(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public dyi b() {
-      return this == a ? b : a;
+      return this.e;
    }
 }

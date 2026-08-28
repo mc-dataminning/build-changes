@@ -1,57 +1,43 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public abstract class ckr implements ckz {
-   protected final ckp a;
+public class ckr {
+   public static final int a = 64;
+   private static final int b = 63;
+   private final ckr.a[] c = new ckr.a[64];
+   private int d = -1;
 
-   public ckr(ckp $$0) {
-      this.a = $$0;
+   public ckr() {
+      Arrays.fill(this.c, new ckr.a(0.0, 0.0F));
    }
 
-   @Override
-   public boolean a() {
-      return false;
+   public void a(ckr $$0) {
+      System.arraycopy($$0.c, 0, this.c, 0, 64);
+      this.d = $$0.d;
    }
 
-   @Override
-   public void b() {
+   public void a(double $$0, float $$1) {
+      ckr.a $$2 = new ckr.a($$0, $$1);
+      if (this.d < 0) {
+         Arrays.fill(this.c, $$2);
+      }
+
+      if (++this.d == 64) {
+         this.d = 0;
+      }
+
+      this.c[this.d] = $$2;
    }
 
-   @Override
-   public void a(ash $$0) {
+   public ckr.a a(int $$0) {
+      return this.c[this.d - $$0 & 63];
    }
 
-   @Override
-   public void a(cko $$0, jh $$1, btv $$2, @Nullable cps $$3) {
+   public ckr.a a(int $$0, float $$1) {
+      ckr.a $$2 = this.a($$0);
+      ckr.a $$3 = this.a($$0 + 1);
+      return new ckr.a(bae.d((double)$$1, $$3.a, $$2.a), bae.i($$1, $$3.b, $$2.b));
    }
 
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void d() {
-   }
-
-   @Override
-   public float e() {
-      return 0.6F;
-   }
-
-   @Nullable
-   @Override
-   public fbs f() {
-      return null;
-   }
-
-   @Override
-   public float a(btv $$0, float $$1) {
-      return $$1;
-   }
-
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dy().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+   public static record a(double a, float b) {
    }
 }

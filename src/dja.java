@@ -1,62 +1,58 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class dja extends djq {
-   public static final dye a = dyd.x;
-   private final drj.a b;
+public class dja extends din {
+   public static final MapCodec<dja> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alx.d(diq.ah), alx.d(diq.ai), alx.d(diq.aj), alx.d(diq.ak), alx.d(diq.al)).apply($$0, $$0.stable(dja::new))
+   );
+   private final jq<dij> c;
+   private final jq<dij> d;
+   private final jq<dij> e;
+   private final jq<dij> f;
+   private final jq<dij> g;
 
-   public dja(drj.a $$0, dxm.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.l(this.F.b().b(a, Boolean.valueOf(false)));
+   public static dja a(jr<dij> $$0) {
+      return new dja($$0.b(diq.ah), $$0.b(diq.ai), $$0.b(diq.aj), $$0.b(diq.ak), $$0.b(diq.al));
+   }
+
+   private dja(jq<dij> $$0, jq<dij> $$1, jq<dij> $$2, jq<dij> $$3, jq<dij> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected abstract MapCodec<? extends dja> a();
-
-   @Override
-   public dup a(jh $$0, dxn $$1) {
-      return new dwe($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dup> duq<T> a(dha $$0, dxn $$1, dur<T> $$2) {
-      if ($$0.C) {
-         boolean $$3 = $$1.a(dkg.he) || $$1.a(dkg.hf) || $$1.a(dkg.hg) || $$1.a(dkg.hh);
-         if ($$3) {
-            return a($$2, dur.q, dwe::a);
-         }
-      }
-
-      return null;
-   }
-
-   public drj.a b() {
-      return this.b;
+   protected Stream<jq<dij>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   protected boolean a(dxn $$0, eue $$1) {
-      return false;
+   protected MapCodec<? extends din> a() {
+      return b;
    }
 
    @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dxn a(dbb $$0) {
-      return this.m().b(a, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dke $$3, @Nullable eux $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.C($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
+   public jq<dij> getNoiseBiome(int $$0, int $$1, int $$2, dis.f $$3) {
+      int $$4 = kb.c($$0);
+      int $$5 = kb.c($$1);
+      int $$6 = kb.c($$2);
+      int $$7 = kj.a($$4);
+      int $$8 = kj.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (kj.a($$4) * 2 + 1) * 8;
+         int $$10 = (kj.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new edi.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
    }

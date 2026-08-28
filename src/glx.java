@@ -1,82 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record glx(alz b, alz c, List<glx.a> d, List<glx.b> e, glu f) {
-   public static final Codec<glx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alz.a.fieldOf("vertex").forGetter(glx::a),
-               alz.a.fieldOf("fragment").forGetter(glx::b),
-               glx.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(glx::c),
-               glx.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(glx::d),
-               glu.b.optionalFieldOf("defines", glu.a).forGetter(glx::e)
-            )
-            .apply($$0, glx::new)
-   );
+public class glx {
+   private static final Logger a = LogUtils.getLogger();
+   private final Queue<glw> b;
+   private volatile int c;
 
-   public alz a() {
-      return this.b;
+   private glx(List<glw> $$0) {
+      this.b = Queues.newArrayDeque($$0);
+      this.c = this.b.size();
    }
 
-   public alz b() {
+   public static glx a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / glw.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<glw> $$3 = new ArrayList<>($$2);
+
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new glw());
+         }
+      } catch (OutOfMemoryError var7) {
+         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
+         }
+      }
+
+      return new glx($$3);
+   }
+
+   @Nullable
+   public glw a() {
+      glw $$0 = this.b.poll();
+      if ($$0 != null) {
+         this.c = this.b.size();
+         return $$0;
+      } else {
+         return null;
+      }
+   }
+
+   public void a(glw $$0) {
+      this.b.add($$0);
+      this.c = this.b.size();
+   }
+
+   public boolean b() {
+      return this.b.isEmpty();
+   }
+
+   public int c() {
       return this.c;
-   }
-
-   public List<glx.a> c() {
-      return this.d;
-   }
-
-   public List<glx.b> d() {
-      return this.e;
-   }
-
-   public glu e() {
-      return this.f;
-   }
-
-   public static record a(String b) {
-      public static final Codec<glx.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(glx.a::a)).apply($$0, glx.a::new));
-
-      public String a() {
-         return this.b;
-      }
-   }
-
-   public static record b(String b, String c, int d, List<Float> e) {
-      public static final Codec<glx.b> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.STRING.fieldOf("name").forGetter(glx.b::a),
-                     Codec.STRING.fieldOf("type").forGetter(glx.b::b),
-                     Codec.INT.fieldOf("count").forGetter(glx.b::c),
-                     Codec.FLOAT.listOf().fieldOf("values").forGetter(glx.b::d)
-                  )
-                  .apply($$0, glx.b::new)
-         )
-         .validate(glx.b::a);
-
-      private static DataResult<glx.b> a(glx.b $$0) {
-         int $$1 = $$0.d;
-         int $$2 = $$0.e.size();
-         return $$2 != $$1 && $$2 > 1
-            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
-            : DataResult.success($$0);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public List<Float> d() {
-         return this.e;
-      }
    }
 }

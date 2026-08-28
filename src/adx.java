@@ -1,7 +1,7 @@
 import java.util.Optional;
 
-public record adx(fbs b, Optional<fbs> c, lq d, jq<axe> e) implements aac<acr> {
-   public static final zt<xg, adx> a = zt.a(fbs.b, adx::b, fbs.b.a(zr::a), adx::e, ls.bi, adx::f, axe.d, adx::g, adx::new);
+public record adx(fbx b, Optional<fbx> c, lq d, jq<axe> e) implements aac<acr> {
+   public static final zt<xg, adx> a = zt.a(fbx.b, adx::b, fbx.b.a(zr::a), adx::e, ls.bi, adx::f, axe.d, adx::g, adx::new);
 
    @Override
    public aae<adx> a() {
@@ -12,7 +12,7 @@ public record adx(fbs b, Optional<fbs> c, lq d, jq<axe> e) implements aac<acr> {
       $$0.a(this);
    }
 
-   public Optional<fbs> e() {
+   public Optional<fbx> e() {
       return this.c;
    }
 

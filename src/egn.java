@@ -1,56 +1,99 @@
-public class egn extends ego<eiz> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final jh ao = jh.c;
-   private final boolean ap;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   public static jh a(jh $$0) {
-      return ao.a((kl)$$0);
-   }
+public class egn extends egv<ejg> {
+   private static final dyd a = dyd.a(dkn.L);
+   private final dxu b = dkn.L.m();
+   private final dxu c = dkn.jX.m();
+   private final dxu d = dkn.bc.m();
+   private final dxu ao = dkn.J.m();
 
-   public egn(boolean $$0) {
-      super(eiz.a);
-      this.ap = $$0;
+   public egn(Codec<ejg> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(egq<eiz> $$0) {
-      jh $$1 = $$0.e();
-      dhy $$2 = $$0.b();
+   public boolean a(egx<ejg> $$0) {
+      dif $$1 = $$0.b();
+      jh $$2 = $$0.e();
+      $$2 = $$2.d();
 
-      for (jh $$3 : jh.c(new jh($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new jh($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, dkg.I.m());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, dkg.fN.m());
+      while ($$1.u($$2) && $$2.v() > $$1.L_() + 2) {
+         $$2 = $$2.e();
+      }
+
+      if (!a.a($$1.a_($$2))) {
+         return false;
+      } else {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
                }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, dkg.a.m());
-            } else if (!$$4) {
-               this.a($$2, $$3, dkg.I.m());
-            } else if (this.ap) {
-               this.a($$2, new jh($$3), dkg.fL.m());
-            } else {
-               this.a($$2, new jh($$3), dkg.a.m());
             }
          }
+
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.ao, 2);
+
+         for (jm $$8 : jm.c.a) {
+            $$1.a($$2.a($$8), this.ao, 2);
+         }
+
+         jh $$9 = $$2.e();
+         $$1.a($$9, this.b, 2);
+
+         for (jm $$10 : jm.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<jh> $$17 = List.of($$2, $$2.i(), $$2.g(), $$2.h(), $$2.f());
+         bam $$18 = $$0.d();
+         b($$1, ae.a($$17, $$18).c(1));
+         b($$1, ae.a($$17, $$18).c(2));
+         return true;
       }
+   }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), dkg.I.m());
-      }
-
-      jh $$6 = $$1.b(2);
-
-      for (jm $$7 : jm.c.a) {
-         this.a($$2, $$6.a($$7), dkg.cx.m().b(dtj.g, $$7));
-      }
-
-      return true;
+   private static void b(dif $$0, jh $$1) {
+      $$0.a($$1, dkn.M.m(), 3);
+      $$0.a($$1, duy.O).ifPresent($$1x -> $$1x.a(ewk.aX, $$1.a()));
    }
 }

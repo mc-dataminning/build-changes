@@ -1,104 +1,75 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dda implements dbp {
-   final String c;
-   final dbn d;
-   final dbv e;
-   final dbv f;
-   final jq<cxg> g;
+public class dda implements dcy {
+   final Optional<dbz> c;
+   final Optional<dbz> d;
+   final Optional<dbz> e;
+   final cxo f;
    @Nullable
-   private dby h;
+   private dcc g;
 
-   public dda(String $$0, dbn $$1, dbv $$2, dbv $$3, jq<cxg> $$4) {
+   public dda(Optional<dbz> $$0, Optional<dbz> $$1, Optional<dbz> $$2, cxo $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
       this.f = $$3;
-      this.g = $$4;
    }
 
-   public boolean a(dbo $$0, dha $$1) {
-      boolean $$2 = false;
-      boolean $$3 = false;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxk $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (!$$2 && this.e.a($$5) && $$5.h() != this.g.a()) {
-               $$2 = true;
-            } else {
-               if ($$3 || !this.f.a($$5)) {
-                  return false;
-               }
-
-               $$3 = true;
-            }
-         }
-      }
-
-      return $$2 && $$3;
-   }
-
-   public cxk a(dbo $$0, js.a $$1) {
-      cxk $$2 = cxk.k;
-
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         cxk $$4 = $$0.a($$3);
-         if (!$$4.f() && this.e.a($$4) && $$4.h() != this.g.a()) {
-            $$2 = $$4;
-         }
-      }
-
-      return $$2.a(this.g.a(), 1);
+   public cxo a(dcz $$0, js.a $$1) {
+      cxo $$2 = $$0.d().a(this.f.h(), this.f.L());
+      $$2.b(this.f.e());
+      return $$2;
    }
 
    @Override
-   public List<ddc> g() {
-      return List.of(new ddh(List.of(this.e.b(), this.f.b()), new ddi.d(this.g), new ddi.d(cxo.fa)));
-   }
-
-   @Override
-   public dci<dda> a() {
-      return dci.m;
-   }
-
-   @Override
-   public String j() {
+   public Optional<dbz> c() {
       return this.c;
    }
 
    @Override
-   public dby ap_() {
-      if (this.h == null) {
-         this.h = dby.b(List.of(this.e, this.f));
-      }
-
-      return this.h;
-   }
-
-   @Override
-   public dbn c() {
+   public Optional<dbz> f() {
       return this.d;
    }
 
-   public static class a implements dci<dda> {
+   @Override
+   public Optional<dbz> k() {
+      return this.e;
+   }
+
+   @Override
+   public dcn<dda> a() {
+      return dcn.t;
+   }
+
+   @Override
+   public dcc ap_() {
+      if (this.g == null) {
+         this.g = dcc.a(List.of(this.c, this.d, this.e));
+      }
+
+      return this.g;
+   }
+
+   @Override
+   public List<ddi> g() {
+      return List.of(new ddr(dbz.a(this.c), dbz.a(this.d), dbz.a(this.e), new ddo.f(this.f), new ddo.d(cxs.xg)));
+   }
+
+   public static class a implements dcn<dda> {
       private static final MapCodec<dda> x = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  dbn.e.fieldOf("category").orElse(dbn.d).forGetter($$0x -> $$0x.d),
-                  dbv.d.fieldOf("input").forGetter($$0x -> $$0x.e),
-                  dbv.d.fieldOf("material").forGetter($$0x -> $$0x.f),
-                  alw.a(mb.K).fieldOf("result").forGetter($$0x -> $$0x.g)
+                  dbz.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
+                  dbz.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
+                  dbz.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
+                  cxo.d.fieldOf("result").forGetter($$0x -> $$0x.f)
                )
                .apply($$0, dda::new)
       );
-      public static final zt<xg, dda> w = zt.a(
-         zr.o, $$0 -> $$0.c, dbn.g, $$0 -> $$0.d, dbv.a, $$0 -> $$0.e, dbv.a, $$0 -> $$0.f, zr.b(mb.K), $$0 -> $$0.g, dda::new
-      );
+      public static final zt<xg, dda> w = zt.a(dbz.b, $$0 -> $$0.c, dbz.b, $$0 -> $$0.d, dbz.b, $$0 -> $$0.e, cxo.i, $$0 -> $$0.f, dda::new);
 
       @Override
       public MapCodec<dda> a() {

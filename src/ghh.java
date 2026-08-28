@@ -1,12 +1,21 @@
-public class ghh extends gjl {
-   ghh(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class ghh extends gjq {
+   private final gjl a;
+
+   ghh(gfi $$0, double $$1, double $$2, double $$3, double $$4, gjl $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
@@ -14,36 +23,27 @@ public class ghh extends gjl {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.t-- <= 0) {
+      if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(jh.a(this.g, this.h, this.i)).a(aya.a)) {
-            this.k();
-         }
+         this.b(this.a);
       }
    }
 
    @Override
-   public gip b() {
-      return gip.b;
+   public giu b() {
+      return giu.b;
    }
 
-   public static class a implements gio<lw> {
-      private final gjg a;
+   public static class a implements git<lw> {
+      private final gjl a;
 
-      public a(gjg $$0) {
+      public a(gjl $$0) {
          this.a = $$0;
       }
 
-      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghh $$8 = new ghh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghh($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

@@ -1,34 +1,41 @@
+import com.google.common.collect.Lists;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public interface dhv {
-   void a(bvm<?> var1, bam var2);
+public class dhv {
+   private final List<dhv.a> a = Lists.newArrayList();
 
-   static void a(cxk $$0, List<xv> $$1, String $$2) {
-      xv $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
-      } else {
-         $$1.add(xu.a);
-         $$1.add(xv.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(xu.a().b(xv.c("block.minecraft.spawner.desc2").a(n.j)));
+   public void a(jh $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new dhv.a($$0, $$1));
       }
    }
 
-   @Nullable
-   static xv a(cxk $$0, String $$1) {
-      ux $$2 = $$0.a(ku.Y, czt.a).d();
-      alz $$3 = a($$2, $$1);
-      return $$3 != null ? ma.f.b($$3).map($$0x -> xv.c($$0x.g()).a(n.h)).orElse(null) : null;
+   public double b(jh $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (dhv.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   @Nullable
-   private static alz a(ux $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return alz.c($$2);
-      } else {
-         return null;
+   static class a {
+      private final jh a;
+      private final double b;
+
+      public a(jh $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public double a(jh $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
       }
    }
 }

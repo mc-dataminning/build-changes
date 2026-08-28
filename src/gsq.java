@@ -1,27 +1,32 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gsq extends gqi<ckd, gys, gcc> {
+   private static final alz a = alz.b("textures/entity/llama/creamy.png");
+   private static final alz b = alz.b("textures/entity/llama/white.png");
+   private static final alz k = alz.b("textures/entity/llama/brown.png");
+   private static final alz l = alz.b("textures/entity/llama/gray.png");
 
-public class gsq extends gqd<cif, gyr, gav> {
-   private static final Map<cif.a, alz> a = ae.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cif.a.b, alz.b("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cif.a.a, alz.b("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public gsq(grj.a $$0) {
-      super($$0, new gav($$0.a(geg.by)), new gav($$0.a(geg.bz)), 0.7F);
-      this.a(new gvt(this, $$0.d()));
+   public gsq(gro.a $$0, gek $$1, gek $$2) {
+      super($$0, new gcc($$0.a($$1)), new gcc($$0.a($$2)), 0.7F);
+      this.a(new gvx(this, $$0.f(), $$0.h()));
    }
 
-   public alz a(gyr $$0) {
-      return a.get($$0.a);
+   public alz a(gys $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   public gyr b() {
-      return new gyr();
+   public gys b() {
+      return new gys();
    }
 
-   public void a(cif $$0, gyr $$1, float $$2) {
+   public void a(ckd $$0, gys $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.gz();
+      $$1.b = !$$0.e_() && $$0.t();
+      $$1.c = $$0.af();
+      $$1.d = $$0.gp();
    }
 }

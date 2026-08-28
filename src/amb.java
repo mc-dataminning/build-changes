@@ -19,19 +19,19 @@ public class amb {
       if (!c) {
          c = true;
          Instant $$0 = Instant.now();
-         if (ma.aB.i().isEmpty()) {
+         if (ma.aC.i().isEmpty()) {
             throw new IllegalStateException("Unable to load registries");
          } else {
-            dnf.b();
-            dlq.b();
-            if (bvm.a(bvm.bS) == null) {
+            dnm.b();
+            dlx.b();
+            if (bvq.a(bvq.bS) == null) {
                throw new IllegalStateException("Failed loading EntityTypes");
             } else {
                ho.a();
                lb.a();
                kn.a();
                ma.a();
-               cwa.a();
+               cwe.a();
                d();
                b.set(Duration.between($$0, Instant.now()).toMillis());
             }
@@ -51,10 +51,10 @@ public class amb {
 
    private static void a(final Set<String> $$0) {
       final us $$1 = us.a();
-      dgw $$2 = new dgw(csq.f.a());
-      $$2.a(new dgw.c() {
+      dhd $$2 = new dhd(csu.f.a());
+      $$2.a(new dhd.c() {
          @Override
-         public <T extends dgw.g<T>> void a(dgw.e<T> $$0x, dgw.f<T> $$1x) {
+         public <T extends dhd.g<T>> void a(dhd.e<T> $$0x, dhd.f<T> $$1x) {
             if (!$$1.b($$0.b())) {
                $$0.add($$0.a());
             }
@@ -64,11 +64,11 @@ public class amb {
 
    public static Set<String> b() {
       Set<String> $$0 = new TreeSet<>();
-      a(ma.s, bxe::c, $$0);
-      a(ma.f, bvm::g, $$0);
-      a(ma.d, bui::d, $$0);
-      a(ma.g, cxg::l, $$0);
-      a(ma.e, dxm::v, $$0);
+      a(ma.s, bxi::c, $$0);
+      a(ma.f, bvq::g, $$0);
+      a(ma.d, bum::d, $$0);
+      a(ma.g, cxk::l, $$0);
+      a(ma.e, dxt::v, $$0);
       a(ma.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
       a($$0);
       return $$0;
@@ -98,7 +98,7 @@ public class amb {
          ex.b();
       }
 
-      bxk.a();
+      bxo.a();
    }
 
    private static void d() {

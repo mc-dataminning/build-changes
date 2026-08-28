@@ -1,26 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public record dai(int f) implements czr, dan {
-   public static final int a = 120000;
-   public static final int b = 0;
-   public static final int c = 4;
-   public static final Codec<dai> d = azn.a(0, 4).xmap(dai::new, dai::a);
-   public static final zt<xg, dai> e = zt.a(zr.h, dai::a, dai::new);
+public record dai(Optional<jp> c, boolean d) {
+   public static final Codec<dai> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jp.b.optionalFieldOf("target").forGetter(dai::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(dai::b)).apply($$0, dai::new)
+   );
+   public static final zt<ByteBuf, dai> b = zt.a(jp.c.a(zr::a), dai::a, zr.b, dai::b, dai::new);
 
-   @Override
-   public void a(dha $$0, bwb $$1, cxk $$2, czq $$3) {
-      $$1.a(new buk(bum.E, 120000, this.f, false, false, true));
+   public dai a(ash $$0) {
+      if (this.d && !this.c.isEmpty()) {
+         if (this.c.get().a() != $$0.ah()) {
+            return this;
+         } else {
+            jh $$1 = this.c.get().b();
+            return $$0.k($$1) && $$0.z().a(chn.s, $$1) ? this : new dai(Optional.empty(), true);
+         }
+      } else {
+         return this;
+      }
    }
 
-   @Override
-   public void a(cxg.b $$0, Consumer<xv> $$1, czc $$2) {
-      List<buk> $$3 = List.of(new buk(bum.E, 120000, this.f, false, false, true));
-      czj.a($$3, $$1, 1.0F, $$0.b());
+   public Optional<jp> a() {
+      return this.c;
    }
 
-   public int a() {
-      return this.f;
+   public boolean b() {
+      return this.d;
    }
 }

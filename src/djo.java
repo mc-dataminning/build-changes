@@ -1,72 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class djo extends dke implements dri {
-   public static final dye d = dyd.D;
-   private static final fcm a = dke.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-
-   protected djo(dxm.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(d, Boolean.valueOf(true)));
-   }
+public class djo extends dkl implements dko {
+   public static final MapCodec<djo> a = b(djo::new);
+   protected static final float b = 4.0F;
+   protected static final fcr c = dkl.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
    @Override
-   protected abstract MapCodec<? extends djo> a();
-
-   protected void a(dxn $$0, dgf $$1, dhp $$2, bam $$3, jh $$4) {
-      if (!d($$0, $$1, $$4)) {
-         $$2.a($$4, this, 60 + $$3.a(40));
-      }
-   }
-
-   protected static boolean d(dxn $$0, dgf $$1, jh $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (jm $$3 : jm.values()) {
-            if ($$1.b_($$2.a($$3)).a(aya.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dxn a(dbb $$0) {
-      etp $$1 = $$0.q().b_($$0.a());
-      return this.m().b(d, Boolean.valueOf($$1.a(aya.a) && $$1.e() == 8));
-   }
-
-   @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
+   public MapCodec<djo> a() {
       return a;
    }
 
+   public djo(dxt.d $$0) {
+      super($$0);
+   }
+
    @Override
-   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, etq.c, etq.c.a($$1));
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      fbx $$4 = $$0.a($$2);
+      return c.a($$4.d, $$4.e, $$4.f);
+   }
+
+   @Override
+   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$3.a(3) == 0 && $$1.u($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
+         this.a($$1, $$2);
       }
-
-      return $$4 == jm.a && !this.a($$0, $$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      return $$1.a_($$3).c($$1, $$3, jm.b);
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      return $$1.a_($$2.e()).a(axu.ax);
    }
 
    @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(d);
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if (!$$0.a($$1, $$3)) {
+         return dkn.a.m();
+      } else {
+         return $$4 == jm.b && $$6.a(dkn.nu) ? dkn.nu.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 
    @Override
-   protected etp b_(dxn $$0) {
-      return $$0.c(d) ? etq.c.a(false) : super.b_($$0);
+   public cxo a(dhk $$0, jh $$1, dxu $$2) {
+      return new cxo(cxs.eb);
+   }
+
+   @Override
+   public boolean b(dhk $$0, jh $$1, dxu $$2) {
+      return $$0.a_($$1.d()).l();
+   }
+
+   @Override
+   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
+      this.a($$0, $$2);
+   }
+
+   @Override
+   protected float a(dxu $$0, cpw $$1, dgm $$2, jh $$3) {
+      return $$1.eX().h() instanceof czc ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(dhh $$0, jh $$1) {
+      $$0.a($$1.d(), dkn.nu.m().b(djp.i, dyg.b), 3);
    }
 }

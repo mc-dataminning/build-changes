@@ -1,61 +1,62 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public final class cpj {
-   public static final cpj a = a("desert");
-   public static final cpj b = a("jungle");
-   public static final cpj c = a("plains");
-   public static final cpj d = a("savanna");
-   public static final cpj e = a("snow");
-   public static final cpj f = a("swamp");
-   public static final cpj g = a("taiga");
-   private final String h;
-   private static final Map<aly<dic>, cpj> i = ae.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dij.A, a);
-      $$0.put(dij.f, a);
-      $$0.put(dij.B, a);
-      $$0.put(dij.C, a);
-      $$0.put(dij.z, b);
-      $$0.put(dij.x, b);
-      $$0.put(dij.y, b);
-      $$0.put(dij.s, d);
-      $$0.put(dij.r, d);
-      $$0.put(dij.w, d);
-      $$0.put(dij.X, e);
-      $$0.put(dij.W, e);
-      $$0.put(dij.L, e);
-      $$0.put(dij.e, e);
-      $$0.put(dij.N, e);
-      $$0.put(dij.q, e);
-      $$0.put(dij.d, e);
-      $$0.put(dij.F, e);
-      $$0.put(dij.G, e);
-      $$0.put(dij.H, e);
-      $$0.put(dij.I, e);
-      $$0.put(dij.g, f);
-      $$0.put(dij.h, f);
-      $$0.put(dij.o, g);
-      $$0.put(dij.n, g);
-      $$0.put(dij.u, g);
-      $$0.put(dij.t, g);
-      $$0.put(dij.p, g);
-      $$0.put(dij.v, g);
-   });
+public class cpj {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] e = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cpj> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ma.w.q().fieldOf("type").orElseGet(() -> cpn.c).forGetter($$0x -> $$0x.f),
+               ma.x.q().fieldOf("profession").orElseGet(() -> cpl.b).forGetter($$0x -> $$0x.g),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, cpj::new)
+   );
+   public static final zt<xg, cpj> d = zt.a(zr.a(mb.aw), $$0 -> $$0.f, zr.a(mb.av), $$0 -> $$0.g, zr.h, $$0 -> $$0.h, cpj::new);
+   private final cpn f;
+   private final cpl g;
+   private final int h;
 
-   private cpj(String $$0) {
-      this.h = $$0;
+   public cpj(cpn $$0, cpl $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = Math.max(1, $$2);
    }
 
-   @Override
-   public String toString() {
+   public cpn a() {
+      return this.f;
+   }
+
+   public cpl b() {
+      return this.g;
+   }
+
+   public int c() {
       return this.h;
    }
 
-   private static cpj a(String $$0) {
-      return kd.a(ma.w, alz.b($$0), new cpj($$0));
+   public cpj a(cpn $$0) {
+      return new cpj($$0, this.g, this.h);
    }
 
-   public static cpj a(jq<dic> $$0) {
-      return $$0.e().map(i::get).orElse(c);
+   public cpj a(cpl $$0) {
+      return new cpj(this.f, $$0, this.h);
+   }
+
+   public cpj a(int $$0) {
+      return new cpj(this.f, this.g, $$0);
+   }
+
+   public static int b(int $$0) {
+      return d($$0) ? e[$$0 - 1] : 0;
+   }
+
+   public static int c(int $$0) {
+      return d($$0) ? e[$$0] : 0;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

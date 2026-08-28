@@ -1,79 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class drp extends dke {
-   public static final MapCodec<drp> a = b(drp::new);
-   public static final int b = 2;
-   public static final dym c = dyd.aF;
-   private static final int d = 24000;
-   private static final int e = 12000;
-   private static final int f = 300;
-   private static final fcm g = dke.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
-
+public interface drp extends dkt, dpe {
    @Override
-   public MapCodec<drp> a() {
-      return a;
-   }
-
-   public drp(dxm.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+   default boolean a(@Nullable cpw $$0, dgm $$1, jh $$2, dxu $$3, etv $$4) {
+      return $$4 == etx.c;
    }
 
    @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return g;
-   }
-
-   public int o(dxn $$0) {
-      return $$0.c(c);
-   }
-
-   private boolean q(dxn $$0) {
-      return this.o($$0) == 2;
-   }
-
-   @Override
-   public void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      if (!this.q($$0)) {
-         $$1.a(null, $$2, axf.yW, axg.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.b(c, Integer.valueOf(this.o($$0) + 1)), 2);
-      } else {
-         $$1.a(null, $$2, axf.yX, axg.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         ckj $$4 = bvm.bj.a($$1, bvl.e);
-         if ($$4 != null) {
-            fbs $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), bae.h($$1.A.i() * 360.0F), 0.0F);
-            $$1.b($$4);
+   default boolean a(dhi $$0, jh $$1, dxu $$2, etw $$3) {
+      if (!$$2.c(dyk.D) && $$3.a() == etx.c) {
+         if (!$$0.B_()) {
+            $$0.a($$1, $$2.b(dyk.D, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   public void b(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.B_() && $$5) {
-         $$1.c(3009, $$2, 0);
-      }
+   default cxo a(@Nullable cpw $$0, dhi $$1, jh $$2, dxu $$3) {
+      if ($$3.c(dyk.D)) {
+         $$1.a($$2, $$3.b(dyk.D, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
 
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(ecj.i, $$2, ecj.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.A.a(300));
+         return new cxo(cxs.qX);
+      } else {
+         return cxo.k;
+      }
    }
 
    @Override
-   public boolean a(dxn $$0, eue $$1) {
-      return false;
-   }
-
-   public static boolean a(dgf $$0, jh $$1) {
-      return $$0.a_($$1.e()).a(axu.cv);
+   default Optional<axe> at_() {
+      return etx.c.j();
    }
 }

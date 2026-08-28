@@ -1,151 +1,90 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import org.joml.Matrix4f;
 
-public class gpf implements gpe.a {
-   private final flz a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<gpf.a> d = Lists.newArrayList();
-   private final List<gpf.b> e = Lists.newArrayList();
+public class gpf implements gpj.a {
+   private final fme a;
+   private static final int b = ayp.a(255, 0, 155, 155);
+   private static final int c = ayp.a(255, 255, 255, 0);
 
-   public gpf(flz $$0) {
+   public gpf(fme $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fgl $$0, gle $$1, double $$2, double $$3, double $$4) {
-      dha $$5 = this.a.s;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
-      } else {
-         fbs $$6 = new fbs($$2, 0.0, $$4);
-         this.d.removeIf(gpf.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         fgp $$7 = $$1.getBuffer(glo.y());
+   public void a(fgq $$0, glj $$1, double $$2, double $$3, double $$4) {
+      bvj $$5 = this.a.j.k().g();
+      float $$6 = (float)((double)this.a.s.L_() - $$3);
+      float $$7 = (float)((double)(this.a.s.am() + 1) - $$3);
+      dgn $$8 = $$5.dx();
+      float $$9 = (float)((double)$$8.d() - $$2);
+      float $$10 = (float)((double)$$8.e() - $$4);
+      fgu $$11 = $$1.getBuffer(glt.a(1.0));
+      Matrix4f $$12 = $$0.c().a();
 
-         for (gpf.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               gpe.a($$0, $$7, fcj.a(new fbn($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
-         }
-
-         fgp $$9 = $$1.getBuffer(glo.B());
-
-         for (gpf.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> gly.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (gpf.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               gpe.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               gpe.a($$0, $$1, jh.a((ka)$$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (gpf.a $$12 : this.d) {
-            fbs $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.d - 0.2F;
-            double $$16 = $$13.e - 0.2F;
-            double $$17 = $$13.f - 0.2F;
-            double $$18 = $$13.d + 0.2F;
-            double $$19 = $$13.e + 0.2F + 0.5;
-            double $$20 = $$13.f + 0.2F;
-            a($$0, $$1, new fbn($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            gpe.a($$0, $$1, $$12.b.a().toString(), $$13.d, $$13.e + 0.85F, $$13.f, -7564911, 0.0075F);
+      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
+         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F);
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F);
          }
       }
-   }
 
-   private static void a(fgl $$0, gle $$1, fbn $$2, float $$3, float $$4, float $$5, float $$6) {
-      fli $$7 = flz.Q().j.k();
-      if ($$7.h()) {
-         fbs $$8 = $$7.b().e();
-         gpe.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
-      }
-   }
-
-   public void a(aly<ecj> $$0, fbs $$1) {
-      this.d.add(new gpf.a(ae.c(), $$0, $$1));
-   }
-
-   public void a(ecn $$0, int $$1) {
-      this.e.add(new gpf.b($$0, $$1));
-   }
-
-   static record a(long a, aly<ecj> b, fbs c) {
-
-      public boolean a() {
-         return ae.c() - this.a > 3000L;
+      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
+         int $$16 = $$15 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16);
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F);
       }
 
-      public long b() {
-         return this.a;
+      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
+         int $$18 = $$17 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18);
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F);
       }
 
-      public aly<ecj> c() {
-         return this.b;
+      for (int $$19 = this.a.s.L_(); $$19 <= this.a.s.am() + 1; $$19 += 2) {
+         float $$20 = (float)((double)$$19 - $$3);
+         int $$21 = $$19 % 8 == 0 ? b : c;
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
+         $$11.a($$12, $$9, $$20, $$10).a($$21);
+         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21);
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21);
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21);
+         $$11.a($$12, $$9, $$20, $$10).a($$21);
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F);
       }
 
-      public fbs d() {
-         return this.c;
-      }
-   }
+      $$11 = $$1.getBuffer(glt.a(2.0));
 
-   static class b implements ecl {
-      public final ecn a;
-      public final int b;
-
-      public b(ecn $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
+         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F);
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F);
+         }
       }
 
-      public boolean a(dha $$0, fbs $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<fbs> a(dha $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public ecn a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(ash $$0, jq<ecj> $$1, ecj.a $$2, fbs $$3) {
-         return false;
+      for (int $$24 = this.a.s.L_(); $$24 <= this.a.s.am() + 1; $$24 += 16) {
+         float $$25 = (float)((double)$$24 - $$3);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F);
       }
    }
 }

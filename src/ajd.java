@@ -34,9 +34,9 @@ public class ajd implements aac<ahm> {
    }
 
    @Nullable
-   public dga a(dha $$0) {
-      bvf $$1 = $$0.a(this.b);
-      return $$1 instanceof csb ? ((csb)$$1).v() : null;
+   public dgh a(dhh $$0) {
+      bvj $$1 = $$0.a(this.b);
+      return $$1 instanceof csf ? ((csf)$$1).v() : null;
    }
 
    public String b() {

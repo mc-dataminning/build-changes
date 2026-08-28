@@ -1,22 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejq implements eis {
+public record ejq(int b, int c, int d, int e, int f, bsn g, float h) implements eiz {
    public static final Codec<ejq> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(ejq::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(ejq::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(ejq::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(ejq::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(ejq::f),
+               bsn.c.fieldOf("extra_rare_growths").forGetter(ejq::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(ejq::h)
             )
             .apply($$0, ejq::new)
    );
-   public final int b;
-   public final int c;
-   public final float d;
 
-   public ejq(int $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

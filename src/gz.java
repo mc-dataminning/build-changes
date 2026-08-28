@@ -28,7 +28,7 @@ public class gz implements ArgumentType<gu> {
       return new gz($$0);
    }
 
-   public static fbs a(CommandContext<ew> $$0, String $$1) {
+   public static fbx a(CommandContext<ew> $$0, String $$1) {
       return ((gu)$$0.getArgument($$1, gu.class)).a((ew)$$0.getSource());
    }
 

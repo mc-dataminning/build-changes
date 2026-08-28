@@ -1,141 +1,79 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.LongSupplier;
+import java.util.Objects;
+import java.util.WeakHashMap;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class brc implements bre {
-   public static final int a = 10;
-   @Nullable
-   private static Consumer<Path> b = null;
-   private final Map<bqx, List<brj>> c = new Object2ObjectOpenHashMap();
-   private final bph d;
-   private final Executor e;
-   private final bri f;
-   private final Consumer<bpm> g;
-   private final Consumer<Path> h;
-   private final bqz i;
-   private final LongSupplier j;
-   private final long k;
-   private int l;
-   private bpl m;
-   private volatile boolean n;
-   private Set<bqx> o = ImmutableSet.of();
+public class brc {
+   public static final brc a = new brc();
+   private final WeakHashMap<bre, Void> b = new WeakHashMap<>();
 
-   private brc(bqz $$0, LongSupplier $$1, Executor $$2, bri $$3, Consumer<bpm> $$4, Consumer<Path> $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new bph($$1, () -> this.l);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = b == null ? $$5 : $$5.andThen(b);
-      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-      this.m = new bpg(this.j, () -> this.l, false);
-      this.d.c();
+   private brc() {
    }
 
-   public static brc a(bqz $$0, LongSupplier $$1, Executor $$2, bri $$3, Consumer<bpm> $$4, Consumer<Path> $$5) {
-      return new brc($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(bre $$0) {
+      this.b.put($$0, null);
    }
 
-   @Override
-   public synchronized void a() {
-      if (this.e()) {
-         this.n = true;
-      }
+   public List<brb> a() {
+      Map<String, List<brb>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bw().stream()).collect(Collectors.groupingBy(brb::d));
+      return a($$0);
    }
 
-   @Override
-   public synchronized void b() {
-      if (this.e()) {
-         this.m = bpk.a;
-         this.g.accept(bpi.a);
-         this.a(this.o);
-      }
+   private static List<brb> a(Map<String, List<brb>> $$0) {
+      return $$0.entrySet().stream().map($$0x -> {
+         String $$1 = (String)$$0x.getKey();
+         List<brb> $$2 = (List<brb>)$$0x.getValue();
+         return (brb)($$2.size() > 1 ? new brc.a($$1, $$2) : $$2.get(0));
+      }).collect(Collectors.toList());
    }
 
-   @Override
-   public void c() {
-      this.g();
-      this.o = this.i.a(() -> this.m);
+   static class a extends brb {
+      private final List<brb> b;
 
-      for (bqx $$0 : this.o) {
-         $$0.a();
+      a(String $$0, List<brb> $$1) {
+         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
+         this.b = $$1;
       }
 
-      this.l++;
-   }
+      private static brb.c a(List<brb> $$0) {
+         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
+      }
 
-   @Override
-   public void d() {
-      this.g();
-      if (this.l != 0) {
-         for (bqx $$0 : this.o) {
-            $$0.a(this.l);
-            if ($$0.g()) {
-               brj $$1 = new brj(Instant.now(), this.l, this.m.d());
-               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-            }
+      private static void b(List<brb> $$0) {
+         for (brb $$1 : $$0) {
+            $$1.a();
+         }
+      }
+
+      private static double c(List<brb> $$0) {
+         double $$1 = 0.0;
+
+         for (brb $$2 : $$0) {
+            $$1 += $$2.c().getAsDouble();
          }
 
-         if (!this.n && this.j.getAsLong() <= this.k) {
-            this.m = new bpg(this.j, () -> this.l, false);
+         return $$1 / (double)$$0.size();
+      }
+
+      @Override
+      public boolean equals(@Nullable Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
+            return false;
+         } else if (!super.equals($$0)) {
+            return false;
          } else {
-            this.n = false;
-            bpm $$2 = this.d.e();
-            this.m = bpk.a;
-            this.g.accept($$2);
-            this.a($$2);
+            brc.a $$1 = (brc.a)$$0;
+            return this.b.equals($$1.b);
          }
       }
-   }
 
-   @Override
-   public boolean e() {
-      return this.d.a();
-   }
-
-   @Override
-   public bpo f() {
-      return bpo.a(this.d.d(), this.m);
-   }
-
-   private void g() {
-      if (!this.e()) {
-         throw new IllegalStateException("Not started!");
+      @Override
+      public int hashCode() {
+         return Objects.hash(super.hashCode(), this.b);
       }
-   }
-
-   private void a(bpm $$0) {
-      HashSet<bqx> $$1 = new HashSet<>(this.o);
-      this.e.execute(() -> {
-         Path $$2 = this.f.a($$1, this.c, $$0);
-         this.a($$1);
-         this.h.accept($$2);
-      });
-   }
-
-   private void a(Collection<bqx> $$0) {
-      for (bqx $$1 : $$0) {
-         $$1.b();
-      }
-
-      this.c.clear();
-      this.d.b();
-   }
-
-   public static void a(Consumer<Path> $$0) {
-      b = $$0;
    }
 }

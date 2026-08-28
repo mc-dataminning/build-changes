@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ase extends dzm {
+public class ase extends dzt {
    private static final Logger b = LogUtils.getLogger();
    private final arv c;
    private final ash d;
@@ -25,21 +25,21 @@ public class ase extends dzm {
    final ask f;
    private final ase.b g;
    public final arm a;
-   private final evp h;
+   private final evw h;
    private long i;
    private boolean j = true;
    private boolean k = true;
    private static final int l = 4;
    private final long[] m = new long[4];
-   private final eaj[] n = new eaj[4];
-   private final dzi[] o = new dzi[4];
-   private final List<dzs> p = new ArrayList<>();
+   private final eaq[] n = new eaq[4];
+   private final dzp[] o = new dzp[4];
+   private final List<dzz> p = new ArrayList<>();
    private final Set<ark> q = new ReferenceOpenHashSet();
    @Nullable
    @bbl
-   private dhl.d r;
+   private dhs.d r;
 
-   public ase(ash $$0, evv.c $$1, DataFixer $$2, esf $$3, Executor $$4, dzj $$5, int $$6, int $$7, boolean $$8, asr $$9, ebp $$10, Supplier<evp> $$11) {
+   public ase(ash $$0, ewc.c $$1, DataFixer $$2, esm $$3, Executor $$4, dzq $$5, int $$6, int $$7, boolean $$8, asr $$9, ebw $$10, Supplier<evw> $$11) {
       this.d = $$0;
       this.g = new ase.b($$0);
       this.e = Thread.currentThread();
@@ -51,7 +51,7 @@ public class ase extends dzm {
          b.error("Failed to create dimension data storage directory", var15);
       }
 
-      this.h = new evp($$12, $$2, $$0.K_());
+      this.h = new evw($$12, $$2, $$0.K_());
       this.a = new arm($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, $$6, $$8);
       this.f = this.a.d();
       this.c = this.a.j();
@@ -72,7 +72,7 @@ public class ase extends dzm {
       return this.a.h();
    }
 
-   private void a(long $$0, @Nullable dzi $$1, eaj $$2) {
+   private void a(long $$0, @Nullable dzp $$1, eaq $$2) {
       for (int $$3 = 3; $$3 > 0; $$3--) {
          this.m[$$3] = this.m[$$3 - 1];
          this.n[$$3] = this.n[$$3 - 1];
@@ -86,17 +86,17 @@ public class ase extends dzm {
 
    @Nullable
    @Override
-   public dzi a(int $$0, int $$1, eaj $$2, boolean $$3) {
+   public dzp a(int $$0, int $$1, eaq $$2, boolean $$3) {
       if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<dzi>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+         return CompletableFuture.<dzp>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
       } else {
-         bpo $$4 = bpn.a();
+         bps $$4 = bpr.a();
          $$4.f("getChunk");
-         long $$5 = dgg.c($$0, $$1);
+         long $$5 = dgn.c($$0, $$1);
 
          for (int $$6 = 0; $$6 < 4; $$6++) {
             if ($$5 == this.m[$$6] && $$2 == this.n[$$6]) {
-               dzi $$7 = this.o[$$6];
+               dzp $$7 = this.o[$$6];
                if ($$7 != null || !$$3) {
                   return $$7;
                }
@@ -104,10 +104,10 @@ public class ase extends dzm {
          }
 
          $$4.f("getChunkCacheMiss");
-         CompletableFuture<arn<dzi>> $$8 = this.c($$0, $$1, $$2, $$3);
+         CompletableFuture<arn<dzp>> $$8 = this.c($$0, $$1, $$2, $$3);
          this.g.b($$8::isDone);
-         arn<dzi> $$9 = $$8.join();
-         dzi $$10 = $$9.b(null);
+         arn<dzp> $$9 = $$8.join();
+         dzp $$10 = $$9.b(null);
          if ($$10 == null && $$3) {
             throw (IllegalStateException)ae.b(new IllegalStateException("Chunk not there when requested: " + $$9.b()));
          } else {
@@ -119,17 +119,17 @@ public class ase extends dzm {
 
    @Nullable
    @Override
-   public dzs a(int $$0, int $$1) {
+   public dzz a(int $$0, int $$1) {
       if (Thread.currentThread() != this.e) {
          return null;
       } else {
-         bpn.a().f("getChunkNow");
-         long $$2 = dgg.c($$0, $$1);
+         bpr.a().f("getChunkNow");
+         long $$2 = dgn.c($$0, $$1);
 
          for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.m[$$3] && this.n[$$3] == eaj.n) {
-               dzi $$4 = this.o[$$3];
-               return $$4 instanceof dzs ? (dzs)$$4 : null;
+            if ($$2 == this.m[$$3] && this.n[$$3] == eaq.n) {
+               dzp $$4 = this.o[$$3];
+               return $$4 instanceof dzz ? (dzz)$$4 : null;
             }
          }
 
@@ -137,11 +137,11 @@ public class ase extends dzm {
          if ($$5 == null) {
             return null;
          } else {
-            dzi $$6 = $$5.b(eaj.n);
+            dzp $$6 = $$5.b(eaq.n);
             if ($$6 != null) {
-               this.a($$2, $$6, eaj.n);
-               if ($$6 instanceof dzs) {
-                  return (dzs)$$6;
+               this.a($$2, $$6, eaq.n);
+               if ($$6 instanceof dzz) {
+                  return (dzz)$$6;
                }
             }
 
@@ -151,33 +151,33 @@ public class ase extends dzm {
    }
 
    private void r() {
-      Arrays.fill(this.m, dgg.c);
+      Arrays.fill(this.m, dgn.c);
       Arrays.fill(this.n, null);
       Arrays.fill(this.o, null);
    }
 
-   public CompletableFuture<arn<dzi>> b(int $$0, int $$1, eaj $$2, boolean $$3) {
+   public CompletableFuture<arn<dzp>> b(int $$0, int $$1, eaq $$2, boolean $$3) {
       boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<arn<dzi>> $$5;
+      CompletableFuture<arn<dzp>> $$5;
       if ($$4) {
          $$5 = this.c($$0, $$1, $$2, $$3);
          this.g.b($$5::isDone);
       } else {
-         $$5 = CompletableFuture.<CompletableFuture<arn<dzi>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+         $$5 = CompletableFuture.<CompletableFuture<arn<dzp>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
       }
 
       return $$5;
    }
 
-   private CompletableFuture<arn<dzi>> c(int $$0, int $$1, eaj $$2, boolean $$3) {
-      dgg $$4 = new dgg($$0, $$1);
+   private CompletableFuture<arn<dzp>> c(int $$0, int $$1, eaq $$2, boolean $$3) {
+      dgn $$4 = new dgn($$0, $$1);
       long $$5 = $$4.a();
       int $$6 = arl.a($$2);
       ark $$7 = this.b($$5);
       if ($$3) {
          this.c.a(asn.h, $$4, $$6, $$4);
          if (this.a($$7, $$6)) {
-            bpo $$8 = bpn.a();
+            bps $$8 = bpr.a();
             $$8.a("chunkLoad");
             this.s();
             $$7 = this.b($$5);
@@ -197,20 +197,20 @@ public class ase extends dzm {
 
    @Override
    public boolean b(int $$0, int $$1) {
-      ark $$2 = this.b(new dgg($$0, $$1).a());
-      int $$3 = arl.a(eaj.n);
+      ark $$2 = this.b(new dgn($$0, $$1).a());
+      int $$3 = arl.a(eaq.n);
       return !this.a($$2, $$3);
    }
 
    @Nullable
    @Override
-   public dzu c(int $$0, int $$1) {
-      long $$2 = dgg.c($$0, $$1);
+   public eab c(int $$0, int $$1) {
+      long $$2 = dgn.c($$0, $$1);
       ark $$3 = this.b($$2);
-      return $$3 == null ? null : $$3.a(eaj.k.c());
+      return $$3 == null ? null : $$3.a(eaq.k.c());
    }
 
-   public dha c() {
+   public dhh c() {
       return this.d;
    }
 
@@ -254,7 +254,7 @@ public class ase extends dzm {
 
    @Override
    public void a(BooleanSupplier $$0, boolean $$1) {
-      bpo $$2 = bpn.a();
+      bps $$2 = bpr.a();
       $$2.a("purge");
       if (this.d.t().i() || !$$1) {
          this.c.a();
@@ -278,10 +278,10 @@ public class ase extends dzm {
       long $$1 = $$0 - this.i;
       this.i = $$0;
       if (!this.d.ai()) {
-         bpo $$2 = bpn.a();
+         bps $$2 = bpr.a();
          $$2.a("pollingChunks");
          if (this.d.t().i()) {
-            List<dzs> $$3 = this.p;
+            List<dzz> $$3 = this.p;
 
             try {
                $$2.a("filteringTickingChunks");
@@ -300,11 +300,11 @@ public class ase extends dzm {
       }
    }
 
-   private void a(bpo $$0) {
+   private void a(bps $$0) {
       $$0.a("broadcast");
 
       for (ark $$1 : this.q) {
-         dzs $$2 = $$1.d();
+         dzz $$2 = $$1.d();
          if ($$2 != null) {
             $$1.a($$2);
          }
@@ -314,36 +314,36 @@ public class ase extends dzm {
       $$0.c();
    }
 
-   private void a(List<dzs> $$0) {
+   private void a(List<dzz> $$0) {
       this.a.a($$1 -> {
-         dzs $$2 = $$1.d();
+         dzz $$2 = $$1.d();
          if ($$2 != null && this.d.a($$1.q())) {
             $$0.add($$2);
          }
       });
    }
 
-   private void a(bpo $$0, long $$1, List<dzs> $$2) {
+   private void a(bps $$0, long $$1, List<dzz> $$2) {
       $$0.b("naturalSpawnCount");
       int $$3 = this.c.b();
-      dhl.d $$4 = dhl.a($$3, this.d.B(), this::a, new dhk(this.a));
+      dhs.d $$4 = dhs.a($$3, this.d.B(), this::a, new dhr(this.a));
       this.r = $$4;
       $$0.b("spawnAndTick");
-      boolean $$5 = this.d.N().b(dgw.e);
-      int $$6 = this.d.N().c(dgw.o);
-      List<bwe> $$8;
+      boolean $$5 = this.d.N().b(dhd.e);
+      int $$6 = this.d.N().c(dhd.o);
+      List<bwi> $$8;
       if ($$5 && (this.j || this.k)) {
          boolean $$7 = this.d.D_().c() % 400L == 0L;
-         $$8 = dhl.a($$4, this.k, this.j, $$7);
+         $$8 = dhs.a($$4, this.k, this.j, $$7);
       } else {
          $$8 = List.of();
       }
 
-      for (dzs $$10 : $$2) {
-         dgg $$11 = $$10.f();
+      for (dzz $$10 : $$2) {
+         dgn $$11 = $$10.f();
          $$10.b($$1);
          if (!$$8.isEmpty() && this.d.F_().a($$11)) {
-            dhl.a(this.d, $$10, $$4, $$8);
+            dhs.a(this.d, $$10, $$4, $$8);
          }
 
          if (this.d.a($$11.a())) {
@@ -357,7 +357,7 @@ public class ase extends dzm {
       }
    }
 
-   private void a(long $$0, Consumer<dzs> $$1) {
+   private void a(long $$0, Consumer<dzz> $$1) {
       ark $$2 = this.b($$0);
       if ($$2 != null) {
          $$2.c().getNow(ark.a).a($$1);
@@ -374,15 +374,15 @@ public class ase extends dzm {
       return this.g.by();
    }
 
-   public dzj g() {
+   public dzq g() {
       return this.a.a();
    }
 
-   public dzk h() {
+   public dzr h() {
       return this.a.b();
    }
 
-   public edw i() {
+   public eed i() {
       return this.a.c();
    }
 
@@ -394,14 +394,14 @@ public class ase extends dzm {
    public void a(jh $$0) {
       int $$1 = kj.a($$0.u());
       int $$2 = kj.a($$0.w());
-      ark $$3 = this.b(dgg.c($$1, $$2));
+      ark $$3 = this.b(dgn.c($$1, $$2));
       if ($$3 != null && $$3.a($$0)) {
          this.q.add($$3);
       }
    }
 
    @Override
-   public void a(dhj $$0, kj $$1) {
+   public void a(dhq $$0, kj $$1) {
       this.g.execute(() -> {
          ark $$2 = this.b($$1.r().a());
          if ($$2 != null && $$2.a($$0, $$1.b())) {
@@ -410,16 +410,16 @@ public class ase extends dzm {
       });
    }
 
-   public <T> void a(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+   public <T> void a(asn<T> $$0, dgn $$1, int $$2, T $$3) {
       this.c.c($$0, $$1, $$2, $$3);
    }
 
-   public <T> void b(asn<T> $$0, dgg $$1, int $$2, T $$3) {
+   public <T> void b(asn<T> $$0, dgn $$1, int $$2, T $$3) {
       this.c.d($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(dgg $$0, boolean $$1) {
+   public void a(dgn $$0, boolean $$1) {
       this.c.a($$0, $$1);
    }
 
@@ -429,19 +429,19 @@ public class ase extends dzm {
       }
    }
 
-   public void a(bvf $$0) {
+   public void a(bvj $$0) {
       this.a.b($$0);
    }
 
-   public void b(bvf $$0) {
+   public void b(bvj $$0) {
       this.a.a($$0);
    }
 
-   public void a(bvf $$0, aac<?> $$1) {
+   public void a(bvj $$0, aac<?> $$1) {
       this.a.b($$0, $$1);
    }
 
-   public void b(bvf $$0, aac<?> $$1) {
+   public void b(bvj $$0, aac<?> $$1) {
       this.a.a($$0, $$1);
    }
 
@@ -459,25 +459,25 @@ public class ase extends dzm {
       this.k = this.k;
    }
 
-   public String a(dgg $$0) {
+   public String a(dgn $$0) {
       return this.a.a($$0);
    }
 
-   public evp k() {
+   public evw k() {
       return this.h;
    }
 
-   public chf l() {
+   public chj l() {
       return this.a.m();
    }
 
-   public ear m() {
+   public eay m() {
       return this.a.p();
    }
 
    @Nullable
    @bbl
-   public dhl.d n() {
+   public dhs.d n() {
       return this.r;
    }
 
@@ -485,11 +485,11 @@ public class ase extends dzm {
       this.c.g();
    }
 
-   static record a(dzs a, ark b) {
+   static record a(dzz a, ark b) {
    }
 
-   final class b extends brt<Runnable> {
-      b(final dha $$0) {
+   final class b extends brx<Runnable> {
+      b(final dhh $$0) {
          super("Chunk source main thread executor for " + $$0.ah().a());
       }
 
@@ -520,7 +520,7 @@ public class ase extends dzm {
 
       @Override
       protected void d(Runnable $$0) {
-         bpn.a().f("runTask");
+         bpr.a().f("runTask");
          super.d($$0);
       }
 

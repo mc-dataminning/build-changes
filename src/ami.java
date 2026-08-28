@@ -7,7 +7,7 @@ public enum ami {
    d;
 
    private static final List<ami> e = List.of(values());
-   private static final ke.b f = ke.a(ma.aB);
+   private static final ke.b f = ke.a(ma.aC);
 
    public static jx<ami> a() {
       return new jx<>(e).a(a, f);

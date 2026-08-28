@@ -1,3 +1,8 @@
-public interface fdg<T> extends fdm<T> {
-   boolean b(jh var1, T var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fdg {
 }

@@ -27,14 +27,14 @@ public class ast implements asr {
    }
 
    @Override
-   public void a(dgg $$0) {
+   public void a(dgn $$0) {
       this.e = ae.c();
       this.d = this.e;
    }
 
    @Override
-   public void a(dgg $$0, @Nullable eaj $$1) {
-      if ($$1 == eaj.n) {
+   public void a(dgn $$0, @Nullable eaq $$1) {
+      if ($$1 == eaq.n) {
          this.c++;
       }
 

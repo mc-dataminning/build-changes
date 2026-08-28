@@ -1,85 +1,77 @@
-public class ccp extends cdd {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final cia b;
-   private final int c;
-   private boolean d;
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public ccp(cia $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class ccp extends cdd {
+   private static final cgw d = cgw.b().a(8.0).d();
+   protected final chw a;
+   private final Class<? extends chw> e;
+   protected final ash b;
+   @Nullable
+   protected chw c;
+   private int f;
+   private final double g;
+
+   public ccp(chw $$0, double $$1) {
+      this($$0, $$1, (Class<? extends chw>)$$0.getClass());
+   }
+
+   public ccp(chw $$0, double $$1, Class<? extends chw> $$2) {
+      this.a = $$0;
+      this.b = a($$0);
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(cdd.a.a, cdd.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.b.dY().a(this.c) != 0) {
+      if (!this.a.gw()) {
          return false;
       } else {
-         jm $$0 = this.b.cP();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         jh $$3 = this.b.dv();
-
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
-         }
-
-         return true;
+         this.c = this.h();
+         return this.c != null;
       }
-   }
-
-   private boolean a(jh $$0, int $$1, int $$2, int $$3) {
-      jh $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dV().b_($$4).a(aya.a) && !this.b.dV().a_($$4).d();
-   }
-
-   private boolean b(jh $$0, int $$1, int $$2, int $$3) {
-      return this.b.dV().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dV().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
    }
 
    @Override
    public boolean c() {
-      double $$0 = this.b.dy().e;
-      return (!($$0 * $$0 < 0.03F) || this.b.dN() == 0.0F || !(Math.abs(this.b.dN()) < 10.0F) || !this.b.bj()) && !this.b.aJ();
-   }
-
-   @Override
-   public boolean U_() {
-      return false;
-   }
-
-   @Override
-   public void d() {
-      jm $$0 = this.b.cP();
-      this.b.h(this.b.dy().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.L().o();
+      return this.c.bL() && this.c.gw() && this.f < 60 && !this.c.gj();
    }
 
    @Override
    public void e() {
-      this.b.w(0.0F);
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         etp $$1 = this.b.dV().b_(this.b.dv());
-         this.d = $$1.a(aya.a);
+      this.a.H().a(this.c, 10.0F, (float)this.a.Z());
+      this.a.L().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private chw h() {
+      List<? extends chw> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      chw $$2 = null;
+
+      for (chw $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gj() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
+         }
       }
 
-      if (this.d && !$$0) {
-         this.b.a(axf.hu, 1.0F, 1.0F);
-      }
+      return $$2;
+   }
 
-      fbs $$2 = this.b.dy();
-      if ($$2.e * $$2.e < 0.03F && this.b.dN() != 0.0F) {
-         this.b.w(bae.i(0.2F, this.b.dN(), 0.0F));
-      } else if ($$2.g() > 1.0E-5F) {
-         double $$3 = $$2.i();
-         double $$4 = Math.atan2(-$$2.e, $$3) * 180.0F / (float)Math.PI;
-         this.b.w((float)$$4);
-      }
+   protected void g() {
+      this.a.a(this.b, this.c);
    }
 }

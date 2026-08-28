@@ -1,138 +1,64 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
-public class gew implements gfq {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Duration c = Duration.ofHours(1L);
-   private static final Path d = Path.of("profilekeys");
-   private final UserApiService e;
-   private final Path f;
-   private CompletableFuture<Optional<cpu>> g = CompletableFuture.completedFuture(Optional.empty());
-   private Instant h = Instant.EPOCH;
+public class gew {
+   private final List<gep> a;
+   private final geo b;
+   private final Map<String, gew> c = Maps.newHashMap();
 
-   public gew(UserApiService $$0, UUID $$1, Path $$2) {
-      this.e = $$0;
-      this.f = $$2.resolve(d).resolve($$1 + ".json");
+   gew(List<gep> $$0, geo $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public CompletableFuture<Optional<cpu>> a() {
-      this.h = Instant.now().plus(c);
-      this.g = this.g.thenCompose(this::a);
-      return this.g;
+   public gew a(String $$0, ger $$1, geo $$2) {
+      gew $$3 = new gew($$1.b(), $$2);
+      return this.a($$0, $$3);
    }
 
-   @Override
-   public boolean b() {
-      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cpu::a).orElse(true) : false;
-   }
-
-   private CompletableFuture<Optional<cpu>> a(Optional<cpu> $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$0.isPresent() && !$$0.get().a()) {
-            if (!ab.aU) {
-               this.a(null);
-            }
-
-            return $$0;
-         } else {
-            try {
-               cpu $$1 = this.a(this.e);
-               this.a($$1);
-               return Optional.ofNullable($$1);
-            } catch (azd | MinecraftClientException | IOException var3) {
-               b.error("Failed to retrieve profile key pair", var3);
-               this.a(null);
-               return $$0;
-            }
-         }
-      }, ae.i());
-   }
-
-   private Optional<cpu> c() {
-      if (Files.notExists(this.f)) {
-         return Optional.empty();
-      } else {
-         try {
-            Optional var2;
-            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
-               var2 = cpu.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to read profile key pair file {}", this.f, var6);
-            return Optional.empty();
-         }
-      }
-   }
-
-   private void a(@Nullable cpu $$0) {
-      try {
-         Files.deleteIfExists(this.f);
-      } catch (IOException var3) {
-         b.error("Failed to delete profile key pair file {}", this.f, var3);
+   public gew a(String $$0, gew $$1) {
+      gew $$2 = this.c.put($$0, $$1);
+      if ($$2 != null) {
+         $$1.c.putAll($$2.c);
       }
 
-      if ($$0 != null) {
-         if (ab.aU) {
-            cpu.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
-               try {
-                  Files.createDirectories(this.f.getParent());
-                  Files.writeString(this.f, $$0x.toString());
-               } catch (Exception var3x) {
-                  b.error("Failed to write profile key pair file {}", this.f, var3x);
-               }
-            });
-         }
-      }
+      return $$1;
    }
 
-   @Nullable
-   private cpu a(UserApiService $$0) throws azd, IOException {
-      KeyPairResponse $$1 = $$0.getKeyPair();
-      if ($$1 != null) {
-         cpv.a $$2 = a($$1);
-         return new cpu(azc.a($$1.keyPair().privateKey()), new cpv($$2), Instant.parse($$1.refreshedAfter()));
-      } else {
-         return null;
-      }
+   public gew a(String $$0) {
+      return this.a($$0, ger.c(), geo.a);
    }
 
-   private static cpv.a a(KeyPairResponse $$0) throws azd {
-      KeyPair $$1 = $$0.keyPair();
-      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
-         try {
-            Instant $$2 = Instant.parse($$0.expiresAt());
-            PublicKey $$3 = azc.b($$1.publicKey());
-            ByteBuffer $$4 = $$0.publicKeySignature();
-            return new cpv.a($$2, $$3, $$4.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new azd(var5);
-         }
-      } else {
-         throw new azd(new MissingException("Missing public key"));
-      }
+   public gem a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, gem> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((gew)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<gem.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      gem $$4 = new gem($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
+   }
+
+   public gew b(String $$0) {
+      return this.c.get($$0);
+   }
+
+   public Set<Entry<String, gew>> a() {
+      return this.c.entrySet();
+   }
+
+   public gew a(UnaryOperator<geo> $$0) {
+      gew $$1 = new gew(this.a, $$0.apply(this.b));
+      $$1.c.putAll(this.c);
+      return $$1;
    }
 }

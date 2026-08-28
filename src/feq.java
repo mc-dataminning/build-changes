@@ -1,13 +1,35 @@
 public interface feq {
-   <T> ffx<T> a(String var1, ffw<T> var2);
+   int a();
 
-   <T> void a(ffx<T> var1);
+   int b();
 
-   <T> ffx<T> b(ffx<T> var1);
+   void a(int var1, int var2);
 
-   void a(feq var1);
+   boolean c();
 
-   void a();
+   float d();
 
-   void a(Runnable var1);
+   default float e() {
+      return this.i();
+   }
+
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
+   }
+
+   default float g() {
+      return 7.0F - this.j();
+   }
+
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
+   }
+
+   default float i() {
+      return 0.0F;
+   }
+
+   default float j() {
+      return 7.0F;
+   }
 }

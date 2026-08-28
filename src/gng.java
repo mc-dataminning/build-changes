@@ -1,66 +1,16 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Streams;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class gng {
-   private final gnc a;
-   private final gmx b;
+public class gng implements gnh {
+   public static final String a = "AND";
+   private final Iterable<? extends gnh> d;
 
-   public gng(gnc $$0, gmx $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gng(Iterable<? extends gnh> $$0) {
+      this.d = $$0;
    }
 
-   public gmx a() {
-      return this.b;
-   }
-
-   public Predicate<dxn> a(dxo<dke, dxn> $$0) {
-      return this.a.getPredicate($$0);
-   }
-
-   public static class a implements JsonDeserializer<gng> {
-      public gng a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new gng(this.b($$3), (gmx)$$2.deserialize($$3.get("apply"), gmx.class));
-      }
-
-      private gnc b(JsonObject $$0) {
-         return $$0.has("when") ? a(azu.u($$0, "when")) : gnc.b;
-      }
-
-      @VisibleForTesting
-      static gnc a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gnc> $$2 = Streams.stream(azu.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gnf($$2);
-            } else if ($$0.has("AND")) {
-               List<gnc> $$3 = Streams.stream(azu.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gnb($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
-         } else {
-            return new gnb($$1.stream().map(gng.a::a).collect(Collectors.toList()));
-         }
-      }
-
-      private static gnc a(Entry<String, JsonElement> $$0) {
-         return new gnd($$0.getKey(), $$0.getValue().getAsString());
-      }
+   @Override
+   public Predicate<dxu> getPredicate(dxv<dkl, dxu> $$0) {
+      return ae.a(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
    }
 }

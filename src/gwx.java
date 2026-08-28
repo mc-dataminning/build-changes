@@ -1,5 +1,6 @@
-public class gwx extends gym {
+public class gwx extends gyr {
    public boolean a;
-   public final bux b = new bux();
-   public final bux c = new bux();
+   public boolean b;
+   public float c;
+   public float d;
 }

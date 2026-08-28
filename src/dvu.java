@@ -1,221 +1,134 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
+import java.util.Collections;
+import java.util.SequencedSet;
 
-public class dvu extends dup implements bsv, btg {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bsx e = new bsx() {
-      @Override
-      public int b() {
-         return 1;
+public class dvu {
+   private final Object2IntSortedMap<cxk> a;
+
+   dvu(Object2IntSortedMap<cxk> $$0) {
+      this.a = $$0;
+   }
+
+   public boolean a(cxo $$0) {
+      return this.a.containsKey($$0.h());
+   }
+
+   public SequencedSet<cxk> a() {
+      return Collections.unmodifiableSequencedSet(this.a.keySet());
+   }
+
+   public int b(cxo $$0) {
+      return $$0.f() ? 0 : this.a.getInt($$0.h());
+   }
+
+   public static dvu a(js.a $$0, css $$1) {
+      return a($$0, $$1, 200);
+   }
+
+   public static dvu a(js.a $$0, css $$1, int $$2) {
+      return new dvu.a($$0, $$1)
+         .a(cxs.qY, $$2 * 100)
+         .a(dkn.iS, $$2 * 8 * 10)
+         .a(cxs.sU, $$2 * 12)
+         .a(cxs.oT, $$2 * 8)
+         .a(cxs.oU, $$2 * 8)
+         .a(ayd.r, $$2 * 3 / 2)
+         .a(ayd.D, $$2 * 3 / 2)
+         .a(ayd.b, $$2 * 3 / 2)
+         .a(dkn.y, $$2 * 3 / 2)
+         .a(ayd.i, $$2 * 3 / 2)
+         .a(dkn.il, $$2 * 3 / 2)
+         .a(ayd.j, $$2 * 3 / 4)
+         .a(dkn.jU, $$2 * 3 / 4)
+         .a(ayd.n, $$2 * 3 / 2)
+         .a(ayd.m, $$2 * 3 / 2)
+         .a(ayd.k, $$2 * 3 / 2)
+         .a(ayd.l, $$2 * 3 / 2)
+         .a(dkn.bf, $$2 * 3 / 2)
+         .a(dkn.cs, $$2 * 3 / 2)
+         .a(dkn.ct, $$2 * 3 / 2)
+         .a(dkn.ov, $$2 * 3 / 2)
+         .a(dkn.eg, $$2 * 3 / 2)
+         .a(dkn.cD, $$2 * 3 / 2)
+         .a(dkn.hl, $$2 * 3 / 2)
+         .a(dkn.cI, $$2 * 3 / 2)
+         .a(dkn.hp, $$2 * 3 / 2)
+         .a(ayd.F, $$2 * 3 / 2)
+         .a(cxs.oR, $$2 * 3 / 2)
+         .a(cxs.rJ, $$2 * 3 / 2)
+         .a(dkn.cX, $$2 * 3 / 2)
+         .a(ayd.aW, $$2)
+         .a(ayd.bw, $$2 * 4)
+         .a(cxs.pj, $$2)
+         .a(cxs.pi, $$2)
+         .a(cxs.pm, $$2)
+         .a(cxs.pl, $$2)
+         .a(cxs.pk, $$2)
+         .a(ayd.h, $$2)
+         .a(ayd.aT, $$2 * 6)
+         .a(ayd.a, $$2 / 2)
+         .a(ayd.d, $$2 / 2)
+         .a(cxs.pM, $$2 / 2)
+         .a(ayd.p, $$2 / 2)
+         .a(cxs.oP, $$2 / 2)
+         .a(ayd.g, 1 + $$2 / 3)
+         .a(dkn.mz, 1 + $$2 * 20)
+         .a(cxs.wL, $$2 * 3 / 2)
+         .a(dkn.nu, $$2 / 4)
+         .a(dkn.bC, $$2 / 2)
+         .a(dkn.on, $$2 / 4)
+         .a(dkn.oo, $$2 * 3 / 2)
+         .a(dkn.op, $$2 * 3 / 2)
+         .a(dkn.os, $$2 * 3 / 2)
+         .a(dkn.ot, $$2 * 3 / 2)
+         .a(dkn.ow, $$2 * 3 / 2)
+         .a(dkn.px, $$2 * 3 / 2)
+         .a(dkn.sT, $$2 / 2)
+         .a(dkn.sU, $$2 / 2)
+         .a(dkn.ag, $$2 * 3 / 2)
+         .a(ayd.aN)
+         .a();
+   }
+
+   public static class a {
+      private final js<cxk> a;
+      private final css b;
+      private final Object2IntSortedMap<cxk> c = new Object2IntLinkedOpenHashMap();
+
+      public a(js.a $$0, css $$1) {
+         this.a = $$0.d(mb.K);
+         this.b = $$1;
       }
 
-      @Override
-      public boolean c() {
-         return dvu.this.g.f();
+      public dvu a() {
+         return new dvu(this.c);
       }
 
-      @Override
-      public cxk a(int $$0) {
-         return $$0 == 0 ? dvu.this.g : cxk.k;
+      public dvu.a a(ayk<cxk> $$0) {
+         this.c.keySet().removeIf($$1 -> $$1.f().a($$0));
+         return this;
       }
 
-      @Override
-      public cxk a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cxk $$2 = dvu.this.g.a($$1);
-            if (dvu.this.g.f()) {
-               dvu.this.k();
+      public dvu.a a(ayk<cxk> $$0, int $$1) {
+         this.a.a($$0).ifPresent($$1x -> {
+            for (jq<cxk> $$2 : $$1x) {
+               this.a($$1, $$2.a());
             }
+         });
+         return this;
+      }
 
-            return $$2;
-         } else {
-            return cxk.k;
+      public dvu.a a(dhg $$0, int $$1) {
+         cxk $$2 = $$0.j();
+         this.a($$1, $$2);
+         return this;
+      }
+
+      private void a(int $$0, cxk $$1) {
+         if ($$1.a(this.b)) {
+            this.c.put($$1, $$0);
          }
-      }
-
-      @Override
-      public cxk b(int $$0) {
-         if ($$0 == 0) {
-            cxk $$1 = dvu.this.g;
-            dvu.this.g = cxk.k;
-            dvu.this.k();
-            return $$1;
-         } else {
-            return cxk.k;
-         }
-      }
-
-      @Override
-      public void a(int $$0, cxk $$1) {
-      }
-
-      @Override
-      public int ao_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         dvu.this.e();
-      }
-
-      @Override
-      public boolean a(cps $$0) {
-         return bsx.a(dvu.this, $$0) && dvu.this.c();
-      }
-
-      @Override
-      public boolean b(int $$0, cxk $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final ctj f = new ctj() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? dvu.this.h : 0;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            dvu.this.a($$1);
-         }
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   cxk g = cxk.k;
-   int h;
-   private int i;
-
-   public dvu(jh $$0, dxn $$1) {
-      super(dur.E, $$0, $$1);
-   }
-
-   public cxk b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.g.b(ku.S) || this.g.b(ku.T);
-   }
-
-   public void b(cxk $$0) {
-      this.a($$0, null);
-   }
-
-   void k() {
-      this.h = 0;
-      this.i = 0;
-      dor.a(null, this.i(), this.aB_(), this.m(), false);
-   }
-
-   public void a(cxk $$0, @Nullable cps $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = c(this.g);
-      this.e();
-   }
-
-   void a(int $$0) {
-      int $$1 = bae.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         dor.a(this.i(), this.aB_(), this.m());
-      }
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public int j() {
-      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
-      return bae.d($$0 * 14.0F) + (this.c() ? 1 : 0);
-   }
-
-   private cxk b(cxk $$0, @Nullable cps $$1) {
-      if (this.o instanceof ash $$2) {
-         czg.a($$0, this.a($$1, $$2), $$1);
-      }
-
-      return $$0;
-   }
-
-   private ew a(@Nullable cps $$0, ash $$1) {
-      String $$2;
-      xv $$3;
-      if ($$0 == null) {
-         $$2 = "Lectern";
-         $$3 = xv.b("Lectern");
-      } else {
-         $$2 = $$0.al().getString();
-         $$3 = $$0.p_();
-      }
-
-      fbs $$6 = fbs.b(this.p);
-      return new ew(ev.a, $$6, fbr.a, $$1, 2, $$2, $$3, $$1.p(), $$0);
-   }
-
-   @Override
-   public boolean p() {
-      return true;
-   }
-
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cxk.a($$1, (vu)$$0.p("Book")).orElse(cxk.k), null);
-      } else {
-         this.g = cxk.k;
-      }
-
-      this.i = c(this.g);
-      this.h = bae.a($$0.h("Page"), 0, this.i - 1);
-   }
-
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.b().f()) {
-         $$0.a("Book", this.b().a($$1));
-         $$0.a("Page", this.h);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b(cxk.k);
-   }
-
-   @Override
-   public csx createMenu(int $$0, cpr $$1, cps $$2) {
-      return new cud($$0, this.e, this.f);
-   }
-
-   @Override
-   public xv p_() {
-      return xv.c("container.lectern");
-   }
-
-   private static int c(cxk $$0) {
-      das $$1 = $$0.a(ku.T);
-      if ($$1 != null) {
-         return $$1.a().size();
-      } else {
-         dar $$2 = $$0.a(ku.S);
-         return $$2 != null ? $$2.a().size() : 0;
       }
    }
 }

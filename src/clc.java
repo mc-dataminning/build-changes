@@ -1,61 +1,69 @@
-public class clc extends cks {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final cgs f = cgs.a().a(150.0);
-   private final cgs g;
-   private int h;
+import javax.annotation.Nullable;
 
-   public clc(ckp $$0) {
+public class clc extends ckv {
+   @Nullable
+   private fbx b;
+
+   public clc(ckt $$0) {
       super($$0);
-      this.g = cgs.a().a(20.0).a(($$1, $$2) -> Math.abs($$1.dC() - $$0.dC()) <= 10.0);
    }
 
    @Override
-   public void a(ash $$0) {
-      this.h++;
-      bwb $$1 = $$0.a(this.g, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$1 != null) {
-         if (this.h > 25) {
-            this.a.gi().a(clf.h);
-         } else {
-            fbs $$2 = new fbs($$1.dA() - this.a.dA(), 0.0, $$1.dG() - this.a.dG()).d();
-            fbs $$3 = new fbs((double)bae.a(this.a.dL() * (float) (Math.PI / 180.0)), 0.0, (double)(-bae.b(this.a.dL() * (float) (Math.PI / 180.0)))).d();
-            float $$4 = (float)$$3.b($$2);
-            float $$5 = (float)(Math.acos((double)$$4) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$5 < 0.0F || $$5 > 10.0F) {
-               double $$6 = $$1.dA() - this.a.c.dA();
-               double $$7 = $$1.dG() - this.a.c.dG();
-               double $$8 = bae.a(bae.d(180.0 - bae.d($$6, $$7) * 180.0F / (float)Math.PI - (double)this.a.dL()), -100.0, 100.0);
-               this.a.cb *= 0.8F;
-               float $$9 = (float)Math.sqrt($$6 * $$6 + $$7 * $$7) + 1.0F;
-               float $$10 = $$9;
-               if ($$9 > 40.0F) {
-                  $$9 = 40.0F;
-               }
+   public void b() {
+      fbx $$0 = this.a.J(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.c.dA();
+      double $$2 = this.a.c.e(0.5);
+      double $$3 = this.a.c.dG();
 
-               this.a.cb += (float)$$8 * (0.7F / $$9 / $$10);
-               this.a.v(this.a.dL() + this.a.cb);
-            }
-         }
-      } else if (this.h >= 100) {
-         $$1 = $$0.a(f, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-         this.a.gi().a(clf.e);
-         if ($$1 != null) {
-            this.a.gi().a(clf.i);
-            this.a.gi().b(clf.i).a(new fbs($$1.dA(), $$1.dC(), $$1.dG()));
-         }
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         bam $$5 = this.a.dY();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         fbx $$9 = this.a.dy();
+         this.a.dV().a(ls.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
+         $$0.b((float) (Math.PI / 16));
       }
    }
 
    @Override
-   public void c() {
-      this.h = 0;
+   public void a(ash $$0) {
+      if (this.b == null) {
+         this.b = fbx.c($$0.a(edp.a.f, egu.a(this.a.m())));
+      }
+
+      if (this.b.c(this.a.dA(), this.a.dC(), this.a.dG()) < 1.0) {
+         this.a.gi().b(clj.f).i();
+         this.a.gi().a(clj.g);
+      }
    }
 
    @Override
-   public clf<clc> h() {
-      return clf.g;
+   public float e() {
+      return 1.5F;
+   }
+
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
+
+   @Override
+   public void c() {
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public fbx f() {
+      return this.b;
+   }
+
+   @Override
+   public clj<clc> h() {
+      return clj.d;
    }
 }

@@ -1,12 +1,8 @@
-public class gww extends gym {
-   public cje.e a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public gww() {
-      this.a = cje.e.a;
-      this.d = 1.0F;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gww {
 }

@@ -1,63 +1,70 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 
-public class exa extends ewz {
-   public static final MapCodec<exa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.either(aly.a(mb.bf), ewm.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, exa::new)
-   );
-   private final Either<aly<ewm>, ewm> j;
+public class exa extends ewx {
+   public static final MapCodec<exa> a = a(exa::new);
 
-   private exa(Either<aly<ewm>, ewm> $$0, int $$1, int $$2, List<ezs> $$3, List<exv> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   exa(List<exe> $$0, List<ezx> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ewy a() {
-      return ewv.d;
+   public exf a() {
+      return exc.i;
    }
 
    @Override
-   public void a(Consumer<cxk> $$0, ewh $$1) {
-      ((ewm)this.j.map($$1x -> $$1.a().c($$1x).map(jq::a).orElse(ewm.a), $$0x -> $$0x)).a($$1, $$0);
-   }
-
-   @Override
-   public void a(ewn $$0) {
-      Optional<aly<ewm>> $$1 = this.j.left();
-      if ($$1.isPresent()) {
-         aly<ewm> $$2 = $$1.get();
-         if (!$$0.b()) {
-            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
-            return;
+   protected eww a(List<? extends eww> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (eww)$$0.get(0);
+         case 2 -> {
+            eww $$1 = $$0.get(0);
+            eww $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (eww $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
          }
 
-         if ($$0.a($$2)) {
-            $$0.b("Table " + $$2.a() + " is recursively called");
-            return;
+         return true;
+      };
+      };
+   }
+
+   public static exa.a a(exe.a<?>... $$0) {
+      return new exa.a($$0);
+   }
+
+   public static class a extends exe.a<exa.a> {
+      private final Builder<exe> a = ImmutableList.builder();
+
+      public a(exe.a<?>... $$0) {
+         for (exe.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
       }
 
-      super.a($$0);
-      this.j
-         .ifLeft(
-            $$1x -> $$0.a()
-                  .c($$1x)
-                  .ifPresentOrElse($$2x -> ((ewm)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
-         )
-         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
-   }
+      protected exa.a a() {
+         return this;
+      }
 
-   public static ewz.a<?> a(aly<ewm> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new exa(Either.left($$0), $$1, $$2, $$3, $$4));
-   }
+      @Override
+      public exa.a b(exe.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public static ewz.a<?> a(ewm $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new exa(Either.right($$0), $$1, $$2, $$3, $$4));
+      @Override
+      public exe b() {
+         return new exa(this.a.build(), this.f());
+      }
    }
 }

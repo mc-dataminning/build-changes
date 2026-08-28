@@ -1,13 +1,13 @@
-public class guv extends gvy<gxc, gap> {
-   private static final glo a = glo.q(alz.b("textures/entity/breeze/breeze_eyes.png"));
-
-   public guv(gtg<gxc, gap> $$0) {
-      super($$0);
+public class guv extends gqh<cnp, hai, gec<hai>> {
+   public guv(gro.a $$0) {
+      this($$0, gel.dH, gel.dI, gel.dO, gel.dP, gel.dJ, gel.dK);
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, gxc $$3, float $$4, float $$5) {
-      fgp $$6 = $$1.getBuffer(a);
-      gap $$7 = this.d();
-      gqo.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hav.d);
+   public hai b() {
+      return new hai();
+   }
+
+   public guv(gro.a $$0, gek $$1, gek $$2, gek $$3, gek $$4, gek $$5, gek $$6) {
+      super($$0, new gec<>($$0.a($$1)), new gec<>($$0.a($$2)), new gec<>($$0.a($$3)), new gec<>($$0.a($$4)), new gec<>($$0.a($$5)), new gec<>($$0.a($$6)));
    }
 }

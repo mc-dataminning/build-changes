@@ -1,72 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class eox extends eoz {
-   public static final MapCodec<eox> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(eox::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(eox::b),
-                     eoy.c.optionalFieldOf("spread_type", eoy.a).forGetter(eox::c)
-                  )
-               )
-               .apply($$0, eox::new)
-      )
-      .validate(eox::a);
-   private final int c;
-   private final int d;
-   private final eoy e;
+@FunctionalInterface
+public interface eox<C extends eiz> {
+   Optional<eow<C>> createGenerator(eox.a<C> var1);
 
-   private static DataResult<eox> a(eox $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   static <C extends eiz> eox<C> simple(Predicate<eox.a<C>> $$0, eow<C> $$1) {
+      Optional<eow<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   public eox(kl $$0, eoz.c $$1, float $$2, int $$3, Optional<eoz.a> $$4, int $$5, int $$6, eoy $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   static <C extends eiz> Predicate<eox.a<C>> checkForBiomeOnTop(edp.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   public eox(int $$0, int $$1, eoy $$2, int $$3) {
-      this(kl.g, eoz.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public eoy c() {
-      return this.e;
-   }
-
-   public dgg a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      eeh $$5 = new eeh(new edj(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dgg($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
-
-   @Override
-   protected boolean a(dzk $$0, int $$1, int $$2) {
-      dgg $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.g == $$1 && $$3.h == $$2;
-   }
-
-   @Override
-   public epa<?> e() {
-      return epa.a;
+   public static record a<C extends eiz>(dzq a, din b, eed c, long d, dgn e, C f, dhj g, Predicate<jq<dij>> h, esm i, ke j) {
+      public boolean a(edp.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         jq<dij> $$4 = this.a.d().getNoiseBiome(kb.a($$1), kb.a($$3), kb.a($$2), this.c.b());
+         return this.h.test($$4);
+      }
    }
 }

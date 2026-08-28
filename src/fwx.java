@@ -1,25 +1,23 @@
 import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class fwx extends fwv {
-   private static final xv a = xv.c("options.sounds.title");
+public class fwx extends fxa {
+   private static final xv a = xv.c("options.mouse_settings.title");
 
-   private static fmc<?>[] a(fmd $$0) {
-      return new fmc[]{$$0.Z(), $$0.aa()};
+   private static fmh<?>[] a(fmi $$0) {
+      return new fmh[]{$$0.d(), $$0.U(), $$0.H(), $$0.V(), $$0.ac()};
    }
 
-   public fwx(ftr $$0, fmd $$1) {
+   public fwx(ftw $$0, fmi $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void l() {
-      this.d.a(this.c.b(axg.a));
-      this.d.a(this.J());
-      this.d.a(this.c.aw());
-      this.d.a(a(this.c));
-   }
-
-   private fmc<?>[] J() {
-      return Arrays.stream(axg.values()).filter($$0 -> $$0 != axg.a).map($$0 -> this.c.b($$0)).toArray(fmc[]::new);
+      if (ffl.a()) {
+         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.I())).toArray(fmh[]::new));
+      } else {
+         this.d.a(a(this.c));
+      }
    }
 }

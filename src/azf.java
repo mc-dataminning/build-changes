@@ -6,7 +6,7 @@ public class azf {
    private azf() {
    }
 
-   public static fbs a(fbs $$0, azf.a $$1) {
+   public static fbx a(fbx $$0, azf.a $$1) {
       int $$2 = bae.a($$0.a());
       int $$3 = bae.a($$0.b());
       int $$4 = bae.a($$0.c());
@@ -14,7 +14,7 @@ public class azf {
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      fbs $$9 = fbs.c;
+      fbx $$9 = fbx.c;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
          double $$11 = bae.d($$5, c[$$10 + 1], c[$$10]);
@@ -39,6 +39,6 @@ public class azf {
 
    @FunctionalInterface
    public interface a {
-      fbs fetch(int var1, int var2, int var3);
+      fbx fetch(int var1, int var2, int var3);
    }
 }

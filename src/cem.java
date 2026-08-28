@@ -1,26 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cem extends cdw {
-   public static final float i = 0.001F;
-   protected final float j;
+public class cem extends cdd {
+   private final cpd a;
 
-   public cem(bwj $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public cem(cpd $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cdd.a.c, cdd.a.a));
    }
 
-   public cem(bwj $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected fbs h() {
-      if (this.b.bm()) {
-         fbs $$0 = cgz.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
+   public boolean b() {
+      if (!this.a.bL()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
       } else {
-         return this.b.dY().i() >= this.j ? cgz.a(this.b, 10, 7) : super.h();
+         cpw $$0 = this.a.gm();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+         }
       }
+   }
+
+   @Override
+   public void d() {
+      this.a.L().o();
+   }
+
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

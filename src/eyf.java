@@ -1,63 +1,40 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eyf extends exu {
+public class eyf extends eyb {
    public static final MapCodec<eyf> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aly.a(mb.bf).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  ma.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(ewm.e.fieldOf("component").forGetter($$0x -> $$0x.b), eye.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
             .apply($$0, eyf::new)
    );
-   private final aly<ewm> b;
-   private final long c;
-   private final jq<dur<?>> d;
+   private final ewl<?> b;
+   private final eyc c;
 
-   private eyf(List<ezs> $$0, aly<ewm> $$1, long $$2, jq<dur<?>> $$3) {
+   private eyf(List<ezx> $$0, ewl<?> $$1, eyc $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public exw<eyf> b() {
-      return exx.y;
+   public eyd<eyf> b() {
+      return eye.u;
    }
 
    @Override
-   public cxk a(cxk $$0, ewh $$1) {
+   public cxo a(cxo $$0, ewo $$1) {
       if ($$0.f()) {
          return $$0;
       } else {
-         $$0.b(ku.ap, new dak(this.b, this.c));
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
          return $$0;
       }
    }
 
    @Override
-   public void a(ewn $$0) {
+   public void a(ewu $$0) {
       super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().c(this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
-      }
-   }
-
-   public static exu.a<?> a(dur<?> $$0, aly<ewm> $$1) {
-      return a($$2 -> new eyf($$2, $$1, 0L, $$0.a()));
-   }
-
-   public static exu.a<?> a(dur<?> $$0, aly<ewm> $$1, long $$2) {
-      return a($$3 -> new eyf($$3, $$1, $$2, $$0.a()));
+      this.c.a($$0.a(".modifier"));
    }
 }

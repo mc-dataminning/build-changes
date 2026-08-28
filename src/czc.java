@@ -1,32 +1,20 @@
-public interface czc {
-   czc.a a = new czc.a(false, false);
-   czc.a b = new czc.a(true, false);
+public class czc extends cxk {
+   public czc(czf $$0, float $$1, float $$2, cxk.a $$3) {
+      super($$0.a($$3, $$1, $$2));
+   }
 
-   boolean a();
+   @Override
+   public boolean a(dxu $$0, dhh $$1, jh $$2, cpw $$3) {
+      return !$$3.b();
+   }
 
-   boolean b();
+   @Override
+   public boolean a(cxo $$0, bwf $$1, bwf $$2) {
+      return true;
+   }
 
-   public static record a(boolean c, boolean d) implements czc {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public czc.a c() {
-         return new czc.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public void b(cxo $$0, bwf $$1, bwf $$2) {
+      $$0.a(1, $$2, bvr.a);
    }
 }

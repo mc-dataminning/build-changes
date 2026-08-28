@@ -1,21 +1,22 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class efa implements eep {
-   protected final kl f;
+public class efa implements eew {
+   public static final MapCodec<efa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", jh.c).forGetter($$0x -> $$0x.e)).apply($$0, efa::new)
+   );
+   private final kl e;
 
-   protected static <P extends efa> P1<Mu<P>, kl> a(Instance<P> $$0) {
-      return $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.f));
+   public efa(kl $$0) {
+      this.e = $$0;
    }
 
-   protected efa(kl $$0) {
-      this.f = $$0;
+   public boolean a(dif $$0, jh $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
-   public final boolean a(dhy $$0, jh $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public eex<?> a() {
+      return eex.h;
    }
-
-   protected abstract boolean a(dxn var1);
 }

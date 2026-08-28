@@ -1,27 +1,45 @@
-public class gqt extends gsp<chy, gym, gau> {
-   private static final alz a = alz.b("textures/entity/fish/cod.png");
+public class gqt extends gsu<cns, gxh, gau> {
+   private static final alz a = alz.b("textures/entity/breeze/breeze.png");
 
-   public gqt(grj.a $$0) {
-      super($$0, new gau($$0.a(geg.W)), 0.3F);
+   public gqt(gro.a $$0) {
+      super($$0, new gau($$0.a(gel.H)), 0.5F);
+      this.a(new gvb($$0, this));
+      this.a(new gva(this));
    }
 
-   @Override
-   public alz b(gym $$0) {
+   public void a(gxh $$0, fgq $$1, glj $$2, int $$3) {
+      gau $$4 = this.c();
+      a($$4, $$4.a(), $$4.c());
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public alz a(gxh $$0) {
       return a;
    }
 
-   public gym a() {
-      return new gym();
+   public gxh a() {
+      return new gxh();
    }
 
-   @Override
-   protected void a(gym $$0, fgl $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * bae.a(0.6F * $$0.p);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.af) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+   public void a(cns $$0, gxh $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a.a($$0.bZ);
+      $$1.b.a($$0.b);
+      $$1.c.a($$0.c);
+      $$1.d.a($$0.ca);
+      $$1.e.a($$0.d);
+   }
+
+   public static gau a(gau $$0, gem... $$1) {
+      $$0.a().k = false;
+      $$0.b().k = false;
+      $$0.c().k = false;
+      $$0.d().k = false;
+
+      for (gem $$2 : $$1) {
+         $$2.k = true;
       }
+
+      return $$0;
    }
 }

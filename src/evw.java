@@ -1,313 +1,157 @@
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PushbackInputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class evw implements Comparable<evw> {
-   public static final xv a = xv.c("selectWorld.select");
-   private final dhe b;
-   private final evx c;
-   private final String d;
-   private final boolean e;
-   private final boolean f;
-   private final boolean g;
-   private final Path h;
-   @Nullable
-   private xv i;
+public class evw implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, Optional<evi>> b = new HashMap<>();
+   private final DataFixer c;
+   private final js.a d;
+   private final Path e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   public evw(dhe $$0, evx $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
-      this.b = $$0;
+   public evw(Path $$0, DataFixer $$1, js.a $$2) {
       this.c = $$1;
+      this.e = $$0;
       this.d = $$2;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.e = $$3;
    }
 
-   public String a() {
-      return this.d;
+   private Path a(String $$0) {
+      return this.e.resolve($$0 + ".dat");
    }
 
-   public String b() {
-      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
-   }
-
-   public Path c() {
-      return this.h;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public long f() {
-      return this.c.b();
-   }
-
-   public int a(evw $$0) {
-      if (this.f() < $$0.f()) {
-         return 1;
+   public <T extends evi> T a(evi.a<T> $$0, String $$1) {
+      T $$2 = this.b($$0, $$1);
+      if ($$2 != null) {
+         return $$2;
       } else {
-         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
+         T $$3 = (T)$$0.a().get();
+         this.a($$1, $$3);
+         return $$3;
       }
    }
 
-   public dhe g() {
-      return this.b;
-   }
-
-   public dgx h() {
-      return this.b.b();
-   }
-
-   public boolean i() {
-      return this.b.c();
-   }
-
-   public boolean j() {
-      return this.b.e();
-   }
-
-   public yj k() {
-      return bbb.b(this.c.c()) ? xv.c("selectWorld.versionUnknown") : xv.b(this.c.c());
-   }
-
-   public evx l() {
-      return this.c;
-   }
-
-   public boolean m() {
-      return this.o().a();
-   }
-
-   public boolean n() {
-      return this.o() == evw.a.b;
-   }
-
-   public evw.a o() {
-      af $$0 = ab.b();
-      int $$1 = $$0.d().c();
-      int $$2 = this.c.d().c();
-      if (!$$0.g() && $$2 < $$1) {
-         return evw.a.c;
-      } else {
-         return $$2 > $$1 ? evw.a.b : evw.a.a;
-      }
-   }
-
-   public boolean p() {
-      return this.f;
-   }
-
-   public boolean q() {
-      return !this.p() && !this.d() ? !this.r() : true;
-   }
-
-   public boolean r() {
-      return ab.b().d().a(this.c.d());
-   }
-
-   public xv s() {
-      if (this.i == null) {
-         this.i = this.z();
+   @Nullable
+   public <T extends evi> T b(evi.a<T> $$0, String $$1) {
+      Optional<evi> $$2 = this.b.get($$1);
+      if ($$2 == null) {
+         $$2 = Optional.ofNullable(this.a($$0.b(), $$0.c(), $$1));
+         this.b.put($$1, $$2);
       }
 
-      return this.i;
+      return (T)$$2.orElse(null);
    }
 
-   private xv z() {
-      if (this.p()) {
-         return xv.c("selectWorld.locked").a(n.m);
-      } else if (this.d()) {
-         return xv.c("selectWorld.conversion").a(n.m);
-      } else if (!this.r()) {
-         return xv.a("selectWorld.incompatible.info", this.k()).a(n.m);
-      } else {
-         yj $$0 = this.i() ? xv.i().b(xv.c("gameMode.hardcore").b(-65536)) : xv.c("gameMode." + this.h().b());
-         if (this.j()) {
-            $$0.f(", ").b(xv.c("selectWorld.commands"));
+   @Nullable
+   private <T extends evi> T a(BiFunction<ux, js.a, T> $$0, bbs $$1, String $$2) {
+      try {
+         Path $$3 = this.a($$2);
+         if (Files.exists($$3)) {
+            ux $$4 = this.a($$2, $$1, ab.b().d().c());
+            return $$0.apply($$4.p("data"), this.d);
          }
+      } catch (Exception var6) {
+         a.error("Error loading saved data: {}", $$2, var6);
+      }
 
-         if (this.e()) {
-            $$0.f(", ").b(xv.c("selectWorld.experimental").a(n.o));
-         }
+      return null;
+   }
 
-         yj $$1 = this.k();
-         yj $$2 = xv.b(", ").b(xv.c("selectWorld.version")).b(xu.v);
-         if (this.m()) {
-            $$2.b($$1.a(this.n() ? n.m : n.u));
+   public void a(String $$0, evi $$1) {
+      this.b.put($$0, Optional.of($$1));
+      $$1.c();
+   }
+
+   public ux a(String $$0, bbs $$1, int $$2) throws IOException {
+      ux var8;
+      try (
+         InputStream $$3 = Files.newInputStream(this.a($$0));
+         PushbackInputStream $$4 = new PushbackInputStream(new azo($$3), 2);
+      ) {
+         ux $$5;
+         if (this.a($$4)) {
+            $$5 = vk.a($$4, vg.a());
          } else {
-            $$2.b($$1);
+            try (DataInputStream $$6 = new DataInputStream($$4)) {
+               $$5 = vk.a($$6);
+            }
          }
 
-         $$0.b($$2);
-         return $$0;
-      }
-   }
-
-   public xv t() {
-      return a;
-   }
-
-   public boolean u() {
-      return !this.q();
-   }
-
-   public boolean v() {
-      return !this.d() && !this.p();
-   }
-
-   public boolean w() {
-      return !this.q();
-   }
-
-   public boolean x() {
-      return !this.q();
-   }
-
-   public boolean y() {
-      return true;
-   }
-
-   public static enum a {
-      a(false, false, ""),
-      b(true, true, "downgrade"),
-      c(true, false, "snapshot");
-
-      private final boolean d;
-      private final boolean e;
-      private final String f;
-
-      private a(final boolean $$0, final boolean $$1, final String $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
+         int $$9 = vm.b($$5, 1343);
+         var8 = $$1.a(this.c, $$5, $$9, $$2);
       }
 
-      public boolean a() {
-         return this.d;
+      return var8;
+   }
+
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
+         }
       }
 
-      public boolean b() {
-         return this.e;
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
       }
 
-      public String c() {
+      return $$2;
+   }
+
+   public CompletableFuture<?> a() {
+      Map<Path, ux> $$0 = this.c();
+      if ($$0.isEmpty()) {
+         return CompletableFuture.completedFuture(null);
+      } else {
+         this.f = this.f
+            .thenCompose(
+               $$1 -> CompletableFuture.allOf(
+                     $$0.entrySet().stream().map($$0xx -> a((Path)$$0xx.getKey(), (ux)$$0xx.getValue())).toArray(CompletableFuture[]::new)
+                  )
+            );
          return this.f;
       }
    }
 
-   public static class b extends evw {
-      private static final xv b = xv.c("recover_world.warning").a($$0 -> $$0.a(-65536));
-      private static final xv c = xv.c("recover_world.button");
-      private final long d;
-
-      public b(String $$0, Path $$1, long $$2) {
-         super(null, null, $$0, false, false, false, $$1);
-         this.d = $$2;
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public xv s() {
-         return b;
-      }
-
-      @Override
-      public long f() {
-         return this.d;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public xv t() {
-         return c;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
-      }
+   private Map<Path, ux> c() {
+      Map<Path, ux> $$0 = new Object2ObjectArrayMap();
+      this.b.forEach(($$1, $$2) -> $$2.filter(evi::d).ifPresent($$2x -> $$0.put(this.a($$1), $$2x.a(this.d))));
+      return $$0;
    }
 
-   public static class c extends evw {
-      private static final xv b = xv.c("symlink_warning.more_info");
-      private static final xv c = xv.c("symlink_warning.title").b(-65536);
+   private static CompletableFuture<Void> a(Path $$0, ux $$1) {
+      return CompletableFuture.runAsync(() -> {
+         try {
+            vk.a($$1, $$0);
+         } catch (IOException var3) {
+            a.error("Could not save data to {}", $$0.getFileName(), var3);
+         }
+      }, ae.h());
+   }
 
-      public c(String $$0, Path $$1) {
-         super(null, null, $$0, false, false, false, $$1);
-      }
+   public void b() {
+      this.a().join();
+   }
 
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public xv s() {
-         return c;
-      }
-
-      @Override
-      public long f() {
-         return -1L;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public xv t() {
-         return b;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
-      }
+   @Override
+   public void close() {
+      this.b();
    }
 }

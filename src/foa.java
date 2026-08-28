@@ -1,154 +1,26 @@
-import javax.annotation.Nullable;
+public abstract class foa extends fob {
+   private final fno a;
+   private int b = 16777215;
 
-public class foa extends fnp {
-   private static final alz a = alz.b("widget/checkbox_selected_highlighted");
-   private static final alz b = alz.b("widget/checkbox_selected");
-   private static final alz c = alz.b("widget/checkbox_highlighted");
-   private static final alz d = alz.b("widget/checkbox");
-   private static final int f = 14737632;
-   private static final int m = 4;
-   private static final int n = 8;
-   private boolean o;
-   private final foa.b p;
-   private final fot q;
-
-   foa(int $$0, int $$1, int $$2, xv $$3, fnj $$4, boolean $$5, foa.b $$6) {
-      super($$0, $$1, 0, 0, $$3);
-      this.g = this.a($$2, $$3, $$4);
-      this.q = new fot($$3, $$4).d(this.g).c(14737632);
-      this.h = this.b($$4);
-      this.o = $$5;
-      this.p = $$6;
-   }
-
-   private int a(int $$0, xv $$1, fnj $$2) {
-      return Math.min(b($$1, $$2), $$0);
-   }
-
-   private int b(fnj $$0) {
-      return Math.max(a($$0), this.q.w());
-   }
-
-   static int b(xv $$0, fnj $$1) {
-      return a($$1) + 4 + $$1.a($$0);
-   }
-
-   public static foa.a a(xv $$0, fnj $$1) {
-      return new foa.a($$0, $$1);
-   }
-
-   public static int a(fnj $$0) {
-      return 9 + 8;
+   public foa(int $$0, int $$1, int $$2, int $$3, xv $$4, fno $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
    }
 
    @Override
-   public void b() {
-      this.o = !this.o;
-      this.p.onValueChange(this, this.o);
+   protected void a(fsb $$0) {
    }
 
-   public boolean a() {
-      return this.o;
+   public foa a(int $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   @Override
-   public void a(frw $$0) {
-      $$0.a(frv.a, this.aR_());
-      if (this.j) {
-         if (this.aN_()) {
-            $$0.a(frv.d, xv.c("narration.checkbox.usage.focused"));
-         } else {
-            $$0.a(frv.d, xv.c("narration.checkbox.usage.hovered"));
-         }
-      }
+   protected final fno a() {
+      return this.a;
    }
 
-   @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      flz $$4 = flz.Q();
-      fnj $$5 = $$4.h;
-      alz $$6;
-      if (this.o) {
-         $$6 = this.aN_() ? a : b;
-      } else {
-         $$6 = this.aN_() ? c : d;
-      }
-
-      int $$8 = a($$5);
-      $$0.a(glo::B, $$6, this.D(), this.E(), $$8, $$8, ayp.a(this.l));
-      int $$9 = this.D() + $$8 + 4;
-      int $$10 = this.E() + $$8 / 2 - this.q.w() / 2;
-      this.q.c($$9, $$10);
-      this.q.b($$0, $$1, $$2, $$3);
-   }
-
-   public static class a {
-      private final xv a;
-      private final fnj b;
-      private int c;
-      private int d = 0;
-      private int e = 0;
-      private foa.b f = foa.b.a;
-      private boolean g = false;
-      @Nullable
-      private fmc<Boolean> h = null;
-      @Nullable
-      private fpk i = null;
-
-      a(xv $$0, fnj $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = foa.b($$0, $$1);
-      }
-
-      public foa.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public foa.a a(foa.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public foa.a a(boolean $$0) {
-         this.g = $$0;
-         this.h = null;
-         return this;
-      }
-
-      public foa.a a(fmc<Boolean> $$0) {
-         this.h = $$0;
-         this.g = $$0.c();
-         return this;
-      }
-
-      public foa.a a(fpk $$0) {
-         this.i = $$0;
-         return this;
-      }
-
-      public foa.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public foa a() {
-         foa.b $$0 = this.h == null ? this.f : ($$0x, $$1x) -> {
-            this.h.a($$1x);
-            this.f.onValueChange($$0x, $$1x);
-         };
-         foa $$1 = new foa(this.d, this.e, this.c, this.a, this.b, this.g, $$0);
-         $$1.a(this.i);
-         return $$1;
-      }
-   }
-
-   public interface b {
-      foa.b a = ($$0, $$1) -> {
-      };
-
-      void onValueChange(foa var1, boolean var2);
+   protected final int b() {
+      return this.b;
    }
 }

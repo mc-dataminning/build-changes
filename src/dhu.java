@@ -1,76 +1,108 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.base.Suppliers;
+import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public record dhu(ux d, Optional<dhu.a> e, Optional<bvp> f) {
-   public static final String a = "entity";
-   public static final Codec<dhu> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ux.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dhu.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               bvp.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dhu::new)
-   );
-   public static final Codec<brm<dhu>> c = brm.a(b);
+public class dhu implements dgq {
+   protected final int a;
+   protected final int b;
+   protected final dzp[][] c;
+   protected boolean d;
+   protected final dhh e;
+   private final Supplier<jq<dij>> f;
 
-   public dhu() {
-      this(new ux(), Optional.empty(), Optional.empty());
-   }
+   public dhu(dhh $$0, jh $$1, jh $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.K_().e(mb.aI).b(diq.b));
+      this.a = kj.a($$1.u());
+      this.b = kj.a($$1.w());
+      int $$3 = kj.a($$2.u());
+      int $$4 = kj.a($$2.w());
+      this.c = new dzp[$$3 - this.a + 1][$$4 - this.b + 1];
+      dzt $$5 = $$0.R();
+      this.d = true;
 
-   public dhu(ux d, Optional<dhu.a> e, Optional<bvp> f) {
-      if (d.e("id")) {
-         alz $$3 = alz.c(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
-         } else {
-            d.r("id");
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
          }
       }
 
-      this.d = d;
-      this.e = e;
-      this.f = f;
+      for (int $$8 = kj.a($$1.u()); $$8 <= kj.a($$2.u()); $$8++) {
+         for (int $$9 = kj.a($$1.w()); $$9 <= kj.a($$2.w()); $$9++) {
+            dzp $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public ux a() {
-      return this.d;
+   private dzp d(jh $$0) {
+      return this.a(kj.a($$0.u()), kj.a($$0.w()));
    }
 
-   public Optional<dhu.a> b() {
-      return this.e;
+   private dzp a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dzp $$4 = this.c[$$2][$$3];
+         return (dzp)($$4 != null ? $$4 : new dzv(this.e, new dgn($$0, $$1), this.f.get()));
+      } else {
+         return new dzv(this.e, new dgn($$0, $$1), this.f.get());
+      }
    }
 
-   public Optional<bvp> c() {
-      return this.f;
+   @Override
+   public dzk F_() {
+      return this.e.F_();
    }
 
-   public static record a(azw<Integer> b, azw<Integer> c) {
-      private static final azw<Integer> d = new azw<>(0, 15);
-      public static final Codec<dhu.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dhu.a::new)
-      );
+   @Override
+   public dgm c(int $$0, int $$1) {
+      return this.a($$0, $$1);
+   }
 
-      private static DataResult<azw<Integer>> a(azw<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
-      }
+   @Override
+   public List<fcr> c(@Nullable bvj $$0, fbs $$1) {
+      return List.of();
+   }
 
-      private static MapCodec<azw<Integer>> a(String $$0) {
-         return azw.a.lenientOptionalFieldOf($$0, d).validate(dhu.a::a);
-      }
+   @Nullable
+   @Override
+   public duw c_(jh $$0) {
+      dzp $$1 = this.d($$0);
+      return $$1.c_($$0);
+   }
 
-      public boolean a(jh $$0, ash $$1) {
-         return this.b.a($$1.a(dhj.b, $$0)) && this.c.a($$1.a(dhj.a, $$0));
+   @Override
+   public dxu a_(jh $$0) {
+      if (this.s($$0)) {
+         return dkn.a.m();
+      } else {
+         dzp $$1 = this.d($$0);
+         return $$1.a_($$0);
       }
+   }
 
-      public azw<Integer> a() {
-         return this.b;
+   @Override
+   public etw b_(jh $$0) {
+      if (this.s($$0)) {
+         return etx.a.g();
+      } else {
+         dzp $$1 = this.d($$0);
+         return $$1.b_($$0);
       }
+   }
 
-      public azw<Integer> b() {
-         return this.c;
-      }
+   @Override
+   public int L_() {
+      return this.e.L_();
+   }
+
+   @Override
+   public int M_() {
+      return this.e.M_();
    }
 }

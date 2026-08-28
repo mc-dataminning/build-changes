@@ -1,21 +1,31 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cbr {
-   public static <E extends cov> bxv<E> a(Function<E, Optional<? extends bwb>> $$0) {
-      return cbh.a(
-         (Function<cbh.b<E>, ? extends App<cbh.c<E>, cbk<E>>>)($$1 -> $$1.group($$1.c(cff.ay), $$1.c(cff.o), $$1.a(cff.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends bwb> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::b).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public class cbr<E extends coz> extends bxy<E> {
+   public cbr(int $$0) {
+      super(ImmutableMap.of(cfj.o, cfk.b, cfj.m, cfk.b), $$0);
+   }
+
+   protected boolean a(ash $$0, E $$1, long $$2) {
+      return $$1.dR() == null;
+   }
+
+   protected boolean a(ash $$0, E $$1) {
+      return $$1.aJ() || $$1.bj() || $$1.bx();
+   }
+
+   protected void b(ash $$0, E $$1, long $$2) {
+      if ($$1.aJ()) {
+         $$1.b(bwr.o);
+         $$1.a(axf.Ck, 5.0F, 1.0F);
+      } else {
+         $$1.a(axf.Cf, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(ash $$0, E $$1, long $$2) {
+      if ($$1.dR() == null) {
+         $$1.a(bvj.c.b);
+      }
    }
 }

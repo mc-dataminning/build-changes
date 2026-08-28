@@ -1,44 +1,30 @@
-public class gtw<T extends bvf & cqi> extends gri<T, gzp> {
-   private final gsh a;
-   private final float b;
-   private final boolean h;
+public class gtw<T extends cnh> extends gsu<T, gyr, gdl> {
+   private static final alz a = alz.b("textures/entity/spider/spider.png");
 
-   public gtw(grj.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.b = $$1;
-      this.h = $$2;
+   public gtw(gro.a $$0) {
+      this($$0, gel.cR);
    }
 
-   public gtw(grj.a $$0) {
-      this($$0, 1.0F, false);
+   public gtw(gro.a $$0, gek $$1) {
+      super($$0, new gdl($$0.a($$1)), 0.8F);
+      this.a(new gwj<>(this));
    }
 
    @Override
-   protected int a(T $$0, jh $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   protected float aX_() {
+      return 180.0F;
    }
 
-   public void a(gzp $$0, fgl $$1, gle $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.b, this.b, this.b);
-      $$1.a(this.e.b());
-      if ($$0.a != null) {
-         this.a.a($$0.b, cxi.h, false, $$1, $$2, $$3, hav.d, $$0.a);
-      }
-
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   @Override
+   public alz b(gyr $$0) {
+      return a;
    }
 
-   public gzp a() {
-      return new gzp();
+   public gyr b() {
+      return new gyr();
    }
 
-   public void a(T $$0, gzp $$1, float $$2) {
+   public void a(T $$0, gyr $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      cxk $$3 = $$0.l();
-      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dV(), null, $$0.ar()) : null;
-      $$1.b = $$3.v();
    }
 }

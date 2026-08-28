@@ -1,41 +1,48 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cek<T extends bwd> extends ccz {
-   private final T a;
-   private final cxk b;
-   private final Predicate<? super T> c;
+public class cek extends cdd {
+   private final cmi a;
    @Nullable
-   private final axe d;
+   private bwf b;
 
-   public cek(T $$0, cxk $$1, @Nullable axe $$2, Predicate<? super T> $$3) {
+   public cek(cmi $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+      this.a(EnumSet.of(cdd.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.fx();
+      bwf $$0 = this.a.O_();
+      return this.a.t() > 0 || $$0 != null && this.a.g((bvj)$$0) < 9.0;
    }
 
    @Override
    public void d() {
-      this.a.a(bvn.a, this.b.v());
-      this.a.c(btd.a);
+      this.a.L().o();
+      this.b = this.a.O_();
    }
 
    @Override
    public void e() {
-      this.a.a(bvn.a, cxk.k);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
+      this.b = null;
+   }
+
+   @Override
+   public boolean V_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bvj)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.N().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
    }
 }

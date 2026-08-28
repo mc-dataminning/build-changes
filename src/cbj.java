@@ -1,53 +1,48 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public interface cbj<F extends K1, Value> {
-   cff<Value> a();
+public class cbj extends bxy<cpi> {
+   private static final int c = 300;
+   private static final double d = 1.73;
+   private long e;
 
-   cfg b();
+   public cbj() {
+      super(ImmutableMap.of(cfj.c, cfk.a, cfj.n, cfk.c));
+   }
 
-   @Nullable
-   cbi<F, Value> a(bxd<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(cff<Value> a) implements cbj<Mu<Unit>, Value> {
-      @Override
-      public cfg b() {
-         return cfg.b;
-      }
-
-      @Override
-      public cbi<Mu<Unit>, Value> a(bxd<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new cbi<>($$0, this.a, Const.create(Unit.INSTANCE));
+   protected boolean b(ash $$0, cpi $$1) {
+      if ($$0.ac() - this.e < 300L) {
+         return false;
+      } else if ($$0.A.a(2) != 0) {
+         return false;
+      } else {
+         this.e = $$0.ac();
+         jp $$2 = $$1.eb().c(cfj.c).get();
+         return $$2.a() == $$0.ah() && $$2.b().a($$1.dt(), 1.73);
       }
    }
 
-   public static record b<Value>(cff<Value> a) implements cbj<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cfg b() {
-         return cfg.a;
-      }
-
-      @Override
-      public cbi<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bxd<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new cbi<>($$0, this.a, IdF.create($$1.get()));
+   protected void a(ash $$0, cpi $$1, long $$2) {
+      bxh<cpi> $$3 = $$1.eb();
+      $$3.a(cfj.J, $$2);
+      $$3.c(cfj.c).ifPresent($$1x -> $$3.a(cfj.n, new byb($$1x.b())));
+      $$1.gB();
+      this.a($$0, $$1);
+      if ($$1.gA()) {
+         $$1.gz();
       }
    }
 
-   public static record c<Value>(cff<Value> a) implements cbj<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cfg b() {
-         return cfg.c;
-      }
+   protected void a(ash $$0, cpi $$1) {
+   }
 
-      @Override
-      public cbi<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bxd<?> $$0, Optional<Value> $$1) {
-         return new cbi<>($$0, this.a, OptionalBox.create($$1));
+   protected boolean b(ash $$0, cpi $$1, long $$2) {
+      Optional<jp> $$3 = $$1.eb().c(cfj.c);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jp $$4 = $$3.get();
+         return $$4.a() == $$0.ah() && $$4.b().a($$1.dt(), 1.73);
       }
    }
 }

@@ -1,143 +1,213 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fow extends foe<fow.a> {
-   private static final int a = 310;
-   private static final int m = 25;
-   private final fwv n;
+public class fow extends fnx {
+   private static final int a = 1;
+   private static final int b = -3092272;
+   private static final String c = "_";
+   private static final int d = -2039584;
+   private static final int e = -857677600;
+   private static final int f = 300;
+   private final fno m;
+   private final xv n;
+   private final foz o;
+   private long p = ae.c();
 
-   public fow(flz $$0, int $$1, fwv $$2) {
-      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
-      this.e = false;
-      this.n = $$2;
+   public fow(fno $$0, int $$1, int $$2, int $$3, int $$4, xv $$5, xv $$6) {
+      super($$1, $$2, $$3, $$4, $$6);
+      this.m = $$0;
+      this.n = $$5;
+      this.o = new foz($$0, $$3 - this.b());
+      this.o.a(this::k);
    }
 
-   public void a(fmc<?> $$0) {
-      this.b(fow.b.a(this.c.n, $$0, this.n));
+   public void a(int $$0) {
+      this.o.a($$0);
    }
 
-   public void a(fmc<?>... $$0) {
-      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
-         fmc<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
-         this.b(fow.b.a(this.c.n, $$0[$$1], $$2, this.n));
-      }
+   public void b(Consumer<String> $$0) {
+      this.o.a($$0);
    }
 
-   public void a(List<fnw> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
-         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
-      }
+   public void a(String $$0) {
+      this.o.a($$0);
    }
 
-   public void a(fnw $$0, @Nullable fnw $$1) {
-      this.b(fow.a.a($$0, $$1, this.n));
+   public String j() {
+      return this.o.c();
    }
 
    @Override
-   public int a() {
-      return 310;
+   public void a(fsb $$0) {
+      $$0.a(fsa.a, xv.a("gui.narrate.editBox", this.z(), this.j()));
    }
 
-   @Nullable
-   public fnw b(fmc<?> $$0) {
-      for (fow.a $$1 : this.aI_()) {
-         if ($$1 instanceof fow.b $$2) {
-            fnw $$3 = $$2.a.get($$0);
-            if ($$3 != null) {
-               return $$3;
-            }
-         }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(ftw.s());
+         this.e($$0, $$1);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
-
-      return null;
    }
 
-   public void b() {
-      for (fow.a $$0 : this.aI_()) {
-         if ($$0 instanceof fow.b) {
-            fow.b $$1 = (fow.b)$$0;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(true);
+         this.e($$0, $$1);
+         this.o.a(ftw.s());
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-            for (fnw $$2 : $$1.a.values()) {
-               if ($$2 instanceof fmc.i<?> $$3) {
-                  $$3.c();
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.o.e($$0);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      if (this.k && this.aN_() && bbb.a($$0)) {
+         this.o.b(Character.toString($$0));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   protected void c(fnq $$0, int $$1, int $$2, float $$3) {
+      String $$4 = this.o.c();
+      if ($$4.isEmpty() && !this.aN_()) {
+         $$0.a(this.m, (ya)this.n, this.D() + this.a(), this.E() + this.a(), this.g - this.b(), -857677600);
+      } else {
+         int $$5 = this.o.d();
+         boolean $$6 = this.aN_() && (ae.c() - this.p) / 300L % 2L == 0L;
+         boolean $$7 = $$5 < $$4.length();
+         int $$8 = 0;
+         int $$9 = 0;
+         int $$10 = this.E() + this.a();
+
+         for (foz.a $$11 : this.o.h()) {
+            boolean $$12 = this.a($$10, $$10 + 9);
+            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.D() + this.a(), $$10, -2039584) - 1;
+                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
+                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
+               }
+            } else {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.D() + this.a(), $$10, -2039584) - 1;
+               }
+
+               $$9 = $$10;
+            }
+
+            $$10 += 9;
+         }
+
+         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
+            $$0.b(this.m, "_", $$8, $$9, -3092272);
+         }
+
+         if (this.o.i()) {
+            foz.a $$13 = this.o.e();
+            int $$14 = this.D() + this.a();
+            $$10 = this.E() + this.a();
+
+            for (foz.a $$15 : this.o.h()) {
+               if ($$13.a() > $$15.b()) {
+                  $$10 += 9;
+               } else {
+                  if ($$15.a() > $$13.b()) {
+                     break;
+                  }
+
+                  if (this.a($$10, $$10 + 9)) {
+                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
+                     int $$17;
+                     if ($$13.b() > $$15.b()) {
+                        $$17 = this.g - this.a();
+                     } else {
+                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
+                     }
+
+                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
+                  }
+
+                  $$10 += 9;
                }
             }
          }
       }
    }
 
-   public Optional<fpw> e(double $$0, double $$1) {
-      for (fow.a $$2 : this.aI_()) {
-         for (fpw $$3 : $$2.aI_()) {
-            if ($$3.c($$0, $$1)) {
-               return Optional.of($$3);
-            }
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   protected static class a extends foe.a<fow.a> {
-      private final List<fnw> a;
-      private final ftr b;
-      private static final int c = 160;
-
-      a(List<fnw> $$0, ftr $$1) {
-         this.a = ImmutableList.copyOf($$0);
-         this.b = $$1;
-      }
-
-      public static fow.a a(List<fnw> $$0, ftr $$1) {
-         return new fow.a($$0, $$1);
-      }
-
-      public static fow.a a(fnw $$0, @Nullable fnw $$1, ftr $$2) {
-         return $$1 == null ? new fow.a(ImmutableList.of($$0), $$2) : new fow.a(ImmutableList.of($$0, $$1), $$2);
-      }
-
-      @Override
-      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = 0;
-         int $$11 = this.b.n / 2 - 155;
-
-         for (fnw $$12 : this.a) {
-            $$12.c($$11 + $$10, $$2);
-            $$12.a($$0, $$6, $$7, $$9);
-            $$10 += 160;
-         }
-      }
-
-      @Override
-      public List<? extends fpw> aI_() {
-         return this.a;
-      }
-
-      @Override
-      public List<? extends fru> b() {
-         return this.a;
+   @Override
+   protected void a(fnq $$0) {
+      super.a($$0);
+      if (this.o.b()) {
+         int $$1 = this.o.a();
+         xv $$2 = xv.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
+         $$0.b(this.m, $$2, this.D() + this.g - this.m.a($$2), this.E() + this.h + 4, 10526880);
       }
    }
 
-   protected static class b extends fow.a {
-      final Map<fmc<?>, fnw> a;
+   @Override
+   public int h() {
+      return 9 * this.o.f();
+   }
 
-      private b(Map<fmc<?>, fnw> $$0, fwv $$1) {
-         super(ImmutableList.copyOf($$0.values()), $$1);
-         this.a = $$0;
+   @Override
+   protected boolean e() {
+      return (double)this.o.f() > this.l();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0 / 2.0;
+   }
+
+   private void b(fnq $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(glt.J(), $$1, $$2, $$3, $$4, -16776961);
+   }
+
+   private void k() {
+      double $$0 = this.c();
+      foz.a $$1 = this.o.c((int)($$0 / 9.0));
+      if (this.o.d() <= $$1.a()) {
+         $$0 = (double)(this.o.g() * 9);
+      } else {
+         foz.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
+         if (this.o.d() > $$2.b()) {
+            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
+         }
       }
 
-      public static fow.b a(fmd $$0, fmc<?> $$1, fwv $$2) {
-         return new fow.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
-      }
+      this.a($$0);
+   }
 
-      public static fow.b a(fmd $$0, fmc<?> $$1, @Nullable fmc<?> $$2, fwv $$3) {
-         fnw $$4 = $$1.a($$0);
-         return $$2 == null ? new fow.b(ImmutableMap.of($$1, $$4), $$3) : new fow.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
+   private double l() {
+      return (double)(this.h - this.b()) / 9.0;
+   }
+
+   private void e(double $$0, double $$1) {
+      double $$2 = $$0 - (double)this.D() - (double)this.a();
+      double $$3 = $$1 - (double)this.E() - (double)this.a() + this.c();
+      this.o.a($$2, $$3);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if ($$0) {
+         this.p = ae.c();
       }
    }
 }

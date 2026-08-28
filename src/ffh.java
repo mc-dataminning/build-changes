@@ -1,36 +1,46 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
-
 public class ffh {
-   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
-   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
-   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
-   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
-   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
+   private static final int a = 60;
+   private static final int b = 10;
+   private static final int c = 30;
+   private static final int d = 10;
+   private static final long e = 60000L;
+   private static final long f = 600000L;
+   private final fmi g;
+   private final fme h;
+   private int i;
+   private long j;
 
-   public static void a() {
-      RenderSystem.setupLevelDiffuseLighting(c, d);
+   public ffh(fmi $$0, fme $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$0.h().c();
    }
 
-   public static void b() {
-      RenderSystem.setupLevelDiffuseLighting(a, b);
+   public int a() {
+      fma $$0 = this.g.i().c();
+      if (this.h.aO().j()) {
+         return 10;
+      } else {
+         if ($$0 == fma.b) {
+            long $$1 = ae.c() - this.j;
+            if ($$1 > 600000L) {
+               return 10;
+            }
+
+            if ($$1 > 60000L) {
+               return Math.min(this.i, 30);
+            }
+         }
+
+         return this.h.s != null || this.h.z == null && this.h.aM() == null ? this.i : 60;
+      }
    }
 
-   public static void c() {
-      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   public void a(int $$0) {
+      this.i = $$0;
    }
 
-   public static void d() {
-      RenderSystem.setupGui3DDiffuseLighting(a, b);
-   }
-
-   public static void e() {
-      RenderSystem.setShaderLights(e, f);
-   }
-
-   public static void a(Quaternionf $$0) {
-      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   public void b() {
+      this.j = ae.c();
    }
 }

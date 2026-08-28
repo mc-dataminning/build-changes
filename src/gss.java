@@ -1,21 +1,37 @@
-public class gss extends gqd<cig, gxu, gcb> {
-   private static final alz a = alz.b("textures/entity/cat/ocelot.png");
+public class gss extends gsu<cmv, gzp, gca> {
+   private static final alz a = alz.b("textures/entity/slime/magmacube.png");
 
-   public gss(grj.a $$0) {
-      super($$0, new gcb($$0.a(geg.bE)), new gcb($$0.a(geg.bF)), 0.4F);
+   public gss(gro.a $$0) {
+      super($$0, new gca($$0.a(gel.bu)), 0.25F);
    }
 
-   public alz a(gxu $$0) {
+   protected int a(cmv $$0, jh $$1) {
+      return 15;
+   }
+
+   public alz a(gzp $$0) {
       return a;
    }
 
-   public gxu b() {
-      return new gxu();
+   public gzp b() {
+      return new gzp();
    }
 
-   public void a(cig $$0, gxu $$1, float $$2) {
+   public void a(cmv $$0, gzp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.d = $$0.ci();
-      $$1.e = $$0.cj();
+      $$1.a = bae.h($$2, $$0.bZ, $$0.bY);
+      $$1.b = $$0.gm();
+   }
+
+   public void a(gzp $$0, fgq $$1, glj $$2, int $$3) {
+      this.f = 0.25F * (float)$$0.b;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(gzp $$0, fgq $$1) {
+      int $$2 = $$0.b;
+      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
+      float $$4 = 1.0F / ($$3 + 1.0F);
+      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
    }
 }

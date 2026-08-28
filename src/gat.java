@@ -1,57 +1,50 @@
-import java.util.Set;
+public class gat extends gcf {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final gem e;
+   private final gem f;
+   private final gem g;
+   private final gem h;
+   private final gem i;
+   private final gem j;
 
-public class gat extends gbf<gxf> {
-   public static final String a = "red_thing";
-   public static final geq b = new gag(Set.of("head", "beak", "red_thing"));
-   private final geh c;
-   private final geh d;
-   private final geh e;
-   private final geh f;
-   private final geh g;
-   private final geh i;
-   private final geh j;
-
-   public gat(geh $$0) {
-      super($$0);
-      this.c = $$0.b("head");
-      this.i = $$0.b("beak");
-      this.j = $$0.b("red_thing");
-      this.d = $$0.b("right_leg");
-      this.e = $$0.b("left_leg");
-      this.f = $$0.b("right_wing");
-      this.g = $$0.b("left_wing");
+   public gat(gem $$0) {
+      super($$0, glt::c);
+      this.e = $$0.b("left_lid");
+      this.f = $$0.b("right_lid");
+      this.g = $$0.b("left_pages");
+      this.h = $$0.b("right_pages");
+      this.i = $$0.b("flip_page1");
+      this.j = $$0.b("flip_page2");
    }
 
-   public static gen a() {
-      gep $$0 = new gep();
-      ger $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", gem.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), gej.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", gem.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), gej.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", gem.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), gej.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", gem.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), gej.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gem $$3 = gem.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, gej.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, gej.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", gem.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gej.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", gem.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gej.a(4.0F, 13.0F, 0.0F));
-      return gen.a($$0, 64, 32);
+   public static ges a() {
+      geu $$0 = new geu();
+      gew $$1 = $$0.a();
+      $$1.a("left_lid", ger.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), geo.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", ger.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), geo.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", ger.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), geo.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", ger.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), geo.a);
+      $$1.a("right_pages", ger.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), geo.a);
+      ger $$2 = ger.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, geo.a);
+      $$1.a("flip_page2", $$2, geo.a);
+      return ges.a($$0, 64, 32);
    }
 
-   public void a(gxf $$0) {
-      super.a($$0);
-      float $$1 = (bae.a($$0.a) + 1.0F) * $$0.b;
-      this.c.e = $$0.V * (float) (Math.PI / 180.0);
-      this.c.f = $$0.U * (float) (Math.PI / 180.0);
-      this.i.e = this.c.e;
-      this.i.f = this.c.f;
-      this.j.e = this.c.e;
-      this.j.f = this.c.f;
-      float $$2 = $$0.Y;
-      float $$3 = $$0.X;
-      this.d.e = bae.b($$3 * 0.6662F) * 1.4F * $$2;
-      this.e.e = bae.b($$3 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.f.g = $$1;
-      this.g.g = -$$1;
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (bae.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.e.f = (float) Math.PI + $$4;
+      this.f.f = -$$4;
+      this.g.f = $$4;
+      this.h.f = -$$4;
+      this.i.f = $$4 - $$4 * 2.0F * $$1;
+      this.j.f = $$4 - $$4 * 2.0F * $$2;
+      this.g.b = bae.a($$4);
+      this.h.b = bae.a($$4);
+      this.i.b = bae.a($$4);
+      this.j.b = bae.a($$4);
    }
 }

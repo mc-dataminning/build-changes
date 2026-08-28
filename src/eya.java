@@ -1,156 +1,199 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.EnumSet;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class eya extends exu {
-   public static final MapCodec<eya> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(eya.b.a.listOf().fieldOf("modifiers").forGetter($$0x -> $$0x.b), Codec.BOOL.optionalFieldOf("replace", true).forGetter($$0x -> $$0x.c))
-            )
-            .apply($$0, eya::new)
-   );
-   private final List<eya.b> b;
-   private final boolean c;
+public interface eya {
+   MapCodec<eya> a = a(Integer.MAX_VALUE);
 
-   eya(List<ezs> $$0, List<eya.b> $$1, boolean $$2) {
-      super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
+   static MapCodec<eya> a(int $$0) {
+      return eya.f.e.dispatchMap("mode", eya::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof eya.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
+
+         return DataResult.success($$1);
+      });
    }
 
-   @Override
-   public exw<eya> b() {
-      return exx.o;
+   eya.f a();
+
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
    }
 
-   @Override
-   public Set<eza<?>> a() {
-      return this.b.stream().flatMap($$0 -> $$0.e.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
 
-   @Override
-   public cxk a(cxk $$0, ewh $$1) {
-      if (this.c) {
-         $$0.b(ku.o, this.a($$1, dab.a));
-      } else {
-         $$0.a(ku.o, dab.a, $$1x -> this.a($$1, $$1x));
-      }
+   public static class a implements eya {
+      private static final Logger d = LogUtils.getLogger();
+      public static final eya.a b = new eya.a();
+      public static final MapCodec<eya.a> c = MapCodec.unit(() -> b);
 
-      return $$0;
-   }
-
-   private dab a(ewh $$0, dab $$1) {
-      bam $$2 = $$0.b();
-
-      for (eya.b $$3 : this.b) {
-         bvo $$4 = ae.a($$3.f, $$2);
-         $$1 = $$1.a($$3.c, new bxh($$3.b, (double)$$3.e.b($$0), $$3.d), $$4);
-      }
-
-      return $$1;
-   }
-
-   public static eya.c a(alz $$0, jq<bxe> $$1, bxh.a $$2, fao $$3) {
-      return new eya.c($$0, $$1, $$2, $$3);
-   }
-
-   public static eya.a c() {
-      return new eya.a();
-   }
-
-   public static class a extends exu.a<eya.a> {
-      private final boolean a;
-      private final List<eya.b> b = Lists.newArrayList();
-
-      public a(boolean $$0) {
-         this.a = $$0;
-      }
-
-      public a() {
-         this(false);
-      }
-
-      protected eya.a a() {
-         return this;
-      }
-
-      public eya.a a(eya.c $$0) {
-         this.b.add($$0.a());
-         return this;
+      private a() {
       }
 
       @Override
-      public exv b() {
-         return new eya(this.g(), this.b, this.a);
+      public eya.f a() {
+         return eya.f.d;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
       }
    }
 
-   static record b(alz b, jq<bxe> c, bxh.a d, fao e, List<bvo> f) {
-      private static final Codec<List<bvo>> g = azn.a(
-         Codec.either(bvo.l, bvo.l.listOf())
-            .xmap($$0 -> (List)$$0.map(List::of, Function.identity()), $$0 -> $$0.size() == 1 ? Either.left((bvo)$$0.getFirst()) : Either.right($$0))
-      );
-      public static final Codec<eya.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alz.a.fieldOf("id").forGetter(eya.b::a),
-                  bxe.a.fieldOf("attribute").forGetter(eya.b::b),
-                  bxh.a.f.fieldOf("operation").forGetter(eya.b::c),
-                  fap.a.fieldOf("amount").forGetter(eya.b::d),
-                  g.fieldOf("slot").forGetter(eya.b::e)
-               )
-               .apply($$0, eya.b::new)
+   public static record b(int c) implements eya {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<eya.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(azn.l.optionalFieldOf("offset", 0).forGetter(eya.b::b)).apply($$0, eya.b::new)
       );
 
-      public alz a() {
-         return this.b;
+      @Override
+      public eya.f a() {
+         return eya.f.c;
       }
 
-      public jq<bxe> b() {
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static class c implements eya {
+      public static final eya.c b = new eya.c();
+      public static final MapCodec<eya.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public eya.f a() {
+         return eya.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements eya {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<eya.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(azn.l.optionalFieldOf("offset", 0).forGetter(eya.d::b), azn.l.optionalFieldOf("size").forGetter(eya.d::c)).apply($$0, eya.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public eya.f a() {
+         return eya.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
          return this.c;
       }
 
-      public bxh.a c() {
+      public Optional<Integer> c() {
          return this.d;
-      }
-
-      public fao d() {
-         return this.e;
-      }
-
-      public List<bvo> e() {
-         return this.f;
       }
    }
 
-   public static class c {
-      private final alz a;
-      private final jq<bxe> b;
-      private final bxh.a c;
-      private final fao d;
-      private final Set<bvo> e = EnumSet.noneOf(bvo.class);
-
-      public c(alz $$0, jq<bxe> $$1, bxh.a $$2, fao $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public static record e<T>(List<T> a, eya b) {
+      public static <T> Codec<eya.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), eya.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, eya.e::new)
+         );
       }
 
-      public eya.c a(bvo $$0) {
-         this.e.add($$0);
-         return this;
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements bba {
+      a("replace_all", eya.c.c),
+      b("replace_section", eya.d.b),
+      c("insert", eya.b.b),
+      d("append", eya.a.c);
+
+      public static final Codec<eya.f> e = bba.a(eya.f::values);
+      private final String f;
+      final MapCodec<? extends eya> g;
+
+      private f(final String $$0, final MapCodec<? extends eya> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      public eya.b a() {
-         return new eya.b(this.a, this.b, this.c, this.d, List.copyOf(this.e));
+      public MapCodec<? extends eya> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

@@ -1,25 +1,25 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class cgu {
-   @Nullable
-   public static fbs a(bwj $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = cgx.a($$0, $$1);
-      return cha.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class cgu extends cgi<coz> {
+   @Override
+   public Set<cfj<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cfj.B)));
    }
 
-   @Nullable
-   public static jh a(bwj $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      jh $$8 = cha.a($$0.dY(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         jh $$9 = cha.a($$0, $$1, $$0.dY(), $$8);
-         if (!cgx.a($$9, $$0) && !cgx.a($$7, $$0, $$9)) {
-            $$9 = cha.a($$9, $$0.dV().am(), $$1x -> cgx.c($$0, $$1x));
-            return cgx.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   protected void a(ash $$0, coz $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.aq() == bvq.bS)
+         .or(() -> a($$1, $$0xx -> $$0xx.aq() != bvq.bS))
+         .ifPresentOrElse($$1x -> $$1.eb().a(cfj.B, $$1x), () -> $$1.eb().b(cfj.B));
+   }
+
+   private static Optional<bwf> a(coz $$0, Predicate<bwf> $$1) {
+      return $$0.eb().c(cfj.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
    }
 }

@@ -1,11 +1,11 @@
 import java.util.List;
 
-public record abu(aly<dha> c, enu d, List<abu.a> e) implements abf {
+public record abu(aly<dhh> c, eob d, List<abu.a> e) implements abf {
    public static final zt<ws, abu> a = abf.a(abu::a, abu::new);
    public static final abf.b<abu> b = abf.a("debug/structures");
 
    private abu(ws $$0) {
-      this($$0.a(mb.bd), b($$0), $$0.a(abu.a::new));
+      this($$0.a(mb.be), b($$0), $$0.a(abu.a::new));
    }
 
    private void a(ws $$0) {
@@ -19,11 +19,11 @@ public record abu(aly<dha> c, enu d, List<abu.a> e) implements abf {
       return b;
    }
 
-   static enu b(ws $$0) {
-      return new enu($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static eob b(ws $$0) {
+      return new eob($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(ws $$0, enu $$1) {
+   static void a(ws $$0, eob $$1) {
       $$0.q($$1.h());
       $$0.q($$1.i());
       $$0.q($$1.j());
@@ -32,11 +32,11 @@ public record abu(aly<dha> c, enu d, List<abu.a> e) implements abf {
       $$0.q($$1.m());
    }
 
-   public aly<dha> b() {
+   public aly<dhh> b() {
       return this.c;
    }
 
-   public enu c() {
+   public eob c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record abu(aly<dha> c, enu d, List<abu.a> e) implements abf {
       return this.e;
    }
 
-   public static record a(enu a, boolean b) {
+   public static record a(eob a, boolean b) {
       public a(ws $$0) {
          this(abu.b($$0), $$0.readBoolean());
       }

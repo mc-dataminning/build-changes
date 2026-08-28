@@ -1,153 +1,48 @@
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fsq extends ftw {
+   private static final xv s = xv.c("selectWorld.backupJoinSkipButton");
+   public static final xv a = xv.c("selectWorld.backupJoinConfirmButton");
+   private final Runnable u;
+   protected final fsq.a b;
+   private final xv v;
+   private final boolean w;
+   private fox x = fox.a;
+   final xv c;
+   protected int d;
+   private fof y;
 
-public class fsq extends ftr {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger d = LogUtils.getLogger();
-   private static final long s = 2000L;
-   public static final xv a = xv.c("connect.aborted");
-   public static final xv b = xv.a("disconnect.genericReason", xv.c("disconnect.unknownHost"));
-   @Nullable
-   volatile wp u;
-   @Nullable
-   ChannelFuture v;
-   volatile boolean w;
-   final ftr x;
-   private xv y = xv.c("connect.connecting");
-   private long z = -1L;
-   final xv A;
-
-   private fsq(ftr $$0, xv $$1) {
-      super(flq.a);
-      this.x = $$0;
-      this.A = $$1;
+   public fsq(Runnable $$0, fsq.a $$1, xv $$2, xv $$3, boolean $$4) {
+      this($$0, $$1, $$2, $$3, a, $$4);
    }
 
-   public static void a(ftr $$0, flz $$1, ggv $$2, gfs $$3, boolean $$4, @Nullable gfw $$5) {
-      if ($$1.z instanceof fsq) {
-         d.error("Attempt to connect while already connecting");
-      } else {
-         xv $$6;
-         if ($$5 != null) {
-            $$6 = xu.q;
-         } else if ($$4) {
-            $$6 = gkh.a;
-         } else {
-            $$6 = xu.r;
-         }
-
-         fsq $$9 = new fsq($$0, $$6);
-         if ($$5 != null) {
-            $$9.a(xv.c("connect.transferring"));
-         }
-
-         $$1.y();
-         $$1.aV();
-         $$1.a(ggj.a($$3.b));
-         $$1.bd().a(gki.c.b, $$3.b, $$3.a);
-         $$1.a($$9);
-         $$9.a($$1, $$2, $$3, $$5);
-      }
-   }
-
-   private void a(final flz $$0, final ggv $$1, final gfs $$2, @Nullable final gfw $$3) {
-      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               if (fsq.this.w) {
-                  return;
-               }
-
-               Optional<InetSocketAddress> $$1 = ggx.a.a($$1).map(ggu::d);
-               if (fsq.this.w) {
-                  return;
-               }
-
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new fsy(fsq.this.x, fsq.this.A, fsq.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               wp $$2;
-               synchronized (fsq.this) {
-                  if (fsq.this.w) {
-                     return;
-                  }
-
-                  $$2 = new wp(aad.b);
-                  $$2.a($$0.aQ().n());
-                  fsq.this.v = wp.a($$0, $$0.n.aD(), $$2);
-               }
-
-               fsq.this.v.syncUninterruptibly();
-               synchronized (fsq.this) {
-                  if (fsq.this.w) {
-                     $$2.a(fsq.a);
-                     return;
-                  }
-
-                  fsq.this.u = $$2;
-                  $$0.af().a($$2, a($$2.b()));
-               }
-
-               fsq.this.u
-                  .a($$0.getHostName(), $$0.getPort(), akb.b, akb.d, new gfc(fsq.this.u, $$0, $$2, fsq.this.x, false, null, fsq.this::a, $$3), $$3 != null);
-               fsq.this.u.a(new ake($$0.X().c(), $$0.X().b()));
-            } catch (Exception var9) {
-               if (fsq.this.w) {
-                  return;
-               }
-
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               fsq.d.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new fsy(fsq.this.x, fsq.this.A, xv.a("disconnect.genericReason", $$8))));
-            }
-         }
-
-         private static heh.c a(gfs.a $$0x) {
-            return switch ($$0) {
-               case a -> heh.c.b;
-               case b -> heh.c.c;
-               case c -> heh.c.a;
-            };
-         }
-      };
-      $$4.setUncaughtExceptionHandler(new r(d));
-      $$4.start();
-   }
-
-   private void a(xv $$0) {
-      this.y = $$0;
+   public fsq(Runnable $$0, fsq.a $$1, xv $$2, xv $$3, xv $$4, boolean $$5) {
+      super($$2);
+      this.u = $$0;
+      this.b = $$1;
+      this.v = $$3;
+      this.w = $$5;
+      this.c = $$4;
    }
 
    @Override
-   public void e() {
-      if (this.u != null) {
-         if (this.u.i()) {
-            this.u.b();
-         } else {
-            this.u.n();
-         }
+   protected void aT_() {
+      super.aT_();
+      this.x = fox.a(this.p, this.v, this.n - 50);
+      int $$0 = (this.x.a() + 1) * 9;
+      this.y = fof.a(xv.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
+      if (this.w) {
+         this.c(this.y);
       }
+
+      this.c(fod.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fod.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fod.a(xu.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+   }
+
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      this.x.a($$0, this.n / 2, 70);
    }
 
    @Override
@@ -156,33 +51,16 @@ public class fsq extends ftr {
    }
 
    @Override
-   protected void aT_() {
-      this.c(fny.a(xu.e, $$0 -> {
-         synchronized (this) {
-            this.w = true;
-            if (this.v != null) {
-               this.v.cancel(true);
-               this.v = null;
-            }
-
-            if (this.u != null) {
-               this.u.a(a);
-            }
-         }
-
-         this.m.a(this.x);
-      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.u.run();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ae.c();
-      if ($$4 - this.z > 2000L) {
-         this.z = $$4;
-         this.m.aZ().c(xv.c("narrator.joining"));
-      }
-
-      $$0.a(this.p, this.y, this.n / 2, this.o / 2 - 50, 16777215);
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

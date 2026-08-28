@@ -1,62 +1,33 @@
-public class dbc extends dbb {
-   private final jm b;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dbc(dha $$0, jh $$1, jm $$2, cxk $$3, jm $$4) {
-      super($$0, null, btd.a, $$3, new fbo(fbs.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public record dbc(ju<bum> c) implements dba {
+   public static final MapCodec<dbc> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.a(mb.W).fieldOf("effects").forGetter(dbc::b)).apply($$0, dbc::new));
+   public static final zt<xg, dbc> b = zt.a(zr.c(mb.W), dbc::b, dbc::new);
+
+   public dbc(jq<bum> $$0) {
+      this(ju.a($$0));
    }
 
    @Override
-   public jh a() {
-      return this.j().b();
+   public dba.a<dbc> a() {
+      return dba.a.b;
    }
 
    @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
-   }
+   public boolean a(dhh $$0, cxo $$1, bwf $$2) {
+      boolean $$3 = false;
 
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public jm d() {
-      return jm.a;
-   }
-
-   @Override
-   public jm[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jm[]{jm.a, jm.c, jm.f, jm.d, jm.e, jm.b};
-         case b:
-            return new jm[]{jm.a, jm.b, jm.c, jm.f, jm.d, jm.e};
-         case c:
-            return new jm[]{jm.a, jm.c, jm.f, jm.e, jm.b, jm.d};
-         case d:
-            return new jm[]{jm.a, jm.d, jm.f, jm.e, jm.b, jm.c};
-         case e:
-            return new jm[]{jm.a, jm.e, jm.d, jm.b, jm.c, jm.f};
-         case f:
-            return new jm[]{jm.a, jm.f, jm.d, jm.b, jm.c, jm.e};
+      for (jq<bum> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
       }
+
+      return $$3;
    }
 
-   @Override
-   public jm g() {
-      return this.b.o() == jm.a.b ? jm.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public ju<bum> b() {
+      return this.c;
    }
 }

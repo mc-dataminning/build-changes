@@ -8,51 +8,51 @@ public interface lb {
    Logger a = LogUtils.getLogger();
    lb b = ($$0, $$1) -> $$1;
 
-   cxk dispense(ky var1, cxk var2);
+   cxo dispense(ky var1, cxo var2);
 
    static void a() {
-      dml.a(cxo.oS);
-      dml.a(cxo.wg);
-      dml.a(cxo.wf);
-      dml.a(cxo.rp);
-      dml.a(cxo.ra);
-      dml.a(cxo.uL);
-      dml.a(cxo.we);
-      dml.a(cxo.wh);
-      dml.a(cxo.vk);
-      dml.a(cxo.uM);
-      dml.a(cxo.uN);
+      dms.a(cxs.oS);
+      dms.a(cxs.wg);
+      dms.a(cxs.wf);
+      dms.a(cxs.rp);
+      dms.a(cxs.ra);
+      dms.a(cxs.uL);
+      dms.a(cxs.we);
+      dms.a(cxs.wh);
+      dms.a(cxs.vk);
+      dms.a(cxs.uM);
+      dms.a(cxs.uN);
       la $$0 = new la() {
          @Override
-         public cxk a(ky $$0, cxk $$1) {
-            jm $$2 = $$0.d().c(dml.b);
-            bvm<?> $$3 = ((cyt)$$1.h()).g($$1);
+         public cxo a(ky $$0, cxo $$1) {
+            jm $$2 = $$0.d().c(dms.b);
+            bvq<?> $$3 = ((cyx)$$1.h()).g($$1);
 
             try {
-               $$3.a($$0.b(), $$1, null, $$0.c().a($$2), bvl.o, $$2 != jm.b, false);
+               $$3.a($$0.b(), $$1, null, $$0.c().a($$2), bvp.o, $$2 != jm.b, false);
             } catch (Exception var6) {
                a.error("Error while dispensing spawn egg from dispenser at {}", $$0.c(), var6);
-               return cxk.k;
+               return cxo.k;
             }
 
             $$1.h(1);
-            $$0.b().a(null, ecj.t, $$0.c());
+            $$0.b().a(null, ecq.t, $$0.c());
             return $$1;
          }
       };
 
-      for (cyt $$1 : cyt.b()) {
-         dml.a($$1, $$0);
+      for (cyx $$1 : cyx.b()) {
+         dms.a($$1, $$0);
       }
 
-      dml.a(cxo.vv, new la() {
+      dms.a(cxs.vv, new la() {
          @Override
-         public cxk a(ky $$0, cxk $$1) {
-            jm $$2 = $$0.d().c(dml.b);
+         public cxo a(ky $$0, cxo $$1) {
+            jm $$2 = $$0.d().c(dms.b);
             jh $$3 = $$0.c().a($$2);
             ash $$4 = $$0.b();
-            Consumer<cll> $$5 = bvm.a($$1x -> $$1x.v($$2.p()), $$4, $$1, null);
-            cll $$6 = bvm.f.a($$4, $$5, $$3, bvl.o, false, false);
+            Consumer<clp> $$5 = bvq.a($$1x -> $$1x.v($$2.p()), $$4, $$1, null);
+            clp $$6 = bvq.f.a($$4, $$5, $$3, bvp.o, false, false);
             if ($$6 != null) {
                $$1.h(1);
             }
@@ -60,13 +60,13 @@ public interface lb {
             return $$1;
          }
       });
-      dml.a(cxo.oe, new le() {
+      dms.a(cxs.oe, new le() {
          @Override
-         public cxk a(ky $$0, cxk $$1) {
-            jh $$2 = $$0.c().a($$0.d().c(dml.b));
-            List<bwb> $$3 = $$0.b().a(bwb.class, new fbn($$2), $$0x -> !($$0x instanceof bwr $$1x) ? false : !$$1x.j() && $$1x.f());
+         public cxo a(ky $$0, cxo $$1) {
+            jh $$2 = $$0.c().a($$0.d().c(dms.b));
+            List<bwf> $$3 = $$0.b().a(bwf.class, new fbs($$2), $$0x -> !($$0x instanceof bwv $$1x) ? false : !$$1x.j() && $$1x.f());
             if (!$$3.isEmpty()) {
-               ((bwr)$$3.get(0)).a($$1.a(1), axg.e);
+               ((bwv)$$3.get(0)).a($$1.a(1), axg.e);
                this.a(true);
                return $$1;
             } else {
@@ -74,12 +74,12 @@ public interface lb {
             }
          }
       });
-      dml.a(cxo.eZ, new le() {
+      dms.a(cxs.eZ, new le() {
          @Override
-         public cxk a(ky $$0, cxk $$1) {
-            jh $$2 = $$0.c().a($$0.d().c(dml.b));
+         public cxo a(ky $$0, cxo $$1) {
+            jh $$2 = $$0.c().a($$0.d().c(dms.b));
 
-            for (cjv $$4 : $$0.b().a(cjv.class, new fbn($$2), $$0x -> $$0x.bL() && !$$0x.t())) {
+            for (cjz $$4 : $$0.b().a(cjz.class, new fbs($$2), $$0x -> $$0x.bL() && !$$0x.t())) {
                if ($$4.gD() && $$4.a_(499).a($$1)) {
                   $$1.h(1);
                   this.a(true);
@@ -90,87 +90,87 @@ public interface lb {
             return super.a($$0, $$1);
          }
       });
-      dml.a(cxo.oo, new kz(bvm.aH));
-      dml.a(cxo.oq, new kz(bvm.bp));
-      dml.a(cxo.os, new kz(bvm.m));
-      dml.a(cxo.ou, new kz(bvm.au));
-      dml.a(cxo.oA, new kz(bvm.G));
-      dml.a(cxo.ow, new kz(bvm.a));
-      dml.a(cxo.oy, new kz(bvm.w));
-      dml.a(cxo.oE, new kz(bvm.aB));
-      dml.a(cxo.oC, new kz(bvm.aM));
-      dml.a(cxo.oG, new kz(bvm.j));
-      dml.a(cxo.op, new kz(bvm.aI));
-      dml.a(cxo.or, new kz(bvm.bq));
-      dml.a(cxo.ot, new kz(bvm.n));
-      dml.a(cxo.ov, new kz(bvm.av));
-      dml.a(cxo.oB, new kz(bvm.H));
-      dml.a(cxo.ox, new kz(bvm.b));
-      dml.a(cxo.oz, new kz(bvm.x));
-      dml.a(cxo.oF, new kz(bvm.aC));
-      dml.a(cxo.oD, new kz(bvm.aN));
-      dml.a(cxo.oH, new kz(bvm.i));
+      dms.a(cxs.oo, new kz(bvq.aH));
+      dms.a(cxs.oq, new kz(bvq.bp));
+      dms.a(cxs.os, new kz(bvq.m));
+      dms.a(cxs.ou, new kz(bvq.au));
+      dms.a(cxs.oA, new kz(bvq.G));
+      dms.a(cxs.ow, new kz(bvq.a));
+      dms.a(cxs.oy, new kz(bvq.w));
+      dms.a(cxs.oE, new kz(bvq.aB));
+      dms.a(cxs.oC, new kz(bvq.aM));
+      dms.a(cxs.oG, new kz(bvq.j));
+      dms.a(cxs.op, new kz(bvq.aI));
+      dms.a(cxs.or, new kz(bvq.bq));
+      dms.a(cxs.ot, new kz(bvq.n));
+      dms.a(cxs.ov, new kz(bvq.av));
+      dms.a(cxs.oB, new kz(bvq.H));
+      dms.a(cxs.ox, new kz(bvq.b));
+      dms.a(cxs.oz, new kz(bvq.x));
+      dms.a(cxs.oF, new kz(bvq.aC));
+      dms.a(cxs.oD, new kz(bvq.aN));
+      dms.a(cxs.oH, new kz(bvq.i));
       lb $$2 = new la() {
          private final la c = new la();
 
          @Override
-         public cxk a(ky $$0, cxk $$1) {
-            cwf $$2 = (cwf)$$1.h();
-            jh $$3 = $$0.c().a($$0.d().c(dml.b));
-            dha $$4 = $$0.b();
+         public cxo a(ky $$0, cxo $$1) {
+            cwj $$2 = (cwj)$$1.h();
+            jh $$3 = $$0.c().a($$0.d().c(dms.b));
+            dhh $$4 = $$0.b();
             if ($$2.a(null, $$4, $$3, null)) {
                $$2.a(null, $$4, $$1, $$3);
-               return this.a($$0, $$1, new cxk(cxo.qW));
+               return this.a($$0, $$1, new cxo(cxs.qW));
             } else {
                return this.c.dispense($$0, $$1);
             }
          }
       };
-      dml.a(cxo.qY, $$2);
-      dml.a(cxo.qX, $$2);
-      dml.a(cxo.qZ, $$2);
-      dml.a(cxo.re, $$2);
-      dml.a(cxo.rf, $$2);
-      dml.a(cxo.rd, $$2);
-      dml.a(cxo.rg, $$2);
-      dml.a(cxo.rh, $$2);
-      dml.a(cxo.ri, $$2);
-      dml.a(cxo.qW, new la() {
+      dms.a(cxs.qY, $$2);
+      dms.a(cxs.qX, $$2);
+      dms.a(cxs.qZ, $$2);
+      dms.a(cxs.re, $$2);
+      dms.a(cxs.rf, $$2);
+      dms.a(cxs.rd, $$2);
+      dms.a(cxs.rg, $$2);
+      dms.a(cxs.rh, $$2);
+      dms.a(cxs.ri, $$2);
+      dms.a(cxs.qW, new la() {
          @Override
-         public cxk a(ky $$0, cxk $$1) {
-            dhb $$2 = $$0.b();
-            jh $$3 = $$0.c().a($$0.d().c(dml.b));
-            dxn $$4 = $$2.a_($$3);
-            if ($$4.b() instanceof dkm $$6) {
-               cxk $$7 = $$6.a(null, $$2, $$3, $$4);
+         public cxo a(ky $$0, cxo $$1) {
+            dhi $$2 = $$0.b();
+            jh $$3 = $$0.c().a($$0.d().c(dms.b));
+            dxu $$4 = $$2.a_($$3);
+            if ($$4.b() instanceof dkt $$6) {
+               cxo $$7 = $$6.a(null, $$2, $$3, $$4);
                if ($$7.f()) {
                   return super.a($$0, $$1);
                } else {
-                  $$2.a(null, ecj.y, $$3);
-                  cxg $$8 = $$7.h();
-                  return this.a($$0, $$1, new cxk($$8));
+                  $$2.a(null, ecq.y, $$3);
+                  cxk $$8 = $$7.h();
+                  return this.a($$0, $$1, new cxo($$8));
                }
             } else {
                return super.a($$0, $$1);
             }
          }
       });
-      dml.a(cxo.oO, new le() {
+      dms.a(cxs.oO, new le() {
          @Override
-         protected cxk a(ky $$0, cxk $$1) {
+         protected cxo a(ky $$0, cxo $$1) {
             ash $$2 = $$0.b();
             this.a(true);
-            jm $$3 = $$0.d().c(dml.b);
+            jm $$3 = $$0.d().c(dms.b);
             jh $$4 = $$0.c().a($$3);
-            dxn $$5 = $$2.a_($$4);
-            if (djr.a($$2, $$4, $$3)) {
-               $$2.b($$4, djr.a($$2, $$4));
-               $$2.a(null, ecj.i, $$4);
-            } else if (dkt.i($$5) || dku.h($$5) || dkv.h($$5)) {
-               $$2.b($$4, $$5.b(dyd.r, Boolean.valueOf(true)));
-               $$2.a(null, ecj.c, $$4);
-            } else if ($$5.b() instanceof dsq) {
-               dsq.a($$2, $$4);
+            dxu $$5 = $$2.a_($$4);
+            if (djy.a($$2, $$4, $$3)) {
+               $$2.b($$4, djy.a($$2, $$4));
+               $$2.a(null, ecq.i, $$4);
+            } else if (dla.i($$5) || dlb.h($$5) || dlc.h($$5)) {
+               $$2.b($$4, $$5.b(dyk.r, Boolean.valueOf(true)));
+               $$2.a(null, ecq.c, $$4);
+            } else if ($$5.b() instanceof dsx) {
+               dsx.a($$2, $$4);
                $$2.a($$4, false);
             } else {
                this.a(false);
@@ -184,13 +184,13 @@ public interface lb {
             return $$1;
          }
       });
-      dml.a(cxo.sm, new le() {
+      dms.a(cxs.sm, new le() {
          @Override
-         protected cxk a(ky $$0, cxk $$1) {
+         protected cxo a(ky $$0, cxo $$1) {
             this.a(true);
-            dha $$2 = $$0.b();
-            jh $$3 = $$0.c().a($$0.d().c(dml.b));
-            if (!cvs.a($$1, $$2, $$3) && !cvs.a($$1, $$2, $$3, null)) {
+            dhh $$2 = $$0.b();
+            jh $$3 = $$0.c().a($$0.d().c(dms.b));
+            if (!cvw.a($$1, $$2, $$3) && !cvw.a($$1, $$2, $$3, null)) {
                this.a(false);
             } else if (!$$2.C) {
                $$2.c(1505, $$3, 15);
@@ -199,31 +199,31 @@ public interface lb {
             return $$1;
          }
       });
-      dml.a(dkg.cr, new la() {
+      dms.a(dkn.cr, new la() {
          @Override
-         protected cxk a(ky $$0, cxk $$1) {
-            dha $$2 = $$0.b();
-            jh $$3 = $$0.c().a($$0.d().c(dml.b));
-            clx $$4 = new clx($$2, (double)$$3.u() + 0.5, (double)$$3.v(), (double)$$3.w() + 0.5, null);
+         protected cxo a(ky $$0, cxo $$1) {
+            dhh $$2 = $$0.b();
+            jh $$3 = $$0.c().a($$0.d().c(dms.b));
+            cmb $$4 = new cmb($$2, (double)$$3.u() + 0.5, (double)$$3.v(), (double)$$3.w() + 0.5, null);
             $$2.b($$4);
-            $$2.a(null, $$4.dA(), $$4.dC(), $$4.dG(), axf.zW, axg.e, 1.0F, 1.0F);
-            $$2.a(null, ecj.t, $$3);
+            $$2.a(null, $$4.dA(), $$4.dC(), $$4.dG(), axf.zX, axg.e, 1.0F, 1.0F);
+            $$2.a(null, ecq.t, $$3);
             $$1.h(1);
             return $$1;
          }
       });
-      dml.a(cxo.vc, new le() {
+      dms.a(cxs.vc, new le() {
          @Override
-         protected cxk a(ky $$0, cxk $$1) {
-            dha $$2 = $$0.b();
-            jm $$3 = $$0.d().c(dml.b);
+         protected cxo a(ky $$0, cxo $$1) {
+            dhh $$2 = $$0.b();
+            jm $$3 = $$0.d().c(dms.b);
             jh $$4 = $$0.c().a($$3);
-            if ($$2.u($$4) && dua.b($$2, $$4, $$1)) {
-               $$2.a($$4, dkg.gW.m().b(drj.e, Integer.valueOf(dys.a($$3))), 3);
-               $$2.a(null, ecj.i, $$4);
-               dup $$5 = $$2.c_($$4);
-               if ($$5 instanceof dwe) {
-                  dua.a($$2, $$4, (dwe)$$5);
+            if ($$2.u($$4) && duh.b($$2, $$4, $$1)) {
+               $$2.a($$4, dkn.gW.m().b(drq.e, Integer.valueOf(dyz.a($$3))), 3);
+               $$2.a(null, ecq.i, $$4);
+               duw $$5 = $$2.c_($$4);
+               if ($$5 instanceof dwl) {
+                  duh.a($$2, $$4, (dwl)$$5);
                }
 
                $$1.h(1);
@@ -235,16 +235,16 @@ public interface lb {
             return $$1;
          }
       });
-      dml.a(dkg.er, new le() {
+      dms.a(dkn.er, new le() {
          @Override
-         protected cxk a(ky $$0, cxk $$1) {
-            dha $$2 = $$0.b();
-            jh $$3 = $$0.c().a($$0.d().c(dml.b));
-            dkz $$4 = (dkz)dkg.er;
+         protected cxo a(ky $$0, cxo $$1) {
+            dhh $$2 = $$0.b();
+            jh $$3 = $$0.c().a($$0.d().c(dms.b));
+            dlg $$4 = (dlg)dkn.er;
             if ($$2.u($$3) && $$4.a($$2, $$3)) {
                if (!$$2.C) {
                   $$2.a($$3, $$4.m(), 3);
-                  $$2.a(null, ecj.i, $$3);
+                  $$2.a(null, ecq.i, $$3);
                }
 
                $$1.h(1);
@@ -256,47 +256,47 @@ public interface lb {
             return $$1;
          }
       });
-      dml.a(dkg.lk.j(), new lh());
+      dms.a(dkn.lk.j(), new lh());
 
-      for (cwh $$3 : cwh.values()) {
-         dml.a(drg.a($$3).j(), new lh());
+      for (cwl $$3 : cwl.values()) {
+         dms.a(drn.a($$3).j(), new lh());
       }
 
-      dml.a(cxo.sY.j(), new le() {
-         private cxk b(ky $$0, cxk $$1, cxk $$2) {
-            $$0.b().a(null, ecj.y, $$0.c());
+      dms.a(cxs.sY.j(), new le() {
+         private cxo b(ky $$0, cxo $$1, cxo $$2) {
+            $$0.b().a(null, ecq.y, $$0.c());
             return this.a($$0, $$1, $$2);
          }
 
          @Override
-         public cxk a(ky $$0, cxk $$1) {
+         public cxo a(ky $$0, cxo $$1) {
             this.a(false);
             ash $$2 = $$0.b();
-            jh $$3 = $$0.c().a($$0.d().c(dml.b));
-            dxn $$4 = $$2.a_($$3);
-            if ($$4.a(axu.aJ, $$0x -> $$0x.b(djy.c) && $$0x.b() instanceof djy) && $$4.c(djy.c) >= 5) {
-               ((djy)$$4.b()).a($$2, $$4, $$3, null, dum.b.b);
+            jh $$3 = $$0.c().a($$0.d().c(dms.b));
+            dxu $$4 = $$2.a_($$3);
+            if ($$4.a(axu.aJ, $$0x -> $$0x.b(dkf.c) && $$0x.b() instanceof dkf) && $$4.c(dkf.c) >= 5) {
+               ((dkf)$$4.b()).a($$2, $$4, $$3, null, dut.b.b);
                this.a(true);
-               return this.b($$0, $$1, new cxk(cxo.xt));
+               return this.b($$0, $$1, new cxo(cxs.xt));
             } else if ($$2.b_($$3).a(aya.a)) {
                this.a(true);
-               return this.b($$0, $$1, czj.a(cxo.sZ, czk.a));
+               return this.b($$0, $$1, czn.a(cxs.sZ, czo.a));
             } else {
                return super.a($$0, $$1);
             }
          }
       });
-      dml.a(cxo.fH, new le() {
+      dms.a(cxs.fH, new le() {
          @Override
-         public cxk a(ky $$0, cxk $$1) {
-            jm $$2 = $$0.d().c(dml.b);
+         public cxo a(ky $$0, cxo $$1) {
+            jm $$2 = $$0.d().c(dms.b);
             jh $$3 = $$0.c().a($$2);
-            dha $$4 = $$0.b();
-            dxn $$5 = $$4.a_($$3);
+            dhh $$4 = $$0.b();
+            dxu $$5 = $$4.a_($$3);
             this.a(true);
-            if ($$5.a(dkg.pG)) {
-               if ($$5.c(dqp.d) != 4) {
-                  dqp.a(null, $$4, $$3, $$5);
+            if ($$5.a(dkn.pG)) {
+               if ($$5.c(dqw.d) != 4) {
+                  dqw.a(null, $$4, $$3, $$5);
                   $$1.h(1);
                } else {
                   this.a(false);
@@ -308,18 +308,18 @@ public interface lb {
             }
          }
       });
-      dml.a(cxo.sJ.j(), new lg());
-      dml.a(cxo.yl.j(), new le() {
+      dms.a(cxs.sJ.j(), new lg());
+      dms.a(cxs.yl.j(), new le() {
          @Override
-         protected cxk a(ky $$0, cxk $$1) {
+         protected cxo a(ky $$0, cxo $$1) {
             ash $$2 = $$0.b();
-            jh $$3 = $$0.c().a($$0.d().c(dml.b));
-            List<cjb> $$4 = $$2.a(cjb.class, new fbn($$3), bvk.f);
+            jh $$3 = $$0.c().a($$0.d().c(dms.b));
+            List<cjf> $$4 = $$2.a(cjf.class, new fbs($$3), bvo.f);
             if ($$4.isEmpty()) {
                this.a(false);
                return $$1;
             } else {
-               for (cjb $$5 : $$4) {
+               for (cjf $$5 : $$4) {
                   if ($$5.gq()) {
                      $$1.a(16, $$2, null, $$0x -> {
                      });
@@ -332,13 +332,13 @@ public interface lb {
             }
          }
       });
-      dml.a(cxo.xq, new le() {
+      dms.a(cxs.xq, new le() {
          @Override
-         public cxk a(ky $$0, cxk $$1) {
-            jh $$2 = $$0.c().a($$0.d().c(dml.b));
-            dha $$3 = $$0.b();
-            dxn $$4 = $$3.a_($$2);
-            Optional<dxn> $$5 = cxb.a($$4);
+         public cxo a(ky $$0, cxo $$1) {
+            jh $$2 = $$0.c().a($$0.d().c(dms.b));
+            dhh $$3 = $$0.b();
+            dxu $$4 = $$3.a_($$2);
+            Optional<dxu> $$5 = cxf.a($$4);
             if ($$5.isPresent()) {
                $$3.b($$2, $$5.get());
                $$3.c(3003, $$2, 0);
@@ -350,18 +350,18 @@ public interface lb {
             }
          }
       });
-      dml.a(cxo.sZ, new la() {
+      dms.a(cxs.sZ, new la() {
          private final la c = new la();
 
          @Override
-         public cxk a(ky $$0, cxk $$1) {
-            czj $$2 = $$1.a(ku.Q, czj.a);
-            if (!$$2.a(czk.a)) {
+         public cxo a(ky $$0, cxo $$1) {
+            czn $$2 = $$1.a(ku.Q, czn.a);
+            if (!$$2.a(czo.a)) {
                return this.c.dispense($$0, $$1);
             } else {
                ash $$3 = $$0.b();
                jh $$4 = $$0.c();
-               jh $$5 = $$0.c().a($$0.d().c(dml.b));
+               jh $$5 = $$0.c().a($$0.d().c(dms.b));
                if (!$$3.a_($$5).a(axu.cl)) {
                   return this.c.dispense($$0, $$1);
                } else {
@@ -372,18 +372,18 @@ public interface lb {
                   }
 
                   $$3.a(null, $$4, axf.cB, axg.e, 1.0F, 1.0F);
-                  $$3.a(null, ecj.z, $$4);
-                  $$3.b($$5, dkg.td.m());
-                  return this.a($$0, $$1, new cxk(cxo.sY));
+                  $$3.a(null, ecq.z, $$4);
+                  $$3.b($$5, dkn.td.m());
+                  return this.a($$0, $$1, new cxo(cxs.sY));
                }
             }
          }
       });
-      dml.a(cxo.of, new ld(bvm.aE));
-      dml.a(cxo.og, new ld(bvm.y));
-      dml.a(cxo.oh, new ld(bvm.ad));
-      dml.a(cxo.oi, new ld(bvm.bx));
-      dml.a(cxo.oj, new ld(bvm.al));
-      dml.a(cxo.vC, new ld(bvm.B));
+      dms.a(cxs.of, new ld(bvq.aE));
+      dms.a(cxs.og, new ld(bvq.y));
+      dms.a(cxs.oh, new ld(bvq.ad));
+      dms.a(cxs.oi, new ld(bvq.bx));
+      dms.a(cxs.oj, new ld(bvq.al));
+      dms.a(cxs.vC, new ld(bvq.B));
    }
 }

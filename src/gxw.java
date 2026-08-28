@@ -1,3 +1,3 @@
-public class gxw extends gxo {
-   public fbs a = fbs.c;
+public class gxw extends gyk {
+   public boolean a;
 }

@@ -1,20 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public class eri extends ery {
-   public static final MapCodec<eri> a = dxn.a.fieldOf("block_state").xmap(eri::new, $$0 -> $$0.b);
-   private final dxn b;
+public class eri extends esf {
+   public static final MapCodec<eri> a = MapCodec.unit(() -> eri.b);
+   public static final eri b = new eri();
 
-   public eri(dxn $$0) {
-      this.b = $$0;
+   private eri() {
    }
 
    @Override
-   public boolean a(dxn $$0, bam $$1) {
-      return $$0 == this.b;
+   public boolean a(dxu $$0, bam $$1) {
+      return true;
    }
 
    @Override
-   protected erz<?> a() {
-      return erz.c;
+   protected esg<?> a() {
+      return esg.a;
    }
 }

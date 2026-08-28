@@ -1,109 +1,54 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class due extends dup implements bth {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 6;
-   private static final String c = "patterns";
-   @Nullable
-   private xv d;
-   private cwh e;
-   private dug f = dug.a;
+public class due extends djz {
+   public static final MapCodec<due> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dyj.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, due::new)
+   );
+   public static final dyt f = dyk.aU;
+   private final int g;
 
-   public due(jh $$0, dxn $$1) {
-      super(dur.u, $$0, $$1);
-      this.e = ((div)$$1.b()).b();
+   @Override
+   public MapCodec<due> a() {
+      return e;
    }
 
-   public due(jh $$0, dxn $$1, cwh $$2) {
-      this($$0, $$1);
-      this.e = $$2;
-   }
-
-   public void a(cxk $$0, cwh $$1) {
-      this.e = $$1;
-      this.a($$0);
+   protected due(int $$0, dyj $$1, dxt.d $$2) {
+      super($$2, $$1);
+      this.l(this.F.b().b(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
    @Override
-   public xv al() {
-      return (xv)(this.d != null ? this.d : xv.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public xv an() {
-      return this.d;
-   }
-
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f.equals(dug.a)) {
-         $$0.a("patterns", (vu)dug.b.encodeStart($$1.a(vl.a), this.f).getOrThrow());
-      }
-
-      if (this.d != null) {
-         $$0.a("CustomName", xv.a.a(this.d, $$1));
+   protected int b(dhh $$0, jh $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), bvj.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return bae.f($$3 * 15.0F);
+      } else {
+         return 0;
       }
    }
 
    @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.d = a($$0.l("CustomName"), $$1);
-      }
-
-      if ($$0.e("patterns")) {
-         dug.b
-            .parse($$1.a(vl.a), $$0.c("patterns"))
-            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
-            .ifPresent($$0x -> this.f = $$0x);
-      }
-   }
-
-   public acy a() {
-      return acy.a(this);
+   protected int h(dxu $$0) {
+      return $$0.c(f);
    }
 
    @Override
-   public ux a(js.a $$0) {
-      return this.d($$0);
-   }
-
-   public dug b() {
-      return this.f;
-   }
-
-   public cxk c() {
-      cxk $$0 = new cxk(djj.a(this.e));
-      $$0.b(this.r());
-      return $$0;
-   }
-
-   public cwh f() {
-      return this.e;
+   protected dxu a(dxu $$0, int $$1) {
+      return $$0.b(f, Integer.valueOf($$1));
    }
 
    @Override
-   protected void a(dup.b $$0) {
-      super.a($$0);
-      this.f = $$0.a(ku.ai, dug.a);
-      this.d = $$0.a(ku.g);
+   protected int b() {
+      return 10;
    }
 
    @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      $$0.a(ku.ai, this.f);
-      $$0.a(ku.g, this.d);
-   }
-
-   @Override
-   public void a(ux $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(f);
    }
 }

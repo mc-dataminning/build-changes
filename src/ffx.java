@@ -1,11 +1,8 @@
-public interface ffx<T> {
-   ffx<?> a = () -> {
-      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
-   };
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static <T> ffx<T> a() {
-      return (ffx<T>)a;
-   }
-
-   T get();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fdz
+@fdy
+interface ffx {
 }

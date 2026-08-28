@@ -1,31 +1,29 @@
-public class hex extends hek {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final ckj p;
+public class hex extends hep {
+   private final bvj n;
 
-   public hex(ckj $$0) {
-      super(axf.yS, axg.g, hfb.t());
-      this.p = $$0;
-      this.k = hfb.a.b;
-      this.i = false;
-      this.j = 0;
+   public hex(axe $$0, axg $$1, float $$2, float $$3, bvj $$4, long $$5) {
+      super($$0, $$1, bam.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dA());
+      this.g = (double)((float)this.n.dC());
+      this.h = (double)((float)this.n.dG());
    }
 
    @Override
    public boolean s() {
-      return !this.p.bb();
+      return !this.n.bb();
    }
 
    @Override
    public void q() {
-      if (!this.p.dQ() && this.p.O_() == null && this.p.gn()) {
-         this.f = (double)((float)this.p.dA());
-         this.g = (double)((float)this.p.dC());
-         this.h = (double)((float)this.p.dG());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
+      if (this.n.dQ()) {
          this.n();
+      } else {
+         this.f = (double)((float)this.n.dA());
+         this.g = (double)((float)this.n.dC());
+         this.h = (double)((float)this.n.dG());
       }
    }
 }

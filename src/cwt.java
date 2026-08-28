@@ -1,31 +1,28 @@
-public class cwt extends cxg {
-   public cwt(cxg.a $$0) {
+public class cwt extends cxk implements cyj {
+   public cwt(cxk.a $$0) {
       super($$0);
    }
 
    @Override
-   public bte a(dha $$0, cps $$1, btd $$2) {
-      cxk $$3 = $$1.b($$2);
-      if ($$1.cv != null) {
-         if (!$$0.C) {
-            int $$4 = $$1.cv.a($$3);
-            $$3.a($$4, $$1, bwb.d($$2));
-         }
-
-         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.jp, axg.g, 1.0F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-         $$1.a(ecj.C);
-      } else {
-         $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.jr, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-         if ($$0 instanceof ash $$5) {
-            int $$6 = (int)(ddt.b($$5, $$3, $$1) * 20.0F);
-            int $$7 = ddt.a($$5, $$3, $$1);
-            cql.a(new cqh($$1, $$0, $$7, $$6, $$3), $$5, $$3);
-         }
-
-         $$1.b(axp.c.b(this));
-         $$1.a(ecj.D);
+   public bti a(dhh $$0, cpw $$1, bth $$2) {
+      cxo $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.ja, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ash $$4) {
+         cqp.a(cra::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
       }
 
-      return bte.a;
+      $$1.b(axp.c.b(this));
+      $$3.a(1, $$1);
+      return bti.a;
+   }
+
+   @Override
+   public cqp a(dhh $$0, ka $$1, cxo $$2, jm $$3) {
+      return new cra($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   }
+
+   @Override
+   public cyj.a b() {
+      return cyj.a.a().a(cyj.a.a.c() * 0.5F).b(cyj.a.a.d() * 1.25F).a();
    }
 }

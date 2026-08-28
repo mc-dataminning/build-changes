@@ -1,11 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public interface dez {
-   Codec<dez> a = ma.ax.q().dispatch(dez::a, Function.identity());
+public record dez(alz d) implements dep {
+   private static final Logger e = LogUtils.getLogger();
+   public static final MapCodec<dez> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alz.a.fieldOf("function").forGetter(dez::b)).apply($$0, dez::new));
 
-   void a(cxk var1, ddx.a var2, bam var3, btc var4);
+   @Override
+   public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
+      MinecraftServer $$5 = $$0.p();
+      amo $$6 = $$5.aE();
+      Optional<ik<ew>> $$7 = $$6.a(this.d);
+      if ($$7.isPresent()) {
+         ew $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bU());
+         $$6.a($$7.get(), $$8);
+      } else {
+         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
+      }
+   }
 
-   MapCodec<? extends dez> a();
+   @Override
+   public MapCodec<dez> a() {
+      return a;
+   }
+
+   public alz b() {
+      return this.d;
+   }
 }

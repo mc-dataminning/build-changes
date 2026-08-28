@@ -1,25 +1,51 @@
-public abstract class gvy<S extends gxo, M extends gbf<? super S>> {
-   private final gtg<S, M> a;
+public class gvy extends gwd<gyw, gba> {
+   private final gmm a;
 
-   public gvy(gtg<S, M> $$0) {
-      this.a = $$0;
+   public gvy(gtl<gyw, gba> $$0, gmm $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected static <S extends gym> void a(gbf<S> $$0, alz $$1, fgl $$2, gle $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.u) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(fgq $$0, glj $$1, int $$2, gyw $$3, float $$4, float $$5) {
+      if (!$$3.ae) {
+         boolean $$6 = $$3.aj && $$3.u;
+         if (!$$3.u || $$6) {
+            dxu $$7 = $$3.a.a();
+            int $$8 = gsp.a($$3, 0.0F);
+            hdl $$9 = this.a.a($$7);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            this.d().b().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+         }
       }
    }
 
-   protected static void b(gbf<?> $$0, alz $$1, fgl $$2, gle $$3, int $$4, gym $$5, int $$6) {
-      fgp $$7 = $$3.getBuffer(glo.f($$1));
-      $$0.a($$2, $$7, $$4, gsk.a($$5, 0.0F), $$6);
+   private void a(fgq $$0, glj $$1, int $$2, boolean $$3, dxu $$4, int $$5, hdl $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(glt.r(hbi.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
-
-   public M d() {
-      return this.a.c();
-   }
-
-   public abstract void a(fgl var1, gle var2, int var3, S var4, float var5, float var6);
 }

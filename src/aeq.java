@@ -1,10 +1,10 @@
 public class aeq implements aac<acr> {
    public static final zt<xg, aeq> a = zt.a(zr.w, aeq::b, zr.a(mb.V), aeq::e, xx.d, aeq::f, aeq::new);
    private final int b;
-   private final cug<?> c;
+   private final cuk<?> c;
    private final xv d;
 
-   public aeq(int $$0, cug<?> $$1, xv $$2) {
+   public aeq(int $$0, cuk<?> $$1, xv $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -23,7 +23,7 @@ public class aeq implements aac<acr> {
       return this.b;
    }
 
-   public cug<?> e() {
+   public cuk<?> e() {
       return this.c;
    }
 

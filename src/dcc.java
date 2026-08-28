@@ -1,80 +1,92 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
 public class dcc {
-   private final dcc.a[] a;
-   private WeakReference<dcf> b = new WeakReference<>(null);
+   public static final dcc a = new dcc(List.of(), List.of(), List.of());
+   private final List<dbz> b;
+   private final List<cqa.a<jq<cxk>>> c;
+   private final List<Optional<dcc.a>> d;
 
-   public dcc(int $$0) {
-      this.a = new dcc.a[$$0];
+   private dcc(List<dbz> $$0, List<cqa.a<jq<cxk>>> $$1, List<Optional<dcc.a>> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public Optional<dcd<dbp>> a(ash $$0, dbo $$1) {
-      if ($$1.b()) {
-         return Optional.empty();
+   public static cqa.a<jq<cxk>> a(dbz $$0) {
+      return cqb.a($$0.a().stream());
+   }
+
+   public static dcc b(dbz $$0) {
+      if ($$0.a().isEmpty()) {
+         return a;
       } else {
-         this.a($$0);
-
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            dcc.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1)) {
-               this.a($$2);
-               return Optional.ofNullable($$3.d());
-            }
-         }
-
-         return this.a($$1, $$0);
+         cqa.a<jq<cxk>> $$1 = a($$0);
+         dcc.a $$2 = new dcc.a(0);
+         return new dcc(List.of($$0), List.of($$1), List.of(Optional.of($$2)));
       }
    }
 
-   private void a(ash $$0) {
-      dcf $$1 = $$0.s();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
-   }
+   public static dcc a(List<Optional<dbz>> $$0) {
+      int $$1 = $$0.size();
+      List<dbz> $$2 = new ArrayList<>($$1);
+      List<cqa.a<jq<cxk>>> $$3 = new ArrayList<>($$1);
+      List<Optional<dcc.a>> $$4 = new ArrayList<>($$1);
+      int $$5 = 0;
 
-   private Optional<dcd<dbp>> a(dbo $$0, ash $$1) {
-      Optional<dcd<dbp>> $$2 = $$1.s().a(dcj.a, $$0, $$1);
-      this.a($$0, $$2.orElse(null));
-      return $$2;
-   }
-
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         dcc.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(dbo $$0, @Nullable dcd<dbp> $$1) {
-      jz<cxk> $$2 = jz.a($$0.a(), cxk.k);
-
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         $$2.set($$3, $$0.a($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new dcc.a($$2, $$0.f(), $$0.g(), $$1);
-   }
-
-   static record a(jz<cxk> a, int b, int c, @Nullable dcd<dbp> d) {
-      public boolean a(dbo $$0) {
-         if (this.b == $$0.f() && this.c == $$0.g()) {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!cxk.c(this.a.get($$1), $$0.a($$1))) {
-                  return false;
-               }
+      for (Optional<dbz> $$6 : $$0) {
+         if ($$6.isPresent()) {
+            dbz $$7 = $$6.get();
+            if ($$7.a().isEmpty()) {
+               return a;
             }
 
-            return true;
+            $$2.add($$7);
+            $$3.add(a($$7));
+            $$4.add(Optional.of(new dcc.a($$5++)));
          } else {
-            return false;
+            $$4.add(Optional.empty());
          }
       }
+
+      return new dcc($$2, $$3, $$4);
+   }
+
+   public static dcc b(List<dbz> $$0) {
+      int $$1 = $$0.size();
+      List<cqa.a<jq<cxk>>> $$2 = new ArrayList<>($$1);
+      List<Optional<dcc.a>> $$3 = new ArrayList<>($$1);
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         dbz $$5 = $$0.get($$4);
+         if ($$5.a().isEmpty()) {
+            return a;
+         }
+
+         $$2.add(a($$5));
+         $$3.add(Optional.of(new dcc.a($$4)));
+      }
+
+      return new dcc($$0, $$2, $$3);
+   }
+
+   public List<Optional<dcc.a>> a() {
+      return this.d;
+   }
+
+   public List<dbz> b() {
+      return this.b;
+   }
+
+   public List<cqa.a<jq<cxk>>> c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d.isEmpty();
+   }
+
+   public static record a(int a) {
    }
 }

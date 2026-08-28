@@ -1,80 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class gip extends gjq {
+   gip(gfi $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, bae.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, bae.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, bae.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
+   }
 
-public interface gip {
-   gip a = new gip() {
-      @Override
-      public fgg a(fgn $$0, hbf $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gko.c);
-         RenderSystem.setShaderTexture(0, hbd.d);
-         return $$0.a(fgq.c.h, fgj.d);
-      }
+   @Override
+   public giu b() {
+      return giu.b;
+   }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   gip b = new gip() {
-      @Override
-      public fgg a(fgn $$0, hbf $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gko.c);
-         RenderSystem.setShaderTexture(0, hbd.e);
-         return $$0.a(fgq.c.h, fgj.d);
-      }
+   @Override
+   public float b(float $$0) {
+      return this.D * bae.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   gip c = new gip() {
-      @Override
-      public fgg a(fgn $$0, hbf $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(gko.c);
-         RenderSystem.setShaderTexture(0, hbd.e);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         return $$0.a(fgq.c.h, fgj.d);
+   public static class a implements git<lw> {
+      private final gjl a;
+
+      public a(gjl $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
+      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gip $$8 = new gip($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
       }
-   };
-   gip d = new gip() {
-      @Override
-      public fgg a(fgn $$0, hbf $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-         return $$0.a(fgq.c.h, fgj.d);
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   gip e = new gip() {
-      @Nullable
-      @Override
-      public fgg a(fgn $$0, hbf $$1) {
-         return null;
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   @Nullable
-   fgg a(fgn var1, hbf var2);
+   }
 }

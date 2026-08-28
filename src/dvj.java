@@ -1,93 +1,82 @@
-public class dvj extends dvx {
-   public static final int d = 9;
-   private jz<cxk> e = jz.a(9, cxk.k);
+import java.util.List;
 
-   protected dvj(dur<?> $$0, jh $$1, dxn $$2) {
-      super($$0, $$1, $$2);
+public abstract class dvj {
+   private static final int a = 5;
+   private int b;
+   private double c;
+
+   protected abstract void a(dhh var1, jh var2, dxu var3);
+
+   protected abstract void b(dhh var1, jh var2, dxu var3);
+
+   protected abstract void a(dhh var1, jh var2, dxu var3, int var4, int var5);
+
+   protected abstract boolean a(cpw var1);
+
+   public void a(cpw $$0, dhh $$1, jh $$2, dxu $$3) {
+      int $$4 = this.b++;
+      if ($$4 == 0) {
+         this.a($$1, $$2, $$3);
+         $$1.a($$0, ecq.k, $$2);
+         d($$1, $$2, $$3);
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
+      this.c = Math.max($$0.gH(), this.c);
    }
 
-   public dvj(jh $$0, dxn $$1) {
-      this(dur.f, $$0, $$1);
+   public void b(cpw $$0, dhh $$1, jh $$2, dxu $$3) {
+      int $$4 = this.b--;
+      if (this.b == 0) {
+         this.b($$1, $$2, $$3);
+         $$1.a($$0, ecq.j, $$2);
+         this.c = 0.0;
+      }
+
+      this.a($$1, $$2, $$3, $$4, this.b);
    }
 
-   @Override
-   public int b() {
-      return 9;
+   private List<cpw> a(dhh $$0, jh $$1) {
+      double $$2 = this.c + 4.0;
+      fbs $$3 = new fbs($$1).g($$2);
+      return $$0.a(ece.a(cpw.class), $$3, this::a);
    }
 
-   public int a(bam $$0) {
-      this.d_(null);
-      int $$1 = -1;
-      int $$2 = 1;
+   public void c(dhh $$0, jh $$1, dxu $$2) {
+      List<cpw> $$3 = this.a($$0, $$1);
+      this.c = 0.0;
 
-      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
-         if (!this.e.get($$3).f() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
+      for (cpw $$4 : $$3) {
+         this.c = Math.max($$4.gH(), this.c);
+      }
+
+      int $$5 = $$3.size();
+      int $$6 = this.b;
+      if ($$6 != $$5) {
+         boolean $$7 = $$5 != 0;
+         boolean $$8 = $$6 != 0;
+         if ($$7 && !$$8) {
+            this.a($$0, $$1, $$2);
+            $$0.a(null, ecq.k, $$1);
+         } else if (!$$7) {
+            this.b($$0, $$1, $$2);
+            $$0.a(null, ecq.j, $$1);
          }
+
+         this.b = $$5;
       }
 
-      return $$1;
-   }
-
-   public cxk b(cxk $$0) {
-      int $$1 = this.e_($$0);
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         cxk $$3 = this.e.get($$2);
-         if ($$3.f() || cxk.c($$0, $$3)) {
-            int $$4 = Math.min($$0.L(), $$1 - $$3.L());
-            if ($$4 > 0) {
-               if ($$3.f()) {
-                  this.a($$2, $$0.a($$4));
-               } else {
-                  $$0.h($$4);
-                  $$3.g($$4);
-               }
-            }
-
-            if ($$0.f()) {
-               break;
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   @Override
-   protected xv j() {
-      return xv.c("container.dispenser");
-   }
-
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.e = jz.a(this.b(), cxk.k);
-      if (!this.b_($$0)) {
-         bsy.b($$0, this.e, $$1);
+      this.a($$0, $$1, $$2, $$6, $$5);
+      if ($$5 > 0) {
+         d($$0, $$1, $$2);
       }
    }
 
-   @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsy.a($$0, this.e, $$1);
-      }
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected jz<cxk> f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(jz<cxk> $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected csx a(int $$0, cpr $$1) {
-      return new cts($$0, $$1, this);
+   private static void d(dhh $$0, jh $$1, dxu $$2) {
+      $$0.a($$1, $$2.b(), 5);
    }
 }

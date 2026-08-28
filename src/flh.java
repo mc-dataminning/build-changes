@@ -1,30 +1,59 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum flh implements bah {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public abstract class flh extends fld {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final xv d;
+   private final Runnable e;
 
-   private static final IntFunction<flh> d = ayv.a(flh::b, values(), ayv.a.b);
-   private final int e;
-   private final String f;
+   public flh(long $$0, xv $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private flh(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected abstract void a(fhg var1, long var2) throws fjc;
+
+   @Override
+   public void run() {
+      fhg $$0 = fhg.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (fjd var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
+      }
    }
 
    @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String a() {
-      return this.f;
-   }
-
-   public static flh a(int $$0) {
-      return d.apply($$0);
+   public xv a() {
+      return this.d;
    }
 }

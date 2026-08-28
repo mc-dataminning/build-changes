@@ -1,135 +1,182 @@
 import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fkd extends hhp {
-   static final Logger a = LogUtils.getLogger();
-   private static final xv b = xv.c("mco.configure.world.subscription.title");
-   private static final xv c = xv.c("mco.configure.world.subscription.start");
-   private static final xv C = xv.c("mco.configure.world.subscription.timeleft");
-   private static final xv D = xv.c("mco.configure.world.subscription.recurring.daysleft");
-   private static final xv E = xv.c("mco.configure.world.subscription.expired");
-   private static final xv F = xv.c("mco.configure.world.subscription.less_than_a_day");
-   private static final xv G = xv.c("mco.configure.world.subscription.unknown");
-   private static final xv H = xv.c("mco.configure.world.subscription.recurring.info");
-   private final ftr I;
-   final fic J;
-   final ftr K;
-   private xv L = G;
-   private xv M = G;
+public class fkd extends hhu {
+   static final Logger c = LogUtils.getLogger();
+   private static final xv C = xv.c("mco.selectServer.create");
+   private static final xv D = xv.c("mco.selectServer.create.subtitle");
+   private static final xv E = xv.c("mco.configure.world.switch.slot");
+   private static final xv F = xv.c("mco.configure.world.switch.slot.subtitle");
+   private static final xv G = xv.c("mco.reset.world.generate");
+   private static final xv H = xv.c("mco.reset.world.title");
+   private static final xv I = xv.c("mco.reset.world.warning");
+   public static final xv a = xv.c("mco.create.world.reset.title");
+   private static final xv J = xv.c("mco.reset.world.resetting.screen.title");
+   private static final xv K = xv.c("mco.reset.world.template");
+   private static final xv L = xv.c("mco.reset.world.adventure");
+   private static final xv M = xv.c("mco.reset.world.experience");
+   private static final xv N = xv.c("mco.reset.world.inspiration");
+   private final ftw O;
+   private final fih P;
+   private final xv Q;
+   private final int R;
+   private final xv S;
+   private static final alz T = alz.b("textures/gui/realms/upload.png");
+   private static final alz U = alz.b("textures/gui/realms/adventure.png");
+   private static final alz V = alz.b("textures/gui/realms/survival_spawn.png");
+   private static final alz W = alz.b("textures/gui/realms/new_world.png");
+   private static final alz X = alz.b("textures/gui/realms/experience.png");
+   private static final alz Y = alz.b("textures/gui/realms/inspiration.png");
+   fiy Z;
+   fiy aa;
+   fiy ab;
+   fiy ac;
+   public final int b;
    @Nullable
-   private fio.a N;
+   private final flf ad;
+   private final Runnable ae;
+   private final frs af = new frs(this);
 
-   public fkd(ftr $$0, fic $$1, ftr $$2) {
-      super(flq.a);
-      this.I = $$0;
-      this.J = $$1;
-      this.K = $$2;
+   private fkd(ftw $$0, fih $$1, int $$2, xv $$3, xv $$4, int $$5, xv $$6, Runnable $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
+   }
+
+   public fkd(ftw $$0, fih $$1, int $$2, xv $$3, xv $$4, int $$5, xv $$6, @Nullable flf $$7, Runnable $$8) {
+      super($$3);
+      this.O = $$0;
+      this.P = $$1;
+      this.b = $$2;
+      this.Q = $$4;
+      this.R = $$5;
+      this.S = $$6;
+      this.ad = $$7;
+      this.ae = $$8;
+   }
+
+   public static fkd a(ftw $$0, fih $$1, flf $$2, Runnable $$3) {
+      return new fkd($$0, $$1, $$1.p, C, D, -6250336, a, $$2, $$3);
+   }
+
+   public static fkd a(ftw $$0, int $$1, fih $$2, Runnable $$3) {
+      return new fkd($$0, $$2, $$1, E, F, -6250336, a, $$3);
+   }
+
+   public static fkd a(ftw $$0, fih $$1, Runnable $$2) {
+      return new fkd($$0, $$1, $$1.p, H, I, -65536, J, $$2);
    }
 
    @Override
    public void aT_() {
-      this.a(this.J.a);
-      this.c(fny.a(xv.c("mco.configure.world.subscription.extend"), $$0 -> fso.a(this, aza.a(this.J.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
-      if (this.J.j) {
-         this.c(
-            fny.a(xv.c("mco.configure.world.delete.button"), $$0 -> this.m.a(fjx.b(this, xv.c("mco.configure.world.delete.question.line1"), $$0x -> this.E())))
-               .a(this.n / 2 - 100, g(10), 200, 20)
-               .a()
-         );
-      } else if (fgw.b() && this.J.u != null) {
-         this.c(new foi(this.n / 2 - 100, g(8), 200, 46, xv.a("mco.snapshot.subscription.info", this.J.u), this.p));
-      } else {
-         this.c(new foi(this.n / 2 - 100, g(8), 200, 46, H, this.p));
-      }
+      frw $$0 = this.af.a(frw.d());
+      $$0.c().a(9 / 3);
+      $$0.a(new fpl(this.l, this.p), frv::b);
+      $$0.a(new fpl(this.Q, this.p).b(this.R), frv::b);
+      (new Thread("Realms-reset-world-fetcher") {
+         @Override
+         public void run() {
+            fhg $$0 = fhg.a();
 
-      this.c(fny.a(xu.k, $$0 -> this.aP_()).a(this.n / 2 - 100, g(12), 200, 20).a());
+            try {
+               fiy $$1 = $$0.a(1, 10, fih.d.a);
+               fiy $$2 = $$0.a(1, 10, fih.d.c);
+               fiy $$3 = $$0.a(1, 10, fih.d.d);
+               fiy $$4 = $$0.a(1, 10, fih.d.e);
+               fkd.this.m.execute(() -> {
+                  fkd.this.Z = $$1;
+                  fkd.this.aa = $$2;
+                  fkd.this.ab = $$3;
+                  fkd.this.ac = $$4;
+               });
+            } catch (fjc var6) {
+               fkd.c.error("Couldn't fetch templates in reset world", var6);
+            }
+         }
+      }).start();
+      frr $$1 = this.af.c(new frr());
+      frr.b $$2 = $$1.d(3);
+      $$2.c().f(16);
+      $$2.a(new fkd.a(this.m.h, G, W, $$0x -> fhm.a(this.m, this.O, this, this.b, this.P, this.ad)));
+      $$2.a(new fkd.a(this.m.h, fke.a, T, $$0x -> this.m.a(new fke(this.ad, this.P.a, this.b, this))));
+      $$2.a(new fkd.a(this.m.h, K, V, $$0x -> this.m.a(new fkf(K, this::a, fih.d.a, this.Z))));
+      $$2.a(frx.b(16), 3);
+      $$2.a(new fkd.a(this.m.h, L, U, $$0x -> this.m.a(new fkf(L, this::a, fih.d.c, this.aa))));
+      $$2.a(new fkd.a(this.m.h, M, X, $$0x -> this.m.a(new fkf(M, this::a, fih.d.d, this.ab))));
+      $$2.a(new fkd.a(this.m.h, N, Y, $$0x -> this.m.a(new fkf(N, this::a, fih.d.e, this.ac))));
+      this.af.b(fod.a(xu.k, $$0x -> this.aP_()).a());
+      this.af.a($$1x -> {
+         fob var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.af.a();
    }
 
    @Override
    public xv i() {
-      return xu.b(b, c, this.M, C, this.L);
-   }
-
-   private void E() {
-      (new Thread("Realms-delete-realm") {
-         @Override
-         public void run() {
-            try {
-               fhb $$0 = fhb.a();
-               $$0.j(fkd.this.J.a);
-            } catch (fix var2) {
-               fkd.a.error("Couldn't delete world", var2);
-            }
-
-            fkd.this.m.execute(() -> fkd.this.m.a(fkd.this.K));
-         }
-      }).start();
-      this.m.a(this);
-   }
-
-   private void a(long $$0) {
-      fhb $$1 = fhb.a();
-
-      try {
-         fio $$2 = $$1.h($$0);
-         this.L = this.a($$2.b);
-         this.M = b($$2.a);
-         this.N = $$2.c;
-      } catch (fix var5) {
-         a.error("Couldn't get subscription", var5);
-         this.m.a(new fjp(var5, this.I));
-      }
-   }
-
-   private static xv b(long $$0) {
-      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
-      $$1.setTimeInMillis($$0);
-      return xv.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+      return xu.a(this.m(), this.Q);
    }
 
    @Override
    public void aP_() {
-      this.m.a(this.I);
+      this.m.a(this.O);
    }
 
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = this.n / 2 - 100;
-      $$0.a(this.p, b, this.n / 2, 17, -1);
-      $$0.a(this.p, c, $$4, g(0), -6250336, false);
-      $$0.a(this.p, this.M, $$4, g(1), -1, false);
-      if (this.N == fio.a.a) {
-         $$0.a(this.p, C, $$4, g(3), -6250336, false);
-      } else if (this.N == fio.a.b) {
-         $$0.a(this.p, D, $$4, g(3), -6250336, false);
+   private void a(@Nullable fix $$0) {
+      this.m.a(this);
+      if ($$0 != null) {
+         this.a(new flg($$0, this.P.a, this.S, this.ae));
       }
 
-      $$0.a(this.p, this.L, $$4, g(4), -1, false);
+      fhb.g();
    }
 
-   private xv a(int $$0) {
-      if ($$0 < 0 && this.J.j) {
-         return E;
-      } else if ($$0 <= 1) {
-         return F;
-      } else {
-         int $$1 = $$0 / 30;
-         int $$2 = $$0 % 30;
-         boolean $$3 = $$1 > 0;
-         boolean $$4 = $$2 > 0;
-         if ($$3 && $$4) {
-            return xv.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
-         } else if ($$3) {
-            return xv.a("mco.configure.world.subscription.remaining.months", $$1);
-         } else {
-            return $$4 ? xv.a("mco.configure.world.subscription.remaining.days", $$2) : xv.i();
+   private void a(fld $$0) {
+      List<fld> $$1 = new ArrayList<>();
+      if (this.ad != null) {
+         $$1.add(this.ad);
+      }
+
+      if (this.b != this.P.p) {
+         $$1.add(new flk(this.P.a, this.b, () -> {
+         }));
+      }
+
+      $$1.add($$0);
+      this.m.a(new fjw(this.O, $$1.toArray(new fld[0])));
+   }
+
+   class a extends fod {
+      private static final alz b = alz.b("widget/slot_frame");
+      private static final int c = 60;
+      private static final int d = 2;
+      private static final int u = 56;
+      private final alz v;
+
+      a(final fno $$0, final xv $$1, final alz $$2, final fod.c $$3) {
+         super(0, 0, 60, 60 + 9, $$1, $$3, q);
+         this.v = $$2;
+      }
+
+      @Override
+      public void b(fnq $$0, int $$1, int $$2, float $$3) {
+         boolean $$4 = this.B();
+         int $$5 = -1;
+         if ($$4) {
+            $$5 = ayp.a(1.0F, 0.56F, 0.56F, 0.56F);
          }
+
+         int $$6 = this.D();
+         int $$7 = this.E();
+         $$0.a(glt::B, this.v, $$6 + 2, $$7 + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, $$5);
+         $$0.a(glt::B, b, $$6, $$7, 60, 60, $$5);
+         int $$8 = $$4 ? -6250336 : -1;
+         $$0.a(fkd.this.p, this.z(), $$6 + 28, $$7 - 14, $$8);
       }
    }
 }

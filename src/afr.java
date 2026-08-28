@@ -4,7 +4,7 @@ public class afr implements aac<acr> {
    private final double c;
    private final long d;
 
-   public afr(dzd $$0) {
+   public afr(dzk $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

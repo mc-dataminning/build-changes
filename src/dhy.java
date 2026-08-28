@@ -1,13 +1,7 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public interface dhy extends dhi {
+   ash a();
 
-public interface dhy extends dhr {
-   long D();
-
-   default boolean f_(jh $$0) {
-      return true;
-   }
-
-   default void a(@Nullable Supplier<String> $$0) {
+   default void a_(bvj $$0) {
+      $$0.db().forEach(this::b);
    }
 }

@@ -1,65 +1,51 @@
-public class cse extends crr {
-   private final dgb b = new dgb() {
-      @Override
-      public void a(dha $$0, jh $$1, int $$2) {
-         $$0.a(cse.this, (byte)$$2);
-      }
-   };
-   private final Runnable c;
-
-   public cse(bvm<? extends cse> $$0, dha $$1) {
+public class cse extends crw {
+   public cse(bvq<? extends cse> $$0, dhh $$1) {
       super($$0, $$1);
-      this.c = this.c($$1);
    }
 
    @Override
-   protected cxg u() {
-      return cxo.of;
+   protected cxk u() {
+      return cxs.og;
    }
 
    @Override
-   public cxk dI() {
-      return new cxk(cxo.of);
-   }
-
-   private Runnable c(dha $$0) {
-      return $$0 instanceof ash ? () -> this.b.a((ash)$$0, this.dv()) : () -> this.b.a($$0, this.dv());
+   public cxo dI() {
+      return new cxo(cxs.og);
    }
 
    @Override
-   public dxn w() {
-      return dkg.cA.m();
+   public int b() {
+      return 27;
    }
 
    @Override
-   protected void a(ux $$0) {
-      super.a($$0);
-      this.b.a(this.dV(), this.dv(), $$0);
+   public dxu w() {
+      return dkn.cD.m().b(dlp.c, jm.c);
    }
 
    @Override
-   protected void b(ux $$0) {
-      super.b($$0);
-      this.b.a($$0);
+   public int z() {
+      return 8;
    }
 
    @Override
-   public void b(byte $$0) {
-      this.b.a(this.dV(), $$0);
+   public ctb a(int $$0, cpv $$1) {
+      return ctk.a($$0, $$1, this);
    }
 
    @Override
-   public void h() {
-      super.h();
-      this.c.run();
-   }
-
-   public dgb v() {
-      return this.b;
+   public void c(cpw $$0) {
+      this.dV().a(ecq.j, this.dt(), ecq.a.a($$0));
    }
 
    @Override
-   public boolean cW() {
-      return true;
+   public bti a(cpw $$0, bth $$1) {
+      bti $$2 = this.b_($$0);
+      if ($$2.a() && $$0.dV() instanceof ash $$3) {
+         this.a(ecq.k, $$0);
+         col.a($$3, $$0, true);
+      }
+
+      return $$2;
    }
 }

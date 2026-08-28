@@ -1,42 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class enl extends enj {
+public class enl extends enu {
    public static final MapCodec<enl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bsj.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bsj.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
             .apply($$0, enl::new)
    );
-   private final bsj c;
-   private final bsj d;
+   private final int c;
+   private final double d;
+   private final double e;
 
-   public static enl a(bsj $$0, bsj $$1) {
-      return new enl($$0, $$1);
-   }
-
-   public static enl a(bsj $$0) {
-      return new enl(bsg.a(0), $$0);
-   }
-
-   public static enl b(bsj $$0) {
-      return new enl($$0, bsg.a(0));
-   }
-
-   private enl(bsj $$0, bsj $$1) {
+   private enl(int $$0, double $$1, double $$2) {
       this.c = $$0;
       this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static enl a(int $$0, double $$1, double $$2) {
+      return new enl($$0, $$1, $$2);
    }
 
    @Override
-   public Stream<jh> a_(enh $$0, bam $$1, jh $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new jh($$3, $$4, $$5));
+   protected int a(bam $$0, jh $$1) {
+      double $$2 = dij.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
    @Override
-   public enk<?> b() {
-      return enk.n;
+   public enr<?> b() {
+      return enr.g;
    }
 }

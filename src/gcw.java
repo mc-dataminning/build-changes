@@ -1,30 +1,44 @@
-public class gcw extends gca {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final geh e;
-   private final geh f;
-
-   public gcw(geh $$0) {
-      super($$0, glo::c);
-      this.e = $$0.b("plate");
-      this.f = $$0.b("handle");
+public class gcw extends fzz {
+   public gcw(gem $$0) {
+      super($$0);
    }
 
-   public static gen a() {
-      gep $$0 = new gep();
-      ger $$1 = $$0.a();
-      $$1.a("plate", gem.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gej.a);
-      $$1.a("handle", gem.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gej.a);
-      return gen.a($$0, 64, 64);
+   private static void a(gew $$0) {
+      $$0.a(
+         "bottom",
+         ger.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         geo.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+      );
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         ger.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         geo.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         ger.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         geo.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public geh b() {
-      return this.e;
+   public static ges a() {
+      geu $$0 = new geu();
+      gew $$1 = $$0.a();
+      a($$1);
+      return ges.a($$0, 128, 64);
    }
 
-   public geh c() {
-      return this.f;
+   public static ges b() {
+      geu $$0 = new geu();
+      gew $$1 = $$0.a();
+      a($$1);
+      $$1.a("chest_bottom", ger.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), geo.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", ger.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), geo.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", ger.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), geo.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return ges.a($$0, 128, 128);
    }
 }

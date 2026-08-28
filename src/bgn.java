@@ -2,66 +2,61 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
 public class bgn extends DataFix {
-   private static final Set<String> a = Set.of(
-      "filled_map.buried_treasure",
-      "filled_map.explorer_jungle",
-      "filled_map.explorer_swamp",
-      "filled_map.mansion",
-      "filled_map.monument",
-      "filled_map.trial_chambers",
-      "filled_map.village_desert",
-      "filled_map.village_plains",
-      "filled_map.village_savanna",
-      "filled_map.village_snowy",
-      "filled_map.village_taiga"
-   );
+   public static final String[] a = new String[]{
+      "minecraft:white_shulker_box",
+      "minecraft:orange_shulker_box",
+      "minecraft:magenta_shulker_box",
+      "minecraft:light_blue_shulker_box",
+      "minecraft:yellow_shulker_box",
+      "minecraft:lime_shulker_box",
+      "minecraft:pink_shulker_box",
+      "minecraft:gray_shulker_box",
+      "minecraft:silver_shulker_box",
+      "minecraft:cyan_shulker_box",
+      "minecraft:purple_shulker_box",
+      "minecraft:blue_shulker_box",
+      "minecraft:brown_shulker_box",
+      "minecraft:green_shulker_box",
+      "minecraft:red_shulker_box",
+      "minecraft:black_shulker_box"
+   };
 
-   public bgn(Schema $$0) {
-      super($$0, false);
+   public bgn(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bis.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bis.D.typeName(), bkg.a()));
-      OpticFinder<?> $$2 = $$0.findField("components");
-      return this.fixTypeEverywhereTyped(
-         "ItemStack custom_name to item_name component fix",
-         $$0,
-         $$2x -> {
-            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-            Optional<String> $$4 = $$3.map(Pair::getSecond);
-            if ($$4.filter($$0xx -> $$0xx.equals("minecraft:white_banner")).isPresent()) {
-               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bgn::b));
-            } else {
-               return $$4.filter($$0xx -> $$0xx.equals("minecraft:filled_map")).isPresent()
-                  ? $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bgn::a))
-                  : $$2x;
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biw.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biw.D.typeName(), bkk.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
+      return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
+         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
+         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:shulker_box")) {
+            Optional<? extends Typed<?>> $$5 = $$3x.getOptionalTyped($$2);
+            if ($$5.isPresent()) {
+               Typed<?> $$6 = (Typed<?>)$$5.get();
+               Optional<? extends Typed<?>> $$7 = $$6.getOptionalTyped($$3);
+               if ($$7.isPresent()) {
+                  Typed<?> $$8 = (Typed<?>)$$7.get();
+                  Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
+                  int $$10 = $$9.get("Color").asInt(0);
+                  $$9.remove("Color");
+                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(biw.D.typeName(), a[$$10 % 16]));
+               }
             }
          }
-      );
-   }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return a($$0, a::contains);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return a($$0, $$0x -> $$0x.equals("block.minecraft.ominous_banner"));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, Predicate<String> $$1) {
-      OptionalDynamic<T> $$2 = $$0.get("minecraft:custom_name");
-      Optional<String> $$3 = $$2.asString().result().flatMap(bbn::a).filter($$1);
-      return $$3.isPresent() ? $$0.renameField("minecraft:custom_name", "minecraft:item_name") : $$0;
+         return $$3x;
+      });
    }
 }

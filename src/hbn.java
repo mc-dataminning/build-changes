@@ -1,30 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class hbn implements hbi {
-   public static final MapCodec<hbn> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, hbn::new)
-   );
-   private final String c;
-   private final String d;
+public interface hbn {
+   als a = new als("textures", ".png");
 
-   public hbn(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   void a(avv var1, hbn.a var2);
+
+   hbp a();
+
+   public interface a {
+      default void a(alz $$0, avt $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(alz var1, hbn.b var2);
+
+      void a(Predicate<alz> var1);
    }
 
-   @Override
-   public void a(avv $$0, hbi.a $$1) {
-      als $$2 = new als("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         alz $$4 = $$2.b($$2x).f(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public hbk a() {
-      return hbl.b;
+   public interface b extends Function<hbm, hbd> {
+      default void a() {
+      }
    }
 }

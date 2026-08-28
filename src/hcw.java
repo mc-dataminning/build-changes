@@ -1,14 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public record hcw(hcx d) {
-   public static final hcw a = new hcw(hcx.b);
-   public static final Codec<hcw> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hcx.a.optionalFieldOf("scaling", hcx.b).forGetter(hcw::a)).apply($$0, hcw::new)
-   );
-   public static final auu<hcw> c = auu.a("gui", b);
+public class hcw implements aut<hcv> {
+   public hcv b(JsonObject $$0) {
+      Builder<hcu> $$1 = ImmutableList.builder();
+      int $$2 = azu.a($$0, "frametime", 1);
+      if ($$2 != 1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+      }
 
-   public hcx a() {
-      return this.d;
+      if ($$0.has("frames")) {
+         try {
+            JsonArray $$3 = azu.v($$0, "frames");
+
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               JsonElement $$5 = $$3.get($$4);
+               hcu $$6 = this.a($$4, $$5);
+               if ($$6 != null) {
+                  $$1.add($$6);
+               }
+            }
+         } catch (ClassCastException var8) {
+            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
+         }
+      }
+
+      int $$8 = azu.a($$0, "width", -1);
+      int $$9 = azu.a($$0, "height", -1);
+      if ($$8 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
+      }
+
+      if ($$9 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
+      }
+
+      boolean $$10 = azu.a($$0, "interpolate", false);
+      return new hcv($$1.build(), $$8, $$9, $$2, $$10);
+   }
+
+   @Nullable
+   private hcu a(int $$0, JsonElement $$1) {
+      if ($$1.isJsonPrimitive()) {
+         return new hcu(azu.g($$1, "frames[" + $$0 + "]"));
+      } else if ($$1.isJsonObject()) {
+         JsonObject $$2 = azu.m($$1, "frames[" + $$0 + "]");
+         int $$3 = azu.a($$2, "time", -1);
+         if ($$2.has("time")) {
+            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+         }
+
+         int $$4 = azu.o($$2, "index");
+         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
+         return new hcu($$4, $$3);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   public String a() {
+      return "animation";
    }
 }

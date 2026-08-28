@@ -5,7 +5,7 @@ public record ahc(int b) implements aac<acr> {
       this($$0.l());
    }
 
-   public static ahc a(btn $$0) {
+   public static ahc a(btr $$0) {
       return new ahc($$0.k());
    }
 

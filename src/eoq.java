@@ -1,26 +1,33 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@FunctionalInterface
-public interface eoq<C extends eis> {
-   Optional<eop<C>> createGenerator(eoq.a<C> var1);
+public record eoq(eoq.a b, bru<div.c> c) {
+   public static final Codec<eoq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eoq.a.c.fieldOf("bounding_box").forGetter(eoq::a), bru.c(div.c.a).fieldOf("spawns").forGetter(eoq::b)).apply($$0, eoq::new)
+   );
 
-   static <C extends eis> eoq<C> simple(Predicate<eoq.a<C>> $$0, eop<C> $$1) {
-      Optional<eop<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   public eoq.a a() {
+      return this.b;
    }
 
-   static <C extends eis> Predicate<eoq.a<C>> checkForBiomeOnTop(edi.a $$0) {
-      return $$1 -> $$1.a($$0);
+   public bru<div.c> b() {
+      return this.c;
    }
 
-   public static record a<C extends eis>(dzj a, dig b, edw c, long d, dgg e, C f, dhc g, Predicate<jq<dic>> h, esf i, ke j) {
-      public boolean a(edi.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         jq<dic> $$4 = this.a.d().getNoiseBiome(kb.a($$1), kb.a($$3), kb.a($$2), this.c.b());
-         return this.h.test($$4);
+   public static enum a implements bba {
+      a("piece"),
+      b("full");
+
+      public static final Codec<eoq.a> c = bba.a(eoq.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
       }
    }
 }

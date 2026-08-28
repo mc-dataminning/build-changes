@@ -1,8 +1,8 @@
 import java.util.Iterator;
 
 public interface alk {
-   static <T> void a(int $$0, int $$1, dbz<?> $$2, Iterable<T> $$3, alk.a<T> $$4) {
-      if ($$2 instanceof dcm $$5) {
+   static <T> void a(int $$0, int $$1, dcd<?> $$2, Iterable<T> $$3, alk.a<T> $$4) {
+      if ($$2 instanceof dcr $$5) {
          a($$0, $$1, $$5.k(), $$5.l(), $$3, $$4);
       } else {
          a($$0, $$1, $$0, $$1, $$3, $$4);

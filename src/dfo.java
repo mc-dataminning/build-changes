@@ -1,61 +1,33 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
+import java.util.Map;
 
-public record dfo(jq<dfp> c, jq<dfr> d, boolean e) implements dan {
-   public static final Codec<dfo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dfp.c.fieldOf("material").forGetter(dfo::a),
-               dfr.c.fieldOf("pattern").forGetter(dfo::b),
-               Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dfo::new)
-   );
-   public static final zt<xg, dfo> b = zt.a(dfp.d, dfo::a, dfr.d, dfo::b, zr.b, $$0 -> $$0.e, dfo::new);
-   private static final xv f = xv.c(ae.a("item", alz.b("smithing_template.upgrade"))).a(n.h);
-
-   public dfo(jq<dfp> $$0, jq<dfr> $$1) {
-      this($$0, $$1, true);
+public record dfo(int a, Map<dfq, Integer> b, int c, jq<axe> d, float e, float f, ayk<cxk> g, alz h) {
+   public cxk.a a(cxk.a $$0, dfq $$1) {
+      return $$0.b($$1.a(this.a)).a(this.a($$1)).c(this.c).a(ku.D, dft.a($$1.a()).a(this.d).a(this.h).a()).a(this.g);
    }
 
-   private static String a(jq<dfp> $$0, alz $$1) {
-      String $$2 = $$0.a().d().get($$1);
-      return $$2 != null ? $$2 : $$0.a().a();
+   public cxk.a a(cxk.a $$0, ju<bvq<?>> $$1) {
+      return $$0.b(dfq.e.a(this.a)).a(this.a(dfq.e)).a(this.g).a(ku.D, dft.a(bvr.g).a(this.d).a(this.h).a($$1).a());
    }
 
-   public boolean a(jq<dfr> $$0, jq<dfp> $$1) {
-      return $$0.equals(this.d) && $$1.equals(this.c);
-   }
-
-   public alz a(dfk.d $$0, alz $$1) {
-      alz $$2 = this.d.a().a();
-      String $$3 = a(this.c, $$1);
-      return $$2.a((UnaryOperator<String>)($$2x -> "trims/entity/" + $$0.c() + "/" + $$2x + "_" + $$3));
-   }
-
-   @Override
-   public void a(cxg.b $$0, Consumer<xv> $$1, czc $$2) {
-      if (this.e) {
-         $$1.accept(f);
-         $$1.accept(xu.a().b(this.d.a().a(this.c)));
-         $$1.accept(xu.a().b(this.c.a().e()));
+   public cxk.a a(cxk.a $$0, axe $$1, boolean $$2, ju<bvq<?>> $$3) {
+      if ($$2) {
+         $$0 = $$0.b(dfq.e.a(this.a)).a(this.g);
       }
+
+      return $$0.a(this.a(dfq.e)).a(ku.D, dft.a(bvr.g).a(jq.a($$1)).a(this.h).a($$3).c($$2).a());
    }
 
-   public dfo a(boolean $$0) {
-      return new dfo(this.c, this.d, $$0);
-   }
+   private daf a(dfq $$0) {
+      int $$1 = this.b.getOrDefault($$0, 0);
+      daf.a $$2 = daf.a();
+      bvs $$3 = bvs.a($$0.a());
+      alz $$4 = alz.b("armor." + $$0.b());
+      $$2.a(bxn.a, new bxl($$4, (double)$$1, bxl.a.a), $$3);
+      $$2.a(bxn.b, new bxl($$4, (double)this.e, bxl.a.a), $$3);
+      if (this.f > 0.0F) {
+         $$2.a(bxn.p, new bxl($$4, (double)this.f, bxl.a.a), $$3);
+      }
 
-   public jq<dfp> a() {
-      return this.c;
-   }
-
-   public jq<dfr> b() {
-      return this.d;
-   }
-
-   public boolean c() {
-      return this.e;
+      return $$2.a();
    }
 }

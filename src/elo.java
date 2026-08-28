@@ -1,45 +1,47 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class elo extends elm {
-   public static final MapCodec<elo> a = MapCodec.unit(() -> elo.b);
-   public static final elo b = new elo();
+public class elo extends elt {
+   public static final MapCodec<elo> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(elo::new, $$0 -> $$0.d);
+   private static final jm b = jm.d;
+   private static final jm[] c = jm.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jm[]::new);
+   private final float d;
 
-   @Override
-   protected eln<?> a() {
-      return eln.a;
+   public elo(float $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a(elm.a $$0) {
+   protected elu<?> a() {
+      return elu.f;
+   }
+
+   @Override
+   public void a(elt.a $$0) {
       bam $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            jh $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dtd.d);
-            }
-         }
+      if (!($$1.i() >= this.d)) {
+         List<jh> $$2 = $$0.d();
+         List<jh> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<jh> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            ae.c($$5, $$1);
+            Optional<jh> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), dkn.pz.m().b(dkf.b, b));
+               $$0.a().a($$6.get(), duy.I).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-         if ($$1.a(3) > 0) {
-            jh $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dtd.f);
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(dut.c.a($$1.a(599)));
+                  }
+               });
             }
          }
-
-         if ($$1.a(3) > 0) {
-            jh $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dtd.e);
-            }
-         }
-
-         if ($$1.a(3) > 0) {
-            jh $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dtd.c);
-            }
-         }
-      });
+      }
    }
 }

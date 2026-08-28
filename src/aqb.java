@@ -25,23 +25,23 @@ public class aqb {
       );
    }
 
-   public static bvf a(ew $$0, jq.c<bvm<?>> $$1, fbs $$2, ux $$3, boolean $$4) throws CommandSyntaxException {
+   public static bvj a(ew $$0, jq.c<bvq<?>> $$1, fbx $$2, ux $$3, boolean $$4) throws CommandSyntaxException {
       jh $$5 = jh.a((ka)$$2);
-      if (!dha.l($$5)) {
+      if (!dhh.l($$5)) {
          throw c.create();
       } else {
          ux $$6 = $$3.i();
          $$6.a("id", $$1.h().a().toString());
          ash $$7 = $$0.e();
-         bvf $$8 = bvm.a($$6, $$7, bvl.n, $$1x -> {
+         bvj $$8 = bvq.a($$6, $$7, bvp.n, $$1x -> {
             $$1x.b($$2.d, $$2.e, $$2.f, $$1x.dL(), $$1x.dN());
             return $$1x;
          });
          if ($$8 == null) {
             throw a.create();
          } else {
-            if ($$4 && $$8 instanceof bwd) {
-               ((bwd)$$8).a($$0.e(), $$0.e().d_($$8.dv()), bvl.n, null);
+            if ($$4 && $$8 instanceof bwh) {
+               ((bwh)$$8).a($$0.e(), $$0.e().d_($$8.dv()), bvp.n, null);
             }
 
             if (!$$7.e($$8)) {
@@ -53,8 +53,8 @@ public class aqb {
       }
    }
 
-   private static int b(ew $$0, jq.c<bvm<?>> $$1, fbs $$2, ux $$3, boolean $$4) throws CommandSyntaxException {
-      bvf $$5 = a($$0, $$1, $$2, $$3, $$4);
+   private static int b(ew $$0, jq.c<bvq<?>> $$1, fbx $$2, ux $$3, boolean $$4) throws CommandSyntaxException {
+      bvj $$5 = a($$0, $$1, $$2, $$3, $$4);
       $$0.a(() -> xv.a("commands.summon.success", $$5.p_()), true);
       return 1;
    }

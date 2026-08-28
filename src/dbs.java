@@ -1,66 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class dbs extends dbq {
-   private static final dbv c = dbv.a(cxo.rm);
-   private static final dbv d = dbv.a(cxo.pQ);
-   private static final dbv e = dbv.a(cxo.vl);
-
-   public dbs(dbn $$0) {
-      super($$0);
-   }
-
-   public boolean a(dbo $$0, dha $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxk $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (c.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (d.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!e.a($$5)) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 && $$3 >= 1;
-   }
-
-   public cxk a(dbo $$0, js.a $$1) {
-      List<czz> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxk $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (d.a($$5)) {
-               $$3++;
-            } else if (e.a($$5)) {
-               czz $$6 = $$5.a(ku.ae);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cxk $$7 = new cxk(cxo.vk, 3);
-      $$7.b(ku.af, new daa($$3, $$2));
-      return $$7;
+public interface dbs extends dcd<dbr> {
+   @Override
+   default dco<dbs> b() {
+      return dco.a;
    }
 
    @Override
-   public dci<dbs> a() {
-      return dci.g;
+   dcn<? extends dbs> a();
+
+   dbq c();
+
+   default jz<cxo> a(dbr $$0) {
+      return b($$0);
+   }
+
+   static jz<cxo> b(dbr $$0) {
+      jz<cxo> $$1 = jz.a($$0.a(), cxo.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cxk $$3 = $$0.a($$2).h();
+         $$1.set($$2, $$3.k());
+      }
+
+      return $$1;
+   }
+
+   @Override
+   default dcg h() {
+      return switch (this.c()) {
+         case a -> dcf.a;
+         case c -> dcf.c;
+         case b -> dcf.b;
+         case d -> dcf.d;
+      };
    }
 }

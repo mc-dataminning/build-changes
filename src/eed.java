@@ -1,167 +1,127 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.concurrent.ConcurrentHashMap;
 
-public record eed(Map<aly<ebj>, ebj> b) {
-   public static final MapCodec<eed> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(aly.a(mb.be), ebj.a).fieldOf("dimensions").forGetter(eed::d)).apply($$0, $$0.stable(eed::new))
-   );
-   private static final Set<aly<ebj>> c = ImmutableSet.of(ebj.b, ebj.c, ebj.d);
-   private static final int d = c.size();
+public final class eed {
+   final eec a;
+   private final jr<esz.a> b;
+   private final edv c;
+   private final dis.f d;
+   private final eeh e;
+   private final eec f;
+   private final eec g;
+   private final Map<aly<esz.a>, esz> h;
+   private final Map<alz, eec> i;
 
-   public eed(Map<aly<ebj>, ebj> b) {
-      ebj $$1 = b.get(ebj.b);
-      if ($$1 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         this.b = b;
-      }
+   public static eed a(jr.a $$0, aly<edu> $$1, long $$2) {
+      return a($$0.b(mb.aR).b($$1).a(), $$0.b(mb.aS), $$2);
    }
 
-   public eed(kd<ebj> $$0) {
-      this($$0.c().collect(Collectors.toMap(jq.c::h, jq.c::a)));
+   public static eed a(edu $$0, jr<esz.a> $$1, long $$2) {
+      return new eed($$0, $$1, $$2);
    }
 
-   public static Stream<aly<ebj>> a(Stream<aly<ebj>> $$0) {
-      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
-   }
+   private eed(edu $$0, jr<esz.a> $$1, final long $$2) {
+      this.a = $$0.d().a($$2).e();
+      this.b = $$1;
+      this.f = this.a.a(alz.b("aquifer")).e();
+      this.g = this.a.a(alz.b("ore")).e();
+      this.h = new ConcurrentHashMap<>();
+      this.i = new ConcurrentHashMap<>();
+      this.e = new eeh(this, $$0.g(), $$0.l(), this.a);
+      final boolean $$3 = $$0.n();
 
-   public eed a(js.a $$0, dzj $$1) {
-      js<ebi> $$2 = $$0.d(mb.aM);
-      Map<aly<ebj>, ebj> $$3 = a($$2, this.b, $$1);
-      return new eed($$3);
-   }
+      class a implements edi.f {
+         private final Map<edi, edi> d = new HashMap<>();
 
-   public static Map<aly<ebj>, ebj> a(js<ebi> $$0, Map<aly<ebj>, ebj> $$1, dzj $$2) {
-      ebj $$3 = $$1.get(ebj.b);
-      jq<ebi> $$4 = (jq<ebi>)($$3 == null ? $$0.b(ebg.a) : $$3.a());
-      return a($$1, $$4, $$2);
-   }
-
-   public static Map<aly<ebj>, ebj> a(Map<aly<ebj>, ebj> $$0, jq<ebi> $$1, dzj $$2) {
-      Builder<aly<ebj>, ebj> $$3 = ImmutableMap.builder();
-      $$3.putAll($$0);
-      $$3.put(ebj.b, new ebj($$1, $$2));
-      return $$3.buildKeepingLast();
-   }
-
-   public dzj a() {
-      ebj $$0 = this.b.get(ebj.b);
-      if ($$0 == null) {
-         throw new IllegalStateException("Overworld settings missing");
-      } else {
-         return $$0.b();
-      }
-   }
-
-   public Optional<ebj> a(aly<ebj> $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public ImmutableSet<aly<dha>> b() {
-      return this.d().keySet().stream().map(mb::a).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public boolean c() {
-      return this.a() instanceof ecz;
-   }
-
-   private static evz.a b(kd<ebj> $$0) {
-      return $$0.f(ebj.b).map($$0x -> {
-         dzj $$1 = $$0x.b();
-         if ($$1 instanceof ecz) {
-            return evz.a.c;
-         } else {
-            return $$1 instanceof edd ? evz.a.b : evz.a.a;
-         }
-      }).orElse(evz.a.a);
-   }
-
-   static Lifecycle a(aly<ebj> $$0, ebj $$1) {
-      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
-   }
-
-   private static boolean b(aly<ebj> $$0, ebj $$1) {
-      if ($$0 == ebj.b) {
-         return a($$1);
-      } else if ($$0 == ebj.c) {
-         return b($$1);
-      } else {
-         return $$0 == ebj.d ? c($$1) : false;
-      }
-   }
-
-   private static boolean a(ebj $$0) {
-      jq<ebi> $$1 = $$0.a();
-      if (!$$1.a(ebg.a) && !$$1.a(ebg.d)) {
-         return false;
-      } else {
-         if ($$0.b().d() instanceof dip $$2 && !$$2.a(dir.b)) {
-            return false;
+         private bam a(long $$0) {
+            return new edq($$2 + $$0);
          }
 
-         return true;
-      }
-   }
+         @Override
+         public edi.c a(edi.c $$0) {
+            jq<esz.a> $$1 = $$0.b();
+            if ($$3) {
+               if ($$1.a(edy.a)) {
+                  esz $$2 = esz.a(this.a(0L), new esz.a(-7, 1.0, 1.0));
+                  return new edi.c($$1, $$2);
+               }
 
-   private static boolean b(ebj $$0) {
-      return $$0.a().a(ebg.b) && $$0.b() instanceof edl $$1 && $$1.a(edn.f) && $$1.d() instanceof dip $$2 && $$2.a(dir.a);
-   }
+               if ($$1.a(edy.b)) {
+                  esz $$3 = esz.a(this.a(1L), new esz.a(-7, 1.0, 1.0));
+                  return new edi.c($$1, $$3);
+               }
 
-   private static boolean c(ebj $$0) {
-      return $$0.a().a(ebg.c) && $$0.b() instanceof edl $$1 && $$1.a(edn.g) && $$1.d() instanceof dit;
-   }
+               if ($$1.a(edy.j)) {
+                  esz $$4 = esz.b(eed.this.a.a(edy.j.a()), new esz.a(0, 0.0));
+                  return new edi.c($$1, $$4);
+               }
+            }
 
-   public eed.b a(kd<ebj> $$0) {
-      Stream<aly<ebj>> $$1 = Stream.concat($$0.j().stream(), this.b.keySet().stream()).distinct();
+            esz $$5 = eed.this.a($$1.e().orElseThrow());
+            return new edi.c($$1, $$5);
+         }
 
-      record a(aly<ebj> a, ebj b) {
+         private edi a(edi $$0) {
+            if ($$0 instanceof esw $$1) {
+               bam $$2 = $$3 ? this.a(0L) : eed.this.a.a(alz.b("terrain"));
+               return $$1.a($$2);
+            } else {
+               return (edi)($$0 instanceof edj.i ? new edj.i($$2) : $$0);
+            }
+         }
 
-         kc c() {
-            return new kc(Optional.empty(), eed.a(this.a, this.b));
+         @Override
+         public edi apply(edi $$0) {
+            return this.d.computeIfAbsent($$0, this::a);
          }
       }
 
-      List<a> $$2 = new ArrayList<>();
-      a($$1).forEach($$2x -> $$0.f($$2x).or(() -> Optional.ofNullable(this.b.get($$2x))).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
-      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
-      km<ebj> $$4 = new jy<>(mb.be, $$3);
-      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
-      kd<ebj> $$5 = $$4.n();
-      evz.a $$6 = b($$5);
-      return new eed.b($$5.n(), $$6);
+      this.c = $$0.i().a(new a());
+      edi.f $$4 = new edi.f() {
+         private final Map<edi, edi> a = new HashMap<>();
+
+         private edi a(edi $$0) {
+            if ($$0 instanceof edj.j $$1) {
+               return $$1.j().a();
+            } else {
+               return $$0 instanceof edj.l $$2 ? $$2.k() : $$0;
+            }
+         }
+
+         @Override
+         public edi apply(edi $$0) {
+            return this.a.computeIfAbsent($$0, this::a);
+         }
+      };
+      this.d = new dis.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
    }
 
-   public Map<aly<ebj>, ebj> d() {
-      return this.b;
+   public esz a(aly<esz.a> $$0) {
+      return this.h.computeIfAbsent($$0, $$1 -> edy.a(this.b, this.a, $$0));
    }
 
-   public static record b(kd<ebj> a, evz.a b) {
-      public Lifecycle a() {
-         return this.a.h();
-      }
+   public eec a(alz $$0) {
+      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
+   }
 
-      public ke.b b() {
-         return new ke.c(List.of(this.a)).e();
-      }
+   public edv a() {
+      return this.c;
+   }
 
-      public kd<ebj> c() {
-         return this.a;
-      }
+   public dis.f b() {
+      return this.d;
+   }
 
-      public evz.a d() {
-         return this.b;
-      }
+   public eeh c() {
+      return this.e;
+   }
+
+   public eec d() {
+      return this.f;
+   }
+
+   public eec e() {
+      return this.g;
    }
 }

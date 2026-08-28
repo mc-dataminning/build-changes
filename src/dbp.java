@@ -1,36 +1,25 @@
-public interface dbp extends dbz<dbo> {
-   @Override
-   default dcj<dbp> b() {
-      return dcj.a;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+
+public enum dbp implements bba {
+   a(0, "food"),
+   b(1, "blocks"),
+   c(2, "misc");
+
+   private static final IntFunction<dbp> f = ayv.a($$0 -> $$0.g, values(), ayv.a.a);
+   public static final Codec<dbp> d = bba.a(dbp::values);
+   public static final zt<ByteBuf, dbp> e = zr.a(f, $$0 -> $$0.g);
+   private final int g;
+   private final String h;
+
+   private dbp(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   dci<? extends dbp> a();
-
-   dbn c();
-
-   default jz<cxk> a(dbo $$0) {
-      return b($$0);
-   }
-
-   static jz<cxk> b(dbo $$0) {
-      jz<cxk> $$1 = jz.a($$0.a(), cxk.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cxg $$3 = $$0.a($$2).h();
-         $$1.set($$2, $$3.k());
-      }
-
-      return $$1;
-   }
-
-   @Override
-   default dbi h() {
-      return switch (this.c()) {
-         case a -> dbi.a;
-         case c -> dbi.c;
-         case b -> dbi.b;
-         case d -> dbi.d;
-      };
+   public String c() {
+      return this.h;
    }
 }

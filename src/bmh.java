@@ -4,14 +4,32 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bmh extends bkg {
+public class bmh extends bkk {
    public bmh(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:chest_boat", $$1x -> DSL.optionalFields("Items", DSL.list(bis.t.in($$0))));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         biw.c,
+         () -> DSL.optionalFields(
+               "entities",
+               DSL.list(biw.A.in($$0)),
+               "block_entities",
+               DSL.list(DSL.or(biw.s.in($$0), DSL.remainder())),
+               "block_ticks",
+               DSL.list(DSL.fields("i", biw.C.in($$0))),
+               "sections",
+               DSL.list(
+                  DSL.optionalFields(
+                     "biomes", DSL.optionalFields("palette", DSL.list(biw.K.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(biw.u.in($$0)))
+                  )
+               ),
+               "structures",
+               DSL.optionalFields("starts", DSL.compoundList(biw.G.in($$0)))
+            )
+      );
    }
 }

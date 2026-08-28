@@ -1,166 +1,220 @@
-public class duz extends dup {
-   private boolean a;
-   private boolean b;
-   private boolean c;
-   private final dga d = new dga() {
+import java.util.Arrays;
+import javax.annotation.Nullable;
+
+public class duz extends duq implements bts {
+   private static final int g = 3;
+   private static final int h = 4;
+   private static final int[] i = new int[]{3};
+   private static final int[] j = new int[]{0, 1, 2, 3};
+   private static final int[] k = new int[]{0, 1, 2, 4};
+   public static final int b = 20;
+   public static final int c = 0;
+   public static final int d = 1;
+   public static final int e = 2;
+   private jz<cxo> l = jz.a(5, cxo.k);
+   int m;
+   private boolean[] n;
+   private cxk r;
+   int s;
+   protected final ctn f = new ctn() {
       @Override
-      public void a(String $$0) {
-         super.a($$0);
-         duz.this.e();
+      public int a(int $$0) {
+         return switch ($$0) {
+            case 0 -> duz.this.m;
+            case 1 -> duz.this.s;
+            default -> 0;
+         };
       }
 
       @Override
-      public ash e() {
-         return (ash)duz.this.o;
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               duz.this.m = $$1;
+               break;
+            case 1:
+               duz.this.s = $$1;
+         }
       }
 
       @Override
-      public void f() {
-         dxn $$0 = duz.this.o.a_(duz.this.p);
-         this.e().a(duz.this.p, $$0, $$0, 3);
-      }
-
-      @Override
-      public fbs g() {
-         return fbs.b(duz.this.p);
-      }
-
-      @Override
-      public ew i() {
-         jm $$0 = duz.this.m().c(dlo.b);
-         return new ew(this, fbs.b(duz.this.p), new fbr(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().p(), null);
-      }
-
-      @Override
-      public boolean j() {
-         return !duz.this.n();
+      public int a() {
+         return 2;
       }
    };
 
-   public duz(jh $$0, dxn $$1) {
-      super(dur.x, $$0, $$1);
+   public duz(jh $$0, dxu $$1) {
+      super(duy.m, $$0, $$1);
    }
 
    @Override
-   protected void b(ux $$0, js.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0, $$1);
-      $$0.a("powered", this.c());
-      $$0.a("conditionMet", this.j());
-      $$0.a("auto", this.d());
+   protected xv j() {
+      return xv.c("container.brewing");
+   }
+
+   @Override
+   public int b() {
+      return this.l.size();
+   }
+
+   @Override
+   protected jz<cxo> f() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(jz<cxo> $$0) {
+      this.l = $$0;
+   }
+
+   public static void a(dhh $$0, jh $$1, dxu $$2, duz $$3) {
+      cxo $$4 = $$3.l.get(4);
+      if ($$3.s <= 0 && $$4.a(ayd.Z)) {
+         $$3.s = 20;
+         $$4.h(1);
+         a($$0, $$1, $$2);
+      }
+
+      boolean $$5 = a($$0.K(), $$3.l);
+      boolean $$6 = $$3.m > 0;
+      cxo $$7 = $$3.l.get(3);
+      if ($$6) {
+         $$3.m--;
+         boolean $$8 = $$3.m == 0;
+         if ($$8 && $$5) {
+            a($$0, $$1, $$3.l);
+         } else if (!$$5 || !$$7.a($$3.r)) {
+            $$3.m = 0;
+         }
+
+         a($$0, $$1, $$2);
+      } else if ($$5 && $$3.s > 0) {
+         $$3.s--;
+         $$3.m = 400;
+         $$3.r = $$7.h();
+         a($$0, $$1, $$2);
+      }
+
+      boolean[] $$9 = $$3.k();
+      if (!Arrays.equals($$9, $$3.n)) {
+         $$3.n = $$9;
+         dxu $$10 = $$2;
+         if (!($$2.b() instanceof dkq)) {
+            return;
+         }
+
+         for (int $$11 = 0; $$11 < dkq.b.length; $$11++) {
+            $$10 = $$10.b(dkq.b[$$11], Boolean.valueOf($$9[$$11]));
+         }
+
+         $$0.a($$1, $$10, 2);
+      }
+   }
+
+   private boolean[] k() {
+      boolean[] $$0 = new boolean[3];
+
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         if (!this.l.get($$1).f()) {
+            $$0[$$1] = true;
+         }
+      }
+
+      return $$0;
+   }
+
+   private static boolean a(czm $$0, jz<cxo> $$1) {
+      cxo $$2 = $$1.get(3);
+      if ($$2.f()) {
+         return false;
+      } else if (!$$0.a($$2)) {
+         return false;
+      } else {
+         for (int $$3 = 0; $$3 < 3; $$3++) {
+            cxo $$4 = $$1.get($$3);
+            if (!$$4.f() && $$0.a($$4, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private static void a(dhh $$0, jh $$1, jz<cxo> $$2) {
+      cxo $$3 = $$2.get(3);
+      czm $$4 = $$0.K();
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         $$2.set($$5, $$4.d($$3, $$2.get($$5)));
+      }
+
+      $$3.h(1);
+      cxo $$6 = $$3.h().k();
+      if (!$$6.f()) {
+         if ($$3.f()) {
+            $$3 = $$6;
+         } else {
+            bte.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$6);
+         }
+      }
+
+      $$2.set(3, $$3);
+      $$0.c(1035, $$1, 0);
    }
 
    @Override
    protected void a(ux $$0, js.a $$1) {
       super.a($$0, $$1);
-      this.d.b($$0, $$1);
-      this.a = $$0.q("powered");
-      this.c = $$0.q("conditionMet");
-      this.b($$0.q("auto"));
+      this.l = jz.a(this.b(), cxo.k);
+      btc.b($$0, this.l, $$1);
+      this.m = $$0.g("BrewTime");
+      if (this.m > 0) {
+         this.r = this.l.get(3).h();
+      }
+
+      this.s = $$0.f("Fuel");
    }
 
    @Override
-   public boolean p() {
-      return true;
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("BrewTime", (short)this.m);
+      btc.a($$0, this.l, $$1);
+      $$0.a("Fuel", (byte)this.s);
    }
 
-   public dga b() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b;
-   }
-
-   public void b(boolean $$0) {
-      boolean $$1 = this.b;
-      this.b = $$0;
-      if (!$$1 && $$0 && !this.a && this.o != null && this.t() != duz.a.a) {
-         this.v();
-      }
-   }
-
-   public void f() {
-      duz.a $$0 = this.t();
-      if ($$0 == duz.a.b && (this.a || this.b) && this.o != null) {
-         this.v();
-      }
-   }
-
-   private void v() {
-      dke $$0 = this.m().b();
-      if ($$0 instanceof dlo) {
-         this.k();
-         this.o.a(this.p, $$0, 1);
-      }
-   }
-
-   public boolean j() {
-      return this.c;
-   }
-
-   public boolean k() {
-      this.c = true;
-      if (this.u()) {
-         jh $$0 = this.p.a(this.o.a_(this.p).c(dlo.b).g());
-         if (this.o.a_($$0).b() instanceof dlo) {
-            dup $$1 = this.o.c_($$0);
-            this.c = $$1 instanceof duz && ((duz)$$1).b().k() > 0;
-         } else {
-            this.c = false;
-         }
-      }
-
-      return this.c;
-   }
-
-   public duz.a t() {
-      dxn $$0 = this.m();
-      if ($$0.a(dkg.gb)) {
-         return duz.a.c;
-      } else if ($$0.a(dkg.lb)) {
-         return duz.a.b;
+   @Override
+   public boolean b(int $$0, cxo $$1) {
+      if ($$0 == 3) {
+         czm $$2 = this.o != null ? this.o.K() : czm.b;
+         return $$2.a($$1);
       } else {
-         return $$0.a(dkg.lc) ? duz.a.a : duz.a.c;
+         return $$0 == 4 ? $$1.a(ayd.Z) : ($$1.a(cxs.sZ) || $$1.a(cxs.we) || $$1.a(cxs.wh) || $$1.a(cxs.sY)) && this.a($$0).f();
       }
    }
 
-   public boolean u() {
-      dxn $$0 = this.o.a_(this.aB_());
-      return $$0.b() instanceof dlo ? $$0.c(dlo.c) : false;
+   @Override
+   public int[] a(jm $$0) {
+      if ($$0 == jm.b) {
+         return i;
+      } else {
+         return $$0 == jm.a ? j : k;
+      }
    }
 
    @Override
-   protected void a(dup.b $$0) {
-      super.a($$0);
-      this.d.b($$0.a(ku.g));
+   public boolean a(int $$0, cxo $$1, @Nullable jm $$2) {
+      return this.b($$0, $$1);
    }
 
    @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      $$0.a(ku.g, this.d.o());
+   public boolean b(int $$0, cxo $$1, jm $$2) {
+      return $$0 == 3 ? $$1.a(cxs.sY) : true;
    }
 
    @Override
-   public void a(ux $$0) {
-      super.a($$0);
-      $$0.r("CustomName");
-      $$0.r("conditionMet");
-      $$0.r("powered");
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   protected ctb a(int $$0, cpv $$1) {
+      return new cti($$0, $$1, this, this.f);
    }
 }

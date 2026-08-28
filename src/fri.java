@@ -1,83 +1,28 @@
-public abstract class fri implements fro {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public fri(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
+public enum fri implements bba {
+   a("bitmap", frf.a.a),
+   b("ttf", frk.a),
+   c("space", fer.a.a),
+   d("unihex", frl.b.a),
+   e("reference", frj.a);
+
+   public static final Codec<fri> f = bba.a(fri::values);
+   private final String g;
+   private final MapCodec<? extends frh> h;
+
+   private fri(final String $$0, final MapCodec<? extends frh> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public void m(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.D() + ($$0 - this.D());
-         $$1.m($$2);
-      });
-      this.c = $$0;
+   public String c() {
+      return this.g;
    }
 
-   @Override
-   public void n(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.E() + ($$0 - this.E());
-         $$1.n($$2);
-      });
-      this.d = $$0;
-   }
-
-   @Override
-   public int D() {
-      return this.c;
-   }
-
-   @Override
-   public int E() {
-      return this.d;
-   }
-
-   @Override
-   public int y() {
-      return this.a;
-   }
-
-   @Override
-   public int w() {
-      return this.b;
-   }
-
-   protected abstract static class a {
-      public final frp a;
-      public final frq.a b;
-
-      protected a(frp $$0, frq $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
-      }
-
-      public int a() {
-         return this.a.w() + this.b.b + this.b.d;
-      }
-
-      public int b() {
-         return this.a.y() + this.b.a + this.b.c;
-      }
-
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.y() - this.b.c);
-         int $$4 = (int)bae.h(this.b.e, $$2, $$3);
-         this.a.m($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.w() - this.b.d);
-         int $$4 = Math.round(bae.h(this.b.f, $$2, $$3));
-         this.a.n($$4 + $$0);
-      }
+   public MapCodec<? extends frh> a() {
+      return this.h;
    }
 }

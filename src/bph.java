@@ -1,33 +1,22 @@
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class bph {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private bpl c = bpk.a;
+public class bph implements box<StringReader, vu> {
+   public static final box<StringReader, vu> a = new bph();
 
-   public bph(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private bph() {
    }
 
-   public boolean a() {
-      return this.c != bpk.a;
-   }
+   @Override
+   public Optional<vu> a(bow<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
 
-   public void b() {
-      this.c = bpk.a;
-   }
-
-   public void c() {
-      this.c = new bpg(this.a, this.b, true);
-   }
-
-   public bpo d() {
-      return this.c;
-   }
-
-   public bpm e() {
-      return this.c.d();
+      try {
+         return Optional.of(new vv($$0.b()).d());
+      } catch (Exception var4) {
+         $$0.a().a($$1, var4);
+         return Optional.empty();
+      }
    }
 }

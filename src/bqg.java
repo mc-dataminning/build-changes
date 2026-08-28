@@ -1,100 +1,49 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.net.SocketAddress;
+import jdk.jfr.Category;
+import jdk.jfr.DataAmount;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public record bqg(
-   Instant a,
-   Instant b,
-   Duration c,
-   @Nullable Duration d,
-   List<bqs> e,
-   List<bqm> f,
-   bqo.a g,
-   bqr.a h,
-   bqp<bqq> i,
-   bqp<bqq> j,
-   bqp<bql> k,
-   bqp<bql> l,
-   bqn.a m,
-   bqn.a n,
-   List<bqk> o
-) {
-   public List<Pair<eaj, bqu<bqk>>> a() {
-      Map<eaj, List<bqk>> $$0 = this.o.stream().collect(Collectors.groupingBy(bqk::d));
-      return $$0.entrySet()
-         .stream()
-         .map($$0x -> Pair.of((eaj)$$0x.getKey(), bqu.a((List)$$0x.getValue())))
-         .sorted(Comparator.<Pair<eaj, bqu<bqk>>, Duration>comparing($$0x -> ((bqu)$$0x.getSecond()).f()).reversed())
-         .toList();
+@Category({"Minecraft", "Network"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bqg extends Event {
+   @Name("protocolId")
+   @Label("Protocol Id")
+   public final String protocolId;
+   @Name("packetDirection")
+   @Label("Packet Direction")
+   public final String packetDirection;
+   @Name("packetId")
+   @Label("Packet Id")
+   public final String packetId;
+   @Name("remoteAddress")
+   @Label("Remote Address")
+   public final String remoteAddress;
+   @Name("bytes")
+   @Label("Bytes")
+   @DataAmount
+   public final int bytes;
+
+   public bqg(String $$0, String $$1, String $$2, SocketAddress $$3, int $$4) {
+      this.protocolId = $$0;
+      this.packetDirection = $$1;
+      this.packetId = $$2;
+      this.remoteAddress = $$3.toString();
+      this.bytes = $$4;
    }
 
-   public String b() {
-      return new bqi().a(this);
-   }
+   public static final class a {
+      public static final String a = "remoteAddress";
+      public static final String b = "protocolId";
+      public static final String c = "packetDirection";
+      public static final String d = "packetId";
+      public static final String e = "bytes";
 
-   public Instant c() {
-      return this.a;
-   }
-
-   public Instant d() {
-      return this.b;
-   }
-
-   public Duration e() {
-      return this.c;
-   }
-
-   @Nullable
-   public Duration f() {
-      return this.d;
-   }
-
-   public List<bqs> g() {
-      return this.e;
-   }
-
-   public List<bqm> h() {
-      return this.f;
-   }
-
-   public bqo.a i() {
-      return this.g;
-   }
-
-   public bqr.a j() {
-      return this.h;
-   }
-
-   public bqp<bqq> k() {
-      return this.i;
-   }
-
-   public bqp<bqq> l() {
-      return this.j;
-   }
-
-   public bqp<bql> m() {
-      return this.k;
-   }
-
-   public bqp<bql> n() {
-      return this.l;
-   }
-
-   public bqn.a o() {
-      return this.m;
-   }
-
-   public bqn.a p() {
-      return this.n;
-   }
-
-   public List<bqk> q() {
-      return this.o;
+      private a() {
+      }
    }
 }

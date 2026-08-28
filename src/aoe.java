@@ -25,19 +25,19 @@ public class aoe {
                   .then(
                      ex.a("to", gs.a())
                         .then(
-                           ((RequiredArgumentBuilder)ex.a("biome", fv.a($$1, mb.aH))
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "to"), fv.a($$0x, "biome", mb.aH), $$0xx -> true)))
+                           ((RequiredArgumentBuilder)ex.a("biome", fv.a($$1, mb.aI))
+                                 .executes($$0x -> a((ew)$$0x.getSource(), gs.a($$0x, "from"), gs.a($$0x, "to"), fv.a($$0x, "biome", mb.aI), $$0xx -> true)))
                               .then(
                                  ex.a("replace")
                                     .then(
-                                       ex.a("filter", fz.a($$1, mb.aH))
+                                       ex.a("filter", fz.a($$1, mb.aI))
                                           .executes(
                                              $$0x -> a(
                                                    (ew)$$0x.getSource(),
                                                    gs.a($$0x, "from"),
                                                    gs.a($$0x, "to"),
-                                                   fv.a($$0x, "biome", mb.aH),
-                                                   fz.a($$0x, "filter", mb.aH)::test
+                                                   fv.a($$0x, "biome", mb.aI),
+                                                   fz.a($$0x, "filter", mb.aI)::test
                                                 )
                                           )
                                     )
@@ -56,12 +56,12 @@ public class aoe {
       return new jh(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   private static dif a(MutableInt $$0, dzi $$1, enu $$2, jq<dic> $$3, Predicate<jq<dic>> $$4) {
+   private static dim a(MutableInt $$0, dzp $$1, eob $$2, jq<dij> $$3, Predicate<jq<dij>> $$4) {
       return ($$5, $$6, $$7, $$8) -> {
          int $$9 = kb.c($$5);
          int $$10 = kb.c($$6);
          int $$11 = kb.c($$7);
-         jq<dic> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         jq<dij> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
          if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
             $$0.increment();
             return $$3;
@@ -71,25 +71,25 @@ public class aoe {
       };
    }
 
-   public static Either<Integer, CommandSyntaxException> a(ash $$0, jh $$1, jh $$2, jq<dic> $$3) {
+   public static Either<Integer, CommandSyntaxException> a(ash $$0, jh $$1, jh $$2, jq<dij> $$3) {
       return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
       });
    }
 
-   public static Either<Integer, CommandSyntaxException> a(ash $$0, jh $$1, jh $$2, jq<dic> $$3, Predicate<jq<dic>> $$4, Consumer<Supplier<xv>> $$5) {
+   public static Either<Integer, CommandSyntaxException> a(ash $$0, jh $$1, jh $$2, jq<dij> $$3, Predicate<jq<dij>> $$4, Consumer<Supplier<xv>> $$5) {
       jh $$6 = a($$1);
       jh $$7 = a($$2);
-      enu $$8 = enu.a($$6, $$7);
+      eob $$8 = eob.a($$6, $$7);
       int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.N().c(dgw.z);
+      int $$10 = $$0.N().c(dhd.A);
       if ($$9 > $$10) {
          return Either.right(b.create($$10, $$9));
       } else {
-         List<dzi> $$11 = new ArrayList<>();
+         List<dzp> $$11 = new ArrayList<>();
 
          for (int $$12 = kj.a($$8.j()); $$12 <= kj.a($$8.m()); $$12++) {
             for (int $$13 = kj.a($$8.h()); $$13 <= kj.a($$8.k()); $$13++) {
-               dzi $$14 = $$0.a($$13, $$12, eaj.n, false);
+               dzp $$14 = $$0.a($$13, $$12, eaq.n, false);
                if ($$14 == null) {
                   return Either.right(a.create());
                }
@@ -100,7 +100,7 @@ public class aoe {
 
          MutableInt $$15 = new MutableInt(0);
 
-         for (dzi $$16 : $$11) {
+         for (dzp $$16 : $$11) {
             $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.m().i().b());
             $$16.a(true);
          }
@@ -111,7 +111,7 @@ public class aoe {
       }
    }
 
-   private static int a(ew $$0, jh $$1, jh $$2, jq.c<dic> $$3, Predicate<jq<dic>> $$4) throws CommandSyntaxException {
+   private static int a(ew $$0, jh $$1, jh $$2, jq.c<dij> $$3, Predicate<jq<dij>> $$4) throws CommandSyntaxException {
       Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
       Optional<CommandSyntaxException> $$6 = $$5.right();
       if ($$6.isPresent()) {

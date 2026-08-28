@@ -1,30 +1,36 @@
-public class gok implements gnp<dwv> {
-   private final gsh a;
-   private final bam b = bam.a();
+public class gok implements gnu<dwn> {
+   private final grm a;
 
-   public gok(gnq.a $$0) {
-      this.a = $$0.d();
+   public gok(gnv.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(dwv $$0, float $$1, fgl $$2, gle $$3, int $$4, int $$5) {
-      if (dwv.a.a($$0.c())) {
-         dha $$6 = $$0.i();
-         if ($$6 != null) {
-            cxk $$7 = $$0.c().a();
-            if (!$$7.f()) {
-               this.b.b((long)gsf.a($$7));
-               dww $$8 = $$0.d();
-               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
-            }
+   public void a(dwn $$0, float $$1, fgq $$2, glj $$3, int $$4, int $$5) {
+      dhh $$6 = $$0.i();
+      if ($$6 != null) {
+         dgi $$7 = $$0.c();
+         bvj $$8 = $$7.b($$6, $$0.aB_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
          }
       }
    }
 
-   public static void a(float $$0, dha $$1, fgl $$2, gle $$3, int $$4, cxk $$5, gsh $$6, float $$7, float $$8, bam $$9) {
-      $$2.a();
-      $$2.a(0.5F, 0.4F, 0.5F);
-      $$2.a(a.d.rotationDegrees(bae.i($$0, $$7, $$8)));
-      gsf.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
-      $$2.b();
+   public static void a(float $$0, fgq $$1, glj $$2, int $$3, bvj $$4, grm $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dq(), $$4.dr());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
+
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)bae.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

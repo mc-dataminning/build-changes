@@ -2,7 +2,7 @@ public class aev implements aac<acr> {
    public static final zt<ws, aev> a = aac.a(aev::a, aev::new);
    private final int b;
 
-   public aev(bts $$0) {
+   public aev(btw $$0) {
       this($$0.b());
    }
 

@@ -1,374 +1,137 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class glv extends awa<glv.c> implements AutoCloseable {
-   static final Logger d = LogUtils.getLogger();
-   public static final String a = "shaders";
-   public static final String b = "shaders/include/";
-   private static final als e = als.a("shaders");
-   private static final als f = als.a("post_effect");
-   public static final int c = 32768;
-   final hbf g;
-   private final Consumer<Exception> h;
-   private glv.a i = new glv.a(glv.c.a);
+public class glv {
+   private static final alz a = alz.b("textures/misc/underwater.png");
 
-   public glv(hbf $$0, Consumer<Exception> $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   protected glv.c a(avv $$0, bpo $$1) {
-      Builder<alz, glx> $$2 = ImmutableMap.builder();
-      Builder<glv.e, String> $$3 = ImmutableMap.builder();
-      Map<alz, avt> $$4 = $$0.b("shaders", $$0x -> a($$0x) || b($$0x));
-
-      for (Entry<alz, avt> $$5 : $$4.entrySet()) {
-         alz $$6 = $$5.getKey();
-         fga.a $$7 = fga.a.a($$6);
-         if ($$7 != null) {
-            a($$6, $$5.getValue(), $$7, $$4, $$3);
-         } else if (a($$6)) {
-            a($$6, $$5.getValue(), $$2);
+   public static void a(fme $$0, fgq $$1) {
+      cpw $$2 = $$0.t;
+      if (!$$2.ad) {
+         dxu $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.ap().a().a($$3), $$1);
          }
       }
 
-      Builder<alz, glj> $$8 = ImmutableMap.builder();
-
-      for (Entry<alz, avt> $$9 : f.a($$0).entrySet()) {
-         b($$9.getKey(), $$9.getValue(), $$8);
-      }
-
-      return new glv.c($$2.build(), $$3.build(), $$8.build());
-   }
-
-   private static void a(alz $$0, avt $$1, fga.a $$2, Map<alz, avt> $$3, Builder<glv.e, String> $$4) {
-      alz $$5 = $$2.c().b($$0);
-      ffr $$6 = a($$3, $$0);
-
-      try (Reader $$7 = $$1.e()) {
-         String $$8 = IOUtils.toString($$7);
-         $$4.put(new glv.e($$5, $$2), String.join("", $$6.a($$8)));
-      } catch (IOException var12) {
-         d.error("Failed to load shader source at {}", $$0, var12);
-      }
-   }
-
-   private static ffr a(final Map<alz, avt> $$0, alz $$1) {
-      final alz $$2 = $$1.a(v::b);
-      return new ffr() {
-         private final Set<alz> c = new ObjectArraySet();
-
-         @Override
-         public String a(boolean $$0x, String $$1) {
-            alz $$2;
-            try {
-               if ($$0) {
-                  $$2 = $$2.a((UnaryOperator<String>)($$1x -> v.c($$1x + $$1)));
-               } else {
-                  $$2 = alz.a($$1).f("shaders/include/");
-               }
-            } catch (aa var8) {
-               glv.d.error("Malformed GLSL import {}: {}", $$1, var8.getMessage());
-               return "#error " + var8.getMessage();
-            }
-
-            if (!this.c.add($$2)) {
-               return null;
-            } else {
-               try {
-                  String var5;
-                  try (Reader $$6 = $$0.get($$2).e()) {
-                     var5 = IOUtils.toString($$6);
-                  }
-
-                  return var5;
-               } catch (IOException var10) {
-                  glv.d.error("Could not open GLSL import {}: {}", $$2, var10.getMessage());
-                  return "#error " + var10.getMessage();
-               }
-            }
+      if (!$$0.t.aa_()) {
+         if ($$0.t.a(aya.a)) {
+            b($$0, $$1);
          }
-      };
-   }
 
-   private static void a(alz $$0, avt $$1, Builder<alz, glx> $$2) {
-      alz $$3 = e.b($$0);
-
-      try (Reader $$4 = $$1.e()) {
-         JsonElement $$5 = JsonParser.parseReader($$4);
-         glx $$6 = (glx)glx.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
-         $$2.put($$3, $$6);
-      } catch (JsonParseException | IOException var9) {
-         d.error("Failed to parse shader config at {}", $$0, var9);
-      }
-   }
-
-   private static void b(alz $$0, avt $$1, Builder<alz, glj> $$2) {
-      alz $$3 = f.b($$0);
-
-      try (Reader $$4 = $$1.e()) {
-         JsonElement $$5 = JsonParser.parseReader($$4);
-         $$2.put($$3, (glj)glj.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new));
-      } catch (JsonParseException | IOException var9) {
-         d.error("Failed to parse post chain at {}", $$0, var9);
-      }
-   }
-
-   private static boolean a(alz $$0) {
-      return $$0.a().endsWith(".json");
-   }
-
-   private static boolean b(alz $$0) {
-      return fga.a.a($$0) != null || $$0.a().endsWith(".glsl");
-   }
-
-   protected void a(glv.c $$0, avv $$1, bpo $$2) {
-      glv.a $$3 = new glv.a($$0);
-      Map<glw, glv.b> $$4 = new HashMap<>();
-
-      for (glw $$5 : gko.a()) {
-         try {
-            $$3.c.put($$5, Optional.of($$3.b($$5)));
-         } catch (glv.b var9) {
-            $$4.put($$5, var9);
+         if ($$0.t.bY()) {
+            c($$0, $$1);
          }
       }
-
-      if (!$$4.isEmpty()) {
-         $$3.close();
-         throw new RuntimeException(
-            "Failed to load required shader programs:\n"
-               + $$4.entrySet().stream().map($$0x -> " - " + $$0x.getKey() + ": " + ((glv.b)$$0x.getValue()).getMessage()).collect(Collectors.joining("\n"))
-         );
-      } else {
-         this.i.close();
-         this.i = $$3;
-      }
-   }
-
-   @Override
-   public String c() {
-      return "Shader Loader";
-   }
-
-   public void a(avy $$0, glw... $$1) throws IOException, glv.b {
-      for (glw $$2 : $$1) {
-         avt $$3 = $$0.getResourceOrThrow(e.a($$2.a()));
-
-         try (Reader $$4 = $$3.e()) {
-            JsonElement $$5 = JsonParser.parseReader($$4);
-            glx $$6 = (glx)glx.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonSyntaxException::new);
-            glu $$7 = $$6.e().a($$2.c());
-            fga $$8 = this.a($$0, $$6.a(), fga.a.a, $$7);
-            fga $$9 = this.a($$0, $$6.b(), fga.a.b, $$7);
-            gkn $$10 = a($$2, $$6, $$8, $$9);
-            this.i.c.put($$2, Optional.of($$10));
-         }
-      }
-   }
-
-   private fga a(avy $$0, alz $$1, fga.a $$2, glu $$3) throws IOException, glv.b {
-      alz $$4 = $$2.c().a($$1);
-
-      fga var10;
-      try (Reader $$5 = $$0.getResourceOrThrow($$4).e()) {
-         String $$6 = IOUtils.toString($$5);
-         String $$7 = ffr.a($$6, $$3);
-         fga $$8 = fga.a($$1, $$2, $$7);
-         this.i.d.put(new glv.d($$1, $$2, $$3), $$8);
-         var10 = $$8;
-      }
-
-      return var10;
    }
 
    @Nullable
-   public gkn a(glw $$0) {
-      try {
-         return this.i.a($$0);
-      } catch (glv.b var3) {
-         d.error("Failed to load shader program: {}", $$0, var3);
-         this.i.c.put($$0, Optional.empty());
-         this.h.accept(var3);
-         return null;
-      }
-   }
+   private static dxu a(cpw $$0) {
+      jh.a $$1 = new jh.a();
 
-   public gkn b(glw $$0) throws glv.b {
-      gkn $$1 = this.i.a($$0);
-      if ($$1 == null) {
-         throw new glv.b("Shader '" + $$0 + "' could not be found");
-      } else {
-         return $$1;
-      }
-   }
-
-   static gkn a(glw $$0, glx $$1, fga $$2, fga $$3) throws glv.b {
-      gkn $$4 = gkn.a($$2, $$3, $$0.b());
-      $$4.a($$1.d(), $$1.c());
-      return $$4;
-   }
-
-   @Nullable
-   public gli a(alz $$0, Set<alz> $$1) {
-      try {
-         return this.i.a($$0, $$1);
-      } catch (glv.b var4) {
-         d.error("Failed to load post chain: {}", $$0, var4);
-         this.i.e.put($$0, Optional.empty());
-         this.h.accept(var4);
-         return null;
-      }
-   }
-
-   @Override
-   public void close() {
-      this.i.close();
-   }
-
-   class a implements AutoCloseable {
-      private final glv.c b;
-      final Map<glw, Optional<gkn>> c = new HashMap<>();
-      final Map<glv.d, fga> d = new HashMap<>();
-      final Map<alz, Optional<gli>> e = new HashMap<>();
-
-      a(final glv.c $$0) {
-         this.b = $$0;
-      }
-
-      @Nullable
-      public gkn a(glw $$0) throws glv.b {
-         Optional<gkn> $$1 = this.c.get($$0);
-         if ($$1 != null) {
-            return $$1.orElse(null);
-         } else {
-            gkn $$2 = this.b($$0);
-            this.c.put($$0, Optional.of($$2));
-            return $$2;
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dA() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dq() * 0.8F);
+         double $$4 = $$0.dE() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.ej());
+         double $$5 = $$0.dG() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dq() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dxu $$6 = $$0.dV().a_($$1);
+         if ($$6.o() != dqu.a && $$6.k($$0.dV(), $$1)) {
+            return $$6;
          }
       }
 
-      gkn b(glw $$0) throws glv.b {
-         glx $$1 = this.b.b.get($$0.a());
-         if ($$1 == null) {
-            throw new glv.b("Could not find program with id: " + $$0.a());
-         } else {
-            glu $$2 = $$1.e().a($$0.c());
-            fga $$3 = this.a($$1.a(), fga.a.a, $$2);
-            fga $$4 = this.a($$1.b(), fga.a.b, $$2);
-            return glv.a($$0, $$1, $$3, $$4);
-         }
-      }
-
-      private fga a(alz $$0, fga.a $$1, glu $$2) throws glv.b {
-         glv.d $$3 = new glv.d($$0, $$1, $$2);
-         fga $$4 = this.d.get($$3);
-         if ($$4 == null) {
-            $$4 = this.a($$3);
-            this.d.put($$3, $$4);
-         }
-
-         return $$4;
-      }
-
-      private fga a(glv.d $$0) throws glv.b {
-         String $$1 = this.b.c.get(new glv.e($$0.a, $$0.b));
-         if ($$1 == null) {
-            throw new glv.b("Could not find shader: " + $$0);
-         } else {
-            String $$2 = ffr.a($$1, $$0.c);
-            return fga.a($$0.a, $$0.b, $$2);
-         }
-      }
-
-      @Nullable
-      public gli a(alz $$0, Set<alz> $$1) throws glv.b {
-         Optional<gli> $$2 = this.e.get($$0);
-         if ($$2 != null) {
-            return $$2.orElse(null);
-         } else {
-            gli $$3 = this.b($$0, $$1);
-            this.e.put($$0, Optional.of($$3));
-            return $$3;
-         }
-      }
-
-      private gli b(alz $$0, Set<alz> $$1) throws glv.b {
-         glj $$2 = this.b.d.get($$0);
-         if ($$2 == null) {
-            throw new glv.b("Could not find post chain with id: " + $$0);
-         } else {
-            return gli.a($$2, glv.this.g, glv.this, $$1);
-         }
-      }
-
-      @Override
-      public void close() {
-         RenderSystem.assertOnRenderThread();
-         this.c.values().forEach($$0 -> $$0.ifPresent(gkn::close));
-         this.d.values().forEach(fga::close);
-         this.c.clear();
-         this.d.clear();
-         this.e.clear();
-      }
+      return null;
    }
 
-   public static class b extends Exception {
-      public b(String $$0) {
-         super($$0);
-      }
+   private static void a(hbj $$0, fgq $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(gkt.i);
+      float $$2 = 0.1F;
+      float $$3 = -1.0F;
+      float $$4 = 1.0F;
+      float $$5 = -1.0F;
+      float $$6 = 1.0F;
+      float $$7 = -0.5F;
+      float $$8 = $$0.c();
+      float $$9 = $$0.d();
+      float $$10 = $$0.g();
+      float $$11 = $$0.h();
+      Matrix4f $$12 = $$1.c().a();
+      fgl $$13 = fgs.b().a(fgv.c.h, fgo.j);
+      $$13.a($$12, -1.0F, -1.0F, -0.5F).a($$9, $$11).a(0.1F, 0.1F, 0.1F, 1.0F);
+      $$13.a($$12, 1.0F, -1.0F, -0.5F).a($$8, $$11).a(0.1F, 0.1F, 0.1F, 1.0F);
+      $$13.a($$12, 1.0F, 1.0F, -0.5F).a($$8, $$10).a(0.1F, 0.1F, 0.1F, 1.0F);
+      $$13.a($$12, -1.0F, 1.0F, -0.5F).a($$9, $$10).a(0.1F, 0.1F, 0.1F, 1.0F);
+      fgm.a($$13.b());
    }
 
-   public static record c(Map<alz, glx> b, Map<glv.e, String> c, Map<alz, glj> d) {
-      public static final glv.c a = new glv.c(Map.of(), Map.of(), Map.of());
-
-      public Map<alz, glx> a() {
-         return this.b;
-      }
-
-      public Map<glv.e, String> b() {
-         return this.c;
-      }
-
-      public Map<alz, glj> c() {
-         return this.d;
-      }
+   private static void b(fme $$0, fgq $$1) {
+      RenderSystem.setShader(gkt.h);
+      RenderSystem.setShaderTexture(0, a);
+      jh $$2 = jh.a($$0.t.dA(), $$0.t.dE(), $$0.t.dG());
+      float $$3 = glh.a($$0.t.dV().G_(), $$0.t.dV().A($$2));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$3, $$3, $$3, 0.1F);
+      float $$4 = 4.0F;
+      float $$5 = -1.0F;
+      float $$6 = 1.0F;
+      float $$7 = -1.0F;
+      float $$8 = 1.0F;
+      float $$9 = -0.5F;
+      float $$10 = -$$0.t.dL() / 64.0F;
+      float $$11 = $$0.t.dN() / 64.0F;
+      Matrix4f $$12 = $$1.c().a();
+      fgl $$13 = fgs.b().a(fgv.c.h, fgo.i);
+      $$13.a($$12, -1.0F, -1.0F, -0.5F).a(4.0F + $$10, 4.0F + $$11);
+      $$13.a($$12, 1.0F, -1.0F, -0.5F).a(0.0F + $$10, 4.0F + $$11);
+      $$13.a($$12, 1.0F, 1.0F, -0.5F).a(0.0F + $$10, 0.0F + $$11);
+      $$13.a($$12, -1.0F, 1.0F, -0.5F).a(4.0F + $$10, 0.0F + $$11);
+      fgm.a($$13.b());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 
-   static record d(alz a, fga.a b, glu c) {
+   private static void c(fme $$0, fgq $$1) {
+      RenderSystem.setShader(gkt.i);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      hbj $$2 = hdv.b.c();
+      RenderSystem.setShaderTexture(0, $$2.i());
+      float $$3 = $$2.c();
+      float $$4 = $$2.d();
+      float $$5 = ($$3 + $$4) / 2.0F;
+      float $$6 = $$2.g();
+      float $$7 = $$2.h();
+      float $$8 = ($$6 + $$7) / 2.0F;
+      float $$9 = $$2.k();
+      float $$10 = bae.h($$9, $$3, $$5);
+      float $$11 = bae.h($$9, $$4, $$5);
+      float $$12 = bae.h($$9, $$6, $$8);
+      float $$13 = bae.h($$9, $$7, $$8);
+      float $$14 = 1.0F;
 
-      @Override
-      public String toString() {
-         String $$0 = this.a + " (" + this.b + ")";
-         return !this.c.c() ? $$0 + " with " + this.c : $$0;
+      for (int $$15 = 0; $$15 < 2; $$15++) {
+         $$1.a();
+         float $$16 = -0.5F;
+         float $$17 = 0.5F;
+         float $$18 = -0.5F;
+         float $$19 = 0.5F;
+         float $$20 = -0.5F;
+         $$1.a((float)(-($$15 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$15 * 2 - 1) * 10.0F));
+         Matrix4f $$21 = $$1.c().a();
+         fgl $$22 = fgs.b().a(fgv.c.h, fgo.j);
+         $$22.a($$21, -0.5F, -0.5F, -0.5F).a($$11, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$22.a($$21, 0.5F, -0.5F, -0.5F).a($$10, $$13).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$22.a($$21, 0.5F, 0.5F, -0.5F).a($$10, $$12).a(1.0F, 1.0F, 1.0F, 0.9F);
+         $$22.a($$21, -0.5F, 0.5F, -0.5F).a($$11, $$12).a(1.0F, 1.0F, 1.0F, 0.9F);
+         fgm.a($$22.b());
+         $$1.b();
       }
-   }
 
-   static record e(alz a, fga.a b) {
-      @Override
-      public String toString() {
-         return this.a + " (" + this.b + ")";
-      }
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

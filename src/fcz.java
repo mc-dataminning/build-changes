@@ -1,83 +1,81 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public abstract class fcz {
-   public boolean a(@Nullable fcz $$0) {
-      return $$0 == null ? false : this == $$0;
+public class fcz implements fcy {
+   private static final String a = "Score";
+   private static final String b = "Locked";
+   private static final String c = "display";
+   private static final String d = "format";
+   private int e;
+   private boolean f = true;
+   @Nullable
+   private xv g;
+   @Nullable
+   private zl h;
+
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public abstract String b();
-
-   public abstract yj d(xv var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract fcz.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract fcz.b k();
-
-   public abstract fcz.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, fcz.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fcz.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static fcz.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public xv a() {
-         return xv.c("team.collision." + this.e);
-      }
+   public void a(int $$0) {
+      this.e = $$0;
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   @Override
+   public boolean b() {
+      return this.f;
+   }
 
-      private static final Map<String, fcz.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (fcz.b)$$0));
-      public final String e;
-      public final int f;
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
 
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
+   @Nullable
+   public xv d() {
+      return this.g;
+   }
+
+   public void a(@Nullable xv $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
+   @Override
+   public zl c() {
+      return this.h;
+   }
+
+   public void b(@Nullable zl $$0) {
+      this.h = $$0;
+   }
+
+   public ux a(js.a $$0) {
+      ux $$1 = new ux();
+      $$1.a("Score", this.e);
+      $$1.a("Locked", this.f);
+      if (this.g != null) {
+         $$1.a("display", xv.a.a(this.g, $$0));
       }
 
-      @Nullable
-      public static fcz.b a(String $$0) {
-         return g.get($$0);
+      if (this.h != null) {
+         zn.b.encodeStart($$0.a(vl.a), this.h).ifSuccess($$1x -> $$1.a("format", $$1x));
       }
 
-      private b(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
+      return $$1;
+   }
+
+   public static fcz a(ux $$0, js.a $$1) {
+      fcz $$2 = new fcz();
+      $$2.e = $$0.h("Score");
+      $$2.f = $$0.q("Locked");
+      if ($$0.b("display", 8)) {
+         $$2.g = xv.a.a($$0.l("display"), $$1);
       }
 
-      public xv b() {
-         return xv.c("team.visibility." + this.e);
+      if ($$0.b("format", 10)) {
+         zn.b.parse($$1.a(vl.a), $$0.c("format")).ifSuccess($$1x -> $$2.h = $$1x);
       }
+
+      return $$2;
    }
 }

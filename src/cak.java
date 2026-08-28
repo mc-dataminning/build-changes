@@ -3,20 +3,41 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class cak {
-   public static bxv<bwb> a() {
-      return cbh.a(
-         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$0 -> $$0.group($$0.b(cff.ab))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof bwb $$1xx ? $$1xx : null)
-                           .filter(bwb::eE)
-                           .filter($$1xx -> $$1xx.aq() != bvm.bS || $$2.N().b(dgw.N))
-                           .ifPresent($$1xx -> $$1.b());
-                        return true;
+   public static <E extends bwh> bxz<E> a(cak.b<E> $$0) {
+      return a(($$0x, $$1) -> true, $$0);
+   }
+
+   public static <E extends bwh> bxz<E> a(cak.a<E> $$0, cak.b<E> $$1) {
+      return cbl.a(
+         (Function<cbl.b<E>, ? extends App<cbl.c<E>, cbo<E>>>)($$2 -> $$2.group($$2.c(cfj.o), $$2.a(cfj.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test($$4, (E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends bwf> $$7 = $$1.get($$4, (E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        bwf $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
+                           return false;
+                        } else {
+                           $$2x.a($$8);
+                           $$3.b();
+                           return true;
+                        }
                      }
-               ))
+                  }
+               }))
       );
+   }
+
+   @FunctionalInterface
+   public interface a<E> {
+      boolean test(ash var1, E var2);
+   }
+
+   @FunctionalInterface
+   public interface b<E> {
+      Optional<? extends bwf> get(ash var1, E var2);
    }
 }

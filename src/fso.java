@@ -1,109 +1,107 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.net.URI;
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-public class fso extends fsp {
-   private static final xv d = xv.c("chat.copy");
-   private static final xv s = xv.c("chat.link.warning");
-   private final String u;
+public class fso extends ftw {
+   private static final xv a = xv.c("accessibility.onboarding.screen.title");
+   private static final xv b = xv.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final fov s;
+   private final fmi u;
    private final boolean v;
+   private boolean w;
+   private float x;
+   private final Runnable y;
+   @Nullable
+   private foo z;
+   private final frs A = new frs(this, this.l(), 33);
 
-   public fso(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), xv.b($$1), $$1, $$2 ? xu.e : xu.g, $$2);
-   }
-
-   public fso(BooleanConsumer $$0, xv $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xu.e : xu.g, $$3);
-   }
-
-   public fso(BooleanConsumer $$0, xv $$1, URI $$2, boolean $$3) {
-      this($$0, $$1, $$2.toString(), $$3);
-   }
-
-   public fso(BooleanConsumer $$0, xv $$1, xv $$2, URI $$3, xv $$4, boolean $$5) {
-      this($$0, $$1, $$2, $$3.toString(), $$4, true);
-   }
-
-   public fso(BooleanConsumer $$0, xv $$1, xv $$2, String $$3, xv $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (xv)($$5 ? xv.c("chat.link.open") : xu.f);
-      this.b = $$4;
-      this.v = !$$5;
-      this.u = $$3;
-   }
-
-   protected static yj a(boolean $$0, String $$1) {
-      return c($$0).b(xu.v).b(xv.b($$1));
-   }
-
-   protected static yj c(boolean $$0) {
-      return xv.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public fso(fmi $$0, Runnable $$1) {
+      super(a);
+      this.u = $$0;
+      this.y = $$1;
+      this.s = new fov(true);
+      this.v = fme.Q().aZ().a();
    }
 
    @Override
-   protected void a(int $$0) {
-      this.c(fny.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fny.a(d, $$0x -> {
-         this.k();
-         this.c.accept(false);
-      }).a(this.n / 2 - 50, $$0, 100, 20).a());
-      this.c(fny.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
-   }
+   public void aT_() {
+      frw $$0 = this.A.c(frw.d());
+      $$0.c().b().a(4);
+      this.z = $$0.a(new foo(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      if (this.u.av().a(this.u) instanceof fok $$1) {
+         this.q = $$1;
+         this.q.j = this.v;
+         $$0.a(this.q);
+      }
 
-   public void k() {
-      this.m.p.a(this.u);
+      $$0.a(foh.b(150, $$0x -> this.a(new fwt(this, this.m.n)), false));
+      $$0.a(foh.a(150, $$0x -> this.a(new fww(this, this.m.n, this.m.ah())), false));
+      this.A.b(fod.a(xu.j, $$0x -> this.aP_()).a());
+      this.A.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.v) {
-         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+   protected void c() {
+      if (this.z != null) {
+         this.z.b(this.n);
+      }
+
+      this.A.a();
+   }
+
+   @Override
+   protected void aG_() {
+      if (this.v && this.q != null) {
+         this.b(this.q);
+      } else {
+         super.aG_();
       }
    }
 
-   public static void a(ftr $$0, String $$1, boolean $$2) {
-      flz $$3 = flz.Q();
-      $$3.a(new fso($$3x -> {
-         if ($$3x) {
-            ae.m().a($$1);
+   private int l() {
+      return 90;
+   }
+
+   @Override
+   public void aP_() {
+      this.a(true, this.y);
+   }
+
+   private void a(ftw $$0) {
+      this.a(false, () -> this.m.a($$0));
+   }
+
+   private void a(boolean $$0, Runnable $$1) {
+      if ($$0) {
+         this.u.ax();
+      }
+
+      Narrator.getNarrator().clear();
+      $$1.run();
+   }
+
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.E();
+      this.s.a($$0, this.n, 1.0F);
+   }
+
+   @Override
+   protected void a(fnq $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void E() {
+      if (!this.w && this.v) {
+         if (this.x < 40.0F) {
+            this.x++;
+         } else if (this.m.aC()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.w = true;
          }
-
-         $$3.a($$0);
-      }, $$1, $$2));
-   }
-
-   public static void a(ftr $$0, URI $$1, boolean $$2) {
-      flz $$3 = flz.Q();
-      $$3.a(new fso($$3x -> {
-         if ($$3x) {
-            ae.m().a($$1);
-         }
-
-         $$3.a($$0);
-      }, $$1.toString(), $$2));
-   }
-
-   public static void a(ftr $$0, URI $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static void a(ftr $$0, String $$1) {
-      a($$0, $$1, true);
-   }
-
-   public static fny.c b(ftr $$0, String $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fny.c b(ftr $$0, URI $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
-   }
-
-   public static fny.c b(ftr $$0, String $$1) {
-      return b($$0, $$1, true);
-   }
-
-   public static fny.c b(ftr $$0, URI $$1) {
-      return b($$0, $$1, true);
+      }
    }
 }

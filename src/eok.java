@@ -1,128 +1,179 @@
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
+import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public final class eok {
-   public static final String a = "INVALID";
-   public static final eok b = new eok(null, new dgg(0, 0), 0, new eor(List.of()));
-   private static final Logger c = LogUtils.getLogger();
-   private final eoc d;
-   private final eor e;
-   private final dgg f;
-   private int g;
-   @Nullable
-   private volatile enu h;
+public class eok {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = -1;
+   private final eay c;
+   private final ke d;
+   private final esm e;
+   private final aly<dhh> f;
+   private final dzq g;
+   private final eed h;
+   private final dhj i;
+   private final din j;
+   private final long k;
+   private final DataFixer l;
+   private final Long2ObjectMap<Object2IntMap<eoj>> m = new Long2ObjectOpenHashMap();
+   private final Map<eoj, Long2BooleanMap> n = new HashMap<>();
 
-   public eok(eoc $$0, dgg $$1, int $$2, eor $$3) {
-      this.d = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.e = $$3;
+   public eok(eay $$0, ke $$1, esm $$2, aly<dhh> $$3, dzq $$4, eed $$5, dhj $$6, din $$7, long $$8, DataFixer $$9) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+   }
+
+   public eol a(dgn $$0, eoj $$1, epg $$2, boolean $$3) {
+      long $$4 = $$0.a();
+      Object2IntMap<eoj> $$5 = (Object2IntMap<eoj>)this.m.get($$4);
+      if ($$5 != null) {
+         return this.a($$5, $$1, $$3);
+      } else {
+         eol $$6 = this.a($$0, $$1, $$3, $$4);
+         if ($$6 != null) {
+            return $$6;
+         } else if (!$$2.a($$0.g, $$0.h, this.k)) {
+            return eol.b;
+         } else {
+            boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));
+            return !$$7 ? eol.b : eol.c;
+         }
+      }
+   }
+
+   private boolean b(dgn $$0, eoj $$1) {
+      return $$1.b(new eoj.a(this.d, this.g, this.j, this.h, this.e, this.k, $$0, this.i, $$1.a()::a)).isPresent();
    }
 
    @Nullable
-   public static eok a(eos $$0, ux $$1, long $$2) {
-      String $$3 = $$1.l("id");
-      if ("INVALID".equals($$3)) {
-         return b;
+   private eol a(dgn $$0, eoj $$1, boolean $$2, long $$3) {
+      wb $$4 = new wb(new wd(vc.a, "DataVersion"), new wd("Level", "Structures", ux.b, "Starts"), new wd("structures", ux.b, "starts"));
+
+      try {
+         this.c.a($$0, $$4).join();
+      } catch (Exception var13) {
+         a.warn("Failed to read chunk {}", $$0, var13);
+         return eol.c;
+      }
+
+      if (!($$4.d() instanceof ux $$7)) {
+         return null;
       } else {
-         kd<eoc> $$4 = $$0.b().e(mb.aT);
-         eoc $$5 = $$4.a(alz.a($$3));
-         if ($$5 == null) {
-            c.error("Unknown stucture id: {}", $$3);
+         int $$8 = eaz.a($$7);
+         if ($$8 <= 1493) {
+            return eol.c;
+         } else {
+            eaz.a($$7, this.f, this.g.c());
+
+            ux $$9;
+            try {
+               $$9 = bbs.c.a(this.l, $$7, $$8);
+            } catch (Exception var12) {
+               a.warn("Failed to partially datafix chunk {}", $$0, var12);
+               return eol.c;
+            }
+
+            Object2IntMap<eoj> $$12 = this.a($$9);
+            if ($$12 == null) {
+               return null;
+            } else {
+               this.a($$3, $$12);
+               return this.a($$12, $$1, $$2);
+            }
+         }
+      }
+   }
+
+   @Nullable
+   private Object2IntMap<eoj> a(ux $$0) {
+      if (!$$0.b("structures", 10)) {
+         return null;
+      } else {
+         ux $$1 = $$0.p("structures");
+         if (!$$1.b("starts", 10)) {
             return null;
          } else {
-            dgg $$6 = new dgg($$1.h("ChunkX"), $$1.h("ChunkZ"));
-            int $$7 = $$1.h("references");
-            vd $$8 = $$1.c("Children", 10);
+            ux $$2 = $$1.p("starts");
+            if ($$2.g()) {
+               return Object2IntMaps.emptyMap();
+            } else {
+               Object2IntMap<eoj> $$3 = new Object2IntOpenHashMap();
+               kd<eoj> $$4 = this.d.e(mb.aU);
 
-            try {
-               eor $$9 = eor.a($$8, $$0);
-               if ($$5 instanceof eqn) {
-                  $$9 = eqn.a($$6, $$2, $$9);
+               for (String $$5 : $$2.e()) {
+                  alz $$6 = alz.c($$5);
+                  if ($$6 != null) {
+                     eoj $$7 = $$4.a($$6);
+                     if ($$7 != null) {
+                        ux $$8 = $$2.p($$5);
+                        if (!$$8.g()) {
+                           String $$9 = $$8.l("id");
+                           if (!"INVALID".equals($$9)) {
+                              int $$10 = $$8.h("references");
+                              $$3.put($$7, $$10);
+                           }
+                        }
+                     }
+                  }
                }
 
-               return new eok($$5, $$6, $$7, $$9);
-            } catch (Exception var11) {
-               c.error("Failed Start with id {}", $$3, var11);
-               return null;
+               return $$3;
             }
          }
       }
    }
 
-   public enu a() {
-      enu $$0 = this.h;
-      if ($$0 == null) {
-         $$0 = this.d.a(this.e.b());
-         this.h = $$0;
-      }
-
-      return $$0;
+   private static Object2IntMap<eoj> a(Object2IntMap<eoj> $$0) {
+      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
    }
 
-   public void a(dhy $$0, dhw $$1, dzj $$2, bam $$3, enu $$4, dgg $$5) {
-      List<eog> $$6 = this.e.c();
-      if (!$$6.isEmpty()) {
-         enu $$7 = $$6.get(0).f;
-         jh $$8 = $$7.g();
-         jh $$9 = new jh($$8.u(), $$7.i(), $$8.w());
+   private eol a(Object2IntMap<eoj> $$0, eoj $$1, boolean $$2) {
+      int $$3 = $$0.getOrDefault($$1, -1);
+      return $$3 == -1 || $$2 && $$3 != 0 ? eol.b : eol.a;
+   }
 
-         for (eog $$10 : $$6) {
-            if ($$10.f().a($$4)) {
-               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
-            }
+   public void a(dgn $$0, Map<eoj, eor> $$1) {
+      long $$2 = $$0.a();
+      Object2IntMap<eoj> $$3 = new Object2IntOpenHashMap();
+      $$1.forEach(($$1x, $$2x) -> {
+         if ($$2x.b()) {
+            $$3.put($$1x, $$2x.f());
+         }
+      });
+      this.a($$2, $$3);
+   }
+
+   private void a(long $$0, Object2IntMap<eoj> $$1) {
+      this.m.put($$0, a($$1));
+      this.n.values().forEach($$1x -> $$1x.remove($$0));
+   }
+
+   public void a(dgn $$0, eoj $$1) {
+      this.m.compute($$0.a(), ($$1x, $$2) -> {
+         if ($$2 == null || $$2.isEmpty()) {
+            $$2 = new Object2IntOpenHashMap();
          }
 
-         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
-      }
-   }
-
-   public ux a(eos $$0, dgg $$1) {
-      ux $$2 = new ux();
-      if (this.b()) {
-         $$2.a("id", $$0.b().e(mb.aT).b(this.d).toString());
-         $$2.a("ChunkX", $$1.g);
-         $$2.a("ChunkZ", $$1.h);
-         $$2.a("references", this.g);
-         $$2.a("Children", this.e.a($$0));
+         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
          return $$2;
-      } else {
-         $$2.a("id", "INVALID");
-         return $$2;
-      }
-   }
-
-   public boolean b() {
-      return !this.e.a();
-   }
-
-   public dgg c() {
-      return this.f;
-   }
-
-   public boolean d() {
-      return this.g < this.g();
-   }
-
-   public void e() {
-      this.g++;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   protected int g() {
-      return 1;
-   }
-
-   public eoc h() {
-      return this.d;
-   }
-
-   public List<eog> i() {
-      return this.e.c();
+      });
    }
 }

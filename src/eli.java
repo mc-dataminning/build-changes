@@ -1,37 +1,49 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eli extends elm {
-   public static final MapCodec<eli> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eli::new, $$0 -> $$0.b);
-   private final float b;
+public record eli(ela b, List<eli.a> c) {
+   public static final Codec<eli> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ela.a.fieldOf("fallback").forGetter(eli::a), eli.a.a.listOf().fieldOf("rules").forGetter(eli::b)).apply($$0, eli::new)
+   );
 
-   public eli(float $$0) {
-      this.b = $$0;
+   public static eli a(ela $$0) {
+      return new eli($$0, List.of());
    }
 
-   @Override
-   protected eln<?> a() {
-      return eln.e;
+   public static eli a(dkl $$0) {
+      return a(ela.a($$0));
    }
 
-   @Override
-   public void a(elm.a $$0) {
-      bam $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<jh> $$2 = $$0.c();
-         int $$3 = $$2.get(0).v();
-         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-            for (jm $$3x : jm.c.a) {
-               if ($$1.i() <= 0.25F) {
-                  jm $$4 = $$3x.g();
-                  jh $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                  if ($$0.a($$5)) {
-                     $$0.a($$5, dkg.fQ.m().b(dlm.c, Integer.valueOf($$1.a(3))).b(dlm.aF, $$3x));
-                  }
-               }
-            }
-         });
+   public dxu a(dif $$0, bam $$1, jh $$2) {
+      for (eli.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
+         }
+      }
+
+      return this.b.a($$1, $$2);
+   }
+
+   public ela a() {
+      return this.b;
+   }
+
+   public List<eli.a> b() {
+      return this.c;
+   }
+
+   public static record a(eew b, ela c) {
+      public static final Codec<eli.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eew.b.fieldOf("if_true").forGetter(eli.a::a), ela.a.fieldOf("then").forGetter(eli.a::b)).apply($$0, eli.a::new)
+      );
+
+      public eew a() {
+         return this.b;
+      }
+
+      public ela b() {
+         return this.c;
       }
    }
 }

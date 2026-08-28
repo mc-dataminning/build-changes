@@ -1,16 +1,27 @@
-public class gvf extends gvy<had, gba> {
-   private static final alz a = alz.b("textures/entity/zombie/drowned_outer_layer.png");
-   private final gba b;
-   private final gba c;
+public class gvf extends gvm<gxm, gbc> {
+   private static final alz a = alz.b("textures/entity/creeper/creeper_armor.png");
+   private final gbc b;
 
-   public gvf(gtg<had, gba> $$0, ged $$1) {
+   public gvf(gtl<gxm, gbc> $$0, gei $$1) {
       super($$0);
-      this.b = new gba($$1.a(geg.aA));
-      this.c = new gba($$1.a(geg.ax));
+      this.b = new gbc($$1.a(gel.ag));
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, had $$3, float $$4, float $$5) {
-      gba $$6 = $$3.ae ? this.c : this.b;
-      a($$6, a, $$0, $$1, $$2, $$3, -1);
+   protected boolean a(gxm $$0) {
+      return $$0.b;
+   }
+
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected alz a() {
+      return a;
+   }
+
+   protected gbc b() {
+      return this.b;
    }
 }

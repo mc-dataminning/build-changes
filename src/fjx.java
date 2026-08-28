@@ -1,19 +1,20 @@
-import java.util.function.Consumer;
+public class fjx extends fjw {
+   private final fld a;
 
-public class fjx {
-   private static final int a = 8226750;
-   private static final xv b = xv.c("mco.info").b(8226750);
-   private static final xv c = xv.c("mco.warning").b(-65536);
-
-   public static fpb a(ftr $$0, xv $$1, Consumer<fpb> $$2) {
-      return new fpb.a($$0, b).a($$1).a(xu.j, $$2).a(xu.e, fpb::aP_).a();
+   public fjx(ftw $$0, fld $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
-   public static fpb b(ftr $$0, xv $$1, Consumer<fpb> $$2) {
-      return new fpb.a($$0, c).a($$1).a(xu.j, $$2).a(xu.e, fpb::aP_).a();
+   @Override
+   public void e() {
+      super.e();
+      this.a.c();
    }
 
-   public static fpb c(ftr $$0, xv $$1, Consumer<fpb> $$2) {
-      return new fpb.a($$0, c).a($$1).a(xu.h, $$2).a();
+   @Override
+   protected void f() {
+      this.a.b();
+      super.f();
    }
 }

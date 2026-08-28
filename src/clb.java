@@ -1,100 +1,80 @@
 import javax.annotation.Nullable;
 
-public class clb extends cks {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
+public class clb extends ckv {
+   private static final cgw b = cgw.a().d();
    @Nullable
-   private buy g;
+   private euk c;
+   @Nullable
+   private fbx d;
 
-   public clb(ckp $$0) {
+   public clb(ckt $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         fbs $$0 = this.a.J(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.c.dA();
-         double $$2 = this.a.c.e(0.5);
-         double $$3 = this.a.c.dG();
-
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.dY().k() / 2.0;
-            double $$6 = $$2 + this.a.dY().k() / 2.0;
-            double $$7 = $$3 + this.a.dY().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dV().a(ls.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
-      }
-   }
-
-   @Override
-   public void a(ash $$0) {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.gi().a(clf.e);
-         } else {
-            this.a.gi().a(clf.g);
-         }
-      } else if (this.e == 10) {
-         fbs $$1 = new fbs(this.a.c.dA() - this.a.dA(), 0.0, this.a.c.dG() - this.a.dG()).d();
-         float $$2 = 5.0F;
-         double $$3 = this.a.c.dA() + $$1.d * 5.0 / 2.0;
-         double $$4 = this.a.c.dG() + $$1.f * 5.0 / 2.0;
-         double $$5 = this.a.c.e(0.5);
-         double $$6 = $$5;
-         jh.a $$7 = new jh.a($$3, $$5, $$4);
-
-         while ($$0.u($$7)) {
-            if (--$$6 < 0.0) {
-               $$6 = $$5;
-               break;
-            }
-
-            $$7.b($$3, $$6, $$4);
-         }
-
-         $$6 = (double)(bae.a($$6) + 1);
-         this.g = new buy($$0, $$3, $$6, $$4);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.a(200);
-         this.g.a(ls.h);
-         this.g.a(new buk(bum.g));
-         $$0.b(this.g);
-      }
+   public clj<clb> h() {
+      return clj.c;
    }
 
    @Override
    public void c() {
-      this.e = 0;
-      this.f++;
+      this.c = null;
+      this.d = null;
    }
 
    @Override
-   public void d() {
-      if (this.g != null) {
-         this.g.at();
-         this.g = null;
+   public void a(ash $$0) {
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+         this.b($$0);
       }
    }
 
+   @Nullable
    @Override
-   public clf<clb> h() {
-      return clf.f;
+   public fbx f() {
+      return this.d;
    }
 
-   public void i() {
-      this.f = 0;
+   private void b(ash $$0) {
+      if (this.c == null || this.c.c()) {
+         int $$1 = this.a.t();
+         jh $$2 = $$0.a(edp.a.f, egu.a(this.a.m()));
+         cpw $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
+         int $$5;
+         if ($$3 != null) {
+            fbx $$4 = new fbx($$3.dA(), 0.0, $$3.dG()).d();
+            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
+         } else {
+            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
+         }
+
+         eui $$7 = new eui($$2.u(), $$2.v(), $$2.w());
+         this.c = this.a.a($$1, $$5, $$7);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.i();
+      if (this.c != null && this.c.c()) {
+         this.a.gi().a(clj.d);
+      }
+   }
+
+   private void i() {
+      if (this.c != null && !this.c.c()) {
+         kl $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new fbx($$1, $$3, $$2);
+      }
    }
 }

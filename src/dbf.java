@@ -1,77 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class dbf extends dcq {
-   private final dbm c;
-   private final float d;
-   private final int e;
+public class dbf extends dbh {
+   private final jh b;
+   protected boolean a = true;
 
-   public dbf(String $$0, dbm $$1, dbv $$2, cxk $$3, float $$4, int $$5) {
-      super($$0, $$2, $$3);
-      this.c = $$1;
-      this.d = $$4;
-      this.e = $$5;
+   public dbf(cpw $$0, bth $$1, cxo $$2, fbt $$3) {
+      this($$0.dV(), $$0, $$1, $$2, $$3);
+   }
+
+   public dbf(dbh $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
+
+   protected dbf(dhh $$0, @Nullable cpw $$1, bth $$2, cxo $$3, fbt $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.b().a($$4.c());
+      this.a = $$0.a_($$4.b()).a(this);
+   }
+
+   public static dbf a(dbf $$0, jh $$1, jm $$2) {
+      return new dbf(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new fbt(
+            new fbx((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
-   public abstract dci<? extends dbf> a();
-
-   @Override
-   public abstract dcj<? extends dbf> b();
-
-   public float c() {
-      return this.d;
+   public jh a() {
+      return this.a ? super.a() : this.b;
    }
 
-   public int d() {
-      return this.e;
+   public boolean b() {
+      return this.a || this.q().a_(this.a()).a(this);
    }
 
-   public dbm e() {
-      return this.c;
+   public boolean c() {
+      return this.a;
    }
 
-   protected abstract cxg f();
-
-   @Override
-   public List<ddc> g() {
-      return List.of(new ddb(this.k().b(), ddi.a.c, new ddi.e(this.l()), new ddi.d(this.f())));
+   public jm d() {
+      return jm.a(this.o())[0];
    }
 
-   @FunctionalInterface
-   public interface a<T extends dbf> {
-      T create(String var1, dbm var2, dbv var3, cxk var4, float var5, int var6);
+   public jm e() {
+      return jm.a(this.o(), jm.a.b);
    }
 
-   public static class b<T extends dbf> implements dci<T> {
-      private final MapCodec<T> w;
-      private final zt<xg, T> x;
+   public jm[] f() {
+      jm[] $$0 = jm.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         jm $$1 = this.k();
+         int $$2 = 0;
 
-      public b(dbf.a<T> $$0, int $$1) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$2 -> $$2.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(dcq::j),
-                     dbm.d.fieldOf("category").orElse(dbm.c).forGetter(dbf::e),
-                     dbv.d.fieldOf("ingredient").forGetter(dcq::k),
-                     cxk.e.fieldOf("result").forGetter(dcq::l),
-                     Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(dbf::c),
-                     Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter(dbf::d)
-                  )
-                  .apply($$2, $$0::create)
-         );
-         this.x = zt.a(zr.o, dcq::j, dbm.e, dbf::e, dbv.a, dcq::k, cxk.i, dcq::l, zr.l, dbf::c, zr.g, dbf::d, $$0::create);
-      }
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
 
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
 
-      @Override
-      public zt<xg, T> b() {
-         return this.x;
+         return $$0;
       }
    }
 }

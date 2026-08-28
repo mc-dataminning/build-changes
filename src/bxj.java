@@ -1,42 +1,213 @@
-public class bxj {
-   public static final jq<bxe> a = a("armor", new bxl("attribute.name.armor", 0.0, 0.0, 30.0).a(true));
-   public static final jq<bxe> b = a("armor_toughness", new bxl("attribute.name.armor_toughness", 0.0, 0.0, 20.0).a(true));
-   public static final jq<bxe> c = a("attack_damage", new bxl("attribute.name.attack_damage", 2.0, 0.0, 2048.0));
-   public static final jq<bxe> d = a("attack_knockback", new bxl("attribute.name.attack_knockback", 0.0, 0.0, 5.0));
-   public static final jq<bxe> e = a("attack_speed", new bxl("attribute.name.attack_speed", 4.0, 0.0, 1024.0).a(true));
-   public static final jq<bxe> f = a("block_break_speed", new bxl("attribute.name.block_break_speed", 1.0, 0.0, 1024.0).a(true));
-   public static final jq<bxe> g = a("block_interaction_range", new bxl("attribute.name.block_interaction_range", 4.5, 0.0, 64.0).a(true));
-   public static final jq<bxe> h = a("burning_time", new bxl("attribute.name.burning_time", 1.0, 0.0, 1024.0).a(true).a(bxe.a.c));
-   public static final jq<bxe> i = a("explosion_knockback_resistance", new bxl("attribute.name.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true));
-   public static final jq<bxe> j = a("entity_interaction_range", new bxl("attribute.name.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
-   public static final jq<bxe> k = a("fall_damage_multiplier", new bxl("attribute.name.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true).a(bxe.a.c));
-   public static final jq<bxe> l = a("flying_speed", new bxl("attribute.name.flying_speed", 0.4, 0.0, 1024.0).a(true));
-   public static final jq<bxe> m = a("follow_range", new bxl("attribute.name.follow_range", 32.0, 0.0, 2048.0));
-   public static final jq<bxe> n = a("gravity", new bxl("attribute.name.gravity", 0.08, -1.0, 1.0).a(true).a(bxe.a.b));
-   public static final jq<bxe> o = a("jump_strength", new bxl("attribute.name.jump_strength", 0.42F, 0.0, 32.0).a(true));
-   public static final jq<bxe> p = a("knockback_resistance", new bxl("attribute.name.knockback_resistance", 0.0, 0.0, 1.0));
-   public static final jq<bxe> q = a("luck", new bxl("attribute.name.luck", 0.0, -1024.0, 1024.0).a(true));
-   public static final jq<bxe> r = a("max_absorption", new bxl("attribute.name.max_absorption", 0.0, 0.0, 2048.0).a(true));
-   public static final jq<bxe> s = a("max_health", new bxl("attribute.name.max_health", 20.0, 1.0, 1024.0).a(true));
-   public static final jq<bxe> t = a("mining_efficiency", new bxl("attribute.name.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
-   public static final jq<bxe> u = a("movement_efficiency", new bxl("attribute.name.movement_efficiency", 0.0, 0.0, 1.0).a(true));
-   public static final jq<bxe> v = a("movement_speed", new bxl("attribute.name.movement_speed", 0.7, 0.0, 1024.0).a(true));
-   public static final jq<bxe> w = a("oxygen_bonus", new bxl("attribute.name.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
-   public static final jq<bxe> x = a("safe_fall_distance", new bxl("attribute.name.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
-   public static final jq<bxe> y = a("scale", new bxl("attribute.name.scale", 1.0, 0.0625, 16.0).a(true).a(bxe.a.b));
-   public static final jq<bxe> z = a("sneaking_speed", new bxl("attribute.name.sneaking_speed", 0.3, 0.0, 1.0).a(true));
-   public static final jq<bxe> A = a("spawn_reinforcements", new bxl("attribute.name.spawn_reinforcements", 0.0, 0.0, 1.0));
-   public static final jq<bxe> B = a("step_height", new bxl("attribute.name.step_height", 0.6, 0.0, 10.0).a(true));
-   public static final jq<bxe> C = a("submerged_mining_speed", new bxl("attribute.name.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
-   public static final jq<bxe> D = a("sweeping_damage_ratio", new bxl("attribute.name.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
-   public static final jq<bxe> E = a("tempt_range", new bxl("attribute.name.tempt_range", 10.0, 0.0, 2048.0));
-   public static final jq<bxe> F = a("water_movement_efficiency", new bxl("attribute.name.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   private static jq<bxe> a(String $$0, bxe $$1) {
-      return kd.b(ma.s, alz.b($$0), $$1);
+public class bxj {
+   private static final String b = "base";
+   private static final String c = "modifiers";
+   public static final String a = "id";
+   private final jq<bxi> d;
+   private final Map<bxl.a, Map<alz, bxl>> e = Maps.newEnumMap(bxl.a.class);
+   private final Map<alz, bxl> f = new Object2ObjectArrayMap();
+   private final Map<alz, bxl> g = new Object2ObjectArrayMap();
+   private double h;
+   private boolean i = true;
+   private double j;
+   private final Consumer<bxj> k;
+
+   public bxj(jq<bxi> $$0, Consumer<bxj> $$1) {
+      this.d = $$0;
+      this.k = $$1;
+      this.h = $$0.a().a();
    }
 
-   public static jq<bxe> a(kd<bxe> $$0) {
-      return s;
+   public jq<bxi> a() {
+      return this.d;
+   }
+
+   public double b() {
+      return this.h;
+   }
+
+   public void a(double $$0) {
+      if ($$0 != this.h) {
+         this.h = $$0;
+         this.e();
+      }
+   }
+
+   @VisibleForTesting
+   Map<alz, bxl> a(bxl.a $$0) {
+      return this.e.computeIfAbsent($$0, $$0x -> new Object2ObjectOpenHashMap());
+   }
+
+   public Set<bxl> c() {
+      return ImmutableSet.copyOf(this.f.values());
+   }
+
+   public Set<bxl> d() {
+      return ImmutableSet.copyOf(this.g.values());
+   }
+
+   @Nullable
+   public bxl a(alz $$0) {
+      return this.f.get($$0);
+   }
+
+   public boolean b(alz $$0) {
+      return this.f.get($$0) != null;
+   }
+
+   private void f(bxl $$0) {
+      bxl $$1 = this.f.putIfAbsent($$0.b(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.d()).put($$0.b(), $$0);
+         this.e();
+      }
+   }
+
+   public void a(bxl $$0) {
+      bxl $$1 = this.f.put($$0.b(), $$0);
+      if ($$0 != $$1) {
+         this.a($$0.d()).put($$0.b(), $$0);
+         this.e();
+      }
+   }
+
+   public void b(bxl $$0) {
+      this.f($$0);
+   }
+
+   public void c(bxl $$0) {
+      this.c($$0.b());
+      this.f($$0);
+      this.g.put($$0.b(), $$0);
+   }
+
+   public void d(bxl $$0) {
+      this.f($$0);
+      this.g.put($$0.b(), $$0);
+   }
+
+   public void a(Collection<bxl> $$0) {
+      for (bxl $$1 : $$0) {
+         this.d($$1);
+      }
+   }
+
+   protected void e() {
+      this.i = true;
+      this.k.accept(this);
+   }
+
+   public void e(bxl $$0) {
+      this.c($$0.b());
+   }
+
+   public boolean c(alz $$0) {
+      bxl $$1 = this.f.remove($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         this.a($$1.d()).remove($$0);
+         this.g.remove($$0);
+         this.e();
+         return true;
+      }
+   }
+
+   public void f() {
+      for (bxl $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double g() {
+      if (this.i) {
+         this.j = this.i();
+         this.i = false;
+      }
+
+      return this.j;
+   }
+
+   private double i() {
+      double $$0 = this.b();
+
+      for (bxl $$1 : this.b(bxl.a.a)) {
+         $$0 += $$1.c();
+      }
+
+      double $$2 = $$0;
+
+      for (bxl $$3 : this.b(bxl.a.b)) {
+         $$2 += $$0 * $$3.c();
+      }
+
+      for (bxl $$4 : this.b(bxl.a.c)) {
+         $$2 *= 1.0 + $$4.c();
+      }
+
+      return this.d.a().a($$2);
+   }
+
+   private Collection<bxl> b(bxl.a $$0) {
+      return this.e.getOrDefault($$0, Map.of()).values();
+   }
+
+   public void a(bxj $$0) {
+      this.h = $$0.h;
+      this.f.clear();
+      this.f.putAll($$0.f);
+      this.g.clear();
+      this.g.putAll($$0.g);
+      this.e.clear();
+      $$0.e.forEach(($$0x, $$1) -> this.a($$0x).putAll((Map<? extends alz, ? extends bxl>)$$1));
+      this.e();
+   }
+
+   public ux h() {
+      ux $$0 = new ux();
+      aly<bxi> $$1 = this.d.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
+      $$0.a("id", $$1.a().toString());
+      $$0.a("base", this.h);
+      if (!this.g.isEmpty()) {
+         vd $$2 = new vd();
+
+         for (bxl $$3 : this.g.values()) {
+            $$2.add($$3.a());
+         }
+
+         $$0.a("modifiers", $$2);
+      }
+
+      return $$0;
+   }
+
+   public void a(ux $$0) {
+      this.h = $$0.k("base");
+      if ($$0.b("modifiers", 9)) {
+         vd $$1 = $$0.c("modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bxl $$3 = bxl.a($$1.a($$2));
+            if ($$3 != null) {
+               this.f.put($$3.b(), $$3);
+               this.a($$3.d()).put($$3.b(), $$3);
+               this.g.put($$3.b(), $$3);
+            }
+         }
+      }
+
+      this.e();
    }
 }

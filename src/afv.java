@@ -4,7 +4,7 @@ public class afv implements aac<acr> {
    public static final zt<ws, afv> a = aac.a(afv::a, afv::new);
    private final int b;
 
-   public afv(bvf $$0) {
+   public afv(bvj $$0) {
       this.b = $$0.ar();
    }
 
@@ -26,7 +26,7 @@ public class afv implements aac<acr> {
    }
 
    @Nullable
-   public bvf a(dha $$0) {
+   public bvj a(dhh $$0) {
       return $$0.a(this.b);
    }
 }

@@ -1,21 +1,66 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class boy implements bot<StringReader, alz> {
-   public static final bot<StringReader, alz> a = new boy();
+public final class boy {
+   private final Object2ObjectMap<bor<?>, Object> a = new Object2ObjectArrayMap();
 
-   private boy() {
+   public <T> void a(bor<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   @Nullable
+   public <T> T a(bor<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   public <T> T b(bor<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   public <T> T b(bor<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bor<T>... $$0) {
+      for (bor<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @SafeVarargs
+   public final <T> T b(bor<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
    }
 
    @Override
-   public Optional<alz> a(bos<StringReader> $$0) {
-      $$0.b().skipWhitespace();
+   public String toString() {
+      return this.a.toString();
+   }
 
-      try {
-         return Optional.of(alz.b($$0.b()));
-      } catch (CommandSyntaxException var3) {
-         return Optional.empty();
+   public void a(boy $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof boy $$1 ? this.a.equals($$1.a) : false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

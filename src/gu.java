@@ -1,7 +1,7 @@
 public interface gu {
-   fbs a(ew var1);
+   fbx a(ew var1);
 
-   fbr b(ew var1);
+   fbw b(ew var1);
 
    default jh c(ew $$0) {
       return jh.a((ka)this.a($$0));

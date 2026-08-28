@@ -1,46 +1,37 @@
-public final class fcl extends fcb {
-   private final fcb d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import javax.annotation.Nullable;
 
-   protected fcl(fcb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public class fcl extends fch {
+   @Nullable
+   private jh b;
+   @Nullable
+   private jh c;
+
+   protected fcl(crv $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
+   }
+
+   private void a(crv $$0) {
+      jh $$1 = $$0.p();
+      dxu $$2 = $$0.dV().a_($$1);
+      boolean $$3 = dka.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         dyx $$4 = $$2.c(((dka)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(jm.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(jm.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(jm.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return bae.a($$1, $$2, $$3) - $$2;
+   public fcr a(dxu $$0, dgq $$1, jh $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fco.a();
    }
 }

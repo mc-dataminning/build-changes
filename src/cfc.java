@@ -1,32 +1,39 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
 
-public enum cfc implements bba {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class cfc<T extends bwh & bwk> extends cdd {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<cfc> n = bba.a(cfc::values);
-
-   private cfc(final String $$0, final int $$1, final int $$2, final int $$3, final int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public cfc(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean b() {
+      return a(this.b).N().b(dhd.P) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.ep() != null && this.b.ep().aq() == bvq.bS && this.b.eq() > this.d;
+   }
+
+   @Override
+   public void d() {
+      this.d = this.b.eq();
+      this.b.ae_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bwk)$$0).forEach(bwk::ae_);
+      }
+
+      super.d();
+   }
+
+   private List<? extends bwh> i() {
+      double $$0 = this.b.h(bxn.m);
+      fbs $$1 = fbs.a(this.b.dt()).c($$0, 10.0, $$0);
+      return this.b.dV().a((Class<? extends bwh>)this.b.getClass(), $$1, bvo.f);
    }
 }

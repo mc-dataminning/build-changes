@@ -1,22 +1,32 @@
 import com.mojang.serialization.MapCodec;
 
-public class djc extends dke {
-   public static final MapCodec<djc> a = b(djc::new);
+public abstract class djc extends djx {
+   private final cwl a;
 
-   @Override
-   public MapCodec<? extends djc> a() {
-      return a;
-   }
-
-   public djc(dxm.d $$0) {
-      super($$0);
+   protected djc(cwl $$0, dxt.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   protected void a(dha $$0, dxn $$1, fbo $$2, cql $$3) {
-      if (!$$0.C) {
-         jh $$4 = $$2.b();
-         $$0.a(null, $$4, axf.E, axg.e, 1.0F, 0.5F + $$0.A.i() * 1.2F);
-      }
+   protected abstract MapCodec<? extends djc> a();
+
+   @Override
+   public boolean a(dxu $$0) {
+      return true;
+   }
+
+   @Override
+   public duw a(jh $$0, dxu $$1) {
+      return new dul($$0, $$1, this.a);
+   }
+
+   @Override
+   public cxo a(dhk $$0, jh $$1, dxu $$2) {
+      return $$0.c_($$1) instanceof dul $$3 ? $$3.c() : super.a($$0, $$1, $$2);
+   }
+
+   public cwl b() {
+      return this.a;
    }
 }

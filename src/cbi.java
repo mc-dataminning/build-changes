@@ -1,35 +1,80 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
 
-public final class cbi<F extends K1, Value> {
-   private final bxd<?> a;
-   private final cff<Value> b;
-   private final App<F, Value> c;
+public class cbi extends cbj {
+   private static final List<cxk> c = ImmutableList.of(cxs.pR, cxs.wb);
 
-   public cbi(bxd<?> $$0, cff<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   @Override
+   protected void a(ash $$0, cpi $$1) {
+      Optional<jp> $$2 = $$1.eb().c(cfj.c);
+      if (!$$2.isEmpty()) {
+         jp $$3 = $$2.get();
+         dxu $$4 = $$0.a_($$3.b());
+         if ($$4.a(dkn.px)) {
+            this.c($$0, $$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
+      }
    }
 
-   public App<F, Value> a() {
-      return this.c;
+   private void a(ash $$0, cpi $$1, jp $$2, dxu $$3) {
+      jh $$4 = $$2.b();
+      if ($$3.c(dlx.e) == 8) {
+         $$3 = dlx.a($$1, $$3, (dhh)$$0, $$4);
+      }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      btp $$8 = $$1.t();
+      int $$9 = $$8.b();
+      dxu $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         cxo $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.L();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = dlx.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(dlx.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
+   private void a(ash $$0, dxu $$1, jh $$2, dxu $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
    }
 
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
-   }
-
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+   private void c(ash $$0, cpi $$1) {
+      btp $$2 = $$1.t();
+      if ($$2.a_(cxs.pT) <= 36) {
+         int $$3 = $$2.a_(cxs.pS);
+         int $$4 = 3;
+         int $$5 = 3;
+         int $$6 = Math.min(3, $$3 / 3);
+         if ($$6 != 0) {
+            int $$7 = $$6 * 3;
+            $$2.a(cxs.pS, $$7);
+            cxo $$8 = $$2.b(new cxo(cxs.pT, $$6));
+            if (!$$8.f()) {
+               $$1.a($$0, $$8, 0.5F);
+            }
+         }
+      }
    }
 }

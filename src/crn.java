@@ -1,59 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
-
 public class crn {
-   private final List<crk> a = Lists.newArrayList();
-   private int b;
+   public static final crn a = a("core");
+   public static final crn b = a("idle");
+   public static final crn c = a("work");
+   public static final crn d = a("play");
+   public static final crn e = a("rest");
+   public static final crn f = a("meet");
+   public static final crn g = a("panic");
+   public static final crn h = a("raid");
+   public static final crn i = a("pre_raid");
+   public static final crn j = a("hide");
+   public static final crn k = a("fight");
+   public static final crn l = a("celebrate");
+   public static final crn m = a("admire_item");
+   public static final crn n = a("avoid");
+   public static final crn o = a("ride");
+   public static final crn p = a("play_dead");
+   public static final crn q = a("long_jump");
+   public static final crn r = a("ram");
+   public static final crn s = a("tongue");
+   public static final crn t = a("swim");
+   public static final crn u = a("lay_spawn");
+   public static final crn v = a("sniff");
+   public static final crn w = a("investigate");
+   public static final crn x = a("roar");
+   public static final crn y = a("emerge");
+   public static final crn z = a("dig");
+   private final String A;
+   private final int B;
 
-   public ImmutableList<crk> a() {
-      return ImmutableList.copyOf(this.a);
+   private crn(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public crn a(int $$0, float $$1) {
-      this.a.add(new crk($$0, $$1));
-      this.b();
-      return this;
+   public String a() {
+      return this.A;
    }
 
-   public crn a(Collection<crk> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
+   private static crn a(String $$0) {
+      return kd.a(ma.C, $$0, new crn($$0));
    }
 
-   private void b() {
-      Int2ObjectSortedMap<crk> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         crn $$1 = (crn)$$0;
+         return this.A.equals($$1.A);
       } else {
-         crk $$1 = this.a.get(this.b);
-         crk $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            crk $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.B;
+   }
+
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

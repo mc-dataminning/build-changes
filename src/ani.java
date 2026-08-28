@@ -90,7 +90,7 @@ public class ani {
                                                                            fv.a($$0x, "attribute"),
                                                                            fx.a($$0x, "id"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           bxh.a.a
+                                                                           bxl.a.a
                                                                         )
                                                                   )
                                                             ))
@@ -103,7 +103,7 @@ public class ani {
                                                                         fv.a($$0x, "attribute"),
                                                                         fx.a($$0x, "id"),
                                                                         DoubleArgumentType.getDouble($$0x, "value"),
-                                                                        bxh.a.b
+                                                                        bxl.a.b
                                                                      )
                                                                )
                                                          ))
@@ -116,7 +116,7 @@ public class ani {
                                                                      fv.a($$0x, "attribute"),
                                                                      fx.a($$0x, "id"),
                                                                      DoubleArgumentType.getDouble($$0x, "value"),
-                                                                     bxh.a.c
+                                                                     bxl.a.c
                                                                   )
                                                             )
                                                       )
@@ -160,8 +160,8 @@ public class ani {
       );
    }
 
-   private static bxf a(bvf $$0, jq<bxe> $$1) throws CommandSyntaxException {
-      bxf $$2 = a($$0).eW().a($$1);
+   private static bxj a(bvj $$0, jq<bxi> $$1) throws CommandSyntaxException {
+      bxj $$2 = a($$0).eW().a($$1);
       if ($$2 == null) {
          throw b.create($$0.al(), a($$1));
       } else {
@@ -169,16 +169,16 @@ public class ani {
       }
    }
 
-   private static bwb a(bvf $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof bwb)) {
+   private static bwf a(bvj $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bwf)) {
          throw a.create($$0.al());
       } else {
-         return (bwb)$$0;
+         return (bwf)$$0;
       }
    }
 
-   private static bwb b(bvf $$0, jq<bxe> $$1) throws CommandSyntaxException {
-      bwb $$2 = a($$0);
+   private static bwf b(bvj $$0, jq<bxi> $$1) throws CommandSyntaxException {
+      bwf $$2 = a($$0);
       if (!$$2.eW().b($$1)) {
          throw b.create($$0.al(), a($$1));
       } else {
@@ -186,23 +186,23 @@ public class ani {
       }
    }
 
-   private static int a(ew $$0, bvf $$1, jq<bxe> $$2, double $$3) throws CommandSyntaxException {
-      bwb $$4 = b($$1, $$2);
+   private static int a(ew $$0, bvj $$1, jq<bxi> $$2, double $$3) throws CommandSyntaxException {
+      bwf $$4 = b($$1, $$2);
       double $$5 = $$4.h($$2);
       $$0.a(() -> xv.a("commands.attribute.value.get.success", a($$2), $$1.al(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(ew $$0, bvf $$1, jq<bxe> $$2, double $$3) throws CommandSyntaxException {
-      bwb $$4 = b($$1, $$2);
+   private static int b(ew $$0, bvj $$1, jq<bxi> $$2, double $$3) throws CommandSyntaxException {
+      bwf $$4 = b($$1, $$2);
       double $$5 = $$4.i($$2);
       $$0.a(() -> xv.a("commands.attribute.base_value.get.success", a($$2), $$1.al(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(ew $$0, bvf $$1, jq<bxe> $$2, alz $$3, double $$4) throws CommandSyntaxException {
-      bwb $$5 = b($$1, $$2);
-      bxg $$6 = $$5.eW();
+   private static int a(ew $$0, bvj $$1, jq<bxi> $$2, alz $$3, double $$4) throws CommandSyntaxException {
+      bwf $$5 = b($$1, $$2);
+      bxk $$6 = $$5.eW();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.al(), a($$2), $$3);
       } else {
@@ -212,15 +212,15 @@ public class ani {
       }
    }
 
-   private static int c(ew $$0, bvf $$1, jq<bxe> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(ew $$0, bvj $$1, jq<bxi> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
       $$0.a(() -> xv.a("commands.attribute.base_value.set.success", a($$2), $$1.al(), $$3), false);
       return 1;
    }
 
-   private static int a(ew $$0, bvf $$1, jq<bxe> $$2, alz $$3, double $$4, bxh.a $$5) throws CommandSyntaxException {
-      bxf $$6 = a($$1, $$2);
-      bxh $$7 = new bxh($$3, $$4, $$5);
+   private static int a(ew $$0, bvj $$1, jq<bxi> $$2, alz $$3, double $$4, bxl.a $$5) throws CommandSyntaxException {
+      bxj $$6 = a($$1, $$2);
+      bxl $$7 = new bxl($$3, $$4, $$5);
       if ($$6.b($$3)) {
          throw d.create($$1.al(), a($$2), $$3);
       } else {
@@ -230,8 +230,8 @@ public class ani {
       }
    }
 
-   private static int a(ew $$0, bvf $$1, jq<bxe> $$2, alz $$3) throws CommandSyntaxException {
-      bxf $$4 = a($$1, $$2);
+   private static int a(ew $$0, bvj $$1, jq<bxi> $$2, alz $$3) throws CommandSyntaxException {
+      bxj $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
          $$0.a(() -> xv.a("commands.attribute.modifier.remove.success", xv.a($$3), a($$2), $$1.al()), false);
          return 1;
@@ -240,7 +240,7 @@ public class ani {
       }
    }
 
-   private static xv a(jq<bxe> $$0) {
+   private static xv a(jq<bxi> $$0) {
       return xv.c($$0.a().c());
    }
 }

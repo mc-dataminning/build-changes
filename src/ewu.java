@@ -1,30 +1,67 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 
-public class ewu extends ewz {
-   public static final MapCodec<ewu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ma.g.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ewu::new)
-   );
-   private final jq<cxg> j;
+public class ewu {
+   private final bak a;
+   private final bbo b;
+   private final Optional<jr.a> c;
+   private final Set<aly<?>> d;
 
-   private ewu(jq<cxg> $$0, int $$1, int $$2, List<ezs> $$3, List<exv> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public ewu(bak $$0, bbo $$1, jr.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   @Override
-   public ewy a() {
-      return ewv.c;
+   public ewu(bak $$0, bbo $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   @Override
-   public void a(Consumer<cxk> $$0, ewh $$1) {
-      $$0.accept(new cxk(this.j));
+   private ewu(bak $$0, bbo $$1, Optional<jr.a> $$2, Set<aly<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static ewz.a<?> a(dgz $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ewu($$0.j().f(), $$1, $$2, $$3, $$4));
+   public ewu a(String $$0) {
+      return new ewu(this.a.a($$0), this.b, this.c, this.d);
+   }
+
+   public ewu a(String $$0, aly<?> $$1) {
+      Set<aly<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new ewu(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(aly<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(ewp $$0) {
+      Set<bbn<?>> $$1 = $$0.a();
+      Set<bbn<?>> $$2 = Sets.difference($$1, this.b.b());
+      if (!$$2.isEmpty()) {
+         this.a.b("Parameters " + $$2 + " are not provided in this context");
+      }
+   }
+
+   public jr.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   }
+
+   public boolean b() {
+      return this.c.isPresent();
+   }
+
+   public ewu a(bbo $$0) {
+      return new ewu(this.a, $$0, this.c, this.d);
+   }
+
+   public bak c() {
+      return this.a;
    }
 }

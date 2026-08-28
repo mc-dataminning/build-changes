@@ -1,13 +1,44 @@
-public class gbr<S extends gye> extends gbs<S> {
-   public gbr(geh $$0) {
+import java.util.Set;
+
+public class gbr extends gcu<gyf> {
+   public static final gev a = new gal(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
+
+   public gbr(gem $$0) {
       super($$0);
    }
 
-   public static gep a(gel $$0) {
-      gep $$1 = gbs.a($$0, 0.0F);
-      ger $$2 = $$1.a();
-      $$2.a("right_leg", gem.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gej.a(-1.9F, 12.0F, 0.0F));
-      $$2.a("left_leg", gem.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gej.a(1.9F, 12.0F, 0.0F));
-      return $$1;
+   public static ges a() {
+      geu $$0 = new geu();
+      gew $$1 = $$0.a();
+      gew $$2 = $$1.a(
+         "head",
+         ger.c()
+            .a(2, 61)
+            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(2, 61)
+            .a()
+            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(23, 52)
+            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
+         geo.a(1.0F, 14.0F, 0.0F)
+      );
+      $$2.a("left_horn", ger.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), geo.a(0.0F, 0.0F, 0.0F));
+      $$2.a("right_horn", ger.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), geo.a(0.0F, 0.0F, 0.0F));
+      $$2.a("nose", ger.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), geo.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
+      $$1.a("body", ger.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), geo.a(0.0F, 24.0F, 0.0F));
+      $$1.a("left_hind_leg", ger.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), geo.a(1.0F, 14.0F, 4.0F));
+      $$1.a("right_hind_leg", ger.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), geo.a(-3.0F, 14.0F, 4.0F));
+      $$1.a("left_front_leg", ger.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), geo.a(1.0F, 14.0F, -6.0F));
+      $$1.a("right_front_leg", ger.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), geo.a(-3.0F, 14.0F, -6.0F));
+      return ges.a($$0, 64, 64);
+   }
+
+   public void a(gyf $$0) {
+      super.a($$0);
+      this.b.b("left_horn").k = $$0.a;
+      this.b.b("right_horn").k = $$0.b;
+      if ($$0.c != 0.0F) {
+         this.b.e = $$0.c;
+      }
    }
 }

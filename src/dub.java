@@ -1,20 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dub extends dti {
-   public static final MapCodec<dub> b = b(dub::new);
+public class dub extends dkl {
+   public static final MapCodec<dub> a = b(dub::new);
 
    @Override
    public MapCodec<dub> a() {
-      return b;
+      return a;
    }
 
-   protected dub(dxm.d $$0) {
-      super(drj.b.d, $$0);
+   public dub(dxt.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dha $$0, jh $$1, dxn $$2, @Nullable bwb $$3, cxk $$4) {
-      dua.a($$0, $$1);
+   protected void a(dxu $$0, dhh $$1, jh $$2, bvj $$3) {
+      fbx $$4 = new fbx(0.25, 0.05F, 0.25);
+      if ($$3 instanceof bwf $$5 && $$5.b(buq.K)) {
+         $$4 = new fbx(0.5, 0.25, 0.5);
+      }
+
+      $$3.a($$0, $$4);
    }
 }

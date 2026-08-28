@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 public class aqx extends awi {
    private static final Logger h = LogUtils.getLogger();
 
-   public aqx(aqy $$0, jx<ami> $$1, evy $$2) {
+   public aqx(aqy $$0, jx<ami> $$1, ewf $$2) {
       super($$0, $$1, $$2, $$0.a().G);
       aqz $$3 = $$0.a();
       this.a($$3.E);

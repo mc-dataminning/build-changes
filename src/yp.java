@@ -27,7 +27,7 @@ public class yp {
       };
    }
 
-   public yp.b a(final cpv $$0) {
+   public yp.b a(final cpz $$0) {
       final bar $$1 = $$0.a();
       return new yp.b() {
          @Override

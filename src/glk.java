@@ -1,149 +1,250 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
 public class glk {
-   private final String a;
-   private final gkn b;
-   private final alz c;
-   private final List<glj.h> d;
-   private final List<glk.a> e = new ArrayList<>();
+   private final glk.b a;
+   final jh b;
 
-   public glk(String $$0, gkn $$1, alz $$2, List<glj.h> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public glk(kj $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$1 * 2 + 1;
+      int $$5 = bae.c($$4);
+      int $$6 = $$1 * 16;
+      jh $$7 = $$0.j();
+      this.b = $$0.k();
+      int $$8 = $$7.u() - $$6;
+      int $$9 = $$8 + $$5 * 16 - 1;
+      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
+      int $$11 = $$10 + $$5 * 16 - 1;
+      int $$12 = $$7.w() - $$6;
+      int $$13 = $$12 + $$5 * 16 - 1;
+      this.a = new glk.b(new eob($$8, $$10, $$12, $$9, $$11, $$13));
    }
 
-   public void a(glk.a $$0) {
-      this.e.add($$0);
+   public boolean a(gow.b $$0) {
+      return this.a.a($$0);
    }
 
-   public void a(fep $$0, Map<alz, ffx<fev>> $$1, Matrix4f $$2) {
-      feq $$3 = $$0.a(this.a);
+   public void a(glk.e $$0, gpa $$1, int $$2) {
+      this.a.a($$0, false, $$1, 0, $$2, true);
+   }
 
-      for (glk.a $$4 : this.e) {
-         $$4.a($$3, $$1);
+   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
+      int $$7 = this.b.u();
+      int $$8 = this.b.v();
+      int $$9 = this.b.w();
+      return (double)$$7 > $$0 - (double)$$6
+         && (double)$$7 < $$3 + (double)$$6
+         && (double)$$8 > $$1 - (double)$$6
+         && (double)$$8 < $$4 + (double)$$6
+         && (double)$$9 > $$2 - (double)$$6
+         && (double)$$9 < $$5 + (double)$$6;
+   }
+
+   static enum a {
+      a(4, 2, 1),
+      b(4, 1, 2),
+      c(2, 4, 1),
+      d(1, 4, 2),
+      e(2, 1, 4),
+      f(1, 2, 4);
+
+      final int g;
+      final int h;
+      final int i;
+
+      private a(final int $$0, final int $$1, final int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      ffx<fev> $$5 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$3.b($$2x));
-      if ($$5 == null) {
-         throw new IllegalStateException("Missing handle for target " + this.c);
-      } else {
-         $$3.a(() -> {
-            fev $$3x = $$5.get();
-            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
+      public static glk.a a(int $$0, int $$1, int $$2) {
+         if ($$0 > $$1 && $$0 > $$2) {
+            return $$1 > $$2 ? a : b;
+         } else if ($$1 > $$0 && $$1 > $$2) {
+            return $$0 > $$2 ? c : d;
+         } else {
+            return $$0 > $$1 ? e : f;
+         }
+      }
+   }
 
-            for (glk.a $$4x : this.e) {
-               $$4x.a(this.b, $$1);
-            }
+   class b implements glk.d {
+      private final glk.d[] b = new glk.d[8];
+      private final eob c;
+      private final int d;
+      private final int e;
+      private final int f;
+      private final glk.a g;
+      private final boolean h;
+      private final boolean i;
+      private final boolean j;
 
-            this.b.b("OutSize").a((float)$$3x.c, (float)$$3x.d);
+      public b(final eob $$0) {
+         this.c = $$0;
+         this.d = this.c.h() + this.c.d() / 2;
+         this.e = this.c.i() + this.c.e() / 2;
+         this.f = this.c.j() + this.c.f() / 2;
+         int $$1 = glk.this.b.u() - this.d;
+         int $$2 = glk.this.b.v() - this.e;
+         int $$3 = glk.this.b.w() - this.f;
+         this.g = glk.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
+         this.h = $$1 < 0;
+         this.i = $$2 < 0;
+         this.j = $$3 < 0;
+      }
 
-            for (glj.h $$5x : this.d) {
-               fgc $$6 = this.b.a($$5x.a());
-               if ($$6 != null) {
-                  a($$6, $$5x.b());
+      public boolean a(gow.b $$0) {
+         boolean $$1 = $$0.f().u() - this.d < 0;
+         boolean $$2 = $$0.f().v() - this.e < 0;
+         boolean $$3 = $$0.f().w() - this.f < 0;
+         boolean $$4 = $$1 != this.h;
+         boolean $$5 = $$2 != this.i;
+         boolean $$6 = $$3 != this.j;
+         int $$7 = a(this.g, $$4, $$5, $$6);
+         if (this.c()) {
+            boolean $$8 = this.b[$$7] != null;
+            this.b[$$7] = glk.this.new c($$0);
+            return !$$8;
+         } else if (this.b[$$7] != null) {
+            glk.b $$9 = (glk.b)this.b[$$7];
+            return $$9.a($$0);
+         } else {
+            eob $$10 = this.a($$1, $$2, $$3);
+            glk.b $$11 = glk.this.new b($$10);
+            this.b[$$7] = $$11;
+            return $$11.a($$0);
+         }
+      }
+
+      private static int a(glk.a $$0, boolean $$1, boolean $$2, boolean $$3) {
+         int $$4 = 0;
+         if ($$1) {
+            $$4 += $$0.g;
+         }
+
+         if ($$2) {
+            $$4 += $$0.h;
+         }
+
+         if ($$3) {
+            $$4 += $$0.i;
+         }
+
+         return $$4;
+      }
+
+      private boolean c() {
+         return this.c.d() == 32;
+      }
+
+      private eob a(boolean $$0, boolean $$1, boolean $$2) {
+         int $$3;
+         int $$4;
+         if ($$0) {
+            $$3 = this.c.h();
+            $$4 = this.d - 1;
+         } else {
+            $$3 = this.d;
+            $$4 = this.c.k();
+         }
+
+         int $$7;
+         int $$8;
+         if ($$1) {
+            $$7 = this.c.i();
+            $$8 = this.e - 1;
+         } else {
+            $$7 = this.e;
+            $$8 = this.c.l();
+         }
+
+         int $$11;
+         int $$12;
+         if ($$2) {
+            $$11 = this.c.j();
+            $$12 = this.f - 1;
+         } else {
+            $$11 = this.f;
+            $$12 = this.c.m();
+         }
+
+         return new eob($$3, $$7, $$11, $$4, $$8, $$12);
+      }
+
+      @Override
+      public void a(glk.e $$0, boolean $$1, gpa $$2, int $$3, int $$4, boolean $$5) {
+         boolean $$6 = $$1;
+         if (!$$1) {
+            int $$7 = $$2.a(this.c);
+            $$1 = $$7 == -2;
+            $$6 = $$7 == -2 || $$7 == -1;
+         }
+
+         if ($$6) {
+            $$5 = $$5
+               && glk.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
+            $$0.visit(this, $$1, $$3, $$5);
+
+            for (glk.d $$8 : this.b) {
+               if ($$8 != null) {
+                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
                }
             }
+         }
+      }
 
-            $$3x.a(0.0F, 0.0F, 0.0F, 0.0F);
-            $$3x.f();
-            $$3x.a(false);
-            RenderSystem.depthFunc(519);
-            RenderSystem.setShader(this.b);
-            RenderSystem.backupProjectionMatrix();
-            RenderSystem.setProjectionMatrix($$2, fgt.b);
-            fgg $$7 = fgn.b().a(fgq.c.h, fgj.e);
-            $$7.a(0.0F, 0.0F, 500.0F);
-            $$7.a((float)$$3x.c, 0.0F, 500.0F);
-            $$7.a((float)$$3x.c, (float)$$3x.d, 500.0F);
-            $$7.a(0.0F, (float)$$3x.d, 500.0F);
-            fgh.a($$7.b());
-            RenderSystem.depthFunc(515);
-            RenderSystem.restoreProjectionMatrix();
-            $$3x.e();
+      @Nullable
+      @Override
+      public gow.b a() {
+         return null;
+      }
 
-            for (glk.a $$8 : this.e) {
-               $$8.a($$1);
-            }
-         });
+      @Override
+      public fbs b() {
+         return new fbs(
+            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
+         );
       }
    }
 
-   private static void a(fgc $$0, List<Float> $$1) {
-      switch ($$1.size()) {
-         case 1:
-            $$0.a($$1.getFirst());
-            break;
-         case 2:
-            $$0.a($$1.get(0), $$1.get(1));
-            break;
-         case 3:
-            $$0.a($$1.get(0), $$1.get(1), $$1.get(2));
-            break;
-         case 4:
-            $$0.a($$1.get(0), $$1.get(1), $$1.get(2), $$1.get(3));
+   final class c implements glk.d {
+      private final gow.b b;
+
+      c(final gow.b $$0) {
+         this.b = $$0;
       }
-   }
 
-   public gkn a() {
-      return this.b;
-   }
-
-   public interface a {
-      void a(feq var1, Map<alz, ffx<fev>> var2);
-
-      void a(gkn var1, Map<alz, ffx<fev>> var2);
-
-      default void a(Map<alz, ffx<fev>> $$0) {
-      }
-   }
-
-   public static record b(String a, alz b, boolean c, boolean d) implements glk.a {
-      private ffx<fev> b(Map<alz, ffx<fev>> $$0) {
-         ffx<fev> $$1 = $$0.get(this.b);
-         if ($$1 == null) {
-            throw new IllegalStateException("Missing handle for target " + this.b);
-         } else {
-            return $$1;
+      @Override
+      public void a(glk.e $$0, boolean $$1, gpa $$2, int $$3, int $$4, boolean $$5) {
+         fbs $$6 = this.b.b();
+         if ($$1 || $$2.a(this.a().b())) {
+            $$5 = $$5 && glk.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
+            $$0.visit(this, $$1, $$3, $$5);
          }
       }
 
       @Override
-      public void a(feq $$0, Map<alz, ffx<fev>> $$1) {
-         $$0.a(this.b($$1));
+      public gow.b a() {
+         return this.b;
       }
 
       @Override
-      public void a(gkn $$0, Map<alz, ffx<fev>> $$1) {
-         ffx<fev> $$2 = this.b($$1);
-         fev $$3 = $$2.get();
-         $$3.a(this.d ? 9729 : 9728);
-         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
-         $$0.b(this.a + "Size").a((float)$$3.c, (float)$$3.d);
-      }
-
-      @Override
-      public void a(Map<alz, ffx<fev>> $$0) {
-         if (this.d) {
-            this.b($$0).get().a(9728);
-         }
+      public fbs b() {
+         return this.b.b();
       }
    }
 
-   public static record c(String a, hap b, int c, int d) implements glk.a {
-      @Override
-      public void a(feq $$0, Map<alz, ffx<fev>> $$1) {
-      }
+   public interface d {
+      void a(glk.e var1, boolean var2, gpa var3, int var4, int var5, boolean var6);
 
-      @Override
-      public void a(gkn $$0, Map<alz, ffx<fev>> $$1) {
-         $$0.a(this.a + "Sampler", this.b.a());
-         $$0.b(this.a + "Size").a((float)this.c, (float)this.d);
-      }
+      @Nullable
+      gow.b a();
+
+      fbs b();
+   }
+
+   @FunctionalInterface
+   public interface e {
+      void visit(glk.d var1, boolean var2, int var3, boolean var4);
    }
 }

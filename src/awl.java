@@ -9,7 +9,7 @@ public class awl {
    }
 
    public boolean a(int $$0, List<asi> $$1) {
-      int $$2 = (int)$$1.stream().filter(cps::gk).count();
+      int $$2 = (int)$$1.stream().filter(cpw::gk).count();
       return $$2 >= this.b($$0);
    }
 

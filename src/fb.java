@@ -40,11 +40,11 @@ public interface fb {
       return Collections.singleton(fb.b.b);
    }
 
-   Set<aly<dha>> t();
+   Set<aly<dhh>> t();
 
    ke u();
 
-   cso v();
+   css v();
 
    default void a(kd<?> $$0, fb.a $$1, SuggestionsBuilder $$2) {
       if ($$1.a()) {

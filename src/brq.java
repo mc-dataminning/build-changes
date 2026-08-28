@@ -1,67 +1,52 @@
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class brq<E extends bro> {
-   private final int a;
-   private final ImmutableList<E> b;
-
-   brq(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = brp.a($$0);
+public class brq<E> extends bru<brs.b<E>> {
+   public static <E> Codec<brq<E>> a(Codec<E> $$0) {
+      return brs.b.a($$0).listOf().xmap(brq::new, bru::e);
    }
 
-   public static <E extends bro> brq<E> c() {
-      return new brq<>(ImmutableList.of());
+   public static <E> Codec<brq<E>> b(Codec<E> $$0) {
+      return azn.a(brs.b.a($$0).listOf()).xmap(brq::new, bru::e);
    }
 
-   @SafeVarargs
-   public static <E extends bro> brq<E> a(E... $$0) {
-      return new brq<>(ImmutableList.copyOf($$0));
+   brq(List<? extends brs.b<E>> $$0) {
+      super($$0);
    }
 
-   public static <E extends bro> brq<E> a(List<E> $$0) {
-      return new brq<>($$0);
+   public static <E> brq.a<E> a() {
+      return new brq.a<>();
    }
 
-   public boolean d() {
-      return this.b.isEmpty();
+   public static <E> brq<E> b() {
+      return new brq<>(List.of());
    }
 
-   public Optional<E> b(bam $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
-      } else {
-         int $$1 = $$0.a(this.a);
-         return brp.a(this.b, $$1);
+   public static <E> brq<E> a(E $$0) {
+      return new brq<>(List.of(brs.a($$0, 1)));
+   }
+
+   public Optional<E> a(bam $$0) {
+      return this.b($$0).map(brs.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<brs.b<E>> a = ImmutableList.builder();
+
+      public brq.a<E> a(E $$0) {
+         return this.a($$0, 1);
       }
-   }
 
-   public List<E> e() {
-      return this.b;
-   }
-
-   public static <E extends bro> Codec<brq<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(brq::a, brq::e);
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         brq<?> $$1 = (brq<?>)$$0;
-         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
-      } else {
-         return false;
+      public brq.a<E> a(E $$0, int $$1) {
+         this.a.add(brs.a($$0, $$1));
+         return this;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b);
+      public brq<E> a() {
+         return new brq<>(this.a.build());
+      }
    }
 }

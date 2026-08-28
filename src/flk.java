@@ -1,86 +1,52 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.OptionalInt;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class flk extends axi {
-   private final Map<dde, ddd> b = new HashMap<>();
-   private final Set<dde> c = new HashSet<>();
-   private Map<dcb, List<fxs>> d = Map.of();
-   private List<fxs> e = List.of();
+public class flk extends fld {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xv c = xv.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   public void a(ddd $$0) {
-      this.b.put($$0.a(), $$0);
+   public flk(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public void a(dde $$0) {
-      this.b.remove($$0);
-      this.c.remove($$0);
-   }
+   @Override
+   public void run() {
+      fhg $$0 = fhg.a();
 
-   public boolean b(dde $$0) {
-      return this.c.contains($$0);
-   }
-
-   public void c(dde $$0) {
-      this.c.remove($$0);
-   }
-
-   public void d(dde $$0) {
-      this.c.add($$0);
-   }
-
-   public void b() {
-      Map<dbi, List<List<ddd>>> $$0 = a(this.b.values());
-      Map<dcb, List<fxs>> $$1 = new HashMap<>();
-      Builder<fxs> $$2 = ImmutableList.builder();
-      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(fxs::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
-
-      for (fxu $$3 : fxu.values()) {
-         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
-      }
-
-      this.d = Map.copyOf($$1);
-      this.e = $$2.build();
-   }
-
-   private static Map<dbi, List<List<ddd>>> a(Iterable<ddd> $$0) {
-      Map<dbi, List<List<ddd>>> $$1 = new HashMap<>();
-      Table<dbi, Integer, List<ddd>> $$2 = HashBasedTable.create();
-
-      for (ddd $$3 : $$0) {
-         dbi $$4 = $$3.d();
-         OptionalInt $$5 = $$3.c();
-         if ($$5.isEmpty()) {
-            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
-         } else {
-            List<ddd> $$6 = (List<ddd>)$$2.get($$4, $$5.getAsInt());
-            if ($$6 == null) {
-               $$6 = new ArrayList<>();
-               $$2.put($$4, $$5.getAsInt(), $$6);
-               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
             }
 
-            $$6.add($$3);
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fjd var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
          }
       }
-
-      return $$1;
    }
 
-   public List<fxs> c() {
-      return this.e;
-   }
-
-   public List<fxs> a(dcb $$0) {
-      return this.d.getOrDefault($$0, Collections.emptyList());
+   @Override
+   public xv a() {
+      return c;
    }
 }

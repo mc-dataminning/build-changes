@@ -1,26 +1,35 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.OptionalDynamic;
 import java.util.List;
 
-public class bfe extends bhn {
-   public bfe(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", bis.B, "minecraft:shulker");
+public class bfe extends DataFix {
+   private static final Codec<List<Float>> a = Codec.FLOAT.listOf();
+
+   public bfe(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
-      if (!$$1.isEmpty()) {
-         $$1.set(0, $$1.get(0) - 180.0);
-         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
-      } else {
-         return $$0;
-      }
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "EntityRedundantChanceTagsFix", this.getInputSchema().getType(biw.B), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               if (a($$0x.get("HandDropChances"), 2)) {
+                  $$0x = $$0x.remove("HandDropChances");
+               }
+
+               if (a($$0x.get("ArmorDropChances"), 4)) {
+                  $$0x = $$0x.remove("ArmorDropChances");
+               }
+
+               return $$0x;
+            })
+      );
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   private static boolean a(OptionalDynamic<?> $$0, int $$1) {
+      return $$0.flatMap(a::parse).map($$1x -> $$1x.size() == $$1 && $$1x.stream().allMatch($$0xx -> $$0xx == 0.0F)).result().orElse(false);
    }
 }

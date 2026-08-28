@@ -1,151 +1,293 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class dxc {
-   private static final Map<String, dxc> l = new Object2ObjectArrayMap();
-   public static final Codec<dxc> a = Codec.stringResolver($$0 -> $$0.m, l::get);
-   public static final dxc b = new dxc(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(sr.g), Optional.of(sr.p), Optional.of(sr.E), Optional.of(sr.K)
-   );
-   public static final dxc c = new dxc(
-      "spruce", 0.5F, Optional.of(sr.s), Optional.of(sr.t), Optional.of(sr.m), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final dxc d = new dxc(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(sr.z), Optional.of(sr.A), Optional.empty(), Optional.empty()
-   );
-   public static final dxc e = new dxc("azalea", Optional.empty(), Optional.of(sr.y), Optional.empty());
-   public static final dxc f = new dxc("birch", Optional.empty(), Optional.of(sr.k), Optional.of(sr.H));
-   public static final dxc g = new dxc("jungle", Optional.of(sr.r), Optional.of(sr.q), Optional.empty());
-   public static final dxc h = new dxc("acacia", Optional.empty(), Optional.of(sr.l), Optional.empty());
-   public static final dxc i = new dxc("cherry", Optional.empty(), Optional.of(sr.B), Optional.of(sr.M));
-   public static final dxc j = new dxc("dark_oak", Optional.of(sr.h), Optional.empty(), Optional.empty());
-   public static final dxc k = new dxc("pale_oak", Optional.of(sr.i), Optional.empty(), Optional.empty());
-   private final String m;
-   private final float n;
-   private final Optional<aly<ega<?, ?>>> o;
-   private final Optional<aly<ega<?, ?>>> p;
-   private final Optional<aly<ega<?, ?>>> q;
-   private final Optional<aly<ega<?, ?>>> r;
-   private final Optional<aly<ega<?, ?>>> s;
-   private final Optional<aly<ega<?, ?>>> t;
+public class dxc extends duw {
+   private static final Logger a = LogUtils.getLogger();
+   private final dxf b = new dxf();
+   private final dxg c = new dxg();
+   private final dxd d = new dxd();
+   private dxe e = dxe.b;
 
-   public dxc(String $$0, Optional<aly<ega<?, ?>>> $$1, Optional<aly<ega<?, ?>>> $$2, Optional<aly<ega<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
-   }
-
-   public dxc(
-      String $$0,
-      float $$1,
-      Optional<aly<ega<?, ?>>> $$2,
-      Optional<aly<ega<?, ?>>> $$3,
-      Optional<aly<ega<?, ?>>> $$4,
-      Optional<aly<ega<?, ?>>> $$5,
-      Optional<aly<ega<?, ?>>> $$6,
-      Optional<aly<ega<?, ?>>> $$7
-   ) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
-      this.s = $$6;
-      this.t = $$7;
-      l.put($$0, this);
+   public dxc(jh $$0, dxu $$1) {
+      super(duy.S, $$0, $$1);
    }
 
    @Nullable
-   private aly<ega<?, ?>> a(bam $$0, boolean $$1) {
-      if ($$0.i() < this.n) {
-         if ($$1 && this.t.isPresent()) {
-            return this.t.get();
+   @Override
+   public aac<acr> ay_() {
+      return acy.a(this);
+   }
+
+   @Override
+   public ux a(js.a $$0) {
+      return ae.a(new ux(), $$1 -> $$1.a("shared_data", a(dxg.b, this.c, $$0)));
+   }
+
+   @Override
+   protected void b(ux $$0, js.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("config", a(dxe.c, this.e, $$1));
+      $$0.a("shared_data", a(dxg.b, this.c, $$1));
+      $$0.a("server_data", a(dxf.b, this.b, $$1));
+   }
+
+   private static <T> vu a(Codec<T> $$0, T $$1, js.a $$2) {
+      return (vu)$$0.encodeStart($$2.a(vl.a), $$1).getOrThrow();
+   }
+
+   @Override
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      DynamicOps<vu> $$2 = $$1.a(vl.a);
+      if ($$0.e("server_data")) {
+         dxf.b.parse($$2, $$0.c("server_data")).resultOrPartial(a::error).ifPresent(this.b::a);
+      }
+
+      if ($$0.e("config")) {
+         dxe.c.parse($$2, $$0.c("config")).resultOrPartial(a::error).ifPresent($$0x -> this.e = $$0x);
+      }
+
+      if ($$0.e("shared_data")) {
+         dxg.b.parse($$2, $$0.c("shared_data")).resultOrPartial(a::error).ifPresent(this.c::a);
+      }
+   }
+
+   @Nullable
+   public dxf b() {
+      return this.o != null && !this.o.C ? this.b : null;
+   }
+
+   public dxg c() {
+      return this.c;
+   }
+
+   public dxd d() {
+      return this.d;
+   }
+
+   public dxe f() {
+      return this.e;
+   }
+
+   @VisibleForTesting
+   public void a(dxe $$0) {
+      this.e = $$0;
+   }
+
+   public static final class a {
+      private static final int a = 20;
+      private static final float b = 0.5F;
+      private static final float c = 0.02F;
+      private static final int d = 20;
+      private static final int e = 20;
+
+      public static void a(dhh $$0, jh $$1, dxu $$2, dxd $$3, dxg $$4) {
+         $$3.c();
+         if ($$0.ac() % 20L == 0L) {
+            a($$0, $$1, $$2, $$4);
          }
 
-         if (this.r.isPresent()) {
-            return this.r.get();
+         a($$0, $$1, $$4, $$2.c(dtj.d) ? ls.L : ls.aK);
+         a($$0, $$1, $$4);
+      }
+
+      public static void a(dhh $$0, jh $$1, dxu $$2, dxg $$3, lq $$4) {
+         a($$0, $$1, $$2, $$3);
+         bam $$5 = $$0.A;
+
+         for (int $$6 = 0; $$6 < 20; $$6++) {
+            fbx $$7 = b($$1, $$5);
+            $$0.a(ls.af, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
+            $$0.a($$4, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
          }
       }
 
-      return $$1 && this.s.isPresent() ? this.s.get() : this.q.orElse(null);
-   }
+      public static void a(dhh $$0, jh $$1, lq $$2) {
+         bam $$3 = $$0.A;
 
-   @Nullable
-   private aly<ega<?, ?>> a(bam $$0) {
-      return this.p.isPresent() && $$0.i() < this.n ? this.p.get() : this.o.orElse(null);
-   }
+         for (int $$4 = 0; $$4 < 20; $$4++) {
+            fbx $$5 = a($$1, $$3);
+            fbx $$6 = new fbx($$3.k() * 0.02, $$3.k() * 0.02, $$3.k() * 0.02);
+            $$0.a($$2, $$5.a(), $$5.b(), $$5.c(), $$6.a(), $$6.b(), $$6.c());
+         }
+      }
 
-   public boolean a(ash $$0, dzj $$1, jh $$2, dxn $$3, bam $$4) {
-      aly<ega<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         jq<ega<?, ?>> $$6 = $$0.K_().e(mb.aK).a($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     ega<?, ?> $$9 = $$6.a();
-                     dxn $$10 = dkg.a.m();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
+      private static void a(dhh $$0, jh $$1, dxg $$2, lq $$3) {
+         bam $$4 = $$0.H_();
+         if ($$4.i() <= 0.5F) {
+            fbx $$5 = b($$1, $$4);
+            $$0.a(ls.af, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
+            if (a($$2)) {
+               $$0.a($$3, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
+            }
+         }
+      }
 
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
-                     return false;
-                  }
+      private static void a(dhh $$0, fbx $$1, cpw $$2) {
+         bam $$3 = $$0.A;
+         fbx $$4 = $$1.a($$2.dt().b(0.0, (double)($$2.dr() / 2.0F), 0.0));
+         int $$5 = bae.a($$3, 2, 5);
+
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            fbx $$7 = $$4.a($$3, 1.0F);
+            $$0.a(ls.bb, $$1.a(), $$1.b(), $$1.c(), $$7.a(), $$7.b(), $$7.c());
+         }
+      }
+
+      private static void a(dhh $$0, jh $$1, dxu $$2, dxg $$3) {
+         Set<UUID> $$4 = $$3.d();
+         if (!$$4.isEmpty()) {
+            fbx $$5 = a($$1, $$2.c(dtj.c));
+
+            for (UUID $$6 : $$4) {
+               cpw $$7 = $$0.b($$6);
+               if ($$7 != null && a($$1, $$3, $$7)) {
+                  a($$0, $$5, $$7);
                }
             }
          }
       }
 
-      aly<ega<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
-      } else {
-         jq<ega<?, ?>> $$12 = $$0.K_().e(mb.aK).a($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
-         } else {
-            ega<?, ?> $$13 = $$12.a();
-            dxn $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 4);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
+      private static boolean a(jh $$0, dxg $$1, cpw $$2) {
+         return $$2.dv().j($$0) <= bae.k($$1.e());
+      }
 
-               return true;
+      private static void a(dhh $$0, jh $$1, dxg $$2) {
+         if (a($$2)) {
+            bam $$3 = $$0.H_();
+            if ($$3.i() <= 0.02F) {
+               $$0.a($$1, axf.Ba, axg.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+            }
+         }
+      }
+
+      public static boolean a(dxg $$0) {
+         return $$0.b();
+      }
+
+      private static fbx a(jh $$0, bam $$1) {
+         return fbx.a($$0).b(bae.a($$1, 0.4, 0.6), bae.a($$1, 0.4, 0.6), bae.a($$1, 0.4, 0.6));
+      }
+
+      private static fbx b(jh $$0, bam $$1) {
+         return fbx.a($$0).b(bae.a($$1, 0.1, 0.9), bae.a($$1, 0.25, 0.75), bae.a($$1, 0.1, 0.9));
+      }
+
+      private static fbx a(jh $$0, jm $$1) {
+         return fbx.c($$0).b((double)$$1.j() * 0.5, 1.75, (double)$$1.l() * 0.5);
+      }
+   }
+
+   public static final class b {
+      private static final int a = 14;
+      private static final int b = 20;
+      private static final int c = 15;
+
+      public static void a(ash $$0, jh $$1, dxu $$2, dxe $$3, dxf $$4, dxg $$5) {
+         dxh $$6 = $$2.c(dtj.b);
+         if (a($$0.ac(), $$6)) {
+            a($$0, $$6, $$3, $$5, $$1);
+         }
+
+         dxu $$7 = $$2;
+         if ($$0.ac() >= $$4.c()) {
+            $$7 = $$2.b(dtj.b, $$6.a($$0, $$1, $$3, $$4, $$5));
+            if (!$$2.equals($$7)) {
+               a($$0, $$1, $$2, $$7, $$3, $$5);
+            }
+         }
+
+         if ($$4.c || $$5.c) {
+            dxc.a($$0, $$1, $$2);
+            if ($$5.c) {
+               $$0.a($$1, $$2, $$7, 2);
+            }
+
+            $$4.c = false;
+            $$5.c = false;
+         }
+      }
+
+      public static void a(ash $$0, jh $$1, dxu $$2, dxe $$3, dxf $$4, dxg $$5, cpw $$6, cxo $$7) {
+         dxh $$8 = $$2.c(dtj.b);
+         if (a($$3, $$8)) {
+            if (!a($$3, $$7)) {
+               a($$0, $$4, $$1, axf.Bj);
+            } else if ($$4.a($$6)) {
+               a($$0, $$4, $$1, axf.Bf);
             } else {
-               $$0.a($$2, $$3, 4);
-               return false;
+               List<cxo> $$9 = a($$0, $$3, $$1, $$6, $$7);
+               if (!$$9.isEmpty()) {
+                  $$6.b(axp.c.b($$7.h()));
+                  $$7.a($$3.e().L(), (bwf)$$6);
+                  a($$0, $$2, $$1, $$3, $$4, $$5, $$9);
+                  $$4.b($$6);
+                  $$5.a($$0, $$1, $$4, $$3, $$3.d());
+               }
             }
          }
       }
-   }
 
-   private static boolean a(dxn $$0, dgf $$1, jh $$2, int $$3, int $$4) {
-      dke $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
-   }
+      static void a(ash $$0, jh $$1, dxu $$2, dxu $$3, dxe $$4, dxg $$5) {
+         dxh $$6 = $$2.c(dtj.b);
+         dxh $$7 = $$3.c(dtj.b);
+         $$0.a($$1, $$3, 3);
+         $$6.a($$0, $$1, $$7, $$4, $$5, $$3.c(dtj.d));
+      }
 
-   private boolean a(dhb $$0, jh $$1) {
-      for (jh $$2 : jh.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
-         if ($$0.a_($$2).a(axu.W)) {
-            return true;
+      static void a(ash $$0, dxh $$1, dxe $$2, dxg $$3, jh $$4) {
+         if (!a($$2, $$1)) {
+            $$3.a(cxo.k);
+         } else {
+            cxo $$5 = a($$0, $$4, $$2.f().orElse($$2.b()));
+            $$3.a($$5);
          }
       }
 
-      return false;
+      private static cxo a(ash $$0, jh $$1, aly<ewt> $$2) {
+         ewt $$3 = $$0.p().bc().b($$2);
+         ewr $$4 = new ewr.a($$0).a(ezi.f, fbx.b($$1)).a(ezh.l);
+         List<cxo> $$5 = $$3.a($$4, $$0.H_());
+         return $$5.isEmpty() ? cxo.k : ae.a($$5, $$0.H_());
+      }
+
+      private static void a(ash $$0, dxu $$1, jh $$2, dxe $$3, dxf $$4, dxg $$5, List<cxo> $$6) {
+         $$4.a($$6);
+         $$5.a($$4.f());
+         $$4.b($$0.ac() + 14L);
+         a($$0, $$2, $$1, $$1.b(dtj.b, dxh.c), $$3, $$5);
+      }
+
+      private static List<cxo> a(ash $$0, dxe $$1, jh $$2, cpw $$3, cxo $$4) {
+         ewt $$5 = $$0.p().bc().b($$1.b());
+         ewr $$6 = new ewr.a($$0).a(ezi.f, fbx.b($$2)).a($$3.gD()).a(ezi.a, $$3).a(ezi.i, $$4).a(ezh.l);
+         return $$5.a($$6);
+      }
+
+      private static boolean a(dxe $$0, dxh $$1) {
+         return !$$0.e().f() && $$1 != dxh.a;
+      }
+
+      private static boolean a(dxe $$0, cxo $$1) {
+         return cxo.c($$1, $$0.e()) && $$1.L() >= $$0.e().L();
+      }
+
+      private static boolean a(long $$0, dxh $$1) {
+         return $$0 % 20L == 0L && $$1 == dxh.b;
+      }
+
+      private static void a(ash $$0, dxf $$1, jh $$2, axe $$3) {
+         if ($$0.ac() >= $$1.a() + 15L) {
+            $$0.a(null, $$2, $$3, axg.e);
+            $$1.a($$0.ac());
+         }
+      }
    }
 }

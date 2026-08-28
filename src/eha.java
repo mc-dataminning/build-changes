@@ -1,89 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eha extends ego<eiz> {
-   public eha(Codec<eiz> $$0) {
-      super($$0);
-   }
+public class eha implements eiz {
+   public static final Codec<eha> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alz.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               alz.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               esk.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               esk.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eha::new)
+   );
+   public final List<alz> b;
+   public final List<alz> c;
+   public final jq<esj> d;
+   public final jq<esj> e;
+   public final int f;
 
-   @Override
-   public boolean a(egq<eiz> $$0) {
-      jh $$1 = $$0.e();
-      bam $$2 = $$0.d();
-      dhy $$3 = $$0.b();
-
-      while ($$3.u($$1) && $$1.v() > $$3.L_() + 2) {
-         $$1 = $$1.e();
-      }
-
-      if (!$$3.a_($$1).a(dkg.ec)) {
-         return false;
+   public eha(List<alz> $$0, List<alz> $$1, jq<esj> $$2, jq<esj> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
       } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
-
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = bae.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)bae.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)bae.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dxn $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.l() || b($$13) || $$13.a(dkg.ec) || $$13.a(dkg.eb)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dkg.iT.m());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.l() || b($$13) || $$13.a(dkg.ec) || $$13.a(dkg.eb)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dkg.iT.m());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               jh $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dxn $$19 = $$3.a_($$17);
-                  if (!$$19.l() && !b($$19) && !$$19.a(dkg.ec) && !$$19.a(dkg.eb) && !$$19.a(dkg.iT)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dkg.iT.m());
-                  $$17 = $$17.e();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
    }
 }

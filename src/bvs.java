@@ -1,44 +1,55 @@
-public abstract class bvs extends bwd {
-   protected bvs(bvm<? extends bvs> $$0, dha $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
+
+public enum bvs implements bba {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bvr.a),
+   c(2, "offhand", bvr.b),
+   d(3, "hand", $$0 -> $$0.a() == bvr.a.a),
+   e(4, "feet", bvr.c),
+   f(5, "legs", bvr.d),
+   g(6, "chest", bvr.e),
+   h(7, "head", bvr.f),
+   i(8, "armor", bvr::f),
+   j(9, "body", bvr.g);
+
+   public static final IntFunction<bvs> k = ayv.a($$0 -> $$0.n, values(), ayv.a.a);
+   public static final Codec<bvs> l = bba.a(bvs::values);
+   public static final zt<ByteBuf, bvs> m = zr.a(k, $$0 -> $$0.n);
+   private final int n;
+   private final String o;
+   private final Predicate<bvr> p;
+
+   private bvs(final int $$0, final String $$1, final Predicate<bvr> $$2) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
+   }
+
+   private bvs(final int $$0, final String $$1, final bvr $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
+   }
+
+   public static bvs a(bvr $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+      };
    }
 
    @Override
-   protected void a(double $$0, boolean $$1, dxn $$2, jh $$3) {
+   public String c() {
+      return this.o;
    }
 
-   @Override
-   public void a_(fbs $$0) {
-      if (this.di()) {
-         if (this.bj()) {
-            this.a(0.02F, $$0);
-            this.a(bwf.a, this.dy());
-            this.h(this.dy().c(0.8F));
-         } else if (this.bx()) {
-            this.a(0.02F, $$0);
-            this.a(bwf.a, this.dy());
-            this.h(this.dy().c(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aJ()) {
-               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aJ()) {
-               $$1 = this.dV().a_(this.aQ()).b().g() * 0.91F;
-            }
-
-            this.a(this.aJ() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bwf.a, this.dy());
-            this.h(this.dy().c((double)$$1));
-         }
-      }
-   }
-
-   @Override
-   public boolean q_() {
-      return false;
+   public boolean b(bvr $$0) {
+      return this.p.test($$0);
    }
 }

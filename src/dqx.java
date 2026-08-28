@@ -1,52 +1,44 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dqx {
-   dqx u_ = new dqx() {
-      @Override
-      public boolean a(dhb $$0, jh $$1, dxn $$2, @Nullable Collection<jm> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((drd)dkg.ro).q().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.l() && !$$2.y().b(etq.c) ? false : drd.a($$0, $$1, $$2, $$3);
-         } else {
-            return dqx.super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+public abstract class dqx extends dmq {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final fcr h = dkl.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final fcr i = dkl.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final fcr j = dkl.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-      @Override
-      public int a(drc.a $$0, dhb $$1, jh $$2, bam $$3, drc $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int j_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
+   protected dqx(dxt.d $$0) {
+      super($$0);
    }
 
-   default void a(dhb $$0, dxn $$1, jh $$2, bam $$3) {
+   @Override
+   protected abstract MapCodec<? extends dqx> a();
+
+   @Override
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
+      }
    }
 
-   default boolean a(dhb $$0, jh $$1, bam $$2) {
+   @Override
+   protected dxu a(dxu $$0, drb $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dxu a(dxu $$0, dpk $$1) {
+      return $$0.b(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(dxu $$0, eul $$1) {
       return false;
    }
-
-   default boolean a(dhb $$0, jh $$1, dxn $$2, @Nullable Collection<jm> $$3, boolean $$4) {
-      return ((dpg)dkg.ro).c().a($$2, $$0, $$1, $$4) > 0L;
-   }
-
-   default boolean d() {
-      return true;
-   }
-
-   default int j_(int $$0) {
-      return 1;
-   }
-
-   int a(drc.a var1, dhb var2, jh var3, bam var4, drc var5, boolean var6);
 }

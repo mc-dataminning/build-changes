@@ -1,37 +1,41 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum dfj implements bba {
-   a(bvn.f, 11, "helmet"),
-   b(bvn.e, 16, "chestplate"),
-   c(bvn.d, 15, "leggings"),
-   d(bvn.c, 13, "boots"),
-   e(bvn.g, 16, "body");
+public record dfj(ju<ddy> d, int e, int f) implements dfg {
+   public static final int b = 10000;
+   public static final MapCodec<dfj> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kf.a(mb.aO).fieldOf("enchantments").forGetter(dfj::b),
+               azn.a(1, 10000).fieldOf("min_cost").forGetter(dfj::c),
+               azn.a(0, 10000).fieldOf("max_cost_span").forGetter(dfj::d)
+            )
+            .apply($$0, dfj::new)
+   );
 
-   public static final Codec<dfj> f = bba.b(dfj::values);
-   private final bvn g;
-   private final String h;
-   private final int i;
+   @Override
+   public void a(cxo $$0, dee.a $$1, bam $$2, btg $$3) {
+      float $$4 = $$3.d();
+      int $$5 = bae.b($$2, this.e, this.e + (int)($$4 * (float)this.f));
 
-   private dfj(final bvn $$0, final int $$1, final String $$2) {
-      this.g = $$0;
-      this.h = $$2;
-      this.i = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.i * $$0;
-   }
-
-   public bvn a() {
-      return this.g;
-   }
-
-   public String b() {
-      return this.h;
+      for (deb $$7 : dea.b($$2, $$0, $$5, this.d.a())) {
+         $$1.b($$7.a, $$7.b);
+      }
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public MapCodec<dfj> a() {
+      return c;
+   }
+
+   public ju<ddy> b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public int d() {
+      return this.f;
    }
 }

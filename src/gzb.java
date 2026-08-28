@@ -1,3 +1,4 @@
-public class gzb extends gym {
-   public int a;
+public class gzb extends gyr {
+   public float a;
+   public int b;
 }

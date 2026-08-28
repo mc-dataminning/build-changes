@@ -1,61 +1,46 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record faa(Optional<Long> b, ewg c) implements ezs {
+public record faa(Optional<bw> b, ewo.b c) implements ezx {
    public static final MapCodec<faa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(faa::c), ewg.a.fieldOf("value").forGetter(faa::d)).apply($$0, faa::new)
+      $$0 -> $$0.group(bw.a.optionalFieldOf("predicate").forGetter(faa::c), ewo.b.e.fieldOf("entity").forGetter(faa::d)).apply($$0, faa::new)
    );
 
    @Override
-   public ezt b() {
-      return ezu.q;
+   public ezy b() {
+      return ezz.f;
    }
 
    @Override
-   public Set<eza<?>> a() {
-      return this.c.a();
+   public Set<bbn<?>> a() {
+      return Set.of(ezi.f, this.c.a());
    }
 
-   public boolean a(ewh $$0) {
-      ash $$1 = $$0.d();
-      long $$2 = $$1.ad();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   public boolean a(ewo $$0) {
+      bvj $$1 = $$0.c(this.c.a());
+      fbx $$2 = $$0.c(ezi.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static faa.a a(ewg $$0) {
-      return new faa.a($$0);
+   public static ezx.a a(ewo.b $$0) {
+      return a($$0, bw.a.a());
    }
 
-   public Optional<Long> c() {
+   public static ezx.a a(ewo.b $$0, bw.a $$1) {
+      return () -> new faa(Optional.of($$1.b()), $$0);
+   }
+
+   public static ezx.a a(ewo.b $$0, bw $$1) {
+      return () -> new faa(Optional.of($$1), $$0);
+   }
+
+   public Optional<bw> c() {
       return this.b;
    }
 
-   public ewg d() {
+   public ewo.b d() {
       return this.c;
-   }
-
-   public static class a implements ezs.a {
-      private Optional<Long> a = Optional.empty();
-      private final ewg b;
-
-      public a(ewg $$0) {
-         this.b = $$0;
-      }
-
-      public faa.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public faa a() {
-         return new faa(this.a, this.b);
-      }
    }
 }

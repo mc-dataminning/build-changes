@@ -1,1485 +1,978 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult.Error;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public class cxo {
-   public static final cxg a = a(dkg.a, cvh::new);
-   public static final cxg b = a(dkg.b);
-   public static final cxg c = a(dkg.c);
-   public static final cxg d = a(dkg.d);
-   public static final cxg e = a(dkg.e);
-   public static final cxg f = a(dkg.f);
-   public static final cxg g = a(dkg.g);
-   public static final cxg h = a(dkg.h);
-   public static final cxg i = a(dkg.te);
-   public static final cxg j = a(dkg.tf);
-   public static final cxg k = a(dkg.tj);
-   public static final cxg l = a(dkg.ri);
-   public static final cxg m = a(dkg.qU);
-   public static final cxg n = a(dkg.qV);
-   public static final cxg o = a(dkg.qW);
-   public static final cxg p = a(dkg.qX);
-   public static final cxg q = a(dkg.rc);
-   public static final cxg r = a(dkg.qY);
-   public static final cxg s = a(dkg.qZ);
-   public static final cxg t = a(dkg.ra);
-   public static final cxg u = a(dkg.rb);
-   public static final cxg v = a(dkg.rd);
-   public static final cxg w = a(dkg.re);
-   public static final cxg x = a(dkg.rf);
-   public static final cxg y = a(dkg.rg);
-   public static final cxg z = a(dkg.rh);
-   public static final cxg A = a(dkg.sP);
-   public static final cxg B = a(dkg.i);
-   public static final cxg C = a(dkg.j);
-   public static final cxg D = a(dkg.k);
-   public static final cxg E = a(dkg.l);
-   public static final cxg F = a(dkg.tc);
-   public static final cxg G = a(dkg.td);
-   public static final cxg H = a(dkg.oR);
-   public static final cxg I = a(dkg.oI);
-   public static final cxg J = a(dkg.m);
-   public static final cxg K = a(dkg.n);
-   public static final cxg L = a(dkg.o);
-   public static final cxg M = a(dkg.p);
-   public static final cxg N = a(dkg.q);
-   public static final cxg O = a(dkg.r);
-   public static final cxg P = a(dkg.s);
-   public static final cxg Q = a(dkg.t);
-   public static final cxg R = a(dkg.v);
-   public static final cxg S = a(dkg.w);
-   public static final cxg T = a(dkg.x);
-   public static final cxg U = a(dkg.oZ);
-   public static final cxg V = a(dkg.pa);
-   public static final cxg W = a(dkg.y);
-   public static final cxg X = a(dkg.z);
-   public static final cxg Y = a(dkg.A);
-   public static final cxg Z = a(dkg.B);
-   public static final cxg aa = a(dkg.C);
-   public static final cxg ab = a(dkg.D);
-   public static final cxg ac = a(dkg.E);
-   public static final cxg ad = a(dkg.F);
-   public static final cxg ae = a(dkg.G);
-   public static final cxg af = a(dkg.H);
-   public static final cxg ag = a(dkg.I);
-   public static final cxg ah = a(dkg.L);
-   public static final cxg ai = a(dkg.M);
-   public static final cxg aj = a(dkg.P);
-   public static final cxg ak = a(dkg.N);
-   public static final cxg al = a(dkg.O);
-   public static final cxg am = a(dkg.U);
-   public static final cxg an = a(dkg.V);
-   public static final cxg ao = a(dkg.S);
-   public static final cxg ap = a(dkg.T);
-   public static final cxg aq = a(dkg.rv);
-   public static final cxg ar = a(dkg.rw);
-   public static final cxg as = a(dkg.Q);
-   public static final cxg at = a(dkg.R);
-   public static final cxg au = a(dkg.dV);
-   public static final cxg av = a(dkg.dW);
-   public static final cxg aw = a(dkg.fS);
-   public static final cxg ax = a(dkg.fT);
-   public static final cxg ay = a(dkg.aY);
-   public static final cxg az = a(dkg.aZ);
-   public static final cxg aA = a(dkg.cF);
-   public static final cxg aB = a(dkg.cG);
-   public static final cxg aC = a(dkg.W);
-   public static final cxg aD = a(dkg.hr);
-   public static final cxg aE = a(dkg.pE, new cxg.a().a());
-   public static final cxg aF = a(dkg.iS);
-   public static final cxg aG = a(dkg.tA);
-   public static final cxg aH = a(dkg.tB);
-   public static final cxg aI = a(dkg.tC);
-   public static final cxg aJ = a(dkg.tO, new cxg.a().a(cyh.d));
-   public static final cxg aK = a(dkg.qO);
-   public static final cxg aL = a(dkg.qP);
-   public static final cxg aM = a(dkg.cp);
-   public static final cxg aN = a(dkg.rr);
-   public static final cxg aO = a(dkg.co);
-   public static final cxg aP = a(dkg.cH);
-   public static final cxg aQ = a(dkg.pD, new cxg.a().a());
-   public static final cxg aR = a(dkg.rs);
-   public static final cxg aS = a(dkg.rt);
-   public static final cxg aT = a(dkg.ru);
-   public static final cxg aU = a(dkg.rE);
-   public static final cxg aV = a(dkg.rD);
-   public static final cxg aW = a(dkg.rC);
-   public static final cxg aX = a(dkg.rB);
-   public static final cxg aY = a(dkg.rA);
-   public static final cxg aZ = a(dkg.rz);
-   public static final cxg ba = a(dkg.ry);
-   public static final cxg bb = a(dkg.rx);
-   public static final cxg bc = a(dkg.rM);
-   public static final cxg bd = a(dkg.rL);
-   public static final cxg be = a(dkg.rK);
-   public static final cxg bf = a(dkg.rJ);
-   public static final cxg bg = a(dkg.rQ);
-   public static final cxg bh = a(dkg.rP);
-   public static final cxg bi = a(dkg.rO);
-   public static final cxg bj = a(dkg.rN);
-   public static final cxg bk = a(dkg.rR);
-   public static final cxg bl = a(dkg.rT);
-   public static final cxg bm = a(dkg.rS);
-   public static final cxg bn = a(dkg.rU);
-   public static final cxg bo = a(dkg.rI);
-   public static final cxg bp = a(dkg.rH);
-   public static final cxg bq = a(dkg.rG);
-   public static final cxg br = a(dkg.rF);
-   public static final cxg bs = a(dkg.rY);
-   public static final cxg bt = a(dkg.rX);
-   public static final cxg bu = a(dkg.rW);
-   public static final cxg bv = a(dkg.rV);
-   public static final cxg bw = a(dkg.sc);
-   public static final cxg bx = a(dkg.sb);
-   public static final cxg by = a(dkg.sa);
-   public static final cxg bz = a(dkg.rZ);
-   public static final cxg bA = a(dkg.sg);
-   public static final cxg bB = a(dkg.sf);
-   public static final cxg bC = a(dkg.se);
-   public static final cxg bD = a(dkg.sd);
-   public static final cxg bE = a(dkg.X);
-   public static final cxg bF = a(dkg.Y);
-   public static final cxg bG = a(dkg.Z);
-   public static final cxg bH = a(dkg.aa);
-   public static final cxg bI = a(dkg.ab);
-   public static final cxg bJ = a(dkg.ac);
-   public static final cxg bK = a(dkg.ae);
-   public static final cxg bL = a(dkg.ad);
-   public static final cxg bM = a(dkg.af);
-   public static final cxg bN = a(dkg.ag);
-   public static final cxg bO = a(dkg.ah);
-   public static final cxg bP = a(dkg.oN);
-   public static final cxg bQ = a(dkg.oE);
-   public static final cxg bR = a(dkg.ai);
-   public static final cxg bS = a(dkg.aq);
-   public static final cxg bT = a(dkg.aj);
-   public static final cxg bU = a(dkg.ak);
-   public static final cxg bV = a(dkg.al);
-   public static final cxg bW = a(dkg.am);
-   public static final cxg bX = a(dkg.an);
-   public static final cxg bY = a(dkg.ao);
-   public static final cxg bZ = a(dkg.ap);
-   public static final cxg ca = a(dkg.ar);
-   public static final cxg cb = a(dkg.oO);
-   public static final cxg cc = a(dkg.oF);
-   public static final cxg cd = a(dkg.aB);
-   public static final cxg ce = a(dkg.aC);
-   public static final cxg cf = a(dkg.aD);
-   public static final cxg cg = a(dkg.aE);
-   public static final cxg ch = a(dkg.aF);
-   public static final cxg ci = a(dkg.aG);
-   public static final cxg cj = a(dkg.aH);
-   public static final cxg ck = a(dkg.aI);
-   public static final cxg cl = a(dkg.aJ);
-   public static final cxg cm = a(dkg.oQ);
-   public static final cxg cn = a(dkg.oH);
-   public static final cxg co = a(dkg.as);
-   public static final cxg cp = a(dkg.at);
-   public static final cxg cq = a(dkg.au);
-   public static final cxg cr = a(dkg.av);
-   public static final cxg cs = a(dkg.aw);
-   public static final cxg ct = a(dkg.ax);
-   public static final cxg cu = a(dkg.ay);
-   public static final cxg cv = a(dkg.u);
-   public static final cxg cw = a(dkg.az);
-   public static final cxg cx = a(dkg.aA);
-   public static final cxg cy = a(dkg.oP);
-   public static final cxg cz = a(dkg.oG);
-   public static final cxg cA = a(dkg.aK);
-   public static final cxg cB = a(dkg.aL);
-   public static final cxg cC = a(dkg.aM);
-   public static final cxg cD = a(dkg.aN);
-   public static final cxg cE = a(dkg.aO);
-   public static final cxg cF = a(dkg.aP);
-   public static final cxg cG = a(dkg.aQ);
-   public static final cxg cH = a(dkg.aR);
-   public static final cxg cI = a(dkg.aS);
-   public static final cxg cJ = a(dkg.aT);
-   public static final cxg cK = a(dkg.aU);
-   public static final cxg cL = a(dkg.aV);
-   public static final cxg cM = a(dkg.aW);
-   public static final cxg cN = a(dkg.aX);
-   public static final cxg cO = a(dkg.rj);
-   public static final cxg cP = a(dkg.ba);
-   public static final cxg cQ = a(dkg.bc);
-   public static final cxg cR = a(dkg.bd);
-   public static final cxg cS = a(dkg.be);
-   public static final cxg cT = a(dkg.bz);
-   public static final cxg cU = a(dkg.bA);
-   public static final cxg cV = a(dkg.bB);
-   public static final cxg cW = a(dkg.sT);
-   public static final cxg cX = a(dkg.sU);
-   public static final cxg cY = a(dkg.bC);
-   public static final cxg cZ = a(dkg.bD);
-   public static final cxg da = a(dkg.nq);
-   public static final cxg db = a(dkg.bH);
-   public static final cxg dc = a(dkg.bI);
-   public static final cxg dd = a(dkg.bJ);
-   public static final cxg de = a(dkg.bK);
-   public static final cxg df = a(dkg.bL);
-   public static final cxg dg = a(dkg.bM);
-   public static final cxg dh = a(dkg.bN);
-   public static final cxg di = a(dkg.bO);
-   public static final cxg dj = a(dkg.bP);
-   public static final cxg dk = a(dkg.bQ);
-   public static final cxg dl = a(dkg.bR);
-   public static final cxg dm = a(dkg.bS);
-   public static final cxg dn = a(dkg.bT);
-   public static final cxg do = a(dkg.bU);
-   public static final cxg dp = a(dkg.bV);
-   public static final cxg dq = a(dkg.bW);
-   public static final cxg dr = a(dkg.bY);
-   public static final cxg ds = a(dkg.ca);
-   public static final cxg dt = a(dkg.cb);
-   public static final cxg du = a(dkg.cc);
-   public static final cxg dv = a(dkg.cd);
-   public static final cxg dw = a(dkg.ce);
-   public static final cxg dx = a(dkg.cf);
-   public static final cxg dy = a(dkg.cg);
-   public static final cxg dz = a(dkg.ch);
-   public static final cxg dA = a(dkg.ci);
-   public static final cxg dB = a(dkg.cj);
-   public static final cxg dC = a(dkg.cl);
-   public static final cxg dD = a(dkg.ck);
-   public static final cxg dE = a(dkg.bZ);
-   public static final cxg dF = a(dkg.kX);
-   public static final cxg dG = a(dkg.sS);
-   public static final cxg dH = a(dkg.cm);
-   public static final cxg dI = a(dkg.cn);
-   public static final cxg dJ = a(dkg.oS);
-   public static final cxg dK = a(dkg.oJ);
-   public static final cxg dL = a(dkg.oY);
-   public static final cxg dM = a(dkg.oL);
-   public static final cxg dN = a(dkg.oM);
-   public static final cxg dO = a(dkg.oU);
-   public static final cxg dP = a(dkg.oW);
-   public static final cxg dQ = a(dkg.ef);
-   public static final cxg dR = a(dkg.mx);
-   public static final cxg dS = a(dkg.sW);
-   public static final cxg dT = a(dkg.sV);
-   public static final cxg dU = a(dkg.sX);
-   public static final cxg dV = a(dkg.tQ);
-   public static final cxg dW = a(dkg.tR);
-   public static final cxg dX = a(dkg.tP);
-   public static final cxg dY = a(dkg.tb);
-   public static final cxg dZ = a(dkg.sY, dkg.sZ);
-   public static final cxg ea = a(dkg.ta, cwg::new);
-   public static final cxg eb = a(dkg.nu);
-   public static final cxg ec = a(dkg.jK);
-   public static final cxg ed = a(dkg.jL);
-   public static final cxg ee = a(dkg.jM);
-   public static final cxg ef = a(dkg.jN);
-   public static final cxg eg = a(dkg.jO);
-   public static final cxg eh = a(dkg.jP);
-   public static final cxg ei = a(dkg.jQ);
-   public static final cxg ej = a(dkg.jR);
-   public static final cxg ek = a(dkg.jS);
-   public static final cxg el = a(dkg.jT);
-   public static final cxg em = a(dkg.jU);
-   public static final cxg en = a(dkg.pb);
-   public static final cxg eo = a(dkg.pc);
-   public static final cxg ep = a(dkg.jV);
-   public static final cxg eq = a(dkg.jW);
-   public static final cxg er = a(dkg.jX);
-   public static final cxg es = a(dkg.jY);
-   public static final cxg et = a(dkg.jZ);
-   public static final cxg eu = a(dkg.ka);
-   public static final cxg ev = a(dkg.kb);
-   public static final cxg ew = a(dkg.kc);
-   public static final cxg ex = a(dkg.kd);
-   public static final cxg ey = a(dkg.ke);
-   public static final cxg ez = a(dkg.kf);
-   public static final cxg eA = a(dkg.kg);
-   public static final cxg eB = a(dkg.kh);
-   public static final cxg eC = a(dkg.ki);
-   public static final cxg eD = a(dkg.iw);
-   public static final cxg eE = a(dkg.ix);
-   public static final cxg eF = a(dkg.iy);
-   public static final cxg eG = a(dkg.kl);
-   public static final cxg eH = a(dkg.km);
-   public static final cxg eI = a(dkg.kk);
-   public static final cxg eJ = a(dkg.kj);
-   public static final cxg eK = a(dkg.cq);
-   public static final cxg eL = a(dkg.cs);
-   public static final cxg eM = a(dkg.ct, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg eN = a(dkg.tK, new cxg.a().a(ku.ak, dvw.a));
-   public static final cxg eO = a(dkg.cu);
-   public static final cxg eP = a(dkg.cv);
-   public static final cxg eQ = a(dkg.cw, ($$0, $$1) -> new cyx($$0, dkg.cx, jm.a, $$1));
-   public static final cxg eR = a(dkg.kO);
-   public static final cxg eS = a(dkg.kP);
-   public static final cxg eT = a(dkg.kQ);
-   public static final cxg eU = a(dkg.kR);
-   public static final cxg eV = a(dkg.kS);
-   public static final cxg eW = a(dkg.kT);
-   public static final cxg eX = a(dkg.cA);
-   public static final cxg eY = a(dkg.cB);
-   public static final cxg eZ = a(dkg.cD, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg fa = a(dkg.cI);
-   public static final cxg fb = a(dkg.cK);
-   public static final cxg fc = a(dkg.cL, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg fd = a(dkg.cX);
-   public static final cxg fe = a(dkg.cZ);
-   public static final cxg ff = a(dkg.ea);
-   public static final cxg fg = a(dkg.eb);
-   public static final cxg fh = a(dkg.ec);
-   public static final cxg fi = a(dkg.ed);
-   public static final cxg fj = a(dkg.ee);
-   public static final cxg fk = a(dkg.eg);
-   public static final cxg fl = a(dkg.eh);
-   public static final cxg fm = a(dkg.kw);
-   public static final cxg fn = a(dkg.kx);
-   public static final cxg fo = a(dkg.ky);
-   public static final cxg fp = a(dkg.kz);
-   public static final cxg fq = a(dkg.kA);
-   public static final cxg fr = a(dkg.kB);
-   public static final cxg fs = a(dkg.kC);
-   public static final cxg ft = a(dkg.kD);
-   public static final cxg fu = a(dkg.kE);
-   public static final cxg fv = a(dkg.pf);
-   public static final cxg fw = a(dkg.pg);
-   public static final cxg fx = a(dkg.fn);
-   public static final cxg fy = a(dkg.er, $$0 -> $$0.b(bvn.f));
-   public static final cxg fz = a(dkg.es);
-   public static final cxg fA = a(dkg.ei);
-   public static final cxg fB = a(dkg.ej);
-   public static final cxg fC = a(dkg.ek);
-   public static final cxg fD = a(dkg.el);
-   public static final cxg fE = a(dkg.em);
-   public static final cxg fF = a(dkg.tz);
-   public static final cxg fG = a(dkg.en, ($$0, $$1) -> new cyx($$0, dkg.eo, jm.a, $$1));
-   public static final cxg fH = a(dkg.ep);
-   public static final cxg fI = a(dkg.fb);
-   public static final cxg fJ = a(dkg.fc);
-   public static final cxg fK = a(dkg.fd);
-   public static final cxg fL = a(dkg.fe);
-   public static final cxg fM = a(dkg.ff);
-   public static final cxg fN = a(dkg.fg);
-   public static final cxg fO = a(dkg.ty);
-   public static final cxg fP = a(dkg.eV);
-   public static final cxg fQ = a(dkg.eW);
-   public static final cxg fR = a(dkg.eX);
-   public static final cxg fS = a(dkg.eY);
-   public static final cxg fT = a(dkg.eZ);
-   public static final cxg fU = a(dkg.fa);
-   public static final cxg fV = a(dkg.tr);
-   public static final cxg fW = a(dkg.tw);
-   public static final cxg fX = a(dkg.tn);
-   public static final cxg fY = a(dkg.tx);
-   public static final cxg fZ = a(dkg.tv);
-   public static final cxg ga = a(dkg.tJ);
-   public static final cxg gb = a(dkg.fh);
-   public static final cxg gc = a(dkg.fi);
-   public static final cxg gd = a(dkg.fj);
-   public static final cxg ge = a(dkg.fk);
-   public static final cxg gf = a(dkg.fl);
-   public static final cxg gg = a(dkg.fm);
-   public static final cxg gh = a(dkg.fo);
-   public static final cxg gi = a(dkg.ft);
-   public static final cxg gj = a(dkg.fu);
-   public static final cxg gk = a(dkg.fw);
-   public static final cxg gl = a(dkg.fx);
-   public static final cxg gm = a(dkg.fy);
-   public static final cxg gn = a(dkg.fz);
-   public static final cxg go = a(dkg.fA, cyc::new);
-   public static final cxg gp = a(dkg.fB);
-   public static final cxg gq = a(dkg.qe);
-   public static final cxg gr = a(dkg.qd);
-   public static final cxg gs = a(dkg.fC);
-   public static final cxg gt = a(dkg.fD);
-   public static final cxg gu = a(dkg.rn);
-   public static final cxg gv = a(dkg.ro);
-   public static final cxg gw = a(dkg.rp);
-   public static final cxg gx = a(dkg.rq);
-   public static final cxg gy = a(dkg.fF);
-   public static final cxg gz = a(dkg.fM);
-   public static final cxg gA = a(dkg.fN);
-   public static final cxg gB = a(dkg.kU);
-   public static final cxg gC = a(dkg.fO, new cxg.a().a(cyh.d));
-   public static final cxg gD = a(dkg.fR);
-   public static final cxg gE = a(dkg.fU);
-   public static final cxg gF = a(dkg.fX);
-   public static final cxg gG = a(dkg.cC);
-   public static final cxg gH = a(dkg.fY);
-   public static final cxg gI = a(dkg.fZ);
-   public static final cxg gJ = a(dkg.ga);
-   public static final cxg gK = a(dkg.if);
-   public static final cxg gL = a(dkg.ig);
-   public static final cxg gM = a(dkg.ih);
-   public static final cxg gN = a(dkg.ii);
-   public static final cxg gO = a(dkg.ij);
-   public static final cxg gP = a(dkg.ik);
-   public static final cxg gQ = a(dkg.il);
-   public static final cxg gR = a(dkg.pl);
-   public static final cxg gS = a(dkg.pm);
-   public static final cxg gT = a(dkg.gb, cww::new, new cxg.a().a(cyh.d));
-   public static final cxg gU = a(dkg.gc, new cxg.a().a(cyh.c));
-   public static final cxg gV = a(dkg.gd);
-   public static final cxg gW = a(dkg.ge);
-   public static final cxg gX = a(dkg.oa);
-   public static final cxg gY = a(dkg.ob);
-   public static final cxg gZ = a(dkg.oc);
-   public static final cxg ha = a(dkg.od);
-   public static final cxg hb = a(dkg.oe);
-   public static final cxg hc = a(dkg.of);
-   public static final cxg hd = a(dkg.og);
-   public static final cxg he = a(dkg.oh);
-   public static final cxg hf = a(dkg.oi);
-   public static final cxg hg = a(dkg.oj);
-   public static final cxg hh = a(dkg.ok);
-   public static final cxg hi = a(dkg.ol);
-   public static final cxg hj = a(dkg.om);
-   public static final cxg hk = a(dkg.pO);
-   public static final cxg hl = a(dkg.qc);
-   public static final cxg hm = a(dkg.pW);
-   public static final cxg hn = a(dkg.ti);
-   public static final cxg ho = a(dkg.tm);
-   public static final cxg hp = a(dkg.tu);
-   public static final cxg hq = a(dkg.tq);
-   public static final cxg hr = a(dkg.hi);
-   public static final cxg hs = a(dkg.hj);
-   public static final cxg ht = a(dkg.hk);
-   public static final cxg hu = a(dkg.hu);
-   public static final cxg hv = a(dkg.ht);
-   public static final cxg hw = a(dkg.qf);
-   public static final cxg hx = a(dkg.hv);
-   public static final cxg hy = a(dkg.hw);
-   public static final cxg hz = a(dkg.hz);
-   public static final cxg hA = a(dkg.hA);
-   public static final cxg hB = a(dkg.hB);
-   public static final cxg hC = a(dkg.hC);
-   public static final cxg hD = a(dkg.hD);
-   public static final cxg hE = a(dkg.hE);
-   public static final cxg hF = a(dkg.hF);
-   public static final cxg hG = a(dkg.hG);
-   public static final cxg hH = a(dkg.hH);
-   public static final cxg hI = a(dkg.hI);
-   public static final cxg hJ = a(dkg.hJ);
-   public static final cxg hK = a(dkg.hK);
-   public static final cxg hL = a(dkg.hL);
-   public static final cxg hM = a(dkg.hM);
-   public static final cxg hN = a(dkg.hN);
-   public static final cxg hO = a(dkg.hO);
-   public static final cxg hP = a(dkg.in, new cxg.a().a(cyh.d));
-   public static final cxg hQ = a(dkg.io, new cxg.a().a(cyh.d));
-   public static final cxg hR = a(dkg.iA);
-   public static final cxg hS = a(dkg.iB, $$0 -> $$0.a(ku.D, dfm.a(cwh.a)));
-   public static final cxg hT = a(dkg.iC, $$0 -> $$0.a(ku.D, dfm.a(cwh.b)));
-   public static final cxg hU = a(dkg.iD, $$0 -> $$0.a(ku.D, dfm.a(cwh.c)));
-   public static final cxg hV = a(dkg.iE, $$0 -> $$0.a(ku.D, dfm.a(cwh.d)));
-   public static final cxg hW = a(dkg.iF, $$0 -> $$0.a(ku.D, dfm.a(cwh.e)));
-   public static final cxg hX = a(dkg.iG, $$0 -> $$0.a(ku.D, dfm.a(cwh.f)));
-   public static final cxg hY = a(dkg.iH, $$0 -> $$0.a(ku.D, dfm.a(cwh.g)));
-   public static final cxg hZ = a(dkg.iI, $$0 -> $$0.a(ku.D, dfm.a(cwh.h)));
-   public static final cxg ia = a(dkg.iJ, $$0 -> $$0.a(ku.D, dfm.a(cwh.i)));
-   public static final cxg ib = a(dkg.iK, $$0 -> $$0.a(ku.D, dfm.a(cwh.j)));
-   public static final cxg ic = a(dkg.iL, $$0 -> $$0.a(ku.D, dfm.a(cwh.k)));
-   public static final cxg id = a(dkg.iM, $$0 -> $$0.a(ku.D, dfm.a(cwh.l)));
-   public static final cxg ie = a(dkg.iN, $$0 -> $$0.a(ku.D, dfm.a(cwh.m)));
-   public static final cxg if = a(dkg.iO, $$0 -> $$0.a(ku.D, dfm.a(cwh.n)));
-   public static final cxg ig = a(dkg.iP, $$0 -> $$0.a(ku.D, dfm.a(cwh.o)));
-   public static final cxg ih = a(dkg.iQ, $$0 -> $$0.a(ku.D, dfm.a(cwh.p)));
-   public static final cxg ii = a(dkg.iR);
-   public static final cxg ij = a(dkg.iT);
-   public static final cxg ik = a(dkg.kZ);
-   public static final cxg il = a(dkg.iU, cwg::new);
-   public static final cxg im = a(dkg.iV, cwg::new);
-   public static final cxg in = a(dkg.iW, cwg::new);
-   public static final cxg io = a(dkg.iX, cwg::new);
-   public static final cxg ip = a(dkg.iY, cwg::new);
-   public static final cxg iq = a(dkg.iZ, cwg::new);
-   public static final cxg ir = a(dkg.ev);
-   public static final cxg is = a(dkg.ew);
-   public static final cxg it = a(dkg.ex);
-   public static final cxg iu = a(dkg.ey);
-   public static final cxg iv = a(dkg.ez);
-   public static final cxg iw = a(dkg.eA);
-   public static final cxg ix = a(dkg.eB);
-   public static final cxg iy = a(dkg.eC);
-   public static final cxg iz = a(dkg.eD);
-   public static final cxg iA = a(dkg.eE);
-   public static final cxg iB = a(dkg.eF);
-   public static final cxg iC = a(dkg.eG);
-   public static final cxg iD = a(dkg.eH);
-   public static final cxg iE = a(dkg.eI);
-   public static final cxg iF = a(dkg.eJ);
-   public static final cxg iG = a(dkg.eK);
-   public static final cxg iH = a(dkg.hP);
-   public static final cxg iI = a(dkg.hQ);
-   public static final cxg iJ = a(dkg.hR);
-   public static final cxg iK = a(dkg.hS);
-   public static final cxg iL = a(dkg.hT);
-   public static final cxg iM = a(dkg.hU);
-   public static final cxg iN = a(dkg.hV);
-   public static final cxg iO = a(dkg.hW);
-   public static final cxg iP = a(dkg.hX);
-   public static final cxg iQ = a(dkg.hY);
-   public static final cxg iR = a(dkg.hZ);
-   public static final cxg iS = a(dkg.ia);
-   public static final cxg iT = a(dkg.ib);
-   public static final cxg iU = a(dkg.ic);
-   public static final cxg iV = a(dkg.id);
-   public static final cxg iW = a(dkg.ie);
-   public static final cxg iX = a(dkg.iq);
-   public static final cxg iY = a(dkg.ir);
-   public static final cxg iZ = a(dkg.is);
-   public static final cxg ja = a(dkg.it);
-   public static final cxg jb = a(dkg.iu);
-   public static final cxg jc = a(dkg.iv);
-   public static final cxg jd = a(dkg.iz);
-   public static final cxg je = a(dkg.jG);
-   public static final cxg jf = a(dkg.jH);
-   public static final cxg jg = a(dkg.jI);
-   public static final cxg jh = a(dkg.jJ);
-   public static final cxg ji = a(dkg.lb, cww::new, new cxg.a().a(cyh.d));
-   public static final cxg jj = a(dkg.lc, cww::new, new cxg.a().a(cyh.d));
-   public static final cxg jk = a(dkg.le);
-   public static final cxg jl = a(dkg.lf);
-   public static final cxg jm = a(dkg.oK);
-   public static final cxg jn = a(dkg.lg);
-   public static final cxg jo = a(dkg.lh);
-   public static final cxg jp = a(dkg.li, new cxg.a().a(cyh.d));
-   public static final cxg jq = a(dkg.lk, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jr = a(dkg.ll, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg js = a(dkg.lm, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jt = a(dkg.ln, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg ju = a(dkg.lo, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jv = a(dkg.lp, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jw = a(dkg.lq, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jx = a(dkg.lr, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jy = a(dkg.ls, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jz = a(dkg.lt, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jA = a(dkg.lu, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jB = a(dkg.lv, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jC = a(dkg.lw, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jD = a(dkg.lx, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jE = a(dkg.ly, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jF = a(dkg.lz, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jG = a(dkg.lA, new cxg.a().a(1).a(ku.al, dac.a));
-   public static final cxg jH = a(dkg.lB);
-   public static final cxg jI = a(dkg.lC);
-   public static final cxg jJ = a(dkg.lD);
-   public static final cxg jK = a(dkg.lE);
-   public static final cxg jL = a(dkg.lF);
-   public static final cxg jM = a(dkg.lG);
-   public static final cxg jN = a(dkg.lH);
-   public static final cxg jO = a(dkg.lI);
-   public static final cxg jP = a(dkg.lJ);
-   public static final cxg jQ = a(dkg.lK);
-   public static final cxg jR = a(dkg.lL);
-   public static final cxg jS = a(dkg.lM);
-   public static final cxg jT = a(dkg.lN);
-   public static final cxg jU = a(dkg.lO);
-   public static final cxg jV = a(dkg.lP);
-   public static final cxg jW = a(dkg.lQ);
-   public static final cxg jX = a(dkg.lR);
-   public static final cxg jY = a(dkg.lS);
-   public static final cxg jZ = a(dkg.lT);
-   public static final cxg ka = a(dkg.lU);
-   public static final cxg kb = a(dkg.lV);
-   public static final cxg kc = a(dkg.lW);
-   public static final cxg kd = a(dkg.lX);
-   public static final cxg ke = a(dkg.lY);
-   public static final cxg kf = a(dkg.lZ);
-   public static final cxg kg = a(dkg.ma);
-   public static final cxg kh = a(dkg.mb);
-   public static final cxg ki = a(dkg.mc);
-   public static final cxg kj = a(dkg.md);
-   public static final cxg kk = a(dkg.me);
-   public static final cxg kl = a(dkg.mf);
-   public static final cxg km = a(dkg.mg);
-   public static final cxg kn = a(dkg.mh);
-   public static final cxg ko = a(dkg.mi);
-   public static final cxg kp = a(dkg.mj);
-   public static final cxg kq = a(dkg.mk);
-   public static final cxg kr = a(dkg.ml);
-   public static final cxg ks = a(dkg.mm);
-   public static final cxg kt = a(dkg.mn);
-   public static final cxg ku = a(dkg.mo);
-   public static final cxg kv = a(dkg.mp);
-   public static final cxg kw = a(dkg.mq);
-   public static final cxg kx = a(dkg.mr);
-   public static final cxg ky = a(dkg.ms);
-   public static final cxg kz = a(dkg.mt);
-   public static final cxg kA = a(dkg.mu);
-   public static final cxg kB = a(dkg.mv);
-   public static final cxg kC = a(dkg.mw);
-   public static final cxg kD = a(dkg.mA);
-   public static final cxg kE = a(dkg.mB, $$0 -> $$0.a(cyh.b));
-   public static final cxg kF = a(dkg.mC);
-   public static final cxg kG = a(dkg.mD);
-   public static final cxg kH = a(dkg.mE);
-   public static final cxg kI = a(dkg.mF);
-   public static final cxg kJ = a(dkg.mG);
-   public static final cxg kK = a(dkg.mH);
-   public static final cxg kL = a(dkg.mI);
-   public static final cxg kM = a(dkg.mJ);
-   public static final cxg kN = a(dkg.mK);
-   public static final cxg kO = a(dkg.mL);
-   public static final cxg kP = a(dkg.mR);
-   public static final cxg kQ = a(dkg.mS);
-   public static final cxg kR = a(dkg.mT);
-   public static final cxg kS = a(dkg.mU);
-   public static final cxg kT = a(dkg.mV);
-   public static final cxg kU = a(dkg.mN);
-   public static final cxg kV = a(dkg.mO);
-   public static final cxg kW = a(dkg.mP);
-   public static final cxg kX = a(dkg.mQ);
-   public static final cxg kY = a(dkg.mM);
-   public static final cxg kZ = a(dkg.nb, ($$0, $$1) -> new cyx($$0, dkg.nl, jm.a, $$1));
-   public static final cxg la = a(dkg.nc, ($$0, $$1) -> new cyx($$0, dkg.nm, jm.a, $$1));
-   public static final cxg lb = a(dkg.nd, ($$0, $$1) -> new cyx($$0, dkg.nn, jm.a, $$1));
-   public static final cxg lc = a(dkg.ne, ($$0, $$1) -> new cyx($$0, dkg.no, jm.a, $$1));
-   public static final cxg ld = a(dkg.nf, ($$0, $$1) -> new cyx($$0, dkg.np, jm.a, $$1));
-   public static final cxg le = a(dkg.mW, ($$0, $$1) -> new cyx($$0, dkg.ng, jm.a, $$1));
-   public static final cxg lf = a(dkg.mX, ($$0, $$1) -> new cyx($$0, dkg.nh, jm.a, $$1));
-   public static final cxg lg = a(dkg.mY, ($$0, $$1) -> new cyx($$0, dkg.ni, jm.a, $$1));
-   public static final cxg lh = a(dkg.mZ, ($$0, $$1) -> new cyx($$0, dkg.nj, jm.a, $$1));
-   public static final cxg li = a(dkg.na, ($$0, $$1) -> new cyx($$0, dkg.nk, jm.a, $$1));
-   public static final cxg lj = a(dkg.nr);
-   public static final cxg lk = a(dkg.ns, new cxg.a().a(cyh.b));
-   public static final cxg ll = a(dkg.nz);
-   public static final cxg lm = a(dkg.nA);
-   public static final cxg ln = a(dkg.nB);
-   public static final cxg lo = a(dkg.nC);
-   public static final cxg lp = a(dkg.nD);
-   public static final cxg lq = a(dkg.nE);
-   public static final cxg lr = a(dkg.nF);
-   public static final cxg ls = a(dkg.nG);
-   public static final cxg lt = a(dkg.nH);
-   public static final cxg lu = a(dkg.nI);
-   public static final cxg lv = a(dkg.nJ);
-   public static final cxg lw = a(dkg.nK);
-   public static final cxg lx = a(dkg.nL);
-   public static final cxg ly = a(dkg.nM);
-   public static final cxg lz = a(dkg.tg);
-   public static final cxg lA = a(dkg.tk);
-   public static final cxg lB = a(dkg.ts);
-   public static final cxg lC = a(dkg.to);
-   public static final cxg lD = a(dkg.nN);
-   public static final cxg lE = a(dkg.nO);
-   public static final cxg lF = a(dkg.nP);
-   public static final cxg lG = a(dkg.nQ);
-   public static final cxg lH = a(dkg.nR);
-   public static final cxg lI = a(dkg.nS);
-   public static final cxg lJ = a(dkg.nT);
-   public static final cxg lK = a(dkg.nU);
-   public static final cxg lL = a(dkg.nV);
-   public static final cxg lM = a(dkg.nW);
-   public static final cxg lN = a(dkg.nX);
-   public static final cxg lO = a(dkg.nY);
-   public static final cxg lP = a(dkg.nZ);
-   public static final cxg lQ = a(dkg.th);
-   public static final cxg lR = a(dkg.tl);
-   public static final cxg lS = a(dkg.tt);
-   public static final cxg lT = a(dkg.tp);
-   public static final cxg lU = a(dkg.on, cyj::new);
-   public static final cxg lV = a("redstone", b(dkg.cE));
-   public static final cxg lW = a(dkg.dX, ($$0, $$1) -> new cyx($$0, dkg.dY, jm.a, $$1));
-   public static final cxg lX = a(dkg.hq);
-   public static final cxg lY = a(dkg.eu);
-   public static final cxg lZ = a(dkg.ho);
-   public static final cxg ma = a(dkg.bF);
-   public static final cxg mb = a(dkg.by);
-   public static final cxg mc = a(dkg.im);
-   public static final cxg md = a(dkg.pB);
-   public static final cxg me = a(dkg.lj);
-   public static final cxg mf = a(dkg.hs, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg mg = a(dkg.bb, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg mh = a(dkg.hy, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg mi = a(dkg.ov);
-   public static final cxg mj = a(dkg.py);
-   public static final cxg mk = a(dkg.dI);
-   public static final cxg ml = a(dkg.sN);
-   public static final cxg mm = a(dkg.hp);
-   public static final cxg mn = a(dkg.rl);
-   public static final cxg mo = a(dkg.rm);
-   public static final cxg mp = a(dkg.fV);
-   public static final cxg mq = a(dkg.hl, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg mr = a(dkg.cr);
-   public static final cxg ms = a(dkg.fP);
-   public static final cxg mt = a(dkg.bf);
-   public static final cxg mu = a(dkg.dZ);
-   public static final cxg mv = a(dkg.qb);
-   public static final cxg mw = a(dkg.gK);
-   public static final cxg mx = a(dkg.gL);
-   public static final cxg my = a(dkg.gM);
-   public static final cxg mz = a(dkg.gN);
-   public static final cxg mA = a(dkg.gO);
-   public static final cxg mB = a(dkg.gP);
-   public static final cxg mC = a(dkg.gQ);
-   public static final cxg mD = a(dkg.gR);
-   public static final cxg mE = a(dkg.gS);
-   public static final cxg mF = a(dkg.gT);
-   public static final cxg mG = a(dkg.pn);
-   public static final cxg mH = a(dkg.po);
-   public static final cxg mI = a(dkg.dJ);
-   public static final cxg mJ = a(dkg.qa);
-   public static final cxg mK = a(dkg.hm);
-   public static final cxg mL = a(dkg.hn);
-   public static final cxg mM = a(dkg.dL);
-   public static final cxg mN = a(dkg.dM);
-   public static final cxg mO = a(dkg.dN);
-   public static final cxg mP = a(dkg.dO);
-   public static final cxg mQ = a(dkg.dP);
-   public static final cxg mR = a(dkg.dQ);
-   public static final cxg mS = a(dkg.dR);
-   public static final cxg mT = a(dkg.dS);
-   public static final cxg mU = a(dkg.dT);
-   public static final cxg mV = a(dkg.dU);
-   public static final cxg mW = a(dkg.pd);
-   public static final cxg mX = a(dkg.pe);
-   public static final cxg mY = a(dkg.dK, cwg::new);
-   public static final cxg mZ = a(dkg.cW, cwg::new);
-   public static final cxg na = a(dkg.kF, cwg::new);
-   public static final cxg nb = a(dkg.kG, cwg::new);
-   public static final cxg nc = a(dkg.kH, cwg::new);
-   public static final cxg nd = a(dkg.kI, cwg::new);
-   public static final cxg ne = a(dkg.kJ, cwg::new);
-   public static final cxg nf = a(dkg.kK, cwg::new);
-   public static final cxg ng = a(dkg.kL, cwg::new);
-   public static final cxg nh = a(dkg.kM, cwg::new);
-   public static final cxg ni = a(dkg.kN, cwg::new);
-   public static final cxg nj = a(dkg.pp, cwg::new);
-   public static final cxg nk = a(dkg.pq, cwg::new);
-   public static final cxg nl = a(dkg.sh, cwg::new);
-   public static final cxg nm = a(dkg.si, cwg::new);
-   public static final cxg nn = a(dkg.sk, cwg::new);
-   public static final cxg no = a(dkg.sj, cwg::new);
-   public static final cxg np = a(dkg.sl, cwg::new);
-   public static final cxg nq = a(dkg.sm, cwg::new);
-   public static final cxg nr = a(dkg.so, cwg::new);
-   public static final cxg ns = a(dkg.sn, cwg::new);
-   public static final cxg nt = a(dkg.ip);
-   public static final cxg nu = a(dkg.eL);
-   public static final cxg nv = a(dkg.eM);
-   public static final cxg nw = a(dkg.eN);
-   public static final cxg nx = a(dkg.eO);
-   public static final cxg ny = a(dkg.eP);
-   public static final cxg nz = a(dkg.eQ);
-   public static final cxg nA = a(dkg.eR);
-   public static final cxg nB = a(dkg.eS);
-   public static final cxg nC = a(dkg.eT);
-   public static final cxg nD = a(dkg.eU);
-   public static final cxg nE = a(dkg.ph);
-   public static final cxg nF = a(dkg.pi);
-   public static final cxg nG = a(dkg.sp);
-   public static final cxg nH = a(dkg.sq);
-   public static final cxg nI = a(dkg.ss);
-   public static final cxg nJ = a(dkg.sr);
-   public static final cxg nK = a(dkg.st);
-   public static final cxg nL = a(dkg.su);
-   public static final cxg nM = a(dkg.sw);
-   public static final cxg nN = a(dkg.sv);
-   public static final cxg nO = a(dkg.fv);
-   public static final cxg nP = a(dkg.kn);
-   public static final cxg nQ = a(dkg.ko);
-   public static final cxg nR = a(dkg.kp);
-   public static final cxg nS = a(dkg.kq);
-   public static final cxg nT = a(dkg.kr);
-   public static final cxg nU = a(dkg.ks);
-   public static final cxg nV = a(dkg.kt);
-   public static final cxg nW = a(dkg.ku);
-   public static final cxg nX = a(dkg.kv);
-   public static final cxg nY = a(dkg.pj);
-   public static final cxg nZ = a(dkg.pk);
-   public static final cxg oa = a(dkg.bw);
-   public static final cxg ob = a(dkg.bx);
-   public static final cxg oc = a(dkg.cY);
-   public static final cxg od = a(dkg.hx);
-   public static final cxg oe = a("saddle", cyi::new, new cxg.a().a(1));
-   public static final cxg of = a("minecart", $$0 -> new cxy(bvm.aE, $$0), new cxg.a().a(1));
-   public static final cxg og = a("chest_minecart", $$0 -> new cxy(bvm.y, $$0), new cxg.a().a(1));
-   public static final cxg oh = a("furnace_minecart", $$0 -> new cxy(bvm.ad, $$0), new cxg.a().a(1));
-   public static final cxg oi = a("tnt_minecart", $$0 -> new cxy(bvm.bx, $$0), new cxg.a().a(1));
-   public static final cxg oj = a("hopper_minecart", $$0 -> new cxy(bvm.al, $$0), new cxg.a().a(1));
-   public static final cxg ok = a("carrot_on_a_stick", $$0 -> new cwv<>(bvm.aR, 7, $$0), new cxg.a().b(25));
-   public static final cxg ol = a("warped_fungus_on_a_stick", $$0 -> new cwv<>(bvm.bt, 1, $$0), new cxg.a().b(100));
-   public static final cxg om = a("phantom_membrane");
-   public static final cxg on = a("elytra", new cxg.a().b(432).a(cyh.d).a(ku.F, bbk.a).a(ku.D, dfm.a(bvn.e).a(axf.ar).a(dfl.i).c(false).a()).c(om));
-   public static final cxg oo = a("oak_boat", $$0 -> new cvr(bvm.aH, $$0), new cxg.a().a(1));
-   public static final cxg op = a("oak_chest_boat", $$0 -> new cvr(bvm.aI, $$0), new cxg.a().a(1));
-   public static final cxg oq = a("spruce_boat", $$0 -> new cvr(bvm.bp, $$0), new cxg.a().a(1));
-   public static final cxg or = a("spruce_chest_boat", $$0 -> new cvr(bvm.bq, $$0), new cxg.a().a(1));
-   public static final cxg os = a("birch_boat", $$0 -> new cvr(bvm.m, $$0), new cxg.a().a(1));
-   public static final cxg ot = a("birch_chest_boat", $$0 -> new cvr(bvm.n, $$0), new cxg.a().a(1));
-   public static final cxg ou = a("jungle_boat", $$0 -> new cvr(bvm.au, $$0), new cxg.a().a(1));
-   public static final cxg ov = a("jungle_chest_boat", $$0 -> new cvr(bvm.av, $$0), new cxg.a().a(1));
-   public static final cxg ow = a("acacia_boat", $$0 -> new cvr(bvm.a, $$0), new cxg.a().a(1));
-   public static final cxg ox = a("acacia_chest_boat", $$0 -> new cvr(bvm.b, $$0), new cxg.a().a(1));
-   public static final cxg oy = a("cherry_boat", $$0 -> new cvr(bvm.w, $$0), new cxg.a().a(1));
-   public static final cxg oz = a("cherry_chest_boat", $$0 -> new cvr(bvm.x, $$0), new cxg.a().a(1));
-   public static final cxg oA = a("dark_oak_boat", $$0 -> new cvr(bvm.G, $$0), new cxg.a().a(1));
-   public static final cxg oB = a("dark_oak_chest_boat", $$0 -> new cvr(bvm.H, $$0), new cxg.a().a(1));
-   public static final cxg oC = a("pale_oak_boat", $$0 -> new cvr(bvm.aM, $$0), new cxg.a().a(1).a(csq.b));
-   public static final cxg oD = a("pale_oak_chest_boat", $$0 -> new cvr(bvm.aN, $$0), new cxg.a().a(1).a(csq.b));
-   public static final cxg oE = a("mangrove_boat", $$0 -> new cvr(bvm.aB, $$0), new cxg.a().a(1));
-   public static final cxg oF = a("mangrove_chest_boat", $$0 -> new cvr(bvm.aC, $$0), new cxg.a().a(1));
-   public static final cxg oG = a("bamboo_raft", $$0 -> new cvr(bvm.j, $$0), new cxg.a().a(1));
-   public static final cxg oH = a("bamboo_chest_raft", $$0 -> new cvr(bvm.i, $$0), new cxg.a().a(1));
-   public static final cxg oI = a(dkg.pv, cww::new, new cxg.a().a(cyh.d));
-   public static final cxg oJ = a(dkg.pw, cww::new, new cxg.a().a(cyh.d));
-   public static final cxg oK = a("turtle_helmet", $$0 -> new cvj(dfi.f, dfj.a, $$0));
-   public static final cxg oL = a("turtle_scute");
-   public static final cxg oM = a("armadillo_scute");
-   public static final cxg oN = a("wolf_armor", $$0 -> new cvi(dfi.h, cvi.a.b, $$0));
-   public static final cxg oO = a("flint_and_steel", cwu::new, new cxg.a().b(64));
-   public static final cxg oP = a("bowl");
-   public static final cxg oQ = a("apple", new cxg.a().a(csv.a));
-   public static final cxg oR = a("bow", cvu::new, new cxg.a().b(384).c(1));
-   public static final cxg oS = a("arrow", cvl::new);
-   public static final cxg oT = a("coal");
-   public static final cxg oU = a("charcoal");
-   public static final cxg oV = a("diamond");
-   public static final cxg oW = a("emerald");
-   public static final cxg oX = a("lapis_lazuli");
-   public static final cxg oY = a("quartz");
-   public static final cxg oZ = a("amethyst_shard");
-   public static final cxg pa = a("raw_iron");
-   public static final cxg pb = a("iron_ingot");
-   public static final cxg pc = a("raw_copper");
-   public static final cxg pd = a("copper_ingot");
-   public static final cxg pe = a("raw_gold");
-   public static final cxg pf = a("gold_ingot");
-   public static final cxg pg = a("netherite_ingot", new cxg.a().a());
-   public static final cxg ph = a("netherite_scrap", new cxg.a().a());
-   public static final cxg pi = a("wooden_sword", $$0 -> new cyy(czb.a, 3.0F, -2.4F, $$0));
-   public static final cxg pj = a("wooden_shovel", $$0 -> new cyn(czb.a, 1.5F, -3.0F, $$0));
-   public static final cxg pk = a("wooden_pickaxe", $$0 -> new cyb(czb.a, 1.0F, -2.8F, $$0));
-   public static final cxg pl = a("wooden_axe", $$0 -> new cvm(czb.a, 6.0F, -3.2F, $$0));
-   public static final cxg pm = a("wooden_hoe", $$0 -> new cxa(czb.a, 0.0F, -3.0F, $$0));
-   public static final cxg pn = a("stone_sword", $$0 -> new cyy(czb.b, 3.0F, -2.4F, $$0));
-   public static final cxg po = a("stone_shovel", $$0 -> new cyn(czb.b, 1.5F, -3.0F, $$0));
-   public static final cxg pp = a("stone_pickaxe", $$0 -> new cyb(czb.b, 1.0F, -2.8F, $$0));
-   public static final cxg pq = a("stone_axe", $$0 -> new cvm(czb.b, 7.0F, -3.2F, $$0));
-   public static final cxg pr = a("stone_hoe", $$0 -> new cxa(czb.b, -1.0F, -2.0F, $$0));
-   public static final cxg ps = a("golden_sword", $$0 -> new cyy(czb.e, 3.0F, -2.4F, $$0));
-   public static final cxg pt = a("golden_shovel", $$0 -> new cyn(czb.e, 1.5F, -3.0F, $$0));
-   public static final cxg pu = a("golden_pickaxe", $$0 -> new cyb(czb.e, 1.0F, -2.8F, $$0));
-   public static final cxg pv = a("golden_axe", $$0 -> new cvm(czb.e, 6.0F, -3.0F, $$0));
-   public static final cxg pw = a("golden_hoe", $$0 -> new cxa(czb.e, 0.0F, -3.0F, $$0));
-   public static final cxg px = a("iron_sword", $$0 -> new cyy(czb.c, 3.0F, -2.4F, $$0));
-   public static final cxg py = a("iron_shovel", $$0 -> new cyn(czb.c, 1.5F, -3.0F, $$0));
-   public static final cxg pz = a("iron_pickaxe", $$0 -> new cyb(czb.c, 1.0F, -2.8F, $$0));
-   public static final cxg pA = a("iron_axe", $$0 -> new cvm(czb.c, 6.0F, -3.1F, $$0));
-   public static final cxg pB = a("iron_hoe", $$0 -> new cxa(czb.c, -2.0F, -1.0F, $$0));
-   public static final cxg pC = a("diamond_sword", $$0 -> new cyy(czb.d, 3.0F, -2.4F, $$0));
-   public static final cxg pD = a("diamond_shovel", $$0 -> new cyn(czb.d, 1.5F, -3.0F, $$0));
-   public static final cxg pE = a("diamond_pickaxe", $$0 -> new cyb(czb.d, 1.0F, -2.8F, $$0));
-   public static final cxg pF = a("diamond_axe", $$0 -> new cvm(czb.d, 5.0F, -3.0F, $$0));
-   public static final cxg pG = a("diamond_hoe", $$0 -> new cxa(czb.d, -3.0F, 0.0F, $$0));
-   public static final cxg pH = a("netherite_sword", $$0 -> new cyy(czb.f, 3.0F, -2.4F, $$0), new cxg.a().a());
-   public static final cxg pI = a("netherite_shovel", $$0 -> new cyn(czb.f, 1.5F, -3.0F, $$0), new cxg.a().a());
-   public static final cxg pJ = a("netherite_pickaxe", $$0 -> new cyb(czb.f, 1.0F, -2.8F, $$0), new cxg.a().a());
-   public static final cxg pK = a("netherite_axe", $$0 -> new cvm(czb.f, 5.0F, -3.0F, $$0), new cxg.a().a());
-   public static final cxg pL = a("netherite_hoe", $$0 -> new cxa(czb.f, -4.0F, 0.0F, $$0), new cxg.a().a());
-   public static final cxg pM = a("stick");
-   public static final cxg pN = a("mushroom_stew", new cxg.a().a(1).a(csv.y).a(oP));
-   public static final cxg pO = a("string", b(dkg.fW));
-   public static final cxg pP = a("feather");
-   public static final cxg pQ = a("gunpowder");
-   public static final cxg pR = a("wheat_seeds", b(dkg.cJ));
-   public static final cxg pS = a("wheat");
-   public static final cxg pT = a("bread", new cxg.a().a(csv.f));
-   public static final cxg pU = a("leather_helmet", $$0 -> new cvj(dfi.a, dfj.a, $$0));
-   public static final cxg pV = a("leather_chestplate", $$0 -> new cvj(dfi.a, dfj.b, $$0));
-   public static final cxg pW = a("leather_leggings", $$0 -> new cvj(dfi.a, dfj.c, $$0));
-   public static final cxg pX = a("leather_boots", $$0 -> new cvj(dfi.a, dfj.d, $$0));
-   public static final cxg pY = a("chainmail_helmet", $$0 -> new cvj(dfi.b, dfj.a, $$0), new cxg.a().a(cyh.b));
-   public static final cxg pZ = a("chainmail_chestplate", $$0 -> new cvj(dfi.b, dfj.b, $$0), new cxg.a().a(cyh.b));
-   public static final cxg qa = a("chainmail_leggings", $$0 -> new cvj(dfi.b, dfj.c, $$0), new cxg.a().a(cyh.b));
-   public static final cxg qb = a("chainmail_boots", $$0 -> new cvj(dfi.b, dfj.d, $$0), new cxg.a().a(cyh.b));
-   public static final cxg qc = a("iron_helmet", $$0 -> new cvj(dfi.c, dfj.a, $$0));
-   public static final cxg qd = a("iron_chestplate", $$0 -> new cvj(dfi.c, dfj.b, $$0));
-   public static final cxg qe = a("iron_leggings", $$0 -> new cvj(dfi.c, dfj.c, $$0));
-   public static final cxg qf = a("iron_boots", $$0 -> new cvj(dfi.c, dfj.d, $$0));
-   public static final cxg qg = a("diamond_helmet", $$0 -> new cvj(dfi.e, dfj.a, $$0));
-   public static final cxg qh = a("diamond_chestplate", $$0 -> new cvj(dfi.e, dfj.b, $$0));
-   public static final cxg qi = a("diamond_leggings", $$0 -> new cvj(dfi.e, dfj.c, $$0));
-   public static final cxg qj = a("diamond_boots", $$0 -> new cvj(dfi.e, dfj.d, $$0));
-   public static final cxg qk = a("golden_helmet", $$0 -> new cvj(dfi.d, dfj.a, $$0));
-   public static final cxg ql = a("golden_chestplate", $$0 -> new cvj(dfi.d, dfj.b, $$0));
-   public static final cxg qm = a("golden_leggings", $$0 -> new cvj(dfi.d, dfj.c, $$0));
-   public static final cxg qn = a("golden_boots", $$0 -> new cvj(dfi.d, dfj.d, $$0));
-   public static final cxg qo = a("netherite_helmet", $$0 -> new cvj(dfi.g, dfj.a, $$0), new cxg.a().a());
-   public static final cxg qp = a("netherite_chestplate", $$0 -> new cvj(dfi.g, dfj.b, $$0), new cxg.a().a());
-   public static final cxg qq = a("netherite_leggings", $$0 -> new cvj(dfi.g, dfj.c, $$0), new cxg.a().a());
-   public static final cxg qr = a("netherite_boots", $$0 -> new cvj(dfi.g, dfj.d, $$0), new cxg.a().a());
-   public static final cxg qs = a("flint");
-   public static final cxg qt = a("porkchop", new cxg.a().a(csv.B));
-   public static final cxg qu = a("cooked_porkchop", new cxg.a().a(csv.o));
-   public static final cxg qv = a("painting", $$0 -> new cwy(bvm.aL, $$0));
-   public static final cxg qw = a("golden_apple", new cxg.a().a(csv.u, czs.h));
-   public static final cxg qx = a("enchanted_golden_apple", new cxg.a().a(cyh.c).a(csv.t, czs.g).a(ku.u, true));
-   public static final cxg qy = a(dkg.cM, ($$0, $$1) -> new cyp($$0, dkg.da, $$1), new cxg.a().a(16));
-   public static final cxg qz = a(dkg.cN, ($$0, $$1) -> new cyp($$0, dkg.db, $$1), new cxg.a().a(16));
-   public static final cxg qA = a(dkg.cO, ($$0, $$1) -> new cyp($$0, dkg.dc, $$1), new cxg.a().a(16));
-   public static final cxg qB = a(dkg.cR, ($$0, $$1) -> new cyp($$0, dkg.df, $$1), new cxg.a().a(16));
-   public static final cxg qC = a(dkg.cP, ($$0, $$1) -> new cyp($$0, dkg.dd, $$1), new cxg.a().a(16));
-   public static final cxg qD = a(dkg.cQ, ($$0, $$1) -> new cyp($$0, dkg.de, $$1), new cxg.a().a(16));
-   public static final cxg qE = a(dkg.cS, ($$0, $$1) -> new cyp($$0, dkg.dg, $$1), new cxg.a().a(16));
-   public static final cxg qF = a(dkg.cT, ($$0, $$1) -> new cyp($$0, dkg.dh, $$1), new cxg.a().a(16));
-   public static final cxg qG = a(dkg.cU, ($$0, $$1) -> new cyp($$0, dkg.di, $$1), new cxg.a().a(16));
-   public static final cxg qH = a(dkg.cV, ($$0, $$1) -> new cyp($$0, dkg.dj, $$1), new cxg.a().a(16));
-   public static final cxg qI = a(dkg.pr, ($$0, $$1) -> new cyp($$0, dkg.pt, $$1), new cxg.a().a(16));
-   public static final cxg qJ = a(dkg.ps, ($$0, $$1) -> new cyp($$0, dkg.pu, $$1), new cxg.a().a(16));
-   public static final cxg qK = a(dkg.dk, ($$0, $$1) -> new cwz($$0, dkg.dw, $$1), new cxg.a().a(16));
-   public static final cxg qL = a(dkg.dl, ($$0, $$1) -> new cwz($$0, dkg.dx, $$1), new cxg.a().a(16));
-   public static final cxg qM = a(dkg.dm, ($$0, $$1) -> new cwz($$0, dkg.dy, $$1), new cxg.a().a(16));
-   public static final cxg qN = a(dkg.dp, ($$0, $$1) -> new cwz($$0, dkg.dB, $$1), new cxg.a().a(16));
-   public static final cxg qO = a(dkg.dn, ($$0, $$1) -> new cwz($$0, dkg.dz, $$1), new cxg.a().a(16));
-   public static final cxg qP = a(dkg.do, ($$0, $$1) -> new cwz($$0, dkg.dA, $$1), new cxg.a().a(16));
-   public static final cxg qQ = a(dkg.dq, ($$0, $$1) -> new cwz($$0, dkg.dC, $$1), new cxg.a().a(16));
-   public static final cxg qR = a(dkg.dr, ($$0, $$1) -> new cwz($$0, dkg.dD, $$1), new cxg.a().a(16));
-   public static final cxg qS = a(dkg.du, ($$0, $$1) -> new cwz($$0, dkg.dE, $$1), new cxg.a().a(16));
-   public static final cxg qT = a(dkg.dv, ($$0, $$1) -> new cwz($$0, dkg.dH, $$1), new cxg.a().a(16));
-   public static final cxg qU = a(dkg.ds, ($$0, $$1) -> new cwz($$0, dkg.dF, $$1), new cxg.a().a(16));
-   public static final cxg qV = a(dkg.dt, ($$0, $$1) -> new cwz($$0, dkg.dG, $$1), new cxg.a().a(16));
-   public static final cxg qW = a("bucket", $$0 -> new cvw(etq.a, $$0), new cxg.a().a(16));
-   public static final cxg qX = a("water_bucket", $$0 -> new cvw(etq.c, $$0), new cxg.a().b(qW).a(1));
-   public static final cxg qY = a("lava_bucket", $$0 -> new cvw(etq.e, $$0), new cxg.a().b(qW).a(1));
-   public static final cxg qZ = a("powder_snow_bucket", $$0 -> new cys(dkg.rk, axf.dg, $$0), new cxg.a().a(1).c());
-   public static final cxg ra = a("snowball", cyr::new, new cxg.a().a(16));
-   public static final cxg rb = a("leather");
-   public static final cxg rc = a("milk_bucket", new cxg.a().b(qW).a(ku.x, czs.m).a(qW).a(1));
-   public static final cxg rd = a("pufferfish_bucket", $$0 -> new cxz(bvm.aX, etq.c, axf.de, $$0), new cxg.a().a(1).a(ku.X, czt.a));
-   public static final cxg re = a("salmon_bucket", $$0 -> new cxz(bvm.ba, etq.c, axf.de, $$0), new cxg.a().a(1).a(ku.X, czt.a));
-   public static final cxg rf = a("cod_bucket", $$0 -> new cxz(bvm.A, etq.c, axf.de, $$0), new cxg.a().a(1).a(ku.X, czt.a));
-   public static final cxg rg = a("tropical_fish_bucket", $$0 -> new cxz(bvm.bA, etq.c, axf.de, $$0), new cxg.a().a(1).a(ku.X, czt.a));
-   public static final cxg rh = a("axolotl_bucket", $$0 -> new cxz(bvm.h, etq.c, axf.dd, $$0), new cxg.a().a(1).a(ku.X, czt.a));
-   public static final cxg ri = a("tadpole_bucket", $$0 -> new cxz(bvm.bu, etq.c, axf.dh, $$0), new cxg.a().a(1).a(ku.X, czt.a));
-   public static final cxg rj = a("brick");
-   public static final cxg rk = a("clay_ball");
-   public static final cxg rl = a(dkg.mz);
-   public static final cxg rm = a("paper");
-   public static final cxg rn = a("book", new cxg.a().c(1));
-   public static final cxg ro = a("slime_ball");
-   public static final cxg rp = a("egg", cwj::new, new cxg.a().a(16));
-   public static final cxg rq = a("compass", cvy::new);
-   public static final cxg rr = a("recovery_compass", new cxg.a().a(cyh.b));
-   public static final cxg rs = a("bundle", $$0 -> new cvx(alz.b("bundle_open_front"), alz.b("bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a));
-   public static final cxg rt = a(
-      "white_bundle", $$0 -> new cvx(alz.b("white_bundle_open_front"), alz.b("white_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
+public final class cxo implements kp {
+   public static final Codec<jq<cxk>> a = ma.g
+      .r()
+      .validate($$0 -> $$0.a(cxs.a.f()) ? DataResult.error(() -> "Item must not be minecraft:air") : DataResult.success($$0));
+   public static final Codec<cxo> b = Codec.lazyInitialized(
+      () -> RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     a.fieldOf("id").forGetter(cxo::i),
+                     azn.a(1, 99).fieldOf("count").orElse(1).forGetter(cxo::L),
+                     kr.b.optionalFieldOf("components", kr.a).forGetter($$0x -> $$0x.q.g())
+                  )
+                  .apply($$0, cxo::new)
+         )
    );
-   public static final cxg ru = a(
-      "orange_bundle", $$0 -> new cvx(alz.b("orange_bundle_open_front"), alz.b("orange_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
+   public static final Codec<cxo> c = Codec.lazyInitialized(
+      () -> RecordCodecBuilder.create(
+            $$0 -> $$0.group(a.fieldOf("id").forGetter(cxo::i), kr.b.optionalFieldOf("components", kr.a).forGetter($$0x -> $$0x.q.g()))
+                  .apply($$0, ($$0x, $$1) -> new cxo($$0x, 1, $$1))
+         )
    );
-   public static final cxg rv = a(
-      "magenta_bundle", $$0 -> new cvx(alz.b("magenta_bundle_open_front"), alz.b("magenta_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rw = a(
-      "light_blue_bundle", $$0 -> new cvx(alz.b("light_blue_bundle_open_front"), alz.b("light_blue_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rx = a(
-      "yellow_bundle", $$0 -> new cvx(alz.b("yellow_bundle_open_front"), alz.b("yellow_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg ry = a(
-      "lime_bundle", $$0 -> new cvx(alz.b("lime_bundle_open_front"), alz.b("lime_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rz = a(
-      "pink_bundle", $$0 -> new cvx(alz.b("pink_bundle_open_front"), alz.b("pink_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rA = a(
-      "gray_bundle", $$0 -> new cvx(alz.b("gray_bundle_open_front"), alz.b("gray_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rB = a(
-      "light_gray_bundle", $$0 -> new cvx(alz.b("light_gray_bundle_open_front"), alz.b("light_gray_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rC = a(
-      "cyan_bundle", $$0 -> new cvx(alz.b("cyan_bundle_open_front"), alz.b("cyan_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rD = a(
-      "purple_bundle", $$0 -> new cvx(alz.b("purple_bundle_open_front"), alz.b("purple_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rE = a(
-      "blue_bundle", $$0 -> new cvx(alz.b("blue_bundle_open_front"), alz.b("blue_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rF = a(
-      "brown_bundle", $$0 -> new cvx(alz.b("brown_bundle_open_front"), alz.b("brown_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rG = a(
-      "green_bundle", $$0 -> new cvx(alz.b("green_bundle_open_front"), alz.b("green_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rH = a(
-      "red_bundle", $$0 -> new cvx(alz.b("red_bundle_open_front"), alz.b("red_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rI = a(
-      "black_bundle", $$0 -> new cvx(alz.b("black_bundle_open_front"), alz.b("black_bundle_open_back"), $$0), new cxg.a().a(1).a(ku.P, czo.a)
-   );
-   public static final cxg rJ = a("fishing_rod", cwt::new, new cxg.a().b(64).c(1));
-   public static final cxg rK = a("clock");
-   public static final cxg rL = a("spyglass", cyw::new, new cxg.a().a(1).a(alz.b("spyglass_in_hand")));
-   public static final cxg rM = a("glowstone_dust");
-   public static final cxg rN = a("cod", new cxg.a().a(csv.j));
-   public static final cxg rO = a("salmon", new cxg.a().a(csv.I));
-   public static final cxg rP = a("tropical_fish", new cxg.a().a(csv.N));
-   public static final cxg rQ = a("pufferfish", new cxg.a().a(csv.D, czs.j));
-   public static final cxg rR = a("cooked_cod", new cxg.a().a(csv.m));
-   public static final cxg rS = a("cooked_salmon", new cxg.a().a(csv.q));
-   public static final cxg rT = a("ink_sac", cxc::new);
-   public static final cxg rU = a("glow_ink_sac", cwx::new);
-   public static final cxg rV = a("cocoa_beans", b(dkg.fQ));
-   public static final cxg rW = a("white_dye", $$0 -> new cwi(cwh.a, $$0));
-   public static final cxg rX = a("orange_dye", $$0 -> new cwi(cwh.b, $$0));
-   public static final cxg rY = a("magenta_dye", $$0 -> new cwi(cwh.c, $$0));
-   public static final cxg rZ = a("light_blue_dye", $$0 -> new cwi(cwh.d, $$0));
-   public static final cxg sa = a("yellow_dye", $$0 -> new cwi(cwh.e, $$0));
-   public static final cxg sb = a("lime_dye", $$0 -> new cwi(cwh.f, $$0));
-   public static final cxg sc = a("pink_dye", $$0 -> new cwi(cwh.g, $$0));
-   public static final cxg sd = a("gray_dye", $$0 -> new cwi(cwh.h, $$0));
-   public static final cxg se = a("light_gray_dye", $$0 -> new cwi(cwh.i, $$0));
-   public static final cxg sf = a("cyan_dye", $$0 -> new cwi(cwh.j, $$0));
-   public static final cxg sg = a("purple_dye", $$0 -> new cwi(cwh.k, $$0));
-   public static final cxg sh = a("blue_dye", $$0 -> new cwi(cwh.l, $$0));
-   public static final cxg si = a("brown_dye", $$0 -> new cwi(cwh.m, $$0));
-   public static final cxg sj = a("green_dye", $$0 -> new cwi(cwh.n, $$0));
-   public static final cxg sk = a("red_dye", $$0 -> new cwi(cwh.o, $$0));
-   public static final cxg sl = a("black_dye", $$0 -> new cwi(cwh.p, $$0));
-   public static final cxg sm = a("bone_meal", cvs::new);
-   public static final cxg sn = a("bone");
-   public static final cxg so = a("sugar");
-   public static final cxg sp = a(dkg.et, new cxg.a().a(1));
-   public static final cxg sq = a(dkg.bg, cvp::new, new cxg.a().a(1));
-   public static final cxg sr = a(dkg.bh, cvp::new, new cxg.a().a(1));
-   public static final cxg ss = a(dkg.bi, cvp::new, new cxg.a().a(1));
-   public static final cxg st = a(dkg.bj, cvp::new, new cxg.a().a(1));
-   public static final cxg su = a(dkg.bk, cvp::new, new cxg.a().a(1));
-   public static final cxg sv = a(dkg.bl, cvp::new, new cxg.a().a(1));
-   public static final cxg sw = a(dkg.bm, cvp::new, new cxg.a().a(1));
-   public static final cxg sx = a(dkg.bn, cvp::new, new cxg.a().a(1));
-   public static final cxg sy = a(dkg.bo, cvp::new, new cxg.a().a(1));
-   public static final cxg sz = a(dkg.bp, cvp::new, new cxg.a().a(1));
-   public static final cxg sA = a(dkg.bq, cvp::new, new cxg.a().a(1));
-   public static final cxg sB = a(dkg.br, cvp::new, new cxg.a().a(1));
-   public static final cxg sC = a(dkg.bs, cvp::new, new cxg.a().a(1));
-   public static final cxg sD = a(dkg.bt, cvp::new, new cxg.a().a(1));
-   public static final cxg sE = a(dkg.bu, cvp::new, new cxg.a().a(1));
-   public static final cxg sF = a(dkg.bv, cvp::new, new cxg.a().a(1));
-   public static final cxg sG = a("cookie", new cxg.a().a(csv.r));
-   public static final cxg sH = a(dkg.tL, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg sI = a("filled_map", cxx::new, new cxg.a().a(ku.K, dag.c).a(ku.M, daf.a));
-   public static final cxg sJ = a("shears", cyl::new, new cxg.a().b(238).a(ku.B, cyl.b()));
-   public static final cxg sK = a("melon_slice", new cxg.a().a(csv.x));
-   public static final cxg sL = a("dried_kelp", new cxg.a().a(csv.s, czs.e));
-   public static final cxg sM = a(alo.a, b(dkg.fr));
-   public static final cxg sN = a(alo.b, b(dkg.fs));
-   public static final cxg sO = a("beef", new cxg.a().a(csv.c));
-   public static final cxg sP = a("cooked_beef", new cxg.a().a(csv.k));
-   public static final cxg sQ = a("chicken", new cxg.a().a(csv.h, czs.f));
-   public static final cxg sR = a("cooked_chicken", new cxg.a().a(csv.l));
-   public static final cxg sS = a("rotten_flesh", new cxg.a().a(csv.H, czs.k));
-   public static final cxg sT = a("ender_pearl", cwo::new, new cxg.a().a(16).a(1.0F));
-   public static final cxg sU = a("blaze_rod");
-   public static final cxg sV = a("ghast_tear");
-   public static final cxg sW = a("gold_nugget");
-   public static final cxg sX = a("nether_wart", b(dkg.fE));
-   public static final cxg sY = a("glass_bottle", cvt::new);
-   public static final cxg sZ = a("potion", cye::new, new cxg.a().a(1).a(ku.Q, czj.a).a(ku.x, czs.b).a(sY));
-   public static final cxg ta = a("spider_eye", new cxg.a().a(csv.J, czs.l));
-   public static final cxg tb = a("fermented_spider_eye");
-   public static final cxg tc = a("blaze_powder");
-   public static final cxg td = a("magma_cream");
-   public static final cxg te = a(dkg.fG, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg tf = a(dkg.fH, dkg.fI, dkg.fJ, dkg.fK);
-   public static final cxg tg = a("ender_eye", cwn::new);
-   public static final cxg th = a("glistering_melon_slice");
-   public static final cxg ti = a("armadillo_spawn_egg", $$0 -> new cyt(bvm.e, 11366765, 8538184, $$0));
-   public static final cxg tj = a("allay_spawn_egg", $$0 -> new cyt(bvm.c, 56063, 44543, $$0));
-   public static final cxg tk = a("axolotl_spawn_egg", $$0 -> new cyt(bvm.h, 16499171, 10890612, $$0));
-   public static final cxg tl = a("bat_spawn_egg", $$0 -> new cyt(bvm.k, 4996656, 986895, $$0));
-   public static final cxg tm = a("bee_spawn_egg", $$0 -> new cyt(bvm.l, 15582019, 4400155, $$0));
-   public static final cxg tn = a("blaze_spawn_egg", $$0 -> new cyt(bvm.o, 16167425, 16775294, $$0));
-   public static final cxg to = a("bogged_spawn_egg", $$0 -> new cyt(bvm.q, 9084018, 3231003, $$0));
-   public static final cxg tp = a("breeze_spawn_egg", $$0 -> new cyt(bvm.r, 11506911, 9529055, $$0));
-   public static final cxg tq = a("cat_spawn_egg", $$0 -> new cyt(bvm.u, 15714446, 9794134, $$0));
-   public static final cxg tr = a("camel_spawn_egg", $$0 -> new cyt(bvm.t, 16565097, 13341495, $$0));
-   public static final cxg ts = a("cave_spider_spawn_egg", $$0 -> new cyt(bvm.v, 803406, 11013646, $$0));
-   public static final cxg tt = a("chicken_spawn_egg", $$0 -> new cyt(bvm.z, 10592673, 16711680, $$0));
-   public static final cxg tu = a("cod_spawn_egg", $$0 -> new cyt(bvm.A, 12691306, 15058059, $$0));
-   public static final cxg tv = a("cow_spawn_egg", $$0 -> new cyt(bvm.C, 4470310, 10592673, $$0));
-   public static final cxg tw = a("creeper_spawn_egg", $$0 -> new cyt(bvm.F, 894731, 0, $$0));
-   public static final cxg tx = a("dolphin_spawn_egg", $$0 -> new cyt(bvm.I, 2243405, 16382457, $$0));
-   public static final cxg ty = a("donkey_spawn_egg", $$0 -> new cyt(bvm.J, 5457209, 8811878, $$0));
-   public static final cxg tz = a("drowned_spawn_egg", $$0 -> new cyt(bvm.L, 9433559, 7969893, $$0));
-   public static final cxg tA = a("elder_guardian_spawn_egg", $$0 -> new cyt(bvm.N, 13552826, 7632531, $$0));
-   public static final cxg tB = a("ender_dragon_spawn_egg", $$0 -> new cyt(bvm.Q, 1842204, 14711290, $$0));
-   public static final cxg tC = a("enderman_spawn_egg", $$0 -> new cyt(bvm.O, 1447446, 0, $$0));
-   public static final cxg tD = a("endermite_spawn_egg", $$0 -> new cyt(bvm.P, 1447446, 7237230, $$0));
-   public static final cxg tE = a("evoker_spawn_egg", $$0 -> new cyt(bvm.T, 9804699, 1973274, $$0));
-   public static final cxg tF = a("fox_spawn_egg", $$0 -> new cyt(bvm.ab, 14005919, 13396256, $$0));
-   public static final cxg tG = a("frog_spawn_egg", $$0 -> new cyt(bvm.ac, 13661252, 16762748, $$0));
-   public static final cxg tH = a("ghast_spawn_egg", $$0 -> new cyt(bvm.ae, 16382457, 12369084, $$0));
-   public static final cxg tI = a("glow_squid_spawn_egg", $$0 -> new cyt(bvm.ah, 611926, 8778172, $$0));
-   public static final cxg tJ = a("goat_spawn_egg", $$0 -> new cyt(bvm.ai, 10851452, 5589310, $$0));
-   public static final cxg tK = a("guardian_spawn_egg", $$0 -> new cyt(bvm.aj, 5931634, 15826224, $$0));
-   public static final cxg tL = a("hoglin_spawn_egg", $$0 -> new cyt(bvm.ak, 13004373, 6251620, $$0));
-   public static final cxg tM = a("horse_spawn_egg", $$0 -> new cyt(bvm.am, 12623485, 15656192, $$0));
-   public static final cxg tN = a("husk_spawn_egg", $$0 -> new cyt(bvm.an, 7958625, 15125652, $$0));
-   public static final cxg tO = a("iron_golem_spawn_egg", $$0 -> new cyt(bvm.aq, 14405058, 7643954, $$0));
-   public static final cxg tP = a("llama_spawn_egg", $$0 -> new cyt(bvm.ay, 12623485, 10051392, $$0));
-   public static final cxg tQ = a("magma_cube_spawn_egg", $$0 -> new cyt(bvm.aA, 3407872, 16579584, $$0));
-   public static final cxg tR = a("mooshroom_spawn_egg", $$0 -> new cyt(bvm.aF, 10489616, 12040119, $$0));
-   public static final cxg tS = a("mule_spawn_egg", $$0 -> new cyt(bvm.aG, 1769984, 5321501, $$0));
-   public static final cxg tT = a("ocelot_spawn_egg", $$0 -> new cyt(bvm.aJ, 15720061, 5653556, $$0));
-   public static final cxg tU = a("panda_spawn_egg", $$0 -> new cyt(bvm.aO, 15198183, 1776418, $$0));
-   public static final cxg tV = a("parrot_spawn_egg", $$0 -> new cyt(bvm.aP, 894731, 16711680, $$0));
-   public static final cxg tW = a("phantom_spawn_egg", $$0 -> new cyt(bvm.aQ, 4411786, 8978176, $$0));
-   public static final cxg tX = a("pig_spawn_egg", $$0 -> new cyt(bvm.aR, 15771042, 14377823, $$0));
-   public static final cxg tY = a("piglin_spawn_egg", $$0 -> new cyt(bvm.aS, 10051392, 16380836, $$0));
-   public static final cxg tZ = a("piglin_brute_spawn_egg", $$0 -> new cyt(bvm.aT, 5843472, 16380836, $$0));
-   public static final cxg ua = a("pillager_spawn_egg", $$0 -> new cyt(bvm.aU, 5451574, 9804699, $$0));
-   public static final cxg ub = a("polar_bear_spawn_egg", $$0 -> new cyt(bvm.aV, 15658718, 14014157, $$0));
-   public static final cxg uc = a("pufferfish_spawn_egg", $$0 -> new cyt(bvm.aX, 16167425, 3654642, $$0));
-   public static final cxg ud = a("rabbit_spawn_egg", $$0 -> new cyt(bvm.aY, 10051392, 7555121, $$0));
-   public static final cxg ue = a("ravager_spawn_egg", $$0 -> new cyt(bvm.aZ, 7697520, 5984329, $$0));
-   public static final cxg uf = a("salmon_spawn_egg", $$0 -> new cyt(bvm.ba, 10489616, 951412, $$0));
-   public static final cxg ug = a("sheep_spawn_egg", $$0 -> new cyt(bvm.bb, 15198183, 16758197, $$0));
-   public static final cxg uh = a("shulker_spawn_egg", $$0 -> new cyt(bvm.bc, 9725844, 5060690, $$0));
-   public static final cxg ui = a("silverfish_spawn_egg", $$0 -> new cyt(bvm.be, 7237230, 3158064, $$0));
-   public static final cxg uj = a("skeleton_spawn_egg", $$0 -> new cyt(bvm.bf, 12698049, 4802889, $$0));
-   public static final cxg uk = a("skeleton_horse_spawn_egg", $$0 -> new cyt(bvm.bg, 6842447, 15066584, $$0));
-   public static final cxg ul = a("slime_spawn_egg", $$0 -> new cyt(bvm.bh, 5349438, 8306542, $$0));
-   public static final cxg um = a("sniffer_spawn_egg", $$0 -> new cyt(bvm.bj, 8855049, 2468720, $$0));
-   public static final cxg un = a("snow_golem_spawn_egg", $$0 -> new cyt(bvm.bl, 14283506, 8496292, $$0));
-   public static final cxg uo = a("spider_spawn_egg", $$0 -> new cyt(bvm.bo, 3419431, 11013646, $$0));
-   public static final cxg up = a("squid_spawn_egg", $$0 -> new cyt(bvm.br, 2243405, 7375001, $$0));
-   public static final cxg uq = a("stray_spawn_egg", $$0 -> new cyt(bvm.bs, 6387319, 14543594, $$0));
-   public static final cxg ur = a("strider_spawn_egg", $$0 -> new cyt(bvm.bt, 10236982, 5065037, $$0));
-   public static final cxg us = a("tadpole_spawn_egg", $$0 -> new cyt(bvm.bu, 7164733, 1444352, $$0));
-   public static final cxg ut = a("trader_llama_spawn_egg", $$0 -> new cyt(bvm.by, 15377456, 4547222, $$0));
-   public static final cxg uu = a("tropical_fish_spawn_egg", $$0 -> new cyt(bvm.bA, 15690005, 16775663, $$0));
-   public static final cxg uv = a("turtle_spawn_egg", $$0 -> new cyt(bvm.bB, 15198183, 44975, $$0));
-   public static final cxg uw = a("vex_spawn_egg", $$0 -> new cyt(bvm.bC, 8032420, 15265265, $$0));
-   public static final cxg ux = a("villager_spawn_egg", $$0 -> new cyt(bvm.bD, 5651507, 12422002, $$0));
-   public static final cxg uy = a("vindicator_spawn_egg", $$0 -> new cyt(bvm.bE, 9804699, 2580065, $$0));
-   public static final cxg uz = a("wandering_trader_spawn_egg", $$0 -> new cyt(bvm.bF, 4547222, 15377456, $$0));
-   public static final cxg uA = a("warden_spawn_egg", $$0 -> new cyt(bvm.bG, 1001033, 3790560, $$0));
-   public static final cxg uB = a("witch_spawn_egg", $$0 -> new cyt(bvm.bI, 3407872, 5349438, $$0));
-   public static final cxg uC = a("wither_spawn_egg", $$0 -> new cyt(bvm.bJ, 1315860, 5075616, $$0));
-   public static final cxg uD = a("wither_skeleton_spawn_egg", $$0 -> new cyt(bvm.bK, 1315860, 4672845, $$0));
-   public static final cxg uE = a("wolf_spawn_egg", $$0 -> new cyt(bvm.bM, 14144467, 13545366, $$0));
-   public static final cxg uF = a("zoglin_spawn_egg", $$0 -> new cyt(bvm.bN, 13004373, 15132390, $$0));
-   public static final cxg uG = a("creaking_spawn_egg", $$0 -> new cyt(bvm.D, 6250335, 16545810, $$0));
-   public static final cxg uH = a("zombie_spawn_egg", $$0 -> new cyt(bvm.bO, 44975, 7969893, $$0));
-   public static final cxg uI = a("zombie_horse_spawn_egg", $$0 -> new cyt(bvm.bP, 3232308, 9945732, $$0));
-   public static final cxg uJ = a("zombie_villager_spawn_egg", $$0 -> new cyt(bvm.bQ, 5651507, 7969893, $$0));
-   public static final cxg uK = a("zombified_piglin_spawn_egg", $$0 -> new cyt(bvm.bR, 15373203, 5009705, $$0));
-   public static final cxg uL = a("experience_bottle", cwp::new, new cxg.a().a(cyh.b).a(ku.u, true));
-   public static final cxg uM = a("fire_charge", cwq::new);
-   public static final cxg uN = a("wind_charge", cze::new, new cxg.a().a(0.5F));
-   public static final cxg uO = a("writable_book", czf::new, new cxg.a().a(1).a(ku.S, dar.a));
-   public static final cxg uP = a("written_book", czg::new, new cxg.a().a(16).a(ku.u, true));
-   public static final cxg uQ = a("breeze_rod");
-   public static final cxg uR = a("mace", cxw::new, new cxg.a().a(cyh.d).b(500).a(ku.B, cxw.c()).c(uQ).a(cxw.b()).c(15));
-   public static final cxg uS = a("item_frame", $$0 -> new cxj(bvm.at, $$0));
-   public static final cxg uT = a("glow_item_frame", $$0 -> new cxj(bvm.ag, $$0));
-   public static final cxg uU = a(dkg.gf);
-   public static final cxg uV = a("carrot", b(dkg.gI), new cxg.a().a(csv.g));
-   public static final cxg uW = a("potato", b(dkg.gJ), new cxg.a().a(csv.C));
-   public static final cxg uX = a("baked_potato", new cxg.a().a(csv.b));
-   public static final cxg uY = a("poisonous_potato", new cxg.a().a(csv.A, czs.i));
-   public static final cxg uZ = a("map", cwl::new);
-   public static final cxg va = a("golden_carrot", new cxg.a().a(csv.v));
-   public static final cxg vb = a(dkg.gU, ($$0, $$1) -> new cyx($$0, dkg.gV, jm.a, $$1), new cxg.a().a(cyh.b).b(bvn.f));
-   public static final cxg vc = a(dkg.gW, ($$0, $$1) -> new cyx($$0, dkg.gX, jm.a, $$1), new cxg.a().a(cyh.c).b(bvn.f));
-   public static final cxg vd = a(dkg.ha, ($$0, $$1) -> new cyd($$0, dkg.hb, $$1), new cxg.a().a(cyh.b).b(bvn.f));
-   public static final cxg ve = a(dkg.gY, ($$0, $$1) -> new cyx($$0, dkg.gZ, jm.a, $$1), new cxg.a().a(cyh.b).b(bvn.f));
-   public static final cxg vf = a(dkg.hc, ($$0, $$1) -> new cyx($$0, dkg.hd, jm.a, $$1), new cxg.a().a(cyh.b).b(bvn.f));
-   public static final cxg vg = a(dkg.he, ($$0, $$1) -> new cyx($$0, dkg.hf, jm.a, $$1), new cxg.a().a(cyh.d).b(bvn.f));
-   public static final cxg vh = a(dkg.hg, ($$0, $$1) -> new cyx($$0, dkg.hh, jm.a, $$1), new cxg.a().a(cyh.b).b(bvn.f));
-   public static final cxg vi = a("nether_star", new cxg.a().a(cyh.c).a(ku.u, true).a(ku.A, new czv(axw.l)));
-   public static final cxg vj = a("pumpkin_pie", new cxg.a().a(csv.E));
-   public static final cxg vk = a("firework_rocket", cwr::new, new cxg.a().a(ku.af, new daa(1, List.of())));
-   public static final cxg vl = a("firework_star", cws::new);
-   public static final cxg vm = a("enchanted_book", new cxg.a().a(1).a(cyh.b).a(ku.I, ddx.a).a(ku.u, true));
-   public static final cxg vn = a("nether_brick");
-   public static final cxg vo = a("prismarine_shard");
-   public static final cxg vp = a("prismarine_crystals");
-   public static final cxg vq = a("rabbit", new cxg.a().a(csv.F));
-   public static final cxg vr = a("cooked_rabbit", new cxg.a().a(csv.p));
-   public static final cxg vs = a("rabbit_stew", new cxg.a().a(1).a(csv.G).a(oP));
-   public static final cxg vt = a("rabbit_foot");
-   public static final cxg vu = a("rabbit_hide");
-   public static final cxg vv = a("armor_stand", cvk::new, new cxg.a().a(16));
-   public static final cxg vw = a("iron_horse_armor", $$0 -> new cvi(dfi.c, cvi.a.a, axf.mZ, false, $$0), new cxg.a().a(1));
-   public static final cxg vx = a("golden_horse_armor", $$0 -> new cvi(dfi.d, cvi.a.a, axf.mZ, false, $$0), new cxg.a().a(1));
-   public static final cxg vy = a("diamond_horse_armor", $$0 -> new cvi(dfi.e, cvi.a.a, axf.mZ, false, $$0), new cxg.a().a(1));
-   public static final cxg vz = a("leather_horse_armor", $$0 -> new cvi(dfi.a, cvi.a.a, axf.mZ, false, $$0), new cxg.a().a(1));
-   public static final cxg vA = a("lead", cxu::new);
-   public static final cxg vB = a("name_tag", cya::new);
-   public static final cxg vC = a("command_block_minecart", $$0 -> new cxy(bvm.B, $$0), new cxg.a().a(1).a(cyh.d));
-   public static final cxg vD = a("mutton", new cxg.a().a(csv.z));
-   public static final cxg vE = a("cooked_mutton", new cxg.a().a(csv.n));
-   public static final cxg vF = a(dkg.ja, ($$0, $$1) -> new cvn($$0, dkg.jq, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vG = a(dkg.jb, ($$0, $$1) -> new cvn($$0, dkg.jr, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vH = a(dkg.jc, ($$0, $$1) -> new cvn($$0, dkg.js, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vI = a(dkg.jd, ($$0, $$1) -> new cvn($$0, dkg.jt, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vJ = a(dkg.je, ($$0, $$1) -> new cvn($$0, dkg.ju, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vK = a(dkg.jf, ($$0, $$1) -> new cvn($$0, dkg.jv, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vL = a(dkg.jg, ($$0, $$1) -> new cvn($$0, dkg.jw, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vM = a(dkg.jh, ($$0, $$1) -> new cvn($$0, dkg.jx, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vN = a(dkg.ji, ($$0, $$1) -> new cvn($$0, dkg.jy, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vO = a(dkg.jj, ($$0, $$1) -> new cvn($$0, dkg.jz, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vP = a(dkg.jk, ($$0, $$1) -> new cvn($$0, dkg.jA, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vQ = a(dkg.jl, ($$0, $$1) -> new cvn($$0, dkg.jB, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vR = a(dkg.jm, ($$0, $$1) -> new cvn($$0, dkg.jC, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vS = a(dkg.jn, ($$0, $$1) -> new cvn($$0, dkg.jD, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vT = a(dkg.jo, ($$0, $$1) -> new cvn($$0, dkg.jE, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vU = a(dkg.jp, ($$0, $$1) -> new cvn($$0, dkg.jF, $$1), new cxg.a().a(16).a(ku.ai, dug.a));
-   public static final cxg vV = a("end_crystal", cwm::new, new cxg.a().a(ku.u, true));
-   public static final cxg vW = a("chorus_fruit", new cxg.a().a(csv.i, czs.n).a(1.0F));
-   public static final cxg vX = a("popped_chorus_fruit");
-   public static final cxg vY = a("torchflower_seeds", b(dkg.kV));
-   public static final cxg vZ = a("pitcher_pod", b(dkg.kW));
-   public static final cxg wa = a("beetroot", new cxg.a().a(csv.d));
-   public static final cxg wb = a("beetroot_seeds", b(dkg.kY));
-   public static final cxg wc = a("beetroot_soup", new cxg.a().a(1).a(csv.e).a(oP));
-   public static final cxg wd = a("dragon_breath", new cxg.a().b(sY).a(cyh.b));
-   public static final cxg we = a("splash_potion", cyv::new, new cxg.a().a(1).a(ku.Q, czj.a));
-   public static final cxg wf = a("spectral_arrow", cyu::new);
-   public static final cxg wg = a("tipped_arrow", cza::new, new cxg.a().a(ku.Q, czj.a));
-   public static final cxg wh = a("lingering_potion", cxv::new, new cxg.a().a(1).a(ku.Q, czj.a));
-   public static final cxg wi = a("shield", cym::new, new cxg.a().b(336).a(ku.ai, dug.a).a(ayd.bd).b(bvn.b));
-   public static final cxg wj = a("totem_of_undying", new cxg.a().a(1).a(cyh.b).a(ku.H, czw.c));
-   public static final cxg wk = a("shulker_shell");
-   public static final cxg wl = a("iron_nugget");
-   public static final cxg wm = a("knowledge_book", cxt::new, new cxg.a().a(1).a(cyh.d).a(ku.ac, List.of()));
-   public static final cxg wn = a("debug_stick", cwc::new, new cxg.a().a(1).a(cyh.d).a(ku.V, czx.a).a(ku.u, true));
-   public static final cxg wo = a("music_disc_13", new cxg.a().a(1).a(cyh.b).a(cxs.a));
-   public static final cxg wp = a("music_disc_cat", new cxg.a().a(1).a(cyh.b).a(cxs.b));
-   public static final cxg wq = a("music_disc_blocks", new cxg.a().a(1).a(cyh.b).a(cxs.c));
-   public static final cxg wr = a("music_disc_chirp", new cxg.a().a(1).a(cyh.b).a(cxs.d));
-   public static final cxg ws = a("music_disc_creator", new cxg.a().a(1).a(cyh.c).a(cxs.r));
-   public static final cxg wt = a("music_disc_creator_music_box", new cxg.a().a(1).a(cyh.b).a(cxs.s));
-   public static final cxg wu = a("music_disc_far", new cxg.a().a(1).a(cyh.b).a(cxs.e));
-   public static final cxg wv = a("music_disc_mall", new cxg.a().a(1).a(cyh.b).a(cxs.f));
-   public static final cxg ww = a("music_disc_mellohi", new cxg.a().a(1).a(cyh.b).a(cxs.g));
-   public static final cxg wx = a("music_disc_stal", new cxg.a().a(1).a(cyh.b).a(cxs.h));
-   public static final cxg wy = a("music_disc_strad", new cxg.a().a(1).a(cyh.b).a(cxs.i));
-   public static final cxg wz = a("music_disc_ward", new cxg.a().a(1).a(cyh.b).a(cxs.j));
-   public static final cxg wA = a("music_disc_11", new cxg.a().a(1).a(cyh.b).a(cxs.k));
-   public static final cxg wB = a("music_disc_wait", new cxg.a().a(1).a(cyh.b).a(cxs.l));
-   public static final cxg wC = a("music_disc_otherside", new cxg.a().a(1).a(cyh.c).a(cxs.n));
-   public static final cxg wD = a("music_disc_relic", new cxg.a().a(1).a(cyh.b).a(cxs.p));
-   public static final cxg wE = a("music_disc_5", new cxg.a().a(1).a(cyh.b).a(cxs.o));
-   public static final cxg wF = a("music_disc_pigstep", new cxg.a().a(1).a(cyh.c).a(cxs.m));
-   public static final cxg wG = a("music_disc_precipice", new cxg.a().a(1).a(cyh.b).a(cxs.q));
-   public static final cxg wH = a("disc_fragment_5", cwe::new, new cxg.a().a(cyh.b));
-   public static final cxg wI = a("trident", czd::new, new cxg.a().a(cyh.c).b(250).a(czd.c()).a(ku.B, czd.d()).c(1).a(alz.b("trident_in_hand")));
-   public static final cxg wJ = a("nautilus_shell", new cxg.a().a(cyh.b));
-   public static final cxg wK = a("heart_of_the_sea", new cxg.a().a(cyh.b));
-   public static final cxg wL = a("crossbow", cwb::new, new cxg.a().a(1).b(465).a(ku.O, czp.a).c(1));
-   public static final cxg wM = a("suspicious_stew", new cxg.a().a(1).a(csv.K).a(ku.R, dal.a).a(oP));
-   public static final cxg wN = a(dkg.oo);
-   public static final cxg wO = a("flower_banner_pattern", $$0 -> new cvo(axs.b, $$0), new cxg.a().a(1));
-   public static final cxg wP = a("creeper_banner_pattern", $$0 -> new cvo(axs.c, $$0), new cxg.a().a(1).a(cyh.b));
-   public static final cxg wQ = a("skull_banner_pattern", $$0 -> new cvo(axs.d, $$0), new cxg.a().a(1).a(cyh.c));
-   public static final cxg wR = a("mojang_banner_pattern", $$0 -> new cvo(axs.e, $$0), new cxg.a().a(1).a(cyh.c));
-   public static final cxg wS = a("globe_banner_pattern", $$0 -> new cvo(axs.f, $$0), new cxg.a().a(1));
-   public static final cxg wT = a("piglin_banner_pattern", $$0 -> new cvo(axs.g, $$0), new cxg.a().a(1).a(cyh.b));
-   public static final cxg wU = a("flow_banner_pattern", $$0 -> new cvo(axs.h, $$0), new cxg.a().a(1).a(cyh.c));
-   public static final cxg wV = a("guster_banner_pattern", $$0 -> new cvo(axs.i, $$0), new cxg.a().a(1).a(cyh.c));
-   public static final cxg wW = a("field_masoned_banner_pattern", $$0 -> new cvo(axs.j, $$0), new cxg.a().a(1));
-   public static final cxg wX = a("bordure_indented_banner_pattern", $$0 -> new cvo(axs.k, $$0), new cxg.a().a(1));
-   public static final cxg wY = a("goat_horn", $$0 -> new cxe(ayc.c, $$0), new cxg.a().a(cyh.b).a(1));
-   public static final cxg wZ = a(dkg.px);
-   public static final cxg xa = a(dkg.op, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg xb = a(dkg.oq, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg xc = a(dkg.or, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg xd = a(dkg.os);
-   public static final cxg xe = a(dkg.ot);
-   public static final cxg xf = a(dkg.ou);
-   public static final cxg xg = a(dkg.ow);
-   public static final cxg xh = a(dkg.ox);
-   public static final cxg xi = a(dkg.oy);
-   public static final cxg xj = a(dkg.oz);
-   public static final cxg xk = a(dkg.oA);
-   public static final cxg xl = a("sweet_berries", b(dkg.oD), new cxg.a().a(csv.L));
-   public static final cxg xm = a("glow_berries", b(dkg.sQ), new cxg.a().a(csv.M));
-   public static final cxg xn = a(dkg.oB, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg xo = a(dkg.oC, $$0 -> $$0.a(ku.al, dac.a));
-   public static final cxg xp = a(dkg.oT);
-   public static final cxg xq = a("honeycomb", cxb::new);
-   public static final cxg xr = a(dkg.pz, new cxg.a().a(ku.an, List.of()));
-   public static final cxg xs = a(dkg.pA, new cxg.a().a(ku.an, List.of()));
-   public static final cxg xt = a("honey_bottle", new cxg.a().b(sY).a(csv.w, czs.c).a(sY).a(16));
-   public static final cxg xu = a(dkg.pC);
-   public static final cxg xv = a(dkg.pL);
-   public static final cxg xw = a(dkg.pF);
-   public static final cxg xx = a(dkg.pM);
-   public static final cxg xy = a(dkg.pP);
-   public static final cxg xz = a(dkg.pN);
-   public static final cxg xA = a(dkg.pX);
-   public static final cxg xB = a(dkg.pQ);
-   public static final cxg xC = a(dkg.pZ);
-   public static final cxg xD = a(dkg.pY);
-   public static final cxg xE = a(dkg.pT);
-   public static final cxg xF = a(dkg.pR);
-   public static final cxg xG = a(dkg.pU);
-   public static final cxg xH = a(dkg.pV);
-   public static final cxg xI = a(dkg.pS);
-   public static final cxg xJ = a(dkg.pG);
-   public static final cxg xK = a(dkg.qg);
-   public static final cxg xL = a(dkg.qh);
-   public static final cxg xM = a(dkg.qi);
-   public static final cxg xN = a(dkg.qj);
-   public static final cxg xO = a(dkg.qk);
-   public static final cxg xP = a(dkg.ql);
-   public static final cxg xQ = a(dkg.qm);
-   public static final cxg xR = a(dkg.qn);
-   public static final cxg xS = a(dkg.qo);
-   public static final cxg xT = a(dkg.qp);
-   public static final cxg xU = a(dkg.qq);
-   public static final cxg xV = a(dkg.qr);
-   public static final cxg xW = a(dkg.qs);
-   public static final cxg xX = a(dkg.qt);
-   public static final cxg xY = a(dkg.qu);
-   public static final cxg xZ = a(dkg.qv);
-   public static final cxg ya = a(dkg.qw);
-   public static final cxg yb = a(dkg.qT);
-   public static final cxg yc = a(dkg.qS);
-   public static final cxg yd = a(dkg.qR);
-   public static final cxg ye = a(dkg.qQ);
-   public static final cxg yf = a(dkg.sO);
-   public static final cxg yg = a(dkg.tF);
-   public static final cxg yh = a(dkg.tG);
-   public static final cxg yi = a(dkg.tH);
-   public static final cxg yj = a(dkg.tI, cyc::new);
-   public static final cxg yk = a("echo_shard", new cxg.a().a(cyh.b));
-   public static final cxg yl = a("brush", cvv::new, new cxg.a().b(64));
-   public static final cxg ym = a("netherite_upgrade_smithing_template", cyq::b, new cxg.a().a(cyh.b));
-   public static final cxg yn = a("sentry_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yo = a("dune_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yp = a("coast_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yq = a("wild_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yr = a("ward_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.c));
-   public static final cxg ys = a("eye_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.c));
-   public static final cxg yt = a("vex_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.c));
-   public static final cxg yu = a("tide_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yv = a("snout_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yw = a("rib_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yx = a("spire_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.c));
-   public static final cxg yy = a("wayfinder_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yz = a("shaper_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yA = a("silence_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.d));
-   public static final cxg yB = a("raiser_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yC = a("host_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yD = a("flow_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yE = a("bolt_armor_trim_smithing_template", cyq::a, new cxg.a().a(cyh.b));
-   public static final cxg yF = a("angler_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yG = a("archer_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yH = a("arms_up_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yI = a("blade_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yJ = a("brewer_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yK = a("burn_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yL = a("danger_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yM = a("explorer_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yN = a("flow_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yO = a("friend_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yP = a("guster_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yQ = a("heart_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yR = a("heartbreak_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yS = a("howl_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yT = a("miner_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yU = a("mourner_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yV = a("plenty_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yW = a("prize_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yX = a("scrape_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yY = a("sheaf_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg yZ = a("shelter_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg za = a("skull_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg zb = a("snort_pottery_sherd", new cxg.a().a(cyh.b));
-   public static final cxg zc = a(dkg.sx);
-   public static final cxg zd = a(dkg.sy);
-   public static final cxg ze = a(dkg.sz);
-   public static final cxg zf = a(dkg.sA);
-   public static final cxg zg = a(dkg.sB);
-   public static final cxg zh = a(dkg.sC);
-   public static final cxg zi = a(dkg.sD);
-   public static final cxg zj = a(dkg.sE);
-   public static final cxg zk = a(dkg.sF);
-   public static final cxg zl = a(dkg.sG);
-   public static final cxg zm = a(dkg.sH);
-   public static final cxg zn = a(dkg.sI);
-   public static final cxg zo = a(dkg.sJ);
-   public static final cxg zp = a(dkg.sK);
-   public static final cxg zq = a(dkg.sL);
-   public static final cxg zr = a(dkg.sM);
-   public static final cxg zs = a(dkg.tM);
-   public static final cxg zt = a("trial_key");
-   public static final cxg zu = a("ominous_trial_key");
-   public static final cxg zv = a(dkg.tN);
-   public static final cxg zw = a("ominous_bottle", new cxg.a().a(cyh.b).a(ku.x, czs.d).a(ku.aa, new dai(0)));
+   public static final Codec<cxo> d = b.validate(cxo::c);
+   public static final Codec<cxo> e = c.validate(cxo::c);
+   public static final Codec<cxo> f = azn.f(b).xmap($$0 -> $$0.orElse(cxo.k), $$0 -> $$0.f() ? Optional.empty() : Optional.of($$0));
+   public static final Codec<cxo> g = a.xmap(cxo::new, cxo::i);
+   public static final zt<xg, cxo> h = new zt<xg, cxo>() {
+      private static final zt<xg, jq<cxk>> a = zr.b(mb.K);
 
-   private static Function<cxg.a, cxg> b(dke $$0) {
-      return $$1 -> new cvq($$0, $$1.c());
-   }
-
-   private static aly<cxg> b(String $$0) {
-      return aly.a(mb.K, alz.b($$0));
-   }
-
-   private static aly<cxg> a(aly<dke> $$0) {
-      return aly.a(mb.K, $$0.a());
-   }
-
-   public static cxg a(dke $$0) {
-      return a($$0, cvq::new);
-   }
-
-   public static cxg a(dke $$0, cxg.a $$1) {
-      return a($$0, cvq::new, $$1);
-   }
-
-   public static cxg a(dke $$0, UnaryOperator<cxg.a> $$1) {
-      return a($$0, ($$1x, $$2) -> new cvq($$1x, $$1.apply($$2)));
-   }
-
-   public static cxg a(dke $$0, dke... $$1) {
-      cxg $$2 = a($$0);
-
-      for (dke $$3 : $$1) {
-         cxg.e.put($$3, $$2);
+      public cxo a(xg $$0) {
+         int $$1 = $$0.l();
+         if ($$1 <= 0) {
+            return cxo.k;
+         } else {
+            jq<cxk> $$2 = a.decode($$0);
+            kr $$3 = kr.c.decode($$0);
+            return new cxo($$2, $$1, $$3);
+         }
       }
 
+      public void a(xg $$0, cxo $$1) {
+         if ($$1.f()) {
+            $$0.c(0);
+         } else {
+            $$0.c($$1.L());
+            a.encode($$0, $$1.i());
+            kr.c.encode($$0, $$1.q.g());
+         }
+      }
+   };
+   public static final zt<xg, cxo> i = new zt<xg, cxo>() {
+      public cxo a(xg $$0) {
+         cxo $$1 = cxo.h.decode($$0);
+         if ($$1.f()) {
+            throw new DecoderException("Empty ItemStack not allowed");
+         } else {
+            return $$1;
+         }
+      }
+
+      public void a(xg $$0, cxo $$1) {
+         if ($$1.f()) {
+            throw new EncoderException("Empty ItemStack not allowed");
+         } else {
+            cxo.h.encode($$0, $$1);
+         }
+      }
+   };
+   public static final zt<xg, List<cxo>> j = h.a(zr.a(jz::a));
+   private static final Logger l = LogUtils.getLogger();
+   public static final cxo k = new cxo((Void)null);
+   private static final xv m = xv.c("item.disabled").a(n.m);
+   private int n;
+   private int o;
+   @Deprecated
+   @Nullable
+   private final cxk p;
+   final kv q;
+   @Nullable
+   private bvj r;
+
+   private static DataResult<cxo> c(cxo $$0) {
+      DataResult<bbk> $$1 = a($$0.a());
+      if ($$1.isError()) {
+         return $$1.map($$1x -> $$0);
+      } else {
+         return $$0.L() > $$0.k()
+            ? DataResult.error(() -> "Item stack with stack size of " + $$0.L() + " was larger than maximum: " + $$0.k())
+            : DataResult.success($$0);
+      }
+   }
+
+   public static zt<xg, cxo> a(final zt<xg, cxo> $$0) {
+      return new zt<xg, cxo>() {
+         public cxo a(xg $$0x) {
+            cxo $$1 = $$0.decode($$0);
+            if (!$$1.f()) {
+               alx<bbk> $$2 = $$0.H().a(bag.a);
+               cxo.b.encodeStart($$2, $$1).getOrThrow(DecoderException::new);
+            }
+
+            return $$1;
+         }
+
+         public void a(xg $$0x, cxo $$1) {
+            $$0.encode($$0, $$1);
+         }
+      };
+   }
+
+   public Optional<cvi> b() {
+      return this.h().k(this);
+   }
+
+   @Override
+   public kq a() {
+      return (kq)(!this.f() ? this.q : kq.a);
+   }
+
+   public void c() {
+      this.q.f();
+   }
+
+   public kq d() {
+      return !this.f() ? this.h().g() : kq.a;
+   }
+
+   public kr e() {
+      return !this.f() ? this.q.g() : kr.a;
+   }
+
+   public cxo(dhg $$0) {
+      this($$0, 1);
+   }
+
+   public cxo(jq<cxk> $$0) {
+      this($$0.a(), 1);
+   }
+
+   public cxo(jq<cxk> $$0, int $$1, kr $$2) {
+      this($$0.a(), $$1, kv.a($$0.a().g(), $$2));
+   }
+
+   public cxo(jq<cxk> $$0, int $$1) {
+      this($$0.a(), $$1);
+   }
+
+   public cxo(dhg $$0, int $$1) {
+      this($$0, $$1, new kv($$0.j().g()));
+   }
+
+   private cxo(dhg $$0, int $$1, kv $$2) {
+      this.p = $$0.j();
+      this.n = $$1;
+      this.q = $$2;
+      this.h().l(this);
+   }
+
+   private cxo(@Nullable Void $$0) {
+      this.p = null;
+      this.q = new kv(kq.a);
+   }
+
+   public static DataResult<bbk> a(kq $$0) {
+      if ($$0.b(ku.d) && $$0.a(ku.c, 1) > 1) {
+         return DataResult.error(() -> "Item cannot be both damageable and stackable");
+      } else {
+         dag $$1 = $$0.a(ku.al, dag.a);
+
+         for (cxo $$2 : $$1.d()) {
+            int $$3 = $$2.L();
+            int $$4 = $$2.k();
+            if ($$3 > $$4) {
+               return DataResult.error(() -> "Item stack with count of " + $$3 + " was larger than maximum: " + $$4);
+            }
+         }
+
+         return DataResult.success(bbk.a);
+      }
+   }
+
+   public static Optional<cxo> a(js.a $$0, vu $$1) {
+      return b.parse($$0.a(vl.a), $$1).resultOrPartial($$0x -> l.error("Tried to load invalid item: '{}'", $$0x));
+   }
+
+   public static cxo a(js.a $$0, ux $$1) {
+      return $$1.g() ? k : a($$0, (vu)$$1).orElse(k);
+   }
+
+   public boolean f() {
+      return this == k || this.p == cxs.a || this.n <= 0;
+   }
+
+   public boolean a(css $$0) {
+      return this.f() || this.h().a($$0);
+   }
+
+   public cxo a(int $$0) {
+      int $$1 = Math.min($$0, this.L());
+      cxo $$2 = this.c($$1);
+      this.h($$1);
       return $$2;
    }
 
-   public static cxg a(dke $$0, BiFunction<dke, cxg.a, cxg> $$1) {
-      return a($$0, $$1, new cxg.a());
+   public cxo g() {
+      if (this.f()) {
+         return k;
+      } else {
+         cxo $$0 = this.v();
+         this.e(0);
+         return $$0;
+      }
    }
 
-   public static cxg a(dke $$0, BiFunction<dke, cxg.a, cxg> $$1, cxg.a $$2) {
-      return a(a($$0.p().h()), $$2x -> $$1.apply($$0, $$2x), $$2.b());
+   public cxk h() {
+      return this.f() ? cxs.a : this.p;
    }
 
-   public static cxg a(String $$0, Function<cxg.a, cxg> $$1) {
-      return a(b($$0), $$1, new cxg.a());
+   public jq<cxk> i() {
+      return this.h().f();
    }
 
-   public static cxg a(String $$0, Function<cxg.a, cxg> $$1, cxg.a $$2) {
-      return a(b($$0), $$1, $$2);
+   public boolean a(ayk<cxk> $$0) {
+      return this.h().f().a($$0);
    }
 
-   public static cxg a(String $$0, cxg.a $$1) {
-      return a(b($$0), cxg::new, $$1);
+   public boolean a(cxk $$0) {
+      return this.h() == $$0;
    }
 
-   public static cxg a(String $$0) {
-      return a(b($$0), cxg::new, new cxg.a());
+   public boolean a(Predicate<jq<cxk>> $$0) {
+      return $$0.test(this.h().f());
    }
 
-   public static cxg a(aly<cxg> $$0, Function<cxg.a, cxg> $$1) {
-      return a($$0, $$1, new cxg.a());
+   public boolean a(jq<cxk> $$0) {
+      return this.h().f() == $$0;
    }
 
-   public static cxg a(aly<cxg> $$0, Function<cxg.a, cxg> $$1, cxg.a $$2) {
-      cxg $$3 = $$1.apply($$2.b($$0));
-      if ($$3 instanceof cvq $$4) {
-         $$4.a(cxg.e, $$3);
+   public boolean a(ju<cxk> $$0) {
+      return $$0.a(this.i());
+   }
+
+   public Stream<ayk<cxk>> j() {
+      return this.h().f().c();
+   }
+
+   public bti a(dbh $$0) {
+      cpw $$1 = $$0.o();
+      jh $$2 = $$0.a();
+      if ($$1 != null && !$$1.gh().e && !this.a(new dxy($$0.q(), $$2, false))) {
+         return bti.e;
+      } else {
+         cxk $$3 = this.h();
+         bti $$4 = $$3.a($$0);
+         if ($$1 != null && $$4 instanceof bti.d $$5 && $$5.c()) {
+            $$1.b(axp.c.b($$3));
+         }
+
+         return $$4;
+      }
+   }
+
+   public float a(dxu $$0) {
+      return this.h().a(this, $$0);
+   }
+
+   public bti a(dhh $$0, cpw $$1, bth $$2) {
+      cxo $$3 = this.v();
+      boolean $$4 = this.a((bwf)$$1) <= 0;
+      bti $$5 = this.h().a($$0, $$1, $$2);
+      return (bti)($$4 && $$5 instanceof bti.d $$6 ? $$6.a($$6.d() == null ? this.a($$1, $$3) : $$6.d().a($$1, $$3)) : $$5);
+   }
+
+   public cxo a(dhh $$0, bwf $$1) {
+      cxo $$2 = this.v();
+      cxo $$3 = this.h().a(this, $$0, $$1);
+      return $$3.a($$1, $$2);
+   }
+
+   private cxo a(bwf $$0, cxo $$1) {
+      dau $$2 = $$1.a(ku.y);
+      dat $$3 = $$1.a(ku.z);
+      int $$4 = $$1.L();
+      cxo $$5 = this;
+      if ($$2 != null) {
+         $$5 = $$2.a(this, $$4, $$0.fT(), $$0::b);
       }
 
-      return kd.a(ma.g, $$0, $$3);
+      if ($$3 != null) {
+         $$3.a($$1, $$0);
+      }
+
+      return $$5;
+   }
+
+   public vu b(js.a $$0, vu $$1) {
+      if (this.f()) {
+         throw new IllegalStateException("Cannot encode empty ItemStack");
+      } else {
+         return (vu)b.encode(this, $$0.a(vl.a), $$1).getOrThrow();
+      }
+   }
+
+   public vu a(js.a $$0) {
+      if (this.f()) {
+         throw new IllegalStateException("Cannot encode empty ItemStack");
+      } else {
+         return (vu)b.encodeStart($$0.a(vl.a), this).getOrThrow();
+      }
+   }
+
+   public vu b(js.a $$0) {
+      return (vu)(this.f() ? new ux() : this.b($$0, new ux()));
+   }
+
+   public int k() {
+      return this.a(ku.c, Integer.valueOf(1));
+   }
+
+   public boolean l() {
+      return this.k() > 1 && (!this.m() || !this.n());
+   }
+
+   public boolean m() {
+      return this.b(ku.d) && !this.b(ku.f) && this.b(ku.e);
+   }
+
+   public boolean n() {
+      return this.m() && this.o() > 0;
+   }
+
+   public int o() {
+      return bae.a(this.a(ku.e, Integer.valueOf(0)), 0, this.p());
+   }
+
+   public void b(int $$0) {
+      this.b(ku.e, Integer.valueOf(bae.a($$0, 0, this.p())));
+   }
+
+   public int p() {
+      return this.a(ku.d, Integer.valueOf(0));
+   }
+
+   public boolean q() {
+      return this.m() && this.o() >= this.p();
+   }
+
+   public boolean r() {
+      return this.m() && this.o() >= this.p() - 1;
+   }
+
+   public void a(int $$0, ash $$1, @Nullable asi $$2, Consumer<cxk> $$3) {
+      int $$4 = this.a($$0, $$1, $$2);
+      if ($$4 != 0) {
+         this.a(this.o() + $$4, $$2, $$3);
+      }
+   }
+
+   private int a(int $$0, ash $$1, @Nullable asi $$2) {
+      if (!this.m()) {
+         return 0;
+      } else if ($$2 != null && $$2.fT()) {
+         return 0;
+      } else {
+         return $$0 > 0 ? dea.a($$1, this, $$0) : $$0;
+      }
+   }
+
+   private void a(int $$0, @Nullable asi $$1, Consumer<cxk> $$2) {
+      if ($$1 != null) {
+         ao.u.a($$1, this, $$0);
+      }
+
+      this.b($$0);
+      if (this.q()) {
+         cxk $$3 = this.h();
+         this.h(1);
+         $$2.accept($$3);
+      }
+   }
+
+   public void a(int $$0, cpw $$1) {
+      if ($$1 instanceof asi $$2) {
+         int $$3 = this.a($$0, $$2.y(), $$2);
+         if ($$3 == 0) {
+            return;
+         }
+
+         int $$4 = Math.min(this.o() + $$3, this.p() - 1);
+         this.a($$4, $$2, $$0x -> {
+         });
+      }
+   }
+
+   public void a(int $$0, bwf $$1, bvr $$2) {
+      if ($$1.dV() instanceof ash $$3) {
+         this.a($$0, $$3, $$1 instanceof asi $$4 ? $$4 : null, $$2x -> $$1.a($$2x, $$2));
+      }
+   }
+
+   public cxo a(int $$0, dhg $$1, bwf $$2, bvr $$3) {
+      this.a($$0, $$2, $$3);
+      if (this.f()) {
+         cxo $$4 = this.b($$1, 1);
+         if ($$4.m()) {
+            $$4.b(0);
+         }
+
+         return $$4;
+      } else {
+         return this;
+      }
+   }
+
+   public boolean s() {
+      return this.h().d(this);
+   }
+
+   public int t() {
+      return this.h().e(this);
+   }
+
+   public int u() {
+      return this.h().f(this);
+   }
+
+   public boolean a(cuy $$0, ctl $$1, cpw $$2) {
+      return this.h().a(this, $$0, $$1, $$2);
+   }
+
+   public boolean a(cxo $$0, cuy $$1, ctl $$2, cpw $$3, bwx $$4) {
+      return this.h().a(this, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public boolean a(bwf $$0, bwf $$1) {
+      cxk $$2 = this.h();
+      if ($$2.a(this, $$0, $$1)) {
+         if ($$1 instanceof cpw $$3) {
+            $$3.b(axp.c.b($$2));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void b(bwf $$0, bwf $$1) {
+      this.h().b(this, $$0, $$1);
+   }
+
+   public void a(dhh $$0, dxu $$1, jh $$2, cpw $$3) {
+      cxk $$4 = this.h();
+      if ($$4.a(this, $$0, $$1, $$2, $$3)) {
+         $$3.b(axp.c.b($$4));
+      }
+   }
+
+   public boolean b(dxu $$0) {
+      return this.h().b(this, $$0);
+   }
+
+   public bti a(cpw $$0, bwf $$1, bth $$2) {
+      return this.h().a(this, $$0, $$1, $$2);
+   }
+
+   public cxo v() {
+      if (this.f()) {
+         return k;
+      } else {
+         cxo $$0 = new cxo(this.h(), this.n, this.q.h());
+         $$0.d(this.K());
+         return $$0;
+      }
+   }
+
+   public cxo c(int $$0) {
+      if (this.f()) {
+         return k;
+      } else {
+         cxo $$1 = this.v();
+         $$1.e($$0);
+         return $$1;
+      }
+   }
+
+   public cxo a(dhg $$0) {
+      return this.a($$0, this.L());
+   }
+
+   public cxo a(dhg $$0, int $$1) {
+      return this.f() ? k : this.b($$0, $$1);
+   }
+
+   private cxo b(dhg $$0, int $$1) {
+      return new cxo($$0.j().f(), $$1, this.q.g());
+   }
+
+   public static boolean a(cxo $$0, cxo $$1) {
+      if ($$0 == $$1) {
+         return true;
+      } else {
+         return $$0.L() != $$1.L() ? false : c($$0, $$1);
+      }
+   }
+
+   @Deprecated
+   public static boolean a(List<cxo> $$0, List<cxo> $$1) {
+      if ($$0.size() != $$1.size()) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+            if (!a($$0.get($$2), $$1.get($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public static boolean b(cxo $$0, cxo $$1) {
+      return $$0.a($$1.h());
+   }
+
+   public static boolean c(cxo $$0, cxo $$1) {
+      if (!$$0.a($$1.h())) {
+         return false;
+      } else {
+         return $$0.f() && $$1.f() ? true : Objects.equals($$0.q, $$1.q);
+      }
+   }
+
+   public static MapCodec<cxo> a(String $$0) {
+      return b.lenientOptionalFieldOf($$0).xmap($$0x -> $$0x.orElse(k), $$0x -> $$0x.f() ? Optional.empty() : Optional.of($$0x));
+   }
+
+   public static int a(@Nullable cxo $$0) {
+      if ($$0 != null) {
+         int $$1 = 31 + $$0.h().hashCode();
+         return 31 * $$1 + $$0.a().hashCode();
+      } else {
+         return 0;
+      }
+   }
+
+   @Deprecated
+   public static int a(List<cxo> $$0) {
+      int $$1 = 0;
+
+      for (cxo $$2 : $$0) {
+         $$1 = $$1 * 31 + a($$2);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public String toString() {
+      return this.L() + " " + this.h();
+   }
+
+   public void a(dhh $$0, bvj $$1, int $$2, boolean $$3) {
+      if (this.o > 0) {
+         this.o--;
+      }
+
+      if (this.h() != null) {
+         this.h().a(this, $$0, $$1, $$2, $$3);
+      }
+   }
+
+   public void a(dhh $$0, cpw $$1, int $$2) {
+      $$1.a(axp.b.b(this.h()), $$2);
+      this.h().a(this, $$0, $$1);
+   }
+
+   public void a(dhh $$0) {
+      this.h().a(this, $$0);
+   }
+
+   public int a(bwf $$0) {
+      return this.h().a(this, $$0);
+   }
+
+   public cxq w() {
+      return this.h().b(this);
+   }
+
+   public void a(dhh $$0, bwf $$1, int $$2) {
+      cxo $$3 = this.v();
+      if (this.h().a(this, $$0, $$1, $$2)) {
+         cxo $$4 = this.a($$1, $$3);
+         if ($$4 != this) {
+            $$1.a($$1.fy(), $$4);
+         }
+      }
+   }
+
+   public boolean x() {
+      return this.h().d_(this);
+   }
+
+   @Nullable
+   public <T> T b(kt<? super T> $$0, @Nullable T $$1) {
+      return this.q.b($$0, $$1);
+   }
+
+   @Nullable
+   public <T, U> T a(kt<T> $$0, T $$1, U $$2, BiFunction<T, U, T> $$3) {
+      return this.b($$0, $$3.apply(this.a($$0, $$1), $$2));
+   }
+
+   @Nullable
+   public <T> T a(kt<T> $$0, T $$1, UnaryOperator<T> $$2) {
+      T $$3 = this.a($$0, $$1);
+      return this.b($$0, $$2.apply($$3));
+   }
+
+   @Nullable
+   public <T> T c(kt<? extends T> $$0) {
+      return this.q.d($$0);
+   }
+
+   public void a(kr $$0) {
+      kr $$1 = this.q.g();
+      this.q.a($$0);
+      Optional<Error<cxo>> $$2 = c(this).error();
+      if ($$2.isPresent()) {
+         l.error("Failed to apply component patch '{}' to item: '{}'", $$0, $$2.get().message());
+         this.q.b($$1);
+      } else {
+         this.h().l(this);
+      }
+   }
+
+   public void b(kr $$0) {
+      this.q.a($$0);
+      this.h().l(this);
+   }
+
+   public void b(kq $$0) {
+      this.q.a($$0);
+      this.h().l(this);
+   }
+
+   public xv y() {
+      xv $$0 = this.a(ku.g);
+      if ($$0 != null) {
+         return $$0;
+      } else {
+         daw $$1 = this.a(ku.T);
+         if ($$1 != null) {
+            String $$2 = $$1.d().a();
+            if (!bbb.h($$2)) {
+               return xv.b($$2);
+            }
+         }
+
+         return this.z();
+      }
+   }
+
+   public xv z() {
+      return this.h().a(this);
+   }
+
+   public xv A() {
+      yj $$0 = xv.i().b(this.y()).a(this.C().a());
+      if (this.b(ku.g)) {
+         $$0.a(n.u);
+      }
+
+      return $$0;
+   }
+
+   private <T extends dar> void a(kt<T> $$0, cxk.b $$1, Consumer<xv> $$2, czg $$3) {
+      T $$4 = (T)this.a($$0);
+      if ($$4 != null) {
+         $$4.a($$1, $$2, $$3);
+      }
+   }
+
+   public List<xv> a(cxk.b $$0, @Nullable cpw $$1, czg $$2) {
+      if (!$$2.b() && this.b(ku.r)) {
+         return List.of();
+      } else {
+         List<xv> $$3 = Lists.newArrayList();
+         $$3.add(this.A());
+         if (!$$2.a() && !this.b(ku.g)) {
+            evo $$4 = this.a(ku.L);
+            if ($$4 != null) {
+               $$3.add(cyb.a($$4));
+            }
+         }
+
+         Consumer<xv> $$5 = $$3::add;
+         if (!this.b(ku.q)) {
+            this.h().a(this, $$0, $$3, $$2);
+         }
+
+         this.a(ku.ab, $$0, $$5, $$2);
+         this.a(ku.U, $$0, $$5, $$2);
+         this.a(ku.I, $$0, $$5, $$2);
+         this.a(ku.l, $$0, $$5, $$2);
+         this.a(ku.J, $$0, $$5, $$2);
+         this.a(ku.j, $$0, $$5, $$2);
+         this.a($$5, $$1);
+         this.a(ku.f, $$0, $$5, $$2);
+         this.a(ku.aa, $$0, $$5, $$2);
+         this.a(ku.R, $$0, $$5, $$2);
+         cvk $$6 = this.a(ku.n);
+         if ($$6 != null && $$6.a()) {
+            $$5.accept(xu.a);
+            $$5.accept(cvk.c);
+            $$6.a($$5);
+         }
+
+         cvk $$7 = this.a(ku.m);
+         if ($$7 != null && $$7.a()) {
+            $$5.accept(xu.a);
+            $$5.accept(cvk.d);
+            $$7.a($$5);
+         }
+
+         if ($$2.a()) {
+            if (this.n()) {
+               $$3.add(xv.a("item.durability", this.p() - this.o(), this.p()));
+            }
+
+            $$3.add(xv.b(ma.g.b(this.h()).toString()).a(n.i));
+            int $$8 = this.q.d();
+            if ($$8 > 0) {
+               $$3.add(xv.a("item.components", $$8).a(n.i));
+            }
+         }
+
+         if ($$1 != null && !this.h().a($$1.dV().J())) {
+            $$3.add(m);
+         }
+
+         return $$3;
+      }
+   }
+
+   private void a(Consumer<xv> $$0, @Nullable cpw $$1) {
+      daf $$2 = this.a(ku.o, daf.a);
+      if ($$2.c()) {
+         for (bvs $$3 : bvs.values()) {
+            MutableBoolean $$4 = new MutableBoolean(true);
+            this.a($$3, ($$4x, $$5) -> {
+               if ($$4.isTrue()) {
+                  $$0.accept(xu.a);
+                  $$0.accept(xv.c("item.modifiers." + $$3.c()).a(n.h));
+                  $$4.setFalse();
+               }
+
+               this.a($$0, $$1, $$4x, $$5);
+            });
+         }
+      }
+   }
+
+   private void a(Consumer<xv> $$0, @Nullable cpw $$1, jq<bxi> $$2, bxl $$3) {
+      double $$4 = $$3.c();
+      boolean $$5 = false;
+      if ($$1 != null) {
+         if ($$3.a(cxk.f)) {
+            $$4 += $$1.i(bxn.c);
+            $$5 = true;
+         } else if ($$3.a(cxk.g)) {
+            $$4 += $$1.i(bxn.e);
+            $$5 = true;
+         }
+      }
+
+      double $$6;
+      if ($$3.d() == bxl.a.b || $$3.d() == bxl.a.c) {
+         $$6 = $$4 * 100.0;
+      } else if ($$2.a(bxn.p)) {
+         $$6 = $$4 * 10.0;
+      } else {
+         $$6 = $$4;
+      }
+
+      if ($$5) {
+         $$0.accept(xu.a().b(xv.a("attribute.modifier.equals." + $$3.d().a(), daf.d.format($$6), xv.c($$2.a().c()))).a(n.c));
+      } else if ($$4 > 0.0) {
+         $$0.accept(xv.a("attribute.modifier.plus." + $$3.d().a(), daf.d.format($$6), xv.c($$2.a().c())).a($$2.a().b(true)));
+      } else if ($$4 < 0.0) {
+         $$0.accept(xv.a("attribute.modifier.take." + $$3.d().a(), daf.d.format(-$$6), xv.c($$2.a().c())).a($$2.a().b(false)));
+      }
+   }
+
+   public boolean B() {
+      Boolean $$0 = this.a(ku.u);
+      return $$0 != null ? $$0 : this.h().c_(this);
+   }
+
+   public cyl C() {
+      cyl $$0 = this.a(ku.k, cyl.a);
+      if (!this.E()) {
+         return $$0;
+      } else {
+         return switch ($$0) {
+            case a, b -> cyl.c;
+            case c -> cyl.d;
+            default -> $$0;
+         };
+      }
+   }
+
+   public boolean D() {
+      if (!this.b(ku.C)) {
+         return false;
+      } else {
+         dee $$0 = this.a(ku.l);
+         return $$0 != null && $$0.d();
+      }
+   }
+
+   public void a(jq<ddy> $$0, int $$1) {
+      dea.a(this, $$2 -> $$2.b($$0, $$1));
+   }
+
+   public boolean E() {
+      return !this.a(ku.l, dee.a).d();
+   }
+
+   public dee F() {
+      return this.a(ku.l, dee.a);
+   }
+
+   public boolean G() {
+      return this.r instanceof clt;
+   }
+
+   public void a(@Nullable bvj $$0) {
+      if (!this.f()) {
+         this.r = $$0;
+      }
+   }
+
+   @Nullable
+   public clt H() {
+      return this.r instanceof clt ? (clt)this.I() : null;
+   }
+
+   @Nullable
+   public bvj I() {
+      return !this.f() ? this.r : null;
+   }
+
+   public void a(bvs $$0, BiConsumer<jq<bxi>, bxl> $$1) {
+      daf $$2 = this.a(ku.o, daf.a);
+      $$2.a($$0, $$1);
+      dea.a(this, $$0, $$1);
+   }
+
+   public void a(bvr $$0, BiConsumer<jq<bxi>, bxl> $$1) {
+      daf $$2 = this.a(ku.o, daf.a);
+      $$2.a($$0, $$1);
+      dea.a(this, $$0, $$1);
+   }
+
+   public xv J() {
+      yj $$0 = xv.i().b(this.y());
+      if (this.b(ku.g)) {
+         $$0.a(n.u);
+      }
+
+      yj $$1 = xy.a((xv)$$0);
+      if (!this.f()) {
+         $$1.a(this.C().a()).a($$0x -> $$0x.a(new yb(yb.a.b, new yb.c(this))));
+      }
+
+      return $$1;
+   }
+
+   public boolean a(dxy $$0) {
+      cvk $$1 = this.a(ku.m);
+      return $$1 != null && $$1.a($$0);
+   }
+
+   public boolean b(dxy $$0) {
+      cvk $$1 = this.a(ku.n);
+      return $$1 != null && $$1.a($$0);
+   }
+
+   public int K() {
+      return this.o;
+   }
+
+   public void d(int $$0) {
+      this.o = $$0;
+   }
+
+   public int L() {
+      return this.f() ? 0 : this.n;
+   }
+
+   public void e(int $$0) {
+      this.n = $$0;
+   }
+
+   public void f(int $$0) {
+      if (!this.f() && this.L() > $$0) {
+         this.e($$0);
+      }
+   }
+
+   public void g(int $$0) {
+      this.e(this.L() + $$0);
+   }
+
+   public void h(int $$0) {
+      this.g(-$$0);
+   }
+
+   public void a(int $$0, @Nullable bwf $$1) {
+      if ($$1 == null || !$$1.fT()) {
+         this.h($$0);
+      }
+   }
+
+   public cxo b(int $$0, @Nullable bwf $$1) {
+      cxo $$2 = this.c($$0);
+      this.a($$0, $$1);
+      return $$2;
+   }
+
+   public void b(dhh $$0, bwf $$1, int $$2) {
+      czu $$3 = this.a(ku.x);
+      if ($$3 != null && $$3.a($$2)) {
+         $$3.a($$1.dY(), $$1, this, 5);
+      }
+
+      this.h().a($$0, $$1, this, $$2);
+   }
+
+   public void a(cma $$0) {
+      this.h().a($$0);
+   }
+
+   public axe M() {
+      return this.h().a();
+   }
+
+   public boolean a(btz $$0) {
+      czz $$1 = this.a(ku.A);
+      return $$1 == null || !$$1.a($$0);
+   }
+
+   public boolean b(cxo $$0) {
+      deg $$1 = this.a(ku.E);
+      return $$1 != null && $$1.a($$0);
    }
 }

@@ -9,25 +9,25 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class asp implements dhy {
+public class asp implements dif {
    private static final Logger a = LogUtils.getLogger();
    private final bay<ary> b;
-   private final dzi c;
+   private final dzp c;
    private final ash d;
    private final long e;
-   private final evr f;
+   private final evy f;
    private final bam h;
-   private final ebi i;
-   private final fdp<dke> j = new fdp<>($$0x -> this.y($$0x).o());
-   private final fdp<eto> k = new fdp<>($$0x -> this.y($$0x).p());
-   private final die l;
-   private final eam m;
+   private final ebp i;
+   private final fdu<dkl> j = new fdu<>($$0x -> this.y($$0x).o());
+   private final fdu<etv> k = new fdu<>($$0x -> this.y($$0x).p());
+   private final dil l;
+   private final eat m;
    @Nullable
    private Supplier<String> n;
    private final AtomicLong o = new AtomicLong();
    private static final alz p = alz.b("worldgen_region_random");
 
-   public asp(ash $$0, bay<ary> $$1, eam $$2, dzi $$3) {
+   public asp(ash $$0, bay<ary> $$1, eat $$2, dzp $$3) {
       this.m = $$2;
       this.b = $$1;
       this.c = $$3;
@@ -36,14 +36,14 @@ public class asp implements dhy {
       this.f = $$0.D_();
       this.h = $$0.m().i().a(p).a(this.c.f().l());
       this.i = $$0.G_();
-      this.l = new die(this, die.a(this.e));
+      this.l = new dil(this, dil.a(this.e));
    }
 
-   public boolean a(dgg $$0, int $$1) {
+   public boolean a(dgn $$0, int $$1) {
       return this.d.m().a.b($$0, $$1);
    }
 
-   public dgg b() {
+   public dgn b() {
       return this.c.f();
    }
 
@@ -53,20 +53,20 @@ public class asp implements dhy {
    }
 
    @Override
-   public dzi a(int $$0, int $$1) {
-      return this.a($$0, $$1, eaj.c);
+   public dzp a(int $$0, int $$1) {
+      return this.a($$0, $$1, eaq.c);
    }
 
    @Nullable
    @Override
-   public dzi a(int $$0, int $$1, eaj $$2, boolean $$3) {
+   public dzp a(int $$0, int $$1, eaq $$2, boolean $$3) {
       int $$4 = this.c.f().e($$0, $$1);
-      eaj $$5 = $$4 >= this.m.b().b() ? null : this.m.b().a($$4);
+      eaq $$5 = $$4 >= this.m.b().b() ? null : this.m.b().a($$4);
       ary $$6;
       if ($$5 != null) {
          $$6 = this.b.a($$0, $$1);
          if ($$2.c($$5)) {
-            dzi $$7 = $$6.a($$5);
+            dzp $$7 = $$6.a($$5);
             if ($$7 != null) {
                return $$7;
             }
@@ -95,18 +95,18 @@ public class asp implements dhy {
    }
 
    @Override
-   public dxn a_(jh $$0) {
+   public dxu a_(jh $$0) {
       return this.a(kj.a($$0.u()), kj.a($$0.w())).a_($$0);
    }
 
    @Override
-   public etp b_(jh $$0) {
+   public etw b_(jh $$0) {
       return this.y($$0).b_($$0);
    }
 
    @Nullable
    @Override
-   public cps a(double $$0, double $$1, double $$2, double $$3, Predicate<bvf> $$4) {
+   public cpw a(double $$0, double $$1, double $$2, double $$3, Predicate<bvj> $$4) {
       return null;
    }
 
@@ -116,12 +116,12 @@ public class asp implements dhy {
    }
 
    @Override
-   public die I_() {
+   public dil I_() {
       return this.l;
    }
 
    @Override
-   public jq<dic> a(int $$0, int $$1, int $$2) {
+   public jq<dij> a(int $$0, int $$1, int $$2) {
       return this.d.a($$0, $$1, $$2);
    }
 
@@ -131,44 +131,44 @@ public class asp implements dhy {
    }
 
    @Override
-   public ete C_() {
+   public etl C_() {
       return this.d.C_();
    }
 
    @Override
-   public boolean a(jh $$0, boolean $$1, @Nullable bvf $$2, int $$3) {
-      dxn $$4 = this.a_($$0);
+   public boolean a(jh $$0, boolean $$1, @Nullable bvj $$2, int $$3) {
+      dxu $$4 = this.a_($$0);
       if ($$4.l()) {
          return false;
       } else {
          if ($$1) {
-            dup $$5 = $$4.x() ? this.c_($$0) : null;
-            dke.a($$4, (dha)this.d, $$0, $$5, $$2, cxk.k);
+            duw $$5 = $$4.x() ? this.c_($$0) : null;
+            dkl.a($$4, (dhh)this.d, $$0, $$5, $$2, cxo.k);
          }
 
-         return this.a($$0, dkg.a.m(), 3, $$3);
+         return this.a($$0, dkn.a.m(), 3, $$3);
       }
    }
 
    @Nullable
    @Override
-   public dup c_(jh $$0) {
-      dzi $$1 = this.y($$0);
-      dup $$2 = $$1.c_($$0);
+   public duw c_(jh $$0) {
+      dzp $$1 = this.y($$0);
+      duw $$2 = $$1.c_($$0);
       if ($$2 != null) {
          return $$2;
       } else {
          ux $$3 = $$1.f($$0);
-         dxn $$4 = $$1.a_($$0);
+         dxu $$4 = $$1.a_($$0);
          if ($$3 != null) {
             if ("DUMMY".equals($$3.l("id"))) {
                if (!$$4.x()) {
                   return null;
                }
 
-               $$2 = ((dmy)$$4.b()).a($$0, $$4);
+               $$2 = ((dnf)$$4.b()).a($$0, $$4);
             } else {
-               $$2 = dup.a($$0, $$4, $$3, this.d.K_());
+               $$2 = duw.a($$0, $$4, $$3, this.d.K_());
             }
 
             if ($$2 != null) {
@@ -189,12 +189,12 @@ public class asp implements dhy {
    public boolean f_(jh $$0) {
       int $$1 = kj.a($$0.u());
       int $$2 = kj.a($$0.w());
-      dgg $$3 = this.b();
+      dgn $$3 = this.b();
       int $$4 = Math.abs($$3.g - $$1);
       int $$5 = Math.abs($$3.h - $$2);
       if ($$4 <= this.m.d() && $$5 <= this.m.d()) {
          if (this.c.x()) {
-            dhc $$6 = this.c.y();
+            dhj $$6 = this.c.y();
             if ($$6.e($$0.v())) {
                return false;
             }
@@ -218,19 +218,19 @@ public class asp implements dhy {
    }
 
    @Override
-   public boolean a(jh $$0, dxn $$1, int $$2, int $$3) {
+   public boolean a(jh $$0, dxu $$1, int $$2, int $$3) {
       if (!this.f_($$0)) {
          return false;
       } else {
-         dzi $$4 = this.y($$0);
-         dxn $$5 = $$4.a($$0, $$1, false);
+         dzp $$4 = this.y($$0);
+         dxu $$5 = $$4.a($$0, $$1, false);
          if ($$5 != null) {
             this.d.a($$0, $$5, $$1);
          }
 
          if ($$1.x()) {
-            if ($$4.j().d() == ean.b) {
-               dup $$6 = ((dmy)$$1.b()).a($$0, $$1);
+            if ($$4.j().d() == eau.b) {
+               duw $$6 = ((dnf)$$1.b()).a($$0, $$1);
                if ($$6 != null) {
                   $$4.a($$6);
                } else {
@@ -261,7 +261,7 @@ public class asp implements dhy {
    }
 
    @Override
-   public boolean b(bvf $$0) {
+   public boolean b(bvj $$0) {
       int $$1 = kj.a($$0.dz());
       int $$2 = kj.a($$0.dF());
       this.a($$1, $$2).a($$0);
@@ -270,11 +270,11 @@ public class asp implements dhy {
 
    @Override
    public boolean a(jh $$0, boolean $$1) {
-      return this.a($$0, dkg.a.m(), 3);
+      return this.a($$0, dkn.a.m(), 3);
    }
 
    @Override
-   public dzd F_() {
+   public dzk F_() {
       return this.d.F_();
    }
 
@@ -295,21 +295,21 @@ public class asp implements dhy {
    }
 
    @Override
-   public cso J() {
+   public css J() {
       return this.d.J();
    }
 
    @Override
-   public evr D_() {
+   public evy D_() {
       return this.f;
    }
 
    @Override
-   public btc d_(jh $$0) {
+   public btg d_(jh $$0) {
       if (!this.b(kj.a($$0.u()), kj.a($$0.w()))) {
          throw new RuntimeException("We are asking a region for a chunk out of bound");
       } else {
-         return new btc(this.d.al(), this.d.ad(), 0L, this.d.aq());
+         return new btg(this.d.al(), this.d.ad(), 0L, this.d.aq());
       }
    }
 
@@ -320,7 +320,7 @@ public class asp implements dhy {
    }
 
    @Override
-   public dzm R() {
+   public dzt R() {
       return this.d.m();
    }
 
@@ -330,12 +330,12 @@ public class asp implements dhy {
    }
 
    @Override
-   public fdg<dke> T() {
+   public fdl<dkl> T() {
       return this.j;
    }
 
    @Override
-   public fdg<eto> S() {
+   public fdl<etv> S() {
       return this.k;
    }
 
@@ -350,12 +350,12 @@ public class asp implements dhy {
    }
 
    @Override
-   public int a(edi.a $$0, int $$1, int $$2) {
+   public int a(edp.a $$0, int $$1, int $$2) {
       return this.a(kj.a($$1), kj.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
    }
 
    @Override
-   public void a(@Nullable cps $$0, jh $$1, axe $$2, axg $$3, float $$4, float $$5) {
+   public void a(@Nullable cpw $$0, jh $$1, axe $$2, axg $$3, float $$4, float $$5) {
    }
 
    @Override
@@ -363,40 +363,40 @@ public class asp implements dhy {
    }
 
    @Override
-   public void a(@Nullable cps $$0, int $$1, jh $$2, int $$3) {
+   public void a(@Nullable cpw $$0, int $$1, jh $$2, int $$3) {
    }
 
    @Override
-   public void a(jq<ecj> $$0, fbs $$1, ecj.a $$2) {
+   public void a(jq<ecq> $$0, fbx $$1, ecq.a $$2) {
    }
 
    @Override
-   public ebi G_() {
+   public ebp G_() {
       return this.i;
    }
 
    @Override
-   public boolean a(jh $$0, Predicate<dxn> $$1) {
+   public boolean a(jh $$0, Predicate<dxu> $$1) {
       return $$1.test(this.a_($$0));
    }
 
    @Override
-   public boolean b(jh $$0, Predicate<etp> $$1) {
+   public boolean b(jh $$0, Predicate<etw> $$1) {
       return $$1.test(this.b_($$0));
    }
 
    @Override
-   public <T extends bvf> List<T> a(ebx<bvf, T> $$0, fbn $$1, Predicate<? super T> $$2) {
+   public <T extends bvj> List<T> a(ece<bvj, T> $$0, fbs $$1, Predicate<? super T> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<bvf> a(@Nullable bvf $$0, fbn $$1, @Nullable Predicate<? super bvf> $$2) {
+   public List<bvj> a(@Nullable bvj $$0, fbs $$1, @Nullable Predicate<? super bvj> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<cps> y() {
+   public List<cpw> y() {
       return Collections.emptyList();
    }
 

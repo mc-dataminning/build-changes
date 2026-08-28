@@ -1,135 +1,51 @@
-public class dyd {
-   public static final dye a = dye.a("attached");
-   public static final dye b = dye.a("bottom");
-   public static final dye c = dye.a("conditional");
-   public static final dye d = dye.a("disarmed");
-   public static final dye e = dye.a("drag");
-   public static final dye f = dye.a("enabled");
-   public static final dye g = dye.a("extended");
-   public static final dye h = dye.a("eye");
-   public static final dye i = dye.a("falling");
-   public static final dye j = dye.a("hanging");
-   public static final dye k = dye.a("has_bottle_0");
-   public static final dye l = dye.a("has_bottle_1");
-   public static final dye m = dye.a("has_bottle_2");
-   public static final dye n = dye.a("has_record");
-   public static final dye o = dye.a("has_book");
-   public static final dye p = dye.a("inverted");
-   public static final dye q = dye.a("in_wall");
-   public static final dye r = dye.a("lit");
-   public static final dye s = dye.a("tip");
-   public static final dye t = dye.a("locked");
-   public static final dye u = dye.a("occupied");
-   public static final dye v = dye.a("open");
-   public static final dye w = dye.a("persistent");
-   public static final dye x = dye.a("powered");
-   public static final dye y = dye.a("short");
-   public static final dye z = dye.a("signal_fire");
-   public static final dye A = dye.a("snowy");
-   public static final dye B = dye.a("triggered");
-   public static final dye C = dye.a("unstable");
-   public static final dye D = dye.a("waterlogged");
-   public static final dye E = dye.a("berries");
-   public static final dye F = dye.a("bloom");
-   public static final dye G = dye.a("shrieking");
-   public static final dye H = dye.a("can_summon");
-   public static final dyk<jm.a> I = dyk.a("axis", jm.a.class, jm.a.a, jm.a.c);
-   public static final dyk<jm.a> J = dyk.a("axis", jm.a.class);
-   public static final dye K = dye.a("up");
-   public static final dye L = dye.a("down");
-   public static final dye M = dye.a("north");
-   public static final dye N = dye.a("east");
-   public static final dye O = dye.a("south");
-   public static final dye P = dye.a("west");
-   public static final dyk<jm> Q = dyk.a("facing", jm.class, jm.c, jm.f, jm.d, jm.e, jm.b, jm.a);
-   public static final dyk<jm> R = dyk.a("facing", jm.class, $$0 -> $$0 != jm.b);
-   public static final dyk<jm> S = dyk.a("facing", jm.class, jm.c.a);
-   public static final dym T = dym.a("flower_amount", 1, 4);
-   public static final dyk<jo> U = dyk.a("orientation", jo.class);
-   public static final dyk<dxy> V = dyk.a("face", dxy.class);
-   public static final dyk<dyb> W = dyk.a("attachment", dyb.class);
-   public static final dyk<dyy> X = dyk.a("east", dyy.class);
-   public static final dyk<dyy> Y = dyk.a("north", dyy.class);
-   public static final dyk<dyy> Z = dyk.a("south", dyy.class);
-   public static final dyk<dyy> aa = dyk.a("west", dyy.class);
-   public static final dyk<dyr> ab = dyk.a("east", dyr.class);
-   public static final dyk<dyr> ac = dyk.a("north", dyr.class);
-   public static final dyk<dyr> ad = dyk.a("south", dyr.class);
-   public static final dyk<dyr> ae = dyk.a("west", dyr.class);
-   public static final dyk<dyi> af = dyk.a("half", dyi.class);
-   public static final dyk<dyl> ag = dyk.a("half", dyl.class);
-   public static final dyk<dyq> ah = dyk.a("shape", dyq.class);
-   public static final dyk<dyq> ai = dyk.a("shape", dyq.class, $$0 -> $$0 != dyq.j && $$0 != dyq.i && $$0 != dyq.g && $$0 != dyq.h);
-   public static final int aj = 1;
-   public static final int ak = 2;
-   public static final int al = 3;
-   public static final int am = 4;
-   public static final int an = 5;
-   public static final int ao = 7;
-   public static final int ap = 15;
-   public static final int aq = 25;
-   public static final dym ar = dym.a("age", 0, 1);
-   public static final dym as = dym.a("age", 0, 2);
-   public static final dym at = dym.a("age", 0, 3);
-   public static final dym au = dym.a("age", 0, 4);
-   public static final dym av = dym.a("age", 0, 5);
-   public static final dym aw = dym.a("age", 0, 7);
-   public static final dym ax = dym.a("age", 0, 15);
-   public static final dym ay = dym.a("age", 0, 25);
-   public static final dym az = dym.a("bites", 0, 6);
-   public static final dym aA = dym.a("candles", 1, 4);
-   public static final dym aB = dym.a("delay", 1, 4);
-   public static final int aC = 7;
-   public static final dym aD = dym.a("distance", 1, 7);
-   public static final dym aE = dym.a("eggs", 1, 4);
-   public static final dym aF = dym.a("hatch", 0, 2);
-   public static final dym aG = dym.a("layers", 1, 8);
-   public static final int aH = 0;
-   public static final int aI = 1;
-   public static final int aJ = 3;
-   public static final int aK = 8;
-   public static final dym aL = dym.a("level", 1, 3);
-   public static final dym aM = dym.a("level", 0, 8);
-   public static final dym aN = dym.a("level", 1, 8);
-   public static final dym aO = dym.a("honey_level", 0, 5);
-   public static final int aP = 15;
-   public static final dym aQ = dym.a("level", 0, 15);
-   public static final dym aR = dym.a("moisture", 0, 7);
-   public static final dym aS = dym.a("note", 0, 24);
-   public static final dym aT = dym.a("pickles", 1, 4);
-   public static final dym aU = dym.a("power", 0, 15);
-   public static final dym aV = dym.a("stage", 0, 1);
-   public static final int aW = 7;
-   public static final dym aX = dym.a("distance", 0, 7);
-   public static final int aY = 0;
-   public static final int aZ = 4;
-   public static final dym ba = dym.a("charges", 0, 4);
-   public static final dym bb = dym.a("rotation", 0, dys.a());
-   public static final dyk<dya> bc = dyk.a("part", dya.class);
-   public static final dyk<dyf> bd = dyk.a("type", dyf.class);
-   public static final dyk<dyg> be = dyk.a("mode", dyg.class);
-   public static final dyk<dyh> bf = dyk.a("hinge", dyh.class);
-   public static final dyk<dyn> bg = dyk.a("instrument", dyn.class);
-   public static final dyk<dyo> bh = dyk.a("type", dyo.class);
-   public static final dyk<dyu> bi = dyk.a("type", dyu.class);
-   public static final dyk<dyv> bj = dyk.a("shape", dyv.class);
-   public static final dyk<dyw> bk = dyk.a("mode", dyw.class);
-   public static final dyk<dxz> bl = dyk.a("leaves", dxz.class);
-   public static final dyk<dyx> bm = dyk.a("tilt", dyx.class);
-   public static final dyk<jm> bn = dyk.a("vertical_direction", jm.class, jm.b, jm.a);
-   public static final dyk<dyj> bo = dyk.a("thickness", dyj.class);
-   public static final dyk<dyt> bp = dyk.a("sculk_sensor_phase", dyt.class);
-   public static final dye bq = dye.a("slot_0_occupied");
-   public static final dye br = dye.a("slot_1_occupied");
-   public static final dye bs = dye.a("slot_2_occupied");
-   public static final dye bt = dye.a("slot_3_occupied");
-   public static final dye bu = dye.a("slot_4_occupied");
-   public static final dye bv = dye.a("slot_5_occupied");
-   public static final dym bw = dym.a("dusted", 0, 3);
-   public static final dye bx = dye.a("cracked");
-   public static final dye by = dye.a("crafting");
-   public static final dyk<dwt> bz = dyk.a("trial_spawner_state", dwt.class);
-   public static final dyk<dxa> bA = dyk.a("vault_state", dxa.class);
-   public static final dyk<dma.a> bB = dyk.a("creaking", dma.a.class);
-   public static final dye bC = dye.a("ominous");
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public class dyd implements Predicate<dxu> {
+   public static final Predicate<dxu> a = $$0 -> true;
+   private final dxv<dkl, dxu> b;
+   private final Map<dyw<?>, Predicate<Object>> c = Maps.newHashMap();
+
+   private dyd(dxv<dkl, dxu> $$0) {
+      this.b = $$0;
+   }
+
+   public static dyd a(dkl $$0) {
+      return new dyd($$0.l());
+   }
+
+   public boolean a(@Nullable dxu $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
+         } else {
+            for (Entry<dyw<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected <T extends Comparable<T>> boolean a(dxu $$0, dyw<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
+   }
+
+   public <V extends Comparable<V>> dyd a(dyw<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
+      }
+   }
 }

@@ -1,4 +1,10 @@
-public class gyc extends gym {
-   public int a;
-   public boolean b;
+public class gyc extends gyr {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public cig.v h = cig.v.a;
 }

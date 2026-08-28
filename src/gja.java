@@ -1,43 +1,37 @@
-public class gja extends gjl {
-   private final gjg a;
+public class gja extends gjq {
+   private final gjl a;
 
-   protected gja(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjg $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.225F;
-      this.B = 1.0F;
+   gja(gfi $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjl $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
       this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.d(1.0F);
+      this.n = false;
       this.b($$7);
    }
 
    @Override
-   public gip b() {
-      return gip.b;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public giu b() {
+      return giu.c;
    }
 
    @Override
    public void a() {
       super.a();
       this.b(this.a);
-      this.j *= 0.95F;
-      this.k *= 0.9F;
-      this.l *= 0.95F;
    }
 
-   public static class a implements gio<lw> {
-      private final gjg a;
-
-      public a(gjg $$0) {
-         this.a = $$0;
-      }
-
-      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(gjl a) implements git<lw> {
+      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gja $$8 = new gja($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(0.923F, 0.964F, 0.999F);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.A.a(4) + 6);
          return $$8;
       }
    }

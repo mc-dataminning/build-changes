@@ -1,21 +1,13 @@
 import javax.annotation.Nullable;
 
-public class gyp extends gxo {
-   public float a;
-   public float b;
-   public long c;
-   public int d;
-   public float e;
-   public float f;
-   public int g;
-   public dxn h = dkg.a.m();
-   public boolean i;
+public class gyp extends gxt {
+   public jm a = jm.c;
+   public cxo b = cxo.k;
+   public int c;
+   public boolean d;
    @Nullable
-   public fbs j;
+   public hdl e;
    @Nullable
-   public fbs k;
-   @Nullable
-   public fbs l;
-   @Nullable
-   public fbs B;
+   public evo f;
+   public final has g = new has();
 }

@@ -15,7 +15,7 @@ public class t implements af {
    private final String c;
    private final String d;
    private final boolean e;
-   private final evn f;
+   private final evu f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,12 +23,12 @@ public class t implements af {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "24w40a";
+      this.d = "1.21.2-pre1";
       this.e = false;
-      this.f = new evn(4072, "main");
+      this.f = new evu(4073, "main");
       this.g = ab.c();
-      this.h = 40;
-      this.i = 56;
+      this.h = 41;
+      this.i = 57;
       this.j = new Date();
    }
 
@@ -36,7 +36,7 @@ public class t implements af {
       this.c = azu.i($$0, "id");
       this.d = azu.i($$0, "name");
       this.e = azu.k($$0, "stable");
-      this.f = new evn(azu.o($$0, "world_version"), azu.a($$0, "series_id", evn.a));
+      this.f = new evu(azu.o($$0, "world_version"), azu.a($$0, "series_id", evu.a));
       this.g = azu.o($$0, "protocol_version");
       JsonObject $$1 = azu.u($$0, "pack_version");
       this.h = azu.o($$1, "resource");
@@ -75,7 +75,7 @@ public class t implements af {
    }
 
    @Override
-   public evn d() {
+   public evu d() {
       return this.f;
    }
 

@@ -1,20 +1,11 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.Set;
 
-@FunctionalInterface
-interface ewp {
-   ewp b = ($$0, $$1) -> false;
-   ewp c = ($$0, $$1) -> true;
-
-   boolean expand(ewh var1, Consumer<eww> var2);
-
-   default ewp and(ewp $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
+public interface ewp {
+   default Set<bbn<?>> a() {
+      return Set.of();
    }
 
-   default ewp or(ewp $$0) {
-      Objects.requireNonNull($$0);
-      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
+   default void a(ewu $$0) {
+      $$0.a(this);
    }
 }

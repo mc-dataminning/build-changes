@@ -1,78 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class drf extends dko implements dkh, dox {
-   public static final MapCodec<drf> a = b(drf::new);
-   protected static final float b = 6.0F;
-   protected static final fcm c = dke.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+public class drf extends dmx implements dre {
+   public static final MapCodec<drf> b = b(drf::new);
 
    @Override
    public MapCodec<drf> a() {
-      return a;
+      return b;
    }
 
-   protected drf(dxm.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return c;
+   public drf(dxt.d $$0) {
+      super(bsk.a(1), $$0);
    }
 
    @Override
-   protected boolean b(dxn $$0, dgf $$1, jh $$2) {
-      return $$0.c($$1, $$2, jm.b) && !$$0.a(dkg.le);
+   public int a(drj.a $$0, dhi $$1, jh $$2, bam $$3, drj $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         jh $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               jh $$10 = $$7.d();
+               dxu $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.A().e(), axg.e, 1.0F, 1.0F);
+            }
+
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+         }
+      } else {
+         return $$6;
+      }
    }
 
-   @Nullable
-   @Override
-   public dxn a(dbb $$0) {
-      etp $$1 = $$0.q().b_($$0.a());
-      return $$1.a(aya.a) && $$1.e() == 8 ? super.a($$0) : null;
+   private static int a(drj $$0, jh $$1, jh $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = bae.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = bae.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
    }
 
-   @Override
-   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
-      dxn $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if (!$$8.l()) {
-         $$2.a($$3, etq.c, etq.c.a($$1));
+   private dxu a(dhi $$0, jh $$1, bam $$2, boolean $$3) {
+      dxu $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dkn.rq.m().b(dri.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dkn.rl.m();
       }
 
-      return $$8;
+      return $$4.b(dyk.D) && !$$0.b_($$1).c() ? $$4.b(dyk.D, Boolean.valueOf(true)) : $$4;
+   }
+
+   private static boolean a(dhi $$0, jh $$1) {
+      dxu $$2 = $$0.a_($$1.d());
+      if ($$2.l() || $$2.a(dkn.J) && $$2.y().b(etx.c)) {
+         int $$3 = 0;
+
+         for (jh $$4 : jh.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dxu $$5 = $$0.a_($$4);
+            if ($$5.a(dkn.rl) || $$5.a(dkn.rq)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean b(dhd $$0, jh $$1, dxn $$2) {
-      return $$0.a_($$1.d()).a(dkg.J);
-   }
-
-   @Override
-   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
-      return true;
-   }
-
-   @Override
-   protected etp b_(dxn $$0) {
-      return etq.c.a(false);
-   }
-
-   @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
-      dxn $$4 = dkg.bE.m();
-      dxn $$5 = $$4.b(dsn.d, dyi.a);
-      jh $$6 = $$2.d();
-      $$0.a($$2, $$4, 2);
-      $$0.a($$6, $$5, 2);
-   }
-
-   @Override
-   public boolean a(@Nullable cps $$0, dgf $$1, jh $$2, dxn $$3, eto $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dhb $$0, jh $$1, dxn $$2, etp $$3) {
+   public boolean d() {
       return false;
    }
 }

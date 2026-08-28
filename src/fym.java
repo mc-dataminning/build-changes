@@ -1,108 +1,78 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public class fym extends ftr {
-   private static final xv a = xv.c("telemetry_info.screen.title");
-   private static final xv b = xv.c("telemetry_info.screen.description").b(-4539718);
-   private static final xv c = xv.c("telemetry_info.button.privacy_statement");
-   private static final xv d = xv.c("telemetry_info.button.give_feedback");
-   private static final xv s = xv.c("telemetry_info.button.show_data");
-   private static final xv u = xv.c("telemetry_info.opt_in.description");
-   private static final int v = 8;
-   private static final boolean w = flz.Q().D();
-   private final ftr x;
-   private final fmd y;
-   private final frn z = new frn(this, 16 + 9 * 5 + 20, w ? 33 + foa.a(flz.Q().h) : 33);
-   @Nullable
-   private fyl A;
-   @Nullable
-   private fot B;
-   private double C;
+public class fym {
+   private final fme a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
 
-   public fym(ftr $$0, fmd $$1) {
-      super(a);
-      this.x = $$0;
-      this.y = $$1;
+   public fym(fme $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public xv i() {
-      return xu.a(super.i(), b);
+   public void a(UUID $$0) {
+      this.b.add($$0);
    }
 
-   @Override
-   protected void aT_() {
-      frr $$0 = this.z.a(frr.d().a(4));
-      $$0.c().b();
-      $$0.a(new fpg(a, this.p));
-      this.B = $$0.a(new fot(b, this.p).b(true));
-      frr $$1 = $$0.a(frr.e().a(8));
-      $$1.a(fny.a(c, this::a).a());
-      $$1.a(fny.a(d, this::b).a());
-      frr $$2 = this.z.b(frr.d().a(4));
-      if (w) {
-         $$2.a(this.l());
-      }
-
-      frr $$3 = $$2.a(frr.e().a(8));
-      $$3.a(fny.a(s, this::c).a());
-      $$3.a(fny.a(xu.d, $$0x -> this.aP_()).a());
-      frr $$4 = this.z.c(frr.d().a(8));
-      this.A = $$4.a(new fyl(0, 0, this.n - 40, this.z.d(), this.p));
-      this.A.a($$0x -> this.C = $$0x);
-      this.z.a($$1x -> {
-         fnw var10000 = this.c($$1x);
-      });
-      this.c();
+   public void b(UUID $$0) {
+      this.b.remove($$0);
    }
 
-   @Override
-   protected void c() {
-      if (this.A != null) {
-         this.A.a(this.C);
-         this.A.k(this.n - 40);
-         this.A.l(this.z.d());
-         this.A.j();
-      }
-
-      if (this.B != null) {
-         this.B.d(this.n - 16);
-      }
-
-      this.z.a();
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
    }
 
-   @Override
-   protected void aG_() {
-      if (this.A != null) {
-         this.b(this.A);
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ae.h());
+   }
+
+   public void b() {
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
       }
    }
 
-   private fnw l() {
-      fmc<Boolean> $$0 = this.y.al();
-      return foa.a(u, this.p).a($$0).a(this::a).a();
+   public Set<UUID> c() {
+      return this.b;
    }
 
-   private void a(fnw $$0, boolean $$1) {
-      if (this.A != null) {
-         this.A.b($$1);
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ae.e);
+   }
+
+   public void a(gfu $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.z instanceof fyo $$2) {
+         $$2.a($$0);
       }
    }
 
-   private void a(fny $$0) {
-      fso.a(this, aza.c);
-   }
-
-   private void b(fny $$0) {
-      fso.a(this, aza.i);
-   }
-
-   private void c(fny $$0) {
-      ae.m().a(this.m.u().b());
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.x);
+   public void f(UUID $$0) {
+      if (this.a.z instanceof fyo $$1) {
+         $$1.a($$0);
+      }
    }
 }

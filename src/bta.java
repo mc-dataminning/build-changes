@@ -1,44 +1,86 @@
-public class bta {
-   public static void a(dha $$0, jh $$1, bsx $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+public class bta implements btb {
+   private final btb b;
+   private final btb c;
+
+   public bta(btb $$0, btb $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static void a(dha $$0, bvf $$1, bsx $$2) {
-      a($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2);
+   @Override
+   public int b() {
+      return this.b.b() + this.c.b();
    }
 
-   private static void a(dha $$0, double $$1, double $$2, double $$3, bsx $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   @Override
+   public boolean c() {
+      return this.b.c() && this.c.c();
+   }
+
+   public boolean a(btb $$0) {
+      return this.b == $$0 || this.c == $$0;
+   }
+
+   @Override
+   public cxo a(int $$0) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
+   }
+
+   @Override
+   public cxo a(int $$0, int $$1) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
+   }
+
+   @Override
+   public cxo b(int $$0) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cxo $$1) {
+      if ($$0 >= this.b.b()) {
+         this.c.a($$0 - this.b.b(), $$1);
+      } else {
+         this.b.a($$0, $$1);
       }
    }
 
-   public static void a(dha $$0, jh $$1, jz<cxk> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   @Override
+   public int ao_() {
+      return this.b.ao_();
    }
 
-   public static void a(dha $$0, double $$1, double $$2, double $$3, cxk $$4) {
-      double $$5 = (double)bvm.ar.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
-
-      while (!$$4.f()) {
-         clw $$11 = new clw($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   @Override
+   public void e() {
+      this.b.e();
+      this.c.e();
    }
 
-   public static void a(dxn $$0, dxn $$1, dha $$2, jh $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bsx $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
-         }
-      }
+   @Override
+   public boolean a(cpw $$0) {
+      return this.b.a($$0) && this.c.a($$0);
+   }
+
+   @Override
+   public void c_(cpw $$0) {
+      this.b.c_($$0);
+      this.c.c_($$0);
+   }
+
+   @Override
+   public void c(cpw $$0) {
+      this.b.c($$0);
+      this.c.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cxo $$1) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.b.a();
+      this.c.a();
    }
 }

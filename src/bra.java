@@ -1,5 +1,21 @@
-import java.util.List;
+public enum bra {
+   a("pathfinding"),
+   b("event-loops"),
+   c("consecutive-executors"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public interface bra {
-   List<bqx> bw();
+   private final String j;
+
+   private bra(final String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

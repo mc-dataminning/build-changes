@@ -8,11 +8,11 @@ public class aw extends dy<aw.a> {
       return aw.a.a;
    }
 
-   public void a(asi $$0, dxn $$1, cxk $$2, int $$3) {
+   public void a(asi $$0, dxu $$1, cxo $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bh> b, Optional<jq<dke>> c, Optional<cu> d, dj.d e) implements dy.a {
+   public static record a(Optional<bh> b, Optional<jq<dkl>> c, Optional<cu> d, dj.d e) implements dy.a {
       public static final Codec<aw.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bw.b.optionalFieldOf("player").forGetter(aw.a::a),
@@ -23,11 +23,11 @@ public class aw extends dy<aw.a> {
                .apply($$0, aw.a::new)
       );
 
-      public static ap<aw.a> a(dke $$0, cu.a $$1, dj.d $$2) {
+      public static ap<aw.a> a(dkl $$0, cu.a $$1, dj.d $$2) {
          return ao.L.a(new aw.a(Optional.empty(), Optional.of($$0.p()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dxn $$0, cxk $$1, int $$2) {
+      public boolean a(dxu $$0, cxo $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class aw extends dy<aw.a> {
          return this.b;
       }
 
-      public Optional<jq<dke>> b() {
+      public Optional<jq<dkl>> b() {
          return this.c;
       }
 

@@ -1,30 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eip(elb b, eep c, bsj d, int e) implements eis {
+public class eip {
    public static final Codec<eip> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               elb.a.fieldOf("state_provider").forGetter(eip::a),
-               eep.b.fieldOf("target").forGetter(eip::b),
-               bsj.b(0, 8).fieldOf("radius").forGetter(eip::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eip::d)
-            )
+      $$0 -> $$0.group(enn.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, eip::new)
    );
+   public final jq<enn> b;
+   public final float c;
 
-   public elb a() {
-      return this.b;
+   public eip(jq<enn> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public eep b() {
-      return this.c;
-   }
-
-   public bsj c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   public boolean a(dif $$0, dzq $$1, bam $$2, jh $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

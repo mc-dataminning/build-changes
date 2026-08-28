@@ -50,7 +50,7 @@ public class atk extends ath implements ahm, atn, xj {
    private double w;
    private double x;
    @Nullable
-   private bvf y;
+   private bvj y;
    private double z;
    private double A;
    private double B;
@@ -58,7 +58,7 @@ public class atk extends ath implements ahm, atn, xj {
    private double D;
    private double E;
    @Nullable
-   private fbs F;
+   private fbx F;
    private int G;
    private int H;
    private boolean I;
@@ -102,7 +102,7 @@ public class atk extends ath implements ahm, atn, xj {
       this.o++;
       this.N = this.M;
       if (this.I && !this.f.fP() && !this.f.bZ() && !this.f.eE()) {
-         if (++this.J > this.a((bvf)this.f)) {
+         if (++this.J > this.a((bvj)this.f)) {
             h.warn("{} was kicked for floating too long!", this.f.al().getString());
             this.a(xv.c("multiplayer.disconnect.flying"));
             return;
@@ -144,7 +144,7 @@ public class atk extends ath implements ahm, atn, xj {
       }
    }
 
-   private int a(bvf $$0) {
+   private int a(bvj $$0) {
       double $$1 = $$0.be();
       if ($$1 < 1.0E-5F) {
          return Integer.MAX_VALUE;
@@ -222,7 +222,7 @@ public class atk extends ath implements ahm, atn, xj {
       if (b($$0.b(), $$0.e(), $$0.f(), $$0.g(), $$0.h())) {
          this.a(xv.c("multiplayer.disconnect.invalid_vehicle_movement"));
       } else if (!this.p()) {
-         bvf $$1 = this.f.dg();
+         bvj $$1 = this.f.dg();
          if ($$1 != this.f && $$1.cX() == this.f && $$1 == this.y) {
             ash $$2 = this.f.y();
             double $$3 = $$1.dA();
@@ -249,11 +249,11 @@ public class atk extends ath implements ahm, atn, xj {
             $$12 = $$7 - this.D - 1.0E-6;
             $$13 = $$8 - this.E;
             boolean $$17 = $$1.R;
-            if ($$1 instanceof bwb $$18 && $$18.q_()) {
+            if ($$1 instanceof bwf $$18 && $$18.q_()) {
                $$18.k();
             }
 
-            $$1.a(bwf.b, new fbs($$11, $$12, $$13));
+            $$1.a(bwj.b, new fbx($$11, $$12, $$13));
             $$11 = $$6 - $$1.dA();
             $$12 = $$7 - $$1.dC();
             if ($$12 > -0.5 || $$12 < 0.5) {
@@ -277,7 +277,7 @@ public class atk extends ath implements ahm, atn, xj {
             }
 
             this.f.y().m().a(this.f);
-            fbs $$22 = new fbs($$1.dA() - $$3, $$1.dC() - $$4, $$1.dG() - $$5);
+            fbx $$22 = new fbx($$1.dA() - $$3, $$1.dC() - $$4, $$1.dG() - $$5);
             this.a($$22);
             this.f.b($$22.d, $$22.e, $$22.f);
             this.K = $$12 >= -0.03125 && !$$17 && !this.d.ad() && !$$1.bc() && this.b($$1);
@@ -288,8 +288,8 @@ public class atk extends ath implements ahm, atn, xj {
       }
    }
 
-   private boolean b(bvf $$0) {
-      return $$0.dV().a($$0.cR().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dxm.a::l);
+   private boolean b(bvj $$0) {
+      return $$0.dV().a($$0.cR().g(0.0625).b(0.0, -0.55, 0.0)).allMatch(dxt.a::l);
    }
 
    @Override
@@ -316,7 +316,7 @@ public class atk extends ath implements ahm, atn, xj {
    @Override
    public void a(aiv $$0) {
       aaf.a($$0, this, this.f.y());
-      dcf.b $$1 = this.d.aI().a($$0.b());
+      dck.d $$1 = this.d.aI().a($$0.b());
       if ($$1 != null) {
          this.f.J().d($$1.b().a());
       }
@@ -368,28 +368,28 @@ public class atk extends ath implements ahm, atn, xj {
       } else if (!this.f.gE()) {
          this.f.a(xv.c("advMode.notAllowed"));
       } else {
-         dga $$1 = null;
-         duz $$2 = null;
+         dgh $$1 = null;
+         dvg $$2 = null;
          jh $$3 = $$0.b();
-         dup $$4 = this.f.dV().c_($$3);
-         if ($$4 instanceof duz) {
-            $$2 = (duz)$$4;
+         duw $$4 = this.f.dV().c_($$3);
+         if ($$4 instanceof dvg) {
+            $$2 = (dvg)$$4;
             $$1 = $$2.b();
          }
 
          String $$5 = $$0.e();
          boolean $$6 = $$0.f();
          if ($$1 != null) {
-            duz.a $$7 = $$2.t();
-            dxn $$8 = this.f.dV().a_($$3);
-            jm $$9 = $$8.c(dlo.b);
+            dvg.a $$7 = $$2.t();
+            dxu $$8 = this.f.dV().a_($$3);
+            jm $$9 = $$8.c(dlv.b);
 
-            dxn $$10 = switch ($$0.i()) {
-               case a -> dkg.lc.m();
-               case b -> dkg.lb.m();
-               default -> dkg.gb.m();
+            dxu $$10 = switch ($$0.i()) {
+               case a -> dkn.lc.m();
+               case b -> dkn.lb.m();
+               default -> dkn.gb.m();
             };
-            dxn $$11 = $$10.b(dlo.b, $$9).b(dlo.c, Boolean.valueOf($$0.g()));
+            dxu $$11 = $$10.b(dlv.b, $$9).b(dlv.c, Boolean.valueOf($$0.g()));
             if ($$11 != $$8) {
                this.f.dV().a($$3, $$11, 2);
                $$4.c($$11);
@@ -423,7 +423,7 @@ public class atk extends ath implements ahm, atn, xj {
       } else if (!this.f.gE()) {
          this.f.a(xv.c("advMode.notAllowed"));
       } else {
-         dga $$1 = $$0.a(this.f.dV());
+         dgh $$1 = $$0.a(this.f.dV());
          if ($$1 != null) {
             $$1.a($$0.b());
             $$1.a($$0.e());
@@ -450,7 +450,7 @@ public class atk extends ath implements ahm, atn, xj {
    @Override
    public void a(aiw $$0) {
       aaf.a($$0, this, this.f.y());
-      if (this.f.cd instanceof cta $$1) {
+      if (this.f.cd instanceof cte $$1) {
          if (!$$1.b(this.f)) {
             h.debug("Player {} interacted with invalid menu {}", this.f, $$1);
             return;
@@ -463,7 +463,7 @@ public class atk extends ath implements ahm, atn, xj {
    @Override
    public void a(aja $$0) {
       aaf.a($$0, this, this.f.y());
-      if (this.f.cd instanceof ctc $$1) {
+      if (this.f.cd instanceof ctg $$1) {
          if (!this.f.cd.b(this.f)) {
             h.debug("Player {} interacted with invalid menu {}", this.f, this.f.cd);
             return;
@@ -478,8 +478,8 @@ public class atk extends ath implements ahm, atn, xj {
       aaf.a($$0, this, this.f.y());
       if (this.f.gE()) {
          jh $$1 = $$0.b();
-         dxn $$2 = this.f.dV().a_($$1);
-         if (this.f.dV().c_($$1) instanceof dwh $$4) {
+         dxu $$2 = this.f.dV().a_($$1);
+         if (this.f.dV().c_($$1) instanceof dwo $$4) {
             $$4.a($$0.f());
             $$4.a($$0.g());
             $$4.a($$0.h());
@@ -494,13 +494,13 @@ public class atk extends ath implements ahm, atn, xj {
             $$4.a($$0.q());
             if ($$4.d()) {
                String $$5 = $$4.c();
-               if ($$0.e() == dwh.a.b) {
+               if ($$0.e() == dwo.a.b) {
                   if ($$4.A()) {
                      this.f.a(xv.a("structure_block.save_success", $$5), false);
                   } else {
                      this.f.a(xv.a("structure_block.save_failure", $$5), false);
                   }
-               } else if ($$0.e() == dwh.a.c) {
+               } else if ($$0.e() == dwo.a.c) {
                   if (!$$4.C()) {
                      this.f.a(xv.a("structure_block.load_not_found", $$5), false);
                   } else if ($$4.a(this.f.y())) {
@@ -508,7 +508,7 @@ public class atk extends ath implements ahm, atn, xj {
                   } else {
                      this.f.a(xv.a("structure_block.load_prepare", $$5), false);
                   }
-               } else if ($$0.e() == dwh.a.d) {
+               } else if ($$0.e() == dwo.a.d) {
                   if ($$4.z()) {
                      this.f.a(xv.a("structure_block.size_success", $$5), false);
                   } else {
@@ -530,11 +530,11 @@ public class atk extends ath implements ahm, atn, xj {
       aaf.a($$0, this, this.f.y());
       if (this.f.gE()) {
          jh $$1 = $$0.b();
-         dxn $$2 = this.f.dV().a_($$1);
-         if (this.f.dV().c_($$1) instanceof dvs $$4) {
+         dxu $$2 = this.f.dV().a_($$1);
+         if (this.f.dV().c_($$1) instanceof dvz $$4) {
             $$4.a($$0.e());
             $$4.b($$0.f());
-            $$4.a(aly.a(mb.aW, $$0.g()));
+            $$4.a(aly.a(mb.aX, $$0.g()));
             $$4.a($$0.h());
             $$4.a($$0.i());
             $$4.a($$0.k());
@@ -550,7 +550,7 @@ public class atk extends ath implements ahm, atn, xj {
       aaf.a($$0, this, this.f.y());
       if (this.f.gE()) {
          jh $$1 = $$0.b();
-         if (this.f.dV().c_($$1) instanceof dvs $$3) {
+         if (this.f.dV().c_($$1) instanceof dvz $$3) {
             $$3.a(this.f.y(), $$0.e(), $$0.f());
          }
       }
@@ -560,7 +560,7 @@ public class atk extends ath implements ahm, atn, xj {
    public void a(aiz $$0) {
       aaf.a($$0, this, this.f.y());
       int $$1 = $$0.b();
-      if (this.f.cd instanceof cui $$2) {
+      if (this.f.cd instanceof cum $$2) {
          if (!$$2.b(this.f)) {
             h.debug("Player {} interacted with invalid menu {}", this.f, $$2);
             return;
@@ -574,7 +574,7 @@ public class atk extends ath implements ahm, atn, xj {
    @Override
    public void a(aig $$0) {
       int $$1 = $$0.b();
-      if (cpr.d($$1) || $$1 == 40) {
+      if (cpv.d($$1) || $$1 == 40) {
          List<String> $$2 = Lists.newArrayList();
          Optional<String> $$3 = $$0.f();
          $$3.ifPresent($$2::add);
@@ -585,20 +585,20 @@ public class atk extends ath implements ahm, atn, xj {
    }
 
    private void a(List<ata> $$0, int $$1) {
-      cxk $$2 = this.f.gg().a($$1);
+      cxo $$2 = this.f.gg().a($$1);
       if ($$2.b(ku.S)) {
          List<asz<String>> $$3 = $$0.stream().map(this::a).toList();
-         $$2.b(ku.S, new dar($$3));
+         $$2.b(ku.S, new dav($$3));
       }
    }
 
    private void a(ata $$0, List<ata> $$1, int $$2) {
-      cxk $$3 = this.f.gg().a($$2);
+      cxo $$3 = this.f.gg().a($$2);
       if ($$3.b(ku.S)) {
-         cxk $$4 = $$3.a((dgz)cxo.uP);
+         cxo $$4 = $$3.a((dhg)cxs.uP);
          $$4.c(ku.S);
          List<asz<xv>> $$5 = $$1.stream().map($$0x -> this.a($$0x).a(xv::b)).toList();
-         $$4.b(ku.T, new das(this.a($$0), this.f.al().getString(), 0, $$5, true));
+         $$4.b(ku.T, new daw(this.a($$0), this.f.al().getString(), 0, $$5, true));
          this.f.gg().a($$2, $$4);
       }
    }
@@ -611,7 +611,7 @@ public class atk extends ath implements ahm, atn, xj {
    public void a(aih $$0) {
       aaf.a($$0, this, this.f.y());
       if (this.f.s(2)) {
-         bvf $$1 = this.f.dV().a($$0.e());
+         bvj $$1 = this.f.dV().a($$0.e());
          if ($$1 != null) {
             ux $$2 = $$1.f(new ux());
             this.f.f.b(new agy($$0.b(), $$2));
@@ -623,7 +623,7 @@ public class atk extends ath implements ahm, atn, xj {
    public void a(aie $$0) {
       aaf.a($$0, this, this.f.y());
       if (!this.f.aa_() && $$0.e() == this.f.cd.l) {
-         if (this.f.cd instanceof ctn $$1 && $$1.m() instanceof dvd $$2) {
+         if (this.f.cd instanceof ctr $$1 && $$1.m() instanceof dvk $$2) {
             $$2.a($$0.b(), $$0.f());
          }
       }
@@ -633,7 +633,7 @@ public class atk extends ath implements ahm, atn, xj {
    public void a(ahp $$0) {
       aaf.a($$0, this, this.f.y());
       if (this.f.s(2)) {
-         dup $$1 = this.f.dV().c_($$0.e());
+         duw $$1 = this.f.dV().c_($$0.e());
          ux $$2 = $$1 != null ? $$1.d(this.f.dX()) : null;
          this.f.f.b(new agy($$0.b(), $$2));
       }
@@ -683,9 +683,9 @@ public class atk extends ath implements ahm, atn, xj {
                            $$16 = 1;
                         }
 
-                        if (!this.f.Q() && (!this.f.y().N().b(dgw.t) || !$$15)) {
+                        if (this.a($$15)) {
                            float $$17 = $$15 ? 300.0F : 100.0F;
-                           if ($$14 - $$13 > (double)($$17 * (float)$$16) && !this.h()) {
+                           if ($$14 - $$13 > (double)($$17 * (float)$$16)) {
                               h.warn("{} moved too quickly! {},{},{}", new Object[]{this.f.al().getString(), $$10, $$11, $$12});
                               this.a(this.f.dA(), this.f.dC(), this.f.dG(), this.f.dL(), this.f.dN());
                               return;
@@ -693,7 +693,7 @@ public class atk extends ath implements ahm, atn, xj {
                         }
                      }
 
-                     fbn $$18 = this.f.cR();
+                     fbs $$18 = this.f.cR();
                      $$10 = $$2 - this.v;
                      $$11 = $$3 - this.w;
                      $$12 = $$4 - this.x;
@@ -703,7 +703,7 @@ public class atk extends ath implements ahm, atn, xj {
                      }
 
                      boolean $$20 = this.f.R;
-                     this.f.a(bwf.b, new fbs($$10, $$11, $$12));
+                     this.f.a(bwj.b, new fbx($$10, $$11, $$12));
                      $$10 = $$2 - this.f.dA();
                      $$11 = $$3 - this.f.dC();
                      if ($$11 > -0.5 || $$11 < 0.5) {
@@ -713,7 +713,7 @@ public class atk extends ath implements ahm, atn, xj {
                      $$12 = $$4 - this.f.dG();
                      $$14 = $$10 * $$10 + $$11 * $$11 + $$12 * $$12;
                      boolean $$22 = false;
-                     if (!this.f.Q() && $$14 > 0.0625 && !this.f.fP() && !this.f.h.e() && this.f.h.b() != dgx.d) {
+                     if (!this.f.Q() && $$14 > 0.0625 && !this.f.fP() && !this.f.h.e() && this.f.h.b() != dhe.d) {
                         $$22 = true;
                         h.warn("{} moved wrongly!", this.f.al().getString());
                      }
@@ -723,19 +723,19 @@ public class atk extends ath implements ahm, atn, xj {
                         boolean $$23 = this.f.ft();
                         this.I = $$11 >= -0.03125
                            && !$$20
-                           && this.f.h.b() != dgx.d
+                           && this.f.h.b() != dhe.d
                            && !this.d.ad()
                            && !this.f.gh().c
-                           && !this.f.b(bum.y)
+                           && !this.f.b(buq.y)
                            && !$$15
                            && !$$23
                            && this.b(this.f);
                         this.f.y().m().a(this.f);
-                        fbs $$24 = new fbs(this.f.dA() - $$7, this.f.dC() - $$8, this.f.dG() - $$9);
+                        fbx $$24 = new fbx(this.f.dA() - $$7, this.f.dC() - $$8, this.f.dG() - $$9);
                         this.f.a($$0.b(), $$0.e(), $$24);
                         this.f.a(this.f.dA() - $$7, this.f.dC() - $$8, this.f.dG() - $$9, $$0.b());
                         if (!this.f.aa_()) {
-                           this.f.b(new fbs($$7, $$8, $$9), this.f.dt());
+                           this.f.b(new fbx($$7, $$8, $$9), this.f.dt());
                         }
 
                         this.a($$24);
@@ -762,6 +762,17 @@ public class atk extends ath implements ahm, atn, xj {
       }
    }
 
+   private boolean a(boolean $$0) {
+      if (this.h()) {
+         return false;
+      } else if (this.f.Q()) {
+         return false;
+      } else {
+         dhd $$1 = this.f.y().N();
+         return $$1.b(dhd.t) ? false : !$$0 || !$$1.b(dhd.u);
+      }
+   }
+
    private boolean p() {
       if (this.F != null) {
          if (this.o - this.H > 20) {
@@ -776,13 +787,13 @@ public class atk extends ath implements ahm, atn, xj {
       }
    }
 
-   private boolean a(dhd $$0, fbn $$1, double $$2, double $$3, double $$4) {
-      fbn $$5 = this.f.cR().d($$2 - this.f.dA(), $$3 - this.f.dC(), $$4 - this.f.dG());
-      Iterable<fcm> $$6 = $$0.d(this.f, $$5.h(1.0E-5F));
-      fcm $$7 = fcj.a($$1.h(1.0E-5F));
+   private boolean a(dhk $$0, fbs $$1, double $$2, double $$3, double $$4) {
+      fbs $$5 = this.f.cR().d($$2 - this.f.dA(), $$3 - this.f.dC(), $$4 - this.f.dG());
+      Iterable<fcr> $$6 = $$0.d(this.f, $$5.h(1.0E-5F));
+      fcr $$7 = fco.a($$1.h(1.0E-5F));
 
-      for (fcm $$8 : $$6) {
-         if (!fcj.c($$8, $$7, fbw.i)) {
+      for (fcr $$8 : $$6) {
+         if (!fco.c($$8, $$7, fcb.i)) {
             return true;
          }
       }
@@ -791,10 +802,10 @@ public class atk extends ath implements ahm, atn, xj {
    }
 
    public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.a(new bwo(new fbs($$0, $$1, $$2), fbs.c, $$3, $$4), Collections.emptySet());
+      this.a(new bws(new fbx($$0, $$1, $$2), fbx.c, $$3, $$4), Collections.emptySet());
    }
 
-   public void a(bwo $$0, Set<bwp> $$1) {
+   public void a(bws $$0, Set<bwt> $$1) {
       this.H = this.o;
       if (++this.G == Integer.MAX_VALUE) {
          this.G = 0;
@@ -814,9 +825,9 @@ public class atk extends ath implements ahm, atn, xj {
       switch ($$2) {
          case g:
             if (!this.f.aa_()) {
-               cxk $$3 = this.f.b(btd.b);
-               this.f.a(btd.b, this.f.b(btd.a));
-               this.f.a(btd.a, $$3);
+               cxo $$3 = this.f.b(bth.b);
+               this.f.a(bth.b, this.f.b(bth.a));
+               this.f.a(bth.a, $$3);
                this.f.fD();
             }
 
@@ -847,12 +858,12 @@ public class atk extends ath implements ahm, atn, xj {
       }
    }
 
-   private static boolean a(asi $$0, cxk $$1) {
+   private static boolean a(asi $$0, cxo $$1) {
       if ($$1.f()) {
          return false;
       } else {
-         cxg $$2 = $$1.h();
-         return ($$2 instanceof cvq || $$2 instanceof cvw) && !$$0.gC().a($$1);
+         cxk $$2 = $$1.h();
+         return ($$2 instanceof cvu || $$2 instanceof cwa) && !$$0.gC().a($$1);
       }
    }
 
@@ -861,14 +872,14 @@ public class atk extends ath implements ahm, atn, xj {
       aaf.a($$0, this, this.f.y());
       this.f.f.a($$0.f());
       ash $$1 = this.f.y();
-      btd $$2 = $$0.b();
-      cxk $$3 = this.f.b($$2);
+      bth $$2 = $$0.b();
+      cxo $$3 = this.f.b($$2);
       if ($$3.a($$1.J())) {
-         fbo $$4 = $$0.e();
-         fbs $$5 = $$4.g();
+         fbt $$4 = $$0.e();
+         fbx $$5 = $$4.g();
          jh $$6 = $$4.b();
          if (this.f.a($$6, 1.0)) {
-            fbs $$7 = $$5.d(fbs.b($$6));
+            fbx $$7 = $$5.d(fbx.b($$6));
             double $$8 = 1.0000001;
             if (Math.abs($$7.a()) < 1.0000001 && Math.abs($$7.b()) < 1.0000001 && Math.abs($$7.c()) < 1.0000001) {
                jm $$9 = $$4.c();
@@ -876,7 +887,7 @@ public class atk extends ath implements ahm, atn, xj {
                int $$10 = this.f.dV().am();
                if ($$6.v() <= $$10) {
                   if (this.F == null && $$1.a(this.f, $$6)) {
-                     bte $$11 = this.f.h.a(this.f, $$1, $$3, $$2, $$4);
+                     bti $$11 = this.f.h.a(this.f, $$1, $$3, $$2, $$4);
                      if ($$11.a()) {
                         ao.P.a(this.f, $$4.b(), $$3.v());
                      }
@@ -884,7 +895,7 @@ public class atk extends ath implements ahm, atn, xj {
                      if ($$9 == jm.b && !$$11.a() && $$6.v() >= $$10 && a(this.f, $$3)) {
                         xv $$12 = xv.a("build.tooHigh", $$10).a(n.m);
                         this.f.b($$12, true);
-                     } else if ($$11 instanceof bte.d $$13 && $$13.e() == bte.e.c) {
+                     } else if ($$11 instanceof bti.d $$13 && $$13.e() == bti.e.c) {
                         this.f.a($$2, true);
                      }
                   }
@@ -907,8 +918,8 @@ public class atk extends ath implements ahm, atn, xj {
       aaf.a($$0, this, this.f.y());
       this.a($$0.e());
       ash $$1 = this.f.y();
-      btd $$2 = $$0.b();
-      cxk $$3 = this.f.b($$2);
+      bth $$2 = $$0.b();
+      cxo $$3 = this.f.b($$2);
       this.f.H();
       if (!$$3.f() && $$3.a($$1.J())) {
          float $$4 = bae.h($$0.f());
@@ -917,7 +928,7 @@ public class atk extends ath implements ahm, atn, xj {
             this.f.c($$4, $$5);
          }
 
-         if (this.f.h.a(this.f, $$1, $$3, $$2) instanceof bte.d $$7 && $$7.e() == bte.e.c) {
+         if (this.f.h.a(this.f, $$1, $$3, $$2) instanceof bti.d $$7 && $$7.e() == bti.e.c) {
             this.f.a($$2, true);
          }
       }
@@ -928,7 +939,7 @@ public class atk extends ath implements ahm, atn, xj {
       aaf.a($$0, this, this.f.y());
       if (this.f.aa_()) {
          for (ash $$1 : this.d.L()) {
-            bvf $$2 = $$0.a($$1);
+            bvj $$2 = $$0.a($$1);
             if ($$2 != null) {
                this.f.a($$1, $$2.dA(), $$2.dC(), $$2.dG(), Set.of(), $$2.dL(), $$2.dN(), true);
                return;
@@ -940,7 +951,7 @@ public class atk extends ath implements ahm, atn, xj {
    @Override
    public void a(ain $$0) {
       aaf.a($$0, this, this.f.y());
-      if (this.f.dl() instanceof crp $$2) {
+      if (this.f.dl() instanceof crt $$2) {
          $$2.b($$0.b(), $$0.e());
       }
    }
@@ -972,8 +983,8 @@ public class atk extends ath implements ahm, atn, xj {
    @Override
    public void a(ajb $$0) {
       aaf.a($$0, this, this.f.y());
-      if ($$0.b() >= 0 && $$0.b() < cpr.g()) {
-         if (this.f.gg().j != $$0.b() && this.f.fy() == btd.a) {
+      if ($$0.b() >= 0 && $$0.b() < cpv.g()) {
+         if (this.f.gg().j != $$0.b() && this.f.fy() == bth.a) {
             this.f.fD();
          }
 
@@ -1112,7 +1123,7 @@ public class atk extends ath implements ahm, atn, xj {
    private void a(String $$0, Runnable $$1) {
       if (d($$0)) {
          this.a(xv.c("multiplayer.disconnect.illegal_characters"));
-      } else if (this.f.E() == cpp.c) {
+      } else if (this.f.E() == cpt.c) {
          this.b(new agw(xv.c("chat.disabled.options").a(n.m), false));
       } else {
          this.f.H();
@@ -1200,7 +1211,7 @@ public class atk extends ath implements ahm, atn, xj {
             }
             break;
          case f:
-            if (this.f.dl() instanceof bwl $$1) {
+            if (this.f.dl() instanceof bwp $$1) {
                int $$2 = $$0.f();
                if ($$1.a() && $$2 > 0) {
                   $$1.c($$2);
@@ -1208,12 +1219,12 @@ public class atk extends ath implements ahm, atn, xj {
             }
             break;
          case g:
-            if (this.f.dl() instanceof bwl $$3) {
+            if (this.f.dl() instanceof bwp $$3) {
                $$3.b();
             }
             break;
          case h:
-            if (this.f.dk() instanceof bvu $$4) {
+            if (this.f.dk() instanceof bvy $$4) {
                $$4.b(this.f);
             }
             break;
@@ -1272,7 +1283,7 @@ public class atk extends ath implements ahm, atn, xj {
    public void a(aii $$0) {
       aaf.a($$0, this, this.f.y());
       final ash $$1 = this.f.y();
-      final bvf $$2 = $$0.a($$1);
+      final bvj $$2 = $$0.a($$1);
       this.f.H();
       this.f.g($$0.b());
       if ($$2 != null) {
@@ -1280,17 +1291,17 @@ public class atk extends ath implements ahm, atn, xj {
             return;
          }
 
-         fbn $$3 = $$2.cR();
+         fbs $$3 = $$2.cR();
          if (this.f.a($$3, 3.0)) {
             $$0.a(new aii.c() {
-               private void a(btd $$0, atk.a $$1x) {
-                  cxk $$2 = atk.this.f.b($$0);
+               private void a(bth $$0, atk.a $$1x) {
+                  cxo $$2 = atk.this.f.b($$0);
                   if ($$2.a($$1.J())) {
-                     cxk $$3 = $$2.v();
-                     if ($$1.run(atk.this.f, $$2, $$0) instanceof bte.d $$5) {
-                        cxk $$6 = $$5.c() ? $$3 : cxk.k;
+                     cxo $$3 = $$2.v();
+                     if ($$1.run(atk.this.f, $$2, $$0) instanceof bti.d $$5) {
+                        cxo $$6 = $$5.c() ? $$3 : cxo.k;
                         ao.T.a(atk.this.f, $$6, $$2);
-                        if ($$5.e() == bte.e.c) {
+                        if ($$5.e() == bti.e.c) {
                            atk.this.f.a($$0, true);
                         }
                      }
@@ -1298,24 +1309,24 @@ public class atk extends ath implements ahm, atn, xj {
                }
 
                @Override
-               public void a(btd $$0) {
-                  this.a($$0, cps::a);
+               public void a(bth $$0) {
+                  this.a($$0, cpw::a);
                }
 
                @Override
-               public void a(btd $$0, fbs $$1x) {
+               public void a(bth $$0, fbx $$1x) {
                   this.a($$0, ($$1xxx, $$2xx, $$3) -> $$2xx.a($$1xxx, $$1, $$3));
                }
 
                @Override
                public void a() {
                   label23:
-                  if (!($$2 instanceof clw) && !($$2 instanceof bvr) && $$2 != atk.this.f) {
-                     if ($$2 instanceof cpz $$0 && !$$0.cB()) {
+                  if (!($$2 instanceof cma) && !($$2 instanceof bvv) && $$2 != atk.this.f) {
+                     if ($$2 instanceof cqd $$0 && !$$0.cB()) {
                         break label23;
                      }
 
-                     cxk $$1 = atk.this.f.b(btd.a);
+                     cxo $$1 = atk.this.f.b(bth.a);
                      if (!$$1.a($$1.J())) {
                         return;
                      }
@@ -1341,19 +1352,19 @@ public class atk extends ath implements ahm, atn, xj {
          case a:
             if (this.f.k) {
                this.f.k = false;
-               this.f = this.d.ag().a(this.f, true, bvf.c.e);
+               this.f = this.d.ag().a(this.f, true, bvj.c.e);
                this.l();
-               ao.w.a(this.f, dha.k, dha.i);
+               ao.w.a(this.f, dhh.k, dhh.i);
             } else {
                if (this.f.eD() > 0.0F) {
                   return;
                }
 
-               this.f = this.d.ag().a(this.f, false, bvf.c.a);
+               this.f = this.d.ag().a(this.f, false, bvj.c.a);
                this.l();
                if (this.d.w_()) {
-                  this.f.a(dgx.d);
-                  this.f.y().N().a(dgw.r).a(false, this.d);
+                  this.f.a(dhe.d);
+                  this.f.y().N().a(dhd.r).a(false, this.d);
                }
             }
             break;
@@ -1388,8 +1399,8 @@ public class atk extends ath implements ahm, atn, xj {
                ObjectIterator var4 = Int2ObjectMaps.fastIterable($$0.h()).iterator();
 
                while (var4.hasNext()) {
-                  Entry<cxk> $$3 = (Entry<cxk>)var4.next();
-                  this.f.cd.b($$3.getIntKey(), (cxk)$$3.getValue());
+                  Entry<cxo> $$3 = (Entry<cxo>)var4.next();
+                  this.f.cd.b($$3.getIntKey(), (cxo)$$3.getValue());
                }
 
                this.f.cd.a($$0.g());
@@ -1412,18 +1423,18 @@ public class atk extends ath implements ahm, atn, xj {
          if (!this.f.cd.b(this.f)) {
             h.debug("Player {} interacted with invalid menu {}", this.f, this.f.cd);
          } else {
-            dcf.b $$1 = this.d.aI().a($$0.e());
+            dck.d $$1 = this.d.aI().a($$0.e());
             if ($$1 != null) {
-               dcd<?> $$2 = $$1.b();
+               dci<?> $$2 = $$1.b();
                if (this.f.J().b($$2.a())) {
-                  if (this.f.cd instanceof cum $$3) {
+                  if (this.f.cd instanceof cuq $$3) {
                      if ($$2.b().ap_().d()) {
                         h.debug("Player {} tried to place impossible recipe {}", this.f, $$2.a().a());
                         return;
                      }
 
-                     cum.a $$4 = $$3.a($$0.f(), this.f.b(), $$2, this.f.y(), this.f.gg());
-                     if ($$4 == cum.a.b) {
+                     cuq.a $$4 = $$3.a($$0.f(), this.f.b(), $$2, this.f.y(), this.f.gg());
+                     if ($$4 == cuq.a.b) {
                         this.f.f.b(new aes(this.f.cd.l, $$1.a().b()));
                      }
                   }
@@ -1454,29 +1465,30 @@ public class atk extends ath implements ahm, atn, xj {
       aaf.a($$0, this, this.f.y());
       if (this.f.h.e()) {
          boolean $$1 = $$0.b() < 0;
-         cxk $$2 = $$0.e();
+         cxo $$2 = $$0.e();
+         cxo $$3 = $$2.v();
          if (!$$2.a(this.f.dV().J())) {
             return;
          }
 
-         czt $$3 = $$2.a(ku.Y, czt.a);
-         if ($$3.a("x") && $$3.a("y") && $$3.a("z")) {
-            jh $$4 = dup.b($$3.d());
-            if (this.f.dV().p($$4)) {
-               dup $$5 = this.f.dV().c_($$4);
-               if ($$5 != null) {
-                  $$5.a($$2, this.f.dV().K_());
+         czx $$4 = $$2.a(ku.Y, czx.a);
+         if ($$4.a("x") && $$4.a("y") && $$4.a("z")) {
+            jh $$5 = duw.b($$4.d());
+            if (this.f.dV().p($$5)) {
+               duw $$6 = this.f.dV().c_($$5);
+               if ($$6 != null) {
+                  $$6.a($$2, this.f.dV().K_());
                }
             }
          }
 
-         boolean $$6 = $$0.b() >= 1 && $$0.b() <= 45;
-         boolean $$7 = $$2.f() || $$2.L() <= $$2.k();
-         if ($$6 && $$7) {
+         boolean $$7 = $$0.b() >= 1 && $$0.b() <= 45;
+         boolean $$8 = $$2.f() || $$2.L() <= $$2.k();
+         if ($$7 && $$8) {
             this.f.cc.b($$0.b()).e($$2);
-            this.f.cc.a($$0.b(), $$2);
+            this.f.cc.a($$0.b(), $$3);
             this.f.cc.d();
-         } else if ($$1 && $$7) {
+         } else if ($$1 && $$8) {
             if (this.r.c()) {
                this.r.a();
                this.f.a($$2, true);
@@ -1498,7 +1510,7 @@ public class atk extends ath implements ahm, atn, xj {
       ash $$2 = this.f.y();
       jh $$3 = $$0.b();
       if ($$2.B($$3)) {
-         if (!($$2.c_($$3) instanceof dwc $$5)) {
+         if (!($$2.c_($$3) instanceof dwj $$5)) {
             return;
          }
 
@@ -1538,11 +1550,11 @@ public class atk extends ath implements ahm, atn, xj {
    public void a(ahv $$0) {
       aaf.a($$0, this, this.f.y());
       ym.a $$1 = $$0.b();
-      cpv.a $$2 = this.P != null ? this.P.d().b() : null;
-      cpv.a $$3 = $$1.b();
+      cpz.a $$2 = this.P != null ? this.P.d().b() : null;
+      cpz.a $$3 = $$1.b();
       if (!Objects.equals($$2, $$3)) {
          if ($$2 != null && $$3.b().isBefore($$2.b())) {
-            this.a(cpv.a);
+            this.a(cpz.a);
          } else {
             try {
                bar $$4 = this.d.ar();
@@ -1552,7 +1564,7 @@ public class atk extends ath implements ahm, atn, xj {
                }
 
                this.a($$1.a(this.f.gf(), $$4));
-            } catch (cpv.b var6) {
+            } catch (cpz.b var6) {
                h.error("Failed to validate profile key: {}", var6.getMessage());
                this.a(var6.a());
             }
@@ -1598,13 +1610,13 @@ public class atk extends ath implements ahm, atn, xj {
    public void a(ahy $$0) {
       aaf.a($$0, this, this.f.y());
       if (!this.O) {
-         this.f.a(fbs.c);
+         this.f.a(fbx.c);
       }
 
       this.O = false;
    }
 
-   private void a(fbs $$0) {
+   private void a(fbx $$0) {
       this.f.a($$0);
       this.f.H();
       this.O = true;
@@ -1617,6 +1629,6 @@ public class atk extends ath implements ahm, atn, xj {
 
    @FunctionalInterface
    interface a {
-      bte run(asi var1, bvf var2, btd var3);
+      bti run(asi var1, bvj var2, bth var3);
    }
 }

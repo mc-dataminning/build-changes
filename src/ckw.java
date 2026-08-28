@@ -1,18 +1,6 @@
-import javax.annotation.Nullable;
-
-public class ckw extends ckr {
-   @Nullable
-   private fbs b;
-
-   public ckw(ckp $$0) {
+public abstract class ckw extends ckv {
+   public ckw(ckt $$0) {
       super($$0);
-   }
-
-   @Override
-   public void a(ash $$0) {
-      if (this.b == null) {
-         this.b = this.a.dt();
-      }
    }
 
    @Override
@@ -21,23 +9,12 @@ public class ckw extends ckr {
    }
 
    @Override
-   public void c() {
-      this.b = null;
-   }
-
-   @Override
-   public float e() {
-      return 1.0F;
-   }
-
-   @Nullable
-   @Override
-   public fbs f() {
-      return this.b;
-   }
-
-   @Override
-   public clf<ckw> h() {
-      return clf.k;
+   public float a(btz $$0, float $$1) {
+      if (!($$0.c() instanceof cqd) && !($$0.c() instanceof crh)) {
+         return super.a($$0, $$1);
+      } else {
+         $$0.c().d(1.0F);
+         return 0.0F;
+      }
    }
 }

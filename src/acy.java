@@ -3,19 +3,19 @@ import java.util.function.BiFunction;
 public class acy implements aac<acr> {
    public static final zt<xg, acy> a = zt.a(jh.b, acy::b, zr.a(mb.h), acy::e, zr.s, acy::f, acy::new);
    private final jh b;
-   private final dur<?> c;
+   private final duy<?> c;
    private final ux d;
 
-   public static acy a(dup $$0, BiFunction<dup, ke, ux> $$1) {
+   public static acy a(duw $$0, BiFunction<duw, ke, ux> $$1) {
       ke $$2 = $$0.i().K_();
       return new acy($$0.aB_(), $$0.q(), $$1.apply($$0, $$2));
    }
 
-   public static acy a(dup $$0) {
-      return a($$0, dup::a);
+   public static acy a(duw $$0) {
+      return a($$0, duw::a);
    }
 
-   private acy(jh $$0, dur<?> $$1, ux $$2) {
+   private acy(jh $$0, duy<?> $$1, ux $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -34,7 +34,7 @@ public class acy implements aac<acr> {
       return this.b;
    }
 
-   public dur<?> e() {
+   public duy<?> e() {
       return this.c;
    }
 

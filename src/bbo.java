@@ -1,76 +1,53 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Sets;
 import java.util.Set;
 
-public enum bbo {
-   a(bis.a),
-   b(bis.b),
-   c(bis.c),
-   d(bis.d),
-   e(bis.e),
-   f(bis.f),
-   g(bis.g),
-   h(bis.h),
-   i(bis.i),
-   j(bis.j),
-   k(bis.k),
-   l(bis.l),
-   m(bis.m),
-   n(bis.o),
-   o(bis.n),
-   p(bis.p),
-   q(bis.q),
-   r(bis.M),
-   s(bis.r);
+public class bbo {
+   private final Set<bbn<?>> a;
+   private final Set<bbn<?>> b;
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private bbo(final TypeReference $$0) {
-      this.u = $$0;
+   bbo(Set<bbn<?>> $$0, Set<bbn<?>> $$1) {
+      this.a = Set.copyOf($$0);
+      this.b = Set.copyOf(Sets.union($$0, $$1));
    }
 
-   static int a() {
-      return ab.b().d().c();
+   public Set<bbn<?>> a() {
+      return this.a;
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bbo.a())));
+   public Set<bbn<?>> b() {
+      return this.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
+
+   public static class a {
+      private final Set<bbn<?>> a = Sets.newIdentityHashSet();
+      private final Set<bbn<?>> b = Sets.newIdentityHashSet();
+
+      public bbo.a a(bbn<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
          }
+      }
 
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = bbo.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
+      public bbo.a b(bbn<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
          }
-      };
-   }
+      }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
-   }
-
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public ux a(DataFixer $$0, ux $$1, int $$2, int $$3) {
-      return (ux)this.a($$0, new Dynamic(vl.a, $$1), $$2, $$3).getValue();
-   }
-
-   public ux a(DataFixer $$0, ux $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
+      public bbo a() {
+         return new bbo(this.a, this.b);
+      }
    }
 }

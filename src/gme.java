@@ -1,197 +1,170 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class gme {
-   private static final int a = 10;
-   private static final int b = 21;
-   private static final alz c = alz.b("textures/environment/rain.png");
-   private static final alz d = alz.b("textures/environment/snow.png");
-   private static final int e = 32;
-   private static final int f = 16;
-   private int g;
-   private final float[] h = new float[1024];
-   private final float[] i = new float[1024];
+   public static final alz a = alz.b("textures/atlas/shulker_boxes.png");
+   public static final alz b = alz.b("textures/atlas/beds.png");
+   public static final alz c = alz.b("textures/atlas/banner_patterns.png");
+   public static final alz d = alz.b("textures/atlas/shield_patterns.png");
+   public static final alz e = alz.b("textures/atlas/signs.png");
+   public static final alz f = alz.b("textures/atlas/chest.png");
+   public static final alz g = alz.b("textures/atlas/armor_trims.png");
+   public static final alz h = alz.b("textures/atlas/decorated_pot.png");
+   private static final glt C = glt.f(a);
+   private static final glt D = glt.c(b);
+   private static final glt E = glt.m(c);
+   private static final glt F = glt.m(d);
+   private static final glt G = glt.f(e);
+   private static final glt H = glt.e(f);
+   private static final glt I = glt.a(g);
+   private static final glt J = glt.b(g);
+   private static final glt K = glt.c(hbi.d);
+   private static final glt L = glt.e(hbi.d);
+   private static final glt M = glt.h(hbi.d);
+   public static final hds i = new hds(a, alz.b("entity/shulker/shulker"));
+   public static final List<hds> j = Stream.of(
+         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
+      )
+      .map($$0 -> new hds(a, alz.b("entity/shulker/shulker_" + $$0)))
+      .collect(ImmutableList.toImmutableList());
+   public static final Map<dzg, hds> k = dzg.a().collect(Collectors.toMap(Function.identity(), gme::c));
+   public static final Map<dzg, hds> l = dzg.a().collect(Collectors.toMap(Function.identity(), gme::d));
+   public static final hds m = new hds(c, alz.b("entity/banner/base"));
+   public static final hds n = new hds(d, alz.b("entity/shield/base"));
+   private static final Map<alz, hds> N = new HashMap<>();
+   private static final Map<alz, hds> O = new HashMap<>();
+   public static final Map<aly<dvo>, hds> o = ma.ak.c().collect(Collectors.toMap(jq.c::h, $$0 -> a($$0.a().a())));
+   public static final hds p = a(alz.b("decorated_pot_base"));
+   public static final hds q = a(alz.b("decorated_pot_side"));
+   public static final hds[] r = Arrays.stream(cwl.values())
+      .sorted(Comparator.comparingInt(cwl::a))
+      .map($$0 -> new hds(b, alz.b("entity/bed/" + $$0.b())))
+      .toArray(hds[]::new);
+   public static final hds s = a("trapped");
+   public static final hds t = a("trapped_left");
+   public static final hds u = a("trapped_right");
+   public static final hds v = a("christmas");
+   public static final hds w = a("christmas_left");
+   public static final hds x = a("christmas_right");
+   public static final hds y = a("normal");
+   public static final hds z = a("normal_left");
+   public static final hds A = a("normal_right");
+   public static final hds B = a("ender");
 
-   public gme() {
-      for (int $$0 = 0; $$0 < 32; $$0++) {
-         for (int $$1 = 0; $$1 < 32; $$1++) {
-            float $$2 = (float)($$1 - 16);
-            float $$3 = (float)($$0 - 16);
-            float $$4 = bae.f($$2, $$3);
-            this.h[$$0 * 32 + $$1] = -$$3 / $$4;
-            this.i[$$0 * 32 + $$1] = $$2 / $$4;
-         }
-      }
+   public static glt a() {
+      return E;
    }
 
-   public void a(dha $$0, glc $$1, int $$2, float $$3, fbs $$4) {
-      float $$5 = $$0.d($$3);
-      if (!($$5 <= 0.0F)) {
-         int $$6 = flz.N() ? 10 : 5;
-         List<gme.a> $$7 = new ArrayList<>();
-         List<gme.a> $$8 = new ArrayList<>();
-         this.a($$0, $$2, $$3, $$4, $$6, $$7, $$8);
-         if (!$$7.isEmpty() || !$$8.isEmpty()) {
-            this.a($$1, $$4, $$6, $$5, $$7, $$8);
-         }
-      }
+   public static glt b() {
+      return F;
    }
 
-   private void a(dha $$0, int $$1, float $$2, fbs $$3, int $$4, List<gme.a> $$5, List<gme.a> $$6) {
-      int $$7 = bae.a($$3.d);
-      int $$8 = bae.a($$3.e);
-      int $$9 = bae.a($$3.f);
-      jh.a $$10 = new jh.a();
-      bam $$11 = bam.a();
-
-      for (int $$12 = $$9 - $$4; $$12 <= $$9 + $$4; $$12++) {
-         for (int $$13 = $$7 - $$4; $$13 <= $$7 + $$4; $$13++) {
-            int $$14 = $$0.a(edi.a.e, $$13, $$12);
-            int $$15 = Math.max($$8 - $$4, $$14);
-            int $$16 = Math.max($$8 + $$4, $$14);
-            if ($$16 - $$15 != 0) {
-               dic.c $$17 = this.a($$0, $$10.d($$13, $$8, $$12));
-               if ($$17 != dic.c.a) {
-                  int $$18 = $$13 * $$13 * 3121 + $$13 * 45238971 ^ $$12 * $$12 * 418711 + $$12 * 13761;
-                  $$11.b((long)$$18);
-                  int $$19 = Math.max($$8, $$14);
-                  int $$20 = gla.a($$0, $$10.d($$13, $$19, $$12));
-                  if ($$17 == dic.c.b) {
-                     $$5.add(this.a($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  } else if ($$17 == dic.c.c) {
-                     $$6.add(this.b($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  }
-               }
-            }
-         }
-      }
+   public static glt c() {
+      return D;
    }
 
-   private void a(glc $$0, fbs $$1, int $$2, float $$3, List<gme.a> $$4, List<gme.a> $$5) {
-      $$0.c();
-      fgn $$6 = fgn.b();
-      RenderSystem.disableCull();
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      RenderSystem.depthMask(flz.O());
-      RenderSystem.setShader(gko.c);
-      if (!$$4.isEmpty()) {
-         RenderSystem.setShaderTexture(0, c);
-         this.a($$6, $$4, $$1, 1.0F, $$2, $$3);
-      }
-
-      if (!$$5.isEmpty()) {
-         RenderSystem.setShaderTexture(0, d);
-         this.a($$6, $$5, $$1, 0.8F, $$2, $$3);
-      }
-
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.disableBlend();
-      $$0.b();
+   public static glt d() {
+      return C;
    }
 
-   private gme.a a(bam $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      int $$8 = $$1 & 131071;
-      int $$9 = $$2 * $$2 * 3121 + $$2 * 45238971 + $$5 * $$5 * 418711 + $$5 * 13761 & 0xFF;
-      float $$10 = 3.0F + $$0.i();
-      float $$11 = -((float)($$8 + $$9) + $$7) / 32.0F * $$10;
-      float $$12 = $$11 % 32.0F;
-      return new gme.a($$2, $$5, $$3, $$4, 0.0F, $$12, $$6);
+   public static glt e() {
+      return G;
    }
 
-   private gme.a b(bam $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      float $$8 = (float)$$1 + $$7;
-      float $$9 = (float)($$0.j() + (double)($$8 * 0.01F * (float)$$0.k()));
-      float $$10 = (float)($$0.j() + (double)($$8 * (float)$$0.k() * 0.001F));
-      float $$11 = -((float)($$1 & 511) + $$7) / 512.0F;
-      int $$12 = glc.a((glc.a($$6) * 3 + 15) / 4, (glc.b($$6) * 3 + 15) / 4);
-      return new gme.a($$2, $$5, $$3, $$4, $$9, $$11 + $$10, $$12);
+   public static glt f() {
+      return G;
    }
 
-   private void a(fgn $$0, List<gme.a> $$1, fbs $$2, float $$3, int $$4, float $$5) {
-      fgg $$6 = $$0.a(fgq.c.h, fgj.d);
-
-      for (gme.a $$7 : $$1) {
-         float $$8 = (float)((double)$$7.a + 0.5 - $$2.d);
-         float $$9 = (float)((double)$$7.b + 0.5 - $$2.f);
-         float $$10 = (float)bae.e((double)$$8, (double)$$9);
-         float $$11 = bae.h($$10 / (float)($$4 * $$4), $$3, 0.5F) * $$5;
-         int $$12 = ayp.a($$11);
-         int $$13 = ($$7.b - bae.a($$2.f) + 16) * 32 + $$7.a - bae.a($$2.d) + 16;
-         float $$14 = this.h[$$13] / 2.0F;
-         float $$15 = this.i[$$13] / 2.0F;
-         float $$16 = $$8 - $$14;
-         float $$17 = $$8 + $$14;
-         float $$18 = (float)((double)$$7.d - $$2.e);
-         float $$19 = (float)((double)$$7.c - $$2.e);
-         float $$20 = $$9 - $$15;
-         float $$21 = $$9 + $$15;
-         float $$22 = $$7.e + 0.0F;
-         float $$23 = $$7.e + 1.0F;
-         float $$24 = (float)$$7.c * 0.25F + $$7.f;
-         float $$25 = (float)$$7.d * 0.25F + $$7.f;
-         $$6.a($$16, $$18, $$20).a($$22, $$24).a($$12).c($$7.g);
-         $$6.a($$17, $$18, $$21).a($$23, $$24).a($$12).c($$7.g);
-         $$6.a($$17, $$19, $$21).a($$23, $$25).a($$12).c($$7.g);
-         $$6.a($$16, $$19, $$20).a($$22, $$25).a($$12).c($$7.g);
-      }
-
-      fgh.a($$6.b());
+   public static glt g() {
+      return H;
    }
 
-   public void a(gfd $$0, fli $$1, int $$2, arz $$3) {
-      float $$4 = $$0.d(1.0F) / (flz.N() ? 1.0F : 2.0F);
-      if (!($$4 <= 0.0F)) {
-         bam $$5 = bam.a((long)$$2 * 312987231L);
-         jh $$6 = jh.a((ka)$$1.b());
-         jh $$7 = null;
-         int $$8 = (int)(100.0F * $$4 * $$4) / ($$3 == arz.b ? 2 : 1);
-
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$5.a(21) - 10;
-            int $$11 = $$5.a(21) - 10;
-            jh $$12 = $$0.a(edi.a.e, $$6.b($$10, 0, $$11));
-            if ($$12.v() > $$0.L_() && $$12.v() <= $$6.v() + 10 && $$12.v() >= $$6.v() - 10 && this.a($$0, $$12) == dic.c.b) {
-               $$7 = $$12.e();
-               if ($$3 == arz.c) {
-                  break;
-               }
-
-               double $$13 = $$5.j();
-               double $$14 = $$5.j();
-               dxn $$15 = $$0.a_($$7);
-               etp $$16 = $$0.b_($$7);
-               fcm $$17 = $$15.g($$0, $$7);
-               double $$18 = $$17.b(jm.a.b, $$13, $$14);
-               double $$19 = (double)$$16.a($$0, $$7);
-               double $$20 = Math.max($$18, $$19);
-               lq $$21 = !$$16.a(aya.b) && !$$15.a(dkg.le) && !dkt.h($$15) ? ls.ae : ls.af;
-               $$0.a($$21, (double)$$7.u() + $$13, (double)$$7.v() + $$20, (double)$$7.w() + $$14, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if ($$7 != null && $$5.a(3) < this.g++) {
-            this.g = 0;
-            if ($$7.v() > $$6.v() + 1 && $$0.a(edi.a.e, $$6).v() > bae.d((float)$$6.v())) {
-               $$0.a($$7, axf.CC, axg.d, 0.1F, 0.5F, false);
-            } else {
-               $$0.a($$7, axf.CB, axg.d, 0.2F, 1.0F, false);
-            }
-         }
-      }
+   public static glt a(boolean $$0) {
+      return $$0 ? J : I;
    }
 
-   private dic.c a(dha $$0, jh $$1) {
-      if (!$$0.R().b(kj.a($$1.u()), kj.a($$1.w()))) {
-         return dic.c.a;
+   public static glt h() {
+      return K;
+   }
+
+   public static glt i() {
+      return L;
+   }
+
+   public static glt j() {
+      return M;
+   }
+
+   private static hds c(dzg $$0) {
+      return new hds(e, alz.b("entity/signs/" + $$0.b()));
+   }
+
+   private static hds d(dzg $$0) {
+      return new hds(e, alz.b("entity/signs/hanging/" + $$0.b()));
+   }
+
+   public static hds a(dzg $$0) {
+      return k.get($$0);
+   }
+
+   public static hds b(dzg $$0) {
+      return l.get($$0);
+   }
+
+   public static hds a(jq<dum> $$0) {
+      return N.computeIfAbsent($$0.a().a(), $$0x -> {
+         alz $$1 = $$0x.f("entity/banner/");
+         return new hds(c, $$1);
+      });
+   }
+
+   public static hds b(jq<dum> $$0) {
+      return O.computeIfAbsent($$0.a().a(), $$0x -> {
+         alz $$1 = $$0x.f("entity/shield/");
+         return new hds(d, $$1);
+      });
+   }
+
+   private static hds a(String $$0) {
+      return new hds(f, alz.b("entity/chest/" + $$0));
+   }
+
+   private static hds a(alz $$0) {
+      return new hds(h, $$0.f("entity/decorated_pot/"));
+   }
+
+   @Nullable
+   public static hds a(@Nullable aly<dvo> $$0) {
+      return $$0 == null ? null : o.get($$0);
+   }
+
+   public static hds a(duw $$0, dym $$1, boolean $$2) {
+      if ($$0 instanceof dvt) {
+         return B;
+      } else if ($$2) {
+         return a($$1, v, w, x);
       } else {
-         dic $$2 = $$0.t($$1).a();
-         return $$2.a($$1, $$0.O());
+         return $$0 instanceof dws ? a($$1, s, t, u) : a($$1, y, z, A);
       }
    }
 
-   static record a(int a, int b, int c, int d, float e, float f, int g) {
+   private static hds a(dym $$0, hds $$1, hds $$2, hds $$3) {
+      switch ($$0) {
+         case b:
+            return $$2;
+         case c:
+            return $$3;
+         case a:
+         default:
+            return $$1;
+      }
    }
 }

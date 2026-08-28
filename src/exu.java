@@ -1,80 +1,125 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class exu implements exv {
-   protected final List<ezs> g;
-   private final Predicate<ewh> a;
+public class exu extends eyb {
+   public static final ayk<eoj> a = ayg.l;
+   public static final jq<evl> b = evm.i;
+   public static final byte c = 2;
+   public static final int d = 50;
+   public static final boolean e = true;
+   public static final MapCodec<exu> f = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ayk.a(mb.aU).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
+                  evl.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
+                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
+                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
+                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+               )
+            )
+            .apply($$0, exu::new)
+   );
+   private final ayk<eoj> h;
+   private final jq<evl> i;
+   private final byte j;
+   private final int k;
+   private final boolean l;
 
-   protected exu(List<ezs> $$0) {
-      this.g = $$0;
-      this.a = ae.a($$0);
+   exu(List<ezx> $$0, ayk<eoj> $$1, jq<evl> $$2, byte $$3, int $$4, boolean $$5) {
+      super($$0);
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = $$5;
    }
 
    @Override
-   public abstract exw<? extends exu> b();
-
-   protected static <T extends exu> P1<Mu<T>, List<ezs>> a(Instance<T> $$0) {
-      return $$0.group(ezs.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+   public eyd<exu> b() {
+      return eye.q;
    }
-
-   public final cxk b(cxk $$0, ewh $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract cxk a(cxk var1, ewh var2);
 
    @Override
-   public void a(ewn $$0) {
-      exv.super.a($$0);
+   public Set<bbn<?>> a() {
+      return Set.of(ezi.f);
+   }
 
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+   @Override
+   public cxo a(cxo $$0, ewo $$1) {
+      if (!$$0.a(cxs.uZ)) {
+         return $$0;
+      } else {
+         fbx $$2 = $$1.c(ezi.f);
+         if ($$2 != null) {
+            ash $$3 = $$1.d();
+            jh $$4 = $$3.a(this.h, jh.a((ka)$$2), this.k, this.l);
+            if ($$4 != null) {
+               cxo $$5 = cyb.a($$3, $$4.u(), $$4.w(), this.j, true, true);
+               cyb.a($$3, $$5);
+               evq.a($$5, $$4, "+", this.i);
+               return $$5;
+            }
+         }
+
+         return $$0;
       }
    }
 
-   protected static exu.a<?> a(Function<List<ezs>, exv> $$0) {
-      return new exu.b($$0);
+   public static exu.a c() {
+      return new exu.a();
    }
 
-   public abstract static class a<T extends exu.a<T>> implements exv.a, ezk<T> {
-      private final Builder<ezs> a = ImmutableList.builder();
+   public static class a extends eyb.a<exu.a> {
+      private ayk<eoj> a;
+      private jq<evl> b;
+      private byte c;
+      private int d;
+      private boolean e;
 
-      public T a(ezs.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
+      public a() {
+         this.a = exu.a;
+         this.b = exu.b;
+         this.c = 2;
+         this.d = 50;
+         this.e = true;
       }
 
-      public final T f() {
-         return this.c();
+      protected exu.a a() {
+         return this;
       }
 
-      protected abstract T c();
-
-      protected List<ezs> g() {
-         return this.a.build();
-      }
-   }
-
-   static final class b extends exu.a<exu.b> {
-      private final Function<List<ezs>, exv> a;
-
-      public b(Function<List<ezs>, exv> $$0) {
+      public exu.a a(ayk<eoj> $$0) {
          this.a = $$0;
+         return this;
       }
 
-      protected exu.b a() {
+      public exu.a a(jq<evl> $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public exu.a a(byte $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public exu.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public exu.a a(boolean $$0) {
+         this.e = $$0;
          return this;
       }
 
       @Override
-      public exv b() {
-         return this.a.apply(this.g());
+      public eyc b() {
+         return new exu(this.g(), this.a, this.b, this.c, this.d, this.e);
       }
    }
 }

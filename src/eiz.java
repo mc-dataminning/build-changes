@@ -1,6 +1,9 @@
-import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class eiz implements eis {
-   public static final Codec<eiz> a = Codec.unit(() -> eiz.b);
-   public static final eiz b = new eiz();
+public interface eiz {
+   ejg m = ejg.b;
+
+   default Stream<egh<?, ?>> e() {
+      return Stream.empty();
+   }
 }

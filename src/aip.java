@@ -1,5 +1,5 @@
-public record aip(int b, dde c, boolean d) implements aac<ahm> {
-   public static final zt<ws, aip> a = zt.a(zr.w, aip::b, dde.a, aip::e, zr.b, aip::f, aip::new);
+public record aip(int b, ddk c, boolean d) implements aac<ahm> {
+   public static final zt<ws, aip> a = zt.a(zr.w, aip::b, ddk.a, aip::e, zr.b, aip::f, aip::new);
 
    @Override
    public aae<aip> a() {
@@ -10,7 +10,7 @@ public record aip(int b, dde c, boolean d) implements aac<ahm> {
       $$0.a(this);
    }
 
-   public dde e() {
+   public ddk e() {
       return this.c;
    }
 

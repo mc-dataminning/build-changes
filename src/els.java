@@ -1,72 +1,83 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
+import org.apache.commons.lang3.mutable.Mutable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class els extends ely {
-   public static final MapCodec<els> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, els::new));
+public class els extends elt {
+   public static final MapCodec<els> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("leaves_probability").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("trunk_probability").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("ground_probability").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, els::new)
+   );
+   private final float b;
+   private final float c;
+   private final float d;
 
-   public els(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected elu<?> a() {
+      return elu.c;
+   }
+
+   public els(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   protected elz<?> a() {
-      return elz.e;
-   }
-
-   @Override
-   public List<eke.a> a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, int $$3, jh $$4, ejo $$5) {
-      List<eke.a> $$6 = Lists.newArrayList();
-      jh $$7 = $$4.e();
-      a($$0, $$1, $$2, $$7, $$5);
-      a($$0, $$1, $$2, $$7.i(), $$5);
-      a($$0, $$1, $$2, $$7.g(), $$5);
-      a($$0, $$1, $$2, $$7.g().i(), $$5);
-      jm $$8 = jm.c.a.a($$2);
-      int $$9 = $$3 - $$2.a(4);
-      int $$10 = 2 - $$2.a(3);
-      int $$11 = $$4.u();
-      int $$12 = $$4.v();
-      int $$13 = $$4.w();
-      int $$14 = $$11;
-      int $$15 = $$13;
-      int $$16 = $$12 + $$3 - 1;
-
-      for (int $$17 = 0; $$17 < $$3; $$17++) {
-         if ($$17 >= $$9 && $$10 > 0) {
-            $$14 += $$8.j();
-            $$15 += $$8.l();
-            $$10--;
-         }
-
-         int $$18 = $$12 + $$17;
-         jh $$19 = new jh($$14, $$18, $$15);
-         if (eia.b($$0, $$19)) {
-            this.b($$0, $$1, $$2, $$19, $$5);
-            this.b($$0, $$1, $$2, $$19.i(), $$5);
-            this.b($$0, $$1, $$2, $$19.g(), $$5);
-            this.b($$0, $$1, $$2, $$19.i().g(), $$5);
-         }
-      }
-
-      $$6.add(new eke.a(new jh($$14, $$16, $$15), 0, true));
-
-      for (int $$20 = -1; $$20 <= 2; $$20++) {
-         for (int $$21 = -1; $$21 <= 2; $$21++) {
-            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
-               int $$22 = $$2.a(3) + 2;
-
-               for (int $$23 = 0; $$23 < $$22; $$23++) {
-                  this.b($$0, $$1, $$2, new jh($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
-               }
-
-               $$6.add(new eke.a(new jh($$14 + $$20, $$16, $$15 + $$21), 0, false));
+   public void a(elt.a $$0) {
+      bam $$1 = $$0.b();
+      dif $$2 = (dif)$$0.a();
+      List<jh> $$3 = ae.a($$0.c(), $$1);
+      if (!$$3.isEmpty()) {
+         Mutable<jh> $$4 = new MutableObject($$3.getFirst());
+         $$3.forEach($$1x -> {
+            if ($$1x.v() < ((jh)$$4.getValue()).v()) {
+               $$4.setValue($$1x);
             }
+         });
+         jh $$5 = (jh)$$4.getValue();
+         if ($$1.i() < this.d) {
+            $$2.K_().a(mb.aL).flatMap($$0x -> $$0x.a(ss.D)).ifPresent($$3x -> ((egh)$$3x.a()).a($$2, $$2.a().m().g(), $$1, $$5.d()));
          }
+
+         $$0.c().forEach($$2x -> {
+            if ($$1.i() < this.c) {
+               jh $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+
+            if ($$1.i() < this.c) {
+               jh $$4x = $$2x.d();
+               if ($$0.a($$4x)) {
+                  dpl.a((dif)$$0.a(), $$4x, $$0.b(), 3);
+               }
+            }
+         });
+         $$0.d().forEach($$2x -> {
+            if ($$1.i() < this.b) {
+               jh $$3x = $$2x.e();
+               if ($$0.a($$3x)) {
+                  a($$3x, $$0);
+               }
+            }
+         });
+      }
+   }
+
+   private static void a(jh $$0, elt.a $$1) {
+      while ($$1.a($$0.e()) && !((double)$$1.b().i() < 0.5)) {
+         $$1.a($$0, dkn.tR.m().b(dod.b, Boolean.valueOf(false)));
+         $$0 = $$0.e();
       }
 
-      return $$6;
+      $$1.a($$0, dkn.tR.m().b(dod.b, Boolean.valueOf(true)));
    }
 }

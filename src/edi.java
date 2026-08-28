@@ -1,173 +1,105 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class edi {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<dxn> b = $$0 -> !$$0.l();
-   static final Predicate<dxn> c = dxm.a::d;
-   private final ayt d;
-   private final Predicate<dxn> e;
-   private final dzi f;
+public interface edi {
+   Codec<edi> b = edj.b;
+   Codec<jq<edi>> c = alv.a(mb.aM, b);
+   Codec<edi> d = c.xmap(edj.j::new, $$0 -> (jq)($$0 instanceof edj.j $$1 ? $$1.j() : new jq.a<>($$0)));
 
-   public edi(dzi $$0, edi.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = bae.e($$0.M_() + 1);
-      this.d = new bat($$2, 256);
+   double a(edi.b var1);
+
+   void a(double[] var1, edi.a var2);
+
+   edi a(edi.f var1);
+
+   double a();
+
+   double b();
+
+   azx<? extends edi> c();
+
+   default edi a(double $$0, double $$1) {
+      return new edj.g(this, $$0, $$1);
    }
 
-   public static void a(dzi $$0, Set<edi.a> $$1) {
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.size();
-         ObjectList<edi> $$3 = new ObjectArrayList($$2);
-         ObjectListIterator<edi> $$4 = $$3.iterator();
-         int $$5 = $$0.b() + 16;
-         jh.a $$6 = new jh.a();
+   default edi d() {
+      return edj.a(this, edj.k.a.a);
+   }
 
-         for (int $$7 = 0; $$7 < 16; $$7++) {
-            for (int $$8 = 0; $$8 < 16; $$8++) {
-               for (edi.a $$9 : $$1) {
-                  $$3.add($$0.a($$9));
-               }
+   default edi e() {
+      return edj.a(this, edj.k.a.b);
+   }
 
-               for (int $$10 = $$5 - 1; $$10 >= $$0.L_(); $$10--) {
-                  $$6.d($$7, $$10, $$8);
-                  dxn $$11 = $$0.a_($$6);
-                  if (!$$11.a(dkg.a)) {
-                     while ($$4.hasNext()) {
-                        edi $$12 = (edi)$$4.next();
-                        if ($$12.e.test($$11)) {
-                           $$12.a($$7, $$8, $$10 + 1);
-                           $$4.remove();
-                        }
-                     }
+   default edi f() {
+      return edj.a(this, edj.k.a.c);
+   }
 
-                     if ($$3.isEmpty()) {
-                        break;
-                     }
+   default edi g() {
+      return edj.a(this, edj.k.a.d);
+   }
 
-                     $$4.back($$2);
-                  }
-               }
-            }
-         }
+   default edi h() {
+      return edj.a(this, edj.k.a.e);
+   }
+
+   default edi i() {
+      return edj.a(this, edj.k.a.f);
+   }
+
+   public interface a {
+      edi.b a(int var1);
+
+      void a(double[] var1, edi var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default eer d() {
+         return eer.a();
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, dxn $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            jh.a $$5 = new jh.a();
+   public static record c(jq<esz.a> b, @Nullable esz c) {
+      public static final Codec<edi.c> a = esz.a.b.xmap($$0 -> new edi.c($$0, null), edi.c::b);
 
-            for (int $$6 = $$1 - 1; $$6 >= this.f.L_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
+      public c(jq<esz.a> $$0) {
+         this($$0, null);
+      }
 
-            this.a($$0, $$2, this.f.L_());
-            return true;
-         }
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
 
-         return false;
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
       }
    }
 
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
-
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.L_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.L_());
-   }
-
-   public void a(dzi $$0, edi.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements bba {
-      a("WORLD_SURFACE_WG", edi.b.a, edi.b),
-      b("WORLD_SURFACE", edi.b.c, edi.b),
-      c("OCEAN_FLOOR_WG", edi.b.a, edi.c),
-      d("OCEAN_FLOOR", edi.b.b, edi.c),
-      e("MOTION_BLOCKING", edi.b.c, $$0 -> $$0.d() || !$$0.y().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", edi.b.b, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof doq));
-
-      public static final Codec<edi.a> g = bba.a(edi.a::values);
-      private final String h;
-      private final edi.b i;
-      private final Predicate<dxn> j;
-
-      private a(final String $$0, final edi.b $$1, final Predicate<dxn> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == edi.b.c;
-      }
-
-      public boolean d() {
-         return this.i != edi.b.a;
-      }
-
-      public Predicate<dxn> e() {
-         return this.j;
+   public interface d extends edi {
+      @Override
+      default void a(double[] $$0, edi.a $$1) {
+         $$1.a($$0, this);
       }
 
       @Override
-      public String c() {
-         return this.h;
+      default edi a(edi.f $$0) {
+         return $$0.apply(this);
       }
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   public static record e(int a, int b, int c) implements edi.b {
+   }
+
+   public interface f {
+      edi apply(edi var1);
+
+      default edi.c a(edi.c $$0) {
+         return $$0;
+      }
    }
 }

@@ -1,68 +1,48 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-public class eyi extends exu {
+public class eyi extends eyb {
    public static final MapCodec<eyi> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.unboundedMap(ddr.c, fap.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
+            .and($$0.group(dun.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, eyi::new)
    );
-   private final Map<jq<ddr>, fao> b;
+   private final dun b;
    private final boolean c;
 
-   eyi(List<ezs> $$0, Map<jq<ddr>, fao> $$1, boolean $$2) {
+   eyi(List<ezx> $$0, dun $$1, boolean $$2) {
       super($$0);
-      this.b = Map.copyOf($$1);
+      this.b = $$1;
       this.c = $$2;
    }
 
    @Override
-   public exw<eyi> b() {
-      return exx.i;
-   }
-
-   @Override
-   public Set<eza<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cxk a(cxk $$0, ewh $$1) {
-      if ($$0.a(cxo.rn)) {
-         $$0 = $$0.a((dgz)cxo.vm);
+   protected cxo a(cxo $$0, ewo $$1) {
+      if (this.c) {
+         $$0.a(ku.ai, dun.a, this.b, ($$0x, $$1x) -> new dun.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(ku.ai, this.b);
       }
 
-      ddt.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jq<ddr>)$$2, bae.a($$1x.a((jq<ddr>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jq<ddr>)$$2, bae.a($$3.a($$1), 0, 255)));
-         }
-      });
       return $$0;
    }
 
-   public static class a extends exu.a<eyi.a> {
-      private final Builder<jq<ddr>, fao> a = ImmutableMap.builder();
+   @Override
+   public eyd<eyi> b() {
+      return eye.E;
+   }
+
+   public static eyi.a a(boolean $$0) {
+      return new eyi.a($$0);
+   }
+
+   public static class a extends eyb.a<eyi.a> {
+      private final dun.a a = new dun.a();
       private final boolean b;
 
-      public a() {
-         this(false);
-      }
-
-      public a(boolean $$0) {
+      a(boolean $$0) {
          this.b = $$0;
       }
 
@@ -70,14 +50,14 @@ public class eyi extends exu {
          return this;
       }
 
-      public eyi.a a(jq<ddr> $$0, fao $$1) {
-         this.a.put($$0, $$1);
-         return this;
+      @Override
+      public eyc b() {
+         return new eyi(this.g(), this.a.a(), this.b);
       }
 
-      @Override
-      public exv b() {
-         return new eyi(this.g(), this.a.build(), this.b);
+      public eyi.a a(jq<dum> $$0, cwl $$1) {
+         this.a.a($$0, $$1);
+         return this;
       }
    }
 }

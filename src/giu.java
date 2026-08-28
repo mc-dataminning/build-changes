@@ -1,40 +1,80 @@
-public class giu extends gjl {
-   private final gjg a;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   giu(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjg $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gip b() {
-      return gip.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(gjg a) implements gio<lu> {
-      public gil a(lu $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         giu $$8 = new giu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.A.a(12) + 8);
-         return $$8;
+public interface giu {
+   giu a = new giu() {
+      @Override
+      public fgl a(fgs $$0, hbk $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gkt.c);
+         RenderSystem.setShaderTexture(0, hbi.d);
+         return $$0.a(fgv.c.h, fgo.d);
       }
-   }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   giu b = new giu() {
+      @Override
+      public fgl a(fgs $$0, hbk $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gkt.c);
+         RenderSystem.setShaderTexture(0, hbi.e);
+         return $$0.a(fgv.c.h, fgo.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   giu c = new giu() {
+      @Override
+      public fgl a(fgs $$0, hbk $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(gkt.c);
+         RenderSystem.setShaderTexture(0, hbi.e);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         return $$0.a(fgv.c.h, fgo.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   giu d = new giu() {
+      @Override
+      public fgl a(fgs $$0, hbk $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+         return $$0.a(fgv.c.h, fgo.d);
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   giu e = new giu() {
+      @Nullable
+      @Override
+      public fgl a(fgs $$0, hbk $$1) {
+         return null;
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   @Nullable
+   fgl a(fgs var1, hbk var2);
 }

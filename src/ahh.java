@@ -1,14 +1,14 @@
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record ahh(jq<ebi> a, aly<dha> b, long c, dgx d, @Nullable dgx e, boolean f, boolean g, Optional<jp> h, int i, int j) {
+public record ahh(jq<ebp> a, aly<dhh> b, long c, dhe d, @Nullable dhe e, boolean f, boolean g, Optional<jp> h, int i, int j) {
    public ahh(xg $$0) {
       this(
-         ebi.i.decode($$0),
-         $$0.a(mb.bd),
+         ebp.i.decode($$0),
+         $$0.a(mb.be),
          $$0.readLong(),
-         dgx.a($$0.readByte()),
-         dgx.b($$0.readByte()),
+         dhe.a($$0.readByte()),
+         dhe.b($$0.readByte()),
          $$0.readBoolean(),
          $$0.readBoolean(),
          $$0.b(ws::h),
@@ -18,11 +18,11 @@ public record ahh(jq<ebi> a, aly<dha> b, long c, dgx d, @Nullable dgx e, boolean
    }
 
    public void a(xg $$0) {
-      ebi.i.encode($$0, this.a);
+      ebp.i.encode($$0, this.a);
       $$0.b(this.b);
       $$0.b(this.c);
       $$0.l(this.d.a());
-      $$0.l(dgx.a(this.e));
+      $$0.l(dhe.a(this.e));
       $$0.a(this.f);
       $$0.a(this.g);
       $$0.a(this.h, ws::a);

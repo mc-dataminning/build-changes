@@ -1,49 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public record elb(ekt b, List<elb.a> c) {
-   public static final Codec<elb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ekt.a.fieldOf("fallback").forGetter(elb::a), elb.a.a.listOf().fieldOf("rules").forGetter(elb::b)).apply($$0, elb::new)
-   );
+public class elb<P extends ela> {
+   public static final elb<elj> a = a("simple_state_provider", elj.b);
+   public static final elb<elk> b = a("weighted_state_provider", elk.b);
+   public static final elb<elf> c = a("noise_threshold_provider", elf.b);
+   public static final elb<ele> d = a("noise_provider", ele.g);
+   public static final elb<elc> e = a("dual_noise_provider", elc.b);
+   public static final elb<elh> f = a("rotated_block_provider", elh.b);
+   public static final elb<elg> g = a("randomized_int_state_provider", elg.b);
+   private final MapCodec<P> h;
 
-   public static elb a(ekt $$0) {
-      return new elb($$0, List.of());
+   private static <P extends ela> elb<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.T, $$0, new elb<>($$1));
    }
 
-   public static elb a(dke $$0) {
-      return a(ekt.a($$0));
+   private elb(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   public dxn a(dhy $$0, bam $$1, jh $$2) {
-      for (elb.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public ekt a() {
-      return this.b;
-   }
-
-   public List<elb.a> b() {
-      return this.c;
-   }
-
-   public static record a(eep b, ekt c) {
-      public static final Codec<elb.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eep.b.fieldOf("if_true").forGetter(elb.a::a), ekt.a.fieldOf("then").forGetter(elb.a::b)).apply($$0, elb.a::new)
-      );
-
-      public eep a() {
-         return this.b;
-      }
-
-      public ekt b() {
-         return this.c;
-      }
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

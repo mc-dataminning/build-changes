@@ -1,32 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record dae(Optional<jp> c, boolean d) {
-   public static final Codec<dae> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jp.b.optionalFieldOf("target").forGetter(dae::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(dae::b)).apply($$0, dae::new)
+public record dae(int d, List<dad> e) implements dar {
+   public static final int a = 256;
+   public static final Codec<dae> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               azn.k.optionalFieldOf("flight_duration", 0).forGetter(dae::a),
+               dad.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(dae::b)
+            )
+            .apply($$0, dae::new)
    );
-   public static final zt<ByteBuf, dae> b = zt.a(jp.c.a(zr::a), dae::a, zr.b, dae::b, dae::new);
+   public static final zt<ByteBuf, dae> c = zt.a(zr.h, dae::a, dad.d.a(zr.c(256)), dae::b, dae::new);
 
-   public dae a(ash $$0) {
-      if (this.d && !this.c.isEmpty()) {
-         if (this.c.get().a() != $$0.ah()) {
-            return this;
-         } else {
-            jh $$1 = this.c.get().b();
-            return $$0.k($$1) && $$0.z().a(chj.s, $$1) ? this : new dae(Optional.empty(), true);
-         }
+   public dae(int d, List<dad> e) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
       } else {
-         return this;
+         this.d = d;
+         this.e = e;
       }
    }
 
-   public Optional<jp> a() {
-      return this.c;
+   @Override
+   public void a(cxk.b $$0, Consumer<xv> $$1, czg $$2) {
+      if (this.d > 0) {
+         $$1.accept(xv.c("item.minecraft.firework_rocket.flight").b(xu.v).f(String.valueOf(this.d)).a(n.h));
+      }
+
+      for (dad $$3 : this.e) {
+         $$3.a($$1);
+         $$3.b($$1x -> $$1.accept(xv.b("  ").b($$1x)));
+      }
    }
 
-   public boolean b() {
+   public int a() {
       return this.d;
+   }
+
+   public List<dad> b() {
+      return this.e;
    }
 }

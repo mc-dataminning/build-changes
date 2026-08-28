@@ -8,7 +8,7 @@ public class co extends dy<co.a> {
       return co.a.a;
    }
 
-   public void a(asi $$0, cxk $$1, int $$2) {
+   public void a(asi $$0, cxo $$1, int $$2) {
       this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
@@ -31,7 +31,7 @@ public class co extends dy<co.a> {
          return ao.u.a(new co.a($$0, $$1, $$2, dj.d.c));
       }
 
-      public boolean a(cxk $$0, int $$1) {
+      public boolean a(cxo $$0, int $$1) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else {

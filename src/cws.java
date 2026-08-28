@@ -1,15 +1,18 @@
-import java.util.List;
-
-public class cws extends cxg {
-   public cws(cxg.a $$0) {
+public class cws extends cxk {
+   public cws(cxk.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cxk $$0, cxg.b $$1, List<xv> $$2, czc $$3) {
-      czz $$4 = $$0.a(ku.ae);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
+   public bti a(dhh $$0, cpw $$1, bth $$2) {
+      cxo $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), axf.iN, axg.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof ash $$4) {
+         cqp.a(cqz::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
+
+      $$1.b(axp.c.b(this));
+      $$3.a(1, $$1);
+      return bti.a;
    }
 }

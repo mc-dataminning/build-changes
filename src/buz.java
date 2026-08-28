@@ -1,6 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface buz {
-   @Nullable
-   bwb am();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface buz {
 }

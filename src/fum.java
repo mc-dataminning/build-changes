@@ -1,13 +1,41 @@
 import java.util.List;
 
-public class fum extends fuh<ctd> {
-   private static final alz G = alz.b("container/blast_furnace/lit_progress");
-   private static final alz H = alz.b("container/blast_furnace/burn_progress");
-   private static final alz I = alz.b("textures/gui/container/blast_furnace.png");
-   private static final xv J = xv.c("gui.recipebook.toggleRecipes.blastable");
-   private static final List<fxo.a> K = List.of(new fxo.a(fxu.c), new fxo.a(cxo.au, dbi.h), new fxo.a(cxo.py, cxo.qm, dbi.i));
+public abstract class fum<T extends ctd> extends fun<T> {
+   private final alz G;
+   private final alz H;
+   private final alz I;
 
-   public fum(ctd $$0, cpr $$1, xv $$2) {
-      super($$0, $$1, $$2, J, I, G, H, K);
+   public fum(T $$0, cpv $$1, xv $$2, xv $$3, alz $$4, alz $$5, alz $$6, List<fxt.a> $$7) {
+      super($$0, new fxq($$0, $$3, $$7), $$1, $$2);
+      this.G = $$4;
+      this.H = $$5;
+      this.I = $$6;
+   }
+
+   @Override
+   public void aT_() {
+      super.aT_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
+   }
+
+   @Override
+   protected fsk G() {
+      return new fsk(this.C + 20, this.o / 2 - 49);
+   }
+
+   @Override
+   protected void a(fnq $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(glt::B, this.G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      if (this.z.o()) {
+         int $$6 = 14;
+         int $$7 = bae.f(this.z.n() * 13.0F) + 1;
+         $$0.a(glt::B, this.H, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
+      }
+
+      int $$8 = 24;
+      int $$9 = bae.f(this.z.m() * 24.0F);
+      $$0.a(glt::B, this.I, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
    }
 }

@@ -1,20 +1,12 @@
-public class guz extends gvy<gxe, gar> {
-   private static final alz a = alz.b("textures/entity/cat/cat_collar.png");
-   private final gar b;
-   private final gar c;
+public class guz<M extends gcp> extends gwl<M> {
+   private static final alz a = alz.b("textures/entity/bee/bee_stinger.png");
 
-   public guz(gtg<gxe, gar> $$0, ged $$1) {
-      super($$0);
-      this.b = new gar($$1.a(geg.O));
-      this.c = new gar($$1.a(geg.N));
+   public guz(gsp<?, gze, M> $$0, gro.a $$1) {
+      super($$0, new gao($$1.a(gel.w)), a, gwl.a.b);
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, gxe $$3, float $$4, float $$5) {
-      cwh $$6 = $$3.c;
-      if ($$6 != null) {
-         int $$7 = $$6.d();
-         gar $$8 = $$3.ae ? this.c : this.b;
-         a($$8, a, $$0, $$1, $$2, $$3, $$7);
-      }
+   @Override
+   protected int a(gze $$0) {
+      return $$0.f;
    }
 }

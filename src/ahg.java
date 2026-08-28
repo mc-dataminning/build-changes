@@ -1,8 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public record ahg(Map<aly<dch>, dch> b, dcl.b<dcy> c) implements aac<acr> {
-   public static final zt<xg, ahg> a = zt.a(zr.a(HashMap::new, aly.b(dch.a), dch.i), ahg::b, dcl.b.b(), ahg::e, ahg::new);
+public record ahg(Map<aly<dcm>, dcm> b, dcq.b<ddd> c) implements aac<acr> {
+   public static final zt<xg, ahg> a = zt.a(zr.a(HashMap::new, aly.b(dcm.a), dcm.i), ahg::b, dcq.b.b(), ahg::e, ahg::new);
 
    @Override
    public aae<ahg> a() {
@@ -13,7 +13,7 @@ public record ahg(Map<aly<dch>, dch> b, dcl.b<dcy> c) implements aac<acr> {
       $$0.a(this);
    }
 
-   public dcl.b<dcy> e() {
+   public dcq.b<ddd> e() {
       return this.c;
    }
 }

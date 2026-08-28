@@ -1,42 +1,46 @@
-import java.util.Optional;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public record evd(jq<eve> b, byte c, byte d, byte e, Optional<xv> f) {
-   public static final zt<xg, evd> a = zt.a(eve.c, evd::c, zr.c, evd::d, zr.c, evd::e, zr.c, evd::f, xx.c, evd::g, evd::new);
+public interface evd {
+   jm[] a = new jm[]{jm.e, jm.f, jm.a, jm.b, jm.c, jm.d};
 
-   public evd(jq<eve> b, byte c, byte d, byte e, Optional<xv> f) {
-      e = (byte)(e & 15);
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
-      this.f = f;
+   void a(jm var1, dxu var2, jh var3, jh var4, int var5, int var6);
+
+   void a(jh var1, dkl var2, @Nullable eve var3);
+
+   void a(dxu var1, jh var2, dkl var3, @Nullable eve var4, boolean var5);
+
+   default void a(jh $$0, dkl $$1, @Nullable jm $$2, @Nullable eve $$3) {
+      for (jm $$4 : a) {
+         if ($$4 != $$2) {
+            this.a($$0.a($$4), $$1, null);
+         }
+      }
    }
 
-   public alz a() {
-      return this.b.a().b();
+   static void a(dhi $$0, jm $$1, jh $$2, jh $$3, dxu $$4, int $$5, int $$6) {
+      dxu $$7 = $$0.a_($$2);
+      if (($$5 & 128) == 0 || !$$7.a(dkn.cE)) {
+         dxu $$8 = $$7.a($$0, $$0, $$2, $$1, $$3, $$4, $$0.H_());
+         dkl.a($$7, $$8, $$0, $$2, $$5, $$6);
+      }
    }
 
-   public boolean b() {
-      return this.b.a().c();
-   }
-
-   public jq<eve> c() {
-      return this.b;
-   }
-
-   public byte d() {
-      return this.c;
-   }
-
-   public byte e() {
-      return this.d;
-   }
-
-   public byte f() {
-      return this.e;
-   }
-
-   public Optional<xv> g() {
-      return this.f;
+   static void a(dhh $$0, dxu $$1, jh $$2, dkl $$3, @Nullable eve $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", ma.e.b($$3), $$3.v(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + ma.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new z($$7);
+      }
    }
 }

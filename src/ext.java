@@ -1,199 +1,95 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public interface ext {
-   MapCodec<ext> a = a(Integer.MAX_VALUE);
+public class ext extends eyb {
+   public static final int a = 0;
+   public static final MapCodec<ext> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ddy.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
+                  fau.a.fieldOf("count").forGetter($$0x -> $$0x.d),
+                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
+               )
+            )
+            .apply($$0, ext::new)
+   );
+   private final jq<ddy> c;
+   private final fat d;
+   private final int e;
 
-   static MapCodec<ext> a(int $$0) {
-      return ext.f.e.dispatchMap("mode", ext::a, $$0x -> $$0x.g).validate($$1 -> {
-         if ($$1 instanceof ext.d $$2 && $$2.c().isPresent()) {
-            int $$3 = $$2.c().get();
-            if ($$3 > $$0) {
-               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
-            }
+   ext(List<ezx> $$0, jq<ddy> $$1, fat $$2, int $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   @Override
+   public eyd<ext> b() {
+      return eye.m;
+   }
+
+   @Override
+   public Set<bbn<?>> a() {
+      return Sets.union(ImmutableSet.of(ezi.d), this.d.a());
+   }
+
+   private boolean c() {
+      return this.e > 0;
+   }
+
+   @Override
+   public cxo a(cxo $$0, ewo $$1) {
+      bvj $$2 = $$1.c(ezi.d);
+      if ($$2 instanceof bwf $$3) {
+         int $$4 = dea.a(this.c, $$3);
+         if ($$4 == 0) {
+            return $$0;
          }
 
-         return DataResult.success($$1);
-      });
-   }
-
-   ext.f a();
-
-   default <T> List<T> a(List<T> $$0, List<T> $$1) {
-      return this.a($$0, $$1, Integer.MAX_VALUE);
-   }
-
-   <T> List<T> a(List<T> var1, List<T> var2, int var3);
-
-   public static class a implements ext {
-      private static final Logger d = LogUtils.getLogger();
-      public static final ext.a b = new ext.a();
-      public static final MapCodec<ext.a> c = MapCodec.unit(() -> b);
-
-      private a() {
-      }
-
-      @Override
-      public ext.f a() {
-         return ext.f.d;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         if ($$0.size() + $$1.size() > $$2) {
-            d.error("Contents overflow in section append");
-            return $$0;
-         } else {
-            return Stream.concat($$0.stream(), $$1.stream()).toList();
-         }
-      }
-   }
-
-   public static record b(int c) implements ext {
-      private static final Logger d = LogUtils.getLogger();
-      public static final MapCodec<ext.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(azn.l.optionalFieldOf("offset", 0).forGetter(ext.b::b)).apply($$0, ext.b::new)
-      );
-
-      @Override
-      public ext.f a() {
-         return ext.f.c;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            d.error("Cannot insert when offset is out of bounds");
-            return $$0;
-         } else if ($$3 + $$1.size() > $$2) {
-            d.error("Contents overflow in section insertion");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            $$4.addAll($$0.subList(this.c, $$3));
-            return $$4.build();
+         float $$5 = (float)$$4 * this.d.b($$1);
+         $$0.g(Math.round($$5));
+         if (this.c()) {
+            $$0.f(this.e);
          }
       }
 
-      public int b() {
-         return this.c;
-      }
+      return $$0;
    }
 
-   public static class c implements ext {
-      public static final ext.c b = new ext.c();
-      public static final MapCodec<ext.c> c = MapCodec.unit(() -> b);
-
-      private c() {
-      }
-
-      @Override
-      public ext.f a() {
-         return ext.f.a;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         return $$1;
-      }
+   public static ext.a a(js.a $$0, fat $$1) {
+      js.b<ddy> $$2 = $$0.d(mb.aO);
+      return new ext.a($$2.b(ded.s), $$1);
    }
 
-   public static record d(int c, Optional<Integer> d) implements ext {
-      private static final Logger e = LogUtils.getLogger();
-      public static final MapCodec<ext.d> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(azn.l.optionalFieldOf("offset", 0).forGetter(ext.d::b), azn.l.optionalFieldOf("size").forGetter(ext.d::c)).apply($$0, ext.d::new)
-      );
+   public static class a extends eyb.a<ext.a> {
+      private final jq<ddy> a;
+      private final fat b;
+      private int c = 0;
 
-      public d(int $$0) {
-         this($$0, Optional.empty());
+      public a(jq<ddy> $$0, fat $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      protected ext.a a() {
+         return this;
+      }
+
+      public ext.a a(int $$0) {
+         this.c = $$0;
+         return this;
       }
 
       @Override
-      public ext.f a() {
-         return ext.f.b;
-      }
-
-      @Override
-      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
-         int $$3 = $$0.size();
-         if (this.c > $$3) {
-            e.error("Cannot replace when offset is out of bounds");
-            return $$0;
-         } else {
-            Builder<T> $$4 = ImmutableList.builder();
-            $$4.addAll($$0.subList(0, this.c));
-            $$4.addAll($$1);
-            int $$5 = this.c + this.d.orElse($$1.size());
-            if ($$5 < $$3) {
-               $$4.addAll($$0.subList($$5, $$3));
-            }
-
-            List<T> $$6 = $$4.build();
-            if ($$6.size() > $$2) {
-               e.error("Contents overflow in section replacement");
-               return $$0;
-            } else {
-               return $$6;
-            }
-         }
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public Optional<Integer> c() {
-         return this.d;
-      }
-   }
-
-   public static record e<T>(List<T> a, ext b) {
-      public static <T> Codec<ext.e<T>> a(Codec<T> $$0, int $$1) {
-         return RecordCodecBuilder.create(
-            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), ext.a($$1).forGetter($$0xx -> $$0xx.b))
-                  .apply($$2, ext.e::new)
-         );
-      }
-
-      public List<T> a(List<T> $$0) {
-         return this.b.a($$0, this.a);
-      }
-   }
-
-   public static enum f implements bba {
-      a("replace_all", ext.c.c),
-      b("replace_section", ext.d.b),
-      c("insert", ext.b.b),
-      d("append", ext.a.c);
-
-      public static final Codec<ext.f> e = bba.a(ext.f::values);
-      private final String f;
-      final MapCodec<? extends ext> g;
-
-      private f(final String $$0, final MapCodec<? extends ext> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public MapCodec<? extends ext> a() {
-         return this.g;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
+      public eyc b() {
+         return new ext(this.g(), this.a, this.b, this.c);
       }
    }
 }

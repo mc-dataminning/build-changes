@@ -1,61 +1,72 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
+import java.util.EnumSet;
 import java.util.function.Predicate;
 
-public class ccv extends ccz {
-   private static final int a = 200;
-   private final chq b;
-   private int c;
-   private int d;
+public class ccv extends cdd {
+   private static final int a = 40;
+   private static final Predicate<dxu> b = dyd.a(dkn.bA);
+   private final bwh c;
+   private final dhh d;
+   private int e;
 
-   public ccv(chq $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(chq $$0) {
-      return b(200 + $$0.dY().a(200) % 20);
+   public ccv(bwh $$0) {
+      this.c = $$0;
+      this.d = $$0.dV();
+      this.a(EnumSet.of(cdd.a.a, cdd.a.b, cdd.a.c));
    }
 
    @Override
    public boolean b() {
-      if (this.b.gr()) {
-         return false;
-      } else if (this.b.go()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
+      if (this.c.dY().a(this.c.e_() ? 50 : 1000) != 0) {
          return false;
       } else {
-         this.d = this.a(this.b);
-         Predicate<chq> $$0 = $$0x -> $$0x.gq() || !$$0x.go();
-         List<? extends chq> $$1 = this.b.dV().a((Class<? extends chq>)this.b.getClass(), this.b.cR().c(8.0, 8.0, 8.0), $$0);
-         chq $$2 = (chq)DataFixUtils.orElse($$1.stream().filter(chq::gq).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.go()));
-         return this.b.go();
+         jh $$0 = this.c.dv();
+         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.e()).a(dkn.i);
       }
    }
 
    @Override
-   public boolean c() {
-      return this.b.go() && this.b.gs();
-   }
-
-   @Override
    public void d() {
-      this.c = 0;
+      this.e = this.a(40);
+      this.d.a(this.c, (byte)10);
+      this.c.L().o();
    }
 
    @Override
    public void e() {
-      this.b.gp();
+      this.e = 0;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e > 0;
+   }
+
+   public int h() {
+      return this.e;
    }
 
    @Override
    public void a() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gt();
+      this.e = Math.max(0, this.e - 1);
+      if (this.e == this.a(4)) {
+         jh $$0 = this.c.dv();
+         if (b.test(this.d.a_($$0))) {
+            if (a(this.d).N().b(dhd.c)) {
+               this.d.b($$0, false);
+            }
+
+            this.c.P();
+         } else {
+            jh $$1 = $$0.e();
+            if (this.d.a_($$1).a(dkn.i)) {
+               if (a(this.d).N().b(dhd.c)) {
+                  this.d.c(2001, $$1, dkl.j(dkn.i.m()));
+                  this.d.a($$1, dkn.j.m(), 2);
+               }
+
+               this.c.P();
+            }
+         }
       }
    }
 }

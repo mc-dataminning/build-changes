@@ -1,159 +1,146 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public class dxo<O, S extends dxp<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dyp<?>> c;
-   private final ImmutableList<S> d;
+public class dxo extends dmq {
+   public static final MapCodec<dxo> b = b(dxo::new);
+   public static final dyr<dyv> c = dyk.bh;
+   public static final dyl d = dyk.y;
+   public static final float e = 4.0F;
+   protected static final fcr f = dkl.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final fcr g = dkl.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final fcr h = dkl.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final fcr i = dkl.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final fcr j = dkl.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final fcr k = dkl.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final fcr o = dkl.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final fcr G = dkl.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final fcr H = dkl.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final fcr I = dkl.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final fcr J = dkl.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final fcr K = dkl.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final fcr L = dkl.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final fcr M = dkl.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final fcr N = dkl.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final fcr O = dkl.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final fcr P = dkl.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final fcr Q = dkl.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final fcr[] R = a(true);
+   private static final fcr[] S = a(false);
 
-   protected dxo(Function<O, S> $$0, O $$1, dxo.b<O, S> $$2, Map<String, dyp<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+   @Override
+   protected MapCodec<dxo> a() {
+      return b;
+   }
 
-      while ($$7.hasNext()) {
-         Entry<String, dyp<?>> $$6 = (Entry<String, dyp<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+   private static fcr[] a(boolean $$0) {
+      return Arrays.stream(jm.values()).map($$1 -> a($$1, $$0)).toArray(fcr[]::new);
+   }
+
+   private static fcr a(jm $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return fco.a(k, $$1 ? M : G);
+         case b:
+            return fco.a(j, $$1 ? L : o);
+         case c:
+            return fco.a(i, $$1 ? O : I);
+         case d:
+            return fco.a(h, $$1 ? N : H);
+         case e:
+            return fco.a(g, $$1 ? Q : K);
+         case f:
+            return fco.a(f, $$1 ? P : J);
       }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dyp<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dyp<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dyp<?> $$11 = (dyp<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dyp<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         Reference2ObjectArrayMap<dyp<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
-
-         for (Pair<dyp<?>, Comparable<?>> $$7xx : $$5x) {
-            $$6.put((dyp)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
-         }
-
-         S $$8x = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$8x);
-         $$9.add($$8x);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
    }
 
-   private static <S extends dxp<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dyp<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dxp)((dxp)$$1x.getFirst()).b($$3, ((dyp.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dyp<?>> d() {
-      return this.c.values();
+   public dxo(dxt.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(a, jm.c).b(c, dyv.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dyp::f).collect(Collectors.toList()))
-         .toString();
+   protected boolean g_(dxu $$0) {
+      return true;
    }
 
-   @Nullable
-   public dyp<?> a(String $$0) {
-      return (dyp<?>)this.c.get($$0);
+   @Override
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return ($$0.c(d) ? R : S)[$$0.c(a).ordinal()];
    }
 
-   public static class a<O, S extends dxp<O, S>> {
-      private final O a;
-      private final Map<String, dyp<?>> b = Maps.newHashMap();
+   private boolean a(dxu $$0, dxu $$1) {
+      dkl $$2 = $$0.c(c) == dyv.a ? dkn.bF : dkn.by;
+      return $$1.a($$2) && $$1.c(dxn.c) && $$1.c(a) == $$0.c(a);
+   }
 
-      public a(O $$0) {
-         this.a = $$0;
-      }
-
-      public dxo.a<O, S> a(dyp<?>... $$0) {
-         for (dyp<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
-         }
-
-         return this;
-      }
-
-      private <T extends Comparable<T>> void a(dyp<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dxo.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.b($$3);
-                  if (!dxo.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
-
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
-               }
-            }
+   @Override
+   public dxu a(dhh $$0, jh $$1, dxu $$2, cpw $$3) {
+      if (!$$0.C && $$3.gh().d) {
+         jh $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
          }
       }
 
-      public dxo<O, S> a(Function<O, S> $$0, dxo.b<O, S> $$1) {
-         return new dxo<>($$0, this.a, $$1, this.b);
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         jh $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
+         }
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, Reference2ObjectArrayMap<dyp<?>, Comparable<?>> var2, MapCodec<S> var3);
+   @Override
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      return $$4.g() == $$0.c(a) && !$$0.a($$1, $$3) ? dkn.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      dxu $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(dkn.bX) && $$3.c(a) == $$0.c(a);
+   }
+
+   @Override
+   protected void a(dxu $$0, dhh $$1, jh $$2, dkl $$3, @Nullable eve $$4, boolean $$5) {
+      if ($$0.a((dhk)$$1, $$2)) {
+         $$1.b($$2.a($$0.c(a).g()), $$3, eva.a($$4, $$0.c(a).g()));
+      }
+   }
+
+   @Override
+   public cxo a(dhk $$0, jh $$1, dxu $$2) {
+      return new cxo($$2.c(c) == dyv.b ? dkn.by : dkn.bF);
+   }
+
+   @Override
+   protected dxu a(dxu $$0, drb $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dxu a(dxu $$0, dpk $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(a, c, d);
+   }
+
+   @Override
+   protected boolean a(dxu $$0, eul $$1) {
+      return false;
    }
 }

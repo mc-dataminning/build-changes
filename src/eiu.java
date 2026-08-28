@@ -1,22 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiu implements eis {
-   public static final Codec<eiu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ekt.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               ekt.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eiu::new)
-   );
-   public final ekt b;
-   public final ekt c;
-   public final int d;
+public class eiu implements eiz {
+   public static final Codec<eiu> a = bsn.b(0, 256).fieldOf("count").xmap(eiu::new, eiu::a).codec();
+   private final bsn b;
 
-   public eiu(ekt $$0, ekt $$1, int $$2) {
+   public eiu(int $$0) {
+      this.b = bsk.a($$0);
+   }
+
+   public eiu(bsn $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   public bsn a() {
+      return this.b;
    }
 }

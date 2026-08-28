@@ -1,17 +1,29 @@
-public class gtt extends gqb<cne, gzj> {
-   private static final alz a = alz.b("textures/entity/skeleton/stray.png");
-   private static final alz b = alz.b("textures/entity/skeleton/stray_overlay.png");
+public class gtt extends gqi<ckn, gzq, gdj> {
+   private static final alz a = alz.b("textures/entity/sniffer/sniffer.png");
 
-   public gtt(grj.a $$0) {
-      super($$0, geg.cW, geg.cX, geg.cY);
-      this.a(new gwb<>(this, $$0.f(), geg.cZ, b));
+   public gtt(gro.a $$0) {
+      super($$0, new gdj($$0.a(gel.cN)), new gdj($$0.a(gel.cO)), 1.1F);
    }
 
-   public alz b(gzj $$0) {
+   public alz a(gzq $$0) {
       return a;
    }
 
-   public gzj b() {
-      return new gzj();
+   public gzq b() {
+      return new gzq();
+   }
+
+   public void a(ckn $$0, gzq $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
+      $$1.b.a($$0.cd);
+      $$1.c.a($$0.cb);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.bZ);
+      $$1.f.a($$0.ca);
+   }
+
+   protected fbs a(ckn $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

@@ -1,46 +1,78 @@
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-
 public interface dfl {
-   alz a = alz.b("leather");
-   alz b = alz.b("chainmail");
-   alz c = alz.b("iron");
-   alz d = alz.b("gold");
-   alz e = alz.b("diamond");
-   alz f = alz.b("turtle_scute");
-   alz g = alz.b("netherite");
-   alz h = alz.b("armadillo_scute");
-   alz i = alz.b("elytra");
-   Map<cwh, alz> j = ae.a(cwh.class, $$0 -> alz.b($$0.c() + "_carpet"));
-   alz k = alz.b("trader_llama");
+   aly<dfg> a = dfm.a("trades/desert_armorer_boots_4");
+   aly<dfg> b = dfm.a("trades/desert_armorer_leggings_4");
+   aly<dfg> c = dfm.a("trades/desert_armorer_chestplate_4");
+   aly<dfg> d = dfm.a("trades/desert_armorer_helmet_4");
+   aly<dfg> e = dfm.a("trades/desert_armorer_leggings_5");
+   aly<dfg> f = dfm.a("trades/desert_armorer_chestplate_5");
+   aly<dfg> g = dfm.a("trades/plains_armorer_boots_4");
+   aly<dfg> h = dfm.a("trades/plains_armorer_leggings_4");
+   aly<dfg> i = dfm.a("trades/plains_armorer_chestplate_4");
+   aly<dfg> j = dfm.a("trades/plains_armorer_helmet_4");
+   aly<dfg> k = dfm.a("trades/plains_armorer_boots_5");
+   aly<dfg> l = dfm.a("trades/plains_armorer_leggings_5");
+   aly<dfg> m = dfm.a("trades/savanna_armorer_boots_4");
+   aly<dfg> n = dfm.a("trades/savanna_armorer_leggings_4");
+   aly<dfg> o = dfm.a("trades/savanna_armorer_chestplate_4");
+   aly<dfg> p = dfm.a("trades/savanna_armorer_helmet_4");
+   aly<dfg> q = dfm.a("trades/savanna_armorer_chestplate_5");
+   aly<dfg> r = dfm.a("trades/savanna_armorer_helmet_5");
+   aly<dfg> s = dfm.a("trades/snow_armorer_boots_4");
+   aly<dfg> t = dfm.a("trades/snow_armorer_helmet_4");
+   aly<dfg> u = dfm.a("trades/snow_armorer_boots_5");
+   aly<dfg> v = dfm.a("trades/snow_armorer_helmet_5");
+   aly<dfg> w = dfm.a("trades/jungle_armorer_boots_4");
+   aly<dfg> x = dfm.a("trades/jungle_armorer_leggings_4");
+   aly<dfg> y = dfm.a("trades/jungle_armorer_chestplate_4");
+   aly<dfg> z = dfm.a("trades/jungle_armorer_helmet_4");
+   aly<dfg> A = dfm.a("trades/jungle_armorer_boots_5");
+   aly<dfg> B = dfm.a("trades/jungle_armorer_helmet_5");
+   aly<dfg> C = dfm.a("trades/swamp_armorer_boots_4");
+   aly<dfg> D = dfm.a("trades/swamp_armorer_leggings_4");
+   aly<dfg> E = dfm.a("trades/swamp_armorer_chestplate_4");
+   aly<dfg> F = dfm.a("trades/swamp_armorer_helmet_4");
+   aly<dfg> G = dfm.a("trades/swamp_armorer_boots_5");
+   aly<dfg> H = dfm.a("trades/swamp_armorer_helmet_5");
+   aly<dfg> I = dfm.a("trades/taiga_armorer_leggings_5");
+   aly<dfg> J = dfm.a("trades/taiga_armorer_chestplate_5");
 
-   static void a(BiConsumer<alz, dfk> $$0) {
-      $$0.accept(a, dfk.a().a(alz.b("leather"), true).a(alz.b("leather_overlay"), false).a(dfk.d.e, dfk.c.a(alz.b("leather"), true)).a());
-      $$0.accept(b, a("chainmail"));
-      $$0.accept(c, b("iron"));
-      $$0.accept(d, b("gold"));
-      $$0.accept(e, b("diamond"));
-      $$0.accept(f, dfk.a().b(alz.b("turtle_scute"), false).a());
-      $$0.accept(g, a("netherite"));
-      $$0.accept(h, dfk.a().a(dfk.d.d, dfk.c.b(alz.b("armadillo_scute"), false)).a(dfk.d.d, dfk.c.b(alz.b("armadillo_scute_overlay"), true)).a());
-      $$0.accept(i, dfk.a().a(dfk.d.c, new dfk.c(alz.b("elytra"), Optional.empty(), true)).a());
-
-      for (Entry<cwh, alz> $$1 : j.entrySet()) {
-         cwh $$2 = $$1.getKey();
-         alz $$3 = $$1.getValue();
-         $$0.accept($$3, dfk.a().a(dfk.d.f, new dfk.c(alz.b($$2.c()))).a());
-      }
-
-      $$0.accept(k, dfk.a().a(dfk.d.f, new dfk.c(alz.b("trader_llama"))).a());
-   }
-
-   private static dfk a(String $$0) {
-      return dfk.a().a(alz.b($$0)).a();
-   }
-
-   private static dfk b(String $$0) {
-      return dfk.a().a(alz.b($$0)).a(dfk.d.e, dfk.c.a(alz.b($$0), false)).a();
+   static void a(rk<dfg> $$0) {
+      jr<ddy> $$1 = $$0.a(mb.aO);
+      $$0.a(a, new dfk($$1.b(ded.h), bsk.a(1)));
+      $$0.a(b, new dfk($$1.b(ded.h), bsk.a(1)));
+      $$0.a(c, new dfk($$1.b(ded.h), bsk.a(1)));
+      $$0.a(d, new dfk($$1.b(ded.h), bsk.a(1)));
+      $$0.a(e, new dfk($$1.b(ded.h), bsk.a(1)));
+      $$0.a(f, new dfk($$1.b(ded.h), bsk.a(1)));
+      $$0.a(g, new dfk($$1.b(ded.a), bsk.a(1)));
+      $$0.a(h, new dfk($$1.b(ded.a), bsk.a(1)));
+      $$0.a(i, new dfk($$1.b(ded.a), bsk.a(1)));
+      $$0.a(j, new dfk($$1.b(ded.a), bsk.a(1)));
+      $$0.a(k, new dfk($$1.b(ded.a), bsk.a(1)));
+      $$0.a(l, new dfk($$1.b(ded.a), bsk.a(1)));
+      $$0.a(m, new dfk($$1.b(ded.k), bsk.a(1)));
+      $$0.a(n, new dfk($$1.b(ded.k), bsk.a(1)));
+      $$0.a(o, new dfk($$1.b(ded.k), bsk.a(1)));
+      $$0.a(p, new dfk($$1.b(ded.k), bsk.a(1)));
+      $$0.a(q, new dfk($$1.b(ded.k), bsk.a(1)));
+      $$0.a(r, new dfk($$1.b(ded.k), bsk.a(1)));
+      $$0.a(s, new dfk($$1.b(ded.j), bsk.a(1)));
+      $$0.a(t, new dfk($$1.b(ded.g), bsk.a(1)));
+      $$0.a(u, new dfk($$1.b(ded.j), bsk.a(1)));
+      $$0.a(v, new dfk($$1.b(ded.g), bsk.a(1)));
+      $$0.a(w, new dfk($$1.b(ded.w), bsk.a(1)));
+      $$0.a(x, new dfk($$1.b(ded.w), bsk.a(1)));
+      $$0.a(y, new dfk($$1.b(ded.w), bsk.a(1)));
+      $$0.a(z, new dfk($$1.b(ded.w), bsk.a(1)));
+      $$0.a(A, new dfk($$1.b(ded.c), bsk.a(1)));
+      $$0.a(B, new dfk($$1.b(ded.e), bsk.a(1)));
+      $$0.a(C, new dfk($$1.b(ded.O), bsk.a(1)));
+      $$0.a(D, new dfk($$1.b(ded.O), bsk.a(1)));
+      $$0.a(E, new dfk($$1.b(ded.O), bsk.a(1)));
+      $$0.a(F, new dfk($$1.b(ded.O), bsk.a(1)));
+      $$0.a(G, new dfk($$1.b(ded.i), bsk.a(1)));
+      $$0.a(H, new dfk($$1.b(ded.f), bsk.a(1)));
+      $$0.a(I, new dfk($$1.b(ded.d), bsk.a(1)));
+      $$0.a(J, new dfk($$1.b(ded.d), bsk.a(1)));
    }
 }

@@ -1,21 +1,7 @@
-public enum fef {
-   a(35048, false, true),
-   b(35044, false, true),
-   c(35040, false, true),
-   d(35045, true, false),
-   e(35049, true, false),
-   f(35041, true, false),
-   g(35050, false, false),
-   h(35046, false, false),
-   i(35042, false, false);
+public record fef(fbx b, fbx c, fbx d) {
+   public static final fef a = new fef(fbx.c, new fbx(0.0, 0.0, -1.0), new fbx(0.0, 1.0, 0.0));
 
-   final int j;
-   final boolean k;
-   final boolean l;
-
-   private fef(final int $$0, final boolean $$1, final boolean $$2) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
+   public fbx a() {
+      return this.c.c(this.d);
    }
 }

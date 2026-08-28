@@ -1,75 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dse extends dke {
+public class dse extends dkl {
    public static final MapCodec<dse> a = b(dse::new);
-   private static final xv d = xv.c("container.stonecutter");
-   public static final dyk<jm> b = doc.aF;
-   protected static final fcm c = dke.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final fcr b = dkl.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
 
    @Override
    public MapCodec<dse> a() {
       return a;
    }
 
-   public dse(dxm.d $$0) {
+   public dse(dxt.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jm.c));
    }
 
    @Override
-   public dxn a(dbb $$0) {
-      return this.m().b(b, $$0.g().g());
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      return dkl.a($$1, $$2.d(), jm.a) && !$$1.z($$2);
    }
 
    @Override
-   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(axp.ay);
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      return $$4 == jm.b && !this.a($$0, $$1, $$3) ? dkn.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public void a(dxu $$0, dhh $$1, jh $$2, bam $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(ls.aA, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      jh.a $$10 = new jh.a();
+
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + bae.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + bae.a($$3, -10, 10));
+         dxu $$12 = $$1.a_($$10);
+         if (!$$12.m($$1, $$10)) {
+            $$1.a(ls.aE, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+         }
       }
-
-      return bte.a;
-   }
-
-   @Nullable
-   @Override
-   protected btg b(dxn $$0, dha $$1, jh $$2) {
-      return new btm(($$2x, $$3, $$4) -> new cva($$2x, $$3, ctk.a($$1, $$2)), d);
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean g_(dxn $$0) {
-      return true;
-   }
-
-   @Override
-   protected dqn a_(dxn $$0) {
-      return dqn.c;
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dqu $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dpd $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dxn $$0, eue $$1) {
-      return false;
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return b;
    }
 }

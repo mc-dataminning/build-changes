@@ -1,78 +1,128 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public record eor(List<eog> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final alz c = alz.b("jigsaw");
-   private static final Map<alz, alz> d = ImmutableMap.builder()
-      .put(alz.b("nvi"), c)
-      .put(alz.b("pcp"), c)
-      .put(alz.b("bastionremnant"), c)
-      .put(alz.b("runtime"), c)
-      .build();
+public final class eor {
+   public static final String a = "INVALID";
+   public static final eor b = new eor(null, new dgn(0, 0), 0, new eoy(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final eoj d;
+   private final eoy e;
+   private final dgn f;
+   private int g;
+   @Nullable
+   private volatile eob h;
 
-   public eor(final List<eog> a) {
-      this.a = List.copyOf(a);
+   public eor(eoj $$0, dgn $$1, int $$2, eoy $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
-   }
-
-   public boolean a(jh $$0) {
-      for (eog $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public vu a(eos $$0) {
-      vd $$1 = new vd();
-
-      for (eog $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static eor a(vd $$0, eos $$1) {
-      List<eog> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         ux $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         alz $$6 = alz.a($$5);
-         alz $$7 = d.getOrDefault($$6, $$6);
-         eot $$8 = ma.Q.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
+   @Nullable
+   public static eor a(eoz $$0, ux $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         kd<eoj> $$4 = $$0.b().e(mb.aU);
+         eoj $$5 = $$4.a(alz.a($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
          } else {
+            dgn $$6 = new dgn($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            vd $$8 = $$1.c("Children", 10);
+
             try {
-               eog $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
+               eoy $$9 = eoy.a($$8, $$0);
+               if ($$5 instanceof equ) {
+                  $$9 = equ.a($$6, $$2, $$9);
+               }
+
+               return new eor($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
             }
          }
       }
-
-      return new eor($$2);
    }
 
-   public enu b() {
-      return eog.a(this.a.stream());
+   public eob a() {
+      eob $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
    }
 
-   public List<eog> c() {
-      return this.a;
+   public void a(dif $$0, did $$1, dzq $$2, bam $$3, eob $$4, dgn $$5) {
+      List<eon> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         eob $$7 = $$6.get(0).f;
+         jh $$8 = $$7.g();
+         jh $$9 = new jh($$8.u(), $$7.i(), $$8.w());
+
+         for (eon $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
+   }
+
+   public ux a(eoz $$0, dgn $$1) {
+      ux $$2 = new ux();
+      if (this.b()) {
+         $$2.a("id", $$0.b().e(mb.aU).b(this.d).toString());
+         $$2.a("ChunkX", $$1.g);
+         $$2.a("ChunkZ", $$1.h);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public dgn c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public eoj h() {
+      return this.d;
+   }
+
+   public List<eon> i() {
+      return this.e.c();
    }
 }

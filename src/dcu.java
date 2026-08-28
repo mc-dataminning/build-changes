@@ -1,33 +1,73 @@
-public record dcu(cxk a, cxk b, cxk c) implements dce {
-   @Override
-   public cxk a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+public class dcu extends dbt {
+   public dcu(dbq $$0) {
+      super($$0);
+   }
+
+   public boolean a(dbr $$0, dhh $$1) {
+      if ($$0.e() != 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxo $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cvr) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(cxs.wi)) {
+                     return false;
+                  }
+
+                  if ($$2) {
+                     return false;
+                  }
+
+                  dun $$6 = $$5.a(ku.ai, dun.a);
+                  if (!$$6.b().isEmpty()) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$2 && $$3;
+      }
+   }
+
+   public cxo a(dbr $$0, js.a $$1) {
+      cxo $$2 = cxo.k;
+      cxo $$3 = cxo.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxo $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.h() instanceof cvr) {
+               $$2 = $$5;
+            } else if ($$5.a(cxs.wi)) {
+               $$3 = $$5.v();
+            }
+         }
+      }
+
+      if ($$3.f()) {
+         return $$3;
+      } else {
+         $$3.b(ku.ai, $$2.a(ku.ai));
+         $$3.b(ku.aj, ((cvr)$$2.h()).b());
+         return $$3;
+      }
    }
 
    @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public cxk c() {
-      return this.a;
-   }
-
-   public cxk d() {
-      return this.b;
-   }
-
-   public cxk e() {
-      return this.c;
+   public dcn<dcu> a() {
+      return dcn.l;
    }
 }

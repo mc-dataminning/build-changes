@@ -1,252 +1,166 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.base.Stopwatch;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dzr extends eac {
-   private final dzs o;
-   private final boolean p;
+public class dzr {
+   private static final Logger a = LogUtils.getLogger();
+   private final eed b;
+   private final din c;
+   private final long d;
+   private final long e;
+   private final Map<eoj, List<epg>> f = new Object2ObjectOpenHashMap();
+   private final Map<epd, CompletableFuture<List<dgn>>> g = new Object2ObjectArrayMap();
+   private boolean h;
+   private final List<jq<eop>> i;
 
-   public dzr(dzs $$0, boolean $$1) {
-      super($$0.f(), eaf.a, $$0.m, $$0.E().K_().e(mb.aH), $$0.s());
-      this.o = $$0;
-      this.p = $$1;
+   public static dzr a(eed $$0, long $$1, din $$2, Stream<jq<eop>> $$3) {
+      List<jq<eop>> $$4 = $$3.filter($$1x -> a((eop)$$1x.a(), $$2)).toList();
+      return new dzr($$0, $$2, $$1, 0L, $$4);
    }
 
-   @Nullable
-   @Override
-   public dup c_(jh $$0) {
-      return this.o.c_($$0);
+   public static dzr a(eed $$0, long $$1, din $$2, js<eop> $$3) {
+      List<jq<eop>> $$4 = $$3.c().filter($$1x -> a((eop)$$1x.a(), $$2)).collect(Collectors.toUnmodifiableList());
+      return new dzr($$0, $$2, $$1, $$1, $$4);
    }
 
-   @Override
-   public dxn a_(jh $$0) {
-      return this.o.a_($$0);
+   private static boolean a(eop $$0, din $$1) {
+      Stream<jq<dij>> $$2 = $$0.a().stream().flatMap($$0x -> {
+         eoj $$1x = $$0x.a().a();
+         return $$1x.a().a();
+      });
+      return $$2.anyMatch($$1.c()::contains);
    }
 
-   @Override
-   public etp b_(jh $$0) {
-      return this.o.b_($$0);
+   private dzr(eed $$0, din $$1, long $$2, long $$3, List<jq<eop>> $$4) {
+      this.b = $$0;
+      this.d = $$2;
+      this.c = $$1;
+      this.e = $$3;
+      this.i = $$4;
    }
 
-   @Override
-   public dzt b(int $$0) {
-      return this.p ? this.o.b($$0) : super.b($$0);
+   public List<jq<eop>> a() {
+      return this.i;
    }
 
-   @Nullable
-   @Override
-   public dxn a(jh $$0, dxn $$1, boolean $$2) {
-      return this.p ? this.o.a($$0, $$1, $$2) : null;
+   private void e() {
+      Set<jq<dij>> $$0 = this.c.c();
+      this.a().forEach($$1 -> {
+         eop $$2 = $$1.a();
+         boolean $$3 = false;
+
+         for (eop.a $$4 : $$2.a()) {
+            eoj $$5 = $$4.a().a();
+            if ($$5.a().a().anyMatch($$0::contains)) {
+               this.f.computeIfAbsent($$5, $$0xx -> new ArrayList<>()).add($$2.b());
+               $$3 = true;
+            }
+         }
+
+         if ($$3 && $$2.b() instanceof epd $$7) {
+            this.g.put($$7, this.a((jq<eop>)$$1, $$7));
+         }
+      });
    }
 
-   @Override
-   public void a(dup $$0) {
-      if (this.p) {
-         this.o.a($$0);
-      }
-   }
-
-   @Override
-   public void a(bvf $$0) {
-      if (this.p) {
-         this.o.a($$0);
-      }
-   }
-
-   @Override
-   public void a(eaj $$0) {
-      if (this.p) {
-         super.a($$0);
-      }
-   }
-
-   @Override
-   public dzt[] d() {
-      return this.o.d();
-   }
-
-   @Override
-   public void a(edi.a $$0, long[] $$1) {
-   }
-
-   private edi.a c(edi.a $$0) {
-      if ($$0 == edi.a.a) {
-         return edi.a.b;
+   private CompletableFuture<List<dgn>> a(jq<eop> $$0, epd $$1) {
+      if ($$1.c() == 0) {
+         return CompletableFuture.completedFuture(List.of());
       } else {
-         return $$0 == edi.a.c ? edi.a.d : $$0;
+         Stopwatch $$2 = Stopwatch.createStarted(ae.d);
+         int $$3 = $$1.a();
+         int $$4 = $$1.c();
+         List<CompletableFuture<dgn>> $$5 = new ArrayList<>($$4);
+         int $$6 = $$1.b();
+         ju<dij> $$7 = $$1.d();
+         bam $$8 = bam.a();
+         $$8.b(this.e);
+         double $$9 = $$8.j() * Math.PI * 2.0;
+         int $$10 = 0;
+         int $$11 = 0;
+
+         for (int $$12 = 0; $$12 < $$4; $$12++) {
+            double $$13 = (double)(4 * $$3 + $$3 * $$11 * 6) + ($$8.j() - 0.5) * (double)$$3 * 2.5;
+            int $$14 = (int)Math.round(Math.cos($$9) * $$13);
+            int $$15 = (int)Math.round(Math.sin($$9) * $$13);
+            bam $$16 = $$8.d();
+            $$5.add(CompletableFuture.supplyAsync(() -> {
+               Pair<jh, jq<dij>> $$4x = this.c.a(kj.a($$14, 8), 0, kj.a($$15, 8), 112, $$7::a, $$16, this.b.b());
+               if ($$4x != null) {
+                  jh $$5x = (jh)$$4x.getFirst();
+                  return new dgn(kj.a($$5x.u()), kj.a($$5x.w()));
+               } else {
+                  return new dgn($$14, $$15);
+               }
+            }, ae.g().a("structureRings")));
+            $$9 += (Math.PI * 2) / (double)$$6;
+            if (++$$10 == $$6) {
+               $$11++;
+               $$10 = 0;
+               $$6 += 2 * $$6 / ($$11 + 1);
+               $$6 = Math.min($$6, $$4 - $$12);
+               $$9 += $$8.j() * Math.PI * 2.0;
+            }
+         }
+
+         return ae.d($$5).thenApply($$2x -> {
+            double $$3x = (double)$$2.stop().elapsed(TimeUnit.MILLISECONDS) / 1000.0;
+            a.debug("Calculation for {} took {}s", $$0, $$3x);
+            return $$2x;
+         });
       }
    }
 
-   @Override
-   public edi a(edi.a $$0) {
-      return this.o.a($$0);
-   }
-
-   @Override
-   public int a(edi.a $$0, int $$1, int $$2) {
-      return this.o.a(this.c($$0), $$1, $$2);
-   }
-
-   @Override
-   public jq<dic> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.o.getNoiseBiome($$0, $$1, $$2);
-   }
-
-   @Override
-   public dgg f() {
-      return this.o.f();
+   public void b() {
+      if (!this.h) {
+         this.e();
+         this.h = true;
+      }
    }
 
    @Nullable
-   @Override
-   public eok a(eoc $$0) {
-      return this.o.a($$0);
+   public List<dgn> a(epd $$0) {
+      this.b();
+      CompletableFuture<List<dgn>> $$1 = this.g.get($$0);
+      return $$1 != null ? $$1.join() : null;
    }
 
-   @Override
-   public void a(eoc $$0, eok $$1) {
+   public List<epg> a(jq<eoj> $$0) {
+      this.b();
+      return this.f.getOrDefault($$0.a(), List.of());
    }
 
-   @Override
-   public Map<eoc, eok> g() {
-      return this.o.g();
+   public eed c() {
+      return this.b;
    }
 
-   @Override
-   public void a(Map<eoc, eok> $$0) {
-   }
+   public boolean a(jq<eop> $$0, int $$1, int $$2, int $$3) {
+      epg $$4 = $$0.a().b();
 
-   @Override
-   public LongSet b(eoc $$0) {
-      return this.o.b($$0);
-   }
+      for (int $$5 = $$1 - $$3; $$5 <= $$1 + $$3; $$5++) {
+         for (int $$6 = $$2 - $$3; $$6 <= $$2 + $$3; $$6++) {
+            if ($$4.b(this, $$5, $$6)) {
+               return true;
+            }
+         }
+      }
 
-   @Override
-   public void a(eoc $$0, long $$1) {
-   }
-
-   @Override
-   public Map<eoc, LongSet> h() {
-      return this.o.h();
-   }
-
-   @Override
-   public void b(Map<eoc, LongSet> $$0) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   @Override
-   public boolean i() {
       return false;
    }
 
-   @Override
-   public eaj j() {
-      return this.o.j();
-   }
-
-   @Override
-   public void d(jh $$0) {
-   }
-
-   @Override
-   public void e(jh $$0) {
-   }
-
-   @Override
-   public void a(ux $$0) {
-   }
-
-   @Nullable
-   @Override
-   public ux f(jh $$0) {
-      return this.o.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public ux a(jh $$0, js.a $$1) {
-      return this.o.a($$0, $$1);
-   }
-
-   @Override
-   public void a(Predicate<dxn> $$0, BiConsumer<jh, dxn> $$1) {
-      this.o.a($$0, $$1);
-   }
-
-   @Override
-   public fdn<dke> o() {
-      return this.p ? this.o.o() : fdd.a();
-   }
-
-   @Override
-   public fdn<eto> p() {
-      return this.p ? this.o.p() : fdd.a();
-   }
-
-   @Override
-   public dzi.a a(long $$0) {
-      return this.o.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public eel s() {
-      return this.o.s();
-   }
-
-   @Override
-   public dzh B() {
-      if (this.p) {
-         return super.B();
-      } else {
-         throw (UnsupportedOperationException)ae.b(new UnsupportedOperationException("Meaningless in this context"));
-      }
-   }
-
-   @Override
-   public dzh C() {
-      if (this.p) {
-         return super.C();
-      } else {
-         throw (UnsupportedOperationException)ae.b(new UnsupportedOperationException("Meaningless in this context"));
-      }
-   }
-
-   public dzs D() {
-      return this.o;
-   }
-
-   @Override
-   public boolean u() {
-      return this.o.u();
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   @Override
-   public void a(dif $$0, dil.f $$1) {
-      if (this.p) {
-         this.o.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void z() {
-      this.o.z();
-   }
-
-   @Override
-   public esz A() {
-      return this.o.A();
+   public long d() {
+      return this.d;
    }
 }

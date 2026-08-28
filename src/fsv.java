@@ -1,39 +1,153 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fsv extends ftr {
-   private static final alz a = alz.b("icon/draft_report");
-   private int b;
-   private final xv c;
-   private final boolean d;
-   private xv s;
-   private final List<fny> u = Lists.newArrayList();
+public class fsv extends ftw {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger d = LogUtils.getLogger();
+   private static final long s = 2000L;
+   public static final xv a = xv.c("connect.aborted");
+   public static final xv b = xv.a("disconnect.genericReason", xv.c("disconnect.unknownHost"));
    @Nullable
-   private fny v;
+   volatile wp u;
+   @Nullable
+   ChannelFuture v;
+   volatile boolean w;
+   final ftw x;
+   private xv y = xv.c("connect.connecting");
+   private long z = -1L;
+   final xv A;
 
-   public fsv(@Nullable xv $$0, boolean $$1) {
-      super(xv.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
-      this.c = $$0;
-      this.d = $$1;
+   private fsv(ftw $$0, xv $$1) {
+      super(flv.a);
+      this.x = $$0;
+      this.A = $$1;
+   }
+
+   public static void a(ftw $$0, fme $$1, gha $$2, gfx $$3, boolean $$4, @Nullable ggb $$5) {
+      if ($$1.z instanceof fsv) {
+         d.error("Attempt to connect while already connecting");
+      } else {
+         xv $$6;
+         if ($$5 != null) {
+            $$6 = xu.q;
+         } else if ($$4) {
+            $$6 = gkm.a;
+         } else {
+            $$6 = xu.r;
+         }
+
+         fsv $$9 = new fsv($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(xv.c("connect.transferring"));
+         }
+
+         $$1.y();
+         $$1.aV();
+         $$1.a(ggo.a($$3.b));
+         $$1.bd().a(gkn.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
+      }
+   }
+
+   private void a(final fme $$0, final gha $$1, final gfx $$2, @Nullable final ggb $$3) {
+      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (fsv.this.w) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = ghc.a.a($$1).map(ggz::d);
+               if (fsv.this.w) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new ftd(fsv.this.x, fsv.this.A, fsv.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               wp $$2;
+               synchronized (fsv.this) {
+                  if (fsv.this.w) {
+                     return;
+                  }
+
+                  $$2 = new wp(aad.b);
+                  $$2.a($$0.aQ().n());
+                  fsv.this.v = wp.a($$0, $$0.n.aD(), $$2);
+               }
+
+               fsv.this.v.syncUninterruptibly();
+               synchronized (fsv.this) {
+                  if (fsv.this.w) {
+                     $$2.a(fsv.a);
+                     return;
+                  }
+
+                  fsv.this.u = $$2;
+                  $$0.af().a($$2, a($$2.b()));
+               }
+
+               fsv.this.u
+                  .a($$0.getHostName(), $$0.getPort(), akb.b, akb.d, new gfh(fsv.this.u, $$0, $$2, fsv.this.x, false, null, fsv.this::a, $$3), $$3 != null);
+               fsv.this.u.a(new ake($$0.X().c(), $$0.X().b()));
+            } catch (Exception var9) {
+               if (fsv.this.w) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fsv.d.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new ftd(fsv.this.x, fsv.this.A, xv.a("disconnect.genericReason", $$8))));
+            }
+         }
+
+         private static hem.c a(gfx.a $$0x) {
+            return switch ($$0) {
+               case a -> hem.c.b;
+               case b -> hem.c.c;
+               case c -> hem.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new r(d));
+      $$4.start();
+   }
+
+   private void a(xv $$0) {
+      this.y = $$0;
    }
 
    @Override
-   protected void aT_() {
-      this.b = 0;
-      this.u.clear();
-      xv $$0 = this.d ? xv.c("deathScreen.spectate") : xv.c("deathScreen.respawn");
-      this.u.add(this.c(fny.a($$0, $$0x -> {
-         this.m.t.ge();
-         $$0x.j = false;
-      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
-      this.v = this.c(
-         fny.a(xv.c("deathScreen.titleScreen"), $$0x -> this.m.bb().a(this.m, this, this::l, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
-      );
-      this.u.add(this.v);
-      this.c(false);
-      this.s = xv.a("deathScreen.score.value", xv.b(Integer.toString(this.m.t.gb())).a(n.o));
+   public void e() {
+      if (this.u != null) {
+         if (this.u.i()) {
+            this.u.b();
+         } else {
+            this.u.n();
+         }
+      }
    }
 
    @Override
@@ -41,116 +155,34 @@ public class fsv extends ftr {
       return false;
    }
 
-   private void l() {
-      if (this.d) {
-         this.E();
-      } else {
-         fsp $$0 = new fsv.a($$0x -> {
-            if ($$0x) {
-               this.E();
-            } else {
-               this.m.t.ge();
-               this.m.a(null);
+   @Override
+   protected void aT_() {
+      this.c(fod.a(xu.e, $$0 -> {
+         synchronized (this) {
+            this.w = true;
+            if (this.v != null) {
+               this.v.cancel(true);
+               this.v = null;
             }
-         }, xv.c("deathScreen.quit.confirm"), xu.a, xv.c("deathScreen.titleScreen"), xv.c("deathScreen.respawn"));
-         this.m.a($$0);
-         $$0.b(20);
-      }
-   }
 
-   private void E() {
-      if (this.m.s != null) {
-         this.m.s.ab();
-      }
-
-      this.m.b(new ftc(xv.c("menu.savingLevel")));
-      this.m.a(new ftt());
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.c().a();
-      $$0.c().b(2.0F, 2.0F, 2.0F);
-      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
-      $$0.c().b();
-      if (this.c != null) {
-         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
-      }
-
-      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
-      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
-         ys $$4 = this.a($$1);
-         $$0.a(this.p, $$4, $$1, $$2);
-      }
-
-      if (this.v != null && this.m.bb().c()) {
-         $$0.a(glo::B, a, this.v.D() + this.v.y() - 17, this.v.E() + 3, 15, 15);
-      }
-   }
-
-   @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      a($$0, this.n, this.o);
-   }
-
-   static void a(fnl $$0, int $$1, int $$2) {
-      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
-   }
-
-   @Nullable
-   private ys a(int $$0) {
-      if (this.c == null) {
-         return null;
-      } else {
-         int $$1 = this.m.h.a(this.c);
-         int $$2 = this.n / 2 - $$1 / 2;
-         int $$3 = this.n / 2 + $$1 / 2;
-         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
-         ys $$3 = this.a((int)$$0);
-         if ($$3 != null && $$3.h() != null && $$3.h().a() == xt.a.a) {
-            this.a($$3);
-            return false;
+            if (this.u != null) {
+               this.u.a(a);
+            }
          }
-      }
 
-      return super.a($$0, $$1, $$2);
+         this.m.a(this.x);
+      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
    }
 
    @Override
-   public boolean j() {
-      return false;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b++;
-      if (this.b == 20) {
-         this.c(true);
-      }
-   }
-
-   private void c(boolean $$0) {
-      for (fny $$1 : this.u) {
-         $$1.j = $$0;
-      }
-   }
-
-   public static class a extends fsp {
-      public a(BooleanConsumer $$0, xv $$1, xv $$2, xv $$3, xv $$4) {
-         super($$0, $$1, $$2, $$3, $$4);
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ae.c();
+      if ($$4 - this.z > 2000L) {
+         this.z = $$4;
+         this.m.aZ().c(xv.c("narrator.joining"));
       }
 
-      @Override
-      public void b(fnl $$0, int $$1, int $$2, float $$3) {
-         fsv.a($$0, this.n, this.o);
-      }
+      $$0.a(this.p, this.y, this.n / 2, this.o / 2 - 50, 16777215);
    }
 }

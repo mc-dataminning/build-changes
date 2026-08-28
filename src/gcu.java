@@ -1,24 +1,43 @@
-public class gcu extends gcp<gzg> {
-   public gcu(geh $$0) {
+public class gcu<T extends gyr> extends gbk<T> {
+   protected final gem b;
+   protected final gem c;
+   protected final gem d;
+   protected final gem e;
+   protected final gem f;
+   protected final gem g;
+
+   protected gcu(gem $$0) {
       super($$0);
+      this.b = $$0.b("head");
+      this.c = $$0.b("body");
+      this.d = $$0.b("right_hind_leg");
+      this.e = $$0.b("left_hind_leg");
+      this.f = $$0.b("right_front_leg");
+      this.g = $$0.b("left_front_leg");
    }
 
-   public static gen a() {
-      gep $$0 = new gep();
-      ger $$1 = $$0.a();
-      $$1.a("head", gem.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new gel(0.6F)), gej.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", gem.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new gel(1.75F)), gej.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gem $$2 = gem.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new gel(0.5F));
-      $$1.a("right_hind_leg", $$2, gej.a(-3.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, gej.a(3.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$2, gej.a(-3.0F, 12.0F, -5.0F));
-      $$1.a("left_front_leg", $$2, gej.a(3.0F, 12.0F, -5.0F));
-      return gen.a($$0, 64, 32);
+   public static geu a(int $$0, geq $$1) {
+      geu $$2 = new geu();
+      gew $$3 = $$2.a();
+      $$3.a("head", ger.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), geo.a(0.0F, (float)(18 - $$0), -6.0F));
+      $$3.a("body", ger.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), geo.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      ger $$4 = ger.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
+      $$3.a("right_hind_leg", $$4, geo.a(-3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("left_hind_leg", $$4, geo.a(3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("right_front_leg", $$4, geo.a(-3.0F, (float)(24 - $$0), -5.0F));
+      $$3.a("left_front_leg", $$4, geo.a(3.0F, (float)(24 - $$0), -5.0F));
+      return $$2;
    }
 
-   public void a(gzg $$0) {
+   public void a(T $$0) {
       super.a($$0);
-      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ab;
-      this.b.e = $$0.b;
+      this.b.e = $$0.V * (float) (Math.PI / 180.0);
+      this.b.f = $$0.U * (float) (Math.PI / 180.0);
+      float $$1 = $$0.X;
+      float $$2 = $$0.Y;
+      this.d.e = bae.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.e.e = bae.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.e = bae.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.g.e = bae.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

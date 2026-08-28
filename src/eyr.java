@@ -1,39 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-public class eyr extends exu {
-   static final MapCodec<eyr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fap.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, eyr::new));
-   private final fao b;
+public class eyr extends eyb {
+   public static final MapCodec<eyr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  eya.e.a(dad.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  azn.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, eyr::new)
+   );
+   public static final dae b = new dae(0, List.of());
+   private final Optional<eya.e<dad>> c;
+   private final Optional<Integer> d;
 
-   private eyr(List<ezs> $$0, fao $$1) {
+   protected eyr(List<ezx> $$0, Optional<eya.e<dad>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public Set<eza<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public exw<eyr> b() {
-      return exx.Q;
-   }
-
-   @Override
-   public cxk a(cxk $$0, ewh $$1) {
-      int $$2 = bae.a(this.b.a($$1), 0, 4);
-      $$0.b(ku.aa, new dai($$2));
+   protected cxo a(cxo $$0, ewo $$1) {
+      $$0.a(ku.af, b, this::a);
       return $$0;
    }
 
-   public fao c() {
-      return this.b;
+   private dae a(dae $$0) {
+      return new dae(this.d.orElseGet($$0::a), this.c.<List<dad>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
-   public static exu.a<?> a(fao $$0) {
-      return a($$1 -> new eyr($$1, $$0));
+   @Override
+   public eyd<eyr> b() {
+      return eye.K;
    }
 }

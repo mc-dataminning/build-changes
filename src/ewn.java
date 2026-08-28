@@ -1,62 +1,109 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class ewn {
-   private final bak a;
-   private final ezb b;
-   private final Optional<jr.a> c;
-   private final Set<aly<?>> d;
+   private static final Codec<ewn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               fau.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               fau.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, ewn::new)
+   );
+   public static final Codec<ewn> a = Codec.either(Codec.INT, b).xmap($$0 -> (ewn)$$0.map(ewn::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final fat c;
+   @Nullable
+   private final fat d;
+   private final ewn.b e;
+   private final ewn.a f;
 
-   public ewn(bak $$0, ezb $$1, jr.a $$2) {
-      this($$0, $$1, Optional.of($$2), Set.of());
+   public Set<bbn<?>> a() {
+      Builder<bbn<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   public ewn(bak $$0, ezb $$1) {
-      this($$0, $$1, Optional.empty(), Set.of());
+   private ewn(Optional<fat> $$0, Optional<fat> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   private ewn(bak $$0, ezb $$1, Optional<jr.a> $$2, Set<aly<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private ewn(@Nullable fat $$0, @Nullable fat $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> bae.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+      }
    }
 
-   public ewn a(String $$0) {
-      return new ewn(this.a.a($$0), this.b, this.c, this.d);
+   public static ewn a(int $$0) {
+      faq $$1 = faq.a((float)$$0);
+      return new ewn(Optional.of($$1), Optional.of($$1));
    }
 
-   public ewn a(String $$0, aly<?> $$1) {
-      Set<aly<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new ewn(this.a.a($$0), this.b, this.c, $$2);
+   public static ewn a(int $$0, int $$1) {
+      return new ewn(Optional.of(faq.a((float)$$0)), Optional.of(faq.a((float)$$1)));
    }
 
-   public boolean a(aly<?> $$0) {
-      return this.d.contains($$0);
+   public static ewn b(int $$0) {
+      return new ewn(Optional.of(faq.a((float)$$0)), Optional.empty());
    }
 
-   public void b(String $$0) {
-      this.a.b($$0);
+   public static ewn c(int $$0) {
+      return new ewn(Optional.empty(), Optional.of(faq.a((float)$$0)));
    }
 
-   public void a(ewi $$0) {
-      this.b.a(this, $$0);
+   public int a(ewo $$0, int $$1) {
+      return this.e.apply($$0, $$1);
    }
 
-   public jr.a a() {
-      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   public boolean b(ewo $$0, int $$1) {
+      return this.f.test($$0, $$1);
    }
 
-   public boolean b() {
-      return this.c.isPresent();
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof faq $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
    }
 
-   public ewn a(ezb $$0) {
-      return new ewn(this.a, $$0, this.c, this.d);
+   @FunctionalInterface
+   interface a {
+      boolean test(ewo var1, int var2);
    }
 
-   public bak c() {
-      return this.a;
+   @FunctionalInterface
+   interface b {
+      int apply(ewo var1, int var2);
    }
 }

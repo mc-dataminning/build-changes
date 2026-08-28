@@ -1,10 +1,19 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
 
-public class beb {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:cactus_green", "minecraft:green_dye")
-      .put("minecraft:rose_red", "minecraft:red_dye")
-      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
-      .build();
+public class beb extends DataFix {
+   public beb(Schema $$0) {
+      super($$0, false);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("ContainerBlockEntityLockPredicateFix", this.getInputSchema().findChoiceType(biw.s), beb::a);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.renameAndFixField("Lock", "lock", bhj::b));
+   }
 }

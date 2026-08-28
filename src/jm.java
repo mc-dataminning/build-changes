@@ -36,7 +36,7 @@ public enum jm implements bba {
    private final jm.a o;
    private final jm.b p;
    private final kl q;
-   private final fbs r;
+   private final fbx r;
    private static final jm[] s = values();
    private static final jm[] t = Arrays.stream(s).sorted(Comparator.comparingInt($$0 -> $$0.k)).toArray(jm[]::new);
    private static final jm[] u = Arrays.stream(s).filter($$0 -> $$0.o().d()).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(jm[]::new);
@@ -49,10 +49,10 @@ public enum jm implements bba {
       this.o = $$5;
       this.p = $$4;
       this.q = $$6;
-      this.r = fbs.a($$6);
+      this.r = fbx.a($$6);
    }
 
-   public static jm[] a(bvf $$0) {
+   public static jm[] a(bvj $$0) {
       float $$1 = $$0.h(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.i(1.0F) * (float) (Math.PI / 180.0);
       float $$3 = bae.a($$1);
@@ -134,7 +134,7 @@ public enum jm implements bba {
       return this.p;
    }
 
-   public static jm a(bvf $$0, jm.a $$1) {
+   public static jm a(bvj $$0, jm.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.i(1.0F)) ? f : e;
          case b -> $$0.h(1.0F) < 0.0F ? b : a;
@@ -298,7 +298,7 @@ public enum jm implements bba {
       return $$3;
    }
 
-   public static jm a(fbs $$0) {
+   public static jm a(fbx $$0) {
       return a($$0.d, $$0.e, $$0.f);
    }
 
@@ -353,7 +353,7 @@ public enum jm implements bba {
       return this.q;
    }
 
-   public fbs r() {
+   public fbx r() {
       return this.r;
    }
 

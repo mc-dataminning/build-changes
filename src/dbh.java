@@ -1,87 +1,71 @@
-public class dbh extends dbq {
-   public dbh(dbn $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class dbh {
+   @Nullable
+   private final cpw a;
+   private final bth b;
+   private final fbt c;
+   private final dhh d;
+   private final cxo e;
+
+   public dbh(cpw $$0, bth $$1, fbt $$2) {
+      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(dbo $$0, dha $$1) {
-      cwh $$2 = null;
-      cxk $$3 = null;
-      cxk $$4 = null;
-
-      for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
-         cxk $$6 = $$0.a($$5);
-         if (!$$6.f()) {
-            cxg $$7 = $$6.h();
-            if (!($$7 instanceof cvn)) {
-               return false;
-            }
-
-            cvn $$8 = (cvn)$$7;
-            if ($$2 == null) {
-               $$2 = $$8.b();
-            } else if ($$2 != $$8.b()) {
-               return false;
-            }
-
-            int $$9 = $$6.a(ku.ai, dug.a).b().size();
-            if ($$9 > 6) {
-               return false;
-            }
-
-            if ($$9 > 0) {
-               if ($$3 != null) {
-                  return false;
-               }
-
-               $$3 = $$6;
-            } else {
-               if ($$4 != null) {
-                  return false;
-               }
-
-               $$4 = $$6;
-            }
-         }
-      }
-
-      return $$3 != null && $$4 != null;
+   protected dbh(dhh $$0, @Nullable cpw $$1, bth $$2, cxo $$3, fbt $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cxk a(dbo $$0, js.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-         cxk $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            int $$4 = $$3.a(ku.ai, dug.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return cxk.k;
+   protected final fbt j() {
+      return this.c;
    }
 
-   @Override
-   public jz<cxk> a(dbo $$0) {
-      jz<cxk> $$1 = jz.a($$0.a(), cxk.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cxk $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            cxk $$4 = $$3.h().k();
-            if (!$$4.f()) {
-               $$1.set($$2, $$4);
-            } else if (!$$3.a(ku.ai, dug.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
+   public jh a() {
+      return this.c.b();
    }
 
-   @Override
-   public dci<dbh> a() {
-      return dci.k;
+   public jm k() {
+      return this.c.c();
+   }
+
+   public fbx l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cxo n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cpw o() {
+      return this.a;
+   }
+
+   public bth p() {
+      return this.b;
+   }
+
+   public dhh q() {
+      return this.d;
+   }
+
+   public jm g() {
+      return this.a == null ? jm.c : this.a.cO();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fW();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dL();
    }
 }

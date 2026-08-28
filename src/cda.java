@@ -1,126 +1,89 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cda {
-   private static final cen a = new cen(Integer.MAX_VALUE, new ccz() {
-      @Override
-      public boolean b() {
-         return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<ccz.a, cen> b = new EnumMap<>(ccz.a.class);
-   private final Set<cen> c = new ObjectLinkedOpenHashSet();
-   private final EnumSet<ccz.a> d = EnumSet.noneOf(ccz.a.class);
+public class cda extends cdd {
+   private final bwh a;
+   private final Predicate<bwh> b;
+   @Nullable
+   private bwh c;
+   private final double d;
+   private final cfr e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public void a(int $$0, ccz $$1) {
-      this.c.add(new cen($$0, $$1));
+   public cda(bwh $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.L();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cdd.a.a, cdd.a.b));
+      if (!($$0.L() instanceof cfq) && !($$0.L() instanceof cfp)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
+      }
    }
 
-   @VisibleForTesting
-   public void a(Predicate<ccz> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
-   }
-
-   public void a(ccz $$0) {
-      for (cen $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.e();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(cen $$0, EnumSet<ccz.a> $$1) {
-      for (ccz.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
+   @Override
+   public boolean b() {
+      List<bwh> $$0 = this.a.dV().a(bwh.class, this.a.cR().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (bwh $$1 : $$0) {
+            if (!$$1.cp()) {
+               this.c = $$1;
+               return true;
+            }
          }
       }
 
       return false;
    }
 
-   private static boolean a(cen $$0, Map<ccz.a, cen> $$1) {
-      for (ccz.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
-         }
-      }
-
-      return true;
+   @Override
+   public boolean c() {
+      return this.c != null && !this.e.m() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
+   @Override
+   public void d() {
+      this.f = 0;
+      this.h = this.a.a(eun.j);
+      this.a.a(eun.j, 0.0F);
+   }
+
+   @Override
+   public void e() {
+      this.c = null;
+      this.e.o();
+      this.a.a(eun.j, this.h);
+   }
+
+   @Override
    public void a() {
-      bpo $$0 = bpn.a();
-      $$0.a("goalCleanup");
-
-      for (cen $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
-            $$1.e();
-         }
-      }
-
-      this.b.entrySet().removeIf($$0x -> !((cen)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (cen $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
-            for (ccz.a $$3 : $$2.j()) {
-               cen $$4 = this.b.getOrDefault($$3, a);
-               $$4.e();
-               this.b.put($$3, $$2);
+      if (this.c != null && !this.a.P_()) {
+         this.a.H().a(this.c, 10.0F, (float)this.a.Z());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.dA() - this.c.dA();
+            double $$1 = this.a.dC() - this.c.dC();
+            double $$2 = this.a.dG() - this.c.dG();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.o();
+               ccf $$4 = this.c.H();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dA() && $$4.f() == this.a.dC() && $$4.g() == this.a.dG()) {
+                  double $$5 = this.c.dA() - this.a.dA();
+                  double $$6 = this.c.dG() - this.a.dG();
+                  this.e.a(this.a.dA() - $$5, this.a.dC(), this.a.dG() - $$6, this.d);
+               }
             }
-
-            $$2.d();
          }
-      }
-
-      $$0.c();
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      bpo $$1 = bpn.a();
-      $$1.a("goalTick");
-
-      for (cen $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.V_())) {
-            $$2.a();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<cen> b() {
-      return this.c;
-   }
-
-   public void a(ccz.a $$0) {
-      this.d.add($$0);
-   }
-
-   public void b(ccz.a $$0) {
-      this.d.remove($$0);
-   }
-
-   public void a(ccz.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
-      } else {
-         this.a($$0);
       }
    }
 }

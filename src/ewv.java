@@ -1,18 +1,81 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
-public class ewv {
-   public static final Codec<ewx> a = ma.D.q().dispatch(ewx::a, ewy::a);
-   public static final ewy b = a("empty", ews.a);
-   public static final ewy c = a("item", ewu.a);
-   public static final ewy d = a("loot_table", exa.a);
-   public static final ewy e = a("dynamic", ewr.a);
-   public static final ewy f = a("tag", exc.a);
-   public static final ewy g = a("alternatives", ewo.a);
-   public static final ewy h = a("sequence", exb.a);
-   public static final ewy i = a("group", ewt.a);
+public class ewv extends ewx {
+   public static final MapCodec<ewv> a = a(ewv::new);
 
-   private static ewy a(String $$0, MapCodec<? extends ewx> $$1) {
-      return kd.a(ma.D, alz.b($$0), new ewy($$1));
+   ewv(List<exe> $$0, List<ezx> $$1) {
+      super($$0, $$1);
+   }
+
+   @Override
+   public exf a() {
+      return exc.g;
+   }
+
+   @Override
+   protected eww a(List<? extends eww> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (eww)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (eww $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(ewu $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static ewv.a a(exe.a<?>... $$0) {
+      return new ewv.a($$0);
+   }
+
+   public static <E> ewv.a a(Collection<E> $$0, Function<E, exe.a<?>> $$1) {
+      return new ewv.a($$0.stream().map($$1::apply).toArray(exe.a[]::new));
+   }
+
+   public static class a extends exe.a<ewv.a> {
+      private final Builder<exe> a = ImmutableList.builder();
+
+      public a(exe.a<?>... $$0) {
+         for (exe.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected ewv.a a() {
+         return this;
+      }
+
+      @Override
+      public ewv.a a(exe.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public exe b() {
+         return new ewv(this.a.build(), this.f());
+      }
    }
 }

@@ -9,7 +9,7 @@ public class aaf {
       a($$0, $$1, $$2.p());
    }
 
-   public static <T extends xb> void a(aac<T> $$0, T $$1, brt<?> $$2) throws aml {
+   public static <T extends xb> void a(aac<T> $$0, T $$1, brx<?> $$2) throws aml {
       if (!$$2.bx()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {

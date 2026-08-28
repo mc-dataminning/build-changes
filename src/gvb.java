@@ -1,20 +1,19 @@
-public class gvb<S extends gym, M extends gbf<S>> extends gvy<S, M> {
-   private final gsh a;
+public class gvb extends gwd<gxh, gau> {
+   private static final alz a = alz.b("textures/entity/breeze/breeze_wind.png");
+   private final gau b;
 
-   public gvb(gtg<S, M> $$0, gsh $$1) {
-      super($$0);
-      this.a = $$1;
+   public gvb(gro.a $$0, gtl<gxh, gau> $$1) {
+      super($$1);
+      this.b = new gau($$0.a(gel.I));
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, S $$3, float $$4, float $$5) {
-      hdg $$6 = $$3.b();
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.4F, -0.4F);
-         $$0.a(a.b.rotationDegrees(180.0F));
-         cxk $$7 = $$3.aY_();
-         this.a.a($$7, cxi.h, false, $$0, $$1, $$2, hav.d, $$6);
-         $$0.b();
-      }
+   public void a(fgq $$0, glj $$1, int $$2, gxh $$3, float $$4, float $$5) {
+      fgu $$6 = $$1.getBuffer(glt.a(a, this.a($$3.p) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gqt.a(this.b, this.b.d()).a($$0, $$6, $$2, hba.d);
+   }
+
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

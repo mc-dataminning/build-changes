@@ -1,19 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cfs extends cgl<buw> {
+public class cfs extends cfq {
+   @Nullable
+   private jh p;
+
+   public cfs(bwh $$0, dhh $$1) {
+      super($$0, $$1);
+   }
+
    @Override
-   public Set<cff<?>> a() {
-      return ImmutableSet.of(cff.K, cff.h);
+   public euk a(jh $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
    }
 
-   protected void a(ash $$0, buw $$1) {
-      $$1.eb().c(cff.h).ifPresent($$1x -> this.a($$1, $$1x));
+   @Override
+   public euk a(bvj $$0, int $$1) {
+      this.p = $$0.dv();
+      return super.a($$0, $$1);
    }
 
-   private void a(buw $$0, cfh $$1) {
-      Optional<buw> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.e_()).map(buw.class::cast);
-      $$0.eb().a(cff.K, $$2);
+   @Override
+   public boolean a(bvj $$0, double $$1) {
+      euk $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dv();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.m()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dt(), (double)this.a.dq())
+               && (!(this.a.dC() > (double)this.p.v()) || !jh.a((double)this.p.u(), this.a.dC(), (double)this.p.w()).a(this.a.dt(), (double)this.a.dq()))) {
+               this.a.I().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

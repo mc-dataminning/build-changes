@@ -1,120 +1,44 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class hdr {
-   static final Logger b = LogUtils.getLogger();
-   public static final String a = "item/";
-   private final Map<alz, hdz> c;
-   final hdz d;
-   private final Map<hdu, hdz> e = new HashMap<>();
-   private final Map<alz, hdz> f = new HashMap<>();
+public class hdr implements hee {
+   private final alz a;
+   private List<gmz> b = List.of();
 
-   public hdr(Map<alz, hdz> $$0, hdz $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a(hdo.c, $$1);
-      this.f.put(hdo.b, $$1);
+   public hdr(alz $$0) {
+      this.a = $$0;
    }
 
-   private static Set<hdu> d() {
-      Set<hdu> $$0 = new HashSet<>();
-      ma.g.c().forEach($$1 -> {
-         alz $$2 = $$1.a().g().a(ku.i);
-         if ($$2 != null) {
-            $$0.add(hdu.a($$2));
-         }
-
-         if ($$1.a() instanceof cvx $$4) {
-            $$0.add(hdu.a($$4.b()));
-            $$0.add(hdu.a($$4.c()));
-         }
-      });
-      $$0.add(gsh.i);
-      $$0.add(gsh.j);
-      return $$0;
-   }
-
-   private void a(hdu $$0, hdz $$1) {
-      this.e.put($$0, $$1);
-   }
-
-   public void a(hdi.c $$0) {
-      this.f.put(hdy.a, hdy.c);
-      this.f.put(hdy.b, hdy.d);
-      Set<hdu> $$1 = d();
-      $$0.a().forEach(($$1x, $$2) -> {
-         this.a($$1x, $$2.b());
-         $$1.remove($$1x);
-      });
-      this.c.keySet().forEach($$1x -> {
-         if ($$1x.a().startsWith("item/")) {
-            hdu $$2 = hdu.a($$1x.a((UnaryOperator<String>)($$0xx -> $$0xx.substring("item/".length()))));
-            this.a($$2, new hdm($$1x));
-            $$1.remove($$2);
-         }
-      });
-      if (!$$1.isEmpty()) {
-         b.warn("Missing mandatory models: {}", $$1.stream().map($$0x -> "\n\t" + $$0x).collect(Collectors.joining()));
+   @Override
+   public void a(hee.a $$0) {
+      if ($$0.a(this.a) instanceof gmv $$2) {
+         this.b = $$2.e();
+         this.b.forEach($$1 -> $$0.a($$1.a()));
       }
    }
 
-   public void a() {
-      this.e.values().forEach($$0 -> $$0.a(new hdr.a()));
-   }
-
-   public Map<hdu, hdz> b() {
-      return this.e;
-   }
-
-   public Map<alz, hdz> c() {
-      return this.f;
-   }
-
-   hdz a(alz $$0) {
-      return this.f.computeIfAbsent($$0, this::b);
-   }
-
-   private hdz b(alz $$0) {
-      hdz $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         b.warn("Missing block model: '{}'", $$0);
-         return this.d;
+   @Override
+   public hdl a(hdu $$0, Function<hds, hbj> $$1, hea $$2) {
+      hdl $$3 = $$0.a(this.a, $$2);
+      if (this.b.isEmpty()) {
+         return $$3;
       } else {
-         return $$1;
+         gmp $$4 = new gmp($$0, this.b);
+         return new hdr.a($$3, $$4);
       }
    }
 
-   class a implements hdz.a {
-      private final List<alz> b = new ArrayList<>();
-      private final Set<alz> c = new HashSet<>();
+   static class a extends hdp {
+      private final gmp b;
+
+      public a(hdl $$0, gmp $$1) {
+         super($$0);
+         this.b = $$1;
+      }
 
       @Override
-      public hdz a(alz $$0) {
-         if (this.b.contains($$0)) {
-            hdr.b.warn("Detected model loading loop: {}->{}", this.a(), $$0);
-            return hdr.this.d;
-         } else {
-            hdz $$1 = hdr.this.a($$0);
-            if (this.c.add($$0)) {
-               this.b.add($$0);
-               $$1.a(this);
-               this.b.remove($$0);
-            }
-
-            return $$1;
-         }
-      }
-
-      private String a() {
-         return this.b.stream().map(alz::toString).collect(Collectors.joining("->"));
+      public gmp g() {
+         return this.b;
       }
    }
 }

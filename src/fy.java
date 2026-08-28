@@ -28,7 +28,7 @@ public class fy<T> implements ArgumentType<jq<T>> {
       return new fy.c($$0);
    }
 
-   public static jq<ewm> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+   public static jq<ewt> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fy<T> implements ArgumentType<jq<T>> {
       return new fy.a($$0);
    }
 
-   public static jq<exv> b(CommandContext<ew> $$0, String $$1) {
+   public static jq<eyc> b(CommandContext<ew> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,7 +44,7 @@ public class fy<T> implements ArgumentType<jq<T>> {
       return new fy.b($$0);
    }
 
-   public static jq<ezs> c(CommandContext<ew> $$0, String $$1) {
+   public static jq<ezx> c(CommandContext<ew> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -89,21 +89,21 @@ public class fy<T> implements ArgumentType<jq<T>> {
       return b;
    }
 
-   public static class a extends fy<exv> {
+   public static class a extends fy<eyc> {
       protected a(es $$0) {
-         super($$0, mb.bg, exx.d);
+         super($$0, mb.bh, eye.d);
       }
    }
 
-   public static class b extends fy<ezs> {
+   public static class b extends fy<ezx> {
       protected b(es $$0) {
-         super($$0, mb.bh, ezs.f);
+         super($$0, mb.bi, ezx.f);
       }
    }
 
-   public static class c extends fy<ewm> {
+   public static class c extends fy<ewt> {
       protected c(es $$0) {
-         super($$0, mb.bf, ewm.e);
+         super($$0, mb.bg, ewt.e);
       }
    }
 }

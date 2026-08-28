@@ -1,114 +1,136 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.MapCodec;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
+import java.util.EnumSet;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class eas implements AutoCloseable {
-   public static final int d = 1493;
-   private final eau a;
-   protected final DataFixer e;
-   @Nullable
-   private volatile enx b;
-
-   public eas(ebb $$0, Path $$1, DataFixer $$2, boolean $$3) {
-      this.e = $$2;
-      this.a = new eau($$0, $$1, $$3);
+public class eas {
+   private static boolean a(dzp $$0) {
+      return $$0.j().a(eaq.l) && $$0.u();
    }
 
-   public boolean b(dgg $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   static CompletableFuture<dzp> a(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      return CompletableFuture.completedFuture($$3);
    }
 
-   public ux a(aly<dha> $$0, Supplier<evp> $$1, ux $$2, Optional<aly<MapCodec<? extends dzj>>> $$3) {
-      int $$4 = a($$2);
-      if ($$4 == ab.b().d().c()) {
-         return $$2;
-      } else {
-         try {
-            if ($$4 < 1493) {
-               $$2 = bbo.c.a(this.e, $$2, $$4, 1493);
-               if ($$2.p("Level").q("hasLegacyStructureData")) {
-                  enx $$5 = this.a($$0, $$1);
-                  $$2 = $$5.a($$2);
+   static CompletableFuture<dzp> b(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      ash $$4 = $$0.a();
+      if ($$4.p().aZ().y().d()) {
+         $$0.b().a($$4.K_(), $$4.m().h(), $$4.b(), $$3, $$0.c());
+      }
+
+      $$4.a($$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dzp> c(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      $$0.a().a($$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dzp> d(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      ash $$4 = $$0.a();
+      asp $$5 = new asp($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$4.b().a($$5), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dzp> e(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      ash $$4 = $$0.a();
+      asp $$5 = new asp($$4, $$2, $$1, $$3);
+      return $$0.b().a($$4.m().i(), eer.a($$5), $$4.b().a($$5), $$3);
+   }
+
+   static CompletableFuture<dzp> f(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      ash $$4 = $$0.a();
+      asp $$5 = new asp($$4, $$2, $$1, $$3);
+      return $$0.b().a(eer.a($$5), $$4.m().i(), $$4.b().a($$5), $$3).thenApply($$0x -> {
+         if ($$0x instanceof eaj $$1x) {
+            edd $$2x = $$1x.w();
+            if ($$2x != null) {
+               edd.a($$1x);
+               if ($$2x.b()) {
+                  $$2x.b($$1x);
                }
             }
-
-            a($$2, $$0, $$3);
-            $$2 = bbo.c.a(this.e, $$2, Math.max(1493, $$4));
-            b($$2);
-            vm.e($$2);
-            return $$2;
-         } catch (Exception var9) {
-            o $$7 = o.a(var9, "Updated chunk");
-            p $$8 = $$7.a("Updated chunk details");
-            $$8.a("Data version", $$4);
-            throw new z($$7);
          }
-      }
+
+         return $$0x;
+      });
    }
 
-   private enx a(aly<dha> $$0, Supplier<evp> $$1) {
-      enx $$2 = this.b;
-      if ($$2 == null) {
-         synchronized (this) {
-            $$2 = this.b;
-            if ($$2 == null) {
-               this.b = $$2 = enx.a($$0, $$1.get());
-            }
+   static CompletableFuture<dzp> g(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      ash $$4 = $$0.a();
+      asp $$5 = new asp($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$4.b().a($$5), $$4.m().i(), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dzp> h(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      ash $$4 = $$0.a();
+      asp $$5 = new asp($$4, $$2, $$1, $$3);
+      if ($$3 instanceof eaj $$6) {
+         eer.a($$5, $$6);
+      }
+
+      $$0.b().a($$5, $$4.D(), $$4.m().i(), $$4.I_(), $$4.b().a($$5), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dzp> i(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      ash $$4 = $$0.a();
+      edp.a($$3, EnumSet.of(edp.a.e, edp.a.f, edp.a.d, edp.a.b));
+      asp $$5 = new asp($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$3, $$4.b().a($$5));
+      eer.a($$5, $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dzp> j(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      ask $$4 = $$0.d();
+      $$3.z();
+      ((eaj)$$3).a($$4);
+      boolean $$5 = a($$3);
+      return $$4.a($$3, $$5);
+   }
+
+   static CompletableFuture<dzp> k(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      boolean $$4 = a($$3);
+      return $$0.d().b($$3, $$4);
+   }
+
+   static CompletableFuture<dzp> l(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      if (!$$3.x()) {
+         $$0.b().a(new asp($$0.a(), $$2, $$1, $$3));
+      }
+
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<dzp> m(eav $$0, eat $$1, bay<ary> $$2, dzp $$3) {
+      dgn $$4 = $$3.f();
+      ary $$5 = $$2.a($$4.g, $$4.h);
+      return CompletableFuture.supplyAsync(() -> {
+         eaj $$3x = (eaj)$$3;
+         ash $$4x = $$0.a();
+         dzz $$6;
+         if ($$3x instanceof dzy $$5x) {
+            $$6 = $$5x.D();
+         } else {
+            $$6 = new dzz($$4x, $$3x, $$2xx -> a($$4x, $$3x.F()));
+            $$5.a(new dzy($$6, false));
          }
+
+         $$6.b($$5::r);
+         $$6.D();
+         $$6.c(true);
+         $$6.H();
+         $$6.b($$4x);
+         return $$6;
+      }, $$0.e());
+   }
+
+   private static void a(ash $$0, List<ux> $$1) {
+      if (!$$1.isEmpty()) {
+         $$0.b(bvq.a($$1, $$0, bvp.r));
       }
-
-      return $$2;
-   }
-
-   public static void a(ux $$0, aly<dha> $$1, Optional<aly<MapCodec<? extends dzj>>> $$2) {
-      ux $$3 = new ux();
-      $$3.a("dimension", $$1.a().toString());
-      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
-      $$0.a("__context", $$3);
-   }
-
-   private static void b(ux $$0) {
-      $$0.r("__context");
-   }
-
-   public static int a(ux $$0) {
-      return vm.b($$0, -1);
-   }
-
-   public CompletableFuture<Optional<ux>> d(dgg $$0) {
-      return this.a.a($$0);
-   }
-
-   public CompletableFuture<Void> a(dgg $$0, Supplier<ux> $$1) {
-      this.e($$0);
-      return this.a.a($$0, $$1);
-   }
-
-   protected void e(dgg $$0) {
-      if (this.b != null) {
-         this.b.a($$0.a());
-      }
-   }
-
-   public void o() {
-      this.a.a(true).join();
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.a.close();
-   }
-
-   public ear p() {
-      return this.a;
-   }
-
-   protected ebb q() {
-      return this.a.a();
    }
 }

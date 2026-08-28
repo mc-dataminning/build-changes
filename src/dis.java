@@ -1,519 +1,542 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public final class dis {
-   private static final float h = 0.05F;
-   private static final float i = 0.26666668F;
-   public static final float a = 0.4F;
-   private static final float j = 0.93333334F;
-   private static final float k = 0.1F;
-   public static final float b = 0.56666666F;
-   private static final float l = 0.7666667F;
-   public static final float c = -0.11F;
-   public static final float d = 0.03F;
-   public static final float e = 0.3F;
-   public static final float f = -0.78F;
-   public static final float g = -0.375F;
-   private static final float m = -0.225F;
-   private static final float n = 0.9F;
-   private final dis.a o;
-   private final dil.b p = dil.b.a(-1.0F, 1.0F);
-   private final dil.b[] q = new dil.b[]{dil.b.a(-1.0F, -0.45F), dil.b.a(-0.45F, -0.15F), dil.b.a(-0.15F, 0.2F), dil.b.a(0.2F, 0.55F), dil.b.a(0.55F, 1.0F)};
-   private final dil.b[] r = new dil.b[]{dil.b.a(-1.0F, -0.35F), dil.b.a(-0.35F, -0.1F), dil.b.a(-0.1F, 0.1F), dil.b.a(0.1F, 0.3F), dil.b.a(0.3F, 1.0F)};
-   private final dil.b[] s = new dil.b[]{
-      dil.b.a(-1.0F, -0.78F),
-      dil.b.a(-0.78F, -0.375F),
-      dil.b.a(-0.375F, -0.2225F),
-      dil.b.a(-0.2225F, 0.05F),
-      dil.b.a(0.05F, 0.45F),
-      dil.b.a(0.45F, 0.55F),
-      dil.b.a(0.55F, 1.0F)
-   };
-   private final dil.b t = this.q[0];
-   private final dil.b u = dil.b.a(this.q[1], this.q[4]);
-   private final dil.b v = dil.b.a(-1.2F, -1.05F);
-   private final dil.b w = dil.b.a(-1.05F, -0.455F);
-   private final dil.b x = dil.b.a(-0.455F, -0.19F);
-   private final dil.b y = dil.b.a(-0.19F, -0.11F);
-   private final dil.b z = dil.b.a(-0.11F, 0.55F);
-   private final dil.b A = dil.b.a(-0.11F, 0.03F);
-   private final dil.b B = dil.b.a(0.03F, 0.3F);
-   private final dil.b C = dil.b.a(0.3F, 1.0F);
-   private final aly<dic>[][] D = new aly[][]{{dij.X, dij.V, dij.T, dij.R, dij.P}, {dij.W, dij.U, dij.S, dij.Q, dij.P}};
-   private final aly<dic>[][] E = new aly[][]{
-      {dij.d, dij.d, dij.d, dij.q, dij.p},
-      {dij.b, dij.b, dij.i, dij.p, dij.o},
-      {dij.j, dij.b, dij.i, dij.k, dij.l},
-      {dij.r, dij.r, dij.i, dij.x, dij.x},
-      {dij.f, dij.f, dij.f, dij.f, dij.f}
-   };
-   private final aly<dic>[][] F = new aly[][]{
-      {dij.e, null, dij.q, null, null},
-      {null, null, null, null, dij.n},
-      {dij.c, null, null, dij.m, null},
-      {null, null, dij.b, dij.y, dij.z},
-      {null, null, null, null, null}
-   };
-   private final aly<dic>[][] G = new aly[][]{
-      {dij.d, dij.d, dij.d, dij.q, dij.q},
-      {dij.D, dij.D, dij.i, dij.p, dij.o},
-      {dij.D, dij.D, dij.D, dij.D, dij.l},
-      {dij.s, dij.s, dij.i, dij.i, dij.x},
-      {dij.A, dij.A, dij.A, dij.C, dij.C}
-   };
-   private final aly<dic>[][] H = new aly[][]{
-      {dij.e, null, null, null, null},
-      {dij.E, null, dij.D, dij.D, dij.n},
-      {dij.E, dij.E, dij.i, dij.k, null},
-      {null, null, null, null, null},
-      {dij.B, dij.B, null, null, null}
-   };
-   private final aly<dic>[][] I = new aly[][]{
-      {dij.e, null, null, null, null},
-      {dij.E, null, dij.D, dij.D, dij.n},
-      {dij.E, dij.E, dij.i, dij.k, sd.a},
-      {null, null, null, null, null},
-      {dij.B, dij.B, null, null, null}
-   };
-   private final aly<dic>[][] J = new aly[][]{
-      {dij.u, dij.u, dij.t, dij.v, dij.v},
-      {dij.u, dij.u, dij.t, dij.v, dij.v},
-      {dij.t, dij.t, dij.t, dij.v, dij.v},
-      {null, null, null, null, null},
-      {null, null, null, null, null}
-   };
+public class dis {
+   private static final boolean b = false;
+   private static final float c = 10000.0F;
+   @VisibleForTesting
+   protected static final int a = 7;
 
-   public dis() {
-      this(dis.a.a);
+   public static dis.h a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new dis.h(a($$0), a($$1), a($$2), a($$3), a($$4), a($$5));
    }
 
-   public dis(dis.a $$0) {
-      this.o = $$0;
+   public static dis.d a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      return new dis.d(dis.b.a($$0), dis.b.a($$1), dis.b.a($$2), dis.b.a($$3), dis.b.a($$4), dis.b.a($$5), a($$6));
    }
 
-   public List<dil.d> a() {
-      dil.b $$0 = dil.b.a(0.0F);
-      float $$1 = 0.16F;
-      return List.of(
-         new dil.d(this.p, this.p, dil.b.a(this.z, this.p), this.p, $$0, dil.b.a(-1.0F, -0.16F), 0L),
-         new dil.d(this.p, this.p, dil.b.a(this.z, this.p), this.p, $$0, dil.b.a(0.16F, 1.0F), 0L)
+   public static dis.d a(dis.b $$0, dis.b $$1, dis.b $$2, dis.b $$3, dis.b $$4, dis.b $$5, float $$6) {
+      return new dis.d($$0, $$1, $$2, $$3, $$4, $$5, a($$6));
+   }
+
+   public static long a(float $$0) {
+      return (long)($$0 * 10000.0F);
+   }
+
+   public static float a(long $$0) {
+      return (float)$$0 / 10000.0F;
+   }
+
+   public static dis.f a() {
+      edi $$0 = edj.a();
+      return new dis.f($$0, $$0, $$0, $$0, $$0, $$0, List.of());
+   }
+
+   public static jh a(List<dis.d> $$0, dis.f $$1) {
+      return (new dis.g($$0, $$1)).b.a();
+   }
+
+   interface a<T> {
+      long distance(dis.e.b<T> var1, long[] var2);
+   }
+
+   public static record b(long b, long c) {
+      public static final Codec<dis.b> a = azn.a(
+         Codec.floatRange(-2.0F, 2.0F),
+         "min",
+         "max",
+         ($$0, $$1) -> $$0.compareTo($$1) > 0
+               ? DataResult.error(() -> "Cannon construct interval, min > max (" + $$0 + " > " + $$1 + ")")
+               : DataResult.success(new dis.b(dis.a($$0), dis.a($$1))),
+         $$0 -> dis.a($$0.a()),
+         $$0 -> dis.a($$0.b())
       );
-   }
 
-   protected void a(Consumer<Pair<dil.d, aly<dic>>> $$0) {
-      if (ab.ar) {
-         this.b($$0);
-      } else {
-         this.c($$0);
-         this.d($$0);
-         this.e($$0);
+      public static dis.b a(float $$0) {
+         return a($$0, $$0);
       }
-   }
 
-   private void b(Consumer<Pair<dil.d, aly<dic>>> $$0) {
-      js.a $$1 = ps.a();
-      jr<edb> $$2 = $$1.d(mb.aL);
-      edc.w.a $$3 = new edc.w.a($$2.b(edp.d));
-      edc.w.a $$4 = new edc.w.a($$2.b(edp.e));
-      edc.w.a $$5 = new edc.w.a($$2.b(edp.g));
-      $$0.accept(Pair.of(dil.a(this.p, this.p, this.p, this.p, dil.b.a(0.0F), this.p, 0.01F), dij.b));
-      if (rz.a($$4, $$5, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, bbh.a) instanceof azg.e<?, ?> $$7) {
-         aly<dic> $$8 = dij.f;
-
-         for (float $$9 : $$7.e()) {
-            $$0.accept(Pair.of(dil.a(this.p, this.p, this.p, dil.b.a($$9), dil.b.a(0.0F), this.p, 0.0F), $$8));
-            $$8 = $$8 == dij.f ? dij.A : dij.f;
+      public static dis.b a(float $$0, float $$1) {
+         if ($$0 > $$1) {
+            throw new IllegalArgumentException("min > max: " + $$0 + " " + $$1);
+         } else {
+            return new dis.b(dis.a($$0), dis.a($$1));
          }
       }
 
-      if (rz.a($$3, $$4, $$5, false) instanceof azg.e<?, ?> $$11) {
-         for (float $$12 : $$11.e()) {
-            $$0.accept(Pair.of(dil.a(this.p, this.p, dil.b.a($$12), this.p, dil.b.a(0.0F), this.p, 0.0F), dij.q));
+      public static dis.b a(dis.b $$0, dis.b $$1) {
+         if ($$0.a() > $$1.b()) {
+            throw new IllegalArgumentException("min > max: " + $$0 + " " + $$1);
+         } else {
+            return new dis.b($$0.a(), $$1.b());
          }
       }
-   }
 
-   private void c(Consumer<Pair<dil.d, aly<dic>>> $$0) {
-      this.a($$0, this.p, this.p, this.v, this.p, this.p, 0.0F, dij.Y);
+      @Override
+      public String toString() {
+         return this.b == this.c ? String.format(Locale.ROOT, "%d", this.b) : String.format(Locale.ROOT, "[%d-%d]", this.b, this.c);
+      }
 
-      for (int $$1 = 0; $$1 < this.q.length; $$1++) {
-         dil.b $$2 = this.q[$$1];
-         this.a($$0, $$2, this.p, this.w, this.p, this.p, 0.0F, this.D[0][$$1]);
-         this.a($$0, $$2, this.p, this.x, this.p, this.p, 0.0F, this.D[1][$$1]);
+      public long a(long $$0) {
+         long $$1 = $$0 - this.c;
+         long $$2 = this.b - $$0;
+         return $$1 > 0L ? $$1 : Math.max($$2, 0L);
+      }
+
+      public long a(dis.b $$0) {
+         long $$1 = $$0.a() - this.c;
+         long $$2 = this.b - $$0.b();
+         return $$1 > 0L ? $$1 : Math.max($$2, 0L);
+      }
+
+      public dis.b b(@Nullable dis.b $$0) {
+         return $$0 == null ? this : new dis.b(Math.min(this.b, $$0.a()), Math.max(this.c, $$0.b()));
+      }
+
+      public long a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
       }
    }
 
-   private void d(Consumer<Pair<dil.d, aly<dic>>> $$0) {
-      this.c($$0, dil.b.a(-1.0F, -0.93333334F));
-      this.b($$0, dil.b.a(-0.93333334F, -0.7666667F));
-      this.a($$0, dil.b.a(-0.7666667F, -0.56666666F));
-      this.b($$0, dil.b.a(-0.56666666F, -0.4F));
-      this.c($$0, dil.b.a(-0.4F, -0.26666668F));
-      this.d($$0, dil.b.a(-0.26666668F, -0.05F));
-      this.e($$0, dil.b.a(-0.05F, 0.05F));
-      this.d($$0, dil.b.a(0.05F, 0.26666668F));
-      this.c($$0, dil.b.a(0.26666668F, 0.4F));
-      this.b($$0, dil.b.a(0.4F, 0.56666666F));
-      this.a($$0, dil.b.a(0.56666666F, 0.7666667F));
-      this.b($$0, dil.b.a(0.7666667F, 0.93333334F));
-      this.c($$0, dil.b.a(0.93333334F, 1.0F));
-   }
+   public static class c<T> {
+      private final List<Pair<dis.d, T>> a;
+      private final dis.e<T> b;
 
-   private void a(Consumer<Pair<dil.d, aly<dic>>> $$0, dil.b $$1) {
-      for (int $$2 = 0; $$2 < this.q.length; $$2++) {
-         dil.b $$3 = this.q[$$2];
+      public static <T> Codec<dis.c<T>> a(MapCodec<T> $$0) {
+         return azn.a(
+               RecordCodecBuilder.create(
+                     $$1 -> $$1.group(dis.d.a.fieldOf("parameters").forGetter(Pair::getFirst), $$0.forGetter(Pair::getSecond)).apply($$1, Pair::of)
+                  )
+                  .listOf()
+            )
+            .xmap(dis.c::new, dis.c::a);
+      }
 
-         for (int $$4 = 0; $$4 < this.r.length; $$4++) {
-            dil.b $$5 = this.r[$$4];
-            aly<dic> $$6 = this.a($$2, $$4, $$1);
-            aly<dic> $$7 = this.b($$2, $$4, $$1);
-            aly<dic> $$8 = this.c($$2, $$4, $$1);
-            aly<dic> $$9 = this.e($$2, $$4, $$1);
-            aly<dic> $$10 = this.h($$2, $$4, $$1);
-            aly<dic> $$11 = this.a($$2, $$4, $$1, $$10);
-            aly<dic> $$12 = this.f($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.C), this.s[0], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.A), this.s[1], $$1, 0.0F, $$8);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[1], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.A), dil.b.a(this.s[2], this.s[3]), $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[2], $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, this.B, this.s[3], $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, this.C, this.s[3], $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.C), this.s[4], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.A), this.s[5], $$1, 0.0F, $$11);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[5], $$1, 0.0F, $$10);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.C), this.s[6], $$1, 0.0F, $$6);
+      public c(List<Pair<dis.d, T>> $$0) {
+         this.a = $$0;
+         this.b = dis.e.a($$0);
+      }
+
+      public List<Pair<dis.d, T>> a() {
+         return this.a;
+      }
+
+      public T a(dis.h $$0) {
+         return this.c($$0);
+      }
+
+      @VisibleForTesting
+      public T b(dis.h $$0) {
+         Iterator<Pair<dis.d, T>> $$1 = this.a().iterator();
+         Pair<dis.d, T> $$2 = $$1.next();
+         long $$3 = ((dis.d)$$2.getFirst()).a($$0);
+         T $$4 = (T)$$2.getSecond();
+
+         while ($$1.hasNext()) {
+            Pair<dis.d, T> $$5 = $$1.next();
+            long $$6 = ((dis.d)$$5.getFirst()).a($$0);
+            if ($$6 < $$3) {
+               $$3 = $$6;
+               $$4 = (T)$$5.getSecond();
+            }
          }
+
+         return $$4;
+      }
+
+      public T c(dis.h $$0) {
+         return this.a($$0, dis.e.b::a);
+      }
+
+      protected T a(dis.h $$0, dis.a<T> $$1) {
+         return this.b.a($$0, $$1);
       }
    }
 
-   private void b(Consumer<Pair<dil.d, aly<dic>>> $$0, dil.b $$1) {
-      for (int $$2 = 0; $$2 < this.q.length; $$2++) {
-         dil.b $$3 = this.q[$$2];
+   public static record d(dis.b b, dis.b c, dis.b d, dis.b e, dis.b f, dis.b g, long h) {
+      public static final Codec<dis.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dis.b.a.fieldOf("temperature").forGetter($$0x -> $$0x.b),
+                  dis.b.a.fieldOf("humidity").forGetter($$0x -> $$0x.c),
+                  dis.b.a.fieldOf("continentalness").forGetter($$0x -> $$0x.d),
+                  dis.b.a.fieldOf("erosion").forGetter($$0x -> $$0x.e),
+                  dis.b.a.fieldOf("depth").forGetter($$0x -> $$0x.f),
+                  dis.b.a.fieldOf("weirdness").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("offset").xmap(dis::a, dis::a).forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, dis.d::new)
+      );
 
-         for (int $$4 = 0; $$4 < this.r.length; $$4++) {
-            dil.b $$5 = this.r[$$4];
-            aly<dic> $$6 = this.a($$2, $$4, $$1);
-            aly<dic> $$7 = this.b($$2, $$4, $$1);
-            aly<dic> $$8 = this.c($$2, $$4, $$1);
-            aly<dic> $$9 = this.e($$2, $$4, $$1);
-            aly<dic> $$10 = this.h($$2, $$4, $$1);
-            aly<dic> $$11 = this.a($$2, $$4, $$1, $$6);
-            aly<dic> $$12 = this.g($$2, $$4, $$1);
-            aly<dic> $$13 = this.f($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, this.y, dil.b.a(this.s[0], this.s[1]), $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, this.A, this.s[0], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[0], $$1, 0.0F, $$13);
-            this.a($$0, $$3, $$5, this.A, this.s[1], $$1, 0.0F, $$8);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[1], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.A), dil.b.a(this.s[2], this.s[3]), $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[2], $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, this.B, this.s[3], $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, this.C, this.s[3], $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.C), this.s[4], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.A), this.s[5], $$1, 0.0F, $$11);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[5], $$1, 0.0F, $$10);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.C), this.s[6], $$1, 0.0F, $$6);
-         }
+      long a(dis.h $$0) {
+         return bae.b(this.b.a($$0.a))
+            + bae.b(this.c.a($$0.b))
+            + bae.b(this.d.a($$0.c))
+            + bae.b(this.e.a($$0.d))
+            + bae.b(this.f.a($$0.e))
+            + bae.b(this.g.a($$0.f))
+            + bae.b(this.h);
+      }
+
+      protected List<dis.b> a() {
+         return ImmutableList.of(this.b, this.c, this.d, this.e, this.f, this.g, new dis.b(this.h, this.h));
       }
    }
 
-   private void c(Consumer<Pair<dil.d, aly<dic>>> $$0, dil.b $$1) {
-      this.a($$0, this.p, this.p, this.y, dil.b.a(this.s[0], this.s[2]), $$1, 0.0F, dij.O);
-      this.a($$0, dil.b.a(this.q[1], this.q[2]), this.p, dil.b.a(this.A, this.C), this.s[6], $$1, 0.0F, dij.g);
-      this.a($$0, dil.b.a(this.q[3], this.q[4]), this.p, dil.b.a(this.A, this.C), this.s[6], $$1, 0.0F, dij.h);
+   protected static final class e<T> {
+      private static final int a = 6;
+      private final dis.e.b<T> b;
+      private final ThreadLocal<dis.e.a<T>> c = new ThreadLocal<>();
 
-      for (int $$2 = 0; $$2 < this.q.length; $$2++) {
-         dil.b $$3 = this.q[$$2];
+      private e(dis.e.b<T> $$0) {
+         this.b = $$0;
+      }
 
-         for (int $$4 = 0; $$4 < this.r.length; $$4++) {
-            dil.b $$5 = this.r[$$4];
-            aly<dic> $$6 = this.a($$2, $$4, $$1);
-            aly<dic> $$7 = this.b($$2, $$4, $$1);
-            aly<dic> $$8 = this.c($$2, $$4, $$1);
-            aly<dic> $$9 = this.h($$2, $$4, $$1);
-            aly<dic> $$10 = this.e($$2, $$4, $$1);
-            aly<dic> $$11 = this.a($$2, $$4);
-            aly<dic> $$12 = this.a($$2, $$4, $$1, $$6);
-            aly<dic> $$13 = this.d($$2, $$4, $$1);
-            aly<dic> $$14 = this.g($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, dil.b.a(this.A, this.C), this.s[0], $$1, 0.0F, $$14);
-            this.a($$0, $$3, $$5, dil.b.a(this.A, this.B), this.s[1], $$1, 0.0F, $$8);
-            this.a($$0, $$3, $$5, this.C, this.s[1], $$1, 0.0F, $$2 == 0 ? $$14 : $$10);
-            this.a($$0, $$3, $$5, this.A, this.s[2], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, this.B, this.s[2], $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, this.C, this.s[2], $$1, 0.0F, $$10);
-            this.a($$0, $$3, $$5, dil.b.a(this.y, this.A), this.s[3], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[3], $$1, 0.0F, $$7);
-            if ($$1.b() < 0L) {
-               this.a($$0, $$3, $$5, this.y, this.s[4], $$1, 0.0F, $$11);
-               this.a($$0, $$3, $$5, dil.b.a(this.A, this.C), this.s[4], $$1, 0.0F, $$6);
+      public static <T> dis.e<T> a(List<Pair<dis.d, T>> $$0) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Need at least one value to build the search tree.");
+         } else {
+            int $$1 = ((dis.d)$$0.get(0).getFirst()).a().size();
+            if ($$1 != 7) {
+               throw new IllegalStateException("Expecting parameter space to be 7, got " + $$1);
             } else {
-               this.a($$0, $$3, $$5, dil.b.a(this.y, this.C), this.s[4], $$1, 0.0F, $$6);
-            }
-
-            this.a($$0, $$3, $$5, this.y, this.s[5], $$1, 0.0F, $$13);
-            this.a($$0, $$3, $$5, this.A, this.s[5], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[5], $$1, 0.0F, $$9);
-            if ($$1.b() < 0L) {
-               this.a($$0, $$3, $$5, this.y, this.s[6], $$1, 0.0F, $$11);
-            } else {
-               this.a($$0, $$3, $$5, this.y, this.s[6], $$1, 0.0F, $$6);
-            }
-
-            if ($$2 == 0) {
-               this.a($$0, $$3, $$5, dil.b.a(this.A, this.C), this.s[6], $$1, 0.0F, $$6);
+               List<dis.e.a<T>> $$2 = $$0.stream()
+                  .map($$0x -> new dis.e.a<>((dis.d)$$0x.getFirst(), $$0x.getSecond()))
+                  .collect(Collectors.toCollection(ArrayList::new));
+               return new dis.e<>(a($$1, $$2));
             }
          }
       }
+
+      private static <T> dis.e.b<T> a(int $$0, List<? extends dis.e.b<T>> $$1) {
+         if ($$1.isEmpty()) {
+            throw new IllegalStateException("Need at least one child to build a node");
+         } else if ($$1.size() == 1) {
+            return (dis.e.b<T>)$$1.get(0);
+         } else if ($$1.size() <= 6) {
+            $$1.sort(Comparator.comparingLong($$1x -> {
+               long $$2x = 0L;
+
+               for (int $$3x = 0; $$3x < $$0; $$3x++) {
+                  dis.b $$4x = $$1x.a[$$3x];
+                  $$2x += Math.abs(($$4x.a() + $$4x.b()) / 2L);
+               }
+
+               return $$2x;
+            }));
+            return new dis.e.c<>($$1);
+         } else {
+            long $$2 = Long.MAX_VALUE;
+            int $$3 = -1;
+            List<dis.e.c<T>> $$4 = null;
+
+            for (int $$5 = 0; $$5 < $$0; $$5++) {
+               a($$1, $$0, $$5, false);
+               List<dis.e.c<T>> $$6 = b($$1);
+               long $$7 = 0L;
+
+               for (dis.e.c<T> $$8 : $$6) {
+                  $$7 += a($$8.a);
+               }
+
+               if ($$2 > $$7) {
+                  $$2 = $$7;
+                  $$3 = $$5;
+                  $$4 = $$6;
+               }
+            }
+
+            a($$4, $$0, $$3, true);
+            return new dis.e.c<>($$4.stream().map($$1x -> a($$0, Arrays.asList($$1x.b))).collect(Collectors.toList()));
+         }
+      }
+
+      private static <T> void a(List<? extends dis.e.b<T>> $$0, int $$1, int $$2, boolean $$3) {
+         Comparator<dis.e.b<T>> $$4 = a($$2, $$3);
+
+         for (int $$5 = 1; $$5 < $$1; $$5++) {
+            $$4 = $$4.thenComparing(a(($$2 + $$5) % $$1, $$3));
+         }
+
+         $$0.sort($$4);
+      }
+
+      private static <T> Comparator<dis.e.b<T>> a(int $$0, boolean $$1) {
+         return Comparator.comparingLong($$2 -> {
+            dis.b $$3 = $$2.a[$$0];
+            long $$4 = ($$3.a() + $$3.b()) / 2L;
+            return $$1 ? Math.abs($$4) : $$4;
+         });
+      }
+
+      private static <T> List<dis.e.c<T>> b(List<? extends dis.e.b<T>> $$0) {
+         List<dis.e.c<T>> $$1 = Lists.newArrayList();
+         List<dis.e.b<T>> $$2 = Lists.newArrayList();
+         int $$3 = (int)Math.pow(6.0, Math.floor(Math.log((double)$$0.size() - 0.01) / Math.log(6.0)));
+
+         for (dis.e.b<T> $$4 : $$0) {
+            $$2.add($$4);
+            if ($$2.size() >= $$3) {
+               $$1.add(new dis.e.c<>($$2));
+               $$2 = Lists.newArrayList();
+            }
+         }
+
+         if (!$$2.isEmpty()) {
+            $$1.add(new dis.e.c<>($$2));
+         }
+
+         return $$1;
+      }
+
+      private static long a(dis.b[] $$0) {
+         long $$1 = 0L;
+
+         for (dis.b $$2 : $$0) {
+            $$1 += Math.abs($$2.b() - $$2.a());
+         }
+
+         return $$1;
+      }
+
+      static <T> List<dis.b> c(List<? extends dis.e.b<T>> $$0) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("SubTree needs at least one child");
+         } else {
+            int $$1 = 7;
+            List<dis.b> $$2 = Lists.newArrayList();
+
+            for (int $$3 = 0; $$3 < 7; $$3++) {
+               $$2.add(null);
+            }
+
+            for (dis.e.b<T> $$4 : $$0) {
+               for (int $$5 = 0; $$5 < 7; $$5++) {
+                  $$2.set($$5, $$4.a[$$5].b($$2.get($$5)));
+               }
+            }
+
+            return $$2;
+         }
+      }
+
+      public T a(dis.h $$0, dis.a<T> $$1) {
+         long[] $$2 = $$0.a();
+         dis.e.a<T> $$3 = this.b.a($$2, this.c.get(), $$1);
+         this.c.set($$3);
+         return $$3.b;
+      }
+
+      static final class a<T> extends dis.e.b<T> {
+         final T b;
+
+         a(dis.d $$0, T $$1) {
+            super($$0.a());
+            this.b = $$1;
+         }
+
+         @Override
+         protected dis.e.a<T> a(long[] $$0, @Nullable dis.e.a<T> $$1, dis.a<T> $$2) {
+            return this;
+         }
+      }
+
+      abstract static class b<T> {
+         protected final dis.b[] a;
+
+         protected b(List<dis.b> $$0) {
+            this.a = $$0.toArray(new dis.b[0]);
+         }
+
+         protected abstract dis.e.a<T> a(long[] var1, @Nullable dis.e.a<T> var2, dis.a<T> var3);
+
+         protected long a(long[] $$0) {
+            long $$1 = 0L;
+
+            for (int $$2 = 0; $$2 < 7; $$2++) {
+               $$1 += bae.b(this.a[$$2].a($$0[$$2]));
+            }
+
+            return $$1;
+         }
+
+         @Override
+         public String toString() {
+            return Arrays.toString((Object[])this.a);
+         }
+      }
+
+      static final class c<T> extends dis.e.b<T> {
+         final dis.e.b<T>[] b;
+
+         protected c(List<? extends dis.e.b<T>> $$0) {
+            this(dis.e.c($$0), $$0);
+         }
+
+         protected c(List<dis.b> $$0, List<? extends dis.e.b<T>> $$1) {
+            super($$0);
+            this.b = $$1.toArray(new dis.e.b[0]);
+         }
+
+         @Override
+         protected dis.e.a<T> a(long[] $$0, @Nullable dis.e.a<T> $$1, dis.a<T> $$2) {
+            long $$3 = $$1 == null ? Long.MAX_VALUE : $$2.distance($$1, $$0);
+            dis.e.a<T> $$4 = $$1;
+
+            for (dis.e.b<T> $$5 : this.b) {
+               long $$6 = $$2.distance($$5, $$0);
+               if ($$3 > $$6) {
+                  dis.e.a<T> $$7 = $$5.a($$0, $$4, $$2);
+                  long $$8 = $$5 == $$7 ? $$6 : $$2.distance($$7, $$0);
+                  if ($$3 > $$8) {
+                     $$3 = $$8;
+                     $$4 = $$7;
+                  }
+               }
+            }
+
+            return $$4;
+         }
+      }
    }
 
-   private void d(Consumer<Pair<dil.d, aly<dic>>> $$0, dil.b $$1) {
-      this.a($$0, this.p, this.p, this.y, dil.b.a(this.s[0], this.s[2]), $$1, 0.0F, dij.O);
-      this.a($$0, dil.b.a(this.q[1], this.q[2]), this.p, dil.b.a(this.A, this.C), this.s[6], $$1, 0.0F, dij.g);
-      this.a($$0, dil.b.a(this.q[3], this.q[4]), this.p, dil.b.a(this.A, this.C), this.s[6], $$1, 0.0F, dij.h);
+   public static record f(edi a, edi b, edi c, edi d, edi e, edi f, List<dis.d> g) {
+      public dis.h a(int $$0, int $$1, int $$2) {
+         int $$3 = kb.c($$0);
+         int $$4 = kb.c($$1);
+         int $$5 = kb.c($$2);
+         edi.e $$6 = new edi.e($$3, $$4, $$5);
+         return dis.a((float)this.a.a($$6), (float)this.b.a($$6), (float)this.c.a($$6), (float)this.d.a($$6), (float)this.e.a($$6), (float)this.f.a($$6));
+      }
 
-      for (int $$2 = 0; $$2 < this.q.length; $$2++) {
-         dil.b $$3 = this.q[$$2];
+      public jh a() {
+         return this.g.isEmpty() ? jh.c : dis.a(this.g, this);
+      }
 
-         for (int $$4 = 0; $$4 < this.r.length; $$4++) {
-            dil.b $$5 = this.r[$$4];
-            aly<dic> $$6 = this.a($$2, $$4, $$1);
-            aly<dic> $$7 = this.b($$2, $$4, $$1);
-            aly<dic> $$8 = this.c($$2, $$4, $$1);
-            aly<dic> $$9 = this.a($$2, $$4);
-            aly<dic> $$10 = this.a($$2, $$4, $$1, $$6);
-            aly<dic> $$11 = this.d($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, this.A, dil.b.a(this.s[0], this.s[1]), $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), dil.b.a(this.s[0], this.s[1]), $$1, 0.0F, $$8);
-            this.a($$0, $$3, $$5, this.A, dil.b.a(this.s[2], this.s[3]), $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), dil.b.a(this.s[2], this.s[3]), $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, this.y, dil.b.a(this.s[3], this.s[4]), $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, dil.b.a(this.A, this.C), this.s[4], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, this.y, this.s[5], $$1, 0.0F, $$11);
-            this.a($$0, $$3, $$5, this.A, this.s[5], $$1, 0.0F, $$10);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), this.s[5], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, this.y, this.s[6], $$1, 0.0F, $$9);
-            if ($$2 == 0) {
-               this.a($$0, $$3, $$5, dil.b.a(this.A, this.C), this.s[6], $$1, 0.0F, $$6);
+      public edi b() {
+         return this.a;
+      }
+
+      public edi c() {
+         return this.b;
+      }
+
+      public edi d() {
+         return this.c;
+      }
+
+      public edi e() {
+         return this.d;
+      }
+
+      public edi f() {
+         return this.e;
+      }
+
+      public edi g() {
+         return this.f;
+      }
+
+      public List<dis.d> h() {
+         return this.g;
+      }
+   }
+
+   static class g {
+      private static final long a = 2048L;
+      dis.g.a b;
+
+      g(List<dis.d> $$0, dis.f $$1) {
+         this.b = a($$0, $$1, 0, 0);
+         this.a($$0, $$1, 2048.0F, 512.0F);
+         this.a($$0, $$1, 512.0F, 32.0F);
+      }
+
+      private void a(List<dis.d> $$0, dis.f $$1, float $$2, float $$3) {
+         float $$4 = 0.0F;
+         float $$5 = $$3;
+         jh $$6 = this.b.a();
+
+         while ($$5 <= $$2) {
+            int $$7 = $$6.u() + (int)(Math.sin((double)$$4) * (double)$$5);
+            int $$8 = $$6.w() + (int)(Math.cos((double)$$4) * (double)$$5);
+            dis.g.a $$9 = a($$0, $$1, $$7, $$8);
+            if ($$9.b() < this.b.b()) {
+               this.b = $$9;
+            }
+
+            $$4 += $$3 / $$5;
+            if ((double)$$4 > Math.PI * 2) {
+               $$4 = 0.0F;
+               $$5 += $$3;
             }
          }
       }
-   }
 
-   private void e(Consumer<Pair<dil.d, aly<dic>>> $$0, dil.b $$1) {
-      this.a($$0, this.t, this.p, this.y, dil.b.a(this.s[0], this.s[1]), $$1, 0.0F, $$1.b() < 0L ? dij.O : dij.L);
-      this.a($$0, this.u, this.p, this.y, dil.b.a(this.s[0], this.s[1]), $$1, 0.0F, $$1.b() < 0L ? dij.O : dij.K);
-      this.a($$0, this.t, this.p, this.A, dil.b.a(this.s[0], this.s[1]), $$1, 0.0F, dij.L);
-      this.a($$0, this.u, this.p, this.A, dil.b.a(this.s[0], this.s[1]), $$1, 0.0F, dij.K);
-      this.a($$0, this.t, this.p, dil.b.a(this.y, this.C), dil.b.a(this.s[2], this.s[5]), $$1, 0.0F, dij.L);
-      this.a($$0, this.u, this.p, dil.b.a(this.y, this.C), dil.b.a(this.s[2], this.s[5]), $$1, 0.0F, dij.K);
-      this.a($$0, this.t, this.p, this.y, this.s[6], $$1, 0.0F, dij.L);
-      this.a($$0, this.u, this.p, this.y, this.s[6], $$1, 0.0F, dij.K);
-      this.a($$0, dil.b.a(this.q[1], this.q[2]), this.p, dil.b.a(this.z, this.C), this.s[6], $$1, 0.0F, dij.g);
-      this.a($$0, dil.b.a(this.q[3], this.q[4]), this.p, dil.b.a(this.z, this.C), this.s[6], $$1, 0.0F, dij.h);
-      this.a($$0, this.t, this.p, dil.b.a(this.z, this.C), this.s[6], $$1, 0.0F, dij.L);
+      private static dis.g.a a(List<dis.d> $$0, dis.f $$1, int $$2, int $$3) {
+         dis.h $$4 = $$1.a(kb.a($$2), 0, kb.a($$3));
+         dis.h $$5 = new dis.h($$4.b(), $$4.c(), $$4.d(), $$4.e(), 0L, $$4.g());
+         long $$6 = Long.MAX_VALUE;
 
-      for (int $$2 = 0; $$2 < this.q.length; $$2++) {
-         dil.b $$3 = this.q[$$2];
-
-         for (int $$4 = 0; $$4 < this.r.length; $$4++) {
-            dil.b $$5 = this.r[$$4];
-            aly<dic> $$6 = this.b($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, dil.b.a(this.B, this.C), dil.b.a(this.s[0], this.s[1]), $$1, 0.0F, $$6);
+         for (dis.d $$7 : $$0) {
+            $$6 = Math.min($$6, $$7.a($$5));
          }
+
+         long $$8 = bae.b((long)$$2) + bae.b((long)$$3);
+         long $$9 = $$6 * bae.b(2048L) + $$8;
+         return new dis.g.a(new jh($$2, 0, $$3), $$9);
+      }
+
+      static record a(jh a, long b) {
       }
    }
 
-   private void e(Consumer<Pair<dil.d, aly<dic>>> $$0) {
-      this.b($$0, this.p, this.p, dil.b.a(0.8F, 1.0F), this.p, this.p, 0.0F, dij.Z);
-      this.b($$0, this.p, dil.b.a(0.7F, 1.0F), this.p, this.p, this.p, 0.0F, dij.aa);
-      this.c($$0, this.p, this.p, this.p, dil.b.a(this.s[0], this.s[1]), this.p, 0.0F, dij.ab);
-   }
+   public static record h(long a, long b, long c, long d, long e, long f) {
 
-   private aly<dic> a(int $$0, int $$1, dil.b $$2) {
-      if ($$2.b() < 0L) {
-         return this.E[$$0][$$1];
-      } else {
-         aly<dic> $$3 = this.F[$$0][$$1];
-         return $$3 == null ? this.E[$$0][$$1] : $$3;
-      }
-   }
-
-   private aly<dic> b(int $$0, int $$1, dil.b $$2) {
-      return $$0 == 4 ? this.a($$1, $$2) : this.a($$0, $$1, $$2);
-   }
-
-   private aly<dic> c(int $$0, int $$1, dil.b $$2) {
-      return $$0 == 0 ? this.g($$0, $$1, $$2) : this.b($$0, $$1, $$2);
-   }
-
-   private aly<dic> a(int $$0, int $$1, dil.b $$2, aly<dic> $$3) {
-      return $$0 > 1 && $$1 < 4 && $$2.b() >= 0L ? dij.w : $$3;
-   }
-
-   private aly<dic> d(int $$0, int $$1, dil.b $$2) {
-      aly<dic> $$3 = $$2.b() >= 0L ? this.a($$0, $$1, $$2) : this.a($$0, $$1);
-      return this.a($$0, $$1, $$2, $$3);
-   }
-
-   private aly<dic> a(int $$0, int $$1) {
-      if ($$0 == 0) {
-         return dij.N;
-      } else {
-         return $$0 == 4 ? dij.f : dij.M;
-      }
-   }
-
-   private aly<dic> a(int $$0, dil.b $$1) {
-      if ($$0 < 2) {
-         return $$1.b() < 0L ? dij.A : dij.B;
-      } else {
-         return $$0 < 3 ? dij.A : dij.C;
-      }
-   }
-
-   private aly<dic> e(int $$0, int $$1, dil.b $$2) {
-      if ($$2.b() >= 0L) {
-         aly<dic> $$3 = (this.o == dis.a.b ? this.I : this.H)[$$0][$$1];
-         if ($$3 != null) {
-            return $$3;
-         }
+      @VisibleForTesting
+      protected long[] a() {
+         return new long[]{this.a, this.b, this.c, this.d, this.e, this.f, 0L};
       }
 
-      return this.G[$$0][$$1];
-   }
-
-   private aly<dic> f(int $$0, int $$1, dil.b $$2) {
-      if ($$0 <= 2) {
-         return $$2.b() < 0L ? dij.I : dij.H;
-      } else {
-         return $$0 == 3 ? dij.J : this.a($$1, $$2);
-      }
-   }
-
-   private aly<dic> g(int $$0, int $$1, dil.b $$2) {
-      if ($$0 >= 3) {
-         return this.e($$0, $$1, $$2);
-      } else {
-         return $$1 <= 1 ? dij.G : dij.F;
-      }
-   }
-
-   private aly<dic> h(int $$0, int $$1, dil.b $$2) {
-      aly<dic> $$3 = this.J[$$0][$$1];
-      return $$3 == null ? this.a($$0, $$1, $$2) : $$3;
-   }
-
-   private void a(Consumer<Pair<dil.d, aly<dic>>> $$0, dil.b $$1, dil.b $$2, dil.b $$3, dil.b $$4, dil.b $$5, float $$6, aly<dic> $$7) {
-      $$0.accept(Pair.of(dil.a($$1, $$2, $$3, $$4, dil.b.a(0.0F), $$5, $$6), $$7));
-      $$0.accept(Pair.of(dil.a($$1, $$2, $$3, $$4, dil.b.a(1.0F), $$5, $$6), $$7));
-   }
-
-   private void b(Consumer<Pair<dil.d, aly<dic>>> $$0, dil.b $$1, dil.b $$2, dil.b $$3, dil.b $$4, dil.b $$5, float $$6, aly<dic> $$7) {
-      $$0.accept(Pair.of(dil.a($$1, $$2, $$3, $$4, dil.b.a(0.2F, 0.9F), $$5, $$6), $$7));
-   }
-
-   private void c(Consumer<Pair<dil.d, aly<dic>>> $$0, dil.b $$1, dil.b $$2, dil.b $$3, dil.b $$4, dil.b $$5, float $$6, aly<dic> $$7) {
-      $$0.accept(Pair.of(dil.a($$1, $$2, $$3, $$4, dil.b.a(1.1F), $$5, $$6), $$7));
-   }
-
-   public static boolean a(edb $$0, edb $$1, edb.b $$2) {
-      return $$0.a($$2) < -0.225F && $$1.a($$2) > 0.9F;
-   }
-
-   public static String a(double $$0) {
-      if ($$0 < (double)edp.a(0.05F)) {
-         return "Valley";
-      } else if ($$0 < (double)edp.a(0.26666668F)) {
-         return "Low";
-      } else if ($$0 < (double)edp.a(0.4F)) {
-         return "Mid";
-      } else {
-         return $$0 < (double)edp.a(0.56666666F) ? "High" : "Peak";
-      }
-   }
-
-   public String b(double $$0) {
-      double $$1 = (double)dil.a((float)$$0);
-      if ($$1 < (double)this.v.b()) {
-         return "Mushroom fields";
-      } else if ($$1 < (double)this.w.b()) {
-         return "Deep ocean";
-      } else if ($$1 < (double)this.x.b()) {
-         return "Ocean";
-      } else if ($$1 < (double)this.y.b()) {
-         return "Coast";
-      } else if ($$1 < (double)this.A.b()) {
-         return "Near inland";
-      } else {
-         return $$1 < (double)this.B.b() ? "Mid inland" : "Far inland";
-      }
-   }
-
-   public String c(double $$0) {
-      return a($$0, this.s);
-   }
-
-   public String d(double $$0) {
-      return a($$0, this.q);
-   }
-
-   public String e(double $$0) {
-      return a($$0, this.r);
-   }
-
-   private static String a(double $$0, dil.b[] $$1) {
-      double $$2 = (double)dil.a((float)$$0);
-
-      for (int $$3 = 0; $$3 < $$1.length; $$3++) {
-         if ($$2 < (double)$$1[$$3].b()) {
-            return $$3 + "";
-         }
+      public long b() {
+         return this.a;
       }
 
-      return "?";
-   }
+      public long c() {
+         return this.b;
+      }
 
-   @bbl
-   public dil.b[] b() {
-      return this.q;
-   }
+      public long d() {
+         return this.c;
+      }
 
-   @bbl
-   public dil.b[] c() {
-      return this.r;
-   }
+      public long e() {
+         return this.d;
+      }
 
-   @bbl
-   public dil.b[] d() {
-      return this.s;
-   }
+      public long f() {
+         return this.e;
+      }
 
-   @bbl
-   public dil.b[] e() {
-      return new dil.b[]{this.v, this.w, this.x, this.y, this.A, this.B, this.C};
-   }
-
-   @bbl
-   public dil.b[] f() {
-      return new dil.b[]{
-         dil.b.a(-2.0F, edp.a(0.05F)),
-         dil.b.a(edp.a(0.05F), edp.a(0.26666668F)),
-         dil.b.a(edp.a(0.26666668F), edp.a(0.4F)),
-         dil.b.a(edp.a(0.4F), edp.a(0.56666666F)),
-         dil.b.a(edp.a(0.56666666F), 2.0F)
-      };
-   }
-
-   @bbl
-   public dil.b[] g() {
-      return new dil.b[]{dil.b.a(-2.0F, 0.0F), dil.b.a(0.0F, 2.0F)};
-   }
-
-   public static enum a {
-      a,
-      b;
+      public long g() {
+         return this.f;
+      }
    }
 }

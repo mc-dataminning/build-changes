@@ -18,14 +18,14 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dbz<?>>> g, Map<alz, dr.c> h, Optional<bw> i, Optional<ch> j) implements bx {
+public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dcd<?>>> g, Map<alz, dr.c> h, Optional<bw> i, Optional<ch> j) implements bx {
    public static final int b = 100;
    public static final MapCodec<dr> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                dj.d.d.optionalFieldOf("level", dj.d.c).forGetter(dr::b),
                cf.c.optionalFieldOf("gamemode", cf.a).forGetter(dr::c),
                dr.e.a.listOf().optionalFieldOf("stats", List.of()).forGetter(dr::d),
-               azn.e(aly.a(mb.bj)).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dr::e),
+               azn.e(aly.a(mb.bk)).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dr::e),
                Codec.unboundedMap(alz.a, dr.c.b).optionalFieldOf("advancements", Map.of()).forGetter(dr::f),
                bw.a.optionalFieldOf("looking_at").forGetter(dr::g),
                ch.a.optionalFieldOf("input").forGetter(dr::h)
@@ -34,7 +34,7 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dbz<?>>> g
    );
 
    @Override
-   public boolean a(bvf $$0, ash $$1, @Nullable fbs $$2) {
+   public boolean a(bvj $$0, ash $$1, @Nullable fbx $$2) {
       if (!($$0 instanceof asi $$3)) {
          return false;
       } else if (!this.d.d($$3.cq)) {
@@ -54,8 +54,8 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dbz<?>>> g
          ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
-            Entry<aly<dbz<?>>> $$8 = (Entry<aly<dbz<?>>>)var13.next();
-            if ($$7.b((aly<dbz<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
+            Entry<aly<dcd<?>>> $$8 = (Entry<aly<dcd<?>>>)var13.next();
+            if ($$7.b((aly<dcd<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
                return false;
             }
          }
@@ -73,15 +73,15 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dbz<?>>> g
          }
 
          if (this.i.isPresent()) {
-            fbs $$13 = $$3.bF();
-            fbs $$14 = $$3.g(1.0F);
-            fbs $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
-            fbp $$16 = cqn.a($$3.dV(), $$3, $$13, $$15, new fbn($$13, $$15).g(1.0), $$0x -> !$$0x.aa_(), 0.0F);
-            if ($$16 == null || $$16.d() != fbq.a.c) {
+            fbx $$13 = $$3.bF();
+            fbx $$14 = $$3.g(1.0F);
+            fbx $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
+            fbu $$16 = cqr.a($$3.dV(), $$3, $$13, $$15, new fbs($$13, $$15).g(1.0), $$0x -> !$$0x.aa_(), 0.0F);
+            if ($$16 == null || $$16.d() != fbv.a.c) {
                return false;
             }
 
-            bvf $$17 = $$16.a();
+            bvj $$17 = $$16.a();
             if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
@@ -108,7 +108,7 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dbz<?>>> g
       return this.f;
    }
 
-   public Object2BooleanMap<aly<dbz<?>>> e() {
+   public Object2BooleanMap<aly<dcd<?>>> e() {
       return this.g;
    }
 
@@ -174,7 +174,7 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dbz<?>>> g
       private dj.d a = dj.d.c;
       private cf b = cf.a;
       private final Builder<dr.e<?>> c = ImmutableList.builder();
-      private final Object2BooleanMap<aly<dbz<?>>> d = new Object2BooleanOpenHashMap();
+      private final Object2BooleanMap<aly<dcd<?>>> d = new Object2BooleanOpenHashMap();
       private final Map<alz, dr.c> e = Maps.newHashMap();
       private Optional<bw> f = Optional.empty();
       private Optional<ch> g = Optional.empty();
@@ -193,7 +193,7 @@ public record dr(dj.d d, cf e, List<dr.e<?>> f, Object2BooleanMap<aly<dbz<?>>> g
          return this;
       }
 
-      public dr.d a(aly<dbz<?>> $$0, boolean $$1) {
+      public dr.d a(aly<dcd<?>> $$0, boolean $$1) {
          this.d.put($$0, $$1);
          return this;
       }

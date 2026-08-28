@@ -1,45 +1,65 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class erk extends esb {
-   public static final MapCodec<erk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(edi.a.g.fieldOf("heightmap").orElse(edi.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, erk::new)
-   );
-   private final edi.a b;
-   private final int c;
+public class erk extends esi {
+   public static final MapCodec<erk> a = MapCodec.unit(() -> erk.b);
+   public static final erk b = new erk();
+   private final Map<dkl, dkl> c = ae.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dkn.m, dkn.pM);
+      $$0.put(dkn.cu, dkn.pM);
+      $$0.put(dkn.b, dkn.pQ);
+      $$0.put(dkn.eV, dkn.pR);
+      $$0.put(dkn.eW, dkn.pR);
+      $$0.put(dkn.cZ, dkn.pN);
+      $$0.put(dkn.nD, dkn.pN);
+      $$0.put(dkn.nF, dkn.pY);
+      $$0.put(dkn.fx, dkn.pV);
+      $$0.put(dkn.nB, dkn.pV);
+      $$0.put(dkn.ka, dkn.pP);
+      $$0.put(dkn.nR, dkn.pP);
+      $$0.put(dkn.jW, dkn.pZ);
+      $$0.put(dkn.jV, dkn.pZ);
+      $$0.put(dkn.kc, dkn.pU);
+      $$0.put(dkn.nP, dkn.pU);
+      $$0.put(dkn.of, dkn.pW);
+      $$0.put(dkn.od, dkn.pW);
+      $$0.put(dkn.gd, dkn.pO);
+      $$0.put(dkn.ge, dkn.pO);
+      $$0.put(dkn.eY, dkn.pT);
+      $$0.put(dkn.eX, dkn.pS);
+      $$0.put(dkn.fk, dkn.fl);
+   });
 
-   public erk(edi.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private erk() {
    }
 
-   @Nullable
    @Override
-   public ese.d a(dhd $$0, jh $$1, jh $$2, ese.d $$3, ese.d $$4, esa $$5) {
-      edi.a $$6;
-      if ($$0 instanceof ash) {
-         if (this.b == edi.a.a) {
-            $$6 = edi.a.b;
-         } else if (this.b == edi.a.c) {
-            $$6 = edi.a.d;
-         } else {
-            $$6 = this.b;
-         }
+   public esl.d a(dhk $$0, jh $$1, jh $$2, esl.d $$3, esl.d $$4, esh $$5) {
+      dkl $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         $$6 = this.b;
-      }
+         dxu $$7 = $$4.b();
+         dxu $$8 = $$6.m();
+         if ($$7.b(dsi.b)) {
+            $$8 = $$8.b(dsi.b, $$7.c(dsi.b));
+         }
 
-      jh $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new ese.d(new jh($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+         if ($$7.b(dsi.c)) {
+            $$8 = $$8.b(dsi.c, $$7.c(dsi.c));
+         }
+
+         if ($$7.b(drr.b)) {
+            $$8 = $$8.b(drr.b, $$7.c(drr.b));
+         }
+
+         return new esl.d($$4.a(), $$8, $$4.c());
+      }
    }
 
    @Override
-   protected esd<?> a() {
-      return esd.g;
+   protected esk<?> a() {
+      return esk.l;
    }
 }

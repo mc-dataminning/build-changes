@@ -1,22 +1,21 @@
 public class ges {
-   private final float a;
-   private final float b;
+   private final geu a;
+   private final get b;
 
-   public ges(float $$0, float $$1) {
+   private ges(geu $$0, get $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public float a() {
-      return this.a;
+   public ges a(gev $$0) {
+      return new ges($$0.apply(this.a), this.b);
    }
 
-   public float b() {
-      return this.b;
+   public gem a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public static ges a(geu $$0, int $$1, int $$2) {
+      return new ges($$0, new get($$1, $$2));
    }
 }

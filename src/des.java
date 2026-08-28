@@ -1,24 +1,52 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public record des(alz d) implements dei {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<des> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alz.a.fieldOf("function").forGetter(des::b)).apply($$0, des::new));
+public record des(boolean d, Optional<jq<bub>> e, Optional<def> f, Optional<ju<dkl>> g, fbx h, def i, boolean j, dhh.a k, lq l, lq m, jq<axe> n) implements dep {
+   public static final MapCodec<des> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(des::b),
+               bub.b.optionalFieldOf("damage_type").forGetter(des::c),
+               def.b.optionalFieldOf("knockback_multiplier").forGetter(des::d),
+               kf.a(mb.f).optionalFieldOf("immune_blocks").forGetter(des::e),
+               fbx.a.optionalFieldOf("offset", fbx.c).forGetter(des::f),
+               def.b.fieldOf("radius").forGetter(des::g),
+               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(des::h),
+               dhh.a.f.fieldOf("block_interaction").forGetter(des::i),
+               ls.bh.fieldOf("small_particle").forGetter(des::j),
+               ls.bh.fieldOf("large_particle").forGetter(des::k),
+               axe.b.fieldOf("sound").forGetter(des::l)
+            )
+            .apply($$0, des::new)
+   );
 
    @Override
-   public void a(ash $$0, int $$1, ddq $$2, bvf $$3, fbs $$4) {
-      MinecraftServer $$5 = $$0.p();
-      amo $$6 = $$5.aE();
-      Optional<ik<ew>> $$7 = $$6.a(this.d);
-      if ($$7.isPresent()) {
-         ew $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bU());
-         $$6.a($$7.get(), $$8);
+   public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
+      fbx $$5 = $$4.e(this.h);
+      $$0.a(
+         this.d ? $$3 : null,
+         this.a($$3, $$5),
+         new dia(this.k != dhh.a.a, this.e.isPresent(), this.f.map($$1x -> $$1x.a($$1)), this.g),
+         $$5.a(),
+         $$5.b(),
+         $$5.c(),
+         Math.max(this.i.a($$1), 0.0F),
+         this.j,
+         this.k,
+         this.l,
+         this.m,
+         this.n
+      );
+   }
+
+   @Nullable
+   private btz a(bvj $$0, fbx $$1) {
+      if (this.e.isEmpty()) {
+         return null;
       } else {
-         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
+         return this.d ? new btz(this.e.get(), $$0) : new btz(this.e.get(), $$1);
       }
    }
 
@@ -27,7 +55,47 @@ public record des(alz d) implements dei {
       return a;
    }
 
-   public alz b() {
+   public boolean b() {
       return this.d;
+   }
+
+   public Optional<jq<bub>> c() {
+      return this.e;
+   }
+
+   public Optional<def> d() {
+      return this.f;
+   }
+
+   public Optional<ju<dkl>> e() {
+      return this.g;
+   }
+
+   public fbx f() {
+      return this.h;
+   }
+
+   public def g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public dhh.a i() {
+      return this.k;
+   }
+
+   public lq j() {
+      return this.l;
+   }
+
+   public lq k() {
+      return this.m;
+   }
+
+   public jq<axe> l() {
+      return this.n;
    }
 }

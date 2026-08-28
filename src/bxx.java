@@ -1,34 +1,15 @@
-public class bxx implements bzi {
-   private final jh a;
-   private final fbs b;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bxx(jh $$0) {
-      this.a = $$0.j();
-      this.b = fbs.b($$0);
-   }
-
-   public bxx(fbs $$0) {
-      this.a = jh.a((ka)$$0);
-      this.b = $$0;
-   }
-
-   @Override
-   public fbs a() {
-      return this.b;
-   }
-
-   @Override
-   public jh b() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(bwb $$0) {
-      return true;
-   }
-
-   @Override
-   public String toString() {
-      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
+public class bxx {
+   public static bxz<bwf> a(cfj<?> $$0, int $$1) {
+      return cbl.a(
+         (Function<cbl.b<bwf>, ? extends App<cbl.c<bwf>, cbo<bwf>>>)($$2 -> $$2.group($$2.a(cfj.o), $$2.c(cfj.ax), $$2.b($$0))
+               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
+                     $$2x.a(true, (long)$$1);
+                     $$1xx.b();
+                     return true;
+                  })))
+      );
    }
 }

@@ -1,10 +1,11 @@
-public class gzn extends gym implements gze {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class gzn extends gyr {
+   public fbx a = fbx.c;
+   @Nullable
+   public cwl b;
+   public float c;
+   public float d;
+   public float e;
+   public jm f = jm.a;
 }

@@ -6,7 +6,7 @@ public class aim implements aac<ahm> {
    private final float e;
    private final float f;
 
-   public aim(bvf $$0) {
+   public aim(bvj $$0) {
       this.b = $$0.R_();
       this.c = $$0.S_();
       this.d = $$0.g_();

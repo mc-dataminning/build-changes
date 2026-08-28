@@ -1,28 +1,34 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekf<P extends eke> {
-   public static final ekf<ejz> a = a("blob_foliage_placer", ejz.a);
-   public static final ekf<ekk> b = a("spruce_foliage_placer", ekk.a);
-   public static final ekf<eki> c = a("pine_foliage_placer", eki.a);
-   public static final ekf<ejy> d = a("acacia_foliage_placer", ejy.a);
-   public static final ekf<eka> e = a("bush_foliage_placer", eka.c);
-   public static final ekf<ekd> f = a("fancy_foliage_placer", ekd.c);
-   public static final ekf<ekg> g = a("jungle_foliage_placer", ekg.a);
-   public static final ekf<ekh> h = a("mega_pine_foliage_placer", ekh.a);
-   public static final ekf<ekc> i = a("dark_oak_foliage_placer", ekc.a);
-   public static final ekf<ekj> j = a("random_spread_foliage_placer", ekj.a);
-   public static final ekf<ekb> k = a("cherry_foliage_placer", ekb.a);
-   private final MapCodec<P> l;
+public class ekf extends ekl {
+   public static final MapCodec<ekf> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ekf::new));
 
-   private static <P extends eke> ekf<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.U, $$0, new ekf<>($$1));
+   public ekf(bsn $$0, bsn $$1) {
+      super($$0, $$1);
    }
 
-   private ekf(MapCodec<P> $$0) {
-      this.l = $$0;
+   @Override
+   protected ekm<?> a() {
+      return ekm.d;
    }
 
-   public MapCodec<P> a() {
-      return this.l;
+   @Override
+   protected void a(dhn $$0, ekl.b $$1, bam $$2, ejv $$3, int $$4, ekl.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      jh $$10 = $$5.a().b($$8);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b(), -1 - $$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 - 1, -$$6, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$7 + $$5.b() - 1, 0, $$9);
+   }
+
+   @Override
+   public int a(bam $$0, int $$1, ejv $$2) {
+      return 0;
+   }
+
+   @Override
+   protected boolean a(bam $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 == 0 ? ($$1 > 1 || $$3 > 1) && $$1 != 0 && $$3 != 0 : $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

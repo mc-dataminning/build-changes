@@ -1,34 +1,24 @@
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fwf {
-   private static final alz f = alz.b("tooltip/background");
-   private static final alz g = alz.b("tooltip/frame");
-   public static final int a = 12;
-   private static final int h = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int i = 9;
+public class fwf implements fwg {
+   private final azq a;
 
-   public static void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, @Nullable alz $$6) {
-      int $$7 = $$1 - 3 - 9;
-      int $$8 = $$2 - 3 - 9;
-      int $$9 = $$3 + 3 + 3 + 18;
-      int $$10 = $$4 + 3 + 3 + 18;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, (float)$$5);
-      $$0.a(glo::B, a($$6), $$7, $$8, $$9, $$10);
-      $$0.a(glo::B, b($$6), $$7, $$8, $$9, $$10);
-      $$0.c().b();
+   public fwf(azq $$0) {
+      this.a = $$0;
    }
 
-   private static alz a(@Nullable alz $$0) {
-      return $$0 == null ? f : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_background"));
+   @Override
+   public int b(fno $$0) {
+      return $$0.a(this.a);
    }
 
-   private static alz b(@Nullable alz $$0) {
-      return $$0 == null ? g : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_frame"));
+   @Override
+   public int a(fno $$0) {
+      return 10;
+   }
+
+   @Override
+   public void a(fno $$0, int $$1, int $$2, Matrix4f $$3, glj.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fno.a.a, 0, 15728880);
    }
 }

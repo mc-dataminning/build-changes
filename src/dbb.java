@@ -1,77 +1,22 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dbb extends dbd {
-   private final jh b;
-   protected boolean a = true;
+public record dbb(jq<axe> c) implements dba {
+   public static final MapCodec<dbb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(axe.b.fieldOf("sound").forGetter(dbb::b)).apply($$0, dbb::new));
+   public static final zt<xg, dbb> b = zt.a(axe.d, dbb::b, dbb::new);
 
-   public dbb(cps $$0, btd $$1, cxk $$2, fbo $$3) {
-      this($$0.dV(), $$0, $$1, $$2, $$3);
-   }
-
-   public dbb(dbd $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
-   }
-
-   protected dbb(dha $$0, @Nullable cps $$1, btd $$2, cxk $$3, fbo $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.b().a($$4.c());
-      this.a = $$0.a_($$4.b()).a(this);
-   }
-
-   public static dbb a(dbb $$0, jh $$1, jm $$2) {
-      return new dbb(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new fbo(
-            new fbs((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   @Override
+   public dba.a<dbb> a() {
+      return dba.a.e;
    }
 
    @Override
-   public jh a() {
-      return this.a ? super.a() : this.b;
+   public boolean a(dhh $$0, cxo $$1, bwf $$2) {
+      $$0.a(null, $$2.dv(), this.c.a(), $$2.dm(), 1.0F, 1.0F);
+      return true;
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public jm d() {
-      return jm.a(this.o())[0];
-   }
-
-   public jm e() {
-      return jm.a(this.o(), jm.a.b);
-   }
-
-   public jm[] f() {
-      jm[] $$0 = jm.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         jm $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
-      }
+   public jq<axe> b() {
+      return this.c;
    }
 }

@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gk extends gg<dqu> {
+public class gk extends gg<drb> {
    private gk() {
-      super(dqu.e, dqu::values);
+      super(drb.e, drb::values);
    }
 
    public static gk a() {
       return new gk();
    }
 
-   public static dqu a(CommandContext<ew> $$0, String $$1) {
-      return (dqu)$$0.getArgument($$1, dqu.class);
+   public static drb a(CommandContext<ew> $$0, String $$1) {
+      return (drb)$$0.getArgument($$1, drb.class);
    }
 }

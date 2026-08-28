@@ -1,37 +1,25 @@
-public class gsn extends gsp<cmr, gzk, gbv> {
-   private static final alz a = alz.b("textures/entity/slime/magmacube.png");
+public class gsn extends grn<clu, gxt> {
+   private static final alz a = alz.b("textures/entity/lead_knot.png");
+   private final gcb b;
 
-   public gsn(grj.a $$0) {
-      super($$0, new gbv($$0.a(geg.bu)), 0.25F);
+   public gsn(gro.a $$0) {
+      super($$0);
+      this.b = new gcb($$0.a(gel.bo));
    }
 
-   protected int a(cmr $$0, jh $$1) {
-      return 15;
-   }
-
-   public alz a(gzk $$0) {
-      return a;
-   }
-
-   public gzk b() {
-      return new gzk();
-   }
-
-   public void a(cmr $$0, gzk $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = bae.h($$2, $$0.bZ, $$0.bY);
-      $$1.b = $$0.gm();
-   }
-
-   public void a(gzk $$0, fgl $$1, gle $$2, int $$3) {
-      this.f = 0.25F * (float)$$0.b;
+   @Override
+   public void a(gxt $$0, fgq $$1, glj $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.b.a($$0);
+      fgu $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, hba.d);
+      $$1.b();
       super.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(gzk $$0, fgl $$1) {
-      int $$2 = $$0.b;
-      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
-      float $$4 = 1.0F / ($$3 + 1.0F);
-      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
+   @Override
+   public gxt d() {
+      return new gxt();
    }
 }

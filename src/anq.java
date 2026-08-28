@@ -27,7 +27,7 @@ public class anq {
                                              (ew)$$0x.getSource(),
                                              fj.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new btv(fv.a($$0x, "damageType", mb.s))
+                                             new btz(fv.a($$0x, "damageType", mb.s))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class anq {
                                                       (ew)$$0x.getSource(),
                                                       fj.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new btv(fv.a($$0x, "damageType", mb.s), gz.a($$0x, "location"))
+                                                      new btz(fv.a($$0x, "damageType", mb.s), gz.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class anq {
                                                       (ew)$$0x.getSource(),
                                                       fj.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new btv(fv.a($$0x, "damageType", mb.s), fj.a($$0x, "entity"))
+                                                      new btz(fv.a($$0x, "damageType", mb.s), fj.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class anq {
                                                                (ew)$$0x.getSource(),
                                                                fj.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new btv(fv.a($$0x, "damageType", mb.s), fj.a($$0x, "entity"), fj.a($$0x, "cause"))
+                                                               new btz(fv.a($$0x, "damageType", mb.s), fj.a($$0x, "entity"), fj.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class anq {
       );
    }
 
-   private static int a(ew $$0, bvf $$1, float $$2, btv $$3) throws CommandSyntaxException {
+   private static int a(ew $$0, bvj $$1, float $$2, btz $$3) throws CommandSyntaxException {
       if ($$1.a($$0.e(), $$3, $$2)) {
          $$0.a(() -> xv.a("commands.damage.success", $$2, $$1.p_()), true);
          return 1;

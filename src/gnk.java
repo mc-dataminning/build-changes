@@ -1,86 +1,16 @@
-public class gnk implements gnp<due> {
-   private static final int b = 20;
-   private static final int c = 40;
-   private static final int d = 16;
-   public static final String a = "flag";
-   private static final String e = "pole";
-   private static final String f = "bar";
-   private final geh g;
-   private final geh h;
-   private final geh i;
+import com.google.common.collect.Streams;
+import java.util.function.Predicate;
 
-   public gnk(gnq.a $$0) {
-      geh $$1 = $$0.a(geg.q);
-      this.g = $$1.b("flag");
-      this.h = $$1.b("pole");
-      this.i = $$1.b("bar");
+public class gnk implements gnh {
+   public static final String a = "OR";
+   private final Iterable<? extends gnh> d;
+
+   public gnk(Iterable<? extends gnh> $$0) {
+      this.d = $$0;
    }
 
-   public static gen a() {
-      gep $$0 = new gep();
-      ger $$1 = $$0.a();
-      $$1.a("flag", gem.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), gej.a(0.0F, -32.0F, 0.0F));
-      $$1.a("pole", gem.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), gej.a);
-      $$1.a("bar", gem.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), gej.a);
-      return gen.a($$0, 64, 64);
-   }
-
-   public void a(due $$0, float $$1, fgl $$2, gle $$3, int $$4, int $$5) {
-      float $$6 = 0.6666667F;
-      boolean $$7 = $$0.i() == null;
-      $$2.a();
-      long $$8;
-      if ($$7) {
-         $$8 = 0L;
-         $$2.a(0.5F, 0.5F, 0.5F);
-         this.h.k = true;
-      } else {
-         $$8 = $$0.i().ac();
-         dxn $$10 = $$0.m();
-         if ($$10.b() instanceof djj) {
-            $$2.a(0.5F, 0.5F, 0.5F);
-            float $$11 = -dys.b($$10.c(djj.b));
-            $$2.a(a.d.rotationDegrees($$11));
-            this.h.k = true;
-         } else {
-            $$2.a(0.5F, -0.16666667F, 0.5F);
-            float $$12 = -$$10.c(dte.b).p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(0.0F, -0.3125F, -0.4375F);
-            this.h.k = false;
-         }
-      }
-
-      $$2.a();
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      fgp $$13 = hdq.f.a($$3, glo::c);
-      this.h.a($$2, $$13, $$4, $$5);
-      this.i.a($$2, $$13, $$4, $$5);
-      jh $$14 = $$0.aB_();
-      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
-      this.g.e = (-0.0125F + 0.01F * bae.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
-      a($$2, $$3, $$4, $$5, this.g, hdq.f, true, $$0.f(), $$0.b());
-      $$2.b();
-      $$2.b();
-   }
-
-   public static void a(fgl $$0, gle $$1, int $$2, int $$3, geh $$4, hdn $$5, boolean $$6, cwh $$7, dug $$8) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
-   }
-
-   public static void a(fgl $$0, gle $$1, int $$2, int $$3, geh $$4, hdn $$5, boolean $$6, cwh $$7, dug $$8, boolean $$9, boolean $$10) {
-      $$4.a($$0, $$5.a($$1, glo::c, $$10, $$9), $$2, $$3);
-      a($$0, $$1, $$2, $$3, $$4, $$6 ? glz.m : glz.n, $$7);
-
-      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
-         dug.b $$12 = $$8.b().get($$11);
-         hdn $$13 = $$6 ? glz.a($$12.b()) : glz.b($$12.b());
-         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
-      }
-   }
-
-   private static void a(fgl $$0, gle $$1, int $$2, int $$3, geh $$4, hdn $$5, cwh $$6) {
-      int $$7 = $$6.d();
-      $$4.a($$0, $$5.a($$1, glo::m), $$2, $$3, $$7);
+   @Override
+   public Predicate<dxu> getPredicate(dxv<dkl, dxu> $$0) {
+      return ae.b(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
    }
 }

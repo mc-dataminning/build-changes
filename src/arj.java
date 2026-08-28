@@ -5,25 +5,25 @@ import javax.annotation.Nullable;
 
 public class arj {
    private final arx b;
-   private final dgg c;
+   private final dgn c;
    @Nullable
-   private eaj d = null;
-   public final eaj a;
+   private eaq d = null;
+   public final eaq a;
    private volatile boolean e;
-   private final List<CompletableFuture<arn<dzi>>> f = new ArrayList<>();
+   private final List<CompletableFuture<arn<dzp>>> f = new ArrayList<>();
    private final bay<ary> g;
    private boolean h;
 
-   private arj(arx $$0, eaj $$1, dgg $$2, bay<ary> $$3) {
+   private arj(arx $$0, eaq $$1, dgn $$2, bay<ary> $$3) {
       this.b = $$0;
       this.a = $$1;
       this.c = $$2;
       this.g = $$3;
    }
 
-   public static arj a(arx $$0, eaj $$1, dgg $$2) {
-      int $$3 = eai.a.a($$1).a(eaj.c);
-      bay<ary> $$4 = bay.a($$2.g, $$2.h, $$3, ($$1x, $$2x) -> $$0.d(dgg.c($$1x, $$2x)));
+   public static arj a(arx $$0, eaq $$1, dgn $$2) {
+      int $$3 = eap.a.a($$1).a(eaq.c);
+      bay<ary> $$4 = bay.a($$2.g, $$2.h, $$3, ($$1x, $$2x) -> $$0.d(dgn.c($$1x, $$2x)));
       return new arj($$0, $$1, $$2, $$4);
    }
 
@@ -45,14 +45,14 @@ public class arj {
    }
 
    private void d() {
-      eaj $$0;
+      eaq $$0;
       if (this.d == null) {
-         $$0 = eaj.c;
-      } else if (!this.h && this.d == eaj.c && !this.f()) {
+         $$0 = eaq.c;
+      } else if (!this.h && this.d == eaq.c && !this.f()) {
          this.h = true;
-         $$0 = eaj.c;
+         $$0 = eaq.c;
       } else {
-         $$0 = eaj.a().get(this.d.b() + 1);
+         $$0 = eaq.a().get(this.d.b() + 1);
       }
 
       this.a($$0, this.h);
@@ -70,19 +70,19 @@ public class arj {
    }
 
    private boolean f() {
-      if (this.a == eaj.c) {
+      if (this.a == eaq.c) {
          return true;
       } else {
-         eaj $$0 = this.g.a(this.c.g, this.c.h).p();
+         eaq $$0 = this.g.a(this.c.g, this.c.h).p();
          if ($$0 != null && !$$0.d(this.a)) {
-            eah $$1 = eai.b.a(this.a).c();
+            eao $$1 = eap.b.a(this.a).c();
             int $$2 = $$1.c();
 
             for (int $$3 = this.c.g - $$2; $$3 <= this.c.g + $$2; $$3++) {
                for (int $$4 = this.c.h - $$2; $$4 <= this.c.h + $$2; $$4++) {
                   int $$5 = this.c.e($$3, $$4);
-                  eaj $$6 = $$1.a($$5);
-                  eaj $$7 = this.g.a($$3, $$4).p();
+                  eaq $$6 = $$1.a($$5);
+                  eaq $$7 = this.g.a($$3, $$4).p();
                   if ($$7 == null || $$7.d($$6)) {
                      return false;
                   }
@@ -100,8 +100,8 @@ public class arj {
       return this.g.a(this.c.g, this.c.h);
    }
 
-   private void a(eaj $$0, boolean $$1) {
-      try (bpt $$2 = bpn.a().d("scheduleLayer")) {
+   private void a(eaq $$0, boolean $$1) {
+      try (bpx $$2 = bpr.a().d("scheduleLayer")) {
          $$2.a($$0::f);
          int $$3 = this.b($$0, $$1);
 
@@ -116,20 +116,20 @@ public class arj {
       }
    }
 
-   private int b(eaj $$0, boolean $$1) {
-      eai $$2 = $$1 ? eai.a : eai.b;
+   private int b(eaq $$0, boolean $$1) {
+      eap $$2 = $$1 ? eap.a : eap.b;
       return $$2.a(this.a).a($$0);
    }
 
-   private boolean a(eaj $$0, boolean $$1, ary $$2) {
-      eaj $$3 = $$2.p();
+   private boolean a(eaq $$0, boolean $$1, ary $$2) {
+      eaq $$3 = $$2.p();
       boolean $$4 = $$3 != null && $$0.b($$3);
-      eai $$5 = $$4 ? eai.a : eai.b;
+      eap $$5 = $$4 ? eap.a : eap.b;
       if ($$4 && !$$1) {
          throw new IllegalStateException("Can't load chunk, but didn't expect to need to generate");
       } else {
-         CompletableFuture<arn<dzi>> $$6 = $$2.a($$5.a($$0), this.b, this.g);
-         arn<dzi> $$7 = $$6.getNow(null);
+         CompletableFuture<arn<dzp>> $$6 = $$2.a($$5.a($$0), this.b, this.g);
+         arn<dzp> $$7 = $$6.getNow(null);
          if ($$7 == null) {
             this.f.add($$6);
             return true;
@@ -145,8 +145,8 @@ public class arj {
    @Nullable
    private CompletableFuture<?> g() {
       while (!this.f.isEmpty()) {
-         CompletableFuture<arn<dzi>> $$0 = this.f.getLast();
-         arn<dzi> $$1 = $$0.getNow(null);
+         CompletableFuture<arn<dzp>> $$0 = this.f.getLast();
+         arn<dzp> $$1 = $$0.getNow(null);
          if ($$1 == null) {
             return $$0;
          }

@@ -7,7 +7,7 @@ public record xr(xs l, xs m) {
       $$0 -> $$0.group(xs.a.fieldOf("chat").forGetter(xr::a), xs.a.fieldOf("narration").forGetter(xr::b)).apply($$0, xr::new)
    );
    public static final zt<xg, xr> b = zt.a(xs.b, xr::a, xs.b, xr::b, xr::new);
-   public static final zt<xg, jq<xr>> c = zr.a(mb.aI, b);
+   public static final zt<xg, jq<xr>> c = zr.a(mb.aJ, b);
    public static final xs d = xs.a("chat.type.text");
    public static final aly<xr> e = a("chat");
    public static final aly<xr> f = a("say_command");
@@ -18,7 +18,7 @@ public record xr(xs l, xs m) {
    public static final aly<xr> k = a("emote_command");
 
    private static aly<xr> a(String $$0) {
-      return aly.a(mb.aI, alz.b($$0));
+      return aly.a(mb.aJ, alz.b($$0));
    }
 
    public static void a(rk<xr> $$0) {
@@ -31,7 +31,7 @@ public record xr(xs l, xs m) {
       $$0.a(k, new xr(xs.a("chat.type.emote"), xs.a("chat.type.emote")));
    }
 
-   public static xr.a a(aly<xr> $$0, bvf $$1) {
+   public static xr.a a(aly<xr> $$0, bvj $$1) {
       return a($$0, $$1.dV().K_(), $$1.p_());
    }
 
@@ -40,7 +40,7 @@ public record xr(xs l, xs m) {
    }
 
    public static xr.a a(aly<xr> $$0, ke $$1, xv $$2) {
-      kd<xr> $$3 = $$1.e(mb.aI);
+      kd<xr> $$3 = $$1.e(mb.aJ);
       return new xr.a($$3.b($$0), $$2);
    }
 

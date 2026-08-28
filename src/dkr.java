@@ -1,117 +1,104 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dkr extends dke {
-   public static final MapCodec<dkr> a = b(dkr::new);
-   public static final int b = 6;
-   public static final dym c = dyd.az;
-   public static final int d = b(0);
-   protected static final float e = 1.0F;
-   protected static final float f = 2.0F;
-   protected static final fcm[] g = new fcm[]{
-      dke.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dke.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dke.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dke.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dke.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dke.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      dke.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
-   };
+public class dkr extends djx implements dnh {
+   public static final MapCodec<dkr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ma.e.q().fieldOf("turns_into").forGetter(dkr::b),
+               ma.b.q().fieldOf("brush_sound").forGetter(dkr::c),
+               ma.b.q().fieldOf("brush_completed_sound").forGetter(dkr::d),
+               t()
+            )
+            .apply($$0, dkr::new)
+   );
+   private static final dyt c = dyk.bw;
+   public static final int b = 2;
+   private final dkl d;
+   private final axe e;
+   private final axe f;
 
    @Override
    public MapCodec<dkr> a() {
       return a;
    }
 
-   protected dkr(dxm.d $$0) {
-      super($$0);
+   public dkr(dkl $$0, axe $$1, axe $$2, dxt.d $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
       this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return g[$$0.c(c)];
-   }
-
-   @Override
-   protected bte a(cxk $$0, dxn $$1, dha $$2, jh $$3, cps $$4, btd $$5, fbo $$6) {
-      cxg $$7 = $$0.h();
-      if ($$0.a(ayd.aP) && $$1.c(c) == 0 && dke.a($$7) instanceof dku $$8) {
-         $$0.a(1, $$4);
-         $$2.a(null, $$3, axf.ds, axg.e, 1.0F, 1.0F);
-         $$2.b($$3, dkv.a($$8));
-         $$2.a($$4, ecj.c, $$3);
-         $$4.b(axp.c.b($$7));
-         return bte.a;
-      } else {
-         return bte.f;
-      }
-   }
-
-   @Override
-   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
-      if ($$1.C) {
-         if (a($$1, $$2, $$0, $$3).a()) {
-            return bte.a;
-         }
-
-         if ($$3.b(btd.a).f()) {
-            return bte.c;
-         }
-      }
-
-      return a($$1, $$2, $$0, $$3);
-   }
-
-   protected static bte a(dhb $$0, jh $$1, dxn $$2, cps $$3) {
-      if (!$$3.u(false)) {
-         return bte.e;
-      } else {
-         $$3.a(axp.U);
-         $$3.gr().a(2, 0.1F);
-         int $$4 = $$2.c(c);
-         $$0.a($$3, ecj.m, $$1);
-         if ($$4 < 6) {
-            $$0.a($$1, $$2.b(c, Integer.valueOf($$4 + 1)), 3);
-         } else {
-            $$0.a($$1, false);
-            $$0.a($$3, ecj.f, $$1);
-         }
-
-         return bte.a;
-      }
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
-      return $$4 == jm.a && !$$0.a($$1, $$3) ? dkg.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
-      return $$1.a_($$2.e()).e();
-   }
-
-   @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
+   protected void a(dxv.a<dkl, dxu> $$0) {
       $$0.a(c);
    }
 
    @Override
-   protected int a(dxn $$0, dha $$1, jh $$2) {
-      return b($$0.c(c));
-   }
-
-   public static int b(int $$0) {
-      return (7 - $$0) * 2;
+   public dqu a_(dxu $$0) {
+      return dqu.c;
    }
 
    @Override
-   protected boolean c_(dxn $$0) {
-      return true;
+   public void b(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
+      $$1.a($$2, this, 2);
    }
 
    @Override
-   protected boolean a(dxn $$0, eue $$1) {
-      return false;
+   public dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      $$2.a($$3, this, 2);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$1.c_($$2) instanceof dva $$4) {
+         $$4.a($$1);
+      }
+
+      if (dni.n($$1.a_($$2.e())) && $$2.v() >= $$1.L_()) {
+         clz $$5 = clz.a($$1, $$2, $$0);
+         $$5.m();
+      }
+   }
+
+   @Override
+   public void a(dhh $$0, jh $$1, clz $$2) {
+      fbx $$3 = $$2.cR().f();
+      $$0.c(2001, jh.a((ka)$$3), dkl.j($$2.p()));
+      $$0.a($$2, ecq.f, $$3);
+   }
+
+   @Override
+   public void a(dxu $$0, dhh $$1, jh $$2, bam $$3) {
+      if ($$3.a(16) == 0) {
+         jh $$4 = $$2.e();
+         if (dni.n($$1.a_($$4))) {
+            double $$5 = (double)$$2.u() + $$3.j();
+            double $$6 = (double)$$2.v() - 0.05;
+            double $$7 = (double)$$2.w() + $$3.j();
+            $$1.a(new lk(ls.C, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public duw a(jh $$0, dxu $$1) {
+      return new dva($$0, $$1);
+   }
+
+   public dkl b() {
+      return this.d;
+   }
+
+   public axe c() {
+      return this.e;
+   }
+
+   public axe d() {
+      return this.f;
    }
 }

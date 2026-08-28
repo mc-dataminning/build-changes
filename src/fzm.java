@@ -1,21 +1,22 @@
-import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
 import java.util.List;
 
-public class fzm {
-   public static final int a = -1;
-   private final List<fzk> b;
-   private final int c;
+public class fzm implements fzo {
+   private static final xv a = xv.c("spectatorMenu.root.prompt");
+   private final List<fzp> b = Lists.newArrayList();
 
-   public fzm(List<fzk> $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fzm() {
+      this.b.add(new fzs());
+      this.b.add(new fzt());
    }
 
-   public fzk a(int $$0) {
-      return $$0 >= 0 && $$0 < this.b.size() ? (fzk)MoreObjects.firstNonNull(this.b.get($$0), fzi.a) : fzi.a;
+   @Override
+   public List<fzp> a() {
+      return this.b;
    }
 
-   public int a() {
-      return this.c;
+   @Override
+   public xv b() {
+      return a;
    }
 }

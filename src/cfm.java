@@ -1,138 +1,35 @@
-public class cfm extends cfn {
-   private boolean p;
+public class cfm {
+   private final bzm a;
+   private final float b;
+   private final int c;
 
-   public cfm(bwd $$0, dha $$1) {
-      super($$0, $$1);
+   public cfm(jh $$0, float $$1, int $$2) {
+      this(new byb($$0), $$1, $$2);
    }
 
-   @Override
-   protected euf a(int $$0) {
-      this.o = new eul();
-      this.o.a(true);
-      return new euf(this.o, $$0);
+   public cfm(fbx $$0, float $$1, int $$2) {
+      this(new byb(jh.a((ka)$$0)), $$1, $$2);
    }
 
-   @Override
-   protected boolean a() {
-      return this.a.aJ() || this.a.bn() || this.a.bZ();
+   public cfm(bvj $$0, float $$1, int $$2) {
+      this(new byj($$0, false), $$1, $$2);
    }
 
-   @Override
-   protected fbs b() {
-      return new fbs(this.a.dA(), (double)this.t(), this.a.dG());
+   public cfm(bzm $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public eud a(jh $$0, int $$1) {
-      dzs $$2 = this.b.R().a(kj.a($$0.u()), kj.a($$0.w()));
-      if ($$2 == null) {
-         return null;
-      } else {
-         if ($$2.a_($$0).l()) {
-            jh.a $$3 = $$0.k().c(jm.a);
-
-            while ($$3.v() > this.b.L_() && $$2.a_($$3).l()) {
-               $$3.c(jm.a);
-            }
-
-            if ($$3.v() > this.b.L_()) {
-               return super.a($$3.d(), $$1);
-            }
-
-            $$3.q($$0.v() + 1);
-
-            while ($$3.v() <= this.b.am() && $$2.a_($$3).l()) {
-               $$3.c(jm.b);
-            }
-
-            $$0 = $$3;
-         }
-
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            jh.a $$4 = $$0.k().c(jm.b);
-
-            while ($$4.v() <= this.b.am() && $$2.a_($$4).e()) {
-               $$4.c(jm.b);
-            }
-
-            return super.a($$4.j(), $$1);
-         }
-      }
+   public bzm a() {
+      return this.a;
    }
 
-   @Override
-   public eud a(bvf $$0, int $$1) {
-      return this.a($$0.dv(), $$1);
+   public float b() {
+      return this.b;
    }
 
-   private int t() {
-      if (this.a.bj() && this.q()) {
-         int $$0 = this.a.dB();
-         dxn $$1 = this.b.a_(jh.a(this.a.dA(), (double)$$0, this.a.dG()));
-         int $$2 = 0;
-
-         while ($$1.a(dkg.J)) {
-            $$1 = this.b.a_(jh.a(this.a.dA(), (double)(++$$0), this.a.dG()));
-            if (++$$2 > 16) {
-               return this.a.dB();
-            }
-         }
-
-         return $$0;
-      } else {
-         return bae.a(this.a.dC() + 0.5);
-      }
-   }
-
-   @Override
-   protected void W_() {
-      super.W_();
-      if (this.p) {
-         if (this.b.h(jh.a(this.a.dA(), this.a.dC() + 0.5, this.a.dG()))) {
-            return;
-         }
-
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            eub $$1 = this.c.a($$0);
-            if (this.b.h(new jh($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
-            }
-         }
-      }
-   }
-
-   protected boolean a(eug $$0) {
-      if ($$0 == eug.j) {
-         return false;
-      } else {
-         return $$0 == eug.i ? false : $$0 != eug.b;
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean f() {
-      return this.o.d();
-   }
-
-   public void d(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void e(boolean $$0) {
-      this.o.d($$0);
+   public int c() {
+      return this.c;
    }
 }

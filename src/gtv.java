@@ -1,16 +1,16 @@
-public class gtv extends gsp<cjp, gym, gdk> {
-   private static final alz a = alz.b("textures/entity/tadpole/tadpole.png");
+public class gtv extends gqm<cqv, gxa> {
+   public static final alz a = alz.b("textures/entity/projectiles/spectral_arrow.png");
 
-   public gtv(grj.a $$0) {
-      super($$0, new gdk($$0.a(geg.dc)), 0.14F);
+   public gtv(gro.a $$0) {
+      super($$0);
    }
 
    @Override
-   public alz b(gym $$0) {
+   protected alz a(gxa $$0) {
       return a;
    }
 
-   public gym b() {
-      return new gym();
+   public gxa a() {
+      return new gxa();
    }
 }

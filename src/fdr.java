@@ -1,15 +1,7 @@
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+public interface fdr<T> {
+   void a(fdp<T> var1);
 
-public class fdr {
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
-   }
+   boolean a(jh var1, T var2);
 
-   public static double b() {
-      return GLFW.glfwGetTime();
-   }
-
-   private fdr() {
-   }
+   int a();
 }

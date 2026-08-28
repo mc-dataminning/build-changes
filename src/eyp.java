@@ -1,93 +1,83 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
 
-public class eyp extends exu {
+public class eyp extends eyb {
    public static final MapCodec<eyp> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  xx.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  ext.a(256).forGetter($$0x -> $$0x.c),
-                  ewh.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+                  Codec.unboundedMap(ddy.c, fau.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
                )
             )
             .apply($$0, eyp::new)
    );
-   private final List<xv> b;
-   private final ext c;
-   private final Optional<ewh.b> d;
+   private final Map<jq<ddy>, fat> b;
+   private final boolean c;
 
-   public eyp(List<ezs> $$0, List<xv> $$1, ext $$2, Optional<ewh.b> $$3) {
+   eyp(List<ezx> $$0, Map<jq<ddy>, fat> $$1, boolean $$2) {
       super($$0);
-      this.b = List.copyOf($$1);
+      this.b = Map.copyOf($$1);
       this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public exw<eyp> b() {
-      return exx.A;
+   public eyd<eyp> b() {
+      return eye.i;
    }
 
    @Override
-   public Set<eza<?>> a() {
-      return this.d.<Set<eza<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+   public Set<bbn<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
    }
 
    @Override
-   public cxk a(cxk $$0, ewh $$1) {
-      $$0.a(ku.j, dad.a, $$1x -> new dad(this.a($$1x, $$1)));
+   public cxo a(cxo $$0, ewo $$1) {
+      if ($$0.a(cxs.rn)) {
+         $$0 = $$0.a((dhg)cxs.vm);
+      }
+
+      dea.a($$0, $$1x -> {
+         if (this.c) {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jq<ddy>)$$2, bae.a($$1x.a((jq<ddy>)$$2) + $$3.a($$1), 0, 255)));
+         } else {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jq<ddy>)$$2, bae.a($$3.a($$1), 0, 255)));
+         }
+      });
       return $$0;
    }
 
-   private List<xv> a(@Nullable dad $$0, ewh $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
-      } else {
-         UnaryOperator<xv> $$2 = eyq.a($$1, this.d.orElse(null));
-         List<xv> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
-      }
-   }
+   public static class a extends eyb.a<eyp.a> {
+      private final Builder<jq<ddy>, fat> a = ImmutableMap.builder();
+      private final boolean b;
 
-   public static eyp.a c() {
-      return new eyp.a();
-   }
-
-   public static class a extends exu.a<eyp.a> {
-      private Optional<ewh.b> a = Optional.empty();
-      private final Builder<xv> b = ImmutableList.builder();
-      private ext c = ext.a.b;
-
-      public eyp.a a(ext $$0) {
-         this.c = $$0;
-         return this;
+      public a() {
+         this(false);
       }
 
-      public eyp.a a(ewh.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eyp.a a(xv $$0) {
-         this.b.add($$0);
-         return this;
+      public a(boolean $$0) {
+         this.b = $$0;
       }
 
       protected eyp.a a() {
          return this;
       }
 
+      public eyp.a a(jq<ddy> $$0, fat $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
       @Override
-      public exv b() {
-         return new eyp(this.g(), this.b.build(), this.c, this.a);
+      public eyc b() {
+         return new eyp(this.g(), this.a.build(), this.b);
       }
    }
 }

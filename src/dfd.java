@@ -1,26 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dfd(jq<ddr> c, bsj d) implements dez {
-   public static final MapCodec<dfd> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ddr.c.fieldOf("enchantment").forGetter(dfd::b), bsj.c.fieldOf("level").forGetter(dfd::c)).apply($$0, dfd::new)
+public record dfd(ju<bvq<?>> d, boolean e) implements dep {
+   public static final MapCodec<dfd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kf.a(mb.z).fieldOf("entity").forGetter(dfd::b), Codec.BOOL.optionalFieldOf("join_team", false).forGetter(dfd::c)).apply($$0, dfd::new)
    );
 
    @Override
-   public void a(cxk $$0, ddx.a $$1, bam $$2, btc $$3) {
-      $$1.b(this.c, bae.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
+      jh $$5 = jh.a((ka)$$4);
+      if (dhh.l($$5)) {
+         Optional<jq<bvq<?>>> $$6 = this.b().a($$0.H_());
+         if (!$$6.isEmpty()) {
+            bvj $$7 = $$6.get().a().a($$0, $$5, bvp.k);
+            if ($$7 != null) {
+               if ($$7 instanceof bwe $$8 && $$2.c() instanceof asi $$9) {
+                  $$8.b($$9);
+               }
+
+               if (this.e && $$3.cr() != null) {
+                  $$0.g().a($$7.cI(), $$3.cr());
+               }
+
+               $$7.b($$4.d, $$4.e, $$4.f, $$7.dL(), $$7.dN());
+            }
+         }
+      }
    }
 
    @Override
    public MapCodec<dfd> a() {
-      return b;
+      return a;
    }
 
-   public jq<ddr> b() {
-      return this.c;
-   }
-
-   public bsj c() {
+   public ju<bvq<?>> b() {
       return this.d;
+   }
+
+   public boolean c() {
+      return this.e;
    }
 }

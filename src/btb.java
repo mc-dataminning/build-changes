@@ -1,49 +1,86 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public enum btb implements bba {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
+public interface btb extends bsz {
+   float r_ = 4.0F;
 
-   public static final bba.a<btb> e = bba.a(btb::values);
-   private static final IntFunction<btb> f = ayv.a(btb::a, values(), ayv.a.b);
-   private final int g;
-   private final String h;
+   int b();
 
-   private btb(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   boolean c();
+
+   cxo a(int var1);
+
+   cxo a(int var1, int var2);
+
+   cxo b(int var1);
+
+   void a(int var1, cxo var2);
+
+   default int ao_() {
+      return 99;
    }
 
-   public int a() {
-      return this.g;
+   default int e_(cxo $$0) {
+      return Math.min(this.ao_(), $$0.k());
    }
 
-   public xv b() {
-      return xv.c("options.difficulty." + this.h);
+   void e();
+
+   boolean a(cpw var1);
+
+   default void c_(cpw $$0) {
    }
 
-   public xv d() {
-      return xv.c("options.difficulty." + this.h + ".info");
+   default void c(cpw $$0) {
    }
 
-   public static btb a(int $$0) {
-      return f.apply($$0);
+   default boolean b(int $$0, cxo $$1) {
+      return true;
    }
 
-   @Nullable
-   public static btb a(String $$0) {
-      return e.a($$0);
+   default boolean a(btb $$0, int $$1, cxo $$2) {
+      return true;
    }
 
-   public String e() {
-      return this.h;
+   default int a_(cxk $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cxo $$3 = this.a($$2);
+         if ($$3.h().equals($$0)) {
+            $$1 += $$3.L();
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   default boolean a(Set<cxk> $$0) {
+      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
+   }
+
+   default boolean a_(Predicate<cxo> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cxo $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(duw $$0, cpw $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(duw $$0, cpw $$1, float $$2) {
+      dhh $$3 = $$0.i();
+      jh $$4 = $$0.aB_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
+      }
    }
 }

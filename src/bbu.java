@@ -1,42 +1,77 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.RewriteResult;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.View;
+import com.mojang.datafixers.functions.PointFreeRule;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import java.util.BitSet;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-public abstract class bbu extends DataFix {
-   private final String a;
-
-   public bbu(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+public class bbu {
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("X").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
+      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
+      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
+         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
+         : $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bis.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bis.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
+      return new Typed($$0, $$1.getOps(), $$1.getValue());
+   }
+
+   public static Type<?> a(Type<?> $$0, Type<?> $$1, Type<?> $$2) {
+      return $$0.all(a($$1, $$2), true, false).view().newType();
+   }
+
+   private static <A, B> TypeRewriteRule a(Type<A> $$0, Type<B> $$1) {
+      RewriteResult<A, B> $$2 = RewriteResult.create(View.create("Patcher", $$0, $$1, $$0x -> $$0xx -> {
+            throw new UnsupportedOperationException();
+         }), new BitSet());
+      return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame($$0, $$2), PointFreeRule.nop(), true, true);
+   }
+
+   @SafeVarargs
+   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
+      return $$1 -> {
+         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
+            $$1 = $$2.apply($$1);
+         }
+
+         return $$1;
+      };
+   }
+
+   public static Dynamic<?> a(String $$0, Map<String, String> $$1) {
+      Dynamic<vu> $$2 = new Dynamic(vl.a, new ux());
+      Dynamic<vu> $$3 = $$2.set("Name", $$2.createString($$0));
+      if (!$$1.isEmpty()) {
+         $$3 = $$3.set(
+            "Properties",
+            $$2.createMap(
+               $$1.entrySet()
+                  .stream()
+                  .collect(Collectors.toMap($$1x -> $$2.createString((String)$$1x.getKey()), $$1x -> $$2.createString((String)$$1x.getValue())))
+            )
+         );
       }
+
+      return $$3;
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
+   public static Dynamic<?> a(String $$0) {
+      return a($$0, Map.of());
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
+   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, UnaryOperator<String> $$2) {
+      return $$0.update($$1, $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asString().map($$2).map($$0::createString).result(), $$2x));
    }
-
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
-   }
-
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

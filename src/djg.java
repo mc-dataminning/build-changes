@@ -1,45 +1,84 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class djg extends dko implements dkh {
-   public static final MapCodec<djg> a = b(djg::new);
-   private static final fcm b = fcj.a(dke.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dke.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
+public abstract class djg extends djx {
+   public static final dyr<jm> a = doj.aF;
+   public static final dyl b = dyk.r;
 
-   @Override
-   public MapCodec<djg> a() {
-      return a;
-   }
-
-   protected djg(dxm.d $$0) {
+   protected djg(dxt.d $$0) {
       super($$0);
+      this.l(this.F.b().b(a, jm.c).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return b;
+   protected abstract MapCodec<? extends djg> a();
+
+   @Override
+   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
+      if (!$$1.C) {
+         this.a($$1, $$2, $$3);
+      }
+
+      return bti.a;
+   }
+
+   protected abstract void a(dhh var1, jh var2, cpw var3);
+
+   @Override
+   public dxu a(dbf $$0) {
+      return this.m().b(a, $$0.g().g());
    }
 
    @Override
-   protected boolean b(dxn $$0, dgf $$1, jh $$2) {
-      return $$0.a(dkg.ee) || super.b($$0, $$1, $$2);
+   protected void a(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         duw $$5 = $$1.c_($$2);
+         if ($$5 instanceof duk) {
+            if ($$1 instanceof ash) {
+               bte.a($$1, $$2, (duk)$$5);
+               ((duk)$$5).a((ash)$$1, fbx.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
    }
 
    @Override
-   public boolean b(dhd $$0, jh $$1, dxn $$2) {
-      return $$0.b_($$1.d()).c();
+   protected boolean c_(dxu $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
-      return (double)$$0.A.i() < 0.45;
+   protected int a(dxu $$0, dhh $$1, jh $$2) {
+      return ctb.a($$1.c_($$2));
    }
 
    @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
-      dxc.e.a($$0, $$0.m().g(), $$2, $$3, $$1);
+   protected dqu a_(dxu $$0) {
+      return dqu.c;
    }
 
    @Override
-   protected boolean a(dxn $$0, eue $$1) {
-      return false;
+   protected dxu a(dxu $$0, drb $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dxu a(dxu $$0, dpk $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends duw> dux<T> a(dhh $$0, duy<T> $$1, duy<? extends duk> $$2) {
+      return $$0 instanceof ash $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> duk.a($$3, $$2x, $$3x, $$4)) : null;
    }
 }

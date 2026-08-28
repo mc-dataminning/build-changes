@@ -1,46 +1,60 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
+import java.util.EnumMap;
 
-public record dfp(String e, jq<cxg> f, float g, Map<alz, String> h, xv i) {
-   public static final Codec<dfp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               azn.C.fieldOf("asset_name").forGetter(dfp::a),
-               alw.a(mb.K).fieldOf("ingredient").forGetter(dfp::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(dfp::c),
-               Codec.unboundedMap(alz.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(dfp::d),
-               xx.a.fieldOf("description").forGetter(dfp::e)
-            )
-            .apply($$0, dfp::new)
-   );
-   public static final zt<xg, dfp> b = zt.a(
-      zr.o, dfp::a, zr.b(mb.K), dfp::b, zr.l, dfp::c, zr.a(Object2ObjectOpenHashMap::new, alz.b, zr.o), dfp::d, xx.b, dfp::e, dfp::new
-   );
-   public static final Codec<jq<dfp>> c = alv.a(mb.aY, a);
-   public static final zt<xg, jq<dfp>> d = zr.a(mb.aY, b);
-
-   public static dfp a(String $$0, cxg $$1, float $$2, xv $$3, Map<alz, String> $$4) {
-      return new dfp($$0, ma.g.e($$1), $$2, $$4, $$3);
-   }
-
-   public String a() {
-      return this.e;
-   }
-
-   public jq<cxg> b() {
-      return this.f;
-   }
-
-   public float c() {
-      return this.g;
-   }
-
-   public Map<alz, String> d() {
-      return this.h;
-   }
-
-   public xv e() {
-      return this.i;
-   }
+public interface dfp {
+   dfo a = new dfo(5, ae.a(new EnumMap<>(dfq.class), $$0 -> {
+      $$0.put(dfq.d, 1);
+      $$0.put(dfq.c, 2);
+      $$0.put(dfq.b, 3);
+      $$0.put(dfq.a, 1);
+      $$0.put(dfq.e, 3);
+   }), 15, axf.av, 0.0F, 0.0F, ayd.bj, dfs.a);
+   dfo b = new dfo(15, ae.a(new EnumMap<>(dfq.class), $$0 -> {
+      $$0.put(dfq.d, 1);
+      $$0.put(dfq.c, 4);
+      $$0.put(dfq.b, 5);
+      $$0.put(dfq.a, 2);
+      $$0.put(dfq.e, 4);
+   }), 12, axf.ap, 0.0F, 0.0F, ayd.bk, dfs.b);
+   dfo c = new dfo(15, ae.a(new EnumMap<>(dfq.class), $$0 -> {
+      $$0.put(dfq.d, 2);
+      $$0.put(dfq.c, 5);
+      $$0.put(dfq.b, 6);
+      $$0.put(dfq.a, 2);
+      $$0.put(dfq.e, 5);
+   }), 9, axf.au, 0.0F, 0.0F, ayd.bl, dfs.c);
+   dfo d = new dfo(7, ae.a(new EnumMap<>(dfq.class), $$0 -> {
+      $$0.put(dfq.d, 1);
+      $$0.put(dfq.c, 3);
+      $$0.put(dfq.b, 5);
+      $$0.put(dfq.a, 2);
+      $$0.put(dfq.e, 7);
+   }), 25, axf.at, 0.0F, 0.0F, ayd.bm, dfs.d);
+   dfo e = new dfo(33, ae.a(new EnumMap<>(dfq.class), $$0 -> {
+      $$0.put(dfq.d, 3);
+      $$0.put(dfq.c, 6);
+      $$0.put(dfq.b, 8);
+      $$0.put(dfq.a, 3);
+      $$0.put(dfq.e, 11);
+   }), 10, axf.aq, 2.0F, 0.0F, ayd.bn, dfs.e);
+   dfo f = new dfo(25, ae.a(new EnumMap<>(dfq.class), $$0 -> {
+      $$0.put(dfq.d, 2);
+      $$0.put(dfq.c, 5);
+      $$0.put(dfq.b, 6);
+      $$0.put(dfq.a, 2);
+      $$0.put(dfq.e, 5);
+   }), 9, axf.ax, 0.0F, 0.0F, ayd.bp, dfs.f);
+   dfo g = new dfo(37, ae.a(new EnumMap<>(dfq.class), $$0 -> {
+      $$0.put(dfq.d, 3);
+      $$0.put(dfq.c, 6);
+      $$0.put(dfq.b, 8);
+      $$0.put(dfq.a, 3);
+      $$0.put(dfq.e, 11);
+   }), 15, axf.aw, 3.0F, 0.1F, ayd.bo, dfs.g);
+   dfo h = new dfo(4, ae.a(new EnumMap<>(dfq.class), $$0 -> {
+      $$0.put(dfq.d, 3);
+      $$0.put(dfq.c, 6);
+      $$0.put(dfq.b, 8);
+      $$0.put(dfq.a, 3);
+      $$0.put(dfq.e, 11);
+   }), 10, axf.ay, 0.0F, 0.0F, ayd.bq, dfs.h);
 }

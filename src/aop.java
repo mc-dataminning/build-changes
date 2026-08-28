@@ -12,8 +12,8 @@ public class aop {
       );
    }
 
-   private static int a(ew $$0, Collection<? extends bvf> $$1) {
-      for (bvf $$2 : $$1) {
+   private static int a(ew $$0, Collection<? extends bvj> $$1) {
+      for (bvj $$2 : $$1) {
          $$2.c($$0.e());
       }
 

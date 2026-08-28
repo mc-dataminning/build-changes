@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fat extends ewp {
+   float b(ewo var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fat {
+   default int a(ewo $$0) {
+      return Math.round(this.b($$0));
+   }
+
+   fas b();
 }

@@ -1,33 +1,58 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.util.concurrent.Executor;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hgm implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final bog<hgl> b;
-   private final bru c;
+public class hgm implements hgn<hfd> {
+   private final List<hgn<hfd>> a = Lists.newArrayList();
+   @Nullable
+   private final xv b;
 
-   public hgm(FileChannel $$0, Executor $$1) {
-      this.b = new bog<>(hgl.a, $$0);
-      this.c = new bru($$1, "telemetry-event-log");
-   }
-
-   public hgn a() {
-      return $$0 -> this.c.a_(() -> {
-            try {
-               this.b.a($$0);
-            } catch (IOException var3) {
-               a.error("Failed to write telemetry event to log", var3);
-            }
-         });
+   public hgm(alz $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : xv.c($$1);
    }
 
    @Override
-   public void close() {
-      this.c.a_(() -> IOUtils.closeQuietly(this.b));
-      this.c.close();
+   public int e() {
+      int $$0 = 0;
+
+      for (hgn<hfd> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public hfd a(bam $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (hgn<hfd> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
+         }
+
+         return hgl.b;
+      } else {
+         return hgl.b;
+      }
+   }
+
+   public void a(hgn<hfd> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public xv a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(hgi $$0) {
+      for (hgn<hfd> $$1 : this.a) {
+         $$1.a($$0);
+      }
    }
 }

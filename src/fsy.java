@@ -1,65 +1,42 @@
-public class fsy extends ftr {
-   private static final xv a = xv.c("gui.toMenu");
-   private static final xv b = xv.c("gui.toTitle");
-   private static final xv c = xv.c("gui.report_to_server");
-   private static final xv d = xv.c("gui.open_report_dir");
-   private final ftr s;
-   private final wr u;
-   private final xv v;
-   private final frr w = frr.d();
+public class fsy extends ftw {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xv c = xv.c("credits_and_attribution.screen.title");
+   private static final xv d = xv.c("credits_and_attribution.button.credits");
+   private static final xv s = xv.c("credits_and_attribution.button.attribution");
+   private static final xv u = xv.c("credits_and_attribution.button.licenses");
+   private final ftw v;
+   private final frs w = new frs(this);
 
-   public fsy(ftr $$0, xv $$1, xv $$2) {
-      this($$0, $$1, new wr($$2));
-   }
-
-   public fsy(ftr $$0, xv $$1, xv $$2, xv $$3) {
-      this($$0, $$1, new wr($$2), $$3);
-   }
-
-   public fsy(ftr $$0, xv $$1, wr $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public fsy(ftr $$0, xv $$1, wr $$2, xv $$3) {
-      super($$1);
-      this.s = $$0;
-      this.u = $$2;
-      this.v = $$3;
+   public fsy(ftw $$0) {
+      super(c);
+      this.v = $$0;
    }
 
    @Override
    protected void aT_() {
-      this.w.c().b().a(10);
-      this.w.a(new fpg(this.l, this.p));
-      this.w.a(new fot(this.u.a(), this.p).d(this.n - 50).b(true));
-      this.w.c().a(2);
-      this.u.c().ifPresent($$0 -> this.w.a(fny.a(c, fso.b(this, $$0, false)).a(200).a()));
-      this.u.b().ifPresent($$0 -> this.w.a(fny.a(d, $$1x -> ae.m().a($$0.getParent())).a(200).a()));
-      fny $$0;
-      if (this.m.F()) {
-         $$0 = fny.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
-      } else {
-         $$0 = fny.a(b, $$0x -> this.m.a(new ftt())).a(200).a();
-      }
-
-      this.w.a($$0);
+      this.w.a(c, this.p);
+      frw $$0 = this.w.c(frw.d()).a(8);
+      $$0.c().b();
+      $$0.a(fod.a(d, $$0x -> this.l()).a(210).a());
+      $$0.a(fod.a(s, fst.b(this, aza.d)).a(210).a());
+      $$0.a(fod.a(u, fst.b(this, aza.e)).a(210).a());
+      this.w.b(fod.a(xu.d, $$0x -> this.aP_()).a(200).a());
       this.w.a();
       this.w.a(this::c);
-      this.c();
    }
 
    @Override
    protected void c() {
-      frl.a(this.w, this.H());
+      this.w.a();
+   }
+
+   private void l() {
+      this.m.a(new ftz(false, () -> this.m.a(this)));
    }
 
    @Override
-   public xv i() {
-      return xu.a(this.l, this.u.a());
-   }
-
-   @Override
-   public boolean aH_() {
-      return false;
+   public void aP_() {
+      this.m.a(this.v);
    }
 }

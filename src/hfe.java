@@ -1,52 +1,28 @@
+import java.util.List;
+import javax.annotation.Nullable;
+
 public class hfe {
-   public static class a extends hek {
-      private final gka n;
+   private final List<hfd> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-      protected a(gka $$0, axe $$1) {
-         super($$1, axg.i, hfb.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dQ() || !this.n.bo()) {
-            this.n();
-         }
-      }
+   public hfe(List<hfd> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static class b extends hek {
-      public static final int n = 40;
-      private final gka o;
-      private int p;
+   public List<hfd> a() {
+      return this.a;
+   }
 
-      public b(gka $$0) {
-         super(axf.z, axg.i, hfb.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+   public boolean b() {
+      return this.b;
+   }
 
-      @Override
-      public void q() {
-         if (!this.o.dQ() && this.p >= 0) {
-            if (this.o.bo()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
-      }
+   @Nullable
+   public String c() {
+      return this.c;
    }
 }

@@ -1,12 +1,11 @@
-public class csp {
-   private final String a;
+import java.util.Set;
 
-   public csp(String $$0) {
-      this.a = $$0;
-   }
+public interface csp {
+   Set<aly<? extends kd<? extends csp>>> bU = Set.of(mb.K, mb.f, mb.z, mb.V, mb.ad, mb.W);
 
-   @Override
-   public String toString() {
-      return this.a;
+   css i();
+
+   default boolean a(css $$0) {
+      return this.i().a($$0);
    }
 }

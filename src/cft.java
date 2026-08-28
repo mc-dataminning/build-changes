@@ -1,25 +1,43 @@
-public class cft extends cgf {
-   public static final float a = 8.0F;
+public class cft extends cfr {
+   private boolean p;
 
-   @Override
-   protected boolean a(ash $$0, bwb $$1, bwb $$2) {
-      return this.b($$1, $$2) && $$2.bm() && (this.b($$2) || this.a($$1, $$2)) && cgl.c($$0, $$1, $$2);
-   }
-
-   private boolean a(bwb $$0, bwb $$1) {
-      return !$$0.eb().a(cff.U) && $$1.aq().a(axy.j);
-   }
-
-   private boolean b(bwb $$0) {
-      return $$0.aq().a(axy.i);
-   }
-
-   private boolean b(bwb $$0, bwb $$1) {
-      return $$1.g((bvf)$$0) <= 64.0;
+   public cft(bwh $$0, dhh $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected cff<bwb> b() {
-      return cff.B;
+   protected eum a(int $$0) {
+      this.p = this.a.aq() == bvq.I;
+      this.o = new euq(this.p);
+      return new eum(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bn();
+   }
+
+   @Override
+   protected fbx b() {
+      return new fbx(this.a.dA(), this.a.e(0.5), this.a.dG());
+   }
+
+   @Override
+   protected double a(fbx $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(fbx $$0, fbx $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(jh $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

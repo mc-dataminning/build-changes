@@ -1,48 +1,36 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public record cxq(jq<axe> e, xv f, float g, int h) {
-   public static final Codec<cxq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axe.b.fieldOf("sound_event").forGetter(cxq::b),
-               xx.a.fieldOf("description").forGetter(cxq::c),
-               azn.o.fieldOf("length_in_seconds").forGetter(cxq::d),
-               azn.a(0, 15).fieldOf("comparator_output").forGetter(cxq::e)
-            )
-            .apply($$0, cxq::new)
-   );
-   public static final zt<xg, cxq> b = zt.a(axe.d, cxq::b, xx.b, cxq::c, zr.l, cxq::d, zr.h, cxq::e, cxq::new);
-   public static final Codec<jq<cxq>> c = alw.a(mb.L);
-   public static final zt<xg, jq<cxq>> d = zr.a(mb.L, b);
-   private static final int i = 20;
+public enum cxq implements bba {
+   a(0, "none"),
+   b(1, "eat"),
+   c(2, "drink"),
+   d(3, "block"),
+   e(4, "bow"),
+   f(5, "spear"),
+   g(6, "crossbow"),
+   h(7, "spyglass"),
+   i(8, "toot_horn"),
+   j(9, "brush");
+
+   private static final IntFunction<cxq> m = ayv.a(cxq::a, values(), ayv.a.a);
+   public static final Codec<cxq> k = bba.a(cxq::values);
+   public static final zt<ByteBuf, cxq> l = zr.a(m, cxq::a);
+   private final int n;
+   private final String o;
+
+   private cxq(final int $$0, final String $$1) {
+      this.n = $$0;
+      this.o = $$1;
+   }
 
    public int a() {
-      return bae.f(this.g * 20.0F);
+      return this.n;
    }
 
-   public boolean a(long $$0) {
-      return $$0 >= (long)(this.a() + 20);
-   }
-
-   public static Optional<jq<cxq>> a(js.a $$0, cxk $$1) {
-      cxp $$2 = $$1.a(ku.ab);
-      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
-   }
-
-   public jq<axe> b() {
-      return this.e;
-   }
-
-   public xv c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
+   @Override
+   public String c() {
+      return this.o;
    }
 }

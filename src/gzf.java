@@ -1,3 +1,3 @@
-public class gzf extends gym {
-   public cin.a a = cin.a.b;
+public class gzf extends gyr {
+   public float a;
 }

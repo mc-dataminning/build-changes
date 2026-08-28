@@ -1,138 +1,68 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cpl implements dgm {
-   private static final int b = 1200;
-   public static final int a = 24000;
-   private static final int c = 25;
-   private static final int d = 75;
-   private static final int e = 25;
-   private static final int f = 10;
-   private static final int g = 10;
-   private final bam h = bam.a();
-   private final ewa i;
-   private int j;
-   private int k;
-   private int l;
-
-   public cpl(ewa $$0) {
-      this.i = $$0;
-      this.j = 1200;
-      this.k = $$0.t();
-      this.l = $$0.u();
-      if (this.k == 0 && this.l == 0) {
-         this.k = 24000;
-         $$0.d(this.k);
-         this.l = 25;
-         $$0.e(this.l);
-      }
-   }
+public record cpl(String q, Predicate<jq<chm>> r, Predicate<jq<chm>> s, ImmutableSet<cxk> t, ImmutableSet<dkl> u, @Nullable axe v) {
+   public static final Predicate<jq<chm>> a = $$0 -> $$0.a(ayf.a);
+   public static final cpl b = a("none", chm.a, a, null);
+   public static final cpl c = a("armorer", chn.a, axf.By);
+   public static final cpl d = a("butcher", chn.b, axf.Bz);
+   public static final cpl e = a("cartographer", chn.c, axf.BA);
+   public static final cpl f = a("cleric", chn.d, axf.BB);
+   public static final cpl g = a("farmer", chn.e, ImmutableSet.of(cxs.pS, cxs.pR, cxs.wb, cxs.sm), ImmutableSet.of(dkn.cK), axf.BC);
+   public static final cpl h = a("fisherman", chn.f, axf.BD);
+   public static final cpl i = a("fletcher", chn.g, axf.BE);
+   public static final cpl j = a("leatherworker", chn.h, axf.BF);
+   public static final cpl k = a("librarian", chn.i, axf.BG);
+   public static final cpl l = a("mason", chn.j, axf.BH);
+   public static final cpl m = a("nitwit", chm.a, chm.a, null);
+   public static final cpl n = a("shepherd", chn.k, axf.BI);
+   public static final cpl o = a("toolsmith", chn.l, axf.BJ);
+   public static final cpl p = a("weaponsmith", chn.m, axf.BK);
 
    @Override
-   public int a(ash $$0, boolean $$1, boolean $$2) {
-      if (!$$0.N().b(dgw.L)) {
-         return 0;
-      } else if (--this.j > 0) {
-         return 0;
-      } else {
-         this.j = 1200;
-         this.k -= 1200;
-         this.i.d(this.k);
-         if (this.k > 0) {
-            return 0;
-         } else {
-            this.k = 24000;
-            if (!$$0.N().b(dgw.e)) {
-               return 0;
-            } else {
-               int $$3 = this.l;
-               this.l = bae.a(this.l + 25, 25, 75);
-               this.i.e(this.l);
-               if (this.h.a(100) > $$3) {
-                  return 0;
-               } else if (this.a($$0)) {
-                  this.l = 25;
-                  return 1;
-               } else {
-                  return 0;
-               }
-            }
-         }
-      }
+   public String toString() {
+      return this.q;
    }
 
-   private boolean a(ash $$0) {
-      cps $$1 = $$0.k();
-      if ($$1 == null) {
-         return true;
-      } else if (this.h.a(10) != 0) {
-         return false;
-      } else {
-         jh $$2 = $$1.dv();
-         int $$3 = 48;
-         chf $$4 = $$0.z();
-         Optional<jh> $$5 = $$4.d($$0x -> $$0x.a(chj.o), $$0x -> true, $$2, 48, chf.b.c);
-         jh $$6 = $$5.orElse($$2);
-         jh $$7 = this.a($$0, $$6, 48);
-         if ($$7 != null && this.a($$0, $$7)) {
-            if ($$0.t($$7).a(axt.ah)) {
-               return false;
-            }
-
-            cpk $$8 = bvm.bF.a($$0, $$7, bvl.h);
-            if ($$8 != null) {
-               for (int $$9 = 0; $$9 < 2; $$9++) {
-                  this.a($$0, $$8, 4);
-               }
-
-               this.i.a($$8.cG());
-               $$8.t(48000);
-               $$8.h($$6);
-               $$8.a($$6, 16);
-               return true;
-            }
-         }
-
-         return false;
-      }
+   private static cpl a(String $$0, aly<chm> $$1, @Nullable axe $$2) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
    }
 
-   private void a(ash $$0, cpk $$1, int $$2) {
-      jh $$3 = this.a($$0, $$1.dv(), $$2);
-      if ($$3 != null) {
-         cke $$4 = bvm.by.a($$0, $$3, bvl.h);
-         if ($$4 != null) {
-            $$4.b($$1, true);
-         }
-      }
+   private static cpl a(String $$0, Predicate<jq<chm>> $$1, Predicate<jq<chm>> $$2, @Nullable axe $$3) {
+      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   }
+
+   private static cpl a(String $$0, aly<chm> $$1, ImmutableSet<cxk> $$2, ImmutableSet<dkl> $$3, @Nullable axe $$4) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   }
+
+   private static cpl a(String $$0, Predicate<jq<chm>> $$1, Predicate<jq<chm>> $$2, ImmutableSet<cxk> $$3, ImmutableSet<dkl> $$4, @Nullable axe $$5) {
+      return kd.a(ma.x, alz.b($$0), new cpl($$0, $$1, $$2, $$3, $$4, $$5));
+   }
+
+   public String a() {
+      return this.q;
+   }
+
+   public Predicate<jq<chm>> b() {
+      return this.r;
+   }
+
+   public Predicate<jq<chm>> c() {
+      return this.s;
+   }
+
+   public ImmutableSet<cxk> d() {
+      return this.t;
+   }
+
+   public ImmutableSet<dkl> e() {
+      return this.u;
    }
 
    @Nullable
-   private jh a(dhd $$0, jh $$1, int $$2) {
-      jh $$3 = null;
-      bwv $$4 = bwx.a(bvm.bF);
-
-      for (int $$5 = 0; $$5 < 10; $$5++) {
-         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
-         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
-         int $$8 = $$0.a(edi.a.b, $$6, $$7);
-         jh $$9 = new jh($$6, $$8, $$7);
-         if ($$4.isSpawnPositionOk($$0, $$9, bvm.bF)) {
-            $$3 = $$9;
-            break;
-         }
-      }
-
-      return $$3;
-   }
-
-   private boolean a(dgf $$0, jh $$1) {
-      for (jh $$2 : jh.c($$1, $$1.b(1, 2, 1))) {
-         if (!$$0.a_($$2).g($$0, $$2).c()) {
-            return false;
-         }
-      }
-
-      return true;
+   public axe f() {
+      return this.v;
    }
 }

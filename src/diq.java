@@ -1,95 +1,70 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+public abstract class diq {
+   public static final aly<dij> a = a("the_void");
+   public static final aly<dij> b = a("plains");
+   public static final aly<dij> c = a("sunflower_plains");
+   public static final aly<dij> d = a("snowy_plains");
+   public static final aly<dij> e = a("ice_spikes");
+   public static final aly<dij> f = a("desert");
+   public static final aly<dij> g = a("swamp");
+   public static final aly<dij> h = a("mangrove_swamp");
+   public static final aly<dij> i = a("forest");
+   public static final aly<dij> j = a("flower_forest");
+   public static final aly<dij> k = a("birch_forest");
+   public static final aly<dij> l = a("dark_forest");
+   public static final aly<dij> m = a("old_growth_birch_forest");
+   public static final aly<dij> n = a("old_growth_pine_taiga");
+   public static final aly<dij> o = a("old_growth_spruce_taiga");
+   public static final aly<dij> p = a("taiga");
+   public static final aly<dij> q = a("snowy_taiga");
+   public static final aly<dij> r = a("savanna");
+   public static final aly<dij> s = a("savanna_plateau");
+   public static final aly<dij> t = a("windswept_hills");
+   public static final aly<dij> u = a("windswept_gravelly_hills");
+   public static final aly<dij> v = a("windswept_forest");
+   public static final aly<dij> w = a("windswept_savanna");
+   public static final aly<dij> x = a("jungle");
+   public static final aly<dij> y = a("sparse_jungle");
+   public static final aly<dij> z = a("bamboo_jungle");
+   public static final aly<dij> A = a("badlands");
+   public static final aly<dij> B = a("eroded_badlands");
+   public static final aly<dij> C = a("wooded_badlands");
+   public static final aly<dij> D = a("meadow");
+   public static final aly<dij> E = a("cherry_grove");
+   public static final aly<dij> F = a("grove");
+   public static final aly<dij> G = a("snowy_slopes");
+   public static final aly<dij> H = a("frozen_peaks");
+   public static final aly<dij> I = a("jagged_peaks");
+   public static final aly<dij> J = a("stony_peaks");
+   public static final aly<dij> K = a("river");
+   public static final aly<dij> L = a("frozen_river");
+   public static final aly<dij> M = a("beach");
+   public static final aly<dij> N = a("snowy_beach");
+   public static final aly<dij> O = a("stony_shore");
+   public static final aly<dij> P = a("warm_ocean");
+   public static final aly<dij> Q = a("lukewarm_ocean");
+   public static final aly<dij> R = a("deep_lukewarm_ocean");
+   public static final aly<dij> S = a("ocean");
+   public static final aly<dij> T = a("deep_ocean");
+   public static final aly<dij> U = a("cold_ocean");
+   public static final aly<dij> V = a("deep_cold_ocean");
+   public static final aly<dij> W = a("frozen_ocean");
+   public static final aly<dij> X = a("deep_frozen_ocean");
+   public static final aly<dij> Y = a("mushroom_fields");
+   public static final aly<dij> Z = a("dripstone_caves");
+   public static final aly<dij> aa = a("lush_caves");
+   public static final aly<dij> ab = a("deep_dark");
+   public static final aly<dij> ac = a("nether_wastes");
+   public static final aly<dij> ad = a("warped_forest");
+   public static final aly<dij> ae = a("crimson_forest");
+   public static final aly<dij> af = a("soul_sand_valley");
+   public static final aly<dij> ag = a("basalt_deltas");
+   public static final aly<dij> ah = a("the_end");
+   public static final aly<dij> ai = a("end_highlands");
+   public static final aly<dij> aj = a("end_midlands");
+   public static final aly<dij> ak = a("small_end_islands");
+   public static final aly<dij> al = a("end_barrens");
 
-public class diq {
-   public static final Codec<diq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(diq.a.d.fieldOf("preset").forGetter($$0x -> $$0x.c), alx.c(mb.aH)).apply($$0, diq::new)
-   );
-   public static final Codec<jq<diq>> b = alv.a(mb.bb, a);
-   private final diq.a c;
-   private final dil.c<jq<dic>> d;
-
-   public diq(diq.a $$0, jr<dic> $$1) {
-      this.c = $$0;
-      this.d = $$0.f.apply($$1::b);
-   }
-
-   public dil.c<jq<dic>> a() {
-      return this.d;
-   }
-
-   public static Map<diq.a, dil.c<aly<dic>>> b() {
-      return diq.a.g.values().stream().collect(Collectors.toMap($$0 -> (diq.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
-   }
-
-   public static record a(alz e, diq.a.a f) {
-      public static final diq.a a = new diq.a(
-         alz.b("nether"),
-         new diq.a.a() {
-            @Override
-            public <T> dil.c<T> apply(Function<aly<dic>, T> $$0) {
-               return new dil.c<>(
-                  List.of(
-                     Pair.of(dil.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dij.ac)),
-                     Pair.of(dil.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dij.af)),
-                     Pair.of(dil.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dij.ae)),
-                     Pair.of(dil.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dij.ad)),
-                     Pair.of(dil.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dij.ag))
-                  )
-               );
-            }
-         }
-      );
-      public static final diq.a b = new diq.a(alz.b("overworld"), new diq.a.a() {
-         @Override
-         public <T> dil.c<T> apply(Function<aly<dic>, T> $$0) {
-            return diq.a.a($$0, dis.a.a);
-         }
-      });
-      public static final diq.a c = new diq.a(alz.b("overworld_winter_drop"), new diq.a.a() {
-         @Override
-         public <T> dil.c<T> apply(Function<aly<dic>, T> $$0) {
-            return diq.a.a($$0, dis.a.b);
-         }
-      });
-      static final Map<alz, diq.a> g = Stream.of(a, b, c).collect(Collectors.toMap(diq.a::b, $$0 -> (diq.a)$$0));
-      public static final Codec<diq.a> d = alz.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(g.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.e)
-         );
-
-      static <T> dil.c<T> a(Function<aly<dic>, T> $$0, dis.a $$1) {
-         Builder<Pair<dil.d, T>> $$2 = ImmutableList.builder();
-         new dis($$1).a($$2x -> $$2.add($$2x.mapSecond($$0)));
-         return new dil.c<>($$2.build());
-      }
-
-      public Stream<aly<dic>> a() {
-         return this.f.apply($$0 -> $$0).a().stream().<aly<dic>>map(Pair::getSecond).distinct();
-      }
-
-      public alz b() {
-         return this.e;
-      }
-
-      public diq.a.a c() {
-         return this.f;
-      }
-
-      @FunctionalInterface
-      interface a {
-         <T> dil.c<T> apply(Function<aly<dic>, T> var1);
-      }
+   private static aly<dij> a(String $$0) {
+      return aly.a(mb.aI, alz.b($$0));
    }
 }

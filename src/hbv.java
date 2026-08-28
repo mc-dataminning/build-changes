@@ -1,75 +1,35 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hbv extends ava {
-   private static final auv d = new auv(xv.c("resourcePack.vanilla.description"), ab.b().a(aui.a), Optional.empty());
-   private static final aty e = aty.a(auv.b, d);
-   public static final String c = "high_contrast";
-   private static final Map<String, xv> f = Map.of(
-      "programmer_art", xv.c("resourcePack.programmer_art.name"), "high_contrast", xv.c("resourcePack.high_contrast.name")
+public class hbv implements hbn {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<hbv> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alz.a.fieldOf("resource").forGetter($$0x -> $$0x.d), alz.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, hbv::new)
    );
-   private static final auf g = new auf("vanilla", xv.c("resourcePack.vanilla.name"), avh.c, Optional.of(b));
-   private static final auh h = new auh(true, avd.b.b, false);
-   private static final auh i = new auh(false, avd.b.a, false);
-   private static final alz j = alz.b("resourcepacks");
-   @Nullable
-   private final Path k;
+   private final alz d;
+   private final Optional<alz> e;
 
-   public hbv(Path $$0, fbi $$1) {
-      super(aui.a, b($$0), j, $$1);
-      this.k = this.a($$0);
+   public hbv(alz $$0, Optional<alz> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private static auf a(String $$0, xv $$1) {
-      return new auf($$0, $$1, avh.c, Optional.of(avc.a($$0)));
-   }
-
-   @Nullable
-   private Path a(Path $$0) {
-      if (ab.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
-         }
+   @Override
+   public void a(avv $$0, hbn.a $$1) {
+      alz $$2 = a.a(this.d);
+      Optional<avt> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
       }
-
-      return null;
-   }
-
-   private static auk b(Path $$0) {
-      aul $$1 = new aul().a(e).a("minecraft", "realms");
-      return $$1.b().a().a(aui.a, $$0).a(g);
    }
 
    @Override
-   protected xv a(String $$0) {
-      xv $$1 = f.get($$0);
-      return (xv)($$1 != null ? $$1 : xv.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected avd a(aug $$0) {
-      return avd.a(g, b($$0), aui.a, h);
-   }
-
-   @Nullable
-   @Override
-   protected avd a(String $$0, avd.c $$1, xv $$2) {
-      return avd.a(a($$0, $$2), $$1, aui.a, i);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, avd>> $$0) {
-      super.a($$0);
-      if (this.k != null) {
-         this.a(this.k, $$0);
-      }
+   public hbp a() {
+      return hbq.a;
    }
 }

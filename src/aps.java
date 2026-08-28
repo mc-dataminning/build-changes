@@ -28,9 +28,9 @@ public class aps {
       );
    }
 
-   private static int a(ew $$0, jh $$1, gn $$2, aps.b $$3, @Nullable Predicate<dxr> $$4) throws CommandSyntaxException {
+   private static int a(ew $$0, jh $$1, gn $$2, aps.b $$3, @Nullable Predicate<dxy> $$4) throws CommandSyntaxException {
       ash $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dxr($$5, $$1, true))) {
+      if ($$4 != null && !$$4.test(new dxy($$5, $$1, true))) {
          throw a.create();
       } else {
          boolean $$6;
@@ -38,8 +38,8 @@ public class aps {
             $$5.b($$1, true);
             $$6 = !$$2.a().l() || !$$5.a_($$1).l();
          } else {
-            dup $$7 = $$5.c_($$1);
-            bsv.a($$7);
+            duw $$7 = $$5.c_($$1);
+            bsz.a($$7);
             $$6 = true;
          }
 
@@ -55,7 +55,7 @@ public class aps {
 
    public interface a {
       @Nullable
-      gn filter(enu var1, jh var2, gn var3, ash var4);
+      gn filter(eob var1, jh var2, gn var3, ash var4);
    }
 
    public static enum b {

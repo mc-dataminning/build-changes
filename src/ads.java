@@ -1,8 +1,8 @@
-public record ads(long[] b, bnz c) implements aac<acr> {
+public record ads(long[] b, bod c) implements aac<acr> {
    public static final zt<ws, ads> a = aac.a(ads::a, ads::new);
 
    private ads(ws $$0) {
-      this($$0.d(), $$0.b(bnz.class));
+      this($$0.d(), $$0.b(bod.class));
    }
 
    private void a(ws $$0) {
@@ -19,7 +19,7 @@ public record ads(long[] b, bnz c) implements aac<acr> {
       $$0.a(this);
    }
 
-   public bnz e() {
+   public bod e() {
       return this.c;
    }
 }

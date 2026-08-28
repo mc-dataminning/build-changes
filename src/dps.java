@@ -1,33 +1,25 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class dps extends dti {
-   public static final MapCodec<dps> b = b(dps::new);
-   private static final Map<jm, fcm> e = Maps.immutableEnumMap(
-      Map.of(
-         jm.c,
-         dke.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         jm.d,
-         dke.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         jm.f,
-         dke.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         jm.e,
-         dke.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class dps extends dkv {
+   public static final MapCodec<dps> a = b(dps::new);
+   protected static final fcr b = dkl.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
 
    @Override
    public MapCodec<dps> a() {
-      return b;
+      return a;
    }
 
-   public dps(dxm.d $$0) {
-      super(drj.b.h, $$0);
+   public dps(dxt.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return e.get($$0.c(d));
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
+      return $$0.a(axu.aO) || $$0.a(dkn.ek) || super.b($$0, $$1, $$2);
    }
 }

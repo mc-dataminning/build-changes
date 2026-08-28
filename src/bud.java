@@ -1,24 +1,19 @@
-class bud extends bui {
-   protected bud(buj $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bud implements bba {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bud> d = bba.a(bud::values);
+   private final String e;
+
+   private bud(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public boolean a(ash $$0, bwb $$1, int $$2) {
-      if ($$1 instanceof asi $$3 && !$$3.aa_() && $$0.al() != btb.a && $$0.c($$3.dv())) {
-         crf $$4 = $$0.d($$3.dv());
-         if ($$4 == null || $$4.m() < $$4.l()) {
-            $$3.a(new buk(bum.I, 600, $$2));
-            $$3.c($$3.dv());
-            return false;
-         }
-      }
-
-      return true;
+   public String c() {
+      return this.e;
    }
 }

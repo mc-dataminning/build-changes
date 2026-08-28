@@ -1,25 +1,29 @@
-public class dcx extends dbf {
-   public dcx(String $$0, dbm $$1, dbv $$2, cxk $$3, float $$4, int $$5) {
+public class dcx extends dbj {
+   public dcx(String $$0, dbp $$1, dbz $$2, cxo $$3, float $$4, int $$5) {
       super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected cxg f() {
-      return cxo.xb;
+   protected cxk f() {
+      return cxs.fc;
    }
 
    @Override
-   public dcj<dcx> b() {
-      return dcj.d;
+   public dcn<dcx> a() {
+      return dcn.o;
    }
 
    @Override
-   public dci<dcx> a() {
-      return dci.q;
+   public dco<dcx> b() {
+      return dco.b;
    }
 
    @Override
-   public dbi h() {
-      return dbi.j;
+   public dcg h() {
+      return switch (this.e()) {
+         case b -> dcf.f;
+         case a -> dcf.e;
+         case c -> dcf.g;
+      };
    }
 }

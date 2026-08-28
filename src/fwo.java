@@ -1,70 +1,86 @@
-public class fwo extends fwv {
-   public static final xv a = xv.c("options.accessibility.title");
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private static fmc<?>[] a(fmd $$0) {
-      return new fmc[]{
-         $$0.av(),
-         $$0.Z(),
-         $$0.u(),
-         $$0.J(),
-         $$0.q(),
-         $$0.s(),
-         $$0.ab(),
-         $$0.o(),
-         $$0.p(),
-         $$0.C(),
-         $$0.D(),
-         $$0.ae(),
-         $$0.af(),
-         $$0.ag(),
-         $$0.am(),
-         $$0.an(),
-         $$0.ao(),
-         $$0.ar(),
-         $$0.ap(),
-         $$0.aq(),
-         $$0.b(),
-         $$0.a(),
-         $$0.t(),
-         $$0.c(),
-         $$0.w(),
-         $$0.K(),
-         $$0.v()
-      };
-   }
+public class fwo extends ftw {
+   private static final int a = 310;
+   private static final int b = 25;
+   private static final xv c = xv.c("menu.server_links.title");
+   private final ftw d;
+   @Nullable
+   private fwo.a s;
+   final frs u = new frs(this);
+   final amr v;
 
-   public fwo(ftr $$0, fmd $$1) {
-      super($$0, $$1, a);
+   public fwo(ftw $$0, amr $$1) {
+      super(c);
+      this.d = $$0;
+      this.v = $$1;
    }
 
    @Override
    protected void aT_() {
-      super.aT_();
-      fnw $$0 = this.d.b(this.c.u());
-      if ($$0 != null && !this.m.ad().c().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fpk.a(xv.c("options.accessibility.high_contrast.error.tooltip")));
-      }
+      this.u.a(this.l, this.p);
+      this.s = this.u.c(new fwo.a(this.m, this.n, this));
+      this.u.b(fod.a(xu.k, $$0 -> this.aP_()).a(200).a());
+      this.u.a($$1 -> {
+         fob var10000 = this.c($$1);
+      });
+      this.c();
+   }
 
-      fnw $$1 = this.d.b(this.c.K());
-      if ($$1 != null) {
-         $$1.j = this.J();
+   @Override
+   protected void c() {
+      this.u.a();
+      if (this.s != null) {
+         this.s.a(this.n, this.u);
       }
    }
 
    @Override
-   protected void l() {
-      this.d.a(a(this.c));
+   public void aP_() {
+      this.m.a(this.d);
    }
 
-   @Override
-   protected void E() {
-      frr $$0 = this.s.b(frr.e().a(8));
-      $$0.a(fny.a(xv.c("options.accessibility.link"), fso.b(this, aza.l)).a());
-      $$0.a(fny.a(xu.d, $$0x -> this.m.a(this.b)).a());
+   static class a extends foj<fwo.b> {
+      public a(fme $$0, int $$1, fwo $$2) {
+         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
+         $$2.v.c().forEach($$1x -> this.b(new fwo.b($$2, $$1x)));
+      }
+
+      @Override
+      public int a() {
+         return 310;
+      }
+
+      @Override
+      public void a(int $$0, frs $$1) {
+         super.a($$0, $$1);
+         int $$2 = $$0 / 2 - 155;
+         this.aI_().forEach($$1x -> $$1x.a.k($$2));
+      }
    }
 
-   private boolean J() {
-      return this.m.s != null && this.m.s.J().b(csq.e);
+   static class b extends foj.a<fwo.b> {
+      final fob a;
+
+      b(ftw $$0, amr.a $$1) {
+         this.a = fod.a($$1.a(), fst.b($$0, $$1.c(), false)).a(310).a();
+      }
+
+      @Override
+      public void a(fnq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a.l($$2);
+         this.a.a($$0, $$6, $$7, $$9);
+      }
+
+      @Override
+      public List<? extends fqb> aI_() {
+         return List.of(this.a);
+      }
+
+      @Override
+      public List<? extends frz> b() {
+         return List.of(this.a);
+      }
    }
 }

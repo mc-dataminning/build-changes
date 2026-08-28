@@ -1,20 +1,17 @@
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class frj {
-   private static final int a = 4;
+public record frj(alz c) implements frh {
+   public static final MapCodec<frj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alz.a.fieldOf("id").forGetter(frj::c)).apply($$0, frj::new));
 
-   private frj() {
+   @Override
+   public fri a() {
+      return fri.e;
    }
 
-   public static fro a(fnj $$0, frp $$1, xv $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
-   }
-
-   public static fro a(fnj $$0, frp $$1, xv $$2, Consumer<frq> $$3) {
-      frr $$4 = frr.d().a(4);
-      $$4.a(new fpg($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   @Override
+   public Either<frh.b, frh.c> b() {
+      return Either.right(new frh.c(this.c));
    }
 }

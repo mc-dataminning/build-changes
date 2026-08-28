@@ -1,44 +1,40 @@
-public class gbg extends gbf<gxq> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final geh d;
-   private final geh e;
-   private final geh f;
+public class gbg extends gbk<gyj> {
+   public static final gev a = gev.scaling(0.5F);
+   private final gem b;
+   private final gem c;
 
-   public gbg(geh $$0) {
+   public gbg(gem $$0) {
       super($$0);
-      this.d = $$0.b("base");
-      this.e = this.d.b("upper_jaw");
-      this.f = this.d.b("lower_jaw");
+      this.c = $$0.b("left_wing");
+      this.b = $$0.b("right_wing");
    }
 
-   public static gen a() {
-      gep $$0 = new gep();
-      ger $$1 = $$0.a();
-      ger $$2 = $$1.a("base", gem.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gej.a(-5.0F, 24.0F, -5.0F));
-      gem $$3 = gem.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, gej.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, gej.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return gen.a($$0, 64, 32);
+   public static ges a() {
+      geu $$0 = new geu();
+      gew $$1 = $$0.a();
+      geq $$2 = new geq(1.0F);
+      $$1.a(
+         "left_wing",
+         ger.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         geo.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
+      );
+      $$1.a(
+         "right_wing",
+         ger.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         geo.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      );
+      return ges.a($$0, 64, 32);
    }
 
-   public void a(gxq $$0) {
+   public void a(gyj $$0) {
       super.a($$0);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.d.c = this.d.c - ($$1 + bae.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
-      }
-
-      this.v.c = 24.0F - 20.0F * $$3;
-      this.v.h = $$3;
-      this.v.i = $$3;
-      this.v.j = $$3;
+      this.c.c = $$0.I ? 3.0F : 0.0F;
+      this.c.e = $$0.N;
+      this.c.g = $$0.P;
+      this.c.f = $$0.O;
+      this.b.f = -this.c.f;
+      this.b.c = this.c.c;
+      this.b.e = this.c.e;
+      this.b.g = -this.c.g;
    }
 }

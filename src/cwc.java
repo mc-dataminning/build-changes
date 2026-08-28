@@ -1,83 +1,65 @@
-import java.util.Collection;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cwc extends cxg {
-   public cwc(cxg.a $$0) {
+public class cwc extends cxk {
+   private static final xv a = xv.c("item.minecraft.lodestone_compass");
+
+   public cwc(cxk.a $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dxn $$0, dha $$1, jh $$2, cps $$3) {
-      if (!$$1.C) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(btd.a));
-      }
-
-      return false;
+   @Nullable
+   public static jp a(dhh $$0) {
+      return $$0.G_().j() ? jp.a($$0.ah(), $$0.Y()) : null;
    }
 
    @Override
-   public bte a(dbd $$0) {
-      cps $$1 = $$0.o();
-      dha $$2 = $$0.q();
-      if (!$$2.C && $$1 != null) {
-         jh $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bte.d;
-         }
-      }
-
-      return bte.a;
+   public boolean c_(cxo $$0) {
+      return $$0.b(ku.ad) || super.c_($$0);
    }
 
-   private boolean a(cps $$0, dxn $$1, dhb $$2, jh $$3, boolean $$4, cxk $$5) {
-      if (!$$0.gE()) {
-         return false;
-      } else {
-         jq<dke> $$6 = $$1.c();
-         dxo<dke, dxn> $$7 = $$6.a().l();
-         Collection<dyp<?>> $$8 = $$7.d();
-         if ($$8.isEmpty()) {
-            a($$0, xv.a(this.k + ".empty", $$6.g()));
-            return false;
-         } else {
-            czx $$9 = $$5.a(ku.V);
-            if ($$9 == null) {
-               return false;
-            } else {
-               dyp<?> $$10 = $$9.a().get($$6);
-               if ($$4) {
-                  if ($$10 == null) {
-                     $$10 = $$8.iterator().next();
-                  }
-
-                  dxn $$11 = a($$1, $$10, $$0.fW());
-                  $$2.a($$3, $$11, 18);
-                  a($$0, xv.a(this.k + ".update", $$10.f(), a($$11, $$10)));
-               } else {
-                  $$10 = a($$8, $$10, $$0.fW());
-                  $$5.b(ku.V, $$9.a($$6, $$10));
-                  a($$0, xv.a(this.k + ".select", $$10.f(), a($$1, $$10)));
-               }
-
-               return true;
+   @Override
+   public void a(cxo $$0, dhh $$1, bvj $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof ash $$5) {
+         dai $$6 = $$0.a(ku.ad);
+         if ($$6 != null) {
+            dai $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(ku.ad, $$7);
             }
          }
       }
    }
 
-   private static <T extends Comparable<T>> dxn a(dxn $$0, dyp<T> $$1, boolean $$2) {
-      return $$0.b($$1, a($$1.a(), $$0.c($$1), $$2));
+   @Override
+   public bti a(dbh $$0) {
+      jh $$1 = $$0.a();
+      dhh $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dkn.pL)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, axf.oF, axg.h, 1.0F, 1.0F);
+         cpw $$3 = $$0.o();
+         cxo $$4 = $$0.n();
+         boolean $$5 = !$$3.fT() && $$4.L() == 1;
+         dai $$6 = new dai(Optional.of(jp.a($$2.ah(), $$1)), true);
+         if ($$5) {
+            $$4.b(ku.ad, $$6);
+         } else {
+            cxo $$7 = $$4.a(cxs.rq, 1);
+            $$4.a(1, $$3);
+            $$7.b(ku.ad, $$6);
+            if (!$$3.gg().f($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return bti.a;
+      }
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ae.b($$0, $$1) : ae.a($$0, $$1);
-   }
-
-   private static void a(cps $$0, xv $$1) {
-      ((asi)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dxn $$0, dyp<T> $$1) {
-      return $$1.b($$0.c($$1));
+   @Override
+   public xv a(cxo $$0) {
+      return $$0.b(ku.ad) ? a : super.a($$0);
    }
 }

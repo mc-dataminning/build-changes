@@ -1,79 +1,22 @@
+import java.time.Duration;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.WeakHashMap;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bqy {
-   public static final bqy a = new bqy();
-   private final WeakHashMap<bra, Void> b = new WeakHashMap<>();
-
-   private bqy() {
-   }
-
-   public void a(bra $$0) {
-      this.b.put($$0, null);
-   }
-
-   public List<bqx> a() {
-      Map<String, List<bqx>> $$0 = this.b.keySet().stream().flatMap($$0x -> $$0x.bw().stream()).collect(Collectors.groupingBy(bqx::d));
-      return a($$0);
-   }
-
-   private static List<bqx> a(Map<String, List<bqx>> $$0) {
-      return $$0.entrySet().stream().map($$0x -> {
-         String $$1 = (String)$$0x.getKey();
-         List<bqx> $$2 = (List<bqx>)$$0x.getValue();
-         return (bqx)($$2.size() > 1 ? new bqy.a($$1, $$2) : $$2.get(0));
-      }).collect(Collectors.toList());
-   }
-
-   static class a extends bqx {
-      private final List<bqx> b;
-
-      a(String $$0, List<bqx> $$1) {
-         super($$0, $$1.get(0).e(), () -> c($$1), () -> b($$1), a($$1));
-         this.b = $$1;
-      }
-
-      private static bqx.c a(List<bqx> $$0) {
-         return $$1 -> $$0.stream().anyMatch($$1x -> $$1x.a != null ? $$1x.a.test($$1) : false);
-      }
-
-      private static void b(List<bqx> $$0) {
-         for (bqx $$1 : $$0) {
-            $$1.a();
-         }
-      }
-
-      private static double c(List<bqx> $$0) {
-         double $$1 = 0.0;
-
-         for (bqx $$2 : $$0) {
-            $$1 += $$2.c().getAsDouble();
-         }
-
-         return $$1 / (double)$$0.size();
-      }
-
-      @Override
-      public boolean equals(@Nullable Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 == null || this.getClass() != $$0.getClass()) {
-            return false;
-         } else if (!super.equals($$0)) {
-            return false;
-         } else {
-            bqy.a $$1 = (bqy.a)$$0;
-            return this.b.equals($$1.b);
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(super.hashCode(), this.b);
+public record bqy<T extends bqx>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
+   public static <T extends bqx> bqy<T> a(List<T> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("No values");
+      } else {
+         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bqx::a)).toList();
+         Duration $$2 = $$1.stream().map(bqx::a).reduce(Duration::plus).orElse(Duration.ZERO);
+         T $$3 = (T)$$1.get(0);
+         T $$4 = (T)$$1.get($$1.size() - 1);
+         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
+         int $$6 = $$1.size();
+         Map<Integer, Double> $$7 = bqb.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
+         return new bqy<>($$3, $$4, $$5, $$6, $$7, $$2);
       }
    }
 }

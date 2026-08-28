@@ -1,27 +1,20 @@
-public class gve extends gvy<gxj, gay> {
-   private final gsh a;
+public class gve extends gwd<gxj, gaw> {
+   private static final alz a = alz.b("textures/entity/cat/cat_collar.png");
+   private final gaw b;
+   private final gaw c;
 
-   public gve(gtg<gxj, gay> $$0, gsh $$1) {
+   public gve(gtl<gxj, gaw> $$0, gei $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new gaw($$1.a(gel.O));
+      this.c = new gaw($$1.a(gel.N));
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, gxj $$3, float $$4, float $$5) {
-      cxk $$6 = $$3.aY_();
-      hdg $$7 = $$3.b();
-      if ($$7 != null) {
-         $$0.a();
-         float $$8 = 1.0F;
-         float $$9 = -1.0F;
-         float $$10 = bae.e($$3.V) / 60.0F;
-         if ($$3.V < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$10 * 0.5F, -1.0F + $$10 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$10 * 0.8F, -1.0F + $$10 * 0.2F);
-         }
-
-         this.a.a($$6, cxi.h, false, $$0, $$1, $$2, hav.d, $$7);
-         $$0.b();
+   public void a(fgq $$0, glj $$1, int $$2, gxj $$3, float $$4, float $$5) {
+      cwl $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         gaw $$8 = $$3.ae ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
       }
    }
 }

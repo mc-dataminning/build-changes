@@ -1,40 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cbc extends bxu<cpe> {
-   public cbc() {
-      super(ImmutableMap.of());
+public class cbc {
+   private static final int a = 10;
+   private static final int b = 7;
+
+   public static bzj<bwn> a(float $$0) {
+      return a($$0, 10, 7);
    }
 
-   protected boolean a(ash $$0, cpe $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static bzj<bwn> a(float $$0, int $$1, int $$2) {
+      return cbl.a((Function<cbl.b<bwn>, ? extends App<cbl.c<bwn>, cbo<bwn>>>)($$3 -> $$3.group($$3.c(cfj.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               jh $$7 = $$5.dv();
+               fbx $$8;
+               if ($$4.c($$7)) {
+                  $$8 = chd.a($$5, $$1, $$2);
+               } else {
+                  kj $$9 = kj.a($$7);
+                  kj $$10 = bya.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cha.a($$5, $$1, $$2, fbx.c($$10.k()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = chd.a($$5, $$1, $$2);
+                  }
+               }
 
-   protected void b(ash $$0, cpe $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bxd<?> $$3 = $$1.eb();
-         if (!$$3.c(crj.g)) {
-            $$3.b(cff.t);
-            $$3.b(cff.m);
-            $$3.b(cff.n);
-            $$3.b(cff.r);
-            $$3.b(cff.q);
-         }
-
-         $$3.a(crj.g);
-      }
-   }
-
-   protected void c(ash $$0, cpe $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bwb $$0) {
-      return $$0.eb().a(cff.A);
-   }
-
-   public static boolean c(bwb $$0) {
-      return $$0.eb().a(cff.x);
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cfm($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

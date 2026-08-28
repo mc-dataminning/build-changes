@@ -2,7 +2,7 @@ import org.jetbrains.annotations.VisibleForTesting;
 
 public class ajm {
    private static final double a = 4096.0;
-   private fbs b = fbs.c;
+   private fbx b = fbx.c;
 
    @VisibleForTesting
    static long a(double $$0) {
@@ -14,38 +14,38 @@ public class ajm {
       return (double)$$0 / 4096.0;
    }
 
-   public fbs a(long $$0, long $$1, long $$2) {
+   public fbx a(long $$0, long $$1, long $$2) {
       if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
          return this.b;
       } else {
          double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
          double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
          double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
-         return new fbs($$3, $$4, $$5);
+         return new fbx($$3, $$4, $$5);
       }
    }
 
-   public long a(fbs $$0) {
+   public long a(fbx $$0) {
       return a($$0.d) - a(this.b.d);
    }
 
-   public long b(fbs $$0) {
+   public long b(fbx $$0) {
       return a($$0.e) - a(this.b.e);
    }
 
-   public long c(fbs $$0) {
+   public long c(fbx $$0) {
       return a($$0.f) - a(this.b.f);
    }
 
-   public fbs d(fbs $$0) {
+   public fbx d(fbx $$0) {
       return $$0.d(this.b);
    }
 
-   public void e(fbs $$0) {
+   public void e(fbx $$0) {
       this.b = $$0;
    }
 
-   public fbs a() {
+   public fbx a() {
       return this.b;
    }
 }

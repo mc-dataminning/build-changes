@@ -1,52 +1,13 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import org.slf4j.Logger;
+import java.time.Instant;
 
-public class brn {
-   public static final Codec<brn> a = Codec.INT.xmap(brn::a, brn::a);
-   private static final brn b = new brn(1);
-   private static final Logger c = LogUtils.getLogger();
-   private final int d;
+public final class brn {
+   public final Instant a;
+   public final int b;
+   public final bpq c;
 
-   private brn(int $$0) {
-      this.d = $$0;
-   }
-
-   public static brn a(int $$0) {
-      if ($$0 == 1) {
-         return b;
-      } else {
-         b($$0);
-         return new brn($$0);
-      }
-   }
-
-   public int a() {
-      return this.d;
-   }
-
-   private static void b(int $$0) {
-      if ($$0 < 0) {
-         throw (IllegalArgumentException)ae.b(new IllegalArgumentException("Weight should be >= 0"));
-      } else {
-         if ($$0 == 0 && ab.aU) {
-            c.warn("Found 0 weight, make sure this is intentional!");
-         }
-      }
-   }
-
-   @Override
-   public String toString() {
-      return Integer.toString(this.d);
-   }
-
-   @Override
-   public int hashCode() {
-      return Integer.hashCode(this.d);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof brn && this.d == ((brn)$$0).d;
+   public brn(Instant $$0, int $$1, bpq $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 }

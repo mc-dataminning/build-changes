@@ -1,69 +1,24 @@
-public class fzz {
-   public static void a(geh $$0, geh $$1, geh $$2, boolean $$3) {
-      geh $$4 = $$3 ? $$0 : $$1;
-      geh $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+public abstract class fzz extends gbk<gxf> {
+   private final gem a;
+   private final gem b;
+
+   public fzz(gem $$0) {
+      super($$0);
+      this.a = $$0.b("left_paddle");
+      this.b = $$0.b("right_paddle");
    }
 
-   public static void a(geh $$0, geh $$1, float $$2, int $$3, boolean $$4) {
-      geh $$5 = $$4 ? $$0 : $$1;
-      geh $$6 = $$4 ? $$1 : $$0;
-      $$5.f = $$4 ? -0.8F : 0.8F;
-      $$5.e = -0.97079635F;
-      $$6.e = $$5.e;
-      float $$7 = bae.a((float)$$3, 0.0F, $$2);
-      float $$8 = $$7 / $$2;
-      $$6.f = bae.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
-      $$6.e = bae.h($$8, $$6.e, (float) (-Math.PI / 2));
+   public void a(gxf $$0) {
+      super.a($$0);
+      a($$0.g, 0, this.a);
+      a($$0.h, 1, this.b);
    }
 
-   public static void a(geh $$0, geh $$1, bvv $$2, float $$3, float $$4) {
-      float $$5 = bae.a($$3 * (float) Math.PI);
-      float $$6 = bae.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2 == bvv.b) {
-         $$0.e = -1.8849558F + bae.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + bae.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + bae.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + bae.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+   private static void a(float $$0, int $$1, gem $$2) {
+      $$2.e = bae.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (bae.a(-$$0) + 1.0F) / 2.0F);
+      $$2.f = bae.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (bae.a(-$$0 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
       }
-
-      a($$0, $$1, $$4);
-   }
-
-   public static void a(geh $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (bae.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * bae.a($$1 * 0.067F) * 0.05F;
-   }
-
-   public static void a(geh $$0, geh $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
-
-   public static void a(geh $$0, geh $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = bae.a($$3 * (float) Math.PI);
-      float $$6 = bae.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
    }
 }

@@ -1,116 +1,114 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
+import com.google.common.annotations.VisibleForTesting;
 import javax.annotation.Nullable;
 
-public class coj extends cof {
-   private static final int ca = 50;
-   private static final float cb = 0.35F;
-   private static final int cc = 7;
-   private static final double cd = 12.0;
-   protected static final ImmutableList<cgm<? extends cgl<? super coj>>> d = ImmutableList.of(cgm.c, cgm.d, cgm.b, cgm.f, cgm.m);
-   protected static final ImmutableList<cff<?>> bZ = ImmutableList.of(
-      cff.n, cff.v, cff.g, cff.h, cff.k, cff.l, cff.ao, cff.an, cff.x, cff.y, cff.m, cff.E, new cff[]{cff.o, cff.p, cff.q, cff.t, cff.ab, cff.M, cff.b}
-   );
+public abstract class coj extends cmw {
+   protected static final alc<Boolean> a = alg.a(coj.class, ale.k);
+   public static final int b = 300;
+   protected int c;
 
-   public coj(bvm<? extends coj> $$0, dha $$1) {
+   public coj(bvq<? extends coj> $$0, dhh $$1) {
       super($$0, $$1);
-      this.bO = 20;
+      this.a_(true);
+      this.t();
+      this.a(eun.n, 16.0F);
+      this.a(eun.o, -1.0F);
    }
 
-   public static bxi.a t() {
-      return cms.gr().a(bxj.s, 50.0).a(bxj.v, 0.35F).a(bxj.c, 7.0).a(bxj.m, 12.0);
+   private void t() {
+      if (chb.a(this)) {
+         ((cfq)this.L()).b(true);
+      }
    }
 
-   @Nullable
-   @Override
-   public bwu a(dhr $$0, btc $$1, bvl $$2, @Nullable bwu $$3) {
-      cok.a(this);
-      this.a($$0.H_(), $$1);
-      return super.a($$0, $$1, $$2, $$3);
+   protected abstract boolean m();
+
+   public void x(boolean $$0) {
+      this.au().a(a, $$0);
    }
 
-   @Override
-   protected void a(bam $$0, btc $$1) {
-      this.a(bvn.a, new cxk(cxo.pv));
-   }
-
-   @Override
-   protected bxd.b<coj> ec() {
-      return bxd.a(bZ, d);
+   protected boolean p() {
+      return this.au().a(a);
    }
 
    @Override
-   protected bxd<?> a(Dynamic<?> $$0) {
-      return cok.a(this, this.ec().a($$0));
+   protected void a(alg.a $$0) {
+      super.a($$0);
+      $$0.a(a, false);
    }
 
    @Override
-   public bxd<coj> eb() {
-      return (bxd<coj>)super.eb();
+   public void b(ux $$0) {
+      super.b($$0);
+      if (this.p()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
+
+      $$0.a("TimeInOverworld", this.c);
    }
 
    @Override
-   public boolean m() {
-      return false;
-   }
-
-   @Override
-   public boolean c(ash $$0, cxk $$1) {
-      return $$1.a(cxo.pv) ? super.c($$0, $$1) : false;
+   public void a(ux $$0) {
+      super.a($$0);
+      this.x($$0.q("IsImmuneToZombification"));
+      this.c = $$0.h("TimeInOverworld");
    }
 
    @Override
    protected void a(ash $$0) {
-      bpo $$1 = bpn.a();
-      $$1.a("piglinBruteBrain");
-      this.eb().a($$0, this);
-      $$1.c();
-      cok.b(this);
-      cok.c(this);
       super.a($$0);
-   }
-
-   @Override
-   public coi gn() {
-      return this.gb() && this.go() ? coi.a : coi.f;
-   }
-
-   @Override
-   public boolean a(ash $$0, btv $$1, float $$2) {
-      boolean $$3 = super.a($$0, $$1, $$2);
-      if ($$3 && $$1.d() instanceof bwb $$4) {
-         cok.a($$0, this, $$4);
+      if (this.x()) {
+         this.c++;
+      } else {
+         this.c = 0;
       }
 
-      return $$3;
+      if (this.c > 300) {
+         this.gp();
+         this.g($$0);
+      }
+   }
+
+   @VisibleForTesting
+   public void b(int $$0) {
+      this.c = $$0;
+   }
+
+   public boolean x() {
+      return !this.dV().G_().b() && !this.p() && !this.fZ();
+   }
+
+   protected void g(ash $$0) {
+      this.a(bvq.bR, bve.a(this, true, true), $$0x -> $$0x.a(new buo(buq.i, 200, 0)));
+   }
+
+   public boolean gm() {
+      return !this.e_();
+   }
+
+   public abstract com gn();
+
+   @Nullable
+   @Override
+   public bwf O_() {
+      return this.O();
+   }
+
+   protected boolean go() {
+      return this.eX().b(ku.B);
    }
 
    @Override
-   protected axe u() {
-      return axf.ui;
+   public void R() {
+      if (col.c(this)) {
+         super.R();
+      }
    }
 
    @Override
-   protected axe e(btv $$0) {
-      return axf.ul;
+   protected void Y() {
+      super.Y();
+      ahj.a(this);
    }
 
-   @Override
-   protected axe o_() {
-      return axf.uk;
-   }
-
-   @Override
-   protected void b(jh $$0, dxn $$1) {
-      this.a(axf.um, 0.15F, 1.0F);
-   }
-
-   protected void gs() {
-      this.b(axf.uj);
-   }
-
-   @Override
-   protected void gp() {
-      this.b(axf.un);
-   }
+   protected abstract void gp();
 }

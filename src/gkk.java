@@ -1,21 +1,36 @@
-public class gkk {
-   public static final dgk a = dic::a;
-   public static final dgk b = ($$0, $$1, $$2) -> $$0.f();
-   public static final dgk c = ($$0, $$1, $$2) -> $$0.i();
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
 
-   private static int a(dgc $$0, jh $$1, dgk $$2) {
-      return $$0.a($$1, $$2);
+public class gkk implements brd {
+   private final glf a;
+   private final Set<brb> b = new ObjectOpenHashSet();
+   private final brj c = new brj();
+
+   public gkk(LongSupplier $$0, glf $$1) {
+      this.a = $$1;
+      this.b.add(brk.a($$0));
+      this.a();
    }
 
-   public static int a(dgc $$0, jh $$1) {
-      return a($$0, $$1, a);
+   private void a() {
+      this.b.addAll(brk.a());
+      this.b.add(brb.a("totalChunks", bra.f, this.a, glf::h));
+      this.b.add(brb.a("renderedChunks", bra.f, this.a, glf::j));
+      this.b.add(brb.a("lastViewDistance", bra.f, this.a, glf::i));
+      gow $$0 = this.a.g();
+      this.b.add(brb.a("toUpload", bra.g, $$0, gow::c));
+      this.b.add(brb.a("freeBufferCount", bra.g, $$0, gow::d));
+      this.b.add(brb.a("toBatchCount", bra.g, $$0, gow::b));
+      if (fgj.a().isPresent()) {
+         this.b.add(brb.a("gpuUtilization", bra.i, fme.Q(), fme::v));
+      }
    }
 
-   public static int b(dgc $$0, jh $$1) {
-      return a($$0, $$1, b);
-   }
-
-   public static int c(dgc $$0, jh $$1) {
-      return a($$0, $$1, c);
+   @Override
+   public Set<brb> a(Supplier<bpp> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 }

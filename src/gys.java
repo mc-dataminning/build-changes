@@ -1,7 +1,11 @@
-import javax.annotation.Nullable;
+public class gys extends gyr {
+   public ckd.d a;
+   public boolean b;
+   public cxo c;
+   public boolean d;
 
-public class gys extends gxo {
-   @Nullable
-   public hdg a;
-   public cxk b = cxk.k;
+   public gys() {
+      this.a = ckd.d.a;
+      this.c = cxo.k;
+   }
 }

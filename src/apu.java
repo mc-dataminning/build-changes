@@ -21,7 +21,7 @@ public class apu {
    }
 
    private static int a(ew $$0, Collection<asi> $$1, jh $$2, float $$3) {
-      aly<dha> $$4 = $$0.e().ah();
+      aly<dhh> $$4 = $$0.e().ah();
 
       for (asi $$5 : $$1) {
          $$5.a($$4, $$2, $$3, true, false);

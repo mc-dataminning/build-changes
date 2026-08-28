@@ -1,13 +1,13 @@
 public class aji implements aac<ahm> {
    public static final zt<ws, aji> a = aac.a(aji::a, aji::new);
-   private final btd b;
+   private final bth b;
 
-   public aji(btd $$0) {
+   public aji(bth $$0) {
       this.b = $$0;
    }
 
    private aji(ws $$0) {
-      this.b = $$0.b(btd.class);
+      this.b = $$0.b(bth.class);
    }
 
    private void a(ws $$0) {
@@ -23,7 +23,7 @@ public class aji implements aac<ahm> {
       $$0.a(this);
    }
 
-   public btd b() {
+   public bth b() {
       return this.b;
    }
 }

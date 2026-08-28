@@ -1,91 +1,87 @@
 import com.mojang.serialization.MapCodec;
 
-public class dso extends dke {
+public class dso extends dkl {
    public static final MapCodec<dso> a = b(dso::new);
-   private static final dym b = dyd.aU;
-   private static final int c = 20;
-   private static final int d = 8;
+   public static final dyt b = dyk.ax;
+   protected static final float c = 6.0F;
+   protected static final fcr d = dkl.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dso> a() {
       return a;
    }
 
-   public dso(dxm.d $$0) {
+   protected dso(dxt.d $$0) {
       super($$0);
       this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dha $$0, dxn $$1, fbo $$2, cql $$3) {
-      int $$4 = a((dhb)$$0, $$1, $$2, (bvf)$$3);
-      if ($$3.p() instanceof asi $$6) {
-         $$6.a(axp.aE);
-         ao.M.a($$6, $$3, $$2.g(), $$4);
-      }
-   }
-
-   private static int a(dhb $$0, dxn $$1, fbo $$2, bvf $$3) {
-      int $$4 = a($$2, $$2.g());
-      int $$5 = $$3 instanceof cpz ? 20 : 8;
-      if (!$$0.T().a($$2.b(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.b(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(fbo $$0, fbs $$1) {
-      jm $$2 = $$0.c();
-      double $$3 = Math.abs(bae.e($$1.d) - 0.5);
-      double $$4 = Math.abs(bae.e($$1.e) - 0.5);
-      double $$5 = Math.abs(bae.e($$1.f) - 0.5);
-      jm.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == jm.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == jm.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, bae.c(15.0 * bae.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(dhb $$0, dxn $$1, int $$2, jh $$3, int $$4) {
-      $$0.a($$3, $$1.b(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return d;
    }
 
    @Override
-   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 3);
+   protected void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   protected int a(dxn $$0, dgf $$1, jh $$2, jm $$3) {
-      return $$0.c(b);
-   }
+   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$1.u($$2.d())) {
+         int $$4 = 1;
 
-   @Override
-   protected boolean f_(dxn $$0) {
-      return true;
-   }
+         while ($$1.a_($$2.c($$4)).a(this)) {
+            $$4++;
+         }
 
-   @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void b(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
-      if (!$$1.B_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.T().a($$2, this)) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 18);
+         if ($$4 < 3) {
+            int $$5 = $$0.c(b);
+            if ($$5 == 15) {
+               $$1.b($$2.d(), this.m());
+               $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 4);
+            } else {
+               $$1.a($$2, $$0.b(b, Integer.valueOf($$5 + 1)), 4);
+            }
          }
       }
+   }
+
+   @Override
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      dxu $$3 = $$1.a_($$2.e());
+      if ($$3.a(this)) {
+         return true;
+      } else {
+         if ($$3.a(axu.ah) || $$3.a(axu.J)) {
+            jh $$4 = $$2.e();
+
+            for (jm $$5 : jm.c.a) {
+               dxu $$6 = $$1.a_($$4.a($$5));
+               etw $$7 = $$1.b_($$4.a($$5));
+               if ($$7.a(aya.a) || $$6.a(dkn.ld)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(b);
    }
 }

@@ -1,26 +1,34 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import java.util.Optional;
 
-public class bjr extends bhn {
-   private final Map<String, String> a;
-
-   public bjr(Schema $$0, String $$1, TypeReference $$2, String $$3, Map<String, String> $$4) {
-      super($$0, false, $$1, $$2, $$3);
-      this.a = $$4;
+public class bjr extends bhs {
+   public bjr(Schema $$0) {
+      super($$0, false, "TippedArrowPotionToItemFix", biw.B, "minecraft:arrow");
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "variant", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map($$1 -> $$0xx.createString(this.a.getOrDefault($$1, $$1))).result(), $$0xx)
-            )
-      );
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Potion").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("custom_potion_effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Color").result();
+      return $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()
+         ? $$0
+         : $$0.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", $$3x -> {
+            Dynamic<?> $$4 = $$3x.get("tag").orElseEmptyMap();
+            if ($$1.isPresent()) {
+               $$4 = $$4.set("Potion", $$1.get());
+            }
+
+            if ($$2.isPresent()) {
+               $$4 = $$4.set("custom_potion_effects", $$2.get());
+            }
+
+            if ($$3.isPresent()) {
+               $$4 = $$4.set("CustomPotionColor", $$3.get());
+            }
+
+            return $$3x.set("tag", $$4);
+         });
    }
 }

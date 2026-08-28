@@ -1,36 +1,45 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public abstract class bsj {
-   private static final Codec<Either<Integer, bsj>> a = Codec.either(Codec.INT, ma.K.q().dispatch(bsj::c, bsk::codec));
-   public static final Codec<bsj> c = a.xmap(
-      $$0 -> (bsj)$$0.map(bsg::a, $$0x -> $$0x), $$0 -> $$0.c() == bsk.a ? Either.left(((bsg)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bsj> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bsj> e = b(1, Integer.MAX_VALUE);
+public class bsj extends bsl {
+   public static final bsj a = new bsj(0.0F);
+   public static final MapCodec<bsj> b = Codec.FLOAT.fieldOf("value").xmap(bsj::a, bsj::d);
+   private final float d;
 
-   public static Codec<bsj> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+   public static bsj a(float $$0) {
+      return $$0 == 0.0F ? a : new bsj($$0);
    }
 
-   public static <T extends bsj> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
+   private bsj(float $$0) {
+      this.d = $$0;
    }
 
-   private static <T extends bsj> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-      } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-      }
+   public float d() {
+      return this.d;
    }
 
-   public abstract int a(bam var1);
+   @Override
+   public float a(bam $$0) {
+      return this.d;
+   }
 
-   public abstract int a();
+   @Override
+   public float a() {
+      return this.d;
+   }
 
-   public abstract int b();
+   @Override
+   public float b() {
+      return this.d;
+   }
 
-   public abstract bsk<?> c();
+   @Override
+   public bsm<?> c() {
+      return bsm.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
+   }
 }

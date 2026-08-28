@@ -1,5 +1,5 @@
-public record agk(int b, cxk c) implements aac<acr> {
-   public static final zt<xg, agk> a = zt.a(zr.h, agk::b, cxk.h, agk::e, agk::new);
+public record agk(int b, cxo c) implements aac<acr> {
+   public static final zt<xg, agk> a = zt.a(zr.h, agk::b, cxo.h, agk::e, agk::new);
 
    @Override
    public aae<agk> a() {
@@ -10,7 +10,7 @@ public record agk(int b, cxk c) implements aac<acr> {
       $$0.a(this);
    }
 
-   public cxk e() {
+   public cxo e() {
       return this.c;
    }
 }

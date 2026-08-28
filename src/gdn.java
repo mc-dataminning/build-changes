@@ -1,27 +1,45 @@
-public class gdn extends gbf<gzt> {
-   private final geh a;
+import java.util.Arrays;
 
-   public gdn(geh $$0) {
+public class gdn extends gbk<gzr> {
+   public static final gev a = gev.scaling(0.5F);
+   private final gem[] b = new gem[8];
+
+   public gdn(gem $$0) {
       super($$0);
-      this.a = $$0.b("tail");
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static gen a(gel $$0) {
-      gep $$1 = new gep();
-      ger $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", gem.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), gej.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", gem.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), gej.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", gem.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gej.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", gem.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gej.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", gem.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), gej.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", gem.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), gej.a(0.0F, 22.0F, -3.0F));
-      return gen.a($$1, 32, 32);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   public void a(gzt $$0) {
+   public static ges a() {
+      geu $$0 = new geu();
+      gew $$1 = $$0.a();
+      geq $$2 = new geq(0.02F);
+      int $$3 = -16;
+      $$1.a("body", ger.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), geo.a(0.0F, 8.0F, 0.0F));
+      int $$4 = 8;
+      ger $$5 = ger.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
+
+      for (int $$6 = 0; $$6 < 8; $$6++) {
+         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
+         float $$8 = (float)Math.cos($$7) * 5.0F;
+         float $$9 = 15.0F;
+         float $$10 = (float)Math.sin($$7) * 5.0F;
+         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
+         float $$11 = (float)$$7;
+         $$1.a(a($$6), $$5, geo.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
+      }
+
+      return ges.a($$0, 64, 32);
+   }
+
+   public void a(gzr $$0) {
       super.a($$0);
-      float $$1 = $$0.af ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * bae.a(0.6F * $$0.p);
+
+      for (gem $$1 : this.b) {
+         $$1.e = $$0.a;
+      }
    }
 }

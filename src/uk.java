@@ -209,7 +209,7 @@ public class uk {
    }
 
    private static int a(ts $$0) {
-      $$0.g().a_(null, $$0.e()).stream().forEach($$0x -> $$0x.a(bvf.c.b));
+      $$0.g().a_(null, $$0.e()).stream().forEach($$0x -> $$0x.a(bvj.c.b));
       $$0.f().c($$0.g());
       ui.a($$0.e(), $$0.g());
       a($$0.g(), "Reset succeded for: " + $$0.b(), n.k);
@@ -225,7 +225,7 @@ public class uk {
    }
 
    private static Optional<ts> a(jh $$0, ash $$1, uf $$2) {
-      dwh $$3 = (dwh)$$1.c_($$0);
+      dwo $$3 = (dwo)$$1.c_($$0);
       if ($$3 == null) {
          a($$1, "Structure block entity could not be found", n.m);
          return Optional.empty();
@@ -248,11 +248,11 @@ public class uk {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          ash $$5 = $$0.e();
          jh $$6 = a($$0).e();
-         ui.a($$1.toLowerCase(), $$6, new kl($$2, $$3, $$4), dqu.a, $$5);
+         ui.a($$1.toLowerCase(), $$6, new kl($$2, $$3, $$4), drb.a, $$5);
          jh $$7 = $$6.d();
          jh $$8 = $$7.b($$2 - 1, 0, $$4 - 1);
-         jh.d($$7, $$8).forEach($$1x -> $$5.b($$1x, dkg.I.m()));
-         ui.a($$6, new jh(1, 0, -1), dqu.a, $$5);
+         jh.d($$7, $$8).forEach($$1x -> $$5.b($$1x, dkn.I.m()));
+         ui.a($$6, new jh(1, 0, -1), drb.a, $$5);
          return 0;
       } else {
          throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
@@ -260,7 +260,7 @@ public class uk {
    }
 
    private static int a(ew $$0, String $$1) throws CommandSyntaxException {
-      fbo $$2 = (fbo)$$0.h().a(10.0, 1.0F, false);
+      fbt $$2 = (fbt)$$0.h().a(10.0, 1.0F, false);
       jh $$3 = $$2.b();
       ash $$4 = $$0.e();
       Optional<jh> $$5 = ui.a($$3, 15, $$4);
@@ -272,7 +272,7 @@ public class uk {
          $$0.b(xv.b("Can't find a structure block that contains the targeted pos " + $$3));
          return 0;
       } else {
-         dwh $$6 = (dwh)$$4.c_($$5.get());
+         dwo $$6 = (dwo)$$4.c_($$5.get());
          if ($$6 == null) {
             a($$4, "Structure block entity could not be found", n.m);
             return 0;
@@ -309,7 +309,7 @@ public class uk {
       return 1;
    }
 
-   static int a(ew $$0, dwh $$1) {
+   static int a(ew $$0, dwo $$1) {
       String $$2 = $$1.c();
       if (!$$1.b(true)) {
          c($$0, "Failed to save structure " + $$2);
@@ -351,7 +351,7 @@ public class uk {
 
    static jh a(ew $$0) {
       jh $$1 = jh.a((ka)$$0.d());
-      int $$2 = $$0.e().a(edi.a.b, $$1).v();
+      int $$2 = $$0.e().a(edp.a.b, $$1).v();
       return new jh($$1.u(), $$2 + 1, $$1.w() + 3);
    }
 
@@ -413,11 +413,11 @@ public class uk {
          ash $$1 = $$0.e();
          tv.a($$1);
          this.a(this.a.findStructureBlockPos(), $$1x -> {
-            dwh $$2 = (dwh)$$1.c_($$1x);
+            dwo $$2 = (dwo)$$1.c_($$1x);
             if ($$2 == null) {
                return 0;
             } else {
-               enu $$3 = ui.b($$2);
+               eob $$3 = ui.b($$2);
                ui.a($$3, $$1);
                return 1;
             }
@@ -430,7 +430,7 @@ public class uk {
          ew $$1 = this.a.a();
          ash $$2 = $$1.e();
          this.a(this.a.findStructureBlockPos(), $$3 -> {
-            dwh $$4 = (dwh)$$2.c_($$3);
+            dwo $$4 = (dwo)$$2.c_($$3);
             if ($$4 == null) {
                uk.a($$2, "Structure block entity could not be found", n.m);
                $$0.setFalse();
@@ -457,7 +457,7 @@ public class uk {
          Collection<tm> $$4 = new ArrayList<>();
 
          for (ts $$5 : $$3) {
-            for (dqu $$6 : dqu.values()) {
+            for (drb $$6 : drb.values()) {
                Collection<ts> $$7 = new ArrayList<>();
 
                for (int $$8 = 0; $$8 < 100; $$8++) {
@@ -521,7 +521,7 @@ public class uk {
             .findStructureBlockPos()
             .forEach(
                $$2x -> {
-                  dwh $$3 = (dwh)this.a.a().e().c_($$2x);
+                  dwo $$3 = (dwo)this.a.a().e().c_($$2x);
                   if ($$3 != null) {
                      jm $$4 = $$3.t().a(jm.c);
                      jh $$5 = $$3.aB_().a($$4, 2);

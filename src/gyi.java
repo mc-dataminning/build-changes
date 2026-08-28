@@ -1,13 +1,11 @@
-import javax.annotation.Nullable;
+public class gyi extends gxu {
+   public ckj a;
+   public cke h;
+   public cxo i;
 
-public class gyi extends gxi {
-   @Nullable
-   public bvd.g.a a;
-   @Nullable
-   public hdg f;
-
-   @Override
-   public boolean a() {
-      return this.a != null && this.f != null;
+   public gyi() {
+      this.a = ckj.a;
+      this.h = cke.a;
+      this.i = cxo.k;
    }
 }

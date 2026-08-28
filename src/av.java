@@ -8,11 +8,11 @@ public class av extends dy<av.a> {
       return av.a.a;
    }
 
-   public void a(asi $$0, jh $$1, cxk $$2) {
+   public void a(asi $$0, jh $$1, cxo $$2) {
       ash $$3 = $$0.y();
-      dxn $$4 = $$3.a_($$1);
-      ewk $$5 = new ewk.a($$3).a(ezd.f, $$1.b()).a(ezd.a, $$0).a(ezd.g, $$4).a(ezd.i, $$2).a(ezc.o);
-      ewh $$6 = new ewh.a($$5).a(Optional.empty());
+      dxu $$4 = $$3.a_($$1);
+      ewr $$5 = new ewr.a($$3).a(ezi.f, $$1.b()).a(ezi.a, $$0).a(ezi.g, $$4).a(ezi.i, $$2).a(ezh.o);
+      ewo $$6 = new ewo.a($$5).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$6));
    }
 
@@ -21,14 +21,14 @@ public class av extends dy<av.a> {
          $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(av.a::a), bh.a.optionalFieldOf("location").forGetter(av.a::b)).apply($$0, av.a::new)
       );
 
-      public boolean a(ewh $$0) {
+      public boolean a(ewo $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bi $$0) {
          dy.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, ezc.o, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, ezh.o, ".location"));
       }
 
       @Override

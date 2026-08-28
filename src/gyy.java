@@ -1,6 +1,8 @@
-public class gyy extends gye {
-   public boolean a;
-   public boolean b;
-   public float c;
-   public coi d = coi.f;
+import javax.annotation.Nullable;
+
+public class gyy extends gxt {
+   public jm a = jm.c;
+   @Nullable
+   public clw b;
+   public int[] c = new int[0];
 }

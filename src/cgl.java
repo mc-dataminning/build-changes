@@ -1,76 +1,98 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BiPredicate;
 
-public abstract class cgl<E extends bwb> {
-   private static final bam a = bam.b();
-   private static final int b = 20;
-   private static final int c = 16;
-   private static final cgs d = cgs.b().a(16.0);
-   private static final cgs e = cgs.b().a(16.0).e();
-   private static final cgs f = cgs.a().a(16.0);
-   private static final cgs g = cgs.a().a(16.0).e();
-   private static final cgs h = cgs.a().a(16.0).d();
-   private static final cgs i = cgs.a().a(16.0).d().e();
-   private final int j;
-   private long k;
-
-   public cgl(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+public class cgl extends cgp<bwf> {
+   @Override
+   public Set<cfj<?>> a() {
+      return ImmutableSet.of(cfj.h, cfj.g, cfj.M, cfj.am, cfj.au, cfj.ak, new cfj[]{cfj.al, cfj.ao, cfj.an, cfj.as, cfj.at, cfj.aw});
    }
 
-   public cgl() {
-      this(20);
-   }
+   @Override
+   protected void a(ash $$0, bwf $$1) {
+      bxh<?> $$2 = $$1.eb();
+      $$2.a(cfj.aw, c($$0, $$1));
+      Optional<bwh> $$3 = Optional.empty();
+      Optional<coe> $$4 = Optional.empty();
+      Optional<coe> $$5 = Optional.empty();
+      Optional<cok> $$6 = Optional.empty();
+      Optional<bwf> $$7 = Optional.empty();
+      Optional<cpw> $$8 = Optional.empty();
+      Optional<cpw> $$9 = Optional.empty();
+      int $$10 = 0;
+      List<coj> $$11 = Lists.newArrayList();
+      List<coj> $$12 = Lists.newArrayList();
+      cfl $$13 = $$2.c(cfj.h).orElse(cfl.a());
 
-   public final void b(ash $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$1);
-         this.a($$0, $$1);
-      }
-   }
+      for (bwf $$14 : $$13.b($$0x -> true)) {
+         if ($$14 instanceof coe) {
+            coe $$15 = (coe)$$14;
+            if ($$15.e_() && $$5.isEmpty()) {
+               $$5 = Optional.of($$15);
+            } else if ($$15.t()) {
+               $$10++;
+               if ($$4.isEmpty() && $$15.gn()) {
+                  $$4 = Optional.of($$15);
+               }
+            }
+         } else if ($$14 instanceof coo $$16) {
+            $$11.add($$16);
+         } else if ($$14 instanceof cok) {
+            cok $$17 = (cok)$$14;
+            if ($$17.e_() && $$6.isEmpty()) {
+               $$6 = Optional.of($$17);
+            } else if ($$17.gm()) {
+               $$11.add($$17);
+            }
+         } else if ($$14 instanceof cpw) {
+            cpw $$18 = (cpw)$$14;
+            if ($$8.isEmpty() && !col.a($$18) && $$1.c($$14)) {
+               $$8 = Optional.of($$18);
+            }
 
-   private void a(E $$0) {
-      double $$1 = $$0.h(bxj.m);
-      d.a($$1);
-      e.a($$1);
-      f.a($$1);
-      g.a($$1);
-      h.a($$1);
-      i.a($$1);
-   }
-
-   protected abstract void a(ash var1, E var2);
-
-   public abstract Set<cff<?>> a();
-
-   public static boolean b(ash $$0, bwb $$1, bwb $$2) {
-      return $$1.eb().b(cff.o, $$2) ? e.a($$0, $$1, $$2) : d.a($$0, $$1, $$2);
-   }
-
-   public static boolean c(ash $$0, bwb $$1, bwb $$2) {
-      return $$1.eb().b(cff.o, $$2) ? g.a($$0, $$1, $$2) : f.a($$0, $$1, $$2);
-   }
-
-   public static BiPredicate<ash, bwb> a(bwb $$0, int $$1) {
-      return a($$1, ($$1x, $$2) -> c($$1x, $$0, $$2));
-   }
-
-   public static boolean d(ash $$0, bwb $$1, bwb $$2) {
-      return $$1.eb().b(cff.o, $$2) ? i.a($$0, $$1, $$2) : h.a($$0, $$1, $$2);
-   }
-
-   static <T, U> BiPredicate<T, U> a(int $$0, BiPredicate<T, U> $$1) {
-      AtomicInteger $$2 = new AtomicInteger(0);
-      return ($$3, $$4) -> {
-         if ($$1.test($$3, $$4)) {
-            $$2.set($$0);
-            return true;
+            if ($$9.isEmpty() && !$$18.aa_() && col.b($$18)) {
+               $$9 = Optional.of($$18);
+            }
+         } else if (!$$3.isEmpty() || !($$14 instanceof cnn) && !($$14 instanceof cln)) {
+            if ($$7.isEmpty() && col.a($$14.aq())) {
+               $$7 = Optional.of($$14);
+            }
          } else {
-            return $$2.decrementAndGet() >= 0;
+            $$3 = Optional.of((bwh)$$14);
          }
-      };
+      }
+
+      for (bwf $$20 : $$2.c(cfj.g).orElse(ImmutableList.of())) {
+         if ($$20 instanceof coj) {
+            coj $$21 = (coj)$$20;
+            if ($$21.gm()) {
+               $$12.add($$21);
+            }
+         }
+      }
+
+      $$2.a(cfj.M, $$3);
+      $$2.a(cfj.ak, $$4);
+      $$2.a(cfj.al, $$5);
+      $$2.a(cfj.ar, $$7);
+      $$2.a(cfj.am, $$8);
+      $$2.a(cfj.au, $$9);
+      $$2.a(cfj.an, $$12);
+      $$2.a(cfj.ao, $$11);
+      $$2.a(cfj.as, $$11.size());
+      $$2.a(cfj.at, $$10);
+   }
+
+   private static Optional<jh> c(ash $$0, bwf $$1) {
+      return jh.a($$1.dv(), 8, 4, $$1x -> a($$0, $$1x));
+   }
+
+   private static boolean a(ash $$0, jh $$1) {
+      dxu $$2 = $$0.a_($$1);
+      boolean $$3 = $$2.a(axu.X);
+      return $$3 && $$2.a(dkn.oC) ? dla.h($$2) : $$3;
    }
 }

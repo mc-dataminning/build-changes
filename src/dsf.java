@@ -1,84 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsf extends djq implements dnn {
-   public static final MapCodec<dsf> a = b(dsf::new);
-   public static final dyk<dyw> b = dyd.bk;
-
-   @Override
-   public MapCodec<dsf> a() {
-      return a;
-   }
-
-   protected dsf(dxm.d $$0) {
+public abstract class dsf extends dry {
+   protected dsf(dxt.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dyw.b));
    }
 
-   @Override
-   public dup a(jh $$0, dxn $$1) {
-      return new dwh($$0, $$1);
-   }
-
-   @Override
-   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
-      dup $$5 = $$1.c_($$2);
-      if ($$5 instanceof dwh) {
-         return (bte)(((dwh)$$5).a($$3) ? bte.a : bte.e);
+   private static boolean b(dxu $$0, dhk $$1, jh $$2) {
+      jh $$3 = $$2.d();
+      dxu $$4 = $$1.a_($$3);
+      if ($$4.a(dkn.ea) && $$4.c(drx.c) == 1) {
+         return true;
+      } else if ($$4.y().e() == 8) {
+         return false;
       } else {
-         return bte.e;
+         int $$5 = etn.a($$0, $$4, jm.b, $$4.g());
+         return $$5 < 15;
       }
    }
 
    @Override
-   public void a(dha $$0, jh $$1, dxn $$2, @Nullable bwb $$3, cxk $$4) {
-      if (!$$0.C) {
-         if ($$3 != null) {
-            dup $$5 = $$0.c_($$1);
-            if ($$5 instanceof dwh) {
-               ((dwh)$$5).a($$3);
+   protected abstract MapCodec<? extends dsf> a();
+
+   private static boolean c(dxu $$0, dhk $$1, jh $$2) {
+      jh $$3 = $$2.d();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(aya.a);
+   }
+
+   @Override
+   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dkn.j.m());
+      } else {
+         if ($$1.A($$2.d()) >= 9) {
+            dxu $$4 = this.m();
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               jh $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dkn.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.b(c, Boolean.valueOf($$1.a_($$6.d()).a(dkn.ea))));
+               }
             }
          }
-      }
-   }
-
-   @Override
-   protected dqn a_(dxn $$0) {
-      return dqn.c;
-   }
-
-   @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dke $$3, @Nullable eux $$4, boolean $$5) {
-      if ($$1 instanceof ash) {
-         if ($$1.c_($$2) instanceof dwh $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.D();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((ash)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(ash $$0, dwh $$1) {
-      switch ($$1.v()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.B();
-         case d:
       }
    }
 }

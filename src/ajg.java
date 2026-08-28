@@ -4,13 +4,13 @@ public class ajg implements aac<ahm> {
    private static final int c = 2;
    private static final int d = 4;
    private final jh e;
-   private final dwh.a f;
-   private final dyw g;
+   private final dwo.a f;
+   private final dzd g;
    private final String h;
    private final jh i;
    private final kl j;
-   private final dpd k;
-   private final dqu l;
+   private final dpk k;
+   private final drb l;
    private final String m;
    private final boolean n;
    private final boolean o;
@@ -19,7 +19,7 @@ public class ajg implements aac<ahm> {
    private final long r;
 
    public ajg(
-      jh $$0, dwh.a $$1, dyw $$2, String $$3, jh $$4, kl $$5, dpd $$6, dqu $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      jh $$0, dwo.a $$1, dzd $$2, String $$3, jh $$4, kl $$5, dpk $$6, drb $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.e = $$0;
       this.f = $$1;
@@ -39,15 +39,15 @@ public class ajg implements aac<ahm> {
 
    private ajg(ws $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(dwh.a.class);
-      this.g = $$0.b(dyw.class);
+      this.f = $$0.b(dwo.a.class);
+      this.g = $$0.b(dzd.class);
       this.h = $$0.p();
       int $$1 = 48;
       this.i = new jh(bae.a($$0.readByte(), -48, 48), bae.a($$0.readByte(), -48, 48), bae.a($$0.readByte(), -48, 48));
       int $$2 = 48;
       this.j = new kl(bae.a($$0.readByte(), 0, 48), bae.a($$0.readByte(), 0, 48), bae.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(dpd.class);
-      this.l = $$0.b(dqu.class);
+      this.k = $$0.b(dpk.class);
+      this.l = $$0.b(drb.class);
       this.m = $$0.d(128);
       this.q = bae.a($$0.readFloat(), 0.0F, 1.0F);
       this.r = $$0.m();
@@ -102,11 +102,11 @@ public class ajg implements aac<ahm> {
       return this.e;
    }
 
-   public dwh.a e() {
+   public dwo.a e() {
       return this.f;
    }
 
-   public dyw f() {
+   public dzd f() {
       return this.g;
    }
 
@@ -122,11 +122,11 @@ public class ajg implements aac<ahm> {
       return this.j;
    }
 
-   public dpd j() {
+   public dpk j() {
       return this.k;
    }
 
-   public dqu k() {
+   public drb k() {
       return this.l;
    }
 

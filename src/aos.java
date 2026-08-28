@@ -1,10 +1,10 @@
 @FunctionalInterface
 public interface aos {
-   void perform(ew var1, bvf var2);
+   void perform(ew var1, bvj var2);
 
-   public static record a(bvf a, fi.a b) implements aos {
+   public static record a(bvj a, fi.a b) implements aos {
       @Override
-      public void perform(ew $$0, bvf $$1) {
+      public void perform(ew $$0, bvj $$1) {
          if ($$1 instanceof asi $$2) {
             $$2.a($$0.m(), this.a, this.b);
          } else {
@@ -13,9 +13,9 @@ public interface aos {
       }
    }
 
-   public static record b(fbs a) implements aos {
+   public static record b(fbx a) implements aos {
       @Override
-      public void perform(ew $$0, bvf $$1) {
+      public void perform(ew $$0, bvj $$1) {
          $$1.a($$0.m(), this.a);
       }
    }

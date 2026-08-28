@@ -1,9 +1,8 @@
-public interface fzk {
-   void a(fzi var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   xv aU_();
-
-   void a(fnl var1, float var2, float var3);
-
-   boolean aV_();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fzk {
 }

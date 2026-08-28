@@ -18,9 +18,9 @@ public abstract class ava implements avi {
    private final aui d;
    private final auk e;
    private final alz f;
-   private final fbi g;
+   private final fbn g;
 
-   public ava(aui $$0, auk $$1, alz $$2, fbi $$3) {
+   public ava(aui $$0, auk $$1, alz $$2, fbn $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;

@@ -1,22 +1,17 @@
-public class gwk extends gvb<gzz, gdu> {
-   public gwk(gtg<gzz, gdu> $$0, gsh $$1) {
-      super($$0, $$1);
+public class gwk extends gwd<gze, gcp> {
+   public static final alz a = alz.b("textures/entity/trident_riptide.png");
+   private final gdm b;
+
+   public gwk(gtl<gze, gcp> $$0, gei $$1) {
+      super($$0);
+      this.b = new gdm($$1.a(gel.ck));
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, gzz $$3, float $$4, float $$5) {
-      $$0.a();
-      if ($$3.ar.a(cxo.sZ)) {
-         this.d().e().a($$0);
-         this.d().b().a($$0);
-         this.d().c().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
+   public void a(fgq $$0, glj $$1, int $$2, gze $$3, float $$4, float $$5) {
+      if ($$3.ag) {
+         fgu $$6 = $$1.getBuffer(this.b.a(a));
+         this.b.a($$3);
+         this.b.a($$0, $$6, $$2, hba.d);
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$0.b();
    }
 }

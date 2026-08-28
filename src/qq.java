@@ -1,25 +1,25 @@
 import java.util.concurrent.CompletableFuture;
 
-public class qq extends qp<ddr> {
+public class qq extends qp<ddy> {
    public qq(mj $$0, CompletableFuture<js.a> $$1) {
-      super($$0, mb.aN, $$1);
+      super($$0, mb.aO, $$1);
    }
 
    @Override
    protected void a(js.a $$0) {
-      this.b(axx.w).a(ddw.b, ddw.h, ddw.B);
-      this.b(axx.x).a(ddw.c, ddw.e, ddw.y);
-      this.b(axx.y).a(ddw.z, ddw.o, ddw.p);
-      this.b(axx.z).a(ddw.q, ddw.k, ddw.t);
-      this.b(axx.A).a(ddw.g, ddw.s, ddw.j);
-      this.b(axx.B).a(ddw.i, ddw.f, ddw.P);
-      this.b(axx.C).a(ddw.d, ddw.r, ddw.A);
-      this.b(axx.D).a(ddw.u);
-      this.b(axx.E).a(ddw.w);
-      this.b(axx.F).a(ddw.a);
-      this.b(axx.G).a(ddw.n);
-      this.b(axx.H).a(ddw.v);
-      this.b(axx.I).a(ddw.O);
-      this.b(axx.J).a(ddw.x);
+      this.b(axx.w).a(ded.b, ded.h, ded.B);
+      this.b(axx.x).a(ded.c, ded.e, ded.y);
+      this.b(axx.y).a(ded.z, ded.o, ded.p);
+      this.b(axx.z).a(ded.q, ded.k, ded.t);
+      this.b(axx.A).a(ded.g, ded.s, ded.j);
+      this.b(axx.B).a(ded.i, ded.f, ded.P);
+      this.b(axx.C).a(ded.d, ded.r, ded.A);
+      this.b(axx.D).a(ded.u);
+      this.b(axx.E).a(ded.w);
+      this.b(axx.F).a(ded.a);
+      this.b(axx.G).a(ded.n);
+      this.b(axx.H).a(ded.v);
+      this.b(axx.I).a(ded.O);
+      this.b(axx.J).a(ded.x);
    }
 }

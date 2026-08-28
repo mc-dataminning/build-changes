@@ -1,211 +1,130 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Queues;
+import java.util.Deque;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class fgq {
-   public static final int a = -1;
-   private final List<fgr> b;
-   private final List<String> c;
-   private final int d;
-   private final int e;
-   private final int[] f = new int[32];
-   @Nullable
-   private fgo g;
+   private final Deque<fgq.a> a = ae.a(Queues.newArrayDeque(), $$0 -> {
+      Matrix4f $$1 = new Matrix4f();
+      Matrix3f $$2 = new Matrix3f();
+      $$0.add(new fgq.a($$1, $$2));
+   });
 
-   fgq(List<fgr> $$0, List<String> $$1, IntList $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$0.stream().mapToInt(fgr::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
-
-      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
-         fgr $$5 = fgr.a($$4);
-         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
-         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
-      }
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
    }
 
-   public static fgq.a a() {
-      return new fgq.a();
+   public void a(float $$0, float $$1, float $$2) {
+      fgq.a $$3 = this.a.getLast();
+      $$3.a.translate($$0, $$1, $$2);
    }
 
-   public void a(int $$0) {
-      int $$1 = 0;
-
-      for (String $$2 : this.d()) {
-         GlStateManager._glBindAttribLocation($$0, $$1, $$2);
-         $$1++;
-      }
+   public void a(fbx $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
    }
 
-   @Override
-   public String toString() {
-      return "VertexFormat" + this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public List<fgr> c() {
-      return this.b;
-   }
-
-   public List<String> d() {
-      return this.c;
-   }
-
-   public int[] e() {
-      return this.f;
-   }
-
-   public int a(fgr $$0) {
-      return this.f[$$0.c()];
-   }
-
-   public boolean b(fgr $$0) {
-      return (this.e & $$0.a()) != 0;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public String c(fgr $$0) {
-      int $$1 = this.b.indexOf($$0);
-      if ($$1 == -1) {
-         throw new IllegalArgumentException($$0 + " is not contained in format");
-      } else {
-         return this.c.get($$1);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fgq $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
-            return true;
+   public void b(float $$0, float $$1, float $$2) {
+      fgq.a $$3 = this.a.getLast();
+      $$3.a.scale($$0, $$1, $$2);
+      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
+         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
+            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
          }
-
-         return false;
+      } else {
+         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
+         $$3.c = false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.e * 31 + Arrays.hashCode(this.f);
+   public void a(Quaternionf $$0) {
+      fgq.a $$1 = this.a.getLast();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
    }
 
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = this.b();
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         GlStateManager._enableVertexAttribArray($$1);
-         fgr $$2 = this.b.get($$1);
-         $$2.a($$1, (long)this.a($$2), $$0);
-      }
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      fgq.a $$4 = this.a.getLast();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
    }
 
-   public void h() {
-      RenderSystem.assertOnRenderThread();
-
-      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
-         GlStateManager._disableVertexAttribArray($$0);
-      }
+   public void a() {
+      this.a.addLast(new fgq.a(this.a.getLast()));
    }
 
-   public fgo i() {
-      fgo $$0 = this.g;
-      if ($$0 == null) {
-         this.g = $$0 = new fgo(fef.a);
-      }
-
-      return $$0;
+   public void b() {
+      this.a.removeLast();
    }
 
-   public static class a {
-      private final Builder<String, fgr> a = ImmutableMap.builder();
-      private final IntList b = new IntArrayList();
-      private int c;
+   public fgq.a c() {
+      return this.a.getLast();
+   }
 
-      a() {
-      }
+   public boolean d() {
+      return this.a.size() == 1;
+   }
 
-      public fgq.a a(String $$0, fgr $$1) {
-         this.a.put($$0, $$1);
-         this.b.add(this.c);
-         this.c = this.c + $$1.b();
-         return this;
-      }
+   public void e() {
+      fgq.a $$0 = this.a.getLast();
+      $$0.a.identity();
+      $$0.b.identity();
+      $$0.c = true;
+   }
 
-      public fgq.a a(int $$0) {
-         this.c += $$0;
-         return this;
-      }
-
-      public fgq a() {
-         ImmutableMap<String, fgr> $$0 = this.a.buildOrThrow();
-         ImmutableList<fgr> $$1 = $$0.values().asList();
-         ImmutableList<String> $$2 = $$0.keySet().asList();
-         return new fgq($$1, $$2, this.b, this.c);
+   public void a(Matrix4f $$0) {
+      fgq.a $$1 = this.a.getLast();
+      $$1.a.mul($$0);
+      if (!f.a($$0)) {
+         if (f.b($$0)) {
+            $$1.b.mul(new Matrix3f($$0));
+         } else {
+            $$1.d();
+         }
       }
    }
 
-   public static enum b {
-      a(5123, 2),
-      b(5125, 4);
+   public static final class a {
+      final Matrix4f a;
+      final Matrix3f b;
+      boolean c = true;
 
-      public final int c;
-      public final int d;
-
-      private b(final int $$0, final int $$1) {
-         this.c = $$0;
-         this.d = $$1;
+      a(Matrix4f $$0, Matrix3f $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public static fgq.b a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum c {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
+      a(fgq.a $$0) {
+         this.a = new Matrix4f($$0.a);
+         this.b = new Matrix3f($$0.b);
+         this.c = $$0.c;
       }
 
-      public int a(int $$0) {
-         return switch (this) {
-            case a, h -> $$0 / 4 * 6;
-            case b, c, d, e, f, g -> $$0;
-            default -> 0;
-         };
+      void d() {
+         this.b.set(this.a).invert().transpose();
+         this.c = false;
+      }
+
+      public Matrix4f a() {
+         return this.a;
+      }
+
+      public Matrix3f b() {
+         return this.b;
+      }
+
+      public Vector3f a(Vector3f $$0, Vector3f $$1) {
+         return this.a($$0.x, $$0.y, $$0.z, $$1);
+      }
+
+      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
+         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
+         return this.c ? $$4 : $$4.normalize();
+      }
+
+      public fgq.a c() {
+         return new fgq.a(this);
       }
    }
 }

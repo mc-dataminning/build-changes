@@ -1,94 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class dmu extends djq implements dpz {
-   public static final MapCodec<dmu> a = b(dmu::new);
-   protected static final fcm b = dke.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
-
-   @Override
-   public MapCodec<dmu> a() {
-      return a;
-   }
-
-   protected dmu(dxm.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dup a(jh $$0, dxn $$1) {
-      return new dwj($$0, $$1);
-   }
-
-   @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return b;
-   }
-
-   @Override
-   protected fcm a_(dxn $$0, dha $$1, jh $$2) {
-      return $$0.f($$1, $$2);
-   }
-
-   @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, bvf $$3) {
-      if ($$3.o(false)) {
-         if (!$$1.C && $$1.ah() == dha.k && $$3 instanceof asi $$4 && !$$4.i) {
-            $$4.n();
-            return;
-         }
-
-         $$3.a(this, $$2);
-      }
-   }
-
-   @Override
-   public eup a(ash $$0, bvf $$1, jh $$2) {
-      aly<dha> $$3 = $$0.ah() == dha.k ? dha.i : dha.k;
-      ash $$4 = $$0.p().a($$3);
-      if ($$4 == null) {
-         return null;
+public class dmu {
+   public static <S extends duw> dmu.c<S> a(
+      duy<S> $$0, Function<dxu, dmu.a> $$1, Function<dxu, jm> $$2, dyw<jm> $$3, dxu $$4, dhi $$5, jh $$6, BiPredicate<dhi, jh> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dmu.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dmu.b::b;
       } else {
-         boolean $$5 = $$3 == dha.k;
-         jh $$6 = $$5 ? ash.a : $$4.Y();
-         fbs $$7 = $$6.c();
-         float $$8;
-         Set<bwp> $$9;
-         if ($$5) {
-            egm.a($$4, jh.a((ka)$$7).e(), true);
-            $$8 = jm.e.p();
-            $$9 = bwp.a(bwp.l, Set.of(bwp.e));
-            if ($$1 instanceof asi) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
+         dmu.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dmu.a.a;
+         boolean $$11 = $$9 == dmu.a.b;
+         if ($$10) {
+            return new dmu.c.b<>($$8);
          } else {
-            $$8 = 0.0F;
-            $$9 = bwp.a(bwp.l, bwp.k);
-            if ($$1 instanceof asi $$12) {
-               return $$12.a(false, eup.a);
+            jh $$12 = $$6.a($$2.apply($$4));
+            dxu $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dmu.a $$14 = $$1.apply($$13);
+               if ($$14 != dmu.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dmu.b::b;
+                  }
+
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dmu.c.a<>($$16, $$17);
+                  }
+               }
             }
 
-            $$7 = $$1.a($$4, $$6).c();
+            return new dmu.c.b<>($$8);
          }
-
-         return new eup($$4, $$7, fbs.c, $$8, 0.0F, $$9, eup.b.then(eup.c));
       }
    }
 
-   @Override
-   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(ls.af, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   @Override
-   public cxk a(dhd $$0, jh $$1, dxn $$2) {
-      return cxk.k;
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
    }
 
-   @Override
-   protected boolean a(dxn $$0, eto $$1) {
-      return false;
+   public interface c<S> {
+      <T> T apply(dmu.b<? super S, T> var1);
+
+      public static final class a<S> implements dmu.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
+         }
+
+         @Override
+         public <T> T apply(dmu.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
+      }
+
+      public static final class b<S> implements dmu.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(dmu.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

@@ -1,50 +1,14 @@
-public class gao extends gca {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final geh e;
-   private final geh f;
-   private final geh g;
-   private final geh h;
-   private final geh i;
-   private final geh j;
-
-   public gao(geh $$0) {
-      super($$0, glo::c);
-      this.e = $$0.b("left_lid");
-      this.f = $$0.b("right_lid");
-      this.g = $$0.b("left_pages");
-      this.h = $$0.b("right_pages");
-      this.i = $$0.b("flip_page1");
-      this.j = $$0.b("flip_page2");
+public class gao extends gcf {
+   public gao(gem $$0) {
+      super($$0, glt::e);
    }
 
-   public static gen a() {
-      gep $$0 = new gep();
-      ger $$1 = $$0.a();
-      $$1.a("left_lid", gem.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gej.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", gem.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gej.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", gem.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), gej.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", gem.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), gej.a);
-      $$1.a("right_pages", gem.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), gej.a);
-      gem $$2 = gem.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, gej.a);
-      $$1.a("flip_page2", $$2, gej.a);
-      return gen.a($$0, 64, 32);
-   }
-
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (bae.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.e.f = (float) Math.PI + $$4;
-      this.f.f = -$$4;
-      this.g.f = $$4;
-      this.h.f = -$$4;
-      this.i.f = $$4 - $$4 * 2.0F * $$1;
-      this.j.f = $$4 - $$4 * 2.0F * $$2;
-      this.g.b = bae.a($$4);
-      this.h.b = bae.a($$4);
-      this.i.b = bae.a($$4);
-      this.j.b = bae.a($$4);
+   public static ges a() {
+      geu $$0 = new geu();
+      gew $$1 = $$0.a();
+      ger $$2 = ger.c().a(0, 0).a(-1.0F, -0.5F, 0.0F, 2.0F, 1.0F, 0.0F);
+      $$1.a("cross_1", $$2, geo.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, geo.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return ges.a($$0, 16, 16);
    }
 }

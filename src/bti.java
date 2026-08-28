@@ -1,37 +1,75 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bti {
-   public static final Codec<bti> a = RecordCodecBuilder.create($$0 -> $$0.group(eej.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, bti::new));
-   private final eej b;
+public sealed interface bti permits bti.d, bti.a, bti.c, bti.f {
+   bti.d a = new bti.d(bti.e.b, bti.b.b);
+   bti.d b = new bti.d(bti.e.c, bti.b.b);
+   bti.d c = new bti.d(bti.e.a, bti.b.b);
+   bti.a d = new bti.a();
+   bti.c e = new bti.c();
+   bti.f f = new bti.f();
 
-   public bti(eej $$0) {
-      this.b = $$0;
+   default boolean a() {
+      return false;
    }
 
-   public bti(long $$0, alz $$1) {
-      this(a($$0, Optional.of($$1)));
+   public static record a() implements bti {
    }
 
-   public bti(long $$0, Optional<alz> $$1) {
-      this(a($$0, $$1));
-   }
+   public static record b(boolean c, @Nullable cxo d) {
+      static bti.b a = new bti.b(false, null);
+      static bti.b b = new bti.b(true, null);
 
-   private static eej a(long $$0, Optional<alz> $$1) {
-      edx.a $$2 = edx.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+      public boolean a() {
+         return this.c;
       }
 
-      return new eej($$2.a());
+      @Nullable
+      public cxo b() {
+         return this.d;
+      }
    }
 
-   public static edx.a a(alz $$0) {
-      return edx.a($$0.toString());
+   public static record c() implements bti {
    }
 
-   public bam a() {
-      return this.b;
+   public static record d(bti.e g, bti.b h) implements bti {
+      @Override
+      public boolean a() {
+         return true;
+      }
+
+      public bti.d a(cxo $$0) {
+         return new bti.d(this.g, new bti.b(true, $$0));
+      }
+
+      public bti.d b() {
+         return new bti.d(this.g, bti.b.a);
+      }
+
+      public boolean c() {
+         return this.h.c;
+      }
+
+      @Nullable
+      public cxo d() {
+         return this.h.d;
+      }
+
+      public bti.e e() {
+         return this.g;
+      }
+
+      public bti.b f() {
+         return this.h;
+      }
+   }
+
+   public static enum e {
+      a,
+      b,
+      c;
+   }
+
+   public static record f() implements bti {
    }
 }

@@ -1,149 +1,100 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import java.util.IdentityHashMap;
-import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dml extends djq {
-   private static final Logger e = LogUtils.getLogger();
+public class dml extends djx {
    public static final MapCodec<dml> a = b(dml::new);
-   public static final dyk<jm> b = dmj.a;
-   public static final dye c = dyd.B;
-   private static final la f = new la();
-   public static final Map<cxg, lb> d = new IdentityHashMap<>();
-   private static final int g = 4;
+   public static final dyt b = dyk.aU;
+   public static final dyl c = dyk.p;
+   protected static final fcr d = dkl.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
 
    @Override
-   public MapCodec<? extends dml> a() {
+   public MapCodec<dml> a() {
       return a;
    }
 
-   public static void a(dgz $$0, lb $$1) {
-      d.put($$0.j(), $$1);
-   }
-
-   public static void a(dgz $$0) {
-      d.put($$0.j(), new lf($$0.j()));
-   }
-
-   protected dml(dxm.d $$0) {
+   public dml(dxt.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jm.c).b(c, Boolean.valueOf(false)));
+      this.l(this.F.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dvj $$5) {
-         $$3.a($$5);
-         $$3.a($$5 instanceof dvk ? axp.ac : axp.ae);
-      }
-
-      return bte.a;
-   }
-
-   protected void a(ash $$0, dxn $$1, jh $$2) {
-      dvj $$3 = $$0.a($$2, dur.f).orElse(null);
-      if ($$3 == null) {
-         e.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", $$2);
-      } else {
-         ky $$4 = new ky($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.A);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-            $$0.a(ecj.a, $$2, ecj.a.a($$3.m()));
-         } else {
-            cxk $$6 = $$3.a($$5);
-            lb $$7 = this.a($$0, $$6);
-            if ($$7 != lb.b) {
-               $$3.a($$5, $$7.dispense($$4, $$6));
-            }
-         }
-      }
-   }
-
-   protected lb a(dha $$0, cxk $$1) {
-      if (!$$1.a($$0.J())) {
-         return f;
-      } else {
-         lb $$2 = d.get($$1.h());
-         return $$2 != null ? $$2 : a($$1);
-      }
-   }
-
-   private static lb a(cxk $$0) {
-      return (lb)($$0.b(ku.D) ? lc.c : f);
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return d;
    }
 
    @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dke $$3, @Nullable eux $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2) || $$1.C($$2.d());
-      boolean $$7 = $$0.c(c);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 4);
-         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      this.a($$1, $$0, $$2);
-   }
-
-   @Override
-   public dup a(jh $$0, dxn $$1) {
-      return new dvj($$0, $$1);
-   }
-
-   @Override
-   public dxn a(dbb $$0) {
-      return this.m().b(b, $$0.d().g());
-   }
-
-   @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
-      bta.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static ka a(ky $$0) {
-      return a($$0, 0.7, fbs.c);
-   }
-
-   public static ka a(ky $$0, double $$1, fbs $$2) {
-      jm $$3 = $$0.d().c(b);
-      return $$0.a().b($$1 * (double)$$3.j() + $$2.a(), $$1 * (double)$$3.k() + $$2.b(), $$1 * (double)$$3.l() + $$2.c());
-   }
-
-   @Override
-   protected boolean c_(dxn $$0) {
+   protected boolean g_(dxu $$0) {
       return true;
    }
 
    @Override
-   protected int a(dxn $$0, dha $$1, jh $$2) {
-      return csx.a($$1.c_($$2));
+   protected int a(dxu $$0, dgm $$1, jh $$2, jm $$3) {
+      return $$0.c(b);
+   }
+
+   private static void e(dxu $$0, dhh $$1, jh $$2) {
+      int $$3 = $$1.a(dhq.a, $$2) - $$1.E_();
+      float $$4 = $$1.a(1.0F);
+      boolean $$5 = $$0.c(c);
+      if ($$5) {
+         $$3 = 15 - $$3;
+      } else if ($$3 > 0) {
+         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
+         $$4 += ($$6 - $$4) * 0.2F;
+         $$3 = Math.round((float)$$3 * bae.b($$4));
+      }
+
+      $$3 = bae.a($$3, 0, 15);
+      if ($$0.c(b) != $$3) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf($$3)), 3);
+      }
    }
 
    @Override
-   protected dqn a_(dxn $$0) {
-      return dqn.c;
+   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
+      if (!$$3.gt()) {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      } else {
+         if (!$$1.C) {
+            dxu $$5 = $$0.a(c);
+            $$1.a($$2, $$5, 2);
+            $$1.a(ecq.c, $$2, ecq.a.a($$3, $$5));
+            e($$5, $$1, $$2);
+         }
+
+         return bti.a;
+      }
    }
 
    @Override
-   protected dxn a(dxn $$0, dqu $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected dqu a_(dxu $$0) {
+      return dqu.c;
    }
 
    @Override
-   protected dxn a(dxn $$0, dpd $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected boolean f_(dxu $$0) {
+      return true;
    }
 
    @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
+   public duw a(jh $$0, dxu $$1) {
+      return new dvm($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends duw> dux<T> a(dhh $$0, dxu $$1, duy<T> $$2) {
+      return !$$0.C && $$0.G_().g() ? a($$2, duy.r, dml::a) : null;
+   }
+
+   private static void a(dhh $$0, jh $$1, dxu $$2, dvm $$3) {
+      if ($$0.ac() % 20L == 0L) {
+         e($$2, $$0, $$1);
+      }
+   }
+
+   @Override
+   protected void a(dxv.a<dkl, dxu> $$0) {
       $$0.a(b, c);
    }
 }

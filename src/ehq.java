@@ -1,65 +1,38 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import java.util.BitSet;
+import java.util.function.Function;
 
-public class ehq extends ego<eji> {
-   public ehq(Codec<eji> $$0) {
+public class ehq extends egv<ejh> {
+   public ehq(Codec<ejh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egq<eji> $$0) {
-      dhy $$1 = $$0.b();
+   public boolean a(egx<ejh> $$0) {
+      bam $$1 = $$0.d();
       jh $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
-         return false;
-      } else {
-         bam $$3 = $$0.d();
-         jh $$4 = $$0.e();
-         eji $$5 = $$0.f();
-         jh.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
+      dif $$3 = $$0.b();
+      ejh $$4 = $$0.f();
+      float $$5 = $$1.i() * (float) Math.PI;
+      float $$6 = (float)$$4.c / 8.0F;
+      int $$7 = bae.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
+      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
+      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
+      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
+      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
+      int $$12 = 2;
+      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
+      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
+      int $$15 = $$2.u() - bae.f($$6) - $$7;
+      int $$16 = $$2.v() - 2 - $$7;
+      int $$17 = $$2.w() - bae.f($$6) - $$7;
+      int $$18 = 2 * (bae.f($$6) + $$7);
+      int $$19 = 2 * (2 + $$7);
 
-         return true;
-      }
-   }
-
-   private static boolean a(dhy $$0, eji $$1, jh $$2) {
-      jh.a $$3 = $$2.k();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jm.b);
-         dxn $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(dxn $$0, int $$1, int $$2) {
-      if ($$0.l()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(aya.a);
-      }
-   }
-
-   private static boolean a(dhy $$0, dzj $$1, eji $$2, bam $$3, jh.a $$4, jh $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jm.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            jh $$7 = $$4.e();
-            if ($$0.b_($$7).a(aya.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
-
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
+      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
+         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
+            if ($$16 <= $$3.a(edp.a.c, $$20, $$21)) {
+               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
             }
          }
       }
@@ -67,43 +40,119 @@ public class ehq extends ego<eji> {
       return false;
    }
 
-   private static void a(jh $$0, int $$1, dhy $$2, eji $$3, bam $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      jh.a $$7 = $$0.k();
+   protected boolean a(
+      dif $$0, bam $$1, ejh $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
+   ) {
+      int $$14 = 0;
+      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
+      jh.a $$16 = new jh.a();
+      int $$17 = $$2.c;
+      double[] $$18 = new double[$$17 * 4];
 
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      for (int $$19 = 0; $$19 < $$17; $$19++) {
+         float $$20 = (float)$$19 / (float)$$17;
+         double $$21 = bae.d((double)$$20, $$3, $$4);
+         double $$22 = bae.d((double)$$20, $$7, $$8);
+         double $$23 = bae.d((double)$$20, $$5, $$6);
+         double $$24 = $$1.j() * (double)$$17 / 16.0;
+         double $$25 = ((double)(bae.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
+         $$18[$$19 * 4 + 0] = $$21;
+         $$18[$$19 * 4 + 1] = $$22;
+         $$18[$$19 * 4 + 2] = $$23;
+         $$18[$$19 * 4 + 3] = $$25;
       }
-   }
 
-   private static void a(dhy $$0, eji $$1, bam $$2, int $$3, int $$4, jh.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dxn> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dhy $$0, eji $$1, bam $$2, jh $$3, jh.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dxn $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jm.a)) {
-               $$0.a($$4, $$8, 2);
+      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
+         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
+            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
+               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
+                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
+                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
+                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
+                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
+                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
+                     if ($$31 > 0.0) {
+                        $$18[$$27 * 4 + 3] = -1.0;
+                     } else {
+                        $$18[$$26 * 4 + 3] = -1.0;
+                     }
+                  }
+               }
             }
          }
+      }
+
+      try (dzn $$32 = new dzn($$0)) {
+         for (int $$33 = 0; $$33 < $$17; $$33++) {
+            double $$34 = $$18[$$33 * 4 + 3];
+            if (!($$34 < 0.0)) {
+               double $$35 = $$18[$$33 * 4 + 0];
+               double $$36 = $$18[$$33 * 4 + 1];
+               double $$37 = $$18[$$33 * 4 + 2];
+               int $$38 = Math.max(bae.a($$35 - $$34), $$9);
+               int $$39 = Math.max(bae.a($$36 - $$34), $$10);
+               int $$40 = Math.max(bae.a($$37 - $$34), $$11);
+               int $$41 = Math.max(bae.a($$35 + $$34), $$38);
+               int $$42 = Math.max(bae.a($$36 + $$34), $$39);
+               int $$43 = Math.max(bae.a($$37 + $$34), $$40);
+
+               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
+                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
+                  if ($$45 * $$45 < 1.0) {
+                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
+                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
+                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
+                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
+                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
+                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.e($$46)) {
+                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
+                                 if (!$$15.get($$50)) {
+                                    $$15.set($$50);
+                                    $$16.d($$44, $$46, $$48);
+                                    if ($$0.f_($$16)) {
+                                       eaa $$51 = $$32.a($$16);
+                                       if ($$51 != null) {
+                                          int $$52 = kj.b($$44);
+                                          int $$53 = kj.b($$46);
+                                          int $$54 = kj.b($$48);
+                                          dxu $$55 = $$51.a($$52, $$53, $$54);
+
+                                          for (ejh.a $$56 : $$2.b) {
+                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
+                                                $$51.a($$52, $$53, $$54, $$56.c, false);
+                                                $$14++;
+                                                break;
+                                             }
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return $$14 > 0;
+   }
+
+   public static boolean a(dxu $$0, Function<jh, dxu> $$1, bam $$2, ejh $$3, ejh.a $$4, jh.a $$5) {
+      if (!$$4.b.a($$0, $$2)) {
+         return false;
+      } else {
+         return a($$2, $$3.d) ? true : !a($$1, $$5);
+      }
+   }
+
+   protected static boolean a(bam $$0, float $$1) {
+      if ($$1 <= 0.0F) {
+         return true;
+      } else {
+         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
       }
    }
 }

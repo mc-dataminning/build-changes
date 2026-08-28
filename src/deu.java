@@ -1,12 +1,12 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record deu(ddy c) implements dek {
-   public static final MapCodec<deu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ddy.b.fieldOf("value").forGetter(deu::b)).apply($$0, deu::new));
+public record deu(def c) implements der {
+   public static final MapCodec<deu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(def.b.fieldOf("factor").forGetter(deu::b)).apply($$0, deu::new));
 
    @Override
    public float a(int $$0, bam $$1, float $$2) {
-      return this.c.a($$0);
+      return $$2 * this.c.a($$0);
    }
 
    @Override
@@ -14,7 +14,7 @@ public record deu(ddy c) implements dek {
       return a;
    }
 
-   public ddy b() {
+   public def b() {
       return this.c;
    }
 }

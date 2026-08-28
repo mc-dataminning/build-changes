@@ -1,13 +1,40 @@
-public class guq extends gqc<cnl, had, gdx<had>> {
-   public guq(grj.a $$0) {
-      this($$0, geg.dH, geg.dI, geg.dO, geg.dP, geg.dJ, geg.dK);
+public class guq extends gsu<cln, haf, gea> {
+   private static final alz a = alz.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alz b = alz.b("textures/entity/wither/wither.png");
+
+   public guq(gro.a $$0) {
+      super($$0, new gea($$0.a(gel.du)), 1.0F);
+      this.a(new gwq(this, $$0.f()));
    }
 
-   public had b() {
-      return new had();
+   protected int a(cln $$0, jh $$1) {
+      return 15;
    }
 
-   public guq(grj.a $$0, gef $$1, gef $$2, gef $$3, gef $$4, gef $$5, gef $$6) {
-      super($$0, new gdx<>($$0.a($$1)), new gdx<>($$0.a($$2)), new gdx<>($$0.a($$3)), new gdx<>($$0.a($$4)), new gdx<>($$0.a($$5)), new gdx<>($$0.a($$6)));
+   public alz a(haf $$0) {
+      int $$1 = bae.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
+   }
+
+   public haf b() {
+      return new haf();
+   }
+
+   protected void a(haf $$0, fgq $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
+      }
+
+      $$1.b($$2, $$2, $$2);
+   }
+
+   public void a(cln $$0, haf $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      int $$3 = $$0.gm();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.x(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.t(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.gn();
    }
 }

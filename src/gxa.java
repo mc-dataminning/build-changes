@@ -1,10 +1,5 @@
-public class gxa extends gxo {
+public class gxa extends gxt {
    public float a;
-   public int b;
+   public float b;
    public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
 }

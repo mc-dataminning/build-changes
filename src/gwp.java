@@ -1,8 +1,22 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gwp extends gvg<hae, gdz> {
+   public gwp(gtl<hae, gdz> $$0, gsm $$1) {
+      super($$0, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gwp {
+   public void a(fgq $$0, glj $$1, int $$2, hae $$3, float $$4, float $$5) {
+      $$0.a();
+      if ($$3.ar.a(cxs.sZ)) {
+         this.d().e().a($$0);
+         this.d().b().a($$0);
+         this.d().c().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$0.b();
+   }
 }

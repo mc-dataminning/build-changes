@@ -1,41 +1,79 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class ftc extends ftr {
-   @Nullable
-   private foj a;
+public class ftc extends ftw {
+   private static final xv a = xv.c("addServer.enterIp");
+   private fod b;
+   private final gfx c;
+   private fom d;
+   private final BooleanConsumer s;
+   private final ftw u;
 
-   public ftc(xv $$0) {
-      super($$0);
+   public ftc(ftw $$0, BooleanConsumer $$1, gfx $$2) {
+      super(xv.c("selectServer.direct"));
+      this.u = $$0;
+      this.c = $$2;
+      this.s = $$1;
    }
 
    @Override
-   protected void aT_() {
-      this.a = this.c(new foj(this.n, this.l, this.p, 12));
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      if (this.a != null) {
-         this.a.b(this.n);
-         this.a.c(this.n / 2 - this.a.y() / 2, this.o / 2 - 9 / 2);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aM_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.l();
+         return true;
       }
    }
 
    @Override
-   public boolean aH_() {
-      return false;
+   protected void aT_() {
+      this.d = new fom(this.p, this.n / 2 - 100, 116, 200, 20, xv.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.m.n.Y);
+      this.d.b($$0 -> this.E());
+      this.d(this.d);
+      this.b = this.c(fod.a(xv.c("selectServer.select"), $$0 -> this.l()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
+      this.c(fod.a(xu.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+      this.E();
    }
 
    @Override
-   protected boolean aS_() {
-      return false;
+   protected void aG_() {
+      this.b(this.d);
    }
 
    @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, $$3);
-      this.q();
-      this.a($$0);
+   public void a(fme $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void l() {
+      this.c.b = this.d.a();
+      this.s.accept(true);
+   }
+
+   @Override
+   public void aP_() {
+      this.m.a(this.u);
+   }
+
+   @Override
+   public void aJ_() {
+      this.m.n.Y = this.d.a();
+      this.m.n.az();
+   }
+
+   private void E() {
+      this.b.j = gha.b(this.d.a());
+   }
+
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

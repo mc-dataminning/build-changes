@@ -1,27 +1,31 @@
-public class gqp extends gqd<cjj, gxd, gaq> {
-   private static final alz a = alz.b("textures/entity/camel/camel.png");
+public class gqp extends gqi<chx, gxd, gan> {
+   private static final alz a = alz.b("textures/entity/bee/bee_angry.png");
+   private static final alz b = alz.b("textures/entity/bee/bee_angry_nectar.png");
+   private static final alz k = alz.b("textures/entity/bee/bee.png");
+   private static final alz l = alz.b("textures/entity/bee/bee_nectar.png");
 
-   public gqp(grj.a $$0) {
-      super($$0, new gaq($$0.a(geg.J)), new gaq($$0.a(geg.K)), 0.7F);
+   public gqp(gro.a $$0) {
+      super($$0, new gan($$0.a(gel.u)), new gan($$0.a(gel.v)), 0.4F);
    }
 
    public alz a(gxd $$0) {
-      return a;
+      if ($$0.d) {
+         return $$0.e ? b : a;
+      } else {
+         return $$0.e ? l : k;
+      }
    }
 
    public gxd a() {
       return new gxd();
    }
 
-   public void a(cjj $$0, gxd $$1, float $$2) {
+   public void a(chx $$0, gxd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j();
-      $$1.b = $$0.ca();
-      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
-      $$1.d.a($$0.cf);
-      $$1.e.a($$0.cg);
-      $$1.f.a($$0.ch);
-      $$1.g.a($$0.ci);
-      $$1.h.a($$0.cj);
+      $$1.a = $$0.J($$2);
+      $$1.b = !$$0.gz();
+      $$1.c = $$0.aJ() && $$0.dy().h() < 1.0E-7;
+      $$1.d = $$0.ad_();
+      $$1.e = $$0.gy();
    }
 }

@@ -1,171 +1,35 @@
 import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public class btj extends evb {
-   private static final Logger a = LogUtils.getLogger();
-   private final long b;
-   private int c;
-   private boolean d = true;
-   private boolean e = true;
-   private final Map<alz, bti> f = new Object2ObjectOpenHashMap();
+public record btj(cu d) {
+   public static final btj a = new btj(cu.a.a().b());
+   public static final Codec<btj> b = cu.a.xmap(btj::new, btj::a);
+   public static final String c = "lock";
 
-   public static evb.a<btj> a(long $$0) {
-      return new evb.a<>(() -> new btj($$0), ($$1, $$2) -> a($$0, $$1), bbo.m);
+   public boolean a(cxo $$0) {
+      return this.d.a($$0);
    }
 
-   public btj(long $$0) {
-      this.b = $$0;
+   public void a(ux $$0, js.a $$1) {
+      if (this != a) {
+         DataResult<vu> $$2 = b.encode(this, $$1.a(vl.a), new ux());
+         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
+      }
    }
 
-   public bam a(alz $$0) {
-      bam $$1 = this.f.computeIfAbsent($$0, this::c).a();
-      return new btj.a($$1);
-   }
-
-   private bti c(alz $$0) {
-      return this.b($$0, this.c, this.d, this.e);
-   }
-
-   private bti b(alz $$0, int $$1, boolean $$2, boolean $$3) {
-      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
-      return new bti($$4, $$3 ? Optional.of($$0) : Optional.empty());
-   }
-
-   public void a(BiConsumer<alz, bti> $$0) {
-      this.f.forEach($$0);
-   }
-
-   public void a(int $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   @Override
-   public ux a(ux $$0, js.a $$1) {
-      $$0.a("salt", this.c);
-      $$0.a("include_world_seed", this.d);
-      $$0.a("include_sequence_id", this.e);
-      ux $$2 = new ux();
-      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (vu)bti.a.encodeStart(vl.a, $$2x).result().orElseThrow()));
-      $$0.a("sequences", $$2);
-      return $$0;
-   }
-
-   private static boolean a(ux $$0, String $$1, boolean $$2) {
-      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
-   }
-
-   public static btj a(long $$0, ux $$1) {
-      btj $$2 = new btj($$0);
-      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
-      ux $$3 = $$1.p("sequences");
-
-      for (String $$5 : $$3.e()) {
-         try {
-            bti $$6 = (bti)((Pair)bti.a.decode(vl.a, $$3.c($$5)).result().get()).getFirst();
-            $$2.f.put(alz.a($$5), $$6);
-         } catch (Exception var9) {
-            a.error("Failed to load random sequence {}", $$5, var9);
+   public static btj b(ux $$0, js.a $$1) {
+      if ($$0.b("lock", 10)) {
+         DataResult<Pair<btj, vu>> $$2 = b.decode($$1.a(vl.a), $$0.c("lock"));
+         if ($$2.isSuccess()) {
+            return (btj)((Pair)$$2.getOrThrow()).getFirst();
          }
       }
 
-      return $$2;
+      return a;
    }
 
-   public int a() {
-      int $$0 = this.f.size();
-      this.f.clear();
-      return $$0;
-   }
-
-   public void b(alz $$0) {
-      this.f.put($$0, this.c($$0));
-   }
-
-   public void a(alz $$0, int $$1, boolean $$2, boolean $$3) {
-      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
-   }
-
-   class a implements bam {
-      private final bam c;
-
-      a(final bam $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public bam d() {
-         btj.this.c();
-         return this.c.d();
-      }
-
-      @Override
-      public edv e() {
-         btj.this.c();
-         return this.c.e();
-      }
-
-      @Override
-      public void b(long $$0) {
-         btj.this.c();
-         this.c.b($$0);
-      }
-
-      @Override
-      public int f() {
-         btj.this.c();
-         return this.c.f();
-      }
-
-      @Override
-      public int a(int $$0) {
-         btj.this.c();
-         return this.c.a($$0);
-      }
-
-      @Override
-      public long g() {
-         btj.this.c();
-         return this.c.g();
-      }
-
-      @Override
-      public boolean h() {
-         btj.this.c();
-         return this.c.h();
-      }
-
-      @Override
-      public float i() {
-         btj.this.c();
-         return this.c.i();
-      }
-
-      @Override
-      public double j() {
-         btj.this.c();
-         return this.c.j();
-      }
-
-      @Override
-      public double k() {
-         btj.this.c();
-         return this.c.k();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return $$0 instanceof btj.a $$1 ? this.c.equals($$1.c) : false;
-         }
-      }
+   public cu a() {
+      return this.d;
    }
 }

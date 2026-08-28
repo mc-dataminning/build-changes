@@ -1,225 +1,162 @@
-import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fji extends hhp {
-   static final Logger a = LogUtils.getLogger();
-   private static final xv b = xv.c("mco.configure.world.backup");
-   static final xv c = xv.c("mco.backup.button.restore");
-   static final xv C = xv.c("mco.backup.changes.tooltip");
-   private static final xv D = xv.c("mco.backup.nobackups");
-   private static final xv E = xv.c("mco.backup.button.download");
-   private static final String F = "uploaded";
-   private static final int G = 8;
-   final fjl H;
-   List<fhr> I = Collections.emptyList();
+public class fji extends fod {
+   private static final alz u = alz.b("widget/slot_frame");
+   private static final alz v = alz.b("icon/checkmark");
+   public static final alz a = alz.b("textures/gui/realms/empty_frame.png");
+   public static final alz b = alz.b("textures/gui/title/background/panorama_0.png");
+   public static final alz c = alz.b("textures/gui/title/background/panorama_2.png");
+   public static final alz d = alz.b("textures/gui/title/background/panorama_3.png");
+   private static final xv w = xv.c("mco.configure.world.slot.tooltip.active");
+   private static final xv x = xv.c("mco.configure.world.slot.tooltip.minigame");
+   private static final xv y = xv.c("mco.configure.world.slot.tooltip");
+   static final xv z = xv.c("mco.worldSlot.minigame");
+   private static final int A = 64;
+   private static final String B = "...";
+   private final int C;
    @Nullable
-   fji.a J;
-   final frn K = new frn(this);
-   private final int L;
+   private fji.b D;
+
+   public fji(int $$0, int $$1, int $$2, int $$3, int $$4, fod.c $$5) {
+      super($$0, $$1, $$2, $$3, xu.a, $$5, q);
+      this.C = $$4;
+   }
+
    @Nullable
-   fny M;
-   final fic N;
-   boolean O = false;
-
-   public fji(fjl $$0, fic $$1, int $$2) {
-      super(b);
-      this.H = $$0;
-      this.N = $$1;
-      this.L = $$2;
+   public fji.b a() {
+      return this.D;
    }
 
-   @Override
-   public void aT_() {
-      this.K.a(b, this.p);
-      this.J = this.K.c(new fji.a());
-      frr $$0 = this.K.b(frr.e().a(8));
-      this.M = $$0.a(fny.a(E, $$0x -> this.F()).a());
-      this.M.j = false;
-      $$0.a(fny.a(xu.k, $$0x -> this.aP_()).a());
-      this.K.a($$1 -> {
-         fnw var10000 = this.c($$1);
-      });
-      this.c();
-      this.E();
+   public void a(fih $$0) {
+      this.D = new fji.b($$0, this.C);
+      this.a(this.D, $$0.q);
    }
 
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.O && this.J != null) {
-         $$0.a(this.p, D, this.n / 2 - this.p.a(D) / 2, this.J.E() + this.J.w() / 2 - 9 / 2, -1, false);
+   private void a(fji.b $$0, @Nullable String $$1) {
+      xv $$2 = switch ($$0.c) {
+         case b -> $$0.b ? x : y;
+         case c -> w;
+         default -> null;
+      };
+      if ($$2 != null) {
+         this.a(fpp.a($$2));
+      }
+
+      yj $$3 = xv.b($$0.f);
+      if ($$0.b && $$1 != null) {
+         $$3 = $$3.b(xu.v).f($$1);
+      }
+
+      this.b($$3);
+   }
+
+   static fji.a a(fih $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != fih.c.c) {
+         return fji.a.c;
+      } else {
+         return $$1 || $$2 && $$0.j ? fji.a.a : fji.a.b;
       }
    }
 
    @Override
-   protected void c() {
-      this.K.a();
-      if (this.J != null) {
-         this.J.a(this.n, this.K);
-      }
-   }
-
-   private void E() {
-      (new Thread("Realms-fetch-backups") {
-         @Override
-         public void run() {
-            fhb $$0 = fhb.a();
-
-            try {
-               List<fhr> $$1 = $$0.e(fji.this.N.a).a;
-               fji.this.m.execute(() -> {
-                  fji.this.I = $$1;
-                  fji.this.O = fji.this.I.isEmpty();
-                  if (!fji.this.O && fji.this.M != null) {
-                     fji.this.M.j = true;
-                  }
-
-                  if (fji.this.J != null) {
-                     fji.this.J.a(fji.this.I.stream().map($$0xx -> fji.this.new b($$0xx)).toList());
-                  }
-               });
-            } catch (fix var3) {
-               fji.a.error("Couldn't request backups", var3);
-            }
-         }
-      }).start();
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.H);
-   }
-
-   private void F() {
-      this.m
-         .a(
-            fjx.a(
-               this,
-               xv.c("mco.configure.world.restore.download.question.line1"),
-               $$0 -> this.m.a(new fjr(this.H.g(), new fkw(this.N.a, this.L, this.N.c + " (" + this.N.i.get(this.N.p).a(this.N.p) + ")", this)))
-            )
-         );
-   }
-
-   class a extends foe<fji.b> {
-      private static final int a = 36;
-
-      public a() {
-         super(flz.Q(), fji.this.n, fji.this.K.d(), fji.this.K.c(), 36);
-      }
-
-      @Override
-      public int a() {
-         return 300;
-      }
-   }
-
-   class b extends foe.a<fji.b> {
-      private static final int b = 2;
-      private final fhr c;
-      @Nullable
-      private fny d;
-      @Nullable
-      private fny e;
-      private final List<fnw> f = new ArrayList<>();
-
-      public b(final fhr $$0) {
-         this.c = $$0;
-         this.a($$0);
-         if (!$$0.e.isEmpty()) {
-            this.e = fny.a(fji.C, $$0x -> fji.this.m.a(new fjh(fji.this, this.c)))
-               .a(8 + fji.this.p.a(fji.C))
-               .a($$0x -> xu.a(xv.a("mco.backup.narration", this.c()), (xv)$$0x.get()))
-               .a();
-            this.f.add(this.e);
-         }
-
-         if (!fji.this.N.j) {
-            this.d = fny.a(fji.c, $$0x -> this.g()).a(8 + fji.this.p.a(fji.C)).a($$0x -> xu.a(xv.a("mco.backup.narration", this.c()), (xv)$$0x.get())).a();
-            this.f.add(this.d);
-         }
-      }
-
-      private void a(fhr $$0) {
-         int $$1 = fji.this.I.indexOf($$0);
-         if ($$1 != fji.this.I.size() - 1) {
-            fhr $$2 = fji.this.I.get($$1 + 1);
-
-            for (String $$3 : $$0.d.keySet()) {
-               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
-                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
-                     this.a($$3);
-                  }
-               } else {
-                  this.a($$3);
-               }
-            }
-         }
-      }
-
-      private void a(String $$0) {
-         if ($$0.contains("uploaded")) {
-            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
-            this.c.e.put($$0, $$1);
-            this.c.a(true);
+   public void b(fnq $$0, int $$1, int $$2, float $$3) {
+      if (this.D != null) {
+         int $$4 = this.D();
+         int $$5 = this.E();
+         boolean $$6 = this.B();
+         alz $$7;
+         if (this.D.b) {
+            $$7 = fku.a(String.valueOf(this.D.i), this.D.j);
+         } else if (this.D.a) {
+            $$7 = a;
+         } else if (this.D.j != null && this.D.i != -1L) {
+            $$7 = fku.a(String.valueOf(this.D.i), this.D.j);
+         } else if (this.C == 1) {
+            $$7 = b;
+         } else if (this.C == 2) {
+            $$7 = c;
+         } else if (this.C == 3) {
+            $$7 = d;
          } else {
-            this.c.e.put($$0, this.c.d.get($$0));
-         }
-      }
-
-      private String c() {
-         return DateFormat.getDateTimeInstance(3, 3).format(this.c.b);
-      }
-
-      private void g() {
-         xv $$0 = fkq.a(this.c.b);
-         xv $$1 = xv.a("mco.configure.world.restore.question.line1", this.c(), $$0);
-         fji.this.m.a(fjx.b(fji.this, $$1, $$0x -> fji.this.m.a(new fjr(fji.this.H.g(), new fld(this.c, fji.this.N.a, fji.this.H)))));
-      }
-
-      @Override
-      public List<? extends fpw> aI_() {
-         return this.f;
-      }
-
-      @Override
-      public List<? extends fru> b() {
-         return this.f;
-      }
-
-      @Override
-      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = $$2 + $$5 / 2;
-         int $$11 = $$10 - 9 - 2;
-         int $$12 = $$10 + 2;
-         int $$13 = this.c.a() ? -8388737 : -1;
-         $$0.a(fji.this.p, xv.a("mco.backup.entry", fkq.a(this.c.b)), $$3, $$11, $$13, false);
-         $$0.a(fji.this.p, this.a(this.c.b), $$3, $$12, 5000268, false);
-         int $$14 = 0;
-         int $$15 = $$2 + $$5 / 2 - 10;
-         if (this.d != null) {
-            $$14 += this.d.y() + 8;
-            this.d.m($$3 + $$4 - $$14);
-            this.d.n($$15);
-            this.d.a($$0, $$6, $$7, $$9);
+            $$7 = a;
          }
 
-         if (this.e != null) {
-            $$14 += this.e.y() + 8;
-            this.e.m($$3 + $$4 - $$14);
-            this.e.n($$15);
-            this.e.a($$0, $$6, $$7, $$9);
+         int $$14 = -1;
+         if (this.D.e) {
+            $$14 = ayp.a(1.0F, 0.56F, 0.56F, 0.56F);
          }
-      }
 
-      private String a(Date $$0) {
-         return DateFormat.getDateTimeInstance(3, 3).format($$0);
+         $$0.a(glt::B, $$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$14);
+         if ($$6 && this.D.c != fji.a.a) {
+            $$0.a(glt::B, u, $$4, $$5, 80, 80);
+         } else if (this.D.e) {
+            $$0.a(glt::B, u, $$4, $$5, 80, 80, ayp.a(1.0F, 0.8F, 0.8F, 0.8F));
+         } else {
+            $$0.a(glt::B, u, $$4, $$5, 80, 80, ayp.a(1.0F, 0.56F, 0.56F, 0.56F));
+         }
+
+         if (this.D.e) {
+            $$0.a(glt::B, v, $$4 + 67, $$5 + 4, 9, 8);
+         }
+
+         if (this.D.d) {
+            $$0.a(glt::B, fhb.a, $$4 + 3, $$5 + 4, 9, 8);
+         }
+
+         fno $$15 = fme.Q().h;
+         String $$16 = this.D.f;
+         if ($$15.b($$16) > 64) {
+            $$16 = $$15.a($$16, 64 - $$15.b("...")) + "...";
+         }
+
+         $$0.a($$15, $$16, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, fhb.a(this.D.g, this.D.h.a()), $$4 + 40, $$5 + 80 + 2, -1);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static class b {
+      final boolean e;
+      final String f;
+      final String g;
+      final fih.a h;
+      final long i;
+      @Nullable
+      final String j;
+      public final boolean a;
+      public final boolean b;
+      public final fji.a c;
+      public final boolean d;
+
+      public b(fih $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.e = $$0.i();
+            this.f = fji.z.getString();
+            this.i = (long)$$0.r;
+            this.j = $$0.s;
+            this.a = $$0.r == -1;
+            this.g = "";
+            this.h = fih.a.a;
+            this.d = false;
+         } else {
+            fin $$2 = $$0.i.get($$1);
+            this.e = $$0.p == $$1 && !$$0.i();
+            this.f = $$2.a($$1);
+            this.i = $$2.k;
+            this.j = $$2.l;
+            this.a = $$2.m;
+            this.g = $$2.i;
+            this.h = $$2.j;
+            this.d = $$2.h;
+         }
+
+         this.c = fji.a($$0, this.e, this.b);
       }
    }
 }

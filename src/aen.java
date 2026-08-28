@@ -1,8 +1,8 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public record aen(int b, List<csg.a> c) implements aac<acr> {
-   public static final zt<ws, aen> a = zt.a(zr.h, aen::b, csg.a.a.a(zr.a()), aen::e, aen::new);
+public record aen(int b, List<csk.a> c) implements aac<acr> {
+   public static final zt<ws, aen> a = zt.a(zr.h, aen::b, csk.a.a.a(zr.a()), aen::e, aen::new);
 
    @Override
    public aae<aen> a() {
@@ -14,11 +14,11 @@ public record aen(int b, List<csg.a> c) implements aac<acr> {
    }
 
    @Nullable
-   public bvf a(dha $$0) {
+   public bvj a(dhh $$0) {
       return $$0.a(this.b);
    }
 
-   public List<csg.a> e() {
+   public List<csk.a> e() {
       return this.c;
    }
 }

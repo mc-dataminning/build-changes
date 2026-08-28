@@ -36,12 +36,12 @@ public class aqy extends MinecraftServer implements amq {
    @Nullable
    private final atp u;
    @Nullable
-   private boa v;
+   private boe v;
    @Nullable
-   private bnx w;
+   private bob w;
    private final amr x;
 
-   public aqy(Thread $$0, evv.c $$1, avg $$2, amy $$3, ara $$4, DataFixer $$5, amu $$6, ass $$7) {
+   public aqy(Thread $$0, ewc.c $$1, avg $$2, amy $$3, ara $$4, DataFixer $$5, amu $$6, ass $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.s = $$4;
       this.q = new awv(this);
@@ -129,10 +129,10 @@ public class aqy extends MinecraftServer implements amq {
          return false;
       } else {
          this.a(new aqx(this, this.bb(), this.g));
-         this.w = new bnx(this.bs());
-         this.v = new boa(bod.values().length, this.w, bnz.a);
+         this.w = new bob(this.bs());
+         this.v = new boe(boh.values().length, this.w, bod.a);
          long $$4 = ae.d();
-         dwe.a(this.i, this);
+         dwl.a(this.i, this);
          awe.a(this.aa());
          l.info("Preparing level \"{}\"", this.j());
          this.v_();
@@ -140,7 +140,7 @@ public class aqy extends MinecraftServer implements amq {
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          l.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.n != null) {
-            this.aL().a(dgw.A).a($$1.n, this);
+            this.aL().a(dhd.B).a($$1.n, this);
          }
 
          if ($$1.o) {
@@ -162,7 +162,7 @@ public class aqy extends MinecraftServer implements amq {
          }
 
          if ($$1.N) {
-            boj.a(this);
+            bon.a(this);
             l.info("JMX monitoring enabled");
          }
 
@@ -236,8 +236,8 @@ public class aqy extends MinecraftServer implements amq {
    }
 
    @Override
-   public boolean a(dha $$0) {
-      return $$0.ah() == dha.j ? this.a().u : true;
+   public boolean a(dhh $$0) {
+      return $$0.ah() == dhh.j ? this.a().u : true;
    }
 
    public void a(String $$0, ew $$1) {
@@ -314,8 +314,8 @@ public class aqy extends MinecraftServer implements amq {
    }
 
    @Override
-   public boolean a(ash $$0, jh $$1, cps $$2) {
-      if ($$0.ah() != dha.i) {
+   public boolean a(ash $$0, jh $$1, cpw $$2) {
+      if ($$0.ah() != dhh.i) {
          return false;
       } else if (this.bs().k().c()) {
          return false;
@@ -485,7 +485,7 @@ public class aqy extends MinecraftServer implements amq {
    public void v() {
       super.v();
       ae.j();
-      dwe.b();
+      dwl.b();
    }
 
    @Override
@@ -515,7 +515,7 @@ public class aqy extends MinecraftServer implements amq {
 
    @Nullable
    @Override
-   public dgx bd() {
+   public dhe bd() {
       return this.s.a().h ? this.j.k() : null;
    }
 
@@ -531,17 +531,17 @@ public class aqy extends MinecraftServer implements amq {
    }
 
    @Override
-   public bob f() {
+   public bof f() {
       return this.v;
    }
 
    @Override
    public boolean g() {
-      return this.w.a(bnz.a);
+      return this.w.a(bod.a);
    }
 
    @Override
-   public void a(asi $$0, bnz $$1) {
+   public void a(asi $$0, bod $$1) {
       this.w.a($$0, $$1);
    }
 

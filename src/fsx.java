@@ -1,79 +1,179 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fsx extends ftr {
-   private static final xv a = xv.c("addServer.enterIp");
-   private fny b;
-   private final gfs c;
-   private foh d;
-   private final BooleanConsumer s;
-   private final ftr u;
+public class fsx extends ftw {
+   static final alz b = alz.b("container/slot");
+   private static final int c = 18;
+   private static final int d = 20;
+   private static final int s = 1;
+   private static final int u = 1;
+   private static final int v = 2;
+   private static final int w = 2;
+   protected final fyv a;
+   private final Consumer<emm> x;
+   emm y;
+   private xv z;
+   private xv A;
+   private fsx.a B;
+   private fod C;
 
-   public fsx(ftr $$0, BooleanConsumer $$1, gfs $$2) {
-      super(xv.c("selectServer.direct"));
-      this.u = $$0;
-      this.c = $$2;
-      this.s = $$1;
+   public fsx(fyv $$0, Consumer<emm> $$1, emm $$2) {
+      super(xv.c("createWorld.customize.flat.title"));
+      this.a = $$0;
+      this.x = $$1;
+      this.y = $$2;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aM_() != this.d || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.l();
-         return true;
-      }
+   public emm k() {
+      return this.y;
+   }
+
+   public void a(emm $$0) {
+      this.y = $$0;
    }
 
    @Override
    protected void aT_() {
-      this.d = new foh(this.p, this.n / 2 - 100, 116, 200, 20, xv.c("addServer.enterIp"));
-      this.d.f(128);
-      this.d.a(this.m.n.Y);
-      this.d.b($$0 -> this.E());
-      this.d(this.d);
-      this.b = this.c(fny.a(xv.c("selectServer.select"), $$0 -> this.l()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
-      this.c(fny.a(xu.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-      this.E();
+      this.z = xv.c("createWorld.customize.flat.tile");
+      this.A = xv.c("createWorld.customize.flat.height");
+      this.B = this.c(new fsx.a());
+      this.C = this.c(fod.a(xv.c("createWorld.customize.flat.removeLayer"), $$0 -> {
+         if (this.E()) {
+            List<emj> $$1 = this.y.e();
+            int $$2 = this.B.aI_().indexOf(this.B.g());
+            int $$3 = $$1.size() - $$2 - 1;
+            $$1.remove($$3);
+            this.B.a($$1.isEmpty() ? null : this.B.aI_().get(Math.min($$2, $$1.size() - 1)));
+            this.y.g();
+            this.B.b();
+            this.l();
+         }
+      }).a(this.n / 2 - 155, this.o - 52, 150, 20).a());
+      this.c(fod.a(xv.c("createWorld.customize.presets"), $$0 -> {
+         this.m.a(new fts(this));
+         this.y.g();
+         this.l();
+      }).a(this.n / 2 + 5, this.o - 52, 150, 20).a());
+      this.c(fod.a(xu.d, $$0 -> {
+         this.x.accept(this.y);
+         this.m.a(this.a);
+         this.y.g();
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
+      this.c(fod.a(xu.e, $$0 -> {
+         this.m.a(this.a);
+         this.y.g();
+      }).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+      this.y.g();
+      this.l();
    }
 
-   @Override
-   protected void aG_() {
-      this.b(this.d);
+   void l() {
+      this.C.j = this.E();
    }
 
-   @Override
-   public void a(flz $$0, int $$1, int $$2) {
-      String $$3 = this.d.a();
-      this.b($$0, $$1, $$2);
-      this.d.a($$3);
-   }
-
-   private void l() {
-      this.c.b = this.d.a();
-      this.s.accept(true);
+   private boolean E() {
+      return this.B.g() != null;
    }
 
    @Override
    public void aP_() {
-      this.m.a(this.u);
+      this.m.a(this.a);
    }
 
    @Override
-   public void aJ_() {
-      this.m.n.Y = this.d.a();
-      this.m.n.az();
-   }
-
-   private void E() {
-      this.b.j = ggv.b(this.d.a());
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
-      this.d.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+      int $$4 = this.n / 2 - 92 - 16;
+      $$0.b(this.p, this.z, $$4, 32, 16777215);
+      $$0.b(this.p, this.A, $$4 + 2 + 213 - this.p.a(this.A), 32, 16777215);
+   }
+
+   class a extends fpa<fsx.a.a> {
+      public a() {
+         super(fsx.this.m, fsx.this.n, fsx.this.o - 103, 43, 24);
+
+         for (int $$0 = 0; $$0 < fsx.this.y.e().size(); $$0++) {
+            this.b(new fsx.a.a());
+         }
+      }
+
+      public void a(@Nullable fsx.a.a $$0) {
+         super.a($$0);
+         fsx.this.l();
+      }
+
+      public void b() {
+         int $$0 = this.aI_().indexOf(this.g());
+         this.j();
+
+         for (int $$1 = 0; $$1 < fsx.this.y.e().size(); $$1++) {
+            this.b(new fsx.a.a());
+         }
+
+         List<fsx.a.a> $$2 = this.aI_();
+         if ($$0 >= 0 && $$0 < $$2.size()) {
+            this.a($$2.get($$0));
+         }
+      }
+
+      class a extends fpa.a<fsx.a.a> {
+         @Override
+         public void a(fnq $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            emj $$10 = fsx.this.y.e().get(fsx.this.y.e().size() - $$1 - 1);
+            dxu $$11 = $$10.b();
+            cxo $$12 = this.a($$11);
+            this.a($$0, $$3, $$2, $$12);
+            $$0.a(fsx.this.p, $$12.y(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
+            xv $$13;
+            if ($$1 == 0) {
+               $$13 = xv.a("createWorld.customize.flat.layer.top", $$10.a());
+            } else if ($$1 == fsx.this.y.e().size() - 1) {
+               $$13 = xv.a("createWorld.customize.flat.layer.bottom", $$10.a());
+            } else {
+               $$13 = xv.a("createWorld.customize.flat.layer", $$10.a());
+            }
+
+            $$0.a(fsx.this.p, $$13, $$3 + 2 + 213 - fsx.this.p.a($$13), $$2 + 3, 16777215, false);
+         }
+
+         private cxo a(dxu $$0) {
+            cxk $$1 = $$0.b().j();
+            if ($$1 == cxs.a) {
+               if ($$0.a(dkn.J)) {
+                  $$1 = cxs.qX;
+               } else if ($$0.a(dkn.K)) {
+                  $$1 = cxs.qY;
+               }
+            }
+
+            return new cxo($$1);
+         }
+
+         @Override
+         public xv a() {
+            emj $$0 = fsx.this.y.e().get(fsx.this.y.e().size() - a.this.aI_().indexOf(this) - 1);
+            cxo $$1 = this.a($$0.b());
+            return (xv)(!$$1.f() ? xv.a("narrator.select", $$1.y()) : xu.a);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void a(fnq $$0, int $$1, int $$2, cxo $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            if (!$$3.f()) {
+               $$0.b($$3, $$1 + 2, $$2 + 2);
+            }
+         }
+
+         private void a(fnq $$0, int $$1, int $$2) {
+            $$0.a(glt::B, fsx.b, $$1, $$2, 18, 18);
+         }
+      }
    }
 }

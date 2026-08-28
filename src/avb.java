@@ -19,9 +19,9 @@ public class avb implements avi {
    private final Path c;
    private final aui d;
    private final avh e;
-   private final fbi f;
+   private final fbn f;
 
-   public avb(Path $$0, aui $$1, avh $$2, fbi $$3) {
+   public avb(Path $$0, aui $$1, avh $$2, fbn $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -53,16 +53,16 @@ public class avb implements avi {
       return new auf("file/" + $$1, xv.b($$1), this.e, Optional.empty());
    }
 
-   public static void a(Path $$0, fbi $$1, BiConsumer<Path, avd.c> $$2) throws IOException {
+   public static void a(Path $$0, fbn $$1, BiConsumer<Path, avd.c> $$2) throws IOException {
       avb.a $$3 = new avb.a($$1);
 
       try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
          for (Path $$5 : $$4) {
             try {
-               List<fbj> $$6 = new ArrayList<>();
+               List<fbo> $$6 = new ArrayList<>();
                avd.c $$7 = $$3.a($$5, $$6);
                if (!$$6.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", fbh.a($$5, $$6));
+                  a.warn("Ignoring potential pack entry: {}", fbm.a($$5, $$6));
                } else if ($$7 != null) {
                   $$2.accept($$5, $$7);
                } else {
@@ -76,7 +76,7 @@ public class avb implements avi {
    }
 
    static class a extends avf<avd.c> {
-      protected a(fbi $$0) {
+      protected a(fbn $$0) {
          super($$0);
       }
 

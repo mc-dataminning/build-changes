@@ -1,85 +1,39 @@
-import javax.annotation.Nullable;
-
 public class cxr {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private jq<cxq> c;
-   private final jh d;
-   private final cxr.a e;
-
-   public cxr(cxr.a $$0, jh $$1) {
-      this.e = $$0;
-      this.d = $$1;
+   public static bti a(dhh $$0, cpw $$1, bth $$2) {
+      $$1.c($$2);
+      return bti.c;
    }
 
-   public boolean a() {
-      return this.c != null;
-   }
+   public static cxo a(cxo $$0, cpw $$1, cxo $$2, boolean $$3) {
+      boolean $$4 = $$1.fT();
+      if ($$3 && $$4) {
+         if (!$$1.gg().i($$2)) {
+            $$1.gg().f($$2);
+         }
 
-   @Nullable
-   public cxq b() {
-      return this.c == null ? null : this.c.a();
-   }
-
-   public long c() {
-      return this.b;
-   }
-
-   public void a(jq<cxq> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
-      }
-   }
-
-   public void a(dhb $$0, jq<cxq> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.K_().e(mb.L).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
-   }
-
-   public void a(dhb $$0, @Nullable dxn $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(ecj.F, this.d, ecj.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(dhb $$0, @Nullable dxn $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
+         return $$0;
+      } else {
+         $$0.a(1, $$1);
+         if ($$0.f()) {
+            return $$2;
          } else {
-            if (this.d()) {
-               $$0.a(ecj.E, this.d, ecj.a.a($$1));
-               a($$0, this.d);
+            if (!$$1.gg().f($$2)) {
+               $$1.a($$2, false);
             }
 
-            this.b++;
+            return $$0;
          }
       }
    }
 
-   private boolean d() {
-      return this.b % 20L == 0L;
+   public static cxo a(cxo $$0, cpw $$1, cxo $$2) {
+      return a($$0, $$1, $$2, true);
    }
 
-   private static void a(dhb $$0, jh $$1) {
-      if ($$0 instanceof ash $$2) {
-         fbs $$3 = fbs.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.H_().a(4) / 24.0F;
-         $$2.a(ls.ab, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+   public static void a(cma $$0, Iterable<cxo> $$1) {
+      dhh $$2 = $$0.dV();
+      if (!$$2.C) {
+         $$1.forEach($$2x -> $$2.b(new cma($$2, $$0.dA(), $$0.dC(), $$0.dG(), $$2x)));
       }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
    }
 }

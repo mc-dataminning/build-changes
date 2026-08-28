@@ -1,6 +1,6 @@
 import java.util.concurrent.CompletableFuture;
 
-public class qa extends qp<duf> {
+public class qa extends qp<dum> {
    public qa(mj $$0, CompletableFuture<js.a> $$1) {
       super($$0, mb.d, $$1);
    }
@@ -9,48 +9,48 @@ public class qa extends qp<duf> {
    protected void a(js.a $$0) {
       this.b(axs.a)
          .a(
-            duh.b,
-            duh.c,
-            duh.d,
-            duh.e,
-            duh.f,
-            duh.g,
-            duh.h,
-            duh.i,
-            duh.j,
-            duh.k,
-            duh.l,
-            duh.m,
-            duh.n,
-            duh.o,
-            duh.p,
-            duh.q,
-            duh.r,
-            duh.s,
-            duh.t,
-            duh.u,
-            duh.v,
-            duh.w,
-            duh.x,
-            duh.y,
-            duh.z,
-            duh.A,
-            duh.B,
-            duh.C,
-            duh.D,
-            duh.E,
-            duh.G,
-            duh.H
+            duo.b,
+            duo.c,
+            duo.d,
+            duo.e,
+            duo.f,
+            duo.g,
+            duo.h,
+            duo.i,
+            duo.j,
+            duo.k,
+            duo.l,
+            duo.m,
+            duo.n,
+            duo.o,
+            duo.p,
+            duo.q,
+            duo.r,
+            duo.s,
+            duo.t,
+            duo.u,
+            duo.v,
+            duo.w,
+            duo.x,
+            duo.y,
+            duo.z,
+            duo.A,
+            duo.B,
+            duo.C,
+            duo.D,
+            duo.E,
+            duo.G,
+            duo.H
          );
-      this.b(axs.b).a(duh.M);
-      this.b(axs.c).a(duh.K);
-      this.b(axs.d).a(duh.L);
-      this.b(axs.e).a(duh.N);
-      this.b(axs.f).a(duh.J);
-      this.b(axs.g).a(duh.O);
-      this.b(axs.h).a(duh.P);
-      this.b(axs.i).a(duh.Q);
-      this.b(axs.j).a(duh.I);
-      this.b(axs.k).a(duh.F);
+      this.b(axs.b).a(duo.M);
+      this.b(axs.c).a(duo.K);
+      this.b(axs.d).a(duo.L);
+      this.b(axs.e).a(duo.N);
+      this.b(axs.f).a(duo.J);
+      this.b(axs.g).a(duo.O);
+      this.b(axs.h).a(duo.P);
+      this.b(axs.i).a(duo.Q);
+      this.b(axs.j).a(duo.I);
+      this.b(axs.k).a(duo.F);
    }
 }

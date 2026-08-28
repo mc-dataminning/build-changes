@@ -6,12 +6,12 @@ public class asn<T> {
    private final long k;
    public static final asn<bbk> a = a("start", ($$0, $$1) -> 0);
    public static final asn<bbk> b = a("dragon", ($$0, $$1) -> 0);
-   public static final asn<dgg> c = a("player", Comparator.comparingLong(dgg::a));
-   public static final asn<dgg> d = a("forced", Comparator.comparingLong(dgg::a));
+   public static final asn<dgn> c = a("player", Comparator.comparingLong(dgn::a));
+   public static final asn<dgn> d = a("forced", Comparator.comparingLong(dgn::a));
    public static final asn<jh> e = a("portal", kl::i, 300);
-   public static final asn<dgg> f = a("ender_pearl", Comparator.comparingLong(dgg::a), 40);
+   public static final asn<dgn> f = a("ender_pearl", Comparator.comparingLong(dgn::a), 40);
    public static final asn<Integer> g = a("post_teleport", Integer::compareTo, 5);
-   public static final asn<dgg> h = a("unknown", Comparator.comparingLong(dgg::a), 1);
+   public static final asn<dgn> h = a("unknown", Comparator.comparingLong(dgn::a), 1);
 
    public static <T> asn<T> a(String $$0, Comparator<T> $$1) {
       return new asn<>($$0, $$1, 0L);

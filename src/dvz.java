@@ -1,124 +1,137 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class dvz extends duw {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private alz h = alz.b("empty");
+   private alz i = alz.b("empty");
+   private aly<ept> j = aly.a(mb.aX, alz.b("empty"));
+   private dvz.a k = dvz.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int n;
 
-public class dvz extends dup implements ecl.b<ecs.b>, ecs {
-   private static final Logger a = LogUtils.getLogger();
-   private ecs.a b;
-   private final ecs.b c;
-   private final ecs.d d = this.b();
-   private int h;
-
-   protected dvz(dur<?> $$0, jh $$1, dxn $$2) {
-      super($$0, $$1, $$2);
-      this.b = new ecs.a();
-      this.c = new ecs.b(this);
+   public dvz(jh $$0, dxu $$1) {
+      super(duy.G, $$0, $$1);
    }
 
-   public dvz(jh $$0, dxn $$1) {
-      this(dur.J, $$0, $$1);
+   public alz b() {
+      return this.h;
    }
 
-   public ecs.d b() {
-      return new dvz.a(this.aB_());
+   public alz c() {
+      return this.i;
    }
 
-   @Override
-   protected void a(ux $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      alx<vu> $$2 = $$1.a(vl.a);
-      if ($$0.b("listener", 10)) {
-         ecs.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
-            .ifPresent($$0x -> this.b = $$0x);
-      }
+   public aly<ept> d() {
+      return this.j;
+   }
+
+   public String f() {
+      return this.l;
+   }
+
+   public dvz.a j() {
+      return this.k;
+   }
+
+   public int k() {
+      return this.m;
+   }
+
+   public int t() {
+      return this.n;
+   }
+
+   public void a(alz $$0) {
+      this.h = $$0;
+   }
+
+   public void b(alz $$0) {
+      this.i = $$0;
+   }
+
+   public void a(aly<ept> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dvz.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
    }
 
    @Override
    protected void b(ux $$0, js.a $$1) {
       super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      alx<vu> $$2 = $$1.a(vl.a);
-      ecs.a.a
-         .encodeStart($$2, this.b)
-         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.n);
    }
 
    @Override
-   public ecs.a gn() {
-      return this.b;
+   protected void a(ux $$0, js.a $$1) {
+      super.a($$0, $$1);
+      this.h = alz.a($$0.l("name"));
+      this.i = alz.a($$0.l("target"));
+      this.j = aly.a(mb.aX, alz.a($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = esl.a($$0, this.m());
+      this.m = $$0.h("placement_priority");
+      this.n = $$0.h("selection_priority");
+   }
+
+   public acy u() {
+      return acy.a(this);
    }
 
    @Override
-   public ecs.d go() {
-      return this.d;
+   public ux a(js.a $$0) {
+      return this.e($$0);
    }
 
-   public int d() {
-      return this.h;
+   public void a(ash $$0, int $$1, boolean $$2) {
+      jh $$3 = this.aB_().a(this.m().c(dop.b).a());
+      kd<ept> $$4 = $$0.K_().e(mb.aX);
+      jq<ept> $$5 = $$4.b(this.j);
+      epn.a($$0, $$5, this.i, $$1, $$3, $$2);
    }
 
-   public void a(int $$0) {
-      this.h = $$0;
-   }
+   public static enum a implements bba {
+      a("rollable"),
+      b("aligned");
 
-   public ecs.b f() {
-      return this.c;
-   }
+      public static final bba.a<dvz.a> c = bba.a(dvz.a::values);
+      private final String d;
 
-   protected class a implements ecs.d {
-      public static final int b = 8;
-      protected final jh c;
-      private final ecn a;
-
-      public a(final jh $$1) {
-         this.c = $$1;
-         this.a = new ecf($$1);
+      private a(final String $$0) {
+         this.d = $$0;
       }
 
       @Override
-      public int a() {
-         return 8;
+      public String c() {
+         return this.d;
       }
 
-      @Override
-      public ecn b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(ash $$0, jh $$1, jq<ecj> $$2, @Nullable ecj.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(ecj.f) && !$$2.a(ecj.i) ? dra.q(dvz.this.m()) : false;
-      }
-
-      @Override
-      public void a(ash $$0, jh $$1, jq<ecj> $$2, @Nullable bvf $$3, @Nullable bvf $$4, float $$5) {
-         dxn $$6 = dvz.this.m();
-         if (dra.q($$6)) {
-            dvz.this.a(ecs.a_($$2));
-            int $$7 = ecs.a_($$5, this.a());
-            if ($$6.b() instanceof dra $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dvz.this.d());
-            }
-         }
-      }
-
-      @Override
-      public void e() {
-         dvz.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
+      public xv a() {
+         return xv.c("jigsaw_block.joint." + this.d);
       }
    }
 }

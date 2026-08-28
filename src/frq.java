@@ -1,143 +1,111 @@
-public interface frq {
-   frq a(int var1);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-   frq a(int var1, int var2);
+public class frq extends frn {
+   private final List<frq.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final frv f = frv.i().a(0.5F, 0.5F);
 
-   frq a(int var1, int var2, int var3, int var4);
-
-   frq b(int var1);
-
-   frq c(int var1);
-
-   frq d(int var1);
-
-   frq e(int var1);
-
-   frq f(int var1);
-
-   frq g(int var1);
-
-   frq a(float var1, float var2);
-
-   frq a(float var1);
-
-   frq b(float var1);
-
-   default frq a() {
-      return this.a(0.0F);
+   public frq() {
+      this(0, 0, 0, 0);
    }
 
-   default frq b() {
-      return this.a(0.5F);
+   public frq(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   default frq c() {
-      return this.a(1.0F);
+   public frq(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
    }
 
-   default frq d() {
-      return this.b(0.0F);
+   public frq a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
    }
 
-   default frq e() {
-      return this.b(0.5F);
+   public frq a(int $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   default frq f() {
-      return this.b(1.0F);
+   public frq b(int $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   frq g();
-
-   frq.a h();
-
-   static frq i() {
-      return new frq.a();
+   public frv b() {
+      return this.f.g();
    }
 
-   public static class a implements frq {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   public frv c() {
+      return this.f;
+   }
 
-      public a() {
+   @Override
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (frq.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
       }
 
-      public a(frq.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
+      for (frq.a $$3 : this.c) {
+         $$3.a(this.D(), $$0);
+         $$3.b(this.E(), $$1);
       }
 
-      public frq.a h(int $$0) {
-         return this.b($$0, $$0);
-      }
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      public frq.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
-      }
+   public <T extends fru> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
 
-      public frq.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
-      }
+   public <T extends fru> T a(T $$0, frv $$1) {
+      this.c.add(new frq.a($$0, $$1));
+      return $$0;
+   }
 
-      public frq.a i(int $$0) {
-         this.a = $$0;
-         return this;
-      }
+   public <T extends fru> T a(T $$0, Consumer<frv> $$1) {
+      return this.a($$0, ae.a(this.b(), $$1));
+   }
 
-      public frq.a j(int $$0) {
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   public void b(Consumer<fru> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
+   }
 
-      public frq.a k(int $$0) {
-         this.c = $$0;
-         return this;
-      }
+   public static void a(fru $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   }
 
-      public frq.a l(int $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public static void a(fru $$0, fsl $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   }
 
-      public frq.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
+   public static void a(fru $$0, fsl $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
 
-      public frq.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
+   public static void a(fru $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.y(), $$0::k, $$5);
+      a($$2, $$4, $$0.w(), $$0::l, $$6);
+   }
 
-      public frq.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)bae.h($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
 
-      public frq.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public frq.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public frq.a j() {
-         return new frq.a(this);
-      }
-
-      @Override
-      public frq.a h() {
-         return this;
+   static class a extends frn.a {
+      protected a(fru $$0, frv $$1) {
+         super($$0, $$1);
       }
    }
 }

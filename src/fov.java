@@ -1,62 +1,35 @@
-import javax.annotation.Nullable;
+public class fov {
+   public static final alz a = alz.b("textures/gui/title/minecraft.png");
+   public static final alz b = alz.b("textures/gui/title/minceraft.png");
+   public static final alz c = alz.b("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)bam.a().i() < 1.0E-4;
+   private final boolean o;
 
-public abstract class fov<E extends fov.a<E>> extends fnt<E> {
-   private static final xv a = xv.c("narration.selection.usage");
-
-   public fov(flz $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fov(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Nullable
-   @Override
-   public fni a(fsc $$0) {
-      if (this.k() == 0) {
-         return null;
-      } else if (this.aN_() && $$0 instanceof fsc.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? fni.a(this, fni.a($$2)) : null;
-      } else if (!this.aN_()) {
-         E $$3 = this.g();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fni.a(this, fni.a($$3));
-      } else {
-         return null;
-      }
+   public void a(fnq $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Override
-   public void a(frw $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.g();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aN_()) {
-         $$0.a(frv.d, a);
-      }
-   }
-
-   public abstract static class a<E extends fov.a<E>> extends fnt.a<E> implements frx {
-      public abstract xv a();
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public void b(frw $$0) {
-         $$0.a(frv.a, this.a());
-      }
+   public void a(fnq $$0, int $$1, float $$2, int $$3) {
+      int $$4 = $$1 / 2 - 128;
+      float $$5 = this.o ? 1.0F : $$2;
+      int $$6 = ayp.a($$5);
+      $$0.a(glt::B, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
+      int $$7 = $$1 / 2 - 64;
+      int $$8 = $$3 + 44 - 7;
+      $$0.a(glt::B, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
    }
 }

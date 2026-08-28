@@ -1,74 +1,79 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class drw extends dke {
+public class drw extends dkl {
    public static final MapCodec<drw> a = b(drw::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final jm[] d = jm.values();
+   public static final int b = 2;
+   public static final dyt c = dyk.aF;
+   private static final int d = 24000;
+   private static final int e = 12000;
+   private static final int f = 300;
+   private static final fcr g = dkl.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
 
    @Override
    public MapCodec<drw> a() {
       return a;
    }
 
-   protected drw(dxm.d $$0) {
+   public drw(dxt.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void b(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return g;
+   }
+
+   public int o(dxu $$0) {
+      return $$0.c(c);
+   }
+
+   private boolean q(dxu $$0) {
+      return this.o($$0) == 2;
+   }
+
+   @Override
+   public void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if (!this.q($$0)) {
+         $$1.a(null, $$2, axf.yX, axg.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.b(c, Integer.valueOf(this.o($$0) + 1)), 2);
+      } else {
+         $$1.a(null, $$2, axf.yY, axg.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         ckn $$4 = bvq.bj.a($$1, bvp.e);
+         if ($$4 != null) {
+            fbx $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), bae.h($$1.A.i() * 360.0F), 0.0F);
+            $$1.b($$4);
+         }
       }
    }
 
    @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dke $$3, @Nullable eux $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(dha $$0, jh $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dkg.aW.m(), 2);
-         $$0.a(null, $$1, axf.zu, axg.e, 1.0F, 1.0F);
+   public void b(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.B_() && $$5) {
+         $$1.c(3009, $$2, 0);
       }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(ecq.i, $$2, ecq.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.A.a(300));
    }
 
-   private boolean b(dha $$0, jh $$1) {
-      return jh.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (jm $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dxn $$3 = $$0.a_($$2);
-            etp $$4 = $$0.b_($$2);
-            if (!$$4.a(aya.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof dkm $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
-                  return true;
-               }
+   @Override
+   public boolean a(dxu $$0, eul $$1) {
+      return false;
+   }
 
-               if ($$3.b() instanceof dow) {
-                  $$0.a($$2, dkg.a.m(), 3);
-               } else {
-                  if (!$$3.a(dkg.mx) && !$$3.a(dkg.my) && !$$3.a(dkg.bD) && !$$3.a(dkg.bE)) {
-                     return false;
-                  }
-
-                  dup $$7 = $$3.x() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dkg.a.m(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+   public static boolean a(dgm $$0, jh $$1) {
+      return $$0.a_($$1.e()).a(axu.cv);
    }
 }

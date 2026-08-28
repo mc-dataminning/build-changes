@@ -21,7 +21,7 @@ public class aob {
             .then(
                ex.a("targets", fj.b())
                   .then(
-                     ((RequiredArgumentBuilder)ex.a("enchantment", fv.a($$1, mb.aN))
+                     ((RequiredArgumentBuilder)ex.a("enchantment", fv.a($$1, mb.aO))
                            .executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"), fv.g($$0x, "enchantment"), 1)))
                         .then(
                            ex.a("level", IntegerArgumentType.integer(0))
@@ -36,19 +36,19 @@ public class aob {
       );
    }
 
-   private static int a(ew $$0, Collection<? extends bvf> $$1, jq<ddr> $$2, int $$3) throws CommandSyntaxException {
-      ddr $$4 = $$2.a();
+   private static int a(ew $$0, Collection<? extends bvj> $$1, jq<ddy> $$2, int $$3) throws CommandSyntaxException {
+      ddy $$4 = $$2.a();
       if ($$3 > $$4.e()) {
          throw d.create($$3, $$4.e());
       } else {
          int $$5 = 0;
 
-         for (bvf $$6 : $$1) {
-            if ($$6 instanceof bwb) {
-               bwb $$7 = (bwb)$$6;
-               cxk $$8 = $$7.eX();
+         for (bvj $$6 : $$1) {
+            if ($$6 instanceof bwf) {
+               bwf $$7 = (bwf)$$6;
+               cxo $$8 = $$7.eX();
                if (!$$8.f()) {
-                  if ($$4.c($$8) && ddt.a(ddt.b($$8).a(), $$2)) {
+                  if ($$4.c($$8) && dea.a(dea.b($$8).a(), $$2)) {
                      $$8.a($$2, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {
@@ -66,9 +66,9 @@ public class aob {
             throw e.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> xv.a("commands.enchant.success.single", ddr.a($$2, $$3), $$1.iterator().next().p_()), true);
+               $$0.a(() -> xv.a("commands.enchant.success.single", ddy.a($$2, $$3), $$1.iterator().next().p_()), true);
             } else {
-               $$0.a(() -> xv.a("commands.enchant.success.multiple", ddr.a($$2, $$3), $$1.size()), true);
+               $$0.a(() -> xv.a("commands.enchant.success.multiple", ddy.a($$2, $$3), $$1.size()), true);
             }
 
             return $$5;

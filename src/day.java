@@ -1,33 +1,54 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record day(ju<bui> c) implements daw {
-   public static final MapCodec<day> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kf.a(mb.W).fieldOf("effects").forGetter(day::b)).apply($$0, day::new));
-   public static final zt<xg, day> b = zt.a(zr.c(mb.W), day::b, day::new);
+public record day(List<buo> c, float f) implements dba {
+   public static final MapCodec<day> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(buo.d.listOf().fieldOf("effects").forGetter(day::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(day::c))
+            .apply($$0, day::new)
+   );
+   public static final zt<xg, day> b = zt.a(buo.e.a(zr.a()), day::b, zr.l, day::c, day::new);
 
-   public day(jq<bui> $$0) {
-      this(ju.a($$0));
+   public day(buo $$0, float $$1) {
+      this(List.of($$0), $$1);
+   }
+
+   public day(List<buo> $$0) {
+      this($$0, 1.0F);
+   }
+
+   public day(buo $$0) {
+      this($$0, 1.0F);
    }
 
    @Override
-   public daw.a<day> a() {
-      return daw.a.b;
+   public dba.a<day> a() {
+      return dba.a.a;
    }
 
    @Override
-   public boolean a(dha $$0, cxk $$1, bwb $$2) {
-      boolean $$3 = false;
+   public boolean a(dhh $$0, cxo $$1, bwf $$2) {
+      if ($$2.dY().i() >= this.f) {
+         return false;
+      } else {
+         boolean $$3 = false;
 
-      for (jq<bui> $$4 : this.c) {
-         if ($$2.e($$4)) {
-            $$3 = true;
+         for (buo $$4 : this.c) {
+            if ($$2.a(new buo($$4))) {
+               $$3 = true;
+            }
          }
-      }
 
-      return $$3;
+         return $$3;
+      }
    }
 
-   public ju<bui> b() {
+   public List<buo> b() {
       return this.c;
+   }
+
+   public float c() {
+      return this.f;
    }
 }

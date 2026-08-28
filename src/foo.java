@@ -1,49 +1,50 @@
-public class foo extends fny {
-   private boolean a;
+public class foo extends foy {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-   public foo(int $$0, int $$1, fny.c $$2) {
-      super($$0, $$1, 20, 20, xv.c("narrator.button.difficulty_lock"), $$2, q);
+   public foo(int $$0, xv $$1, fno $$2) {
+      this($$0, $$1, $$2, 4);
+   }
+
+   public foo(int $$0, xv $$1, fno $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
+   }
+
+   public foo(int $$0, xv $$1, fno $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   protected yj aR_() {
-      return xu.a(super.aR_(), this.a() ? xv.c("narrator.button.difficulty_lock.locked") : xv.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.a = $$0;
+   protected void a(fsb $$0) {
+      $$0.a(fsa.a, this.z());
    }
 
    @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      foo.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? foo.a.c : foo.a.f;
-      } else if (this.B()) {
-         $$4 = this.a ? foo.a.b : foo.a.e;
-      } else {
-         $$4 = this.a ? foo.a.a : foo.a.d;
+   public void b(fnq $$0, int $$1, int $$2, float $$3) {
+      if (this.aN_() || this.b) {
+         int $$4 = this.D() - this.c;
+         int $$5 = this.E() - this.c;
+         int $$6 = this.y() + this.c * 2;
+         int $$7 = this.w() + this.c * 2;
+         int $$8 = this.b ? (this.aN_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
       }
 
-      $$0.a(glo::B, $$4.g, this.D(), this.E(), this.g, this.h);
+      super.b($$0, $$1, $$2, $$3);
    }
 
-   static enum a {
-      a(alz.b("widget/locked_button")),
-      b(alz.b("widget/locked_button_highlighted")),
-      c(alz.b("widget/locked_button_disabled")),
-      d(alz.b("widget/unlocked_button")),
-      e(alz.b("widget/unlocked_button_highlighted")),
-      f(alz.b("widget/unlocked_button_disabled"));
-
-      final alz g;
-
-      private a(final alz $$0) {
-         this.g = $$0;
-      }
+   @Override
+   public void a(hgl $$0) {
    }
 }

@@ -1,7 +1,4 @@
-import javax.annotation.Nullable;
-
-public class gzp extends gxo {
-   @Nullable
-   public hdg a;
-   public cxk b = cxk.k;
+public class gzp extends gyr {
+   public float a;
+   public int b = 1;
 }

@@ -1,23 +1,20 @@
-public class gqz<T extends cjv> extends gpz<T, gxk, gaz> {
-   public static final alz a = alz.b("textures/entity/horse/donkey.png");
-   public static final alz b = alz.b("textures/entity/horse/mule.png");
-   private final alz k;
+public class gqz extends gqi<cid, gyr, gba> {
+   private static final alz a = alz.b("textures/entity/cow/cow.png");
 
-   public gqz(grj.a $$0, float $$1, gef $$2, gef $$3, boolean $$4) {
-      super($$0, new gaz($$0.a($$2)), new gaz($$0.a($$3)), $$1);
-      this.k = $$4 ? b : a;
+   public gqz(gro.a $$0) {
+      super($$0, new gba($$0.a(gel.ac)), new gba($$0.a(gel.ad)), 0.7F);
    }
 
-   public alz a(gxk $$0) {
-      return this.k;
+   @Override
+   public alz b(gyr $$0) {
+      return a;
    }
 
-   public gxk a() {
-      return new gxk();
+   public gyr a() {
+      return new gyr();
    }
 
-   public void a(T $$0, gxk $$1, float $$2) {
+   public void a(cid $$0, gyr $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
    }
 }

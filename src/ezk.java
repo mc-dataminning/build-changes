@@ -1,17 +1,42 @@
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public interface ezk<T extends ezk<T>> {
-   T b(ezs.a var1);
+public class ezk extends ezn {
+   public static final MapCodec<ezk> a = a(ezk::new);
+   public static final Codec<ezk> b = b(ezk::new);
 
-   default <E> T a_(Iterable<E> $$0, Function<E, ezs.a> $$1) {
-      T $$2 = this.d();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   ezk(List<ezx> $$0) {
+      super($$0, ae.a($$0));
    }
 
-   T d();
+   public static ezk a(List<ezx> $$0) {
+      return new ezk(List.copyOf($$0));
+   }
+
+   @Override
+   public ezy b() {
+      return ezz.c;
+   }
+
+   public static ezk.a a(ezx.a... $$0) {
+      return new ezk.a($$0);
+   }
+
+   public static class a extends ezn.a {
+      public a(ezx.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public ezk.a and(ezx.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected ezx a(List<ezx> $$0) {
+         return new ezk($$0);
+      }
+   }
 }

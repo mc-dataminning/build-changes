@@ -1,43 +1,42 @@
-import org.joml.Quaternionf;
+public class gbc extends gbk<gxm> {
+   private final gem a;
+   private final gem b;
+   private final gem c;
+   private final gem d;
+   private final gem e;
+   private static final int f = 6;
 
-public class gbc extends gbf<gxl> {
-   private static final String e = "outer_glass";
-   private static final String f = "inner_glass";
-   private static final String g = "base";
-   private static final float i = (float)Math.sin(Math.PI / 4);
-   public final geh a;
-   public final geh b;
-   public final geh c;
-   public final geh d;
-
-   public gbc(geh $$0) {
+   public gbc(gem $$0) {
       super($$0);
-      this.a = $$0.b("base");
-      this.b = $$0.b("outer_glass");
-      this.c = this.b.b("inner_glass");
-      this.d = this.c.b("cube");
+      this.a = $$0.b("head");
+      this.c = $$0.b("right_hind_leg");
+      this.b = $$0.b("left_hind_leg");
+      this.e = $$0.b("right_front_leg");
+      this.d = $$0.b("left_front_leg");
    }
 
-   public static gen a() {
-      gep $$0 = new gep();
-      ger $$1 = $$0.a();
-      float $$2 = 0.875F;
-      gem $$3 = gem.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-      ger $$4 = $$1.a("outer_glass", $$3, gej.a(0.0F, 24.0F, 0.0F));
-      ger $$5 = $$4.a("inner_glass", $$3, gej.a.a(0.875F));
-      $$5.a("cube", gem.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gej.a.a(0.765625F));
-      $$1.a("base", gem.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gej.a);
-      return gen.a($$0, 64, 32);
+   public static ges a(geq $$0) {
+      geu $$1 = new geu();
+      gew $$2 = $$1.a();
+      $$2.a("head", ger.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), geo.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", ger.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), geo.a(0.0F, 6.0F, 0.0F));
+      ger $$3 = ger.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, geo.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, geo.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, geo.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, geo.a(2.0F, 18.0F, -4.0F));
+      return ges.a($$1, 64, 32);
    }
 
-   public void a(gxl $$0) {
+   public void a(gxm $$0) {
       super.a($$0);
-      this.a.k = $$0.a;
-      float $$1 = $$0.p * 3.0F;
-      float $$2 = grd.a($$0.p) * 16.0F;
-      this.b.c += $$2 / 2.0F;
-      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
-      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
-      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+      this.a.f = $$0.U * (float) (Math.PI / 180.0);
+      this.a.e = $$0.V * (float) (Math.PI / 180.0);
+      float $$1 = $$0.Y;
+      float $$2 = $$0.X;
+      this.b.e = bae.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.c.e = bae.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.d.e = bae.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.e.e = bae.b($$2 * 0.6662F) * 1.4F * $$1;
    }
 }

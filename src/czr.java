@@ -1,3 +1,7 @@
-public interface czr {
-   void a(dha var1, bwb var2, cxk var3, czq var4);
+import java.util.List;
+
+public interface czr<T, C> {
+   List<asz<T>> a();
+
+   C a(List<asz<T>> var1);
 }

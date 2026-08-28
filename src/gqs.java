@@ -1,21 +1,22 @@
-public class gqs extends gqd<chx, gxf, gat> {
-   private static final alz a = alz.b("textures/entity/chicken.png");
+public class gqs extends gqg<cmg, gxg> {
+   private static final alz a = alz.b("textures/entity/skeleton/bogged.png");
+   private static final alz b = alz.b("textures/entity/skeleton/bogged_overlay.png");
 
-   public gqs(grj.a $$0) {
-      super($$0, new gat($$0.a(geg.U)), new gat($$0.a(geg.V)), 0.3F);
+   public gqs(gro.a $$0) {
+      super($$0, gel.D, gel.E, new gas($$0.a(gel.C)));
+      this.a(new gwg<>(this, $$0.f(), gel.F, b));
    }
 
-   public alz a(gxf $$0) {
+   public alz a(gxg $$0) {
       return a;
    }
 
-   public gxf a() {
-      return new gxf();
+   public gxg a() {
+      return new gxg();
    }
 
-   public void a(chx $$0, gxf $$1, float $$2) {
+   public void a(cmg $$0, gxg $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = bae.h($$2, $$0.cd, $$0.bZ);
-      $$1.b = bae.h($$2, $$0.cb, $$0.ca);
+      $$1.a = $$0.gp();
    }
 }

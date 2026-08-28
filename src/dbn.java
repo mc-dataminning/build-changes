@@ -1,30 +1,96 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+public class dbn extends dbt {
+   public dbn(dbq $$0) {
+      super($$0);
+   }
 
-public enum dbn implements bba {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+   public boolean a(dbr $$0, dhh $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   public static final Codec<dbn> e = bba.a(dbn::values);
-   public static final IntFunction<dbn> f = ayv.a(dbn::a, values(), ayv.a.a);
-   public static final zt<ByteBuf, dbn> g = zr.a(f, dbn::a);
-   private final String h;
-   private final int i;
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxo $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.a(cxs.uP)) {
+                  if ($$3) {
+                     return false;
+                  }
 
-   private dbn(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(cxs.uO)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public cxo a(dbr $$0, js.a $$1) {
+      int $$2 = 0;
+      cxo $$3 = cxo.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxo $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(cxs.uP)) {
+               if (!$$3.f()) {
+                  return cxo.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cxs.uO)) {
+                  return cxo.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      daw $$6 = $$3.a(ku.T);
+      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
+         daw $$7 = $$6.b();
+         if ($$7 == null) {
+            return cxo.k;
+         } else {
+            cxo $$8 = $$3.c($$2);
+            $$8.b(ku.T, $$7);
+            return $$8;
+         }
+      } else {
+         return cxo.k;
+      }
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public jz<cxo> a(dbr $$0) {
+      jz<cxo> $$1 = jz.a($$0.a(), cxo.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cxo $$3 = $$0.a($$2);
+         cxo $$4 = $$3.h().k();
+         if (!$$4.f()) {
+            $$1.set($$2, $$4);
+         } else if ($$3.h() instanceof czk) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
+      }
+
+      return $$1;
    }
 
-   private int a() {
-      return this.i;
+   @Override
+   public dcn<dbn> a() {
+      return dcn.d;
    }
 }

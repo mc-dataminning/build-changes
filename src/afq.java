@@ -3,7 +3,7 @@ public class afq implements aac<acr> {
    private final double b;
    private final double c;
 
-   public afq(dzd $$0) {
+   public afq(dzk $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
    }

@@ -10,7 +10,7 @@ public class asl extends aro {
    private final int d;
    private final String e;
 
-   public asl(brz<Runnable> $$0, Executor $$1, int $$2) {
+   public asl(bsd<Runnable> $$0, Executor $$1, int $$2) {
       super($$0, $$1);
       this.d = $$2;
       this.e = $$0.A_();
@@ -35,6 +35,6 @@ public class asl extends aro {
 
    @VisibleForTesting
    public String d() {
-      return this.e + "=[" + this.c.stream().map($$0 -> $$0 + ":" + new dgg($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
+      return this.e + "=[" + this.c.stream().map($$0 -> $$0 + ":" + new dgn($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
    }
 }

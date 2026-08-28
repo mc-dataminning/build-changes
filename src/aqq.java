@@ -11,7 +11,7 @@ public class aqq implements aqr {
          @Override
          public aqr a(CommandContext<ew> $$0x) throws CommandSyntaxException {
             jh $$1 = gs.a($$0, $$0 + "Pos");
-            dup $$2 = ((ew)$$0.getSource()).e().c_($$1);
+            duw $$2 = ((ew)$$0.getSource()).e().c_($$1);
             if ($$2 == null) {
                throw aqq.b.create();
             } else {
@@ -24,17 +24,17 @@ public class aqq implements aqr {
             return $$0.then(ex.a("block").then($$1.apply(ex.a($$0 + "Pos", gs.a()))));
          }
       };
-   private final dup c;
+   private final duw c;
    private final jh d;
 
-   public aqq(dup $$0, jh $$1) {
+   public aqq(duw $$0, jh $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    @Override
    public void a(ux $$0) {
-      dxn $$1 = this.c.i().a_(this.d);
+      dxu $$1 = this.c.i().a_(this.d);
       this.c.c($$0, this.c.i().K_());
       this.c.e();
       this.c.i().a(this.d, $$1, $$1, 3);

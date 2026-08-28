@@ -1,5 +1,3 @@
-import java.util.List;
-
-public interface fdl<T> {
-   List<fdj<T>> a(long var1);
+public interface fdl<T> extends fdr<T> {
+   boolean b(jh var1, T var2);
 }

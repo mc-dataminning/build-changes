@@ -1,92 +1,118 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
 
-public class dby {
-   public static final dby a = new dby(List.of(), List.of(), List.of());
-   private final List<dbv> b;
-   private final List<cpw.a<jq<cxg>>> c;
-   private final List<Optional<dby.a>> d;
+public class dby extends dbt {
+   private static final Map<cxk, dad.a> c = Map.of(
+      cxs.uM,
+      dad.a.b,
+      cxs.pP,
+      dad.a.e,
+      cxs.sW,
+      dad.a.c,
+      cxs.vb,
+      dad.a.d,
+      cxs.vc,
+      dad.a.d,
+      cxs.vf,
+      dad.a.d,
+      cxs.vd,
+      dad.a.d,
+      cxs.vg,
+      dad.a.d,
+      cxs.ve,
+      dad.a.d,
+      cxs.vh,
+      dad.a.d
+   );
+   private static final dbz d = dbz.a(cxs.oV);
+   private static final dbz e = dbz.a(cxs.rM);
+   private static final dbz f = dbz.a(cxs.pQ);
 
-   private dby(List<dbv> $$0, List<cpw.a<jq<cxg>>> $$1, List<Optional<dby.a>> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public dby(dbq $$0) {
+      super($$0);
    }
 
-   public static cpw.a<jq<cxg>> a(dbv $$0) {
-      return cpx.a($$0.a().stream());
-   }
-
-   public static dby b(dbv $$0) {
-      if ($$0.a().isEmpty()) {
-         return a;
+   public boolean a(dbr $$0, dhh $$1) {
+      if ($$0.e() < 2) {
+         return false;
       } else {
-         cpw.a<jq<cxg>> $$1 = a($$0);
-         dby.a $$2 = new dby.a(0);
-         return new dby(List.of($$0), List.of($$1), List.of(Optional.of($$2)));
-      }
-   }
+         boolean $$2 = false;
+         boolean $$3 = false;
+         boolean $$4 = false;
+         boolean $$5 = false;
+         boolean $$6 = false;
 
-   public static dby a(List<Optional<dbv>> $$0) {
-      int $$1 = $$0.size();
-      List<dbv> $$2 = new ArrayList<>($$1);
-      List<cpw.a<jq<cxg>>> $$3 = new ArrayList<>($$1);
-      List<Optional<dby.a>> $$4 = new ArrayList<>($$1);
-      int $$5 = 0;
+         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
+            cxo $$8 = $$0.a($$7);
+            if (!$$8.f()) {
+               if (c.containsKey($$8.h())) {
+                  if ($$4) {
+                     return false;
+                  }
 
-      for (Optional<dbv> $$6 : $$0) {
-         if ($$6.isPresent()) {
-            dbv $$7 = $$6.get();
-            if ($$7.a().isEmpty()) {
-               return a;
+                  $$4 = true;
+               } else if (e.a($$8)) {
+                  if ($$6) {
+                     return false;
+                  }
+
+                  $$6 = true;
+               } else if (d.a($$8)) {
+                  if ($$5) {
+                     return false;
+                  }
+
+                  $$5 = true;
+               } else if (f.a($$8)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$8.h() instanceof cwm)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
             }
+         }
 
-            $$2.add($$7);
-            $$3.add(a($$7));
-            $$4.add(Optional.of(new dby.a($$5++)));
-         } else {
-            $$4.add(Optional.empty());
+         return $$2 && $$3;
+      }
+   }
+
+   public cxo a(dbr $$0, js.a $$1) {
+      dad.a $$2 = dad.a.a;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      IntList $$5 = new IntArrayList();
+
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cxo $$7 = $$0.a($$6);
+         if (!$$7.f()) {
+            dad.a $$8 = c.get($$7.h());
+            if ($$8 != null) {
+               $$2 = $$8;
+            } else if (e.a($$7)) {
+               $$3 = true;
+            } else if (d.a($$7)) {
+               $$4 = true;
+            } else if ($$7.h() instanceof cwm $$9) {
+               $$5.add($$9.b().f());
+            }
          }
       }
 
-      return new dby($$2, $$3, $$4);
+      cxo $$10 = new cxo(cxs.vl);
+      $$10.b(ku.ae, new dad($$2, $$5, IntList.of(), $$4, $$3));
+      return $$10;
    }
 
-   public static dby b(List<dbv> $$0) {
-      int $$1 = $$0.size();
-      List<cpw.a<jq<cxg>>> $$2 = new ArrayList<>($$1);
-      List<Optional<dby.a>> $$3 = new ArrayList<>($$1);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         dbv $$5 = $$0.get($$4);
-         if ($$5.a().isEmpty()) {
-            return a;
-         }
-
-         $$2.add(a($$5));
-         $$3.add(Optional.of(new dby.a($$4)));
-      }
-
-      return new dby($$0, $$2, $$3);
-   }
-
-   public List<Optional<dby.a>> a() {
-      return this.d;
-   }
-
-   public List<dbv> b() {
-      return this.b;
-   }
-
-   public List<cpw.a<jq<cxg>>> c() {
-      return this.c;
-   }
-
-   public boolean d() {
-      return this.d.isEmpty();
-   }
-
-   public static record a(int a) {
+   @Override
+   public dcn<dby> a() {
+      return dcn.h;
    }
 }

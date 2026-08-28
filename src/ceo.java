@@ -1,32 +1,41 @@
-public class ceo extends cdj {
-   private final cnl b;
-   private int c;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public ceo(cnl $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class ceo<T extends bwh> extends cdd {
+   private final T a;
+   private final cxo b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final axe d;
+
+   public ceo(T $$0, cxo $$1, @Nullable axe $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
+   }
+
+   @Override
+   public boolean b() {
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.fx();
    }
 
    @Override
    public void d() {
-      super.d();
-      this.c = 0;
+      this.a.a(bvr.a, this.b.v());
+      this.a.c(bth.a);
    }
 
    @Override
    public void e() {
-      super.e();
-      this.b.w(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.w(true);
-      } else {
-         this.b.w(false);
+      this.a.a(bvr.a, cxo.k);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
       }
    }
 }

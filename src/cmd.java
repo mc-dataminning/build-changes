@@ -1,44 +1,50 @@
-import javax.annotation.Nullable;
-
-public class cmd extends cnd {
-   public cmd(bvm<? extends cmd> $$0, dha $$1) {
+public abstract class cmd extends crk {
+   protected cmd(bvq<? extends cmd> $$0, dhh $$1) {
       super($$0, $$1);
    }
 
-   public static bxi.a m() {
-      return cnd.p().a(bxj.s, 12.0);
+   @Override
+   protected void B() {
+      super.B();
+   }
+
+   public cmd.a m() {
+      return cmd.a.a;
    }
 
    @Override
-   public boolean c(ash $$0, bvf $$1) {
-      if (super.c($$0, $$1)) {
-         if ($$1 instanceof bwb) {
-            int $$2 = 0;
-            if (this.dV().al() == btb.c) {
-               $$2 = 7;
-            } else if (this.dV().al() == btb.d) {
-               $$2 = 15;
-            }
+   public boolean c(bwf $$0) {
+      return $$0 instanceof cpd && $$0.e_() ? false : super.c($$0);
+   }
 
-            if ($$2 > 0) {
-               ((bwb)$$1).b(new buk(bum.s, $$2 * 20, 0), this);
-            }
-         }
-
+   @Override
+   protected boolean t(bvj $$0) {
+      if (super.t($$0)) {
          return true;
       } else {
-         return false;
+         return !$$0.aq().a(axy.z) ? false : this.cr() == null && $$0.cr() == null;
       }
    }
 
-   @Nullable
-   @Override
-   public bwu a(dhr $$0, btc $$1, bvl $$2, @Nullable bwu $$3) {
-      return $$3;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
    }
 
-   @Override
-   public fbs l(bvf $$0) {
-      return $$0.dq() <= this.dq() ? new fbs(0.0, 0.21875 * (double)this.ej(), 0.0) : super.l($$0);
+   protected class b extends cdv {
+      public b(final crk $$1) {
+         super($$1, false);
+      }
+
+      @Override
+      public boolean b() {
+         return super.b() && cmd.this.gC();
+      }
    }
 }

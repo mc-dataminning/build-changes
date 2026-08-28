@@ -13,7 +13,7 @@ public class nc implements mh {
    @Override
    public CompletableFuture<?> a(mf $$0) {
       JsonObject $$1 = new JsonObject();
-      ma.aB.c().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((kd)$$1x.a())));
+      ma.aC.c().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((kd)$$1x.a())));
       Path $$2 = this.d.a(mj.b.c).resolve("registries.json");
       return mh.a($$0, $$1, $$2);
    }
@@ -25,7 +25,7 @@ public class nc implements mh {
          $$1.addProperty("default", $$2.toString());
       }
 
-      int $$3 = ma.aB.a($$0);
+      int $$3 = ma.aC.a($$0);
       $$1.addProperty("protocol_id", $$3);
       JsonObject $$4 = new JsonObject();
       $$0.c().forEach($$2 -> {

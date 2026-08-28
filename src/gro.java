@@ -1,38 +1,72 @@
-public class gro extends gri<clv, gxt> {
-   private final gmh a;
+@FunctionalInterface
+public interface gro<T extends bvj> {
+   grn<T, ?> create(gro.a var1);
 
-   public gro(grj.a $$0) {
-      super($$0);
-      this.f = 0.5F;
-      this.a = $$0.d();
-   }
+   public static class a {
+      private final grm a;
+      private final gsm b;
+      private final gli c;
+      private final gmm d;
+      private final avv e;
+      private final gei f;
+      private final hdq g;
+      private final fno h;
+      private final gvn i;
 
-   public boolean a(clv $$0, gov $$1, double $$2, double $$3, double $$4) {
-      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.p() != $$0.dV().a_($$0.dv());
-   }
-
-   public void a(gxt $$0, fgl $$1, gle $$2, int $$3) {
-      dxn $$4 = $$0.c;
-      if ($$4.o() == dqn.c) {
-         $$1.a();
-         $$1.a(-0.5, 0.0, -0.5);
-         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(gkw.b($$4)), false, bam.a(), $$4.b($$0.a), hav.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
+      public a(grm $$0, gsm $$1, gli $$2, gmm $$3, avv $$4, gei $$5, hdq $$6, fno $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new gvn($$6, this.i().a(gme.g));
       }
-   }
 
-   public gxt a() {
-      return new gxt();
-   }
+      public grm a() {
+         return this.a;
+      }
 
-   public void a(clv $$0, gxt $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      jh $$3 = jh.a($$0.dA(), $$0.cR().e, $$0.dG());
-      $$1.a = $$0.l();
-      $$1.b = $$3;
-      $$1.c = $$0.p();
-      $$1.d = $$0.dV().t($$3);
-      $$1.e = $$0.dV();
+      public gsm b() {
+         return this.b;
+      }
+
+      public gli c() {
+         return this.c;
+      }
+
+      public gmm d() {
+         return this.d;
+      }
+
+      public avv e() {
+         return this.e;
+      }
+
+      public gei f() {
+         return this.f;
+      }
+
+      public hdq g() {
+         return this.g;
+      }
+
+      public gvn h() {
+         return this.i;
+      }
+
+      public hdy i() {
+         return this.d.a().a();
+      }
+
+      public gem a(gek $$0) {
+         return this.f.a($$0);
+      }
+
+      public fno j() {
+         return this.h;
+      }
    }
 }

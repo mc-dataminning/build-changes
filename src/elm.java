@@ -1,71 +1,75 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public abstract class elm {
-   public static final Codec<elm> h = ma.X.q().dispatch(elm::a, eln::a);
+public class elm extends elt {
+   public static final MapCodec<elm> a = ela.a.fieldOf("provider").xmap(elm::new, $$0 -> $$0.b);
+   private final ela b;
 
-   protected abstract eln<?> a();
+   public elm(ela $$0) {
+      this.b = $$0;
+   }
 
-   public abstract void a(elm.a var1);
+   @Override
+   protected elu<?> a() {
+      return elu.g;
+   }
 
-   public static final class a {
-      private final dhg a;
-      private final BiConsumer<jh, dxn> b;
-      private final bam c;
-      private final ObjectArrayList<jh> d;
-      private final ObjectArrayList<jh> e;
-      private final ObjectArrayList<jh> f;
-
-      public a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, Set<jh> $$3, Set<jh> $$4, Set<jh> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(kl::v));
-         this.e.sort(Comparator.comparingInt(kl::v));
-         this.f.sort(Comparator.comparingInt(kl::v));
+   @Override
+   public void a(elt.a $$0) {
+      List<jh> $$1 = Lists.newArrayList();
+      List<jh> $$2 = $$0.e();
+      List<jh> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
       }
 
-      public void a(jh $$0, dye $$1) {
-         this.a($$0, dkg.ft.m().b($$1, Boolean.valueOf(true)));
-      }
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.h().f());
+            this.a($$0, $$1x.g(2).f());
+            this.a($$0, $$1x.h().e(2));
+            this.a($$0, $$1x.g(2).e(2));
 
-      public void a(jh $$0, dxn $$1) {
-         this.b.accept($$0, $$1);
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
+            }
+         });
       }
+   }
 
-      public boolean a(jh $$0) {
-         return this.a.a($$0, dxm.a::l);
+   private void a(elt.a $$0, jh $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
       }
+   }
 
-      public boolean a(jh $$0, Predicate<dxn> $$1) {
-         return this.a.a($$0, $$1);
-      }
+   private void b(elt.a $$0, jh $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         jh $$3 = $$1.b($$2);
+         if (egv.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
 
-      public dhg a() {
-         return this.a;
-      }
-
-      public bam b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<jh> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<jh> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<jh> e() {
-         return this.f;
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
       }
    }
 }

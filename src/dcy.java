@@ -1,31 +1,26 @@
-import java.util.List;
+import java.util.Optional;
 
-public class dcy extends dcq {
-   public dcy(String $$0, dbv $$1, cxk $$2) {
-      super($$0, $$1, $$2);
+public interface dcy extends dcd<dcz> {
+   @Override
+   default dco<dcy> b() {
+      return dco.g;
    }
 
    @Override
-   public dcj<dcy> b() {
-      return dcj.f;
+   dcn<? extends dcy> a();
+
+   default boolean a(dcz $$0, dhh $$1) {
+      return dbz.a(this.c(), $$0.c()) && dbz.a(this.f(), $$0.d()) && dbz.a(this.k(), $$0.e());
    }
+
+   Optional<dbz> c();
+
+   Optional<dbz> f();
+
+   Optional<dbz> k();
 
    @Override
-   public dci<dcy> a() {
-      return dci.s;
-   }
-
-   @Override
-   public List<ddc> g() {
-      return List.of(new ddl(this.c(), new ddi.d(cxo.xh)));
-   }
-
-   public ddi c() {
-      return new ddi.e(this.l());
-   }
-
-   @Override
-   public dbi h() {
-      return dbi.k;
+   default dcg h() {
+      return dcf.l;
    }
 }

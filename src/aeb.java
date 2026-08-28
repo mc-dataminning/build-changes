@@ -1,7 +1,7 @@
 public record aeb(int b, float c) implements aac<acr> {
    public static final zt<ws, aeb> a = aac.a(aeb::a, aeb::new);
 
-   public aeb(bwb $$0) {
+   public aeb(bwf $$0) {
       this($$0.ar(), $$0.eJ());
    }
 

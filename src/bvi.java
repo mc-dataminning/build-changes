@@ -1,43 +1,60 @@
-public record bvi(float a, float b, float c, bvh d, boolean e) {
-   private bvi(float $$0, float $$1, boolean $$2) {
-      this($$0, $$1, c($$1), bvh.a($$0, $$1), $$2);
+public class bvi {
+   private static final float a = (float) (Math.PI / 12);
+   private static final float b = (float) (-Math.PI / 12);
+   private float c;
+   private float d;
+   private float e;
+   private float f;
+   private float g;
+   private float h;
+   private final bwf i;
+
+   public bvi(bwf $$0) {
+      this.i = $$0;
    }
 
-   private static float c(float $$0) {
-      return $$0 * 0.85F;
+   public void a() {
+      this.f = this.c;
+      this.g = this.d;
+      this.h = this.e;
+      float $$3;
+      float $$4;
+      float $$5;
+      if (this.i.fH()) {
+         float $$0 = 1.0F;
+         fbx $$1 = this.i.dy();
+         if ($$1.e < 0.0) {
+            fbx $$2 = $$1.d();
+            $$0 = 1.0F - (float)Math.pow(-$$2.e, 1.5);
+         }
+
+         $$3 = bae.h($$0, (float) (Math.PI / 12), (float) (Math.PI / 9));
+         $$4 = bae.h($$0, (float) (-Math.PI / 12), (float) (-Math.PI / 2));
+         $$5 = 0.0F;
+      } else if (this.i.ci()) {
+         $$3 = (float) (Math.PI * 2.0 / 9.0);
+         $$4 = (float) (-Math.PI / 4);
+         $$5 = 0.08726646F;
+      } else {
+         $$3 = (float) (Math.PI / 12);
+         $$4 = (float) (-Math.PI / 12);
+         $$5 = 0.0F;
+      }
+
+      this.c = this.c + ($$3 - this.c) * 0.3F;
+      this.d = this.d + ($$5 - this.d) * 0.3F;
+      this.e = this.e + ($$4 - this.e) * 0.3F;
    }
 
-   public fbn a(fbs $$0) {
-      return this.a($$0.d, $$0.e, $$0.f);
+   public float a(float $$0) {
+      return bae.h($$0, this.f, this.c);
    }
 
-   public fbn a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new fbn($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
+   public float b(float $$0) {
+      return bae.h($$0, this.g, this.d);
    }
 
-   public bvi a(float $$0) {
-      return this.a($$0, $$0);
-   }
-
-   public bvi a(float $$0, float $$1) {
-      return !this.e && ($$0 != 1.0F || $$1 != 1.0F) ? new bvi(this.a * $$0, this.b * $$1, this.c * $$1, this.d.a($$0, $$1, $$0), false) : this;
-   }
-
-   public static bvi b(float $$0, float $$1) {
-      return new bvi($$0, $$1, false);
-   }
-
-   public static bvi c(float $$0, float $$1) {
-      return new bvi($$0, $$1, true);
-   }
-
-   public bvi b(float $$0) {
-      return new bvi(this.a, this.b, $$0, this.d, this.e);
-   }
-
-   public bvi a(bvh.a $$0) {
-      return new bvi(this.a, this.b, this.c, $$0.a(this.a, this.b), this.e);
+   public float c(float $$0) {
+      return bae.h($$0, this.h, this.e);
    }
 }

@@ -1,44 +1,31 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Function;
 
-public record deq(kl d, Optional<eep> e, ekt f, Optional<jq<ecj>> g) implements dei {
-   public static final MapCodec<deq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kl.f.optionalFieldOf("offset", kl.g).forGetter(deq::b),
-               eep.b.optionalFieldOf("predicate").forGetter(deq::c),
-               ekt.a.fieldOf("block_state").forGetter(deq::d),
-               ecj.aj.optionalFieldOf("trigger_game_event").forGetter(deq::e)
-            )
-            .apply($$0, deq::new)
-   );
+public interface deq {
+   Codec<deq> c = ma.av.q().dispatch(deq::a, Function.identity());
 
-   @Override
-   public void a(ash $$0, int $$1, ddq $$2, bvf $$3, fbs $$4) {
-      jh $$5 = jh.a((ka)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dY(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
-      }
+   static MapCodec<? extends deq> b(kd<MapCodec<? extends deq>> $$0) {
+      kd.a($$0, "all_of", dej.b.a);
+      kd.a($$0, "apply_mob_effect", dek.a);
+      kd.a($$0, "attribute", deo.a);
+      kd.a($$0, "change_item_damage", del.a);
+      kd.a($$0, "damage_entity", dem.a);
+      kd.a($$0, "explode", des.a);
+      kd.a($$0, "ignite", det.a);
+      kd.a($$0, "play_sound", dev.a);
+      kd.a($$0, "replace_block", dex.a);
+      kd.a($$0, "replace_disk", dey.a);
+      kd.a($$0, "run_function", dez.a);
+      kd.a($$0, "set_block_properties", dfa.a);
+      kd.a($$0, "spawn_particles", dfc.a);
+      return kd.a($$0, "summon_entity", dfd.a);
    }
 
-   @Override
-   public MapCodec<deq> a() {
-      return a;
+   void a(ash var1, int var2, ddx var3, bvj var4, fbx var5, boolean var6);
+
+   default void a(ddx $$0, bvj $$1, fbx $$2, int $$3) {
    }
 
-   public kl b() {
-      return this.d;
-   }
-
-   public Optional<eep> c() {
-      return this.e;
-   }
-
-   public ekt d() {
-      return this.f;
-   }
-
-   public Optional<jq<ecj>> e() {
-      return this.g;
-   }
+   MapCodec<? extends deq> a();
 }

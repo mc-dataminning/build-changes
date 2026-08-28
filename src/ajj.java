@@ -27,7 +27,7 @@ public class ajj implements aac<ahm> {
    }
 
    @Nullable
-   public bvf a(ash $$0) {
+   public bvj a(ash $$0) {
       return $$0.a(this.b);
    }
 }

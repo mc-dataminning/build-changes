@@ -1,148 +1,43 @@
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dmc extends dke implements dri {
-   public static final dye a = dpu.b;
-   public static final dye b = dpu.c;
-   public static final dye c = dpu.d;
-   public static final dye d = dpu.e;
-   public static final dye e = dyd.D;
-   protected static final Map<jm, dye> f = dpu.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ae.a());
-   protected final fcm[] g;
-   protected final fcm[] h;
-   private final Object2IntMap<dxn> i = new Object2IntOpenHashMap();
+public class dmc extends djt {
+   public static final MapCodec<dmc> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmb.a.forGetter($$0x -> $$0x.c), t()).apply($$0, dmc::new));
+   private final dkl c;
 
-   protected dmc(float $$0, float $$1, float $$2, float $$3, float $$4, dxm.d $$5) {
-      super($$5);
-      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
-      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
-      UnmodifiableIterator var7 = this.F.a().iterator();
+   @Override
+   public MapCodec<dmc> a() {
+      return b;
+   }
 
-      while (var7.hasNext()) {
-         dxn $$6 = (dxn)var7.next();
-         this.h($$6);
+   protected dmc(dkl $$0, dxt.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
+
+   @Override
+   protected void b(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
+   }
+
+   @Override
+   protected void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.m().b(d, Boolean.valueOf(false)), 2);
       }
    }
 
    @Override
-   protected abstract MapCodec<? extends dmc> a();
-
-   protected fcm[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
-      float $$5 = 8.0F - $$0;
-      float $$6 = 8.0F + $$0;
-      float $$7 = 8.0F - $$1;
-      float $$8 = 8.0F + $$1;
-      fcm $$9 = dke.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
-      fcm $$10 = dke.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
-      fcm $$11 = dke.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
-      fcm $$12 = dke.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
-      fcm $$13 = dke.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
-      fcm $$14 = fcj.a($$10, $$13);
-      fcm $$15 = fcj.a($$11, $$12);
-      fcm[] $$16 = new fcm[]{
-         fcj.a(),
-         $$11,
-         $$12,
-         $$15,
-         $$10,
-         fcj.a($$11, $$10),
-         fcj.a($$12, $$10),
-         fcj.a($$15, $$10),
-         $$13,
-         fcj.a($$11, $$13),
-         fcj.a($$12, $$13),
-         fcj.a($$15, $$13),
-         $$14,
-         fcj.a($$11, $$14),
-         fcj.a($$12, $$14),
-         fcj.a($$15, $$14)
-      };
-
-      for (int $$17 = 0; $$17 < 16; $$17++) {
-         $$16[$$17] = fcj.a($$9, $$16[$$17]);
-      }
-
-      return $$16;
-   }
-
-   @Override
-   protected boolean e_(dxn $$0) {
-      return !$$0.c(e);
-   }
-
-   @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return this.h[this.h($$0)];
-   }
-
-   @Override
-   protected fcm b(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return this.g[this.h($$0)];
-   }
-
-   private static int a(jm $$0) {
-      return 1 << $$0.e();
-   }
-
-   protected int h(dxn $$0) {
-      return this.i.computeIntIfAbsent($$0, $$0x -> {
-         int $$1 = 0;
-         if ($$0x.c(a)) {
-            $$1 |= a(jm.c);
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if ($$4 == jm.a && !$$0.a($$1, $$3)) {
+         return dkn.a.m();
+      } else {
+         this.a($$0, $$1, $$2, $$7, $$3);
+         if ($$0.c(d)) {
+            $$2.a($$3, etx.c, etx.c.a($$1));
          }
 
-         if ($$0x.c(b)) {
-            $$1 |= a(jm.f);
-         }
-
-         if ($$0x.c(c)) {
-            $$1 |= a(jm.d);
-         }
-
-         if ($$0x.c(d)) {
-            $$1 |= a(jm.e);
-         }
-
-         return $$1;
-      });
-   }
-
-   @Override
-   protected etp b_(dxn $$0) {
-      return $$0.c(e) ? etq.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dxn $$0, eue $$1) {
-      return false;
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dqu $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
-         case d:
-            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
-         case b:
-            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dpd $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
-         case c:
-            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
-         default:
-            return super.a($$0, $$1);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

@@ -1,7 +1,6 @@
-import javax.annotation.Nullable;
-
-public class gxl extends gxo {
-   public boolean a = true;
-   @Nullable
-   public fbs b;
+public class gxl extends gyr {
+   public bvb a = new bvb();
+   public bvb b = new bvb();
+   public boolean c;
+   public boolean d;
 }

@@ -1,28 +1,14 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
 
-public class bcy extends DataFix {
+public class bcy extends bhr {
    public bcy(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "BlockEntityShulkerBoxColorFix", biw.s, "minecraft:shulker_box");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bis.C);
-      Type<?> $$1 = this.getOutputSchema().getType(bis.C);
-      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bis.C.typeName(), DSL.or(DSL.intType(), bkg.a()));
-      Type<Pair<String, String>> $$3 = DSL.named(bis.C.typeName(), bkg.a());
-      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
-         return this.fixTypeEverywhere(
-            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bdb::a, $$0xxxx -> bdb.a(bkg.a($$0xxxx))))
-         );
-      } else {
-         throw new IllegalStateException("Expected and actual types don't match.");
-      }
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.remove("Color"));
    }
 }

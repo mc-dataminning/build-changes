@@ -1,26 +1,27 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface esd<P extends esb> {
-   Codec<esb> a = ma.af.q().dispatch("processor_type", esb::a, esd::codec);
-   Codec<esc> b = a.listOf().xmap(esc::new, esc::a);
-   Codec<esc> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<jq<esc>> d = alv.a(mb.aU, c);
-   esd<erf> e = a("block_ignore", erf.a);
-   esd<erh> f = a("block_rot", erh.a);
-   esd<erk> g = a("gravity", erk.a);
-   esd<erl> h = a("jigsaw_replacement", erl.a);
-   esd<erx> i = a("rule", erx.a);
-   esd<erp> j = a("nop", erp.a);
-   esd<ere> k = a("block_age", ere.a);
-   esd<erd> l = a("blackstone_replace", erd.a);
-   esd<erm> m = a("lava_submerged_block", erm.a);
-   esd<eru> n = a("protected_blocks", eru.b);
-   esd<erj> o = a("capped", erj.a);
+public class esd extends esf {
+   public static final MapCodec<esd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dxu.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, esd::new)
+   );
+   private final dxu b;
+   private final float d;
 
-   MapCodec<P> codec();
+   public esd(dxu $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
 
-   static <P extends esb> esd<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.af, $$0, () -> $$1);
+   @Override
+   public boolean a(dxu $$0, bam $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
+   }
+
+   @Override
+   protected esg<?> a() {
+      return esg.f;
    }
 }

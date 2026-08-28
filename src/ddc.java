@@ -1,20 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-
-public interface ddc {
-   Codec<ddc> d = ma.az.q().dispatch(ddc::a, ddc.a::a);
-   zt<xg, ddc> e = zr.a(mb.aF).b(ddc::a, ddc.a::b);
-
-   ddi d();
-
-   ddi e();
-
-   ddc.a<? extends ddc> a();
-
-   default boolean a(cso $$0) {
-      return this.d().a($$0) && this.e().a($$0);
+public class ddc extends dbj {
+   public ddc(String $$0, dbp $$1, dbz $$2, cxo $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static record a<T extends ddc>(MapCodec<T> a, zt<xg, T> b) {
+   @Override
+   protected cxk f() {
+      return cxs.xb;
+   }
+
+   @Override
+   public dco<ddc> b() {
+      return dco.d;
+   }
+
+   @Override
+   public dcn<ddc> a() {
+      return dcn.q;
+   }
+
+   @Override
+   public dcg h() {
+      return dcf.j;
    }
 }

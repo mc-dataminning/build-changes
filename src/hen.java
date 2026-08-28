@@ -1,15 +1,8 @@
-public class hen extends heo {
-   public hen(cht $$0) {
-      super($$0, axf.bR, axg.g);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected hek o() {
-      return new hem(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.ad_();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hen {
 }

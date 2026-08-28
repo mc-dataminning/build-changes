@@ -1,30 +1,15 @@
-public class gtr<T extends cnd> extends gsp<T, gym, gdg> {
-   private static final alz a = alz.b("textures/entity/spider/spider.png");
+public class gtr extends gqg<cne, gzo> {
+   private static final alz a = alz.b("textures/entity/skeleton/skeleton.png");
 
-   public gtr(grj.a $$0) {
-      this($$0, geg.cR);
+   public gtr(gro.a $$0) {
+      super($$0, gel.cF, gel.cI, gel.cJ);
    }
 
-   public gtr(grj.a $$0, gef $$1) {
-      super($$0, new gdg($$0.a($$1)), 0.8F);
-      this.a(new gwe<>(this));
-   }
-
-   @Override
-   protected float aX_() {
-      return 180.0F;
-   }
-
-   @Override
-   public alz b(gym $$0) {
+   public alz b(gzo $$0) {
       return a;
    }
 
-   public gym b() {
-      return new gym();
-   }
-
-   public void a(T $$0, gym $$1, float $$2) {
-      super.a($$0, $$1, $$2);
+   public gzo b() {
+      return new gzo();
    }
 }

@@ -1,31 +1,27 @@
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface bot<S, T> {
-   Optional<T> a(bos<S> var1);
+public class bot<S> {
+   private final Map<bor<?>, box<S, ?>> a = new HashMap<>();
 
-   static <S, T> bot<S, T> a(bow<S> $$0, bot.a<S, T> $$1) {
-      return new bot.c<>($$1, $$0);
-   }
-
-   static <S, T> bot<S, T> a(bow<S> $$0, bot.b<T> $$1) {
-      return new bot.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
-   }
-
-   @FunctionalInterface
-   public interface a<S, T> {
-      Optional<T> run(bos<S> var1, bou var2);
-   }
-
-   @FunctionalInterface
-   public interface b<T> {
-      T run(bou var1);
-   }
-
-   public static record c<S, T>(bot.a<S, T> a, bow<S> b) implements bot<S, T> {
-      @Override
-      public Optional<T> a(bos<S> $$0) {
-         bou $$1 = new bou();
-         return this.b.a($$0, $$1, boo.a) ? this.a.run($$0, $$1) : Optional.empty();
+   public <T> void a(bor<T> $$0, box<S, T> $$1) {
+      box<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalArgumentException("Trying to override rule: " + $$0);
       }
+   }
+
+   public <T> void a(bor<T> $$0, bpa<S> $$1, box.a<S, T> $$2) {
+      this.a($$0, box.a($$1, $$2));
+   }
+
+   public <T> void a(bor<T> $$0, bpa<S> $$1, box.b<T> $$2) {
+      this.a($$0, box.a($$1, $$2));
+   }
+
+   @Nullable
+   public <T> box<S, T> a(bor<T> $$0) {
+      return (box<S, T>)this.a.get($$0);
    }
 }

@@ -1,70 +1,82 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public record edq(int g, int h, int i, int j) {
-   public static final Codec<edq> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(ebi.e, ebi.d).fieldOf("min_y").forGetter(edq::c),
-                  Codec.intRange(0, ebi.c).fieldOf("height").forGetter(edq::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(edq::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(edq::f)
-               )
-               .apply($$0, edq::new)
-      )
-      .comapFlatMap(edq::a, Function.identity());
-   protected static final edq b = a(-64, 384, 1, 2);
-   protected static final edq c = a(0, 128, 1, 2);
-   protected static final edq d = a(0, 128, 2, 1);
-   protected static final edq e = a(-64, 192, 1, 2);
-   protected static final edq f = a(0, 256, 2, 1);
+public class edq implements ede {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final edr i = new edr(this);
 
-   private static DataResult<edq> a(edq $$0) {
-      if ($$0.c() + $$0.d() > ebi.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (ebi.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
+   public edq(long $$0) {
+      this.b($$0);
+   }
+
+   @Override
+   public bam d() {
+      return new edq(this.g());
+   }
+
+   @Override
+   public eec e() {
+      return new edq.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw bbd.a("LegacyRandomSource", null);
       } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+         this.i.a();
       }
    }
 
-   public static edq a(int $$0, int $$1, int $$2, int $$3) {
-      edq $$4 = new edq($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw bbd.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
    }
 
-   public int a() {
-      return kb.c(this.f());
+   @Override
+   public double k() {
+      return this.i.b();
    }
 
-   public int b() {
-      return kb.c(this.e());
-   }
+   public static class a implements eec {
+      private final long a;
 
-   public edq a(dhc $$0) {
-      int $$1 = Math.max(this.g, $$0.L_());
-      int $$2 = Math.min(this.g + this.h, $$0.am() + 1) - $$1;
-      return new edq($$1, $$2, this.i, this.j);
-   }
+      public a(long $$0) {
+         this.a = $$0;
+      }
 
-   public int c() {
-      return this.g;
-   }
+      @Override
+      public bam a(int $$0, int $$1, int $$2) {
+         long $$3 = bae.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new edq($$4);
+      }
 
-   public int d() {
-      return this.h;
-   }
+      @Override
+      public bam a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new edq((long)$$1 ^ this.a);
+      }
 
-   public int e() {
-      return this.i;
-   }
+      @Override
+      public bam a(long $$0) {
+         return new edq($$0);
+      }
 
-   public int f() {
-      return this.j;
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

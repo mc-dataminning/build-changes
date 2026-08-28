@@ -1,38 +1,28 @@
-import javax.annotation.Nullable;
+public class gvx extends gwd<gys, gcc> {
+   private final gcc a;
+   private final gcc b;
+   private final gvn c;
 
-public class gvx<S extends gyz, M extends gbf<S> & gab & gbo> extends gvq<S, M> {
-   private final gsh a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
-
-   public gvx(gtg<S, M> $$0, gsh $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+   public gvx(gtl<gys, gcc> $$0, gei $$1, gvn $$2) {
+      super($$0);
+      this.c = $$2;
+      this.a = new gcc($$1.a(gel.bs));
+      this.b = new gcc($$1.a(gel.br));
    }
 
-   protected void a(S $$0, @Nullable hdg $$1, cxk $$2, cxi $$3, bvv $$4, fgl $$5, gle $$6, int $$7) {
-      if ($$1 != null) {
-         btd $$8 = $$4 == $$0.ap ? btd.a : btd.b;
-         if ($$0.M && $$0.H == $$8 && $$0.C < 1.0E-5F && $$2.a(cxo.rL)) {
-            this.a($$1, $$2, $$4, $$5, $$6, $$7);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         }
+   public void a(fgq $$0, glj $$1, int $$2, gys $$3, float $$4, float $$5) {
+      cxo $$6 = $$3.c;
+      dft $$7 = $$6.a(ku.D);
+      if ($$7 != null && $$7.c().isPresent()) {
+         this.a($$0, $$1, $$3, $$6, $$7.c().get(), $$2);
+      } else if ($$3.d) {
+         this.a($$0, $$1, $$3, cxo.k, dfs.k, $$2);
       }
    }
 
-   private void a(hdg $$0, cxk $$1, bvv $$2, fgl $$3, gle $$4, int $$5) {
-      $$3.a();
-      this.d().e().a($$3);
-      geh $$6 = this.d().b();
-      float $$7 = $$6.e;
-      $$6.e = bae.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      gvc.a($$3, gvc.a.a);
-      boolean $$8 = $$2 == bvv.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$1, cxi.f, false, $$3, $$4, $$5, hav.d, $$0);
-      $$3.b();
+   private void a(fgq $$0, glj $$1, gys $$2, cxo $$3, alz $$4, int $$5) {
+      gcc $$6 = $$2.ae ? this.b : this.a;
+      $$6.a($$2);
+      this.c.a(dfr.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
    }
 }

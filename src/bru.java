@@ -1,13 +1,67 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.Executor;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bru extends brs<Runnable> {
-   public bru(Executor $$0, String $$1) {
-      super(new bry.b(new ConcurrentLinkedQueue<>()), $$0, $$1);
+public class bru<E extends brs> {
+   private final int a;
+   private final ImmutableList<E> b;
+
+   bru(List<? extends E> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+      this.a = brt.a($$0);
+   }
+
+   public static <E extends brs> bru<E> c() {
+      return new bru<>(ImmutableList.of());
+   }
+
+   @SafeVarargs
+   public static <E extends brs> bru<E> a(E... $$0) {
+      return new bru<>(ImmutableList.copyOf($$0));
+   }
+
+   public static <E extends brs> bru<E> a(List<E> $$0) {
+      return new bru<>($$0);
+   }
+
+   public boolean d() {
+      return this.b.isEmpty();
+   }
+
+   public Optional<E> b(bam $$0) {
+      if (this.a == 0) {
+         return Optional.empty();
+      } else {
+         int $$1 = $$0.a(this.a);
+         return brt.a(this.b, $$1);
+      }
+   }
+
+   public List<E> e() {
+      return this.b;
+   }
+
+   public static <E extends brs> Codec<bru<E>> c(Codec<E> $$0) {
+      return $$0.listOf().xmap(bru::a, bru::e);
    }
 
    @Override
-   public Runnable f(Runnable $$0) {
-      return $$0;
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bru<?> $$1 = (bru<?>)$$0;
+         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
    }
 }

@@ -1,12 +1,12 @@
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.google.gson.JsonObject;
 
-public record hcz(Map<String, hcm> d) {
-   public static final Codec<String> a = Codec.string(1, 16);
-   public static final Codec<hcz> b = Codec.unboundedMap(a, hcm.a).xmap(hcz::new, hcz::a);
-   public static final auu<hcz> c = auu.a("language", b);
+public class hcz implements aut<hcy> {
+   public hcy b(JsonObject $$0) {
+      return new hcy(hcy.a.a(azu.a($$0, "hat", "none")));
+   }
 
-   public Map<String, hcm> a() {
-      return this.d;
+   @Override
+   public String a() {
+      return "villager";
    }
 }

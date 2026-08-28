@@ -1,34 +1,73 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public interface frc {
-   MapCodec<frc> b = frd.f.dispatchMap(frc::a, frd::a);
+public enum frc implements feo {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   frd a();
+   final ffq c;
 
-   Either<frc.b, frc.c> b();
+   private static ffq a(int $$0, int $$1, frc.a $$2) {
+      ffq $$3 = new ffq(ffq.a.a, $$0, $$1, false);
 
-   public static record a(frc b, fqq.a c) {
-      public static final Codec<frc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(frc.b.forGetter(frc.a::a), fqq.a.a.optionalFieldOf("filter", fqq.a.b).forGetter(frc.a::b)).apply($$0, frc.a::new)
-      );
-
-      public frc a() {
-         return this.b;
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
       }
 
-      public fqq.a b() {
-         return this.c;
-      }
+      $$3.i();
+      return $$3;
    }
 
-   public interface b {
-      fek load(avv var1) throws IOException;
+   private frc(final Supplier<ffq> $$0) {
+      this.c = $$0.get();
    }
 
-   public static record c(alz a) {
+   @Override
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
+   }
+
+   @Override
+   public fra bake(Function<feq, fra> $$0) {
+      return $$0.apply(new feq() {
+         @Override
+         public int a() {
+            return frc.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return frc.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            frc.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

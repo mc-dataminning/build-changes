@@ -1,9 +1,9 @@
 import java.util.Set;
 
-public record afb(int b, bwo c, Set<bwp> d) implements aac<acr> {
-   public static final zt<ws, afb> a = zt.a(zr.h, afb::b, bwo.a, afb::e, bwp.m, afb::f, afb::new);
+public record afb(int b, bws c, Set<bwt> d) implements aac<acr> {
+   public static final zt<ws, afb> a = zt.a(zr.h, afb::b, bws.a, afb::e, bwt.m, afb::f, afb::new);
 
-   public static afb a(int $$0, bwo $$1, Set<bwp> $$2) {
+   public static afb a(int $$0, bws $$1, Set<bwt> $$2) {
       return new afb($$0, $$1, $$2);
    }
 
@@ -16,11 +16,11 @@ public record afb(int b, bwo c, Set<bwp> d) implements aac<acr> {
       $$0.a(this);
    }
 
-   public bwo e() {
+   public bws e() {
       return this.c;
    }
 
-   public Set<bwp> f() {
+   public Set<bwt> f() {
       return this.d;
    }
 }

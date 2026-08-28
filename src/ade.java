@@ -1,15 +1,15 @@
 public class ade implements aac<acr> {
    public static final zt<ws, ade> a = aac.a(ade::a, ade::new);
-   private final btb b;
+   private final btf b;
    private final boolean c;
 
-   public ade(btb $$0, boolean $$1) {
+   public ade(btf $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private ade(ws $$0) {
-      this.b = btb.a($$0.readUnsignedByte());
+      this.b = btf.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class ade implements aac<acr> {
       return this.c;
    }
 
-   public btb e() {
+   public btf e() {
       return this.b;
    }
 }

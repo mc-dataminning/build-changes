@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
-public record afi(int b, jq<bui> c) implements aac<acr> {
-   public static final zt<xg, afi> a = zt.a(zr.h, afi::b, bui.b, afi::e, afi::new);
+public record afi(int b, jq<bum> c) implements aac<acr> {
+   public static final zt<xg, afi> a = zt.a(zr.h, afi::b, bum.b, afi::e, afi::new);
 
    @Override
    public aae<afi> a() {
@@ -13,11 +13,11 @@ public record afi(int b, jq<bui> c) implements aac<acr> {
    }
 
    @Nullable
-   public bvf a(dha $$0) {
+   public bvj a(dhh $$0) {
       return $$0.a(this.b);
    }
 
-   public jq<bui> e() {
+   public jq<bum> e() {
       return this.c;
    }
 }

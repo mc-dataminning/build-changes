@@ -1,21 +1,103 @@
-class buc extends bui {
-   protected buc(buj $$0, int $$1) {
-      super($$0, $$1);
-   }
+public interface buc {
+   aly<bub> a = aly.a(mb.s, alz.b("in_fire"));
+   aly<bub> b = aly.a(mb.s, alz.b("campfire"));
+   aly<bub> c = aly.a(mb.s, alz.b("lightning_bolt"));
+   aly<bub> d = aly.a(mb.s, alz.b("on_fire"));
+   aly<bub> e = aly.a(mb.s, alz.b("lava"));
+   aly<bub> f = aly.a(mb.s, alz.b("hot_floor"));
+   aly<bub> g = aly.a(mb.s, alz.b("in_wall"));
+   aly<bub> h = aly.a(mb.s, alz.b("cramming"));
+   aly<bub> i = aly.a(mb.s, alz.b("drown"));
+   aly<bub> j = aly.a(mb.s, alz.b("starve"));
+   aly<bub> k = aly.a(mb.s, alz.b("cactus"));
+   aly<bub> l = aly.a(mb.s, alz.b("fall"));
+   aly<bub> m = aly.a(mb.s, alz.b("ender_pearl"));
+   aly<bub> n = aly.a(mb.s, alz.b("fly_into_wall"));
+   aly<bub> o = aly.a(mb.s, alz.b("out_of_world"));
+   aly<bub> p = aly.a(mb.s, alz.b("generic"));
+   aly<bub> q = aly.a(mb.s, alz.b("magic"));
+   aly<bub> r = aly.a(mb.s, alz.b("wither"));
+   aly<bub> s = aly.a(mb.s, alz.b("dragon_breath"));
+   aly<bub> t = aly.a(mb.s, alz.b("dry_out"));
+   aly<bub> u = aly.a(mb.s, alz.b("sweet_berry_bush"));
+   aly<bub> v = aly.a(mb.s, alz.b("freeze"));
+   aly<bub> w = aly.a(mb.s, alz.b("stalagmite"));
+   aly<bub> x = aly.a(mb.s, alz.b("falling_block"));
+   aly<bub> y = aly.a(mb.s, alz.b("falling_anvil"));
+   aly<bub> z = aly.a(mb.s, alz.b("falling_stalactite"));
+   aly<bub> A = aly.a(mb.s, alz.b("sting"));
+   aly<bub> B = aly.a(mb.s, alz.b("mob_attack"));
+   aly<bub> C = aly.a(mb.s, alz.b("mob_attack_no_aggro"));
+   aly<bub> D = aly.a(mb.s, alz.b("player_attack"));
+   aly<bub> E = aly.a(mb.s, alz.b("arrow"));
+   aly<bub> F = aly.a(mb.s, alz.b("trident"));
+   aly<bub> G = aly.a(mb.s, alz.b("mob_projectile"));
+   aly<bub> H = aly.a(mb.s, alz.b("spit"));
+   aly<bub> I = aly.a(mb.s, alz.b("wind_charge"));
+   aly<bub> J = aly.a(mb.s, alz.b("fireworks"));
+   aly<bub> K = aly.a(mb.s, alz.b("fireball"));
+   aly<bub> L = aly.a(mb.s, alz.b("unattributed_fireball"));
+   aly<bub> M = aly.a(mb.s, alz.b("wither_skull"));
+   aly<bub> N = aly.a(mb.s, alz.b("thrown"));
+   aly<bub> O = aly.a(mb.s, alz.b("indirect_magic"));
+   aly<bub> P = aly.a(mb.s, alz.b("thorns"));
+   aly<bub> Q = aly.a(mb.s, alz.b("explosion"));
+   aly<bub> R = aly.a(mb.s, alz.b("player_explosion"));
+   aly<bub> S = aly.a(mb.s, alz.b("sonic_boom"));
+   aly<bub> T = aly.a(mb.s, alz.b("bad_respawn_point"));
+   aly<bub> U = aly.a(mb.s, alz.b("outside_border"));
+   aly<bub> V = aly.a(mb.s, alz.b("generic_kill"));
+   aly<bub> W = aly.a(mb.s, alz.b("mace_smash"));
 
-   @Override
-   public boolean a(ash $$0, bwb $$1, int $$2) {
-      return $$1.fu() > 0.0F;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void a(bwb $$0, int $$1) {
-      super.a($$0, $$1);
-      $$0.E(Math.max($$0.fu(), (float)(4 * (1 + $$1))));
+   static void a(rk<bub> $$0) {
+      $$0.a(a, new bub("inFire", 0.1F, btx.d));
+      $$0.a(b, new bub("inFire", 0.1F, btx.d));
+      $$0.a(c, new bub("lightningBolt", 0.1F));
+      $$0.a(d, new bub("onFire", 0.0F, btx.d));
+      $$0.a(e, new bub("lava", 0.1F, btx.d));
+      $$0.a(f, new bub("hotFloor", 0.1F, btx.d));
+      $$0.a(g, new bub("inWall", 0.0F));
+      $$0.a(h, new bub("cramming", 0.0F));
+      $$0.a(i, new bub("drown", 0.0F, btx.c));
+      $$0.a(j, new bub("starve", 0.0F));
+      $$0.a(k, new bub("cactus", 0.1F));
+      $$0.a(l, new bub("fall", bty.b, 0.0F, btx.a, bud.b));
+      $$0.a(m, new bub("fall", bty.b, 0.0F, btx.a, bud.b));
+      $$0.a(n, new bub("flyIntoWall", 0.0F));
+      $$0.a(o, new bub("outOfWorld", 0.0F));
+      $$0.a(p, new bub("generic", 0.0F));
+      $$0.a(q, new bub("magic", 0.0F));
+      $$0.a(r, new bub("wither", 0.0F));
+      $$0.a(s, new bub("dragonBreath", 0.0F));
+      $$0.a(t, new bub("dryout", 0.1F));
+      $$0.a(u, new bub("sweetBerryBush", 0.1F, btx.e));
+      $$0.a(v, new bub("freeze", 0.0F, btx.f));
+      $$0.a(w, new bub("stalagmite", 0.0F));
+      $$0.a(x, new bub("fallingBlock", 0.1F));
+      $$0.a(y, new bub("anvil", 0.1F));
+      $$0.a(z, new bub("fallingStalactite", 0.1F));
+      $$0.a(A, new bub("sting", 0.1F));
+      $$0.a(B, new bub("mob", 0.1F));
+      $$0.a(C, new bub("mob", 0.1F));
+      $$0.a(D, new bub("player", 0.1F));
+      $$0.a(E, new bub("arrow", 0.1F));
+      $$0.a(F, new bub("trident", 0.1F));
+      $$0.a(G, new bub("mob", 0.1F));
+      $$0.a(H, new bub("mob", 0.1F));
+      $$0.a(J, new bub("fireworks", 0.1F));
+      $$0.a(L, new bub("onFire", 0.1F, btx.d));
+      $$0.a(K, new bub("fireball", 0.1F, btx.d));
+      $$0.a(M, new bub("witherSkull", 0.1F));
+      $$0.a(N, new bub("thrown", 0.1F));
+      $$0.a(O, new bub("indirectMagic", 0.0F));
+      $$0.a(P, new bub("thorns", 0.1F, btx.b));
+      $$0.a(Q, new bub("explosion", bty.c, 0.1F));
+      $$0.a(R, new bub("explosion.player", bty.c, 0.1F));
+      $$0.a(S, new bub("sonic_boom", bty.c, 0.0F));
+      $$0.a(T, new bub("badRespawnPoint", bty.c, 0.1F, btx.a, bud.c));
+      $$0.a(U, new bub("outsideBorder", 0.0F));
+      $$0.a(V, new bub("genericKill", 0.0F));
+      $$0.a(I, new bub("mob", 0.1F));
+      $$0.a(W, new bub("mace_smash", 0.1F));
    }
 }

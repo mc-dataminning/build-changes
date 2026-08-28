@@ -1,128 +1,99 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dpp extends dke {
-   public static final MapCodec<dpp> a = b(dpp::new);
-   public static final dyk<dyn> b = dyd.bg;
-   public static final dye c = dyd.x;
-   public static final dym d = dyd.aS;
-   public static final int e = 3;
+public class dpp extends dkv implements dko {
+   public static final MapCodec<dpp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aly.a(mb.aL).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, dpp::new)
+   );
+   protected static final float b = 3.0F;
+   protected static final fcr c = dkl.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final aly<egh<?, ?>> d;
 
    @Override
    public MapCodec<dpp> a() {
       return a;
    }
 
-   public dpp(dxm.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, dyn.a).b(d, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
-   }
-
-   private dxn b(dhd $$0, jh $$1, dxn $$2) {
-      dyn $$3 = $$0.a_($$1.d()).E();
-      if ($$3.e()) {
-         return $$2.b(b, $$3);
-      } else {
-         dyn $$4 = $$0.a_($$1.e()).E();
-         dyn $$5 = $$4.e() ? dyn.a : $$4;
-         return $$2.b(b, $$5);
-      }
+   public dpp(aly<egh<?, ?>> $$0, dxt.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   public dxn a(dbb $$0) {
-      return this.b($$0.q(), $$0.a(), this.m());
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return c;
    }
 
    @Override
-   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
-      boolean $$8 = $$4.o() == jm.a.b;
-      return $$8 ? this.b($$1, $$3, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
 
-   @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dke $$3, @Nullable eux $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      if ($$6 != $$0.c(c)) {
-         if ($$6) {
-            this.a(null, $$0, $$1, $$2);
+         for (jh $$6 : jh.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
          }
 
-         $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)), 3);
-      }
-   }
+         jh $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
 
-   private void a(@Nullable bvf $$0, dxn $$1, dha $$2, jh $$3) {
-      if ($$1.c(b).e() || $$2.a_($$3.d()).l()) {
-         $$2.a($$3, this, 0, 0);
-         $$2.a($$0, ecj.H, $$3);
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.u($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.u($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
    }
 
    @Override
-   protected bte a(cxk $$0, dxn $$1, dha $$2, jh $$3, cps $$4, btd $$5, fbo $$6) {
-      return (bte)($$0.a(ayd.by) && $$6.c() == jm.b ? bte.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6));
+   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
+      return $$0.s();
    }
 
    @Override
-   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
-      if (!$$1.C) {
-         $$0 = $$0.a(d);
-         $$1.a($$2, $$0, 3);
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(axp.ag);
-      }
-
-      return bte.a;
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      jh $$3 = $$2.e();
+      dxu $$4 = $$1.a_($$3);
+      return $$4.a(axu.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
    }
 
-   @Override
-   protected void a_(dxn $$0, dha $$1, jh $$2, cps $$3) {
-      if (!$$1.C) {
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(axp.af);
-      }
-   }
-
-   public static float b(int $$0) {
-      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
-   }
-
-   @Override
-   protected boolean a(dxn $$0, dha $$1, jh $$2, int $$3, int $$4) {
-      dyn $$5 = $$0.c(b);
-      float $$7;
-      if ($$5.b()) {
-         int $$6 = $$0.c(d);
-         $$7 = b($$6);
-         $$1.a(ls.ab, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
+   public boolean a(ash $$0, jh $$1, dxu $$2, bam $$3) {
+      Optional<? extends jq<egh<?, ?>>> $$4 = $$0.K_().e(mb.aL).a(this.d);
+      if ($$4.isEmpty()) {
+         return false;
       } else {
-         $$7 = 1.0F;
-      }
-
-      jq<axe> $$10;
-      if ($$5.d()) {
-         alz $$9 = this.a($$1, $$2);
-         if ($$9 == null) {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
             return false;
          }
-
-         $$10 = jq.a(axe.a($$9));
-      } else {
-         $$10 = $$5.a();
       }
+   }
 
-      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, axg.c, 3.0F, $$7, $$1.A.g());
+   @Override
+   public boolean b(dhk $$0, jh $$1, dxu $$2) {
       return true;
    }
 
-   @Nullable
-   private alz a(dha $$0, jh $$1) {
-      return $$0.c_($$1.d()) instanceof dwe $$2 ? $$2.d() : null;
+   @Override
+   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(b, c, d);
+   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

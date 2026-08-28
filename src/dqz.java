@@ -1,55 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dqz extends djq {
+public class dqz extends dkv {
    public static final MapCodec<dqz> a = b(dqz::new);
-   public static final dye b = dyd.F;
-   private final bsj c = bsg.a(5);
+   protected static final float b = 6.0F;
+   protected static final fcr c = dkl.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dqz> a() {
       return a;
    }
 
-   public dqz(dxm.d $$0) {
+   protected dqz(dxt.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(b);
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dup a(jh $$0, dxn $$1) {
-      return new dvy($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dup> duq<T> a(dha $$0, dxn $$1, dur<T> $$2) {
-      return $$0.C ? null : a($$2, dur.L, dvy::a);
-   }
-
-   @Override
-   protected dqn a_(dxn $$0) {
-      return dqn.c;
-   }
-
-   @Override
-   protected void a(dxn $$0, ash $$1, jh $$2, cxk $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
-      }
+   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
+      return $$0.a(axu.aO) || $$0.a(dkn.ek) || super.b($$0, $$1, $$2);
    }
 }

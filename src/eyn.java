@@ -1,56 +1,29 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
 
-public class eyn extends exu {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<eyn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(fap.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
-            .apply($$0, eyn::new)
-   );
-   private final fao c;
-   private final boolean d;
+public class eyn extends eyb {
+   public static final MapCodec<eyn> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(vv.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, eyn::new));
+   private final ux b;
 
-   private eyn(List<ezs> $$0, fao $$1, boolean $$2) {
+   private eyn(List<ezx> $$0, ux $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   public exw<eyn> b() {
-      return exx.n;
+   public eyd<eyn> b() {
+      return eye.j;
    }
 
    @Override
-   public Set<eza<?>> a() {
-      return this.c.a();
-   }
-
-   @Override
-   public cxk a(cxk $$0, ewh $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - bae.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(bae.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
-      }
-
+   public cxo a(cxo $$0, ewo $$1) {
+      czx.a(ku.b, $$0, $$0x -> $$0x.a(this.b));
       return $$0;
    }
 
-   public static exu.a<?> a(fao $$0) {
-      return a($$1 -> new eyn($$1, $$0, false));
-   }
-
-   public static exu.a<?> a(fao $$0, boolean $$1) {
-      return a($$2 -> new eyn($$2, $$0, $$1));
+   @Deprecated
+   public static eyb.a<?> a(ux $$0) {
+      return a($$1 -> new eyn($$1, $$0));
    }
 }

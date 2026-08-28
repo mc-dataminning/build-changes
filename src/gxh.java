@@ -1,4 +1,7 @@
-public class gxh extends gym {
-   public float a;
-   public boolean b;
+public class gxh extends gyr {
+   public final bvb a = new bvb();
+   public final bvb b = new bvb();
+   public final bvb c = new bvb();
+   public final bvb d = new bvb();
+   public final bvb e = new bvb();
 }

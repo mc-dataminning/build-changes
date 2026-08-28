@@ -32,7 +32,7 @@ public abstract class avz<T> extends awa<Map<alz, T>> {
       this.d = $$2;
    }
 
-   protected Map<alz, T> a(avv $$0, bpo $$1) {
+   protected Map<alz, T> a(avv $$0, bps $$1) {
       Map<alz, T> $$2 = new HashMap<>();
       a($$0, this.d, this.b, this.c, $$2);
       return $$2;

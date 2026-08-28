@@ -1,51 +1,27 @@
-public class gvt extends gvy<gyr, gav> {
-   private final gmh a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gvt(gtg<gyr, gav> $$0, gmh $$1) {
+public class gvt extends gwd<gym, gbz> {
+   private static final Map<bvg.a, alz> a = ImmutableMap.of(
+      bvg.a.b,
+      alz.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bvg.a.c,
+      alz.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bvg.a.d,
+      alz.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gvt(gtl<gym, gbz> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, gyr $$3, float $$4, float $$5) {
-      if (!$$3.ae) {
-         boolean $$6 = $$3.aj && $$3.u;
-         if (!$$3.u || $$6) {
-            dxn $$7 = $$3.a.a();
-            int $$8 = gsk.a($$3, 0.0F);
-            hdg $$9 = this.a.a($$7);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
-            $$0.a();
-            this.d().b().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
-            $$0.b();
+   public void a(fgq $$0, glj $$1, int $$2, gym $$3, float $$4, float $$5) {
+      if (!$$3.u) {
+         bvg.a $$6 = $$3.c;
+         if ($$6 != bvg.a.a) {
+            alz $$7 = a.get($$6);
+            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
          }
-      }
-   }
-
-   private void a(fgl $$0, gle $$1, int $$2, boolean $$3, dxn $$4, int $$5, hdg $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(glo.r(hbd.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
       }
    }
 }

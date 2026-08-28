@@ -1,35 +1,49 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public record btf(cu d) {
-   public static final btf a = new btf(cu.a.a().b());
-   public static final Codec<btf> b = cu.a.xmap(btf::new, btf::a);
-   public static final String c = "lock";
+public enum btf implements bba {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
 
-   public boolean a(cxk $$0) {
-      return this.d.a($$0);
+   public static final bba.a<btf> e = bba.a(btf::values);
+   private static final IntFunction<btf> f = ayv.a(btf::a, values(), ayv.a.b);
+   private final int g;
+   private final String h;
+
+   private btf(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public void a(ux $$0, js.a $$1) {
-      if (this != a) {
-         DataResult<vu> $$2 = b.encode(this, $$1.a(vl.a), new ux());
-         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
-      }
+   public int a() {
+      return this.g;
    }
 
-   public static btf b(ux $$0, js.a $$1) {
-      if ($$0.b("lock", 10)) {
-         DataResult<Pair<btf, vu>> $$2 = b.decode($$1.a(vl.a), $$0.c("lock"));
-         if ($$2.isSuccess()) {
-            return (btf)((Pair)$$2.getOrThrow()).getFirst();
-         }
-      }
-
-      return a;
+   public xv b() {
+      return xv.c("options.difficulty." + this.h);
    }
 
-   public cu a() {
-      return this.d;
+   public xv d() {
+      return xv.c("options.difficulty." + this.h + ".info");
+   }
+
+   public static btf a(int $$0) {
+      return f.apply($$0);
+   }
+
+   @Nullable
+   public static btf a(String $$0) {
+      return e.a($$0);
+   }
+
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

@@ -1,7 +1,11 @@
 import javax.annotation.Nullable;
 
-public class gxn extends gye {
-   public boolean a;
+public abstract class gxn extends gxt {
    @Nullable
-   public dxn b;
+   public bvh.k b;
+   public float c;
+   public float d;
+   public float e;
+
+   public abstract boolean a();
 }

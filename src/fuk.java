@@ -1,121 +1,140 @@
-public class fuk extends fvi<cta> {
-   private static final alz G = alz.b("container/anvil/text_field");
-   private static final alz H = alz.b("container/anvil/text_field_disabled");
-   private static final alz I = alz.b("container/anvil/error");
-   private static final alz J = alz.b("textures/gui/container/anvil.png");
-   private static final xv K = xv.c("container.repair.expensive");
-   private foh L;
-   private final cps M;
+public abstract class fuk extends ftw {
+   private static final xv u = xv.c("advMode.setCommand");
+   private static final xv v = xv.c("advMode.command");
+   private static final xv w = xv.c("advMode.previousOutput");
+   protected fom a;
+   protected fom b;
+   protected fod c;
+   protected fod d;
+   protected fok<Boolean> s;
+   fog x;
 
-   public fuk(cta $$0, cpr $$1, xv $$2) {
-      super($$0, $$1, $$2, J);
-      this.M = $$1.k;
-      this.v = 60;
+   public fuk() {
+      super(flv.a);
    }
 
    @Override
-   protected void G() {
-      int $$0 = (this.n - this.s) / 2;
-      int $$1 = (this.o - this.u) / 2;
-      this.L = new foh(this.p, $$0 + 62, $$1 + 24, 103, 12, xv.c("container.repair"));
-      this.L.f(false);
-      this.L.g(-1);
-      this.L.h(-1);
-      this.L.d(false);
-      this.L.f(50);
-      this.L.b(this::a);
-      this.L.a("");
-      this.d(this.L);
-      this.L.e(this.z.b(0).h());
+   public void e() {
+      if (!this.l().j()) {
+         this.aP_();
+      }
+   }
+
+   abstract dgh l();
+
+   abstract int E();
+
+   @Override
+   protected void aT_() {
+      this.c = this.c(fod.a(xu.d, $$0x -> this.F()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
+      this.d = this.c(fod.a(xu.e, $$0x -> this.aP_()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.l().p();
+      this.s = this.c(fok.a(xv.b("O"), xv.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.E(), 20, 20, xv.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         dgh $$2 = this.l();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fom(this.p, this.n / 2 - 150, 50, 300, 20, xv.c("advMode.command")) {
+         @Override
+         protected yj aR_() {
+            return super.aR_().b(fuk.this.x.e());
+         }
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fom(this.p, this.n / 2 - 150, this.E(), 276, 20, xv.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.x = new fog(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.x.a(true);
+      this.x.d();
+      this.c($$0);
    }
 
    @Override
    protected void aG_() {
-      this.b(this.L);
+      this.b(this.a);
    }
 
    @Override
-   public void a(flz $$0, int $$1, int $$2) {
-      String $$3 = this.L.a();
+   protected xv z() {
+      return this.x.a() ? this.x.b() : super.z();
+   }
+
+   @Override
+   public void a(fme $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
       this.b($$0, $$1, $$2);
-      this.L.a($$3);
+      this.a.a($$3);
+      this.x.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.l().l().getString() : "-");
+   }
+
+   protected void F() {
+      dgh $$0 = this.l();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.m.a(null);
+   }
+
+   protected abstract void a(dgh var1);
+
+   private void a(String $$0) {
+      this.x.d();
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.t.p();
-      }
-
-      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
-   }
-
-   private void a(String $$0) {
-      cuu $$1 = this.z.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().b(ku.g) && $$0.equals($$1.g().y().getString())) {
-            $$2 = "";
-         }
-
-         if (this.z.a($$2)) {
-            this.m.t.i.b(new aiw($$2));
-         }
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
+      } else {
+         this.F();
+         return true;
       }
    }
 
    @Override
-   protected void b(fnl $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.z.m();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         xv $$5;
-         if ($$3 >= 40 && !this.m.t.gh().d) {
-            $$5 = K;
-            $$4 = 16736352;
-         } else if (!this.z.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = xv.a("container.repair.cost", $$3);
-            if (!this.z.b(2).a(this.M)) {
-               $$4 = 16736352;
-            }
-         }
-
-         if ($$5 != null) {
-            int $$8 = this.s - 8 - this.p.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
-            $$0.b(this.p, $$5, $$8, 69, $$4);
-         }
-      }
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(glo::B, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
-   }
-
-   @Override
-   public void d(fnl $$0, int $$1, int $$2, float $$3) {
-      this.L.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void c(fnl $$0, int $$1, int $$2) {
-      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
-         $$0.a(glo::B, I, $$1 + 99, $$2 + 45, 28, 21);
+      $$0.a(this.p, u, this.n / 2, 20, 16777215);
+      $$0.b(this.p, v, this.n / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.E() - 135;
+         $$0.b(this.p, w, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
       }
+
+      this.x.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(csx $$0, int $$1, cxk $$2) {
-      if ($$1 == 0) {
-         this.L.a($$2.f() ? "" : $$2.y().getString());
-         this.L.e(!$$2.f());
-         this.a(this.L);
-      }
+   public void b(fnq $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

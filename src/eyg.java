@@ -1,29 +1,41 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class eyg extends exu {
-   public static final MapCodec<eyg> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(vv.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, eyg::new));
-   private final ux b;
+public class eyg implements eyc {
+   public static final MapCodec<eyg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eye.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eyg::new)
+   );
+   public static final Codec<eyg> b = eye.b.listOf().xmap(eyg::new, $$0 -> $$0.c);
+   private final List<eyc> c;
+   private final BiFunction<cxo, ewo, cxo> d;
 
-   private eyg(List<ezs> $$0, ux $$1) {
-      super($$0);
-      this.b = $$1;
+   private eyg(List<eyc> $$0) {
+      this.c = $$0;
+      this.d = eye.a($$0);
+   }
+
+   public static eyg a(List<eyc> $$0) {
+      return new eyg(List.copyOf($$0));
+   }
+
+   public cxo a(cxo $$0, ewo $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public exw<eyg> b() {
-      return exx.j;
+   public void a(ewu $$0) {
+      eyc.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public cxk a(cxk $$0, ewh $$1) {
-      czt.a(ku.b, $$0, $$0x -> $$0x.a(this.b));
-      return $$0;
-   }
-
-   @Deprecated
-   public static exu.a<?> a(ux $$0) {
-      return a($$1 -> new eyg($$1, $$0));
+   public eyd<eyg> b() {
+      return eye.I;
    }
 }

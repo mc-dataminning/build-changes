@@ -1,177 +1,45 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public abstract class crq extends crp implements bvu, crw {
-   private static final int h = 27;
-   private jz<cxk> i = jz.a(27, cxk.k);
-   @Nullable
-   private aly<ewm> j;
-   private long k;
+public class crq {
+   private final crp a;
+   private final List<crq.a> b = Lists.newArrayList();
 
-   public crq(bvm<? extends crq> $$0, dha $$1, Supplier<cxg> $$2) {
-      super($$0, $$1, $$2);
+   public crq(crp $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected float s() {
-      return 0.15F;
+   public crq a(int $$0, crn $$1) {
+      this.b.add(new crq.a($$0, $$1));
+      return this;
    }
 
-   @Override
-   protected int t() {
-      return 1;
+   public crp a() {
+      this.b.stream().map(crq.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         crn $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
    }
 
-   @Override
-   protected void b(ux $$0) {
-      super.b($$0);
-      this.a($$0, this.dX());
-   }
+   static class a {
+      private final int a;
+      private final crn b;
 
-   @Override
-   protected void a(ux $$0) {
-      super.a($$0);
-      this.b($$0, this.dX());
-   }
-
-   @Override
-   public void a(ash $$0, btv $$1) {
-      this.a($$0, this.u());
-      this.a($$1, $$0, this);
-   }
-
-   @Override
-   public void a(bvf.c $$0) {
-      if (!this.dV().C && $$0.a()) {
-         bta.a(this.dV(), this, this);
+      public a(int $$0, crn $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      super.a($$0);
-   }
-
-   @Override
-   public bte a(cps $$0, btd $$1) {
-      if (!$$0.fW()) {
-         bte $$2 = super.a($$0, $$1);
-         if ($$2 != bte.e) {
-            return $$2;
-         }
+      public int a() {
+         return this.a;
       }
 
-      if (this.r($$0) && !$$0.fW()) {
-         return bte.e;
-      } else {
-         bte $$3 = this.b_($$0);
-         if ($$3.a() && $$0.dV() instanceof ash $$4) {
-            this.a(ecj.k, $$0);
-            coh.a($$4, $$0, true);
-         }
-
-         return $$3;
+      public crn b() {
+         return this.b;
       }
-   }
-
-   @Override
-   public void b(cps $$0) {
-      $$0.a(this);
-      if ($$0.dV() instanceof ash $$1) {
-         this.a(ecj.k, $$0);
-         coh.a($$1, $$0, true);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cxk a(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public cxk a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cxk b(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cxk $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bwt a_(int $$0) {
-      return this.h_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cps $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public csx createMenu(int $$0, cpr $$1, cps $$2) {
-      if (this.j != null && $$2.aa_()) {
-         return null;
-      } else {
-         this.e($$1.k);
-         return ctg.a($$0, $$1, this);
-      }
-   }
-
-   public void e(@Nullable cps $$0) {
-      this.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public aly<ewm> v() {
-      return this.j;
-   }
-
-   @Override
-   public void a(@Nullable aly<ewm> $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public long x() {
-      return this.k;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public jz<cxk> B() {
-      return this.i;
-   }
-
-   @Override
-   public void C() {
-      this.i = jz.a(this.b(), cxk.k);
-   }
-
-   @Override
-   public void c(cps $$0) {
-      this.dV().a(ecj.j, this.dt(), ecj.a.a($$0));
    }
 }

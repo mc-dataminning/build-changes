@@ -1,25 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efd implements eep {
+class efd extends efh {
+   private final ju<etv> e;
    public static final MapCodec<efd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", kl.g).forGetter($$0x -> $$0x.e), dxn.a.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, efd::new)
+      $$0 -> a($$0).and(kf.a(mb.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, efd::new)
    );
-   private final kl e;
-   private final dxn f;
 
-   protected efd(kl $$0, dxn $$1) {
-      this.e = $$0;
-      this.f = $$1;
-   }
-
-   public boolean a(dhy $$0, jh $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   public efd(kl $$0, ju<etv> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public eeq<?> a() {
-      return eeq.g;
+   protected boolean a(dxu $$0) {
+      return $$0.y().a(this.e);
+   }
+
+   @Override
+   public eex<?> a() {
+      return eex.c;
    }
 }

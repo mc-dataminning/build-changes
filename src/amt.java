@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class amt extends btn {
+public class amt extends btr {
    private long g = 0L;
    private long h = 0L;
    private long i = 0L;

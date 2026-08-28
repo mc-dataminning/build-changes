@@ -1,15 +1,22 @@
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class esb {
-   @Nullable
-   public ese.d a(dhd $$0, jh $$1, jh $$2, ese.d $$3, ese.d $$4, esa $$5) {
-      return $$4;
+public class esb extends esi {
+   public final ayk<dkl> a;
+   public static final MapCodec<esb> b = ayk.b(mb.f).xmap(esb::new, $$0 -> $$0.a).fieldOf("value");
+
+   public esb(ayk<dkl> $$0) {
+      this.a = $$0;
    }
 
-   protected abstract esd<?> a();
+   @Nullable
+   @Override
+   public esl.d a(dhk $$0, jh $$1, jh $$2, esl.d $$3, esl.d $$4, esh $$5) {
+      return egv.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
 
-   public List<ese.d> a(dhr $$0, jh $$1, jh $$2, List<ese.d> $$3, List<ese.d> $$4, esa $$5) {
-      return $$4;
+   @Override
+   protected esk<?> a() {
+      return esk.n;
    }
 }

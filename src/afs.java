@@ -2,7 +2,7 @@ public class afs implements aac<acr> {
    public static final zt<ws, afs> a = aac.a(afs::a, afs::new);
    private final double b;
 
-   public afs(dzd $$0) {
+   public afs(dzk $$0) {
       this.b = $$0.k();
    }
 

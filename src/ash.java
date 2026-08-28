@@ -36,97 +36,97 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ash extends dha implements asg, dhy {
+public class ash extends dhh implements asg, dif {
    public static final jh a = new jh(100, 50, 0);
-   public static final bsj b = bsp.a(12000, 180000);
-   public static final bsj c = bsp.a(12000, 24000);
-   private static final bsj E = bsp.a(12000, 180000);
-   public static final bsj d = bsp.a(3600, 15600);
+   public static final bsn b = bst.a(12000, 180000);
+   public static final bsn c = bst.a(12000, 24000);
+   private static final bsn E = bst.a(12000, 180000);
+   public static final bsn d = bst.a(3600, 15600);
    private static final Logger F = LogUtils.getLogger();
    private static final int G = 300;
    private static final int H = 65536;
    final List<asi> I = Lists.newArrayList();
    private final ase J;
    private final MinecraftServer K;
-   private final ewa L;
+   private final ewh L;
    private int M;
-   final ebw N = new ebw();
-   private final ecb<bvf> O;
-   private final eck P;
+   final ecd N = new ecd();
+   private final eci<bvj> O;
+   private final ecr P;
    public boolean e;
    private final awl Q;
    private int R;
-   private final eun S;
-   private final fdh<dke> T = new fdh<>(this::d);
-   private final fdh<eto> U = new fdh<>(this::d);
-   private final euh V = new euh();
-   final Set<bwd> W = new ObjectOpenHashSet();
+   private final euu S;
+   private final fdm<dkl> T = new fdm<>(this::d);
+   private final fdm<etv> U = new fdm<>(this::d);
+   private final euo V = new euo();
+   final Set<bwh> W = new ObjectOpenHashSet();
    volatile boolean X;
-   protected final crh f;
-   private final ObjectLinkedOpenHashSet<dge> Y = new ObjectLinkedOpenHashSet();
-   private final List<dge> Z = new ArrayList<>(64);
+   protected final crl f;
+   private final ObjectLinkedOpenHashSet<dgl> Y = new ObjectLinkedOpenHashSet();
+   private final List<dgl> Z = new ArrayList<>(64);
    private boolean aa;
-   private final List<dgm> ab;
+   private final List<dgt> ab;
    @Nullable
-   private ebl ac;
-   final Int2ObjectMap<ckm> ad = new Int2ObjectOpenHashMap();
-   private final dhw ae;
-   private final eod af;
+   private ebs ac;
+   final Int2ObjectMap<ckq> ad = new Int2ObjectOpenHashMap();
+   private final did ae;
+   private final eok af;
    private final boolean ag;
-   private final btj ah;
+   private final btn ah;
 
    public ash(
       MinecraftServer $$0,
       Executor $$1,
-      evv.c $$2,
-      ewa $$3,
-      aly<dha> $$4,
-      ebj $$5,
+      ewc.c $$2,
+      ewh $$3,
+      aly<dhh> $$4,
+      ebq $$5,
       asr $$6,
       boolean $$7,
       long $$8,
-      List<dgm> $$9,
+      List<dgt> $$9,
       boolean $$10,
-      @Nullable btj $$11
+      @Nullable btn $$11
    ) {
       super($$3, $$4, $$0.ba(), $$5.a(), false, $$7, $$8, $$0.bj());
       this.ag = $$10;
       this.K = $$0;
       this.ab = $$9;
       this.L = $$3;
-      dzj $$12 = $$5.b();
+      dzq $$12 = $$5.b();
       boolean $$13 = $$0.aX();
       DataFixer $$14 = $$0.aC();
-      ebt<bvf> $$15 = new eat(new ebe(new ebb($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, bbo.s), this, $$0);
-      this.O = new ecb<>(bvf.class, new ash.a(), $$15);
+      eca<bvj> $$15 = new eba(new ebl(new ebi($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, bbs.s), this, $$0);
+      this.O = new eci<>(bvj.class, new ash.a(), $$15);
       this.J = new ase(this, $$2, $$14, $$0.aY(), $$1, $$12, $$0.ag().p(), $$0.ag().q(), $$13, $$6, this.O::a, () -> $$0.J().v());
       this.J.h().b();
-      this.S = new eun(this);
+      this.S = new euu(this);
       this.X();
       this.aa();
       this.F_().a($$0.aw());
-      this.f = this.v().a(crh.a(this), crh.a(this.ag()));
+      this.f = this.v().a(crl.a(this), crl.a(this.ag()));
       if (!$$0.U()) {
          $$3.a($$0.u());
       }
 
       long $$16 = $$0.aZ().y().c();
-      this.af = new eod(this.J.m(), this.K_(), $$0.aY(), $$4, $$12, this.J.i(), this, $$12.d(), $$16, $$14);
-      this.ae = new dhw(this, $$0.aZ().y(), this.af);
-      if (this.ah() == dha.k && this.ag().a(ebg.c)) {
-         this.ac = new ebl(this, $$16, $$0.aZ().C());
+      this.af = new eok(this.J.m(), this.K_(), $$0.aY(), $$4, $$12, this.J.i(), this, $$12.d(), $$16, $$14);
+      this.ae = new did(this, $$0.aZ().y(), this.af);
+      if (this.ah() == dhh.k && this.ag().a(ebn.c)) {
+         this.ac = new ebs(this, $$16, $$0.aZ().C());
       } else {
          this.ac = null;
       }
 
       this.Q = new awl();
-      this.P = new eck(this);
-      this.ah = Objects.requireNonNullElseGet($$11, () -> this.v().a(btj.a($$16), "random_sequences"));
+      this.P = new ecr(this);
+      this.ah = Objects.requireNonNullElseGet($$11, () -> this.v().a(btn.a($$16), "random_sequences"));
    }
 
    @Deprecated
    @VisibleForTesting
-   public void a(@Nullable ebl $$0) {
+   public void a(@Nullable ebs $$0) {
       this.ac = $$0;
    }
 
@@ -139,18 +139,18 @@ public class ash extends dha implements asg, dhy {
    }
 
    @Override
-   public jq<dic> a(int $$0, int $$1, int $$2) {
+   public jq<dij> a(int $$0, int $$1, int $$2) {
       return this.m().g().d().getNoiseBiome($$0, $$1, $$2, this.m().i().b());
    }
 
-   public dhw b() {
+   public did b() {
       return this.ae;
    }
 
    public void a(BooleanSupplier $$0) {
-      bpo $$1 = bpn.a();
+      bps $$1 = bpr.a();
       this.aa = true;
-      btn $$2 = this.t();
+      btr $$2 = this.t();
       boolean $$3 = $$2.i();
       if ($$3) {
          $$1.a("world border");
@@ -160,15 +160,15 @@ public class ash extends dha implements asg, dhy {
          $$1.c();
       }
 
-      int $$4 = this.N().c(dgw.P);
+      int $$4 = this.N().c(dhd.Q);
       if (this.Q.a($$4) && this.Q.a($$4, this.I)) {
-         if (this.N().b(dgw.l)) {
+         if (this.N().b(dhd.l)) {
             long $$5 = this.B.d() + 24000L;
             this.b($$5 - $$5 % 24000L);
          }
 
          this.as();
-         if (this.N().b(dgw.v) && this.af()) {
+         if (this.N().b(dhd.w) && this.af()) {
             this.h();
          }
       }
@@ -222,7 +222,7 @@ public class ash extends dha implements asg, dhy {
                   $$2x.dH();
                   $$1.c();
                   if ($$2x instanceof asi || this.J.a.j().c($$2x.dx().a())) {
-                     bvf $$3x = $$2x.dk();
+                     bvj $$3x = $$2x.dk();
                      if ($$3x != null) {
                         if (!$$3x.dQ() && $$3x.y($$2x)) {
                            return;
@@ -256,10 +256,10 @@ public class ash extends dha implements asg, dhy {
       if (this.ag) {
          long $$0 = this.B.c() + 1L;
          this.L.a($$0);
-         bpn.a().a("scheduledFunctions");
+         bpr.a().a("scheduledFunctions");
          this.L.s().a(this.K, $$0);
-         bpn.a().c();
-         if (this.L.o().b(dgw.l)) {
+         bpr.a().c();
+         if (this.L.o().b(dhd.l)) {
             this.b(this.B.d() + 1L);
          }
       }
@@ -270,30 +270,30 @@ public class ash extends dha implements asg, dhy {
    }
 
    public void a(boolean $$0, boolean $$1) {
-      for (dgm $$2 : this.ab) {
+      for (dgt $$2 : this.ab) {
          $$2.a(this, $$0, $$1);
       }
    }
 
    private void as() {
       this.Q.a();
-      this.I.stream().filter(bwb::fP).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
+      this.I.stream().filter(bwf::fP).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
    }
 
-   public void a(dzs $$0, int $$1) {
-      dgg $$2 = $$0.f();
+   public void a(dzz $$0, int $$1) {
+      dgn $$2 = $$0.f();
       boolean $$3 = this.af();
       int $$4 = $$2.d();
       int $$5 = $$2.e();
-      bpo $$6 = bpn.a();
+      bps $$6 = bpr.a();
       $$6.a("thunder");
       if ($$3 && this.ae() && this.A.a(100000) == 0) {
          jh $$7 = this.b(this.a($$4, 0, $$5, 15));
          if (this.r($$7)) {
-            btc $$8 = this.d_($$7);
-            boolean $$9 = this.N().b(dgw.e) && this.A.j() < (double)$$8.b() * 0.01 && !this.a_($$7.e()).a(dkg.sN);
+            btg $$8 = this.d_($$7);
+            boolean $$9 = this.N().b(dhd.e) && this.A.j() < (double)$$8.b() * 0.01 && !this.a_($$7.e()).a(dkn.sN);
             if ($$9) {
-               ckc $$10 = bvm.bg.a(this, bvl.h);
+               ckg $$10 = bvq.bg.a(this, bvp.h);
                if ($$10 != null) {
                   $$10.x(true);
                   $$10.c_(0);
@@ -302,9 +302,9 @@ public class ash extends dha implements asg, dhy {
                }
             }
 
-            bwa $$11 = bvm.ax.a(this, bvl.h);
+            bwe $$11 = bvq.ax.a(this, bvp.h);
             if ($$11 != null) {
-               $$11.e(fbs.c($$7));
+               $$11.e(fbx.c($$7));
                $$11.a($$9);
                this.b($$11);
             }
@@ -321,10 +321,10 @@ public class ash extends dha implements asg, dhy {
 
       $$6.b("tickBlocks");
       if ($$1 > 0) {
-         dzt[] $$13 = $$0.d();
+         eaa[] $$13 = $$0.d();
 
          for (int $$14 = 0; $$14 < $$13.length; $$14++) {
-            dzt $$15 = $$13[$$14];
+            eaa $$15 = $$13[$$14];
             if ($$15.d()) {
                int $$16 = $$0.h($$14);
                int $$17 = kj.c($$16);
@@ -332,12 +332,12 @@ public class ash extends dha implements asg, dhy {
                for (int $$18 = 0; $$18 < $$1; $$18++) {
                   jh $$19 = this.a($$4, $$17, $$5, 15);
                   $$6.a("randomTick");
-                  dxn $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
+                  dxu $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
                   if ($$20.z()) {
                      $$20.b(this, $$19, this.A);
                   }
 
-                  etp $$21 = $$20.y();
+                  etw $$21 = $$20.y();
                   if ($$21.f()) {
                      $$21.a(this, $$19, this.A);
                   }
@@ -353,50 +353,50 @@ public class ash extends dha implements asg, dhy {
 
    @VisibleForTesting
    public void a(jh $$0) {
-      jh $$1 = this.a(edi.a.e, $$0);
+      jh $$1 = this.a(edp.a.e, $$0);
       jh $$2 = $$1.e();
-      dic $$3 = this.t($$1).a();
+      dij $$3 = this.t($$1).a();
       if ($$3.a(this, $$2)) {
-         this.b($$2, dkg.eb.m());
+         this.b($$2, dkn.eb.m());
       }
 
       if (this.af()) {
-         int $$4 = this.N().c(dgw.T);
+         int $$4 = this.N().c(dhd.U);
          if ($$4 > 0 && $$3.b(this, $$1)) {
-            dxn $$5 = this.a_($$1);
-            if ($$5.a(dkg.ea)) {
-               int $$6 = $$5.c(drq.c);
+            dxu $$5 = this.a_($$1);
+            if ($$5.a(dkn.ea)) {
+               int $$6 = $$5.c(drx.c);
                if ($$6 < Math.min($$4, 8)) {
-                  dxn $$7 = $$5.b(drq.c, Integer.valueOf($$6 + 1));
-                  dke.a($$5, $$7, this, $$1);
+                  dxu $$7 = $$5.b(drx.c, Integer.valueOf($$6 + 1));
+                  dkl.a($$5, $$7, this, $$1);
                   this.b($$1, $$7);
                }
             } else {
-               this.b($$1, dkg.ea.m());
+               this.b($$1, dkn.ea.m());
             }
          }
 
-         dic.c $$8 = $$3.a($$2, this.O());
-         if ($$8 != dic.c.a) {
-            dxn $$9 = this.a_($$2);
+         dij.c $$8 = $$3.a($$2, this.O());
+         if ($$8 != dij.c.a) {
+            dxu $$9 = this.a_($$2);
             $$9.b().a($$9, this, $$2, $$8);
          }
       }
    }
 
    private Optional<jh> E(jh $$0) {
-      Optional<jh> $$1 = this.z().e($$0x -> $$0x.a(chj.t), $$0x -> $$0x.v() == this.a(edi.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, chf.b.c);
+      Optional<jh> $$1 = this.z().e($$0x -> $$0x.a(chn.t), $$0x -> $$0x.v() == this.a(edp.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, chj.b.c);
       return $$1.map($$0x -> $$0x.b(1));
    }
 
    protected jh b(jh $$0) {
-      jh $$1 = this.a(edi.a.e, $$0);
+      jh $$1 = this.a(edp.a.e, $$0);
       Optional<jh> $$2 = this.E($$1);
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         fbn $$3 = fbn.a($$1, $$1.h(this.am() + 1)).g(3.0);
-         List<bwb> $$4 = this.a(bwb.class, $$3, $$0x -> $$0x != null && $$0x.bL() && this.h($$0x.dv()));
+         fbs $$3 = fbs.a($$1, $$1.h(this.am() + 1)).g(3.0);
+         List<bwf> $$4 = this.a(bwf.class, $$3, $$0x -> $$0x != null && $$0x.bL() && this.h($$0x.dv()));
          if (!$$4.isEmpty()) {
             return $$4.get(this.A.a($$4.size())).dv();
          } else {
@@ -414,13 +414,13 @@ public class ash extends dha implements asg, dhy {
    }
 
    public boolean e() {
-      return this.N().c(dgw.P) <= 100;
+      return this.N().c(dhd.Q) <= 100;
    }
 
    private void at() {
       if (this.e()) {
          if (!this.p().U() || this.p().r()) {
-            int $$0 = this.N().c(dgw.P);
+            int $$0 = this.N().c(dhd.Q);
             xv $$1;
             if (this.Q.a($$0)) {
                $$1 = xv.c("sleep.skipping_night");
@@ -448,7 +448,7 @@ public class ash extends dha implements asg, dhy {
    private void au() {
       boolean $$0 = this.af();
       if (this.G_().g()) {
-         if (this.N().b(dgw.v)) {
+         if (this.N().b(dhd.w)) {
             int $$1 = this.L.f();
             int $$2 = this.L.h();
             int $$3 = this.L.j();
@@ -539,55 +539,55 @@ public class ash extends dha implements asg, dhy {
       this.R = 0;
    }
 
-   private void a(jh $$0, eto $$1) {
-      dxn $$2 = this.a_($$0);
-      etp $$3 = $$2.y();
+   private void a(jh $$0, etv $$1) {
+      dxu $$2 = this.a_($$0);
+      etw $$3 = $$2.y();
       if ($$3.b($$1)) {
          $$3.a(this, $$0, $$2);
       }
    }
 
-   private void d(jh $$0, dke $$1) {
-      dxn $$2 = this.a_($$0);
+   private void d(jh $$0, dkl $$1) {
+      dxu $$2 = this.a_($$0);
       if ($$2.a($$1)) {
          $$2.a(this, $$0, this.A);
       }
    }
 
-   public void a(bvf $$0) {
+   public void a(bvj $$0) {
       $$0.bz();
-      bpo $$1 = bpn.a();
+      bps $$1 = bpr.a();
       $$0.af++;
       $$1.a(() -> ma.f.b($$0.aq()).toString());
       $$1.f("tickNonPassenger");
       $$0.h();
       $$1.c();
 
-      for (bvf $$2 : $$0.cZ()) {
+      for (bvj $$2 : $$0.cZ()) {
          this.a($$0, $$2);
       }
    }
 
-   private void a(bvf $$0, bvf $$1) {
+   private void a(bvj $$0, bvj $$1) {
       if ($$1.dQ() || $$1.dk() != $$0) {
          $$1.ae();
-      } else if ($$1 instanceof cps || this.N.c($$1)) {
+      } else if ($$1 instanceof cpw || this.N.c($$1)) {
          $$1.bz();
          $$1.af++;
-         bpo $$2 = bpn.a();
+         bps $$2 = bpr.a();
          $$2.a(() -> ma.f.b($$1.aq()).toString());
          $$2.f("tickPassenger");
          $$1.r();
          $$2.c();
 
-         for (bvf $$3 : $$1.cZ()) {
+         for (bvj $$3 : $$1.cZ()) {
             this.a($$1, $$3);
          }
       }
    }
 
    @Override
-   public boolean a(cps $$0, jh $$1) {
+   public boolean a(cpw $$0, jh $$1) {
       return !this.K.a(this, $$1, $$0) && this.F_().a($$1);
    }
 
@@ -617,7 +617,7 @@ public class ash extends dha implements asg, dhy {
          this.K.aZ().a(this.ac.b());
       }
 
-      evp $$1 = this.m().k();
+      evw $$1 = this.m().k();
       if ($$0) {
          $$1.b();
       } else {
@@ -625,17 +625,17 @@ public class ash extends dha implements asg, dhy {
       }
    }
 
-   public <T extends bvf> List<? extends T> a(ebx<bvf, T> $$0, Predicate<? super T> $$1) {
+   public <T extends bvj> List<? extends T> a(ece<bvj, T> $$0, Predicate<? super T> $$1) {
       List<T> $$2 = Lists.newArrayList();
       this.a($$0, $$1, $$2);
       return $$2;
    }
 
-   public <T extends bvf> void a(ebx<bvf, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
+   public <T extends bvj> void a(ece<bvj, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
       this.a($$0, $$1, $$2, Integer.MAX_VALUE);
    }
 
-   public <T extends bvf> void a(ebx<bvf, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
+   public <T extends bvj> void a(ece<bvj, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
       this.G().a($$0, $$3x -> {
          if ($$1.test((T)$$3x)) {
             $$2.add((T)$$3x);
@@ -648,8 +648,8 @@ public class ash extends dha implements asg, dhy {
       });
    }
 
-   public List<? extends ckp> j() {
-      return this.a(bvm.Q, bwb::bL);
+   public List<? extends ckt> j() {
+      return this.a(bvq.Q, bwf::bL);
    }
 
    public List<asi> a(Predicate<? super asi> $$0) {
@@ -673,20 +673,20 @@ public class ash extends dha implements asg, dhy {
 
    @Nullable
    public asi k() {
-      List<asi> $$0 = this.a(bwb::bL);
+      List<asi> $$0 = this.a(bwf::bL);
       return $$0.isEmpty() ? null : $$0.get(this.A.a($$0.size()));
    }
 
    @Override
-   public boolean b(bvf $$0) {
+   public boolean b(bvj $$0) {
       return this.i($$0);
    }
 
-   public boolean c(bvf $$0) {
+   public boolean c(bvj $$0) {
       return this.i($$0);
    }
 
-   public void d(bvf $$0) {
+   public void d(bvj $$0) {
       if ($$0 instanceof asi $$1) {
          this.c($$1);
       } else {
@@ -703,27 +703,27 @@ public class ash extends dha implements asg, dhy {
    }
 
    private void c(asi $$0) {
-      bvf $$1 = this.G().a($$0.cG());
+      bvj $$1 = this.G().a($$0.cG());
       if ($$1 != null) {
          F.warn("Force-added player with duplicate UUID {}", $$0.cG());
          $$1.ao();
-         this.a((asi)$$1, bvf.c.b);
+         this.a((asi)$$1, bvj.c.b);
       }
 
       this.O.a($$0);
    }
 
-   private boolean i(bvf $$0) {
+   private boolean i(bvj $$0) {
       if ($$0.dQ()) {
-         F.warn("Tried to add entity {} but it was marked as removed already", bvm.a($$0.aq()));
+         F.warn("Tried to add entity {} but it was marked as removed already", bvq.a($$0.aq()));
          return false;
       } else {
          return this.O.a($$0);
       }
    }
 
-   public boolean e(bvf $$0) {
-      if ($$0.db().map(bvf::cG).anyMatch(this.O::a)) {
+   public boolean e(bvj $$0) {
+      if ($$0.db().map(bvj::cG).anyMatch(this.O::a)) {
          return false;
       } else {
          this.a_($$0);
@@ -731,12 +731,12 @@ public class ash extends dha implements asg, dhy {
       }
    }
 
-   public void a(dzs $$0) {
+   public void a(dzz $$0) {
       $$0.G();
       $$0.c(this);
    }
 
-   public void a(asi $$0, bvf.c $$1) {
+   public void a(asi $$0, bvj.c $$1) {
       $$0.a($$1);
    }
 
@@ -755,18 +755,18 @@ public class ash extends dha implements asg, dhy {
    }
 
    @Override
-   public void a(@Nullable cps $$0, double $$1, double $$2, double $$3, jq<axe> $$4, axg $$5, float $$6, float $$7, long $$8) {
+   public void a(@Nullable cpw $$0, double $$1, double $$2, double $$3, jq<axe> $$4, axg $$5, float $$6, float $$7, long $$8) {
       this.K.ag().a($$0, $$1, $$2, $$3, (double)$$4.a().a($$6), this.ah(), new agt($$4, $$5, $$1, $$2, $$3, $$6, $$7, $$8));
    }
 
    @Override
-   public void a(@Nullable cps $$0, bvf $$1, jq<axe> $$2, axg $$3, float $$4, float $$5, long $$6) {
+   public void a(@Nullable cpw $$0, bvj $$1, jq<axe> $$2, axg $$3, float $$4, float $$5, long $$6) {
       this.K.ag().a($$0, $$1.dA(), $$1.dC(), $$1.dG(), (double)$$2.a().a($$4), this.ah(), new ags($$2, $$3, $$1, $$4, $$5, $$6));
    }
 
    @Override
    public void b(int $$0, jh $$1, int $$2) {
-      if (this.N().b(dgw.W)) {
+      if (this.N().b(dhd.X)) {
          this.K.ag().a(new aef($$0, $$1, $$2, true));
       } else {
          this.a(null, $$0, $$1, $$2);
@@ -774,7 +774,7 @@ public class ash extends dha implements asg, dhy {
    }
 
    @Override
-   public void a(@Nullable cps $$0, int $$1, jh $$2, int $$3) {
+   public void a(@Nullable cpw $$0, int $$1, jh $$2, int $$3) {
       this.K.ag().a($$0, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 64.0, this.ah(), new aef($$1, $$2, $$3, false));
    }
 
@@ -783,12 +783,12 @@ public class ash extends dha implements asg, dhy {
    }
 
    @Override
-   public void a(jq<ecj> $$0, fbs $$1, ecj.a $$2) {
+   public void a(jq<ecq> $$0, fbx $$1, ecq.a $$2) {
       this.P.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(jh $$0, dxn $$1, dxn $$2, int $$3) {
+   public void a(jh $$0, dxu $$1, dxu $$2, int $$3) {
       if (this.X) {
          String $$4 = "recursive call to sendBlockUpdated";
          ae.a("recursive call to sendBlockUpdated", new IllegalStateException("recursive call to sendBlockUpdated"));
@@ -796,13 +796,13 @@ public class ash extends dha implements asg, dhy {
 
       this.m().a($$0);
       this.V.a($$0);
-      fcm $$5 = $$1.g(this, $$0);
-      fcm $$6 = $$2.g(this, $$0);
-      if (fcj.c($$5, $$6, fbw.g)) {
-         List<cfn> $$7 = new ObjectArrayList();
+      fcr $$5 = $$1.g(this, $$0);
+      fcr $$6 = $$2.g(this, $$0);
+      if (fco.c($$5, $$6, fcb.g)) {
+         List<cfr> $$7 = new ObjectArrayList();
 
-         for (bwd $$8 : this.W) {
-            cfn $$9 = $$8.L();
+         for (bwh $$8 : this.W) {
+            cfr $$9 = $$8.L();
             if ($$9.b($$0)) {
                $$7.add($$9);
             }
@@ -811,7 +811,7 @@ public class ash extends dha implements asg, dhy {
          try {
             this.X = true;
 
-            for (cfn $$10 : $$7) {
+            for (cfr $$10 : $$7) {
                $$10.j();
             }
          } finally {
@@ -821,37 +821,37 @@ public class ash extends dha implements asg, dhy {
    }
 
    @Override
-   public void a(jh $$0, dke $$1) {
-      this.a($$0, $$1, eut.a(this, null, null));
+   public void a(jh $$0, dkl $$1) {
+      this.a($$0, $$1, eva.a(this, null, null));
    }
 
    @Override
-   public void a(jh $$0, dke $$1, @Nullable eux $$2) {
+   public void a(jh $$0, dkl $$1, @Nullable eve $$2) {
       this.t.a($$0, $$1, null, $$2);
    }
 
    @Override
-   public void a(jh $$0, dke $$1, jm $$2, @Nullable eux $$3) {
+   public void a(jh $$0, dkl $$1, jm $$2, @Nullable eve $$3) {
       this.t.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void b(jh $$0, dke $$1, @Nullable eux $$2) {
+   public void b(jh $$0, dkl $$1, @Nullable eve $$2) {
       this.t.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(dxn $$0, jh $$1, dke $$2, @Nullable eux $$3, boolean $$4) {
+   public void a(dxu $$0, jh $$1, dkl $$2, @Nullable eve $$3, boolean $$4) {
       this.t.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(bvf $$0, byte $$1) {
+   public void a(bvj $$0, byte $$1) {
       this.m().a($$0, new adv($$0, $$1));
    }
 
    @Override
-   public void a(bvf $$0, btv $$1) {
+   public void a(bvj $$0, btz $$1) {
       this.m().a($$0, new adr($$0, $$1));
    }
 
@@ -861,53 +861,53 @@ public class ash extends dha implements asg, dhy {
 
    @Override
    public void a(
-      @Nullable bvf $$0,
-      @Nullable btv $$1,
-      @Nullable dgt $$2,
+      @Nullable bvj $$0,
+      @Nullable btz $$1,
+      @Nullable dha $$2,
       double $$3,
       double $$4,
       double $$5,
       float $$6,
       boolean $$7,
-      dha.a $$8,
+      dhh.a $$8,
       lq $$9,
       lq $$10,
       jq<axe> $$11
    ) {
-      dgs.a $$12 = switch ($$8) {
-         case a -> dgs.a.a;
-         case b -> this.a(dgw.Q);
-         case c -> this.N().b(dgw.c) ? this.a(dgw.R) : dgs.a.a;
-         case d -> this.a(dgw.S);
-         case e -> dgs.a.d;
+      dgz.a $$12 = switch ($$8) {
+         case a -> dgz.a.a;
+         case b -> this.a(dhd.R);
+         case c -> this.N().b(dhd.c) ? this.a(dhd.S) : dgz.a.a;
+         case d -> this.a(dhd.T);
+         case e -> dgz.a.d;
       };
-      fbs $$13 = new fbs($$3, $$4, $$5);
-      dhq $$14 = new dhq(this, $$0, $$1, $$2, $$13, $$6, $$7, $$12);
+      fbx $$13 = new fbx($$3, $$4, $$5);
+      dhx $$14 = new dhx(this, $$0, $$1, $$2, $$13, $$6, $$7, $$12);
       $$14.i();
       lq $$15 = $$14.k() ? $$9 : $$10;
 
       for (asi $$16 : this.I) {
          if ($$16.f($$13) < 4096.0) {
-            Optional<fbs> $$17 = Optional.ofNullable($$14.j().get($$16));
+            Optional<fbx> $$17 = Optional.ofNullable($$14.j().get($$16));
             $$16.f.b(new adx($$13, $$17, $$15, $$11));
          }
       }
    }
 
-   private dgs.a a(dgw.e<dgw.a> $$0) {
-      return this.N().b($$0) ? dgs.a.c : dgs.a.b;
+   private dgz.a a(dhd.e<dhd.a> $$0) {
+      return this.N().b($$0) ? dgz.a.c : dgz.a.b;
    }
 
    @Override
-   public void a(jh $$0, dke $$1, int $$2, int $$3) {
-      this.Y.add(new dge($$0, $$1, $$2, $$3));
+   public void a(jh $$0, dkl $$1, int $$2, int $$3) {
+      this.Y.add(new dgl($$0, $$1, $$2, $$3));
    }
 
    private void av() {
       this.Z.clear();
 
       while (!this.Y.isEmpty()) {
-         dge $$0 = (dge)this.Y.removeFirst();
+         dgl $$0 = (dgl)this.Y.removeFirst();
          if (this.n($$0.a())) {
             if (this.a($$0)) {
                this.K.ag().a(null, (double)$$0.a().u(), (double)$$0.a().v(), (double)$$0.a().w(), 64.0, this.ah(), new acz($$0.a(), $$0.b(), $$0.c(), $$0.d()));
@@ -920,16 +920,16 @@ public class ash extends dha implements asg, dhy {
       this.Y.addAll(this.Z);
    }
 
-   private boolean a(dge $$0) {
-      dxn $$1 = this.a_($$0.a());
+   private boolean a(dgl $$0) {
+      dxu $$1 = this.a_($$0.a());
       return $$1.a($$0.b()) ? $$1.a(this, $$0.a(), $$0.c(), $$0.d()) : false;
    }
 
-   public fdh<dke> n() {
+   public fdm<dkl> n() {
       return this.T;
    }
 
-   public fdh<eto> o() {
+   public fdm<etv> o() {
       return this.U;
    }
 
@@ -939,11 +939,11 @@ public class ash extends dha implements asg, dhy {
       return this.K;
    }
 
-   public eun q() {
+   public euu q() {
       return this.S;
    }
 
-   public esf r() {
+   public esm r() {
       return this.K.aY();
    }
 
@@ -971,7 +971,7 @@ public class ash extends dha implements asg, dhy {
          return false;
       } else {
          jh $$6 = $$0.dv();
-         if ($$6.a(new fbs($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
+         if ($$6.a(new fbx($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
             $$0.f.b($$5);
             return true;
          } else {
@@ -982,48 +982,48 @@ public class ash extends dha implements asg, dhy {
 
    @Nullable
    @Override
-   public bvf a(int $$0) {
+   public bvj a(int $$0) {
       return this.G().a($$0);
    }
 
    @Deprecated
    @Nullable
-   public bvf b(int $$0) {
-      bvf $$1 = this.G().a($$0);
-      return $$1 != null ? $$1 : (bvf)this.ad.get($$0);
+   public bvj b(int $$0) {
+      bvj $$1 = this.G().a($$0);
+      return $$1 != null ? $$1 : (bvj)this.ad.get($$0);
    }
 
    @Nullable
-   public bvf a(UUID $$0) {
+   public bvj a(UUID $$0) {
       return this.G().a($$0);
    }
 
    @Nullable
-   public jh a(ayk<eoc> $$0, jh $$1, int $$2, boolean $$3) {
+   public jh a(ayk<eoj> $$0, jh $$1, int $$2, boolean $$3) {
       if (!this.K.aZ().y().d()) {
          return null;
       } else {
-         Optional<ju.c<eoc>> $$4 = this.K_().e(mb.aT).a($$0);
+         Optional<ju.c<eoj>> $$4 = this.K_().e(mb.aU).a($$0);
          if ($$4.isEmpty()) {
             return null;
          } else {
-            Pair<jh, jq<eoc>> $$5 = this.m().g().a(this, $$4.get(), $$1, $$2, $$3);
+            Pair<jh, jq<eoj>> $$5 = this.m().g().a(this, $$4.get(), $$1, $$2, $$3);
             return $$5 != null ? (jh)$$5.getFirst() : null;
          }
       }
    }
 
    @Nullable
-   public Pair<jh, jq<dic>> a(Predicate<jq<dic>> $$0, jh $$1, int $$2, int $$3, int $$4) {
+   public Pair<jh, jq<dij>> a(Predicate<jq<dij>> $$0, jh $$1, int $$2, int $$3, int $$4) {
       return this.m().g().d().a($$1, $$2, $$3, $$4, $$0, this.m().i().b(), this);
    }
 
-   public dcf s() {
+   public dck s() {
       return this.K.aI();
    }
 
    @Override
-   public btn t() {
+   public btr t() {
       return this.K.aP();
    }
 
@@ -1032,24 +1032,24 @@ public class ash extends dha implements asg, dhy {
       return this.e;
    }
 
-   public evp v() {
+   public evw v() {
       return this.m().k();
    }
 
    @Nullable
    @Override
-   public evj a(evh $$0) {
-      return this.p().J().v().b(evj.a(), $$0.a());
+   public evq a(evo $$0) {
+      return this.p().J().v().b(evq.a(), $$0.a());
    }
 
    @Override
-   public void a(evh $$0, evj $$1) {
+   public void a(evo $$0, evq $$1) {
       this.p().J().v().a($$0.a(), $$1);
    }
 
    @Override
-   public evh w() {
-      return this.p().J().v().a(evi.a(), "idcounts").b();
+   public evo w() {
+      return this.p().J().v().a(evp.a(), "idcounts").b();
    }
 
    public void a(jh $$0, float $$1) {
@@ -1061,25 +1061,25 @@ public class ash extends dha implements asg, dhy {
       }
 
       if (this.M > 1) {
-         this.m().b(asn.a, new dgg($$2), this.M, bbk.a);
+         this.m().b(asn.a, new dgn($$2), this.M, bbk.a);
       }
 
-      int $$4 = this.N().c(dgw.aa) + 1;
+      int $$4 = this.N().c(dhd.ab) + 1;
       if ($$4 > 1) {
-         this.m().a(asn.a, new dgg($$0), $$4, bbk.a);
+         this.m().a(asn.a, new dgn($$0), $$4, bbk.a);
       }
 
       this.M = $$4;
    }
 
    public LongSet x() {
-      dgv $$0 = this.v().b(dgv.a(), "chunks");
+      dhc $$0 = this.v().b(dhc.a(), "chunks");
       return (LongSet)($$0 != null ? LongSets.unmodifiable($$0.b()) : LongSets.EMPTY_SET);
    }
 
    public boolean a(int $$0, int $$1, boolean $$2) {
-      dgv $$3 = this.v().a(dgv.a(), "chunks");
-      dgg $$4 = new dgg($$0, $$1);
+      dhc $$3 = this.v().a(dhc.a(), "chunks");
+      dgn $$4 = new dgn($$0, $$1);
       long $$5 = $$4.a();
       boolean $$6;
       if ($$2) {
@@ -1105,9 +1105,9 @@ public class ash extends dha implements asg, dhy {
    }
 
    @Override
-   public void a(jh $$0, dxn $$1, dxn $$2) {
-      Optional<jq<chi>> $$3 = chj.a($$1);
-      Optional<jq<chi>> $$4 = chj.a($$2);
+   public void a(jh $$0, dxu $$1, dxu $$2) {
+      Optional<jq<chm>> $$3 = chn.a($$1);
+      Optional<jq<chm>> $$4 = chn.a($$2);
       if (!Objects.equals($$3, $$4)) {
          jh $$5 = $$0.j();
          $$3.ifPresent($$1x -> this.p().execute(() -> {
@@ -1121,7 +1121,7 @@ public class ash extends dha implements asg, dhy {
       }
    }
 
-   public chf z() {
+   public chj z() {
       return this.m().l();
    }
 
@@ -1141,12 +1141,12 @@ public class ash extends dha implements asg, dhy {
       return this.z().a($$0);
    }
 
-   public crh A() {
+   public crl A() {
       return this.f;
    }
 
    @Nullable
-   public crf d(jh $$0) {
+   public crj d(jh $$0) {
       return this.f.a($$0, 9216);
    }
 
@@ -1154,7 +1154,7 @@ public class ash extends dha implements asg, dhy {
       return this.d($$0) != null;
    }
 
-   public void a(chc $$0, bvf $$1, bwq $$2) {
+   public void a(chg $$0, bvj $$1, bwu $$2) {
       $$2.a($$0, $$1);
    }
 
@@ -1163,13 +1163,13 @@ public class ash extends dha implements asg, dhy {
 
       try (Writer $$2 = Files.newBufferedWriter($$0.resolve("stats.txt"))) {
          $$2.write(String.format(Locale.ROOT, "spawning_chunks: %d\n", $$1.j().b()));
-         dhl.d $$3 = this.m().n();
+         dhs.d $$3 = this.m().n();
          if ($$3 != null) {
             ObjectIterator $$9 = $$3.b().object2IntEntrySet().iterator();
 
             while ($$9.hasNext()) {
-               Entry<bwe> $$4 = (Entry<bwe>)$$9.next();
-               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((bwe)$$4.getKey()).a(), $$4.getIntValue()));
+               Entry<bwi> $$4 = (Entry<bwi>)$$9.next();
+               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((bwi)$$4.getKey()).a(), $$4.getIntValue()));
             }
          }
 
@@ -1213,10 +1213,10 @@ public class ash extends dha implements asg, dhy {
       }
    }
 
-   private static void a(Writer $$0, Iterable<bvf> $$1) throws IOException {
+   private static void a(Writer $$0, Iterable<bvj> $$1) throws IOException {
       aze $$2 = aze.a().a("x").a("y").a("z").a("uuid").a("type").a("alive").a("display_name").a("custom_name").a($$0);
 
-      for (bvf $$3 : $$1) {
+      for (bvj $$3 : $$1) {
          xv $$4 = $$3.an();
          xv $$5 = $$3.p_();
          $$2.a($$3.dA(), $$3.dC(), $$3.dG(), $$3.cG(), ma.f.b($$3.aq()), $$3.bL(), $$5.getString(), $$4 != null ? $$4.getString() : null);
@@ -1226,19 +1226,19 @@ public class ash extends dha implements asg, dhy {
    private void a(Writer $$0) throws IOException {
       aze $$1 = aze.a().a("x").a("y").a("z").a("type").a($$0);
 
-      for (dwk $$2 : this.s) {
+      for (dwr $$2 : this.s) {
          jh $$3 = $$2.c();
          $$1.a($$3.u(), $$3.v(), $$3.w(), $$2.d());
       }
    }
 
    @VisibleForTesting
-   public void a(enu $$0) {
+   public void a(eob $$0) {
       this.Y.removeIf($$1 -> $$0.b($$1.a()));
    }
 
    @Override
-   public void b(jh $$0, dke $$1) {
+   public void b(jh $$0, dkl $$1) {
       if (!this.ai()) {
          this.a($$0, $$1);
       }
@@ -1249,7 +1249,7 @@ public class ash extends dha implements asg, dhy {
       return 1.0F;
    }
 
-   public Iterable<bvf> B() {
+   public Iterable<bvj> B() {
       return this.G().a();
    }
 
@@ -1268,7 +1268,7 @@ public class ash extends dha implements asg, dhy {
    }
 
    @Nullable
-   public ebl E() {
+   public ebs E() {
       return this.ac;
    }
 
@@ -1286,7 +1286,7 @@ public class ash extends dha implements asg, dhy {
          this.O.e(),
          a(this.O.d().a(), $$0 -> ma.f.b($$0.aq()).toString()),
          this.s.size(),
-         a(this.s, dwk::d),
+         a(this.s, dwr::d),
          this.n().a(),
          this.o().a(),
          this.I()
@@ -1314,27 +1314,27 @@ public class ash extends dha implements asg, dhy {
    }
 
    @Override
-   protected ebz<bvf> G() {
+   protected ecg<bvj> G() {
       return this.O.d();
    }
 
-   public void a(Stream<bvf> $$0) {
+   public void a(Stream<bvj> $$0) {
       this.O.a($$0);
    }
 
-   public void b(Stream<bvf> $$0) {
+   public void b(Stream<bvj> $$0) {
       this.O.b($$0);
    }
 
-   public void b(dzs $$0) {
+   public void b(dzz $$0) {
       $$0.d(this.D_().c());
    }
 
-   public void a(dzi $$0) {
+   public void a(dzp $$0) {
       this.K.execute(() -> this.af.a($$0.f(), $$0.g()));
    }
 
-   public euh H() {
+   public euo H() {
       return this.V;
    }
 
@@ -1358,29 +1358,29 @@ public class ash extends dha implements asg, dhy {
    }
 
    public boolean f(jh $$0) {
-      return this.O.a($$0) && this.J.a.j().c(dgg.a($$0));
+      return this.O.a($$0) && this.J.a.j().c(dgn.a($$0));
    }
 
    public boolean g(jh $$0) {
       return this.O.a($$0);
    }
 
-   public boolean a(dgg $$0) {
+   public boolean a(dgn $$0) {
       return this.O.a($$0);
    }
 
    @Override
-   public cso J() {
+   public css J() {
       return this.K.aZ().K();
    }
 
    @Override
-   public czi K() {
+   public czm K() {
       return this.K.bn();
    }
 
    @Override
-   public dvn L() {
+   public dvu L() {
       return this.K.bo();
    }
 
@@ -1388,11 +1388,11 @@ public class ash extends dha implements asg, dhy {
       return this.ah.a($$0);
    }
 
-   public btj M() {
+   public btn M() {
       return this.ah;
    }
 
-   public dgw N() {
+   public dhd N() {
       return this.L.o();
    }
 
@@ -1408,30 +1408,30 @@ public class ash extends dha implements asg, dhy {
       return this.J.g().f();
    }
 
-   final class a implements eby<bvf> {
-      public void a(bvf $$0) {
+   final class a implements ecf<bvj> {
+      public void a(bvj $$0) {
       }
 
-      public void b(bvf $$0) {
+      public void b(bvj $$0) {
          ash.this.g().a($$0);
       }
 
-      public void c(bvf $$0) {
+      public void c(bvj $$0) {
          ash.this.N.a($$0);
       }
 
-      public void d(bvf $$0) {
+      public void d(bvj $$0) {
          ash.this.N.b($$0);
       }
 
-      public void e(bvf $$0) {
+      public void e(bvj $$0) {
          ash.this.m().b($$0);
          if ($$0 instanceof asi $$1) {
             ash.this.I.add($$1);
             ash.this.f();
          }
 
-         if ($$0 instanceof bwd $$2) {
+         if ($$0 instanceof bwh $$2) {
             if (ash.this.X) {
                String $$3 = "onTrackingStart called during navigation iteration";
                ae.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1440,23 +1440,23 @@ public class ash extends dha implements asg, dhy {
             ash.this.W.add($$2);
          }
 
-         if ($$0 instanceof ckp $$4) {
-            for (ckm $$5 : $$4.x()) {
+         if ($$0 instanceof ckt $$4) {
+            for (ckq $$5 : $$4.x()) {
                ash.this.ad.put($$5.ar(), $$5);
             }
          }
 
-         $$0.a(ecg::a);
+         $$0.a(ecn::a);
       }
 
-      public void f(bvf $$0) {
+      public void f(bvj $$0) {
          ash.this.m().a($$0);
          if ($$0 instanceof asi $$1) {
             ash.this.I.remove($$1);
             ash.this.f();
          }
 
-         if ($$0 instanceof bwd $$2) {
+         if ($$0 instanceof bwh $$2) {
             if (ash.this.X) {
                String $$3 = "onTrackingStart called during navigation iteration";
                ae.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1465,17 +1465,17 @@ public class ash extends dha implements asg, dhy {
             ash.this.W.remove($$2);
          }
 
-         if ($$0 instanceof ckp $$4) {
-            for (ckm $$5 : $$4.x()) {
+         if ($$0 instanceof ckt $$4) {
+            for (ckq $$5 : $$4.x()) {
                ash.this.ad.remove($$5.ar());
             }
          }
 
-         $$0.a(ecg::b);
+         $$0.a(ecn::b);
       }
 
-      public void g(bvf $$0) {
-         $$0.a(ecg::c);
+      public void g(bvj $$0) {
+         $$0.a(ecn::c);
       }
    }
 }

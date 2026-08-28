@@ -1,44 +1,24 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public enum cot {
-   a(0, axf.Cf, axf.Cn),
-   b(40, axf.Ce, axf.Co),
-   c(80, axf.Cg, axf.Co);
-
-   private static final cot[] d = ae.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final axe f;
-   private final axe g;
-
-   private cot(final int $$0, final axe $$1, final axe $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public axe b() {
-      return this.f;
-   }
-
-   public axe c() {
-      return this.g;
-   }
-
-   public static cot a(int $$0) {
-      for (cot $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+public class cot<E extends cok> {
+   public static bxz<bwf> a(int $$0) {
+      return cbl.a(
+         (Function<cbl.b<bwf>, ? extends App<cbl.c<bwf>, cbo<bwf>>>)($$1 -> $$1.group($$1.b(cfj.ad), $$1.a(cfj.L))
+               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
+                     if (!$$5.eY().f()) {
+                        return false;
+                     } else {
+                        Optional<cma> $$7 = $$1.a($$3);
+                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
+                           return false;
+                        } else {
+                           $$2.b();
+                           return true;
+                        }
+                     }
+                  }))
+      );
    }
 }

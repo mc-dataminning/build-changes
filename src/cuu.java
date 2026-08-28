@@ -1,160 +1,101 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cuu extends cuy {
+   private final ctt a;
+   private final cpw b;
+   private int g;
 
-public class cuu {
-   private final int a;
-   public final bsx c;
-   public int d;
-   public final int e;
-   public final int f;
-
-   public cuu(bsx $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
+   public cuu(cpw $$0, ctt $$1, btb $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
       this.a = $$1;
-      this.e = $$2;
-      this.f = $$3;
    }
 
-   public void b(cxk $$0, cxk $$1) {
-      int $$2 = $$1.L() - $$0.L();
-      if ($$2 > 0) {
-         this.a($$1, $$2);
-      }
-   }
-
-   protected void a(cxk $$0, int $$1) {
-   }
-
-   protected void b(int $$0) {
-   }
-
-   protected void b_(cxk $$0) {
-   }
-
-   public void a(cps $$0, cxk $$1) {
-      this.c();
-   }
-
-   public boolean a(cxk $$0) {
-      return true;
-   }
-
-   public cxk g() {
-      return this.c.a(this.a);
-   }
-
-   public boolean h() {
-      return !this.g().f();
-   }
-
-   public void e(cxk $$0) {
-      this.a($$0, this.g());
-   }
-
-   public void a(cxk $$0, cxk $$1) {
-      this.f($$0);
-   }
-
-   public void f(cxk $$0) {
-      this.c.a(this.a, $$0);
-      this.c();
-   }
-
-   public void c() {
-      this.c.e();
-   }
-
-   public int a() {
-      return this.c.ao_();
-   }
-
-   public int a_(cxk $$0) {
-      return Math.min(this.a(), $$0.k());
-   }
-
-   @Nullable
-   public Pair<alz, alz> b() {
-      return null;
-   }
-
-   public cxk a(int $$0) {
-      return this.c.a(this.a, $$0);
-   }
-
-   public boolean a(cps $$0) {
-      return true;
-   }
-
-   public boolean d() {
-      return true;
-   }
-
-   public Optional<cxk> a(int $$0, int $$1, cps $$2) {
-      if (!this.a($$2)) {
-         return Optional.empty();
-      } else if (!this.b($$2) && $$1 < this.g().L()) {
-         return Optional.empty();
-      } else {
-         $$0 = Math.min($$0, $$1);
-         cxk $$3 = this.a($$0);
-         if ($$3.f()) {
-            return Optional.empty();
-         } else {
-            if (this.g().f()) {
-               this.a(cxk.k, $$3);
-            }
-
-            return Optional.of($$3);
-         }
-      }
-   }
-
-   public cxk b(int $$0, int $$1, cps $$2) {
-      Optional<cxk> $$3 = this.a($$0, $$1, $$2);
-      $$3.ifPresent($$1x -> this.a($$2, $$1x));
-      return $$3.orElse(cxk.k);
-   }
-
-   public cxk d(cxk $$0) {
-      return this.b($$0, $$0.L());
-   }
-
-   public cxk b(cxk $$0, int $$1) {
-      if (!$$0.f() && this.a($$0)) {
-         cxk $$2 = this.g();
-         int $$3 = Math.min(Math.min($$1, $$0.L()), this.a_($$0) - $$2.L());
-         if ($$3 <= 0) {
-            return $$0;
-         } else {
-            if ($$2.f()) {
-               this.e($$0.a($$3));
-            } else if (cxk.c($$2, $$0)) {
-               $$0.h($$3);
-               $$2.g($$3);
-               this.e($$2);
-            }
-
-            return $$0;
-         }
-      } else {
-         return $$0;
-      }
-   }
-
-   public boolean b(cps $$0) {
-      return this.a($$0) && this.a(this.g());
-   }
-
-   public int i() {
-      return this.a;
-   }
-
-   public boolean e() {
-      return true;
-   }
-
-   public boolean f() {
+   @Override
+   public boolean a(cxo $$0) {
       return false;
+   }
+
+   @Override
+   public cxo a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().L());
+      }
+
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cxo $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b(int $$0) {
+      this.g += $$0;
+   }
+
+   @Override
+   protected void b_(cxo $$0) {
+      if (this.g > 0) {
+         $$0.a(this.b.dV(), this.b, this.g);
+      }
+
+      if (this.c instanceof cus $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.g = 0;
+   }
+
+   private static jz<cxo> a(dbr $$0) {
+      jz<cxo> $$1 = jz.a($$0.a(), cxo.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.set($$2, $$0.a($$2));
+      }
+
+      return $$1;
+   }
+
+   private jz<cxo> a(dbr $$0, dhh $$1) {
+      return $$1 instanceof ash $$2 ? $$2.s().a(dco.a, $$0, $$2).map($$1x -> ((dbs)$$1x.b()).a($$0)).orElseGet(() -> a($$0)) : dbs.b($$0);
+   }
+
+   @Override
+   public void a(cpw $$0, cxo $$1) {
+      this.b_($$1);
+      dbr.a $$2 = this.a.aD_();
+      dbr $$3 = $$2.a();
+      int $$4 = $$2.b();
+      int $$5 = $$2.c();
+      jz<cxo> $$6 = this.a($$3, $$0.dV());
+
+      for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
+         for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
+            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.az_();
+            cxo $$10 = this.a.a($$9);
+            cxo $$11 = $$6.get($$8 + $$7 * $$3.f());
+            if (!$$10.f()) {
+               this.a.a($$9, 1);
+               $$10 = this.a.a($$9);
+            }
+
+            if (!$$11.f()) {
+               if ($$10.f()) {
+                  this.a.a($$9, $$11);
+               } else if (cxo.c($$10, $$11)) {
+                  $$11.g($$10.L());
+                  this.a.a($$9, $$11);
+               } else if (!this.b.gg().f($$11)) {
+                  this.b.a($$11, false);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

@@ -1,26 +1,26 @@
-public class guj extends gri<crb, gxo> {
-   private static final alz a = alz.b("textures/entity/projectiles/wind_charge.png");
-   private final gdt b;
+public class guj extends gsu<cnk, haa, gdu> {
+   private static final alz a = alz.b("textures/entity/illager/vex.png");
+   private static final alz b = alz.b("textures/entity/illager/vex_charging.png");
 
-   public guj(grj.a $$0) {
-      super($$0);
-      this.b = new gdt($$0.a(geg.ds));
+   public guj(gro.a $$0) {
+      super($$0, new gdu($$0.a(gel.dn)), 0.3F);
+      this.a(new gvv<>(this, $$0.b()));
    }
 
-   @Override
-   public void a(gxo $$0, fgl $$1, gle $$2, int $$3) {
-      fgp $$4 = $$2.getBuffer(glo.a(a, this.a($$0.p) % 1.0F, 0.0F));
-      this.b.a($$0);
-      this.b.a($$1, $$4, $$3, hav.d);
-      super.a($$0, $$1, $$2, $$3);
+   protected int a(cnk $$0, jh $$1) {
+      return 15;
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   public alz a(haa $$0) {
+      return $$0.a ? b : a;
    }
 
-   @Override
-   public gxo d() {
-      return new gxo();
+   public haa b() {
+      return new haa();
+   }
+
+   public void a(cnk $$0, haa $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gm();
    }
 }

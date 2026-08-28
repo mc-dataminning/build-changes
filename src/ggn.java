@@ -1,76 +1,101 @@
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
 import com.mojang.datafixers.util.Either;
 import java.time.Instant;
-import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class ggn extends ggi {
-   final Supplier<hcf> g;
+public abstract class ggn {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected ggp e;
+   protected boolean f;
 
-   ggn(UUID $$0, Instant $$1, UUID $$2, Supplier<hcf> $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   public ggn(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public Supplier<hcf> a() {
-      return this.g;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   public ggn c() {
-      ggn $$0 = new ggn(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
-   }
+   public abstract ggn b();
 
-   @Override
-   public ftr a(ftr $$0, ggm $$1) {
-      return new fye($$0, $$1, this);
-   }
+   public abstract ftw a(ftw var1, ggr var2);
 
-   public static class a extends ggi.a<ggn> {
-      public a(ggn $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   public abstract static class a<R extends ggn> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public a(UUID $$0, Supplier<hcf> $$1, AbuseReportLimits $$2) {
-         super(new ggn(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      public R e() {
+         return this.a;
       }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
       }
 
       @Nullable
-      @Override
-      public ggi.b c() {
-         if (this.a.e == null) {
-            return ggi.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ggi.b.d : super.c();
-         }
+      public ggp i() {
+         return this.a.e;
       }
 
-      @Override
-      public Either<ggi.c, ggi.b> a(ggm $$0) {
-         ggi.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            hcf $$4 = this.a.g.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new ggi.c(this.a.a, ggl.b, $$6));
-         }
+      public void a(ggp $$0) {
+         this.a.e = $$0;
       }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public ggn.b c() {
+         return !this.e().f ? ggn.b.e : null;
+      }
+
+      public abstract Either<ggn.c, ggn.b> a(ggr var1);
+   }
+
+   public static record b(xv f) {
+      public static final ggn.b a = new ggn.b(xv.c("gui.abuseReport.send.no_reason"));
+      public static final ggn.b b = new ggn.b(xv.c("gui.chatReport.send.no_reported_messages"));
+      public static final ggn.b c = new ggn.b(xv.c("gui.chatReport.send.too_many_messages"));
+      public static final ggn.b d = new ggn.b(xv.c("gui.abuseReport.send.comment_too_long"));
+      public static final ggn.b e = new ggn.b(xv.c("gui.abuseReport.send.not_attested"));
+
+      public fpp a() {
+         return fpp.a(this.f);
+      }
+
+      public xv b() {
+         return this.f;
+      }
+   }
+
+   public static record c(UUID a, ggq b, AbuseReport c) {
    }
 }

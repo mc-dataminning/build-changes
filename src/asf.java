@@ -18,7 +18,7 @@ public class asf {
    public static final int a = 60;
    private static final int e = 400;
    private final ash f;
-   private final bvf g;
+   private final bvj g;
    private final int h;
    private final boolean i;
    private final Consumer<aac<?>> j;
@@ -26,16 +26,16 @@ public class asf {
    private byte l;
    private byte m;
    private byte n;
-   private fbs o;
+   private fbx o;
    private int p;
    private int q;
-   private List<bvf> r = Collections.emptyList();
+   private List<bvj> r = Collections.emptyList();
    private boolean s;
    private boolean t;
    @Nullable
    private List<alg.c<?>> u;
 
-   public asf(ash $$0, bvf $$1, int $$2, boolean $$3, Consumer<aac<?>> $$4) {
+   public asf(ash $$0, bvj $$1, int $$2, boolean $$3, Consumer<aac<?>> $$4) {
       this.f = $$0;
       this.j = $$4;
       this.g = $$1;
@@ -51,7 +51,7 @@ public class asf {
    }
 
    public void a() {
-      List<bvf> $$0 = this.g.cZ();
+      List<bvj> $$0 = this.g.cZ();
       if (!$$0.equals(this.r)) {
          this.j.accept(new agj(this.g));
          a($$0, this.r).forEach($$0x -> {
@@ -62,11 +62,11 @@ public class asf {
          this.r = $$0;
       }
 
-      if (this.g instanceof clp $$1 && this.p % 10 == 0) {
-         cxk $$2 = $$1.A();
-         if ($$2.h() instanceof cxx) {
-            evh $$3 = $$2.a(ku.L);
-            evj $$4 = cxx.a($$3, this.f);
+      if (this.g instanceof clt $$1 && this.p % 10 == 0) {
+         cxo $$2 = $$1.A();
+         if ($$2.h() instanceof cyb) {
+            evo $$3 = $$2.a(ku.L);
+            evq $$4 = cyb.a($$3, this.f);
             if ($$4 != null) {
                for (asi $$5 : this.f.y()) {
                   $$4.a($$5, $$2);
@@ -97,13 +97,13 @@ public class asf {
             this.s = true;
          } else {
             label194: {
-               if (this.g instanceof crr $$10 && $$10.l() instanceof csg $$11) {
+               if (this.g instanceof crv $$10 && $$10.l() instanceof csk $$11) {
                   this.a($$11, $$7, $$8, $$9);
                   break label194;
                }
 
                this.q++;
-               fbs $$12 = this.g.du();
+               fbx $$12 = this.g.du();
                boolean $$13 = this.k.d($$12).h() >= 7.6293945E-6F;
                aac<?> $$14 = null;
                boolean $$15 = $$13 || this.p % 60 == 0;
@@ -119,7 +119,7 @@ public class asf {
                   $$14 = adw.a(this.g);
                   $$16 = true;
                   $$17 = true;
-               } else if ((!$$15 || !$$9) && !(this.g instanceof cpz)) {
+               } else if ((!$$15 || !$$9) && !(this.g instanceof cqd)) {
                   if ($$15) {
                      $$14 = new aem.a(this.g.ar(), (short)((int)$$18), (short)((int)$$19), (short)((int)$$20), this.g.aJ());
                      $$16 = true;
@@ -133,12 +133,12 @@ public class asf {
                   $$17 = true;
                }
 
-               if ((this.i || this.g.ar || this.g instanceof bwb && ((bwb)this.g).fH()) && this.p > 0) {
-                  fbs $$22 = this.g.dy();
+               if ((this.i || this.g.ar || this.g instanceof bwf && ((bwf)this.g).fH()) && this.p > 0) {
+                  fbx $$22 = this.g.dy();
                   double $$23 = $$22.g(this.o);
                   if ($$23 > 1.0E-7 || $$23 > 0.0 && $$22.h() == 0.0) {
                      this.o = $$22;
-                     if (this.g instanceof cqa $$24) {
+                     if (this.g instanceof cqe $$24) {
                         this.j.accept(new add(List.of(new agd(this.g.ar(), this.o), new afd($$24.ar(), $$24.c))));
                      } else {
                         this.j.accept(new agd(this.g.ar(), this.o));
@@ -180,16 +180,16 @@ public class asf {
       }
    }
 
-   private void a(csg $$0, byte $$1, byte $$2, boolean $$3) {
+   private void a(csk $$0, byte $$1, byte $$2, boolean $$3) {
       this.g();
       if ($$0.e.isEmpty()) {
-         fbs $$4 = this.g.dy();
+         fbx $$4 = this.g.dy();
          double $$5 = $$4.g(this.o);
-         fbs $$6 = this.g.du();
+         fbx $$6 = this.g.du();
          boolean $$7 = this.k.d($$6).h() >= 7.6293945E-6F;
          boolean $$8 = $$7 || this.p % 60 == 0;
          if ($$8 || $$3 || $$5 > 1.0E-7) {
-            this.j.accept(new aen(this.g.ar(), List.of(new csg.a(this.g.dt(), this.g.dy(), this.g.dL(), this.g.dN(), 1.0F))));
+            this.j.accept(new aen(this.g.ar(), List.of(new csk.a(this.g.dt(), this.g.dy(), this.g.dL(), this.g.dN(), 1.0F))));
          }
       } else {
          this.j.accept(new aen(this.g.ar(), List.copyOf($$0.e)));
@@ -201,7 +201,7 @@ public class asf {
       this.k.e(this.g.dt());
    }
 
-   private static Stream<bvf> a(List<bvf> $$0, List<bvf> $$1) {
+   private static Stream<bvj> a(List<bvj> $$0, List<bvj> $$1) {
       return $$1.stream().filter($$1x -> !$$0.contains($$1x));
    }
 
@@ -229,26 +229,26 @@ public class asf {
       }
 
       boolean $$3 = this.i;
-      if (this.g instanceof bwb) {
-         Collection<bxf> $$4 = ((bwb)this.g).eW().c();
+      if (this.g instanceof bwf) {
+         Collection<bxj> $$4 = ((bwf)this.g).eW().c();
          if (!$$4.isEmpty()) {
             $$1.accept(new ahe(this.g.ar(), $$4));
          }
 
-         if (((bwb)this.g).fH()) {
+         if (((bwf)this.g).fH()) {
             $$3 = true;
          }
       }
 
-      if ($$3 && !(this.g instanceof bwb)) {
+      if ($$3 && !(this.g instanceof bwf)) {
          $$1.accept(new agd(this.g.ar(), this.o));
       }
 
-      if (this.g instanceof bwb $$5) {
-         List<Pair<bvn, cxk>> $$6 = Lists.newArrayList();
+      if (this.g instanceof bwf $$5) {
+         List<Pair<bvr, cxo>> $$6 = Lists.newArrayList();
 
-         for (bvn $$7 : bvn.i) {
-            cxk $$8 = $$5.a($$7);
+         for (bvr $$7 : bvr.i) {
+            cxo $$8 = $$5.a($$7);
             if (!$$8.f()) {
                $$6.add(Pair.of($$7, $$8.v()));
             }
@@ -267,16 +267,16 @@ public class asf {
          $$1.accept(new agj(this.g.dk()));
       }
 
-      if (this.g instanceof bvz $$9 && $$9.P_()) {
+      if (this.g instanceof bwd $$9 && $$9.P_()) {
          $$1.accept(new agc(this.g, $$9.A()));
       }
    }
 
-   public fbs b() {
+   public fbx b() {
       return this.k.a();
    }
 
-   public fbs c() {
+   public fbx c() {
       return this.o;
    }
 
@@ -300,8 +300,8 @@ public class asf {
          this.a(new agb(this.g.ar(), $$1));
       }
 
-      if (this.g instanceof bwb) {
-         Set<bxf> $$2 = ((bwb)this.g).eW().a();
+      if (this.g instanceof bwf) {
+         Set<bxj> $$2 = ((bwf)this.g).eW().a();
          if (!$$2.isEmpty()) {
             this.a(new ahe(this.g.ar(), $$2));
          }

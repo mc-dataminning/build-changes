@@ -2,21 +2,24 @@ import javax.annotation.Nullable;
 
 public class cgy {
    @Nullable
-   public static fbs a(bwj $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
-      boolean $$8 = cgx.a($$0, $$1);
-      return cha.a($$0, () -> {
-         jh $$9 = cha.a($$0.dY(), $$1, $$2, 0, $$3, $$4, (double)$$5);
-         if ($$9 == null) {
-            return null;
+   public static fbx a(bwn $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = chb.a($$0, $$1);
+      return che.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   }
+
+   @Nullable
+   public static jh a(bwn $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      jh $$8 = che.a($$0.dY(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         jh $$9 = che.a($$0, $$1, $$0.dY(), $$8);
+         if (!chb.a($$9, $$0) && !chb.a($$7, $$0, $$9)) {
+            $$9 = che.a($$9, $$0.dV().am(), $$1x -> chb.c($$0, $$1x));
+            return chb.b($$0, $$9) ? null : $$9;
          } else {
-            jh $$10 = cgz.a($$0, $$1, $$8, $$9);
-            if ($$10 == null) {
-               return null;
-            } else {
-               $$10 = cha.a($$10, $$0.dY().a($$6 - $$7 + 1) + $$7, $$0.dV().am(), $$1xx -> cgx.c($$0, $$1xx));
-               return !cgx.a($$0, $$10) && !cgx.b($$0, $$10) ? $$10 : null;
-            }
+            return null;
          }
-      });
+      }
    }
 }

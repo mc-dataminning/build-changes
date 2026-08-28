@@ -1,32 +1,27 @@
-public class fwi extends fwm {
-   private static final xv b = xv.c("multiplayerWarning.header").a(n.r);
-   private static final xv c = xv.c("multiplayerWarning.message");
-   private static final xv d = xv.c("multiplayerWarning.check");
-   private static final xv s = b.f().f("\n").b(c);
-   private final ftr u;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fwi(ftr $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+public class fwi implements fwh {
+   public static final fwh a = new fwi();
+
+   private fwi() {
    }
 
    @Override
-   protected fro l() {
-      frr $$0 = frr.e().a(8);
-      $$0.a(fny.a(xu.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.az();
-         }
-
-         this.m.a(new fwh(this.u));
-      }).a());
-      $$0.a(fny.a(xu.k, $$0x -> this.aP_()).a());
-      return $$0;
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
    }
 
-   @Override
-   public void aP_() {
-      this.m.a(this.u);
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+      }
+
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
+      }
    }
 }

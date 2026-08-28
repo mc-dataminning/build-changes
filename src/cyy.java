@@ -1,20 +1,19 @@
-public class cyy extends cxg {
-   public cyy(czb $$0, float $$1, float $$2, cxg.a $$3) {
-      super($$0.a($$3, $$1, $$2));
+import javax.annotation.Nullable;
+
+public class cyy extends cvp {
+   public cyy(cxk.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dxn $$0, dha $$1, jh $$2, cps $$3) {
-      return !$$3.b();
+   public cqd a(dhh $$0, cxo $$1, bwf $$2, @Nullable cxo $$3) {
+      return new cqv($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public boolean a(cxk $$0, bwb $$1, bwb $$2) {
-      return true;
-   }
-
-   @Override
-   public void b(cxk $$0, bwb $$1, bwb $$2) {
-      $$0.a(1, $$2, bvn.a);
+   public cqp a(dhh $$0, ka $$1, cxo $$2, jm $$3) {
+      cqv $$4 = new cqv($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.c = cqd.a.b;
+      return $$4;
    }
 }

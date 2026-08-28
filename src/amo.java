@@ -39,17 +39,17 @@ public class amo {
    }
 
    private void a(Collection<ik<ew>> $$0, alz $$1) {
-      bpn.a().a($$1::toString);
+      bpr.a().a($$1::toString);
 
       for (ik<ew> $$2 : $$0) {
          this.a($$2, this.c());
       }
 
-      bpn.a().c();
+      bpr.a().c();
    }
 
    public void a(ik<ew> $$0, ew $$1) {
-      bpo $$2 = bpn.a();
+      bps $$2 = bpr.a();
       $$2.a(() -> "function " + $$0.a());
 
       try {

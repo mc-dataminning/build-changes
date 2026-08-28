@@ -1,18 +1,22 @@
-import java.util.Map;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class hdl extends avz<dfk> {
-   public static final dfk a = new dfk(Map.of());
-   private Map<alz, dfk> b = Map.of();
+public interface hdl {
+   List<gmq> a(@Nullable dxu var1, @Nullable jm var2, bam var3);
 
-   public hdl() {
-      super(dfk.a, "models/equipment");
-   }
+   boolean a();
 
-   protected void a(Map<alz, dfk> $$0, avv $$1, bpo $$2) {
-      this.b = Map.copyOf($$0);
-   }
+   boolean b();
 
-   public dfk a(alz $$0) {
-      return this.b.getOrDefault($$0, a);
+   boolean c();
+
+   boolean d();
+
+   hbj e();
+
+   gnb f();
+
+   default gmp g() {
+      return gmp.a;
    }
 }

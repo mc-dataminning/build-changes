@@ -7,7 +7,7 @@ public class ags implements aac<acr> {
    private final float f;
    private final long g;
 
-   public ags(jq<axe> $$0, axg $$1, bvf $$2, float $$3, float $$4, long $$5) {
+   public ags(jq<axe> $$0, axg $$1, bvj $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.ar();

@@ -1,59 +1,35 @@
-public class cbx implements cby {
-   private final bwd a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.google.common.collect.ImmutableMap;
 
-   public cbx(bwd $$0) {
-      this.a = $$0;
+public class cbx<E extends coz> extends bxy<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public cbx(int $$0) {
+      super(ImmutableMap.of(cfj.aB, cfk.a, cfj.o, cfk.b, cfj.m, cfk.b, cfj.n, cfk.c, cfj.B, cfk.c, cfj.az, cfk.c, cfj.aG, cfk.c), $$0);
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aX = this.a.dL();
-         this.c();
-         this.f = this.a.aZ;
-         this.e = 0;
-      } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aZ - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aZ;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
-         }
+   protected boolean a(ash $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(ash $$0, E $$1, long $$2) {
+      $$1.a(axf.Cu, 5.0F, 1.0F);
+   }
+
+   protected void c(ash $$0, E $$1, long $$2) {
+      if ($$1.c(bwr.m)) {
+         $$1.b(bwr.a);
       }
-   }
 
-   private void b() {
-      this.a.aX = bae.c(this.a.aX, this.a.aZ, (float)this.a.aa());
-   }
+      $$1.eb().b(cfj.aB);
+      $$1.eb().c(cfj.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
+         }
 
-   private void c() {
-      this.a.aZ = bae.c(this.a.aZ, this.a.aX, (float)this.a.aa());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = bae.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.aa() * (1.0F - $$1);
-      this.a.aX = bae.c(this.a.aX, this.a.aZ, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.da() instanceof bwd);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dA() - this.a.K;
-      double $$1 = this.a.dG() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+         if (!$$1.eb().a(cfj.az)) {
+            cpa.a($$1, $$1x.dv());
+         }
+      });
    }
 }

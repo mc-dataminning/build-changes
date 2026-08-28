@@ -1,71 +1,46 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-class gon {
-   private final Map<jh, dup> a;
-   @Nullable
-   private final List<eaa<dxn>> b;
-   private final boolean c;
-   private final dzs d;
+public class gon<T extends dwq> implements gnu<T> {
+   public static final alz a = alz.b("textures/environment/end_sky.png");
+   public static final alz b = alz.b("textures/entity/end_portal.png");
 
-   gon(dzs $$0) {
-      this.d = $$0;
-      this.c = $$0.E().ai();
-      this.a = ImmutableMap.copyOf($$0.F());
-      if ($$0 instanceof dzo) {
-         this.b = null;
-      } else {
-         dzt[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
+   public gon(gnv.a $$0) {
+   }
 
-         for (dzt $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
+   public void a(T $$0, float $$1, fgq $$2, glj $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
+
+   private void a(T $$0, Matrix4f $$1, fgu $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jm.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jm.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jm.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jm.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jm.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jm.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, fgu $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jm $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7);
+         $$2.a($$1, $$4, $$5, $$8);
+         $$2.a($$1, $$4, $$6, $$9);
+         $$2.a($$1, $$3, $$6, $$10);
       }
    }
 
-   @Nullable
-   public dup a(jh $$0) {
-      return this.a.get($$0);
+   protected float b() {
+      return 0.75F;
    }
 
-   public dxn b(jh $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dxn $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dkg.in.m();
-         }
+   protected float c() {
+      return 0.375F;
+   }
 
-         if ($$2 == 70) {
-            $$4 = ecz.a($$1, $$3);
-         }
-
-         return $$4 == null ? dkg.a.m() : $$4;
-      } else if (this.b == null) {
-         return dkg.a.m();
-      } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               eaa<dxn> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return dkg.a.m();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
-         }
-      }
+   protected glt d() {
+      return glt.t();
    }
 }

@@ -1,104 +1,161 @@
-public class ctg extends csx {
-   private final bsx m;
-   private final int n;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   private ctg(cug<?> $$0, int $$1, cpr $$2, int $$3) {
-      this($$0, $$1, $$2, new btl(9 * $$3), $$3);
+public class ctg extends ctb {
+   private static final int m = 0;
+   private static final int n = 1;
+   private static final int o = 3;
+   private static final int p = 1;
+   private static final int q = 28;
+   private static final int r = 28;
+   private static final int s = 37;
+   private static final int t = 0;
+   private final btb u = new btp(1) {
+      @Override
+      public boolean b(int $$0, cxo $$1) {
+         return $$1.a(ayd.bc);
+      }
+
+      @Override
+      public int ao_() {
+         return 1;
+      }
+   };
+   private final ctg.a v;
+   private final cto w;
+   private final ctn x;
+
+   public ctg(int $$0, btb $$1) {
+      this($$0, $$1, new cux(3), cto.a);
    }
 
-   public static ctg a(int $$0, cpr $$1) {
-      return new ctg(cug.a, $$0, $$1, 1);
+   public ctg(int $$0, btb $$1, ctn $$2, cto $$3) {
+      super(cuk.j, $$0);
+      a($$2, 3);
+      this.x = $$2;
+      this.w = $$3;
+      this.v = new ctg.a(this.u, 0, 136, 110);
+      this.a(this.v);
+      this.a($$2);
+      this.c($$1, 36, 137);
    }
 
-   public static ctg b(int $$0, cpr $$1) {
-      return new ctg(cug.b, $$0, $$1, 2);
-   }
-
-   public static ctg c(int $$0, cpr $$1) {
-      return new ctg(cug.c, $$0, $$1, 3);
-   }
-
-   public static ctg d(int $$0, cpr $$1) {
-      return new ctg(cug.d, $$0, $$1, 4);
-   }
-
-   public static ctg e(int $$0, cpr $$1) {
-      return new ctg(cug.e, $$0, $$1, 5);
-   }
-
-   public static ctg f(int $$0, cpr $$1) {
-      return new ctg(cug.f, $$0, $$1, 6);
-   }
-
-   public static ctg a(int $$0, cpr $$1, bsx $$2) {
-      return new ctg(cug.c, $$0, $$1, $$2, 3);
-   }
-
-   public static ctg b(int $$0, cpr $$1, bsx $$2) {
-      return new ctg(cug.f, $$0, $$1, $$2, 6);
-   }
-
-   public ctg(cug<?> $$0, int $$1, cpr $$2, bsx $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.m = $$3;
-      this.n = $$4;
-      $$3.c_($$2.k);
-      int $$5 = 18;
-      this.d($$3, 8, 18);
-      int $$6 = 18 + this.n * 18 + 13;
-      this.c($$2, 8, $$6);
-   }
-
-   private void d(bsx $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.n; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cuu($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
+   @Override
+   public void a(cpw $$0) {
+      super.a($$0);
+      if (!$$0.dV().C) {
+         cxo $$1 = this.v.a(this.v.a());
+         if (!$$1.f()) {
+            $$0.a($$1, false);
          }
       }
    }
 
    @Override
-   public boolean b(cps $$0) {
-      return this.m.a($$0);
+   public boolean b(cpw $$0) {
+      return a(this.w, $$0, dkn.gc);
    }
 
    @Override
-   public cxk b(cps $$0, int $$1) {
-      cxk $$2 = cxk.k;
-      cuu $$3 = this.k.get($$1);
+   public void b(int $$0, int $$1) {
+      super.b($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public cxo b(cpw $$0, int $$1) {
+      cxo $$2 = cxo.k;
+      cuy $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cxk $$4 = $$3.g();
+         cxo $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 < this.n * 9) {
-            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
-               return cxk.k;
+         if ($$1 == 0) {
+            if (!this.a($$4, 1, 37, true)) {
+               return cxo.k;
             }
-         } else if (!this.a($$4, 0, this.n * 9, false)) {
-            return cxk.k;
+
+            $$3.b($$4, $$2);
+         } else if (!this.v.h() && this.v.a($$4) && $$4.L() == 1) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cxo.k;
+            }
+         } else if ($$1 >= 1 && $$1 < 28) {
+            if (!this.a($$4, 28, 37, false)) {
+               return cxo.k;
+            }
+         } else if ($$1 >= 28 && $$1 < 37) {
+            if (!this.a($$4, 1, 28, false)) {
+               return cxo.k;
+            }
+         } else if (!this.a($$4, 1, 37, false)) {
+            return cxo.k;
          }
 
          if ($$4.f()) {
-            $$3.e(cxk.k);
+            $$3.e(cxo.k);
          } else {
             $$3.c();
          }
+
+         if ($$4.L() == $$2.L()) {
+            return cxo.k;
+         }
+
+         $$3.a($$0, $$4);
       }
 
       return $$2;
    }
 
-   @Override
-   public void a(cps $$0) {
-      super.a($$0);
-      this.m.c($$0);
+   public int l() {
+      return this.x.a(0);
    }
 
-   public bsx l() {
-      return this.m;
+   public static int a(@Nullable jq<bum> $$0) {
+      return $$0 == null ? 0 : ma.d.t().a($$0) + 1;
    }
 
-   public int m() {
-      return this.n;
+   @Nullable
+   public static jq<bum> e(int $$0) {
+      return $$0 == 0 ? null : ma.d.t().a($$0 - 1);
+   }
+
+   @Nullable
+   public jq<bum> m() {
+      return e(this.x.a(1));
+   }
+
+   @Nullable
+   public jq<bum> n() {
+      return e(this.x.a(2));
+   }
+
+   public void a(Optional<jq<bum>> $$0, Optional<jq<bum>> $$1) {
+      if (this.v.h()) {
+         this.x.a(1, a($$0.orElse(null)));
+         this.x.a(2, a($$1.orElse(null)));
+         this.v.a(1);
+         this.w.a(dhh::q);
+      }
+   }
+
+   public boolean o() {
+      return !this.u.a(0).f();
+   }
+
+   class a extends cuy {
+      public a(final btb $$0, final int $$1, final int $$2, final int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(cxo $$0) {
+         return $$0.a(ayd.bc);
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
    }
 }

@@ -1,30 +1,37 @@
-public class gts<T extends cir> extends gqd<T, gzm, gdi> {
-   private static final alz a = alz.b("textures/entity/squid/squid.png");
+public class gts extends gsu<cnf, gzp, gdi> {
+   public static final alz a = alz.b("textures/entity/slime/slime.png");
 
-   public gts(grj.a $$0, gdi $$1, gdi $$2) {
-      super($$0, $$1, $$2, 0.7F);
+   public gts(gro.a $$0) {
+      super($$0, new gdi($$0.a(gel.cL)), 0.25F);
+      this.a(new gwh(this, $$0.f()));
    }
 
-   public alz a(gzm $$0) {
+   public void a(gzp $$0, fgq $$1, glj $$2, int $$3) {
+      this.f = 0.25F * (float)$$0.b;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(gzp $$0, fgq $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
+   }
+
+   public alz a(gzp $$0) {
       return a;
    }
 
-   public gzm b() {
-      return new gzm();
+   public gzp b() {
+      return new gzp();
    }
 
-   public void a(T $$0, gzm $$1, float $$2) {
+   public void a(cnf $$0, gzp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = bae.h($$2, $$0.cg, $$0.cf);
-      $$1.b = bae.h($$2, $$0.ca, $$0.bZ);
-      $$1.c = bae.h($$2, $$0.cc, $$0.cb);
-   }
-
-   protected void a(gzm $$0, fgl $$1, float $$2, float $$3) {
-      $$1.a(0.0F, $$0.ae ? 0.25F : 0.5F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$2));
-      $$1.a(a.b.rotationDegrees($$0.b));
-      $$1.a(a.d.rotationDegrees($$0.c));
-      $$1.a(0.0F, $$0.ae ? -0.6F : -1.2F, 0.0F);
+      $$1.a = bae.h($$2, $$0.bZ, $$0.bY);
+      $$1.b = $$0.gm();
    }
 }

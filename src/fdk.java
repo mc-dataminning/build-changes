@@ -1,73 +1,132 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record fdk<T>(T d, jh e, long f, fdo g, long h) {
-   public static final Comparator<fdk<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+public class fdk<T> implements fdq<T>, fds<T> {
+   private final Queue<fdp<T>> a = new PriorityQueue<>(fdp.a);
+   @Nullable
+   private List<fdo<T>> b;
+   private final Set<fdp<?>> c = new ObjectOpenCustomHashSet(fdp.c);
+   @Nullable
+   private BiConsumer<fdk<T>, fdp<T>> d;
+
+   public fdk() {
+   }
+
+   public fdk(List<fdo<T>> $$0) {
+      this.b = $$0;
+
+      for (fdo<T> $$1 : $$0) {
+         this.c.add(fdp.a($$1.a(), $$1.b()));
       }
-   };
-   public static final Comparator<fdk<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<fdk<?>> c = new Strategy<fdk<?>>() {
-      public int a(fdk<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+   }
+
+   public void a(@Nullable BiConsumer<fdk<T>, fdp<T>> $$0) {
+      this.d = $$0;
+   }
+
+   @Nullable
+   public fdp<T> b() {
+      return this.a.peek();
+   }
+
+   @Nullable
+   public fdp<T> c() {
+      fdp<T> $$0 = this.a.poll();
+      if ($$0 != null) {
+         this.c.remove($$0);
       }
 
-      public boolean a(@Nullable fdk<?> $$0, @Nullable fdk<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+      return $$0;
+   }
+
+   @Override
+   public void a(fdp<T> $$0) {
+      if (this.c.add($$0)) {
+         this.b($$0);
+      }
+   }
+
+   private void b(fdp<T> $$0) {
+      this.a.add($$0);
+      if (this.d != null) {
+         this.d.accept(this, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(jh $$0, T $$1) {
+      return this.c.contains(fdp.a($$1, $$0));
+   }
+
+   public void a(Predicate<fdp<T>> $$0) {
+      Iterator<fdp<T>> $$1 = this.a.iterator();
+
+      while ($$1.hasNext()) {
+         fdp<T> $$2 = $$1.next();
+         if ($$0.test($$2)) {
+            $$1.remove();
+            this.c.remove($$2);
          }
       }
-   };
-
-   public fdk(T $$0, jh $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, fdo.d, $$3);
    }
 
-   public fdk(T d, jh e, long f, fdo g, long h) {
-      e = e.j();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
+   public Stream<fdp<T>> d() {
+      return this.a.stream();
    }
 
-   public static <T> fdk<T> a(T $$0, jh $$1) {
-      return new fdk<>($$0, $$1, 0L, fdo.d, 0L);
+   @Override
+   public int a() {
+      return this.a.size() + (this.b != null ? this.b.size() : 0);
    }
 
-   public fdj<T> a(long $$0) {
-      return new fdj<>(this.d, this.e, (int)(this.f - $$0), this.g);
+   @Override
+   public List<fdo<T>> a(long $$0) {
+      List<fdo<T>> $$1 = new ArrayList<>(this.a.size());
+      if (this.b != null) {
+         $$1.addAll(this.b);
+      }
+
+      for (fdp<T> $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public T a() {
-      return this.d;
+   public vd a(long $$0, Function<T, String> $$1) {
+      vd $$2 = new vd();
+
+      for (fdo<T> $$4 : this.a($$0)) {
+         $$2.add($$4.a($$1));
+      }
+
+      return $$2;
    }
 
-   public jh b() {
-      return this.e;
+   public void b(long $$0) {
+      if (this.b != null) {
+         int $$1 = -this.b.size();
+
+         for (fdo<T> $$2 : this.b) {
+            this.b($$2.a($$0, (long)($$1++)));
+         }
+      }
+
+      this.b = null;
    }
 
-   public long c() {
-      return this.f;
-   }
-
-   public fdo d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+   public static <T> fdk<T> a(vd $$0, Function<String, Optional<T>> $$1, dgn $$2) {
+      return new fdk<>(fdo.a($$0, $$1, $$2));
    }
 }

@@ -1,130 +1,261 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.nio.ByteOrder;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 
-public class fgl {
-   private final Deque<fgl.a> a = ae.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new fgl.a($$1, $$2));
-   });
+public class fgl implements fgu {
+   private static final long a = -1L;
+   private static final long b = -1L;
+   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+   private final fgn d;
+   private long e = -1L;
+   private int f;
+   private final fgv g;
+   private final fgv.c h;
+   private final boolean i;
+   private final boolean j;
+   private final int k;
+   private final int l;
+   private final int[] m;
+   private int n;
+   private boolean o = true;
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      fgl.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
-   }
-
-   public void a(fbs $$0) {
-      this.a($$0.d, $$0.e, $$0.f);
-   }
-
-   public void b(float $$0, float $$1, float $$2) {
-      fgl.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
-         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
-            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
-         }
+   public fgl(fgn $$0, fgv.c $$1, fgv $$2) {
+      if (!$$2.b(fgw.b)) {
+         throw new IllegalArgumentException("Cannot build mesh with no position element");
       } else {
-         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
-         $$3.c = false;
+         this.d = $$0;
+         this.h = $$1;
+         this.g = $$2;
+         this.k = $$2.b();
+         this.l = $$2.f() & ~fgw.b.a();
+         this.m = $$2.e();
+         boolean $$3 = $$2 == fgo.c;
+         boolean $$4 = $$2 == fgo.b;
+         this.i = $$3 || $$4;
+         this.j = $$3;
       }
    }
 
-   public void a(Quaternionf $$0) {
-      fgl.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
+   @Nullable
+   public fgp a() {
+      this.c();
+      this.f();
+      fgp $$0 = this.d();
+      this.o = false;
+      this.e = -1L;
+      return $$0;
    }
 
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      fgl.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
+   public fgp b() {
+      fgp $$0 = this.a();
+      if ($$0 == null) {
+         throw new IllegalStateException("BufferBuilder was empty");
+      } else {
+         return $$0;
+      }
    }
 
-   public void a() {
-      this.a.addLast(new fgl.a(this.a.getLast()));
+   private void c() {
+      if (!this.o) {
+         throw new IllegalStateException("Not building!");
+      }
    }
 
-   public void b() {
-      this.a.removeLast();
-   }
-
-   public fgl.a c() {
-      return this.a.getLast();
-   }
-
-   public boolean d() {
-      return this.a.size() == 1;
-   }
-
-   public void e() {
-      fgl.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
-      $$0.c = true;
-   }
-
-   public void a(Matrix4f $$0) {
-      fgl.a $$1 = this.a.getLast();
-      $$1.a.mul($$0);
-      if (!f.a($$0)) {
-         if (f.b($$0)) {
-            $$1.b.mul(new Matrix3f($$0));
+   @Nullable
+   private fgp d() {
+      if (this.f == 0) {
+         return null;
+      } else {
+         fgn.a $$0 = this.d.a();
+         if ($$0 == null) {
+            return null;
          } else {
-            $$1.d();
+            int $$1 = this.h.a(this.f);
+            fgv.b $$2 = fgv.b.a(this.f);
+            return new fgp($$0, new fgp.a(this.g, this.f, $$1, this.h, $$2));
          }
       }
    }
 
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
-      boolean c = true;
+   private long e() {
+      this.c();
+      this.f();
+      this.f++;
+      long $$0 = this.d.a(this.k);
+      this.e = $$0;
+      return $$0;
+   }
 
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private long a(fgw $$0) {
+      int $$1 = this.n;
+      int $$2 = $$1 & ~$$0.a();
+      if ($$2 == $$1) {
+         return -1L;
+      } else {
+         this.n = $$2;
+         long $$3 = this.e;
+         if ($$3 == -1L) {
+            throw new IllegalArgumentException("Not currently building vertex");
+         } else {
+            return $$3 + (long)this.m[$$0.c()];
+         }
+      }
+   }
+
+   private void f() {
+      if (this.f != 0) {
+         if (this.n != 0) {
+            String $$0 = fgw.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
+            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+         } else {
+            if (this.h == fgv.c.a || this.h == fgv.c.b) {
+               long $$1 = this.d.a(this.k);
+               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
+               this.f++;
+            }
+         }
+      }
+   }
+
+   private static void a(long $$0, int $$1) {
+      int $$2 = ayp.j($$1);
+      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
+   }
+
+   private static void b(long $$0, int $$1) {
+      if (c) {
+         MemoryUtil.memPutInt($$0, $$1);
+      } else {
+         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
+         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
+      }
+   }
+
+   @Override
+   public fgu a(float $$0, float $$1, float $$2) {
+      long $$3 = this.e() + (long)this.m[fgw.b.c()];
+      this.n = this.l;
+      MemoryUtil.memPutFloat($$3, $$0);
+      MemoryUtil.memPutFloat($$3 + 4L, $$1);
+      MemoryUtil.memPutFloat($$3 + 8L, $$2);
+      return this;
+   }
+
+   @Override
+   public fgu a(int $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.a(fgw.c);
+      if ($$4 != -1L) {
+         MemoryUtil.memPutByte($$4, (byte)$$0);
+         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
+         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
+         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
       }
 
-      a(fgl.a $$0) {
-         this.a = new Matrix4f($$0.a);
-         this.b = new Matrix3f($$0.b);
-         this.c = $$0.c;
+      return this;
+   }
+
+   @Override
+   public fgu a(int $$0) {
+      long $$1 = this.a(fgw.c);
+      if ($$1 != -1L) {
+         a($$1, $$0);
       }
 
-      void d() {
-         this.b.set(this.a).invert().transpose();
-         this.c = false;
+      return this;
+   }
+
+   @Override
+   public fgu a(float $$0, float $$1) {
+      long $$2 = this.a(fgw.d);
+      if ($$2 != -1L) {
+         MemoryUtil.memPutFloat($$2, $$0);
+         MemoryUtil.memPutFloat($$2 + 4L, $$1);
       }
 
-      public Matrix4f a() {
-         return this.a;
+      return this;
+   }
+
+   @Override
+   public fgu a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fgw.f);
+   }
+
+   @Override
+   public fgu b(int $$0) {
+      long $$1 = this.a(fgw.f);
+      if ($$1 != -1L) {
+         b($$1, $$0);
       }
 
-      public Matrix3f b() {
-         return this.b;
+      return this;
+   }
+
+   @Override
+   public fgu b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fgw.g);
+   }
+
+   @Override
+   public fgu c(int $$0) {
+      long $$1 = this.a(fgw.g);
+      if ($$1 != -1L) {
+         b($$1, $$0);
       }
 
-      public Vector3f a(Vector3f $$0, Vector3f $$1) {
-         return this.a($$0.x, $$0.y, $$0.z, $$1);
+      return this;
+   }
+
+   private fgu a(short $$0, short $$1, fgw $$2) {
+      long $$3 = this.a($$2);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutShort($$3, $$0);
+         MemoryUtil.memPutShort($$3 + 2L, $$1);
       }
 
-      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
-         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
-         return this.c ? $$4 : $$4.normalize();
+      return this;
+   }
+
+   @Override
+   public fgu b(float $$0, float $$1, float $$2) {
+      long $$3 = this.a(fgw.h);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutByte($$3, a($$0));
+         MemoryUtil.memPutByte($$3 + 1L, a($$1));
+         MemoryUtil.memPutByte($$3 + 2L, a($$2));
       }
 
-      public fgl.a c() {
-         return new fgl.a(this);
+      return this;
+   }
+
+   private static byte a(float $$0) {
+      return (byte)((int)(bae.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      if (this.i) {
+         long $$11 = this.e();
+         MemoryUtil.memPutFloat($$11 + 0L, $$0);
+         MemoryUtil.memPutFloat($$11 + 4L, $$1);
+         MemoryUtil.memPutFloat($$11 + 8L, $$2);
+         a($$11 + 12L, $$3);
+         MemoryUtil.memPutFloat($$11 + 16L, $$4);
+         MemoryUtil.memPutFloat($$11 + 20L, $$5);
+         long $$12;
+         if (this.j) {
+            b($$11 + 24L, $$6);
+            $$12 = $$11 + 28L;
+         } else {
+            $$12 = $$11 + 24L;
+         }
+
+         b($$12 + 0L, $$7);
+         MemoryUtil.memPutByte($$12 + 4L, a($$8));
+         MemoryUtil.memPutByte($$12 + 5L, a($$9));
+         MemoryUtil.memPutByte($$12 + 6L, a($$10));
+      } else {
+         fgu.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 }

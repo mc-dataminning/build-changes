@@ -10,28 +10,28 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
 public abstract class ary {
-   private static final List<eaj> a = eaj.a();
-   private static final arn<dzi> e = arn.a("Not done yet");
-   public static final arn<dzi> b = arn.a("Unloaded chunk");
-   public static final CompletableFuture<arn<dzi>> c = CompletableFuture.completedFuture(b);
-   protected final dgg d;
+   private static final List<eaq> a = eaq.a();
+   private static final arn<dzp> e = arn.a("Not done yet");
+   public static final arn<dzp> b = arn.a("Unloaded chunk");
+   public static final CompletableFuture<arn<dzp>> c = CompletableFuture.completedFuture(b);
+   protected final dgn d;
    @Nullable
-   private volatile eaj f;
-   private final AtomicReference<eaj> g = new AtomicReference<>();
-   private final AtomicReferenceArray<CompletableFuture<arn<dzi>>> h = new AtomicReferenceArray<>(a.size());
+   private volatile eaq f;
+   private final AtomicReference<eaq> g = new AtomicReference<>();
+   private final AtomicReferenceArray<CompletableFuture<arn<dzp>>> h = new AtomicReferenceArray<>(a.size());
    private final AtomicReference<arj> i = new AtomicReference<>();
    private final AtomicInteger j = new AtomicInteger();
    private volatile CompletableFuture<Void> k = CompletableFuture.completedFuture(null);
 
-   public ary(dgg $$0) {
+   public ary(dgn $$0) {
       this.d = $$0;
    }
 
-   public CompletableFuture<arn<dzi>> a(eaj $$0, arm $$1) {
+   public CompletableFuture<arn<dzp>> a(eaq $$0, arm $$1) {
       if (this.f($$0)) {
          return c;
       } else {
-         CompletableFuture<arn<dzi>> $$2 = this.c($$0);
+         CompletableFuture<arn<dzp>> $$2 = this.c($$0);
          if ($$2.isDone()) {
             return $$2;
          } else {
@@ -45,7 +45,7 @@ public abstract class ary {
       }
    }
 
-   CompletableFuture<arn<dzi>> a(eam $$0, arx $$1, bay<ary> $$2) {
+   CompletableFuture<arn<dzp>> a(eat $$0, arx $$1, bay<ary> $$2) {
       if (this.f($$0.a())) {
          return c;
       } else {
@@ -63,8 +63,8 @@ public abstract class ary {
    }
 
    protected void a(arm $$0) {
-      eaj $$1 = this.f;
-      eaj $$2 = arl.a(this.i());
+      eaq $$1 = this.f;
+      eaq $$2 = arl.a(this.i());
       this.f = $$2;
       boolean $$3 = $$1 != null && ($$2 == null || $$2.d($$1));
       if ($$3) {
@@ -75,14 +75,14 @@ public abstract class ary {
       }
    }
 
-   public void a(dzr $$0) {
-      CompletableFuture<arn<dzi>> $$1 = CompletableFuture.completedFuture(arn.a($$0));
+   public void a(dzy $$0) {
+      CompletableFuture<arn<dzp>> $$1 = CompletableFuture.completedFuture(arn.a($$0));
 
       for (int $$2 = 0; $$2 < this.h.length() - 1; $$2++) {
-         CompletableFuture<arn<dzi>> $$3 = this.h.get($$2);
+         CompletableFuture<arn<dzp>> $$3 = this.h.get($$2);
          Objects.requireNonNull($$3);
-         dzi $$4 = $$3.getNow(e).b(null);
-         if (!($$4 instanceof eac)) {
+         dzp $$4 = $$3.getNow(e).b(null);
+         if (!($$4 instanceof eaj)) {
             throw new IllegalStateException("Trying to replace a ProtoChunk, but found " + $$4);
          }
 
@@ -96,7 +96,7 @@ public abstract class ary {
       this.i.compareAndSet($$0, null);
    }
 
-   private void a(arm $$0, @Nullable eaj $$1) {
+   private void a(arm $$0, @Nullable eaq $$1) {
       arj $$2;
       if ($$1 != null) {
          $$2 = $$0.a($$1, this.q());
@@ -110,15 +110,15 @@ public abstract class ary {
       }
    }
 
-   private CompletableFuture<arn<dzi>> c(eaj $$0) {
+   private CompletableFuture<arn<dzp>> c(eaq $$0) {
       if (this.f($$0)) {
          return c;
       } else {
          int $$1 = $$0.b();
-         CompletableFuture<arn<dzi>> $$2 = this.h.get($$1);
+         CompletableFuture<arn<dzp>> $$2 = this.h.get($$1);
 
          while ($$2 == null) {
-            CompletableFuture<arn<dzi>> $$3 = new CompletableFuture<>();
+            CompletableFuture<arn<dzp>> $$3 = new CompletableFuture<>();
             $$2 = this.h.compareAndExchange($$1, null, $$3);
             if ($$2 == null) {
                if (this.f($$0)) {
@@ -134,30 +134,30 @@ public abstract class ary {
       }
    }
 
-   private void a(@Nullable eaj $$0, eaj $$1) {
+   private void a(@Nullable eaq $$0, eaq $$1) {
       int $$2 = $$0 == null ? 0 : $$0.b() + 1;
       int $$3 = $$1.b();
 
       for (int $$4 = $$2; $$4 <= $$3; $$4++) {
-         CompletableFuture<arn<dzi>> $$5 = this.h.get($$4);
+         CompletableFuture<arn<dzp>> $$5 = this.h.get($$4);
          if ($$5 != null) {
             this.a($$4, $$5);
          }
       }
    }
 
-   private void a(int $$0, CompletableFuture<arn<dzi>> $$1) {
+   private void a(int $$0, CompletableFuture<arn<dzp>> $$1) {
       if ($$1.complete(b) && !this.h.compareAndSet($$0, $$1, null)) {
          throw new IllegalStateException("Nothing else should replace the future here");
       }
    }
 
-   private void a(eaj $$0, dzi $$1) {
-      arn<dzi> $$2 = arn.a($$1);
+   private void a(eaq $$0, dzp $$1) {
+      arn<dzp> $$2 = arn.a($$1);
       int $$3 = $$0.b();
 
       while (true) {
-         CompletableFuture<arn<dzi>> $$4 = this.h.get($$3);
+         CompletableFuture<arn<dzp>> $$4 = this.h.get($$3);
          if ($$4 == null) {
             if (this.h.compareAndSet($$3, null, CompletableFuture.completedFuture($$2))) {
                return;
@@ -177,18 +177,18 @@ public abstract class ary {
    }
 
    @Nullable
-   private eaj d(@Nullable eaj $$0) {
+   private eaq d(@Nullable eaq $$0) {
       if ($$0 == null) {
          return null;
       } else {
-         eaj $$1 = $$0;
+         eaq $$1 = $$0;
 
-         for (eaj $$2 = this.g.get(); $$2 == null || $$1.b($$2); $$1 = $$1.c()) {
+         for (eaq $$2 = this.g.get(); $$2 == null || $$1.b($$2); $$1 = $$1.c()) {
             if (this.h.get($$1.b()) != null) {
                return $$1;
             }
 
-            if ($$1 == eaj.c) {
+            if ($$1 == eaq.c) {
                break;
             }
          }
@@ -197,9 +197,9 @@ public abstract class ary {
       }
    }
 
-   private boolean e(eaj $$0) {
-      eaj $$1 = $$0 == eaj.c ? null : $$0.c();
-      eaj $$2 = this.g.compareAndExchange($$1, $$0);
+   private boolean e(eaq $$0) {
+      eaq $$1 = $$0 == eaq.c ? null : $$0.c();
+      eaq $$2 = this.g.compareAndExchange($$1, $$0);
       if ($$2 == $$1) {
          return true;
       } else if ($$2 != null && !$$0.b($$2)) {
@@ -209,8 +209,8 @@ public abstract class ary {
       }
    }
 
-   private boolean f(eaj $$0) {
-      eaj $$1 = this.f;
+   private boolean f(eaq $$0) {
+      eaq $$1 = this.f;
       return $$1 == null || $$0.b($$1);
    }
 
@@ -236,35 +236,35 @@ public abstract class ary {
    }
 
    @Nullable
-   public dzi a(eaj $$0) {
-      CompletableFuture<arn<dzi>> $$1 = this.h.get($$0.b());
+   public dzp a(eaq $$0) {
+      CompletableFuture<arn<dzp>> $$1 = this.h.get($$0.b());
       return $$1 == null ? null : $$1.getNow(e).b(null);
    }
 
    @Nullable
-   public dzi b(eaj $$0) {
+   public dzp b(eaq $$0) {
       return this.f($$0) ? null : this.a($$0);
    }
 
    @Nullable
-   public dzi o() {
-      eaj $$0 = this.g.get();
+   public dzp o() {
+      eaq $$0 = this.g.get();
       if ($$0 == null) {
          return null;
       } else {
-         dzi $$1 = this.a($$0);
+         dzp $$1 = this.a($$0);
          return $$1 != null ? $$1 : this.a($$0.c());
       }
    }
 
    @Nullable
-   public eaj p() {
-      CompletableFuture<arn<dzi>> $$0 = this.h.get(eaj.c.b());
-      dzi $$1 = $$0 == null ? null : $$0.getNow(e).b(null);
+   public eaq p() {
+      CompletableFuture<arn<dzp>> $$0 = this.h.get(eaq.c.b());
+      dzp $$1 = $$0 == null ? null : $$0.getNow(e).b(null);
       return $$1 == null ? null : $$1.j();
    }
 
-   public dgg q() {
+   public dgn q() {
       return this.d;
    }
 
@@ -277,8 +277,8 @@ public abstract class ary {
    public abstract int j();
 
    @bbl
-   public List<Pair<eaj, CompletableFuture<arn<dzi>>>> s() {
-      List<Pair<eaj, CompletableFuture<arn<dzi>>>> $$0 = new ArrayList<>();
+   public List<Pair<eaq, CompletableFuture<arn<dzp>>>> s() {
+      List<Pair<eaq, CompletableFuture<arn<dzp>>>> $$0 = new ArrayList<>();
 
       for (int $$1 = 0; $$1 < a.size(); $$1++) {
          $$0.add(Pair.of(a.get($$1), this.h.get($$1)));
@@ -289,10 +289,10 @@ public abstract class ary {
 
    @Nullable
    @bbl
-   public eaj t() {
+   public eaq t() {
       for (int $$0 = a.size() - 1; $$0 >= 0; $$0--) {
-         eaj $$1 = a.get($$0);
-         dzi $$2 = this.a($$1);
+         eaq $$1 = a.get($$0);
+         dzp $$2 = this.a($$1);
          if ($$2 != null) {
             return $$1;
          }

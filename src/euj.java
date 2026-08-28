@@ -1,122 +1,91 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class euj extends euc {
-   private final boolean a;
-   private final Long2ObjectMap<eug> l = new Long2ObjectOpenHashMap();
+public abstract class euj {
+   protected eup b;
+   protected bwh c;
+   protected final Int2ObjectMap<eui> d = new Int2ObjectOpenHashMap();
+   protected int e;
+   protected int f;
+   protected int g;
+   protected boolean h;
+   protected boolean i;
+   protected boolean j;
+   protected boolean k;
 
-   public euj(boolean $$0) {
-      this.a = $$0;
+   public void a(dhu $$0, bwh $$1) {
+      this.b = new eup($$0, $$1);
+      this.c = $$1;
+      this.d.clear();
+      this.e = bae.d($$1.dq() + 1.0F);
+      this.f = bae.d($$1.dr() + 1.0F);
+      this.g = bae.d($$1.dq() + 1.0F);
    }
 
-   @Override
-   public void a(dhn $$0, bwd $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
-   }
-
-   @Override
    public void b() {
-      super.b();
-      this.l.clear();
+      this.b = null;
+      this.c = null;
    }
 
-   @Override
-   public eub a() {
-      return this.c(bae.a(this.c.cR().a), bae.a(this.c.cR().b + 0.5), bae.a(this.c.cR().c));
+   protected eui b(jh $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public euk a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
+   protected eui c(int $$0, int $$1, int $$2) {
+      return (eui)this.d.computeIfAbsent(eui.b($$0, $$1, $$2), $$3 -> new eui($$0, $$1, $$2));
    }
 
-   @Override
-   public int a(eub[] $$0, eub $$1) {
-      int $$2 = 0;
-      Map<jm, eub> $$3 = Maps.newEnumMap(jm.class);
+   public abstract eui a();
 
-      for (jm $$4 : jm.values()) {
-         eub $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.a($$5)) {
-            $$0[$$2++] = $$5;
-         }
-      }
+   public abstract eur a(double var1, double var3, double var5);
 
-      for (jm $$6 : jm.c.a) {
-         jm $$7 = $$6.h();
-         if (b($$3.get($$6)) && b($$3.get($$7))) {
-            eub $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-            if (this.a($$8)) {
-               $$0[$$2++] = $$8;
-            }
-         }
-      }
-
-      return $$2;
+   protected eur b(double $$0, double $$1, double $$2) {
+      return new eur(this.c(bae.a($$0), bae.a($$1), bae.a($$2)));
    }
 
-   protected boolean a(@Nullable eub $$0) {
-      return $$0 != null && !$$0.i;
+   public abstract int a(eui[] var1, eui var2);
+
+   public abstract eun a(eup var1, int var2, int var3, int var4, bwh var5);
+
+   public abstract eun a(eup var1, int var2, int var3, int var4);
+
+   public eun a(bwh $$0, jh $$1) {
+      return this.a(new eup($$0.dV(), $$0), $$1.u(), $$1.v(), $$1.w());
    }
 
-   private static boolean b(@Nullable eub $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
+   public void a(boolean $$0) {
+      this.h = $$0;
    }
 
-   @Nullable
-   protected eub a(int $$0, int $$1, int $$2) {
-      eub $$3 = null;
-      eug $$4 = this.b($$0, $$1, $$2);
-      if (this.a && $$4 == eug.u || $$4 == eug.j) {
-         float $$5 = this.c.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.c($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.b.a().b_(new jh($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
+   public void b(boolean $$0) {
+      this.i = $$0;
    }
 
-   protected eug b(int $$0, int $$1, int $$2) {
-      return (eug)this.l.computeIfAbsent(jh.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2));
+   public void c(boolean $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public eug a(eui $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.c);
+   public void d(boolean $$0) {
+      this.k = $$0;
    }
 
-   @Override
-   public eug a(eui $$0, int $$1, int $$2, int $$3, bwd $$4) {
-      jh.a $$5 = new jh.a();
+   public boolean d() {
+      return this.h;
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.e; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.f; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.g; $$8++) {
-               dxn $$9 = $$0.a($$5.d($$6, $$7, $$8));
-               etp $$10 = $$9.y();
-               if ($$10.c() && $$9.a(eue.b) && $$9.l()) {
-                  return eug.u;
-               }
+   public boolean e() {
+      return this.i;
+   }
 
-               if (!$$10.a(aya.a)) {
-                  return eug.a;
-               }
-            }
-         }
-      }
+   public boolean f() {
+      return this.j;
+   }
 
-      dxn $$11 = $$0.a($$5);
-      return $$11.a(eue.b) ? eug.j : eug.a;
+   public boolean g() {
+      return this.k;
+   }
+
+   public static boolean a(dxu $$0) {
+      return $$0.a(axu.aN) || $$0.a(dkn.K) || $$0.a(dkn.le) || dla.h($$0) || $$0.a(dkn.fJ);
    }
 }

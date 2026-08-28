@@ -1,40 +1,17 @@
-public class ghg extends gjl {
-   ghg(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+public class ghg extends ghi {
+   protected ghg(gfi $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gjl $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(jh.a(this.g, this.h, this.i)).a(aya.a)) {
-         this.k();
-      }
-   }
+   public static class a implements git<lw> {
+      private final gjl a;
 
-   @Override
-   public gip b() {
-      return gip.b;
-   }
-
-   public static class a implements gio<lw> {
-      private final gjg a;
-
-      public a(gjg $$0) {
+      public a(gjl $$0) {
          this.a = $$0;
       }
 
-      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghg $$8 = new ghg($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghg($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
       }
    }
 }

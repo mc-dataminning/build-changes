@@ -1,34 +1,34 @@
-import com.google.common.collect.ImmutableMap;
+public class byb implements bzm {
+   private final jh a;
+   private final fbx b;
 
-public class byb extends bxu<cjm> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
-
-   public byb() {
-      super(ImmutableMap.of(cff.m, cfg.b), 100);
+   public byb(jh $$0) {
+      this.a = $$0.j();
+      this.b = fbx.b($$0);
    }
 
-   protected boolean a(ash $$0, cjm $$1) {
-      return $$1.aw() == bwn.a;
+   public byb(fbx $$0) {
+      this.a = jh.a((ka)$$0);
+      this.b = $$0;
    }
 
-   protected boolean a(ash $$0, cjm $$1, long $$2) {
-      return this.e < 60;
+   @Override
+   public fbx a() {
+      return this.b;
    }
 
-   protected void b(ash $$0, cjm $$1, long $$2) {
-      if (!$$1.bn()) {
-         $$1.b(bwn.i);
-         this.e = 0;
-      }
+   @Override
+   public jh b() {
+      return this.a;
    }
 
-   protected void c(ash $$0, cjm $$1, long $$2) {
-      $$1.b(bwn.a);
+   @Override
+   public boolean a(bwf $$0) {
+      return true;
    }
 
-   protected void d(ash $$0, cjm $$1, long $$2) {
-      this.e++;
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

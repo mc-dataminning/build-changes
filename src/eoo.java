@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eoo {
+public interface eoo {
+   void a(eon var1);
+
+   @Nullable
+   eon a(eob var1);
 }

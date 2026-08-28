@@ -1,77 +1,147 @@
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.UUID;
 
-public class bsy {
-   public static final String a = "Items";
+public abstract class bsy {
+   private final UUID h;
+   protected xv a;
+   protected float b;
+   protected bsy.a c;
+   protected bsy.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   public static cxk a(List<cxk> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : cxk.k;
+   public bsy(UUID $$0, xv $$1, bsy.a $$2, bsy.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   public static cxk a(List<cxk> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cxk.k) : cxk.k;
+   public UUID h() {
+      return this.h;
    }
 
-   public static ux a(ux $$0, jz<cxk> $$1, js.a $$2) {
-      return a($$0, $$1, true, $$2);
+   public xv i() {
+      return this.a;
    }
 
-   public static ux a(ux $$0, jz<cxk> $$1, boolean $$2, js.a $$3) {
-      vd $$4 = new vd();
+   public void a(xv $$0) {
+      this.a = $$0;
+   }
 
-      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
-         cxk $$6 = $$1.get($$5);
-         if (!$$6.f()) {
-            ux $$7 = new ux();
-            $$7.a("Slot", (byte)$$5);
-            $$4.add($$6.b($$3, $$7));
+   public float j() {
+      return this.b;
+   }
+
+   public void a(float $$0) {
+      this.b = $$0;
+   }
+
+   public bsy.a k() {
+      return this.c;
+   }
+
+   public void a(bsy.a $$0) {
+      this.c = $$0;
+   }
+
+   public bsy.b l() {
+      return this.d;
+   }
+
+   public void a(bsy.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean m() {
+      return this.e;
+   }
+
+   public bsy a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean n() {
+      return this.f;
+   }
+
+   public bsy b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bsy c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(final String $$0, final n $$1) {
+         this.h = $$0;
+         this.i = $$1;
+      }
+
+      public n a() {
+         return this.i;
+      }
+
+      public String b() {
+         return this.h;
+      }
+
+      public static bsy.a a(String $$0) {
+         for (bsy.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
          }
-      }
 
-      if (!$$4.isEmpty() || $$2) {
-         $$0.a("Items", $$4);
-      }
-
-      return $$0;
-   }
-
-   public static void b(ux $$0, jz<cxk> $$1, js.a $$2) {
-      vd $$3 = $$0.c("Items", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         ux $$5 = $$3.a($$4);
-         int $$6 = $$5.f("Slot") & 255;
-         if ($$6 >= 0 && $$6 < $$1.size()) {
-            $$1.set($$6, cxk.a($$2, (vu)$$5).orElse(cxk.k));
-         }
+         return g;
       }
    }
 
-   public static int a(bsx $$0, Predicate<cxk> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cxk $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.f()) {
-            $$0.a($$5, cxk.k);
+      private final String f;
+
+      private b(final String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bsy.b a(String $$0) {
+         for (bsy.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
          }
 
-         $$4 += $$7;
-      }
-
-      return $$4;
-   }
-
-   public static int a(cxk $$0, Predicate<cxk> $$1, int $$2, boolean $$3) {
-      if ($$0.f() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.L();
-      } else {
-         int $$4 = $$2 < 0 ? $$0.L() : Math.min($$2, $$0.L());
-         $$0.h($$4);
-         return $$4;
+         return a;
       }
    }
 }

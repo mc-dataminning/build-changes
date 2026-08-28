@@ -1,99 +1,128 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dpi extends dko implements dkh {
+public class dpi extends drc implements drp {
    public static final MapCodec<dpi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aly.a(mb.aK).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, dpi::new)
+      $$0 -> $$0.group(dxj.a.fieldOf("tree").forGetter($$0x -> $$0x.i), t()).apply($$0, dpi::new)
    );
-   protected static final float b = 3.0F;
-   protected static final fcm c = dke.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final aly<ega<?, ?>> d;
+   public static final dyt b = dyk.au;
+   public static final int c = 4;
+   private static final fcr[] j = new fcr[]{
+      dkl.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
+      dkl.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
+      dkl.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
+      dkl.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
+      dkl.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private static final dyl k = dyk.D;
+   public static final dyl d = dyk.j;
 
    @Override
    public MapCodec<dpi> a() {
       return a;
    }
 
-   public dpi(aly<ega<?, ?>> $$0, dxm.d $$1) {
-      super($$1);
-      this.d = $$0;
+   public dpi(dxj $$0, dxt.d $$1) {
+      super($$0, $$1);
+      this.l(this.F.b().b(f, Integer.valueOf(0)).b(b, Integer.valueOf(0)).b(k, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return c;
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(f).a(b).a(k).a(d);
    }
 
    @Override
-   protected void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
+   protected boolean b(dxu $$0, dgm $$1, jh $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dkn.ee);
+   }
 
-         for (jh $$6 : jh.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
-         }
-
-         jh $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
-      }
+   @Nullable
+   @Override
+   public dxu a(dbf $$0) {
+      etw $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == etx.c;
+      return super.a($$0).b(k, Boolean.valueOf($$2)).b(b, Integer.valueOf(4));
    }
 
    @Override
-   protected boolean b(dxn $$0, dgf $$1, jh $$2) {
-      return $$0.s();
-   }
-
-   @Override
-   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      dxn $$4 = $$1.a_($$3);
-      return $$4.a(axu.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(ash $$0, jh $$1, dxn $$2, bam $$3) {
-      Optional<? extends jq<ega<?, ?>>> $$4 = $$0.K_().e(mb.aK).a(this.d);
-      if ($$4.isEmpty()) {
-         return false;
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      fbx $$4 = $$0.a($$2);
+      fcr $$5;
+      if (!$$0.c(d)) {
+         $$5 = j[4];
       } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
+         $$5 = j[$$0.c(b)];
+      }
+
+      return $$5.a($$4.d, $$4.e, $$4.f);
+   }
+
+   @Override
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      return o($$0) ? $$1.a_($$2.d()).a(dkn.aS) : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if ($$0.c(k)) {
+         $$2.a($$3, etx.c, etx.c.a($$1));
+      }
+
+      return $$4 == jm.b && !$$0.a($$1, $$3) ? dkn.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected etw b_(dxu $$0) {
+      return $$0.c(k) ? etx.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if (!o($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
+         }
+      } else {
+         if (!q($$0)) {
+            $$1.a($$2, $$0.a(b), 2);
          }
       }
    }
 
    @Override
-   public boolean b(dhd $$0, jh $$1, dxn $$2) {
-      return true;
+   public boolean b(dhk $$0, jh $$1, dxu $$2) {
+      return !o($$2) || !q($$2);
    }
 
    @Override
-   public boolean a(dha $$0, bam $$1, jh $$2, dxn $$3) {
-      return (double)$$1.i() < 0.4;
+   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
+      return o($$3) ? !q($$3) : super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(ash $$0, bam $$1, jh $$2, dxn $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
+      if (o($$3) && !q($$3)) {
+         $$0.a($$2, $$3.a(b), 2);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private static boolean o(dxu $$0) {
+      return $$0.c(d);
+   }
+
+   private static boolean q(dxu $$0) {
+      return $$0.c(b) == 4;
+   }
+
+   public static dxu c() {
+      return b(0);
+   }
+
+   public static dxu b(int $$0) {
+      return dkn.H.m().b(d, Boolean.valueOf(true)).b(b, Integer.valueOf($$0));
    }
 }

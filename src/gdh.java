@@ -1,38 +1,7 @@
-public class gdh extends gbf<gyz> {
-   private static final int a = 2;
-   private final geh[] b = new geh[2];
-
-   public gdh(geh $$0) {
-      super($$0);
-
-      for (int $$1 = 0; $$1 < 2; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+public abstract class gdh extends gcf {
+   public gdh(gem $$0) {
+      super($$0, glt::i);
    }
 
-   private static String a(int $$0) {
-      return "box" + $$0;
-   }
-
-   public static gen a() {
-      gep $$0 = new gep();
-      ger $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), gem.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gej.a.a($$4));
-      }
-
-      return gen.a($$0, 64, 64);
-   }
-
-   public void a(gyz $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         float $$2 = $$0.p * (float)(-(45 + ($$1 + 1) * 5));
-         this.b[$$1].f = bae.h($$2) * (float) (Math.PI / 180.0);
-      }
-   }
+   public abstract void a(float var1, float var2, float var3);
 }

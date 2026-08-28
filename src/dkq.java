@@ -1,98 +1,83 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dkq extends dke {
+public class dkq extends djx {
    public static final MapCodec<dkq> a = b(dkq::new);
-   public static final dym b = dyd.ax;
-   public static final int c = 15;
-   protected static final int d = 1;
-   protected static final fcm e = dke.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
-   protected static final fcm f = dke.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   public static final dyl[] b = new dyl[]{dyk.k, dyk.l, dyk.m};
+   protected static final fcr c = fco.a(dkl.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dkl.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
 
    @Override
    public MapCodec<dkq> a() {
       return a;
    }
 
-   protected dkq(dxm.d $$0) {
+   public dkq(dxt.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)));
+      this.l(this.F.b().b(b[0], Boolean.valueOf(false)).b(b[1], Boolean.valueOf(false)).b(b[2], Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected dqu a_(dxu $$0) {
+      return dqu.c;
    }
 
    @Override
-   protected void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      jh $$4 = $$2.d();
-      if ($$1.u($$4)) {
-         int $$5 = 1;
+   public duw a(jh $$0, dxu $$1) {
+      return new duz($$0, $$1);
+   }
 
-         while ($$1.a_($$2.c($$5)).a(this)) {
-            $$5++;
-         }
-
-         if ($$5 < 3) {
-            int $$6 = $$0.c(b);
-            if ($$6 == 15) {
-               $$1.b($$4, this.m());
-               dxn $$7 = $$0.b(b, Integer.valueOf(0));
-               $$1.a($$2, $$7, 4);
-               $$1.a($$7, $$4, this, null, false);
-            } else {
-               $$1.a($$2, $$0.b(b, Integer.valueOf($$6 + 1)), 4);
-            }
-         }
-      }
+   @Nullable
+   @Override
+   public <T extends duw> dux<T> a(dhh $$0, dxu $$1, duy<T> $$2) {
+      return $$0.C ? null : a($$2, duy.m, duz::a);
    }
 
    @Override
-   protected fcm b(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return e;
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return c;
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return f;
-   }
-
-   @Override
-   protected dxn a(dxn $$0, dhd $$1, dhp $$2, jh $$3, jm $$4, jh $$5, dxn $$6, bam $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
+   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof duz $$5) {
+         $$3.a($$5);
+         $$3.a(axp.aa);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return bti.a;
    }
 
    @Override
-   protected boolean a(dxn $$0, dhd $$1, jh $$2) {
-      for (jm $$3 : jm.c.a) {
-         dxn $$4 = $$1.a_($$2.a($$3));
-         if ($$4.e() || $$1.b_($$2.a($$3)).a(aya.b)) {
-            return false;
-         }
-      }
-
-      dxn $$5 = $$1.a_($$2.e());
-      return ($$5.a(dkg.ed) || $$5.a(axu.J)) && !$$1.a_($$2.d()).n();
+   public void a(dxu $$0, dhh $$1, jh $$2, bam $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(ls.af, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
    @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, bvf $$3) {
-      $$3.a($$1.aj().k(), 1.0F);
+   protected void a(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
+      bte.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(b);
+   protected boolean c_(dxu $$0) {
+      return true;
    }
 
    @Override
-   protected boolean a(dxn $$0, eue $$1) {
+   protected int a(dxu $$0, dhh $$1, jh $$2) {
+      return ctb.a($$1.c_($$2));
+   }
+
+   @Override
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(b[0], b[1], b[2]);
+   }
+
+   @Override
+   protected boolean a(dxu $$0, eul $$1) {
       return false;
    }
 }

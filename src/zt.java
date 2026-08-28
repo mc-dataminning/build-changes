@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Function4;
 import com.mojang.datafixers.util.Function5;
 import com.mojang.datafixers.util.Function6;
 import com.mojang.datafixers.util.Function7;
+import com.mojang.datafixers.util.Function8;
 import io.netty.buffer.ByteBuf;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -311,6 +312,53 @@ public interface zt<B, V> extends zu<B, V>, zv<B, V> {
             $$8.encode($$0, $$9.apply($$1));
             $$10.encode($$0, $$11.apply($$1));
             $$12.encode($$0, $$13.apply($$1));
+         }
+      };
+   }
+
+   static <B, C, T1, T2, T3, T4, T5, T6, T7, T8> zt<B, C> a(
+      final zt<? super B, T1> $$0,
+      final Function<C, T1> $$1,
+      final zt<? super B, T2> $$2,
+      final Function<C, T2> $$3,
+      final zt<? super B, T3> $$4,
+      final Function<C, T3> $$5,
+      final zt<? super B, T4> $$6,
+      final Function<C, T4> $$7,
+      final zt<? super B, T5> $$8,
+      final Function<C, T5> $$9,
+      final zt<? super B, T6> $$10,
+      final Function<C, T6> $$11,
+      final zt<? super B, T7> $$12,
+      final Function<C, T7> $$13,
+      final zt<? super B, T8> $$14,
+      final Function<C, T8> $$15,
+      final Function8<T1, T2, T3, T4, T5, T6, T7, T8, C> $$16
+   ) {
+      return new zt<B, C>() {
+         @Override
+         public C decode(B $$0x) {
+            T1 $$1 = $$0.decode($$0);
+            T2 $$2 = $$2.decode($$0);
+            T3 $$3 = $$4.decode($$0);
+            T4 $$4 = $$6.decode($$0);
+            T5 $$5 = $$8.decode($$0);
+            T6 $$6 = $$10.decode($$0);
+            T7 $$7 = $$12.decode($$0);
+            T8 $$8 = $$14.decode($$0);
+            return (C)$$16.apply($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+         }
+
+         @Override
+         public void encode(B $$0x, C $$1x) {
+            $$0.encode($$0, $$1.apply($$1));
+            $$2.encode($$0, $$3.apply($$1));
+            $$4.encode($$0, $$5.apply($$1));
+            $$6.encode($$0, $$7.apply($$1));
+            $$8.encode($$0, $$9.apply($$1));
+            $$10.encode($$0, $$11.apply($$1));
+            $$12.encode($$0, $$13.apply($$1));
+            $$14.encode($$0, $$15.apply($$1));
          }
       };
    }

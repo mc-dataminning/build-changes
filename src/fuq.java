@@ -1,96 +1,287 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fuq extends fug<ctf> {
-   private static final alz G = alz.b("container/cartography_table/error");
-   private static final alz H = alz.b("container/cartography_table/scaled_map");
-   private static final alz I = alz.b("container/cartography_table/duplicated_map");
-   private static final alz J = alz.b("container/cartography_table/map");
-   private static final alz K = alz.b("container/cartography_table/locked");
-   private static final alz L = alz.b("textures/gui/container/cartography_table.png");
-   private final han M = new han();
+public class fuq extends ful<ctg> {
+   private static final alz G = alz.b("textures/gui/container/beacon.png");
+   static final alz H = alz.b("container/beacon/button_disabled");
+   static final alz I = alz.b("container/beacon/button_selected");
+   static final alz J = alz.b("container/beacon/button_highlighted");
+   static final alz K = alz.b("container/beacon/button");
+   static final alz L = alz.b("container/beacon/confirm");
+   static final alz M = alz.b("container/beacon/cancel");
+   private static final xv N = xv.c("block.minecraft.beacon.primary");
+   private static final xv O = xv.c("block.minecraft.beacon.secondary");
+   private final List<fuq.a> P = Lists.newArrayList();
+   @Nullable
+   jq<bum> Q;
+   @Nullable
+   jq<bum> R;
 
-   public fuq(ctf $$0, cpr $$1, xv $$2) {
+   public fuq(final ctg $$0, cpv $$1, xv $$2) {
       super($$0, $$1, $$2);
-      this.w -= 2;
+      this.s = 230;
+      this.u = 219;
+      $$0.a(new ctp() {
+         @Override
+         public void a(ctb $$0x, int $$1, cxo $$2) {
+         }
+
+         @Override
+         public void a(ctb $$0x, int $$1, int $$2) {
+            fuq.this.Q = $$0.m();
+            fuq.this.R = $$0.n();
+         }
+      });
+   }
+
+   private <T extends fob & fuq.a> void a(T $$0) {
+      this.c($$0);
+      this.P.add($$0);
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+   protected void aT_() {
+      super.aT_();
+      this.P.clear();
+      this.a(new fuq.c(this.C + 164, this.D + 107));
+      this.a(new fuq.b(this.C + 190, this.D + 107));
+
+      for (int $$0 = 0; $$0 <= 2; $$0++) {
+         int $$1 = dur.a.get($$0).size();
+         int $$2 = $$1 * 22 + ($$1 - 1) * 2;
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            jq<bum> $$4 = dur.a.get($$0).get($$3);
+            fuq.d $$5 = new fuq.d(this.C + 76 + $$3 * 24 - $$2 / 2, this.D + 22 + $$0 * 25, $$4, true, $$0);
+            $$5.j = false;
+            this.a($$5);
+         }
+      }
+
+      int $$6 = 3;
+      int $$7 = dur.a.get(3).size() + 1;
+      int $$8 = $$7 * 22 + ($$7 - 1) * 2;
+
+      for (int $$9 = 0; $$9 < $$7 - 1; $$9++) {
+         jq<bum> $$10 = dur.a.get(3).get($$9);
+         fuq.d $$11 = new fuq.d(this.C + 167 + $$9 * 24 - $$8 / 2, this.D + 47, $$10, false, 3);
+         $$11.j = false;
+         this.a($$11);
+      }
+
+      jq<bum> $$12 = dur.a.get(0).get(0);
+      fuq.d $$13 = new fuq.g(this.C + 167 + ($$7 - 1) * 24 - $$8 / 2, this.D + 47, $$12);
+      $$13.k = false;
+      this.a($$13);
+   }
+
+   @Override
+   public void E() {
+      super.E();
+      this.G();
+   }
+
+   @Override
+   void G() {
+      int $$0 = this.z.l();
+      this.P.forEach($$1 -> $$1.a($$0));
+   }
+
+   @Override
+   protected void b(fnq $$0, int $$1, int $$2) {
+      $$0.a(this.p, N, 62, 10, 14737632);
+      $$0.a(this.p, O, 169, 10, 14737632);
+   }
+
+   @Override
+   protected void a(fnq $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(glt::B, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 100.0F);
+      $$0.a(new cxo(cxs.pg), $$4 + 20, $$5 + 109);
+      $$0.a(new cxo(cxs.oW), $$4 + 41, $$5 + 109);
+      $$0.a(new cxo(cxs.oV), $$4 + 41 + 22, $$5 + 109);
+      $$0.a(new cxo(cxs.pf), $$4 + 42 + 44, $$5 + 109);
+      $$0.a(new cxo(cxs.pb), $$4 + 42 + 66, $$5 + 109);
+      $$0.c().b();
+   }
+
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(glo::B, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      cxk $$6 = this.z.b(1).g();
-      boolean $$7 = $$6.a(cxo.uZ);
-      boolean $$8 = $$6.a(cxo.rm);
-      boolean $$9 = $$6.a(cxo.gg);
-      cxk $$10 = this.z.b(0).g();
-      evh $$11 = $$10.a(ku.L);
-      boolean $$12 = false;
-      evj $$13;
-      if ($$11 != null) {
-         $$13 = cxx.a($$11, this.m.s);
-         if ($$13 != null) {
-            if ($$13.h) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(glo::B, G, $$4 + 35, $$5 + 31, 28, 21);
-               }
+   interface a {
+      void a(int var1);
+   }
+
+   class b extends fuq.f {
+      public b(final int $$0, final int $$1) {
+         super($$0, $$1, fuq.M, xu.e);
+      }
+
+      @Override
+      public void b() {
+         fuq.this.m.t.p();
+      }
+
+      @Override
+      public void a(int $$0) {
+      }
+   }
+
+   class c extends fuq.f {
+      public c(final int $$0, final int $$1) {
+         super($$0, $$1, fuq.L, xu.d);
+      }
+
+      @Override
+      public void b() {
+         fuq.this.m.L().b(new aja(Optional.ofNullable(fuq.this.Q), Optional.ofNullable(fuq.this.R)));
+         fuq.this.m.t.p();
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.j = fuq.this.z.o() && fuq.this.Q != null;
+      }
+   }
+
+   class d extends fuq.e {
+      private final boolean c;
+      protected final int a;
+      private jq<bum> d;
+      private hbj f;
+
+      public d(final int $$0, final int $$1, final jq<bum> $$2, final boolean $$3, final int $$4) {
+         super($$0, $$1);
+         this.c = $$3;
+         this.a = $$4;
+         this.a($$2);
+      }
+
+      protected void a(jq<bum> $$0) {
+         this.d = $$0;
+         this.f = fme.Q().aG().a($$0);
+         this.a(fpp.a(this.b($$0), null));
+      }
+
+      protected yj b(jq<bum> $$0) {
+         return xv.c($$0.a().d());
+      }
+
+      @Override
+      public void b() {
+         if (!this.a()) {
+            if (this.c) {
+               fuq.this.Q = this.d;
+            } else {
+               fuq.this.R = this.d;
             }
 
-            if ($$8 && $$13.f >= 4) {
-               $$12 = true;
-               $$0.a(glo::B, G, $$4 + 35, $$5 + 31, 28, 21);
-            }
+            fuq.this.G();
          }
-      } else {
-         $$13 = null;
       }
 
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
-   }
+      @Override
+      protected void a(fnq $$0) {
+         $$0.a(glt::B, this.f, this.D() + 2, this.E() + 2, 18, 18);
+      }
 
-   private void a(fnl $$0, @Nullable evh $$1, @Nullable evj $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.C;
-      int $$8 = this.D;
-      if ($$4 && !$$6) {
-         $$0.a(glo::B, H, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(glo::B, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(glo::B, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(glo::B, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(glo::B, K, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
-      } else {
-         $$0.a(glo::B, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+      @Override
+      public void a(int $$0) {
+         this.j = this.a < $$0;
+         this.b(this.d.equals(this.c ? fuq.this.Q : fuq.this.R));
+      }
+
+      @Override
+      protected yj aR_() {
+         return this.b(this.d);
       }
    }
 
-   private void a(fnl $$0, @Nullable evh $$1, @Nullable evj $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         gld $$6 = this.m.at();
-         $$6.a($$1, $$2, this.M);
-         $$0.a($$2x -> $$6.a(this.M, $$0.c(), $$2x, true, 15728880));
-         $$0.c().b();
+   abstract static class e extends fnu implements fuq.a {
+      private boolean a;
+
+      protected e(int $$0, int $$1) {
+         super($$0, $$1, 22, 22, xu.a);
+      }
+
+      protected e(int $$0, int $$1, xv $$2) {
+         super($$0, $$1, 22, 22, $$2);
+      }
+
+      @Override
+      public void b(fnq $$0, int $$1, int $$2, float $$3) {
+         alz $$4;
+         if (!this.j) {
+            $$4 = fuq.H;
+         } else if (this.a) {
+            $$4 = fuq.I;
+         } else if (this.B()) {
+            $$4 = fuq.J;
+         } else {
+            $$4 = fuq.K;
+         }
+
+         $$0.a(glt::B, $$4, this.D(), this.E(), this.g, this.h);
+         this.a($$0);
+      }
+
+      protected abstract void a(fnq var1);
+
+      public boolean a() {
+         return this.a;
+      }
+
+      public void b(boolean $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(fsb $$0) {
+         this.c($$0);
+      }
+   }
+
+   abstract static class f extends fuq.e {
+      private final alz a;
+
+      protected f(int $$0, int $$1, alz $$2, xv $$3) {
+         super($$0, $$1, $$3);
+         this.a = $$2;
+      }
+
+      @Override
+      protected void a(fnq $$0) {
+         $$0.a(glt::B, this.a, this.D() + 2, this.E() + 2, 18, 18);
+      }
+   }
+
+   class g extends fuq.d {
+      public g(final int $$0, final int $$1, final jq<bum> $$2) {
+         super($$0, $$1, $$2, false, 3);
+      }
+
+      @Override
+      protected yj b(jq<bum> $$0) {
+         return xv.c($$0.a().d()).f(" II");
+      }
+
+      @Override
+      public void a(int $$0) {
+         if (fuq.this.Q != null) {
+            this.k = true;
+            this.a(fuq.this.Q);
+            super.a($$0);
+         } else {
+            this.k = false;
+         }
       }
    }
 }

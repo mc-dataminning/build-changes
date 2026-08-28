@@ -1,44 +1,46 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class cwm extends cxg {
-   public cwm(cxg.a $$0) {
-      super($$0);
+public class cwm extends cxk implements cys {
+   private static final Map<cwl, cwm> a = Maps.newEnumMap(cwl.class);
+   private final cwl b;
+
+   public cwm(cwl $$0, cxk.a $$1) {
+      super($$1);
+      this.b = $$0;
+      a.put($$0, this);
    }
 
    @Override
-   public bte a(dbd $$0) {
-      dha $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dxn $$3 = $$1.a_($$2);
-      if (!$$3.a(dkg.cv) && !$$3.a(dkg.I)) {
-         return bte.d;
-      } else {
-         jh $$4 = $$2.d();
-         if (!$$1.u($$4)) {
-            return bte.d;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<bvf> $$8 = $$1.a_(null, new fbn($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bte.d;
-            } else {
-               if ($$1 instanceof ash) {
-                  cko $$9 = new cko($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), ecj.t, $$4);
-                  ebl $$10 = ((ash)$$1).E();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
-
-               $$0.n().h(1);
-               return bte.a;
-            }
+   public bti a(cxo $$0, cpw $$1, bwf $$2, bth $$3) {
+      if ($$2 instanceof cis $$4 && $$4.bL() && !$$4.x() && $$4.t() != this.b) {
+         $$4.dV().a($$1, $$4, axf.ig, axg.h, 1.0F, 1.0F);
+         if (!$$1.dV().C) {
+            $$4.b(this.b);
+            $$0.h(1);
          }
+
+         return bti.a;
+      }
+
+      return bti.e;
+   }
+
+   public cwl b() {
+      return this.b;
+   }
+
+   public static cwm a(cwl $$0) {
+      return a.get($$0);
+   }
+
+   @Override
+   public boolean a(dhh $$0, dwj $$1, boolean $$2, cpw $$3) {
+      if ($$1.a($$0x -> $$0x.a(this.b()), $$2)) {
+         $$0.a(null, $$1.aB_(), axf.ig, axg.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
       }
    }
 }

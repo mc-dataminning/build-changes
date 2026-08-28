@@ -1,108 +1,144 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multimap;
 import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class bxk {
    private static final Logger a = LogUtils.getLogger();
-   private static final Map<bvm<? extends bwb>, bxi> b = ImmutableMap.builder()
-      .put(bvm.c, ciy.m().a())
-      .put(bvm.e, cjb.p().a())
-      .put(bvm.f, cll.m().a())
-      .put(bvm.h, cje.go().a())
-      .put(bvm.k, chm.m().a())
-      .put(bvm.l, cht.gA().a())
-      .put(bvm.o, cmb.m().a())
-      .put(bvm.q, cmc.go().a())
-      .put(bvm.u, chv.gC().a())
-      .put(bvm.t, cjj.p().a())
-      .put(bvm.v, cmd.m().a())
-      .put(bvm.z, chx.p().a())
-      .put(bvm.A, cho.m().a())
-      .put(bvm.C, chz.p().a())
-      .put(bvm.F, cme.m().a())
-      .put(bvm.I, cia.gm().a())
-      .put(bvm.J, cjv.p().a())
-      .put(bvm.L, cmg.m().a())
-      .put(bvm.N, cmh.m().a())
-      .put(bvm.O, cmi.m().a())
-      .put(bvm.P, cmj.m().a())
-      .put(bvm.Q, ckp.p().a())
-      .put(bvm.T, cml.p().a())
-      .put(bvm.r, cno.m().a())
-      .put(bvm.ab, cic.p().a())
-      .put(bvm.ac, cjm.gm().a())
-      .put(bvm.ae, cmm.t().a())
-      .put(bvm.af, cmn.m().a())
-      .put(bvm.ah, bvt.gm().a())
-      .put(bvm.ai, cjs.t().a())
-      .put(bvm.aj, cmo.x().a())
-      .put(bvm.ak, coa.p().a())
-      .put(bvm.am, cjw.gO().a())
-      .put(bvm.an, cnl.gp().a())
-      .put(bvm.ao, cmq.p().a())
-      .put(bvm.aq, cie.m().a())
-      .put(bvm.ay, cjz.gy().a())
-      .put(bvm.aA, cmr.m().a())
-      .put(bvm.aF, chz.p().a())
-      .put(bvm.aG, cjv.p().a())
-      .put(bvm.aJ, cig.p().a())
-      .put(bvm.aO, cih.gz().a())
-      .put(bvm.aP, cii.gy().a())
-      .put(bvm.aQ, cms.gr().a())
-      .put(bvm.aR, cij.p().a())
-      .put(bvm.aS, cog.gs().a())
-      .put(bvm.aT, coj.t().a())
-      .put(bvm.aU, cmv.p().a())
-      .put(bvm.bS, cps.fV().a())
-      .put(bvm.aV, cik.p().a())
-      .put(bvm.aX, cho.m().a())
-      .put(bvm.aY, cim.t().a())
-      .put(bvm.aZ, cmx.m().a())
-      .put(bvm.ba, cho.m().a())
-      .put(bvm.bb, cio.p().a())
-      .put(bvm.bc, cmy.m().a())
-      .put(bvm.be, cmz.m().a())
-      .put(bvm.bf, cma.m().a())
-      .put(bvm.bg, ckc.p().a())
-      .put(bvm.bh, cms.gr().a())
-      .put(bvm.bj, ckj.p().a())
-      .put(bvm.bl, ciq.m().a())
-      .put(bvm.bo, cnd.p().a())
-      .put(bvm.br, cir.gm().a())
-      .put(bvm.bs, cma.m().a())
-      .put(bvm.bt, cnf.t().a())
-      .put(bvm.bu, cjp.gn().a())
-      .put(bvm.by, cjz.gy().a())
-      .put(bvm.bA, cho.m().a())
-      .put(bvm.bB, cit.x().a())
-      .put(bvm.bC, cng.m().a())
-      .put(bvm.bD, cpe.gv().a())
-      .put(bvm.bE, cnh.p().a())
-      .put(bvm.bG, cov.m().a())
-      .put(bvm.bF, bwd.C().a())
-      .put(bvm.bI, cni.p().a())
-      .put(bvm.bJ, clj.p().a())
-      .put(bvm.bK, cma.m().a())
-      .put(bvm.bM, civ.gA().a())
-      .put(bvm.bN, cnk.m().a())
-      .put(bvm.D, cnw.m().a())
-      .put(bvm.E, cnw.m().a())
-      .put(bvm.bO, cnl.gp().a())
-      .put(bvm.bP, ckg.p().a())
-      .put(bvm.bQ, cnl.gp().a())
-      .put(bvm.bR, cnn.gv().a())
-      .build();
+   private final Map<jq<bxi>, bxj> b = new Object2ObjectOpenHashMap();
+   private final Set<bxj> c = new ObjectOpenHashSet();
+   private final Set<bxj> d = new ObjectOpenHashSet();
+   private final bxm e;
 
-   public static bxi a(bvm<? extends bwb> $$0) {
-      return b.get($$0);
+   public bxk(bxm $$0) {
+      this.e = $$0;
    }
 
-   public static boolean b(bvm<?> $$0) {
-      return b.containsKey($$0);
+   private void a(bxj $$0) {
+      this.d.add($$0);
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
+      }
    }
 
-   public static void a() {
-      ma.f.s().filter($$0 -> $$0.f() != bwe.h).filter($$0 -> !b((bvm<?>)$$0)).map(ma.f::b).forEach($$0 -> ae.b("Entity " + $$0 + " has no attributes"));
+   public Set<bxj> a() {
+      return this.c;
+   }
+
+   public Set<bxj> b() {
+      return this.d;
+   }
+
+   public Collection<bxj> c() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
+   }
+
+   @Nullable
+   public bxj a(jq<bxi> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
+   }
+
+   public boolean b(jq<bxi> $$0) {
+      return this.b.get($$0) != null || this.e.c($$0);
+   }
+
+   public boolean a(jq<bxi> $$0, alz $$1) {
+      bxj $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
+   }
+
+   public double c(jq<bxi> $$0) {
+      bxj $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.g() : this.e.a($$0);
+   }
+
+   public double d(jq<bxi> $$0) {
+      bxj $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.e.b($$0);
+   }
+
+   public double b(jq<bxi> $$0, alz $$1) {
+      bxj $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).c() : this.e.a($$0, $$1);
+   }
+
+   public void a(Multimap<jq<bxi>, bxl> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bxj $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.c($$1.b());
+            $$2.b($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jq<bxi>, bxl> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bxj $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.c($$1x.b()));
+         }
+      });
+   }
+
+   public void a(bxk $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bxj $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public void b(bxk $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bxj $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
+   }
+
+   public void c(bxk $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bxj $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.d());
+         }
+      });
+   }
+
+   public vd d() {
+      vd $$0 = new vd();
+
+      for (bxj $$1 : this.b.values()) {
+         $$0.add($$1.h());
+      }
+
+      return $$0;
+   }
+
+   public void a(vd $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         ux $$2 = $$0.a($$1);
+         String $$3 = $$2.l("id");
+         alz $$4 = alz.c($$3);
+         if ($$4 != null) {
+            ae.a(ma.s.c($$4), $$1x -> {
+               bxj $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
+      }
    }
 }

@@ -1,29 +1,17 @@
-import java.util.Locale;
-
-public class fpr extends fpo {
-   private static final int f = 500;
-
-   public fpr(fnj $$0, boc $$1) {
-      super($$0, $$1);
+public record fpr(alz a, alz b, alz c, alz d) {
+   public fpr(alz $$0, alz $$1) {
+      this($$0, $$0, $$1, $$1);
    }
 
-   @Override
-   protected void d(fnl $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public fpr(alz $$0, alz $$1, alz $$2) {
+      this($$0, $$1, $$2, $$1);
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   public alz a(boolean $$0, boolean $$1) {
+      if ($$0) {
+         return $$1 ? this.c : this.a;
+      } else {
+         return $$1 ? this.d : this.b;
+      }
    }
 }

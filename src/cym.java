@@ -1,37 +1,19 @@
-import java.util.List;
-
-public class cym extends cxg {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-
-   public cym(cxg.a $$0) {
+public class cym extends cxk {
+   public cym(cxk.a $$0) {
       super($$0);
    }
 
    @Override
-   public xv a(cxk $$0) {
-      cwh $$1 = $$0.a(ku.aj);
-      return (xv)($$1 != null ? xv.c(this.k + "." + $$1.b()) : super.a($$0));
-   }
+   public bti a(cxo $$0, cpw $$1, bwf $$2, bth $$3) {
+      if ($$2 instanceof bwv $$4 && $$2.bL() && !$$4.j() && $$4.f()) {
+         if (!$$1.dV().C) {
+            $$4.a($$0.a(1), axg.g);
+            $$2.dV().a($$2, ecq.v, $$2.dt());
+         }
 
-   @Override
-   public void a(cxk $$0, cxg.b $$1, List<xv> $$2, czc $$3) {
-      cvn.a($$0, $$2);
-   }
+         return bti.a;
+      }
 
-   @Override
-   public cxm b(cxk $$0) {
-      return cxm.d;
-   }
-
-   @Override
-   public int a(cxk $$0, bwb $$1) {
-      return 72000;
-   }
-
-   @Override
-   public bte a(dha $$0, cps $$1, btd $$2) {
-      $$1.c($$2);
-      return bte.c;
+      return bti.e;
    }
 }

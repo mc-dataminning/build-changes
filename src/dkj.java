@@ -1,83 +1,114 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dkj extends djq {
+public class dkj extends doj implements dko, drp {
    public static final MapCodec<dkj> a = b(dkj::new);
-   public static final dye[] b = new dye[]{dyd.k, dyd.l, dyd.m};
-   protected static final fcm c = fcj.a(dke.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dke.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+   private static final dyl f = dyk.D;
+   private static final int g = 6;
+   protected static final fcr b = dkl.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
+   protected static final fcr c = dkl.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
+   protected static final fcr d = dkl.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
+   protected static final fcr e = dkl.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
 
    @Override
    public MapCodec<dkj> a() {
       return a;
    }
 
-   public dkj(dxm.d $$0) {
+   protected dkj(dxt.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b[0], Boolean.valueOf(false)).b(b[1], Boolean.valueOf(false)).b(b[2], Boolean.valueOf(false)));
+      this.l(this.F.b().b(f, Boolean.valueOf(false)).b(aF, jm.c));
    }
 
    @Override
-   protected dqn a_(dxn $$0) {
-      return dqn.c;
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      switch ((jm)$$0.c(aF)) {
+         case d:
+            return c;
+         case c:
+         default:
+            return b;
+         case e:
+            return e;
+         case f:
+            return d;
+      }
    }
 
    @Override
-   public dup a(jh $$0, dxn $$1) {
-      return new dus($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dup> duq<T> a(dha $$0, dxn $$1, dur<T> $$2) {
-      return $$0.C ? null : a($$2, dur.m, dus::a);
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(f, aF);
    }
 
    @Override
-   protected fcm a(dxn $$0, dgf $$1, jh $$2, fbx $$3) {
-      return c;
+   protected etw b_(dxu $$0) {
+      return $$0.c(f) ? etx.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected bte a(dxn $$0, dha $$1, jh $$2, cps $$3, fbo $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dus $$5) {
-         $$3.a($$5);
-         $$3.a(axp.aa);
+   protected boolean a(dxu $$0, dhk $$1, jh $$2) {
+      jh $$3 = $$2.e();
+      dxu $$4 = $$1.a_($$3);
+      dxu $$5 = $$1.a_($$2.d());
+      return ($$4.a(this) || $$4.a(axu.bA)) && ($$5.a(this) || $$5.a(dkn.sY));
+   }
+
+   protected static boolean a(dhi $$0, jh $$1, etw $$2, jm $$3) {
+      dxu $$4 = dkn.sZ.m().b(f, Boolean.valueOf($$2.a(etx.c))).b(aF, $$3);
+      return $$0.a($$1, $$4, 3);
+   }
+
+   @Override
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if (($$4 == jm.a || $$4 == jm.b) && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
       }
 
-      return bte.a;
+      if ($$0.c(f)) {
+         $$2.a($$3, etx.c, etx.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(ls.af, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, dxn $$3, boolean $$4) {
-      bta.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   public boolean b(dhk $$0, jh $$1, dxu $$2) {
+      Optional<jh> $$3 = l.a($$0, $$1, $$2.b(), jm.b, dkn.sY);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jh $$4 = $$3.get().d();
+         dxu $$5 = $$0.a_($$4);
+         return dki.a($$0, $$4, $$5);
+      }
    }
 
    @Override
-   protected boolean c_(dxn $$0) {
+   public boolean a(dhh $$0, bam $$1, jh $$2, dxu $$3) {
       return true;
    }
 
    @Override
-   protected int a(dxn $$0, dha $$1, jh $$2) {
-      return csx.a($$1.c_($$2));
+   public void a(ash $$0, bam $$1, jh $$2, dxu $$3) {
+      Optional<jh> $$4 = l.a($$0, $$2, $$3.b(), jm.b, dkn.sY);
+      if (!$$4.isEmpty()) {
+         jh $$5 = $$4.get();
+         jh $$6 = $$5.d();
+         jm $$7 = $$3.c(aF);
+         a($$0, $$5, $$0.b_($$5), $$7);
+         dki.a($$0, $$6, $$0.b_($$6), $$7);
+      }
    }
 
    @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(b[0], b[1], b[2]);
-   }
-
-   @Override
-   protected boolean a(dxn $$0, eue $$1) {
-      return false;
+   public cxo a(dhk $$0, jh $$1, dxu $$2) {
+      return new cxo(dkn.sY);
    }
 }

@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class oh implements of {
-   private final dke a;
+   private final dkl a;
    private final List<oh.b> b = Lists.newArrayList();
 
-   private oh(dke $$0) {
+   private oh(dkl $$0) {
       this.a = $$0;
    }
 
    @Override
-   public dke a() {
+   public dkl a() {
       return this.a;
    }
 
-   public static oh a(dke $$0) {
+   public static oh a(dkl $$0) {
       return new oh($$0);
    }
 
@@ -46,7 +46,7 @@ public class oh implements of {
    }
 
    public JsonElement b() {
-      dxo<dke, dxn> $$0 = this.a.l();
+      dxv<dkl, dxu> $$0 = this.a.l();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(oh.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class oh implements of {
       }
 
       @Override
-      public void a(dxo<?, ?> $$0) {
+      public void a(dxv<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class oh implements of {
          this.a = $$0;
       }
 
-      public void a(dxo<?, ?> $$0) {
+      public void a(dxv<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

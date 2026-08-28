@@ -1,194 +1,48 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fqi implements fqj {
-   private static final alz a = alz.b("toast/system");
-   private static final int e = 200;
-   private static final int f = 12;
-   private static final int g = 10;
-   private final fqi.a h;
-   private xv i;
-   private List<azq> j;
-   private long k;
-   private boolean l;
-   private final int m;
-   private boolean n;
-   private fqj.a o = fqj.a.b;
+public class fqi {
+   private final Consumer<fob> a;
+   private final Consumer<fob> b;
+   @Nullable
+   private fqh c;
+   @Nullable
+   private fsl d;
 
-   public fqi(fqi.a $$0, xv $$1, @Nullable xv $$2) {
-      this($$0, $$1, a($$2), Math.max(160, 30 + Math.max(flz.Q().h.a($$1), $$2 == null ? 0 : flz.Q().h.a($$2))));
+   public fqi(Consumer<fob> $$0, Consumer<fob> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fqi a(flz $$0, fqi.a $$1, xv $$2, xv $$3) {
-      fnj $$4 = $$0.h;
-      List<azq> $$5 = $$4.c($$3, 200);
-      int $$6 = Math.max(200, $$5.stream().mapToInt($$4::a).max().orElse(200));
-      return new fqi($$1, $$2, $$5, $$6 + 30);
-   }
-
-   private fqi(fqi.a $$0, xv $$1, List<azq> $$2, int $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.m = $$3;
-   }
-
-   private static ImmutableList<azq> a(@Nullable xv $$0) {
-      return $$0 == null ? ImmutableList.of() : ImmutableList.of($$0.g());
-   }
-
-   @Override
-   public int b() {
-      return this.m;
-   }
-
-   @Override
-   public int c() {
-      return 20 + Math.max(this.j.size(), 1) * 12;
-   }
-
-   public void d() {
-      this.n = true;
-   }
-
-   @Override
-   public fqj.a a() {
-      return this.o;
-   }
-
-   @Override
-   public void a(fqk $$0, long $$1) {
-      if (this.l) {
-         this.k = $$1;
-         this.l = false;
+   public void a(fsl $$0) {
+      this.d = $$0;
+      fqh $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
       }
-
-      double $$2 = (double)this.h.l * $$0.d();
-      long $$3 = $$1 - this.k;
-      this.o = !this.n && (double)$$3 < $$2 ? fqj.a.a : fqj.a.b;
    }
 
-   @Override
-   public void a(fnl $$0, fnj $$1, long $$2) {
-      int $$3 = this.b();
-      if ($$3 == 160 && this.j.size() <= 1) {
-         $$0.a(glo::B, a, 0, 0, $$3, this.c());
-      } else {
-         int $$4 = this.c();
-         int $$5 = 28;
-         int $$6 = Math.min(4, $$4 - 28);
-         this.a($$0, $$3, 0, 0, 28);
-
-         for (int $$7 = 28; $$7 < $$4 - $$6; $$7 += 10) {
-            this.a($$0, $$3, 16, $$7, Math.min(16, $$4 - $$7 - $$6));
+   public void a(fqh $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
          }
 
-         this.a($$0, $$3, 32 - $$6, $$4 - $$6, $$6);
-      }
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
 
-      if (this.j.isEmpty()) {
-         $$0.a($$1, this.i, 18, 12, -256, false);
-      } else {
-         $$0.a($$1, this.i, 18, 7, -256, false);
-
-         for (int $$8 = 0; $$8 < this.j.size(); $$8++) {
-            $$0.a($$1, this.j.get($$8), 18, 18 + $$8 * 12, -1, false);
+         if ($$1) {
+            fme.Q().ak().a(hfb.a(axf.AQ, 1.0F));
          }
       }
    }
 
-   private void a(fnl $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$2 == 0 ? 20 : 5;
-      int $$6 = Math.min(60, $$1 - $$5);
-      alz $$7 = a;
-      $$0.a(glo::B, $$7, 160, 32, 0, $$2, 0, $$3, $$5, $$4);
-
-      for (int $$8 = $$5; $$8 < $$1 - $$6; $$8 += 64) {
-         $$0.a(glo::B, $$7, 160, 32, 32, $$2, $$8, $$3, Math.min(64, $$1 - $$8 - $$6), $$4);
-      }
-
-      $$0.a(glo::B, $$7, 160, 32, 160 - $$6, $$2, $$1 - $$6, $$3, $$6, $$4);
-   }
-
-   public void a(xv $$0, @Nullable xv $$1) {
-      this.i = $$0;
-      this.j = a($$1);
-      this.l = true;
-   }
-
-   public fqi.a e() {
-      return this.h;
-   }
-
-   public static void a(fqk $$0, fqi.a $$1, xv $$2, @Nullable xv $$3) {
-      $$0.a(new fqi($$1, $$2, $$3));
-   }
-
-   public static void b(fqk $$0, fqi.a $$1, xv $$2, @Nullable xv $$3) {
-      fqi $$4 = $$0.a(fqi.class, $$1);
-      if ($$4 == null) {
-         a($$0, $$1, $$2, $$3);
-      } else {
-         $$4.a($$2, $$3);
-      }
-   }
-
-   public static void a(fqk $$0, fqi.a $$1) {
-      fqi $$2 = $$0.a(fqi.class, $$1);
-      if ($$2 != null) {
-         $$2.d();
-      }
-   }
-
-   public static void a(flz $$0, String $$1) {
-      a($$0.aA(), fqi.a.d, xv.c("selectWorld.access_failure"), xv.b($$1));
-   }
-
-   public static void b(flz $$0, String $$1) {
-      a($$0.aA(), fqi.a.d, xv.c("selectWorld.delete_failure"), xv.b($$1));
-   }
-
-   public static void c(flz $$0, String $$1) {
-      a($$0.aA(), fqi.a.e, xv.c("pack.copyFailure"), xv.b($$1));
-   }
-
-   public static void a(flz $$0, int $$1) {
-      a($$0.aA(), fqi.a.f, xv.c("gui.fileDropFailure.title"), xv.a("gui.fileDropFailure.detail", $$1));
-   }
-
-   public static void a(flz $$0) {
-      b($$0.aA(), fqi.a.h, xv.c("chunk.toast.lowDiskSpace"), xv.c("chunk.toast.lowDiskSpace.description"));
-   }
-
-   public static void a(flz $$0, dgg $$1) {
-      b($$0.aA(), fqi.a.i, xv.a("chunk.toast.loadFailure", xv.a($$1)).a(n.m), xv.c("chunk.toast.checkLog"));
-   }
-
-   public static void b(flz $$0, dgg $$1) {
-      b($$0.aA(), fqi.a.j, xv.a("chunk.toast.saveFailure", xv.a($$1)).a(n.m), xv.c("chunk.toast.checkLog"));
-   }
-
-   public static class a {
-      public static final fqi.a a = new fqi.a();
-      public static final fqi.a b = new fqi.a();
-      public static final fqi.a c = new fqi.a();
-      public static final fqi.a d = new fqi.a();
-      public static final fqi.a e = new fqi.a();
-      public static final fqi.a f = new fqi.a();
-      public static final fqi.a g = new fqi.a();
-      public static final fqi.a h = new fqi.a(10000L);
-      public static final fqi.a i = new fqi.a();
-      public static final fqi.a j = new fqi.a();
-      public static final fqi.a k = new fqi.a(10000L);
-      final long l;
-
-      public a(long $$0) {
-         this.l = $$0;
-      }
-
-      public a() {
-         this(5000L);
-      }
+   @Nullable
+   public fqh a() {
+      return this.c;
    }
 }

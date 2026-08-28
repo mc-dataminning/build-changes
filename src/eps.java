@@ -1,25 +1,15 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record eps(brm<List<epo>> c) implements epo {
-   static MapCodec<eps> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(brm.b(Codec.list(epo.b)).fieldOf("groups").forGetter(eps::c)).apply($$0, eps::new));
+public interface eps<P extends epr> {
+   eps<epq> a = a("single_pool_element", epq.b);
+   eps<epp> b = a("list_pool_element", epp.a);
+   eps<epl> c = a("feature_pool_element", epl.a);
+   eps<epk> d = a("empty_pool_element", epk.a);
+   eps<epo> e = a("legacy_single_pool_element", epo.a);
 
-   @Override
-   public void a(bam $$0, BiConsumer<aly<epm>, aly<epm>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public Stream<aly<epm>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(epo::a);
-   }
-
-   @Override
-   public MapCodec<eps> b() {
-      return a;
+   static <P extends epr> eps<P> a(String $$0, MapCodec<P> $$1) {
+      return kd.a(ma.ag, $$0, () -> $$1);
    }
 }

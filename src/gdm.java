@@ -1,26 +1,38 @@
-public class gdm extends gbf<gzt> {
-   private final geh a;
+public class gdm extends gbk<gze> {
+   private static final int a = 2;
+   private final gem[] b = new gem[2];
 
-   public gdm(geh $$0) {
+   public gdm(gem $$0) {
       super($$0);
-      this.a = $$0.b("tail");
+
+      for (int $$1 = 0; $$1 < 2; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static gen a(gel $$0) {
-      gep $$1 = new gep();
-      ger $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", gem.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), gej.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", gem.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gej.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", gem.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gej.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", gem.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gej.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", gem.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gej.a(0.0F, 20.5F, -3.0F));
-      return gen.a($$1, 32, 32);
+   private static String a(int $$0) {
+      return "box" + $$0;
    }
 
-   public void a(gzt $$0) {
+   public static ges a() {
+      geu $$0 = new geu();
+      gew $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 2; $$2++) {
+         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
+         float $$4 = 0.75F * (float)($$2 + 1);
+         $$1.a(a($$2), ger.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), geo.a.a($$4));
+      }
+
+      return ges.a($$0, 64, 64);
+   }
+
+   public void a(gze $$0) {
       super.a($$0);
-      float $$1 = $$0.af ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * bae.a(0.6F * $$0.p);
+
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         float $$2 = $$0.p * (float)(-(45 + ($$1 + 1) * 5));
+         this.b[$$1].f = bae.h($$2) * (float) (Math.PI / 180.0);
+      }
    }
 }

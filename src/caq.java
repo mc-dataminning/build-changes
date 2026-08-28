@@ -1,28 +1,23 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class caq {
-   public static <E extends bwb> bzf<E> a(List<Pair<? extends cbk<? super E>, Integer>> $$0) {
-      return a($$0, byi.a.b, byi.b.a);
-   }
-
-   public static <E extends bwb> bzf<E> a(List<Pair<? extends cbk<? super E>, Integer>> $$0, byi.a $$1, byi.b $$2) {
-      cad<cbk<? super E>> $$3 = new cad<>();
-      $$0.forEach($$1x -> $$3.a((cbk<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return cbh.a((Function<cbh.b<E>, ? extends App<cbh.c<E>, cbk<E>>>)($$3x -> $$3x.a((cbk<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == byi.a.b) {
-               $$3.a();
-            }
-
-            for (cbk<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == byi.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static bxz<bwn> a(cfj<jp> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return cbl.a(
+         (Function<cbl.b<bwn>, ? extends App<cbl.c<bwn>, cbo<bwn>>>)($$5 -> $$5.group($$5.a(cfj.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  jp $$10 = $$5.b($$6);
+                  if ($$7.ah() != $$10.a() || !$$10.b().a($$8.dt(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new cfm($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

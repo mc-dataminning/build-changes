@@ -1,40 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiv implements eis {
+public class eiv implements eiz {
    public static final Codec<eiv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bsj.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bsh.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bsh.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bsh.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bsh.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
+               dxu.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dxu.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bsn.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bsn.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, eiv::new)
    );
-   public final int b;
-   public final bsj c;
-   public final bsh d;
-   public final float e;
-   public final bsh f;
-   public final bsh g;
-   public final bsh h;
-   public final int i;
-   public final float j;
+   private final dxu b;
+   private final dxu c;
+   private final bsn d;
+   private final bsn e;
 
-   public eiv(int $$0, bsj $$1, bsh $$2, float $$3, bsh $$4, bsh $$5, bsh $$6, int $$7, float $$8) {
+   public eiv(dxu $$0, dxu $$1, bsn $$2, bsn $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   }
+
+   public dxu a() {
+      return this.b;
+   }
+
+   public dxu b() {
+      return this.c;
+   }
+
+   public bsn c() {
+      return this.d;
+   }
+
+   public bsn d() {
+      return this.e;
    }
 }

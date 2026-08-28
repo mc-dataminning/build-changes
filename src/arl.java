@@ -5,30 +5,30 @@ public class arl {
    private static final int c = 33;
    private static final int d = 32;
    private static final int e = 31;
-   private static final eam f = eai.a.a(eaj.n);
+   private static final eat f = eap.a.a(eaq.n);
    public static final int a = f.c().c();
    public static final int b = 33 + a;
 
    @Nullable
-   public static eaj a(int $$0) {
+   public static eaq a(int $$0) {
       return a($$0 - 33, null);
    }
 
    @Nullable
    @Contract("_,!null->!null;_,_->_")
-   public static eaj a(int $$0, @Nullable eaj $$1) {
+   public static eaq a(int $$0, @Nullable eaq $$1) {
       if ($$0 > a) {
          return $$1;
       } else {
-         return $$0 <= 0 ? eaj.n : f.c().a($$0);
+         return $$0 <= 0 ? eaq.n : f.c().a($$0);
       }
    }
 
-   public static eaj b(int $$0) {
-      return a($$0, eaj.c);
+   public static eaq b(int $$0) {
+      return a($$0, eaq.c);
    }
 
-   public static int a(eaj $$0) {
+   public static int a(eaq $$0) {
       return 33 + f.a($$0);
    }
 

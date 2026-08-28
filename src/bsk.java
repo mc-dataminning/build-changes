@@ -1,16 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public interface bsk<P extends bsj> {
-   bsk<bsg> a = a("constant", bsg.b);
-   bsk<bsp> b = a("uniform", bsp.a);
-   bsk<bsb> c = a("biased_to_bottom", bsb.a);
-   bsk<bsc> d = a("clamped", bsc.a);
-   bsk<bsq> e = a("weighted_list", bsq.a);
-   bsk<bse> f = a("clamped_normal", bse.a);
+public class bsk extends bsn {
+   public static final bsk a = new bsk(0);
+   public static final MapCodec<bsk> b = Codec.INT.fieldOf("value").xmap(bsk::a, bsk::d);
+   private final int f;
 
-   MapCodec<P> codec();
+   public static bsk a(int $$0) {
+      return $$0 == 0 ? a : new bsk($$0);
+   }
 
-   static <P extends bsj> bsk<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.K, $$0, () -> $$1);
+   private bsk(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   @Override
+   public int a(bam $$0) {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bso<?> c() {
+      return bso.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
    }
 }

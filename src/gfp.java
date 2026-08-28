@@ -1,110 +1,41 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.GameProfile;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class gfp {
-   private final GameProfile a;
-   private final Supplier<hcf> b;
-   private dgx c = dgx.e;
-   private int d;
-   @Nullable
-   private xv e;
-   @Nullable
-   private ym f;
-   private yr g;
-   private int h;
+   private final avg a = avj.c();
+   private final Map<avc, String> b;
 
-   public gfp(GameProfile $$0, boolean $$1) {
-      this.a = $$0;
-      this.g = b($$1);
-      Supplier<Supplier<hcf>> $$2 = Suppliers.memoize(() -> a($$0));
-      this.b = () -> $$2.get().get();
+   public gfp() {
+      this.a.a();
+      Builder<avc, String> $$0 = ImmutableMap.builder();
+      this.a.d().forEach($$1 -> {
+         auf $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   private static Supplier<hcf> a(GameProfile $$0) {
-      flz $$1 = flz.Q();
-      hcg $$2 = $$1.an();
-      CompletableFuture<hcf> $$3 = $$2.c($$0);
-      boolean $$4 = !$$1.b($$0.getId());
-      hcf $$5 = hbw.a($$0);
-      return () -> {
-         hcf $$3x = $$3.getNow($$5);
-         return $$4 && !$$3x.f() ? $$5 : $$3x;
-      };
+   public List<avc> a(List<avc> $$0) {
+      List<avc> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
+
+      for (avc $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
+      }
+
+      this.a.b($$2);
+      return $$1;
    }
 
-   public GameProfile a() {
-      return this.a;
-   }
-
-   @Nullable
-   public ym b() {
-      return this.f;
-   }
-
-   public yr c() {
-      return this.g;
-   }
-
-   public boolean d() {
-      return this.f != null;
-   }
-
-   protected void a(ym $$0) {
-      this.f = $$0;
-      this.g = $$0.a(cpv.b);
-   }
-
-   protected void a(boolean $$0) {
-      this.f = null;
-      this.g = b($$0);
-   }
-
-   private static yr b(boolean $$0) {
-      return $$0 ? yr.c : yr.b;
-   }
-
-   public dgx e() {
-      return this.c;
-   }
-
-   protected void a(dgx $$0) {
-      this.c = $$0;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   protected void a(int $$0) {
-      this.d = $$0;
-   }
-
-   public hcf g() {
-      return this.b.get();
-   }
-
-   @Nullable
-   public fcs h() {
-      return flz.Q().s.Q().e(this.a().getName());
-   }
-
-   public void a(@Nullable xv $$0) {
-      this.e = $$0;
-   }
-
-   @Nullable
-   public xv i() {
-      return this.e;
-   }
-
-   public void b(int $$0) {
-      this.h = $$0;
-   }
-
-   public int j() {
-      return this.h;
+   public avl a() {
+      List<aug> $$0 = this.a.h();
+      return new avo(aui.b, $$0);
    }
 }

@@ -1,66 +1,45 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class bou {
-   private final Object2ObjectMap<bon<?>, Object> a = new Object2ObjectArrayMap();
+public interface bou<S> {
+   void a(int var1, boz<S> var2, Object var3);
 
-   public <T> void a(bon<T> $$0, @Nullable T $$1) {
-      this.a.put($$0, $$1);
+   default void a(int $$0, Object $$1) {
+      this.a($$0, boz.b(), $$1);
    }
 
-   @Nullable
-   public <T> T a(bon<T> $$0) {
-      return (T)this.a.get($$0);
-   }
+   void a(int var1);
 
-   public <T> T b(bon<T> $$0) {
-      return Objects.requireNonNull(this.a($$0));
-   }
+   public static class a<S> implements bou<S> {
+      private final List<bov<S>> a = new ArrayList<>();
+      private int b = -1;
 
-   public <T> T b(bon<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.a($$0), $$1);
-   }
-
-   @Nullable
-   @SafeVarargs
-   public final <T> T a(bon<T>... $$0) {
-      for (bon<T> $$1 : $$0) {
-         T $$2 = this.a($$1);
-         if ($$2 != null) {
-            return $$2;
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
          }
       }
 
-      return null;
-   }
-
-   @SafeVarargs
-   public final <T> T b(bon<T>... $$0) {
-      return Objects.requireNonNull(this.a($$0));
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public void a(bou $$0) {
-      this.a.putAll($$0.a);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof bou $$1 ? this.a.equals($$1.a) : false;
+      @Override
+      public void a(int $$0) {
+         this.b($$0);
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+      @Override
+      public void a(int $$0, boz<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new bov<>($$0, $$1, $$2));
+         }
+      }
+
+      public List<bov<S>> a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
    }
 }

@@ -1,92 +1,69 @@
-public class dbk extends dbq {
-   public dbk(dbn $$0) {
+import java.util.ArrayList;
+import java.util.List;
+
+public class dbk extends dbt {
+   public dbk(dbq $$0) {
       super($$0);
    }
 
-   public boolean a(dbo $$0, dha $$1) {
-      int $$2 = 0;
-      cxk $$3 = cxk.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxk $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(cxo.uP)) {
-               if (!$$3.f()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cxo.uO)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.f() && $$2 > 0;
-   }
-
-   public cxk a(dbo $$0, js.a $$1) {
-      int $$2 = 0;
-      cxk $$3 = cxk.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxk $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(cxo.uP)) {
-               if (!$$3.f()) {
-                  return cxk.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cxo.uO)) {
-                  return cxk.k;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      das $$6 = $$3.a(ku.T);
-      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
-         das $$7 = $$6.b();
-         if ($$7 == null) {
-            return cxk.k;
-         } else {
-            cxk $$8 = $$3.c($$2);
-            $$8.b(ku.T, $$7);
-            return $$8;
-         }
+   public boolean a(dbr $$0, dhh $$1) {
+      if ($$0.e() < 2) {
+         return false;
       } else {
-         return cxk.k;
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cxo $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.a(ayd.bR)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$5.h() instanceof cwm)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
       }
    }
 
-   @Override
-   public jz<cxk> a(dbo $$0) {
-      jz<cxk> $$1 = jz.a($$0.a(), cxk.k);
+   public cxo a(dbr $$0, js.a $$1) {
+      List<cwm> $$2 = new ArrayList<>();
+      cxo $$3 = cxo.k;
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cxk $$3 = $$0.a($$2);
-         cxk $$4 = $$3.h().k();
-         if (!$$4.f()) {
-            $$1.set($$2, $$4);
-         } else if ($$3.h() instanceof czg) {
-            $$1.set($$2, $$3.c(1));
-            break;
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cxo $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(ayd.bR)) {
+               if (!$$3.f()) {
+                  return cxo.k;
+               }
+
+               $$3 = $$5.v();
+            } else {
+               if (!($$5.h() instanceof cwm $$6)) {
+                  return cxo.k;
+               }
+
+               $$2.add($$6);
+            }
          }
       }
 
-      return $$1;
+      return !$$3.f() && !$$2.isEmpty() ? dac.a($$3, $$2) : cxo.k;
    }
 
    @Override
-   public dci<dbk> a() {
-      return dci.d;
+   public dcn<dbk> a() {
+      return dcn.c;
    }
 }

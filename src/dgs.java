@@ -1,52 +1,25 @@
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public interface dgs {
-   static btv a(dha $$0, @Nullable bvf $$1) {
-      return $$0.aj().d($$1, a($$1));
+public interface dgs extends dgy, dhk, dhm {
+   @Override
+   default <T extends duw> Optional<T> a(jh $$0, duy<T> $$1) {
+      return dhk.super.a($$0, $$1);
    }
 
-   @Nullable
-   static bwb a(@Nullable bvf $$0) {
-      return switch ($$0) {
-         case null, default -> null;
-         case clx $$1 -> $$1.l();
-         case bwb $$2 -> $$2;
-         case cql $$3 when $$3.p() instanceof bwb $$4 -> $$4;
-      };
+   @Override
+   default List<fcr> c(@Nullable bvj $$0, fbs $$1) {
+      return dgy.super.c($$0, $$1);
    }
 
-   ash a();
+   @Override
+   default boolean a(@Nullable bvj $$0, fcr $$1) {
+      return dgy.super.a($$0, $$1);
+   }
 
-   dgs.a b();
-
-   @Nullable
-   bwb c();
-
-   @Nullable
-   bvf d();
-
-   float e();
-
-   fbs f();
-
-   boolean g();
-
-   boolean h();
-
-   public static enum a {
-      a(false),
-      b(true),
-      c(true),
-      d(false);
-
-      private final boolean e;
-
-      private a(final boolean $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a() {
-         return this.e;
-      }
+   @Override
+   default jh a(edp.a $$0, jh $$1) {
+      return dhk.super.a($$0, $$1);
    }
 }

@@ -1,22 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class cfw extends cgf {
-   public static final float a = 10.0F;
-
+public class cfw extends cgp<bva> {
    @Override
-   protected boolean a(ash $$0, bwb $$1, bwb $$2) {
-      return !$$1.eb().a(cff.U) && cgl.c($$0, $$1, $$2) && cjm.j($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
+   public Set<cfj<?>> a() {
+      return ImmutableSet.of(cfj.K, cfj.h);
    }
 
-   private boolean a(bwb $$0, bwb $$1) {
-      List<UUID> $$2 = $$0.eb().c(cff.aa).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cG());
+   protected void a(ash $$0, bva $$1) {
+      $$1.eb().c(cfj.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   @Override
-   protected cff<bwb> b() {
-      return cff.B;
+   private void a(bva $$0, cfl $$1) {
+      Optional<bva> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.e_()).map(bva.class::cast);
+      $$0.eb().a(cfj.K, $$2);
    }
 }

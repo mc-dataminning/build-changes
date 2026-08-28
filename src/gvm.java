@@ -1,24 +1,24 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-
-public class gvm extends gvy<gyd, gbq> {
-   private static final Map<cka, alz> a = ae.a(Maps.newEnumMap(cka.class), $$0 -> {
-      $$0.put(cka.a, null);
-      $$0.put(cka.b, alz.b("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(cka.c, alz.b("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(cka.d, alz.b("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(cka.e, alz.b("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public gvm(gtg<gyd, gbq> $$0) {
+public abstract class gvm<S extends gxt, M extends gbk<S>> extends gwd<S, M> {
+   public gvm(gtl<S, M> $$0) {
       super($$0);
    }
 
-   public void a(fgl $$0, gle $$1, int $$2, gyd $$3, float $$4, float $$5) {
-      alz $$6 = a.get($$3.h);
-      if ($$6 != null && !$$3.u) {
-         fgp $$7 = $$1.getBuffer(glo.i($$6));
-         this.d().a($$0, $$7, $$2, gsk.a($$3, 0.0F));
+   @Override
+   public void a(fgq $$0, glj $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (this.a($$3)) {
+         float $$6 = $$3.p;
+         M $$7 = this.c();
+         fgu $$8 = $$1.getBuffer(glt.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
+         $$7.a($$3);
+         $$7.a($$0, $$8, $$2, hba.d, -8355712);
       }
    }
+
+   protected abstract boolean a(S var1);
+
+   protected abstract float a(float var1);
+
+   protected abstract alz a();
+
+   protected abstract M c();
 }

@@ -1,53 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record evc(jh c, cwh d, Optional<xv> e) {
-   public static final Codec<evc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jh.a.fieldOf("pos").forGetter(evc::c),
-               cwh.q.lenientOptionalFieldOf("color", cwh.a).forGetter(evc::d),
-               xx.g.lenientOptionalFieldOf("name").forGetter(evc::e)
-            )
-            .apply($$0, evc::new)
-   );
-   public static final Codec<List<evc>> b = a.listOf();
+public class evc implements evd {
+   private final dhh b;
 
-   @Nullable
-   public static evc a(dgf $$0, jh $$1) {
-      if ($$0.c_($$1) instanceof due $$3) {
-         cwh $$4 = $$3.f();
-         Optional<xv> $$5 = Optional.ofNullable($$3.an());
-         return new evc($$1, $$4, $$5);
-      } else {
-         return null;
-      }
+   public evc(dhh $$0) {
+      this.b = $$0;
    }
 
-   public jq<eve> a() {
-      return switch (this.d) {
-         case a -> evf.k;
-         case b -> evf.l;
-         case c -> evf.m;
-         case d -> evf.n;
-         case e -> evf.o;
-         case f -> evf.p;
-         case g -> evf.q;
-         case h -> evf.r;
-         case i -> evf.s;
-         case j -> evf.t;
-         case k -> evf.u;
-         case l -> evf.v;
-         case m -> evf.w;
-         case n -> evf.x;
-         case o -> evf.y;
-         case p -> evf.z;
-      };
+   @Override
+   public void a(jm $$0, dxu $$1, jh $$2, jh $$3, int $$4, int $$5) {
+      evd.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
    }
 
-   public String b() {
-      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
+   @Override
+   public void a(jh $$0, dkl $$1, @Nullable eve $$2) {
+      dxu $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
+   }
+
+   @Override
+   public void a(dxu $$0, jh $$1, dkl $$2, @Nullable eve $$3, boolean $$4) {
+      evd.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

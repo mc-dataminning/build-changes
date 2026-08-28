@@ -1,587 +1,297 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.Sets;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import org.apache.commons.lang3.tuple.Triple;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
 
-public abstract class gln {
-   private static final float aU = 2.4414062E-4F;
-   public static final double a = 8.0;
-   protected final String b;
-   private final Runnable aV;
-   private final Runnable aW;
-   protected static final gln.p c = new gln.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
-   });
-   protected static final gln.p d = new gln.p("additive_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final gln.p e = new gln.p("lightning_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final gln.p f = new gln.p(
-      "glint_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final gln.p g = new gln.p(
-      "crumbling_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final gln.p h = new gln.p(
-      "translucent_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_ALPHA,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-            GlStateManager.SourceFactor.ONE,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final gln.p i = new gln.p("vignette_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final gln.p j = new gln.p(
-      "crosshair_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR,
-            GlStateManager.SourceFactor.ONE,
-            GlStateManager.DestFactor.ZERO
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final gln.p k = new gln.p("mojang_logo_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(770, 1);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
-   });
-   protected static final gln.p l = new gln.p(
-      "nausea_overlay_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   );
-   protected static final gln.m m = new gln.m();
-   protected static final gln.m n = new gln.m(gko.f);
-   protected static final gln.m o = new gln.m(gko.d);
-   protected static final gln.m p = new gln.m(gko.h);
-   protected static final gln.m q = new gln.m(gko.g);
-   protected static final gln.m r = new gln.m(gko.e);
-   protected static final gln.m s = new gln.m(gko.i);
-   protected static final gln.m t = new gln.m(gko.j);
-   protected static final gln.m u = new gln.m(gko.k);
-   protected static final gln.m v = new gln.m(gko.l);
-   protected static final gln.m w = new gln.m(gko.m);
-   protected static final gln.m x = new gln.m(gko.n);
-   protected static final gln.m y = new gln.m(gko.o);
-   protected static final gln.m z = new gln.m(gko.p);
-   protected static final gln.m A = new gln.m(gko.q);
-   protected static final gln.m B = new gln.m(gko.r);
-   protected static final gln.m C = new gln.m(gko.s);
-   protected static final gln.m D = new gln.m(gko.t);
-   protected static final gln.m E = new gln.m(gko.u);
-   protected static final gln.m F = new gln.m(gko.v);
-   protected static final gln.m G = new gln.m(gko.w);
-   protected static final gln.m H = new gln.m(gko.x);
-   protected static final gln.m I = new gln.m(gko.y);
-   protected static final gln.m J = new gln.m(gko.z);
-   protected static final gln.m K = new gln.m(gko.A);
-   protected static final gln.m L = new gln.m(gko.B);
-   protected static final gln.m M = new gln.m(gko.C);
-   protected static final gln.m N = new gln.m(gko.D);
-   protected static final gln.m O = new gln.m(gko.E);
-   protected static final gln.m P = new gln.m(gko.F);
-   protected static final gln.m Q = new gln.m(gko.G);
-   protected static final gln.m R = new gln.m(gko.H);
-   protected static final gln.m S = new gln.m(gko.I);
-   protected static final gln.m T = new gln.m(gko.J);
-   protected static final gln.m U = new gln.m(gko.K);
-   protected static final gln.m V = new gln.m(gko.X);
-   protected static final gln.m W = new gln.m(gko.L);
-   protected static final gln.m X = new gln.m(gko.M);
-   protected static final gln.m Y = new gln.m(gko.N);
-   protected static final gln.m Z = new gln.m(gko.O);
-   protected static final gln.m aa = new gln.m(gko.P);
-   protected static final gln.m ab = new gln.m(gko.Q);
-   protected static final gln.m ac = new gln.m(gko.R);
-   protected static final gln.m ad = new gln.m(gko.S);
-   protected static final gln.m ae = new gln.m(gko.T);
-   protected static final gln.m af = new gln.m(gko.U);
-   protected static final gln.m ag = new gln.m(gko.V);
-   protected static final gln.m ah = new gln.m(gko.W);
-   protected static final gln.m ai = new gln.m(gko.Y);
-   protected static final gln.m aj = new gln.m(gko.Z);
-   protected static final gln.m ak = new gln.m(gko.aa);
-   protected static final gln.m al = new gln.m(gko.ab);
-   protected static final gln.m am = new gln.m(gko.ac);
-   protected static final gln.n an = new gln.n(hbd.d, bbi.b, true);
-   protected static final gln.n ao = new gln.n(hbd.d, bbi.b, false);
-   protected static final gln.e ap = new gln.e();
-   protected static final gln.o aq = new gln.o("default_texturing", () -> {
-   }, () -> {
-   });
-   protected static final gln.o ar = new gln.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
-   protected static final gln.o as = new gln.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
-   protected static final gln.g at = new gln.g(true);
-   protected static final gln.g au = new gln.g(false);
-   protected static final gln.l av = new gln.l(true);
-   protected static final gln.l aw = new gln.l(false);
-   protected static final gln.c ax = new gln.c(true);
-   protected static final gln.c ay = new gln.c(false);
-   protected static final gln.d az = new gln.d("always", 519);
-   protected static final gln.d aA = new gln.d("==", 514);
-   protected static final gln.d aB = new gln.d("<=", 515);
-   protected static final gln.d aC = new gln.d(">", 516);
-   protected static final gln.q aD = new gln.q(true, true);
-   protected static final gln.q aE = new gln.q(true, false);
-   protected static final gln.q aF = new gln.q(false, true);
-   protected static final gln.f aG = new gln.f("no_layering", () -> {
-   }, () -> {
-   });
-   protected static final gln.f aH = new gln.f("polygon_offset_layering", () -> {
-      RenderSystem.polygonOffset(-1.0F, -10.0F);
-      RenderSystem.enablePolygonOffset();
-   }, () -> {
-      RenderSystem.polygonOffset(0.0F, 0.0F);
-      RenderSystem.disablePolygonOffset();
-   });
-   protected static final gln.f aI = new gln.f("view_offset_z_layering", () -> {
-      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
-      $$0.pushMatrix();
-      $$0.scale(0.99975586F, 0.99975586F, 0.99975586F);
-   }, () -> {
-      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
-      $$0.popMatrix();
-   });
-   protected static final gln.f aJ = new gln.f("view_offset_z_layering_forward", () -> {
-      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
-      $$0.pushMatrix();
-      $$0.scale(1.0002441F, 1.0002441F, 1.0002441F);
-   }, () -> {
-      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
-      $$0.popMatrix();
-   });
-   protected static final gln.k aK = new gln.k("main_target", () -> flz.Q().h().a(false), () -> {
-   });
-   protected static final gln.k aL = new gln.k("outline_target", () -> {
-      fev $$0 = flz.Q().f.q();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         flz.Q().h().a(false);
-      }
-   }, () -> flz.Q().h().a(false));
-   protected static final gln.k aM = new gln.k("translucent_target", () -> {
-      fev $$0 = flz.Q().f.r();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         flz.Q().h().a(false);
-      }
-   }, () -> flz.Q().h().a(false));
-   protected static final gln.k aN = new gln.k("particles_target", () -> {
-      fev $$0 = flz.Q().f.t();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         flz.Q().h().a(false);
-      }
-   }, () -> flz.Q().h().a(false));
-   protected static final gln.k aO = new gln.k("weather_target", () -> {
-      fev $$0 = flz.Q().f.u();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         flz.Q().h().a(false);
-      }
-   }, () -> flz.Q().h().a(false));
-   protected static final gln.k aP = new gln.k("clouds_target", () -> {
-      fev $$0 = flz.Q().f.v();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         flz.Q().h().a(false);
-      }
-   }, () -> flz.Q().h().a(false));
-   protected static final gln.k aQ = new gln.k("item_entity_target", () -> {
-      fev $$0 = flz.Q().f.s();
-      if ($$0 != null) {
-         $$0.a(false);
-      } else {
-         flz.Q().h().a(false);
-      }
-   }, () -> flz.Q().h().a(false));
-   protected static final gln.h aR = new gln.h(OptionalDouble.of(1.0));
-   protected static final gln.b aS = new gln.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
-   });
-   protected static final gln.b aT = new gln.b("or_reverse", () -> {
-      RenderSystem.enableColorLogicOp();
-      RenderSystem.logicOp(GlStateManager.h.n);
-   }, () -> RenderSystem.disableColorLogicOp());
+public class gln {
+   public static final alz a = alz.b("main");
+   private final List<glp> b;
+   private final Map<alz, glo.d> c;
+   private final Set<alz> d;
 
-   public gln(String $$0, Runnable $$1, Runnable $$2) {
+   private gln(List<glp> $$0, Map<alz, glo.d> $$1, Set<alz> $$2) {
       this.b = $$0;
-      this.aV = $$1;
-      this.aW = $$2;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a() {
-      this.aV.run();
-   }
+   public static gln a(glo $$0, hbk $$1, gma $$2, Set<alz> $$3) throws gma.b {
+      Stream<alz> $$4 = $$0.b().stream().flatMap($$0x -> $$0x.b().stream()).flatMap($$0x -> $$0x.b().stream());
+      Set<alz> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<alz> $$6 = Sets.difference($$5, $$3);
+      if (!$$6.isEmpty()) {
+         throw new gma.b("Referenced external targets are not available in this context: " + $$6);
+      } else {
+         Builder<glp> $$7 = ImmutableList.builder();
 
-   public void b() {
-      this.aW.run();
-   }
+         for (glo.e $$8 : $$0.b()) {
+            $$7.add(a($$1, $$2, $$8));
+         }
 
-   @Override
-   public String toString() {
-      return this.b;
-   }
-
-   private static void a(float $$0) {
-      long $$1 = (long)((double)ae.c() * flz.Q().n.ap().c() * 8.0);
-      float $$2 = (float)($$1 % 110000L) / 110000.0F;
-      float $$3 = (float)($$1 % 30000L) / 30000.0F;
-      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
-      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
-      RenderSystem.setTextureMatrix($$4);
-   }
-
-   static class a extends gln {
-      private final boolean aU;
-
-      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
-         super($$0, $$1, $$2);
-         this.aU = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aU + "]";
+         return new gln($$7.build(), $$0.a(), $$5);
       }
    }
 
-   protected static class b extends gln {
-      public b(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static glp a(hbk $$0, gma $$1, glo.e $$2) throws gma.b {
+      alz $$3 = $$2.a();
+      gks $$4 = $$1.b(new gmb($$3, fgo.e, glz.a));
+
+      for (glo.h $$5 : $$2.d()) {
+         String $$6 = $$5.a();
+         if ($$4.a($$6) == null) {
+            throw new gma.b("Uniform '" + $$6 + "' does not exist for " + $$3);
+         }
       }
+
+      String $$7 = $$3.toString();
+      glp $$8 = new glp($$7, $$4, $$2.c(), $$2.d());
+
+      for (glo.c $$9 : $$2.b()) {
+         Objects.requireNonNull($$9);
+         Throwable var45;
+         switch ($$9) {
+            case glo.g var11:
+               glo.g var53 = var11;
+
+               try {
+                  var54 = var53.a();
+               } catch (Throwable var31) {
+                  var45 = var31;
+                  boolean var66 = false;
+                  break;
+               }
+
+               String var36 = var54;
+               glo.g var55 = var11;
+
+               try {
+                  var56 = var55.c();
+               } catch (Throwable var30) {
+                  var45 = var30;
+                  boolean var67 = false;
+                  break;
+               }
+
+               alz var37 = var56;
+               glo.g var57 = var11;
+
+               try {
+                  var58 = var57.d();
+               } catch (Throwable var29) {
+                  var45 = var29;
+                  boolean var68 = false;
+                  break;
+               }
+
+               int var38 = var58;
+               glo.g var59 = var11;
+
+               try {
+                  var60 = var59.e();
+               } catch (Throwable var28) {
+                  var45 = var28;
+                  boolean var69 = false;
+                  break;
+               }
+
+               int var39 = var60;
+               glo.g var61 = var11;
+
+               try {
+                  var62 = var61.f();
+               } catch (Throwable var27) {
+                  var45 = var27;
+                  boolean var70 = false;
+                  break;
+               }
+
+               boolean var40 = var62;
+               hau $$15x = $$0.a(var37.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+               $$15x.a(var40, false);
+               $$8.a(new glp.c(var36, $$15x, var38, var39));
+               continue;
+            case glo.f $$15:
+               glo.f var10000 = $$15;
+
+               try {
+                  var46 = var10000.a();
+               } catch (Throwable var26) {
+                  var45 = var26;
+                  boolean var10001 = false;
+                  break;
+               }
+
+               String var22 = var46;
+               glo.f var47 = $$15;
+
+               try {
+                  var48 = var47.c();
+               } catch (Throwable var25) {
+                  var45 = var25;
+                  boolean var63 = false;
+                  break;
+               }
+
+               alz var42 = var48;
+               glo.f var49 = $$15;
+
+               try {
+                  var50 = var49.d();
+               } catch (Throwable var24) {
+                  var45 = var24;
+                  boolean var64 = false;
+                  break;
+               }
+
+               boolean var43 = var50;
+               glo.f var51 = $$15;
+
+               try {
+                  var52 = var51.e();
+               } catch (Throwable var23) {
+                  var45 = var23;
+                  boolean var65 = false;
+                  break;
+               }
+
+               boolean var44 = var52;
+               $$8.a(new glp.b(var22, var42, var43, var44));
+               continue;
+            default:
+               throw new MatchException(null, null);
+         }
+
+         Throwable var35 = var45;
+         throw new MatchException(var35.toString(), var35);
+      }
+
+      return $$8;
    }
 
-   protected static class c extends gln.a {
-      public c(boolean $$0) {
-         super("cull", () -> {
-            if (!$$0) {
-               RenderSystem.disableCull();
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(feu $$0, int $$1, int $$2, gln.a $$3) {
+      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<alz, fgc<ffa>> $$5 = new HashMap<>(this.c.size() + this.d.size());
+
+      for (alz $$6 : this.d) {
+         $$5.put($$6, $$3.b($$6));
+      }
+
+      for (Entry<alz, glo.d> $$7 : this.c.entrySet()) {
+         alz $$8 = $$7.getKey();
+         glo.d var35;
+         Objects.requireNonNull(var35);
+         Object var11 = var35;
+
+         var35 = $$7.getValue();
+         fga $$11 = switch (var11) {
+            case glo.a var13 -> {
+               glo.a var29 = var13;
+
+               int var26;
+               label56: {
+                  label76: {
+                     try {
+                        var31 = var29.a();
+                     } catch (Throwable var18) {
+                        var30 = var18;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var26 = var31;
+                     glo.a var32 = var13;
+
+                     try {
+                        var33 = var32.b();
+                        break label56;
+                     } catch (Throwable var17) {
+                        var30 = var17;
+                        boolean var34 = false;
+                     }
+                  }
+
+                  Throwable var20 = var30;
+                  throw new MatchException(var20.toString(), var20);
+               }
+
+               int var27 = var33;
+               yield new fga(var26, var27, true);
             }
-         }, () -> {
-            if (!$$0) {
-               RenderSystem.enableCull();
-            }
-         }, $$0);
+            case glo.b var16 -> new fga($$1, $$2, true);
+            default -> throw new MatchException(null, null);
+         };
+         $$5.put($$8, $$0.a($$8.toString(), $$11));
+      }
+
+      for (glp $$12 : this.b) {
+         $$12.a($$0, $$5, $$4);
+      }
+
+      for (alz $$13 : this.d) {
+         $$3.a($$13, $$5.get($$13));
       }
    }
 
-   protected static class d extends gln {
-      private final String aU;
+   @Deprecated
+   public void a(ffa $$0, ffz $$1) {
+      feu $$2 = new feu();
+      gln.a $$3 = gln.a.b(a, $$2.a("main", $$0));
+      this.a($$2, $$0.c, $$0.d, $$3);
+      $$2.a($$1);
+   }
 
-      public d(String $$0, int $$1) {
-         super("depth_test", () -> {
-            if ($$1 != 519) {
-               RenderSystem.enableDepthTest();
-               RenderSystem.depthFunc($$1);
-            }
-         }, () -> {
-            if ($$1 != 519) {
-               RenderSystem.disableDepthTest();
-               RenderSystem.depthFunc(515);
-            }
-         });
-         this.aU = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aU + "]";
+   public void a(String $$0, float $$1) {
+      for (glp $$2 : this.b) {
+         $$2.a().c($$0).a($$1);
       }
    }
 
-   protected static class e extends gln {
-      public e(Runnable $$0, Runnable $$1) {
-         super("texture", $$0, $$1);
-      }
+   public interface a {
+      static gln.a b(final alz $$0, final fgc<ffa> $$1) {
+         return new gln.a() {
+            private fgc<ffa> c = $$1;
 
-      e() {
-         super("texture", () -> {
-         }, () -> {
-         });
-      }
-
-      protected Optional<alz> c() {
-         return Optional.empty();
-      }
-   }
-
-   protected static class f extends gln {
-      public f(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class g extends gln.a {
-      public g(boolean $$0) {
-         super("lightmap", () -> {
-            if ($$0) {
-               flz.Q().j.l().c();
-            }
-         }, () -> {
-            if ($$0) {
-               flz.Q().j.l().b();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class h extends gln {
-      private final OptionalDouble aU;
-
-      public h(OptionalDouble $$0) {
-         super("line_width", () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               if ($$0.isPresent()) {
-                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+            @Override
+            public void a(alz $$0x, fgc<ffa> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
                } else {
-                  RenderSystem.lineWidth(Math.max(2.5F, (float)flz.Q().aO().k() / 1920.0F * 2.5F));
+                  throw new IllegalArgumentException("No target with id " + $$0);
                }
             }
-         }, () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               RenderSystem.lineWidth(1.0F);
+
+            @Nullable
+            @Override
+            public fgc<ffa> a(alz $$0x) {
+               return $$0.equals($$0) ? this.c : null;
             }
-         });
-         this.aU = $$0;
+         };
       }
 
-      @Override
-      public String toString() {
-         return this.b + "[" + (this.aU.isPresent() ? this.aU.getAsDouble() : "window_scale") + "]";
-      }
-   }
+      void a(alz var1, fgc<ffa> var2);
 
-   protected static class i extends gln.e {
-      private final Optional<alz> aU;
+      @Nullable
+      fgc<ffa> a(alz var1);
 
-      i(ImmutableList<Triple<alz, Boolean, Boolean>> $$0) {
-         super(() -> {
-            int $$1 = 0;
-            UnmodifiableIterator var2 = $$0.iterator();
-
-            while (var2.hasNext()) {
-               Triple<alz, Boolean, Boolean> $$2 = (Triple<alz, Boolean, Boolean>)var2.next();
-               hbf $$3 = flz.Q().aa();
-               $$3.a((alz)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
-               RenderSystem.setShaderTexture($$1++, (alz)$$2.getLeft());
-            }
-         }, () -> {
-         });
-         this.aU = $$0.stream().findFirst().map(Triple::getLeft);
-      }
-
-      @Override
-      protected Optional<alz> c() {
-         return this.aU;
-      }
-
-      public static gln.i.a d() {
-         return new gln.i.a();
-      }
-
-      public static final class a {
-         private final Builder<Triple<alz, Boolean, Boolean>> a = new Builder();
-
-         public gln.i.a a(alz $$0, boolean $$1, boolean $$2) {
-            this.a.add(Triple.of($$0, $$1, $$2));
-            return this;
+      default fgc<ffa> b(alz $$0) {
+         fgc<ffa> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
+         } else {
+            return $$1;
          }
-
-         public gln.i a() {
-            return new gln.i(this.a.build());
-         }
-      }
-   }
-
-   protected static final class j extends gln.o {
-      public j(float $$0, float $$1) {
-         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
-      }
-   }
-
-   protected static class k extends gln {
-      public k(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class l extends gln.a {
-      public l(boolean $$0) {
-         super("overlay", () -> {
-            if ($$0) {
-               flz.Q().j.m().a();
-            }
-         }, () -> {
-            if ($$0) {
-               flz.Q().j.m().b();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class m extends gln {
-      private final Optional<glw> aU;
-
-      public m(glw $$0) {
-         super("shader", () -> RenderSystem.setShader($$0), () -> {
-         });
-         this.aU = Optional.of($$0);
-      }
-
-      public m() {
-         super("shader", RenderSystem::clearShader, () -> {
-         });
-         this.aU = Optional.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aU + "]";
-      }
-   }
-
-   protected static class n extends gln.e {
-      private final Optional<alz> aU;
-      private final bbi aV;
-      private final boolean aW;
-
-      public n(alz $$0, bbi $$1, boolean $$2) {
-         super(() -> {
-            hbf $$3 = flz.Q().aa();
-            hap $$4 = $$3.a($$0);
-            $$4.a($$1.a($$4.c()), $$2);
-            RenderSystem.setShaderTexture(0, $$0);
-         }, () -> {
-         });
-         this.aU = Optional.of($$0);
-         this.aV = $$1;
-         this.aW = $$2;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aU + "(blur=" + this.aV + ", mipmap=" + this.aW + ")]";
-      }
-
-      @Override
-      protected Optional<alz> c() {
-         return this.aU;
-      }
-   }
-
-   protected static class o extends gln {
-      public o(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class p extends gln {
-      public p(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class q extends gln {
-      private final boolean aU;
-      private final boolean aV;
-
-      public q(boolean $$0, boolean $$1) {
-         super("write_mask_state", () -> {
-            if (!$$1) {
-               RenderSystem.depthMask($$1);
-            }
-
-            if (!$$0) {
-               RenderSystem.colorMask($$0, $$0, $$0, $$0);
-            }
-         }, () -> {
-            if (!$$1) {
-               RenderSystem.depthMask(true);
-            }
-
-            if (!$$0) {
-               RenderSystem.colorMask(true, true, true, true);
-            }
-         });
-         this.aU = $$0;
-         this.aV = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[writeColor=" + this.aU + ", writeDepth=" + this.aV + "]";
       }
    }
 }

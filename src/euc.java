@@ -1,91 +1,117 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class euc {
-   protected eui b;
-   protected bwd c;
-   protected final Int2ObjectMap<eub> d = new Int2ObjectOpenHashMap();
-   protected int e;
-   protected int f;
-   protected int g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
-   protected boolean k;
-
-   public void a(dhn $$0, bwd $$1) {
-      this.b = new eui($$0, $$1);
-      this.c = $$1;
-      this.d.clear();
-      this.e = bae.d($$1.dq() + 1.0F);
-      this.f = bae.d($$1.dr() + 1.0F);
-      this.g = bae.d($$1.dq() + 1.0F);
+public abstract class euc extends etu {
+   @Override
+   public etv d() {
+      return etx.b;
    }
 
-   public void b() {
-      this.b = null;
-      this.c = null;
+   @Override
+   public etv e() {
+      return etx.c;
    }
 
-   protected eub b(jh $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   @Override
+   public cxk a() {
+      return cxs.qX;
    }
 
-   protected eub c(int $$0, int $$1, int $$2) {
-      return (eub)this.d.computeIfAbsent(eub.b($$0, $$1, $$2), $$3 -> new eub($$0, $$1, $$2));
+   @Override
+   public void a(dhh $$0, jh $$1, etw $$2, bam $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, axf.CB, axg.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+         }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(ls.am, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
    }
 
-   public abstract eub a();
-
-   public abstract euk a(double var1, double var3, double var5);
-
-   protected euk b(double $$0, double $$1, double $$2) {
-      return new euk(this.c(bae.a($$0), bae.a($$1), bae.a($$2)));
+   @Nullable
+   @Override
+   public lq h() {
+      return ls.l;
    }
 
-   public abstract int a(eub[] var1, eub var2);
-
-   public abstract eug a(eui var1, int var2, int var3, int var4, bwd var5);
-
-   public abstract eug a(eui var1, int var2, int var3, int var4);
-
-   public eug a(bwd $$0, jh $$1) {
-      return this.a(new eui($$0.dV(), $$0), $$1.u(), $$1.v(), $$1.w());
+   @Override
+   protected boolean a(ash $$0) {
+      return $$0.N().b(dhd.V);
    }
 
-   public void a(boolean $$0) {
-      this.h = $$0;
+   @Override
+   protected void a(dhi $$0, jh $$1, dxu $$2) {
+      duw $$3 = $$2.x() ? $$0.c_($$1) : null;
+      dkl.a($$2, $$0, $$1, $$3);
    }
 
-   public void b(boolean $$0) {
-      this.i = $$0;
+   @Override
+   public int b(dhk $$0) {
+      return 4;
    }
 
-   public void c(boolean $$0) {
-      this.j = $$0;
+   @Override
+   public dxu b(etw $$0) {
+      return dkn.J.m().b(dpd.b, Integer.valueOf(e($$0)));
    }
 
-   public void d(boolean $$0) {
-      this.k = $$0;
+   @Override
+   public boolean a(etv $$0) {
+      return $$0 == etx.c || $$0 == etx.b;
    }
 
-   public boolean d() {
-      return this.h;
+   @Override
+   public int c(dhk $$0) {
+      return 1;
    }
 
-   public boolean e() {
-      return this.i;
+   @Override
+   public int a(dhk $$0) {
+      return 5;
    }
 
-   public boolean f() {
-      return this.j;
+   @Override
+   public boolean a(etw $$0, dgm $$1, jh $$2, etv $$3, jm $$4) {
+      return $$4 == jm.a && !$$3.a(aya.a);
    }
 
-   public boolean g() {
-      return this.k;
+   @Override
+   protected float c() {
+      return 100.0F;
    }
 
-   public static boolean a(dxn $$0) {
-      return $$0.a(axu.aN) || $$0.a(dkg.K) || $$0.a(dkg.le) || dkt.h($$0) || $$0.a(dkg.fJ);
+   @Override
+   public Optional<axe> j() {
+      return Optional.of(axf.dj);
+   }
+
+   public static class a extends euc {
+      @Override
+      protected void a(dxv.a<etv, etw> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(etw $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(etw $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends euc {
+      @Override
+      public int d(etw $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(etw $$0) {
+         return true;
+      }
    }
 }

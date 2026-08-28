@@ -1,13 +1,46 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface ers<P extends err> {
-   ers<erq> a = a("always_true", erq.a);
-   ers<ern> b = a("linear_pos", ern.a);
-   ers<erc> c = a("axis_aligned_linear_pos", erc.a);
+public class ers extends esi {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<ers> a = MapCodec.unit(() -> ers.b);
+   public static final ers b = new ers();
 
-   MapCodec<P> codec();
+   private ers() {
+   }
 
-   static <P extends err> ers<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.o, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public esl.d a(dhk $$0, jh $$1, jh $$2, esl.d $$3, esl.d $$4, esh $$5) {
+      dxu $$6 = $$4.b();
+      if ($$6.a(dkn.pw)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dxu $$9;
+            try {
+               gq.a $$8 = gq.a($$0.a(mb.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
+            }
+
+            return $$9.a(dkn.li) ? null : new esl.d($$4.a(), $$9, null);
+         }
+      } else {
+         return $$4;
+      }
+   }
+
+   @Override
+   protected esk<?> a() {
+      return esk.h;
    }
 }

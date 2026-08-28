@@ -126,17 +126,17 @@ public class yb {
                )
                .apply($$0, yb.b::new)
       );
-      public final bvm<?> b;
+      public final bvq<?> b;
       public final UUID c;
       public final Optional<xv> d;
       @Nullable
       private List<xv> e;
 
-      public b(bvm<?> $$0, UUID $$1, @Nullable xv $$2) {
+      public b(bvq<?> $$0, UUID $$1, @Nullable xv $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bvm<?> $$0, UUID $$1, Optional<xv> $$2) {
+      public b(bvq<?> $$0, UUID $$1, Optional<xv> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -147,7 +147,7 @@ public class yb {
             ux $$2 = vv.a($$0.getString());
             DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
             DataResult<xv> $$4 = xx.a.parse($$3, JsonParser.parseString($$2.l("name")));
-            bvm<?> $$5 = ma.f.a(alz.a($$2.l("type")));
+            bvq<?> $$5 = ma.f.a(alz.a($$2.l("type")));
             UUID $$6 = UUID.fromString($$2.l("id"));
             return $$4.map($$2x -> new yb.b($$5, $$6, $$2x));
          } catch (Exception var7) {
@@ -187,22 +187,22 @@ public class yb {
    }
 
    public static class c {
-      public static final Codec<yb.c> a = cxk.b.xmap(yb.c::new, yb.c::a);
-      private static final Codec<yb.c> c = cxk.g.xmap(yb.c::new, yb.c::a);
+      public static final Codec<yb.c> a = cxo.b.xmap(yb.c::new, yb.c::a);
+      private static final Codec<yb.c> c = cxo.g.xmap(yb.c::new, yb.c::a);
       public static final Codec<yb.c> b = Codec.withAlternative(a, c);
-      private final jq<cxg> d;
+      private final jq<cxk> d;
       private final int e;
       private final kr f;
       @Nullable
-      private cxk g;
+      private cxo g;
 
-      c(jq<cxg> $$0, int $$1, kr $$2) {
+      c(jq<cxk> $$0, int $$1, kr $$2) {
          this.d = $$0;
          this.e = $$1;
          this.f = $$2;
       }
 
-      public c(cxk $$0) {
+      public c(cxo $$0) {
          this($$0.i(), $$0.L(), $$0.e());
       }
 
@@ -225,9 +225,9 @@ public class yb {
          return 31 * $$0 + this.f.hashCode();
       }
 
-      public cxk a() {
+      public cxo a() {
          if (this.g == null) {
-            this.g = new cxk(this.d, this.e, this.f);
+            this.g = new cxo(this.d, this.e, this.f);
          }
 
          return this.g;
@@ -237,7 +237,7 @@ public class yb {
          try {
             ux $$2 = vv.a($$0.getString());
             DynamicOps<vu> $$3 = (DynamicOps<vu>)($$1 != null ? $$1.a(vl.a) : vl.a);
-            return cxk.b.parse($$3, $$2).map(yb.c::new);
+            return cxo.b.parse($$3, $$2).map(yb.c::new);
          } catch (CommandSyntaxException var4) {
             return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
          }

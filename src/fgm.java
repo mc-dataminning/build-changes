@@ -1,67 +1,49 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fgm implements fgp {
-   private final fgp a;
-   private final Matrix4f b;
-   private final Matrix3f c;
-   private final float d;
-   private final Vector3f e = new Vector3f();
-   private final Vector3f f = new Vector3f();
-   private float g;
-   private float h;
-   private float i;
+public class fgm {
+   @Nullable
+   private static fgt a;
 
-   public fgm(fgp $$0, fgl.a $$1, float $$2) {
-      this.a = $$0;
-      this.b = new Matrix4f($$1.a()).invert();
-      this.c = new Matrix3f($$1.b()).invert();
-      this.d = $$2;
+   public static void a() {
+      if (a != null) {
+         b();
+         fgt.b();
+      }
    }
 
-   @Override
-   public fgp a(float $$0, float $$1, float $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.a.a($$0, $$1, $$2);
-      return this;
+   public static void b() {
+      a = null;
    }
 
-   @Override
-   public fgp a(int $$0, int $$1, int $$2, int $$3) {
-      this.a.a(-1);
-      return this;
+   public static void a(fgp $$0) {
+      RenderSystem.assertOnRenderThread();
+      fgt $$1 = c($$0);
+      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
    }
 
-   @Override
-   public fgp a(float $$0, float $$1) {
-      return this;
+   public static void b(fgp $$0) {
+      RenderSystem.assertOnRenderThread();
+      fgt $$1 = c($$0);
+      $$1.c();
    }
 
-   @Override
-   public fgp a(int $$0, int $$1) {
-      this.a.a($$0, $$1);
-      return this;
+   private static fgt c(fgp $$0) {
+      fgt $$1 = a($$0.c().a());
+      $$1.a($$0);
+      return $$1;
    }
 
-   @Override
-   public fgp b(int $$0, int $$1) {
-      this.a.b($$0, $$1);
-      return this;
+   private static fgt a(fgv $$0) {
+      fgt $$1 = $$0.i();
+      a($$1);
+      return $$1;
    }
 
-   @Override
-   public fgp b(float $$0, float $$1, float $$2) {
-      this.a.b($$0, $$1, $$2);
-      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
-      jm $$4 = jm.a($$3.x(), $$3.y(), $$3.z());
-      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
-      $$5.rotateY((float) Math.PI);
-      $$5.rotateX((float) (-Math.PI / 2));
-      $$5.rotate($$4.b());
-      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
-      return this;
+   private static void a(fgt $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

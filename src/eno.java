@@ -1,40 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eno extends eni {
-   public static final MapCodec<eno> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               edi.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eno::new)
-   );
-   private final edi.a c;
-   private final int d;
-   private final int e;
+public class eno extends eem {
+   private final dif a;
+   private final dzq b;
+   private final Optional<enn> c;
 
-   private eno(edi.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public eno(dif $$0, dzq $$1, Optional<enn> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static eno a(edi.a $$0, int $$1, int $$2) {
-      return new eno($$0, $$1, $$2);
+   public int a(edp.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean a(enh $$0, bam $$1, jh $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public dzo a(dgn $$0) {
+      return ((eaj)this.a.a($$0.g, $$0.h)).C();
    }
 
-   @Override
-   public enk<?> b() {
-      return enk.c;
+   public dxu a(jh $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.L_();
+   }
+
+   public dif d() {
+      return this.a;
+   }
+
+   public Optional<enn> e() {
+      return this.c;
+   }
+
+   public dzq f() {
+      return this.b;
    }
 }

@@ -1,23 +1,20 @@
 public enum dyv implements bba {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+   a("normal"),
+   b("sticky");
 
-   private final String f;
+   private final String c;
 
    private dyv(final String $$0) {
-      this.f = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.c;
    }
 }

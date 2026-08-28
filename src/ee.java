@@ -17,7 +17,7 @@ public record ee(List<ee.c> c) {
    public static final Codec<ee> a = d.xmap(ee::new, ee::a);
    public static final zt<ByteBuf, ee> b = ee.c.a.a(zr.a()).a(ee::new, ee::a);
 
-   public <S extends dxp<?, S>> boolean a(dxo<?, S> $$0, S $$1) {
+   public <S extends dxw<?, S>> boolean a(dxv<?, S> $$0, S $$1) {
       for (ee.c $$2 : this.c) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -27,15 +27,15 @@ public record ee(List<ee.c> c) {
       return true;
    }
 
-   public boolean a(dxn $$0) {
+   public boolean a(dxu $$0) {
       return this.a($$0.b().l(), $$0);
    }
 
-   public boolean a(etp $$0) {
+   public boolean a(etw $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(dxo<?, ?> $$0) {
+   public Optional<String> a(dxv<?, ?> $$0) {
       for (ee.c $$1 : this.c) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -60,20 +60,20 @@ public record ee(List<ee.c> c) {
          return new ee.a();
       }
 
-      public ee.a a(dyp<?> $$0, String $$1) {
+      public ee.a a(dyw<?> $$0, String $$1) {
          this.a.add(new ee.c($$0.f(), new ee.b($$1)));
          return this;
       }
 
-      public ee.a a(dyp<Integer> $$0, int $$1) {
+      public ee.a a(dyw<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public ee.a a(dyp<Boolean> $$0, boolean $$1) {
+      public ee.a a(dyw<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & bba> ee.a a(dyp<T> $$0, T $$1) {
+      public <T extends Comparable<T> & bba> ee.a a(dyw<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -87,7 +87,7 @@ public record ee(List<ee.c> c) {
       public static final zt<ByteBuf, ee.b> b = zr.o.a(ee.b::new, ee.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dxp<?, ?> $$0, dyp<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dxw<?, ?> $$0, dyw<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.e);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -101,13 +101,13 @@ public record ee(List<ee.c> c) {
    static record c(String b, ee.e c) {
       public static final zt<ByteBuf, ee.c> a = zt.a(zr.o, ee.c::a, ee.e.d, ee.c::b, ee.c::new);
 
-      public <S extends dxp<?, S>> boolean a(dxo<?, S> $$0, S $$1) {
-         dyp<?> $$2 = $$0.a(this.b);
+      public <S extends dxw<?, S>> boolean a(dxv<?, S> $$0, S $$1) {
+         dyw<?> $$2 = $$0.a(this.b);
          return $$2 != null && this.c.a($$1, $$2);
       }
 
-      public Optional<String> a(dxo<?, ?> $$0) {
-         dyp<?> $$1 = $$0.a(this.b);
+      public Optional<String> a(dxv<?, ?> $$0) {
+         dyw<?> $$1 = $$0.a(this.b);
          return $$1 != null ? Optional.empty() : Optional.of(this.b);
       }
 
@@ -127,7 +127,7 @@ public record ee(List<ee.c> c) {
       public static final zt<ByteBuf, ee.d> b = zt.a(zr.a(zr.o), ee.d::a, zr.a(zr.o), ee.d::b, ee.d::new);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dxp<?, ?> $$0, dyp<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dxw<?, ?> $$0, dyw<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.e.isPresent()) {
             Optional<T> $$3 = $$1.b(this.e.get());
@@ -175,6 +175,6 @@ public record ee(List<ee.c> c) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(dxp<?, ?> var1, dyp<T> var2);
+      <T extends Comparable<T>> boolean a(dxw<?, ?> var1, dyw<T> var2);
    }
 }

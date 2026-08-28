@@ -1,39 +1,72 @@
-import javax.annotation.Nullable;
+public class fon extends fnx {
+   private final fno a;
+   private final foy b;
 
-public class fon extends fnw {
-   private final fnj a;
+   public fon(int $$0, int $$1, int $$2, int $$3, xv $$4, fno $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new foy($$4, $$5).d(this.y() - this.b());
+   }
 
-   public fon(fnj $$0, xv $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public fon a(int $$0) {
+      this.b.c($$0);
+      return this;
    }
 
    @Override
-   protected void b(fnl $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.D() + this.y() / 2;
-      int $$5 = this.E() + this.w() / 2;
-      xv $$6 = this.z();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = ftg.a(ae.c());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   public void i(int $$0) {
+      super.i($$0);
+      this.b.d(this.y() - this.b());
    }
 
    @Override
-   protected void a(frw $$0) {
+   protected int h() {
+      return this.b.w();
    }
 
    @Override
-   public void a(hgg $$0) {
+   protected double i() {
+      return 9.0;
    }
 
    @Override
-   public boolean C() {
-      return false;
+   protected void b(fnq $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aN_()) {
+         this.a($$0, this.D() - this.a(), this.E() - this.a(), this.y() + this.b(), this.w() + this.b());
+      }
    }
 
-   @Nullable
    @Override
-   public fni a(fsc $$0) {
-      return null;
+   public void b(fnq $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.D(), (float)this.E(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(fnq $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.D() + this.a()), (float)(this.E() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fsb $$0) {
+      $$0.a(fsa.a, this.z());
    }
 }

@@ -43,26 +43,26 @@ public class fw<T> implements ArgumentType<aly<T>> {
       return a($$0, $$2).a($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static jq.c<ega<?, ?>> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mb.aK, b);
+   public static jq.c<egh<?, ?>> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, mb.aL, b);
    }
 
-   public static jq.c<eoc> b(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mb.aT, c);
+   public static jq.c<eoj> b(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, mb.aU, c);
    }
 
-   public static jq.c<epm> c(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mb.aW, d);
+   public static jq.c<ept> c(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, mb.aX, d);
    }
 
-   public static dcd<?> d(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      dcf $$2 = ((ew)$$0.getSource()).l().aI();
-      aly<dbz<?>> $$3 = a($$0, $$1, mb.bj, e);
+   public static dci<?> d(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      dck $$2 = ((ew)$$0.getSource()).l().aI();
+      aly<dcd<?>> $$3 = a($$0, $$1, mb.bk, e);
       return $$2.b($$3).orElseThrow(() -> e.create($$3.a()));
    }
 
    public static ah e(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      aly<ag> $$2 = a($$0, $$1, mb.bi, f);
+      aly<ag> $$2 = a($$0, $$1, mb.bj, f);
       ah $$3 = ((ew)$$0.getSource()).l().aD().a($$2.a());
       if ($$3 == null) {
          throw f.create($$2.a());

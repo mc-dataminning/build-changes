@@ -1,24 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eeu extends efa {
-   final ayk<dke> a;
-   public static final MapCodec<eeu> e = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ayk.a(mb.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, eeu::new)
-   );
+class eeu extends eey {
+   public static final MapCodec<eeu> a = a(eeu::new);
 
-   protected eeu(kl $$0, ayk<dke> $$1) {
+   public eeu(List<eew> $$0) {
       super($$0);
-      this.a = $$1;
+   }
+
+   public boolean a(dif $$0, jh $$1) {
+      for (eew $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   protected boolean a(dxn $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public eeq<?> a() {
-      return eeq.b;
+   public eex<?> a() {
+      return eex.j;
    }
 }

@@ -1,29 +1,83 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public record ega<FC extends eis, F extends ego<FC>>(F d, FC e) {
-   public static final Codec<ega<?, ?>> a = ma.O.q().dispatch($$0 -> $$0.d, ego::a);
-   public static final Codec<jq<ega<?, ?>>> b = alv.a(mb.aK, a);
-   public static final Codec<ju<ega<?, ?>>> c = kf.a(mb.aK, a);
-
-   public boolean a(dhy $$0, dzj $$1, bam $$2, jh $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<ega<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+public class ega extends egv<ejg> {
+   public ega(Codec<ejg> $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
+   public boolean a(egx<ejg> $$0) {
+      jh $$1 = $$0.e();
+      dif $$2 = $$0.b();
+      bam $$3 = $$0.d();
+      if ($$2.u($$1) && !$$2.u($$1.d())) {
+         jh.a $$4 = $$1.k();
+         jh.a $$5 = $$1.k();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
+
+         while ($$2.u($$4)) {
+            if ($$2.s($$4)) {
+               return true;
+            }
+
+            $$2.a($$4, dkn.el.m(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, jm.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, jm.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, jm.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, jm.f));
+            $$4.c(jm.a);
+         }
+
+         $$4.c(jm.b);
+         this.a($$2, $$3, $$5.a($$4, jm.c));
+         this.a($$2, $$3, $$5.a($$4, jm.d));
+         this.a($$2, $$3, $$5.a($$4, jm.e));
+         this.a($$2, $$3, $$5.a($$4, jm.f));
+         $$4.c(jm.a);
+         jh.a $$10 = new jh.a();
+
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = bae.a($$11) * bae.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
+
+                  while ($$2.u($$5.a($$10, jm.a))) {
+                     $$10.c(jm.a);
+                     if (--$$14 <= 0) {
+                        break;
+                     }
+                  }
+
+                  if (!$$2.u($$5.a($$10, jm.a))) {
+                     $$2.a($$10, dkn.el.m(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public F b() {
-      return this.d;
+   private void a(dhi $$0, bam $$1, jh $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, dkn.el.m(), 2);
+      }
    }
 
-   public FC c() {
-      return this.e;
+   private boolean b(dhi $$0, bam $$1, jh $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, dkn.el.m(), 2);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

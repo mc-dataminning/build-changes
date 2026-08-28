@@ -1,5 +1,4 @@
-public class gzm extends gym {
+public class gzm extends gxt {
    public float a;
    public float b;
-   public float c;
 }

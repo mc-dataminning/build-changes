@@ -1,44 +1,45 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class elv extends ely {
-   public static final MapCodec<elv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elv::new));
+public class elv extends elt {
+   public static final MapCodec<elv> a = MapCodec.unit(() -> elv.b);
+   public static final elv b = new elv();
 
-   public elv(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected elu<?> a() {
+      return elu.a;
    }
 
    @Override
-   protected elz<?> a() {
-      return elz.c;
-   }
-
-   @Override
-   public List<eke.a> a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, int $$3, jh $$4, ejo $$5) {
-      jh $$6 = $$4.e();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.i(), $$5);
-      a($$0, $$1, $$2, $$6.g(), $$5);
-      a($$0, $$1, $$2, $$6.g().i(), $$5);
-      jh.a $$7 = new jh.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+   public void a(elt.a $$0) {
+      bam $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            jh $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dtk.d);
+            }
          }
-      }
 
-      return ImmutableList.of(new eke.a($$4.b($$3), 0, true));
-   }
+         if ($$1.a(3) > 0) {
+            jh $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dtk.f);
+            }
+         }
 
-   private void a(dhg $$0, BiConsumer<jh, dxn> $$1, bam $$2, jh.a $$3, ejo $$4, jh $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+         if ($$1.a(3) > 0) {
+            jh $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dtk.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            jh $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dtk.c);
+            }
+         }
+      });
    }
 }

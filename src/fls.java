@@ -1,29 +1,29 @@
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public record fls(int a, xv b, @Nullable yh c, @Nullable flt d) {
-   @Nullable
-   public flt.a a() {
-      return this.d != null ? this.d.f() : null;
-   }
+public class fls {
+   private final List<ya> a = Lists.newArrayList();
 
-   public int b() {
-      return this.a;
-   }
-
-   public xv c() {
-      return this.b;
+   public void a(ya $$0) {
+      this.a.add($$0);
    }
 
    @Nullable
-   public yh d() {
-      return this.c;
+   public ya a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : ya.a(this.a);
+      }
    }
 
-   @Nullable
-   public flt e() {
-      return this.d;
+   public ya b() {
+      ya $$0 = this.a();
+      return $$0 != null ? $$0 : ya.b;
    }
 
-   public static record a(int a, azq b, @Nullable flt c, boolean d) {
+   public void c() {
+      this.a.clear();
    }
 }

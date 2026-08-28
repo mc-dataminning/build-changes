@@ -1,8 +1,12 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-
-public record ddq(cxk a, @Nullable bvn b, @Nullable bwb c, Consumer<cxg> d) {
-   public ddq(cxk $$0, bvn $$1, bwb $$2) {
-      this($$0, $$1, $$2, $$2x -> $$2.a($$2x, $$1));
+public class ddq {
+   public static ddo.i<?> a(kd<ddo.i<?>> $$0) {
+      kd.a($$0, "empty", ddo.c.f);
+      kd.a($$0, "any_fuel", ddo.a.f);
+      kd.a($$0, "item", ddo.d.e);
+      kd.a($$0, "item_stack", ddo.f.e);
+      kd.a($$0, "tag", ddo.h.e);
+      kd.a($$0, "smithing_trim", ddo.g.e);
+      kd.a($$0, "with_remainder", ddo.j.e);
+      return kd.a($$0, "composite", ddo.b.e);
    }
 }

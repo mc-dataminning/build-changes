@@ -1,69 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public interface ewf {
-   ewe<dac> a = new ewe<dac>() {
-      @Override
-      public kt<dac> a() {
-         return ku.al;
+public class ewf {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+   private static final DateTimeFormatter d = evx.a();
+
+   public ewf(ewc.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(ewa.c).toFile();
+      this.c.mkdirs();
+   }
+
+   public void a(cpw $$0) {
+      try {
+         ux $$1 = $$0.f(new ux());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cH() + "-", ".dat");
+         vk.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cH() + ".dat");
+         Path $$5 = $$2.resolve($$0.cH() + ".dat_old");
+         ae.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.al().getString());
+      }
+   }
+
+   private void a(cpw $$0, String $$1) {
+      Path $$2 = this.c.toPath();
+      Path $$3 = $$2.resolve($$0.cH() + $$1);
+      Path $$4 = $$2.resolve($$0.cH() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
+      if (Files.isRegularFile($$3)) {
+         try {
+            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+         } catch (Exception var7) {
+            b.warn("Failed to copy the player.dat file for {}", $$0.al().getString(), var7);
+         }
+      }
+   }
+
+   private Optional<ux> b(cpw $$0, String $$1) {
+      File $$2 = new File(this.c, $$0.cH() + $$1);
+      if ($$2.exists() && $$2.isFile()) {
+         try {
+            return Optional.of(vk.a($$2.toPath(), vg.a()));
+         } catch (Exception var5) {
+            b.warn("Failed to load player data for {}", $$0.al().getString());
+         }
       }
 
-      public Stream<cxk> a(dac $$0) {
-         return $$0.b();
+      return Optional.empty();
+   }
+
+   public Optional<ux> b(cpw $$0) {
+      Optional<ux> $$1 = this.b($$0, ".dat");
+      if ($$1.isEmpty()) {
+         this.a($$0, ".dat");
       }
 
-      public dac c() {
-         return dac.a;
-      }
-
-      public dac a(dac $$0, Stream<cxk> $$1) {
-         return dac.a($$1.toList());
-      }
-   };
-   ewe<czo> b = new ewe<czo>() {
-      @Override
-      public kt<czo> a() {
-         return ku.P;
-      }
-
-      public czo c() {
-         return czo.a;
-      }
-
-      public Stream<cxk> a(czo $$0) {
-         return $$0.b();
-      }
-
-      public czo a(czo $$0, Stream<cxk> $$1) {
-         czo.a $$2 = new czo.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
-      }
-   };
-   ewe<czp> c = new ewe<czp>() {
-      @Override
-      public kt<czp> a() {
-         return ku.O;
-      }
-
-      public czp c() {
-         return czp.a;
-      }
-
-      public Stream<cxk> a(czp $$0) {
-         return $$0.a().stream();
-      }
-
-      public czp a(czp $$0, Stream<cxk> $$1) {
-         return czp.a($$1.toList());
-      }
-   };
-   Map<kt<?>, ewe<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(ewe::a, $$0 -> (ewe<?>)$$0));
-   Codec<ewe<?>> e = ma.ao.q().comapFlatMap($$0 -> {
-      ewe<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, ewe::a);
+      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
+         int $$2 = vm.b($$1x, -1);
+         $$1x = bbs.b.a(this.a, $$1x, $$2);
+         $$0.g($$1x);
+         return $$1x;
+      });
+   }
 }

@@ -413,7 +413,7 @@ public class wp extends SimpleChannelInboundHandler<aac<?>> {
       return this.k.a();
    }
 
-   public static wp a(InetSocketAddress $$0, boolean $$1, @Nullable bny $$2) {
+   public static wp a(InetSocketAddress $$0, boolean $$1, @Nullable boc $$2) {
       wp $$3 = new wp(aad.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -586,7 +586,7 @@ public class wp extends SimpleChannelInboundHandler<aac<?>> {
       return this.x;
    }
 
-   public void a(bny $$0) {
+   public void a(boc $$0) {
       this.B = new wi($$0);
    }
 }

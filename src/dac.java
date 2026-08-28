@@ -1,150 +1,92 @@
-import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public final class dac {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final dac a = new dac(jz.a());
-   public static final Codec<dac> b = dac.a.a.sizeLimitedListOf(256).xmap(dac::b, dac::f);
-   public static final zt<xg, dac> c = cxk.h.a(zr.c(256)).a(dac::new, $$0 -> $$0.f);
-   private final jz<cxk> f;
-   private final int g;
+public record dac(int d, boolean e) implements dar {
+   private static final Codec<dac> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(dac::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(dac::b)).apply($$0, dac::new)
+   );
+   public static final Codec<dac> a = Codec.withAlternative(f, Codec.INT, $$0 -> new dac($$0, true));
+   public static final zt<ByteBuf, dac> b = zt.a(zr.g, dac::a, zr.b, dac::b, dac::new);
+   public static final int c = -6265536;
 
-   private dac(jz<cxk> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
+   public static int a(cxo $$0, int $$1) {
+      dac $$2 = $$0.a(ku.J);
+      return $$2 != null ? ayp.f($$2.a()) : $$1;
+   }
+
+   public static cxo a(cxo $$0, List<cwm> $$1) {
+      if (!$$0.a(ayd.bR)) {
+         return cxo.k;
       } else {
-         this.f = $$0;
-         this.g = cxk.a($$0);
-      }
-   }
-
-   private dac(int $$0) {
-      this(jz.a($$0, cxk.k));
-   }
-
-   private dac(List<cxk> $$0) {
-      this($$0.size());
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static dac b(List<dac.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(dac.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         dac $$2 = new dac($$1.getAsInt() + 1);
-
-         for (dac.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
+         cxo $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         dac $$8 = $$2.a(ku.J);
+         if ($$8 != null) {
+            int $$9 = ayp.b($$8.a());
+            int $$10 = ayp.c($$8.a());
+            int $$11 = ayp.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
          }
 
+         for (cwm $$12 : $$1) {
+            int $$13 = $$12.b().d();
+            int $$14 = ayp.b($$13);
+            int $$15 = ayp.c($$13);
+            int $$16 = ayp.d($$13);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = ayp.a(0, $$17, $$18, $$19);
+         boolean $$23 = $$8 == null || $$8.b();
+         $$2.b(ku.J, new dac($$22, $$23));
          return $$2;
       }
    }
 
-   public static dac a(List<cxk> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         dac $$2 = new dac($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).v());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<cxk> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).f()) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   private List<dac.a> f() {
-      List<dac.a> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         cxk $$2 = this.f.get($$1);
-         if (!$$2.f()) {
-            $$0.add(new dac.a($$1, $$2));
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(jz<cxk> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cxk $$2 = $$1 < this.f.size() ? this.f.get($$1) : cxk.k;
-         $$0.set($$1, $$2.v());
-      }
-   }
-
-   public cxk a() {
-      return this.f.isEmpty() ? cxk.k : this.f.get(0).v();
-   }
-
-   public Stream<cxk> b() {
-      return this.f.stream().map(cxk::v);
-   }
-
-   public Stream<cxk> c() {
-      return this.f.stream().filter($$0 -> !$$0.f()).map(cxk::v);
-   }
-
-   public Iterable<cxk> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.f());
-   }
-
-   public Iterable<cxk> e() {
-      return Iterables.transform(this.d(), cxk::v);
-   }
-
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dac $$1 && cxk.a(this.f, $$1.f)) {
-            return true;
+   public void a(cxk.b $$0, Consumer<xv> $$1, czg $$2) {
+      if (this.e) {
+         if ($$2.a()) {
+            $$1.accept(xv.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
+         } else {
+            $$1.accept(xv.c("item.dyed").a(n.h, n.u));
          }
-
-         return false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.g;
+   public dac a(boolean $$0) {
+      return new dac(this.d, $$0);
    }
 
-   static record a(int b, cxk c) {
-      public static final Codec<dac.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(dac.a::a), cxk.b.fieldOf("item").forGetter(dac.a::b)).apply($$0, dac.a::new)
-      );
+   public int a() {
+      return this.d;
+   }
 
-      public int a() {
-         return this.b;
-      }
-
-      public cxk b() {
-         return this.c;
-      }
+   public boolean b() {
+      return this.e;
    }
 }

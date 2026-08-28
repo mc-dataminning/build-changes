@@ -12,13 +12,13 @@ public class od {
    public static final alz a = alz.b("trim_type");
    private static final List<od.a> b = List.of(
       new od.a("quartz", 0.1F, Map.of()),
-      new od.a("iron", 0.2F, Map.of(dfl.c, "iron_darker")),
-      new od.a("netherite", 0.3F, Map.of(dfl.g, "netherite_darker")),
+      new od.a("iron", 0.2F, Map.of(dfs.c, "iron_darker")),
+      new od.a("netherite", 0.3F, Map.of(dfs.g, "netherite_darker")),
       new od.a("redstone", 0.4F, Map.of()),
       new od.a("copper", 0.5F, Map.of()),
-      new od.a("gold", 0.6F, Map.of(dfl.d, "gold_darker")),
+      new od.a("gold", 0.6F, Map.of(dfs.d, "gold_darker")),
       new od.a("emerald", 0.7F, Map.of()),
-      new od.a("diamond", 0.8F, Map.of(dfl.e, "diamond_darker")),
+      new od.a("diamond", 0.8F, Map.of(dfs.e, "diamond_darker")),
       new od.a("lapis", 0.9F, Map.of()),
       new od.a("amethyst", 1.0F, Map.of())
    );
@@ -28,23 +28,23 @@ public class od {
       this.c = $$0;
    }
 
-   private void a(cxg $$0, or $$1) {
+   private void a(cxk $$0, or $$1) {
       $$1.a(oq.a($$0), ot.b($$0), this.c);
    }
 
-   private void a(cxg $$0, String $$1, or $$2) {
+   private void a(cxk $$0, String $$1, or $$2) {
       $$2.a(oq.a($$0, $$1), ot.k(ot.a($$0, $$1)), this.c);
    }
 
-   private void a(cxg $$0, cxg $$1, or $$2) {
+   private void a(cxk $$0, cxk $$1, or $$2) {
       $$2.a(oq.a($$0), ot.b($$1), this.c);
    }
 
-   private void a(cxg $$0) {
+   private void a(cxk $$0) {
       this.a(oq.a($$0), ot.c($$0), ot.a($$0, "_overlay"));
    }
 
-   private void b(cxg $$0) {
+   private void b(cxk $$0) {
       for (int $$1 = 0; $$1 < 32; $$1++) {
          if ($$1 != 16) {
             this.a($$0, String.format(Locale.ROOT, "_%02d", $$1), os.bC);
@@ -52,7 +52,7 @@ public class od {
       }
    }
 
-   private void c(cxg $$0) {
+   private void c(cxk $$0) {
       for (int $$1 = 1; $$1 < 64; $$1++) {
          this.a($$0, String.format(Locale.ROOT, "_%02d", $$1), os.bC);
       }
@@ -87,8 +87,8 @@ public class od {
       return $$3;
    }
 
-   private void a(cxg $$0, alz $$1, dfk $$2, bvn $$3) {
-      List<dfk.c> $$4 = $$2.a(dfk.d.a);
+   private void a(cxk $$0, alz $$1, dfr $$2, bvr $$3) {
+      List<dfr.c> $$4 = $$2.a(dfr.d.a);
       if (!$$4.isEmpty()) {
          boolean $$5 = $$4.size() == 2 && $$4.getFirst().b().isPresent();
          alz $$6 = oq.a($$0);
@@ -122,279 +122,279 @@ public class od {
    }
 
    public void a() {
-      this.a(cxo.ow, os.bC);
-      this.a(cxo.oy, os.bC);
-      this.a(cxo.ox, os.bC);
-      this.a(cxo.oz, os.bC);
-      this.a(cxo.oZ, os.bC);
-      this.a(cxo.oQ, os.bC);
-      this.a(cxo.oM, os.bC);
-      this.a(cxo.vv, os.bC);
-      this.a(cxo.oS, os.bC);
-      this.a(cxo.uX, os.bC);
-      this.a(cxo.eb, os.bE);
-      this.a(cxo.sO, os.bC);
-      this.a(cxo.wa, os.bC);
-      this.a(cxo.wc, os.bC);
-      this.a(cxo.os, os.bC);
-      this.a(cxo.ot, os.bC);
-      this.a(cxo.sl, os.bC);
-      this.a(cxo.tc, os.bC);
-      this.a(cxo.sU, os.bE);
-      this.a(cxo.sh, os.bC);
-      this.a(cxo.sm, os.bC);
-      this.a(cxo.wX, os.bC);
-      this.a(cxo.rn, os.bC);
-      this.a(cxo.oP, os.bC);
-      this.a(cxo.pT, os.bC);
-      this.a(cxo.rj, os.bC);
-      this.a(cxo.uQ, os.bE);
-      this.a(cxo.si, os.bC);
-      this.a(cxo.qW, os.bC);
-      this.a(cxo.ok, os.bF);
-      this.a(cxo.ol, os.bF);
-      this.a(cxo.oU, os.bC);
-      this.a(cxo.og, os.bC);
-      this.a(cxo.sQ, os.bC);
-      this.a(cxo.vW, os.bC);
-      this.a(cxo.rk, os.bC);
-      this.c(cxo.rK);
-      this.a(cxo.oT, os.bC);
-      this.a(cxo.rf, os.bC);
-      this.a(cxo.vC, os.bC);
-      this.b(cxo.rq);
-      this.b(cxo.rr);
-      this.a(cxo.sP, os.bC);
-      this.a(cxo.sR, os.bC);
-      this.a(cxo.rR, os.bC);
-      this.a(cxo.vE, os.bC);
-      this.a(cxo.qu, os.bC);
-      this.a(cxo.vr, os.bC);
-      this.a(cxo.rS, os.bC);
-      this.a(cxo.sG, os.bC);
-      this.a(cxo.pc, os.bC);
-      this.a(cxo.pd, os.bC);
-      this.a(cxo.wP, os.bC);
-      this.a(cxo.sf, os.bC);
-      this.a(cxo.oA, os.bC);
-      this.a(cxo.oB, os.bC);
-      this.a(cxo.oV, os.bC);
-      this.a(cxo.pF, os.bE);
-      this.a(cxo.pG, os.bE);
-      this.a(cxo.vy, os.bC);
-      this.a(cxo.pE, os.bE);
-      this.a(cxo.pD, os.bE);
-      this.a(cxo.pC, os.bE);
-      this.a(cxo.wd, os.bC);
-      this.a(cxo.sL, os.bC);
-      this.a(cxo.rp, os.bC);
-      this.a(cxo.oW, os.bC);
-      this.a(cxo.vm, os.bC);
-      this.a(cxo.tg, os.bC);
-      this.a(cxo.sT, os.bC);
-      this.a(cxo.vV, os.bC);
-      this.a(cxo.uL, os.bC);
-      this.a(cxo.tb, os.bC);
-      this.a(cxo.wW, os.bC);
-      this.a(cxo.vk, os.bC);
-      this.a(cxo.uM, os.bC);
-      this.a(cxo.qs, os.bC);
-      this.a(cxo.oO, os.bC);
-      this.a(cxo.wU, os.bC);
-      this.a(cxo.wO, os.bC);
-      this.a(cxo.oh, os.bC);
-      this.a(cxo.sV, os.bC);
-      this.a(cxo.sY, os.bC);
-      this.a(cxo.th, os.bC);
-      this.a(cxo.wS, os.bC);
-      this.a(cxo.xm, os.bC);
-      this.a(cxo.rM, os.bC);
-      this.a(cxo.rU, os.bC);
-      this.a(cxo.uT, os.bC);
-      this.a(cxo.pe, os.bC);
-      this.a(cxo.qw, os.bC);
-      this.a(cxo.pv, os.bE);
-      this.a(cxo.va, os.bC);
-      this.a(cxo.pw, os.bE);
-      this.a(cxo.vx, os.bC);
-      this.a(cxo.pu, os.bE);
-      this.a(cxo.pt, os.bE);
-      this.a(cxo.ps, os.bE);
-      this.a(cxo.pf, os.bC);
-      this.a(cxo.sW, os.bC);
-      this.a(cxo.sd, os.bC);
-      this.a(cxo.sj, os.bC);
-      this.a(cxo.pQ, os.bC);
-      this.a(cxo.wV, os.bC);
-      this.a(cxo.wK, os.bC);
-      this.a(cxo.xq, os.bC);
-      this.a(cxo.xt, os.bC);
-      this.a(cxo.oj, os.bC);
-      this.a(cxo.rT, os.bC);
-      this.a(cxo.pa, os.bC);
-      this.a(cxo.pA, os.bE);
-      this.a(cxo.pB, os.bE);
-      this.a(cxo.vw, os.bC);
-      this.a(cxo.pb, os.bC);
-      this.a(cxo.wl, os.bC);
-      this.a(cxo.pz, os.bE);
-      this.a(cxo.py, os.bE);
-      this.a(cxo.px, os.bE);
-      this.a(cxo.uS, os.bC);
-      this.a(cxo.ou, os.bC);
-      this.a(cxo.ov, os.bC);
-      this.a(cxo.wm, os.bC);
-      this.a(cxo.oX, os.bC);
-      this.a(cxo.qY, os.bC);
-      this.a(cxo.rb, os.bC);
-      this.a(cxo.vz, os.bC);
-      this.a(cxo.rZ, os.bC);
-      this.a(cxo.se, os.bC);
-      this.a(cxo.sb, os.bC);
-      this.a(cxo.rY, os.bC);
-      this.a(cxo.td, os.bC);
-      this.a(cxo.oE, os.bC);
-      this.a(cxo.oF, os.bC);
-      this.a(cxo.oG, os.bC);
-      this.a(cxo.oH, os.bC);
-      this.a(cxo.uZ, os.bC);
-      this.a(cxo.sK, os.bC);
-      this.a(cxo.rc, os.bC);
-      this.a(cxo.of, os.bC);
-      this.a(cxo.wR, os.bC);
-      this.a(cxo.pN, os.bC);
-      this.a(cxo.wH, os.bC);
-      this.a(cxo.wA, os.bD);
-      this.a(cxo.wo, os.bD);
-      this.a(cxo.wq, os.bD);
-      this.a(cxo.wp, os.bD);
-      this.a(cxo.wr, os.bD);
-      this.a(cxo.ws, os.bD);
-      this.a(cxo.wt, os.bD);
-      this.a(cxo.wu, os.bD);
-      this.a(cxo.wv, os.bD);
-      this.a(cxo.ww, os.bD);
-      this.a(cxo.wF, os.bD);
-      this.a(cxo.wG, os.bD);
-      this.a(cxo.wx, os.bD);
-      this.a(cxo.wy, os.bD);
-      this.a(cxo.wB, os.bD);
-      this.a(cxo.wz, os.bD);
-      this.a(cxo.wC, os.bD);
-      this.a(cxo.wD, os.bD);
-      this.a(cxo.wE, os.bD);
-      this.a(cxo.vD, os.bC);
-      this.a(cxo.vB, os.bC);
-      this.a(cxo.wJ, os.bC);
-      this.a(cxo.pK, os.bE);
-      this.a(cxo.pL, os.bE);
-      this.a(cxo.pg, os.bC);
-      this.a(cxo.pJ, os.bE);
-      this.a(cxo.ph, os.bC);
-      this.a(cxo.pI, os.bE);
-      this.a(cxo.pH, os.bE);
-      this.a(cxo.vn, os.bC);
-      this.a(cxo.vi, os.bC);
-      this.a(cxo.oo, os.bC);
-      this.a(cxo.op, os.bC);
-      this.a(cxo.rX, os.bC);
-      this.a(cxo.qv, os.bC);
-      this.a(cxo.oC, os.bC);
-      this.a(cxo.oD, os.bC);
-      this.a(cxo.rm, os.bC);
-      this.a(cxo.om, os.bC);
-      this.a(cxo.wT, os.bC);
-      this.a(cxo.sc, os.bC);
-      this.a(cxo.uY, os.bC);
-      this.a(cxo.vX, os.bC);
-      this.a(cxo.qt, os.bC);
-      this.a(cxo.qZ, os.bC);
-      this.a(cxo.vp, os.bC);
-      this.a(cxo.vo, os.bC);
-      this.a(cxo.rQ, os.bC);
-      this.a(cxo.rd, os.bC);
-      this.a(cxo.vj, os.bC);
-      this.a(cxo.sg, os.bC);
-      this.a(cxo.oY, os.bC);
-      this.a(cxo.vq, os.bC);
-      this.a(cxo.vt, os.bC);
-      this.a(cxo.vu, os.bC);
-      this.a(cxo.vs, os.bC);
-      this.a(cxo.sk, os.bC);
-      this.a(cxo.sS, os.bC);
-      this.a(cxo.oe, os.bC);
-      this.a(cxo.rO, os.bC);
-      this.a(cxo.re, os.bC);
-      this.a(cxo.oL, os.bC);
-      this.a(cxo.sJ, os.bC);
-      this.a(cxo.wk, os.bC);
-      this.a(cxo.wQ, os.bC);
-      this.a(cxo.ro, os.bC);
-      this.a(cxo.ra, os.bC);
-      this.a(cxo.yk, os.bC);
-      this.a(cxo.wf, os.bC);
-      this.a(cxo.ta, os.bC);
-      this.a(cxo.oq, os.bC);
-      this.a(cxo.or, os.bC);
-      this.a(cxo.rL, os.bC);
-      this.a(cxo.pM, os.bE);
-      this.a(cxo.pq, os.bE);
-      this.a(cxo.pr, os.bE);
-      this.a(cxo.pp, os.bE);
-      this.a(cxo.po, os.bE);
-      this.a(cxo.pn, os.bE);
-      this.a(cxo.so, os.bC);
-      this.a(cxo.wM, os.bC);
-      this.a(cxo.oi, os.bC);
-      this.a(cxo.wj, os.bC);
-      this.a(cxo.wI, os.bC);
-      this.a(cxo.rP, os.bC);
-      this.a(cxo.rg, os.bC);
-      this.a(cxo.rh, os.bC);
-      this.a(cxo.ri, os.bC);
-      this.a(cxo.qX, os.bC);
-      this.a(cxo.pS, os.bC);
-      this.a(cxo.rW, os.bC);
-      this.a(cxo.uN, os.bC);
-      this.a(cxo.uR, os.bT);
-      this.a(cxo.oN);
-      this.a(cxo.pl, os.bE);
-      this.a(cxo.pm, os.bE);
-      this.a(cxo.pk, os.bE);
-      this.a(cxo.pj, os.bE);
-      this.a(cxo.pi, os.bE);
-      this.a(cxo.uO, os.bC);
-      this.a(cxo.uP, os.bC);
-      this.a(cxo.sa, os.bC);
-      this.a(cxo.ym, os.bC);
-      this.a(cxo.yn, os.bC);
-      this.a(cxo.yo, os.bC);
-      this.a(cxo.yp, os.bC);
-      this.a(cxo.yq, os.bC);
-      this.a(cxo.yr, os.bC);
-      this.a(cxo.ys, os.bC);
-      this.a(cxo.yt, os.bC);
-      this.a(cxo.yu, os.bC);
-      this.a(cxo.yv, os.bC);
-      this.a(cxo.yw, os.bC);
-      this.a(cxo.yx, os.bC);
-      this.a(cxo.yy, os.bC);
-      this.a(cxo.yz, os.bC);
-      this.a(cxo.yA, os.bC);
-      this.a(cxo.yB, os.bC);
-      this.a(cxo.yC, os.bC);
-      this.a(cxo.yD, os.bC);
-      this.a(cxo.yE, os.bC);
-      this.a(cxo.wn, cxo.pM, os.bE);
-      this.a(cxo.qx, cxo.qw, os.bC);
-      Map<alz, dfk> $$0 = new HashMap<>();
-      dfl.a($$0::put);
+      this.a(cxs.ow, os.bC);
+      this.a(cxs.oy, os.bC);
+      this.a(cxs.ox, os.bC);
+      this.a(cxs.oz, os.bC);
+      this.a(cxs.oZ, os.bC);
+      this.a(cxs.oQ, os.bC);
+      this.a(cxs.oM, os.bC);
+      this.a(cxs.vv, os.bC);
+      this.a(cxs.oS, os.bC);
+      this.a(cxs.uX, os.bC);
+      this.a(cxs.eb, os.bE);
+      this.a(cxs.sO, os.bC);
+      this.a(cxs.wa, os.bC);
+      this.a(cxs.wc, os.bC);
+      this.a(cxs.os, os.bC);
+      this.a(cxs.ot, os.bC);
+      this.a(cxs.sl, os.bC);
+      this.a(cxs.tc, os.bC);
+      this.a(cxs.sU, os.bE);
+      this.a(cxs.sh, os.bC);
+      this.a(cxs.sm, os.bC);
+      this.a(cxs.wX, os.bC);
+      this.a(cxs.rn, os.bC);
+      this.a(cxs.oP, os.bC);
+      this.a(cxs.pT, os.bC);
+      this.a(cxs.rj, os.bC);
+      this.a(cxs.uQ, os.bE);
+      this.a(cxs.si, os.bC);
+      this.a(cxs.qW, os.bC);
+      this.a(cxs.ok, os.bF);
+      this.a(cxs.ol, os.bF);
+      this.a(cxs.oU, os.bC);
+      this.a(cxs.og, os.bC);
+      this.a(cxs.sQ, os.bC);
+      this.a(cxs.vW, os.bC);
+      this.a(cxs.rk, os.bC);
+      this.c(cxs.rK);
+      this.a(cxs.oT, os.bC);
+      this.a(cxs.rf, os.bC);
+      this.a(cxs.vC, os.bC);
+      this.b(cxs.rq);
+      this.b(cxs.rr);
+      this.a(cxs.sP, os.bC);
+      this.a(cxs.sR, os.bC);
+      this.a(cxs.rR, os.bC);
+      this.a(cxs.vE, os.bC);
+      this.a(cxs.qu, os.bC);
+      this.a(cxs.vr, os.bC);
+      this.a(cxs.rS, os.bC);
+      this.a(cxs.sG, os.bC);
+      this.a(cxs.pc, os.bC);
+      this.a(cxs.pd, os.bC);
+      this.a(cxs.wP, os.bC);
+      this.a(cxs.sf, os.bC);
+      this.a(cxs.oA, os.bC);
+      this.a(cxs.oB, os.bC);
+      this.a(cxs.oV, os.bC);
+      this.a(cxs.pF, os.bE);
+      this.a(cxs.pG, os.bE);
+      this.a(cxs.vy, os.bC);
+      this.a(cxs.pE, os.bE);
+      this.a(cxs.pD, os.bE);
+      this.a(cxs.pC, os.bE);
+      this.a(cxs.wd, os.bC);
+      this.a(cxs.sL, os.bC);
+      this.a(cxs.rp, os.bC);
+      this.a(cxs.oW, os.bC);
+      this.a(cxs.vm, os.bC);
+      this.a(cxs.tg, os.bC);
+      this.a(cxs.sT, os.bC);
+      this.a(cxs.vV, os.bC);
+      this.a(cxs.uL, os.bC);
+      this.a(cxs.tb, os.bC);
+      this.a(cxs.wW, os.bC);
+      this.a(cxs.vk, os.bC);
+      this.a(cxs.uM, os.bC);
+      this.a(cxs.qs, os.bC);
+      this.a(cxs.oO, os.bC);
+      this.a(cxs.wU, os.bC);
+      this.a(cxs.wO, os.bC);
+      this.a(cxs.oh, os.bC);
+      this.a(cxs.sV, os.bC);
+      this.a(cxs.sY, os.bC);
+      this.a(cxs.th, os.bC);
+      this.a(cxs.wS, os.bC);
+      this.a(cxs.xm, os.bC);
+      this.a(cxs.rM, os.bC);
+      this.a(cxs.rU, os.bC);
+      this.a(cxs.uT, os.bC);
+      this.a(cxs.pe, os.bC);
+      this.a(cxs.qw, os.bC);
+      this.a(cxs.pv, os.bE);
+      this.a(cxs.va, os.bC);
+      this.a(cxs.pw, os.bE);
+      this.a(cxs.vx, os.bC);
+      this.a(cxs.pu, os.bE);
+      this.a(cxs.pt, os.bE);
+      this.a(cxs.ps, os.bE);
+      this.a(cxs.pf, os.bC);
+      this.a(cxs.sW, os.bC);
+      this.a(cxs.sd, os.bC);
+      this.a(cxs.sj, os.bC);
+      this.a(cxs.pQ, os.bC);
+      this.a(cxs.wV, os.bC);
+      this.a(cxs.wK, os.bC);
+      this.a(cxs.xq, os.bC);
+      this.a(cxs.xt, os.bC);
+      this.a(cxs.oj, os.bC);
+      this.a(cxs.rT, os.bC);
+      this.a(cxs.pa, os.bC);
+      this.a(cxs.pA, os.bE);
+      this.a(cxs.pB, os.bE);
+      this.a(cxs.vw, os.bC);
+      this.a(cxs.pb, os.bC);
+      this.a(cxs.wl, os.bC);
+      this.a(cxs.pz, os.bE);
+      this.a(cxs.py, os.bE);
+      this.a(cxs.px, os.bE);
+      this.a(cxs.uS, os.bC);
+      this.a(cxs.ou, os.bC);
+      this.a(cxs.ov, os.bC);
+      this.a(cxs.wm, os.bC);
+      this.a(cxs.oX, os.bC);
+      this.a(cxs.qY, os.bC);
+      this.a(cxs.rb, os.bC);
+      this.a(cxs.vz, os.bC);
+      this.a(cxs.rZ, os.bC);
+      this.a(cxs.se, os.bC);
+      this.a(cxs.sb, os.bC);
+      this.a(cxs.rY, os.bC);
+      this.a(cxs.td, os.bC);
+      this.a(cxs.oE, os.bC);
+      this.a(cxs.oF, os.bC);
+      this.a(cxs.oG, os.bC);
+      this.a(cxs.oH, os.bC);
+      this.a(cxs.uZ, os.bC);
+      this.a(cxs.sK, os.bC);
+      this.a(cxs.rc, os.bC);
+      this.a(cxs.of, os.bC);
+      this.a(cxs.wR, os.bC);
+      this.a(cxs.pN, os.bC);
+      this.a(cxs.wH, os.bC);
+      this.a(cxs.wA, os.bD);
+      this.a(cxs.wo, os.bD);
+      this.a(cxs.wq, os.bD);
+      this.a(cxs.wp, os.bD);
+      this.a(cxs.wr, os.bD);
+      this.a(cxs.ws, os.bD);
+      this.a(cxs.wt, os.bD);
+      this.a(cxs.wu, os.bD);
+      this.a(cxs.wv, os.bD);
+      this.a(cxs.ww, os.bD);
+      this.a(cxs.wF, os.bD);
+      this.a(cxs.wG, os.bD);
+      this.a(cxs.wx, os.bD);
+      this.a(cxs.wy, os.bD);
+      this.a(cxs.wB, os.bD);
+      this.a(cxs.wz, os.bD);
+      this.a(cxs.wC, os.bD);
+      this.a(cxs.wD, os.bD);
+      this.a(cxs.wE, os.bD);
+      this.a(cxs.vD, os.bC);
+      this.a(cxs.vB, os.bC);
+      this.a(cxs.wJ, os.bC);
+      this.a(cxs.pK, os.bE);
+      this.a(cxs.pL, os.bE);
+      this.a(cxs.pg, os.bC);
+      this.a(cxs.pJ, os.bE);
+      this.a(cxs.ph, os.bC);
+      this.a(cxs.pI, os.bE);
+      this.a(cxs.pH, os.bE);
+      this.a(cxs.vn, os.bC);
+      this.a(cxs.vi, os.bC);
+      this.a(cxs.oo, os.bC);
+      this.a(cxs.op, os.bC);
+      this.a(cxs.rX, os.bC);
+      this.a(cxs.qv, os.bC);
+      this.a(cxs.oC, os.bC);
+      this.a(cxs.oD, os.bC);
+      this.a(cxs.rm, os.bC);
+      this.a(cxs.om, os.bC);
+      this.a(cxs.wT, os.bC);
+      this.a(cxs.sc, os.bC);
+      this.a(cxs.uY, os.bC);
+      this.a(cxs.vX, os.bC);
+      this.a(cxs.qt, os.bC);
+      this.a(cxs.qZ, os.bC);
+      this.a(cxs.vp, os.bC);
+      this.a(cxs.vo, os.bC);
+      this.a(cxs.rQ, os.bC);
+      this.a(cxs.rd, os.bC);
+      this.a(cxs.vj, os.bC);
+      this.a(cxs.sg, os.bC);
+      this.a(cxs.oY, os.bC);
+      this.a(cxs.vq, os.bC);
+      this.a(cxs.vt, os.bC);
+      this.a(cxs.vu, os.bC);
+      this.a(cxs.vs, os.bC);
+      this.a(cxs.sk, os.bC);
+      this.a(cxs.sS, os.bC);
+      this.a(cxs.oe, os.bC);
+      this.a(cxs.rO, os.bC);
+      this.a(cxs.re, os.bC);
+      this.a(cxs.oL, os.bC);
+      this.a(cxs.sJ, os.bC);
+      this.a(cxs.wk, os.bC);
+      this.a(cxs.wQ, os.bC);
+      this.a(cxs.ro, os.bC);
+      this.a(cxs.ra, os.bC);
+      this.a(cxs.yk, os.bC);
+      this.a(cxs.wf, os.bC);
+      this.a(cxs.ta, os.bC);
+      this.a(cxs.oq, os.bC);
+      this.a(cxs.or, os.bC);
+      this.a(cxs.rL, os.bC);
+      this.a(cxs.pM, os.bE);
+      this.a(cxs.pq, os.bE);
+      this.a(cxs.pr, os.bE);
+      this.a(cxs.pp, os.bE);
+      this.a(cxs.po, os.bE);
+      this.a(cxs.pn, os.bE);
+      this.a(cxs.so, os.bC);
+      this.a(cxs.wM, os.bC);
+      this.a(cxs.oi, os.bC);
+      this.a(cxs.wj, os.bC);
+      this.a(cxs.wI, os.bC);
+      this.a(cxs.rP, os.bC);
+      this.a(cxs.rg, os.bC);
+      this.a(cxs.rh, os.bC);
+      this.a(cxs.ri, os.bC);
+      this.a(cxs.qX, os.bC);
+      this.a(cxs.pS, os.bC);
+      this.a(cxs.rW, os.bC);
+      this.a(cxs.uN, os.bC);
+      this.a(cxs.uR, os.bT);
+      this.a(cxs.oN);
+      this.a(cxs.pl, os.bE);
+      this.a(cxs.pm, os.bE);
+      this.a(cxs.pk, os.bE);
+      this.a(cxs.pj, os.bE);
+      this.a(cxs.pi, os.bE);
+      this.a(cxs.uO, os.bC);
+      this.a(cxs.uP, os.bC);
+      this.a(cxs.sa, os.bC);
+      this.a(cxs.ym, os.bC);
+      this.a(cxs.yn, os.bC);
+      this.a(cxs.yo, os.bC);
+      this.a(cxs.yp, os.bC);
+      this.a(cxs.yq, os.bC);
+      this.a(cxs.yr, os.bC);
+      this.a(cxs.ys, os.bC);
+      this.a(cxs.yt, os.bC);
+      this.a(cxs.yu, os.bC);
+      this.a(cxs.yv, os.bC);
+      this.a(cxs.yw, os.bC);
+      this.a(cxs.yx, os.bC);
+      this.a(cxs.yy, os.bC);
+      this.a(cxs.yz, os.bC);
+      this.a(cxs.yA, os.bC);
+      this.a(cxs.yB, os.bC);
+      this.a(cxs.yC, os.bC);
+      this.a(cxs.yD, os.bC);
+      this.a(cxs.yE, os.bC);
+      this.a(cxs.wn, cxs.pM, os.bE);
+      this.a(cxs.qx, cxs.qw, os.bC);
+      Map<alz, dfr> $$0 = new HashMap<>();
+      dfs.a($$0::put);
 
-      for (cxg $$1 : ma.g) {
-         dfm $$2 = $$1.g().a(ku.D);
-         if ($$2 != null && $$2.a().a() == bvn.a.b && $$2.c().isPresent()) {
+      for (cxk $$1 : ma.g) {
+         dft $$2 = $$1.g().a(ku.D);
+         if ($$2 != null && $$2.a().a() == bvr.a.b && $$2.c().isPresent()) {
             alz $$3 = $$2.c().get();
-            dfk $$4 = $$0.get($$3);
+            dfr $$4 = $$0.get($$3);
             if ($$4 == null) {
                throw new IllegalStateException("Referenced equipment model does not exist: " + $$3);
             }
@@ -403,49 +403,49 @@ public class od {
          }
       }
 
-      this.a(cxo.yF, os.bC);
-      this.a(cxo.yG, os.bC);
-      this.a(cxo.yH, os.bC);
-      this.a(cxo.yI, os.bC);
-      this.a(cxo.yJ, os.bC);
-      this.a(cxo.yK, os.bC);
-      this.a(cxo.yL, os.bC);
-      this.a(cxo.yM, os.bC);
-      this.a(cxo.yN, os.bC);
-      this.a(cxo.yO, os.bC);
-      this.a(cxo.yP, os.bC);
-      this.a(cxo.yQ, os.bC);
-      this.a(cxo.yR, os.bC);
-      this.a(cxo.yS, os.bC);
-      this.a(cxo.yT, os.bC);
-      this.a(cxo.yU, os.bC);
-      this.a(cxo.yV, os.bC);
-      this.a(cxo.yW, os.bC);
-      this.a(cxo.yX, os.bC);
-      this.a(cxo.yY, os.bC);
-      this.a(cxo.yZ, os.bC);
-      this.a(cxo.za, os.bC);
-      this.a(cxo.zb, os.bC);
-      this.a(cxo.zt, os.bC);
-      this.a(cxo.zu, os.bC);
-      this.a(cxo.zw, os.bC);
-      this.a(cxo.rs, os.bC);
-      this.a(cxo.rI, os.bC);
-      this.a(cxo.rt, os.bC);
-      this.a(cxo.rA, os.bC);
-      this.a(cxo.rB, os.bC);
-      this.a(cxo.rw, os.bC);
-      this.a(cxo.rE, os.bC);
-      this.a(cxo.rC, os.bC);
-      this.a(cxo.rx, os.bC);
-      this.a(cxo.rH, os.bC);
-      this.a(cxo.rD, os.bC);
-      this.a(cxo.rv, os.bC);
-      this.a(cxo.rz, os.bC);
-      this.a(cxo.rG, os.bC);
-      this.a(cxo.ry, os.bC);
-      this.a(cxo.rF, os.bC);
-      this.a(cxo.ru, os.bC);
+      this.a(cxs.yF, os.bC);
+      this.a(cxs.yG, os.bC);
+      this.a(cxs.yH, os.bC);
+      this.a(cxs.yI, os.bC);
+      this.a(cxs.yJ, os.bC);
+      this.a(cxs.yK, os.bC);
+      this.a(cxs.yL, os.bC);
+      this.a(cxs.yM, os.bC);
+      this.a(cxs.yN, os.bC);
+      this.a(cxs.yO, os.bC);
+      this.a(cxs.yP, os.bC);
+      this.a(cxs.yQ, os.bC);
+      this.a(cxs.yR, os.bC);
+      this.a(cxs.yS, os.bC);
+      this.a(cxs.yT, os.bC);
+      this.a(cxs.yU, os.bC);
+      this.a(cxs.yV, os.bC);
+      this.a(cxs.yW, os.bC);
+      this.a(cxs.yX, os.bC);
+      this.a(cxs.yY, os.bC);
+      this.a(cxs.yZ, os.bC);
+      this.a(cxs.za, os.bC);
+      this.a(cxs.zb, os.bC);
+      this.a(cxs.zt, os.bC);
+      this.a(cxs.zu, os.bC);
+      this.a(cxs.zw, os.bC);
+      this.a(cxs.rs, os.bC);
+      this.a(cxs.rI, os.bC);
+      this.a(cxs.rt, os.bC);
+      this.a(cxs.rA, os.bC);
+      this.a(cxs.rB, os.bC);
+      this.a(cxs.rw, os.bC);
+      this.a(cxs.rE, os.bC);
+      this.a(cxs.rC, os.bC);
+      this.a(cxs.rx, os.bC);
+      this.a(cxs.rH, os.bC);
+      this.a(cxs.rD, os.bC);
+      this.a(cxs.rv, os.bC);
+      this.a(cxs.rz, os.bC);
+      this.a(cxs.rG, os.bC);
+      this.a(cxs.ry, os.bC);
+      this.a(cxs.rF, os.bC);
+      this.a(cxs.ru, os.bC);
    }
 
    static record a(String a, float b, Map<alz, String> c) {

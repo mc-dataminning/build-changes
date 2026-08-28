@@ -1,48 +1,14 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Function;
-
-public record cwk<T>(Optional<jq<T>> a, aly<T> b) {
-   public cwk(jq<T> $$0) {
-      this(Optional.of($$0), $$0.e().orElseThrow());
+public class cwk extends cvu {
+   public cwk(dkl $$0, cxk.a $$1) {
+      super($$0, $$1);
    }
 
-   public cwk(aly<T> $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   public static <T> Codec<cwk<T>> a(aly<kd<T>> $$0, Codec<jq<T>> $$1) {
-      return Codec.either($$1, aly.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
-         .xmap(cwk::a, cwk::a);
-   }
-
-   public static <T> zt<xg, cwk<T>> a(aly<kd<T>> $$0, zt<xg, jq<T>> $$1) {
-      return zt.a(zr.a($$1, aly.b($$0)), cwk::a, cwk::a);
-   }
-
-   public Either<jq<T>, aly<T>> a() {
-      return this.a.<Either<jq<T>, aly<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
-   }
-
-   public static <T> cwk<T> a(Either<jq<T>, aly<T>> $$0) {
-      return (cwk<T>)$$0.map(cwk::new, cwk::new);
-   }
-
-   public Optional<T> a(kd<T> $$0) {
-      return this.a.<T>map(jq::a).or(() -> $$0.f(this.b));
-   }
-
-   public Optional<jq<T>> a(js.a $$0) {
-      return this.a.or(() -> $$0.d(this.b.c()).a(this.b));
-   }
-
-   public Optional<jq<T>> b() {
-      return this.a;
-   }
-
-   public aly<T> c() {
-      return this.b;
+   @Override
+   protected boolean a(dbf $$0, dxu $$1) {
+      dhh $$2 = $$0.q();
+      jh $$3 = $$0.a().d();
+      dxu $$4 = $$2.z($$3) ? dkn.J.m() : dkn.a.m();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

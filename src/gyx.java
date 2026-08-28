@@ -1,8 +1,7 @@
-public class gyx extends gym implements gze {
-   public boolean a;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class gyx extends gxt {
+   @Nullable
+   public hdl a;
+   public cxo b = cxo.k;
 }

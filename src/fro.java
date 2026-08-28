@@ -1,18 +1,20 @@
 import java.util.function.Consumer;
 
-public interface fro extends frp {
-   void b(Consumer<frp> var1);
+public class fro {
+   private static final int a = 4;
 
-   @Override
-   default void a(Consumer<fnw> $$0) {
-      this.b($$1 -> $$1.a($$0));
+   private fro() {
    }
 
-   default void a() {
-      this.b($$0 -> {
-         if ($$0 instanceof fro $$1) {
-            $$1.a();
-         }
+   public static frt a(fno $$0, fru $$1, xv $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
       });
+   }
+
+   public static frt a(fno $$0, fru $$1, xv $$2, Consumer<frv> $$3) {
+      frw $$4 = frw.d().a(4);
+      $$4.a(new fpl($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

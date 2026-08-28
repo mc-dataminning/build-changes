@@ -1,103 +1,52 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eyq extends exu {
-   private static final Logger b = LogUtils.getLogger();
+public class eyq extends eyb {
    public static final MapCodec<eyq> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  xx.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
-                  ewh.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
-                  eyq.a.c.optionalFieldOf("target", eyq.a.a).forGetter($$0x -> $$0x.e)
+                  dad.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  dad.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  dad.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
                )
             )
             .apply($$0, eyq::new)
    );
-   private final Optional<xv> c;
-   private final Optional<ewh.b> d;
-   private final eyq.a e;
+   public static final dad b = new dad(dad.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<dad.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   private eyq(List<ezs> $$0, Optional<xv> $$1, Optional<ewh.b> $$2, eyq.a $$3) {
+   public eyq(List<ezx> $$0, Optional<dad.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public exw<eyq> b() {
-      return exx.p;
-   }
-
-   @Override
-   public Set<eza<?>> a() {
-      return this.d.<Set<eza<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<xv> a(ewh $$0, @Nullable ewh.b $$1) {
-      if ($$1 != null) {
-         bvf $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            ew $$3 = $$2.d($$0.d()).a(2);
-            return $$2x -> {
-               try {
-                  return xy.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
-      }
-
-      return $$0x -> $$0x;
-   }
-
-   @Override
-   public cxk a(cxk $$0, ewh $$1) {
-      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
+   protected cxo a(cxo $$0, ewo $$1) {
+      $$0.a(ku.ae, b, this::a);
       return $$0;
    }
 
-   public static exu.a<?> a(xv $$0, eyq.a $$1) {
-      return a($$2 -> new eyq($$2, Optional.of($$0), Optional.empty(), $$1));
+   private dad a(dad $$0) {
+      return new dad(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
-   public static exu.a<?> a(xv $$0, eyq.a $$1, ewh.b $$2) {
-      return a($$3 -> new eyq($$3, Optional.of($$0), Optional.of($$2), $$1));
-   }
-
-   public static enum a implements bba {
-      a("custom_name"),
-      b("item_name");
-
-      public static final Codec<eyq.a> c = bba.a(eyq.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      public kt<xv> a() {
-         return switch (this) {
-            case a -> ku.g;
-            case b -> ku.h;
-         };
-      }
+   @Override
+   public eyd<eyq> b() {
+      return eye.L;
    }
 }

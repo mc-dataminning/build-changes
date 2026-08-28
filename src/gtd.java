@@ -1,41 +1,21 @@
-public class gtd extends gqd<cim, gzc, gcq> {
-   private static final alz a = alz.b("textures/entity/rabbit/brown.png");
-   private static final alz b = alz.b("textures/entity/rabbit/white.png");
-   private static final alz k = alz.b("textures/entity/rabbit/black.png");
-   private static final alz l = alz.b("textures/entity/rabbit/gold.png");
-   private static final alz m = alz.b("textures/entity/rabbit/salt.png");
-   private static final alz n = alz.b("textures/entity/rabbit/white_splotched.png");
-   private static final alz o = alz.b("textures/entity/rabbit/toast.png");
-   private static final alz p = alz.b("textures/entity/rabbit/caerbannog.png");
+public class gtd extends gqi<cin, gzc, gck> {
+   private static final alz a = alz.b("textures/entity/pig/pig.png");
 
-   public gtd(grj.a $$0) {
-      super($$0, new gcq($$0.a(geg.cq)), new gcq($$0.a(geg.cr)), 0.3F);
+   public gtd(gro.a $$0) {
+      super($$0, new gck($$0.a(gel.bM)), new gck($$0.a(gel.bX)), 0.7F);
+      this.a(new gwe<>(this, new gck($$0.a(gel.bZ)), new gck($$0.a(gel.bY)), alz.b("textures/entity/pig/pig_saddle.png")));
    }
 
    public alz a(gzc $$0) {
-      if ($$0.b) {
-         return o;
-      } else {
-         return switch ($$0.c) {
-            case a -> a;
-            case b -> b;
-            case c -> k;
-            case e -> l;
-            case f -> m;
-            case d -> n;
-            case g -> p;
-         };
-      }
+      return a;
    }
 
    public gzc b() {
       return new gzc();
    }
 
-   public void a(cim $$0, gzc $$1, float $$2) {
+   public void a(cin $$0, gzc $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = "Toast".equals(n.a($$0.al().getString()));
-      $$1.c = $$0.gm();
+      $$1.a = $$0.j();
    }
 }

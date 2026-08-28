@@ -7,7 +7,7 @@ public class uh implements tv.c {
    private static final int d = 6;
    private final int e;
    private int f;
-   private fbn g;
+   private fbs g;
    private final jh.a h;
    private final jh i;
    private final boolean j;
@@ -17,7 +17,7 @@ public class uh implements tv.c {
    public uh(jh $$0, int $$1, boolean $$2) {
       this.e = $$1;
       this.h = $$0.k();
-      this.g = new fbn(this.h);
+      this.g = new fbs(this.h);
       this.i = $$0;
       this.j = $$2;
    }
@@ -26,11 +26,11 @@ public class uh implements tv.c {
    public void a(ash $$0) {
       if (this.j) {
          this.l.forEach($$1 -> {
-            enu $$2 = ui.b($$1.f());
+            eob $$2 = ui.b($$1.f());
             ui.a($$2, $$0);
          });
          this.l.clear();
-         this.g = new fbn(this.i);
+         this.g = new fbs(this.i);
          this.h.g(this.i);
       }
    }
@@ -40,7 +40,7 @@ public class uh implements tv.c {
       jh $$1 = new jh(this.h);
       $$0.b($$1);
       $$0.o();
-      fbn $$2 = ui.a($$0.f());
+      fbs $$2 = ui.a($$0.f());
       this.g = this.g.b($$2);
       this.h.e((int)$$2.b() + 5, 0, 0);
       if ((float)this.h.u() > this.k) {
@@ -51,7 +51,7 @@ public class uh implements tv.c {
          this.f = 0;
          this.h.e(0, 0, (int)this.g.d() + 6);
          this.h.p(this.i.u());
-         this.g = new fbn(this.h);
+         this.g = new fbs(this.h);
       }
 
       this.l.add($$0);

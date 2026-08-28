@@ -1,82 +1,62 @@
-public class gai extends gbf<gwy> {
-   public static final geq a = geq.scaling(0.5F);
-   private static final String b = "bone";
-   private static final String c = "stinger";
-   private static final String d = "left_antenna";
-   private static final String e = "right_antenna";
-   private static final String f = "front_legs";
-   private static final String g = "middle_legs";
-   private static final String i = "back_legs";
-   private final geh j;
-   private final geh k;
-   private final geh l;
-   private final geh m;
-   private final geh n;
-   private final geh o;
-   private final geh p;
-   private final geh q;
-   private final geh r;
-   private float s;
+public class gai extends gah {
+   private static final String a = "right_body_stick";
+   private static final String b = "left_body_stick";
+   private static final String c = "shoulder_stick";
+   private static final String d = "base_plate";
+   private final gem e;
+   private final gem f;
+   private final gem g;
+   private final gem x;
 
-   public gai(geh $$0) {
+   public gai(gem $$0) {
       super($$0);
-      this.j = $$0.b("bone");
-      geh $$1 = this.j.b("body");
-      this.p = $$1.b("stinger");
-      this.q = $$1.b("left_antenna");
-      this.r = $$1.b("right_antenna");
-      this.k = this.j.b("right_wing");
-      this.l = this.j.b("left_wing");
-      this.m = this.j.b("front_legs");
-      this.n = this.j.b("middle_legs");
-      this.o = this.j.b("back_legs");
+      this.e = $$0.b("right_body_stick");
+      this.f = $$0.b("left_body_stick");
+      this.g = $$0.b("shoulder_stick");
+      this.x = $$0.b("base_plate");
+      this.p.k = false;
    }
 
-   public static gen a() {
-      gep $$0 = new gep();
-      ger $$1 = $$0.a();
-      ger $$2 = $$1.a("bone", gem.c(), gej.a(0.0F, 19.0F, 0.0F));
-      ger $$3 = $$2.a("body", gem.c().a(0, 0).a(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), gej.a);
-      $$3.a("stinger", gem.c().a(26, 7).a(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), gej.a);
-      $$3.a("left_antenna", gem.c().a(2, 0).a(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gej.a(0.0F, -2.0F, -5.0F));
-      $$3.a("right_antenna", gem.c().a(2, 3).a(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gej.a(0.0F, -2.0F, -5.0F));
-      gel $$4 = new gel(0.001F);
-      $$2.a("right_wing", gem.c().a(0, 18).a(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gej.a(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F));
-      $$2.a("left_wing", gem.c().a(0, 18).a().a(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gej.a(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F));
-      $$2.a("front_legs", gem.c().a("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), gej.a(1.5F, 3.0F, -2.0F));
-      $$2.a("middle_legs", gem.c().a("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), gej.a(1.5F, 3.0F, 0.0F));
-      $$2.a("back_legs", gem.c().a("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), gej.a(1.5F, 3.0F, 2.0F));
-      return gen.a($$0, 64, 64);
+   public static ges a() {
+      geu $$0 = gbx.a(geq.a, 0.0F);
+      gew $$1 = $$0.a();
+      $$1.a("head", ger.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), geo.a(0.0F, 1.0F, 0.0F));
+      $$1.a("body", ger.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), geo.a);
+      $$1.a("right_arm", ger.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), geo.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", ger.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), geo.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", ger.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), geo.a(-1.9F, 12.0F, 0.0F));
+      $$1.a("left_leg", ger.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), geo.a(1.9F, 12.0F, 0.0F));
+      $$1.a("right_body_stick", ger.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), geo.a);
+      $$1.a("left_body_stick", ger.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), geo.a);
+      $$1.a("shoulder_stick", ger.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), geo.a);
+      $$1.a("base_plate", ger.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), geo.a(0.0F, 12.0F, 0.0F));
+      return ges.a($$0, 64, 64);
    }
 
-   public void a(gwy $$0) {
+   @Override
+   public void a(gwz $$0) {
       super.a($$0);
-      this.s = $$0.a;
-      this.p.k = $$0.b;
-      if (!$$0.c) {
-         float $$1 = $$0.p * 120.32113F * (float) (Math.PI / 180.0);
-         this.k.f = 0.0F;
-         this.k.g = bae.b($$1) * (float) Math.PI * 0.15F;
-         this.l.e = this.k.e;
-         this.l.f = this.k.f;
-         this.l.g = -this.k.g;
-         this.m.e = (float) (Math.PI / 4);
-         this.n.e = (float) (Math.PI / 4);
-         this.o.e = (float) (Math.PI / 4);
-      }
+      this.x.f = (float) (Math.PI / 180.0) * -$$0.a;
+      this.s.k = $$0.e;
+      this.r.k = $$0.e;
+      this.x.k = $$0.f;
+      this.e.e = (float) (Math.PI / 180.0) * $$0.h.b();
+      this.e.f = (float) (Math.PI / 180.0) * $$0.h.c();
+      this.e.g = (float) (Math.PI / 180.0) * $$0.h.d();
+      this.f.e = (float) (Math.PI / 180.0) * $$0.h.b();
+      this.f.f = (float) (Math.PI / 180.0) * $$0.h.c();
+      this.f.g = (float) (Math.PI / 180.0) * $$0.h.d();
+      this.g.e = (float) (Math.PI / 180.0) * $$0.h.b();
+      this.g.f = (float) (Math.PI / 180.0) * $$0.h.c();
+      this.g.g = (float) (Math.PI / 180.0) * $$0.h.d();
+   }
 
-      if (!$$0.d && !$$0.c) {
-         float $$2 = bae.b($$0.p * 0.18F);
-         this.j.e = 0.1F + $$2 * (float) Math.PI * 0.025F;
-         this.q.e = $$2 * (float) Math.PI * 0.03F;
-         this.r.e = $$2 * (float) Math.PI * 0.03F;
-         this.m.e = -$$2 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
-         this.o.e = -$$2 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
-         this.j.c = this.j.c - bae.b($$0.p * 0.18F) * 0.9F;
-      }
-
-      if (this.s > 0.0F) {
-         this.j.e = bae.j(this.s, this.j.e, 3.0915928F);
-      }
+   @Override
+   public void a(bvz $$0, fgq $$1) {
+      gem $$2 = this.a($$0);
+      boolean $$3 = $$2.k;
+      $$2.k = true;
+      super.a($$0, $$1);
+      $$2.k = $$3;
    }
 }

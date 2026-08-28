@@ -1,52 +1,66 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public abstract class egc extends ego<eiz> {
-   public egc(Codec<eiz> $$0) {
+public class egc extends egv<eiq> {
+   public egc(Codec<eiq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egq<eiz> $$0) {
-      bam $$1 = $$0.d();
-      dhy $$2 = $$0.b();
-      jh $$3 = $$0.e();
-      Optional<dke> $$4 = ma.e.a(axu.at, $$1).map(jq::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
-   }
+   public boolean a(egx<eiq> $$0) {
+      dif $$1 = $$0.b();
+      eiq $$2 = $$0.f();
+      bam $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
 
-   protected abstract boolean a(dhb var1, bam var2, jh var3, dxn var4);
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
 
-   protected boolean b(dhb $$0, bam $$1, jh $$2, dxn $$3) {
-      jh $$4 = $$2.d();
-      dxn $$5 = $$0.a_($$2);
-      if (($$5.a(dkg.J) || $$5.a(axu.aw)) && $$0.a_($$4).a(dkg.J)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            ma.e.a(axu.aw, $$1).map(jq::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dkg.nq.m().b(dre.c, Integer.valueOf($$1.a(4) + 1)), 2);
+      if ($$6 == 0) {
+         return false;
+      } else {
+         jh.a $$8 = $$0.e().k();
+         jh.a $$9 = $$8.k().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
          }
 
-         for (jm $$6 : jm.c.a) {
-            if ($$1.i() < 0.2F) {
-               jh $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dkg.J)) {
-                  ma.e.a(axu.au, $$1).map(jq::a).ifPresent($$3x -> {
-                     dxn $$4x = $$3x.m();
-                     if ($$4x.b(djp.c)) {
-                        $$4x = $$4x.b(djp.c, $$6);
-                     }
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               eiq.a $$13 = $$2.a().get($$11);
 
-                     $$0.a($$7, $$4x, 2);
-                  });
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
                }
             }
          }
 
          return true;
-      } else {
-         return false;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
       }
    }
 }

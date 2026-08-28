@@ -1,47 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.jtracy.TracyClient;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bpr {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bpl f = bpk.a;
+public final class bpr {
+   private static final ThreadLocal<bpw> a = ThreadLocal.withInitial(bpw::new);
+   private static final ThreadLocal<bps> b = new ThreadLocal<>();
+   private static final AtomicInteger c = new AtomicInteger();
 
-   public bpr(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+   private bpr() {
    }
 
-   public bpo a() {
-      this.f = new bpg(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
+   public static bpr.a a(bps $$0) {
+      b($$0);
+      return bpr::b;
    }
 
-   public void b() {
-      if (this.f != bpk.a) {
-         bpm $$0 = this.f.d();
-         this.f = bpk.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ae.f() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
+   private static void b(bps $$0) {
+      if (b.get() != null) {
+         throw new IllegalStateException("Profiler is already active");
+      } else {
+         bps $$1 = c($$0);
+         b.set($$1);
+         c.incrementAndGet();
+         $$1.a();
       }
    }
 
-   @Nullable
-   public static bpr a(String $$0) {
-      return null;
+   private static void b() {
+      bps $$0 = b.get();
+      if ($$0 == null) {
+         throw new IllegalStateException("Profiler was not active");
+      } else {
+         b.remove();
+         c.decrementAndGet();
+         $$0.b();
+      }
    }
 
-   public static bpo a(bpo $$0, @Nullable bpr $$1) {
-      return $$1 != null ? bpo.a($$1.a(), $$0) : $$0;
+   private static bps c(bps $$0) {
+      return bps.a(c(), $$0);
+   }
+
+   public static bps a() {
+      return c.get() == 0 ? c() : Objects.requireNonNullElseGet(b.get(), bpr::c);
+   }
+
+   private static bps c() {
+      return (bps)(TracyClient.isAvailable() ? a.get() : bpo.a);
+   }
+
+   public interface a extends AutoCloseable {
+      @Override
+      void close();
    }
 }

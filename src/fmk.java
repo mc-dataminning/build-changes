@@ -1,26 +1,30 @@
-import java.util.function.BooleanSupplier;
+import java.util.function.IntFunction;
 
-public class fmk extends flx {
-   private final BooleanSupplier h;
+public enum fmk implements bah {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
 
-   public fmk(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, ffg.b.a, $$1, $$2);
-      this.h = $$3;
+   private static final IntFunction<fmk> d = ayv.a(fmk::b, values(), ayv.a.b);
+   private final int e;
+   private final String f;
+
+   private fmk(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
+   public int b() {
+      return this.e;
    }
 
    @Override
-   protected void n() {
-      super.a(false);
+   public String a() {
+      return this.f;
+   }
+
+   public static fmk a(int $$0) {
+      return d.apply($$0);
    }
 }

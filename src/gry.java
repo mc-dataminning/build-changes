@@ -1,20 +1,21 @@
-public class gry extends gpy<coa> {
-   private static final alz a = alz.b("textures/entity/hoglin/hoglin.png");
+public class gry extends gsu<cmq, gye, gbp> {
+   private static final alz a = alz.b("textures/entity/ghast/ghast.png");
+   private static final alz b = alz.b("textures/entity/ghast/ghast_shooting.png");
 
-   public gry(grj.a $$0) {
-      super($$0, geg.aX, geg.aY, 0.7F);
+   public gry(gro.a $$0) {
+      super($$0, new gbp($$0.a(gel.aO)), 1.5F);
    }
 
-   public alz a(gyc $$0) {
-      return a;
+   public alz a(gye $$0) {
+      return $$0.a ? b : a;
    }
 
-   public void a(coa $$0, gyc $$1, float $$2) {
+   public gye b() {
+      return new gye();
+   }
+
+   public void a(cmq $$0, gye $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.gm();
-   }
-
-   protected boolean b(gyc $$0) {
-      return super.a($$0) || $$0.b;
+      $$1.a = $$0.m();
    }
 }

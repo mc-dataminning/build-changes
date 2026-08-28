@@ -1,50 +1,157 @@
-public class bum {
-   private static final int N = 22;
-   public static final jq<bui> a = a("speed", new bui(buj.a, 3402751).a(bxj.v, alz.b("effect.speed"), 0.2F, bxh.a.c));
-   public static final jq<bui> b = a("slowness", new bui(buj.b, 9154528).a(bxj.v, alz.b("effect.slowness"), -0.15F, bxh.a.c));
-   public static final jq<bui> c = a("haste", new bui(buj.a, 14270531).a(bxj.e, alz.b("effect.haste"), 0.1F, bxh.a.c));
-   public static final jq<bui> d = a("mining_fatigue", new bui(buj.b, 4866583).a(bxj.e, alz.b("effect.mining_fatigue"), -0.1F, bxh.a.c));
-   public static final jq<bui> e = a("strength", new bui(buj.a, 16762624).a(bxj.c, alz.b("effect.strength"), 3.0, bxh.a.a));
-   public static final jq<bui> f = a("instant_health", new bue(buj.a, 16262179, false));
-   public static final jq<bui> g = a("instant_damage", new bue(buj.b, 11101546, true));
-   public static final jq<bui> h = a("jump_boost", new bui(buj.a, 16646020).a(bxj.x, alz.b("effect.jump_boost"), 1.0, bxh.a.a));
-   public static final jq<bui> i = a("nausea", new bui(buj.b, 5578058));
-   public static final jq<bui> j = a("regeneration", new buq(buj.a, 13458603));
-   public static final jq<bui> k = a("resistance", new bui(buj.a, 9520880));
-   public static final jq<bui> l = a("fire_resistance", new bui(buj.a, 16750848));
-   public static final jq<bui> m = a("water_breathing", new bui(buj.a, 10017472));
-   public static final jq<bui> n = a("invisibility", new bui(buj.a, 16185078));
-   public static final jq<bui> o = a("blindness", new bui(buj.b, 2039587));
-   public static final jq<bui> p = a("night_vision", new bui(buj.a, 12779366));
-   public static final jq<bui> q = a("hunger", new buf(buj.b, 5797459));
-   public static final jq<bui> r = a("weakness", new bui(buj.b, 4738376).a(bxj.c, alz.b("effect.weakness"), -4.0, bxh.a.a));
-   public static final jq<bui> s = a("poison", new buo(buj.b, 8889187));
-   public static final jq<bui> t = a("wither", new buu(buj.b, 7561558));
-   public static final jq<bui> u = a("health_boost", new bui(buj.a, 16284963).a(bxj.s, alz.b("effect.health_boost"), 4.0, bxh.a.a));
-   public static final jq<bui> v = a("absorption", new buc(buj.a, 2445989).a(bxj.r, alz.b("effect.absorption"), 4.0, bxh.a.a));
-   public static final jq<bui> w = a("saturation", new bur(buj.a, 16262179));
-   public static final jq<bui> x = a("glowing", new bui(buj.c, 9740385));
-   public static final jq<bui> y = a("levitation", new bui(buj.b, 13565951));
-   public static final jq<bui> z = a("luck", new bui(buj.a, 5882118).a(bxj.q, alz.b("effect.luck"), 1.0, bxh.a.a));
-   public static final jq<bui> A = a("unluck", new bui(buj.b, 12624973).a(bxj.q, alz.b("effect.unluck"), -1.0, bxh.a.a));
-   public static final jq<bui> B = a("slow_falling", new bui(buj.a, 15978425));
-   public static final jq<bui> C = a("conduit_power", new bui(buj.a, 1950417));
-   public static final jq<bui> D = a("dolphins_grace", new bui(buj.a, 8954814));
-   public static final jq<bui> E = a("bad_omen", new bud(buj.c, 745784).a(axf.Eo));
-   public static final jq<bui> F = a("hero_of_the_village", new bui(buj.a, 4521796));
-   public static final jq<bui> G = a("darkness", new bui(buj.b, 2696993).a(22));
-   public static final jq<bui> H = a("trial_omen", new bui(buj.c, 1484454, ls.bf).a(axf.Ep));
-   public static final jq<bui> I = a("raid_omen", new bup(buj.c, 14565464, ls.be).a(axf.Eq));
-   public static final jq<bui> J = a("wind_charged", new but(buj.b, 12438015));
-   public static final jq<bui> K = a("weaving", new bus(buj.b, 7891290, $$0 -> bae.b($$0, 2, 3)));
-   public static final jq<bui> L = a("oozing", new bun(buj.b, 10092451, $$0 -> 2));
-   public static final jq<bui> M = a("infested", new bug(buj.b, 9214860, 0.1F, $$0 -> bae.b($$0, 1, 2)));
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   private static jq<bui> a(String $$0, bui $$1) {
-      return kd.b(ma.d, alz.b($$0), $$1);
+public class bum implements csp {
+   public static final Codec<jq<bum>> a = ma.d.r();
+   public static final zt<xg, jq<bum>> b = zr.b(mb.W);
+   private static final int c = bae.d(38.25F);
+   private final Map<jq<bxi>, bum.a> d = new Object2ObjectOpenHashMap();
+   private final bun e;
+   private final int f;
+   private final Function<buo, lq> g;
+   @Nullable
+   private String h;
+   private int i;
+   private Optional<axe> j = Optional.empty();
+   private css k = csu.h;
+
+   protected bum(bun $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$1x -> {
+         int $$2 = $$1x.f() ? c : 255;
+         return ll.a(ls.u, ayp.c($$2, $$1));
+      };
    }
 
-   public static jq<bui> a(kd<bui> $$0) {
-      return a;
+   protected bum(bun $$0, int $$1, lq $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$1x -> $$2;
+   }
+
+   public int b() {
+      return this.i;
+   }
+
+   public boolean a(ash $$0, bwf $$1, int $$2) {
+      return true;
+   }
+
+   public void a(ash $$0, @Nullable bvj $$1, @Nullable bvj $$2, bwf $$3, int $$4, double $$5) {
+      this.a($$0, $$3, $$4);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(bwf $$0, int $$1) {
+   }
+
+   public void b(bwf $$0, int $$1) {
+      this.j.ifPresent($$1x -> $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), $$1x, $$0.dm(), 1.0F, 1.0F));
+   }
+
+   public void a(ash $$0, bwf $$1, int $$2, bvj.c $$3) {
+   }
+
+   public void a(ash $$0, bwf $$1, int $$2, btz $$3, float $$4) {
+   }
+
+   public boolean a() {
+      return false;
+   }
+
+   protected String c() {
+      if (this.h == null) {
+         this.h = ae.a("effect", ma.d.b(this));
+      }
+
+      return this.h;
+   }
+
+   public String d() {
+      return this.c();
+   }
+
+   public xv e() {
+      return xv.c(this.d());
+   }
+
+   public bun f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.f;
+   }
+
+   public bum a(jq<bxi> $$0, alz $$1, double $$2, bxl.a $$3) {
+      this.d.put($$0, new bum.a($$1, $$2, $$3));
+      return this;
+   }
+
+   public bum a(int $$0) {
+      this.i = $$0;
+      return this;
+   }
+
+   public void a(int $$0, BiConsumer<jq<bxi>, bxl> $$1) {
+      this.d.forEach(($$2, $$3) -> $$1.accept((jq<bxi>)$$2, $$3.a($$0)));
+   }
+
+   public void a(bxk $$0) {
+      for (Entry<jq<bxi>, bum.a> $$1 : this.d.entrySet()) {
+         bxj $$2 = $$0.a($$1.getKey());
+         if ($$2 != null) {
+            $$2.c($$1.getValue().a());
+         }
+      }
+   }
+
+   public void a(bxk $$0, int $$1) {
+      for (Entry<jq<bxi>, bum.a> $$2 : this.d.entrySet()) {
+         bxj $$3 = $$0.a($$2.getKey());
+         if ($$3 != null) {
+            $$3.c($$2.getValue().a());
+            $$3.d($$2.getValue().a($$1));
+         }
+      }
+   }
+
+   public boolean h() {
+      return this.e == bun.a;
+   }
+
+   public lq a(buo $$0) {
+      return this.g.apply($$0);
+   }
+
+   public bum a(axe $$0) {
+      this.j = Optional.of($$0);
+      return this;
+   }
+
+   public bum a(csq... $$0) {
+      this.k = csu.f.a($$0);
+      return this;
+   }
+
+   @Override
+   public css i() {
+      return this.k;
+   }
+
+   static record a(alz a, double b, bxl.a c) {
+      public bxl a(int $$0) {
+         return new bxl(this.a, this.b * (double)($$0 + 1), this.c);
+      }
    }
 }

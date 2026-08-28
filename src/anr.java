@@ -26,7 +26,7 @@ public class anr {
    private static final SuggestionProvider<ew> g = ($$0, $$1) -> {
       avg $$2 = ((ew)$$0.getSource()).l().aF();
       Collection<String> $$3 = $$2.e();
-      cso $$4 = ((ew)$$0.getSource()).v();
+      css $$4 = ((ew)$$0.getSource()).v();
       return fb.b(
          $$2.d().stream().filter($$1x -> $$1x.e().a($$4)).map(avd::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
@@ -115,7 +115,7 @@ public class anr {
       $$1.a();
       Collection<avd> $$2 = $$1.g();
       Collection<avd> $$3 = $$1.d();
-      cso $$4 = $$0.v();
+      css $$4 = $$0.v();
       List<avd> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> xv.c("commands.datapack.list.available.none"), false);
@@ -152,12 +152,12 @@ public class anr {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            cso $$7 = ((ew)$$0.getSource()).v();
-            cso $$8 = $$5.e();
+            css $$7 = ((ew)$$0.getSource()).v();
+            css $$8 = $$5.e();
             if (!$$2 && !$$8.b() && $$5.l() == avh.d) {
                throw d.create($$3);
             } else if (!$$8.a($$7)) {
-               throw e.create($$3, csq.a($$7, $$8));
+               throw e.create($$3, csu.a($$7, $$8));
             } else {
                return $$5;
             }

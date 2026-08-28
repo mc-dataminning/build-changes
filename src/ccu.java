@@ -1,86 +1,95 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class ccu extends cdd {
+   protected bwh d;
+   protected jh e = jh.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class ccu extends ccz {
-   private int a;
-   private final bwj b;
-   @Nullable
-   private cps c;
-   private cci d;
+   public ccu(bwh $$0) {
+      this.d = $$0;
+      if (!chb.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
+   }
 
-   public ccu(bwj $$0) {
-      this.b = $$0;
+   protected boolean h() {
+      if (!this.f) {
+         return false;
+      } else {
+         dxu $$0 = this.d.dV().a_(this.e);
+         if (!($$0.b() instanceof dmt)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(dmt.c);
+         }
+      }
+   }
+
+   protected void a(boolean $$0) {
+      if (this.f) {
+         dxu $$1 = this.d.dV().a_(this.e);
+         if ($$1.b() instanceof dmt) {
+            ((dmt)$$1.b()).a(this.d, this.d.dV(), $$1, this.e, $$0);
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      List<crp> $$0 = this.b.dV().a(crp.class, this.b.cR().g(5.0));
-      boolean $$1 = false;
+      if (!chb.a(this.d)) {
+         return false;
+      } else if (!this.d.P) {
+         return false;
+      } else {
+         cfq $$0 = (cfq)this.d.L();
+         euk $$1 = $$0.k();
+         if ($$1 != null && !$$1.c() && $$0.f()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               eui $$3 = $$1.a($$2);
+               this.e = new jh($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.dC(), (double)this.e.w()) > 2.25)) {
+                  this.f = dmt.a(this.d.dV(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
 
-      for (crp $$2 : $$0) {
-         bvf $$3 = $$2.cX();
-         if ($$3 instanceof cps && (bae.e(((cps)$$3).bo) > 0.0F || bae.e(((cps)$$3).bq) > 0.0F)) {
-            $$1 = true;
-            break;
+            this.e = this.d.dv().d();
+            this.f = dmt.a(this.d.dV(), this.e);
+            return this.f;
+         } else {
+            return false;
          }
       }
-
-      return this.c != null && (bae.e(this.c.bo) > 0.0F || bae.e(this.c.bq) > 0.0F) || $$1;
-   }
-
-   @Override
-   public boolean U_() {
-      return true;
    }
 
    @Override
    public boolean c() {
-      return this.c != null && this.c.bZ() && (bae.e(this.c.bo) > 0.0F || bae.e(this.c.bq) > 0.0F);
+      return !this.a;
    }
 
    @Override
    public void d() {
-      for (crp $$1 : this.b.dV().a(crp.class, this.b.cR().g(5.0))) {
-         if ($$1.cX() instanceof cps $$2) {
-            this.c = $$2;
-            break;
-         }
-      }
-
-      this.a = 0;
-      this.d = cci.a;
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dG());
    }
 
    @Override
-   public void e() {
-      this.c = null;
+   public boolean V_() {
+      return true;
    }
 
    @Override
    public void a() {
-      boolean $$0 = bae.e(this.c.bo) > 0.0F || bae.e(this.c.bq) > 0.0F;
-      float $$1 = this.d == cci.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
-      this.b.a($$1, new fbs((double)this.b.bo, (double)this.b.bp, (double)this.b.bq));
-      this.b.a(bwf.a, this.b.dy());
-      if (--this.a <= 0) {
-         this.a = this.a(10);
-         if (this.d == cci.a) {
-            jh $$2 = this.c.dv().a(this.c.cO().g());
-            $$2 = $$2.b(0, -1, 0);
-            this.b.L().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
-            if (this.b.f(this.c) < 4.0F) {
-               this.a = 0;
-               this.d = cci.b;
-            }
-         } else if (this.d == cci.b) {
-            jm $$3 = this.c.cP();
-            jh $$4 = this.c.dv().a($$3, 10);
-            this.b.L().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
-            if (this.b.f(this.c) > 12.0F) {
-               this.a = 0;
-               this.d = cci.a;
-            }
-         }
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dG());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
    }
 }

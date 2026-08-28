@@ -1,4 +1,8 @@
-public class gyo extends gxo {
+import javax.annotation.Nullable;
+
+public class gyo extends gxt {
    public float a;
-   public float b;
+   @Nullable
+   public hdl b;
+   public cxo c = cxo.k;
 }

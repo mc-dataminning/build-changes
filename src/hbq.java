@@ -1,35 +1,35 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class hbq implements hbi {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<hbq> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alz.a.fieldOf("resource").forGetter($$0x -> $$0x.d), alz.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, hbq::new)
-   );
-   private final alz d;
-   private final Optional<alz> e;
+public class hbq {
+   private static final BiMap<alz, hbp> i = HashBiMap.create();
+   public static final hbp a = a("single", hbv.b);
+   public static final hbp b = a("directory", hbs.b);
+   public static final hbp c = a("filter", hbw.b);
+   public static final hbp d = a("unstitch", hbx.b);
+   public static final hbp e = a("paletted_permutations", hbu.b);
+   public static Codec<hbp> f = alz.a.flatXmap($$0 -> {
+      hbp $$1 = (hbp)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      alz $$1 = (alz)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<hbn> g = f.dispatch(hbn::a, hbp::a);
+   public static Codec<List<hbn>> h = g.listOf().fieldOf("sources").codec();
 
-   public hbq(alz $$0, Optional<alz> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Override
-   public void a(avv $$0, hbi.a $$1) {
-      alz $$2 = a.a(this.d);
-      Optional<avt> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
+   private static hbp a(String $$0, MapCodec<? extends hbn> $$1) {
+      hbp $$2 = new hbp($$1);
+      alz $$3 = alz.b($$0);
+      hbp $$4 = (hbp)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
       } else {
-         c.warn("Missing sprite: {}", $$2);
+         return $$2;
       }
-   }
-
-   @Override
-   public hbk a() {
-      return hbl.a;
    }
 }

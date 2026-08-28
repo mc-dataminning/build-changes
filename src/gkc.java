@@ -1,64 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class gkc {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cpr.g();
-   public static final Codec<gkc> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ae.a($$0, c)).xmap(gkc::new, $$0 -> $$0.f);
-   private static final DynamicOps<vu> d = vl.a;
-   private static final Dynamic<?> e = new Dynamic(d, (vu)cxk.f.encodeStart(d, cxk.k).getOrThrow());
-   private List<Dynamic<?>> f;
+public abstract class gkc extends cpw {
+   @Nullable
+   private gfu h;
+   protected fbx a = fbx.c;
+   public float b;
+   public float c;
+   public float d;
+   public final gfi e;
+   public float f;
+   public float g;
 
-   private gkc(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+   public gkc(gfi $$0, GameProfile $$1) {
+      super($$0, $$0.Y(), $$0.Z(), $$1);
+      this.e = $$0;
    }
 
-   public gkc() {
-      this(Collections.nCopies(c, e));
+   @Override
+   public boolean aa_() {
+      gfu $$0 = this.a();
+      return $$0 != null && $$0.e() == dhe.d;
    }
 
-   public List<cxk> a(js.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> cxk.f.parse(alx.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cxk.k))
-         .toList();
+   @Override
+   public boolean b() {
+      gfu $$0 = this.a();
+      return $$0 != null && $$0.e() == dhe.b;
    }
 
-   public void a(cpr $$0, ke $$1) {
-      alx<vu> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
-
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         cxk $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = cxk.f
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+   @Nullable
+   protected gfu a() {
+      if (this.h == null) {
+         this.h = fme.Q().L().a(this.cG());
       }
 
-      this.f = $$3.build();
+      return this.h;
    }
 
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
+   @Override
+   public void h() {
+      this.f = this.g;
+      this.a = this.dy();
+      super.h();
+   }
+
+   public fbx I(float $$0) {
+      return this.a.a(this.dy(), (double)$$0);
+   }
+
+   public hck d() {
+      gfu $$0 = this.a();
+      return $$0 == null ? hcb.a(this.cG()) : $$0.g();
+   }
+
+   public float a(boolean $$0, float $$1) {
+      float $$2 = 1.0F;
+      if (this.gh().b) {
+         $$2 *= 1.1F;
+      }
+
+      float $$3 = this.gh().b();
+      if ($$3 != 0.0F) {
+         float $$4 = (float)this.h(bxn.v) / $$3;
+         $$2 *= ($$4 + 1.0F) / 2.0F;
+      }
+
+      if (this.fx()) {
+         if (this.fz().a(cxs.oR)) {
+            float $$5 = Math.min((float)this.fB() / 20.0F, 1.0F);
+            $$2 *= 1.0F - bae.l($$5) * 0.15F;
+         } else if ($$0 && this.gF()) {
+            return 0.1F;
          }
       }
 
-      return true;
-   }
-
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
+      return bae.h($$1, 1.0F, $$2);
    }
 }

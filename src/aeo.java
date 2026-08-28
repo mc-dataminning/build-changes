@@ -6,7 +6,7 @@ public class aeo implements aac<acr> {
    private final float e;
    private final float f;
 
-   public aeo(bvf $$0) {
+   public aeo(bvj $$0) {
       this.b = $$0.dA();
       this.c = $$0.dC();
       this.d = $$0.dG();

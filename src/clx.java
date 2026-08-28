@@ -1,165 +1,128 @@
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class clx extends bvf implements bxa {
-   private static final alc<Integer> a = alg.a(clx.class, ale.b);
-   private static final alc<dxn> b = alg.a(clx.class, ale.i);
-   private static final int c = 80;
-   private static final float d = 4.0F;
-   private static final String e = "block_state";
-   private static final String f = "fuse";
-   private static final String g = "explosion_power";
-   private static final dgt h = new dgt() {
-      @Override
-      public boolean a(dgs $$0, dgf $$1, jh $$2, dxn $$3, float $$4) {
-         return $$3.a(dkg.eq) ? false : super.a($$0, $$1, $$2, $$3, $$4);
-      }
+public class clx {
+   public static final aly<clw> a = a("kebab");
+   public static final aly<clw> b = a("aztec");
+   public static final aly<clw> c = a("alban");
+   public static final aly<clw> d = a("aztec2");
+   public static final aly<clw> e = a("bomb");
+   public static final aly<clw> f = a("plant");
+   public static final aly<clw> g = a("wasteland");
+   public static final aly<clw> h = a("pool");
+   public static final aly<clw> i = a("courbet");
+   public static final aly<clw> j = a("sea");
+   public static final aly<clw> k = a("sunset");
+   public static final aly<clw> l = a("creebet");
+   public static final aly<clw> m = a("wanderer");
+   public static final aly<clw> n = a("graham");
+   public static final aly<clw> o = a("match");
+   public static final aly<clw> p = a("bust");
+   public static final aly<clw> q = a("stage");
+   public static final aly<clw> r = a("void");
+   public static final aly<clw> s = a("skull_and_roses");
+   public static final aly<clw> t = a("wither");
+   public static final aly<clw> u = a("fighters");
+   public static final aly<clw> v = a("pointer");
+   public static final aly<clw> w = a("pigscene");
+   public static final aly<clw> x = a("burning_skull");
+   public static final aly<clw> y = a("skeleton");
+   public static final aly<clw> z = a("donkey_kong");
+   public static final aly<clw> A = a("earth");
+   public static final aly<clw> B = a("wind");
+   public static final aly<clw> C = a("water");
+   public static final aly<clw> D = a("fire");
+   public static final aly<clw> E = a("baroque");
+   public static final aly<clw> F = a("humble");
+   public static final aly<clw> G = a("meditative");
+   public static final aly<clw> H = a("prairie_ride");
+   public static final aly<clw> I = a("unpacked");
+   public static final aly<clw> J = a("backyard");
+   public static final aly<clw> K = a("bouquet");
+   public static final aly<clw> L = a("cavebird");
+   public static final aly<clw> M = a("changing");
+   public static final aly<clw> N = a("cotan");
+   public static final aly<clw> O = a("endboss");
+   public static final aly<clw> P = a("fern");
+   public static final aly<clw> Q = a("finding");
+   public static final aly<clw> R = a("lowmist");
+   public static final aly<clw> S = a("orb");
+   public static final aly<clw> T = a("owlemons");
+   public static final aly<clw> U = a("passage");
+   public static final aly<clw> V = a("pond");
+   public static final aly<clw> W = a("sunflowers");
+   public static final aly<clw> X = a("tides");
 
-      @Override
-      public Optional<Float> a(dgs $$0, dgf $$1, jh $$2, dxn $$3, etp $$4) {
-         return $$3.a(dkg.eq) ? Optional.empty() : super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   };
-   @Nullable
-   private bwb i;
-   private boolean j;
-   private float k = 4.0F;
-
-   public clx(bvm<? extends clx> $$0, dha $$1) {
-      super($$0, $$1);
-      this.I = true;
+   public static void a(rk<clw> $$0) {
+      a($$0, a, 1, 1);
+      a($$0, b, 1, 1);
+      a($$0, c, 1, 1);
+      a($$0, d, 1, 1);
+      a($$0, e, 1, 1);
+      a($$0, f, 1, 1);
+      a($$0, g, 1, 1);
+      a($$0, h, 2, 1);
+      a($$0, i, 2, 1);
+      a($$0, j, 2, 1);
+      a($$0, k, 2, 1);
+      a($$0, l, 2, 1);
+      a($$0, m, 1, 2);
+      a($$0, n, 1, 2);
+      a($$0, o, 2, 2);
+      a($$0, p, 2, 2);
+      a($$0, q, 2, 2);
+      a($$0, r, 2, 2);
+      a($$0, s, 2, 2);
+      a($$0, t, 2, 2, false);
+      a($$0, u, 4, 2);
+      a($$0, v, 4, 4);
+      a($$0, w, 4, 4);
+      a($$0, x, 4, 4);
+      a($$0, y, 4, 3);
+      a($$0, A, 2, 2, false);
+      a($$0, B, 2, 2, false);
+      a($$0, C, 2, 2, false);
+      a($$0, D, 2, 2, false);
+      a($$0, z, 4, 3);
+      a($$0, E, 2, 2);
+      a($$0, F, 2, 2);
+      a($$0, G, 1, 1);
+      a($$0, H, 1, 2);
+      a($$0, I, 4, 4);
+      a($$0, J, 3, 4);
+      a($$0, K, 3, 3);
+      a($$0, L, 3, 3);
+      a($$0, M, 4, 2);
+      a($$0, N, 3, 3);
+      a($$0, O, 3, 3);
+      a($$0, P, 3, 3);
+      a($$0, Q, 4, 2);
+      a($$0, R, 4, 2);
+      a($$0, S, 4, 4);
+      a($$0, T, 3, 3);
+      a($$0, U, 4, 2);
+      a($$0, V, 3, 4);
+      a($$0, W, 3, 3);
+      a($$0, X, 3, 3);
    }
 
-   public clx(dha $$0, double $$1, double $$2, double $$3, @Nullable bwb $$4) {
-      this(bvm.bw, $$0);
-      this.a_($$1, $$2, $$3);
-      double $$5 = $$0.A.j() * (float) (Math.PI * 2);
-      this.n(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.i = $$4;
+   private static void a(rk<clw> $$0, aly<clw> $$1, int $$2, int $$3) {
+      a($$0, $$1, $$2, $$3, true);
    }
 
-   @Override
-   protected void a(alg.a $$0) {
-      $$0.a(a, 80);
-      $$0.a(b, dkg.cr.m());
+   private static void a(rk<clw> $$0, aly<clw> $$1, int $$2, int $$3, boolean $$4) {
+      $$0.a(
+         $$1,
+         new clw(
+            $$2,
+            $$3,
+            $$1.a(),
+            Optional.of(xv.c($$1.a().c("painting", "title")).a(n.o)),
+            $$4 ? Optional.of(xv.c($$1.a().c("painting", "author")).a(n.h)) : Optional.empty()
+         )
+      );
    }
 
-   @Override
-   protected bvf.b bg() {
-      return bvf.b.a;
-   }
-
-   @Override
-   public boolean bH() {
-      return !this.dQ();
-   }
-
-   @Override
-   protected double bd() {
-      return 0.04;
-   }
-
-   @Override
-   public void h() {
-      this.bW();
-      this.bf();
-      this.a(bwf.a, this.dy());
-      this.aK();
-      this.h(this.dy().c(0.98));
-      if (this.aJ()) {
-         this.h(this.dy().d(0.7, -0.5, 0.7));
-      }
-
-      int $$0 = this.m() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.at();
-         if (!this.dV().C) {
-            this.t();
-         }
-      } else {
-         this.bq();
-         if (this.dV().C) {
-            this.dV().a(ls.af, this.dA(), this.dC() + 0.5, this.dG(), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   private void t() {
-      this.dV().a(this, dgs.a(this.dV(), this), this.j ? h : null, this.dA(), this.e(0.0625), this.dG(), this.k, false, dha.a.d);
-   }
-
-   @Override
-   protected void b(ux $$0) {
-      $$0.a("fuse", (short)this.m());
-      $$0.a("block_state", vm.a(this.s()));
-      if (this.k != 4.0F) {
-         $$0.a("explosion_power", this.k);
-      }
-   }
-
-   @Override
-   protected void a(ux $$0) {
-      this.b($$0.g("fuse"));
-      if ($$0.b("block_state", 10)) {
-         this.c(vm.a(this.dV().a(mb.f), $$0.p("block_state")));
-      }
-
-      if ($$0.b("explosion_power", 99)) {
-         this.k = bae.a($$0.j("explosion_power"), 0.0F, 128.0F);
-      }
-   }
-
-   @Nullable
-   public bwb l() {
-      return this.i;
-   }
-
-   @Override
-   public void x(bvf $$0) {
-      super.x($$0);
-      if ($$0 instanceof clx $$1) {
-         this.i = $$1.i;
-      }
-   }
-
-   public void b(int $$0) {
-      this.al.a(a, $$0);
-   }
-
-   public int m() {
-      return this.al.a(a);
-   }
-
-   public void c(dxn $$0) {
-      this.al.a(b, $$0);
-   }
-
-   public dxn s() {
-      return this.al.a(b);
-   }
-
-   private void a(boolean $$0) {
-      this.j = $$0;
-   }
-
-   @Nullable
-   @Override
-   public bvf b(eup $$0) {
-      bvf $$1 = super.b($$0);
-      if ($$1 instanceof clx $$2) {
-         $$2.a(true);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public final boolean a(ash $$0, btv $$1, float $$2) {
-      return false;
+   private static aly<clw> a(String $$0) {
+      return aly.a(mb.X, alz.b($$0));
    }
 }

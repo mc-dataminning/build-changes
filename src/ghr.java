@@ -1,30 +1,83 @@
-public class ghr extends ghd {
-   private static final int a = 12235202;
+public class ghr extends gjq {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final gjl M;
 
-   protected ghr(gfd $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gjg $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)ayp.b(12235202) / 255.0F - $$9;
-      this.w = (float)ayp.c(12235202) / 255.0F - $$9;
-      this.x = (float)ayp.d(12235202) / 255.0F - $$9;
+   ghr(gfi $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gjl $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = bae.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = bae.a(this.r, 0.0F, 0.0F);
+      this.x = bae.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
    }
 
    @Override
    public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
+      }
    }
 
-   public static class a implements gio<lw> {
-      private final gjg a;
+   @Override
+   public giu b() {
+      return giu.b;
+   }
 
-      public a(gjg $$0) {
+   @Override
+   public float b(float $$0) {
+      return this.D * bae.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements git<lw> {
+      private final gjl a;
+
+      public a(gjl $$0) {
          this.a = $$0;
       }
 
-      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghr($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      public giq a(lw $$0, gfi $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new ghr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

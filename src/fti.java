@@ -1,82 +1,82 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fti {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cug<?>, fti.a<?, ?>> b = Maps.newHashMap();
-
-   public static <T extends csx> void a(cug<T> $$0, flz $$1, int $$2, xv $$3) {
-      fti.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", ma.p.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
-      }
-   }
-
+public class fti extends ftw {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
    @Nullable
-   private static <T extends csx> fti.a<T, ?> a(cug<T> $$0) {
-      return (fti.a<T, ?>)b.get($$0);
+   private final xv d;
+   private final xv s;
+   private final Runnable u;
+   @Nullable
+   private fox v;
+   private fod w;
+   private int x;
+
+   public static fti a(xv $$0, xv $$1, Runnable $$2) {
+      return new fti($$0, null, $$1, $$2, 0);
    }
 
-   private static <M extends csx, U extends ftr & fvm<M>> void a(cug<? extends M> $$0, fti.a<M, U> $$1) {
-      fti.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + ma.p.b($$0));
+   public static fti a(xv $$0, xv $$1, xv $$2, Runnable $$3) {
+      return new fti($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected fti(xv $$0, @Nullable xv $$1, xv $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.d = $$1;
+      this.s = $$2;
+      this.u = $$3;
+      this.x = $$4;
+   }
+
+   @Override
+   protected void aT_() {
+      super.aT_();
+      if (this.d != null) {
+         this.v = fox.a(this.p, this.d, 360);
+      }
+
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.v != null ? this.v.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.o - 40);
+      this.w = this.c(fod.a(this.s, $$0x -> this.aP_()).a((this.n - 150) / 2, $$4, 150, 20).a());
+   }
+
+   @Override
+   public void e() {
+      if (this.x > 0) {
+         this.x--;
+      }
+
+      this.w.j = this.x == 0;
+   }
+
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
+      if (this.v == null) {
+         String $$4 = ftl.a(ae.c());
+         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
+      } else {
+         this.v.a($$0, this.n / 2, 120);
       }
    }
 
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cug<?> $$1 : ma.p) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", ma.p.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
+   @Override
+   public boolean aH_() {
+      return this.v != null && this.w.j;
    }
 
-   static {
-      a(cug.a, fus::new);
-      a(cug.b, fus::new);
-      a(cug.c, fus::new);
-      a(cug.d, fus::new);
-      a(cug.e, fus::new);
-      a(cug.f, fus::new);
-      a(cug.g, fuy::new);
-      a(cug.h, fut::new);
-      a(cug.i, fuk::new);
-      a(cug.j, ful::new);
-      a(cug.k, fum::new);
-      a(cug.l, fup::new);
-      a(cug.m, fuu::new);
-      a(cug.n, fvb::new);
-      a(cug.o, fvc::new);
-      a(cug.p, fvd::new);
-      a(cug.q, fvf::new);
-      a(cug.r, fvk::new);
-      a(cug.s, fvl::new);
-      a(cug.t, fvn::new);
-      a(cug.u, fvq::new);
-      a(cug.v, fvs::new);
-      a(cug.w, fvt::new);
-      a(cug.x, fuq::new);
-      a(cug.y, fvu::new);
+   @Override
+   public void aP_() {
+      this.u.run();
    }
 
-   interface a<T extends csx, U extends ftr & fvm<T>> {
-      default void a(xv $$0, cug<T> $$1, flz $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.gg()), $$2.t.gg(), $$0);
-         $$2.t.cd = $$4.F();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cpr var2, xv var3);
+   @Override
+   public xv i() {
+      return xu.a(this.l, this.d != null ? this.d : xu.a);
    }
 }

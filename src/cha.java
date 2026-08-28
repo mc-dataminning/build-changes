@@ -1,118 +1,38 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
 public class cha {
-   private static final int a = 10;
-
-   public static jh a(bam $$0, int $$1, int $$2) {
-      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
-      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
-      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
-      return new jh($$3, $$4, $$5);
+   @Nullable
+   public static fbx a(bwn $$0, int $$1, int $$2) {
+      boolean $$3 = chb.a($$0, $$1);
+      return che.a($$0, () -> {
+         jh $$4 = che.a($$0.dY(), $$1, $$2);
+         return a($$0, $$1, $$3, $$4);
+      });
    }
 
    @Nullable
-   public static jh a(bam $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      double $$7 = bae.d($$5, $$4) - (float) (Math.PI / 2);
-      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
-      double $$9 = Math.sqrt($$0.j()) * (double)bae.g * (double)$$1;
-      double $$10 = -$$9 * Math.sin($$8);
-      double $$11 = $$9 * Math.cos($$8);
-      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
-         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
-         return jh.a($$10, (double)$$12, $$11);
-      } else {
-         return null;
-      }
-   }
-
-   @VisibleForTesting
-   public static jh a(jh $$0, int $$1, Predicate<jh> $$2) {
-      if (!$$2.test($$0)) {
-         return $$0;
-      } else {
-         jh.a $$3 = $$0.k().c(jm.b);
-
-         while ($$3.v() <= $$1 && $$2.test($$3)) {
-            $$3.c(jm.b);
-         }
-
-         return $$3.j();
-      }
-   }
-
-   @VisibleForTesting
-   public static jh a(jh $$0, int $$1, int $$2, Predicate<jh> $$3) {
-      if ($$1 < 0) {
-         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
-      } else if (!$$3.test($$0)) {
-         return $$0;
-      } else {
-         jh.a $$4 = $$0.k().c(jm.b);
-
-         while ($$4.v() <= $$2 && $$3.test($$4)) {
-            $$4.c(jm.b);
-         }
-
-         int $$5 = $$4.v();
-
-         while ($$4.v() <= $$2 && $$4.v() - $$5 < $$1) {
-            $$4.c(jm.b);
-            if ($$3.test($$4)) {
-               $$4.c(jm.a);
-               break;
-            }
-         }
-
-         return $$4.j();
-      }
+   public static fbx a(bwn $$0, int $$1, int $$2, fbx $$3, double $$4) {
+      fbx $$5 = $$3.a($$0.dA(), $$0.dC(), $$0.dG());
+      boolean $$6 = chb.a($$0, $$1);
+      return che.a($$0, () -> {
+         jh $$6x = che.a($$0.dY(), $$1, $$2, 0, $$5.d, $$5.f, $$4);
+         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
+      });
    }
 
    @Nullable
-   public static fbs a(bwj $$0, Supplier<jh> $$1) {
-      return a($$1, $$0::c);
+   public static fbx a(bwn $$0, int $$1, int $$2, fbx $$3) {
+      fbx $$4 = $$0.dt().d($$3);
+      boolean $$5 = chb.a($$0, $$1);
+      return che.a($$0, () -> {
+         jh $$5x = che.a($$0.dY(), $$1, $$2, 0, $$4.d, $$4.f, (float) (Math.PI / 2));
+         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
+      });
    }
 
    @Nullable
-   public static fbs a(Supplier<jh> $$0, ToDoubleFunction<jh> $$1) {
-      double $$2 = Double.NEGATIVE_INFINITY;
-      jh $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         jh $$5 = $$0.get();
-         if ($$5 != null) {
-            double $$6 = $$1.applyAsDouble($$5);
-            if ($$6 > $$2) {
-               $$2 = $$6;
-               $$3 = $$5;
-            }
-         }
-      }
-
-      return $$3 != null ? fbs.c($$3) : null;
-   }
-
-   public static jh a(bwj $$0, int $$1, bam $$2, jh $$3) {
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      if ($$0.fY() && $$1 > 1) {
-         jh $$6 = $$0.fV();
-         if ($$0.dA() > (double)$$6.u()) {
-            $$4 -= $$2.a($$1 / 2);
-         } else {
-            $$4 += $$2.a($$1 / 2);
-         }
-
-         if ($$0.dG() > (double)$$6.w()) {
-            $$5 -= $$2.a($$1 / 2);
-         } else {
-            $$5 += $$2.a($$1 / 2);
-         }
-      }
-
-      return jh.a((double)$$4 + $$0.dA(), (double)$$3.v() + $$0.dC(), (double)$$5 + $$0.dG());
+   private static jh a(bwn $$0, int $$1, boolean $$2, jh $$3) {
+      jh $$4 = che.a($$0, $$1, $$0.dY(), $$3);
+      return !chb.a($$4, $$0) && !chb.a($$2, $$0, $$4) && !chb.a($$0.L(), $$4) && !chb.b($$0, $$4) ? $$4 : null;
    }
 }

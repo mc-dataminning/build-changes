@@ -1,2 +1,8 @@
-public record evs(ewb a, eed.b b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface evs {
 }

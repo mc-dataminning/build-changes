@@ -1,5 +1,13 @@
-public class gzt extends gym {
-   public cis.b a = cis.b.g;
-   public int b = -1;
-   public int c = -1;
+import javax.annotation.Nullable;
+
+public class gzt extends gxn {
+   @Nullable
+   public bvh.l.e a;
+   @Nullable
+   public bvh.l.b f;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

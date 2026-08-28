@@ -7,12 +7,12 @@ public interface oz {
 
    oz a(@Nullable String var1);
 
-   cxg a();
+   cxk a();
 
-   void a(pb var1, aly<dbz<?>> var2);
+   void a(pb var1, aly<dcd<?>> var2);
 
    default void a(pb $$0) {
-      this.a($$0, aly.a(mb.bj, a(this.a())));
+      this.a($$0, aly.a(mb.bk, a(this.a())));
    }
 
    default void a(pb $$0, String $$1) {
@@ -21,20 +21,20 @@ public interface oz {
       if ($$3.equals($$2)) {
          throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
       } else {
-         this.a($$0, aly.a(mb.bj, $$3));
+         this.a($$0, aly.a(mb.bk, $$3));
       }
    }
 
-   static alz a(dgz $$0) {
+   static alz a(dhg $$0) {
       return ma.g.b($$0.j());
    }
 
-   static dbn a(pa $$0) {
+   static dbq a(pa $$0) {
       return switch ($$0) {
-         case a -> dbn.a;
-         case e, f -> dbn.c;
-         case c -> dbn.b;
-         default -> dbn.d;
+         case a -> dbq.a;
+         case e, f -> dbq.c;
+         case c -> dbq.b;
+         default -> dbq.d;
       };
    }
 }

@@ -1,76 +1,84 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public abstract class diw extends dke {
-   public static final int a = 3;
-   public static final dye b = dyd.r;
+public class diw extends din {
+   private static final MapCodec<jq<dij>> d = dij.c.fieldOf("biome");
+   public static final MapCodec<dis.c<jq<dij>>> b = dis.c.a(d).fieldOf("biomes");
+   private static final MapCodec<jq<dix>> e = dix.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
+   public static final MapCodec<diw> c = Codec.mapEither(b, e).xmap(diw::new, $$0 -> $$0.f);
+   private final Either<dis.c<jq<dij>>, jq<dix>> f;
 
-   @Override
-   protected abstract MapCodec<? extends diw> a();
-
-   protected diw(dxm.d $$0) {
-      super($$0);
+   private diw(Either<dis.c<jq<dij>>, jq<dix>> $$0) {
+      this.f = $$0;
    }
 
-   protected abstract Iterable<fbs> b(dxn var1);
-
-   public static boolean c(dxn $$0) {
-      return $$0.b(b) && ($$0.a(axu.ag) || $$0.a(axu.bm)) && $$0.c(b);
+   public static diw a(dis.c<jq<dij>> $$0) {
+      return new diw(Either.left($$0));
    }
 
-   @Override
-   protected void a(dha $$0, dxn $$1, fbo $$2, cql $$3) {
-      if (!$$0.C && $$3.bY() && this.d($$1)) {
-         a($$0, $$1, $$2.b(), true);
-      }
+   public static diw a(jq<dix> $$0) {
+      return new diw(Either.right($$0));
    }
 
-   protected boolean d(dxn $$0) {
-      return !$$0.c(b);
+   private dis.c<jq<dij>> d() {
+      return (dis.c<jq<dij>>)this.f.map($$0 -> $$0, $$0 -> ((dix)$$0.a()).a());
    }
 
    @Override
-   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(dha $$0, fbs $$1, bam $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(ls.af, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.d + 0.5, $$1.e + 0.5, $$1.f + 0.5, axf.dK, axg.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
-         }
-      }
-
-      $$0.a(ls.aK, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cps $$0, dxn $$1, dhb $$2, jh $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof diw) {
-         ((diw)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(ls.af, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
-      }
-
-      $$2.a(null, $$3, axf.dM, axg.e, 1.0F, 1.0F);
-      $$2.a($$0, ecj.c, $$3);
-   }
-
-   private static void a(dhb $$0, dxn $$1, jh $$2, boolean $$3) {
-      $$0.a($$2, $$1.b(b, Boolean.valueOf($$3)), 11);
+   protected Stream<jq<dij>> b() {
+      return this.d().a().stream().map(Pair::getSecond);
    }
 
    @Override
-   protected void a(dxn $$0, ash $$1, jh $$2, dgs $$3, BiConsumer<cxk, jh> $$4) {
-      if ($$3.g() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
-      }
+   protected MapCodec<? extends din> a() {
+      return c;
+   }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+   public boolean a(aly<dix> $$0) {
+      Optional<jq<dix>> $$1 = this.f.right();
+      return $$1.isPresent() && $$1.get().a($$0);
+   }
+
+   @Override
+   public jq<dij> getNoiseBiome(int $$0, int $$1, int $$2, dis.f $$3) {
+      return this.a($$3.a($$0, $$1, $$2));
+   }
+
+   @bbl
+   public jq<dij> a(dis.h $$0) {
+      return this.d().a($$0);
+   }
+
+   @Override
+   public void a(List<String> $$0, jh $$1, dis.f $$2) {
+      int $$3 = kb.a($$1.u());
+      int $$4 = kb.a($$1.v());
+      int $$5 = kb.a($$1.w());
+      dis.h $$6 = $$2.a($$3, $$4, $$5);
+      float $$7 = dis.a($$6.d());
+      float $$8 = dis.a($$6.e());
+      float $$9 = dis.a($$6.b());
+      float $$10 = dis.a($$6.c());
+      float $$11 = dis.a($$6.g());
+      double $$12 = (double)edw.a($$11);
+      diz $$13 = new diz();
+      $$0.add(
+         "Biome builder PV: "
+            + diz.a($$12)
+            + " C: "
+            + $$13.b((double)$$7)
+            + " E: "
+            + $$13.c((double)$$8)
+            + " T: "
+            + $$13.d((double)$$9)
+            + " H: "
+            + $$13.e((double)$$10)
+      );
    }
 }

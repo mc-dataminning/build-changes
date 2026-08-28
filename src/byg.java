@@ -1,16 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class byg {
-   public static <E extends bwb> bxv<E> a(Predicate<E> $$0, cff<?> $$1) {
-      return cbh.a((Function<cbh.b<E>, ? extends App<cbh.c<E>, cbk<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+public class byg<E extends bwh & cmj, T extends bwf> extends bxy<E> {
+   private static final int c = 1200;
+   private int d;
+   private byg.a e = byg.a.a;
+
+   public byg() {
+      super(ImmutableMap.of(cfj.n, cfk.c, cfj.o, cfk.a), 1200);
+   }
+
+   protected boolean a(ash $$0, E $$1) {
+      bwf $$2 = b($$1);
+      return $$1.b(cxs.wL) && bya.b($$1, $$2) && bya.a($$1, $$2, 0);
+   }
+
+   protected boolean a(ash $$0, E $$1, long $$2) {
+      return $$1.eb().a(cfj.o) && this.a($$0, $$1);
+   }
+
+   protected void b(ash $$0, E $$1, long $$2) {
+      bwf $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
+   }
+
+   protected void c(ash $$0, E $$1, long $$2) {
+      if ($$1.fx()) {
+         $$1.fD();
+      }
+
+      if ($$1.b(cxs.wL)) {
+         $$1.b(false);
+         $$1.fz().b(ku.O, czt.a);
+      }
+   }
+
+   private void a(E $$0, bwf $$1) {
+      if (this.e == byg.a.a) {
+         $$0.c(cqr.a($$0, cxs.wL));
+         this.e = byg.a.b;
+         $$0.b(true);
+      } else if (this.e == byg.a.b) {
+         if (!$$0.fx()) {
+            this.e = byg.a.a;
+         }
+
+         int $$2 = $$0.fB();
+         cxo $$3 = $$0.fz();
+         if ($$2 >= cwf.b($$3, $$0)) {
+            $$0.fC();
+            this.e = byg.a.c;
+            this.d = 20 + $$0.dY().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == byg.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = byg.a.d;
+         }
+      } else if (this.e == byg.a.d) {
+         $$0.a($$1, 1.0F);
+         this.e = byg.a.a;
+      }
+   }
+
+   private void b(bwh $$0, bwf $$1) {
+      $$0.eb().a(cfj.n, new byj($$1, true));
+   }
+
+   private static bwf b(bwf $$0) {
+      return $$0.eb().c(cfj.o).get();
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

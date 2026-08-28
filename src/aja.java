@@ -1,7 +1,7 @@
 import java.util.Optional;
 
-public record aja(Optional<jq<bui>> b, Optional<jq<bui>> c) implements aac<ahm> {
-   public static final zt<xg, aja> a = zt.a(bui.b.a(zr::a), aja::b, bui.b.a(zr::a), aja::e, aja::new);
+public record aja(Optional<jq<bum>> b, Optional<jq<bum>> c) implements aac<ahm> {
+   public static final zt<xg, aja> a = zt.a(bum.b.a(zr::a), aja::b, bum.b.a(zr::a), aja::e, aja::new);
 
    @Override
    public aae<aja> a() {
@@ -12,7 +12,7 @@ public record aja(Optional<jq<bui>> b, Optional<jq<bui>> c) implements aac<ahm> 
       $$0.a(this);
    }
 
-   public Optional<jq<bui>> e() {
+   public Optional<jq<bum>> e() {
       return this.c;
    }
 }

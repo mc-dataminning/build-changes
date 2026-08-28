@@ -1,69 +1,28 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public class ewa {
+   public static final ewa a = new ewa("advancements");
+   public static final ewa b = new ewa("stats");
+   public static final ewa c = new ewa("playerdata");
+   public static final ewa d = new ewa("players");
+   public static final ewa e = new ewa("level.dat");
+   public static final ewa f = new ewa("level.dat_old");
+   public static final ewa g = new ewa("icon.png");
+   public static final ewa h = new ewa("session.lock");
+   public static final ewa i = new ewa("generated");
+   public static final ewa j = new ewa("datapacks");
+   public static final ewa k = new ewa("resources.zip");
+   public static final ewa l = new ewa(".");
+   private final String m;
 
-public interface ewa extends ewc {
-   @Override
-   String e();
-
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, dhc $$1) {
-      ewc.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   private ewa(String $$0) {
+      this.m = $$0;
    }
 
-   int f();
+   public String a() {
+      return this.m;
+   }
 
-   void a(int var1);
-
-   int t();
-
-   void d(int var1);
-
-   int u();
-
-   void e(int var1);
-
-   @Nullable
-   UUID v();
-
-   void a(UUID var1);
-
-   dgx k();
-
-   void a(dzd.c var1);
-
-   dzd.c p();
-
-   boolean n();
-
-   void c(boolean var1);
-
-   boolean m();
-
-   void a(dgx var1);
-
-   fbf<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
-
-   dgw o();
+   @Override
+   public String toString() {
+      return "/" + this.m;
+   }
 }

@@ -1,9 +1,7 @@
-public class gzx extends gym implements gzw {
-   public boolean a;
-   public cpf b = new cpf(cpj.c, cph.b, 1);
+import javax.annotation.Nullable;
 
-   @Override
-   public cpf a() {
-      return this.b;
-   }
+public class gzx extends gxt {
+   public float a;
+   @Nullable
+   public dxu b;
 }

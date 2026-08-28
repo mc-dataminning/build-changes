@@ -1,36 +1,25 @@
-public class gra extends gri<cqc, gxo> {
-   private static final alz a = alz.b("textures/entity/enderdragon/dragon_fireball.png");
-   private static final glo b = glo.f(a);
+public class gra<T extends coa> extends gsu<T, gxl, gbb> {
+   private static final alz a = alz.b("textures/entity/creaking/creaking.png");
+   private static final alz b = alz.b("textures/entity/creaking/creaking_eyes.png");
 
-   public gra(grj.a $$0) {
-      super($$0);
+   public gra(gro.a $$0) {
+      super($$0, new gbb($$0.a(gel.ae)), 0.7F);
+      this.a(new gvw<>(this, b, ($$0x, $$1) -> 1.0F, gbb::b, glt::p));
    }
 
-   protected int a(cqc $$0, jh $$1) {
-      return 15;
+   public alz a(gxl $$0) {
+      return a;
    }
 
-   @Override
-   public void a(gxo $$0, fgl $$1, gle $$2, int $$3) {
-      $$1.a();
-      $$1.b(2.0F, 2.0F, 2.0F);
-      $$1.a(this.e.b());
-      fgl.a $$4 = $$1.c();
-      fgp $$5 = $$2.getBuffer(b);
-      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
-      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
-      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
-      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public gxl a() {
+      return new gxl();
    }
 
-   private static void a(fgp $$0, fgl.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hav.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
-   }
-
-   @Override
-   public gxo d() {
-      return new gxo();
+   public void a(T $$0, gxl $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b.a($$0.bZ);
+      $$1.a.a($$0.ca);
+      $$1.c = $$0.x();
+      $$1.d = $$0.p();
    }
 }

@@ -1,13 +1,30 @@
-import java.util.List;
+public class fvt extends fuk {
+   private final dgh u;
 
-public class fvt extends fuh<cuy> {
-   private static final alz G = alz.b("container/smoker/lit_progress");
-   private static final alz H = alz.b("container/smoker/burn_progress");
-   private static final alz I = alz.b("textures/gui/container/smoker.png");
-   private static final xv J = xv.c("gui.recipebook.toggleRecipes.smokable");
-   private static final List<fxo.a> K = List.of(new fxo.a(fxu.d), new fxo.a(cxo.qt, dbi.j));
+   public fvt(dgh $$0) {
+      this.u = $$0;
+   }
 
-   public fvt(cuy $$0, cpr $$1, xv $$2) {
-      super($$0, $$1, $$2, J, I, G, H, K);
+   @Override
+   public dgh l() {
+      return this.u;
+   }
+
+   @Override
+   int E() {
+      return 150;
+   }
+
+   @Override
+   protected void aT_() {
+      super.aT_();
+      this.a.a(this.l().m());
+   }
+
+   @Override
+   protected void a(dgh $$0) {
+      if ($$0 instanceof csf.a $$1) {
+         this.m.L().b(new ajd($$1.h().ar(), this.a.a(), $$0.p()));
+      }
    }
 }

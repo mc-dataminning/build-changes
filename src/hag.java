@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hag {
+public class hag extends gxt {
+   public boolean a;
+   public float b;
+   public float c;
 }

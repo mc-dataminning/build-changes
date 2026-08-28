@@ -1,16 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiw implements eis {
+public record eiw(eli b, eew c, bsn d, int e) implements eiz {
    public static final Codec<eiw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, ebi.c).fieldOf("height").forGetter($$0x -> $$0x.b), dxn.a.fieldOf("state").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               eli.a.fieldOf("state_provider").forGetter(eiw::a),
+               eew.b.fieldOf("target").forGetter(eiw::b),
+               bsn.b(0, 8).fieldOf("radius").forGetter(eiw::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eiw::d)
+            )
             .apply($$0, eiw::new)
    );
-   public final int b;
-   public final dxn c;
 
-   public eiw(int $$0, dxn $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public eli a() {
+      return this.b;
+   }
+
+   public eew b() {
+      return this.c;
+   }
+
+   public bsn c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

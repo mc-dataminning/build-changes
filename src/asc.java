@@ -1,4 +1,4 @@
-public abstract class asc extends etb {
+public abstract class asc extends eti {
    protected asc(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }

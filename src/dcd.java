@@ -1,34 +1,35 @@
-public record dcd<T extends dbz<?>>(aly<dbz<?>> b, T c) {
-   public static final zt<xg, dcd<?>> a = zt.a(aly.b(mb.bj), dcd::a, dbz.b, dcd::b, dcd::new);
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dcd<?> $$1 && this.b == $$1.b) {
-            return true;
-         }
+public interface dcd<T extends dcj> {
+   Codec<dcd<?>> a = ma.r.q().dispatch(dcd::a, dcn::a);
+   zt<xg, dcd<?>> b = zr.a(mb.ae).b(dcd::a, dcn::b);
 
-         return false;
-      }
+   boolean a(T var1, dhh var2);
+
+   cxo a(T var1, js.a var2);
+
+   default boolean aq_() {
+      return false;
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   default boolean i() {
+      return true;
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
+   default String j() {
+      return "";
    }
 
-   public aly<dbz<?>> a() {
-      return this.b;
+   dcn<? extends dcd<T>> a();
+
+   dco<? extends dcd<T>> b();
+
+   dcc ap_();
+
+   default List<ddi> g() {
+      return List.of();
    }
 
-   public T b() {
-      return this.c;
-   }
+   dcg h();
 }

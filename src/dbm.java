@@ -1,25 +1,28 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
-public enum dbm implements bba {
-   a(0, "food"),
-   b(1, "blocks"),
-   c(2, "misc");
-
-   private static final IntFunction<dbm> f = ayv.a($$0 -> $$0.g, values(), ayv.a.a);
-   public static final Codec<dbm> d = bba.a(dbm::values);
-   public static final zt<ByteBuf, dbm> e = zr.a(f, $$0 -> $$0.g);
-   private final int g;
-   private final String h;
-
-   private dbm(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+public class dbm extends dbj {
+   public dbm(String $$0, dbp $$1, dbz $$2, cxo $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.h;
+   protected cxk f() {
+      return cxs.xc;
+   }
+
+   @Override
+   public dcn<dbm> a() {
+      return dcn.p;
+   }
+
+   @Override
+   public dco<dbm> b() {
+      return dco.c;
+   }
+
+   @Override
+   public dcg h() {
+      return switch (this.e()) {
+         case b -> dcf.h;
+         case a, c -> dcf.i;
+      };
    }
 }

@@ -1,25 +1,78 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public enum eoy implements bba {
-   a("linear"),
-   b("triangular");
+public record eoy(List<eon> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final alz c = alz.b("jigsaw");
+   private static final Map<alz, alz> d = ImmutableMap.builder()
+      .put(alz.b("nvi"), c)
+      .put(alz.b("pcp"), c)
+      .put(alz.b("bastionremnant"), c)
+      .put(alz.b("runtime"), c)
+      .build();
 
-   public static final Codec<eoy> c = bba.a(eoy::values);
-   private final String d;
-
-   private eoy(final String $$0) {
-      this.d = $$0;
+   public eoy(final List<eon> a) {
+      this.a = List.copyOf(a);
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   public int a(bam $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+   public boolean a(jh $$0) {
+      for (eon $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public vu a(eoz $$0) {
+      vd $$1 = new vd();
+
+      for (eon $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   public static eoy a(vd $$0, eoz $$1) {
+      List<eon> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         ux $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         alz $$6 = alz.a($$5);
+         alz $$7 = d.getOrDefault($$6, $$6);
+         epa $$8 = ma.Q.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               eon $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new eoy($$2);
+   }
+
+   public eob b() {
+      return eon.a(this.a.stream());
+   }
+
+   public List<eon> c() {
+      return this.a;
    }
 }

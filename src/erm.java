@@ -1,20 +1,27 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class erm extends esb {
-   public static final MapCodec<erm> a = MapCodec.unit(() -> erm.b);
-   public static final erm b = new erm();
+public class erm extends esi {
+   public static final MapCodec<erm> a = dxu.a.xmap(dxt.a::b, dkl::m).listOf().fieldOf("blocks").xmap(erm::new, $$0 -> $$0.e);
+   public static final erm b = new erm(ImmutableList.of(dkn.pv));
+   public static final erm c = new erm(ImmutableList.of(dkn.a));
+   public static final erm d = new erm(ImmutableList.of(dkn.a, dkn.pv));
+   private final ImmutableList<dkl> e;
+
+   public erm(List<dkl> $$0) {
+      this.e = ImmutableList.copyOf($$0);
+   }
 
    @Nullable
    @Override
-   public ese.d a(dhd $$0, jh $$1, jh $$2, ese.d $$3, ese.d $$4, esa $$5) {
-      jh $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(dkg.K);
-      return $$7 && !dke.a($$4.b().f($$0, $$6)) ? new ese.d($$6, dkg.K.m(), $$4.c()) : $$4;
+   public esl.d a(dhk $$0, jh $$1, jh $$2, esl.d $$3, esl.d $$4, esh $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
    @Override
-   protected esd<?> a() {
-      return esd.m;
+   protected esk<?> a() {
+      return esk.e;
    }
 }

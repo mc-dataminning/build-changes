@@ -1,31 +1,17 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class coq {
-   public static bxv<bwb> a(int $$0, int $$1) {
-      return cbh.a(
-         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$2 -> $$2.group($$2.b(cff.ad), $$2.b(cff.L), $$2.a(cff.ae), $$2.a(cff.af))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.eY().f()) {
-                        return false;
-                     } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
-                        } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
-                        }
-
-                        return true;
+   public static bxz<bwf> a() {
+      return cbl.a(
+         (Function<cbl.b<bwf>, ? extends App<cbl.c<bwf>, cbo<bwf>>>)($$0 -> $$0.group($$0.b(cfj.o), $$0.a(cfj.ah))
+               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                     bwf $$6 = $$0.b($$1);
+                     if ($$6.aq() == bvq.ak && $$6.eE()) {
+                        $$2.a(true, (long)col.d.a($$4.dV().A));
                      }
+
+                     return true;
                   }))
       );
    }

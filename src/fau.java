@@ -1,31 +1,21 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
 
-public record fau(ewh.b c) implements fax {
-   public static final MapCodec<fau> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ewh.b.e.fieldOf("target").forGetter(fau::c)).apply($$0, fau::new));
-   public static final Codec<fau> b = ewh.b.e.xmap(fau::new, fau::c);
+public class fau {
+   private static final Codec<fat> h = ma.G.q().dispatch(fat::b, fas::a);
+   public static final Codec<fat> a = Codec.lazyInitialized(() -> {
+      Codec<fat> $$0 = Codec.withAlternative(h, fax.a.codec());
+      return Codec.either(faq.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof faq $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final fas b = a("constant", faq.a);
+   public static final fas c = a("uniform", fax.a);
+   public static final fas d = a("binomial", fap.a);
+   public static final fas e = a("score", fav.a);
+   public static final fas f = a("storage", faw.a);
+   public static final fas g = a("enchantment_level", far.a);
 
-   public static fax a(ewh.b $$0) {
-      return new fau($$0);
-   }
-
-   @Override
-   public faw a() {
-      return fay.c;
-   }
-
-   @Nullable
-   @Override
-   public fcw a(ewh $$0) {
-      return $$0.c(this.c.a());
-   }
-
-   @Override
-   public Set<eza<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   private static fas a(String $$0, MapCodec<? extends fat> $$1) {
+      return kd.a(ma.G, alz.b($$0), new fas($$1));
    }
 }

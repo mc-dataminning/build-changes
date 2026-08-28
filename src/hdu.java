@@ -1,28 +1,3 @@
-import java.util.Locale;
-
-public record hdu(alz b, String c) {
-   public static final String a = "inventory";
-
-   public hdu(alz b, String c) {
-      c = a(c);
-      this.b = b;
-      this.c = c;
-   }
-
-   public static hdu a(alz $$0) {
-      return new hdu($$0, "inventory");
-   }
-
-   private static String a(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.b + "#" + this.c;
-   }
+public interface hdu {
+   hdl a(alz var1, hea var2);
 }

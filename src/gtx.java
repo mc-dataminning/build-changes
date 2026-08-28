@@ -1,30 +1,30 @@
-public class gtx extends gri<cqy, gzq> {
-   public static final alz a = alz.b("textures/entity/trident.png");
-   private final gdl b;
+public class gtx<T extends civ> extends gqi<T, gzr, gdn> {
+   private static final alz a = alz.b("textures/entity/squid/squid.png");
 
-   public gtx(grj.a $$0) {
-      super($$0);
-      this.b = new gdl($$0.a(geg.dg));
+   public gtx(gro.a $$0, gdn $$1, gdn $$2) {
+      super($$0, $$1, $$2, 0.7F);
    }
 
-   public void a(gzq $$0, fgl $$1, gle $$2, int $$3) {
-      $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
-      fgp $$4 = gsh.a($$2, this.b.a(a), false, $$0.c);
-      this.b.a($$1, $$4, $$3, hav.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public alz a(gzr $$0) {
+      return a;
    }
 
-   public gzq a() {
-      return new gzq();
+   public gzr b() {
+      return new gzr();
    }
 
-   public void a(cqy $$0, gzq $$1, float $$2) {
+   public void a(T $$0, gzr $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.k($$2);
-      $$1.a = $$0.j($$2);
-      $$1.c = $$0.C();
+      $$1.a = bae.h($$2, $$0.cg, $$0.cf);
+      $$1.b = bae.h($$2, $$0.ca, $$0.bZ);
+      $$1.c = bae.h($$2, $$0.cc, $$0.cb);
+   }
+
+   protected void a(gzr $$0, fgq $$1, float $$2, float $$3) {
+      $$1.a(0.0F, $$0.ae ? 0.25F : 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      $$1.a(a.b.rotationDegrees($$0.b));
+      $$1.a(a.d.rotationDegrees($$0.c));
+      $$1.a(0.0F, $$0.ae ? -0.6F : -1.2F, 0.0F);
    }
 }

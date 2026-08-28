@@ -1,17 +1,21 @@
-public class gyu extends gym {
-   public cih.a a;
-   public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float i;
-   public float j;
-   public float k;
+import javax.annotation.Nullable;
 
-   public gyu() {
-      this.a = cih.a.a;
-   }
+public class gyu extends gxt {
+   public float a;
+   public float b;
+   public long c;
+   public int d;
+   public float e;
+   public float f;
+   public int g;
+   public dxu h = dkn.a.m();
+   public boolean i;
+   @Nullable
+   public fbx j;
+   @Nullable
+   public fbx k;
+   @Nullable
+   public fbx l;
+   @Nullable
+   public fbx B;
 }

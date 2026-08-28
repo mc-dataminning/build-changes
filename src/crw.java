@@ -1,145 +1,147 @@
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public interface crw extends bsx, btg {
-   fbs dt();
-
-   fbn cR();
-
+public abstract class crw extends crv implements csa {
+   private jz<cxo> b = jz.a(36, cxo.k);
    @Nullable
-   aly<ewm> v();
+   private aly<ewt> c;
+   private long d;
 
-   void a(@Nullable aly<ewm> var1);
-
-   long x();
-
-   void a(long var1);
-
-   jz<cxk> B();
-
-   void C();
-
-   dha dV();
-
-   boolean dQ();
+   protected crw(bvq<?> $$0, dhh $$1) {
+      super($$0, $$1);
+   }
 
    @Override
-   default boolean c() {
-      return this.g();
+   public void a(ash $$0, btz $$1) {
+      super.a($$0, $$1);
+      this.a($$1, $$0, this);
    }
 
-   default void a(ux $$0, js.a $$1) {
-      if (this.v() != null) {
-         $$0.a("LootTable", this.v().a().toString());
-         if (this.x() != 0L) {
-            $$0.a("LootTableSeed", this.x());
-         }
+   @Override
+   public cxo a(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public cxo a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cxo b(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cxo $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bwx a_(int $$0) {
+      return this.h_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cpw $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(bvj.c $$0) {
+      if (!this.dV().C && $$0.a()) {
+         bte.a(this.dV(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   protected void b(ux $$0) {
+      super.b($$0);
+      this.a($$0, this.dX());
+   }
+
+   @Override
+   protected void a(ux $$0) {
+      super.a($$0);
+      this.b($$0, this.dX());
+   }
+
+   @Override
+   public bti a(cpw $$0, bth $$1) {
+      return this.b_($$0);
+   }
+
+   @Override
+   protected fbx a(fbx $$0) {
+      float $$1 = 0.98F;
+      if (this.c == null) {
+         int $$2 = 15 - ctb.b(this);
+         $$1 += (float)$$2 * 0.001F;
+      }
+
+      if (this.bj()) {
+         $$1 *= 0.95F;
+      }
+
+      return $$0.d((double)$$1, 0.0, (double)$$1);
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   public void a(aly<ewt> $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   @Nullable
+   @Override
+   public ctb createMenu(int $$0, cpv $$1, cpw $$2) {
+      if (this.c != null && $$2.aa_()) {
+         return null;
       } else {
-         bsy.a($$0, this.B(), $$1);
+         this.f($$1.k);
+         return this.a($$0, $$1);
       }
    }
 
-   default void b(ux $$0, js.a $$1) {
-      this.C();
-      if ($$0.b("LootTable", 8)) {
-         this.a(aly.a(mb.bf, alz.a($$0.l("LootTable"))));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bsy.b($$0, this.B(), $$1);
-      }
+   protected abstract ctb a(int var1, cpv var2);
+
+   @Nullable
+   @Override
+   public aly<ewt> v() {
+      return this.c;
    }
 
-   default void a(btv $$0, ash $$1, bvf $$2) {
-      if ($$1.N().b(dgw.i)) {
-         bta.a($$1, $$2, this);
-         bvf $$3 = $$0.c();
-         if ($$3 != null && $$3.aq() == bvm.bS) {
-            coh.a($$1, (cps)$$3, true);
-         }
-      }
+   @Override
+   public void a(@Nullable aly<ewt> $$0) {
+      this.c = $$0;
    }
 
-   default bte b_(cps $$0) {
-      $$0.a(this);
-      return bte.a;
+   @Override
+   public long x() {
+      return this.d;
    }
 
-   default void f(@Nullable cps $$0) {
-      MinecraftServer $$1 = this.dV().p();
-      if (this.v() != null && $$1 != null) {
-         ewm $$2 = $$1.bc().b(this.v());
-         if ($$0 != null) {
-            ao.Q.a((asi)$$0, this.v());
-         }
-
-         this.a(null);
-         ewk.a $$3 = new ewk.a((ash)this.dV()).a(ezd.f, this.dt());
-         if ($$0 != null) {
-            $$3.a($$0.gD()).a(ezd.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(ezc.c), this.x());
-      }
+   @Override
+   public void a(long $$0) {
+      this.d = $$0;
    }
 
-   default void f() {
-      this.f(null);
-      this.B().clear();
+   @Override
+   public jz<cxo> B() {
+      return this.b;
    }
 
-   default boolean g() {
-      for (cxk $$0 : this.B()) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   default cxk f_(int $$0) {
-      this.f(null);
-      cxk $$1 = this.B().get($$0);
-      if ($$1.f()) {
-         return cxk.k;
-      } else {
-         this.B().set($$0, cxk.k);
-         return $$1;
-      }
-   }
-
-   default cxk g_(int $$0) {
-      this.f(null);
-      return this.B().get($$0);
-   }
-
-   default cxk b(int $$0, int $$1) {
-      this.f(null);
-      return bsy.a(this.B(), $$0, $$1);
-   }
-
-   default void c(int $$0, cxk $$1) {
-      this.f(null);
-      this.B().set($$0, $$1);
-      $$1.f(this.e_($$1));
-   }
-
-   default bwt h_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bwt() {
-         @Override
-         public cxk a() {
-            return crw.this.g_($$0);
-         }
-
-         @Override
-         public boolean a(cxk $$0x) {
-            crw.this.c($$0, $$0);
-            return true;
-         }
-      } : bwt.a;
-   }
-
-   default boolean g(cps $$0) {
-      return !this.dQ() && $$0.a(this.cR(), 4.0);
+   @Override
+   public void C() {
+      this.b = jz.a(this.b(), cxo.k);
    }
 }

@@ -1,18 +1,48 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekr<P extends ekq> {
-   public static final ekr<ekp> a = a("mangrove_root_placer", ekp.c);
-   private final MapCodec<P> b;
+public class ekr extends ekl {
+   public static final MapCodec<ekr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bsn.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ekr::new)
+   );
+   private final bsn b;
 
-   private static <P extends ekq> ekr<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.W, $$0, new ekr<>($$1));
+   public ekr(bsn $$0, bsn $$1, bsn $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   private ekr(MapCodec<P> $$0) {
-      this.b = $$0;
+   @Override
+   protected ekm<?> a() {
+      return ekm.b;
    }
 
-   public MapCodec<P> a() {
-      return this.b;
+   @Override
+   protected void a(dhn $$0, ekl.b $$1, bam $$2, ejv $$3, int $$4, ekl.a $$5, int $$6, int $$7, int $$8) {
+      jh $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
+      }
+   }
+
+   @Override
+   public int a(bam $$0, int $$1, ejv $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(bam $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

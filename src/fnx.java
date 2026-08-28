@@ -1,160 +1,171 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.UUID;
+public abstract class fnx extends fob {
+   private static final fpr a = new fpr(alz.b("widget/text_field"), alz.b("widget/text_field_highlighted"));
+   private static final alz b = alz.b("widget/scroller");
+   private static final int c = 4;
+   private static final int d = 8;
+   private double e;
+   private boolean f;
 
-public class fnx {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final alz[] c = new alz[]{
-      alz.b("boss_bar/pink_background"),
-      alz.b("boss_bar/blue_background"),
-      alz.b("boss_bar/red_background"),
-      alz.b("boss_bar/green_background"),
-      alz.b("boss_bar/yellow_background"),
-      alz.b("boss_bar/purple_background"),
-      alz.b("boss_bar/white_background")
-   };
-   private static final alz[] d = new alz[]{
-      alz.b("boss_bar/pink_progress"),
-      alz.b("boss_bar/blue_progress"),
-      alz.b("boss_bar/red_progress"),
-      alz.b("boss_bar/green_progress"),
-      alz.b("boss_bar/yellow_progress"),
-      alz.b("boss_bar/purple_progress"),
-      alz.b("boss_bar/white_progress")
-   };
-   private static final alz[] e = new alz[]{
-      alz.b("boss_bar/notched_6_background"),
-      alz.b("boss_bar/notched_10_background"),
-      alz.b("boss_bar/notched_12_background"),
-      alz.b("boss_bar/notched_20_background")
-   };
-   private static final alz[] f = new alz[]{
-      alz.b("boss_bar/notched_6_progress"), alz.b("boss_bar/notched_10_progress"), alz.b("boss_bar/notched_12_progress"), alz.b("boss_bar/notched_20_progress")
-   };
-   private final flz g;
-   final Map<UUID, fom> h = Maps.newLinkedHashMap();
-
-   public fnx(flz $$0) {
-      this.g = $$0;
+   public fnx(int $$0, int $$1, int $$2, int $$3, xv $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public void a(fnl $$0) {
-      if (!this.h.isEmpty()) {
-         bpo $$1 = bpn.a();
-         $$1.a("bossHealth");
-         int $$2 = $$0.a();
-         int $$3 = 12;
-
-         for (fom $$4 : this.h.values()) {
-            int $$5 = $$2 / 2 - 91;
-            this.a($$0, $$5, $$3, $$4);
-            xv $$7 = $$4.i();
-            int $$8 = this.g.h.a($$7);
-            int $$9 = $$2 / 2 - $$8 / 2;
-            int $$10 = $$3 - 9;
-            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
-            $$3 += 10 + 9;
-            if ($$3 >= $$0.b() / 3) {
-               break;
-            }
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (!this.k) {
+         return false;
+      } else {
+         boolean $$3 = this.b($$0, $$1);
+         boolean $$4 = this.e()
+            && $$0 >= (double)(this.D() + this.g)
+            && $$0 <= (double)(this.D() + this.g + 8)
+            && $$1 >= (double)this.E()
+            && $$1 < (double)(this.E() + this.h);
+         if ($$4 && $$2 == 0) {
+            this.f = true;
+            return true;
+         } else {
+            return $$3 || $$4;
          }
-
-         $$1.c();
       }
    }
 
-   private void a(fnl $$0, int $$1, int $$2, bsu $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = bae.b($$3.j(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if ($$2 == 0) {
+         this.f = false;
+      }
+
+      return super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.k && this.aN_() && this.f) {
+         if ($$1 < (double)this.E()) {
+            this.a(0.0);
+         } else if ($$1 > (double)(this.E() + this.h)) {
+            this.a((double)this.d());
+         } else {
+            int $$5 = this.j();
+            double $$6 = (double)Math.max(1, this.d() / (this.h - $$5));
+            this.a(this.e + $$4 * $$6);
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void a(fnl $$0, int $$1, int $$2, bsu $$3, int $$4, alz[] $$5, alz[] $$6) {
-      $$0.a(glo::B, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.l() != bsu.b.a) {
-         $$0.a(glo::B, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (!this.k) {
+         return false;
+      } else {
+         this.a(this.e - $$3 * this.i());
+         return true;
       }
    }
 
-   public void a(adb $$0) {
-      $$0.a(new adb.b() {
-         @Override
-         public void a(UUID $$0, xv $$1, float $$2, bsu.a $$3, bsu.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            fnx.this.h.put($$0, new fom($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            fnx.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            fnx.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, xv $$1) {
-            fnx.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, bsu.a $$1, bsu.b $$2) {
-            fom $$3 = fnx.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fom $$4 = fnx.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
-   }
-
-   public void a() {
-      this.h.clear();
-   }
-
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (bsu $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 == 265;
+      boolean $$4 = $$0 == 264;
+      if ($$3 || $$4) {
+         double $$5 = this.e;
+         this.a(this.e + (double)($$3 ? -1 : 1) * this.i());
+         if ($$5 != this.e) {
+            return true;
          }
       }
 
-      return false;
+      return super.a($$0, $$1, $$2);
    }
 
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (bsu $$0 : this.h.values()) {
-            if ($$0.m()) {
-               return true;
-            }
-         }
+   @Override
+   public void b(fnq $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.b($$0);
+         $$0.c(this.D() + 1, this.E() + 1, this.D() + this.g - 1, this.E() + this.h - 1);
+         $$0.c().a();
+         $$0.c().a(0.0, -this.e, 0.0);
+         this.c($$0, $$1, $$2, $$3);
+         $$0.c().b();
+         $$0.e();
+         this.a($$0);
       }
-
-      return false;
    }
 
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (bsu $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
+   private int j() {
+      return bae.a((int)((float)(this.h * this.h) / (float)this.k()), 32, this.h);
+   }
+
+   protected void a(fnq $$0) {
+      if (this.e()) {
+         this.c($$0);
       }
-
-      return false;
    }
+
+   protected int a() {
+      return 4;
+   }
+
+   protected int b() {
+      return this.a() * 2;
+   }
+
+   protected double c() {
+      return this.e;
+   }
+
+   protected void a(double $$0) {
+      this.e = bae.a($$0, 0.0, (double)this.d());
+   }
+
+   protected int d() {
+      return Math.max(0, this.k() - (this.h - 4));
+   }
+
+   private int k() {
+      return this.h() + 4;
+   }
+
+   protected void b(fnq $$0) {
+      this.a($$0, this.D(), this.E(), this.y(), this.w());
+   }
+
+   protected void a(fnq $$0, int $$1, int $$2, int $$3, int $$4) {
+      alz $$5 = a.a(this.C(), this.aN_());
+      $$0.a(glt::B, $$5, $$1, $$2, $$3, $$4);
+   }
+
+   private void c(fnq $$0) {
+      int $$1 = this.j();
+      int $$2 = this.D() + this.g;
+      int $$3 = Math.max(this.E(), (int)this.e * (this.h - $$1) / this.d() + this.E());
+      $$0.a(glt::B, b, $$2, $$3, 8, $$1);
+   }
+
+   protected boolean a(int $$0, int $$1) {
+      return (double)$$1 - this.e >= (double)this.E() && (double)$$0 - this.e <= (double)(this.E() + this.h);
+   }
+
+   protected boolean b(double $$0, double $$1) {
+      return $$0 >= (double)this.D() && $$0 < (double)(this.D() + this.g) && $$1 >= (double)this.E() && $$1 < (double)(this.E() + this.h);
+   }
+
+   protected boolean e() {
+      return this.h() > this.w();
+   }
+
+   public int g() {
+      return 8;
+   }
+
+   protected abstract int h();
+
+   protected abstract double i();
+
+   protected abstract void c(fnq var1, int var2, int var3, float var4);
 }

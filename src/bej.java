@@ -1,23 +1,19 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.serialization.Dynamic;
 
-public class bej extends bje {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:salmon_mob", "minecraft:salmon")
-      .put("minecraft:cod_mob", "minecraft:cod")
-      .build();
-   public static final Map<String, String> b = ImmutableMap.builder()
-      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
-      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
-      .build();
-
+public class bej extends bhr {
    public bej(Schema $$0, boolean $$1) {
-      super("EntityCodSalmonFix", $$0, $$1);
+      super($$0, $$1, "EntityArmorStandSilentFix", biw.B, "ArmorStand");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
    }
 
    @Override
-   protected String a(String $$0) {
-      return a.getOrDefault($$0, $$0);
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

@@ -1,7 +1,7 @@
 import java.util.concurrent.CompletableFuture;
 
 public class qy extends ql {
-   public qy(mj $$0, CompletableFuture<js.a> $$1, CompletableFuture<qp.c<cxg>> $$2, CompletableFuture<qp.c<dke>> $$3) {
+   public qy(mj $$0, CompletableFuture<js.a> $$1, CompletableFuture<qp.c<cxk>> $$2, CompletableFuture<qp.c<dkl>> $$3) {
       super($$0, $$1, $$2, $$3);
    }
 
@@ -21,8 +21,8 @@ public class qy extends ql {
       this.a(axu.Q, ayd.N);
       this.a(axu.p, ayd.n);
       this.a(axu.ah, ayd.aQ);
-      this.a(ayd.aT).a(cxo.oC);
-      this.a(ayd.aU).a(cxo.oC);
+      this.a(ayd.aT).a(cxs.oC);
+      this.a(ayd.aU).a(cxs.oC);
       this.a(axu.ay, ayd.aW);
       this.a(axu.aB, ayd.bw);
    }

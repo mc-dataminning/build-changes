@@ -1,5 +1,8 @@
-public class gya extends gym {
-   public boolean a = true;
-   public boolean b = true;
-   public float c;
+import javax.annotation.Nullable;
+
+public class gya extends gxt {
+   public boolean a;
+   @Nullable
+   public hdl b;
+   public cxo c = cxo.k;
 }

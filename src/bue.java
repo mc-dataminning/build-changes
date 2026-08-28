@@ -1,36 +1,46 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-class bue extends buh {
-   private final boolean c;
+public record bue(String i) {
+   public static final bue a = new bue("generic");
+   public static final bue b = new bue("ladder");
+   public static final bue c = new bue("vines");
+   public static final bue d = new bue("weeping_vines");
+   public static final bue e = new bue("twisting_vines");
+   public static final bue f = new bue("scaffolding");
+   public static final bue g = new bue("other_climbable");
+   public static final bue h = new bue("water");
 
-   public bue(buj $$0, int $$1, boolean $$2) {
-      super($$0, $$1);
-      this.c = $$2;
+   public static bue a(dxu $$0) {
+      if ($$0.a(dkn.cX) || $$0.a(axu.R)) {
+         return b;
+      } else if ($$0.a(dkn.ft)) {
+         return c;
+      } else if ($$0.a(dkn.oU) || $$0.a(dkn.oV)) {
+         return d;
+      } else if ($$0.a(dkn.oW) || $$0.a(dkn.oX)) {
+         return e;
+      } else {
+         return $$0.a(dkn.on) ? f : g;
+      }
    }
 
-   @Override
-   public boolean a(ash $$0, bwb $$1, int $$2) {
-      if (this.c == $$1.eC()) {
-         $$1.c((float)Math.max(4 << $$2, 0));
+   @Nullable
+   public static bue a(bwf $$0) {
+      Optional<jh> $$1 = $$0.eM();
+      if ($$1.isPresent()) {
+         dxu $$2 = $$0.dV().a_($$1.get());
+         return a($$2);
       } else {
-         $$1.a($$0, $$1.dW().q(), (float)(6 << $$2));
+         return $$0.bj() ? h : null;
       }
-
-      return true;
    }
 
-   @Override
-   public void a(ash $$0, @Nullable bvf $$1, @Nullable bvf $$2, bwb $$3, int $$4, double $$5) {
-      if (this.c == $$3.eC()) {
-         int $$6 = (int)($$5 * (double)(4 << $$4) + 0.5);
-         $$3.c((float)$$6);
-      } else {
-         int $$7 = (int)($$5 * (double)(6 << $$4) + 0.5);
-         if ($$1 == null) {
-            $$3.a($$0, $$3.dW().q(), (float)$$7);
-         } else {
-            $$3.a($$0, $$3.dW().c($$1, $$2), (float)$$7);
-         }
-      }
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

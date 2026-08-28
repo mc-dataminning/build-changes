@@ -1,90 +1,154 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.Reader;
 import java.lang.reflect.Type;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gmw {
-   public static final gmw a = new gmw();
-   public final gmv b;
-   public final gmv c;
-   public final gmv d;
-   public final gmv e;
-   public final gmv f;
-   public final gmv g;
-   public final gmv h;
-   public final gmv i;
+   private static final Logger b = LogUtils.getLogger();
+   public static final Gson a = new GsonBuilder()
+      .registerTypeAdapter(gmw.class, new gmw.a())
+      .registerTypeAdapter(gne.class, new gne.a())
+      .registerTypeAdapter(gnc.class, new gnc.a())
+      .registerTypeAdapter(gnj.b.class, new gnj.c())
+      .registerTypeAdapter(gnl.class, new gnl.a())
+      .create();
+   private final Map<String, gnc> c;
+   @Nullable
+   private final gnj.b d;
 
-   private gmw() {
-      this(gmv.a, gmv.a, gmv.a, gmv.a, gmv.a, gmv.a, gmv.a, gmv.a);
+   public static gmw a(Reader $$0) {
+      return azu.a(a, $$0, gmw.class);
    }
 
-   public gmw(gmw $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
+   public static gmw a(JsonElement $$0) {
+      return (gmw)a.fromJson($$0, gmw.class);
    }
 
-   public gmw(gmv $$0, gmv $$1, gmv $$2, gmv $$3, gmv $$4, gmv $$5, gmv $$6, gmv $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+   public gmw(Map<String, gnc> $$0, @Nullable gnj.b $$1) {
+      this.d = $$1;
+      this.c = $$0;
    }
 
-   public gmv a(cxi $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> gmv.a;
-      };
+   @VisibleForTesting
+   public gnc a(String $$0) {
+      gnc $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         throw new gmw.b();
+      } else {
+         return $$1;
+      }
    }
 
-   public boolean b(cxi $$0) {
-      return this.a($$0) != gmv.a;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gmw $$1) ? false : this.c.equals($$1.c) && Objects.equals(this.d, $$1.d);
+      }
    }
 
-   protected static class a implements JsonDeserializer<gmw> {
+   @Override
+   public int hashCode() {
+      return 31 * this.c.hashCode() + (this.d != null ? this.d.hashCode() : 0);
+   }
+
+   @VisibleForTesting
+   public Set<gnc> a() {
+      Set<gnc> $$0 = Sets.newHashSet(this.c.values());
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0;
+   }
+
+   @Nullable
+   public gnj.b b() {
+      return this.d;
+   }
+
+   public Map<dxu, gnd> a(dxv<dkl, dxu> $$0, String $$1) {
+      Map<dxu, gnd> $$2 = new IdentityHashMap<>();
+      List<dxu> $$3 = $$0.a();
+      gnj $$4;
+      if (this.d != null) {
+         $$4 = this.d.a($$0);
+         $$3.forEach($$2x -> $$2.put($$2x, $$4));
+      } else {
+         $$4 = null;
+      }
+
+      this.c.forEach(($$5x, $$6) -> {
+         try {
+            $$3.stream().filter(gnf.a($$0, $$5x)).forEach($$3xx -> {
+               hee $$4x = $$2.put($$3xx, $$6);
+               if ($$4x != null && $$4x != $$4) {
+                  String $$5xx = this.c.entrySet().stream().filter($$1xxx -> $$1xxx.getValue() == $$4).findFirst().get().getKey();
+                  throw new RuntimeException("Overlapping definition with: " + $$5xx);
+               }
+            });
+         } catch (Exception var9) {
+            b.warn("Exception loading blockstate definition: '{}' for variant: '{}': {}", new Object[]{$$1, $$5x, var9.getMessage()});
+         }
+      });
+      return $$2;
+   }
+
+   public static class a implements JsonDeserializer<gmw> {
       public gmw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         gmv $$4 = this.a($$2, $$3, cxi.c);
-         gmv $$5 = this.a($$2, $$3, cxi.b);
-         if ($$5 == gmv.a) {
-            $$5 = $$4;
+         Map<String, gnc> $$4 = this.a($$2, $$3);
+         gnj.b $$5 = this.b($$2, $$3);
+         if ($$4.isEmpty() && $$5 == null) {
+            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
+         } else {
+            return new gmw($$4, $$5);
          }
-
-         gmv $$6 = this.a($$2, $$3, cxi.e);
-         gmv $$7 = this.a($$2, $$3, cxi.d);
-         if ($$7 == gmv.a) {
-            $$7 = $$6;
-         }
-
-         gmv $$8 = this.a($$2, $$3, cxi.f);
-         gmv $$9 = this.a($$2, $$3, cxi.g);
-         gmv $$10 = this.a($$2, $$3, cxi.h);
-         gmv $$11 = this.a($$2, $$3, cxi.i);
-         return new gmw($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      private gmv a(JsonDeserializationContext $$0, JsonObject $$1, cxi $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (gmv)$$0.deserialize($$1.get($$3), gmv.class) : gmv.a;
+      protected Map<String, gnc> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<String, gnc> $$2 = Maps.newHashMap();
+         if ($$1.has("variants")) {
+            JsonObject $$3 = azu.u($$1, "variants");
+
+            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+               $$2.put($$4.getKey(), (gnc)$$0.deserialize($$4.getValue(), gnc.class));
+            }
+         }
+
+         return $$2;
       }
+
+      @Nullable
+      protected gnj.b b(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("multipart")) {
+            return null;
+         } else {
+            JsonArray $$2 = azu.v($$1, "multipart");
+            return (gnj.b)$$0.deserialize($$2, gnj.b.class);
+         }
+      }
+   }
+
+   protected static class b extends RuntimeException {
    }
 }

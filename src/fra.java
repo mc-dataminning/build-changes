@@ -1,240 +1,67 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class fra implements fek {
-   static final Logger b = LogUtils.getLogger();
-   private final ffl c;
-   private final fqo<fra.b> d;
+public class fra {
+   private final fqy a;
+   private final float b;
+   private final float c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   fra(ffl $$0, fqo<fra.b> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public fra(fqy $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
-   @Override
-   public void close() {
-      this.c.close();
-   }
-
-   @Nullable
-   @Override
-   public fej a(int $$0) {
-      return this.d.a($$0);
-   }
-
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.d.b());
-   }
-
-   public static record a(alz c, int d, int e, int[][] f) implements frc {
-      private static final Codec<int[][]> g = Codec.STRING.listOf().xmap($$0 -> {
-         int $$1 = $$0.size();
-         int[][] $$2 = new int[$$1][];
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
-         }
-
-         return $$2;
-      }, $$0 -> {
-         List<String> $$1 = new ArrayList<>($$0.length);
-
-         for (int[] $$2 : $$0) {
-            $$1.add(new String($$2, 0, $$2.length));
-         }
-
-         return $$1;
-      }).validate(fra.a::a);
-      public static final MapCodec<fra.a> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     alz.a.fieldOf("file").forGetter(fra.a::c),
-                     Codec.INT.optionalFieldOf("height", 8).forGetter(fra.a::d),
-                     Codec.INT.fieldOf("ascent").forGetter(fra.a::e),
-                     g.fieldOf("chars").forGetter(fra.a::f)
-                  )
-                  .apply($$0, fra.a::new)
-         )
-         .validate(fra.a::a);
-
-      private static DataResult<int[][]> a(int[][] $$0) {
-         int $$1 = $$0.length;
-         if ($$1 == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
-         } else {
-            int[] $$2 = $$0[0];
-            int $$3 = $$2.length;
-            if ($$3 == 0) {
-               return DataResult.error(() -> "Expected to find data in codepoint grid");
-            } else {
-               for (int $$4 = 1; $$4 < $$1; $$4++) {
-                  int[] $$5 = $$0[$$4];
-                  if ($$5.length != $$3) {
-                     return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                              + $$5.length
-                              + " codepoints, expected: "
-                              + $$3
-                              + "), pad with \\u0000"
-                     );
-                  }
-               }
-
-               return DataResult.success($$0);
-            }
-         }
-      }
-
-      private static DataResult<fra.a> a(fra.a $$0) {
-         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
-      }
-
-      @Override
-      public frd a() {
-         return frd.a;
-      }
-
-      @Override
-      public Either<frc.b, frc.c> b() {
-         return Either.left(this::a);
-      }
-
-      private fek a(avv $$0) throws IOException {
-         alz $$1 = this.c.f("textures/");
-
-         fra var22;
-         try (InputStream $$2 = $$0.open($$1)) {
-            ffl $$3 = ffl.a(ffl.a.a, $$2);
-            int $$4 = $$3.a();
-            int $$5 = $$3.b();
-            int $$6 = $$4 / this.f[0].length;
-            int $$7 = $$5 / this.f.length;
-            float $$8 = (float)this.d / (float)$$7;
-            fqo<fra.b> $$9 = new fqo<>(fra.b[]::new, fra.b[][]::new);
-
-            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
-               int $$11 = 0;
-
-               for (int $$12 : this.f[$$10]) {
-                  int $$13 = $$11++;
-                  if ($$12 != 0) {
-                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
-                     fra.b $$15 = $$9.a($$12, new fra.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
-                     if ($$15 != null) {
-                        fra.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
-                     }
-                  }
-               }
-            }
-
-            var22 = new fra($$3, $$9);
-         }
-
-         return var22;
-      }
-
-      private int a(ffl $$0, int $$1, int $$2, int $$3, int $$4) {
-         int $$5;
-         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
-            int $$6 = $$3 * $$1 + $$5;
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               int $$8 = $$4 * $$2 + $$7;
-               if ($$0.b($$6, $$8) != 0) {
-                  return $$5 + 1;
-               }
-            }
-         }
-
-         return $$5 + 1;
+   public void a(fra.b $$0, Matrix4f $$1, fgu $$2, int $$3) {
+      ys $$4 = $$0.e();
+      boolean $$5 = $$4.c();
+      float $$6 = $$0.a();
+      float $$7 = $$0.b();
+      int $$8 = $$0.c();
+      this.a($$5, $$6, $$7, $$1, $$2, $$8, $$3);
+      if ($$4.b()) {
+         this.a($$5, $$6 + $$0.f(), $$7, $$1, $$2, $$8, $$3);
       }
    }
 
-   static record b(float a, ffl b, int c, int d, int e, int f, int g, int h) implements fej {
+   private void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fgu $$4, int $$5, int $$6) {
+      float $$7 = $$1 + this.f;
+      float $$8 = $$1 + this.g;
+      float $$9 = $$2 + this.h;
+      float $$10 = $$2 + this.i;
+      float $$11 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
+      float $$12 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
+      $$4.a($$3, $$7 + $$11, $$9, 0.0F).a($$5).a(this.b, this.d).c($$6);
+      $$4.a($$3, $$7 + $$12, $$10, 0.0F).a($$5).a(this.b, this.e).c($$6);
+      $$4.a($$3, $$8 + $$12, $$10, 0.0F).a($$5).a(this.c, this.e).c($$6);
+      $$4.a($$3, $$8 + $$11, $$9, 0.0F).a($$5).a(this.c, this.d).c($$6);
+   }
 
-      @Override
-      public float getAdvance() {
-         return (float)this.g;
-      }
+   public void a(fra.a $$0, Matrix4f $$1, fgu $$2, int $$3) {
+      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f).a(this.b, this.d).c($$3);
+      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f).a(this.b, this.e).c($$3);
+      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f).a(this.c, this.e).c($$3);
+      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f).a(this.c, this.d).c($$3);
+   }
 
-      @Override
-      public fqv bake(Function<fel, fqv> $$0) {
-         return $$0.apply(new fel() {
-            @Override
-            public float d() {
-               return 1.0F / b.this.a;
-            }
+   public glt a(fno.a $$0) {
+      return this.a.a($$0);
+   }
 
-            @Override
-            public int a() {
-               return b.this.e;
-            }
+   public static record a(float a, float b, float c, float d, float e, int f) {
+   }
 
-            @Override
-            public int b() {
-               return b.this.f;
-            }
-
-            @Override
-            public float j() {
-               return (float)b.this.h;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
-            }
-
-            @Override
-            public boolean c() {
-               return b.this.b.c().a() > 1;
-            }
-         });
-      }
-
-      public float c() {
-         return this.a;
-      }
-
-      public ffl d() {
-         return this.b;
-      }
-
-      public int e() {
-         return this.c;
-      }
-
-      public int f() {
-         return this.d;
-      }
-
-      public int g() {
-         return this.e;
-      }
-
-      public int h() {
-         return this.f;
-      }
-
-      public int i() {
-         return this.g;
-      }
-
-      public int j() {
-         return this.h;
-      }
+   public static record b(float a, float b, int c, fra d, ys e, float f) {
    }
 }

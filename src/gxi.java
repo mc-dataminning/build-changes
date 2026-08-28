@@ -1,11 +1,10 @@
-import javax.annotation.Nullable;
-
-public abstract class gxi extends gxo {
-   @Nullable
-   public bvd.k b;
+public class gxi extends gyr {
+   public boolean a;
+   public boolean b;
    public float c;
-   public float d;
-   public float e;
-
-   public abstract boolean a();
+   public final bvb d = new bvb();
+   public final bvb e = new bvb();
+   public final bvb f = new bvb();
+   public final bvb g = new bvb();
+   public final bvb h = new bvb();
 }

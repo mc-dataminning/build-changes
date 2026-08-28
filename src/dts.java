@@ -1,33 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dts extends dsb implements dtm {
-   public static final MapCodec<dts> J = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dtm.a.e.fieldOf("weathering_state").forGetter(dlg::c), dxn.a.fieldOf("base_state").forGetter($$0x -> $$0x.I), t()).apply($$0, dts::new)
-   );
-   private final dtm.a K;
+public class dts extends dta implements drp {
+   public static final MapCodec<dts> a = b(dts::new);
+   public static final dyl c = dyk.D;
 
    @Override
-   public MapCodec<dts> a() {
-      return J;
+   protected MapCodec<? extends dts> a() {
+      return a;
    }
 
-   public dts(dtm.a $$0, dxn $$1, dxm.d $$2) {
-      super($$1, $$2);
-      this.K = $$0;
+   protected dts(dxt.d $$0) {
+      super($$0);
+      this.l(this.m().b(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dxu a(dbf $$0) {
+      etw $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).b(c, Boolean.valueOf($$1.b(etx.c)));
    }
 
    @Override
-   protected void b(dxn $$0, ash $$1, jh $$2, bam $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, etx.c, etx.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean f(dxn $$0) {
-      return dtm.c($$0.b()).isPresent();
+   protected etw b_(dxu $$0) {
+      return $$0.c(c) ? etx.c.a(true) : super.b_($$0);
    }
 
-   public dtm.a q() {
-      return this.K;
+   @Override
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(c);
    }
 }

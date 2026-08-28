@@ -1,9 +1,9 @@
 import java.util.Set;
 
-public record aha(int b, bwo c, Set<bwp> d, boolean e) implements aac<acr> {
-   public static final zt<ws, aha> a = zt.a(zr.h, aha::b, bwo.a, aha::e, bwp.m, aha::f, zr.b, aha::g, aha::new);
+public record aha(int b, bws c, Set<bwt> d, boolean e) implements aac<acr> {
+   public static final zt<ws, aha> a = zt.a(zr.h, aha::b, bws.a, aha::e, bwt.m, aha::f, zr.b, aha::g, aha::new);
 
-   public static aha a(int $$0, bwo $$1, Set<bwp> $$2, boolean $$3) {
+   public static aha a(int $$0, bws $$1, Set<bwt> $$2, boolean $$3) {
       return new aha($$0, $$1, $$2, $$3);
    }
 
@@ -16,11 +16,11 @@ public record aha(int b, bwo c, Set<bwp> d, boolean e) implements aac<acr> {
       $$0.a(this);
    }
 
-   public bwo e() {
+   public bws e() {
       return this.c;
    }
 
-   public Set<bwp> f() {
+   public Set<bwt> f() {
       return this.d;
    }
 

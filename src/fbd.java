@@ -1,26 +1,16 @@
-@FunctionalInterface
-public interface fbd<T> {
-   void handle(T var1, fbf<T> var2, long var3);
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public abstract static class a<T, C extends fbd<T>> {
-      private final alz a;
-      private final Class<?> b;
+public class fbd {
+   private static final Codec<fbc> d = ma.I.q().dispatch(fbc::a, fbb::a);
+   public static final Codec<fbc> a = Codec.lazyInitialized(
+      () -> Codec.either(faz.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof faz $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final fbb b = a("fixed", fba.a);
+   public static final fbb c = a("context", faz.a);
 
-      public a(alz $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public alz a() {
-         return this.a;
-      }
-
-      public Class<?> b() {
-         return this.b;
-      }
-
-      public abstract void a(ux var1, C var2);
-
-      public abstract C b(ux var1);
+   private static fbb a(String $$0, MapCodec<? extends fbc> $$1) {
+      return kd.a(ma.I, alz.b($$0), new fbb($$1));
    }
 }

@@ -1,50 +1,51 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ekj extends eke {
-   public static final MapCodec<ekj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0)
-            .and(
-               $$0.group(
-                  bsj.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
-                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, ekj::new)
-   );
-   private final bsj b;
-   private final int c;
+public class ekj extends ekl {
+   public static final MapCodec<ekj> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ekj::new));
 
-   public ekj(bsj $$0, bsj $$1, bsj $$2, int $$3) {
+   public ekj(bsn $$0, bsn $$1) {
       super($$0, $$1);
-      this.b = $$2;
-      this.c = $$3;
    }
 
    @Override
-   protected ekf<?> a() {
-      return ekf.j;
+   protected ekm<?> a() {
+      return ekm.i;
    }
 
    @Override
-   protected void a(dhg $$0, eke.b $$1, bam $$2, ejo $$3, int $$4, eke.a $$5, int $$6, int $$7, int $$8) {
-      jh $$9 = $$5.a();
-      jh.a $$10 = $$9.k();
-
-      for (int $$11 = 0; $$11 < this.c; $$11++) {
-         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
-         a($$0, $$1, $$2, $$3, $$10);
+   protected void a(dhn $$0, ekl.b $$1, bam $$2, ejv $$3, int $$4, ekl.a $$5, int $$6, int $$7, int $$8) {
+      jh $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+         }
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
       }
    }
 
    @Override
-   public int a(bam $$0, int $$1, ejo $$2) {
-      return this.b.a($$0);
+   public int a(bam $$0, int $$1, ejv $$2) {
+      return 4;
+   }
+
+   @Override
+   protected boolean b(bam $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
    }
 
    @Override
    protected boolean a(bam $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return false;
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

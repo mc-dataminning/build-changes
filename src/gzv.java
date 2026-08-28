@@ -1,3 +1,5 @@
-public class gzv extends gym {
-   public boolean a;
+public class gzv extends gxt {
+   public float a;
+   public float b;
+   public boolean c;
 }

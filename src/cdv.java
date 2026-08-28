@@ -1,47 +1,32 @@
-public class cdv extends ccz {
-   private final cjw a;
+public class cdv extends ccu {
+   private final boolean a;
    private int b;
 
-   public cdv(cjw $$0) {
-      this.a = $$0;
-      this.a($$0);
-   }
-
-   @Override
-   public void d() {
-      this.a.gS();
-      this.h();
-   }
-
-   private void h() {
-      axe $$0 = this.a.gR();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
+   public cdv(bwh $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
    public boolean c() {
-      return false;
+      return this.a && this.b > 0 && super.c();
    }
 
    @Override
-   public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.dY().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fg() && this.a.dY().a(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(cjw $$0) {
-      this.b = -$$0.gW();
+   public void d() {
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
-   public boolean V_() {
-      return true;
+   public void e() {
+      this.a(false);
+   }
+
+   @Override
+   public void a() {
+      this.b--;
+      super.a();
    }
 }

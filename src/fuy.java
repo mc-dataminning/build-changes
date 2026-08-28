@@ -1,8 +1,14 @@
-public class fuy extends fug<cts> {
-   private static final alz G = alz.b("textures/gui/container/dispenser.png");
+public class fuy extends ful<ctr> {
+   private static final alz G = alz.b("container/crafter/disabled_slot");
+   private static final alz H = alz.b("container/crafter/powered_redstone");
+   private static final alz I = alz.b("container/crafter/unpowered_redstone");
+   private static final alz J = alz.b("textures/gui/container/crafter.png");
+   private static final xv K = xv.c("gui.togglable_slot");
+   private final cpw L;
 
-   public fuy(cts $$0, cpr $$1, xv $$2) {
+   public fuy(ctr $$0, cpv $$1, xv $$2) {
       super($$0, $$1, $$2);
+      this.L = $$1.k;
    }
 
    @Override
@@ -12,15 +18,83 @@ public class fuy extends fug<cts> {
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+   protected void a(cuy $$0, int $$1, int $$2, ctm $$3) {
+      if ($$0 instanceof cts && !$$0.h() && !this.L.aa_()) {
+         switch ($$3) {
+            case a:
+               if (this.z.e($$1)) {
+                  this.a($$1);
+               } else if (this.z.g().f()) {
+                  this.b($$1);
+               }
+               break;
+            case c:
+               cxo $$4 = this.L.gg().a($$2);
+               if (this.z.e($$1) && !$$4.f()) {
+                  this.a($$1);
+               }
+         }
+      }
+
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   }
+
+   private void a(int $$0) {
+      this.a($$0, true);
+   }
+
+   private void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   private void a(int $$0, boolean $$1) {
+      this.z.a($$0, $$1);
+      super.a($$0, this.z.l, $$1);
+      float $$2 = $$1 ? 1.0F : 0.75F;
+      this.L.a(axf.AQ.a(), 0.4F, $$2);
    }
 
    @Override
-   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
+   public void a(fnq $$0, cuy $$1) {
+      if ($$1 instanceof cts $$2 && this.z.e($$1.d)) {
+         this.a($$0, $$2);
+         return;
+      }
+
+      super.a($$0, $$1);
+   }
+
+   private void a(fnq $$0, cts $$1) {
+      $$0.a(glt::B, G, $$1.e - 1, $$1.f - 1, 18, 18);
+   }
+
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0);
+      this.a($$0, $$1, $$2);
+      if (this.B instanceof cts && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.aa_()) {
+         $$0.a(this.p, K, $$1, $$2);
+      }
+   }
+
+   private void d(fnq $$0) {
+      int $$1 = this.n / 2 + 9;
+      int $$2 = this.o / 2 - 48;
+      alz $$3;
+      if (this.z.l()) {
+         $$3 = H;
+      } else {
+         $$3 = I;
+      }
+
+      $$0.a(glt::B, $$3, $$1, $$2, 16, 16);
+   }
+
+   @Override
+   protected void a(fnq $$0, float $$1, int $$2, int $$3) {
       int $$4 = (this.n - this.s) / 2;
       int $$5 = (this.o - this.u) / 2;
-      $$0.a(glo::B, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      $$0.a(glt::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

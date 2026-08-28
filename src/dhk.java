@@ -1,50 +1,198 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dhk {
-   private final Long2ObjectMap<List<asi>> a = new Long2ObjectOpenHashMap();
-   private final Map<asi, dhk.a> b = Maps.newHashMap();
-   private final arm c;
+public interface dhk extends dgj, dgq, dhz, dil.a {
+   @Nullable
+   dzp a(int var1, int var2, eaq var3, boolean var4);
 
-   public dhk(arm $$0) {
-      this.c = $$0;
+   @Deprecated
+   boolean b(int var1, int var2);
+
+   int a(edp.a var1, int var2, int var3);
+
+   int E_();
+
+   dil I_();
+
+   default jq<dij> t(jh $$0) {
+      return this.I_().a($$0);
    }
 
-   private List<asi> a(dgg $$0) {
-      return (List<asi>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
+   default Stream<dxu> c(fbs $$0) {
+      int $$1 = bae.a($$0.a);
+      int $$2 = bae.a($$0.d);
+      int $$3 = bae.a($$0.b);
+      int $$4 = bae.a($$0.e);
+      int $$5 = bae.a($$0.c);
+      int $$6 = bae.a($$0.f);
+      return this.a($$1, $$3, $$5, $$2, $$4, $$6) ? this.a($$0) : Stream.empty();
    }
 
-   public void a(dgg $$0, bwe $$1) {
-      for (asi $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new dhk.a()).a($$1);
+   @Override
+   default int a(jh $$0, dgr $$1) {
+      return $$1.getColor(this.t($$0).a(), (double)$$0.u(), (double)$$0.w());
+   }
+
+   @Override
+   default jq<dij> getNoiseBiome(int $$0, int $$1, int $$2) {
+      dzp $$3 = this.a(kb.e($$0), kb.e($$2), eaq.f, false);
+      return $$3 != null ? $$3.getNoiseBiome($$0, $$1, $$2) : this.a($$0, $$1, $$2);
+   }
+
+   jq<dij> a(int var1, int var2, int var3);
+
+   boolean B_();
+
+   int O();
+
+   ebp G_();
+
+   @Override
+   default int L_() {
+      return this.G_().n();
+   }
+
+   @Override
+   default int M_() {
+      return this.G_().o();
+   }
+
+   default jh a(edp.a $$0, jh $$1) {
+      return new jh($$1.u(), this.a($$0, $$1.u(), $$1.w()), $$1.w());
+   }
+
+   default boolean u(jh $$0) {
+      return this.a_($$0).l();
+   }
+
+   default boolean v(jh $$0) {
+      if ($$0.v() >= this.O()) {
+         return this.h($$0);
+      } else {
+         jh $$1 = new jh($$0.u(), this.O(), $$0.w());
+         if (!this.h($$1)) {
+            return false;
+         } else {
+            for (jh var4 = $$1.e(); var4.v() > $$0.v(); var4 = var4.e()) {
+               dxu $$2 = this.a_(var4);
+               if ($$2.g() > 0 && !$$2.n()) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
    }
 
-   public boolean a(bwe $$0, dgg $$1) {
-      for (asi $$2 : this.a($$1)) {
-         dhk.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
+   default float w(jh $$0) {
+      return this.x($$0) - 0.5F;
+   }
+
+   @Deprecated
+   default float x(jh $$0) {
+      float $$1 = (float)this.A($$0) / 15.0F;
+      float $$2 = $$1 / (4.0F - 3.0F * $$1);
+      return bae.h(this.G_().s(), $$2, 1.0F);
+   }
+
+   default dzp y(jh $$0) {
+      return this.a(kj.a($$0.u()), kj.a($$0.w()));
+   }
+
+   default dzp a(int $$0, int $$1) {
+      return this.a($$0, $$1, eaq.n, true);
+   }
+
+   default dzp a(int $$0, int $$1, eaq $$2) {
+      return this.a($$0, $$1, $$2, true);
+   }
+
+   @Nullable
+   @Override
+   default dgm c(int $$0, int $$1) {
+      return this.a($$0, $$1, eaq.c, false);
+   }
+
+   default boolean z(jh $$0) {
+      return this.b_($$0).a(aya.a);
+   }
+
+   default boolean d(fbs $$0) {
+      int $$1 = bae.a($$0.a);
+      int $$2 = bae.c($$0.d);
+      int $$3 = bae.a($$0.b);
+      int $$4 = bae.c($$0.e);
+      int $$5 = bae.a($$0.c);
+      int $$6 = bae.c($$0.f);
+      jh.a $$7 = new jh.a();
+
+      for (int $$8 = $$1; $$8 < $$2; $$8++) {
+         for (int $$9 = $$3; $$9 < $$4; $$9++) {
+            for (int $$10 = $$5; $$10 < $$6; $$10++) {
+               dxu $$11 = this.a_($$7.d($$8, $$9, $$10));
+               if (!$$11.y().c()) {
+                  return true;
+               }
+            }
          }
       }
 
       return false;
    }
 
-   static class a {
-      private final Object2IntMap<bwe> a = new Object2IntOpenHashMap(bwe.values().length);
+   default int A(jh $$0) {
+      return this.c($$0, this.E_());
+   }
 
-      public void a(bwe $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+   default int c(jh $$0, int $$1) {
+      return $$0.u() >= -30000000 && $$0.w() >= -30000000 && $$0.u() < 30000000 && $$0.w() < 30000000 ? this.b($$0, $$1) : 15;
+   }
+
+   @Deprecated
+   default boolean f(int $$0, int $$1) {
+      return this.b(kj.a($$0), kj.a($$1));
+   }
+
+   @Deprecated
+   default boolean B(jh $$0) {
+      return this.f($$0.u(), $$0.w());
+   }
+
+   @Deprecated
+   default boolean a(jh $$0, jh $$1) {
+      return this.a($$0.u(), $$0.v(), $$0.w(), $$1.u(), $$1.v(), $$1.w());
+   }
+
+   @Deprecated
+   default boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$4 >= this.L_() && $$1 <= this.am() ? this.b($$0, $$2, $$3, $$5) : false;
+   }
+
+   @Deprecated
+   default boolean b(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = kj.a($$0);
+      int $$5 = kj.a($$2);
+      int $$6 = kj.a($$1);
+      int $$7 = kj.a($$3);
+
+      for (int $$8 = $$4; $$8 <= $$5; $$8++) {
+         for (int $$9 = $$6; $$9 <= $$7; $$9++) {
+            if (!this.b($$8, $$9)) {
+               return false;
+            }
+         }
       }
 
-      public boolean b(bwe $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
-      }
+      return true;
+   }
+
+   ke K_();
+
+   css J();
+
+   default <T> js<T> a(aly<? extends kd<? extends T>> $$0) {
+      kd<T> $$1 = this.K_().e($$0);
+      return $$1.a(this.J());
    }
 }

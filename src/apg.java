@@ -17,7 +17,7 @@ public class apg {
       });
    }
 
-   private static Collection<String> a(avg $$0, ewb $$1, Collection<String> $$2) {
+   private static Collection<String> a(avg $$0, ewi $$1, Collection<String> $$2) {
       $$0.a();
       Collection<String> $$3 = Lists.newArrayList($$2);
       Collection<String> $$4 = $$1.D().a().b();
@@ -36,7 +36,7 @@ public class apg {
          ew $$1 = (ew)$$0x.getSource();
          MinecraftServer $$2 = $$1.l();
          avg $$3 = $$2.aF();
-         ewb $$4 = $$2.aZ();
+         ewi $$4 = $$2.aZ();
          Collection<String> $$5 = $$3.e();
          Collection<String> $$6 = a($$3, $$4, $$5);
          $$1.a(() -> xv.c("commands.reload.success"), true);

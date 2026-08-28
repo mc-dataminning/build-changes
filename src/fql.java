@@ -1,103 +1,66 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class fql implements fqj {
-   private static final alz h = alz.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final int g = 28;
-   private final fql.a i;
-   private final xv j;
-   @Nullable
-   private final xv k;
-   private fqj.a l = fqj.a.a;
-   private long m;
-   private float n;
-   private float o;
-   private final boolean p;
-   private final int q;
+public class fql implements fqo {
+   private static final alz e = alz.b("toast/advancement");
+   public static final int a = 5000;
+   private final ah f;
+   private boolean g;
+   private fqo.a h = fqo.a.b;
 
-   public fql(fql.a $$0, xv $$1, @Nullable xv $$2, boolean $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.p = $$3;
-      this.q = $$4;
-   }
-
-   public fql(fql.a $$0, xv $$1, @Nullable xv $$2, boolean $$3) {
-      this($$0, $$1, $$2, $$3, 0);
+   public fql(ah $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public fqj.a a() {
-      return this.l;
+   public fqo.a a() {
+      return this.h;
    }
 
    @Override
-   public void a(fqk $$0, long $$1) {
-      if (this.q > 0) {
-         this.o = Math.min((float)$$1 / (float)this.q, 1.0F);
-         this.n = this.o;
-         this.m = $$1;
-         if ($$1 > (long)this.q) {
-            this.d();
-         }
-      } else if (this.p) {
-         this.n = bae.b(this.n, this.o, (float)($$1 - this.m) / 100.0F);
-         this.m = $$1;
-      }
-   }
-
-   @Override
-   public void a(fnl $$0, fnj $$1, long $$2) {
-      $$0.a(glo::B, h, 0, 0, this.b(), this.c());
-      this.i.a($$0, 6, 6);
-      if (this.k == null) {
-         $$0.a($$1, this.j, 30, 12, -11534256, false);
+   public void a(fqp $$0, long $$1) {
+      at $$2 = this.f.b().c().orElse(null);
+      if ($$2 == null) {
+         this.h = fqo.a.b;
       } else {
-         $$0.a($$1, this.j, 30, 7, -11534256, false);
-         $$0.a($$1, this.k, 30, 18, -16777216, false);
-      }
-
-      if (this.p) {
-         $$0.a(3, 28, 157, 29, -1);
-         int $$3;
-         if (this.o >= this.n) {
-            $$3 = -16755456;
-         } else {
-            $$3 = -11206656;
+         if (!this.g && $$1 > 0L) {
+            this.g = true;
+            if ($$2.e() == an.b) {
+               $$0.c().ak().a(hfb.a(axf.AW, 1.0F, 1.0F));
+            }
          }
 
-         $$0.a(3, 28, (int)(3.0F + 154.0F * this.n), 29, $$3);
+         this.h = (double)$$1 >= 5000.0 * $$0.d() ? fqo.a.b : fqo.a.a;
       }
    }
 
-   public void d() {
-      this.l = fqj.a.b;
-   }
+   @Override
+   public void a(fnq $$0, fno $$1, long $$2) {
+      at $$3 = this.f.b().c().orElse(null);
+      $$0.a(glt::B, e, 0, 0, this.b(), this.c());
+      if ($$3 != null) {
+         List<azq> $$4 = $$1.c($$3.a(), 125);
+         int $$5 = $$3.e() == an.b ? -30465 : -256;
+         if ($$4.size() == 1) {
+            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
+            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
+         } else {
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = bae.d(bae.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = bae.d(bae.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
 
-   public void a(float $$0) {
-      this.o = $$0;
-   }
+               for (azq $$11 : $$4) {
+                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
+         }
 
-   public static enum a {
-      a(alz.b("toast/movement_keys")),
-      b(alz.b("toast/mouse")),
-      c(alz.b("toast/tree")),
-      d(alz.b("toast/recipe_book")),
-      e(alz.b("toast/wooden_planks")),
-      f(alz.b("toast/social_interactions")),
-      g(alz.b("toast/right_click"));
-
-      private final alz h;
-
-      private a(final alz $$0) {
-         this.h = $$0;
-      }
-
-      public void a(fnl $$0, int $$1, int $$2) {
-         $$0.a(glo::B, this.h, $$1, $$2, 20, 20);
+         $$0.b($$3.c(), 8, 8);
       }
    }
 }

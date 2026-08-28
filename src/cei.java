@@ -1,29 +1,32 @@
 import java.util.EnumSet;
 
-public class cei extends ccz {
-   private final coz a;
+public class cei extends cdd {
+   private final bxc a;
 
-   public cei(coz $$0) {
+   public cei(bxc $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(ccz.a.c, ccz.a.a));
+      this.a(EnumSet.of(cdd.a.c, cdd.a.a));
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.gm();
    }
 
    @Override
    public boolean b() {
-      if (!this.a.bL()) {
+      if (!this.a.p()) {
          return false;
-      } else if (this.a.bj()) {
+      } else if (this.a.bm()) {
          return false;
       } else if (!this.a.aJ()) {
          return false;
-      } else if (this.a.T) {
-         return false;
       } else {
-         cps $$0 = this.a.gm();
+         bwf $$0 = this.a.ah_();
          if ($$0 == null) {
-            return false;
+            return true;
          } else {
-            return this.a.g($$0) > 16.0 ? false : $$0.cd != null;
+            return this.a.g((bvj)$$0) < 144.0 && $$0.ep() != null ? false : this.a.gm();
          }
       }
    }
@@ -31,10 +34,11 @@ public class cei extends ccz {
    @Override
    public void d() {
       this.a.L().o();
+      this.a.y(true);
    }
 
    @Override
    public void e() {
-      this.a.a(null);
+      this.a.y(false);
    }
 }

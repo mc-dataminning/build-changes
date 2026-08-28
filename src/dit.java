@@ -1,59 +1,108 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dit extends dig {
-   public static final MapCodec<dit> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alx.d(dij.ah), alx.d(dij.ai), alx.d(dij.aj), alx.d(dij.ak), alx.d(dij.al)).apply($$0, $$0.stable(dit::new))
-   );
-   private final jq<dic> c;
-   private final jq<dic> d;
-   private final jq<dic> e;
-   private final jq<dic> f;
-   private final jq<dic> g;
+public class dit {
+   public static <T> List<dit.b> a(List<T> $$0, Function<T, List<ju<enn>>> $$1, boolean $$2) {
+      Object2IntMap<enn> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   public static dit a(jr<dic> $$0) {
-      return new dit($$0.b(dij.ah), $$0.b(dij.ai), $$0.b(dij.aj), $$0.b(dij.ak), $$0.b(dij.al));
-   }
+      record a(int a, int b, enn c) {
+      }
 
-   private dit(jq<dic> $$0, jq<dic> $$1, jq<dic> $$2, jq<dic> $$3, jq<dic> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
 
-   @Override
-   protected Stream<jq<dic>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
-   }
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<ju<enn>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
 
-   @Override
-   protected MapCodec<? extends dig> a() {
-      return b;
-   }
-
-   @Override
-   public jq<dic> getNoiseBiome(int $$0, int $$1, int $$2, dil.f $$3) {
-      int $$4 = kb.c($$0);
-      int $$5 = kb.c($$1);
-      int $$6 = kb.c($$2);
-      int $$7 = kj.a($$4);
-      int $$8 = kj.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (kj.a($$4) * 2 + 1) * 8;
-         int $$10 = (kj.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new edb.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (jq<enn> $$12 : $$10.get($$11)) {
+               enn $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
+            }
          }
+
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
+         }
+      }
+
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && azt.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
+      }
+
+      Collections.reverse($$18);
+      Builder<dit.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<enn> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new dit.b($$28));
+      }
+
+      return $$25.build();
+   }
+
+   public static record b(List<enn> a, ToIntFunction<enn> b) {
+      b(List<enn> $$0) {
+         this($$0, ae.h($$0));
       }
    }
 }

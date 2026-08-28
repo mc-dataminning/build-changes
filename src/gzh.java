@@ -1,4 +1,5 @@
-public class gzh extends gxo {
+public class gzh extends gyr {
    public float a;
-   public float b;
+   public boolean b;
+   public ciq.g c = ciq.g.a;
 }

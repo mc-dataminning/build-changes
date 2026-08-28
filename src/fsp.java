@@ -1,102 +1,47 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
-
-public class fsp extends ftr {
-   private static final int d = 20;
+public class fsp extends ftw {
+   private static final int a = 90;
+   private final xv b;
+   private fox c = fox.a;
+   private final Runnable d;
    private final xv s;
-   private fos u = fos.a;
-   protected xv a;
-   protected xv b;
-   private int v;
-   protected final BooleanConsumer c;
-   private final List<fny> w = Lists.newArrayList();
+   private final boolean u;
 
-   public fsp(BooleanConsumer $$0, xv $$1, xv $$2) {
-      this($$0, $$1, $$2, xu.f, xu.g);
+   public fsp(Runnable $$0, xv $$1, xv $$2) {
+      this($$0, $$1, $$2, xu.k, true);
    }
 
-   public fsp(BooleanConsumer $$0, xv $$1, xv $$2, xv $$3, xv $$4) {
+   public fsp(Runnable $$0, xv $$1, xv $$2, xv $$3, boolean $$4) {
       super($$1);
-      this.c = $$0;
-      this.s = $$2;
-      this.a = $$3;
-      this.b = $$4;
+      this.d = $$0;
+      this.b = $$2;
+      this.s = $$3;
+      this.u = $$4;
    }
 
    @Override
    public xv i() {
-      return xu.a(super.i(), this.s);
+      return xu.a(super.i(), this.b);
    }
 
    @Override
    protected void aT_() {
       super.aT_();
-      this.u = fos.a(this.p, this.s, this.n - 50);
-      int $$0 = bae.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
-      this.w.clear();
-      this.a($$0);
-   }
-
-   protected void a(int $$0) {
-      this.a(fny.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
-      this.a(fny.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
-   }
-
-   protected void a(fny $$0) {
-      this.w.add(this.c($$0));
+      this.c = fox.a(this.p, this.b, this.n - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = bae.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
+      int $$2 = 150;
+      this.c(fod.a(this.s, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.l(), 16777215);
-      this.u.a($$0, this.n / 2, this.E());
-   }
-
-   private int l() {
-      int $$0 = (this.o - this.F()) / 2;
-      return bae.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int E() {
-      return this.l() + 20;
-   }
-
-   private int F() {
-      return this.u.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.v = $$0;
-
-      for (fny $$1 : this.w) {
-         $$1.j = false;
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (--this.v == 0) {
-         for (fny $$0 : this.w) {
-            $$0.j = true;
-         }
-      }
+      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
+      this.c.a($$0, this.n / 2, 90);
    }
 
    @Override
    public boolean aH_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+      return this.u;
    }
 }

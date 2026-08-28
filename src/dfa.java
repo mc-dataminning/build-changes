@@ -1,9 +1,45 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface dfa {
-   static MapCodec<? extends dez> a(kd<MapCodec<? extends dez>> $$0) {
-      kd.a($$0, "by_cost", dfb.b);
-      kd.a($$0, "by_cost_with_difficulty", dfc.c);
-      return kd.a($$0, "single", dfd.b);
+public record dfa(czq d, kl e, Optional<jq<ecq>> f) implements dep {
+   public static final MapCodec<dfa> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               czq.b.fieldOf("properties").forGetter(dfa::b),
+               kl.f.optionalFieldOf("offset", kl.g).forGetter(dfa::c),
+               ecq.aj.optionalFieldOf("trigger_game_event").forGetter(dfa::d)
+            )
+            .apply($$0, dfa::new)
+   );
+
+   public dfa(czq $$0) {
+      this($$0, kl.g, Optional.of(ecq.c));
+   }
+
+   @Override
+   public void a(ash $$0, int $$1, ddx $$2, bvj $$3, fbx $$4) {
+      jh $$5 = jh.a((ka)$$4).a(this.e);
+      dxu $$6 = $$3.dV().a_($$5);
+      dxu $$7 = this.d.a($$6);
+      if (!$$6.equals($$7) && $$3.dV().a($$5, $$7, 3)) {
+         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+      }
+   }
+
+   @Override
+   public MapCodec<dfa> a() {
+      return a;
+   }
+
+   public czq b() {
+      return this.d;
+   }
+
+   public kl c() {
+      return this.e;
+   }
+
+   public Optional<jq<ecq>> d() {
+      return this.f;
    }
 }

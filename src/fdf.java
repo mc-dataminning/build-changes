@@ -1,132 +1,136 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class fdf<T> implements fdl<T>, fdn<T> {
-   private final Queue<fdk<T>> a = new PriorityQueue<>(fdk.a);
-   @Nullable
-   private List<fdj<T>> b;
-   private final Set<fdk<?>> c = new ObjectOpenCustomHashSet(fdk.c);
-   @Nullable
-   private BiConsumer<fdf<T>, fdk<T>> d;
+public class fdf {
+   private static final Map<String, fdf> a = Maps.newHashMap();
+   private static final Map<String, fdf> o = Maps.newHashMap();
+   public static final fdf b = b("dummy");
+   public static final fdf c = b("trigger");
+   public static final fdf d = b("deathCount");
+   public static final fdf e = b("playerKillCount");
+   public static final fdf f = b("totalKillCount");
+   public static final fdf g = a("health", true, fdf.a.b);
+   public static final fdf h = a("food", true, fdf.a.a);
+   public static final fdf i = a("air", true, fdf.a.a);
+   public static final fdf j = a("armor", true, fdf.a.a);
+   public static final fdf k = a("xp", true, fdf.a.a);
+   public static final fdf l = a("level", true, fdf.a.a);
+   public static final fdf[] m = new fdf[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
+   };
+   public static final fdf[] n = new fdf[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final fdf.a r;
 
-   public fdf() {
+   private static fdf a(String $$0, boolean $$1, fdf.a $$2) {
+      fdf $$3 = new fdf($$0, $$1, $$2);
+      a.put($$0, $$3);
+      return $$3;
    }
 
-   public fdf(List<fdj<T>> $$0) {
-      this.b = $$0;
+   private static fdf b(String $$0) {
+      return a($$0, false, fdf.a.a);
+   }
 
-      for (fdj<T> $$1 : $$0) {
-         this.c.add(fdk.a($$1.a(), $$1.b()));
+   protected fdf(String $$0) {
+      this($$0, false, fdf.a.a);
+   }
+
+   protected fdf(String $$0, boolean $$1, fdf.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
+   }
+
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(a.keySet());
+   }
+
+   public static Optional<fdf> a(String $$0) {
+      fdf $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : ma.v.b(alz.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, alz.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   public void a(@Nullable BiConsumer<fdf<T>, fdk<T>> $$0) {
-      this.d = $$0;
+   private static <T> Optional<fdf> a(axo<T> $$0, alz $$1) {
+      return $$0.b().b($$1).map($$0::b);
    }
 
-   @Nullable
-   public fdk<T> b() {
-      return this.a.peek();
+   public String d() {
+      return this.p;
    }
 
-   @Nullable
-   public fdk<T> c() {
-      fdk<T> $$0 = this.a.poll();
-      if ($$0 != null) {
-         this.c.remove($$0);
+   public boolean e() {
+      return this.q;
+   }
+
+   public fdf.a f() {
+      return this.r;
+   }
+
+   public static enum a implements bba {
+      a("integer"),
+      b("hearts");
+
+      private final String d;
+      public static final bba.a<fdf.a> c = bba.a(fdf.a::values);
+
+      private a(final String $$0) {
+         this.d = $$0;
       }
 
-      return $$0;
-   }
-
-   @Override
-   public void a(fdk<T> $$0) {
-      if (this.c.add($$0)) {
-         this.b($$0);
-      }
-   }
-
-   private void b(fdk<T> $$0) {
-      this.a.add($$0);
-      if (this.d != null) {
-         this.d.accept(this, $$0);
-      }
-   }
-
-   @Override
-   public boolean a(jh $$0, T $$1) {
-      return this.c.contains(fdk.a($$1, $$0));
-   }
-
-   public void a(Predicate<fdk<T>> $$0) {
-      Iterator<fdk<T>> $$1 = this.a.iterator();
-
-      while ($$1.hasNext()) {
-         fdk<T> $$2 = $$1.next();
-         if ($$0.test($$2)) {
-            $$1.remove();
-            this.c.remove($$2);
-         }
-      }
-   }
-
-   public Stream<fdk<T>> d() {
-      return this.a.stream();
-   }
-
-   @Override
-   public int a() {
-      return this.a.size() + (this.b != null ? this.b.size() : 0);
-   }
-
-   @Override
-   public List<fdj<T>> a(long $$0) {
-      List<fdj<T>> $$1 = new ArrayList<>(this.a.size());
-      if (this.b != null) {
-         $$1.addAll(this.b);
+      public String a() {
+         return this.d;
       }
 
-      for (fdk<T> $$2 : this.a) {
-         $$1.add($$2.a($$0));
+      @Override
+      public String c() {
+         return this.d;
       }
 
-      return $$1;
-   }
-
-   public vd a(long $$0, Function<T, String> $$1) {
-      vd $$2 = new vd();
-
-      for (fdj<T> $$4 : this.a($$0)) {
-         $$2.add($$4.a($$1));
+      public static fdf.a a(String $$0) {
+         return c.a($$0, a);
       }
-
-      return $$2;
-   }
-
-   public void b(long $$0) {
-      if (this.b != null) {
-         int $$1 = -this.b.size();
-
-         for (fdj<T> $$2 : this.b) {
-            this.b($$2.a($$0, (long)($$1++)));
-         }
-      }
-
-      this.b = null;
-   }
-
-   public static <T> fdf<T> a(vd $$0, Function<String, Optional<T>> $$1, dgg $$2) {
-      return new fdf<>(fdj.a($$0, $$1, $$2));
    }
 }

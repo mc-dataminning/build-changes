@@ -1,170 +1,103 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class glz {
-   public static final alz a = alz.b("textures/atlas/shulker_boxes.png");
-   public static final alz b = alz.b("textures/atlas/beds.png");
-   public static final alz c = alz.b("textures/atlas/banner_patterns.png");
-   public static final alz d = alz.b("textures/atlas/shield_patterns.png");
-   public static final alz e = alz.b("textures/atlas/signs.png");
-   public static final alz f = alz.b("textures/atlas/chest.png");
-   public static final alz g = alz.b("textures/atlas/armor_trims.png");
-   public static final alz h = alz.b("textures/atlas/decorated_pot.png");
-   private static final glo C = glo.f(a);
-   private static final glo D = glo.c(b);
-   private static final glo E = glo.m(c);
-   private static final glo F = glo.m(d);
-   private static final glo G = glo.f(e);
-   private static final glo H = glo.e(f);
-   private static final glo I = glo.a(g);
-   private static final glo J = glo.b(g);
-   private static final glo K = glo.c(hbd.d);
-   private static final glo L = glo.e(hbd.d);
-   private static final glo M = glo.h(hbd.d);
-   public static final hdn i = new hdn(a, alz.b("entity/shulker/shulker"));
-   public static final List<hdn> j = Stream.of(
-         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
-      )
-      .map($$0 -> new hdn(a, alz.b("entity/shulker/shulker_" + $$0)))
-      .collect(ImmutableList.toImmutableList());
-   public static final Map<dyz, hdn> k = dyz.a().collect(Collectors.toMap(Function.identity(), glz::c));
-   public static final Map<dyz, hdn> l = dyz.a().collect(Collectors.toMap(Function.identity(), glz::d));
-   public static final hdn m = new hdn(c, alz.b("entity/banner/base"));
-   public static final hdn n = new hdn(d, alz.b("entity/shield/base"));
-   private static final Map<alz, hdn> N = new HashMap<>();
-   private static final Map<alz, hdn> O = new HashMap<>();
-   public static final Map<aly<dvh>, hdn> o = ma.ak.c().collect(Collectors.toMap(jq.c::h, $$0 -> a($$0.a().a())));
-   public static final hdn p = a(alz.b("decorated_pot_base"));
-   public static final hdn q = a(alz.b("decorated_pot_side"));
-   public static final hdn[] r = Arrays.stream(cwh.values())
-      .sorted(Comparator.comparingInt(cwh::a))
-      .map($$0 -> new hdn(b, alz.b("entity/bed/" + $$0.b())))
-      .toArray(hdn[]::new);
-   public static final hdn s = a("trapped");
-   public static final hdn t = a("trapped_left");
-   public static final hdn u = a("trapped_right");
-   public static final hdn v = a("christmas");
-   public static final hdn w = a("christmas_left");
-   public static final hdn x = a("christmas_right");
-   public static final hdn y = a("normal");
-   public static final hdn z = a("normal_left");
-   public static final hdn A = a("normal_right");
-   public static final hdn B = a("ender");
+public record glz(Map<String, String> c, Set<String> d) {
+   public static final glz a = new glz(Map.of(), Set.of());
+   public static final Codec<glz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(glz::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(glz::e)
+            )
+            .apply($$0, glz::new)
+   );
 
-   public static glo a() {
-      return E;
+   public static glz.a a() {
+      return new glz.a();
    }
 
-   public static glo b() {
-      return F;
-   }
-
-   public static glo c() {
-      return D;
-   }
-
-   public static glo d() {
-      return C;
-   }
-
-   public static glo e() {
-      return G;
-   }
-
-   public static glo f() {
-      return G;
-   }
-
-   public static glo g() {
-      return H;
-   }
-
-   public static glo a(boolean $$0) {
-      return $$0 ? J : I;
-   }
-
-   public static glo h() {
-      return K;
-   }
-
-   public static glo i() {
-      return L;
-   }
-
-   public static glo j() {
-      return M;
-   }
-
-   private static hdn c(dyz $$0) {
-      return new hdn(e, alz.b("entity/signs/" + $$0.b()));
-   }
-
-   private static hdn d(dyz $$0) {
-      return new hdn(e, alz.b("entity/signs/hanging/" + $$0.b()));
-   }
-
-   public static hdn a(dyz $$0) {
-      return k.get($$0);
-   }
-
-   public static hdn b(dyz $$0) {
-      return l.get($$0);
-   }
-
-   public static hdn a(jq<duf> $$0) {
-      return N.computeIfAbsent($$0.a().a(), $$0x -> {
-         alz $$1 = $$0x.f("entity/banner/");
-         return new hdn(c, $$1);
-      });
-   }
-
-   public static hdn b(jq<duf> $$0) {
-      return O.computeIfAbsent($$0.a().a(), $$0x -> {
-         alz $$1 = $$0x.f("entity/shield/");
-         return new hdn(d, $$1);
-      });
-   }
-
-   private static hdn a(String $$0) {
-      return new hdn(f, alz.b("entity/chest/" + $$0));
-   }
-
-   private static hdn a(alz $$0) {
-      return new hdn(h, $$0.f("entity/decorated_pot/"));
-   }
-
-   @Nullable
-   public static hdn a(@Nullable aly<dvh> $$0) {
-      return $$0 == null ? null : o.get($$0);
-   }
-
-   public static hdn a(dup $$0, dyf $$1, boolean $$2) {
-      if ($$0 instanceof dvm) {
-         return B;
-      } else if ($$2) {
-         return a($$1, v, w, x);
+   public glz a(glz $$0) {
+      if (this.c()) {
+         return $$0;
+      } else if ($$0.c()) {
+         return this;
       } else {
-         return $$0 instanceof dwl ? a($$1, s, t, u) : a($$1, y, z, A);
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new glz($$1.buildKeepingLast(), $$2.build());
       }
    }
 
-   private static hdn a(dyf $$0, hdn $$1, hdn $$2, hdn $$3) {
-      switch ($$0) {
-         case b:
-            return $$2;
-         case c:
-            return $$3;
-         case a:
-         default:
-            return $$1;
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+      }
+
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
+      }
+
+      return $$0.toString();
+   }
+
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
+   }
+
+   public Map<String, String> d() {
+      return this.c;
+   }
+
+   public Set<String> e() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
+
+      a() {
+      }
+
+      public glz.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
+         } else {
+            this.a.put($$0, b($$1));
+            return this;
+         }
+      }
+
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
+      }
+
+      public glz.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
+
+      public glz.a a(String $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public glz a() {
+         return new glz(this.a.build(), this.b.build());
       }
    }
 }

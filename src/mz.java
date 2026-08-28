@@ -14,7 +14,7 @@ public class mz implements mh {
    private static final mz.b f = new mz.b(true, true, true);
    private static final mz.b g = new mz.b(true, true, false);
    private static final mz.b h = new mz.b(false, true, true);
-   private static final Map<aly<? extends kd<?>>, mz.b> i = Map.of(mb.bj, e, mb.bi, e, mb.bf, f, mb.bg, f, mb.bh, f);
+   private static final Map<aly<? extends kd<?>>, mz.b> i = Map.of(mb.bk, e, mb.bj, e, mb.bg, f, mb.bh, f, mb.bi, f);
    private static final Map<String, mz.a> j = Map.of(
       "structure", new mz.a(mz.c.a, new mz.b(true, false, true)), "function", new mz.a(mz.c.b, new mz.b(true, true, true))
    );
@@ -45,7 +45,7 @@ public class mz implements mh {
 
    private Map<aly<? extends kd<?>>, mz.b> b() {
       Map<aly<? extends kd<?>>, mz.b> $$0 = new HashMap<>();
-      ma.aB.forEach($$1 -> this.a($$0, $$1.g(), h));
+      ma.aC.forEach($$1 -> this.a($$0, $$1.g(), h));
       alu.a.forEach($$1 -> this.a($$0, $$1.a(), g));
       alu.b.forEach($$1 -> this.a($$0, $$1.a(), g));
       i.forEach(($$1, $$2) -> this.a($$0, (aly<? extends kd<?>>)$$1, $$2));

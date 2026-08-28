@@ -1,82 +1,1426 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.doubles.Double2DoubleFunction;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class edj implements ecx {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final edk i = new edk(this);
+public final class edj {
+   private static final Codec<edi> c = ma.ad.q().dispatch($$0 -> $$0.c().a(), Function.identity());
+   protected static final double a = 1000000.0;
+   static final Codec<Double> d = Codec.doubleRange(-1000000.0, 1000000.0);
+   public static final Codec<edi> b = Codec.either(d, c)
+      .xmap($$0 -> (edi)$$0.map(edj::a, Function.identity()), $$0 -> $$0 instanceof edj.h $$1 ? Either.left($$1.j()) : Either.right($$0));
 
-   public edj(long $$0) {
-      this.b($$0);
+   public static MapCodec<? extends edi> a(kd<MapCodec<? extends edi>> $$0) {
+      a($$0, "blend_alpha", edj.d.e);
+      a($$0, "blend_offset", edj.f.e);
+      a($$0, "beardifier", edj.b.e);
+      a($$0, "old_blended_noise", esw.a);
+
+      for (edj.l.a $$1 : edj.l.a.values()) {
+         a($$0, $$1.c(), $$1.g);
+      }
+
+      a($$0, "noise", edj.o.e);
+      a($$0, "end_islands", edj.i.a);
+      a($$0, "weird_scaled_sampler", edj.z.a);
+      a($$0, "shifted_noise", edj.v.a);
+      a($$0, "range_choice", edj.q.e);
+      a($$0, "shift_a", edj.s.e);
+      a($$0, "shift_b", edj.t.e);
+      a($$0, "shift", edj.r.e);
+      a($$0, "blend_density", edj.e.e);
+      a($$0, "clamp", edj.g.a);
+
+      for (edj.k.a $$2 : edj.k.a.values()) {
+         a($$0, $$2.c(), $$2.h);
+      }
+
+      for (edj.y.a $$3 : edj.y.a.values()) {
+         a($$0, $$3.c(), $$3.e);
+      }
+
+      a($$0, "spline", edj.w.a);
+      a($$0, "constant", edj.h.e);
+      return a($$0, "y_clamped_gradient", edj.aa.a);
    }
 
-   @Override
-   public bam d() {
-      return new edj(this.g());
+   private static MapCodec<? extends edi> a(kd<MapCodec<? extends edi>> $$0, String $$1, azx<? extends edi> $$2) {
+      return kd.a($$0, $$1, $$2.a());
    }
 
-   @Override
-   public edv e() {
-      return new edj.a(this.g());
+   static <A, O> azx<O> a(Codec<A> $$0, Function<A, O> $$1, Function<O, A> $$2) {
+      return azx.a($$0.fieldOf("argument").xmap($$1, $$2));
    }
 
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw bbd.a("LegacyRandomSource", null);
+   static <O> azx<O> a(Function<edi, O> $$0, Function<O, edi> $$1) {
+      return a(edi.d, $$0, $$1);
+   }
+
+   static <O> azx<O> a(BiFunction<edi, edi, O> $$0, Function<O, edi> $$1, Function<O, edi> $$2) {
+      return azx.a(
+         RecordCodecBuilder.mapCodec($$3 -> $$3.group(edi.d.fieldOf("argument1").forGetter($$1), edi.d.fieldOf("argument2").forGetter($$2)).apply($$3, $$0))
+      );
+   }
+
+   static <O> azx<O> a(MapCodec<O> $$0) {
+      return azx.a($$0);
+   }
+
+   private edj() {
+   }
+
+   public static edi a(edi $$0) {
+      return new edj.l(edj.l.a.a, $$0);
+   }
+
+   public static edi b(edi $$0) {
+      return new edj.l(edj.l.a.b, $$0);
+   }
+
+   public static edi c(edi $$0) {
+      return new edj.l(edj.l.a.c, $$0);
+   }
+
+   public static edi d(edi $$0) {
+      return new edj.l(edj.l.a.d, $$0);
+   }
+
+   public static edi e(edi $$0) {
+      return new edj.l(edj.l.a.e, $$0);
+   }
+
+   public static edi a(jq<esz.a> $$0, @Deprecated double $$1, double $$2, double $$3, double $$4) {
+      return a(new edj.o(new edi.c($$0), $$1, $$2), $$3, $$4);
+   }
+
+   public static edi a(jq<esz.a> $$0, double $$1, double $$2, double $$3) {
+      return a($$0, 1.0, $$1, $$2, $$3);
+   }
+
+   public static edi a(jq<esz.a> $$0, double $$1, double $$2) {
+      return a($$0, 1.0, 1.0, $$1, $$2);
+   }
+
+   public static edi a(edi $$0, edi $$1, double $$2, jq<esz.a> $$3) {
+      return new edj.v($$0, a(), $$1, $$2, 0.0, new edi.c($$3));
+   }
+
+   public static edi a(jq<esz.a> $$0) {
+      return b($$0, 1.0, 1.0);
+   }
+
+   public static edi b(jq<esz.a> $$0, double $$1, double $$2) {
+      return new edj.o(new edi.c($$0), $$1, $$2);
+   }
+
+   public static edi a(jq<esz.a> $$0, double $$1) {
+      return b($$0, 1.0, $$1);
+   }
+
+   public static edi a(edi $$0, double $$1, double $$2, edi $$3, edi $$4) {
+      return new edj.q($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static edi b(jq<esz.a> $$0) {
+      return new edj.s(new edi.c($$0));
+   }
+
+   public static edi c(jq<esz.a> $$0) {
+      return new edj.t(new edi.c($$0));
+   }
+
+   public static edi d(jq<esz.a> $$0) {
+      return new edj.r(new edi.c($$0));
+   }
+
+   public static edi f(edi $$0) {
+      return new edj.e($$0);
+   }
+
+   public static edi a(long $$0) {
+      return new edj.i($$0);
+   }
+
+   public static edi a(edi $$0, jq<esz.a> $$1, edj.z.a $$2) {
+      return new edj.z($$0, new edi.c($$1), $$2);
+   }
+
+   public static edi a(edi $$0, edi $$1) {
+      return edj.y.a(edj.y.a.a, $$0, $$1);
+   }
+
+   public static edi b(edi $$0, edi $$1) {
+      return edj.y.a(edj.y.a.b, $$0, $$1);
+   }
+
+   public static edi c(edi $$0, edi $$1) {
+      return edj.y.a(edj.y.a.c, $$0, $$1);
+   }
+
+   public static edi d(edi $$0, edi $$1) {
+      return edj.y.a(edj.y.a.d, $$0, $$1);
+   }
+
+   public static edi a(azg<edj.w.b, edj.w.a> $$0) {
+      return new edj.w($$0);
+   }
+
+   public static edi a() {
+      return edj.h.f;
+   }
+
+   public static edi a(double $$0) {
+      return new edj.h($$0);
+   }
+
+   public static edi a(int $$0, int $$1, double $$2, double $$3) {
+      return new edj.aa($$0, $$1, $$2, $$3);
+   }
+
+   public static edi a(edi $$0, edj.k.a $$1) {
+      return edj.k.a($$1, $$0);
+   }
+
+   private static edi a(edi $$0, double $$1, double $$2) {
+      double $$3 = ($$1 + $$2) * 0.5;
+      double $$4 = ($$2 - $$1) * 0.5;
+      return a(a($$3), b(a($$4), $$0));
+   }
+
+   public static edi b() {
+      return edj.d.a;
+   }
+
+   public static edi c() {
+      return edj.f.a;
+   }
+
+   public static edi a(edi $$0, edi $$1, edi $$2) {
+      if ($$1 instanceof edj.h $$3) {
+         return a($$0, $$3.a, $$2);
       } else {
-         this.i.a();
+         edi $$4 = d($$0);
+         edi $$5 = a(b($$4, a(-1.0)), a(1.0));
+         return a(b($$1, $$5), b($$2, $$4));
       }
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw bbd.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
+   public static edi a(edi $$0, double $$1, edi $$2) {
+      return a(b($$0, a($$2, a(-$$1))), a($$1));
+   }
+
+   static record a(edj.y.a e, edi f, edi g, double h, double i) implements edj.y {
+      @Override
+      public double a(edi.b $$0) {
+         double $$1 = this.f.a($$0);
+
+         return switch (this.e) {
+            case a -> $$1 + this.g.a($$0);
+            case b -> $$1 == 0.0 ? 0.0 : $$1 * this.g.a($$0);
+            case c -> $$1 < this.g.a() ? $$1 : Math.min($$1, this.g.a($$0));
+            case d -> $$1 > this.g.b() ? $$1 : Math.max($$1, this.g.a($$0));
+         };
+      }
+
+      @Override
+      public void a(double[] $$0, edi.a $$1) {
+         this.f.a($$0, $$1);
+         switch (this.e) {
+            case a:
+               double[] $$2 = new double[$$0.length];
+               this.g.a($$2, $$1);
+
+               for (int $$3 = 0; $$3 < $$0.length; $$3++) {
+                  $$0[$$3] += $$2[$$3];
+               }
+               break;
+            case b:
+               for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+                  double $$5 = $$0[$$4];
+                  $$0[$$4] = $$5 == 0.0 ? 0.0 : $$5 * this.g.a($$1.a($$4));
+               }
+               break;
+            case c:
+               double $$6 = this.g.a();
+
+               for (int $$7 = 0; $$7 < $$0.length; $$7++) {
+                  double $$8 = $$0[$$7];
+                  $$0[$$7] = $$8 < $$6 ? $$8 : Math.min($$8, this.g.a($$1.a($$7)));
+               }
+               break;
+            case d:
+               double $$9 = this.g.b();
+
+               for (int $$10 = 0; $$10 < $$0.length; $$10++) {
+                  double $$11 = $$0[$$10];
+                  $$0[$$10] = $$11 > $$9 ? $$11 : Math.max($$11, this.g.a($$1.a($$10)));
+               }
+         }
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(edj.y.a(this.e, this.f.a($$0), this.g.a($$0)));
+      }
+
+      @Override
+      public double a() {
+         return this.h;
+      }
+
+      @Override
+      public double b() {
+         return this.i;
+      }
+
+      @Override
+      public edj.y.a j() {
+         return this.e;
+      }
+
+      @Override
+      public edi k() {
+         return this.f;
+      }
+
+      @Override
+      public edi l() {
+         return this.g;
       }
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   static record aa(int e, int f, double g, double h) implements edi.d {
+      private static final MapCodec<edj.aa> i = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.intRange(ebp.e * 2, ebp.d * 2).fieldOf("from_y").forGetter(edj.aa::j),
+                  Codec.intRange(ebp.e * 2, ebp.d * 2).fieldOf("to_y").forGetter(edj.aa::k),
+                  edj.d.fieldOf("from_value").forGetter(edj.aa::l),
+                  edj.d.fieldOf("to_value").forGetter(edj.aa::m)
+               )
+               .apply($$0, edj.aa::new)
+      );
+      public static final azx<edj.aa> a = edj.a(i);
+
+      @Override
+      public double a(edi.b $$0) {
+         return bae.a((double)$$0.b(), (double)this.e, (double)this.f, this.g, this.h);
+      }
+
+      @Override
+      public double a() {
+         return Math.min(this.g, this.h);
+      }
+
+      @Override
+      public double b() {
+         return Math.max(this.g, this.h);
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return a;
+      }
+
+      public int j() {
+         return this.e;
+      }
+
+      public int k() {
+         return this.f;
+      }
+
+      public double l() {
+         return this.g;
+      }
+
+      public double m() {
+         return this.h;
+      }
    }
 
-   public static class a implements edv {
-      private final long a;
+   protected static enum b implements edj.c {
+      a;
 
-      public a(long $$0) {
-         this.a = $$0;
+      @Override
+      public double a(edi.b $$0) {
+         return 0.0;
       }
 
       @Override
-      public bam a(int $$0, int $$1, int $$2) {
-         long $$3 = bae.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new edj($$4);
+      public void a(double[] $$0, edi.a $$1) {
+         Arrays.fill($$0, 0.0);
       }
 
       @Override
-      public bam a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new edj((long)$$1 ^ this.a);
+      public double a() {
+         return 0.0;
       }
 
       @Override
-      public bam a(long $$0) {
-         return new edj($$0);
+      public double b() {
+         return 0.0;
+      }
+   }
+
+   public interface c extends edi.d {
+      azx<edi> e = azx.a(MapCodec.unit(edj.b.a));
+
+      @Override
+      default azx<? extends edi> c() {
+         return e;
+      }
+   }
+
+   protected static enum d implements edi.d {
+      a;
+
+      public static final azx<edi> e = azx.a(MapCodec.unit(a));
+
+      @Override
+      public double a(edi.b $$0) {
+         return 1.0;
       }
 
-      @VisibleForTesting
       @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      public void a(double[] $$0, edi.a $$1) {
+         Arrays.fill($$0, 1.0);
+      }
+
+      @Override
+      public double a() {
+         return 1.0;
+      }
+
+      @Override
+      public double b() {
+         return 1.0;
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return e;
+      }
+   }
+
+   static record e(edi a) implements edj.x {
+      static final azx<edj.e> e = edj.a(edj.e::new, edj.e::j);
+
+      @Override
+      public double a(edi.b $$0, double $$1) {
+         return $$0.d().a($$0, $$1);
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.e(this.a.a($$0)));
+      }
+
+      @Override
+      public double a() {
+         return Double.NEGATIVE_INFINITY;
+      }
+
+      @Override
+      public double b() {
+         return Double.POSITIVE_INFINITY;
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return e;
+      }
+
+      @Override
+      public edi j() {
+         return this.a;
+      }
+   }
+
+   protected static enum f implements edi.d {
+      a;
+
+      public static final azx<edi> e = azx.a(MapCodec.unit(a));
+
+      @Override
+      public double a(edi.b $$0) {
+         return 0.0;
+      }
+
+      @Override
+      public void a(double[] $$0, edi.a $$1) {
+         Arrays.fill($$0, 0.0);
+      }
+
+      @Override
+      public double a() {
+         return 0.0;
+      }
+
+      @Override
+      public double b() {
+         return 0.0;
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return e;
+      }
+   }
+
+   protected static record g(edi e, double f, double g) implements edj.p {
+      private static final MapCodec<edj.g> h = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(edi.b.fieldOf("input").forGetter(edj.g::aE_), edj.d.fieldOf("min").forGetter(edj.g::a), edj.d.fieldOf("max").forGetter(edj.g::b))
+               .apply($$0, edj.g::new)
+      );
+      public static final azx<edj.g> a = edj.a(h);
+
+      @Override
+      public double a(double $$0) {
+         return bae.a($$0, this.f, this.g);
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return new edj.g(this.e.a($$0), this.f, this.g);
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return a;
+      }
+
+      @Override
+      public edi aE_() {
+         return this.e;
+      }
+
+      @Override
+      public double a() {
+         return this.f;
+      }
+
+      @Override
+      public double b() {
+         return this.g;
+      }
+   }
+
+   static record h(double a) implements edi.d {
+      static final azx<edj.h> e = edj.a(edj.d, edj.h::new, edj.h::j);
+      static final edj.h f = new edj.h(0.0);
+
+      @Override
+      public void a(double[] $$0, edi.a $$1) {
+         Arrays.fill($$0, this.a);
+      }
+
+      @Override
+      public double b() {
+         return this.a;
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return e;
+      }
+
+      public double j() {
+         return this.a;
+      }
+   }
+
+   protected static final class i implements edi.d {
+      public static final azx<edj.i> a = azx.a(MapCodec.unit(new edj.i(0L)));
+      private static final float e = -0.9F;
+      private final etc f;
+
+      public i(long $$0) {
+         bam $$1 = new edq($$0);
+         $$1.b(17292);
+         this.f = new etc($$1);
+      }
+
+      private static float a(etc $$0, int $$1, int $$2) {
+         int $$3 = $$1 / 2;
+         int $$4 = $$2 / 2;
+         int $$5 = $$1 % 2;
+         int $$6 = $$2 % 2;
+         float $$7 = 100.0F - bae.c((float)($$1 * $$1 + $$2 * $$2)) * 8.0F;
+         $$7 = bae.a($$7, -100.0F, 80.0F);
+
+         for (int $$8 = -12; $$8 <= 12; $$8++) {
+            for (int $$9 = -12; $$9 <= 12; $$9++) {
+               long $$10 = (long)($$3 + $$8);
+               long $$11 = (long)($$4 + $$9);
+               if ($$10 * $$10 + $$11 * $$11 > 4096L && $$0.a((double)$$10, (double)$$11) < -0.9F) {
+                  float $$12 = (bae.e((float)$$10) * 3439.0F + bae.e((float)$$11) * 147.0F) % 13.0F + 9.0F;
+                  float $$13 = (float)($$5 - $$8 * 2);
+                  float $$14 = (float)($$6 - $$9 * 2);
+                  float $$15 = 100.0F - bae.c($$13 * $$13 + $$14 * $$14) * $$12;
+                  $$15 = bae.a($$15, -100.0F, 80.0F);
+                  $$7 = Math.max($$7, $$15);
+               }
+            }
+         }
+
+         return $$7;
+      }
+
+      @Override
+      public double a(edi.b $$0) {
+         return ((double)a(this.f, $$0.a() / 8, $$0.c() / 8) - 8.0) / 128.0;
+      }
+
+      @Override
+      public double a() {
+         return -0.84375;
+      }
+
+      @Override
+      public double b() {
+         return 0.5625;
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return a;
+      }
+   }
+
+   @bbl
+   public static record j(jq<edi> a) implements edi {
+      @Override
+      public double a(edi.b $$0) {
+         return this.a.a().a($$0);
+      }
+
+      @Override
+      public void a(double[] $$0, edi.a $$1) {
+         this.a.a().a($$0, $$1);
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.j(new jq.a<>(this.a.a().a($$0))));
+      }
+
+      @Override
+      public double a() {
+         return this.a.b() ? this.a.a().a() : Double.NEGATIVE_INFINITY;
+      }
+
+      @Override
+      public double b() {
+         return this.a.b() ? this.a.a().b() : Double.POSITIVE_INFINITY;
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         throw new UnsupportedOperationException("Calling .codec() on HolderHolder");
+      }
+
+      public jq<edi> j() {
+         return this.a;
+      }
+   }
+
+   protected static record k(edj.k.a a, edi e, double f, double g) implements edj.p {
+      public static edj.k a(edj.k.a $$0, edi $$1) {
+         double $$2 = $$1.a();
+         double $$3 = a($$0, $$2);
+         double $$4 = a($$0, $$1.b());
+         return $$0 != edj.k.a.a && $$0 != edj.k.a.b ? new edj.k($$0, $$1, $$3, $$4) : new edj.k($$0, $$1, Math.max(0.0, $$2), Math.max($$3, $$4));
+      }
+
+      private static double a(edj.k.a $$0, double $$1) {
+         return switch ($$0) {
+            case a -> Math.abs($$1);
+            case b -> $$1 * $$1;
+            case c -> $$1 * $$1 * $$1;
+            case d -> $$1 > 0.0 ? $$1 : $$1 * 0.5;
+            case e -> $$1 > 0.0 ? $$1 : $$1 * 0.25;
+            case f -> {
+               double $$2 = bae.a($$1, -1.0, 1.0);
+               yield $$2 / 2.0 - $$2 * $$2 * $$2 / 24.0;
+            }
+         };
+      }
+
+      @Override
+      public double a(double $$0) {
+         return a(this.a, $$0);
+      }
+
+      public edj.k b(edi.f $$0) {
+         return a(this.a, this.e.a($$0));
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return this.a.h;
+      }
+
+      public edj.k.a k() {
+         return this.a;
+      }
+
+      @Override
+      public edi aE_() {
+         return this.e;
+      }
+
+      @Override
+      public double a() {
+         return this.f;
+      }
+
+      @Override
+      public double b() {
+         return this.g;
+      }
+
+      static enum a implements bba {
+         a("abs"),
+         b("square"),
+         c("cube"),
+         d("half_negative"),
+         e("quarter_negative"),
+         f("squeeze");
+
+         private final String g;
+         final azx<edj.k> h = edj.a($$0x -> edj.k.a(this, $$0x), edj.k::aE_);
+
+         private a(final String $$0) {
+            this.g = $$0;
+         }
+
+         @Override
+         public String c() {
+            return this.g;
+         }
+      }
+   }
+
+   protected static record l(edj.l.a a, edi e) implements edj.m {
+      @Override
+      public double a(edi.b $$0) {
+         return this.e.a($$0);
+      }
+
+      @Override
+      public void a(double[] $$0, edi.a $$1) {
+         this.e.a($$0, $$1);
+      }
+
+      @Override
+      public double a() {
+         return this.e.a();
+      }
+
+      @Override
+      public double b() {
+         return this.e.b();
+      }
+
+      @Override
+      public edj.l.a j() {
+         return this.a;
+      }
+
+      @Override
+      public edi k() {
+         return this.e;
+      }
+
+      static enum a implements bba {
+         a("interpolated"),
+         b("flat_cache"),
+         c("cache_2d"),
+         d("cache_once"),
+         e("cache_all_in_cell");
+
+         private final String f;
+         final azx<edj.m> g = edj.a($$0x -> new edj.l(this, $$0x), edj.m::k);
+
+         private a(final String $$0) {
+            this.f = $$0;
+         }
+
+         @Override
+         public String c() {
+            return this.f;
+         }
+      }
+   }
+
+   public interface m extends edi {
+      edj.l.a j();
+
+      edi k();
+
+      @Override
+      default azx<? extends edi> c() {
+         return this.j().g;
+      }
+
+      @Override
+      default edi a(edi.f $$0) {
+         return $$0.apply(new edj.l(this.j(), this.k().a($$0)));
+      }
+   }
+
+   static record n(edj.n.a e, edi f, double g, double h, double i) implements edj.p, edj.y {
+      @Override
+      public edj.y.a j() {
+         return this.e == edj.n.a.a ? edj.y.a.b : edj.y.a.a;
+      }
+
+      @Override
+      public edi k() {
+         return edj.a(this.i);
+      }
+
+      @Override
+      public edi l() {
+         return this.f;
+      }
+
+      @Override
+      public double a(double $$0) {
+         return switch (this.e) {
+            case a -> $$0 * this.i;
+            case b -> $$0 + this.i;
+         };
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         edi $$1 = this.f.a($$0);
+         double $$2 = $$1.a();
+         double $$3 = $$1.b();
+         double $$4;
+         double $$5;
+         if (this.e == edj.n.a.b) {
+            $$4 = $$2 + this.i;
+            $$5 = $$3 + this.i;
+         } else if (this.i >= 0.0) {
+            $$4 = $$2 * this.i;
+            $$5 = $$3 * this.i;
+         } else {
+            $$4 = $$3 * this.i;
+            $$5 = $$2 * this.i;
+         }
+
+         return new edj.n(this.e, $$1, $$4, $$5, this.i);
+      }
+
+      public edj.n.a m() {
+         return this.e;
+      }
+
+      @Override
+      public edi aE_() {
+         return this.f;
+      }
+
+      @Override
+      public double a() {
+         return this.g;
+      }
+
+      @Override
+      public double b() {
+         return this.h;
+      }
+
+      public double n() {
+         return this.i;
+      }
+
+      static enum a {
+         a,
+         b;
+      }
+   }
+
+   protected static record o(edi.c f, @Deprecated double g, double h) implements edi {
+      public static final MapCodec<edj.o> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  edi.c.a.fieldOf("noise").forGetter(edj.o::j),
+                  Codec.DOUBLE.fieldOf("xz_scale").forGetter(edj.o::k),
+                  Codec.DOUBLE.fieldOf("y_scale").forGetter(edj.o::l)
+               )
+               .apply($$0, edj.o::new)
+      );
+      public static final azx<edj.o> e = edj.a(a);
+
+      @Override
+      public double a(edi.b $$0) {
+         return this.f.a((double)$$0.a() * this.g, (double)$$0.b() * this.h, (double)$$0.c() * this.g);
+      }
+
+      @Override
+      public void a(double[] $$0, edi.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.o($$0.a(this.f), this.g, this.h));
+      }
+
+      @Override
+      public double a() {
+         return -this.b();
+      }
+
+      @Override
+      public double b() {
+         return this.f.a();
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return e;
+      }
+
+      public edi.c j() {
+         return this.f;
+      }
+
+      @Deprecated
+      public double k() {
+         return this.g;
+      }
+
+      public double l() {
+         return this.h;
+      }
+   }
+
+   interface p extends edi {
+      edi aE_();
+
+      @Override
+      default double a(edi.b $$0) {
+         return this.a(this.aE_().a($$0));
+      }
+
+      @Override
+      default void a(double[] $$0, edi.a $$1) {
+         this.aE_().a($$0, $$1);
+
+         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+            $$0[$$2] = this.a($$0[$$2]);
+         }
+      }
+
+      double a(double var1);
+   }
+
+   static record q(edi f, double g, double h, edi i, edi j) implements edi {
+      public static final MapCodec<edj.q> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  edi.d.fieldOf("input").forGetter(edj.q::j),
+                  edj.d.fieldOf("min_inclusive").forGetter(edj.q::k),
+                  edj.d.fieldOf("max_exclusive").forGetter(edj.q::l),
+                  edi.d.fieldOf("when_in_range").forGetter(edj.q::m),
+                  edi.d.fieldOf("when_out_of_range").forGetter(edj.q::n)
+               )
+               .apply($$0, edj.q::new)
+      );
+      public static final azx<edj.q> e = edj.a(a);
+
+      @Override
+      public double a(edi.b $$0) {
+         double $$1 = this.f.a($$0);
+         return $$1 >= this.g && $$1 < this.h ? this.i.a($$0) : this.j.a($$0);
+      }
+
+      @Override
+      public void a(double[] $$0, edi.a $$1) {
+         this.f.a($$0, $$1);
+
+         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+            double $$3 = $$0[$$2];
+            if ($$3 >= this.g && $$3 < this.h) {
+               $$0[$$2] = this.i.a($$1.a($$2));
+            } else {
+               $$0[$$2] = this.j.a($$1.a($$2));
+            }
+         }
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.q(this.f.a($$0), this.g, this.h, this.i.a($$0), this.j.a($$0)));
+      }
+
+      @Override
+      public double a() {
+         return Math.min(this.i.a(), this.j.a());
+      }
+
+      @Override
+      public double b() {
+         return Math.max(this.i.b(), this.j.b());
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return e;
+      }
+
+      public edi j() {
+         return this.f;
+      }
+
+      public double k() {
+         return this.g;
+      }
+
+      public double l() {
+         return this.h;
+      }
+
+      public edi m() {
+         return this.i;
+      }
+
+      public edi n() {
+         return this.j;
+      }
+   }
+
+   protected static record r(edi.c a) implements edj.u {
+      static final azx<edj.r> e = edj.a(edi.c.a, edj.r::new, edj.r::j);
+
+      @Override
+      public double a(edi.b $$0) {
+         return this.a((double)$$0.a(), (double)$$0.b(), (double)$$0.c());
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.r($$0.a(this.a)));
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return e;
+      }
+
+      @Override
+      public edi.c j() {
+         return this.a;
+      }
+   }
+
+   protected static record s(edi.c a) implements edj.u {
+      static final azx<edj.s> e = edj.a(edi.c.a, edj.s::new, edj.s::j);
+
+      @Override
+      public double a(edi.b $$0) {
+         return this.a((double)$$0.a(), 0.0, (double)$$0.c());
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.s($$0.a(this.a)));
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return e;
+      }
+
+      @Override
+      public edi.c j() {
+         return this.a;
+      }
+   }
+
+   protected static record t(edi.c a) implements edj.u {
+      static final azx<edj.t> e = edj.a(edi.c.a, edj.t::new, edj.t::j);
+
+      @Override
+      public double a(edi.b $$0) {
+         return this.a((double)$$0.c(), (double)$$0.a(), 0.0);
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.t($$0.a(this.a)));
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return e;
+      }
+
+      @Override
+      public edi.c j() {
+         return this.a;
+      }
+   }
+
+   interface u extends edi {
+      edi.c j();
+
+      @Override
+      default double a() {
+         return -this.b();
+      }
+
+      @Override
+      default double b() {
+         return this.j().a() * 4.0;
+      }
+
+      default double a(double $$0, double $$1, double $$2) {
+         return this.j().a($$0 * 0.25, $$1 * 0.25, $$2 * 0.25) * 4.0;
+      }
+
+      @Override
+      default void a(double[] $$0, edi.a $$1) {
+         $$1.a($$0, this);
+      }
+   }
+
+   protected static record v(edi e, edi f, edi g, double h, double i, edi.c j) implements edi {
+      private static final MapCodec<edj.v> k = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  edi.d.fieldOf("shift_x").forGetter(edj.v::j),
+                  edi.d.fieldOf("shift_y").forGetter(edj.v::k),
+                  edi.d.fieldOf("shift_z").forGetter(edj.v::l),
+                  Codec.DOUBLE.fieldOf("xz_scale").forGetter(edj.v::m),
+                  Codec.DOUBLE.fieldOf("y_scale").forGetter(edj.v::n),
+                  edi.c.a.fieldOf("noise").forGetter(edj.v::o)
+               )
+               .apply($$0, edj.v::new)
+      );
+      public static final azx<edj.v> a = edj.a(k);
+
+      @Override
+      public double a(edi.b $$0) {
+         double $$1 = (double)$$0.a() * this.h + this.e.a($$0);
+         double $$2 = (double)$$0.b() * this.i + this.f.a($$0);
+         double $$3 = (double)$$0.c() * this.h + this.g.a($$0);
+         return this.j.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(double[] $$0, edi.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.v(this.e.a($$0), this.f.a($$0), this.g.a($$0), this.h, this.i, $$0.a(this.j)));
+      }
+
+      @Override
+      public double a() {
+         return -this.b();
+      }
+
+      @Override
+      public double b() {
+         return this.j.a();
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return a;
+      }
+
+      public edi j() {
+         return this.e;
+      }
+
+      public edi k() {
+         return this.f;
+      }
+
+      public edi l() {
+         return this.g;
+      }
+
+      public double m() {
+         return this.h;
+      }
+
+      public double n() {
+         return this.i;
+      }
+
+      public edi.c o() {
+         return this.j;
+      }
+   }
+
+   public static record w(azg<edj.w.b, edj.w.a> e) implements edi {
+      private static final Codec<azg<edj.w.b, edj.w.a>> f = azg.a(edj.w.a.b);
+      private static final MapCodec<edj.w> g = f.fieldOf("spline").xmap(edj.w::new, edj.w::j);
+      public static final azx<edj.w> a = edj.a(g);
+
+      @Override
+      public double a(edi.b $$0) {
+         return (double)this.e.a(new edj.w.b($$0));
+      }
+
+      @Override
+      public double a() {
+         return (double)this.e.b();
+      }
+
+      @Override
+      public double b() {
+         return (double)this.e.c();
+      }
+
+      @Override
+      public void a(double[] $$0, edi.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.w(this.e.a((azg.d<edj.w.a>)($$1 -> $$1.a($$0)))));
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return a;
+      }
+
+      public azg<edj.w.b, edj.w.a> j() {
+         return this.e;
+      }
+
+      public static record a(jq<edi> c) implements bbh<edj.w.b> {
+         public static final Codec<edj.w.a> b = edi.c.xmap(edj.w.a::new, edj.w.a::a);
+
+         @Override
+         public String toString() {
+            Optional<aly<edi>> $$0 = this.c.e();
+            if ($$0.isPresent()) {
+               aly<edi> $$1 = $$0.get();
+               if ($$1 == edw.d) {
+                  return "continents";
+               }
+
+               if ($$1 == edw.e) {
+                  return "erosion";
+               }
+
+               if ($$1 == edw.f) {
+                  return "weirdness";
+               }
+
+               if ($$1 == edw.g) {
+                  return "ridges";
+               }
+            }
+
+            return "Coordinate[" + this.c + "]";
+         }
+
+         public float a(edj.w.b $$0) {
+            return (float)this.c.a().a($$0.a());
+         }
+
+         @Override
+         public float b() {
+            return this.c.b() ? (float)this.c.a().a() : Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return this.c.b() ? (float)this.c.a().b() : Float.POSITIVE_INFINITY;
+         }
+
+         public edj.w.a a(edi.f $$0) {
+            return new edj.w.a(new jq.a<>(this.c.a().a($$0)));
+         }
+
+         public jq<edi> a() {
+            return this.c;
+         }
+      }
+
+      public static record b(edi.b a) {
+      }
+   }
+
+   interface x extends edi {
+      edi j();
+
+      @Override
+      default double a(edi.b $$0) {
+         return this.a($$0, this.j().a($$0));
+      }
+
+      @Override
+      default void a(double[] $$0, edi.a $$1) {
+         this.j().a($$0, $$1);
+
+         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+            $$0[$$2] = this.a($$1.a($$2), $$0[$$2]);
+         }
+      }
+
+      double a(edi.b var1, double var2);
+   }
+
+   interface y extends edi {
+      Logger a = LogUtils.getLogger();
+
+      static edj.y a(edj.y.a $$0, edi $$1, edi $$2) {
+         double $$3 = $$1.a();
+         double $$4 = $$2.a();
+         double $$5 = $$1.b();
+         double $$6 = $$2.b();
+         if ($$0 == edj.y.a.c || $$0 == edj.y.a.d) {
+            boolean $$7 = $$3 >= $$6;
+            boolean $$8 = $$4 >= $$5;
+            if ($$7 || $$8) {
+               a.warn("Creating a " + $$0 + " function between two non-overlapping inputs: " + $$1 + " and " + $$2);
+            }
+         }
+         double $$9 = switch ($$0) {
+            case a -> $$3 + $$4;
+            case b -> $$3 > 0.0 && $$4 > 0.0 ? $$3 * $$4 : ($$5 < 0.0 && $$6 < 0.0 ? $$5 * $$6 : Math.min($$3 * $$6, $$5 * $$4));
+            case c -> Math.min($$3, $$4);
+            case d -> Math.max($$3, $$4);
+         };
+
+         double $$10 = switch ($$0) {
+            case a -> $$5 + $$6;
+            case b -> $$3 > 0.0 && $$4 > 0.0 ? $$5 * $$6 : ($$5 < 0.0 && $$6 < 0.0 ? $$3 * $$4 : Math.max($$3 * $$4, $$5 * $$6));
+            case c -> Math.min($$5, $$6);
+            case d -> Math.max($$5, $$6);
+         };
+         if ($$0 == edj.y.a.b || $$0 == edj.y.a.a) {
+            if ($$1 instanceof edj.h $$11) {
+               return new edj.n($$0 == edj.y.a.a ? edj.n.a.b : edj.n.a.a, $$2, $$9, $$10, $$11.a);
+            }
+
+            if ($$2 instanceof edj.h $$12) {
+               return new edj.n($$0 == edj.y.a.a ? edj.n.a.b : edj.n.a.a, $$1, $$9, $$10, $$12.a);
+            }
+         }
+
+         return new edj.a($$0, $$1, $$2, $$9, $$10);
+      }
+
+      edj.y.a j();
+
+      edi k();
+
+      edi l();
+
+      @Override
+      default azx<? extends edi> c() {
+         return this.j().e;
+      }
+
+      public static enum a implements bba {
+         a("add"),
+         b("mul"),
+         c("min"),
+         d("max");
+
+         final azx<edj.y> e = edj.a((BiFunction<edi, edi, edj.y>)(($$0x, $$1) -> edj.y.a(this, $$0x, $$1)), edj.y::k, edj.y::l);
+         private final String f;
+
+         private a(final String $$0) {
+            this.f = $$0;
+         }
+
+         @Override
+         public String c() {
+            return this.f;
+         }
+      }
+   }
+
+   protected static record z(edi e, edi.c f, edj.z.a g) implements edj.x {
+      private static final MapCodec<edj.z> h = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  edi.d.fieldOf("input").forGetter(edj.z::j),
+                  edi.c.a.fieldOf("noise").forGetter(edj.z::k),
+                  edj.z.a.c.fieldOf("rarity_value_mapper").forGetter(edj.z::l)
+               )
+               .apply($$0, edj.z::new)
+      );
+      public static final azx<edj.z> a = edj.a(h);
+
+      @Override
+      public double a(edi.b $$0, double $$1) {
+         double $$2 = this.g.e.get($$1);
+         return $$2 * Math.abs(this.f.a((double)$$0.a() / $$2, (double)$$0.b() / $$2, (double)$$0.c() / $$2));
+      }
+
+      @Override
+      public edi a(edi.f $$0) {
+         return $$0.apply(new edj.z(this.e.a($$0), $$0.a(this.f), this.g));
+      }
+
+      @Override
+      public double a() {
+         return 0.0;
+      }
+
+      @Override
+      public double b() {
+         return this.g.f * this.f.a();
+      }
+
+      @Override
+      public azx<? extends edi> c() {
+         return a;
+      }
+
+      @Override
+      public edi j() {
+         return this.e;
+      }
+
+      public edi.c k() {
+         return this.f;
+      }
+
+      public edj.z.a l() {
+         return this.g;
+      }
+
+      public static enum a implements bba {
+         a("type_1", edw.a::b, 2.0),
+         b("type_2", edw.a::a, 3.0);
+
+         public static final Codec<edj.z.a> c = bba.a(edj.z.a::values);
+         private final String d;
+         final Double2DoubleFunction e;
+         final double f;
+
+         private a(final String $$0, final Double2DoubleFunction $$1, final double $$2) {
+            this.d = $$0;
+            this.e = $$1;
+            this.f = $$2;
+         }
+
+         @Override
+         public String c() {
+            return this.d;
+         }
       }
    }
 }

@@ -8,89 +8,90 @@ import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
 public class ma {
-   private static final Logger aC = LogUtils.getLogger();
-   private static final Map<alz, Supplier<?>> aD = Maps.newLinkedHashMap();
-   private static final km<km<?>> aE = new jy<>(aly.a(mb.a), Lifecycle.stable());
-   public static final jl<ecj> a = a(mb.G, "step", ecj::a);
-   public static final kd<axe> b = a(mb.al, $$0 -> axf.nT);
-   public static final jl<eto> c = b(mb.D, "empty", $$0 -> etq.a);
-   public static final kd<bui> d = a(mb.W, bum::a);
-   public static final jl<dke> e = b(mb.f, "air", $$0 -> dkg.a);
-   public static final jl<bvm<?>> f = b(mb.z, "pig", $$0 -> bvm.aR);
-   public static final jl<cxg> g = b(mb.K, "air", $$0 -> cxo.a);
-   public static final kd<czh> h = a(mb.ad, czk::a);
+   private static final Logger aD = LogUtils.getLogger();
+   private static final Map<alz, Supplier<?>> aE = Maps.newLinkedHashMap();
+   private static final km<km<?>> aF = new jy<>(aly.a(mb.a), Lifecycle.stable());
+   public static final jl<ecq> a = a(mb.G, "step", ecq::a);
+   public static final kd<axe> b = a(mb.al, $$0 -> axf.nU);
+   public static final jl<etv> c = b(mb.D, "empty", $$0 -> etx.a);
+   public static final kd<bum> d = a(mb.W, buq::a);
+   public static final jl<dkl> e = b(mb.f, "air", $$0 -> dkn.a);
+   public static final jl<bvq<?>> f = b(mb.z, "pig", $$0 -> bvq.aR);
+   public static final jl<cxk> g = b(mb.K, "air", $$0 -> cxs.a);
+   public static final kd<czl> h = a(mb.ad, czo::a);
    public static final kd<lr<?>> i = a(mb.Y, $$0 -> ls.b);
-   public static final kd<dur<?>> j = b(mb.h, $$0 -> dur.a);
+   public static final kd<duy<?>> j = b(mb.h, $$0 -> duy.a);
    public static final kd<alz> k = a(mb.r, $$0 -> axp.E);
-   public static final jl<eaj> l = a(mb.o, "empty", $$0 -> eaj.c);
-   public static final kd<erz<?>> m = a(mb.ah, $$0 -> erz.a);
-   public static final kd<esn<?>> n = a(mb.ai, $$0 -> esn.b);
-   public static final kd<ers<?>> o = a(mb.ac, $$0 -> ers.a);
-   public static final kd<cug<?>> p = a(mb.V, $$0 -> cug.i);
-   public static final kd<dcj<?>> q = a(mb.af, $$0 -> dcj.a);
-   public static final kd<dci<?>> r = a(mb.ae, $$0 -> dci.b);
-   public static final kd<bxe> s = a(mb.c, bxj::a);
-   public static final kd<eco<?>> t = a(mb.ab, $$0 -> eco.a);
+   public static final jl<eaq> l = a(mb.o, "empty", $$0 -> eaq.c);
+   public static final kd<esg<?>> m = a(mb.ah, $$0 -> esg.a);
+   public static final kd<esu<?>> n = a(mb.ai, $$0 -> esu.b);
+   public static final kd<erz<?>> o = a(mb.ac, $$0 -> erz.a);
+   public static final kd<cuk<?>> p = a(mb.V, $$0 -> cuk.i);
+   public static final kd<dco<?>> q = a(mb.af, $$0 -> dco.a);
+   public static final kd<dcn<?>> r = a(mb.ae, $$0 -> dcn.b);
+   public static final kd<bxi> s = a(mb.c, bxn::a);
+   public static final kd<ecv<?>> t = a(mb.ab, $$0 -> ecv.a);
    public static final kd<is<?, ?>> u = a(mb.p, it::a);
    public static final kd<axo<?>> v = a(mb.am, $$0 -> axp.c);
-   public static final jl<cpj> w = a(mb.aw, "plains", $$0 -> cpj.c);
-   public static final jl<cph> x = a(mb.av, "none", $$0 -> cph.b);
-   public static final kd<chi> y = a(mb.aa, chj::a);
-   public static final jl<cff<?>> z = a(mb.U, "dummy", $$0 -> cff.a);
-   public static final jl<cgm<?>> A = a(mb.ak, "dummy", $$0 -> cgm.a);
-   public static final kd<crl> B = a(mb.aj, $$0 -> crl.c);
-   public static final kd<crj> C = a(mb.b, $$0 -> crj.b);
-   public static final kd<ewy> D = a(mb.Q, $$0 -> ewv.b);
-   public static final kd<exw<?>> E = a(mb.N, $$0 -> exx.e);
-   public static final kd<ezt> F = a(mb.M, $$0 -> ezu.a);
-   public static final kd<fan> G = a(mb.P, $$0 -> fap.b);
-   public static final kd<faf> H = a(mb.O, $$0 -> fah.c);
-   public static final kd<faw> I = a(mb.R, $$0 -> fay.c);
-   public static final kd<bsi<?>> J = a(mb.C, $$0 -> bsi.a);
-   public static final kd<bsk<?>> K = a(mb.J, $$0 -> bsk.a);
-   public static final kd<emk<?>> L = a(mb.H, $$0 -> emk.a);
-   public static final kd<eeq<?>> M = a(mb.i, $$0 -> eeq.k);
-   public static final kd<efo<?>> N = a(mb.k, $$0 -> efo.a);
-   public static final kd<ego<?>> O = a(mb.A, $$0 -> ego.I);
-   public static final kd<epa<?>> P = a(mb.ao, $$0 -> epa.a);
-   public static final kd<eot> Q = a(mb.an, $$0 -> eot.c);
-   public static final kd<eol<?>> R = a(mb.as, $$0 -> eol.f);
-   public static final kd<enk<?>> S = a(mb.Z, $$0 -> enk.f);
-   public static final kd<eku<?>> T = a(mb.j, $$0 -> eku.a);
-   public static final kd<ekf<?>> U = a(mb.E, $$0 -> ekf.a);
-   public static final kd<elz<?>> V = a(mb.au, $$0 -> elz.a);
-   public static final kd<ekr<?>> W = a(mb.ag, $$0 -> ekr.a);
-   public static final kd<eln<?>> X = a(mb.at, $$0 -> eln.b);
-   public static final kd<eju<?>> Y = a(mb.B, $$0 -> eju.a);
-   public static final kd<MapCodec<? extends dig>> Z = a(mb.e, dih::a);
-   public static final kd<MapCodec<? extends dzj>> aa = a(mb.n, dzl::a);
-   public static final kd<MapCodec<? extends edz.f>> ab = a(mb.S, edz.f::a);
-   public static final kd<MapCodec<? extends edz.o>> ac = a(mb.T, edz.o::a);
-   public static final kd<MapCodec<? extends edb>> ad = a(mb.t, edc::a);
-   public static final kd<MapCodec<? extends dke>> ae = a(mb.g, dkf::a);
-   public static final kd<esd<?>> af = a(mb.ar, $$0 -> esd.e);
-   public static final kd<epl<?>> ag = a(mb.ap, $$0 -> epl.d);
-   public static final kd<MapCodec<? extends epo>> ah = a(mb.aq, epp::a);
-   public static final kd<chw> ai = a(mb.l, chw::a);
-   public static final kd<cid> aj = a(mb.F, cid::a);
-   public static final kd<dvh> ak = a(mb.ax, dvi::a);
-   public static final kd<cvz> al = a(mb.q, cwa::a);
-   public static final kd<ar<?>> am = a(mb.aX, ao::a);
+   public static final jl<cpn> w = a(mb.aw, "plains", $$0 -> cpn.c);
+   public static final jl<cpl> x = a(mb.av, "none", $$0 -> cpl.b);
+   public static final kd<chm> y = a(mb.aa, chn::a);
+   public static final jl<cfj<?>> z = a(mb.U, "dummy", $$0 -> cfj.a);
+   public static final jl<cgq<?>> A = a(mb.ak, "dummy", $$0 -> cgq.a);
+   public static final kd<crp> B = a(mb.aj, $$0 -> crp.c);
+   public static final kd<crn> C = a(mb.b, $$0 -> crn.b);
+   public static final kd<exf> D = a(mb.Q, $$0 -> exc.b);
+   public static final kd<eyd<?>> E = a(mb.N, $$0 -> eye.e);
+   public static final kd<ezy> F = a(mb.M, $$0 -> ezz.a);
+   public static final kd<fas> G = a(mb.P, $$0 -> fau.b);
+   public static final kd<fak> H = a(mb.O, $$0 -> fam.c);
+   public static final kd<fbb> I = a(mb.R, $$0 -> fbd.c);
+   public static final kd<bsm<?>> J = a(mb.C, $$0 -> bsm.a);
+   public static final kd<bso<?>> K = a(mb.J, $$0 -> bso.a);
+   public static final kd<emr<?>> L = a(mb.H, $$0 -> emr.a);
+   public static final kd<eex<?>> M = a(mb.i, $$0 -> eex.k);
+   public static final kd<efv<?>> N = a(mb.k, $$0 -> efv.a);
+   public static final kd<egv<?>> O = a(mb.A, $$0 -> egv.I);
+   public static final kd<eph<?>> P = a(mb.ao, $$0 -> eph.a);
+   public static final kd<epa> Q = a(mb.an, $$0 -> epa.c);
+   public static final kd<eos<?>> R = a(mb.as, $$0 -> eos.f);
+   public static final kd<enr<?>> S = a(mb.Z, $$0 -> enr.f);
+   public static final kd<elb<?>> T = a(mb.j, $$0 -> elb.a);
+   public static final kd<ekm<?>> U = a(mb.E, $$0 -> ekm.a);
+   public static final kd<emg<?>> V = a(mb.au, $$0 -> emg.a);
+   public static final kd<eky<?>> W = a(mb.ag, $$0 -> eky.a);
+   public static final kd<elu<?>> X = a(mb.at, $$0 -> elu.b);
+   public static final kd<ekb<?>> Y = a(mb.B, $$0 -> ekb.a);
+   public static final kd<MapCodec<? extends din>> Z = a(mb.e, dio::a);
+   public static final kd<MapCodec<? extends dzq>> aa = a(mb.n, dzs::a);
+   public static final kd<MapCodec<? extends eeg.f>> ab = a(mb.S, eeg.f::a);
+   public static final kd<MapCodec<? extends eeg.o>> ac = a(mb.T, eeg.o::a);
+   public static final kd<MapCodec<? extends edi>> ad = a(mb.t, edj::a);
+   public static final kd<MapCodec<? extends dkl>> ae = a(mb.g, dkm::a);
+   public static final kd<esk<?>> af = a(mb.ar, $$0 -> esk.e);
+   public static final kd<eps<?>> ag = a(mb.ap, $$0 -> eps.d);
+   public static final kd<MapCodec<? extends epv>> ah = a(mb.aq, epw::a);
+   public static final kd<cia> ai = a(mb.l, cia::a);
+   public static final kd<cih> aj = a(mb.F, cih::a);
+   public static final kd<dvo> ak = a(mb.ax, dvp::a);
+   public static final kd<cwd> al = a(mb.q, cwe::a);
+   public static final kd<ar<?>> am = a(mb.aY, ao::a);
    public static final kd<zm<?>> an = a(mb.ay, zn::a);
    public static final kd<kt<?>> ao = a(mb.az, ku::a);
    public static final kd<MapCodec<? extends bx>> ap = a(mb.aA, by::a);
    public static final kd<cv.a<?>> aq = a(mb.aB, cw::a);
-   public static final kd<eve> ar = a(mb.aC, evf::a);
-   public static final kd<kt<?>> as = a(mb.aD, dds::a);
-   public static final kd<MapCodec<? extends ddy>> at = a(mb.v, ddy::a);
-   public static final kd<MapCodec<? extends dei>> au = a(mb.u, dei::a);
-   public static final kd<MapCodec<? extends dej>> av = a(mb.w, dej::b);
-   public static final kd<MapCodec<? extends dek>> aw = a(mb.y, dek::a);
-   public static final kd<MapCodec<? extends dez>> ax = a(mb.x, dfa::a);
-   public static final kd<daw.a<?>> ay = a(mb.aE, $$0 -> daw.a.a);
-   public static final kd<ddc.a<?>> az = a(mb.aF, ddf::a);
-   public static final kd<ddi.j<?>> aA = a(mb.aG, ddj::a);
-   public static final kd<? extends kd<?>> aB = aE;
+   public static final kd<evl> ar = a(mb.aC, evm::a);
+   public static final kd<kt<?>> as = a(mb.aD, ddz::a);
+   public static final kd<MapCodec<? extends def>> at = a(mb.v, def::a);
+   public static final kd<MapCodec<? extends dep>> au = a(mb.u, dep::a);
+   public static final kd<MapCodec<? extends deq>> av = a(mb.w, deq::b);
+   public static final kd<MapCodec<? extends der>> aw = a(mb.y, der::a);
+   public static final kd<MapCodec<? extends dfg>> ax = a(mb.x, dfh::a);
+   public static final kd<dba.a<?>> ay = a(mb.aE, $$0 -> dba.a.a);
+   public static final kd<ddi.a<?>> az = a(mb.aF, ddl::a);
+   public static final kd<ddo.i<?>> aA = a(mb.aG, ddq::a);
+   public static final kd<dcg> aB = a(mb.aH, dcf::a);
+   public static final kd<? extends kd<?>> aC = aF;
 
    private static <T> kd<T> a(aly<? extends kd<T>> $$0, ma.a<T> $$1) {
       return a($$0, new jy<>($$0, Lifecycle.stable(), false), $$1);
@@ -109,31 +110,31 @@ public class ma {
    }
 
    private static <T, R extends km<T>> R a(aly<? extends kd<T>> $$0, R $$1, ma.a<T> $$2) {
-      amb.a(() -> "registry " + $$0);
+      amb.a(() -> "registry " + $$0.a());
       alz $$3 = $$0.a();
-      aD.put($$3, () -> $$2.run($$1));
-      aE.a((aly<km<?>>)$$0, $$1, kc.a);
+      aE.put($$3, () -> $$2.run($$1));
+      aF.a((aly<km<?>>)$$0, $$1, kc.a);
       return $$1;
    }
 
    public static void a() {
       b();
       c();
-      b(aB);
+      b(aC);
    }
 
    private static void b() {
-      aD.forEach(($$0, $$1) -> {
+      aE.forEach(($$0, $$1) -> {
          if ($$1.get() == null) {
-            aC.error("Unable to bootstrap registry '{}'", $$0);
+            aD.error("Unable to bootstrap registry '{}'", $$0);
          }
       });
    }
 
    private static void c() {
-      aB.n();
+      aC.n();
 
-      for (kd<?> $$0 : aB) {
+      for (kd<?> $$0 : aC) {
          c($$0);
          $$0.n();
       }

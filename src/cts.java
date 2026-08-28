@@ -1,72 +1,19 @@
-public class cts extends csx {
-   private static final int m = 9;
-   private static final int n = 9;
-   private static final int o = 36;
-   private static final int p = 36;
-   private static final int q = 45;
-   private final bsx r;
+public class cts extends cuy {
+   private final ctr a;
 
-   public cts(int $$0, cpr $$1) {
-      this($$0, $$1, new btl(9));
-   }
-
-   public cts(int $$0, cpr $$1, bsx $$2) {
-      super(cug.g, $$0);
-      a($$2, 9);
-      this.r = $$2;
-      $$2.c_($$1.k);
-      this.d($$2, 62, 17);
-      this.c($$1, 8, 84);
-   }
-
-   protected void d(bsx $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            int $$5 = $$4 + $$3 * 3;
-            this.a(new cuu($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
-      }
+   public cts(btb $$0, int $$1, int $$2, int $$3, ctr $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
    @Override
-   public boolean b(cps $$0) {
-      return this.r.a($$0);
+   public boolean a(cxo $$0) {
+      return !this.a.e(this.d) && super.a($$0);
    }
 
    @Override
-   public cxk b(cps $$0, int $$1) {
-      cxk $$2 = cxk.k;
-      cuu $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cxk $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cxk.k;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cxk.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cxk.k);
-         } else {
-            $$3.c();
-         }
-
-         if ($$4.L() == $$2.L()) {
-            return cxk.k;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cps $$0) {
-      super.a($$0);
-      this.r.c($$0);
+   public void c() {
+      super.c();
+      this.a.a(this.c);
    }
 }

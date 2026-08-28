@@ -8,9 +8,9 @@ public class ajc implements aac<ahm> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final duz.a j;
+   private final dvg.a j;
 
-   public ajc(jh $$0, String $$1, duz.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public ajc(jh $$0, String $$1, dvg.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class ajc implements aac<ahm> {
    private ajc(ws $$0) {
       this.e = $$0.e();
       this.f = $$0.p();
-      this.j = $$0.b(duz.a.class);
+      this.j = $$0.b(dvg.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class ajc implements aac<ahm> {
       return this.i;
    }
 
-   public duz.a i() {
+   public dvg.a i() {
       return this.j;
    }
 }

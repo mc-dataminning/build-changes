@@ -1,40 +1,31 @@
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public record ddd(dde b, ddc c, OptionalInt d, dbi e, Optional<List<dbv>> f) {
-   public static final zt<xg, ddd> a = zt.a(dde.a, ddd::a, ddc.e, ddd::b, zr.i, ddd::c, dbi.o, ddd::d, dbv.a.a(zr.a()).a(zr::a), ddd::e, ddd::new);
-
-   public List<cxk> a(ddi.f $$0) {
-      return this.c.d().a($$0);
+public class ddd extends dcv {
+   public ddd(String $$0, dbz $$1, cxo $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean a(cpx $$0) {
-      if (this.f.isEmpty()) {
-         return false;
-      } else {
-         List<cpw.a<jq<cxg>>> $$1 = this.f.get().stream().map(dby::a).toList();
-         return $$0.a($$1, null);
-      }
+   @Override
+   public dco<ddd> b() {
+      return dco.f;
    }
 
-   public dde a() {
-      return this.b;
+   @Override
+   public dcn<ddd> a() {
+      return dcn.s;
    }
 
-   public ddc b() {
-      return this.c;
+   @Override
+   public List<ddi> g() {
+      return List.of(new dds(this.k().b(), this.c(), new ddo.d(cxs.xh)));
    }
 
-   public OptionalInt c() {
-      return this.d;
+   public ddo c() {
+      return new ddo.f(this.l());
    }
 
-   public dbi d() {
-      return this.e;
-   }
-
-   public Optional<List<dbv>> e() {
-      return this.f;
+   @Override
+   public dcg h() {
+      return dcf.k;
    }
 }

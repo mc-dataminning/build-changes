@@ -1,4 +1,3 @@
-public class gzk extends gym {
-   public float a;
-   public int b = 1;
+public class gzk extends gyr {
+   public cir.a a = cir.a.b;
 }

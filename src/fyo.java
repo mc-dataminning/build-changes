@@ -1,132 +1,257 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.Collection;
+import java.util.Locale;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class fyo extends ftr {
-   private static final xv a = xv.c("selectWorld.experimental.title");
-   private static final xv b = xv.c("selectWorld.experimental.message");
-   private static final xv c = xv.c("selectWorld.experimental.details");
-   private static final int d = 10;
-   private static final int s = 100;
-   private final BooleanConsumer u;
-   final Collection<avd> v;
-   private final frm w = new frm().a(10).b(20);
+public class fyo extends ftw {
+   private static final xv c = xv.c("gui.socialInteractions.title");
+   private static final alz d = alz.b("social_interactions/background");
+   private static final alz s = alz.b("icon/search");
+   private static final xv u = xv.c("gui.socialInteractions.tab_all");
+   private static final xv v = xv.c("gui.socialInteractions.tab_hidden");
+   private static final xv w = xv.c("gui.socialInteractions.tab_blocked");
+   private static final xv x = u.e().a(n.t);
+   private static final xv y = v.e().a(n.t);
+   private static final xv z = w.e().a(n.t);
+   private static final xv A = xv.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
+   static final xv B = xv.c("gui.socialInteractions.search_empty").a(n.h);
+   private static final xv C = xv.c("gui.socialInteractions.empty_hidden").a(n.h);
+   private static final xv D = xv.c("gui.socialInteractions.empty_blocked").a(n.h);
+   private static final xv E = xv.c("gui.socialInteractions.blocking_hint");
+   private static final int F = 8;
+   private static final int G = 236;
+   private static final int H = 16;
+   private static final int I = 64;
+   public static final int a = 72;
+   public static final int b = 88;
+   private static final int J = 238;
+   private static final int K = 20;
+   private static final int L = 36;
+   private final frs M = new frs(this);
+   @Nullable
+   private final ftw N;
+   fyn O;
+   fom P;
+   private String Q = "";
+   private fyo.a R = fyo.a.a;
+   private fod S;
+   private fod T;
+   private fod U;
+   private fod V;
+   @Nullable
+   private xv W;
+   private int X;
 
-   public fyo(Collection<avd> $$0, BooleanConsumer $$1) {
-      super(a);
-      this.v = $$0;
-      this.u = $$1;
+   public fyo() {
+      this(null);
+   }
+
+   public fyo(@Nullable ftw $$0) {
+      super(c);
+      this.N = $$0;
+      this.a(fme.Q());
+   }
+
+   private int l() {
+      return Math.max(52, this.o - 128 - 16);
+   }
+
+   private int E() {
+      return 80 + this.l() - 8;
+   }
+
+   private int F() {
+      return (this.n - 238) / 2;
    }
 
    @Override
    public xv i() {
-      return xu.a(super.i(), b);
+      return (xv)(this.W != null ? xu.a(super.i(), this.W) : super.i());
    }
 
    @Override
    protected void aT_() {
-      super.aT_();
-      frm.b $$0 = this.w.d(2);
-      frq $$1 = $$0.b().b();
-      $$0.a(new fpg(this.l, this.p), 2, $$1);
-      fot $$2 = $$0.a(new fot(b, this.p).b(true), 2, $$1);
-      $$2.d(310);
-      $$0.a(fny.a(c, $$0x -> this.m.a(new fyo.a())).a(100).a(), 2, $$1);
-      $$0.a(fny.a(xu.i, $$0x -> this.u.accept(true)).a());
-      $$0.a(fny.a(xu.k, $$0x -> this.u.accept(false)).a());
-      this.w.a($$1x -> {
-         fnw var10000 = this.c($$1x);
+      this.M.a(c, this.p);
+      this.O = new fyn(this, this.m, this.n, this.E() - 88, 88, 36);
+      int $$0 = this.O.a() / 3;
+      int $$1 = this.O.s();
+      int $$2 = this.O.t();
+      this.S = this.c(fod.a(u, $$0x -> this.a(fyo.a.a)).a($$1, 45, $$0, 20).a());
+      this.T = this.c(fod.a(v, $$0x -> this.a(fyo.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
+      this.U = this.c(fod.a(w, $$0x -> this.a(fyo.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
+      String $$3 = this.P != null ? this.P.a() : "";
+      this.P = new fom(this.p, this.F() + 28, 74, 200, 15, A) {
+         @Override
+         protected yj aR_() {
+            return !fyo.this.P.a().isEmpty() && fyo.this.O.b() ? super.aR_().f(", ").b(fyo.B) : super.aR_();
+         }
+      };
+      this.P.f(16);
+      this.P.g(true);
+      this.P.g(-1);
+      this.P.a($$3);
+      this.P.c(A);
+      this.P.b(this::a);
+      this.c(this.P);
+      this.d(this.O);
+      this.V = this.c(fod.a(E, fst.b(this, aza.o)).a(this.n / 2 - 100, 64 + this.l(), 200, 20).a());
+      this.a(this.R);
+      this.M.b(fod.a(xu.d, $$0x -> this.aP_()).a(200).a());
+      this.M.a($$1x -> {
+         fob var10000 = this.c($$1x);
       });
-      this.w.a();
       this.c();
    }
 
    @Override
    protected void c() {
-      frl.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
+      this.M.a();
+      this.O.b(this.n, this.E() - 88, 88);
+      this.P.c(this.F() + 28, 74);
+      int $$0 = this.O.s();
+      int $$1 = this.O.t();
+      int $$2 = this.O.a() / 3;
+      this.S.c($$0, 45);
+      this.T.c(($$0 + $$1 - $$2) / 2 + 1, 45);
+      this.U.c($$1 - $$2 + 1, 45);
+      this.V.c(this.n / 2 - 100, 64 + this.l());
+   }
+
+   @Override
+   protected void aG_() {
+      this.b(this.P);
    }
 
    @Override
    public void aP_() {
-      this.u.accept(false);
+      this.m.a(this.N);
    }
 
-   class a extends ftr {
-      private static final xv b = xv.c("selectWorld.experimental.details.title");
-      final frn c = new frn(this);
-      @Nullable
-      private fyo.a.a d;
-
-      a() {
-         super(b);
+   private void a(fyo.a $$0) {
+      this.R = $$0;
+      this.S.b(u);
+      this.T.b(v);
+      this.U.b(w);
+      boolean $$1 = false;
+      switch ($$0) {
+         case a:
+            this.S.b(x);
+            Collection<UUID> $$2 = this.m.t.i.n();
+            this.O.a($$2, this.O.n(), true);
+            break;
+         case b:
+            this.T.b(y);
+            Set<UUID> $$3 = this.m.aN().c();
+            $$1 = $$3.isEmpty();
+            this.O.a($$3, this.O.n(), false);
+            break;
+         case c:
+            this.U.b(z);
+            fym $$4 = this.m.aN();
+            Set<UUID> $$5 = this.m.t.i.n().stream().filter($$4::e).collect(Collectors.toSet());
+            $$1 = $$5.isEmpty();
+            this.O.a($$5, this.O.n(), false);
       }
 
-      @Override
-      protected void aT_() {
-         this.c.a(b, this.p);
-         this.d = this.c.c(new fyo.a.a(this.m, fyo.this.v));
-         this.c.b(fny.a(xu.k, $$0 -> this.aP_()).a());
-         this.c.a($$1 -> {
-            fnw var10000 = this.c($$1);
-         });
-         this.c();
-      }
-
-      @Override
-      protected void c() {
-         if (this.d != null) {
-            this.d.a(this.n, this.c);
-         }
-
-         this.c.a();
-      }
-
-      @Override
-      public void aP_() {
-         this.m.a(fyo.this);
-      }
-
-      class a extends fov<fyo.a.b> {
-         public a(final flz $$0, final Collection<avd> $$1) {
-            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
-
-            for (avd $$2 : $$1) {
-               String $$3 = csq.a(csq.h, $$2.e());
-               if (!$$3.isEmpty()) {
-                  xv $$4 = xy.a($$2.b().f(), ys.a.a(true));
-                  xv $$5 = xv.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, fos.a(a.this.p, $$5, this.a())));
-               }
-            }
-         }
-
-         @Override
-         public int a() {
-            return this.g * 3 / 4;
+      flv $$6 = this.m.aZ();
+      if (!this.P.a().isEmpty() && this.O.b() && !this.P.aN_()) {
+         $$6.c(B);
+      } else if ($$1) {
+         if ($$0 == fyo.a.b) {
+            $$6.c(C);
+         } else if ($$0 == fyo.a.c) {
+            $$6.c(D);
          }
       }
+   }
 
-      class b extends fov.a<fyo.a.b> {
-         private final xv b;
-         private final xv c;
-         private final fos d;
+   @Override
+   public void b(fnq $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = this.F() + 3;
+      $$0.a(glt::B, d, $$4, 64, 236, this.l() + 16);
+      $$0.a(glt::B, s, $$4 + 10, 76, 12, 12);
+   }
 
-         b(final xv $$0, final xv $$1, final fos $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
-         }
-
-         @Override
-         public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
-            this.d.b($$0, $$3, $$2 + 12, 9, -1);
-         }
-
-         @Override
-         public xv a() {
-            return xv.a("narrator.select", xu.a(this.b, this.c));
-         }
+   @Override
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a(this.m);
+      if (this.W != null) {
+         $$0.b(this.m.h, this.W, this.F() + 8, 35, -1);
       }
+
+      if (!this.O.b()) {
+         this.O.a($$0, $$1, $$2, $$3);
+      } else if (!this.P.a().isEmpty()) {
+         $$0.a(this.m.h, B, this.n / 2, (72 + this.E()) / 2, -1);
+      } else if (this.R == fyo.a.b) {
+         $$0.a(this.m.h, C, this.n / 2, (72 + this.E()) / 2, -1);
+      } else if (this.R == fyo.a.c) {
+         $$0.a(this.m.h, D, this.n / 2, (72 + this.E()) / 2, -1);
+      }
+
+      this.V.k = this.R == fyo.a.c;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.P.aN_() && this.m.n.L.a($$0, $$1)) {
+         this.aP_();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   private void a(String $$0) {
+      $$0 = $$0.toLowerCase(Locale.ROOT);
+      if (!$$0.equals(this.Q)) {
+         this.O.a($$0);
+         this.Q = $$0;
+         this.a(this.R);
+      }
+   }
+
+   private void a(fme $$0) {
+      int $$1 = $$0.L().m().size();
+      if (this.X != $$1) {
+         String $$2 = "";
+         gfx $$3 = $$0.S();
+         if ($$0.T()) {
+            $$2 = $$0.V().ae();
+         } else if ($$3 != null) {
+            $$2 = $$3.a;
+         }
+
+         if ($$1 > 1) {
+            this.W = xv.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
+         } else {
+            this.W = xv.a("gui.socialInteractions.server_label.single", $$2, $$1);
+         }
+
+         this.X = $$1;
+      }
+   }
+
+   public void a(gfu $$0) {
+      this.O.a($$0, this.R);
+   }
+
+   public void a(UUID $$0) {
+      this.O.a($$0);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

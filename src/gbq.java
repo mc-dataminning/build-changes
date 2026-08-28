@@ -1,5 +1,5 @@
-public class gbq extends fzv<gxp> {
-   public gbq(geh $$0) {
+public class gbq extends gac<hai> {
+   public gbq(gem $$0) {
       super($$0);
    }
 }

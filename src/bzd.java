@@ -1,37 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bzd {
-   public static bzf<bwb> a(float $$0) {
-      return cbh.a((Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$1 -> $$1.group($$1.c(cff.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.dv())) {
-                  return false;
-               } else {
-                  Optional<fbs> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new cfi($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+public class bzd extends bxy<cpi> {
+   private final float c;
+
+   public bzd(float $$0) {
+      super(ImmutableMap.of(cfj.m, cfk.c, cfj.n, cfk.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   @Nullable
-   private static fbs a(ash $$0, bwb $$1) {
-      bam $$2 = $$1.dY();
-      jh $$3 = $$1.dv();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         jh $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return fbs.c($$5);
-         }
-      }
-
-      return null;
+   protected boolean a(ash $$0, cpi $$1) {
+      cpw $$2 = $$1.gm();
+      return $$1.bL() && $$2 != null && !$$1.bj() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.cd != null;
    }
 
-   public static boolean a(ash $$0, bwb $$1, jh $$2) {
-      return $$0.h($$2) && (double)$$0.a(edi.a.e, $$2).v() <= $$1.dC();
+   protected boolean a(ash $$0, cpi $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(ash $$0, cpi $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(ash $$0, cpi $$1, long $$2) {
+      bxh<?> $$3 = $$1.eb();
+      $$3.b(cfj.m);
+      $$3.b(cfj.n);
+   }
+
+   protected void d(ash $$0, cpi $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cpi $$0) {
+      bxh<?> $$1 = $$0.eb();
+      $$1.a(cfj.m, new cfm(new byj($$0.gm(), false), this.c, 2));
+      $$1.a(cfj.n, new byj($$0.gm(), true));
    }
 }

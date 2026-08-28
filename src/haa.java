@@ -1,6 +1,3 @@
-public class haa extends gym {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+public class haa extends gyr {
+   public boolean a;
 }

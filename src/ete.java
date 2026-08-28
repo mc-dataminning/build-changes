@@ -1,160 +1,113 @@
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public class ete implements eth {
-   public static final int b = 1;
-   public static final ete c = new ete();
-   protected final dhc d;
-   @Nullable
-   private final etg<?, ?> a;
-   @Nullable
-   private final etg<?, ?> e;
+public final class ete extends etn<etf.a, etf> {
+   private final jh.a g = new jh.a();
 
-   public ete(dzv $$0, boolean $$1, boolean $$2) {
-      this.d = $$0.q();
-      this.a = $$1 ? new esx($$0) : null;
-      this.e = $$2 ? new eti($$0) : null;
+   public ete(eac $$0) {
+      this($$0, new etf($$0));
    }
 
-   private ete() {
-      this.d = dhc.e(0, 0);
-      this.a = null;
-      this.e = null;
+   @VisibleForTesting
+   public ete(eac $$0, etf $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(jh $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
-   }
-
-   @Override
-   public boolean N_() {
-      return this.e != null && this.e.N_() ? true : this.a != null && this.a.N_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.e != null) {
-         $$0 += this.e.a();
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(kj $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(dgg $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(dgg $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.e != null) {
-         this.e.b($$0);
-      }
-   }
-
-   public etc a(dhj $$0) {
-      if ($$0 == dhj.b) {
-         return (etc)(this.a == null ? etc.a.a : this.a);
-      } else {
-         return (etc)(this.e == null ? etc.a.a : this.e);
-      }
-   }
-
-   public String a(dhj $$0, kj $$1) {
-      if ($$0 == dhj.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
+   protected void a(long $$0) {
+      long $$1 = kj.e($$0);
+      if (this.f.b($$1)) {
+         dxu $$2 = this.c(this.g.f($$0));
+         int $$3 = this.a($$0, $$2);
+         int $$4 = this.f.e($$0);
+         if ($$3 < $$4) {
+            this.f.a($$0, 0);
+            this.b($$0, etn.a.a($$4));
+         } else {
+            this.b($$0, c);
          }
-      } else if (this.e != null) {
-         return this.e.b($$1.s());
-      }
 
-      return "n/a";
-   }
-
-   public etd.b b(dhj $$0, kj $$1) {
-      if ($$0 == dhj.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
+         if ($$3 > 0) {
+            this.c($$0, etn.a.a($$3, a($$2)));
          }
-      } else if (this.e != null) {
-         return this.e.c($$1.s());
       }
-
-      return etd.b.a;
    }
 
-   public void a(dhj $$0, kj $$1, @Nullable dzn $$2) {
-      if ($$0 == dhj.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
+   @Override
+   protected void a(long $$0, long $$1, int $$2) {
+      dxu $$3 = null;
+
+      for (jm $$4 : d) {
+         if (etn.a.a($$1, $$4)) {
+            long $$5 = jh.a($$0, $$4);
+            if (this.f.b(kj.e($$5))) {
+               int $$6 = this.f.e($$5);
+               int $$7 = $$2 - 1;
+               if ($$7 > $$6) {
+                  this.g.f($$5);
+                  dxu $$8 = this.c(this.g);
+                  int $$9 = $$2 - this.b($$8);
+                  if ($$9 > $$6) {
+                     if ($$3 == null) {
+                        $$3 = etn.a.b($$1) ? dkn.a.m() : this.c(this.g.f($$0));
+                     }
+
+                     if (!this.a($$3, $$8, $$4)) {
+                        this.f.a($$5, $$9);
+                        if ($$9 > 1) {
+                           this.c($$5, etn.a.a($$9, a($$8), $$4.g()));
+                        }
+                     }
+                  }
+               }
+            }
          }
-      } else if (this.e != null) {
-         this.e.a($$1.s(), $$2);
       }
    }
 
-   public void b(dgg $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
+   @Override
+   protected void a(long $$0, long $$1) {
+      int $$2 = etn.a.a($$1);
+
+      for (jm $$3 : d) {
+         if (etn.a.a($$1, $$3)) {
+            long $$4 = jh.a($$0, $$3);
+            if (this.f.b(kj.e($$4))) {
+               int $$5 = this.f.e($$4);
+               if ($$5 != 0) {
+                  if ($$5 <= $$2 - 1) {
+                     dxu $$6 = this.c(this.g.f($$4));
+                     int $$7 = this.a($$4, $$6);
+                     this.f.a($$4, 0);
+                     if ($$7 < $$5) {
+                        this.b($$4, etn.a.a($$5, $$3.g()));
+                     }
+
+                     if ($$7 > 0) {
+                        this.c($$4, etn.a.a($$7, a($$6)));
+                     }
+                  } else {
+                     this.c($$4, etn.a.b($$5, false, $$3.g()));
+                  }
+               }
+            }
+         }
       }
+   }
 
-      if (this.e != null) {
-         this.e.b($$0, $$1);
+   private int a(long $$0, dxu $$1) {
+      int $$2 = $$1.k();
+      return $$2 > 0 && this.f.j(kj.e($$0)) ? $$2 : 0;
+   }
+
+   @Override
+   public void b(dgn $$0) {
+      this.a($$0, true);
+      eab $$1 = this.e.c($$0.g, $$0.h);
+      if ($$1 != null) {
+         $$1.a(($$0x, $$1x) -> {
+            int $$2 = $$1x.k();
+            this.c($$0x.a(), etn.a.a($$2, a($$1x)));
+         });
       }
-   }
-
-   public int a(jh $$0, int $$1) {
-      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(long $$0) {
-      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
-   }
-
-   public int c() {
-      return this.d.an() + 2;
-   }
-
-   public int d() {
-      return this.d.ao() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
    }
 }

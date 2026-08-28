@@ -1,42 +1,90 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public record gmu(alz a, List<gmu.b> b) {
-   public gmu(alz a, List<gmu.b> b) {
-      b = List.copyOf(b);
-      this.a = a;
-      this.b = b;
+public class gmu {
+   public float[] a;
+   public final int b;
+
+   public gmu(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
+   }
+
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
    }
 
    protected static class a implements JsonDeserializer<gmu> {
+      private static final int a = 0;
+
       public gmu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         alz $$4 = alz.a(azu.i($$3, "model"));
-         List<gmu.b> $$5 = this.a($$3);
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
          return new gmu($$4, $$5);
       }
 
-      protected List<gmu.b> a(JsonObject $$0) {
-         Map<alz, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = azu.u($$0, "predicate");
-
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(alz.a($$3.getKey()), azu.e($$3.getValue(), $$3.getKey()));
+      protected int a(JsonObject $$0) {
+         int $$1 = azu.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
-
-         return $$1.entrySet().stream().map($$0x -> new gmu.b((alz)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
       }
-   }
 
-   public static record b(alz a, float b) {
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = azu.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = azu.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
+      }
    }
 }

@@ -32,7 +32,7 @@ public class fj implements ArgumentType<hl> {
       return new fj(true, false);
    }
 
-   public static bvf a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+   public static bvj a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
       return ((hl)$$0.getArgument($$1, hl.class)).a((ew)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class fj implements ArgumentType<hl> {
       return new fj(false, false);
    }
 
-   public static Collection<? extends bvf> b(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bvf> $$2 = c($$0, $$1);
+   public static Collection<? extends bvj> b(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends bvj> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,7 +49,7 @@ public class fj implements ArgumentType<hl> {
       }
    }
 
-   public static Collection<? extends bvf> c(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends bvj> c(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
       return ((hl)$$0.getArgument($$1, hl.class)).b((ew)$$0.getSource());
    }
 

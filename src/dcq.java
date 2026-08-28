@@ -1,86 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class dcq implements dbz<dcr> {
-   private final dbv c;
-   private final cxk d;
-   private final String e;
-   @Nullable
-   private dby f;
-
-   public dcq(String $$0, dbv $$1, cxk $$2) {
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record dcq<T extends dcd<?>>(ddo a, Optional<dci<T>> b) {
+   public static <T extends dcd<?>> zt<xg, dcq<T>> a() {
+      return zt.a(ddo.b, dcq::b, $$0 -> new dcq<>($$0, Optional.empty()));
    }
 
-   @Override
-   public abstract dci<? extends dcq> a();
-
-   @Override
-   public abstract dcj<? extends dcq> b();
-
-   public boolean a(dcr $$0, dha $$1) {
-      return this.c.a($$0.c());
+   public ddo b() {
+      return this.a;
    }
 
-   @Override
-   public String j() {
-      return this.e;
+   public Optional<dci<T>> c() {
+      return this.b;
    }
 
-   public dbv k() {
-      return this.c;
-   }
+   public static record a<T extends dcd<?>>(dbz a, dcq<T> b) {
 
-   protected cxk l() {
-      return this.d;
-   }
-
-   @Override
-   public dby ap_() {
-      if (this.f == null) {
-         this.f = dby.b(this.c);
+      public static <T extends dcd<?>> zt<xg, dcq.a<T>> a() {
+         return zt.a(dbz.a, dcq.a::b, dcq.a(), dcq.a::c, dcq.a::new);
       }
 
-      return this.f;
-   }
-
-   public cxk a(dcr $$0, js.a $$1) {
-      return this.d.v();
-   }
-
-   @FunctionalInterface
-   public interface a<T extends dcq> {
-      T create(String var1, dbv var2, cxk var3);
-   }
-
-   public static class b<T extends dcq> implements dci<T> {
-      private final MapCodec<T> w;
-      private final zt<xg, T> x;
-
-      protected b(dcq.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(dcq::j),
-                     dbv.d.fieldOf("ingredient").forGetter(dcq::k),
-                     cxk.d.fieldOf("result").forGetter(dcq::l)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.x = zt.a(zr.o, dcq::j, dbv.a, dcq::k, cxk.i, dcq::l, $$0::create);
+      public dbz b() {
+         return this.a;
       }
 
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
+      public dcq<T> c() {
+         return this.b;
+      }
+   }
+
+   public static record b<T extends dcd<?>>(List<dcq.a<T>> a) {
+      public static <T extends dcd<?>> dcq.b<T> a() {
+         return new dcq.b<>(List.of());
       }
 
-      @Override
-      public zt<xg, T> b() {
-         return this.x;
+      public static <T extends dcd<?>> zt<xg, dcq.b<T>> b() {
+         return zt.a(dcq.a.<T>a().a(zr.a()), dcq.b::e, dcq.b::new);
+      }
+
+      public boolean a(cxo $$0) {
+         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
+      }
+
+      public dcq.b<T> b(cxo $$0) {
+         return new dcq.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
+      }
+
+      public boolean c() {
+         return this.a.isEmpty();
+      }
+
+      public int d() {
+         return this.a.size();
+      }
+
+      public List<dcq.a<T>> e() {
+         return this.a;
       }
    }
 }

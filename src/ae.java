@@ -111,7 +111,7 @@ public class ae {
       return Collectors.toCollection(Lists::newArrayList);
    }
 
-   public static <T extends Comparable<T>> String a(dyp<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dyw<T> $$0, Object $$1) {
       return $$0.b((T)$$1);
    }
 
@@ -246,7 +246,7 @@ public class ae {
       Type<?> $$2 = null;
 
       try {
-         $$2 = bbp.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = bbt.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
          if (ab.aU) {

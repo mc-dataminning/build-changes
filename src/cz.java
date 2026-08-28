@@ -3,15 +3,15 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cz(Optional<be<asz<String>, cz.a>> c) implements dz<dar> {
+public record cz(Optional<be<asz<String>, cz.a>> c) implements dz<dav> {
    public static final Codec<cz> a = RecordCodecBuilder.create($$0 -> $$0.group(be.a(cz.a.a).optionalFieldOf("pages").forGetter(cz::b)).apply($$0, cz::new));
 
    @Override
-   public kt<dar> a() {
+   public kt<dav> a() {
       return ku.S;
    }
 
-   public boolean a(cxk $$0, dar $$1) {
+   public boolean a(cxo $$0, dav $$1) {
       return !this.c.isPresent() || this.c.get().a($$1.a());
    }
 

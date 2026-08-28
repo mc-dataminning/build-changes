@@ -1,95 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dop extends dix {
-   public static final MapCodec<dop> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dic.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), kn.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), t())
-            .apply($$0, dop::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dym g = dyd.aL;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final dic.c j;
+public class dop extends dkl implements dnf, dnu {
+   public static final MapCodec<dop> a = b(dop::new);
+   public static final dyr<jo> b = dyk.U;
 
    @Override
    public MapCodec<dop> a() {
-      return d;
+      return a;
    }
 
-   public dop(dic.c $$0, kn.a $$1, dxm.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.l(this.F.b().b(g, Integer.valueOf(1)));
-   }
-
-   @Override
-   public boolean d(dxn $$0) {
-      return $$0.c(g) == 3;
+   protected dop(dxt.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jo.k));
    }
 
    @Override
-   protected boolean a(eto $$0) {
-      return $$0 == etq.c && this.j == dic.c.b;
+   protected void a(dxv.a<dkl, dxu> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected double b(dxn $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
+   protected dxu a(dxu $$0, drb $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
    }
 
    @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, bvf $$3) {
-      if ($$1 instanceof ash $$4 && $$3.bY() && this.a($$0, $$2, $$3)) {
-         $$3.aH();
-         if ($$3.c($$4, $$2)) {
-            this.f($$0, $$1, $$2);
-         }
-      }
+   protected dxu a(dxu $$0, dpk $$1) {
+      return $$0.b(b, $$1.a().a($$0.c(b)));
    }
 
-   private void f(dxn $$0, dha $$1, jh $$2) {
-      if (this.j == dic.c.c) {
-         e(dkg.fI.m().b(g, $$0.c(g)), $$1, $$2);
+   @Override
+   public dxu a(dbf $$0) {
+      jm $$1 = $$0.k();
+      jm $$2;
+      if ($$1.o() == jm.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         e($$0, $$1, $$2);
+         $$2 = jm.b;
+      }
+
+      return this.m().b(b, jo.a($$1, $$2));
+   }
+
+   @Override
+   public duw a(jh $$0, dxu $$1) {
+      return new dvz($$0, $$1);
+   }
+
+   @Override
+   protected bti a(dxu $$0, dhh $$1, jh $$2, cpw $$3, fbt $$4) {
+      duw $$5 = $$1.c_($$2);
+      if ($$5 instanceof dvz && $$3.gE()) {
+         $$3.a((dvz)$$5);
+         return bti.a;
+      } else {
+         return bti.e;
       }
    }
 
-   public static void e(dxn $$0, dha $$1, jh $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dxn $$4 = $$3 == 0 ? dkg.fH.m() : $$0.b(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(ecj.c, $$2, ecj.a.a($$4));
+   public static boolean a(esl.a $$0, esl.a $$1) {
+      jm $$2 = o($$0.a().b());
+      jm $$3 = o($$1.a().b());
+      jm $$4 = p($$0.a().b());
+      jm $$5 = p($$1.a().b());
+      dvz.a $$6 = $$0.b();
+      boolean $$7 = $$6 == dvz.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.e().equals($$1.c());
    }
 
-   @Override
-   public void a(dxn $$0, dha $$1, jh $$2, dic.c $$3) {
-      if (dla.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dxn $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(ecj.c, $$2, ecj.a.a($$4));
-      }
+   public static jm o(dxu $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   protected int a(dxn $$0, dha $$1, jh $$2) {
-      return $$0.c(g);
-   }
-
-   @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dxn $$0, dha $$1, jh $$2, eto $$3) {
-      if (!this.d($$0)) {
-         dxn $$4 = $$0.b(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(ecj.c, $$2, ecj.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      }
+   public static jm p(dxu $$0) {
+      return $$0.c(b).b();
    }
 }

@@ -1,49 +1,30 @@
-public class ghc extends gjl {
-   private final gjg a;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   ghc(gfd $$0, double $$1, double $$2, double $$3, double $$4, gjg $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public class ghc {
+   public static final ghc a = new ghc(ghb.b, ghd.createDnsSrvRedirectHandler(), ggy.a());
+   private final ghb b;
+   private final ghd c;
+   private final ggy d;
+
+   @VisibleForTesting
+   ghc(ghb $$0, ghd $$1, ggy $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public Optional<ggz> a(gha $$0) {
+      Optional<ggz> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<gha> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+         return $$1;
       } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public gip b() {
-      return gip.b;
-   }
-
-   public static class a implements gio<lw> {
-      private final gjg a;
-
-      public a(gjg $$0) {
-         this.a = $$0;
-      }
-
-      public gil a(lw $$0, gfd $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghc($$1, $$2, $$3, $$4, $$5, this.a);
+         return Optional.empty();
       }
    }
 }

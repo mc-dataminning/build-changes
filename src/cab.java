@@ -1,22 +1,26 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class cab {
-   public static bzf<bwb> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
-   }
-
-   public static bzf<bwb> a(Predicate<bwb> $$0, Function<bwb, Float> $$1, int $$2) {
-      return cbh.a(
-         (Function<cbh.b<bwb>, ? extends App<cbh.c<bwb>, cbk<bwb>>>)($$3 -> $$3.group($$3.c(cff.m), $$3.b(cff.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
+   public static bxz<bwf> a() {
+      return cbl.a((Function<cbl.b<bwf>, ? extends App<cbl.c<bwf>, cbo<bwf>>>)($$0 -> $$0.a((cbo<bwf>)(($$0x, $$1, $$2) -> {
+            if ($$0x.A.a(20) != 0) {
+               return false;
+            } else {
+               bxh<?> $$3 = $$1.eb();
+               crj $$4 = $$0x.d($$1.dv());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(crn.h);
+                     $$3.a(crn.h);
                   } else {
-                     $$4.a(new cfi($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
+                     $$3.b(crn.i);
+                     $$3.a(crn.i);
                   }
-               }))
-      );
+               }
+
+               return true;
+            }
+         }))));
    }
 }

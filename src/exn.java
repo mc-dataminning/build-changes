@@ -1,126 +1,93 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class exn extends exu {
-   public static final ayk<eoc> a = ayg.l;
-   public static final jq<eve> b = evf.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<exn> f = RecordCodecBuilder.mapCodec(
+public class exn extends eyb {
+   public static final MapCodec<exn> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  ayk.a(mb.aT).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  eve.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+                  ma.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dyw::f).toList())
                )
             )
             .apply($$0, exn::new)
    );
-   private final ayk<eoc> h;
-   private final jq<eve> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final jq<dkl> b;
+   private final Set<dyw<?>> c;
 
-   exn(List<ezs> $$0, ayk<eoc> $$1, jq<eve> $$2, byte $$3, int $$4, boolean $$5) {
+   exn(List<ezx> $$0, jq<dkl> $$1, Set<dyw<?>> $$2) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private exn(List<ezx> $$0, jq<dkl> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public exw<exn> b() {
-      return exx.q;
+   public eyd<exn> b() {
+      return eye.D;
    }
 
    @Override
-   public Set<eza<?>> a() {
-      return ImmutableSet.of(ezd.f);
+   public Set<bbn<?>> a() {
+      return Set.of(ezi.g);
    }
 
    @Override
-   public cxk a(cxk $$0, ewh $$1) {
-      if (!$$0.a(cxo.uZ)) {
-         return $$0;
-      } else {
-         fbs $$2 = $$1.c(ezd.f);
-         if ($$2 != null) {
-            ash $$3 = $$1.d();
-            jh $$4 = $$3.a(this.h, jh.a((ka)$$2), this.k, this.l);
-            if ($$4 != null) {
-               cxk $$5 = cxx.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               cxx.a($$3, $$5);
-               evj.a($$5, $$4, "+", this.i);
-               return $$5;
+   protected cxo a(cxo $$0, ewo $$1) {
+      dxu $$2 = $$1.c(ezi.g);
+      if ($$2 != null) {
+         $$0.a(ku.am, czq.a, $$1x -> {
+            for (dyw<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
             }
-         }
 
-         return $$0;
+            return $$1x;
+         });
       }
+
+      return $$0;
    }
 
-   public static exn.a c() {
-      return new exn.a();
+   public static exn.a a(dkl $$0) {
+      return new exn.a($$0);
    }
 
-   public static class a extends exu.a<exn.a> {
-      private ayk<eoc> a;
-      private jq<eve> b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public static class a extends eyb.a<exn.a> {
+      private final jq<dkl> a;
+      private final Builder<dyw<?>> b = ImmutableSet.builder();
 
-      public a() {
-         this.a = exn.a;
-         this.b = exn.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+      a(dkl $$0) {
+         this.a = $$0.p();
+      }
+
+      public exn.a a(dyw<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected exn.a a() {
          return this;
       }
 
-      public exn.a a(ayk<eoc> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public exn.a a(jq<eve> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public exn.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public exn.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public exn.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
       @Override
-      public exv b() {
-         return new exn(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public eyc b() {
+         return new exn(this.g(), this.a, this.b.build());
       }
    }
 }

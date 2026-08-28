@@ -1,3 +1,3 @@
-public interface gzw {
-   cpf a();
+public class gzw extends gxa {
+   public boolean d;
 }

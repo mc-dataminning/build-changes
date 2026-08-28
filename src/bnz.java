@@ -1,3 +1,8 @@
-public enum bnz {
-   a;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bnz {
 }

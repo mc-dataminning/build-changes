@@ -1,31 +1,50 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmd extends dke {
-   public static final MapCodec<dmd> a = b(dmd::new);
+public class dmd extends djv {
+   public static final MapCodec<dmd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dmb.a.forGetter($$0x -> $$0x.e), t()).apply($$0, dmd::new));
+   private final dkl e;
+   protected static final float b = 6.0F;
+   protected static final fcr c = dkl.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
    @Override
    public MapCodec<dmd> a() {
       return a;
    }
 
-   public dmd(dxm.d $$0) {
-      super($$0);
+   protected dmd(dkl $$0, dxt.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public void a(dxn $$0, dha $$1, jh $$2, bam $$3) {
-      if ($$3.a(5) == 0) {
-         jm $$4 = jm.b($$3);
-         if ($$4 != jm.b) {
-            jh $$5 = $$2.a($$4);
-            dxn $$6 = $$1.a_($$5);
-            if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
-               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
-               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
-               $$1.a(ls.aF, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
-            }
-         }
+   protected void b(dxu $$0, dhh $$1, jh $$2, dxu $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
+   }
+
+   @Override
+   protected void a(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.e.m().b(d, Boolean.valueOf(false)), 2);
       }
+   }
+
+   @Override
+   protected dxu a(dxu $$0, dhk $$1, dhw $$2, jh $$3, jm $$4, jh $$5, dxu $$6, bam $$7) {
+      if ($$4 == jm.a && !$$0.a($$1, $$3)) {
+         return dkn.a.m();
+      } else {
+         this.a($$0, $$1, $$2, $$7, $$3);
+         if ($$0.c(d)) {
+            $$2.a($$3, etx.c, etx.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Override
+   protected fcr a(dxu $$0, dgm $$1, jh $$2, fcc $$3) {
+      return c;
    }
 }

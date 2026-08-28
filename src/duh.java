@@ -1,99 +1,77 @@
-public class duh {
-   public static final aly<duf> a = a("base");
-   public static final aly<duf> b = a("square_bottom_left");
-   public static final aly<duf> c = a("square_bottom_right");
-   public static final aly<duf> d = a("square_top_left");
-   public static final aly<duf> e = a("square_top_right");
-   public static final aly<duf> f = a("stripe_bottom");
-   public static final aly<duf> g = a("stripe_top");
-   public static final aly<duf> h = a("stripe_left");
-   public static final aly<duf> i = a("stripe_right");
-   public static final aly<duf> j = a("stripe_center");
-   public static final aly<duf> k = a("stripe_middle");
-   public static final aly<duf> l = a("stripe_downright");
-   public static final aly<duf> m = a("stripe_downleft");
-   public static final aly<duf> n = a("small_stripes");
-   public static final aly<duf> o = a("cross");
-   public static final aly<duf> p = a("straight_cross");
-   public static final aly<duf> q = a("triangle_bottom");
-   public static final aly<duf> r = a("triangle_top");
-   public static final aly<duf> s = a("triangles_bottom");
-   public static final aly<duf> t = a("triangles_top");
-   public static final aly<duf> u = a("diagonal_left");
-   public static final aly<duf> v = a("diagonal_up_right");
-   public static final aly<duf> w = a("diagonal_up_left");
-   public static final aly<duf> x = a("diagonal_right");
-   public static final aly<duf> y = a("circle");
-   public static final aly<duf> z = a("rhombus");
-   public static final aly<duf> A = a("half_vertical");
-   public static final aly<duf> B = a("half_horizontal");
-   public static final aly<duf> C = a("half_vertical_right");
-   public static final aly<duf> D = a("half_horizontal_bottom");
-   public static final aly<duf> E = a("border");
-   public static final aly<duf> F = a("curly_border");
-   public static final aly<duf> G = a("gradient");
-   public static final aly<duf> H = a("gradient_up");
-   public static final aly<duf> I = a("bricks");
-   public static final aly<duf> J = a("globe");
-   public static final aly<duf> K = a("creeper");
-   public static final aly<duf> L = a("skull");
-   public static final aly<duf> M = a("flower");
-   public static final aly<duf> N = a("mojang");
-   public static final aly<duf> O = a("piglin");
-   public static final aly<duf> P = a("flow");
-   public static final aly<duf> Q = a("guster");
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   private static aly<duf> a(String $$0) {
-      return aly.a(mb.d, alz.b($$0));
+public class duh extends drq {
+   public static final MapCodec<duh> b = b(duh::new);
+   @Nullable
+   private static dxz h;
+   @Nullable
+   private static dxz i;
+
+   @Override
+   public MapCodec<duh> a() {
+      return b;
    }
 
-   public static void a(rk<duf> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-      a($$0, s);
-      a($$0, t);
-      a($$0, u);
-      a($$0, v);
-      a($$0, w);
-      a($$0, x);
-      a($$0, y);
-      a($$0, z);
-      a($$0, A);
-      a($$0, B);
-      a($$0, C);
-      a($$0, D);
-      a($$0, E);
-      a($$0, G);
-      a($$0, H);
-      a($$0, I);
-      a($$0, F);
-      a($$0, J);
-      a($$0, K);
-      a($$0, L);
-      a($$0, M);
-      a($$0, N);
-      a($$0, O);
-      a($$0, P);
-      a($$0, Q);
+   protected duh(dxt.d $$0) {
+      super(drq.b.d, $$0);
    }
 
-   public static void a(rk<duf> $$0, aly<duf> $$1) {
-      $$0.a($$1, new duf($$1.a(), "block.minecraft.banner." + $$1.a().e()));
+   @Override
+   public void a(dhh $$0, jh $$1, dxu $$2, @Nullable bwf $$3, cxo $$4) {
+      a($$0, $$1);
+   }
+
+   public static void a(dhh $$0, jh $$1) {
+      if ($$0.c_($$1) instanceof dwl $$2) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(dhh $$0, jh $$1, dwl $$2) {
+      if (!$$0.C) {
+         dxu $$3 = $$2.m();
+         boolean $$4 = $$3.a(dkn.gW) || $$3.a(dkn.gX);
+         if ($$4 && $$1.v() >= $$0.L_() && $$0.al() != btf.a) {
+            dxz.b $$5 = q().a($$0, $$1);
+            if ($$5 != null) {
+               cln $$6 = bvq.bJ.a($$0, bvp.k);
+               if ($$6 != null) {
+                  dlg.a($$0, $$5);
+                  jh $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == jm.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aX = $$5.b().o() == jm.a.a ? 0.0F : 90.0F;
+                  $$6.m();
+
+                  for (asi $$8 : $$0.a(asi.class, $$6.cR().g(50.0))) {
+                     ao.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  dlg.b($$0, $$5);
+               }
+            }
+         }
+      }
+   }
+
+   public static boolean b(dhh $$0, jh $$1, cxo $$2) {
+      return $$2.a(cxs.vc) && $$1.v() >= $$0.L_() + 2 && $$0.al() != btf.a && !$$0.C ? r().a($$0, $$1) != null : false;
+   }
+
+   private static dxz q() {
+      if (h == null) {
+         h = dya.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(axu.aI)).a('^', dxy.a(dyd.a(dkn.gW).or(dyd.a(dkn.gX)))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return h;
+   }
+
+   private static dxz r() {
+      if (i == null) {
+         i = dya.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(axu.aI)).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return i;
    }
 }

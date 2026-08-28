@@ -1,14 +1,37 @@
-public abstract class gpy<T extends bwd & coc> extends gqd<T, gyc, gbp> {
-   public gpy(grj.a $$0, gef $$1, gef $$2, float $$3) {
-      super($$0, new gbp($$0.a($$1)), new gbp($$0.a($$2)), $$3);
+import com.google.common.collect.Sets;
+import java.util.Set;
+
+public class gpy implements gpj.a {
+   private static final int a = 60;
+   private final Set<kj> b = Sets.newHashSet();
+
+   gpy() {
    }
 
-   public gyc a() {
-      return new gyc();
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public void a(T $$0, gyc $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
+   public void a(kj $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(kj $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fgq $$0, glj $$1, double $$2, double $$3, double $$4) {
+      jh $$5 = jh.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fgq $$0, glj $$1, kj $$2) {
+      gpj.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

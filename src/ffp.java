@@ -1,7 +1,3 @@
 public interface ffp {
-   void a(boolean var1);
-
-   void a();
-
-   void b();
+   ffo createMonitor(long var1);
 }

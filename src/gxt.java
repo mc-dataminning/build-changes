@@ -1,51 +1,43 @@
 import javax.annotation.Nullable;
 
-public class gxt extends gxo implements dgc {
-   public jh a = jh.c;
-   public jh b = jh.c;
-   public dxn c = dkg.L.m();
+public class gxt {
+   public double m;
+   public double n;
+   public double o;
+   public float p;
+   public float q;
+   public float r;
+   public float s;
+   public double t;
+   public boolean u;
+   public boolean v;
+   public boolean w;
    @Nullable
-   public jq<dic> d;
-   public dgc e = dgo.a;
-
-   @Override
-   public float a(jm $$0, boolean $$1) {
-      return this.e.a($$0, $$1);
-   }
-
-   @Override
-   public ete C_() {
-      return this.e.C_();
-   }
-
-   @Override
-   public int a(jh $$0, dgk $$1) {
-      return this.d == null ? -1 : $$1.getColor(this.d.a(), (double)$$0.u(), (double)$$0.w());
-   }
-
+   public fbx x;
    @Nullable
-   @Override
-   public dup c_(jh $$0) {
-      return null;
-   }
+   public xv y;
+   @Nullable
+   public fbx z;
+   @Nullable
+   public gxt.a A;
 
-   @Override
-   public dxn a_(jh $$0) {
-      return $$0.equals(this.b) ? this.c : dkg.a.m();
-   }
+   public static class a {
+      public fbx a;
+      public fbx b;
+      public fbx c;
+      public int d;
+      public int e;
+      public int f;
+      public int g;
 
-   @Override
-   public etp b_(jh $$0) {
-      return this.a_($$0).y();
-   }
-
-   @Override
-   public int M_() {
-      return 1;
-   }
-
-   @Override
-   public int L_() {
-      return this.b.v();
+      public a() {
+         this.a = fbx.c;
+         this.b = fbx.c;
+         this.c = fbx.c;
+         this.d = 0;
+         this.e = 0;
+         this.f = 15;
+         this.g = 15;
+      }
    }
 }

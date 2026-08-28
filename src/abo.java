@@ -1,9 +1,9 @@
-public record abo(int c, eud d, float e) implements abf {
+public record abo(int c, euk d, float e) implements abf {
    public static final zt<ws, abo> a = abf.a(abo::a, abo::new);
    public static final abf.b<abo> b = abf.a("debug/path");
 
    private abo(ws $$0) {
-      this($$0.readInt(), eud.b($$0), $$0.readFloat());
+      this($$0.readInt(), euk.b($$0), $$0.readFloat());
    }
 
    private void a(ws $$0) {
@@ -21,7 +21,7 @@ public record abo(int c, eud d, float e) implements abf {
       return this.c;
    }
 
-   public eud c() {
+   public euk c() {
       return this.d;
    }
 

@@ -3,7 +3,7 @@ public class aiq implements aac<ahm> {
    private static final int b = 2;
    private final boolean c;
 
-   public aiq(cpo $$0) {
+   public aiq(cps $$0) {
       this.c = $$0.b;
    }
 

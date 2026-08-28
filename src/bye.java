@@ -1,41 +1,37 @@
-public class bye implements bxv<bwb> {
-   private final int a;
-   private final int b;
-   private bxu.a c = bxu.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-   public bye(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bye extends bxy<bwf> {
+   private final cfj<Integer> c;
+
+   public bye(cfj<Integer> $$0) {
+      super(ImmutableMap.of($$0, cfk.a));
+      this.c = $$0;
+   }
+
+   private Optional<Integer> b(bwf $$0) {
+      return $$0.eb().c(this.c);
    }
 
    @Override
-   public bxu.a a() {
-      return this.c;
+   protected boolean a(long $$0) {
+      return false;
    }
 
    @Override
-   public final boolean e(ash $$0, bwb $$1, long $$2) {
-      this.c = bxu.a.b;
-      int $$3 = this.a + $$0.H_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(ash $$0, bwf $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
    }
 
    @Override
-   public final void f(ash $$0, bwb $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
+   protected void c(ash $$0, bwf $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.eb().a(this.c, $$3.get() - 1);
    }
 
    @Override
-   public final void g(ash $$0, bwb $$1, long $$2) {
-      this.c = bxu.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void b(ash $$0, bwf $$1, long $$2) {
+      $$1.eb().b(this.c);
    }
 }

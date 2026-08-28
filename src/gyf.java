@@ -1,9 +1,5 @@
-public class gyf extends gym {
-   public boolean b;
-   public boolean c;
-   public bvv d = bvv.b;
-   public clz.a e = clz.a.h;
-   public int f;
-   public int g;
-   public float h;
+public class gyf extends gyr {
+   public boolean a = true;
+   public boolean b = true;
+   public float c;
 }

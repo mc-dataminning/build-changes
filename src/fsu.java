@@ -1,31 +1,102 @@
-public class fsu extends ftr {
-   private fos a;
-   private final Runnable b;
-   private final Runnable c;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-   public fsu(Runnable $$0, Runnable $$1) {
-      super(xv.c("datapackFailure.title"));
-      this.a = fos.a;
-      this.b = $$0;
-      this.c = $$1;
+public class fsu extends ftw {
+   private static final int d = 20;
+   private final xv s;
+   private fox u = fox.a;
+   protected xv a;
+   protected xv b;
+   private int v;
+   protected final BooleanConsumer c;
+   private final List<fod> w = Lists.newArrayList();
+
+   public fsu(BooleanConsumer $$0, xv $$1, xv $$2) {
+      this($$0, $$1, $$2, xu.f, xu.g);
+   }
+
+   public fsu(BooleanConsumer $$0, xv $$1, xv $$2, xv $$3, xv $$4) {
+      super($$1);
+      this.c = $$0;
+      this.s = $$2;
+      this.a = $$3;
+      this.b = $$4;
+   }
+
+   @Override
+   public xv i() {
+      return xu.a(super.i(), this.s);
    }
 
    @Override
    protected void aT_() {
       super.aT_();
-      this.a = fos.a(this.p, this.m(), this.n - 50);
-      this.c(fny.a(xv.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
-      this.c(fny.a(xu.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
+      this.u = fox.a(this.p, this.s, this.n - 50);
+      int $$0 = bae.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
+      this.w.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(fod.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(fod.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(fod $$0) {
+      this.w.add(this.c($$0));
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+   public void a(fnq $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.n / 2, 70);
+      $$0.a(this.p, this.l, this.n / 2, this.l(), 16777215);
+      this.u.a($$0, this.n / 2, this.E());
+   }
+
+   private int l() {
+      int $$0 = (this.o - this.F()) / 2;
+      return bae.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int E() {
+      return this.l() + 20;
+   }
+
+   private int F() {
+      return this.u.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.v = $$0;
+
+      for (fod $$1 : this.w) {
+         $$1.j = false;
+      }
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      if (--this.v == 0) {
+         for (fod $$0 : this.w) {
+            $$0.j = true;
+         }
+      }
    }
 
    @Override
    public boolean aH_() {
       return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 }

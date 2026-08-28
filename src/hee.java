@@ -1,7 +1,11 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
 public interface hee {
-   void a(Map<UUID, aub.c> var1, Consumer<aub.b> var2);
+   void a(hee.a var1);
+
+   hdl a(hdu var1, Function<hds, hbj> var2, hea var3);
+
+   public interface a {
+      hee a(alz var1);
+   }
 }

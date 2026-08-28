@@ -1,45 +1,72 @@
-public class ctw extends cuu {
-   private final cps a;
-   private int b;
+public class ctw extends ctb {
+   private static final int m = 9;
+   private static final int n = 9;
+   private static final int o = 36;
+   private static final int p = 36;
+   private static final int q = 45;
+   private final btb r;
 
-   public ctw(cps $$0, bsx $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+   public ctw(int $$0, cpv $$1) {
+      this($$0, $$1, new btp(9));
+   }
+
+   public ctw(int $$0, cpv $$1, btb $$2) {
+      super(cuk.g, $$0);
+      a($$2, 9);
+      this.r = $$2;
+      $$2.c_($$1.k);
+      this.d($$2, 62, 17);
+      this.c($$1, 8, 84);
+   }
+
+   protected void d(btb $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            int $$5 = $$4 + $$3 * 3;
+            this.a(new cuy($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
+         }
+      }
    }
 
    @Override
-   public boolean a(cxk $$0) {
-      return false;
+   public boolean b(cpw $$0) {
+      return this.r.a($$0);
    }
 
    @Override
-   public cxk a(int $$0) {
-      if (this.h()) {
-         this.b = this.b + Math.min($$0, this.g().L());
+   public cxo b(cpw $$0, int $$1) {
+      cxo $$2 = cxo.k;
+      cuy $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cxo $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cxo.k;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cxo.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cxo.k);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return cxo.k;
+         }
+
+         $$3.a($$0, $$4);
       }
 
-      return super.a($$0);
+      return $$2;
    }
 
    @Override
-   public void a(cps $$0, cxk $$1) {
-      this.b_($$1);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(cxk $$0, int $$1) {
-      this.b += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cxk $$0) {
-      $$0.a(this.a.dV(), this.a, this.b);
-      if (this.a instanceof asi $$1 && this.c instanceof dud $$2) {
-         $$2.a($$1);
-      }
-
-      this.b = 0;
+   public void a(cpw $$0) {
+      super.a($$0);
+      this.r.c($$0);
    }
 }

@@ -1,54 +1,33 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtx extends djs {
+public class dtx extends dts implements dtt {
    public static final MapCodec<dtx> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dyc.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, dtx::new)
+      $$0 -> $$0.group(dtt.a.e.fieldOf("weathering_state").forGetter(dtx::q), t()).apply($$0, dtx::new)
    );
-   public static final dym f = dyd.aU;
-   private final int g;
+   private final dtt.a f;
 
    @Override
-   public MapCodec<dtx> a() {
+   protected MapCodec<dtx> a() {
       return e;
    }
 
-   protected dtx(int $$0, dyc $$1, dxm.d $$2) {
-      super($$2, $$1);
-      this.l(this.F.b().b(f, Integer.valueOf(0)));
-      this.g = $$0;
+   protected dtx(dtt.a $$0, dxt.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected int b(dha $$0, jh $$1) {
-      int $$2 = Math.min(a($$0, c.a($$1), bvf.class), this.g);
-      if ($$2 > 0) {
-         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
-         return bae.f($$3 * 15.0F);
-      } else {
-         return 0;
-      }
+   protected void b(dxu $$0, ash $$1, jh $$2, bam $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected int h(dxn $$0) {
-      return $$0.c(f);
+   protected boolean f(dxu $$0) {
+      return dtt.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected dxn a(dxn $$0, int $$1) {
-      return $$0.b(f, Integer.valueOf($$1));
-   }
-
-   @Override
-   protected int b() {
-      return 10;
-   }
-
-   @Override
-   protected void a(dxo.a<dke, dxn> $$0) {
-      $$0.a(f);
+   public dtt.a q() {
+      return this.f;
    }
 }

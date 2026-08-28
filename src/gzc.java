@@ -1,5 +1,8 @@
-public class gzc extends gym {
-   public float a;
-   public boolean b;
-   public cim.g c = cim.g.a;
+public class gzc extends gyr implements gzj {
+   public boolean a;
+
+   @Override
+   public boolean c() {
+      return this.a;
+   }
 }

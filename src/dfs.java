@@ -1,56 +1,46 @@
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
 
-public class dfs {
-   public static final aly<dfr> a = a("sentry");
-   public static final aly<dfr> b = a("dune");
-   public static final aly<dfr> c = a("coast");
-   public static final aly<dfr> d = a("wild");
-   public static final aly<dfr> e = a("ward");
-   public static final aly<dfr> f = a("eye");
-   public static final aly<dfr> g = a("vex");
-   public static final aly<dfr> h = a("tide");
-   public static final aly<dfr> i = a("snout");
-   public static final aly<dfr> j = a("rib");
-   public static final aly<dfr> k = a("spire");
-   public static final aly<dfr> l = a("wayfinder");
-   public static final aly<dfr> m = a("shaper");
-   public static final aly<dfr> n = a("silence");
-   public static final aly<dfr> o = a("raiser");
-   public static final aly<dfr> p = a("host");
-   public static final aly<dfr> q = a("flow");
-   public static final aly<dfr> r = a("bolt");
+public interface dfs {
+   alz a = alz.b("leather");
+   alz b = alz.b("chainmail");
+   alz c = alz.b("iron");
+   alz d = alz.b("gold");
+   alz e = alz.b("diamond");
+   alz f = alz.b("turtle_scute");
+   alz g = alz.b("netherite");
+   alz h = alz.b("armadillo_scute");
+   alz i = alz.b("elytra");
+   Map<cwl, alz> j = ae.a(cwl.class, $$0 -> alz.b($$0.c() + "_carpet"));
+   alz k = alz.b("trader_llama");
 
-   public static void a(rk<dfr> $$0) {
-      a($$0, cxo.yn, a);
-      a($$0, cxo.yo, b);
-      a($$0, cxo.yp, c);
-      a($$0, cxo.yq, d);
-      a($$0, cxo.yr, e);
-      a($$0, cxo.ys, f);
-      a($$0, cxo.yt, g);
-      a($$0, cxo.yu, h);
-      a($$0, cxo.yv, i);
-      a($$0, cxo.yw, j);
-      a($$0, cxo.yx, k);
-      a($$0, cxo.yy, l);
-      a($$0, cxo.yz, m);
-      a($$0, cxo.yA, n);
-      a($$0, cxo.yB, o);
-      a($$0, cxo.yC, p);
-      a($$0, cxo.yD, q);
-      a($$0, cxo.yE, r);
+   static void a(BiConsumer<alz, dfr> $$0) {
+      $$0.accept(a, dfr.a().a(alz.b("leather"), true).a(alz.b("leather_overlay"), false).a(dfr.d.e, dfr.c.a(alz.b("leather"), true)).a());
+      $$0.accept(b, a("chainmail"));
+      $$0.accept(c, b("iron"));
+      $$0.accept(d, b("gold"));
+      $$0.accept(e, b("diamond"));
+      $$0.accept(f, dfr.a().b(alz.b("turtle_scute"), false).a());
+      $$0.accept(g, a("netherite"));
+      $$0.accept(h, dfr.a().a(dfr.d.d, dfr.c.b(alz.b("armadillo_scute"), false)).a(dfr.d.d, dfr.c.b(alz.b("armadillo_scute_overlay"), true)).a());
+      $$0.accept(i, dfr.a().a(dfr.d.c, new dfr.c(alz.b("elytra"), Optional.empty(), true)).a());
+
+      for (Entry<cwl, alz> $$1 : j.entrySet()) {
+         cwl $$2 = $$1.getKey();
+         alz $$3 = $$1.getValue();
+         $$0.accept($$3, dfr.a().a(dfr.d.f, new dfr.c(alz.b($$2.c()))).a());
+      }
+
+      $$0.accept(k, dfr.a().a(dfr.d.f, new dfr.c(alz.b("trader_llama"))).a());
    }
 
-   public static Optional<jq.c<dfr>> a(js.a $$0, cxk $$1) {
-      return $$0.d(mb.aZ).c().filter($$1x -> $$1.a(((dfr)$$1x.a()).b())).findFirst();
+   private static dfr a(String $$0) {
+      return dfr.a().a(alz.b($$0)).a();
    }
 
-   public static void a(rk<dfr> $$0, cxg $$1, aly<dfr> $$2) {
-      dfr $$3 = new dfr($$2.a(), ma.g.e($$1), xv.c(ae.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
-   }
-
-   private static aly<dfr> a(String $$0) {
-      return aly.a(mb.aZ, alz.b($$0));
+   private static dfr b(String $$0) {
+      return dfr.a().a(alz.b($$0)).a(dfr.d.e, dfr.c.a(alz.b($$0), false)).a();
    }
 }
