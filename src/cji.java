@@ -1,3 +1,4 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class cji extends bsr implements bun {
@@ -6,8 +7,20 @@ public class cji extends bsr implements bun {
    private static final int e = 80;
    private static final String f = "block_state";
    public static final String b = "fuse";
+   private static final dcp g = new dcp() {
+      @Override
+      public boolean a(dco $$0, dcc $$1, jd $$2, dtc $$3, float $$4) {
+         return $$3.a(dga.ed) ? false : super.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public Optional<Float> a(dco $$0, dcc $$1, jd $$2, dtc $$3, epe $$4) {
+         return $$3.a(dga.ed) ? Optional.empty() : super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   };
    @Nullable
-   private btn g;
+   private btn h;
+   private boolean i;
 
    public cji(bsx<? extends cji> $$0, dcw $$1) {
       super($$0, $$1);
@@ -23,7 +36,7 @@ public class cji extends bsr implements bun {
       this.L = $$1;
       this.M = $$2;
       this.N = $$3;
-      this.g = $$4;
+      this.h = $$4;
    }
 
    @Override
@@ -74,7 +87,7 @@ public class cji extends bsr implements bun {
 
    private void w() {
       float $$0 = 4.0F;
-      this.dO().a(this, this.dt(), this.e(0.0625), this.dz(), 4.0F, dcw.a.d);
+      this.dO().a(this, dco.a(this.dO(), this), this.i ? g : null, this.dt(), this.e(0.0625), this.dz(), 4.0F, false, dcw.a.d);
    }
 
    @Override
@@ -93,14 +106,14 @@ public class cji extends bsr implements bun {
 
    @Nullable
    public btn p() {
-      return this.g;
+      return this.h;
    }
 
    @Override
    public void w(bsr $$0) {
       super.w($$0);
       if ($$0 instanceof cji $$1) {
-         this.g = $$1.g;
+         this.h = $$1.h;
       }
    }
 
@@ -118,5 +131,20 @@ public class cji extends bsr implements bun {
 
    public dtc v() {
       return this.ao.a(d);
+   }
+
+   private void a(boolean $$0) {
+      this.i = $$0;
+   }
+
+   @Nullable
+   @Override
+   public bsr a(eqc $$0) {
+      bsr $$1 = super.a($$0);
+      if ($$1 instanceof cji $$2) {
+         $$2.a(true);
+      }
+
+      return $$1;
    }
 }

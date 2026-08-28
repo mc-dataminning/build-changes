@@ -798,7 +798,6 @@ public class aru extends arr implements agi, arx, wn {
       }
 
       this.H = this.o;
-      this.f.gC();
       this.f.a($$0, $$1, $$2, $$3, $$4);
       this.f.c.b(new aec($$0 - $$6, $$1 - $$7, $$2 - $$8, $$3 - $$9, $$4 - $$10, $$5, this.G));
    }

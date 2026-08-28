@@ -35,6 +35,7 @@ public class csx extends cul {
          }
 
          if ($$2 instanceof cmx $$13) {
+            $$13.gC();
             $$13.gt().a(this, 20);
          }
       }

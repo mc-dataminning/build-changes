@@ -64,7 +64,7 @@ public class dah {
          dac.a(dac.a($$3.b(awn.bC), 5, 4, dac.a(10, 8), dac.a(18, 8), 2, bsz.i))
             .a($$2.b(awh.b))
             .a(dad.c, new dal(daj.b(2.0F)), eup.a(euv.a(bk.a.a().a(ed.a(awg.i)).a(ed.b(awg.d)))))
-            .a(dad.l, new dar(akr.b("enchantment.fire_protection"), buw.h, daj.b(-0.15F), buu.a.b))
+            .a(dad.l, new dar(akr.b("enchantment.fire_protection"), buw.h, daj.b(-0.0375F), buu.a.b))
       );
       a(
          $$0,
@@ -77,7 +77,7 @@ public class dah {
          dac.a(dac.a($$3.b(awn.bC), 2, 4, dac.a(5, 8), dac.a(13, 8), 4, bsz.i))
             .a($$2.b(awh.b))
             .a(dad.c, new dal(daj.b(2.0F)), euv.a(bk.a.a().a(ed.a(awg.l)).a(ed.b(awg.d))))
-            .a(dad.l, new dar(akr.b("enchantment.blast_protection"), buw.i, daj.b(0.15F), buu.a.a))
+            .a(dad.l, new dar(akr.b("enchantment.blast_protection"), buw.i, daj.b(0.0375F), buu.a.a))
       );
       a(
          $$0,
@@ -161,7 +161,7 @@ public class dah {
          dac.a(dac.a($$3.b(awn.bz), 1, 3, dac.a(25, 25), dac.a(75, 25), 8, bsz.f))
             .a(dad.l, new dar(akr.b("enchantment.swift_sneak"), buw.z, daj.b(0.15F), buu.a.a))
       );
-      a($$0, n, dac.a(dac.a($$3.b(awn.bG), $$3.b(awn.bD), 10, 5, dac.a(1, 11), dac.a(21, 11), 1, bsz.b)).a($$2.b(awh.f)).a(dad.e, new dal(daj.a(1.0F, 0.5F))));
+      a($$0, n, dac.a(dac.a($$3.b(awn.bF), $$3.b(awn.bD), 10, 5, dac.a(1, 11), dac.a(21, 11), 1, bsz.b)).a($$2.b(awh.f)).a(dad.e, new dal(daj.a(1.0F, 0.5F))));
       a(
          $$0,
          o,

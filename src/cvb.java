@@ -63,6 +63,9 @@ public class cvb extends cul {
    @Override
    public void b(cuq $$0, btn $$1, btn $$2) {
       $$0.a(1, $$2, bsy.a);
+      if (a($$2)) {
+         $$2.n();
+      }
    }
 
    @Override

@@ -45,6 +45,7 @@ public class cnz extends cnw {
 
                   $$4.a(new eqc($$2, this.dm(), $$4.dr(), $$4.dE(), $$4.dG(), eqc.a));
                   $$4.n();
+                  $$5.gC();
                   $$4.a(this.dP().l(), 5.0F);
                   this.a($$2, this.dm());
                }

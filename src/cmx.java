@@ -1339,7 +1339,7 @@ public abstract class cmx extends btn {
             this.a(avz.t, (int)Math.round((double)$$0 * 100.0));
          }
 
-         boolean $$4;
+         boolean $$5;
          if (this.cI && this.cx != null) {
             double $$3 = this.cx.d;
             this.gB();
@@ -1347,16 +1347,17 @@ public abstract class cmx extends btn {
                return false;
             }
 
-            $$4 = super.a((float)($$3 - this.dv()), $$1, $$2);
+            float $$4 = Math.min($$0, (float)($$3 - this.dv()));
+            $$5 = super.a($$4, $$1, $$2);
          } else {
-            $$4 = super.a($$0, $$1, $$2);
+            $$5 = super.a($$0, $$1, $$2);
          }
 
-         if ($$4) {
+         if ($$5) {
             this.gC();
          }
 
-         return $$4;
+         return $$5;
       }
    }
 
